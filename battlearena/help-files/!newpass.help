@@ -1,0 +1,3 @@
+12::[How do I Change My Password?]::
+2Syntax: 12!newpass <old password> <new password>
+2The !newpass command is used to change the password into one that you can remember easier than the randomly generated one.  As always, be sure to remove the < > when you actually use the command.

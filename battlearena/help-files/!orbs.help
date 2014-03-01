@@ -1,0 +1,7 @@
+12::[What are orbs?]::
+2Orbs can be thought of as both experience points and currency in this game.  As you defeat enemies you will accumulate orbs that can be exchanged for everything from items to upgrades to your stats to brand new abilities and weapons.  
+2There are two types of orbs: red and black.  Black orbs are from bosses only and only work to buy new weapons.  Red orbs are for everything else.
+12::[How do I check my orb count?]::
+2Syntax: 12!orbs  or 12!orbs <another player>
+2This command is how you check how many Red and Black orbs you own, or how many other characters may own.
+

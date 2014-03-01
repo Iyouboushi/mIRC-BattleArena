@@ -1,0 +1,3 @@
+swings at %enemy before stepping backwards in a defensive stance
+leaps at %enemy and swings several times before rolling to the side before %enemy can react
+runs up and hits %enemy over the head with the mace before dashing back

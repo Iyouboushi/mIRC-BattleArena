@@ -1,0 +1,651 @@
+==============================================================
+The weather is now controlled via this file rather than
+weather.lst.  It works the same though.  Boost= how much 
+the correct weather will boost a magic spell.
+
+Do not remove the [weather] section or the bot will have 
+problems.
+==============================================================
+
+[weather]
+current=stormy
+list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
+boost=.25
+
+
+==============================================================
+The moon phases are controlled in this file as well.  Please
+do not remove or modify the Moon Phase section as it will cause
+errors.
+==============================================================
+[MoonPhase]
+CurrentMoonPhase=Quarter
+CurrentMoonTurn=1
+
+[MoonPhaseTime]
+full=3
+new=1
+gibbous=5
+quarter=4
+crescent=2
+blood=1
+BloodMoonChance=60
+
+==============================================================
+Battlefields are where the players face the monsters.
+The battlefields themselves control the weather and
+may have events that occasionally happen. There
+can be more than one event set per battlefield. 
+
+Please look at the pre-existing events for 
+how to set it all up.
+
+Valid Targets: all, random, monsters, players
+ * note that "players" as a target also affects NPCs
+
+Valid Event Types: damage, heal, statusonly
+
+Valid Limitations: no-tech, no-item, no-skill, no-ignition
+                   enhance-item, enhance-melee, enhance-tech
+                   no-mech
+
+** If you make a new battlefield and want the bot to be able
+to select it for battles, make sure you put the name of it
+into battlefields.lst
+=============================================================
+
+
+[plains]
+weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
+NumberOfEvents=0
+scavenge=Potion.VitalStar.X-Potion.Shihei.Sokubaku.Topaz.Zircon.Ink.Paper.EarthSphere
+limitations=
+
+
+[graveyard]
+weather=calm.gloomy.rainy.dry.snowy.stormy
+NumberOfEvents=1
+scavenge=Onyx.Red_Fang.Thunder_Orb.Stop_watch
+limitations=no-tech
+
+event1=damage
+event1Chance=20
+Event1Desc=%real.name trips and falls into an open grave! Ow!
+Event1Target=random
+event1Amount=$rand(50,100)
+
+
+[Slurm Factory]
+weather=gloomy
+NumberOfEvents=3
+scavenge=Slurm.Ectoplasm
+
+event1=damage
+event1Chance=90
+Event1Desc=Drops of acid leak from the pipes in the ceiling and rain down upon all of the heroes!
+Event1Target=players
+event1Amount=$rand(50,100)
+
+event2=statusonly
+event2statusType=annoyed
+event2Chance=20
+Event2Desc=Strange orange-looking people named Grunka Lunkas come out and began to sing.  It merely annoys %real.name more than doing any harm.
+Event2Target=random
+Event2Amount=0
+
+event3=heal
+event3Chance=10
+Event3Desc=Slurms McKenzie, a crazy party worm wearing sunglasses over it's tiny little slug-like eyes, pops out of nowhere and yells "WHIMMY! WHAM WHAM WOZZLE!" and begins to dance and play some music before leaving a slimey trail of goo behind him as he leaves. His crazy partying has healed all of the heroes.
+Event3Target=players
+Event3Amount=$rand(500,900)
+
+
+[farm]
+weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
+NumberOfEvents=1
+scavenge=Potion.Topaz.Milk
+
+event1=statusonly
+event1statusType=annoyed
+event1chance=10
+event1Desc=A large cow wanders into the battlefield and gives off a loud "MOOOOOOOOOOOO!" before wandering off, leaving %real.name rather annoyed at the wasted time.
+event1target=random
+event1amount=0
+
+
+
+[Volcano]
+weather=bright.hot.dry.stormy.gloomy
+NumberOfEvents=2
+scavenge=ruby.Fire_Flower.IgnitionStar.RedKey.FireGem
+
+event1=damage
+event1statusType=Burning
+event1Chance=40
+Event1Desc=The volcano erupts violently, raining magma down upon everyone.
+Event1Target=all
+Event1Amount=$rand(50,100)
+
+event2=statusonly
+event2statusType=Blind
+event2Chance=30
+Event2Desc=The volcano spews a thick amount of smoke that blinds %real.name on the battlefield.
+Event2Target=random
+Event2Amount=0
+
+
+[Cavern]
+weather=gloomy.dry.hot
+NumberOfEvents=2
+scavenge=diamond.IronOre.GoldOre.SilverOre
+limitations=no-mech
+
+event1=Damage
+event1Chance=35
+Event1Desc=A large stalactite falls from the ceiling and slams into %real.name on the battlefield.
+Event1Target=random
+Event1Amount=$rand(20,50)
+
+event2=Damage
+event2Chance=20
+Event2Desc=The low lighting in the cavern causes %real.name to stumble and trip, falling face first onto a stalagmite growing out of the floor. Ow! It might take a turn to recover from this!
+Event2Target=random
+Event2Amount=$rand(20,50)
+event2statusType=stun
+
+
+[Underwater Cavern]
+weather=gloomy.calm.rainy
+NumberOfEvents=2
+scavenge=diamond.IronOre.GoldOre.SilverOre
+
+event1=Damage
+event1Chance=35
+Event1Desc=A large stalactite falls from the ceiling and slams into %real.name on the battlefield.
+Event1Target=random
+Event1Amount=$rand(20,50)
+
+event2=Damage
+event2Chance=20
+Event2Desc=The low lighting in the cavern causes %real.name to stumble and trip, falling face first onto a stalagmite growing out of the floor. Ow! It might take a turn to recover from this!
+Event2Target=random
+Event2Amount=$rand(20,50)
+event2statusType=stun
+
+
+[Fairgrounds]
+weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
+NumberOfEvents=4
+scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+
+event1=damage
+event1Chance=10
+Event1Desc=The ferris wheel comes loose and rolls onto the battlefield before tipping over and smashing everyone!
+Event1Target=all
+Event1Amount=$rand(150,200)
+
+event2=statusonly
+event2Chance=30
+Event2statusType=defensedown
+Event2Desc=A carnie plays a game with the monsters on the battlegrounds but they lose!  Now they're tired from trying to win a carnival game!
+Event2Target=monsters
+
+event3=statusonly
+event3Chance=30
+Event3statusType=strengthdown
+Event3Desc=A bearded woman bets all the players that they can't ring the bell on a carnival game! Try as they might, they're unable to do so! Now they're exhausted from trying!
+Event3Target=players
+
+event4=damage
+event4Chance=20
+Event4Desc=An evil psychotic clown leaps from behind a booth and smashes %real.name with a large hammer before honking a horn and fleeing!
+Event4Target=random
+Event4Amount=$rand(10,30)
+
+
+[Forest]
+weather=calm.rainy.windy.hot.dry
+NumberOfEvents=4
+scavenge=AshLog.Hatchet.emerald
+
+event1=heal
+event1Chance=30
+Event1Desc=A fairy flips out of a nearby bush and sprinkles some healing dust on %real.name before before zipping away out of sight.
+Event1Target=random
+Event1Amount=$rand(50,100)
+
+event2=statusonly
+event2Chance=40
+Event2Desc=A glowing blue fairy flies out of a tree and sprinkles green dust over %real.name before flying away out of sight. 
+Event2Target=random
+event2StatusType=Regenerating
+
+event3=statusonly
+event3Chance=40
+Event3Desc=An orange fairy flies out from under a rock and sprinkles orange dust over %real.name before flying away out of sight. 
+Event3Target=random
+event3StatusType=TPRegenerating
+
+event4=damage
+event4Chance=20
+Event4Desc=A large tree falls in the forest and slams into %real.name $+ ! Ouch!
+Event4Target=random
+event4Amount=$rand(50,100)
+
+
+[Beach]
+weather=calm.bright.rainy.stormy.windy.hot.dry
+NumberOfEvents=3
+scavenge=Sand.EarthSphere.Sand.Cloth.BrownKey.Tonic.Sand
+
+event1=damage
+event1statusType=Drowning
+event1Chance=20
+Event1Desc=A large tidal wave approaches the beach and then swallows everyone who is on it, dealing damage!
+Event1Target=all
+Event1Amount=$rand(50,100)
+
+event2=statusonly
+event2statusType=Burning
+event2Chance=30
+Event2Desc=The hot sun beats down on the battlefield. Suddenly %real.name feels a bit..too hot.
+Event2Target=random
+
+event3=heal
+event3Chance=30
+Event3Desc=A random beach-goer runs up to %real.name $+ . "Sup! Here, don't want you catching a burn! See ya later dude!"  The random person receives a bottle of sunblock, which is then applied. Ahh, refreshing!
+Event3Target=random
+Event3Amount=$rand(20,200)
+
+
+[Desert]
+weather=calm.bright.rainy.stormy.windy.hot.dry
+NumberOfEvents=2
+scavenge=Sand.EarthSphere.Sand.Cloth.BrownKey.Sand
+
+event1=damage
+event1statusType=Burning
+event1Chance=30
+Event1Desc=The hot sun beats down on the battlefield. Everyone realizes they're starting to develop a sunburn.  A really bad one!
+Event1Target=all
+Event1Amount=$rand(20,100)
+
+event2=damage
+event2statusType=confuse
+event2Chance=20
+Event2Desc=Heat stroke seems to be setting in %real.name $+ .  Allies are starting to look like enemies..
+Event2Target=random
+Event2Amount=$rand(20,50)
+
+event3=damage
+event3Chance=20
+Event3Desc=A mummy rises out of the sand and casts a random curse upon all players of the battlefield!
+Event3Target=players
+Event3Amount=$rand(20,50)
+event3StatusType=curse
+
+
+[Moon]
+weather=none.bright.dry
+NumberOfEvents=3
+scavenge=slurm.x-potion.IgnitionStar.Red_Fang.Thunder_Orb.Hour_Glass.Zircon
+
+event1=heal
+event1Chance=30
+Event1Desc=A strange UFO flies overhead, stopping above the moon and beaming a bright light down upon it, healing all the players on the battlefield.
+Event1Target=players
+Event1Amount=$rand(50,100)
+
+event2=statusonly
+event2statusType=bored
+event2Chance=20
+Event2Desc=Two pixelated aliens--one pink and the other green--appear on the battlefield and give everyone the bird.  %real.name  suddenly loses all interest in the battlefield as the aliens turn and walk off, disappearing as fast as they had come. 
+Event2Target=random
+
+event3=damage
+event3Chance=10
+Event3Desc=A large evil-looking spaceship floats above the moon and begins to shoot several large lasers down upon it, damaging everyone!
+Event3Target=all
+Event3Amount=$rand(130,300)
+
+
+[Factory]
+weather=calm.gloomy
+NumberOfEvents=4
+scavenge=RepairHammer.IronOre.Hatchet.Ink
+
+event1=damage
+event1Chance=40
+Event1Desc=A large saw comes loose from a machine and rolls across the battlefield, eventually slicing %real.name $+ .
+Event1Target=random
+Event1Amount=$rand(30,80)
+
+event2=damage
+event2Chance=20
+Event2Desc=A large power generator sparks as cables fly loose. Electricty zaps everyone on the battlefield!
+Event2Target=all
+Event2Amount=$rand(20,100)
+Event2StatusType=shock
+
+event3=damage
+event3Chance=30
+Event3Desc=A loud groan is heard as a large metal beam from the ceiling falls and slams into the battlefield, hitting everyone below!
+Event3Target=all
+Event3Amount=$rand(30,80)
+
+event4=damage
+event4Chance=50
+Event4Desc=A small machine explodes near %real.name $+ , causing fire damage!
+Event4Target=random
+Event4Amount=$rand(10,40)
+Event4StatusType=burning
+
+
+[Swamp]
+weather=calm.rainy.windy.stormy
+NumberOfEvents=3
+scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+
+event1=statusonly
+event1Chance=30
+Event1statusType=slow
+Event1Desc=The swamp bubbles and begins to drag %real.name down into the bog. Yuck! It's all gooey and thick. %real.name feels slow trying to get free. 
+Event1Target=random
+
+event2=damage
+event2Chance=40
+Event2Desc=A large gator snags onto %real.name $+ , biting hard.
+Event2Target=random
+Event2Amount=$rand(50,100)
+
+event3=damage
+event3Chance=10
+Event3Desc=The whole swamp begins to bubble and rise as a strange black monster rises out of it.  It roars in anger and takes a huge swipe, dealing damage to everyone in the swamp.
+Event3Target=all
+Event3Amount=$rand(50,300)
+
+
+[Laboratory]
+weather=calm
+NumberOfEvents=0
+limitations=no-item
+scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+
+
+[NorthPole]
+weather=calm.snowy.windy
+NumberOfEvents=1
+scavenge=IceStone.Zircon.Ice_Coin
+
+event1=damage
+event1Chance=40
+Event1Desc=A yeti pops out of the snow and scratches %real.name with its claws.
+Event1Target=random
+Event1Amount=$rand(30,65)
+
+
+[South Pole]
+weather=snowy
+NumberOfEvents=1
+scavenge=IceStone.Zircon.Ice_Coin
+
+event1=damage
+event1Chance=30
+Event1Desc=A small ice demon flies out of the snow and scratches the players with its claws.
+Event1Target=players
+Event1Amount=$rand(30,65)
+
+
+[River]
+weather=calm.rainy.stormy.windy
+NumberOfEvents=0
+scavenge=Sapphire.WaterJewel.X-Potion
+
+[Ocean]
+weather=calm.rainy.stormy.windy
+NumberOfEvents=1
+scavenge=Sapphire.WaterJewel.X-Potion
+
+event1=damage
+event1Chance=40
+Event1Desc=A sea monster pops up out of the water and hits everybody with a tidal wave!
+Event1Target=all
+Event1Amount=$rand(30,90)
+
+[Frozen Lake]
+weather=snowy.windy
+NumberOfEvents=1
+scavenge=Sapphire.WaterJewel.Ice_Coin.IceStone
+
+event1=Damage
+event1Chance=20
+Event1Desc=%real.name falls through a crack in the ice and into the freezing water! It might take a turn to recover from this!
+Event1Target=random
+Event1Amount=$rand(40,80)
+event1statusType=stun
+
+[Town]
+weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
+NumberOfEvents=1
+scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+
+event1=damage
+event1Chance=40
+Event1Desc=The ground starts to rumble as the villagers charge through town trying to be first in line for a big sale at the market! Soon, everybody on the battlefield is trampled by this stampede of humanity! Ow! Ow! Stop stepping on my face!
+Event1Target=all
+Event1Amount=$rand(70,120)
+
+[Island]
+weather=rainy.stormy.windy.bright.hot.dry
+NumberOfEvents=0
+scavenge=Sapphire.WaterJewel.X-Potion
+
+[Park]
+weather=calm.bright.rainy.stormy.windy.hot.dry
+NumberOfEvents=1
+scavenge=Potion.VitalStar.X-Potion.Shihei.Sokubaku.Topaz.Zircon.Ink.Paper.EarthSphere
+
+event1=damage
+event1statusType=confuse
+event1Chance=20
+Event1Desc=%real.name gets hit in the head with a flying bocce ball, leaving them confused. Darn kids!
+Event1Target=random
+Event1Amount=$rand(30,55)
+
+[Mountain]
+weather=bright.rainy.stormy.snowy.windy.hot.dry
+NumberOfEvents=0
+scavenge=Topaz.EarthSphere.Diamond.IronOre.GoldOre.SilverOre
+
+[Dungeon]
+weather=gloomy.hot.dry
+NumberOfEvents=0
+scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+
+[French Castle]
+weather=calm
+NumberOfEvents=4
+scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+
+event1=statusonly
+event1statusType=annoyed
+event1Chance=30
+Event1Desc=%real.name asks why the French knights are in the Battle Arena. The leader of the knights yells out, "Mind your own business!"
+Event1Target=random
+Event1Amount=0
+
+event2=statusonly
+event2statusType=annoyed
+event2Chance=30
+Event2Desc=The leader of the French knights suddenly yells out, "You don't frighten us, English pig dogs! Go and boil your bottoms, you children of a silly person. I blow my nose at you, so-called "Allied Forces," you and all your silly English K-nig-hts!
+Event2Target=all
+Event2Amount=0
+
+event3=statusonly
+event3statusType=annoyed
+event3chance=30
+event3desc=%real.name says "Now look here.." The French knight leader suddenly interrupts and shouts, "I don't want to talk to you no more, you empty headed animal food trough wiper! I fart in your general direction. Your mother was a hamster and your father smelt of elderberries!"
+Event3target=random
+Event3Amount=0
+
+event4=damage
+event4chance=20
+event4desc=The French knight leader whispers "Fetchez la vache." to the other knights. After a moment of confusion, a large cow is suddenly flung out of the castle and lands on %real.name below!
+event4target=random
+event4amount=$rand(70,120)
+
+
+
+[Raptor News Network Studio]
+weather=calm
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Raptor News Network Breaking News Broadcast]
+weather=gloomy
+NumberOfEvents=0
+limitations=no-item
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Allied Training Field]
+Weather=calm
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Korroloka Tunnel]
+Weather=gloomy
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Jester's Lair]
+Weather=dark
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Slurm Factory]
+Weather=dark
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Levithan's Heartcore]
+Weather=calm
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Waughroon Shrine]
+Weather=calm
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Smelly Dungeon]
+Weather=gloomy
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Byakko's Chamber]
+Weather=stormy
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Genbu's Chamber]
+Weather=dry
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Seiryu's Chamber]
+Weather=hot
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Suzaku's Chamber]
+Weather=snowy
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Shrine of Ru'Avitau]
+Weather=light
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Horlais Peak]
+Weather=Calm
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Valkurm Dunes]
+Weather=Dry
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Castle Oztroja]
+Weather=Calm
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Abyssea - Misareaux Coast]
+Weather=Calm
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Abyssea - Uleguerand Range]
+Weather=Snowy
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Davoi]
+Weather=Rainy
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Abyssea - Empyreal Paradox]
+Weather=calm
+NumberOfEvents=0
+limitations=no-mech.no-item
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Midnight Carnival]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech.no-item
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Unknown Realm]
+Weather=Light
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.Ambrosia
+
+[Atlantis]
+Weather=Dark
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.Ambrosia
+
+[Underground Arena]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+
+[Deep Jungle]
+Weather=calm
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+
+[Inner Crystal Chamber]
+weather=calm
+NumberOfEvents=1
+
+event1=damage
+event1Chance=95
+Event1Desc=The chamber vibrates with energy which then sparks and shoots out, hitting everyone in the chamber.
+Event1Target=all
+event1Amount=$rand(500,1000)

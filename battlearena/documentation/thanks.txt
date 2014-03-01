@@ -1,0 +1,36 @@
+This is just my thanks for all those who have helped me make this bot!  
+
+
+
+Scott "Smz" of Esper.net
+He helped me with a bunch of ideas, made monsters, made bosses, made tons of armor.  Not only that, he was the first beta tester of version 1.0; Without him, I don't think I could have done this.
+
+Andrio of Esper.net 
+Helped me test out the bot and found a few glitches that needed to be fixed. Not to mention created a debug script that helped find many errors in monster/npc/boss files.
+
+AuXFire of Hawkee
+Caught a major bug with the passwords which made changing your password from the default impossible.
+
+Raiden of Esper.net
+This guy has helped me almost as much as Smz has. He's found countless bugs, gave me ideas for several accessories and skills and helped host the bot on Esper.net.
+
+Sealdrenxia of Twitter
+Discovered a huge bug with !new char that let players use the command over and over to get free orbs.
+
+Rei_Hunter of Esper.net
+Helped give me a ton of ideas for the bot (including, but not limited to, moving cooldown timers to the skills.db, monsters being able to absorb elements for healing, AOE healing, and the ability for monsters to ignore darkness/rage mode).
+
+Trunks on Esper.net
+Since he was translating the bot into German, it sparked the idea of the translation.dat file to try and make the bot a little more friendly for translation.
+
+Roy of Esper.net
+He helped test a few things, found a few bugs and suggested the scoreboard.
+
+Wims of mIRC's official forum
+Helped push me into the correct direction for improving many blocks of code to make them faster and more efficient.
+
+W3TPantsu of Esper.net
+Helped find countless bugs that have been fixed.
+
+Pangaea from my forum
+Had the idea for the scoreboard generating an HTML file to make it easier to post scores and stats online.

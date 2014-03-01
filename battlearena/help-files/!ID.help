@@ -1,0 +1,4 @@
+12::[How do I ID?]::
+2Syntax: 12!id <password>  or 12!quick id <password>
+2The ID system is here to protect your character from other people taking it over and messing with it.  It's the same basic system that was used in Kaiou and DORKS.  
+2NOTE: the ID commands must be done in a query message with the bot (/msg <bot name> <commands>).  They will not work in the channel as that would defeat the point (your password would be seen by all).  Quick ID will allow you to ID without it showing your description.

@@ -1,0 +1,2 @@
+swings at %enemy before stepping backwards in a defensive stance
+leaps at %enemy and smashes %enemy several times before rolling to the side

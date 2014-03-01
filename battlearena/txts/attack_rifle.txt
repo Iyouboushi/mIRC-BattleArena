@@ -1,0 +1,2 @@
+takes aim at %enemy and fires a round from the rifle
+leaps into the air and shoots at %enemy from above

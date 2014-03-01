@@ -1,0 +1,33 @@
+[styles]
+list=Trickster.WeaponMaster.Guardian.SpellMaster.Doppelganger.HitenMitsurugi-ryu.Quicksilver.CounterStance
+
+
+; Costs are in black orbs.
+[Costs]
+Trickster=0
+WeaponMaster=0
+Guardian=0
+SpellMaster=6
+Doppelganger=5
+Quicksilver=10
+HitenMitsurugi-ryu=5
+CounterStance=20
+
+
+
+[Info]
+Trickster=This style will enhance the amount of style points you get for taunting. Higher levels of Trickster will increase the amount of style points you get. It'll also give you a bonus to your speed in battle.  Higher levels of the style will result in a bigger increase in speed. When equipped with this style there's also a (style level)% chance of dodging attacks. Finally, it will enhance the steal % by a random amount.
+
+WeaponMaster=This style will enhance melee attacks of all weapon types.  It does this by increasing the random damage added onto every melee attack and by enhancing the mastery skill slightly.  The amount increases each time the style levels.
+
+Guardian=This style will decrease the amount of damage you take by a percent each level (up to 60% max).
+
+SpellMaster=This will enhance magic by roughly 11% per level (up to 90% max).
+
+Doppelganger=This style will enhance your shadow clone ability, giving your clone more health.  The amount of health the clone gets goes up with each level of the style, up to 100%. Also, with this style equipped it is possible to control your shadow clones by using the !shadow command on the clone's turn. Shadow commands are: !shadow attack (target), !shadow taunt (target), !shadow tech (tech name) (target), !shadow skill (skillname) (target if necessary)
+
+Quicksilver=This style will allow you to access the !quicksilver command that freezes everyone except you in battle, effectively giving you an extra turn. You can use the !quicksilver command as many times as your style is currently leveled.
+
+HitenMitsurugi-ryu=This style will enhance melee and tech damage done with katana weapons and enhance speed at battle turn generation.
+
+CounterStance=This style will enhance the chance of doing a counter attack by 1% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.

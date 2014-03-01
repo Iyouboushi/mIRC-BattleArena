@@ -1,0 +1,5 @@
+12::[Melee Attacks]::
+2Attacking via your weapon is going to be the normal way you deal damage to the foes.
+12::[How do attack?]::
+2Syntax: 12/me attacks <monster name>
+2This command will cause you to attack the target.  Be sure to remove the < > when you actually use it.

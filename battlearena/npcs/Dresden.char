@@ -1,0 +1,157 @@
+[BaseStats]
+Hp=3000
+Tp=500
+Str=2500
+Def=2500
+Int=4000
+Spd=2500
+Name=Harry Dresden
+
+
+[Battle]
+Hp=3000
+Tp=500
+Str=2500
+Def=2500
+Int=4000
+Spd=2500
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+[Limit]
+Level=1
+Percent=0
+
+
+
+[Descriptions]
+Hused=1
+Dused=1
+Char=is a tall man with brown hair. He wears all black with a dark brown duster and a dark brown hat. He carries his trusty staff with him.
+Rage=needs to set a rage desc by typing !ragedesc <desc>
+Utsusemi=mutters "Lumen, camerus... factum," and two more versions of Harry Dresden appear.
+RoyalGuard=raises his left arm and a silver chain is visible. The chain has five small shields made out of five different metals. A light yellow barrier appears around %user to block melee attacks.
+RoyalGuard=raises his left arm and a silver chain is visible. The chain has five small shields made out of five different metals. A light blue barrier appears around %user to block magic attacks.
+MagicMirror=mutters a few words under his breath and reflective barrier forms around himself.
+
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1
+RedOrbsSpent=0
+BlackOrbsSpent=0
+
+[Info]
+Gender=his
+Gender2=him
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=Fri Jun 22 19:56:53 2012
+Flag=NPC
+CanTaunt=true
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noOneThatIKnow
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+boosted=no
+freezing=no
+curse=no
+poison.timer=1
+KiRegenerating=no
+curse.timer=1
+slow.timer=1
+zombie.timer=1
+
+[Weapons]
+Equipped=RuneOakStaff
+RuneOakStaff=$calc(100 + $current.battlestreak)
+
+[Skills]
+Zen=5
+ClearMind=3
+ElementalSeal=1
+Wizardry=500
+Gunslinger=500
+MartialArts=500
+RoyalGuard=1
+ManaWall=1
+Utsusemi=1
+WeaponBash=1
+MagicMirror=10
+BloodSpirit=100
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Stun=100
+
+[Techniques]
+Forzare=$calc(100 + $current.battlestreak)
+SoulForzare=$calc(300 + $current.battlestreak)
+Fuego=$calc(100 + $current.battlestreak)
+Pyrofeugo=$calc(300 + $current.battlestreak)
+Dormio=$calc(100 + $current.battlestreak)
+Fulminos=$calc(100 + $current.battlestreak)
+Arctis=$calc(100 + $current.battlestreak)
+Dispertius=$calc(50 + $current.battlestreak)
+Gravitus=$calc(100 + $current.battlestreak)
+FlickumBicus=$calc(100 + $current.battlestreak)
+Galvinius=$calc(100 + $current.battlestreak)
+
+[Item_Amount]
+Wizard's-Amulet=1
+
+[Styles]
+Equipped=Spellmaster
+Spellmaster=10
+SpellmasterXP=1
+
+[equipment]
+accessory=Wizard's-Amulet
+
+[augments]
+RuneOakStaff=MagicBonus.EnhanceBloodSpirit

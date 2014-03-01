@@ -1,0 +1,19 @@
+steps on %enemy $+ 's foot with all $gender($1) might and as %enemy grabs $gender($2) foot in agony, %user begins a barrage of punches
+grabs %enemy $+ 's wrist and slams $gender2($2) into the ground
+sweeps at %enemy sending $gender2($2) tumbling to the ground
+whips around and spin kicks %enemy in the jaw
+punches %enemy in the face
+hits %enemy in the solar plexis
+kicks %enemy in the face
+grabs %enemy by the neck, leaps up into the air, and tosses %enemy into the ground
+kicks %enemy in the head, sending %enemy into recoil
+picks up and throws %enemy from a run. %enemy takes a nose dive as $gender3($2) flys forward and lands face first into the ground, creating a little path.
+runs up and punches %enemy in the nose
+does an uppercut to %enemy sending $gender2($2) head over heels
+picks %enemy up and piledrives %enemy into the ground
+leaps high into the air and comes down at an angle, kicking %enemy in the chest
+sucker punches %enemy in the face and gives a pair of swift kicks into $gender($2) abdomen
+grabs %enemy by the hair, lifts up a knee, and slams %enemy rapidly into the knee many times before winding up hard for a last time, slamming %enemy hard in the knee while letting go of $gender($2) hair
+punches %enemy hard with a left and follows through with a spinning backhand with the right hand
+slams %enemy over the head and upper back with a double-armed overhead hammer strike, pounding $gender2($2) about an inch into the ground
+charges at %enemy at full speed and executes a $rand(3,6) $+ -hit combo before leaping back into fighting position

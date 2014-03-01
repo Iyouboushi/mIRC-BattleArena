@@ -1,0 +1,15 @@
+12::[Status Effects]::
+2Throughout battle you may notice various status effects happening to you or others.  Here's a list of the various status effects in the bot and what they do.   Note that all status effects should wear off after a few turns.
+2 --
+2 Poison - Every turn you will suffer some small HP loss. 
+2 Blind -  will cause you to skip a turn due to being unable to see.
+2 Virus -  Will prevent you from being able to use a boost-type tech.
+2 Amnesia - Will prevent you from using certain skills or techniques
+2 Paralysis - Will cause you to skip a turn due to being paralyzed
+2 Zombie - Will cause healing techs and healing items to do damage to you, and makes you vunulerable to 'light' based techs/magic
+2 Slow - Will cause your turn to come up slower in battle
+2 Stun - Will cause you to skip a turn due to being stunned
+2 Curse - Will cease your TP regain at the beginning of each turn
+2 Stop - Will cause you to skip a turn due to being frozen in time
+2 Charm - Will cause you to be unable to control your character for a few rounds.  You might even attack your friends, or yourself.
+2 Petrified - Will cause you to skip turns due to being petrified

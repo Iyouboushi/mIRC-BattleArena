@@ -1,0 +1,202 @@
+[BaseStats]
+Hp=$iif($return_playerlevelstotal >= 1600, $round($calc(2500 + (5 * $return_differenceof($return_playerlevelstotal,1600))),0), $round($calc(2500 + $return_playerlevelstotal),0))
+Tp=300
+Str=250
+Def=350
+Int=200
+Spd=200
+IgnitionGauge=100
+Name=One-Eyed Gwajboj
+
+
+[Battle]
+Hp=2500
+Tp=300
+Str=250
+Def=350
+Int=200
+Spd=200
+IgnitionGauge=100
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is a powerful Orcish Paladin who only has one eye.
+Rage=screams in rage 
+BossQuote=You want to be a Paladin? You must defeat me first, if you can!
+
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+Drops=CreedArmet.CreedCuirass.CreedCuisses.CreedSabatons.CreedGauntlets.KindredCrest
+
+[Info]
+Flag=monster
+Gender=his
+Gender2=him
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+Streak=-1000
+BossLevel=1500
+CanTaunt=true
+;=======================================
+; These are optional flags you can set:
+;========================================
+; STAGGER:  do you want the monster to be able to be staggered after being hurt for a certain # of damage? 
+; CanStagger=yes/no  
+; StaggerAmount=$rand(#,#)   
+; 
+; IGNORE RAGEMODE
+; RageMode=ignore   
+;
+; AI TYPE: berserkers will attack their own allies, defenders won't get a turn. Leave blank for normal.
+; ai_type=
+;
+; STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.
+; Streak=
+; StreakMax=
+;
+; FLEEING: Do you want monsters to be able to flee the battle?
+; CanFlee=true/false
+;
+; SPAWNING ANOTHER MONSTER UPON DEATH: If set, when this monster is killed, it'll summon another one that's set.
+; SpawnAfterDeath=nameofmonster
+;
+; BOSS LEVELS are used for bosses that are summoned via portal items. You can make them harder or easier by setting a level.
+; BossLevel=
+; 
+; IGNORE DRAIN is true or false. If set to true, stuff like drainsamba won't work.
+; IgnoreDrain=true/false
+;
+; BIOME is for if you want the boss to only appear under certain battlefields. You can list multiple with periods inbetween.
+; Biome=
+
+
+[monster]
+; Type is the type of monster it is. 
+type=orc
+; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
+; Change it to "true" to turn it on.
+TechLearn=false
+size=medium
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+
+
+[Weapons]
+Equipped=OrcishLongSword
+OrcishLongSword=1500
+; It is possible to make monsters weak or strong against certain weapon types:
+; Weapon types are: HandToHand.Whip.Sword.Gun.Rifle.Katana.Wand.Spear.Scythe.Glyph.GreatSword
+; Weakness=list.weapon.types  
+; Strong=list.weapon.types  
+
+
+[Skills]
+Zen=5
+WeaponBash=1
+Impetus=20
+Swordmaster=100
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Weaponlock=100
+RoyalGuard=1
+
+
+[Techniques]
+SanguineBlade=100
+Holy=100
+CureIV=100
+SavageBlade=200
+SwiftBlade=300
+Atonement=100
+BattleDance=100
+ShoulderTackle=100
+
+[Item_Amount]
+
+
+
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=90
+Fire=90
+Wind=90
+Water=90
+Ice=90
+Lightning=90
+Light=90
+Dark=90
+HandToHand=90
+Whip=90
+Sword=90
+Gun=90
+Rifle=90
+Katana=90
+Wand=90
+Spear=90
+Scythe=90
+Glyph=90
+GreatSword=90
+Bow=90
+
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+WeaponMasterXP=1
+
+[Ignitions]
+Sentinel=1

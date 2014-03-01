@@ -1,0 +1,3 @@
+12::[How do I change my gender?]::
+2Syntax: 12!setgender <male/female/neither>
+2This command will set your gender to either male, female or neither.  Setting your gender will change certain things in descriptions (it might say "his" instead of "her" for example).

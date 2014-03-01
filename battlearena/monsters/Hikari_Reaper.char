@@ -1,0 +1,184 @@
+[BaseStats]
+Hp=380
+Tp=250
+Str=155
+Def=125
+Int=115
+Spd=115
+IgnitionGauge=2
+Name=Hikari Reaper
+
+
+[Battle]
+Hp=380
+Tp=250
+Str=155
+Def=125
+Int=115
+Spd=115
+IgnitionGauge=2
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is a shadowy apparition of a female shinigami, a personification of death draped in a veil of darkness, wielding a glowing white scythe casually on her shoulder.
+Rage=screams in rage 
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+
+
+[Info]
+Flag=monster
+Gender=her
+Gender2=her
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+Streak=300
+CanTaunt=false
+;=======================================
+; These are optional flags you can set:
+;========================================
+; STAGGER:  do you want the monster to be able to be staggered after being hurt for a certain # of damage? 
+; CanStagger=yes/no  
+; StaggerAmount=$rand(#,#)   
+; 
+; IGNORE RAGEMODE
+; RageMode=ignore   
+;
+; IGNORE QUICKSILVER
+; IgnoreQuicksilver=true
+;
+; AI TYPE: berserkers will attack their own allies, defenders won't get a turn. Leave blank for normal.
+; ai_type=
+;
+; STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.
+; Streak=
+; StreakMax=
+;
+; FLEEING: Do you want monsters to be able to flee the battle?
+; CanFlee=true/false
+;
+; SPAWNING ANOTHER MONSTER UPON DEATH: If set, when this monster is killed, it'll summon another one that's set.
+; SpawnAfterDeath=nameofmonster
+;
+; BIOME is for if you want the monster to only appear under certain battlefields. You can list multiple with periods inbetween.
+; Biome=
+;
+; MOONPHASE is for if you want the monster to only appear during a certain moon phase. You can only list one.
+; Valid list is: Full Moon or Crescent Moon or Gibbous Moon or New Moon or Quarter Moon or Blood Moon  (with the spaces)
+; Moonphase=
+;
+; Can the monster taunt?   Assumed to be true if blank.
+; CANTAUNT=true/false
+
+[monster]
+; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
+; Change it to "true" to turn it on.
+TechLearn=true
+size=medium
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+auto-regen=on
+ethereal=yes
+
+[Weapons]
+Equipped=Heavenly_Scythe
+Heavenly_Scythe=20
+
+[Skills]
+resist-stun=70
+resist-blind=100
+resist-charm=100
+resist-poison=80
+RoyalGuard=1
+ShadowCopy=1
+Quicksilver=1
+
+[Techniques]
+GenshiCleave=10
+Catastrophe=10
+Entropy=10
+Guillotine=10
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+WeaponMasterXP=1
+
+
+[Item_Amount]
+
+
+
+[modifiers]
+; Resistances/weaknesses/immunities/heals can be set here.  100 = normal damage, greater than 100 means weakness, 
+; less than 100 means resistances, 0 means immune to it.
+Heal=dark.light
+Earth=200
+Fire=200
+Wind=50
+Water=50
+Ice=50
+Lightning=50
+Light=300
+Dark=300
+HandToHand=60
+Whip=50
+Sword=10
+Gun=70
+Rifle=80
+Katana=40
+Wand=30
+Spear=90
+Scythe=110
+Glyph=40
+GreatSword=50
+Bow=90
+RainStorm=75
+SpinningAttack=75
+SonicThrust=75
+TornadoKick=75
+CircularChain=75
+CircleBlade=75

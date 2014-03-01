@@ -1,0 +1,9 @@
+12::[Techniques]::
+2Techniques are powerful abilities that are attached to a weapon that you may purchase in the shop. Note that once you buy a technique it is yours forever, though you may lose temporary access to that ability when you switch weapons.
+12::[How do I check my Techs?]::
+2Syntax: 12!techs or !techs <other player to check>
+2This command will display the techniques for you, or another player, based on the weapon that you (or they) have equipped.
+12::[How do I get new techniques?]::
+2You may purchase new techniques and upgrade current techniques in the shop in exchange for red orbs.
+12::[How do I use a technique?]::
+2IN BATTLE you may use the command /me uses <his or her> <technique name> on <monster name>

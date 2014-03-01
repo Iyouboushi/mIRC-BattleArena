@@ -1,0 +1,5 @@
+12::[Descriptions]::
+2Syntax: 12!desc or 12!desc <person> 
+2Syntax (cont.):12!cdesc <set a description, don't add your name>
+2These commands allow a player to set his or her description for all to see. You can also see other people's descriptions.  Also, the description you set will be shown when you ID in normally.  Be sure to remove the < > from all commands.  Example: !desc Iyouboushi
+2Setting a character description is not necessary but adds a personal touch to your character.

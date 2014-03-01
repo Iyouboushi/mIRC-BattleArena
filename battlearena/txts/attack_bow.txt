@@ -1,0 +1,4 @@
+takes aim at %enemy and fires an arrow
+leaps into the air and fires an arrow at %enemy from above
+takes aim and fires an arrow at one of %enemy $+ 's legs
+takes aim and fires an arrow at one of %enemy $+ 's arms

@@ -1,0 +1,5 @@
+12::[What is the Conquest System?]::
+2The Conquest System is a way of keeping track of who's winning the war of monsters vs players.  Every 5 days a new Conquest period will begin.  Winning battles against monsters causes players to gain conquest points. Losing battles causes monsters to gain them.
+2At the end of the Conquest period a tally will be taken and the bot will declare the winner for the world.  If players win they will receive an orb bonus until the next tally, in which players will have to win again in order to keep the bonus.
+12::[How do I check the Conquest Information?]::
+2Syntax: 12!conquest info

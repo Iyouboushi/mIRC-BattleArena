@@ -1,0 +1,13 @@
+12::[Styles]::
+2In Devil May Cry 3 the hero Dante had his choice of a bunch of different styles to pick. Each style would give the player a little variety in moves you could do. For example, there was the Trickster style that let you dodge things easier and the Swordmaster style that gave you extra combat moves with the various weapons.  This bot tries to do something similar.
+12::[Style List]::
+2TRICKSTER - This style will enhance the amount of style points you get for taunting, give you a bonus to your speed when the bot generates the turn order and will enhance the steal % by a random amount (style level doesn't matter in this case, it's the same random chance each time).
+2WEAPONMASTER - The Weapon Master will enhance melee attacks of all weapon types.  It does this by increasing the random damage added onto every melee attack and by enhancing the mastery skill slightly.  The amount increases each time the style levels.
+2GUARDIAN - This style will decrease the amount of damage you take by a percent each level (up to 60% max).
+2SPELLMASTER - This will enhance magic by roughly 11% per level (up to 90% max).
+2DOPPELGANGER - This style will enhance the shadow clone skill, giving your clone more health.  The amount of health the clone gets goes up with each level of the style, up to 100%.
+2HITEN MITSURUGI-RYU - This style will enhance melee and tech damage done with katana weapons and enhance speed at battle turn generation.
+2QUICKSILVER - This style will let you use the !quicksilver command an equal number of times as the Quicksilver style is leveled. !Quicksilver will freeze everyone except yourself, allowing you multiple turns.
+2COUNTERSTANCE - This style will enhance the chance of doing a counter attack by 1% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.
+12::[Commands]::
+2To view your style list (including style xp and level) use 12!style 2To change your style outside of battle use 12!style change name 2where name is one of the styles that you know 

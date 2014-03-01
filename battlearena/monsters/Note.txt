@@ -1,0 +1,9 @@
+NOTE
+
+While you can erase monsters if you want**, it is recommended that you keep at least 15 minimum.  As players progress and have higher winning streaks, the bot will add more monsters into battle to attempt to break the streak/make the game harder.  In order for this to work right, there needs to be enough monsters.
+
+Plus having a bunch of monsters offers a greater variety so that players don't end up fighting the same things over and over and over.
+
+
+*** DO NOT ERASE orb_fountain.char as it is necessary for the bot to work correctly when a red orb fountain battle begins.
+

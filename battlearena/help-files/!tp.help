@@ -1,0 +1,7 @@
+12::[TP]::
+2TP is similar to MP in other games.  TP is used for your techniques.  When you perform techniques it will consume TP.  When it's your turn in battle you will receive some TP back if you've used any.
+12::[How do I check my TP?]::
+2Syntax: 12!tp
+2This command will display how much TP you have in the format of current / max
+12::[How do I increase my TP?]::
+2You may purchase TP upgrades in the shop in exchange for red orbs.

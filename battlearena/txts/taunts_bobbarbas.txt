@@ -1,0 +1,16 @@
+What are you fighting for anyway? The people? Newsflash! The people hate you! I've made sure of that!
+You think you're cool? How about I kill you for some cool points?
+My personal view on the terrorists is that they are disgusting, degrading, sleazy and generally nauseating. The worst of them? %enemy $+ !
+The world would benefit greatly from %enemy $+ 's non-existance.
+You are not big nor clever %enemy $+ !
+Information is power!
+Segue into this!
+So what do we know about %enemy $+ ? Several people have come forward to reveal some disgusting information about %enemy $+ 's history!
+So what do we know about %enemy $+ ? The police have pieced together a shocking history of violence!
+Reporters have discovered that %enemy has assaulted many people just doing their jobs.
+Reporters are reporting that %enemy has been involved with gangs, drug peddling and is believed to be responsible for $bytes($readini($char($2), stuff, TotalDeaths),b) homicides!
+Get over here you evil punk!
+We go now to Melinda who is on sight with a witness. Melinda? 'Thanks Bob. My witness says that she saw %enemy slaughtering children in an orphanage!'  Outrageous! Thank you Melinda. This is Bob Barbas, Just Doin' God's Work!
+We have come to learn that %enemy works for an organization known as the Allied Forces. I have a message for the Allied Forces: Your days are numbered.
+You're about to die %enemy $+ ! And you know what? We'll show your death live!
+Reporters are reporting that %enemy has fled from authority no less than $bytes($readini($char($2), stuff, TimesFled),b) $iif($readini($char($2), stuff, TimesFled) < 2 && $readini($char($2), stuff, TimesFled) > 0, time, times) $+ !

@@ -1,0 +1,1557 @@
+BATTLE ARENA PLAYER GUIDE
+Hello and welcome!  If you're reading this then you're probably interested in the Battle Arena bot. You may have noticed that there is a !help command built into the bot, but I'm writing this thread so that everyone will have an idea of what to do and how to do the various commands that are within the bot explained in better detail.
+
+OVERVIEW (i.e. WHAT IS THIS?)
+The bot is an mIRC game in which you join and kill monsters and bosses to gain orbs and new weapons/skills/techniques.  It's similar to DMC, as that's really the inspiration I drew from when I started working on it, but it includes more than just DMC monsters/bosses/weapons/items.   The whole purpose was to make an mIRC game that is completely automated in terms of the battle system. There doesnÅft need to be a DM around to do !next and control monsters, like in my other major mIRC bot ("Kaiou").
+
+Here players join the battle when the bot announces an open battle. After a few minutes, it will generate monsters/bosses and have them join the battle and the battle will start. When itÅfs a monsterÅfs or bossÅf turn, they will automatically do their things. When itÅfs the playerÅfs turn, thereÅfs a few commands you can do (attack with a weapon, attack with a technique, do a skill, use an item). If the player idles for too long the bot will force their turn and skip over them. This is done so that someone canÅft disappear for an hour and cause the battle to drag on forever.
+
+ThereÅ's a bunch of weapons that can be bought and each weapon has a few techniques attached to them. Unlike in Kaiou, you canÅft make your own techniques but rather have to buy them using red orbs that you earn from battle. You buy weapons using black orbs when you obtain via winning boss fights and being alive at the end of one.
+
+That's really the gist of what IÅfve been working on thus far.
+
+One more thing to mention here in the "overview" is that the bot is currently unbalanced.  New players will probably find themselves dying a lot while older players will probably dominate almost everything (to a point).   Some weapons are overpowered, others aren't strong enough.  The bot is only on version 2.4 so hopefully things will improve in those areas later on down the road.
+
+
+STARTING OUT (i.e. how do I join and what do I do first?)
+So you've decided to join the bot.  Great!  How do you go about doing that and what are you supposed to do at first?  
+
+First things first, the command to join the game is !new char
+
+When you join you will receive a private message from the bot that looks something like this:
+
+<BattleArena> You enter the arena with a total of #### red orbs to spend.
+<BattleArena> Your password has been set to xxxxx and it is recommended you change it using the command !newpass xxxx newpasswordhere in private or at least write the password down. Passwords cannot be recovered!
+
+The amount of red orbs (which is the main currency in this game) will be based on how many other players are in the game and what level they are.  You will receive an average to help newer players not be so far behind the rest of the players.
+
+The password will be randomly generated.  The bot tells you the next command you should do next:   !newpass.  It is recommended you change your password immediately so that you don't forget the randomly generated one.  No one can retrieve your password.
+
+Why do you need a password?  Before you can join in the game you need to ID into the bot.  This is to prevent someone else from playing with your character.  In private with the bot you need to type !id password and you will be logged in if your password is correct.
+
+With that you can finally start using more commands!
+
+Some basic commands you may want to check out:
+
+!hp - Tells you how much health you have left
+
+!tp - Tells you how much technique points you have.
+
+!ig - Tells you how much Ignition Gauge you have.
+
+!orbs - Tells you how many black and red orbs you have.
+
+!allied notes - Tells you how many Allied Notes you have collected. Allied notes are used in the shop for certain items, to place bets on 1vs1 AI battles and to bid in auctions via the auction house.
+
+!level - This will tell you what your estimated level is.  Your estimated level is based on the core 4 stats (str, def, int and spd).  In order to increase your level, increase those four stats.
+
+!weapons - This will return a list of all the weapons you own along with the current level of the weapon.  For example:  Fists(1) means you have level 1 fists.
+
+!techs - Will return a list of techniques you know along with the level of the technique.  Example: DoublePunch(1) means you have level 1 DoublePunch.
+
+!items - Will return a list of the items you own and how many of each item you own.  Example: potion(2) means you own 2 potions.
+
+!accessories - Will return a list of any accessories you own and which one you have equipped.
+
+!wear accessory name - Will allow you to equip the accessory.
+
+!remove accessory name - Will allow you to remove an accessory.
+
+!armor - Will return a list of any armor pieces that you own.
+
+!wear armor name - Will allow you to wear a piece of armor.
+
+!remove armor name - Will allow you to remove a piece of armor that you're wearing.
+
+!look - Will allow you to see what you're wearing.  You can also do !look person to look at someone else.
+
+!status - Will return the current status of your character.  (like poisoned, stunned, that sort of thing).
+
+!equip weapon - This will allow you to swap weapons on the fly at any time.  Of course you must actually own that weapon to swap to it.
+
+!desc - Will display your character description to the channel.
+
+!cdesc desc - Will let you change your character description to the channel.
+
+!skill desc - Will let you change the description of a skill that you own.  Example: !skill desc MightyStrike puts all his power into this mighty strike!
+
+!setgender male/female/neither  - If you're playing as a different gender than male, set it here.
+
+!view-info tech/item/skill/weapon name - This command will display information on techs, items, skills, and weapons.  Here's an example of the fists weapon:
+
+<BattleArena> [Name fists] [Weapon Type HandToHand] [# of Hits  2]
+<BattleArena> [Base Power 1] [Cost 0 black orb(s)] [Element of Weapon none]
+<BattleArena> [Abilities of the Weapon DoublePunch, ShoulderTackle, SpinningAttack, AsuranFists]
+<BattleArena> [Weapon Description It's your fists. They are not detachable..]
+
+!battle stats - This command will tell you how many battles have been fought, wins/losses and the current winning/losing streak.
+
+!style - This command tells you which style you have equipped, which styles you own, and how much XP you have into the current style.
+
+!style change name - This command will change your style.
+
+/me gives # item to person - You can give items/accessories to other players using this command.
+
+!view battle save - If you've saved a streak levels to your file, you can see what it is here.
+
+!save battle streak - Save the current battle streak to your file so that you can reload it later.  Consider this as a way to "save your game" if you have to go and want to resume on the same streak later.  You can only save a streak once an hour.
+
+!reload battle streak - Reloads the saved battle streak from your file to the bot.  In order for a streak to be reloaded there can't be any winning streaks (i.e. it has to be a losing streak).  Upon reloading, the old saved streak will be erased from the file.
+
+!conquest info - This will display the current information on the current conquest period (and who won the last conquest tally, if available)
+
+!conquest points - This will display the current conquest point situation for the conquest period.
+
+!dragonballs - This will display the current dragonball information.
+
+!stats - Tells you your stats.
+
+Here's a quick explanation of the stats:
+
+HP: health.  When this hits 0 you're out of the battle.
+
+TP: technique points, basically MP in other games.  To perform a technique you need TP.
+
+IG: ignition guage. This is needed to perform Ignition boosts. New players start with 0 and must purchase IG in the shop.
+
+Strength: How strong you are. Melee attacks use this.
+
+Defense: How much damage you'll block.  Defense is used for all types of attacks.
+
+Intelligence: How much damage your techniques will do, plus how well you can block other techniques (this will be added with defense on defending).
+
+Speed: How fast you are.  This affects when you get your turn in battle.
+
+
+** DCC Chat exclusive commands
+
+These commands will only work if the bot is running in DCC Chat mode. 
+
+!toggle battle chat - This will allow you to toggle the battle chat on or off.  When set to on you will see the battle stuff even if you're not in the battles.  When off, you must join battles to see how the battles are going.
+
+!who's online - Will tell you who's logged into the game.
+
+
+THE SHOP
+The next thing you should do is go familiarize yourself with the shop.  You'll be using this shop a lot as it's the way to gain new weapons, new techniques, new items, and to upgrade your stats.
+
+First things first, use this command: !shop
+
+The bot will message you with something like this:
+
+<BattleArena> ::[Welcome to the Shop]::
+<BattleArena> The shop is where you can exchange orbs for upgrades, new items and techniques. But be forewarned, every time you purchase something your "shop level" will increase and raise the price of everything except items and new weapons.
+<BattleArena> Commands: !shop list <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items> and !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items>
+<what to buy> (Remember to remove the < > from the command when using it)
+<BattleArena> Your current shop level is ###
+
+
+The "shop level" is basically the current level of the player.  Every time you purchase something that isn't a new weapon or an item, your "shop level" will increase.  Shop level affects the price of everything except those two things that I mentioned.  In other words, you need to plan out your character carefully or you will find yourself out of red orbs or the price of something you really want being slightly more than you can afford.
+
+Next up you can try out the list command for the various things.
+
+!shop list items
+!shop list techs
+!shop list skills
+!shop list skills active
+!shop list skills passive
+!shop list skills resists
+!shop list skills killertraits
+!shop list stats
+!shop list weapons
+!shop list styles
+!shop list orbs
+!shop list ignitions
+!shop list portal
+!shop list misc
+!shop list gems
+!shop list alchemy
+
+Most things in this game are purchased using red orbs. Red orbs are acquired by defeating enemies via participating in battles and found within red chests.  Weapons and Ignitions require black orbs. Black orbs are acquired by surviving a successful boss battle or found randomly in gold chests.  Portal Items require special seals, rather than orbs, to purchase.  The seals are found in chests and off of random enemies.  Finally, gems and alchemy items are purchased using Allied Notes.  Allied Notes are a special currency that you can acquire by defeating the foes found within the portal items.
+
+
+So let's say you want to upgrade your HP (at least one or two upgrades in HP is recommended).  You can do it like this:
+
+!shop buy stats hp
+
+The bot will automatically take care of the transation and send you a message like this:
+
+<BattleArena> You spend ### red orbs for +50 to your hp!
+<BattleArena> Your Shop Level has been increased to #.#
+
+As you can see, you've gained 50 HP but your shop level has increased by .1.   The next time you go to make the same purchase you will find that it costs a little more red orbs.
+
+** Note: You cannot use the shop while in battle.  If a battle is going on and you're NOT in it, you can still use the shop as normal.
+
+Another thing to note: the !shop list techs only shows you the techniques that are available for the current weapon you have equipped.  So if you have your fists equipped you won't see the technique list for Rebellion, for example.  In order to see the other techniques and their prices you have to equip that weapon (or you can use !view-info to look at the weapon and get a list of techniques for that weapon).
+
+If you're looking at all the lists and your eyes are glazing over because you have no idea what all of it does or means, don't worry too much about it.  I'll explain all of the skills later on and you can always use !view-info to learn more information on anything you don't get. 
+
+
+THE SHOP MERCHANTS
+If you are running your own copy of the game for the first time you might notice that there's not that many items in the shop.  Well this is because there are Shop Merchants who will arrive as certain requirements are filled.  When the merchants arrive more items will appear in the store.  Currently there are the following merchants:
+
+Katelyn the Healing Merchant
+Katelyn sells the following healing/restoring/curing items: X-Potion, Senzu, Tonic, GoldOrb
+
+Myles the Discount Merchant
+Myles sells the following shop lowering items: DiscountCard, UltraDiscountCard (when conquest is under player's control)
+
+Gerhardt the Battle Merchant
+Gerhardt sells the following battle items: Stop_Watch, Hour_Glass, Holy_Water, Fire_Flower, Ice_Coin, Wind_Vane, Grappling_Hook, Sokubaku, Hankai, MirrorShard, AlexanderMateria, CarbuncleMateria, SolomonRing, LuckyBroth, FenrirMateria, GarudaMateria, IfritMateria, LeviathanMateria, RamuhMateria, ShivaMateria, TitanMateria
+
+Spoony the Bard
+Spoony is currently a shop NPC that does not actually sell anything.
+
+There's also a few seasonal merchant NPCs that show up under certain conditions in the correct months. I will leave those as a mystery but will note that they sell items mixed in with the various other normal shops (so items/misc/alchemy/etc)
+
+To make things interesting, Shop NPCs can be kidnapped and rescued.  There's a 25% chance that the npcs will be kidnapped on normal boss battles if players lose the battle (doesn't matter what streak #) and a 50% chance of it happening on certain other boss types (warmachine, doppelganger, bandits).   Likewise, there's a 50% chance of rescuing an NPC on a successful boss win (of normal boss types) or a 70% chance of rescuing an npc on the other boss types.
+
+
+BATTLE COMMANDS
+Spent your red and black orbs on things and are now itching to try out your abilities and gain more orbs?  Battle is the only way you can do it, so let's talk about that.
+
+I'm sure you've already seen this, but periodically the bot will be spitting messages out in channel that look like this:
+
+<BattleArena> * A battle will begin in 3 minutes.
+<BattleArena> A dimensional portal has been detected. The enemy force will arrive in 2 minutes. type !enter if you wish to join the battle!
+
+That means a battle is about to begin.  If you want to take part in the battle use the !enter command and you will be entered.  As long as 1 player joins the battle the battle will happen.  If no players join the bot will say this message:
+
+<BattleArena> There were no players to meet the monsters on the battlefield! The battle is over.
+
+
+When the two minutes up the bot will calculate how many players have joined and pick a random type of battle.  These are the random types:
+
+Orb Fountain Battle
+This battle is simply to let players gain orbs.  An Orb_Fountain monster will join.  The fountain can't fight back, so feel free to wail on it.
+
+Boss Battle
+One, or more, boss(es) will be picked from a list of bosses and it will join the battle.  Players have to work together to defeat this terrible foe.  Upon victory everyone who's still alive will receive a black orb and the person who's the most stylish will receive an item (usually; but more on style later).
+
+Doppelganger Battle (only appears on winning streaks 10-75)
+Evil doppelgangers of all participating players will be generated and the heroes will be forced to fight themselves.
+
+Warmachine Battle (only appears on winning streaks 10-300)
+The monsters will build a large tank-like boss that will roll out onto the battlefield for the players to fight.
+
+Demon Wall Battle (only appears on winning streaks 300-600)
+A special evil demon wall will appear and teleport the players to a special battlefield.  In this battlefield the players have 10 turns to defeat the wall before they're crushed to death (instant loss if turn 11 starts).
+
+Elder Dragon Battle (only appears on winning streaks 600-5000)
+A special randomly-created Elder Dragon will appear and attack the players.
+
+Bandit Battle (only appears starting at streak level 100)
+A special battle in which the bot will generate a bandit leader and a certain number of bandit minions to attack the players.
+
+Pirate Battle (only appears on winning streaks 100-1000)
+A special battle in which the bot will generate a bandit leader and a certain number of bandit minions to attack the players.
+
+Crystal Shadow Warrior Battle
+A special battle in which the heroes find themselves faced with a poweful foe. This battle may require thinking outside of the box to win.
+
+Monster Battle
+As expected, this is the most common type of battle.  The bot will generate a number of monsters (the number depends on how many players join the battle) and will add them to battle.  The object is to defeat them all.
+
+Save the President!
+The Allied Forces president has been kidnapped. Are you a bad enough dude to rescue the president?  If the president dies in this special event the battle will end as a failure.  So protect him with everything you've got!
+
+
+At the end of all types of battle you will receive red orbs (lose/win/dead/alive).  The amount of red orbs will vary, but to get more you have to defeat monsters and be stylish about it.
+
+
+When the battle begins you will see something like this:
+
+<BattleArena> [Turn #: 1][Weather: dry] [Battlefield: moon]
+<BattleArena> [Darkness will occur in: 10 turns]
+<BattleArena> [Battle Order: Iyouboushi, Enchanted_Bones]
+
+The bot will randomly change the weather (which affects magic), battlefield (certain monsters only show up on certain battlefields) and the monster(s) will join the battle.  Afterwards the battle will commence.   The Battle Order tells you the list of everyone that's in battle and what order they will attack in.  Take note of how the monsters' names are spelled and listed (i.e. if it has an underscore or not) as you'll need this to attack the monster.
+
+
+When it's a monsters' turn, the AI of the bot will automatically control the monster and let it attack or use a technique.
+
+[13:41] <BattleArena> Enchanted Bones leaps at Iyouboushi and slashes several times before rolling to the side before Iyouboushi can react.
+[13:41] <BattleArena> The attack did 37 damage
+
+When it's your turn you have a few options.  Here's the commands:
+
+/me attacks monster
+This command will allow you to perform a melee attack using your weapon.  Some things to note here: some weapons have elemental properties that might affect damage (some monsters are weak to certain elements) and some weapons are multi-hit and may do more than 1 hit per attack.  All single-hit weapons have a small chance of performing a double hit in battle.
+
+/me uses his/her/its technique on monster
+For example:  /me uses his DoublePunch on monster.  
+This command will perform a technique on a monster assuming you ( A ) know the technique ( B ) have enough TP to perform the technique.  As with weapons, some techniques have elemental properties that might affect damage.  There's also a lot of different kinds of technique types in this bot.  Included are status (like inflicting a target with poison), AOE (area of effect, hits all opposing targets on the battlefield), magic (affected by the weather and elemental strengths/weaknesses), and suicide (kills the user).
+
+/me goes boost/Ignition
+This is the command to use your weapon boost or your Ignition, if you have any.  Weapon Boosts will not wear off on their own but are considerably weaker than Ignitions, which require IgnitionGauge to use.  For an example of the weapon boosts: Zangetsu has the "TensaZangetsu" technique which is a boost.  Once you learn the technique you can use  /me goes TensaZangetsu when you have Zangetsu equipped to perform the boost. You do not need to keep the weapon on to keep the boost (so you can swap to Zangetsu, use TensaZangetsu, then swap back to any other weapon you own).  for Ignitions you must first purchase one in the shop (via black orbs) and you must purchase some IgnitionGauge (using red orbs).  Your IgnitionGauge will fill up by +1 at the end of every battle or +1 every time you die.  Once you have enough IgnitionGauge to use the Ignition, you use /me goes ignitionname to activate it.  Every turn your IgnitionGauge will deplete and if you do not have enough to keep the ignition on, you will revert. 
+
+/me reverts from Ignition
+If you want to turn an Ignition off before your IgnitionGauge is empty, use this command.
+
+!use item on target
+If you have any items and wish to use them, this is how you do it.  For example, you can use a potion to restore some of your (or an allies') HP.  To do that you would use !use potion on yournamehere/targetnamehere.   Some items cannot be used on yourself (battle items) and some items can't be normally used on monsters (healing items can only be used on monsters if the monster is a zombie).
+
+/me taunts monster
+This will cause your character to taunt the monster.  Your character will gain +1 str and a bunch of style points for taunting, while there's a few different things that can happen to the monster.  The monster may either gain str or int, or may actually lose a little str and int.
+
+Or you can use a skill.
+
+There's a bunch of different skills in this bot and they all have their own commands.  Here's a few to give you an idea: !bloodboost, !sugitekai, !mightystrike.
+
+I'll go into skills later on.
+
+Now you can go out there and battle the forces of darkness.
+
+At the end, win or lose, you will receive some red orbs for your efforts.  Here's an example of victory:
+
+<BattleArena> The Battle is Over!
+<BattleArena> The forces of good have won this battle!
+<BattleArena> For their victory, these players have been rewarded with Red Orbs: Iyouboushi[+1,245]
+
+
+Here's a small note about monsters in this bot:
+Monsters are leveled based on the current winning streak.  And the amount of damage you will do to a monster is partially based on the level difference between you and your foe.  If you're a higher level, you should be doing more damage to the monster, and vice versa.  If you find yourself losing battles a lot, increase your four core stats (str, def, int, and spd) to increase your level and hopefully make the monsters easier to defeat.
+
+
+SKILLS
+** As of February 4, 2014.
+
+There are four types of skills in this bot: Passive Skills that are always on, Active Skills that have commands, Resists that help you resist against various status types found in the bot and Killer Traits that help you deal more melee damage to certain monster families.  Each skill has a maximum level that you can obtain in it. Some active skills can only be used once every certain number of minutes.  Of course you must first purchase the skills in the shop before you can use them.
+
+
+Passive Skills
+As mentioned, these skills are always on.
+
+Swordmaster
+This skill will increase damage done with sword and katana type weapons.  Increased levels in this skill will increase the damage.
+
+Gunslinger
+This skill will increase damage done with gun type weapons.  Increased levels in this skill will increase the damage.
+
+Wizardy
+This skill will increase damage done with stave and wand type weapons.  Increased levels in this skill will increase the damage.
+
+MartialArts
+This skill will increase damage done with hand to hand type weapons (such as Fists and the weapon Cerberus).  Increased levels in this skill will increase the damage.
+
+Polemaster
+This skill will increase damage done with spear type weapons.  Increased levels in this skill will increase the damage.
+
+Archery
+This skill will increase damage done with a bow. Increased levels increases the damage.
+
+Hatchetman
+This skill increases damage done with an axe.  Increased levels increases the damage.
+
+Harvester
+This skill increases damage done with a scythe.  Increased levels increases the damage.
+
+SleightOfHand
+This skill increases damage done with a dagger.  Increased levels increases the damage.
+
+Whipster
+This skill increases damage done with a whip.  Increased levels increases the damage.
+
+ClearMind
+This skill will increase magical damage.  Increased levels of this skill will increase the damage.
+
+DesperateBlows
+This skill will enhance melee damage based on how much health you have left. At 10-25% health your attack will be 1.5x stronger, at 2-10% your attack will be 2x and at 2% or less health your attack will be 2.5x.
+
+OrbHunter
+This skill will allow you to obtain extra orbs at the end of battle.  The amount of orbs you get will be 5 * skill level.  Note that the bot won't tell you that you got extra orbs.
+
+FieldMedic
+This skill will increase the amount of health items will heal by 5*skill level.
+
+Impetus
+This skill will increase your chances of performing a critical hit by 1% each level in this skill.
+
+BloodPact
+This skill will allow you to activate summoning items and summon pets/summons to the field to fight for you.
+
+Zen
+This skill will increase the amount of TP you regain each turn by 5*skill level.
+
+Haggling
+This skill will increase the amount of orbs you can sell items back for by 20 * skill level.
+
+WeaponBash
+This skill will add a chance of inflicting the stun status after each melee hit. Note, if the target is immune to stun it will never take effect.  The chance is (skill level * 10)%.
+
+Vogue
+This skill will increase the amount of style XP you get at the end of battle.
+
+Alchemy
+This skill will allow you to use gems to create items. Each level of this skill will raise the success rate of creating an item by 1%.  Use !view-info alchemy list  to get a list of items you can craft and !view-info alchemy (item)  to view the ingredients necessary.
+
+TreasureHunter
+This skill will increase the odds of better colored chests at the end of battle and increase the odds that a player will receive an item from a normal monster battle (if the monster has an item to drop). This skill is culumulative with everyone who has it at the end of battle.  In order for this skill to take effect, you must be alive at the end of battle when a chest is created.
+
+BackGuard
+This skill will decrease the odds of a surprise attack against the players. This skill is cumulative with everyone who has it at the beginning of battle.
+
+DivineBlessing
+This skill will decrease the odds that a curse night will happen by 1% per level. This skill is cumulative with everyone who has it at the beginning of battle.
+
+
+Active Skills
+These are the skills that have commands that you need to do during battle to activate the skill.
+
+Speed - !speed
+This skill increases the user's speed when performed.  Increased levels increases the amount of speed when used.
+
+Elemental Seal - !ElementalSeal
+This skill enhances your next magical spell. The default reuse time is 10 turns.  Increased levels decreases the amount of turns inbetween uses.
+
+Mighty Strike - !MightyStrike
+This skill enhances your next attack done with a weapon. The default reuse time is 10 turns.  Increased levels decreases the amount of turns inbetween uses.
+
+Mana Wall - !ManaWall
+This skill reduces the next magic attack used against you to 0.  The default reuse time is 10 turns.  Increased levels decreases the amount of turns inbetween uses.
+
+Royal Guard - !RoyalGuard
+This skill reduces the next physical attack used against you to 0.  The default reuse time is 10 turns.  Increased levels decreases the amount of time inbetween uses.
+
+*****  Neither Royal Guard nor Mana Wall will block normal non-magic techniques.  So if you use either one and still take damage, the monster used a tech.
+
+Fullbring - !fullbring item on target
+This skill allows you to draw out the souls within items and turn single-target items into AOEs.  Fullbring will consume the item you use.  (For example, if you use this skill on a potion, it will heal all allies on the battlefield).  All items have a fullbring level and you will need to match the skill level of the item level in order to use the skill on that item.
+
+Sugitekai - !sugitekai
+This skill allows you to get two turns on your next turn after using this skill.  The default reuse time is 15 turns.  Increased levels decreases the amount of turns inbetween uses.
+
+Meditate - !meditate
+This skill will give you (level * 5) TP back to you instantly.  The reuse time is 4 turns.
+
+Conserve TP - !conserveTP
+This skill will reduce the cost of your next technique to 0 TP. The default reuse time is 15 turns.  Increased levels decreases the amount of turns inbetween uses.
+
+Blood Boost - !BloodBoost
+This skill will consume 100 HP to give you a (level * 2)% boost to your STR.  This skill can only be used once per battle.
+
+Blood Spirit - !BloodSpirit
+This skill will consume 100 HP to give you a (level * 2)% boost to your INT.  This skill can only be used once per battle.
+
+Drain Samba - !DrainSamba
+This skill will consume 10 TP to activate the "drain" status on the user, allowing him/her to gain HP back with every melee attack.  The amount of turns it will last is the level of your skill.  Note that the drain effect will not work on the undead (vampires, skeletons, zombies).  There is a 15 turn reuse period inbetween command uses.
+
+Regen - !Regen
+This skill will give you the HP regeneration effect.  Every turn you will regenerate (skill level * 2) HP back.  The effect will wear off when you reach your maximum HP or if you die.  There is a 15 turn reuse period inbetween command uses.
+
+Kikouheni - !kikouheni weathertype
+This skill allows the user to change the current weather.  The default reuse time is 10 turns.  Increased levels of this skill will reduce the amount of time inbetween uses.  Valid weather types are: calm, bright, gloomy, rainy, stormy, snowy, windy, hot, and dry
+
+ShadowCopy - !shadow copy
+This skill will create a shadow clone of yourself to fight in battle with you as an NPC.  It can only be used once per battle, even if the clone dies.  The amount of HP the clone has is varient on whether or not you're using the Doppelganger style.
+
+Utsusemi - !utsusemi
+This skill will create 2 shadows that will absorb all types of attacks.  The default reuse time is 19 turns.  Increased levels decreases the amount of time inbetween uses.
+
+Steal - !steal (target name)
+This skill will let you try to steal an item or red orbs from a target.  Each level increases the percentage of success by 1%. You can only use this skill once every 5 turns.
+
+Analysis - !analyze (target name)
+This skill will allow you to analyze a target. Each level of the skill gives you more detail about the target.
+
+Cover - !cover (target)
+This skill allows you to jump in front of an attack and cover an ally of your choosing. You can only use this skill once every 3 turns.
+
+Aggressor - !aggressor
+When used, this skill will take (skill level * 10%) of your defense and add it to your strength but will leave your defense at 5.
+
+Defender - !defender
+When used, this skill will take (skill level * 10%) of your strength and add it to your defense but will leave your strength at 5.
+
+Holy Aura - !holy aura
+When used, this skill will extend the amount of time you have to fight before Darkness sets onto the battlefield by (skill level) turn(s).  This skill can only be used once every 10 turns.
+
+Provoke - !provoke (target)
+This skill allows you to provoke an enemy into attacking you instead of another target. This skill can only be used once every 2 turns.
+
+Disarm - !disarm (target)
+This skill will let you try to disarm a target.  Each level increases the percentage of success by 1%. This skill can only be used once every 10 turns.
+
+WeaponLock - !weaponlock (target)
+This skill will consume the item "Sokubaku" and lock a target's weapon for a number of turns. This skill can only be used once every 10 turns.
+
+Konzen-ittai - !konzen-ittai
+This skill, when active, will allow you to perform a Renkei by yourself with a non-magic technique that you use. This skill can only be used once every 10 turns.
+
+SealBreak - !sealbreak
+This skill will allow you to attempt to break a Melee-Only Ancient Seal placed upon a battlefield. Each level of the skill adds a 10% chance in being successful.  This skill will consume Hankai upon use. This skill can only be used once every 5 turns.
+
+MagicMirror - !magicmirror
+This skill will consume a MirrorShard to create a magical reflective barrier around you. The barrier will bounce a magic spell back to its caster.  Increased levels decreases the amount of time inbetween uses. The default reuse time on this skill is once every 15 turns.
+
+Gamble - !gamble
+This skill will consume 1,000 orbs in exchange for a random event to happen.  Random events include, but are not limited to: gaining a random item, refilling the Ignition Gauge, restoring HP, taking damage, and inflicting a status effect upon yourself. Increased levels decreases the amount of time inbetween uses, with the default amount being once every 15 turns.
+
+Thirdeye - !thirdeye
+This skill will increase the odds of dodging attacks for 1-2 turns to 100%.  Increased levels decreases the amount of time inbetween uses, with the default being once every 20 turns.
+
+Scavenge - !scavenge
+This skill allows you to dig into the ground of a battlefield in an attempt to find a burried item. The items that can be found depend on the current battlefield. You may only use this skill one time per battle regardless if it's successful or not.  Increased levels of this skill increase the odds of finding an item.
+
+JustRelease - !justrelease (target)
+This skill will unleash the stored Royal Guard meter at an enemy.  The damage done is (skill level)% of your Royal Guard meter.  The damage done with this skill cannot be completely resisted or dodged.  Royal Guard meter is built up by successfully blocking attacks using Royal Guard.
+
+FormlessStrike - !formless strike
+This skill will allow your normal melee attacks to hurt Ethereal targets without the need of a special weapon or augment.  The amount of turns this skill stays active is dependent on how many levels you have in it.
+
+Retaliation - !retaliation
+This skill will guarantee the next melee attack towards you will be countered. While this skill is active you will go last in battle.  Increased levels of this skill will decrease the time inbetween uses, with the default being once every 20 turns.
+
+
+Resistance Skills
+Like Passive skills, these skills are always on.  All of them do the same thing except with different status effects.  Each level you purchase of a resistance skill lowers the chance that that status effect will take effect on you by 1%.  The maximum is 100, meaning you're completely immune to that status effect**.
+
+The list is:
+
+resist-paralysis
+resist-blind
+resist-poison
+resist-amnesia
+resist-curse
+resist-zombie
+resist-slow
+resist-stun
+resist-stop
+resist-petrify
+
+** There is one exception.  Resist-Curse will not protect you when a terrible curse falls upon the battlefield (a rare event).
+
+
+Killer Trait Skills
+These special skills are always on and will increase damage done against a specific monster type by 1% per level (with a maximum of 10%).  They only work on monsters that are of that monster type.
+
+Undead-Killer
+Zombie-Killer
+Demon-Killer
+Orc-Killer
+Yagudo-Killer
+Quadav-Killer
+Goblin-Killer
+Dragon-Killer
+Treant-Killer
+Android-Killer (also works on machines suchas Metal Gear)
+Crab-Killer
+Worm-Killer
+Bat-Killer
+Lizard-Killer
+Elemental-Killer
+Plant-Killer
+Slime-Killer
+
+
+ITEM LIST
+** As of February 4, 2014.
+
+There's a bunch of different types of items in the bot currently:  Healing Items, Battle Items, Consumable (Skill) Items, +Stat Items, Summon Items, Shop Level Reducing Items, Gems, Keys, Accessories, Portal Items and Misc (Crafting) items.  Here's a list of each.
+
+Healing Items
+These are items that are beneficial to the targets.
+
+Potion - 50 Red Orbs
+The potion will heal roughly 20 HP when used.  It can be used with Fullbring and requires level 1 of that skill.
+
+Rootbeer - treasure chest only
+Rootbeer will heal roughly 60 HP when used. It can be used with Fullbring and requires level 1 of that skill.
+
+VitalStar - 100 Red Orbs
+The VitalStar will heal roughly 60 HP when used.  It can be used with Fullbring and requires level 1 of that skill.
+
+X-Potion - 250 Red Orbs
+The X-potion will heal roughly 150 HP when used. It can be used with Fullbring and requires level 2 of that skill.
+
+Senzu - 500 Red Orbs
+The senzu will heal roughly 500 HP when used.  It can be used with Fullbring and requires level 4 of that skill.
+
+SuperPotion - 3500 Red Orbs
+The Super Potion will heal roughly 1500 HP when used. It can be used with Fullbring and requires level 5 of that skill.
+
+MegaPotion - crafted only
+The Mega Potion will heal roughly 5000 HP when used. It can be used with Fullbring and requires level 5 of that skill.
+
+Bruce'sJuice - ???
+Bruce's Juice will heal roughly 15000 HP when used. It can be used with Fullbring and requires level 5 of that skill.
+
+CandyCane - Santa Only - 1000 Red Orbs
+A Candy Cane will restore 4000 HP when used. It can be used with Fullbring and requires level 5 of that skill.
+
+DustyWing - 100 Red Orbs
+The Dusty Wing will instantly restore 20 TP when used. It can be used with Fullbring and requires level 1 of that skill.
+
+Ether - 500 Red Orbs
+The Ether will instantly restore 60 TP when used. It can be used with Fullbring and requires level 2 of that skill.
+
+Tonic - 1000 Red Orbs
+The tonic will instantly cure most status effects.  It will not cure Charm or Intimidation though.
+
+GoldOrb - 8000 Red Orbs
+This item, when used, will bestow the target with the "revive" status.  If the target dies in the same battle, he/she will be revived with 1/2 hp.
+
+IgnitionStar - chests only
+This item, when used, will instantly restore 10 Ignition Gauge.
+
+XmasStar - Santa only, for 8000 Red Orbs
+This item, when used, will instantly restore 15 Ignition Gauge.
+
+
+Battle Items
+These items can be used on monsters to deal damage or inflict status effects to them.
+
+Holy_Water - 100 Red Orbs
+The Holy Water will inflict roughly 45 light elemental damage to a target.  It can be used with Fullbring and requires level 2 of that skill.
+
+Stop_Watch - 150 Red Orbs
+The Stop Watch will attempt to inflict the 'stop' status effect on a target.  It can be used wtih Fullbring and requires level 3 of that skill.
+
+Hour_Glass - 150 Red Orbs
+The Hour Glass will attempt to inflict the 'slow' status effect on a target.  It can be used wtih Fullbring and requires level 3 of that skill.
+
+Angon - Crafting Only
+This item will attempt to inflict the "Defense Down" status on a target.
+
+SauceAmpulla - Crafting Only
+This item will attempt to inflict the "Strength Down" status on a target.
+
+Red_Fang - 100 Red Orbs
+The Red Fang will inflict roughly 25 fire elemental damage to a target.  It can be used with Fullbring and requires level 2 of that skill.
+
+Blue_Fang - 100 Red Orbs
+The Blue Fang will inflict roughly 25 ice elemental damage to a target.  It can be used with Fullbring and requires level 2 of that skill.
+
+Thunder_Orb - 100 Red Orbs
+The Thunder Orb will inflict roughly 25 lightning elemental damage to a target.  It can be used with Fullbring and requires level 2 of that skill.
+
+Fire_Flower - 150 Red Orbs
+The Fire Flower will inflict roughly 150 fire elemental damage to a target.  It can be used with Fullbring and requires level 3 of that skill.
+
+Ice_Coin - 150 Red Orbs
+The Ice Coin will inflict roughly 150 ice elemental damage to a target.  It can be used with Fullbring and requires level 3 of that skill.
+
+Dynamite - Crafting Only
+The dynamite will inflict roughly 310 fire damage to a target.  It can be used with Fullbring and requires level 4 of that skill.
+
+HolyHandGrenade - Crafting Only
+The Holy Hand Grenade item will inflict roughly 2500 damage to a single target.
+
+Love_Potion - Special Boss Drop
+This item will attempt to charm a target.
+
+Eggnog - Crafted Only
+This item will attempt to cause a target to become drunk.
+
+Grapling_Hook - 1000 Red Orbs
+This item is used to grab an enemy to use that enemy as a protective shield in battle.  When successful, the "shield" will take damage if you're attacked instead of you.
+
+XmasGrenade - Santa Only with 50 saved Elves - 1500 Red Orbs
+This item will inflict roughly 1500 damage to a single target.
+
+
++Stat Items
+These items, when used, will increase your stats by a certain amount.  You cannot buy these items in the shop and must be found by defeating bosses and being the most stylish.  None of these items can be used with Fullbring.
+
+To keep a little bit of mystery with these items, I'll give a list but won't say what they do.  If you want to know, get out there and defeat the bosses and be stylish about it.
+
+List
+Pizza
+PotRoast
+Ramen
+Cavier
+BisonDollar
+DragonMeat
+SuperMushroom
+FireDragonWine
+Ambrosia
+FoieGras
+KnowledgeSource
+SoulPainting
+FishAndChips
+Slurm
+CerberusMeat
+SilverApple
+DefenseSource
+PowerSource
+Herring
+TurkeyLeg
+BloodyHeart
+RottingMeat
+BloodScroll
+BurntScroll
+TreasureMap
+Rum
+WereMeat
+AlphaWereMeat
+
+Consumable (Skill) Items
+These items are used in conjunction with skills and will be consumed when the skill is used.
+
+Shihei - 100 red orbs
+This item is used to create shadows using the Utsusemi skill.  One shihei will produce 2 shadows.
+
+Sokubaku - 100 red orbs
+This item is used with the skill Weapon Lock to lock enemies' weapons for a number of turns.
+
+Hankai - 1000 red orbs
+This item is used with the Seal Break skill.
+
+MirrorShard - 3000 red orbs
+This item is used with the Magic Mirror skill.
+
+
+Summon Items
+These items only work when the user has the BloodPact passive skill.  The item is consumed upon use but will summon an ally to the battlefield to help fight.
+
+DarkMagicianCard - 1000 red orbs
+This item is will summon the powerful mage Dark Magician.
+
+BusterBladerCard - 1000 red orbs
+This item will summon the warrior Buster Blader.
+
+BlueEyesCard - 1000 red orbs
+This item will summon the powerful Blue Eyes White Dragon.
+
+FishOilBroth - 500 red orbs
+This item will summon the crab Courier Carrie.
+
+ElvishMedalllian - Cannot Purchase
+This item will summon Eldora Adlanna to fight for the heroes.
+
+AlexanderMateria - 1000 red orbs
+This item is will summon Alexander
+
+BahamutMateria - Cannot Purchase
+This item is will summon Bahamut
+
+BahamutZeroMateria - Cannot Purchase
+This item is will summon Bahamut Zero
+
+CarbuncleMateria - 1000 red orbs
+This item is will summon Carbuncle
+
+SolomonRing - 1000 red orbs
+This item is will summon Doomtrain
+
+LuckyBroth - 1000 red orbs
+This item is will summon Faithful Falcorr
+
+FenrirMateria - 1000 red orbs
+This item is will summon Fenrir
+
+GarudaMateria - 1000 red orbs
+This item is will summon Garuda
+
+IfritMateria - 1000 red orbs
+This item is will summon Ifrit
+
+LeviathanMateria - 1000 red orbs
+This item is will summon Leviathan
+
+RamuhMateria - 1000 red orbs
+This item is will summon Ramuh
+
+ShivaMateria - 1000 red orbs
+This item is will summon Shiva
+
+TitanMateria - 1000 red orbs
+This item is will summon Titan
+
+
+Shop Reducing Items
+When used, these items will reduce your current shop level by an amount.  The shop level can never go below 1.0.
+
+DiscountCard - 250,000 Red Orbs
+This item will reduce your shop level by 10 points.
+
+UltraDiscountCard - 500,000 Red Orbs
+This item will reduce your shop level by 25 points.
+
+XmasDiscountCard - Santa Only with 20 Saved Elves - 100,000 Red Orbs
+This item will reduce your shop level by 5 points.
+
+
+Gems
+Gems are used to craft items. They can be obtained via treasure chest or by killing a monster via the JewelSword weapon.
+
+Zircon
+Topaz
+Emerald
+Ruby
+Sapphire
+Opal
+Onyx
+Diamond
+
+
+Keys
+Keys are obtained at the end of battle after enough wins have been accumulated.  They open their respective colored-chests.
+
+BlueKey
+BrownKey
+RedKey
+OrangeKey
+GreenKey
+GoldKey
+SilverKey
+PurpleKey
+
+
+Accessories
+Accessories are special items that you can wear to bestow various bonus effects to your character.  Here's a list of current accessories.
+
+Wizard's-Amulet
+Blessed-Ankh
+Blood-Ring
+Blood-Pendant
+Blood-Crown
+Purple-Belt
+Brown-Belt
+Black-Belt
+Red-Belt
+Miser-Ring
+Thief-Ring
+Fool's-Tablet
+PinkBow
+Ribbon
+AztecGoldcoin
+Lucky-Rabbit'sFoot
+VIP-MemberCard
+Spear-Pin
+Mugger's-Belt
+Prism-Specs
+4leaf-clover
+Treasure-Ring
+Engine-Ring
+Roshi's-Glasses
+Wizard's-Ankh
+Hourglass-Necklace
+Jungle-Medallion
+
+
+Misc (Crafting) Items
+These items are used with the alchemy skill to craft items or are seal items that are used to purchase portal items.
+
+Milk
+SmallEgg
+HardBoiledEgg
+Ink
+Paper
+MimicCore
+AshLog
+Hatchet
+IronOre
+GoldOre
+SilverOre
+DarksteelOre
+Ectoplasm
+EtherealChain
+BrokenLance
+SilverChain
+FireGem
+IceStone
+WindRock
+WaterJewel
+EarthSphere
+JungleRose
+JungleThorn
+Glass
+Cloth
+RepairHammer
+TigerFang
+Sand
+AncientBeastcoin
+CardinalCloth
+Kurogane
+DiabolicSilk
+DarkOrichalcumIngot
+JewelOfArdor
+StoneOfWieldance
+JewelOfWieldance
+CoinOfBalance
+BenedictSilk
+GlitteringYarn
+ChameleonYarn
+SnowyCerment
+UtopianGoldThread
+BeastmenSeal
+KindredSeal
+KindredCrest
+HighKindredCrest
+ByakkoSeal
+GenbuSeal
+SeiryuSeal
+SuzakuSeal
+KirinSeal
+
+
+Runes
+Runes are used to augment your physical melee weapons with new abilities.
+
+EthRune
+MtlRune
+HiRune
+GeRune
+MaRune
+TeRune
+MeRune
+SmnRune
+DrnRune
+ItmRune
+RenRune
+NinRune
+IgDefRune
+DragonRune
+TurtleRune
+
+Portal Items
+These items are used in battle to transport all of the players to a special battlefield to fight a tough boss monster.
+
+AlliedTrainingPaper
+WormFood
+DemonBell
+VirilityCan
+IgnisFatuus
+BanishingCharm
+RottingOrb
+NewsOrb
+TimeOrb
+JungleOrb
+GemOfTheNorth
+GemOfTheEast
+GemOfTheSouth
+GemOfTheWest
+GodSeal
+LachesisOrb
+CrimsonTraverserStone
+OldOrcSword
+TavnaziaPass
+EvilGuitar
+YagudoDrink
+SpheroidPlate
+AvatarBlood
+OldOrcBow
+GoddessOrb
+
+
+Mech Items
+These items are used to repair or equip your mech.
+
+* Weapons
+BasicMechGun
+ImprovedMechGun
+FlawlessMechGun
+DarksteelOreCannon
+BasicMechSword
+ImprovedMechSword
+FlawlessMechSword
+DarksteelOreSword
+BasicMechFists
+ImprovedMechFists
+FlawlessMechFists
+DarksteelOreFists
+BasicMechStaff
+ImprovedMechStaff
+FlawlessMechStaff
+DarksteelOreStaff
+
+* Cores
+BasicMechCore
+EtherealCore
+MagicAmplifier
+AsherGuns
+ReubenKatanas
+DinahWeapons
+DelphinusWeaponSystems
+
+* Repair
+E-Tank
+MetalScrap
+E-TankA
+E-TankB
+E-TankT
+E-TankZ
+FrameRepairA
+FrameRepairB
+FrameRepairE
+FrameRepairZ
+
+
+ACCESSORIES
+Accessories are special items that can be equipped.  The accessories themselves will grant bonuses or status effects on the wearer.  How do you get the accessories?  Well, they're rare boss drops from certain bosses or specially crafted.  Once you manage to find one, you can equip it with !wear accessory <accessory name>  If you ever decide that you no longer want to wear that accessory you can remove it with !remove accessory <accessory name>. 
+
+
+ARMOR
+Armor can be found via chests, bosses or crafted. Most armor will bestow the wearer a stat increase and some pieces of armor will grant special bonuses in the form of augments that are always on.  Once you manage to find a piece of armor, you can equip it with !wear armor <armor name>  If you ever decide that you no longer want to wear that piece of armor you can remove it with !remove armor <armor name>.   There are five slots that you can wear armor on: head, body, legs, feet and hands.  The bot will equip the armor in the correct slot when you use the command, you do not need to specify.
+
+
+AUGMENTS
+Augments are a enhancements to your character.  There are three ways to receive an augment.  First, most Ignition boosts will activate a temporary augment while the boost is on. Second, some pieces of armor will haev augments always on while you're wearing the armor.  Finally, there's a way to enhance a melee weapon of your choosing. For this method, first you must get a rune.  Once you have one you can use !augment add (weapon) (rune)  To remove an augment: !augment remove (weapon)  Remember to get rid of the ( ) when using the actual commands. Use the command !augment by itself to see the augments you have equipped, !augment list (player) to see other player's augments. 
+
+
+MECHS
+Ever wish you could pilot a large robot and beat up bad guys? Well now's your chance!
+
+First up, you need some allied notes. Got some? Good. Head on over to the shop and pick yourself up a basic mech that our kooky engineer cooked up just for you!  Now that you have one, here's a little bit more info on how mechs work in Battle Arena.
+
+Each mech has a few things in common: Health, Energy, Engine level, Weapon and Core.  If the HP falls to 0 in battle the mech is disabled and your character will be forced out (but you'll still be able to fight as your character).  HP won't regen on its own. You'll have to obtain some MetalScrap (also available for allied notes) to heal it.  Everything a mech does, except taunting, requires energy to perform.  Just standing still requires energy; throwing a punch requires energy; shooting a laser beam requires energy, etc.  Energy is like HP in that if it falls to 0 in battle the mech will shut down and you'll be forced to exit the mech until it's been refilled.  You refill energy with E-tanks that you can purchase with allied notes.  Your Engine Level determines just how strong your mech is. The more efficient the engine runs the better powered it will be and the more strength, defense, int and speed it'll have.
+
+Now, your mech isn't just a rusting hunk of metal. It has weapons and a variable core built into it and can be upgraded.  The weapons determine its techs, much like a normal weapon.  The core is the inner power source of the mech and gives the mech one or more augments.  Both of these objects require energy to keep running.  More powerful weapons and cores require more energy.
+
+Every turn that you're inside of a mech it will drain some energy to keep the mech running.  The amount is 100 + (core cost) + (weapon cost).  The starting mech consumes 300 total per round to keep active.
+
+If the energy cost sounds unfair keep these things in mind: mechs act as an extra life--if your mech is disabled you can keep fighting outside of it, mechs can potentially be much stronger than ignitions, mechs are not affected by status effects (they can't be slowed, poisoned, blinded, etc), and mechs have a natural guardian level that makes them pretty hard to damage.
+
+WIth all that basic info in mind, here's a list of all the mech commands:
+
+!shop list mech
+This will show you the cost for a basic mech. Right now it's set to 1000 but that can be set in system.dat.
+
+!shop buy mech
+This will buy your basic mech.
+
+!shop list mech items
+This will show you a list of items for your mech that you can purchase. Cores and Weapons are listed here.
+
+!shop buy mech items item name amount
+Here's how you buy the cores and weapons for your mech.
+
+/me activates his/her/its mech
+Activates the mech, obviously.  Activating it will consume the half of the base energy required (so starting mechs will require 100 just to turn on, meaning by the time you get your first turn it will consume 400 energy).
+
+/me deactivates his/her/its mech
+Turns the mech off.  If you run out of mech HP or energy, this will trigger automatically.
+
+!mech repair [item optional]
+Used by itself, !mech repair, it will attempt to use a MetalScrap you have in your inventory to restore some mech HP.  If you specify an item, such as !mech repair MetalScrap, it will attempt to use the item name you supply.  At the start the only item will be the MetalScrap but in the future when I expand the items this will come in hand.  This command cannot be done in battle.
+
+!mech fuel [item optional]  or !mech energy [item optional]
+Will do the same thing as repair except instead of HP it'll be energy.  The default item is an E-tank. This command cannot be done in battle.
+
+!mech equip item name
+This is how you equip your mech with weapons and cores.  You don't have to specify which type you want to equip, just tell it the name of the item.  Such as !mech equip BasicMechCore  will automatically determine that you're equipping a core and do so.  Likewise, !mech equip BasicMechGun  will automatically determine it's a weapon and equip it in the right slot. This command cannot be done in battle.
+
+!mech unequip item name
+The reverse of the equip command, obviously.  Note, you can't have "none" or "nothing" equipped in either slot.  If you unequip something it will replace it with the basic weapon/core. This command cannot be done in battle.
+
+!mech stats or !mech status
+Will display a !stats like message to you indicating the name, HP, Energy, Base Energy Requirement, what's equipped and what techs are available.
+
+!mech items
+Will display all the various mech weapons and cores you have found.
+
+!mech weapons
+Will display all the mech weapons you have found.
+
+!mech desc description
+This will set a custom description that shows when you activate the mech.  You don't need to add your name at the beginning as the description is:  YOUR NAME your custom description here.
+
+!mech name name
+This will set a custom mech name of your choosing.  Keep in mind that the bot will add YOUR NAME'S to the beginning of the name you choose.
+
+!mech upgrade engine/health/energy/cost #
+Used to upgrade your mech's stats.   To see the cost of upgrades just use !mech upgrade cost otherwise you can use it like you would buying an item in the shop.  The amount # is optional as it's assumed to be 1 if blank. Otherwise you can use specify a # to buy more than one at a time.
+
+To see which techs are available to the weapon your mech is using, once activated just use !techs like you would normally and it will only show techs for that weapon. Otherwise, you'll see them in !mech stats.
+
+
+TREASURE CHESTS
+Treasure Chests appear at the end of victories after a certain number of wins have happened in a row (currently 25 wins).  At the end of battle a random colored chest will appear. Anyone who has the right colored key can open the chest but they have to act fast! Chests will disappear after 45 seconds of being unopened. Each color contains its own item pool but combined, chests can contain nearly every item in the game (including rare accessories and shop discount items).
+
+
+STYLE POINTS
+In the game Devil May Cry, the hero Dante must not only defeat the forces of evil but must do it with style.  The higher the style in the game, the more red orbs you would collect from their defeat.  I've decided to try and make my own little version of that in the bot.
+
+Every time you do an attack of some kind it will add style points.  When you get hit, you will lose style points.  Repeating the same action and action over and over will reduce the amount of style points you accumulate per attack.  That is to say, you should mix it up a little.  Don't attack with your fists every turn you get.  That's boring.  Instead, use a technique, attack, switch weapons and attack with the new weapon, taunt.  Another way to increase your style points is to kill a monster/boss.  Killing a monster will greatly increase your style points.
+
+If you're asking why you should even bother worrying about style points, it's because when a monster dies the style of the person who kills it will add a bonus to the amount of red orbs you get at the end of battle.  The higher the style, the more of a bonus you'll get at the end.  Also, in boss battles the person who ends up with the highest style points will normally receive a bonus item.
+
+Here's a list of the style rankings in order:
+
+Flat Out Boring!
+Dope!
+Cool!
+Blast!
+Alright!
+Atomic!
+Sweet!
+Savage!
+SShowtime!
+SSadistic!
+SSStylish!
+SSSensational!
+SSSSmoking Hot Style!
+Jackpot!
+Maximum Style!
+
+
+PLAYER STYLES
+In Devil May Cry 3 the hero Dante had his choice of a bunch of different styles to pick. Each style would give the player a little variety in moves you could do.  For example, there was the Trickster style that let you dodge things easier and the Swordmaster style that gave you extra combat moves with the various weapons.  Well, I've decided to try and add something similar to this bot.
+
+To view your available styles use the command !style in the channel after you log in.   When you do, you will see something like this:
+
+Iyouboushi is currently using the Trickster style. [XP: 36 / 500]
+Iyouboushi knows the following styles: Trickster(1), WeaponMaster(1), Guardian(1)
+
+You can swap styles any time outside of battle by using the command !style change name where name is one of the styles that you know (in this case, Trickster, WeaponMaster or Guardian).
+
+<Iyouboushi> !style change Guardian
+<BattleArena> Iyouboushi has switched to the Guardian style!
+
+There are more styles available in the shop for you to purchase using black orbs.  Use !shop list styles to get a list of prices and !shop buy styles name to buy one.
+
+Each style has a level [the (#) next to the name] and can level up by accumulating xp.  You get xp by being in winning battles and by killing monsters/bosses.  The amount of xp you get is pretty low though and the amount of xp you need to level the style up increases the higher the style's level.
+
+So now you're wondering what the various styles are and what they do in-game.  Here's a list.
+
+TRICKSTER
+This style will enhance the amount of style points you get for taunting.  Higher levels of Trickster will increase the amount of style points you get.  It'll also give you a bonus to your speed when the bot generates the turn order.  Higher levels of the style will result in a bigger increase in speed, thus giving you a better chance of getting your turn earlier. When equipped with this style there's also a (style level)% chance of dodging attacks. Finally, it will enhance the steal % by a random amount (style level doesn't matter in this case, it's the same random chance each time).
+
+WEAPONMASTER
+The Weapon Master will enhance melee attacks of all weapon types.  It does this by increasing the random damage added onto every melee attack and by enhancing the mastery skill slightly.  The amount increases each time the style levels.
+
+GUARDIAN
+This style will decrease the amount of damage you take by a percent each level (up to 60% max).
+
+SPELLMASTER
+This will enhance magic by roughly 11% per level (up to 90% max).
+
+DOPPELGANGER
+This style will enhance your shadow clone ability, giving your clone more health.  The amount of health the clone gets goes up with each level of the style, up to 100%.
+
+HITEN MITSURUGI-RYU
+This still will enhance melee and tech damage done with katana weapons and enhance speed at battle turn generation.
+
+QUICKSILVER
+This style will allow you to access the !quicksilver command that freezes everyone except you in battle, effectively giving you an extra turn. You can use the !quicksilver command as many times as your style is currently leveled.
+
+COUNTERSTANCE
+This style will enhance the chance of doing a counter attack by 1% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.
+
+
+RENKEI SYSTEM
+Renkei (òAåg) is Japanese for "link" or "cooperation".  This system is heavily borrowed from the MMORPG Final Fantasy XI in which you could link various weapon techniques together to create a Renkei, or a Skillchain (as they called it in the English version).  The version that I'm doing for Battle Arena is a bit more simplistic than FFXI.  In FFXI you had to have the correct linking techs (not all techniques could be linked together) and had to have a specific timing down in order to make it work.  Also, you could do more techniques to create better skillchains (you could link three together to create a level 3 skillchain, for example).
+
+Because of the way mIRC works and how the battles are set up in Battle Arena, I immediately ditched the timing idea.  Forcing players to do stuff within a time limit on IRC is a really bad idea (I learned that first-hand with my first Battle Bot, Kaiou).  To simplify things, and make it easier for myself, I decided that all PLAYER techniques could link together--ditching the idea that only certain techniques could create skillchains. Techniques are rarely used to begin with and limiting them to linking with only other certain techniques would make the system pointless, I felt.
+
+So here's how it's going to really work.  First off, each technique will be worth a "renkei" value.  The renkei value is what determines which renkei is performed.  Higher level renkeis will result in higher damage.  The damage that the renkei done will be a percentage of the total damage done by the techniques to create the renkei.  Two techniques are needed to create a renkei on a monster.  But there's a catch to that: when it's the monster's turn, the # of techniques used on the monster, the technique damage value, and the renkei value are all reset to 0.  "But Iyou! That means I can't self-skillchain when I'm soloing on here!"  Well, you can and here's how.  You have two options to self-renkei now.  First, you could use Sugitekai to give yourself two turns in a row then use a technique on both turns thus resulting in a renkei.  The other option is via the active skill called Konzen-Ittai.  This skill will double the technique number value.  Basically it means that 1 technique will be counted as 2, thus allowing you to self-skillchain without needing another person or using Sugitekai.
+
+One thing to note though is that magic, status, and AOE type techniques will not cause a renkei to happen.  Mainly this is done to help prevent the bot from flooding out (especially on AOE techniques) but also because magic and status techniques are already sort of haxx to begin with.
+
+
+IGNITIONS
+Ignitions are more powerful boosts. You buy them in the shop for black orbs and they won't be too cheap.  Once you buy them you'll notice that you can't use them immediately because they require a certain amount of your Ignition Gauge to use.  You buy points into your maximum Ignition Gauge via the shop (also not too cheap when compared to the other stats you can buy).  You'll notice that your IG is not filled when you buy into the maximum. In order to fill the IG you have to be in winning battles or be killed by monsters.
+
+Once you have enough IG to use the Ignition, you activate it the same way as you would a weapon boost: /me goes (name)
+
+You'll notice that Ignitions have two special extras in addition to +stat gains: Augments and Effects.  Augments work just like weapon augments but they're only temporary until the Ignition is turned off. The Ignition effects are immediate and activated when you first use the Ignition. The effects will either affect yourself, your allies, or your enemies by usually inflicting a status effect.  You CAN manually stop the Ignition before running out of IG by using the command /me reverts from (name) on your turn.  Any effects that are activated when you use the Ignition are not lost when you revert manually (unless it's a one-turn type effect that would normally be over upon the target's turn anyway).
+
+
+AUCTION HOUSE
+The bot has an automated auction house that will update once an hour with a new item up for bid.  In order to bid you will need some allied notes, commonly obtained from portal battles.  Once you have some and feel ready to participate, look through the commands here and join in.
+
+!auction info
+This will reveal the auction information.  It looks like this:
+
+<BattleArena> [Auction Number: 2] [Item Up For Bid: RottingMeat] [Minimum Bid: 150] [Time Remaining (approx): 37 seconds]
+
+The auction # is just how many auctions the bot has done since the Auction House has started.  The minimum bid is the lowest you can bid on the item.  Time remaining is approximate because it requires a battle to end before it will end and refresh/start a new auction.
+
+
+!auction bid #
+For example, using the same auction in the info above:
+
+<Iyouboushi> !auction bid 151
+<BattleArena> You bid 151 allied notes for 1 RottingMeat
+
+You can only bid ONE TIME per auction, so make sure you put the amount you want.  You can't have negative numbers, decimal numbers (so no 150.5) or bidding more notes than you have.  Also, bidding LOCKS YOUR ALLIED NOTES IN PLACE meaning you can't spend them in the store.  So only bid once you're sure you won't need the shop for the duration of the auction (will be an hour on the official game).  It has to be done this way (at least for now) to prevent lots of errors popping up.  Something else to note is that auctions are blind.  You will never know if anyone else has bid on the item or how much they have bid.  So if you see an item you really want, take into consideration that you might be competing with all the other players or you might be competing with no one.  Bid what you think will win the auction.
+
+If you win the auction and you're logged in when the auction ends, it will send you a private message telling you that you won.  If you're not logged in or didn't win you won't receive any messages.
+
+"But Iyou, how will I know who won if the bot doesn't say it in the channel?"
+
+!auction winners [#]
+The bot records every auction's date, time, winner (if any), the item being bid on and the notes paid out (if any).  If this command is used by itself (!auction winners) it will display the last 4 auctions, even if no one bid/won on them.
+
+<Iyouboushi> !auction winners
+<BattleArena> Auction No. - Date - Time - Winner - Item - Notes Paid
+<BattleArena> 00001 - 10/11/2013 - 22:38:20 - Iyouboushi - SpheroidPlate - 501
+<BattleArena> 00002 - 10/11/2013 - 22:43:26 - Iyouboushi - RottingMeat - 151
+<BattleArena> 00003 - 10/11/2013 - 22:45:19 - No Winner - BloodyHeart
+<BattleArena> 00004 - 10/11/2013 - 22:48:23 - No Winner - Bruce'sJuice
+
+You can add in a number to check on a specific auction number (which makes it convenient if you need to leave and want to check to see who won the auction # you bid on).
+
+<Iyouboushi> !auction winners 10
+<BattleArena> Auction No. - Date - Time - Winner - Item - Notes Paid
+<BattleArena> 00010 - 11/11/2013 - 08:08:08 - No Winner - SpheroidPlate
+
+
+MONSTER LIST
+** As of February 4, 2014.
+Here's a list of monsters that are in the bot.
+
+Acrobat
+Air Elemental
+Alpha Werewolf
+Ancient Mummy
+Anniversary Dwarf
+Anniversary Gnome
+ArchDemon Knight
+ArchDemon Samurai
+ArchDemon Warrior
+ArchDemon Wizard
+Baelfyr
+Balrog
+Bark Spider
+Bear Shark
+Bee
+Bee Bear
+Bigclaw
+Bloodgoyle
+Blue Bones
+Blue Slime
+Blue Medusa Head
+Bone Soldier
+Butcher
+Byrgen
+Cactuar
+Cave Tiger
+Chimera
+Chimyriad
+Citadel Bats
+Combat
+Vampire Count
+Vampire Countess
+Creeper
+Crimson Slime
+Cure Slime
+Cursed Bishop
+Cursed Mummy
+Cursed Pawn
+Cursed Queen
+Cursed Rook
+Cyberman
+Dalek
+Dark Knight
+Dark Mummy
+Dark Octopus
+Decapiclops
+Demon Knight
+Demon Samurai
+Demon Warrior
+Demon Wizard
+Demonic Succubus
+Devil Manta
+Dhalmel
+Ding Bats
+Dirt Eater
+Drachenlizard
+Dragoon Ghost
+Earth Elemental
+Elder Count
+Elder Countess
+Elder Treant
+Emerald Quadav
+Enchanted Bones
+Ermit Imp
+Female Vampire
+Final Guard
+Final Starman
+Football Zombie
+Forest Giant
+Gekko
+Gekko Dwarf
+Geyfyrst
+Ghost Bomb
+Ghost Samurai
+Gnole
+Goblin Berserker
+Goblin Enchanter
+Goblin Shaman
+Goblin Smithy
+Gold Medusa Head
+Gray Werewolf
+Greater Pugil
+Green Bones
+Guardian Treant
+Healing Slime
+Heal Slime
+Heraldic Imp
+Highland Treant
+Hikari Reaper
+Icefang Tiger
+Ironshell
+Kindred Knight
+Kindred Samurai
+Kindred Warrior
+Kindred Wizard
+Mad Piranha
+Magnes Quadav
+Male Vampire
+Wooly Mammoth
+Maneating Hornet
+Maniac
+Metal Slime
+Midnight Blue Slime
+Mineral Eater
+Minotaur
+Moblin
+Moonfang Warrior
+Mountain Worm
+Mud Pugil
+Nightmare Hornet
+Nightmare Vanguard
+Ninja Assassin
+Red Orb Fountain
+Orcish Grunt
+Orcish Gunshooter
+Orcish Impaler
+Orcish Neckchopper
+Orcish Predator
+Orcish Wyrmbrander
+Ore Eater
+Oxocutioner
+Poison Slime
+Poring
+Pride Demon
+Pugil
+Purple Bones
+Reaver
+Red Bones
+Red Slime
+New Age Retro Hippie
+Revenant
+River Crab
+Rock Eater
+Rock Lizard
+Ruby Quadav
+Ruly Imp
+Sabertooth Tiger
+Samurai Ghost
+Sand Digger
+Sandy Claws
+Sapphire Quadav
+Sea Pugil
+Shrapnel
+Sierra Tiger
+Silver Medusa Head
+Small Werewolf
+Snow Giant
+Snow Lizard
+Snow Wight
+Starman Deluxe
+Ghost of Starman
+Starman Junior
+Stone Eater
+Strolling Sapling
+Stygian
+Succubus
+Thunder Elemental
+Treant
+Ugly Knight
+Undead Black Mage
+Undead Corsair
+Undead Dragoon
+Undead Knight
+Undead Monk
+Undead Ranger
+Undead Red Mage
+Undead Samurai
+Ungeweder
+Unicorn
+Volcano Wasp
+Water Elemental
+White Werewolf
+Wild Rabbit
+Wooden Puppet
+Wyvern
+Yagudo Oracle
+Yagudo Prior
+Yagudo Prioress
+Yagudo Scribe
+Yagudo Summoner
+Yagudo Zealot
+Young Mummy
+Zarklet
+Zombie
+Zombie Chef
+Zombie Rockstar
+Zombie Salesman
+Zu
+
+
+BOSS LIST
+** As of February 4, 2014.
+Here's a list of bosses that are in the bot.
+
+Absolute Virtue
+Ahtu
+Aikawa
+Allied Scrub
+Amon
+Alpha Gnole Anders
+Android X
+Aris
+Ashi
+Ashmaker Gotblut
+Astarte
+Awahondo
+Bahamut Fury
+Bigmouth Billy
+Blackbeard
+Bloody Bones
+Bob Barbas
+Brauner
+Byakko
+Cell
+Cerberus
+Chuckie
+Count Bifrons
+Crazy Jester
+Cursed King
+Cyberman Lord
+Dalek Emperor
+Daos
+Dark Ixion
+Death
+Dracula
+Dullahan
+Dune Widow
+Dynamis Lord
+Eccentric Eve
+Echidna
+Eldora Adlanna
+Erim
+Fafnir
+Gades
+Gaki
+Garland
+Metal Gear Ray
+Metal Gear Rex
+Genbu
+Geryon
+Gilgamesh
+Giygas
+Gothmog
+Guard Daos
+Huu Xalmo the Savage
+Ironclad Severer
+Juggler Hecatomb
+Jailor of Love
+Jeffery
+Jester
+Jumbo Cactuar
+Killer Rabbit
+King Slime
+Kirin
+The Knights Who Say Ni
+Leaping Lizzie
+Legion
+Leviathan Center Heart
+Leviathan Left Heart
+Leviathan Right Heart
+Marchelute
+Marquis Caim
+Menos Grande
+Metal King Slime
+Morion Worm
+Mother Brain
+M.Bison
+One-Eyed Gwajboj
+Onki
+Pallid Percy
+Poison
+Poisonhand Gnadgad
+Puppet Master
+Quetzalcoatl
+Rainemard
+Rasetsu
+Ryukotsuki
+Scorpion
+Sea Horror
+Seiryu
+Shadow Lord
+Shinryu
+Silverhook
+Smothered Schmidt
+Suzaku
+Stinging Sophie
+Stubborn Dredvodd
+Sub Zero
+Three-Eyed Prozpuz
+Tiamat
+True Erim
+Vampire Bat
+Vergil
+Scorched Yanthu
+Za'Dha Adamantking
+Zark
+
+SEASONAL BOSSES
+Evil Cupid
+Evil Xmas Tree
+Gobbles the Mad Turkey
+Robot Santa
+
+
+NPCS
+NPCs are helpful allies that show up occasionally to help the forces of good win battles.  At the moment there's a 10% chance of them showing up normally.  If the players have been losing a lot (5+ in a row) they will show up 100% of the time.  NPCs will stay in battle until they die or until all players die.  In other words, NPCs won't keep fighting the good fight after all players are dead; at least one player must stay alive for the battle to continue.
+
+
+ACHIEVEMENTS
+Like most modern games, this game has a list of achievements that you can unlock through various ways.  I encourage everyone to try different things to unlock them all.  The rewards for unlocking them vary, but usually unlock bonus red orbs.  Sometimes you will receive items from the achievements or possibly even a full IG bar as a reward.  Here's a plain list of achievements.  No, I won't spoil how to go about actually unlocking them all--that's up to you to figure out!
+
+Big Spender
+Don't You Have A Home
+Battle Arena Anon
+Don't Forget Your Friends And Family
+Boss Killer
+Sir Dies A Lot
+Make Money
+Scardy Cat
+Cheapskate
+Can't Keep A Good Man Down
+Monster Slayer
+Pretty Gem Collector
+Master Of Unlocking
+Santa's Little Helper
+Are You The Key Master
+Now You're Playing With Power
+Party Is Getting Crazy
+Can't Touch This
+Never Asked For This
+Allied Scrub
+Allied Soldier
+GlassCannon
+StoneWall
+Blood Gone Dry
+Ice Ice Baby
+Disco Inferno
+Blinded By The Light
+Rock You Like A Hurricane
+1.21 gigawatts
+It's All Doom And Gloom
+In Tune With Mother Earth
+Time To Build An Ark
+Hi Ho, Hi Ho
+Blood Gone to Brain
+You Bring the Monsters, I'll Bring the Weapons
+Warbound
+Fill Your Dark Soul With Light
+I Am Iron Man
+Jackpot
+Humanoid Typhoon
+I Can Quit Betting Any Time I Want
+
+
+MISC INFO
+This section will talk about any misc stuff that I think players may want to know about.
+
+First off, I'd just like to say.. don't sweat it if you die a lot at the beginning.  At this moment the bot is a bit unbalanced and monsters can be pretty rough towards new characters.  Plus there's a bunch of different types of monsters and some are harder than others (Final Guard, for example, has an extremely high defense and almost everyone will do 1 damage per hit to it).  There's no penalty for dying, so just roll with the punches (as they say).
+
+Second, if battles drag on too long a "rage" system will kick in.  This is a concept that the MMORPG Final Fantasy XI employed on some of its higher level monsters/bosses to ensure that people don't sit and hold monsters for days at a time.  Basically what happens is when a time limit has been hit, the monster will grow to insane power to the point where no players will be able to defeat them.  Because I want battles to be ongoing and often, I've done something similar.  How long do players have to defeat the monsters?  Well, if it's a normal monster battle and the number of monsters is less than 3, players have 15 minutes.  If there's more than 3 monsters, players have 30 minutes.   If it's a boss battle players will get 20 minutes.
+
+After the time elapses, the monsters' stats will be multiplied by 100 making them virtually impossible to kill (and will often one-shot everyone if it uses an AOE).

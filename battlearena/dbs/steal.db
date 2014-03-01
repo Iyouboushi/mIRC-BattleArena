@@ -1,0 +1,21 @@
+[stealpool]
+; While you may modify the first three lines in this list, please don't remove them
+monster=orbs.vitalstar.orbs.potion.x-potion.holy_water.BeastmenSeal
+boss=orbs.Red_Fang.Thunder_Orb.Tonic.Superpotion.KindredSeal
+orb_fountain=orbs
+
+; Add monsters/bosses and their steal pools below this line.
+brauner=x-potion.orbs.SoulPainting
+Highland_Treant=orbs.AshLog
+Treant=orbs.AshLog
+Guardian_Treant=orbs.AshLog
+Elder_Treant=orbs.AshLog
+Sierra_Tiger=orbs.TigerFang
+Sabertooth_Tiger=orbs.TigerFang
+Icefang_Tiger=orbs.TigerFang
+Cave_Tiger=orbs.TigerFang
+Rock_Eater=IronOre.Sapphire.Topaz.Emerald.Ruby
+Ore_Eater=IronOre.Sapphire.Topaz.Emerald.Ruby
+Mineral_Eater=IronOre.Sapphire.Topaz.Emerald.Ruby
+Mountain_Worm=IronOre.Sapphire.Topaz.Emerald.Ruby
+Sand_Digger=sand.IronOre.Sapphire.Topaz.Emerald.Ruby

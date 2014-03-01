@@ -1,0 +1,21 @@
+As with any program ever made, there's always going to be bugs.  These are the KNOWN bugs that you shouldn't email me about at the moment:
+
+* Newer Versions of mIRC Causes Errors
+The bot was designed to run in an older version of mIRC (version 6.16). While the bot should, in theroy, work fine in newer versions of mIRC I cannot guarantee it.  I have heard that there's been a few weird errors that pop up in the newer versions.  My suggestion is, if you don't want to use 6.16, is to start with the newest version and go down one version at a time if you find an error until you find a version that no longer has any errors at all.
+
+* Too Many Commands Crash
+There's going to be an occasional instance where if too many people are doing too many commands at once (i.e. multiple people using the shop while a battle is going on) that may cause the bot to crash.  I think this is probably a problem in mIRC and there's not much I can do about it.
+
+* AoEs Used On Too Many Monsters Flood
+Due to how the AOEs work in this bot, if they're used on a huge amount of monsters it will cause the bot to start spitting out tons of text to the server.  In most instances, the IRC server will have flood protection and kill the bot for flooding.  The solution is to not have too many players and monsters in battle at once OR to use the DCC Mode of the bot.
+
+* Bot Isn't Working In This Particular Folder!
+While the bot SHOULD work in any folder, try running the bot in a folder that doesn't have any spaces. My suggestion is to run the bot in C:\BattleArena\   but you can always create a folder like  C:\IRC\Bots\BattleArena and run it from there.  It doesn't really matter as long as none of the folders have spaces.
+
+** Versions prior to 2.4 WILL NOT WORK IN FOLDERS WITH SPACES! This issue was fixed in 2.4 but existed in every version prior.
+
+* Lagging Giving Multiple Errors
+If the bot lags and the person keeps using the same command over and over it could potentially break the bot.  For example, using attack on a monster more than once.  Although it shouldn't happen, sometimes the lag will cause it to process the command a bunch of times in a row.  The only thing I can think of to fix this error is to find a way to not lag and make your players slow down if you are lagging.
+
+* Monsters Randomly Losing Turns
+As it stands, very very occasionally monsters might end up losing their turn. As of yet I haven't figured out exactly what's causing this but it doesn't seem to happen very often.

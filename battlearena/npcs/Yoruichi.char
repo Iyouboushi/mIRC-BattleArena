@@ -1,0 +1,160 @@
+[BaseStats]
+Hp=2500
+Tp=270
+Str=2500
+Def=2800
+Int=3500
+Spd=7000
+IgnitionGauge=100
+Name=Yoruichi Shihouin
+
+
+[Battle]
+Hp=2500
+Tp=270
+Str=2500
+Def=2800
+Int=3500
+Spd=7000
+IgnitionGauge=100
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+[Limit]
+Level=1
+Percent=0
+
+
+
+[Descriptions]
+Hused=1
+Dused=1
+Char=is a woman with dark skin, long purple hair and golden eyes, dressed in a black sleevless shirt, black pants, white shoes and an orange coat. The former 2nd Division Captain of the Gotei 13.
+Rage=narrows her eyes and says "I guess you can keep up with me after all..."
+Utsusemi=laughs as she activates the ability. "What's the matter? Can't find the real me?"
+ShadowCopy=laughs once more as she creates a clone of herself. "Can you handle two of me?"
+Speed=laughs as she increases her speed. "What's wrong? You can't keep up with me?"
+MightyStrike=surrounds her arms with reiatsu, increasing her strength for a short time.
+
+
+[Stuff]
+RedOrbs=3608
+BlackOrbs=1
+ShopLevel=1
+RedOrbsSpent=4385
+BlackOrbsSpent=0
+
+
+[Info]
+Gender=her
+Gender2=her
+password=dbzrpg
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=Fri Jun 22 19:56:53 2012
+Flag=NPC
+IgnoreQuicksilver=true
+CanTaunt=true
+
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noOneThatIKnow
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+boosted=no
+freezing=no
+curse=no
+poison.timer=1
+KiRegenerating=no
+curse.timer=1
+slow.timer=1
+zombie.timer=1
+conservetp.on=off
+
+[Weapons]
+Equipped=ShihouinFists
+ShihouinFists=$calc(100 + $current.battlestreak)
+
+[Skills]
+mightystrike=1
+desperateblows=1
+speed.on=off
+doubleturn.on=off
+soulvoice.on=off
+manawall.on=off
+mightystrike.on=off
+royalguard.on=on
+MartialArts=100
+Wizardry=100
+SwordMaster=100
+Resist-Charm=100
+Resist-Zombie=100
+Resist-Intimidate=100
+RoyalGuard=1
+ManaWall=1
+Zen=5
+Utsusemi=1
+ShadowCopy=1
+Speed=100
+Sugitekai=1
+WeaponBash=1
+Impetus=20
+
+
+[Techniques]
+DoublePunch=$calc(100 + $current.battlestreak)
+ShoulderTackle=$calc(100 + $current.battlestreak)
+AsuranFists=$calc(100 + $current.battlestreak)
+TornadoKick=$calc(100 + $current.battlestreak)
+ShinjinSpiral=$calc(100 + $current.battlestreak)
+ShitotsuSansen=$calc(100 + $current.battlestreak)
+
+
+[Item_Amount]
+
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+WeaponMasterXP=1
+
+
+[Ignitions]
+Shunkou-Lightning=1
+
+
+[Augments]
+ShihouinFists=EnhanceMelee.TechBonus

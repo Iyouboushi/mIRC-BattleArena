@@ -1,0 +1,28 @@
+DCC CHAT MODE
+===============
+ABOUT:
+
+Dcc Chat mode is a new mode for version 2.0 of the bot.  The bot will basically run the game the same way as it would with the default IRC server mode but there are a few changes/differences that you should be aware of.
+
+First off, and possibly the most important, is that DCC Chat mode only works with clients that can (obviously) accept DCC Chat requests.  This means that web clients like Mibbit will not work.  Anyone who is on those web clients (or any client that can't accept the request) will be excluded from the game.
+
+Second, the number of players and monsters that can enter battle has been greatly increased in DCC Mode as there's very little worry about flodding/being disconnected from the server like there is in normal IRC mode.  As such, it's possible to have incredibly epic battles.  
+
+Third, there's two exclusive DCC Mode commands for players:
+
+!toggle battle chat - This will allow you to toggle the battle chat on or off.  When set to on you will see the battle stuff even if you're not in the battles.  When off, you must join battles to see how the battles are going.
+
+!who's online - Will tell you who's logged into the game.
+
+
+
+SETTING DCC CHAT MODE UP:
+
+In order to make the bot run DCC Mode you must do two things.  First, make sure dccchat.mrc is loaded into the bot's remotes list.  Second, you must edit system.dat.  In system.dat under the [system] section there's a botType= flag.  This can be set to IRC or DCCchat.  IRC is set by default, so in order to make DCC Chat work you will need to change that to DCCchat.
+
+The bot is already set up to listen on ports 5001, 5013->5050.  If you're behind a firewall you will need to open those ports up or change them in the bot's copy of mIRC to open and available ports.
+
+Beyond that, due to just how many different issues may come up, this guide will be unable to really help you troubleshoot if it doesn't work.  
+
+Please visit this website: http://www.mircscripts.org/showdoc.php?type=tutorial&id=2355   if you're having troubles and read through it, or try Google.
+

@@ -1,0 +1,3 @@
+12::[Viewing Info]::
+2The !view-info command allows you to view the information on skills, techs, items and weapons.
+2Syntax: 12!view-info <item/tech/skill/weapon> <what to buy>   14(Remember to remove the < > from the command when using it)

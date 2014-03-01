@@ -1,0 +1,4 @@
+slashes at %enemy before stepping backwards in a defensive stance
+leaps at %enemy and slashes several times before rolling to the side before %enemy can react
+stabs at %enemy with the dagger before stepping backwards in a defensive stance
+sneaks up behind %enemy and slashes at %enemy $+ 's back

@@ -1,0 +1,578 @@
+=============================================
+PASSIVE SKILLS
+=============================================
+
+[Swordmaster]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with sword and katana weapons.  Increased levels increases the damage.
+
+[Polemaster]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with spear weapons.  Increased levels increases the damage.
+
+[Gunslinger]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with a gun.  Increased levels increases the damage.
+
+[Wizardry]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with stave and wand weapons.  Increased levels increases the damage.
+
+[MartialArts]
+Cost=200
+max=100
+Type=Passive
+Info=This skill increases damage done with your hand to hand weapons.  Increased levels increases the damage.
+
+[Archery]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with a bow.  Increased levels increases the damage.
+
+[Hatchetman]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with an axe.  Increased levels increases the damage.
+
+[Harvester]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with a scythe.  Increased levels increases the damage.
+
+[SleightOfHand]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with a dagger.  Increased levels increases the damage.
+
+[Whipster]
+Cost=200
+Max=100
+Type=Passive
+Info=This skill increases damage done with a whip.  Increased levels increases the damage.
+
+
+[OrbHunter]
+Cost=250
+Type=Passive
+Info=This skill will increase the amount of red orbs you find at the end of battle.
+Max=20
+Amount=15
+
+[ClearMind]
+Cost=450
+Type=Passive
+Info=This skill will increase magical damage.  Increased levels of this skill will increase the damage.
+Max=3
+
+[DesperateBlows]
+Cost=1000
+Type=Passive
+Info=This skill will enhance melee damage based on how much health you have left. At 10-25% health your attack will be 1.5x stronger, at 2-10% your attack will be 2x and at 2% or less health your attack will be 2.5x.
+Max=1
+
+[FieldMedic]
+Cost=300
+Type=Passive
+Info=This skill will increase the amount of health items will heal by 5*skill level.
+Max=30
+
+[Impetus]
+Cost=150
+Type=Passive
+Info=This skill will increase your chances of performing a critical hit by 1% each level in this skill.
+Max=20
+
+[BloodPact]
+Cost=1900
+Type=Passive
+Info=This skill will allow you to activate summoning items and summon pets/summons to the field to fight for you. Increased levels of the skill will enhance the summon.
+Max=20
+
+[Zen]
+Cost=500
+Type=Passive
+Info=This skill will increase the amount of TP you get back each turn by 5*skill level.
+Max=5
+
+[Haggling]
+Cost=250
+Type=passive
+Info=This skill will increase the amount of orbs you can sell items back for.  The amount, with this skill, is (sell price + (sell price * skill level $+ $chr(37) $+ $chr(41)). 
+Max=50
+
+[Vogue]
+Cost=400
+Type=passive
+Info=This skill will increase the amount of style XP you get at the end of battle.
+Max=5
+
+[WeaponBash]
+Cost=1500
+Type=passive
+Info=This skill will add a chance of inflicting the stun status after each melee hit. Note, if the target is immune to stun it will never take effect.  The chance is (skill level * 10)%.
+Max=1
+; For this skill, the max=# is (# * 10)%.  So if you set it to 10, then it's 100% active if someone gets it to level 10.  
+
+[Alchemy]
+Cost=400
+Type=passive
+Info=This skill will allow you to use gems to create items. Each level of this skill will raise the success rate of creating an item by 1%.  Use !view-info alchemy list  to get a list of items you can craft and !view-info alchemy (item)  to view the ingredients necessary.
+Max=20
+
+[TreasureHunter]
+Cost=1000
+Type=passive
+Info=This skill will increase the odds of better colored chests at the end of battle and increase the odds that a player will receive an item from a normal monster battle (if the monster has an item to drop). This skill is culumulative with everyone who has it at the end of battle.  In order for this skill to take effect, you must be alive at the end of battle when a chest is created.
+Max=5
+
+[BackGuard]
+Cost=1000
+Type=passive
+Info=This skill will decrease the odds of a surprise attack against the players. This skill is cumulative with everyone who has it at the beginning of battle.
+Max=5
+
+[DivineBlessing]
+Cost=1000
+Type=passive
+Info=This skill will decrease the odds that a curse night will happen. This skill is cumulative with everyone who has it at the beginning of battle.
+Max=5
+
+=============================================
+ACTIVE SKILLS
+=============================================
+
+[Speed]
+Cost=250
+Type=Active
+Max=100
+Info=This skill increases the user's speed when performed.  Increased levels increases the amount of speed when used.
+
+[ElementalSeal]
+Cost=425
+Type=Active
+Max=5
+Info=This skill enhances your next magical spell. Increased levels decreases the amount of time inbetween uses.
+Cooldown=11
+LevelAdjustsCooldown=true
+
+[MightyStrike]
+Cost=450
+Type=Active
+Max=5
+Info=This skill enhances your next attack done with a weapon. Increased levels decreases the amount of time inbetween uses.
+Cooldown=11
+
+[TrueStrike]
+Cost=500
+Type=Active
+Max=5
+Info=This skill makes it so your next attack cannot be countered, dodged or parried. This skill will not allow your attacks to hit through shadows, royal guard or mana wall. Increased levels decreases the amount of time inbetween uses.
+Cooldown=11
+
+[ManaWall]
+Cost=450
+Type=Active
+Max=6
+Info=This skill reduces the next magic attack used against you to 0.  Increased levels decreases the amount of time inbetween uses.
+Cooldown=11
+
+[RoyalGuard]
+Cost=450
+Type=Active
+Max=6
+Info=This skill reduces the next physical attack used against you to 0.  Increased levels decreases the amount of time inbetween uses.
+Cooldown=11
+
+[PerfectDefense]
+Cost=1000
+Type=Active
+Max=1
+Info=This skill reduces the next attack used against you to 0.
+Cooldown=20
+
+[Fullbring]
+Cost=350
+Type=Active
+Max=5
+Info=This skill allows you to draw out the souls within items and turn single-target items into AOEs.  Fullbring will consume the item you use.
+
+[Sugitekai]
+Cost=900
+Type=Active
+Max=5
+Info=This skill allows you to get two turns on your next turn after using this skill. Increased levels decreases the amount of time inbetween uses.
+Cooldown=16
+
+[Meditate]
+Cost=400
+Type=Active
+Max=10
+Info=This skill will give you (level * 5) TP back to you instantly.
+Cooldown=5
+
+[ConserveTP]
+Cost=500
+Type=Active
+Max=5
+Info=This skill will reduce the cost of your next technique to 0 TP. Increased levels decreases the amount of time inbetween uses.
+Cooldown=16
+
+[BloodBoost]
+Cost=1000
+Type=Active
+Max=10
+Info=This skill will consume 100 HP to give you a (level * 2)% boost to your STR.
+
+[BloodSpirit]
+Cost=1000
+Type=Active
+Max=10
+Info=This skill will consume 100 HP to give you a (level * 2)% boost to your INT.
+
+[DrainSamba]
+Cost=750
+Type=Active
+Max=10
+Info=This skill will consume 10 TP to activate the "drain" status on the user, allowing him/her to gain HP back with every melee attack.  The amount of turns it will last is the level of your skill.  Note that the drain effect will not work on the undead (vampires, skeletons, zombies).
+Cooldown=16
+
+[Regen]
+Cost=700
+Type=Active
+Max=20
+Info=This skill will give you the HP regeneration effect.  Every turn you will regenerate ((max hp * skill level %) / 2) HP back.  The effect will wear off when you reach your maximum HP or if you die.
+Cooldown=16
+
+[Kikouheni]
+Cost=650
+Type=Active
+Max=6
+Info=This skill allows the user to change the current weather.  Increased levels of this skill will reduce the amount of time inbetween uses.
+Cooldown=11
+
+[ShadowCopy]
+Cost=1500
+Type=Active
+Info=This skill will create a shadow clone of yourself that has half your current HP to fight in battle with you as an NPC.  It can only be used once per battle, even if the clone dies.
+Max=1
+
+[Utsusemi]
+Cost=500
+Type=Active
+Info=This skill will create 2 shadows that will absorb all types of attacks.  Increased levels decreases the amount of time inbetween uses.
+Max=10
+Cooldown=20
+
+[Steal]
+Cost=250
+Type=Active
+Info=This skill will let you try to steal an item or red orbs from a target.  Each level increases the percentage of success by 1%.
+Max=40
+Cooldown=6
+
+[Analysis]
+Cost=550
+Type=Active
+Info=This skill will allow you to analyze a target. Each level of the skill gives you more detail about the target.
+Max=6
+
+[Cover]
+Cost=600
+Type=Active
+Info=This skill allows you to jump in front of an attack and cover an ally of your choosing.
+Max=1
+Cooldown=3
+
+[Aggressor]
+Cost=500
+Type=Active
+Info=When used, this skill will take (skill level * 10%) of your defense and add it to your strength but will leave your defense at 5.
+Max=10
+
+[Defender]
+Cost=500
+Type=Active
+Info=When used, this skill will take (skill level * 10%) of your strength and add it to your defense but will leave your strength at 5.
+Max=10
+
+[HolyAura]
+Cost=1000
+Type=Active
+Info=This skill will extend the amount of time you have to fight before Darkness sets onto the battlefield by (skill level) turn(s).
+Max=5
+Cooldown=11
+
+[Provoke]
+Cost=600
+Type=Active
+Info=This skill allows you to provoke an enemy into attacking you instead of another target.
+Max=1
+Cooldown=3
+
+[Disarm]
+Cost=500
+Type=Active
+Info=This skill will let you try to disarm a target.  Each level increases the percentage of success by 1%.
+Max=30
+Cooldown=11
+
+[WeaponLock]
+Cost=1000
+Type=Active
+Info=This skill will consume the item "Sokubaku" and lock a target's weapon for a number of turns.
+Max=1
+CoolDown=11
+
+[Konzen-Ittai]
+Cost=5000
+Type=Active
+Info=This skill, when active, will allow you to perform a Renkei by yourself with a non-magic technique that you use.
+Max=1
+CoolDown=11
+
+[SealBreak]
+Cost=2000
+Type=Active
+Info=This skill will allow you to attempt to break a Melee-Only Ancient Seal placed upon a battlefield. Each level of the skill adds a 10% chance in being successful.  This skill will consume Hankai upon use.
+Max=9
+CoolDown=6
+
+[MagicMirror]
+Cost=15000
+Type=Active
+Info=This skill will consume a MirrorShard to create a magical reflective barrier around you. The barrier will bounce a magic spell back to its caster.  Increased levels decreases the amount of time inbetween uses.
+Max=5
+Cooldown=16
+
+[Gamble]
+Cost=10000
+Type=Active
+Info=This skill will consume 1,000 orbs in exchange for a random event to happen.  Random events include, but are not limited to: gaining a random item, refilling the Ignition Gauge, restoring HP, taking damage, and inflicting a status effect upon yourself. Increased levels decreases the amount of time inbetween uses.
+Max=5
+Cooldown=16
+
+[Thirdeye]
+Cost=500
+Type=Active
+Info=This skill will increase the odds of dodging physical attacks for 1-2 attacks to 100%.  Increased levels decreases the amount of time inbetween uses.  ** This skill will not increase the odds of dodging magical, item, or tech attacks.
+Max=10
+Cooldown=21
+
+[Scavenge]
+Cost=5000
+Type=Active
+Info=This skill allows you to dig into the ground of a battlefield in an attempt to find a burried item. The items that can be found depend on the current battlefield. You may only use this skill one time per battle regardless if it's successful or not.  Increased levels of this skill increase the odds of finding an item.
+Max=20
+
+[JustRelease]
+Cost=10000
+Type=Active
+Info=This skill will unleash the stored Royal Guard meter at an enemy.  The damage done is (skill level)% of your Royal Guard meter.  The damage done with this skill cannot be completely resisted or dodged.  Royal Guard meter is built up by successfully blocking attacks using Royal Guard.
+Max=90
+
+[FormlessStrike]
+Cost=750
+Type=Active
+Max=10
+Info=This skill will consume 50% of your TP to activate the ability to hurt ethereal monsters with every melee attack.  The amount of turns it will last is the level of your skill.
+Cooldown=15
+
+[Snatch]
+Cooldown=3
+
+[Retaliation]
+Cost=2000
+Type=Active
+Info=This skill will guarantee the next melee attack towards you will be countered. While this skill is active you will go last in battle.  Increased levels of this skill will decrease the time inbetween uses.
+Max=5
+Cooldown=21
+
+=============================================
+RESISTS
+=============================================
+
+[Resist-Paralysis]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become paralyzed in battle by 1% each level.
+
+[Resist-Charm]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become charmed in battle by 1% each level.
+
+[Resist-Blind]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become blind in battle by 1% each level.
+
+[Resist-Poison]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become poisoned in battle by 1% each level.
+
+[Resist-Amnesia]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will suffer amnesia in battle by 1% each level.
+
+[Resist-Curse]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become cursed in battle by 1% each level.
+
+[Resist-Zombie]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become a zombie in battle by 1% each level.
+
+[Resist-Slow]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become slowed in battle by 1% each level.
+
+[Resist-Stun]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become stunned in battle by 1% each level.
+
+[Resist-Stop]
+Cost=150
+Max=100
+Type=Resistance
+Info=This skill lowers the chance that you will become frozen in time in battle by 1% each level.
+
+[Resist-Petrify]
+Cost=200
+Max=50
+Type=Resistance
+Info=This skill lowers the chance that you will be come petrified in battle by 1% each level
+
+
+=============================================
+KILLER TRAIT SKILLS
+=============================================
+
+[Undead-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against undead monsters by 1% a level.
+
+[Crab-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against crab monsters by 1% a level.
+
+[Dragon-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against dragon monsters by 1% a level.
+
+[Zombie-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against zombie monsters by 1% a level.
+
+[Demon-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against demon monsters by 1% a level.
+
+[Orc-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against orc monsters by 1% a level.
+
+[Yagudo-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against yagudo monsters by 1% a level.
+
+[Quadav-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against quadav monsters by 1% a level.
+
+[Treant-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against treant monsters by 1% a level.
+
+[Plant-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against plant monsters by 1% a level.
+
+[Android-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against android/robotic monsters by 1% a level.
+
+
+[Worm-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against worm monsters by 1% a level.
+
+[Bat-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against bat monsters by 1% a level.
+
+[Lizard-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against lizard monsters by 1% a level.
+
+[Goblin-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against goblin monsters by 1% a level.
+
+[Elemental-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against elemental monsters by 1% a level.
+
+[Slime-Killer]
+Cost=5000
+Max=10
+Type=KillerTrait
+Info=This skill increases damage done against slime monsters by 1% a level.  Note that it won't increase damage done to metal slimes unless the IgnoreMetalDefense augment is active.

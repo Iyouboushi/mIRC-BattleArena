@@ -1,0 +1,13 @@
+[Battle]
+TotalBattles=0
+TotalWins=0
+TotalLoss=0
+LosingStreak=0
+WinningStreak=0
+WinningStreakRecord=0
+
+[AIBattles]
+totalBattles=0
+npc=0
+monster=0
+

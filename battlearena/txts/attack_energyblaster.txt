@@ -1,0 +1,2 @@
+takes aim at %enemy and fires a small blast of energy 
+leaps into the air and shoots a blast of energy towards %enemy from above

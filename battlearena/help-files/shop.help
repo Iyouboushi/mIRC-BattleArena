@@ -1,0 +1,4 @@
+12::[Welcome to the Shop]::
+2The shop is where you can exchange orbs for upgrades, new items and techniques.  But be forewarned, every time you purchase something your "shop level" will increase and raise the price of everything except items and new weapons.
+2Commands: !shop list <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items> and !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items> 14(Remember to remove the < > from the command when using it)
+2Your current shop level is $readini($char($nick), stuff, shoplevel)

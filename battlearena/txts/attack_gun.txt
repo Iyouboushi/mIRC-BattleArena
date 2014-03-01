@@ -1,0 +1,2 @@
+shoots twice at %enemy before stepping back
+runs forward and takes aim at %enemy before letting loose a few shots

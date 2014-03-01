@@ -1,0 +1,320 @@
+[BaseStats]
+Hp=3500
+Tp=1500
+Str=4100
+Def=4300
+Int=4300
+Spd=4300
+IgnitionGauge=60
+Name=RuneFencer Nauthima
+
+
+[Battle]
+Hp=3500
+Tp=1500
+Str=4100
+Def=4300
+Int=4300
+Spd=4300
+IgnitionGauge=60
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+
+[Descriptions]
+Char=is a tall elf that has long black hair with purple streaks. She wears the Rune Fencer Armor and carries the Beorc Sword over her right shoulder. A former Elven goddess who now travels between worlds.
+BossQuote=Gotten to level $current.battlestreak $+ , have you? Let us see how the power I gained from the world of Vana'diel fares against you!
+Rage=narrows her eyes as a blue and red aura flares wildly around herself as she starts to get angry.
+RoyalGuard=chants in Elvish and a moment later, %real.name is covered with a blue barrier that blocks all melee attacks.
+ManaWall=chants in Elvish and a moment later, %real.name is covered with a green barrier that blocks all magic attacks.
+Utsusemi=chants in Elvish and a moment later, %real.name appears to be a little blurry when you look directly at her.
+MagicMirror=chants in Elvish and a moment later, %real.name is covered with a purple barrier that reflects magic. 
+RepairNaturalArmor=chants in Elvish as she casts the Stoneskin spell. Large earth spikes appear around %real.name before vanishing a moment later.
+Regen=chants in Elvish and a moment later, %real.name is covered in sparkles of green energy.
+MonsterSummon=RuneFencer Nauthima concentrates as green orbs surround %real.name while she performs a circular motion with her hands. She thrusts her palms forward as the orbs vanish, summoning a random ally.
+DeathMessage=falls to a knee as a portal opens. Nauthima looks up to the Allied Forces and grins. "Impressive display of power. Perhaps we will meet again..." Nauthima then stands and enters the portal, which closes soon after.
+
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+Drops=FireDragonWine.MegaPotion.KindredCrest.PowerSource.HighKindredCrest.KnowledgeSource.Ambrosia.Blueprints:SilverSword
+
+
+[Info]
+Flag=monster
+Gender=her
+Gender2=her
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+IgnoreQuicksilver=true
+Streak=3000
+IgnoreDrain=True
+CanTaunt=false
+CanStagger=yes
+StaggerAmount=$round($calc(.20 * $readini($char(RuneFencer_Nauthima), basestats, hp)),0)
+JustReleaseDefense=100
+IgnorePresident=true
+CanFlee=false
+
+
+[monster]
+type=Elf
+TechLearn=true
+size=medium
+
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+auto-regen=on
+
+
+[Weapons]
+Equipped=Beorc_Sword
+Beorc_Sword=$calc(100 + $current.battlestreak)
+Glyphs=$calc(100 + $current.battlestreak)
+SilverSwords=$calc(100 + $current.battlestreak)
+
+
+[Equipment]
+Head=RuneistBandeau+1
+Body=RuneistCoat+1
+Hands=RuneistMitons+1
+Legs=RuneistTrousers+1
+Feet=RuneistBottes+1
+Accessory=Wizard's-Ankh
+
+
+[Skills]
+Regen=40
+Meditate=1
+ThirdEye=1
+WeaponBash=1
+Impetus=20
+Zen=5
+ClearMind=3
+BloodBoost=100
+Utsusemi=1
+ManaWall=1
+manawall.on=on
+RoyalGuard=1
+royalguard.on=on
+MagicMirror=1
+RepairNaturalArmor=1
+Wizardry=$rand(500,1000)
+Swordmaster=$rand(500,1000)
+MonsterSummon=1
+MonsterSummon.Monster=$iif($rand(1,2) = 1, Excenmille, $iif($rand(1,2) = 1, NajaSalaheem, Wind-UpShantotto))
+MonsterSummon.Chance=80
+monstersummon.numberspawn=1
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Stun=100
+
+
+[Techniques]
+Ignis=$calc(100 + $current.battlestreak)
+Grando=$calc(100 + $current.battlestreak)
+Fulgur=$calc(100 + $current.battlestreak)
+Nitesco=$calc(100 + $current.battlestreak)
+Globus=$calc(100 + $current.battlestreak)
+Luminatio=$calc(100 + $current.battlestreak)
+Lunge=$calc(100 + $current.battlestreak)
+VivaciousPulse=$calc(100 + $current.battlestreak)
+IgnisStrike=$calc(100 + $current.battlestreak)
+GelusStrike=$calc(100 + $current.battlestreak)
+FlabraStrike=$calc(100 + $current.battlestreak)
+TellusStrike=$calc(100 + $current.battlestreak)
+SulporStrike=$calc(100 + $current.battlestreak)
+UndaStrike=$calc(100 + $current.battlestreak)
+LuxStrike=$calc(100 + $current.battlestreak)
+TenebraeStrike=$calc(100 + $current.battlestreak)
+Resolution=$calc(100 + $current.battlestreak)
+Twin_Slice=$calc(100 + $current.battlestreak)
+LightningStrike=$calc(100 + $current.battlestreak)
+BladeBeamII=$calc(100 + $current.battlestreak)
+
+
+[Item_Amount]
+
+
+[NaturalArmor]
+Name=Stoneskin
+Max=5000
+Current=5000
+
+
+[Ignitions]
+Elemental_Sforzo=1
+
+
+[Augments]
+Glyphs=IgnoreGuardian.AbsorbTP.IgnoreMetalDefense.EnhanceThirdEye
+Beorc_Sword=IgnoreGuardian.EnhanceBloodpact.EnhanceSummons.IgnoreMetalDefense.EnhanceThirdEye
+SilverSwords=IgnoreGuardian.RenkeiBonus.IgnoreMetalDefense.EnhanceThirdEye
+
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=40
+Fire=40
+Wind=40
+Water=40
+Ice=40
+Lightning=40
+Light=40
+Dark=40
+HandToHand=70
+Whip=70
+Sword=70
+Gun=70
+Rifle=70
+Katana=70
+Wand=70
+Spear=70
+Scythe=70
+Glyph=70
+GreatSword=70
+Bow=70
+Rainstorm=30
+SpinningAttack=30
+TornadoKick=30
+CircularChain=30
+CircleBlade=30
+SonicThrust=30
+ApexArrow=30
+UrielBlade=30
+FellCleave=30
+AeolianEdge=30
+BladeBeam=0
+TwinSlice=0
+BiteOfLightning=0
+HyperTwinSlice=0
+Chivalry=30
+JakuhouRaikouben=30
+BladeBeamII=30
+DoubleShot=20
+GunBlaze=20
+DoubleShotII=20
+GunBlazeII=20
+DoubleShotIII=20
+GunBlazeIII=20
+TripleShot=20
+GunBlazeIII=20
+DoubleSwing=20
+SwordBlaze=20
+DoubleSwingII=20
+SwordBlazeII=20
+DoubleSwingIII=20
+SwordBlazeIII=20
+TripleSwing=20
+SwordBlazeIII=20
+DoubleStrike=20
+MartialBlaze=20
+DoubleStrikeII=20
+MartialBlazeII=20
+DoubleStrikeIII=20
+MartialBlazeIII=20
+TripleStrike=20
+MartialBlazeIII=20
+WereFists=0
+Roar=0
+RazorFang=0
+ClawCyclone=0
+DeathStare=30
+TrillionStabs=60
+DoubleBackstab=60
+Chou_Kamehameha=60
+BloodBath=60
+Crissaegrim=60
+Valmanway=60
+Tachi:Shoha=60
+Tachi:Rana=60
+BasicMechGun=20
+ImprovedMechGun=20
+FlawlessMechGun=20
+DarksteelOreCannon=20
+BasicMechSword=20
+ImprovedMechSword=20
+FlawlessMechSword=20
+DarksteelOreSword=20
+BasicMechFists=20
+ImprovedMechFists=20
+FlawlessMechFists=20
+DarksteelOreFists=20
+BasicMechStaff=20
+ImprovedMechStaff=20
+FlawlessMechStaff=20
+DarksteelOreStaff=20
+GoukiGloves=0
+Hadouken=0
+AsherGuns=20
+ReubenKatanas=20
+DinahWeapons=20
+DelphinusWeaponSystems=20
+ShotBuster=20
+FlareBuster=20
+Cerberus=20
+IronBlade=20
+GarudasWrath=20
+LotusBlades=20
+R-Fang=20
+X-BusterII=20
+X-Cannon=20
+MoonStoneCannon=20

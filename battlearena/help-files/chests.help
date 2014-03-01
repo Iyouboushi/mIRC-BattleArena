@@ -1,0 +1,5 @@
+12::[Treasure Chests]::
+2Treasure Chests and the colored keys that open them are both random rewards at the end of battles after a certain # of wins.  The chests contain different rewards based on the color that they are. Be forewarned that chests will disappear after 45 seconds.
+12::[How do I open a chest?]::
+2Syntax: 12!use <keyname> on chest (be sure to remove the < >)
+2If the key matches the color of the chest, it will open and its spoils will be given to you.

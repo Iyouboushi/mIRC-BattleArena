@@ -1,0 +1,3 @@
+slashes at %enemy before stepping backwards in a defensive stance
+leaps at %enemy and slashes several times before rolling to the side before %enemy can react
+pokes %enemy $+ 's side with the sharp end of the spear before stepping backwards into a defensive stance

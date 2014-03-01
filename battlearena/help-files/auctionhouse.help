@@ -1,0 +1,5 @@
+12::[What is the Auction House?]::
+2The Auction House is a way for players to place bids on various items and armor.  Once an hour the bot will randomly pick an item and place it up for bid. In order to bid you will need some allied notes, commonly obtained from portal battles.  
+2Please note that you can only place one bid per auction so make sure that it's the amount that you want.  Also, bidding will lock your allied notes in place for the duration of the auction (meaning you won't be able to use them in the shop).
+12::[Auction House Commands]::
+2Syntax: 12!auction info to see the item up for auction, !auction bid # to place a bid, and !auction winners [#] to see the past winners or the winner of a specific auction (if the number is supplied)

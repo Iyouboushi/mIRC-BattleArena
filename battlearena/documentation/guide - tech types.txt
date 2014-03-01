@@ -1,0 +1,69 @@
+TECH TYPES
+This text file will explain what technique "types" are in the bot.
+
+
+Here's a quick list of the current tech types: SINGLE, AOE, SUICIDE, SUICIDE-AOE, HEAL, STEALPOWER, BUFF
+
+All of these types can also be classified as a MAGIC subtype and have an element attached to them (magic or not). 
+
+Valid elements are: none, earth, lightning, wind, fire, light, dark, water or ice. 
+
+All of the types can also have a STATUS effect applied to them.
+
+Valid status types are: 
+Poison, Stop, Blind, Virus, Amnesia, Paralysis, Zombie, Slow, Stun, Intimidate, DefenseDown, StrengthDown,
+IntDown, Petrify, Bored, Charm, Confuse, Curse, RemoveBoost
+
+
+
+Now we'll go into detail about each of them.
+
+
+
+* SINGLE
+This is actually the default tech type.  When you don't want the tech to be anything special, just a single target-hitting tech, set the type to this.
+
+* AOE
+This tech type will cause damage to all targets on the battlefield. 
+
+* HEAL
+This tech type will heal a target, unless a target is marked as an "undead" type or is currently inflicted with the zombie status in which case it'll cause damage.  Note you can cast this spell on anyone or anything, including monsters.
+
+* SUICIDE
+This tech type will consume a user's remainig HP to do damage with it. 
+
+* SUICIDE-AOE
+This tech type will consume a user's remainig HP to do damage to all targets on the battlefield.
+
+* STEALPOWER
+This type of tech will allow a user to steal stats from a target.  The amount varies based on the strength of the tech itself and how many levels the user has into the tech as well as the defense and int of the target.
+
+* BUFF
+Buffs are positive status effects that can be applied to allies. Valid buff types are:
+Protect, Shell, Resist-Earth, Resist-Fire, Resist-Wind, Resist-Water, Resist-Ice, Resist-Lightning, Resist-Light and Resist-Dark
+
+Note that in order to create your own Resist-(element) buff techs, you need to add a modifier= line.  The line is followed by the element type.  For example..
+
+[BarDark]
+Type=buff
+tp=50
+desc=a desc here
+STATUS=Resist-Dark
+MODIFIER=dark
+Cost=2000
+
+
+MAGIC
+Magic is a sub type of techniques in this bot.  Any technique can be marked as magic using magic=yes in the technique's ini entry. Magic can also has an element type.  Magic has bonuses depending on a few different things (such as the ClearMind or Elemental Seal skills, or being the right element during the right weather).   
+
+
+ADDING STATUS EFFECTS
+Any tech can now have a status effect, including AOE techs.  They may also inflict multiple status effects at the same time, however adding too many to one tech may cause the display to be cut off when the bot shows it to the channel.  To add a status effect to any tech, add this line to the tech:
+
+StatusType=
+
+and list the types you want (valid types are listed above).  To have more than one, put a . inbetween each one.  Example:
+
+StatusType=blind.curse.amnesia
+
+

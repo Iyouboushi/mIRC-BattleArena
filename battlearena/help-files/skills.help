@@ -1,0 +1,7 @@
+12::[Skills]::
+2Skills are certain passive and active abilities that your character may possess to help him/her through battle. 
+12::[How do I check my Skills?]::
+2Syntax: 12!skills or !skills <other player to check>
+2This command will display your skills, or another player's skills.
+12::[How do I get new skills?]::
+2You may purchase new skills in the shop in exchange for red orbs.  Check them with !shop list skills 

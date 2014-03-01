@@ -1,0 +1,3 @@
+NOTE
+
+Please do not erase anything in this folder.  There are items in the game that are tied to these npcs.  If you remove them, the item will break and all sorts of errors might happen. 

@@ -1,0 +1,4 @@
+12::[The Give Command]::
+2Syntax: 12/me gives # item to person
+2Example: 12/me gives 1 Ether to Iyouboushi
+2This command will allow you to give an item to a fellow ally.  You cannot give orbs.
