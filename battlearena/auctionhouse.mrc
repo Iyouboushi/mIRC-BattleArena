@@ -225,5 +225,4 @@ alias auctionhouse.clear {
     .remove $txtfile(temp_auction_bidders.txt)
 
   }
-
 }
