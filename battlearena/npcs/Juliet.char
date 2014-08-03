@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=250
-Str=2500
-Def=2500
-Int=1800
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Juliet Starling
 
 
 [Battle]
 Hp=2500
 Tp=250
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,23 +95,24 @@ zombie.timer=1
 
 [Weapons]
 Equipped=PinkChainsaw
-PinkChainsaw=$calc(100 + $current.battlestreak)
+PinkChainsaw=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
 WeaponBash=1
-MartialArts=100
+Impetus=20
+MartialArts=1000
 Resist-Charm=100
 Resist-Intimidate=100
 
 
 [Techniques]
-ChainsawDash=$calc(100 + $current.battlestreak)
-ChainsawSpin=$calc(100 + $current.battlestreak)
-ChainsawTornado=$calc(100 + $current.battlestreak)
-ChainsawCut=$calc(100 + $current.battlestreak)
-ChainsawAttack=$calc(100 + $current.battlestreak)
-ChainsawCannon=$calc(100 + $current.battlestreak)
+ChainsawDash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChainsawSpin=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChainsawTornado=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChainsawCut=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChainsawAttack=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChainsawCannon=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

@@ -95,12 +95,12 @@ zombie.timer=1
 
 [Weapons]
 Equipped=IfritPower
-IfirtPower=100
+IfirtPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
 MightyStrike=1
-MartialArts=100
+MartialArts=500
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -118,10 +118,10 @@ Resist-Confuse=100
 
 
 [Techniques]
-Hellfire=100
-MeteorStrike=100
-BurningStrike=100
-Flare=100
+Hellfire=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+MeteorStrike=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+BurningStrike=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Flare=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

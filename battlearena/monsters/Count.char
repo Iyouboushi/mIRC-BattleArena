@@ -52,6 +52,7 @@ Created=N/a
 Streak=51
 StreakMax=500
 CanTaunt=true
+TimeOfDay=Evening.Night
 
 [Monster]
 Type=Undead

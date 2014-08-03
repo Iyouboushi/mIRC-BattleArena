@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=350
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(25 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Orphen
 
 
 [Battle]
 Hp=2500
 Tp=350
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(25 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,13 +95,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=SwordOfTheFallenDevil
-SwordOfTheFallenDevil=$calc(100 + $current.battlestreak)
+SwordOfTheFallenDevil=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
 ClearMind=3
-Swordmaster=100
-Wizardry=100
+Swordmaster=1000
+Wizardry=1000
 MightyStrike=1
 ElementalSeal=1
 RoyalGuard=1
@@ -112,17 +112,19 @@ Resist-Charm=100
 Resist-Amnesia=100
 Resist-Intimidate=100
 
+
 [Techniques]
-HandOfPyro=$calc(100 + $current.battlestreak)
-Bite_Of_Lightning=$calc(100 + $current.battlestreak)
-HailOfHeavens=$calc(100 + $current.battlestreak)
-PinnacleOfTheSun=$calc(100 + $current.battlestreak)
-HammerOfEvil=$calc(100 + $current.battlestreak)
-ColdnessOfDestruction=$calc(100 + $current.battlestreak)
-FeathersOfTheHurricane=$calc(100 + $current.battlestreak)
-BoltOfThunder=$calc(100 + $current.battlestreak)
-SmokeOfPain=$calc(100 + $current.battlestreak)
-FalconOfDeath=$calc(100 + $current.battlestreak)
+HandOfPyro=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Bite_Of_Lightning=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HailOfHeavens=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PinnacleOfTheSun=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HammerOfEvil=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ColdnessOfDestruction=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FeathersOfTheHurricane=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BoltOfThunder=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SmokeOfPain=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FalconOfDeath=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+
 
 [Item_Amount]
 

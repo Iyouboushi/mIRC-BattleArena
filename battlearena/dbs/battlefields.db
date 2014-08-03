@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=stormy
+current=hot
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Quarter
-CurrentMoonTurn=1
+CurrentMoonPhase=Gibbous
+CurrentMoonTurn=5
 
 [MoonPhaseTime]
 full=3
@@ -30,6 +30,23 @@ quarter=4
 crescent=2
 blood=1
 BloodMoonChance=60
+
+
+==============================================================
+The "Time of Day" is controlled in this file. Please do not
+remove or modify the time of day section as it will cause
+errors.
+==============================================================
+[TimeOfDay]
+CurrentTimeOfDay=Night
+CurrentTimeOfDayTurn=1
+
+[TimeOfDayTime]
+morning=2
+noon=2
+evening=2
+night=2
+
 
 ==============================================================
 Battlefields are where the players face the monsters.
@@ -206,7 +223,7 @@ Event4Amount=$rand(10,30)
 [Forest]
 weather=calm.rainy.windy.hot.dry
 NumberOfEvents=4
-scavenge=AshLog.Hatchet.emerald
+scavenge=AshLog.Hatchet.emerald.BombFlower
 
 event1=heal
 event1Chance=30
@@ -271,18 +288,11 @@ Event1Target=all
 Event1Amount=$rand(20,100)
 
 event2=damage
-event2statusType=confuse
 event2Chance=20
-Event2Desc=Heat stroke seems to be setting in %real.name $+ .  Allies are starting to look like enemies..
-Event2Target=random
+Event2Desc=A mummy rises out of the sand and casts a random curse upon all players of the battlefield!
+Event2Target=players
 Event2Amount=$rand(20,50)
-
-event3=damage
-event3Chance=20
-Event3Desc=A mummy rises out of the sand and casts a random curse upon all players of the battlefield!
-Event3Target=players
-Event3Amount=$rand(20,50)
-event3StatusType=curse
+event2StatusType=curse
 
 
 [Moon]
@@ -446,7 +456,6 @@ NumberOfEvents=1
 scavenge=Potion.VitalStar.X-Potion.Shihei.Sokubaku.Topaz.Zircon.Ink.Paper.EarthSphere
 
 event1=damage
-event1statusType=confuse
 event1Chance=20
 Event1Desc=%real.name gets hit in the head with a flying bocce ball, leaving them confused. Darn kids!
 Event1Target=random
@@ -477,7 +486,7 @@ Event1Amount=0
 event2=statusonly
 event2statusType=annoyed
 event2Chance=30
-Event2Desc=The leader of the French knights suddenly yells out, "You don't frighten us, English pig dogs! Go and boil your bottoms, you children of a silly person. I blow my nose at you, so-called "Allied Forces," you and all your silly English K-nig-hts!
+Event2Desc=The leader of the French knights suddenly yells out, "You don't frighten us, English pig dogs! Go and boil your bottoms, you children of a silly person. I blow my nose at you, so-called "Allied Forces!"
 Event2Target=all
 Event2Amount=0
 
@@ -493,8 +502,6 @@ event4chance=20
 event4desc=The French knight leader whispers "Fetchez la vache." to the other knights. After a moment of confusion, a large cow is suddenly flung out of the castle and lands on %real.name below!
 event4target=random
 event4amount=$rand(70,120)
-
-
 
 [Raptor News Network Studio]
 weather=calm
@@ -518,12 +525,12 @@ NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Jester's Lair]
-Weather=dark
+Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Slurm Factory]
-Weather=dark
+Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
@@ -621,7 +628,7 @@ limitations=no-mech
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.Ambrosia
 
 [Atlantis]
-Weather=Dark
+Weather=gloomy
 NumberOfEvents=0
 limitations=no-mech
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.Ambrosia
@@ -637,8 +644,7 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 Weather=calm
 NumberOfEvents=0
 limitations=no-mech
-scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.BombFlower
 
 [Inner Crystal Chamber]
 weather=calm
@@ -649,3 +655,70 @@ event1Chance=95
 Event1Desc=The chamber vibrates with energy which then sparks and shoots out, hitting everyone in the chamber.
 Event1Target=all
 event1Amount=$rand(500,1000)
+
+[Eastern Palace]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech.no-ignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Desert Palace]
+Weather=dry
+NumberOfEvents=0
+limitations=no-mech.no-ignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Tower of Hera]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech.no-ignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Hyrule Field]
+Weather=light
+NumberOfEvents=0
+limitations=no-mech.no-ignition
+scavenge=Diamond.BombFlower
+
+[Overworld - Night]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech.no-playerignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Overworld - The Corruption]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech.no-playerignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Overworld - The Crimson]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech.no-playerignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Overworld - The Dungeon]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech.no-playerignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Underground Jungle]
+Weather=calm
+NumberOfEvents=0
+limitations=no-mech.no-playerignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Underground Jungle - Lihzahrd Temple]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-mech.no-playerignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+
+[Overworld - Ocean]
+Weather=rainy
+NumberOfEvents=0
+limitations=no-mech.no-playerignition
+scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
+

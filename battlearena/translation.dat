@@ -59,20 +59,21 @@ BlackOrbsLeft=$chr(3) $+ 3 $+ You have $bytes($readini($char($nick), stuff, Bla
 HereIsYourCurrentStats=$chr(3) $+ 3 $+ Here are your current stats:
 HereIsOtherCurrentStats=$chr(3) $+ 3 $+ Here are the current stats for $2 $+ :
 HereIsMiscInfo=$chr(3) $+ 3 $+ Here is %misc.target misc statistical info:
-CurrentWeaponEquipped=Current Weapon Equipped
+CurrentWeaponEquipped=Current $iif(%weapon.equipped.left != $null, Weapons, Weapon) Equipped
 CurrentAccessoryEquipped=Current Accessory
 CurrentArmorHeadEquipped=Current Head Armor
 CurrentArmorBodyEquipped=Current Body Armor
 CurrentArmorLegsEquipped=Current Leg Armor
 CurrentArmorFeetEquipped=Current Feet Armor
 CurrentArmorHandsEquipped=Current Hand Armor
-ViewWeaponList=$chr(3) $+ 3 $+  $+ %real.name has the following weapons: %weapon.list
+ViewWeaponList=$chr(3) $+ 3 $+  $+ %real.name has the following weapons: %weapon.list1
+ViewShieldList=$chr(3) $+ 3 $+  $+ %real.name has $iif(%shield.list1 = $null, no shields, the following shields: %shield.list1 )
 ViewCurrentStyle=$chr(3) $+ 3 $+  $+ %real.name is currently using the %current.playerstyle style. [XP: %current.playerstyle.xp $chr(47) %current.playerstyle.xptolevel $+ ] 
 ViewCurrentStyleMaxed=$chr(3) $+ 3 $+  $+ %real.name is currently using the %current.playerstyle style. [Currently Maxed] 
 ViewStyleList=$chr(3) $+ 3 $+  $+ %real.name knows the following styles: %styles.list
 SwitchStyles=$chr(3) $+ 3 $+  $+ %real.name has switched to the $3 style! 
-ViewMyTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following techniques for $gender($nick) %weapon.equipped $+ : %techs.list 
-ViewOthersTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following techniques for $gender($2) %weapon.equipped $+ : %techs.list 
+ViewMyTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following techniques for $gender($nick) $iif($person_in_mech($nick) = true, %weapon.equipped, $iif(%weapon.equipped.left != $null, equipped weapons, %weapon.equipped.right)) $+ : %techs.list 
+ViewOthersTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following techniques for $gender($2) $iif($person_in_mech($2) = true, %weapon.equipped, $iif(%weapon.equipped.left != $null, equipped weapons, %weapon.equipped.right)) $+ : %techs.list 
 ViewMyIgnitionTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following ignition techniques: %ignition.tech.list 
 ViewOthersIgnitionTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following ignition techniques: %ignition.tech.list
 NoTechsForMe=$chr(3) $+ 3 $+  $+ %real.name does not know any techniques for $gender($nick) %weapon.equipped $+ .
@@ -89,7 +90,7 @@ HasNoSkills=$chr(3) $+ 3 $+  $+ %real.name currently knows no skills.
 ViewItems=$chr(3) $+ 3 $+  $+ %real.name has the following items: %items.list 
 ViewSummonItems=$chr(3) $+ 3 $+  $+ %real.name has the following summon items: %summons.items.list 
 ViewShopResetItems=$chr(3) $+ 3 $+  $+ %real.name has the following shop lowering items: %reset.items.list 
-ViewShopSpecialItems=$chr(3) $+ 3 $+  $+ %real.name has the following special items: %special.items.list 
+ViewShopSpecialItems=$chr(3) $+ 3 $+  $+ %real.name has the following songsheet and special items: %special.items.list 
 ViewStatPlusItems=$chr(3) $+ 3 $+  $+ %real.name has the following +stat items: %statplus.items.list 
 ViewGemItems=$chr(3) $+ 3 $+  $+ %real.name has the following gems: %gems.items.list 
 ViewKeysItems=$chr(3) $+ 3 $+  $+ %real.name has the following keys: %keys.items.list 
@@ -103,6 +104,7 @@ ViewArmorBody=$chr(3) $+ 3 $+  $+ %real.name has the following body armor: %a
 ViewArmorLegs=$chr(3) $+ 3 $+  $+ %real.name has the following leg armor: %armor.legs
 ViewArmorFeet=$chr(3) $+ 3 $+  $+ %real.name has the following feet armor: %armor.feet
 ViewArmorHands=$chr(3) $+ 3 $+  $+ %real.name has the following hand armor: %armor.hands
+ViewInstruments=$chr(3) $+ 3 $+  $+ %real.name has the following instruments: %instruments.items.list 
 HasNoItems=$chr(3) $+ 3 $+  $+ %real.name currently has no items. 
 HasNoMechItems=$chr(3) $+ 3 $+  $+ %real.name currently has no weapons or items for $gender($1) mech. 
 HasNoMechWeapons=$chr(3) $+ 3 $+  $+ %real.name currently has no weapons for $gender($1) mech. 
@@ -110,18 +112,21 @@ HasNoKeys=$chr(3) $+ 3 $+  $+ %real.name currently has no keys.
 HasNoGems=$chr(3) $+ 3 $+  $+ %real.name currently has no gems.
 HasNoSeals=$chr(3) $+ 3 $+  $+ %real.name currently has no seals.
 HasNoArmor=$chr(3) $+ 3 $+  $+ %real.name currently has no armor. 
+HasNoInstruments=$chr(3) $+ 3 $+  $+ %real.name currently has no instruments.
 ViewAccessories=$chr(3) $+ 3 $+  $+ %real.name has the following accessories %accessories.list
+ViewSongs=$chr(3) $+ 3 $+  $+ %real.name knows how to perform the following songs: %songs.list
 ViewEquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has the following accessory equipped %equipped.accessory
 ViewRunes=$chr(3) $+ 3 $+  $+ %real.name has the following runes %runes.list
 HasNoAccessories=$chr(3) $+ 3 $+  $+ %real.name currently has no accessories. 
+HasNoSongs=$chr(3) $+ 3 $+  $+ %real.name does not currently know any songs. 
 HasNoRunes=$chr(3) $+ 3 $+  $+ %real.name currently has no runes. 
 HasNoEquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name currently has no accessory equipped. 
-EquipWeaponGM=$chr(3) $+ 3 $+  $+ %real.name has equipped $3
-EquipWeaponPlayer=$chr(3) $+ 3 $+  $+ %real.name has equipped $2
+EquipWeaponGM=$chr(3) $+ 3 $+  $+ %real.name has equipped $3 $+ $iif($2 != both,  in $gender($1) $2 hand) $+ .
+EquipWeaponPlayer=$chr(3) $+ 3 $+  $+ %real.name has equipped $3 $+ $iif($2 != both,  in $gender($1) $2 hand) $+ .
 EquipWeaponMonster=$chr(3) $+ 3 $+  $+ %real.name has equipped %weapon.name
 EquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has equipped $gender($1) mech with a $2
 UnEquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has unequipped $gender($1) mech of the $2
-UnequipWeapon=$chr(3) $+ 3 $+  $+ %real.name unequipped the %weapon.equipped
+UnequipWeapon=$chr(3) $+ 3 $+  $+ %real.name unequipped the %weapon.equipped.right $iif(%weapon.equipped.left != $null, and the %weapon.equipped.left)
 ViewStatus=$chr(3) $+ 3 $+  $+ %real.name $+ 's status is currently:4 %all_status  3[Active Skills:4 %all_skills $+ 3]
 OKDesc=$chr(3) $+ 3 $+ Your $2 desc was entered correctly!
 ClearDesc=$chr(3) $+ 3 $+ Your $3 desc has been cleared!
@@ -129,6 +134,10 @@ AutomatedBattleOn=$chr(3) $+ 4 $+ The Automated Battle System has been turned 
 AutomatedBattleOff=$chr(3) $+ 4 $+ The Automated Battle System has been turned off.
 DiscountMessageOn=$chr(3) $+ 4 $+ The Discount Item Message has been turned on.
 DiscountMessageOff=$chr(3) $+ 4 $+ The Discount Item Message has been turned off.
+PlayersMustDieModeOn=$chr(3) $+ 4 $+ The Players Must Die Mode has been turned on.
+PlayersMustDieModeOff=$chr(3) $+ 4 $+ The Players Must Die Mode has been turned off.
+AllowColorsOn=$chr(3) $+ 4 $+ The Bot's Colors have been turned on.
+AllowColorsOff=$chr(3) $+ 4 $+ The Bot's Colors have been turned off.
 BattleThrottleOn=$chr(3) $+ 4 $+ The BattleThrottle setting has been turned on.  With this one, players can only enter every other battle.
 BattleThrottleOff=$chr(3) $+ 4 $+ The BattleThrottle setting has been turned off.  Players can now enter every battle.
 AutomatedAIBattleCasinoOn=$chr(3) $+ 4 $+ The Automated AI Battle System has been turned on.
@@ -255,9 +264,9 @@ DoppelgangerFight=$chr(3) $+ 14 $+ The Monsters wheel out a large mirror in fr
 SurpriseAttack=$chr(3) $+ 14 $+ The monsters take the heroes by surprise and get to go first in battle! 
 PlayersGoFirst=$chr(3) $+ 14 $+ The players take the monsters by surprise and get to go first in battle! 
 WarmachineFight=$chr(3) $+ 14 $+ The ground begins to shake violently as the Forces of Evil unleash their newest creation: The Monster Warmachine! The massive tank-like machine rolls out ready to attack.
-DemonWallFight=$chr(3) $+ 14 $+ The heroes are teleported into a long dead-end hallway. Suddenly one end of the hall comes to life. The Demon Wall readies its weapons and begins to slowly move in, ready to crush all the heroes on the other end of the hall. This battle will have to be won fast or else!
-DemonWallFightOver=$chr(3) $+ 14 $+ The Demon Wall gives off an eerie laugh as the heroes are backed against the wall. With nowhere else to go, the wall continues to press against them until the heroes are squished and the battle ends.
-DemonWallFightWarning=$chr(3) $+ 4 $+ The heroes estimate they have %max.demonwall.turns turns before the wall will crush them at the end of the hall.
+DemonWallFight=$chr(3) $+ 14 $+ The heroes are teleported into a long dead-end hallway. Suddenly one end of the hall comes to life. The %demonwall.name readies its weapons and begins to slowly move in, ready to crush all the heroes on the other end of the hall. This battle will have to be won fast or else!
+DemonWallFightOver=$chr(3) $+ 14 $+ The %demonwall.name gives off an eerie laugh as the heroes are backed against the wall. With nowhere else to go, the wall continues to press against them until the heroes are squished and the battle ends.
+DemonWallFightWarning=$chr(3) $+ 4 $+ The heroes estimate they have %max.demonwall.turns turns before The %demonwall.name will crush them at the end of the hall.
 ElderDragonFight=$chr(3) $+ 14 $+ The Elder Dragon %elderdragon.name has awoken from its long slumber. With an earth-shaking roar, the dragon claws out of the ground and flies high into the air.  It gives another roar as it then sees the heroes and swoops in for an attack.
 CrystalShadowFight=$chr(3) $+ 14 $+ The heroes stumble upon a very large and ancient crystal. Upon inspecting it, it glows and teleports the heroes inside of a large crystal chamber where a powerful Crystal Shadow Warrior stands waiting for them.
 BanditsFight=$chr(3) $+ 14 $+ Machine gun sounds fill the air as a bunch of noisy bandits arrive to kill and rob the heroes.
@@ -271,10 +280,13 @@ Error Messages
 =======================
 
 [Errors]
+Can'tDualWield=$chr(3) $+ 4 $+ Error: %real.name does not have the necessary skill to dual wield.
+WeaponAlreadyEquipped=$chr(3) $+ 4 $+ Error: %real.name is already using that weapon.
+Using2HWeapon=$chr(3) $+ 4 $+ Error: Your current weapon is currently a 2 handed weapon.
 AccessCommandError=$chr(3) $+ 4 $+ Error: The command is: !access add/remove/list <person>  (Please remember to remove the <>).  
 AccessCommandCan'tRemoveSelf=$chr(3) $+ 4 $+ Error: You cannot remove yourself from your player access list.
 AccessCommandAlreadyHasAccess=$chr(3) $+ 4 $+ Error: $3 already has access to your character.
-DoNotHaveAccessToThatChar=$chr(3) $+ 4 $+ Error: $nick is not on $1 $+ 's access list and cannot control that character.
+DoNotHaveAccessToThatChar=$chr(3) $+ 4 $+ Error: $1 is not on $2 $+ 's access list and cannot control that character.
 NeedToMakeACharacter=$chr(3) $+ 4 $+ It seems that you do not have an active character with that name. Please use !new char to create one. If you had one and it's been more than six months the character has been erased and will need to be re-created or the bot's owner will have to restore it.
 Can'tHaveMoreThanTwoChars=$chr(3) $+ 4 $+ Error: You cannot make any more characters. Log into your other characters or have a bot owner erase some first.
 NoScriptsWithCommands=$chr(3) $+ 4 $+ Error: You cannot build scripts with your command!
@@ -302,7 +314,7 @@ DoNotKnowThatStyle=$chr(3) $+ 4 $+ Error: %real.name does not know that style 
 CanOnlySwitchOutsideBattle=$chr(3) $+ 4 $+ Error: You can only switch styles outside of battles.
 InvalidStyle=$chr(3) $+ 4 $+ Error: Invalid style!
 DoNotHaveWeapon=$chr(3) $+ 4 $+ Error: %real.name does not own that weapon! 
-WrongEquippedWeapon=$chr(3) $+ 4 $+ Error: You are currently using %weapon.equipped not $2 $+ ! 
+WrongEquippedWeapon=$chr(3) $+ 4 $+ Error: You are currently using %weapon.equipped.right $+  $iif(%weapon.equipped.left != $null, and %weapon.equipped.left $+ ) and not $2 $+ ! 
 Can'tDetachHands=$chr(3) $+ 4 $+ Error: %real.name cannot detatch $gender($nick) hands!
 OnlyTauntMonsters=$chr(3) $+ 4 $+ Error: %real.name can only taunt  monsters!
 Can'tTauntWhiledead=$chr(3) $+ 4 $+ Error: %real.name cannot taunt while dead!
@@ -315,7 +327,7 @@ CanNotAttackSomeoneWhoIsDead=$chr(3) $+ 4 $+ %real.name cannot attack someone 
 CanNotAttackSomeoneWhoFled=$chr(3) $+ 4 $+ %real.name cannot attack $set_chr_name($2) %real.name $+ , because %real.name has run away from the fight! 
 CanNotAttackSomeoneWhoFledTech=$chr(3) $+ 4 $+ %real.name cannot attack $set_chr_name($3) %real.name $+ , because %real.name has run away from the fight! 
 DoesNotKnowTech=$chr(3) $+ 4 $+ %real.name does not know how to perform the $2 technique!
-Can'tPerformTechWithWeapon=$chr(3) $+ 4 $+ %real.name cannot perform that technique using $gender($1) %weapon.equipped
+Can'tPerformTechWithWeapon=$chr(3) $+ 4 $+ %real.name cannot perform that technique using $iif(%weapon.equipped.left != $null, $gender($1) equipped weapons, $gender(41) %weapon.equipped)
 NotEnoughTPforTech=$chr(3) $+ 4 $+ %real.name does not have enough TP to perform this technique! 
 AlreadyBoosted=$chr(3) $+ 4 $+ %real.name is already boosted and cannot do so again at this time!
 AlreadyUsedFinalGetsuga=$chr(3) $+ 4 $+ %real.name has already used this technique and cannot do so again. 
@@ -354,6 +366,7 @@ MustSpecifyName=$chr(3) $+ 4 $+ Error: You must specify a name, rather than "m
 NoBattleCurrently=$chr(3) $+ 4 $+ Error: There is no battle currently!
 NoChestExists=$chr(3) $+ 4 $+ Error: There is no chest to unlock!
 WrongChestKey=$chr(3) $+ 4 $+ Error: This key does not unlock this color of chest!
+ChestAlreadyBeingOpened=$chr(3) $+ 4 $+ Error: This chest is already being opened..
 Can'tLogIntoThisChar=$chr(3) $+ 4 $+ Error: You cannot log into this character.
 Can'tSaveALosingStreak=$chr(3) $+ 4 $+ Error: %real.name cannot save a losing streak to $gender($nick) file.
 Can'tSaveALowerStreak=$chr(3) $+ 4 $+ Error: %real.name cannot save a winning streak lower than $gender($nick) previous save.
@@ -398,6 +411,7 @@ NotEnoughBlackOrbs=$chr(3) $+ 4 $+ Error: You do not have enough black orbs
 Can'tReforgeThatWeapon=$chr(3) $+ 4 $+ Error: This weapon cannot be reforged.
 NoCloneToControl=$chr(3) $+ 4 $+ Error: %real.name do not have an active shadow clone to control right now.
 MustUseDoppelgangerStyleToControl=$chr(3) $+ 4 $+ Error: %real.name must have the Doppelganger style equipped in order to control $gender($1) shadow clones.
+MustUseBeastmasterStyleToControl=$chr(3) $+ 4 $+ Error: %real.name must have the Beastmaster style equipped in order to control $gender($1) summons.
 ShadowClonesCan'tUseSkill=$chr(3) $+ 4 $+ Error: Shadow Clones can not use this skill.
 CannotSnatchPlayers=$set_chr_name($2) $+ $chr(3) $+ 4 $+ %real.name cannot grab other players!
 CannotSnatchBosses=$set_chr_name($2) $+ $chr(3) $+ 4 $+ %real.name cannot grab bosses!
@@ -441,13 +455,17 @@ CannotUseItemOnSomeoneElse=$chr(3) $+ 4 $+ Error: This item is exclusive to %r
 CannotUseDiscountCardOnOthers=$chr(3) $+ 4 $+ Error: Shop Reset items cannot be used on others.
 ShopNPCNotAvailable=$chr(3) $+ 4 $+ The NPC that sells this item is currently unavailable.
 AlreadyLearnedThisWeapon=$chr(3) $+ 4 $+ Error: %real.name has already obtained the %weapon.to.gain $+ .
+AlreadyLearnedThisSong=$chr(3) $+ 4 $+ Error: %real.name has already learned how to perform the %song.to.gain song.
 Can'tReforgepInBattle=$chr(3) $+ 4 $+ Error: %real.name cannot reforge weapons in battle.
+Can'tUseSkillInBattle=$chr(3) $+ 4 $+ Error: %real.name cannot use this skill in battle.
+Don'tKnowThatSong=$chr(3) $+ 4 $+ Error: %real.name does not know how to sing that song.
+Don'tHaveInstrument=$chr(3) $+ 4 $+ Error: %real.name does not have the necessary instrument to perform this song.
 
 =======================
 Battle Related Messages
 =======================
 [Battle]
-StartBattle=$chr(3) $+ 2 $+ * A battle will begin in %show.time $iif(%time.between.battles < 1, seconds, minutes) $+ .
+StartBattle=$chr(3) $+ 2 $+ * A battle will begin in %show.time $iif(%time.between.battles < 1, seconds, $iif(%time.between.battles = 1, minute, minutes)) $+ .
 BattleOpen=$chr(3) $+ 4 $+ A dimensional portal has been detected.  The enemy force will arrive in %time.to.enter seconds. Type !enter if you wish to join the battle!  
 BattleOpenMimic=$chr(3) $+ 4 $+ An evil treasure chest Mimic is ready to fight The battle will begin in %time.to.enter seconds. Type !enter if you wish to join the battle!  
 BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone willing to brave the gauntlet has %time.to.enter seconds to enter before the doors close. Type !enter if you wish to join the battle!  
@@ -483,6 +501,7 @@ KeyWin=$chr(3) $+ 10 $+  $+ %real.name finds 1 %key.color key $+ !
 EnteredTheBattle=$chr(3) $+ 4 $+  $+ %real.name has entered the battle! 
 CurrentWeather=$chr(3) $+ 3 $+ The weather is currently: $readini($dbfile(battlefields.db), weather, current)
 CurrentMoon=$chr(3) $+ 3 $+ The current moon phase is: $readini($dbfile(battlefields.db), MoonPhase, CurrentMoonPhase)
+CurrentTime=$chr(3) $+ 3 $+ The current time of Day $bytes($readini(battlestats.dat, battle, GameDays),b) is: $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) 
 TauntAngry=$chr(3) $+ 4 $+  $+ %real.name becomes angry!
 TauntRage=$chr(3) $+ 4 $+  $+ %real.name becomes enraged!
 TauntDefensive=$chr(3) $+ 4 $+  $+ %real.name becomes defensive!
@@ -492,6 +511,7 @@ TauntBored=$chr(3) $+ 4 $+  $+ %real.name is bored with $set_chr_name($1) %rea
 TauntLaugh=$chr(3) $+ 4 $+  $+ %real.name laughs the taunt off!
 TauntSmile=$chr(3) $+ 4 $+  $+ %real.name gives a large grin! 
 FleeBattle=$chr(3) $+ 4 $+  $+ %real.name has run away from the battle! 
+DroppedOutofBattle=$chr(3) $+ 4 $+  $+ %real.name has been removed from battle due to too many skipped turns! 
 CannotFleeBattle=$chr(3) $+ 4 $+ %real.name attempts to flee the battle...but fails.
 DarknessWarning=$chr(3) $+ 4 $+ Darkness will overcome the battlefield in 5 turns..
 DarknessCoversBattlefield=$chr(3) $+ 4 $+ Darkness covers the battlefield enhancing the strength of all remaining monsters!
@@ -501,24 +521,28 @@ NoOneJoinedBattleYet=$chr(3) $+ 4 $+ No one has joined the battle yet!
 BatListTitleMessage=$chr(3) $+ 10 $+ -=BATTLE INFORMATION=-
 StepsUpFirst=$chr(3) $+ 2 $+ $set_chr_name(%who) $+ %real.name steps up first in the battle!
 LandsACriticalHit=$chr(3) $+ 4 $+ %real.name lands a critical hit! 
-PerformsADoubleAttack=$chr(3) $+ 4 $+ %real.name performs a double $iif($4 = tech, attack!, attack against %enemy $+ !)
-PerformsATripleAttack=$chr(3) $+ 4 $+ %real.name performs a triple $iif($4 = tech, attack!, attack against %enemy $+ !)
-PerformsA4HitAttack=$chr(3) $+ 4 $+ %real.name performs a four hit $iif($4 = tech, attack!, attack against %enemy $+ !)
-PerformsA5HitAttack=$chr(3) $+ 4 $+ %real.name performs a five hit $iif($4 = tech, attack!, attack against %enemy $+ !)
-PerformsA6HitAttack=$chr(3) $+ 4 $+ %real.name performs a six hit $iif($4 = tech, attack!, attack against %enemy $+ !)
-PerformsA7HitAttack=$chr(3) $+ 4 $+ %real.name performs a seven hit $iif($4 = tech, attack!, attack against %enemy $+ !)
-PerformsA8HitAttack=$chr(3) $+ 4 $+ %real.name performs an eight hit $iif($4 = tech, attack!, attack against %enemy $+ !)
-EnemyDefeated=$chr(3) $+ 4 $+ %enemy $+  $iif($readini($char(%target), descriptions, DeathMessage) = $null, has been defeated by %user $+ !, $readini($char(%target), descriptions, DeathMessage))  %overkill
+PerformsADoubleAttack=$chr(3) $+ 4 $+ %real.name performs a double $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
+PerformsATripleAttack=$chr(3) $+ 4 $+ %real.name performs a triple $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
+PerformsA4HitAttack=$chr(3) $+ 4 $+ %real.name performs a four hit $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
+PerformsA5HitAttack=$chr(3) $+ 4 $+ %real.name performs a five hit $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
+PerformsA6HitAttack=$chr(3) $+ 4 $+ %real.name performs a six hit $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
+PerformsA7HitAttack=$chr(3) $+ 4 $+ %real.name performs a seven hit $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
+PerformsA8HitAttack=$chr(3) $+ 4 $+ %real.name performs an eight hit $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
+EnemyDefeated=$chr(3) $+ 4 $+ %enemy $+  $iif($readini($char(%target), descriptions, DeathMessage) = $null, has been defeated by %user $+ !, $readini($char(%target), p, descriptions, DeathMessage))  %overkill
 AttackDidDamage=The attack did4 $bytes(%attack.damage,b) damage %style.rating
 TargetCovered=$chr(3) $+ 7 $+ $set_chr_name(%cover.target) $+ %real.name jumps in front of the attack to shield $set_chr_name($1) %real.name $+ !
+InactiveAlive=$chr(3) $+ 4 $+ %enemy comes to life after the attack and readies for battle.
 NotAllowedBattleCondition=$chr(3) $+ 4 $+ $+ %real.name is not allowed to do that action due to the current battle conditions!
 NotAllowedBattlefieldCondition=$chr(3) $+ 4 $+ $+ %real.name is not allowed to do that action while on the current battlefield!
 GoldOrbUsed=$chr(3) $+ 7 $+ %real.name $+ 's body is lifted off the ground by a bright golden light.  It flashes for a moment and %real.name is brought back to life!
 WeaponParry=$chr(3) $+ 7 $+ %real.name parries $set_chr_name($2) %real.name $+ 's attack using $gender($1) %parry.weapon $+ ! %style.rating
+ShieldBlock=$chr(3) $+ 7 $+ %real.name blocks $set_chr_name($2) %real.name $+ 's attack using $gender($1) %left.hand.weapon $+ ! %style.rating
+ShieldAbsorb=$chr(3) $+ 7 $+ %real.name $+ 's %left.hand.weapon has absorbed %percent.blocked damage from $set_chr_name($2) %real.name $+ 's attack $+ !
 TricksterDodged=$chr(3) $+ 7 $+ %real.name dodges the attack stylishly using $gender($1) Trickster style! %style.rating
 NormalDodge=$chr(3) $+ 7 $+ %real.name swiftly and gracefully dodges the attack! %style.rating
 ThirdEyeDodge=$chr(3) $+ 7 $+ %real.name predicts the attack and dodges it! %style.rating
 MeleeCountered=$chr(3) $+ 7 $+ $set_chr_name($1) $+ %real.name $+ 's melee attack is countered by $set_chr_name($2) %real.name $+ !
+ShieldCountered=$chr(3) $+ 7 $+ $set_chr_name($1) $+ %real.name $+ 's melee attack is reflected back at %real.name by $set_chr_name($2) %real.name $+ 's shield!
 TargetSnatched=$chr(3) $+ 12 $+ %real.name has successfully grabbed $set_chr_name($2) $+ %real.name and is now using $gender2($2) as a shield!
 TargetNotSnatched=$chr(3) $+ 12 $+ %real.name was unable to grab $set_chr_name($2) $+ %real.name $+ !
 ReleaseSnatchedTarget=$chr(3) $+ 4 $+ %real.name throws $set_chr_name(%cover.target) $+ %real.name away from $gender2($1) $+ , no longer making %real.name a shield!
@@ -527,6 +551,7 @@ NaturalArmorBroken=$chr(3) $+ 4 $+ %user has broken %enemy $+ 's %naturalArmo
 ImmuneToElement=$chr(3) $+ 7 $+ %real.name is immune to the %current.element element!
 ImmuneToWeaponType=$chr(3) $+ 7 $+ %real.name is immune to the %weapon.type weapon type!
 ImmuneToTechName=$chr(3) $+ 7 $+ %real.name is immune to the $2 technique!
+ImmuneToMagic=$chr(3) $+ 7 $+ %real.name is immune to magic!
 ObtainGreenOrb=$chr(3) $+ 3 $+ $set_chr_name($2) $+ %real.name drops a small green orb that restores %orb.restored health to %user $+ !
 ObtainWhiteOrb=$chr(3) $+ 3 $+ $set_chr_name($2) $+ %real.name drops a small white orb that restores %orb.restored TP to %user $+ !
 ObtainOrangeOrb=$chr(3) $+ 3 $+ $set_chr_name($2) $+ %real.name drops a small orange orb that restores %orb.restored IgnitionGauge to %user $+ !
@@ -534,6 +559,7 @@ DisabledMech=$chr(3) $+ 4 $+ %enemy has been disabled. $set_chr_name($2) %real
 MechDismiss=$chr(3) $+ 3 $+ %real.name gets out of $gender($1) mech and dismisses it.
 MechSummon=summons $gender($1) $readini($char($1), mech, name) and hops in, ready for battle!
 Don'tLetPresidentDie=$chr(3) $+ 4 $+ The Heroes must protect the president!  If the president dies the battle will be over!
+SongNotAllowedThisBattle=$chr(3) $+ 4 $+ A Darkness prevents %real.name $+ 's song from working during this battle.
 
 
 =======================
@@ -549,11 +575,13 @@ PoisonMessage=$chr(3) $+ 4 $+  $+ %real.name grabs $gender($1) chest in pain f
 CurrentlyCursed=$chr(3) $+ 4 $+  $+ %real.name is cursed!
 CurseWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's curse has worn off.
 TooDrunkToFight=$chr(3) $+ 4 $+  $+ %real.name stumbles over and collapses to the ground with a loud hiccup, missing a turn.
+TooDrunkToFight2=$chr(3) $+ 4 $+  $+ %real.name is too drunk to fight!
 TooBlindToFight=$chr(3) $+ 4 $+  $+ %real.name is too blind to fight!
 TooPetrifiedToFight=$chr(3) $+ 4 $+  $+ %real.name is too petrified to fight!
 TooIntimidatedToFight=$chr(3) $+ 4 $+  $+ %real.name is too intimidated to fight!
 TooStaggeredToFight=$chr(3) $+ 4 $+  $+ %real.name is staggered and is unable to fight this round!
 CurrentlyAsleep=$chr(3) $+ 4 $+ %real.name is currently asleep!
+WakesUp=$chr(3) $+ 4 $+ %enemy is no longer asleep!
 CurrentlyStunned=$chr(3) $+ 4 $+ %real.name is currently stunned and unable to move!
 CurrentlyStopped=$chr(3) $+ 4 $+ %real.name is currently frozen in time and unable to move!
 CurrentlyWeighed=$chr(3) $+ 4 $+ %real.name $+ 's body feels really heavy.
@@ -593,6 +621,8 @@ StaggerHappens=$chr(3) $+ 4 $+ %enemy is staggered from the damage and collaps
 MostStatusesCleared=$chr(3) $+ 3 $+ Most of %real.name $+ 's status effects have been cleared.
 CurrentlyDefenseDown=$chr(3) $+ 4 $+ %real.name $+ 's body feels less defensive. 
 DefenseDownWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's defense down status has worn off. 
+CurrentlyDefenseUp=$chr(3) $+ 4 $+ %real.name $+ 's body feels more defensive. 
+DefenseUpWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's defense up status has worn off. 
 CurrentlyStrengthDown=$chr(3) $+ 4 $+ %real.name $+ 's body strength feels weaker. 
 CurrentlyIntDown=$chr(3) $+ 4 $+ %real.name $+ 's IQ feels lower. 
 CurrentlyWeaponLocked=$chr(3) $+ 4 $+ %real.name $+ 's weapon is locked and $gender3($1) is unable to change it. 
@@ -656,6 +686,8 @@ SnatchTargetDead=$set_chr_name($2) $chr(3) $+ 4 $+ %real.name cannot be grabbed
 QuickSilverImmune=$chr(3) $+ 4 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's Quicksilver effect!
 FormlessStrikeWornOff=$chr(3) $+ 12 $+ %real.name $+ 's formless strike has worn off. 
 SkillAlreadyUsed=$chr(3) $+ 4 $+ Error: %real.name has already used this skill for this battle and cannot use it again!
+LockpickingInUse=$chr(3) $+ 4 $+ Error: %real.name cannot use the lockpicking skill again so soon. Try again after joining a battle.
+LockpickingFailed=$chr(3) $+ 4 $+  $+ %real.name $+ 's lockpick breaks and the chest remains unopened.
 
 =======================
 Tech Related Messages
@@ -721,6 +753,7 @@ HiHoHiHo=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Hi Ho, Hi 
 BloodGoneToHead=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: All of %real.name $+ 's Blood Has Gone to $gender($1) Head! and receives $bytes($3,b) $readini(system.dat, system, currency) as a reward!
 YouBringMonstersI'llBringWeapons=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: You Bring the Monsters and I'll Bring the Weapons! and receives $bytes($3,b) $readini(system.dat, system, currency) as a reward!
 Warbound=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Warbound and receives 1 Gold Orb as a reward!
+SSStylish=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Super SSStylish! and receives $bytes($3,b) $readini(system.dat, system, currency) as a reward!
 FillYourDarkSoulWithLight=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Fill Your Dark Soul With Light and receives 1 IgnitionStar as a reward!
 IAmIronMan=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: I Am Iron Man and receives 5 E-tanks as a reward!
 Jackpot=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Jackpot! and receives 1 4leaf-clover as a reward!
@@ -736,6 +769,8 @@ Style Levels
 [Styles]
 FlatOutBoring=$chr(91) $+ $chr(3) $+ 10Flat Out Boring! $+ $chr(93) 
 Dope=$chr(91) $+ $chr(3) $+ 10Dope $+ $chr(93) 
+Don'tWorry=$chr(91) $+ $chr(3) $+ 10Don't Worry $+ $chr(93)
+ComeOn=$chr(91) $+ $chr(3) $+ 10Come on! $+ $chr(93) 
 Cool=$chr(91) $+ $chr(3) $+ 10Cool! $+ $chr(93) 
 Blast=$chr(91) $+ $chr(3) $+ 10Blast! $+ $chr(93) 
 Alright=$chr(91) $+ $chr(3) $+ 10Alright! $+ $chr(93) 
@@ -783,9 +818,38 @@ ShenronWishOnMessage=$chr(3) $+ 2 $+ The Dragonballs have been used to grant a p
 Shop NPC Messages
 =======================
 [ShopNPCs]
-RemovedNPC=$chr(3) $+ 7* %shopnpc.name has left the Allied Forces HQ and is no longer available to do business with. $iif(%shopnpc.name = Santa, $chr(3) $+ 4 $+ %shopnpc.name waves at the heroes and says "Ho! Ho! Ho! See you next year!") $iif(%shopnpc.name = EasterBunny, $chr(3) $+ 4 $+ %shop.npc bounces around one the HQ one last time before hopping off into the distance.)
-AddedNPC=$chr(3) $+ 7* %shopnpc.name has arrived to the Allied Forces HQ ready to do business. $iif(%shopnpc.name = Santa, $chr(3) $+ 4 $+ %shopnpc.name looks at the heroes and says "Please save my Elves! I need Elves to make more items to sell to you!")
+RemovedNPC=$chr(3) $+ 7* %shopnpc.name has left the Allied Forces HQ and is no longer available to do business with. $iif($1 = Santa, $chr(3) $+ 4 $+ %shopnpc.name waves at the heroes and says "Ho! Ho! Ho! See you next year!") $iif($1 = EasterBunny, $chr(3) $+ 4 $+ %shopnpc.name bounces around the HQ one last time before hopping off into the distance.) $iif($1 = TravelMerchant, $chr(3) $+ 4 $+ %shopnpc.name hops back into his airship and waves bye as he flies off. Don't worry..he'll be back next month.)
+AddedNPC=$chr(3) $+ 7* %shopnpc.name has arrived to the Allied Forces HQ ready to do business. $iif(%shopnpc.name = Santa, $chr(3) $+ 4 $+ %shopnpc.name looks at the heroes and says "Please save my Elves! I need Elves to make more items to sell to you!") $iif(%shopnpc.name = TravelMerchant, $chr(3) $+ 4 $+ %shop.npc lands his large airship at the Allied Forces HQ and welcomes everyone to his shop.)
 SavedElf=$chr(3) $+ 7* The heroes have saved one of Santa's Elves!  This makes %total.elves.saved $iif(%total.elves.saved = 1, Elf, Elves) saved! $iif(%total.elves.saved = 10 || %total.elves.saved = 20 || %total.elves.saved = 50 || %total.elves.saved = 200, $chr(3) $+ 4 $+ Santa's Shop has become larger! He sells more items in the store now!)
 ShopNPCKidnapped=$chr(3) $+ 7* The Forces of Evil raid the Allied Forces HQ and kidnap %shopnpc.name $+ !
-ShopNPCRescued=$chr(3) $+ 7* The Allied Forces have rescued %shopnpc.name $+ !
+ShopNPCRescued=$chr(3) $+ 7* The Allied Forces have rescued %shopnpc.name $+ !  $iif(%kidnapped.npc = WheelMaster, 2 $+  %shopnpc.name looks at the heroes and says "Thank you for saving me! Come see me at my booth and play the wheel mini game! Use !wheel help for more information") $iif(%kidnapped.npc = Gardener, 2 $+  %shopnpc.name looks at the heroes and says "Thank you for saving me! I went looking for some seeds and flowers for the garden and got $iif(Moogle isin %shopnpc.name, captured Kupo!, captured!) I'll leave gathering of those things to you now. Be sure to come visit the garden soon! Use !garden help for more information")
+
+
+=======================
+Garden Messages
+=======================
+[Garden]
+HelpMessage=$chr(3) $+ 7 $+ $readini(shopnpcs.dat, NPCNames,Gardener) looks at you.. and says.. 2"Your help is needed in this garden $iif(Moogle isin $readini(shopnpcs.dat, NPCNames,Gardener) , Kupo) $+ !  Collect seeds and flowers and use !garden plant itemname to help make the garden grow!  Be sure to check in on it using !garden view too. Remember this is a team effort $iif(Moogle isin $readini(shopnpcs.dat, NPCNames,Gardener) , Kupo) $+ !  Make the garden beautiful and I'm sure something amazing will happen."
+Can'tPlantThat=$chr(3) $+ 7 $+ $readini(shopnpcs.dat, NPCNames,Gardener) looks at you horrified.. and says.. 2"You can't plant that! Are you crazy $iif(Moogle isin $readini(shopnpcs.dat, NPCNames,Gardener) , Kupo) $+ !?"
+GardenStatus=$chr(3) $+ 7 $+ $readini(shopnpcs.dat, NPCNames,Gardener) gives you the latest stats of the garden: 2"The garden has %garden.seeds  $+ $iif(%garden.seeds = 1, seed, seeds) planted; %garden.saplings $+  $iif(%garden.saplings = 1, sapling that is on its way to becoming a tree;, saplings that are on their way to becoming trees;)  $+ %garden.trees fully grown $iif(%garden.trees = 1, tree,trees) $+ . The garden also has %garden.plants  $+ $iif(%garden.plants = 1, flower, flowers) planted and %garden.bloomed  $+ $iif(%garden.bloomed = 1, flower that is in, flowers that are in) full bloom." 
+
+; Planting Seed Types
+PlantSeed1=$chr(3) $+ 7 $+ $readini(shopnpcs.dat, NPCNames,Gardener) takes the $1 from you and nods. 2"I'll plant this seed right away for you $iif(Moogle isin $readini(shopnpcs.dat, NPCNames,Gardener), Kupo) $+ !" 
+PlantSeed2=$chr(3) $+ 7 $+ $readini(shopnpcs.dat, NPCNames,Gardener) takes the $1 from you and gives a smile. 2"Planting a seed today? I'll take it and put it in the perfect spot for you $iif(Moogle isin $readini(shopnpcs.dat, NPCNames,Gardener), Kupo) $+ !" 
+
+; Planting Flower types
+PlantFlower1=$chr(3) $+ 7 $+ $readini(shopnpcs.dat, NPCNames,Gardener) takes the $1 from you and nods. 2"I'll make sure this gets planted in just the perfect spot for you $iif(Moogle isin $readini(shopnpcs.dat, NPCNames,Gardener), Kupo) $+ !
+PlantFlower2=$chr(3) $+ 7 $+ $readini(shopnpcs.dat, NPCNames,Gardener) takes the $1 from you and gives a spin. 2"This will make a perfect addition to the garden! I'll plant it in the perfect spot $iif(Moogle isin $readini(shopnpcs.dat, NPCNames,Gardener), Kupo) $+ !
+
+; Garden Descriptions
+Level1Garden=$chr(3) $+ 3 $+ You notice the garden is in a rather sorry state. There isn't much green here and not much to look at.
+Level2Garden=$chr(3) $+ 3 $+ You notice the garden is starting to look more green but is still not much to look at. It could use more trees and flowers for sure.
+Level3Garden=$chr(3) $+ 3 $+ You notice the garden is taking shape. The Gardener has made a nice path leading around the trees and flowers.
+Level4Garden=$chr(3) $+ 3 $+ You notice the garden is looking good. The Gardener has moved some benches under the trees to allow adventurers to relax under them.
+Level5Garden=$chr(3) $+ 3 $+ You notice the garden is turning out to be beautiful after all. The Gardener has created a small zen pond to go with all the lush and wonderful landscape.
+Level6Garden=$chr(3) $+ 3 $+ You notice the garden is beautiful now--a farcry from how it started. Cheerful birds sit in the trees chirping away. 
+Level7Garden=$chr(3) $+ 3 $+ You notice the garden is so serene and beautiful. There are people visiting the garden from all over the world now.   
+Level8Garden=$chr(3) $+ 3 $+ You notice the garden is starting to look downright epic! The Gardener floats around the garden, spinning and smiling all the way.
+Level9Garden=$chr(3) $+ 3 $+ You notice the garden is downright epic! The lush and beautiful garden just fills you with happiness.
+Level10Garden=$chr(3) $+ 3 $+ You notice that the garden has grown into a gardener's dream come true.  There is lush greenery everywhere. Nice ponds and benches allow this to be the perfect garden for taking it easy and meditating.  
 

@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=250
-Str=2000
-Def=2000
-Int=3500
-Spd=2800
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Name=Shantotto
 
 
 [Battle]
 Hp=2500
 Tp=250
-Str=2000
-Def=2000
-Int=3500
-Spd=2800
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Status=alive
 
 
@@ -32,7 +32,7 @@ Percent=0
 Hused=1
 Dused=1
 Char=is a Tarutaru that wears the Black Mage AF armor, excluding the hat. She is well-known in Windurst and one of the strongest magic users in Vana'diel. She is also very arrogant! "O~hohohohohohoho!"
-Rage=needs to set a rage desc by typing !ragedesc <desc>
+Rage=glares at the monsters as her eyes glow red. "You didn't treat me right, so I'm going to set your pants a-light! O~hohohohoho!"
 
 [Stuff]
 RedOrbs=0
@@ -95,7 +95,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=IridialStaff
-IridialStaff=$calc(100 + $current.battlestreak)
+IridialStaff=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Resist-Charm=100
@@ -111,7 +111,7 @@ Resist-confuse=100
 Resist-Drunk=100
 Resist-Weaponlock=100
 Resist-Stun=100
-Wizardy=500
+Wizardy=1000
 Zen=5
 ClearMind=3
 ElementalSeal=1
@@ -119,13 +119,13 @@ ManaWall=1
 
 
 [Techniques]
-Flare=$calc(100 + $current.battlestreak)
-Quake=$calc(100 + $current.battlestreak)
-Flood=$calc(100 + $current.battlestreak)
-Tornado=$calc(100 + $current.battlestreak)
-Freeze=$calc(100 + $current.battlestreak)
-Burst=$calc(100 + $current.battlestreak)
-CureIV=$calc(100 + $current.battlestreak)
+Flare=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Quake=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Flood=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Tornado=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Freeze=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Burst=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+CureIV=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

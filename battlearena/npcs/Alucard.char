@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2000
 Tp=500
-Str=2300
-Def=2300
-Int=2300
-Spd=2300
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Name=Alucard
 
 
 [Battle]
 Hp=2000
 Tp=500
-Str=2300
-Def=2300
-Int=2300
-Spd=2300
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AlucardSword
-AlucardSword=$calc(100 + $current.battlestreak)
+AlucardSword=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Swordmaster=100
-Wizardry=100
+Swordmaster=1000
+Wizardry=1000
 Resist-Charm=100
 Resist-Zombie=100
 ClearMind=3
@@ -107,11 +107,11 @@ Zen=5
 Resist-Intimidate=100
 
 [Techniques]
-Requiescat=$calc(100 + $current.battlestreak)
-ChantduCygne=$calc(100 + $current.battlestreak)
-UrielBlade=$calc(100 + $current.battlestreak)
-SoulSteal=$calc(100 + $current.battlestreak)
-TetraSpirit=$calc(100 + $current.battlestreak)
+Requiescat=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChantduCygne=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+UrielBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SoulSteal=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+TetraSpirit=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

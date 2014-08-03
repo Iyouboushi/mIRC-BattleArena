@@ -1,6 +1,10 @@
+; Weapons.db is used to store the weapon lists, weapon information, shield lists and shield information.
+
+
+
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai
-Swords=Mythril_Sword.Joyeuse.Rebellion.Excalibur.Murgleis.JewelSword.SilverSword
+Swords=Mythril_Sword.Joyeuse.Rebellion.Excalibur.Murgleis.JewelSword.SilverSword.MasterSword
 Whips=LeatherWhip.DemonWhip.Vampire_Killer
 Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Boomstick.AK47.Armageddon.X-Buster
 Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva
@@ -14,14 +18,13 @@ Daggers=MainGauche.Mandau.Terpsichore
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
 Defunct=KaiserKnuckles.LexTalionis.Soulsaber.Almace.Caladbolg.ChainWhip.SpikedSteelWhip.DragontailWhip.Quicksilver.SniperRifle.Annihilator.DeathPenalty.Keitonotachi.Hagun.Masamune.Rhongomiant
-
 ; The lists after this are for monster weapons only.  Players do not have access to these.
-MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower
-MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.SinistralPower.JesterWand.VampireArt.Puppetry.Benihime.PeoplesFist.SuccubusPower.DragonShouts.BlueEyesPower.BlackMagic.DragonSword.OctoArms.Casull&Jackal.AlucardSword.Auto9.Railgun.WoolyTusks.OrochiPower.BogardGloves.GiygasPower.AtlantisPower.RedEyedDragoon.DarknessDragoon.ShihouinFists.ImpHorn.GhostPower.ChozoSuit.ZeroSaber.SantaRifle.ScorpionFists.Legion
-MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.DemonWall.GoylePower..SwordOfTheFallenDevil
-MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.KosmosRevolver.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.MegaBuster.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.Beorc_Sword
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.Morgenstern
-
+MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower.Aettir
+MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.SinistralPower.JesterWand.VampireArt.Puppetry.Benihime.PeoplesFist.SuccubusPower.DragonShouts.BlueEyesPower.BlackMagic.DragonSword.OctoArms.Casull&Jackal.AlucardSword.Auto9.Railgun.WoolyTusks.OrochiPower.BogardGloves.GiygasPower.AtlantisPower.Broad_Sword.Rose's_Rapier.ShihouinFists.ImpHorn.GhostPower.ChozoArmCannon.ZeroSaber.SantaRifle.ScorpionFists.Legion
+MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.GoylePower.SwordOfTheFallenDevil.X-BusterMk1.X-BusterMk2.X-BusterMk3.MonkeyIsland_Cutlass
+MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.KosmosRevolver.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.MegaBusterMk1.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.Morgenstern.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws
 
 ============================================
 WEAPON TEMPLATE
@@ -60,11 +63,26 @@ IgnoreDefense=
 ; If set false (or the value is missing), the weapon will go through an Ethereal monster doing 0 damage.
 HurtEthereal=
 
+; 2Handed is a flag that tells the bot if the weapon requires both hands to use. Set this to true or false.
+2Handed=
+
 ; If the weapon is a mech weapon then it needs an EnergyCost amount that it takes to attack via melee
 EnergyCost=
 
+; CanShieldReflect is a special flag where if set to true then the attack will always be countered if the target
+; is using a shield. Think Deku Scrubs from Zelda.  It's normally not set or set to false.
+CanShieldReflect=
+
+; CanCounter is set to true/false. If set to true there's a small chance that the attack can be countered by the target.
+CanCounter=
+
 ============================================
 
+
+[Shields]
+Small=WoodShield.TurtleShield
+Medium=MetalShield.DarksteelShield.Genbu'sShield
+Large=TowerShield.KiteShield
 
 
 =============================================
@@ -79,6 +97,7 @@ Element=none
 Hits=2
 BasePower=10
 Upgrade=300
+2Handed=true
 
 [Cerberus]
 Cost=3
@@ -89,6 +108,7 @@ Element=ice
 Hits=1
 BasePower=20
 Upgrade=400
+2Handed=true
 
 [Ifrit]
 Cost=5
@@ -99,6 +119,7 @@ Element=fire
 Hits=$rand(1,2)
 BasePower=30
 Upgrade=600
+2Handed=true
 
 [Verethragna]
 Cost=12
@@ -109,6 +130,7 @@ Element=None
 Hits=2
 BasePower=45
 Upgrade=1500
+2Handed=true
 
 [Spharai]
 Cost=16
@@ -119,7 +141,7 @@ Element=None
 Hits=2
 BasePower=50
 Upgrade=1500
-
+2Handed=true
 
 [KaiserKnuckles]
 Cost=5
@@ -130,7 +152,7 @@ Element=None
 Hits=2
 BasePower=30
 Upgrade=600
-
+2Handed=true
 
 =============================================
 SWORDS
@@ -154,6 +176,7 @@ Element=none
 Hits=1
 BasePower=20
 Upgrade=500
+2Handed=true
 
 [Joyeuse]
 Cost=4
@@ -174,6 +197,7 @@ Element=light
 Hits=1
 BasePower=30
 Upgrade=800
+2Handed=true
 
 [Murgleis]
 Cost=15
@@ -209,6 +233,21 @@ Upgrade=0
 IgnoreDefense=10
 HurtEthereal=true
 
+
+[MasterSword]
+Cost=0
+SpecialWeapon=true
+Type=Sword
+Info=The legendary Master Sword, evil's bane. It glows a light blue.
+Abilities=SkywardStrike.HurricaneSpin
+Element=light
+Hits=2
+BasePower=100
+Upgrade=0
+IgnoreDefense=15
+HurtEthereal=true
+
+
 [LexTalionis]
 Cost=3
 Type=Sword
@@ -238,7 +277,7 @@ Element=None
 Hits=1
 BasePower=50
 Upgrade=1500
-
+2Handed=true
 
 =============================================
 GREAT SWORDS
@@ -253,6 +292,7 @@ Element=None
 Hits=1
 BasePower=20
 Upgrade=200
+2Handed=true
 
 [Balmung]
 Cost=7
@@ -263,6 +303,7 @@ Element=None
 Hits=1
 BasePower=30
 Upgrade=300
+2Handed=true
 
 [Nightfall]
 Cost=6
@@ -273,6 +314,7 @@ Element=None
 Hits=$rand(1,2)
 BasePower=20
 Upgrade=400
+2Handed=true
 
 [Ragnarok]
 Cost=18
@@ -283,7 +325,7 @@ Element=None
 Hits=1
 BasePower=65
 Upgrade=1500
-
+2Handed=true
 
 [Caladbolg]
 Cost=18
@@ -294,7 +336,7 @@ Element=None
 Hits=1
 BasePower=65
 Upgrade=1500
-
+2Handed=true
 
 =============================================
 WHIPS
@@ -329,7 +371,6 @@ Hits=$rand(1,3)
 BasePower=40
 Upgrade=1200
 HurtEthereal=true
-
 
 [ChainWhip]
 Cost=4
@@ -374,6 +415,7 @@ Element=none
 Hits=2
 BasePower=15
 Upgrade=400
+2Handed=true
 
 [Magnum]
 Cost=4
@@ -404,6 +446,7 @@ Element=None
 Hits=1
 BasePower=40
 Upgrade=1000
+2Handed=true
 
 [Armageddon]
 Cost=15
@@ -414,6 +457,7 @@ Element=None
 Hits=1
 BasePower=55
 Upgrade=1500
+2Handed=true
 
 [X-Buster]
 cost=0
@@ -437,6 +481,7 @@ Hits=$rand(4,5)
 BasePower=25
 Upgrade=1000
 
+
 [AK47]
 Cost=50
 Type=Rifle
@@ -446,7 +491,7 @@ Element=None
 Hits=$rand(3,5)
 BasePower=25
 Upgrade=1000
-
+2Handed=true
 
 [Quicksilver]
 Cost=4
@@ -458,6 +503,7 @@ Hits=2
 BasePower=20
 Upgrade=300
 
+
 [SniperRifle]
 Cost=10
 Type=Rifle
@@ -467,6 +513,7 @@ Element=None
 Hits=1
 BasePower=40
 Upgrade=600
+2Handed=true
 
 [Annihilator]
 Cost=15
@@ -477,6 +524,7 @@ Element=None
 Hits=1
 BasePower=55
 Upgrade=1800
+2Handed=true
 
 [DeathPenalty]
 Cost=15
@@ -487,7 +535,7 @@ Element=None
 Hits=1
 BasePower=55
 Upgrade=1500
-
+2Handed=true
 
 =============================================
 AXES
@@ -502,6 +550,7 @@ Element=None
 Hits=1
 BasePower=55
 Upgrade=1500
+2Handed=true
 
 [Bravura]
 Cost=18
@@ -512,6 +561,7 @@ Element=None
 Hits=1
 BasePower=65
 Upgrade=1500
+2Handed=true
 
 [Guttler]
 Cost=10
@@ -541,7 +591,7 @@ DAGGERS
 [MainGauche]
 Cost=10
 Type=Dagger
-Info=A dagger that is primarily used in the hoff-hand for defense.
+Info=A dagger that is primarily used in the off-hand.
 Abilities=SharkBite.DancingEdge.Cyclone
 Element=None
 Hits=2
@@ -581,6 +631,7 @@ Element=None
 Hits=1
 BasePower=15
 Upgrade=400
+2Handed=true
 
 [ShigetoBow]
 Cost=4
@@ -591,6 +642,7 @@ Element=None
 Hits=1
 BasePower=20
 Upgrade=600
+2Handed=true
 
 [LamianKamen]
 Cost=6
@@ -601,6 +653,7 @@ Element=None
 Hits=1
 BasePower=30
 Upgrade=800
+2Handed=true
 
 [Yoichinoyumi]
 Cost=10
@@ -611,6 +664,7 @@ Element=Light
 Hits=1
 BasePower=40
 Upgrade=1000
+2Handed=true
 
 [Gandiva]
 Cost=15
@@ -621,6 +675,7 @@ Element=Dark
 Hits=1
 BasePower=55
 Upgrade=1500
+2Handed=true
 
 
 =============================================
@@ -635,6 +690,7 @@ Element=none
 Hits=$rand(1,2)
 BasePower=10
 Upgrade=200
+2Handed=true
 
 [Soboro]
 Cost=2
@@ -645,6 +701,7 @@ Element=none
 Hits=$rand(1,3)
 BasePower=10
 Upgrade=250
+2Handed=true
 
 [Yamato]
 Cost=12
@@ -655,6 +712,7 @@ Element=dark
 Hits=1
 BasePower=45
 Upgrade=1500
+2Handed=true
 
 [Kogarasumaru]
 Cost=18
@@ -665,6 +723,7 @@ Element=None
 Hits=1
 BasePower=65
 Upgrade=1500
+2Handed=true
 
 [Crissaegrim]
 Cost=100
@@ -675,6 +734,7 @@ Hits=4
 BasePower=60
 Upgrade=1800
 Element=none
+2Handed=true
 
 [Valmanway]
 Cost=200
@@ -685,6 +745,7 @@ Hits=5
 BasePower=80
 Upgrade=2000
 Element=none
+2Handed=true
 
 [Zangetsu]
 Cost=7
@@ -695,6 +756,7 @@ Element=none
 Hits=1
 BasePower=35
 Upgrade=1000
+2Handed=true
 
 [Senbonzakura]
 Cost=7
@@ -705,6 +767,7 @@ Element=none
 Hits=1
 BasePower=35
 Upgrade=1000
+2Handed=true
 
 [Hyourinmaru]
 Cost=7
@@ -715,7 +778,7 @@ Element=ice
 Hits=1
 BasePower=35
 Upgrade=1000
-
+2Handed=true
 
 [Keitonotachi]
 Cost=2
@@ -726,6 +789,7 @@ Element=none
 Hits=1
 BasePower=30
 Upgrade=800
+2Handed=true
 
 [Hagun]
 Cost=12
@@ -736,6 +800,7 @@ Element=none
 Hits=1
 BasePower=45
 Upgrade=15000
+2Handed=true
 
 [Masamune]
 Cost=18
@@ -746,7 +811,7 @@ Element=None
 Hits=1
 BasePower=65
 Upgrade=1500
-
+2Handed=true
 
 =============================================
 WANDS & STAVES
@@ -790,6 +855,7 @@ Element=None
 Hits=1
 BasePower=25
 Upgrade=500
+2Handed=true
 
 [ElderWand]
 Cost=15
@@ -810,6 +876,7 @@ Element=None
 Hits=1
 BasePower=35
 Upgrade=800
+2Handed=true
 
 [EbonyWand]
 Cost=30
@@ -830,6 +897,7 @@ Element=None
 Hits=3
 BasePower=80
 Upgrade=2000
+2Handed=true
 
 [PixiWand]
 Cost=2
@@ -851,7 +919,7 @@ Element=None
 Hits=2
 BasePower=40
 Upgrade=1500
-
+2Handed=true
 
 =============================================
 SPEARS
@@ -866,6 +934,7 @@ Element=none
 Hits=1
 BasePower=20
 Upgrade=500
+2Handed=true
 
 [Thalassocrat]
 Cost=8
@@ -876,6 +945,7 @@ Element=None
 Hits=1
 BasePower=30
 Upgrade=700
+2Handed=true
 
 [Corsesca]
 Cost=50
@@ -886,6 +956,7 @@ Element=none
 Hits=$rand(2,4)
 BasePower=15
 Upgrade=1000
+2Handed=true
 
 [Gungnir]
 Cost=15
@@ -896,6 +967,7 @@ Element=None
 Hits=1
 BasePower=50
 Upgrade=1500
+2Handed=true
 
 [Ryunohige]
 Cost=35
@@ -906,7 +978,7 @@ Element=None
 Hits=1
 BasePower=75
 Upgrade=2000
-
+2Handed=true
 
 [Rhongomiant]
 Cost=15
@@ -917,7 +989,7 @@ Element=None
 Hits=1
 BasePower=50
 Upgrade=1500
-
+2Handed=true
 
 =============================================
 SCYTHES
@@ -932,6 +1004,7 @@ Element=None
 Hits=1
 BasePower=20
 Upgrade=500
+2Handed=true
 
 [Vendetta]
 Cost=8
@@ -942,6 +1015,7 @@ Element=None
 Hits=$rand(1,2)
 BasePower=15
 Upgrade=1000
+2Handed=true
 
 [Redemption]
 Cost=12
@@ -952,6 +1026,7 @@ Element=None
 Hits=1
 BasePower=40
 Upgrade=1500
+2Handed=true
 
 [Apocalypse]
 Cost=18
@@ -962,7 +1037,7 @@ Element=None
 Hits=1
 BasePower=65
 Upgrade=1500
-
+2Handed=true
 
 =============================================
 MECH WEAPONS
@@ -1099,6 +1174,16 @@ Element=none
 Hits=1
 BasePower=2
 
+[ArmosSword]
+Cost=0
+Type=sword
+Info=The sword of an Armos Statue.
+Abilities=FastBlade.Shockwave
+Element=none
+Hits=1
+Basepower=20
+
+
 [Orc_Pike]
 Cost=0
 Type=spear
@@ -1125,6 +1210,15 @@ Abilities=FireIV.WaterIV.BlizzardIV.Poison.Blind.Headbutt.Paralyze
 Element=none
 Hits=1
 BasePower=10
+
+[QuadavSword]
+Cost=0
+Type=sword
+Info=You can't buy this!
+Abilities=FastBlade.CircleBlade.FlatBlade.Headbutt
+Element=none
+Hits=1
+BasePower=15
 
 [Mistilteinn]
 Cost=0
@@ -1371,6 +1465,7 @@ Element=none
 Hits=2
 BasePower=10
 
+
 [ElementalPower]
 Cost=0
 Type=Wand
@@ -1406,6 +1501,17 @@ Abilities=Maelstrom.InkJet.Tentacle
 Element=water
 Hits=$rand(1,5)
 BasePower=3
+
+[DekuScrub]
+Cost=0
+Type=DekuScrub
+Info=You can't buy this!
+Abilities=
+Element=earth
+Hits=1
+BasePower=50
+CanShieldReflect=true
+CanCounter=false
 
 [Egyptian_Rod]
 Cost=0
@@ -1629,21 +1735,21 @@ Hits=$rand(1,2)
 BasePower=17
 Upgrade=0
 
-[RedEyedDragoon]
+[Broad_Sword]
 Cost=0
 Type=Sword
-Info=The spirit of the Red-Eyed Dragon!
-Abilities=DoubleSlash.MadnessHero
+Info=Dart's favorite weapon.
+Abilities=DoubleSlash.BurningRush.BlazingDynamo.MadnessHero
 Element=None
 Hits=1
 BasePower=15
 Upgrade=0
 
-[DarknessDragoon]
+[Rose's_Rapier]
 Cost=0
 Type=Sword
-Info=The spirit of the Darkness Dragon!
-Abilities=WhipSmack.DemonsDance
+Info=The rapier belonging to Rose. It is dark purple in color.
+Abilities=WhipSmack.MoreAndMore.HardBlade.DemonsDance
 Element=None
 Hits=1
 BasePower=17
@@ -2020,6 +2126,36 @@ Hits=2
 BasePower=40
 Upgrade=0
 
+[BlastoiseCannons]
+Cost=0
+Type=Blastoise_Cannons
+Info=The powerful water cannons of Blastoise.
+Abilities=Water_Cannon
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+CanCounter=false
+
+[CharizardFangs]
+Cost=0
+Type=Charizard_Fangs
+Info=The fangs of Charizard.
+Abilities=Fire_Fang
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+CanCounter=false
+
+[PikachuPaws]
+Cost=0
+Type=HandToHand
+Info=The paws of Pikachu.
+Abilities=Thunderbolt
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+CanCounter=false
+
 [DreddGun]
 Cost=0
 Type=Gun
@@ -2034,7 +2170,7 @@ Upgrade=0
 Cost=0
 Type=HandtoHand
 Info=The power of the slimes.
-Abilities=SlimeRam.SlimeStomp.CureV.Curaga.FireII.IceII.ThunderII.StoneII.WaterII.AeroII.Flare.Freeze.Burst.Quake.Flood.Tornado.Poison.Blind.Paralyze.Tentacle
+Abilities=SlimeRam.SlimeStomp.Curaga.FireII.IceII.ThunderII.StoneII.WaterII.AeroII.Flare.Freeze.Burst.Quake.Flood.Tornado.Poison.Blind.Paralyze.Tentacle.Cure.CureII.CureIII.Curaga
 Element=None
 Hits=2
 BasePower=15
@@ -2554,7 +2690,7 @@ Upgrade=0
 
 [PinkChainsaw]
 Cost=0
-Type=Chainsaw
+Type=PinkChainsaw
 Info=A pink chainsaw that belongs to Juliet Starling.
 Abilities=ChainsawDash.ChainsawSpin.ChainsawTornado.ChainsawCut.ChainsawAttack.ChainsawCannon
 Element=None
@@ -2562,15 +2698,46 @@ Hits=$rand(1,3)
 BasePower=28
 Upgrade=0
 
-[MegaBuster]
+[MegaBusterMk1]
 Cost=0
 Type=Gun
-Info=The weapon of Megaman.
-Abilities=ChargedEnergyShot.HyperBomb.SuperArm.RollingCutter.ThunderBeam.IceSlasher.FireStorm.ShotgunIce.StormTornado.FireWave.ChameleonSting.ElectricSpark.RollingShield.BoomerangCutter.HomingTorpedo.ArmorChange
+Info=The weapon of Mega Man.
+Abilities=HyperBomb.SuperArm.RollingCutter.ThunderBeam.IceSlasher.FireStorm
 Element=None
-Hits=2
+Hits=$rand(1,2)
 BasePower=30
 Upgrade=0
+
+[X-BusterMk1]
+Cost=0
+Type=Gun
+Info=The Weapon of Mega Man X.
+Abilities=ShotgunIce.StormTornado.FireWave.ChameleonSting.ElectricSpark.RollingShield.BoomerangCutter.HomingTorpedo.ArmorChange
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+Upgrade=0
+
+[X-BusterMk2]
+Cost=0
+Type=Gun
+Info=The Weapon of Mega Man X.
+Abilities=
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+Upgrade=0
+
+[X-BusterMk3]
+Cost=0
+Type=Gun
+Info=The Weapon of Mega Man X.
+Abilities=
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+Upgrade=0
+
 
 [SwordOfTheFallenDevil]
 Cost=0
@@ -2582,11 +2749,11 @@ Hits=1
 BasePower=30
 Upgrade=0
 
-[ChozoSuit]
+[ChozoArmCannon]
 Cost=0
 Type=Gun
-Info=The Chozo Power Suit that belongs to Samus Aran.
-Abilities=PoweredShot.Missile.SuperMissile.Bomb.PowerBomb.ScrewAttack
+Info=The arm cannon on Samus' right arm. Able to use a variety of attacks.
+Abilities=PoweredShot.Missile.SuperMissile.Bomb.PowerBomb.ScrewAttack.IceBeam.PlasmaBeam.DarkBeam.DarkBurst.LightBeam.SunBurst
 Element=None
 Hits=2
 BasePower=30
@@ -2712,8 +2879,15 @@ Hits=$rand(1,2)
 BasePower=30
 Upgrade=0
 
-
-
+[MonkeyIsland_Cutlass]
+Cost=0
+Type=Sword
+Info=A sword made out of the the spirits of ancient monkeys.
+Abilities=InsultSwordFighting
+Element=none
+Hits=1
+BasePower=15
+Upgrade=0
 
 [FencingDegen]
 Cost=0
@@ -2748,8 +2922,6 @@ Upgrade=0
 IgnoreDefense=5
 
 
-
-
 [DiremiteLegs]
 Cost=0
 Type=HandToHand
@@ -2759,6 +2931,27 @@ Element=None
 Hits=2
 BasePower=40
 Upgrade=0
+
+[BeetleJaw]
+Cost=0
+Type=HandToHand
+Info=The jaw of a beetle
+Abilities=RhinoGuard.PowerAttack
+Element=None
+Hits=1
+BasePower=40
+Upgrade=0
+
+[OrbPower]
+Cost=0
+Type=HandToHand
+Info=The Power of lost souls and orb fountains
+Abilities=ShatteringBomb.LostSoulShatter
+Element=None
+Hits=1
+BasePower=0
+Upgrade=0
+
 
 [IroncladSword]
 Cost=0
@@ -3056,7 +3249,7 @@ Upgrade=0
 [BasicMechStaff]
 Cost=400
 EnergyCost=100
-Type=Staff
+Type=Stave
 Info=A rather basic staff for use by a mech
 Abilities=MechFlare.MechQuake.MechFlood.MechTornado.MechFreeze.MechBurst.MechDarkness.MechBanish.MechFire.MechStone.MechWater.MechWind.MechIce.MechThunder.MechLight.MechShadow
 Element=None
@@ -3067,7 +3260,7 @@ Upgrade=0
 [ImprovedMechStaff]
 Cost=1000
 EnergyCost=150
-Type=Staff
+Type=Stave
 Info=An improved staff for use by a mech.
 Abilities=MechFlareII.MechQuakeII.MechFloodII.MechTornadoII.MechFreezeII.MechBurstII.MechDarknessII.MechBanishII.MechFireII.MechStoneII.MechWaterII.MechWindII.MechIceII.MechThunderII.MechLightII.MechShadowII
 Element=None
@@ -3078,7 +3271,7 @@ Upgrade=0
 [FlawlessMechStaff]
 Cost=2500
 EnergyCost=200
-Type=Staff
+Type=Stave
 Info=A staff with no flaws for use by a mech.
 Abilities=MechFlareIII.MechQuakeIII.MechFloodIII.MechTornadoIII.MechFreezeIII.MechBurstIII.MechDarknessIII.MechBanishIII.MechFireIII.MechStoneIII.MechWaterIII.MechWindIII.MechIceIII.MechThunderIII.MechLightIII.MechShadowIII
 Element=None
@@ -3089,7 +3282,7 @@ Upgrade=0
 [DarksteelOreStaff]
 Cost=4000
 EnergyCost=250
-Type=Staff
+Type=Stave
 Info=A staff for use by a mech which is made out of the darksteel ore.
 Abilities=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechFireIV.MechStoneIV.MechWaterIV.MechWindIV.MechIceIV.MechThunderIV.MechLightIV.MechShadowIV.MechUltima.MechKaustra
 Element=None
@@ -3150,6 +3343,16 @@ Hits=$rand(1,2)
 BasePower=30
 Upgrade=0
 
+[MazaalPower]
+Cost=0
+Type=HandToHand
+Info=The power of Mazaal
+Abilities=MazaalGrab.MazaalHeal.MazaalSwat.MazaalChomp.Firaja.Flare
+Element=Dark
+Hits=$rand(1,3)
+BasePower=30
+Upgrade=0
+
 [Heavenly_Scythe]
 Cost=0
 Type=Scythe
@@ -3172,14 +3375,14 @@ Basepower=55
 Upgrade=0
 HurtEthereal=true
 
-[Beorc_Sword]
+[Aettir]
 Cost=0
 Type=GreatSword
-Info=A large sword with a black and gold handle and a unique blade.
-Abilities=Resolution.Lunge.VivaciousPulse.IgnisStrike.GelusStrike.FlabraStrike.TellusStrike.SulporStrike.UndaStrike.LuxStrike.TenebraeStrike
+Info=A large sword that is white in color with a pronged edge. It has a glowing white crystal and black runes on the blade.
+Abilities=Lunge.VivaciousPulse.RuneSwipe.Dimidiation.Resolution.HardSlash.PowerSlash
 Element=None
-Hits=$rand(1,2)
-BasePower=125
+Hits=1
+BasePower=200
 Upgrade=0
 IgnoreDefense=10
 HurtEthereal=True
@@ -3207,3 +3410,260 @@ BasePower=100
 Upgrade=0
 IgnoreDefense=10
 HurtEthereal=true
+
+[WallofFleshMouth]
+Cost=0
+Type=HandToHand
+Info=The mouth of the Wall of Flesh.
+Abilities=WoFEyeLaser.WoFMouthBite
+Element=none
+Hits=1
+BasePower=30
+Upgrade=0
+
+
+[MegaBusterMk2]
+Cost=0
+Type=Gun
+Info=The weapon of Mega Man.
+Abilities=MetalBlade.TimeStopper.QuickBoomerang.LeafShield.AirShooter.CrashBombs.BubbleLead.AtomicFire
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+Upgrade=0
+
+[MegaBusterMk3]
+Cost=0
+Type=Gun
+Info=The weapon of Mega Man.
+Abilities=NeedleCannon.MagnetMissile.GeminiLaser.HardKnuckle.TopSpin.ShadowBlade.SparkShock.SearchSnake
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+Upgrade=0
+
+[LanmolaMouth]
+Cost=0
+Type=Lanmola
+target=aoe
+Info=The weapon of Lanmola
+Abilities=
+Element=earth
+hits=1
+BasePower=50
+Upgrade=0
+CanCounter=false
+
+[MoldormBody]
+Cost=0
+Type=Lanmola
+target=aoe
+Info=The weapon of Moldorm
+Abilities=MoldormBodyBump
+Element=lightning
+hits=1
+BasePower=50
+Upgrade=0
+CanCounter=false
+
+[CthulhuRetina]
+Cost=0
+Type=HandToHand
+Info=The retina of the demonic Cthulhu eye.
+Abilities=EyeRam.CthulhuEyeLaser.CursedFlame
+Element=None
+Hits=1
+BasePower=35
+CanCounter=false
+
+[EaterOfWorldsMouth]
+Cost=0
+Type=HandToHand
+Info=The mouth of the Eater of Worlds.
+Abilities=EaterOfWorldsCharge.EaterOfWorldsWave.EaterOfWorldsSqueeze
+Element=None
+Hits=1
+BasePower=35
+CanCounter=false
+
+[CthulhuBrain]
+Cost=0
+Type=HandToHand
+Info=The demonic brain of Cthulhu.
+Abilities=BrainCharge.EyeRam
+Element=None
+Hits=1
+BasePower=35
+CanCounter=false
+
+[SkeletronSkull]
+Cost=0
+Type=HandToHand
+Info=The skull of Skeletron.
+Abilities=SkullSpin.SkullRam.MetalSkullSpin.MetalSkullRam
+Element=None
+Hits=1
+BasePower=35
+CanCounter=false
+
+[SkeletronArm]
+Cost=0
+Type=HandToHand
+Info=The arm of Skeletron.
+Abilities=SkeletronArmGrab.SkeletronArmPunch.SkeletronArmThrow.PrimeCannonAttack.PrimeLaserAttack.PrimeSawAttack.PrimeViseAttack
+Element=None
+Hits=1
+BasePower=35
+CanCounter=false
+
+[DestroyerMouth]
+Cost=0
+Type=HandToHand
+Info=The mouth of The Destroyer.
+Abilities=DestroyerCharge.DestroyerWave.DestroyerSqueeze
+Element=None
+Hits=1
+BasePower=40
+CanCounter=false
+
+[MechanicalProbeBody]
+Cost=0
+Type=rifle
+Info=The body of the probes released by The Destroyer.
+Abilities=DestroyerLaser
+Element=None
+Hits=1
+BasePower=40
+CanCounter=false
+
+[PlanteraBulb]
+Cost=0
+Type=HandToHand
+Info=The bulb of Plantera.
+Abilities=PlanteraSeed.PlanteraThornBall.PlanteraSpores.PlanteraHook.PlanteraBite
+Element=None
+Hits=1
+BasePower=55
+CanCounter=false
+
+[LihzahrdGolemEyes]
+Cost=0
+Type=rifle
+Info=The glowing eyes of the Lihzahrd Golem.
+Abilities=GolemLaser
+Element=None
+Hits=1
+BasePower=60
+CanCounter=false
+
+[LihzahrdGolemFists]
+Cost=0
+Type=HandToHand
+Info=The powerful fists of the Lihzahrd Golem.
+Abilities=GolemFistPunch.GolemFistGrab.AsuranFists.ShinjinSpiral
+Element=
+Hits=
+BasePower=
+CanCounter=
+
+[FishronFins]
+Cost=0
+Type=HandToHand
+Info=The fins of Duke Fishron.
+Abilities=DetonatingBubble.Sharknado
+Element=None
+Hits=1
+BasePower=70
+CanCounter=false
+
+==============================
+SHIELDS
+==============================
+
+; Small shields.. block more often, absorb less damage
+
+[WoodShield]
+Cost=5
+Type=shield
+Info=A small wooden shield.
+Hits=0
+BasePower=100
+Upgrade=0
+BlockChance=20
+AbsorbAmount=10
+
+[TurtleShield]
+Cost=7
+Type=shield
+Info=A small shield made out of a large Quadav shell.
+Hits=0
+BasePower=150
+Upgrade=0
+BlockChance=20
+AbsorbAmount=12
+
+; Medium shields.. block middle of the road, absorb middle of the road
+
+[MetalShield]
+Cost=15
+Type=shield
+Info=A medium sized metal shield.
+Hits=0
+BasePower=200
+Upgrade=0
+BlockChance=15
+AbsorbAmount=20
+
+[DarksteelShield]
+Cost=17
+Type=shield
+Info=A medium sized shield reinforced with Darksteel ore.
+Hits=0
+BasePower=250
+Upgrade=0
+BlockChance=15
+AbsorbAmount=23
+
+
+[Genbu'sShield]
+Cost=0
+Type=shield
+Info=A medium sized shield fused with the power of the gods.
+Hits=0
+BasePower=350
+Upgrade=0
+BlockChance=15
+AbsorbAmount=30
+
+
+; Large shields.. block least, absorb most.
+
+[TowerShield]
+Cost=20
+Type=shield
+Info=A large sized shield.
+Hits=0
+BasePower=300
+Upgrade=0
+BlockChance=10
+AbsorbAmount=30
+
+[KiteShield]
+Cost=25
+Type=shield
+Info=A large sized shield.
+Hits=0
+BasePower=400
+Upgrade=0
+BlockChance=10
+AbsorbAmount=35
+
+[GoddessShield]
+Cost=0
+Type=shield
+Info=A large sized shield.
+Hits=0
+BasePower=400
+Upgrade=0
+BlockChance=40
+AbsorbAmount=50

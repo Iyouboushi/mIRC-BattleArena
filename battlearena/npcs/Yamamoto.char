@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=3500
 Tp=500
-Str=5000
-Def=2500
-Int=5000
-Spd=7000
+Str=$calc(100 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(80 + $current.battlestreak)
+Spd=$calc(100 + $current.battlestreak)
 IgnitionGauge=100
 Name=Genryuusai Shigekuni Yamamoto
 
@@ -12,10 +12,10 @@ Name=Genryuusai Shigekuni Yamamoto
 [Battle]
 Hp=3500
 Tp=500
-Str=5000
-Def=2500
-Int=5000
-Spd=7000
+Str=$calc(100 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(80 + $current.battlestreak)
+Spd=$calc(100 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -97,16 +97,16 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RyuujinJakka
-RyuujinJakka=$calc(100 + $current.battlestreak)
+RyuujinJakka=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
 Zen=5
 WeaponBash=1
 Impetus=20
-SwordMaster=100
-MartialArts=100
-Wizardry=100
+SwordMaster=1000
+MartialArts=1000
+Wizardry=1000
 Resist-Charm=100
 Resist-Intimidate=100
 Resist-Weaponlock=100
@@ -115,17 +115,16 @@ royalguard.on=on
 ManaWall=1
 manawall.on=on
 Sugitekai=1
-Speed=100
 
 
 [Techniques]
-AsuranFists=$calc(100 + $current.battlestreak)
-Ikkotsu=$calc(100 + $current.battlestreak)
-Soukotsu=$calc(100 + $current.battlestreak)
-SwiftBlade=$calc(100 + $current.battlestreak)
-VorpalBlade=$calc(100 + $current.battlestreak)
-ChantDuCygne=$calc(100 + $current.battlestreak)
-IttouKasou=$calc(100 + $current.battlestreak)
+AsuranFists=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Ikkotsu=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Soukotsu=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+VorpalBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChantDuCygne=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+IttouKasou=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

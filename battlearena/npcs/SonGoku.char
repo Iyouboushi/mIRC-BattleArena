@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=5000
 Tp=500
-Str=3500
-Def=3500
-Int=2000
-Spd=4000
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=150
 Name=Son Goku
 
@@ -12,10 +12,10 @@ Name=Son Goku
 [Battle]
 Hp=5000
 Tp=500
-Str=3500
-Def=3500
-Int=2000
-Spd=4000
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=150
 Status=alive
 
@@ -99,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ZKi
-ZKi=$calc(100 + $current.battlestreak)
+ZKi=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Resist-Charm=100
@@ -107,13 +107,13 @@ Resist-Zombie=100
 Resist-Intimidate=100
 MightyStrike=1
 Zen=50
-MartialArts=200
+MartialArts=1000
 DesperateBlows=3
 
 
 [Techniques]
-Kamehameha=$calc(100 + $current.battlestreak)
-ShikanidouKamehameha=$calc(100 + $current.battlestreak)
+Kamehameha=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShikanidouKamehameha=$round($calc(200 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Ignitions]
 SSJ1=1

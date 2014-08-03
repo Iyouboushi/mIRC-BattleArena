@@ -146,7 +146,7 @@ AsuranFists=1
 SpinningAttack=1
 
 [Ignitions]
-AtlantianPower=$iif($calc(($readini($char(AshiAtora), battle, hp) / $readini($char(AshiAtora), basestats, hp)) * 100) <= 75, 1, 0)
+AtlantianPower=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(AshiAtora), battle, hp) / $readini($char(AshiAtora), basestats, hp)) * 100) <= 75, 1, 0))
 
 
 [Augments]

@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=CarbunclePower
-WeaponName=100
+WeaponName=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Wizardry=100
+MartialArts=500
+Wizardry=500
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -116,9 +116,9 @@ Resist-Petrify=100
 Resist-Confuse=100
 
 [Techniques]
-SearingLight=100
-HealingRuby=100
-PoisonNails=100
+SearingLight=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+HealingRuby=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+PoisonNails=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

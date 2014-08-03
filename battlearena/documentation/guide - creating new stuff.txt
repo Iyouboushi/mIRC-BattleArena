@@ -3,7 +3,6 @@ GUIDE TO MAKING NEW MONSTERS/BOSSES/WEAPONS/TECHNIQUES
 This guide is dedicated to those who want to learn how to make new monsters, new weapons and new techniques.  I don't include skills in this list because it requires a bit more coding to make happen (in-bot coding) whereas anyone can learn how to make the other things. It make seem complicated at first but after you do a few of them you'll get the hang of it and it'll be no sweat.
 
 
-
 NEW WEAPONS
 The first step to making a monster from scratch is to make a new weapon for the monster to use.  Now, it is possible for monsters to use per-existing weapons, and if you want to do that you can skip ahead to the new monsters section.  But if you want the monster to be really unique, keep reading.
 
@@ -34,7 +33,8 @@ Basepower=
 Upgrade=0
 IgnoreDefense=0
 HurtEthereal=false
-
+CanShieldReflect=false
+CanCounter=true
 
 And here's the template broken down for you so you can understand everything:
 
@@ -76,6 +76,11 @@ HurtEthereal=
 HurtEthereal is a special flag that allows the weapon to hurt Ethereal monsters. Set this to true or false.
 If set false (or the value is missing), the weapon will go through an Ethereal monster doing 0 damage.
 
+CanShieldReflect=
+This is a special flag where if set to true then the attack will always be countered if the target is using a shield. Think Deku Scrubs from Zelda.  It's normally not set or set to false.
+
+CanCounter=
+CanCounter is set to true/false. If set to true (or missing) there's a small chance that the attack can be countered by the tar
 
 
 For the sake of a tutorial, let's continue making our MonsterTestWeapon.
@@ -91,7 +96,8 @@ Basepower=10
 Upgrade=0
 IgnoreDefense=0
 HurtEthereal=false
-
+CanShieldReflect=false
+CanCounter=true
 
 And there you go.  You've now successfully added a new weapon.  Now we need to make the techniques that go along with the weapon.
 

@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=2500
 Tp=300
-Str=2500
-Def=2800
-Int=3000
-Spd=3000
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=100
 Name=Rukia Kuchiki
 
@@ -12,10 +12,10 @@ Name=Rukia Kuchiki
 [Battle]
 Hp=2500
 Tp=300
-Str=2500
-Def=2800
-Int=3000
-Spd=3000
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -96,13 +96,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=SodeNoShirayuki
-SodeNoShirayuki=$calc(100 + $current.battlestreak)
+SodeNoShirayuki=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
 Zen=5
-SwordMaster=100
-Wizardry=100
+SwordMaster=1000
+Wizardry=1000
 Resist-Charm=100
 Resist-Amnesia=100
 Resist-Curse=100
@@ -114,13 +114,13 @@ ElementalSeal=1
 
 
 [Techniques]
-SwiftBlade=$calc(100 + $current.battlestreak)
-SavageBlade=$calc(100 + $current.battlestreak)
-Soukatsui=$calc(100 + $current.battlestreak)
-SourenSoukatsui=$calc(100 + $current.battlestreak)
-Byakurai=$calc(100 + $current.battlestreak)
-Shakkahou=$calc(100 + $current.battlestreak)
-Rikujoukourou=$calc(100 + $current.battlestreak)
+SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SavageBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Soukatsui=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SourenSoukatsui=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Byakurai=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Shakkahou=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Rikujoukourou=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]
@@ -128,6 +128,7 @@ Rikujoukourou=$calc(100 + $current.battlestreak)
 
 [Ignitions]
 RukiaShikai=1
+RukiaBankai=1
 
 
 [Augments]

@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=250
-Str=2000
-Def=2000
-Int=2000
-Spd=2000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Maria Renard
 
 
 [Battle]
 Hp=2500
 Tp=250
-Str=2000
-Def=2000
-Int=2000
-Spd=2000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -98,11 +98,12 @@ zombie.timer=1
 
 [Weapons]
 Equipped=MariaPower
-MariaPower=$calc(100 + $current.battlestreak)
+MariaPower=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+
 
 [Skills]
-MartialArts=100
-Wizardry=100
+MartialArts=1000
+Wizardry=1000
 Zen=5
 ClearMind=3
 Impetus=20
@@ -116,12 +117,12 @@ ManaWall=1
 
 
 [Techniques]
-Doves=$calc(100 + $current.battlestreak)
-Seiryu=$calc(100 + $current.battlestreak)
-Byakko=$calc(100 + $current.battlestreak)
-Suzaku=$calc(100 + $current.battlestreak)
-Genbu=$calc(100 + $current.battlestreak)
-GuardianFist=$calc(100 + $current.battlestreak)
+Doves=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Seiryu=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Byakko=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Suzaku=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Genbu=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+GuardianFist=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

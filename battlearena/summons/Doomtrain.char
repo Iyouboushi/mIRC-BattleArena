@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DoomtrainPower
-DoomtrainPower=100
+DoomtrainPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Wizardry=100
+MartialArts=500
+Wizardry=500
 Zen=5
 RoyalGuard=1
 RoyalGuard.on=on
@@ -118,8 +118,8 @@ Resist-Petrify=100
 Resist-Confuse=100
 
 [Techniques]
-RunawayTrain=100
-Runaway_Train=100
+RunawayTrain=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Runaway_Train=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 

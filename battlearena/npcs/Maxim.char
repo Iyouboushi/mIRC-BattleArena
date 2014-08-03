@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=3500
 Tp=250
-Str=2800
-Def=2800
-Int=2800
-Spd=2800
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Name=Maxim
 
 
 [Battle]
 Hp=3500
 Tp=250
-Str=2800
-Def=2800
-Int=2800
-Spd=2800
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Status=alive
 
 
@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DualBlade
-DualBlade=$calc(100 + $current.battlestreak)
+DualBlade=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Swordmaster=100
+MartialArts=1000
+Swordmaster=1000
 Zen=5
 MightyStrike=1
 Impetus=20
@@ -114,12 +114,12 @@ RoyalGuard=1
 
 
 [Techniques]
-WaveMotion=$calc(100 + $current.battlestreak)
-Requiescat=$calc(100 + $current.battlestreak)
-FlatBlade=$calc(100 + $current.battlestreak)
-SwiftBlade=$calc(100 + $current.battlestreak)
-OctoStrike=$calc(100 + $current.battlestreak)
-Skysplitter=$calc(100 + $current.battlestreak)
+WaveMotion=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Requiescat=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FlatBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+OctoStrike=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Skysplitter=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

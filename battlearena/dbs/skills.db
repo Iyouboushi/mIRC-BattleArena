@@ -149,6 +149,12 @@ Type=passive
 Info=This skill will decrease the odds that a curse night will happen. This skill is cumulative with everyone who has it at the beginning of battle.
 Max=5
 
+[DualWield]
+Cost=200000
+Type=passive
+Info=This skill will allow the user to hold two one-handed weapons and use techniques from both without having to switch weapons. For melee attacks, the # of hits for the attack will be both weapon's # of hits combined. Use !equip left or !equip right to equip to the specified hand. Note, a weapon must be in the right hand before you can equip the right hand.
+Max=1
+
 =============================================
 ACTIVE SKILLS
 =============================================
@@ -252,7 +258,7 @@ Cooldown=16
 Cost=700
 Type=Active
 Max=20
-Info=This skill will give you the HP regeneration effect.  Every turn you will regenerate ((max hp * skill level %) / 2) HP back.  The effect will wear off when you reach your maximum HP or if you die.
+Info=This skill will give you the HP regeneration effect.  Every turn you will regenerate ((max hp * skill level %) / 2)) HP back.  The effect will wear off when you reach your maximum HP or if you die.
 Cooldown=16
 
 [Kikouheni]
@@ -373,7 +379,7 @@ Cooldown=21
 [Scavenge]
 Cost=5000
 Type=Active
-Info=This skill allows you to dig into the ground of a battlefield in an attempt to find a burried item. The items that can be found depend on the current battlefield. You may only use this skill one time per battle regardless if it's successful or not.  Increased levels of this skill increase the odds of finding an item.
+Info=This skill allows you to dig into the ground of a battlefield in an attempt to find a buried item. The items that can be found depend on the current battlefield. You may only use this skill one time per battle regardless if it's successful or not.  Increased levels of this skill increase the odds of finding an item.
 Max=20
 
 [JustRelease]
@@ -398,6 +404,13 @@ Type=Active
 Info=This skill will guarantee the next melee attack towards you will be countered. While this skill is active you will go last in battle.  Increased levels of this skill will decrease the time inbetween uses.
 Max=5
 Cooldown=21
+
+[Lockpicking]
+Cost=500
+Type=Active
+Max=15
+Info=This skill will consume a lockpick item and attempt to unlock a chest without using the correct colored key.  The chance of success is (skill level * 2)%
+
 
 =============================================
 RESISTS
@@ -539,7 +552,6 @@ Cost=5000
 Max=10
 Type=KillerTrait
 Info=This skill increases damage done against android/robotic monsters by 1% a level.
-
 
 [Worm-Killer]
 Cost=5000

@@ -969,3 +969,117 @@ Battle Arena Bot VERSIONS
 - Fixed a bug with certain ignitions not reverting properly when the user runs out of IG.
 - Fixed a bug with monsters using techs on players that are being covered by the same monster.
 - Removed the HumanoidTyphoon achievement entirely.
+
+2.5
+- Added a "defenseup" check and status.
+- Added the ability to make melee hits into AOEs.  In weapons.db add target=aoe to the weapon you want to be AOE.
+- Added an "ImmuneToMagic" flag that can be set to true if you want a monster/npc to be completely immune to magic. 
+  It goes in [info]
+- Added a new special boss fight: Wall of Flesh.  In this type the bot will generate a wall of flesh based on the current 
+  battle streak. This boss fight is similar to the Demon Wall and the battle will end in a loss if 16 turns pass.
+- Added a new AI type: TauntOnly.  As it suggests, anything with this ai type will do nothing but taunt.
+- Added a new active skill: Lockpicking.  This skill allows anyone who has it, and has the lockpick item, to attempt to
+  unlock a chest without needing the correct key.  
+- Added a new passive skill: DualWield. This skill will allow a player to equip two weapons and use techniques from either
+  of the weapons without needing to switch. For melee attacks, the # of hits for the attack will be both weapon's # of hits
+  combined. Use !equip left weaponname and !equip right weaponname
+- Added "Players Must Die" mode. Inspired by Dante Must Die mode in DMC, this mode makes monsters harder and makes it so
+  players will not restore full hp/tp at the end of battle.  
+- Added a new bot admin command: !toggle mode playersmustdie    This will toggle PMD mode on/off
+- Added the bot admin command: !toggle Bot Colors   This command will turn the colors on and off.
+- Added the bot admin command playername wears armor/accessory name -- Use this command to force a player to 
+  equip armor or accessories
+- Added the bot admin command: playername removes armor/accessory name   -- Use this command to force a player 
+  to unequip armor or accessories
+- Added instruments and songsheets to the Bard merchant.
+- Added "singing"-- use /me sings <name of song here>  to use a song in battle.  Each song has a different effect in battle.
+  Each song also requires a certain instrument to perform.
+- Added !view-info song <songname>  that will give information on a particular song.
+- Added the ability for monsters to sing songs. In [skills] put singing=1  and then [songs] list the songs you want them to have
+- Added the ability for monsters to be "inactive" until they're hit. While inactive they do not need to be defeated in order
+  for the battle to end. To make this happen, [battle] status=inactive
+- Added a new player style: Beasmaster.  While using this style, players will be able to control their summons manually. 
+  The commands are the same as if they were trying to control a linked player (such as summonname attacks target)
+- Added shields! To use them, players need the DualWield skill. The shop command is !shop list shields and !shop buy shield name
+  Note that shields are sold by an NPC merchant and if the merchant is not there or kidnapped then shields will be unavailable.
+- Added two new flags for weapons: CanCounter and CanShieldReflect.  canCounter can be set to false if you don't want a melee
+  attack from that weapon to ever be countered. If CanShieldReflect is set to true then the attack will always be countered 
+  if the target is using a shield. Think Deku Scrubs from Zelda.
+- Added the Shield Merchant NPC. 
+- Added the Traveling Merchant NPC. He'll show up every month for 5 days of the month: from the 15th to the 20th. He sells
+  two accessories a month (one accessory is static, the other changes every month).
+- Added the Wheel Master NPC. Unlike the other NPCs, he starts off kidnapped and does not have any requirements to be 
+  rescued/come to the Allied Forces HQ.   Once he's saved, you can use the !wheel help and !wheel spin commands.
+- Added the Wheel Minigame.  It needs the Wheel Master in the Allied Forces HQ to be played.  Default cost is 500 red orbs and
+  can be played once per 24 hours.
+- Added the Gardener NPC. Once he's been rescued from monsters players will have access to the garden.
+- Added the Allied Forces HQ Garden. Use !garden help, !garden plant itemname, and !garden status to interact with it.
+  The Gardener NPC must be rescued in order to use the garden.
+- Added new portal items/battles.
+- Added the "Time of Day" to the bot.  The bot will cycle through morning->noon->evening->night at 2 battles per time.
+- Added the monster flag TimeOfDay=  where you can choose what times of day you want the monsters to show up. It goes
+  in [info]
+- Added the command !time to show you the current time of day and the # of what day it is.
+- Added code for the bot to keep track of the number of days that the heroes have been fighting. 
+  Remember that the "day" it is is based on the cycle of morning to morning (every 8 battles by default).
+- Added a new system.dat flag.  AllowColors=true/false.  If set to false, the bot will strip the colors from the messages
+  it sends out.  It's set to true by default.
+- Added the ability for monsters and bosses to have DeathConditions. The mon/boss will only die if the right type of
+  attack is used to kill them, otherwise they will be revived.  In [info] put DeathConditions=  valid list is:
+  melee, magic, tech, item, renkei, status, magiceffect  You can list multiple by putting a period inbetween 
+  such as: melee.magic.status    Leave this blank if you want the mon/boss to die from any type of attack.
+- Added the ability for npcs/monsters/bosses to have custom revive descriptions. [descriptions] revive=
+  Don't add the name of the person in this line as the bot will add it automatically.  
+- Added a new botType option in system.dat: TWITCH.  Using botType=TWITCH will cause all private messages to be sent
+  to the channel as Twitch does not support notify or msg.  As such, there's a chance that the bot might be kicked for
+  flooding. Use at your own risk.  Note that the !id command is NOT needed for characters in this mode.
+- Added a new flag in system.dat for TWITCH mode: TwitchDelayTime. Using this it's possible to adjust how slowly the bot
+  spits out messages while in TWITCH mode. The default is 2 seconds.
+- Added !add person DoubleDollars #  - Bot admins can use this to give doubledollars to a player.
+- Added !take person DoubleDollars #  - Bot admins can use this to remove doubledollars from a player.
+- Added a player level command: !level sync #   Using this command, players can adjust their levels to any level under
+  what they are currently.  The level sync will wear off at the end of the next battle.
+- Changed the way passwords behave. Now they are hashes rather than encodes.  In order for this to work, the bot must
+  be running version 6.3 or higher (the old version, 6.16 will still use encode for anyone who doesn't want to upgrade).
+- Changed the Auto Next so that it will boot anyone who misses 3 turns in a single battle out of the battle (sets them
+  as if they fleed the battle).
+- Changed Lost Souls and Orb Fountains to explode once darkness hits.
+- Changed !styles to allow the viewing of other player's styles (such as !styles Iyouboushi)
+- Changed !view-info tech to show the stat modifier of techs.
+- Changed NPCs to not show up during boss battles
+- Changed the code for !weapons to be a little more efficient.
+- Changed the code for !shop list weapons to be a little more efficient.
+- Changed the max conquest points for players and monsters to be 6000.
+- Changed all of the Creed +2 armor to have the EnhanceBlocking augment.
+- Changed the AI code for healer type AI.  They will no longer try to use a healing tech on a zombiefied character.
+  If there are no valid targets that aren't zombiefied, it will use a tech on itself.  Note this won't stop AOE techs.
+- Changed battlefields so that there's a 40% chance that the weather will randomly change.
+- Changed Kikouheni so that it now adds the "weatherlock" condition to the battlefield. This means the battlefield won't
+  change weather on its own any more.
+- Changed how the bot pulls the drop list for monsters/bosses to read from a drops.db file.  If the drop list is missing
+  or empty in drops.db, it will attempt to read the drop list in the actual monster/boss .char file.
+- Changed the !bat list battle order list to put monsters/characters/npcs that are still alive in bold.
+- Changed how red orbs in chests works. Now if the player level is above the streak level there will be a bonus applied to
+  the amount of orbs determined by the current streak level. If the player level is below the streak, the bonus won't be
+  applied at all.
+- Changed the Guardian monsters to allow multiple targets that have to be killed in order to hurt the target.
+  [Info] Guardian=   Can add multiple with periods inbetween:  Monster1.Monster2.Monster3
+- Changed the level difference a player can be to a target and still have the magic effect work. It used to be 20, now it's
+  50 on non-portal battles and 25 for portal battles.
+- Changed !id on TWITCH mode so that you don't need a password to receive bot access. Again, this only works on TWITCH mode.
+- Changed the poison status effect so that it will turn off the sleep status effect if both are on the same person
+- Fixed a bug with !speed
+- Fixed a bug in which Spoony the Bard could not be kidnapped.
+- Fixed a bug in which techs done with weapons obtained via special items would do the wrong amount of damage.
+- Fixed a bug where a target that dies and is revived and dies again will count as 2 deaths instead of 1 on the scoreboard.
+- Fixed a bug in which players could control other players even if the access wasn't set to do so. 
+- Fixed an issue where weapons that have 0 cost (i.e. can't buy) are showing up in the shop
+- Fixed an issue with chests being able to be opened multiple times if the bot is lagging.
+- Fixed an issue where dead cover targets will still be shown being tossed by monsters.
+- Fixed an issue with the shop where sometimes the skills would not be displayed correctly. 
+- Fixed an issue in which !npc status wouldn display in the channel when used in a private message instead of private.
+- Fixed an issue where doing 0 damage should no longer be able to stagger an enemy
+- Fixed an issue where a target could be staggered even if the target was dodging/blocking/parrying/etc 
+- Fixed an issue where targets protected by a guardian could still be hurt by magic effect damage
+- Fixed an issue where it was possible to do actions while blinded/stunned/other turn-skipping statuses
+- Fixed a potential issue with AI battles in which two healing types could be in battle together, thus never ending.

@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=4000
 Tp=300
-Str=2800
-Def=2800
-Int=2800
-Spd=2800
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Name=Lightning
 
 
 [Battle]
 Hp=4000
 Tp=300
-Str=2800
-Def=2800
-Int=2800
-Spd=2800
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Status=alive
 
 
@@ -93,13 +93,15 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=BlazefireSaber
-BlazefireSaber=$calc(100 + $current.battlestreak)
+BlazefireSaber=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+
 
 [Skills]
-Gunslinger=100
-Swordmaster=100
+Gunslinger=1000
+Swordmaster=1000
 Zen=5
 MightyStrike=1
 Impetus=20
@@ -111,14 +113,13 @@ Resist-Intimidate=100
 RoyalGuard=1
 
 
-
 [Techniques]
-ArmyOfOne=$calc(100 + $current.battlestreak)
-Blindside=$calc(100 + $current.battlestreak)
-Flamestrike=$calc(100 + $current.battlestreak)
-Froststrike=$calc(100 + $current.battlestreak)
-Sparkstrike=$calc(100 + $current.battlestreak)
-Aquastrike=$calc(100 + $current.battlestreak)
+ArmyOfOne=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Blindside=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Flamestrike=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Froststrike=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Sparkstrike=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Aquastrike=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

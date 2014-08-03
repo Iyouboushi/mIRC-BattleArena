@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=250
-Str=2500
-Def=2500
-Int=3000
-Spd=2800
+Str=$calc(25 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(25 + $current.battlestreak)
 Name=Vyse
 
 
 [Battle]
 Hp=2500
 Tp=250
-Str=2500
-Def=2500
-Int=3000
-Spd=2800
+Str=$calc(25 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(25 + $current.battlestreak)
 Status=alive
 
 
@@ -96,10 +96,10 @@ zombie.timer=1
 
 [Weapons]
 Equipped=VorlikBlade
-VorlikBlade=$calc(100 + $current.battlestreak)
+VorlikBlade=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Swordmaster=100
+Swordmaster=1000
 Zen=5
 MightyStrike=1
 Impetus=20
@@ -111,9 +111,9 @@ Resist-Intimidate=100
 
 
 [Techniques]
-CutlassFury=$calc(100 + $current.battlestreak)
-RainOfSwords=$calc(100 + $current.battlestreak)
-PiratesWrath=$calc(100 + $current.battlestreak)
+CutlassFury=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+RainOfSwords=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PiratesWrath=$round($calc(300 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

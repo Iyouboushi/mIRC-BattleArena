@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=350
-Str=2000
-Def=2000
-Int=3500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(35 + $current.battlestreak)
+Spd=$calc(25 + $current.battlestreak)
 Name=Yoko Belnades
 
 
 [Battle]
 Hp=2500
 Tp=350
-Str=2000
-Def=2000
-Int=3500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(35 + $current.battlestreak)
+Spd=$calc(25 + $current.battlestreak)
 Status=alive
 
 
@@ -95,13 +95,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BelnadesWand
-BelnadesWand=$calc(100 + $current.battlestreak)
+BelnadesWand=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 drainsamba.turn=0
 drainsamba.on=on
 DrainSamba=20
-Wizardry=100
+Wizardry=1000
 Zen=5
 ClearMind=3
 ElementalSeal=1
@@ -115,9 +115,9 @@ ManaWall=1
 manawall.on=off
 
 [Techniques]
-HolyFlames=$calc(100 + $current.battlestreak)
-BlueSplash=$calc(100 + $current.battlestreak)
-HolyLightning=$calc(100 + $current.battlestreak)
+HolyFlames=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BlueSplash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HolyLightning=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 Wizard's-Amulet=1

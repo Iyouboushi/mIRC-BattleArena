@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2000
 Tp=500
-Str=2000
-Def=2000
-Int=2000
-Spd=2000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Ash
 
 
 [Battle]
 Hp=2000
 Tp=500
-Str=2000
-Def=2000
-Int=2000
-Spd=2000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -96,20 +96,19 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Boomstick
-Boomstick=$calc(100 + $current.battlestreak)
+Boomstick=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Gunslinger=100
-Wizardy=100
+Gunslinger=1000
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
 Zen=5
 
 [Techniques]
-HotShot=$calc(100 + $current.battlestreak)
-BlastShot=$calc(100 + $current.battlestreak)
-Detonator=$calc(100 + $current.battlestreak)
+HotShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BlastShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Detonator=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

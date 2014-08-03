@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=3000
 Tp=250
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 IgnitionGauge=100
 Name=Kaien Shiba
 
@@ -12,10 +12,10 @@ Name=Kaien Shiba
 [Battle]
 Hp=3000
 Tp=250
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -96,20 +96,21 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Nejibana
-Nejibana=$calc(100 + $current.battlestreak)
+Nejibana=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
-SwordMaster=100
+SwordMaster=1000
+Wizardry=1000
 Resist-Charm=100
 Resist-Intimidate=100
 
 
 [Techniques]
-Soukatsui=$calc(100 + $current.battlestreak)
-SourenSoukatsui=$calc(100 + $current.battlestreak)
-Byakurai=$calc(100 + $current.battlestreak)
-Shakkahou=$calc(100 + $current.battlestreak)
+Soukatsui=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SourenSoukatsui=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Byakurai=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Shakkahou=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Augments]

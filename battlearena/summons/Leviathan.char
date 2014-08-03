@@ -95,7 +95,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=LeviathanPower
-LeviathanPower=100
+LeviathanPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
@@ -118,10 +118,10 @@ Resist-Confuse=100
 
 
 [Techniques]
-TidalWave=100
-TailWhip=100
-GrandFall=100
-Flood=100
+TidalWave=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+TailWhip=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+GrandFall=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Flood=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

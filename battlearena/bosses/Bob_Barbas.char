@@ -29,7 +29,7 @@ RageCountDown=0
 Char=is a sleazy looking reporter and owner of media corporation Raptor News Network; the undisputed "King of Media". Upon seeing his targets everyone feels themselves being drawn into the Raptor News Network studio where Bob Barbas becomes a large digitized demonic head.
 Rage=screams in rage 
 BossQuote=This is Bob Barbas reporting from Raptor News Network. Just Doin' God's Work!
-MonsterSummon=The cameras pan over to show two Stygians running towards the battlefield to help subdue Bob's enemies. "As you can cearly see, the authority has arrived and they are resisting arrest."
+MonsterSummon=The cameras pan over to show two Stygians running towards the battlefield to help subdue Bob's enemies. "As you can clearly see, the authority has arrived and the terrorists are resisting arrest."
 ChangeBattlefield=$iif(%current.battlefield = Raptor News Network Breaking News Broadcast, announces "we now take you a live feed of the terrorists in action!" and the heroes find themselves in a news broadcast, announces "This has been Bob Barbas with the Raptor News Network. Just doin' God's work." and the heroes find themselves back in the studio as the broadcast ends)
 RepairNaturalArmor=blinks in and out as his digital shield begins to repair itself. After a moment it is fully restored. 
 Bloodboost=laughs as his digitization glows a bright red upon powering up.

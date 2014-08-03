@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=4000
 Tp=300
-Str=3900
-Def=3900
-Int=1500
-Spd=1000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Guy
 
 
 [Battle]
 Hp=4000
 Tp=300
-Str=3900
-Def=3900
-Int=1500
-Spd=1000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,7 +95,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AdamantAxe
-AdamantAxe=$calc(100 + $current.battlestreak)
+AdamantAxe=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
@@ -110,11 +110,11 @@ WeaponBash=1
 Impetus=20
 
 [Techniques]
-Thundershriek=$calc(100 + $current.battlestreak)
-BombAttack=$calc(100 + $current.battlestreak)
-FellCleave=$calc(100 + $current.battlestreak)
-UkkosFury=$calc(100 + $current.battlestreak)
-KingsJustice=$calc(100 + $current.battlestreak)
+Thundershriek=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BombAttack=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FellCleave=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+UkkosFury=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+KingsJustice=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 Lucky-Rabbit'sFoot=1

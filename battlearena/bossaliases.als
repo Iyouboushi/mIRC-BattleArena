@@ -3,9 +3,7 @@
 ; random boss type
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 get_boss_type {
-
   set %boss.choices normal
-
   var %enable.doppelganger $readini(system.dat, system, EnableDoppelganger)
   var %enable.warmachine $readini(system.dat, system, EnableWarMachine)
   var %enable.bandits $readini(system.dat, system, EnableBandits)
@@ -24,6 +22,15 @@ get_boss_type {
   }
   if ((%winning.streak.check > 600) && (%winning.streak.check <= 5000)) { var %enable.elderdragon true }
 
+  if ((%winning.streak.check > 1000) && (%winning.streak.check <= 2000)) { 
+    if ($readini(system.dat, system, AllowWallOfFlesh) = yes) { var %enable.wallofflesh true }
+  }
+
+  if ((%winning.streak.check > 3500) && (%winning.streak.check <= 5000)) { 
+    if ($readini(system.dat, system, AllowWallOfFlesh) = yes) { var %enable.wallofflesh true }
+  }
+
+
   if (%mode.gauntlet = on) { var %enable.demonwall false }
 
   if ($left($adate, 2) = 12) { %boss.choices = %boss.choices $+ .FrostLegion }
@@ -41,12 +48,13 @@ get_boss_type {
     if ((%winning.streak.check >= 100) && (%winning.streak.check <= 1000)) { %boss.choices = %boss.choices $+ .pirates }
   }
 
+  if ((%enable.wallofflesh = true) && (%boss.chance <= 10)) { %boss.choices = %boss.choices $+ .demonwall }
   if ((%enable.demonwall = true) && (%boss.chance <= 15)) { %boss.choices = %boss.choices $+ .demonwall }
   if ((%enable.elderdragon = true) && (%boss.chance < 20)) { %boss.choices = %boss.choices $+ .elderdragon }
 
   ; Choose a boss type
 
-  if (%battle.type = ai) { set %boss.choices normal.warmachine.normal.demonwall.normal.elderdragon.normal }
+  if (%battle.type = ai) { set %boss.choices normal.warmachine.normal.demonwall.wallofflesh.normal.elderdragon.normal }
 
   set %total.types $numtok(%boss.choices, 46)
   set %random.type $rand(1,%total.types)
@@ -89,12 +97,12 @@ generate_evil_clones {
       writeini $char(evil_ $+ %who.battle) status resist-fire no | writeini $char(evil_ $+ %who.battle) status resist-lightning no | writeini $char(evil_ $+ %who.battle) status resist-ice no
       writeini $char(evil_ $+ %who.battle) status resist-earth no | writeini $char(evil_ $+ %who.battle) status resist-wind no | writeini $char(evil_ $+ %who.battle) status resist-water no
       writeini $char(evil_ $+ %who.battle) status resist-light no | writeini $char(evil_ $+ %who.battle) status resist-dark no
-      writeini $char(evil $+ %who.battle) status revive no
+      writeini $char(evil_ $+ %who.battle) status revive no
 
       writeini $txtfile(battle2.txt) BattleInfo CanKidnapNPCs yes
 
-      if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+      $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle)
+
 
       var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
       inc %battletxt.current.line 1 
@@ -182,10 +190,7 @@ generate_monster_warmachine {
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
 
-  if (%battle.type != ai) {
-    if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
-  }
+  if (%battle.type != ai) { $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle)   }
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -230,8 +235,7 @@ generate_elderdragon {
 
   var %elderdragon.name %first.name %last.name
   if (%battle.type != ai) {
-    if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, events, ElderDragonFight) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, events, ElderDragonFight)) }
+    $display.system.message($readini(translation.dat, events, ElderDragonFight),battle) 
   }
 
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
@@ -366,10 +370,7 @@ generate_elderdragon {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name)
-  if (%battle.type != ai) {
-    if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
-  }
+  if (%battle.type != ai) { $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) }
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -461,10 +462,8 @@ generate_demonwall {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if (%battle.type != ai) {
-    if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
-  }
+  if (%battle.type != ai) { $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) }
+
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -485,6 +484,100 @@ generate_demonwall {
   if (%boss.item != $null) {  writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
   unset %boss.item
 }
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This function generates
+; the demon wall boss
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+generate_wallofflesh {
+  set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
+  if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
+
+  set %monster.name Wall_of_Flesh | set %monster.realname Wall of Flesh
+
+  .copy -o $char(new_chr) $char(%monster.name)
+  if (%battle.type = ai) { set %ai.monster.name Wall of Flesh | writeini $txtfile(1vs1bet.txt) money monsterfile %monster.name }
+
+  writeini $char(%monster.name) info flag monster 
+  writeini $char(%monster.name) Basestats name %monster.realname
+  writeini $char(%monster.name) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
+  writeini $char(%monster.name) info BattleStats ignoreHP
+  writeini $char(%monster.name) info OrbBonus yes
+
+  writeini $char(%monster.name) descriptions Snatch reaches out with a long tonge and attempts to latch onto %enemy to use as a human shield.
+
+  var %base.hp.tp $calc(7 * %current.battlestreak)
+  if (%battle.type != ai) {  writeini $char(%monster.name) basestats hp $iif($return_playerlevelstotal >= 1100, $round($calc(2500 + (5 * $return_differenceof($return_playerlevelstotal,1100))),0), $round($calc(2000 + $return_playerlevelstotal),0)) }
+  if (%battle.type = ai) {  writeini $char(%monster.name) basestats hp $rand(20000,25000) }
+
+  writeini $char(%monster.name) basestats tp %base.hp.tp
+  writeini $char(%monster.name) basestats str $round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .10)),0)
+  writeini $char(%monster.name) basestats def $round($calc(%current.battlestreak / 7),0)
+  writeini $char(%monster.name) basestats int $round($calc(%current.battlestreak / 4),0)
+  var %base.stats $calc($rand(1,3) * %current.battlestreak)
+  inc %base.stats $rand(0,2)
+  writeini $char(%monster.name) basestats spd %base.stats
+  writeini $char(%monster.name) info CanTaunt false
+
+  writeini $char(%monster.name) techniques WoFEyeLaser %current.battlestreak
+  writeini $char(%monster.name) techniques WoFMouthBite %current.battlestreak
+
+  writeini $char(%monster.name) weapons equipped WallofFleshMouth
+  writeini $char(%monster.name) weapons WallofFleshMouth %current.battlestreak
+  remini $char(%monster.name) weapons Fists
+
+  writeini $char(%monster.name) skills sugitekai 1
+  writeini $char(%monster.name) skills snatch 15
+  writeini $char(%monster.name) skills speed 2
+  writeini $char(%monster.name) skills manawall.on on
+  writeini $char(%monster.name) skills royalguard.on on
+  writeini $char(%monster.name) skills MagicMirror 10
+  writeini $char(%monster.name) skills Resist-blind 100
+  writeini $char(%monster.name) skills Resist-slow 100
+  writeini $char(%monster.name) skills Resist-Weaponlock 100
+
+  writeini $char(%monster.name) styles equipped Guardian
+  writeini $char(%monster.name) styles guardian 6
+
+  writeini $char(%monster.name) modifiers Fire 50
+  writeini $char(%monster.name) modifiers Gun 150
+  writeini $char(%monster.name) modifiers Rifle 200
+  writeini $char(%monster.name) modifiers Bow 110
+
+  var %reflect.chance $rand(1,100)
+  if (%reflect.chance <= 70) { writeini $char(%monster.name) status reflect yes | writeini $char(%monster.name) status reflect.timer 1 }
+
+  $boost_monster_stats(%monster.name, demonwall)
+  $fulls(%monster.name) 
+
+  set %number.of.monsters.needed 0
+
+  set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
+  $set_chr_name(%monster.name) 
+  if (%battle.type != ai) {  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) }
+
+  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
+  inc %battletxt.current.line 1 
+  unset %current.battlestreak | unset %monster.name | unset %monster.realname
+
+  set %current.battlefield Dead-End Hallway
+  writeini $dbfile(battlefields.db) weather current Gloomy
+
+  var %items.lines $lines($lstfile(chest_gold.lst))
+  if (%items.lines = 0) { set %boss.item Ethrune }
+  else { 
+    set %random $rand(1, %items.lines)
+    if (%random = $null) { var %random 1 }
+    set %random.item.contents $read -l $+ %random $lstfile(chest_gold.lst)
+    set %boss.item %random.item.contents
+    unset %random.item.contents | unset %random
+  }
+
+  if (%boss.item != $null) {  writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
+  unset %boss.item
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function generates
 ; a bandit leader
@@ -544,8 +637,7 @@ generate_bandit_leader {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -622,8 +714,7 @@ generate_bandit_minion {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -677,8 +768,7 @@ generate_president {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
 
@@ -758,8 +848,7 @@ generate_pirate_scallywag {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -829,8 +918,7 @@ generate_pirate_firstmatey {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -903,8 +991,7 @@ generate_monster_mimic {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) | writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -995,8 +1082,7 @@ generate_frost_monster {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -1011,10 +1097,7 @@ generate_frost_monster {
 generate_crystalshadow {
 
   set %monster.name Crystal_Shadow  | set %monster.realname Crystal Shadow Warrior
-  if (%battle.type != ai) {
-    if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, events, CrystalShadowFight) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, events, CrystalShadowFight)) }
-  }
+  if (%battle.type != ai) {  $display.system.message($readini(translation.dat, events, CrystalShadowFight),battle) }
 
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
@@ -1103,9 +1186,8 @@ generate_crystalshadow {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name)
-  if (%battle.type != ai) {
-    if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  if (%battle.type != ai) { 
+    $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
     $display.system.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle) 
   }
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters

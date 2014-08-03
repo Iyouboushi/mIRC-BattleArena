@@ -1,20 +1,22 @@
 [BaseStats]
 Hp=2600
 Tp=270
-Str=3000
-Def=2900
-Int=5000
-Spd=7000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(70 + $current.battlestreak)
+IgnitionGauge=100
 Name=Urahara Kisuke
 
 
 [Battle]
 Hp=2600
 Tp=270
-Str=300
-Def=2900
-Int=5000
-Spd=7000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(70 + $current.battlestreak)
+IgnitionGauge=100
 Status=alive
 
 
@@ -102,7 +104,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=Benihime
-Benihime=$calc(100 + $current.battlestreak)
+Benihime=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 mightystrike=1
@@ -115,8 +117,8 @@ soulvoice.on=off
 manawall.on=on
 mightystrike.on=off
 royalguard.on=on
-Swordmaster=40
-Wizardry=35
+Swordmaster=1000
+Wizardry=1000
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
@@ -125,7 +127,7 @@ Utsusemi=1
 
 
 [Techniques]
-SwiftBlade=$calc(100 + $current.battlestreak)
+SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

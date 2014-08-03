@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=200
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Kain Highwind
 
 
 [Battle]
 Hp=2500
 Tp=200
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,22 +95,21 @@ zombie.timer=1
 
 [Weapons]
 Equipped=KainsLance
-KainsLance=$calc(100 + $current.battlestreak)
+KainsLance=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Resist-Intimidate=100
 Resist-Zombie=100
-PoleMaster=100
+PoleMaster=1000
 Zen=5
 
 [Techniques]
-Jump=$calc(100 + $current.battlestreak)
-HighJump=$calc(100 + $current.battlestreak)
-SpiritJump=$calc(100 + $current.battlestreak)
-SoulJump=$calc(100 + $current.battlestreak)
-Drakesbane=$calc(100 + $current.battlestreak)
-Stardiver=$calc(100 + $current.battlestreak)
-LegSweep=$calc(100 + $current.battlestreak)
+Jump=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HighJump=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SpiritJump=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SoulJump=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Drakesbane=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Stardiver=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

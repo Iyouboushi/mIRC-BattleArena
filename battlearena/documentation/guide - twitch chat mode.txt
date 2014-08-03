@@ -1,0 +1,23 @@
+TWITCH CHAT MODE
+===============
+ABOUT:
+
+Twitch Chat mode is a new mode for version 2.5 of the bot.  The bot will basically run the game the same way as it would with the default IRC server mode but there are a few changes/differences that you should be aware of.
+
+First off, and possibly the most important, is that there are no private messages on Twitch mode. This is because the custom Twitch IRC daemon they're using does not support notify or msg. This means everything the bot does normally in private, like the shop, will show up in the main channel.
+
+Second, because of the way Twitch is there is no reason to have an !id command.  Upon joining the channel in Twitch mode the bot will see if it's a valid character and, if it is, will give access to the commands.  If someone who has a character was already in the stream chat before the bot joined, the !id command (without a password) will still give access like normal.
+
+Please note that because of the fact that everything will be shoved into the channel there is a risk of the bot being booted for flooding.  There's really nothing I can do about this.  This mode is experimental and is truly run-at-your-own-risk.
+
+
+SETTING TWITCH CHAT MODE UP:
+
+In order to make the bot run Twitch Mode you must change one thing in system.dat. In system.dat under the [system] section there's a botType= flag.  This can be set to IRC, DCCchat or TWITCH.  IRC is set by default, so in order to make Twitch Chat work you will need to change that to TWITCH.
+
+There is also a flag for adjusting how slowly the bot spits out messages while in TWITCH mode. In system.dat under [system] look for TwitchDelayTime. The default is 2 seconds.  Setting it higher will probably help the bot from getting kicked but it will be painfully slow to watch/interact. 
+
+
+
+
+Again, I personally still think trying to run the bot on Twitch is not the best of ideas but at least these settings will hopefully help those who are willing to try.

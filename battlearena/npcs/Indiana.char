@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2000
 Tp=250
-Str=2000
-Def=2000
-Int=2000
-Spd=2000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Indiana Jones
 
 
 [Battle]
 Hp=2000
 Tp=250
-Str=2000
-Def=2000
-Int=2000
-Spd=2000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,13 +95,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=LeatherWhip
-LeatherWhip=$calc(100 + $current.battlestreak)
-Fists=$calc(100 + $current.battlestreak)
+LeatherWhip=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+
 
 [Skills]
-MartialArts=100
-Gunslinger=100
-Whipster=100
+MartialArts=1000
+Gunslinger=1000
+Whipster=1000
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
@@ -109,9 +109,7 @@ Zen=5
 MightyStrike=1
 
 [Techniques]
-Whiplash=$calc(100 + $current.battlestreak)
-ShoulderTackle=$calc(100 + $current.battlestreak)
-AsuranFists=$calc(100 + $current.battlestreak)
+Whiplash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

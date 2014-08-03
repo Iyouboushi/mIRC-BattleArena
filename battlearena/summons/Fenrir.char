@@ -96,11 +96,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=FenrirPower
-FenrirPower=100
+FenrirPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
-MartialArts=100
+MartialArts=500
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -118,9 +118,9 @@ Resist-Confuse=100
 
 
 [Techniques]
-HowlingMoon=100
-CrescentFang=100
-EclipseBite=100
+HowlingMoon=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+CrescentFang=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+EclipseBite=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

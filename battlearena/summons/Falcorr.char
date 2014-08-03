@@ -96,11 +96,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=FalcorrPower
-FalcorrPower=100
+FalcorrPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Wizardry=100
-MartialArts=100
+Wizardry=500
+MartialArts=500
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -117,9 +117,9 @@ Resist-Petrify=100
 Resist-Confuse=100
 
 [Techniques]
-BackHeel=100
-Jettatura=100
-ChokeBreath=100
+BackHeel=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Jettatura=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+ChokeBreath=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

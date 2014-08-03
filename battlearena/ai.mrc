@@ -3,7 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
-  unset %statusmessage.display | unset %action.bar
+  unset %statusmessage.display | unset %action.bar | unset %song.name
   remini $char($1) renkei
 
   ; Determine if the current person in battle is a monster or not.  If so, they need to do a turn.  If not, return.
@@ -23,6 +23,15 @@ alias aicheck {
     var %style.equipped $readini($char(%cloneowner), styles, equipped)
     if (%style.equipped = doppelganger) {  return  }
   }
+
+  ; Is the person a summon and is the original user using the beastmaster style? If not, continue onto the AI.. but stop if so.
+  if ($readini($char($1), info, summon) = yes) {
+    var %owner $readini($char($1), info, owner)
+    var %style.equipped $readini($char(%owner), styles, equipped)
+    if (%style.equipped = beastmaster) {  return  }
+  }
+
+
 
   ; Now we check for the AI system to see if it's turned on or not.
   var %ai.system $readini(system.dat, system, aisystem)
@@ -53,7 +62,7 @@ alias ai_turn {
   if (%ai.type = portal) { 
     $portal.clear.monsters
 
-    if ($readini(system.dat, system, botType) = IRC) { 
+    if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
       var %max.number.of.mons $readini(system.dat, system, MaxNumberOfMonsInBattle)
       if (%max.number.of.mons = $null) { var %max.number.of.mons 6 }
     }
@@ -74,7 +83,10 @@ alias ai_turn {
       if ($readini($char($1), info, flag) = monster) { 
         remini $char($1) skills covertarget
         $set_chr_name($1) 
-        $display.system.message($readini(translation.dat, battle, ReleaseSnatchedTarget), battle)
+
+        if ($readini($char(%cover.target), battle, hp) > 0) { 
+          $display.system.message($readini(translation.dat, battle, ReleaseSnatchedTarget), battle)
+        }
       }
     }
 
@@ -123,12 +135,26 @@ alias ai_turn {
   unset %total.actions |  unset %random.action 
 
   if ($readini($char($1), info, ai_type) = counteronly) { set %ai.action taunt }
+  if ($readini($char($1), info, ai_type) = tauntonly) { set %ai.action taunt }
   if ($readini($char($1), info, ai_type) = techonly) {
     if ($readini($char($1), battle, tp) <= 100) { writeini $char($1) battle tp 500 } 
 
+    if (($1 = orb_fountain) || ($1 = lost_soul)) { writeini $char($1) status curse no }
+
+    ; Can the monster use an ignition?
+    if ($readini($char($1), status, ignition.on) != on) {
+      if ($readini($char($1), info, flag) != $null) { 
+        if ($ai_ignitioncheck($1) = true) { %action.bar = tech.ignition }
+      }
+    }
+
     if ($readini($char($1), status, curse) = yes) { set %ai.action taunt }
-    if ($readini($char($1), status, curse) != yes) { set %ai.action tech }
-    set %ai.action tech
+    if ($readini($char($1), status, curse) != yes) {
+      if ($istok(%action.bar,ignition,46) = $true) { set %ai.action $iif($rand(1,2) = 1, tech, ignition) }
+      else { set %ai.action tech }
+    }
+
+
   }
 
   ; do an action
@@ -295,7 +321,8 @@ alias ai_ignitioncheck {
   if ($readini($char($1), status, boosted) = yes) { return false }
   if ($person_in_mech($1) = true) { return false }
   if ($readini($char($1), status, virus) = yes)  { return false }
-  if ((no-ignition isin %battleconditions) && (no-ignitions isin %battleconditions)) { return false }
+  if ((no-ignition isin %battleconditions) || (no-ignitions isin %battleconditions)) { return false }
+  if ((no-playerignition isin %battleconditions) && ($readini($char($1), info, flag) = $null)) { return false }
 
   unset %ignitions.list | unset %ignitions | unset %number.of.ignitions
   var %value 1 | var %items.lines $lines($lstfile(ignitions.lst))
@@ -304,7 +331,6 @@ alias ai_ignitioncheck {
     set %item.name $read -l $+ %value $lstfile(ignitions.lst)
     set %item_amount $readini($char($1), ignitions, %item.name)
 
-    if (%item_amount = 0) { remini $char($1) ignitions %item.name }
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       var %flag $readini($char($1), info, clone)  
       if (%flag = $null) { %ignitions.list = $addtok(%ignitions.list,%item.name,46) }
@@ -380,27 +406,46 @@ alias ai_gettarget {
   while (%battletxt.current.line <= %battletxt.lines) { 
     set %who.battle.ai $read -l $+ %battletxt.current.line $txtfile(battle.txt)
 
-    if (%ai.type != berserker) { 
-      if (%opponent.flag = player) {
-        if ($readini($char(%who.battle.ai), info, flag) = monster) { inc %battletxt.current.line }
-        else { $add_target }
+    if (%ai.type = berserker) { 
+      if (%who.battle.ai = $1) { 
+        if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
       }
-      if (%opponent.flag = monster) {
-        if ($readini($char(%who.battle.ai), info, flag) != monster) { inc %battletxt.current.line }
-        else { 
-          if (%who.battle.ai != demon_portal) { $add_target }
-          if (%who.battle.ai = demon_portal) { 
-            if ($readini($char($1), info, flag) = monster) {  inc %battletxt.current.line } 
-            if ($readini($char($1), info, flag) != monster) { $add_target }
+      if (%who.battle.ai != $1) { $add_target }   
+    }
+
+    if (%ai.type != berserker) { 
+
+      ; The AI is targeting a player or npc.
+      if (%opponent.flag = player) {
+        if ($readini($char(%who.battle.ai), info, flag) != monster) {
+          if (($readini($char($1), info, ai_type) = healer) && ($readini($char(%who.battle.ai), status, zombie) = no)) { $add_target }
+          if ($readini($char($1), info, ai_type) != healer) { 
+            if (%who.battle.ai = $1) { 
+              if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
+            }
+            if (%who.battle.ai != $1) { $add_target }   
           }
         }
       }
+
+      ; The AI is targeting a monster.
+      if (%opponent.flag = monster) {
+        if ($readini($char(%who.battle.ai), info, flag) = monster) {
+          if ($readini($char($1), info, ai_type) = healer) {     
+            if ((%who.battle.ai != demon_portal) && ($readini($char(%who.battle.ai), status, zombie) = no)) { $add_target }   
+          }
+          else { 
+            if (%who.battle.ai = $1) { 
+              if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
+            }
+            if (%who.battle.ai != $1) { $add_target }   
+          }
+        }
+      }
+
     }
 
-    if (%ai.type = berserker) { 
-      if (%who.battle.ai != $1) { $add_target }
-      if (%who.battle.ai = $1) { inc %battletxt.current.line }
-    } 
+    inc %battletxt.current.line 1
   }
 
   set %total.targets $numtok(%ai.targetlist, 46)
@@ -408,10 +453,16 @@ alias ai_gettarget {
   set %ai.target $gettok(%ai.targetlist,%random.target,46)
 
   if (%ai.target = $null) { 
-    ; Try a second time.
-    set %total.targets $numtok(%ai.targetlist, 46)
-    set %random.target $rand(1,%total.targets)
-    set %ai.target $gettok(%ai.targetlist,%random.target,46)
+
+    if ($readini($char($1), info, ai_type) = healer) { set %ai.target $1 }
+    if ($readini($char($1), info, ai_type) != healer) { 
+      ; Try a second time.
+      set %total.targets $numtok(%ai.targetlist, 46)
+      set %random.target $rand(1,%total.targets)
+      set %ai.target $gettok(%ai.targetlist,%random.target,46)
+    }
+
+    if (%ai.target = $null) { echo -a 4NULL TARGET. SWITCHING TO BERSERK TYPE | set %ai.target $1 | writeini $char($1) info ai_type berserk  }
   }
 
   if (%ai.action != tech) { 
@@ -437,7 +488,6 @@ alias ai_getmontarget {
       if (($readini($char(%who.battle.ai), info, flag) = monster) && (%who.battle.ai != $1)) {
 
         if ($isfile($boss(%who.battle.ai)) != $true) {  $add_target }
-
       }
     }
 
@@ -449,11 +499,10 @@ alias add_target {
   if (%who.battle.ai = $null) { return }
 
   var %current.status $readini($char(%who.battle.ai), battle, status)
-  if ((%current.status = dead) || (%current.status = runaway)) { inc %battletxt.current.line 1 }
+  if ((%current.status = dead) || (%current.status = runaway)) { return }
 
   else { 
     %ai.targetlist = $addtok(%ai.targetlist, %who.battle.ai, 46)
-    inc %battletxt.current.line 1 
   }
   return
 }
@@ -574,6 +623,10 @@ alias ai_skillcheck {
     if ($readini($char($1), skills, quicksilver.used) = $null) { %ai.skilllist = $addtok(%ai.skilllist, quicksilver, 46) } 
   }
 
+  if ($readini($char($1), skills, Singing) >= 1) { 
+    if ($readini($char($1), battle, tp) >= 200) { %ai.skilllist = $addtok(%ai.skilllist, singing, 46) } 
+  }
+
 }
 
 alias ai_chooseskill {
@@ -648,6 +701,48 @@ alias ai_chooseskill {
     halt
   }
 
+  if (%ai.skill = singing) {
+    ; Get a list of songs the monster knows..
+
+    var %value 1 | var %items.lines $lines($lstfile(songs.lst))
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(songs.lst)
+      set %item_amount $readini($char($1), songs, %item.name)
+
+      if ((%item_amount = 0) && ($readini($char($1), info, flag) = $null)) { remini $char($1) songs %item.name }
+      if ((%item_amount != $null) && (%item_amount >= 1)) { 
+        %songs.list = $addtok(%songs.list, %item.name, 46) 
+      }
+
+      unset %item.name | unset %item_amount
+      inc %value 1 
+    }
+
+    ; Get the random song..
+    set %total.songs $numtok(%songs.list, 46)
+    set %random.song $rand(1,%total.songs)
+    set %song.name $gettok(%songs.list,%random.song,46)
+    unset %total.songs | unset %random.song
+
+    ; Make sure the AI has enough TP
+    var %tp.needed $readini($dbfile(songs.db), %song.name, tp)
+    if ($readini($char($1), battle, tp) < %tp.needed) { writeini $char($1) battle tp %tp.needed }
+
+    ; Make sure the AI has the instrument
+    var %instrument.needed $readini($dbfile(songs.db), %song.name, instrument)
+    if (($readini($char($1), item_amount, %instrument.needed) = $null) || ($readini($char($1), item_amount, %instrument.needed) <= 0)) { writeini $char($1) item_amount %instrument.needed 1 }
+
+    ; Perform the song.
+    $sing.song($1, %song.name)
+    halt
+  }
+
+  if (%ai.skill = $null) {
+    echo -a 4AI TRYING TO USE A NULL SKILL, taunting instead
+    unset %random.target | unset %total.targets 
+    set %taunt.action true | $ai_gettarget($1) |  $taunt($1 , %ai.target) | halt 
+  }
+
   if (%ai.skill = JustRelease) {
     $ai_gettarget($1)
 
@@ -703,10 +798,9 @@ alias ai.changeweapon {
 
   $weapons.get.list($1)
 
-  if (%base.weapon.list = $null) { return }
+  if (%base.weapon.list = $null) {  unset %weaponlist.counter | unset %weapons | unset %weapons.list1 | return }
 
-  if ($readini($char($1), weapons, fists) = $null) {   %base.weapon.list = $deltok(%base.weapon.list,Fists,46) }
-
+  if ($readini($char($1), weapons, fists) = $null) { %base.weapon.list = $deltok(%base.weapon.list,Fists,46) }
 
   var %current.weapon $readini($char($1), weapons, equipped)
   set %weapons.total $numtok(%base.weapon.list,46)
@@ -715,13 +809,13 @@ alias ai.changeweapon {
 
   unset %weapons.total | unset %random.weapon | unset %base.weapon.list
 
-  if (%weapon.name = %current.weapon) { unset %weapon.name | return }
+  if (%weapon.name = %current.weapon) { unset %weaponlist.counter | unset %weapons | unset %weapons.list1 | unset %weapon.name | return }
 
   writeini $char($1) weapons equipped %weapon.name | $set_chr_name($1) 
 
   $display.system.message($readini(translation.dat, system, EquipWeaponMonster), battle)
 
-  unset %weapon.name
+  unset %weapon.name | unset %weaponlist.counter | unset %weapons | unset %weapons.list1
 }
 
 alias ai.magicshift {
@@ -780,7 +874,7 @@ alias ai.monstersummon {
     var %summon.chance $rand(1,100)
     if (%summon.chance <= $readini($char($1), skills, monstersummon.chance)) {
 
-      if ($readini(system.dat, system, botType) = IRC) { 
+      if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
         var %max.number.of.mons $readini(system.dat, system, MaxNumberOfMonsInBattle)
         if (%max.number.of.mons = $null) { var %max.number.of.mons 6 }
       }

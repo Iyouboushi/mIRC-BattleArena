@@ -1,0 +1,56 @@
+;=================================
+; THIS IS A WORK IN PROGRESS
+;=================================
+
+; ===============================
+; Effect: Status, Battlefield, ChangeBattlefield
+; Target: Allies, Enemies, Battlefield
+; Type: normal status effects for allies/enemies, 
+;       a battlefield type, or the name of a battlefield to teleport to
+; ===============================
+
+[Knight'sMinne]
+Name=Knight's Minne
+TP=200
+Desc=pulls out $gender($1) flute and begins to play a majestic song.  All of %real.name $+ 's allies feel more defensive as the song fills their ears.
+Effect=Status
+Target=Allies
+Type=DefenseUp
+Instrument=Flute
+
+[Army'sPaeon]
+Name=Army's Paeon
+TP=200
+Desc=pulls out $gender($1) lute and begins to play an upbeat song.  All of %real.name $+ 's allies feel as though their health is regenerating as the song fills their ears.
+Effect=Status
+Target=Allies
+Type=Regenerating
+Instrument=Lute
+
+[FoeLullaby]
+Name=Foe Lullaby
+TP=500
+Desc=pulls out $gender($1) harp and begins to play a dreary, sleepy lullaby song for the enemies on the battlefield in attempt to lull all of %real.name $+ 's enemies to sleep.
+Effect=Status
+Target=Enemies
+Type=Sleep
+Instrument=Harp
+
+[ToxicMelody]
+Name=Toxic Melody
+TP=200
+Desc=pulls out $gender($1) lute and begins to play an ugly-sounding song.  All of %real.name $+ 's allies start to feel sick as the song poisons their brains.
+Effect=Status
+Target=Enemies
+Type=Poison
+Instrument=Lute
+
+[SongOfPeace]
+Name=Song of Peace
+TP=300
+Desc=pulls out $gender($1) ocarina and begins to play the Song of Peace. The battlefield feels more calm now. 
+Effect=Battlefield
+Type=no-battlefieldeffect
+Instrument=Ocarina
+
+

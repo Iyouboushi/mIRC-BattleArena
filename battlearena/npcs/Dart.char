@@ -1,20 +1,22 @@
 [BaseStats]
 Hp=2500
 Tp=500
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
+IgnitionGauge=60
 Name=Dart Feld
 
 
 [Battle]
 Hp=2500
 Tp=500
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
+IgnitionGauge=60
 Status=alive
 
 
@@ -93,30 +95,68 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
-Equipped=RedEyedDragoon
-RedEyedDragoon=$calc(100 + $current.battlestreak)
+Equipped=Broad_Sword
+Broad_Sword=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+
+[equipment]
+head=
+body=
+hands=
+legs=
+feet=
+accessory=
+
 
 [Skills]
 Resist-Charm=100
 Resist-Zombie=100
-SwordMaster=100
-Wizardry=100
+SwordMaster=1000
+Wizardry=1000
 Resist-Intimidate=100
 Zen=5
 MightyStrike=1
 
+
 [Techniques]
-DoubleSlash=$calc(100 + $current.battlestreak)
-MadnessHero=$calc(100 + $current.battlestreak)
+DoubleSlash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BurningRush=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+MadnessHero=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BlazingDynamo=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]
+
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
 WeaponMasterXP=1
 
+
 [Ignitions]
 RedDragoon=1
+
+[modifiers]
+Heal=none
+Earth=100
+Fire=0
+Wind=100
+Ice=100
+Water=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

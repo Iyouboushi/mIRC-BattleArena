@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=250
-Str=2500
-Def=2500
-Int=2600
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Adam Jensen
 
 
 [Battle]
 Hp=2500
 Tp=250
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,17 +95,17 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Fists
-Fists=$calc(100 + $current.battlestreak)
-SubMachineGun=$calc(100 + $current.battlestreak)
-AK47=$calc(100 + $current.battlestreak)
-SniperRifle=$calc(100 + $current.battlestreak)
+Fists=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+SubMachineGun=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+AK47=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+SniperRifle=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
 WeaponBash=1
 Impetus=20
-MartialArts=100
-Gunslinger=100
+MartialArts=1000
+Gunslinger=1000
 Resist-Charm=100
 Resist-Paralyze=100
 Resist-Poison=100
@@ -113,14 +113,14 @@ Resist-Intimidate=100
 
 
 [Techniques]
-DoublePunch=$calc(100 + $current.battlestreak)
-ShoulderTackle=$calc(100 + $current.battlestreak)
-SpinningAttack=$calc(100 + $current.battlestreak)
-AsuranFists=$calc(100 + $current.battlestreak)
-Rainstorm=$calc(100 + $current.battlestreak)
-Detonator=$calc(100 + $current.battlestreak)
-SniperShot=$calc(100 + $current.battlestreak)
-HotShot=$calc(100 + $current.battlestreak)
+DoublePunch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShoulderTackle=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SpinningAttack=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+AsuranFists=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Rainstorm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Detonator=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SniperShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HotShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

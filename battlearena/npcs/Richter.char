@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=3500
 Tp=250
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Name=Richter Belmont
 
 
 [Battle]
 Hp=3500
 Tp=250
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Status=alive
 
 
@@ -95,13 +95,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=VampireKiller
-VampireKiller=$calc(100 + $current.battlestreak)
+VampireKiller=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
 ClearMind=3
-Wizardry=60
-MartialArts=80
+Wizardry=1000
+MartialArts=1000
 Resist-Charm=100
 Resist-Amnesia=100
 Resist-Curse=100
@@ -112,14 +112,14 @@ WeaponBash=1
 
 
 [Techniques]
-Thousand_Knives=$calc(100 + $current.battlestreak)
-HydroStorm=$calc(100 + $current.battlestreak)
-Dagger=$calc(100 + $current.battlestreak)
-HolyWater=$calc(100 + $current.battlestreak)
-Cross=$calc(100 + $current.battlestreak)
-StopWatch=$calc(100 + $current.battlestreak)
-Axe=$calc(100 + $current.battlestreak)
-DoubleAxe=$calc(100 + $current.battlestreak)
+Thousand_Knives=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HydroStorm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Dagger=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HolyWater=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Cross=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+StopWatch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Axe=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DoubleAxe=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

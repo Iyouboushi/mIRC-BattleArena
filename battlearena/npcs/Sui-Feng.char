@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=2500
 Tp=270
-Str=2800
-Def=2500
-Int=3000
-Spd=7000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(70 + $current.battlestreak)
 IgnitionGauge=100
 Name=Sui-Feng
 
@@ -12,10 +12,10 @@ Name=Sui-Feng
 [Battle]
 Hp=2500
 Tp=270
-Str=2800
-Def=2500
-Int=3000
-Spd=7000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(70 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -101,14 +101,14 @@ conservetp.on=off
 
 [Weapons]
 Equipped=Suzumebachi
-Suzumebachi=$calc(100 + $current.battlestreak)
+Suzumebachi=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 mightystrike=1
 desperateblows=1
-MartialArts=500
-Wizardry=500
-SwordMaster=500
+MartialArts=1000
+Wizardry=1000
+SwordMaster=1000
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
@@ -121,14 +121,14 @@ Speed=100
 Sugitekai=1
 
 [Techniques]
-DoublePunch=$calc(100 + $current.battlestreak)
-ShoulderTackle=$calc(100 + $current.battlestreak)
-AsuranFists=$calc(100 + $current.battlestreak)
-TornadoKick=$calc(100 + $current.battlestreak)
-ShinjinSpiral=$calc(100 + $current.battlestreak)
-SwiftBlade=$calc(100 + $current.battlestreak)
-VorpalBlade=$calc(100 + $current.battlestreak)
-ShitotsuSansen=$calc(100 + $current.battlestreak)
+DoublePunch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShoulderTackle=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+AsuranFists=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+TornadoKick=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShinjinSpiral=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+VorpalBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShitotsuSansen=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

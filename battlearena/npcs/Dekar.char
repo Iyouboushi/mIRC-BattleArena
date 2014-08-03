@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=4500
 Tp=200
-Str=4000
-Def=4000
-Int=500
-Spd=500
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(10 + $current.battlestreak)
+Spd=$calc(10 + $current.battlestreak)
 Name=Dekar
 
 
 [Battle]
 Hp=4500
 Tp=200
-Str=4000
-Def=4000
-Int=500
-Spd=500
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(10 + $current.battlestreak)
+Spd=$calc(10 + $current.battlestreak)
 Status=alive
 
 
@@ -95,13 +95,14 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DekarBlade
-DekarBlade=$calc(100 + $current.battlestreak)
+DekarBlade=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+
 
 [Skills]
-MartialArts=100
-SwordMaster=100
-Archery=100
-Wizardry=100
+MartialArts=1000
+SwordMaster=1000
+Archery=1000
+Wizardry=1000
 Zen=5
 MightyStrike=1
 Sugitekai=1
@@ -112,16 +113,16 @@ Resist-Intimidate=100
 
 
 [Techniques]
-ExplosionFist=$calc(100 + $current.battlestreak)
-ExplosionSword=$calc(100 + $current.battlestreak)
-GlacialBlast=$calc(100 + $current.battlestreak)
-Thundershriek=$calc(100 + $current.battlestreak)
-BombAttack=$calc(100 + $current.battlestreak)
-ArticFreeze=$calc(100 + $current.battlestreak)
-HolyEnergy=$calc(100 + $current.battlestreak)
-PhoenixBlow=$calc(100 + $current.battlestreak)
-OctoStrike=$calc(100 + $current.battlestreak)
-Skysplitter=$calc(100 + $current.battlestreak)
+ExplosionFist=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ExplosionSword=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+GlacialBlast=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Thundershriek=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BombAttack=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ArticFreeze=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HolyEnergy=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PhoenixBlow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+OctoStrike=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Skysplitter=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

@@ -50,6 +50,7 @@ LastIP=N/a
 Created=N/a
 Streak=300
 CanTaunt=true
+TimeOfDay=Evening.Night
 
 [Monster]
 Type=undead

@@ -5,6 +5,7 @@ Paper.Emerald.AshLog.Hatchet
 SilverChain=Ruby.SilverOre
 Glass.Ruby.Sand
 GodSeal.Diamond.ByakkoSeal.GenbuSeal.SeiryuSeal.SuzuakuSeal
+HyruleOrb.Diamond.PendantOfPower.PendantOfWisdom.PendantOfCourage
 Shihei.Emerald.Ink.Paper
 MirrorShard.Sapphire.Glass.Ectoplasm
 JewelOfWieldance=Zircon.StoneOfWieldance
@@ -23,6 +24,11 @@ HolyHandGrenade.Diamond.Holy_Water.Thunder_Orb.Dynamite
 PurpleKey.Sapphire.BlueKey.Redkey
 GoldKey.Topaz.GoldOre.RedKey
 SilverKey.Opal.SilverOre.RedKey
+UnkaiArmorPiece.Diamond.HeavyMetalPlate.Titanium_Ore.SoulOfFright
+EstoqueurArmorPiece.Ruby.EyeOfTheGolem.SoulOfMight.SoulOfSight.CardinalCloth
+SilverSwordParts.Diamond.HeavyMetalPlate.Titanium_Ore.SoulOfSight.SoulOfMight.SoulOfFright.Crimtane_Ore
+Blueprints:Genbu'sShield.Diamond.GenbuSeal.QuadavShell
+Blueprints:SilverSword.Diamond.SilverSwordParts.Kurogane
 Eggnog.Sapphire.SmallEgg.Rum.Milk
 EggHelm.Ruby.RustyHelmet.SmallEgg.HardBoiledEgg
 ClothRobe.Topaz.TornRobe.Cloth
@@ -45,6 +51,11 @@ WarlockTights+1.Ruby.AncientBeastcoin.CardinalCloth.WarlockTights
 WarlockTights+2.Ruby.AncientBeastcoin.CardinalCloth.WarlockTights+1
 WarlockBoots+1.Ruby.AncientBeastcoin.CardinalCloth.WarlockBoots
 WarlockBoots+2.Ruby.AncientBeastcoin.CardinalCloth.WarlockBoots+1
+EstoqueurChappel.Ruby.EstoqeurArmorPiece.EstoqueurSeal
+EstoqueurSayon.Ruby.EstoqeurArmorPiece.EstoqueurSeal
+EstoqueurFuseau.Ruby.EstoqeurArmorPiece.EstoqueurSeal
+EstoqueurHouseaux.Ruby.EstoqeurArmorPiece.EstoqueurSeal
+EstoqueurGantherots.Ruby.EstoqeurArmorPiece.EstoqueurSeal
 EstoqueurChappel+1.Ruby.JewelOfArdor.JewelOfWieldance.EstoqueurChappel
 EstoqueurChappel+2.Ruby.JewelOfArdor.JewelOfWieldance.EstoqueurChappel+1
 EstoqueurSayon+1.Ruby.JewelOfArdor.JewelOfWieldance.EstoqueurSayon
@@ -55,6 +66,11 @@ EstoqueurHouseaux+1.Ruby.JewelOfArdor.JewelOfWieldance.EstoqueurHouseaux
 EstoqueurHouseaux+2.Ruby.JewelOfArdor.JewelOfWieldance.EstoqueurHouseaux+1
 EstoqueurGantherots+1.Ruby.JewelOfArdor.JewelOfWieldance.EstoqueurGantherots
 EstoqueurGantherots+2.Ruby.JewelOfArdor.JewelOfWieldance.EstoqueurGantherots+1
+UnkaiKabuto.Zircon.UnkaiArmorPiece.UnkaiSeal
+UnkaiDomaru.Zircon.UnkaiArmorPiece.UnkaiSeal
+UnkaiKote.Zircon.UnkaiArmorPiece.UnkaiSeal
+UnkaiHaidate.Zircon.UnkaiArmorPiece.UnkaiSeal
+UnkaiSune-Ate.Zircon.UnkaiArmorPiece.UnkaiSeal
 UnkaiKabuto+1.Zircon.JewelOfArdor.JewelOfWieldance.UnkaiKabuto
 UnkaiKabuto+2.Zircon.JewelOfArdor.JewelOfWieldance.UnkaiKabuto+1
 UnkaiDomaru+1.Zircon.JewelOfArdor.JewelOfWieldance.UnkaiDomaru

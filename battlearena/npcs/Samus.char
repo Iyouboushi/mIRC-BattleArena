@@ -1,20 +1,22 @@
 [BaseStats]
 Hp=3500
 Tp=250
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(100 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
+IgnitionGauge=50
 Name=Samus Aran
 
 
 [Battle]
 Hp=3500
 Tp=250
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(100 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
+IgnitionGauge=50
 Status=alive
 
 
@@ -94,14 +96,14 @@ slow.timer=1
 zombie.timer=1
 
 [Weapons]
-Equipped=ChozoSuit
-ChozoSuit=$calc(100 + $current.battlestreak)
+Equipped=ChozoArmCannon
+ChozoArmCannon=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
 Impetus=20
-Gunslinger=100
-MartialArts=100
+Gunslinger=1000
+MartialArts=1000
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
@@ -110,17 +112,55 @@ Resist-Amnesia=100
 
 
 [Techniques]
-PoweredShot=$calc(100 + $current.battlestreak)
-Missile=$calc(150 + $current.battlestreak)
-SuperMissile=$calc(300 + $current.battlestreak)
-Bomb=$calc(150 + $current.battlestreak)
-PowerBomb=$calc(700 + $current.battlestreak)
-ScrewAttack=$calc(1000 + $current.battlestreak)
+PoweredShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Missile=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SuperMissile=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Bomb=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PowerBomb=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ScrewAttack=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+IceBeam=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PlasmaBeam=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DarkBeam=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DarkBurst=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+LightBeam=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SunBurst=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 
+
+[equipment]
+head=
+body=
+hands=
+legs=
+feet=
+accessory=
 
 [Styles]
 Equipped=Guardian
 Guardian=10
 GuardianXP=1
+
+
+[modifiers]
+Heal=none
+Earth=70
+Fire=70
+Wind=70
+Ice=70
+Water=70
+Lightning=70
+Light=70
+Dark=70
+HandToHand=70
+Whip=70
+Sword=70
+Gun=70
+Rifle=70
+Katana=70
+Wand=70
+Spear=70
+Scythe=70
+Glyph=70
+GreatSword=70
+Bow=70

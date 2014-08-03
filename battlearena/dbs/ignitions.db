@@ -19,11 +19,10 @@ nothing will be able to see/use it.
 
 ------
 It is now possible to add code for the bot
-to run upon using the ignition.  Use
+to run upon using the ignition.  Use:
 
 AdditionalCode=code goes here
 ==============================================
-
 
 [Overdrive]
 Name=Overdrive
@@ -40,7 +39,6 @@ Cost=10
 Desc=$+ 's body glows a firey red as $gender($1) body bulges with a new-found power. The battlefield explodes into flames, setting all of %real.name $+ 's enemies on fire!
 StatusTarget=enemy
 StatusType=Burning
-
 
 [Benediction]
 Name=Benediction
@@ -110,7 +108,6 @@ Desc=$+ 's clothes become a bright neon color as it seems to suck in all color, 
 StatusTarget=enemy
 StatusType=Staggered
 
-
 [Sentinel]
 Name=Sentinel
 hp=1.6
@@ -163,6 +160,9 @@ Techs=Chou_Kamehameha
 Desc=begin to channel an ancient power begins to channel an ancient power meant for another race. $gender($1) energy flares around $gender($1) body, then swirls all around $gender2($1) into a cone in the shape of $gender($1) body, which then turns into $gender($1) aura. The aura is flashing very brightly and violently at the moment. %real.name $+ 's body overloads as energy flares out like wild fire and $gender($1) hair turns gold and $gender($1) eyes green.
 
 
+==========================
+NPC/Monster/Boss Ignitions
+==========================
 
 
 [DTrigger]
@@ -295,7 +295,7 @@ Techs=NakeBenihime.ShibariBenihime.HiasobiBenihimeJuzutsunagi
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Desc=says "Okiro. Benhime!" as his cane sword turns into a zanpakutou with a straight blade and a unique handle.
+Desc=says "Okiro, Benhime!" as his cane sword turns into a zanpakutou with a straight blade and a unique handle.
 
 [CromwellApproval]
 Name=CromwellApproval
@@ -348,7 +348,7 @@ hp=3
 Str=4
 Def=4
 Int=4
-Spd=2.5
+Spd=1
 Augment=TechBonus.EnhanceCriticalHits.IgnoreMetalDefense.IgnoreGuardian
 Techs=JakuhouRaikouben
 IgnitionTrigger=10
@@ -378,7 +378,7 @@ def=2
 int=2
 spd=2
 Augment=MeleeBonus.EnhanceDodge
-Techs=ShunkoRaigeki
+Techs=ShunkouRaigeki
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
@@ -396,7 +396,7 @@ Techs=Taimatsu.EnnetsuJigoku
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Desc=unsheathes the zanpakutou and says, "Reduce All Creation to Ash, Ryuujin Jakka!" An extreme release of reiatsu explodes around %user which takes the form of fire.
+Desc=unsheathes the zanpakutou and says, "Reduce all creation to ash, Ryuujin Jakka!" An extreme release of reiatsu explodes around %user which takes the form of fire.
 
 [YamamotoBankai]
 Name=Bankai
@@ -429,6 +429,23 @@ IgnitionConsume=10
 Cost=0
 Desc=holds the zanpakutou upside down and says, "Dance, Sode no Shirayuki!" The zanpakutou turns white, gains a longer hilt, and a long white ribbon expands from the pommel of the zanpakutou.
 
+[RukiaBankai]
+Name=Bankai
+HP=3
+Str=4
+Def=4
+Int=5
+Spd=4
+Augment=TechBonus.EnhanceKatana.EnhanceCriticalHits.EnhanceZen.IgnoreMetalDefense.IgnoreDefense.IgnoreGuardian
+Techs=HakkanoTogame
+IgnitionTrigger=10
+IgnitionConsume=20
+Cost=0
+Desc=holds Sode no Shirayuki to the side, aimed at the battlefield and shouts out "Bankai, Hakka no Togame!" %user now wears a white, ankle lengthed white kimono with lined patterns. The temperatue around the battlefield begins to lower as %user turns pure white and the blade of Sode no Shirayuki changes into ice.
+StatusTarget=All
+StatusType=Frozen
+Effect=Status
+
 [KaienShikai]
 Name=Shikai
 Hp=2
@@ -454,7 +471,7 @@ Def=2
 Int=2
 Spd=2
 Augment=TechBonus.MagicBonus.MeleeBonus
-Techs=FlameShot.FinalBurst
+Techs=FlameShot.FinalBurst.Explosion.Red-EyedDragon
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
@@ -468,7 +485,7 @@ Def=2.5
 Int=2.5
 Spd=2.5
 Augment=TechBonus.MagicBonus.MeleeBonus
-Techs=AstralDrain.DeathDimension
+Techs=AstralDrain.DeathDimension.DarkDragon
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
@@ -531,7 +548,6 @@ Cost=0
 Techs=LastWillandTestament.Fortissimo.UltimateFortissimo
 Desc=gains a red aura as %user $+ 's power greatly increases!
 
-
 [EchidnaDragonForm]
 Name=Echidna Dragon Form
 HP=1.1
@@ -547,33 +563,31 @@ Desc=laughs as her body transforms into a large green plan-looking dragon. She b
 StatusTarget=Self
 StatusType=ConserveTP
 
-
-
 [Elemental_Sforzo]
 Name=Elemental Sforzo
-hp=1.5
-Str=1.5
-def=1.5
-int=1.5
-spd=1.5
+hp=1.2
+Str=1.2
+def=1.2
+int=1.2
+spd=1.2
 Augment=TechBonus.MagicBonus.CuringBonus
 Effect=Status
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Techs=
+Techs=HyperTwinSlice
 Desc=$+ 's body and weapon is covered with a rainbow barrier for a moment before disappearing, giving %real.name elemental defense and offense!
 StatusTarget=self
 StatusType=Protect.Shell.Resist-Earth.Resist-Fire.Resist-Wind.Resist-Water.Resist-Ice.Resist-Lightning.Resist-Light.Resist-Dark
-AdditionalCode=writeini $char($1) status En-Spell Fire
+AdditionalCode=writeini $char($1) status En-Spell Lightning
 
 [Domina_Shantotto]
 Name=Domina Shantotto
-hp=1.5
-Str=1.5
-def=1.5
-int=1.5
-spd=1.5
+hp=1.2
+Str=1.1
+def=1.1
+int=1.1
+spd=1.1
 Augment=MagicBonus.MeleeBonus
 Effect=Status
 IgnitionTrigger=10
@@ -583,3 +597,168 @@ Techs=UltimaII.KaustraII
 Desc=suddenly grows from the small doll height to about fifty feet in height, as the eyes glow red. You look closely and can now see Shantotto standing on the doll's head, laughing away! "O~hohohohohohoho!"
 StatusTarget=self
 StatusType=ConserveTP
+
+[Red_Dragon]
+Name=RedDragon
+hp=2
+Str=4
+def=4
+int=4
+spd=4
+Augment=MeleeBonus.TechBonus.EnhanceCriticalHits
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=Red_DragonBurst
+Desc=gains a very serious expression and stares at the battlefield. %users then shouts out "You better run away while you can!" as a red aura explodes around %user $+ !
+
+[TensaZangetsu]
+Name=TensaSangetsu
+hp=2
+Str=4
+def=4
+int=4
+spd=5
+Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=holds Zangetsu towards the battlefield, placing his left hand on his right arm and shouts out "Bankai!" A large beam of blue energy shoots out towards the battlefield as %user now has a long black jacket on in place of the standard shinigami top and Zangetsu takes the form of a black katana. "Tensa Zangetsu." %user says before quickly moving around the battlefield.
+AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ignitions HollowIchigo 1 | writeini $char($1) ignitions TensaZangetsu 0
+
+[HollowIchigo]
+Name=HollowIchigo
+hp=2
+Str=4
+def=4
+int=4
+spd=4
+Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=DoubleGetsugaTenshou.BlackGetsugaTenshou
+Desc=holds his left hand in front of his face for a moment, before quickly pulling the hand down as a white mask with two large vertical stripes on both sides of the mask. %user $+ 's eyes are also now black and yellow in color.
+
+[Animus]
+Name=Animus
+hp=3
+Str=4
+def=4
+int=4
+spd=4
+Augment=MeleeBonus.TechBonus.MagicBonus.RenkeiBonus.EnhanceCriticalHits.EnhanceDodge.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=D-Teneritas
+Desc=closes her eyes for a moment before opening them again. They are now glowing blue as %user activates her true self.
+
+[BlackArmor]
+Name=BlackArmor
+hp=2.5
+Str=2.5
+def=2.5
+int=2.5
+spd=2.5
+Augment=MeleeBonus.TechBonus.MagicBonus.RenkeiBonus.EnhanceCriticalHits.EnhanceDodge.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=finds a mysterious capsule with a small 'W' on it. Zero steps inside and his armor changes from red to black, increasing his power.
+
+[DrLightCapsule]
+Name=DrLightCapsule
+hp=2.5
+Str=2.5
+def=2.5
+int=2.5
+spd=2.5
+Augment=MeleeBonus.TechBonus.MagicBonus.RenkeiBonus.EnhanceCriticalHits.EnhanceDodge.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=finds a Dr. Light capsule and gains new armor that is white and gold in color, which greatly increases %user $+ 's power.
+
+[SecondBrainForm]
+Name=SecondBrainForm
+hp=1
+Str=1.1
+def=1.1
+int=1.1
+spd=1.1
+Augment=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=splits open, revealing a heart and eye inside of the brain!
+
+[SecondEyeForm]
+Name=SecondEyeForm
+hp=1
+Str=1.1
+def=1.1
+int=1.1
+spd=1.1
+Augment=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=spins around for a moment and loses its iris, revealing an open mouth with lots of sharp fangs!
+
+[PlanteraThornMouth]
+Name=PlanteraThornMouth
+hp=1
+Str=1.1
+def=1.1
+int=1.1
+spd=1.1
+Augment=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=loses its bulb, revealing a mouth full of thorns!
+
+[MetalEyeMouth]
+Name=MetalEyeMouth
+hp=1
+Str=1.1
+def=1.1
+int=1.1
+spd=1.1
+Augment=
+Techs=CursedInferno
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=spins around for a moment and loses its iris, revealing that it is actually a mechanical mouth with metal fangs!
+
+[MetalEyeLaser]
+Name=MetalEyeLaser
+hp=1
+Str=1.1
+def=1.1
+int=1.1
+spd=1.1
+Augment=
+Techs=CthulhuEyeLaserBurst
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=spins around for a moment and loses its iris, revealing that it is actually a mechanical eye with a laser cannon!
+
+[SkeletronPrimeSpikes]
+Name=
+hp=1
+Str=1.1
+def=1.1
+int=1.1
+spd=1.1
+Augment=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc='s eyes gain a firey glow as metal spikes emerge out from the skull!

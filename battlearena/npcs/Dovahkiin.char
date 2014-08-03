@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=3000
 Tp=500
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=The Dragonborn
 
 
 [Battle]
 Hp=3000
 Tp=500
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -98,7 +98,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=DragonShouts
-DragonShouts=$calc(100 + $current.battlestreak)
+DragonShouts=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
@@ -106,14 +106,14 @@ Zen=5
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
-SwordMaster=100
-Wizardry=100
+SwordMaster=1000
+Wizardry=1000
 
 [Techniques]
-FusRoDah=$calc(100 + $current.battlestreak)
-YolToorShul=$calc(100 + $current.battlestreak)
-FoKrahDiin=$calc(100 + $current.battlestreak)
-StrunBahQo=$calc(100 + $current.battlestreak)
+FusRoDah=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+YolToorShul=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FoKrahDiin=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+StrunBahQo=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

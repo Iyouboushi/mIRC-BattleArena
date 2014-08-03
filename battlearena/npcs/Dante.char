@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=3000
 Tp=500
-Str=3500
-Def=3500
-Int=2500
-Spd=3500
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(35 + $current.battlestreak)
 Name=Dante
 IgnitionGauge=60
 
@@ -12,12 +12,12 @@ IgnitionGauge=60
 [Battle]
 Hp=3000
 Tp=500
-Str=3500
-Def=3500
-Int=3500
-Spd=3500
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(35 + $current.battlestreak)
 Status=alive
-IgnitionGauge=50
+IgnitionGauge=60
 
 
 [Rage]
@@ -100,9 +100,15 @@ slow.timer=1
 zombie.timer=1
 auto-regen=on
 
+
 [Weapons]
 Equipped=Rebellion
-Rebellion=$calc(100 + $current.battlestreak)
+Rebellion=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+Ebony&Ivory=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+Cerberus=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+Ifrit=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+
+
 
 [Skills]
 mightystrike=1
@@ -114,25 +120,40 @@ manawall.on=off
 elementalseal.on=off
 mightystrike.on=off
 royalguard.on=on
-Swordsmanship=70
+Swordsmanship=1000
+Gunslinger=1000
+MartialArts=1000
 royalguard=1
 Zen=5
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
+Resist-Stun=90
 royalguard.dmgblocked=9103
 JustRelease=100
-regen=1
+regen=$iif($readini($char(Dante), status, ignition.on) = on, 10, 2)
+
 
 [Techniques]
-Stinger=$calc(100 + $current.battlestreak)
-MillionStab=$calc(100 + $current.battlestreak)
-Drive=$calc(100 + $current.battlestreak)
+Stinger=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+MillionStab=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Drive=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Revolver=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Windmill=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Crystal=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+RollingBlaze=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+MagmaDrive=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Inferno=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+RainStorm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChargedShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+RapidShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+
 
 [Styles]
 Equipped=Trickster
 SpellMaster=10
 SpellMasterXP=0
+
 
 [Ignitions]
 DTrigger=1

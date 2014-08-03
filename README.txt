@@ -1,5 +1,5 @@
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Battle Arena Bot - Version 2.4
+Battle Arena Bot - Version 2.5
 Programmed by James "Iyouboushi" (Iyouboushi@gmail.com)
 FREEWARE!
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -73,80 +73,97 @@ for a full list of everything this version does.  Listed below are some
 of the highlights.
 
 
-* Added the ability to allow players to let other players control their characters.
-This is a handy way for people who have multiple characters to control them easier
-or allow friends to control their characters for them while AFK (or whatever reason).
-The commands: 
- !access add playername - Adds a player to the access list
- !access remove playername - Removes a player from the access list.
- !access list - Lists who can control your character
-To actually control the character, use the same commands as the bot admin commands, 
-such as: name attacks target or name does skillname   ** This does not change 
-anything with bot admins. They can still control everything like they did prior.  
-This also does not work in DCC mode due to the way DCC mode works.
+As usual be sure to read the versions.txt in the documentation folder
+for a full list of everything this version does.  Listed below are some 
+of the highlights.
 
-* Added a bunch of new items, accessories and armor pieces.
+* Added Instruments and Songs!
+Spoony the Bard is no longer a useless NPC.  Now he sells instruments and songsheets. Use the
+songsheets on yourself to learn a song that you can then use in battle with a proper instrument.
+Songs offer some bonuses to your team and status effects to your opponents.
 
-* Added more monster abilities
-Monsters can now use Quicksilver and can have auto-regen.
+* Added a new special boss fight: Wall of Flesh
+It's basically an enhanced Demon Wall.  Bring your A-game and take out the wall.
 
-* Added Shop NPCs
-If you are running your own copy of the game for the first time you might notice 
-that there's not that many items in the shop.  Well this is because there are 
-Shop Merchants who will arrive as certain requirements are filled.  When the 
-merchants arrive more items will appear in the store.  These merchants can also
-be kidnapped when players lose certain battles and rescued when they win certain
-battles.
+* Added Dualwielding
+This skill will allow a player to equip two weapons and use techniques from either
+of the weapons without needing to switch. For melee attacks, the # of hits for the 
+attack will be both weapon's # of hits combined.  For example, a 1 hit weapon + a 2 hit
+weapon will give your attack 3 hits. Use !equip left weaponname and !equip right weaponname
+If the weapon is a 2 handed weapon it will automatically adjust what you have equipped in
+your hands.
 
-* Added a damage modifier in which size of the weapon vs monster size plays a part.
-Small weapons are +40% damage against small monsters, neutral against medium 
-monsters and -40% damage on large monsters.
+* Added Shields
+Shields are an extra way to protect yourself while using one-handed weapons. Shields are broken
+into three size categories: small, medium and large.  Small shields will block more often but
+will absorb less damage, medium is middle of the road and large will block the least but will
+absorb the most.  Shields can be purchased from the shield merchant after he arrives at the
+Allied Forces HQ.  Note that players need the dual wield skill in order to use a shield.
 
-Medium weapons are +40% damage on medium monsters, neutral against small monsters 
-and -30% damage on large monsters.
+* Added "Players Must Die" Mode
+Inspired by Dante Must Die mode in DMC, this mode makes monsters harder and makes it so
+players will not restore full hp/tp at the end of battle.  Bot admins can use 
+!toggle mode playersmustdie  to turn this mode on/off.
 
-Large weapons are +40% damage on large monsters, neutral on medium monsters 
-and -40% damage on small monsters.
+* Added the "Time of Day" and # of days to the bot.
+The bot will cycle through morning->noon->evening->night at 2 battles per time.
+Also added code for the bot to keep track of the number of days that the heroes 
+have been fighting. Remember that the "day" it is is based on the cycle of 
+morning to morning (every 8 battles by default).
+With these additions, it is now possible for certain monsters to only appear
+at certain times of the "day".
+
+* Added the Allied Forces HQ Garden
+The garden is an optional minigame that everyone can (and should!) contribute to. 
+Basically you find seed and flower items from monsters and then plant them in the garden.
+Check the garden once every 24 hours for the seeds to grow.  The garden has levels and
+will level up after reaching a certain xp amount (which it obtains by people planting).
+Read the section in PLAYER'S GUIDE for more information on this.'
+
+* Added Death Conditions to Monsters
+Certain monsters and bosses will only die if the right type of attack is used to kill them 
+otherwise they will be revived with half HP. The conditions are: melee, magic, tech, item, 
+renkei, status, and magic effect.
 
 
 Changes:
-- Changed portal items so that only 8 per character can be used a day (resets at midnight bot's time).
-- Changed the way the bot does a few timers to try to prevent an error in mIRC from killing the game.
-- Changed the first round protection so that it includes the Allied Forces President.
-- Changed !count to work in a query message/private.
-- Changed the GIVES command to no longer allow exclusive items to be traded.
-- Changed !techs to show techs in a maroon color if you don't have enough TP to perform that technique.
-- Changed the shop for listing techs to show techs in a maroon if you don't have enough base TP to use
-  the tech if purchased.
-- Changed !reload battle streak to not clear the streak from the player's file.
-- Changed !save battle streak to not allow players to save streaks that are greater than 50 levels higher 
-  than their levels.
-- Changed the way the !speed skill works slightly.
-- Changed !reforge to not work inside battles
-- Changed the way red orbs are rewarded to people whose levels are way lower than the current battle streak.
-  If the streak is 1000+ levels higher than the current level, the orbs are nerfed down to 1.5% of the orb total.
-  If the streak is 500-1000 levels it's nerfed down to 2% of the orb total.
-  If the streak is 100-500 levels higher it's 4.5% of the orb total.  Players leveled above or within 100 have no penalty.
-- Changed the battle list to show monsters/players who have fled in red to help identify them.
-- Changed some code to hopefully make it so the bot can be run in folders that have spaces in them. I'd still recommend the
-  bot be run in a non-space folder (such as C:\BattleArena\) but it shouldn't come to a grinding halt any more if you don't.
+- Changed the Auto Next so that it will boot anyone who misses 3 turns in a single battle out of the battle 
+- Changed Lost Souls and Orb Fountains to explode once darkness hits.
+- Changed !styles to allow the viewing of other player's styles (such as !styles Iyouboushi)
+- Changed !view-info tech to show the stat modifier of techs.
+- Changed NPCs to not show up during boss battles
+- Changed the code for !weapons to be a little more efficient.
+- Changed the code for !shop list weapons to be a little more efficient.
+- Changed the max conquest points for players and monsters to be 6000.
+- Changed the AI code for healer type AI. 
+- Changed battlefields so that there's a 40% chance that the weather will randomly change.
+- Changed Kikouheni so that it now adds the "weatherlock" condition to the battlefield. 
+- Changed how the bot pulls the drop list for monsters/bosses to read from a drops.db file.  
+- Changed how red orbs in chests works. 
+- Changed the Guardian monsters to allow multiple targets that have to be killed in order to hurt the target
+- Changed the level difference a player can be to a target and still have the magic effect work.
+
 
 Fixes:
-- Fixed the "Save the President" battle types so that ignored captures will actually be counted correctly now.
-- Fixed an issue with certain armor pieces.
-- Fixed an issue in which the WeaponLock skill timer was not resetting after each battle.
-- Fixed an issue where mimics could spawn on portal battles.
-- Fixed an issue with certain lists being cut off.
-- Fixed an issue with staggering monsters.
-- Fixed an issue where players could absorb more IG than a monster had with the AbsorbIG augment.
-- Fixed an issue in which healer and portal type monsters can counter melee attacks.
-- Fixed an issue in which clones wouldn't die if the owner died via magic effect or poison. 
-- Fixed countless mistakes in monster and boss files.
-- Fixed an error with weapon boosts.
-- Fixed a bug with certain ignitions not reverting properly when the user runs out of IG.
+- Fixed a bug with !speed
+- Fixed a bug in which Spoony the Bard could not be kidnapped.
+- Fixed a bug in which techs done with weapons obtained via special items would do the wrong amount of damage.
+- Fixed a bug where a target that dies and is revived and dies again will count as 2 deaths instead of 1. 
+- Fixed an issue where weapons that have 0 cost (i.e. can't buy) are showing up in the shop
+- Fixed an issue with chests being able to be opened multiple times if the bot is lagging.
+- Fixed an issue where dead cover targets will still be shown being tossed by monsters.
+- Fixed an issue with the shop where sometimes the skills would not be displayed correctly. 
+- Fixed an issue in which !npc status wouldn display in the channel when used in a private message instead of private.
+- Fixed an issue where doing 0 damage should no longer be able to stagger an enemy
+- Fixed an issue where a target could be staggered even if the target was dodging/blocking/parrying/etc 
+- Fixed an issue where targets protected by a guardian could still be hurt by magic effect damage
+- Fixed an issue where it was possible to do actions while blinded/stunned/other turn-skipping statuses
+- Fixed a potential issue with AI battles in which two healing types could be in battle together, thus never ending.
+
 
 Again, this isn't everything. Be sure to read the versions.txt in the documentation folder for a full 
 list of everything 
+
 
  _______________________________________________________________________
 /                                                                       \

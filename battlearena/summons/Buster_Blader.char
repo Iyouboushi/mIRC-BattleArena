@@ -31,7 +31,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a warrior that wears dark blue and grey armor and carries a large sword that is capable of slaying dragons.
+Char=is a warrior that wears dark blue and grey armor and carries a large sword that is capable of slaying dragons. One of Yugi Mutou's favorite cards.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
 [Stuff]
@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DragonSword
-DragonSword=100
+DragonSword=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Swordmaster=100
-MartialArts=100
+Swordmaster=500
+MartialArts=500
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -117,9 +117,9 @@ Dragon-Killer=100
 
 
 [Techniques]
-HardSlash=100
-PowerSlash=100
-Resolution=100
+HardSlash=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+PowerSlash=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Resolution=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

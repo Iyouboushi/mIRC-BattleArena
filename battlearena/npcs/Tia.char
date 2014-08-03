@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=1500
 Tp=250
-Str=2000
-Def=2000
-Int=2800
-Spd=2800
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Tia
 
 
 [Battle]
 Hp=1500
 Tp=250
-Str=2000
-Def=2000
-Int=2800
-Spd=2800
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AirWhip
-AirWhip=$calc(100 + $current.battlestreak)
+AirWhip=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=300
-Whipster=300
+MartialArts=1000
+Whipster=1000
 Zen=5
 MightyStrike=1
 Impetus=20
@@ -111,10 +111,10 @@ Resist-Intimidate=100
 
 
 [Techniques]
-ArticFreeze=$calc(100 + $current.battlestreak)
-TwinDragonLash=$calc(100 + $current.battlestreak)
-Whiplash=$calc(100 + $current.battlestreak)
-SerpentBite=$calc(100 + $current.battlestreak)
+ArticFreeze=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+TwinDragonLash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Whiplash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SerpentBite=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

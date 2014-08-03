@@ -50,8 +50,8 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=41
-drops=BeastmenSeal
-CanTaunt=true
+drops=BeastmenSeal.QuadavShell
+CanTaunt=false
 
 [Monster]
 Type=quadav

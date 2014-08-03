@@ -18,7 +18,7 @@ Third, there's two exclusive DCC Mode commands for players:
 
 SETTING DCC CHAT MODE UP:
 
-In order to make the bot run DCC Mode you must do two things.  First, make sure dccchat.mrc is loaded into the bot's remotes list.  Second, you must edit system.dat.  In system.dat under the [system] section there's a botType= flag.  This can be set to IRC or DCCchat.  IRC is set by default, so in order to make DCC Chat work you will need to change that to DCCchat.
+In order to make the bot run DCC Mode you must do two things.  First, make sure dccchat.mrc is loaded into the bot's remotes list.  Second, you must edit system.dat.  In system.dat under the [system] section there's a botType= flag.  This can be set to IRC, TWITCH or DCCchat.  IRC is set by default, so in order to make DCC Chat work you will need to change that to DCCchat.
 
 The bot is already set up to listen on ports 5001, 5013->5050.  If you're behind a firewall you will need to open those ports up or change them in the bot's copy of mIRC to open and available ports.
 

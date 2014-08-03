@@ -95,13 +95,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ShivaPower
-ShivaPower=100
+ShivaPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
 ClearMind=3
-MartialArts=100
-Wizardry=100
+MartialArts=500
+Wizardry=500
 ElementalSeal=1
 Resist-Intimidate=100
 Resist-Stun=100
@@ -119,10 +119,10 @@ Resist-Confuse=100
 
 
 [Techniques]
-DiamondDust=100
-HeavenlyStrike=100
-AxeKick=100
-Freeze=100
+DiamondDust=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+HeavenlyStrike=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+AxeKick=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Freeze=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

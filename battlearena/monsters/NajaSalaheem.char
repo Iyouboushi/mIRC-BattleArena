@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a Mithra who is the President of the "Salaheem's Sentinals" mercernary group.
+Char=is a Mithra who is the President of the "Salaheem's Sentinals" mercernary group. She carries a deadly mace in hand.
 Rage=narrows her eyes and raises her mace in a threating manner!
 
 [Stuff]
@@ -152,7 +152,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Morgenstern
-Morgenstern=$calc(100 + $current.battlestreak)
+Morgenstern=$calc(200 + $current.battlestreak)
 
 
 [Skills]
@@ -161,7 +161,7 @@ MightyStrike=1
 RoyalGuard=1
 WeaponBash=1
 Impetus=20
-BloodBoost=100
+BloodBoost=20
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -178,7 +178,7 @@ Resist-Stun=100
 
 
 [Techniques]
-Hexastrike=$calc(100 + $current.battlestreak)
+Hexastrike=$calc(200 + $current.battlestreak)
 
 
 [Item_Amount]

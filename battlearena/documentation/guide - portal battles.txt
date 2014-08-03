@@ -11,34 +11,51 @@ BeastmenSeal Items
 [05 Seals] WormFood
 [10 Seals] DemonBell
 [15 Seals] VirilityCan
+[15 Seals] ArmosMedallian
+[15 Seals] BookOfMudora
+[15 Seals] HeraKey
+[15 Seals] SuspiciousLookingEye
+[15 Seals] CorruptWormFood
+[15 Seals] BloodySpine
+[15 Seals] DungeonMap
+[20 Seals] MayanMap
 
 Kindred Seal Items
 [15 Seals] GemOfTheNorth
 [15 Seals] GemOfTheEast
 [15 Seals] GemOfTheSouth
 [15 Seals] GemOfTheWest
+[15 Seals] MechanicalEye
+[15 Seals] MechanicalWorm
+[15 Seals] MechanicalSkull
+[15 Seals] Plantera'sBulb
 [20 Seals] NewsOrb
 [20 Seals] IgnisFatuus
-[25 Seals] BanishingCharm
-[25 Seals] LachesisOrb
-[25 Seals] AvatarBlood
-[25 Seals] YagudoDrink
-[25 Seals] SpheroidPlate
-[25 Seals] TavnazianPass
-[25 Seals] OldOrcBow
-[30 Seals] RottingOrb
+[20 Seals] BanishingCharm
+[20 Seals] LachesisOrb
+[20 Seals] AvatarBlood
+[20 Seals] YagudoDrink
+[20 Seals] SpheroidPlate
+[20 Seals] TavnazianPass
+[20 Seals] OldOrcBow
+[25 Seals] RottingOrb
 
 Kindred Crest Portal Items
-[20 Seals] TimeOrb
-[20 Seals] JungleOrb
-[25 Seals] OldOrcSword
-[30 Seals] CrimsonTraverserStone
+[15 Crests] LihzahrdPowerCell
+[15 Crests] TruffleWorm
+[20 Crests] OldOrcSword
+[20 Crests] TimeOrb
+[20 Crests] JungleOrb
+[30 Crests] CrimsonTraverserStone
+[30 Crests] EvilGuitar
 
 High Kindred Crest Portal Items
-[50 Seals] GoddessOrb
+[30 Crests] GoddessOrb
+[30 Crests] AtlantianCrystal
 
 Crafted Seal Items
 GodSeal
+HyruleOrb
 
 
 ALLIEDTRAININGPAPER
@@ -86,6 +103,65 @@ Potential Rewards: Goldorb, Slurm, KindredSeal, Red-Belt
 Allied Notes Worth: 500
 Danger Level: Medium
 Estimated Fight Level: 300~400 
+
+
+
+ARMOSMEDALLIAN
+An ancient palace in the east has been rediscovered but the Allied Forces have been unable to open it.  It seems that an ancient medallian is needed.  Perhaps Shami can help unlock the palace so that you can venture inside.
+
+Portal Item: ArmosMedallian
+Portal Item Cost: 15 Beastman Seals
+Potential Rewards: KindredSeal, PendantOfCourage
+Allied Notes Worth: 550
+Danger Level: Medium
+Estimated Fight Level: 150~300
+
+
+
+BOOKOFMUDORA
+Shami has found an ancient book talking about a desert palace where a pendant of great power can be located.  Perhaps he'll be willing to let you have the book..for a price..so that you can check it out.
+
+Portal Item: BookOfMudora
+Portal Item Cost: 15 Beastman Seals
+Potential Rewards: KindredSeal, PendantOfPower
+Allied Notes Worth: 550
+Danger Level: Medium
+Estimated Fight Level: 200~350
+
+
+
+HERAKEY
+An ancient and tall tower in the mountains of the north has been rediscovered.  Perhaps Shami can make a key that will allow access into the tower.
+
+Portal Item: HeraKey
+Portal Item Cost: 15 Beastman Seals
+Potential Rewards: KindredSeal, PendantOfWisdom
+Allied Notes Worth: 550
+Danger Level: Medium
+Estimated Fight Level: 250~400
+
+
+MAYANMAP
+Shami has discovered an ancient Mayan Map while out on his travels. He's willing to sell it to you for a price.  The Allied Forces HQ requests that you buy the map and investigate the ancient ruins in search of something useful to help fight the armies of evil.
+
+Portal Item: MapanMap
+Portal Item Cost: 20 Beastman Seals
+Potential Rewards: KindredSeal, Mayan-Charm
+Allied Notes Worth: 550
+Danger Level: Medium
+Estimated Fight Level: 250~400 
+
+
+
+HYRULEORB
+There is a legend passed down through the ages about a Hero of Time who once vanquished a great evil and saved an entire kingdom.  It is said that someone who possesses the Pendants of Courage, Power and Wisdom will be able to combine the items into a key that will take the users into the kingdom where this hero once lived.  
+
+Portal Item: HyruleOrb
+Portal Item Cost: Crafted Only
+Potential Rewards: ???
+Allied Notes Worth: 2500
+Danger Level: High
+Estimated Fight Level: 600+
 
 
 
@@ -221,7 +297,7 @@ Shami is reluctant to make the item, but will do so to those wanting a brutal de
 Portal Item: CrimsonTraverserStone
 Portal Item Cost: 30 Kindred Crests
 Potential Rewards: One of the reports claims that Shinryu carries Twilight armor as treasure, but that is all the info gathered.
-Allied Notes Worth: 3000
+Allied Notes Worth: 2750
 Danger Level: God-like
 Estimated Fight Level: 5000 - 6000
 
@@ -235,7 +311,7 @@ Shami has been deemed worthy enough to make the portal item for this challenge. 
 Portal Item: Goddess Orb
 Portal Item Cost: 50 High Kindred Crests
 Potential Rewards: Eldora simply replied with this: "Unkai armor set and Estoqueur armor set."
-Allied Notes Worth: 4000
+Allied Notes Worth: 3000
 Danger Level: Impossible to gauge
 Estimated Fight Level: 7000 - 8000
 
@@ -308,9 +384,21 @@ This Orc paladin has been quite the thorn in the side to the nation of San d'Ori
 Portal Item: Old Orc Sword
 Portal Item Cost: 25 Kindred Crests
 Potential Rewards: Creed Armet, Creed Cuirass, Creed Cuisses, Creed Sabatons, Creed Gauntlets, Kindred Crest
-Allied Notes Worth: 2000
+Allied Notes Worth: 1750
 Danger Level: Extremely High
 Estimated Fight Level: 1500 - 1600
+
+
+
+EVILGUITAR
+Reports have mention a that a sadistic woman has been running around and hurting various Allied Forces members and random people in general. The Allied Forces President is asking for the aid of any player that wants to end the reign of terror. Perhaps Shami knows of a way.
+
+Portal Item: EvilGuitar
+Portal Item Cost: 35 Kindred Crests
+Potential Rewards: DiscountCard, MegaPotion, MiserRing
+Allied Notes Worth: 2750
+Danger Level: Extremely High
+Estimated Fight Level: 3500 ~ ???? 
 
 
 
@@ -330,7 +418,7 @@ JUNGLEORB
 Allied Forces are reporting of two very dangerous monsters in the deep jungle that need to be taken care of.  Echidna, the She-Viper, is breeding an army of Chimeras, while Eccentric Eve is just growing out of control.  Shami has an orb that will help get you to the jungle but is unable to be certain which of the two beasts you will face in combat.  Take caution! Both are extremely powerful..
 
 Portal Item: JungleOrb
-Portal Item Cost: 20 Kindred Crests
+Portal Item Cost: 20 Kindred Crests (15 if the Allied Forces Garden is level 6 or higher)
 Potential Rewards: JungleRose, JungleThorn, KindredCrest, IgnitionStar
 Allied Notes Worth: 1000
 Danger Level: Extreme High

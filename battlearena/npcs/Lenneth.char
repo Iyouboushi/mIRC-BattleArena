@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=5000
 Tp=500
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Name=Lenneth Valkyrie
 
 
 [Battle]
 Hp=5000
 Tp=500
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
@@ -96,13 +96,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ValkyrieSword
-ValkyrieSword=$calc(100 + $current.battlestreak)
-Gandiva=$calc(100 + $current.battlestreak)
+ValkyrieSword=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
+Gandiva=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Wizardry=100
-Swordmaster=100
-Archery=100
+Wizardry=1000
+Swordmaster=1000
+Archery=1000
 Zen=5
 ClearMind=3
 MightyStrike=1
@@ -121,23 +121,32 @@ ManaWall=1
 
 
 [Techniques]
-NibelungValesti=$calc(500 + $current.battlestreak)
-ChantduCygne=$calc(100 + $current.battlestreak)
-Requiescat=$calc(100 + $current.battlestreak)
-Atonement=$calc(100 + $current.battlestreak)
-EagleEyeShot=$calc(100 + $current.battlestreak)
-JishnusRadiance=$calc(100 + $current.battlestreak)
-ApexArrow=$calc(100 + $current.battlestreak)
+NibelungValesti=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChantduCygne=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Requiescat=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Atonement=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+EagleEyeShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+JishnusRadiance=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ApexArrow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 
 
 [Styles]
 Equipped=Guardian
-Guardian=5
+Guardian=10
 GuardianXP=1
 
-[Element]
-Weakness=Dark
-Strong=Light
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=Light
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=200
+Dark=200

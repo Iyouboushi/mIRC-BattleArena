@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2000
 Tp=250
-Str=2500
-Def=2500
-Int=3500
-Spd=3200
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Name=Selan
 
 
 [Battle]
 Hp=2000
 Tp=250
-Str=2500
-Def=2500
-Int=3500
-Spd=3200
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Status=alive
 
 
@@ -95,12 +95,12 @@ zombie.timer=1
 
 [Weapons]
 Equipped=SelanSwordStaff
-SelanSwordStaff=$calc(100 + $current.battlestreak)
+SelanSwordStaff=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=70
-Wizardry=100
-Swordmaster=100
+MartialArts=100
+Wizardry=1000
+Swordmaster=1000
 Zen=5
 ClearMind=3
 ElementalSeal=1
@@ -113,22 +113,22 @@ Resist-Curse=100
 Resist-Intimidate=100
 RoyalGuard=1
 ManaWall=1
-BloodSpirit=100
+BloodSpirit=10
 
 
 [Techniques]
-HolyEnergy==$calc(100 + $current.battlestreak)
-PhoenixBlow=$calc(100 + $current.battlestreak)
-ChantDuCygne=$calc(100 + $current.battlestreak)
-DeathBlossom=$calc(100 + $current.battlestreak)
-Curaga=$calc(100 + $current.battlestreak)
-CureV=$calc(100 + $current.battlestreak)
-FlareII=$calc(100 + $current.battlestreak)
-QuakeII=$calc(100 + $current.battlestreak)
-FreezeII=$calc(100 + $current.battlestreak)
-FloodII=$calc(100 + $current.battlestreak)
-BurstII=$calc(100 + $current.battlestreak)
-TornadoII=$calc(100 + $current.battlestreak)
+HolyEnergy=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PhoenixBlow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChantDuCygne=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DeathBlossom=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Curaga=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+CureV=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FlareII=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+QuakeII=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FreezeII=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FloodII=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BurstII=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+TornadoII=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

@@ -83,7 +83,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Pinchers
-Pinchers=100
+Pinchers=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
@@ -104,8 +104,8 @@ Resist-Confuse=100
 
 
 [Techniques]
-BubbleShower=100
-BigScissors=100
+BubbleShower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+BigScissors=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

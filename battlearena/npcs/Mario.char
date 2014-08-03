@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=100
-Str=2000
-Def=2000
-Int=2000
-Spd=2000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Mario
 
 
 [Battle]
 Hp=2500
 Tp=100
-Str=2000
-Def=2000
-Int=2000
-Spd=2000
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -98,11 +98,11 @@ conservetp.on=off
 
 [Weapons]
 Equipped=MarioFists
-MarioFists=$calc(100 + $current.battlestreak)
+MarioFists=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 desperateblows=1
-MartialArts=100
+MartialArts=1000
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
@@ -110,9 +110,9 @@ Zen=5
 
 
 [Techniques]
-Jump=$calc(100 + $current.battlestreak)
-StarPower=$calc(100 + $current.battlestreak)
-FireFlower=$calc(100 + $current.battlestreak)
+Jump=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+StarPower=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FireFlower=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

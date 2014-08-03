@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=3000
 Tp=300
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(35 + $current.battlestreak)
+Spd=$calc(35 + $current.battlestreak)
 Name=Julius Belmont
 
 
 [Battle]
 Hp=3000
 Tp=300
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(35 + $current.battlestreak)
+Spd=$calc(35 + $current.battlestreak)
 Status=alive
 
 
@@ -95,14 +95,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=VampireKiller
-VampireKiller=$calc(100 + $current.battlestreak)
+VampireKiller=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
 ClearMind=3
-Wizardry=100
-MartialArts=100
-Whipster=100
+MartialArts=1000
+Whipster=1000
 Resist-Charm=100
 Resist-Amnesia=100
 Resist-Curse=100
@@ -112,14 +111,14 @@ WeaponBash=1
 
 
 [Techniques]
-GrandCross=$calc(100 + $current.battlestreak)
-HydroStorm=$calc(100 + $current.battlestreak)
-Dagger=$calc(100 + $current.battlestreak)
-HolyWater=$calc(100 + $current.battlestreak)
-Cross=$calc(100 + $current.battlestreak)
-StopWatch=$calc(100 + $current.battlestreak)
-Axe=$calc(100 + $current.battlestreak)
-DoubleAxe=$calc(100 + $current.battlestreak)
+GrandCross=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HydroStorm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Dagger=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HolyWater=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Cross=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+StopWatch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Axe=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DoubleAxe=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

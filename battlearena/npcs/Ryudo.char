@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=250
-Str=3000
-Def=2500
-Int=2700
-Spd=2700
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(25 + $current.battlestreak)
+Int=$calc(25 + $current.battlestreak)
+Spd=$calc(25 + $current.battlestreak)
 Name=Ryudo
 
 
 [Battle]
 Hp=2500
 Tp=250
-Str=3000
-Def=2500
-Int=2700
-Spd=2700
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(25 + $current.battlestreak)
+Int=$calc(25 + $current.battlestreak)
+Spd=$calc(25 + $current.battlestreak)
 Status=alive
 
 
@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RyudoSword
-RyudoSword=$calc(100 + $current.battlestreak)
+RyudoSword=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Swordmaster=100
+MartialArts=1000
+Swordmaster=1000
 Zen=5
 MightyStrike=1
 Impetus=20
@@ -111,10 +111,10 @@ Resist-Intimidate=100
 
 
 [Techniques]
-TenseikenSlash=$calc(100 + $current.battlestreak)
-FlyingTenseiken=$calc(100 + $current.battlestreak)
-PurpleLightning=$calc(100 + $current.battlestreak)
-SkyDragonSlash=$calc(100 + $current.battlestreak)
+TenseikenSlash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FlyingTenseiken=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PurpleLightning=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SkyDragonSlash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=3500
 Tp=500
-Str=3500
-Def=3500
-Int=3500
-Spd=3500
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=100
 Name=Bayonetta
 
@@ -12,10 +12,10 @@ Name=Bayonetta
 [Battle]
 Hp=3500
 Tp=500
-Str=3500
-Def=3500
-Int=3500
-Spd=3500
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -52,8 +52,10 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
+HealByTaunt=true
 IgnoreQuicksilver=true
 CanTaunt=true
+TauntFile=taunts_bayonetta.txt
 
 [Status]
 Poison=no
@@ -98,38 +100,47 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ScarboroughFair
-ScarboroughFair=$calc(100 + $current.battlestreak)
+ScarboroughFair=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Wizardry=100
-Gunslinger=100
+MartialArts=2000
+Wizardry=2000
+Gunslinger=2000
 Zen=5
 ClearMind=3
 MightyStrike=1
 Impetus=20
 WeaponBash=1
 Resist-Charm=100
-Resist-Amnesia=100
-Resist-Curse=100
-Resist-Intimidate=100
+Resist-Poison=100
 Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Curse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
 
 
 [Techniques]
-BulletClimax=$calc(100 + $current.battlestreak)
-HeelSlide=$calc(100 + $current.battlestreak)
-WheelofTorture=$calc(100 + $current.battlestreak)
-MadamaButterflyFist=$calc(100 + $current.battlestreak)
-MadamaButterflyHeel=$calc(100 + $current.battlestreak)
-Gomorrah=$calc(100 + $current.battlestreak)
-Malphas=$calc(100 + $current.battlestreak)
-Hekatoncheir=$calc(100 + $current.battlestreak)
-Scolopendra=$calc(100 + $current.battlestreak)
-Phantasmaraneae=$calc(100 + $current.battlestreak)
+BulletClimax=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+HeelSlide=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+MadamaButterflyFist=$iif($current.battlestreak < 80, 0, $calc(120 + $current.battlestreak))
+MadamaButterflyHeel=$iif($current.battlestreak < 80, 0, $calc(120 + $current.battlestreak))
+WheelofTorture=$iif($current.battlestreak < 100, 0, $calc(800 + $current.battlestreak))
+Gomorrah=$iif($current.battlestreak < 100, 0, $calc(800 + $current.battlestreak))
+Malphas=$iif($current.battlestreak < 125, 0, $calc(800 + $current.battlestreak))
+Hekatoncheir=$iif($current.battlestreak < 150, 0, $calc(800 + $current.battlestreak))
+Scolopendra=$iif($current.battlestreak < 200, 0, $calc(800 + $current.battlestreak))
+Phantasmaraneae=$iif($current.battlestreak < 300, 0, $calc(800 + $current.battlestreak))
 
 [Ignitions]
-WitchTime=1
+WitchTime=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Item_Amount]

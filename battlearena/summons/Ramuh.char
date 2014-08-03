@@ -95,13 +95,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=OlduumStaff
-OlduumStaff=100
+OlduumStaff=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
-Wizardry=100
+Wizardry=500
 ClearMind=3
-BloodSpirit=1
+BloodSpirit=5
 ElementalSeal=1
 ManaWall=1
 manawall.on=on
@@ -121,10 +121,10 @@ Resist-Confuse=100
 
 
 [Techniques]
-JudgementBolt=100
-Thunderstorm=100
-ChaoticStrike=100
-Burst=100
+JudgementBolt=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+Thunderstorm=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+ChaoticStrike=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Burst=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

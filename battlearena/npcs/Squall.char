@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=3500
 Tp=250
-Str=2700
-Def=2000
-Int=2800
-Spd=2500
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(35 + $current.battlestreak)
 Name=Squall Leonheart
 
 
 [Battle]
 Hp=3500
 Tp=250
-Str=2700
-Def=2000
-Int=2800
-Spd=2500
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(35 + $current.battlestreak)
 Status=alive
 
 
@@ -96,10 +96,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=GunbladeRevolver
-GunbladeRevolver=$calc(100 + $current.battlestreak)
+GunbladeRevolver=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Swordmaster=100
+Swordmaster=1000
+Wizardry=1000
 Zen=5
 MightyStrike=1
 Impetus=20
@@ -111,11 +112,11 @@ Resist-Intimidate=100
 
 
 [Techniques]
-Renzokuken=$calc(300 + $current.battlestreak)
-RoughDivide=$calc(100 + $current.battlestreak)
-FatedCircle=$calc(100 + $current.battlestreak)
-BlastingZone=$calc(100 + $current.battlestreak)
-Lionheart=$calc(500 + $current.battlestreak)
+Renzokuken=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+RoughDivide=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FatedCircle=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BlastingZone=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Lionheart=$round($calc(300 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

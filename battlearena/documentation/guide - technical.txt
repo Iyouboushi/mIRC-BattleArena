@@ -6,7 +6,7 @@ This guide will be more about the technical aspects including why I did things t
 SYSTEM.DAT
 The system.dat controls and stores some information for running the bot.  In this section I'll break it down.
 
-If you open the system.dat you'll see the following sections: [botinfo] [system] [statprices] and [style].
+If you open the system.dat you'll see the following sections: [botinfo] [system] [statprices] [style] and [version].
 
 [botinfo]
 This section keeps the bot owner (person who has access to a few more commands than normal players), the channel the bot sits in and displays all the messages to, the name of the bot, and the bot's password that it sends to nickserv upon connecting.  All of this information should be generated the first time you run the bot.
@@ -21,7 +21,9 @@ In other words, a name followed by a period, another name.  Don't add a period t
 This section controls a lot of the in-game functions and limits such as, but not limited to, base # of orbs for normal monsters and bosses, how many orbs players start with, the name of the currency and the time between battles in minutes.
 
 
-botType=  IRC or DCCchat.  This tells the bot where to display messages and accept commands. If you have a lot of players and don't want limits on the # of monsters that can appear in battles, use DCCchat mode.  IRC is defeault.
+botType=  IRC, DCCchat or TWITCH.  This tells the bot where to display messages and accept commands. If you have a lot of players and don't want limits on the # of monsters that can appear in battles, use DCCchat mode* (** your players will need a client that can do DCC Chat connections).  If you are trying to run the bot on Twitch (which is not recommended) set this to TWITCH mode which slows the speed of output down and makes everything output to the channel (no private messages).  IRC mode is default and is the most recommended mode for most people/bot owners.
+
+AllowColors= true or false.  If set to false then all colors will be stripped from the messages that are output to the players.  Set to true by default.
 
 automatedbattlesystem=   on or off.  If you want to turn the automated battle system off you can change that here.
 
@@ -59,7 +61,15 @@ EnableDoppelganger=   if you want the doppelganger boss fights to be enabled or 
 
 EnableWarMachine=  if you want the war machine boss fights to be enabled or not. Put true or false. It's set to true by default.
 
+EnableBandits= true or false, true by default.  This toggles the bandit boss type on and off.
+
+EnablePirates= true or false, true by default. This toggles the pirate boss type on and off.
+
+EnableCrystalShadow= true or face, true by default. This toggles the crystal shadow warrior boss type on and off.
+
 AllowDemonwall=  yes/no  If you want the demon wall boss battles to exist at ranges 300-600, put this as yes.  It's set to yes by default.
+
+AllowWallOfFlesh= yes/no  If you want the Wall of Flesh boss battles to exist, put this as yes. It's set to yes by default.
 
 EnablePresidentKidnapping= true or false. By default it's set to true.  If you want the kidnapped president event to occur, leave it as true or set it to false to turn it off.
 
@@ -69,7 +79,9 @@ MaxCharacters= How many characters should each player be allowed to have? The de
 
 ShowOrbsCmdInChannel= true or false.  If set to true the !orbs command will display the results in the channel. If set to false, the !orbs command will display in a private message to the person who uses the command. If you have a lot of players in your channel it might be advisable to set this to false.
 
-BattleDamageFormula= 1 or 2.  There's two damage formulas in the bot currently.  Damage Formula #2 is set by default since it's the newest and most balanced, but you can change it to whichever one you want to use.
+ShowDiscountMessage= true or false. False by default. If set to true, an item description will be shown when players use the Discount Card type items. If set to false it will not show the descriptions.
+
+BattleDamageFormula= 1, 2 or 3.  There's three damage formulas in the bot currently.  Damage Formula #3 is set by default since it's the newest and most balanced, but you can change it to whichever one you want to use. If you are using an older copy of a system.dat you may need to change it manually to 3 if you want to be using the most current battle damage formulas.
 
 EnableBattlefieldEvents= true/false  If you want the random battlefield events to happen, set this to true.  It's true by default.
 
@@ -93,9 +105,21 @@ MaxDemonWallTurns=  10 by default.  This is how many turns players have to defea
 
 MimicChance= 10 by default (10%).  What chance a chest has in becoming a mimic.
 
-EnableBandits= true or false, true by default.  This toggles the bandit boss type on and off.
-
 PhantomBetters= how many fake betters will participate in 1vs1 AI Battles to help generate the odds.  This can't be set lower than 3.  Setting it too high will cause lag on slower machines.
+
+EnableAuctionHouse= true or false. If set to true, the auction house will be on and will generate items for players to bid on. If set to false then no players can bid. This is set to true by default.
+
+BattleThrottle= true or false, set to false by default.  If set to true players will have to wait a round out before entering the next battle after the battle they're in ends.
+
+LimitPortalBattles=true or false. If set to true players can only use 8 portal items a day, which then resets at midnight (bot's time).  This is set to true by default.
+
+GenerateHTML=true or false. If set to true the bot will generate an HTML file when !scoreboard is used. This is set to true by default.
+
+PlayersMustDieMode= true or false. This will turn the Players Must Die mode on or off.  While on, monsters are harder and players won't get their HP and TP restored at the end of each battle.
+
+WheelGameCost=  This is the cost in red orbs it takes to play the Wheel minigame once the wheel merchant has been saved. It's set to 500 by default.
+
+TwitchDelayTime=  This is how fast messages are output in TWITCH mode.  By default it's set to 2.  If the bot is being kicked a lot by Twitch try increasing this.
 
 
 [StatPrices]
@@ -104,6 +128,11 @@ This whole section is the base cost, in red orbs, that the shop will sell stat u
 [Style]
 This section is for how many base style points a player gets for killing either a boss or a normal monster.  Note that just because the default value is 80 for bosses and 60 for monsters it doesn't mean that's exactly how many a player will get (there's other factors for calculating the resulting style points).
 
+[Mech]
+This section deals ith the cost and values of various mech settings.
+
+[Version]
+This section is used to store the current system.dat version.  If your version doesn't match what the version is expected by the bot, the bot will check through your system.dat and add the new sections as necessary.  Don't mess with this manually, even if you think you have the latest version.
 
 
 BATTLESTATS.DAT
@@ -172,9 +201,78 @@ DragonBallsFound=  How many dragonballs have been found so far.
 DragonballsActive=  Is it possible to find dragonballs?  If the wish is on, this is set to no.
 DragonballChance=  The default chance of finding one after a boss battle in percent. The default amount is 10%
 
+SHOPNPCS.DAT
+shopnpcs.dat deals with the shop npc information.
+
+[NPCStatus]
+This section tells the bot if the NPC is either in the allied forces base, kidnapped, or not found yet.  =false means not found, =true means in the base, and =kidnapped means the npc is kidnapped.
+
+Santa=false
+EasterBunny=false
+DiscountCardMerchant=false
+HealingMerchant=false
+BattleMerchant=false
+AlliedForcesPresident=true
+ShieldMerchant=false
+WheelMaster=kidnapped
+TravelMerchant=false
+Gardener=kidnapped
+
+[Events]
+This is used for certain NPCs.
+
+FrostLegionDefeated=false
+SavedElves=0
+
+[NPCNames]
+This controls the names of the NPCs. If you don't like the ones I've picked feel free to edit this section to your liking.
+
+Santa=Santa
+EasterBunny=Easter Bunny
+DiscountCardMerchant=Myles the Discount Merchant
+HealingMerchant=Katelyn the Healing Merchant
+BattleMerchant=Gerhardt the Battle Merchant
+AlliedForcesPresident=Allied Forces President
+ShieldMerchant=Gondo the Shield Merchant
+WheelMaster=Dodoh the Wheel Master
+TravelMerchant=Beedle the Traveling Merchant
+Gardener=Green Thumb the Garden Moogle
+
+[AlliedForcesHQ]
+This section is currently unused but may be used in a future update.
+
+HQStrength=0
+HQOrbsDonated=0
+PresidentGuards=0
+
+
+GARDEN.DAT
+Garden.dat is used to store information on the Allied Forces HQ Garden minigame.
+
+[GardenStats]
+This section contains the XP, level, bonus and lastchecked information for the garden.
+
+XP=
+Level=1
+LastChecked=
+Bonus=0
+
+[Seeds]
+This section stores how many seeds have been planted by the players, how many of those seeds have become saplings and how many saplings have become trees.
+
+Planted=0
+Saplings=0
+Trees=0
+
+[Plants]
+This section stores how many flowers have been planted by the players and how many have bloomed.
+
+Planted=0
+Bloomed=0
+
 
 BATTLEFIELDS.DB
-Battlefields.db controls the various battlefields that are available in the bot and the weather information.  If you open the file up in notepad you'll see the weather information at the top.
+Battlefields.db controls the various battlefields that are available in the bot, the weather information and the "Time of Day" for the game.  If you open the file up in notepad you'll see the weather information at the top.
 
 [weather]
 current=calm
@@ -182,6 +280,19 @@ list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 the .25 means that magic cast on the right day will give a 25% boost to the damage.
+
+After that you'll see the time of day section.
+
+
+[TimeOfDay]
+CurrentTimeOfDay=Morning
+CurrentTimeOfDayTurn=1
+
+[TimeOfDayTime]
+morning=2
+noon=2
+evening=2
+night=2
 
 The rest of the information inside pertains to the battlefields.
 
@@ -432,7 +543,7 @@ RageMode=ignore
 IGNORE QUICKSILVER.  If set to true, the quicksilver skill won't have any effect.
 IgnoreQuicksilver=true/false
 
-AI TYPE: berserkers will attack their own allies, defenders won't get a turn. healers only heal, counteronly will counter melee/take 0 damage from everything else, and techonly only uses techs. Leave blank for normal.
+AI TYPE: berserkers will attack their own allies, defenders won't get a turn. healers only heal, counteronly will counter melee/take 0 damage from everything else, and techonly only uses techs and ignitions. Leave blank for normal.
 ai_type=
 
 STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.  set to -1000 for it to never show up under normal circumstances.
@@ -464,7 +575,7 @@ CANTAUNT=true/false
 TAUNTFILE is an optional taunt file if you want your boss to have unique taunts.  If blank it will use the default taunts.txt The optional taunt file needs to be in \txts\
 TAUNTFILE=
 
-GUARDIAN is a monster that covers the boss. While the monster is alive the boss will take no damage from items/techs/attacks
+GUARDIAN is a monster that covers the boss. While the monster is alive the boss will take no damage from items/techs/attacks.   Can have multiple by putting periods inbetween the names (such as monster1.monster2.monster3)
 Guardian=
 
 JUSTRELEASEDEFENSE is to block "Just Release" the # is a percent of the damage blocked. 0 = no block, 100 = 100% blocked

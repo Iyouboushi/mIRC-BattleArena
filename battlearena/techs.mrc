@@ -5,8 +5,7 @@
 ON 3:ACTION:goes *:#:{ 
   if ($3 != $null) { halt }
   if ($person_in_mech($nick) = true) { $display.system.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
-  if ($is_charmed($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  $no.turn.check($nick)
   $set_chr_name($nick) 
 
   var %ignitions.list $ignitions.get.list($nick)
@@ -19,32 +18,30 @@ ON 3:ACTION:reverts*:#: {
   $check_for_battle($nick) 
   if ($person_in_mech($nick) = true) { $display.system.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ($3 = $null) { halt }
-  if ($is_charmed($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  $no.turn.check($nick)
   $set_chr_name($nick) 
 
   var %ignition.name $readini($char($nick), status, ignition.name)
   if (%ignition.name = $3) {   
     $revert($nick, $3)  |   var %ignition.name $readini($dbfile(ignitions.db), $readini($char($nick), status, ignition.name), name)
-    query %battlechan $readini(translation.dat, system, IgnitionReverted) 
+    $display.system.message($readini(translation.dat, system, IgnitionReverted),battle)
     halt
   }
-  else { query %battlechan $readini(translation.dat, errors, NotUsingThatIgnition) | halt }
+  else { $display.system.message($readini(translation.dat, errors, NotUsingThatIgnition),battle) | halt }
 } 
 ON 50:TEXT:*reverts from *:*:{ 
   $check_for_battle($1) 
   if ($4 = $null) { halt }
-  if ($is_charmed($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  $no.turn.check($1)
   if ($person_in_mech($1) = true) { $display.system.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   $set_chr_name($1) 
   var %ignition.name $readini($char($1), status, ignition.name)
   if (%ignition.name = $4) {   
     $revert($1, $4) 
-    query %battlechan $readini(translation.dat, system, IgnitionReverted) 
+    $display.system.message($readini(translation.dat, system, IgnitionReverted),battle)
     halt
   }
-  else { query %battlechan $readini(translation.dat, errors, NotUsingThatIgnition) | halt }
+  else { $display.system.message($readini(translation.dat, errors, NotUsingThatIgnition),battle) | halt }
 }
 ON 3:TEXT:*reverts from *:*:{ 
   $check_for_battle($1) 
@@ -53,22 +50,42 @@ ON 3:TEXT:*reverts from *:*:{
 
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
-  if ($is_charmed($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  $no.turn.check($1)
   if ($person_in_mech($1) = true) { $display.system.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   $set_chr_name($1) 
   var %ignition.name $readini($char($1), status, ignition.name)
   if (%ignition.name = $4) {   
     $revert($1, $4) 
-    query %battlechan $readini(translation.dat, system, IgnitionReverted) 
+    $display.system.message($readini(translation.dat, system, IgnitionReverted),battle)
     halt
   }
-  else { query %battlechan $readini(translation.dat, errors, NotUsingThatIgnition) | halt }
+  else { $display.system.message($readini(translation.dat, errors, NotUsingThatIgnition),private) | halt }
+}
+
+ON 3:ACTION:sings *:#:{ 
+  if (%battleis = off) { halt }
+  if ($3 != $null) { halt }
+
+  $set_chr_name($nick) 
+
+  if ($person_in_mech($nick) = true) { $display.system.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($nick) 
+  $sing.song($nick, $2)
+}
+
+ON 50:TEXT:*sings *:*:{ 
+  if (%battleis = off) { halt }
+  if ($3 != $null) { halt }
+
+  $set_chr_name($1) 
+
+  if ($person_in_mech($1) = true) { $display.system.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  $sing.song($1, $3)
 }
 
 ON 3:ACTION:uses * * on *:#:{ 
-  if ($is_charmed($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  $no.turn.check($nick)
   $set_chr_name($nick) | set %attack.target $5 
   $tech_cmd($nick , $3 , %attack.target, $7) | halt 
 } 
@@ -76,6 +93,8 @@ ON 50:TEXT:*uses * * on *:*:{
   if ($1 = uses) { halt }
   if ($3 = item) { halt }
   if ($5 != on) { halt }
+
+  $no.turn.check($1)
 
   var %ignitions.list $ignitions.get.list($1)
   set %attack.target $6 
@@ -90,6 +109,8 @@ ON 3:TEXT:*uses * * on *:*:{
 
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
+
+  $no.turn.check($1)
 
   var %ignitions.list $ignitions.get.list($1)
   set %attack.target $6 
@@ -159,7 +180,6 @@ alias tech_cmd {
 
     ; Check for ConserveTP
     if (($readini($char($1), status, conservetp) = yes) || ($readini($char($1), status, conservetp.on) = on)) { set %tp.needed 0 | writeini $char($1) status conserveTP no }
-
     if (%tp.needed = $null) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, DoesNotKnowTech), private) | halt }
     if (%tp.needed > %tp.have) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, NotEnoughTPforTech),private) | halt }
   }
@@ -286,9 +306,11 @@ alias tech.abilitytoperform {
   }
 
   set %weapon.abilities $readini($dbfile(techniques.db), Techs, $3)
+  if (%weapon.equipped.left != $null) { %weapon.abilities = $addtok(%weapon.abilities, $readini($dbfile(techniques.db), Techs, %weapon.equipped.left), 46) } 
+
   if ($istok(%weapon.abilities,$2,46) = $false) { unset %weapon.abilities |  $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, Can'tPerformTechWithWeapon),private) | halt }
 
-  unset %techs | unset %ignition.name |  unset %weapon.abilities | unset %ignition.techs
+  unset %techs | unset %ignition.name |  unset %weapon.abilities | unset %ignition.techs | unset %equipped.weapon.left
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -325,14 +347,14 @@ alias tech.buff {
 
   if ($person_in_mech($3) = false) { 
 
-    var %buff.type $readini($dbfile(techniques.db), $2, status)
+    set %buff.type $readini($dbfile(techniques.db), $2, status)
 
     ; If the user is a player and isn't confused or charmed, we should check to see if the target already has the buff on.  If so, why apply it again?
     if ($readini($char($1), info, flag) = $null) {
       if (($is_charmed($1) != true) && ($is_confused($1) != true))  { 
         if ($readini($char($3), status, %buff.type) = yes) { $set_chr_name($3) | $display.system.message($readini(translation.dat, errors, AlreadyHasThisBuff), private)
           var %tp.required $readini($dbfile(techniques.db), $2, tp)  
-          $restore_tp($1, %tp.required)
+          $restore_tp($1, %tp.required) | unset %buff.type
           halt 
         }
       }
@@ -345,7 +367,9 @@ alias tech.buff {
 
     writeini $char($3) status %buff.type $+ .timer 0
 
-    if (%buff.type != en-spell) {  writeini $char($3) status %buff.type yes 
+    if (%buff.type != en-spell) {  
+
+      writeini $char($3) status %buff.type yes 
 
       if ($readini($dbfile(techniques.db), $2, modifier) != $null) {
         ; This buff adds resistances to the target's file.
@@ -371,6 +395,10 @@ alias tech.buff {
 
   ; Check for a postcript
   if ($readini($dbfile(techniques.db), n, $2, PostScript) != $null) { $readini($dbfile(techniques.db), p, $2, PostScript) }
+
+
+  unset %buff.type
+
 
   ; Time to go to the next turn
   if (%battleis = on)  {  $check_for_double_turn($1) | halt }
@@ -994,89 +1022,6 @@ alias tech.aoe {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Displays AOE damage
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-alias display_aoedamage {
-  unset %overkill | unset %target |  unset %style.rating
-  $set_chr_name($1) | set %user %real.name
-  if ($person_in_mech($1) = true) { set %user %real.name $+ 's $readini($char($1), mech, name) } 
-
-  $set_chr_name($2) | set %enemy %real.name
-  if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
-
-  ; Show the damage
-  if ($person_in_mech($2) = false) { 
-    if (($readini($char($2), status, reflect) = yes) && ($readini($dbfile(techniques.db), $3, magic) = yes)) { $display.system.message($readini(translation.dat, skill, MagicReflected), battle) | $set_chr_name($1) | set %enemy %real.name | set %target $1 | writeini $char($2) status reflect no | writeini $char($2) status reflect.timer 1  }
-  }
-
-  if ($3 != battlefield) {
-    if (($readini($char($1), info, flag) != monster) && (%target != $1)) { $calculate.stylepoints($1) }
-  }
-
-  if (%guard.message = $null) { $display.system.message($readini(translation.dat, tech, DisplayAOEDamage), battle)  }
-  if (%guard.message != $null) { $display.system.message(%guard.message, battle) | unset %guard.message }
-
-  if (%target = $null) { set %target $2 }
-
-  if ($4 = absorb) { 
-    ; Show how much the person absorbed back.
-    var %absorb.amount $round($calc(%attack.damage / 2),0)
-    $display.system.message($readini(translation.dat, tech, AbsorbHPBack), battle)
-  }
-
-  if (%absorb.message != $null) { 
-    if (%guard.message = $null) {
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %absorb.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%absorb.message) }
-      unset %absorb.message
-    }
-  }
-
-
-  set %target.hp $readini($char(%target), battle, hp)
-
-  if ((%target.hp > 0) && ($person_in_mech($2) = false)) {
-    ; Check to see if the monster can be staggered..  
-    var %stagger.check $readini($char(%target), info, CanStagger)
-    if ((%stagger.check = $null) || (%stagger.check = no)) { return }
-
-    ; Do the stagger if the damage is above the threshold.
-    var %stagger.amount.needed $readini($char(%target), info, StaggerAmount)
-    dec %stagger.amount.needed %attack.damage | writeini $char(%target) info staggeramount %stagger.amount.needed
-    if (%stagger.amount.needed <= 0) { writeini $char(%target) status staggered yes |  writeini $char(%target) info CanStagger no
-      $display.system.message($readini(translation.dat, status, StaggerHappens), battle)
-    }
-  }
-
-  ; Did the person die?  If so, show the death message.
-
-  if ((%target.hp  <= 0) && ($person_in_mech($2) = false)) { 
-    writeini $char(%target) battle status dead 
-    writeini $char(%target) battle hp 0
-    $check.clone.death(%target)
-    $increase_death_tally(%target)
-    $achievement_check(%target, SirDiesALot)
-    if (%attack.damage > $readini($char(%target), basestats, hp)) { set %overkill 7<<OVERKILL>> }
-    $display.system.message($readini(translation.dat, battle, EnemyDefeated), battle)
-    $goldorb_check(%target) 
-    $spawn_after_death(%target)
-    $achievement_check($1, FillYourDarkSoulWithLight)
-  }
-
-  if ($person_in_mech($2) = true) { 
-    ; Is the mech destroyed?
-    if ($readini($char($2), mech, HpCurrent) <= 0) {  var %mech.name $readini($char($2), mech, name)
-      $display.system.message($readini(translation.dat, battle, DisabledMech), battle)
-      writeini $char($2) mech inuse false
-    }
-  }
-
-  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
-  unset %attack.damage | unset %target
-  return 
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Calculates Tech Damage
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias calculate_damage_techs {
@@ -1125,6 +1070,7 @@ alias calculate_damage_techs {
 
 
   var %tech.base $readini($dbfile(techniques.db), p, $2, BasePower)
+
   var %user.tech.level $readini($char($1), Techniques, $2)
   if (%user.tech.level = $null) { var %user.tech.level 1 }
 
@@ -1176,7 +1122,11 @@ alias calculate_damage_techs {
   inc %attack.damage $rand(1,10)
 
   ; Is the tech magic?  If so, we need to add some more stuff to it.
-  if ($readini($dbfile(techniques.db), $2, magic) = yes) { $calculate_damage_magic($1, $2, $3) }
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
+
+    $calculate_damage_magic($1, $2, $3)
+    if ($readini($char($3), info, ImmuneToMagic) = true) {  $set_chr_name($3) | set %guard.message $readini(translation.dat, battle, ImmuneToMagic) }
+  }
 
   ;If the element is Light/fire and the target has the ZOMBIE status, then we need to increase the damage
   if ($readini($char($3), status, zombie) = yes) { 
@@ -1188,7 +1138,7 @@ alias calculate_damage_techs {
   if ($person_in_mech($1) = false) {  set %current.weapon.used $readini($char($1), weapons, equipped) }
   if ($person_in_mech($1) = true) { set %current.weapon.used $readini($char($1), mech, EquippedWeapon) }
 
-  if ($readini($dbfile(weapons.db), %current.weapon.used, cost) = 0) {
+  if (($readini($dbfile(weapons.db), %current.weapon.used, cost) = 0) && ($readini($dbfile(weapons.db), %current.weapon.used, specialweapon) != true)) {
     var %current.flag $readini($char($1), info, flag)
     if (%current.flag = $null) {  set %attack.damage 0 }
   }
@@ -1207,6 +1157,7 @@ alias calculate_damage_techs {
   inc %enemy.defense %int.bonus
 
   $defense_down_check($3)
+  $defense_up_check($3)
 
   ; Check to see if the weapon has an "IgnoreDefense=" flag.  If so, cut the def down.
   var %ignore.defense.percent $readini($dbfile(techniques.db), $2, IgnoreDefense)
@@ -1228,7 +1179,6 @@ alias calculate_damage_techs {
   $modifer_adjust($3, $2)
 
   if (%enemy.defense <= 0) { set %enemy.defense 1 }
-
 
   if ($readini($char($3), info, ai_type) = counteronly) { set %attack.damage 0 | return }
 
@@ -1540,6 +1490,12 @@ alias calculate_damage_magic {
     unset %magic.bonus.augment
   }
 
+  if ($accessory.check($1, IncreaseMagic) = true) {
+    inc %attack.damage $round($calc(%attack.damage * %accessory.amount),0)
+    unset %accessory.amount
+  }
+
+
   ; Let's check for some offensive style enhancements
   $offensive.style.check($1, $2, magic)
 
@@ -1624,9 +1580,34 @@ alias magic.effect.check {
 
   var %attacker.level $get.level($1)
   var %defender.level $get.level($2)
-  var %level.difference $calc(%attacker.level - %defender.level)
+  var %level.difference $round($calc(%attacker.level - %defender.level),0)
 
-  if ((%level.difference <= 20) && ($readini($char($1), info, flag) = $null)) { return }
+  var %difference.threshold -50
+  if (%portal.bonus = true) { var %difference.threshold -25 }
+
+  if (%attacker.level <= %defender.level) {
+    if (%level.difference <= %difference.threshold) { 
+      if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) { return }
+    }
+  }
+
+  var %guardian.target $readini($char($2), info, guardian)
+  var %guardian.target.count $numtok(%guardian.target,46)
+  var %current.guardian.count 1
+
+  while (%current.guardian.count <= %guardian.target.count) { 
+    var %current.guardian.target $gettok(%guardian.target, %current.guardian.count, 46)
+    var %guardian.status $readini($char(%current.guardian.target), battle, hp)  
+
+    echo -a guardian target: %guardian.target
+    echo -a current guardian count: %current.guardian.count
+    echo -a guardian status: %guardian.status
+
+    if (%guardian.status > 0) { var %guardian.alive true | break }
+    inc %current.guardian.count
+  }
+
+  if (%guardian.alive = true) { return }
 
   if ($4 = $null) {
     set %current.element $readini($dbfile(techniques.db), $3, element)
@@ -1748,6 +1729,8 @@ alias ignition_cmd {  $set_chr_name($1)
   $amnesia.check($1, ignition) 
 
   if ((no-ignition isin %battleconditions) || (no-ignitions isin %battleconditions)) { $set_chr_name($1) | $display.system.message($readini(translation.dat, battle, NotAllowedBattleCondition), battle) | halt }
+  if ((no-playerignition isin %battleconditions) && ($readini($char($1), info, flag) = $null)) { $set_chr_name($1) | $display.system.message($readini(translation.dat, battle, NotAllowedBattleCondition), battle) | halt }
+
   if ($readini($char($1), status, virus) = yes) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, Can'tBoostHasVirus), battle) | halt }
   if (($readini($char($1), status, boosted) = yes) || ($readini($char($1), status, ignition.on) = on)) {  $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, AlreadyBoosted), battle) | halt }
 
@@ -1930,3 +1913,163 @@ alias revert {
   remini $char($1) status ignition.augment
   writeini $char($1) status ignition.on off
 }
+
+
+
+; ======================
+; Singing Aliases
+; ======================
+alias sing.song {
+  ; $1 = performer
+  ; $2 = song
+
+  $check_for_battle($1) 
+  $set_chr_name($1) 
+
+  set %songs.list $songs.get.list($1, return)
+
+  if ($istok(%songs.list, $2, 46) = $true) {  
+    unset %songs.list
+
+    ; Check for the instrument of the song.
+    var %instrument.needed $readini($dbfile(songs.db), $2, instrument)
+    if (($readini($char($1), item_amount, %instrument.needed) = $null) || ($readini($char($1), item_amount, %instrument.needed) <= 0)) { $display.system.message($readini(translation.dat, errors, Don'tHaveInstrument), private) | halt }
+
+    ; Does the player have enough TP?
+    var %tp.needed $readini($dbfile(songs.db), p, $2, TP) | var %tp.have $readini($char($1), battle, tp)
+
+    if (($readini($dbfile(songs.db), $2, Effect) = Battlefield) || ($readini($dbfile(songs.db), $2, Effect) = ChangeBattlefield)) { 
+      ; If it's a portal battle or crystal warrior battle, don't allow.
+      if ((%boss.type = CrystalShadow) || (%portal.bonus = true)) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, SongNotAllowedThisBattle), private) | halt }
+    }
+
+    ; Check for ConserveTP
+    if (($readini($char($1), status, conservetp) = yes) || ($readini($char($1), status, conservetp.on) = on)) { var %tp.needed 0 | writeini $char($1) status conserveTP no }
+
+    if (%tp.needed = $null) { var %tp.needed %tp.have }
+    if (%tp.needed > %tp.have) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, NotEnoughTPforTech),private) | halt }
+
+    dec %tp.have %tp.needed
+    writeini $char($1) battle tp %tp.have
+
+    ; Perform the song.
+    $display.system.message(3 $+ %real.name $+  $readini($dbfile(songs.db), $2, Desc), battle)
+
+    if ($readini($dbfile(songs.db), $2, Effect) = status) { 
+      set %number.of.effects $numtok($readini($dbfile(songs.db), $2, Type),46)
+      set %current.effect.number 1
+      while (%current.effect.number <= %number.of.effects) {
+
+        set %status.type.name $gettok($readini($dbfile(songs.db), $2, Type),%current.effect.number,46)
+
+        var %status.target $readini($dbfile(songs.db), $2, Target)
+
+        if (%status.target = self) {  writeini $char($1) status %status.type.name yes }
+
+        if ((%status.target = enemy) || (%status.target = enemies)) { 
+          var %current.flag $readini($char($1), info, flag)
+          var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
+
+          while (%battletxt.current.line <= %battletxt.lines) { 
+            var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+
+            if (%who.battle != $1) {
+              if ($person_in_mech(%who.battle) = false) {
+
+                var %flag $readini($char(%who.battle), info, flag)
+                var %resist.name resist- $+ %status.type.name
+                var %resist.skill $readini($char(%who.battle), skills, %resist.name)
+                if (%resist.skill = $null) { var %resist.skill 0 }
+
+                if (%resist.skill < 100) {
+                  if ((%current.flag = $null) && (%flag = monster)) {
+                    writeini $char(%who.battle) status %status.type.name yes
+                  }
+                  if ((%current.flag = npc) && (%flag = monster)) {
+                    writeini $char(%who.battle) status %status.type.name yes
+                  }
+
+                  if ((%current.flag = monster) && (%flag = $null)) {
+                    writeini $char(%who.battle) status %status.type.name yes
+                  }
+                  if ((%current.flag = monster) && (%flag = npc)) {
+                    writeini $char(%who.battle) status %status.type.name yes
+                  }
+                }
+                if ($readini($char(%who.battle), skills, %resist.name) >= 100) { $set_chr_name(%who.battle)
+                  $display.system.message(4 $+ %real.name is immune to $set_chr_name($1) %real.name $+ 's song,battle)
+                }
+              }
+            }
+
+            inc %battletxt.current.line 1
+          }
+        }
+
+        if (%status.target = all) { 
+          var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
+          while (%battletxt.current.line <= %battletxt.lines) { 
+            var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+
+            if ($person_in_mech(%who.battle) = false) {  
+            writeini $char(%who.battle) status %status.type.name yes }
+
+            inc %battletxt.current.line 1
+          }
+        }
+
+        if (%status.target = allies) { 
+          var %current.flag $readini($char($1), info, flag)
+          var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
+          while (%battletxt.current.line <= %battletxt.lines) { 
+            var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+            if ($person_in_mech(%who.battle) = false) {
+
+              var %flag $readini($char(%who.battle), info, flag)
+
+              if ((%current.flag = $null) && (%flag = $null)) {
+                writeini $char(%who.battle) status %status.type.name yes
+              }
+              if ((%current.flag = monster) && (%flag = monster)) {
+                writeini $char(%who.battle) status %status.type.name yes
+              }
+              if ((%current.flag = $null) && (%flag = npc)) {
+                writeini $char(%who.battle) status %status.type.name yes
+              }
+            }
+
+            inc %battletxt.current.line 1
+          }
+        }
+
+        inc %current.effect.number 1
+      }
+
+    }
+    if ($readini($dbfile(songs.db), $2, Effect) = Battlefield) { 
+      ; Get type
+      var %effect.type $readini($dbfile(songs.db), $2, Type)
+      if (%effect.type = $null) { var %effect.type invalid-type }
+
+      ; Add it to the type of battlefield enhancements/restrictions
+      %battleconditions = $addtok(%battleconditions, %effect.type, 46)
+    }
+
+    if ($readini($dbfile(songs.db), $2, Effect) = ChangeBattlefield) { 
+      ; Get type
+      var %effect.type $readini($dbfile(songs.db), $2, Type)
+      if (%effect.type = $null) { var %effect.type field }
+
+      ; Change the battlefield.
+      set %current.battlefield %effect.type
+    }
+
+    unset %status.type.name
+    unset %current.effect.number
+    unset %number.of.effects
+
+    $check_for_double_turn($1) | halt 
+
+  }
+  if ($istok(%songs.list, $2, 46) = $false) { unset %songs.list | $display.system.message($readini(translation.dat, errors, Don'tKnowThatSong), private) | unset %songs.list | halt } 
+} 

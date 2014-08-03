@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=3000
 Tp=300
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 IgnitionGauge=0
 Name=Jin Uzuki
 
@@ -12,10 +12,10 @@ Name=Jin Uzuki
 [Battle]
 Hp=3000
 Tp=300
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 IgnitionGauge=0
 Status=alive
 
@@ -97,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Yasoma_Kagura
-Yasoma_Kagura=$calc(100 + $current.battlestreak)
+Yasoma_Kagura=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 SwordMaster=100
@@ -114,9 +114,9 @@ Zen=5
 
 
 [Techniques]
-SparkWaltz=$calc(100 + $current.battlestreak)
-DragonDance=$calc(100 + $current.battlestreak)
-LightningWaltz=$calc(200 + $current.battlestreak)
+SparkWaltz=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DragonDance=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+LightningWaltz=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Ignitions]

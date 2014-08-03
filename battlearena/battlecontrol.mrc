@@ -146,42 +146,40 @@ on 50:TEXT:!clear battle stats*:*:{
 on 50:TEXT:!summon*:*:{
   if (%battle.type = ai) { $display.system.message($readini(translation.dat, errors, CannotSummonAIBattles), private) | halt } 
 
-  if ($readini(system.dat, system, botType) = IRC) {
-    if ($2 = npc) {
-      if ($isfile($npc($3)) = $true) {
-        .copy -o $npc($3) $char($3)
-        $boost_monster_stats($3)  
-        $enter($3)
-      }
-      else { $display.system.message($readini(translation.dat, errors, NPCDoesNotExist), private) | halt }
+  if ($2 = npc) {
+    if ($isfile($npc($3)) = $true) {
+      .copy -o $npc($3) $char($3)
+      $boost_monster_stats($3)  
+      $enter($3)
     }
-    if ($2 = monster) {
-      var %number.of.monsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
-      if (%number.of.monsters >= 10) { $display.system.message($readini(translation.dat, errors, MonsterLimit), private) | halt }
-      if ($isfile($mon($3)) = $true) {
-        .copy -o $mon($3) $char($3)
-        $enter($3)
-        var %number.of.players $readini($txtfile(battle2.txt), battleinfo, players)
-        if (%number.of.players = $null) { var %number.of.players 1 }
-        $boost_monster_stats($3)  
-        $fulls($3) |  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
-      }
-      else { $display.system.message($readini(translation.dat, errors, monsterdoesnotexist), private) | halt }
+    else { $display.system.message($readini(translation.dat, errors, NPCDoesNotExist), private) | halt }
+  }
+  if ($2 = monster) {
+    var %number.of.monsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
+    if (%number.of.monsters >= 10) { $display.system.message($readini(translation.dat, errors, MonsterLimit), private) | halt }
+    if ($isfile($mon($3)) = $true) {
+      .copy -o $mon($3) $char($3)
+      $enter($3)
+      var %number.of.players $readini($txtfile(battle2.txt), battleinfo, players)
+      if (%number.of.players = $null) { var %number.of.players 1 }
+      $boost_monster_stats($3)  
+      $fulls($3) |  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
     }
+    else { $display.system.message($readini(translation.dat, errors, monsterdoesnotexist), private) | halt }
+  }
 
-    if ($2 = boss) {
-      var %number.of.monsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
-      if (%number.of.monsters >= 10) { $display.system.message($readini(translation.dat, errors, MonsterLimit), private) | halt }
-      if ($isfile($boss($3)) = $true) {
-        .copy -o $boss($3) $char($3)
-        $enter($3)
-        var %number.of.players $readini($txtfile(battle2.txt), battleinfo, players)
-        if (%number.of.players = $null) { var %number.of.players 1 }
-        $boost_monster_stats($3)  
-        $fulls($3) |  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
-      }
-      else { $display.system.message($readini(translation.dat, errors, monsterdoesnotexist), private) | halt }
+  if ($2 = boss) {
+    var %number.of.monsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
+    if (%number.of.monsters >= 10) { $display.system.message($readini(translation.dat, errors, MonsterLimit), private) | halt }
+    if ($isfile($boss($3)) = $true) {
+      .copy -o $boss($3) $char($3)
+      $enter($3)
+      var %number.of.players $readini($txtfile(battle2.txt), battleinfo, players)
+      if (%number.of.players = $null) { var %number.of.players 1 }
+      $boost_monster_stats($3)  
+      $fulls($3) |  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
     }
+    else { $display.system.message($readini(translation.dat, errors, monsterdoesnotexist), private) | halt }
   }
 }
 
@@ -229,6 +227,7 @@ alias clear_battle {
 
   ; Announce the next battle, if the automated battle system is on
   if ($readini(system.dat, system, automatedbattlesystem) != off) {
+
     var %time.between.battles $readini(system.dat, System, TimeBetweenBattles)
     if (%time.between.battles = $null) { var %time.between.battles 3 }
     set %timer.time $calc(%time.between.battles * 60)
@@ -307,12 +306,10 @@ alias startnormal {
 
   unset %previous.battle.type
 
-
-
   if ($1 = ai) {
     var %time.to.enter 30
     $display.system.message($readini(translation.dat, battle, BattleOpenAIBet), global)
-    $ai.battle.generate
+    $ai.battle.generate($2)
   }
 
   if ($1 != ai) {
@@ -367,7 +364,7 @@ alias startnormal {
 ; ==========================
 ; This is entering the battle
 ; ==========================
-on 3:TEXT:!enter*:#: { 
+on 3:TEXT:!enter:#: { 
   if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.system.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
   if (%battle.type = ai) { $display.system.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
   $enter($nick)
@@ -396,8 +393,8 @@ alias enter {
   if ($istok(%curbat,$1,46) = $true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, AlreadyInBattle), private) | halt  }
 
   ; There's a player limit in IRC mode due to the potential for flooding..  There is no limit for DCCchat mode.
-  if ($readini(system.dat, system, botType) = IRC) {
-    if ($readini($txtfile(battle2.txt), BattleInfo, Players) >= 8) { query %battlechan $readini(translation.dat, errors, PlayerLimit) | halt }
+  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {
+    if ($readini($txtfile(battle2.txt), BattleInfo, Players) >= 8) { $display.system.message($readini(translation.dat, errors, PlayerLimit),private) | halt }
   }
 
   ; For DCCchat mode we need to move the player into the battle room.
@@ -408,6 +405,8 @@ alias enter {
   writeini $txtfile(battle2.txt) Battle List %curbat
 
   if ($readini($char($1), info, flag) = $null) {
+    remini $char($1) skills lockpicking.on
+
     var %battleplayers $readini($txtfile(battle2.txt), BattleInfo, Players)
     inc %battleplayers 1 
     writeini $txtfile(battle2.txt) BattleInfo Players %battleplayers
@@ -438,6 +437,7 @@ alias enter {
     if (%highest.level = $null) { var %highest.level 0 }
     if (%player.level > %highest.level) { writeini $txtfile(battle2.txt) BattleInfo HighestLevel %player.level } 
 
+    writeini $char($1) info SkippedTurns 0
   }
 
   $set_chr_name($1) 
@@ -446,7 +446,12 @@ alias enter {
   write $txtfile(battle.txt) $1
 
   ; Full the person entering the battle.
-  $fulls($1)
+  if ($readini($char($1), info, levelsync) = $null) { 
+    $fulls($1, yes)
+  }
+
+  remini $char($1) info levelsync 
+  writeini $char($1) info NeedsFulls yes
 
   ; Check for the Warbound achievement
   var %total.battles $readini($char($1), stuff, TotalBattles)
@@ -545,6 +550,9 @@ alias battlebegin {
     ; Check the moon phase.
     $moonphase
 
+    ; Check the Time of Day
+    $timeofday
+
     ; Generate the monsters
     $battle.getmonsters
 
@@ -579,7 +587,14 @@ alias battlebegin {
     else { set %darkness.turns 16 }
 
   }
-  if (%battle.type = boss) {  set %darkness.turns 21 }
+  if (%battle.type = boss) { 
+
+    set %darkness.turns 21
+
+    if ((%demonwall.name = Demon Wall) || (%demonwall.name = Wall of Flesh)) { unset %darkness.turns  }
+    if ((%demonwall.name = $null) && (%demonwall.fight = on)) { unset %darkness.turns } 
+  }
+
   if (%battle.type = manual) { set %darkness.turns 21 }
   if (%battle.type = orbfountain) { set %darkness.turns 16 }
 
@@ -608,7 +623,7 @@ alias battlebegin {
   ; To keep someone from sitting and doing nothing for hours at a time, there's a timer that will auto-force the next turn.
   var %nextTimer $readini(system.dat, system, TimeForIdle)
   if (%nextTimer = $null) { var %nextTimer 180 }
-  /.timerBattleNext 1 %nextTimer /next
+  /.timerBattleNext 1 %nextTimer /next forcedturn
 
   unset %number.of.players
 
@@ -757,7 +772,10 @@ alias generate_monster {
       var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
       inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters 
 
-      var %boss.item $readini($char(%monster.name), stuff, drops)
+      var %boss.item $readini($dbfile(drops.db), drops, %monster.name)
+      if (%boss.item = $null) {  var %boss.item $readini($char(%monster.name), stuff, drops) }
+
+
       if (%boss.item != $null) { 
         var %temp.drops.list $readini($txtfile(battle2.txt), battle, bonusitem)
         var %number.of.items $numtok(%temp.drops.list, 46)
@@ -781,7 +799,7 @@ alias generate_monster {
   if ($1 = boss) {
     if (%boss.type = $null) { $get_boss_type }
 
-    set %valid.boss.types normal.bandits.doppelganger.warmachine.demonwall.elderdragon.pirates.frostlegion.crystalshadow
+    set %valid.boss.types normal.bandits.doppelganger.warmachine.demonwall.wallofflesh.elderdragon.pirates.frostlegion.crystalshadow
 
     if (%boss.type = $null) { var %boss.type normal }
     if ($istok(%valid.boss.types,%boss.type,46) = $false) { var %boss.type normal }
@@ -818,7 +836,9 @@ alias generate_monster {
         }
         if (%battle.type = ai) { set %ai.monster.name $set_chr_name(%monster.name) %real.name | writeini $txtfile(1vs1bet.txt) money monsterfile %monster.name }
 
-        var %boss.item $readini($char(%monster.name), stuff, drops)
+        var %boss.item $readini($dbfile(drops.db), drops, %monster.name)
+        if (%boss.item = $null) {  var %boss.item $readini($char(%monster.name), stuff, drops) }
+
         if (%boss.item != $null) { 
           var %temp.boss.list $readini($txtfile(battle2.txt), battle, bonusitem)
 
@@ -906,8 +926,17 @@ alias generate_monster {
     }
 
     if (%boss.type = demonwall) {
+      set %demonwall.name Demon Wall
+
       if (%battle.type != ai) {  $display.system.message($readini(translation.dat, events, DemonWallFight), battle) }
       $generate_demonwall
+      set %demonwall.fight on
+    }
+
+    if (%boss.type = wallofflesh) {
+      set %demonwall.name Wall of Flesh
+      if (%battle.type != ai) {  $display.system.message($readini(translation.dat, events, DemonWallFight), battle) }
+      $generate_wallofflesh
       set %demonwall.fight on
     }
   }
@@ -920,8 +949,17 @@ alias battle_rage_warning {
   ; This alias is just used to display a warning before the darkness overcomes the battlefield.
   if (%demonwall.fight != on) {  $display.system.message($readini(translation.dat, battle, DarknessWarning), battle)  }
   if (%demonwall.fight = on) { 
-    set %max.demonwall.turns $readini(system.dat, system, MaxDemonWallTurns)
-    if (%max.demonwall.turns = $null) { set %darkness.turns 11 | set %max.demonwall.turns 11 }
+
+    if (%demonwall.name = Demon Wall) { 
+      set %max.demonwall.turns $readini(system.dat, system, MaxDemonWallTurns)
+      if (%max.demonwall.turns = $null) {  set %darkness.turns 11 | set %max.demonwall.turns 11 }
+    }
+
+    if ((%demonwall.name = Wall of Flesh) || (%demonwall.name = $null)) {
+      set %max.demonwall.turns $readini(system.dat, system, MaxWallOfFleshTurns)
+      if (%max.demonwall.turns = $null) {  set %darkness.turns 16 | set %max.demonwall.turns 16 }
+    }
+
     $display.system.message($readini(translation.dat, events, DemonWallFightWarning), battle)
   } 
   set %darkness.fivemin.warn true
@@ -1086,8 +1124,10 @@ alias generate_battle_order {
   if (%first.round.protection.turn = $null) { var %first.round.protection.turn 1 }
   if (%current.turn > %first.round.protection.turn) { unset %first.round.protection | unset %first.round.protection.turn }
 
-
-  if (%current.turn > 1) { $battlefield.event }
+  if (%current.turn > 1) { 
+    $battlefield.event
+    if ($rand(1,10) <= 4) {  $random.weather.pick(inbattle) }
+  }
 
   if (%current.turn > %max.demonwall.turns) { 
     if (%demonwall.fight = on) { 
@@ -1339,7 +1379,14 @@ alias next {
   ; Reset the Next timer.
   var %nextTimer $readini(system.dat, system, TimeForIdle)
   if (%nextTimer = $null) { var %nextTimer 180 }
-  /.timerBattleNext 1 %nextTimer /next
+  /.timerBattleNext 1 %nextTimer /next ForcedTurn
+
+  if ($1 = ForcedTurn) { 
+    var %forced.turns $readini($char(%who), info, SkippedTurns)
+    inc %forced.turns 1
+    if (%forced.turns >= 3) { $display.battle.message($readini(translation.dat, battle, DroppedOutofBattle)) |   writeini $char(%who) battle status runaway }
+    writeini $char(%who) info SkippedTurns %forced.turns
+  }
 
   if (%battleis = off) { $clear_battle | halt }
 
@@ -1369,99 +1416,101 @@ alias turn {
     $next 
     halt
   }
-  if ($1 = orb_fountain) { $next | halt }
-  if ($1 = lost_soul) { $next | halt }
 
-  else { 
-    ; Is the battle over? Let's find out.
-    $battle.check.for.end
-
-    set %wait.your.turn on
-
-    if ($person_in_mech($1) = false) { $turn.statuscheck($1) }
-
-    if ($person_in_mech($1) = true) {
-      ; Check to see if we have enough energy to maintain the mech.
-
-      var %current.energylevel $readini($char($1), mech, energyCurrent)
-      var %base.energycost $mech.baseenergycost($1)
-      dec %current.energylevel %base.energycost
-      if (%current.energylevel < 0) { var %current.energylevel 0 }
-
-      writeini $char($1) mech energyCurrent %current.energylevel
-
-      if (%current.energylevel = 0) {  
-        ; Shut down the mech and force the person out.
-        $mech.deactivate($1, true)
-        $set_chr_name($1) | var %mech.name $readini($char($1), mech, name)
-        $display.system.message($readini(translation.dat, errors, MechOutOfEnergy), battle)
-        $turn.statuscheck($1) 
-      }
-    }
-
-    set %debug.location alias turn
-
-    $hp_status($1) | $set_chr_name($1)
-    set %status.message $readini(translation.dat, battle, TurnMessage)
-
-    if ($person_in_mech($1) = true) { 
-      $hp_mech_hpcommand($1)
-      set %real.name %real.name $+ 's $readini($char($1), mech, name) 
-      %all_status = none 
-      %all_skills = none 
-      var %energy.level $round($calc( 100 * ($readini($char($1), mech, energyCurrent) / $readini($char($1), mech, EnergyMax))),0) $+ $chr(37)
-      set %status.message $readini(translation.dat, battle, TurnMessageMech)
-    }
-
-    $display.system.message(%status.message, battle)
-
-    if (($lines($txtfile(temp_status.txt)) != $null) && ($lines($txtfile(temp_status.txt)) > 0)) { 
-      /.timerThrottle $+ $rand(a,z) $+ $rand(1,1000) $+ $rand(a,z) 1 1 /display.statusmessages $1 
-    } 
-
-    if ($readini($char($1), status, curse) != yes) {
-      ; Add some TP to the player if it's not at max.
-      set %tp.have $readini($char($1), battle, tp)
-      set %tp.max $readini($char($1), basestats, tp)
-      inc %tp.have 5
-
-      set %debug.location alias turn (zencheck)
-      if ($readini($char($1), skills, zen) > 0) { 
-        var %zen.tp.gain $calc($readini($char($1), skills, Zen) * 5)
-        if ($augment.check($1, EnhanceZen) = true) {  inc %zen.tp.gain $round($calc(%augment.strength * 10),0) }
-        inc %tp.have %zen.tp.gain
-      }
-
-      if (%tp.have >= %tp.max) { writeini $char($1) battle tp %tp.max }
-      else { writeini $char($1) battle tp %tp.have }
-      unset %tp.have | unset %tp.max
-    }
-
-    if ($lines($txtfile(temp_status.txt)) != $null) { 
-      set %file.to.read.lines $lines($txtfile(temp_status.txt))
-      inc %file.to.read.lines 2
-    }
-
-    ; If we're in gauntlet mode and the turn is a multiple of 15 we need to reset certain skills.
-    if (%mode.gauntlet = on) {
-      var %gauntlet.mode.streak.check $calc(%mode.gauntlet.wave % 15)
-      if (%gauntlet.mode.streak.check = 0) { $clear_certain_skills($1) }
-    }
-
-    writeini $char($1) Status burning no | writeini $char($1) Status drowning no | writeini $char($1) Status earth-quake no | writeini $char($1) Status tornado no 
-    writeini $char($1) Status freezing no | writeini $char($1) status frozen no | writeini $char($1) status shock no
-
-    if ($readini($char($1), status, staggered) = yes) { set %skip.ai on | writeini $char($1) status staggered no  | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
-
-    if ((((($readini($char($1), Status, Blind) = yes) || ($readini($char($1), Status, Petrified) = yes) ||  ($readini($char($1), status, bored) = yes) || ($readini($char($1), Status, intimidate) = yes) || (%too.drunk.to.fight = true))))) { 
-      unset %too.drunk.to.fight  | writeini $char($1) status petrified no | writeini $char($1) status intimidate no | writeini $char($1) Status blind no | writeini $char($1) status paralysis no | writeini $char($1) status paralysis.timer 1 | writeini $char($1) status stun no | writeini $char($1) status stop no |  set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt
-    }
-    if ($readini($char($1), Status, cocoon) = yes) { set %skip.ai on |  /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next  | halt }
-    if ($readini($char($1), status, paralysis) = yes) { set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next  | halt }
-    if ($readini($char($1), status, sleep) = yes) { set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt  }
-    if ($readini($char($1), status, stun) = yes) { set %skip.ai on | writeini $char($1) status stun no | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
-    if ($readini($char($1), status, stop) = yes) { set %skip.ai on | writeini $char($1) status stop no | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
+  if (($1 = orb_fountain) || ($1 = lost_soul)) { 
+    if (%current.turn < %darkness.turns) { $next | halt }
   }
+
+  if ($readini($char($1), battle, status) = inactive) {  $next  |  halt  }
+
+  ; Is the battle over? Let's find out.
+  $battle.check.for.end
+
+  set %wait.your.turn on
+
+  if ($person_in_mech($1) = false) { $turn.statuscheck($1) }
+
+  if ($person_in_mech($1) = true) {
+    ; Check to see if we have enough energy to maintain the mech.
+
+    var %current.energylevel $readini($char($1), mech, energyCurrent)
+    var %base.energycost $mech.baseenergycost($1)
+    dec %current.energylevel %base.energycost
+    if (%current.energylevel < 0) { var %current.energylevel 0 }
+
+    writeini $char($1) mech energyCurrent %current.energylevel
+
+    if (%current.energylevel = 0) {  
+      ; Shut down the mech and force the person out.
+      $mech.deactivate($1, true)
+      $set_chr_name($1) | var %mech.name $readini($char($1), mech, name)
+      $display.system.message($readini(translation.dat, errors, MechOutOfEnergy), battle)
+      $turn.statuscheck($1) 
+    }
+  }
+
+  set %debug.location alias turn
+
+  $hp_status($1) | $set_chr_name($1)
+  set %status.message $readini(translation.dat, battle, TurnMessage)
+
+  if ($person_in_mech($1) = true) { 
+    $hp_mech_hpcommand($1)
+    set %real.name %real.name $+ 's $readini($char($1), mech, name) 
+    %all_status = none 
+    %all_skills = none 
+    var %energy.level $round($calc( 100 * ($readini($char($1), mech, energyCurrent) / $readini($char($1), mech, EnergyMax))),0) $+ $chr(37)
+    set %status.message $readini(translation.dat, battle, TurnMessageMech)
+  }
+
+  $display.system.message.delay(%status.message, battle, 1)
+
+  if (($lines($txtfile(temp_status.txt)) != $null) && ($lines($txtfile(temp_status.txt)) > 0)) { 
+    /.timerThrottle $+ $rand(a,z) $+ $rand(1,1000) $+ $rand(a,z) 1 1 /display.statusmessages $1 
+  } 
+
+  if ($readini($char($1), status, curse) != yes) {
+    ; Add some TP to the player if it's not at max.
+    set %tp.have $readini($char($1), battle, tp)
+    set %tp.max $readini($char($1), basestats, tp)
+    inc %tp.have 5
+
+    set %debug.location alias turn (zencheck)
+    if ($readini($char($1), skills, zen) > 0) { 
+      var %zen.tp.gain $calc($readini($char($1), skills, Zen) * 5)
+      if ($augment.check($1, EnhanceZen) = true) {  inc %zen.tp.gain $round($calc(%augment.strength * 10),0) }
+      inc %tp.have %zen.tp.gain
+    }
+
+    if (%tp.have >= %tp.max) { writeini $char($1) battle tp %tp.max }
+    else { writeini $char($1) battle tp %tp.have }
+    unset %tp.have | unset %tp.max
+  }
+
+  if ($lines($txtfile(temp_status.txt)) != $null) { 
+    set %file.to.read.lines $lines($txtfile(temp_status.txt))
+    inc %file.to.read.lines 2
+  }
+
+  ; If we're in gauntlet mode and the turn is a multiple of 15 we need to reset certain skills.
+  if (%mode.gauntlet = on) {
+    var %gauntlet.mode.streak.check $calc(%mode.gauntlet.wave % 15)
+    if (%gauntlet.mode.streak.check = 0) { $clear_certain_skills($1) }
+  }
+
+  writeini $char($1) Status burning no | writeini $char($1) Status drowning no | writeini $char($1) Status earth-quake no | writeini $char($1) Status tornado no 
+  writeini $char($1) Status freezing no | writeini $char($1) status frozen no | writeini $char($1) status shock no
+
+  if ($readini($char($1), status, staggered) = yes) { set %skip.ai on | writeini $char($1) status staggered no  | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
+
+  if ((((($readini($char($1), Status, Blind) = yes) || ($readini($char($1), Status, Petrified) = yes) ||  ($readini($char($1), status, bored) = yes) || ($readini($char($1), Status, intimidate) = yes) || (%too.drunk.to.fight = true))))) { 
+    unset %too.drunk.to.fight  | writeini $char($1) status petrified no | writeini $char($1) status intimidate no | writeini $char($1) Status blind no | writeini $char($1) status paralysis no | writeini $char($1) status paralysis.timer 1 | writeini $char($1) status stun no | writeini $char($1) status stop no |  set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt
+  }
+  if ($readini($char($1), Status, cocoon) = yes) { set %skip.ai on |  /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next  | halt }
+  if ($readini($char($1), status, paralysis) = yes) { set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next  | halt }
+  if ($readini($char($1), status, sleep) = yes) { set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt  }
+  if ($readini($char($1), status, stun) = yes) { set %skip.ai on | writeini $char($1) status stun no | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
+  if ($readini($char($1), status, stop) = yes) { set %skip.ai on | writeini $char($1) status stop no | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
 
   if (%skip.ai != on) {
     ; Check for AI
@@ -1527,7 +1576,7 @@ alias battle.monster.death.check {
       else if (%summon.flag = yes) { inc %battletxt.current.line }
       else { 
         var %current.status $readini($char(%who.battle), battle, status)
-        if ((%current.status = dead) || (%current.status = runaway)) { inc %death.count 1 | inc %battletxt.current.line 1 }
+        if (((%current.status = dead) || (%current.status = runaway) || (%current.status = inactive))) { inc %death.count 1 | inc %battletxt.current.line 1 }
         else { inc %battletxt.current.line 1 } 
       }
     }
@@ -1588,6 +1637,8 @@ alias battlelist {
         if ($readini($char(%who.battle), info, flag) = npc) { var %token.to.add 12 $+ %who.battle }
         if ($readini($char(%who.battle), info, flag) = $null) { var %token.to.add 3 $+ %who.battle }
 
+        if ($readini($char(%who.battle), battle, hp) > 0) { var %token.to.add $replace(%token.to.add, %who.battle,  $+ %who.battle $+ ) }
+
         %battle.list = $addtok(%battle.list,%token.to.add,46) | inc %l 1 
       }
     } 
@@ -1604,7 +1655,7 @@ alias battlelist {
     if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 %battleconditions $+ 4] }
 
     $display.system.message($readini(translation.dat, battle, BatListTitleMessage), private)
-    $display.system.message(4[Turn #:12 %current.turn $+ 4] [Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 4] [Moon Phase:12 %moon.phase $+ 4] [Battlefield:12 %current.battlefield $+ 4] %batlist.battleconditions, private)
+    $display.system.message(4[Turn #:12 %current.turn $+ 4] [Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 4] [Moon Phase:12 %moon.phase $+ 4] [Time of Day:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) $+ 4] [Battlefield:12 %current.battlefield $+ 4] %batlist.battleconditions, private)
 
     if ((%darkness.turns != $null) && (%battle.type != ai)) { 
       var %darkness.countdown $calc(%darkness.turns - %current.turn) 
@@ -1634,7 +1685,7 @@ alias battlelist {
     if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 %battleconditions $+ 4] } 
 
     $display.system.message($readini(translation.dat, battle, BatListTitleMessage), battle)
-    $display.system.message(4[Turn #:12 %current.turn $+ 4][Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 4] [Moon Phase:12 %moon.phase $+ 4] [Battlefield:12 %current.battlefield $+ 4] %batlist.battleconditions, battle)
+    $display.system.message(4[Turn #:12 %current.turn $+ 4][Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 4] [Moon Phase:12 %moon.phase $+ 4] [Time of Day:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) $+ 4] [Battlefield:12 %current.battlefield $+ 4] %batlist.battleconditions, battle)
 
     if ((%darkness.turns != $null) && (%battle.type != ai)) { 
       var %darkness.countdown $calc(%darkness.turns - %current.turn) 
@@ -1705,7 +1756,6 @@ alias battle.calculate.redorbs {
   ; Get the orb bonus that players earned by defeating monsters
   set %bonus.orbs $round($readini($txtfile(battle2.txt), BattleInfo, OrbBonus),0)
   if ((%bonus.orbs = $null) || (%bonus.orbs < 0)) { set %bonus.orbs 0 }
-
   inc %base.redorbs %bonus.orbs
 
   ; Set the max reward and make sure the orb amount isn't above that.
@@ -1747,12 +1797,17 @@ alias battle.calculate.redorbs {
   var %bonus.orbs $readini($txtfile(battle2.txt), battleinfo, portalbonus)
   if (%bonus.orbs = $null) { var %bonus.orbs 0 }
 
+  ; Add the Conquest bonus. 
   var %conquest.orbbonus $readini(battlestats.dat, conquest, ConquestBonus)
   if (%conquest.orbbonus > 1000) { var %conquest.orbbonus 1000 }
   if (%conquest.orbbonus <= 0) { var %conquest.orbbonus 0 }
 
-  if ($1 = victory) {  inc %base.redorbs $calc(450 * %bonus.orbs) | inc %base.redorbs %conquest.orbbonus }
-  if (($1 = draw) || ($1 = defeat)) {  inc %base.redorbs $calc(100 * %bonus.orbs) | inc %base.redorbs $round($calc(%conquest.orbbonus * .10),0) }
+  ; Get the orb bonus for the garden.
+  var %garden.bonus $readini(garden.dat, GardenStats, Bonus)
+  if (%garden.bonus = $null) { var %garden.bonus 0 }
+
+  if ($1 = victory) {  inc %base.redorbs $calc(450 * %bonus.orbs) | inc %base.redorbs %conquest.orbbonus | inc %base.redorbs %garden.bonus }
+  if (($1 = draw) || ($1 = defeat)) {  inc %base.redorbs $calc(100 * %bonus.orbs) | inc %base.redorbs $round($calc(%conquest.orbbonus * .10),0) | inc %base.redorbs $round($calc(%garden.bonus * .10),0)  }
 
   ; Finally, if the orb amount  is less than 200, let's add 200 to it.
   if (%base.redorbs <= 200) { inc %base.redorbs 200 }
@@ -1956,7 +2011,7 @@ alias turn.statuscheck {
   $poison_check($1) | $zombie_check($1) | $zombieregenerating_check($1) | $virus_check($1) 
   $frozen_check($1) | $shock_check($1)  | $burning_check($1) | $tornado_check($1) | $drowning_check($1) | $earth-quake_check($1)
   $staggered_check($1) | $intimidated_check($1) | $blind_check($1) | $curse_check($1) | unset %hp.percent  | $stopped_check($1) | $charm_check($1) | $confuse_check($1) | $amnesia_check($1) | $paralysis_check($1)
-  $drunk_check($1) | $slowed_check($1) | $asleep_check($1) | $stunned_check($1) | $defensedown_check($1) | $strengthdown_check($1) | $intdown_check($1) | $ethereal_check($1) 
+  $drunk_check($1) | $slowed_check($1) | $asleep_check($1) | $stunned_check($1) | $defensedown_check($1) | $strengthdown_check($1) | $intdown_check($1) | $defenseup_check($1) | $ethereal_check($1) 
   $cocoon_check($1) | $weapon_locked($1) | $petrified_check($1)  | $bored_check($1) | $reflect.check($1)
   $invincible.check($1)
 
@@ -1980,6 +2035,7 @@ alias display.statusmessages {
     var %file.to.read $txtfile(temp_status.txt)
 
     if ($readini(system.dat, system, botType) = IRC) {  /.play %battlechan %file.to.read }
+    if ($readini(system.dat, system, botType) = TWITCH) {  /.play %battlechan %file.to.read }
     if ($readini(system.dat, system, botType) = DCCchat) { $dcc.status.messages(%file.to.read) }
 
     /.remove $txtfile(temp_status.txt)
@@ -2017,9 +2073,19 @@ alias poison_check {
       set %poison $round($calc(%max.hp * .10),0)
       set %hp $readini($char($1), Battle, HP)  |   unset %max.hp
       if (%poison >= %hp) { $display.system.message(%status.message, battle) | $set_chr_name($1) | $display.system.message($readini(translation.dat, status, PoisonKills), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead |  $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
-      $goldorb_check($1) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+      $goldorb_check($1,status) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
       if (%poison < %hp) {
-      $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, PoisonMessage) | dec %hp %poison | writeini $char($1) Battle HP %hp |  unset %hp | unset %poison |  return  }
+        $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, PoisonMessage) | dec %hp %poison | writeini $char($1) Battle HP %hp |  unset %hp | unset %poison 
+
+        if ($readini($char($1), Status, Sleep) = yes) { 
+          var %enemy %real.name
+          write $txtfile(temp_status.txt) $readini(translation.dat, status, WakesUp)
+          writeini $char($1) status sleep no
+        }
+
+        return 
+
+      }
     }
   }
   else { return }
@@ -2033,8 +2099,18 @@ alias heavy-poison {
   set %hp $readini($char($1), Battle, HP) | $set_chr_name($1)
   unset %max.hp
   if (%poison >= %hp) { $display.system.message(%status.message, battle) | $display.system.message($readini(translation.dat, status, PoisonKills), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1) | $add.style.effectdeath | $check.clone.death($1)
-  $goldorb_check($1) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
-  if (%poison < %hp) { $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, PoisonMessage) | dec %hp %poison | writeini $char($1) Battle HP %hp | unset %hp | unset %poison |  return  }
+  $goldorb_check($1, status) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+  if (%poison < %hp) { $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, PoisonMessage) | dec %hp %poison | writeini $char($1) Battle HP %hp | unset %hp | unset %poison 
+
+    if ($readini($char($1), Status, Sleep) = yes) { 
+      var %enemy %real.name
+      write $txtfile(temp_status.txt) $readini(translation.dat, status, WakesUp)
+      writeini $char($1) status sleep no
+    }
+
+    return  
+
+  }
 }
 
 alias curse_check {
@@ -2174,7 +2250,7 @@ alias frozen_check {
     set %freezing $round($calc(%max.hp * .05),0)
     unset %max.hp | set %hp $readini($char($1), battle, hp)
     if (%freezing >= %hp) { $display.system.message($readini(translation.dat, status, FrozenDeath), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
-    $goldorb_check($1) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+    $goldorb_check($1, magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
     if (%freezing < %hp) { $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, FrozenMessage) | dec %hp %freezing |  writeini $char($1) Battle HP %hp | return }
   }
   else { return }
@@ -2206,7 +2282,7 @@ alias shock_check {
     unset %max.hp | set %hp $readini($char($1), battle, hp)
     $set_chr_name($1)
     if (%shock >= %hp) { $display.system.message($readini(translation.dat, status, ShockDeath), battle)  | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1) | $add.style.effectdeath | $check.clone.death($1)
-    $goldorb_check($1) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+    $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, ShockMessage)  | dec %hp %shock |  writeini $char($1) Battle HP %hp | return 
   }
   else { return }
@@ -2219,7 +2295,7 @@ alias burning_check {
     unset %max.hp | set %hp $readini($char($1), battle, hp)
     $set_chr_name($1)
     if (%burning >= %hp) { $display.system.message($readini(translation.dat, status, BurningDeath), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
-    $goldorb_check($1) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+    $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, BurningMessage) | dec %hp %burning | writeini $char($1) Battle HP %hp | return 
   }
   else { return }
@@ -2232,7 +2308,7 @@ alias tornado_check {
     unset %max.hp | set %hp $readini($char($1), battle, hp)
     $set_chr_name($1)
     if (%tornado >= %hp) { $display.system.message($readini(translation.dat, status, TornadoDeath), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
-    $goldorb_check($1) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+    $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, TornadoMessage) | dec %hp %tornado | writeini $char($1) Battle HP %hp | return 
   }
   else { return }
@@ -2245,7 +2321,7 @@ alias drowning_check {
     unset %max.hp | set %hp $readini($char($1), battle, hp)
     $set_chr_name($1)
     if (%drowning >= %hp) { $display.system.message($readini(translation.dat, status, DrowningDeath), battle)  | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1)  |  $add.style.effectdeath | $check.clone.death($1)
-    $goldorb_check($1) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+    $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, DrowningMessage) | writeini $char($1) Battle Status normal | dec %hp %drowning | writeini $char($1) Battle HP %hp | return 
   }
   else { return }
@@ -2258,7 +2334,7 @@ alias earth-quake_check {
     unset %max.hp | set %hp $readini($char($1), battle, hp)
     $set_chr_name($1)
     if (%shaken >= %hp) { $display.system.message($readini(translation.dat, status, EarthquakeDeath),battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1) | $add.style.effectdeath | $check.clone.death($1)
-    $goldorb_check($1) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+    $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, EarthquakeMessage)   | writeini $char($1) Battle Status normal | dec %hp %shaken | writeini $char($1) Battle HP %hp | return 
   }
   else { return }
@@ -2266,7 +2342,7 @@ alias earth-quake_check {
 
 alias weight_check { 
   if ($readini($char($1), Status, weight) = yes) { $status_message_check(weighed down)
-  $set_chr_name($1) | write $txtfile(temp_status.txt) query %battlechan $readini(translation.dat, status, CurrentlyWeighed) | return }
+  $set_chr_name($1) | write $txtfile(temp_status.txt) $display.system.message($readini(translation.dat, status, CurrentlyWeighed),private) | return }
   else { return } 
 }
 
@@ -2375,6 +2451,21 @@ alias intdown_check {
   }
   else { 
     if ($readini($char($1), Status, intDown) = yes) {   writeini $char($1) status intDown no | writeini $char($1) status intdown.timer 1 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, intDownWornOff)  | unset %intdown.timer | return  }
+  }
+  return
+}
+
+alias defenseup_check { 
+  var %defenseup.timer $readini($char($1), status, defenseup.timer)  
+  if (%defenseup.timer = $null) { var %defenseup.timer 0 }
+  if (%defenseup.timer < 3) { 
+    if (($readini($char($1), Status, defenseup) = yes) || ($readini($char($1), Status, defenseup) = on)) { 
+      if (($readini($char($1), status, defensedown) = yes) || ($readini($char($1), status, defensedown) = on)) { writeini $char($1) status defensedown no | writeini $char($1) status defenseup no | return }
+      $status_message_check(Defense Up) |  %defenseup.timer = $calc(%defenseup.timer + 1) | writeini $char($1) status defenseup.timer %defenseup.timer
+    $set_chr_name($1)  | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlydefenseup) | unset %defenseup.timer | return }
+  }
+  else { 
+    if ($readini($char($1), Status, defenseup) = yes) {   writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 1 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, defenseupWornOff)  | unset %defenseup.timer | return  }
   }
   return
 }

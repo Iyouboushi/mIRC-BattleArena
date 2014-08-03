@@ -55,7 +55,7 @@ alias shop.exchange {
     var %message 2You exchange %currency.symbol $+ %dollars.needed double dollars  for %notestogive allied notes
   }
 
-  if ($readini(system.dat, system, botType) = IRC) { .msg $1 %message }
+  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {  $display.private.message2($1, %message) }
   if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($1, %message) }
 
   return
@@ -81,7 +81,7 @@ alias shop.start {
 
 
   if ($2 = sell) {
-    var %sellable.stuff items.accessories.accessory.gems.techs.armor
+    var %sellable.stuff items.accessories.accessory.gems.tech.techs.technique.armor
     if ($3 !isin %sellable.stuff) { $display.private.message($readini(translation.dat, errors, Can'tSellThat)) | halt }
     var %amount.to.sell $abs($5)
     if (%amount.to.sell = $null) { var %amount.to.sell 1 }
@@ -89,7 +89,7 @@ alias shop.start {
     if (($3 = key) || ($3 = keys)) { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
     if (($3 = accessories) || ($3 = accessory))  { $shop.accessories($nick, sell, $4, %amount.to.sell) | halt }
     if (($3 = gems) || ($3 = gem))  { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
-    if (($3 = tech) || ($3 = techs)) { $shop.techs($nick, sell, $4, %amount.to.sell) | halt }
+    if ((($3 = tech) || ($3 = techs) || ($3 = technique))) { $shop.techs($nick, sell, $4, %amount.to.sell) | halt }
     if ($3 = armor)  { $shop.armor($nick, sell, $4, %amount.to.sell) | halt }
   }
 
@@ -98,18 +98,19 @@ alias shop.start {
       if ($nick isin $readini($txtfile(battle2.txt), Battle, List)) {  $display.private.message($readini(translation.dat, errors, Can'tUseShopInBattle)) | halt }
     }
 
-    if ($3 = $null) {  $display.private.message(4Error: Use !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items> <what to buy>)  }
+    if ($3 = $null) {  $display.private.message(4Error: Use !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields> <what to buy>)  }
     var %amount.to.purchase $abs($5)
     if ((%amount.to.purchase = $null) || (%amount.to.purchase !isnum 1-9999)) { var %amount.to.purchase 1 }
 
     if (($3 = items) || ($3 = item))  { $shop.items($nick, buy, $4, %amount.to.purchase) | halt }
-    if (($3 = techs) || ($3 = techniques)) { $shop.techs($nick, buy, $4, %amount.to.purchase) | halt  }
+    if ((($3 = techs) || ($3 = techniques) || ($3 = tech))) { $shop.techs($nick, buy, $4, %amount.to.purchase) | halt  }
     if (($3 = skills) || ($3 = skill)) { $shop.skills($nick, buy, $4, %amount.to.purchase) | halt  }
     if (($3 = stats) || ($3 = stat))  {  $shop.stats($nick, buy, $4, %amount.to.purchase) | halt  }
     if (($3 = portal) || ($3 = portalitem))  { $shop.portal($nick, buy, $4, %amount.to.purchase) | halt }
     if (($3 = alchemy) || ($3 = misc))  { $shop.alchemy($nick, buy, $4, %amount.to.purchase) | halt }
     if (($3 = alliednotes) || ($3 = gems))  { $shop.alchemy($nick, buy, $4, %amount.to.purchase) | halt }
     if (($3 = weapons) || ($3 = weapon)) { $shop.weapons($nick, buy, $4, %amount.to.purchase) }
+    if (($3 = shields) || ($3 = shield)) { $shop.shields($nick, buy, $4, %amount.to.purchase) }
     if ($3 = orbs) { 
       var %amount.to.purchase $abs($4)
       if (%amount.to.purchase = $null) { var %amount.to.purchase 1 }
@@ -130,13 +131,13 @@ alias shop.start {
       }
     }
 
-    else {  $display.private.message(4Error: Use !shop list <items/techs/skills/stats/weapons/orbs/ignitions/styles/portal/misc/mech/mech items>  or !shop buy <items/techs/skills/stats/weapons/orbs/style/ignitions/portal/misc/mech/mech items> <what to buy>)  | halt }
+    else {  $display.private.message(4Error: Use !shop list <items/techs/skills/stats/weapons/orbs/ignitions/styles/portal/misc/mech/mech items/shields>  or !shop buy <items/techs/skills/stats/weapons/orbs/style/ignitions/portal/misc/mech/mech items/shields> <what to buy>)  | halt }
   }
 
   if ($2 = list) { 
 
-    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items
-    if ($istok(%valid.categories, $3, 46) = $false) { $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items>  or !shop buy <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items> <what to buy>)  | halt }
+    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields
+    if ($istok(%valid.categories, $3, 46) = $false) { $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items>  or !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields> <what to buy>)  | halt }
 
     else {
 
@@ -156,6 +157,7 @@ alias shop.start {
       }
 
       if (($3 = weapons) || ($3 = weapon)) { $shop.weapons($nick, list) }
+      if (($3 = shields) || ($3 = shield)) { $shop.shields($nick, list) }
       if ($3 = orbs) { $shop.orbs($nick, list) }
       if (($3 = style) || ($3 = styles))  { $shop.styles($nick, list, $4) | halt }
       if (($3 = ignition) || ($3 = ignitions))  { $shop.ignitions($nick, list, $4) | halt }
@@ -175,7 +177,7 @@ alias shop.start {
 
   }
 
-  else {  $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items>  or !shop buy <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items> <what to buy>)  | halt }
+  else {  $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields>  or !shop buy <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields> <what to buy>)  | halt }
 
 }
 
@@ -439,12 +441,11 @@ alias shop.items {
 
     unset %item.price | unset %item.name | unset %shop.list
 
-
-    ; CHECKING SONG ITEMS
-    unset %shop.list |  var %value 1 | var %items.lines $lines($lstfile(items_songs.lst))
+    ; CHECKING SONGSHEETS AND SPECIAL ITEMS
+    unset %shop.list |  var %value 1 | var %items.lines $lines($lstfile(items_special.lst))
 
     while (%value <= %items.lines) {
-      set %item.name $read -l $+ %value $lstfile(items_songs.lst)
+      set %item.name $read -l $+ %value $lstfile(items_special.lst)
       set %item.price $readini($dbfile(items.db), %item.name, cost)
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
       set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
@@ -461,10 +462,70 @@ alias shop.items {
     }
 
     if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(12Songs:2 %shop.list)
+      $display.private.message(6Songsheets & Special Items:2 %shop.list)
     }
 
     unset %item.price | unset %item.name | unset %shop.list
+
+    ; CHECKING INSTRUMENT ITEMS
+    unset %shop.list |  var %value 1 | var %items.lines $lines($lstfile(items_instruments.lst))
+
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(items_instruments.lst)
+      set %item.price $readini($dbfile(items.db), %item.name, cost)
+      set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
+      set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
+
+      if (($readini($char($1), item_amount, %item.name) = $null) || ($readini($char($1), item_amount, %item.name) <= 0)) {
+
+        if (%item.price > 0) {  
+          if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
+            if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          }
+        }
+
+      }
+
+      unset %item.name | unset %item_amount | unset %conquest.item | unset %shopnpc.name
+      inc %value 1 
+    }
+
+    if (%shop.list != $null) {  $shop.cleanlist 
+      $display.private.message(7Instruments:2 %shop.list)
+    }
+
+    unset %item.price | unset %item.name | unset %shop.list
+
+
+    if ($shopnpc.present.check(TravelMerchant) = true) {
+      ; CHECKING ACCESSORIES
+      unset %shop.list |  var %value 1 | var %items.lines $lines($lstfile(items_accessories.lst))
+
+      while (%value <= %items.lines) {
+        set %item.name $read -l $+ %value $lstfile(items_accessories.lst)
+        set %item.price $readini($dbfile(items.db), %item.name, cost)
+        set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
+        set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
+
+        if (%item.price > 0) {  
+          if ($shopnpc.present.check(%shopnpc.name) = true) {
+            if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          }
+        }
+
+        unset %item.name | unset %item_amount | unset %conquest.item | unset %shopnpc.name
+        inc %value 1 
+      }
+
+      if (%shop.list != $null) {  $shop.cleanlist 
+        $display.private.message(9Accessories:2 %shop.list)
+      }
+
+      unset %item.price | unset %item.name | unset %shop.list
+    }
+
   }
 
   if (($2 = buy) || ($2 = purchase)) {
@@ -690,25 +751,26 @@ alias shop.techs {
 alias shop.skills {
   unset %shop.list.activeskills | unset %shop.list.passiveskills | unset %shop.list.resistanceskills | unset %total.passive.skills | unset %total.active.skills | unset %shop.list.killertraits
   if ($2 = list) {
-    ; get the list of the skills
+    ; get the list of the skills and display the lists
     $shop.get.shop.level($1)
 
-    $shop.get.skills.passive($1)
     $shop.get.skills.active($1)
-    $shop.get.skills.resistance($1)
-    $shop.get.skills.killertrait($1)
-
-    ; display the list with the prices.
     if (%shop.list.activeskills != $null) {  $display.private.message(4Active Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.activeskills) }
     if (%shop.list.activeskills2 != $null) {  $display.private.message(2 $+ %shop.list.activeskills2) }
 
+    $shop.get.skills.passive($1)
     if (%shop.list.passiveskills != $null) {  $display.private.message(4Passive Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.passiveskills) }
     if (%shop.list.passiveskills2 != $null) {  $display.private.message(2 $+ %shop.list.passiveskills2) }
 
+    $shop.get.skills.resistance($1)
     if (%shop.list.resistanceskills != $null) {  $display.private.message(4Resistance Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.resistanceskills) }
 
+    $shop.get.skills.killertrait($1)
     if (%shop.list.killertraits != $null) {  $display.private.message(4Killer Trait Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.killertraits) }
     if (%shop.list.killertraits2 != $null) {  $display.private.message(2 $+ %shop.list.killertraits2) }
+
+
+
 
     unset %shop.list.activeskills | unset %shop.list.passiveskills | unset %shop.list.resistanceskills | unset %shop.list.activeskills2 | unset %shop.list.passiveskills2 | unset %total.active.skills | unset %total.passives.skills | unset %shop.list.killertraits
     unset %shop.list.killertraits2 | unset %skill.name | unset %skill.have | unset %replacechar
@@ -1028,448 +1090,84 @@ alias shop.weapons {
     ; get the list of the weapons.
     $shop.get.shop.level($1)
 
-    ; CHECKING H2H
-    unset %shop.list | unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, HandToHand)
-    var %number.of.items $numtok(%weapon.list, 46)
+    unset %shop.list |  unset %weapon.list | unset %weapons | unset %number.of.weapons | unset %base.weapon.list | unset %weapon.list2 | unset %weapon.list3 | unset %weapon.list4
+    set %total.weapons.owned 0 | var %upgrade.list.counter 1
 
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) { 
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list = $addtok(%upgrade.list, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
+    var %weapon.list.place 1 | var %total.weapon.lists $lines($lstfile(weaponlists.lst)) | var %upgrades.available 0 
+
+    while (%weapon.list.place <= %total.weapon.lists) {
+      var %weapons.line $read -l $+ %weapon.list.place $lstfile(weaponlists.lst)
+      set %weapons $readini($dbfile(weapons.db), Weapons, %weapons.line)
+      var %number.of.weapons $numtok(%weapons, 46)
+      var %value 1
+
+      while (%value <= %number.of.weapons) {
+        set %weapon.name $gettok(%weapons, %value, 46)
+        set %weapon_level $readini($char($1), weapons, %weapon.name)
+        var %weapon.cost $readini($dbfile(weapons.db), %weapon.name, cost)
+
+        if (%weapon.cost > 0) {
+          ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
+          if ($readini($char($1), weapons, %weapon.name) != $null) { 
+            if (%weapon_level < 500) { 
+              set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
+              inc %upgrades.available 1
+
+              if (%upgrades.available >= 11) { inc %upgrade.list.counter 1 | var %upgrades.available 0 }
+              $add.upgradelist(%upgrade.list.counter, %weapon.name, %weapon.price)
+            }
+          }
+
+          else {  
+            if (%weapons.line != defunct) {
+              set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
+              if (%weapon.price != 0) { %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46) }
+            }
+          }
+
         }
         inc %value 1 
       }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
+
+      ; Display the weapons available for purchase.
+      if (%shop.list != $null) {  $shop.cleanlist 
+
+        var %weaponlist.title %weapons.line
+        if ($right(%weaponlist.title,1) = s) { var %weaponlist.title $removecs(%weaponlist.title, s)  }
+        if (%weaponlist.title = Handtohand) { var %weaponlist.title Hand to Hand }
+
+        $display.private.message(4New %weaponlist.title Weapons:2 %shop.list)
       }
+
+      unset %weapon.price | unset %shop.list3 | unset %mech.weapon.list | unset %mech.weapon.list2
+      unset %total.weapons.owned | unset %shop.list2
+      inc %weapon.list.place | unset %value | unset %shop.list | unset %weapon.name | unset %weapon_level | unset %number.of.weapons
     }
 
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Hand to Hand Weapons:2 %shop.list)
-    }
 
-    unset %shop.list
-
-    ; CHECKING Swords
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Swords)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list = $addtok(%upgrade.list, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Sword Weapons:2 %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Whips
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Whips)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list = $addtok(%upgrade.list, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Whip Weapons:2 %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Guns
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Guns)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list = $addtok(%upgrade.list, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Gun Weapons:2  %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Rifles
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Rifles)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list2 = $addtok(%upgrade.list2, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Rifle Weapons:2  %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Bows
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Bows)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list2 = $addtok(%upgrade.list2, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Bow Weapons:2  %shop.list)
-    }
-
-    unset %shop.list
-
-
-    ; CHECKING Katanas
-    unset %weapon.list 
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Katanas)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list2 = $addtok(%upgrade.list2, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Katana Weapons:2  %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Wands
-    unset %weapon.list 
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Wands)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list3 = $addtok(%upgrade.list3, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Wand/Staff/Glyph Weapons:2  %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Spears
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Spears)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list3 = $addtok(%upgrade.list3, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Spear Weapons:2 %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Scythes
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Scythes)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list3 = $addtok(%upgrade.list3, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Scythe Weapons:2 %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING GreatSwords
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, GreatSwords)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list4 = $addtok(%upgrade.list4, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Great Sword Weapons:2 %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Axes
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Axes)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list4 = $addtok(%upgrade.list4, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Axe Weapons:2 %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Daggers
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Daggers)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list4 = $addtok(%upgrade.list4, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Dagger Weapons:2 %shop.list)
-    }
-
-    unset %shop.list
-
-    ; CHECKING Glyphs
-    unset %weapon.list
-    set %weapon.list $readini($dbfile(weapons.db), Weapons, Glyphs)
-    var %number.of.items $numtok(%weapon.list, 46)
-
-    var %value 1
-    while (%value <= %number.of.items) {
-      set %weapon.name $gettok(%weapon.list, %value, 46)
-      ; Does the player own this weapon?  If so, add it to the upgrade list.  If not,add it to the new weapon list.
-      if ($readini($char($1), weapons, %weapon.name) != $null) {
-        set %weapon.level $readini($char($1), weapons, %weapon.name)
-        if (%weapon.level < 500) { 
-          set %weapon.price $round($calc(%shop.level * $readini($dbfile(weapons.db), %weapon.name, upgrade)),0)
-          %upgrade.list4 = $addtok(%upgrade.list4, $+ %weapon.name $+ +1 ( $+ %weapon.price $+ ),46)
-        }
-        inc %value 1 
-      }
-      else {  
-        set %weapon.price $readini($dbfile(weapons.db), %weapon.name, cost)
-        %shop.list = $addtok(%shop.list, $+ %weapon.name $+  ( $+ %weapon.price $+ ),46)
-        inc %value 1 
-      }
-    }
-
-    if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(4New Glyph Weapons:2 %shop.list)
-    }
-
-    unset %shop.list |  unset %weapon.level
-
-    if ((((%upgrade.list != $null) || (%upgrade.list2 != $null) || (%upgrade.list3 != $null) || (%upgrade.list4 != $null)))) {  
-      $display.private.message(2Weapons you can upgrade:)
+    if (%upgrade.list1 != $null) {
       set %replacechar $chr(044) $chr(032) 
-      if (%upgrade.list != $null) {
-        %upgrade.list = $replace(%upgrade.list, $chr(046), %replacechar)
-        $display.private.message(2 $+ %upgrade.list)
-      }
-      if (%upgrade.list2 != $null) {
-        %upgrade.list2 = $replace(%upgrade.list2, $chr(046), %replacechar)
-        $display.private.message(2 $+ %upgrade.list2)
-      }
-      if (%upgrade.list3 != $null) {
-        %upgrade.list3 = $replace(%upgrade.list3, $chr(046), %replacechar)
-        $display.private.message(2 $+ %upgrade.list3)
-      }
-      if (%upgrade.list4 != $null) {
-        %upgrade.list4 = $replace(%upgrade.list4, $chr(046), %replacechar)
-        $display.private.message(2 $+ %upgrade.list4)
+      $display.private.message(2Weapons you can upgrade:)
+
+      %upgrade.list1 = $replace(%upgrade.list1, $chr(046), %replacechar)
+      $display.private.message.delay(2 $+ %upgrade.list1)
+
+      var %upgrade.counter 2
+
+      while ($return.upgradelist(%upgrade.counter) != $null) {
+
+        set %display.upgradelist $return.upgradelist(%upgrade.counter)
+        %display.upgradelist = $replace(%display.upgradelist, $chr(046), %replacechar)
+
+        $display.private.message.delay(2 $+ %display.upgradelist)
+        $unset.upgradelist(%upgrade.counter) | unset %display.upgradelist
+        inc %upgrade.counter
+
+        if (%upgrade.counter > 100) { echo -a breaking to prevent a flood | break }
       }
 
-      unset %upgrade.list | unset %upgrade.list2 | unset %upgrade.list3 | unset %upgrade.list4 | unset %replacechar
+      unset %replacechar | unset %upgrade.list1
+      unset %weapons | unset %shop.level
 
     }
   }
@@ -1511,6 +1209,91 @@ alias shop.weapons {
       halt
     }
   }
+}
+
+alias shop.shields {
+
+  ; Is the shield shop merchant even there?
+  if ($readini(shopnpcs.dat, NPCStatus, ShieldMerchant) != true) { $display.private.message(2The shield merchant is currently unavailable for you to purchase a shield.) | halt }
+
+  if ($2 = list) {
+    $display.private.message(2New shield prices are in Black Orbs. Remember that you need the DualWield skill to use a shield.)
+    ; get the list of the shields.
+
+    unset %shop.list |  unset %shield.list | unset %shields | unset %number.of.shields | unset %base.shield.list | unset %shield.list2 | unset %shield.list3 | unset %shield.list4
+    set %total.shields.owned 0 | var %upgrade.list.counter 1
+
+    var %shield.list.place 1 | var %total.shield.lists $lines($lstfile(shieldlists.lst)) | var %upgrades.available 0 
+
+    while (%shield.list.place <= %total.shield.lists) {
+      var %shields.line $read -l $+ %shield.list.place $lstfile(shieldlists.lst)
+      set %shields $readini($dbfile(weapons.db), shields, %shields.line)
+      var %number.of.shields $numtok(%shields, 46)
+      var %value 1
+
+      while (%value <= %number.of.shields) {
+        set %shield.name $gettok(%shields, %value, 46)
+        set %shield_level $readini($char($1), shields, %shield.name)
+        var %shield.cost $readini($dbfile(weapons.db), %shield.name, cost)
+
+        if (%shield.cost > 0) {
+          ; Does the player own this shield?  If not, add it to the new shield list.
+          if ($readini($char($1), weapons, %shield.name) = $null) { 
+            if (%shield.cost != 0) { %shop.list = $addtok(%shop.list, $+ %shield.name $+  ( $+ %shield.cost $+ ),46) }
+          }
+        }
+
+        inc %value 1 
+      }
+
+      ; Display the shields available for purchase.
+      if (%shop.list != $null) {  $shop.cleanlist 
+
+        var %shieldlist.title %shields.line
+        if ($right(%shieldlist.title,1) = s) { var %shieldlist.title $removecs(%shieldlist.title, s)  }
+
+        $display.private.message(4New %shieldlist.title Shields:2 %shop.list)
+      }
+
+      unset %shield.price | unset %shop.list3 | unset %mech.shield.list | unset %mech.shield.list2
+      unset %total.shields.owned | unset %shop.list2
+      inc %shield.list.place | unset %value | unset %shop.list | unset %shield.name | unset %shield_level | unset %number.of.shields
+      unset %shields
+    }
+  }
+
+
+  if (($2 = buy) || ($2 = purchase)) {
+    if ($readini($dbfile(weapons.db), $3, type) = $null) { $display.private.message(4Error: Invalid shield! Use! !shop list shields to get a valid list ) | halt }
+    if ($readini($dbfile(weapons.db), $3, cost) = 0) { $display.private.message(4Error: You cannot purchase this shield!) | halt }
+    var %shield.level $readini($char($1), weapons, $3)
+    if (%shield.level != $null) { $display.private.message(4You already own this shield.) | halt }
+    else {
+      ; do you have enough to buy it?
+      var %player.blackorbs $readini($char($1), stuff, blackorbs) 
+      var %total.price $readini($dbfile(weapons.db), $3, cost)
+      if (%player.blackorbs < %total.price) { $display.private.message(4You do not have enough black orbs to purchase this item!) | halt }
+      dec %player.blackorbs %total.price
+      writeini $char($1) stuff blackorbs %player.blackorbs
+      $inc.blackorbsspent($1, %total.price)
+      writeini $char($1) weapons $3 1
+      $display.private.message(3You spend %total.price black $iif(%total.price < 2, orb, orbs) to purchase $3 $+ ! $readini(translation.dat, system, BlackOrbsLeft))
+      halt
+    }
+  }
+}
+
+
+
+
+alias add.upgradelist {
+  % [ $+ upgrade.list $+ [ $1 ] ] = $addtok(% [ $+ upgrade.list $+ [ $1 ] ] , $+ $2 $+ +1 ( $+ $3 $+ ),46)
+}
+alias return.upgradelist {
+  return % [ $+ upgrade.list $+ [ $1 ] ] 
+}
+alias unset.upgradelist {
+  unset % [ $+ upgrade.list $+ [ $1 ] ] 
 }
 
 alias shop.styles {
@@ -1800,10 +1583,10 @@ alias shop.portal {
     %portals.highkindredcrest = $replace(%portals.highkindredcrest, $chr(046), %replacechar)
     unset %replacechar
 
-    if (%portals.bstmen != $null) {  $display.private.message(2These portal items are paid for with 4BeastmenSeals2: %portals.bstmen)  }
-    if (%portals.kindred != $null) {  $display.private.message(2These portal items are paid for with 4KindredSeals2: %portals.kindred)  }
-    if (%portals.kindredcrest != $null) {  $display.private.message(2These portal items are paid for with 4KindredCrests2: %portals.kindredcrest)  }
-    if (%portals.highkindredcrest != $null) {  $display.private.message(2These portal items are paid for with 4HighKindredCrests2: %portals.highkindredcrest)  }
+    if (%portals.bstmen != $null) {  $display.private.message.delay.custom(2These portal items are paid for with 4BeastmenSeals2: %portals.bstmen, 1)  }
+    if (%portals.kindred != $null) {  $display.private.message.delay.custom(2These portal items are paid for with 4KindredSeals2: %portals.kindred, 2)  }
+    if (%portals.kindredcrest != $null) {  $display.private.message.delay.custom(2These portal items are paid for with 4KindredCrests2: %portals.kindredcrest, 3)  }
+    if (%portals.highkindredcrest != $null) {  $display.private.message.delay.custom(2These portal items are paid for with 4HighKindredCrests2: %portals.highkindredcrest, 3)  }
 
     if ((((%portals.kindred = $null) && (%portals.bstmen = $null) && (%portals.kindredcrest = $null) && (%portals.highkindredcrest = $null)))) { $display.private.message(4There are no portal items available for purchase right now)  }
 
@@ -1910,13 +1693,14 @@ alias shop.alchemy {
 
     if ((%misc != $null) || (%gems != $null)) { 
       $display.private.message(2These items are paid for with Allied Notes:)
-      if (%misc != $null) { $display.private.message(5 $+ %misc) }
-      if (%misc2 != $null) { $display.private.message(5 $+ %misc2) }
-      if (%misc3 != $null) { $display.private.message(5 $+ %misc3) }
-      if (%gems != $null) { $display.private.message(%gems) }
+
+      if (%misc != $null) { $display.private.message.delay.custom(5 $+ %misc,2) }
+      if (%misc2 != $null) { $display.private.message.delay.custom(5 $+ %misc2,3) }
+      if (%misc3 != $null) { $display.private.message.delay.custom(5 $+ %misc3,3) }
+      if (%gems != $null) { $display.private.message.delay.custom(%gems,4) }
     }
 
-    if ((%misc = $null) && (%gems = $null)) {  $display.private.message(4There are no items available for purchase right now)  }
+    if ((%misc = $null) && (%gems = $null)) {  $display.private.message.delay.custom(4There are no items available for purchase right now, 2)  }
 
     unset %shop.list | unset %misc | unset %gems | unset %misc2 | unset %misc3
     unset %shop.list2 | unset %shop.list3 
@@ -1937,6 +1721,10 @@ alias shop.alchemy {
 
     var %conquest.item $readini($dbfile(items.db), $3, ConquestItem)
     if ((%conquest.item = true) && (%conquest.status != players)) { $display.private.message(4You cannot buy this item because monsters are in control of the conquest region it comes from! Players must be in control of the conquest in order to purchase this.) | halt }
+
+    var %shopnpc.name $readini($dbfile(items.db), $3, shopNPC)
+    if ((%shopnpc.name != $null) && ($shopnpc.present.check(%shopnpc.name) != true)) {  $display.private.message($readini(translation.dat, errors, ShopNPCNotAvailable)) | halt }
+
 
     set %player.currency $readini($char($1), stuff, alliednotes)
     set %total.price $calc($readini($dbfile(items.db), $3, cost) * $4)

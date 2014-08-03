@@ -1,20 +1,19 @@
 [BaseStats]
 Hp=2000
 Tp=500
-Str=2100
-Def=2200
-Int=2400
-Spd=2200
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Albus
-
 
 [Battle]
 Hp=2000
 Tp=500
-Str=2100
-Def=2200
-Int=2400
-Spd=2200
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,25 +94,25 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Agartha
-Agartha=$calc(100 + $current.battlestreak)
+Agartha=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
 ClearMind=3
 ElementalSeal=1
-Wizardry=100
-Gunslinger=100
+Wizardry=1000
+Gunslinger=1000
 Resist-Charm=100
 Resist-Amnesia=100
 Resist-Curse=100
 Resist-Intimidate=100
 
 [Techniques]
-OpticalShot=$calc(125 + $current.battlestreak)
-MaxShot=$calc(150 + $current.battlestreak)
-Torpor=$calc(100 + $current.battlestreak)
-TorporRain=$calc(100 + $current.battlestreak)
-QuadrupleIgnis=$calc(150 + $current.battlestreak)
+OpticalShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+MaxShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Torpor=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+TorporRain=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+QuadrupleIgnis=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

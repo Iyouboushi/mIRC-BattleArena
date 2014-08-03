@@ -9,9 +9,11 @@ alias calculate.stylepoints {
   if (%style.points = $null) { set %style.points 0 }
 
   if (%style.points <= 30) { set %style.rating $readini(translation.dat, styles, FlatOutBoring) }
-  if ((%style.points > 30) && (%style.points <=  80)) { set %style.rating $readini(translation.dat, styles, Dope) }
-  if ((%style.points > 80) && (%style.points <=  100)) { set %style.rating $readini(translation.dat, styles, Cool) }
-  if ((%style.points > 100) && (%style.points <=  120)) { set %style.rating $readini(translation.dat, styles, Blast) }
+  if ((%style.points > 30) && (%style.points <=  50)) { set %style.rating $readini(translation.dat, styles, Dope) }
+  if ((%style.points > 50) && (%style.points <=  80)) { set %style.rating $readini(translation.dat, styles, Don'tWorry) }
+  if ((%style.points > 80) && (%style.points <=  100)) { set %style.rating $readini(translation.dat, styles, ComeOn) }
+  if ((%style.points > 100) && (%style.points <=  110)) { set %style.rating $readini(translation.dat, styles, Cool) }
+  if ((%style.points > 110) && (%style.points <=  120)) { set %style.rating $readini(translation.dat, styles, Blast) }
   if ((%style.points > 120) && (%style.points <=  140)) { set %style.rating $readini(translation.dat, styles, Alright) }
   if ((%style.points > 140) && (%style.points <=  180)) { set %style.rating $readini(translation.dat, styles, Atomic) }
   if ((%style.points > 180) && (%style.points <=  250)) { set %style.rating $readini(translation.dat, styles, Sweet) }

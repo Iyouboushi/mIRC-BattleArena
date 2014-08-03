@@ -96,13 +96,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=GarudaPower
-GarudaPower=100
+GarudaPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
 Zen=5
-MartialArts=100
-Wizardry=100
+MartialArts=500
+Wizardry=500
 Resist-Intimidate=100
 Resist-Stun=100
 Resist-Weaponlock=100
@@ -119,10 +119,10 @@ Resist-Confuse=100
 
 
 [Techniques]
-AerialBlast=100
-PredatorClaws=100
-WindBlade=100
-Tornado=100
+AerialBlast=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+PredatorClaws=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+WindBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Tornado=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

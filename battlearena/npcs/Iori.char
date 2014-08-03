@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=500
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Iori Yagami
 
 
 [Battle]
 Hp=2500
 Tp=500
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,21 +95,21 @@ zombie.timer=1
 
 [Weapons]
 Equipped=OrochiPower
-OrochiPower=$calc(100 + $current.battlestreak)
+OrochiPower=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
-MartialArts=100
+MartialArts=1000
 Zen=5
 MightyStrike=1
 
 [Techniques]
-YamiBarai=$calc(100 + $current.battlestreak)
-AoiHana=$calc(100 + $current.battlestreak)
-YaOtome=$calc(300 + $current.battlestreak)
-SakuTsumagushi=$calc(300 + $current.battlestreak)
+YamiBarai=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+AoiHana=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+YaOtome=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SakuTsumagushi=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

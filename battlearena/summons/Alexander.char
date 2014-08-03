@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AlexanderPower
-AlexanderPower=100
+AlexanderPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Wizardry=100
+MartialArts=500
+Wizardry=500
 RoyalGuard=1
 royalguard.on=on
 ManaWall=1
@@ -120,9 +120,9 @@ Resist-Petrify=100
 Resist-Confuse=100
 
 [Techniques]
-DivineJudement=100
-DivineSpear=100
-Holy=100
+DivineJudement=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+DivineSpear=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Holy=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

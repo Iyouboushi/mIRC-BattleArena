@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=500
-Str=2800
-Def=2700
-Int=3500
-Spd=3200
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(25 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Name=Shanoa
 
 
 [Battle]
 Hp=2400
 Tp=500
-Str=2800
-Def=2700
-Int=3500
-Spd=3200
+Str=$calc(30 + $current.battlestreak)
+Def=$calc(25 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Status=alive
 
 
@@ -98,11 +98,11 @@ conservetp.on=off
 
 [Weapons]
 Equipped=Glyphs
-Glyphs=$calc(100 + $current.battlestreak)
+Glyphs=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 ElementalSeal=1
-Wizardry=100
+Wizardry=1000
 Resist-Amnesia=100
 Resist-Charm=100
 Resist-Intimidate=100
@@ -111,17 +111,17 @@ Zen=5
 RoyalGuard=1
 ManaWall=1
 ClearMind=3
-BloodSpirit=100
+BloodSpirit=10
 
 [Techniques]
-Ignis=$calc(100 + $current.battlestreak)
-Grando=$calc(100 + $current.battlestreak)
-Fulgar=$calc(100 + $current.battlestreak)
-Nitesco=$calc(100 + $current.battlestreak)
-Globus=$calc(100 + $current.battlestreak)
-Acerbatus=$calc(100 + $current.battlestreak)
-Luminatio=$calc(100 + $current.battlestreak)
-Dominus=$calc(100 + $current.battlestreak)
+Ignis=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Grando=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Fulgar=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Nitesco=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Globus=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Acerbatus=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Luminatio=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Dominus=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2000
 Tp=250
-Str=1800
-Def=1800
-Int=2500
-Spd=1800
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Kaylona
 
 
 [Battle]
 Hp=2000
 Tp=250
-Str=1800
-Def=1800
-Int=2500
-Spd=1800
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -97,10 +97,10 @@ auto-regen=yes
 
 [Weapons]
 Equipped=HolyMace
-HolyMace=$calc(100 + $current.battlestreak)
+HolyMace=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Wizardry=100
+Wizardry=1000
 ClearMind=3
 Zen=10
 Resist-Charm=100
@@ -115,8 +115,8 @@ royalguard.on=on
 Regen=1
 
 [Techniques]
-Curaga=$calc(100 + $current.battlestreak)
-CureV=$calc(100 + $current.battlestreak)
+Curaga=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+CureV=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Ignitions]
 

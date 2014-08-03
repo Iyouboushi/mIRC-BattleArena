@@ -1,0 +1,212 @@
+[BaseStats]
+Hp=$iif($return_playerlevelstotal >= 700, $round($calc(5000 + (4 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(4500 + $return_playerlevelstotal),0))
+Tp=350
+Str=300
+Def=300
+Int=300
+Spd=300
+Name=Skeletron Right Arm
+IgnitionGauge=2
+
+
+[Battle]
+Hp=2500
+Tp=350
+Str=300
+Def=300
+Int=300
+Spd=300
+Status=alive
+IgnitionGauge=2
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is the right arm of Skeletron.
+Rage=clenches its hand into a fist!
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+
+[Info]
+Flag=monster
+Gender=its
+Gender2=it
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+ai_type=techonly
+Streak=-1000
+BossLevel=200
+CanTaunt=False
+IgnoreQuicksilver=true
+JustReleaseDefense=75
+;=======================================
+; These are optional flags you can set:
+;========================================
+; STAGGER:  do you want the monster to be able to be staggered after being hurt for a certain # of damage? 
+; CanStagger=yes/no  
+; StaggerAmount=$rand(#,#)   
+; 
+; IGNORE RAGEMODE
+; RageMode=ignore   
+;
+; IGNORE QUICKSILVER
+; IgnoreQuicksilver=true
+;
+; AI TYPE: berserkers will attack their own allies, defenders won't get a turn. Leave blank for normal.
+; ai_type=
+;
+; STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.
+; Streak=
+; StreakMax=
+;
+; FLEEING: Do you want monsters to be able to flee the battle?
+; CanFlee=true/false
+;
+; SPAWNING ANOTHER MONSTER UPON DEATH: If set, when this monster is killed, it'll summon another one that's set.
+; SpawnAfterDeath=nameofmonster
+;
+; BIOME is for if you want the monster to only appear under certain battlefields. You can list multiple with periods inbetween.
+; Biome=
+;
+; MOONPHASE is for if you want the monster to only appear during a certain moon phase. You can only list one.
+; Valid list is: Full Moon or Crescent Moon or Gibbous Moon or New Moon or Quarter Moon or Blood Moon  (with the spaces)
+; Moonphase=
+;
+; TIMEOFDAY is for if you want the monster to only appear during certain times of days (game time, not real life)
+; Valid list is: Morning, Noon, Evening and Night.
+; TimeOfDay=
+;
+; Can the monster taunt?   Assumed to be true if blank.
+; CANTAUNT=true/false
+;
+; TAUNTFILE is an optional taunt file if you want your boss to have unique taunts.  If blank it will use the default taunts.txt
+; TAUNTFILE=
+;
+; GUARDIAN is a monster that covers the monster. While the guardian mon is alive, this mon will take no damage
+; Guardian=
+;
+; JUSTRELEASEDEFENSE is to block "Just Release" the # is a percent of the damage blocked. 0 = no block, 100 = 100% blocked
+; JustReleaseDefense=
+;
+; HURTBYTAUNT is a special flag. If set to true, taunts done against this monster will deal damage.
+; HurtByTaunt=true/false
+;
+; HEALBYTAUNT is a special flag. If set to true, taunts done against this monster will heal damage. 
+; HealByTaunt=true/false
+;
+; Does the monster appear in President battles? True=yes/False=no
+; IgnorePresident=
+
+
+
+[monster]
+; Type is the type of monster it is. 
+type=demon
+
+; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
+; Change it to "true" to turn it on.
+TechLearn=false
+
+; Size is the size of the monster. Small/Medium/Large
+size=large
+
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+
+[Weapons]
+Equipped=SkeletronArm
+SkeletronArm=$current.battlestreak
+
+
+[Skills]
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Curse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+
+
+[Techniques]
+SkeletronArmGrab=$current.battlestreak
+SkeletronArmPunch=$current.battlestreak
+
+
+
+[Item_Amount]
+
+
+
+[modifiers]
+; Resistances/weaknesses/immunities/heals can be set here.  100 = normal damage, greater than 100 means weakness, 
+; less than 100 means resistances, 0 means immune to it.
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

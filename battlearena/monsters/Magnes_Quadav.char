@@ -36,7 +36,8 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-drops=BeastmenSeal
+drops=BeastmenSeal.QuadavShell
+
 
 [Info]
 Flag=monster
@@ -48,7 +49,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=301
-CanTaunt=true
+CanTaunt=false
 
 [Monster]
 Type=quadav

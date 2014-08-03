@@ -10,7 +10,7 @@ ThereÅ's a bunch of weapons that can be bought and each weapon has a few techniq
 
 That's really the gist of what IÅfve been working on thus far.
 
-One more thing to mention here in the "overview" is that the bot is currently unbalanced.  New players will probably find themselves dying a lot while older players will probably dominate almost everything (to a point).   Some weapons are overpowered, others aren't strong enough.  The bot is only on version 2.4 so hopefully things will improve in those areas later on down the road.
+One more thing to mention here in the "overview" is that the bot is currently unbalanced.  New players will probably find themselves dying a lot while older players will probably dominate almost everything (to a point).   Some weapons are overpowered, others aren't strong enough.  The bot is only on version 2.5 so hopefully things will improve in those areas later on down the road.
 
 
 STARTING OUT (i.e. how do I join and what do I do first?)
@@ -50,6 +50,10 @@ Some basic commands you may want to check out:
 !techs - Will return a list of techniques you know along with the level of the technique.  Example: DoublePunch(1) means you have level 1 DoublePunch.
 
 !items - Will return a list of the items you own and how many of each item you own.  Example: potion(2) means you own 2 potions.
+
+!songs - Will return a list of the songs you know.
+
+!instruments - Will return a list of the instruments you have and how many of each you own.  Example: Lute(2) means you own 2 lutes.
 
 !accessories - Will return a list of any accessories you own and which one you have equipped.
 
@@ -188,8 +192,8 @@ Another thing to note: the !shop list techs only shows you the techniques that a
 If you're looking at all the lists and your eyes are glazing over because you have no idea what all of it does or means, don't worry too much about it.  I'll explain all of the skills later on and you can always use !view-info to learn more information on anything you don't get. 
 
 
-THE SHOP MERCHANTS
-If you are running your own copy of the game for the first time you might notice that there's not that many items in the shop.  Well this is because there are Shop Merchants who will arrive as certain requirements are filled.  When the merchants arrive more items will appear in the store.  Currently there are the following merchants:
+THE SHOP/SPECIAL NPCS
+If you are running your own copy of the game for the first time you might notice that there's not that many items in the shop and some certain minigames are locked out.  Well this is because there are NPCs who will arrive as certain requirements are filled.  When the NPCs arrive more items will appear in the store or minigames will open up.  Currently there are the following shop/special NPCs:
 
 Katelyn the Healing Merchant
 Katelyn sells the following healing/restoring/curing items: X-Potion, Senzu, Tonic, GoldOrb
@@ -201,11 +205,23 @@ Gerhardt the Battle Merchant
 Gerhardt sells the following battle items: Stop_Watch, Hour_Glass, Holy_Water, Fire_Flower, Ice_Coin, Wind_Vane, Grappling_Hook, Sokubaku, Hankai, MirrorShard, AlexanderMateria, CarbuncleMateria, SolomonRing, LuckyBroth, FenrirMateria, GarudaMateria, IfritMateria, LeviathanMateria, RamuhMateria, ShivaMateria, TitanMateria
 
 Spoony the Bard
-Spoony is currently a shop NPC that does not actually sell anything.
+Spoony sells Songsheets and Instruments needed to learn and perform songs.  He shows up when the tales of achievements about the players reach a certain amount.
+
+Gondo the Shield Merchant
+Gondo sells shields of varying size.  Once he shows up you can use !shop list shields and !shop buy shield name
+
+Dodoh the Wheel Master
+Dodoh is a special NPC that runs the Wheel minigame.  However, he's gone and got himself captured by monsters.  After you rescue him, he will open up the game to all players who wish to play.  The game costs 500 red orbs per spin and can be played once per 12 hours.  To play use !wheel spin  and you can check the help at !wheel help.
+
+Beedle the Traveling Merchant
+Beedle is a special merchant that sells a variety of items and two accessories every month (all of which can be found by using !shop list items when he arrives).  He only arrives for 5 days of every month, from the 15th to the 20th. Afterwards he flies off and can't be seen again until the following month.  So buy what you need from him quick!
+
+Green Thumb the Garden Moogle
+Green Thumb is a special NPC that takes care of the Allied Forces HQ Garden.  Sadly, he's gone and gotten himself captured after he went looking for seeds and flowers to help the garden out.  After you rescue him, he will allow everyone to contribute to the garden.  Use !garden help, !garden plant itemname and !garden status to help the garden out.
 
 There's also a few seasonal merchant NPCs that show up under certain conditions in the correct months. I will leave those as a mystery but will note that they sell items mixed in with the various other normal shops (so items/misc/alchemy/etc)
 
-To make things interesting, Shop NPCs can be kidnapped and rescued.  There's a 25% chance that the npcs will be kidnapped on normal boss battles if players lose the battle (doesn't matter what streak #) and a 50% chance of it happening on certain other boss types (warmachine, doppelganger, bandits).   Likewise, there's a 50% chance of rescuing an NPC on a successful boss win (of normal boss types) or a 70% chance of rescuing an npc on the other boss types.
+To make things interesting, many of these NPCs can be kidnapped and rescued.  There's a 25% chance that the npcs will be kidnapped on normal boss battles if players lose the battle (doesn't matter what streak #) and a 50% chance of it happening on certain other boss types (warmachine, doppelganger, bandits).   Likewise, there's a 50% chance of rescuing an NPC on a successful boss win (of normal boss types) or a 70% chance of rescuing an npc on the other boss types.
 
 
 BATTLE COMMANDS
@@ -237,6 +253,9 @@ The monsters will build a large tank-like boss that will roll out onto the battl
 
 Demon Wall Battle (only appears on winning streaks 300-600)
 A special evil demon wall will appear and teleport the players to a special battlefield.  In this battlefield the players have 10 turns to defeat the wall before they're crushed to death (instant loss if turn 11 starts).
+
+Wall of Flesh Battle (only appears on winning streaks 3500-5000)
+A special evil demon wall will appear and teleport the players to a special battlefield.  In this battlefield the players have 15 turns to defeat the wall before they're crushed to death (instant loss if turn 16 starts).
 
 Elder Dragon Battle (only appears on winning streaks 600-5000)
 A special randomly-created Elder Dragon will appear and attack the players.
@@ -289,6 +308,9 @@ This is the command to use your weapon boost or your Ignition, if you have any. 
 /me reverts from Ignition
 If you want to turn an Ignition off before your IgnitionGauge is empty, use this command.
 
+/me sings songname
+This is the command to perform a song that you know.  Note that you don't need to supply a target with songs as the song itself will determine who it hits.
+
 !use item on target
 If you have any items and wish to use them, this is how you do it.  For example, you can use a potion to restore some of your (or an allies') HP.  To do that you would use !use potion on yournamehere/targetnamehere.   Some items cannot be used on yourself (battle items) and some items can't be normally used on monsters (healing items can only be used on monsters if the monster is a zombie).
 
@@ -315,7 +337,7 @@ Monsters are leveled based on the current winning streak.  And the amount of dam
 
 
 SKILLS
-** As of February 4, 2014.
+** As of June 14, 2014.
 
 There are four types of skills in this bot: Passive Skills that are always on, Active Skills that have commands, Resists that help you resist against various status types found in the bot and Killer Traits that help you deal more melee damage to certain monster families.  Each skill has a maximum level that you can obtain in it. Some active skills can only be used once every certain number of minutes.  Of course you must first purchase the skills in the shop before you can use them.
 
@@ -394,6 +416,9 @@ This skill will decrease the odds of a surprise attack against the players. This
 
 DivineBlessing
 This skill will decrease the odds that a curse night will happen by 1% per level. This skill is cumulative with everyone who has it at the beginning of battle.
+
+DualWield
+This skill will allow the user to hold two one-handed weapons and use techniques from both without having to switch weapons. For melee attacks, the # of hits for the attack will be both weapon's # of hits combined. Use !equip left or !equip right to equip to the specified hand. Note, a weapon must be in the right hand before you can equip the right hand.
 
 
 Active Skills
@@ -503,6 +528,9 @@ This skill will allow your normal melee attacks to hurt Ethereal targets without
 Retaliation - !retaliation
 This skill will guarantee the next melee attack towards you will be countered. While this skill is active you will go last in battle.  Increased levels of this skill will decrease the time inbetween uses, with the default being once every 20 turns.
 
+Lockpicking
+This skill will consume a lockpick item and attempt to unlock a chest without using the correct colored key.  The chance of success is (skill level * 2)%
+
 
 Resistance Skills
 Like Passive skills, these skills are always on.  All of them do the same thing except with different status effects.  Each level you purchase of a resistance skill lowers the chance that that status effect will take effect on you by 1%.  The maximum is 100, meaning you're completely immune to that status effect**.
@@ -546,7 +574,7 @@ Slime-Killer
 
 
 ITEM LIST
-** As of February 4, 2014.
+** As of August 3, 2014.
 
 There's a bunch of different types of items in the bot currently:  Healing Items, Battle Items, Consumable (Skill) Items, +Stat Items, Summon Items, Shop Level Reducing Items, Gems, Keys, Accessories, Portal Items and Misc (Crafting) items.  Here's a list of each.
 
@@ -556,7 +584,7 @@ These are items that are beneficial to the targets.
 Potion - 50 Red Orbs
 The potion will heal roughly 20 HP when used.  It can be used with Fullbring and requires level 1 of that skill.
 
-Rootbeer - treasure chest only
+Rootbeer - treasure chest or Beedle's Shop for 50 Red Orbs
 Rootbeer will heal roughly 60 HP when used. It can be used with Fullbring and requires level 1 of that skill.
 
 VitalStar - 100 Red Orbs
@@ -565,7 +593,7 @@ The VitalStar will heal roughly 60 HP when used.  It can be used with Fullbring 
 X-Potion - 250 Red Orbs
 The X-potion will heal roughly 150 HP when used. It can be used with Fullbring and requires level 2 of that skill.
 
-Senzu - 500 Red Orbs
+Senzu - 500 Red Orbs normally, 300 Red Orbs if the Allied Forces HQ Garden is level 4+
 The senzu will heal roughly 500 HP when used.  It can be used with Fullbring and requires level 4 of that skill.
 
 SuperPotion - 3500 Red Orbs
@@ -589,10 +617,13 @@ The Ether will instantly restore 60 TP when used. It can be used with Fullbring 
 Tonic - 1000 Red Orbs
 The tonic will instantly cure most status effects.  It will not cure Charm or Intimidation though.
 
+BoxOfTissues - Can't be bought
+The box of tissues will ease your tears and will instantly cure most status effects.  It will not cure Charm or Intimidation though.
+
 GoldOrb - 8000 Red Orbs
 This item, when used, will bestow the target with the "revive" status.  If the target dies in the same battle, he/she will be revived with 1/2 hp.
 
-IgnitionStar - chests only
+IgnitionStar - 20000 Red Orbs
 This item, when used, will instantly restore 10 Ignition Gauge.
 
 XmasStar - Santa only, for 8000 Red Orbs
@@ -611,11 +642,14 @@ The Stop Watch will attempt to inflict the 'stop' status effect on a target.  It
 Hour_Glass - 150 Red Orbs
 The Hour Glass will attempt to inflict the 'slow' status effect on a target.  It can be used wtih Fullbring and requires level 3 of that skill.
 
-Angon - Crafting Only
+Angon - Crafting or Beedle's Shop for 2000 Red Orbs
 This item will attempt to inflict the "Defense Down" status on a target.
 
-SauceAmpulla - Crafting Only
+SauceAmpulla - Crafting or Beedle's Shop for 2000 Red Orbs
 This item will attempt to inflict the "Strength Down" status on a target.
+
+DunceCap - Crafting or Beedle's Shop for 2000 Red Orbs
+This item will attempt to inflict the "Int Down" status on a target.
 
 Red_Fang - 100 Red Orbs
 The Red Fang will inflict roughly 25 fire elemental damage to a target.  It can be used with Fullbring and requires level 2 of that skill.
@@ -652,11 +686,12 @@ This item will inflict roughly 1500 damage to a single target.
 
 
 +Stat Items
-These items, when used, will increase your stats by a certain amount.  You cannot buy these items in the shop and must be found by defeating bosses and being the most stylish.  None of these items can be used with Fullbring.
+These items, when used, will increase your stats or orbs by a certain amount.  You cannot buy these items in the shop and must be found by defeating bosses and being the most stylish.  None of these items can be used with Fullbring.
 
 To keep a little bit of mystery with these items, I'll give a list but won't say what they do.  If you want to know, get out there and defeat the bosses and be stylish about it.
 
-List
+List:
+
 Pizza
 PotRoast
 Ramen
@@ -672,7 +707,10 @@ SoulPainting
 FishAndChips
 Slurm
 CerberusMeat
+WereMeat
+AlphaWereMeat
 SilverApple
+Rum
 DefenseSource
 PowerSource
 Herring
@@ -682,9 +720,8 @@ RottingMeat
 BloodScroll
 BurntScroll
 TreasureMap
-Rum
-WereMeat
-AlphaWereMeat
+BookOfSkulls
+
 
 Consumable (Skill) Items
 These items are used in conjunction with skills and will be consumed when the skill is used.
@@ -700,6 +737,9 @@ This item is used with the Seal Break skill.
 
 MirrorShard - 3000 red orbs
 This item is used with the Magic Mirror skill.
+
+Lockpick - 300 red orbs
+This item is used with the Lockpicking skill.
 
 
 Summon Items
@@ -759,17 +799,32 @@ This item is will summon Shiva
 TitanMateria - 1000 red orbs
 This item is will summon Titan
 
+Pokeball - 10000 red orbs
+This item will summon a random pokemon
+
 
 Shop Reducing Items
 When used, these items will reduce your current shop level by an amount.  The shop level can never go below 1.0.
 
-DiscountCard - 250,000 Red Orbs
+MiniDiscountCard - 60,000 Red Orbs
+This item will reduce your shop level by 5 points.
+
+DiscountCard - 100,000 Red Orbs
 This item will reduce your shop level by 10 points.
 
-UltraDiscountCard - 500,000 Red Orbs
-This item will reduce your shop level by 25 points.
+Beedle'sDiscountCard - Beedle's Shop only for 140,000 Red Orbs
+This item will reduce your shop level by 15 points.
 
-XmasDiscountCard - Santa Only with 20 Saved Elves - 100,000 Red Orbs
+BronzeDiscountCard - 160,000 Red Orbs
+This item will reduce your shop level by 15 points.
+
+SilverDiscountCard - 200,000 Red Orbs
+This item will reduce your shop level by 20 points.
+
+UltraDiscountCard - 300,000 Red Orbs
+This item will reduce your shop level by 30 points.
+
+XmasDiscountCard - Santa Only with 20 Saved Elves - 45,000 Red Orbs
 This item will reduce your shop level by 5 points.
 
 
@@ -804,6 +859,7 @@ Accessories are special items that you can wear to bestow various bonus effects 
 
 Wizard's-Amulet
 Blessed-Ankh
+Wizard's-Ankh
 Blood-Ring
 Blood-Pendant
 Blood-Crown
@@ -816,30 +872,45 @@ Thief-Ring
 Fool's-Tablet
 PinkBow
 Ribbon
+Aztec-Goldcoin
 AztecGoldcoin
+Mayan-Ring
 Lucky-Rabbit'sFoot
 VIP-MemberCard
 Spear-Pin
+Sword-Pin
+Axe-Pin
 Mugger's-Belt
 Prism-Specs
 4leaf-clover
 Treasure-Ring
+Mimic-Ring
 Engine-Ring
 Roshi's-Glasses
-Wizard's-Ankh
 Hourglass-Necklace
 Jungle-Medallion
+Shield-Ring
+PendantOfCourage
+PendantOfWisdom
+PendantOfPower
 
 
 Misc (Crafting) Items
 These items are used with the alchemy skill to craft items or are seal items that are used to purchase portal items.
 
+MimicCore
+BeetleShell
+BeetleJaw
+QuadavShell
+Seed
+DekuSeed
+Rose
+Tulip
 Milk
 SmallEgg
 HardBoiledEgg
 Ink
 Paper
-MimicCore
 AshLog
 Hatchet
 IronOre
@@ -855,8 +926,8 @@ IceStone
 WindRock
 WaterJewel
 EarthSphere
-JungleRose
 JungleThorn
+JungleRose
 Glass
 Cloth
 RepairHammer
@@ -867,6 +938,7 @@ CardinalCloth
 Kurogane
 DiabolicSilk
 DarkOrichalcumIngot
+AtlantianThreadSpool
 JewelOfArdor
 StoneOfWieldance
 JewelOfWieldance
@@ -876,6 +948,21 @@ GlitteringYarn
 ChameleonYarn
 SnowyCerment
 UtopianGoldThread
+Demonite_Ore
+Shadow_Scale
+Crimtane_Ore
+SoulOfSight
+SoulOfMight
+SoulOfFright
+Chlorophyte_Ore
+EyeOfTheGolem
+Titanium_Ore
+HeavyMetalPlate
+UnkaiSeal
+EstoqueurSeal
+UnkaiArmorPiece
+EstoqueurArmorPiece
+SilverSwordParts
 BeastmenSeal
 KindredSeal
 KindredCrest
@@ -912,6 +999,10 @@ These items are used in battle to transport all of the players to a special batt
 AlliedTrainingPaper
 WormFood
 DemonBell
+BombShard
+ArmosMedallian
+BookOfMudora
+HeraKey
 VirilityCan
 IgnisFatuus
 BanishingCharm
@@ -924,6 +1015,7 @@ GemOfTheEast
 GemOfTheSouth
 GemOfTheWest
 GodSeal
+HyruleOrb
 LachesisOrb
 CrimsonTraverserStone
 OldOrcSword
@@ -934,6 +1026,36 @@ SpheroidPlate
 AvatarBlood
 OldOrcBow
 GoddessOrb
+AtlantianCrystal
+SuspiciousLookingEye
+CorruptWormFood
+BloodySpine
+DungeonMap
+MechanicalEye
+MechanicalWorm
+MechanicalSkull
+Plantera'sBulb
+LihzahrdPowerCell
+TruffleWorm
+
+
+Songsheets
+Songsheets are items used to teach songs. Use them on yourself to learn the song (such as !use Songsheet:Knight'sMinne on PlayerName).  Note that not all songsheets are available from the merchant, some must be acquired other ways.
+
+Songsheet:Knight'sMinne
+Songsheet:Army'sPaeon
+Songsheet:FoeLullaby
+Songsheet:ToxicMelody
+Songsheet:SongOfPeace
+
+
+Instruments
+Instruments can be purchased from the song merchant and are necessary to perform songs.
+
+Lute
+Harp
+Flute
+Ocarina
 
 
 Mech Items
@@ -1072,6 +1194,8 @@ Here's a list of the style rankings in order:
 
 Flat Out Boring!
 Dope!
+Don't Worry!
+Come On!
 Cool!
 Blast!
 Alright!
@@ -1189,8 +1313,25 @@ You can add in a number to check on a specific auction number (which makes it co
 <BattleArena> 00010 - 11/11/2013 - 08:08:08 - No Winner - SpheroidPlate
 
 
+ALLIED FORCES HQ GARDEN
+The Allied Forces Headquarters garden has been neglected and long forgotten.  A special Moogle deemed that a tragedy and decided to go hunting for seeds and flowers to plant in the garden.  Unfortunately, he's gone and gotten himself captured by monsters.  After being rescued the Moogle will leave the hunting of seeds and flowers to adventurers like yourself and stay in the garden to tend it.
+
+The garden is an optional minigame that everyone can (and should!) contribute to.  Basically you find seed and flower items from monsters and then plant them in the garden. Check the garden once every 24 hours for the seeds to grow.  The garden has levels and will level up after reaching a certain xp amount (which it obtains by people planting).
+
+Commands:
+
+!garden help
+This command will display the various commands for the minigame.
+
+!garden status
+This will display the status of the garden.  Every 24 hours this command will also advance the state of the garden (seeds will turn into saplings, saplings will turn into trees, flowers will bloom).
+
+!garden plant itemname
+This command will allow you to plant a valid item that you have found into the garden.  For example: !garden plant seed
+
+
 MONSTER LIST
-** As of February 4, 2014.
+** As of August 3, 2014.
 Here's a list of monsters that are in the bot.
 
 Acrobat
@@ -1209,6 +1350,7 @@ Bark Spider
 Bear Shark
 Bee
 Bee Bear
+Beetle
 Bigclaw
 Bloodgoyle
 Blue Bones
@@ -1223,10 +1365,12 @@ Chimera
 Chimyriad
 Citadel Bats
 Combat
+Copper Beetle
 Vampire Count
 Vampire Countess
 Creeper
 Crimson Slime
+Cthulhu Creeper
 Cure Slime
 Cursed Bishop
 Cursed Mummy
@@ -1238,12 +1382,16 @@ Dalek
 Dark Knight
 Dark Mummy
 Dark Octopus
+Death Armos Statue
 Decapiclops
+Deku Scrub
 Demon Knight
 Demon Samurai
 Demon Warrior
 Demon Wizard
 Demonic Succubus
+Desert Beetle
+Destroyer Probe
 Devil Manta
 Dhalmel
 Ding Bats
@@ -1272,6 +1420,7 @@ Goblin Berserker
 Goblin Enchanter
 Goblin Shaman
 Goblin Smithy
+Goliath Beetle
 Gold Medusa Head
 Gray Werewolf
 Greater Pugil
@@ -1288,15 +1437,18 @@ Kindred Knight
 Kindred Samurai
 Kindred Warrior
 Kindred Wizard
+Large Armos Statue
 Mad Piranha
 Magnes Quadav
 Male Vampire
 Wooly Mammoth
 Maneating Hornet
 Maniac
+Medium Armos Statue
 Metal Slime
 Midnight Blue Slime
 Mineral Eater
+Mini World Eater
 Minotaur
 Moblin
 Moonfang Warrior
@@ -1314,9 +1466,14 @@ Orcish Predator
 Orcish Wyrmbrander
 Ore Eater
 Oxocutioner
+Plantera Biter
 Poison Slime
 Poring
 Pride Demon
+Prime Cannon
+Prime Laser
+Prime Saw
+Prime Vise
 Pugil
 Purple Bones
 Reaver
@@ -1325,6 +1482,7 @@ Red Slime
 New Age Retro Hippie
 Revenant
 River Crab
+Roaming Sapling
 Rock Eater
 Rock Lizard
 Ruby Quadav
@@ -1334,14 +1492,20 @@ Samurai Ghost
 Sand Digger
 Sandy Claws
 Sapphire Quadav
+Scarab Beetle
 Sea Pugil
+Servant of Cthulhu
 Shrapnel
 Sierra Tiger
 Silver Medusa Head
+Skeletron Left Arm
+Skeletron Right Arm
+Small Armos Statue
 Small Werewolf
 Snow Giant
 Snow Lizard
 Snow Wight
+Stag Beetle
 Starman Deluxe
 Ghost of Starman
 Starman Junior
@@ -1351,6 +1515,7 @@ Stygian
 Succubus
 Thunder Elemental
 Treant
+Treant Sapling
 Ugly Knight
 Undead Black Mage
 Undead Corsair
@@ -1362,13 +1527,17 @@ Undead Red Mage
 Undead Samurai
 Ungeweder
 Unicorn
+Veteran Quadav
 Volcano Wasp
 Water Elemental
 White Werewolf
 Wild Rabbit
 Wooden Puppet
 Wyvern
+Yagudo Conductor
+Yagudo Drummer
 Yagudo Oracle
+Yagudo Piper
 Yagudo Prior
 Yagudo Prioress
 Yagudo Scribe
@@ -1384,7 +1553,7 @@ Zu
 
 
 BOSS LIST
-** As of February 4, 2014.
+** As of August 3, 2014.
 Here's a list of bosses that are in the bot.
 
 Absolute Virtue
@@ -1395,6 +1564,7 @@ Amon
 Alpha Gnole Anders
 Android X
 Aris
+Armos Knight
 Ashi
 Ashmaker Gotblut
 Astarte
@@ -1403,7 +1573,9 @@ Bahamut Fury
 Bigmouth Billy
 Blackbeard
 Bloody Bones
+Blue Lanmola
 Bob Barbas
+Brain of Cthulhu
 Brauner
 Byakko
 Cell
@@ -1419,16 +1591,20 @@ Dark Ixion
 Death
 Dracula
 Dullahan
+Duke Fishron
 Dune Widow
 Dynamis Lord
+Eater of Worlds
 Eccentric Eve
 Echidna
 Eldora Adlanna
 Erim
+Eye of of Cthulhu
 Fafnir
 Gades
 Gaki
 Garland
+Golem Controller
 Metal Gear Ray
 Metal Gear Rex
 Genbu
@@ -1436,7 +1612,10 @@ Geryon
 Gilgamesh
 Giygas
 Gothmog
+Green Lanmola
 Guard Daos
+Hercules Beetle
+Hero of Time
 Huu Xalmo the Savage
 Ironclad Severer
 Juggler Hecatomb
@@ -1453,22 +1632,29 @@ Legion
 Leviathan Center Heart
 Leviathan Left Heart
 Leviathan Right Heart
+Lizahrd Golem
 Marchelute
 Marquis Caim
 Menos Grande
 Metal King Slime
+Moldorm
+Moldorm Tail
 Morion Worm
 Mother Brain
 M.Bison
 One-Eyed Gwajboj
 Onki
 Pallid Percy
+Plantera
 Poison
 Poisonhand Gnadgad
 Puppet Master
 Quetzalcoatl
 Rainemard
 Rasetsu
+Red Lanmola
+Retinazer
+Runefencer Nauthima
 Ryukotsuki
 Scorpion
 Sea Horror
@@ -1476,11 +1662,15 @@ Seiryu
 Shadow Lord
 Shinryu
 Silverhook
+Skeletron
+Skeletron Prime
+Spazmatism
 Smothered Schmidt
 Suzaku
 Stinging Sophie
 Stubborn Dredvodd
 Sub Zero
+The Destroyer
 Three-Eyed Prozpuz
 Tiamat
 True Erim
@@ -1545,6 +1735,8 @@ I Am Iron Man
 Jackpot
 Humanoid Typhoon
 I Can Quit Betting Any Time I Want
+Mastered Technique
+Super SSStylish!
 
 
 MISC INFO
@@ -1552,6 +1744,45 @@ This section will talk about any misc stuff that I think players may want to kno
 
 First off, I'd just like to say.. don't sweat it if you die a lot at the beginning.  At this moment the bot is a bit unbalanced and monsters can be pretty rough towards new characters.  Plus there's a bunch of different types of monsters and some are harder than others (Final Guard, for example, has an extremely high defense and almost everyone will do 1 damage per hit to it).  There's no penalty for dying, so just roll with the punches (as they say).
 
-Second, if battles drag on too long a "rage" system will kick in.  This is a concept that the MMORPG Final Fantasy XI employed on some of its higher level monsters/bosses to ensure that people don't sit and hold monsters for days at a time.  Basically what happens is when a time limit has been hit, the monster will grow to insane power to the point where no players will be able to defeat them.  Because I want battles to be ongoing and often, I've done something similar.  How long do players have to defeat the monsters?  Well, if it's a normal monster battle and the number of monsters is less than 3, players have 15 minutes.  If there's more than 3 monsters, players have 30 minutes.   If it's a boss battle players will get 20 minutes.
+Second, if battles drag on too long a "rage" system will kick in.  This is a concept that the MMORPG Final Fantasy XI employed on some of its higher level monsters/bosses to ensure that people don't sit and hold monsters for days at a time.  Basically what happens is when a time limit has been hit, the monster will grow to insane power to the point where no players will be able to defeat them.  Because I want battles to be ongoing and often, I've done something similar.  How long do players have to defeat the monsters?  Well it varies anywhere between 10 turns to 25 turns depending on various battle conditions.  You can see how many turns you have until darkness hits by using !bat info.  Also note that there is a special skill (Holy Aura) that can stop darkness for a few extra turns.
 
 After the time elapses, the monsters' stats will be multiplied by 100 making them virtually impossible to kill (and will often one-shot everyone if it uses an AOE).
+
+
+AI VS AI BATTLES AND BETTING
+Did you know that the bot has a secondary game mode where the game will pick a random NPC to fight a random monster or boss?  I call it AI vs AI Battles.  During this mode the bot will randomly pick a streak level from 1 to 9999 and the two opponents to face off in a death match. Players will be unable to join these battles and can only observe. Your job, during these matches, if you so choose, is to bet some double dollars on who you think will win and hopefully walk away a winner.   Now this mode does not normally happen on its own.  A Bot Admin needs to use !startbat ai  to start one manually or set the bot to do this mode automatically with !toggle automated ai battle (and using the command another time to turn it back off).  
+
+At the start of an AI vs AI battle you will see something similar to this:
+
+<BattleArena> A 1 vs 1 AI Match is about to begin! The battle will begin in 30 seconds.
+<BattleArena> AI Battle information: [NPC] Rose vs [Monster] Scorched Yanthu on [Streak Level] 3788 [Favorite to Win] Scorched Yanthu
+<BattleArena> [NPC] Rose Information [Number of Techs: 4] [Has an Ignition: yes] [Has a Mech: no]
+<BattleArena> [Monster] Scorched Yanthu Information [Number of Techs: 18] [Has an Ignition: no] [Has a Mech: no]
+<BattleArena> The betting period is now open
+
+During the open betting period you can take a few seconds to look over the information on the two combatants.  In this case, it's Rose the NPC vs a Scorched Yanthu monster on streak level 3788.  The bot tries to gauge who will win the fight, though due to it being a random AI vs random AI there's always a chance that the bot will pick poorly.  As you can see from the info, Rose has an ignition which may turn the tide of battle in her favor while the tree has 18 techniques that might help it win.
+
+So how do you bet?  Well, first off, make sure you have some double dollars.  You can do this with the command !doubledollars.  If you do you can use !bet monster # or !bet npc #  where # is the number of doubledollars you have that you'd like to bet.  If you don't have enough doubledollars you can exchange allied notes for some $$ in the shop at a ratio of 2 double dollars per 1 allied note.  The command to do so is: !exchange alliednotes #  (you can also exchange them back into notes using !exchange doubledollars # ).    Note that you can place your bet in private if you don't want to let the other players see who you're betting for.
+
+After the betting period has closed the battle will begin and it will look similar to this:
+
+<BattleArena> -=BATTLE INFORMATION=-
+<BattleArena> [Turn #: 1][Weather: rainy] [Moon Phase: Crescent Moon] [Time of Day: Night] [Battlefield: fairgrounds]
+<BattleArena> [Total Betting Amount: $$330] [Odds: 3:1]
+
+The first two lines are identical to normal player vs monster/boss batles.  The last line, however, tells you how many $$ has been bet overall between everyone and the odds.  The odds are important because it determines how much you're going to win if your combatant wins the battle.
+
+For the odds, it goes  NPC to MON chance and the number with the lower amount is the favorite of the bot to win the battle (and thus will pay out less).  So in this case, the bot thinks the monster will win the battle, thus if you bet on the NPC and the NPC wins you will win more.  To figure out how much $$ you will win, determine which side of the odds amount you're on then divide it by the opposite side.  In this case, the bot thinks the monster will win so it's 1/3 = $$0.33 per every $$1 bet.  However, if an NPC wins, it'll be $$3 per $$1.   This is on top of your original bet. 
+
+So let's pretend I bet $$10 on the NPC and the NPC won.  I'll get $$ 10 + (10 * 3) =  $$40 total.
+
+Conversely, let's say I bet $$10 on the monster and the monster won.  I'd get $$ 10 + (10 * 0.33) =  $$13 total.
+
+The people who win money will be shown after the battle like such:
+
+<BattleArena> The Battle is Over! Winner: [NPC] Rose
+<BattleArena> Gambling Winner: Iyouboushi($$40) 
+
+Sound complicated?  Don't worry too much about it.  This isn't meant to be too serious and is instead just a way to pass some time outside of doing battles all the time.  If you run out of $$ you can always get more by doing some portal battles and exchanging the notes.  Or, if you win big, you can exchange those $$ into allied notes and spend the notes in the shop.
+
+Happy gambling!

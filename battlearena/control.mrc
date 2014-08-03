@@ -12,14 +12,26 @@ on 1:QUIT: {
 on 1:EXIT: {  .auser 1 $nick | .flush 1 }
 on 1:PART:%battlechan:.auser 1 $nick | .flush 1
 on 1:KICK:%battlechan:.auser 1 $knick | .flush 1 
-on 1:JOIN:%battlechan:{  .auser 1 $nick | .flush 1 }
+on 1:JOIN:%battlechan:{ 
+  .auser 1 $nick | .flush 1 
+
+  if ($readini(system.dat, system, botType) = TWITCH) {
+    if ($isfile($char($nick)) = $true) { 
+      $set_chr_name($nick) | $display.system.message(10 $+ %real.name %custom.title  $+  $readini($char($nick), Descriptions, Char), global) 
+      var %bot.owners $readini(system.dat, botinfo, bot.owner)
+      if ($istok(%bot.owners,$nick,46) = $true) {  .auser 50 $nick }
+
+      mode %battlechan +v $nick
+    }
+  }
+
+}
 on 3:NICK: { .auser 1 $nick | mode %battlechan -v $newnick | .flush 1 }
 on *:CTCPREPLY:PING*:if ($nick == $me) haltdef
 on *:DNS: { 
   if ($isfile($char($nick)) = $true) { writeini $char($nick) info lastIP $iaddress  }
   set %ip.address. [ $+ [ $nick ] ] $iaddress
 }
-
 
 on 2:TEXT:!bot admin*:*: {  $bot.admin(list) }
 
@@ -50,10 +62,7 @@ alias bot.admin {
     %bot.admins = $remtok(%bot.admins,$2,46) | $display.system.message(3 $+ $2 has been removed as a bot admin., private) 
     writeini system.dat botinfo bot.owner %bot.admins | halt 
   }
-
 }
-
-
 
 on 1:START: {
   echo 12*** Welcome to Battle Arena Bot version $battle.version written by James "Iyouboushi" *** 
@@ -88,7 +97,7 @@ on 1:START: {
     var %botpass $readini(system.dat, botinfo, botpass)
     if (%botpass = $null) { 
       echo 12*** Now please set the password you plan to register the bot with
-      var %botpass $?="Enter a password"
+      var %botpass $?="Enter a password that you will use for the bot on Nickserv"
       writeini system.dat botinfo botpass %botpass
       echo 12*** OK.  Your password has been set to4 %botpass  -- Don't forget to register the bot with nickserv.
     }
@@ -124,6 +133,13 @@ on 1:START: {
     $system_defaults_check
 
   }
+
+  echo 12*** This bot is best used with mIRC version4 6.3 12 *** 
+  echo 12*** You are currently using mIRC version4 $version 12 ***
+
+  if ($version < 6.3) {   echo 4*** Your version is older than the recommended version for this bot. Some things may not work right.  It is recommended you update. 12 *** }
+  if ($version > 6.3) {   echo 4*** Your version is newer than the recommended version for this bot. While it should work, it is currently untested and may have quirks or bugs.  It is recommended you downgrade if you run into any problems. 12 *** }
+
 }
 
 on 1:CONNECT: {
@@ -141,6 +157,9 @@ on 1:CONNECT: {
   ; Recalculate how many battles have happened.
   $recalc_totalbattles
 
+  ; Unset the key in use check.
+  unset %keyinuse
+
   ; If a battle was on when the bot turned off, let's check it and do something with it.
   if (%battleis = on) { 
     if ($readini($txtfile(battle2.txt), BattleInfo, Monsters) = $null) { $clear_battle }
@@ -154,13 +173,11 @@ alias identifytonickserv {
   if (%bot.pass != $null) { /.msg nickserv identify %bot.pass }
 }
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Bot Admin Commands
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Bot Admins have  the ability to zap/erase characters.
-on 50:TEXT:!zap *:*: {  $set_chr_name($2) | $checkchar($2) | $zap_char($2) | query %battlechan $readini(translation.dat, system, zappedcomplete) | halt }
+on 50:TEXT:!zap *:*: {  $set_chr_name($2) | $checkchar($2) | $zap_char($2) | $display.system.message($readini(translation.dat, system, zappedcomplete),global) | halt }
 
 ; Force the bot to quit
 on 50:TEXT:!quit*:*:{ /quit $battle.version }
@@ -212,6 +229,31 @@ alias clean_mainfolder {
   }
 }
 
+; Bot admins can toggle Players Must Die Mode
+on 50:TEXT:!toggle mode playersmustdie*:*:{   
+  if ($readini(system.dat, system,PlayersMustDieMode) = false) { 
+    writeini system.dat system PlayersMustDieMode true
+    $display.system.message($readini(translation.dat, system, PlayersMustDieModeOn), global)
+  }
+  else {
+    writeini system.dat system PlayersMustDieMode false
+    $display.system.message($readini(translation.dat, system, PlayersMustDieModeOff), global)
+  }
+}
+
+; Bot admins can toggle if the bot uses colors
+on 50:TEXT:!toggle bot colors*:*:{   
+  if ($readini(system.dat, system,AllowColors) = false) { 
+    writeini system.dat system AllowColors true
+    $display.system.message($readini(translation.dat, system, AllowColorsOn), global)
+    halt
+  }
+  else {
+    writeini system.dat system AllowColors false
+    $display.system.message($readini(translation.dat, system, AllowColorsOff), global)
+    halt
+  }
+}
 
 ; Bot admins can toggle if the discount card message is shown or not.
 on 50:TEXT:!toggle discountcard message*:*:{   
@@ -319,9 +361,9 @@ ON 50:TEXT:!clear portal usage *:*: {
 
 ; Bot admins can manually set the winning streak.
 on 50:TEXT:!set streak*:*:{   
-  if ($3 = $null) { .msg $nick 4!set streak number | halt }
-  if ($3 < 0) { .msg $nick the streak cannot be negative. | halt }
-  if (. isin $3) { .msg $nick the streak must be a whole number. | halt }
+  if ($3 = $null) { $display.private.message(4!set streak number) | halt }
+  if ($3 < 0) {  $display.private.message(4The streak cannot be negative.) | halt }
+  if (. isin $3) { $display.private.message(4The streak must be a whole number.) | halt }
   writeini battlestats.dat battle LosingStreak 0
   writeini battlestats.dat battle winningstreak $3
   $display.system.message(3The winning streak has been set to: $3, global)

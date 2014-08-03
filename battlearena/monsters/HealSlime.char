@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=appears to be a cross between a blue slime and a jelly fish. It has large eyes and a large grin along with four tentacles. It floats around in the air and knows healing magic.
+Char=appears to be a cross between a blue slime and a jellyfish. It has large eyes and a large grin along with four tentacles. It floats around in the air and knows healing magic.
 Rage=screams in rage 
 
 [Stuff]
@@ -37,7 +37,7 @@ ShopLevel=1.0
 [Info]
 Flag=monster
 Gender=its
-Gender2=its
+Gender2=it
 password=battlearena
 passhurt=0
 LastSeen=N/a
@@ -88,22 +88,20 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=SlimePower
-SlimePower=6
+SlimePower=$current.battlestreak
 
 [Skills]
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
 Zen=5
-ClearMind=1
-MartialArts=12
-Wizardy=10
-
 
 
 [Techniques]
-CureV=10
-Curaga=20
+Cure=$iif($current.battlestreak <= 30, 500, 0)
+CureII=$iif($current.battlestreak >= 30 && $current.battlestreak <= 50, 500, 0)
+CureIII=$iif($current.battlestreak >= 50 && $current.battlestreak <= 65, 500, 0)
+Curaga=$iif($current.battlestreak >= 50, 500, 0)
 
 
 [Item_Amount]

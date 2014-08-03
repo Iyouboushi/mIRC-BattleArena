@@ -1,5 +1,4 @@
 generate.scoreboard {
-
   set %totalplayers 0
   .echo -q $findfile( $char_path , *.char, 0 , 0, get.score $1-)
 
@@ -189,6 +188,7 @@ get.score {
     inc %score $readini($char(%name), stuff, TimesDodged)
     inc %score $readini($char(%name), stuff, TimesCountered)
     inc %score $readini($char(%name), stuff, TimesParried)
+    inc %score $readini($char(%name), stuff, TimesBlocked)
     inc %score $readini($char(%name), stuff, ItemsSold)
     inc %score $readini($char(%name), stuff, LostSoulsKilled)
     inc %score $readini($char(%name), stuff, totalbets) 
@@ -205,6 +205,8 @@ get.score {
     if ($readini($char(%name), styles, CounterStance) != $null) { inc %score $readini($char(%name), Styles, CounterStance) }
     if ($readini($char(%name), styles, Doppelganger) != $null) { inc %score $readini($char(%name), Styles, Doppelganger) }
     if ($readini($char(%name), styles, HitenMitsurugi-ryu) != $null) { inc %score $readini($char(%name), Styles, HitenMitsurugi-ryu) }
+    if ($readini($char(%name), styles, Beastmaster) != $null) { inc %score $readini($char(%name), Styles, Beastmaster) }
+
 
     dec %score $readini($char(%name), stuff, TotalDeaths)
     dec %score $readini($char(%name), stuff, TimesFled)

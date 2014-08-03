@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=2500
 Tp=270
-Str=2500
-Def=2800
-Int=3500
-Spd=7000
+Str=$calc(70 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(70 + $current.battlestreak)
 IgnitionGauge=100
 Name=Yoruichi Shihouin
 
@@ -12,10 +12,10 @@ Name=Yoruichi Shihouin
 [Battle]
 Hp=2500
 Tp=270
-Str=2500
-Def=2800
-Int=3500
-Spd=7000
+Str=$calc(70 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(70 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -106,7 +106,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=ShihouinFists
-ShihouinFists=$calc(100 + $current.battlestreak)
+ShihouinFists=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 mightystrike=1
@@ -117,9 +117,9 @@ soulvoice.on=off
 manawall.on=off
 mightystrike.on=off
 royalguard.on=on
-MartialArts=100
-Wizardry=100
-SwordMaster=100
+MartialArts=1000
+Wizardry=1000
+SwordMaster=1000
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
@@ -135,12 +135,12 @@ Impetus=20
 
 
 [Techniques]
-DoublePunch=$calc(100 + $current.battlestreak)
-ShoulderTackle=$calc(100 + $current.battlestreak)
-AsuranFists=$calc(100 + $current.battlestreak)
-TornadoKick=$calc(100 + $current.battlestreak)
-ShinjinSpiral=$calc(100 + $current.battlestreak)
-ShitotsuSansen=$calc(100 + $current.battlestreak)
+DoublePunch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShoulderTackle=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+AsuranFists=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+TornadoKick=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShinjinSpiral=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShitotsuSansen=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

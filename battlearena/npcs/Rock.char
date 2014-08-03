@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=100
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=The Rock
 
 
 [Battle]
 Hp=2500
 Tp=100
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -32,7 +32,7 @@ Percent=0
 Hused=1
 Dused=1
 Char=is a tall man with a dark tan and a tattoo of a bull on his right arm along with a large Aztec tattoo that covers his left shoulder, arm and part of his chest. The Rock enters the battlefield and shouts, "Finally, The Rock, has come back to the Battle Arena!"
-Rage=yells out "It doesn't matter what you think, jabroni!" to his opponent!
+Rage=yells out "It doesn't matter what you think, jabroni!"
 
 [Stuff]
 RedOrbs=3608
@@ -97,14 +97,14 @@ conservetp.on=off
 
 [Weapons]
 Equipped=PeoplesFist
-PeoplesFist=$calc(100 + $current.battlestreak)
+PeoplesFist=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 mightystrike=1
 royalguard=1
 mightystrike.on=off
 royalguard.on=on
-MartialArts=50
+MartialArts=1000
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
@@ -112,11 +112,11 @@ Zen=5
 
 
 [Techniques]
-RockBottom=$calc(500 + $current.battlestreak)
-PeoplesElbow=$calc(300 + $current.battlestreak)
-SamoanDrop=$calc(100 + $current.battlestreak)
-FlyingClothesline=$calc(100 + $current.battlestreak)
-Spinebuster=$calc(100 + $current.battlestreak)
+RockBottom=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PeoplesElbow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SamoanDrop=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FlyingClothesline=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Spinebuster=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=300
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Terry Bogard
 
 
 [Battle]
 Hp=2500
 Tp=300
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,7 +95,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BogardGloves
-BogardGloves=$calc(100 + $current.battlestreak)
+BogardGloves=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Resist-Charm=100
@@ -103,14 +103,14 @@ Resist-Zombie=100
 Resist-Intimidate=100
 Zen=5
 MightyStrike=1
-MartialArts=300
+MartialArts=1000
 
 [Techniques]
-PowerWave=$calc(100 + $current.battlestreak)
-BurnKnuckle=$calc(100 + $current.battlestreak)
-RisingTackle=$calc(100 + $current.battlestreak)
-PowerGeyser=$calc(500 + $current.battlestreak)
-BusterWolf=$calc(500 + $current.battlestreak)
+PowerWave=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BurnKnuckle=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+RisingTackle=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PowerGeyser=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BusterWolf=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

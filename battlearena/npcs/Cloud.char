@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2500
 Tp=500
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Cloud Strife
 
 
 [Battle]
 Hp=2500
 Tp=500
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,10 +95,10 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BusterSword
-BusterSword=$calc(100 + $current.battlestreak)
+BusterSword=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Swordmaster=100
+Swordmaster=1000
 Zen=5
 MightyStrike=1
 Resist-Charm=100
@@ -108,13 +108,13 @@ Resist-Intimidate=100
 
 
 [Techniques]
-Braver=$calc(100 + $current.battlestreak)
-CrossSlash=$calc(100 + $current.battlestreak)
-Blade_Beam=$calc(100 + $current.battlestreak)
-Climhazzard=$calc(100 + $current.battlestreak)
-Meteorain=$calc(100 + $current.battlestreak)
-FinishingTouch=$calc(100 + $current.battlestreak)
-Omnislash=$calc(500 + $current.battlestreak)
+Braver=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+CrossSlash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Blade_Beam=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Climhazzard=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Meteorain=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FinishingTouch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Omnislash=$round($calc(300 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

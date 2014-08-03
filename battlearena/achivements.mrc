@@ -7,7 +7,7 @@ on 50:TEXT:!clear achievement*:*:{
   if ($4 = $null) { $display.system.message(4!clear achievement <person> <achievement name>, private) | halt }
 
   .remini $char($3) achievements $4 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan 4Achievement ( $+ $4  $+ ) has been cleared for $3 $+ . }
+  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {   $display.system.message(4Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .,global) }
   if ($readini(system.dat, system, botType) = DCCchat) { $dcc.global.message(4Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .) }
 }
 
@@ -452,6 +452,13 @@ alias achievement_check {
     var %current.redorbs $readini($char($1), stuff, redorbs) | inc %current.redorbs 10000 | writeini $char($1) stuff redorbs %current.redorbs
   }
 
+  if ($2 = SSStylish) { 
+    if ($readini($char($1), info, flag) != $null) { return }
+    writeini $char($1) achievements $2 true 
+    $announce_achievement($1, $2, 10000)
+    var %current.redorbs $readini($char($1), stuff, redorbs) | inc %current.redorbs 10000 | writeini $char($1) stuff redorbs %current.redorbs
+  }
+
 }
 
 alias achievement_already_unlocked {
@@ -459,6 +466,5 @@ alias achievement_already_unlocked {
 }
 
 alias announce_achievement { $set_chr_name($1) 
-  if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, achievements, $2) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.global.message($readini(translation.dat, achievements, $2)) }
+  $display.system.message($readini(translation.dat, achievements, $2),global) 
 }

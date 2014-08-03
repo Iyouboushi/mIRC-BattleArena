@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=1000
 Tp=100
-Str=5
-Def=5
-Int=5
-Spd=10
+Str=$calc(3 + $current.battlestreak)
+Def=$calc(3 + $current.battlestreak)
+Int=$calc(3 + $current.battlestreak)
+Spd=$calc(5 + $current.battlestreak)
 Name=Mr. Satan
 
 
 [Battle]
 Hp=1000
 Tp=100
-Str=5
-Def=5
-Int=5
-Spd=10
+Str=$calc(3 + $current.battlestreak)
+Def=$calc(3 + $current.battlestreak)
+Int=$calc(3 + $current.battlestreak)
+Spd=$calc(5 + $current.battlestreak)
 Status=alive
 
 

@@ -52,6 +52,7 @@ LastIP=N/a
 Created=N/a
 Streak=150
 CanTaunt=true
+TauntFile=taunts_knightsni.txt
 
 [Status]
 Poison=no

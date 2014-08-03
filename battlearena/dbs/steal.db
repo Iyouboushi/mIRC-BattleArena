@@ -6,10 +6,10 @@ orb_fountain=orbs
 
 ; Add monsters/bosses and their steal pools below this line.
 brauner=x-potion.orbs.SoulPainting
-Highland_Treant=orbs.AshLog
-Treant=orbs.AshLog
-Guardian_Treant=orbs.AshLog
-Elder_Treant=orbs.AshLog
+Highland_Treant=orbs.AshLog.seed
+Treant=orbs.AshLog.seed
+Guardian_Treant=orbs.AshLog.seed
+Elder_Treant=orbs.AshLog.seed
 Sierra_Tiger=orbs.TigerFang
 Sabertooth_Tiger=orbs.TigerFang
 Icefang_Tiger=orbs.TigerFang
@@ -19,3 +19,4 @@ Ore_Eater=IronOre.Sapphire.Topaz.Emerald.Ruby
 Mineral_Eater=IronOre.Sapphire.Topaz.Emerald.Ruby
 Mountain_Worm=IronOre.Sapphire.Topaz.Emerald.Ruby
 Sand_Digger=sand.IronOre.Sapphire.Topaz.Emerald.Ruby
+DekuScrub=DekuSeed

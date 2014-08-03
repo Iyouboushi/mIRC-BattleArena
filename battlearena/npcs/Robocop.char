@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=3000
 Tp=70
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(35 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Robocop
 
 
 [Battle]
 Hp=3000
 Tp=70
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(35 + $current.battlestreak)
+Def=$calc(35 + $current.battlestreak)
+Int=$calc(35 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,7 +95,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Auto9
-Auto9=$calc(100 + $current.battlestreak)
+Auto9=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Resist-Charm=100
@@ -103,16 +103,16 @@ Resist-Zombie=100
 Resist-Poison=100
 Resist-Stun=100
 Resist-Intimidate=100
-Gunslinger=40
-MartialArts=30
+Gunslinger=1000
+MartialArts=1000
 Zen=5
 RoyalGuard=1
 
 [Techniques]
-RapidShot=$calc(100 + $current.battlestreak)
-LastStand=$calc(100 + $current.battlestreak)
-Detonator=$calc(100 + $current.battlestreak)
-ChargedShot=$calc(100 + $current.battlestreak)
+RapidShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+LastStand=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Detonator=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChargedShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

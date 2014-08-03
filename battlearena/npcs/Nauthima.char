@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=5000
 Tp=2000
-Str=5000
-Def=5000
-Int=7000
-Spd=5000
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(70 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=100
 Name=Nauthima Tiranadel
 
@@ -12,10 +12,10 @@ Name=Nauthima Tiranadel
 [Battle]
 Hp=5000
 Tp=1000
-Str=5000
-Def=5000
-Int=7000
-Spd=5000
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(70 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -34,7 +34,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is an Elven goddess, who has powerful magic. She wears the Red Mage AF armor and wields a large staff along with a sword on the left side of her waist.
+Char=is an Elven goddess, who controls powerful magic. She wears the Red Mage AF armor and wields a large staff along with a sword on the left and right of her waist.
 Rage=narrows her eyes as her blue and red aura flares wildly around herself as she starts to get angry. "I'm done playing with you now."
 RoyalGuard=chants in Elvish and a moment later, Nauthima is covered with a blue barrier that blocks all melee attacks.
 ManaWall=chants in Elvish and a moment later, Nauthima is covered with a green barrier that blocks all magic attacks.
@@ -108,11 +108,11 @@ zombie.timer=1
 conservetp.on=off
 auto-regen=on
 
+
 [Weapons]
 Equipped=Black_Goddess_Staff
-Black_Goddess_Staff=$calc(500 + $current.battlestreak)
-Murgleis=$calc(500 + $current.battlestreak)
-Mandau=$calc(500 + $current.battlestreak)
+Black_Goddess_Staff=$round($calc(600 + (($current.battlestreak / 2) / 4.5)),0)
+SilverSwords=$round($calc(600 + (($current.battlestreak / 2) / 4.5)),0)
 
 
 [Skills]
@@ -124,8 +124,8 @@ manawall.on=on
 Elementalseal.on=off
 ElementalSeal=1
 Wizardy=100
-Swordmaster=100
-MartialArts=100
+Swordmaster=1000
+MartialArts=1000
 Resist-Paralysis=10
 Resist-Amnesia=100
 Resist-Charm=100
@@ -141,26 +141,22 @@ MagicMirror=10
 MagicMirror.on=on
 BloodSpirit=100
 RepairNaturalArmor=1
-Regen=5
+Regen=20
+
 
 [Techniques]
-AeroV=$calc(500 + $current.battlestreak)
-BlizzardV=$calc(100 + $current.battlestreak)
-FireV=$calc(100 + $current.battlestreak)
-Poison=$calc(100 + $current.battlestreak)
-Blind=$calc(100 + $current.battlestreak)
-Paralyze=$calc(100 + $current.battlestreak)
-Darkra=$calc(100 + $current.battlestreak)
-DarkV=$calc(100 + $current.battlestreak)
-BanishV=$calc(100 + $current.battlestreak)
-DeathBlossom=$calc(300 + $current.battlestreak)
-SwiftBlade=$calc(100 + $current.battlestreak)
-SavageBlade=$calc(100 + $current.battlestreak)
-Requiescat=$calc(100 + $current.battlestreak)
-SanguineBlade=$calc(100 + $current.battlestreak)
-MercyStroke=$calc(100 + $current.battlestreak)
-AeolianEdge=$calc(100 + $current.battlestreak)
-Evisceration=$calc(100 + $current.battlestreak)
+AeroV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+BlizzardV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+FireV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+Poison=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+Blind=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+Paralyze=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+Darkra=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+DarkV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+BanishV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+Twin_Slice=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+LightningStrike=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+BladeBeamII=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
 
 
 [Item_Amount]
@@ -187,9 +183,8 @@ Composure=1
 
 
 [Augments]
-Black_Goddess_Staff=MagicBonus
-Murgleis=TechBonus
-Mandau=UtsusemiBonus
+Black_Goddess_Staff=IgnoreGuardian.MagicBonus.IgnoreMetalDefense
+SilverSwords=IgnoreGuardian.RenkeiBonus.IgnoreMetalDefense
 
 
 [NaturalArmor]

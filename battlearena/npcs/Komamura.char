@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=4000
 Tp=500
-Str=5000
-Def=5000
-Int=1500
-Spd=1500
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(10 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 IgnitionGauge=100
 Name=Sajin Komamura
 
@@ -12,10 +12,10 @@ Name=Sajin Komamura
 [Battle]
 Hp=4000
 Tp=500
-Str=5000
-Def=5000
-Int=1500
-Spd=1500
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(10 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -96,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Tenken
-Tenken=$calc(100 + $current.battlestreak)
+Tenken=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Resist-Charm=100
@@ -105,15 +105,15 @@ Resist-Confuse=100
 Resist-Amnesia=100
 Zen=5
 ClearMind=3
-SwordMaster=100
-MartialArts=100
+SwordMaster=1000
+MartialArts=1000
 RoyalGuard=1
 RoyalGuard.on=on
 
 [Techniques]
-Shakkahou=$calc(100 + $current.battlestreak)
-VorpalBlade=$calc(100 + $current.battlestreak)
-SwiftBlade=$calc(100 + $current.battlestreak)
+Shakkahou=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+VorpalBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

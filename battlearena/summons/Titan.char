@@ -95,16 +95,15 @@ zombie.timer=1
 
 [Weapons]
 Equipped=TitanPower
-TitanPower=100
+TitanPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
-Wizardry=100
-MartialArts=100
+Wizardry=500
+MartialArts=500
 MightyStrike=1
-BloodBoost=1
+BloodBoost=5
 RoyalGuard=1
-royalguard.on=on
 Resist-Intimidate=100
 Resist-Stun=100
 Resist-Weaponlock=100
@@ -121,10 +120,10 @@ Resist-Confuse=100
 
 
 [Techniques]
-AngerOfTheLand=100
-MountainBuster=100
-Geocrush=100
-Quake=100
+AngerOfTheLand=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+MountainBuster=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Geocrush=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Quake=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

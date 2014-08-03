@@ -53,6 +53,7 @@ LastIP=N/a
 Created=N/a
 Streak=30
 CanTaunt=true
+ImmuneToMagic=true
 
 [monster]
 type=human

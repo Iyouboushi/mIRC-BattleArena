@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=3500
 Tp=250
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Name=Soma Cruz
 
 
 [Battle]
 Hp=3500
 Tp=250
-Str=3000
-Def=3000
-Int=3000
-Spd=3000
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(30 + $current.battlestreak)
+Int=$calc(30 + $current.battlestreak)
+Spd=$calc(30 + $current.battlestreak)
 Status=alive
 
 
@@ -96,15 +96,15 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Valmanway
-Valmanway=$calc(100 + $current.battlestreak)
-Balmung=$calc(100 + $current.battlestreak)
-Yoichinoyumi=$calc(100 + $current.battlestreak)
+Valmanway=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+Balmung=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+Yoichinoyumi=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
-MartialArts=100
-Swordmaster=100
-Archery=100
+MartialArts=1000
+Swordmaster=1000
+Archery=1000
 Zen=5
 ClearMind=3
 Impetus=20
@@ -119,13 +119,13 @@ ManaWall=1
 
 
 [Techniques]
-Tachi:Shoha=$calc(100 + $current.battlestreak)
-Tachi:Rana=$calc(100 + $current.battlestreak)
-Shockwave=$calc(100 + $current.battlestreak)
-SickleMoon=$calc(100 + $current.battlestreak)
-EagleEyeShot=$calc(100 + $current.battlestreak)
-JishnusRadiance=$calc(100 + $current.battlestreak)
-ApexArrow=$calc(100 + $current.battlestreak)
+Tachi:Shoha=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Tachi:Rana=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Shockwave=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SickleMoon=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+EagleEyeShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+JishnusRadiance=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ApexArrow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

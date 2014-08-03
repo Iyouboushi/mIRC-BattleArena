@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=110
-Tp=70
-Str=15
-Def=13
-Int=12
-Spd=12
+Hp=250
+Tp=100
+Str=$calc(5 + $current.battlestreak)
+Def=$calc(5 + $current.battlestreak)
+Int=$calc(5 + $current.battlestreak)
+Spd=$calc(10 + $current.battlestreak)
 IgnitionGauge=2
 Name=Succubus
 
 
 [Battle]
-Hp=110
-Tp=70
-Str=15
-Def=13
-Int=12
-Spd=12
+Hp=250
+Tp=100
+Str=$calc(5 + $current.battlestreak)
+Def=$calc(5 + $current.battlestreak)
+Int=$calc(5 + $current.battlestreak)
+Spd=$calc(10 + $current.battlestreak)
 IgnitionGauge=2
 Status=alive
 
@@ -50,7 +50,6 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=50
-streakmax=150
 CanTaunt=true
 
 [Monster]
@@ -92,7 +91,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=SuccubusPower
-SuccubusPower=50
+SuccubusPower=$current.battlestreak
 
 [Skills]
 Resist-charm=100
@@ -101,9 +100,9 @@ Resist-zombie=100
 
 
 [Techniques]
-VampireBite=35
-Temptation=10
-FireII=30
+Temptation=1
+VampireBite=$current.battlestreak
+FireII=$current.battlestreak
 
 
 [Item_Amount]

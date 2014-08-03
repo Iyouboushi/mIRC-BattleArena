@@ -76,6 +76,10 @@ Created=N/a
 ; Valid list is: Full Moon or Crescent Moon or Gibbous Moon or New Moon or Quarter Moon or Blood Moon  (with the spaces)
 ; Moonphase=
 ;
+; TIMEOFDAY is for if you want the monster to only appear during certain times of days (game time, not real life)
+; Valid list is: Morning, Noon, Evening and Night.
+; TimeOfDay=
+;
 ; Can the monster taunt?   Assumed to be true if blank.
 ; CANTAUNT=true/false
 ;
@@ -96,7 +100,12 @@ Created=N/a
 ;
 ; Does the monster appear in President battles? True=yes/False=no
 ; IgnorePresident=
-
+;
+; DEATHCONDITIONS= if you want the monster to only only if a certain action is performed, you can set it here. Not set by default.
+; Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect
+; You can list multiple by putting a period inbetween such as: melee.magic.status 
+; If the monster is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+; DeathConditions=
 
 
 [monster]

@@ -10,6 +10,7 @@ ON 50:TEXT:*deactivates * mech:*:{ $mech.deactivate($1) }
 ON 3:TEXT:* activates * mech:*:{ 
   if (($2 != activates) && ($4 != mech)) { halt }
   if ($readini($char($1), info, flag) = monster) { halt }
+  $no.turn.check($1)
   $controlcommand.check($nick, $1)
   $mech.activate($1) 
 } 
@@ -47,7 +48,6 @@ on 3:TEXT:!mech name *:*:{ $checkscript($3-)  | $set_chr_name($nick)
 }
 
 alias mech.upgrade {
-
   var %valid.categories hp.health.energy.engine.cost.list
 
   if ($istok(%valid.categories, $3, 46) = $false) { $display.private.message(4Error: !mech upgrade <hp/health/engine/energy/cost> <amount>)  | halt }
@@ -139,20 +139,20 @@ alias mech.items { $set_chr_name($1)
   $weapons.mech($1)
 
   if (%mech.weapon.list != $null) { 
-    if ($2 = channel) { query %battlechan $readini(translation.dat, system, ViewMechWeapons) | if (%mech.weapon.list2 != $null) { query %battlechan  $+ %mech.weapon.list2 } } 
-    if ($2 = private) { .msg $nick $readini(translation.dat, system, ViewMechWeapons) | if (%mech.weapon.list2 != $null) { .msg $nick  $+ %mech.weapon.list2 } } 
+    if ($2 = channel) { $display.system.message($readini(translation.dat, system, ViewMechWeapons),private) | if (%mech.weapon.list2 != $null) { $display.system.message( $+ %mech.weapon.list2,battle)  } } 
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMechWeapons)) | if (%mech.weapon.list2 != $null) {  $display.private.message( $+ %mech.weapon.list2) } } 
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMechWeapons)) | if (%mech.weapon.list2 != $null) {  $dcc.private.message($nick,  $+ %mech.weapon.list2) } }
   }
 
   if (%mech.items.list != $null) { 
-    if ($2 = channel) { query %battlechan $readini(translation.dat, system, ViewMechCoreItems) | if (%mech.items.list2 != $null) { query %battlechan  $+ %mech.items.list2 } } 
-    if ($2 = private) { .msg $nick $readini(translation.dat, system, ViewMechCoreItems) | if (%mech.items.list2 != $null) { .msg $nick  $+ %mech.items.list2 } } 
+    if ($2 = channel) { $display.system.message($readini(translation.dat, system, ViewMechCoreItems),battle) | if (%mech.items.list2 != $null) { $display.system.message( $+ %mech.items.list2,battle)  } } 
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMechCoreItems)) | if (%mech.items.list2 != $null) {  $display.private.message( $+ %mech.items.list2)  } } 
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMechCoreItems)) | if (%mech.items.list2 != $null) {  $dcc.private.message($nick,  $+ %mech.items.list2) } }
   }
 
   if ((%mech.items.list = $null) && (%mech.weapon.list = $null)) { 
-    if ($2 = channel) { query %battlechan $readini(translation.dat, system, HasNoMechItems) }
-    if ($2 = private) { .msg $nick $readini(translation.dat, system, HasNoMechItems) }
+    if ($2 = channel) { $display.system.message($readini(translation.dat, system, HasNoMechItems),private) }
+    if ($2 = private) {  $display.private.message($readini(translation.dat, system, HasNoMechItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, HasNoMechItems)) }
   }
 
@@ -163,14 +163,14 @@ alias mech.weapons { $set_chr_name($1)
   $weapons.mech($1)
 
   if (%mech.weapon.list != $null) { 
-    if ($2 = channel) { query %battlechan $readini(translation.dat, system, ViewMechWeapons) | if (%mech.weapon.list2 != $null) { query %battlechan  $+ %mech.weapon.list2 } } 
-    if ($2 = private) { .msg $nick $readini(translation.dat, system, ViewMechWeapons) | if (%mech.weapon.list2 != $null) { .msg $nick  $+ %mech.weapon.list2 } } 
+    if ($2 = channel) { $display.system.message($readini(translation.dat, system, ViewMechWeapons),battle) | if (%mech.weapon.list2 != $null) { $display.system.message( $+ %mech.weapon.list2,battle) } } 
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMechWeapons)) | if (%mech.weapon.list2 != $null) {  $display.private.message( $+ %mech.weapon.list2) } } 
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMechWeapons)) | if (%mech.weapon.list2 != $null) {  $dcc.private.message($nick,  $+ %mech.weapon.list2) } }
   }
 
   else {
-    if ($2 = channel) { query %battlechan $readini(translation.dat, system, HasNoMechWeapons) }
-    if ($2 = private) { .msg $nick $readini(translation.dat, system, HasNoMechWeapons) }
+    if ($2 = channel) { $display.system.message($readini(translation.dat, system, HasNoMechWeapons),private) }
+    if ($2 = private) {  $display.private.message($readini(translation.dat, system, HasNoMechWeapons)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, HasNoMechWeapons)) }
   }
 

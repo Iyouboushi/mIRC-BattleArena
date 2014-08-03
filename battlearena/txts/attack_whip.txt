@@ -1,2 +1,3 @@
 cracks the whip at %enemy before stepping backwards in a defensive stance
 pulls on %enemy $+ 's feet with the whip in an attempt to trip and do damage
+snaps the whip loudly at %enemy

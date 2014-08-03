@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BahamutPower
-BahamutPower=100
+BahamutPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Wizardry=100
+MartialArts=500
+Wizardry=500
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -116,8 +116,8 @@ Resist-Petrify=100
 Resist-Confuse=100
 
 [Techniques]
-MegaFlare=100
-Impulse=100
+MegaFlare=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
+Impulse=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

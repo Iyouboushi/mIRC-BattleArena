@@ -35,7 +35,7 @@ BossQuote=I won't break you. Yet. I haven't told you how unfortunate it is that 
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=FireDragonWine.DiscountCard.UltraDiscountCard.Herring.Paper.SuperPotion.MegaPotion.BurntScroll.Ribbon.MiserRing
+Drops=
 
 [Info]
 Flag=monster

@@ -1,20 +1,22 @@
 [BaseStats]
 Hp=1500
 Tp=100
-Str=500
-Def=500
-Int=500
-Spd=500
+Str=$calc(5 + $current.battlestreak)
+Def=$calc(5 + $current.battlestreak)
+Int=$calc(5 + $current.battlestreak)
+Spd=$calc(5 + $current.battlestreak)
+IgnitionGauge=40
 Name=Jimmy
 
 
 [Battle]
 Hp=1500
 Tp=100
-Str=500
-Def=500
-Int=500
-Spd=500
+Str=$calc(5 + $current.battlestreak)
+Def=$calc(5 + $current.battlestreak)
+Int=$calc(5 + $current.battlestreak)
+Spd=$calc(5 + $current.battlestreak)
+IgnitionGauge=40
 Status=alive
 
 
@@ -95,22 +97,22 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DwarvenRuneBlade
-DwarvenRuneBlade=$calc(10 + $current.battlestreak)
-DwarvenShortBow=$calc(10 + $current.battlestreak)
+DwarvenRuneBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DwarvenShortBow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Swordmaster=100
-Archery=100
+Swordmaster=1000
+Archery=1000
 Resist-Charm=100
 Zen=5
 
 
 [Techniques]
-HealingAle=$calc(10 + $current.battlestreak)
-FastBlade=$calc(10 + $current.battlestreak)
-CircleBlade=$calc(10 + $current.battlestreak)
-FlamingArrow=$calc(10 + $current.battlestreak)
-PiercingArrow=$calc(10 + $current.battlestreak)
+HealingAle=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FastBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+CircleBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FlamingArrow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PiercingArrow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=300
 Tp=50
-Str=10
-Def=10
-Int=10
-Spd=10
+Str=2
+Def=2
+Int=2
+Spd=2
 Name=Don Kanonji
 
 
 [Battle]
 Hp=300
 Tp=50
-Str=10
-Def=10
-Int=10
-Spd=10
+Str=2
+Def=2
+Int=2
+Spd=2
 Status=alive
 
 

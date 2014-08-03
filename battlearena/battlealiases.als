@@ -16,8 +16,7 @@ check_for_battle {
 person_in_battle {
   set %temp.battle.list $readini($txtfile(battle2.txt), Battle, List)
   if ($istok(%temp.battle.list,$1,46) = $false) {  unset %temp.battle.list | $set_chr_name($1) 
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, errors, NotInbattle) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($nick, $readini(translation.dat, errors, NotInbattle)) }
+    $display.system.message($readini(translation.dat, errors, NotInbattle),private) 
     unset %real.name | halt 
   }
   else { return }
@@ -33,14 +32,44 @@ person_in_mech {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks for things that would
+; stop a person from having
+; a turn.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+no.turn.check {
+  $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.system.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  if ($is_charmed($1) = true) { $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
+  if ($is_confused($1) = true) { $display.system.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
+  if ($readini($char($1), status, blind) != no) { $display.system.message($readini(translation.dat, status, TooBlindToFight),private) | halt }
+  if ($readini($char($1), status, intimidated) != no) { $display.system.message($readini(translation.dat, status, TooIntimidatedToFight),private) | halt }
+  if ($readini($char($1), status, paralysis) != no) { $display.system.message($readini(translation.dat, status, CurrentlyParalyzed),private) | halt }
+  if ($readini($char($1), status, drunk) != no) { $display.system.message($readini(translation.dat, status, TooDrunkToFight2),private) | halt }
+  if ($readini($char($1), status, petrified) != no) { $display.system.message($readini(translation.dat, status, TooPetrifiedToFight),private) | halt }
+  if ($readini($char($1), status, stun) != no) { $display.system.message($readini(translation.dat, status, TooStunnedToFight),private) | halt }
+  if ($readini($char($1), status, stop) != no) { $display.system.message($readini(translation.dat, status, CurrentlyStopped),private) | halt }
+  if ($readini($char($1), status, sleep) != no) { $display.system.message($readini(translation.dat, status, CurrentlyAsleep),private) | halt }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns the current streak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 current.battlestreak {
-  var %temp.current.battlestreak $readini(battlestats.dat, battle, WinningStreak)
-  if (%temp.current.battlestreak <= 0) { return $readini(battlestats.dat, battle, LosingStreak) }
-  else { return %temp.current.battlestreak }
-}
 
+  if (%battle.type = ai) { return  %ai.battle.level  }
+
+  if (%portal.bonus != true) {
+    var %temp.current.battlestreak $readini(battlestats.dat, battle, WinningStreak)
+    if (%temp.current.battlestreak <= 0) { return $readini(battlestats.dat, battle, LosingStreak) }
+    else { return %temp.current.battlestreak }
+  }
+
+  if (%portal.bonus = true) {
+    var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
+    if (%current.portal.level = $null) { return 500 } 
+    else { return %current.portal.level }
+  }
+}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; These two functions are for
 ; Checking for Double Turns
@@ -68,8 +97,7 @@ check_for_double_turn {  $set_chr_name($1)
 
     if ($person_in_mech($1) = true) { %real.name = %real.name $+ 's $readini($char($1), mech, name) }
 
-    if ($readini(system.dat, system, botType) = IRC) {  /.timerDoubleTurn $+ $rand(1,1000) 1 1 /query %battlechan 12 $+ %real.name gets another turn. }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(12 $+ %real.name gets another turn.) }
+    $display.system.message(12 $+ %real.name gets another turn.,battle) 
 
     set %user.gets.second.turn true
 
@@ -96,8 +124,7 @@ random.doubleturn.chance {
     if ($readini($char($1), info, flag) = monster) { inc %double.turn.chance $rand(1,5) }
 
     if (%double.turn.chance >= 99) { writeini $char($1) skills doubleturn.on on | $set_chr_name($1) 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, system, RandomChanceGoesAgain) }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, system, RandomChanceGoesAgain)) }
+      $display.system.message($readini(translation.dat, system, RandomChanceGoesAgain),battle) 
     }
   }
   return
@@ -116,7 +143,9 @@ boost_summon_stats {
   var %summon.level 1
   inc %summon.level $2
 
-  if ($augment.check($1, EnhanceSummons) = true) {  inc %summon.level $calc(%augment.strength * 10)    } 
+  if ($augment.check($1, EnhanceSummons) = true) {  inc %summon.level $calc(%augment.strength * 11)    } 
+  if ($augment.check($1, EnhanceBloodpact) = true) {  inc %summon.level $calc(%augment.strength * 11)    } 
+
 
   var %m.flag $readini($char($1), info, flag)
 
@@ -161,6 +190,8 @@ boost_monster_stats {
   var %monster.level 0
 
   if (%battle.type = ai) { set %winning.streak %ai.battle.level }
+
+  if ($readini(system.dat, system, PlayersMustDieMode) = true) { inc %level.boost $rand(5,10) }
 
   if (%number.of.players.in.battle = $null) { var %number.of.players.in.battle 1 }
 
@@ -486,6 +517,8 @@ monster_spend_points {
   if ($3 = evolve) { inc %unspent.monster.points $rand(100,500) } 
   if ($3 = monstersummon) { inc %unspent.monster.points $rand(20,50) } 
 
+  if ($readini(system.dat, system, PlayersMustDieMode) = true) { inc %unspent.monster.points $rand(200,400) }
+
   if (%unspent.monster.points <= 0) { return }
 
   var %total.percent 100
@@ -530,6 +563,65 @@ monster_spend_points {
     if ($3 != doppelganger) { writeini $char($1) BaseStats Spd %spd }
   }
 }
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This function lets players
+; sync their level to another
+; level.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+levelsync {
+  ; $1 = player
+  ; $2 = level to sync to
+
+  var %str $readini($char($1), battle, str)
+  var %def $readini($char($1), battle, def)
+  var %int $readini($char($1), battle, int)
+  var %spd $readini($char($1), battle, spd)
+
+  var %unspent.player.points $calc(20 * $2)
+  var %total.percent 100
+
+  var %str.percent $rand(30,35)
+  dec %total.percent %str.percent
+
+  var %def.percent $rand(30,35)
+  dec %total.percent %def.percent
+
+  var %int.percent $rand(30,35)
+  dec %total.percent %int.percent
+
+  var %spd.percent %total.percent
+  if (%spd.percent <= 0) { var %spd.percent 1 }
+
+  var %str.points $round($calc((%str.percent * .01) * %unspent.player.points),0)
+  dec %unspent.player.points %str.points
+
+  var %def.points $round($calc((%def.percent * .01) * %unspent.player.points),0)
+  dec %unspent.player.points %def.points
+
+  var %int.points $round($calc((%int.percent * .01) * %unspent.player.points),0)
+  dec %unspent.player.points %int.points
+
+  var %spd.points %unspent.player.points
+  dec %unspent.player.points %spd.points
+
+  %str = $round($calc(%str + %str.points),0) 
+  %def = $round($calc(%def + %def.points),0) 
+  %int = $round($calc(%int + %int.points),0) 
+  %spd = $round($calc(%spd + %spd.points),0) 
+
+  writeini $char($1) battle Str %str
+  writeini $char($1) battle Def %def
+  writeini $char($1) battle Int %int
+  writeini $char($1) battle Spd %spd
+
+  if ($get.level($1) != $2) {
+    var %level.difference $round($calc($2 - $get.level($1)),0)
+    var %str.points $calc(18 * %level.difference)
+    inc %str %str.points
+    writeini $char($1) battle Str %str
+  }
+
+}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function actually deals
@@ -547,6 +639,11 @@ deal_damage {
   set %attack.damage $round(%attack.damage, 0)
 
   if (%guard.message != $null) { set %attack.damage 0 }
+
+  if ((%attack.damage > 0) && ($readini($char($2), Status, Sleep) = yes)) { 
+    $display.system.message($readini(translation.dat, status, WakesUp), battle) 
+    writeini $char($2) status sleep no
+  }
 
   unset %absorb.message
 
@@ -570,7 +667,7 @@ deal_damage {
         dec %naturalArmorCurrent %attack.damage | writeini $char($2) NaturalArmor Current %naturalArmorCurrent
 
         if (%naturalArmorCurrent <= 0) { set %attack.damage %difference | writeini $char($2) naturalarmor current 0
-          if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, NaturalArmorBroken) }
+          if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {  $display.system.message($readini(translation.dat, battle, NaturalArmorBroken),battle) }
           if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, NaturalArmorBroken)) }
           unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
         }
@@ -682,16 +779,8 @@ deal_damage {
       writeini $char($2) battle status dead 
       writeini $char($2) battle hp 0
 
-      ; check to see if a clone or summon needs to die with the target
-      $check.clone.death($2)
-
       ; give some ignition points if necessary
       $battle.reward.ignitionGauge.single($2)
-
-      if ($readini($char($1), info, flag) = $null) {
-        ; increase the death tally of the target
-        $increase.death.tally($2) 
-      }
 
       ; if the attacker isn't a monster we need to increase the total # of kills
       if (($readini($char($1), info, flag) != monster) && ($readini($char($1), battle, hp) > 0)) {
@@ -761,17 +850,35 @@ display_damage {
 
   ; Show a random attack description
   if ($3 = weapon) { 
-    if (%counterattack != on ) {   var %weapon.type $readini($dbfile(weapons.db), $4, type) |  var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt)  }
 
-    if (%counterattack = on) { 
-      set %weapon.equipped $readini($char($2), weapons, equipped)
-      set  %weapon.type $readini($dbfile(weapons.db), %weapon.equipped, type)
-      var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt)
-      unset %weapon.equipped | unset %weapon.type
-      $display.system.message($readini(translation.dat, battle, MeleeCountered), battle)
-      $set_chr_name($1) | set %enemy %real.name | set %target $1 | $set_chr_name($2) | set %user %real.name 
-    }
-  $display.system.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)  }
+    if (%counterattack != shield) {
+
+      if (%counterattack != on ) {   var %weapon.type $readini($dbfile(weapons.db), $4, type) |  var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt)  }
+
+      if (%counterattack = on) { 
+        set %weapon.equipped $readini($char($2), weapons, equipped)
+        set  %weapon.type $readini($dbfile(weapons.db), %weapon.equipped, type)
+        var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt)
+        unset %weapon.equipped | unset %weapon.type
+        $display.system.message($readini(translation.dat, battle, MeleeCountered), battle)
+        $set_chr_name($1) | set %enemy %real.name | set %target $1 | $set_chr_name($2) | set %user %real.name 
+      }
+
+    $display.system.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)  }
+  }
+
+  if (%counterattack = shield) {
+    var %weapon.equipped $readini($char($1), weapons, equipped)
+    set  %weapon.type $readini($dbfile(weapons.db), %weapon.equipped, type)
+    var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt)
+
+    $display.system.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)  
+
+    $display.system.message($readini(translation.dat, battle, ShieldCountered), battle)
+    $set_chr_name($1) | set %enemy %real.name | set %target $1 | $set_chr_name($2) | set %user %real.name 
+  }
+
+  if (%shield.block.line != $null) { $display.system.message(%shield.block.line, battle) | unset %shield.block.line }
 
   if ($3 = tech) {
     if (%showed.tech.desc != true) { $display.system.message(3 $+ %user $+  $readini($dbfile(techniques.db), $4, desc), battle) }
@@ -780,7 +887,7 @@ display_damage {
       ; Clear elemental seal
       if ($readini($char($1), skills, elementalseal.on) = on) {  writeini $char($1) skills elementalseal.on off   }
       if ($readini($char($2), status, reflect) = yes) { 
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, skill, MagicReflected) }
+        if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {  $display.system.message($readini(translation.dat, skill, MagicReflected),battle) }
         if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, skill, MagicReflected)) }
 
       $set_chr_name($1) | set %enemy %real.name | set %target $1 | writeini $char($2) status reflect no | writeini $char($2) status reflect.timer 0  }
@@ -812,32 +919,18 @@ display_damage {
   if (((((((%double.attack = $null) && (%triple.attack = $null) && (%fourhit.attack = $null) && (%fivehit.attack = $null) && (%sixhit.attack = $null) && (%sevenhit.attack = $null) && (%eighthit.attack = $null))))))) { 
 
     if ($3 != aoeheal) {
-      if (%guard.message = $null) { 
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan The attack did4 $bytes(%attack.damage,b) damage to %enemy %style.rating }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(The attack did4 $bytes(%attack.damage,b) damage to %enemy %style.rating) }
+      if (%guard.message = $null) {  $display.system.message(The attack did4 $bytes(%attack.damage,b) damage to %enemy %style.rating, battle) 
       }
-      if (%guard.message != $null) { 
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
+      if (%guard.message != $null) { $display.system.message(%guard.message,battle) 
       }
-      if (%element.desc != $null) {  
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan %element.desc }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%element.desc) }
+      if (%element.desc != $null) {  $display.system.message(%element.desc, battle) 
         unset %element.desc 
       }
     }
     if ($3 = aoeheal) { 
-      if (%guard.message = $null) { 
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan The attack did4 $bytes(%attack.damage,b) damage to %enemy %style.rating }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(The attack did4 $bytes(%attack.damage,b) damage to %enemy %style.rating) }
-      }
-      if (%guard.message != $null) { 
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
-      }
-      if (%element.desc != $null) {  
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan %element.desc }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%element.desc) }
+      if (%guard.message = $null) {  $display.system.message(The attack did4 $bytes(%attack.damage,b) damage to %enemy %style.rating, battle)    }
+      if (%guard.message != $null) { $display.system.message(%guard.message,battle)  }
+      if (%element.desc != $null) {  $display.system.message(%element.desc,battle) 
         unset %element.desc 
       }
     }
@@ -845,92 +938,64 @@ display_damage {
 
   if (%double.attack = true) { 
     if (%guard.message = $null) {  var %damage.message 1The first attack did4 $bytes(%attack.damage1,b) damage.  The second attack did4 $bytes(%attack.damage2,b) damage.  Total physical damage:4 $bytes(%attack.damage,b)  $+ %style.rating 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %damage.message }
-      if ($readini(system.dat, system, botType) = DCCchat) {  $dcc.battle.message(%damage.message) }
+      $display.system.message(%damage.message,battle)
     }
-    if (%guard.message != $null) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
-    }
+    if (%guard.message != $null) { $display.system.message(%guard.message,battle)  }
     unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   }
   if (%triple.attack = true) {  
     if (%guard.message = $null) { var %damage.message 1The first attack did4 $bytes(%attack.damage1,b) damage.  The second attack did4 $bytes(%attack.damage2,b) damage.  The third attack did4 $bytes(%attack.damage3,b) damage.  Total physical damage:4 $bytes(%attack.damage,b)  $+ %style.rating
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %damage.message }
-    if ($readini(system.dat, system, botType) = DCCchat) {  $dcc.battle.message(%damage.message) }    }
-    if (%guard.message != $null) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
+      $display.system.message(%damage.message,battle) 
     }
+    if (%guard.message != $null) { $display.system.message(%guard.message,battle)  }
     unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   }
 
   if (%fourhit.attack = true) { 
     if (%guard.message = $null) { var %damage.message 1The first attack did4 $bytes(%attack.damage1,b) damage.  The second attack did4 $bytes(%attack.damage2,b) damage.  The third attack did4 $bytes(%attack.damage3,b) damage. The fourth attack did4 $bytes(%attack.damage4,b) damage. Total physical damage:4 $bytes(%attack.damage,b)  $+ %style.rating
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %damage.message }
-      if ($readini(system.dat, system, botType) = DCCchat) {  $dcc.battle.message(%damage.message) }    
+      $display.system.message(%damage.message,battle) 
     }
-    if (%guard.message != $null) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
-    }
+    if (%guard.message != $null) {  $display.system.message(%guard.message,battle)   }
     unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   }
 
   if (%fivehit.attack = true) { 
     if (%guard.message = $null) { var %damage.message 1The first attack did4 $bytes(%attack.damage1,b) damage.  The second attack did4 $bytes(%attack.damage2,b) damage.  The third attack did4 $bytes(%attack.damage3,b) damage. The fourth attack did4 $bytes(%attack.damage4,b) damage. The fifth attack did4 $bytes(%attack.damage5,b) damage. Total physical damage:4 $bytes(%attack.damage,b)  $+ %style.rating 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %damage.message }
-      if ($readini(system.dat, system, botType) = DCCchat) {  $dcc.battle.message(%damage.message) }
+      $display.system.message(%damage.message,battle) 
     }
-    if (%guard.message != $null) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
-    }
+    if (%guard.message != $null) { $display.system.message(%guard.message,battle)  }
     unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   }
 
   if (%sixhit.attack = true) { 
     if (%guard.message = $null) { var %damage.message 1The first attack did4 $bytes(%attack.damage1,b) damage.  The second attack did4 $bytes(%attack.damage2,b) damage.  The third attack did4 $bytes(%attack.damage3,b) damage. The fourth attack did4 $bytes(%attack.damage4,b) damage. The fifth attack did4 $bytes(%attack.damage5,b) damage. The sixth attack did4 $bytes(%attack.damage6,b) damage.  Total physical damage:4 $bytes(%attack.damage,b)  $+ %style.rating
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %damage.message }
-      if ($readini(system.dat, system, botType) = DCCchat) {  $dcc.battle.message(%damage.message) }
+      $display.system.message(%damage.message,battle) 
     }
-    if (%guard.message != $null) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
-    }
+    if (%guard.message != $null) { $display.system.message(%guard.message,battle)   }
     unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   }
 
   if (%sevenhit.attack = true) { 
     if (%guard.message = $null) { var %damage.message 1The first attack did4 $bytes(%attack.damage1,b) damage.  The second attack did4 $bytes(%attack.damage2,b) damage.  The third attack did4 $bytes(%attack.damage3,b) damage. The fourth attack did4 $bytes(%attack.damage4,b) damage. The fifth attack did4 $bytes(%attack.damage5,b) damage. The sixth attack did4 $bytes(%attack.damage6,b) damage. The seventh attack did4 $bytes(%attack.damage7,b) damage.  Total physical damage:4 $bytes(%attack.damage,b)  $+ %style.rating 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %damage.message }
-      if ($readini(system.dat, system, botType) = DCCchat) {  $dcc.battle.message(%damage.message) }
+      $display.system.message(%damage.message,battle) 
     }
-    if (%guard.message != $null) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
+    if (%guard.message != $null) { $display.system.message(%guard.message,battle) 
     }
     unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   }
 
   if (%eighthit.attack = true) { 
     if (%guard.message = $null) { var %damage.message 1The first attack did4 $bytes(%attack.damage1,b) damage.  The second attack did4 $bytes(%attack.damage2,b) damage.  The third attack did4 $bytes(%attack.damage3,b) damage. The fourth attack did4 $bytes(%attack.damage4,b) damage. The fifth attack did4 $bytes(%attack.damage5,b) damage. The sixth attack did4 $bytes(%attack.damage6,b) damage. The seventh attack did4 $bytes(%attack.damage7,b) damage.  The eight attack did4 $bytes(%attack.damage8,b) damage. Total physical damage:4 $bytes(%attack.damage,b)  $+ %style.rating
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %damage.message }
-      if ($readini(system.dat, system, botType) = DCCchat) {  $dcc.battle.message(%damage.message) }
+      $display.system.message(%damage.message,battle) 
     }
-    if (%guard.message != $null) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
-    }
+    if (%guard.message != $null) { $display.system.message(%guard.message,battle)  }
     unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   }
 
   if (%target = $null) { set %target $2 }
 
   if (%statusmessage.display != $null) { 
-    if ($readini($char(%target), battle, hp) > 0) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %statusmessage.display }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%statusmessage.display) }
+    if ($readini($char(%target), battle, hp) > 0) { $display.system.message(%statusmessage.display,battle) 
       unset %statusmessage.display 
     }
   }
@@ -940,8 +1005,7 @@ display_damage {
       ; Show how much the person absorbed back.
       var %absorb.amount $round($calc(%attack.damage / 3),0)
       if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan 3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage. }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.) }
+      $display.system.message(3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.,battle) 
       unset %absorb
     }
   }
@@ -952,8 +1016,7 @@ display_damage {
         var %absorb.amount $round($calc(%attack.damage / 3),0)
         if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
         if (%absorb.amount <= 0) { var %absorb.amount 1 }
-        if ($readini(system.dat, system, botType) = IRC) {  query %battlechan 3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage. }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.) }
+        $display.system.message(3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.,battle) 
         set %life.target $readini($char($1), Battle, HP) | set %life.max $readini($char($1), Basestats, HP)
         inc %life.target %absorb.amount
         if (%life.target >= %life.max) { set %life.target %life.max }
@@ -963,28 +1026,47 @@ display_damage {
     }
   }
   if (%absorb.message != $null) { 
-    if (%guard.message = $null) {
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan %absorb.message }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%absorb.message) }
+    if (%guard.message = $null) { $display.system.message(%absorb.message,battle) 
       unset %absorb.message
     }
   }
 
   unset %guard.message
 
+
+  ; Check for inactive..
+  if ($readini($char(%target), battle, status) = inactive) {
+    if ($readini($char(%target), battle, hp) > 0) { 
+      if ($readini($char($1), info, flag) != monster) { 
+        writeini $char(%target) battle status alive
+        $display.system.message($readini(translation.dat, battle, inactivealive),battle)       
+      }
+    }
+  }
+
   ; Did the person die?  If so, show the death message.
   if ($readini($char(%target), battle, HP) <= 0) { 
+
     $increase_death_tally(%target)
     $achievement_check(%target, SirDiesALot)
     $gemconvert_check($1, %target, $3, $4)
     if (%attack.damage > $readini($char(%target), basestats, hp)) { set %overkill 7<<OVERKILL>> }
 
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, EnemyDefeated) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnemyDefeated)) }
+    $display.system.message($readini(translation.dat, battle, EnemyDefeated),private)
+
+    ; check to see if a clone or summon needs to die with the target
+    $check.clone.death(%target)
 
     if ($readini($char(%target), info, flag) != $null) {  $random.healing.orb($1,%target)  }
 
-    $goldorb_check(%target) 
+    if ($readini($dbfile(techniques.db), $4, magic) = yes) { $goldorb_check(%target, magic)  }
+    if ($readini($dbfile(techniques.db), $4, magic) != yes) { $goldorb_check(%target, $3) }
+
+    if ($readini($char($1), info, flag) = $null) {
+      ; increase the death tally of the target
+      if ($readini($char(%target), battle, status) = dead) {  $increase.death.tally(%target)  }
+    }
+
     $spawn_after_death(%target)
     remini $char(%target) Renkei
     $achievement_check($1, FillYourDarkSoulWithLight)
@@ -994,6 +1076,7 @@ display_damage {
 
     ; Check to see if the monster can be staggered..  
     var %stagger.check $readini($char(%target), info, CanStagger)
+    if ((%guard.message != $null) || (%attack.damage <= 0)) { var %stagger.check false }
     if ((%stagger.check = yes) || (%stagger.check = true)) {
 
       ; Do the stagger if the damage is above the threshold.
@@ -1001,8 +1084,7 @@ display_damage {
 
       dec %stagger.amount.needed %attack.damage | writeini $char(%target) info staggeramount %stagger.amount.needed
       if (%stagger.amount.needed <= 0) { writeini $char(%target) status staggered yes |  writeini $char(%target) info CanStagger no
-        if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, status, StaggerHappens) }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, status, StaggerHappens)) }
+        $display.system.message($readini(translation.dat, status, StaggerHappens),battle) 
       }
 
       unset %stagger.amount.needed
@@ -1035,6 +1117,112 @@ display_damage {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays AOE damage
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+display_aoedamage {
+  ; $1 = user
+  ; $2 = target
+  ; $3 = tech name
+  ; $4 = flag for if it's a melee
+
+  unset %overkill | unset %target |  unset %style.rating
+  $set_chr_name($1) | set %user %real.name
+  if ($person_in_mech($1) = true) { set %user %real.name $+ 's $readini($char($1), mech, name) } 
+
+  $set_chr_name($2) | set %enemy %real.name
+  if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
+
+  ; Show the damage
+  if ($person_in_mech($2) = false) { 
+    if ($4 = $null) { 
+      if (($readini($char($2), status, reflect) = yes) && ($readini($dbfile(techniques.db), $3, magic) = yes)) { $display.system.message($readini(translation.dat, skill, MagicReflected), battle) | $set_chr_name($1) | set %enemy %real.name | set %target $1 | writeini $char($2) status reflect no | writeini $char($2) status reflect.timer 1  }
+    }
+  }
+
+  if ($3 != battlefield) {
+    if (($readini($char($1), info, flag) != monster) && (%target != $1)) { $calculate.stylepoints($1) }
+  }
+
+  if (%guard.message = $null) { $display.system.message($readini(translation.dat, tech, DisplayAOEDamage), battle)  }
+  if (%guard.message != $null) { $display.system.message(%guard.message, battle) | unset %guard.message }
+
+  if (%target = $null) { set %target $2 }
+
+  if ($4 = absorb) { 
+    ; Show how much the person absorbed back.
+    var %absorb.amount $round($calc(%attack.damage / 2),0)
+    $display.system.message($readini(translation.dat, tech, AbsorbHPBack), battle)
+  }
+
+  if (%absorb.message != $null) { 
+    if (%guard.message = $null) { 
+      $display.system.message(%absorb.message,battle) 
+      unset %absorb.message
+    }
+  }
+
+  set %target.hp $readini($char(%target), battle, hp)
+
+  if ((%target.hp > 0) && ($person_in_mech($2) = false)) {
+
+    ; Check for inactive..
+    if ($readini($char($2), battle, status) = inactive) {
+      if ($readini($char($1), info, flag) != monster) { 
+        writeini $char(%target) battle status alive
+        $display.system.messages($readini(translation.dat, battle, inactivealive),battle)
+      }
+    }
+
+    ; Check to see if the monster can be staggered..  
+    var %stagger.check $readini($char(%target), info, CanStagger)
+    if ((%stagger.check = $null) || (%stagger.check = no)) { return }
+
+    ; Do the stagger if the damage is above the threshold.
+    var %stagger.amount.needed $readini($char(%target), info, StaggerAmount)
+    dec %stagger.amount.needed %attack.damage | writeini $char(%target) info staggeramount %stagger.amount.needed
+    if (%stagger.amount.needed <= 0) { writeini $char(%target) status staggered yes |  writeini $char(%target) info CanStagger no
+      $display.system.message($readini(translation.dat, status, StaggerHappens), battle)
+    }
+  }
+
+  ; Did the person die?  If so, show the death message.
+
+  if ((%target.hp  <= 0) && ($person_in_mech($2) = false)) { 
+    writeini $char(%target) battle status dead 
+    writeini $char(%target) battle hp 0
+    $check.clone.death(%target)
+    $increase_death_tally(%target)
+    $achievement_check(%target, SirDiesALot)
+    if (%attack.damage > $readini($char(%target), basestats, hp)) { set %overkill 7<<OVERKILL>> }
+    $display.system.message($readini(translation.dat, battle, EnemyDefeated), battle)
+
+    if ($readini($dbfile(techniques.db), $3, magic) = yes) {  $goldorb_check(%target, magic)  }
+    if ($readini($dbfile(techniques.db), $3, magic) != yes) { $goldorb_check(%target, tech) }
+
+    if ($readini($char($1), info, flag) = $null) {
+      ; increase the death tally of the target
+      if ($readini($char(%target), battle, status) = dead) {  $increase.death.tally(%target)  }
+    }
+
+    $spawn_after_death(%target)
+    $achievement_check($1, FillYourDarkSoulWithLight)
+  }
+
+  if ($person_in_mech($2) = true) { 
+    ; Is the mech destroyed?
+    if ($readini($char($2), mech, HpCurrent) <= 0) {  var %mech.name $readini($char($2), mech, name)
+      $display.system.message($readini(translation.dat, battle, DisabledMech), battle)
+      writeini $char($2) mech inuse false
+    }
+  }
+
+  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
+  unset %attack.damage | unset %target
+  return 
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function displays the
 ; healing to the channel
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1051,46 +1239,36 @@ display_heal {
   if ($3 = tech) {
     if (%showed.tech.desc != true) {
       $set_chr_name($1)
-
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan 3 $+ %real.name $+  $readini($dbfile(techniques.db), $4, desc) }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(3 $+ %real.name $+  $readini($dbfile(techniques.db), $4, desc)) }
+      $display.system.message(3 $+ %real.name $+  $readini($dbfile(techniques.db), $4, desc),battle) 
     }
   }
 
   if ($3 = item) {
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan 3 $+ %user $+  $readini($dbfile(items.db), $4, desc) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(3 $+ %user $+  $readini($dbfile(items.db), $4, desc)) }
+    $display.system.message(3 $+ %user $+  $readini($dbfile(items.db), $4, desc),battle) 
   }
 
   if ($3 = weapon) { 
     var %weapon.type $readini($dbfile(weapons.db), $4, type) | var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt)
-
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan 3 $+ %user $+  $read %attack.file  $+ 3. }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(3 $+ %user $+  $read %attack.file  $+ 3.) }
+    $display.system.message(3 $+ %user $+  $read %attack.file  $+ 3.,battle) 
   }
 
   ; Show the damage healed
   if (%guard.message = $null) {  $set_chr_name($2) |  $set_chr_name($2)
     $set_chr_name($2) | set %enemy %real.name
     if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
-
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan 3 $+ %enemy has been healed for $bytes(%attack.damage,b) health! }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(3 $+ %enemy has been healed for $bytes(%attack.damage,b) health!) }
+    $display.system.message(3 $+ %enemy has been healed for $bytes(%attack.damage,b) health!, battle) 
   }
   if (%guard.message != $null) { 
     $set_chr_name($2) | set %enemy %real.name
     if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
-
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan %guard.message }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(%guard.message) }
+    $display.system.message(%guard.message,battle) 
     unset %guard.message
   }
 
   ; Did the person die?  If so, show the death message.
   if ($readini($char($2), battle, HP) <= 0) { 
     $set_chr_name($2) 
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan 4 $+ %enemy has been defeated by %user $+ !  %overkill }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(4 $+ %enemy has been defeated by %user $+ !  %overkill) }
+    $display.system.message(4 $+ %enemy has been defeated by %user $+ !  %overkill,battle) 
     $achievement_check($1, FillYourDarkSoulWithLight)
   }
 
@@ -1118,16 +1296,14 @@ random.healing.orb {
       ; health orb
       var %orb.restored $rand(50,100)
       $restore_hp($1, %orb.restored)
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, ObtainGreenOrb) }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, ObtainGreenOrb)) }
+      $display.system.message($readini(translation.dat, battle, ObtainGreenOrb),battle)
     }
 
     if ((%healing.orb.chance > 80) && (%healing.orb.chance < 98)) {
       ; TP orb
       var %orb.restored $rand(5,20)
       $restore_tp($1, %orb.restored)
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, ObtainWhiteOrb) }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, ObtainWhiteOrb)) }
+      $display.system.message($readini(translation.dat, battle, ObtainWhiteOrb),battle) 
     }
 
     if (%healing.orb.chance >= 98) { 
@@ -1136,8 +1312,7 @@ random.healing.orb {
       if (%max.ig > 0) {
         var %orb.restored $rand(1,2)
         $restore_ig($1, %orb.restored)
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, ObtainOrangeOrb) }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, ObtainOrangeOrb)) }
+        $display.system.message($readini(translation.dat, battle, ObtainOrangeOrb),battle) 
       }
     }
 
@@ -1165,8 +1340,7 @@ gemconvert_check {
   set %random.gem $rand(1,%total.gems)
   set %gem $gettok(%gem.list, %random.gem, 46)
 
-  if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, system, ConvertToGem) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, system, ConvertToGem)) }
+  $display.system.message($readini(translation.dat, system, ConvertToGem),battle) 
 
   set %current.item.total $readini($char($1), Item_Amount, %gem) 
   if (%current.item.total = $null) { var %current.item.total 0 }
@@ -1187,15 +1361,19 @@ gemconvert_check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.weather.pick {
   if (%current.battlefield = Dead-End Hallway) { return }
+  if ((weatherlock isin %battleconditions) || (weather-lock isin %battleconditions)) { return }
+
   set %weather.list $readini($dbfile(battlefields.db), %current.battlefield, weather)
   set %random $rand(1, $numtok(%weather.list,46))
   if (%random = $null) { var %random 1 }
   set %new.weather $gettok(%weather.list,%random,46)
+  var %old.weather $readini($dbfile(battlefields.db), weather, current)
   if (%new.weather = $null) { set %new.weather calm }
   writeini $dbfile(battlefields.db) weather current %new.weather
 
-  if ($readini(system.dat, system, botType) = IRC) { query %battlechan 10The weather changes.  It is now %new.weather }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(10The weather changes.  It is now %new.weather) }
+  if (($1 = inbattle) && (%new.weather = %old.weather)) { return }
+
+  $display.system.message(10The weather changes.  It is now %new.weather, battle) 
 
   unset %number.of.weather | unset %new.weather | unset %random | unset %weather.list
 }
@@ -1249,11 +1427,51 @@ moonphase.bloodmoon {
   }
 }
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Controls the time of day
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+timeofday {
+  set %timeofday $readini($dbfile(battlefields.db), timeofday, CurrentTimeofDay)
+  if (%timeofday = $null) { var %timeofday Morning | remini $dbfile(battlefields.db) timeofday CurrentTimeOfDayTurn | writeini $dbfile(battlefields.db) timeofday currentTimeOfDay Morning }
+
+  if (%battle.type = ai) { return }
+
+  var %timeofday.turn $readini($dbfile(battlefields.db), timeofday, CurrentTimeOfDayTurn)
+  if (%timeofday.turn = $null) { var %timeofday.turn 0 }
+  inc %timeofday.turn 1
+  writeini $dbfile(battlefields.db) timeofday CurrentTimeOfDayTurn %timeofday.turn
+
+  set %timeofday.turn.max $readini($dbfile(battlefields.db), timeofdaytime, %timeofday)
+  if (%timeofday.turn.max = $null) { var %timeofday.turn.max 2 }
+
+  if (%timeofday.turn > %timeofday.turn.max) { $timeofday.increase | writeini $dbfile(battlefields.db) timeofday Currenttimeofday %timeofday }
+
+  unset %timeofday | unset %timeofday.turn.max 
+}
+timeofday.increase {
+  writeini $dbfile(battlefields.db) timeofday currentTimeOfDayTurn 1
+
+  if (%timeofday = Morning) { set %timeofday Noon | return }
+  if (%timeofday = Noon) { set %timeofday Evening | return }
+  if (%timeofday = Evening) { set %timeofday Night | return }
+  if (%timeofday = Night) { 
+    set %timeofday Morning 
+    var %number.of.gamedays $readini(battlestats.dat, battle, GameDays)
+    if (%number.of.gamedays = $null) { var %number.of.gamedays 1  }
+    inc %number.of.gamedays 1
+    writeini battlestats.dat battle GameDays %number.of.gamedays
+    return
+  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Check to see if there's a
 ; battlefield curse
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.battlefield.curse {
   if ($readini(battlestats.dat, battle, WinningStreak) <= 50) { return }
+  var %timeofday $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay)
+  if ((%timeofday = morning) || (%timeofday = noon)) { return }
+
   if ($readini(battlestats.dat, TempBattleInfo, Event) != $null) { remini battlestats.dat TempBattleInfo Event | return }
   set %curse.chance $rand(1,100)
   if (%battle.type = boss) { set %curse.chance $rand(1,80) }
@@ -1321,8 +1539,7 @@ random.playersgofirst {
 
   if (%playersfirst.chance <= 8) { set %playersgofirst on }
   if (%playersgofirst = on) { 
-    if ($readini(system.dat, system, botType) = IRC) {  $display.system.message($readini(translation.dat, Events, PlayersGoFirst), battle) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, Events, PlayersGoFirst)) }
+    $display.system.message($readini(translation.dat, Events, PlayersGoFirst), battle) 
   }
   unset %playersfirst.chance
 }
@@ -1334,6 +1551,8 @@ random.playersgofirst {
 random.battlefield.ally {
   if (%battle.type = manual) { return }
   if (%battle.type = orbfountain) { return }
+  if (%battle.type = boss) { return }
+
   var %npc.chance $rand(1,100) 
   var %losing.streak $readini(battlestats.dat, battle, LosingStreak)
   var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
@@ -1353,8 +1572,8 @@ random.battlefield.ally {
     $get_npc_list
     var %npcs.total $numtok(%npc.list,46)
     if ((%npcs.total = 0) || (%npc.list = $null)) { 
-      if ($readini(system.dat, system, botType) = IRC) { query %battlechan 4Error: There are no NPCs in the NPC folder.. Have the bot admin check to make sure there are npcs there! | return }
-      if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message(4Error: There are no NPCs in the NPC folder.. Have the bot admin check to make sure there are npcs there!) | return }
+      $display.system.message(4Error: There are no NPCs in the NPC folder.. Have the bot admin check to make sure there are npcs there!,battle) 
+      return 
     }
 
     set %value 1
@@ -1371,14 +1590,8 @@ random.battlefield.ally {
         $set_chr_name(%npc.name) 
 
         if (%battle.type != ai) { 
-          if ($readini(system.dat, system, botType) = IRC) {
-            query %battlechan 4 $+ %real.name has entered the battle to help the forces of good! 
-            query %battlechan 12 $+ %real.name  $+ $readini($char(%npc.name), descriptions, char)
-          }
-          if ($readini(system.dat, system, botType) = DCCchat) { 
-            $dcc.battle.message(4 $+ %real.name has entered the battle to help the forces of good!)
-            $dcc.battle.message(12 $+ %real.name  $+ $readini($char(%npc.name), descriptions, char))
-          }
+          $display.system.message(4 $+ %real.name has entered the battle to help the forces of good!,battle)
+          $display.system.message(12 $+ %real.name  $+ $readini($char(%npc.name), descriptions, char),battle)
         }
 
         if (%battle.type = ai) { set %ai.npc.name %real.name | writeini $txtfile(1vs1bet.txt) money npcfile %npc.name }
@@ -1395,6 +1608,22 @@ random.battlefield.ally {
   }
   else { return }
 }
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This checks for Death
+; Conditions on monsters.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+death.conditions.check {
+  ; $1 = person
+  ; $2 = melee, item, tech, renkei, magic, magiceffect, status
+
+  if ($readini($char($1), info, flag) != monster) { return }
+
+  ; Check for death conditions.  If the death condition isn't met, turn on revive.
+  var %death.conditions $readini($char($1), info, DeathConditions)
+  if (%death.conditions = $null) { return }
+
+  if ($istok(%death.conditions,$2,46) = $false) { writeini $char($1) status revive yes }
+}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This is the automatic-revival
@@ -1402,6 +1631,12 @@ random.battlefield.ally {
 ; Gold Orbs in Devil May Cry
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 goldorb_check {
+  ; $1 = person
+  ; $2 = type of attack
+
+  if ($2 = weapon) { $death.conditions.check($1, melee) }
+  if ($2 != weapon) { $death.conditions.check($1, $2) }
+
   if ($readini($char($1), status, revive) = yes) {
     var %max.hp $readini($char($1), basestats, hp)
     set %revive.current.hp $round($calc(%max.hp / 2),0)
@@ -1410,8 +1645,12 @@ goldorb_check {
     writeini $char($1) battle status normal
     writeini $char($1) status revive no
     $set_chr_name($1)
-    if ($readini(system.dat, system, botType) = IRC) {  /.timerThrottleGoldOrb $+ $rand(1,100000) $+ $rand(a,z) 1 1 /query %battlechan $readini(translation.dat, battle, GoldOrbUsed) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, GoldOrbUsed)) }
+
+    $set_chr_name($1)
+    if ($readini($char($1), descriptions, revive) != $null) {  var %revive.message 7 $+ %real.name  $+ $readini($char($1), descriptions, revive) }
+    if ($readini($char($1), descriptions, revive) = $null) { var %revive.message $readini(translation.dat, battle, GoldOrbUsed) }
+
+    $display.system.message.delay(%revive.message, battle, 1) 
 
     writeini $txtfile(battle2.txt) style $1 0
     unset %revive.current.hp
@@ -1432,6 +1671,7 @@ goldorb_check {
     writeini $char($1) status charm no | writeini $char($1) status bored no | writeini $char($1) status bored.timer 1 | writeini $char($1) status confuse no 
     writeini $char($1) status confuse.timer 1 | writeini $char($1) status defensedown no | writeini $char($1) status defensedown.timer 0 | writeini $char($1) status strengthdown no 
     writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown no | writeini $char($1) status intdown.timer 1
+    writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0 
   }
 }
 
@@ -1520,8 +1760,7 @@ generate_demonportal {
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, battle, EnteredTheBattle) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle)) }
+  $display.system.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -1584,8 +1823,7 @@ portal.summon.monster {
   if (%bonus.orbs = $null) { var %bonus.orbs 0 }
   inc %bonus.orbs 10
   writeini $txtfile(battle2.txt) battleinfo portalbonus %bonus.orbs
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, system,PortalReinforcements) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, system,PortalReinforcements)) }
+  $display.system.message($readini(translation.dat, system,PortalReinforcements),battle) 
   set %number.of.monsters.needed 1
   $generate_monster(monster, portal)
 
@@ -1648,6 +1886,7 @@ inflict_status {
   if ($3 = bored) { set %status.type bored | var %status.grammar bored of the battle  }
   if ($3 = confuse) { set %status.type confuse  | var %status.grammar confused }
   if ($3 = removeboost) { set %status.type removeboost | var %status.grammar no longer boosted }
+  if ($3 = defenseup) { set %status.type defenseup | var %status.grammar gains defense up }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
 
@@ -1870,6 +2109,15 @@ int_down_check {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Check for stat-up effects
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+defense_up_check {
+  if ($readini($char($1), status, defenseup) = yes) {
+    %enemy.defense = $round($calc(%enemy.defense * 2),0)
+  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Figure out how many monsters
 ; To add based on streak #.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2033,6 +2281,13 @@ weapon_parry_check {
   }
   unset %current.playerstyle | unset %current.playerstyle.level 
 
+  ; If the target is using a second weapon, increase the chance of parrying.
+  var %left.hand.weapon $readini($char($1), weapons, equippedLeft)
+  if (%left.hand.weapon != $null) {
+    var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
+    if (%left.hand.weapon.type != shield) { dec %parry.chance $rand(1,2) }
+  }
+
   if (%parry.chance >= 3) { return }
 
   set %attack.damage 0 | $set_chr_name($1) 
@@ -2058,6 +2313,153 @@ weapon_parry_check {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Check to see if someone
+; blocks an attack.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+shield_block_check {
+  ; $1 = defending target (the one who will block)
+  ; $2 = attacker
+  ; $3 = weapon used
+
+  unset %shield.block.line
+  if (%counterattack = on) { return }
+  if ($person_in_mech($1) = true) { return }
+  if ($readini($char($2), status, stun) = yes) { return }
+  if ($readini($char($2), status, paralysis) = yes) { return }
+  if ($readini($char($2), skills, truestrike.on) = on) { return }
+  if (%guard.message != $null) { return }
+  if ((%battle.rage.darkness = on) && ($readini($char($2), info, flag) = monster)) { return }
+
+  ; Is the defender using a shield?
+  var %left.hand.weapon $readini($char($1), weapons, equippedLeft)
+  if (%left.hand.weapon = $null) { return }
+  var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
+  if (%left.hand.weapon.type != shield) { return }
+
+  ; Get the blocking chance of the shield
+  var %shield.blocking.chance $readini($dbfile(weapons.db), %left.hand.weapon, BlockChance)
+  if ($augment.check($1, EnhanceBlocking) = true) { inc %shield.blocking.chance $calc(1 * %augment.strength) }
+  if ($accessory.check($1, EnhanceBlocking) = true) {
+    inc %shield.blocking.chance %accessory.amount
+    unset %accessory.amount
+  }
+
+  ; Attempt to block using the shield.
+  var %block.chance $rand(1,100)
+  if (%block.chance > %shield.blocking.chance) { return }
+
+  ; Determine how much damage is absorbed via the shield.
+  var %shield.blocking.amount $readini($dbfile(weapons.db), %left.hand.weapon, AbsorbAmount)
+  var %percent.blocked $round($return_percentofvalue(%attack.damage,%shield.blocking.amount),0)
+  if (%percent.blocked <= 0) { var %percent.blocked 1 }
+
+  dec %attack.damage %percent.blocked
+  $set_chr_name($1) 
+
+  set %stylepoints.to.add $rand(10,20)
+  if (%attack.damage <= 0) { inc %stylepoints.to.add $rand(20,50) }
+
+  if (%attack.damage > 0) { 
+    ; Set a message showing that some damage was blocked.
+    set %shield.block.line $readini(translation.dat, battle, ShieldAbsorb)
+  }
+
+  %stylepoints.to.add = $calc(%stylepoints.to.add) 
+  $add.stylepoints($1, $2, %stylepoints.to.add, blocking)  
+  unset %stylepoints.to.add 
+
+  $calculate.stylepoints($1)
+
+  if (%attack.damage <= 0) { var %attack.damage 0 | set %guard.message $readini(translation.dat, battle, ShieldBlock) }
+  remini $txtfile(battle2.txt) style $1 $+ .lastaction
+
+  var %number.of.blocks $readini($char($1), stuff, TimesBlocked)
+  if (%number.of.blocks = $null) { var %number.of.blocks 0 }
+  inc %number.of.blocks 1
+  writeini $char($1) stuff TimesBlocked %number.of.blocks
+}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Check to see if someone
+; counters an attack using
+; a shield.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+shield_reflect_melee {
+  ; $1 = attacker
+  ; $2 = defender
+  ; $3 = weapon name
+
+  ; This is a special kind of counter attack used for monsters like the Deku Scrubs, whose normal attacks
+  ; can be countered by having a shield equipped.  Only certain weapons can be countered this way.
+
+  if ($readini($dbfile(weapons.db), $3, CanShieldReflect) != true) { return }
+  if (%counterattack = on) { return }
+
+  if ($readini($char($1), status, ethereal) = yes) { return }
+  if (%guard.message != $null) { return }
+  if ($readini($char($2), info, MetalDefense) = true) { return }
+  if ($readini($char($2), info, ai_type) = defender) { return }
+  if ($readini($char($2), info, ai_type) = portal) { return }
+  if ($readini($char($2), info, ai_type) = healer) { return }
+  if ($2 = orb_fountain) { return }
+  if ($2 = lost_soul) { return }
+  if ($readini($char($1), skills, truestrike.on) = on) { return }
+  if ($person_in_mech($2) = true) { return }
+
+  ; Does the target have a guardian that has to be defeated first?  If so, it can't be countered.
+  var %guardian.target $readini($char($1), info, guardian)
+  if (%guardian.target != $null) { 
+    var %guardian.status $readini($char(%guardian.target), battle, hp)
+    if (%guardian.status > 0) { return }   
+  }
+  var %guardian.target $readini($char($2), info, guardian)
+  if (%guardian.target != $null) { 
+    var %guardian.status $readini($char(%guardian.target), battle, hp)
+    if (%guardian.status > 0) { return }   
+  }
+
+  if ($is_charmed($2) = true) { return }
+  if ($is_confused($2) = true) { return }
+
+  ; Is the defender using a shield?
+  var %left.hand.weapon $readini($char($2), weapons, equippedLeft)
+  if (%left.hand.weapon = $null) { return }
+  var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
+  if (%left.hand.weapon.type != shield) { return }
+
+  $shield_reflect_melee_action($1, $2, $3)
+}
+
+shield_reflect_melee_action {
+  set %counterattack shield 
+  ; Counters will be single-hits.
+  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %weapon.howmany.hits
+  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %drainsamba.on | unset %absorb | unset %wpn.element 
+
+  if ($readini($char($2), info, flag) = $null) { 
+    if (($readini($char($1), info, flag) = npc) || ($readini($char($1), info, flag) = monster)) {
+    %attack.damage = $round($calc(%attack.damage * 100),0) }
+    inc %attack.damage $rand(1,25)
+    if (%attack.damage >= 999) { set %attack.damage $rand(900,1500) }
+  }
+
+  if ($readini($char($2), info, flag) = monster) { 
+    if ($readini($char($2), info, ai_type) = counteronly) { set %attack.damage $rand(2000,3000) }
+    if (($readini($char($1), info, flag) = npc) || ($readini($char($1), info, flag) = $null)) {
+      if ((%attack.damage >= 1000) && ($readini($char($2), info, ai_type) != counteronly)) { set %attack.damage $rand(900,1500) }
+    }
+  }
+
+  var %number.of.counters $readini($char($2), stuff, TimesCountered)
+  if (%number.of.counters = $null) { var %number.of.counters 0 }
+  inc %number.of.counters 1
+  writeini $char($2) stuff TimesCountered %number.of.counters
+
+  unset %weapon.type
+
+  $add.stylepoints($2, $1, %attack.damage, counter $+ $rand(1,1000) $+ a $rand(a,d))
+  return
+}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Check to see if someone
 ; counters an attack.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 counter_melee {
@@ -2065,8 +2467,12 @@ counter_melee {
   ; $2 = defender
   ; $3 = weapon name
 
+  if ($readini($dbfile(weapons.db), $3, CanCounter) = false) { return }
+
   if ($readini($char($1), status, ethereal) = yes) { return }
   if (%guard.message != $null) { return }
+
+  if ($readini($char($2), info, MetalDefense) = true) { return }
 
   if ($readini($char($2), info, ai_type) = counteronly) { $counter_melee_action($1, $2, $3) | return }
   if ($readini($char($2), info, ai_type) = defender) { return }
@@ -2219,8 +2625,7 @@ multiple_wave_check {
 
   ; Create the next wave
   if (%mode.gauntlet = $null) {  
-    if ($readini(system.dat, system, botType) = IRC) {  query %battlechan $readini(translation.dat, system,AnotherWaveArrives) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, system,AnotherWaveArrives)) }
+    $display.system.message($readini(translation.dat, system,AnotherWaveArrives),battle) 
   }
   set %number.of.monsters.needed $rand(2,3)
 
@@ -2231,8 +2636,8 @@ multiple_wave_check {
   if (%mode.gauntlet = $null) { $winningstreak.addmonster.amount | $generate_monster(monster) }
   if (%mode.gauntlet != $null) { 
 
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, system,AnotherWaveArrives) [Gauntlet Round: %mode.gauntlet.wave $+ ] | set %number.of.monsters.needed 2  }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, system, AnotherWaveArrives) [Gauntlet Round: %mode.gauntlet.wave $+ ]) | set %number.of.monsters.needed $rand(2,3)  }
+    $display.system.message($readini(translation.dat, system,AnotherWaveArrives) [Gauntlet Round: %mode.gauntlet.wave $+ ], battle) 
+    set %number.of.monsters.needed 2  
 
     var %m.boss.chance $rand(1,100)
     if (%m.boss.chance > 15) { $generate_monster(monster) }
@@ -2308,10 +2713,10 @@ spawn_after_death {
 
   var %bossquote $readini($char(%monster.to.spawn), descriptions, bossquote)
 
-  if ($readini(system.dat, system, botType) = IRC) {
-    /.timerThrottle $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,100000) 1 1 /query %battlechan $readini(translation.dat, battle, EnteredTheBattle)
-    /.timerThrottle $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,100000) 1 1 /query %battlechan 12 $+ %real.name  $+ $readini($char(%monster.to.spawn), descriptions, char)
-    if (%bossquote != $null) {   /.timerThrottle $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,100000) 1 1 /query %battlechan 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ " }
+  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
+    $display.system.message.delay($readini(translation.dat, battle, EnteredTheBattle),battle, 0)
+    $display.system.message.delay(12 $+ %real.name  $+ $readini($char(%monster.to.spawn), descriptions, char), battle, 0)
+    $display.system.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ ", battle, 0) 
   }
   if ($readini(system.dat, system, botType) = DCCchat) {
     $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle))
@@ -2421,6 +2826,7 @@ battlefield.event {
   if ($readini(battlestats.dat, battle, winningstreak) < 15) { return }
   if ($readini(system.dat, system, EnableBattlefieldEvents) != true) { return }
   if (%battle.type = ai) { return }
+  if (no-battlefieldeffect isin %battleconditions) { return }
 
   set %number.of.events $readini($dbfile(battlefields.db), %current.battlefield, NumberOfEvents)
 
@@ -2593,6 +2999,8 @@ battlefield.event {
 
   unset %battlefield.event.number | unset %number.of.events | unset %battlefield.event.target
   unset %battlefield.event.target | unset %event.status.type
+
+  $battle.check.for.end 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2818,9 +3226,7 @@ covercheck {
   }
   if ($3 = AOE) { set %who.battle %cover.target }
   writeini $char($1) skills CoverTarget none
-
-  if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, TargetCovered) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, TargetCovered)) }
+  $display.system.message($readini(translation.dat, battle, TargetCovered),battle) 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2954,38 +3360,37 @@ cap.damage {
   ; $2 = defender
   ; $3 = tech, melee, etc
 
-  if ($readini(system.dat, system, IgnoreDmgCap) = true) { return }
+  if (($readini(system.dat, system, IgnoreDmgCap) = true) || ($readini($char($2), info, IgnoreDmgCap) = true)) { return }
 
-  if ($readini(system.dat, system, IgnoreDmgCap) != true) { 
+  if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
+    if ($3 = melee) { var %damage.threshold 10000 }
+    if ($3 = tech) { var %damage.threshold 38000 }
 
-    if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-      if ($3 = melee) { var %damage.threshold 10000 }
-      if ($3 = tech) { var %damage.threshold 38000 }
+    if ($readini(system.dat, system, PlayersMustDieMode) = true)  { dec %damage.threshold 3000 }
 
-      var %attacker.level $get.level($1)
-      var %defender.level $get.level($2)
-      var %level.difference $calc(%attacker.level - %defender.level)
-      if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.5),0)  }
+    var %attacker.level $get.level($1)
+    var %defender.level $get.level($2)
+    var %level.difference $calc(%attacker.level - %defender.level)
+    if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.5),0)  }
 
-      if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * .05),0)  }
-      if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * .07),0)  }
-      if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 1),0)  } 
-      if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  } 
+    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * .05),0)  }
+    if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * .07),0)  }
+    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 1),0)  } 
+    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  } 
 
-      if (%damage.threshold <= 0) { var %damage.threshold 10 }
+    if (%damage.threshold <= 0) { var %damage.threshold 10 }
 
-      if (%attack.damage > %damage.threshold) {
-        if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 100)  | set %capamount 50000 }
-        if ($person_in_mech($1) = true) { set %temp.damage $calc(%attack.damage / 90) | set %capamount 70000 }
-        set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
+    if (%attack.damage > %damage.threshold) {
+      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 100)  | set %capamount 50000 }
+      if ($person_in_mech($1) = true) { set %temp.damage $calc(%attack.damage / 90) | set %capamount 70000 }
+      set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
 
-        if (%attack.damage >= %capamount) { 
-          if ($person_in_mech($1) = false) {  inc %attack.damage $round($calc(%attack.damage * 0.01),0) }
-          if ($person_in_mech($1) = true) { inc %attack.damage $round($calc(%attack.damage * 0.05),0) }
-        }
-
-        unset %temp.damage | unset %capamount
+      if (%attack.damage >= %capamount) { 
+        if ($person_in_mech($1) = false) {  inc %attack.damage $round($calc(%attack.damage * 0.01),0) }
+        if ($person_in_mech($1) = true) { inc %attack.damage $round($calc(%attack.damage * 0.05),0) }
       }
+
+      unset %temp.damage | unset %capamount
 
     }
   }
@@ -2995,6 +3400,8 @@ cap.damage {
 
     if ($3 = melee) { var %damage.threshold 2000 }
     if ($3 = tech) { var %damage.threshold 3000 }
+
+    if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %damage.threshold 7000 }
 
     set %attacker.level $get.level($1)
     set %defender.level $get.level($2)
@@ -3059,8 +3466,7 @@ double.attack.check {
       $set_chr_name($1) 
 
       if (%multihit.message.on != on) {
-        if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, PerformsADoubleAttack) }
-        if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, PerformsADoubleAttack)) }
+        $display.system.message($readini(translation.dat, battle, PerformsADoubleAttack)) 
       } 
     }
     unset %double.attack.chance | unset %original.attackdmg 
@@ -3089,8 +3495,7 @@ triple.attack.check {
   $set_chr_name($1) 
 
   if (%multihit.message.on != on) {
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, PerformsATripleAttack) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, PerformsATripleAttack)) }
+    $display.system.message($readini(translation.dat, battle, PerformsATripleAttack),battle) 
   }
 
   unset %original.attackdmg
@@ -3120,10 +3525,7 @@ fourhit.attack.check {
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
 
-  if (%multihit.message.on != on) {
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, PerformsA4HitAttack) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, PerformsA4HitAttack)) }
-  }
+  if (%multihit.message.on != on) { $display.system.message($readini(translation.dat, battle, PerformsA4HitAttack),battle)   }
 
   unset %original.attackdmg
 }
@@ -3155,10 +3557,7 @@ fivehit.attack.check {
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
 
-  if (%multihit.message.on != on) {
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, PerformsA5HitAttack) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, PerformsA5HitAttack)) }
-  }
+  if (%multihit.message.on != on) { $display.system.message($readini(translation.dat, battle, PerformsA5HitAttack),battle) }
 
   unset %original.attackdmg
 }
@@ -3197,11 +3596,7 @@ sixhit.attack.check {
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
 
-  if (%multihit.message.on != on) {
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, PerformsA6HitAttack) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, PerformsA6HitAttack)) }
-  }
-
+  if (%multihit.message.on != on) { $display.system.message($readini(translation.dat, battle, PerformsA6HitAttack),battle) }
   unset %original.attackdmg
 }
 sevenhit.attack.check {
@@ -3241,11 +3636,7 @@ sevenhit.attack.check {
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
 
-  if (%multihit.message.on != on) {
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, PerformsA7HitAttack) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, PerformsA7HitAttack)) }
-  }
-
+  if (%multihit.message.on != on) { $display.system.message($readini(translation.dat, battle, PerformsA7HitAttack),battle) }
   unset %original.attackdmg
 }
 eighthit.attack.check {
@@ -3289,11 +3680,7 @@ eighthit.attack.check {
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
 
-  if (%multihit.message.on != on) {
-    if ($readini(system.dat, system, botType) = IRC) { query %battlechan $readini(translation.dat, battle, PerformsA8HitAttack) }
-    if ($readini(system.dat, system, botType) = DCCchat) { $dcc.battle.message($readini(translation.dat, battle, PerformsA8HitAttack)) }
-  }
-
+  if (%multihit.message.on != on) { $display.system.message($readini(translation.dat, battle, PerformsA8HitAttack),battle) }
   unset %original.attackdmg
 }
 
@@ -3384,13 +3771,22 @@ start.mimic.battle {
 guardianmon.check {
   ; Does the target have a guardian that has to be defeated first?  If so, check to see if guardian is dead.  
   ; If it isn't, set the attack damage to 0.
+  if ($4 = heal) { return }
 
   var %guardian.target $readini($char($3), info, guardian)
+  if (%guardian.target = $null) { return }
 
-  if ((%guardian.target != $null) && ($4 != heal)) { 
-    var %guardian.status $readini($char(%guardian.target), battle, hp)
-    if (%guardian.status > 0) { set %attack.damage 0 | set %tech.howmany.hits 1 }   
+  var %guardian.target.count $numtok(%guardian.target,46)
+  var %current.guardian.count 1
+
+  while (%current.guardian.count <= %guardian.target.count) { 
+    var %current.guardian.target $gettok(%guardian.target, %current.guardian.count, 46)
+    var %guardian.status $readini($char(%current.guardian.target), battle, hp)  
+    if (%guardian.status > 0) { set %attack.damage 0 | set %tech.howmany.hits 1 | break }
+
+    inc %current.guardian.count
   }
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

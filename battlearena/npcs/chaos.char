@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=5000
 Tp=500
-Str=3500
-Def=3500
-Int=3500
-Spd=3500
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=0
 Name=chaos
 
@@ -12,10 +12,10 @@ Name=chaos
 [Battle]
 Hp=5000
 Tp=500
-Str=3500
-Def=3500
-Int=3500
-Spd=3500
+Str=$calc(50 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=0
 Status=alive
 
@@ -98,11 +98,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=HoleyGloves
-HoleyGloves=$calc(100 + $current.battlestreak)
+HoleyGloves=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Wizardy=100
+MartialArts=1000
+Wizardy=1000
 Zen=5
 ClearMind=3
 MightyStrike=1
@@ -120,14 +120,14 @@ ManaWall=1
 
 
 [Techniques]
-SeraphimRush=$calc(100 + $current.battlestreak)
-AngelShot=$calc(100 + $current.battlestreak)
-DemonBanisher=$calc(100 + $current.battlestreak)
-DivineSpear=$calc(100 + $current.battlestreak)
-Cataclysm=$calc(100 + $current.battlestreak)
-SeraphimWave=$calc(100 + $current.battlestreak)
-HealingDew=$calc(100 + $current.battlestreak)
-PhoenixStrike=$calc(100 + $current.battlestreak)
+SeraphimRush=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+AngelShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DemonBanisher=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DivineSpear=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Cataclysm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+SeraphimWave=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HealingDew=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+PhoenixStrike=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Ignitions]
 

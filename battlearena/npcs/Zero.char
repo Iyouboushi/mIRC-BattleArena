@@ -1,20 +1,21 @@
 [BaseStats]
 Hp=3500
 Tp=250
-Str=3500
-Def=3500
-Int=3500
-Spd=3500
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
+IgnitionGauge=60
 Name=Zero
 
 
 [Battle]
 Hp=3500
 Tp=250
-Str=3500
-Def=3500
-Int=3500
-Spd=3500
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
@@ -31,7 +32,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a robot that wears red and white armor with blonde hair and wields a powerful beam saber in hand.
+Char=is a robot that wears red and white armor with long blonde hair and wields the powerful Z-Saber in hand.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
 [Stuff]
@@ -95,14 +96,14 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ZeroSaber
-ZeroSaber=$calc(100 + $current.battlestreak)
+ZeroSaber=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
 Zen=5
 WeaponBash=1
 Impetus=20
-SwordMaster=100
+SwordMaster=1000
 Resist-Poison=100
 Resist-Charm=100
 Resist-Intimidate=100
@@ -110,12 +111,12 @@ MightyStrike=1
 
 
 [Techniques]
-Raijingeki=$calc(100 + $current.battlestreak)
-Rakuhouha=$calc(100 + $current.battlestreak)
-Ryuenjin=$calc(100 + $current.battlestreak)
-Kuuenzan=$calc(100 + $current.battlestreak)
-Shippuuga=$calc(100 + $current.battlestreak)
-Hyoretsuzan=$calc(100 + $current.battlestreak)
+Raijingeki=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Rakuhouha=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Ryuenjin=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Kuuenzan=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Shippuuga=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Hyoretsuzan=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

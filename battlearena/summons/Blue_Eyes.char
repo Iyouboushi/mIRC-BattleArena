@@ -31,7 +31,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a large blue and white dragon that has blue eyes.
+Char=is a large and powerful white dragon with blue eyes. The signature card of Seto Kaiba.
 Rage=roars loudly in rage!
 
 [Stuff]
@@ -95,11 +95,11 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BlueEyesPower
-BlueEyesPower=100
+BlueEyesPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=100
-Wizardry=100
+MartialArts=500
+Wizardry=500
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -116,9 +116,9 @@ Resist-Petrify=100
 Resist-Confuse=100
 
 [Techniques]
-BurstStream=100
-AbsoluteTerror=100
-FangRush=100
+BurstStream=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+AbsoluteTerror=1
+FangRush=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 

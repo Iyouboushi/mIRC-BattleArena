@@ -3,14 +3,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
-  if ($is_charmed($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  $no.turn.check($nick)
   $set_chr_name($nick) | set %attack.target $2 | $covercheck($2)
   $attack_cmd($nick , %attack.target) 
 } 
 on 3:TEXT:!attack *:#:{ 
-  if ($is_charmed($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  $no.turn.check($nick)
   $set_chr_name($nick) | set %attack.target $2
   $attack_cmd($nick , %attack.target) 
 } 
@@ -18,9 +16,7 @@ on 3:TEXT:!attack *:#:{
 ON 50:TEXT:*attacks *:*:{ 
   if ($2 != attacks) { halt } 
   else { 
-    if ($is_charmed($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-    if ($is_confused($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
-    $charm.check($1, $nick) | unset %real.name 
+    $no.turn.check($1)
     if ($readini($char($1), Battle, HP) = $null) { halt }
     $set_chr_name($1) | set %attack.target $3 | $covercheck($3)
     $attack_cmd($1 , %attack.target) 
@@ -31,9 +27,8 @@ ON 3:TEXT:*attacks *:*:{
   if ($2 != attacks) { halt } 
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
-  if ($is_charmed($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
-  $charm.check($1, $nick) | unset %real.name 
+  $no.turn.check($1)
+  unset %real.name 
   if ($readini($char($1), Battle, HP) = $null) { halt }
   $set_chr_name($1) | set %attack.target $3 | $covercheck($3)
   $attack_cmd($1 , %attack.target) 
@@ -45,6 +40,8 @@ alias attack_cmd {
   if ($is_charmed($1) = true) { var %user.flag monster }
   if ($is_confused($1) = true) { var %user.flag monster } 
   if (%mode.pvp = on) { var %user.flag monster }
+
+  var %ai.type $readini($char($1), info, ai_type)
 
   if ((%ai.type != berserker) && (%covering.someone != on)) {
     if (%mode.pvp != on) {
@@ -63,53 +60,88 @@ alias attack_cmd {
 
   ; Make sure the old attack damages have been cleared, and clear a few variables.
   unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
-  unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged | unset %covering.someone
+  unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %target.flag | unset %trickster.dodged | unset %covering.someone
   unset %techincrease.check |  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
   unset %multihit.message.on | unset %critical.hit.chance | unset %drainsamba.on | unset %absorb | unset %counterattack
+  unset %shield.block.line | unset %inflict.meleewpn
 
   ; Get the weapon equipped
   if ($person_in_mech($1) = false) {  $weapon_equipped($1) }
   if ($person_in_mech($1) = true) { set %weapon.equipped $readini($char($1), mech, equippedweapon) }
 
-  ; Calculate, deal, and display the damage..
-  $calculate_damage_weapon($1, %weapon.equipped, $2)
 
-  if ($person_in_mech($1) = true) { $mech.energydrain($1, melee) }
+  ; If it's an AOE attack, perform that here.  Else, do a single hit.
 
-  set %wpn.element $readini($dbfile(weapons.db), %weapon.equipped, element)
-  if ((%wpn.element != none) && (%wpn.element != $null)) { 
-    var %target.element.heal $readini($char($2), modifiers, heal)
-    if ($istok(%target.element.heal,%wpn.element,46) = $true) { 
-      unset %wpn.element
-      unset %counterattack
-      $heal_damage($1, $2, %weapon.equipped)
-      $display_heal($1, $2, weapon, %weapon.equipped)
-      if (%battleis = on)  { $check_for_double_turn($1) | halt } 
+  if ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe) {
+
+    ; Calculate, deal, and display the damage..
+    $calculate_damage_weapon($1, %weapon.equipped, $2)
+
+    if ($person_in_mech($1) = true) { $mech.energydrain($1, melee) }
+
+    set %wpn.element $readini($dbfile(weapons.db), %weapon.equipped, element)
+    if ((%wpn.element != none) && (%wpn.element != $null)) { 
+      var %target.element.heal $readini($char($2), modifiers, heal)
+      if ($istok(%target.element.heal,%wpn.element,46) = $true) { 
+        unset %wpn.element
+        unset %counterattack
+        $heal_damage($1, $2, %weapon.equipped)
+        $display_heal($1, $2, weapon, %weapon.equipped)
+        if (%battleis = on)  { $check_for_double_turn($1) | halt } 
+      }
     }
+    unset %wpn.element
+
+    if ((%counterattack != on) && (%counterattack != shield)) { 
+      $drain_samba_check($1)
+      $deal_damage($1, $2, %weapon.equipped)
+      $display_damage($1, $2, weapon, %weapon.equipped)
+    }
+
+    if (%counterattack = on) { 
+      $deal_damage($2, $1, %weapon.equipped)
+      $display_damage($1, $2, weapon, %weapon.equipped)
+    }
+
+    if (%counterattack = shield) { 
+      $deal_damage($2, $1, $readini($char($2), weapons, equippedLeft))
+      $display_damage($1, $2, weapon, $readini($char($2), weapons, equippedLeft))
+    }
+
+
+    unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
+    unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged | unset %covering.someone
+    unset %techincrease.check |  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
+    unset %multihit.message.on | unset %critical.hit.chance
+
+    $formless_strike_check($1)
+
+    ; Time to go to the next turn
+    if (%battleis = on)  { $check_for_double_turn($1) | halt }
   }
-  unset %wpn.element
 
-  if (%counterattack != on) { 
-    $drain_samba_check($1)
-    $deal_damage($1, $2, %weapon.equipped)
-    $display_damage($1, $2, weapon, %weapon.equipped)
+  if ($readini($dbfile(weapons.db), %weapon.equipped, target) = aoe) {
+
+    if ($is_charmed($1) = true) { 
+      var %current.flag $readini($char($1), info, flag)
+      if ((%current.flag = $null) || (%current.flag = npc)) { $melee.aoe($1, %weapon.equipped, $2, player) | halt }
+      if (%current.flag = monster) { $melee.aoe($1, %weapon.equipped, $2, monster) | halt }
+    }
+    else {
+      ; check for confuse.
+      if ($is_confused($1) = true) { 
+        var %random.target.chance $rand(1,2)
+        if (%random.target.chance = 1) { var %user.flag monster }
+        if (%random.target.chance = 2) { unset %user.flag }
+      }
+
+      ; Determine if it's players or monsters
+      if (%user.flag = monster) { $melee.aoe($1, %weapon.equipped, $2, player) | halt }
+      if ((%user.flag = $null) || (%user.flag = npc)) { $melee.aoe($1, %weapon.equipped, $2,monster) | halt }
+    }
+
   }
 
-  if (%counterattack = on) { 
-    $deal_damage($2, $1, %weapon.equipped)
-    $display_damage($1, $2, weapon, %weapon.equipped)
-  }
-
-
-  unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
-  unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged | unset %covering.someone
-  unset %techincrease.check |  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
-  unset %multihit.message.on | unset %critical.hit.chance
-
-  $formless_strike_check($1)
-
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) | halt }
 }
 
 alias calculate_damage_weapon {
@@ -289,6 +321,7 @@ alias calculate_damage_weapon {
   set %enemy.defense $readini($char($3), battle, def)
 
   $defense_down_check($3)
+  $defense_up_check($3)
 
   ; Check to see if the weapon has an "IgnoreDefense=" flag.  If so, cut the def down.
   var %ignore.defense.percent $readini($dbfile(weapons.db), $2, IgnoreDefense)
@@ -470,6 +503,10 @@ alias calculate_damage_weapon {
     if (%attack.damage <= 0) { set %attack.damage 1 }
   }
 
+  ; Check for a shield block.
+  $shield_block_check($3, $1, $2)
+
+
   ; Check for a critical hit.
   var %critical.hit.chance $rand(1,100)
 
@@ -514,12 +551,22 @@ alias calculate_damage_weapon {
 
   if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
 
+  ; Are we dual-wielding?  If so, increase the hits by the # of hits of the second weapon.
+  if ($readini($char($1), weapons, equippedLeft) != $null) {
+    var %left.hits $readini($dbfile(weapons.db), $readini($char($1), weapons, equippedLeft), hits)
+    if (%left.hits = $null) { var %left.hits 1 }
+    inc %weapon.howmany.hits %left.hits 
+  }
+
   if ($1 = demon_wall) {  $demon.wall.boost($1) }
 
   $first_round_dmg_chk($1, $3)
 
   ; check for melee counter
   $counter_melee($1, $3, $2)
+
+  ; Check for countering an attack using a shield
+  $shield_reflect_melee($1, $3, $2)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)
@@ -568,10 +615,10 @@ alias calculate_damage_weapon {
   if (%attack.damage = 0) { return }
 
   if (%weapon.howmany.hits = $null) || (%weapon.howmany.hits <= 0) { set %weapon.howmany.hits 1
-    if (%counterattack != on) { $double.attack.check($1, $3, $rand(1,100)) }
+    if ((%counterattack != on) && ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe)) { $double.attack.check($1, $3, $rand(1,100)) }
   }
   if (%weapon.howmany.hits = 1) {  
-    if (%counterattack != on) { $double.attack.check($1, $3, $rand(1,100)) }
+    if ((%counterattack != on) && ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe)) { $double.attack.check($1, $3, $rand(1,100)) }
   }
 
   if (%weapon.howmany.hits = 2) {  $double.attack.check($1, $3, 100) }
@@ -580,6 +627,159 @@ alias calculate_damage_weapon {
   if (%weapon.howmany.hits = 5) { set %weapon.howmany.hits 5 | $fivehit.attack.check($1, $3, 100) }
   if (%weapon.howmany.hits >= 6) { set %weapon.howmany.hits 6 | $sixhit.attack.check($1, $3, 100) }
 }
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Performs a melee AOE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+alias melee.aoe {
+  ; $1 = user
+  ; $2 = weapon name
+  ; $3 = target
+  ; $4 = type, either player or monster 
+
+  set %wait.your.turn on
+
+  unset %who.battle | set %number.of.hits 0
+  unset %absorb  | unset %element.desc
+
+  ; Display the weapon type description
+  $set_chr_name($1) | set %user %real.name
+  if ($person_in_mech($1) = true) { set %user %real.name $+ 's $readini($char($1), mech, name) } 
+
+  var %enemy all targets
+
+  var %weapon.type $readini($dbfile(weapons.db), $2, type) |  var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt) 
+
+  $display.system.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)
+  set %showed.melee.desc true
+
+  if ($readini($dbfile(weapons.db), $2, absorb) = yes) { set %absorb absorb }
+
+  var %melee.element $readini($dbfile(weapons.db), $2, element)
+
+  ; If it's player, search out remaining players that are alive and deal damage and display damage
+  if ($4 = player) {
+    var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+    while (%battletxt.current.line <= %battletxt.lines) { 
+      set %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+      if ($readini($char(%who.battle), info, flag) = monster) { inc %battletxt.current.line }
+      else { 
+
+        if (($readini($char($1), status, confuse) != yes) && ($1 = %who.battle)) { inc %battletxt.current.line 1 }
+
+        var %current.status $readini($char(%who.battle), battle, status)
+        if ((%current.status = dead) || (%current.status = runaway)) { inc %battletxt.current.line 1 }
+        else { 
+
+          if ($readini($char($1), battle, hp) > 0) {
+            inc %number.of.hits 1
+            var %target.element.heal $readini($char(%who.battle), modifiers, heal)
+            if ((%melee.element != none) && (%melee.element != $null)) {
+              if ($istok(%target.element.heal,%melee.element,46) = $true) { 
+                $heal_damage($1, %who.battle, %weapon.equipped)
+                inc %battletxt.current.line 1 
+              }
+            }
+
+            if (($istok(%target.element.heal,%melee.element,46) = $false) || (%melee.element = none)) { 
+
+              $covercheck(%who.battle, $2, AOE)
+
+              $calculate_damage_weapon($1, %weapon.equipped, %who.battle)
+              $deal_damage($1, %who.battle, %weapon.equipped)
+
+              $display_aoedamage($1, %who.battle, $2, %absorb, melee)
+              unset %attack.damage
+
+            }
+          }
+
+
+          unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
+          unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged | unset %covering.someone
+          unset %techincrease.check |  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
+          unset %multihit.message.on | unset %critical.hit.chance
+
+          inc %battletxt.current.line 1 | inc %aoe.turn 1
+        } 
+      }
+    }
+  }
+
+
+  ; If it's monster, search out remaining monsters that are alive and deal damage and display damage.
+  if ($4 = monster) { 
+    var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 | set %aoe.turn 1
+    while (%battletxt.current.line <= %battletxt.lines) { 
+      set %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+      if ($readini($char(%who.battle), info, flag) != monster) { inc %battletxt.current.line }
+      else { 
+        inc %number.of.hits 1
+        var %current.status $readini($char(%who.battle), battle, status)
+        if ((%current.status = dead) || (%current.status = runaway)) { inc %battletxt.current.line 1 }
+        else { 
+          if ($readini($char($1), battle, hp) > 0) {
+
+            var %target.element.heal $readini($char(%who.battle), modifiers, heal)
+            if ((%melee.element != none) && (%melee.element != $null)) {
+              if ($istok(%target.element.heal,%melee.element,46) = $true) { 
+                $heal_damage($1, %who.battle, %weapon.equipped)
+              }
+            }
+
+            if (($istok(%target.element.heal,%melee.element,46) = $false) || (%melee.element = none)) { 
+              $covercheck(%who.battle, $2, AOE)
+
+
+              $calculate_damage_weapon($1, %weapon.equipped, %who.battle)
+              $deal_damage($1, %who.battle, %weapon.equipped)
+              $display_aoedamage($1, %who.battle, $2, %absorb, melee)
+
+            }
+          }
+
+          unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
+          unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged | unset %covering.someone
+          unset %techincrease.check |  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
+          unset %multihit.message.on | unset %critical.hit.chance
+
+          inc %battletxt.current.line 1 | inc %aoe.turn 1 | unset %attack.damage
+        } 
+      }
+    }
+  }
+
+  unset %element.desc | unset %showed.melee.desc | unset %aoe.turn
+  set %timer.time $calc(%number.of.hits * 1.1) 
+
+  if ($readini($dbfile(weapons.db), $2, magic) = yes) {
+    ; Clear elemental seal
+    if ($readini($char($1), skills, elementalseal.on) = on) { 
+      writeini $char($1) skills elementalseal.on off 
+    }
+  }
+
+  unset %statusmessage.display
+  if ($readini($char($1), battle, hp) > 0) {
+    set %inflict.user $1 | set %inflict.meleewpn $2 
+    $self.inflict_status(%inflict.user, %inflict.meleewpn, melee)
+    if (%statusmessage.display != $null) { $display.system.message(%statusmessage.display, battle) | unset %statusmessage.display }
+  }
+
+
+  ; Turn off the True Strike skill
+  writeini $char($1) skills truestrike.on off
+
+  if (%timer.time > 20) { %timer.time = 20 }
+
+  unset %melee.element | $formless_strike_check($1)
+
+  /.timerCheckForDoubleSleep $+ $rand(a,z) $+ $rand(1,1000) 1 %timer.time /check_for_double_turn $1
+  halt
+}
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Skill and Mastery checks

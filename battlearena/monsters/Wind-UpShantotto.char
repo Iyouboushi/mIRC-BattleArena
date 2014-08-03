@@ -152,16 +152,17 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Laevatein
-Laevatein=$calc(100 + $current.battlestreak)
+Laevatein=$calc(200 + $current.battlestreak)
 
 
 
 [Skills]
 Zen=5
 ClearMind=3
-BloodSpirit=100
+BloodSpirit=20
 ManaWall=1
 MagicMirror=1
+Wizardry=$rand(200,400)
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -178,15 +179,15 @@ Resist-Stun=100
 
 
 [Techniques]
-FlareII=$calc(100 + $current.battlestreak)
-QuakeII=$calc(100 + $current.battlestreak)
-FloodII=$calc(100 + $current.battlestreak)
-TornadoII=$calc(100 + $current.battlestreak)
-FreezeII=$calc(100 + $current.battlestreak)
-BurstII=$calc(100 + $current.battlestreak)
-CureV=$calc(100 + $current.battlestreak)
-DarknessII=$calc(100 + $current.battlestreak)
-LightII=$calc(100 + $current.battlestreak)
+FlareII=$calc(200 + $current.battlestreak)
+QuakeII=$calc(200 + $current.battlestreak)
+FloodII=$calc(200 + $current.battlestreak)
+TornadoII=$calc(200 + $current.battlestreak)
+FreezeII=$calc(200 + $current.battlestreak)
+BurstII=$calc(200 + $current.battlestreak)
+CureV=$calc(200 + $current.battlestreak)
+DarknessII=$calc(200 + $current.battlestreak)
+LightII=$calc(200 + $current.battlestreak)
 Esuna=1
 Dispel=1
 

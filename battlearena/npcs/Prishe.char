@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2000
 Tp=150
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Name=Prishe
 
 
 [Battle]
 Hp=2000
 Tp=150
-Str=2500
-Def=2500
-Int=2500
-Spd=2500
+Str=$calc(20 + $current.battlestreak)
+Def=$calc(20 + $current.battlestreak)
+Int=$calc(20 + $current.battlestreak)
+Spd=$calc(20 + $current.battlestreak)
 Status=alive
 
 
@@ -95,29 +95,29 @@ zombie.timer=1
 
 [Weapons]
 Equipped=PrishePowers
-PrishePowers=$calc(100 + $current.battlestreak)
+PrishePowers=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
 Resist-Intimidate=100
-MartialArts=100
-Wizardry=100
+MartialArts=1000
+Wizardry=1000
 RoyalGuard=1
 Zen=5
 ClearMind=1
 
 [Techniques]
-AsuranFists=$calc(200 + $current.battlestreak)
-NullifyingDropkick=$calc(300 + $current.battlestreak)
-AuroralUppercut=$calc(300 + $current.battlestreak)
-TornadoKick=$calc(100 + $current.battlestreak)
-OneInchPunch=$calc(100 + $current.battlestreak)
-ShinjinSpiral=$calc(100 + $current.battlestreak)
-Holy=$calc(100 + $current.battlestreak)
-BanishV=$calc(100 + $current.battlestreak)
-CureIV=$calc(100 + $current.battlestreak)
+AsuranFists=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+NullifyingDropkick=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+AuroralUppercut=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+TornadoKick=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+OneInchPunch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ShinjinSpiral=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Holy=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BanishV=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+CureIV=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 
