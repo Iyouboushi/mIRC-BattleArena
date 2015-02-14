@@ -489,6 +489,11 @@ Max=50
 Type=Resistance
 Info=This skill lowers the chance that you will be come petrified in battle by 1% each level
 
+[Resist-Sleep]
+Cost=0
+Max=0
+Type=REsistance
+Info=This skill lowers the chance that you will be put to sleep. Players cannot buy this.
 
 =============================================
 KILLER TRAIT SKILLS
