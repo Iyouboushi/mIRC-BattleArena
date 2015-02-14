@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=3500
+Hp=4000
 Tp=500
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
-IgnitionGauge=100
+Str=$calc(60 + $current.battlestreak)
+Def=$calc(60 + $current.battlestreak)
+Int=$calc(60 + $current.battlestreak)
+Spd=$calc(60 + $current.battlestreak)
+IgnitionGauge=110
 Name=Bayonetta
 
 
 [Battle]
-Hp=3500
+Hp=4000
 Tp=500
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
-IgnitionGauge=100
+Str=$calc(60 + $current.battlestreak)
+Def=$calc(60 + $current.battlestreak)
+Int=$calc(60 + $current.battlestreak)
+Spd=$calc(60 + $current.battlestreak)
+IgnitionGauge=110
 Status=alive
 
 
@@ -33,8 +33,9 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a woman with a very tall figure that wears a black outfit. She wields four guns, one in each hand and one attached to the rear of her high heels on both feet.
+Char=is a tall woman with short black hair, and wears a black, leather-like outfit. She wields four guns, one in each hand and one attached to the rear of her high heels on both feet.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
+mech=summons a large black and gold mech with twin gatling guns on its hands and a large crescent moon on the back.
 
 [Stuff]
 RedOrbs=0
@@ -99,13 +100,22 @@ slow.timer=1
 zombie.timer=1
 
 [Weapons]
-Equipped=ScarboroughFair
-ScarboroughFair=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
+Equipped=LoveIsBlue
+LoveIsBlue=$calc(60 + $current.battlestreak)
+Kafka=$calc(60 + $current.battlestreak)
+Chernobog=$calc(60 + $current.battlestreak)
+ScarboroughFair=$calc(60 + $current.battlestreak)
+Shuraba=$calc(60 + $current.battlestreak)
+Kulshedra=$calc(60 + $current.battlestreak)
 
 [Skills]
-MartialArts=2000
-Wizardry=2000
-Gunslinger=2000
+Regen=20
+Whipster=2000
+Swordmaster=2000
+Archery=2000
+Harvester=2000
+Gunslinger=2500
+Wizardry=3000
 Zen=5
 ClearMind=3
 MightyStrike=1
@@ -121,32 +131,74 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-Resist-Curse=100
-Resist-stun=100
+Resist-Stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
-
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
 BulletClimax=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
 HeelSlide=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+Tachi:Shoha=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+Tachi:Rana=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+Guillotine=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+ShadowOfDeath=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+TwinDragonLash=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+SerpentBite=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+EagleEyeShot=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+JishnusRadiance=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
 MadamaButterflyFist=$iif($current.battlestreak < 80, 0, $calc(120 + $current.battlestreak))
 MadamaButterflyHeel=$iif($current.battlestreak < 80, 0, $calc(120 + $current.battlestreak))
-WheelofTorture=$iif($current.battlestreak < 100, 0, $calc(800 + $current.battlestreak))
-Gomorrah=$iif($current.battlestreak < 100, 0, $calc(800 + $current.battlestreak))
-Malphas=$iif($current.battlestreak < 125, 0, $calc(800 + $current.battlestreak))
-Hekatoncheir=$iif($current.battlestreak < 150, 0, $calc(800 + $current.battlestreak))
-Scolopendra=$iif($current.battlestreak < 200, 0, $calc(800 + $current.battlestreak))
-Phantasmaraneae=$iif($current.battlestreak < 300, 0, $calc(800 + $current.battlestreak))
+WheelofTorture=$iif($current.battlestreak < 100, 0, $calc(500 + $current.battlestreak))
+
 
 [Ignitions]
-WitchTime=$iif($current.battlestreak < 1000, 0, 1)
+UmbranClimax=$iif($current.battlestreak < 300, 0, 1)
 
 
 [Item_Amount]
 
+[Augments]
+LoveIsBlue=MeleeBonus.TechBonus.MagicBonus.EnhanceParry.EnhanceRanged.EnhanceStylePoints
+Kafka=TechBonus.IgnoreMetalDefense.AdditionalHit.MeleeBonus.EnhanceRanged.EnhanceStylePoints
+Chernobog=IgnoreGuardian.IgnoreDefense.EnhanceScythe.MeleeBonus.TecBonus.EnhanceStylePoints
+ScarboroughFair=MeleeBonus.TechBonus.MagicBonus.EnhanceParry.EnhanceRange.EnhanceStylePoints
+Kulshedra=MeleeBonus.EnhanceWhip.EnhanceDodge.TechBonus.EnhanceStylePoints
+Shuraba=Drain.RenkeiBonus.EnhanceKatana.MeleeBonus.TechBonus.EnhanceStylePoints
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=30
 WeaponMasterXP=1
+
+
+[Mech]
+name=Umbran Armor
+inUse=false
+EngineLevel=$iif($current.battlestreak < 1000, 0, 1.2)
+HpMax=12000
+HpCurrent=12000
+EnergyMax=6000
+EnergyCurrent=6000
+EquippedCore=MagicAmplifier
+EquippedWeapon=UmbranArmorGuns
+Augments=MagicBonus

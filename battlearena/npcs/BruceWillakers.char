@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=5000
+Hp=4000
 Tp=500
 Str=$calc(50 + $current.battlestreak)
 Def=$calc(50 + $current.battlestreak)
@@ -10,7 +10,7 @@ Name=Old Man Willakers
 
 
 [Battle]
-Hp=5000
+Hp=4000
 Tp=500
 Str=$calc(50 + $current.battlestreak)
 Def=$calc(50 + $current.battlestreak)
@@ -101,42 +101,63 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Excaliju
-Excaliju=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
-Virendra=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
+Excaliju=$calc(50 + $current.battlestreak)
+Virendra=$calc(50 + $current.battlestreak)
 
 [Skills]
-ManaWall=1
-RoyalGuard=1
-royalguard.on=on
-manawall.on=on
-Swordmaster=1000
-Archery=1000
-Resist-Paralysis=100
-Resist-Amnesia=100
+PerfectDefense=1
+perfectdefense.on=on
+Swordmaster=2500
+Archery=2500
+Zen=5
 Resist-Charm=100
+Resist-Poison=100
 Resist-Zombie=100
 Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Curse=100
+Resist-Paralysis=100
+Resist-confuse=100
 Resist-Stun=100
-Zen=5
-
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-MightyHealingAle=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-DeathStare=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Requiescat=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-MillionStab=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-ApexArrow=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-EagleEyeShot=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Requiescat=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
+MightyHealingAle=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
+DeathStare=$iif($current.battlestreak < 300, 0, $calc(500 + $current.battlestreak))
+ApexArrow=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
+EagleEyeShot=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
+MillionStab=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
 
 [Item_Amount]
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=25
 WeaponMasterXP=1
 
 [Ignitions]
-ExcalijuProc=1
+ExcalijuProc=$iif($current.battlestreak < 300, 0, 1)

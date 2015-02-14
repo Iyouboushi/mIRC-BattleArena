@@ -8,7 +8,7 @@ Swords=Mythril_Sword.Joyeuse.Rebellion.Excalibur.Murgleis.JewelSword.SilverSword
 Whips=LeatherWhip.DemonWhip.Vampire_Killer
 Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Boomstick.AK47.Armageddon.X-Buster
 Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva
-Katanas=PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Zangetsu.Senbonzakura.Hyourinmaru
+Katanas=PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Zangetsu.Senbonzakura.Hyourinmaru.Naturaleza
 Wands=YewWand.PixiWand.OakWand.PineWand.IridialStaff.ElderWand.Laevatein.EbonyWand.BahamutsStaff.Glyphs
 Spears=Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige
 Scythes=DeathScythe.Vendetta.Apocalypse.Redemption
@@ -18,13 +18,18 @@ Daggers=MainGauche.Mandau.Terpsichore
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
 Defunct=KaiserKnuckles.LexTalionis.Soulsaber.Almace.Caladbolg.ChainWhip.SpikedSteelWhip.DragontailWhip.Quicksilver.SniperRifle.Annihilator.DeathPenalty.Keitonotachi.Hagun.Masamune.Rhongomiant
+
 ; The lists after this are for monster weapons only.  Players do not have access to these.
 MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower.Aettir
 MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.SinistralPower.JesterWand.VampireArt.Puppetry.Benihime.PeoplesFist.SuccubusPower.DragonShouts.BlueEyesPower.BlackMagic.DragonSword.OctoArms.Casull&Jackal.AlucardSword.Auto9.Railgun.WoolyTusks.OrochiPower.BogardGloves.GiygasPower.AtlantisPower.Broad_Sword.Rose's_Rapier.ShihouinFists.ImpHorn.GhostPower.ChozoArmCannon.ZeroSaber.SantaRifle.ScorpionFists.Legion
+
 MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.GoylePower.SwordOfTheFallenDevil.X-BusterMk1.X-BusterMk2.X-BusterMk3.MonkeyIsland_Cutlass
-MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.KosmosRevolver.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.MegaBusterMk1.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower
+
+MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.KosmosRevolver.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower
+
 MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.Morgenstern.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws
+
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower
 
 ============================================
 WEAPON TEMPLATE
@@ -470,7 +475,6 @@ Hits=1
 BasePower=60
 Upgrade=0
 
-
 [SubMachineGun]
 Cost=50
 Type=Gun
@@ -480,7 +484,6 @@ Element=None
 Hits=$rand(4,5)
 BasePower=25
 Upgrade=1000
-
 
 [AK47]
 Cost=50
@@ -502,7 +505,6 @@ Element=None
 Hits=2
 BasePower=20
 Upgrade=300
-
 
 [SniperRifle]
 Cost=10
@@ -813,6 +815,17 @@ BasePower=65
 Upgrade=1500
 2Handed=true
 
+[Naturaleza]
+Cost=30
+Type=Katana
+Info=A blade carried by DeathStalker, made by Kasake Sohjin.
+Abilities=Ashes.Dismay.ThousandCuts
+Element=Light
+Hits=3
+BasePower=20
+Upgrade=2000
+CanCounter=true
+
 =============================================
 WANDS & STAVES
 =============================================
@@ -908,7 +921,6 @@ Element=none
 Hits=1
 BasePower=1
 Upgrade=200
-
 
 [Glyphs]
 Cost=30
@@ -1088,6 +1100,138 @@ Hits=1
 BasePower=400
 Upgrade=0
 
+[BasicMechSword]
+Cost=400
+EnergyCost=100
+Type=Sword
+Info=A rather basic sword for use by a mech.
+Abilities=DoubleSwing.SwordBlaze
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+
+[ImprovedMechSword]
+Cost=1000
+EnergyCost=150
+Type=Sword
+Info=An improved sword for use by a mech.
+Abilities=DoubleSwingII.SwordBlazeII
+Element=None
+Hits=1
+BasePower=200
+Upgrade=0
+
+[FlawlessMechSword]
+Cost=2500
+EnergyCost=200
+Type=Sword
+Info=A sword with no flaws for use by a mech.
+Abilities=DoubleSwingIII.SwordBlazeIII
+Element=None
+Hits=1
+BasePower=300
+Upgrade=0
+
+[DarksteelOreSword]
+Cost=4000
+EnergyCost=250
+Type=Sword
+Info=A powerful mech sword that is made out of the darksteel ore.
+Abilities=TripleSwing.SwordBlazeIII
+Element=None
+Hits=1
+BasePower=400
+Upgrade=0
+
+[BasicMechFists]
+Cost=400
+EnergyCost=100
+Type=HandToHand
+Info=A rather basic set of fists for use by a mech.
+Abilities=DoubleStrike.MartialBlaze
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+
+[ImprovedMechFists]
+Cost=1000
+EnergyCost=150
+Type=HandToHand
+Info=An improved set of fists for use by a mech.
+Abilities=DoubleStrikeII.MartialBlazeII
+Element=None
+Hits=1
+BasePower=200
+Upgrade=0
+
+[FlawlessMechFists]
+Cost=2500
+EnergyCost=200
+Type=HandToHand
+Info=A set of fists with no flaws for use by a mech.
+Abilities=DoubleStrikeIII.MartialBlazeIII
+Element=None
+Hits=1
+BasePower=300
+Upgrade=0
+
+[DarksteelOreFists]
+Cost=4000
+EnergyCost=250
+Type=HandToHand
+Info=A set of fists for use by a mech made out of the darksteel ore.
+Abilities=TripleStrike.MartialBlazeIII
+Element=None
+Hits=1
+BasePower=400
+Upgrade=0
+
+[BasicMechStaff]
+Cost=400
+EnergyCost=100
+Type=Stave
+Info=A rather basic staff for use by a mech
+Abilities=MechFlare.MechQuake.MechFlood.MechTornado.MechFreeze.MechBurst.MechDarkness.MechBanish.MechFire.MechStone.MechWater.MechWind.MechIce.MechThunder.MechLight.MechShadow
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+
+[ImprovedMechStaff]
+Cost=1000
+EnergyCost=150
+Type=Stave
+Info=An improved staff for use by a mech.
+Abilities=MechFlareII.MechQuakeII.MechFloodII.MechTornadoII.MechFreezeII.MechBurstII.MechDarknessII.MechBanishII.MechFireII.MechStoneII.MechWaterII.MechWindII.MechIceII.MechThunderII.MechLightII.MechShadowII
+Element=None
+Hits=1
+BasePower=200
+Upgrade=0
+
+[FlawlessMechStaff]
+Cost=2500
+EnergyCost=200
+Type=Stave
+Info=A staff with no flaws for use by a mech.
+Abilities=MechFlareIII.MechQuakeIII.MechFloodIII.MechTornadoIII.MechFreezeIII.MechBurstIII.MechDarknessIII.MechBanishIII.MechFireIII.MechStoneIII.MechWaterIII.MechWindIII.MechIceIII.MechThunderIII.MechLightIII.MechShadowIII
+Element=None
+Hits=1
+BasePower=300
+Upgrade=0
+
+[DarksteelOreStaff]
+Cost=4000
+EnergyCost=250
+Type=Stave
+Info=A staff for use by a mech which is made out of the darksteel ore.
+Abilities=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechFireIV.MechStoneIV.MechWaterIV.MechWindIV.MechIceIV.MechThunderIV.MechLightIV.MechShadowIV.MechUltima.MechKaustra
+Element=None
+Hits=1
+BasePower=400
+Upgrade=0
+
 [AsherGuns]
 Cost=0
 EnergyCost=100
@@ -1132,6 +1276,19 @@ Hits=2
 BasePower=500
 Upgrade=0
 
+[UmbranArmorGuns]
+Cost=0
+Type=Gun
+Info=Gatling guns for the Umbran Armor mech.
+Abilities=DoubleShotIII.GunBlazeIII
+Element=None
+Hits=$rand(2,4)
+BasePower=500
+Upgrade=0
+IgnoreDefense=10
+HurtEthereal=true
+EnergyCost=100
+CanCounter=false
 
 =============================================
 MONSTER WEAPONS
@@ -1243,7 +1400,7 @@ HurtEthereal=true
 Cost=0
 Type=Stave
 Info=A large staff that is black in color. The bottom has gold on it and the top of the staff splits into four before combining back together. A ruby rests in the split and gold runes run along the staff.
-Abilities=AeroV.BlizzardV.FireV.Blind.Poison.Paralyze.Darkra.DarkV.BanishV
+Abilities=AeroV.BlizzardV.FireV.DarkV.BanishV.Geohelix.Hydrohelix.Anemohelix.PyroHelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix
 Element=Light
 Hits=1
 Basepower=70
@@ -2258,16 +2415,86 @@ Hits=2
 BasePower=30
 Upgrade=0
 
+[LoveIsBlue]
+Cost=0
+Type=Gun
+Info=A set of guns masterfully crafted by the famed demon-smith Rodin, waiting for their time to finally be put to use. Individually, their names are Prelude, Minuet, Toccata, and Nocturne.
+Abilities=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel
+Element=None
+Hits=$rand(2,4)
+BasePower=50
+Upgrade=0
+HurtEthereal=True
+CanShieldReflect=True
+CanCounter=False
+2Handed=true
+
+[Kafka]
+Cost=0
+Type=Bow
+Info=A bow and arrow made with a man who once cursed another and who in turn metamorphosed into a hideous insect. Still living inside a part of the bow's frame, he fires cursed arrows of savage, venomous bugs.
+Abilities=EagleEyeshot.JishnuusRadiance
+Element=None
+Hits=1
+BasePower=40
+Upgrade=0
+IgnoreDefense=10
+HurtEthereal=True
+CanCounter=False
+2Handed=true
+
+[Chernobog]
+Cost=0
+Type=Scythe
+Info=A scythe containing souls captured by the god of death Chernobog, who had been expelled to the farthest depths of Inferno. Rodin infused the scythe with some particularly exquisite souls, restoring the weapon to its formor glory.
+Abilities=Guillotine.ShadowOfDeath
+Element=Dark
+Hits=1
+BasePower=40
+Upgrade=0
+HurtEthereal=True
+CanCounter=True
+2Handed=true
+
 [ScarboroughFair]
 Cost=0
 Type=Gun
-Info=The set of magical handguns used by Bayonetta.
-Abilities=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel.Gomorrah.Malphas.Hekatoncheir.Scolopendra.Phantasmaraneae
+Info=Crafted by the famed demon-smith Rodin, these four guns have been crowned with the names Parsley, Sage, Rosemary, and Thyme. Pushing Bayonetta's magic to its limits, these guns' rate of fire and stopping power are incredible.
+Abilities=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel
 Element=None
 Hits=$rand(2,4)
-BasePower=30
+BasePower=50
 Upgrade=0
 HurtEthereal=true
+CanCounter=False
+CanShieldReflect=True
+2Handed=true
+
+[Shuraba]
+Cost=0
+Type=Katana
+Info=A living katana, pulsing with the heart of Ashura, the demon god of war. Always seeking blood, the blade will even suck the very souls out of its victims.
+Abilities=Tachi:Shoha.Tachi:Rana
+Element=Dark
+Hits=1
+BasePower=40
+Upgrade=0
+HurtEthereal=True
+CanCounter=True
+2Handed=true
+
+[Kulshedra]
+Cost=0
+Type=Whip
+Info=A possessed whip, sealing away the soul of the ancient serpentine demon Kulshedra. Summoning the power of the demon from a portal on the weapon's hilt, it can be used in the same manner as a normal whip.
+Abilities=TwinDragonLash.SerpentBite.DarkLash
+Element=None
+Hits=$rand(1,3)
+BasePower=40
+Upgrade=0
+HurtEthereal=True
+CanCounter=True
+2Handed=true
 
 [ArteasBow]
 Cost=0
@@ -2334,23 +2561,65 @@ HurtEthereal=true
 Cost=0
 Type=Gun
 Info=The weapon used by KOS-MOS.
-Abilities=R-Cannon.R-Blade.X-Buster.R-Dragon.G-Shot.K-Axe.Hilbert_Effect.Nemesis.S-Chain.F-Scythe.DexEtherRa.DexEtherFa.DexEtherLe.PhoenixStrike.HoleyGloves
+Abilities=R-Cannon.R-Blade.X-Buster.R-Dragon.G-Shot.K-Axe.Hilbert_Effect.Nemesis.S-Chain.F-Scythe.DexEtherRa.DexEtherFa.DexEtherLe
 Element=None
 Hits=2
 BasePower=30
 Upgrade=0
 HurtEthereal=true
 
+[KosmosFists]
+Cost=0
+Type=HandToHand
+Info=The fists of the android, KOS-MOS.
+Abilities=R-Cannon.Hilbert_Effect.S-Chain.DexEtherRa.DexEtherFa.DexEtherLe
+Element=None
+Hits=2
+BasePower=30
+Upgrade=0
+IgnoreDefense=25
+HurtEthereal=True
+2Handed=True
+CanShieldReflect=True
+CanCounter=True
+2Handed=true
+
 [HoleyGloves]
 Cost=0
 Type=HandToHand
 Info=The gloves used by chaos.
-Abilities=SeraphimRush.AngelShot.DemonBanisher.DivineSpear.Cataclysm.SeraphimWave.HealingDew
+Abilities=PhoenixStrike.SeraphimRush.AngelShot.DemonBanisher.DivineSpear.Cataclysm.SeraphimWave.HealingDew
 Element=Light
 Hits=2
 BasePower=30
 Upgrade=0
 HurtEthereal=true
+2Handed=true
+
+[KanonjiStaff]
+Cost=0
+Type=Stave
+Info=The staff of Don Kanonji
+Abilities=KanonBall.GoldenKanonBall
+Element=None
+Hits=1
+BasePower=15
+Upgrade=0
+HurtEthereal=True
+2Handed=True
+CanCounter=True
+
+[MarioFists]
+Cost=0
+Type=HandToHand
+Info=The fists of Mario. Mama mia!
+Abilities=MarioJump.StarPower.FireFlower
+Element=None
+Hits=2
+BasePower=30
+Upgrade=0
+2Handed=True
+CanCounter=True
 
 [ValkyrieSword]
 Cost=0
@@ -2522,6 +2791,16 @@ Abilities=Gobble
 Element=none
 Hits=1
 BasePower=30
+Upgrade=0
+
+[LeprechaunPower]
+Cost=0
+Type=HandToHand
+Info=The power of a little leprechaun
+Abilities=LuckyCharms
+Element=none
+Hits=1
+BasePower=20
 Upgrade=0
 
 [PoisonFists]
@@ -2703,6 +2982,26 @@ Cost=0
 Type=Gun
 Info=The weapon of Mega Man.
 Abilities=HyperBomb.SuperArm.RollingCutter.ThunderBeam.IceSlasher.FireStorm
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+Upgrade=0
+
+[MegaBusterMk2]
+Cost=0
+Type=Gun
+Info=The weapon of Mega Man.
+Abilities=MetalBlade.TimeStopper.QuickBoomerang.LeafShield.AirShooter.CrashBombs.BubbleLead.AtomicFire
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+Upgrade=0
+
+[MegaBusterMk3]
+Cost=0
+Type=Gun
+Info=The weapon of Mega Man.
+Abilities=NeedleCannon.MagnetMissile.GeminiLaser.HardKnuckle.TopSpin.ShadowBlade.SparkShock.SearchSnake
 Element=None
 Hits=$rand(1,2)
 BasePower=30
@@ -3158,138 +3457,6 @@ Hits=1
 BasePower=30
 HurtEthereal=true
 
-[BasicMechSword]
-Cost=400
-EnergyCost=100
-Type=Sword
-Info=A rather basic sword for use by a mech.
-Abilities=DoubleSwing.SwordBlaze
-Element=None
-Hits=1
-BasePower=100
-Upgrade=0
-
-[ImprovedMechSword]
-Cost=1000
-EnergyCost=150
-Type=Sword
-Info=An improved sword for use by a mech.
-Abilities=DoubleSwingII.SwordBlazeII
-Element=None
-Hits=1
-BasePower=200
-Upgrade=0
-
-[FlawlessMechSword]
-Cost=2500
-EnergyCost=200
-Type=Sword
-Info=A sword with no flaws for use by a mech.
-Abilities=DoubleSwingIII.SwordBlazeIII
-Element=None
-Hits=1
-BasePower=300
-Upgrade=0
-
-[DarksteelOreSword]
-Cost=4000
-EnergyCost=250
-Type=Sword
-Info=A powerful mech sword that is made out of the darksteel ore.
-Abilities=TripleSwing.SwordBlazeIII
-Element=None
-Hits=1
-BasePower=400
-Upgrade=0
-
-[BasicMechFists]
-Cost=400
-EnergyCost=100
-Type=HandToHand
-Info=A rather basic set of fists for use by a mech.
-Abilities=DoubleStrike.MartialBlaze
-Element=None
-Hits=1
-BasePower=100
-Upgrade=0
-
-[ImprovedMechFists]
-Cost=1000
-EnergyCost=150
-Type=HandToHand
-Info=An improved set of fists for use by a mech.
-Abilities=DoubleStrikeII.MartialBlazeII
-Element=None
-Hits=1
-BasePower=200
-Upgrade=0
-
-[FlawlessMechFists]
-Cost=2500
-EnergyCost=200
-Type=HandToHand
-Info=A set of fists with no flaws for use by a mech.
-Abilities=DoubleStrikeIII.MartialBlazeIII
-Element=None
-Hits=1
-BasePower=300
-Upgrade=0
-
-[DarksteelOreFists]
-Cost=4000
-EnergyCost=250
-Type=HandToHand
-Info=A set of fists for use by a mech made out of the darksteel ore.
-Abilities=TripleStrike.MartialBlazeIII
-Element=None
-Hits=1
-BasePower=400
-Upgrade=0
-
-[BasicMechStaff]
-Cost=400
-EnergyCost=100
-Type=Stave
-Info=A rather basic staff for use by a mech
-Abilities=MechFlare.MechQuake.MechFlood.MechTornado.MechFreeze.MechBurst.MechDarkness.MechBanish.MechFire.MechStone.MechWater.MechWind.MechIce.MechThunder.MechLight.MechShadow
-Element=None
-Hits=1
-BasePower=100
-Upgrade=0
-
-[ImprovedMechStaff]
-Cost=1000
-EnergyCost=150
-Type=Stave
-Info=An improved staff for use by a mech.
-Abilities=MechFlareII.MechQuakeII.MechFloodII.MechTornadoII.MechFreezeII.MechBurstII.MechDarknessII.MechBanishII.MechFireII.MechStoneII.MechWaterII.MechWindII.MechIceII.MechThunderII.MechLightII.MechShadowII
-Element=None
-Hits=1
-BasePower=200
-Upgrade=0
-
-[FlawlessMechStaff]
-Cost=2500
-EnergyCost=200
-Type=Stave
-Info=A staff with no flaws for use by a mech.
-Abilities=MechFlareIII.MechQuakeIII.MechFloodIII.MechTornadoIII.MechFreezeIII.MechBurstIII.MechDarknessIII.MechBanishIII.MechFireIII.MechStoneIII.MechWaterIII.MechWindIII.MechIceIII.MechThunderIII.MechLightIII.MechShadowIII
-Element=None
-Hits=1
-BasePower=300
-Upgrade=0
-
-[DarksteelOreStaff]
-Cost=4000
-EnergyCost=250
-Type=Stave
-Info=A staff for use by a mech which is made out of the darksteel ore.
-Abilities=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechFireIV.MechStoneIV.MechWaterIV.MechWindIV.MechIceIV.MechThunderIV.MechLightIV.MechShadowIV.MechUltima.MechKaustra
-Element=None
-Hits=1
-BasePower=400
-Upgrade=0
-
 [Cutlass]
 Cost=0
 Type=Sword
@@ -3321,7 +3488,6 @@ Hits=2
 BasePower=30
 Upgrade=0
 HurtEthereal=true
-
 
 [FrostWhip]
 Cost=0
@@ -3386,6 +3552,7 @@ BasePower=200
 Upgrade=0
 IgnoreDefense=10
 HurtEthereal=True
+2Handed=true
 
 [SilverSwords]
 Cost=0
@@ -3398,6 +3565,7 @@ BasePower=100
 Upgrade=0
 IgnoreDefense=10
 HurtEthereal=true
+2Handed=true
 
 [Morgenstern]
 Cost=0
@@ -3418,27 +3586,6 @@ Info=The mouth of the Wall of Flesh.
 Abilities=WoFEyeLaser.WoFMouthBite
 Element=none
 Hits=1
-BasePower=30
-Upgrade=0
-
-
-[MegaBusterMk2]
-Cost=0
-Type=Gun
-Info=The weapon of Mega Man.
-Abilities=MetalBlade.TimeStopper.QuickBoomerang.LeafShield.AirShooter.CrashBombs.BubbleLead.AtomicFire
-Element=None
-Hits=$rand(1,2)
-BasePower=30
-Upgrade=0
-
-[MegaBusterMk3]
-Cost=0
-Type=Gun
-Info=The weapon of Mega Man.
-Abilities=NeedleCannon.MagnetMissile.GeminiLaser.HardKnuckle.TopSpin.ShadowBlade.SparkShock.SearchSnake
-Element=None
-Hits=$rand(1,2)
 BasePower=30
 Upgrade=0
 
@@ -3575,6 +3722,39 @@ Element=None
 Hits=1
 BasePower=70
 CanCounter=false
+
+[Zanmato]
+Cost=0
+Type=katana
+Info=Yojimbo's katana
+Abilities=Daigoro.Kozuka.Zanmatou
+Element=none
+Hits=2
+BasePower=1
+Upgrade=0
+2Handed=true
+
+[PacPower]
+Cost=0
+Type=HandToHand
+Info=The power of Pac-Man
+Abilities=Pac-Jump.FireHydrant.BonusFruit.PowerPellet
+Element=None
+Hits=2
+BasePower=10
+CanCounter=true
+HurtEthereal=true
+
+[GoddessBlade]
+Cost=0
+Type=Dancing
+Info=The power of Fi
+Abilities=
+Element=Light
+Hits=2
+BasePower=10
+CanCounter=false
+
 
 ==============================
 SHIELDS

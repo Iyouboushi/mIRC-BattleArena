@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 280, $round($calc(4000 + (5 * $return_differenceof($return_playerlevelstotal,280))),0), $round($calc(4000 + $return_playerlevelstotal),0))
-Tp=60
-Str=672
-Def=20
-Int=15
-Spd=30
+Hp=$round($calc(2800 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
+Tp=190
+Str=164
+Def=118
+Int=148
+Spd=156
 IgnitionGauge=2
 Name=Jester
 
 
 [Battle]
 Hp=4000
-Tp=60
-Str=672
-Def=20
-Int=15
-Spd=30
+Tp=190
+Str=164
+Def=118
+Int=148
+Spd=156
 IgnitionGauge=2
 Status=alive
 
@@ -54,14 +54,14 @@ Flag=monster
 Gender=his
 Gender2=him
 CanStagger=yes
-StaggerAmount=$rand(5250,5310)
+StaggerAmount=$rand(1000,1500)
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=250
+bosslevel=29
 CanTaunt=true
 
 [Status]
@@ -109,16 +109,16 @@ Resist-Zombie=100
 Resist-Curse=100
 Resist-Stun=50
 ShadowCopy=1
-Bloodpact=100
+Bloodpact=15
 Summon=Jester's_Ball
 Royalguard.on=on
 Manawall.on=on
 
 
 [Techniques]
-Portal=200
-ClownHead=100
-ClownFire=100
+Portal=30
+ClownHead=31
+ClownFire=31
 
 
 [Element]

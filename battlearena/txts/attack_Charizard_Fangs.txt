@@ -1,1 +1,1 @@
-charges towards %enemy and bites with $gender($1) fangs
+charges towards %enemy and bites with $gender(%attacker) fangs

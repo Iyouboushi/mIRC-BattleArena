@@ -1,4 +1,4 @@
 slashes at %enemy with the axe before stepping backwards in a defensive stance
 leaps at %enemy and slashes several times before rolling to the side before %enemy can react
 leaps into the air and strikes %enemy with the axe on the way down
-strikes at %enemy with $gender($1) axe
+strikes at %enemy with $gender(%attacker) axe

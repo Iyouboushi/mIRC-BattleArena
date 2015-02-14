@@ -1,12 +1,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
+;;;; Last updated: 01/31/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
 on 3:TEXT:!auction info*:*: {  $auction.status($nick) }
 on 3:TEXT:!auction winner*:*: { $auctionhouse.winners($nick, $3) }
 on 3:TEXT:!auction bid*:*: { $auctionhouse.bid($nick, $3) }
-
 
 alias auction.status {
   if ($readini(system.dat, auctionInfo, current.item) = $null) { $display.private.message2($1, $readini(translation.dat, errors, NoAuction)) | halt }
@@ -225,4 +225,5 @@ alias auctionhouse.clear {
     .remove $txtfile(temp_auction_bidders.txt)
 
   }
+
 }

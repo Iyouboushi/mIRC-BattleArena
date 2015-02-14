@@ -111,8 +111,6 @@ auto-regen=on
 [Weapons]
 Equipped=Aettir
 Aettir=$calc(200 + $current.battlestreak)
-SilverSwords=$calc(200 + $current.battlestreak)
-
 
 [Equipment]
 Head=RuneistBandeau+1
@@ -121,7 +119,6 @@ Hands=RuneistMitons+1
 Legs=RuneistTrousers+1
 Feet=RuneistBottes+1
 Accessory=Wizard's-Ankh
-
 
 [Skills]
 Regen=20
@@ -138,7 +135,7 @@ MagicMirror=1
 RepairNaturalArmor=1
 MonsterSummon=1
 MonsterSummon.Monster=$iif($rand(1,2) = 1, Excenmille, $iif($rand(1,2) = 1, NajaSalaheem, Wind-UpShantotto))
-MonsterSummon.Chance=40
+MonsterSummon.Chance=20
 monstersummon.numberspawn=1
 Resist-Charm=100
 Resist-Poison=100
@@ -164,9 +161,6 @@ RuneSwipe=$calc(100 + $current.battlestreak)
 Resolution=$calc(100 + $current.battlestreak)
 HardSlash=$calc(100 + $current.battlestreak)
 PowerSlash=$calc(100 + $current.battlestreak)
-Twin_Slice=$calc(100 + $current.battlestreak)
-LightningStrike=$calc(100 + $current.battlestreak)
-BladeBeamII=$calc(100 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -183,10 +177,7 @@ Elemental_Sforzo=1
 
 
 [Augments]
-Beorc_Sword=IgnoreGuardian.IgnoreMetalDefense.RenkeiBonus.EnhanceBloodpact.EnhanceSummons.EnhanceBloodpact.EnhanceSummons
-Aettir=IgnoreGuardian.IgnoreMetalDefense.RenkeiBonus.EnhanceBloodpact.EnhanceSummons.EnhanceBloodpact.EnhanceSummons
-Epeolatry=IgnoreGuardian.IgnoreMetalDefense.RenkeiBonus.EnhanceBloodpact.EnhanceSummons.EnhanceBloodpact.EnhanceSummons
-SilverSwords=IgnoreGuardian.IgnoreMetalDefense.RenkeiBonus.EnhanceBloodpact.EnhanceSummons.EnhanceBloodpact.EnhanceSummons
+Aettir=IgnoreGuardian.IgnoreMetalDefense.RenkeiBonus.EnhanceBloodpact
 
 
 [Styles]
@@ -220,6 +211,10 @@ GreatSword=75
 Bow=75
 Crissaegrim=50
 Valmanway=50
+Naturaleza=60
+Ashes=50
+Dismay=50
+ThousandCuts=30
 Tachi:Shoha=60
 Tachi:Rana=60
 Rainstorm=30
@@ -308,6 +303,7 @@ AsherGuns=0
 ReubenKatanas=0
 DinahWeapons=0
 DelphinusWeaponSystems=0
+UmbranArmorGuns=0
 ShotBuster=0
 FlareBuster=0
 Cerberus=0

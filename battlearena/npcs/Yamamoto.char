@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=3500
+Hp=4000
 Tp=500
 Str=$calc(100 + $current.battlestreak)
 Def=$calc(40 + $current.battlestreak)
@@ -10,7 +10,7 @@ Name=Genryuusai Shigekuni Yamamoto
 
 
 [Battle]
-Hp=3500
+Hp=4000
 Tp=500
 Str=$calc(100 + $current.battlestreak)
 Def=$calc(40 + $current.battlestreak)
@@ -35,6 +35,7 @@ Hused=1
 Dused=1
 Char=is an old Shinigami who is the Captain of the 1st Division and the Captain Commander of the Gotei 13. The oldest and strongest Shinigami who also carries the powerful Ryuujin Jakka zanpakutou.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
+PerfectDefense=releases Ryuujin Jakka for a moment, and covers himself with a wall of fire to block all attacks.
 
 [Stuff]
 RedOrbs=0
@@ -97,48 +98,75 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RyuujinJakka
-RyuujinJakka=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
+RyuujinJakka=$calc(60 + $current.battlestreak)
 
 
 [Skills]
 Zen=5
 WeaponBash=1
 Impetus=20
-SwordMaster=1000
-MartialArts=1000
-Wizardry=1000
-Resist-Charm=100
-Resist-Intimidate=100
-Resist-Weaponlock=100
-RoyalGuard=1
-royalguard.on=on
-ManaWall=1
-manawall.on=on
+SwordMaster=3000
+MartialArts=3000
+Wizardry=3000
+PerfectDefense=1
+perfectdefense.on=on
 Sugitekai=1
-
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-AsuranFists=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Ikkotsu=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Soukotsu=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-VorpalBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-ChantDuCygne=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-IttouKasou=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+AsuranFists=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+Ikkotsu=$iif($current.battlestreak < 75, 0, $calc(200 + $current.battlestreak))
+Soukotsu=$iif($current.battlestreak < 100, 0, $calc(300 + $current.battlestreak))
+SwiftBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+VorpalBlade=$iif($current.battlestreak < 75, 0, $calc(125 + $current.battlestreak))
+ChantDuCygne=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
+IttouKasou=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
 
 
 [Item_Amount]
 
 
 [Ignitions]
-YamamotoShikai=1
-YamamotoBankai=1
+YamamotoShikai=$iif($current.battlestreak < 50, 0, 150)
+YamamotoBankai=$iif($current.battlestreak < 50, 0, 300)
 
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=30
 
 
 [Augments]
-RyuujinJakka=HurtEthereal.EnhanceKatana.TechBonus
+RyuujinJakka=EnhanceKatana.TechBonus.MeleeBonus.RenkeiBonus

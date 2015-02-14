@@ -30,7 +30,7 @@ Target=Single
 Amount=60
 Desc=pulls out a bottle of fizzy rootbeer and hands it to %enemy $+ , who drinks it down. Teehee. Bubbly.
 Cost=50
-SellPrice=100
+SellPrice=30
 FullbringLevel=1
 FullbringTarget=AOE
 FullbringAmount=30
@@ -234,7 +234,7 @@ Amount=20
 Desc=takes out a small glowing blue fang and slashes %enemy with it.  The fang snaps and explodes with ice energy.
 Cost=100
 SellPrice=40
-Element=fire
+Element=ice
 FullbringLevel=2
 FullbringTarget=AOE
 FullbringAmount=10
@@ -250,7 +250,7 @@ SellPrice=40
 Element=lightning
 FullbringLevel=2
 FullbringTarget=AOE
-FullbringAmount=40
+FullbringAmount=10
 Fullbringdesc=draws out the soul from the thunder orb.  The sky goes black and a lightning storm erupts on the battlefield, shocking all enemies!
 
 [Stop_Watch]
@@ -388,7 +388,7 @@ Desc=takes out a smelly bottle of thick white liquid and hands it over to %enemy
 Type=Damage
 ShopNPC=TravelMerchant
 Target=Single
-Amount=100
+Amount=200
 Cost=6000
 SellPrice=50
 Desc=takes out a small bomb that came from a weird flower and tosses it at %enemy causing a small explosion.
@@ -399,6 +399,7 @@ FullbringAmount=80
 Fullbringdesc=draws out the soul from the bomb flower.  The soul floats over the battlefield and then glows a bright red before violently exploding, causing damage to all targets.
 ConquestItem=false
 IgnoreMetalDefense=true
+Bomb=true
 
 [Dynamite]
 Type=Damage
@@ -414,6 +415,7 @@ FullbringAmount=250
 Fullbringdesc=draws out the soul from the stick of dynamite.  The soul floats over the battlefield and then glows a bright red before violently exploding, causing damage to all targets.
 ConquestItem=true
 IgnoreMetalDefense=true
+Bomb=true
 
 [BombFragment]
 Type=Damage
@@ -429,6 +431,7 @@ FullbringAmount=1800
 Fullbringdesc=draws out the soul from the bomb fragment.  The soul floats over the battlefield and then glows a bright red before violently exploding, causing damage to all targets.
 ConquestItem=true
 IgnoreMetalDefense=true
+Bomb=true
 
 [HolyHandGrenade]
 Type=Damage
@@ -439,6 +442,7 @@ Desc=takes out a holy hand grenade.  An angelic voice is heard from above. First
 Cost=0
 Element=light
 IgnoreMetalDefense=true
+Bomb=true
 
 [XmasGrenade]
 Type=Damage
@@ -449,6 +453,7 @@ Desc=takes out a Candy-Cane colored grande and lobs it at %enemy which causes an
 Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 50, 1500, 0)
 Element=ice
 IgnoreMetalDefense=true
+Bomb=true
 
 [Grappling_Hook]
 Type=Snatch
@@ -918,6 +923,13 @@ Summon=Titan
 SummonName=Titan
 ShopNPC=BattleMerchant
 
+[GuardContract]
+Type=summon
+Cost=500
+SellPrice=1
+Summon=Yojimbo
+SummonName=Yojimbo
+
 [Pokeball]
 Type=summon
 Cost=10000
@@ -1129,6 +1141,76 @@ ConquestItem=true
 SellPrice=40000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
+
+
+=========================
+NPC TRUST ITEMS
+=========================
+[BigWhoop]
+Type=trust
+NPC=Guybrush
+Exclusive=yes
+SellPrice=100
+Cost=0
+
+[StarCoin]
+type=trust
+NPC=Mario
+Exclusive=yes
+SellPrice=10
+Cost=10
+SummonDesc=$get_chr_name(%trust.npc) pops out of a large green warp pipe and goes "IT'S-A-ME! MARIO!"  before collecting the Star Coin and preparing for battle!
+
+[BelmontMedallian]
+type=Trust
+NPC=Simon_Belmont
+Exclusive=yes
+Sellprice=10
+Cost=10
+
+[GlazedDonut]
+type=Trust
+NPC=Vash
+Exclusive=yes
+SellPrice=10
+Cost=20
+
+[PowerPellet]
+Type=trust
+NPC=Pac-Man
+Exclusive=yes
+SellPrice=10
+Cost=20
+
+[S-MartNameTag]
+type=trust
+NPC=AshWilliams
+Exclusive=yes
+SellPrice=10
+Cost=20
+
+[ShinigamiBadge]
+Type=trust
+NPC=Ichigo
+Exclusive=yes
+SellPrice=10
+Cost=50
+
+[ProudSoulNecklace]
+type=trust
+NPC=Dante
+Exclusive=yes
+SellPrice=10
+Cost=50
+
+[GoddessCrystal]
+type=trust
+NPC=Fi
+Exclusive=yes
+SellPrice=10
+Cost=$iif($readini($char($1), weapons, MasterSword) >= 1, 10, 0)
+SummonDesc=$get_chr_name(%trust.npc) pops out of $get_chr_name($1) $+ 's Master Sword and floats in the air.  "Master, I calculate an $rand(80,89) $+ $chr(37) chance of success"
+
 
 =========================
 ACCESSORIES
@@ -1355,9 +1437,9 @@ SellPrice=5000
 [Spear-Pin]
 Type=accessory
 Cost=$iif($left($adate,2) = 06, 30000, 0)
-AccessoryType=IncreasePolearmDamage
+AccessoryType=IncreaseSpearDamage
 Desc=A small pin that is shaped like a spear. This accessory will increase melee damage done with a spear weapon.
-IncreasePolearmDamage.Amount=.30
+IncreaseSpearDamage.Amount=.30
 SellPrice=3000
 ShopNPC=TravelMerchant
 
@@ -1433,8 +1515,7 @@ SellPrice=3000
 Type=accessory
 Cost=9999999
 AccessoryType=IncreaseMagic
-Desc=A bright blue pendant tha
-t is said to enhance a wearer's spell power. This accessory will increase damage done with magic.
+Desc=A bright blue pendant that is said to enhance a wearer's spell power. This accessory will increase damage done with magic.
 IncreaseMagic.Amount=.45
 SellPrice=3000
 
@@ -1442,7 +1523,7 @@ SellPrice=3000
 Type=accessory
 Cost=9999999
 AccessoryType=EnhanceBlocking
-Desc=A bright green pendant that is said to enhance a wearer's ability to stand up to an enemy and block more often with a shiel. This accessory will increase the odds of blocking an attack while using a shield.
+Desc=A bright green pendant that is said to enhance a wearer's ability to stand up to an enemy and block more often with a shield. This accessory will increase the odds of blocking an attack while using a shield.
 EnhanceBlocking.Amount=2
 SellPrice=3000
 
@@ -1514,6 +1595,18 @@ Type=misc
 Cost=0
 SellPrice=100
 Desc=A bottle of milk.
+
+[GreenKinstone]
+Type=misc
+Cost=0
+SellPrice=100
+Desc=A green Kinstone piece. Collecting these is said to bring a lot of luck.
+
+[BlueKinstone]
+Type=misc
+Cost=0
+SellPrice=100
+Desc=A blue Kinstone piece. Collecting these is said to bring a lot of luck.
 
 [SmallEgg]
 Type=misc
@@ -2227,6 +2320,7 @@ Monster=Morion_Worm
 Desc=travels to the Korroloka Tunnel and takes out the worm food.  After opening it, %real.name sprinkles the food out on the cavern floor.  A large worm pops out of the side of the cavern wall and looks at the heroes..
 AlliedNotes=150
 Exclusive=yes
+PortalLevel=25
 
 [DemonBell]
 type=portal
@@ -2238,6 +2332,7 @@ Monster=Crazy_Jester
 Desc=rings a demonic bell that opens a portal. Upon entering they are greeted with Jester, the insane clown.
 AlliedNotes=300
 Exclusive=yes
+PortalLevel=30
 
 [BombShard]
 type=portal
@@ -2249,6 +2344,7 @@ Monster=Time_Bomb
 Desc=travels to Waughroon Shrine and takes out the bomb shard.  After placing it down into the center of the shrine a large and powerful bomb is lured out and floats onto the battlefield
 AlliedNotes=200
 Exclusive=yes
+PortalLevel=31
 
 [ArmosMedallian]
 type=portal
@@ -2260,6 +2356,7 @@ Monster=Armos_Knight.Small_Armos
 Desc=pulls out a an ancient Armos Medallian that leads the heroes to an old palace on the eastern border.  Inside they overcome many puzzles and dangers to finally reach a boss room.
 AlliedNotes=500
 Exclusive=yes
+PortalLevel=30
 
 [BookOfMudora]
 type=portal
@@ -2271,6 +2368,7 @@ Monster=Red_Lanmola.Green_Lanmola.Blue_Lanmola
 Desc=pulls out an ancient book that leads the heroes to an old palace in the desert.  Inside they overcome many puzzles and dangers before finally reaching a large room full of sand.  The sand seems to be moving.. prepare yourselves!
 AlliedNotes=550
 Exclusive=yes
+PortalLevel=30
 
 [HeraKey]
 type=portal
@@ -2338,6 +2436,7 @@ Desc=takes the ancient Mayan Map and uses it to locate the remains of ancient Ma
 AlliedNotes=550
 Exclusive=yes
 
+
 [VirilityCan]
 type=portal
 Cost=15
@@ -2348,6 +2447,7 @@ Monster=Poison
 Desc=pulls out a special can of Virility. It sure does look an awful lot like a can of Slurm.  After drinking it, the heroes are pulled into Limbo where they can venture deep into the Virility factory.  After a little bit of exploring, they discover the horror: the secret ingrident comes from the behind of one awfully large demon slug named Poison. Yuck!
 AlliedNotes=500
 Exclusive=yes
+PortalLevel=50
 
 
 ; Kindred Seal Portal Items
@@ -2362,6 +2462,7 @@ Monster=LeviathanLeftHeart.LeviathanCenterHeart.LeviathanRightHeart
 Desc=is swallowed whole by the great and powerful flying demon known as Leviathan.  Once inside, the heroes take the Ignis Fatuus (a small object composed of souls of the fallen) to the demon's heartcore chamber.  The three hearts are protected by a membrane. Suddenly the Ignis Fatuus releases the souls it has collected and the membrane disappears, exposing the three hearts and the only way the beast can be defeated.
 AlliedNotes=1000
 Exclusive=yes
+PortalLevel=55
 
 [NewsOrb]
 type=portal
@@ -2373,6 +2474,7 @@ Monster=Bob_Barbas
 Desc=takes out a small glowing orb that has the initials R.N.N. on it. %real.name then tosses the orb onto the ground. It shatters and the players are teleported into the Raptor News Network.
 AlliedNotes=1000
 Exclusive=yes
+PortalLevel=60
 
 [BanishingCharm]
 type=portal
@@ -2384,6 +2486,7 @@ Monster=Gaki.Onki.Rasetsu
 Desc=takes out the banishing charm; a powerful charm used to banish demons. It begins to glow and creates a portal that teleports the heroes into a demonic shrine where three demons await.
 AlliedNotes=1000
 Exclusive=yes
+
 
 [RottingOrb]
 type=portal
@@ -2506,6 +2609,7 @@ Desc=takes out the small glowing orb that has a Triforce symbol on it and watche
 AlliedNotes=2500
 Exclusive=yes
 
+
 [LachesisOrb]
 type=portal
 Cost=20
@@ -2557,7 +2661,7 @@ Currency=KindredSeal
 Battlefield=Abyssea - Uleguerand Range
 Weather=Snowy
 Monster=Awahondo
-Desc=takes out a bottle of avatar blood and tosses it to the ground. It shatters and telepports everyone to Abyssea - Uleguerand Range.
+Desc=takes out a bottle of avatar blood and tosses it to the ground. It shatters and teleports everyone to Abyssea - Uleguerand Range.
 AlliedNotes=1500
 Exclusive=yes
 
@@ -2619,9 +2723,10 @@ Desc=takes out a small glowing orb that has an engraving of an hourglass on it. 
 AlliedNotes=1000
 Exclusive=yes
 
+
 [JungleOrb]
 type=portal
-Cost=$iif($readini(garden.dat, gardenstats, level) <= 5, 15, 20)
+Cost=$iif($readini(garden.dat, gardenstats, level) >= 5, 15, 20)
 Currency=KindredCrest
 Battlefield=Deep Jungle
 Weather=calm
@@ -2629,6 +2734,7 @@ Monster=$iif($rand(1,2) = 1, Echidna, EccentricEve)
 Desc=takes out a small glowing green orb. %real.name then tosses the orb onto the ground. It shatters and the players find themselves in a deep jungle ready to face one of the masters of the jungle.
 AlliedNotes=1000
 Exclusive=yes
+PortalLevel=150
 
 [CrimsonTraverserStone]
 type=portal
@@ -2676,6 +2782,7 @@ Weather=Dark
 Monster=AshiAtora
 Desc=takes out an ancient crystal from Atlantis. It begins to pulse then glows bright, covering everyone and the battlefield.  When the glow fades they find themselves in Atlantis.. 
 AlliedNotes=7000
+PortalLevel=300
 
 
 =========================

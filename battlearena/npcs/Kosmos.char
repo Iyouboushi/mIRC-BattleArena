@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=5000
+Hp=4500
 Tp=500
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
+Str=$calc(55 + $current.battlestreak)
+Def=$calc(55 + $current.battlestreak)
+Int=$calc(55 + $current.battlestreak)
+Spd=$calc(55 + $current.battlestreak)
 IgnitionGauge=100
 Name=KOS-MOS
 
 
 [Battle]
-Hp=5000
+Hp=4500
 Tp=500
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
+Str=$calc(55 + $current.battlestreak)
+Def=$calc(55 + $current.battlestreak)
+Int=$calc(55 + $current.battlestreak)
+Spd=$calc(55 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -23,6 +23,7 @@ Status=alive
 [Rage]
 RageBar=0
 RageCountDown=0
+
 
 [Limit]
 Level=1
@@ -36,12 +37,14 @@ Dused=1
 Char=is a female android with red eyes and long blue hair. She wears a mostly blue and white outfit, along with a large blue and white visor. She analyzes the battlefield and says, "Eliminating enemy threat."
 Rage=quietly analyzes the battlefield.
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=her
@@ -54,6 +57,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
+
 
 [Status]
 Poison=no
@@ -98,53 +102,67 @@ zombie.timer=1
 auto-regen=on
 
 [Weapons]
-Equipped=KosmosRevolver
-KosmosRevolver=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
+Equipped=KosmosFists
+KosmosFists=$calc(60 + $current.battlestreak)
+
 
 [Skills]
-MartialArts=1000
-Wizardy=1000
-Gunslinger=1000
-Swordmaster=1000
-Polemaster=1000
+MartialArts=3000
+Wizardy=3000
 Zen=5
 ClearMind=3
 ElementalSeal=1
 MightyStrike=1
 Impetus=20
 WeaponBash=1
+PerfectDefense=1
+Regen=20
 Resist-Charm=100
-Resist-Amnesia=100
-Resist-Curse=100
+Resist-Poison=100
+Resist-Zombie=100
 Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Blind=100
-Resist-Paralyze=100
-Resist-Poison=100
-Resist-Stun=100
-Resist-Zombie=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
 Resist-Petrify=100
-RoyalGuard=1
-royalguard.on=off
-ManaWall=1
-manawall.on=off
-Regen=20
-
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-R-Cannon=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-X-Buster=$round($calc(250 + (($current.battlestreak / 2) / 5.5)),0)
-G-Shot=$round($calc(200 + (($current.battlestreak / 2) / 5.5)),0)
-Hilbert_Effect=1
-S-Chain=1
-DexEtherRa=$calc$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-DexEtherFa=$calc$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-DexEtherLe=$calc$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+R-Cannon=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+Hilbert_Effect=$iif($current.battlestreak < 100, 0, 1)
+S-Chain=$iif($current.battlestreak < 100, 0, 1)
+DexEtherRa=$iif($current.battlestreak < 75, 0, $calc(125 + $current.battlestreak))
+DexEtherFa=$iif($current.battlestreak < 75, 0, $calc(125 + $current.battlestreak))
+DexEtherLe=$iif($current.battlestreak < 75, 0, $calc(125 + $current.battlestreak))
 
 
 [Ignitions]
-Animus=$iif($current.battlestreak < 1000, 0, 1)
+Animus=$iif($current.battlestreak < 300, 0, 1)
+
 
 [Item_Amount]
 
@@ -158,9 +176,9 @@ GuardianXP=1
 [mech]
 name=E.S. Dinah
 inUse=false
-EngineLevel=1.2
-HpMax=11000
-HpCurrent=11000
+EngineLevel=$iif($current.battlestreak < 1000, 0, 1.2)
+HpMax=12000
+HpCurrent=12000
 EnergyMax=6000
 EnergyCurrent=6000
 EquippedCore=EtherealCore

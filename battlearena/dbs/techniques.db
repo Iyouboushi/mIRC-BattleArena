@@ -7,7 +7,6 @@ Spharai=FinalHeaven.ShoulderTackle.AsuranFists.SpinningAttack.OneInchPunch
 Verethragna=VictorySmite.ShoulderTackle.ShinjinSpiral.SpinningAttack.TornadoKick
 KaiserKnuckles=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
 
-
 ; Swords
 Mythril_Sword=FastBlade.BurningBlade.FlatBlade.SeraphBlade
 Rebellion=Stinger.MillionStab.Drive.DevilTrigger
@@ -33,7 +32,7 @@ Hyourinmaru=SotenNiZase.DaigurenHyourinmaru
 Keitonotachi=Tachi:Kagero.Tachi:Goten.Tachi:Yukikaze
 Hagun=Tachi:Kaiten.Tachi:Ageha.Tachi:Kasha
 Masamune=Tachi:Fudo.Tachi:Shoha.Tachi:Rana.MeikyoShisui
-
+Naturaleza=Ashes.Dismay.ThousandCuts
 
 ; Scythe
 DeathScythe=ShadowOfDeath.DarkHarvest.VorpalScythe
@@ -41,14 +40,12 @@ Vendetta=InfernalScythe.CrossReaper.SpinningScythe
 Redemption=Quietus.Insurgency.NightmareScythe
 Apocalypse=Catastrophe.Entropy.Guillotine
 
-
 ; Great Sword
 Braveheart=HardSlash.PowerSlash
 Balmung=Shockwave.SickleMoon.Freezebite
 Nightfall=GroundStrike.SpinningSlash
 Ragnarok=Scourge.HerculeanSlash.Resolution.Torcleaver
 Caladbolg=Torcleaver.Resolution
-
 
 ; Wands/Staves
 YewWand=Fire.Stone.Ice.Aero.Water.Thunder.Cure.Dark.Banish.Poison.Blind.Paralyze.Slow
@@ -61,7 +58,6 @@ Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.Li
 EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII.Esuna.Dispel.Merlin'sFinalSpell
 BahamutsStaff=Ultima.Kaustra.Merlin'sFinalSpell
 Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
-
 
 ; Guns 
 Ebony&Ivory=RainStorm.ChargedShot.RapidShot
@@ -76,7 +72,6 @@ SniperRifle=SniperShot.SlugShot.HotShot
 Annihilator=Coronach.SlugShot.BlastShot
 DeathPenalty=LeadenSalute.BlastShot.SlugShot
 
-
 ; Whips
 LeatherWhip=WhipLash
 Leather_Whip=Whiplash
@@ -86,7 +81,6 @@ ChainWhip=Whiplash.TwinDragonLash
 SpikedSteelWhip=TwinDragonLash.Whiplash
 DragontailWhip=TwinDragonLash.SerpentBite
 
-
 ; Spears
 Lance=Jump.Skewer.LegSweep
 Thalassocrat=Jump.ImpulseDrive.LegSweep
@@ -94,7 +88,6 @@ Corsesca=Jump.PentaThrust.LegSweep
 Gungnir=SpiritJump.Geirskogul.LegSweep
 Ryunohige=SoulJump.Drakesbane.LegSweep.Stardiver
 Rhongomiant=HighJump.CamlannsTorment.LegSweep.SonicThrust
-
 
 ; Bows
 RobinsBow=FlamingArrow.PiercingArrow.DullingArrow
@@ -114,7 +107,6 @@ MainGauche=SharkBite.DancingEdge.Cyclone
 Terpsichore=PyrrhicKleos.RudrasStorm.Exenterator
 Mandau=MercyStroke.AeolianEdge.Evisceration
 
-
 ; Mech Weapons
 BasicMechGun=DoubleShot.GunBlaze
 ImprovedMechGun=DoubleShotII.GunBlazeII
@@ -124,6 +116,7 @@ AsherGuns=ShotBuster.FlareBuster.Cerberus.DoubleShotIII.TripleShot.GunBlazeIII
 ReubenKatanas=IronBlade.GarudasWrath.LotusBlades
 DinahWeapons=R-Fang.X-BusterII.X-Cannon.DoubleShotIII.TripleShot.GunBlazeIII
 DelphinusWeaponSystems=MoonStoneCannon.DoubleShotIII.TripleShot.GunblazeIII
+UmbranArmorGuns=DoubleShotIII.GunBlazeIII
 BasicMechSword=DoubleSwing.SwordBlaze
 ImprovedMechSword=DoubleSwingII.SwordBlazeII
 FlawlessMechSword=DoubleSwingIII.SwordBlazeIII
@@ -136,8 +129,6 @@ BasicMechStaff=MechFlare.MechQuake.MechFlood.MechTornado.MechFreeze.MechBurst.Me
 ImprovedMechStaff=MechFlareII.MechQuakeII.MechFloodII.MechTornadoII.MechFreezeII.MechBurstII.MechDarknessII.MechBanishII.MechFireII.MechStoneII.MechWaterII.MechWindII.MechIceII.MechThunderII.MechLightII.MechShadowII
 FlawlessMechStaff=MechFlareIII.MechQuakeIII.MechFloodIII.MechTornadoIII.MechFreezeIII.MechBurstIII.MechDarknessIII.MechBanishIII.MechFireIII.MechStoneIII.MechWaterIII.MechWindIII.MechIceIII.MechThunderIII.MechLightIII.MechShadowIII
 DarksteelOreStaff=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechFireIV.MechStoneIV.MechWaterIV.MechWindIV.MechIceIV.MechThunderIV.MechLightIV.MechShadowIV.MechUltima.MechKaustra
-
-
 
 ; Monster / NPC Weapons
 Yagudo_Fists=Sweep.DoubleKick.FeatherStorm
@@ -160,7 +151,9 @@ Mistilteinn=Holy.BanishV.WrathOfGuDha.TormentOfGuDha.FireIV.WaterIV.BlizzardIV.H
 QuadavWand_R=FireIV.WaterIV.BlizzardIV.Poison.Blind.Headbutt.Paralyze
 QuadavSword=FastBlade.CircleBlade.FlatBlade.Headbutt
 Silver_Goddess_Sword=TwinSlice.BiteOfLightning.BladeBeam
-Black_Goddess_Staff=AeroV.BlizzardV.FireV.Blind.Poison.Paralyze.Darkra.DarkV.BanishV
+Black_Goddess_Staff=AeroV.BlizzardV.FireV.DarkV.BanishV.Geohelix.HydroHelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix
+Mariofists=MarioJump.StarPower.Fireflower
+KanonjiStaff=Kanonball.GoldenKanonball
 Shadow_Blade=GigaSlash.KickBack.DarkNova
 MenosPower=Cero
 DragonFangs=FangRush.RadiantBreath.HurricaneBreath.SpikeFlail.AbsoluteTerror.DragonFire
@@ -251,13 +244,19 @@ WarMachine=FirajaII.Quake.Flare.Tornado.Poison.Blind
 GoylePower=SpinningAttack
 Agartha=OpticalShot.MaxShot.Torpor.TorporRain.QuadrupleIgnis
 ArteasBow=GlacialBlast.EagleEyeShot.NamasArrow.Sidewinder.ApexArrow.JishnusRadiance
-ScarboroughFair=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel.Gomorrah.Malphas.Hekatoncheir.Scolopendra.Phantasmaraneae
+LoveIsBlue=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel
+Kafka=EagleEyeshot.JishnuusRadiance
+Chernobog=Guillotine.ShadowOfDeath
+ScarboroughFair=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel
+Shuraba=Tachi:Shoha.Tachi:Rana
+Kulshedra=TwinDragonLash.SerpentBite.DarkLash
 BusterSword=Braver.CrossSlash.Blade_Beam.Climhazzard.Meteorain.FinishingTouch.Omnislash
 DekarBlade=ExplosionFist.ExplosionSword.GlacialBlast.Thundershriek.BombAttack.ArticFreeze.HolyEnergy.PhoenixBlow.OctoStrike.Skysplitter
 RuneOakStaff=Forzare.SoulForzare.Fuego.Pyrofeugo.Dormio.Fulminos.Arctis.Dispertius.Gravitus.FlickumBicus.Galvinius
 AdamantAxe=Thundershriek.BombAttack.FellCleave.UkkosFury.KingsJustice
 VampireKiller=GrandCross.HydroStorm.Dagger.HolyWater.Cross.StopWatch.Axe.DoubleAxe.Thousand_Knives
 KosmosRevolver=R-Cannon.R-Blade.X-Buster.R-Dragon.G-Shot.K-Axe.Hilbert_Effect.Nemesis.S-Chain.F-Scythe.DexEtherRa.DexEtherFa.DexEtherLe
+KosmosFists=R-Cannon.Hilbert_Effect.S-Chain.DexEtherRa.DexEtherFa.DexEtherLe
 HoleyGloves=SeraphimRush.AngelShot.DemonBanisher.DivineSpear.Cataclysm.SeraphimWave.HealingDew.PhoenixStrike
 ValkyrieSword=NibelungValesti.ChantduCygne.Requiescat.Atonement
 BlazefireSaber=ArmyOfOne.Blindside.Flamestrike.Froststrike.Sparkstrike.Aquastrike
@@ -362,7 +361,10 @@ PlanteraBulb=PlanteraSeed.PlanteraThornBall.PlanteraSpores.PlanteraBite
 LihzahrdGolemEyes=GolemEyeLaser
 LihzahrdGolemFists=GolemFistPunch.GolemFistGrab.AsuranFists.ShinjinSpiral
 FishronFins=DetonatingBubble.Sharknado
-
+Zanmato=Daigoro.Kozuka.Zanmatou
+PacPower=Pac-Jump.FireHydrant.BonusFruit.PowerPellet
+TurkeyPower=Gobble
+LeprechaunPower=LuckyCharms
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -417,6 +419,10 @@ stat=
 ; Renkei is the renkei value of the tech. 
 Renkei=
 
+; CanDodge is a flag that allows a tech to be able to be dodged or not. If set to false, it is impossible to dodge it.
+; It's set to true by default (or if it's missing from the technique)
+CanDodge=
+
 ;;;;;;;;;; Prescript and PostScript ;;;;;;;;;;;;;
 ; Prescript is a way to have the bot run a script before the tech is used.  This should not be added unless you know
 ; what you're doing.
@@ -440,9 +446,7 @@ Postscript=
 ============================================
 
 
-
-
-=======================
+========================
 HAND TO HAND
 ========================
 [DoublePunch]
@@ -546,7 +550,7 @@ stat=str
 [Inferno]
 Type=AOE
 TP=30
-Desc=jumps into the air as the flame gauntlets glow a bright red.  Suddenly a the floor of the battlefield fills with fire then exploding into a massive wall of flames, hitting all enemy targets.
+Desc=jumps into the air as the flame gauntlets glow a bright red.  Suddenly the floor of the battlefield fills with fire then exploding into a massive wall of flames, hitting all enemy targets.
 BasePower=25
 Cost=1500
 Element=fire
@@ -1731,6 +1735,44 @@ stat=str
 renkei=8
 hits=2
 
+
+[Ashes]
+Type=AOE
+Cost=2000
+Desc=leaps in the air, slashing the air with $gender($1) blade. Scorching bursts of fire bombards all foes.
+TP=50
+Element=Fire
+Hits=1
+BasePower=20
+Magic=yes
+stat=int
+CanDodge=true
+
+[Dismay]
+Type=Single
+Cost=3000
+Desc=dashes towards %enemy $+ , the blade held in both hands. The first strike is directed at the left arm, the next along the stomach. The third involves the hilt striking %enemy $+ 's head.
+TP=100
+Element=Dark
+Hits=3
+BasePower=30
+Magic=No
+stat=str
+CanDodge=true
+
+[ThousandCuts]
+Type=Single
+Cost=4000
+Desc=dashes towards %monster, their blade held out. With Godspeed, $gender3($1) start slashing with a speed that equals a thousand cuts.
+TP=200
+Element=Light
+Hits=8
+BasePower=25
+Magic=no
+stat=str
+Renkei=5
+CanDodge=true
+
 ===================
 WAND/SPELLS
 ===================
@@ -1917,7 +1959,7 @@ stat=int
 [Firaja]
 Type=AOE
 TP=45
-Desc=casts a powerful fire spell known by any wizard, Firaja.  The battlefield erupts in flames!
+Desc=chants the encantation for the ancient and powerful spell Firaja. Colums of fire erupt from the battlefield and engulf all of the targets!
 BasePower=40
 Cost=2000
 Element=fire
@@ -1927,7 +1969,7 @@ stat=int
 [Stoneja]
 Type=AOE
 TP=45
-Desc=casts a powerful stone spell known by any wizard, Stoneja.  The ground shakes violently as the earth spits out giant boulders at all targets.
+Desc=chants the encantation for the ancient and powerful spell Stoneja. The ground shakes violently as the earth spits out giant boulders at all targets.
 BasePower=40
 Cost=2000
 Element=earth
@@ -3144,7 +3186,7 @@ cost=3000
 [TrueForm]
 Type=boost
 TP=10
-Desc=begins to morph and change into a large demonic beast.  
+Desc=shouts out, "Play time is over! Grant me power!" as %user begins to morph and change into a large demonic beast.  
 BasePower=60
 Element=none
 cost=0
@@ -3288,7 +3330,7 @@ stat=str
 [Dark_Inferno]
 Type=Single
 TP=5
-Desc=looks at %enemy and opens his cape, releasing two large black orbs of energy that resemble small meteors that fly into %enemy $+ !
+Desc=says "Here's true power!" as %user looks at %enemy and opens his cape, releasing two large black orbs of energy that resemble small meteors that fly into %enemy $+ !
 BasePower=10
 Element=dark
 magic=no
@@ -3365,7 +3407,6 @@ magic=no
 cost=0
 stat=hp
 IgnoreShadows=true
-
 
 [ShatteringBomb]
 Type=suicide-AOE
@@ -3838,7 +3879,7 @@ stat=int
 [VampireBite]
 Type=Single
 TP=10
-Desc=grabs %enemy and bites into $gender($2) neck, draining some blood from %enemy to recover $gender($1) health!
+Desc=grabs %enemy and bites into $gender($2) neck, draining some blood from %enemy $+ !
 BasePower=30
 Element=None
 Cost=0
@@ -4172,8 +4213,8 @@ stat=int
 [AtlantianAbsorb]
 Type=StealPower
 TP=10
-Desc=grabs %enemy and laughs! "Your power will be mine mortal!" A black energy covers Ashi's hand and %enemy feels $gender($3) power beginning to leave $gender($3) body.  Ashi feels stronger as he absorbs the power.
-BasePower=50
+Desc=grabs %enemy and laughs! "Your power will be mine, mortal!" A black energy covers Ashi's hand and %enemy feels $gender($3) power beginning to leave $gender($3) body.  Ashi feels stronger as he absorbs the power.
+BasePower=10
 Element=None
 Cost=0
 Magic=No
@@ -4388,7 +4429,7 @@ stat=str
 [BloodDrain]
 Type=Single
 TP=10
-Desc=grabs %enemy and bites into $gender($2) neck, draining some blood from %enemy to recover $gender($1) health!
+Desc=grabs %enemy and bites into $gender($2) neck, draining some blood from %enemy $+ !
 BasePower=60
 Element=None
 Cost=0
@@ -4586,7 +4627,7 @@ Desc=$set_chr_name($2) %real.name ... $set_chr_name($2) %real.name ..... it hurt
 BasePower=40
 Element=Dark
 Cost=0
-Magic=None
+magic=no
 stat=str
 
 [PKRockin]
@@ -4602,21 +4643,21 @@ stat=int
 [BloodBlast]
 Type=Single
 TP=10
-Desc=cuts his wrist, casuing some blood to spill out. The blood then turns into a ball of red energy that slams into %enemy $+ !
+Desc=cuts his wrist, causing some blood to spill out. The blood then turns into a ball of red energy that slams into %enemy $+ !
 BasePower=40
 Element=Dark
 Cost=0
-Magic=None
+magic=no
 stat=int
 
 [AtlantianBlast]
 Type=Single
 TP=10
-Desc=cuts his wrist, casuing some blood to spill out. The blood then turns into a ball of red energy that slams into %enemy $+ !
+Desc=cuts his wrist, causing some blood to spill out. The blood then turns into a ball of red energy that slams into %enemy $+ !
 BasePower=40
 Element=Dark
 Cost=0
-Magic=None
+magic=no
 stat=int
 DestroyShadows=3
 
@@ -8326,6 +8367,17 @@ magic=no
 stat=int
 DestroyShadows=4
 
+[LuckyCharms]
+Type=single
+StatusType=poison.slow.curse
+TP=15
+Desc=dances an Irish jig as he sings "Heart, Stars, and Horseshoes, Clovers and Blue Moons, Pots of Gold and Rainbows and the Red Balloons"  Suddenly %enemy feels an onslaught of ancient magic swirl around $gender2($2)
+BasePower=10
+cost=0
+magic=yes
+stat=int
+DestroyShadows=2
+
 [Stun]
 Type=Single
 StatusType=Stun
@@ -8908,6 +8960,43 @@ Cost=0
 Element=none
 Magic=no
 stat=str
+
+[Daigoro]
+Type=Single
+TP=1
+Desc=shakes his head disapproving of the amount he has been paid. He gives a loud whistle and sends his dog to do a simple attack on %enemy $+ .
+BasePower=1
+Element=none
+Cost=0
+Magic=no
+Stat=str
+renkei=0
+hits=1
+
+[Kozuka]
+Type=Single
+TP=1
+Desc=nods his head and absorbs the orbs before pulling out and throwing several small kozuka at %enemy $+ .
+BasePower=15
+Element=none
+Cost=0
+Magic=no
+Stat=str
+renkei=5
+hits=2
+HurtEthereal=true
+
+[Zanmatou]
+Type=AOE
+TP=1
+Desc=tips his hat and gives a grin before going into a combat stance. With lightning speed, Yojimbo draws his Zanmato blade and deals a devastating blow to all enemies on the battlefield.
+BasePower=200
+Element=none
+Cost=0
+Magic=no
+Stat=str
+renkei=10
+HurtEthereal=true
 
 
 [AnniFireworks]
@@ -9503,7 +9592,7 @@ Cost=0
 Magic=Yes
 stat=int
 
-[ShunkoRaigeki]
+[ShunkouRaigeki]
 Type=AOE
 TP=10
 Desc=raises her arms into the air as she gathers power. Lightning appears around Yoruichi as she aims her arms forward. A moment later, a large blast of lightning shoots through the battlefield, hitting everything in range!
@@ -9605,7 +9694,50 @@ stat=str
 Hits=2
 DestroyShadows=4
 
+[Pac-Jump]
+Type=Single
+TP=10
+Desc=produces a trampoline to bounce off of. Pac-Man jumps on and starts bouncing higher and higher before doing a crazy dive onto %enemy $+ !
+BasePower=30
+Cost=10
+Magic=No
+stat=str
+Hits=1
 
+[FireHydrant]
+Type=AOE
+TP=10
+Desc=drops a fire hydrant that sprays magically charged water upon all of Pac-Man's targets on the battlefield.
+BasePower=30
+Cost=20
+Element=water
+Magic=yes
+stat=int
+Hits=1
+
+[BonusFruit]
+Type=heal
+TP=10
+Desc=pulls out a small 8bit piece of fruit and tosses it at %enemy who is healed!
+BasePower=5
+Cost=0
+Element=light
+magic=yes
+stat=int
+CappedAmount=300
+
+
+[PowerPellet]
+Type=AOE
+TP=10
+Desc=pulls out a pulsing magic power pellet and eats it. Pac-Man glows a bright white and all of his enemies become bright blue and weaker. Quickly, Pac-man dashes around the battlefield and eats them all, turning them into little flies for a moment before they regain their forms and take damage.
+BasePower=30
+Cost=20
+Element=light
+Magic=yes
+stat=int
+Hits=1
+HurtEthereal=true
 
 
 =========================
@@ -11088,6 +11220,151 @@ Hits=1
 BasePower=100
 Magic=no
 Stat=str
+; Postscript=$iif($readini($txtfile(battle2.txt), battleinfo, Monsters) < 6, $skill.monstersummon($1, BearShark))
+
+[MarioJump]
+Type=Single
+Cost=0
+Desc=shouts out "Wahoo!" before leaping into the air and then stomps on %enemy a few moments later, hopping back and adjusting $gender($1) hat.
+TP=15
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+HurtEthereal=true
+stat=str
+Renkei=3
+CanDodge=true
+
+[Kanonball]
+Type=Single
+Cost=0
+Desc=holds out $gender($1) right hand, palm facing the sky. %user shouts out "Kanonji-Ryuu Final Super Attack: Kan'onball!!" as a small, blue ball of energy appears above $gender($1) palm. %user then unleashes the ball at %enemy $+ , which travels slowly and eventually makes contact, causing a large explosion!
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[GoldenKanonball]
+Type=Single
+Cost=0
+Desc=performs a complex set of hand motions and shouts out "The Fatal Attack of Justice, Golden Kan'onball!!" %user hurls two balls of blue energy which slowly moves towards %enemy and creates a double explosion once it finally connects.
+TP=10
+Element=None
+Hits=2
+BasePower=10
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[Geohelix]
+Type=Single
+Cost=0
+Desc=covers %enemy with earth elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Earth
+Hits=1
+BasePower=10
+Magic=yes
+StatusType=Poison
+stat=int
+CanDodge=true
+
+[Hydrohelix]
+Type=Single
+Cost=0
+Desc=covers %enemy with water elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Water
+Hits=1
+BasePower=10
+Magic=yes
+StatusType=Poison
+stat=int
+CanDodge=true
+
+[Anemohelix]
+Type=Single
+Cost=0
+Desc=covers %enemy with wind elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Wind
+Hits=1
+BasePower=10
+Magic=yes
+StatusType=Poison
+stat=int
+CanDodge=true
+
+[Pyrohelix]
+Type=Single
+Cost=0
+Desc=covers %enemy with fire elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=10
+Magic=yes
+StatusType=Poison
+stat=int
+CanDodge=true
+
+[Cryohelix]
+Type=Single
+Cost=0
+Desc=covers %enemy with ice elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Ice
+Hits=1
+BasePower=10
+Magic=yes
+StatusType=Poison
+stat=int
+CanDodge=true
+
+[Ionohelix]
+Type=Single
+Cost=0
+Desc=covers %enemy with lightning elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Lightning
+Hits=1
+BasePower=10
+Magic=yes
+StatusType=Poison
+stat=int
+CanDodge=true
+
+[Noctohelix]
+Type=Single
+Cost=0
+Desc=covers %enemy with dark elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=10
+Magic=yes
+StatusType=Poison
+stat=int
+CanDodge=true
+
+[Luminohelix]
+Type=Single
+Cost=0
+Desc=covers %enemy with holy elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Light
+Hits=1
+BasePower=10
+Magic=yes
+StatusType=Poison
+stat=int
+CanDodge=true
 
 ========================
 Not used or are for

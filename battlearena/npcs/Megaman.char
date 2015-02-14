@@ -1,26 +1,27 @@
 [BaseStats]
-Hp=2500
-Tp=250
-Str=$calc(25 + $current.battlestreak)
-Def=$calc(25 + $current.battlestreak)
-Int=$calc(25 + $current.battlestreak)
-Spd=$calc(25 + $current.battlestreak)
+Hp=4000
+Tp=500
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Name=Mega Man
 
 
 [Battle]
-Hp=2500
-Tp=250
-Str=$calc(25 + $current.battlestreak)
-Def=$calc(25 + $current.battlestreak)
-Int=$calc(25 + $current.battlestreak)
-Spd=$calc(25 + $current.battlestreak)
+Hp=4000
+Tp=500
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
+
 
 [Limit]
 Level=1
@@ -34,12 +35,14 @@ Dused=1
 Char=is a short robot that is blue in color. Created by Dr. Light to defend the world against the evil Dr. Wily.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -93,30 +96,76 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=MegaBusterMk1
-MegaBusterMk1=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
-MegaBusterMk2=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
-MegaBusterMk3=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+MegaBusterMk1=$calc(40 + $current.battlestreak)
+MegaBusterMk2=$calc(40 + $current.battlestreak)
+MegaBusterMk3=$calc(40 + $current.battlestreak)
+
 
 [Skills]
 Zen=5
 ClearMind=3
-Wizardry=1000
-MartialArts=1000
-Gunslinger=1000
+Wizardry=2000
+Gunslinger=2500
 Resist-Charm=100
 Resist-Poison=100
-Resist-Amnesia=100
 Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-HyperBomb=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-SuperArm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-RollingCutter=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-ThunderBeam=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-IceSlasher=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-FireStorm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+HyperBomb=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+SuperArm=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+RollingCutter=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+ThunderBeam=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+IceSlasher=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+FireStorm=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+MetalBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+TimeStopper=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+QuickBoomerang=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+LeafShield=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+AirShooter=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+CrashBombs=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+BubbleLead=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+AtomicFire=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+NeedleCannon=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+MagnetMissile=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+GeminiLaser=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+HardKnuckle=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+TopSpin=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+ShadowBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+SparkShock=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+SearchSnake=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
 
 
 [Item_Amount]
@@ -124,5 +173,5 @@ FireStorm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Styles]
 Equipped=SpellMaster
-SpellMaster=10
+SpellMaster=20
 SpellMasterXP=1

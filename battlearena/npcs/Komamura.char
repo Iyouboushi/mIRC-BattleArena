@@ -3,8 +3,8 @@ Hp=4000
 Tp=500
 Str=$calc(50 + $current.battlestreak)
 Def=$calc(50 + $current.battlestreak)
-Int=$calc(10 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=100
 Name=Sajin Komamura
 
@@ -14,8 +14,8 @@ Hp=4000
 Tp=500
 Str=$calc(50 + $current.battlestreak)
 Def=$calc(50 + $current.battlestreak)
-Int=$calc(10 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(50 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
@@ -94,34 +94,65 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=Tenken
-Tenken=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+Tenken=$calc(50 + $current.battlestreak)
+
 
 [Skills]
-Resist-Charm=100
-Resist-Intimidate=100
-Resist-Confuse=100
-Resist-Amnesia=100
 Zen=5
 ClearMind=3
-SwordMaster=1000
-MartialArts=1000
+SwordMaster=2500
 RoyalGuard=1
 RoyalGuard.on=on
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-Shakkahou=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-VorpalBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Shakkahou=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+VorpalBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+SwiftBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
 
 
 [Item_Amount]
 
 
 [Ignitions]
-KomamuraShikai=1
-KomamuraBankai=1
+KomamuraShikai=$iif($current.battlestreak < 300, 0, 1)
+KomamuraBankai=$iif($current.battlestreak < 500, 0, 1)
+
 
 [Styles]
 Equipped=Guardian

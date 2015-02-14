@@ -1,26 +1,27 @@
 [BaseStats]
-Hp=2500
+Hp=4000
 Tp=500
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Name=Iori Yagami
 
 
 [Battle]
-Hp=2500
+Hp=4000
 Tp=500
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
+
 
 [Limit]
 Level=1
@@ -34,12 +35,14 @@ Dused=1
 Char=is a tall man with red hair that wears a black shirt and red pants. He looks at everyone and simply scoffs.
 Rage=coughs blood and yells in rage as he enters the Riot of Blood state!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -51,6 +54,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+
 
 [Status]
 Poison=no
@@ -93,28 +97,62 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=OrochiPower
-OrochiPower=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+OrochiPower=$calc(40 + $current.battlestreak)
+
 
 [Skills]
-Resist-Charm=100
-Resist-Zombie=100
-Resist-Intimidate=100
-MartialArts=1000
+MartialArts=2000
+PerfectDefense=1
 Zen=5
 MightyStrike=1
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-YamiBarai=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-AoiHana=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-YaOtome=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-SakuTsumagushi=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+YamiBarai=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+AoiHana=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+YaOtome=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
+SakuTsumagushi=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
 
 
 [Item_Amount]
 
+
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=20
 WeaponMasterXP=1

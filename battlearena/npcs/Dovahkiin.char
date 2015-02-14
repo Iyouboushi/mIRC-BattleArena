@@ -1,20 +1,22 @@
 [BaseStats]
-Hp=3000
+Hp=4000
 Tp=500
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
+IgnitionGauge=50
 Name=The Dragonborn
 
 
 [Battle]
-Hp=3000
+Hp=4000
 Tp=500
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
+IgnitionGauge=50
 Status=alive
 
 
@@ -33,6 +35,7 @@ Hused=1
 Dused=1
 Char=is a rare individual born with the blood and soul of a dragon but has the body of a mortal. A natural master of the Thu'um, otherwise known as Dragon Shouts.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
+
 
 [Stuff]
 RedOrbs=0
@@ -98,22 +101,56 @@ conservetp.on=off
 
 [Weapons]
 Equipped=DragonShouts
-DragonShouts=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+DragonShouts=$calc(40 + $current.battlestreak)
 
 
 [Skills]
+SwordMaster=2000
+Wizardry=2000
 Zen=5
 Resist-Charm=100
+Resist-Poison=100
 Resist-Zombie=100
 Resist-Intimidate=100
-SwordMaster=1000
-Wizardry=1000
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-FusRoDah=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-YolToorShul=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-FoKrahDiin=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-StrunBahQo=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+FusRoDah=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+YolToorShul=$iif($current.battlestreak < 75, 0, $calc(125 + $current.battlestreak))
+FoKrahDiin=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
+StrunBahQo=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
+
+
+[Ignitions]
+DragonAspect=$iif($current.battlestreak < 300, 0, 1)
 
 
 [Item_Amount]
@@ -121,5 +158,5 @@ StrunBahQo=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=100
+WeaponMaster=20
 WeaponMasterXP=1

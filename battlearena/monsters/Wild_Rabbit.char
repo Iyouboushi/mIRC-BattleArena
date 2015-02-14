@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=70
+Hp=50
 Tp=30
 Str=1
 Def=1
@@ -10,7 +10,7 @@ Name=Wild Rabbit
 
 
 [Battle]
-Hp=70
+Hp=50
 Tp=30
 Str=1
 Def=1

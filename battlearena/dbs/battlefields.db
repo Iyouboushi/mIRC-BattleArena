@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=hot
+current=stormy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Gibbous
-CurrentMoonTurn=5
+CurrentMoonPhase=Quarter
+CurrentMoonTurn=4
 
 [MoonPhaseTime]
 full=3
@@ -39,7 +39,7 @@ errors.
 ==============================================================
 [TimeOfDay]
 CurrentTimeOfDay=Night
-CurrentTimeOfDayTurn=1
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
@@ -457,7 +457,7 @@ scavenge=Potion.VitalStar.X-Potion.Shihei.Sokubaku.Topaz.Zircon.Ink.Paper.EarthS
 
 event1=damage
 event1Chance=20
-Event1Desc=%real.name gets hit in the head with a flying bocce ball, leaving them confused. Darn kids!
+Event1Desc=%real.name gets hit in the head with a flying bocce ball. Darn kids!
 Event1Target=random
 Event1Amount=$rand(30,55)
 

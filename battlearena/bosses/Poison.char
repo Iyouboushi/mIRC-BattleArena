@@ -1,22 +1,21 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 300, $round($calc(4000 + (5 * $return_differenceof($return_playerlevelstotal,300))),0), $round($calc(4000 + $return_playerlevelstotal),0))
-Hp=4800
-Tp=550
-Str=870
-Def=70
-Int=40
-Spd=100
+Hp=$round($calc(3500 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
+Tp=190
+Str=374
+Def=118
+Int=148
+Spd=156
 IgnitionGauge=2
 Name=Poison
 
 
 [Battle]
 Hp=4800
-Tp=550
-Str=870
-Def=70
-Int=40
-Spd=100
+Tp=190
+Str=374
+Def=118
+Int=148
+Spd=156
 IgnitionGauge=2
 Status=alive
 
@@ -52,7 +51,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=300
+bosslevel=50
 CanTaunt=true
 
 
@@ -93,8 +92,6 @@ MPRegenerating=no
 [Weapons]
 Equipped=PoisonFists
 PoisonFists=50
-strong=gun.rifle.wand.glyph.whip.katana
-weakness=sword.handtohand.greatsword
 
 
 [Skills]
@@ -114,8 +111,8 @@ MightyStrike=5
 BloodBoost=20
 
 [Techniques]
-PoisonVomit=150
-AcidRain=150
+PoisonVomit=60
+AcidRain=60
 
 
 [Item_Amount]

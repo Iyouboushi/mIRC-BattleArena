@@ -44,7 +44,8 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-StreakMax=10
+Streak=10
+StreakMax=20
 CanTaunt=false
 
 [Monster]

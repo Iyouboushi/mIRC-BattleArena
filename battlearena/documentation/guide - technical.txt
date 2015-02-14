@@ -310,6 +310,21 @@ This command starts a battle if there isn't one already going.  If this command 
 !start bat PVP
 This command will start a player vs player battle. Monsters will not spawn in this type and players will be able to hurt each other.  The winning/losing streak won't be affected.
 
+!startbat ai
+This command will start an AI vs AI battle.  Players will be unable to enter this battle type.
+
+!startbat boss [boss subtype] 
+This will start a boss battle. Valid subtypes are: bandits, doppelganger, warmachine, demonwall, wallofflesh, elderdragon, pirates, frostlegion, crystalshadow
+
+!startbat orbfountain 
+This will start an orb fountain battle.
+
+!startbat gauntlet 
+This will start a gauntlet battle.
+
+!startbat manual 
+This will start a manual battle. No monsters will be summoned in this battle type. You will have to manually use !summon to add them. If no monsters/bosses are added to the battle it will end before it begins. 
+
 !end bat
 Ends a battle as neither a victory or a loss.
 
@@ -543,7 +558,7 @@ RageMode=ignore
 IGNORE QUICKSILVER.  If set to true, the quicksilver skill won't have any effect.
 IgnoreQuicksilver=true/false
 
-AI TYPE: berserkers will attack their own allies, defenders won't get a turn. healers only heal, counteronly will counter melee/take 0 damage from everything else, and techonly only uses techs and ignitions. Leave blank for normal.
+AI TYPE: berserkers will attack their own allies, defenders won't get a turn. healers only heal, counteronly will counter melee/take 0 damage from everything else, paytoattack will only take action in battle if its been paid (given red orbs) and only works on NPCs and techonly only uses techs and ignitions. Leave blank for normal.
 ai_type=
 
 STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.  set to -1000 for it to never show up under normal circumstances.
@@ -587,5 +602,6 @@ HurtByTaunt=true/false
 HEALBYTAUNT is a special flag. If set to true, taunts done against this boss will heal damage.
 HealByTaunt=true/false
 
-Does the monster appear in President battles? True=yes/False=no  Note that this won't stop a monster from attacking the allied president IF this monster somehow gets into the battle. It just means it shouldn't appear, normally, in a president battle.
-IgnorePresident=
+IGNOREPRESIDENT= Does the monster appear in President battles? True=yes/False=no  Note that this won't stop a monster from attacking the allied president IF this monster somehow gets into the battle. It just means it shouldn't appear, normally, in a president battle.
+
+DEATHCONDITIONS= if you want the monster to only be able to be killed if a certain action is performed, you can set it here. Not set by default. Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect - You can list multiple by putting a period in between such as: melee.magic.status If the monster is killed by something that isn't the death condition, it'll be revived until killed with the condition. 

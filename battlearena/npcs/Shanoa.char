@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=2500
+Hp=4000
 Tp=500
-Str=$calc(30 + $current.battlestreak)
-Def=$calc(25 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(30 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(60 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Name=Shanoa
 
 
 [Battle]
-Hp=2400
+Hp=4000
 Tp=500
-Str=$calc(30 + $current.battlestreak)
-Def=$calc(25 + $current.battlestreak)
-Int=$calc(30 + $current.battlestreak)
-Spd=$calc(30 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(60 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
@@ -98,35 +98,66 @@ conservetp.on=off
 
 [Weapons]
 Equipped=Glyphs
-Glyphs=$round($calc(600 + (($current.battlestreak / 2) / 5.5)),0)
+Glyphs=$calc(50 + $current.battlestreak)
 
 [Skills]
 ElementalSeal=1
-Wizardry=1000
-Resist-Amnesia=100
-Resist-Charm=100
-Resist-Intimidate=100
-Resist-Curse=100
+Wizardry=2000
 Zen=5
-RoyalGuard=1
-ManaWall=1
+PerfectDefense=1
 ClearMind=3
 BloodSpirit=10
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-Ignis=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Grando=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Fulgar=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Nitesco=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Globus=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Acerbatus=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Luminatio=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Dominus=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Ignis=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
+Grando=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
+Fulgar=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
+Nitesco=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
+Globus=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
+Acerbatus=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
+Luminatio=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
+Dominus=$iif($current.battlestreak < 300, 0, $calc(500 + $current.battlestreak))
 
 [Item_Amount]
 
 
 [Styles]
 Equipped=SpellMaster
-SpellMaster=10
+SpellMaster=25
 SpellMasterXP=1
+
+[Augments]
+Glyphs=HurtEthereal.TechBonus.MeleeBonus.MagicBonus

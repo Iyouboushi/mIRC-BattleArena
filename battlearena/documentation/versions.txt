@@ -1077,9 +1077,127 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with chests being able to be opened multiple times if the bot is lagging.
 - Fixed an issue where dead cover targets will still be shown being tossed by monsters.
 - Fixed an issue with the shop where sometimes the skills would not be displayed correctly. 
-- Fixed an issue in which !npc status wouldn display in the channel when used in a private message instead of private.
+- Fixed an issue in which !npc status would display in the channel when used in a private message instead of private.
 - Fixed an issue where doing 0 damage should no longer be able to stagger an enemy
 - Fixed an issue where a target could be staggered even if the target was dodging/blocking/parrying/etc 
 - Fixed an issue where targets protected by a guardian could still be hurt by magic effect damage
 - Fixed an issue where it was possible to do actions while blinded/stunned/other turn-skipping statuses
 - Fixed a potential issue with AI battles in which two healing types could be in battle together, thus never ending.
+
+3.0
+- Added the bot admin command: !display players and !display zapped   Using this the bot will generate a full list
+  of all active or zapped players and display it to the bot admin who used the command. The !display zapped command
+  will also generate a zapped.html file that bot owners can upload if they choose.
+- Added the bot admin command: !unzap   If the bot admin knows the zapped file name, it is now possible to restore it.
+  For example, if the file is Iyouboushi_a4kf88 you would use !unzap Iyouboushi_a4kf88
+- Added the bot admin command: !password reset playername  -- This will reset the player's password and send the player
+  what the new password is (so use it when the player is online). The bot admin will NOT see the new password. 
+- Added the bot admin command: !toggle battle messages  -- This will toggle between old and new battle announce messages
+- Added a CanDodge=true/false flag to techniques. If set to false, it will be impossible to dodge the technique.
+- Added a new flag in system.dat: EnableDNSCheck=true/false   This will allow the bot to attempt to get the host names
+  of players. This is necessary to use the player limit.  If disabled the bot won't attempt to use it
+  and players can have as many characters as they want.
+- Added a new flag in system.dat: showCustomBattleMessages=true/false  If set to true the bot will display the new
+  battle starting messages for orb fountains and bosses. If set to false it will show the old one.
+- Added a new system setting: ShowDeleteEcho  When set to =true  the bot will show every time it erases a .char file
+  Useful for debugging if something is going amiss.
+- Added Capacity and Enhancement Points. 10,000 Capacity Points will equal 1 Enhancement Point. Players gain capacity 
+  points by being in battles that are higher than streak 100. Note that the player level has to be within 10 of 
+  the streak in order to gain capacity points. After streak 500, the amount is 500+(10% of streak level)
+- Added the Enhancement Point shop. Use !shop list enhancements and !shop buy enhancements itemtobuy
+- Added the ability for styles to have augments. In playerstyles.db under [augments] you can add/remove/change them.
+- Added a new active enhancing point skill: Stoneskin. This skill will allow players to gain a natural armor in battle.
+  The amount it will absorb is (10 + level)% of int up to 3000. It will wear off at the end of battle if not broken.
+- Added a new active enhancing point skill: TabulaRasa. This skill will attempt to inflict a target with amensia.
+  The chance of success is 40 + (skill level) %
+- Added a new passive enhancing point skill: SpoilSeeker. This skill will increase the odds of players getting a spoil
+  after killing a monster by 2% each level.
+- Added a new passive enhancing point skill: Demolitions. This skill will enhance bomb attack items (such as
+  dynamite, holy hand grenade, bomb fragment) by 4% per skill level, up to 40% max.
+- Added the active skill: Warp. This skill will allow the player to warp the next battle to a specific battlefield for
+  2,000 red orbs.  This skill can only be used outside of battle and cannot be used to warp to portal battlefields.
+- Added the ability for monsters and npcs to be able to use battle items. In [info] put CanUseItems=true and then in
+  [Item_Amount] put the item name and how many of the item the user has.
+- Added a new item type: Trust.  The Trust item type will summon an NPC ally to fight alongside you. Note that 
+  Trusts can only be used if you are solo in the battle. They are not consumed like normal items.
+- Added NPC Trusts to the shop. Use !shop list trusts  and !shop buy trusts itemname 
+- Added a new timer to try to prevent bot stalling.
+- Added a new NPC type: PayToAttack.  In [info] put ai_type=PayToAttack   This type will only attack if the player has
+  given him/her some orbs. 
+- Added Login Points. Now logging in once a day will give the player 10 points. 
+- Added the !loginpoints command to allow you to see your, and others, login points.
+- Added a !dcc command that will attempt to initiate a DCC chat, courtesy of Andrio. Only useful if the bot is in DCC mode.
+- Added the missing skills to dccchat.mrc
+- Added the presidentnames.lst file.  The bot will now pick a random name for the allied forces president each time 
+  he/she is killed by monsters after a failed president battle.
+- Added the ability for the bot to check [augments] for armor names (outside a mech) and mech weapons/cores 
+  (when inside a mech).  I'm adding this mostly for NPCs/monsters/bosses, as players can't augment those things 
+  without the bot owner doing it manually.
+- Added a new Shop NPC: Syrup the Potion Witch.  Upon arriving at the HQ, she will unlock the Potion Effect shop.
+  Use !shop list potioneffect or !shop buy potioneffect effectname
+- Added Potion Effects. These are special bonuses that players can purchase from Syurp. They will be applied during
+  or after the next battle for the player who has the effect on.
+- Added the ability to sell weapons back to the shop. Use !shop sell weapon weaponname -- You will receive 1/2 of the 
+  original cost back except for blueprint weapons in which you will receive a flat 5 black orbs back.
+- Added a new battle type: Defend the Outpost. In this type, players will have to survive 5 waves of monsters
+  to successfully defend an outpost.
+- Added influence to monsters and allied forces. This is only used to determine when the new battle types occur.
+- Added the Spirit of the Hero buff. If players enter a streak that is too far out of their level range the bot will
+  automatically adjust their level and hp at the cost of their orb reward at the end of the battle.
+- Changed the !augment commands to work in private or channel. 
+- Changed the !augment list command to allow for more augments to be shown if more than 30 weapons have augments.
+- Changed the portal battles so that they have a level cap. Any player that is above the cap will be lowered to the cap.
+- Changed the shop to allow players to view and buy techniques that are on the left-hand weapon.
+- Changed the drops in the bot so that players who land a finishing blow on a monster will have a chance of obtaining a
+  drop (spoil) from that monster if it has one available. The default chance is 40% and can be increased with SpoilSeeker.
+- Changed the !armor code to display armor that you can't wear in red, +1 armor is in the darker blue and 
+  +2 armor is in the bright blue to help make it stand out.
+- Changed the lockpicking skill to be 3% per level, up from 2%.
+- Changed Evil Doppelgangers so that they are generated correctly if the user is level synced.
+- Changed chests so that red chests can never spawn mimics.
+- Changed the GIVES command so that players can now give red orbs to certain NPCs.  The command is /me gives # orbs to name
+  Note it only works on certain NPCs that require red orbs to take action in battle.
+- Changed the GIVES command so that players can only given items and orbs on their turn while in battle. Outside of battle
+  they can still do it whenever.
+- Changed the way the bot picks NPCs so that they can now have streak minimums/maximums like monsters and bosses.
+- Changed the Inactive type monsters/npcs so that they can have a custom description for when they become active.
+  In [descriptions] put Awaken= and the desc (don't add the name to the beginning).
+- Changed the scoreboard.html to include the level of the player
+- Changed the drunk status to last 2 rounds
+- Changed the GIVES message to hopefully show grammatically correct lines when giving items that end in y (such as ruby).
+  Note you still have to use the item name that's in the bot (ex. ruby not rubies) when using the command.
+- Changed the way the bot handles negative status effects on targets. If the player is fighting solo most will only last
+  1 turn.  The status effect turn amounts can now be found in battlealiases.als under the alias status.effects.turns
+- Changed the way the bot does all of the status timers to make it consistent and work correctly with the other status changes
+- Changed the modifier checks so that they will also check for the name of the weapon in addition to the rest
+- Changed the way the bot displays damage in that resisted damage will show in purple while enhanced damage will be in orange
+- Changed the way the bot displays the "battle open" message to better help the players understand what type of battle is next
+- Changed the chance of a rescue allied president battle to 25% and lowered the streak from 100 to 20. 
+  This is because the battle can only happen if the NPC is kidnapped and isn't true random like it used to be.
+- Changed how the allied forces president is generated slightly (stat-wise)
+- Changed the chance of certain special boss types of occurring by a small amount.
+- Changed the way the bot boosts portal monsters, hopefully keeping them closer to the synced levels
+- Changed the way the bot does the stats for monsters, npcs and summons upon summoning to the battlefield.
+- Changed the way the HP for monsters/summons/NPCs/bosses are boosted at the start of battle
+- Changed demon portals so that monsters spawning out of them will be slightly less than the battle streak.
+- Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
+- Fixed an issue with counter attacks showing the wrong pronouns sometimes.
+- Fixed an issue with lost souls appearing in gauntlet battles.
+- Fixed an issue where instruments could be used with !use
+- Fixed an issue with the mech shop so that cores and weapons that cost 0 won't show up for purchase.
+- Fixed an issue with the snatch error message showing the wrong name
+- Fixed an issue with monsters being unable to take action while charmed.
+- Fixed an issue with techniques doing too much damage when a player was level synced.
+- Fixed an issue in which Ghost Turkey could show up in other months besides November
+- Fixed an issue with !view-info style doppelganger getting cut off
+- Fixed a bug with !augment list that would say players had no augments even if they did.
+- Fixed a bug with !fullbring when used with +TP items.
+- Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
+- Fixed a bug with the drunk status effect
+- Fixed a bug with !augments list not showing in private even if the command was used in private
+- Fixed a bug with !unequip armor
+- Fixed a bug with shadow clones attacking their owners in PVP mode
+- Fixed a bug with shadow clones attacking themselves in PVP mode
+- Fixed a bug with items occasionally not showing damage correctly 
+- Fixed a bug in which players could trade armor they were still wearing
+- Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)

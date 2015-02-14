@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=$round($calc(10000 + $readini($txtfile(battle2.txt), BattleInfo, PlayerLevels)),0)
+Hp=$round($calc(10000 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
 Tp=5000
-Str=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .20)),0)
-Def=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .25)),0)
-Int=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .25)),0)
-Spd=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .50)),0)
+Str=3112
+Def=1539
+Int=944
+Spd=2637
 IgnitionGauge=500
 Name=Ashi Atora
 
 
 [Battle]
-Hp=$round($calc(10000 + $readini($txtfile(battle2.txt), BattleInfo, PlayerLevels)),0)
+Hp=10000
 Tp=5000
-Str=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .20)),0)
-Def=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .25)),0)
-Int=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .25)),0)
-Spd=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .50)),0)
+Str=3112
+Def=1539
+Int=944
+Spd=2637
 IgnitionGauge=500
 Status=alive
 
@@ -52,12 +52,12 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=7500
+bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 370, 7500)
 IgnoreQuicksilver=true
 CanTaunt=false
 JustReleaseDefense=100
 CanStagger=yes
-StaggerAmount=$round($calc(.20 * $readini($char(AshiAtora), basestats, hp)),0)
+StaggerAmount=$round($calc(.30 * $readini($char(AshiAtora), basestats, hp)),0)
 
 [Status]
 Poison=no
@@ -94,7 +94,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=AtlantisPower
-AtlantisPower=8000
+AtlantisPower=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000)
 
 
 [Skills]
@@ -112,10 +112,11 @@ doubleturn.on=on
 TrueStrike.on=on
 
 [Techniques]
-BloodDagger=8000
-AtlantianBlast=6000
-AsuranFists=10000
-AtlantianExplosion=3000
+BloodDagger=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000)
+AtlantianBlast=$iif($readini(system.dat, system, ForcePortalSync) = true, 600, 8000)
+AsuranFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 5000)
+AtlantianExplosion=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)
+
 
 [Item_Amount]
 

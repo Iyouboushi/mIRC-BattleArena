@@ -1,10 +1,10 @@
 [BaseStats]
-Hp=9500
+Hp=$round($calc(9500 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
 Tp=1250
-Str=4920
-Def=7980
-Int=3500
-Spd=6500
+Str=1576
+Def=891
+Int=528
+Spd=1221
 Name=Echidna the She-Viper
 IgnitionGauge=100
 
@@ -12,10 +12,10 @@ IgnitionGauge=100
 [Battle]
 Hp=9500
 Tp=1250
-Str=4920
-Def=7980
-Int=3500
-Spd=6500
+Str=1576
+Def=891
+Int=528
+Spd=1221
 Status=alive
 IgnitionGauge=100
 
@@ -51,7 +51,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=$iif($readini($txtfile(battle2.txt), BattleInfo, PlayerLevels) < 1500, 1500, $calc(200+ $readini($txtfile(battle2.txt), BattleInfo, HighestLevel)))
+bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 180,$iif($readini($txtfile(battle2.txt), BattleInfo, PlayerLevels) < 1500, 1500, $calc(200+ $readini($txtfile(battle2.txt), BattleInfo, HighestLevel))))
 CanTaunt=false
 IgnoreQuickSilver=true
 JustReleaseDefense=90

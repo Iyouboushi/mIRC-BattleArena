@@ -1,8 +1,12 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Scoreboard Generation
+;;;; Last updated: 01/31/15
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate.scoreboard {
   set %totalplayers 0
   .echo -q $findfile( $char_path , *.char, 0 , 0, get.score $1-)
 
-  if (%totalplayers <= 2) { $display.system.message($readini(translation.dat, errors, ScoreBoardNotEnoughPlayers), private)  | unset %totalplayers | halt }
+  if (%totalplayers <= 2) { $display.message($readini(translation.dat, errors, ScoreBoardNotEnoughPlayers), private)  | .remove scoreboard.txt | unset %totalplayers | halt }
 
   ; Generate the scoreboard.
 
@@ -136,9 +140,9 @@ generate.scoreboard {
 
 
 
-  $display.system.message($readini(translation.dat, system, ScoreBoardTitle), private)
-  $display.system.message($chr(3) $+ 2 $+ %score.list, private)
-  if (%score.list.2 != $null) { $display.system.message($chr(3) $+ 2 $+ %score.list.2, private)  }
+  $display.message($readini(translation.dat, system, ScoreBoardTitle), private)
+  $display.message($chr(3) $+ 2 $+ %score.list, private)
+  if (%score.list.2 != $null) { $display.message($chr(3) $+ 2 $+ %score.list.2, private)  }
   unset %totalplayers | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score
 }
 
@@ -297,7 +301,7 @@ generate.monsterdeathboard {
 
   if ($readini($lstfile(monsterdeaths.lst), monster, demon_portal) != $null) { write scoreboard.txt demon_portal | inc %totalmonsters 1 }
 
-  if ((%totalmonsters <= 2) || (%totalmonsters = $null)) { $display.system.message($readini(translation.dat, errors, DeathBoardNotEnoughMonsters), private) |  unset %totalmonsters | halt }
+  if ((%totalmonsters <= 2) || (%totalmonsters = $null)) { $display.message($readini(translation.dat, errors, DeathBoardNotEnoughMonsters), private) |  unset %totalmonsters | halt }
 
   ; Generate the scoreboard.
 
@@ -379,7 +383,7 @@ generate.monsterdeathboard {
   unset %ScoreBoard.speed
 
 
-  if ($1 = total) {  $display.system.message($readini(translation.dat, system, DeathBoardTotalMon), private) }
+  if ($1 = total) {  $display.message($readini(translation.dat, system, DeathBoardTotalMon), private) }
 
   if ($1 = $null) { 
     if (%totalmonsters < 5) { 
@@ -418,9 +422,9 @@ generate.monsterdeathboard {
       unset %lines | unset %current.line
     }
 
-    $display.system.message($readini(translation.dat, system, DeathBoardTitleMon), private)
-    $display.system.message($chr(3) $+ 2 $+ %score.list, private)
-    if (%score.list.2 != $null) { $display.system.message($chr(3) $+ 2 $+ %score.list.2, private) }
+    $display.message($readini(translation.dat, system, DeathBoardTitleMon), private)
+    $display.message($chr(3) $+ 2 $+ %score.list, private)
+    if (%score.list.2 != $null) { $display.message($chr(3) $+ 2 $+ %score.list.2, private) }
 
   }
 
@@ -446,7 +450,7 @@ generate.bossdeathboard {
     inc %value 1
   }
 
-  if ((%totalboss <= 2) || (%totalboss = $null)) { $display.system.message($readini(translation.dat, errors, DeathBoardNotEnoughmonsters), private) | unset %totalboss | halt }
+  if ((%totalboss <= 2) || (%totalboss = $null)) { $display.message($readini(translation.dat, errors, DeathBoardNotEnoughmonsters), private) | unset %totalboss | halt }
 
   ; Generate the scoreboard.
 
@@ -528,7 +532,7 @@ generate.bossdeathboard {
   unset %ScoreBoard.speed
 
 
-  if ($1 = total) {  $display.system.message($readini(translation.dat, system, DeathBoardTotalBoss), private) }
+  if ($1 = total) {  $display.message($readini(translation.dat, system, DeathBoardTotalBoss), private) }
   if ($1 = $null) {
 
     if (%totalboss < 5) { 
@@ -567,9 +571,9 @@ generate.bossdeathboard {
       unset %lines | unset %current.line
     }
 
-    $display.system.message($readini(translation.dat, system, DeathBoardTitleBosses), private)
-    $display.system.message($chr(3) $+ 2 $+ %score.list, private)
-    if (%score.list.2 != $null) { $display.system.message($chr(3) $+ 2 $+ %score.list.2, private) }
+    $display.message($readini(translation.dat, system, DeathBoardTitleBosses), private)
+    $display.message($chr(3) $+ 2 $+ %score.list, private)
+    if (%score.list.2 != $null) { $display.message($chr(3) $+ 2 $+ %score.list.2, private) }
   }
 
   unset %totalboss | unset %score | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score | unset %total.deaths
@@ -592,8 +596,9 @@ html.generate {
     write scoreboard.html  <tr>
     write scoreboard.html  <td><B>NAME</B></td>
     write scoreboard.html  <td><B>SCORE</B></td>
-    write scoreboard.html  <td><B>Health</B></td>
+    write scoreboard.html  <td><B>HP</B></td>
     write scoreboard.html  <td><B>TP</B></td>
+    write scoreboard.html <td><B>LEVEL</B></td>
     write scoreboard.html  <td><B>STR</B></td>
     write scoreboard.html  <td><B>DEF</B></td>
     write scoreboard.html  <td><B>INT</B></td>
@@ -609,25 +614,21 @@ html.generate {
     var %html.def $bytes($readini($char($2),basestats, def),b)
     var %html.int $bytes($readini($char($2),basestats, int),b)
     var %html.spd $bytes($readini($char($2),basestats, spd),b)
+    var %html.level $bytes($get.level($2),b) 
 
     write scoreboard.html  <tr>
     write scoreboard.html  <td> $2 </td>
     write scoreboard.html  <td> %html.score </td>
     write scoreboard.html  <td> %html.health </td>
     write scoreboard.html  <td> %html.tp </td>
+    write scoreboard.html <td> %html.level </td>
     write scoreboard.html  <td> %html.str </td>
     write scoreboard.html  <td> %html.def </td>
     write scoreboard.html  <td> %html.int </td>
     write scoreboard.html  <td> %html.spd </td>
     write scoreboard.html  </tr>
-
   }
 
-  if ($1 = endpage) { 
-
-    write scoreboard.html  </table>
-
-  }
-
+  if ($1 = endpage) {  write scoreboard.html  </table>  }
 
 }

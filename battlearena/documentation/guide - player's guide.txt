@@ -43,6 +43,8 @@ Some basic commands you may want to check out:
 
 !allied notes - Tells you how many Allied Notes you have collected. Allied notes are used in the shop for certain items, to place bets on 1vs1 AI battles and to bid in auctions via the auction house.
 
+!loginpoints - Tells you how many Login Points you have collected. Login Points are used in the shop to purchase Trust NPCS. 
+
 !level - This will tell you what your estimated level is.  Your estimated level is based on the core 4 stats (str, def, int and spd).  In order to increase your level, increase those four stats.
 
 !weapons - This will return a list of all the weapons you own along with the current level of the weapon.  For example:  Fists(1) means you have level 1 fists.
@@ -100,7 +102,7 @@ Some basic commands you may want to check out:
 
 !save battle streak - Save the current battle streak to your file so that you can reload it later.  Consider this as a way to "save your game" if you have to go and want to resume on the same streak later.  You can only save a streak once an hour.
 
-!reload battle streak - Reloads the saved battle streak from your file to the bot.  In order for a streak to be reloaded there can't be any winning streaks (i.e. it has to be a losing streak).  Upon reloading, the old saved streak will be erased from the file.
+!reload battle streak - Reloads the saved battle streak from your file to the bot.  In order for a streak to be reloaded there can't be any winning streaks (i.e. it has to be a losing streak).  
 
 !conquest info - This will display the current information on the current conquest period (and who won the last conquest tally, if available)
 
@@ -122,7 +124,7 @@ Strength: How strong you are. Melee attacks use this.
 
 Defense: How much damage you'll block.  Defense is used for all types of attacks.
 
-Intelligence: How much damage your techniques will do, plus how well you can block other techniques (this will be added with defense on defending).
+Intelligence: How much damage certain techniques will do, plus how well you can block other techniques (this will be added with defense on defending). 
 
 Speed: How fast you are.  This affects when you get your turn in battle.
 
@@ -170,6 +172,7 @@ Next up you can try out the list command for the various things.
 !shop list misc
 !shop list gems
 !shop list alchemy
+!shop list enhancements
 
 Most things in this game are purchased using red orbs. Red orbs are acquired by defeating enemies via participating in battles and found within red chests.  Weapons and Ignitions require black orbs. Black orbs are acquired by surviving a successful boss battle or found randomly in gold chests.  Portal Items require special seals, rather than orbs, to purchase.  The seals are found in chests and off of random enemies.  Finally, gems and alchemy items are purchased using Allied Notes.  Allied Notes are a special currency that you can acquire by defeating the foes found within the portal items.
 
@@ -337,7 +340,7 @@ Monsters are leveled based on the current winning streak.  And the amount of dam
 
 
 SKILLS
-** As of June 14, 2014.
+** As of Dec 3, 2014.
 
 There are four types of skills in this bot: Passive Skills that are always on, Active Skills that have commands, Resists that help you resist against various status types found in the bot and Killer Traits that help you deal more melee damage to certain monster families.  Each skill has a maximum level that you can obtain in it. Some active skills can only be used once every certain number of minutes.  Of course you must first purchase the skills in the shop before you can use them.
 
@@ -419,6 +422,13 @@ This skill will decrease the odds that a curse night will happen by 1% per level
 
 DualWield
 This skill will allow the user to hold two one-handed weapons and use techniques from both without having to switch weapons. For melee attacks, the # of hits for the attack will be both weapon's # of hits combined. Use !equip left or !equip right to equip to the specified hand. Note, a weapon must be in the right hand before you can equip the right hand.
+
+SpoilSeeker
+This skill will increase the odds of players getting a spoil after killing a monster by 2% each level.  This skill is obtained via enhancement points.
+
+
+Demolitions
+This skill will enhance bomb attack items (such as dynamite, holy hand grenade, bomb fragment) by 4% per skill level, up to 40% max. This skill is obtained via enhancement points.
 
 
 Active Skills
@@ -528,8 +538,14 @@ This skill will allow your normal melee attacks to hurt Ethereal targets without
 Retaliation - !retaliation
 This skill will guarantee the next melee attack towards you will be countered. While this skill is active you will go last in battle.  Increased levels of this skill will decrease the time inbetween uses, with the default being once every 20 turns.
 
-Lockpicking
+Lockpicking - !lockpick
 This skill will consume a lockpick item and attempt to unlock a chest without using the correct colored key.  The chance of success is (skill level * 2)%
+
+Stoneskin - !stoneskin
+This skill will allow players to gain a natural armor in battle. The amount it will absorb is (10 + level)% of int, but it has a max amount. The max is 300 cap per point, with the max cap being 3,000 at level 10 It will wear off at the end of battle if not broken and will be re-calculated if applied before a level sync portal battle. This skill is obtained with enhancement points.
+
+TabulaRasa - !tabularasa (target)
+This skill will attempt to inflict a target with amensia. The chance of success is 40 + (skill level) %
 
 
 Resistance Skills
@@ -574,9 +590,9 @@ Slime-Killer
 
 
 ITEM LIST
-** As of August 3, 2014.
+** As of Dec 3, 2014.
 
-There's a bunch of different types of items in the bot currently:  Healing Items, Battle Items, Consumable (Skill) Items, +Stat Items, Summon Items, Shop Level Reducing Items, Gems, Keys, Accessories, Portal Items and Misc (Crafting) items.  Here's a list of each.
+There's a bunch of different types of items in the bot currently:  Healing Items, Battle Items, Consumable (Skill) Items, +Stat Items, Summon Items, Shop Level Reducing Items, Gems, Keys, Accessories, Trust Items, Portal Items and Misc (Crafting) items.  Here's a list of each.
 
 Healing Items
 These are items that are beneficial to the targets.
@@ -802,6 +818,8 @@ This item is will summon Titan
 Pokeball - 10000 red orbs
 This item will summon a random pokemon
 
+GuardContract - 500 red orbs
+This item will summon Yojimbo--a special summon that needs to be given red orbs in order to take action in battle.  You can give him orbs by /me gives (yourname)_summon # redorbs  
 
 Shop Reducing Items
 When used, these items will reduce your current shop level by an amount.  The shop level can never go below 1.0.
@@ -1099,6 +1117,18 @@ FrameRepairA
 FrameRepairB
 FrameRepairE
 FrameRepairZ
+
+
+Trust Items
+These items are used to summon NPCs to help fight alongside you if you're alone in battle. These can be purchased in the shop by using Login Points–points you will accumulate every new day that you log into the bot. 
+
+BigWhoop
+StarCoin
+BelmontMedallian
+Glazed Donut
+S-MartNameTag
+PowerPellet
+ShinigamiBadge
 
 
 ACCESSORIES
@@ -1691,6 +1721,16 @@ NPCS
 NPCs are helpful allies that show up occasionally to help the forces of good win battles.  At the moment there's a 10% chance of them showing up normally.  If the players have been losing a lot (5+ in a row) they will show up 100% of the time.  NPCs will stay in battle until they die or until all players die.  In other words, NPCs won't keep fighting the good fight after all players are dead; at least one player must stay alive for the battle to continue.
 
 
+TRUST NPCS
+Sometimes a player might find him or herself in battle alone against the armies of the darkness. In these times of peril an NPC might be summoned to fight alongside the brave hero. This is achieved by trust. Specifically, by using trust npc items.
+
+Trust NPC Items can be purchased in the shop by using Login Points. You will earn +10 login points every time you log in every 24 hours and they will never expire.
+
+To check info on what NPC will be summoned with the item use !view-info item trustitemname and the bot will inform you.
+
+When using Trust NPC Items you will not lose your turn and will get to go again immediately after summoning the npc. Also the item will not be consumed upon use, so you only ever need to buy 1. But please note that you can only use the item if you are alone in battle. If another player or a random NPC joins the battle you will be unable to use the item.
+
+
 ACHIEVEMENTS
 Like most modern games, this game has a list of achievements that you can unlock through various ways.  I encourage everyone to try different things to unlock them all.  The rewards for unlocking them vary, but usually unlock bonus red orbs.  Sometimes you will receive items from the achievements or possibly even a full IG bar as a reward.  Here's a plain list of achievements.  No, I won't spoil how to go about actually unlocking them all--that's up to you to figure out!
 
@@ -1736,7 +1776,8 @@ Jackpot
 Humanoid Typhoon
 I Can Quit Betting Any Time I Want
 Mastered Technique
-Super SSStylish!
+Super SSStylish
+You've Got A Friend In Me
 
 
 MISC INFO

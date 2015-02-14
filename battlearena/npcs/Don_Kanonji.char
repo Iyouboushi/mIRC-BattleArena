@@ -94,22 +94,19 @@ slow.timer=1
 zombie.timer=1
 
 [Weapons]
-Equipped=YewWand
-YewWand=10
+Equipped=KanonjiStaff
+KanonjiStaff=$calc(1 + $current.battlestreak)
+
 
 [Skills]
-speed.on=no
-doubleturn.on=off
-soulvoice.on=off
-manawall.on=off
-elementalseal.on=off
-mightystrike.on=off
-royalguard.on=off
-
-
+Resist-Charm=100
+Resist-confuse=100
+Resist-Weaponlock=100
+Resist-Disarm=100
 
 [Techniques]
-
+KanonBall=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+GoldenKanonBall=$iif($current.battlestreak < 100, 0, $calc(100 + $current.battlestreak))
 
 
 [Item_Amount]

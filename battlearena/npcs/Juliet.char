@@ -1,26 +1,27 @@
 [BaseStats]
-Hp=2500
-Tp=250
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Hp=4000
+Tp=500
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Name=Juliet Starling
 
 
 [Battle]
-Hp=2500
-Tp=250
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Hp=4000
+Tp=500
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
+
 
 [Limit]
 Level=1
@@ -34,12 +35,14 @@ Dused=1
 Char=is a young woman with blonde hair and wears a purple San Romero Knights cheerleader outfit. Additionally, she is a zombie slayer who wields a large chainsaw that is pink with hearts on it.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=her
@@ -95,24 +98,60 @@ zombie.timer=1
 
 [Weapons]
 Equipped=PinkChainsaw
-PinkChainsaw=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+PinkChainsaw=$calc(40 + $current.battlestreak)
+
 
 [Skills]
 Zen=5
 WeaponBash=1
 Impetus=20
-MartialArts=1000
 Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
 Resist-Intimidate=100
-
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-ChainsawDash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-ChainsawSpin=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-ChainsawTornado=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-ChainsawCut=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-ChainsawAttack=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-ChainsawCannon=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+ChainsawDash=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+ChainsawSpin=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+ChainsawTornado=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+ChainsawCut=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+ChainsawAttack=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+ChainsawCannon=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+
 
 [Item_Amount]
 
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=20
+WeaponMasterExp=1

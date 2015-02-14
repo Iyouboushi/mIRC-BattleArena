@@ -1,6 +1,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
+;;;; Last updated: 02/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Start DCC Chat in IRC mode
+; Courtesy of Andrio
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+on 3:TEXT:!dcc*:*:{
+  if ($2 == close) {
+    close -c $nick
+    notice $nick Your DCC session has been closed.
+  }
+  else {
+    unset %dcc.alreadyloggedin
+    $dcc.check.for.double.login($nick)
+    if (!%dcc.alreadyloggedin) dcc chat $nick
+  }
+}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Enter the DCC chat
@@ -107,13 +124,9 @@ alias dcc.private.message {
   ; $1 = person
   ; $2 = message
 
-  var %p 1
-  while ($chat(%p) != $null) {  var %nick $chat(%p) | var %system.message $1
-    if ($chat(%p) = $1) { msg = $+ $chat(%p) $2 }
-    inc %p 1 
-  } 
+  if ($2 = $null) { echo -a 4ERROR: MESSAGE IS NULL, CHECK TRANSLATION.DAT | halt }
+  msg = $+ $1 $2
 }
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Player commands go here
@@ -128,6 +141,7 @@ on 2:Chat:!sell*: { $shop.start(!shop, sell, $2, $3, $4, $5) }
 on 2:Chat:!bet*: { $ai.battle.place.bet($nick, $2, $3) } 
 on 2:Chat:!npc status: { $shopnpc.list(dcc, $nick) }
 on 2:Chat:!portal usage: { $portal.usage.check(dcc, $nick) }
+on 2:Chat:!wheel: { $wheel.control($nick, $2) } 
 
 on 2:Chat:!access: {
   if ($2 = add) { $character.access($nick, add, $3) }
@@ -168,10 +182,10 @@ on 2:Chat:!ig: {
 }
 on 2:Chat:!orbs*: { 
   if ($2 != $null) { $checkchar($2) | var %orbs.spent $bytes($readini($char($2), stuff, RedOrbsSpent),b) | var %blackorbs.spent $bytes($readini($char($2), stuff, BlackOrbsSpent),b) | $set_chr_name($2) 
-    $dcc.private.message($readini(translation.dat, system, ViewOthersOrbs))
+    $dcc.private.message($nick,$readini(translation.dat, system, ViewOthersOrbs))
   }
   else { var %orbs.spent $bytes($readini($char($nick), stuff, RedOrbsSpent),b) | var %blackorbs.spent $bytes($readini($char($nick), stuff, BlackOrbsSpent),b) | $set_chr_name($nick) 
-    $dcc.private.message($readini(translation.dat, system, ViewMyOrbs))
+    $dcc.private.message($nick,$readini(translation.dat, system, ViewMyOrbs))
   }
 }
 ON 2:Chat:!desc*: { 
@@ -215,6 +229,10 @@ on 2:Chat:!double dollars*: {
   if ($2 = $null) { $check.doubledollars($nick, channel) }
   if ($2 != $null) { $checkchar($2) | $check.doubledollars($2, channel) }
 }
+on 2:Chat:!loginpoints*: { 
+  if ($1 != $null) { $checkchar($1) | $dcc.private.message($readini(translation.dat, system, ViewOthersLoginPoints)) }
+  if ($2 = $null) { $dcc.private.message($readini(translation.dat, system, ViewMyLoginPoints)) }
+}
 
 on 2:Chat:!look*: {
   if ($2 = $null) { $lookat($nick) }
@@ -245,10 +263,16 @@ on 2:Chat:!stats*: { unset %all_status
     var %blocked.meter $readini($char($nick), skills, royalguard.dmgblocked)
     if (%blocked.meter = $null) { var %blocked.meter 0 }
 
-    $dcc.private.message($nick, [4HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ 1] [4TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ 1] [4Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ 1] [4Status12 %all_status $+ 1] [4Royal Guard Meter12 %blocked.meter $+ 1])
-    $dcc.private.message($nick, [4Strength12 %str $+ 1]  [4Defense12 %def $+ 1] [4Intelligence12 %int $+ 1] [4Speed12 %spd $+ 1])
-    $dcc.private.message($nick,  [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $iif(%weapon.equipped.left != $null, 4and12 %weapon.equipped.left) $+ 1] [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ 1]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ 1])
-    unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped)
+    if ($readini($char($nick), stuff, CapacityPoints) = $null) { writeini $char($nick) stuff CapacityPoints 0 }
+    if ($readini($char($nick), stuff, EnhancementPoints) = $null) { writeini $char($nick) stuff EnhancementPoints 0 }
+    if ($readini($char($nick), stuff, LoginPoints) = $null) { writeini $char($nick) stuff LoginPoints 0 }
+
+    $dcc.private.message($nick, [4HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ ] [4TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($nick), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($nick), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($nick), stuff, LoginPoints) $+ ])
+    $dcc.private.message($nick, [4Strength12 %str $+ ]  [4Defense12 %def $+ ] [4Intelligence12 %int $+ ] [4Speed12 %spd $+ ])
+    $dcc.private.message($nick, [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $iif(%weapon.equipped.left != $null, 4and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
+    unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right 
+    unset %weapon.equipped.left 
+
   }
   else { 
     $checkchar($2) 
@@ -271,10 +295,16 @@ on 2:Chat:!stats*: { unset %all_status
     var %blocked.meter $readini($char($2), skills, royalguard.dmgblocked)
     if (%blocked.meter = $null) { var %blocked.meter 0 }
 
-    $dcc.private.message($nick, [4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ 1] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ 1] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ 1] [4Status12 %all_status $+ 1] [4Royal Guard Meter12 %blocked.meter $+ 1])
-    $dcc.private.message($nick, [4Strength12 %str $+ 1]  [4Defense12 %def $+ 1] [4Intelligence12 %int $+ 1] [4Speed12 %spd $+ 1])
-    $dcc.private.message($nick,  [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $iif(%weapon.equipped.left != $null, 4and12 %weapon.equipped.left) $+ 1] [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ 1] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ 1])
-    unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped
+    if ($readini($char($2), stuff, CapacityPoints) = $null) { writeini $char($2) stuff CapacityPoints 0 }
+    if ($readini($char($2), stuff, EnhancementPoints) = $null) { writeini $char($2) stuff EnhancementPoints 0 }
+    if ($readini($char($2), stuff, LoginPoints) = $null) { writeini $char($2) stuff LoginPoints 0 }
+
+    $dcc.private.message($nick, [4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($2), stuff, LoginPoints) $+ ])
+    $dcc.private.message($nick, [4Strength12 %str $+ ]  [4Defense12 %def $+ ] [4Intelligence12 %int $+ ] [4Speed12 %spd $+ ])
+    $dcc.private.message($nick, [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $iif(%weapon.equipped.left != $null, 4and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
+    unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right 
+    unset %weapon.equipped.left  
+
   }
 }
 on 2:CHAT:!misc info*: { 
@@ -367,13 +397,13 @@ on 2:CHAT:!misc info*: {
 on 2:Chat:!weapons*: { unset %*.wpn.list | unset %weapon.list
   if ($2 = $null) { $weapon.list($nick) | set %wpn.lst.target $nick }
   else { $checkchar($2) | $weapon.list($2) | set %wpn.lst.target $2 }
-  /.timerDisplayWeaponList $+ $nick 1 1 /display_weapon_lists %wpn.lst.target dcc $nick
+  /.timerDisplayWeaponList $+ $nick -d 1 1 /display_weapon_lists %wpn.lst.target dcc $nick
 }
 
 on 2:Chat:!shields*: { unset %*.shld.list | unset %shield.list
   if ($2 = $null) { $shield.list($nick) | set %shld.lst.target $nick }
   else { $checkchar($2) | $shield.list($2) | set %shld.lst.target $2 }
-  /.timerDisplayshieldList $+ $nick 1 1 /display_shield_lists %shld.lst.target dcc $nick
+  /.timerDisplayshieldList $+ $nick -d 1 1 /display_shield_lists %shld.lst.target dcc $nick
 }
 
 on 2:Chat:!techs*: {
@@ -493,14 +523,11 @@ alias wield_weapondcc {
   if ($2 = both) { writeini $char($1) weapons equipped $3 | remini $char($1) weapons equippedLeft }
 
   $set_chr_name($1) 
-  if (%battleis = off) { $dcc.private.message($readini(translation.dat, system, EquipWeaponPlayer)) }
+  if (%battleis = off) { $dcc.private.message($1, $readini(translation.dat, system, EquipWeaponPlayer)) }
   if (%battleis = on) { $dcc.battle.message($readini(translation.dat, system, EquipWeaponPlayer)) }
 
-
   $shadowclone.changeweapon($1, $2, $3)
-
 }
-
 
 on 2:Chat:!unequip*: {
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
@@ -525,19 +552,18 @@ on 2:Chat:!unequip*: {
   }
 
   else {  $dcc.private.message($nick,$readini(translation.dat, errors, WrongEquippedWeapon)) | halt }
-
 }
 
 on 2:Chat:!wear*: { 
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
-  if ($3 = $null) { $display.system.message(4Error: !wear <accessory/armor> <what to wear>, private) | halt }
+  if ($3 = $null) { $display.message(4Error: !wear <accessory/armor> <what to wear>, private) | halt }
   if ($2 = accessory) { $wear.accessory($nick, $3) }
   if ($2 = armor) { $wear.armor($nick, $3) }
 }
 
 on 2:Chat:!remove*: { 
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
-  if ($3 = $null) { $display.system.message(4Error: !remove <accessory/armor> <what to remove>, private) | halt }
+  if ($3 = $null) { $display.message(4Error: !remove <accessory/armor> <what to remove>, private) | halt }
   if ($2 = accessory) { $remove.accessory($nick, $3) }
   if ($2 = armor) { $remove.armor($nick, $3) }
 }
@@ -613,27 +639,27 @@ on 2:Chat:gives *: {
 on 2:Chat:!view difficulty*: { $set_chr_name($nick) | $checkchar($nick) 
   var %saved.difficulty $readini($char($nick), info, difficulty)
   if (%saved.difficulty = $null) { var %saved.difficulty 0 }
-  $display.system.message($readini(translation.dat, system, ViewDifficulty), private)
+  $display.message($readini(translation.dat, system, ViewDifficulty), private)
 }
 on 2:Chat:!save difficulty*: {  $set_chr_name($nick) | $checkchar($nick) 
-  if ($3 !isnum) { $display.system.message($readini(translation.dat, errors, DifficultyMustBeNumber),private) | halt }
-  if (. isin $3) { $display.system.message($readini(translation.dat, errors, DifficultyMustBeNumber),private) | halt }
-  if ($3 < 0) { $display.system.message($readini(translation.dat, errors, DifficultyCan'tBeNegative),private) | halt }
-  if ($3 > 200) { $display.system.message($readini(translation.dat, errors, DifficultyCan'tBeOver200),private) | halt }
+  if ($3 !isnum) { $display.message($readini(translation.dat, errors, DifficultyMustBeNumber),private) | halt }
+  if (. isin $3) { $display.message($readini(translation.dat, errors, DifficultyMustBeNumber),private) | halt }
+  if ($3 < 0) { $display.message($readini(translation.dat, errors, DifficultyCan'tBeNegative),private) | halt }
+  if ($3 > 200) { $display.message($readini(translation.dat, errors, DifficultyCan'tBeOver200),private) | halt }
 
   writeini $char($nick) info difficulty $3
-  $display.system.message($readini(translation.dat, system, SaveDifficulty), global)
+  $display.message($readini(translation.dat, system, SaveDifficulty), global)
 }
 on 2:Chat:!runes*: {
   if ($2 != $null) { $checkchar($2)
     $runes.list($2) | $set_chr_name($2) 
-    if (%runes.list != $null) { $display.system.message($readini(translation.dat, system, ViewRunes), private) |  unset %runes.list }
-    else { $display.system.message($readini(translation.dat, system, HasNoRunes), private) }
+    if (%runes.list != $null) { $display.message($readini(translation.dat, system, ViewRunes), private) |  unset %runes.list }
+    else { $display.message($readini(translation.dat, system, HasNoRunes), private) }
   }
   else { 
     $runes.list($nick) | $set_chr_name($nick) 
-    if (%runes.list != $null) { $display.system.message($readini(translation.dat, system, ViewRunes), private) | unset %runes.list }
-    else { $display.system.message($readini(translation.dat, system, HasNoRunes), private) }
+    if (%runes.list != $null) { $display.message($readini(translation.dat, system, ViewRunes), private) | unset %runes.list }
+    else { $display.message($readini(translation.dat, system, HasNoRunes), private) }
   }
 }
 on 2:Chat:!reforge*: { $reforge.weapon($nick, $2) }
@@ -651,30 +677,30 @@ on 2:Chat:!augment*: {
   }
 
   if ($2 = add) { 
-    if ($3 = $null) { $display.system.message($readini(translation.dat, errors, AugmentAddCmd), private) | halt }
-    if ($4 = $null) {  $display.system.message($readini(translation.dat, errors, AugmentAddCmd), private) | halt }
+    if ($3 = $null) { $display.message($readini(translation.dat, errors, AugmentAddCmd), private) | halt }
+    if ($4 = $null) {  $display.message($readini(translation.dat, errors, AugmentAddCmd), private) | halt }
 
     ; does the player own that weapon?
     var %player.weapon.check $readini($char($nick), weapons, $3)
 
-    if ((%player.weapon.check < 1) || (%player.weapon.check = $null)) {  $set_chr_name($nick) | $display.system.message($readini(translation.dat, errors, DoNotHaveWeapon), private) | halt }
+    if ((%player.weapon.check < 1) || (%player.weapon.check = $null)) {  $set_chr_name($nick) | $display.message($readini(translation.dat, errors, DoNotHaveWeapon), private) | halt }
 
     ; Check to see if weapon is already augmented.  
     var %current.augment $readini($char($nick), augments, $3)
 
-    if (%current.augment != $null) { $set_chr_name($nick) | $display.system.message($readini(translation.dat, errors, AugmentWpnAlreadyAugmented), private) | halt }
+    if (%current.augment != $null) { $set_chr_name($nick) | $display.message($readini(translation.dat, errors, AugmentWpnAlreadyAugmented), private) | halt }
 
     ; Check to see if person has rune
     var %rune.amount $readini($char($nick), item_amount, $4) 
 
-    if ((%rune.amount < 1) || (%rune.amount = $null)) { $set_chr_name($nick) |  $display.system.message($readini(translation.dat, errors, DoNotHaveRune), private) | halt }
+    if ((%rune.amount < 1) || (%rune.amount = $null)) { $set_chr_name($nick) |  $display.message($readini(translation.dat, errors, DoNotHaveRune), private) | halt }
 
     ; Augment the weapon
     set %augment.name $readini($dbfile(items.db), $4, augment)
     writeini $char($nick) augments $3 %augment.name
     dec %rune.amount 1 | writeini $char($nick) item_amount $4 %rune.amount
 
-    $set_chr_name($nick) | $display.system.message($readini(translation.dat, system, WeaponAugmented), global)
+    $set_chr_name($nick) | $display.message($readini(translation.dat, system, WeaponAugmented), global)
 
     var %number.of.augments $readini($char($nick), stuff, WeaponsAugmented)
     if (%number.of.augments = $null) { var %number.of.augments 0 }
@@ -686,29 +712,29 @@ on 2:Chat:!augment*: {
   }
 
   if ($2 = remove) { 
-    if ($3 = $null) { $display.system.message($readini(translation.dat, errors, AugmentRemoveCmd), private) | halt }
+    if ($3 = $null) { $display.message($readini(translation.dat, errors, AugmentRemoveCmd), private) | halt }
 
     var %player.weapon.check $readini($char($nick), weapons, $3)
-    if ((%player.weapon.check < 1) || (%player.weapon.check = $null)) {  $set_chr_name($nick) | $display.system.message($readini(translation.dat, errors, DoNotHaveWeapon), private) | halt }
+    if ((%player.weapon.check < 1) || (%player.weapon.check = $null)) {  $set_chr_name($nick) | $display.message($readini(translation.dat, errors, DoNotHaveWeapon), private) | halt }
 
     ; Check to see if weapon is augmented or not.  
     var %current.augment $readini($char($nick), augments, $3)
-    if (%current.augment = $null) {  $set_chr_name($nick) | $display.system.message($readini(translation.dat, errors, AugmentWpnNotAugmented), private) | halt }
+    if (%current.augment = $null) {  $set_chr_name($nick) | $display.message($readini(translation.dat, errors, AugmentWpnNotAugmented), private) | halt }
 
     ; Remove augment.
     remini $char($nick) augments $3 
-    $set_chr_name($nick) | $display.system.message($readini(translation.dat, system, WeaponDeAugmented), global)
+    $set_chr_name($nick) | $display.message($readini(translation.dat, system, WeaponDeAugmented), global)
   }
 }
 on 2:Chat:!scoreboard*: {
   if (%battleis != on) { $generate.scoreboard }
-  else { $display.system.message($readini(translation.dat, errors, ScoreBoardNotDuringBattle), private) | halt }
+  else { $display.message($readini(translation.dat, errors, ScoreBoardNotDuringBattle), private) | halt }
 }
 on 2:Chat:!score*: {
   if ($2 = $null) { 
     $get.score($nick,null)
     var %score $readini($char($nick), scoreboard, score)
-    $set_chr_name($nick) | $display.system.message($readini(translation.dat, system, CurrentScore), private)
+    $set_chr_name($nick) | $display.message($readini(translation.dat, system, CurrentScore), private)
   }
   else {
     $checkchar($2) 
@@ -716,16 +742,16 @@ on 2:Chat:!score*: {
     if ((%flag = monster) || (%flag = npc)) { display.system.message($readini(translation.dat, errors, SkillCommandOnlyOnPlayers), private) | halt }
     var %score $get.score($2,null)
     var %score $readini($char($2), scoreboard, score)
-    $set_chr_name($2) | $display.system.message($readini(translation.dat, system, CurrentScore), private)
+    $set_chr_name($2) | $display.message($readini(translation.dat, system, CurrentScore), private)
   }
 }
 on 2:Chat:!deathboard*: {
   if (%battleis != on) { 
     if ((($2 = monster) || ($2 = mon) || ($2 = monsters))) { $generate.monsterdeathboard }
     if (($2 = boss) || ($2 = bosses)) { $generate.bossdeathboard } 
-    if ($2 = $null) { $display.system.message(4!deathboard <monster/boss>, private) | halt }
+    if ($2 = $null) { $display.message(4!deathboard <monster/boss>, private) | halt }
   }
-  else { $display.system.message($readini(translation.dat, errors, DeathBoardNotDuringBattle), private) | halt }
+  else { $display.message($readini(translation.dat, errors, DeathBoardNotDuringBattle), private) | halt }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -751,7 +777,7 @@ on 2:Chat:!bat list*: { $battlelist }
 on 2:Chat:!battle list*: { $battlelist }
 on 2:Chat:!bat info*: { $battlelist }
 ON 2:Chat:!enter*: { 
-  if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.system.message($readini(translation.db, errors, CannotJoinAIBattles), private) | halt } 
+  if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.message($readini(translation.db, errors, CannotJoinAIBattles), private) | halt } 
   $enter($nick)
 }
 ON 2:Chat:!flee*: {  $flee($nick) }
@@ -887,7 +913,7 @@ ON 2:Chat:!use*: {  unset %real.name | unset %enemy
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { $dcc.private.message($nick, $readini(translation.dat, battle, NotAllowedBattleCondition))  | halt }
-  if (($person_in_mech($nick) = true) && ($4 = $nick)) { $display.system.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  if (($person_in_mech($nick) = true) && ($4 = $nick)) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
 
   $uses_item($nick, $2, $3, $4)
 }
@@ -981,6 +1007,13 @@ ON 2:Chat:!perfect counter*: { $skill.perfectcounter($nick) }
 ON 2:Chat:!justrelease*: { $skill.justrelease($nick, $2, !justrelease) }
 ON 2:Chat:!just release*: { $skill.justrelease($nick, $3, !justrelease) }
 ON 2:Chat:!retaliation*: { $skill.retaliation($nick) }
+ON 2:Chat:!warp*: { $skill.warp($nick, $2-) }
+ON 2:Chat:!lockpicking*: { $skill.lockpicking($nick) }
+ON 2:Chat:!lockpick*: { $skill.lockpicking($nick) }
+ON 2:Chat:!stoneskin*: { $skill.stoneskin($nick) }
+ON 2:Chat:!tabularasa*: { $skill.tabularasa($nick, $2) }
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Bot Admin commands
@@ -1024,18 +1057,18 @@ ON 50:Chat:!zap*: { $set_chr_name($2) | $checkchar($2) | $zap_char($2) | $dcc.gl
 
 ON 50:Chat:!next*: {
   if (%battleis = on)  { $check_for_double_turn(%who) }
-  else { $display.system.message($readini(translation.dat, Errors, NoCurrentBattle), private) | halt }
+  else { $display.message($readini(translation.dat, Errors, NoCurrentBattle), private) | halt }
 }
 ON 50:Chat:!startbat*: {
-  if (%battleis = on) { $display.system.message($readini(translation.dat, errors, BattleAlreadyStarted), private) | halt }
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, BattleAlreadyStarted), private) | halt }
   /.timerBattleStart off | $startnormal($2) 
 }
 ON 50:Chat:!start bat*: {
-  if (%battleis = on) { $display.system.message($readini(translation.dat, errors, BattleAlreadyStarted), private) | halt }
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, BattleAlreadyStarted), private) | halt }
   /.timerBattleStart off | $startnormal($3) 
 }
 ON 50:Chat:!new bat*: {
-  if (%battleis = on) { $display.system.message($readini(translation.dat, errors, BattleAlreadyStarted), private) | halt }
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, BattleAlreadyStarted), private) | halt }
   /.timerBattleStart off | $startnormal($3) 
 }
 ON 50:Chat:!end bat*: { $endbattle($3) } 
@@ -1044,8 +1077,8 @@ ON 50:Chat:!clear battle*: { $clear_battle }
 ON 50:Chat:* enters the battle*: { $enter($1) }
 ON 50:Chat:* flees the battle*: { $flee($1) }
 ON 50:Chat:* taunts*: { 
-  if ($is_charmed($1) = true) { $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($1) = true) { $set_chr_name($1) | $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  if ($is_charmed($1) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
+  if ($is_confused($1) = true) { $set_chr_name($1) | $display.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
   if ($readini($char($1), Battle, HP) = $null) { halt }
   $set_chr_name($1) | $taunt($1, $3)
 }
@@ -1055,38 +1088,38 @@ ON 50:Chat:!set streak*: {
   if (. isin $3) { .msg $nick the streak must be a whole number. | halt }
   writeini battlestats.dat battle LosingStreak 0
   writeini battlestats.dat battle winningstreak $3
-  $display.system.message(3The winning streak has been set to: $3, global)
+  $display.message(3The winning streak has been set to: $3, global)
 }
 
 ON 50:Chat:!toggle ai system*: { 
   if ($readini(system.dat, system, aisystem) = off) { 
     writeini system.dat system aisystem on
-    $display.system.message($readini(translation.dat, system, AiSystemOn), global)
+    $display.message($readini(translation.dat, system, AiSystemOn), global)
   }
   else {
     writeini system.dat system aisystem off
-    $display.system.message($readini(translation.dat, system, AiSystemOff), global)
+    $display.message($readini(translation.dat, system, AiSystemOff), global)
   }
 }
 ON 50:Chat:!toggle automated battle system*: { 
   if ($readini(system.dat, system, automatedbattlesystem) = off) { 
     writeini system.dat system automatedbattlesystem on
-    $display.system.message($readini(translation.dat, system, AutomatedBattleOn), global)
+    $display.message($readini(translation.dat, system, AutomatedBattleOn), global)
     if (%battleis = off) { $clear_battle }
   }
   else {
     writeini system.dat system automatedbattlesystem off
-    $display.system.message($readini(translation.dat, system, AutomatedBattleOff), global)
+    $display.message($readini(translation.dat, system, AutomatedBattleOff), global)
   }
 }
 ON 50:Chat:!toggle battle formula*: { 
   if ($readini(system.dat, system, BattleDamageFormula) = 1) { 
     writeini system.dat system BattleDamageFormula 2
-    $display.system.message($readini(translation.dat, system, NewDmgFormulaIsOn), global)
+    $display.message($readini(translation.dat, system, NewDmgFormulaIsOn), global)
   }
   else { 
     writeini system.dat system BattleDamageFormula 1
-    $display.system.message($readini(translation.dat, system, NewDmgFormulaIsOff), global)
+    $display.message($readini(translation.dat, system, NewDmgFormulaIsOff), global)
   }
 }
 

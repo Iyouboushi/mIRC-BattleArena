@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
+;;;; Last updated: 02/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -81,7 +82,7 @@ alias shop.start {
 
 
   if ($2 = sell) {
-    var %sellable.stuff items.accessories.accessory.gems.tech.techs.technique.armor
+    var %sellable.stuff items.accessories.accessory.gems.tech.techs.technique.armor.weapon.weapons
     if ($3 !isin %sellable.stuff) { $display.private.message($readini(translation.dat, errors, Can'tSellThat)) | halt }
     var %amount.to.sell $abs($5)
     if (%amount.to.sell = $null) { var %amount.to.sell 1 }
@@ -91,6 +92,7 @@ alias shop.start {
     if (($3 = gems) || ($3 = gem))  { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
     if ((($3 = tech) || ($3 = techs) || ($3 = technique))) { $shop.techs($nick, sell, $4, %amount.to.sell) | halt }
     if ($3 = armor)  { $shop.armor($nick, sell, $4, %amount.to.sell) | halt }
+    if ($3 = weapon) { $shop.weapons($nick, sell, $4) | halt }
   }
 
   if (($2 = buy) || ($2 = purchase)) { 
@@ -98,10 +100,11 @@ alias shop.start {
       if ($nick isin $readini($txtfile(battle2.txt), Battle, List)) {  $display.private.message($readini(translation.dat, errors, Can'tUseShopInBattle)) | halt }
     }
 
-    if ($3 = $null) {  $display.private.message(4Error: Use !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields> <what to buy>)  }
+    if ($3 = $null) {  $display.private.message(4Error: Use !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields/enhancement/trusts/potioneffect> <what to buy>)  }
     var %amount.to.purchase $abs($5)
     if ((%amount.to.purchase = $null) || (%amount.to.purchase !isnum 1-9999)) { var %amount.to.purchase 1 }
 
+    if (($3 = enhancement) || ($3 = enhancements))  { $shop.enhancements($nick, buy, $4, %amount.to.purchase) | halt }
     if (($3 = items) || ($3 = item))  { $shop.items($nick, buy, $4, %amount.to.purchase) | halt }
     if ((($3 = techs) || ($3 = techniques) || ($3 = tech))) { $shop.techs($nick, buy, $4, %amount.to.purchase) | halt  }
     if (($3 = skills) || ($3 = skill)) { $shop.skills($nick, buy, $4, %amount.to.purchase) | halt  }
@@ -111,12 +114,14 @@ alias shop.start {
     if (($3 = alliednotes) || ($3 = gems))  { $shop.alchemy($nick, buy, $4, %amount.to.purchase) | halt }
     if (($3 = weapons) || ($3 = weapon)) { $shop.weapons($nick, buy, $4, %amount.to.purchase) }
     if (($3 = shields) || ($3 = shield)) { $shop.shields($nick, buy, $4, %amount.to.purchase) }
+    if (($3 = potioneffect) || ($3 = potioneffects)) { $shop.potioneffects($nick, buy, $4) | halt }
     if ($3 = orbs) { 
       var %amount.to.purchase $abs($4)
       if (%amount.to.purchase = $null) { var %amount.to.purchase 1 }
       $shop.orbs($nick, buy, %amount.to.purchase) 
     }
     if (($3 = style) || ($3 = styles))  { $shop.styles($nick, buy, $4) | halt }
+    if (($3 = trusts) || ($3 = trust))  { $shop.trusts($nick, buy, $4) | halt }
     if (($3 = ignition) || ($3 = ignitions))  { $shop.ignitions($nick, buy, $4) | halt }
 
     if ($3 = mech) {
@@ -131,19 +136,21 @@ alias shop.start {
       }
     }
 
-    else {  $display.private.message(4Error: Use !shop list <items/techs/skills/stats/weapons/orbs/ignitions/styles/portal/misc/mech/mech items/shields>  or !shop buy <items/techs/skills/stats/weapons/orbs/style/ignitions/portal/misc/mech/mech items/shields> <what to buy>)  | halt }
+    else {  $display.private.message(4Error: Use !shop list <items/techs/skills/stats/weapons/orbs/ignitions/styles/portal/misc/mech/mech items/shields/enhancements/trusts/potioneffect>  or !shop buy <items/techs/skills/stats/weapons/orbs/style/ignitions/portal/misc/mech/mech items/shields/enhancements/trusts/potioneffect> <what to buy>)  | halt }
   }
 
   if ($2 = list) { 
 
-    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields
-    if ($istok(%valid.categories, $3, 46) = $false) { $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items>  or !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields> <what to buy>)  | halt }
+    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects
+    if ($istok(%valid.categories, $3, 46) = $false) { $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/enhancements/trusts>  or !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields/enhancements/trusts/potioneffect> <what to buy>)  | halt }
 
     else {
-
+      if (($3 = enhancement) || ($3 = enhancements))  { $shop.enhancements($nick, list) }
       if (($3 = stats) || ($3 = stat)) { $shop.stats($nick, list) }
       if (($3 = items) || ($3 = item)) { $shop.items($nick, list) }
       if (($3 = techs) || ($3 = techniques))  { $shop.techs($nick, list) }
+      if (($3 = trusts) || ($3 = trust))  { $shop.trusts($nick, list) }
+      if (($3 = potioneffect) || ($3 = potioneffects)) { $shop.potioneffects($nick, list) }
       if (($3 = skills) || ($3 = skill)) { 
         if ($4 = $null) { $shop.skills($nick, list) | halt }
 
@@ -177,7 +184,7 @@ alias shop.start {
 
   }
 
-  else {  $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields>  or !shop buy <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields> <what to buy>)  | halt }
+  else {  $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields>  or !shop buy <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields/enhancements> <what to buy>)  | halt }
 
 }
 
@@ -621,8 +628,10 @@ alias shop.techs {
     $shop.get.shop.level($1)
 
     ; CHECKING TECHS
-    unset %shop.list
-    set %tech.list $readini($dbfile(weapons.db), %weapon.equipped, Abilities)
+    unset %shop.list | var %tech.counter 0
+    set %tech.list $readini($dbfile(weapons.db), %weapon.equipped.right, Abilities)
+    if (%weapon.equipped.left != $null) { set %tech.list $addtok(%tech.list, $readini($dbfile(weapons.db), %weapon.equipped.left, Abilities), 46) }
+
     var %number.of.items $numtok(%tech.list, 46)
     var %my.tp $readini($char($1), basestats, tp)
 
@@ -633,21 +642,30 @@ alias shop.techs {
       set %player.amount $readini($char($1), techniques, %tech.name)
 
       if ($readini($dbfile(techniques.db), %tech.name, type) = boost) {
-        if ((%player.amount <= 500) || (%player.amount = $null)) { %shop.list = $addtok(%shop.list, $+ %tech.name $+ +1 ( $+ %tech.price $+ ),46) }
+        if ((%player.amount <= 500) || (%player.amount = $null)) { 
+          inc %tech.counter 1
+          if (%tech.counter <= 13) { %shop.list = $addtok(%shop.list, $+ %tech.name $+ +1 ( $+ %tech.price $+ ),46) }
+          if (%tech.counter > 13) { %shop.list2 = $addtok(%shop.list2, $+ %tech.name $+ +1 ( $+ %tech.price $+ ),46) }
+        }
       }
-      if ($readini($dbfile(techniques.db), %tech.name, type) != boost) {  
 
+      if ($readini($dbfile(techniques.db), %tech.name, type) != boost) {  
         set %techs.onlyone buff.ClearStatusPositive.ClearStatusNegative 
         set %tech.type $readini($dbfile(techniques.db), %tech.name, type)
         if ($istok(%techs.onlyone,%tech.type,46) = $true) { 
           set %player.amount $readini($char($1), techniques, %tech.name)
-          if ((%player.amount < 1) || (%player.amount = $null)) { %shop.list = $addtok(%shop.list, $+ %tech.name $+ +1 ( $+ %tech.price $+ ),46) }
+          if ((%player.amount < 1) || (%player.amount = $null)) { 
+            inc %tech.counter 1
+            if (%tech.counter <= 13) { %shop.list = $addtok(%shop.list, $+ %tech.name $+ +1 ( $+ %tech.price $+ ),46) }
+            if (%tech.counter > 13) { %shop.list2 = $addtok(%shop.list2, $+ %tech.name $+ +1 ( $+ %tech.price $+ ),46) }
+          }
         }
+
         if ($istok(%techs.onlyone,%tech.type,46) = $false) {  
           if ((%player.amount <= 500) || (%player.amount = $null)) {
-
-            %shop.list = $addtok(%shop.list, $+ $iif(%my.tp < $readini($dbfile(techniques.db), %tech.name, tp), 5) %tech.name $+ 2+1 ( $+ %tech.price $+ ),46) 
-
+            inc %tech.counter 1
+            if (%tech.counter <= 13) { %shop.list = $addtok(%shop.list, $+ $iif(%my.tp < $readini($dbfile(techniques.db), %tech.name, tp), 5) %tech.name $+ 2+1 ( $+ %tech.price $+ ),46)  }
+            if (%tech.counter > 13) { %shop.list2 = $addtok(%shop.list2, $+ $iif(%my.tp < $readini($dbfile(techniques.db), %tech.name, tp), 5) %tech.name $+ 2+1 ( $+ %tech.price $+ ),46)  }
           }
         }
       }
@@ -658,16 +676,23 @@ alias shop.techs {
     ; display the list with the prices.
     $shop.cleanlist
     $display.private.message(4Tech Prices2 in $readini(system.dat, system, currency) $+ : %shop.list ) 
+
+    if (%shop.list2 != $null) { 
+      $display.private.message.delay(2 $+ %shop.list2 ) 
+    }
+
     unset %player.amount | unset %techs.onlyone | unset %tech.type | unset %shop.list | unset %shop.list2
     unset %ignition.tech.list | unset %techs.list | unset %tech.name | unset %shop.level | unset %tech.price
-    unset %tech.count | unset %tech.power
+    unset %tech.count | unset %tech.power | unset %tech.counter
   }
 
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid tech?
     $weapon_equipped($1)
-    set %weapon.abilities $readini($dbfile(weapons.db), %weapon.equipped, abilities)
-    if ($istok(%weapon.abilities,$3,46) = $false) { $display.private.message(4Error: Invalid item. Use! !shop list techs to get a valid list ) | halt }
+    set %weapon.abilities $readini($dbfile(weapons.db), %weapon.equipped.right, abilities)
+    if (%weapon.equipped.left != $null) { set %weapon.abilities $addtok(%weapon.abilities, $readini($dbfile(weapons.db), %weapon.equipped.left, Abilities), 46) }
+
+    if ($istok(%weapon.abilities,$3,46) = $false) { $display.private.message(4Error: Invalid technique. Use! !shop list techs to get a valid list ) | halt }
     unset %weapon.abilities
 
     ; do you have enough to buy it?
@@ -750,6 +775,7 @@ alias shop.techs {
 
 alias shop.skills {
   unset %shop.list.activeskills | unset %shop.list.passiveskills | unset %shop.list.resistanceskills | unset %total.passive.skills | unset %total.active.skills | unset %shop.list.killertraits
+  unset %shop.list.activeskills3
   if ($2 = list) {
     ; get the list of the skills and display the lists
     $shop.get.shop.level($1)
@@ -757,6 +783,7 @@ alias shop.skills {
     $shop.get.skills.active($1)
     if (%shop.list.activeskills != $null) {  $display.private.message(4Active Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.activeskills) }
     if (%shop.list.activeskills2 != $null) {  $display.private.message(2 $+ %shop.list.activeskills2) }
+    if (%shop.list.activeskills3 != $null) {  $display.private.message(2 $+ %shop.list.activeskills3) }
 
     $shop.get.skills.passive($1)
     if (%shop.list.passiveskills != $null) {  $display.private.message(4Passive Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.passiveskills) }
@@ -770,17 +797,16 @@ alias shop.skills {
     if (%shop.list.killertraits2 != $null) {  $display.private.message(2 $+ %shop.list.killertraits2) }
 
 
-
-
     unset %shop.list.activeskills | unset %shop.list.passiveskills | unset %shop.list.resistanceskills | unset %shop.list.activeskills2 | unset %shop.list.passiveskills2 | unset %total.active.skills | unset %total.passives.skills | unset %shop.list.killertraits
     unset %shop.list.killertraits2 | unset %skill.name | unset %skill.have | unset %replacechar
-    unset %shop.level | unset %skill.max | unset %skill.price 
+    unset %shop.level | unset %skill.max | unset %skill.price | unset %shop.list.activeskills3
   }
 
 
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid skill?
-    if ($readini($dbfile(skills.db), $3, type) = $null) { $display.private.message(4Error: Invalid . Use! !shop list skills to get a valid list) | halt }
+    if ($readini($dbfile(skills.db), $3, type) = $null) { $display.private.message(4Error: Invalid skill. Use! !shop list skills to get a valid list) | halt }
+    if ($readini($dbfile(skills.db), $3, cost) <= 0) { $display.private.message(4Error: Invalid skill. Use! !shop list skills to get a valid list) | halt }
 
     var %current.skilllevel $readini($char($1), skills, $3)
     inc %current.skilllevel $4
@@ -838,7 +864,7 @@ alias shop.get.skills.passive {
 
 alias shop.get.skills.active {
   ; CHECKING ACTIVE SKILLS
-  unset %skill.list | unset %value | unset %shop.list.activeskills2 | unset %total.active.skills
+  unset %skill.list | unset %value | unset %shop.list.activeskills2 | unset %shop.list.activeskills3 | unset %total.active.skills
   var %skills.lines $lines($lstfile(skills_active.lst))
 
   var %value 1
@@ -852,7 +878,9 @@ alias shop.get.skills.active {
       set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0)
       if (%skill.price > 0) { 
         if ((%total.active.skills <= 15) || (%total.active.skills = $null)) {  %shop.list.activeskills = $addtok(%shop.list.activeskills, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
-        if (%total.active.skills > 15) {  %shop.list.activeskills2 = $addtok(%shop.list.activeskills2, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
+        if ((%total.active.skills > 15) && (%total.active.skills < 28)) {  %shop.list.activeskills2 = $addtok(%shop.list.activeskills2, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
+        if (%total.active.skills >= 28 ) {  %shop.list.activeskills3 = $addtok(%shop.list.activeskills3, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
+
         inc %total.active.skills 1
       }
       inc %value 1
@@ -862,6 +890,7 @@ alias shop.get.skills.active {
   unset %skill.list 
 
   set %replacechar $chr(044) $chr(032) |  %shop.list.activeskills = $replace(%shop.list.activeskills, $chr(046), %replacechar) | %shop.list.activeskills2 = $replace(%shop.list.activeskills2, $chr(046), %replacechar)
+  %shop.list.activeskills3 = $replace(%shop.list.activeskills3, $chr(046), %replacechar)
 
 }
 
@@ -913,7 +942,6 @@ alias shop.get.skills.killertrait {
 
   unset %total.killertraits
 }
-
 
 alias shop.skills.passive {
   unset %shop.list.passiveskills | unset %shop.list.passiveskills2
@@ -968,6 +996,31 @@ alias shop.skills.killertraits {
 
   unset %shop.list.killertraits2 | unset %skill.name | unset %skill.have
   unset %skill.name | unset %skill.have | unset %replacechar
+}
+
+alias shop.get.skills.enhancingpoint {
+  ; CHECKING ENHANCING POINT SKILLS
+  unset %shop.list.skills | unset %value 
+  var %skills.lines $lines($lstfile(skills_enhancingpoint.lst))
+
+  var %value 1
+  while (%value <= %skills.lines) {
+    set %skill.name $read -l $+ %value $lstfile(skills_enhancingpoint.lst)
+    set %skill.max $readini($dbfile(skills.db), %skill.name, max)
+    set %skill.have $readini($char($1), skills, %skill.name)
+
+    if (%skill.have >= %skill.max) { inc %value 1 }
+    else { 
+      var %enhancement.purchase.skill $readini($char($1), enhancements, %skill.name)
+      if (%enhancement.purchase.skill = $null) { var %enhancement.purchase.skill 0 }
+      if (%enhancement.purchase.skill < %skill.max) { %shop.list.skills = $addtok(%shop.list.skills, $+ %skill.name $+ +1 ( $+ $calc(1 + %enhancement.purchase.skill) $+ ),46) }
+    }
+    inc %value 1
+  }
+
+  unset %skill.list 
+
+  set %replacechar $chr(044) $chr(032) |  %shop.list.skills = $replace(%shop.list.skills, $chr(046), %replacechar) 
 }
 
 
@@ -1082,6 +1135,133 @@ alias shop.stats {
     $inc.shoplevel($1, $4)
   }
 }
+
+alias shop.enhancements {
+  if ($2 = list) {
+    unset %shop.list
+
+    $display.private.message(2Everything listed here is purchased using Enhancement Points.)
+
+    ; Check for stats first.
+
+    var %enhancement.purchase.hp $readini($char($1), enhancements, hp)
+    if (%enhancement.purchase.hp = $null) { var %enhancement.purchase.hp 0 }
+
+    var %enhancement.purchase.ig $readini($char($1), enhancements, ig)
+    if (%enhancement.purchase.ig = $null) { var %enhancement.purchase.ig 0 }
+
+    var %enhancement.purchase.str $readini($char($1), enhancements, str)
+    if (%enhancement.purchase.str = $null) { var %enhancement.purchase.str 0 }
+
+    var %enhancement.purchase.def $readini($char($1), enhancements, def)
+    if (%enhancement.purchase.def = $null) { var %enhancement.purchase.def 0 }
+
+    var %enhancement.purchase.int $readini($char($1), enhancements, int)
+    if (%enhancement.purchase.int = $null) { var %enhancement.purchase.int 0 }
+
+    var %enhancement.purchase.spd $readini($char($1), enhancements, spd)
+    if (%enhancement.purchase.spd = $null) { var %enhancement.purchase.spd 0 }
+
+    if (%enhancement.purchase.hp < 10) { %shop.list = $addtok(%shop.list,HP+50 ( $+ $calc(1 + %enhancement.purchase.hp) $+ ),46) }
+    if (%enhancement.purchase.ig < 10) { %shop.list = $addtok(%shop.list,IG+5 ( $+ $calc(1 + %enhancement.purchase.ig) $+ ),46) }
+    if (%enhancement.purchase.str < 20) { %shop.list = $addtok(%shop.list,STR+10 ( $+ $calc(1 + %enhancement.purchase.str) $+ ),46) }
+    if (%enhancement.purchase.def < 20) { %shop.list = $addtok(%shop.list,DEF+10 ( $+ $calc(1 + %enhancement.purchase.def) $+ ),46) }
+    if (%enhancement.purchase.int < 20) { %shop.list = $addtok(%shop.list,INT+10 ( $+ $calc(1 + %enhancement.purchase.int) $+ ),46) }
+    if (%enhancement.purchase.spd < 20) { %shop.list = $addtok(%shop.list,SPD+10 ( $+ $calc(1 + %enhancement.purchase.spd) $+ ),46) }
+
+
+    ; display the list with the prices.
+    $shop.cleanlist
+    if (%shop.list != $null) { $display.private.message.delay(2Stat Enhancements5: %shop.list) }
+
+
+    ; Check for skills
+    $shop.get.skills.enhancingpoint($1)
+    if (%shop.list.skills != $null) { $display.private.message.delay.custom(2Enhancement Skills5: %shop.list.skills,2) }
+
+    ; Check for styles.
+
+    unset %shop.list | unset %shop.list.skills
+  }
+
+  if (($2 = buy) || ($2 = purchase)) {
+    ; is it a valid item?
+    var %valid.purchase.items hp.ig.str.def.int.spd.stoneskin.SpoilSeeker.TabulaRasa.Demolitions
+
+    if ($istok(%valid.purchase.items, $lower($3), 46) = $false) { $display.private.message(4You cannot purchase that in this shop) | halt }
+
+    ; do you have enough to buy it?
+    var %enhancement.purchase.item $readini($char($1), enhancements, $3)
+    if (%enhancement.purchase.item = $null) { var %enhancement.purchase.item 0 }
+
+    var %enhancement.cost $calc(1 + %enhancement.purchase.item)
+    var %current.player.ep $readini($char($1), stuff, enhancementpoints)
+    if (%current.player.ep = $null) { var %current.player.ep 0 }
+
+    if (%current.player.ep < %enhancement.cost) { $display.private.message(4You do not have enough Enhancement Points to purchase this upgrade!) | halt }
+
+    ; Are we hitting the cap amount?
+    var %purchase.cap 10
+    if (((($3 = str) || ($3 = def) || ($3 = int) || ($3 = spd)))) { inc %purchase.cap 20 }
+
+    if (%enhancement.cost > %purchase.cap) { $display.private.message(4You cannot purchase any more into this upgrade!) | halt }
+
+    ; Increase the amount and add the enhancement
+    inc %enhancement.purchase.item 1
+    writeini $char($1) enhancements $3 %enhancement.purchase.item
+
+    var %number.of.enhancement.spent $readini($char($1), stuff, EnhancementPointsSpent)
+    if (%number.of.enhancement.spent = $null) { var %number.of.enhancement.spent 0 }
+    inc %number.of.enhancement.spent %enhancement.cost
+    writeini $char($1) stuff EnhancementPointsSpent %number.of.enhancement.spent
+    ; $achievement_check($1, )
+
+    ; Decrease the player's enhancement points
+    dec %current.player.ep %enhancement.cost
+    writeini $char($1) stuff EnhancementPoints %current.player.ep
+
+    ; Is it a stat?
+    if ($istok(hp.ig.str.def.int.spd, $lower($3), 46) = $true) {
+      set %shop.statbonus 0
+
+      if ($3 = hp) {
+        var %current.max.hp $readini($char($1), basestats, hp)
+        var %capped.xp $readini(system.dat, system, maxHP)
+        if (%current.max.hp < %capped.xp) { $display.private.message(4Your max HP is under the current cap and you cannot purchase any HP enhancements until you are over the cap) | halt }
+      }
+
+
+      var %basestat.to.increase $readini($char($1), basestats, $3)
+
+      if (($3 = str) || ($3 = def)) { set %shop.statbonus 10 }
+      if (($3 = int) || ($3 = spd)) { set %shop.statbonus 10 }
+      if ($3 = hp) { set %shop.statbonus 50  }
+      if (($3 = ig) || ($3 = IgnitionGauge)) { var %basestat.to.increase $readini($char($1), basestats, IgnitionGauge) | set %shop.statbonus 5 }
+
+      inc %basestat.to.increase %shop.statbonus 
+
+      if (($3 != IG) && ($3 != IgnitionGauge)) {  writeini $char($1) basestats $3 %basestat.to.increase }
+      if (($3 = IG) || ($3 = IgnitionGauge)) { writeini $char($1) basestats IgnitionGauge %basestat.to.increase }
+      if (($3 = health) || ($3 = HP)) { writeini $char($1) basestats HP %basestat.to.increase }
+
+      writeini $char($1) info NeedsFulls yes |  $fulls($1)
+      $display.private.message(3You spend $bytes(%enhancement.cost,b) Enhancement Points for + $+ $bytes(%shop.statbonus,b) to your $3 $+ !)
+
+    }
+
+    ; Is it a skill?
+    if ($istok(stoneskin.spoilseeker.tabularasa.demolitions, $lower($3), 46) = $true) {
+      var %skill.level $readini($char($1), skills, $3)
+      if (%skill.level = $null) { var %skill.level 0 }
+      inc %skill.level 1 
+      writeini $char($1) skills $3 %skill.level
+      $display.private.message(3You spend $bytes(%enhancement.cost,b) Enhancement Points for +1 to the $3 skill!)
+    }
+
+  }
+}
+
+
 
 alias shop.weapons {
   if ($2 = list) {
@@ -1209,6 +1389,35 @@ alias shop.weapons {
       halt
     }
   }
+
+  if ($2 = sell) {
+    ; is it your fists?
+    if ($3 = fists) { $display.private.message(4You cannot sell your fists) | halt }
+
+    ; does the person have the weapon?
+    var %weapon.level $readini($char($1), weapons, $3)
+    if ((%weapon.level = $null) || (%weapon.level = 0)) { $display.private.message(4You do not have that weapon to sell!) | halt }
+
+    ; is the weapon equipped?
+    if (($readini($char($1), Weapons, Equipped) = $3) || ($readini($char($1), Weapons, EquippedLeft) = $3)) { $display.private.message(4You currently have that weapon equipped. Unequip the weapon before you sell it.) | halt }
+
+    ; get the orb amount, cut it in half if it's greater than 1. If it's a special blueprint weapon set the cost to 5
+    var %orb.amount $readini($dbfile(weapons.db), $3, cost)
+    if (%orb.amount > 0) { var %orb.amount $round($calc(%orb.amount / 2),0) }
+    if (%orb.amount = 0) { var %orb.amount 5 }
+
+    ; give the orbs to the player
+    var %orbs.players $readini($char($1), stuff, blackorbs)
+    inc %orbs.players %orb.amount
+    writeini $char($1) stuff blackorbs %orbs.players
+
+    ; remove the weapon
+    remini $char($1) weapons $3
+
+    ; Display the amount
+    $display.private.message($readini(translation.dat, system, SellWeaponMessage))
+  }
+
 }
 
 alias shop.shields {
@@ -1409,15 +1618,18 @@ alias shop.mechitems {
 
         if ((%player.amount = $null) || (%player.amount = 0)) {
           set %item_amount $readini($dbfile(items.db), %item.name, cost)
-          var %item_to_add  $+ %item.name $+  $+ $chr(040) $+ %item_amount $+ $chr(041) 
 
-          if ((%conquest.item = $null) || (%conquest.item = false)) {
-            if (%count.core <= 20) { %mech.core.list = $addtok(%mech.core.list,%item_to_add,46) }
-            if (%count.core > 20) { %mech.core.list2 = $addtok(%mech.core.list2,%item_to_add,46) }  
-          }
-          if ((%conquest.item = true) && (%conquest.status = players)) { 
-            if (%count.core <= 20) { %mech.core.list = $addtok(%mech.core.list,%item_to_add,46) }
-            if (%count.core > 20) { %mech.core.list2 = $addtok(%mech.core.list2,%item_to_add,46) }  
+          if (%item_amount > 0) {
+            var %item_to_add  $+ %item.name $+  $+ $chr(040) $+ %item_amount $+ $chr(041) 
+
+            if ((%conquest.item = $null) || (%conquest.item = false)) {
+              if (%count.core <= 20) { %mech.core.list = $addtok(%mech.core.list,%item_to_add,46) }
+              if (%count.core > 20) { %mech.core.list2 = $addtok(%mech.core.list2,%item_to_add,46) }  
+            }
+            if ((%conquest.item = true) && (%conquest.status = players)) { 
+              if (%count.core <= 20) { %mech.core.list = $addtok(%mech.core.list,%item_to_add,46) }
+              if (%count.core > 20) { %mech.core.list2 = $addtok(%mech.core.list2,%item_to_add,46) }  
+            }
           }
 
           inc %count.core 1
@@ -1474,7 +1686,7 @@ alias shop.mechitems {
     if (%item.type = core) { var %cost $readini($dbfile(items.db), $3, cost) }
     if (%item.type = weapon) { var %cost $readini($dbfile(weapons.db), $3, cost) }
 
-    if (%cost = $null) { $display.private.message(4Error: Invalid item! Use !shop list mech items to get a valid list) | halt }
+    if ((%cost = $null) || (%cost <= 0)) { $display.private.message(4Error: Invalid item! Use !shop list mech items to get a valid list) | halt }
 
     ; do you already have it?
     if ($readini($char($1), item_amount, $3) > 0) { $display.private.message(4The crazy engineer with the wild beard and thick goggles looks at you and goes "You already have one of those! Why on earth would you need another one?" and refuses to sell it to you.) | halt }
@@ -1559,7 +1771,7 @@ alias shop.ignitions {
 
 alias shop.portal {
   if ($2 = list) {
-    unset %shop.list | unset %item.name | unset %item_amount | unset portals.bstmen | unset %portals.kindred | unset %portals.highkindredcrest | unset %portals.kindredcrest
+    unset %shop.list | unset %item.name | unset %item_amount | unset %portals.bstmen | unset %portals.kindred | unset %portals.highkindredcrest | unset %portals.kindredcrest
 
     var %value 1 | var %items.lines $lines($lstfile(items_portal.lst))
 
@@ -1770,6 +1982,188 @@ alias shop.orbs {
     halt
   }
 }
+
+alias shop.potioneffects {
+  if ($readini(shopnpcs.dat, NPCStatus, PotionWitch) != true) {
+    var %shopnpc.name $readini(shopnpcs.dat, NPCNames, PotionWitch)
+    if (%shopnpc.name = $null) { var %shopnpc.name Syrup the Potion Witch }
+
+    $display.private.message(4 $+ %shopnpc.name is not at the Allied Forces HQ and this shop cannot be accessed.)
+    halt 
+  }
+
+  if ($2 = list) { 
+    $display.private.message(2This shop is used to purchase special Potion Effects that will take effect during or after you next battle. You can only purchase one at a time.)
+    $display.private.message(12OrbBonus 2potion effect: 10 Beetle Shells2 + 10 Beetle Jaws2 + 1 Milk)
+    $display.private.message(12DoubleLife 2potion effect: 2 Roses2 + 1 Tulip2 + 2 Milk)
+    $display.private.message(12BonusSpoils 2potion effect: 2 BlueKinstone2 + GreenKinstone 1 2 + 1 Milk)
+
+    $display.private.message(2To purchase use !shop buy potioneffect [potion effect name]  such as !shop buy potioneffect OrbBonus)
+  }
+
+  if (($2 = buy) || ($2 = purchase)) {
+
+    var %shopnpc.name $readini(shopnpcs.dat, NPCNames, PotionWitch)
+    if (%shopnpc.name = $null) { var %shopnpc.name Syrup the Potion Witch }
+
+    if ($readini($char($1), status, PotionEffect) != none) { $display.private.message(4Error: You are already under the12 $readini($char($1), status, PotionEffect) 4Potion Effect and cannot purchase another at this time)  | halt }
+
+    if ($3 = OrbBonus) { 
+
+      var %beetle.shells.needed 10
+      var %beetle.jaws.needed 10
+      var %milk.needed 1
+
+      if ($readini($char($1), item_amount, beetleshell) != $null) {  dec %beetle.shells.needed $readini($char($1), item_amount, beetleshell) }
+      if ($readini($char($1), item_amount, beetlejaw) != $null) {  dec %beetle.jaws.needed $readini($char($1), item_amount, beetlejaw) }
+      if ($readini($char($1), item_amount, milk) != $null) { dec %milk.needed $readini($char($1), item_amount, milk) }
+
+      if (((%beetle.shells.needed > 0) || (%beetle.jaws.needed > 0) || (%milk.needed > 0))) { 
+        $display.private.message(4You do not have enough of the required materials for this potion effect.) 
+        if (%beetle.shells.needed < 0) { var %beetle.shells.needed 0 }
+        if (%beetle.jaws.needed < 0) { var %beetle.shells.needed 0 }
+        if (%milk.needed < 0) { var %milk.needed 0 }
+        $display.private.message(4You still need the following:12 %beetle.shells.needed $+ 4x Beetle Shells -12 %beetle.jaws.needed $+ 4x Beetle Jaws -12 %milk.needed $+ x 4Milk)
+        halt
+      }
+
+      writeini $char($1) item_amount BeetleShell $calc($readini($char($1), item_amount, beetleshell) - 10)
+      writeini $char($1) item_amount BeetleJaw $calc($readini($char($1), item_amount, beetlejaw) - 10)
+      writeini $char($1) item_amount Milk $calc($readini($char($1), item_amount, milk) - 1)
+
+      writeini $char($1) status PotionEffect Orb Bonus
+      $display.private.message(12 $+ %shopnpc.name takes the beetle parts and milk and creates a nasty-smelling red potion. Upon drinking it, you feel as though your next battle will result in more orbs.) 
+
+      halt
+    }
+
+    ; More potion effects can go here.
+
+    if ($3 = DoubleLife) { 
+
+      var %rose.needed 2
+      var %tulip.needed 1
+      var %milk.needed 2
+
+      if ($readini($char($1), item_amount, rose) != $null) { dec %rose.needed $readini($char($1), item_amount, rose) }
+      if ($readini($char($1), item_amount, tulip) != $null) { dec %tulip.needed $readini($char($1), item_amount,tulip) }
+      if ($readini($char($1), item_amount, milk) != $null) { dec %milk.needed $readini($char($1), item_amount, milk)  }
+
+      if (((%rose.needed > 0) || (%tulip.needed > 0) || (%milk.needed > 0))) { 
+        $display.private.message(4You do not have enough of the required materials for this potion effect.) 
+        if (%rose.needed < 0) { var %rose.needed 0 }
+        if (%tulip.needed < 0) { var %tulip.needed 0 }
+        if (%milk.needed < 0) { var %milk.needed 0 }
+        $display.private.message(4You still need the following:12 %rose.needed $+ 4x Rose $+ $iif(%rose.needed > 1 || %rose.needed = 0, s) -12 %tulip.needed $+ 4x Tulip -12 %milk.needed $+ x 4Milk)
+        halt
+      }
+
+      writeini $char($1) item_amount Rose $calc($readini($char($1), item_amount, rose) - 2)
+      writeini $char($1) item_amount Tulip $calc($readini($char($1), item_amount, tulip) - 1)
+      writeini $char($1) item_amount Milk $calc($readini($char($1), item_amount, milk) - 2)
+
+      writeini $char($1) status PotionEffect Double Life
+      $display.private.message(12 $+ %shopnpc.name takes the flowers and milk and creates a floral smelling bubbling potion. Upon drinking it, you feel as though your life in the next battle will be double.) 
+
+
+      halt
+    }
+
+    if ($3 = BonusSpoils) { 
+
+      var %bluekinstone.needed 2
+      var %greenkinstone.needed 2
+      var %milk.needed 1
+
+      if ($readini($char($1), item_amount, bluekinstone) != $null) { dec %bluekinstone.needed $readini($char($1), item_amount, bluekinstone) }
+      if ($readini($char($1), item_amount, greenkinstone) != $null) { dec %greenkinstone.needed $readini($char($1), item_amount,greenkinstone) }
+      if ($readini($char($1), item_amount, milk) != $null) { dec %milk.needed $readini($char($1), item_amount, milk)  }
+
+      if (((%bluekinstone.needed > 0) || (%greenkinstone.needed > 0) || (%milk.needed > 0))) { 
+        $display.private.message(4You do not have enough of the required materials for this potion effect.) 
+        if (%bluekinstone.needed < 0) { var %bluekinstone.needed 0 }
+        if (%greenkinstone.needed < 0) { var %greenkinstone.needed 0 }
+        if (%milk.needed < 0) { var %milk.needed 0 }
+        $display.private.message(4You still need the following:12 %bluekinstone.needed $+ 4x blue kinstone $+ $iif(%bluekinstone.needed > 1 || %bluekinstone.needed = 0, s) -12 %greenkinstone.needed $+ 4x green kinstone $+ $iif(%bluekinstone.needed > 1 || %greenkinstone.needed = 0, s) -12 %milk.needed $+ x 4Milk)
+        halt
+      }
+
+      writeini $char($1) item_amount bluekinstone $calc($readini($char($1), item_amount, bluekinstone) - 2)
+      writeini $char($1) item_amount greenkinstone $calc($readini($char($1), item_amount, greenkinstone) - 2)
+      writeini $char($1) item_amount Milk $calc($readini($char($1), item_amount, milk) - 1)
+
+      writeini $char($1) status PotionEffect Bonus Spoils
+      $display.private.message(12 $+ %shopnpc.name takes the kinstones and milk and gives a loud chuckle as she fuses the kinstone pieces together and drops them into the couldron. After a moment she pours the milk in and creates a glowing potion. Upon drinking it, you feel as though your luck with spoils has been enhanced) 
+
+      halt
+    }
+
+  }
+
+
+}
+
+
+alias shop.trusts {
+  if ($2 = list) {
+    unset %shop.list | unset %item.name | unset %item_amount
+
+    var %value 1 | var %items.lines $lines($lstfile(items_trust.lst))
+
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(items_trust.lst)
+      set %item.price $readini($dbfile(items.db), %item.name, cost)
+      var %player.amount.own $readini($char($1), item_amount, %item.name)
+      if (%player.amount.own = $null) { var %player.amount.own 0 }
+
+      if ((%item.price > 0) && ( %player.amount.own <= 0)) {
+        if (%item.price <= $readini($char($1), stuff, loginpoints)) {  %trusts.list1 = $addtok(%trusts.list1, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+        else { %trusts.list1 = $addtok(%trusts.list1,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
+      }
+      unset %item.name | unset %item_amount
+      inc %value 1 
+    }
+
+    set %replacechar $chr(044) $chr(032)
+    %trusts.list1 = $replace(%trusts.list1, $chr(046), %replacechar)
+    unset %replacechar
+
+    if (%trusts.list1 != $null) {  
+      $display.private.message.delay.custom(2NPC Trust items are paid for with 4Login Points,1)
+      $display.private.message.delay.custom(2 $+ %trusts.list1, 1)
+    }
+
+
+    if (%trusts.list1 = $null) { $display.private.message(4There are no NPC Trust items available for purchase right now)  }
+
+    unset %trusts.list1 | unset %item.price | unset %item.name
+  }
+  if (($2 = buy) || ($2 = purchase)) {
+    if ($readini($dbfile(items.db), $3, cost) = $null) {  $display.private.message(4Error: Invalid NPC Trust item! Use !shop list trusts to get a valid list) | halt }
+    if ($readini($dbfile(items.db), $3, cost) = 0) { $display.private.message(4Error: You cannot purchase this NPC Trust item! Use !shop list trusts to get a valid list) | halt }
+
+    ; do you have enough to buy it?
+    set %player.currency $readini($char($1), stuff, LoginPoints)
+    set %total.price $calc($readini($dbfile(items.db), $3, cost) * 1)
+
+    if (%player.currency = $null) { set %player.currency 0 }
+
+    if (%player.currency < %total.price) {  $display.private.message(4You do not have enough Login Points to purchase this NPC Trust item!) | unset %currency | unset %player.currency | unset %total.price |  halt }
+    dec %player.currency %total.price
+    writeini $char($1) stuff LoginPoints %player.currency
+    var %item.amount $readini($char($1), item_amount, $3)
+    if (%item.amount = $null) { var %item.amount 0 }
+    inc %item.amount 1
+    writeini $char($1) item_amount $3 %item.amount
+    $display.private.message(3A bright white light shines down upon you and when it clears you find you are holding the NPC Trust item: $3 $+ ! Use it to build a strong friendship with $readini($dbfile(items.db), $3, NPC) $+ !)
+
+    unset %shop.list | unset %currency | unset %player.currency | unset %total.price
+    halt
+  }
+}
+
+
+
 alias inc.shoplevel {   
   var %shop.level $readini($char($1), stuff, shoplevel) 
   if (($2 = $null) || ($2 <= 0)) { var %amount.to.increase .1 }

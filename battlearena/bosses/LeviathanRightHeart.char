@@ -1,9 +1,9 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 550, $round($calc(2000 + (5 * $return_differenceof($return_playerlevelstotal,550))),0), $round($calc(2000 + $return_playerlevelstotal),0))
+Hp=$round($calc(2500 + (100 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
 Tp=250
-Str=100
-Def=100
-Int=150
+Str=70
+Def=80
+Int=120
 Spd=100
 IgnitionGauge=2
 Name=Leviathan's Right Heart
@@ -12,9 +12,9 @@ Name=Leviathan's Right Heart
 [Battle]
 Hp=1000
 Tp=250
-Str=100
-Def=100
-Int=150
+Str=70
+Def=80
+Int=120
 Spd=100
 IgnitionGauge=2
 Status=alive
@@ -50,7 +50,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=500
+bosslevel=45
 CanTaunt=false
 
 [Status]
@@ -88,7 +88,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=LevithanHeart
-LevithanHeart=500
+LevithanHeart=40
 
 [Skills]
 Resist-Charm=100
@@ -102,7 +102,7 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Impetus=20
-BloodBoost=20
+BloodBoost=15
 
 [Techniques]
 

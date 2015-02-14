@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MECH COMMANDS
+;;;; Last updated: 01/31/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:activates * mech:#:{ $mech.activate($nick) } 
@@ -139,19 +140,19 @@ alias mech.items { $set_chr_name($1)
   $weapons.mech($1)
 
   if (%mech.weapon.list != $null) { 
-    if ($2 = channel) { $display.system.message($readini(translation.dat, system, ViewMechWeapons),private) | if (%mech.weapon.list2 != $null) { $display.system.message( $+ %mech.weapon.list2,battle)  } } 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMechWeapons),private) | if (%mech.weapon.list2 != $null) { $display.message( $+ %mech.weapon.list2,battle)  } } 
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMechWeapons)) | if (%mech.weapon.list2 != $null) {  $display.private.message( $+ %mech.weapon.list2) } } 
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMechWeapons)) | if (%mech.weapon.list2 != $null) {  $dcc.private.message($nick,  $+ %mech.weapon.list2) } }
   }
 
   if (%mech.items.list != $null) { 
-    if ($2 = channel) { $display.system.message($readini(translation.dat, system, ViewMechCoreItems),battle) | if (%mech.items.list2 != $null) { $display.system.message( $+ %mech.items.list2,battle)  } } 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMechCoreItems),battle) | if (%mech.items.list2 != $null) { $display.message( $+ %mech.items.list2,battle)  } } 
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMechCoreItems)) | if (%mech.items.list2 != $null) {  $display.private.message( $+ %mech.items.list2)  } } 
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMechCoreItems)) | if (%mech.items.list2 != $null) {  $dcc.private.message($nick,  $+ %mech.items.list2) } }
   }
 
   if ((%mech.items.list = $null) && (%mech.weapon.list = $null)) { 
-    if ($2 = channel) { $display.system.message($readini(translation.dat, system, HasNoMechItems),private) }
+    if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoMechItems),private) }
     if ($2 = private) {  $display.private.message($readini(translation.dat, system, HasNoMechItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, HasNoMechItems)) }
   }
@@ -163,13 +164,13 @@ alias mech.weapons { $set_chr_name($1)
   $weapons.mech($1)
 
   if (%mech.weapon.list != $null) { 
-    if ($2 = channel) { $display.system.message($readini(translation.dat, system, ViewMechWeapons),battle) | if (%mech.weapon.list2 != $null) { $display.system.message( $+ %mech.weapon.list2,battle) } } 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMechWeapons),battle) | if (%mech.weapon.list2 != $null) { $display.message( $+ %mech.weapon.list2,battle) } } 
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMechWeapons)) | if (%mech.weapon.list2 != $null) {  $display.private.message( $+ %mech.weapon.list2) } } 
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMechWeapons)) | if (%mech.weapon.list2 != $null) {  $dcc.private.message($nick,  $+ %mech.weapon.list2) } }
   }
 
   else {
-    if ($2 = channel) { $display.system.message($readini(translation.dat, system, HasNoMechWeapons),private) }
+    if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoMechWeapons),private) }
     if ($2 = private) {  $display.private.message($readini(translation.dat, system, HasNoMechWeapons)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, HasNoMechWeapons)) }
   }
@@ -212,7 +213,7 @@ alias mech.unequip {
   if ($readini($char($1), mech, HpMax) = $null) {  $display.private.message($readini(translation.dat, errors, DoNotOwnAMech)) | halt }
 
   ; If a battle is ongoing, it can't be changed.
-  if (%battleis = on) {  $display.system.message($readini(translation.dat, errors, Can'tEquipInBattle), private) | halt }
+  if (%battleis = on) {  $display.message($readini(translation.dat, errors, Can'tEquipInBattle), private) | halt }
 
   ; Does the user have that item?
   var %item.amount $readini($char($1), item_amount, $2)
@@ -235,7 +236,7 @@ alias mech.unequip {
     writeini $char($1) mech augments %augments
   }
 
-  $display.system.message($readini(translation.dat, system, UnEquipMechItem), global) 
+  $display.message($readini(translation.dat, system, UnEquipMechItem), global) 
   halt
 }
 
@@ -245,7 +246,7 @@ alias mech.equip {
   if ($readini($char($1), mech, HpMax) = $null) {  $display.private.message($readini(translation.dat, errors, DoNotOwnAMech)) | halt }
 
   ; If a battle is ongoing, it can't be changed.
-  if (%battleis = on) {  $display.system.message($readini(translation.dat, errors, Can'tEquipInBattle), private) | halt }
+  if (%battleis = on) {  $display.message($readini(translation.dat, errors, Can'tEquipInBattle), private) | halt }
 
   ; Does the user have that item?
   var %item.amount $readini($char($1), item_amount, $2)
@@ -282,7 +283,7 @@ alias mech.equip {
     writeini $char($1) mech augments %augments
   }
 
-  $display.system.message($readini(translation.dat, system, EquipMechItem), global) 
+  $display.message($readini(translation.dat, system, EquipMechItem), global) 
   halt
 }
 
@@ -331,10 +332,10 @@ alias mech.fuel {
   }
 
   ; Check to see if the person owns a mech.
-  if ($readini($char($1), mech, HpMax) = $null) {  $display.system.message($readini(translation.dat, errors, DoNotOwnAMech), private) | halt }
+  if ($readini($char($1), mech, HpMax) = $null) {  $display.message($readini(translation.dat, errors, DoNotOwnAMech), private) | halt }
 
   ; Does the mech need energy?
-  if ($readini($char($1), mech, EnergyCurrent) >= $readini($char($1), mech, EnergyMax)) { $display.system.message($readini(translation.dat, errors, MechDoesNotNeedEnergy), private) | halt }
+  if ($readini($char($1), mech, EnergyCurrent) >= $readini($char($1), mech, EnergyMax)) { $display.message($readini(translation.dat, errors, MechDoesNotNeedEnergy), private) | halt }
 
   ; check for the fuel/energy item
   if ($2 != $null) { set %item.name $2 
@@ -359,33 +360,33 @@ alias mech.fuel {
 }
 
 alias mech.activate { 
-  if (%battleis = off) { $display.system.message($readini(translation.dat, errors, NoBattleCurrently), battle) | halt }
-  if ($readini(system.dat, system, AllowMechs) = false) { $display.system.message($readini(translation.dat, errors, MechsNotAllowed), private) | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), battle) | halt }
+  if ($readini(system.dat, system, AllowMechs) = false) { $display.message($readini(translation.dat, errors, MechsNotAllowed), private) | halt }
 
-  if ((no-mech isin %battleconditions) && (no-mechs isin %battleconditions)) { $set_chr_name($1) | $display.system.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt  }
+  if ((no-mech isin %battleconditions) || (no-mechs isin %battleconditions)) { $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt  }
 
   $set_chr_name($1)
   $check_for_battle($1)
 
   ; Check to see if the person owns a mech.
-  if ($readini($char($1), mech, HpMax) = $null) {  $display.system.message($readini(translation.dat, errors, DoNotOwnAMech), private) | halt }
+  if ($readini($char($1), mech, HpMax) = $null) {  $display.message($readini(translation.dat, errors, DoNotOwnAMech), private) | halt }
 
   ; Is the person boosted or Ignitioned?  Can't use a mech then.
-  if ($readini($char($1), status, ignition.on) = on) {  $display.system.message($readini(translation.dat, errors, Can'tDoThatWhileBoosted), private) | halt }
-  if ($readini($char($1), status, boosted) = yes) {  $display.system.message($readini(translation.dat, errors, Can'tDoThatWhileBoosted), private) | halt }
+  if ($readini($char($1), status, ignition.on) = on) {  $display.message($readini(translation.dat, errors, Can'tDoThatWhileBoosted), private) | halt }
+  if ($readini($char($1), status, boosted) = yes) {  $display.message($readini(translation.dat, errors, Can'tDoThatWhileBoosted), private) | halt }
 
   ; Check for charm/confuse
-  if ($is_charmed($1) = true) { $display.system.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-  if ($is_confused($1) = true) { $display.system.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  if ($is_charmed($1) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
+  if ($is_confused($1) = true) { $display.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
 
   ; Check to see if we have enough energy to activate the mech
   var %base.energycost $round($calc($mech.baseenergycost($1) / 2),0)
   var %mech.currentenergy $readini($char($1), mech, energyCurrent)
 
-  if (%base.energycost >= %mech.currentenergy) { $display.system.message($readini(translation.dat, errors, MechNotEnoughEnergyToUse),battle) | halt }
+  if (%base.energycost >= %mech.currentenergy) { $display.message($readini(translation.dat, errors, MechNotEnoughEnergyToUse),battle) | halt }
 
   ; Does the mech have any health?
-  if ($readini($char($1), mech, hpCurrent) <= 0) { $display.system.message($readini(translation.dat, errors, MechNotEnoughHealthToUse),battle) | halt }
+  if ($readini($char($1), mech, hpCurrent) <= 0) { $display.message($readini(translation.dat, errors, MechNotEnoughHealthToUse),battle) | halt }
 
   dec %mech.currentenergy %base.energycost
   writeini $char($1) mech energyCurrent %mech.currentenergy
@@ -411,7 +412,7 @@ alias mech.activate {
   var %mech.description $readini($char($1), descriptions, mech)
   if (%mech.description = $null) { var %mech.description $readini(translation.dat, battle, MechSummon) }
 
-  $display.system.message(3 $+ %real.name  $+ %mech.description,battle)
+  $display.message(3 $+ %real.name  $+ %mech.description,battle)
   writeini $char($1) mech InUse true
 
   unset %mech.power | unset %mech.engineconstant | unset %mech.enginelevel
@@ -427,13 +428,13 @@ alias mech.activate {
 }
 
 alias mech.deactivate {
-  if (%battleis = off) { $display.system.message($readini(translation.dat, errors, NoBattleCurrently), battle) | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), battle) | halt }
 
   $set_chr_name($1)
   if ($2 = $null) { $check_for_battle($1) }
 
   ; Is the person in the mech?
-  if ($person_in_mech($1) = false) { $display.system.message($readini(translation.dat, errors, NotInAMech), private) | halt }
+  if ($person_in_mech($1) = false) { $display.message($readini(translation.dat, errors, NotInAMech), private) | halt }
 
   ; Deactivate the mech.
   var %mech.engineconstant $readini(system.dat, mech, StatMultiplier)
@@ -460,7 +461,7 @@ alias mech.deactivate {
 
   writeini $char($1) mech InUse false
 
-  if ($2 = $null) { $display.system.message($readini(translation.dat, battle, MechDismiss),battle) }
+  if ($2 = $null) { $display.message($readini(translation.dat, battle, MechDismiss),battle) }
 
   return
 }
@@ -489,6 +490,10 @@ alias mech.energydrain {
     set %energydrain $readini($dbfile(techniques.db), $3, energyCost)
     if (%energydrain = $null) { var %energydrain 100 }
   }
+
+  ; Check for the DecreaseMechEnergyCost augment that will decrease the amount of energy needed to run a mech
+  if ($augment.check($1, DecreaseMechEnergyCost) = true) {  dec %energydrain $round($calc(%energydrain *  (%augment.strength *.25)),0) }
+
 
   var %current.energylevel $readini($char($1), mech, energyCurrent)
   dec %current.energylevel %energydrain

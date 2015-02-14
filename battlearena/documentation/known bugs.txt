@@ -19,3 +19,10 @@ If the bot lags and the person keeps using the same command over and over it cou
 
 * Monsters Randomly Losing Turns
 As it stands, very very occasionally monsters might end up losing their turn. As of yet I haven't figured out exactly what's causing this but it doesn't seem to happen very often. 
+
+* Players can't use any commands when using colors
+If players are using colors in their text and try to use commands with the bot the bot will seemingly not work at all for them.  You can disable incoming colors on the bot's side by going to:
+
+Tools -> Options -> IRC -> Messages -> Strip codes from incoming messages: [select bold, underline, color and reverse]
+
+This will allow players to keep their colors and still be able to use the bot.

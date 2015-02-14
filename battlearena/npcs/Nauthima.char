@@ -11,7 +11,7 @@ Name=Nauthima Tiranadel
 
 [Battle]
 Hp=5000
-Tp=1000
+Tp=2000
 Str=$calc(50 + $current.battlestreak)
 Def=$calc(50 + $current.battlestreak)
 Int=$calc(70 + $current.battlestreak)
@@ -111,8 +111,7 @@ auto-regen=on
 
 [Weapons]
 Equipped=Black_Goddess_Staff
-Black_Goddess_Staff=$round($calc(600 + (($current.battlestreak / 2) / 4.5)),0)
-SilverSwords=$round($calc(600 + (($current.battlestreak / 2) / 4.5)),0)
+Black_Goddess_Staff=$calc(60 + $current.battlestreak)
 
 
 [Skills]
@@ -123,18 +122,8 @@ royalguard.on=off
 manawall.on=on
 Elementalseal.on=off
 ElementalSeal=1
-Wizardy=100
-Swordmaster=1000
-MartialArts=1000
-Resist-Paralysis=10
-Resist-Amnesia=100
-Resist-Charm=100
-Resist-Zombie=100
-Resist-Intimidate=100
-Resist-Slow=100
-Resist-Stop=100
-Resist-Curse=100
-Resist-Stun=10
+Wizardy=3000
+Swordmaster=3000
 Zen=5
 ClearMind=3
 MagicMirror=10
@@ -142,21 +131,54 @@ MagicMirror.on=on
 BloodSpirit=100
 RepairNaturalArmor=1
 Regen=20
-
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-AeroV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-BlizzardV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-FireV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-Poison=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-Blind=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-Paralyze=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-Darkra=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-DarkV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-BanishV=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-Twin_Slice=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-LightningStrike=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
-BladeBeamII=$round($calc(125 + (($current.battlestreak / 2) / 4.5)),0)
+AeroV=$iif($current.battlestreak < 200, 0, $calc(500 + $current.battlestreak))
+BlizzardV=$iif($current.battlestreak < 200, 0, $calc(400 + $current.battlestreak))
+FireV=$iif($current.battlestreak < 200, 0, $calc(400 + $current.battlestreak))
+DarkV=$iif($current.battlestreak < 200, 0, $calc(400 + $current.battlestreak))
+BanishV=$iif($current.battlestreak < 200, 0, $calc(400 + $current.battlestreak))
+Geohelix=$iif($current.battlestreak < 50, 0, $calc(50 + $current.battlestreak))
+Hydrohelix=$iif($current.battlestreak < 50, 0, $calc(50 + $current.battlestreak))
+Anemohelix=$iif($current.battlestreak < 50, 0, $calc(50 + $current.battlestreak))
+Pyrohelix=$iif($current.battlestreak < 50, 0, $calc(50 + $current.battlestreak))
+Cryohelix=$iif($current.battlestreak < 50, 0, $calc(50 + $current.battlestreak))
+Ionohelix=$iif($current.battlestreak < 50, 0, $calc(50 + $current.battlestreak))
+Noctohelix=$iif($current.battlestreak < 50, 0, $calc(50 + $current.battlestreak))
+Luminohelix=$iif($current.battlestreak < 50, 0, $calc(50 + $current.battlestreak))
 
 
 [Item_Amount]
@@ -165,26 +187,20 @@ Wizard's-Amulet=1
 
 [Styles]
 Equipped=SpellMaster
-SpellMaster=10
+SpellMaster=30
 SpellMasterXP=1
 
 
 [Equipment]
-Head=WarlockChapeau+2
-Body=WarlockTabard+2
-Hands=WarlockGloves+2
-Legs=WarlockTights+2
-Feet=WarlockBoots+2
 Accessory=Wizard's-Amulet
 
 
 [Ignitions]
-Composure=1
+Composure=$iif($current.battlestreak < 300, 0, 1)
 
 
 [Augments]
 Black_Goddess_Staff=IgnoreGuardian.MagicBonus.IgnoreMetalDefense
-SilverSwords=IgnoreGuardian.RenkeiBonus.IgnoreMetalDefense
 
 
 [NaturalArmor]

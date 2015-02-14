@@ -1,5 +1,5 @@
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Battle Arena Bot - Version 2.5
+Battle Arena Bot - Version 3.0
 Programmed by James "Iyouboushi" (Iyouboushi@gmail.com)
 FREEWARE!
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -87,88 +87,84 @@ As usual be sure to read the versions.txt in the documentation folder
 for a full list of everything this version does.  Listed below are some 
 of the highlights.
 
-* Added Instruments and Songs!
-Spoony the Bard is no longer a useless NPC.  Now he sells instruments and songsheets. Use the
-songsheets on yourself to learn a song that you can then use in battle with a proper instrument.
-Songs offer some bonuses to your team and status effects to your opponents.
+* New Method of Doing Monster/Summon/NPC Stats Upon Summoning to Battlefield
+The way the bot determines the stats for monsters, bosses, summons and npcs
+when they're summoned to the battlefield has been changed quite a bit. It
+should be more balanced now.
 
-* Added a new special boss fight: Wall of Flesh
-It's basically an enhanced Demon Wall.  Bring your A-game and take out the wall.
+* Added a new battle type: Defend Outpost
+In this battle type players will have to survive 5 waves of monsters in
+order to successfully defend an Allied Forces HQ Outpost.
 
-* Added Dualwielding
-This skill will allow a player to equip two weapons and use techniques from either
-of the weapons without needing to switch. For melee attacks, the # of hits for the 
-attack will be both weapon's # of hits combined.  For example, a 1 hit weapon + a 2 hit
-weapon will give your attack 3 hits. Use !equip left weaponname and !equip right weaponname
-If the weapon is a 2 handed weapon it will automatically adjust what you have equipped in
-your hands.
+* Added Capacity and Enhancement Points. 
+10,000 Capacity Points will equal 1 Enhancement Point. Players gain capacity
+points by being in battles that are higher than streak 100. Note that the 
+player level has to be within 10 of the streak in order to gain capacity points. 
+After streak 500, the amount is 500+(10% of streak level).   Enhancement
+points can then be used in the shop to purchase additional skills and stat
+enhancements.
 
-* Added Shields
-Shields are an extra way to protect yourself while using one-handed weapons. Shields are broken
-into three size categories: small, medium and large.  Small shields will block more often but
-will absorb less damage, medium is middle of the road and large will block the least but will
-absorb the most.  Shields can be purchased from the shield merchant after he arrives at the
-Allied Forces HQ.  Note that players need the dual wield skill in order to use a shield.
+* Added the ability for monsters and npcs to be able to use battle items.
+Watch out players! Some monsters now have the ability to use items in
+battle.
 
-* Added "Players Must Die" Mode
-Inspired by Dante Must Die mode in DMC, this mode makes monsters harder and makes it so
-players will not restore full hp/tp at the end of battle.  Bot admins can use 
-!toggle mode playersmustdie  to turn this mode on/off.
-
-* Added the "Time of Day" and # of days to the bot.
-The bot will cycle through morning->noon->evening->night at 2 battles per time.
-Also added code for the bot to keep track of the number of days that the heroes 
-have been fighting. Remember that the "day" it is is based on the cycle of 
-morning to morning (every 8 battles by default).
-With these additions, it is now possible for certain monsters to only appear
-at certain times of the "day".
-
-* Added the Allied Forces HQ Garden
-The garden is an optional minigame that everyone can (and should!) contribute to. 
-Basically you find seed and flower items from monsters and then plant them in the garden.
-Check the garden once every 24 hours for the seeds to grow.  The garden has levels and
-will level up after reaching a certain xp amount (which it obtains by people planting).
-Read the section in PLAYER'S GUIDE for more information on this.'
-
-* Added Death Conditions to Monsters
-Certain monsters and bosses will only die if the right type of attack is used to kill them 
-otherwise they will be revived with half HP. The conditions are: melee, magic, tech, item, 
-renkei, status, and magic effect.
+* Added NPC Trust Items
+These special items will summon an NPC companion to fight alongside you
+if you are playing solo.  NPC Trust Items can be purchased in the shop
+using Login Points--a special currency that you get each new day that
+you log into the game (using !id).  Login Points accumulate every day
+and do not go away until they have been spent.
 
 
 Changes:
-- Changed the Auto Next so that it will boot anyone who misses 3 turns in a single battle out of the battle 
-- Changed Lost Souls and Orb Fountains to explode once darkness hits.
-- Changed !styles to allow the viewing of other player's styles (such as !styles Iyouboushi)
-- Changed !view-info tech to show the stat modifier of techs.
-- Changed NPCs to not show up during boss battles
-- Changed the code for !weapons to be a little more efficient.
-- Changed the code for !shop list weapons to be a little more efficient.
-- Changed the max conquest points for players and monsters to be 6000.
-- Changed the AI code for healer type AI. 
-- Changed battlefields so that there's a 40% chance that the weather will randomly change.
-- Changed Kikouheni so that it now adds the "weatherlock" condition to the battlefield. 
-- Changed how the bot pulls the drop list for monsters/bosses to read from a drops.db file.  
-- Changed how red orbs in chests works. 
-- Changed the Guardian monsters to allow multiple targets that have to be killed in order to hurt the target
-- Changed the level difference a player can be to a target and still have the magic effect work.
-
+- Changed the !augment commands to work in private or channel. 
+- Changed the portal battles so that they have a level cap. 
+- Changed the shop to allow players to view and buy techniques that are on the left-hand weapon.
+- Changed the drops in the bot
+- Changed the lockpicking skill to be 3% per level, up from 2%.
+- Changed Evil Doppelgangers so that they are generated correctly if the user is level synced.
+- Changed chests so that red chests can never spawn mimics.
+- Changed the GIVES command so that players can now give red orbs to certain NPCs.  
+- Changed the way the bot picks NPCs so that they can now have streak minimums/maximums like monsters and bosses.
+- Changed the Inactive type monsters/npcs so that they can have a custom description for when they become active.
+- Changed the scoreboard.html to include the level of the player
+- Changed the drunk status to last 2 rounds
+- Changed the GIVES message to hopefully show grammatically correct lines
+- Changed the way the bot handles negative status effects on targets.
+- Changed the way the bot does all of the status timers to make it consistent
+- Changed the modifier checks so that they will also check for the name of the weapon in addition to the rest
+- Changed the way the bot displays damage (purple = resisted, orange = enhanced)
+- Changed the way the bot displays the "battle open" message 
+- Changed the chance of a rescue allied president battle to 25% and lowered the streak from 100 to 20. 
+- Changed how the allied forces president is generated slightly (stat-wise)
+- Changed the chance of certain special boss types of occurring by a small amount.
+- Changed the way the bot boosts portal monsters, hopefully keeping them closer to the synced levels
+- Changed the way the bot does the stats for monsters, npcs and summons upon summoning to the battlefield.
+- Changed the way the HP for monsters/summons/NPCs/bosses are boosted at the start of battle
+- Changed demon portals so that monsters spawning out of them will be slightly less than the battle streak.
 
 Fixes:
-- Fixed a bug with !speed
-- Fixed a bug in which Spoony the Bard could not be kidnapped.
-- Fixed a bug in which techs done with weapons obtained via special items would do the wrong amount of damage.
-- Fixed a bug where a target that dies and is revived and dies again will count as 2 deaths instead of 1. 
-- Fixed an issue where weapons that have 0 cost (i.e. can't buy) are showing up in the shop
-- Fixed an issue with chests being able to be opened multiple times if the bot is lagging.
-- Fixed an issue where dead cover targets will still be shown being tossed by monsters.
-- Fixed an issue with the shop where sometimes the skills would not be displayed correctly. 
-- Fixed an issue in which !npc status wouldn display in the channel when used in a private message instead of private.
-- Fixed an issue where doing 0 damage should no longer be able to stagger an enemy
-- Fixed an issue where a target could be staggered even if the target was dodging/blocking/parrying/etc 
-- Fixed an issue where targets protected by a guardian could still be hurt by magic effect damage
-- Fixed an issue where it was possible to do actions while blinded/stunned/other turn-skipping statuses
-- Fixed a potential issue with AI battles in which two healing types could be in battle together, thus never ending.
+- Fixed an issue with songs showing resists on targets who shouldn't be affected
+- Fixed an issue with counter attacks showing the wrong pronouns sometimes.
+- Fixed an issue with lost souls appearing in gauntlet battles.
+- Fixed an issue where instruments could be used with !use
+- Fixed an issue with the mech shop so that cores and weapons that cost 0 won't show up for purchase.
+- Fixed an issue with the snatch error message showing the wrong name
+- Fixed an issue with monsters being unable to take action while charmed.
+- Fixed an issue with techniques doing too much damage when a player was level synced.
+- Fixed an issue in which Ghost Turkey could show up in other months besides November
+- Fixed an issue with !view-info style doppelganger getting cut off
+- Fixed a bug with !augment list that would say players had no augments even if they did.
+- Fixed a bug with !fullbring when used with +TP items.
+- Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
+- Fixed a bug with the drunk status effect
+- Fixed a bug with !augments list not showing in private even if the command was used in private
+- Fixed a bug with !unequip armor
+- Fixed a bug with shadow clones attacking their owners in PVP mode
+- Fixed a bug with shadow clones attacking themselves in PVP mode
+- Fixed a bug with items occasionally not showing damage correctly 
+- Fixed a bug in which players could trade armor they were still wearing
+- Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
 
 
 Again, this isn't everything. Be sure to read the versions.txt in the documentation folder for a full 

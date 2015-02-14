@@ -1,10 +1,10 @@
 [BaseStats]
-Hp=9000
+Hp=$round($calc(9500 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
 Tp=1250
-Str=5920
-Def=7980
-Int=3500
-Spd=5500
+Str=1576
+Def=871
+Int=548
+Spd=1221
 Name=Eccentric Eve
 IgnitionGauge=100
 
@@ -12,10 +12,10 @@ IgnitionGauge=100
 [Battle]
 Hp=9000
 Tp=1250
-Str=5920
-Def=7980
-Int=3500
-Spd=5500
+Str=1576
+Def=871
+Int=548
+Spd=1221
 Status=alive
 IgnitionGauge=100
 
@@ -50,7 +50,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=$iif($readini($txtfile(battle2.txt), BattleInfo, PlayerLevels) < 1500, 1500, $calc(50 + $readini($txtfile(battle2.txt), BattleInfo, HighestLevel)))
+bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 180,$iif($readini($txtfile(battle2.txt), BattleInfo, PlayerLevels) < 1500, 1500, $calc(50 + $readini($txtfile(battle2.txt), BattleInfo, HighestLevel))))
 CanTaunt=false
 IgnoreQuickSilver=true
 JustReleaseDefense=90
@@ -131,8 +131,8 @@ Guardian=10
 
 [NaturalArmor]
 Name=Thick Malboro Skin
-Max=2000
-Current=2000
+Max=1200
+Current=1200
 
 [modifiers]
 Heal=none

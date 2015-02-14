@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=3500
-Tp=250
-Str=$calc(30 + $current.battlestreak)
-Def=$calc(30 + $current.battlestreak)
-Int=$calc(30 + $current.battlestreak)
-Spd=$calc(30 + $current.battlestreak)
+Hp=4000
+Tp=500
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Name=Richter Belmont
 
 
 [Battle]
-Hp=3500
-Tp=250
-Str=$calc(30 + $current.battlestreak)
-Def=$calc(30 + $current.battlestreak)
-Int=$calc(30 + $current.battlestreak)
-Spd=$calc(30 + $current.battlestreak)
+Hp=4000
+Tp=500
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
@@ -95,31 +95,59 @@ zombie.timer=1
 
 [Weapons]
 Equipped=VampireKiller
-VampireKiller=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+VampireKiller=$calc(45 + $current.battlestreak)
 
 [Skills]
 Zen=5
 ClearMind=3
 Wizardry=1000
-MartialArts=1000
-Resist-Charm=100
-Resist-Amnesia=100
-Resist-Curse=100
-Resist-Intimidate=100
+Whipster=1000
 RoyalGuard=1
 royalguard.on=off
 WeaponBash=1
-
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-Thousand_Knives=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-HydroStorm=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Dagger=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-HolyWater=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Cross=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-StopWatch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Axe=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-DoubleAxe=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Thousand_Knives=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
+HydroStorm=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
+Dagger=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+HolyWater=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+Cross=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+StopWatch=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+Axe=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+DoubleAxe=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
 
 
 [Item_Amount]
@@ -127,5 +155,5 @@ DoubleAxe=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=20
 WeaponMasterXP=1

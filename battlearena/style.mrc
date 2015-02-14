@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
+;;;; Last updated: 01/31/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -165,10 +166,17 @@ alias add.playerstyle.xp {
   if (%current.playerstyle.xp >= %current.playerstyle.xptolevel) {
     inc %current.playerstyle.level 1 | writeini $char($1) styles %current.playerstyle %current.playerstyle.level
     writeini $char($1) styles %current.playerstyle $+ XP 0
-    $set_chr_name($1) | $display.system.message($readini(translation.dat, system, PlayerStyleLevelUp), global)
+    $set_chr_name($1) | $display.message($readini(translation.dat, system, PlayerStyleLevelUp), global)
   }
   unset %current.playerstyle |  unset %current.playerstyle.*
   return
+}
+
+; returns the player's current level of the style he/she has equipped
+alias style.level {
+  ; $1 = player
+  var %current.playerstyle $readini($char($1), styles, equipped)
+  return $readini($char($1), styles, %current.playerstyle)
 }
 
 
@@ -241,7 +249,7 @@ alias generate_style_order {
 
   ; get rid of the Battle Table and the now un-needed file
   hfree BattleTable
-  .remove BattleTable.file
+  if ($isfile(BattleTable.file) = $true) { .remove BattleTable.file }
 
   ; unset the style rating
   unset %battle.style

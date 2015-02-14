@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 60, $round($calc(2500 + (4 * $return_differenceof($return_playerlevelstotal,60))),0), $round($calc(2500 + $return_playerlevelstotal),0))
+Hp=$round($calc(2500 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
 Tp=190
-Str=175
-Def=126
-Int=353
-Spd=160
+Str=154
+Def=118
+Int=148
+Spd=156
 IgnitionGauge=2
 Name=Morion Worm
 
 [Battle]
 Hp=2155
 Tp=190
-Str=175
-Def=126
-Int=353
-Spd=160
+Str=154
+Def=118
+Int=148
+Spd=156
 IgnitionGauge=2
 Status=alive
 
@@ -50,7 +50,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-Bosslevel=47
+Bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 26, 50)
 CanTaunt=false
 
 [Monster]

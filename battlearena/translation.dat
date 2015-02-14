@@ -32,6 +32,7 @@ BattleStatsWinningStreak=$chr(3) $+ 2 $+ The players are currently on level4 $
 BattleStatsLosingStreak=$chr(3) $+ 2 $+ The players have lost $bytes($readini(battlestats.dat, Battle, LosingStreak),b)  $+ $iif($readini(battlestats.dat, Battle, LosingStreak) < 2, battle, battles) in a row!
 BattleStatsGauntletRecord=$chr(3) $+ 2 $+ The Gauntlet Record is4 %total.gauntlet.wins 
 BattleStatsPresidentRecord=$chr(3) $+ 2 $+ The President of the Allied Forces has been captured:4 $bytes(%total.capturedpresidents,b) $iif(%total.capturedpresidents < 2, time, times) $+ 2. The heroes have successfully rescued the president $bytes(%total.capturedpresidents.wins,b) $iif(%total.capturedpresidents.wins < 2, time, times) ( $+ $round($calc((%total.capturedpresidents.wins / %total.capturedpresidents)*100),2) $+ $chr(37) $+ ) $+ $chr(44) have failed $bytes(%total.capturedpresidents.fails,b) $iif(%total.capturedpresidents.fails < 2 && %total.capturedpresidents.fails > 0, time, times) ( $+ $round($calc((%total.capturedpresidents.fails / %total.capturedpresidents)*100),2) $+ $chr(37) $+ ) and have ignored $bytes(%total.capturedpresidents.ignored,b) $iif(%total.capturedpresidents.ignored = 1, capture, captures) ( $+ $round($calc((%total.capturedpresidents.ignored / %total.capturedpresidents)*100),2) $+ $chr(37) $+ ).
+BattleStatsOutposts=$chr(3) $+ 2 $+ The Allied Forces have currently defended4 %total.defendedoutposts 2outposts and have lost4 %total.lostoutposts 2outposts to the monster forces.
 BattleStatsMoreInfo=$chr(3) $+ 2 $+ For Conquest information use 4!conquest info2, 4!conquest record2 and 4!conquest points2.  For current Dragonball info use 4!dragonballs
 WipedBattleStats=$chr(3) $+ 4 $+ The Battle Stats have been wiped!
 ChangeTime=$chr(3) $+ 4 $+ Time between battles has been set to: $iif($4 < 1, %timebetween.time seconds, $4 minutes)
@@ -40,6 +41,7 @@ NameReserved=$chr(3) $+ 4 $+ A character with the name $nick is reserved and c
 CharacterCreated=$chr(3) $+ 3 $+  $+ $nick has entered the dimensional rift to join the battle arena.
 StartingCharOrbs=$chr(3) $+ 2 $+ You enter the arena with a total of %starting.orbs  $+ $readini(system.dat, system, currency) to spend.  
 StartingCharPassword=$chr(3) $+ 2 $+ Your password has been set to %password and it is recommended you change it using the command !newpass %password newpasswordhere in private or at least write the password down.  $chr(3) $+ Passwords cannot be recovered!
+UnZappedComplete=$chr(3) $+ 10 $+ $+ %real.name has been restored to this dimension. 
 ZappedComplete=$chr(3) $+ 10 $+ $+ %real.name has been erased from this dimension. 
 NewPassword=$chr(3) $+ 3 $+ Your new password has been set to $3 
 SetGenderNeither=$chr(3) $+ 3 $+ Your gender has been set to its 
@@ -56,6 +58,8 @@ ViewMyOrbs=$chr(3) $+ 3 $+  $+ %real.name has $bytes($readini($char($nick), s
 ViewOthersOrbs=$chr(3) $+ 3 $+  $+ %real.name has $bytes($readini($char($2), stuff, RedOrbs),b)  $+ $readini(system.dat, system, currency) and $bytes($readini($char($2), stuff, BlackOrbs),b)  $+ $iif($readini($char($2), stuff, BlackOrbs) < 2, Black Orb, Black Orbs) and has spent %orbs.spent  $+ $readini(system.dat, system, currency) and %blackorbs.spent  $+ $iif($readini($char($2), stuff, BlackOrbs) < 2, Black Orb, Black Orbs) total! 
 OrbsLeft=$chr(3) $+ 3 $+ You have $bytes($readini($char($nick), stuff, RedOrbs),b)  $+ $readini(system.dat, system, currency) left
 BlackOrbsLeft=$chr(3) $+ 3 $+ You have $bytes($readini($char($nick), stuff, BlackOrbs),b)  $+ black $iif($bytes($readini($char($nick), stuff, BlackOrbs),b) = 1, orb, orbs) left
+ViewOthersLoginPoints=$chr(3) $+ 3 $+  $+ $get_chr_name($1) has $bytes($loginpoints($1, check),b) login points. 
+ViewMyLoginPoints=$chr(3) $+ 3 $+  $+ $get_chr_name($nick) has $bytes($loginpoints($nick, check),b) login points. 
 HereIsYourCurrentStats=$chr(3) $+ 3 $+ Here are your current stats:
 HereIsOtherCurrentStats=$chr(3) $+ 3 $+ Here are the current stats for $2 $+ :
 HereIsMiscInfo=$chr(3) $+ 3 $+ Here is %misc.target misc statistical info:
@@ -87,10 +91,11 @@ ViewActiveSkills2=$chr(3) $+ 3 $+  $+ %active.skills.list2
 ViewResistanceSkills=$chr(3) $+ 3 $+  $+ %real.name has the following 12resistances3: %resists.skills.list 
 ViewKillerTraitSkills=$chr(3) $+ 3 $+  $+ %real.name has the following 12monster killer traits3: %killer.skills.list 
 HasNoSkills=$chr(3) $+ 3 $+  $+ %real.name currently knows no skills.
-ViewItems=$chr(3) $+ 3 $+  $+ %real.name has the following items: %items.list 
+ViewItems=$chr(3) $+ 3 $+  $+ %real.name has the following items: %items.list
 ViewSummonItems=$chr(3) $+ 3 $+  $+ %real.name has the following summon items: %summons.items.list 
 ViewShopResetItems=$chr(3) $+ 3 $+  $+ %real.name has the following shop lowering items: %reset.items.list 
 ViewShopSpecialItems=$chr(3) $+ 3 $+  $+ %real.name has the following songsheet and special items: %special.items.list 
+ViewTrustItems=$chr(3) $+ 3 $+  $+ %real.name has the following npc trust items: %trust.items.list 
 ViewStatPlusItems=$chr(3) $+ 3 $+  $+ %real.name has the following +stat items: %statplus.items.list 
 ViewGemItems=$chr(3) $+ 3 $+  $+ %real.name has the following gems: %gems.items.list 
 ViewKeysItems=$chr(3) $+ 3 $+  $+ %real.name has the following keys: %keys.items.list 
@@ -119,7 +124,8 @@ ViewEquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has the following accesso
 ViewRunes=$chr(3) $+ 3 $+  $+ %real.name has the following runes %runes.list
 HasNoAccessories=$chr(3) $+ 3 $+  $+ %real.name currently has no accessories. 
 HasNoSongs=$chr(3) $+ 3 $+  $+ %real.name does not currently know any songs. 
-HasNoRunes=$chr(3) $+ 3 $+  $+ %real.name currently has no runes. 
+HasNoRunes=$chr(3) $+ 3 $+  $+ %real.name currently has no runes.
+HasNoTrusts=$chr(3) $+ 3 $+  $+ %real.name does not currently have any NPC Trusts.
 HasNoEquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name currently has no accessory equipped. 
 EquipWeaponGM=$chr(3) $+ 3 $+  $+ %real.name has equipped $3 $+ $iif($2 != both,  in $gender($1) $2 hand) $+ .
 EquipWeaponPlayer=$chr(3) $+ 3 $+  $+ %real.name has equipped $3 $+ $iif($2 != both,  in $gender($1) $2 hand) $+ .
@@ -127,30 +133,9 @@ EquipWeaponMonster=$chr(3) $+ 3 $+  $+ %real.name has equipped %weapon.name
 EquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has equipped $gender($1) mech with a $2
 UnEquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has unequipped $gender($1) mech of the $2
 UnequipWeapon=$chr(3) $+ 3 $+  $+ %real.name unequipped the %weapon.equipped.right $iif(%weapon.equipped.left != $null, and the %weapon.equipped.left)
-ViewStatus=$chr(3) $+ 3 $+  $+ %real.name $+ 's status is currently:4 %all_status  3[Active Skills:4 %all_skills $+ 3]
+ViewStatus=$chr(3) $+ 3 $+  $+ %real.name $+ 's status is currently:4 %all_status  3[Active Skills:4 %all_skills $+ 3] $iif($return.potioneffect($nick) != none, [Potion Effect:12 $return.potioneffect($nick) $+ 3])
 OKDesc=$chr(3) $+ 3 $+ Your $2 desc was entered correctly!
 ClearDesc=$chr(3) $+ 3 $+ Your $3 desc has been cleared!
-AutomatedBattleOn=$chr(3) $+ 4 $+ The Automated Battle System has been turned on.
-AutomatedBattleOff=$chr(3) $+ 4 $+ The Automated Battle System has been turned off.
-DiscountMessageOn=$chr(3) $+ 4 $+ The Discount Item Message has been turned on.
-DiscountMessageOff=$chr(3) $+ 4 $+ The Discount Item Message has been turned off.
-PlayersMustDieModeOn=$chr(3) $+ 4 $+ The Players Must Die Mode has been turned on.
-PlayersMustDieModeOff=$chr(3) $+ 4 $+ The Players Must Die Mode has been turned off.
-AllowColorsOn=$chr(3) $+ 4 $+ The Bot's Colors have been turned on.
-AllowColorsOff=$chr(3) $+ 4 $+ The Bot's Colors have been turned off.
-BattleThrottleOn=$chr(3) $+ 4 $+ The BattleThrottle setting has been turned on.  With this one, players can only enter every other battle.
-BattleThrottleOff=$chr(3) $+ 4 $+ The BattleThrottle setting has been turned off.  Players can now enter every battle.
-AutomatedAIBattleCasinoOn=$chr(3) $+ 4 $+ The Automated AI Battle System has been turned on.
-AutomatedAIBattleCasinoOff=$chr(3) $+ 4 $+ The Automated AI Battle System has been turned off.
-BonusEventOn=$chr(3) $+ 4 $+ The Double $readini(system.dat, system, currency) Event has been enabled!
-BonusEventOff=$chr(3) $+ 4 $+ The Double $readini(system.dat, system, currency) Event has been disabled!
-NewDmgFormulaIsOn3=$chr(3) $+ 4 $+ The Damage Formula has been set to #3
-NewDmgFormulaIsOn=$chr(3) $+ 4 $+ The Damage Formula has been set to #2
-NewDmgFormulaIsOff=$chr(3) $+ 4 $+ The Damage Formula has been set to #1
-AiSystemOn=$chr(3) $+ 4 $+ The Ai System has been turned on.
-AiSystemOff=$chr(3) $+ 4 $+ The Ai System has been turned off.
-EnableBattlefieldEventsOn=$chr(3) $+ 4 $+ Random Battlefield Events are now enabled.
-EnableBattlefieldEventsOff=$chr(3) $+ 4 $+ Random Battlefield Events are now disabled.
 EquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has equipped the accessory $2
 RemovedAccessory=$chr(3) $+ 3 $+  $+ %real.name has removed the accessory $2
 EquippedArmor=$chr(3) $+ 3 $+  $+ %real.name is now wearing the $readini($dbfile(equipment.db), $2, name)
@@ -160,6 +145,7 @@ NotWearingThatArmor=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $2 $+ .
 ShopLevelLowered=$chr(3) $+ 2 $+ Your shop level has been lowered.  It is now $readini($char($2), stuff, shoplevel) $+ !
 FoodStatIncrease=$chr(3) $+ 2 $+ Your %food.type has permanantly increased by %food.bonus $+ !
 SellMessage=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat takes $4 $3 $+ $iif($4 < 2, ,s) $+  from you and gives you $bytes(%total.price,b) $readini(system.dat, system, currency) $+ !
+SellWeaponMessage=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat performs a powerful ritual to unbind the weapon $3 $+  from your body and restores $bytes(%orb.amount,b) black orbs!
 CurrentShopLevel=$chr(3) $+ 2 $+ Your current shop level is $readini($char($nick), stuff, shoplevel) 
 ConvertToGem=$chr(3) $+ 2 $+ %enemy is consumed by a bright rainbow of light and then converted into 1 %gem $+ ! %user then collects it.
 ChestDrops=$chr(3) $+ 12 $+ The monsters were protecting a %color.chest treasure chest.  It can be unlocked with a %color.chest key; the chest will disappear in 45 seconds.
@@ -170,7 +156,8 @@ SaveBattleStreak=$chr(3) $+ 3 $+  $+ %real.name has saved winning streak # $b
 ClearedBattleSave=$chr(3) $+ 3 $+  $+ %real.name has cleared $gender($nick) battle streak save.
 ReloadBattleStreak=$chr(3) $+ 3 $+  $+ %real.name has reloaded winning streak # $bytes($readini($char($nick), Info, SavedStreak),b) from $gender($nick) file.
 ViewBattleStreak=$chr(3) $+ 3 $+  $+ %real.name currently has winning streak # $bytes(%saved.streak,b) saved in $gender($nick) file
-GiveItemToTarget=$chr(3) $+ 3 $+ %real.name gives $3 $4 $+ $iif($3 < 2, ,s) to $set_chr_name($2) %real.name $+ !
+GiveItemToTarget=$chr(3) $+ 3 $+ %real.name gives $3 %item.to.give.correct $+ $iif($3 < 2, ,s) to $set_chr_name($2) %real.name $+ !
+GiveOrbsToTarget=$chr(3) $+ 3 $+ %real.name gives $3 $4 to $get_chr_name($2) $+ !
 FinalGetsugaWarning=$chr(3) $+ 4 $+ This technique is a Final Getsuga type, which means if you use it at the end of the battle you will be reduced back to basically a new character.
 ScoreBoardTitle=$chr(3) $+ 3The Top Players in %battlechan
 DeathBoardTitleMon=$chr(3) $+ 3The Top Monster Deaths in %battlechan
@@ -180,6 +167,8 @@ DeathBoardTotalBoss=$chr(3) $+ 3There have be $bytes(%total.deaths,b) boss kill
 CurrentScore=$chr(3) $+ 2 $+ %real.name $+ 's current score is: $bytes(%score,b)
 PlayerStyleLevelUp=$chr(3) $+ 3 $+  $+ %real.name $+ 's %current.playerstyle style has leveled up! It is now level %current.playerstyle.level $+ !
 AnotherWaveArrives=$chr(3) $+ 4 $+ Another wave of monsters has arrived to the battlefield!
+AnotherWaveOutpost=$chr(3) $+ 4 $+ More monsters pour into the outpost in an effort to take it over!
+AnotherWaveOutpostBoss=$chr(3) $+ 4 $+ The general of the monster attack party has arrived!
 ViewDifficulty=$chr(3) $+ 3 $+  $+ %real.name has a difficulty of %saved.difficulty set currently.
 SaveDifficulty=$chr(3) $+ 3 $+  $+ %real.name sets $gender($nick) difficulty to $3 $+ .
 ViewLevelAdjust=$chr(3) $+ 3 $+ The overall battle level adjust is set to %leveladjust $+ .
@@ -224,7 +213,34 @@ PortalUsageCheckUnlimited=$chr(3) $+ 3 $+ %real.name $+  has unlimited portal 
 PortalUsageCheck=$chr(3) $+ 3 $+ %real.name $+  has %portal.uses.left more portal uses left today.
 ScoreBoardHTMLTrue=$chr(3) $+ 3 $+ The Scoreboard will now generate a HTML file in the main folder upon use of the scoreboard command.
 ScoreBoardHTMLFalse=$chr(3) $+ 3 $+ The Scoreboard will no longer generate a HTML file in the main folder upon use of the scoreboard command.
+PortalLevelsSynced=$chr(3) $+ 4 $+ The level cap for this portal battle has been set to: %portal.level
+GainedEnhancementPoint=$chr(3) $+ 7 $+ You have gained 1 enhancement point bringing your new total to %current.enhancementpoints $+ .
+SpiritOfHeroSync=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low for this battle streak. $get_chr_name($1) has been infused with the2 Spirit of the Hero4 buff. $get_chr_name($1) $+ 's level is now set temporarily to2 $calc($return_winningstreak - 3)
 
+; Bot Admin Toggle Messages
+AutomatedBattleOn=$chr(3) $+ 4 $+ The Automated Battle System has been turned on.
+AutomatedBattleOff=$chr(3) $+ 4 $+ The Automated Battle System has been turned off.
+DiscountMessageOn=$chr(3) $+ 4 $+ The Discount Item Message has been turned on.
+DiscountMessageOff=$chr(3) $+ 4 $+ The Discount Item Message has been turned off.
+PlayersMustDieModeOn=$chr(3) $+ 4 $+ The Players Must Die Mode has been turned on.
+PlayersMustDieModeOff=$chr(3) $+ 4 $+ The Players Must Die Mode has been turned off.
+AllowColorsOn=$chr(3) $+ 4 $+ The Bot's Colors have been turned on.
+AllowColorsOff=$chr(3) $+ 4 $+ The Bot's Colors have been turned off.
+BattleThrottleOn=$chr(3) $+ 4 $+ The BattleThrottle setting has been turned on.  With this one, players can only enter every other battle.
+BattleThrottleOff=$chr(3) $+ 4 $+ The BattleThrottle setting has been turned off.  Players can now enter every battle.
+AutomatedAIBattleCasinoOn=$chr(3) $+ 4 $+ The Automated AI Battle System has been turned on.
+AutomatedAIBattleCasinoOff=$chr(3) $+ 4 $+ The Automated AI Battle System has been turned off.
+BonusEventOn=$chr(3) $+ 4 $+ The Double $readini(system.dat, system, currency) Event has been enabled!
+BonusEventOff=$chr(3) $+ 4 $+ The Double $readini(system.dat, system, currency) Event has been disabled!
+NewDmgFormulaIsOn3=$chr(3) $+ 4 $+ The Damage Formula has been set to #3
+NewDmgFormulaIsOn=$chr(3) $+ 4 $+ The Damage Formula has been set to #2
+NewDmgFormulaIsOff=$chr(3) $+ 4 $+ The Damage Formula has been set to #1
+AiSystemOn=$chr(3) $+ 4 $+ The Ai System has been turned on.
+AiSystemOff=$chr(3) $+ 4 $+ The Ai System has been turned off.
+EnableBattlefieldEventsOn=$chr(3) $+ 4 $+ Random Battlefield Events are now enabled.
+EnableBattlefieldEventsOff=$chr(3) $+ 4 $+ Random Battlefield Events are now disabled.
+CustomBattleMessagesOn=$chr(3) $+ 4 $+ The New Custom Battle Messages are now enabled.
+CustomBattleMessagesOff=$chr(3) $+ 4 $+ The New Custom Battle Messages are now disabled.
 
 
 =======================
@@ -340,8 +356,11 @@ CannotUseItemOnDead=$chr(3) $+ 4 $+ Error: This item cannot be used on someone
 CannotWeaponLockPlayers=$chr(3) $+ 4 $+ Error: $set_chr_name($1) cannot weapon lock players or npcs. 
 CannotDisarmPlayers=$chr(3) $+ 4 $+ Error: $set_chr_name($1) cannot disarm players or npcs. 
 DoesNotHaveThatItem=$chr(3) $+ 4 $+ Error: %real.name does not have that item.
+DoesNotHaveEnoughOrbsToTrade=$chr(3) $+ 4 $+ Error: %real.name does not have enough orbs to give that amount to $get_chr_name($2) $+ .
+Can'tGiveMoreOrbsToNPC=$chr(3) $+ 4 $+ Error: %real.name can only give 1,000 orbs total to an NPC.
 DoesNotHaveEnoughHammers=$chr(3) $+ 4 $+ Error: %real.name does not have enough repair hammers!
 ItemIsUsedInSkill=$chr(3) $+ 4 $+ Error: This item is used via performing a skill. 
+ItemIsUsedForSinging=$chr(3) $+ 4 $+ Error: Instruments are used with the singing command once you have learned songs and cannot be used with !use.
 ItemIsAccessoryEquipItInstead=$chr(3) $+ 4 $+ Error: This item is an accessory and cannot be used like this. Use !wear to equip it.
 ItemCanOnlyBeUsedOnPlayers=$chr(3) $+ 4 $+ Error: This item can only be used on players!
 ItemCanOnlyBeUsedOnMonsters=$chr(3) $+ 4 $+ Error: This item can only be used on monsters!
@@ -357,7 +376,7 @@ DoNotHaveAccessoryToSell=$chr(3) $+ 4 $+ Error: You do not have this accessory
 DoNotHaveArmorToSell=$chr(3) $+ 4 $+ Error: You do not have this armor piece to sell!
 DoNotHaveEnoughItemToSell=$chr(3) $+ 4 $+ Error: You do not have $4 of this item to sell!
 StillWearingAccessory=$chr(3) $+ 4 $+ Error: You can't sell this accessory because you're still wearing it! 
-StillWearingArmor=$chr(3) $+ 4 $+ Error: You can't sell this piece of armor because you're still wearing it!
+StillWearingArmor=$chr(3) $+ 4 $+ Error: You can't sell or trade this piece of armor because you're still wearing it!
 AlreadyWearingArmorThere=$chr(3) $+ 4 $+ Error: You are already wearing something in that equipment slot! Remove it first.
 ItemUseCommandError=$chr(3) $+ 4 $+ Error: !use <item> ON <person> 
 Can'tBuy0ofThat=$chr(3) $+ 4 $+ Error: You can't buy 0 of that! 
@@ -377,6 +396,7 @@ NoWinningStreakSavedToErase=$chr(3) $+ 4 $+ Error: %real.name does not have a 
 NotEnoughTimeToSave=$chr(3) $+ 4 $+ Error: Not enough time has passed since the last save %real.name did. %real.name still has $calc(7200 - %time.difference) seconds left. 
 Can'tGiveToNonChar=$chr(3) $+ 4 $+ Error: %real.name cannot give items to a monster or NPC! 
 Can'tGiveNegativeItem=$chr(3) $+ 4 $+ Error: %real.name cannot give a part or negative amounts of an item.
+can'tGiveOrbsToThatchar=$chr(3) $+ 4 $+ Error: %real.name cannot give orbs to that NPC.
 CannotGiveThatMuchofItem=$chr(3) $+ 4 $+ Error: %real.name does not have $3 of $4 to give!
 CannotGiveToYourself=$chr(3) $+ 4 $+ Error: %real.name cannot give items to $gender2($1) $+ self.
 CannotCraftThisItem=$chr(3) $+ 4 $+ Error: This item cannot be made via alchemy.
@@ -413,8 +433,8 @@ NoCloneToControl=$chr(3) $+ 4 $+ Error: %real.name do not have an active shado
 MustUseDoppelgangerStyleToControl=$chr(3) $+ 4 $+ Error: %real.name must have the Doppelganger style equipped in order to control $gender($1) shadow clones.
 MustUseBeastmasterStyleToControl=$chr(3) $+ 4 $+ Error: %real.name must have the Beastmaster style equipped in order to control $gender($1) summons.
 ShadowClonesCan'tUseSkill=$chr(3) $+ 4 $+ Error: Shadow Clones can not use this skill.
-CannotSnatchPlayers=$set_chr_name($2) $+ $chr(3) $+ 4 $+ %real.name cannot grab other players!
-CannotSnatchBosses=$set_chr_name($2) $+ $chr(3) $+ 4 $+ %real.name cannot grab bosses!
+CannotSnatchPlayers=$set_chr_name($2) $+ $chr(3) $+ 4 $+ $get_chr_name($1) cannot grab other players!
+CannotSnatchBosses=$set_chr_name($2) $+ $chr(3) $+ 4 $+ $get_chr_name($1) cannot grab bosses!
 Can'tDoThatInMech=$chr(3) $+ 4 $+ Error: %real.name cannot perform this action while inside of a mech.
 NotInAMech=$chr(3) $+ 4 $+ Error: %real.name is not currently in a mech.
 DoNotOwnAMech=$chr(3) $+ 4 $+ Error: %real.name does not own a mech.
@@ -450,6 +470,7 @@ NotEnoughNotesToBid=$chr(3) $+ 4 $+ Error: You do not have $2 allied notes.
 MechsNotAllowed=$chr(3) $+ 4 $+ Error: The use of mechs is currently disabled via a system setting.
 ArmorLevelHigher=$chr(3) $+ 4 $+ Error: %real.name cannot wear this armor yet as the armor level is $bytes(%armor.level.requirement,b) but %real.name is only level $bytes($round($get.level($1),0),b)
 MaxPortalItemsAllowed=$chr(3) $+ 4 $+ Error: %real.name has already used the maximum amount of portal items allowed in a 24 hour period. 
+CannotGiveOrbsToPlayers=$chr(3) $+ 4 $+ Error: %real.name cannot give orbs to other players.
 CannotGiveItem=$chr(3) $+ 4 $+ Error: This item is exclusive to %real.name and cannot be traded to others.
 CannotUseItemOnSomeoneElse=$chr(3) $+ 4 $+ Error: This item is exclusive to %real.name and cannot be used on anyone else.
 CannotUseDiscountCardOnOthers=$chr(3) $+ 4 $+ Error: Shop Reset items cannot be used on others.
@@ -460,16 +481,28 @@ Can'tReforgepInBattle=$chr(3) $+ 4 $+ Error: %real.name cannot reforge weapons
 Can'tUseSkillInBattle=$chr(3) $+ 4 $+ Error: %real.name cannot use this skill in battle.
 Don'tKnowThatSong=$chr(3) $+ 4 $+ Error: %real.name does not know how to sing that song.
 Don'tHaveInstrument=$chr(3) $+ 4 $+ Error: %real.name does not have the necessary instrument to perform this song.
+TrustsOnlyForOnePlayer=$chr(3) $+ 4 $+ Error: Trust NPCs can only be summoned when there is only one player in the battle.
+TrustAlreadyUsed=$chr(3) $+ 4 $+ Error: A Trust NPC has already been summoned for this battle.
+TrustNPCDoesn'tExist=$chr(3) $+ 4 $+ Error: The NPC this item summons does not exist. Inform the Bot Owner.
+
 
 =======================
 Battle Related Messages
 =======================
 [Battle]
 StartBattle=$chr(3) $+ 2 $+ * A battle will begin in %show.time $iif(%time.between.battles < 1, seconds, $iif(%time.between.battles = 1, minute, minutes)) $+ .
+StartBattlePresident=$chr(3) $+ 2 $+ * The Allied Forces are putting together a rescue party to save the president. This battle will begin in %show.time $iif(%time.between.battles < 1, seconds, $iif(%time.between.battles = 1, minute, minutes)) $+ .
 BattleOpen=$chr(3) $+ 4 $+ A dimensional portal has been detected.  The enemy force will arrive in %time.to.enter seconds. Type !enter if you wish to join the battle!  
+BattleOpenBoss=$chr(3) $+ 4 $+ A powerful dimensional rift has been detected. The enemy force will arrive in %time.to.enter seconds. Type !enter if you wish to join the battle!  
+BattleOpenOrbFountain=$chr(3) $+ 4 $+ The Allied Forces have detected an orb fountain! The party will be sent to destroy it in %time.to.enter seconds. Type !enter if you wish to join the battle!  
+BattleOpenPVP=$chr(3) $+ 4 $+ The Allied Forces have opened the coliseum to allow players to fight one another. The PVP battle will begin in %time.to.enter seconds. Type !enter if you wish to join the battle!  
+BattleOpenManual=$chr(3) $+ 4 $+ A Manual battle has been started. Bot Admins will need to add monsters, npcs and bosses individually. The battle will begin in %time.to.enter seconds. Players can type !enter if you wish to join the battle!  
 BattleOpenMimic=$chr(3) $+ 4 $+ An evil treasure chest Mimic is ready to fight The battle will begin in %time.to.enter seconds. Type !enter if you wish to join the battle!  
 BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone willing to brave the gauntlet has %time.to.enter seconds to enter before the doors close. Type !enter if you wish to join the battle!  
+BattleDefendOutpost=$chr(3) $+ 4 $+ An outpost of the Allied Forces HQ is under attack! Reinforcements are requested immediately! The reinforcements will depart in %time.to.enter seconds. Type !enter to join!  
+
 BattleOpenAIBet=$chr(3) $+ 4 $+ A 1 vs 1 AI Match is about to begin! The battle will begin in %time.to.enter seconds. 
+
 BattleAIInfo=$chr(3) $+ 12 $+ AI Battle information: [NPC] %ai.npc.name vs [Monster] %ai.monster.name on [Streak Level] %ai.battle.level [Favorite to Win]4 $iif(%favorite.to.win = monster, %ai.monster.name, %ai.npc.name)
 
 ; commenting this out for now. 
@@ -485,9 +518,11 @@ NotEnoughPlayersOnField=$chr(3) $+ 4 $+ There was not enough players for a PVP m
 BattleIsOver=$chr(3) $+ 4 $+ The Battle is Over! 12 $+ %ai.winner
 EvilhasWon=$chr(3) $+ 12 $+ The forces of evil have won this battle (level $bytes($calc($readini(battlestats.dat, Battle, WinningStreak)),b) $+ ) after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! The heroes have lost $bytes($calc($readini(battlestats.dat, Battle, LosingStreak) + 1),b)  $+ $iif($calc($readini(battlestats.dat, Battle, LosingStreak) + 1) < 2, battle, battles) in a row!
 EvilhasWonPortal=$chr(3) $+ 12 $+ The forces of evil have won this special battle event after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
-EvilhasWonPresident=$chr(3) $+ 12 $+ The forces of evil have killed the President of the Allied Forces after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! The heroes have failed!
+EvilhasWonPresident=$chr(3) $+ 14 $+ The forces of evil have recaptured $readini(shopnpcs.dat, NPCNames, AlliedForcesPresident) after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! The heroes have failed!  The monsters have brutally slaughtered the president and offered the body to their god.
+OutpostBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to defend the outpost! The forces of evil have conqured it and claimed it as their own.
 GoodHasWon=$chr(3) $+ 12 $+ The forces of good have won this battle (level $bytes(%thisbattle.winning.streak,b) $+ )  in %current.turn $iif(%current.turn < 2, turn, turns) $+ ! [Current record is: $bytes($readini(battlestats.dat, battle, WinningStreakRecord),b) $+ ]
 GoodHasWonPortal=$chr(3) $+ 12 $+ The forces of good have won this special battle event in %current.turn $iif(%current.turn < 2, turn, turns) $+ !
+OutpostBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monster waves and successfully defended their outpost!
 GoodHasWonPresident=$chr(3) $+ 12 $+ The forces of good have saved the President of the Allied Forces after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
 BattleIsDraw=$chr(3) $+ 12 $+ The battle has come to a draw after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! 
 DrawPortal=$chr(3) $+ 12 $+ Neither heroes nor monsters have won this battle as it comes to a draw after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
@@ -495,7 +530,8 @@ RewardOrbsLoss=$chr(3) $+ 3 $+ For their efforts, these players have been reward
 RewardOrbsDraw=$chr(3) $+ 3 $+ For their efforts, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
 RewardOrbsWin=$chr(3) $+ 3 $+ For their victory, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
 BlackOrbWin=$chr(3) $+ 3 $+ The following players have absorbed a black orb from the boss: %black.orb.winners
-BonusItemWin=$chr(3) $+ 10 $+  $+ %real.name was the most stylish and finds 1 %boss.item $+ !
+BonusItemWin=$chr(3) $+ 10 $+  $+ %real.name was the most stylish and has been rewarded with %boss.item x1!
+DropItemWin=$chr(3) $+ 10 $+ These players found spoils from the battle: %item.drop.rewards
 AlliedNotesGain=$chr(3) $+ 3 $+ The Allied Forces reward the heroes with $readini($txtfile(battle2.txt), battle, alliednotes) Allied Notes for their victory.
 KeyWin=$chr(3) $+ 10 $+  $+ %real.name finds 1 %key.color key $+ !
 EnteredTheBattle=$chr(3) $+ 4 $+  $+ %real.name has entered the battle! 
@@ -515,7 +551,7 @@ DroppedOutofBattle=$chr(3) $+ 4 $+  $+ %real.name has been removed from battle
 CannotFleeBattle=$chr(3) $+ 4 $+ %real.name attempts to flee the battle...but fails.
 DarknessWarning=$chr(3) $+ 4 $+ Darkness will overcome the battlefield in 5 turns..
 DarknessCoversBattlefield=$chr(3) $+ 4 $+ Darkness covers the battlefield enhancing the strength of all remaining monsters!
-TurnMessage=$chr(3) $+ 3 $+ It is %real.name $+ 's turn [Health Status: %hstats $+ 3] [Status Effects:4 %all_status $+ 3] [Active Skills:4 %all_skills $+ 3]
+TurnMessage=$chr(3) $+ 3 $+ It is %real.name $+ 's turn [Health Status: %hstats $+ 3] [Status Effects:4 %all_status $+ 3] [Active Skills:4 %all_skills $+ 3] $iif($return.potioneffect($1) != none, [Potion Effect:12 $return.potioneffect($1) $+ 3])
 TurnMessageMech=$chr(3) $+ 3 $+ It is %real.name $+ 's turn [Health Status: %hstats $+ 3] [Energy Level:4 %energy.level $+ 3]
 NoOneJoinedBattleYet=$chr(3) $+ 4 $+ No one has joined the battle yet! 
 BatListTitleMessage=$chr(3) $+ 10 $+ -=BATTLE INFORMATION=-
@@ -560,6 +596,7 @@ MechDismiss=$chr(3) $+ 3 $+ %real.name gets out of $gender($1) mech and dismis
 MechSummon=summons $gender($1) $readini($char($1), mech, name) and hops in, ready for battle!
 Don'tLetPresidentDie=$chr(3) $+ 4 $+ The Heroes must protect the president!  If the president dies the battle will be over!
 SongNotAllowedThisBattle=$chr(3) $+ 4 $+ A Darkness prevents %real.name $+ 's song from working during this battle.
+DefendOutpostForTurns=$chr(3) $+ 4 $+ The Heroes must defend this outpost for %darkness.turns rounds from the monster waves!  
 
 
 =======================
@@ -625,6 +662,7 @@ CurrentlyDefenseUp=$chr(3) $+ 4 $+ %real.name $+ 's body feels more defensive.
 DefenseUpWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's defense up status has worn off. 
 CurrentlyStrengthDown=$chr(3) $+ 4 $+ %real.name $+ 's body strength feels weaker. 
 CurrentlyIntDown=$chr(3) $+ 4 $+ %real.name $+ 's IQ feels lower. 
+CurrentlyIntUp=$chr(3) $+ 4 $+ %real.name $+ 's mind feels smarter. 
 CurrentlyWeaponLocked=$chr(3) $+ 4 $+ %real.name $+ 's weapon is locked and $gender3($1) is unable to change it. 
 StrengthDownWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's strength down status has worn off. 
 IntDownWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's int down status has worn off. 
@@ -696,7 +734,7 @@ Tech Related Messages
 StolenPower=$chr(3) $+ 3 $+ %real.name has stolen and absorbs %amount.of.str strength, %amount.of.def defense, %amount.of.int intelligence and %amount.of.spd speed from $set_chr_name($3) %real.name $+ !
 StolenStatus=$chr(3) $+ 3 $+ %real.name has also stolen and absorbed %stolen.status.effects from $set_chr_name($3) %real.name $+ !
 SuicideUseAllHP=$chr(3) $+ 4 $+ %real.name uses all of $gender($1) health to perform this technique!
-DisplayAOEDamage=The attack did4 $bytes(%attack.damage,b) damage to %enemy $+ ! %element.desc  $+ %style.rating %statusmessage.display
+DisplayAOEDamage=The attack did $+ %damage.display.color $+  $bytes(%attack.damage,b) damage to %enemy $+ ! %element.desc  $+ %style.rating %statusmessage.display
 AbsorbHPBack=$chr(3) $+ 3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.
 
 
@@ -762,6 +800,11 @@ ICanQuitBettingAnyTimeIWant=$chr(3) $+ 10 $+ %real.name has unlocked the achie
 DoIHear500=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Do I Hear 500? and receives $bytes($3,b) $readini(system.dat, system, currency) as a reward!
 SoldToTheOneInFront=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Sold! To the One in Front and receives $bytes($3,b) $readini(system.dat, system, currency) as a reward!
 MasteredTechnique=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Mastered a Technique! and receives $bytes($3,b) $readini(system.dat, system, currency) as a reward!
+You'veGotAFriendInMe=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: You've Got a Friend In Me and receives Big Whoop as a reward!
+JustGettingStarted=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Just Getting Started and receives $bytes($3,b) black orb as a reward!
+ALightInTheDark=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: A Light in the Dark and receives $bytes($3,b) red orbs as a reward!
+OnTheEdge=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: On the Edge and receives $bytes($3,b) SuperPotion as a reward!
+NoOne'sPuppet=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: I'm No One's Puppet and receives $bytes($3,b) red orbs as a reward!
 
 =======================
 Style Levels
@@ -819,7 +862,8 @@ Shop NPC Messages
 =======================
 [ShopNPCs]
 RemovedNPC=$chr(3) $+ 7* %shopnpc.name has left the Allied Forces HQ and is no longer available to do business with. $iif($1 = Santa, $chr(3) $+ 4 $+ %shopnpc.name waves at the heroes and says "Ho! Ho! Ho! See you next year!") $iif($1 = EasterBunny, $chr(3) $+ 4 $+ %shopnpc.name bounces around the HQ one last time before hopping off into the distance.) $iif($1 = TravelMerchant, $chr(3) $+ 4 $+ %shopnpc.name hops back into his airship and waves bye as he flies off. Don't worry..he'll be back next month.)
-AddedNPC=$chr(3) $+ 7* %shopnpc.name has arrived to the Allied Forces HQ ready to do business. $iif(%shopnpc.name = Santa, $chr(3) $+ 4 $+ %shopnpc.name looks at the heroes and says "Please save my Elves! I need Elves to make more items to sell to you!") $iif(%shopnpc.name = TravelMerchant, $chr(3) $+ 4 $+ %shop.npc lands his large airship at the Allied Forces HQ and welcomes everyone to his shop.)
+AddedNPC=$chr(3) $+ 7* %shopnpc.name has arrived to the Allied Forces HQ ready to do business. $iif(%shopnpc.name = Santa, $chr(3) $+ 4 $+ %shopnpc.name looks at the heroes and says "Please save my Elves! I need Elves to make more items to sell to you!") $iif(%shopnpc.name = TravelMerchant, $chr(3) $+ 4 $+ %shop.npc lands his large airship at the Allied Forces HQ and welcomes everyone to his shop.) $iif($1 = PotionWitch, To view her wares use !shop list PotionEffect)
+AddedNewPresident=$chr(3) $+ 7* %shopnpc.name has been appointed as the new Allied Forces President. 
 SavedElf=$chr(3) $+ 7* The heroes have saved one of Santa's Elves!  This makes %total.elves.saved $iif(%total.elves.saved = 1, Elf, Elves) saved! $iif(%total.elves.saved = 10 || %total.elves.saved = 20 || %total.elves.saved = 50 || %total.elves.saved = 200, $chr(3) $+ 4 $+ Santa's Shop has become larger! He sells more items in the store now!)
 ShopNPCKidnapped=$chr(3) $+ 7* The Forces of Evil raid the Allied Forces HQ and kidnap %shopnpc.name $+ !
 ShopNPCRescued=$chr(3) $+ 7* The Allied Forces have rescued %shopnpc.name $+ !  $iif(%kidnapped.npc = WheelMaster, 2 $+  %shopnpc.name looks at the heroes and says "Thank you for saving me! Come see me at my booth and play the wheel mini game! Use !wheel help for more information") $iif(%kidnapped.npc = Gardener, 2 $+  %shopnpc.name looks at the heroes and says "Thank you for saving me! I went looking for some seeds and flowers for the garden and got $iif(Moogle isin %shopnpc.name, captured Kupo!, captured!) I'll leave gathering of those things to you now. Be sure to come visit the garden soon! Use !garden help for more information")

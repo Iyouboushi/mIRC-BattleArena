@@ -5,7 +5,16 @@ boss=orbs.Red_Fang.Thunder_Orb.Tonic.Superpotion.KindredSeal
 orb_fountain=orbs
 
 ; Add monsters/bosses and their steal pools below this line.
+
+;=============
+; BOSSES
+;=============
 brauner=x-potion.orbs.SoulPainting
+Leprechaun=GreenKinstone.BlueKinstone.GoldOre
+
+;=============
+; MONSTERS
+;=============
 Highland_Treant=orbs.AshLog.seed
 Treant=orbs.AshLog.seed
 Guardian_Treant=orbs.AshLog.seed
@@ -16,7 +25,7 @@ Icefang_Tiger=orbs.TigerFang
 Cave_Tiger=orbs.TigerFang
 Rock_Eater=IronOre.Sapphire.Topaz.Emerald.Ruby
 Ore_Eater=IronOre.Sapphire.Topaz.Emerald.Ruby
-Mineral_Eater=IronOre.Sapphire.Topaz.Emerald.Ruby
-Mountain_Worm=IronOre.Sapphire.Topaz.Emerald.Ruby
+Mineral_Eater=GoldOre.Ruby.Sapphire.Emerald.GreenKinstone
+Mountain_Worm=Ruby.Sapphire.Emerald.BlueKinstone
 Sand_Digger=sand.IronOre.Sapphire.Topaz.Emerald.Ruby
 DekuScrub=DekuSeed

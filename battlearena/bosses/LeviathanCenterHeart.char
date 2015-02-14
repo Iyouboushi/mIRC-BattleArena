@@ -1,9 +1,8 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 550, $round($calc(4000 + (5 * $return_differenceof($return_playerlevelstotal,550))),0), $round($calc(4000 + $return_playerlevelstotal),0))
-Hp=1500
+Hp=$round($calc(1500 + (100 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
 Tp=250
-Str=280
-Def=300
+Str=180
+Def=10
 Int=300
 Spd=300
 IgnitionGauge=2
@@ -13,8 +12,8 @@ Name=Leviathan's Center Heart
 [Battle]
 Hp=1500
 Tp=250
-Str=280
-Def=300
+Str=180
+Def=10
 Int=300
 Spd=300
 IgnitionGauge=2
@@ -51,8 +50,9 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=550
+bosslevel=50
 CanTaunt=false
+Guardian=LeviathanLeftHeart.LeviathanRightHeart
 
 [Status]
 Poison=no
@@ -91,7 +91,7 @@ reflect.timer=-1
 
 [Weapons]
 Equipped=LevithanHeart
-LevithanHeart=500
+LevithanHeart=50
 
 [Skills]
 Resist-Charm=100
@@ -114,7 +114,7 @@ monstersummon.numberspawn=1
 
 
 [Techniques]
-LevithanLaser=100
+LevithanLaser=55
 
 
 [Styles]

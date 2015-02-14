@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=2500
+Hp=4000
 Tp=500
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 IgnitionGauge=60
 Name=Dart Feld
 
 
 [Battle]
-Hp=2500
+Hp=4000
 Tp=500
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 IgnitionGauge=60
 Status=alive
 
@@ -98,32 +98,53 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Broad_Sword
-Broad_Sword=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
-
-[equipment]
-head=
-body=
-hands=
-legs=
-feet=
-accessory=
+Broad_Sword=$calc(40 + $current.battlestreak)
 
 
 [Skills]
-Resist-Charm=100
-Resist-Zombie=100
-SwordMaster=1000
-Wizardry=1000
-Resist-Intimidate=100
+SwordMaster=2000
+Wizardry=2000
 Zen=5
 MightyStrike=1
-
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-DoubleSlash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-BurningRush=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-MadnessHero=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-BlazingDynamo=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+DoubleSlash=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+BurningRush=$iif($current.battlestreak < 75, 0, $calc(125 + $current.battlestreak))
+MadnessHero=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
+BlazingDynamo=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
 
 
 [Item_Amount]
@@ -131,12 +152,12 @@ BlazingDynamo=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=20
 WeaponMasterXP=1
 
 
 [Ignitions]
-RedDragoon=1
+RedDragoon=$iif($current.battlestreak < 300, 0, 1)
 
 [modifiers]
 Heal=none

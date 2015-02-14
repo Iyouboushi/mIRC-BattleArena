@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=75
+Hp=50
 Tp=50
 Str=0
 Def=$calc($readini(battlestats.dat, Battle, WinningStreak) * 2)
@@ -8,7 +8,7 @@ Spd=0
 Name=Lost Soul
 
 [Battle]
-Hp=75
+Hp=50
 Tp=50
 Str=5
 Def=6

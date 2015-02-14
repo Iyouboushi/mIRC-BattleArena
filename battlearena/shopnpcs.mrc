@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
+;;;; Last updated: 02/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -34,6 +35,10 @@ alias shopnpc.list {
   if (%npcstatus.gardener = true) { var %npcstatus.gardener at the Allied Forces HQ }
   if (%npcstatus.gardener = false) { var %npcstatus.gardener not found yet }
 
+  var %npcstatus.potionWitch $readini(shopnpcs.dat, NPCstatus, potionWitch)
+  if (%npcstatus.potionWitch = true) { var %npcstatus.potionWitch at the Allied Forces HQ }
+  if (%npcstatus.potionWitch = false) { var %npcstatus.potionWitch not found yet }
+
   var %npcstatus.president $readini(shopnpcs.dat, NPCstatus, AlliedForcesPresident)
   if (%npcstatus.president = true) { var %npcstatus.president at the Allied Forces HQ }
   if (%npcstatus.president = false) { var %npcstatus.president not found yet }
@@ -43,15 +48,15 @@ alias shopnpc.list {
   if (%npcstatus.travelmerchant = false) { var %npcstatus.travelmerchant not here yet }
 
   var %npcs.status [4Allied Forces President:12 %npcstatus.president $+ 1] [4Healing Items Merchant:12 %npcstatus.healing $+ 1] [4Battle Items Merchant:12 %npcstatus.battle $+ 1] [4Discount Card Merchant:12 %npcstatus.discountcard $+ 1]  [4Shield Merchant:12 %npcstatus.shield $+ 1] 
-  var %npcs.status2 [4Bard:12 %npcstatus.song $+ 1]  [4Gardener:12 %npcstatus.gardener $+ 1] [4Wheel Minigame Master:12 %npcstatus.wheel $+ 1]  [4Traveling Merchant:12 %npcstatus.travelmerchant $+ ]
+  var %npcs.status2 [4Bard:12 %npcstatus.song $+ 1]  [4Gardener:12 %npcstatus.gardener $+ 1] [4Wheel Minigame Master:12 %npcstatus.wheel $+ 1]  [4Traveling Merchant:12 %npcstatus.travelmerchant $+ ]  [4Potion Witch:12 %npcstatus.potionwitch $+ ]
   var %easter.status [4Easter Bunny?12 $iif($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true, at the Allied Forces HQ, not around yet) $+ 1]
   var %santa.status [4Santa Saved?12 $readini(shopnpcs.dat, NPCStatus, Santa) $+ 1] [4Number of Elves Saved:12 $readini(shopnpcs.dat,Events, SavedElves) $+ 1]
   set %seasonal.status $iif( $left($adate, 2) = 04, %easter.status) $iif( $left($adate, 2) = 12, %santa.status)
 
   if ($1 = global) { 
-    $display.system.message(%npcs.status) 
-    $display.system.message(%npcs.status2) 
-    if (%seasonal.status != $null) { $display.system.message(%seasonal.status) }
+    $display.message(%npcs.status) 
+    $display.message(%npcs.status2) 
+    if (%seasonal.status != $null) { $display.message(%seasonal.status) }
   }
   if ($1 = private) { 
     $display.private.message(%npcs.status)
@@ -96,6 +101,7 @@ alias shopnpc.status.check {
   if ($readini(shopnpcs.dat, NPCStatus, BattleMerchant) = false) { var %need.to.check.newnpcs true }
   if ($readini(shopnpcs.dat, NPCStatus, SongMerchant) = false) { var %need.to.check.newnpcs true }
   if ($readini(shopnpcs.dat, NPCStatus, ShieldMerchant) = false) { var %need.to.check.newnpcs true }
+  if ($readini(shopnpcs.dat, NPCStatus, PotionWitch) = false) { var %need.to.check.newnpcs true }
 
   if (%need.to.check.newnpcs = false) { return }
 
@@ -104,6 +110,7 @@ alias shopnpc.status.check {
   set %player.totalbattles 0
   set %player.totalachievements 0
   set %player.totalparries 0
+  set %player.totallostsouls 0
 
   .echo -q $findfile( $char_path , *.char, 0 , 0, shopnpc.totalinfo $1-)
 
@@ -122,8 +129,11 @@ alias shopnpc.status.check {
   ; Check for shield merchant NPC
   if (($shopnpc.present.check(ShieldMerchant) = false) && (%player.totalparries >= 100)) { $shopnpc.add(ShieldMerchant) }
 
+  ; Check the potion witch NPC
+  if (($shopnpc.present.check(PotionWitch) = false) && (%player.totallostsouls >= 200)) { $shopnpc.add(PotionWitch) }
+
   unset %player.deaths | unset %player.shoplevels | unset %player.totalbattles | unset %player.totalachievements
-  unset %player.totalparries
+  unset %player.totallostsouls | unset %player.totalparries
 }
 
 ; Is an NPC at the allied forces HQ?
@@ -146,7 +156,23 @@ alias shopnpc.add {
   var %shopnpc.name $readini(shopnpcs.dat, NPCNames, $1)
   if (%shopnpc.name = $null) { var %shopnpc.name $1 }
 
-  if ($1 != alliedforcespresident) {  $display.system.message($readini(translation.dat, shopnpcs, AddedNPC)) }
+  if ($1 != alliedforcespresident) {  $display.message($readini(translation.dat, shopnpcs, AddedNPC)) }
+
+  if ($1 = alliedforcespresident) {
+
+    ; Get a random name
+    var %shopnpc.name the Allied Forces President
+
+    if ($isfile($lstfile(presidentnames.lst)) = $true) {
+      var %shopnpc.name $read($lstfile(presidentnames.lst))
+      $display.message($readini(translation.dat, shopnpcs, AddedNewPresident)) 
+      var %shopnpc.name %shopnpc.name the Allied Forces President
+
+      if ($isfile($lstfile(presidentnames.lst)) = $false) {  $display.message($readini(translation.dat, shopnpcs, AddedNewPresident))  }
+      writeini shopnpcs.dat NPCNames AlliedForcesPresident %shopnpc.name
+    }
+  }
+
 }
 
 ; Removes a shop NPC
@@ -155,7 +181,7 @@ alias shopnpc.remove {
 
   var %shopnpc.name $readini(shopnpcs.dat, NPCNames, $1)
   if (%shopnpc.name = $null) { var %shopnpc.name $1 }
-  $display.system.message($readini(translation.dat, shopnpcs, removedNPC))
+  $display.message($readini(translation.dat, shopnpcs, removedNPC))
 
   ; If it's an npc that relies on flags, like Santa, turn the flags off.
   if ($1 = Santa) { writeini shopnpcs.dat Events FrostLegionDefeated false | writeini shopnpcs.dat Events SavedElves 0 }
@@ -177,7 +203,7 @@ alias shopnpc.kidnap {
   if ($shopnpc.present.check(SongMerchant) = true) { %active.npcs = $addtok(%active.npcs, SongMerchant, 46) }
   if ($shopnpc.present.check(ShieldMerchant) = true) { %active.npcs = $addtok(%active.npcs, ShieldMerchant, 46) }
   if ($shopnpc.present.check(WheelMerchant) = true) { %active.npcs = $addtok(%active.npcs, WheelMerchant, 46) }
-
+  if ($shopnpc.present.check(PotionWitch) = true) { %active.npcs = $addtok(%active.npcs, PotionWitch, 46) }
 
   if (%active.npcs = $null) { return }
 
@@ -190,7 +216,7 @@ alias shopnpc.kidnap {
 
   writeini shopnpcs.dat NPCStatus %kidnapped.npc kidnapped
 
-  $display.system.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) 
+  $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) 
 
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
 
@@ -210,6 +236,7 @@ alias shopnpc.rescue {
   if ($shopnpc.present.check(SongMerchant) = kidnapped) { %active.npcs = $addtok(%active.npcs, SongMerchant, 46) }
   if ($shopnpc.present.check(WheelMaster) = kidnapped) { %active.npcs = $addtok(%active.npcs, WheelMaster, 46) }
   if ($shopnpc.present.check(Gardener) = kidnapped) { %active.npcs = $addtok(%active.npcs, Gardener, 46) }
+  if ($shopnpc.present.check(PotionWitch) = kidnapped) { %active.npcs = $addtok(%active.npcs, PotionWitch, 46) }
 
   if (%active.npcs = $null) { return }
 
@@ -222,7 +249,7 @@ alias shopnpc.rescue {
 
   writeini shopnpcs.dat NPCStatus %kidnapped.npc true
 
-  $display.system.message($readini(translation.dat, shopnpcs, ShopNPCRescued)) 
+  $display.message($readini(translation.dat, shopnpcs, ShopNPCRescued)) 
 
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
 
@@ -234,6 +261,6 @@ alias shopnpc.event.saveelf {
     if (%total.elves.saved = $null) { var %total.elves.saved 0 }
     inc %total.elves.saved 1 
     writeini shopnpcs.dat events SavedElves %total.elves.saved
-    $display.system.message($readini(translation.dat, shopnpcs, SavedElf))
+    $display.message($readini(translation.dat, shopnpcs, SavedElf))
   }
 }

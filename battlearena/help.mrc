@@ -1,5 +1,10 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; HELP and VIEW-INFO
+;;;; Last updated: 02/11/15
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
+  $display.private.message2($2, 4It is advised that you visit the online help guide: http://iyouboushi.com/forum/index.php?/topic/890-battle-arena-help-thread/  )
   set %help.topics $readini %help_folder $+ topics.help Help List | set %help.topics2 $readini %help_folder $+ topics.help Help List2 | set %help.topics3 $readini %help_folder $+ topics.help Help List3
   if ($1 = $null) { $display.private.message2($2, 14::[Current Help Topics]::) |  $display.private.message2($2,2 $+ %help.topics) | $display.private.message2($2,2 $+ %help.topics2) | unset %help.topics | unset %help.topics2 | $display.private.message2($2, 14::[Type !help <topic> (without the <>) to view the topic]::) | halt }
   if ($1 isin %help.topics) || ($1 isin %help.topics2) || ($1 isin %help.topics3) {  set %topic %help_folder $+ $1 $+ .help |  set %lines $lines(%topic) | set %l 0 | goto help }
@@ -36,21 +41,21 @@ alias view-info {
     if (%info.stat = $null) { var %info.stat int }
 
     var %energy.cost $readini($dbfile(techniques.db), $3, energyCost)
-    if (%energy.cost != $null) { var %energy  [4Energy Cost12 %energy.cost $+ 1] }
+    if (%energy.cost != $null) { var %energy  [4Energy Cost12 %energy.cost $+ ] }
 
     if (%info.hits = $null) { var %info.hits 1 }
-    if ($readini($dbfile(techniques.db), $3, magic) = yes) { var %info.magic  [4Magic12 Yes $+ 1] }
-    if ($readini($dbfile(techniques.db), $3, statusType) != $null) { var %info.statustype [4Stats Type12 $readini($dbfile(techniques.db), $3, StatusType) $+ 1] }
+    if ($readini($dbfile(techniques.db), $3, magic) = yes) { var %info.magic  [4Magic12 Yes $+ ] }
+    if ($readini($dbfile(techniques.db), $3, statusType) != $null) { var %info.statustype [4Stats Type12 $readini($dbfile(techniques.db), $3, StatusType) $+ ] }
 
-    if (%info.ignoredef != $null) { var %info.ignoredefense  [4Ignore Target Defense by12 %info.ignoredef $+ $chr(37) $+ 1] }
+    if (%info.ignoredef != $null) { var %info.ignoredefense  [4Ignore Target Defense by12 %info.ignoredef $+ $chr(37) $+ ] }
 
     if (%info.type != buff) { 
-      $display.private.message([4Name12 $3 $+ 1] [4Target Type12 %info.type $+ 1] [4TP needed to use12 %info.tp $+ 1] %energy [4# of Hits12 %info.hits $+ 1] %info.statustype %info.magic %info.ignoredefense)
-      $display.private.message([4Base Power12 %info.basepower $+ 1] [4Base Cost (before Shop Level)12 %info.basecost red orbs1] [4Element of Tech12 %info.element $+ 1] [4Stat Modifier12 %info.stat $+ 1]) 
+      $display.private.message([4Name12 $3 $+ ] [4Target Type12 %info.type $+ ] [4TP needed to use12 %info.tp $+ ] %energy [4# of Hits12 %info.hits $+ ] %info.statustype %info.magic %info.ignoredefense)
+      $display.private.message([4Base Power12 %info.basepower $+ ] [4Base Cost (before Shop Level)12 %info.basecost red orbs] [4Element of Tech12 %info.element $+ ] [4Stat Modifier12 %info.stat $+ ]) 
       if (%info.type = FinalGetsuga) { $display.private.message($readini(translation.dat, system, FinalGetsugaWarning)) }
     }
     if (%info.type = buff) { 
-      $display.private.message([4Name12 $3 $+ 1] [4Target Type12 %info.type $+ 1] [4TP needed to use12 %info.tp $+ 1])
+      $display.private.message([4Name12 $3 $+ ] [4Target Type12 %info.type $+ ] [4TP needed to use12 %info.tp $+ ])
     }
   }
 
@@ -75,39 +80,40 @@ alias view-info {
       %info.augment = $replace(%info.augment, $chr(046), %replacechar)
     }
 
-    $display.private.message([4Name12 %info.name $+ 1] [4Amount of Ignition Gauge Consumed Upon Use12 %info.trigger $+ 1] [4Amount of Ignition Gauge Needed Each Round12 %info.consume $+ 1] [4Bonus Augment12 %info.augment $+ 1] [4Trigger Effect12 %info.effect %info.status.type $+ 1])   
-    $display.private.message([4Techs12 %info.techs $+ 1])
-    $display.private.message([4Stat Multipliers $+ 1] 4Health x12 %info.hp  $+ $chr(124) 4 $+ Strength x12 %info.str  $+ $chr(124) 4 $+ Defense x12 %info.def  $+ $chr(124) 4Intelligence x12 %info.int  $+ $chr(124) 4Speed x12 %info.spd)
+    $display.private.message([4Name12 %info.name $+ ] [4Amount of Ignition Gauge Consumed Upon Use12 %info.trigger $+ ] [4Amount of Ignition Gauge Needed Each Round12 %info.consume $+ ] [4Bonus Augment12 %info.augment $+ ] [4Trigger Effect12 %info.effect %info.status.type $+ ])   
+    $display.private.message([4Techs12 %info.techs $+ ])
+    $display.private.message([4Stat Multipliers $+ ] 4Health x12 %info.hp  $+ $chr(124) 4 $+ Strength x12 %info.str  $+ $chr(124) 4 $+ Defense x12 %info.def  $+ $chr(124) 4Intelligence x12 %info.int  $+ $chr(124) 4Speed x12 %info.spd)
   }
 
   if ($2 = accessory) { 
     if ($readini($dbfile(items.db), $3, type) = $null) { $display.private.message(4Invalid item) | halt }
     if ($readini($dbfile(items.db), $3, type) != accessory) { $display.private.message(4Invalid accessory) | halt }
-    $display.private.message([4Name12 $3 $+ 1] [4Type12 Accessory $+ 1] [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1])
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Accessory $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])
   }
 
 
   if ($2 = song) { 
     if ($readini($dbfile(songs.db), $3, type) = $null) { $display.private.message(4Invalid item) | halt }
-    $display.private.message([4Name12 $3 $+ 1] [4Type12 Song $+ 1] [4TP Consumed12 $readini($dbfile(songs.db), $3, TP) $+ 1] [4Instrument neded12 $readini($dbfile(songs.db), $3, Instrument) $+ 1]  [4Song Effect12 $readini($dbfile(songs.db), $3, Type) $+ 1] [4Song Target12 $readini($dbfile(songs.db), $3, Target) $+ 1])
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Song $+ ] [4TP Consumed12 $readini($dbfile(songs.db), $3, TP) $+ ] [4Instrument neded12 $readini($dbfile(songs.db), $3, Instrument) $+ ]  [4Song Effect12 $readini($dbfile(songs.db), $3, Type) $+ ] [4Song Target12 $readini($dbfile(songs.db), $3, Target) $+ ])
   }
+
 
   if ($2 = gem) { 
     if ($readini($dbfile(items.db), $3, type) = $null) { $display.private.message(4Invalid item) | halt }
     if ($readini($dbfile(items.db), $3, type) != gem) { $display.private.message(4Invalid gem) | halt }
-    $display.private.message([4Name12 $3 $+ 1] [4Type12 Gem $+ 1] [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1])
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Gem $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])
   }
 
   if ($2 = key) { 
     if ($readini($dbfile(items.db), $3, type) = $null) { $display.private.message(4Invalid item) | halt }
     if ($readini($dbfile(items.db), $3, type) != key) { $display.private.message(4Invalid key)  | halt }
-    $display.private.message([4Name12 $3 $+ 1] [4Type12 Key $+ 1] [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1])
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Key $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])
   }
 
   if ($2 = rune) { 
     if ($readini($dbfile(items.db), $3, augment) = $null) { $display.private.message(4Invalid item) | halt }
     if ($readini($dbfile(items.db), $3, type) != rune) { $display.private.message(4Invalid rune) | halt }
-    $display.private.message([4Name12 $3 $+ 1] [4Type12 Rune $+ 1] [4Augment12 $readini($dbfile(items.db), $3, augment) $+ 1] [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1])
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Rune $+ ] [4Augment12 $readini($dbfile(items.db), $3, augment) $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])
   }
 
   if ($2 = item) { 
@@ -116,62 +122,70 @@ alias view-info {
     var %info.type $readini($dbfile(items.db), $3, type) | var %info.amount $readini($dbfile(items.db), $3, amount)
     var %info.cost $bytes($readini($dbfile(items.db), $3, cost),b) | var %info.element $readini($dbfile(items.db), $3, element) $
     var %sell.price $bytes($readini($dbfile(items.db), $3, SellPrice),b)
-    if (%sell.price != $null) { var %sell.price [4Sell Price (before Haggling)12 %sell.price $+ 1] } 
+    if (%sell.price != $null) { var %sell.price [4Sell Price (before Haggling)12 %sell.price $+ ] } 
 
     if (%info.cost = 0) { var %info.cost Not Available For Purchase }
 
     var %info.target $readini($dbfile(items.db), $3, target)
     var %info.fullbring $readini($dbfile(items.db), $3, fullbringlevel)
     var %info.status $readini($dbfile(items.db), $3, statustype) | var %info.amount $readini($dbfile(items.db), $3, amount)
-    if (%info.fullbring != $null) { set %info.fullbringmsg  [4Fullbring Level12 %info.fullbring $+ 1] } 
+    if (%info.fullbring != $null) { set %info.fullbringmsg  [4Fullbring Level12 %info.fullbring $+ ] } 
     if (%info.target = AOE-monster) { var %info.target All monsters }
 
 
     var %exclusive.test $readini($dbfile(items.db), $3, exclusive)
-    if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [4Exclusive12 no $+ 1]  }
-    if (%exclusive.test = yes) {  var %exclusive [4Exclusive12 yes $+ 1]  }
+    if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [4Exclusive12 no $+ ]  }
+    if (%exclusive.test = yes) {  var %exclusive [4Exclusive12 yes $+ ]  }
 
-    if (%info.type = snatch) {  $display.private.message([4Name12 $3 $+ 1] [4Type12 Snatch/Grab $+ 1] %exclusive [4Description12 This item is used to grab a target and use him/her/it as a protective shield. $+ 1])  }
-    if (%info.type = heal) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Healing $+ 1] [4Heal Amount12 %info.amount $+ 1]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ 1] %sell.price %exclusive %info.fullbringmsg) }
-    if (%info.type = IgnitionGauge) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Ignition Gauge Restore $+ 1] [4Restore Amount12 %info.amount $+ 1]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ 1] %sell.price %exclusive %info.fullbringmsg) }
-    if (%info.type = Damage) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Damage $+ 1] [4Target12 %info.target $+ 1]  [4Damage Amount12 %info.amount $+ 1] [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ 1] %sell.price %exclusive %info.fullbringmsg)  }
-    if (%info.type = Status) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Status $+ 1] [4Target12 %info.target $+ 1]  [4Damage Amount12 %info.amount $+ 1] [4Status Type12 %info.status $+ 1] [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ 1] %sell.price %exclusive %info.fullbringmsg) }
+    if (%info.type = trust) { 
+      if ($readini($dbfile(items.db), $3, type) = $null) { $display.private.message(4Invalid item) | halt }
+      $display.private.message([4Name12 $3 $+ ] [4Type12 NPC Trust $+ ] [4NPC Summoned12 $readini($dbfile(items.db), $3, NPC) $+ ])
+    }
+
+
+    if (%info.type = snatch) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Snatch/Grab $+ ] %exclusive [4Description12 This item is used to grab a target and use him/her/it as a protective shield. $+ ])  }
+    if (%info.type = heal) { $display.private.message([4Name12 $3 $+ ] [4Type12 Healing $+ ] [4Heal Amount12 %info.amount $+ ]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ] %sell.price %exclusive %info.fullbringmsg) }
+    if (%info.type = IgnitionGauge) { $display.private.message([4Name12 $3 $+ ] [4Type12 Ignition Gauge Restore $+ ] [4Restore Amount12 %info.amount $+ ]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ] %sell.price %exclusive %info.fullbringmsg) }
+    if (%info.type = Damage) { $display.private.message([4Name12 $3 $+ ] [4Type12 Damage $+ ] [4Target12 %info.target $+ ]  [4Damage Amount12 %info.amount $+ ] [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ] %sell.price %exclusive %info.fullbringmsg)  }
+    if (%info.type = Status) { $display.private.message([4Name12 $3 $+ ] [4Type12 Status $+ ] [4Target12 %info.target $+ ]  [4Damage Amount12 %info.amount $+ ] [4Status Type12 %info.status $+ ] [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ] %sell.price %exclusive %info.fullbringmsg) }
     if (%info.type = Food) {  
       var %info.amount $readini($dbfile(items.db), n, $3, amount)
       %info.amount = $replacex(%info.amount,$chr(36) $+ rand,random)
       %info.amount = $replacex(%info.amount,$chr(44), $chr(45))
-      $display.private.message([4Name12 $3 $+ 1] [4Type12 Stat Increase $+ 1] [4Stat to Increase12 %info.target $+ 1] [4Increase Amount12 $iif(%info.amount >= 0, $chr(43)) $+ %info.amount $+ 1] %sell.price %exclusive)   
+      $display.private.message([4Name12 $3 $+ ] [4Type12 Stat Increase $+ ] [4Stat to Increase12 %info.target $+ ] [4Increase Amount12 $iif(%info.amount >= 0, $chr(43)) $+ %info.amount $+ ] %sell.price %exclusive)   
     }
-    if (%info.type = Consume) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Skill Consumable $+ 1] [4Skill That Uses This Item12 $readini($dbfile(items.db), $3, skill) $+ 1] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ 1])    }
-    if (%info.type = Summon) {  $display.private.message([4Name12 $3 $+ 1] [4Type12 Summon $+ 1] [4This item summons12 $readini($dbfile(items.db), $3, summonname) 4to fight with you $+ 1] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ 1])    }
-    if (%info.type = ShopReset) {  $display.private.message([4Name12 $3 $+ 1] [4Type12 Shop Level Change $+ 1] [4When used this item reduces your shop level by %info.amount $+ 1] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ 1])    }
-    if (%info.type = tp) { $display.private.message([4Name12 $3 $+ 1] [4Type12 TP Restore $+ 1] [4TP Restored Amount12 %info.amount $+ 1]  [4Item Cost12 %info.cost red orbs1] %exclusive %info.fullbringmsg) }
-    if (%info.type = CureStatus) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Cure Status $+ 1] [4Item Cost12 %info.cost red orbs1] [4Note12 This item will not cure Charm or Intimidation $+ 1] %exclusive %info.fullbringmsg) }
-    if (%info.type = accessory) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Accessory $+ 1] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1])  }
-    if (%info.type = revive) {  $display.private.message([4Name12 $3 $+ 1] [4Type12 Automatic Revival $+ 1] %exclusive [4Description12 When used this item will activate the "Automatic Revive" status.  If you die in battle, you will be revived with 1/2 HP.  $+ 1])  }
-    if (%info.type = key) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Key $+ 1] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1])  }
-    if (%info.type = gem) {  $display.private.message([4Name12 $3 $+ 1] [4Type12 Gem $+ 1] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1])  }
+    if (%info.type = Consume) { $display.private.message([4Name12 $3 $+ ] [4Type12 Skill Consumable $+ ] [4Skill That Uses This Item12 $readini($dbfile(items.db), $3, skill) $+ ] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ])    }
+    if (%info.type = Summon) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Summon $+ ] [4This item summons12 $readini($dbfile(items.db), $3, summonname) 4to fight with you $+ ] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ])    }
+    if (%info.type = ShopReset) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Shop Level Change $+ ] [4When used this item reduces your shop level by %info.amount $+ ] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ])    }
+    if (%info.type = tp) { $display.private.message([4Name12 $3 $+ ] [4Type12 TP Restore $+ ] [4TP Restored Amount12 %info.amount $+ ]  [4Item Cost12 %info.cost red orbs] %exclusive %info.fullbringmsg) }
+    if (%info.type = CureStatus) { $display.private.message([4Name12 $3 $+ ] [4Type12 Cure Status $+ ] [4Item Cost12 %info.cost red orbs] [4Note12 This item will not cure Charm or Intimidation $+ ] %exclusive %info.fullbringmsg) }
+    if (%info.type = accessory) { $display.private.message([4Name12 $3 $+ ] [4Type12 Accessory $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])  }
+    if (%info.type = revive) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Automatic Revival $+ ] %exclusive [4Description12 When used this item will activate the "Automatic Revive" status.  If you die in battle, you will be revived with 1/2 HP.  $+ ])  }
+    if (%info.type = key) { $display.private.message([4Name12 $3 $+ ] [4Type12 Key $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])  }
+    if (%info.type = gem) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Gem $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])  }
     if (%info.type = misc) { 
-      if ($readini($dbfile(items.db), $3, MechType) = $null) { $display.private.message([4Name12 $3 $+ 1] [4Type12 Crafting Ingredient $+ 1] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1] $iif($readini($dbfile(items.db), $3, GardenXp) != $null, 7* This item can be planted in the Allied Forces HQ Garden.)) }
-      else { $display.private.message([4Name12 $3 $+ 1] [4Type12 Mech Item; $readini($dbfile(items.db), $3, MechType) $+ 1] [4Amount12 $readini($dbfile(items.db), $3, amount) $+ 1] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1]) }
+      if ($readini($dbfile(items.db), $3, MechType) = $null) { $display.private.message([4Name12 $3 $+ ] [4Type12 Crafting Ingredient $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ] $iif($readini($dbfile(items.db), $3, GardenXp) != $null, 7* This item can be planted in the Allied Forces HQ Garden.)) }
+      else { $display.private.message([4Name12 $3 $+ ] [4Type12 Mech Item; $readini($dbfile(items.db), $3, MechType) $+ ] [4Amount12 $readini($dbfile(items.db), $3, amount) $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) }
     }
-    if (%info.type = trade) {  $display.private.message([4Name12 $3 $+ 1] [4Type12 Trading Item $+ 1] [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1] %exclusive %sell.price)  }
-    if (%info.type = random) {  $display.private.message([4Name12 $3 $+ 1] [4Type12 Random item inside! $+ 1] %exclusive %sell.price) }
+    if (%info.type = trade) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Trading Item $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ] %exclusive %sell.price)  }
+    if (%info.type = random) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Random item inside! $+ ] %exclusive %sell.price) }
     if (%info.type = rune) { 
       if ($readini($dbfile(items.db), $3, augment) = $null) { $display.private.message(4Invalid item) | halt }
-      $display.private.message([4Name12 $3 $+ 1] [4Type12 Rune $+ 1] [4Augment12 $readini($dbfile(items.db), $3, augment) $+ 1] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ 1]) 
+      $display.private.message([4Name12 $3 $+ ] [4Type12 Rune $+ ] [4Augment12 $readini($dbfile(items.db), $3, augment) $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) 
     }
     unset %info.fullbringmsg
   }
-  if (%info.type = portal) {  $display.private.message([4Name12 $3 $+ 1] [4Type12 Portal $+ 1] [4Lair12 $readini($dbfile(items.db), $3, Battlefield) $+ 1] %exclusive [4Description12 This item will teleport all players on the battlefield through a portal to the lair of a strong boss! $+ 1])  }
+  if (%info.type = portal) {
+    if ($readini($dbfile(items.db), $3, PortalLevel) != $null) { var %levelcap [4Level Cap12 $readini($dbfile(items.db), $3, PortalLevel) $+ ] }
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Portal $+ ] [4Lair12 $readini($dbfile(items.db), $3, Battlefield) $+ ] %exclusive %levelcap [4Description12 This item will teleport all players on the battlefield through a portal to the lair of a strong boss! $+ ]) 
+  }
   if (%info.type = mechcore) {  
     var %energy.cost $readini($dbfile(items.db), $3, energyCost)
     var %augments $readini($dbfile(items.db), $3, augment)
     if (%energy.cost = $null) { var %energy.cost 100 }
     if (%augments = $null) { var %augments none }
-    $display.private.message([4Name12 $3 $+ 1] [4Type12 Mech Core $+ 1] [4Base Energy Cost12 %energy.cost $+ 1] [4Augments12 %augments $+ 1] %exclusive) 
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Mech Core $+ ] [4Base Energy Cost12 %energy.cost $+ ] [4Augments12 %augments $+ ] %exclusive) 
   }
-
 
   if ($2 = skill) { 
     if ($readini($dbfile(skills.db), $3, type) = $null) { $display.private.message(4Invalid skill)  | halt }
@@ -180,14 +194,16 @@ alias view-info {
 
     var %info.current $readini($char($nick), skills, $3)
     if (%info.current = $null) { var %info.current 0 }
-    var %skill.current [4Your Skill Level12 %info.current 4/12 %info.maxlevel $+ 1]
+    var %skill.current [4Your Skill Level12 %info.current 4/12 %info.maxlevel $+ ]
 
     var %info.cooldown $readini($dbfile(skills.db), $3, cooldown)
     ; Have to decrease it by 1 to make it show the correct turn count.
-    if (%info.cooldown != $null) { dec %info.cooldown 1 | var %skill.cooldown [4Base Turns Between Uses12 %info.cooldown $+ 1] }
+    if (%info.cooldown != $null) { dec %info.cooldown 1 | var %skill.cooldown [4Base Turns Between Uses12 %info.cooldown $+ ] }
 
-    $display.private.message([4Name12 $3 $+ 1] [4Skill Type12 %info.type $+ 1] [4Base Cost (before shop level)12 %info.cost $+ 1] %skill.current %skill.cooldown)
-    $display.private.message([4Skill Info12 %info.desc $+ 1])
+    var %cost.info.desc $iif(%info.cost != 0, [4Base Cost (before shop level)12 %info.cost $+ ], [4Skill is bought using Enhancement Points])
+
+    $display.private.message([4Name12 $3 $+ ] [4Skill Type12 %info.type $+ ] %cost.info.desc %skill.current %skill.cooldown)
+    $display.private.message.delay.custom([4Skill Info12 %info.desc $+ ],2)
   }
 
 
@@ -207,18 +223,18 @@ alias view-info {
     if (%armor.level.requirement = $null) { var %armor.level.requirement 0 }
 
     var %sell.price $bytes($readini($dbfile(equipment.db), $3, SellPrice),b)
-    if (%sell.price != $null) { var %sell.price [4Sell Price (before Haggling)12 %sell.price $+ 1] } 
+    if (%sell.price != $null) { var %sell.price [4Sell Price (before Haggling)12 %sell.price $+ ] } 
 
     if ($chr(046) isin %info.augment) { set %replacechar $chr(044) $chr(032)
       %info.augment = $replace(%info.augment, $chr(046), %replacechar)
     }
 
     var %exclusive.test $readini($dbfile(equipment.db), $3, exclusive)
-    if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [4Exclusive12 no $+ 1  }
-    if (%exclusive.test = yes) {  var %exclusive [4Exclusive12 yes $+ 1]  }
+    if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [4Exclusive12 no $+ ]1  }
+    if (%exclusive.test = yes) {  var %exclusive [4Exclusive12 yes $+ ]  }
 
-    $display.private.message([4Name12 %info.name $+ 1] [4Armor Location12 %info.location $+ 1]  [4Armor Augment12 %info.augment $+ 1] [4Armor Level Requirement12 %armor.level.requirement $+ 1] %exclusive %sell.price)
-    $display.private.message([4Stats on Armor $+ 1] 4Health12 %info.hp  $+ $chr(124) 4TP12 %info.tp   $+ $chr(124) 4 $+ Strength12 %info.str  $+ $chr(124) 4 $+ Defense12 %info.def  $+ $chr(124) 4Intelligence12 %info.int  $+ $chr(124) 4Speed12 %info.spd)
+    $display.private.message([4Name12 %info.name $+ ] [4Armor Location12 %info.location $+ ]  [4Armor Augment12 %info.augment $+ ] [4Armor Level Requirement12 %armor.level.requirement $+ ] %exclusive %sell.price)
+    $display.private.message([4Stats on Armor $+ ] 4Health12 %info.hp  $+ $chr(124) 4TP12 %info.tp   $+ $chr(124) 4 $+ Strength12 %info.str  $+ $chr(124) 4 $+ Defense12 %info.def  $+ $chr(124) 4Intelligence12 %info.int  $+ $chr(124) 4Speed12 %info.spd)
     if (AutoReraise isin %info.augment) { $display.private.message(4The Auto Reraise Augment only works if you have 5 pieces of armor that all have the same augment.  In other words the augment strength must be at least 5 in order to work) } 
   }
 
@@ -237,14 +253,14 @@ alias view-info {
 
     if (%info.abilities = $null) { var %info.abilities none }
 
-    if ($readini($dbfile(weapons.db), $3, energyCost) != $null) { var %energycost [4Energy Cost12 $readini($dbfile(weapons.db), $3, energyCost) $+ 1] }
+    if ($readini($dbfile(weapons.db), $3, energyCost) != $null) { var %energycost [4Energy Cost12 $readini($dbfile(weapons.db), $3, energyCost) $+ ] }
 
-    if (%info.ignoredef != $null) { var %info.ignoredefense  [4Ignore Target Defense by12 %info.ignoredef $+ $chr(37) $+ 1] }
+    if (%info.ignoredef != $null) { var %info.ignoredefense  [4Ignore Target Defense by12 %info.ignoredef $+ $chr(37) $+ ] }
 
-    $display.private.message([4Name12 $3 $+ 1] [4Weapon Type12 %info.type $+ 1] [4Weapon Size12 $return.weaponsize($3) $+ 1] [4# of Hits12 %info.hits $+ 1] %energycost) 
-    $display.private.message([4Base Power12 %info.basepower $+ 1] [4Cost12 %info.basecost black $iif(%info.basecost < 2, orb, orbs) $+ 1] [4Element of Weapon12 %info.element $+ 1] [4Is the weapon 2 Handed?12 $iif($readini($dbfile(weapons.db), $3, 2Handed) = true, yes, no) $+ 4]) 
-    $display.private.message([4Abilities of the Weapon12 %info.abilities $+ 1] %info.ignoredefense)
-    $display.private.message([4Weapon Description12 $readini($dbfile(weapons.db), $3, Info) $+ 1])
+    $display.private.message([4Name12 $3 $+ ] [4Weapon Type12 %info.type $+ ] [4Weapon Size12 $return.weaponsize($3) $+ ] [4# of Hits12 %info.hits $+ ] %energycost) 
+    $display.private.message([4Base Power12 %info.basepower $+ ] [4Cost12 %info.basecost black $iif(%info.basecost < 2, orb, orbs) $+ ] [4Element of Weapon12 %info.element $+ ] [4Is the weapon 2 Handed?12 $iif($readini($dbfile(weapons.db), $3, 2Handed) = true, yes, no) $+ 4]) 
+    $display.private.message([4Abilities of the Weapon12 %info.abilities $+ ] %info.ignoredefense)
+    $display.private.message([4Weapon Description12 $readini($dbfile(weapons.db), $3, Info) $+ ])
   }
 
   if ($2 = shield ) {
@@ -256,7 +272,7 @@ alias view-info {
     if (%info.blockchance = $null) { var %info.blockchance 0 }
     if (%info.blockamount = $null) { var %info.blockamount 0 }
 
-    $display.private.message([4Name12 $3 $+ 1] [4Cost12 %info.basecost black $iif(%info.basecost < 2, orb, orbs) $+ 1] [4Block Chance12 %info.blockchance $+ $chr(37) $+ 1] [4Block Amount12 %info.blockamount $+ $chr(37) $+ 1]) 
+    $display.private.message([4Name12 $3 $+ ] [4Cost12 %info.basecost black $iif(%info.basecost < 2, orb, orbs) $+ ] [4Block Chance12 %info.blockchance $+ $chr(37) $+ ] [4Block Amount12 %info.blockamount $+ $chr(37) $+ ]) 
   }
 
 
@@ -370,16 +386,16 @@ alias view-info {
     set %replacechar $chr(032) $chr(043) $chr(032)
     %ingredient.list = $replace(%ingredient.list, $chr(046), %replacechar)
 
-    $display.private.message([4Name12 $3 $+ 1] [4Gem Required12 %gem.required $+ 1] [4Ingredients12 %ingredient.list $+ 1] [4Base Success Rate12 %base.success $+ 1])
+    $display.private.message([4Name12 $3 $+ ] [4Gem Required12 %gem.required $+ ] [4Ingredients12 %ingredient.list $+ ] [4Base Success Rate12 %base.success $+ ])
 
     unset %replacechar | unset %amount.needed | unset %item.name | unset %ingredient.list
   }
 
   if ($2 = style) {
     if ($readini($dbfile(playerstyles.db), Info, $3) = $null) { $display.private.message(4Invalid style) | halt }
-    $display.private.message(2 $+ $readini($dbfile(playerstyles.db), info, $3), private)
+    $display.private.message(2 $+ $readini($dbfile(playerstyles.db), info, $3))
+    if ($3 = doppelganger) { $display.private.message(2 $+ $readini($dbfile(playerstyles.db), info, Doppelganger2)) }
   }
-
 }
 
 

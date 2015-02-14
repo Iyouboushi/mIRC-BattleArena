@@ -152,7 +152,7 @@ Max=5
 [DualWield]
 Cost=200000
 Type=passive
-Info=This skill will allow the user to hold two one-handed weapons and use techniques from both without having to switch weapons. For melee attacks, the # of hits for the attack will be both weapon's # of hits combined. Use !equip left or !equip right to equip to the specified hand. Note, a weapon must be in the right hand before you can equip the right hand.
+Info=This skill will allow the user to hold two one-handed weapons and use techniques from both without having to switch weapons. For melee attacks, the # of hits for the attack will be both weapon's # of hits combined. Use !equip left or !equip right to equip to the specified hand. Note, a weapon must be in the right hand before you can equip the left hand.
 Max=1
 
 =============================================
@@ -169,7 +169,7 @@ Info=This skill increases the user's speed when performed.  Increased levels inc
 Cost=425
 Type=Active
 Max=5
-Info=This skill enhances your next magical spell. Increased levels decreases the amount of time inbetween uses.
+Info=This skill enhances your next magical spell. Increased levels decreases the amount of time between uses.
 Cooldown=11
 LevelAdjustsCooldown=true
 
@@ -177,28 +177,28 @@ LevelAdjustsCooldown=true
 Cost=450
 Type=Active
 Max=5
-Info=This skill enhances your next attack done with a weapon. Increased levels decreases the amount of time inbetween uses.
+Info=This skill enhances your next attack done with a weapon. Increased levels decreases the amount of time between uses.
 Cooldown=11
 
 [TrueStrike]
 Cost=500
 Type=Active
 Max=5
-Info=This skill makes it so your next attack cannot be countered, dodged or parried. This skill will not allow your attacks to hit through shadows, royal guard or mana wall. Increased levels decreases the amount of time inbetween uses.
+Info=This skill makes it so your next attack cannot be countered, dodged or parried. This skill will not allow your attacks to hit through shadows, royal guard or mana wall. Increased levels decreases the amount of time between uses.
 Cooldown=11
 
 [ManaWall]
 Cost=450
 Type=Active
 Max=6
-Info=This skill reduces the next magic attack used against you to 0.  Increased levels decreases the amount of time inbetween uses.
+Info=This skill reduces the next magic attack used against you to 0.  Increased levels decreases the amount of time between uses.
 Cooldown=11
 
 [RoyalGuard]
 Cost=450
 Type=Active
 Max=6
-Info=This skill reduces the next physical attack used against you to 0.  Increased levels decreases the amount of time inbetween uses.
+Info=This skill reduces the next physical attack used against you to 0.  Increased levels decreases the amount of time between uses.
 Cooldown=11
 
 [PerfectDefense]
@@ -218,7 +218,7 @@ Info=This skill allows you to draw out the souls within items and turn single-ta
 Cost=900
 Type=Active
 Max=5
-Info=This skill allows you to get two turns on your next turn after using this skill. Increased levels decreases the amount of time inbetween uses.
+Info=This skill allows you to get two turns on your next turn after using this skill. Increased levels decreases the amount of time between uses.
 Cooldown=16
 
 [Meditate]
@@ -232,7 +232,7 @@ Cooldown=5
 Cost=500
 Type=Active
 Max=5
-Info=This skill will reduce the cost of your next technique to 0 TP. Increased levels decreases the amount of time inbetween uses.
+Info=This skill will reduce the cost of your next technique to 0 TP. Increased levels decreases the amount of time between uses.
 Cooldown=16
 
 [BloodBoost]
@@ -265,7 +265,7 @@ Cooldown=16
 Cost=650
 Type=Active
 Max=6
-Info=This skill allows the user to change the current weather.  Increased levels of this skill will reduce the amount of time inbetween uses.
+Info=This skill allows the user to change the current weather.  Increased levels of this skill will reduce the amount of time between uses.
 Cooldown=11
 
 [ShadowCopy]
@@ -277,7 +277,7 @@ Max=1
 [Utsusemi]
 Cost=500
 Type=Active
-Info=This skill will create 2 shadows that will absorb all types of attacks.  Increased levels decreases the amount of time inbetween uses.
+Info=This skill will create 2 shadows that will absorb all types of attacks.  Increased levels decreases the amount of time between uses.
 Max=10
 Cooldown=20
 
@@ -358,21 +358,21 @@ CoolDown=6
 [MagicMirror]
 Cost=15000
 Type=Active
-Info=This skill will consume a MirrorShard to create a magical reflective barrier around you. The barrier will bounce a magic spell back to its caster.  Increased levels decreases the amount of time inbetween uses.
+Info=This skill will consume a MirrorShard to create a magical reflective barrier around you. The barrier will bounce a magic spell back to its caster.  Increased levels decreases the amount of time between uses.
 Max=5
 Cooldown=16
 
 [Gamble]
 Cost=10000
 Type=Active
-Info=This skill will consume 1,000 orbs in exchange for a random event to happen.  Random events include, but are not limited to: gaining a random item, refilling the Ignition Gauge, restoring HP, taking damage, and inflicting a status effect upon yourself. Increased levels decreases the amount of time inbetween uses.
+Info=This skill will consume 1,000 orbs in exchange for a random event to happen.  Random events include, but are not limited to: gaining a random item, refilling the Ignition Gauge, restoring HP, taking damage, and inflicting a status effect upon yourself. Increased levels decreases the amount of time between uses.
 Max=5
 Cooldown=16
 
 [Thirdeye]
 Cost=500
 Type=Active
-Info=This skill will increase the odds of dodging physical attacks for 1-2 attacks to 100%.  Increased levels decreases the amount of time inbetween uses.  ** This skill will not increase the odds of dodging magical, item, or tech attacks.
+Info=This skill will increase the odds of dodging physical attacks for 1-2 attacks to 100%.  Increased levels decreases the amount of time between uses.  ** This skill will not increase the odds of dodging magical, item, or tech attacks.
 Max=10
 Cooldown=21
 
@@ -401,7 +401,7 @@ Cooldown=3
 [Retaliation]
 Cost=2000
 Type=Active
-Info=This skill will guarantee the next melee attack towards you will be countered. While this skill is active you will go last in battle.  Increased levels of this skill will decrease the time inbetween uses.
+Info=This skill will guarantee the next melee attack towards you will be countered. While this skill is active you will go last in battle.  Increased levels of this skill will decrease the time between uses.
 Max=5
 Cooldown=21
 
@@ -409,7 +409,14 @@ Cooldown=21
 Cost=500
 Type=Active
 Max=15
-Info=This skill will consume a lockpick item and attempt to unlock a chest without using the correct colored key.  The chance of success is (skill level * 2)%
+Info=This skill will consume a lockpick item and attempt to unlock a chest without using the correct colored key.  The chance of success is (skill level * 3)%
+
+[Warp]
+Cost=5000
+Type=Active
+Max=1
+Info=This skill allows the user to change what battlefield the next battle will take place on at the cost of 2,000 $readini(system.dat, system, currency) $+ . This skill can only be used OUTSIDE of battle.  Use it as !warp battlefieldname 
+
 
 
 =============================================
@@ -588,3 +595,33 @@ Cost=5000
 Max=10
 Type=KillerTrait
 Info=This skill increases damage done against slime monsters by 1% a level.  Note that it won't increase damage done to metal slimes unless the IgnoreMetalDefense augment is active.
+
+
+=============================================
+ENHANCING POINT SKILLS
+=============================================
+
+[Stoneskin]
+Cost=0
+Type=Active
+Max=10
+Info=This skill adds a stoneskin natural armor to the player upon its use. The amount of damage it can absorb is (level + 10)% * int, with the max amount per point being 300*point level (3000 cap at level 10).  Stoneskin will wear off at the end of each battle if it is not broken by the enemy. Note that using stoneskin and then being synced via portal will recalculate the amount that can be absorbed.
+
+[TabulaRasa]
+Cost=0
+Type=Active
+Max=10
+Info=This skill attempts to inflict a target with the amnesia status effect. Chance of success is 40+(level)% on targets that are not immune to the status effect.
+Cooldown=5
+
+[SpoilSeeker]
+Cost=0
+Type=Passive
+Max=10
+Info=This skill increases the odds of receiving a drop from defeating a monster who has a spoil. Each level increases the odds by 2%, up to 20% max.
+
+[Demolitions]
+Cost=0
+Type=Passive
+Max=10
+Info=This skill will enhance bomb type attack items when used. The amount of extra damage is 4% * skill level, with 40% being the max amount.

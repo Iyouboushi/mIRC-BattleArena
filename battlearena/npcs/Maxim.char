@@ -1,26 +1,27 @@
 [BaseStats]
-Hp=3500
-Tp=250
+Hp=4000
+Tp=500
 Str=$calc(40 + $current.battlestreak)
-Def=$calc(30 + $current.battlestreak)
-Int=$calc(30 + $current.battlestreak)
-Spd=$calc(30 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Name=Maxim
 
 
 [Battle]
-Hp=3500
-Tp=250
+Hp=4000
+Tp=500
 Str=$calc(40 + $current.battlestreak)
-Def=$calc(30 + $current.battlestreak)
-Int=$calc(30 + $current.battlestreak)
-Spd=$calc(30 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
+
 
 [Limit]
 Level=1
@@ -34,12 +35,14 @@ Dused=1
 Char=is a man with red hair that wears light blue armor. He carries the powerful Dual Blade sword in hand.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -93,33 +96,61 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=DualBlade
-DualBlade=$round($calc(500 + (($current.battlestreak / 2) / 5.5)),0)
+DualBlade=$calc(50 + $current.battlestreak)
+
 
 [Skills]
-MartialArts=1000
-Swordmaster=1000
+Swordmaster=2500
 Zen=5
 MightyStrike=1
 Impetus=20
 WeaponBash=1
+RoyalGuard=1
 Resist-Charm=100
-Resist-Amnesia=100
-Resist-Curse=100
+Resist-Poison=100
+Resist-Zombie=100
 Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
 Resist-Slow=100
 Resist-Stop=100
-RoyalGuard=1
-
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-WaveMotion=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Requiescat=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-FlatBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-SwiftBlade=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-OctoStrike=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Skysplitter=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+WaveMotion=$iif($current.battlestreak < 300, 0, $calc(300 + $current.battlestreak))
+Requiescat=$iif($current.battlestreak < 200, 0, $calc(200 + $current.battlestreak))
+FlatBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+SwiftBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+OctoStrike=$iif($current.battlestreak < 150, 0, $calc(150 + $current.battlestreak))
+Skysplitter=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
+
 
 [Item_Amount]
 
@@ -127,5 +158,5 @@ Skysplitter=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=20
 WeaponMasterXP=1

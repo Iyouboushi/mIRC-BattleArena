@@ -95,9 +95,11 @@ slow.timer=1
 zombie.timer=1
 conservetp.on=off
 
+
 [Weapons]
 Equipped=Fists
-Fists=30
+Fists=$calc(1 + $current.battlestreak)
+
 
 [Skills]
 mightystrike=1
@@ -109,23 +111,22 @@ manawall.on=off
 mightystrike.on=off
 royalguard.on=off
 MartialArts=30
-Resist-Charm=100
-Resist-Zombie=100
-Resist-Intimidate=100
 Zen=5
+Resist-Charm=100
+Resist-confuse=100
+Resist-Weaponlock=100
+Resist-Disarm=100
 
 
 [Techniques]
-DoublePunch=30
-AsuranFists=30
+DoublePunch=$iif($current.battlestreak < 50, 0, $calc(25 + $current.battlestreak))
+AsuranFists=$iif($current.battlestreak < 100, 0, $calc(25 + $current.battlestreak))
 
 
 [Item_Amount]
-potion=1
-DustyWing=0
 
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=2
+WeaponMaster=10
 WeaponMasterXP=1

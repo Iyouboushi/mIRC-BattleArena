@@ -1,20 +1,22 @@
 [BaseStats]
-Hp=2500
+Hp=4000
 Tp=500
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
+IgnitionGauge=50
 Name=Cloud Strife
 
 
 [Battle]
-Hp=2500
+Hp=4000
 Tp=500
-Str=$calc(20 + $current.battlestreak)
-Def=$calc(20 + $current.battlestreak)
-Int=$calc(20 + $current.battlestreak)
-Spd=$calc(20 + $current.battlestreak)
+Str=$calc(40 + $current.battlestreak)
+Def=$calc(40 + $current.battlestreak)
+Int=$calc(40 + $current.battlestreak)
+Spd=$calc(40 + $current.battlestreak)
+IgnitionGauge=50
 Status=alive
 
 
@@ -95,26 +97,54 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BusterSword
-BusterSword=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+BusterSword=$calc(40 + $current.battlestreak)
 
 [Skills]
-Swordmaster=1000
+Swordmaster=2000
 Zen=5
 MightyStrike=1
 Resist-Charm=100
-Resist-Amnesia=100
-Resist-Curse=100
+Resist-Poison=100
+Resist-Zombie=100
 Resist-Intimidate=100
-
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Undead-Killer=20
+Crab-Killer=20
+Dragon-Killer=20
+Zombie-Killer=20
+Demon-Killer=20
+Orc-Killer=20
+Yagudo-Killer=20
+Quadav-Killer=20
+Treant-Killer=20
+Plant-Killer=20
+Android-Killer=20
+Worm-Killer=20
+Bat-Killer=20
+Lizard-Killer=20
+Goblin-Killer=20
+Elemental-Killer=20
+Slime-Killer=20
 
 [Techniques]
-Braver=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-CrossSlash=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Blade_Beam=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Climhazzard=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Meteorain=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-FinishingTouch=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-Omnislash=$round($calc(300 + (($current.battlestreak / 2) / 5.5)),0)
+Braver=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+CrossSlash=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+Blade_Beam=$iif($current.battlestreak < 100, 0, $calc(125 + $current.battlestreak))
+Climhazzard=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
+Meteorain=$iif($current.battlestreak < 200, 0, $calc(150 + $current.battlestreak))
+FinishingTouch=$iif($current.battlestreak < 200, 0, $calc(150 + $current.battlestreak))
+Omnislash=$iif($current.battlestreak < 300, 0, $calc(300 + $current.battlestreak))
 
 
 [Item_Amount]
@@ -122,5 +152,5 @@ Omnislash=$round($calc(300 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=20
 WeaponMasterXP=1

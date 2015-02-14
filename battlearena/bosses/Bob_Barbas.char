@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 620, $round($calc(5000 + (5 * $return_differenceof($return_playerlevelstotal,620))),0), $round($calc(5000 + $return_playerlevelstotal),0))
+Hp=$round($calc(5500 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
 Tp=550
 Str=70
 Def=70
@@ -55,7 +55,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=600
+bosslevel=60
 CanTaunt=true
 TauntFile=taunts_bobbarbas.txt
 ChangeBattlefield=1
@@ -98,9 +98,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=RNN
-RNN=100
-strong=gun.rifle.wand.glyph.whip.katana
-weakness=sword.handtohand.greatsword
+RNN=60
 
 
 [Skills]
@@ -130,8 +128,8 @@ ChangeBattlefield.chance=60
 
 
 [Techniques]
-DigitalLasers=500
-DigitalWall=500
+DigitalLasers=50
+DigitalWall=50
 
 
 [Item_Amount]

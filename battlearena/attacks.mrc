@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
+;;;; Last updated: 02/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -16,7 +17,7 @@ on 3:TEXT:!attack *:#:{
 ON 50:TEXT:*attacks *:*:{ 
   if ($2 != attacks) { halt } 
   else { 
-    $no.turn.check($1)
+    $no.turn.check($1,admin)
     if ($readini($char($1), Battle, HP) = $null) { halt }
     $set_chr_name($1) | set %attack.target $3 | $covercheck($3)
     $attack_cmd($1 , %attack.target) 
@@ -26,6 +27,7 @@ ON 50:TEXT:*attacks *:*:{
 ON 3:TEXT:*attacks *:*:{ 
   if ($2 != attacks) { halt } 
   if ($readini($char($1), info, flag) = monster) { halt }
+  if ($readini($char($1), stuff, redorbs) = $null) { halt }
   $controlcommand.check($nick, $1)
   $no.turn.check($1)
   unset %real.name 
@@ -46,17 +48,17 @@ alias attack_cmd {
   if ((%ai.type != berserker) && (%covering.someone != on)) {
     if (%mode.pvp != on) {
       if ($2 = $1) {
-        if (($is_confused($1) = false) && ($is_charmed($1) = false))  { $display.system.message($readini(translation.dat, errors, Can'tAttackYourself), private) | unset %real.name | halt  }
+        if (($is_confused($1) = false) && ($is_charmed($1) = false))  { $display.message($readini(translation.dat, errors, Can'tAttackYourself), private) | unset %real.name | halt  }
       }
     }
   }
 
   if (%covering.someone = on) { var %user.flag monster }
 
-  if ((%user.flag = $null) && (%target.flag != monster)) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private) | halt }
-  if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious),private)  | unset %real.name | halt }
-  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead),private) | unset %real.name | halt }
-  if ($readini($char($2), Battle, Status) = RunAway) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoFled),private) | unset %real.name | halt } 
+  if ((%user.flag = $null) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private) | halt }
+  if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious),private)  | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead),private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = RunAway) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoFled),private) | unset %real.name | halt } 
 
   ; Make sure the old attack damages have been cleared, and clear a few variables.
   unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
@@ -304,6 +306,7 @@ alias calculate_damage_weapon {
   }
   unset %status.type.list
 
+  var %starting.damage %attack.damage
 
   var %weapon.element $readini($dbfile(weapons.db), $2, element)
   if ((%weapon.element != $null) && (%weapon.element != none)) {
@@ -314,8 +317,16 @@ alias calculate_damage_weapon {
   set %weapon.type $readini($dbfile(weapons.db), $2, type)
   $modifer_adjust($3, %weapon.type)
 
+  ; Check for the weapon name
+  $modifer_adjust($3, $2)
+
   ; Elementals are strong to melee
   if ($readini($char($3), monster, type) = elemental) { %attack.damage = $round($calc(%attack.damage - (%attack.damage * .30)),0) } 
+
+  if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
+  if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
+  if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
+
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
@@ -408,7 +419,7 @@ alias calculate_damage_weapon {
   ;;; FORMULA 3
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   if ($readini(system.dat, system, BattleDamageFormula) = 3) { 
-    %attack.def.ratio = $calc(%base.stat / %enemy.defense)
+    %attack.def.ratio = $calc(%true.base.stat  / %enemy.defense)
     %attack.damage = $round($calc(%attack.damage * %attack.def.ratio),0)
     if ($mighty_strike_check($1) = true) { inc %attack.damage %attack.damage }
     unset %attack.def.ratio
@@ -419,10 +430,8 @@ alias calculate_damage_weapon {
 
   if (enhance-melee isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
 
-
   ; Adjust the damage based on weapon size vs monster size
   $monstersize.adjust($3,$2)
-
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; ADJUST THE TOTAL DAMAGE.
@@ -529,7 +538,7 @@ alias calculate_damage_weapon {
   if ($augment.check($1, EnhanceCriticalHits) = true) { inc %critical.hit.chance %augment.strength }
 
   if (%critical.hit.chance >= 97) {
-    $set_chr_name($1) |  $display.system.message($readini(translation.dat, battle, LandsACriticalHit), battle)
+    $set_chr_name($1) |  $display.message($readini(translation.dat, battle, LandsACriticalHit), battle)
     set %attack.damage $round($calc(%attack.damage * 1.5),0)
   }
 
@@ -576,7 +585,7 @@ alias calculate_damage_weapon {
     set %target.element.null $readini($char($3), modifiers, %current.element)
     if (%target.element.null <= 0) { $set_chr_name($3)
       set %guard.message $readini(translation.dat, battle, ImmuneToElement) 
-      set %attack.damage 0 
+      set %attack.damage 0
     }
     unset %target.element.null
   }
@@ -592,10 +601,10 @@ alias calculate_damage_weapon {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
 
   ; Check for the En-Spell Buff
   if ($readini($char($1), status, en-spell) != none) { 
@@ -652,7 +661,7 @@ alias melee.aoe {
 
   var %weapon.type $readini($dbfile(weapons.db), $2, type) |  var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt) 
 
-  $display.system.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)
+  $display.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)
   set %showed.melee.desc true
 
   if ($readini($dbfile(weapons.db), $2, absorb) = yes) { set %absorb absorb }
@@ -765,7 +774,7 @@ alias melee.aoe {
   if ($readini($char($1), battle, hp) > 0) {
     set %inflict.user $1 | set %inflict.meleewpn $2 
     $self.inflict_status(%inflict.user, %inflict.meleewpn, melee)
-    if (%statusmessage.display != $null) { $display.system.message(%statusmessage.display, battle) | unset %statusmessage.display }
+    if (%statusmessage.display != $null) { $display.message(%statusmessage.display, battle) | unset %statusmessage.display }
   }
 
 
@@ -860,7 +869,7 @@ alias drain_samba_check {
     if (%drainsamba.turns = $null) { set %drainsamba.turns 0 }
     set %drainsamba.turn.max $readini($char($1), skills, drainsamba)
     inc %drainsamba.turns 1 
-    if (%drainsamba.turns > %drainsamba.turn.max) { $set_chr_name($1) | $display.system.message($readini(translation.dat, skill, DrainSambaWornOff), battle) | writeini $char($1) skills drainsamba.turn 0 | writeini $char($1) skills drainsamba.on off | return }
+    if (%drainsamba.turns > %drainsamba.turn.max) { $set_chr_name($1) | $display.message($readini(translation.dat, skill, DrainSambaWornOff), battle) | writeini $char($1) skills drainsamba.turn 0 | writeini $char($1) skills drainsamba.on off | return }
     writeini $char($1) skills drainsamba.turn %drainsamba.turns   
     set %drainsamba.on on
   }
@@ -877,7 +886,7 @@ alias formless_strike_check {
     set %fstrike.turn.max $readini($char($1), skills, formlessstrike)
     inc %fstrike.turns 1 
 
-    if (%fstrike.turns > %fstrike.turn.max) { $set_chr_name($1) | $display.system.message($readini(translation.dat, skill, FormlessStrikeWornOff), battle) | writeini $char($1) skills formlessstrike.turn 0 | writeini $char($1) skills formlessstrike.on off | return }
+    if (%fstrike.turns > %fstrike.turn.max) { $set_chr_name($1) | $display.message($readini(translation.dat, skill, FormlessStrikeWornOff), battle) | writeini $char($1) skills formlessstrike.turn 0 | writeini $char($1) skills formlessstrike.on off | return }
     writeini $char($1) skills formlessstrike.turn %fstrike.turns   
   }
 }

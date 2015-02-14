@@ -1,13 +1,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ACHIEVEMENTS 
+;;;; Last updated: 02/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:!clear achievement*:*:{
   $checkchar($3)
-  if ($4 = $null) { $display.system.message(4!clear achievement <person> <achievement name>, private) | halt }
+  if ($4 = $null) { $display.message(4!clear achievement <person> <achievement name>, private) | halt }
 
   .remini $char($3) achievements $4 
-  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {   $display.system.message(4Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .,global) }
+  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {   $display.message(4Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .,global) }
   if ($readini(system.dat, system, botType) = DCCchat) { $dcc.global.message(4Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .) }
 }
 
@@ -459,6 +460,46 @@ alias achievement_check {
     var %current.redorbs $readini($char($1), stuff, redorbs) | inc %current.redorbs 10000 | writeini $char($1) stuff redorbs %current.redorbs
   }
 
+  if ($2 = You'veGotAFriendInMe) { 
+    if ($readini($char($1), info, flag) != $null) { return }
+    var %number.of.trusts $readini($char($1), stuff, TrustsUsed)
+
+    if (%number.of.trusts >= 10) { writeini $char($1) achievements $2 true 
+      $announce_achievement($1, $2, 1)
+
+      var %current.whoops $readini($char($1), item_amount, BigWhoop) 
+      if (%current.whoops = $null) { var %current.whoops 0 }
+      inc %current.whoops 1 | writeini $char($1) Item_Amount BigWhoop %current.whoops  
+    }
+  }
+
+  if ($2 = OnTheEdge) {
+    writeini $char($1) achievements $2 true
+    $announce_achievement($1, $2, 1)
+    var %current.potions $readini($char($1), stuff, SuperPotion) | inc %current.potions | writeini $char($1) Items SuperPotion %current.potions
+  }
+
+  if ($2 = JustGettingStarted) {
+    writeini $char($1) achievements $2 true
+    $announce_achievement($1, $2, 1)
+    var %current.blackorbs $readini($char($1), stuff, BlackOrbs) | inc %current.blackorbs 1 | writeini $char($1) stuff BlackOrbs %current.blackorbs
+  }
+
+  if ($2 = ALightInTheDark) {
+    var %total.souls $readini($char($1), stuff, LostSoulsKilled)
+    if (%total.souls >= 1) {
+      writeini $char($1) achievements $2 true
+      $announce_achievement($1, $2, 1000)
+      var %current.redorbs $readini($char($1), stuff, redorbs) | inc %current.redorbs 1000 | writeini $char($1) stuff redorbs %current.redorbs
+    }
+  }
+
+  if ($2 = NoOne'sPuppet) {
+    writeini $char($1) achievements $2 true
+    $announce_achievement($1, $2, 1000)
+    var %current.redorbs $readini($char($1), stuff, redorbs) | inc %current.redorbs 1000 | writeini $char($1) stuff redorbs %current.redorbs
+  }
+
 }
 
 alias achievement_already_unlocked {
@@ -466,5 +507,5 @@ alias achievement_already_unlocked {
 }
 
 alias announce_achievement { $set_chr_name($1) 
-  $display.system.message($readini(translation.dat, achievements, $2),global) 
+  $display.message($readini(translation.dat, achievements, $2),global) 
 }
