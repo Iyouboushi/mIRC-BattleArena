@@ -492,7 +492,13 @@ Info=This skill lowers the chance that you will be come petrified in battle by 1
 [Resist-Sleep]
 Cost=0
 Max=0
-Type=REsistance
+Type=Resistance
+Info=This skill lowers the chance that you will be put to sleep. Players cannot buy this.
+
+[Resist-Confuse]
+Cost=0
+Max=0
+Type=Resistance
 Info=This skill lowers the chance that you will be put to sleep. Players cannot buy this.
 
 =============================================
@@ -630,4 +636,3 @@ Cost=0
 Type=Passive
 Max=10
 Info=This skill will enhance bomb type attack items when used. The amount of extra damage is 4% * skill level, with 40% being the max amount.
-
