@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 01/31/15
+;;;; Last updated: 02/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -112,7 +112,7 @@ alias add.style.orbbonus {
   if ($2 = boss) { %multiplier = 1.7 }
 
   var %orb.bonus.flag $readini($char($3), info, OrbBonus)
-  if (%orb.bonus.flag = yes) { inc %multiplier $rand(50,75) }
+  if (%orb.bonus.flag = yes) { inc %multiplier $rand(125,150) }
 
   set %current.orb.bonus $readini($txtfile(battle2.txt), BattleInfo, OrbBonus)
   if (%current.orb.bonus = $null) { set %current.orb.bonus 0 }
