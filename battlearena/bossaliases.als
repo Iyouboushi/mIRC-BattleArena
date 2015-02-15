@@ -1023,7 +1023,7 @@ generate_monster_mimic {
   writeini $char(%monster.name) info OrbBonus yes 
 
   var %mimic.level %current.battlestreak
-  inc %mimic.level $rand(1,30)
+  inc %mimic.level $rand(0,3)
 
   .copy -o $char(new_chr) $char(%monster.name)
   writeini $char(%monster.name) info flag monster 
