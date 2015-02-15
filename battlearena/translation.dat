@@ -214,6 +214,11 @@ PortalUsageCheck=$chr(3) $+ 3 $+ %real.name $+  has %portal.uses.left more por
 ScoreBoardHTMLTrue=$chr(3) $+ 3 $+ The Scoreboard will now generate a HTML file in the main folder upon use of the scoreboard command.
 ScoreBoardHTMLFalse=$chr(3) $+ 3 $+ The Scoreboard will no longer generate a HTML file in the main folder upon use of the scoreboard command.
 PortalLevelsSynced=$chr(3) $+ 4 $+ The level cap for this portal battle has been set to: %portal.level
+BossLevelSynced20=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 20
+BossLevelSynced50=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 50
+BossLevelSynced75=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 75
+BossLevelSynced100=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 100
+BossLevelSynced200=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 200
 GainedEnhancementPoint=$chr(3) $+ 7 $+ You have gained 1 enhancement point bringing your new total to %current.enhancementpoints $+ .
 SpiritOfHeroSync=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low for this battle streak. $get_chr_name($1) has been infused with the2 Spirit of the Hero4 buff. $get_chr_name($1) $+ 's level is now set temporarily to2 $calc($return_winningstreak - 3)
 

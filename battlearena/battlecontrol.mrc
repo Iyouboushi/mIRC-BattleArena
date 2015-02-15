@@ -764,6 +764,7 @@ alias battle.getmonsters {
 
             if (%boss.type = bandits) { set %number.of.monsters.needed 0 }
             if (%boss.type = pirates) { set %number.of.monsters.needed 0 }
+            if (%boss.type = elderdragon) { set %number.of.monsters.needed 0 }
             if (%boss.type = FrostLegion) { set %number.of.monsters.needed 0 }
             if (%boss.type = CrystalShadow) { set %number.of.monsters.needed 0 }
 
@@ -919,6 +920,9 @@ alias generate_monster {
 
     if (%boss.type = doppelganger) { 
       $display.message($readini(translation.dat, events, DoppelgangerFight), battle)
+      $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
+      if ($return_winningstreak >= 50) { $portal.sync.players(50) }
+
       $generate_evil_clones
     }
 
@@ -927,28 +931,60 @@ alias generate_monster {
     }
 
     if (%boss.type = warmachine) {
-      if (%battle.type != ai) { $display.message($readini(translation.dat, events, WarmachineFight), battle) }
+      if (%battle.type != ai) { 
+        $display.message($readini(translation.dat, events, WarmachineFight), battle) 
+
+        if (($return_winningstreak >= 20) && ($return_winningstreak < 50)) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced20), battle)
+          $portal.sync.players(20) 
+        }
+
+        if (($return_winningstreak >= 50) && ($return_winningstreak < 75)) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
+          $portal.sync.players(20) 
+        }
+
+        if ($return_winningstreak >= 75) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced75), battle)
+          $portal.sync.players(75) 
+        }
+
+      }
       $generate_monster_warmachine
     }
 
     if (%boss.type = bandits) {
       $display.message($readini(translation.dat, events, BanditsFight), battle)
+
+      if ($return_winningstreak >= 50) {  
+        $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
+        $portal.sync.players(50) 
+      }
+
       $generate_bandit_leader
 
-      if ($readini(battlestats.dat, Battle, WinningStreak) > 500) {  var %number.of.bandits.needed $rand(2,3) }
+      if ($readini(battlestats.dat, Battle, WinningStreak) > 100) {  var %number.of.bandits.needed $rand(2,3) }
       else {  var %number.of.bandits.needed $rand(1,2) }
       var %i 1
       while (%i <= %number.of.bandits.needed) {
         $generate_bandit_minion(%i)
         inc %i 1
       }
+
+      set %current.battlefield highway
     }
 
     if (%boss.type = pirates) {
       $display.message($readini(translation.dat, events, PiratesFight), battle)
+
+      if ($return_winningstreak >= 75) {  
+        $display.message($readini(translation.dat, system,BossLevelSynced75), battle)
+        $portal.sync.players(75) 
+      }
+
       $generate_pirate_firstmatey
 
-      if ($readini(battlestats.dat, Battle, WinningStreak) >= 500) {  var %number.of.pirates.needed $rand(2,3) }
+      if ($readini(battlestats.dat, Battle, WinningStreak) >= 100) {  var %number.of.pirates.needed $rand(2,3) }
       else {  var %number.of.pirates.needed $rand(1,2) }
       var %i 1
       while (%i <= %number.of.pirates.needed) {
@@ -963,10 +999,13 @@ alias generate_monster {
     if (%boss.type = FrostLegion) {
       $display.message($readini(translation.dat, events, FrostLegionFight), battle)
 
-      ; $generate_FrostLegion_Leader
+      if ($return_winningstreak >= 20) {  
+        $display.message($readini(translation.dat, system,BossLevelSynced20), battle)
+        $portal.sync.players(20) 
+      }
 
-      if ($readini(battlestats.dat, Battle, WinningStreak) >= 500) {  var %number.of.frosties.needed $rand(4,5) }
-      else {  var %number.of.frosties.needed $rand(3,4) }
+      if ($readini(battlestats.dat, Battle, WinningStreak) >= 50) {  var %number.of.frosties.needed $rand(4,5) }
+      else { var %number.of.frosties.needed $rand(3,4) }
 
       if (%number.of.frosties.needed = $null) { var %number.of.frosties.needed 5 }
 
@@ -981,20 +1020,43 @@ alias generate_monster {
 
 
     if (%boss.type = elderdragon) {
+
+      if ($return_winningstreak >= 200) {  
+        $display.message($readini(translation.dat, system,BossLevelSynced200), battle)
+        $portal.sync.players(200) 
+      }
+
       $generate_elderdragon
     }
 
     if (%boss.type = demonwall) {
       set %demonwall.name Demon Wall
 
-      if (%battle.type != ai) {  $display.message($readini(translation.dat, events, DemonWallFight), battle) }
+      if (%battle.type != ai) { 
+
+        $display.message($readini(translation.dat, events, DemonWallFight), battle)
+
+        if ($return_winningstreak >= 75) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced75), battle)
+          $portal.sync.players(75) 
+        }
+
+      }
       $generate_demonwall
       set %demonwall.fight on
     }
 
     if (%boss.type = wallofflesh) {
       set %demonwall.name Wall of Flesh
-      if (%battle.type != ai) {  $display.message($readini(translation.dat, events, DemonWallFight), battle) }
+      if (%battle.type != ai) {  
+
+        $display.message($readini(translation.dat, events, DemonWallFight), battle)
+
+        if ($return_winningstreak >= 200) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced200), battle)
+          $portal.sync.players(200) 
+        }
+      }
       $generate_wallofflesh
       set %demonwall.fight on
     }

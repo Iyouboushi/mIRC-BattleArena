@@ -337,16 +337,55 @@ boost_monster_stats {
   if (%number.of.players.in.battle > 3) { inc %level.boost %number.of.players.in.battle }
 
   ; Check for special boss types
-  if ($2 = warmachine) { 
-    if (%boss.level = $null) { var %boss.level %winning.streak }
-  }
 
   if ($2 = mimic) { 
     if (%boss.level = $null) { var %boss.level %winning.streak }
   }
 
-  if ($2 = elderdragon) { 
+  if ($2 = warmachine) { 
     if (%boss.level = $null) { var %boss.level %winning.streak }
+    if ($return_winningstreak >= 75) { var %monster.level 75 }
+  }
+
+  if (%boss.type = wallofflesh) { 
+    if ($return_winningstreak >= 200) { var %monster.level 200 }
+  }
+  if (%boss.type = demonwall) { 
+    if ($return_winningstreak >= 76) { var %monster.level 75 }
+  }
+
+  if (%boss.type = FrostLegion) { 
+    var %monster.level 20 
+  }
+
+  if (%boss.type = Pirates) { 
+    if (%boss.level = $null) { 
+      if ($return_winningstreak >= 75) { var %monster.level 75 }
+    }
+    if (%boss.level != $null) {
+      if (%boss.level > 75) { var %monster.level 75 }
+      else { var %monster.level %boss.level }
+    } 
+  }
+
+  if (%boss.type = Bandits) { 
+    if (%boss.level = $null) { 
+      if ($return_winningstreak >= 50) { var %monster.level 50 }
+    }
+    if (%boss.level != $null) {
+      if (%boss.level > 50) { var %monster.level 50 }
+      else { var %monster.level %boss.level }
+    } 
+  }
+
+  if ($2 = elderdragon) { 
+    if (%boss.level = $null) { 
+      if ($return_winningstreak >= 200) { var %monster.level 200 }
+    }
+    if (%boss.level != $null) {
+      if (%boss.level > 200) { var %monster.level 200 }
+      else { var %monster.level %boss.level }
+    } 
   }
 
   if ($2 = doppelganger) { 
@@ -672,12 +711,19 @@ boost_monster_hp {
       if (%hp.modifier > 1.2) { var %hp.modifier 1.2 } 
     }
 
+    ; Increase the hp modifier if more than 1 player is in battle..
+    if ($return_playersinbattle > 1) {
+      var %increase.amount $round($calc($return_playersinbattle / 2),0)
+      inc %hp.modifier $calc(%increase.amount * .01)
+    }
+
     var %hp $round($calc(%hp * %hp.modifier)),0)
 
     if (%hp > 15000) { var %hp $round($calc(15000 + (%hp * .01)),0) }
   }
 
   writeini $char($1) BaseStats HP $round(%hp,0)
+  writeini $char($1) Battle HP $round(%hp,0)
   unset %hp
 }
 
@@ -721,6 +767,15 @@ levelsync {
     var %level.difference $round($calc($2 - $get.level($1)),0)
     inc %current.loop 1
   }
+
+  ; Monsters and Bosses need their stats copied from the synced level to the basestats portion
+  if (($readini($char($1), info, flag) = monster) || ($readini($char($1), info, flag) = boss)) { 
+    writeini $char($1) basestats str $readini($char($1), battle, str)
+    writeini $char($1) basestats def $readini($char($1), battle, def)
+    writeini $char($1) basestats int $readini($char($1), battle, int)
+    writeini $char($1) basestats spd $readini($char($1), battle, spd)
+  }
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2954,8 +3009,8 @@ spawn_after_death {
   }
 
   ; Boost the monster
-  $boost_monster_stats(%monster.to.spawn) 
   $fulls(%monster.to.spawn)
+  $boost_monster_stats(%monster.to.spawn) 
 
   set %multiple.wave.bonus yes
   set %first.round.protection yes

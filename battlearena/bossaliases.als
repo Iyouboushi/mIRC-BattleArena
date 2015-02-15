@@ -18,27 +18,24 @@ get_boss_type {
   var %winning.streak.check $readini(battlestats.dat, battle, winningstreak)
   if (%mode.gauntlet.wave != $null) { inc %winning.streak.check %mode.gauntlet.wave }
 
-  if (%winning.streak.check < 100) { var %enable.bandits false }
-  if (%winning.streak.check > 75) { var %enable.doppelganger false }
-  if (%winning.streak.check >= 300) { var %enable.warmachine false } 
-  if (%winning.streak.check >= 1000) { var %enable.pirates false } 
-  if ((%winning.streak.check > 300) && (%winning.streak.check <= 600)) { 
+  if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.bandits false }
+  if ((%winning.streak.check < 50) || (%winning.streak.check > 100)) { var %enable.doppelganger false }
+  if (%winning.streak.check >= 250) { var %enable.warmachine false } 
+  if ((%winning.streak.check < 75) || (%winning.streak.check > 200)) { var %enable.pirates false }
+  if (%winning.streak.check >= 500) { var %enable.pirates false } 
+  if ((%winning.streak.check > 75) && (%winning.streak.check < 200)) { 
     if ($readini(system.dat, system, AllowDemonwall) = yes) { var %enable.demonwall true }
   }
-  if ((%winning.streak.check > 600) && (%winning.streak.check <= 5000)) { var %enable.elderdragon true }
+  if ((%winning.streak.check >= 200) && (%winning.streak.check <= 5000)) { var %enable.elderdragon true }
 
-  if ((%winning.streak.check > 1000) && (%winning.streak.check <= 2000)) { 
+  if ((%winning.streak.check >= 200) && (%winning.streak.check <= 5000)) { 
     if ($readini(system.dat, system, AllowWallOfFlesh) = yes) { var %enable.wallofflesh true }
   }
-
-  if ((%winning.streak.check > 3500) && (%winning.streak.check <= 5000)) { 
-    if ($readini(system.dat, system, AllowWallOfFlesh) = yes) { var %enable.wallofflesh true }
-  }
-
 
   if (%mode.gauntlet = on) { var %enable.demonwall false }
 
-  if ($left($adate, 2) = 12) { %boss.choices = %boss.choices $+ .FrostLegion }
+  if (($left($adate, 2) = 12) && (%winning.streak.check >= 20)) { %boss.choices = %boss.choices $+ .FrostLegion }
+
 
   var %boss.chance $rand(1,100)
 
@@ -50,7 +47,7 @@ get_boss_type {
   }
 
   if (%enable.pirates = true) {
-    if ((%winning.streak.check >= 100) && (%winning.streak.check <= 1000)) { %boss.choices = %boss.choices $+ .pirates }
+    if ((%winning.streak.check >= 15) && (%winning.streak.check <= 500)) { %boss.choices = %boss.choices $+ .pirates }
   }
 
   if ((%enable.wallofflesh = true) && (%boss.chance <= 10)) { %boss.choices = %boss.choices $+ .demonwall }
@@ -115,7 +112,6 @@ generate_evil_clones {
 
       $display.message($readini(translation.dat, battle, EnteredTheBattle),battle)
 
-
       var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
       inc %battletxt.current.line 1 
     }
@@ -149,11 +145,12 @@ generate_evil_clones {
 generate_monster_warmachine {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
 
-  if ((%current.battlestreak >= 1) && (%current.battlestreak <= 20)) { set %monster.name Small_Warmachine | set %monster.realname Small Warmachine }
-  if ((%current.battlestreak > 20) && (%current.battlestreak <= 60)) { set %monster.name Medium_Warmachine | set %monster.realname Medium Warmachine | writeini $char(%monster.name) info OrbBonus yes  }
-  if (%current.battlestreak > 60) { set %monster.name Large_Warmachine | set %monster.realname Large Warmachine | writeini $char(%monster.name) info OrbBonus yes }
+  if ((%current.battlestreak >= 1) && (%current.battlestreak < 50)) { set %monster.name Small_Warmachine | set %monster.realname Small Warmachine }
+  if ((%current.battlestreak >= 50) && (%current.battlestreak < 75)) { set %monster.name Medium_Warmachine | set %monster.realname Medium Warmachine | writeini $char(%monster.name) info OrbBonus yes  }
+  if (%current.battlestreak >= 75) { set %monster.name Large_Warmachine | set %monster.realname Large Warmachine | writeini $char(%monster.name) info OrbBonus yes }
 
   .copy -o $char(new_chr) $char(%monster.name)
 
@@ -170,6 +167,12 @@ generate_monster_warmachine {
   var %base.hp.tp $calc(7 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
+
+  writeini $char(%monster.name) basestats str $rand(25,50)
+  writeini $char(%monster.name) basestats def $rand(15,45)
+  writeini $char(%monster.name) basestats int $rand(60,75)
+  writeini $char(%monster.name) basestats spd $rand(5,15)
+
   var %base.stats $calc($rand(1,3) * %current.battlestreak)
   writeini $char(%monster.name) basestats str %base.stats
   inc %base.stats $rand(0,2)
@@ -252,7 +255,9 @@ generate_elderdragon {
 
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak > 200) { set %current.battlstreak 200 }
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
+
 
   var %monster.name %first.name
   .copy -o $char(new_chr) $char(%first.name)
@@ -264,7 +269,7 @@ generate_elderdragon {
   writeini $char(%monster.name) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
   writeini $char(%monster.name) info gender its
   writeini $char(%monster.name) info gender2 its
-  writeini $char(%monster.name) info bosslevel %current.battlestreak
+  writeini $char(%monster.name) info bosslevel $calc(%current.battlestreak + $rand(1,3))
   writeini $char(%monster.name) info OrbBonus yes 
   writeini $char(%monster.name) descriptions char is a large and powerful Elder Dragon, recently awoken from its long slumber in the earth.
   writeini $char(%monster.name) monster type dragon
@@ -273,14 +278,11 @@ generate_elderdragon {
   var %base.hp.tp $calc(7 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
-  var %base.stats $calc($rand(3,6) * %current.battlestreak)
-  writeini $char(%monster.name) basestats str %base.stats
-  inc %base.stats $rand(1,2)
-  writeini $char(%monster.name) basestats def %base.stats
-  inc %base.stats $rand(1,2)
-  writeini $char(%monster.name) basestats int %base.stats
-  inc %base.stats $rand(1,2)
-  writeini $char(%monster.name) basestats spd %base.stats
+
+  writeini $char(%monster.name) basestats str $rand(200,300)
+  writeini $char(%monster.name) basestats def $rand(50,100)
+  writeini $char(%monster.name) basestats int $rand(100,200)
+  writeini $char(%monster.name) basestats spd $rand(10,50)
 
   writeini $char(%monster.name) techniques FangRush %current.battlestreak
   writeini $char(%monster.name) techniques SpikeFlail $calc(%current.battlestreak + 10)
@@ -377,8 +379,8 @@ generate_elderdragon {
   writeini $char(%monster.name) modifiers bow 10
   writeini $char(%monster.name) modifiers glyph 60
 
-  $boost_monster_stats(%monster.name, elderdragon)
   $fulls(%monster.name, elderdragon) 
+  $boost_monster_stats(%monster.name, elderdragon)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name)
@@ -415,6 +417,7 @@ generate_elderdragon {
 generate_demonwall {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
 
   set %monster.name Demon_Wall | set %monster.realname Demon Wall
@@ -467,8 +470,8 @@ generate_demonwall {
   var %reflect.chance $rand(1,100)
   if (%reflect.chance <= 40) { writeini $char(%monster.name) status reflect yes | writeini $char(%monster.name) status reflect.timer 1 }
 
+  $fulls(%monster.name)
   $boost_monster_stats(%monster.name, demonwall)
-  $fulls(%monster.name) 
 
   set %number.of.monsters.needed 0
 
@@ -504,6 +507,7 @@ generate_demonwall {
 generate_wallofflesh {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak > 200) { set %current.battlestreak 200 }
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
 
   set %monster.name Wall_of_Flesh | set %monster.realname Wall of Flesh
@@ -560,8 +564,8 @@ generate_wallofflesh {
   var %reflect.chance $rand(1,100)
   if (%reflect.chance <= 70) { writeini $char(%monster.name) status reflect yes | writeini $char(%monster.name) status reflect.timer 1 }
 
-  $boost_monster_stats(%monster.name, demonwall)
   $fulls(%monster.name) 
+  $boost_monster_stats(%monster.name, demonwall)
 
   set %number.of.monsters.needed 0
 
@@ -597,6 +601,7 @@ generate_wallofflesh {
 generate_bandit_leader {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
 
   set %monster.name Bandit_Leader | set %monster.realname Bandit Leader
 
@@ -612,15 +617,11 @@ generate_bandit_leader {
   var %base.hp.tp $calc(10 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
-  var %base.stats $calc($rand(2,5) * %current.battlestreak)
-  writeini $char(%monster.name) basestats str %base.stats
 
-  var %base.stats $calc($rand(1,3) * %current.battlestreak)
-  writeini $char(%monster.name) basestats def %base.stats
-  var %base.stats $calc($rand(1,3) * %current.battlestreak)
-  writeini $char(%monster.name) basestats int %base.stats
-  var %base.stats $calc($rand(4,6) * %current.battlestreak)
-  writeini $char(%monster.name) basestats spd %base.stats
+  writeini $char(%monster.name) basestats str $rand(50,100)
+  writeini $char(%monster.name) basestats def $rand(25,75)
+  writeini $char(%monster.name) basestats int $rand(10,35)
+  writeini $char(%monster.name) basestats spd $rand(55,155)
 
   writeini $char(%monster.name) techniques RainStorm %current.battlestreak
   writeini $char(%monster.name) techniques Detonator %current.battlestreak
@@ -644,12 +645,14 @@ generate_bandit_leader {
   writeini $char(%monster.name) descriptions snatch uses a chain he has to try and take a hostage
   writeini $char(%monster.name) descriptions BossQuote give me your valuables or your life! 
 
-  $boost_monster_stats(%monster.name)
   $fulls(%monster.name) 
+  $boost_monster_stats(%monster.name)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
   $display.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
+  $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle)
+
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -685,6 +688,7 @@ generate_bandit_minion {
   ; $1 = the number of the minion
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak >= 50) { set %current.battlestreak 50 }
 
   set %monster.name Bandit_Minion $+ $1 | set %monster.realname Bandit Minion $1
 
@@ -696,18 +700,12 @@ generate_bandit_minion {
   writeini $char(%monster.name) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
   writeini $char(%monster.name) info gender his
   writeini $char(%monster.name) info gender2 him
+  writeini $char(%monster.name) info bosslevel $calc(%current.battlestreak - 5)
 
-  var %base.hp.tp $calc(4 * %current.battlestreak)
-  writeini $char(%monster.name) basestats hp %base.hp.tp
-  writeini $char(%monster.name) basestats tp %base.hp.tp
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats str %base.stats
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats def %base.stats
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats int %base.stats
-  var %base.stats $calc($rand(2,3) * %current.battlestreak)
-  writeini $char(%monster.name) basestats spd %base.stats
+  writeini $char(%monster.name) basestats str $rand(25,50)
+  writeini $char(%monster.name) basestats def $rand(15,45)
+  writeini $char(%monster.name) basestats int $rand(10,35)
+  writeini $char(%monster.name) basestats spd $rand(55,155)
 
   writeini $char(%monster.name) techniques RainStorm $round($calc(%current.battlestreak / 3),0)
   writeini $char(%monster.name) techniques Detonator $round($calc(%current.battlestreak / 3),0)
@@ -721,8 +719,8 @@ generate_bandit_minion {
 
   writeini $char(%monster.name) descriptions char is a random bandit minion
 
-  $boost_monster_stats(%monster.name)
   $fulls(%monster.name) 
+  $boost_monster_stats(%monster.name)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
@@ -849,7 +847,6 @@ generate_allied_troop {
   if ((%battle.type = defendoutpost) && (%current.battlestreak >= 100)) { $levelsync(%monster.name, 101) }
   if ((%battle.type = defendoutpost) && (%current.battlestreak < 100)) {   $levelsync(%monster.name, $calc(%current.battlestreak + 1)) }
 
-
   writeini $char(%monster.name) battlestats str $readini($char(%monster.name), battle, str)
   writeini $char(%monster.name) battlestats def $readini($char(%monster.name), battle, def)
   writeini $char(%monster.name) battlestats int $readini($char(%monster.name), battle, int)
@@ -888,10 +885,11 @@ generate_pirate_scallywag {
   ; $1 = the number of the minion
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak >= 75) { set %current.battlestreak 75 }
 
   set %monster.name Pirate_Scallywag $+ $1 | set %monster.realname Pirate Scallywag $1
 
-  if (%current.battlestreak > 500) { writeini $char(%monster.name) info OrbBonus yes }
+  writeini $char(%monster.name) info OrbBonus yes 
 
   .copy -o $char(new_chr) $char(%monster.name)
   writeini $char(%monster.name) info flag monster 
@@ -899,18 +897,16 @@ generate_pirate_scallywag {
   writeini $char(%monster.name) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
   writeini $char(%monster.name) info gender his
   writeini $char(%monster.name) info gender2 him
+  writeini $char(%monster.name) info bosslevel $calc(%current.battlestreak - 5)
 
   var %base.hp.tp $calc(4 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats str %base.stats
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats def %base.stats
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats int %base.stats
-  var %base.stats $calc($rand(2,3) * %current.battlestreak)
-  writeini $char(%monster.name) basestats spd %base.stats
+
+  writeini $char(%monster.name) basestats str $rand(25,50)
+  writeini $char(%monster.name) basestats def $rand(15,45)
+  writeini $char(%monster.name) basestats int $rand(10,35)
+  writeini $char(%monster.name) basestats spd $rand(55,155)
 
   writeini $char(%monster.name) techniques FastBlade $round($calc(%current.battlestreak / 3),0)
   writeini $char(%monster.name) techniques BurningBlade $round($calc(%current.battlestreak / 3),0)
@@ -925,8 +921,8 @@ generate_pirate_scallywag {
 
   writeini $char(%monster.name) descriptions char is a random pirate scallywag who is in need of an orange and some toothpaste
 
-  $boost_monster_stats(%monster.name)
   $fulls(%monster.name) 
+  $boost_monster_stats(%monster.name)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
@@ -944,10 +940,11 @@ generate_pirate_scallywag {
 generate_pirate_firstmatey {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
 
   set %monster.name Pirate_FirstMatey | set %monster.realname Pirate's First Matey
 
-  if (%current.battlestreak > 500) { writeini $char(%monster.name) info OrbBonus yes }
+  writeini $char(%monster.name) info OrbBonus yes 
 
   .copy -o $char(new_chr) $char(%monster.name)
   writeini $char(%monster.name) info flag monster 
@@ -956,21 +953,17 @@ generate_pirate_firstmatey {
   writeini $char(%monster.name) info gender his
   writeini $char(%monster.name) info gender2 him
 
-  if (%current.battlestreak < 500) { writeini $char(%monster.name) info SpawnAfterDeath Silverhook }
-  if (%current.battlestreak >= 500) { writeini $char(%monster.name) info SpawnAfterDeath BlackBeard }
+  if (%current.battlestreak < 50) { writeini $char(%monster.name) info SpawnAfterDeath Silverhook }
+  if (%current.battlestreak >= 50) { writeini $char(%monster.name) info SpawnAfterDeath BlackBeard }
 
   var %base.hp.tp $calc(10 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
-  var %base.stats $calc($rand(2,5) * %current.battlestreak)
-  writeini $char(%monster.name) basestats str %base.stats
 
-  var %base.stats $calc($rand(1,3) * %current.battlestreak)
-  writeini $char(%monster.name) basestats def %base.stats
-  var %base.stats $calc($rand(1,3) * %current.battlestreak)
-  writeini $char(%monster.name) basestats int %base.stats
-  var %base.stats $calc($rand(4,6) * %current.battlestreak)
-  writeini $char(%monster.name) basestats spd %base.stats
+  writeini $char(%monster.name) basestats str $rand(50,100)
+  writeini $char(%monster.name) basestats def $rand(15,45)
+  writeini $char(%monster.name) basestats int $rand(10,35)
+  writeini $char(%monster.name) basestats spd $rand(55,155)
 
   writeini $char(%monster.name) techniques FastBlade %current.battlestreak
   writeini $char(%monster.name) techniques BurningBlade %current.battlestreak
@@ -995,12 +988,14 @@ generate_pirate_firstmatey {
   writeini $char(%monster.name) descriptions snatch tries to take a hostage!
   writeini $char(%monster.name) descriptions BossQuote Arrrr!  We be wanting yer booty! So hand it over and perhapse me and me mates will let ye live!
 
-  $boost_monster_stats(%monster.name)
   $fulls(%monster.name) 
+  $boost_monster_stats(%monster.name)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
   $display.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
+  $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle)
+
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
@@ -1037,14 +1032,11 @@ generate_monster_mimic {
   var %base.hp.tp $calc(7 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
-  var %base.stats $calc($rand(3,7) * %current.battlestreak)
-  writeini $char(%monster.name) basestats str %base.stats
-  inc %base.stats $rand(1,2)
-  writeini $char(%monster.name) basestats def %base.stats
-  inc %base.stats $rand(1,2)
-  writeini $char(%monster.name) basestats int %base.stats
-  inc %base.stats $rand(1,3)
-  writeini $char(%monster.name) basestats spd %base.stats
+
+  writeini $char(%monster.name) basestats str $rand(75,100)
+  writeini $char(%monster.name) basestats def $rand(50,65)
+  writeini $char(%monster.name) basestats int $rand(15,35)
+  writeini $char(%monster.name) basestats spd $rand(60,155)
 
   writeini $char(%monster.name) techniques AsuranFists %current.battlestreak
 
@@ -1106,6 +1098,7 @@ generate_frost_monster {
   ; $1 = the number of the minion
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
 
   set %monster.name Frost_Monster $+ $1 | set %monster.realname Frost Monster $1
 
@@ -1122,15 +1115,11 @@ generate_frost_monster {
   if (%base.hp.tp <= 300) { var %base.hp.tp 300 }
 
   writeini $char(%monster.name) basestats hp %base.hp.tp
-  writeini $char(%monster.name) basestats tp %base.hp.tp
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats str %base.stats
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats def %base.stats
-  var %base.stats $calc($rand(1,2) * %current.battlestreak)
-  writeini $char(%monster.name) basestats int %base.stats
-  var %base.stats $calc($rand(2,3) * %current.battlestreak)
-  writeini $char(%monster.name) basestats spd %base.stats
+
+  writeini $char(%monster.name) basestats str $rand(20,30)
+  writeini $char(%monster.name) basestats def $rand(15,45)
+  writeini $char(%monster.name) basestats int $rand(10,35)
+  writeini $char(%monster.name) basestats spd $rand(55,155)
 
   writeini $char(%monster.name) techniques FrostBite $round($calc(%current.battlestreak / 1.5),0)
   writeini $char(%monster.name) techniques FreezeII $round($calc(%current.battlestreak / 1.5),0)
@@ -1159,8 +1148,8 @@ generate_frost_monster {
   writeini $char(%monster.name) modifiers wind 50
 
   writeini $char(%monster.name) descriptions char is a monster made out of ice
-  $boost_monster_stats(%monster.name)
   $fulls(%monster.name) 
+  $boost_monster_stats(%monster.name)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
@@ -1209,14 +1198,11 @@ generate_crystalshadow {
   var %base.hp.tp $calc(20 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
-  var %base.stats $calc($rand(5,10) * %current.battlestreak)
-  writeini $char(%monster.name) basestats str %base.stats
-  inc %base.stats $rand(5,10)
-  writeini $char(%monster.name) basestats def %base.stats
-  inc %base.stats $rand(5,10)
-  writeini $char(%monster.name) basestats int %base.stats
-  inc %base.stats $rand(5,10)
-  writeini $char(%monster.name) basestats spd %base.stats
+
+  writeini $char(%monster.name) basestats str $rand(200,300)
+  writeini $char(%monster.name) basestats def $rand(15,45)
+  writeini $char(%monster.name) basestats int $rand(10,35)
+  writeini $char(%monster.name) basestats spd $rand(55,155)
 
   writeini $char(%monster.name) techniques Scourge %current.battlestreak
   writeini $char(%monster.name) techniques HerculeanSlash %current.battlestreak
@@ -1263,8 +1249,8 @@ generate_crystalshadow {
   writeini $char(%monster.name) modifiers bow 1
   writeini $char(%monster.name) modifiers glyph 1
 
-  $boost_monster_stats(%monster.name, Crystal_Shadow)
   $fulls(%monster.name, crystal_shadow) 
+  $boost_monster_stats(%monster.name, Crystal_Shadow)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name)
