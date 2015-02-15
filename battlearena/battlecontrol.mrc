@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/13/15
+;;;; Last updated: 02/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -434,19 +434,20 @@ alias enter {
   if ($readini($char($1), info, flag) = $null) {
     remini $char($1) skills lockpicking.on
 
-
     ; Is the player too weak for this streak level?
-    if ($calc($return_winningstreak - $get.level($1)) > 10) {
-      $levelsync($1, $calc($return_winningstreak - 3))
+    if ($return_winningstreak > 10) {
+      if (($calc($return_winningstreak - $get.level($1)) > 30) || ($calc($get.level($1) / $return_winningstreak) < .5)) {
+        $levelsync($1, $calc($return_winningstreak - 3))
 
-      if ($readini(system.dat, system, PlayersMustDieMode) != true) {
-        var %temp.hp.needed $round($calc(150 + ((($return_winningstreak - 3)  / 5) * 50)),0)
-        if (%temp.hp.needed > $return.systemsetting(maxHP)) { var %temp.hp.needed $return.systemsetting(maxHP) }
-        if ($readini($char($1), battle, hp) < %temp.hp.needed) { writeini $char($1) battle hp %temp.hp.needed }
+        if ($readini(system.dat, system, PlayersMustDieMode) != true) {
+          var %temp.hp.needed $round($calc(150 + ((($return_winningstreak - 3)  / 5) * 50)),0)
+          if (%temp.hp.needed > $return.systemsetting(maxHP)) { var %temp.hp.needed $return.systemsetting(maxHP) }
+          if ($readini($char($1), battle, hp) < %temp.hp.needed) { writeini $char($1) battle hp %temp.hp.needed }
+        }
+
+        $display.message($readini(translation.dat, system, SpiritOfHeroSync), battle)
+        writeini $char($1) status SpiritOfHero true
       }
-
-      $display.message($readini(translation.dat, system, SpiritOfHeroSync), battle)
-      writeini $char($1) status SpiritOfHero true
     }
 
     var %battleplayers $readini($txtfile(battle2.txt), BattleInfo, Players)
