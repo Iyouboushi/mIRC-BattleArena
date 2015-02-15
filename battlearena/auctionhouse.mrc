@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 01/31/15
+;;;; Last updated: 02/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -84,6 +84,7 @@ alias auctionhouse.bid {
 
   ; Does the person have that many notes?
   var %current.alliednotes $readini($char($1), stuff, alliednotes)
+  if (%current.alliednotes = $null) { writeini $char($1) stuff alliednotes 0 | var %current.alliednotes 0 }
   if (%current.alliednotes < $2) { $display.private.message2($1, $readini(translation.dat, errors, NotEnoughNotesToBid)) | halt }
 
   ; Is the person betting the minimum?

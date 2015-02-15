@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the bot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-battle.version { return 3.0beta_021415 } 
+battle.version { return 3.0beta_021515 } 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the system.dat file
@@ -1957,14 +1957,16 @@ fulls {
     writeini $char($1) status PotionEffect none
   }
 
-
   writeini $char($1) Battle Str $readini($char($1), BaseStats, Str)
   writeini $char($1) Battle Def $readini($char($1), BaseStats, Def)
   writeini $char($1) Battle Int $readini($char($1), BaseStats, Int)
   writeini $char($1) Battle Spd $readini($char($1), BaseStats, Spd)
 
+  ; Check for things that shouldn't be null
   if ($readini($char($1), battle, status) != inactive) {  writeini $char($1) Battle Status alive }
   if ($readini($char($1), status, PotionEffect) = $null) { writeini $char($1) Status PotionEffect none }
+
+  if ($readini($char($1), stuff, alliednotes) = $null) { writeini $char($1) stuff alliednotes 0 }
 
   if ($readini($char($1), BaseStats, IgnitionGauge) = $null) { writeini $char($1) BaseStats IgnitionGauge 0 | writeini $char($1) Battle IgnitionGauge 0 }
   if ($readini($char($1), Battle, IgnitionGauge) = $null) { writeini $char($1) Battle IgnitionGauge 0 }
@@ -1972,6 +1974,7 @@ fulls {
   if ($readini($char($1), stuff, TotalDeaths) = $null) { writeini $char($1) stuff TotalDeaths 0 }
   if ($readini($char($1), stuff, TotalFled) = $null) { writeini $char($1) stuff TotalFled 0 }
 
+  ; Clear status
   $clear_status($1)
 
   ; If it's not a monster or NPC, we need to clear some more stuff and check for $$.
@@ -1984,16 +1987,22 @@ fulls {
     if ($readini($char($1), stuff, loginpoints) = $null) { writeini $char($1) stuff LoginPoints 0 }
   }
 
+  ; Clear skill timers
   $clear_skill_timers($1)
 
+  ; If someone is in a mech, take them out
   if ($person_in_mech($1) = true) { writeini $char($1) mech inuse false }
 
+  ; Remove the Renkei value
   remini $char($1) Renkei
 
+  ; Check on, and fill Natural Armor
   $fullNaturalArmor($1)
 
+  ; Check for the Shenron's Wish buff
   $db.shenronwish.check($1)
 
+  ; We're all done here
   writeini $char($1) info NeedsFulls no
 }
 
