@@ -6,7 +6,7 @@ battle.version { return 3.0beta_021515 }
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the system.dat file
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-system.dat.version { return 021115 }
+system.dat.version { return 021515 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; The bot's quit message
@@ -32,6 +32,7 @@ system_defaults_check {
   if (%last.system.dat.version != $system.dat.version) { 
     if ($readini(system.dat, system, botType) = $null) { writeini system.dat system botType IRC }
     if ($readini(system.dat, system, AllowColors) = $null) { writeini system.dat system AllowColors true }
+    if ($readini(system.dat, system, AllowBold) = $null) { writeini system.dat system AllowBold true }
     if ($readini(system.dat, system, automatedbattlesystem) = $null) { writeini system.dat system automatedbattlesystem on } 
     if ($readini(system.dat, system, TimeBetweenBattles) = $null) { writeini system.dat system TimeBetweenBattles 2 } 
     if ($readini(system.dat, system, automatedaibattlecasino) = $null) { writeini system.dat system automatedaibattlecasino off } 
@@ -563,6 +564,15 @@ allowcolors {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns true/false if 
+; the bot is allowing bold
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+allowbold {
+  if ($readini(system.dat, system, AllowBold) = false) { return false }
+  return true
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Aliases that display
 ; messages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -572,6 +582,7 @@ display.message {
 
   var %message.to.display $1
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
+  if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
   if ($readini(system.dat, system, botType) = IRC) {  query %battlechan %message.to.display  }
   if ($readini(system.dat, system, botType) = TWITCH) {
@@ -595,6 +606,7 @@ display.message.delay {
 
   var %message.to.display $1
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
+  if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
   var %delay.time $3
   if (%delay.time = $null) { var %delay.time 1 }
@@ -624,6 +636,7 @@ display.private.message {
   var %message.to.display $1-
 
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
+  if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
   if ($readini(system.dat, system, botType) = IRC) {
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 1 /.msg $nick %message.to.display 
@@ -655,6 +668,7 @@ display.private.message2 {
 display.private.message.delay {
   var %message.to.display $1
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
+  if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
   if ($readini(system.dat, system, botType) = IRC) {
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 2 /.msg $nick %message.to.display 
@@ -671,6 +685,7 @@ display.private.message.delay {
 display.private.message.delay.custom {
   var %message.to.display $1
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
+  if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
   if ($readini(system.dat, system, botType) = IRC) {
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 $2 /.msg $nick %message.to.display 
