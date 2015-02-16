@@ -1222,16 +1222,15 @@ alias calculate_damage_techs {
   if ((%flag = monster) && ($readini($char($3), info, flag) = $null)) {
 
     var %min.damage $readini($dbfile(techniques.db), $2, BasePower)
-    inc %min.damage $round($calc(%attack.rating * .10),0)
+    inc %min.damage %attack.rating
 
+    var %level.difference $calc($get.level($1) / $get.level($3))
+    var %min.damage $round($calc(%min.damage * %level.difference),0)
 
-    var %min.damage $readini($dbfile(techniques.db), $2, BasePower)
-    inc %min.damage $round($calc(%attack.rating * .10),0)
-
-    if (%attack.damage <= 1) { 
+    if (%attack.damage <= 10) { 
       set %attack.damage $readini($dbfile(techniques.db), $2, BasePower)
 
-      if ($calc($get.level($3) - $get.level($1))  <= -300) { 
+      if ($calc($get.level($3) - $get.level($1))  >= -300) { 
         set %attack.damage 1
         set %min.damage $round($calc(%min.damage / 1.5),0)
       }
