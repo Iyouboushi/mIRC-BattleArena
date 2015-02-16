@@ -33,7 +33,7 @@ thereÅfs a few commands you can do (attack with a weapon, attack with a techniqu
 item). If the player idles for too long the bot will force their turn and skip over them. This is
 done so that someone canÅft disappear for an hour and cause the battle to drag on forever.
 
-ThereÅfs a bunch of weapons that can be bought and each weapon has a few techniques attached to them.
+ThereÅ's a bunch of weapons that can be bought and each weapon has a few techniques attached to them.
 Unlike in Kaiou, you canÅft make your own techniques but rather have to buy them using red orbs that you
 earn from battle. You buy weapons using black orbs when you obtain via winning boss fights and being alive
 at the end of one.
