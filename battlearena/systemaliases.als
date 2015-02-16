@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the bot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-battle.version { return 3.0beta_021515 } 
+battle.version { return 3.0beta_021615 } 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the system.dat file
@@ -846,6 +846,18 @@ weapon_equipped {
   }
   if ($person_in_mech($1) = true) { set %weapon.equipped $readini($char($1), mech, EquippedWeapon) } 
   return 
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks for a linked weapon
+; returns true or false
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+weapon.linkcheck {
+  ; $1 = person 
+  ; $2 = weapon to check for
+
+  if (($readini($char($1), Weapons,Equipped) = $2) || ($readini($char($1), Weapons, EquippedLeft) = $2)) { return true }
+  else { return false }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
