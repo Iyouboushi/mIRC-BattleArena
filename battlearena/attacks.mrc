@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 02/06/15
+;;;; Last updated: 02/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -165,29 +165,12 @@ alias calculate_damage_weapon {
 
   var %attack.rating $round($calc(%base.stat / 2),0)
 
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) {
-    if (%base.stat > 10) {  
-      if ($readini($char($1), info, flag) = $null) {  set %base.stat $round($calc(%base.stat / 2.5),0) }
-      if ($readini($char($1), info, flag) != $null) { set %base.stat $round($calc(%base.stat / 5),0) }
-    }
+  if (%attack.rating >= 1000) {  
+    var %base.stat.cap .10
+    if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
+    if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
+    set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
   }
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 2) {
-    if (%base.stat > 999) {  
-      if ($readini($char($1), info, flag) = $null) {  set %base.stat $round($calc(999 + %base.stat / 10),0) }
-      if ($readini($char($1), info, flag) != $null) { set %base.stat $round($calc(999 + %base.stat / 5),0) }
-    }
-  }
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 3) {
-    if (%attack.rating >= 1000) {  
-      var %base.stat.cap .10
-      if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
-      if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
-      set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
-    }
-  }
-
 
   set %true.base.stat %attack.rating
 
@@ -350,81 +333,11 @@ alias calculate_damage_weapon {
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 1
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) {
-
-    ; Set the level ratio
-
-    if (%flag = monster) { 
-      set %temp.strength %base.stat
-      if (%temp.strength > 800) { set %temp.strength $calc(700 + (%temp.strength / 40))
-        set %temp.strength $round(%temp.strength,0)
-        set %level.ratio $calc(%temp.strength / %enemy.defense)
-      }
-      if (%temp.strength <= 800) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
-    }
-
-    if ((%flag = $null) || (%flag = npc))  { 
-      set %temp.strength %base.stat
-      if (%temp.strength > 6000) { set %temp.strength $calc(6000 + (%temp.strength / 3))
-        set %temp.strength $round(%temp.strength,0)
-        set %level.ratio $calc(%temp.strength / %enemy.defense)
-        unset %temp.strength
-      }
-      if (%temp.strength <= 6000) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
-    }
-
-    ; Calculate the Level Ratio
-    set %level.ratio $calc($readini($char($1), battle, str) / %enemy.defense)
-
-    var %attacker.level $get.level($1)
-    var %defender.level $get.level($3)
-
-    if (%attacker.level > %defender.level) { inc %level.ratio .3 }
-    if (%attacker.level < %defender.level) { dec %level.ratio .3 }
-
-    if (%level.ratio > 2) { set %level.ratio 2 }
-    if (%level.ratio <= .02) { set %level.ratio .02 }
-
-    unset %temp.strength
-
-    ; And let's get the final attack damage..
-    %attack.damage = $round($calc(%attack.damage * %level.ratio),0)
-  }
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 2
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 2) { 
-    $calculate_pDIF($1, $3, melee)
-    if (%flag != $null) { 
-      if ($get.level($1) >= $get.level($3)) {   set %attack.damage $round($calc(%attack.damage / 3.5),0)  }
-      if ($get.level($1) < $get.level($3)) {   set %attack.damage $round($calc(%attack.damage / 4.2),0)  }
-    }
-    if (%flag = $null) {
-      if ($get.level($1) >= $get.level($3)) {   set %attack.damage $round($calc(%attack.damage / 2.8),0)  }
-      if ($get.level($1) < $get.level($3)) {   set %attack.damage $round($calc(%attack.damage / 3.9),0)  }
-    }
-
-    %attack.damage = $round($calc(%attack.damage  * %pDIF),0)
-    unset %pdif 
-  }
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 3
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  if ($readini(system.dat, system, BattleDamageFormula) = 3) { 
-    %attack.def.ratio = $calc(%true.base.stat  / %enemy.defense)
-    %attack.damage = $round($calc(%attack.damage * %attack.def.ratio),0)
-    if ($mighty_strike_check($1) = true) { inc %attack.damage %attack.damage }
-    unset %attack.def.ratio
-  }
-
+  %attack.def.ratio = $calc(%true.base.stat  / %enemy.defense)
+  %attack.damage = $round($calc(%attack.damage * %attack.def.ratio),0)
+  if ($mighty_strike_check($1) = true) { inc %attack.damage %attack.damage }
+  unset %attack.def.ratio
 
   $calculate_attack_leveldiff($1, $3)
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 02/13/15
+;;;; Last updated: 02/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1050,29 +1050,12 @@ alias calculate_damage_techs {
 
   var %attack.rating $round($calc(%base.stat / 2),0)
 
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) {
-    if (%base.stat > 10) {  
-      if ($readini($char($1), info, flag) = $null) {  set %base.stat $round($calc(%base.stat / 1.151),0) }
-      if ($readini($char($1), info, flag) != $null) { set %base.stat $round($calc(%base.stat / 2),0) }
-    }
+  if (%attack.rating >= 1000) {  
+    var %base.stat.cap .15
+    if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
+    if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
+    set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
   }
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 2) {
-    if (%base.stat > 999) {  
-      if ($readini($char($1), info, flag) = $null) {  set %base.stat $round($calc(999 + %base.stat / 10),0) }
-      if ($readini($char($1), info, flag) != $null) { set %base.stat $round($calc(999 + %base.stat / 5),0) }
-    }
-  }
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 3) {
-    if (%attack.rating >= 1000) {  
-      var %base.stat.cap .15
-      if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
-      if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
-      set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
-    }
-  }
-
 
   var %tech.base $readini($dbfile(techniques.db), p, $2, BasePower)
 
@@ -1199,70 +1182,10 @@ alias calculate_damage_techs {
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 1
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) {
-    ; Set the level ratio
-    var %flag $readini($char($1), info, flag) 
-    if (%flag = monster) { 
-      set %temp.strength %base.stat
-      if (%temp.strength > 900) { set %temp.strength $calc(900 + (%temp.strength / 25)) | set %level.ratio $calc(%temp.strength / %enemy.defense)    }
-      if (%temp.strength <= 900) {  set %level.ratio $calc($readini($char($1), battle, %base.stat.needed) / %enemy.defense) }
-    }
-
-    if ((%flag = $null) || (%flag = npc)) { 
-      set %temp.strength %base.stat
-      if (%temp.strength > 5000) { set %temp.strength $calc(5000 + (%temp.strength / 5)) | set %level.ratio $calc(%temp.strength / %enemy.defense)  }
-      if (%temp.strength <= 5000) {  set %level.ratio $calc($readini($char($1), battle, %base.stat.needed) / %enemy.defense) }
-    }
-
-    unset %temp.strength
-
-    var %attacker.level $get.level($1)
-    var %defender.level $get.level($3)
-
-    if (%attacker.level > %defender.level) { inc %level.ratio .3 }
-    if (%attacker.level < %defender.level) { dec %level.ratio .3 }
-
-    if (%level.ratio > 2) { set %level.ratio 2 }
-    if (%level.ratio <= .02) { set %level.ratio .02 }
-
-    ; And let's get the final attack damage..
-    %attack.damage = $round($calc(%attack.damage * %level.ratio),0)
-  }
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 2
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 2) { 
-
-    if ($readini($dbfile(techniques.db), $2, magic) = yes) {  
-      $calculate_pDIF($1, $3, magic)  
-      set %attack.damage $round($calc(%attack.damage / 3.2),0) 
-    }
-    else { 
-      $calculate_pDIF($1, $3, tech) 
-      set %attack.damage $round($calc(%attack.damage / 1.75),0) 
-    }
-
-    %attack.damage = $round($calc(%attack.damage  * %pDIF),0)
-    unset %pdif 
-  }
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 3
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 3) { 
-    %attack.def.ratio = $calc(%true.base.stat  / %enemy.defense)
-    %attack.damage = $round($calc(%attack.damage * %attack.def.ratio),0)
-    unset %attack.def.ratio
-  }
+  %attack.def.ratio = $calc(%true.base.stat  / %enemy.defense)
+  %attack.damage = $round($calc(%attack.damage * %attack.def.ratio),0)
+  unset %attack.def.ratio
 
   if (enhance-tech isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
 
@@ -1526,11 +1449,7 @@ alias calculate_damage_magic {
   }
 
   if ($readini($char($1), skills, elementalseal.on) = on) { 
-
-    if ($readini(system.dat, system, BattleDamageFormula) = 1) {   var %enhance.value $readini($char($1), skills, ElementalSeal) * .40 }
-    if ($readini(system.dat, system, BattleDamageFormula) = 2) { var %enhance.value $readini($char($1), skills, ElementalSeal) * .195 }
-    if ($readini(system.dat, system, BattleDamageFormula) = 3) { var %enhance.value $readini($char($1), skills, ElementalSeal) * .199 }
-
+    var %enhance.value $calc($readini($char($1), skills, ElementalSeal) * .199)
     inc %magic.bonus.modifier %enhance.value
   }
 

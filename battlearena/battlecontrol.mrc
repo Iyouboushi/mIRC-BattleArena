@@ -298,7 +298,8 @@ alias startnormal {
   var %start.battle.type $1
 
   if (($readini(battlestats.dat, conquest, MonsterInfluence) >= 100) && ($current.battlestreak > 20)) {
-    var %outpost.chance $rand(1,100)
+    if (%start.battle.type = $null) {  var %outpost.chance $rand(1,100) }
+    if (%start.battle.type != $null) { var %outpost.chance 100 }
     if (%outpost.chance <= 20) { var %start.battle.type defendoutpost } 
   }
 

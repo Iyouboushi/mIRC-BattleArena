@@ -305,25 +305,6 @@ on 50:TEXT:!toggle automated ai battle*:*:{
   }
 }
 
-; Bot Admins can toggle which battle formulas are used.
-on 50:TEXT:!toggle battle formula*:*:{   
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) { 
-    writeini system.dat system BattleDamageFormula 2
-    $display.message($readini(translation.dat, system, NewDmgFormulaIsOn), global)
-    halt
-  }
-  if ($readini(system.dat, system, BattleDamageFormula) = 2) { 
-    writeini system.dat system BattleDamageFormula 3
-    $display.message($readini(translation.dat, system, NewDmgFormulaIsOn3), global)
-    halt
-  }
-  if ($readini(system.dat, system, BattleDamageFormula) = 3) { 
-    writeini system.dat system BattleDamageFormula 1
-    $display.message($readini(translation.dat, system, NewDmgFormulaIsOff), global)
-    halt
-  }
-}
-
 ON 50:TEXT:!mimic chance*:*: {
   if ($3 !isnum 1-100) { $display.private.message(4Invalid chance number. Valid numbers are 1-100) | halt }
   writeini system.dat system MimicChance $3 | $display.private.message(3Mimic chance set to: $3 percent)

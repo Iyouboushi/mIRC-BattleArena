@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 02/05/15
+;;;; Last updated: 02/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1110,16 +1110,6 @@ ON 50:Chat:!toggle automated battle system*: {
   else {
     writeini system.dat system automatedbattlesystem off
     $display.message($readini(translation.dat, system, AutomatedBattleOff), global)
-  }
-}
-ON 50:Chat:!toggle battle formula*: { 
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) { 
-    writeini system.dat system BattleDamageFormula 2
-    $display.message($readini(translation.dat, system, NewDmgFormulaIsOn), global)
-  }
-  else { 
-    writeini system.dat system BattleDamageFormula 1
-    $display.message($readini(translation.dat, system, NewDmgFormulaIsOff), global)
   }
 }
 

@@ -70,7 +70,6 @@ alias auctionhouse.winners {
 
 }
 
-
 ; Bid on an item
 alias auctionhouse.bid {
   ; Is the AH system enabled?  Is there an auction to bid on?

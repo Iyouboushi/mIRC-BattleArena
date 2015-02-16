@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/14/15
+;;;; Last updated: 02/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -783,12 +783,9 @@ alias calculate_damage_items {
   }
 
   ; Now we want to increase the base damage by a small fraction of the user's int.
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) {   var %base.stat $round($calc($readini($char($1), battle, int) / 20),0) }
-  if ($readini(system.dat, system, BattleDamageFormula) >= 2) {  
-    var %base.stat $readini($char($1), battle, int)
-    if (%base.stat >= 999) { var %base.stat $round($calc(999 + (%base.stat / 500)),0) }
-    else {  var %base.stat $round($calc($readini($char($1), battle, int) / 20),0) }
-  }
+  var %base.stat $readini($char($1), battle, int)
+  if (%base.stat >= 999) { var %base.stat $round($calc(999 + (%base.stat / 500)),0) }
+  else {  var %base.stat $round($calc($readini($char($1), battle, int) / 20),0) }
 
   inc %attack.damage %base.stat
 
@@ -824,50 +821,18 @@ alias calculate_damage_items {
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 1
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  var %minimum.damage %item.base 
+  var %ratio $calc(%attack.damage / %enemy.defense)
 
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) { 
+  if (%ratio >= 1.3) { set %ratio 1.3 | set %minimum.damage $round($calc(%item.base * 1.5),0) } 
 
-    ; Because it's an item, the enemy's int will play a small part too.
-    var %int.bonus $round($calc($readini($char($3), battle, int) / 2),0)
-    inc %enemy.defense %int.bonus
+  var %maximum.damage $round($calc(%attack.damage * %ratio),0)
+  if (%maximum.damage >= $calc(%minimum.damage * 18)) { set %maximum.damage $round($calc(%minimum.damage * 18),0) }
+  if (%maximum.damage <= %minimum.damage) { set %maximum.damage %minimum.damage }
 
-    ; Set the level ratio
-    if ($readini($char($1), info, flag) = $null) { 
-      set %level.ratio $calc($readini($char($1), battle, %base.stat) / %enemy.defense)
-    }
+  set %attack.damage $rand(%minimum.damage, %maximum.damage) 
 
-    if (%level.ratio > 2.5) { set %level.ratio 2 }
-
-    ; And let's get the final attack damage..
-    %attack.damage = $round($calc(%attack.damage * %level.ratio),0)
-    if ((%attack.damage > 30000) && ($readini($char($1), info, flag) = $null)) { 
-      set %temp.damage $calc(%attack.damage / 100) 
-      set %attack.damage $calc(30000 + %temp.damage)
-      unset %temp.damage
-      if (%attack.damage >= 50000) { set %attack.damage $rand(45000,46000) }
-    }
-    if ((%attack.damage > 2500) && ($readini($char($1), info, flag) = monster)) { set %attack.damage 2000 }
-  }
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 2 & 3
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  if ($readini(system.dat, system, BattleDamageFormula) >= 2) { 
-    var %minimum.damage %item.base 
-    var %ratio $calc(%attack.damage / %enemy.defense)
-
-    if (%ratio >= 1.3) { set %ratio 1.3 | set %minimum.damage $round($calc(%item.base * 1.5),0) } 
-
-    var %maximum.damage $round($calc(%attack.damage * %ratio),0)
-    if (%maximum.damage >= $calc(%minimum.damage * 18)) { set %maximum.damage $round($calc(%minimum.damage * 18),0) }
-    if (%maximum.damage <= %minimum.damage) { set %maximum.damage %minimum.damage }
-
-    set %attack.damage $rand(%minimum.damage, %maximum.damage) 
-  }
   inc %attack.damage $rand(1,10)
 
   unset %enemy.defense
@@ -875,7 +840,6 @@ alias calculate_damage_items {
   if (enhance-item isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
 
   $guardian_style_check($3)
-
 
   if ($readini($dbfile(items.db), $2, ignoremetaldefense) != true) { 
     $metal_defense_check($3, $1)

@@ -481,24 +481,10 @@ boost_monster_stats {
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; Adjust the monster's weapon
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; Formula 1
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    if ($readini(system.dat, system, BattleDamageFormula) = 1) { 
-      if (%current.monster.weapon.level < %winning.streak) { set %current.monster.weapon.level $round($calc(%winning.streak / 2),0) | writeini $char($1) weapons %current.monster.weapon %current.monster.weapon.level }
+    if (%current.monster.weapon.level < %winning.streak) { set %current.monster.weapon.level.temp $round($calc(%winning.streak / 5),0) 
+      if (%current.monster.weapon.level.temp < %current.monster.weapon.level) { writeini $char($1) weapons %current.monster.weapon %current.monster.weapon.level }
+      else { writeini $char($1) weapons %current.monster.weapon %current.monster.weapon.level.temp }
     }
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; Formula 2 & 3
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    if ($readini(system.dat, system, BattleDamageFormula) >= 2) { 
-      if (%current.monster.weapon.level < %winning.streak) { set %current.monster.weapon.level.temp $round($calc(%winning.streak / 5),0) 
-        if (%current.monster.weapon.level.temp < %current.monster.weapon.level) { writeini $char($1) weapons %current.monster.weapon %current.monster.weapon.level }
-        else { writeini $char($1) weapons %current.monster.weapon %current.monster.weapon.level.temp }
-      }
-    }
-
-
   }
   unset %increase.amount | unset %current.monster.weapon | unset %current.monster.weapon.level
 }
@@ -517,164 +503,13 @@ boost_monster_hp {
   if ($readini($char($1), info, BattleStats) = ignoreHP) { return }
 
   set %hp $readini($char($1), BaseStats, HP)
-  var %increase.amount 0
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ; FORMULA 1
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  var %temp.hp.needed $round($calc(%hp + ((($return_winningstreak - 3)  / 5) * 50)),0)
+  if (%hp < %temp.hp.needed) { var %hp %temp.hp.needed } 
 
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) { 
-    if ($2 = doppelganger) {  var %increase.amount $calc($3 * 2) }
-    if ($2 = warmachine) {  var %increase.amount $calc($3 * 5) }
-    if ($2 = demonwall) {  var %increase.amount $calc($3 * 3) }
-    if ($2 = evolve) { var %increase.amount $calc($3 * 2) }
-    if ($2 = bloodpact) { var %increase.amount $calc($3 * 15) }
-    if ($2 = elderdragon) {  var %increase.amount $calc($3 * 15) }
-
-    if (($2 = $null) || ($2 = monstersummon)) { 
-      if ($isfile($boss($1)) = $true) {
-        if ($3 <= 100) {  var %increase.amount $calc($3 * 30) }
-        if (($3 > 100) && ($3 <= 300)) {  var %increase.amount $calc($3 * 35) }
-        if (($3 > 300) && ($3 <= 600)) { var %increase.amount $calc($3 * 40) }
-        if ($3 > 600) { var %increase.amount $calc($3 * 45) }
-
-      }
-      if ($isfile($boss($1)) = $false) {
-        if ($3 <= 100) {  var %increase.amount $calc($3 * 10) }
-        if (($3 > 100) && ($3 <= 300)) {  var %increase.amount $calc($3 * 15) }
-        if (($3 > 300) && ($3 <= 600)) { var %increase.amount $calc($3 * 20) }
-        if ($3 > 600) { var %increase.amount $calc($3 * 25) }
-      }
-      if ($isfile($npc($1)) = $true) {  var %increase.amount $calc($3 * 15) }
-      if ($isfile($summon($4)) = $true) {   var %increase.amount $calc($3 * 15) }
-    }
-
-
-    if (%increase.amount = 0) { inc %increase.amount $rand(1,10) }
-
-    %hp = $round($calc(%hp + %increase.amount),0)
-
-    var %winning.streak $readini(battlestats.dat, battle, winningstreak)
-    if (%winning.streak < 10000) {
-      if (%hp > 100000) { %hp = 100000 }
-    }
-
-    if (%hp <= 0) { %hp = 10 }
-
-    if ($2 = portal) {
-      var %boss.level $readini($char($1), info, bosslevel) 
-      if (%boss.level = $null) { var %boss.level 500 }
-
-      if (%boss.level <= 10) { inc %hp $rand(1000,2000) }
-      if ((%boss.level > 10) && (%boss.level <= 50)) { inc %hp $rand(2500,5000) }
-      if ((%boss.level > 50) && (%boss.level <= 100))  { inc %hp 10000 }
-      if ((%boss.level > 100) && (%boss.level <= 200)) { inc %hp 15000 }
-      if ((%boss.level > 200) && (%boss.level <= 500)) { inc %hp 40000 }
-      if ((%boss.level > 500) && (%boss.level <= 800)) { inc %hp 50000 }
-      if ((%boss.level > 800) && (%boss.level < 1000)) { inc %hp 80000 }
-      if (%boss.level > 1000) { inc %hp 100000 }
-    }
-    %hp = $round($calc(%hp + %increase.amount),0)
-  }
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ; FORMULA 2
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  if ($readini(system.dat, system, BattleDamageFormula) >= 2) { 
-
-    if ($2 = doppelganger) {  var %increase.amount $calc($3 * 1.5) }
-    if ($2 = warmachine) {  var %increase.amount $calc($3 * 2) }
-    if ($2 = elderdragon) {  var %increase.amount $calc($3 * 3) }
-    if ($2 = demonwall) {  var %increase.amount $calc($3 * 2) }
-    if ($2 = evolve) { var %increase.amount $calc($3 * 1.5) }
-    if ($2 = monstersummon) { var %increase.amount $calc($3 * 1.5) }
-
-    if (($2 = $null) || ($2 = monstersummon)) { 
-
-      if ($isfile($boss($1)) = $true) {
-        if ($3 <= 100) {  var %increase.amount $calc($3 * 16) }
-        if (($3 > 100) && ($3 <= 300)) {  var %increase.amount $calc($3 * 19) }
-        if (($3 > 300) && ($3 <= 600)) { var %increase.amount $calc($3 * 20) }
-        if ($3 > 600) { var %increase.amount $calc($3 * 25) }
-
-        if (%portalbonus = true) { inc %increase.amount $rand(100,1000) }
-
-        %hp = $round($calc(%hp + %increase.amount),0)
-
-        ; Check for max HP
-        if (%hp > 15000) { %hp = $rand(15000,16000) }
-        if (%hp <= 0) { %hp = 10 }
-      }
-
-      if ($isfile($boss($1)) = $false) {
-        if ($3 <= 100) {  var %increase.amount $calc($3 * 3) }
-        if (($3 > 100) && ($3 <= 300)) {  var %increase.amount $calc($3 * 4) }
-        if (($3 > 300) && ($3 <= 600)) { var %increase.amount $calc($3 * 5) }
-        if ($3 > 600) { var %increase.amount $calc($3 * 6) }
-        if (%increase.amount = 0) { inc %increase.amount $rand(1,10) }
-
-        %hp = $round($calc(%hp + %increase.amount),0)
-
-        ; Check for max HP
-        var %winning.streak $readini(battlestats.dat, battle, winningstreak)
-        if (%winning.streak < 1000) {
-          if (%hp > 6000) { %hp = $rand(6000,6100) }
-        }
-        if (%hp <= 0) { %hp = 10 }
-      }
-
-      if ($isfile($npc($1)) = $true) {  
-        var %increase.amount $calc($3 * 5)
-        %hp = $round($calc(%hp + %increase.amount),0)
-
-        ; Check for max HP
-        if (%hp > 10000) { %hp = 10000 }
-        if (%hp <= 0) { %hp = 10 }
-        %hp = $round($calc(%hp + %increase.amount),0)
-      }
-
-      if ($isfile($summon($4)) = $true) {   
-        var %increase.amount $calc($3 * 3)
-        %hp = $round($calc(%hp + %increase.amount),0)
-
-        ; Check for max HP
-        if (%hp > 8000) { %hp = 8000 }
-        if (%hp <= 0) { %hp = 10 }
-      }
-
-    }
-
-    if ($2 = bloodpact) { var %increase.amount $calc($3 * 5) 
-      if (%increase.amount = 0) { inc %increase.amount $rand(1,10) }
-
-      %hp = $round($calc(%hp + %increase.amount),0) 
-
-      if (%hp > 8000) { %hp = 8000 }
-      if (%hp <= 0) { %hp = 10 }
-    }
-
-    if ($2 = portal) {
-      var %boss.level $readini($char($1), info, bosslevel) 
-      if (%boss.level = $null) { var %boss.level 500 }
-
-      if (%boss.level <= 10) { inc %hp $rand(300,400) }
-      if ((%boss.level > 10) && (%boss.level <= 50)) { inc %hp $rand(500,800) }
-      if ((%boss.level > 50) && (%boss.level <= 100))  { inc %hp $rand(1000,1500) }
-      if ((%boss.level > 100) && (%boss.level <= 200)) { inc %hp $rand(1200,1800) }
-      if ((%boss.level > 200) && (%boss.level <= 500)) { inc %hp $rand(2000,2500) }
-      if ((%boss.level > 500) && (%boss.level <= 800)) { inc %hp $rand(3000,3500) }
-      if ((%boss.level > 800) && (%boss.level <= 1000)) { inc %hp $rand(7000,7500) }
-      if (%boss.level > 1000) { inc %hp $rand(10000,15000) }
-
-      %hp = $round($calc(%hp + %increase.amount),0)
-      inc %hp $round($calc($readini($txtfile(battle2.txt), BattleInfo, PlayerLevels) * .10),0)
-
-    }
-  }
+  var %increase.amount 1
 
   if ($2 = rage) { %hp = $rand(120000,150000) }
-
 
   if (%battle.type = ai) { 
     if ($readini(system.dat, system, IgnoreDmgCap) != true) { var %hp $rand(2000,2500) }
@@ -685,42 +520,41 @@ boost_monster_hp {
     inc %hp %more.hp
   }
 
+  var %hp.modifier 1
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ; FORMULA 3
-  ; modified 02/13/15
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  if ($readini(system.dat, system, BattleDamageFormula) = 3) { 
+  if ($return_winningstreak < 10) { var %hp.modifier .2 }
 
-    var %hp.modifier 1
+  if ($return_winningstreak >= 10) {
 
-    if ($return_winningstreak >= 10) {
+    if ($return_winningstreak <= 500) { inc %hp.modifier $calc(.01 * $return_winningstreak) }
+    else { inc %hp.modifier $calc(.003 * $return_winningstreak) }
 
-      if ($return_winningstreak <= 500) { inc %hp.modifier $calc(.01 * $return_winningstreak) }
-      else { inc %hp.modifier $calc(.003 * $return_winningstreak) }
-
-      if (%battle.type = boss) { inc %hp.modifier .01 }
-      if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier .01 }
-    }
-
-    if (%battle.type = ai) {  
-      if (%ai.battle.level > 500) { inc %hp.modifier 1 }
-    }
-
-    if (%battle.type = orbfountain) { 
-      if (%hp.modifier > 1.2) { var %hp.modifier 1.2 } 
-    }
-
-    ; Increase the hp modifier if more than 1 player is in battle..
-    if ($return_playersinbattle > 1) {
-      var %increase.amount $round($calc($return_playersinbattle / 2),0)
-      inc %hp.modifier $calc(%increase.amount * .01)
-    }
-
-    var %hp $round($calc(%hp * %hp.modifier)),0)
-
-    if (%hp > 15000) { var %hp $round($calc(15000 + (%hp * .01)),0) }
+    if (%battle.type = boss) { inc %hp.modifier .01 }
+    if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier .01 }
   }
+
+  echo -a hp modifier: %hp.modifier
+  echo -a monster hp: %hp
+
+  if (%battle.type = ai) {  
+    if (%ai.battle.level > 500) { inc %hp.modifier 1 }
+  }
+
+  if (%battle.type = orbfountain) { 
+    if (%hp.modifier > 1.2) { var %hp.modifier 1.2 } 
+  }
+
+  ; Increase the hp modifier if more than 1 player is in battle..
+  if ($return_playersinbattle > 1) {
+    var %increase.amount $round($calc($return_playersinbattle / 2),0)
+    inc %hp.modifier $calc(%increase.amount * .01)
+  }
+
+  var %hp $round($calc(%hp + (%hp * %hp.modifier))),0)
+
+  echo -a monster hp after: %hp
+
+  if (%hp > 15000) { var %hp $round($calc(15000 + (%hp * .01)),0) }
 
   writeini $char($1) BaseStats HP $round(%hp,0)
   writeini $char($1) Battle HP $round(%hp,0)
@@ -3521,88 +3355,9 @@ covercheck {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; These functions are for
-; Battle Formula 2
+; Modifies attack based on
+; level difference
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-calculate_pDIF {
-  ; $1 = attacker
-  ; $2 = defender
-  ; $3 = melee, tech, magic
-
-  %cRatio = $calc(%attack.damage / %enemy.defense)
-
-  var %attacker.level $get.level($1)
-  var %defender.level $get.level($2)
-  var %level.difference $calc(%attacker.level - %defender.level)
-
-  if (($readini($char($1), info, flag) = $null) && ($readini($char($2), info, flag) = monster)) { 
-    if (%level.difference >= 50) { var %level.difference 50 }
-    if (%level.difference <= -500) { var %level.difference -500 }
-  }
-
-  else { 
-    if (%level.difference >= 50) { var %level.difference 50 }
-    if (%level.difference <= -40) { var %level.difference -40 }
-  }
-
-  var %cRatio.modifier $calc(0.05 * %level.difference)
-
-  inc %cRatio %cRatio.modifier
-
-  if (%cRatio > 2) { %cRatio = 2 }
-  else { %cRatio = $round(%cRatio, 3) }
-
-  $calculate_maxpDIF
-  $calculate_minpDIF
-
-  set %pDIF.max $round($calc(10 * %maxpDIF),0)
-  set %pDIF.min $round($calc(10 * %minpDIF),0)
-  set %pDIF $rand(%pDIF.min, %pDIF.max)
-
-  %pDIF = $round($calc(%pDIF / 10),3)
-
-  if (%pDIF <= 0) { 
-    if ($isfile($boss($1)) = $true) { %pDIF = .005 }
-    if (%battle.type = boss) { %pDIF = .005 }
-  }
-
-  unset %pDIF.max | unset %pDIF.min | unset %cRatio
-  unset %maxpDIF | unset %minpDIF 
-
-  if ($3 = melee) {
-    if ($mighty_strike_check($1) = true) {
-      if (%pDIF > 0) {  inc %pDIF .8 }
-      if (%pDIF <= 0) { set %pDIF .5 }
-    }
-  }
-
-  if ($3 = magic) {
-    if ($readini($char($1), skills, elementalseal.on) = on) { 
-      if (%pDIF > 0) {  inc %pDIF .8 }
-      if (%pDIF <= 0) { set %pDIF .5 }
-    }
-  }
-
-  if (%enemy.defense <= 5) {
-    if (%pDIF > 0) {  inc %pDIF .5 }
-    if (%pDIF <= 0) { set %pDIF .5 }
-  }
-}
-
-calculate_maxPDIF {
-  if (%cRatio <= 0.5) { set %maxpDIF $calc(0.4 + (1.2 * %cRatio)) }
-  if ((%cRatio > 0.5) && (%cRatio <= 0.833)) { set %maxpDIF 1 }
-  if ((%cRatio > 0.833) && (%cRatio <= 2)) { set %maxpDIF $calc(1 + (1.2 * (%cRatio - .833))) }
-}
-
-calculate_minPDIF {
-  if (%cRatio <= 1.25) { set %minpDIF $calc(-.5 + (%cRatio * 1.2)) }
-  if ((%cRatio > 1.25) && (%cRatio <= 1.5)) {  set %minpDIF 1 }
-  if ((%cRatio > 1.5) && (%cRatio <= 2)) { set %minpDIF $calc(-.8 + (1.2 * %cRatio)) }
-
-  if (%minpDIF <= 0) { set %minpDIF 1 }
-}
-
 calculate_attack_leveldiff {
   ; $1 = attacker
   ; $2 = defender
@@ -3654,6 +3409,9 @@ calculate_attack_leveldiff {
 
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Caps damage
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 cap.damage {
   ; $1 = attacker
   ; $2 = defender
