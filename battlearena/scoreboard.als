@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Scoreboard Generation
-;;;; Last updated: 01/31/15
+;;;; Last updated: 02/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate.scoreboard {
   set %totalplayers 0
@@ -200,6 +200,10 @@ get.score {
     inc %score $readini($char(%name), stuff, AuctionBids)
     inc %score $readini($char(%name), stuff, AuctionWins)
     inc %score $readini($char(%name), stuff, doubledollars)
+    inc %score $readini($char(%name), stuff, GardenItemsPlanted)
+    inc %score $readini($char(%name), stuff, WheelsSpun)
+    inc %score $readini($char(%name), stuff, TrustsUsed)
+    inc %score $readini($char(%name), stuff, DropsRewarded)
 
     inc %score $readini($char(%name), Styles, Trickster)
     inc %score $readini($char(%name), Styles, Guardian)
@@ -250,6 +254,10 @@ get.score {
     inc %score $readini($char(%name), stuff, TimesParried)
     inc %score $readini($char(%name), stuff, ItemsSold)
     inc %score $readini($char(%name), stuff, totalbets) 
+    inc %score $readini($char(%name), stuff, GardenItemsPlanted)
+    inc %score $readini($char(%name), stuff, WheelsSpun)
+    inc %score $readini($char(%name), stuff, TrustsUsed)
+    inc %score $readini($char(%name), stuff, DropsRewarded)
 
     var %doubledollars $readini($char(%name), stuff, doubledollars)
     if (%doubledollars > 0) { inc %score $round($calc(%doubledollars * .03),0) }
@@ -279,7 +287,6 @@ get.score {
     writeini $char(%name) scoreboard score %score
   write scoreboard.txt %name }
 }  
-
 
 
 generate.monsterdeathboard {
