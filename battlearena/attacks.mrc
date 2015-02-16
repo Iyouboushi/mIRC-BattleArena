@@ -71,7 +71,6 @@ alias attack_cmd {
   if ($person_in_mech($1) = false) {  $weapon_equipped($1) }
   if ($person_in_mech($1) = true) { set %weapon.equipped $readini($char($1), mech, equippedweapon) }
 
-
   ; If it's an AOE attack, perform that here.  Else, do a single hit.
 
   if ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe) {
@@ -109,7 +108,6 @@ alias attack_cmd {
       $deal_damage($2, $1, $readini($char($2), weapons, equippedLeft))
       $display_damage($1, $2, weapon, $readini($char($2), weapons, equippedLeft))
     }
-
 
     unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
     unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged | unset %covering.someone
@@ -163,16 +161,16 @@ alias calculate_damage_weapon {
   var %base.stat $readini($char($1), battle, str)
   $strength_down_check($1)
 
+  set %true.base.stat %base.stat
   var %attack.rating $round($calc(%base.stat / 2),0)
 
-  if (%attack.rating >= 1000) {  
+  if (%attack.rating >= 500) {  
     var %base.stat.cap .10
     if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
     if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
-    set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
+    set %base.stat $round($calc(500 + (%attack.rating * %base.stat.cap)),0) 
+    var %attack.rating %base.stat
   }
-
-  set %true.base.stat %attack.rating
 
   var %weapon.base $readini($char($1), weapons, $2)
   ;  inc %weapon.base $round($calc(%weapon.base * 1.5),0)
@@ -210,6 +208,7 @@ alias calculate_damage_weapon {
   ; Check for Killer Traits
   $killer.trait.check($1, $3)
 
+  ; Check for MightyStrike
   if ($person_in_mech($1) = false) { 
     ; Check for the skill "MightyStrike"
     if ($mighty_strike_check($1) = true) { 
@@ -224,7 +223,6 @@ alias calculate_damage_weapon {
       if ((%hp.percent > 2) && (%hp.percent < 10)) { %attack.damage = $round($calc(%attack.damage * 2),0) }
       if ((%hp.percent > 0) && (%hp.percent <= 2)) { %attack.damage = $round($calc(%attack.damage * 2.5),0) }
     }
-
   }
 
   ; Let's increase the attack by a random amount.
@@ -310,7 +308,6 @@ alias calculate_damage_weapon {
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
   if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
 
-
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
 
@@ -334,8 +331,10 @@ alias calculate_damage_weapon {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CALCULATE TOTAL DAMAGE.
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   %attack.def.ratio = $calc(%true.base.stat  / %enemy.defense)
   %attack.damage = $round($calc(%attack.damage * %attack.def.ratio),0)
+
   if ($mighty_strike_check($1) = true) { inc %attack.damage %attack.damage }
   unset %attack.def.ratio
 
@@ -377,14 +376,20 @@ alias calculate_damage_weapon {
   if ((%flag = monster) && ($readini($char($3), info, flag) = $null)) {
 
     var %min.damage $readini($dbfile(weapons.db), $2, BasePower)
-    inc %min.damage $round($calc(%attack.rating * .10),0)
+    inc %min.damage %attack.rating
 
-    if (%attack.damage <= 1) { 
+    var %level.difference $calc($get.level($1) / $get.level($3))
+    var %min.damage $round($calc(%min.damage * %level.difference),0)
+
+    if (%min.damage > 500) { var %min.damage 500 }
+    if (%min.damage < 1) { var %min.damage 1 }
+
+    if (%attack.damage <= 10) { 
       set %attack.damage $readini($dbfile(weapons.db), $2, BasePower)
-
-      if ($calc($get.level($3) - $get.level($1))  <= -300) { 
+      if ($calc($get.level($3) - $get.level($1))  >= -300) { 
         set %attack.damage 1
         set %min.damage $round($calc(%min.damage / 1.5),0)
+        if (%min.damage < 1) { var %min.damage 1 }
       }
     }
 

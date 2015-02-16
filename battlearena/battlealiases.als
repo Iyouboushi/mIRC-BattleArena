@@ -533,9 +533,6 @@ boost_monster_hp {
     if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier .01 }
   }
 
-  echo -a hp modifier: %hp.modifier
-  echo -a monster hp: %hp
-
   if (%battle.type = ai) {  
     if (%ai.battle.level > 500) { inc %hp.modifier 1 }
   }
@@ -551,8 +548,6 @@ boost_monster_hp {
   }
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier))),0)
-
-  echo -a monster hp after: %hp
 
   if (%hp > 15000) { var %hp $round($calc(15000 + (%hp * .01)),0) }
 
@@ -2251,7 +2246,6 @@ first_round_dmg_chk {
   if ((%current.turn = 1) || (%first.round.protection = yes)) { 
     if (%attack.damage <= 5) { return }
 
-
     if ($readini($char($1), info, flag) = monster) {
 
       if (($readini($char($2), info, flag) = $null) || ($2 = alliedforces_president)) {
@@ -3386,8 +3380,10 @@ calculate_attack_leveldiff {
   }
 
   if (($readini($char($1), info, flag) != $null) && ($readini($char($2), info, flag) = $null)) {
-    if (%level.difference >= 11) { 
-      if ((%level.difference >= 10) && (%level.difference >= 50)) { inc %attack.damage $round($calc(%attack.damage * .10),0) }
+
+    if (%level.difference >= 0) { 
+      if ((%level.difference >= 2) && (%level.difference < 10)) { inc %attack.damage $round($calc(%attack.damage * .05),0) }
+      if ((%level.difference >= 10) && (%level.difference <= 50)) { inc %attack.damage $round($calc(%attack.damage * .10),0) }
       if ((%level.difference > 50) && (%level.difference >= 100)) { inc %attack.damage $round($calc(%attack.damage * .15),0) }
       if ((%level.difference > 100) && (%level.difference >= 150)) { inc %attack.damage $round($calc(%attack.damage * .20),0) }
       if ((%level.difference > 150) && (%level.difference >= 300)) { inc %attack.damage $round($calc(%attack.damage * .25),0) }
@@ -3398,7 +3394,7 @@ calculate_attack_leveldiff {
     if (%level.difference <= 0) { 
       if ((%level.difference <= 0) && (%level.difference >= -10)) { dec %attack.damage $round($calc(%attack.damage * .10),0) }
       if ((%level.difference < -10) && (%level.difference >= -50)) { dec %attack.damage $round($calc(%attack.damage * .15),0) }
-      if ((%level.difference <= -50) && (%level.difference >= -100)) { dec %attack.damage $round($calc(%attack.damage * .18),0) }
+      if ((%level.difference < -50) && (%level.difference >= -100)) { dec %attack.damage $round($calc(%attack.damage * .18),0) }
       if ((%level.difference < -100) && (%level.difference >= -150)) { dec %attack.damage $round($calc(%attack.damage * .20),0) }
       if ((%level.difference < -150) && (%level.difference >= -300)) { dec %attack.damage $round($calc(%attack.damage * .22),0) }
       if ((%level.difference < -300) && (%level.difference >= -1000)) { dec %attack.damage $round($calc(%attack.damage * .25),0) }
