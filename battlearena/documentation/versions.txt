@@ -1180,6 +1180,7 @@ Battle Arena Bot VERSIONS
 - Changed the way the bot does the stats for monsters, npcs and summons upon summoning to the battlefield.
 - Changed the way the HP for monsters/summons/NPCs/bosses are boosted at the start of battle
 - Changed demon portals so that monsters spawning out of them will be slightly less than the battle streak.
+- Changed the special bosses to be have capped battles and different streak levels than in previous versions
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
@@ -1200,4 +1201,8 @@ Battle Arena Bot VERSIONS
 - Fixed a bug with shadow clones attacking themselves in PVP mode
 - Fixed a bug with items occasionally not showing damage correctly 
 - Fixed a bug in which players could trade armor they were still wearing
+- Fixed a bug in which players could bid on an auction house item without any allied notes
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
+- Removed the Final_Guard monster
+- Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
+- Removed the !toggle battle formula bot admin command
