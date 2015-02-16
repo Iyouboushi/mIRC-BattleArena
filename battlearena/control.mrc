@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 02/12/15
+;;;; Last updated: 02/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | echo -a 4,1Location: %debug.location | halt
@@ -227,6 +227,20 @@ on 50:TEXT:!toggle bot colors*:*:{
   else {
     writeini system.dat system AllowColors false
     $display.message($readini(translation.dat, system, AllowColorsOff), global)
+    halt
+  }
+}
+
+; Bot admins can toggle if the bot uses bold
+on 50:TEXT:!toggle bot bold*:*:{   
+  if ($readini(system.dat, system,AllowBold) = false) { 
+    writeini system.dat system AllowBold true
+    $display.message($readini(translation.dat, system, AllowBoldOn), global)
+    halt
+  }
+  else {
+    writeini system.dat system AllowBold false
+    $display.message($readini(translation.dat, system, AllowBoldOff), global)
     halt
   }
 }
