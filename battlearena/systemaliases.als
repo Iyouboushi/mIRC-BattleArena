@@ -1974,7 +1974,7 @@ fulls {
   if ($readini($char($1), Battle, IgnitionGauge) = $null) { writeini $char($1) Battle IgnitionGauge 0 }
 
   if ($readini($char($1), stuff, TotalDeaths) = $null) { writeini $char($1) stuff TotalDeaths 0 }
-  if ($readini($char($1), stuff, TotalFled) = $null) { writeini $char($1) stuff TotalFled 0 }
+  if ($readini($char($1), stuff, TimesFled) = $null) { writeini $char($1) stuff TimesFled 0 }
 
   ; Clear status
   $clear_status($1)
