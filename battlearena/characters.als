@@ -1198,7 +1198,7 @@ augments.list {
         if (%number.of.augments <= 13) {  %weapon.list = $addtok(%weapon.list,%weapon_to_add,46) }
         if ((%number.of.augments > 13) && (%number.of.augments <= 25)) { %augment.list2 = $addtok(%augment.list2, %weapon_to_add, 46) }
         if ((%number.of.augments > 25) && (%number.of.augments <= 40)) { %augment.list3 = $addtok(%augment.list3, %weapon_to_add, 46) }
-        if (%number.of.augments > 50) { %augment.list4 = $addtok(%augment.list4, %weapon_to_add, 46) }
+        if (%number.of.augments > 40) { %augment.list4 = $addtok(%augment.list4, %weapon_to_add, 46) }
       }
       inc %value 1 
     }
@@ -1244,7 +1244,8 @@ augments.list {
 
 augments.strength {
   ; CHECKING AUGMENTS
-  unset %augment.list | unset %augment.list.2 | unset %augment.list.3 |   unset %weapon.list | unset %base.weapon.list  | unset %weapons
+  unset %augment.list | unset %augment.list.2 | unset %augment.list.3 | unset %weapon.list | unset %base.weapon.list  | unset %weapons
+  unset %number.of.augments
 
   var %value 1 | var %augments.lines $lines($lstfile(augments.lst))
   if ((%augments.lines = $null) || (%augments.lines = 0)) { return }
@@ -1254,16 +1255,15 @@ augments.strength {
     var %augment.name $read -l $+ %value $lstfile(augments.lst)
 
     if ($augment.check($1, %augment.name) = true) {
-      if ($numtok(%augment.list,46) <= 11) { %augment.list = $addtok(%augment.list, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
-      if ($numtok(%augment.list,46) > 11) {
-        if ($numtok(%augment.list.2,46) <= 10) { %augment.list.2 = $addtok(%augment.list.2, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
-        if ($numtok(%augment.list.2,46) > 10) { 
-          if ($numtok(%augment.list.3,46) <= 10) { %augment.list.3 = $addtok(%augment.list.3, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
-          else { %augment.list.4 = $addtok(%augment.list.3, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
-        }
 
-      }
+      inc %number.of.augments 1
+
+      if (%number.of.augments <= 13) {  %augment.list = $addtok(%augment.list,%augment.name $+ [ $+ %augment.strength $+ ],46) }
+      if ((%number.of.augments > 13) && (%number.of.augments <= 25)) { %augment.list.2 = $addtok(%augment.list.2, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if ((%number.of.augments > 25) && (%number.of.augments <= 40)) { %augment.list.3 = $addtok(%augment.list.3, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if (%number.of.augments > 40) { %augment.list.4 = $addtok(%augment.list.4, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
     }
+
     unset %augment.strength
     inc %value 1 
   }
@@ -1272,15 +1272,13 @@ augments.strength {
   if ($chr(046) isin %augment.list ) { set %replacechar $chr(044) $chr(032)
     %augment.list = $replace(%augment.list, $chr(046), %replacechar)
   }
-
   if ($chr(046) isin %augment.list.2 ) { set %replacechar $chr(044) $chr(032)
     %augment.list.2 = $replace(%augment.list.2, $chr(046), %replacechar)
   }
-
   if ($chr(046) isin %augment.list.3 ) { set %replacechar $chr(044) $chr(032)
     %augment.list.3 = $replace(%augment.list.3, $chr(046), %replacechar)
   }
-  if ($chr(046) isin %augment.list.3 ) { set %replacechar $chr(044) $chr(032)
+  if ($chr(046) isin %augment.list.4 ) { set %replacechar $chr(044) $chr(032)
     %augment.list.4 = $replace(%augment.list.4, $chr(046), %replacechar)
   }
 
