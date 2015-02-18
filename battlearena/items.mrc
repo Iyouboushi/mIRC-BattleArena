@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/15/15
+;;;; Last updated: 02/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -438,7 +438,7 @@ alias item.trust {
   $fulls(%trust.npc) 
   $levelsync(%trust.npc, $get.level($1))
 
-  if ($readini($char(%trust.npc), basestats, hp) > 10000) { writeini $char(%trust.npc) basestats hp 10000 | writeini $char(%trust.npc) battle hp 10000) }
+  if ($readini($char(%trust.npc), basestats, hp) > 10000) { writeini $char(%trust.npc) basestats hp 10000 | writeini $char(%trust.npc) battle hp 10000 }
   writeini $char(%trust.npc) info TrustNPC true
 
   $set_chr_name(%trust.npc) 
