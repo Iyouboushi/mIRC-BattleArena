@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the bot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-battle.version { return 3.0beta_021615 } 
+battle.version { return 3.0beta_021815 } 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the system.dat file
@@ -2014,13 +2014,13 @@ fulls {
     if (%doubledollars = $null) { writeini $char($1) stuff doubledollars 100 | var %doubledollars 100 }
 
     if ($readini($char($1), stuff, loginpoints) = $null) { writeini $char($1) stuff LoginPoints 0 }
+
+    ; If someone is in a mech, take them out
+    if ($person_in_mech($1) = true) { writeini $char($1) mech inuse false }
   }
 
   ; Clear skill timers
   $clear_skill_timers($1)
-
-  ; If someone is in a mech, take them out
-  if ($person_in_mech($1) = true) { writeini $char($1) mech inuse false }
 
   ; Remove the Renkei value
   remini $char($1) Renkei
