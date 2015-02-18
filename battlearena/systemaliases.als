@@ -2995,6 +2995,10 @@ augment.check {
     if ($readinI($char($1), info, flag) = $null) { inc %augment.strength 2 | set %augment.found true }
   }
 
+  if ($return.potioneffect($1) = Augment Bonus) { 
+    inc %augment.strength 1 | set %augment.found true
+  }
+
   unset %weapon.augment  | unset %ignition.augment | unset %equipment.head.augment | unset %equipment.body.augment
   unset %equipment.legs.augment | unset %equipment.feet.augment | unset %equipment.hands.augment
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 02/14/15
+;;;; Last updated: 02/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1994,10 +1994,10 @@ alias shop.potioneffects {
 
   if ($2 = list) { 
     $display.private.message(2This shop is used to purchase special Potion Effects that will take effect during or after you next battle. You can only purchase one at a time.)
-    $display.private.message(12OrbBonus 2potion effect: 10 Beetle Shells2 + 10 Beetle Jaws2 + 1 Milk)
-    $display.private.message(12DoubleLife 2potion effect: 2 Roses2 + 1 Tulip2 + 2 Milk)
-    $display.private.message(12BonusSpoils 2potion effect: 2 BlueKinstone2 + GreenKinstone 1 2 + 1 Milk)
-
+    $display.private.message(12OrbBonus 2potion effect: 10 Beetle Shells2 + 10 Beetle Jaws2 + 1 Milk)
+    $display.private.message(12DoubleLife 2potion effect: 2 Roses2 + 1 Tulip2 + 2 Milk)
+    $display.private.message(12BonusSpoils 2potion effect: 2 Blue Kinstones2 + 2 Green Kinstones2 + 1 Milk)
+    $display.private.message(12AugmentBonus 2potion effect: 2 Redead Ashes2 + 2 Gibdo Bandages2 + 1 Milk)
     $display.private.message(2To purchase use !shop buy potioneffect [potion effect name]  such as !shop buy potioneffect OrbBonus)
   }
 
@@ -2036,8 +2036,6 @@ alias shop.potioneffects {
 
       halt
     }
-
-    ; More potion effects can go here.
 
     if ($3 = DoubleLife) { 
 
@@ -2098,8 +2096,38 @@ alias shop.potioneffects {
       halt
     }
 
-  }
+    if ($3 = AugmentBonus) { 
 
+      var %redeadashes.needed 2
+      var %gibdobandages.needed 2
+      var %milk.needed 1
+
+      if ($readini($char($1), item_amount, redeadAsh) != $null) { dec %redeadashes.needed $readini($char($1), item_amount, redeadAsh) }
+      if ($readini($char($1), item_amount, gibdoBandage) != $null) { dec %gibdobandages.needed $readini($char($1), item_amount, gibdoBandage) }
+      if ($readini($char($1), item_amount, milk) != $null) { dec %milk.needed $readini($char($1), item_amount, milk)  }
+
+      if (((%redeadashes.needed > 0) || (%gibdobandages.needed > 0) || (%milk.needed > 0))) { 
+        $display.private.message(4You do not have enough of the required materials for this potion effect.) 
+        if (%redeadashes.needed < 0) { var %redeadashes.needed 0 }
+        if (%gibdobandages.needed < 0) { var %gibdobandages.needed 0 }
+        if (%milk.needed < 0) { var %milk.needed 0 }
+        $display.private.message(4You still need the following:12 %redeadashes.needed $+ 4x redead ash $+ $iif(%redeadashes.needed > 1 || %redeadashes.needed = 0, es) -12 %gibdobandages.needed $+ 4x gibdo bandages $+ $iif(%gibdobandages.needed > 1 || %gibdobandages.needed = 0, s) -12 %milk.needed $+ x 4Milk)
+        halt
+      }
+
+      writeini $char($1) item_amount redeadbandage $calc($readini($char($1), item_amount, redeadAsh) - 2)
+      writeini $char($1) item_amount gibdobandage $calc($readini($char($1), item_amount, gibdoBandage) - 2)
+      writeini $char($1) item_amount Milk $calc($readini($char($1), item_amount, milk) - 1)
+
+      writeini $char($1) status PotionEffect Augment Bonus
+      $display.private.message(12 $+ %shopnpc.name takes the bandages, ashes and milk and gives a loud chuckle as she drops them into the couldron. After a moment she pours the milk in and creates a rotten-smelling potion. Upon drinking it, you feel as though your augments have been enhanced) 
+
+      halt
+    }
+
+
+
+  }
 
 }
 

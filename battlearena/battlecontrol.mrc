@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/15/15
+;;;; Last updated: 02/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1499,9 +1499,7 @@ alias endbattle {
         }
 
         $show.random.reward
-
       }
-
     }
   }
   if (($1 = none) || ($1 = $null)) { $display.message($readini(translation.dat, battle, BattleIsOver), global) }
@@ -2133,6 +2131,12 @@ alias battle.reward.redorbs {
       if ((%battle.type = boss) && ($current.battlestreak = 11)) {
         if (($1 = victory) && ($readini($char(%who.battle), battle, status) = alive)) { $achievement_check(%who.battle, JustGettingStarted) }
       }
+
+      ; Clear the Augment Bonus potion effect
+      if ($return.potioneffect(%who.battle) = Augment Bonus) { 
+        writeini $char(%who.battle) status PotionEffect none 
+      }
+
 
       inc %battletxt.current.line 1 
     }
