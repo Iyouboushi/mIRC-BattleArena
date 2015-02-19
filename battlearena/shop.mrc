@@ -2111,7 +2111,7 @@ alias shop.potioneffects {
         if (%redeadashes.needed < 0) { var %redeadashes.needed 0 }
         if (%gibdobandages.needed < 0) { var %gibdobandages.needed 0 }
         if (%milk.needed < 0) { var %milk.needed 0 }
-        $display.private.message(4You still need the following:12 %redeadashes.needed $+ 4x redead ash $+ $iif(%redeadashes.needed > 1 || %redeadashes.needed = 0, es) -12 %gibdobandages.needed $+ 4x gibdo bandages $+ $iif(%gibdobandages.needed > 1 || %gibdobandages.needed = 0, s) -12 %milk.needed $+ x 4Milk)
+        $display.private.message(4You still need the following:12 %redeadashes.needed $+ 4x redead ash $+ $iif(%redeadashes.needed > 1 || %redeadashes.needed = 0, es) -12 %gibdobandages.needed $+ 4x gibdo bandage $+ $iif(%gibdobandages.needed > 1 || %gibdobandages.needed = 0, s) -12 %milk.needed $+ 4x Milk)
         halt
       }
 
@@ -2125,12 +2125,9 @@ alias shop.potioneffects {
       halt
     }
 
-
-
   }
 
 }
-
 
 alias shop.trusts {
   if ($2 = list) {
