@@ -104,6 +104,7 @@ ViewMiscItems=$chr(3) $+ 3 $+  $+ %real.name has the following misc items: %m
 ViewMechCoreItems=$chr(3) $+ 3 $+  $+ %real.name has the following mech core items: %mech.items.list 
 ViewMechWeapons=$chr(3) $+ 3 $+  $+ %real.name has the following mech weapons: %mech.weapon.list 
 ViewSealItems=$chr(3) $+ 3 $+  $+ %real.name has the following seals: %seals.items.list 
+ViewPotionIngredientItems=$chr(3) $+ 3 $+  $+ %real.name has the following potion effect ingredient items: %potioningreident.items.list
 ViewArmorHead=$chr(3) $+ 3 $+  $+ %real.name has the following head armor: %armor.head 
 ViewArmorBody=$chr(3) $+ 3 $+  $+ %real.name has the following body armor: %armor.body
 ViewArmorLegs=$chr(3) $+ 3 $+  $+ %real.name has the following leg armor: %armor.legs

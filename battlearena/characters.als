@@ -788,14 +788,18 @@ readitems {
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewShopSpecialItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewShopSpecialItems)) }
   }
-
   if (%trust.items.list != $null) { 
     if ($2 = channel) { $display.message($readini(translation.dat, system, ViewTrustItems),private) }
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewTrustItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewTrustItems)) }
   }
+  if (%potioningreident.items.list != $null) { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewPotionIngredientItems),private) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewPotionIngredientItems)) }
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewPotionIngredientItems)) }
+  }
 
-  if ((((((((((%items.list = $null) && (%statplus.items.list = $null) && (%summons.items.list = $null) && (%reset.items.list = $null) && (%gems.items.list = $null) && (%portals.items.list = $null) && (%mech.items.list = $null) && (%special.items.list = $null) && (%trust.items.list = $null) && (%misc.items.list = $null)))))))))) { 
+  if (((((((((((%items.list = $null) && (%statplus.items.list = $null) && (%summons.items.list = $null) && (%reset.items.list = $null) && (%gems.items.list = $null) && (%portals.items.list = $null) && (%mech.items.list = $null) && (%special.items.list = $null) && (%trust.items.list = $null) && (%potioningredient.items.list = $null) && (%misc.items.list = $null))))))))))) { 
     if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoItems),private) }
     if ($2 = private) {  $display.private.message($readini(translation.dat, system, HasNoItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, HasNoItems)) }
