@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 02/15/15
+;;;; Last updated: 02/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | echo -a 4,1Location: %debug.location | halt
@@ -49,8 +49,9 @@ on 1:START: {
 
       var %value 1 | var %number.of.owners $numtok(%bot.owner, 46)
       while (%value <= %number.of.owners) {
-        set %name.of.owner $gettok(%bot.owner,%value,46)
-        .auser 50 %name.of.owner
+        set %name.of.owner $gettok(%bot.owner,%value,46) 
+        if (%value = 1) { .auser 100 %name.of.owner }
+        if (%value > 1) {  .auser 50 %name.of.owner }
         inc %value 1
       }
       unset %name.of.owner
