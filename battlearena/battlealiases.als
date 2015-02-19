@@ -505,6 +505,7 @@ boost_monster_hp {
   set %hp $readini($char($1), BaseStats, HP)
 
   var %temp.hp.needed $round($calc(%hp + ((($return_winningstreak - 3)  / 5) * 50)),0)
+
   if (%hp < %temp.hp.needed) { var %hp %temp.hp.needed } 
 
   var %increase.amount 1
@@ -547,7 +548,7 @@ boost_monster_hp {
     inc %hp.modifier $calc(%increase.amount * .01)
   }
 
-  var %hp $round($calc(%hp + (%hp * %hp.modifier))),0)
+  var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
   if (%hp > 15000) { var %hp $round($calc(15000 + (%hp * .01)),0) }
 
@@ -2354,6 +2355,7 @@ weapon_parry_check {
   if ($person_in_mech($1) = true) { return }
   if ($readini($char($2), status, stun) = yes) { return }
   if ($readini($char($2), status, paralysis) = yes) { return }
+  if ($person_in_mech($2) = true) { return }
   if ($readini($char($2), skills, truestrike.on) = on) { return }
 
   if ((%battle.rage.darkness = on) && ($readini($char($2), info, flag) = monster)) { return }
@@ -2562,6 +2564,10 @@ counter_melee {
 
   if ($readini($dbfile(weapons.db), $3, CanCounter) = false) { return }
 
+  ; If the attacker or defender is in a mech we can't counter, so return
+  if ($person_in_mech($2) = true) { return }
+  if ($person_in_mech($1) = true) { return }
+
   if ($readini($char($1), status, ethereal) = yes) { return }
   if (%guard.message != $null) { return }
 
@@ -2575,7 +2581,6 @@ counter_melee {
   if ($2 = orb_fountain) { return }
   if ($2 = lost_soul) { return }
   if ($readini($char($1), skills, truestrike.on) = on) { return }
-  if ($person_in_mech($2) = true) { return }
 
   if ((%battle.rage.darkness = on) && ($readini($char($2), info, flag) = monster)) { return }
 
