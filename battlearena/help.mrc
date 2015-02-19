@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 02/11/15
+;;;; Last updated: 02/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -25,7 +25,7 @@ alias gamehelp {
   unset %topic | unset %help.topics | unset %help.topics2 | unset %lines | unset %l | unset %help
 }
 
-ON 1:TEXT:!view-info*:*: { $view-info($1, $2, $3, $4) }
+ON 1:TEXT:!view-info*:*: { $view-info($nick, $2, $3, $4) }
 alias view-info {
   if ($2 = $null) { var %error.message 4Error: The command is missing what you want to view.  Use it like:  !view-info <tech $+ $chr(44) item $+ $chr(44) skill $+ $chr(44) weapon, armor, accessory, ignition, shield> <name> (and remember to remove the < >) | $display.private.message(%error.message) | halt }
   if ($3 = $null) { var %error.message 4Error: The command is missing the name of what you want to view.   Use it like:  !view-info <tech, item, skill, weapon, armor, accessory, ignition, shield> <name> (and remember to remove the < >) | $display.private.message(%error.message) | halt }
@@ -246,6 +246,7 @@ alias view-info {
     var %info.basePower $readini($dbfile(weapons.db), $3, BasePower) | var %info.basecost $readini($dbfile(weapons.db), $3, Cost)
     var %info.element $readini($dbfile(weapons.db), $3, Element) | var %info.abilities $readini($dbfile(weapons.db), $3, abilities)
     var %info.ignoredef $readini($dbfile(techniques.db), $3, IgnoreDefense)
+    var %info.linkedwpn $readini($dbfile(weapons.db), $3, LinkedWeapon)
 
     if ($chr(046) isin %info.abilities) { set %replacechar $chr(044) $chr(032)
       %info.abilities = $replace(%info.abilities, $chr(046), %replacechar)
@@ -261,6 +262,9 @@ alias view-info {
     $display.private.message([4Base Power12 %info.basepower $+ ] [4Cost12 %info.basecost black $iif(%info.basecost < 2, orb, orbs) $+ ] [4Element of Weapon12 %info.element $+ ] [4Is the weapon 2 Handed?12 $iif($readini($dbfile(weapons.db), $3, 2Handed) = true, yes, no) $+ 4]) 
     $display.private.message([4Abilities of the Weapon12 %info.abilities $+ ] %info.ignoredefense)
     $display.private.message([4Weapon Description12 $readini($dbfile(weapons.db), $3, Info) $+ ])
+
+    if (%info.linkedwpn != $null) { $display.private.message(12* This weapon is linked with the weapon4 %info.linkedwpn 12and may have more abilities and increased power when dual wielded with the linked weapon) }
+
   }
 
   if ($2 = shield ) {
