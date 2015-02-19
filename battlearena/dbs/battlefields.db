@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=stormy
+current=gloomy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Quarter
-CurrentMoonTurn=4
+CurrentMoonPhase=New
+CurrentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -38,8 +38,8 @@ remove or modify the time of day section as it will cause
 errors.
 ==============================================================
 [TimeOfDay]
-CurrentTimeOfDay=Night
-CurrentTimeOfDayTurn=2
+CurrentTimeOfDay=Morning
+CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -377,9 +377,33 @@ Event3Amount=$rand(50,300)
 
 [Laboratory]
 weather=calm
-NumberOfEvents=0
+NumberOfEvents=4
 limitations=no-item
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+
+event1=heal
+event1Chance=30
+Event1Desc=A young girl with blonde pigtails and a pink tutu suddenly hops around the laboratory. She stops at a button and says, "Ooooooh! What does this button do?" and presses it, a green light covering all heroes. Soon a short young boy with red hair and a lab suit chases the girl out of the lab. "Dee Dee! Get out of my laboratory!"
+Event1Target=players
+Event1Amount=$rand(50,100)
+
+event2=statusonly
+event2Chance=30
+Event2Desc=A young girl with blonde pigtails and a pink tutu suddenly hops around the laboratory. She stops at a button and says, "Ooooooh! What does this button do?" and presses it, an orange light covering %real.name $+ . Soon a short young boy with red hair and a lab suit chases the girl out of the lab. "Dee Dee! Get out of my laboratory!"
+Event2Target=random
+event2StatusType=TPRegenerating
+
+event3=damage
+event3Chance=30
+Event3Desc=A young girl with blonde pigtails and a pink tutu suddenly hops around the laboratory. She stops at a button and says, "Ooooooh! What does this button do?" and presses it, a large device dumps heavy junk on the monsters. Soon a short young boy with red hair and a lab suit chases the girl out of the lab. "Dee Dee! Get out of my laboratory!"
+Event3Target=monsters
+Event3Amount=$rand(30,80)
+
+Event4=damage
+Event4chance=30
+Event4Desc=A tall young boy with a black bowl-cut hairstyle appears before the heroes. "Welcome to my laboratory!" he shouts before activating a machine. An explosion hits all of the heroes, and the young boy runs off laughing. "HA HA HA! HA HA HA HA HA! HA HA HA!"
+Event4Target=players
+Even4Amount=$rand(30,80)
 
 
 [NorthPole]
@@ -503,6 +527,106 @@ event4desc=The French knight leader whispers "Fetchez la vache." to the other kn
 event4target=random
 event4amount=$rand(70,120)
 
+[Arsenal Gear]
+weather=gloomy
+NumberOfEvents=16
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+event1=statusonly
+event1statusType=annoyed
+event1Chance=30
+Event1Desc=Colonel: %real.name $+ , turn the game console off right now! %real.name $+ : What did you say? Colonel: The mission is afailure! Cut the power right now! %real.name $+ : What's wrong with you? Colonel: Don't worry, it's a game! It's a game just like usual. Rosemary: You'll ruin your eyes playing so close to the TV.
+Event1Target=random
+
+event2=statusonly
+event2statusType=annoyed
+event2Chance=30
+Event2Desc=Colonel: %real.name $+ , something happened to me last Thursday when I was driving home. I had a couple of miles to go, I looked up and saw a glowing orange object in the sky, to the east! It was moving very irregulary. Suddenly, there was intense light all around me, and when I came to, I was home. What do you think happened to me?  %real.name $+ : Huh? Colonel: Fine, forget it...
+Event2Target=random
+
+event3=statusonly
+event3statusType=annoyed
+event3Chance=30
+Event3Desc=Colonel: ...Infiltrate... ...the enemy fortress... ...Outer Heaven! ...Destroy... ...the final weapon... ...Metal Gear!
+Event3Target=random
+
+event4=statusonly
+event4statusType=annoyed
+event4Chance=30
+Event4Desc=Colonel: President Baker should be somewhere to the south of where you blasted through the wall. Hurry and save him before the terrorists discover his code.
+Event4Target=random
+
+event5=statusonly
+event5statusType=annoyed
+event5Chance=30
+Event5Desc=Colonel: You got a PSG-1? You can use that against Sniper Wolf. Hurry up and save Meryl!
+Event5Target=random
+
+event6=statusonly
+event6statusType=annoyed
+event6Chance=30
+Event6Desc=Colonel: Your mission is to infiltrate the fortress Galuade, rescue the hostages and neutralize Metal Gear before its assembly is complete.
+Event6Target=random
+
+event7=statusonly
+event7statusType=annoyed
+event7Chance=30
+Event7Desc=Colonel: Variety Level 13. Rescue Meryl, the "Return of Genola."
+Event7Target=random
+
+event8=statusonly
+event8statusType=annoyed
+event8Chance=30
+Event8Desc=Colonel: Kawanishi-Noseguchi, Kinunobebashi, Takiyama, Uguisunomori, Tsuzumigataki, Tada, Hirano, Ichinotorii, Uneno, Yamashita, Sasabe, Kofudai, Tokiwadai, Myoukenguchi.
+Event8Target=random
+
+event9=statusonly
+event9statusType=annoyed
+event9Chance=30
+Event9Desc=Colonel: I noticed this a while back, but you have far too many Game Overs. Sorry to be blunt, but you really stink at this game.
+Event9Target=random
+
+event10=statusonly
+event10statusType=annoyed
+event10Chance=30
+Event10Desc=Colonel: Honestly, though, you have been playing this game for a long time. Don't you have anything else to do with your time?
+Event10Target=random
+
+event11=statusonly
+event11statusType=annoyed
+event11Chance=30
+Event11Desc=Colonel: You seem to get a real thrill out of slaughtering the enemy. Are you frustrated about something?
+Event11Target=random
+
+event12=statusonly
+event12statusType=annoyed
+event12Chance=30
+Event12Desc=Colonel: I hear it's amazing when the famous purple stuffed worm in flap-jaw space with the tuning fork does a raw blink on Hara-Kiri rock. I need scissors! 61!
+Event12Target=random
+
+event13=statusonly
+event13statusType=annoyed
+event13Chance=30
+Event13Desc=Colonel: I was a North American Fall Webworm in my past life. Those were the good old days.... What were you in your former life?
+Event13Target=random
+
+event14=statusonly
+event14statusType=annoyed
+event14Chance=30
+Event14Desc=Colonel: Even my patience has its limits. I just can't leave this thing up to you any longer. I'll do the fighting! You can just go home!
+Event14Target=random
+
+Event15=statusonly
+Event15statusType=annoyed
+Event15Chance=30
+Event15Desc=Colonel: Actually, I am in really bad shape financially. I pay money to my ex-wife as part of our divorce, among other bills... I just had no choice but to make you pay for lunch the other day. I'm really sorry.
+Event15Target=random
+
+Event16=statusonly
+Event16chance=30
+Event16Desc=Colonel: An Anemone or Clematis plant's juice can cause a rash. When pruning them, it's a good idea to wear gloves.
+Event16Target=random
+
 [Raptor News Network Studio]
 weather=calm
 NumberOfEvents=0
@@ -529,10 +653,7 @@ Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
-[Slurm Factory]
-Weather=gloomy
-NumberOfEvents=0
-scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
 
 [Levithan's Heartcore]
 Weather=calm
@@ -639,7 +760,6 @@ NumberOfEvents=0
 limitations=no-mech
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
-
 [Deep Jungle]
 Weather=calm
 NumberOfEvents=0
@@ -722,3 +842,14 @@ NumberOfEvents=0
 limitations=no-mech.no-playerignition
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
+[Leene Square]
+weather=calm
+NumberOfEvents=0
+limitations=no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Zohar Cave]
+weather=gloomy
+NumberofEvents=0
+limitations=no-item
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
