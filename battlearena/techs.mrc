@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 02/15/15
+;;;; Last updated: 02/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1161,8 +1161,17 @@ alias calculate_damage_techs {
 
   ; Check for the modifier adjustments.
   var %tech.element $readini($dbfile(techniques.db), $2, element)
+
   if ((%tech.element != $null) && (%tech.element != none)) {
-    $modifer_adjust($3, %tech.element)
+    if ($numtok(%tech.element,46) = 1) { echo -a 1 | $modifer_adjust($3, %tech.element) }
+    if ($numtok(%tech.element,46) > 1) { 
+      var %element.number 1 
+      while (%element.number <= $numtok(%tech.element,46)) {
+        var %current.tech.element $gettok(%tech.element, %element.number, 46)
+        $modifer_adjust($3, %current.tech.element)
+        inc %element.number 
+      }
+    } 
   }
 
   ; Check to see if the target is resistant/weak to the tech itself
@@ -1170,6 +1179,8 @@ alias calculate_damage_techs {
 
   ; Check to see if the target is resistant/weak to the weapon itself
   $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+
+  echo -a starting damage: %starting.damage vs %attack.damage
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
