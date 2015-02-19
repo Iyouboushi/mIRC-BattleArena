@@ -416,7 +416,6 @@ alias enter {
     else { writeini $char($1) info battlethrottleturn $readini(battlestats.dat, battle, totalbattles) }
   } 
 
-
   set %curbat $readini($txtfile(battle2.txt), Battle, List)
   if ($istok(%curbat,$1,46) = $true) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, AlreadyInBattle), private) | halt  }
 
