@@ -1093,6 +1093,7 @@ Battle Arena Bot VERSIONS
 - Added the bot admin command: !password reset playername  -- This will reset the player's password and send the player
   what the new password is (so use it when the player is online). The bot admin will NOT see the new password. 
 - Added the bot admin command: !toggle battle messages  -- This will toggle between old and new battle announce messages
+- Added the bot admin command: !toggle bot bold  -- Will turn bold on/off for the bot
 - Added a CanDodge=true/false flag to techniques. If set to false, it will be impossible to dodge the technique.
 - Added a new flag in system.dat: EnableDNSCheck=true/false   This will allow the bot to attempt to get the host names
   of players. This is necessary to use the player limit.  If disabled the bot won't attempt to use it
@@ -1101,6 +1102,7 @@ Battle Arena Bot VERSIONS
   battle starting messages for orb fountains and bosses. If set to false it will show the old one.
 - Added a new system setting: ShowDeleteEcho  When set to =true  the bot will show every time it erases a .char file
   Useful for debugging if something is going amiss.
+- Added a new system.dat setting: AllowBold=true/false  If set to false the bot won't show bold
 - Added Capacity and Enhancement Points. 10,000 Capacity Points will equal 1 Enhancement Point. Players gain capacity 
   points by being in battles that are higher than streak 100. Note that the player level has to be within 10 of 
   the streak in order to gain capacity points. After streak 500, the amount is 500+(10% of streak level)
@@ -1181,6 +1183,8 @@ Battle Arena Bot VERSIONS
 - Changed the way the HP for monsters/summons/NPCs/bosses are boosted at the start of battle
 - Changed demon portals so that monsters spawning out of them will be slightly less than the battle streak.
 - Changed the special bosses to be have capped battles and different streak levels than in previous versions
+- Changed the auser of the bot owner (the first person in the bot admin list) to be 100 instead of 50
+- Changed techniques so that multiple elements may be checked via a tech's modifier adjust
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
@@ -1196,6 +1200,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
 - Fixed a bug with the drunk status effect
 - Fixed a bug with !augments list not showing in private even if the command was used in private
+- Fixed a bug with !augment strength
 - Fixed a bug with !unequip armor
 - Fixed a bug with shadow clones attacking their owners in PVP mode
 - Fixed a bug with shadow clones attacking themselves in PVP mode
