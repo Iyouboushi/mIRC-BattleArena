@@ -58,6 +58,11 @@ IgnoreQuicksilver=true
 CanTaunt=true
 TauntFile=taunts_bayonetta.txt
 
+[monster]
+type=
+TechLearn=false
+size=Medium
+
 [Status]
 Poison=no
 HeavyPoison=no
@@ -184,6 +189,8 @@ Chernobog=IgnoreGuardian.IgnoreDefense.EnhanceScythe.MeleeBonus.TecBonus.Enhance
 ScarboroughFair=MeleeBonus.TechBonus.MagicBonus.EnhanceParry.EnhanceRange.EnhanceStylePoints
 Kulshedra=MeleeBonus.EnhanceWhip.EnhanceDodge.TechBonus.EnhanceStylePoints
 Shuraba=Drain.RenkeiBonus.EnhanceKatana.MeleeBonus.TechBonus.EnhanceStylePoints
+UmbranArmorGuns=DecreaseMechEnergyCost.EnhanceRanged.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian.EnhanceCriticalHits
+
 
 [Styles]
 Equipped=WeaponMaster
@@ -195,10 +202,10 @@ WeaponMasterXP=1
 name=Umbran Armor
 inUse=false
 EngineLevel=$iif($current.battlestreak < 1000, 0, 1.2)
-HpMax=12000
-HpCurrent=12000
-EnergyMax=6000
-EnergyCurrent=6000
-EquippedCore=MagicAmplifier
+HpMax=20000
+HpCurrent=20000
+EnergyMax=10000
+EnergyCurrent=10000
+EquippedCore=UmbranMechCore
 EquippedWeapon=UmbranArmorGuns
-Augments=MagicBonus
+Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal

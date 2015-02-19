@@ -108,6 +108,14 @@ SoulOfMight=1
 SoulOfFright=1
 Crimtane_Ore=1
 
+[SilverSeal]
+Gem=Diamond
+Ingredients=SilverPointsCard.KindredCrest
+SuccessRate=100
+Amount=1
+SilverPointsCard=1
+KindredCrest=1
+
 ============
 Portal Items
 ============
@@ -123,6 +131,15 @@ Ingredients=PendantOfPower.PendantOfWisdom.PendantOfCourage
 SuccessRate=100
 Amount=1
 
+[UnknownPowerSource]
+Gem=Diamond
+Ingredients=SilverSeal.SoulofSight.SoulofMight.SoulofFright
+SuccessRate=100
+Amount=1
+SilverSeal=1
+SoulofSight=1
+SoulofMight=1
+SoulofFright=1
 
 ============
 Skill Items
@@ -1250,3 +1267,43 @@ SuccessRate=100
 Amount=1
 UnkaiArmorPiece=1
 UnkaiSeal=1
+
+===========
+MECH CORES
+===========
+[Vlar]
+Gem=Ruby
+Ingredients=AdvancedFusionEngine.SoulOfMight
+SuccessRate=100
+Amount=1
+AdvancedFusionEngine=1
+SoulOfMight=1
+
+[Magna]
+Gem=Ruby
+Ingredients=AdvancedFusionEngine.Vlar.SoulOfMight
+SuccessRate=100
+Amount=1
+AdvancedFusionEngine=1
+Vlar=1
+SoulOfMight=1
+
+[Omni]
+Gem=Ruby
+Ingredients=AdvancedFusionEngine.Vlar.Magna.SoulOfMight.AlphaWeltallCore
+SuccessRate=100
+Amount=1
+AdvancedFusionEngine=1
+Vlar=1
+Magna=1
+SoulOfMight=1
+AlphaWeltallCore=1
+
+[Leenex]
+Gem=Ruby
+Ingredients=AdvancedFusionEngine.Omni.SoulOfMight
+SuccessRate=100
+Amount=1
+AdvancedFusionEngine=1
+Omni=1
+SoulOfMight=1

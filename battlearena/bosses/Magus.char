@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 700, $round($calc(5000 + (4 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(4500 + $return_playerlevelstotal),0))
-Tp=400
-Str=350
-Def=350
-Int=350
-Spd=350
-IgnitionGauge=9000
-Name=Retinazer
+Hp=100
+Tp=50
+Str=20
+Def=15
+Int=25
+Spd=15
+IgnitionGauge=0
+Name=Magus
 
 
 [Battle]
-Hp=3000
-Tp=400
-Str=350
-Def=350
-Int=350
-Spd=350
-IgnitionGauge=9000
+Hp=100
+Tp=50
+Str=20
+Def=15
+Int=25
+Spd=15
+IgnitionGauge=0
 Status=alive
 
 
@@ -26,8 +26,9 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a demonic eye that is very large in size. It has a red iris.
-Rage=roars loudly!
+Char=is a tall man with long purple hair, long ears, and weas a red cape over his armor and clothing. The man also carries a large scythe in hand as well.
+Rage=screams in rage 
+BossQuote=The black wind howls...
 
 
 [Stuff]
@@ -38,19 +39,16 @@ Drops=
 
 [Info]
 Flag=monster
-Gender=its
-Gender2=it
+Gender=his
+Gender2=him
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-ai_type=techonly
-Streak=-1000
-BossLevel=250
-CanTaunt=False
-IgnoreQuicksilver=true
-JustReleaseDefense=90
+Streak=20
+CanTaunt=false
+JustReleaseDefense=75
 ;=======================================
 ; These are optional flags you can set:
 ;========================================
@@ -116,19 +114,25 @@ JustReleaseDefense=90
 ; Does the monster appear in President battles? True=yes/False=no
 ; IgnorePresident=
 ;
-; IMMUNETOMAGIC= is to determine if a monster is completely immune to magic or not. True/false.
+; IMMUNETOMAGIC= is to determine if a boss is completely immune to magic or not. True/false.
 ; ImmuneToMagic=true/false
+;
+; DEATHCONDITIONS= if you want the boss to only only if a certain action is performed, you can set it here. Not set by default.
+; Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect
+; You can list multiple by putting a period inbetween such as: melee.magic.status 
+; If the boss is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+; DeathConditions=
 
 [monster]
 ; Type is the type of monster it is. 
-type=$iif($calc(($readini($char(Retinazer), battle, hp) / $readini($char(Retinazer), basestats, hp)) * 100) <= 50, android, demon)
+type=
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
 ; Change it to "true" to turn it on.
 TechLearn=false
 
 ; Size is the size of the monster. Small/Medium/Large
-size=large
+size=Medium
 
 [Status]
 Poison=no
@@ -164,11 +168,19 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=CthulhuRetina
-CthulhuRetina=$current.battlestreak
+Equipped=DoomSickle
+DoomSickle=$calc(10 + $current.battlestreak)
 
 
 [Skills]
+Wizardry=100
+Harvester=100
+MagicMirror=10
+MagicShift=1
+ElementalSeal=1
+MightyStrike=1
+ClearMind=3
+Zen=5
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -179,19 +191,28 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-Resist-Curse=100
 Resist-stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
 
 [Techniques]
-EyeRam=$current.battlestreak
-CthulhuEyeLaser=$current.battlestreak
+ThundajaII=$calc(10 + $current.battlestreak)
+BlizzajaII=$calc(10 + $current.battlestreak)
+FirajaII=$calc(10 + $current.battlestreak)
+DarkBomb=$calc(10 + $current.battlestreak)
+DarkMist=$calc(10 + $current.battlestreak)
+Dark_Matter=$calc(10 + $current.battlestreak)
 
 
 [Item_Amount]
 
-
+[Styles]
+Equipped=Spellmaster
+SpellMaster=10
+SpellMasterXP=0
 
 
 [modifiers]
@@ -220,9 +241,3 @@ GreatSword=100
 Bow=100
 
 
-[Styles]
-Equipped=Guardian
-Guardian=$iif($calc(($readini($char(Retinazer), battle, hp) / $readini($char(Retinazer), basestats, hp)) * 100) <= 50, 6, 0)
-
-[Ignitions]
-MetalEyeLaser=$iif($calc(($readini($char(Spazmatism), battle, hp) / $readini($char(Spazmatism), basestats, hp)) * 100) <= 50, 1, 0)

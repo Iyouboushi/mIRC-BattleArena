@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 700, $round($calc(5000 + (4 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(4500 + $return_playerlevelstotal),0))
-Tp=400
-Str=350
-Def=350
-Int=350
-Spd=350
-IgnitionGauge=9000
-Name=Retinazer
+Hp=$round($calc(5000 + (1000 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
+Tp=5000
+Str=$iif($readini(system.dat, system, ForcePortalSync) = true, 6170, 40000)
+Def=$iif($readini(system.dat, system, ForcePortalSync) = true, 6170, 40000)
+Int=$iif($readini(system.dat, system, ForcePortalSync) = true, 6170, 40000)
+Spd=$iif($readini(system.dat, system, ForcePortalSync) = true, 6170, 40000)
+IgnitionGauge=0
+Name=Grahf
 
 
 [Battle]
-Hp=3000
-Tp=400
-Str=350
-Def=350
-Int=350
-Spd=350
-IgnitionGauge=9000
+Hp=7500
+Tp=5000
+Str=6170
+Def=6170
+Int=6170
+Spd=6170
+IgnitionGauge=0
 Status=alive
 
 
@@ -26,8 +26,9 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a demonic eye that is very large in size. It has a red iris.
-Rage=roars loudly!
+Char=is a mysterious person wearing a black and red outfit that covers his body. He also wears a strange mask over his face and head.
+Rage=simply stares at the heroes.
+BossQuote=I am Grahf, the seeker of power. Doth thou desire the power?
 
 
 [Stuff]
@@ -38,19 +39,18 @@ Drops=
 
 [Info]
 Flag=monster
-Gender=its
-Gender2=it
+Gender=his
+Gender2=him
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-ai_type=techonly
 Streak=-1000
-BossLevel=250
+BossLevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 1200, 7500)
+IgnoreQuickSilver=True
 CanTaunt=False
-IgnoreQuicksilver=true
-JustReleaseDefense=90
+JustReleaseDefense=100
 ;=======================================
 ; These are optional flags you can set:
 ;========================================
@@ -116,19 +116,25 @@ JustReleaseDefense=90
 ; Does the monster appear in President battles? True=yes/False=no
 ; IgnorePresident=
 ;
-; IMMUNETOMAGIC= is to determine if a monster is completely immune to magic or not. True/false.
+; IMMUNETOMAGIC= is to determine if a boss is completely immune to magic or not. True/false.
 ; ImmuneToMagic=true/false
+;
+; DEATHCONDITIONS= if you want the boss to only only if a certain action is performed, you can set it here. Not set by default.
+; Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect
+; You can list multiple by putting a period inbetween such as: melee.magic.status 
+; If the boss is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+; DeathConditions=
 
 [monster]
 ; Type is the type of monster it is. 
-type=$iif($calc(($readini($char(Retinazer), battle, hp) / $readini($char(Retinazer), basestats, hp)) * 100) <= 50, android, demon)
+type=
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
 ; Change it to "true" to turn it on.
 TechLearn=false
 
 ; Size is the size of the monster. Small/Medium/Large
-size=large
+size=medium
 
 [Status]
 Poison=no
@@ -164,11 +170,15 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=CthulhuRetina
-CthulhuRetina=$current.battlestreak
+Equipped=GrahfFists
+GrahfFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000)
 
 
 [Skills]
+MartialArts=$iif($readini(system.dat, system, ForcePortalSync) = true, 1000, 3000)
+Zen=5
+ClearMind=3
+WeaponBash=$iif($readini(system.dat, system, ForcePortalSync) = true, 0, 1)
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -179,19 +189,26 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-Resist-Curse=100
-Resist-stun=100
+Resist-Stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+Resist-Sleep=100
 
 [Techniques]
-EyeRam=$current.battlestreak
-CthulhuEyeLaser=$current.battlestreak
+DoublePunch=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)
+ShoulderTackle=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)
+AsuranFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)
+GrahfEnergyBlast=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 5000)
 
 
 [Item_Amount]
 
-
+[Augments]
+GrahfFists=MeleeBonus.TechBonus.RenkeiBonus.IgnoreDefense.IgnoreGuardian.IgnoreMetalDefense.EnhanceZen
+AlphaWeltallFists=DecreaseMechEnergyCost.MeleeBonus.TechBonus.RenkeiBonus.IgnoreDefense.IgnoreGuardian.IgnoreMetalDefense
 
 
 [modifiers]
@@ -205,7 +222,7 @@ Water=100
 Ice=100
 Lightning=100
 Light=100
-Dark=100
+Dark=0
 HandToHand=100
 Whip=100
 Sword=100
@@ -220,9 +237,14 @@ GreatSword=100
 Bow=100
 
 
-[Styles]
-Equipped=Guardian
-Guardian=$iif($calc(($readini($char(Retinazer), battle, hp) / $readini($char(Retinazer), basestats, hp)) * 100) <= 50, 6, 0)
-
-[Ignitions]
-MetalEyeLaser=$iif($calc(($readini($char(Spazmatism), battle, hp) / $readini($char(Spazmatism), basestats, hp)) * 100) <= 50, 1, 0)
+[Mech]
+name=Alpha Weltall
+inUse=true
+EngineLevel=2
+HpMax=$iif($readini(system.dat, system, ForcePortalSync) = true, 8000, 30000)
+HpCurrent=8000
+EnergyMax=20000
+EnergyCurrent=20000
+EquippedCore=VesselOfAnima
+EquippedWeapon=AlphaWeltallFists
+Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal

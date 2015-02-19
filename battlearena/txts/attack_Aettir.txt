@@ -1,0 +1,4 @@
+rushes towards %enemy and hops into the air. A moment later, %user swings the greatsword down upon %enemy
+strikes at %enemy with a slash of $gender(%attacker) blade
+slashes at %enemy before stepping backwards in a defensive stance
+holds the greatsword to the side before performing a quick spin, hurling the greatsword spinning towards %enemy $+ . %user pulls back $gender(%attacker) right hand, the greatsword returning to %user

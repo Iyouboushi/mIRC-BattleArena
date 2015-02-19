@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 700, $round($calc(5000 + (4 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(4500 + $return_playerlevelstotal),0))
-Tp=400
-Str=350
-Def=350
-Int=350
-Spd=350
-IgnitionGauge=9000
-Name=Retinazer
+Hp=$iif($return_playerlevelstotal >= 15, $round($calc(350 + (2.2 * $return_differenceof($return_playerlevelstotal,15))),0), $round($calc(350 + $return_playerlevelstotal),0))
+Tp=30
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=2
+Name=Gato
 
 
 [Battle]
-Hp=3000
-Tp=400
-Str=350
-Def=350
-Int=350
-Spd=350
-IgnitionGauge=9000
+Hp=65
+Tp=30
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=0
 Status=alive
 
 
@@ -26,8 +26,10 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a demonic eye that is very large in size. It has a red iris.
-Rage=roars loudly!
+Char=is a large robot with cat ears and is holding a microphone.
+Rage=screams in rage 
+BossQuote=They call me Gato. I have metal joints. Beat me up and earn 15 Silver Points!
+DeathMessage=raises the microphone and says: I lost, you won! Here's 15 points. Now Wasn't that fun!?
 
 
 [Stuff]
@@ -39,18 +41,16 @@ Drops=
 [Info]
 Flag=monster
 Gender=its
-Gender2=it
+Gender2=its
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-ai_type=techonly
+CanTaunt=false
 Streak=-1000
-BossLevel=250
-CanTaunt=False
-IgnoreQuicksilver=true
-JustReleaseDefense=90
+JustReleaseDefense=100
+BossLevel=9
 ;=======================================
 ; These are optional flags you can set:
 ;========================================
@@ -116,19 +116,25 @@ JustReleaseDefense=90
 ; Does the monster appear in President battles? True=yes/False=no
 ; IgnorePresident=
 ;
-; IMMUNETOMAGIC= is to determine if a monster is completely immune to magic or not. True/false.
+; IMMUNETOMAGIC= is to determine if a boss is completely immune to magic or not. True/false.
 ; ImmuneToMagic=true/false
+;
+; DEATHCONDITIONS= if you want the boss to only only if a certain action is performed, you can set it here. Not set by default.
+; Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect
+; You can list multiple by putting a period inbetween such as: melee.magic.status 
+; If the boss is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+; DeathConditions=
 
 [monster]
 ; Type is the type of monster it is. 
-type=$iif($calc(($readini($char(Retinazer), battle, hp) / $readini($char(Retinazer), basestats, hp)) * 100) <= 50, android, demon)
+type=Android
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
 ; Change it to "true" to turn it on.
 TechLearn=false
 
 ; Size is the size of the monster. Small/Medium/Large
-size=large
+size=Large
 
 [Status]
 Poison=no
@@ -164,11 +170,13 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=CthulhuRetina
-CthulhuRetina=$current.battlestreak
+Equipped=GatoFists
+GatoFists=10
 
 
 [Skills]
+MartialArts=100
+Zen=5
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -179,14 +187,14 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-Resist-Curse=100
-Resist-stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
+Resist-Stun=100
+Resist-Sleep=100
 
 [Techniques]
-EyeRam=$current.battlestreak
-CthulhuEyeLaser=$current.battlestreak
+DoublePunch=10
+BoxingGlove=10
 
 
 [Item_Amount]
@@ -198,31 +206,25 @@ CthulhuEyeLaser=$current.battlestreak
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=100
-Dark=100
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+Earth=80
+Fire=80
+Wind=80
+Water=80
+Ice=80
+Lightning=120
+Light=80
+Dark=80
+HandToHand=80
+Whip=80
+Sword=80
+Gun=80
+Rifle=80
+Katana=80
+Wand=80
+Spear=80
+Scythe=80
+Glyph=80
+GreatSword=80
+Bow=80
 
 
-[Styles]
-Equipped=Guardian
-Guardian=$iif($calc(($readini($char(Retinazer), battle, hp) / $readini($char(Retinazer), basestats, hp)) * 100) <= 50, 6, 0)
-
-[Ignitions]
-MetalEyeLaser=$iif($calc(($readini($char(Spazmatism), battle, hp) / $readini($char(Spazmatism), basestats, hp)) * 100) <= 50, 1, 0)

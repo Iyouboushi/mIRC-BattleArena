@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=80
+Hp=65
 Tp=50
-Str=12
-Def=12
-Int=5
-Spd=5
+Str=15
+Def=10
+Int=2
+Spd=1
 IgnitionGauge=2
-Name=Dhalmel
+Name=Gibdo
 
 
 [Battle]
-Hp=80
+Hp=65
 Tp=50
-Str=12
-Def=12
-Int=5
-Spd=5
+Str=15
+Def=10
+Int=2
+Spd=1
 IgnitionGauge=2
 Status=alive
 
@@ -24,9 +24,15 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
+[Limit]
+Level=1
+Percent=0
+
 
 [Descriptions]
-Char=is an animal that is like a giraffe, but is white and tan in color with dark brown stripes.
+Hused=1
+Dused=1
+Char=is a bandage-covered mummy. Through the bandages on its face you can see a piece of the horrifying creature underneath. It drags a large blade across the ground as it approaches the battlefield with the aroma of death surrounding it.
 Rage=screams in rage 
 
 [Stuff]
@@ -37,18 +43,17 @@ ShopLevel=1.0
 [Info]
 Flag=monster
 Gender=its
-Gender2=its
+Gender2=it
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=61
-StreakMax=179
+Streak=25
 CanTaunt=false
 
 [Monster]
-Type=dhalmel
+Type=undead
 size=medium
 
 [Status]
@@ -84,33 +89,33 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
-Equipped=DhalmelSaliva
-DhalmelSaliva=60
+Equipped=GibdoBlade
+GibdoBlade=30
 
 [Skills]
-Zen=5
-MartialArts=50
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=100
+Resist-Stun=100
+
+
 
 [Techniques]
-Stomping=30
-ColdStare=10
-HealingBreeze=20
-SonicWave=10
-
-[Item_Amount]
-
+GibdoShriek=50
+HardSlash=50
 
 [modifiers]
 Heal=none
-Earth=70
-Fire=100
-Wind=70
+Earth=100
+Fire=130
+Wind=100
 Water=100
-Ice=130
+Ice=100
 Lightning=100
-Light=100
-Dark=100
+Light=105
+Dark=5
 HandToHand=100
 Whip=100
 Sword=100

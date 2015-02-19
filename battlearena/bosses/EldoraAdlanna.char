@@ -105,17 +105,15 @@ protect.timer=0
 [Weapons]
 Equipped=Silver_Goddess_Sword
 Silver_Goddess_Sword=500
-Fists=500
-Ragnarok=500
-Kogarasumaru=500
 
 
 [Skills]
 Zen=5
 WeaponBash=1
 Impetus=20
-Swordmaster=100
-MartialArts=100
+Konzen-Ittai=1
+Swordmaster=500
+MartialArts=500
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -127,24 +125,13 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Resist-Weaponlock=100
-Konzen-Ittai=1
 Resist-Drunk=100
+Resist-Sleep=100
 
 [Techniques]
 BladeBeam=500
 TwinSlice=500
 BiteOfLightning=500
-DoublePunch=500
-ShoulderTackle=500
-AsuranFists=500
-Scourge=500
-HerculeanSlash=500
-Torcleaver=500
-Resolution=500
-Tachi:Kasha=500
-Tachi:Ageha=500
-Tachi:Rana=500
-Tachi:Fudo=500
 
 
 [Styles]
@@ -167,10 +154,7 @@ ElvenGoddessMight=1
 
 
 [Augments]
-Kogarasumaru=RenkeiBonus.IgnoreGuardian
-Ragnarok=TechBonus.IgnoreGuardian
-Fists=MeleeBonus.IgnoreGuardian
-Silver_Goddess_Sword=TechBonus.IgnoreGuardian
+Silver_Goddess_Sword=MeleeBonus.RenkeiBonus.TechBonus.IgnoreGuardian
 
 
 [modifiers]

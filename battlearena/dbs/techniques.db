@@ -10,6 +10,8 @@ KaiserKnuckles=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
 ; Swords
 Mythril_Sword=FastBlade.BurningBlade.FlatBlade.SeraphBlade
 Rebellion=Stinger.MillionStab.Drive.DevilTrigger
+Agni=AerialCross.JetStream $+ $iif($weapon.linkcheck(Rudra) = true, .Tempest)
+Rudra=AerialCross.JetStream $+ $iif($weapon.linkcheck(Agni) = true, .Tempest)
 Joyeuse=FastBlade.CircleBlade.FlatBlade.UrielBlade.GlorySlash
 Excalibur=Atonement.CircleBlade.SpiritsWithin.VorpalBlade.ChantDuCygne
 Murgleis=DeathBlossom.SwiftBlade.SavageBlade.Requiescat.SanguineBlade
@@ -172,7 +174,7 @@ Egyptian_Rod=Temptation.DeltaSpark.TypoonRod.ScarfStab
 SinistralPower=RayGion.FuReia.RahGian.WoRud.ReeDelt.AsuranFists.FinalHeaven.ShinjinSpiral
 AmonTrident=RahGian.WoRud.Stardiver.Drakesbane.Skewer.Geirskogul.CamlannsTorment
 JesterWand=Portal.ClownHead.ClownFire
-VampireArt=BloordArtTechnique.PaintingofSoul.PortraitSmash.CursePainting
+VampireArt=BloodArtTechnique.PaintingofSoul.PortraitSmash.CursePainting
 Puppetry=FrenchDollAttack.PuppetControl.IronMaiden.MetalStrings
 Benihime=SwiftBlade
 MarioFists=Jump.FireFlower.StarPower
@@ -180,7 +182,7 @@ PeoplesFist=RockBottom.PeoplesElbow.SamoanDrop.FlyingClothesline.Spinebuster
 SuccubusPower=VampireBite.Temptation.FireII
 DragonShouts=FusRoDah.YolToorShul.FoKrahDiin.StrunBahQo
 CyberFists=WristLaser.CyberParalyze.BrainControl
-Gunstick=DalekParaylze.DalekExterminate.DalekLaser
+Gunstick=DalekParalyze.DalekExterminate.DalekLaser
 BlueEyesPower=BurstStream.AbsoluteTerror.FangRush
 BlackMagic=BlackMagicAttack.ThousandKnives.FireIV
 DragonSword=HardSlash.PowerSlash.Resolution
@@ -245,7 +247,7 @@ GoylePower=SpinningAttack
 Agartha=OpticalShot.MaxShot.Torpor.TorporRain.QuadrupleIgnis
 ArteasBow=GlacialBlast.EagleEyeShot.NamasArrow.Sidewinder.ApexArrow.JishnusRadiance
 LoveIsBlue=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel
-Kafka=EagleEyeshot.JishnuusRadiance
+Kafka=EagleEyeshot.JishnusRadiance
 Chernobog=Guillotine.ShadowOfDeath
 ScarboroughFair=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel
 Shuraba=Tachi:Shoha.Tachi:Rana
@@ -255,13 +257,12 @@ DekarBlade=ExplosionFist.ExplosionSword.GlacialBlast.Thundershriek.BombAttack.Ar
 RuneOakStaff=Forzare.SoulForzare.Fuego.Pyrofeugo.Dormio.Fulminos.Arctis.Dispertius.Gravitus.FlickumBicus.Galvinius
 AdamantAxe=Thundershriek.BombAttack.FellCleave.UkkosFury.KingsJustice
 VampireKiller=GrandCross.HydroStorm.Dagger.HolyWater.Cross.StopWatch.Axe.DoubleAxe.Thousand_Knives
-KosmosRevolver=R-Cannon.R-Blade.X-Buster.R-Dragon.G-Shot.K-Axe.Hilbert_Effect.Nemesis.S-Chain.F-Scythe.DexEtherRa.DexEtherFa.DexEtherLe
 KosmosFists=R-Cannon.Hilbert_Effect.S-Chain.DexEtherRa.DexEtherFa.DexEtherLe
 HoleyGloves=SeraphimRush.AngelShot.DemonBanisher.DivineSpear.Cataclysm.SeraphimWave.HealingDew.PhoenixStrike
 ValkyrieSword=NibelungValesti.ChantduCygne.Requiescat.Atonement
 BlazefireSaber=ArmyOfOne.Blindside.Flamestrike.Froststrike.Sparkstrike.Aquastrike
 MariaPower=Doves.Seiryu.Byakko.Suzaku.Genbu.GuardianFist
-DualBlade=WaveMotion.Requiscat.FlatBlade.SwiftBlade.OctoStrike.Skysplitter
+DualBlade=WaveMotion.Requiescat.FlatBlade.SwiftBlade.OctoStrike.Skysplitter
 RyudoSword=TenseikenSlash.FlyingTenseiken.PurpleLightning.SkyDragonSlash
 SelanSwordStaff=HolyEnergy.PhoenixBlow.ChantDuCygne.DeathBlossom.Curaga.CureV.FlareII.QuakeII.FreezeII.FloodII.BurstII.TornadoII
 GunbladeRevolver=Renzokuken.RoughDivide.FatedCircle.BlastingZone.Lionheart
@@ -269,7 +270,7 @@ VorlikBlade=CutlassFury.RainOfSwords.PiratesWrath
 BelnadesWand=HolyFlames.BlueSplash.HolyLightning
 AirWhip=ArticFreeze.TwinDragonLash.Whiplash.SerpentBite
 AmonSpear=RahGian.WoRud.Stardiver.Drakesbane.Skewer.Geirskogul.CamlannsTorment
-GadesBlade=Octostrike.Sourge.Torcleaver.Resolution.HerculeanSlash
+GadesBlade=Octostrike.Scourge.Torcleaver.Resolution.HerculeanSlash
 ErimBlade=RayGion.FuReia.RahGian.WoRud.ReeDelt.CureV.ChantDuCygne.DeathBlossom.SavageBlade.Requiescat
 ErimPower=RayGion.FuReia.RahGian.WoRud.ReeDelt.CureV.ChantDuCygne.DeathBlossom.SavageBlade.Requiescat.DeathRay.MultiDeathRay
 EvilChainsaw=DefenseRip.ChainsawSlash
@@ -282,7 +283,7 @@ BalrogPower=WhipLash.TwinDragonLash.CircularChain.DarkLash.FlameStrike
 DemonicWeapon=HectacombWave.QuadraStrike.SoulDrain.FireIII.ThunderIII.Tachi:Rana.SwiftBlade.Firaja.Thundaja
 DhalmelSaliva=Stomping.ColdStare.HealingBreeze.SonicWave
 LizardPower=BlockHead.Fireball.Snowball.TailBlow.PoisonBreath.BalefulGaze
-TreantPower=Leafstorm.DrillBranch.PinecombBomb.Entangle.SproutSmack.SproutSpin
+TreantPower=Leafstorm.DrillBranch.PineconeBomb.Entangle.SproutSmack.SproutSpin
 StarmanGun=StarBeam.PK-StarStorm.PK-Fire.PK-Ice.PK-Thunder
 GnoleClaws=FeveredPitch.CallOfTheMoon.AsuranClaws.PleniluneEmbrace.NoxBlast
 HippiePeace=Toothbrush.Ruler.YardStick.Calculator
@@ -291,10 +292,11 @@ BirdBeak=TornadoII.AerojaII.WingCutter.HellDive.BroadsideBarrage
 YovraPower=ConcussiveOscillation.PrimalDrill.LuminousDrape.IonShower
 PinkChainsaw=ChainsawDash.ChainsawSpin.ChainsawTornado.ChainsawCut.ChainsawAttack.ChainsawCannon
 MegaBusterMk1=HyperBomb.SuperArm.RollingCutter.ThunderBeam.IceSlasher.FireStorm
+X-Buster=ChargedShot
 X-BusterMk1=ShotgunIce.StormTornado.FireWave.ChameleonSting.ElectricSpark.RollingShield.BoomerangCutter.HomingTorpedo
 SwordOfTheFallenDevil=HandOfPyro.Bite_Of_Lightning.HailOfHeavens.PinnacleOfTheSun.HammerOfEvil.ColdnessOfDestruction.FeathersOfTheHurricane.BoltOfThunder.SmokeOfPain.FalconOfDeath
 ChozoArmCannon=PoweredShot.Missile.SuperMissile.Bomb.PowerBomb.ScrewAttack.IceBeam.PlasmaBeam.DarkBeam.DarkBurst.LightBeam.SunBurst
-ZeroSaber=Raijingeki.Rakuhouha.Ryuenjin.Kuuenzan.Shippuuga.Hyoretsuzan.BlackArmor
+ZeroSaber=Raijingeki.Rakuhouha.Ryuenjin.Kuuenzan.Shippuuga.Hyoretsuzan
 SantaRifle=LaserStorm.GrenadeGift.BazookaGift
 BrainWeapon=Rinka.LavaFall.LaserDefense.HyperBeam.BombBeam.PlasmaLaser.BrainStomp.BrainGrab
 DemonWall=FirajaII.Poison.Blind.Slow.Petrify
@@ -354,7 +356,7 @@ CthulhuRetina=EyeRam.CthulhuEyeLaser.CursedFlame
 EaterOfWorldsMouth=EaterOfWorldsCharge.EaterOfWorldsWave.EaterOfWorldsSqueeze
 CthulhuBrain=BrainCharge.EyeRam
 SkeletronSkull=SkullSpin.SkullRam.MetalSkullSpin.MetalSkullRam
-SkeletronArm=SkeletronArmGrab.SkeletronArmPunch.PrimeCannonAttack.PrimeLaserAttack.PrimeSawAttack.PrimeViseAttack
+SkeletronArm=SkeletronArmGrab.SkeletronArmPunch.PrimeCannonAttack.PrimeLaserAttack.PrimeSawAttack.PrimeViceAttack
 DestroyerMouth=DestroyerCharge.DestroyerWave.DestroyerSqueeze
 MechanicalProbeBody=DestroyerLaser
 PlanteraBulb=PlanteraSeed.PlanteraThornBall.PlanteraSpores.PlanteraBite
@@ -365,6 +367,15 @@ Zanmato=Daigoro.Kozuka.Zanmatou
 PacPower=Pac-Jump.FireHydrant.BonusFruit.PowerPellet
 TurkeyPower=Gobble
 LeprechaunPower=LuckyCharms
+GoddessBlade=GoddessCrest.GoddessFlames
+ChatoyantStaff=AeroV.BlizzardV.FireV.DarkV.BanishV.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix
+DoomSickle=ThundajaII.BlizzajaII.FirajaII.DarkBomb.DarkMist.Dark_Matter
+MasamuneII=WaterIII.Waterja.SlurpCut.LeapSlash.FrogSquash.CureII.CureIV
+GatoFists=DoublePunch.BoxingGlove
+GrahfFists=DoublePunch.ShoulderTackle.AsuranFists.GrahfEnergyBlast
+AlphaWeltallFists=TripleStrike.MartialBlazeIII
+GibdoBlade=GibdoShriek.HardSlash
+RedeadBlade=RedeadShriek.SpinningSlash
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -648,6 +659,37 @@ Desc=lures all the monsters close before performing a swift spinning attack, hit
 BasePower=25
 Cost=1500
 Element=Lightning
+magic=no
+stat=str
+
+[AerialCross]
+Type=Single
+TP=10
+Desc=jumps into the air and slashes in an X pattern upon %enemy $+ 's chest!
+BasePower=35
+Cost=500
+Element=none
+magic=no
+stat=str
+renkei=1
+
+[JetStream]
+Type=AOE
+TP=30
+Desc=channels the power of the blade to slash through multiple enemies on the battlefield.
+BasePower=25
+Cost=500
+Element=none
+magic=no
+stat=str
+
+[Tempest]
+Type=AOE
+TP=50
+Desc=begins to spin with both Agni & Rudra, creating a tornado of fire and wind that engulf all of the enemies upon the battlefield.
+BasePower=30
+Cost=500
+Element=Fire.Wind
 magic=no
 stat=str
 
@@ -5715,7 +5757,7 @@ Cost=0
 Magic=No
 stat=str
 
-[AerialBlade]
+[WindBlade]
 Type=Single
 TP=10
 Desc=summons a circular blade of wind energy and hurls it towards %enemy $+ !
@@ -8027,7 +8069,7 @@ BasePower=30
 Element=dark
 Cost=0
 Magic=no
-Stat=into
+Stat=int
 
 [DarkBurst]
 Type=AOE
@@ -8346,6 +8388,28 @@ Cost=0
 Magic=no
 stat=str
 
+[GibdoShriek]
+Type=Single
+statusType=intimidate
+TP=10
+Desc=gives off a loud terrifying shriek that strikes fear into %enemy $+ 's heart.
+BasePower=50
+Element=dark
+Cost=0
+Magic=no
+stat=str
+
+[RedeadShriek]
+Type=AOE
+statusType=intimidate
+TP=50
+Desc=unleashes a powerful and terrifying shriek of horror that strikes fear into the battlefield. 
+BasePower=30
+Element=dark
+Cost=0
+Magic=no
+stat=str
+
 [BadBreath]
 Type=Single
 StatusType=poison.blind.slow.virus.curse.charm
@@ -8601,7 +8665,7 @@ Type=Single
 TP=10
 Desc=changes its left arm into a cannon and fires a burst of energy towards %enemy $+ .
 BasePower=50
-Element=Nne
+Element=None
 Cost=0
 Magic=No
 stat=int
@@ -11066,7 +11130,7 @@ BasePower=125
 Magic=No
 Stat=str
 
-[PrimeViseAttack]
+[PrimeViceAttack]
 Type=Single
 Cost=0
 Desc=grabs %enemy and squeezes tight before slamming $gender2($2) down onto the ground.
@@ -11365,6 +11429,128 @@ Magic=yes
 StatusType=Poison
 stat=int
 CanDodge=true
+
+[DarkBomb]
+Type=Single
+Cost=0
+Desc=performs a series of hand motions before finally pointing at %enemy and causes an explosion of dark energy to hit $gender2($2) $+ .
+TP=10
+Element=Dark
+Hits=1
+BasePower=30
+Magic=yes
+HurtEthereal=true
+Stat=int
+
+[DarkMist]
+Type=Single
+Cost=0
+Desc=creates a dark mist that covers %enemy for a moment in an attempt to blind $gender2($2) $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=15
+Magic=yes
+StatusType=Blind
+HurtEthereal=true
+Stat=int
+
+[Dark_Matter]
+Type=AOE
+Cost=0
+Desc=performs a series of hand gestures as four dark gray orbs appear around %user $+ . The orbs disappear as %user points to the battlefield, powerful dark energy appearing and damages all targets.
+TP=10
+Element=Dark
+Hits=1
+BasePower=50
+Magic=yes
+HurtEthereal=true
+Stat=int
+
+[SlurpCut]
+Type=Single
+Cost=0
+Desc=uses $gender($1) tongue to draw %enemy in closer to then cut %enemy with the sword.
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=False
+Stat=str
+Renkei=4
+
+[LeapSlash]
+Type=Single
+Cost=0
+Desc=leaps into the air towards %enemy and stabs %enemy with the blade on the way down.
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=False
+Stat=str
+Renkei=4
+
+[FrogSquash]
+Type=AOE
+Cost=0
+Desc=summons a gigantic frog that leaps onto all enemies on the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=$iif( $calc(($readini($char($1), battle, hp) / $readini($char($1), basestats, hp))*100) < 20, 1000, 0)
+Magic=No
+HurtEthereal=True
+Stat=str
+
+[BoxingGlove]
+Type=Single
+Cost=0
+Desc=opens the cover on its stomach and quickly punches %enemy with a spring-loaded boxing glove!
+TP=10
+Element=None
+Hits=1
+BasePower=20
+Magic=No
+HurtEthereal=False
+Stat=str
+
+[GrahfEnergyBlast]
+Type=Single
+Cost=0
+Desc=cups $gender($1) hands to the side and gathers energy. A moment later, $gender3($1) thrusts $gender($1) hands forward and hurls a ball of dark energy energy towards %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=200
+Magic=Yes
+HurtEthereal=True
+Stat=int
+
+[GoddessFlames]
+Type=Single
+Cost=0
+Desc=stays in place as the three Goddess Flames circle %user before being absorbed by %user $+ . %user then turns into a larger version of the True Goddess Blade and attacks %enemy several times before moving back and reverting back to normal.
+TP=10
+Element=$read($lstfile(elementsFi.lst))
+Hits=1
+BasePower=100
+Magic=Yes
+HurtEthereal=True
+Stat=int
+
+[GoddessCrest]
+Type=AOE
+Cost=0
+Desc=spins around as the Goddess Crest appears in front of %user $+ , who then darts straight forward at a very high pace, dragging the enemies with $gender2($1) $+ . %user stops a few moments later, the crest disappearing and sendign the enemies flying back.
+TP=10
+Element=Light
+BasePower=100
+Magic=No
+HurtEthereal=True
+Stat=str
 
 ========================
 Not used or are for

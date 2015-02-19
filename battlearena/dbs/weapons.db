@@ -4,7 +4,7 @@
 
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai
-Swords=Mythril_Sword.Joyeuse.Rebellion.Excalibur.Murgleis.JewelSword.SilverSword.MasterSword
+Swords=Mythril_Sword.Joyeuse.Rebellion.Agni.Rudra.Excalibur.Murgleis.JewelSword.SilverSword.MasterSword
 Whips=LeatherWhip.DemonWhip.Vampire_Killer
 Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Boomstick.AK47.Armageddon.X-Buster
 Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva
@@ -25,11 +25,11 @@ MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishB
 
 MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.GoylePower.SwordOfTheFallenDevil.X-BusterMk1.X-BusterMk2.X-BusterMk3.MonkeyIsland_Cutlass
 
-MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.KosmosRevolver.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower
+MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower
 
 MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.Morgenstern.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower
 
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.ChatoyantStaff.DoomSickle.MasamuneII.Socom.PSG-1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade
 
 ============================================
 WEAPON TEMPLATE
@@ -182,6 +182,30 @@ Hits=1
 BasePower=20
 Upgrade=500
 2Handed=true
+
+[Agni]
+Cost=3
+Type=Sword
+Info=Dante's weapon from Devil May Cry.  It's a uniquely shaped red-orange scimitar. The blades are serrated with the segments appearing to interlock like a Celtic knot.
+Abilities=AerialCross.JetStream $+ $iif($weapon.linkcheck($1, Rudra) = true, .Tempest)
+Element=Fire
+Hits=1
+BasePower=$iif($weapon.linkcheck($1, Rudra) = true, 50, 20)
+Upgrade=500
+2Handed=false
+LinkedWeapon=Rudra
+
+[Rudra]
+Cost=3
+Type=Sword
+Info=Dante's weapon from Devil May Cry.  It's a uniquely shaped blue scimitar. The blades are serrated with the segments appearing to interlock like a Celtic knot.
+Abilities=AerialCross.JetStream $+ $iif($weapon.linkcheck($1, Agni) = true, .Tempest)
+Element=Wind
+Hits=1
+BasePower=$iif($weapon.linkcheck($1, Agni) = true, 50, 20)
+Upgrade=500
+2Handed=false
+LinkedWeapon=Agni
 
 [Joyeuse]
 Cost=4
@@ -1704,7 +1728,7 @@ Upgrade=0
 Cost=0
 Type=HandToHand
 Info=Brauner's art ability!
-Abilities=BloordArtTechnique.PaintingofSoul.PortraitSmash.CursePainting
+Abilities=BloodArtTechnique.PaintingofSoul.PortraitSmash.CursePainting
 Element=Dark
 Hits=2
 Basepower=13
@@ -1755,7 +1779,7 @@ Upgrade=0
 Cost=0
 Type=HandToHand
 Info=The fists of a Cyberman. Cannot be bought.
-Abilities=WristLaser.CyberParalyze.TempUpgrade.BrainControl
+Abilities=WristLaser.CyberParalyze.BrainControl
 Element=None
 Hits=2
 BasePower=15
@@ -2117,7 +2141,7 @@ Upgrade=0
 Cost=0
 Type=Sword
 Info=The sword of Dullahan.
-Abilities=Charon.ForminaSage.Haunt.DjinnStorm.Condem.Sealing
+Abilities=Charon.ForminaSage.Haunt.DjinnStorm.Condem
 Element=Dark
 Hits=1
 BasePower=30
@@ -2433,7 +2457,7 @@ CanCounter=False
 Cost=0
 Type=Bow
 Info=A bow and arrow made with a man who once cursed another and who in turn metamorphosed into a hideous insect. Still living inside a part of the bow's frame, he fires cursed arrows of savage, venomous bugs.
-Abilities=EagleEyeshot.JishnuusRadiance
+Abilities=EagleEyeshot.JishnusRadiance
 Element=None
 Hits=1
 BasePower=40
@@ -2557,17 +2581,6 @@ BasePower=30
 Upgrade=0
 HurtEthereal=true
 
-[KosmosRevolver]
-Cost=0
-Type=Gun
-Info=The weapon used by KOS-MOS.
-Abilities=R-Cannon.R-Blade.X-Buster.R-Dragon.G-Shot.K-Axe.Hilbert_Effect.Nemesis.S-Chain.F-Scythe.DexEtherRa.DexEtherFa.DexEtherLe
-Element=None
-Hits=2
-BasePower=30
-Upgrade=0
-HurtEthereal=true
-
 [KosmosFists]
 Cost=0
 Type=HandToHand
@@ -2657,7 +2670,7 @@ HurtEthereal=true
 Cost=0
 Type=Sword
 Info=A legendary sword that only few can use. The sword that Maxim uses.
-Abilities=WaveMotion.Requiscat.FlatBlade.SwiftBlade.OctoStrike.Skysplitter
+Abilities=WaveMotion.Requiescat.FlatBlade.SwiftBlade.OctoStrike.Skysplitter
 Element=Light
 Hits=1
 BasePower=30
@@ -2703,6 +2716,26 @@ Hits=2
 BasePower=30
 Upgrade=0
 
+[GibdoBlade]
+Cost=0
+Type=Sword
+Info=a large blade wielded by a gibdo
+Abilities=GibdoShriek.HardSlash
+Element=Dark
+Hits=$rand(1,2)
+BasePower=50
+Upgrade=0
+
+[RedeadBlade]
+Cost=0
+Type=Sword
+Info=a large blade wielded by a redead knight
+Abilities=RedeadShriek.SpinningSlash
+Element=Fire
+Hits=$rand(1,2)
+BasePower=50
+Upgrade=0
+
 [BelnadesWand]
 Cost=0
 Type=Wand
@@ -2737,7 +2770,7 @@ Upgrade=0
 Cost=0
 Type=GreatSword
 Info=A large sword that Gades uses in battle.
-Abilities=Octostrike.Sourge.Torcleaver.Resolution.HerculeanSlash
+Abilities=Octostrike.Scourge.Torcleaver.Resolution.HerculeanSlash
 Element=None
 Hits=1
 BasePower=30
@@ -2877,7 +2910,7 @@ Hits=2
 BasePower=15
 Upgrade=0
 
-[DhamelSaliva]
+[DhalmelSaliva]
 Cost=0
 Type=HandToHand
 Info=The saliva of a Dhalmel. It has a terrible stench.
@@ -2901,7 +2934,7 @@ Upgrade=0
 Cost=0
 Type=HandToHand
 Info=The power of the trees!
-Abilities=Leafstorm.DrillBranch.PinecombBomb.Entangle.SproutSmack.SproutSpin
+Abilities=Leafstorm.DrillBranch.PineconeBomb.Entangle.SproutSmack.SproutSpin
 Element=Earth
 Hits=2
 BasePower=18
@@ -3011,7 +3044,7 @@ Upgrade=0
 Cost=0
 Type=Gun
 Info=The Weapon of Mega Man X.
-Abilities=ShotgunIce.StormTornado.FireWave.ChameleonSting.ElectricSpark.RollingShield.BoomerangCutter.HomingTorpedo.ArmorChange
+Abilities=ShotgunIce.StormTornado.FireWave.ChameleonSting.ElectricSpark.RollingShield.BoomerangCutter.HomingTorpedo
 Element=None
 Hits=$rand(1,2)
 BasePower=30
@@ -3062,7 +3095,7 @@ Upgrade=0
 Cost=0
 Type=Sword
 Info=The beam saber that belongs to Zero.
-Abilities=Raijingeki.Rakuhouha.Ryuenjin.Kuuenzan.Shippuuga.Hyoretsuzan.BlackArmor
+Abilities=Raijingeki.Rakuhouha.Ryuenjin.Kuuenzan.Shippuuga.Hyoretsuzan
 Element=None
 Hits=$rand(1,2)
 BasePower=30
@@ -3262,7 +3295,7 @@ Hits=1
 BasePower=50
 Upgrade=0
 
-[FormorPower]
+[FomorPower]
 Cost=0
 Type=HandToHand
 Info=The power of the Fomors, who can wield different weapons.
@@ -3524,7 +3557,7 @@ Cost=0
 Type=Scythe
 Info=You can't buy this!
 Abilities=GenshiCleave.Catastrophe.Entropy.Guillotine
-Element=Holy
+Element=Light
 Hits=$rand(1,3)
 Basepower=20
 HurtEthereal=true
@@ -3657,7 +3690,7 @@ CanCounter=false
 Cost=0
 Type=HandToHand
 Info=The arm of Skeletron.
-Abilities=SkeletronArmGrab.SkeletronArmPunch.SkeletronArmThrow.PrimeCannonAttack.PrimeLaserAttack.PrimeSawAttack.PrimeViseAttack
+Abilities=SkeletronArmGrab.SkeletronArmPunch.PrimeCannonAttack.PrimeLaserAttack.PrimeSawAttack.PrimeViceAttack
 Element=None
 Hits=1
 BasePower=35
@@ -3687,7 +3720,7 @@ CanCounter=false
 Cost=0
 Type=HandToHand
 Info=The bulb of Plantera.
-Abilities=PlanteraSeed.PlanteraThornBall.PlanteraSpores.PlanteraHook.PlanteraBite
+Abilities=PlanteraSeed.PlanteraThornBall.PlanteraSpores.PlanteraBite
 Element=None
 Hits=1
 BasePower=55
@@ -3697,7 +3730,7 @@ CanCounter=false
 Cost=0
 Type=rifle
 Info=The glowing eyes of the Lihzahrd Golem.
-Abilities=GolemLaser
+Abilities=GolemEyeLaser
 Element=None
 Hits=1
 BasePower=60
@@ -3708,10 +3741,10 @@ Cost=0
 Type=HandToHand
 Info=The powerful fists of the Lihzahrd Golem.
 Abilities=GolemFistPunch.GolemFistGrab.AsuranFists.ShinjinSpiral
-Element=
-Hits=
-BasePower=
-CanCounter=
+Element=None
+Hits=1
+BasePower=60
+CanCounter=False
 
 [FishronFins]
 Cost=0
@@ -3749,10 +3782,114 @@ HurtEthereal=true
 Cost=0
 Type=Dancing
 Info=The power of Fi
-Abilities=
+Abilities=GoddessCrest.GoddessFlames
 Element=Light
 Hits=2
 BasePower=10
+CanCounter=false
+
+[ChatoyantStaff]
+Cost=0
+Type=Stave
+Info=A staff with a dark brown base with a golden tip on bottom and a fancy golden hook on top with a multi-colored ball inside the hook. Heavily customized and enhanced for Nauthima.
+Abilities=AeroV.BlizzardV.FireV.DarkV.BanishV.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+HurtEthereal=True
+2Handed=True
+CanCounter=false
+
+[DoomSickle]
+Cost=0
+Type=Scythe
+Info=The weapon of Magus.
+Abilities=ThundajaII.BlizzajaII.FirajaII.DarkBomb.DarkMist.Dark_Matter
+Element=Dark
+Hits=1
+BasePower=50
+Upgrade=0
+HurtEthereal=True
+2Handed=True
+CanCounter=false
+
+[MasamuneII]
+Cost=0
+Type=Sword
+Info=The legendary Masamune (or Grandleon in Japan.) The sword wielded by Frog, which has had a power up as well.
+Abilities=WaterIII.Waterja.SlurpCut.LeapSlash.FrogSquash.CureII.CureIV
+Element=Light
+Hits=$rand(1,2)
+BasePower=75
+Upgrade=0
+HurtEthereal=True
+2handed=false
+CanCounter=false
+
+[Socom]
+Cost=0
+Type=gun
+Info=The Mark 23 Model 0 U.S. SOCOM was adopted as the standard service weapon for advanced combat personnel. It successfully passed a 30,000 round endurance firing test and extreme temperature tests. Special features include a laser-aiming module, a buffer system for minimized recoil forces, corrosive-resistant coatings on al metal components, and a polygon barrel of hard chrome plated internally.
+Abilities=
+Element=None
+Hits=$rand(1,2)
+BasePower=200
+Upgrade=0
+HurtEthereal=false
+2handed=false
+CanCounter=false
+
+[PSG-1]
+Cost=0
+Type=Rifle
+Info=Arguably the most accurate semi-auto in the world. The accuracy standard has been field tested: 50 rounds of ammo into an 80 millimeter circle at 300 meters. The main reason for utilization and procurement in this op is that the PSG-1 ejects spent shells to a distance of around ten feet, thus lessening a foe's ability to judge the shooters position. Another reason is that the extremely accurate sights have a default setting of 600 meters, the optimal engagement range.
+Abilities=
+Element=None
+Hits=1
+BasePower=400
+Upgrade=0
+HurtEthereal=false
+2handed=true
+CanCounter=false
+
+[GatoFists]
+Cost=0
+Type=HandToHand
+Info=The fists of Gato!
+Abilities=DoublePunch.BoxingGlove
+Element=none
+Hits=2
+BasePower=20
+Upgrade=0
+HurtEthereal=false
+2handed=true
+CanCounter=false
+
+[GrahfFists]
+Cost=0
+Type=HandToHand
+Info=The mighty fists of Grahf.
+Abilities=DoublePunch.ShoulderTackle.AsuranFists.GrahfEnergyBlast
+Element=Dark
+Hits=$rand(1,2)
+BasePower=50
+Upgrade=0
+HurtEthereal=True
+2handed=True
+CanCounter=False
+
+[AlphaWeltallFists]
+Cost=0
+Type=HandToHand
+Info=The mechanical fists of Alpha Weltall.
+Abilities=TripleStrike.MartialBlazeIII
+Element=Dark
+Hits=$rand(1,2)
+BasePower=50
+Upgrade=0
+HurtEthereal=True
+EnergyCost=250
 CanCounter=false
 
 

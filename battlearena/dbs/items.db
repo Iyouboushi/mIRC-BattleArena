@@ -464,6 +464,25 @@ SellPrice=200
 Desc=takes out a grappling hook and swings it around %enemy $+ . After %enemy is hooked, %real.name begins to pull in an attempt to drag %enemy over to $gender2($1) to use as a protective shield.
 ShopNPC=BattleMerchant
 
+[C4]
+Type=Damage
+Target=Single
+Amount=300
+Cost=0
+SellPrice=0
+Desc=places some C4 on a random area of the battlefield and waits. Once %enemy is close enough, %user activates the C4 from a distance, causing an explosion!
+Element=fire
+IgnoreMetalDefense=true
+Bomb=true
+
+[Flash_Grenade]
+Type=Status
+Target=AOE
+StatusType=Blind
+Amount=0
+Cost=0
+SellPrice=0
+Desc=pulls out a grenade, pulls the pin and hurls it at the battlefield. A few second later, it explodes with a bright flash, blinding all enemies!
 
 =========================
 FOOD ITEMS (+stats)
@@ -1211,6 +1230,29 @@ SellPrice=10
 Cost=$iif($readini($char($1), weapons, MasterSword) >= 1, 10, 0)
 SummonDesc=$get_chr_name(%trust.npc) pops out of $get_chr_name($1) $+ 's Master Sword and floats in the air.  "Master, I calculate an $rand(80,89) $+ $chr(37) chance of success"
 
+[FireOfTheDragon]
+Type=trust
+NPC=Nauthima
+SummonDesc=$get_chr_name($1) takes out a black bottle of alchohol labeled "Fire of the Dragon." In addition, there are numerous warnings on the label. $get_chr_name($1) is about to return it before it's pulled from $gender($1) hand. $get_chr_name($1) turns and sees a tall elf grinning before chugging down the entire contents of the bottle and tossing it aside. Nauthima: "Sure, I suppose I'll help you!"
+Exclusive=yes
+SellPrice=0
+Cost=500
+
+[Codec]
+Type=Trust
+NPC=Solid_Snake
+SummonDesc=$get_chr_name($1) kneels down and places $gender($1) first two fingers onto the right ear. $get_chr_name($1) contacts the number 141.12. A moment later, $get_chr_name($1) sees a cardbox suddenly lifted from the ground and thrown to the side.
+Exclusive=yes
+Sellprice=0
+Cost=100
+
+[BlackRock]
+Type=Trust
+NPC=Magus
+SummonDesc=$get_chr_name($1) takes out a strange black rock and studies it. $get_chr_name($1) suddenly looks up and sees a tall man with long purple hair, long ears, and weas a red cape over his armor and clothing. The man also carries a large scythe in hand as well. Magus: "Very well, I will fight with you. Just stay out of my way."
+Exclusive=yes
+Sellprice=0
+Cost=100
 
 =========================
 ACCESSORIES
@@ -1494,6 +1536,14 @@ IncreaseSwordDamage.Amount=.30
 SellPrice=3000
 ShopNPC=TravelMerchant
 
+[Hero'sMedal]
+Type=accessory
+Cost=9999999999
+AccessoryType=IncreaseCriticalHits
+Desc=An accessory for a true hero.
+IncreaseCriticalHits.Amount=$iif($readini($char($1), weapons, MasamuneII) >= 1, 90, 0)
+SellPrice=10
+
 [Axe-Pin]
 Type=accessory
 Cost=$iif($left($adate,2) = 11, 30000, 0)
@@ -1595,6 +1645,18 @@ Type=misc
 Cost=0
 SellPrice=100
 Desc=A bottle of milk.
+
+[GibdoBandage]
+Type=misc
+Cost=0
+SellPrice=100
+Desc=A rotting piece of mummy bandage from a gibdo.
+
+[RedeadAsh]
+Type=misc
+Cost=0
+SellPrice=100
+Desc=The ash taken from a Redead Knight.
 
 [GreenKinstone]
 Type=misc
@@ -2176,6 +2238,36 @@ SellPrice=100
 Exclusive=yes
 Currency=AlliedNotes
 
+[AdvancedFusionEngine]
+Type=misc
+Desc=An advanced fusion engine for use by mechs, though requires just a few more materials before proper installation.
+Cost=10000
+SellPrice=100
+Exclusive=yes
+Currency=AlliedNotes
+
+[AlphaWeltallCore]
+Type=misc
+Desc=The mech core retrieved from the Alpha Weltall gear. Requires repairs before it can be used.
+Cost=0
+SellPrice=100
+Exclusive=yes
+Currency=AlliedNotes
+
+[SilverPointsCard]
+type=misc
+cost=0
+Desc=A card that contains 15 Silver Points.
+Currency=none
+Exclusive=yes
+
+[SilverSeal]
+type=misc
+cost=0
+Desc=A silver seal made from silver points.
+Currency=none
+Exclusive=yes
+
 =========================
 RUNES
 =========================
@@ -2310,6 +2402,18 @@ Desc=visits the Allied Forces and hands the guard the training paper. "You must 
 AlliedNotes=50
 Exclusive=yes
 
+[MillennialFairPass]
+Type=portal
+Cost=10
+Currency=BeastmenSeal
+Battlefield=Leene Square
+Weather=calm
+Monster=Gato
+Desc=takes out the fair pass, which allows everyone to enter. The heroes take a look around, enjoying the sights. Eventually they come up to an area with a strange robot. The robot sees the heroes and goes to speak into the microphone in its hand.
+AlliedNotes=50
+Exclusive=yes
+PortalLevel=10
+
 [WormFood]
 type=portal
 cost=5
@@ -2436,7 +2540,6 @@ Desc=takes the ancient Mayan Map and uses it to locate the remains of ancient Ma
 AlliedNotes=550
 Exclusive=yes
 
-
 [VirilityCan]
 type=portal
 Cost=15
@@ -2486,7 +2589,6 @@ Monster=Gaki.Onki.Rasetsu
 Desc=takes out the banishing charm; a powerful charm used to banish demons. It begins to glow and creates a portal that teleports the heroes into a demonic shrine where three demons await.
 AlliedNotes=1000
 Exclusive=yes
-
 
 [RottingOrb]
 type=portal
@@ -2582,7 +2684,7 @@ Cost=15
 Currency=KindredSeal
 Battlefield=Overworld - Night
 Weather=calm
-Monster=Skeletron_Prime.Prime_Cannon.Prime_Laser.Prime_Saw.Prime_Vise
+Monster=Skeletron_Prime.Prime_Cannon.Prime_Laser.Prime_Saw.Prime_Vice
 Desc=takes out a small item that resembles a mechanical skull and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Skeletron Prime has awoken!]
 AlliedNotes=1100
 Exclusive=yes
@@ -2608,7 +2710,6 @@ Monster=HeroOfTime
 Desc=takes out the small glowing orb that has a Triforce symbol on it and watches as the battlefield is enveloped in a bright light.  When the light clears, the heroes find themselves standing in ancient Hyrule, facing an ancient hero.  
 AlliedNotes=2500
 Exclusive=yes
-
 
 [LachesisOrb]
 type=portal
@@ -2723,7 +2824,6 @@ Desc=takes out a small glowing orb that has an engraving of an hourglass on it. 
 AlliedNotes=1000
 Exclusive=yes
 
-
 [JungleOrb]
 type=portal
 Cost=$iif($readini(garden.dat, gardenstats, level) >= 5, 15, 20)
@@ -2758,6 +2858,15 @@ Desc=pulls out a curious guitar and plays a few strings. Suddenly %real.name and
 AlliedNotes=2750
 Exclusive=yes
 
+[UnknownPowerSource]
+type=portal
+Battlefield=Zohar Cave
+Weather=gloomy
+Monster=Grahf
+Desc=pulls out an unknown source of power, which suddenly covers the heroes in darkness. Once the darkness fades, they appear to be in a cave with a strange golden monolith with a large eye on it. In front of the monolith is a large black and grey mech with black wings. You can also see a person stand on the shoulder of the mech.
+AlliedNotes=5000
+Exclusive=yes
+PortalLevel=300
 
 ; High Kindred Crest Portal Items
 
@@ -2815,6 +2924,59 @@ EnergyCost=150
 Currency-AlliedNotes
 Exclusive=yes
 
+[VesselofAnima]
+Type=MechCore
+Cost=-1
+SellPrice=0
+Augment=
+EnergyCost=1000
+Currency=AlliedNotes
+Exclusive=yes
+
+[UmbranMechCore]
+Type=MechCore
+Cost=-1
+SellPrice=0
+Augment=
+EnergyCost=1000
+Currency=AlliedNotes
+Exclusive=yes
+
+[Vlar]
+Type=MechCore
+Cost=0
+SellPrice=0
+Augment=EnhanceDodge.HurtEthereal.MeleeBonus.MagicBonus.TechBonus.IgnoreDefenseEnergyCost=500
+EnergyCost=500
+Currency=AlliedNotes
+Exclusive=yes
+
+[Magna]
+Type=MechCore
+Cost=0
+SellPrice=0
+Augment=EnhanceDodge.HurtEthereal.MeleeBonus.MagicBonus.IgnoreDefense.IgnoreMetalDefenseEnergyCost=500
+EnergyCost=500
+Currency=AlliedNotes
+Exclusive=yes
+
+[Omni]
+Type=MechCore
+Cost=0
+SellPrice=0
+Augment=DecreaseMechEnergyCost.EnhanceDodge.HurtEthereal.EnhanceDoubleTurnChance.MeleeBonus.MagicBonus.TechBonus.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian.AdditionalHit.EnhanceCriticalHits
+EnergyCost=500
+Currency=AlliedNotes
+Exclusive=yes
+
+[Leenex]
+Type=MechCore
+Cost=0
+SellPrice=500
+Augment=GemConvert.HurtEthereal
+EnergyCost=500
+Currency=AlliedNotes
+Exclusive=yes
 
 =========================
 SPECIAL ITEMS

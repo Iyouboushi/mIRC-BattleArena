@@ -44,8 +44,8 @@ RedOrbsSpent=0
 BlackOrbsSpent=0
 
 [Info]
-Gender=his
-Gender2=him
+Gender=her
+Gender2=her
 password=dbzrpg
 passhurt=0
 LastSeen=N/a
@@ -139,38 +139,38 @@ Elemental-Killer=20
 Slime-Killer=20
 
 [Techniques]
-
-
+GoddessCrest=$calc(50 + $current.battlestreak)
+GoddessFlames=$calc(75 + $current.battlestreak)
 
 
 [Item_Amount]
 
 [Styles]
 Equipped=Trickster
-Trickster=1
-TricksterXP=1
+Trickster=3
+TricksterXP=0
 
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Ice=100
-Water=100
-Lightning=100
+Earth=90
+Fire=90
+Wind=90
+Ice=90
+Water=90
+Lightning=90
 Light=0
-Dark=100
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+Dark=110
+HandToHand=90
+Whip=90
+Sword=90
+Gun=90
+Rifle=90
+Katana=90
+Wand=90
+Spear=90
+Scythe=90
+Glyph=90
+GreatSword=90
+Bow=90
 MasterSword=0

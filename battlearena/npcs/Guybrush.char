@@ -103,7 +103,7 @@ auto-regen=off
 
 [Weapons]
 Equipped=MonkeyIsland_Cutlass
-MonkeyIsland_Cutless=$iif(%battle.type = ai, %ai.battle.level, $round($calc($return_playerlevelstotal / 1.5),0))
+MonkeyIsland_Cutlass=$iif(%battle.type = ai, %ai.battle.level, $round($calc($return_playerlevelstotal / 1.5),0))
 
 
 [Skills]

@@ -167,20 +167,25 @@ Animus=$iif($current.battlestreak < 300, 0, 1)
 [Item_Amount]
 
 
+[Augments]
+KosmosFists=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge.EnhanceParry
+DinahWeapons=DecreaseMechEnergyCost.EnhanceRanged.EnhanceSword.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian.EnhanceCriticalHits
+
+
 [Styles]
 Equipped=Guardian
-Guardian=10
-GuardianXP=1
+Guardian=20
+GuardianXP=0
 
 
 [mech]
 name=E.S. Dinah
 inUse=false
 EngineLevel=$iif($current.battlestreak < 1000, 0, 1.2)
-HpMax=12000
-HpCurrent=12000
-EnergyMax=6000
-EnergyCurrent=6000
-EquippedCore=EtherealCore
+HpMax=20000
+HpCurrent=20000
+EnergyMax=10000
+EnergyCurrent=10000
+EquippedCore=VesselOfAnima
 EquippedWeapon=DinahWeapons
-Augments=TechBonus.HurtEthereal
+Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal

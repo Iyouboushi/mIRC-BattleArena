@@ -249,40 +249,6 @@ Desc=laughs madly as he floats up onto the air. The sky grows darker as he start
 StatusTarget=Self
 StatusType=Invincible
 
-[Composure]
-Name=Composure
-Hp=1.3
-Str=1.2
-Def=1.2
-Int=1.5
-Spd=1.2
-Augment=MagicBonus.CuringBonus.EnhanceStaff.EnhanceSword
-Effect=Status
-IgnitionTrigger=10
-IgnitionConsume=10
-Cost=0
-Techs=AerogaV.Chainspell
-Desc=laughs as a red and blue aura appears around herself, greatly increasing her power.
-StatusTarget=Self
-StatusType=ConserveTP
-
-[WitchTime]
-Name=WitchTime
-hp=2
-Str=2
-def=2
-int=2
-spd=2
-Augment=MeleeBonus.TechBonus.EnhanceParry.EnhanceDodge
-Effect=Status
-Techs=QueenSheba
-IgnitionTrigger=10
-IgnitionConsume=10
-Cost=0
-Desc=unleashes $gender($1) full power as a dark purple energy covers the battlefield. Enemies seem to move slower as %user moves faster around the battlefield.
-StatusTarget=Enemy
-StatusType=Slow
-
 [OkiroBenihime]
 Name=OkiroBenihime
 hp=2

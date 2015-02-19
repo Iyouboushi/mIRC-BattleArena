@@ -1,20 +1,22 @@
 [BaseStats]
 Hp=4000
 Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(40 + $current.battlestreak)
-Int=$calc(60 + $current.battlestreak)
-Spd=$calc(40 + $current.battlestreak)
-Name=Shanoa
+Str=$calc(60 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(60 + $current.battlestreak)
+IgnitionGauge=0
+Name=Solid Snake
 
 
 [Battle]
 Hp=4000
 Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(40 + $current.battlestreak)
-Int=$calc(60 + $current.battlestreak)
-Spd=$calc(40 + $current.battlestreak)
+Str=$calc(60 + $current.battlestreak)
+Def=$calc(50 + $current.battlestreak)
+Int=$calc(50 + $current.battlestreak)
+Spd=$calc(60 + $current.battlestreak)
+IgnitionGauge=0
 Status=alive
 
 
@@ -31,20 +33,19 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a young woman who is a member of Ecclesia and a powerful user of magical glyphs.
+Char=is the legendary mercenary. He is a tall man with short brown hair and wears a dark gray stealth suit. He also has a gray bandanna on his head. He looks at the battlefield and says: "Kept ya waiting, huh?"
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
 [Stuff]
-RedOrbs=3608
+RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
-RedOrbsSpent=4385
+RedOrbsSpent=0
 BlackOrbsSpent=0
 
-
 [Info]
-Gender=her
-Gender2=her
+Gender=his
+Gender2=him
 password=dbzrpg
 passhurt=0
 LastSeen=N/a
@@ -52,7 +53,13 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+RageMode=Ignore
+CanUseItems=True
 
+[Monster]
+type=
+TechLearn=false
+Size=Medium
 
 [Status]
 Poison=no
@@ -94,19 +101,28 @@ KiRegenerating=no
 curse.timer=1
 slow.timer=1
 zombie.timer=1
-conservetp.on=off
 
 [Weapons]
-Equipped=Glyphs
-Glyphs=$calc(50 + $current.battlestreak)
+Equipped=Fists
+Fists=$calc(60 + $current.battlestreak)
+Socom=$calc(60 + $current.battlestreak)
+PSG-1=$calc(60 + $current.battlestreak)
+
+[Augments]
+Fists=MeleeBonus.TechBonus
+Socom=MeleeBonus.EnhanceRanged
+PSG-1=MeleeBonus.EnhanceRanged
 
 [Skills]
-ElementalSeal=1
-Wizardry=2000
+MartialArts=1000
+Gunslinger=1000
+Demolitions=25
+Impetus=20
+WeaponBash=1
+MightyStrike=1
+RoyalGuard=1
+royalguard.on=on
 Zen=5
-PerfectDefense=1
-ClearMind=3
-BloodSpirit=10
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -117,7 +133,7 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-Resist-stun=100
+Resist-Stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
 Resist-Curse=100
@@ -141,23 +157,15 @@ Goblin-Killer=20
 Elemental-Killer=20
 Slime-Killer=20
 
+
 [Techniques]
-Ignis=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
-Grando=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
-Fulgur=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
-Nitesco=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
-Globus=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
-Acerbatus=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
-Luminatio=$iif($current.battlestreak < 100, 0, $calc(200 + $current.battlestreak))
-Dominus=$iif($current.battlestreak < 300, 0, $calc(500 + $current.battlestreak))
+DoublePunch=$iif($current.battlestreak < 50, 0, $calc(200 + $current.battlestreak))
+ShoulderTackle=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+AsuranFists=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+
 
 [Item_Amount]
-
-
-[Styles]
-Equipped=SpellMaster
-SpellMaster=25
-SpellMasterXP=1
-
-[Augments]
-Glyphs=HurtEthereal.TechBonus.MeleeBonus.MagicBonus
+C4=10
+Flash_Grenade=10
+Grappling_Hook=10
+HolyHandGrenade=1

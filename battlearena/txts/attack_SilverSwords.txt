@@ -1,0 +1,5 @@
+rushes towards %enemy and hops into the air. A moment later, %user swings the swords down upon %enemy
+laughs before holding the swords out to the side and spins towards %enemy at a high speed
+slashes at %enemy with the swords before stepping backwards in a defensive stance
+leaps at %enemy and slashes several times, rolling to the side before %enemy can react
+strikes at %enemy with a slash of $gender(%attacker) blades

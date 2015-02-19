@@ -68,7 +68,7 @@ Streak=-1000
 bosslevel=7000
 IgnoreQuicksilver=true
 CanTaunt=false
-JustReleaseDefense=90
+JustReleaseDefense=100
 
 [Status]
 Poison=no
@@ -116,8 +116,6 @@ conservetp.on=off
 [Weapons]
 Equipped=Black_Goddess_Staff
 Black_Goddess_Staff=500
-Murgleis=500
-Mandau=500
 
 
 [Skills]
@@ -125,8 +123,8 @@ Utsusemi=1
 ManaWall=1
 RoyalGuard=1
 ElementalSeal=1
-Wizardry=100
-Swordmaster=100
+Wizardry=500
+Swordmaster=500
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -138,6 +136,7 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Resist-Drunk=100
+Resist-Sleep=100
 Zen=5
 ClearMind=3
 MagicMirror=1
@@ -154,14 +153,6 @@ Paralyze=500
 Darkra=500
 DarkV=500
 BanishV=500
-DeathBlossom=500
-SwiftBlade=500
-SavageBlade=500
-Requiescat=500
-SanguineBlade=500
-MercyStroke=500
-AeolianEdge=500
-Evisceration=500
 
 
 [Item_Amount]
@@ -189,8 +180,6 @@ ElvenGoddessMagic=1
 
 [Augments]
 Black_Goddess_Staff=MagicBonus.IgnoreGuardian
-Murgleis=TechBonus.IgnoreGuardian
-Mandau=UtsusemiBonus.IgnoreGuardian
 
 
 [NaturalArmor]

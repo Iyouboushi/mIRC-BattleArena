@@ -584,7 +584,7 @@ check_monster {
     else if (%skill == Wizardy) continue
     else if (Resist- isin %skill) {
       var %status_resisted = $gettok(%skill, 2-, 45)
-      if (%status_resisted !isin stop.poison.silence.blind.drunk.virus.amnesia.paralysis.zombie.slow.stun.curse.charm.intimidate.defensedown.strengthdown.intdown.petrify.bored.confuse) $&
+      if (%status_resisted !isin stop.poison.silence.blind.drunk.virus.amnesia.paralysis.zombie.slow.stun.curse.charm.intimidate.defensedown.strengthdown.intdown.petrify.bored.confuse.sleep) $&
         var %missing_resists = $addtok(%missing_resists, Resist- $+ %status_resisted, 46)
     }
     else if (-killer isin %skill) continue

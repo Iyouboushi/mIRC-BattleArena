@@ -146,26 +146,32 @@ Requiem=$iif($current.battlestreak < 50, 0, $calc(200 + $current.battlestreak))
 StormWaltz=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
 
 
+[ignitions]
+Red_Dragon=$iif($current.battlestreak < 300, 0, 1)
+
+
 [Item_Amount]
 
 
-[ignitions]
-Red_Dragon=$iif($current.battlestreak < 300, 0, 1)
+[Augments]
+Vaquero=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge.EnhanceRanged
+AsherGuns=DecreaseMechEnergyCost.EnhanceRanged.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian.EnhanceCriticalHits
+
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=20
+WeaponMasterExp=1
 
 
 [mech]
 name=E.S. Asher
 inUse=false
 EngineLevel=$iif($current.battlestreak < 1000, 0, 1.2)
-HpMax=10000
-HpCurrent=10000
-EnergyMax=5000
-EnergyCurrent=5000
-EquippedCore=EtherealCore
+HpMax=20000
+HpCurrent=20000
+EnergyMax=10000
+EnergyCurrent=10000
+EquippedCore=VesselOfAnima
 EquippedWeapon=AsherGuns
-Augments=TechBonus.HurtEthereal
-
-[Styles]
-Equipped=WeaponMaster
-WeaponMaster=20
-WeaponMasterExp=1
+Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal

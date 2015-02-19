@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=gloomy
+current=bright
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=New
-CurrentMoonTurn=1
+CurrentMoonPhase=Gibbous
+CurrentMoonTurn=5
 
 [MoonPhaseTime]
 full=3

@@ -86,8 +86,8 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=DhamelSaliva
-DhamelSaliva=100
+Equipped=DhalmelSaliva
+DhalmelSaliva=100
 
 [Skills]
 Zen=5
