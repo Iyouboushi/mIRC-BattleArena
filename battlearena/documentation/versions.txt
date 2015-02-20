@@ -1100,9 +1100,11 @@ Battle Arena Bot VERSIONS
   and players can have as many characters as they want.
 - Added a new flag in system.dat: showCustomBattleMessages=true/false  If set to true the bot will display the new
   battle starting messages for orb fountains and bosses. If set to false it will show the old one.
-- Added a new system setting: ShowDeleteEcho  When set to =true  the bot will show every time it erases a .char file
+- Added a new system.dat setting: ShowDeleteEcho  When set to =true  the bot will show every time it erases a .char file
   Useful for debugging if something is going amiss.
 - Added a new system.dat setting: AllowBold=true/false  If set to false the bot won't show bold
+- Added a new system.dat setting: EnableGremlins=true/false  If set to false the gremlin special boss battle won't happen
+- Added a new special boss battle type: Gremlins.  
 - Added Capacity and Enhancement Points. 10,000 Capacity Points will equal 1 Enhancement Point. Players gain capacity 
   points by being in battles that are higher than streak 100. Note that the player level has to be within 10 of 
   the streak in order to gain capacity points. After streak 500, the amount is 500+(10% of streak level)
