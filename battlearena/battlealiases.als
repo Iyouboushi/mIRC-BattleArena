@@ -74,6 +74,26 @@ return_playersinbattle {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns # of monsters in battle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return_monstersinbattle {
+  var %total.monsinbattle $readini($txtfile(battle2.txt), BattleInfo, Monsters))
+  if (%total.monsinbattle = $null) { return 0 }
+  else { return %total.monsinbattle }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns max # of monsters in battle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return_maxmonstersinbattle {
+  if ($return.systemsetting(botType) = DCCchat) { return 50 }
+
+  var %max.monsters.allowed $return.systemsetting(MaxNumberOfMonsInBattle)
+  if (%max.monsters.allowed = null) { return 6 }
+  else { return %max.monsters.allowed }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Checks to see if someone
 ; is in a mech or not.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -369,6 +389,16 @@ boost_monster_stats {
   }
 
   if (%boss.type = Bandits) { 
+    if (%boss.level = $null) { 
+      if ($return_winningstreak >= 50) { var %monster.level 50 }
+    }
+    if (%boss.level != $null) {
+      if (%boss.level > 50) { var %monster.level 50 }
+      else { var %monster.level %boss.level }
+    } 
+  }
+
+  if (%boss.type = Gremlins) { 
     if (%boss.level = $null) { 
       if ($return_winningstreak >= 50) { var %monster.level 50 }
     }
@@ -3767,7 +3797,6 @@ modifer_adjust {
     unset %current.accessory | unset %current.accessory.type | unset %accessory.amount
   }
   unset %elements
-
 
   ; Turn it into a deciminal
   var %modifier.adjust.value $calc(%modifier.adjust.value / 100) 

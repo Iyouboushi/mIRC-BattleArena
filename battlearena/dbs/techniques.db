@@ -376,6 +376,7 @@ GrahfFists=DoublePunch.ShoulderTackle.AsuranFists.GrahfEnergyBlast
 AlphaWeltallFists=TripleStrike.MartialBlazeIII
 GibdoBlade=GibdoShriek.HardSlash
 RedeadBlade=RedeadShriek.SpinningSlash
+GremlinAttack=GremlinBite
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -9062,7 +9063,6 @@ Stat=str
 renkei=10
 HurtEthereal=true
 
-
 [AnniFireworks]
 Type=AOE
 TP=1
@@ -9072,6 +9072,16 @@ Element=light
 Cost=0
 Magic=no
 stat=int
+
+[GremlinBite]
+Type=Single
+TP=30
+Desc=leaps onto and forcefully bites %enemy 
+BasePower=60
+Element=None
+Cost=0
+Magic=No
+stat=str
 
 [DigitalLasers]
 Type=AOE

@@ -1,12 +1,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the bot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-battle.version { return 3.0beta_021815 } 
+battle.version { return 3.0beta_022015 } 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the system.dat file
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-system.dat.version { return 021515 }
+system.dat.version { return 022015 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; The bot's quit message
@@ -49,17 +49,6 @@ system_defaults_check {
     if ($readini(system.dat, system, maxOrbReward) = $null) { writeini system.dat system maxOrbReward 20000 } 
     if ($readini(system.dat, system, MaxGauntletOrbReward) = $null) { writeini system.dat system MaxGauntletOrbReward 50000 } 
     if ($readini(system.dat, system, maxshoplevel) = $null) { writeini system.dat system maxshoplevel 25 } 
-    if ($readini(system.dat, system, EnableDoppelganger) = $null) { writeini system.dat system EnableDoppelganger true }
-    if ($readini(system.dat, system, EnableWarmachine) = $null) { writeini system.dat system EnableWarmachine true }
-    if ($readini(system.dat, system, EnableBandits) = $null) { writeini system.dat system EnableBandits true }
-    if ($readini(system.dat, system, EnablePirates) = $null) { writeini system.dat system EnablePirates true }
-    if ($readini(system.dat, system, EnableCrystalShadow) = $null) { writeini system.dat system EnableCrystalShadow true }
-    if ($readini(system.dat, system, EnablePresidentKidnapping) = $null) { writeini system.dat system EnablePresidentKidnapping true }
-    if ($readini(system.dat, system, EnableNPCKidnapping) = $null) { writeini system.dat system EnableNPCKidnapping true }
-    if ($readini(system.dat, system, AllowDemonwall) = $null) { writeini system.dat system AllowDemonwall yes }
-    if ($readini(system.dat, system, AllowDemonwall) = $null) { writeini system.dat system AllowWallOfFlesh yes }
-    if ($readini(system.dat, system, MaxDemonWallTurns) = $null) { writeini system.dat system MaxDemonWallTurns 10 }
-    if ($readini(system.dat, system, MaxDemonWallTurns) = $null) { writeini system.dat system MaxWallOfFleshTurns 16 }
     if ($readini(system.dat, system, EnableChests) = $null) { writeini system.dat system EnableChests true }
     if ($readini(system.dat, system, MaxCharacters) = $null) { writeini system.dat system MaxCharacters 2 }
     if ($readini(system.dat, system, EnableDNSCheck) = $null) { writeini system.dat system EnableDNSCheck true }
@@ -87,6 +76,20 @@ system_defaults_check {
     if ($readini(system.dat, system, WheelGameCost) = $null) { writeini system.dat system WheelGameCost 500 }
     if ($readini(system.dat, system, TwitchDelayTime) = $null) { writeini system.dat system TwitchDelayTime 2 }
     if ($readini(system.dat, system, ShowDeleteEcho) = $null) { writeini system.dat system ShowDeleteEcho false }
+
+    if ($readini(system.dat, system, EnableDoppelganger) = $null) { writeini system.dat system EnableDoppelganger true }
+    if ($readini(system.dat, system, EnableWarmachine) = $null) { writeini system.dat system EnableWarmachine true }
+    if ($readini(system.dat, system, EnableBandits) = $null) { writeini system.dat system EnableBandits true }
+    if ($readini(system.dat, system, EnableGremlins) = $null) { writeini system.dat system EnableGremlins true }
+    if ($readini(system.dat, system, EnableGoblins) = $null) { writeini system.dat system EnableGoblins true }
+    if ($readini(system.dat, system, EnablePirates) = $null) { writeini system.dat system EnablePirates true }
+    if ($readini(system.dat, system, EnableCrystalShadow) = $null) { writeini system.dat system EnableCrystalShadow true }
+    if ($readini(system.dat, system, EnablePresidentKidnapping) = $null) { writeini system.dat system EnablePresidentKidnapping true }
+    if ($readini(system.dat, system, EnableNPCKidnapping) = $null) { writeini system.dat system EnableNPCKidnapping true }
+    if ($readini(system.dat, system, AllowDemonwall) = $null) { writeini system.dat system AllowDemonwall yes }
+    if ($readini(system.dat, system, AllowDemonwall) = $null) { writeini system.dat system AllowWallOfFlesh yes }
+    if ($readini(system.dat, system, MaxDemonWallTurns) = $null) { writeini system.dat system MaxDemonWallTurns 10 }
+    if ($readini(system.dat, system, MaxDemonWallTurns) = $null) { writeini system.dat system MaxWallOfFleshTurns 16 }
 
     if ($readini(system.dat, statprices, hp) = $null) { writeini system.dat statprices hp 150 }
     if ($readini(system.dat, statprices, tp) = $null) { writeini system.dat statprices tp 150 }

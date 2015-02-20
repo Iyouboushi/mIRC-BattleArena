@@ -13,6 +13,8 @@ get_boss_type {
   var %enable.warmachine $readini(system.dat, system, EnableWarMachine)
   var %enable.bandits $readini(system.dat, system, EnableBandits)
   var %enable.pirates $readini(system.dat, system, EnablePirates)
+  var %enable.goblins $readini(system.dat, system, EnableGoblins)
+  var %enable.gremlins $readini(system.dat, system, EnableGremlins)
   var %enable.crystalshadow $readini(system.dat, system, EnableCrystalShadow)
 
   var %winning.streak.check $readini(battlestats.dat, battle, winningstreak)
@@ -20,6 +22,8 @@ get_boss_type {
 
   if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.bandits false }
   if ((%winning.streak.check < 50) || (%winning.streak.check > 100)) { var %enable.doppelganger false }
+  if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.gremlins false }
+  if ((%winning.streak.check < 75) || (%winning.streak.check > 200)) { var %enable.goblins false }
   if (%winning.streak.check >= 250) { var %enable.warmachine false } 
   if ((%winning.streak.check < 75) || (%winning.streak.check > 200)) { var %enable.pirates false }
   if (%winning.streak.check >= 500) { var %enable.pirates false } 
@@ -36,12 +40,12 @@ get_boss_type {
 
   if (($left($adate, 2) = 12) && (%winning.streak.check >= 20)) { %boss.choices = %boss.choices $+ .FrostLegion }
 
-
   var %boss.chance $rand(1,100)
 
   if ((%enable.doppelganger = true) && (%boss.chance <= 10)) { %boss.choices = %boss.choices $+ .doppelganger }
   if ((%enable.warmachine = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .warmachine }
   if ((%enable.bandits = true) && (%boss.chance <= 5)) { %boss.choices = %boss.choices $+ .bandits }
+  if ((%enable.gremlins = true) && (%boss.chance <= 5)) { %boss.choices = %boss.choices $+ .gremlins }
   if ((%enable.crystalshadow = true) && (%boss.chance <= 15)) { 
     if (%winning.streak.check > 15) { %boss.choices = %boss.choices $+ .crystalshadow }
   }
@@ -1005,6 +1009,71 @@ generate_pirate_firstmatey {
   if (%boss.item != $null) {  writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
   unset %boss.item
 }
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This function generates
+; a random gremlin
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+generate_gremlin {
+  ; $1 = the number of the minion
+  set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
+  if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak >= 50) { set %current.battlestreak 50 }
+
+  set %monster.name Gremlin $+ $1 | set %monster.realname Gremlin $1
+
+  .copy -o $char(new_chr) $char(%monster.name)
+  writeini $char(%monster.name) info flag monster 
+  writeini $char(%monster.name) Basestats name %monster.realname
+  writeini $char(%monster.name) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
+  writeini $char(%monster.name) info gender his
+  writeini $char(%monster.name) info gender2 him
+  writeini $char(%monster.name) info bosslevel $calc(%current.battlestreak - 5)
+
+  writeini $char(%monster.name) descriptions MonsterSummon $eval(The Gremlin's $chr(2) $+ back begins to bubble and hiss as a boil appears and suddenly shoots off. When the bubble lands it steams and turns into another large green gremlin ready to attack.,0)
+
+  var %base.hp.tp $calc(3 * %current.battlestreak)
+  writeini $char(%monster.name) basestats hp %base.hp.tp
+  writeini $char(%monster.name) basestats tp %base.hp.tp
+
+  writeini $char(%monster.name) basestats str $rand(25,50)
+  writeini $char(%monster.name) basestats def $rand(15,45)
+  writeini $char(%monster.name) basestats int $rand(10,35)
+  writeini $char(%monster.name) basestats spd $rand(55,155)
+
+  writeini $char(%monster.name) techniques GermlinBite $round($calc(%current.battlestreak / 3),0)
+
+  writeini $char(%monster.name) weapons equipped GremlinAttack
+  writeini $char(%monster.name) weapons GremlinAttack $round($calc(%current.battlestreak / 3),0)
+  remini $char(%monster.name) weapons Fists
+
+  writeini $char(%monster.name) techniques GremlinBite $round($calc(%current.battlestreak / 3),0)
+
+  writeini $char(%monster.name) skills Resist-stun 30
+  writeini $char(%monster.name) skills Resist-charm 100
+  writeini $char(%monster.name) skills Resist-paralysis 100
+  writeini $char(%monster.name) skills Resist-poison 100
+
+  writeini $char(%monster.name) descriptions char is an ugly green monster with large bat-like ears and sharp teeth. It gives a mischievous laugh
+
+  writeini $char(%monster.name) modifiers water 0
+  writeini $char(%monster.name) modifiers light 300
+  writeini $char(%monster.name) modifier_special water $eval($iif($return_monstersinbattle < $return_maxmonstersinbattle, $skill.monstersummon($3, Gremlin)),0)
+
+  $fulls(%monster.name) 
+  $boost_monster_stats(%monster.name)
+
+  set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
+  $set_chr_name(%monster.name) 
+  $display.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
+  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
+  inc %battletxt.current.line 1 
+  unset %current.battlestreak | unset %monster.name | unset %monster.realname
+  unset %boss.item
+}
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function generates

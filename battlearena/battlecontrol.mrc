@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/18/15
+;;;; Last updated: 02/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -768,6 +768,7 @@ alias battle.getmonsters {
             if (%boss.type = elderdragon) { set %number.of.monsters.needed 0 }
             if (%boss.type = FrostLegion) { set %number.of.monsters.needed 0 }
             if (%boss.type = CrystalShadow) { set %number.of.monsters.needed 0 }
+            if (%boss.type = gremlins) { set %number.of.monsters.needed 0 }
 
             if (%number.of.monsters.needed > 0) { $generate_monster(monster)   }
           }
@@ -859,7 +860,7 @@ alias generate_monster {
   if ($1 = boss) {
     if (%boss.type = $null) { $get_boss_type }
 
-    set %valid.boss.types normal.bandits.doppelganger.warmachine.demonwall.wallofflesh.elderdragon.pirates.frostlegion.crystalshadow
+    set %valid.boss.types normal.bandits.gremlins.doppelganger.warmachine.demonwall.wallofflesh.elderdragon.pirates.frostlegion.crystalshadow
 
     if (%boss.type = $null) { var %boss.type normal }
     if ($istok(%valid.boss.types,%boss.type,46) = $false) { var %boss.type normal }
@@ -974,6 +975,37 @@ alias generate_monster {
 
       set %current.battlefield highway
     }
+
+
+    if (%boss.type = gremlins) {
+      $display.message($readini(translation.dat, events, GremlinsFight), battle)
+
+      if ($return_winningstreak >= 50) {  
+        $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
+        $portal.sync.players(50) 
+      }
+
+      .copy -o $boss(Stripe) $char(Stripe) | set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat  |  $set_chr_name(stripe) 
+      set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,Stripe,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) Stripe
+      writeini $char(Stripe) Techniques GremlinBite 50 | writeini $char(Stripe) Weapons GremlinAttack 50 | writeini $char(Stripe) BaseStats HP $rand(4000,5000) | writeini $char(Stripe) Battle HP $readini($char(Stripe), BaseStats, HP) 
+
+      if (%battle.type != ai) { 
+        $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
+        $display.message(12 $+ %real.name  $+ $readini($char(Stripe), descriptions, char), battle)
+        $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(stripe), descriptions, BossQuote) $+ ", battle)
+      }
+
+      if ($readini(battlestats.dat, Battle, WinningStreak) > 100) {  var %number.of.gremlins.needed $rand(2,3) }
+      else {  var %number.of.gremlins.needed $rand(1,2) }
+      var %i 1
+      while (%i <= %number.of.gremlins.needed) {
+        $generate_gremlin(%i)
+        inc %i 1
+      }
+
+      set %current.battlefield school
+    }
+
 
     if (%boss.type = pirates) {
       $display.message($readini(translation.dat, events, PiratesFight), battle)

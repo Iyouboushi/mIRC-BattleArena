@@ -1658,6 +1658,12 @@ Cost=0
 SellPrice=100
 Desc=The ash taken from a Redead Knight.
 
+[GremlinSkin]
+Type=misc
+Cost=0
+SellPrice=100
+Desc=The skin taken from a gremlin.
+
 [GreenKinstone]
 Type=misc
 Cost=0
