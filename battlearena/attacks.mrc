@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 02/15/15
+;;;; Last updated: 02/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -403,6 +403,15 @@ alias calculate_damage_weapon {
       }
 
       if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
+
+        var %damage.ratio.adjust $calc($get.level($1) / $get.level($3))
+
+        if (%damage.ratio < .10) { var %damage.ratio .10 }
+        if (%damage.ratio > 120) { var %damage.ratio 120 }
+
+        set %attack.damage $round($calc(%attack.damage * %damage.ratio.adjust),0)
+        var %min.damage $round($calc(%min.damage * %damage.ratio.adjust),0)
+
         var %level.difference $calc($get.level($1) - $get.level($3)) 
         if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
         if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }

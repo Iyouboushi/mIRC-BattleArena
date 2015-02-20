@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 02/19/15
+;;;; Last updated: 02/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1163,7 +1163,7 @@ alias calculate_damage_techs {
   var %tech.element $readini($dbfile(techniques.db), $2, element)
 
   if ((%tech.element != $null) && (%tech.element != none)) {
-    if ($numtok(%tech.element,46) = 1) { echo -a 1 | $modifer_adjust($3, %tech.element) }
+    if ($numtok(%tech.element,46) = 1) { $modifer_adjust($3, %tech.element) }
     if ($numtok(%tech.element,46) > 1) { 
       var %element.number 1 
       while (%element.number <= $numtok(%tech.element,46)) {
@@ -1180,12 +1180,9 @@ alias calculate_damage_techs {
   ; Check to see if the target is resistant/weak to the weapon itself
   $modifer_adjust($3,  $readini($char($1), weapons, equipped))
 
-  echo -a starting damage: %starting.damage vs %attack.damage
-
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
   if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
-
 
   if (%enemy.defense <= 0) { set %enemy.defense 1 }
 
@@ -1250,6 +1247,14 @@ alias calculate_damage_techs {
     if (%battle.rage.darkness = on) { var %min.damage %attack.damage }
 
     if (%battle.rage.darkness != on) { 
+      var %damage.ratio.adjust $calc($get.level($1) / $get.level($3))
+
+      if (%damage.ratio < .10) { var %damage.ratio .10 }
+      if (%damage.ratio > 120) { var %damage.ratio 120 }
+
+      set %attack.damage $round($calc(%attack.damage * %damage.ratio.adjust),0)
+      var %min.damage $round($calc(%min.damage * %damage.ratio.adjust),0)
+
       if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
         var %level.difference $calc($get.level($1) - $get.level($3)) 
         if (%level.difference <= 0) && (%level.difference >= -500) { var %min.damage $round($calc(%min.damage / 2),0) }
@@ -1258,6 +1263,7 @@ alias calculate_damage_techs {
 
       if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
         var %level.difference $calc($get.level($1) - $get.level($3)) 
+
         if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
         if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
       }
@@ -1285,12 +1291,11 @@ alias calculate_damage_techs {
     }
   }
 
-
   ; AOE nerf check for players
   if ($readini($char($1), info, flag) = $null) {
 
     if (%aoe.turn > 1) {
-      var %aoe.nerf.percent $calc(8 * %aoe.turn)
+      var %aoe.nerf.percent $calc(7 * %aoe.turn)
       if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 5 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
@@ -1333,6 +1338,9 @@ alias calculate_damage_techs {
     if (%target.element.null <= 0) { $set_chr_name($3)
       set %guard.message $readini(translation.dat, battle, ImmuneToElement) 
       set %attack.damage 0 
+
+      ; This is mostly just for gremlins but might be useful for other things down the road.
+      $readini($char($3), modifier_special, %current.element)
     }
     unset %target.element.null
   }
