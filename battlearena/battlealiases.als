@@ -108,7 +108,7 @@ person_in_mech {
 ; a turn.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 no.turn.check {
-  if (%battleis = off) { halt }
+  if ((%battleis = off) && ($2 != return)) { halt }
   if ($readini($char($1), basestats, hp) = $null) { halt }
   if ($readini($char($1), info, flag) = monster) { return }
   if ($readini($char($1), info, flag) = npc) { return }
