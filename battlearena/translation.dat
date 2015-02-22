@@ -499,16 +499,16 @@ TrustNPCDoesn'tExist=$chr(3) $+ 4 $+ Error: The NPC this item summons does not
 Battle Related Messages
 =======================
 [Battle]
-StartBattle=$chr(3) $+ 2 $+ * A battle will begin in %show.time $iif(%time.between.battles < 1, seconds, $iif(%time.between.battles = 1, minute, minutes)) $+ .
-StartBattlePresident=$chr(3) $+ 2 $+ * The Allied Forces are putting together a rescue party to save the president. This battle will begin in %show.time $iif(%time.between.battles < 1, seconds, $iif(%time.between.battles = 1, minute, minutes)) $+ .
-BattleOpen=$chr(3) $+ 4 $+ A dimensional portal has been detected.  The enemy force will arrive in %time.to.enter seconds. Type !enter if you wish to join the battle!  
-BattleOpenBoss=$chr(3) $+ 4 $+ A powerful dimensional rift has been detected. The enemy force will arrive in %time.to.enter seconds. Type !enter if you wish to join the battle!  
-BattleOpenOrbFountain=$chr(3) $+ 4 $+ The Allied Forces have detected an orb fountain! The party will be sent to destroy it in %time.to.enter seconds. Type !enter if you wish to join the battle!  
-BattleOpenPVP=$chr(3) $+ 4 $+ The Allied Forces have opened the coliseum to allow players to fight one another. The PVP battle will begin in %time.to.enter seconds. Type !enter if you wish to join the battle!  
-BattleOpenManual=$chr(3) $+ 4 $+ A Manual battle has been started. Bot Admins will need to add monsters, npcs and bosses individually. The battle will begin in %time.to.enter seconds. Players can type !enter if you wish to join the battle!  
-BattleOpenMimic=$chr(3) $+ 4 $+ An evil treasure chest Mimic is ready to fight The battle will begin in %time.to.enter seconds. Type !enter if you wish to join the battle!  
-BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone willing to brave the gauntlet has %time.to.enter seconds to enter before the doors close. Type !enter if you wish to join the battle!  
-BattleDefendOutpost=$chr(3) $+ 4 $+ An outpost of the Allied Forces HQ is under attack! Reinforcements are requested immediately! The reinforcements will depart in %time.to.enter seconds. Type !enter to join!  
+StartBattle=$chr(3) $+ 2 $+ * A battle will begin in12 $duration(%newbattle.time) $+ 2.
+StartBattlePresident=$chr(3) $+ 2 $+ * The Allied Forces are putting together a rescue party to save the president. This battle will begin in7 $duration(%newbattle.time) $+ 2.
+BattleOpen=$chr(3) $+ 4 $+ A dimensional portal has been detected.  The enemy force will arrive in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
+BattleOpenBoss=$chr(3) $+ 4 $+ A powerful dimensional rift has been detected. The enemy force will arrive in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
+BattleOpenOrbFountain=$chr(3) $+ 4 $+ The Allied Forces have detected an orb fountain! The party will be sent to destroy it in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
+BattleOpenPVP=$chr(3) $+ 4 $+ The Allied Forces have opened the coliseum to allow players to fight one another. The PVP battle will begin in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
+BattleOpenManual=$chr(3) $+ 4 $+ A Manual battle has been started. Bot Admins will need to add monsters, npcs and bosses individually. The battle will begin in $duration(%time.to.enter) $+ . Players can type !enter if you wish to join the battle!  
+BattleOpenMimic=$chr(3) $+ 4 $+ An evil treasure chest Mimic is ready to fight The battle will begin in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
+BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone willing to brave the gauntlet has $duration(%time.to.enter) $+ to enter before the doors close. Type !enter if you wish to join the battle!  
+BattleDefendOutpost=$chr(3) $+ 4 $+ An outpost of the Allied Forces HQ is under attack! Reinforcements are requested immediately! The reinforcements will depart in $duration(%time.to.enter) $+ . Type !enter to join!  
 
 BattleOpenAIBet=$chr(3) $+ 4 $+ A 1 vs 1 AI Match is about to begin! The battle will begin in %time.to.enter seconds. 
 
