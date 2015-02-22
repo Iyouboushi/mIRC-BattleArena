@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/18/15
+;;;; Last updated: 02/22/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -52,7 +52,7 @@ alias item.countcmd {
 }
 
 on 3:TEXT:!use*:*: {  unset %real.name | unset %enemy | $set_chr_name($nick)
-  $no.turn.check($nick)
+  $no.turn.check($nick, return)
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { 
     if ((%battleis = on) && ($istok($readini($txtfile(battle2.txt), Battle, List),$nick,46) = $true)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }
   }

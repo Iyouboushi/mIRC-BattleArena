@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/21/15
+;;;; Last updated: 02/22/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -577,7 +577,7 @@ on 3:TEXT:!style*:*: {  unset %*.style.list | unset %style.list
     unset %styles.list | unset %current.playerstyle.* | unset %styles | unset %style.name | unset %style_level | unset %current.playerstyle
   }
   if ($2 = change) { 
-    $no.turn.check($nick)
+    $no.turn.check($nick, return)
     $style.change($nick, $2, $3)
   }
   if (($2 != $null) && ($2 != change)) {
@@ -597,7 +597,7 @@ on 3:TEXT:!style*:*: {  unset %*.style.list | unset %style.list
 }
 
 ON 50:TEXT:*style change to *:*:{ 
-  $no.turn.check($1)
+  $no.turn.check($1, return)
   $style.change($1, $3, $5)
 } 
 
@@ -605,7 +605,7 @@ ON 3:TEXT:*style change to *:*:{
   if ($2 != style) { halt }
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
-  $no.turn.check($1)
+  $no.turn.check($1, return)
   $style.change($1, $3, $5)
 } 
 alias style.change { 
