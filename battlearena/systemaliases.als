@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the bot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-battle.version { return 3.0beta_022015 } 
+battle.version { return 3.0beta_022115 } 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the system.dat file
@@ -297,9 +297,6 @@ system.start.newbattle {
   var %time.between.battles $readini(system.dat, System, TimeBetweenBattles)
   if (%time.between.battles = $null) { var %time.between.battles 3 }
   set %newbattle.time $calc(%time.between.battles * 60)
-
-  if (%time.between.battles < 1) { var %show.time %show.time $round(%newbattle.time, 0) }
-  if (%time.between.battles >= 1) { var %show.time %time.between.battles  }
 
   var %president.enabled $readini(system.dat, system, EnablePresidentKidnapping)
   if (%president.enabled = $null) { var %president.enabled true }
@@ -753,7 +750,11 @@ idcheck {
 }
 id_login {
   var %bot.owners $readini(system.dat, botinfo, bot.owner)
-  if ($istok(%bot.owners,$1, 46) = $true) {  .auser 50 $1
+  if ($istok(%bot.owners,$1, 46) = $true) { 
+    var %bot.owner $gettok(%bot.owners, 1, 46)
+    if ($nick = %bot.owner) { .auser 100 $nick }
+    else { .auser 50 $nick }
+
     if ($readini(system.dat, system, botType) = DCCchat) { 
       unset %dcc.alreadyloggedin
       $dcc.check.for.double.login($1)

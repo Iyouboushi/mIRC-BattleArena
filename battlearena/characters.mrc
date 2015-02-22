@@ -88,8 +88,13 @@ on 1:TEXT:!new char*:*: {  $checkscript($2-)
   if ($readini(system.dat, system, botType) = IRC) { .auser 3 $nick }
   if ($readini(system.dat, system, botType) = TWITCH) { .auser 3 $nick }
 
+
   var %bot.owners $readini(system.dat, botinfo, bot.owner)
-  if ($istok(%bot.owners,$nick,46) = $true) {  .auser 50 $nick }
+  if ($istok(%bot.owners,$nick,46) = $true) {
+    var %bot.owner $gettok(%bot.owners, 1, 46)
+    if ($nick = %bot.owner) { .auser 100 $nick }
+    else { .auser 50 $nick }
+  }
 
   ; Give 10 starting login points
   writeini $char($1) stuff LoginPoints 10
@@ -123,12 +128,15 @@ ON 2:TEXT:!newpass *:?:{ $checkscript($2-) | $password($nick)
 ON 1:TEXT:!id*:*:{ 
 
   if ($readini(system.dat, system, botType) = TWITCH) {
-    if ($isfile($char($nick)) = $true) { 
-      $set_chr_name($nick) | $display.message(10 $+ %real.name %custom.title  $+  $readini($char($nick), Descriptions, Char), global) 
+    if ($isfile($char($nick)) = $true) {
+      $set_chr_name($nick) | $display.message(10 $+ %real.name %custom.title  $+ $readini($char($nick), Descriptions, Char), global)
       var %bot.owners $readini(system.dat, botinfo, bot.owner)
-      if ($istok(%bot.owners,$nick,46) = $true) {  .auser 50 $nick }
-
-      mode %battlechan +v $nick | unset %passhurt 
+      if ($istok(%bot.owners,$nick,46) = $true) {
+        var %bot.owner $gettok(%bot.owners, 1, 46)
+        if ($nick = %bot.owner) { .auser 100 $nick }
+        else { .auser 50 $nick }
+      }
+      mode %battlechan +v $nick | unset %passhurt
       halt
     }
   }
