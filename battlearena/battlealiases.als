@@ -1973,7 +1973,7 @@ inflict_status {
   if (%guard.message != $null) { return }
 
   if ($3 = random) { 
-    var %random.status.type $rand(1,16)
+    var %random.status.type $rand(1,17)
     if (%random.status.type = 1) { set %status.type poison | var %status.grammar poisoned }
     if (%random.status.type = 2) { set %status.type stop | var %status.grammar frozen in time }
     if (%random.status.type = 3) { set %status.type blind | var %status.grammar blinded }
@@ -1990,6 +1990,8 @@ inflict_status {
     if (%random.status.type = 14) { set %status.type petrify | var %status.grammar petrified }
     if (%random.status.type = 15) { set %status.type bored | var %status.grammar bored of the battle  }
     if (%random.status.type = 16) { set %status.type confuse | var %status.grammar confused  }
+    if (%random.status.type = 17) { set %status.type sleep | var %status.grammar asleep  }
+
   }
 
   if ($3 = stop) { set %status.type stop | var %status.grammar frozen in time }
@@ -2014,6 +2016,7 @@ inflict_status {
   if ($3 = confuse) { set %status.type confuse  | var %status.grammar confused }
   if ($3 = removeboost) { set %status.type removeboost | var %status.grammar no longer boosted }
   if ($3 = defenseup) { set %status.type defenseup | var %status.grammar gains defense up }
+  if ($3 = sleep) { set %status.type sleep  | var %status.grammar asleep }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
 
