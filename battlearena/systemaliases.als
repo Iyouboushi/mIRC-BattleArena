@@ -267,9 +267,16 @@ return_differenceof {
 ; Returns the current winning streak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return_winningstreak {
-  var %current.winningstreak $readini(battlestats.dat, battle, winningstreak)
-  if (%current.winningstreak = $null) { var %current.winningstreak 0 }
-  return %current.winningstreak
+  if (%portal.bonus = true) {
+    var %portal.streak $readini($txtfile(battle2.txt), battleinfo, Portallevel)
+    if (%portal.streak = $null) { echo -a portal level is null | return 10 }
+    return %portal.streak 
+  }
+  if (%portal.bonus != true) { 
+    var %current.winningstreak $readini(battlestats.dat, battle, winningstreak)
+    if (%current.winningstreak = $null) { var %current.winningstreak 0 }
+    return %current.winningstreak
+  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
