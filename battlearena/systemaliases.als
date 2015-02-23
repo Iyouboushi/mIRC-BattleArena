@@ -2086,7 +2086,7 @@ oldchar.check {
   if ($istok(%bot.owners,$1,46) = $true) { return }
 
   var %lastseen.date $readini($char($1), info, LastSeen)
-  if (%lastseen.date = $null) { writeini $char($1) info LastSeen $fulldate) | return }
+  if (%lastseen.date = $null) { writeini $char($1) info LastSeen $fulldate | return }
   if (%lastseen.date = N/A) { var %lastseen.date $readini($char($1), info, Created) | writeini $char($1) info LastSeen %lastseen.date }
 
   var %lastseen.ctime $ctime(%lastseen.date)
