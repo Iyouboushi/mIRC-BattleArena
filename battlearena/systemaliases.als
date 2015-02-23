@@ -222,6 +222,7 @@ system_defaults_check {
   .remove $npc(Yoruichi_Shihoiun)
   .remove $mon(Demonic_Succubus)
   .remove $mon(Final_Guard)
+  .remove $mon(Prime_Vise)
   .remove $lstfile(items_songs.lst)
 
   ; Remove settings no longer needed
