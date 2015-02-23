@@ -155,6 +155,7 @@ alias uses_item {
       writeini $txtfile(battle2.txt) battleinfo averagelevel %portal.level 
       writeini $txtfile(battle2.txt) battleinfo highestlevel %portal.level 
       writeini $txtfile(battle2.txt) battleinfo PlayerLevels %portal.level 
+      writeini $txtfile(battle2.txt) battleinfo Portallevel %portal.level
     } 
 
     ; Show the description
@@ -1193,6 +1194,8 @@ alias portal.item.onemonster {
   writeini $char(%monster.to.spawn) basestats int $readini($char(%monster.to.spawn), battle, int)
   writeini $char(%monster.to.spawn) basestats spd $readini($char(%monster.to.spawn), battle, spd)
 
+  $boost_monster_hp(%monster.to.spawn, portal, $get.level(%monster.to.spawn))
+
   $fulls(%monster.to.spawn, yes)
 
   set %multiple.wave.bonus yes
@@ -1281,6 +1284,8 @@ alias portal.item.multimonsters {
       writeini $char(%current.monster.to.spawn) basestats def $readini($char(%current.monster.to.spawn), battle, def)
       writeini $char(%current.monster.to.spawn) basestats int $readini($char(%current.monster.to.spawn), battle, int)
       writeini $char(%current.monster.to.spawn) basestats spd $readini($char(%current.monster.to.spawn), battle, spd)
+
+      $boost_monster_hp(%monster.to.spawn, portal, $get.level(%monster.to.spawn))
 
       $fulls(%current.monster.to.spawn, yes)
 

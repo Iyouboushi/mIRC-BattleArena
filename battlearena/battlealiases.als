@@ -538,6 +538,10 @@ boost_monster_hp {
 
   var %temp.hp.needed $round($calc(%hp + ((($return_winningstreak - 3)  / 5) * 50)),0)
 
+  if ($2 = portal) { 
+    if (%temp.hp.needed) { writeini $char($1) basestats hp %temp.hp.needed | writeini $char($1) battle hp %temp.hp.needed | return }
+  }
+
   if (%hp < %temp.hp.needed) { var %hp %temp.hp.needed } 
 
   var %increase.amount 1
@@ -3491,8 +3495,8 @@ cap.damage {
   if ($readini($char($1), info, flag) = monster) {
     if (%battle.rage.darkness = on) { return }
 
-    if ($3 = melee) { var %damage.threshold 2000 }
-    if ($3 = tech) { var %damage.threshold 3000 }
+    if ($3 = melee) { var %damage.threshold 4000 }
+    if ($3 = tech) { var %damage.threshold 5000 }
 
     if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %damage.threshold 7000 }
 
