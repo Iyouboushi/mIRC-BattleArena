@@ -2407,6 +2407,7 @@ Monster=Allied_Scrub
 Desc=visits the Allied Forces and hands the guard the training paper. "You must be here to train the new guy," he says to them before leading them to the training field.
 AlliedNotes=50
 Exclusive=yes
+PortalLevel=10
 
 [MillennialFairPass]
 Type=portal
@@ -2454,7 +2455,7 @@ Monster=Time_Bomb
 Desc=travels to Waughroon Shrine and takes out the bomb shard.  After placing it down into the center of the shrine a large and powerful bomb is lured out and floats onto the battlefield
 AlliedNotes=200
 Exclusive=yes
-PortalLevel=31
+PortalLevel=30
 
 [ArmosMedallian]
 type=portal
@@ -2490,6 +2491,7 @@ Monster=Moldorm.MoldormTail
 Desc=takes a special key made to enter the Tower of Hera.  After a climb up a mountain, the heroes enter and climb the tower to the top floor where they're greeted by a massive yellow centipede-snake creature.
 AlliedNotes=550
 Exclusive=yes
+PortalLevel=30
 
 [SuspiciousLookingEye]
 type=portal
@@ -2545,6 +2547,7 @@ Monster=Mazaal.MazaalRHand.MazaalLHand
 Desc=takes the ancient Mayan Map and uses it to locate the remains of ancient Mayan ruins. After much effort, the heroes enter and climb through the ruins to a special chamber where they're greeted by a large Mayan-looking head statue and two large Mayan-looking hand statues.
 AlliedNotes=550
 Exclusive=yes
+PortalLevel=30
 
 [VirilityCan]
 type=portal

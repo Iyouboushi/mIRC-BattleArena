@@ -103,7 +103,7 @@ auto-regen=no
 
 [Weapons]
 Equipped=MasterSword
-MasterSword=$iif($round($calc(500 + ($return_differenceof($return_playerlevelstotal,500))),0) <= 300, 300, $round($calc(500 + ($return_differenceof($return_playerlevelstotal,500))),0)) , 500)
+MasterSword=$iif($round($calc(500 + ($return_differenceof($return_playerlevelstotal,500))),0) <= 300, 300, $round($calc(500 + ($return_differenceof($return_playerlevelstotal, 500))), 0))
 EquippedLeft=GoddessShield
 
 
