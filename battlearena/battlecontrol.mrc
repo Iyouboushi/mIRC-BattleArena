@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/21/15
+;;;; Last updated: 02/22/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1102,7 +1102,6 @@ alias generate_monster {
 alias battle_rage_warning {
   ; This alias is just used to display a warning before the darkness overcomes the battlefield.
 
-
   if (%battle.type = defendoutpost) { return }
 
   if (%demonwall.fight != on) {  $display.message($readini(translation.dat, battle, DarknessWarning), battle)  }
@@ -1127,7 +1126,7 @@ alias battle_rage {
   ; When this alias is called all the monsters still alive in battle will become much harder to kill as all of their stats will be increased
   ; The idea is to make it so battles don't last forever (someone can't stall for 2 hours on one battle).  Players need to kill monsters fast.
 
-  if (%battle.type = defendoutpost) {  return }
+  if (%battle.type = defendoutpost) { return }
 
   set %battle.rage.darkness on
 
@@ -1301,7 +1300,6 @@ alias generate_battle_order {
     }
   }
 
-
   ; Check for darkness warning
   if (%darkness.fivemin.warn != true) { 
 
@@ -1309,16 +1307,15 @@ alias generate_battle_order {
       if (%holy.aura.turn = %current.turn) { unset %holy.aura.turn | $holy_aura_end }
     }
 
-
     if ($calc(%darkness.turns - %current.turn) = 5) { $battle_rage_warning }
-
+  }
+  if (%darkness.fivemin.warn = true) { 
     ; Check for darkness
-    if (%battle.rage.darkness != on) {
+    if (%battle.rage.darkness != on) { 
       if (%current.turn >= %darkness.turns) { $battle_rage }
     }
 
   }
-
 }
 
 ; ==========================
