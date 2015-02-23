@@ -1285,7 +1285,7 @@ alias portal.item.multimonsters {
       writeini $char(%current.monster.to.spawn) basestats int $readini($char(%current.monster.to.spawn), battle, int)
       writeini $char(%current.monster.to.spawn) basestats spd $readini($char(%current.monster.to.spawn), battle, spd)
 
-      $boost_monster_hp(%monster.to.spawn, portal, $get.level(%monster.to.spawn))
+      $boost_monster_hp(%current.monster.to.spawn, portal, $get.level(%monster.to.spawn))
 
       $fulls(%current.monster.to.spawn, yes)
 
