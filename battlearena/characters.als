@@ -124,7 +124,7 @@ get.level {
 
   var %level $round($calc(%level / 18), 1)
 
-  return %level
+  return $round(%level,0)
 }
 get.level.basestats {
   var %str $readini($char($1), BaseStats, str)
