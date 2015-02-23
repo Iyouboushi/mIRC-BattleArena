@@ -1175,9 +1175,10 @@ alias portal.item.onemonster {
 
   ; write the portal level
   var %boss.level $readini($char(%monster.to.spawn), info, bosslevel)
-  if (%boss.level = $null) { var %boss.level 1 }
   var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
-  if (%current.portal.level = $null) { var %current.portal.level 0 }
+  if (%current.portal.level = $null) { var %current.portal.level 1 }
+
+  if (%boss.level = $null) { var %boss.level %current.portal.level }
   if (%boss.level > %current.portal.level) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
 
   ; display the description of the spawned monster
@@ -1188,7 +1189,7 @@ alias portal.item.onemonster {
   if (%bossquote != $null) {   $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ ", battle) }
 
   ; Boost the monster
-  $levelsync(%monster.to.spawn, $calc(%current.portal.level + $rand(1,2)))
+  $levelsync(%monster.to.spawn, $calc(%boss.level + $rand(1,2)))
   writeini $char(%monster.to.spawn) basestats str $readini($char(%monster.to.spawn), battle, str)
   writeini $char(%monster.to.spawn) basestats def $readini($char(%monster.to.spawn), battle, def)
   writeini $char(%monster.to.spawn) basestats int $readini($char(%monster.to.spawn), battle, int)
@@ -1243,10 +1244,11 @@ alias portal.item.multimonsters {
 
       ; write the portal level
       var %boss.level $readini($char(%current.monster.to.spawn), info, bosslevel)
-      if (%boss.level = $null) { var %boss.level 1 }
       var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
-      if (%current.portal.level = $null) { var %current.portal.level 0 }
-      if (%boss.level > %current.portal.level) { var %current.portal.level %boss.level |  writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level | var %current.portal.level %boss.level }
+      if (%current.portal.level = $null) { var %current.portal.level 1 }
+
+      if (%boss.level = $null) { var %boss.level %current.portal.level }
+      if (%boss.level > %current.portal.level) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
 
       ; display the description of the spawned monster
       $set_chr_name(%current.monster.to.spawn) 
@@ -1278,8 +1280,7 @@ alias portal.item.multimonsters {
       }
 
       ; Boost the monster
-
-      $levelsync(%current.monster.to.spawn, $calc(%current.portal.level + $rand(1,2)))
+      $levelsync(%current.monster.to.spawn, $calc(%boss.level + $rand(1,2)))
       writeini $char(%current.monster.to.spawn) basestats str $readini($char(%current.monster.to.spawn), battle, str)
       writeini $char(%current.monster.to.spawn) basestats def $readini($char(%current.monster.to.spawn), battle, def)
       writeini $char(%current.monster.to.spawn) basestats int $readini($char(%current.monster.to.spawn), battle, int)

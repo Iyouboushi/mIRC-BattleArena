@@ -1,3 +1,8 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; battlealiases.als
+;;;; Last updated: 02/22/15
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Checks to see if it's a
 ; person's turn or not.
@@ -475,10 +480,18 @@ boost_monster_stats {
   ; Is it darkness hitting the monsters?
   if ($2 = rage) { %monster.level = $calc(%monster.level * 10000) }
 
+
+  if (%portal.bonus = true) { 
+    if (%boss.level = $null) { var %monster.level $return_winningstreak }
+    else { var %monster.level %boss.level } 
+  }
+
   if (%monster.level <= 0) { var %monster.level 1 }
 
   ; If the monster is set to only boost it's hp, do that and return
   if ($readini($char($1), info, BattleStats) = hp) { $boost_monster_hp($1, $2, %monster.level) |  return }
+
+  echo -a monster level for $1 :: %monster.level
 
   ; Adjust the stats
   $levelsync($1, %monster.level)
