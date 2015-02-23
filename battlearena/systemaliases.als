@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/22/15
+;;;; Last updated: 02/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2981,8 +2981,11 @@ augment.check {
   if ($person_in_mech($1) = false) {
 
     set %weapon.name.temp $readini($char($1), weapons, equipped)
+    var %weapon.name.left.temp $readini($char($1), weapons, equippedLeft)
     set %ignition.augment $readini($char($1), status, ignition.augment) 
     set %weapon.augment $readini($char($1), augments, %weapon.name.temp)
+    var %weapon.augment.left $readini($char($1), augments, %weapon.name.left.temp)
+
     if (%weapon.augment = $null) {  set %weapon.augment $readini($char($1), augments, %weapon.name.temp) }
 
     set %equipment.head.augment $readini($dbfile(equipment.db), $readini($char($1), equipment, head), augment)
@@ -2996,6 +2999,7 @@ augment.check {
 
     if ($istok(%ignition.augment,$2,46) = $true) {  inc %augment.strength 1 | set %augment.found true }
     if ($istok(%weapon.augment,$2,46) = $true) {  inc %augment.strength 1 | set %augment.found true }
+    if ($istok(%weapon.augment.left,$2,46) = $true) {  inc %augment.strength 1 | set %augment.found true }
     if ($istok(%equipment.head.augment,$2,46) = $true) { inc %augment.strength 1 | set %augment.found true }
     if ($istok(%equipment.body.augment,$2,46) = $true) { inc %augment.strength 1 | set %augment.found true }
     if ($istok(%equipment.legs.augment,$2,46) = $true) {  inc %augment.strength 1 | set %augment.found true }
