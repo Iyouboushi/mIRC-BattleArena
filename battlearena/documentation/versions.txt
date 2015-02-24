@@ -1022,7 +1022,7 @@ Battle Arena Bot VERSIONS
 - Added the command !time to show you the current time of day and the # of what day it is.
 - Added code for the bot to keep track of the number of days that the heroes have been fighting. 
   Remember that the "day" it is is based on the cycle of morning to morning (every 8 battles by default).
-- Added a new system.dat flag.  AllowColors=true/false.  If set to false, the bot will strip the colors from the messages
+- Added a new system.dat flag: AllowColors=true/false.  If set to false, the bot will strip the colors from the messages
   it sends out.  It's set to true by default.
 - Added the ability for monsters and bosses to have DeathConditions. The mon/boss will only die if the right type of
   attack is used to kill them, otherwise they will be revived.  In [info] put DeathConditions=  valid list is:
@@ -1104,6 +1104,9 @@ Battle Arena Bot VERSIONS
   Useful for debugging if something is going amiss.
 - Added a new system.dat setting: AllowBold=true/false  If set to false the bot won't show bold
 - Added a new system.dat setting: EnableGremlins=true/false  If set to false the gremlin special boss battle won't happen
+- Added a new system.dat flag: TimeBetweenSave=3600  In seconds, this is how long players have to wait to use !save battle streak
+- Added a new system.dat flag: RedChestBase=$rand(150,700)  This is the base amount of red orbs that will appear in red chests
+- Added a new system.dat flag: WheelGameTime=43200 In seconds, this is how long players have to wait to use !wheel spin 
 - Added a new special boss battle type: Gremlins.  
 - Added Capacity and Enhancement Points. 10,000 Capacity Points will equal 1 Enhancement Point. Players gain capacity 
   points by being in battles that are higher than streak 100. Note that the player level has to be within 10 of 
@@ -1188,6 +1191,8 @@ Battle Arena Bot VERSIONS
 - Changed the auser of the bot owner (the first person in the bot admin list) to be 100 instead of 50
 - Changed techniques so that multiple elements may be checked via a tech's modifier adjust
 - Changed the in between battle and battle open messages to use the mIRC identifier $duration
+- Changed the bot to use version.ver for the bot and system.dat versions.
+- Changed $return_winningstreak to work correctly with portal battles
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
@@ -1198,6 +1203,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with techniques doing too much damage when a player was level synced.
 - Fixed an issue in which Ghost Turkey could show up in other months besides November
 - Fixed an issue with !view-info style doppelganger getting cut off
+- Fixed an issue with the bot not checking left-handed weapons for augments
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
 - Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
@@ -1212,5 +1218,6 @@ Battle Arena Bot VERSIONS
 - Fixed a bug in which players could bid on an auction house item without any allied notes
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
 - Removed the Final_Guard monster
+- Removed the Prime_Vise monster
 - Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
 - Removed the !toggle battle formula bot admin command
