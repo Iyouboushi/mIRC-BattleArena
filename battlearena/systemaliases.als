@@ -71,6 +71,8 @@ system_defaults_check {
     if ($readini(system.dat, system, ScoreBoardType) = $null) { writeini system.dat system ScoreBoardType 2 }
     if ($readini(system.dat, system, EmptyRoundsBeforeStreakReset) = $null) { writeini system.dat system EmptyRoundsBeforeStreakReset 10 }
     if ($readini(system.dat, system, ChestTime) = $null) { writeini system.dat system ChestTime 45 }
+    if ($readini(system.dat, system, RedChestBase) = $null) { writeini system.dat system RedChestBase $eval($rand(150,700),0) }
+
     if ($readini(system.dat, system, MimicChance) = $null) { writeini system.dat system MimicChance 10 }
     if ($readini(system.dat, system, AllowMechs) = $null) { writeini system.dat system AllowMechs true }
     if ($readini(system.dat, system, PhantomBetters) = $null) { writeini system.dat system PhantomBetters 13 }
@@ -2815,7 +2817,12 @@ create_treasurechest {
   if ((%chest.type.random > 70) && (%chest.type.random <= 90)) { set %color.chest blue  }
   if ((%chest.type.random > 90) && (%chest.type.random <= 120)) { set %color.chest brown  }
   if ((%chest.type.random > 120) && (%chest.type.random <= 130)) { set %color.chest black  }
-  if (%chest.type.random > 130) { set %color.chest red | set %chest.contents RedOrbs | set %chest.amount $rand(150,700) }
+  if (%chest.type.random > 130) { set %color.chest red | set %chest.contents RedOrbs 
+
+    set %chest.amount $return.systemsetting(RedChestBase)
+    if (%chest.amount = null) { set %chest.amount $rand(150,700) }
+
+  }
 
   if (%color.chest != red) {
     var %chest.name $lstfile(chest_ $+ %color.chest $+ .lst)
