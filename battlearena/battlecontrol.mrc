@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/22/15
+;;;; Last updated: 02/24/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -75,7 +75,10 @@ on 3:TEXT:!save battle streak*:*:{   $set_chr_name($nick) | $checkchar($nick)
     var %current.time $ctime
     var %time.difference $calc(%current.time - %last.saved)
 
-    if ((%time.difference = $null) || (%time.difference > 3600)) {
+    var %time.between.save $return.systemsetting(TimeBetweenSave)
+    if (%time.between.save = null) { var %time.between.save 3600 } 
+
+    if ((%time.difference = $null) || (%time.difference > %time.between.save)) {
       var %saved.streak $readini($char($nick), info, savedstreak)
       if (%saved.streak = $null) { var %saved.streak 0 }
       if (%current.streak < %saved.streak) {   $display.message($readini(translation.dat, errors, Can'tSaveALowerStreak), private) | halt }
@@ -1377,8 +1380,8 @@ alias endbattle {
       if (%battle.type = defendoutpost) {
         $display.message($readini(translation.dat, battle, OutpostBattleLost), global) 
         var %total.defendedoutposts $readini(battlestats.dat, battle, TotalOutpostsLost)
-        if (%total.outposts = $null) { var %total.outposts 0 }
-        inc %total.outposts 1
+        if (%total.defendedoutposts = $null) { var %total.defendedoutposts 0 }
+        inc %total.defendedoutposts 1
         writeini battlestats.dat battle TotalOutpostsLost %total.defendedoutposts
       } 
       if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) }
