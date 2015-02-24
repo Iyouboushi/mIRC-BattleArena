@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/22/15
+;;;; Last updated: 02/24/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1512,9 +1512,11 @@ alias wheel.control {
     var %current.time $ctime
     var %time.difference $calc(%current.time - %last.spin)
 
-    if ((%time.difference = $null) || (%time.difference < 43200)) { 
-      var %minutes.since.played $round($calc(%time.difference / 60),2)
-      $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you and shakes his head.2 "Sorry.. only one spin per 12 hours! Try again later."  4It has been $iif(%minutes.since.played < 1, 1 minute, %minutes.since.played minutes) ( $+ $round($calc(%minutes.since.played / 60),0) hours) since the last time you played. ) 
+    var %spin.time.setting $return.systemsetting(WheelGameTime)
+    if (%spin.time.setting = null) { var %spin.time.setting 43200 }
+
+    if ((%time.difference = $null) || (%time.difference < %spin.time.setting)) { 
+      $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you and shakes his head.2 "Sorry.. only one spin per $duration(%spin.time.setting) $+ ! Try again later."  4It has been $duration(%time.difference) since the last time you played. ) 
       halt 
     }
 

@@ -83,6 +83,8 @@ system_defaults_check {
     if ($readini(system.dat, system, GenerateHTML) = $null) { writeini system.dat system GenerateHTML true }
     if ($readini(system.dat, system, PlayersMustDieMode) = $null) { writeini system.dat system PlayersMustDieMode false }
     if ($readini(system.dat, system, WheelGameCost) = $null) { writeini system.dat system WheelGameCost 500 }
+    if ($readini(system.dat, system, WheelGameTime) = $null) { writeini system.dat system WheelGameTime 43200 }
+
     if ($readini(system.dat, system, TwitchDelayTime) = $null) { writeini system.dat system TwitchDelayTime 2 }
     if ($readini(system.dat, system, ShowDeleteEcho) = $null) { writeini system.dat system ShowDeleteEcho false }
 
