@@ -1042,7 +1042,7 @@ generate_gremlin {
   writeini $char(%monster.name) basestats int $rand(10,35)
   writeini $char(%monster.name) basestats spd $rand(55,155)
 
-  writeini $char(%monster.name) techniques GermlinBite $round($calc(%current.battlestreak / 3),0)
+  writeini $char(%monster.name) techniques Gremlinbite $round($calc(%current.battlestreak / 3),0)
 
   writeini $char(%monster.name) weapons equipped GremlinAttack
   writeini $char(%monster.name) weapons GremlinAttack $round($calc(%current.battlestreak / 3),0)
