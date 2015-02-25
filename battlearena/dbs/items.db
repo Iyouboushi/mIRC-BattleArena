@@ -1094,7 +1094,7 @@ Target=Single
 Amount=5.0
 Desc=pulls out a special Christmas Discount Card and gives it to %enemy who shows it to the shop clerk.  "Oh wow! You've met Santa! That's awesome! Of course you can have a discount!"  Score!
 Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 20, 45000, 0)
-SellPrice=$iif($shopnpc.present.check(DiscountCardMerchant) = true, 50000, 0)
+SellPrice=$iif($shopnpc.present.check(DiscountCardMerchant) = true, 45000, 0)
 ShopNPC=Santa
 Exclusive=yes
 
@@ -2955,7 +2955,7 @@ Exclusive=yes
 Type=MechCore
 Cost=0
 SellPrice=0
-Augment=EnhanceDodge.HurtEthereal.MeleeBonus.MagicBonus.TechBonus.IgnoreDefenseEnergyCost=500
+Augment=EnhanceDodge.HurtEthereal.MeleeBonus.MagicBonus.TechBonus.IgnoreDefense
 EnergyCost=500
 Currency=AlliedNotes
 Exclusive=yes
@@ -2964,7 +2964,7 @@ Exclusive=yes
 Type=MechCore
 Cost=0
 SellPrice=0
-Augment=EnhanceDodge.HurtEthereal.MeleeBonus.MagicBonus.IgnoreDefense.IgnoreMetalDefenseEnergyCost=500
+Augment=EnhanceDodge.HurtEthereal.MeleeBonus.MagicBonus.IgnoreDefense.IgnoreMetalDefense
 EnergyCost=500
 Currency=AlliedNotes
 Exclusive=yes
