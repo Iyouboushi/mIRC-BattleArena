@@ -1165,13 +1165,11 @@ generate_monster_mimic {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate_frost_monster {
   ; $1 = the number of the minion
-  set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
-  if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
+  set %current.battlestreak 15
 
   set %monster.name Frost_Monster $+ $1 | set %monster.realname Frost Monster $1
 
-  if (%current.battlestreak > 500) { writeini $char(%monster.name) info OrbBonus yes }
+  writeini $char(%monster.name) info OrbBonus yes
 
   .copy -o $char(new_chr) $char(%monster.name)
   writeini $char(%monster.name) info flag monster 
@@ -1180,7 +1178,7 @@ generate_frost_monster {
   writeini $char(%monster.name) info gender his
   writeini $char(%monster.name) info gender2 him
 
-  var %base.hp.tp $calc(5 * %current.battlestreak)
+  var %base.hp.tp $calc(3 * %current.battlestreak)
   if (%base.hp.tp <= 300) { var %base.hp.tp 300 }
 
   writeini $char(%monster.name) basestats hp %base.hp.tp
@@ -1217,8 +1215,8 @@ generate_frost_monster {
   writeini $char(%monster.name) modifiers wind 50
 
   writeini $char(%monster.name) descriptions char is a monster made out of ice
+  $levelsync(%monster.name, %current.battlestreak)
   $fulls(%monster.name) 
-  $boost_monster_stats(%monster.name)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
