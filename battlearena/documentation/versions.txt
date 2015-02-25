@@ -1221,3 +1221,4 @@ Battle Arena Bot VERSIONS
 - Removed the Prime_Vise monster
 - Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
 - Removed the !toggle battle formula bot admin command
+- Removed the bot setting the user levels of bot owner/admins upon starting to prevent a security hole
