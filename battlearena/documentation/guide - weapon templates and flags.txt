@@ -1,0 +1,63 @@
+WEAPON TEMPLATE AND FLAG EXPLANATION
+
+[WeaponName]
+Cost=
+Type=
+Info=
+Abilities=
+Element=
+Hits=
+BasePower=
+Upgrade=
+IgnoreDefense=
+HurtEthereal=
+2Handed=
+EnergyCost=
+CanShieldReflect=
+CanCounter=
+SpecialWeapon=
+
+Cost=
+This is the cost of the weapon in black orbs. If the cost is set to 0 and SpecialWeapon is not set to true, players will be unable to use this weapon without flagging the anti-cheat mechanism.
+
+Type=
+This is the type of weapon. Valid weapon types are: axe, bow, buzzsaw, chainsaw, dagger, energyblaster, glyph, greatsword, gun, handtohand, katana, mace, nunchucku, rifle, scythe, spear, stave, sword, wand, whip
+
+Info=
+This the information about the weapon that will be displayed when someone uses !view-info on it.
+
+Abilities=
+These are the techniques that players can buy and use with this weapon. They must be valid techniques in techniques.db to work. More than one can be listed by separating them by a period (such as technique1.technique2.technique3 etc)
+
+Element=
+Element is the elemental property of the weapon. Set to none if you don't want the weapon to have any. Valid elements: earth, fire, ice, lightning, water, wind, none
+
+Hits=
+Hits is the # of times the weapon hits for. You can set it to be static, 1-6, or you can make it random. To make it random, use $rand(1,#) where # is the max # of hits you want it to have.
+
+BasePower=
+BasePower is the starting damage value of a weapon.
+
+Upgrade=
+Upgrade is the base cost of red orbs it takes to upgrade the weapon.
+
+IgnoreDefense=
+IgnoreDefense is a special value that allows the weapon to ignore some of a target's defense. This can be 0 to 100. It's a percent value, so 100% will ignore the target's defense completely.
+
+HurtEthereal=
+HurtEthereal is a special flag that allows the weapon to hurt Ethereal monsters. Set this to true or false. If set false (or the value is missing), the weapon will go through an Ethereal monster doing 0 damage.
+
+2Handed=
+2Handed is a flag that tells the bot if the weapon requires both hands to use. Set this to true or false.
+
+EnergyCost=
+If the weapon is a mech weapon then it needs an EnergyCost amount that it takes to attack via melee
+
+CanShieldReflect=
+CanShieldReflect is a special flag where if set to true then the attack will always be countered if the target is using a shield. Think Deku Scrubs from Zelda. It's normally not set or set to false.
+
+CanCounter=
+CanCounter is set to true/false. If set to true there's a small chance that the attack can be countered by the target.
+
+SpecialWeapon=
+SpecialWeapon is set to true/false. If set to true the cost of the weapon can be 0 without flagging the anti-cheat system

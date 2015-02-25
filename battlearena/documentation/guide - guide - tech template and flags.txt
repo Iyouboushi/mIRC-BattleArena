@@ -1,0 +1,109 @@
+TECHNIQUE TEMPLATE AND FLAG EXPLANATION
+
+[TechName]
+Type=
+Cost=
+Desc=
+TP=
+Element=
+Hits=
+BasePower=
+Magic=
+StatusType=
+selfstatus=
+IgnoreDefense=
+HurtEthereal=
+EnergyCost=
+stat=
+Renkei=
+CanDodge=
+Prescript=
+Postscript=
+
+Type=
+This is the type of technique that it is. Valid types are: SINGLE, AOE, SUICIDE, SUICIDE-AOE, HEAL, STEALPOWER, BUFF
+
+* SINGLE
+This is actually the default tech type. When you don't want the tech to be anything special, just a single target-hitting tech, set the type to this.
+
+* AOE
+This tech type will cause damage to all targets on the battlefield.
+
+* HEAL
+This tech type will heal a target, unless a target is marked as an “undead” type or is currently inflicted with the zombie status in which case it'll cause damage. Note you can cast this spell on anyone or anything, including monsters.
+
+* SUICIDE
+This tech type will consume a user's remainig HP to do damage with it.
+
+* SUICIDE-AOE
+This tech type will consume a user's remainig HP to do damage to all targets on the battlefield.
+
+* STEALPOWER
+This type of tech will allow a user to steal stats from a target. The amount varies based on the strength of the tech itself and how many levels the user has into the tech as well as the defense and int of the target.
+
+* BUFF
+Buffs are positive status effects that can be applied to allies. Valid buff types are: Protect, Shell, Resist-Earth, Resist-Fire, Resist-Wind, Resist-Water, Resist-Ice, Resist-Lightning, Resist-Light and Resist-Dark. Note that in order to create your own Resist-(element) buff techs, you need to add a modifier= line. The line is followed by the element type. For example.. MODIFIER=dark
+
+Cost=
+This is the amount in red orbs it costs to purchase/upgrade the technique.
+
+Desc=
+The description that displays when the technique is used
+
+TP=
+The amount of TP the technique consumes upon use.
+
+Element=
+Element is the elemental property of the weapon. Set to none if you don't want the technique to have any. Valid elements: earth, fire, ice, lightning, water, wind, none
+
+Hits=
+Hits is the # of times the tech hits for. You can set it to be static, 1-8, or you can make it random. To make it random, use $rand(1,#) where # is the max # of hits you want it to have.
+
+BasePower=
+BasePower is the starting damage value of a tech.
+
+Magic=
+This section is set to yes or no. Magic is a sub type of techniques in this bot. Magic can also have an element type. Magic has bonuses depending on a few different things (such as the ClearMind or Elemental Seal skills, or being the right element during the right weather).
+
+StatusType=
+StatusType is an optional value if you want the tech to inflict a status against the target. Valid status types are: Poison, Stop, Blind, Virus, Amnesia, Paralysis, Zombie, Slow, Stun, Intimidate, DefenseDown, StrengthDown, IntDown, Petrify, Bored, Charm, Confuse, Curse, RemoveBoost
+
+selfstatus=
+SelfStatus is used to inflict the user with a status type after the tech has been used. See the previous flag for the list of valid status effects.
+
+IgnoreDefense=
+IgnoreDefense is a special value that allows the tech to ignore some of a target's defense. This can be 0 to 100. It's a percent value, so 100% will ignore the target's defense completely.
+
+HurtEthereal=
+HurtEthereal is a special flag that allows the weapon to hurt Ethereal monsters. Set this to true or false. If set false (or the value is missing), the weapon will go through an Ethereal monster doing 0 damage.
+
+EnergyCost=
+If the weapon is a mech weapon then it needs an EnergyCost amount that it takes to attack via tech
+
+stat=
+stat is the primary stat for determining the power of the tech. Usually set to str or int. Defaults to int if blank. Valid stats: str, int, def, spd
+
+Renkei=
+Renkei is the renkei value of the tech.
+
+CanDodge=
+CanDodge is a flag that allows a tech to be able to be dodged or not. If set to false, it is impossible to dodge it. It's set to true by default (or if it's missing from the technique)
+
+Prescript=
+Postscript=
+Prescript is a way to have the bot run a script before the tech is used. This should not be added unless you know what you're doing. Likewise, Postscript will run after the tech is finished. Again, you shouldn't add it to your techs unless you know what you're doing.
+
+A few notes with Pre and Post scripts.
+
+$1 = the attacker, $2 = the tech and $3 = the target
+
+Use $display.message(MESSAGE HERE,battle) to display a message. (don't use any commas in the message itself or it will be cut off)
+
+If you want something to only happen if darkness is on you can have the bot check for %battle.rage.darkness When it's set to on it means darkness is active.
+
+It is possible to use something like $iif(,,) if you want to do something based on a condition.
+
+As an example, this Prescript will set the base attack damage to 1000 if the attacker has full HP or to 0 if not:
+
+Prescript=$iif($readini($char($1), battle, hp) >= 100, set %attack.damage 10000, set %attack.damage 0)
+

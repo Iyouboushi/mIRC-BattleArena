@@ -1,0 +1,231 @@
+MONSTER TEMPLATE AND FLAG EXPLANATION
+
+[BaseStats]
+Hp=80
+Tp=50
+Str=5
+Def=5
+Int=5
+Spd=5
+Name=
+IgnitionGauge=2
+
+[Battle]
+Hp=80
+Tp=50
+Str=10
+Def=10
+Int=10
+Spd=10
+Status=alive
+IgnitionGauge=2
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+[Descriptions]
+Char=set a character desc here that appears when the monster is summoned.
+Rage=screams in rage 
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+
+[Info]
+Flag=monster
+Gender=his
+Gender2=him
+password=doesn'tmatter
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+CanFlee=false
+CanTaunt=true
+IgnoreQuicksilver=false
+CanUseItems=false
+;=======================================
+; These are optional flags you can set:
+;========================================
+; CanStagger=yes/no  
+; StaggerAmount=$rand(#,#)   
+; RageMode=ignore   
+; ai_type=
+; Streak=
+; StreakMax=
+; SpawnAfterDeath=nameofmonster
+; Biome=
+; Moonphase=
+; TimeOfDay=
+; TAUNTFILE=
+; Guardian=
+; JustReleaseDefense=
+; HurtByTaunt=
+; HealByTaunt=
+; IgnorePresident=
+; DeathConditions=
+
+[monster]
+type=
+TechLearn=false
+size=
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+
+[Weapons]
+Equipped=monsterweaponname
+monsterweaponname=1
+
+
+[Skills]
+
+[Techniques]
+TechName=1
+
+[Item_Amount]
+
+[modifiers]
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
+
+[Info] Flags/Settings
+
+Note that for many of these settings you will need to uncomment them in order for them to work (i.e. remove the ; at the start of the setting).
+
+CanStagger=
+StaggerAmount=
+Stagger is the ability for the monster to be staggered (skip a turn) after being hurt for a certain # of damage. Set this to yes if you want it to be turned on. The StaggerAmount amount can be a static amount (such as 100) or can be a random amount by using $rand(#,#) (such as $rand(1,100)
+
+RageMode=
+If RageMode is set to Ignore and is uncommented, the monster will not gain a boost when Darkness hits the battlefield.
+
+IgnoreQuicksilver=
+If set to true the monster will not be affected by the Quicksilver style command.
+
+ai_type=
+This affects the AI type of monsters. Leave blank for normal monsters. Other valid types are: defender, berserker, PayToAttack, portal, healer
+
+* DEFENDER
+This AI type will do nothing but defend each round (think Orb Fountain or Lost Soul)
+
+* BERSERKER
+This AI type will attack anyone on the battlefield, even his/her/its own allies.
+
+* PAYTOATTACK
+This AI type will not take action in battle unless it has been paid (given red orbs). This AI type only works on NPCs as monsters cannot give items to another monster.
+
+* PORTAL
+This AI type will summon other monsters on its round.
+
+* HEALER
+This AI type will only use healing techniques on its allies each round.
+
+Streak=
+This setting is for the minimum streak # it takes for the monster to show up. Leave blank if you want the monster to show up at any streak #.
+
+StreakMax=
+This setting is for the maximum streak # that the monster can show up on. Leave blank if you want the monster to never have a cap on when it can show up.
+
+CanFlee=
+Do you want the monster to be able to flee from the battle? Set true if you do, else leave it false.
+
+CanUseItems=
+True or false. If set to true, this monster can use battle items (found in items_battle.lst) if those items are listed in their [item_amount]. False by default.
+
+SpawnAfterDeath=
+If set to a monster's file name, that monster or boss will be summoned when this monster is killed.
+
+Biome=
+This is for if you want the monster to only appear under certain battlefields. You can list multiple with periods inbetween. Valid battlefields can be found in battlefields.lst
+
+Moonphase=
+This is for if you want the monster to only appear during a certain moon phase. You can only list one. Valid list is: Full Moon or Crescent Moon or Gibbous Moon or New Moon or Quarter Moon or Blood Moon (with the spaces)
+
+TimeOfDay=
+This setting is for if you want the monster to only appear during certain times of days (game time, not real life) Valid list is: Morning, Noon, Evening and Night.
+
+CanTaunt=
+Can the monster taunt its opponent? Assumed to be true if blank, often set to true by default. Set to false if you don't want the monster to taunt.
+
+TauntFile=
+This is an optional taunt file if you want the monster to have unique taunts. If blank it will use the default taunts.txt. The file must be a valid plain text file in \txts\
+
+Guardian=
+Guardian is a monster that covers this monster. While the guardian monster is alive, this monster will take no damage.
+
+JustReleaseDefense=
+This setting is how much resistance to the skill “Just Release” the monster has. The number is a percent of the damage blocked. 0 = no block, 100 = 100% blocked. If left blank the monster will automatically have 0.
+
+HurtByTaunt=
+If set to true, taunts done against this monster will deal damage.
+
+HealByTaunt=
+If set to true, taunts done against this monster will heal damage.
+
+IgnorePresident=
+Does the monster appear in Save The President battles? True=yes/False=no
+
+DeathConditions=
+if you want the monster to only be able to be killed if a certain action is performed, you can set it here. Not set by default. Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect - You can list multiple by putting a period inbetween such as: melee.magic.status If the monster is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+[monster] Flags/Settings
+
+type=
+Type is what kind of monster it is. You can put anything you want here or leave it blank, but if it matches one of the killer skills types then anyone with that killer skill will do more damage against the monster. Current valid killer trait types are: dragon, undead, zombie, demon, orc, yagudo, quadav, goblin, treant, plant, android, crab, worm, bat, lizard, elemental, slime
+
+TechLearn=
+If set to true the monster will only be affected by a technique once before it will no longer work (deals 0 damage). By default this is set to false.
+
+size=
+This can be left blank but if set then certain weapons will do more or less damage to the monster. Valid sizes are: small, medium, large

@@ -3,89 +3,23 @@ GUIDE TO MAKING NEW MONSTERS/BOSSES/WEAPONS/TECHNIQUES
 This guide is dedicated to those who want to learn how to make new monsters, new weapons and new techniques.  I don't include skills in this list because it requires a bit more coding to make happen (in-bot coding) whereas anyone can learn how to make the other things. It make seem complicated at first but after you do a few of them you'll get the hang of it and it'll be no sweat.
 
 
-NEW WEAPONS
-The first step to making a monster from scratch is to make a new weapon for the monster to use.  Now, it is possible for monsters to use per-existing weapons, and if you want to do that you can skip ahead to the new monsters section.  But if you want the monster to be really unique, keep reading.
-
-First step is to figure out what you want to name the weapon.  It has to be a weapon name that doesn't already exist.  So open weapons.db with notepad and do a quick search for the name of the weapon you've picked out.  If it doesn't exist, keep going.  If not, come up with a new name.
-
-Second step is to add the weapon to the monster's list. In weapons.db you should see a line that reads something like this:
-
-MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.
-Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.
-YagudoWand.TigerFangs.Pinchers.BoneScythe.VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.
-SinistralPower.JesterWand.VampireArt.Puppetry
 
 
-At the very end of the list, put a period followed by the name of the weapon.  For example, if you're making a monster weapon named MonsterTestWeapon you would add it as  .MonsterTestWeapon
+HOW TO CREATE A NEW WEAPON
+
+The first step in creating a new weapon is to figure out what you want to name the weapon. It has to be a weapon name that doesn't already exist. So open weapons.db with notepad and do a quick search for the name of the weapon you've picked out. If it doesn't exist, keep going. If not, come up with a new name.
+
+Second step is to add the weapon to the correct list. In weapons.db you should see several lines at the top of the file. They're split by weapon types and then the monster/npc section. If you're creating a weapon for players to purchase, add it to the correct weapon type. If you're making one for npcs or monsters, add it to the last MonsterWpns line (currently MonsterWpns6). Either way, find the correct line, add a period followed by the name of the weapon (for example .TestWeapon)
 
 Now you're ready to add the actual weapon.
 
-Scroll to the very bottom of the database file.   Here's a quick template you can copy into the weapons.db to help you get going:
+Scroll to the very bottom of the database file.
 
-[Name]
-Cost=0
-Type=
-Info=A monster's weapon, players can't buy it.
-Abilities=
-Element=
-Hits=
-Basepower=
-Upgrade=0
-IgnoreDefense=0
-HurtEthereal=false
-CanShieldReflect=false
-CanCounter=true
+You can find an empty template and an explanation of each of the various settings inside of the weapon (see guide - weapon templates and flags.txt).
 
-And here's the template broken down for you so you can understand everything:
+For the sake of a tutorial, let's create a weapon for a monster called “MonsterWeapon”:
 
-
-
-[Name]
-Obviously the NAME is the name of the weapon you want it to have.
-
-cost=
-This is the cost of the weapon in black orbs.
-
-type=
-This is the type of weapon it is.  Valid types are: axe, bow, chainsaw*, dagger, glyph, greatsword, gun, handtohand, katana, rifle, scythe, spear, stave, sword, wand, and whip.  * Note that chainsaw is for monsters only.
-
-Info=
-This is the information about the weapon as it's seen in !view-info.
-
-Abilities=
-Abilities are the techniques players can buy for this weapon. They must be valid techniques in techniques.db. Remember to add them like this:   name.name.name.name (i.e. something like  CureII.Sweep.Thundaja).   Keep in mind that you're just adding the names of the techniques here, you still have to make the techniques in order for them to work.
-
-Element=
-Element is the elemental property of the weapon. Set to none if you don't want the weapon to have any. Valid elements: none, earth, lightning, wind, fire, light, dark, water or ice.
-
-Hits=
-Hits is the # of times the weapon hits for. You can set it to be static, 1-6, or you can make it random.
-To make it random, use $rand(1,#) where # is the max # of hits you want it to have.
-
-BasePower=
-BasePower is the starting damage value of a weapon.
-
-Upgrade=
-Upgrade is the base cost of red orbs it takes to upgrade the weapon (i.e. before shop level is calculated in).
-
-IgnoreDefense=
-IgnoreDefense is a special value that allows the weapon to ignore some of a target's defense. This can be
-0 to 100.  It's a percent value, so 100% will ignore the target's defense completely.
-
-HurtEthereal=
-HurtEthereal is a special flag that allows the weapon to hurt Ethereal monsters. Set this to true or false.
-If set false (or the value is missing), the weapon will go through an Ethereal monster doing 0 damage.
-
-CanShieldReflect=
-This is a special flag where if set to true then the attack will always be countered if the target is using a shield. Think Deku Scrubs from Zelda.  It's normally not set or set to false.
-
-CanCounter=
-CanCounter is set to true/false. If set to true (or missing) there's a small chance that the attack can be countered by the tar
-
-
-For the sake of a tutorial, let's continue making our MonsterTestWeapon.
-
-[MonsterTestWeapon]
+[MonsterWeapon]
 Cost=0
 Type=HandToHand
 Info=A monster's weapon, players can't buy it.
@@ -96,107 +30,24 @@ Basepower=10
 Upgrade=0
 IgnoreDefense=0
 HurtEthereal=false
+Energy=0
 CanShieldReflect=false
 CanCounter=true
 
-And there you go.  You've now successfully added a new weapon.  Now we need to make the techniques that go along with the weapon.
+And there you go. You've now successfully added a new weapon.
 
 
+HOW TO CREATE A NEW TECHNIQUE
 
-NEW TECHNIQUES
-The next step is to make the techniques that the weapon will be using.  Again, you can have new weapons use old techniques.  All you have to do is set the techniques in the weapons.db file to match the techniques that already exist, and do the first step in creating a new technique listed here.  But I'm going to assume you want to make something new and take you through the process.
+In this section you will learn how to create a technique for a weapon that players, monsters, npcs and bosses can use. As a note, it is possible to have new weapons use old techniques or old weapons to use new techniques. You just have to adjust it in the weapon's Abilities=
 
-First step is to open techniques.db with notepad.  You should notice that all the weapons are listed as  name=techs.   You need to add the weapon name with the list of techniques and it has to match the list of techniques you put into the weapons.db file.    Let's do that with MonsterTestWeapon.
+The first step to creating a new technique is to open techniques.db with notepad. You should notice that all the weapons are listed as name=techs. If you've just created a new weapon and want to add techniques to it you will need to add the weapon name to the list followed by = and a list of techniques that the weapon has (such as MonsterTestWeapon=MonsterTech1.MonsterTech2)
 
-Scroll to the bottom of the list, before the ============== line and add this.
+The next step is to create the actual techniques. Let's create two techniques for the monster weapon that was an example in the how to create a new weapon section. So let's scroll to the bottom of the file as it's easier to put all the new monster techniques at the bottom. If you were making techniques for players, I would put them in the category they belong to (like new sword techniques in the SWORDS section I have split out).
 
-MonsterTestWeapon=MonsterTech1.MonsterTech2
+You can find a technique template and an explanation of all the various settings by reading guide - tech template and flags.txt
 
-Like I said, it has to match the weapons.db (if you go back up and look, you'll see that it does).
-
-
-The next step is to create the actual techniques.  So let's scroll to the bottom of the file, since this is a monster's weapon, it's easier to put all the new monster techniques at the bottom.  If you were making techniques for players, I would put them in the category they belong to (like new sword techniques in the SWORDS section I have split out).
-
-Here's the default template you can use for a technique:
-
-[Name]
-Type=Single
-TP=10
-Desc=
-BasePower=
-Magic=No
-Element=None
-Cost=0
-
-
-Like before, the cost is how much it costs to upgrade the technique.  Since players cannot buy monster weapons, there's no point in putting a cost for it.  The BasePower is the base amount of damage before anything is added to it.  Desc is the description that is displayed when someone (or something) uses the technique.  You can have %enemy to show the target's name.  The bot starts each description with the user's name, so don't add that into the description. TP is the amount of TP needed to perform the technique.  For monster's techs, I would recommend making it 10 or less.
-
-
-The type can be a few different things:  SINGLE, AOE, SUICIDE, SUICIDE-AOE, HEAL, STEALPOWER, BUFF
-
-All of these types can also be classified as a MAGIC subtype and have an element attached to them (magic or not).
-
-Valid elements are: none, earth, lightning, wind, fire, light, dark, water or ice.
-
-All of the types can also have a STATUS effect applied to them.
-
-Valid status types are:
-Poison, Stop, Blind, Virus, Amnesia, Paralysis, Zombie, Slow, Stun, Intimidate, DefenseDown, StrengthDown,
-IntDown, Petrify, Bored, Charm, Confuse, Curse, RemoveBoost
-
-
-Now we'll go into detail about each of them.
-
-
-* SINGLE
-This is actually the default tech type.  When you don't want the tech to be anything special, just a single target-hitting tech, set the type to this.
-
-* AOE
-This tech type will cause damage to all targets on the battlefield.
-
-* HEAL
-This tech type will heal a target, unless a target is marked as an "undead" type or is currently inflicted with the zombie status in which case it'll cause damage.  Note you can cast this spell on anyone or anything, including monsters.
-
-* SUICIDE
-This tech type will consume a user's remainig HP to do damage with it.
-
-* SUICIDE-AOE
-This tech type will consume a user's remainig HP to do damage to all targets on the battlefield.
-
-* STEALPOWER
-This type of tech will allow a user to steal stats from a target.  The amount varies based on the strength of the tech itself and how many levels the user has into the tech as well as the defense and int of the target.
-
-* BUFF
-Buffs are positive status effects that can be applied to allies. Valid buff types are:
-Protect, Shell, Resist-Earth, Resist-Fire, Resist-Wind, Resist-Water, Resist-Ice, Resist-Lightning, Resist-Light and Resist-Dark
-
-Note that in order to create your own Resist-(element) buff techs, you need to add a modifier= line.  The line is followed by the element type.  For example..
-
-[BarDark]
-Type=buff
-tp=50
-desc=a desc here
-STATUS=Resist-Dark
-MODIFIER=dark
-Cost=2000
-
-
-MAGIC
-Magic is a sub type of techniques in this bot.  Any technique can be marked as magic using magic=yes in the technique's ini entry. Magic can also has an element type.  Magic has bonuses depending on a few different things (such as the ClearMind or Elemental Seal skills, or being the right element during the right weather).   
-
-
-ADDING STATUS EFFECTS
-Any tech can now have a status effect, including AOE techs.  They may also inflict multiple status effects at the same time, however adding too many to one tech may cause the display to be cut off when the bot shows it to the channel.  To add a status effect to any tech, add this line to the tech:
-
-StatusType=
-
-and list the types you want (valid types are listed above).  To have more than one, put a . inbetween each one.  Example:
-
-StatusType=blind.curse.amnesia
-
-
-So for our test we have two techs to make.  Let's make one be a status type that inflicts Paralysis and then make the other be an AOE that hits all players on the battlefield when used.  Let's also assume the AOE is fire magic based but the paralysis is non-magic.
-
+For the sake of this tutorial, we have two techs to make. Let's make one be a status type that inflicts Paralysis and then make the other be an AOE that hits all players on the battlefield when used. Let's also assume the AOE is fire magic based but the paralysis is non-magic.
 
 [MonsterTech1]
 Type=Single
@@ -217,28 +68,29 @@ Magic=Yes
 Element=Fire
 Cost=0
 
-
-And there we go.  Our two techs are now done and added into techniques.db.  Hit save and you're done with that.  Now you're ready to move onto making the actual monster.
+And there we go. Our two techs are now done and added into techniques.db. Hit save and you're done with that.
 
 If you're ever confused about any of this, you can always scroll through and look at some of the pre-made techniques to know how it all works.
 
 
-NEW MONSTERS
-We've made the new weapon and the two techniques that go onto that weapon, now we need to make the monster that will use these to fight our players.  Let's assume the monster is named testmonster to go along with the rest of our test theme.
 
-First things first, navigate to the  \monsters\to make folder.  Inside you should see new_mon.char.  Make a quick copy of it and rename the copy to testmonster.char.  Now open that file with notepad.
+CREATING NEW MONSTERS
+We've made the new weapon and the two techniques that go onto that weapon, now we need to make the monster that will use these to fight our players. Let's assume the monster is named testmonster to go along with the rest of our test theme.
+
+First things first, navigate to the \monsters\to make folder. Inside you should see new_mon.char. Make a quick copy of it and rename the copy to testmonster.char. Now open that file with notepad.
 
 You'll see most of the work is already done for you, but the starting monsters are a bit weak so let's adjust this a little bit.
 
-Under [basestats] you'll see this:  Name=
+Under [basestats] you'll see this:
+Name=
 
-Put the monster's name there.  You can leave out the underscores, dashes, and whatnot.  For our example we can put it as:
+Put the monster's name there. You can leave out the underscores, dashes, and whatnot. For our example we can put it as:
 
 Name=Test Monster
 
 The Name field is used whenever the monster does something in battle and when the monster is summoned.
 
-Edit the stats to however you feel fit.  Just keep in mind that the stats are multiplied a certain value when the monster is summoned into battle (the value is based on how many players are in battle and how many times the players have won or lost in a row).  So don't set the stats too high or else you'll find that your monster is immortal and will slaughter everything with ease (unless that's what you want, then go ahead I guess).
+Edit the stats to however you feel fit. Just keep in mind that the stats are multiplied a certain value when the monster is summoned into battle (the value is based on how many players are in battle and how many times the players have won or lost in a row). So don't set the stats too high or else you'll find that your monster is immortal and will slaughter everything with ease (unless that's what you want, then go ahead I guess).
 
 For me I'll change the stats to this:
 
@@ -249,41 +101,36 @@ Def=5
 Int=5
 Spd=7
 
-Next scroll down to [descriptions] and you'll see this:
-Char=set a character desc here that appears when the monster is summoned.
+Next scroll down to [descriptions] and you'll see this: Char=set a character desc here that appears when the monster is summoned.
 
-You need to change it.  The bot will automatically add the monster's name to the description, so don't start the description off with that.  Here's what I'll put:
+You need to change it. The bot will automatically add the monster's name to the description, so don't start the description off with that. Here's what I'll put:
 
-Char=is a testing monster used for an example in the tutorial.  It's fearsome.  Roar.
+Char=is a testing monster used for an example in the tutorial. It's fearsome. Roar.
 
+Monsters can have a type, if you scroll down to [monster] you'll see the type= line. However, the only real valid types right now are Undead and Zombie. If your monster isn't one of those, just leave it blank for now. I'm going to leave it blank.
 
-Monsters can have a type, if you scroll down to [monster] you'll see the type= line.  However, the only real valid types right now are Undead and Zombie.  If your monster isn't one of those, just leave it blank for now.  I'm going to leave it blank.
-
-Scroll down to [weapons] and now you need to add the weapon you made above before creating the monster.  In this case, I'm doing the MonsterTestWeapon.  You need to add it to the equipped line but also make a line with the name of the weapon= a number, where the number is the level that the monster has in that weapon.  This affects damage output.
+Scroll down to [weapons] and now you need to add the weapon you made above before creating the monster. In this case, I'm doing the MonsterTestWeapon. You need to add it to the equipped line but also make a line with the name of the weapon= a number, where the number is the level that the monster has in that weapon. This affects damage output.
 
 [Weapons]
 Equipped=MonsterTestWeapon
 MonsterTestWeapon=10
 
-
-Now we add the techs we made.  Again, here the # is the base skill that the monster has in that tech (affects damage).
+Now we add the techs we made. Again, here the # is the base skill that the monster has in that tech (affects damage).
 
 [Techniques]
 MonsterTech1=5
 MonsterTech2=10
 
-
-And that's basically it.  There are a few other things you can do with monsters that I'll explain below, but for all intents and purposes, after you do the above steps, the monster is ready for use.  You can move the .char file into the main \monsters\ folder and it'll eventually be summoned by the bot (at random).
+And that's basically it. There are a few other things you can do with monsters that I'll explain below, but for all intents and purposes, after you do the above steps, the monster is ready for use. You can move the .char file into the main \monsters\ folder and it'll eventually be summoned by the bot (at random).
 
 Here's a few other things you can change:
 
 Elemental Weaknesses/Strengths:
 
-If you want your monster to be weak to certain elements, or you want them to be resistant to them, you can scroll down to the [Modifiers] section and adjust the values there  Remember that the values are in percents with 100 being normal, 100% damage from it.  Setting something over 100 means they take more damage from it and setting it under 100 means they take less damage from it (with 0 being immune/no damage at all from it).  For the heal= line you can set multiple elements by putting a period inbetween them, such as  heal=fire.earth
-
+If you want your monster to be weak to certain elements, or you want them to be resistant to them, you can scroll down to the [Modifiers] section and adjust the values there Remember that the values are in percents with 100 being normal, 100% damage from it. Setting something over 100 means they take more damage from it and setting it under 100 means they take less damage from it (with 0 being immune/no damage at all from it). For the heal= line you can set multiple elements by putting a period inbetween them, such as heal=fire.earth
 
 Skills:
-Scroll to [Skills] and list them as Skill=#   Here's just a few examples:
+Scroll to [Skills] and list them as Skill=# Here's just a few examples:
 
 [Skills]
 DesperateBlows=1
@@ -300,22 +147,21 @@ Swordmaster=5
 royalguard=1
 royalguard.on=on
 
-
-
 And that's how you make your monsters!
 
 
-NEW NPCS
+
+CREATING NEW NPCS
 You make NPCs the same as you do monsters. Open new_npc.char in \npcs\to make\ and copy/rename/edit it like you would with a monster. When you're done, move the file into the \npcs\ folder for it to randomly show up in battle.
 
 
-NEW BOSSES
-Again, making bosses is pretty much the same as making new monsters.  Go to \bosses\to make\ and copy/rename/edit the file you copy.  There's only two major differences between bosses and monsters.
+CREATING NEW BOSSES
+Again, making bosses is pretty much the same as making new monsters. Go to \bosses\to make\ and copy/rename/edit the file you copy. There's only two major differences between bosses and monsters.
 
-First, in [Descriptions] bosses have a BossQuote= line that they say upon being summoned into battle.  You can change this to whatever, but keep in mind the bot will add the " " around whatever you put in this line.
+First, in [Descriptions] bosses have a BossQuote= line that they say upon being summoned into battle. You can change this to whatever, but keep in mind the bot will add the “ ” around whatever you put in this line.
 
-Second, in [Stuff] you'll see a line that says: Drops=Potion   This is the item that the boss will drop to the most stylish player upon defeat.  You can set this to any item that exists in items.db, whether it be a healing item, a battle item, or a food (stat) item. 
+Second, for drops, you will need to put them in the drops.db file.
 
+For example, BossName=Potion, where BossName is replaced by the actual Boss name.
 
-
-And I think that's about all you need to know in order to make new monsters, bosses, npcs, techniques and weapons!
+This is the item that the boss will drop to the most stylish player upon defeat. You can set this to any item that exists in items.db, whether it be a healing item, a battle item, or a food (stat) item.

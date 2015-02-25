@@ -1,211 +1,283 @@
 TECHNICAL ASPECTS
-
 This guide will be more about the technical aspects including why I did things the way I did and going into detail about some of the dat files.
 
 
 SYSTEM.DAT
-The system.dat controls and stores some information for running the bot.  In this section I'll break it down.
+The system.dat controls and stores some information for running the bot. In this section I'll break it down.
 
 If you open the system.dat you'll see the following sections: [botinfo] [system] [statprices] [style] and [version].
-
 [botinfo]
-This section keeps the bot owner (person who has access to a few more commands than normal players), the channel the bot sits in and displays all the messages to, the name of the bot, and the bot's password that it sends to nickserv upon connecting.  All of this information should be generated the first time you run the bot.
 
-Note, you can have multiple bot owners in version 1.2 (and beyond) now.  To do so add them like such:
+This section keeps the bot owner (person who has access to a few more commands than normal players), the channel the bot sits in and displays all the messages to, the name of the bot, and the bot's password that it sends to nickserv upon connecting. All of this information should be generated the first time you run the bot.
+
+Note, you can have multiple bot owners in version 1.2 and beyond. To do so add them like such:
 
 bot.owner=name.name.name.name
 
-In other words, a name followed by a period, another name.  Don't add a period to the end of the last name.
+In other words, a name followed by a period, another name. Don't add a period to the end of the last name.
+[system]
 
-[System]
 This section controls a lot of the in-game functions and limits such as, but not limited to, base # of orbs for normal monsters and bosses, how many orbs players start with, the name of the currency and the time between battles in minutes.
 
+botType=
+IRC, DCCchat or TWITCH. This tells the bot where to display messages and accept commands. If you have a lot of players and don't want limits on the # of monsters that can appear in battles, use DCCchat mode* (your players will need a client that can do DCC Chat connections). If you are trying to run the bot on Twitch (which is not recommended) set this to TWITCH mode which slows the speed of output down and makes everything output to the channel (no private messages). IRC mode is default and is the most recommended mode for most people/bot owners.
 
-botType=  IRC, DCCchat or TWITCH.  This tells the bot where to display messages and accept commands. If you have a lot of players and don't want limits on the # of monsters that can appear in battles, use DCCchat mode* (** your players will need a client that can do DCC Chat connections).  If you are trying to run the bot on Twitch (which is not recommended) set this to TWITCH mode which slows the speed of output down and makes everything output to the channel (no private messages).  IRC mode is default and is the most recommended mode for most people/bot owners.
+AllowColors=
+true or false. If set to false then all colors will be stripped from the messages that are output to the players. Set to true by default.
 
-AllowColors= true or false.  If set to false then all colors will be stripped from the messages that are output to the players.  Set to true by default.
+AllowBold=
+true or false. If set to false then all bold will be stripped from the messages that are output to the players. Set to true by default.
 
-automatedbattlesystem=   on or off.  If you want to turn the automated battle system off you can change that here.
+automatedbattlesystem=
+on or off. If you want to turn the automated battle system off you can change that here.
 
-automatedaibattlecasino= on or off.  Off by default.  If set to on, the bot will only do 1vs1 AI battles and players will be unable to participate.
+automatedaibattlecasino=
+on or off. Off by default. If set to on, the bot will only do 1vs1 AI battles and players will be unable to participate.
 
-aisystem=  on or off.  If you want to turn off the AI for monsters you can change that here.  Note that in order for the 1vs1 AI Battles to work properly this needs to be set to on.
+showCustomBattleMessages=
+true or false. If set to true it'll show the new battle starting messages for orb fountains and bosses. If set to false it'll show the old one.
 
-basexp=  how many orbs are normal monsters worth upon defeating?  This value is the base amount (before style and other factors are calculated).
+aisystem=
+on or off. If you want to turn off the AI for monsters you can change that here. Note that in order for the 1vs1 AI Battles to work properly this needs to be set to on.
 
-basebossxp= same as basexp except for bosses.  This only affects red orbs.
+basexp=
+how many orbs are normal monsters worth upon defeating? This value is the base amount (before style and other factors are calculated).
 
-startingorbs=  How many orbs should players start with?  This value is the base amount before the average shop level is multiplied to the base.
+basebossxp=
+same as basexp except for bosses. This only affects red orbs.
 
-currency=  If you don't want players to accumulate "red orbs" you can change it to whatever you want.  Note, you can't change "black orbs", only the red.   For example, you can change this to "exp" or "coins" or "sheep skins" and it'll still work.
+startingorbs=
+How many orbs should players start with? This value is the base amount before the average shop level is multiplied to the base.
 
-BetCurrency=  $$ by default, this option is the symbol for the betting currency.
+currency=
+If you don't want players to accumulate “red orbs” you can change it to whatever you want. Note, you can't change “black orbs”, only the red. For example, you can change this to “exp” or “coins” or “sheep skins” and it'll still work.
 
-TimeBetweenBattles=  This is the time, in minutes, between after a battle ends to when it starts.  This doesn't affect the time that the entry time is open for, just the time it takes inbetween. (i.e. the "a battle will begin in X minutes")
+BetCurrency=
+$$ by default, this option is the symbol for the betting currency.
 
-TimeForIdle=  How long should players have for a turn before it skips to the next person? The default is 180 seconds.  The time you put here has to be in seconds.
+TimeBetweenBattles=
+This is the time, in minutes, between after a battle ends to when it starts. This doesn't affect the time that the entry time is open for, just the time it takes inbetween. (i.e. the “a battle will begin in X minutes”)
 
-TimeToEnter= How long should the open period for a battle be? This is the time period that players can use !enter to enter the battle. The time here has to be put in seconds. The default is 120 seconds.
+TimeForIdle=
+How long should players have for a turn before it skips to the next person? The default is 180 seconds. The time you put here has to be in seconds.
 
-maxHP=  the max amount of HP players can have.  By default it's 2500.
+TimeToEnter=
+How long should the open period for a battle be? This is the time period that players can use !enter to enter the battle. The time here has to be put in seconds. The default is 120 seconds.
 
-maxTP=  the max amount of TP players can have. By default it's 500.
+TimeBetweenSave=
+How long should players have to wait in between each !save battle streak command? Default is 3600 seconds (or 1 hour). The time here must be in seconds.
 
-maxIG= the max amount of IG players can have. By default it's 100.
+maxHP=
+the max amount of HP players can have. By default it's 2500.
 
-MaxOrbReward= the max amount of orbs the battle can give out as a reward before skills and accessories are applied.  By default it's 20,000.  Note that this limit can be surpassed if more than one wave of monsters shows up.
+maxTP=
+the max amount of TP players can have. By default it's 500.
 
-MaxShopLevel=  the maximum shop level players can achieve goes here.  By default it's 25.
+maxIG=
+the max amount of IG players can have. By default it's 100.
 
-EnableDoppelganger=   if you want the doppelganger boss fights to be enabled or not. Put true or false.  It's set to true by default.
+MaxOrbReward=
+the max amount of orbs the battle can give out as a reward before skills and accessories are applied. By default it's 20,000. Note that this limit can be surpassed if more than one wave of monsters shows up.
 
-EnableWarMachine=  if you want the war machine boss fights to be enabled or not. Put true or false. It's set to true by default.
+MaxShopLevel=
+the maximum shop level players can achieve goes here. By default it's 25.
 
-EnableBandits= true or false, true by default.  This toggles the bandit boss type on and off.
+EnableDoppelganger=
+if you want the doppelganger boss fights to be enabled or not. Put true or false. It's set to true by default.
 
-EnablePirates= true or false, true by default. This toggles the pirate boss type on and off.
+EnableWarMachine=
+if you want the war machine boss fights to be enabled or not. Put true or false. It's set to true by default.
 
-EnableCrystalShadow= true or face, true by default. This toggles the crystal shadow warrior boss type on and off.
+EnableBandits=
+true or false, true by default. This toggles the bandit boss type on and off.
 
-AllowDemonwall=  yes/no  If you want the demon wall boss battles to exist at ranges 300-600, put this as yes.  It's set to yes by default.
+EnablePirates=
+true or false, true by default. This toggles the pirate boss type on and off.
 
-AllowWallOfFlesh= yes/no  If you want the Wall of Flesh boss battles to exist, put this as yes. It's set to yes by default.
+EnableCrystalShadow=
+true or false, true by default. This toggles the crystal shadow warrior boss type on and off.
 
-EnablePresidentKidnapping= true or false. By default it's set to true.  If you want the kidnapped president event to occur, leave it as true or set it to false to turn it off.
+EnableGremlins=
+true or false, true by default. This toggles the Gremlin special boss type on and off.
 
-EnableChests=  If you want chests and keys to drop. Put true or false. It's set to true by default. If set to false, neither keys nor chests will drop.
+AllowDemonwall=
+yes/no If you want the demon wall boss battles to exist at ranges 300-600, put this as yes. It's set to yes by default.
 
-MaxCharacters= How many characters should each player be allowed to have? The default is 2.
+AllowWallOfFlesh=
+yes/no If you want the Wall of Flesh boss battles to exist, put this as yes. It's set to yes by default.
 
-ShowOrbsCmdInChannel= true or false.  If set to true the !orbs command will display the results in the channel. If set to false, the !orbs command will display in a private message to the person who uses the command. If you have a lot of players in your channel it might be advisable to set this to false.
+EnablePresidentKidnapping=
+true or false. By default it's set to true. If you want the kidnapped president event to occur, leave it as true or set it to false to turn it off.
 
-ShowDiscountMessage= true or false. False by default. If set to true, an item description will be shown when players use the Discount Card type items. If set to false it will not show the descriptions.
+EnableChests=
+If you want chests and keys to drop. Put true or false. It's set to true by default. If set to false, neither keys nor chests will drop.
 
-BattleDamageFormula= 1, 2 or 3.  There's three damage formulas in the bot currently.  Damage Formula #3 is set by default since it's the newest and most balanced, but you can change it to whichever one you want to use. If you are using an older copy of a system.dat you may need to change it manually to 3 if you want to be using the most current battle damage formulas.
+MaxCharacters=
+How many characters should each player be allowed to have? The default is 2.
 
-EnableBattlefieldEvents= true/false  If you want the random battlefield events to happen, set this to true.  It's true by default.
+ShowOrbsCmdInChannel=
+true or false. If set to true the !orbs command will display the results in the channel. If set to false, the !orbs command will display in a private message to the person who uses the command. If you have a lot of players in your channel it might be advisable to set this to false.
 
-GuaranteedBossBattles= these are a list of battles which guarantee a boss to show up.  There's a bunch set by default and you can go in and change them if you want. Just remember to separate the numbers with a period inbetween (like 10.20.30.40, etc).
+ShowDiscountMessage=
+true or false. False by default. If set to true, an item description will be shown when players use the Discount Card type items. If set to false it will not show the descriptions.
 
-IgnoreDmgCap= true/false.  If set to true, it will remove most of the damage caps that are in place in the bot (but does not ignore damage cap from reflect and counters).
+BattleDamageFormula=
+1, 2 or 3. There's three damage formulas in the bot currently. Damage Formula #3 is set by default since it's the newest and most balanced, but you can change it to whichever one you want to use. If you are using an older copy of a system.dat you may need to change it manually to 3 if you want to be using the most current battle damage formulas.
 
-MaxNumberOfMonsInBattle=  You can set this to whatever number you want but the default is 6.  Keep in mind that 99.999% of IRC servers have flood control and if set too high it will cause the bot to flood out if an AOE happens on monsters.
+EnableBattlefieldEvents=
+true/false If you want the random battlefield events to happen, set this to true. It's true by default.
 
-BonusEvent= true or false.  If set to true then the orb orbs rewarded at the end of battle will be doubled (even during a loss).
+GuaranteedBossBattles=
+these are a list of battles which guarantee a boss to show up. There's a bunch set by default and you can go in and change them if you want. Just remember to separate the numbers with a period inbetween (like 10.20.30.40, etc).
 
-ScoreBoardType= 1 or 2.  This toggles between the two scoreboard types.
+IgnoreDmgCap=
+true/false. If set to true, it will remove most of the damage caps that are in place in the bot (but does not ignore damage cap from reflect and counters).
 
-MaxGauntletOrbReward= You can set the maximum number of orbs are rewarded for gauntlet mode here. 50000 is default.
+MaxNumberOfMonsInBattle=
+You can set this to whatever number you want but the default is 6. Keep in mind that 99.999% of IRC servers have flood control and if set too high it will cause the bot to flood out if an AOE happens on monsters.
 
-EmptyRoundsBeforeStreakReset= How many empty rounds the bot will go before resetting the streak to 0 goes here. Default is 10
+BonusEvent=
+true or false. If set to true then the orb orbs rewarded at the end of battle will be doubled (even during a loss).
 
-ChestTime= How long a chest stays in the game before it fades away/gets destroyed. Default is 45 seconds
+ScoreBoardType=
+1 or 2. This toggles between the two scoreboard types.
 
-MaxDemonWallTurns=  10 by default.  This is how many turns players have to defeat the demon wall before the battle ends with them being crushed.
+MaxGauntletOrbReward=
+You can set the maximum number of orbs are rewarded for gauntlet mode here. 50000 is default.
 
-MimicChance= 10 by default (10%).  What chance a chest has in becoming a mimic.
+EmptyRoundsBeforeStreakReset=
+How many empty rounds the bot will go before resetting the streak to 0 goes here. Default is 10
 
-PhantomBetters= how many fake betters will participate in 1vs1 AI Battles to help generate the odds.  This can't be set lower than 3.  Setting it too high will cause lag on slower machines.
+ChestTime=
+How long a chest stays in the game before it fades away/gets destroyed. Default is 45 seconds
 
-EnableAuctionHouse= true or false. If set to true, the auction house will be on and will generate items for players to bid on. If set to false then no players can bid. This is set to true by default.
+RedChestBase=
+The base amount of red orbs that are inside of red chests. The default is $rand(150,700). You can adjust the amounts inside of the $rand if you want a random amount or you can put a static amount (like =1000). Keep in mind that this value is multiplied and increased on higher streak levels.
 
-BattleThrottle= true or false, set to false by default.  If set to true players will have to wait a round out before entering the next battle after the battle they're in ends.
+MaxDemonWallTurns=
+10 by default. This is how many turns players have to defeat the demon wall before the battle ends with them being crushed.
 
-LimitPortalBattles=true or false. If set to true players can only use 8 portal items a day, which then resets at midnight (bot's time).  This is set to true by default.
+MimicChance=
+10 by default (10%). What chance a chest has in becoming a mimic.
 
-GenerateHTML=true or false. If set to true the bot will generate an HTML file when !scoreboard is used. This is set to true by default.
+PhantomBetters=
+how many fake betters will participate in 1vs1 AI Battles to help generate the odds. This can't be set lower than 3. Setting it too high will cause lag on slower machines.
 
-PlayersMustDieMode= true or false. This will turn the Players Must Die mode on or off.  While on, monsters are harder and players won't get their HP and TP restored at the end of each battle.
+EnableAuctionHouse=
+true or false. If set to true, the auction house will be on and will generate items for players to bid on. If set to false then no players can bid. This is set to true by default.
 
-WheelGameCost=  This is the cost in red orbs it takes to play the Wheel minigame once the wheel merchant has been saved. It's set to 500 by default.
+BattleThrottle=
+true or false, set to false by default. If set to true players will have to wait a round out before entering the next battle after the battle they're in ends.
 
-TwitchDelayTime=  This is how fast messages are output in TWITCH mode.  By default it's set to 2.  If the bot is being kicked a lot by Twitch try increasing this.
+LimitPortalBattles=
+true or false. If set to true players can only use 8 portal items a day, which then resets at midnight (bot's time). This is set to true by default.
 
+GenerateHTML=
+true or false. If set to true the bot will generate an HTML file when !scoreboard is used. This is set to true by default.
 
-[StatPrices]
-This whole section is the base cost, in red orbs, that the shop will sell stat upgrades for.  You can lower the prices or raise them here.
+PlayersMustDieMode=
+true or false. This will turn the Players Must Die mode on or off. While on, monsters are harder and players won't get their HP and TP restored at the end of each battle.
 
-[Style]
-This section is for how many base style points a player gets for killing either a boss or a normal monster.  Note that just because the default value is 80 for bosses and 60 for monsters it doesn't mean that's exactly how many a player will get (there's other factors for calculating the resulting style points).
+WheelGameCost=
+This is the cost in red orbs it takes to play the Wheel minigame once the wheel merchant has been saved. It's set to 500 by default.
 
+WheelGameTime=
+This is the time the players must wait before they can spin again after playing. Default is 43200 seconds (12 hours). The time here must be in seconds.
+
+TwitchDelayTime=
+This is how fast messages are output in TWITCH mode. By default it's set to 2. If the bot is being kicked a lot by Twitch try increasing this.
+
+ShowDeleteEcho=
+If set to true this setting will cause the bot to echo a line showing every time a .char file is erased. Useful for debugging if something is going amiss. False by default.
+[statprices]
+
+This whole section is the base cost, in red orbs, that the shop will sell stat upgrades for. You can lower the prices or raise them here. Defaults are listed below.
+
+hp=150
+tp=150
+str=250
+def=250
+int=250
+mnd=250
+agi=250
+spd=250
+ig=800
+[style]
+
+This section is for how many base style points a player gets for killing either a boss or a normal monster. Note that just because the default value is 80 for bosses and 60 for monsters it doesn't mean that's exactly how many a player will get (there's other factors for calculating the resulting style points). Defaults are listed below.
+
+BossDeath=80
+MonDeath=60
 [Mech]
-This section deals ith the cost and values of various mech settings.
 
-[Version]
-This section is used to store the current system.dat version.  If your version doesn't match what the version is expected by the bot, the bot will check through your system.dat and add the new sections as necessary.  Don't mess with this manually, even if you think you have the latest version.
+This section contains controls for mechs.
+
+EnergyCostConstant=
+100 by default. This is the base energy cost of mechs.
+
+StatMultiplier=
+2 by default. This is how much engine level will be multiplied upon activation of a mech (and this, in turn, will be multiplied to the stats)
+
+EngineUpgradeCost=
+How much it costs to upgrade a mech engine. 1500 by default.
+
+EnergyUpgradeCost=
+How much it costs to upgrade a mech's energy. 500 by default.
+
+HealthUpgradeCost=
+How much it costs to upgrade a mech's health. 200 by default.
+
+RepairHPItem=
+The default item to be used to heal a mech's health. This does not mean other items cannot be used to heal the mech, but this is the one that it defaults to if no other item is supplied. By default this is set to MetalScrap
+
+RepairEnergyItem=
+The default item to be used to refill a mech's energy levels. This does not mean other items cannot be used, but this is the one that it defaults to if no other item is supplied. By default this is set to E-Tank
+
+MaxHp=
+The max amount of health a mech can have. 10000 by default.
+
+MaxEnergy=
+The max amount of energy a mech can have. 5000 by default.
+
+MaxEngine= The max engine level a mech can have. 5 by default.
+
+MechPurchaseCost=
+The amount of Allied Notes it takes to purchase the base mech. 1000 by default.
+[auctionInfo]
+
+This section controls the Auction House. It will be automatically generated and updated if the auction house is enabled.
+[version]
+
+This section is used to store the current system.dat version. If your version doesn't match what the version is expected by the bot, the bot will check through your system.dat and add the new sections as necessary. Don't mess with this manually, even if you think you have the latest version.
+
+
 
 
 BATTLESTATS.DAT
-The battlestats.dat, at the moment, keeps track of the total number of battles the bot has had, how many wins/losses, and the current winning or losing streak.
+The battlestats.dat, at the moment, keeps track of the total number of battles the bot has had, how many wins/losses, and the current winning or losing streak; as well as dragon ball information, conquest information, and AI Battle information.
+[battle]
 
-Here's an example of the battlestats.dat.
+This section contains information on all the battles that the bot has had since it has started. In here you can see the total number of battles, how many wins, how many losses, how many draws, the current winning or losing streak, the level adjust (which makes battles harder), the gauntlet record, how many empty rounds have occured, how many “game days” have passed, and how many Allied Forces Presidents have been captured/rescued/killed.
 
-[Battle]
-TotalBattles=346
-TotalWins=286
-TotalLoss=60
-TotalDraws=0
-LosingStreak=0
-WinningStreak=3
-LevelAdjust=0
-emptyRounds=0
-
-Bot owners have a way to reset it all back to 0 using a command they have access to.
-
-LevelAdjust is a way to make battles harder.  The monsters will gain a boost to their stats based on the winning streak + the leveladjust.  So if you want to make even the early battles harder, set the level adjust higher.
-
-
-Also included in this file is the information for the Conquest System.  If your battlestats.dat is missing this section it will be auto-generated when the bot runs next. Here's what that section looks like as an example:
-
+This section can be completely cleared by using a bot admin command.
 [conquest]
-LastTally=1366340640
-ConquestPoints=-197
-ConquestBonus=870
-ConquestPreviousWinner=Players
-TotalMonsterWins=1
-TotalPlayerWins=1
 
-
-LastTally= is the last time the tally was done.  The bot will update this every time a Conquest Tally is performed (by default set to every 5 days).
-ConquestPoints= The current conquest points.  If it's above 0 it means players are winning.  Below 0 and it means monsters are winning.
-ConquestBonus= The amount of orbs players will receive at the end of battles.  Winning battles will receive full amount, losing battles will receive a small percentage of the bonus.
-ConquestPreviousWinner= Players or Monsters.  This tells the bot who won the last Conquest Tally.
-TotalMonsterWins= how many times monsters have won the Conquest Tally.
-TotalPlayerWins= how many times players have won the Conquest Tally.
-
-
-[AIBattles]
-totalBattles=32
-npc=17
-monster=15
-
-This section deals with the 1vs1 AI battle informatoin.
-
-totalBattles= how many battles have been done total.
-npc= how many times NPCs have won the battles.
-monster= how many times monsters have won the battles.
-
-
-Finally, the battlestats.dat contains information on the Dragonballs.
-
+The conquest section contains information on the Conquest system. In here you can see when the last tally was, how many conquest points the players have (negative means monsters are winning), how many orbs players are receiving as a bonus (if they've won the conquest period), who the previous winner was, as well as how many times players and monsters have won.
 [dragonballs]
-ShenronWish=off
-ShenronWish.rounds=1
-DragonBallsFound=1
-DragonballsActive=yes
-DragonballChance=10
 
-ShenronWish= if Shenron's Wish bonus is on and is applying to the battlefield.
-ShenronWish.rounds= How many rounds the bonus has been on for.  After 10 it turns off.
-DragonBallsFound=  How many dragonballs have been found so far.
-DragonballsActive=  Is it possible to find dragonballs?  If the wish is on, this is set to no.
-DragonballChance=  The default chance of finding one after a boss battle in percent. The default amount is 10%
+This section contains information on the dragonballs including how many have been found, if they're active or if Shenron's Wish is current (and, if it is, what round it's on).
+[AIBattles]
+
+This section contains information on the AI vs AI Battles including how many total AI battles have occurred and how many times npcs and monsters have won each.
+
+
+
 
 SHOPNPCS.DAT
 shopnpcs.dat deals with the shop npc information.
-
 [NPCStatus]
-This section tells the bot if the NPC is either in the allied forces base, kidnapped, or not found yet.  =false means not found, =true means in the base, and =kidnapped means the npc is kidnapped.
+
+This section tells the bot if the NPC is either in the allied forces base, kidnapped, or not found yet. =false means not found, =true means in the base, and =kidnapped means the npc is kidnapped.
 
 Santa=false
 EasterBunny=false
@@ -217,14 +289,15 @@ ShieldMerchant=false
 WheelMaster=kidnapped
 TravelMerchant=false
 Gardener=kidnapped
-
+PotionWitch=false
 [Events]
+
 This is used for certain NPCs.
 
 FrostLegionDefeated=false
 SavedElves=0
-
 [NPCNames]
+
 This controls the names of the NPCs. If you don't like the ones I've picked feel free to edit this section to your liking.
 
 Santa=Santa
@@ -237,8 +310,9 @@ ShieldMerchant=Gondo the Shield Merchant
 WheelMaster=Dodoh the Wheel Master
 TravelMerchant=Beedle the Traveling Merchant
 Gardener=Green Thumb the Garden Moogle
-
+PotionWitch=Syrup the Potion Witch
 [AlliedForcesHQ]
+
 This section is currently unused but may be used in a future update.
 
 HQStrength=0
@@ -246,157 +320,209 @@ HQOrbsDonated=0
 PresidentGuards=0
 
 
-GARDEN.DAT
-Garden.dat is used to store information on the Allied Forces HQ Garden minigame.
 
+GARDEN.DAT
+
+Garden.dat is used to store information on the Allied Forces HQ Garden minigame.
 [GardenStats]
-This section contains the XP, level, bonus and lastchecked information for the garden.
+
+This section contains the XP, level, bonus and last checked information for the garden.
 
 XP=
 Level=1
 LastChecked=
 Bonus=0
-
 [Seeds]
+
 This section stores how many seeds have been planted by the players, how many of those seeds have become saplings and how many saplings have become trees.
 
 Planted=0
 Saplings=0
 Trees=0
-
 [Plants]
+
 This section stores how many flowers have been planted by the players and how many have bloomed.
 
 Planted=0
 Bloomed=0
 
 
-BATTLEFIELDS.DB
-Battlefields.db controls the various battlefields that are available in the bot, the weather information and the "Time of Day" for the game.  If you open the file up in notepad you'll see the weather information at the top.
 
+BATTLEFIELDS.DB
+Battlefields.db controls the various battlefields that are available in the bot, the weather information and the “Time of Day” for the game. If you open the file up in notepad you'll see the weather information at the top.
 [weather]
+
+This section controls the weather.
+
 current=calm
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
-the .25 means that magic cast on the right day will give a 25% boost to the damage.
+The .25 means that magic cast on the right day will give a 25% boost to the damage.
+[MoonPhase]
 
-After that you'll see the time of day section.
+The moon phases are controlled in this file as well. Please do not remove or modify the Moon Phase section as it will cause errors.
 
+CurrentMoonPhase=Quarter
+CurrentMoonTurn=4
+[MoonPhaseTime]
 
+This section controls how long each moon phase turn lasts (in number of battles). You can modify this section if you wish certain moon phases to last longer.
+
+full=3
+new=1
+gibbous=5
+quarter=4
+crescent=2
+blood=1
+BloodMoonChance=60
 [TimeOfDay]
+
+This section keeps track of what time of day it is (in-game).
+
 CurrentTimeOfDay=Morning
 CurrentTimeOfDayTurn=1
-
 [TimeOfDayTime]
+
+This section controls how long (in number of battles) the times of day last before they switch to the next one.
+
 morning=2
 noon=2
 evening=2
 night=2
+[Battlefields]
 
-The rest of the information inside pertains to the battlefields.
+Battlefields are where the players face the monsters. The battlefields themselves control what kinds of weather are available and may have events that occasionally happen. There can be more than one event set per battlefield.
+
+Here is a basic template you can use for making a new battlefield:
+
+[template]
+weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
+NumberOfEvents=0
+scavenge=
+limitations=
+
+event1=damage
+event1Chance=20
+Event1Desc=%real.name trips and falls Ow!
+Event1Target=random
+event1Amount=$rand(50,100) 
+
+weather=
+This is the section where you list what weather is available for that battlefield. The bot will choose randomly from this list.
+Valid Weather: 	calm, bright, gloomy, rainy, stormy, snowy, windy, hot, dry
+
+NumberOfEvents=
+This tells the bot how many random battlefield events you have defined in the battlefield. Leave at 0 if you don't want the battlefield to have any.
+
+scavenge=
+This is a list of items that players can potentially find while using the !scavenge skill. You can list any item that's in the game and can list multiple by splitting it with periods between them (such as: potion.diamond.tonic)
+
+limitations=
+These are battlefield limitations. If set, players/monsters/npcs will lose access to certain commands or will be enhanced.
+Valid Limitations: 	no-tech, no-item, no-skill, no-ignition, enhance-item, enhance-melee, enhance-tech no-mech
+
+Making a Battlefield Event If you have listed a number in NumberOfEvents= you will need to now create your events. The format looks like this:
+
+event#=
+event#Chance=
+Event#Desc=
+Event#Target=
+event#Amount=
+
+Change the # to the current number of event. You will need those five lines for every event you have listed (so if you have 3 events you will need event1= event2= event3=, event1Chance=, event2Chance=, event3Chance=, etc)
+
+event#=
+This is where you define what type of event it is.
+Valid Event Types: 	damage, heal, statusonly
+
+* Note for statusonly you will need an extra line: event#statusType=statustypehere
+
+event#Chance=
+This defines how often the event will trigger. It can be 1-100 with 100 being it always happens at the end of everyone's turn.
+
+Event#Desc=
+What happens during the event. Use %real.name to show the name of the person affected.
+
+Event#Target=
+Here you tell the bot who is affected by this event.
+Valid Targets: 	all, random, monsters, players *
+
+* note that “players” as a target also affects NPCs
+
+event#Amount=
+How much damage does this event do? You can list a static amount or you can use $rand(#,#) to make it be varied.
+
+Finally, for battlefields, it is possible to make a battlefield that does not show up during normal rotation (such as a special portal battle battlefield). If you want the bot to be able to select it for battles, make sure you put the name of it into battlefields.lst
+
 
 
 .LST FILES
-.lst files are "list" files.  These files are used when the bot generates lists of things (such as a list of ignitions that players have, or a list of items they carry).  These files should not be erased.  If you end up making any new items, armor, or whatever you will need to add the name of whatever you make into the appropriate .lst file for it to show up in the bot.
+.lst files are “list” files. These files are used when the bot generates lists of things (such as a list of ignitions that players have, or a list of items they carry). These files should not be erased. If you end up making any new items, armor, or whatever you will need to add the name of whatever you make into the appropriate .lst file for it to show up in the bot.
+
+Here is a list of the various list files found within the bot.
+
+accessorytypes.lst
+achievements.lst
+alchemy_armor.lst
+alchemy_items.lst
+armor_body.lst
+armor_feet.lst
+armor_hands.lst
+armor_head.lst
+armor_legs.lst
+augments.lst
+battlefields.lst
+chest_black.lst
+chest_blue.lst
+chest_brown.lst
+chest_gold.lst
+chest_green.lst
+chest_mimic.lst
+chest_orange.lst
+chest_purple.lst
+chest_silver.lst
+dragonnames.lst
+elements.lst
+ignitions.lst
+items_accessories.lst
+items_auctionhouse.lst
+items_battle.lst
+items_consumable.lst
+items_food.lst
+items_gems.lst
+items_healing.lst
+items_instruments.lst
+items_mech.lst
+items_misc.lst
+items_portal.lst
+items_potioningredient.lst
+items_random.lst
+items_reset.lst
+items_seals.lst
+items_special.lst
+items_summons.lst
+items_trust.lst
+monsterdeaths.lst
+pokemon.lst
+recipes.lst
+shieldlists.lst
+skills_active.lst
+skills_enhancingpoint.lst
+skills_killertraits.lst
+skills_passive.lst
+skills_resists.lst
+songs.lst
+weaponlists.lst
+wheelgame.lst 
 
 
-"BOT ADMIN" COMMANDS
-These commands are commands that only the "bot admins" (set in the system.dat) have access to.  I'll try to explain them here.
 
-!startbat or !start bat
-This command starts a battle if there isn't one already going.  If this command is used when players can already enter battle, it'll actually cancel the battle.
-
-!start bat PVP
-This command will start a player vs player battle. Monsters will not spawn in this type and players will be able to hurt each other.  The winning/losing streak won't be affected.
-
-!startbat ai
-This command will start an AI vs AI battle.  Players will be unable to enter this battle type.
-
-!startbat boss [boss subtype] 
-This will start a boss battle. Valid subtypes are: bandits, doppelganger, warmachine, demonwall, wallofflesh, elderdragon, pirates, frostlegion, crystalshadow
-
-!startbat orbfountain 
-This will start an orb fountain battle.
-
-!startbat gauntlet 
-This will start a gauntlet battle.
-
-!startbat manual 
-This will start a manual battle. No monsters will be summoned in this battle type. You will have to manually use !summon to add them. If no monsters/bosses are added to the battle it will end before it begins. 
-
-!end bat
-Ends a battle as neither a victory or a loss.
-
-!next
-Forces the next turn.
-
-!clear battle stats
-This will reset the battlestats.dat back to 0's.
-
-!time between battles #
-If you want to change the time between when battles start again, use this.  The # is in minutes.  So if you want it in 30 seconds you can put it as 0.5.
-
-!summon npc (name)
-This command will summon an NPC to come help fight.  The name has to be a valid one and must not already be summoned.  This command can only be used when the entering period is open (i.e. when players can use !enter).
-
-!summon monster (name)
-Will summon a monster to the battlefield.  This command only works during the entering phase of battle.
-
-!summon boss (name)
-This command will summon a boss to the battlefield.  This command only works during the entering phase of battle.  Also note that bosses summoned this way WILL NOT GIVE BLACK ORBS upon defeat unless the bot picks a random boss to go along with the battle (that is to say, if it was going to be a boss battle to begin with even if you hadn't used this command).
-
-(name) enters the battle
-If you want to force a player to join the battle, you can use this here.
-
-(name) attacks (name)
-You can force a player to attack something using this command.  You can't make players attack other players using this and the monster has to be in battle.
-
-(name) uses (his/her) (tech name) on (name)
-This will let you force a player to use a certain technique on a target.  Again, the target must be a monster and the person has to actually own the technique.
-
-(name) uses item (item name) on (name)
-This will let you force a player to use an item that he/she has in his/her inventory on a target.
-
-(name) taunts (target)
-This will let you force a player to taunt a target of your choosing.
-
-(name) equips (weapon)
-This will let you force a player to equip a weapon of your choosing.  The player must own the weapon in order to equip it.
-
-!zap (name)
-This command removes a character from play.  There is currently no way to undo this command via the bot, but the files that are erased via this command end up in a \zapped\ folder and can be restored if the person running the bot so desires.
-
-!toggle automated battle system
-This command will turn the automated battle system on/off.  If it's currently in the middle of a battle when the command is used, it will take effect after the battle is over.   !start bat will still work even if the automated system is turned off.
-
-!toggle ai system
-This command will turn the AI system on/off.  If it's set to off then monsters won't attack on their own.  Note, this doesn't affect charm.  Charmed monsters/players will continue to attack regardless if the ai system is turned on or off.
-
-!toggle battle formula
-This command will toggle between the two battle damage formulas the instant it is used.  It is possible for bot admins to toggle at any time, even in the middle of battle.
-
-!toggle battlefield events
-This command will toggle the random battlefield events on or off.
-
-!toggle bonus event
-This command will toggle the bonus event.  If turned on then all orbs at the end of battle will be doubled.
-
-!set streak #
-It's possible to manually set the winning streak to whatever you want.  You can't set it to a losing streak or to a negative value though.
-
-!leveladjust
-If bot admins want battles to be harder, they can adjust the level by which monsters are boosted by.  For example, if a player is on streak level 1, bot admins can set the leveladjust to 50 and a level 1 streak will now act as a level 51 streak including which monsters are summoned during the battles.  To turn it off, set the leveladjust to 0 (which is set by default).  The difficulty cannot be below 0.
-
-!toggle scoreboard type
-This toggles between the two scoreboard types.
-
-
-DETAILED LOOK AT NEW_CHAR.CHR
-In this section we'll take a look at the blank new character template file in detail so that you'll know what everything means.  All .chr files can be opened in regular ol notepad as they don't contain anything special are just plain text ini files.
-
+DETAILED LOOK AT NEW_CHR.CHAR
+In this section we'll take a look at the blank new character template file in detail so that you'll know what everything means. All .chr files can be opened in regular ol notepad as they don't contain anything special and are just plain text ini files.
 [BaseStats]
-This section is the "resting" stats that new characters start with.  Resting stats are the stats the bot will reset the character to after each battle.
+
+This section is the “resting” stats that new characters start with. Resting stats are the stats the bot will reset the character to after each battle.
 
 Hp=150
 Tp=20
@@ -404,11 +530,10 @@ Str=5
 Def=5
 Int=5
 Spd=5
-Name=  This is really more for monsters, bosses and npcs, but the name of the character is stored here.
-
-
+Name= This is really more for monsters, bosses and npcs, but the name of the character is stored here.
 [Battle]
-These are the stats that are read for battles.  These can be manipulated (boosting is an example of how these stats can be increased).  They'll be reset at the end of battle with the basestats.
+
+These are the stats that are read for battles. These can be manipulated (using an ignition is an example of how these stats can be increased in battle). They'll be reset at the end of battle with the basestats.
 
 Hp=150
 Tp=20
@@ -417,34 +542,74 @@ Def=5
 Int=5
 Spd=5
 Status=alive
-
-
 [Rage]
-This section was actually used in my other bot, Kaiou, but I've kept it in this bot just in case I want to add in a rage system in the future.  As of version 1.0 though, there's no use for it.
+
+This section was actually used in my other bot, Kaiou, but I've kept it in this bot just in case I want to add in a rage system in the future. As of now though, there's no use for it.
 
 RageBar=0
 RageCountDown=0
-
 [Descriptions]
-This section is where descriptions are stored.  Again, the "rage=" description is not used at the moment.  In the future this section might be expanded to include the ability to add custom skill descriptions.
 
-Char= This is the character description.
-Rage= Not used
+This section is where descriptions are stored. Again, the “rage=” description is not used at the moment.
 
-
+Char=This is the character description.
+Rage=Not used
 [Stuff]
-As generic as this section is named, this holds the information for all the orbs collected, how many orbs have been spent, and the total number of deaths the character has endured.
 
+As generic as this section is named, this holds the information for all the orbs collected, how many orbs have been spent, and the total number of deaths the character has endured (among other stats).
+
+; currencies
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 RedOrbsSpent=0
 BlackOrbsSpent=0
+alliednotes=0
+DoubleDollars=100
+CapacityPoints=0
+EnhancementPoints=0
+LoginPoints=0
+; misc stats
+EnhancementPointsSpent=0
 TotalDeaths=0
-
-
+MonsterKills=0
+DiscountsUsed=0
+ItemsSold=0
+TimesFled=0
+ItemsGiven=0
+ChestsOpened=0
+TotalNumberOfKeys=0
+RevivedTimes=0
+MonstersToGems=0
+TotalBattles=0
+TimesHitByBattlefieldEvent=0
+ChestsOpened=0
+NumberOfResets=0
+LightSpellsCasted=0
+DarkSpellsCasted=0
+EarthSpellsCasted=0
+FireSpellsCasted=0
+WindSpellsCasted=0
+WaterSpellsCasted=0
+IceSpellsCasted=0
+LightningSpellsCasted=0
+PortalBattlesWon=0
+TimesDodged=0
+TimesCountered=0
+TimesParried=0
+TimesBlocked=0
+TotalBets=0
+TotalBetAmount=0
+AuctionWins=0
+AuctionBids=0
+IgnitionsUsed=0
+GardenItemsPlanted=0
+WheelsSpun=0
+TrustsUsed=0
+DropsRewarded=0
 [Info]
-The gender and password are stored in this section.  The bot also keeps track of when a player was created and when the player last used the !id command.
+
+The gender and password are stored in this section. The bot also keeps track of when a player was created and when the player last used the !id command.
 
 Gender=his
 Gender2=him
@@ -453,9 +618,9 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-
 [Status]
-This section just contains all of the status flags for battle.  They're reset to "no" when the battle ends.
+
+This section just contains all of the status flags for battle. They're reset to “no” or false when the battle ends.
 
 Poison=no
 HeavyPoison=no
@@ -490,34 +655,28 @@ stun=no
 MPRegenerating=no
 boosted=no
 reflect=no
-
-
 [Weapons]
-This section keeps track of the weapon levels that the player has.  All characters start with level 1 fists which are equipped by default.
+
+This section keeps track of the weapon levels that the player has. All characters start with level 1 fists which are equipped by default.
 
 Equipped=Fists
 Fists=1
-
-
 [Skills]
-This section stores all of the skill information, such as the levels of skills players have and certain skill flags (for example: if you use royal guard, a flag will be turned on in this section for it).  The default starting character has a blank skills section.
 
-
+This section stores all of the skill information, such as the levels of skills players have and certain skill flags (for example: if you use royal guard, a flag will be turned on in this section for it). The default starting character has a blank skills section.
 [Techniques]
-This section keeps track of the technique levels that the player has.  All starting characters start with level 1 DoublePunch.
+
+This section keeps track of the technique levels that the player has. All starting characters start with level 1 DoublePunch.
 
 DoublePunch=1
-
-
 [Item_Amount]
-The items that characters have and how many they own are stored in this item_amount section.  At the start, players start with 1 potion.
+
+The items that characters have and how many they own are stored in this item_amount section. At the start, players start with 1 potion.
 
 potion=1
-
-
 [Styles]
 
-This section keeps track of the styles the players know and what levels they are along with how much xp they've accumulated for them.
+This section keeps track of the styles the players know and what levels they are along with how much xp they've accumulated for them. All players start with the three basic styles: Trickster, WeaponMaster and Guardian.
 
 Equipped=Trickster
 Trickster=1
@@ -527,81 +686,4 @@ WeaponMasterXP=0
 Guardian=1
 GuardianXP=0
 
-
-And that's the new character file for players!   There's a few minor things that are added for bosses, monsters and npcs.  Let's take a quick look at those here.
-
-
-BOSSES have an additional line in [Descriptions] line that is  BossQuote=   This line is read when the boss is summoned and should be a quote that the boss says to the players when it appears.  They also have a Drops=ItemName in [Stuff].  The Drops line should be a valid item that exists in items.db.  When the boss is defeated, the most stylish player will have a chance of winning the item in the drops= line.
-
-All monsters, bosses, and npcs have one more line in their files under [Info].  It is the flag= line.
-
-For bosses and monsters this should be set to:
-Flag=monster
-
-For NPCs it should be set to
-Flag=npc
-
-
-And there you have it!  If you're still a little confused or unsure about the differences between players and npcs/bosses/monsters, feel free to open any of the pre-existing files in notepad and take a look.
-
-
-OPTIONAL FLAGS FOR MONSTERS/BOSSES
-If you've ever looked through some of the bosses or monsters in the game you probably noticed there's a bunch of various optional flags in [info].  This section will tell you what they are and what they do.
-
-STAGGER:  do you want the monster to be able to be staggered after being hurt for a certain # of damage?
-CanStagger=yes/no  
-StaggerAmount=$rand(#,#)  
-
-IGNORE RAGEMODE. If this is set when darkness happens (rage mode) it won't affect this monster/boss.
-RageMode=ignore
-
-IGNORE QUICKSILVER.  If set to true, the quicksilver skill won't have any effect.
-IgnoreQuicksilver=true/false
-
-AI TYPE: berserkers will attack their own allies, defenders won't get a turn. healers only heal, counteronly will counter melee/take 0 damage from everything else, paytoattack will only take action in battle if its been paid (given red orbs) and only works on NPCs and techonly only uses techs and ignitions. Leave blank for normal.
-ai_type=
-
-STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.  set to -1000 for it to never show up under normal circumstances.
-Streak=
-StreakMax=
-
-FLEEING: Do you want monsters to be able to flee the battle?
-CanFlee=true/false
-
-SPAWNING ANOTHER MONSTER UPON DEATH: If set, when this monster is killed, it'll summon another one that's set. Make sure the monster set here actually exists in either \bosses\ \monsters\ or \npcs\
-SpawnAfterDeath=nameofmonster
-
-BOSS LEVELS are used for bosses that are summoned via portal items. You can make them harder or easier by setting a level.
-BossLevel=
-
-IGNORE DRAIN is true or false. If set to true, stuff like drainsamba won't work on them.
-IgnoreDrain=true/false
-
-BIOME is for if you want the boss to only appear under certain battlefields. You can list multiple with periods inbetween.
-Biome=
-
-MOONPHASE is for if you want the monster to only appear during a certain moon phase. You can only list one.
-Valid list is: Full Moon or Crescent Moon or Gibbous Moon or New Moon or Quarter Moon or Blood Moon  (with the spaces)
-Moonphase=
-
-Can the monster taunt?   Assumed to be true if blank.
-CANTAUNT=true/false
-
-TAUNTFILE is an optional taunt file if you want your boss to have unique taunts.  If blank it will use the default taunts.txt The optional taunt file needs to be in \txts\
-TAUNTFILE=
-
-GUARDIAN is a monster that covers the boss. While the monster is alive the boss will take no damage from items/techs/attacks.   Can have multiple by putting periods inbetween the names (such as monster1.monster2.monster3)
-Guardian=
-
-JUSTRELEASEDEFENSE is to block "Just Release" the # is a percent of the damage blocked. 0 = no block, 100 = 100% blocked
-JustReleaseDefense=
-
-HURTBYTAUNT is a special flag. If set to true, taunts done against this boss will deal damage.
-HurtByTaunt=true/false
-
-HEALBYTAUNT is a special flag. If set to true, taunts done against this boss will heal damage.
-HealByTaunt=true/false
-
-IGNOREPRESIDENT= Does the monster appear in President battles? True=yes/False=no  Note that this won't stop a monster from attacking the allied president IF this monster somehow gets into the battle. It just means it shouldn't appear, normally, in a president battle.
-
-DEATHCONDITIONS= if you want the monster to only be able to be killed if a certain action is performed, you can set it here. Not set by default. Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect - You can list multiple by putting a period in between such as: melee.magic.status If the monster is killed by something that isn't the death condition, it'll be revived until killed with the condition. 
+And that's the new character file for players!
