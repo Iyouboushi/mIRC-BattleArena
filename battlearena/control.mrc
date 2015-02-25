@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 02/19/15
+;;;; Last updated: 02/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | echo -a 4,1Location: %debug.location | halt
@@ -10,7 +10,7 @@ on 1:QUIT: {
   if ($nick = %bot.name) { /nick %bot.name | /.timer 1 15 /identifytonickserv } 
   .auser 1 $nick | .flush 1 
 } 
-on 1:EXIT: {  .auser 1 $nick | .flush 1 }
+on 1:EXIT: { .auser 1 $nick | .flush 1 | .flush 3 | .flush 50 | .flush 100 }
 on 1:PART:%battlechan:.auser 1 $nick | .flush 1
 on 1:KICK:%battlechan:.auser 1 $knick | .flush 1 
 on 1:JOIN:%battlechan:{ 
@@ -44,17 +44,8 @@ on 1:START: {
   if (%first.run = false) { 
     set %bot.owner $readini(system.dat, botinfo, bot.owner) 
     if (%bot.owner = $null) { echo 4*** WARNING: There is no bot admin set.  Please fix this now. 
-    set %bot.owner $?="Please enter the bot admin's IRC nick" |  writeini system.dat botinfo bot.owner %bot.owner }
-    else { echo 12*** The bot admin list is currently set to:4 %bot.owner 12***  |  
-
-      var %value 1 | var %number.of.owners $numtok(%bot.owner, 46)
-      while (%value <= %number.of.owners) {
-        set %name.of.owner $gettok(%bot.owner,%value,46) 
-        if (%value = 1) { .auser 100 %name.of.owner }
-        if (%value > 1) {  .auser 50 %name.of.owner }
-        inc %value 1
-      }
-      unset %name.of.owner
+    set %bot.owner $?="Please enter the bot admin's IRC nick" |  writeini system.dat botinfo bot.owner %bot.owner | .auser 100 %bot.owner }
+    else { echo 12*** The bot admin list is currently set to:4 %bot.owner 12*** 
     }
 
     set %battlechan $readini(system.dat, botinfo, questchan) 
@@ -103,7 +94,7 @@ on 1:START: {
     echo 12*** OK.  Your password has been set to4 %botpass  -- Don't forget to register the bot with nickserv.
 
     set %first.run false
-    .auser 50 %bot.owner
+    .auser 100 %bot.owner
 
     $system_defaults_check
 
