@@ -116,7 +116,7 @@ on 1:CONNECT: {
 
   ; Join the channel
   /.timerJoin 1 2 join %battlechan
-  /.timerCheckForExistingBattle 1 3 /control.battlecheck
+  /.timerCheckForExistingBattle 1 5 /control.battlecheck
 
   ; Get rid of a ghost, if necessary, and send password
   var %bot.pass $readini(system.dat, botinfo, botpass)
@@ -143,6 +143,7 @@ on 1:DISCONNECT:{
   .timerBattleStart off
   .timerBattleNext off
   .timerBattleBegin off
+  .flush 1 | .flush 3 | .flush 50
 }
 
 on 2:TEXT:!bot admin*:*: {  $bot.admin(list) }
