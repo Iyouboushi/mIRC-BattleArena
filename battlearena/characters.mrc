@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/24/15
+;;;; Last updated: 02/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -97,8 +97,11 @@ on 1:TEXT:!new char*:*: {  $checkscript($2-)
   }
 
   ; Give 10 starting login points
-  writeini $char($1) stuff LoginPoints 10
-  writeini $char($1) info lastloginpoint $ctime 
+  writeini $char($nick) stuff LoginPoints 10
+  writeini $char($nick) info lastloginpoint $ctime 
+
+  ; Perform a fulls on the new person
+  $fulls($nick)
 
   unset %ip.address. [ $+ [ $nick ] ] 
   unset %current.shoplevel |  unset %totalplayers | unset %password
