@@ -1310,7 +1310,7 @@ alias generate_battle_order {
       if (%holy.aura.turn = %current.turn) { unset %holy.aura.turn | $holy_aura_end }
     }
 
-    if ($calc(%darkness.turns - %current.turn) = 5) { $battle_rage_warning }
+    if (($calc(%darkness.turns - %current.turn) <= 5) && (%darkness.fivemin.warn != true)) { $battle_rage_warning }
   }
   if (%darkness.fivemin.warn = true) { 
     ; Check for darkness
