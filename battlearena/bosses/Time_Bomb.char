@@ -1,9 +1,9 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 300, $round($calc(3000 + (5 * $return_differenceof($return_playerlevelstotal,300))),0), $round($calc(3000 + $return_playerlevelstotal),0))
+Hp=$round($calc(1000 + (300 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
 Tp=99999
 Str=175
 Def=126
-Int=353
+Int=253
 Spd=160
 IgnitionGauge=2
 Name=The Time Bomb
@@ -12,10 +12,10 @@ Name=The Time Bomb
 [Battle]
 Hp=1300
 Tp=920
-Str=12
-Def=15
-Int=17
-Spd=15
+Str=175
+Def=126
+Int=253
+Spd=160
 IgnitionGauge=2
 Status=alive
 
@@ -56,7 +56,7 @@ Created=N/a
 CanTaunt=false
 ai_type=$iif(%current.turn <= 5 || %current.turn = $null, defender, techonly)
 Streak=-1000
-Bosslevel=27
+Bosslevel=20
 
 [Monster]
 Type=bomb
@@ -136,7 +136,7 @@ Spear=100
 Scythe=100
 Glyph=1200
 stave=120
-GreatSword=100
+GreatSword=120
 Bow=100
 Rainstorm=1
 AsuranFists=1
