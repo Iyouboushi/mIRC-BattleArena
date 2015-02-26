@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/22/15
+;;;; Last updated: 02/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -187,6 +187,10 @@ alias uses_item {
 
     ; Set a flag for portal battles
     set %previous.battle.type portal
+
+    ; check for custom darkness turns
+    var %custom.darkness.turns $readini($dbfile(items.db), $2, DarknessTurns)
+    if (%custom.darkness.turns != $null) { set %darkness.turns %custom.darkness.turns }
 
     if ($readini(system.dat, system, botType) = DCCchat) {  
       $battlelist(public) 

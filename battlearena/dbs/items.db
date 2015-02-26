@@ -2456,6 +2456,7 @@ Desc=travels to Waughroon Shrine and takes out the bomb shard.  After placing it
 AlliedNotes=200
 Exclusive=yes
 PortalLevel=30
+DarknessTurns=6
 
 [ArmosMedallian]
 type=portal
