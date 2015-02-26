@@ -56,7 +56,7 @@ Created=N/a
 CanTaunt=false
 ai_type=$iif(%current.turn <= 5 || %current.turn = $null, defender, techonly)
 Streak=-1000
-Bosslevel=120
+Bosslevel=27
 
 [Monster]
 Type=bomb
