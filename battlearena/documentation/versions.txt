@@ -1151,6 +1151,7 @@ Battle Arena Bot VERSIONS
 - Added influence to monsters and allied forces. This is only used to determine when the new battle types occur.
 - Added the Spirit of the Hero buff. If players enter a streak that is too far out of their level range the bot will
   automatically adjust their level and hp at the cost of their orb reward at the end of the battle.
+- Added the ability for portal items to have their own custom darkness turn amount. In the item put DarknessTurns=#
 - Changed the !augment commands to work in private or channel. 
 - Changed the !augment list command to allow for more augments to be shown if more than 30 weapons have augments.
 - Changed the portal battles so that they have a level cap. Any player that is above the cap will be lowered to the cap.
