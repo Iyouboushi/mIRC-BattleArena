@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/24/15
+;;;; Last updated: 02/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,7 +41,6 @@ system_defaults_check {
     if ($readini(system.dat, system, automatedbattlesystem) = $null) { writeini system.dat system automatedbattlesystem on } 
     if ($readini(system.dat, system, TimeBetweenBattles) = $null) { writeini system.dat system TimeBetweenBattles 2 } 
     if ($readini(system.dat, system, TimeBetweenSave) = $null) { writeini system.dat system TimeBetweenSave 3600 } 
-
     if ($readini(system.dat, system, automatedaibattlecasino) = $null) { writeini system.dat system automatedaibattlecasino off } 
     if ($readini(system.dat, system, aisystem) = $null) { writeini system.dat system aisystem on } 
     if ($readini(system.dat, system, showCustomBattleMessages) = $null) { writeini system.dat system showCustomBattleMessages true  } 
@@ -72,7 +71,6 @@ system_defaults_check {
     if ($readini(system.dat, system, EmptyRoundsBeforeStreakReset) = $null) { writeini system.dat system EmptyRoundsBeforeStreakReset 10 }
     if ($readini(system.dat, system, ChestTime) = $null) { writeini system.dat system ChestTime 45 }
     if ($readini(system.dat, system, RedChestBase) = $null) { writeini system.dat system RedChestBase $eval($rand(150,700),0) }
-
     if ($readini(system.dat, system, MimicChance) = $null) { writeini system.dat system MimicChance 10 }
     if ($readini(system.dat, system, AllowMechs) = $null) { writeini system.dat system AllowMechs true }
     if ($readini(system.dat, system, PhantomBetters) = $null) { writeini system.dat system PhantomBetters 13 }
@@ -84,7 +82,6 @@ system_defaults_check {
     if ($readini(system.dat, system, PlayersMustDieMode) = $null) { writeini system.dat system PlayersMustDieMode false }
     if ($readini(system.dat, system, WheelGameCost) = $null) { writeini system.dat system WheelGameCost 500 }
     if ($readini(system.dat, system, WheelGameTime) = $null) { writeini system.dat system WheelGameTime 43200 }
-
     if ($readini(system.dat, system, TwitchDelayTime) = $null) { writeini system.dat system TwitchDelayTime 2 }
     if ($readini(system.dat, system, ShowDeleteEcho) = $null) { writeini system.dat system ShowDeleteEcho false }
 
