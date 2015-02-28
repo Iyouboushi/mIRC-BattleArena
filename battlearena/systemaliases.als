@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/26/15
+;;;; Last updated: 02/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -39,7 +39,7 @@ system_defaults_check {
     if ($readini(system.dat, system, AllowColors) = $null) { writeini system.dat system AllowColors true }
     if ($readini(system.dat, system, AllowBold) = $null) { writeini system.dat system AllowBold true }
     if ($readini(system.dat, system, automatedbattlesystem) = $null) { writeini system.dat system automatedbattlesystem on } 
-    if ($readini(system.dat, system, TimeBetweenBattles) = $null) { writeini system.dat system TimeBetweenBattles 2 } 
+    if ($readini(system.dat, system, TimeBetweenBattles) = $null) { writeini system.dat system TimeBetweenBattles 120 } 
     if ($readini(system.dat, system, TimeBetweenSave) = $null) { writeini system.dat system TimeBetweenSave 3600 } 
     if ($readini(system.dat, system, automatedaibattlecasino) = $null) { writeini system.dat system automatedaibattlecasino off } 
     if ($readini(system.dat, system, aisystem) = $null) { writeini system.dat system aisystem on } 
@@ -217,6 +217,7 @@ system_defaults_check {
   ; Check to see if the aliases are loaded (except this one as it'd cause a loop)
   /.load -a characters.als
   /.load -a battlealiases.als
+  /.load -a  battleformulas.als
   /.load -a bossaliases.als
   /.load -a scoreboard.als
 
@@ -311,8 +312,8 @@ system.start.newbattle {
   if ($readini(system.dat, system, automatedbattlesystem) = off) { return }
 
   var %time.between.battles $readini(system.dat, System, TimeBetweenBattles)
-  if (%time.between.battles = $null) { var %time.between.battles 3 }
-  set %newbattle.time $calc(%time.between.battles * 60)
+  if (%time.between.battles = $null) { var %time.between.battles 120 }
+  var %newbattle.time %time.between.battles
 
   var %president.enabled $readini(system.dat, system, EnablePresidentKidnapping)
   if (%president.enabled = $null) { var %president.enabled true }

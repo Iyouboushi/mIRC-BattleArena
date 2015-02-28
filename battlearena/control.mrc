@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 02/25/15
+;;;; Last updated: 02/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | echo -a 4,1Location: %debug.location | halt
@@ -262,7 +262,6 @@ on 50:TEXT:!toggle battle throttle*:*:{
   }
 }
 
-
 ; Bot Admins can toggle the bonus event flag.  Bonus Events = double the currency at the end of battle.
 on 50:TEXT:!toggle bonus event*:*:{   
   if ($readini(system.dat, system, BonusEvent) = false) { 
@@ -312,11 +311,15 @@ on 50:TEXT:!toggle automated ai battle*:*:{
   }
 }
 
+; Bot admins can set a chance of mimics appearing
+; !mimic chance #  (where # is 1-100)
 ON 50:TEXT:!mimic chance*:*: {
   if ($3 !isnum 1-100) { $display.private.message(4Invalid chance number. Valid numbers are 1-100) | halt }
   writeini system.dat system MimicChance $3 | $display.private.message(3Mimic chance set to: $3 percent)
 }
 
+; Bot admins can clear the portal usage of a player
+; !clear portal usage playername
 ON 50:TEXT:!clear portal usage *:*: {
   $checkchar($4)
   writeini $char($4) info PortalsUsedTotal 0
@@ -334,7 +337,6 @@ on 50:TEXT:!set streak*:*:{
 }
 
 ; Bot admins can toggle the AI system on/off.
-
 on 50:TEXT:!toggle ai system*:*:{   
   if ($readini(system.dat, system, aisystem) = off) { 
     writeini system.dat system aisystem on
@@ -387,7 +389,6 @@ on 50:TEXT:!leveladjust*:*:{
 ; Bot owners can change the time between battles.
 on 50:TEXT:!time between battles *:*:{  
   writeini system.dat System TimeBetweenBattles $4
-  var %timebetween.time $calc($4 * 60)
   $display.message($readini(translation.dat, System, ChangeTime), global)
 }
 
