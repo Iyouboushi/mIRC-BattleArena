@@ -3460,85 +3460,6 @@ calculate_attack_leveldiff {
   }
 
 }
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Caps damage
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-cap.damage {
-  ; $1 = attacker
-  ; $2 = defender
-  ; $3 = tech, melee, etc
-
-  if (($readini(system.dat, system, IgnoreDmgCap) = true) || ($readini($char($2), info, IgnoreDmgCap) = true)) { return }
-
-  if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-    if ($3 = melee) { var %damage.threshold 10000 }
-    if ($3 = tech) { var %damage.threshold 38000 }
-
-    if ($readini(system.dat, system, PlayersMustDieMode) = true)  { dec %damage.threshold 3000 }
-
-    var %attacker.level $get.level($1)
-    var %defender.level $get.level($2)
-    var %level.difference $calc(%attacker.level - %defender.level)
-    if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.5),0)  }
-
-    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * .05),0)  }
-    if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * .07),0)  }
-    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 1),0)  } 
-    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  } 
-
-    if (%damage.threshold <= 0) { var %damage.threshold 10 }
-
-    if (%attack.damage > %damage.threshold) {
-      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 100)  | set %capamount 50000 }
-      if ($person_in_mech($1) = true) { set %temp.damage $calc(%attack.damage / 90) | set %capamount 70000 }
-      set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
-
-      if (%attack.damage >= %capamount) { 
-        if ($person_in_mech($1) = false) {  inc %attack.damage $round($calc(%attack.damage * 0.01),0) }
-        if ($person_in_mech($1) = true) { inc %attack.damage $round($calc(%attack.damage * 0.05),0) }
-      }
-
-      unset %temp.damage | unset %capamount
-
-    }
-  }
-
-  if ($readini($char($1), info, flag) = monster) {
-    if (%battle.rage.darkness = on) { return }
-
-    if ($3 = melee) { var %damage.threshold 4000 }
-    if ($3 = tech) { var %damage.threshold 5000 }
-
-    if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %damage.threshold 7000 }
-
-    set %attacker.level $get.level($1)
-    set %defender.level $get.level($2)
-
-    var %level.difference $calc(%attacker.level - %defender.level)
-
-    if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.1),0)  }
-    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  }
-    if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * 2),0)  }
-    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 3),0)  } 
-    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 3.5),0)  } 
-    if (%damage.threshold <= 0) { var %damage.threshold 10 }
-
-    if (%attack.damage > %damage.threshold) {
-      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 85)  | set %capamount 3000 }
-      if ($person_in_mech($1) = true) { set %temp.damage $calc(%attack.damage / 60) | set %capamount 70000 }
-      set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
-
-      if (%attack.damage >= %capamount) { 
-        if ($person_in_mech($1) = false) {  inc %attack.damage $round($calc(%attack.damage * 0.04),0) }
-        if ($person_in_mech($1) = true) { inc %attack.damage $round($calc(%attack.damage * 0.08),0) }
-      }
-
-    }
-  }
-
-}
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Boost a Demon Wall's
 ; attack based on the current
@@ -4383,7 +4304,7 @@ reflect.check {
   else { return } 
 }
 
-invincible.check {
+invincible.status.check {
   if ($readini($char($1), status, invincible) = yes) { 
     set %invincible.timer $readini($char($1), status, invincible.timer)  
 

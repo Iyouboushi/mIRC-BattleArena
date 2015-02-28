@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/24/15
+;;;; Last updated: 02/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -763,7 +763,7 @@ alias battle.getmonsters {
       if (%battle.type != manual) { 
         if (%winning.streak >= 101) { 
           if (%demonwall.fight != on) {
-            set %number.of.monsters.needed $round($calc(%number.of.players / 2),0)
+            set %number.of.monsters.needed $round($calc($return_playersinbattle / 2),0)
             if (%number.of.monsters.needed = $null) { set %number.of.monsters.needed 2 }
 
             if (%boss.type = bandits) { set %number.of.monsters.needed 0 }
@@ -835,7 +835,6 @@ alias generate_monster {
 
       var %boss.item $readini($dbfile(drops.db), drops, %monster.name)
       if (%boss.item = $null) {  var %boss.item $readini($char(%monster.name), stuff, drops) }
-
 
       if (%boss.item != $null) { 
         var %temp.drops.list $readini($txtfile(battle2.txt), battle, bonusitem)
@@ -2273,7 +2272,7 @@ alias turn.statuscheck {
   $staggered_check($1) | $intimidated_check($1) | $blind_check($1) | $curse_check($1) | unset %hp.percent  | $stopped_check($1) | $charm_check($1) | $confuse_check($1) | $amnesia_check($1) | $paralysis_check($1)
   $drunk_check($1) | $slowed_check($1) | $asleep_check($1) | $stunned_check($1) | $defensedown_check($1) | $strengthdown_check($1) | $intdown_check($1) | $defenseup_check($1) | $ethereal_check($1) 
   $cocoon_check($1) | $weapon_locked($1) | $petrified_check($1)  | $bored_check($1) | $reflect.check($1)
-  $invincible.check($1) 
+  $invincible.status.check($1) 
 
   $regenerating_check($1) | $TPregenerating_check($1) | $boosted_check($1)  | $revive_check($1)
   $protect_check($1) | $shell_check($1) | $bar_check($1) | $enspell_check($1)
