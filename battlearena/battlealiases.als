@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/26/15
+;;;; Last updated: 02/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -73,7 +73,7 @@ return_playerlevelstotal {
 ; Returns # of players in battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return_playersinbattle {
-  var %total.playersinbattle $readini($txtfile(battle2.txt), BattleInfo, Players))
+  var %total.playersinbattle $readini($txtfile(battle2.txt), BattleInfo, Players)
   if (%total.playersinbattle = $null) { return 0 }
   else { return %total.playersinbattle }
 }
@@ -82,7 +82,7 @@ return_playersinbattle {
 ; Returns # of monsters in battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return_monstersinbattle {
-  var %total.monsinbattle $readini($txtfile(battle2.txt), BattleInfo, Monsters))
+  var %total.monsinbattle $readini($txtfile(battle2.txt), BattleInfo, Monsters)
   if (%total.monsinbattle = $null) { return 0 }
   else { return %total.monsinbattle }
 }

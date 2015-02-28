@@ -1731,7 +1731,7 @@ items.list {
   var %value 1 | var %items.lines $lines($lstfile(items_potioningredient.lst))
 
   while (%value <= %items.lines) {
-    set %item.name $read -l $+ %value $lstfile(items_potioningredient.lst))
+    set %item.name $read -l $+ %value $lstfile(items_potioningredient.lst)
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
