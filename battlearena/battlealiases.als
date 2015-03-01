@@ -3740,6 +3740,9 @@ modifer_adjust {
   }
   unset %elements
 
+  ; Check for augment to cut elemental damage down
+  if ($augment.check($1, EnhanceElementalDefense) = true) { dec %modifier.adjust.value $calc(%augment.strength * 10) } 
+
   ; Turn it into a deciminal
   var %modifier.adjust.value $calc(%modifier.adjust.value / 100) 
 
