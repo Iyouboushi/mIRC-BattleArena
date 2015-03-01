@@ -241,6 +241,11 @@ generate_monster_warmachine {
 ; an elder dragon boss
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate_elderdragon {
+  var %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
+  if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+  if (%current.battlestreak >= 200) { set %current.battlestreak 200 }
+  if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
+
   var %surname The Fierce.The Destroyer.The Evil.The Berserk.The Chaos.Bloodspawn.Bloodtear.Bloodfang.The Fierce
 
   set %names.lines $lines($lstfile(dragonnames.lst))
@@ -256,12 +261,6 @@ generate_elderdragon {
   if (%battle.type != ai) {
     $display.message($readini(translation.dat, events, ElderDragonFight),battle) 
   }
-
-  set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
-  if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak > 200) { set %current.battlstreak 200 }
-  if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
-
 
   var %monster.name %first.name
   .copy -o $char(new_chr) $char(%first.name)
