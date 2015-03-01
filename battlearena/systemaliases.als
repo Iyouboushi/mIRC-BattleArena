@@ -1944,20 +1944,17 @@ accessories.list {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 runes.list {
   ; CHECKING RUNES
-  unset %runes.list
-  var %runes.items $readini($dbfile(items.db), items, Runes)
-  var %number.of.items $numtok(%runes.items, 46)
+  var %value 1 | var %items.lines $lines($lstfile(items_runes.lst))
 
-  var %value 1
-  while (%value <= %number.of.items) {
-    set %item.name $gettok(%runes.items, %value, 46)
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_runes.lst)
     set %item_amount $readini($char($1), item_amount, %item.name)
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      ; add the item and the amount to the item list
-      var %item_to_add %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) 
-      %runes.list = $addtok(%runes.list,%item_to_add,46)
-    }
+    %runes.list = $addtok(%runes.list, 7 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+
+    unset %item.name | unset %item_amount
     inc %value 1 
   }
 
