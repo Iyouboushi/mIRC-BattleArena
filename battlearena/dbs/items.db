@@ -2390,6 +2390,13 @@ SellPrice=200
 Augment=EnhanceAggressor
 Desc=This rune will infuse a weapon with the ability to enhance the skill "Aggressor" while the augmented weapon is equipped when using the skill. 
 
+[EleRune]
+type=rune
+Cost=500
+SellPrice=200
+Augment=EnhanceElementalDefense
+Desc=This rune will infuse a weapon with the ability to help enhance the user's elemental defense while the augmented weapon is equipped when hit by an elemental attack.
+
 
 ========================
 Portal Items
