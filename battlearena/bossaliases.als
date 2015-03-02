@@ -265,6 +265,8 @@ generate_elderdragon {
   var %monster.name %first.name
   .copy -o $char(new_chr) $char(%first.name)
 
+  var %boss.level $calc(%current.battlestreak - $rand(1,3))
+
   if (%battle.type = ai) { set %ai.monster.name %elderdragon.name | writeini $txtfile(1vs1bet.txt) money monsterfile %first.name }
 
   writeini $char(%monster.name) info flag monster 
@@ -272,25 +274,25 @@ generate_elderdragon {
   writeini $char(%monster.name) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
   writeini $char(%monster.name) info gender its
   writeini $char(%monster.name) info gender2 its
-  writeini $char(%monster.name) info bosslevel $calc(%current.battlestreak + $rand(1,3))
+  writeini $char(%monster.name) info bosslevel %boss.level
   writeini $char(%monster.name) info OrbBonus yes 
   writeini $char(%monster.name) descriptions char is a large and powerful Elder Dragon, recently awoken from its long slumber in the earth.
   writeini $char(%monster.name) monster type dragon
   writeini $char(%monster.name) info CanTaunt false
 
-  var %base.hp.tp $calc(7 * %current.battlestreak)
+  var %base.hp.tp $round($calc(2.5 * %current.battlestreak),0)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
 
-  writeini $char(%monster.name) basestats str $rand(200,300)
-  writeini $char(%monster.name) basestats def $rand(50,100)
-  writeini $char(%monster.name) basestats int $rand(100,200)
-  writeini $char(%monster.name) basestats spd $rand(10,50)
+  writeini $char(%monster.name) battle str $rand(19,25)
+  writeini $char(%monster.name) battle def $rand(15,20)
+  writeini $char(%monster.name) battle int $rand(12,19)
+  writeini $char(%monster.name) battle spd $rand(18,30)
 
   writeini $char(%monster.name) techniques FangRush %current.battlestreak
-  writeini $char(%monster.name) techniques SpikeFlail $calc(%current.battlestreak + 10)
+  writeini $char(%monster.name) techniques SpikeFlail $calc(%current.battlestreak + 1)
   writeini $char(%monster.name) techniques AbsoluteTerror %current.battlestreak
-  writeini $char(%monster.name) techniques DragonFire $calc(%current.battlestreak + 50) 
+  writeini $char(%monster.name) techniques DragonFire $calc(%current.battlestreak + 5) 
 
   writeini $char(%monster.name) weapons equipped DragonFangs
   writeini $char(%monster.name) weapons DragonFangs %current.battlestreak
@@ -324,14 +326,8 @@ generate_elderdragon {
   writeini $char(%monster.name) modifiers earth 100
 
   writeini $char(%monster.name) NaturalArmor Name Dragon Scales
-  if (%battle.type != ai) {
-    writeini $char(%monster.name) NaturalArmor Max $calc(%current.battlestreak * 5)
-    writeini $char(%monster.name) NaturalArmor Current $calc(%current.battlestreak * 5)
-  }
-  if (%battle.type = ai) {
-    writeini $char(%monster.name) NaturalArmor Max %current.battlestreak
-    writeini $char(%monster.name) NaturalArmor Current %current.battlestreak
-  }
+  writeini $char(%monster.name) NaturalArmor Max %current.battlestreak
+  writeini $char(%monster.name) NaturalArmor Current %current.battlestreak
 
   var %numberof.weaknesses 1
 
@@ -369,21 +365,27 @@ generate_elderdragon {
   unset %weakness | unset %weakness.number
   unset %number.of.magic.types | unset %magic.types
 
-  writeini $char(%monster.name) modifiers HandToHand 20
-  writeini $char(%monster.name) modifiers Whip 20
+  writeini $char(%monster.name) modifiers HandToHand 40
+  writeini $char(%monster.name) modifiers Whip 40
   writeini $char(%monster.name) modifiers sword 60
-  writeini $char(%monster.name) modifiers gun 20
-  writeini $char(%monster.name) modifiers rifle 30
+  writeini $char(%monster.name) modifiers gun 40
+  writeini $char(%monster.name) modifiers rifle 40
   writeini $char(%monster.name) modifiers katana 60
-  writeini $char(%monster.name) modifiers wand 10
+  writeini $char(%monster.name) modifiers wand 20
   writeini $char(%monster.name) modifiers spear 70
   writeini $char(%monster.name) modifiers scythe 70
   writeini $char(%monster.name) modifiers GreatSword 70
-  writeini $char(%monster.name) modifiers bow 10
+  writeini $char(%monster.name) modifiers bow 20
   writeini $char(%monster.name) modifiers glyph 60
 
+  $levelsync(%monster.name, %boss.level))
+  writeini $char(%monster.name) basestats str $readini($char(%monster.name), battle, str)
+  writeini $char(%monster.name) basestats def $readini($char(%monster.name), battle, def)
+  writeini $char(%monster.name) basestats int $readini($char(%monster.name), battle, int)
+  writeini $char(%monster.name) basestats spd $readini($char(%monster.name), battle, spd)
   $fulls(%monster.name, elderdragon) 
-  $boost_monster_stats(%monster.name, elderdragon)
+
+  $boost_monster_hp(%monster.name, elderdragon, %boss.level)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name)
