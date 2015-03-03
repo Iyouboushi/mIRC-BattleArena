@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 02/18/15
+;;;; Last updated: 03/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -194,17 +194,17 @@ alias shop.accessories {
     if ($readini($dbfile(items.db), $3, type) = $null) { $display.private.message(4Error: Invalid accessory.) | halt }
 
     ; Does the player have it?
-    var %player.items $readini($char($1), Item_Amount, $3)
-    if (%player.items = $null) { $display.private.message($readini(translation.dat, errors, DoNotHaveAccessoryToSell)) | halt }
+    var %player.items $item.amount($1, $3)
+    if (%player.items = 0) { $display.private.message($readini(translation.dat, errors, DoNotHaveAccessoryToSell)) | halt }
     if (%player.items < $4) { $display.private.message($readini(translation.dat, errors, DoNotHaveEnoughItemToSell)) | halt }
 
     var %equipped.accessory $readini($char($1), equipment, accessory)
     if (%equipped.accessory = $3) {
       if (%player.items = 1) { $display.private.message($readini(translation.dat, errors, StillWearingAccessory)) | halt }
     }
+
     ; If so, decrease the amount
-    dec %player.items $4
-    writeini $char($1) item_amount $3 %player.items
+    writeini $char($1) item_amount $3 $calc($item.amount($1,$3) - $4)
 
     var %total.price $readini($dbfile(items.db), $3, sellPrice)
 
@@ -237,8 +237,8 @@ alias shop.armor {
     if ($readini($dbfile(equipment.db), $3, EquipLocation) = $null) { $display.private.message(4Error: Invalid armor piece.) | halt }
 
     ; Does the player have it?
-    var %player.items $readini($char($1), Item_Amount, $3)
-    if (%player.items = $null) { $display.private.message($readini(translation.dat, errors, DoNotHaveArmorToSell)) | halt }
+    var %player.items $item.amount($1, $3)
+    if (%player.items = 0) { $display.private.message($readini(translation.dat, errors, DoNotHaveArmorToSell)) | halt }
     if (%player.items < $4) { $display.private.message($readini(translation.dat, errors, DoNotHaveEnoughItemToSell)) | halt }
 
     set %armor.equip.slot $readini($dbfile(equipment.db), $3, EquipLocation)
@@ -251,8 +251,7 @@ alias shop.armor {
     unset %armor.equip.slot | unset %equipped.armor 
 
     ; If so, decrease the amount
-    dec %player.items $4
-    writeini $char($1) item_amount $3 %player.items
+    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) - $4)
 
     var %total.price $readini($dbfile(equipment.db), $3, sellPrice)
 
@@ -483,7 +482,7 @@ alias shop.items {
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
       set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
 
-      if (($readini($char($1), item_amount, %item.name) = $null) || ($readini($char($1), item_amount, %item.name) <= 0)) {
+      if ($item.amount($1, %item.name) = 0) { 
 
         if (%item.price > 0) {  
           if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
@@ -561,9 +560,7 @@ alias shop.items {
     if ((%conquest.item = true) && (%conquest.status != players)) { $display.private.message(4You cannot buy this item because monsters are in control of the conquest region it comes from! Players must be in control of the conquest in order to purchase this.) | halt }
 
     ; if so, increase the amount and add the item
-    var %player.items $readini($char($1), Item_Amount, $3)
-    inc %player.items $4
-    writeini $char($1) Item_Amount $3 %player.items
+    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + $4)
 
     ; decrease amount of orbs you have.
     dec %player.redorbs %total.price
@@ -579,8 +576,8 @@ alias shop.items {
     if (($3 = BasicMechCore) || ($3 = BasicMechGun)) { $display.private.message(4Error: You cannot sell this item.) | halt }
 
     ; Does the player have it?
-    var %player.items $readini($char($1), Item_Amount, $3)
-    if (%player.items = $null) { $display.private.message(4Error: You do not have this item to sell!) | halt }
+    var %player.items $item.amount($1, $3)
+    if (%player.items = 0) { $display.private.message(4Error: You do not have this item to sell!) | halt }
     if (%player.items < $4) { $display.private.message(4Error: You do not have $4 of this item to sell!) | halt }
 
 
@@ -598,8 +595,7 @@ alias shop.items {
     }
 
     ; If so, decrease the amount
-    dec %player.items $4
-    writeini $char($1) item_amount $3 %player.items
+    writeini $char($1) item_amount $3 $calc($item.amount($1,$3) - $4)
 
     if (%total.price > 50000) { %total.price = 50000 }
     if (%total.price <= 0) { %total.price = 1 }
@@ -1493,8 +1489,6 @@ alias shop.shields {
 }
 
 
-
-
 alias add.upgradelist {
   % [ $+ upgrade.list $+ [ $1 ] ] = $addtok(% [ $+ upgrade.list $+ [ $1 ] ] , $+ $2 $+ +1 ( $+ $3 $+ ),46)
 }
@@ -1705,10 +1699,9 @@ alias shop.mechitems {
     dec %player.currency %total.price
     writeini $char($1) stuff AlliedNotes %player.currency
 
-    var %item.amount $readini($char($1), item_amount, $3)
-    if (%item.amount = $null) { var %item.amount 0 }
-    inc %item.amount $4
-    writeini $char($1) item_amount $3 %item.amount
+    ; Increase the item amount
+    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + $4) 
+
     $display.private.message(3The crazy engineer with the wild beard and thick goggles laughs and takes your your %total.price Allied Notes and gives you 1 $3 $+ !)
     unset %shop.list | unset %currency | unset %player.currency | unset %total.price
     halt
