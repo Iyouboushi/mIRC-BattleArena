@@ -1819,10 +1819,7 @@ alias shop.portal {
     if (%player.currency < %total.price) {  $display.private.message(4You do not have enough %currency $+ s to purchase $4 of this item!) | unset %currency | unset %player.currency | unset %total.price |  halt }
     dec %player.currency %total.price
     writeini $char($1) item_amount %currency %player.currency
-    var %item.amount $readini($char($1), item_amount, $3)
-    if (%item.amount = $null) { var %item.amount 0 }
-    inc %item.amount $4
-    writeini $char($1) item_amount $3 %item.amount
+    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + $4) 
     $display.private.message(3A strange merchant by the name of Shami takes %total.price %currency $+ s and trades it for $4 $3 $+ $iif($4 < 2 , ,s) $+ !  "Thank you for your patronage. (heh heh heh, sucker)")
     unset %shop.list | unset %currency | unset %player.currency | unset %total.price
     halt
@@ -1946,18 +1943,13 @@ alias shop.alchemy {
     if (%player.currency < %total.price) {  $display.private.message(4You do not have enough Allied Notes to purchase $4 of this item!) | unset %currency | unset %player.currency | unset %total.price |  halt }
     dec %player.currency %total.price
     writeini $char($1) stuff AlliedNotes %player.currency
-
-    var %item.amount $readini($char($1), item_amount, $3)
-    if (%item.amount = $null) { var %item.amount 0 }
-    inc %item.amount $4
-    writeini $char($1) item_amount $3 %item.amount
+    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + $4) 
     $display.private.message(3A merchant of the Allied Forces takes your %total.price Allied Notes and gives you $4 $3 $+ $iif($4 < 2, , s) $+ !)
     unset %shop.list | unset %currency | unset %player.currency | unset %total.price
     halt
   }
 
 }
-
 
 alias shop.orbs {
   if ($2 = list) { $display.private.message(2You can exchange 1 black orb for 500 $readini(system.dat, system, currency) $+ .  To do so use the command: !shop buy orbs)  }
@@ -2015,9 +2007,9 @@ alias shop.potioneffects {
       var %beetle.jaws.needed 10
       var %milk.needed 1
 
-      if ($readini($char($1), item_amount, beetleshell) != $null) {  dec %beetle.shells.needed $readini($char($1), item_amount, beetleshell) }
-      if ($readini($char($1), item_amount, beetlejaw) != $null) {  dec %beetle.jaws.needed $readini($char($1), item_amount, beetlejaw) }
-      if ($readini($char($1), item_amount, milk) != $null) { dec %milk.needed $readini($char($1), item_amount, milk) }
+      dec %beetle.shells.needed $item.amount($1, BeetleShell)
+      dec %beetle.jaws.needed $item.amount($1, BeetleJaw)
+      dec %milk.needed $item.amount($1, Milk)
 
       if (((%beetle.shells.needed > 0) || (%beetle.jaws.needed > 0) || (%milk.needed > 0))) { 
         $display.private.message(4You do not have enough of the required materials for this potion effect.) 
@@ -2028,9 +2020,9 @@ alias shop.potioneffects {
         halt
       }
 
-      writeini $char($1) item_amount BeetleShell $calc($readini($char($1), item_amount, beetleshell) - 10)
-      writeini $char($1) item_amount BeetleJaw $calc($readini($char($1), item_amount, beetlejaw) - 10)
-      writeini $char($1) item_amount Milk $calc($readini($char($1), item_amount, milk) - 1)
+      writeini $char($1) item_amount BeetleShell $calc($item.amount($1, BeetleShell) - 10)
+      writeini $char($1) item_amount BeetleJaw $calc($item.amount($1, BeetleJaw) - 10)
+      writeini $char($1) item_amount Milk $calc($item.amount($1, Milk) - 1)
 
       writeini $char($1) status PotionEffect Orb Bonus
       $display.private.message(12 $+ %shopnpc.name takes the beetle parts and milk and creates a nasty-smelling red potion. Upon drinking it, you feel as though your next battle will result in more orbs.) 
@@ -2044,9 +2036,9 @@ alias shop.potioneffects {
       var %tulip.needed 1
       var %milk.needed 2
 
-      if ($readini($char($1), item_amount, rose) != $null) { dec %rose.needed $readini($char($1), item_amount, rose) }
-      if ($readini($char($1), item_amount, tulip) != $null) { dec %tulip.needed $readini($char($1), item_amount,tulip) }
-      if ($readini($char($1), item_amount, milk) != $null) { dec %milk.needed $readini($char($1), item_amount, milk)  }
+      dec %rose.needed $item.amount($1, Rose)
+      dec %tulip.needed $item.amount($1, Tulip)
+      dec %milk.needed $item.amount($1, Milk)
 
       if (((%rose.needed > 0) || (%tulip.needed > 0) || (%milk.needed > 0))) { 
         $display.private.message(4You do not have enough of the required materials for this potion effect.) 
@@ -2059,11 +2051,10 @@ alias shop.potioneffects {
 
       writeini $char($1) item_amount Rose $calc($readini($char($1), item_amount, rose) - 2)
       writeini $char($1) item_amount Tulip $calc($readini($char($1), item_amount, tulip) - 1)
-      writeini $char($1) item_amount Milk $calc($readini($char($1), item_amount, milk) - 2)
+      writeini $char($1) item_amount Milk $calc($item.amount($1, Milk) - 2)
 
       writeini $char($1) status PotionEffect Double Life
       $display.private.message(12 $+ %shopnpc.name takes the flowers and milk and creates a floral smelling bubbling potion. Upon drinking it, you feel as though your life in the next battle will be double.) 
-
 
       halt
     }
@@ -2074,9 +2065,9 @@ alias shop.potioneffects {
       var %greenkinstone.needed 2
       var %milk.needed 1
 
-      if ($readini($char($1), item_amount, bluekinstone) != $null) { dec %bluekinstone.needed $readini($char($1), item_amount, bluekinstone) }
-      if ($readini($char($1), item_amount, greenkinstone) != $null) { dec %greenkinstone.needed $readini($char($1), item_amount,greenkinstone) }
-      if ($readini($char($1), item_amount, milk) != $null) { dec %milk.needed $readini($char($1), item_amount, milk)  }
+      dec %bluekinstone.needed $item.amount($1, BlueKinstone) 
+      dec %greenkinstone.needed $item.amount($1, GreenKinstone)
+      dec %milk.needed $item.amount($1, Milk)  
 
       if (((%bluekinstone.needed > 0) || (%greenkinstone.needed > 0) || (%milk.needed > 0))) { 
         $display.private.message(4You do not have enough of the required materials for this potion effect.) 
@@ -2087,9 +2078,9 @@ alias shop.potioneffects {
         halt
       }
 
-      writeini $char($1) item_amount bluekinstone $calc($readini($char($1), item_amount, bluekinstone) - 2)
-      writeini $char($1) item_amount greenkinstone $calc($readini($char($1), item_amount, greenkinstone) - 2)
-      writeini $char($1) item_amount Milk $calc($readini($char($1), item_amount, milk) - 1)
+      writeini $char($1) item_amount bluekinstone $calc($item.amount($1, BlueKinstone) - 2)
+      writeini $char($1) item_amount greenkinstone $calc($item.amount($1, GreenKinstone) - 2)
+      writeini $char($1) item_amount Milk $calc($item.amount($1, Milk) - 1)
 
       writeini $char($1) status PotionEffect Bonus Spoils
       $display.private.message(12 $+ %shopnpc.name takes the kinstones and milk and gives a loud chuckle as she fuses the kinstone pieces together and drops them into the couldron. After a moment she pours the milk in and creates a glowing potion. Upon drinking it, you feel as though your luck with spoils has been enhanced) 
@@ -2103,9 +2094,9 @@ alias shop.potioneffects {
       var %gibdobandages.needed 2
       var %milk.needed 1
 
-      if ($readini($char($1), item_amount, redeadAsh) != $null) { dec %redeadashes.needed $readini($char($1), item_amount, redeadAsh) }
-      if ($readini($char($1), item_amount, gibdoBandage) != $null) { dec %gibdobandages.needed $readini($char($1), item_amount, gibdoBandage) }
-      if ($readini($char($1), item_amount, milk) != $null) { dec %milk.needed $readini($char($1), item_amount, milk)  }
+      dec %redeadashes.needed $item.amount($1, RedeadAsh)
+      dec %gibdobandages.needed $item.amount($1, GibdoBandage)
+      dec %milk.needed $item.amount($1, Milk)  
 
       if (((%redeadashes.needed > 0) || (%gibdobandages.needed > 0) || (%milk.needed > 0))) { 
         $display.private.message(4You do not have enough of the required materials for this potion effect.) 
@@ -2116,9 +2107,9 @@ alias shop.potioneffects {
         halt
       }
 
-      writeini $char($1) item_amount redeadbandage $calc($readini($char($1), item_amount, redeadAsh) - 2)
-      writeini $char($1) item_amount gibdobandage $calc($readini($char($1), item_amount, gibdoBandage) - 2)
-      writeini $char($1) item_amount Milk $calc($readini($char($1), item_amount, milk) - 1)
+      writeini $char($1) item_amount redeadbandage $calc($item.amount($1, RedeadAsh) - 2)
+      writeini $char($1) item_amount gibdobandage $calc($item.amount($1, GibdoBandage) - 2)
+      writeini $char($1) item_amount Milk $calc($item.amount($1, Milk) - 1)
 
       writeini $char($1) status PotionEffect Augment Bonus
       $display.private.message(12 $+ %shopnpc.name takes the bandages, ashes and milk and gives a loud chuckle as she drops them into the couldron. After a moment she pours the milk in and creates a rotten-smelling potion. Upon drinking it, you feel as though your augments have been enhanced) 
@@ -2139,10 +2130,8 @@ alias shop.trusts {
     while (%value <= %items.lines) {
       set %item.name $read -l $+ %value $lstfile(items_trust.lst)
       set %item.price $readini($dbfile(items.db), %item.name, cost)
-      var %player.amount.own $readini($char($1), item_amount, %item.name)
-      if (%player.amount.own = $null) { var %player.amount.own 0 }
 
-      if ((%item.price > 0) && ( %player.amount.own <= 0)) {
+      if ((%item.price > 0) && ($item.amount($1, %item.name) <= 0)) {
         if (%item.price <= $readini($char($1), stuff, loginpoints)) {  %trusts.list1 = $addtok(%trusts.list1, $+ %item.name $+ ( $+ %item.price $+ ),46) }
         else { %trusts.list1 = $addtok(%trusts.list1,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
       }
@@ -2177,18 +2166,13 @@ alias shop.trusts {
     if (%player.currency < %total.price) {  $display.private.message(4You do not have enough Login Points to purchase this NPC Trust item!) | unset %currency | unset %player.currency | unset %total.price |  halt }
     dec %player.currency %total.price
     writeini $char($1) stuff LoginPoints %player.currency
-    var %item.amount $readini($char($1), item_amount, $3)
-    if (%item.amount = $null) { var %item.amount 0 }
-    inc %item.amount 1
-    writeini $char($1) item_amount $3 %item.amount
+    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + 1) 
     $display.private.message(3A bright white light shines down upon you and when it clears you find you are holding the NPC Trust item: $3 $+ ! Use it to build a strong friendship with $readini($dbfile(items.db), $3, NPC) $+ !)
 
     unset %shop.list | unset %currency | unset %player.currency | unset %total.price
     halt
   }
 }
-
-
 
 alias inc.shoplevel {   
   var %shop.level $readini($char($1), stuff, shoplevel) 
