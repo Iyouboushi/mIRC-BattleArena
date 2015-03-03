@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/26/15
+;;;; Last updated: 03/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -38,7 +38,7 @@ on 3:TEXT:!count*:?: {
 }
 
 alias item.countcmd {
-  var %player.count.amount $readini($char($1), item_amount, $2)
+  var %player.count.amount $item.amount($1, $2)
   $set_chr_name($1) 
 
   if (($3 = public) || ($3 = $null)) { 
