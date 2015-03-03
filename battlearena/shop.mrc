@@ -1994,10 +1994,11 @@ alias shop.potioneffects {
 
   if ($2 = list) { 
     $display.private.message(2This shop is used to purchase special Potion Effects that will take effect during or after you next battle. You can only purchase one at a time.)
-    $display.private.message(12OrbBonus 2potion effect: 10 Beetle Shells2 + 10 Beetle Jaws2 + 1 Milk)
-    $display.private.message(12DoubleLife 2potion effect: 2 Roses2 + 1 Tulip2 + 2 Milk)
-    $display.private.message(12BonusSpoils 2potion effect: 2 Blue Kinstones2 + 2 Green Kinstones2 + 1 Milk)
-    $display.private.message(12AugmentBonus 2potion effect: 2 Redead Ashes2 + 2 Gibdo Bandages2 + 1 Milk)
+    $display.private.message(12OrbBonus 2potion effect: $+ $iif($item.amount($1, BeetleShell) >= 10, 3, 4) 10 Beetle Shells2 + $+ $iif($item.amount($1, BeetleJaw) >= 10, 3, 4) 10 Beetle Jaws2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)
+    $display.private.message(12DoubleLife 2potion effect: $+ $iif($item.amount($1, Rose) >= 2, 3, 4) 2 Roses2 + $+ $iif($item.amount($1, Tulip) >= 1, 3, 4) 1 Tulip2 + $+ $iif($item.amount($1, Milk) >= 2, 3, 4) 2 Milk)    
+    $display.private.message(12BonusSpoils 2potion effect: $+ $iif($item.amount($1, BlueKinstone) >= 2, 3, 4) 2 Blue Kinstones2 + $+ $iif($item.amount($1, GreenKinstone) >= 2, 3, 4) 2 Green Kinstones2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
+    $display.private.message(12AugmentBonus 2potion effect: $+ $iif($item.amount($1, RedeadAsh) >= 2, 3, 4) 2 Redead Ashes2 + $+ $iif($item.amount($1, GibdoBandage) >= 2, 3, 4) 2 Gibdo Bandages2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
+
     $display.private.message(2To purchase use !shop buy potioneffect [potion effect name]  such as !shop buy potioneffect OrbBonus)
   }
 
