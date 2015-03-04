@@ -16,7 +16,7 @@ battle.version {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 system.dat.version { 
   if ($readini(version.ver, versions, systemdat) = $null) { echo -a 4ERROR: version.ver is either missing or corrupted! | return 0 }
-  else { $readini(version.ver, versions, systemdat) } 
+  else { return $readini(version.ver, versions, systemdat) } 
 } 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
