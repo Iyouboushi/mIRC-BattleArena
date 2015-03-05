@@ -378,7 +378,7 @@ generate_elderdragon {
   writeini $char(%monster.name) modifiers bow 20
   writeini $char(%monster.name) modifiers glyph 60
 
-  $levelsync(%monster.name, %boss.level))
+  $levelsync(%monster.name, %boss.level)
   writeini $char(%monster.name) basestats str $readini($char(%monster.name), battle, str)
   writeini $char(%monster.name) basestats def $readini($char(%monster.name), battle, def)
   writeini $char(%monster.name) basestats int $readini($char(%monster.name), battle, int)
