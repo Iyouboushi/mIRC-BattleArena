@@ -507,7 +507,7 @@ BattleOpenOrbFountain=$chr(3) $+ 4 $+ The Allied Forces have detected an orb fou
 BattleOpenPVP=$chr(3) $+ 4 $+ The Allied Forces have opened the coliseum to allow players to fight one another. The PVP battle will begin in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
 BattleOpenManual=$chr(3) $+ 4 $+ A Manual battle has been started. Bot Admins will need to add monsters, npcs and bosses individually. The battle will begin in $duration(%time.to.enter) $+ . Players can type !enter if you wish to join the battle!  
 BattleOpenMimic=$chr(3) $+ 4 $+ An evil treasure chest Mimic is ready to fight The battle will begin in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
-BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone willing to brave the gauntlet has $duration(%time.to.enter) $+ to enter before the doors close. Type !enter if you wish to join the battle!  
+BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone willing to brave the gauntlet has $duration(%time.to.enter) to enter before the doors close. Type !enter if you wish to join the battle!  
 BattleDefendOutpost=$chr(3) $+ 4 $+ An outpost of the Allied Forces HQ is under attack! Reinforcements are requested immediately! The reinforcements will depart in $duration(%time.to.enter) $+ . Type !enter to join!  
 
 BattleOpenAIBet=$chr(3) $+ 4 $+ A 1 vs 1 AI Match is about to begin! The battle will begin in %time.to.enter seconds. 
