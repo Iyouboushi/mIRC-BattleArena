@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/04/15
+;;;; Last updated: 03/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2293,7 +2293,7 @@ get_maximum_streak {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 get_mon_list {
   unset %monster.list
-  if ((($1 = portal) || (%battle.type = defendoutpost) || (%battle.type = assault))) { set %nosouls true }
+  if (((($1 = portal) || (%battle.type = defendoutpost) || (%mode.gauntlet != $null) || (%battle.type = assault)))) { set %nosouls true }
 
   set %current.winning.streak.value $readini(battlestats.dat, battle, WinningStreak) 
   set %difficulty $readini($txtfile(battle2.txt), BattleInfo, Difficulty) | inc %current.winning.streak.value %difficulty

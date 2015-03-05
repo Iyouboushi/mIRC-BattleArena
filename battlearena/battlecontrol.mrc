@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/28/15
+;;;; Last updated: 03/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -370,7 +370,7 @@ alias startnormal {
       if ($return.systemsetting(showCustomBattleMessages) = true) {  $display.message($readini(translation.dat, Battle, BattleOpenOrbFountain), global) }
     }
     if (%start.battle.type = pvp) { set %mode.pvp on | $display.message($readini(translation.dat, Battle, BattleOpenPVP), global) }
-    if (%start.battle.type = gauntlet) { set %mode.gauntlet on | set %nosouls true | set %mode.gauntlet.wave 1 | $display.message($readini(translation.dat, Battle, BattleOpenGauntlet), global)  }
+    if (%start.battle.type = gauntlet) { set %battle.type monster | set %mode.gauntlet on | set %nosouls true | set %mode.gauntlet.wave 1 | $display.message($readini(translation.dat, Battle, BattleOpenGauntlet), global)  }
     if (%start.battle.type = manual) { set %battle.type manual | $display.message($readini(translation.dat, Battle, BattleOpenManual), global)  }
     if (%start.battle.type = mimic) { set %battle.type mimic | $display.message($readini(translation.dat, Battle, BattleOpenMimic), global) }
     if (%start.battle.type = defendoutpost) { set %battle.type defendoutpost 
@@ -1105,6 +1105,7 @@ alias battle_rage_warning {
   ; This alias is just used to display a warning before the darkness overcomes the battlefield.
 
   if (%battle.type = defendoutpost) { return }
+  if (%mode.gauntlet != $null) { return }
 
   if (%demonwall.fight != on) {  $display.message($readini(translation.dat, battle, DarknessWarning), battle)  }
   if (%demonwall.fight = on) { 
@@ -1347,11 +1348,15 @@ alias endbattle {
         var %gauntlet.record $readini(battlestats.dat, battle, GauntletRecord) 
         if (%gauntlet.record = $null) { var %gauntlet.record 0 }
         if (%mode.gauntlet.wave > %gauntlet.record) { writeini battlestats.dat battle GauntletRecord %mode.gauntlet.wave }
+
+        $display.message($readini(translation.dat, battle, GauntletOver), global)
+
       }
 
       if (((%portal.bonus != true) && (%battle.type != mimic) && (%savethepresident != on))) {
 
-        if (%battle.type != defendoutpost) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
+        if ((%battle.type != defendoutpost) && (%mode.gauntlet = $null)) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
+
 
         if (%mode.gauntlet = $null) {
           ; Decrease the conquest points

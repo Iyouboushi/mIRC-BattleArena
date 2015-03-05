@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/28/15
+;;;; Last updated: 03/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2755,7 +2755,7 @@ multiple_wave_check {
 
   unset %number.of.monsters.needed
 
-  if (%battle.type != defendoutpost) {  
+  if ((%battle.type != defendoutpost) && (%mode.gauntlet != on)) {  
 
     var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
     if (%winning.streak <= 0) { return }
@@ -2767,8 +2767,9 @@ multiple_wave_check {
     if (%winning.streak > 700) { var %multiple.wave.chance $rand(4,8) }
 
     var %random.wave.chance $rand(1,100)
-    if (%mode.gauntlet = on) { var %random.wave.chance 1 | inc %mode.gauntlet.wave 1 }
   }
+
+  if (%mode.gauntlet = on) { var %random.wave.chance 1 | inc %mode.gauntlet.wave 1 }
 
   if ((%battle.type = defendoutpost) && (%darkness.turns > 0)) {  var %random.wave.chance 1 | dec %darkness.turns 1 }
   if ((%battle.type = defendoutpost) && (%darkness.turns <= 0)) { $endbattle(victory) | halt }
