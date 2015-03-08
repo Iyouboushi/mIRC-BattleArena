@@ -29,3 +29,4 @@
 *.txt eol=crlf
 *.default eol=crlf
 *.char eol=crlf
+*.ini eol=crlf
