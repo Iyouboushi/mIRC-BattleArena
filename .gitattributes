@@ -20,3 +20,12 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+*.als eol=crlf
+*.dat eol=crlf
+*.mrc eol=crlf
+*.db eol=crlf
+*.lst eol=crlf
+*.txt eol=crlf
+*.default eol=crlf
+*.char eol=crlf
