@@ -20,7 +20,3 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
-*.als	 diff=astextplain
-*.mrc	 diff=astextplain
-*.db	 diff=astextplain
-*.lst	 diff=astextplain
