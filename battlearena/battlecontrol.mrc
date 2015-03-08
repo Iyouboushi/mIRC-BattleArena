@@ -960,10 +960,11 @@ alias generate_monster {
 
     if (%boss.type = bandits) {
       $display.message($readini(translation.dat, events, BanditsFight), battle)
-
-      if ($return_winningstreak >= 50) {  
-        $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
-        $portal.sync.players(50) 
+      if (%battle.type != ai) { 
+        if ($return_winningstreak >= 50) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
+          $portal.sync.players(50) 
+        }
       }
 
       $generate_bandit_leader
@@ -983,9 +984,11 @@ alias generate_monster {
     if (%boss.type = gremlins) {
       $display.message($readini(translation.dat, events, GremlinsFight), battle)
 
-      if ($return_winningstreak >= 50) {  
-        $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
-        $portal.sync.players(50) 
+      if (%battle.type != ai) { 
+        if ($return_winningstreak >= 50) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
+          $portal.sync.players(50) 
+        }
       }
 
       .copy -o $boss(Stripe) $char(Stripe) | set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat  |  $set_chr_name(stripe) 
@@ -1013,9 +1016,11 @@ alias generate_monster {
     if (%boss.type = pirates) {
       $display.message($readini(translation.dat, events, PiratesFight), battle)
 
-      if ($return_winningstreak >= 75) {  
-        $display.message($readini(translation.dat, system,BossLevelSynced75), battle)
-        $portal.sync.players(75) 
+      if (%battle.type != ai) { 
+        if ($return_winningstreak >= 75) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced75), battle)
+          $portal.sync.players(75) 
+        }
       }
 
       $generate_pirate_firstmatey
@@ -1035,9 +1040,11 @@ alias generate_monster {
     if (%boss.type = FrostLegion) {
       $display.message($readini(translation.dat, events, FrostLegionFight), battle)
 
-      if ($return_winningstreak >= 20) {  
-        $display.message($readini(translation.dat, system,BossLevelSynced20), battle)
-        $portal.sync.players(20) 
+      if (%battle.type != ai) { 
+        if ($return_winningstreak >= 20) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced20), battle)
+          $portal.sync.players(20) 
+        }
       }
 
       if ($readini(battlestats.dat, Battle, WinningStreak) >= 50) {  var %number.of.frosties.needed $rand(4,5) }
@@ -1056,10 +1063,11 @@ alias generate_monster {
 
 
     if (%boss.type = elderdragon) {
-
-      if ($return_winningstreak >= 200) {  
-        $display.message($readini(translation.dat, system,BossLevelSynced200), battle)
-        $portal.sync.players(200) 
+      if (%battle.type != ai) { 
+        if ($return_winningstreak >= 200) {  
+          $display.message($readini(translation.dat, system,BossLevelSynced200), battle)
+          $portal.sync.players(200) 
+        }
       }
 
       $generate_elderdragon
