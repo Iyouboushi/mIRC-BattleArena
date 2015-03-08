@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/05/15
+;;;; Last updated: 03/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -665,6 +665,7 @@ alias battlebegin {
   if (%battle.type = orbfountain) { set %darkness.turns 16 } 
   if (%battle.type = defendoutpost) { set %darkness.turns 5 }
 
+
   ; if battle type = assault unset darkness turns
 
   if (%mode.gauntlet = on) { unset %darkness.turns }
@@ -1106,6 +1107,7 @@ alias battle_rage_warning {
 
   if (%battle.type = defendoutpost) { return }
   if (%mode.gauntlet != $null) { return }
+  if (%darkness.turns = $null) { return }
 
   if (%demonwall.fight != on) {  $display.message($readini(translation.dat, battle, DarknessWarning), battle)  }
   if (%demonwall.fight = on) { 
