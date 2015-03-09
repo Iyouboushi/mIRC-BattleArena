@@ -361,7 +361,7 @@ alias startnormal {
       if ($return.systemsetting(showCustomBattleMessages) = true) { $display.message($readini(translation.dat, Battle, BattleOpenBoss), global) }
     }
     if (%start.battle.type = monster) { set %battle.type monster | $display.message($readini(translation.dat, Battle, BattleOpen), global) }
-    if (%start.battle.type = orbfountain) { set %battle.type orbfountain 
+    if ((%start.battle.type = orbfountain) || (%start.battle.type = orb_fountain)) { set %battle.type orbfountain 
       if ($return.systemsetting(showCustomBattleMessages) != true) { $display.message($readini(translation.dat, Battle, BattleOpen), global)  }
       if ($return.systemsetting(showCustomBattleMessages) = true) {  $display.message($readini(translation.dat, Battle, BattleOpenOrbFountain), global) }
     }
@@ -380,6 +380,10 @@ alias startnormal {
       $display.message($readini(translation.dat, Battle, BattleAssaultOpen), global) 
     }
 
+    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault
+    if ($istok(%valid.battle.types,%start.battle.type,46) = $false) {
+      $display.message(4Invalid battle type: %start.battle.type),global) | halt 
+    }
   }
 
   set %battleis on | set %battleisopen on
@@ -1369,22 +1373,22 @@ alias endbattle {
 
 
         if (%mode.gauntlet = $null) {
-          ; Decrease the conquest points
+          ;  Increase monster conquest points
           var %streak.on $readini(battlestats.dat, Battle,  WinningStreak)
-          var %conquestpoints.to.remove 0
+          var %conquestpoints 0
           var %player.levels $readini($txtfile(battle2.txt), BattleInfo, PlayerLevels)
           if (%current.turn > 1) {
-            if (%player.levels >= %streak.on) { var %conquestpoints.to.remove $round($calc(%streak.on / 1.5),0) }
-            if (%player.levels < %streak.on) { var %conquestpoints.to.remove $round($calc(%streak.on / 3),0) } 
+            if (%player.levels >= %streak.on) { var %conquestpoints $round($calc(%streak.on / 1.5),0) }
+            if (%player.levels < %streak.on) { var %conquestpoints $round($calc(%streak.on / 3),0) } 
           }
           if (%current.turn <= 1) { 
-            if (%player.levels >= %streak.on) { var %conquestpoints.to.remove $round($calc(%streak.on / 15),0) }
-            if (%player.levels < %streak.on) { var %conquestpoints.to.remove $round($calc(%streak.on / 30),0) } 
+            if (%player.levels >= %streak.on) { var %conquestpoints $round($calc(%streak.on / 15),0) }
+            if (%player.levels < %streak.on) { var %conquestpoints $round($calc(%streak.on / 30),0) } 
           }
           var %conquest.status $readini(battlestats.dat, conquest, ConquestPreviousWinner)
-          if (%conquest.status = players) { var %conquestpoints.to.remove $round($calc(%conquestpoints.to.remove * 1.25),0) }
+          if (%conquest.status = players) { var %conquestpoints $round($calc(%conquestpoints * 1.25),0) }
 
-          $conquest.points(subtract, %conquestpoints.to.remove)
+          $conquest.points(monsters, %conquestpoints)
 
           var %losing.streak $readini(battlestats.dat, battle, LosingStreak) | inc %losing.streak 1 | writeini battlestats.dat battle LosingStreak %losing.streak
           writeini battlestats.dat battle WinningStreak 0
@@ -1493,7 +1497,7 @@ alias endbattle {
       if (%conquest.status = players) { var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * .80),0) }
       if (%conquestpoints.to.add <= 1) { var %conquestpoints.to.add 1 }
 
-      $conquest.points(add, %conquestpoints.to.add)
+      $conquest.points(players, %conquestpoints.to.add)
 
       $generate_style_order
       $display.message($readini(translation.dat, battle, RewardOrbsWin), battle)

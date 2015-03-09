@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/05/15
+;;;; Last updated: 03/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -129,8 +129,21 @@ system_defaults_check {
 
     if ($readini(battlestats.dat, battle, LevelAdjust) = $null) { writeini battlestats.dat battle LevelAdjust 0 }
     if ($readini(battlestats.dat, battle, emptyRounds) = $null) { writeini battlestats.dat battle emptyRounds 0 }
+
     if ($readini(battlestats.dat, conquest, LastTally) = $null) { writeini battlestats.dat conquest LastTally $ctime }
-    if ($readini(battlestats.dat, conquest, ConquestPoints) = $null) { writeini battlestats.dat conquest ConquestPoints -1000 }
+
+    if ($readini(battlestats.dat, conquest, ConquestPointsPlayers) = $null) { 
+      var %conquest.points.old $readini(battlestats.dat, conquest, ConquestPoints)
+      if (%conquest.points.old > 0) { writeini battlestats.dat conquest ConquestPointsPlayers %conquest.points.old }
+      else { writeini battlestats.dat conquest ConquestPointsPlayers 0 }
+    }
+
+    if ($readini(battlestats.dat, conquest, ConquestPointsMonsters) = $null) { 
+      var %conquest.points.old $readini(battlestats.dat, conquest, ConquestPoints)
+      if (%conquest.points.old < 0) { writeini battlestats.dat conquest ConquestPointsMonsters $abs(%conquest.points.old) }
+      else { writeini battlestats.dat conquest ConquestPointsMonsters 1000 }
+    }
+
     if ($readini(battlestats.dat, conquest, ConquestBonus) = $null) { writeini battlestats.dat conquest ConquestBonus 0 }
     if ($readini(battlestats.dat, conquest, AlliedInfluence) = $null) { writeini battlestats.dat conquest AlliedInfluence 0 }
     if ($readini(battlestats.dat, conquest, MonsterInfluence) = $null) { writeini battlestats.dat conquest MonsterInfluence 50 }
@@ -237,6 +250,7 @@ system_defaults_check {
 
   ; Remove settings no longer needed
   if ($readini(system.dat, system, BattleDamageFormula) != $null) { remini system.dat system BattleDamageFormula }
+  if ($readini(battlestats.dat, conquest, ConquestPoints) != $null) { remini battlestats.dat conquest ConquestPoints }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3274,23 +3288,17 @@ recalc_totalbattles {
 ; Conquest Tally aliases
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 conquest.points {
-  if ($1 = add) { 
-    var %conquest.points $readini(battlestats.dat, conquest, ConquestPoints)
+  if ($1 = players) { 
+    var %conquest.points $readini(battlestats.dat, conquest, ConquestPointsPlayers)
     inc %conquest.points $2
-
     if (%conquest.points >= 6000) { var %conquest.points 6000 }
-    if (%conquest.points < -6000) { var %conquest.points -6000 }
-
-    writeini battlestats.dat conquest ConquestPoints %conquest.points
+    writeini battlestats.dat conquest ConquestPointsPlayers %conquest.points
   }
-  if ($1 = subtract) { 
-    var %conquest.points $readini(battlestats.dat, conquest, ConquestPoints)
-    dec %conquest.points $2
-
+  if ($1 = monsters) {
+    var %conquest.points $readini(battlestats.dat, conquest, ConquestPointsMonsters)
+    inc %conquest.points $2
     if (%conquest.points >= 6000) { var %conquest.points 6000 }
-    if (%conquest.points < -6000) { var %conquest.points -6000 }
-
-    writeini battlestats.dat conquest ConquestPoints %conquest.points
+    writeini battlestats.dat conquest ConquestPointsMonsters %conquest.points
   }
 }
 
@@ -3306,13 +3314,15 @@ conquest.tally {
     $display.message($readini(translation.dat, conquest, ConquestTallyTimeToTally), global) 
 
     ; Get the current conquest points
-    var %conquest.points $readini(battlestats.dat, conquest, ConquestPoints)
+    var %conquest.points.players $readini(battlestats.dat, conquest, ConquestPointsPlayers)
+    var %conquest.points.monsters $readini(battlestats.dat, conquest, ConquestPointsMonsters)
 
-    if (%conquest.points >= 0) { 
+    if (%conquest.points.players >= %conquest.points.monsters) { 
       ; Players win 
       writeini battlestats.dat conquest ConquestBonus %conquest.points
       writeini battlestats.dat conquest ConquestPreviousWinner Players
-      writeini battlestats.dat conquest ConquestPoints 1
+      writeini battlestats.dat conquest ConquestPointsPlayers 1 
+      writeini battlestats.dat conquest ConquestPointsMonsters 0
       $display.message($readini(translation.dat, conquest, ConquestTallyPlayersWin), global) 
       var %conquest.wins $readini(battlestats.dat, conquest, TotalPlayerWins)
       if (%conquest.wins = $null) { var %conquest.wins 0 }
@@ -3320,7 +3330,7 @@ conquest.tally {
       writeini battlestats.dat conquest TotalPlayerWins %conquest.wins
     }
 
-    if (%conquest.points < 0) { 
+    if (%conquest.points.players < %conquest.points.monsters) { 
       ; Monsters win
       writeini battlestats.dat conquest ConquestBonus 0 
       writeini battlestats.dat conquest ConquestPreviousWinner Monsters
@@ -3335,10 +3345,11 @@ conquest.tally {
 
 conquest.display {
   if (($2 = $null) || ($2 = info)) { 
-    var %conquest.points $readini(battlestats.dat, conquest, ConquestPoints)
+    var %conquest.points.players $readini(battlestats.dat, conquest, ConquestPointsPlayers)
+    var %conquest.points.monsters $readini(battlestats.dat, conquest, ConquestPointsMonsters)
 
-    if (%conquest.points >= 0) {  $display.message($readini(translation.dat, conquest, ConquestTallyCurrentPlayers), private) }
-    if (%conquest.points < 0) {  $display.message($readini(translation.dat, conquest, ConquestTallyCurrentMon), private) }
+    if (%conquest.points.players >= %conquest.points.monsters) {  $display.message($readini(translation.dat, conquest, ConquestTallyCurrentPlayers), private) }
+    else { $display.message($readini(translation.dat, conquest, ConquestTallyCurrentMon), private) }
 
     var %previous.conquest.winner $readini(battlestats.dat, conquest, ConquestPreviousWinner)
     if (%previous.conquest.winner = players) { $display.message($readini(translation.dat, conquest, ConquestPreviousPlayers), private) }
@@ -3353,9 +3364,9 @@ conquest.display {
   }
 
   if ($2 = points) {
-    var %conquest.points $readini(battlestats.dat, conquest, ConquestPoints)
-    if (%conquest.points <= 0) { $display.message($readini(translation.dat, conquest, ConquestPointsMonsters), private) }
-    if (%conquest.points > 0) { $display.message($readini(translation.dat, conquest, ConquestPointsPlayers), private) }
+    var %conquest.points.players $readini(battlestats.dat, conquest, ConquestPointsPlayers)
+    var %conquest.points.monsters $readini(battlestats.dat, conquest, ConquestPointsMonsters)
+    $display.message($readini(translation.dat, conquest, ConquestPoints), private) 
   }
 
   if ($2 = record) {

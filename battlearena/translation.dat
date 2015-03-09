@@ -851,9 +851,11 @@ ConquestTallyCurrentPlayers=$chr(3) $+ 2 $+ The Allied Forces of Good are curr
 ConquestPreviousMon=$chr(3) $+ 2 $+ The Forces of Evil won the last conquest and currently hold control over the world.
 ConquestPreviousPlayers=$chr(3) $+ 2 $+ The Allied Forces of Good won the last conquest and currently hold control over the world.  Players are receiving an orb bonus for their valiant work.
 ConquestPeriodOverIn=$chr(3) $+ 2 $+ The current Conquest Period will be over in roughly %conquest.hours.left hours.
+ConquestPoints=$chr(3) $+ 2 $+ The Allied Forces of Good currently have4 $bytes(%conquest.points.players,b) 2conquest points. The Forces of Evil have4 $bytes(%conquest.points.monsters,b) 2conquest points.
+ConquestRecord=$chr(3) $+ 2 $+ Total Conquest Periods: %total.wins $+ . The Allied Forces of Good has won %wins.players $iif(%wins.players = 1, time, times) and the Forces of Evil has won %wins.monsters $iif(%wins.monsters = 1, time, times)) 
+; old conquest messages
 ConquestPointsMonsters=$chr(3) $+ 2 $+ The Allied Forces of Good currently have no conquest points. The Forces of Evil have $abs(%conquest.points) conquest points.
 ConquestPointsPlayers=$chr(3) $+ 2 $+ The Allied Forces of Good currently have $abs(%conquest.points) conquest points.
-ConquestRecord=$chr(3) $+ 2 $+ Total Conquest Periods: %total.wins $+ . The Allied Forces of Good has won %wins.players $iif(%wins.players = 1, time, times) and the Forces of Evil has won %wins.monsters $iif(%wins.monsters = 1, time, times)) 
 
 =======================
 Dragonball Stuff
