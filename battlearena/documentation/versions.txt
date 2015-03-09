@@ -1194,6 +1194,7 @@ Battle Arena Bot VERSIONS
 - Changed the in between battle and battle open messages to use the mIRC identifier $duration
 - Changed the bot to use version.ver for the bot and system.dat versions.
 - Changed $return_winningstreak to work correctly with portal battles
+- Changed the way conquest points work so that it's clearer and more understandable. 
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
