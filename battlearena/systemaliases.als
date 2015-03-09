@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/08/15
+;;;; Last updated: 03/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3317,6 +3317,9 @@ conquest.tally {
     var %conquest.points.players $readini(battlestats.dat, conquest, ConquestPointsPlayers)
     var %conquest.points.monsters $readini(battlestats.dat, conquest, ConquestPointsMonsters)
 
+    if (%conquest.points.players = $null) { var %conquest.points.players 0 }
+    if (%conquest.points.monsters = $null) { var %conquest.points.monsters 1000 }
+
     if (%conquest.points.players >= %conquest.points.monsters) { 
       ; Players win 
       writeini battlestats.dat conquest ConquestBonus %conquest.points
@@ -3334,6 +3337,10 @@ conquest.tally {
       ; Monsters win
       writeini battlestats.dat conquest ConquestBonus 0 
       writeini battlestats.dat conquest ConquestPreviousWinner Monsters
+
+      writeini battlestats.dat conquest ConquestPointsPlayers %conquest.points.players 
+      writeini battlestats.dat conquest ConquestPointsMonsters %conquest.points.monsters
+
       $display.message($readini(translation.dat, conquest, ConquestTallyMonstersWin), global) 
       var %conquest.wins $readini(battlestats.dat, conquest, TotalMonsterWins)
       if (%conquest.wins = $null) { var %conquest.wins 0 }
