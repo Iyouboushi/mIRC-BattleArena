@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 02/28/15
+;;;; Last updated: 03/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | echo -a 4,1Location: %debug.location | halt
@@ -388,10 +388,21 @@ on 50:TEXT:!leveladjust*:*:{
 
 ; Bot owners can change the time between battles.
 on 50:TEXT:!time between battles *:*:{  
-  writeini system.dat System TimeBetweenBattles $4
-  $display.message($readini(translation.dat, System, ChangeTime), global)
+  if ($4 isnum) {
+    writeini system.dat System TimeBetweenBattles $4
+    $display.message($readini(translation.dat, System, ChangeTime), global)
+  }
+  else { $display.message(4You must enter a number for the time),global) | halt }
 }
 
+; Bot owners can change the time for !enter allownace.
+on 50:TEXT:!time to enter *:*:{  
+  if ($4 isnum) {
+    writeini system.dat System TimeToEnter $4
+    $display.message($readini(translation.dat, System, ChangeTimeForEnter), global)
+  }
+  else { $display.message(4You must enter a number for the time),global) | halt }
+}
 
 ; Bot admin command for displaying active and zapped player lists.
 on 50:TEXT:!display *:*:{  

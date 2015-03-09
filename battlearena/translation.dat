@@ -36,6 +36,7 @@ BattleStatsOutposts=$chr(3) $+ 2 $+ The Allied Forces have currently defended4
 BattleStatsMoreInfo=$chr(3) $+ 2 $+ For Conquest information use 4!conquest info2, 4!conquest record2 and 4!conquest points2.  For current Dragonball info use 4!dragonballs
 WipedBattleStats=$chr(3) $+ 4 $+ The Battle Stats have been wiped!
 ChangeTime=$chr(3) $+ 4 $+ Time between battles has been set to: $duration($4)
+ChangeTimeForEnter=$chr(3) $+ 4 $+ Time allowed for the !enter period has been set to: $duration($4)
 PlayerExists=$chr(3) $+ 4 $+ A character with the name $nick already exists.  If this is you, use the !id command with your password in query to log in.  If not, please change your nick and try again.
 NameReserved=$chr(3) $+ 4 $+ A character with the name $nick is reserved and cannot be used. Please change your nick and try again.
 CharacterCreated=$chr(3) $+ 3 $+  $+ $nick has entered the dimensional rift to join the battle arena.
