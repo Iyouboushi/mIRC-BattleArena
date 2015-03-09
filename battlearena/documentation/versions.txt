@@ -1094,6 +1094,7 @@ Battle Arena Bot VERSIONS
   what the new password is (so use it when the player is online). The bot admin will NOT see the new password. 
 - Added the bot admin command: !toggle battle messages  -- This will toggle between old and new battle announce messages
 - Added the bot admin command: !toggle bot bold  -- Will turn bold on/off for the bot
+- Added the bot admin command: !time to enter # -- where # is the number of seconds for the !enter period
 - Added a CanDodge=true/false flag to techniques. If set to false, it will be impossible to dodge the technique.
 - Added a new flag in system.dat: EnableDNSCheck=true/false   This will allow the bot to attempt to get the host names
   of players. This is necessary to use the player limit.  If disabled the bot won't attempt to use it
