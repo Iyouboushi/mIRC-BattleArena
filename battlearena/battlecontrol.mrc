@@ -382,7 +382,9 @@ alias startnormal {
 
     var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault
     if ($istok(%valid.battle.types,%start.battle.type,46) = $false) {
-      $display.message(4Invalid battle type: %start.battle.type),global) | halt 
+      $display.message(4Invalid battle type: %start.battle.type),global) 
+      $clear_battle 
+      halt 
     }
   }
 
