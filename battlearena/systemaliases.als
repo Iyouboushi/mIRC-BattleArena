@@ -3322,7 +3322,7 @@ conquest.tally {
 
     if (%conquest.points.players >= %conquest.points.monsters) { 
       ; Players win 
-      writeini battlestats.dat conquest ConquestBonus %conquest.points
+      writeini battlestats.dat conquest ConquestBonus %conquest.points.players
       writeini battlestats.dat conquest ConquestPreviousWinner Players
       writeini battlestats.dat conquest ConquestPointsPlayers 1 
       writeini battlestats.dat conquest ConquestPointsMonsters 0
