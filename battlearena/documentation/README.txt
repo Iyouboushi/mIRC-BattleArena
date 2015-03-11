@@ -96,6 +96,10 @@ should be more balanced now.
 In this battle type players will have to survive 5 waves of monsters in
 order to successfully defend an Allied Forces HQ Outpost.
 
+* Added a new battle type: Assault
+In this type players will have to defeat monsters in order to 
+weaken an enemy outpost's strength meter and capture it. 
+
 * Added Capacity and Enhancement Points. 
 10,000 Capacity Points will equal 1 Enhancement Point. Players gain capacity
 points by being in battles that are higher than streak 100. Note that the 
@@ -125,14 +129,13 @@ Changes:
 - Changed Evil Doppelgangers so that they are generated correctly if the user is level synced.
 - Changed chests so that red chests can never spawn mimics.
 - Changed the GIVES command so that players can now give red orbs to certain NPCs.  
-- Changed the way the bot picks NPCs so that they can now have streak minimums/maximums like monsters and bosses.
-- Changed the Inactive type monsters/npcs so that they can have a custom description for when they become active.
+- Changed the way the bot picks NPCs to have more settings like bosses/monsters
 - Changed the scoreboard.html to include the level of the player
 - Changed the drunk status to last 2 rounds
 - Changed the GIVES message to hopefully show grammatically correct lines
 - Changed the way the bot handles negative status effects on targets.
 - Changed the way the bot does all of the status timers to make it consistent
-- Changed the modifier checks so that they will also check for the name of the weapon in addition to the rest
+- Changed the modifier checks so that they will also check for weapon names
 - Changed the way the bot displays damage (purple = resisted, orange = enhanced)
 - Changed the way the bot displays the "battle open" message 
 - Changed the chance of a rescue allied president battle to 25% and lowered the streak from 100 to 20. 
@@ -144,7 +147,7 @@ Changes:
 - Changed demon portals so that monsters spawning out of them will be slightly less than the battle streak.
 
 Fixes:
-- Fixed an issue with songs showing resists on targets who shouldn't be affected
+- Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
 - Fixed an issue where instruments could be used with !use
@@ -154,6 +157,7 @@ Fixes:
 - Fixed an issue with techniques doing too much damage when a player was level synced.
 - Fixed an issue in which Ghost Turkey could show up in other months besides November
 - Fixed an issue with !view-info style doppelganger getting cut off
+- Fixed an issue with the bot not checking left-handed weapons for augments
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
 - Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
@@ -166,6 +170,12 @@ Fixes:
 - Fixed a bug in which players could trade armor they were still wearing
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
 
+Removals:
+- Removed the Final_Guard monster
+- Removed the Prime_Vise monster
+- Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
+- Removed the !toggle battle formula bot admin command
+- Removed the bot setting the user levels of bot owner/admins upon starting to prevent a security hole
 
 Again, this isn't everything. Be sure to read the versions.txt in the documentation folder for a full 
 list of everything 
@@ -258,6 +268,13 @@ Helped find countless bugs that have been fixed.
 Pangaea from my forum
 Had the idea for the scoreboard generating an HTML file to
 make it easier to post scores and stats online.
+
+Anthrax from my forum
+Helped to find bugs and offered suggestions on how to improve the bot.
+
+Karman from my forum
+Helped to find bugs and offered suggestions on how to improve the bot. 
+Also gave me the idea for the Gremlins.
 
 
  _______________________________________________________________________

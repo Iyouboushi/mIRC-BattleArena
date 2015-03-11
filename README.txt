@@ -34,24 +34,18 @@ As for the main purpose of the game.. well, the only real purpose is to see how 
 \_______________________________________________________________________/
 
 
-Getting it set up is easy this time around assuming you unpack the zip in a good location on
-your computer.  
+Getting it set up is easy this time around assuming you unpack the zip in a good location on your computer.  
 
 
 SETUP:
 
  1. Do a CLEAN install to C:\BattleArena\  with the complete zip package of the bot.
- 2. Patch the bot to the latest versions if there are any patches.
-    don't skip versions unless I specifically say it's all right.  
-    ALSO NOTE: DO NOT HAVE THE BOT RUNNING WHEN YOU APPLY PATCHES!
+ 2. Patch the bot to the latest versions if there are any patches. Don't skip versions unless I specifically say it's all right.  ALSO NOTE: DO NOT HAVE THE BOT RUNNING WHEN YOU APPLY PATCHES!
  3. Run the mirc.exe included with Complete Package.
- 4. The bot will attempt to help you get things set up.  Set the
-    bot owner's nick and the IRC channel you wish to game in.  Be sure to set a 
-    password for the bot that you'll register to nickserv with.
+ 4. The bot will attempt to help you get things set up.  Set the bot owner's nick and the IRC channel you wish to game in.  Be sure to set a password for the bot that you'll register to nickserv with.
  5. (as with all mIRC programs) change the nickname and add a server
  6. Connect.
- 7. Using another IRC connection as the bot owner's nick, use !new char (nick)
-    without the () to get the character creation process started.
+ 7. Using another IRC connection as the bot owner's nick, use !new char (nick) without the () to get the character creation process started.
  8. Follow what the bot tells you to do.  Be sure to check out player_guide.txt as well.
 
 
@@ -76,6 +70,9 @@ The way the bot determines the stats for monsters, bosses, summons and npcs when
 * Added a new battle type: Defend Outpost
 In this battle type players will have to survive 5 waves of monsters in order to successfully defend an Allied Forces HQ Outpost.
 
+* Added a new battle type: Assault
+In this type players will have to defeat monsters in order to weaken an enemy outpost's strength meter and capture it. 
+
 * Added Capacity and Enhancement Points. 
 10,000 Capacity Points will equal 1 Enhancement Point. Players gain capacity points by being in battles that are higher than streak 100. Note that the player level has to be within 10 of the streak in order to gain capacity points.  After streak 500, the amount is 500+(10% of streak level).   Enhancement points can then be used in the shop to purchase additional skills and stat enhancements.
 
@@ -95,14 +92,13 @@ Changes:
 - Changed Evil Doppelgangers so that they are generated correctly if the user is level synced.
 - Changed chests so that red chests can never spawn mimics.
 - Changed the GIVES command so that players can now give red orbs to certain NPCs.  
-- Changed the way the bot picks NPCs so that they can now have streak minimums/maximums like monsters and bosses.
-- Changed the Inactive type monsters/npcs so that they can have a custom description for when they become active.
+- Changed the way the bot picks NPCs to have more settings like bosses/monsters
 - Changed the scoreboard.html to include the level of the player
 - Changed the drunk status to last 2 rounds
 - Changed the GIVES message to hopefully show grammatically correct lines
 - Changed the way the bot handles negative status effects on targets.
 - Changed the way the bot does all of the status timers to make it consistent
-- Changed the modifier checks so that they will also check for the name of the weapon in addition to the rest
+- Changed the modifier checks so that they will also check for weapon names
 - Changed the way the bot displays damage (purple = resisted, orange = enhanced)
 - Changed the way the bot displays the "battle open" message 
 - Changed the chance of a rescue allied president battle to 25% and lowered the streak from 100 to 20. 
@@ -114,7 +110,7 @@ Changes:
 - Changed demon portals so that monsters spawning out of them will be slightly less than the battle streak.
 
 Fixes:
-- Fixed an issue with songs showing resists on targets who shouldn't be affected
+- Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
 - Fixed an issue where instruments could be used with !use
@@ -124,6 +120,7 @@ Fixes:
 - Fixed an issue with techniques doing too much damage when a player was level synced.
 - Fixed an issue in which Ghost Turkey could show up in other months besides November
 - Fixed an issue with !view-info style doppelganger getting cut off
+- Fixed an issue with the bot not checking left-handed weapons for augments
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
 - Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
@@ -136,9 +133,15 @@ Fixes:
 - Fixed a bug in which players could trade armor they were still wearing
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
 
+Removals:
+- Removed the Final_Guard monster
+- Removed the Prime_Vise monster
+- Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
+- Removed the !toggle battle formula bot admin command
+- Removed the bot setting the user levels of bot owner/admins upon starting to prevent a security hole
 
-Again, this isn't everything. Be sure to read the versions.txt in the documentation folder for a full 
-list of everything 
+
+Again, this isn't everything. Be sure to read the versions.txt in the documentation folder for a full list of everything 
 
  _______________________________________________________________________
 /                                                                       \
@@ -147,11 +150,7 @@ list of everything
 
 
 
-Patches are made when I feel there are enough errors or new 
-ideas to implement that it deserves to be done.  In other words, you shouldn't 
-ask when a patch will be made and released.  Just keep an eye on the website or
-message board occasionally and see if I've added a topic about a patch in development 
-or if there has been one released recently.  
+Patches are made when I feel there are enough errors or new ideas to implement that it deserves to be done.  In other words, you shouldn't ask when a patch will be made and released.  Just keep an eye on the website or message board occasionally and see if I've added a topic about a patch in development or if there has been one released recently.  
 
 
  _______________________________________________________________________
@@ -160,15 +159,11 @@ or if there has been one released recently.
 \_______________________________________________________________________/
 
 
-If you're a scripter who likes to play around or might want to add
-something new, this section is for you.
+If you're a scripter who likes to play around or might want to add something new, this section is for you.
 
-First off, although a lot of the code is new, or improved from Kaiou's source,
-there are still tons of code that could probably be rewritten and improved.
+First off, although a lot of the code is new, or improved from Kaiou's source, there are still tons of code that could probably be rewritten and improved.
 
-If you want to recode stuff, feel free.  I've got nothing against it.  I really
-wish you luck.  If you manage to vastly improve anything, I'd love to see it.
-Just send me a quick email (listed at the bottom of this document).  
+If you want to recode stuff, feel free.  I've got nothing against it.  I really wish you luck.  If you manage to vastly improve anything, I'd love to see it. Just send me a quick email (listed at the bottom of this document).  
 
 
  _______________________________________________________________________
@@ -177,38 +172,26 @@ Just send me a quick email (listed at the bottom of this document).
 \_______________________________________________________________________/
 
 
-These are people who have helped me by helping me test, making monsters/weapons/etc,
-finding bugs, or just by giving me some ideas.
+These are people who have helped me by helping me test, making monsters/weapons/etc, finding bugs, or just by giving me some ideas.
 
 
 Scott "Smz" of Esper.net
-He helped me with a bunch of ideas, made monsters, made bosses, made tons
-of armor.  Not only that, he was the first beta tester of version 1.0; 
-Without him, I don't think I could have done this.
+He helped me with a bunch of ideas, made monsters, made bosses, made tons of armor.  Not only that, he was the first beta tester of version 1.0; Without him, I don't think I could have done this.
 
 Andrio of Esper.net 
-Helped me test out the bot and found a few glitches that needed to be fixed. 
-Not to mention created a debug script that helped find many errors in 
-monster/npc/boss files.
+Helped me test out the bot and found a few glitches that needed to be fixed. Not to mention created a debug script that helped find many errors in monster/npc/boss files.
 
 AuXFire of Hawkee
-Caught a major bug with the passwords which made changing your password 
-from the default impossible.
+Caught a major bug with the passwords which made changing your password from the default impossible.
 
 Raiden of Esper.net
-This guy has helped me almost as much as Smz has. He's found countless 
-bugs, gave me ideas for several accessories and skills and helped host 
-the bot on Esper.net.
+This guy has helped me almost as much as Smz has. He's found countless bugs, gave me ideas for several accessories and skills and helped host the bot on Esper.net.
 
 Sealdrenxia of Twitter
-Discovered a huge bug with !new char that let players use the 
-command over and over to get free orbs.
+Discovered a huge bug with !new char that let players use the command over and over to get free orbs.
 
 Rei_Hunter of Esper.net
-Helped give me a ton of ideas for the bot (including, but not limited to, 
-moving cooldown timers to the skills.db, monsters being able to absorb 
-elements for healing, AOE healing, and the ability for monsters to 
-ignore darkness/rage mode).
+Helped give me a ton of ideas for the bot (including, but not limited to, moving cooldown timers to the skills.db, monsters being able to absorb elements for healing, AOE healing, and the ability for monsters to ignore darkness/rage mode).
 
 Trunks on Esper.net
 Since he was translating the bot into German, it sparked the idea of 
@@ -229,6 +212,12 @@ Pangaea from my forum
 Had the idea for the scoreboard generating an HTML file to
 make it easier to post scores and stats online.
 
+Anthrax from my forum
+Helped to find bugs and offered suggestions on how to improve the bot.
+
+Karman from my forum
+Helped to find bugs and offered suggestions on how to improve the bot. Also gave me the idea for the Gremlins.
+
 
  _______________________________________________________________________
 /                                                                       \
@@ -236,19 +225,12 @@ make it easier to post scores and stats online.
 \_______________________________________________________________________/
 
 
-If, for whatever reason, you need to contact me.. my email address is
-provided:  Iyouboushi@gmail.com  or you can contact me via twitter:
-twitter.com/Iyouboushi
+If, for whatever reason, you need to contact me.. my email address is provided:  Iyouboushi@gmail.com  or you can contact me via twitter: twitter.com/Iyouboushi
 
-PLEASE, PLEASE, PLEASE, PLEASE, PLEASE, PLEASE, do NOT contact me about HELP
-running this bot.  I seriously do not have enough time to help everyone. If
-you're really having trouble, check out the message board:
+PLEASE, PLEASE, PLEASE, PLEASE, PLEASE, PLEASE, do NOT contact me about HELP running this bot.  I seriously do not have enough time to help everyone. If you're really having trouble, check out the message board:
 
 http://iyouboushi.com/forum/index.php?/topic/890-battle-arena-help-thread/
 
-You'll have to make an account (free) to post. But you're more likely to
-receive help with the bot there.
+You'll have to make an account (free) to post. But you're more likely to receive help with the bot there.
 
-HOWEVER, if you run into a serious error, DO (PLEASE) email me about the error.  
-I will try to correct all errors for a later patch.  So definitely let me know
-about errors.
+HOWEVER, if you run into a serious error, DO (PLEASE) email me about the error. I will try to correct all errors for a later patch.  So definitely let me know about errors.

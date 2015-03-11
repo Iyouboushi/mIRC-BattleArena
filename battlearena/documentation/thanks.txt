@@ -33,3 +33,9 @@ Helped find countless bugs that have been fixed.
 
 Pangaea from my forum
 Had the idea for the scoreboard generating an HTML file to make it easier to post scores and stats online.
+
+Anthrax from my forum
+Helped to find bugs and offered suggestions on how to improve the bot.
+
+Karman from my forum
+Helped to find bugs and offered suggestions on how to improve the bot. Also gave me the idea for the Gremlins.

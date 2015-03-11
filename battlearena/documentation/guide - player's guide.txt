@@ -396,6 +396,9 @@ A special battle in December to take on a legion of frost monsters.
 Crystal Shadow Warrior Battle
 A special battle in which the heroes find themselves faced with a powerful foe. This battle may require thinking outside of the box to win.
 
+Gremlin Battle (only appears on streaks 50-200; capped at level 50)
+A bunch of Gremlins are on the loose at the Allied Forces HQ School. Put an end to their mischief! 
+
 Monster Battle
 As expected, this is the most common type of battle. The bot will generate a number of monsters (the number depends on how many players join the battle) and will add them to battle. The object is to defeat them all.
 
@@ -404,6 +407,9 @@ The Allied Forces president has been kidnapped. Are you a bad enough dude to res
 
 Defend the Outpost
 As you're fighting the forces of darkness, the monsters are preparing for an assault on an Allied Forces outpost. Once their strike teams are ready and the players are on streaks 20+, they will advance towards their target and it will be up to the players to defend the outpost from 5 waves of monsters.
+
+Assault
+The Allied Forces will occasionally put together an assault team to take out an enemy outpost. In this battle type players will have to defeat monsters until the outpost meter (check with !bat info) is depleted.
 
 At the end of all types of battle you will receive red orbs (lose/win/dead/alive). The amount of red orbs will vary, but to get more you have to defeat monsters and be stylish about it.
 Battle Information
@@ -1301,6 +1307,15 @@ ProudSoulNecklace
 Codec
 BlackRock
 FireOfTheDragon
+
+
+Special Items
+These items unlock weapons, armor, shields, or just do something different.
+
+Blueprints:X-Buster
+Blueprints:SilverSword
+Blueprints:Genbu'sShield
+MasterSwordMap 	
 
 
 ACCESSORIES
