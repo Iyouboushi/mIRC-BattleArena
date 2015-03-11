@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/09/15
+;;;; Last updated: 03/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -300,7 +300,12 @@ return_winningstreak {
   if (%portal.bonus != true) { 
     var %current.winningstreak $readini(battlestats.dat, battle, winningstreak)
     if (%current.winningstreak = $null) { var %current.winningstreak 0 }
-    return %current.winningstreak
+
+    if ((%battle.type = assault) || (%battle.type = defendoutpost)) {
+      if (%current.winningstreak > 100) { return 100 }
+      else { return %current.winningstreak }
+    }
+    else {  return %current.winningstreak }
   }
 }
 

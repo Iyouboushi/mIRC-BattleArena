@@ -306,6 +306,12 @@ alias startnormal {
     if (%outpost.chance <= 20) { var %start.battle.type defendoutpost } 
   }
 
+  if (($readini(battlestats.dat, conquest, AlliedInfluence) >= 100) && ($current.battlestreak > 20)) {
+    if (%start.battle.type = $null) {  var %assault.chance $rand(1,100) }
+    if (%start.battle.type != $null) { var %assault.chance 100 }
+    if (%outpost.chance <= 20) { var %start.battle.type assault } 
+  }
+
   ; If we don't, let's pick one.
   if (%start.battle.type = $null) { 
 
@@ -376,13 +382,11 @@ alias startnormal {
     if (%start.battle.type = defendoutpost) { set %battle.type defendoutpost 
       $display.message($readini(translation.dat, Battle, BattleDefendOutpost), global) 
     }
-    if (%start.battle.type = assault) { set %battle.type boss | echo -a this battle type is not finished yet
-      $display.message($readini(translation.dat, Battle, BattleAssaultOpen), global) 
-    }
+    if (%start.battle.type = assault) { set %battle.type assault | $display.message($readini(translation.dat, Battle, BattleAssaultOpen), global) }
 
     var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault
     if ($istok(%valid.battle.types,%start.battle.type,46) = $false) {
-      $display.message(4Invalid battle type: %start.battle.type),global) 
+      $display.message(4Invalid battle type: %start.battle.type ,global) 
       $clear_battle 
       halt 
     }
@@ -505,8 +509,8 @@ alias enter {
   remini $char($1) info levelsync 
   writeini $char($1) info NeedsFulls yes
 
-  ; level sync for defend outpost type battles
-  if (%battle.type = defendoutpost) { 
+  ; level sync for defend/assault outpost type battles
+  if ((%battle.type = defendoutpost) || (%battle.type = assault)) { 
     if ($return_winningstreak >= 100) { 
       if ($get.level($1) > 102) {  $levelsync($1, 102) | $display.message(4 $+ %real.name has been synced to level 102 for this battle, battle) }
     }
@@ -552,7 +556,6 @@ alias flee {
 
   $next
 }
-
 
 ; ==========================
 ; The battle begins
@@ -605,10 +608,19 @@ alias battlebegin {
   }
 
   if (%savethepresident = on) { set %current.battlefield Monster Dungeon }
+
   if (%battle.type = defendoutpost) { 
     set %current.battlefield Allied Forces Outpost 
     writeini battlestats.dat conquest MonsterInfluence 0
     writeini $txtfile(battle2.txt) battle alliednotes 50
+    set %nosouls true
+  }
+
+  if (%battle.type = assault) { 
+    set %current.battlefield Monster's Outpost 
+    writeini battlestats.dat conquest AlliedInfluence 0
+    writeini $txtfile(battle2.txt) battle alliednotes 150
+    writeini $txtfile(battle2.txt) battle outpostStrength 10
     set %nosouls true
   }
 
@@ -657,10 +669,9 @@ alias battlebegin {
   if ((%number.of.monsters.needed > 2) && (%battle.type != boss))  { 
     if ($readini(battlestats.dat, battle, winningstreak) >= 1000) { set %darkness.turns 26 }
     else { set %darkness.turns 16 }
-
   }
-  if (%battle.type = boss) { 
 
+  if (%battle.type = boss) { 
     set %darkness.turns 21
 
     if ((%demonwall.name = Demon Wall) || (%demonwall.name = Wall of Flesh)) { unset %darkness.turns  }
@@ -670,9 +681,7 @@ alias battlebegin {
   if (%battle.type = manual) { set %darkness.turns 21 }
   if (%battle.type = orbfountain) { set %darkness.turns 16 } 
   if (%battle.type = defendoutpost) { set %darkness.turns 5 }
-
-
-  ; if battle type = assault unset darkness turns
+  if (%battle.type = assault) { set %darkness.turns 20 }
 
   if (%mode.gauntlet = on) { unset %darkness.turns }
   if (%battle.type = ai) { unset %darkness.turns } 
@@ -694,6 +703,7 @@ alias battlebegin {
 
   if (%savethepresident = on) {  $display.message($readini(translation.dat, battle, Don'tLetPresidentDie), battle)  }
   if (%battle.type = defendoutpost) { $display.message($readini(translation.dat, battle, DefendOutpostForTurns), battle) }
+  if (%battle.type = assault) { $display.message($readini(translation.dat, battle, AssaultOutpost), battle) }
 
   $display.message($readini(translation.dat, battle, StepsUpFirst), battle)
 
@@ -704,7 +714,7 @@ alias battlebegin {
 
   unset %number.of.players
 
-  if (%demonwall.fight = on) {  $battle_rage_warning } 
+  if (%demonwall.fight = on) { $battle_rage_warning } 
 
   if (($readini(battlestats.dat, dragonballs, ShenronWish) = on) && (%mode.gauntlet != on)) { $display.message($readini(translation.dat, Dragonball, ShenronWishActive), battle) }
 
@@ -731,6 +741,7 @@ alias battle.getmonsters {
 
     if ((%battle.type = defendoutpost) && (%darkness.turns > 1)) { %number.of.monsters.needed = 2 }
     if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { %number.of.monsters.needed = 1 }
+    if (%battle.type = assault) { %number.of.monsters.needed = $rand(2,3) }
 
     $winningstreak.addmonster.amount
 
@@ -760,6 +771,9 @@ alias battle.getmonsters {
       $generate_monster(monster)
     }
 
+    if (%battle.type = assault) { 
+      $generate_monster(monster)
+    }
 
     if (%battle.type = boss) {
       $generate_monster(boss)
@@ -872,13 +886,16 @@ alias generate_monster {
     set %valid.boss.types normal.bandits.gremlins.doppelganger.warmachine.demonwall.wallofflesh.elderdragon.pirates.frostlegion.crystalshadow
 
     if (%boss.type = $null) { var %boss.type normal }
+    if ((%battle.type = assault) || (%battle.type = defendoutpost)) { set %boss.type normal }
     if ($istok(%valid.boss.types,%boss.type,46) = $false) { var %boss.type normal }
 
     unset %valid.boss.types
 
     if (%boss.type = normal) {
 
-      if (($rand(1,2) = 1) && (%battle.type != defendoutpost)) { writeini $txtfile(battle2.txt) BattleInfo CanKidnapNPCs yes }
+      if ($rand(1,2) = 1) {
+        if ((%battle.type != assault) && (%battle.type != defendoutpost)) { writeini $txtfile(battle2.txt) BattleInfo CanKidnapNPCs yes }
+      }
 
       $get_boss_list
       var %monsters.total $numtok(%monster.list,46)
@@ -886,6 +903,7 @@ alias generate_monster {
       if ((%monsters.total = 0) || (%monster.list = $null)) { $display.message(4Error: There are no bosses in the boss folder.. Have the bot admin check to make sure there are bosses for players to battle!, global) | $endbattle(none) | halt }
       if (%mode.gauntlet != $null) { set %number.of.monsters.needed 2  }
       if (%battle.type = defendoutpost) { set %number.of.monsters.needed 1 }
+      if (%battle.type = assault) { set %number.of.monsters.needed 1 }
 
       if (%monsters.total = 1) { set %number.of.monsters.needed 1 }
 
@@ -1355,11 +1373,13 @@ alias endbattle {
   ; Let's increase the total number of battles that we've had so far.
   if (((%mode.pvp != on) && (%battle.type != ai) && (%mode.gauntlet != on))) { var %totalbattles $readini(battlestats.dat, Battle, TotalBattles) |  inc %totalbattles 1 | writeini battlestats.dat Battle TotalBattles %totalbattles }
 
-  if ($1 = defeat) {
+  if (($1 = defeat) || ($1 = failure)) {
     $display.message($readini(translation.dat, battle, BattleIsOver), global)
 
     if ((%mode.pvp != on) && (%battle.type != ai)) {
-      if ((%mode.gauntlet = $null) && (%battle.type != defendoutpost)) { var %defeats $readini(battlestats.dat, battle, totalLoss) | inc %defeats 1 | writeini battlestats.dat battle totalLoss %defeats }
+      if (%mode.gauntlet = $null) {
+        if ((%battle.type != assault) && (%battle.type != defendoutpost)) { var %defeats $readini(battlestats.dat, battle, totalLoss) | inc %defeats 1 | writeini battlestats.dat battle totalLoss %defeats }
+      }    
       if (%mode.gauntlet != $null) {
         var %gauntlet.record $readini(battlestats.dat, battle, GauntletRecord) 
         if (%gauntlet.record = $null) { var %gauntlet.record 0 }
@@ -1371,8 +1391,9 @@ alias endbattle {
 
       if (((%portal.bonus != true) && (%battle.type != mimic) && (%savethepresident != on))) {
 
-        if ((%battle.type != defendoutpost) && (%mode.gauntlet = $null)) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
-
+        if (%mode.gauntlet = $null) { 
+          if ((%battle.type != defendoutpost) && (%battle.type != assault)) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
+        }
 
         if (%mode.gauntlet = $null) {
           ;  Increase monster conquest points
@@ -1404,6 +1425,15 @@ alias endbattle {
         inc %total.defendedoutposts 1
         writeini battlestats.dat battle TotalOutpostsLost %total.defendedoutposts
       } 
+
+      if (%battle.type = assault) {
+        $display.message($readini(translation.dat, battle, AssaultBattleLost), global) 
+        var %total.assault $readini(battlestats.dat, battle, TotalAssaultLost)
+        if (%total.assault = $null) { var %total.assault 0 }
+        inc %total.assault 1
+        writeini battlestats.dat battle TotalAssaultLost %total.assault
+      } 
+
       if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) }
       if (%savethepresident = on) { $display.message($readini(translation.dat, battle, EvilHasWonPresident), global) 
 
@@ -1449,7 +1479,7 @@ alias endbattle {
     if ((%mode.pvp != on) && (%battle.type != ai)) {
       var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
 
-      if ((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%savethepresident != on)))) {
+      if ((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%savethepresident != on)))) {
         var %winning.streak $readini(battlestats.dat, battle, WinningStreak) | inc %winning.streak 1 | writeini battlestats.dat battle WinningStreak %winning.streak
 
         var %winning.streak.record $readini(battlestats.dat, battle, WinningStreakRecord)
@@ -1460,6 +1490,14 @@ alias endbattle {
         $display.message($readini(translation.dat, battle, GoodHasWon), global)
       }
 
+      if (%battle.type = assault) { 
+        $display.message($readini(translation.dat, battle, assaultBattleWon), global) 
+        var %total.assaults $readini(battlestats.dat, battle, TotalAssaultWon)
+        if (%total.assaults = $null) { var %total.assaults 0 }
+        inc %total.assaults 1
+        writeini battlestats.dat battle TotalAssaultWon %total.assaults
+      } 
+
       if (%battle.type = defendoutpost) { 
         $display.message($readini(translation.dat, battle, OutpostBattleWon), global) 
         var %total.outposts $readini(battlestats.dat, battle, TotalOutpostsDefended)
@@ -1467,6 +1505,7 @@ alias endbattle {
         inc %total.outposts 1
         writeini battlestats.dat battle TotalOutpostsDefended %total.outposts
       } 
+
       if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, GoodHasWonPortal), battle) }
       if (%savethepresident = on) { $display.message($readini(translation.dat, battle, GoodHasWonPresident), battle) 
         var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Wins)
@@ -1501,6 +1540,14 @@ alias endbattle {
 
       $conquest.points(players, %conquestpoints.to.add)
 
+      if (%battle.type = assault) {
+        var %enemy.conquestpoints $readini(battlestats.dat, conquest, ConquestPointsMonsters)
+        if (%enemy.conquestpoints != $null) { 
+          var %enemy.conquestpoints $round($calc(%enemy.conquestpoints / 2),0)
+          writeini battlestats.dat conquest ConquestPointsMonsters %enemy.conquestpoints
+        }
+      }
+
       $generate_style_order
       $display.message($readini(translation.dat, battle, RewardOrbsWin), battle)
 
@@ -1514,7 +1561,7 @@ alias endbattle {
 
       ; If boss battle, do black orbs for select players.
       unset %black.orb.winners
-      if ((%battle.type = boss) || (%battle.type = defendoutpost)) {
+      if (((%battle.type = boss) || (%battle.type = assault) || (%battle.type = defendoutpost))) {
         $battle.reward.blackorbs 
 
         if (%black.orb.winners != $null) { $display.message($readini(translation.dat, battle, BlackOrbWin), battle)   }
@@ -1528,7 +1575,7 @@ alias endbattle {
         }
       }
 
-      if (%battle.type != defendoutpost) { $shopnpc.rescue }
+      if ((%battle.type != defendoutpost) && (%battle.type != assault)) { $shopnpc.rescue }
       if (%boss.type = FrostLegion) { writeini shopnpcs.dat Events FrostLegionDefeated true }
 
       if (%battle.type != orbfountain) { 
@@ -1869,11 +1916,12 @@ alias battlelist {
       if (%battle.type = defendoutpost) {  
         if (%darkness.turns > 0) { $display.message(4[The Outpost will be defended in:12 %darkness.turns 4waves], private) }
       }
-
-      else { 
+      if (%battle.type != defendoutpost)  {
         if (%darkness.countdown > 0) { $display.message(4[Darkness will occur in:12 %darkness.countdown 4turns], private) }
         if (%darkness.countdown <= 0) { $display.message(4[Darkness12 has overcome 4the battlefield], private) }
       }
+
+      if (%battle.type = assault) {  $display.message(4[Outpost Strength: $monster.outpost(strengthbar) $+ ], private) }
 
     }
 
@@ -1905,12 +1953,14 @@ alias battlelist {
       var %darkness.countdown $calc(%darkness.turns - %current.turn) 
 
       if (%battle.type = defendoutpost) {  
-        if (%darkness.turns > 0) { $display.message(4[The Outpost will be defended in:12 %darkness.turns 4waves], private) }
+        if (%darkness.turns > 0) { $display.message(4[The Outpost will be defended in:12 %darkness.turns 4waves], battle) }
       } 
-      else { 
+      if (%battle.type != defendoutpost)  {
         if (%darkness.countdown > 0) { $display.message(4[Darkness will occur in:12 %darkness.countdown 4turns], battle) }
         if (%darkness.countdown <= 0) { $display.message(4[Darkness12 has overcome 4the battlefield], battle) }
       }
+
+      if (%battle.type = assault) {  $display.message(4[Outpost Strength: $monster.outpost(strengthbar) $+ ], battle) }
     }
 
     if (%battle.type != ai) { 
@@ -2076,6 +2126,7 @@ alias battle.reward.redorbs {
       set %base.redorbs %original.baseredorbs
 
       if ((%base.redorbs <= 5000) && (%battle.type = defendoutpost)) { set %base.redorbs 5000 }
+      if ((%base.redorbs <= 5000) && (%battle.type = assault)) { set %base.redorbs 5000 }
       $orb.adjust(%who.battle)
 
       var %current.redorbs $readini($char(%who.battle), stuff, redorbs)

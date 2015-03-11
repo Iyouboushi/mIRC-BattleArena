@@ -171,6 +171,7 @@ PlayerStyleLevelUp=$chr(3) $+ 3 $+  $+ %real.name $+ 's %current.playerstyle s
 AnotherWaveArrives=$chr(3) $+ 4 $+ Another wave of monsters has arrived to the battlefield!
 AnotherWaveOutpost=$chr(3) $+ 4 $+ More monsters pour into the outpost in an effort to take it over!
 AnotherWaveOutpostBoss=$chr(3) $+ 4 $+ The general of the monster attack party has arrived!
+AnotherWaveAssault=$chr(3) $+ 4 $+ More monster reinforcements arrive to defend the outpost!
 ViewDifficulty=$chr(3) $+ 3 $+  $+ %real.name has a difficulty of %saved.difficulty set currently.
 SaveDifficulty=$chr(3) $+ 3 $+  $+ %real.name sets $gender($nick) difficulty to $3 $+ .
 ViewLevelAdjust=$chr(3) $+ 3 $+ The overall battle level adjust is set to %leveladjust $+ .
@@ -510,6 +511,8 @@ BattleOpenManual=$chr(3) $+ 4 $+ A Manual battle has been started. Bot Admins wi
 BattleOpenMimic=$chr(3) $+ 4 $+ An evil treasure chest Mimic is ready to fight The battle will begin in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
 BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone willing to brave the gauntlet has $duration(%time.to.enter) to enter before the doors close. Type !enter if you wish to join the battle!  
 BattleDefendOutpost=$chr(3) $+ 4 $+ An outpost of the Allied Forces HQ is under attack! Reinforcements are requested immediately! The reinforcements will depart in $duration(%time.to.enter) $+ . Type !enter to join!  
+BattleAssaultOpen=$chr(3) $+ 4 $+ The Allied Forces are putting together an assault team to take out an enemy outpost. If you wish to be a part of this team, type !enter to join. The reinforcements will depart in $duration(%time.to.enter) $+ .
+
 
 BattleOpenAIBet=$chr(3) $+ 4 $+ A 1 vs 1 AI Match is about to begin! The battle will begin in %time.to.enter seconds. 
 
@@ -531,9 +534,11 @@ EvilhasWon=$chr(3) $+ 12 $+ The forces of evil have won this battle (level $byt
 EvilhasWonPortal=$chr(3) $+ 12 $+ The forces of evil have won this special battle event after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
 EvilhasWonPresident=$chr(3) $+ 14 $+ The forces of evil have recaptured $readini(shopnpcs.dat, NPCNames, AlliedForcesPresident) after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! The heroes have failed!  The monsters have brutally slaughtered the president and offered the body to their god.
 OutpostBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to defend the outpost! The forces of evil have conqured it and claimed it as their own.
+AssaultBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to capture the enemy outpost and must withdrawal!
 GoodHasWon=$chr(3) $+ 12 $+ The forces of good have won this battle (level $bytes(%thisbattle.winning.streak,b) $+ )  in %current.turn $iif(%current.turn < 2, turn, turns) $+ ! [Current record is: $bytes($readini(battlestats.dat, battle, WinningStreakRecord),b) $+ ]
 GoodHasWonPortal=$chr(3) $+ 12 $+ The forces of good have won this special battle event in %current.turn $iif(%current.turn < 2, turn, turns) $+ !
 OutpostBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monster waves and successfully defended their outpost!
+ assaultBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monsters and taken over this outpost! As the monster flag comes down and is replaced with an Allied Forces flag, cheers can be heard all around the heroes. 
 GoodHasWonPresident=$chr(3) $+ 12 $+ The forces of good have saved the President of the Allied Forces after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
 BattleIsDraw=$chr(3) $+ 12 $+ The battle has come to a draw after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! 
 DrawPortal=$chr(3) $+ 12 $+ Neither heroes nor monsters have won this battle as it comes to a draw after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
@@ -608,6 +613,7 @@ MechSummon=summons $gender($1) $readini($char($1), mech, name) and hops in, read
 Don'tLetPresidentDie=$chr(3) $+ 4 $+ The Heroes must protect the president!  If the president dies the battle will be over!
 SongNotAllowedThisBattle=$chr(3) $+ 4 $+ A Darkness prevents %real.name $+ 's song from working during this battle.
 DefendOutpostForTurns=$chr(3) $+ 4 $+ The Heroes must defend this outpost for %darkness.turns rounds from the monster waves!  
+AssaultOutpost=$chr(3) $+ 4 $+ The Heroes must keep defeating monster forces to weaken the outpost in order to claim it! 
 
 
 =======================

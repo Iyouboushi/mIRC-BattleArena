@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/05/15
+;;;; Last updated: 03/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -452,6 +452,15 @@ boost_monster_stats {
     if (%darkness.turns <= 1) { inc %monster.level 3 }
   }
 
+  if (%battle.type = assault) {
+    if (%winning.streak >= 100) { var %monster.level 100 }
+    if (%winning.streak < 100) { var %monster.level %winning.streak }
+
+    if ($monster.outpost(status) = 10) { dec %monster.level 5 }
+    if ($monster.outpost(status) = 9) { dec %monster.level 3 }
+    if (($monster.outpost(status) <= 8) && ($monster.outpost(status) >= 5)) { dec %monster.level 2 }
+  }
+
   if ($2 = demonportal) { dec %monster.level 2 }
 
   ; Is it a losing streak? If so, set all monsters to level 1
@@ -546,7 +555,7 @@ boost_monster_hp {
 
   set %hp $readini($char($1), BaseStats, HP)
 
-  var %temp.hp.needed $round($calc(%hp + ((($return_winningstreak - 3)  / 5) * 50)),0)
+  var %temp.hp.needed $round($calc(%hp + ((($return_winningstreak - 3)  / 5) * 45)),0)
 
   if ($2 = portal) { 
     if (%temp.hp.needed) { writeini $char($1) basestats hp %temp.hp.needed | writeini $char($1) battle hp %temp.hp.needed | return }
@@ -574,10 +583,11 @@ boost_monster_hp {
   if ($return_winningstreak >= 10) {
 
     if ($return_winningstreak <= 500) { inc %hp.modifier $calc(.01 * $return_winningstreak) }
-    else { inc %hp.modifier $calc(.003 * $return_winningstreak) }
+    else { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
 
     if (%battle.type = boss) { inc %hp.modifier .01 }
-    if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier .01 }
+    if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier 1.01 }
+    if (%battle.type = assault) { inc %hp.modifier 1 }
   }
 
   if (%battle.type = ai) {  
@@ -807,6 +817,11 @@ deal_damage {
     if ($readini($char($2), battle, HP) <= 0) { 
       writeini $char($2) battle status dead 
       writeini $char($2) battle hp 0
+
+      if ((%battle.type = assault) && ($readini($char($2), info, flag) = monster)) { 
+        if ($isfile($boss($2)) = $true) { $monster.outpost(remove, $rand(2,3)) }
+        if ($isfile($mon($2)) = $true) { $monster.outpost(remove, $rand(0,1)) }
+      }
 
       ; give some ignition points if necessary
       $battle.reward.ignitionGauge.single($2)
@@ -2267,6 +2282,7 @@ defense_up_check {
 winningstreak.addmonster.amount {
   if (%battle.type = orbfountain) { return }
   if (%battle.type = demonwall) { return }
+  if (%battle.type = assault) { return }
   if (%battle.type = doppelganger) { return }
   if (%battle.type = monster) { 
     ; If the players have been winning a lot then we need to make things more interesting/difficult for them.
@@ -2279,8 +2295,8 @@ winningstreak.addmonster.amount {
   }
 
   if (%battle.type = boss) {
-    if ((%winning.streak > 300) && (%winning.streak <= 500)) { inc %number.of.monsters.needed 1 }
-    if (%winning.streak > 500) { inc %number.of.monsters.needed 2 }
+    if ((%winning.streak > 500) && (%winning.streak <= 800)) { inc %number.of.monsters.needed 1 }
+    if (%winning.streak > 800) { inc %number.of.monsters.needed 2 }
   }
   return
 }
@@ -2741,7 +2757,7 @@ counter_melee_action {
 ; Check for a multiple wave
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 multiple_wave_check {
-  if (%battle.type = defendoutpost) {  unset %multiple.wave }
+  if ((%battle.type = defendoutpost) || (%battle.type = assault)) {  unset %multiple.wave }
 
   if (%multiple.wave = yes) { return }
   if (%battleis = off) { return }
@@ -2755,7 +2771,7 @@ multiple_wave_check {
 
   unset %number.of.monsters.needed
 
-  if ((%battle.type != defendoutpost) && (%mode.gauntlet != on)) {  
+  if (((%battle.type != defendoutpost) && (%battle.type != assault) && (%mode.gauntlet != on))) {  
 
     var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
     if (%winning.streak <= 0) { return }
@@ -2774,6 +2790,9 @@ multiple_wave_check {
   if ((%battle.type = defendoutpost) && (%darkness.turns > 0)) {  var %random.wave.chance 1 | dec %darkness.turns 1 }
   if ((%battle.type = defendoutpost) && (%darkness.turns <= 0)) { $endbattle(victory) | halt }
 
+  if ((%battle.type = assault) && ( $monster.outpost(status) >= 1)) {  var %random.wave.chance 1 }
+  if ((%battle.type = assault) && ( $monster.outpost(status) <= 0)) {  $endbattle(victory) | halt }
+
   if (%random.wave.chance > %multiple.wave.chance) { return }
 
   set %multiple.wave yes | set %multiple.wave.bonus yes | set %multiple.wave.noaction yes
@@ -2785,8 +2804,10 @@ multiple_wave_check {
   if (%mode.gauntlet = $null) {  
     if ((%battle.type = defendoutpost) && (%darkness.turns > 1)) { $display.message($readini(translation.dat, system,AnotherWaveOutpost),battle)  }
     if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { $display.message($readini(translation.dat, system,AnotherWaveOutpostBoss),battle)  }
-    if (%battle.type != defendoutpost) { $display.message($readini(translation.dat, system,AnotherWaveArrives),battle) }
+    if ((%battle.type != defendoutpost) && (%battle.type != assault)) { $display.message($readini(translation.dat, system,AnotherWaveArrives),battle) }
+    if (%battle.type = assault) { $display.message($readini(translation.dat, system,AnotherWaveAssault),battle)  }
   }
+
   set %number.of.monsters.needed $rand(2,3)
 
   if (%battle.type != defendoutpost) {
@@ -2795,18 +2816,28 @@ multiple_wave_check {
   }
 
   if ($readini($txtfile(battle2.txt), battleinfo, players) > 1) { inc %number.of.monsters.needed 1 }
-  if ((%mode.gauntlet = $null) && (%battle.type != defendoutpost)) { $winningstreak.addmonster.amount | $generate_monster(monster) }
-  if ((%mode.gauntlet = $null) && (%battle.type = defendoutpost)) { 
-    if (%darkness.turns > 1) { $winningstreak.addmonster.amount | $generate_monster(monster) } 
+
+  if (%mode.gauntlet = $null) {
+    if ((%battle.type != defendoutpost) && (%battle.type != assault)) { $winningstreak.addmonster.amount | $generate_monster(monster) }
+  }
+
+  if (%battle.type = defendoutpost) { 
+    if (%darkness.turns > 1) {  $winningstreak.addmonster.amount | $generate_monster(monster) } 
     if (%darkness.turns <= 1) { $generate_monster(boss, defendoutpost) }
   }
 
-  if (%mode.gauntlet != $null) { 
+  if (%battle.type = assault) { 
+    set %number.of.monsters.needed $rand(1,2)
+    if ($monster.outpost(status) <= 5) { var %m.boss.chance $rand(1,20) }
+    else {  var %m.boss.chance $rand(1,100) }
+    if (%m.boss.chance > 15) { $generate_monster(monster) }
+    if (%m.boss.chance <= 15) { set %number.of.monsters.needed 1 | $generate_monster(boss) | set %number.of monsters.needed $rand(1,2) | $generate_monster(monster)  }
+  }
 
+  if (%mode.gauntlet != $null) { 
+    var %m.boss.chance $rand(1,100)
     $display.message($readini(translation.dat, system,AnotherWaveArrives) [Gauntlet Round: %mode.gauntlet.wave $+ ], battle) 
     set %number.of.monsters.needed 2  
-
-    var %m.boss.chance $rand(1,100)
     if (%m.boss.chance > 15) { $generate_monster(monster) }
     if (%m.boss.chance <= 15) { $generate_monster(boss) }
   }
@@ -3750,7 +3781,7 @@ modifer_adjust {
   ; If it's over 1, then it means the target is weak to the element/weapon so we can adjust the target's def a little as an extra bonus.
   if (%modifier.adjust.value > 1) {
     var %mon.temp.def $readini($char($1), battle, def)
-    var %mon.temp.def = $round($calc(%mon.temp.def - (%mon.temp.def * .10)),0)
+    var %mon.temp.def = $round($calc(%mon.temp.def - (%mon.temp.def * .05)),0)
     if (%mon.temp.def < 0) { var %mon.temp.def 0 }
     writeini $char($1) battle def %mon.temp.def
     set %damage.display.color 7
@@ -3760,7 +3791,7 @@ modifer_adjust {
 
   if (%modifier.adjust.value < 1) {
     var %mon.temp.str $readini($char($1), battle, str)
-    var %mon.temp.str = $round($calc(%mon.temp.str + (%mon.temp.str * .10)),0)
+    var %mon.temp.str = $round($calc(%mon.temp.str + (%mon.temp.str * .05)),0)
     if (%mon.temp.str < 0) { var %mon.temp.str 0 }
     writeini $char($1) battle str %mon.temp.str
     set %damage.display.color 6
@@ -4627,5 +4658,39 @@ ignition_check {
     writeini $char($1) battle IgnitionGauge %player.current.ig
     $status_message_check(ignition boosted)
     unset %ignition.name | unset %ignition.cost | unset %player.current.ig
+  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Monster Outpost Alias
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+monster.outpost {
+  if ($1 = status) {
+    var %outpost.strength $readini($txtfile(battle2.txt), battle, outpostStrength)
+    if (%outpost.strength = $null) { writeini $txtfile(battle2.txt) battle outpostStrength 10 | return 10 }
+    else { return %outpost.strength }
+  }
+  if ($1 = remove) { 
+    var %outpost.strength $readini($txtfile(battle2.txt), battle, outpostStrength)
+    if (%outpost.strength = $null) { writeini $txtfile(battle2.txt) battle outpostStrength 10 | var %outpost.strength 10 }
+    dec %outpost.strength $2
+    writeini $txtfile(battle2.txt) battle OutpostStrength %outpost.strength
+  }
+
+  if ($1 = strengthbar) {
+    var %outpost.strength $readini($txtfile(battle2.txt), battle, outpostStrength)
+    if (%outpost.strength = $null) { var %outpost.strength 10 }
+
+    if (%outpost.strength = 10) { return 3|||||||||| }
+    if (%outpost.strength = 9) { return 3|||||||||5| }
+    if (%outpost.strength = 8) { return 3||||||||5|| }
+    if (%outpost.strength = 7) { return 3|||||||5||| }
+    if (%outpost.strength = 6) { return 3||||||5|||| }
+    if (%outpost.strength = 5) { return 3|||||5||||| }
+    if (%outpost.strength = 4) { return 3||||5|||||| }
+    if (%outpost.strength = 3) { return 3|||5||||||| }
+    if (%outpost.strength = 2) { return 3||5|||||||| }
+    if (%outpost.strength = 1) { return 3|5||||||||| }
+    if (%outpost.strength <= 0) { return 5|||||||||| }
   }
 }
