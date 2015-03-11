@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/08/15
+;;;; Last updated: 03/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1921,7 +1921,7 @@ alias battlelist {
         if (%darkness.countdown <= 0) { $display.message(4[Darkness12 has overcome 4the battlefield], private) }
       }
 
-      if (%battle.type = assault) {  $display.message(4[Outpost Strength: $monster.outpost(strengthbar) $+ ], private) }
+      if (%battle.type = assault) {  $display.message(4[Outpost Strength: $monster.outpost(strengthbar) $+ 4], private) }
 
     }
 
@@ -1960,7 +1960,7 @@ alias battlelist {
         if (%darkness.countdown <= 0) { $display.message(4[Darkness12 has overcome 4the battlefield], battle) }
       }
 
-      if (%battle.type = assault) {  $display.message(4[Outpost Strength: $monster.outpost(strengthbar) $+ ], battle) }
+      if (%battle.type = assault) {  $display.message(4[Outpost Strength: $monster.outpost(strengthbar) $+ 4], battle) }
     }
 
     if (%battle.type != ai) { 
