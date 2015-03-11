@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 02/28/15
+;;;; Last updated: 03/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -834,7 +834,7 @@ formula.techdmg.player {
 
   set %true.base.stat  %base.stat
 
-  var %attack.rating $round($calc(%base.stat / 2),0)
+  var %attack.rating $round($calc(%base.stat / 1.8),0)
 
   if (%attack.rating >= 1000) {  
     var %base.stat.cap .15
@@ -853,7 +853,7 @@ formula.techdmg.player {
   if ($istok(%ignition.techs,$2,46) = $true) { var %user.tech.level 50 }
   unset %ignition.name | unset %ignition.techs
 
-  inc %tech.base $round($calc(%user.tech.level * 1.6),0)
+  inc %tech.base $round($calc(%user.tech.level * 1.655),0)
 
   ; Let's add in the base power of the weapon used..
   if ($person_in_mech($1) = false) { set %weapon.used $readini($char($1), weapons, equipped) }
@@ -865,14 +865,14 @@ formula.techdmg.player {
 
   set %weapon.base $readini($char($1), weapons, %weapon.used)
   if (%weapon.base = $null) { set %weapon.base 1 }
-  inc %base.power.wpn $round($calc(%weapon.base * 1.5),0)
+  inc %base.power.wpn $round($calc(%weapon.base * 1.6),0)
 
   ; Does the user have a mastery in the weapon?  We can add a bonus as well.
   $mastery_check($1, %weapon.used)
 
   unset %weapon.used
 
-  inc %base.power.wpn $round($calc(%mastery.bonus / 1.5),0)
+  inc %base.power.wpn $round($calc(%mastery.bonus / 1.45),0)
   inc %tech.base %base.power.wpn
 
   inc %tech.base %user.tech.level
@@ -893,7 +893,7 @@ formula.techdmg.player {
   }
 
   ; Let's increase the attack by a random amount.
-  inc %attack.damage $rand(1,10)
+  inc %attack.damage $rand(1,15)
 
   ; Is the tech magic?  If so, we need to add some more stuff to it.
   if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
@@ -1512,7 +1512,7 @@ calculate_damage_magic {
   set %current.playerstyle $readini($char($1), styles, equipped)
   set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
 
-  set %magic.bonus.modifier 0.5
+  set %magic.bonus.modifier 0.6
 
   if ($augment.check($1, MagicBonus) = true) { 
     set %magic.bonus.augment $calc(%augment.strength * .2)
