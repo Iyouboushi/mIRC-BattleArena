@@ -1149,6 +1149,7 @@ Battle Arena Bot VERSIONS
   original cost back except for blueprint weapons in which you will receive a flat 5 black orbs back.
 - Added a new battle type: Defend the Outpost. In this type, players will have to survive 5 waves of monsters
   to successfully defend an outpost.
+- Added a new battle type: Assault. In this type players will have to defeat monsters in order to capture an enemy outpost.
 - Added influence to monsters and allied forces. This is only used to determine when the new battle types occur.
 - Added the Spirit of the Hero buff. If players enter a streak that is too far out of their level range the bot will
   automatically adjust their level and hp at the cost of their orb reward at the end of the battle.
