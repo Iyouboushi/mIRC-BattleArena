@@ -5,9 +5,6 @@ Gems=Zircon.Topaz.Emerald.Ruby.Zircon.Diamond.Sapphire.Opal.Zircon.Onyx
 ; Keys are used to open chests. They cannot be bought in stores.  This line needs to stay here for the bot to work.
 Keys=BlueKey.BrownKey.RedKey.OrangeKey.GreenKey.GoldKey.BrownKey.BlueKey.RedKey.SilverKey.PurpleKey.BlackKey
 
-; Runes are for augments. This line needs to stay in here for the bot to work.
-Runes=EthRune.MtlRune.HiRune.GeRune.MaRune.TeRune.MeRune.SmnRune.DrnRune.ItmRune.RenRune.NinRune.IgDefRune.TurtleRune.DragonRune
-
 
 =========================
 HEALING ITEMS
