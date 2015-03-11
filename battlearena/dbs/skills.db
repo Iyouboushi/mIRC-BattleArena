@@ -198,7 +198,7 @@ Cooldown=11
 Cost=450
 Type=Active
 Max=6
-Info=This skill reduces the next physical attack used against you to 0.  Increased levels decreases the amount of time between uses.
+Info=This skill reduces the next physical attack used against you to 0.  Increased levels decreases the amount of time between uses. The damage blocked with this skill on will be added to your royal guard meter.
 Cooldown=11
 
 [PerfectDefense]
