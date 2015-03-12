@@ -309,7 +309,7 @@ alias startnormal {
   if (($readini(battlestats.dat, conquest, AlliedInfluence) >= 100) && ($current.battlestreak > 20)) {
     if (%start.battle.type = $null) {  var %assault.chance $rand(1,100) }
     if (%start.battle.type != $null) { var %assault.chance 100 }
-    if (%outpost.chance <= 20) { var %start.battle.type assault } 
+    if (%assault.chance <= 20) { var %start.battle.type assault } 
   }
 
   ; If we don't, let's pick one.
