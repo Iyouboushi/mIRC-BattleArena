@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=bright
+current=calm
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Gibbous
-CurrentMoonTurn=5
+CurrentMoonPhase=New
+CurrentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -853,3 +853,8 @@ weather=gloomy
 NumberofEvents=0
 limitations=no-item
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Monster's Outpost]
+weather=gloomy
+NumberOfEvents=0
+scavenge=BeastmenSeal.KindredSeal.KindredCrest
