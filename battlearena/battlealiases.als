@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/10/15
+;;;; Last updated: 03/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -856,7 +856,6 @@ deal_damage {
   $ai.learncheck($2, $3)
 
   if (%guard.message = $null) { $renkei.calculate($1, $2, $3) }
-
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1134,6 +1133,7 @@ display_damage {
     $achievement_check($1, FillYourDarkSoulWithLight)
   }
 
+
   if (($readini($char(%target), battle, HP) > 0) && ($person_in_mech($2) = false)) {
 
     ; Check to see if the monster can be staggered..  
@@ -1153,6 +1153,20 @@ display_damage {
     }
 
     if ($3 = tech) { unset %attack.damage | $renkei.check($1, %target) }
+
+    if (%battle.type = orbfountain) { 
+      if (($readini($char(%target), battle, status) != dead) && ($return_winningstreak >= 50)) { 
+        if ($rand(1,100) < 30) {
+          if (($1 != battlefield) && (%target = orb_fountain)) { 
+            $display.message($readini(translation.dat, system, MonstersDefendOrbFountain), battle)
+            $portal.clear.monsters
+            $generate_monster(monster)
+          }
+        }
+      }
+    }
+
+
   }
 
   if ($person_in_mech($2) = true) { 
@@ -1228,15 +1242,26 @@ display_aoedamage {
 
   set %target.hp $readini($char(%target), battle, hp)
 
-  if ((%target.hp > 0) && ($person_in_mech($2) = false)) {
+  if ((%target.hp > 0) && ($person_in_mech(%target) = false)) {
 
     ; Check for inactive..
-    if ($readini($char($2), battle, status) = inactive) {
+    if ($readini($char(%target), battle, status) = inactive) {
       if ($readini($char($1), info, flag) != monster) { 
         writeini $char(%target) battle status alive
         if ($readini($char(%target), descriptions, Awaken) != $null) { $display.message(4 $+ %enemy  $+ $readini($char(%target), descriptions, Awaken), battle) }
         if ($readini($char(%target), descriptions, Awaken) = $null) { $display.message($readini(translation.dat, battle, inactivealive),battle)    }
+      }
+    }
 
+    if (%battle.type = orbfountain) { 
+      if (($readini($char(%target), battle, status) != dead) && ($return_winningstreak >= 50)) { 
+        if ($rand(1,100) < 30) {
+          if (($1 != battlefield) && (%target = orb_fountain)) { 
+            $display.message($readini(translation.dat, system, MonstersDefendOrbFountain), battle)
+            $portal.clear.monsters
+            $generate_monster(monster)
+          }
+        }
       }
     }
 
@@ -1250,7 +1275,11 @@ display_aoedamage {
     if (%stagger.amount.needed <= 0) { writeini $char(%target) status staggered yes |  writeini $char(%target) info CanStagger no
       $display.message($readini(translation.dat, status, StaggerHappens), battle)
     }
+
+
+
   }
+
 
   ; Did the person die?  If so, show the death message.
 
@@ -1282,6 +1311,8 @@ display_aoedamage {
       writeini $char($2) mech inuse false
     }
   }
+
+
 
   unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   unset %attack.damage | unset %target
