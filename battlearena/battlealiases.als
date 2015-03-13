@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/11/15
+;;;; Last updated: 03/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -490,6 +490,8 @@ boost_monster_stats {
     if (%boss.level = $null) { var %monster.level $return_winningstreak }
     else { var %monster.level %boss.level } 
   }
+
+  if ((%battle.type = orbfountain) && ($1 != orb_fountain)) {  dec %monster.level 10  }
 
   ; Is it darkness hitting the monsters?
   if ($2 = rage) { %monster.level = $calc(%monster.level * 10000) }
@@ -4653,7 +4655,7 @@ enspell_check {
   var %enspell.timer $readini($char($1), status, en-spell.timer)  
   if (%enspell.timer = $null) { var %enspell.timer 0 }
   if (%enspell.timer < $status.effects.turns(enspell)) { 
-    if ($readini($char($1), Status, En-spell) != none) { var %enspell $readini($char($1), status, en-spell) | $status_message_check(en- $+ %enspell) |  %enspell.timer = $calc(%enspell.timer + 1) | writeini $char($1) status en-spell.timer %enspell.timer | unset %enspell.timer | return }
+    if (($readini($char($1), Status, En-spell) != none) && ($readini($char($1), Status, En-Spell) != $null)) { var %enspell $readini($char($1), status, en-spell) | $status_message_check(en- $+ %enspell) |  %enspell.timer = $calc(%enspell.timer + 1) | writeini $char($1) status en-spell.timer %enspell.timer | unset %enspell.timer | return }
   }
   else { 
     if ($readini($char($1), Status, En-Spell) != none) {   writeini $char($1) status en-spell none | writeini $char($1) status en-spell.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, EnspellWornOff)  | unset %enspell.timer | return  }
