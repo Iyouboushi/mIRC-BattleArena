@@ -239,13 +239,13 @@ Cooldown=16
 Cost=1000
 Type=Active
 Max=10
-Info=This skill will consume 100 HP to give you a (level * 2)% boost to your STR.
+Info=This skill will consume (3 * skill level)% hp to give you a (skill level * 2)% boost to your STR.
 
 [BloodSpirit]
 Cost=1000
 Type=Active
 Max=10
-Info=This skill will consume 100 HP to give you a (level * 2)% boost to your INT.
+Info=This skill will consume (3 * skill level)% hp to give you a (skill level * 2)% boost to your INT.
 
 [DrainSamba]
 Cost=750

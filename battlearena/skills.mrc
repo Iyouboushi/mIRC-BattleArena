@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/06/15
+;;;; Last updated: 03/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -953,13 +953,16 @@ alias skill.bloodboost { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
-  if ($readini($char($1), info, flag) = $null) { 
-    var %hp.needed 100 | var %hp.current $readini($char($1), battle, hp)
-    if (%hp.needed > %hp.current) { $display.message(4Error: %real.name does not have enough HP to use this skill!, private) | halt }
-  }
-
   ; Has bloodboost been used?
   if ($readini($char($1), skills, bloodboost.time) != $null) { $display.message($readini(translation.dat, skill, SkillAlreadyUsed), private) | halt }
+
+  if ($readini($char($1), info, flag) = $null) { 
+    ; Does the char have enough HP to perform it?
+    var %hp.cost.percent $calc(3 * $readini($char($1), skills, bloodboost))
+    var %hp.cost $return_percentofvalue($readini($char($1), basestats, hp), %hp.cost.percent)
+    if (%hp.cost >= $readini($char($1), battle, hp)) { $display.message($readini(translation.dat, errors, NotEnoughHPForSkill) ,private) | halt }
+    else {  writeini $char($1) battle hp $calc($readini($char($1), battle, hp) - %hp.cost)  }
+  }
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, bloodboost) = $null) { set %skill.description sacrifices some of $gender($1) blood for raw strength.  }
@@ -968,12 +971,6 @@ alias skill.bloodboost { $set_chr_name($1)
 
   ; write the last used time.
   writeini $char($1) skills bloodboost.time %current.turn
-
-  if ($readini($char($1), info, flag) = $null) { 
-    ; Dec the HP
-    dec %hp.current %hp.needed
-    writeini $char($1) battle hp %hp.current
-  }
 
   ; get STR
   set %str.current $readini($char($1), battle, str)
@@ -1025,13 +1022,16 @@ alias skill.bloodspirit { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
-  if ($readini($char($1), info, flag) = $null) { 
-    var %hp.needed 100 | var %hp.current $readini($char($1), battle, hp)
-    if (%hp.needed > %hp.current) { $display.message(4Error: %real.name does not have enough HP to use this skill!, private) | halt }
-  }
-
   ; Has bloodspirit been used?
   if ($readini($char($1), skills, bloodspirit.time) != $null) { $display.message($readini(translation.dat, skill, SkillAlreadyUsed), private) | halt }
+
+  if ($readini($char($1), info, flag) = $null) { 
+    ; Does the char have enough HP to perform it?
+    var %hp.cost.percent $calc(3 * $readini($char($1), skills, bloodboost))
+    var %hp.cost $return_percentofvalue($readini($char($1), basestats, hp), %hp.cost.percent)
+    if (%hp.cost >= $readini($char($1), battle, hp)) { $display.message($readini(translation.dat, errors, NotEnoughHPForSkill) ,private) | halt }
+    else {  writeini $char($1) battle hp $calc($readini($char($1), battle, hp) - %hp.cost)  }
+  }
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, bloodspirit) = $null) { set %skill.description sacrifices some of $gender($1) blood for raw intelligence.  }
@@ -1040,12 +1040,6 @@ alias skill.bloodspirit { $set_chr_name($1)
 
   ; write the last used time.
   writeini $char($1) skills bloodspirit.time %current.turn
-
-  if ($readini($char($1), info, flag) = $null) { 
-    ; Dec the HP
-    dec %hp.current %hp.needed
-    writeini $char($1) battle hp %hp.current
-  }
 
   ; get INT
   set %int.current $readini($char($1), battle, int)
