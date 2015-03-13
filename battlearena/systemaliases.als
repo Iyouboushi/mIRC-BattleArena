@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/10/15
+;;;; Last updated: 03/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2746,6 +2746,7 @@ clear_variables2 {
   unset %original.ignition.name | unset %holy.aura.user | unset %max.hp.restore | unset %max.tp.restore 
   unset %passive.skills.list2 | unset %prize.list | unset %inflict.meleewpn | unset %weapon.list1 | unset %duplicate.ips
   unset %attacker.level | unset %defender.level | unset %damage.display.color | unset %current.playerstyle
+  unset %number.of monsters.needed
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
