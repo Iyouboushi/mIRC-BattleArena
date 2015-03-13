@@ -1198,6 +1198,7 @@ Battle Arena Bot VERSIONS
 - Changed $return_winningstreak to work correctly with portal battles
 - Changed the way conquest points work so that it's clearer and more understandable. 
 - Changed orb fountain battles on streaks 50+ so that there's a 30% chance that monsters will attempt to defend it.
+- Changed the skills BloodBoost and BloodSpirit to cost (3 *skill level)% hp to perform
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.

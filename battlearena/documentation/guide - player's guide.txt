@@ -619,10 +619,10 @@ Conserve TP - !conserveTP
 This skill will reduce the cost of your next technique to 0 TP. The default reuse time is 15 turns.  Increased levels decreases the amount of turns inbetween uses.
 
 Blood Boost - !BloodBoost
-This skill will consume 100 HP to give you a (level * 2)% boost to your STR.  This skill can only be used once per battle.
+This skill will consume (skill level * 3)% HP to give you a (level * 2)% boost to your STR.  This skill can only be used once per battle.
 
 Blood Spirit - !BloodSpirit
-This skill will consume 100 HP to give you a (level * 2)% boost to your INT.  This skill can only be used once per battle.
+This skill will consume (skill level * 3)% HP to give you a (level * 2)% boost to your INT.  This skill can only be used once per battle.
 
 Drain Samba - !DrainSamba
 This skill will consume 10 TP to activate the "drain" status on the user, allowing him/her to gain HP back with every melee attack.  The amount of turns it will last is the level of your skill.  Note that the drain effect will not work on the undead (vampires, skeletons, zombies).  There is a 15 turn reuse period inbetween command uses.
