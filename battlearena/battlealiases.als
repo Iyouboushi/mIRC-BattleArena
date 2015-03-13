@@ -822,7 +822,7 @@ deal_damage {
 
       if ((%battle.type = assault) && ($readini($char($2), info, flag) = monster)) { 
         if ($isfile($boss($2)) = $true) { $monster.outpost(remove, $rand(2,3)) }
-        if ($isfile($mon($2)) = $true) { $monster.outpost(remove, $rand(0,1)) }
+        if ($isfile($mon($2)) = $true) { $monster.outpost(remove, 1) }
       }
 
       ; give some ignition points if necessary
@@ -3479,50 +3479,35 @@ calculate_attack_leveldiff {
   var %defender.level $get.level($2)
   var %level.difference $round($calc(%attacker.level - %defender.level),0)
 
-  if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc))  {
-    if ($readini($char($2), info, flag) = monster) {
 
-      ; This will help newbies out for the streaks 1-9
-      if (($return_winningstreak < 10) && (%portal.bonus != true)) {  
-        if (%level.difference <= 0) { var %level.difference 0 } 
-      }
-
-      ; If the target is stronger, we need to nerf damage
-      if (%level.difference < 0) { 
-        if ((%level.difference < 0) && (%level.difference >= -10)) { dec %attack.damage $round($calc(%attack.damage * .10),0) }
-        if ((%level.difference < -10) && (%level.difference >= -50)) { dec %attack.damage $round($calc(%attack.damage * .15),0) }
-        if ((%level.difference <= -50) && (%level.difference >= -100)) { dec %attack.damage $round($calc(%attack.damage * .25),0) }
-        if ((%level.difference < -100) && (%level.difference >= -150)) { dec %attack.damage $round($calc(%attack.damage * .30),0) }
-        if ((%level.difference < -150) && (%level.difference >= -300)) { dec %attack.damage $round($calc(%attack.damage * .50),0) }
-        if ((%level.difference < -300) && (%level.difference >= -500)) { dec %attack.damage $round($calc(%attack.damage * .60),0) }
-        if (%level.difference < -500)  { dec %attack.damage $round($calc(%attack.damage * .85),0) }
-      }
-    }
+  ; This will help newbies out for the streaks 1-9
+  if (($return_winningstreak < 10) && (%portal.bonus != true)) {  
+    if (%level.difference <= 0) { var %level.difference 0 } 
   }
 
-  if (($readini($char($1), info, flag) != $null) && ($readini($char($2), info, flag) = $null)) {
 
-    if (%level.difference >= 0) { 
-      if ((%level.difference >= 2) && (%level.difference < 10)) { inc %attack.damage $round($calc(%attack.damage * .05),0) }
-      if ((%level.difference >= 10) && (%level.difference <= 50)) { inc %attack.damage $round($calc(%attack.damage * .10),0) }
-      if ((%level.difference > 50) && (%level.difference >= 100)) { inc %attack.damage $round($calc(%attack.damage * .15),0) }
-      if ((%level.difference > 100) && (%level.difference >= 150)) { inc %attack.damage $round($calc(%attack.damage * .20),0) }
-      if ((%level.difference > 150) && (%level.difference >= 300)) { inc %attack.damage $round($calc(%attack.damage * .25),0) }
-      if ((%level.difference > 300) && (%level.difference >= 500)) { inc %attack.damage $round($calc(%attack.damage * .28),0) }
-      if (%level.difference > 500)  { inc %attack.damage $round($calc(%attack.damage * .30),0) }
-    }
-
-    if (%level.difference <= 0) { 
-      if ((%level.difference <= 0) && (%level.difference >= -10)) { dec %attack.damage $round($calc(%attack.damage * .10),0) }
-      if ((%level.difference < -10) && (%level.difference >= -50)) { dec %attack.damage $round($calc(%attack.damage * .15),0) }
-      if ((%level.difference < -50) && (%level.difference >= -100)) { dec %attack.damage $round($calc(%attack.damage * .18),0) }
-      if ((%level.difference < -100) && (%level.difference >= -150)) { dec %attack.damage $round($calc(%attack.damage * .20),0) }
-      if ((%level.difference < -150) && (%level.difference >= -300)) { dec %attack.damage $round($calc(%attack.damage * .22),0) }
-      if ((%level.difference < -300) && (%level.difference >= -1000)) { dec %attack.damage $round($calc(%attack.damage * .25),0) }
-      if (%level.difference < -1000)  { dec %attack.damage $round($calc(%attack.damage * .30),0) }
-    }
-
+  ; If the target is stronger, we need to nerf damage
+  if (%level.difference < 0) { 
+    if ((%level.difference < 0) && (%level.difference >= -10)) { dec %attack.damage $round($calc(%attack.damage * .10),0) }
+    if ((%level.difference < -10) && (%level.difference >= -50)) { dec %attack.damage $round($calc(%attack.damage * .15),0) }
+    if ((%level.difference <= -50) && (%level.difference >= -100)) { dec %attack.damage $round($calc(%attack.damage * .25),0) }
+    if ((%level.difference < -100) && (%level.difference >= -150)) { dec %attack.damage $round($calc(%attack.damage * .30),0) }
+    if ((%level.difference < -150) && (%level.difference >= -300)) { dec %attack.damage $round($calc(%attack.damage * .50),0) }
+    if ((%level.difference < -300) && (%level.difference >= -500)) { dec %attack.damage $round($calc(%attack.damage * .60),0) }
+    if (%level.difference < -500)  { dec %attack.damage $round($calc(%attack.damage * .85),0) }
   }
+
+  ; The target is weaker, let's boost the damage slightly
+  if (%level.difference > 0) { 
+    if ((%level.difference >= 2) && (%level.difference < 10)) { inc %attack.damage $round($calc(%attack.damage * .05),0) }
+    if ((%level.difference >= 10) && (%level.difference <= 50)) { inc %attack.damage $round($calc(%attack.damage * .10),0) }
+    if ((%level.difference > 50) && (%level.difference >= 100)) { inc %attack.damage $round($calc(%attack.damage * .15),0) }
+    if ((%level.difference > 100) && (%level.difference >= 150)) { inc %attack.damage $round($calc(%attack.damage * .20),0) }
+    if ((%level.difference > 150) && (%level.difference >= 300)) { inc %attack.damage $round($calc(%attack.damage * .25),0) }
+    if ((%level.difference > 300) && (%level.difference >= 500)) { inc %attack.damage $round($calc(%attack.damage * .28),0) }
+    if (%level.difference > 500)  { inc %attack.damage $round($calc(%attack.damage * .30),0) }
+  }
+
 
 }
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

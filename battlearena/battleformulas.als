@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/10/15
+;;;; Last updated: 03/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -834,7 +834,7 @@ formula.techdmg.player {
 
   set %true.base.stat  %base.stat
 
-  var %attack.rating $round($calc(%base.stat / 1.8),0)
+  var %attack.rating $round($calc(%base.stat / 1.5),0)
 
   if (%attack.rating >= 1000) {  
     var %base.stat.cap .15
@@ -853,7 +853,8 @@ formula.techdmg.player {
   if ($istok(%ignition.techs,$2,46) = $true) { var %user.tech.level 50 }
   unset %ignition.name | unset %ignition.techs
 
-  inc %tech.base $round($calc(%user.tech.level * 1.655),0)
+  if (%tech.base < 100) { inc %tech.base $round($calc(%user.tech.level * 1.8),0) }
+  if (%tech.base >= 100) { inc %tech.base $round($calc(%user.tech.level 1.655),0) }
 
   ; Let's add in the base power of the weapon used..
   if ($person_in_mech($1) = false) { set %weapon.used $readini($char($1), weapons, equipped) }
@@ -922,15 +923,15 @@ formula.techdmg.player {
   if ((%tech.type = heal-aoe) || (%tech.type = heal)) { return }
 
   ; Now we're ready to calculate the enemy's defense.
-  set %enemy.defense $readini($char($3), battle, def)
+  if ($readini($dbfile(techniques.db), $2, stat) = str) {  
+    set %enemy.defense $readini($char($3), battle, def) 
+    if ($readini($char($3), status, defdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
+  }
+  else { 
+    set %enemy.defense $readini($char($3), battle, int) 
+    if ($readini($char($3), status, intdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
+  }
 
-  ; Because it's a tech, the enemy's int will play a small part too.
-  var %int.bonus $round($calc($readini($char($3), battle, int) / 3.0),0)
-  if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
-
-  inc %enemy.defense %int.bonus
-
-  $defense_down_check($3)
   $defense_up_check($3)
 
   ; Check to see if the weapon has an "IgnoreDefense=" flag.  If so, cut the def down.
@@ -977,8 +978,11 @@ formula.techdmg.player {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CALCULATE TOTAL DAMAGE.
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   %attack.def.ratio = $calc(%true.base.stat  / %enemy.defense)
-  %attack.damage = $round($calc(%attack.damage * %attack.def.ratio),0)
+
+  if (%attack.def.ratio < 1) { %attack.damage = $round($calc(%attack.damage - (%attack.damage * %attack.def.ratio)),0) }
+  else {  %attack.damage = $round($calc(%attack.damage + (%attack.damage * %attack.def.ratio)),0) }
   unset %attack.def.ratio
 
   if (enhance-tech isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
@@ -990,7 +994,7 @@ formula.techdmg.player {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   var %flag $readini($char($1), info, flag)
 
-  $cap.damage($1, $3, melee)
+  $cap.damage($1, $3, tech)
 
   if ((%flag = $null) || (%flag = npc)) {
 
@@ -1512,7 +1516,7 @@ calculate_damage_magic {
   set %current.playerstyle $readini($char($1), styles, equipped)
   set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
 
-  set %magic.bonus.modifier 0.6
+  set %magic.bonus.modifier 0.85
 
   if ($augment.check($1, MagicBonus) = true) { 
     set %magic.bonus.augment $calc(%augment.strength * .2)
@@ -1553,7 +1557,6 @@ calculate_damage_magic {
   if ($readini($char($3), monster, type) = elemental) { inc %magic.bonus.modifier 1.3 } 
 
   ; Increase the attack damage now.
-
   if (%magic.bonus.modifier != 0) { inc %attack.damage $round($calc(%attack.damage * %magic.bonus.modifier),0) }
 
   ; Is the weather the right condition to enhance the spell?

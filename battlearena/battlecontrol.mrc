@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/11/15
+;;;; Last updated: 03/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -681,7 +681,7 @@ alias battlebegin {
   if (%battle.type = manual) { set %darkness.turns 21 }
   if (%battle.type = orbfountain) { set %darkness.turns 16 } 
   if (%battle.type = defendoutpost) { set %darkness.turns 5 }
-  if (%battle.type = assault) { set %darkness.turns 20 }
+  if (%battle.type = assault) { set %darkness.turns 35 }
 
   if (%mode.gauntlet = on) { unset %darkness.turns }
   if (%battle.type = ai) { unset %darkness.turns } 
