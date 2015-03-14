@@ -1234,21 +1234,18 @@ tech.list {
     %techs.list = $replace(%techs.list, $chr(046), %replacechar)
     unset %replacechar
     return 
-
   }
 
   if (%weapon.equipped.left != $null) { 
     var %techs.list.left $techs.get.list($1, %weapon.equipped.left)
 
     if (%techs.list.left = $null) { return }
-
     var %tech.position 1 
     while (%tech.position <= $numtok(%techs.list.left,46)) {
       var %tech.name $gettok(%techs.list.left,%tech.position,46)
       %techs.list = $addtok(%techs.list, %tech.name, 46) 
       inc %tech.position
     }
-
   }
 
   set %replacechar $chr(044) $chr(032)

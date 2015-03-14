@@ -585,6 +585,11 @@ boost_monster_hp {
   if ($return_winningstreak >= 10) {
 
     if ($return_winningstreak <= 500) { inc %hp.modifier $calc(.01 * $return_winningstreak) }
+    else { 
+      if (($return_winningstreak > 500) && ($return_winningstreak < 2000)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
+      else { inc %hp.modifier $calc(.0055 * $return_winningstreak) }
+    } 
+
     else { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
 
     if (%battle.type = boss) { inc %hp.modifier .01 }
