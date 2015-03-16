@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/03/15
+;;;; Last updated: 03/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1118,7 +1118,8 @@ alias shop.stats {
     if (($3 != IG) && ($3 != IgnitionGauge)) {  writeini $char($1) basestats $3 %basestat.to.increase }
     if (($3 = IG) || ($3 = IgnitionGauge)) { writeini $char($1) basestats IgnitionGauge %basestat.to.increase }
 
-    $fulls($1)
+
+    $fulls($1, yes)
 
     ; decrease amount of orbs you have.
     dec %player.shop.redorbs %total.price
