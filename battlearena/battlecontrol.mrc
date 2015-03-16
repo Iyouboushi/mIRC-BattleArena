@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/13/15
+;;;; Last updated: 03/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -512,12 +512,12 @@ alias enter {
   ; level sync for defend/assault outpost type battles
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { 
     if ($return_winningstreak >= 100) { 
-      if ($get.level($1) > 102) {  $levelsync($1, 102) | $display.message(4 $+ %real.name has been synced to level 102 for this battle, battle) }
+      if ($get.level($1) > 105) {  $levelsync($1, 105) | $display.message(4 $+ %real.name has been synced to level 105 for this battle, battle) }
     }
     else { 
-      if ($get.level($1) > $calc(2 + $return_winningstreak)) { 
-        $levelsync($1, $calc(2 + $return_winningstreak)) 
-        $display.message(4 $+ %real.name has been synced to level $calc(2 + $return_winningstreak) for this battle, battle)
+      if ($get.level($1) > $calc(5 + $return_winningstreak)) { 
+        $levelsync($1, $calc(5 + $return_winningstreak)) 
+        $display.message(4 $+ %real.name has been synced to level $calc(5 + $return_winningstreak) for this battle, battle)
       }
     }
   }
