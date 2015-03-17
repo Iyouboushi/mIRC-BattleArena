@@ -1,8 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/16/15
+;;;; Last updated: 03/17/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Calculates extra magic dmg
@@ -478,8 +477,6 @@ formula.meleedmg.player {
 
   if (enhance-melee isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
 
-
-
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; ADJUST THE TOTAL DAMAGE.
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -492,25 +489,9 @@ formula.meleedmg.player {
   ; Cap damage, if needed
   $cap.damage($1, $3, melee)
 
-
   if (%attack.damage <= 1) {
-    var %base.weapon $readini($dbfile(weapons.db), $2, BasePower)
-    var %str.increase.amount $round($calc(%true.base.stat * .10),0)
-    inc %base.weapon %str.increase.amount
-    var %min.damage %base.weapon
     set %attack.damage $readini($dbfile(weapons.db), $2, BasePower)
-
-    var %attacker.level $get.level($1)
-    var %defender.level $get.level($3)
-    var %level.difference $calc(%defender.level - %attacker.level)
-
-    if (%level.difference >= 300) { 
-      set %attack.damage 1
-      if (%flag = $null) { set %min.damage $round($calc(%min.damage / 8),0) }
-      else {  set %min.damage $round($calc(%min.damage / 2),0) }
-    }
-
-    set %attack.damage $rand(%min.damage, %attack.damage)
+    set %attack.damage $rand(1, %attack.damage)
   }
 
   inc %attack.damage $rand(1,10)
@@ -1505,23 +1486,13 @@ formula.techdmg.player {
 
   inc %base.power.wpn %mastery.bonus
 
-  echo -a base stat: %base.stat
-  echo -a tech base: %tech.base
-  echo -a user tech level: %user.tech.level
-  echo -a base power weapon: %base.power.wpn
-
   set %attack.damage $calc(%tech.base + %user.tech.level + %base.power.wpn)
   set %attack.damage $round($calc(%attack.damage * %base.stat),0)
-
-  echo -a attack damage before style: %attack.damage
-
 
   if ($person_in_mech($1) = false) {
     ; Let's check for some offensive style enhancements
     $offensive.style.check($1, $2, tech)
   }
-
-  echo -a attack damage before techbonus: %attack.damage
 
   if ($augment.check($1, TechBonus) = true) { 
     set %tech.bonus.augment $calc(%augment.strength * .25)
@@ -1529,8 +1500,6 @@ formula.techdmg.player {
     inc %attack.damage %augment.power.increase.amount
     unset %tech.bonus.augment
   }
-
-  echo -a attack damage after techbonus: %attack.damage
 
   ; Let's increase the attack by a random amount.
   inc %attack.damage $rand(1,15)
@@ -1541,8 +1510,6 @@ formula.techdmg.player {
     $calculate_damage_magic($1, $2, $3)
     if ($readini($char($3), info, ImmuneToMagic) = true) {  $set_chr_name($3) | set %guard.message $readini(translation.dat, battle, ImmuneToMagic) }
   }
-
-  echo -a attack damage after magic bonus: %attack.damage
 
   ;If the element is Light/fire and the target has the ZOMBIE status, then we need to increase the damage
   if ($readini($char($3), status, zombie) = yes) { 
@@ -1585,18 +1552,11 @@ formula.techdmg.player {
     dec %enemy.defense %def.ignored
   }
 
-  echo -a damage before: %attack.damage
-
   var %blocked.percent $log(%enemy.defense)
   if (%blocked.percent < 0) { var %blocked.percent .5 }
   inc %blocked.percent $rand(1,3)
   var %blocked.damage $round($return_percentofvalue(%attack.damage, %blocked.percent),0)
   dec %attack.damage %blocked.damage
-
-
-  echo -a blocked damage: %blocked.damage
-  echo -a blocked percent: %blocked.percent
-  echo -a attack damage before modifiers: %attack.damage
 
   var %starting.damage %attack.damage
 
@@ -1616,6 +1576,7 @@ formula.techdmg.player {
   }
 
   ; Check to see if the target is resistant/weak to the tech itself
+  ; TO DO: change this to $modifier_adjust($3, + $+ $2) <-- waiting until monsters have been adjusted first
   $modifer_adjust($3, $2)
 
   ; Check to see if the target is resistant/weak to the weapon itself
@@ -1634,35 +1595,15 @@ formula.techdmg.player {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; ADJUST THE TOTAL DAMAGE.
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  echo -a attack dmg before: %attack.damage
-  $calculate_attack_leveldiff($1, $3)
-
-  echo -a attack dmg after: %attack.damage
-
   var %flag $readini($char($1), info, flag)
 
+  $calculate_attack_leveldiff($1, $3)
   $cap.damage($1, $3, tech)
 
-  if ((%flag = $null) || (%flag = npc)) {
-
-    if (%attack.damage <= 1) {
-      var %base.tech $readini($dbfile(techniques.db), $2, BasePower)
-      var %int.increase.amount $round($calc(%true.base.stat * .10),0)
-      inc %base.weapon %int.increase.amount
-      var %min.damage %base.weapon
-      set %attack.damage $readini($dbfile(techniques.db), $2, BasePower)
-
-      var %attacker.level $get.level($1)
-      var %defender.level $get.level($3)
-
-      if (%attacker.level < %defender.level) { 
-        set %attack.damage 1
-        if (%flag = $null) { set %min.damage $round($calc(%min.damage / 8),0) }
-        else {  set %min.damage $round($calc(%min.damage / 2),0) }
-      }
-      set %attack.damage $rand(%min.damage, %attack.damage)
-    }
+  if (%attack.damage <= 1) {
+    var %minimum.damage 1
+    set %attack.damage $readini($dbfile(techniques.db), $2, BasePower)
+    set %attack.damage $rand(1, %attack.damage)
   }
 
   unset %true.base.stat
