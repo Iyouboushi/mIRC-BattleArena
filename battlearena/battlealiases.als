@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/13/15
+;;;; Last updated: 03/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -580,22 +580,15 @@ boost_monster_hp {
 
   var %hp.modifier 1
 
-  if ($return_winningstreak < 10) { var %hp.modifier .2 }
+  if ($return_winningstreak <= 10) { inc %hp.modifier $calc(.05 * $return_winningstreak) }
+  if (($return_winningstreak > 10) && ($return_winningstreak <= 500)) { inc %hp.modifier $calc(.01 * $return_winningstreak) }
+  if (($return_winningstreak > 500) && ($return_winningstreak <= 2000)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
+  if ($return_winningstreak > 2000) { var %hp.modifier .0035 }
 
-  if ($return_winningstreak >= 10) {
 
-    if ($return_winningstreak <= 500) { inc %hp.modifier $calc(.01 * $return_winningstreak) }
-    else { 
-      if (($return_winningstreak > 500) && ($return_winningstreak < 2000)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
-      else { inc %hp.modifier $calc(.0055 * $return_winningstreak) }
-    } 
-
-    else { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
-
-    if (%battle.type = boss) { inc %hp.modifier .01 }
-    if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier 1.01 }
-    if (%battle.type = assault) { inc %hp.modifier 1 }
-  }
+  if (%battle.type = boss) { inc %hp.modifier .05 }
+  if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier 1.01 }
+  if (%battle.type = assault) { dec %hp.modifier .06 }
 
   if (%battle.type = ai) {  
     if (%ai.battle.level > 500) { inc %hp.modifier 1 }
@@ -613,7 +606,7 @@ boost_monster_hp {
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
-  if (%hp > 15000) { var %hp $round($calc(15000 + (%hp * .01)),0) }
+  if (%hp > 8000) { var %hp $round($calc(8000 + (%hp * .01)),0) }
 
   writeini $char($1) BaseStats HP $round(%hp,0)
   writeini $char($1) Battle HP $round(%hp,0)
@@ -3062,7 +3055,7 @@ battlefield.damage {
   if (%streak.increase < 1) { var %streak.increase 1 }
 
   set %attack.damage $round($calc(%attack.damage * %streak.increase),0)
-  if (%attack.damage > 1000) { set %attack.damage 1000 }
+  if (%attack.damage > 500) { set %attack.damage 500 }
 }
 battlefield.event {
   set %debug.location alias battlefield.event
