@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/16/15
+;;;; Last updated: 03/17/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -557,7 +557,7 @@ boost_monster_hp {
 
   set %hp $readini($char($1), BaseStats, HP)
 
-  var %temp.hp.needed $round($calc(%hp + ((($return_winningstreak - 3)  / 5) * 45)),0)
+  var %temp.hp.needed $round($calc(%hp + ((($return_winningstreak - 3)  / 5) * 50)),0)
 
   if ($2 = portal) { 
     if (%temp.hp.needed) { writeini $char($1) basestats hp %temp.hp.needed | writeini $char($1) battle hp %temp.hp.needed | return }
