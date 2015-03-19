@@ -2674,6 +2674,7 @@ counter_melee {
 
   if ($readini($char($1), status, ethereal) = yes) { return }
   if (%guard.message != $null) { return }
+  if ($readini($char($2), info, ai_type) = techonly) { return }
 
   if ($readini($char($2), info, MetalDefense) = true) { return }
 
