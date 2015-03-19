@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/03/15
+;;;; Last updated: 03/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -423,6 +423,9 @@ alias item.trust {
 
   $check_for_battle($1) 
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), private) | halt }
+
+  ; is the battle level too low to use a trust?
+  if ($return_winningstreak < 11) {  $display.message($readini(translation.dat, errors, StreakTooLowForTrusts), private) | halt }
 
   ; Trusts can only be used if the person is alone
   var %number.of.players.in.battle $readini($txtfile(battle2.txt), battleinfo, players)
