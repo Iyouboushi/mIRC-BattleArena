@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/13/15
+;;;; Last updated: 03/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -90,6 +90,7 @@ system_defaults_check {
     if ($readini(system.dat, system, WheelGameTime) = $null) { writeini system.dat system WheelGameTime 43200 }
     if ($readini(system.dat, system, TwitchDelayTime) = $null) { writeini system.dat system TwitchDelayTime 2 }
     if ($readini(system.dat, system, ShowDeleteEcho) = $null) { writeini system.dat system ShowDeleteEcho false }
+    if ($readini(system.dat, system, AllowSpiritOfHero) = $null) { writeini system.dat system AllowSpiritOfHero true }
 
     if ($readini(system.dat, system, EnableDoppelganger) = $null) { writeini system.dat system EnableDoppelganger true }
     if ($readini(system.dat, system, EnableWarmachine) = $null) { writeini system.dat system EnableWarmachine true }
@@ -681,7 +682,7 @@ display.private.message {
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
   if ($readini(system.dat, system, botType) = IRC) {
-    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 1 /.msg $nick %message.to.display 
+    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 1 /.msg $nick %message.to.display
   }
   if ($readini(system.dat, system, botType) = TWITCH) { 
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
@@ -691,21 +692,20 @@ display.private.message {
   if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($nick, %message.to.display) }
 }
 display.private.message2 {
-  var %message.to.display $2
+  var %message.to.display $2-
 
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
+  if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
   if ($readini(system.dat, system, botType) = IRC) {
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 1 /.msg $1 %message.to.display 
   }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($1, %message.to.display) }
-
   if ($readini(system.dat, system, botType) = TWITCH) { 
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /query %battlechan %message.to.display
   }
-
+  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($1, %message.to.display) }
 }
 display.private.message.delay {
   var %message.to.display $1
@@ -1995,6 +1995,7 @@ runes.list {
 ; and regular stats.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 fulls {  
+  if ($2 = clearSotH) { remini $char($1) status SpiritOfHero }
   if (($readini($char($1), info, NeedsFulls) = no) && ($2 != yes)) { return } 
 
   var %players.must.die.mode $readini(system.dat, system, PlayersMustDieMode) 
@@ -2122,7 +2123,7 @@ oldchar.check {
     $zap_char($1)
   }
 
-  else { $fulls($1) }
+  else { $fulls($1, clearSotH) }
 
   return
 }
