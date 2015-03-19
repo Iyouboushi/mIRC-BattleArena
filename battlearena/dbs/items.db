@@ -2603,6 +2603,7 @@ Monster=Gaki.Onki.Rasetsu
 Desc=takes out the banishing charm; a powerful charm used to banish demons. It begins to glow and creates a portal that teleports the heroes into a demonic shrine where three demons await.
 AlliedNotes=1000
 Exclusive=yes
+PortalLevel=50
 
 [RottingOrb]
 type=portal
@@ -2610,10 +2611,11 @@ cost=25
 currency=KindredSeal
 battlefield=Smelly Dungeon
 Weather=gloomy
-Monster=Legion.Zombie
+Monster=Legion
 Desc=takes out the rotting orb and shatters it.  Suddenly the heroes find themselves in a smelly dungeon where there's hundreds of rotting bodies laying everywhere. Floating in the air is Legion.
 AlliedNotes=2500
 Exclusive=yes
+PortalLevel=100
 
 [GemOfTheWest]
 type=portal
