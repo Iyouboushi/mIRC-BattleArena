@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/17/15
+;;;; Last updated: 03/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -75,7 +75,11 @@ return_playerlevelstotal {
 return_playersinbattle {
   var %total.playersinbattle $readini($txtfile(battle2.txt), BattleInfo, Players)
   if (%total.playersinbattle = $null) { return 0 }
-  else { return %total.playersinbattle }
+
+  var %total.npcsinbattle $readini($txtfile(battle2.txt), BattleInfo, NPCs) 
+  if (%total.npcsinbattle != $null) { inc %total.playersinbattle %total.npcsinbattle }
+
+  return %total.playersinbattle
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -560,7 +564,7 @@ boost_monster_hp {
   var %temp.hp.needed $round($calc(%hp + ((($return_winningstreak - 3)  / 5) * 50)),0)
 
   if ($2 = portal) { 
-    if (%temp.hp.needed) { writeini $char($1) basestats hp %temp.hp.needed | writeini $char($1) battle hp %temp.hp.needed | return }
+    if (%temp.hp.needed > %hp) { writeini $char($1) basestats hp %temp.hp.needed | writeini $char($1) battle hp %temp.hp.needed | return }
   }
 
   if (%hp < %temp.hp.needed) { var %hp %temp.hp.needed } 
