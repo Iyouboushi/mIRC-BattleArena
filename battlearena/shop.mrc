@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/16/15
+;;;; Last updated: 03/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -12,10 +12,11 @@ alias shop.exchange {
   ; $2 = alliednotes/doubledollars
   ; $3 = amount you want to exchange
 
-  if ($3 = 0) {  $display.private.message($readini(translation.dat, errors, Can'tBuy0ofThat)) | halt }
-  if (($2 != alliednotes) && ($2 != doubledollars)) { $display.private.message(4!exchange alliednotes/doubledollars #amount) | halt }
+  if ($3 <= 0) { $display.private.message($readini(translation.dat, errors, Can'tBuy0ofThat)) | halt }
+  if (($2 != alliednotes) && ($2 != doubledollars)) { $display.private.message(4The commands: !exchange alliednotes # to convert allied notes to double dollars or !exchange doubledollars # to convert double dollars to allied notes.) | halt }
+  if ($3 = $null) { $display.private.message(4The commands: !exchange alliednotes # to convert allied notes to double dollars or !exchange doubledollars # to convert double dollars to allied notes.) | halt }
 
-  var %currency.symbol $readini(system.dat, system, BetCurrency)
+  var %currency.symbol $readini(system.dat, n, system, BetCurrency)
   if (%currency.symbol = $null) { var %currency.symbol $chr(36) $+ $chr(36) }
 
   var %amount.to.purchase $abs($3)
@@ -37,7 +38,7 @@ alias shop.exchange {
     if (%dollars.have = $null) { var %dollars.have 100 }
     inc %dollars.have %dollarstogive
     writeini $char($1) stuff doubledollars %dollars.have
-    var %message 2You exchange %notes.needed allied notes for %currency.symbol $+ %dollarstogive double dollars
+    $display.private.message($readini(translation.dat, system, ShopExchangeNotes))
   }
 
   if ($2 = doubledollars) {
@@ -48,20 +49,12 @@ alias shop.exchange {
     var %notestogive $3
     dec %dollars.have %dollars.needed
     writeini $char($1) stuff doubledollars %dollars.have
-
     var %notes.have $readini($char($1), stuff, alliednotes)
     if (%notes.have = $null) { var %notes.have 0 }
     inc %notes.have %notestogive
     writeini $char($1) stuff alliednotes %notes.have
-    var %message 2You exchange %currency.symbol $+ %dollars.needed double dollars  for %notestogive allied notes
+    $display.private.message($readini(translation.dat, system, ShopExchangeDoubleDollars))
   }
-
-  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {  $display.private.message2($1, %message) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($1, %message) }
-
-  return
-
-
 }
 
 alias shop.start {
