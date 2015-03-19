@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 700, $round($calc(5000 + (4 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(4500 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 4500, 3000)
 Tp=250
 Str=80
 Def=80
@@ -50,7 +50,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=450
+bosslevel=45
 CanTaunt=false
 
 [Status]
@@ -110,13 +110,13 @@ MagicMirror=1
 
 
 [Techniques]
-FlareII=200
-DarknessII=200
+FlareII=20
+DarknessII=20
 
 
 [Styles]
 Equipped=spellmaster
-spellmaster=6
+spellmaster=3
 
 [Augment]
 Laevatein=AbsorbTP

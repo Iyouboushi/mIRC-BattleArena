@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 1000, $round($calc(3500 + (5 * $return_differenceof($return_playerlevelstotal,1000))),0), $round($calc(3500 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 4500, 3500)
 Tp=250
 Str=280
 Def=80
@@ -52,7 +52,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=1000
+bosslevel=96
 CanTaunt=false
 
 [Status]
@@ -92,7 +92,7 @@ reflect.turn=-1
 
 [Weapons]
 Equipped=Legion
-Legion=500
+Legion=50
 
 [Skills]
 Resist-Charm=100
@@ -111,17 +111,17 @@ ClearMind=3
 MonsterSummon=1
 MonsterSummon.Monster=Zombie
 MonsterSummon.Chance=100
-monstersummon.numberspawn=$iif($readini($char(Legion), battle, hp) <= 2500, $rand(3,4), 2)
+monstersummon.numberspawn=$iif($readini($char(Legion), battle, hp) <= 1500, $rand(2,3), 2)
 MonsterConsume=1
 
 
 [Techniques]
-LegionLaser=$round($calc($readini($char(Legion), info, bosslevel) / 1.5),0)
+LegionLaser=50
 
 
 [Styles]
 Equipped=weaponmaster
-weaponmaster=6
+weaponmaster=3
 
 [Augments]
 Legion=TechBonus.EnhanceCriticalHits.MeleeBonus.Drain.EnhanceWeaponBash.EnhanceParry
@@ -154,5 +154,5 @@ HydroStorm=500
 
 [NaturalArmor]
 Name=Demonic Human Body Shell
-Max=10500
-Current=10500
+Max=150
+Current=150

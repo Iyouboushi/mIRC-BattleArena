@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=4000
 Tp=500
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
+Str=15
+Def=15
+Int=15
+Spd=15
 Name=Dante
 IgnitionGauge=60
 
@@ -12,10 +12,10 @@ IgnitionGauge=60
 [Battle]
 Hp=4000
 Tp=500
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
+Str=15
+Def=15
+Int=15
+Spd=15
 Status=alive
 IgnitionGauge=60
 
@@ -57,6 +57,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=true
 TauntFile=taunts_dante.txt
+Streak=-1000
 
 [Status]
 Poison=no
@@ -103,30 +104,20 @@ auto-regen=on
 
 [Weapons]
 Equipped=Rebellion
-Rebellion=$calc(55 + $current.battlestreak)
-Ebony&Ivory=$calc(55 + $current.battlestreak)
-Cerberus=$calc(55 + $current.battlestreak)
-Ifrit=$calc(55 + $current.battlestreak)
+Rebellion=$calc(1 + $current.battlestreak)
+Ebony&Ivory=$calc(1 + $current.battlestreak)
+Cerberus=$calc(1 + $current.battlestreak)
+Ifrit=$calc(1 + $current.battlestreak)
 
 
 [Skills]
-mightystrike=1
-desperateblows=1
-speed.on=no
-doubleturn.on=off
-soulvoice.on=off
-manawall.on=off
-elementalseal.on=off
-mightystrike.on=off
 royalguard.on=on
-SwordMaster=2000
-Gunslinger=2000
-MartialArts=2000
+SwordMaster=500
+Gunslinger=500
+MartialArts=500
 royalguard=1
 Zen=5
-royalguard.dmgblocked=9103
-JustRelease=100
-regen=$iif($readini($char(Dante), status, ignition.on) = on, 10, 2)
+regen=10
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -162,18 +153,18 @@ Elemental-Killer=20
 Slime-Killer=20
 
 [Techniques]
-Stinger=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-MillionStab=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
-Drive=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-Revolver=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
-Windmill=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
-Crystal=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
-RollingBlaze=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
-MagmaDrive=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
-Inferno=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
-RainStorm=$iif($current.battlestreak < 300, 0, $calc(200 + $current.battlestreak))
-ChargedShot=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
-RapidShot=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
+Stinger=$iif($current.battlestreak < 50, 0, $calc(1 + $current.battlestreak))
+MillionStab=$iif($current.battlestreak < 150, 0, $calc(1 + $current.battlestreak))
+Drive=$iif($current.battlestreak < 50, 0, $calc(1 + $current.battlestreak))
+Revolver=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+Windmill=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+Crystal=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+RollingBlaze=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+MagmaDrive=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+Inferno=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+RainStorm=$iif($current.battlestreak < 300, 0, $calc(1 + $current.battlestreak))
+ChargedShot=$iif($current.battlestreak < 150, 0, $calc(1 + $current.battlestreak))
+RapidShot=$iif($current.battlestreak < 150, 0, $calc(1 + $current.battlestreak))
 
 
 [Styles]

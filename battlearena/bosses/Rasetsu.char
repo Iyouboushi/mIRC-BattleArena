@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 700, $round($calc(5000 + (5 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(5000 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 5500, 4500)
 Tp=250
 Str=220
 Def=180
@@ -51,7 +51,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=500
+bosslevel=50
 CanTaunt=false
 
 [Status]
@@ -89,7 +89,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Masamune
-Masamune=500
+Masamune=45
 
 [Skills]
 Resist-Charm=100
@@ -110,13 +110,13 @@ Swordmaster=100
 
 
 [Techniques]
-Tachi:Fudo=100
-Tachi:Shoha=120
-Tachi:Rana=100
+Tachi:Fudo=45
+Tachi:Shoha=60
+Tachi:Rana=45
 
 [Styles]
 Equipped=HitenMitsuryugi-Ryu
-HitenMitsuryugi-Ryu=5
+HitenMitsuryugi-Ryu=3
 
 [Equipment]
 Body=MyochinDomaru

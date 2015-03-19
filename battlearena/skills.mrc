@@ -2439,6 +2439,7 @@ alias skill.monstersummon {
     $set_chr_name($1) 
     $boost_monster_stats(%monster.name, monstersummon, $1)
     $fulls(%monster.name, yes) 
+    $levelsync(%monster.name, $round($calc($return_winningstreak / 2.2),0))
 
     ; Display the desc of the monsters
     $set_chr_name(%monster.name) | $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)

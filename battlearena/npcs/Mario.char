@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=4000
 Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(40 + $current.battlestreak)
-Int=$calc(40 + $current.battlestreak)
-Spd=$calc(40 + $current.battlestreak)
+Str=15
+Def=15
+Int=15
+Spd=15
 Name=Mario
 
 
 [Battle]
 Hp=4000
 Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(40 + $current.battlestreak)
-Int=$calc(40 + $current.battlestreak)
-Spd=$calc(40 + $current.battlestreak)
+Str=15
+Def=15
+Int=15
+Spd=15
 Status=alive
 
 
@@ -52,6 +52,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+Streak=-1000
 
 
 [Status]
@@ -99,12 +100,11 @@ conservetp.on=off
 
 [Weapons]
 Equipped=MarioFists
-MarioFists=$calc(40 + $current.battlestreak)
+MarioFists=$calc(1 + $current.battlestreak)
 
 
 [Skills]
-DesperateBlows=1
-MartialArts=2000
+MartialArts=500
 Zen=5
 Resist-Charm=100
 Resist-Poison=100
@@ -141,9 +141,9 @@ Elemental-Killer=20
 Slime-Killer=20
 
 [Techniques]
-MarioJump=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-StarPower=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
-FireFlower=$iif($current.battlestreak < 75, 0, $calc(125 + $current.battlestreak))
+MarioJump=$iif($current.battlestreak < 50, 0, $calc(1 + $current.battlestreak))
+StarPower=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+FireFlower=$iif($current.battlestreak < 75, 0, $calc(1 + $current.battlestreak))
 
 
 [Item_Amount]
