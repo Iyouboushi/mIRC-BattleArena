@@ -567,6 +567,8 @@ boost_monster_hp {
 
   var %increase.amount 1
 
+  if ($return_playersinbattle > 1) { inc %increase.amount .3 }
+
   if ($2 = rage) { %hp = $rand(120000,150000) }
 
   if (%battle.type = ai) { 
@@ -929,7 +931,9 @@ display_damage {
     $set_chr_name($1) | set %enemy %real.name | set %target $1 | set %attacker $2 | $set_chr_name($2) | set %user %real.name 
   }
 
-  if (%shield.block.line != $null) { $display.message(%shield.block.line, battle) | unset %shield.block.line }
+  if (%shield.block.line != $null) { 
+    if (%counterattack != on) { $display.message(%shield.block.line, battle) | unset %shield.block.line }
+  }
 
   if ($3 = tech) {
     if (%showed.tech.desc != true) { $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $4, desc), battle) }
