@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/17/15
+;;;; Last updated: 03/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -238,6 +238,8 @@ cap.damage {
     if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * .07),0)  }
     if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 1),0)  } 
     if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  } 
+
+    if ($readini($char($1), info, flag) = npc) { dec %damage.threshold 300 }
 
     if (%damage.threshold <= 0) { var %damage.threshold 10 }
 
