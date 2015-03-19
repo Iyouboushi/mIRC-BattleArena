@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 1000,$round($calc(50000 + (3.5 * $return_differenceof($return_playerlevelstotal,250))),0),$iif($return_playerlevelstotal >= 700, $round($calc(9000 + (3.5 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(8500 + $return_playerlevelstotal),0)))
+Hp=$iif($return_playersinbattle > 1, 3000, 2800)
 Tp=250000
 Str=200
 Def=200
@@ -28,7 +28,7 @@ RageCountDown=0
 [Descriptions]
 Char=is the tail of the large yellow centipede-snake Moldorm
 Rage=screams in rage
-DeathMessage=is cut off from the main body of Moldorm, which begins to speed up in a panic as its hard protective shell begins to crack leaving its body exposed. | writeini $char(Moldorm) battle spd $round($calc(5000 + (2.5 * $return_differenceof($return_playerlevelstotal,700))),0)
+DeathMessage=is cut off from the main body of Moldorm, which begins to speed up in a panic as its hard protective shell begins to crack leaving its body exposed. | writeini $char(moldorm) battle spd 2000 | $levelsync(Moldorm, 25)
 
 
 [Stuff]
@@ -50,11 +50,11 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=28
+bosslevel=20
 CanTaunt=false
 ai_type=defender
 IgnoreDmgCap=true
-MetalDefense=$iif($readini($char(MoldormTail), battle, hp) < 20, true, false)
+MetalDefense=$iif($readini($char(MoldormTail), battle, hp) < 10, true, false)
 IgnoreQuicksilver=true
 
 
@@ -96,7 +96,7 @@ auto-regen=$iif($readini($char(MoldormTail), battle, hp) > 5000, on, no)
 
 [Weapons]
 Equipped=MoldormBody
-MoldormBody=$current.battlestreak
+MoldormBody=$get.level(Moldorm)
 
 [Skills]
 Resist-Charm=100
@@ -119,7 +119,7 @@ Resist-stun=100
 
 [Styles]
 Equipped=Guardian
-Guardian=8
+Guardian=1
 
 
 [modifiers]
@@ -132,15 +132,15 @@ Ice=60
 Lightning=300
 Light=130
 Dark=60
-HandToHand=30
-Whip=30
-Sword=100
-Gun=30
-Rifle=30
-Katana=100
-Wand=30
+HandToHand=50
+Whip=50
+Sword=150
+Gun=50
+Rifle=50
+Katana=150
+Wand=50
 Spear=90
 Scythe=100
-Glyph=30
+Glyph=40
 GreatSword=120
-Bow=20
+Bow=40

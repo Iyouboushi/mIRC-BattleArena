@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$round($calc(9500 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
+Hp=$iif($return_playersinbattle > 1, 9500, 8000)
 Tp=1250
 Str=1576
 Def=891
@@ -125,7 +125,7 @@ EchindaCharge=$iif($readini($char(Echidna), status, ignition.on) = off, 0, $roun
 
 [Styles]
 Equipped=Guardian
-Guardian=10
+Guardian=4
 
 
 [ignitions]
@@ -136,18 +136,18 @@ EchidnaDragonForm=1
 
 [NaturalArmor]
 Name=Jungle Flower Armor
-Max=2000
-Current=2000
+Max=200
+Current=200
 
 [modifiers]
 Heal=dark
 Earth=100
-Fire=110
+Fire=140
 Wind=100
 Water=100
 Ice=70
 Lightning=100
-Light=110
+Light=170
 Dark=150
 HandToHand=100
 Whip=100
@@ -165,4 +165,4 @@ Rainstorm=1
 SpinningAttack=1
 MillionStab=50
 AsuranFists=50
-ChargedShot=110
+ChargedShot=170

@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$round($calc(10000 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
+Hp=$iif($return_playersinbattle > 1, 15500, 10000)
 Tp=5000
 Str=3112
 Def=1539
@@ -94,7 +94,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=AtlantisPower
-AtlantisPower=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000)
+AtlantisPower=$iif($readini(system.dat, system, ForcePortalSync) = true, 250, 8000)
 
 
 [Skills]

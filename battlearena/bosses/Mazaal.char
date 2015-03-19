@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 700, $round($calc(5000 + (4 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(4500 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 7000, 5000)
 Tp=250
 Str=200
 Def=200

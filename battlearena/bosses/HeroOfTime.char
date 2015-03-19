@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 500, $round($calc(5000 + (2.5 * $return_differenceof($return_playerlevelstotal,500))),0), $round($calc(4500 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 6000, 5000)
 Tp=1500
 Str=2500
 Def=2500
@@ -10,7 +10,7 @@ Name=The Hero of Time
 
 
 [Battle]
-Hp=$iif($return_playerlevelstotal >= 500, $round($calc(5000 + (2.5 * $return_differenceof($return_playerlevelstotal,500))),0), $round($calc(4500 + $return_playerlevelstotal),0))
+Hp=5000
 Tp=1500
 Str=2500
 Def=2500
@@ -149,7 +149,7 @@ MasterSword=IgnoreGuardian.IgnoreMetalDefense.RenkeiBonus.EnhanceBlocking
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=5
 
 
 [modifiers]

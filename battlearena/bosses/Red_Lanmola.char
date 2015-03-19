@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=4500
+Hp=$iif($return_playersinbattle > 1, 5500, 4500)
 Tp=250
 Str=200
 Def=200
@@ -91,7 +91,7 @@ reflect.turn=-1
 
 [Weapons]
 Equipped=LanmolaMouth
-LanmolaMouth=$current.battlestreak
+LanmolaMouth=$iif($return_playersinbattle > 1, 60, $current.battlestreak)
 
 [Skills]
 Resist-Charm=100
@@ -112,7 +112,7 @@ Resist-stun=100
 
 [Styles]
 Equipped=Guardian
-Guardian=9
+Guardian=3
 
 
 [modifiers]

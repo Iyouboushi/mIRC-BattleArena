@@ -9436,7 +9436,7 @@ Cost=0
 Desc=rolls around the battlefield and bumps into everyone on the battlefield.
 Element=Lightning
 Hits=1
-BasePower=$iif($readini($char(MoldormTail), battle, status) = dead, $iif($round($calc(200 + ($return_differenceof($return_playerlevelstotal,550))),0) <= 50, 150,$round($calc(200 + ($return_differenceof($return_playerlevelstotal,550))),0)) , 50)
+BasePower=$iif($readini($char(MoldormTail), battle, status) = dead, 25, 30)
 Magic=No
 stat=spd
 

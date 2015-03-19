@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$round($calc(9500 + (500 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
+Hp=$iif($return_playersinbattle > 1, 9500, 8000)
 Tp=1250
 Str=1576
 Def=871

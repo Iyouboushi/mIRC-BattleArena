@@ -1,7 +1,7 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 15, $round($calc(200 + (2.2 * $return_differenceof($return_playerlevelstotal,15))),0), $round($calc(200 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 1000, 800)
 Tp=30
-Str=90
+Str=70
 Def=30
 Int=60
 Spd=20
@@ -11,7 +11,7 @@ Name=Allied Scrub Soldier
 [Battle]
 Hp=65
 Tp=30
-Str=90
+Str=70
 Def=30
 Int=60
 Spd=20
@@ -51,7 +51,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=9
+bosslevel=5
 CanTaunt=true
 
 [monster]
@@ -93,7 +93,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Mythril_Sword
-Mythril_Sword=10
+Mythril_Sword=5
 
 
 [Techniques]
