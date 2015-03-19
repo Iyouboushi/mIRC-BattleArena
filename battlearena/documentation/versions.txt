@@ -1211,6 +1211,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue in which Ghost Turkey could show up in other months besides November
 - Fixed an issue with !view-info style doppelganger getting cut off
 - Fixed an issue with the bot not checking left-handed weapons for augments
+- Fixed an issue where a techonly monster could counter a melee attack
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
 - Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
