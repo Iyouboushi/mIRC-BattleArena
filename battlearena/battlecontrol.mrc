@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/16/15
+;;;; Last updated: 03/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -63,15 +63,21 @@ on 3:TEXT:!view battle save*:*:{ $set_chr_name($nick) | $checkchar($nick)
   if (%saved.streak = $null) { var %saved.streak 0 }
   $display.message($readini(translation.dat, system, ViewBattleStreak), global)
 }
-on 3:TEXT:!save battle streak*:*:{   $set_chr_name($nick) | $checkchar($nick) 
+on 3:TEXT:!save battle streak*:*:{   $save.battle.streak($nick, $1, $2, $3) }
+on 3:TEXT:!save battle level*:*:{   $save.battle.streak($nick, $1, $2, $3) }
+
+alias save.battle.streak { 
+  $set_chr_name($1) | $checkchar($1) 
   if (%battleis = on) {   $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
   var %current.streak $readini(battlestats.dat, Battle, WinningStreak)
-  if (%current.streak <= 0) {   $display.message($readini(translation.dat, errors, Can'tSaveALosingStreak), private) | halt }
+  if (%current.streak <= 0) {  $display.message($readini(translation.dat, errors, Can'tSaveALosingStreak), private) | halt }
 
   else { 
-    if ($round($calc(($get.level($nick) - %current.streak)),0) < -50) { $display.message($readini(translation.dat, errors, LevelTooLowTOSaveaStreak), private) | halt }
+    if (%current.streak < 11) { $display.message($readini(translation.dat, errors, Can'tSaveStreakUnder11), private) | halt }
 
-    var %last.saved $readini($char($nick), info, savedstreak.time)
+    if ($round($calc(($get.level($1) - %current.streak)),0) < -50) { $display.message($readini(translation.dat, errors, LevelTooLowTOSaveaStreak), private) | halt }
+
+    var %last.saved $readini($char($1), info, savedstreak.time)
     var %current.time $ctime
     var %time.difference $calc(%current.time - %last.saved)
 
@@ -79,23 +85,27 @@ on 3:TEXT:!save battle streak*:*:{   $set_chr_name($nick) | $checkchar($nick)
     if (%time.between.save = null) { var %time.between.save 3600 } 
 
     if ((%time.difference = $null) || (%time.difference > %time.between.save)) {
-      var %saved.streak $readini($char($nick), info, savedstreak)
+      var %saved.streak $readini($char($1), info, savedstreak)
       if (%saved.streak = $null) { var %saved.streak 0 }
       if (%current.streak < %saved.streak) {   $display.message($readini(translation.dat, errors, Can'tSaveALowerStreak), private) | halt }
-      writeini $char($nick) Info SavedStreak %current.streak
-      writeini $char($nick) Info SavedStreak.time $ctime
+      writeini $char($1) Info SavedStreak %current.streak
+      writeini $char($1) Info SavedStreak.time $ctime
       $display.message($readini(translation.dat, system, SaveBattleStreak), global)
     }
     else {   $display.message($readini(translation.dat, errors, NotEnoughTimeToSave), private) | halt }
   }
 }
 
-on 3:TEXT:!reload battle streak*:*:{   $set_chr_name($nick) | $checkchar($nick)
+on 3:TEXT:!reload battle streak*:*:{  $reload.battle.streak($nick, $1, $2, $3) } 
+on 3:TEXT:!reload battle save*:*:{  $reload.battle.streak($nick, $1, $2, $3) } 
+on 3:TEXT:!reload arena level*:*:{  $reload.battle.streak($nick, $1, $2, $3) } 
+alias reload.battle.streak { 
+  $set_chr_name($1) | $checkchar($1)
   if (%battleis = on) {   $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
   var %current.streak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.streak > 10) {   $display.message($readini(translation.dat, errors, Can'tReloadOnAWinningStreak), private) | halt }
   else { 
-    var %saved.streak $readini($char($nick), info, savedstreak)
+    var %saved.streak $readini($char($1), info, savedstreak)
     if (%saved.streak = $null) {   $display.message($readini(translation.dat, errors, NoWinningStreakSaved), private) | halt }
     if (%saved.streak = 0) {   $display.message($readini(translation.dat, errors, NoWinningStreakSaved), private) | halt }
     writeini battlestats.dat Battle WinningStreak %saved.streak
@@ -260,7 +270,7 @@ alias clear_files {
   set %name $remove($1-,.char)
   set %name $nopath(%name)
 
-  if ($lines($txtfile(status $+ %name $+ .txt)) != $null) {   .remove $txtfile(status $+ %name $+ .txt) }
+  if ($lines($txtfile(status $+ %name $+ .txt)) != $null) { .remove $txtfile(status $+ %name $+ .txt) }
   if ((%name = new_chr) || (%name = $null)) { return } 
   else { 
     var %clear.flag $readini($char(%name), Info, Flag)
@@ -448,18 +458,20 @@ alias enter {
     remini $char($1) skills lockpicking.on
 
     ; Is the player too weak for this streak level?
-    if ($return_winningstreak > 10) {
-      if (($calc($return_winningstreak - $get.level($1)) > 30) || ($calc($get.level($1) / $return_winningstreak) < .5)) {
-        $levelsync($1, $calc($return_winningstreak - 3))
+    if ($return.systemsetting(AllowSpiritOfHero) = true) { 
+      if ($return_winningstreak > 10) {
+        if (($calc($return_winningstreak - $get.level($1)) > 30) || ($calc($get.level($1) / $return_winningstreak) < .5)) {
+          $levelsync($1, $calc($return_winningstreak - 3))
 
-        if ($readini(system.dat, system, PlayersMustDieMode) != true) {
-          var %temp.hp.needed $round($calc(150 + ((($return_winningstreak - 3)  / 5) * 50)),0)
-          if (%temp.hp.needed > $return.systemsetting(maxHP)) { var %temp.hp.needed $return.systemsetting(maxHP) }
-          if ($readini($char($1), battle, hp) < %temp.hp.needed) { writeini $char($1) battle hp %temp.hp.needed }
+          if ($readini(system.dat, system, PlayersMustDieMode) != true) {
+            var %temp.hp.needed $round($calc(150 + ((($return_winningstreak - 3)  / 5) * 50)),0)
+            if (%temp.hp.needed > $return.systemsetting(maxHP)) { var %temp.hp.needed $return.systemsetting(maxHP) }
+            if ($readini($char($1), battle, hp) < %temp.hp.needed) { writeini $char($1) battle hp %temp.hp.needed }
+          }
+
+          $display.message($readini(translation.dat, system, SpiritOfHeroSync), battle)
+          writeini $char($1) status SpiritOfHero true
         }
-
-        $display.message($readini(translation.dat, system, SpiritOfHeroSync), battle)
-        writeini $char($1) status SpiritOfHero true
       }
     }
 
