@@ -154,10 +154,10 @@ ChestDrops=$chr(3) $+ 12 $+ The monsters were protecting a %color.chest treasu
 ChestDestroyed=$chr(3) $+ 4 $+ The unopened chest fades from existence, its contents never to be revealed...
 ChestOpened=$chr(3) $+ 10 $+  $+ %real.name unlocks the treasure chest and obtains %chest.amount %chest.item $+ ! The chest then disappears.
 ChestMimic=$chr(3) $+ 4 $+  $+ %real.name tries to unlock the chest only to discover that the chest is a Mimic! It leaps to life and readies itself for a fight.
-SaveBattleStreak=$chr(3) $+ 3 $+  $+ %real.name has saved winning streak # $bytes($readini(battlestats.dat, Battle, WinningStreak),b) to $gender($nick) file.
-ClearedBattleSave=$chr(3) $+ 3 $+  $+ %real.name has cleared $gender($nick) battle streak save.
-ReloadBattleStreak=$chr(3) $+ 3 $+  $+ %real.name has reloaded winning streak # $bytes($readini($char($nick), Info, SavedStreak),b) from $gender($nick) file.
-ViewBattleStreak=$chr(3) $+ 3 $+  $+ %real.name currently has winning streak # $bytes(%saved.streak,b) saved in $gender($nick) file
+SaveBattleStreak=$chr(3) $+ 3 $+  $+ %real.name has saved arena level # $bytes($readini(battlestats.dat, Battle, WinningStreak),b) to $gender($nick) file.
+ClearedBattleSave=$chr(3) $+ 3 $+  $+ %real.name has cleared $gender($nick) arena level save.
+ReloadBattleStreak=$chr(3) $+ 3 $+  $+ %real.name has reloaded arena level $bytes($readini($char($nick), Info, SavedStreak),b) from $gender($nick) file.
+ViewBattleStreak=$chr(3) $+ 3 $+  $+ %real.name currently has arena level # $bytes(%saved.streak,b) saved in $gender($nick) file
 GiveItemToTarget=$chr(3) $+ 3 $+ %real.name gives $3 %item.to.give.correct $+ $iif($3 < 2, ,s) to $set_chr_name($2) %real.name $+ !
 GiveOrbsToTarget=$chr(3) $+ 3 $+ %real.name gives $3 $4 to $get_chr_name($2) $+ !
 FinalGetsugaWarning=$chr(3) $+ 4 $+ This technique is a Final Getsuga type, which means if you use it at the end of the battle you will be reduced back to basically a new character.
@@ -194,7 +194,7 @@ TotalDeathNone=$chr(3) $+ 3 $+ %real.name is currently undefeated!
 DamageNowCapped=$chr(3) $+ 3Battle Damage is now capped.
 DamageNotCapped=$chr(3) $+ 3Battle Damage is no longer capped.
 ScoreBoardTypeToggle=$chr(3) $+ The Scoreboard Generation has been toggled to Type %scoreboard.type $+ !
-StreakResetTo0=$chr(3) $+ 12 $+ *** $chr(3) $+ 4 $+ The current winning streak has been reset to 0.
+StreakResetTo0=$chr(3) $+ 12 $+ *** $chr(3) $+ 4 $+ The current arena level has been reset to 0.
 MechRestoredHP=$chr(3) $+ 3 $+ Your $readini($char($1), mech, name) has been repaired by %amount HP.
 MechRestoredEnergy=$chr(3) $+ 3 $+ Your $readini($char($1), mech, name) has been restored %amount energy.
 MechUpgradeEnergy=$chr(3) $+ 2 $+ You pay a crazy engineer %total.price Allied Notes to upgrade your mech's energy levels. When completed, your mech now has + $+ %energy.to.increase more max energy.
@@ -224,7 +224,9 @@ BossLevelSynced75=$chr(3) $+ 4 $+ The level cap for this boss battle has been 
 BossLevelSynced100=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 100
 BossLevelSynced200=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 200
 GainedEnhancementPoint=$chr(3) $+ 7 $+ You have gained 1 enhancement point bringing your new total to %current.enhancementpoints $+ .
-SpiritOfHeroSync=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low for this battle streak. $get_chr_name($1) has been infused with the2 Spirit of the Hero4 buff. $get_chr_name($1) $+ 's level is now set temporarily to2 $calc($return_winningstreak - 3)
+SpiritOfHeroSync=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low for this arena level. $get_chr_name($1) has been infused with the2 Spirit of the Hero4 buff. $get_chr_name($1) $+ 's level is now set temporarily to2 $calc($return_winningstreak - 3)
+ShopExchangeNotes=$chr(3) $+ 2 $+ You exchange %notes.needed allied notes for %currency.symbol %dollarstogive double dollars
+ShopExchangeDoubleDollars=$chr(3) $+ 2 $+ You exchange %currency.symbol %dollars.needed double dollars for %notestogive allied notes
 
 ; Bot Admin Toggle Messages
 AutomatedBattleOn=$chr(3) $+ 4 $+ The Automated Battle System has been turned on.
@@ -400,11 +402,11 @@ WrongChestKey=$chr(3) $+ 4 $+ Error: This key does not unlock this color of ch
 ChestAlreadyBeingOpened=$chr(3) $+ 4 $+ Error: This chest is already being opened..
 Can'tLogIntoThisChar=$chr(3) $+ 4 $+ Error: You cannot log into this character.
 Can'tSaveALosingStreak=$chr(3) $+ 4 $+ Error: %real.name cannot save a losing streak to $gender($nick) file.
-Can'tSaveALowerStreak=$chr(3) $+ 4 $+ Error: %real.name cannot save a winning streak lower than $gender($nick) previous save.
-Can'tReloadOnAWinningStreak=$chr(3) $+ 4 $+ Error: %real.name cannot reload while a winning streak is greater than 10.
-LevelTooLowTOSaveaStreak=$chr(3) $+ 4 $+ Error: %real.name $+ 's level is too low to save this winning streak. The highest level %real.name can save is $round($calc($get.level($nick) + 50),0)
-NoWinningStreakSaved=$chr(3) $+ 4 $+ Error: %real.name does not have a winning streak to reload!
-NoWinningStreakSavedToErase=$chr(3) $+ 4 $+ Error: %real.name does not have a winning streak save to erase!
+Can'tSaveALowerStreak=$chr(3) $+ 4 $+ Error: %real.name cannot save when the arena level is lower than $gender($nick) $+ 's previous save.
+Can'tReloadOnAWinningStreak=$chr(3) $+ 4 $+ Error: %real.name cannot reload while the arena level is greater than 10.
+LevelTooLowTOSaveaStreak=$chr(3) $+ 4 $+ Error: %real.name $+ 's level is too low to save this arena level. The highest level %real.name can save is $round($calc($get.level($nick) + 50),0)
+NoWinningStreakSaved=$chr(3) $+ 4 $+ Error: %real.name does not have an arena level to reload!
+NoWinningStreakSavedToErase=$chr(3) $+ 4 $+ Error: %real.name does not have an arena level save to erase!
 NotEnoughTimeToSave=$chr(3) $+ 4 $+ Error: Not enough time has passed since the last save %real.name did. %real.name still has $duration($calc(%time.between.save - %time.difference)) left. 
 Can'tGiveToNonChar=$chr(3) $+ 4 $+ Error: %real.name cannot give items to a monster or NPC! 
 Can'tGiveNegativeItem=$chr(3) $+ 4 $+ Error: %real.name cannot give a part or negative amounts of an item.
@@ -496,7 +498,9 @@ Don'tHaveInstrument=$chr(3) $+ 4 $+ Error: %real.name does not have the necess
 TrustsOnlyForOnePlayer=$chr(3) $+ 4 $+ Error: Trust NPCs can only be summoned when there is only one player in the battle.
 TrustAlreadyUsed=$chr(3) $+ 4 $+ Error: A Trust NPC has already been summoned for this battle.
 TrustNPCDoesn'tExist=$chr(3) $+ 4 $+ Error: The NPC this item summons does not exist. Inform the Bot Owner.
+StreakTooLowForTrusts=$chr(3) $+ 4 $+ Error: The arena level is too low for trusts at this time. Trusts can only be used on levels 11+
 NotEnoughHPForSkill=$chr(3) $+ 4 $+ Error: $get_chr_name($1) does not have enough HP to perform this skill!
+Can'tSaveStreakUnder11=$chr(3) $+ 4 $+ Error: The arena level is too low for you to save. This command can only be used on arena levels 11+
 
 =======================
 Battle Related Messages
@@ -517,7 +521,7 @@ BattleAssaultOpen=$chr(3) $+ 4 $+ The Allied Forces are putting together an assa
 
 BattleOpenAIBet=$chr(3) $+ 4 $+ A 1 vs 1 AI Match is about to begin! The battle will begin in %time.to.enter seconds. 
 
-BattleAIInfo=$chr(3) $+ 12 $+ AI Battle information: [NPC] %ai.npc.name vs [Monster] %ai.monster.name on [Streak Level] %ai.battle.level [Favorite to Win]4 $iif(%favorite.to.win = monster, %ai.monster.name, %ai.npc.name)
+BattleAIInfo=$chr(3) $+ 12 $+ AI Battle information: [NPC] %ai.npc.name vs [Monster] %ai.monster.name on [Arena Level] %ai.battle.level [Favorite to Win]4 $iif(%favorite.to.win = monster, %ai.monster.name, %ai.npc.name)
 
 ; commenting this out for now. 
 ; with [Opening Odds] of %odds.npc $+  $+ $chr(58) $+  $+ %odds.monster
