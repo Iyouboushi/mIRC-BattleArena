@@ -52,7 +52,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 370, 7500)
+bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 290, 7500)
 IgnoreQuicksilver=true
 CanTaunt=false
 JustReleaseDefense=100

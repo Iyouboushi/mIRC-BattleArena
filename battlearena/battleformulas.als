@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/18/15
+;;;; Last updated: 03/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -14,7 +14,8 @@ calculate_damage_magic {
   set %current.playerstyle $readini($char($1), styles, equipped)
   set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
 
-  set %magic.bonus.modifier 0.50
+  set %magic.bonus.modifier 0.30
+  if (%portal.bonus = true) { dec %magic.bonus.modifier .15 }
 
   if ($augment.check($1, MagicBonus) = true) { 
     set %magic.bonus.augment $calc(%augment.strength * .2)
@@ -227,6 +228,11 @@ cap.damage {
     if ($3 = melee) { var %damage.threshold 6000 }
     if ($3 = tech) { var %damage.threshold 8000 }
 
+    if (%portal.bonus = true) { 
+      if ($readini($char($1), info, flag) = $null) { dec %damage.threshold $round($calc(%damage.threshold / 3),0) }
+      if ($readini($char($1), info, flag) = npc) { dec %damage.threshold $round($calc(%damage.threshold / 4),0) }
+    }
+
     if ($readini(system.dat, system, PlayersMustDieMode) = true)  { dec %damage.threshold 1500 }
 
     var %attacker.level $get.level($1)
@@ -260,8 +266,8 @@ cap.damage {
   if ($readini($char($1), info, flag) = monster) {
     if (%battle.rage.darkness = on) { return }
 
-    if ($3 = melee) { var %damage.threshold 4000 }
-    if ($3 = tech) { var %damage.threshold 5000 }
+    if ($3 = melee) { var %damage.threshold 3500 }
+    if ($3 = tech) { var %damage.threshold 4000 }
 
     if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %damage.threshold 7000 }
 
@@ -324,10 +330,17 @@ formula.meleedmg.player {
   ; Does the user have any mastery of the weapon?
   $mastery_check($1, $2)
 
+  ; If it's a portal battle this might need to be adjusted to make portal battles easier to balance
+  if (%portal.bonus = true) {
+    if (%weapon.base > $return_winningstreak) { var %weapon.base $return_winningstreak }
+    if (%mastery.bonus > $calc($return_winningstreak + 10)) { var %mastery.bonus $calc($return_winningstreak + 10) }
+  }
+
   ; Let's add the mastery bonus to the weapon base
   inc %weapon.base %mastery.bonus
 
   ; Set the base attack damage
+
   set %attack.damage $round($calc(%weapon.base * %base.stat),0)
 
   if ($person_in_mech($1) = false) { 
@@ -427,8 +440,6 @@ formula.meleedmg.player {
   }
   unset %status.type.list
 
-
-
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
 
@@ -450,6 +461,7 @@ formula.meleedmg.player {
   var %blocked.percent $log(%enemy.defense)
   if (%blocked.percent < 0) { var %blocked.percent .5 }
   inc %blocked.percent $rand(1,5)
+  inc %blocked.percent $log($get.level($3))
   var %blocked.damage $round($return_percentofvalue(%attack.damage, %blocked.percent),0)
   dec %attack.damage %blocked.damage
 
@@ -1484,12 +1496,20 @@ formula.techdmg.player {
   ; Does the user have a mastery in the weapon?  We can add a bonus as well.
   $mastery_check($1, %weapon.used)
 
+  ; If it's a portal battle this might need to be adjusted to make portal battles easier to balance
+  if (%portal.bonus = true) {
+    if (%weapon.base > $return_winningstreak) { var %weapon.base $return_winningstreak }
+    if (%tech.base > $return_winningstreak) { var %tech.base $return_winningstreak }
+    if (%mastery.bonus > $calc($return_winningstreak + 10)) { var %mastery.bonus $calc($return_winningstreak + 10) }
+  }
+
   unset %weapon.used
 
   inc %base.power.wpn %mastery.bonus
 
   set %attack.damage $calc(%tech.base + %user.tech.level + %base.power.wpn)
   set %attack.damage $round($calc(%attack.damage * %base.stat),0)
+
 
   if ($person_in_mech($1) = false) {
     ; Let's check for some offensive style enhancements
@@ -1554,9 +1574,13 @@ formula.techdmg.player {
     dec %enemy.defense %def.ignored
   }
 
+  if (%enemy.defense <= 0) { set %enemy.defense 1 }
+
   var %blocked.percent $log(%enemy.defense)
   if (%blocked.percent < 0) { var %blocked.percent .5 }
   inc %blocked.percent $rand(1,3)
+  inc %blocked.percent $log($get.level($3))
+
   var %blocked.damage $round($return_percentofvalue(%attack.damage, %blocked.percent),0)
   dec %attack.damage %blocked.damage
 
@@ -1588,7 +1612,6 @@ formula.techdmg.player {
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
   if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
 
-  if (%enemy.defense <= 0) { set %enemy.defense 1 }
 
   if ($readini($char($3), info, ai_type) = counteronly) { set %attack.damage 0 | return }
 

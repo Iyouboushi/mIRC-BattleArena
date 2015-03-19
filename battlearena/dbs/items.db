@@ -2908,6 +2908,7 @@ Monster=AshiAtora
 Desc=takes out an ancient crystal from Atlantis. It begins to pulse then glows bright, covering everyone and the battlefield.  When the glow fades they find themselves in Atlantis.. 
 AlliedNotes=7000
 PortalLevel=300
+DarknessTurns=35
 
 
 =========================
