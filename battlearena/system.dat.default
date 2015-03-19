@@ -35,6 +35,7 @@ ShowOrbsCmdInChannel=true
 ShowDiscountMessage=false
 EnableBattlefieldEvents=true
 IgnoreDmgCap=false
+AllowSpiritOfHero=true
 GuaranteedBossBattles=10.15.20.30.60.100.150.180.220.280.320.350.401.440.460.501.560.601.670.705.780.810.890.920.999.1100.1199.1260.1305.1464.1500.1650.1720.1880.1999.2050.2250.9999
 MaxNumberOfMonsInBattle=6
 ScoreBoardType=2
