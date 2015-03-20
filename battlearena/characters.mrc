@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/28/15
+;;;; Last updated: 03/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1112,7 +1112,7 @@ on 50:TEXT:!add*:*:{
     var %player.amount $readini($char($2), stuff, RedOrbs) 
     if (%player.amount = $null) { var %player.amount 0 }
     inc %player.amount $4 | writeini $char($2) stuff  RedOrbs %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $readini(system.dat, system, currency), private)
+    $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $currency, private)
     halt
   }
 
@@ -1170,7 +1170,7 @@ on 50:TEXT:!take *:*:{
     dec %player.amount $4 
     if (%player.amount < 0) { var %player.amount 0 }
     writeini $char($2) stuff  RedOrbs %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 $readini(system.dat, system, currency), private)
+    $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 $currency, private)
     halt
   }
 
@@ -1502,7 +1502,7 @@ alias wheel.control {
     ; Display the help for the wheel control and rules
     var %wheel.cost $readini(system.dat, system, WheelGameCost)
     if (%wheel.cost = $null) { writeini system.dat system WheelGameCost 500 | var %wheel.cost 500 }
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you.. gives a big smile... toots his horn and says.. 2"Step right up and spin the wheel! Only %wheel.cost $readini(system.dat, system, currency) $+ ! Use !wheel spin to play and try to win some great items! You can play once every 12 hours!" , 1)
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you.. gives a big smile... toots his horn and says.. 2"Step right up and spin the wheel! Only %wheel.cost $currency $+ ! Use !wheel spin to play and try to win some great items! You can play once every 12 hours!" , 1)
 
   }
 
@@ -1527,7 +1527,7 @@ alias wheel.control {
     var %wheel.cost $readini(system.dat, system, WheelGameCost)
     if (%wheel.cost = $null) { writeini system.dat system WheelGameCost 500 | var %wheel.cost 500 }
     var %orbs.have $round($readini($char($1), stuff, redorbs),0)
-    if (%orbs.have < %wheel.cost) { $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you and shakes his head sadly.2 "Sorry.. you don't have enough $readini(system.dat, system, currency) to play the game. It costs %wheel.cost to spin the wheel!") | halt }
+    if (%orbs.have < %wheel.cost) { $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you and shakes his head sadly.2 "Sorry.. you don't have enough $currency to play the game. It costs %wheel.cost to spin the wheel!") | halt }
     dec %orbs.have %wheel.cost
     var %orbs.spent $readini($char($1), stuff, RedOrbsSpent)
     inc %orbs.spent %wheel.cost
@@ -1543,7 +1543,7 @@ alias wheel.control {
     inc %number.of.spins 1
     writeini $char($1) stuff WheelsSpun %number.of.spins
 
-    ; Check for achievement (coming soon)
+    ; Check for achievement (to be added)
 
     ; Write the time we spun the wheel.
     writeini $char($1) info LastWheelTime $ctime
@@ -1597,4 +1597,94 @@ alias wheel.spin {
   unset %prize.list
 
   return
+}
+
+; ===================================
+; Gambler Chou-Han game
+; ===================================
+on 3:TEXT:!chouhan*:*:{ $gamble.game($nick, $2, $3) } 
+
+alias gamble.game {
+  ; $1 = user
+  ; $2 = amount of orbs to bet or help
+  ; $3 = odd or even
+
+  if ($shopnpc.present.check(Gambler) != true) { $display.private.message(4Error: $readini(shopnpcs.dat, NPCNames,Gambler) is not at the Allied Forces HQ so gambling game cannot be used.) | halt }
+
+  if ((((($3 = $null) || ($2 !isnum) || (. isin $2) || ($2 < 1) || ($2 = help))))) { 
+    ; Display the help and rules
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) looks at you.. and nods. 2"So you're interested in the gambling game eh? Well it's simple. I'll roll 2 dice and you have to tell me if the added result will be even or odd. You can gamble with as many $currency as you have on hand once per day. If you win I'll double the wager but if you lose I'll take all that you bet!",1)
+    $display.private.message.delay.custom(2Use !chouhan #amount odd/even to play [such as !chouhan 100 odd  or !chouhan 50 even] , 2)
+    halt
+  }
+
+  if ($readini($char($1), stuff, redorbs) < $2) { $display.private.message(4Error: You do not have $2 $currency to gamble with ) | halt }
+  if (($3 != odd) && ($3 != even)) {  $display.private.message.delay.custom(2Use !chouhan #amount odd/even to play [such as !chouhan 100 odd  or !chouhan 50 even] , 2) | halt }
+
+  ; Can we gamble again so soon?
+  var %last.gamble $readini($char($1),info,LastGambleTime)
+  var %current.time $ctime
+  var %time.difference $calc(%current.time - %last.gamble)
+
+  var %gamble.time.setting 86400 
+
+  if ((%time.difference = $null) || (%time.difference < %gamble.time.setting)) { 
+    $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,Gambler) looks at you and shakes his head.2 "Sorry.. you can only gamble once per $duration(%gamble.time.setting) $+ ! Try again later."  4It has been $duration(%time.difference) since the last time you played. ) 
+    halt 
+  }
+
+  ; Do the gamble game.
+  var %dice.1 $rand(1,6)
+  var %dice.2 $rand(1,6)
+  var %dice.total $calc(%dice.1 + %dice.2)
+  var %even 2.4.6.8.10.12
+
+  $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,Gambler) takes two dice and tosses them into a cup. After shaking it the cup is flipped upside down onto a mat and slowly lifted up.)
+
+  if ($istok(%even, %dice.total, 46) = $true) { var %result even }
+  else { var %result odd }
+
+  $display.private.message(3Dice Results: [Die 1 reads2 %dice.1 $+ 3] [Die 2 reads:2 %dice.2 $+ 3] [Result:2 %dice.total $+ 3] [12 $+ %result $+ 3])
+
+  var %orbs.have $readini($char($1), stuff, redorbs)
+
+  ; Check for loss
+  if ((%result = odd) && ($3 = even)) { dec %orbs.have $2 | var %game.status lose }
+  if ((%result = even) && ($3 = odd)) { dec %orbs.have $2 | var %game.status lose }
+
+  ; Check for wins
+  if ((%result = odd) && ($3 = odd)) {  inc %orbs.have $round($calc($2 * 2),0) | var %game.status win }
+  if ((%result = even) && ($3 = even)) { inc %orbs.have $round($calc($2 * 2),0) | var %game.status win }
+
+  ; Write the orb amount
+  writeini $char($1) stuff redorbs %orbs.have
+
+  ; keep a tally of gambles
+  var %number.of.gambles $readini($char($1), stuff, TimesGambled)
+  if (%number.of.gambles = $null) { var %number.of.gambles 0 }
+  inc %number.of.gambles 1
+  writeini $char($1) stuff TimesGambled %number.of.gambles
+
+  if (%game.status = win) { 
+    var %number.of.wins $readini($char($1), stuff, GamblesWon)
+    if (%number.of.wins = $null) { var %number.of.wins 0 }
+    inc %number.of.wins 1 
+    writeini $char($1) stuff GamblesWon %number.of.wins
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a sly smile.2 "Seems you've won. Here's your prize." 3You have won $bytes($round($calc($2 * 2),0),b)  $+ $currency,1)
+  }
+
+  if (%game.status = lose) { 
+    var %number.of.losses $readini($char($1), stuff, GamblesLost)
+    if (%number.of.losses = $null) { var %number.of.losses 0 }
+    inc %number.of.losses 1 
+    writeini $char($1) stuff GamblesLost %number.of.losses
+
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a laugh.2 "That's too bad. You lose. Such is Lady Luck! ." 3You have lost $bytes($2,b)  $+ $currency,1)
+
+  }
+
+  ; Check for achievement (to be added)
+
+  ; Write the time we last gambled
+  writeini $char($1) info LastGambleTime $ctime
 }

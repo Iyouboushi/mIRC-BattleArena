@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 02/07/15
+;;;; Last updated: 03/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -31,6 +31,10 @@ alias shopnpc.list {
   if (%npcstatus.wheel = true) { var %npcstatus.wheel at the Allied Forces HQ }
   if (%npcstatus.wheel = false) { var %npcstatus.wheel not found yet }
 
+  var %npcstatus.gambler $readini(shopnpcs.dat, NPCstatus, Gambler)
+  if (%npcstatus.gambler = true) { var %npcstatus.gambler at the Allied Forces HQ }
+  if (%npcstatus.gambler = false) { var %npcstatus.gambler not found yet }
+
   var %npcstatus.gardener $readini(shopnpcs.dat, NPCstatus, gardener)
   if (%npcstatus.gardener = true) { var %npcstatus.gardener at the Allied Forces HQ }
   if (%npcstatus.gardener = false) { var %npcstatus.gardener not found yet }
@@ -48,7 +52,8 @@ alias shopnpc.list {
   if (%npcstatus.travelmerchant = false) { var %npcstatus.travelmerchant not here yet }
 
   var %npcs.status [4Allied Forces President:12 %npcstatus.president $+ 1] [4Healing Items Merchant:12 %npcstatus.healing $+ 1] [4Battle Items Merchant:12 %npcstatus.battle $+ 1] [4Discount Card Merchant:12 %npcstatus.discountcard $+ 1]  [4Shield Merchant:12 %npcstatus.shield $+ 1] 
-  var %npcs.status2 [4Bard:12 %npcstatus.song $+ 1]  [4Gardener:12 %npcstatus.gardener $+ 1] [4Wheel Minigame Master:12 %npcstatus.wheel $+ 1]  [4Traveling Merchant:12 %npcstatus.travelmerchant $+ ]  [4Potion Witch:12 %npcstatus.potionwitch $+ ]
+  var %npcs.status2 [4Bard:12 %npcstatus.song $+ 1]  [4Gardener:12 %npcstatus.gardener $+ 1] [4Wheel Minigame Master:12 %npcstatus.wheel $+ 1] [4Gambler:12 %npcstatus.gambler $+ 1] [4Traveling Merchant:12 %npcstatus.travelmerchant $+ ]  [4Potion Witch:12 %npcstatus.potionwitch $+ ]
+
   var %easter.status [4Easter Bunny?12 $iif($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true, at the Allied Forces HQ, not around yet) $+ 1]
   var %santa.status [4Santa Saved?12 $readini(shopnpcs.dat, NPCStatus, Santa) $+ 1] [4Number of Elves Saved:12 $readini(shopnpcs.dat,Events, SavedElves) $+ 1]
   set %seasonal.status $iif( $left($adate, 2) = 04, %easter.status) $iif( $left($adate, 2) = 12, %santa.status)

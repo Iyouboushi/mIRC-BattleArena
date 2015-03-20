@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 02/15/15
+;;;; Last updated: 03/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -141,7 +141,10 @@ on 2:Chat:!sell*: { $shop.start(!shop, sell, $2, $3, $4, $5) }
 on 2:Chat:!bet*: { $ai.battle.place.bet($nick, $2, $3) } 
 on 2:Chat:!npc status: { $shopnpc.list(dcc, $nick) }
 on 2:Chat:!portal usage: { $portal.usage.check(dcc, $nick) }
-on 2:Chat:!wheel: { $wheel.control($nick, $2) } 
+
+; Mini-games (used with special shop npcs)
+on 2:Chat:!wheel*: { $wheel.control($nick, $2) } 
+on 2:Chat:!chouhan*: { $gamble.game($nick, $2, $3) } 
 
 on 2:Chat:!access: {
   if ($2 = add) { $character.access($nick, add, $3) }

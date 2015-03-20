@@ -176,6 +176,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCStatus, TravelMerchant) = $null) { writeini shopnpcs.dat NPCStatus TravelMerchant false }
     if ($readini(shopnpcs.dat, NPCStatus, Gardener) = $null) { writeini shopnpcs.dat NPCStatus Gardener kidnapped }
     if ($readini(shopnpcs.dat, NPCStatus, PotionWitch) = $null) { writeini shopnpcs.dat NPCStatus PotionWitch false }
+    if ($readini(shopnpcs.dat, NPCStatus, Gambler) = $null) { writeini shopnpcs.dat NPCStatus Gambler kidnapped }
 
     if ($readini(shopnpcs.dat, Events, FrostLegionDefeated) = $null) { writeini shopnpcs.dat Events FrostLegionDefeated false }
     if ($readini(shopnpcs.dat, Events, SavedElves) = $null) { writeini shopnpcs.dat Events SavedElves 0 }
@@ -200,6 +201,8 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCNames, TravelMerchant) = $null) { writeini shopnpcs.dat NPCNames TravelMerchant Beedle the Traveling Merchant }
     if ($readini(shopnpcs.dat, NPCNames, Gardener) = $null) { writeini shopnpcs.dat NPCNames Gardener Green Thumb the Garden Moogle }
     if ($readini(shopnpcs.dat, NPCNames, PotionWitch) = $null) { writeini shopnpcs.dat NPCNames PotionWitch Syrup the Potion Witch }
+    if ($readini(shopnpcs.dat, NPCNames, Gambler) = $null) { writeini shopnpcs.dat NPCNames Gambler Setzer the Gambler }
+
 
     ; Allied Forces Garden stuff
     if ($readini(garden.dat, GardenStats, XP) = $null) { writeini garden.dat GardenStats XP 0 }
@@ -473,6 +476,16 @@ userlevel { set %userlevel $readini($char($1), Info, user) | return }
 ; Returns enemy's name
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 enemy { return %enemy }
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns the name of the
+; currency (red orbs)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+currency {
+  var %currency $readini(system.dat, system, currency)
+  if (%currency = $null) { return Red Orbs }
+  else { return %currency }
+}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Builds info for shop NPC
