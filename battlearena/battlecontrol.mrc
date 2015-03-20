@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/18/15
+;;;; Last updated: 03/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1151,7 +1151,7 @@ alias battle_rage_warning {
 
   if (%battle.type = defendoutpost) { return }
   if (%mode.gauntlet != $null) { return }
-  if (%darkness.turns = $null) { return }
+  if ((%darkness.turns = $null) && (%demonwall.name = $null)) { return }
 
   if (%demonwall.fight != on) {  $display.message($readini(translation.dat, battle, DarknessWarning), battle)  }
   if (%demonwall.fight = on) { 
