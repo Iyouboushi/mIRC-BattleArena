@@ -172,6 +172,8 @@ generate_monster_warmachine {
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
 
+  if (%battle.type != ai) {  writeini $char(%monster.name) basestats hp $iif($return_playersinbattle > 1, $rand(5000,6000), $rand(2000,3000)) }
+
   writeini $char(%monster.name) basestats str $rand(25,50)
   writeini $char(%monster.name) basestats def $rand(15,45)
   writeini $char(%monster.name) basestats int $rand(60,75)
@@ -437,7 +439,7 @@ generate_demonwall {
   writeini $char(%monster.name) info OrbBonus yes
 
   var %base.hp.tp $calc(7 * %current.battlestreak)
-  if (%battle.type != ai) {  writeini $char(%monster.name) basestats hp $rand(45000,50000) }
+  if (%battle.type != ai) {  writeini $char(%monster.name) basestats hp $iif($return_playersinbattle > 1, $rand(10000,15000), $rand(12000,16000)) }
   if (%battle.type = ai) {  writeini $char(%monster.name) basestats hp $rand(20000,25000) }
 
   writeini $char(%monster.name) basestats tp %base.hp.tp
@@ -467,10 +469,11 @@ generate_demonwall {
   writeini $char(%monster.name) skills MagicMirror 10
   writeini $char(%monster.name) skills Resist-blind 100
   writeini $char(%monster.name) skills Resist-slow 100
+  writeini $char(%monster.name) skills Resist-stun 100
   writeini $char(%monster.name) skills Resist-Weaponlock 100
 
   writeini $char(%monster.name) styles equipped Guardian
-  writeini $char(%monster.name) styles guardian 5
+  writeini $char(%monster.name) styles guardian 1
 
   var %reflect.chance $rand(1,100)
   if (%reflect.chance <= 40) { writeini $char(%monster.name) status reflect yes | writeini $char(%monster.name) status reflect.timer 1 }
@@ -529,14 +532,14 @@ generate_wallofflesh {
   writeini $char(%monster.name) descriptions Snatch reaches out with a long tonge and attempts to latch onto %enemy to use as a human shield.
 
   var %base.hp.tp $calc(7 * %current.battlestreak)
-  if (%battle.type != ai) {  writeini $char(%monster.name) basestats hp $iif($return_playerlevelstotal >= 1100, $round($calc(2500 + (5 * $return_differenceof($return_playerlevelstotal,1100))),0), $round($calc(2000 + $return_playerlevelstotal),0)) }
+  if (%battle.type != ai) {  writeini $char(%monster.name) basestats hp $iif($return_playersinbattle > 1, $rand(15000,17000), $rand(13000,16000)) }
   if (%battle.type = ai) {  writeini $char(%monster.name) basestats hp $rand(20000,25000) }
 
   writeini $char(%monster.name) basestats tp %base.hp.tp
-  writeini $char(%monster.name) basestats str $round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .10)),0)
-  writeini $char(%monster.name) basestats def $round($calc(%current.battlestreak / 7),0)
-  writeini $char(%monster.name) basestats int $round($calc(%current.battlestreak / 4),0)
-  var %base.stats $calc($rand(1,3) * %current.battlestreak)
+  writeini $char(%monster.name) basestats str $round($calc(%current.battlestreak / 5),0)
+  writeini $char(%monster.name) basestats def $round($calc(%current.battlestreak / 6),0)
+  writeini $char(%monster.name) basestats int $round($calc(%current.battlestreak / 3),0)
+  var %base.stats $calc($rand(1,2) * %current.battlestreak)
   inc %base.stats $rand(0,2)
   writeini $char(%monster.name) basestats spd %base.stats
   writeini $char(%monster.name) info CanTaunt false
@@ -559,12 +562,12 @@ generate_wallofflesh {
   writeini $char(%monster.name) skills Resist-Weaponlock 100
 
   writeini $char(%monster.name) styles equipped Guardian
-  writeini $char(%monster.name) styles guardian 6
+  writeini $char(%monster.name) styles guardian 2
 
-  writeini $char(%monster.name) modifiers Fire 50
-  writeini $char(%monster.name) modifiers Gun 150
+  writeini $char(%monster.name) modifiers Fire 60
+  writeini $char(%monster.name) modifiers Gun 170
   writeini $char(%monster.name) modifiers Rifle 200
-  writeini $char(%monster.name) modifiers Bow 110
+  writeini $char(%monster.name) modifiers Bow 120
 
   var %reflect.chance $rand(1,100)
   if (%reflect.chance <= 70) { writeini $char(%monster.name) status reflect yes | writeini $char(%monster.name) status reflect.timer 1 }
@@ -610,7 +613,7 @@ generate_bandit_leader {
 
   set %monster.name Bandit_Leader | set %monster.realname Bandit Leader
 
-  if (%current.battlestreak > 500) { writeini $char(%monster.name) info OrbBonus yes }
+  if (%current.battlestreak > 60) { writeini $char(%monster.name) info OrbBonus yes }
 
   .copy -o $char(new_chr) $char(%monster.name)
   writeini $char(%monster.name) info flag monster 
@@ -697,7 +700,7 @@ generate_bandit_minion {
 
   set %monster.name Bandit_Minion $+ $1 | set %monster.realname Bandit Minion $1
 
-  if (%current.battlestreak > 500) { writeini $char(%monster.name) info OrbBonus yes }
+  if (%current.battlestreak > 50) { writeini $char(%monster.name) info OrbBonus yes }
 
   .copy -o $char(new_chr) $char(%monster.name)
   writeini $char(%monster.name) info flag monster 
