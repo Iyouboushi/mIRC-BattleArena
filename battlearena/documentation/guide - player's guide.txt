@@ -329,6 +329,9 @@ Green Thumb is a special NPC that takes care of the Allied Forces HQ Garden. Sad
 Syrup the Potion Witch
 Syrup is a special NPC that, upon arriving at the HQ, will unlock the Potion Effect shop. Use !shop list potioneffect or !shop buy potioneffect effectname For more information on this, see the Potion Effects Shop section. She will show up when the number of total Lost Souls killed in the game is 200+. Like the other shop NPCs, this is a group effort so everyone who has killed one contributes towards this total.
 
+Setzer the Gambler
+Setzer is a special NPC that runs the Gambling mini game (Chou-Han). However, he's gone and gotten himself kidnapped by monsters. After you rescue him players will be able to use the !chouhan command.  The game is simple, place a bet on whether two dice will add up to an even or odd number. Players can bet as many red orbs as they want, as long as they have the amount on-hand. If they win they will receive double the amount back. Lose and they lose all the red orbs they bet. Commands: !chouhan #amount odd/even  such as !chouhan 100 odd   -- use !chouhan help  for more info. The game can only be played once per 24 hours.
+
 There's also a few seasonal merchant NPCs that show up under certain conditions in the correct months. I will leave those as a mystery but will note that they sell items mixed in with the various other normal shops (so items/misc/alchemy/etc)
 
 To make things interesting, many of these NPCs can be kidnapped and rescued. There's a 25% chance that the npcs will be kidnapped on normal boss battles if players lose the battle (doesn't matter what streak #) and a 50% chance of it happening on certain other boss types (warmachine, doppelganger, bandits). Likewise, there's a 50% chance of rescuing an NPC on a successful boss win (of normal boss types) or a 70% chance of rescuing an npc on the other boss types.
