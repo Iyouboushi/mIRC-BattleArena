@@ -1537,8 +1537,7 @@ formula.techdmg.player {
   if ($istok(%ignition.techs,$2,46) = $true) { var %user.tech.level 50 }
   unset %ignition.name | unset %ignition.techs
 
-  if (%tech.base < 100) { inc %tech.base $round($calc(%user.tech.level * 1.8),0) }
-  if (%tech.base >= 100) { inc %tech.base $round($calc(%user.tech.level 1.655),0) }
+  if (%user.tech.level < 100) {  inc %tech.base $round($calc(%user.tech.level * 1.8),0) }
 
   ; Let's add in the base power of the weapon used..
   if ($person_in_mech($1) = false) { set %weapon.used $readini($char($1), weapons, equipped) }
