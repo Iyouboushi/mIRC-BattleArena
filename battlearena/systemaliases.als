@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/18/15
+;;;; Last updated: 03/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -104,7 +104,7 @@ system_defaults_check {
     if ($readini(system.dat, system, AllowDemonwall) = $null) { writeini system.dat system AllowDemonwall yes }
     if ($readini(system.dat, system, AllowDemonwall) = $null) { writeini system.dat system AllowWallOfFlesh yes }
     if ($readini(system.dat, system, MaxDemonWallTurns) = $null) { writeini system.dat system MaxDemonWallTurns 10 }
-    if ($readini(system.dat, system, MaxDemonWallTurns) = $null) { writeini system.dat system MaxWallOfFleshTurns 16 }
+    if ($readini(system.dat, system, MaxWallOfFleshTurns) = $null) { writeini system.dat system MaxWallOfFleshTurns 16 }
 
     if ($readini(system.dat, statprices, hp) = $null) { writeini system.dat statprices hp 150 }
     if ($readini(system.dat, statprices, tp) = $null) { writeini system.dat statprices tp 150 }
