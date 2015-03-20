@@ -1143,6 +1143,8 @@ Battle Arena Bot VERSIONS
   without the bot owner doing it manually.
 - Added a new Shop NPC: Syrup the Potion Witch.  Upon arriving at the HQ, she will unlock the Potion Effect shop.
   Use !shop list potioneffect or !shop buy potioneffect effectname
+- Added a new Shop NPC: Setzer the Gambler. Upon arriving at the HQ players can use the !chouhan mini game.
+  !chouhan #amount odd/even   Use !chouhan help  for more information
 - Added Potion Effects. These are special bonuses that players can purchase from Syurp. They will be applied during
   or after the next battle for the player who has the effect on.
 - Added the ability to sell weapons back to the shop. Use !shop sell weapon weaponname -- You will receive 1/2 of the 
