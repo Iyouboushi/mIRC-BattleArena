@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/13/15
+;;;; Last updated: 03/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -532,6 +532,9 @@ alias fullbring.singleheal {
   var %item.base $readini($dbfile(items.db), $2, FullbringAmount)
   inc %attack.damage %item.base
 
+  ; Increase the amount by a factor of how strong fullbring is
+  set %attack.damage $calc(%attack.damage * $readini($char($1), skills, Fullbring))
+
   ; If the person has the FieldMedic skill, increase the amount.
   var %field.medic.skill $readini($char($1), skills, FieldMedic) 
   if (%field.medic.skill != $null) {
@@ -539,7 +542,11 @@ alias fullbring.singleheal {
     inc %attack.damage %skill.increase.amount
   }
 
-  ; Let's increase the attack by a random amount.
+  ; Increase by a percent of the log of the arena level
+  var %percent.increase $log($return_winningstreak)
+  inc %attack.damage $round($return_percentofvalue(%attack.damage, %percent.increase),0)
+
+  ; Let's increase by a random amount.
   inc %attack.damage $rand(1,10)
 
   ; In this bot we don't want the attack to ever be lower than 1.  
@@ -570,12 +577,19 @@ alias fullbring.aoeheal {
   var %item.base $readini($dbfile(items.db), $2, FullbringAmount)
   inc %attack.damage %item.base
 
+  ; Increase the amount by a factor of how strong fullbring is
+  set %attack.damage $calc(%attack.damage * $readini($char($1), skills, Fullbring))
+
   ; If the person has the FieldMedic skill, increase the amount.
   var %field.medic.skill $readini($char($1), skills, FieldMedic) 
   if (%field.medic.skill != $null) {
     var %skill.increase.amount $calc(5 * %field.medic.skill)
     inc %attack.damage %skill.increase.amount
   }
+
+  ; Increase by a percent of the log of the arena level
+  var %percent.increase $log($return_winningstreak)
+  inc %attack.damage $round($return_percentofvalue(%attack.damage, %percent.increase),0)
 
   ; Let's increase the attack by a random amount.
   inc %attack.damage $rand(1,10)

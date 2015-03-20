@@ -83,7 +83,15 @@ calculate_damage_items {
 
   ; First things first, let's find out the base power.
 
-  if ($4 = fullbring) { set %item.base $readini($dbfile(items.db), $2, FullbringAmount) }
+  if ($4 = fullbring) { 
+    set %item.base $readini($dbfile(items.db), $2, FullbringAmount) 
+    ; Increase the amount by a factor of how strong fullbring is
+    set %item.base $calc(%item.base * $readini($char($1), skills, Fullbring))
+
+    ; Increase by a percent of the log of the arena level
+    var %percent.increase $log($return_winningstreak)
+    inc %item.base $round($return_percentofvalue(%item.base, %percent.increase),0)
+  }
   if (($4 = item) || ($4 = $null)) { set %item.base $readini($dbfile(items.db), $2, Amount) }
 
   inc %attack.damage %item.base
@@ -124,7 +132,6 @@ calculate_damage_items {
   set %enemy.defense $readini($char($3), battle, def)
   $defense_down_check($3)
   $defense_up_check($3)
-
 
   if (%enemy.defense <= 0) { set %enemy.defense 1 }
 
