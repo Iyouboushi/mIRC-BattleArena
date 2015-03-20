@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/19/15
+;;;; Last updated: 03/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -245,7 +245,7 @@ cap.damage {
     if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 1),0)  } 
     if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  } 
 
-    if ($readini($char($1), info, flag) = npc) { dec %damage.threshold 300 }
+    if ($readini($char($1), info, flag) = npc) { dec %damage.threshold 1500 }
 
     if (%damage.threshold <= 0) { var %damage.threshold 10 }
 
@@ -295,6 +295,58 @@ cap.damage {
 
     }
   }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Modifies attack based on
+; level difference
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+calculate_attack_leveldiff {
+  ; $1 = attacker
+  ; $2 = defender
+
+  var %attacker.level $get.level($1)
+  var %defender.level $get.level($2)
+  var %level.difference $round($calc(%attacker.level - %defender.level),0)
+
+  ; This will help newbies out for the streaks 1-9
+  if (($return_winningstreak < 10) && (%portal.bonus != true)) {  
+    if (%level.difference <= 0) { var %level.difference 0 } 
+  }
+
+  ; If the target is stronger, we need to nerf damage
+  if (%level.difference < 0) { 
+    if ((%level.difference < 0) && (%level.difference >= -10)) { dec %attack.damage $round($calc(%attack.damage * .10),0) }
+    if ((%level.difference < -10) && (%level.difference >= -50)) { dec %attack.damage $round($calc(%attack.damage * .15),0) }
+    if ((%level.difference <= -50) && (%level.difference >= -100)) { dec %attack.damage $round($calc(%attack.damage * .25),0) }
+    if ((%level.difference < -100) && (%level.difference >= -150)) { dec %attack.damage $round($calc(%attack.damage * .30),0) }
+    if ((%level.difference < -150) && (%level.difference >= -300)) { dec %attack.damage $round($calc(%attack.damage * .50),0) }
+    if ((%level.difference < -300) && (%level.difference >= -500)) { dec %attack.damage $round($calc(%attack.damage * .60),0) }
+    if (%level.difference < -500)  { dec %attack.damage $round($calc(%attack.damage * .85),0) }
+  }
+
+  ; The target is weaker, let's boost the damage slightly
+  if (%level.difference > 0) { 
+    if ((%level.difference >= 2) && (%level.difference < 10)) { inc %attack.damage $round($calc(%attack.damage * .05),0) }
+    if ((%level.difference >= 10) && (%level.difference <= 50)) { inc %attack.damage $round($calc(%attack.damage * .10),0) }
+    if ((%level.difference > 50) && (%level.difference >= 100)) { inc %attack.damage $round($calc(%attack.damage * .15),0) }
+    if ((%level.difference > 100) && (%level.difference >= 150)) { inc %attack.damage $round($calc(%attack.damage * .20),0) }
+    if ((%level.difference > 150) && (%level.difference >= 300)) { inc %attack.damage $round($calc(%attack.damage * .25),0) }
+    if ((%level.difference > 300) && (%level.difference >= 500)) { inc %attack.damage $round($calc(%attack.damage * .28),0) }
+    if (%level.difference > 500)  { inc %attack.damage $round($calc(%attack.damage * .30),0) }
+  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Boost a Demon Wall's
+; attack based on the current
+; turn.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+demon.wall.boost {
+  set %demonwall.turnpercent $calc(%current.turn / %max.demonwall.turns)
+  inc %demonwall.turnpercent 1  
+  set %attack.damage $round($calc(%demonwall.turnpercent * %attack.damage),0)
+  unset %demonwall.turnpercent
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
