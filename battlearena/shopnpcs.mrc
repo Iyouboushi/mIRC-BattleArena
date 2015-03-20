@@ -209,6 +209,7 @@ alias shopnpc.kidnap {
   if ($shopnpc.present.check(ShieldMerchant) = true) { %active.npcs = $addtok(%active.npcs, ShieldMerchant, 46) }
   if ($shopnpc.present.check(WheelMerchant) = true) { %active.npcs = $addtok(%active.npcs, WheelMerchant, 46) }
   if ($shopnpc.present.check(PotionWitch) = true) { %active.npcs = $addtok(%active.npcs, PotionWitch, 46) }
+  if ($shopnpc.present.check(Gambler) = true) { %active.npcs = $addtok(%active.npcs, Gambler, 46) }
 
   if (%active.npcs = $null) { return }
 
@@ -242,6 +243,7 @@ alias shopnpc.rescue {
   if ($shopnpc.present.check(WheelMaster) = kidnapped) { %active.npcs = $addtok(%active.npcs, WheelMaster, 46) }
   if ($shopnpc.present.check(Gardener) = kidnapped) { %active.npcs = $addtok(%active.npcs, Gardener, 46) }
   if ($shopnpc.present.check(PotionWitch) = kidnapped) { %active.npcs = $addtok(%active.npcs, PotionWitch, 46) }
+  if ($shopnpc.present.check(Gambler) = kidnapped) { %active.npcs = $addtok(%active.npcs, Gambler, 46) }
 
   if (%active.npcs = $null) { return }
 
