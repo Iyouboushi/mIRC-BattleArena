@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/20/15
+;;;; Last updated: 03/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -120,6 +120,20 @@ system_defaults_check {
     if ($readini(system.dat, PlayerLevelCaps, WallOfFlesh) = $null) { writeini system.dat PlayerLevelCaps WallOfFlesh 200 }
     if ($readini(system.dat, PlayerLevelCaps, DefendOutpost) = $null) { writeini system.dat PlayerLevelCaps DefendOutpost 100 }
     if ($readini(system.dat, PlayerLevelCaps, Assault) = $null) { writeini system.dat PlayerLevelCaps Assault 100 }
+
+    ; Monster Level Caps for special bosses
+    if ($readini(system.dat, MonsterLevelCaps, SmallWarmachine) = $null) { writeini system.dat MonsterLevelCaps SmallWarmachine 18 }
+    if ($readini(system.dat, MonsterLevelCaps, MediumWarmachine) = $null) { writeini system.dat MonsterLevelCaps MediumWarmachine 48  }
+    if ($readini(system.dat, MonsterLevelCaps, LargeWarmachine) = $null) { writeini system.dat MonsterLevelCaps LargeWarmachine 74  }
+    if ($readini(system.dat, MonsterLevelCaps, BanditLeader) = $null) { writeini system.dat MonsterLevelCaps BanditLeader 48 }
+    if ($readini(system.dat, MonsterLevelCaps, BanditMinion) = $null) { writeini system.dat MonsterLevelCaps BanditMinion 45 }
+    if ($readini(system.dat, MonsterLevelCaps, Gremlins) = $null) { writeini system.dat MonsterLevelCaps Gremlins 45 }
+    if ($readini(system.dat, MonsterLevelCaps, PirateMinion) = $null) { writeini system.dat MonsterLevelCaps PirateMinion 70 }
+    if ($readini(system.dat, MonsterLevelCaps, PirateFirstMatey) = $null) { writeini system.dat MonsterLevelCaps PirateFirstMatey 73 }
+    if ($readini(system.dat, MonsterLevelCaps, FrostLegion) = $null) { writeini system.dat MonsterLevelCaps FrostLegion 15 }
+    if ($readini(system.dat, MonsterLevelCaps, ElderDragon) = $null) { writeini system.dat MonsterLevelCaps ElderDragon 195 }
+    if ($readini(system.dat, MonsterLevelCaps, DemonWall) = $null) { writeini system.dat MonsterLevelCaps DemonWall 75 }
+    if ($readini(system.dat, MonsterLevelCaps, WallOfFlesh) = $null) { writeini system.dat MonsterLevelCaps WallOfFlesh 200 }
 
     ; Stat prices
     if ($readini(system.dat, statprices, hp) = $null) { writeini system.dat statprices hp 150 }
@@ -291,6 +305,12 @@ return.systemsetting {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return.levelCapSetting {
   var %level.cap.setting $readini(system.dat, PlayerLevelCaps, $1)
+  if (%level.cap.setting = $null) { return null }
+  else { return %level.cap.setting }
+}
+
+return_levelCapSettingMonster {
+  var %level.cap.setting $readini(system.dat, MonsterLevelCaps, $1)
   if (%level.cap.setting = $null) { return null }
   else { return %level.cap.setting }
 }
