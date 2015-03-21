@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/18/15
+;;;; Last updated: 03/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -147,6 +147,13 @@ alias uses_item {
       writeini $char($1) info LastPortalDate $adate
     }
 
+    ; Change the battlefield
+    unset %battleconditions
+    set %current.battlefield $readini($dbfile(items.db), $2, Battlefield)
+    writeini $dbfile(battlefields.db) weather current $readini($dbfile(items.db), $2, weather)
+
+    ; check for limitations
+    $battlefield.limitations
 
     if (($readini(system.dat, system, ForcePortalSync) = true) && ($readini($dbfile(items.db), $2, PortalLevel) != $null)) {
       var %portal.level $readini($dbfile(items.db), $2, PortalLevel)
@@ -166,18 +173,10 @@ alias uses_item {
     if ($numtok(%monster.to.spawn,46) = 1) { $portal.item.onemonster }
     if ($numtok(%monster.to.spawn,46) > 1) { $portal.item.multimonsters }
 
-    unset %battleconditions
-
-    set %current.battlefield $readini($dbfile(items.db), $2, Battlefield)
-    writeini $dbfile(battlefields.db) weather current $readini($dbfile(items.db), $2, weather)
-
     ; Set the allied notes value
     var %allied.notes $readini($dbfile(items.db), $2, alliednotes)   
     if (%allied.notes = $null) { var %allied.notes 100 }
     writeini $txtfile(battle2.txt) battle alliednotes %allied.notes
-
-    ; check for limitations
-    $battlefield.limitations
 
     ; Reduce the item
     $decrease_item($1, $2) 
@@ -209,7 +208,10 @@ alias uses_item {
   if (%item.type = accessory) { $display.message($readini(translation.dat, errors, ItemIsAccessoryEquipItInstead), private) | halt }
   if (%item.type = random) { $item.random($1, $4, $2) | $decrease_item($1, $2) | halt }
   if (%item.type = special) { $item.special($1, $4, $2) | $decrease_item($1, $2) | halt }
-  if (%item.type = trust) { $item.trust($1, $4, $2) | halt }
+  if (%item.type = trust) { 
+    if ((no-trust isin %battleconditions) || (no-trusts isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }
+    else { $item.trust($1, $4, $2) | halt }
+  }
 
   if (%item.type = shopreset) {
     if (%target.flag = monster) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers), private) | halt }
@@ -885,11 +887,9 @@ alias item.food {
   return
 }
 
-
 ;=========================================
 ; Equip an accessory via the !wear command.
 ;=========================================
-
 ON 50:TEXT:*wears *:*:{ 
   $checkchar($1)
   if ($3 = $null) { halt }
@@ -1013,6 +1013,9 @@ alias remove.armor {
   unset %item.location | unset %worn.item
 }
 
+;=========================================
+; Portal item aliases
+;=========================================
 alias portal.item.onemonster {
 
   var %isboss $isfile($boss(%monster.to.spawn))
@@ -1205,6 +1208,10 @@ alias portal.sync.players {
         }
 
       }
+    }
+
+    if ((no-trust isin %battleconditions) || (no-trusts isin %battleconditions)) { 
+      if ($readini($char(%who.battle), info, flag) = npc) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
     }
 
     inc %battletxt.current.line 1

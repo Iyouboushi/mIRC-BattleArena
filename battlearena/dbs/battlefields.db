@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=calm
+current=stormy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -64,7 +64,8 @@ Valid Event Types: damage, heal, statusonly
 
 Valid Limitations: no-tech, no-item, no-skill, no-ignition
                    enhance-item, enhance-melee, enhance-tech
-                   no-mech
+                   no-mech, no-trusts
+ * note that no-trusts also means no npcs in portal battles
 
 ** If you make a new battlefield and want the bot to be able
 to select it for battles, make sure you put the name of it
@@ -642,6 +643,7 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 Weather=calm
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+limitations=no-trusts
 
 [Korroloka Tunnel]
 Weather=gloomy
@@ -652,8 +654,6 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-
-
 
 [Levithan's Heartcore]
 Weather=calm
