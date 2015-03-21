@@ -86,6 +86,20 @@ WallOfFlesh=200
 DefendOutpost=105
 Assault=105
 
+[MonsterLevelCaps]
+SmallWarmachine=18
+MediumWarmachine=48
+LargeWarmachine=74
+BanditLeader=48
+BanditMinion=45
+Gremlins=45
+PirateMinion=70
+PirateFirstMatey=73
+FrostLegion=15
+ElderDragon=195
+DemonWall=75
+WallOfFlesh=200
+
 [StatPrices]
 hp=150
 tp=150
