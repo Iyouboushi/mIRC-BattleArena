@@ -71,6 +71,20 @@ AllowWallOfFlesh=yes
 MaxDemonWallTurns=10
 MaxWallOfFleshTurns=16
 
+[PlayerLevelCaps]
+Doppelganger=50
+SmallWarmachine=20
+MediumWarmachine=50
+LargeWarmachine=75
+Bandits=50
+Gremlins=50
+Pirates=75
+FrostLegion=20
+ElderDragon=200
+DemonWall=75
+WallOfFlesh=200
+DefendOutpost=105
+Assault=105
 
 [StatPrices]
 hp=150
