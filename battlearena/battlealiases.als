@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/20/15
+;;;; Last updated: 03/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -373,62 +373,6 @@ boost_monster_stats {
     if (%boss.level = $null) { var %boss.level %winning.streak }
   }
 
-  if ($2 = warmachine) { 
-    if (%boss.level = $null) { var %boss.level %winning.streak }
-    if ($return_winningstreak >= 75) { var %monster.level 75 }
-  }
-
-  if (%boss.type = wallofflesh) { 
-    if ($return_winningstreak >= 200) { var %monster.level 200 }
-  }
-  if (%boss.type = demonwall) { 
-    if ($return_winningstreak >= 76) { var %monster.level 75 }
-  }
-
-  if (%boss.type = FrostLegion) { 
-    var %monster.level 20 
-  }
-
-  if (%boss.type = Pirates) { 
-    if (%boss.level = $null) { 
-      if ($return_winningstreak >= 75) { var %monster.level 75 }
-    }
-    if (%boss.level != $null) {
-      if (%boss.level > 75) { var %monster.level 75 }
-      else { var %monster.level %boss.level }
-    } 
-  }
-
-  if (%boss.type = Bandits) { 
-    if (%boss.level = $null) { 
-      if ($return_winningstreak >= 50) { var %monster.level 50 }
-    }
-    if (%boss.level != $null) {
-      if (%boss.level > 50) { var %monster.level 50 }
-      else { var %monster.level %boss.level }
-    } 
-  }
-
-  if (%boss.type = Gremlins) { 
-    if (%boss.level = $null) { 
-      if ($return_winningstreak >= 50) { var %monster.level 50 }
-    }
-    if (%boss.level != $null) {
-      if (%boss.level > 50) { var %monster.level 50 }
-      else { var %monster.level %boss.level }
-    } 
-  }
-
-  if ($2 = elderdragon) { 
-    if (%boss.level = $null) { 
-      if ($return_winningstreak >= 200) { var %monster.level 200 }
-    }
-    if (%boss.level != $null) {
-      if (%boss.level > 200) { var %monster.level 200 }
-      else { var %monster.level %boss.level }
-    } 
-  }
-
   if ($2 = doppelganger) { 
     var %monster.level $get.level($1)
     dec %monster.level $rand(2,5)
@@ -504,6 +448,13 @@ boost_monster_stats {
 
   ; If the monster is set to only boost it's hp, do that and return
   if ($readini($char($1), info, BattleStats) = hp) { $boost_monster_hp($1, $2, %monster.level) |  return }
+
+
+  ; Make sure the [battle] stats are set to what the [basestats] should start off with
+  writeini $char($1) battle str $readini($char($1), basestats, str)
+  writeini $char($1) battle def $readini($char($1), basestats, def)
+  writeini $char($1) battle int $readini($char($1), basestats, int)
+  writeini $char($1) battle spd $readini($char($1), basestats, spd)
 
   ; Adjust the stats
   $levelsync($1, %monster.level)
