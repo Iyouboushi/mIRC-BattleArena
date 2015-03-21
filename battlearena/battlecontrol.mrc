@@ -523,8 +523,13 @@ alias enter {
 
   ; level sync for defend/assault outpost type battles
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { 
+
     if ($return_winningstreak >= 100) { 
-      if ($get.level($1) > 105) {  $levelsync($1, 105) | $display.message(4 $+ %real.name has been synced to level 105 for this battle, battle) }
+      if (%battle.type = defendoutpost) {    var %battle.level.cap $return.levelcapsetting(DefendOutpost) }
+      if (%battle.type = assault) { var %battle.level.cap $return.levelcapsetting(Assault) }
+
+      if (%battle.level.cap = null) { var %battle.level.cap 105 } 
+      if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
     }
     else { 
       if ($get.level($1) > $calc(5 + $return_winningstreak)) { 
@@ -961,8 +966,13 @@ alias generate_monster {
 
     if (%boss.type = doppelganger) { 
       $display.message($readini(translation.dat, events, DoppelgangerFight), battle)
-      $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
-      if ($return_winningstreak >= 50) { $portal.sync.players(50) }
+
+      var %battle.level.cap $return.levelcapsetting(Doppelganger)
+      if (%battle.level.cap = null) { var %battle.level.cap 50 } 
+
+      if ($return_winningstreak >= 50) { $portal.sync.players(%battle.level.cap) }
+
+      $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
 
       $generate_evil_clones
     }
@@ -976,20 +986,23 @@ alias generate_monster {
         $display.message($readini(translation.dat, events, WarmachineFight), battle) 
 
         if (($return_winningstreak >= 20) && ($return_winningstreak < 50)) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced20), battle)
-          $portal.sync.players(20) 
+          set %battle.level.cap $return.levelcapsetting(SmallWarMachine)
+          if (%battle.level.cap = null) { set %battle.level.cap 20 } 
         }
 
         if (($return_winningstreak >= 50) && ($return_winningstreak < 75)) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
-          $portal.sync.players(20) 
+          set %battle.level.cap $return.levelcapsetting(MediumWarMachine)
+          if (%battle.level.cap = null) { set %battle.level.cap 50 } 
         }
 
         if ($return_winningstreak >= 75) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced75), battle)
-          $portal.sync.players(75) 
+          set %battle.level.cap $return.levelcapsetting(LargeWarMachine)
+          if (%battle.level.cap = null) { set %battle.level.cap 75 } 
         }
 
+        $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
+        $portal.sync.players(%battle.level.cap) 
+        unset %battle.level.cap
       }
       $generate_monster_warmachine
     }
@@ -997,15 +1010,15 @@ alias generate_monster {
     if (%boss.type = bandits) {
       $display.message($readini(translation.dat, events, BanditsFight), battle)
       if (%battle.type != ai) { 
-        if ($return_winningstreak >= 50) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
-          $portal.sync.players(50) 
-        }
+        var %battle.level.cap $return.levelcapsetting(Bandits)
+        if (%battle.level.cap = null) { var %battle.level.cap 50 } 
+        $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
+        $portal.sync.players(%battle.level.cap) 
       }
 
       $generate_bandit_leader
 
-      if ($readini(battlestats.dat, Battle, WinningStreak) > 100) {  var %number.of.bandits.needed $rand(2,3) }
+      if ($return_winningstreak > 100) {  var %number.of.bandits.needed $rand(2,3) }
       else {  var %number.of.bandits.needed $rand(1,2) }
       var %i 1
       while (%i <= %number.of.bandits.needed) {
@@ -1021,10 +1034,10 @@ alias generate_monster {
       $display.message($readini(translation.dat, events, GremlinsFight), battle)
 
       if (%battle.type != ai) { 
-        if ($return_winningstreak >= 50) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced50), battle)
-          $portal.sync.players(50) 
-        }
+        var %battle.level.cap $return.levelcapsetting(Gremlins)
+        if (%battle.level.cap = null) { var %battle.level.cap 50 } 
+        $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
+        $portal.sync.players(%battle.level.cap) 
       }
 
       .copy -o $boss(Stripe) $char(Stripe) | set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat  |  $set_chr_name(stripe) 
@@ -1053,10 +1066,10 @@ alias generate_monster {
       $display.message($readini(translation.dat, events, PiratesFight), battle)
 
       if (%battle.type != ai) { 
-        if ($return_winningstreak >= 75) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced75), battle)
-          $portal.sync.players(75) 
-        }
+        var %battle.level.cap $return.levelcapsetting(Pirates)
+        if (%battle.level.cap = null) { var %battle.level.cap 75 } 
+        $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
+        $portal.sync.players(%battle.level.cap) 
       }
 
       $generate_pirate_firstmatey
@@ -1077,10 +1090,10 @@ alias generate_monster {
       $display.message($readini(translation.dat, events, FrostLegionFight), battle)
 
       if (%battle.type != ai) { 
-        if ($return_winningstreak >= 20) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced20), battle)
-          $portal.sync.players(20) 
-        }
+        var %battle.level.cap $return.levelcapsetting(FrostLegion)
+        if (%battle.level.cap = null) { var %battle.level.cap 20 } 
+        $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
+        $portal.sync.players(%battle.level.cap) 
       }
 
       if ($readini(battlestats.dat, Battle, WinningStreak) >= 50) {  var %number.of.frosties.needed $rand(4,5) }
@@ -1100,10 +1113,10 @@ alias generate_monster {
 
     if (%boss.type = elderdragon) {
       if (%battle.type != ai) { 
-        if ($return_winningstreak >= 200) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced200), battle)
-          $portal.sync.players(200) 
-        }
+        var %battle.level.cap $return.levelcapsetting(ElderDragon)
+        if (%battle.level.cap = null) { var %battle.level.cap 200 } 
+        $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
+        $portal.sync.players(%battle.level.cap) 
       }
 
       $generate_elderdragon
@@ -1116,11 +1129,10 @@ alias generate_monster {
 
         $display.message($readini(translation.dat, events, DemonWallFight), battle)
 
-        if ($return_winningstreak >= 75) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced75), battle)
-          $portal.sync.players(75) 
-        }
-
+        var %battle.level.cap $return.levelcapsetting(DemonWall)
+        if (%battle.level.cap = null) { var %battle.level.cap 75 } 
+        $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
+        $portal.sync.players(%battle.level.cap) 
       }
       $generate_demonwall
       set %demonwall.fight on
@@ -1132,10 +1144,10 @@ alias generate_monster {
 
         $display.message($readini(translation.dat, events, DemonWallFight), battle)
 
-        if ($return_winningstreak >= 200) {  
-          $display.message($readini(translation.dat, system,BossLevelSynced200), battle)
-          $portal.sync.players(200) 
-        }
+        var %battle.level.cap $return.levelcapsetting(WallOfFlesh)
+        if (%battle.level.cap = null) { var %battle.level.cap 200 } 
+        $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
+        $portal.sync.players(%battle.level.cap) 
       }
       $generate_wallofflesh
       set %demonwall.fight on
@@ -1918,7 +1930,7 @@ alias battlelist {
   if ($1 = $null) {
     if (%battle.list = $null) { $display.message($readini(translation.dat, battle, NoOneJoinedBattleYet), private) | unset %battle.list | unset %who.battle | $endbattle(none) | halt }
 
-    if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 %battleconditions $+ 4] }
+    if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 $replace(%battleconditions, $chr(046), $chr(044) $chr(032)) $+ 4] } 
 
     $display.message($readini(translation.dat, battle, BatListTitleMessage), private)
     $display.message(4[Turn #:12 %current.turn $+ 4] [Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 4] [Moon Phase:12 %moon.phase $+ 4] [Time of Day:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) $+ 4] [Battlefield:12 %current.battlefield $+ 4] %batlist.battleconditions, private)
@@ -1956,7 +1968,7 @@ alias battlelist {
   if ($1 = public) { 
     if (%battle.list = $null) { $display.message($readini(translation.dat, battle, NoOneJoinedBattleYet), battle) | unset %battle.list | unset %who.battle | $endbattle(none) | halt }
 
-    if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 %battleconditions $+ 4] } 
+    if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 $replace(%battleconditions, $chr(046), $chr(044) $chr(032)) $+ 4] } 
 
     $display.message($readini(translation.dat, battle, BatListTitleMessage), battle)
     $display.message(4[Turn #:12 %current.turn $+ 4][Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 4] [Moon Phase:12 %moon.phase $+ 4] [Time of Day:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) $+ 4] [Battlefield:12 %current.battlefield $+ 4] %batlist.battleconditions, battle)

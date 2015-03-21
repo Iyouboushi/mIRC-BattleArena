@@ -149,12 +149,12 @@ generate_evil_clones {
 generate_monster_warmachine {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
+  if (%current.battlestreak > 75) { set %current.battlestreak 75 }
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
 
   if ((%current.battlestreak >= 1) && (%current.battlestreak < 50)) { set %monster.name Small_Warmachine | set %monster.realname Small Warmachine }
-  if ((%current.battlestreak >= 50) && (%current.battlestreak < 75)) { set %monster.name Medium_Warmachine | set %monster.realname Medium Warmachine | writeini $char(%monster.name) info OrbBonus yes  }
-  if (%current.battlestreak >= 75) { set %monster.name Large_Warmachine | set %monster.realname Large Warmachine | writeini $char(%monster.name) info OrbBonus yes }
+  if ((%current.battlestreak >= 50) && (%current.battlestreak < 75)) {  set %monster.name Medium_Warmachine | set %monster.realname Medium Warmachine | writeini $char(%monster.name) info OrbBonus yes  }
+  if (%current.battlestreak >= 75) {  set %monster.name Large_Warmachine | set %monster.realname Large Warmachine | writeini $char(%monster.name) info OrbBonus yes  }
 
   .copy -o $char(new_chr) $char(%monster.name)
 
@@ -245,7 +245,8 @@ generate_monster_warmachine {
 generate_elderdragon {
   var %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak >= 200) { set %current.battlestreak 200 }
+  if (%current.battlestreak > 200) { set %current.battlestreak 200 }
+
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
 
   var %surname The Fierce.The Destroyer.The Evil.The Berserk.The Chaos.Bloodspawn.Bloodtear.Bloodfang.The Fierce
@@ -424,7 +425,8 @@ generate_elderdragon {
 generate_demonwall {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
+  if (%current.battlestreak > 75) { set %current.battlestreak 75 }
+
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
 
   set %monster.name Demon_Wall | set %monster.realname Demon Wall
@@ -516,6 +518,7 @@ generate_wallofflesh {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
   if (%current.battlestreak > 200) { set %current.battlestreak 200 }
+
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
 
   set %monster.name Wall_of_Flesh | set %monster.realname Wall of Flesh
@@ -608,12 +611,12 @@ generate_wallofflesh {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate_bandit_leader {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
+  if (%current.battlestreak > 40) { writeini $char(%monster.name) info OrbBonus yes }
+
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
+  if (%current.battlestreak > 50) { set %current.battlestreak 50 }
 
   set %monster.name Bandit_Leader | set %monster.realname Bandit Leader
-
-  if (%current.battlestreak > 60) { writeini $char(%monster.name) info OrbBonus yes }
 
   .copy -o $char(new_chr) $char(%monster.name)
   writeini $char(%monster.name) info flag monster 
@@ -696,7 +699,7 @@ generate_bandit_minion {
   ; $1 = the number of the minion
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak >= 50) { set %current.battlestreak 50 }
+  if (%current.battlestreak > 50) { set %current.battlestreak 50 }
 
   set %monster.name Bandit_Minion $+ $1 | set %monster.realname Bandit Minion $1
 
@@ -759,7 +762,6 @@ generate_president {
 
   if (%current.battlestreak < 100) { var %base.hp.tp $round($calc(45 * %current.battlestreak),0) }
   else { var %base.hp.tp $round($calc(20 * %current.battlestreak),0) }
-
 
   if (%base.hp.tp > 20000) { var %base.hp.tp 20000 }
 
@@ -827,6 +829,10 @@ generate_allied_troop {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
 
+  var %battle.level.cap $return.levelcapsetting(DefendOutpost)
+  if (%battle.level.cap = null) { var %battle.level.cap 100 } 
+  if (%current.battlestreak > %battle.level.cap) { set %current.battlestreak %battle.level.cap }
+
   set %monster.name allied_troop | set %monster.realname Allied Forces Troop
 
   .copy -o $char(new_chr) $char(%monster.name)
@@ -893,7 +899,7 @@ generate_pirate_scallywag {
   ; $1 = the number of the minion
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak >= 75) { set %current.battlestreak 75 }
+  if (%current.battlestreak > 75) { set %current.battlestreak 75 }
 
   set %monster.name Pirate_Scallywag $+ $1 | set %monster.realname Pirate Scallywag $1
 
@@ -948,7 +954,7 @@ generate_pirate_scallywag {
 generate_pirate_firstmatey {
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak > 100) { set %current.battlestreak 100 }
+  if (%current.battlestreak > 75) { set %current.battlestreak 75 }
 
   set %monster.name Pirate_FirstMatey | set %monster.realname Pirate's First Matey
 
@@ -1023,7 +1029,7 @@ generate_gremlin {
   ; $1 = the number of the minion
   set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
-  if (%current.battlestreak >= 50) { set %current.battlestreak 50 }
+  if (%current.battlestreak > 50) { set %current.battlestreak 50 }
 
   set %monster.name Gremlin $+ $1 | set %monster.realname Gremlin $1
 
@@ -1076,7 +1082,6 @@ generate_gremlin {
   unset %current.battlestreak | unset %monster.name | unset %monster.realname
   unset %boss.item
 }
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

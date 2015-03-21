@@ -218,6 +218,7 @@ PortalUsageCheck=$chr(3) $+ 3 $+ %real.name $+  has %portal.uses.left more por
 ScoreBoardHTMLTrue=$chr(3) $+ 3 $+ The Scoreboard will now generate a HTML file in the main folder upon use of the scoreboard command.
 ScoreBoardHTMLFalse=$chr(3) $+ 3 $+ The Scoreboard will no longer generate a HTML file in the main folder upon use of the scoreboard command.
 PortalLevelsSynced=$chr(3) $+ 4 $+ The level cap for this portal battle has been set to: %portal.level
+BossLevelSyncedCustom=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: %battle.level.cap
 BossLevelSynced20=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 20
 BossLevelSynced50=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 50
 BossLevelSynced75=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 75

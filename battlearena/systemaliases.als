@@ -106,6 +106,22 @@ system_defaults_check {
     if ($readini(system.dat, system, MaxDemonWallTurns) = $null) { writeini system.dat system MaxDemonWallTurns 10 }
     if ($readini(system.dat, system, MaxWallOfFleshTurns) = $null) { writeini system.dat system MaxWallOfFleshTurns 16 }
 
+    ; Player Level Caps for special battles
+    if ($readini(system.dat, PlayerLevelCaps, Doppelganger) = $null) { writeini system.dat PlayerLevelCaps Doppelganger 50 }
+    if ($readini(system.dat, PlayerLevelCaps, SmallWarmachine) = $null) { writeini system.dat PlayerLevelCaps SmallWarmachine 20 }
+    if ($readini(system.dat, PlayerLevelCaps, MediumWarmachine) = $null) { writeini system.dat PlayerLevelCaps MediumWarmachine 50  }
+    if ($readini(system.dat, PlayerLevelCaps, LargeWarmachine) = $null) { writeini system.dat PlayerLevelCaps LargeWarmachine 75  }
+    if ($readini(system.dat, PlayerLevelCaps, Bandits) = $null) { writeini system.dat PlayerLevelCaps Bandits 50 }
+    if ($readini(system.dat, PlayerLevelCaps, Gremlins) = $null) { writeini system.dat PlayerLevelCaps Gremlins 50 }
+    if ($readini(system.dat, PlayerLevelCaps, Pirates) = $null) { writeini system.dat PlayerLevelCaps Pirates 75 }
+    if ($readini(system.dat, PlayerLevelCaps, FrostLegion) = $null) { writeini system.dat PlayerLevelCaps FrostLegion 20 }
+    if ($readini(system.dat, PlayerLevelCaps, ElderDragon) = $null) { writeini system.dat PlayerLevelCaps ElderDragon 200 }
+    if ($readini(system.dat, PlayerLevelCaps, DemonWall) = $null) { writeini system.dat PlayerLevelCaps DemonWall 75 }
+    if ($readini(system.dat, PlayerLevelCaps, WallOfFlesh) = $null) { writeini system.dat PlayerLevelCaps WallOfFlesh 200 }
+    if ($readini(system.dat, PlayerLevelCaps, DefendOutpost) = $null) { writeini system.dat PlayerLevelCaps DefendOutpost 100 }
+    if ($readini(system.dat, PlayerLevelCaps, Assault) = $null) { writeini system.dat PlayerLevelCaps Assault 100 }
+
+    ; Stat prices
     if ($readini(system.dat, statprices, hp) = $null) { writeini system.dat statprices hp 150 }
     if ($readini(system.dat, statprices, tp) = $null) { writeini system.dat statprices tp 150 }
     if ($readini(system.dat, statprices, str) = $null) { writeini system.dat statprices str 250 }
@@ -114,6 +130,7 @@ system_defaults_check {
     if ($readini(system.dat, statprices, spd) = $null) { writeini system.dat statprices spd 250 }
     if ($readini(system.dat, statprices, ig) = $null) { writeini system.dat statprices ig 800 }
 
+    ; Mech settings
     if ($readini(system.dat, mech, EnergyCostConstant) = $null) { writeini system.dat mech EnergyCostConstant 100 }
     if ($readini(system.dat, mech, StatMultiplier) = $null) { writeini system.dat mech StatMultiplier 2 }
     if ($readini(system.dat, mech, EngineUpgradeCost) = $null) { writeini system.dat mech EngineUpgradeCost 1500 }
@@ -126,13 +143,15 @@ system_defaults_check {
     if ($readini(system.dat, mech, MaxEngine) = $null) { writeini system.dat mech MaxEngine 5 }
     if ($readini(system.dat, mech, MechPurchaseCost) = $null) { writeini system.dat mech MechPurchaseCost 1000 }
 
+    ; Auction Info
     if ($readini(system.dat, auctionInfo, TimeBetweenAuctions) = $null) { writeini system.dat AuctionInfo TimeBetweenAuction 3600 }
 
+    ; Certain battle settings
     if ($readini(battlestats.dat, battle, LevelAdjust) = $null) { writeini battlestats.dat battle LevelAdjust 0 }
     if ($readini(battlestats.dat, battle, emptyRounds) = $null) { writeini battlestats.dat battle emptyRounds 0 }
 
+    ; Conquest Settings
     if ($readini(battlestats.dat, conquest, LastTally) = $null) { writeini battlestats.dat conquest LastTally $ctime }
-
     if ($readini(battlestats.dat, conquest, ConquestPointsPlayers) = $null) { 
       var %conquest.points.old $readini(battlestats.dat, conquest, ConquestPoints)
       if (%conquest.points.old > 0) { writeini battlestats.dat conquest ConquestPointsPlayers %conquest.points.old }
@@ -149,6 +168,7 @@ system_defaults_check {
     if ($readini(battlestats.dat, conquest, AlliedInfluence) = $null) { writeini battlestats.dat conquest AlliedInfluence 0 }
     if ($readini(battlestats.dat, conquest, MonsterInfluence) = $null) { writeini battlestats.dat conquest MonsterInfluence 50 }
 
+    ; Dragonballs
     if ($readini(battlestats.dat, dragonballs, ShenronWish) = $null) { writeini battlestats.dat dragonballs ShenronWish off }
     if ($readini(battlestats.dat, dragonballs, ShenronWish.rounds) = $null) { writeini battlestats.dat dragonballs ShenronWish.rounds 1 }
     if ($readini(battlestats.dat, dragonballs, DragonBallsFound) = $null) { writeini battlestats.dat dragonballs DragonBallsFound 0 }
@@ -264,6 +284,15 @@ return.systemsetting {
   var %system.setting.temp $readini(system.dat, system, $1) 
   if (%system.setting.temp = $null) { return null }
   else { return %system.setting.temp }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns a levelcap setting
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return.levelCapSetting {
+  var %level.cap.setting $readini(system.dat, PlayerLevelCaps, $1)
+  if (%level.cap.setting = $null) { return null }
+  else { return %level.cap.setting }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
