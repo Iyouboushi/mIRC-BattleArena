@@ -2916,6 +2916,7 @@ spawn_after_death {
   ; Boost the monster
   $fulls(%monster.to.spawn)
   $boost_monster_stats(%monster.to.spawn) 
+  $levelsync(%monster.to.spawn, $get.level($1))
 
   set %multiple.wave.bonus yes
   set %first.round.protection yes
