@@ -1,9 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 03/08/15
+;;;; Last updated: 03/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | echo -a 4,1Location: %debug.location | halt
+raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
 CTCP *:PING*:?:if ($nick == $me) haltdef
 CTCP *:BOTVERSION*:ctcpreply $nick BOTVERSION $battle.version
 on 1:QUIT: { 
