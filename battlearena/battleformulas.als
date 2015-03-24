@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/20/15
+;;;; Last updated: 03/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -399,8 +399,7 @@ formula.meleedmg.player {
   inc %weapon.base %mastery.bonus
 
   ; Set the base attack damage
-
-  set %attack.damage $round($calc(%weapon.base * %base.stat),0)
+  set %attack.damage %weapon.base
 
   if ($person_in_mech($1) = false) { 
     ; Let's check for some offensive style enhancements
@@ -498,6 +497,9 @@ formula.meleedmg.player {
     }
   }
   unset %status.type.list
+
+  ; Increase attack damage by the $log of the base stat.
+  set %attack.damage $round($calc(%attack.damage * %base.stat),0)
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
@@ -1566,8 +1568,6 @@ formula.techdmg.player {
   inc %base.power.wpn %mastery.bonus
 
   set %attack.damage $calc(%tech.base + %user.tech.level + %base.power.wpn)
-  set %attack.damage $round($calc(%attack.damage * %base.stat),0)
-
 
   if ($person_in_mech($1) = false) {
     ; Let's check for some offensive style enhancements
@@ -1606,6 +1606,9 @@ formula.techdmg.player {
     if (%current.flag = $null) {  set %attack.damage 0 }
   }
   unset %current.weapon.used | unset %base.power.wpn
+
+  ; Increase attack damage by the $log of the base stat.
+  set %attack.damage $round($calc(%attack.damage * %base.stat),0)
 
   var %tech.type $readini($dbfile(techniques.db), $2, type)
   if ((%tech.type = heal-aoe) || (%tech.type = heal)) { return }

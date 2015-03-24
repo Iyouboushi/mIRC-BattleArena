@@ -859,8 +859,8 @@ generate_allied_troop {
   writeini $char(%monster.name) info gender2 him
   writeini $char(%monster.name) info cantaunt false
 
-  if (%current.battlestreak < 100) { var %base.hp.tp $round($calc(45 * %current.battlestreak),0) }
-  else { var %base.hp.tp $round($calc(20 * %current.battlestreak),0) }
+  if (%current.battlestreak < 100) { var %base.hp.tp $round($calc(50 * %current.battlestreak),0) }
+  else { var %base.hp.tp $round($calc(35 * %current.battlestreak),0) }
 
 
   if (%base.hp.tp > 20000) { var %base.hp.tp 20000 }
