@@ -754,7 +754,7 @@ LockpickingFailed=$chr(3) $+ 4 $+  $+ %real.name $+ 's lockpick breaks and the
 Tech Related Messages
 =======================
 [Tech]
-StolenPower=$chr(3) $+ 3 $+ %real.name has stolen and absorbs %amount.of.str strength, %amount.of.def defense, %amount.of.int intelligence and %amount.of.spd speed from $set_chr_name($3) %real.name $+ !
+StolenPower=$chr(3) $+ 3 $+ %real.name has drained %amount.of.str strength, %amount.of.def defense, %amount.of.int intelligence and %amount.of.spd speed from $get_chr_name($3) $+ ! $get_chr_name($1) has gained %levels.gained levels from the drained power!
 StolenStatus=$chr(3) $+ 3 $+ %real.name has also stolen and absorbed %stolen.status.effects from $set_chr_name($3) %real.name $+ !
 SuicideUseAllHP=$chr(3) $+ 4 $+ %real.name uses all of $gender($1) health to perform this technique!
 DisplayAOEDamage=The attack did $+ %damage.display.color $+  $bytes(%attack.damage,b) damage to %enemy $+ ! %element.desc  $+ %style.rating %statusmessage.display

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 02/28/15
+;;;; Last updated: 03/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -469,6 +469,120 @@ alias tech.stealPower {
     if (%guardian.status > 0) { set %attack.damage 0 }   
   }
 
+  var %winning.streak $return_winningstreak
+  if (%battle.type = ai) { var %winning.streak %ai.battle.level }
+  if ((%battle.rage.darkness = on) && ($readini($char($1), info, flag) = monster)) { inc %winning.streak 5000 }
+
+  var %stealpower.multiplier $round($calc(%winning.streak / 30),1)
+  var %max.stealpower $round($calc(%stealpower.multiplier * 80),0) 
+  unset %winning.streak
+
+  if (%attack.damage > %max.stealpower) { set %attack.damage %max.stealpower }
+  unset %max.stealpower
+
+  $set_chr_name($1) | set %user %real.name
+  $set_chr_name($3) | set %enemy %real.name
+
+  $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
+
+  if ($person_in_mech($3) = false) {  
+
+    if (%guard.message = $null) {
+
+      var %attacker.str $readini($char($1), battle, str)
+      var %attacker.def $readini($char($1), battle, def)
+      var %attacker.int $readini($char($1), battle, int)
+      var %attacker.spd $readini($char($1), battle, spd)
+
+      if ($calc($readini($char($3), battle, str) - %attack.damage) <= 1) { var %amount.of.str $readini($char($3), battle, str) | inc %attacker.str $readini($char($3), battle, str) | writeini $char($3) battle str 1 }
+      if ($calc($readini($char($3), battle, str) - %attack.damage) >= 1) { var %amount.of.str %attack.damage | inc %attacker.str %attack.damage | writeini $char($3) battle str $calc($readini($char($3), battle, str) - %amount.of.str) }
+
+      inc %attack.damage $rand(0,2)
+      if ($calc($readini($char($3), battle, def) - %attack.damage) <= 1) { var %amount.of.def $readini($char($3), battle, def) | inc %attacker.def $readini($char($3), battle, def) | writeini $char($3) battle def 1 }
+      if ($calc($readini($char($3), battle, def) - %attack.damage) >= 1) { var %amount.of.def %attack.damage | inc %attacker.def %attack.damage | writeini $char($3) battle def $calc($readini($char($3), battle, def) - %amount.of.def) }
+
+      inc %attack.damage $rand(0,3)
+      if ($calc($readini($char($3), battle, int) - %attack.damage) <= 1) { var %amount.of.int $readini($char($3), battle, int) | inc %attacker.int $readini($char($3), battle, int) | writeini $char($3) battle int 1 }
+      if ($calc($readini($char($3), battle, int) - %attack.damage) >= 1) { var %amount.of.int %attack.damage | inc %attacker.int %attack.damage | writeini $char($3) battle int $calc($readini($char($3), battle, int) - %amount.of.int) }
+
+      inc %attack.damage $rand(0,1)
+      if ($calc($readini($char($3), battle, spd) - %attack.damage) <= 1) { var %amount.of.spd $readini($char($3), battle, spd) | inc %attacker.spd $readini($char($3), battle, spd) | writeini $char($3) battle spd 1 }
+      if ($calc($readini($char($3), battle, spd) - %attack.damage) >= 1) { var %amount.of.spd %attack.damage | inc %attacker.spd %attack.damage | writeini $char($3) battle spd $calc($readini($char($3), battle, spd) - %amount.of.spd) }
+
+      var %total.points.stolen $calc(%amount.of.str + %amount.of.def + %amount.of.int + %amount.of.spd)
+
+      var %levels.gained $round($log(%total.points.stolen),0)
+      var %current.level $get.level($1)
+      inc %current.level %levels.gained
+      $levelsync($1, %current.level)
+
+      $set_chr_name($1) | $display.message($readini(translation.dat, tech, StolenPower), battle)
+
+      ; Can the monster also steal status effects?
+      if ($readini($dbfile(techniques.db), $2, StealStatus) = true) {
+        unset %stolen.status.effects
+
+        if ($readini($char($3), status, Regenerating) = yes) { writeini $char($1) status Regenerating yes | %stolen.status.effects = $addtok(%stolen.status.effects, Regen, 46) }
+        if ($readini($char($3), status, TPRegenerating) = yes) { writeini $char($1) status TPRegenerating yes | %stolen.status.effects = $addtok(%stolen.status.effects, TP Regen, 46) }
+        if ($readini($char($3), status, ConserveTP) = yes) { writeini $char($1) status ConserveTP yes | %stolen.status.effects = $addtok(%stolen.status.effects, Conserve TP, 46) }
+        if ($readini($char($3), status, Protect) = yes) { writeini $char($1) status Protect yes | %stolen.status.effects = $addtok(%stolen.status.effects, Protect, 46) }
+        if ($readini($char($3), status, Shell) = yes) { writeini $char($1) status Shell yes | %stolen.status.effects = $addtok(%stolen.status.effects, Shell, 46) }
+        if ($readini($char($3), status, En-Spell) != none) { writeini $char($1) status en-spell $readini($char($3), status, En-Spell) | %stolen.status.effects = $addtok(%stolen.status.effects, En-Spell, 46) }
+        if ($readini($char($3), status, Revive) = yes) { writeini $char($1) status revive yes | %stolen.status.effects = $addtok(%stolen.status.effects, Auto-Revive, 46) }
+
+        $clear_positive_status($3)
+        writeini $char($3) status revive no
+
+        if (%stolen.status.effects != $null) {
+          set %replacechar $chr(044) $chr(032)
+          %stolen.status.effects = $replace(%stolen.status.effects, $chr(046), %replacechar)
+          $set_chr_name($1) | $display.message($readini(translation.dat, tech, StolenStatus), battle)
+        }
+
+        unset %stolen.status.effects
+      }
+
+
+    }
+
+    if (%guard.message != $null) { $display.message(%guard.message, battle) | unset %guard.message }
+  }
+  if ($person_in_mech($3) = true) {  $set_chr_name($1) | $display.message($readini(translation.dat, errors, NotWorkOnMech), battle) }
+
+  ; Turn off the True Strike skill
+  writeini $char($1) skills truestrike.on off
+
+  return
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Performs a steal power tech
+; This is the pre 3.0 version
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+alias tech.stealPower.old {
+  ; $1 = user
+  ; $2 = tech name
+  ; $3 = target
+
+  set %attack.damage 0
+
+  $calculate_damage_techs($1, $2, $3)
+
+  ; If it's the blood moon, increase the amount by a random amount.
+  if (%bloodmoon = on) { inc %attack.damage $rand(1,100) }
+
+  if (%attack.damage <= 0) { set %attack.damage 5 }
+
+  ; Does the target have a guardian that has to be defeated first?  If so, check to see if guardian is dead.  
+  ; If it isn't, set the attack damage to 0.
+  var %guardian.target $readini($char($3), info, guardian)
+
+  if (%guardian.target != $null) { 
+    var %guardian.status $readini($char(%guardian.target), battle, hp)
+    if (%guardian.status > 0) { set %attack.damage 0 }   
+  }
+
   var %winning.streak $readini(battlestats.dat, battle, winningstreak)
   if (%battle.type = ai) { var %winning.streak %ai.battle.level }
   if (%portal.bonus = true) { var %winning.streak 1500 }
@@ -551,6 +665,7 @@ alias tech.stealPower {
 
   return
 }
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Performs a suicide tech
