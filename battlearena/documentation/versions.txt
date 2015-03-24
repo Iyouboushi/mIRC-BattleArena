@@ -1209,6 +1209,7 @@ Battle Arena Bot VERSIONS
 - Changed the skills BloodBoost and BloodSpirit to cost (3 *skill level)% hp to perform
 - Changed !save battle streak to only work on winning streaks 11+.  Anything below cannot be saved.
 - Changed the amount that the Fullbring skill does. Level of fullbring and the streak # now play a part in boosting the amount.
+- Changed the way the StealPower tech type works slightly. Instead of absoring all of the stats, it's now a $log of the stats.
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
