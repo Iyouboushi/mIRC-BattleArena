@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/24/15
+;;;; Last updated: 03/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2111,6 +2111,7 @@ inflict_status {
       if (%status.type = charm) { writeini $char($2) status charmed yes | writeini $char($2) status charmer $1 | writeini $char($2) status charm.timer %enfeeble.timer }
       if (%status.type = curse) { writeini $char($2) Status %status.type yes | writeini $char($2) battle tp 0 }
       if (%status.type = petrify) { writeini $char($2) status petrified yes }
+      if ((%status.type = slow) && ($readini($char($2), status, speedup) != no)) { writeini $char($2) status speedup no }
 
       if ((((%status.type != poison) && (%status.type != charm) && (%status.type != petrify) && (%status.type != removeboost)))) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer %enfeeble.timer   }
     }
