@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/24/15
+;;;; Last updated: 03/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -332,7 +332,7 @@ alias startnormal {
 
     ; Pick a random chance of boss, monster or orbfountain
     if ($istok(%boss.battle.numbers,$return_winningstreak, 46) = $false) {   
-      if ($return_winningstreak < 10) { var %valid.battle.types monster.orbfountain.monster }
+      if ($return_winningstreak < 10) { var %valid.battle.types monster.orbfountain.monster.monster }
       if (($return_winningstreak >= 10) && ($return_winningstreak < 50)) { var %valid.battle.types boss.monster.orbfountain.monster.orbfountain.monster }
       if (($return_winningstreak >= 50) && ($return_winningstreak < 100)) { var %valid.battle.types boss.monster.monster.orbfountain.monster }
       if ($return_winningstreak >= 100) {  var %valid.battle.types boss.monster.monster.orbfountain.monster.monster.monster }
