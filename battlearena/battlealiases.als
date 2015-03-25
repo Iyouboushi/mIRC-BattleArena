@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/21/15
+;;;; Last updated: 03/24/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -187,6 +187,7 @@ status.effects.turns {
   }
   else { 
     if ($1 = defup) { return 3 }
+    if ($1 = speedup) { return 3 }
     if ($1 = shell) { return 5 }
     if ($1 = protect) { return 5 }
     if ($1 = enspell) { return 5 }
@@ -1819,7 +1820,7 @@ goldorb_check {
     writeini $char($1) status charm no | writeini $char($1) status bored no | writeini $char($1) status bored.timer 1 | writeini $char($1) status confuse no 
     writeini $char($1) status confuse.timer 1 | writeini $char($1) status defensedown no | writeini $char($1) status defensedown.timer 0 | writeini $char($1) status strengthdown no 
     writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown no | writeini $char($1) status intdown.timer 1
-    writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0 
+    writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0  | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0
   }
 }
 
@@ -2037,6 +2038,7 @@ inflict_status {
   if ($3 = confuse) { set %status.type confuse  | var %status.grammar confused }
   if ($3 = removeboost) { set %status.type removeboost | var %status.grammar no longer boosted }
   if ($3 = defenseup) { set %status.type defenseup | var %status.grammar gains defense up }
+  if ($3 = speedup) { set %status.type speedup | var %status.grammar gains speed up }
   if ($3 = sleep) { set %status.type sleep  | var %status.grammar asleep }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
@@ -2262,6 +2264,12 @@ int_down_check {
 defense_up_check {
   if ($readini($char($1), status, defenseup) = yes) {
     %enemy.defense = $round($calc(%enemy.defense * 2),0)
+  }
+}
+
+speed_up_check {
+  if ($readini($char($1), status, speedup) = yes) {
+    %battle.speed = $round($calc(%battle.speed * 2),0)
   }
 }
 
@@ -4486,6 +4494,21 @@ defenseup_check {
   }
   else { 
     if ($readini($char($1), Status, defenseup) = yes) {   writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, defenseupWornOff)  | unset %defenseup.timer | return  }
+  }
+  return
+}
+
+speedup_check { 
+  var %speedup.timer $readini($char($1), status, speedup.timer)  
+  if (%speedup.timer = $null) { var %speedup.timer 0 }
+  if (%speedup.timer < $status.effects.turns(speedup)) { 
+    if (($readini($char($1), Status, speedup) = yes) || ($readini($char($1), Status, speedup) = on)) { 
+      if ($readini($char($1), status, slow) = yes) { writeini $char($1) status slow no | writeini $char($1) status speedup no | return }
+      $status_message_check(Speed Up) |  %speedup.timer = $calc(%speedup.timer + 1) | writeini $char($1) status speedup.timer %speedup.timer
+    $set_chr_name($1)  | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlyspeedup) | unset %speedup.timer | return }
+  }
+  else { 
+    if ($readini($char($1), Status, speedup) = yes) {   writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, speedupWornOff)  | unset %speedup.timer | return  }
   }
   return
 }
