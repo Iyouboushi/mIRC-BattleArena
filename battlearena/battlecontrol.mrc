@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/25/15
+;;;; Last updated: 03/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2363,24 +2363,21 @@ alias turn.statuscheck {
 
   if ($lines($txtfile(temp_status.txt)) != $null) {   /.remove $txtfile(temp_status.txt) }
 
+
   $ignition_check($1) 
 
   $poison_check($1) | $zombie_check($1) | $zombieregenerating_check($1) | $virus_check($1) 
   $frozen_check($1) | $shock_check($1)  | $burning_check($1) | $tornado_check($1) | $drowning_check($1) | $earthquake_check($1)
-  $staggered_check($1) | $intimidated_check($1) | $blind_check($1) | $curse_check($1) | unset %hp.percent  | $stopped_check($1) | $charm_check($1) | $confuse_check($1) | $amnesia_check($1) | $paralysis_check($1)
-  $drunk_check($1) | $slowed_check($1) | $asleep_check($1) | $stunned_check($1) | $defensedown_check($1) | $strengthdown_check($1) | $intdown_check($1) | $defenseup_check($1) | $ethereal_check($1) 
+  $staggered_check($1) | $intimidated_check($1) | $blind_check($1) | $curse_check($1) | unset %hp.percent  | $stopped_check($1) |  $charm_check($1) | $confuse_check($1) | $amnesia_check($1) | $paralysis_check($1)
+  $drunk_check($1) | $slowed_check($1) | $asleep_check($1) | $stunned_check($1) | $defensedown_check($1) | $strengthdown_check($1)  | $intdown_check($1) | $ethereal_check($1) 
   $cocoon_check($1) | $weapon_locked($1) | $petrified_check($1)  | $bored_check($1) | $reflect.check($1)
   $invincible.status.check($1) 
 
-  $regenerating_check($1) | $TPregenerating_check($1) | $boosted_check($1)  | $revive_check($1)
-  $protect_check($1) | $shell_check($1) | $bar_check($1) | $enspell_check($1)
+  $regenerating_check($1) | $TPregenerating_check($1) | $protect_check($1) | $shell_check($1) 
+  $enspell_check($1) | $speedup_check($1) | $defenseup_check($1) 
 
-  if ($readini($char($1), status, SpiritOfHero) = true) { $status_message_check(Spirit of the Hero buff) }
-
-  set %debug.location turn.statuscheck
-
-  ; Check for certain skills
-  $player.skills.list($1)
+  ; Check for status and skills
+  $player.status($1)
 
   if (%all_status = $null) { %all_status = none } 
   if (%all_skills = $null) { %all_skills = none } 

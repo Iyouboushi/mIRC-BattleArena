@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/25/15
+;;;; Last updated: 03/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1811,7 +1811,7 @@ goldorb_check {
     $achievement_check($1, Can'tKeepAGoodManDown)
 
     writeini $char($1) Status poison no | writeini $char($1) Status HeavyPoison no | writeini $char($1) Status blind no
-    writeini $char($1) Status Heavy-Poison no | writeini $char($1) status poison-heavy no | writeini $char($1) Status curse no 
+    writeini $char($1) Status HeavyPoison no | writeini $char($1) status HeavyPoison no | writeini $char($1) Status curse no 
     writeini $char($1) Status weight no | writeini $char($1) status virus no | writeini $char($1) status poison.timer 1 | writeini $char($1) status intimidate no
     writeini $char($1) Status drunk no | writeini $char($1) Status amnesia no | writeini $char($1) status paralysis no | writeini $char($1) status amnesia.timer 1 | writeini $char($1) status paralysis.timer 1 | writeini $char($1) status drunk.timer 1
     writeini $char($1) status zombie no | writeini $char($1) Status slow no | writeini $char($1) Status sleep no | writeini $char($1) Status stun no
@@ -2038,7 +2038,7 @@ inflict_status {
   if ($3 = confuse) { set %status.type confuse  | var %status.grammar confused }
   if ($3 = removeboost) { set %status.type removeboost | var %status.grammar no longer boosted }
   if ($3 = defenseup) { set %status.type defenseup | var %status.grammar gains defense up }
-  if ($3 = speedup) { set %status.type speedup | var %status.grammar gains speed up }
+  if ($3 = speedup) { set %status.type speedup | var %status.grammar faster }
   if ($3 = sleep) { set %status.type sleep  | var %status.grammar asleep }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
@@ -2106,8 +2106,8 @@ inflict_status {
       if (%statusmessage.display != $null) {  set %statusmessage.display %statusmessage.display :: $set_chr_name($2) %real.name is now %status.grammar $+ ! } 
       if (%statusmessage.display = $null) {   $set_chr_name($2) | set %statusmessage.display 4 $+ %real.name is now %status.grammar $+ ! }
 
-      if (%status.type = poison) && ($readini($char($2), status, poison) = yes) { writeini $char($2) status poison no | writeini $char($2) status poison-heavy yes | writeini $char($2) status poison.timer %enfeeble.timer }
-      if (%status.type = poison) && ($readini($char($2), status, poison-heavy) != yes) { writeini $char($2) status poison yes | writeini $char($2) status poison.timer %enfeeble.timer }
+      if (%status.type = poison) && ($readini($char($2), status, poison) = yes) { writeini $char($2) status poison no | writeini $char($2) status HeavyPoison yes | writeini $char($2) status poison.timer %enfeeble.timer }
+      if (%status.type = poison) && ($readini($char($2), status, HeavyPoison) != yes) { writeini $char($2) status poison yes | writeini $char($2) status poison.timer %enfeeble.timer }
       if (%status.type = charm) { writeini $char($2) status charmed yes | writeini $char($2) status charmer $1 | writeini $char($2) status charm.timer %enfeeble.timer }
       if (%status.type = curse) { writeini $char($2) Status %status.type yes | writeini $char($2) battle tp 0 }
       if (%status.type = petrify) { writeini $char($2) status petrified yes }
@@ -2217,8 +2217,8 @@ do.self.inflict.status {
   if (%status.type != paralysis) {  var %enfeeble.timer $rand(0,1) }
   if (%status.type = paralysis) {  var %enfeeble.timer $rand(1,2) }
 
-  if (%status.type = poison) && ($readini($char(%inflict.user), status, poison) = yes) { writeini $char(%inflict.user) status poison no | writeini $char(%inflict.user) status poison-heavy yes | writeini $char(%inflict.user) status poison.timer %enfeeble.timer }
-  if (%status.type = poison) && ($readini($char(%inflict.user), status, poison-heavy) != yes) { writeini $char(%inflict.user) status poison yes | writeini $char(%inflict.user) status poison.timer %enfeeble.timer }
+  if (%status.type = poison) && ($readini($char(%inflict.user), status, poison) = yes) { writeini $char(%inflict.user) status poison no | writeini $char(%inflict.user) status HeavyPoison yes | writeini $char(%inflict.user) status poison.timer %enfeeble.timer }
+  if (%status.type = poison) && ($readini($char(%inflict.user), status, HeavyPoison) != yes) { writeini $char(%inflict.user) status poison yes | writeini $char(%inflict.user) status poison.timer %enfeeble.timer }
   if (%status.type = curse) { writeini $char(%inflict.user) Status %status.type yes | writeini $char(%inflict.user) battle tp 0 }
   if (%status.type = petrify) { writeini $char(%inflict.user) status petrified yes }
 
@@ -2934,7 +2934,7 @@ spawn_after_death {
 metal_defense_check {
   if ($augment.check($2, IgnoreMetalDefense) = true) { return }
   else { 
-    if ($readini($char($1), info, MetalDefense) = true) {  set %attack.damage 0  }
+    if ($readini($char($1), info, MetalDefense) = true) { set %attack.damage 0  }
     return
   }
 }
@@ -3938,19 +3938,18 @@ poison_check {
     unset %accessory.amount
   }
 
-  if (($readini($char($1), status, poison) = yes) || ($readini($char($1), status, poison-heavy) = yes)) {
+  if (($readini($char($1), status, poison) = yes) || ($readini($char($1), status, HeavyPoison) = yes)) {
     set %poison.timer $readini($char($1), status, poison.timer)  
     if (%poison.timer >= $status.effects.turns(poison)) {  
       writeini $char($1) status poison no
-      writeini $char($1) status poison-heavy no 
+      writeini $char($1) status HeavyPoison no 
       writeini $char($1) status poison.timer 0
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, PoisonWornOff) 
       return 
     }
     if (%poison.timer < $status.effects.turns(poison)) {
       %poison.timer = $calc(%poison.timer + 1) | writeini $char($1) status poison.timer %poison.timer 
-      if ($readini($char($1), Status, poison-heavy) = yes) { $heavy-poison($1) | return }
-      $status_message_check(poisoned) 
+      if ($readini($char($1), Status, HeavyPoison) = yes) { $HeavyPoison($1) | return }
       set %max.hp $readini($char($1), basestats, hp)
       set %poison $round($calc(%max.hp * .10),0)
       set %hp $readini($char($1), Battle, HP)  |   unset %max.hp
@@ -3973,9 +3972,8 @@ poison_check {
   else { return }
 }
 
-heavy-poison { 
-  set %debug.location heavy-poison
-  $status_message_check(poisoned heavily)
+HeavyPoison { 
+  set %debug.location HeavyPoison
   set %max.hp $readini($char($1), basestats, hp)
   set %poison $round($calc(%max.hp * .20),0)
   set %hp $readini($char($1), Battle, HP) | $set_chr_name($1)
@@ -4007,7 +4005,7 @@ curse_check {
 
   if ($readini($char($1), status, curse) = yes) { 
     set %curse.timer $readini($char($1), status, curse.timer)  
-    if (%curse.timer < $status.effects.turns(curse)) { %curse.timer = $calc(%curse.timer + 1) | writeini $char($1) status curse.timer %curse.timer | $status_message_check(cursed)
+    if (%curse.timer < $status.effects.turns(curse)) { %curse.timer = $calc(%curse.timer + 1) | writeini $char($1) status curse.timer %curse.timer
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyCursed) | unset %curse.timer | return 
     }
     else {
@@ -4027,7 +4025,7 @@ regenerating_check {
   if (($readini($char($1), status, auto-regen) = yes) || ($readini($char($1), status, auto-regen) = on)) { var %regen.check yes }
 
   if ((%regen.check = yes) || (%regen.check = on)) { 
-    $status_message_check(regenerating HP) | var %howmuch $skill.regen.calculate($1) | $set_chr_name($1)
+    var %howmuch $skill.regen.calculate($1) | $set_chr_name($1)
     var %current.hp $readini($char($1), battle, HP) | inc %current.hp %howmuch | writeini $char($1) Battle HP %current.hp 
     $regen_done_check($1, %howmuch, HP)
   }
@@ -4037,7 +4035,7 @@ regenerating_check {
 TPregenerating_check {
   set %debug.location TPregenerating_check
   if (($readini($char($1), Status, TPRegenerating) = yes) || ($readini($char($1), Status, TPRegenerating) = on)) { 
-    $status_message_check(regenerating TP) | var %howmuch $skill.TPregen.calculate($1) | $set_chr_name($1)
+    var %howmuch $skill.TPregen.calculate($1) | $set_chr_name($1)
     var %current.tp $readini($char($1), battle, TP) | inc %current.tp %howmuch | writeini $char($1) Battle TP %current.tp 
     $regen_done_check($1, %howmuch, TP)
   }
@@ -4064,7 +4062,7 @@ regen_done_check {
 zombieregenerating_check { 
   set %debug.location zombieregenerating_check
   if (($readini($char($1), Status, zombieregenerating) = yes) || ($readini($char($1), Status, ZombieRegenerating) = on)) { 
-    $status_message_check(regenerating HP) | var %howmuch $skill.zombieregen.calculate($1) | $set_chr_name($1)
+    var %howmuch $skill.zombieregen.calculate($1) | $set_chr_name($1)
     var %current.hp $readini($char($1), battle, HP) | inc %current.hp %howmuch | writeini $char($1) Battle HP %current.hp 
 
     var %current.zombie.hp $readini($char($1), Battle, hp) | var %max.zombie.hp $readini($char($1), BaseStats, hp)
@@ -4079,7 +4077,7 @@ cocoon_check {
   var %cocoon.timer $readini($char($1), status, cocoon.timer)  
   if (%cocoon.timer < $status.effects.turns(cocoon)) { 
     if ($readini($char($1), Status, cocoon) = yes) {
-      $status_message_check(evolving) |  %cocoon.timer = $calc(%cocoon.timer + 1) | writeini $char($1) status cocoon.timer %cocoon.timer
+      %cocoon.timer = $calc(%cocoon.timer + 1) | writeini $char($1) status cocoon.timer %cocoon.timer
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyCocoonEvolve) | return 
     }
   }
@@ -4099,7 +4097,7 @@ cocoon_check {
 weapon_locked {
   if ($readini($char($1), Status, weapon.locked) != $null) { 
     set %weaponlock.timer $readini($char($1), status, weaponlock.timer)  
-    if (%weaponlock.timer < $status.effects.turns(weaponlock)) { %weaponlock.timer = $calc(%weaponlock.timer + 1) | writeini $char($1) status weaponlock.timer %weaponlock.timer | $status_message_check(Weapon Locked)
+    if (%weaponlock.timer < $status.effects.turns(weaponlock)) { %weaponlock.timer = $calc(%weaponlock.timer + 1) | writeini $char($1) status weaponlock.timer %weaponlock.timer
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyWeaponLocked) | unset %weaponlock.timer | return 
     }
     else {
@@ -4113,7 +4111,7 @@ weapon_locked {
 drunk_check {
   if ($readini($char($1), Status, drunk) = yes) { 
     set %drunk.timer $readini($char($1), status, drunk.timer)  
-    if (%drunk.timer < $status.effects.turns(drunk)) { %drunk.timer = $calc(%drunk.timer + 1) | writeini $char($1) status drunk.timer %drunk.timer | $status_message_check(drunk)
+    if (%drunk.timer < $status.effects.turns(drunk)) { %drunk.timer = $calc(%drunk.timer + 1) | writeini $char($1) status drunk.timer %drunk.timer
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyDrunk) | unset %drunk.timer
       write $txtfile(temp_status.txt) $readini(translation.dat, status, TooDrunkToFight)  | set %too.drunk.to.fight true 
       return
@@ -4129,11 +4127,11 @@ drunk_check {
 zombie_check { 
   if ($readini($char($1), monster, type) = zombie) { 
     writeini $char($1) status zombieregenerating on
-    $status_message_check(zombie) | return 
+    return 
   }
   var %zombie.timer $readini($char($1), status, zombie.timer)  
   if (%zombie.timer < $status.effects.turns(zombie)) { 
-    if ($readini($char($1), Status, zombie) = yes) { $status_message_check(zombie) |  %zombie.timer = $calc(%zombie.timer + 1) | writeini $char($1) status zombie.timer %zombie.timer |  writeini $char($1) status zombieregenerating on
+    if ($readini($char($1), Status, zombie) = yes) { %zombie.timer = $calc(%zombie.timer + 1) | writeini $char($1) status zombie.timer %zombie.timer |  writeini $char($1) status zombieregenerating on
     $set_chr_name($1) | return }
   }
   else { 
@@ -4145,7 +4143,7 @@ zombie_check {
 virus_check { 
   var %virus.timer $readini($char($1), status, virus.timer)  
   if (%virus.timer < $status.effects.turns(virus)) { 
-    if ($readini($char($1), Status, virus) = yes) { $status_message_check(virus) |  %virus.timer = $calc(%virus.timer + 1) | writeini $char($1) status virus.timer %virus.timer
+    if ($readini($char($1), Status, virus) = yes) { %virus.timer = $calc(%virus.timer + 1) | writeini $char($1) status virus.timer %virus.timer
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyHasVirus) | return }
   }
   else { 
@@ -4157,7 +4155,7 @@ virus_check {
 slowed_check { 
   var %slow.timer $readini($char($1), status, slow.timer)  
   if (%slow.timer < $status.effects.turns(slow)) { 
-    if ($readini($char($1), Status, slow) = yes) { $status_message_check(slowed) |  %slow.timer = $calc(%slow.timer + 1) | writeini $char($1) status slow.timer %slow.timer
+    if ($readini($char($1), Status, slow) = yes) {  %slow.timer = $calc(%slow.timer + 1) | writeini $char($1) status slow.timer %slow.timer
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlyslowed) | return }
   }
   else { 
@@ -4171,7 +4169,7 @@ ethereal_check {
   if (%ethereal.timer = $null) { var %ethereal.timer 0 }
 
   if (%ethereal.timer < $status.effects.turns(ethereal)) { 
-    if ($readini($char($1), Status, Ethereal) = yes) { $status_message_check(Ethereal) |  %ethereal.timer = $calc(%ethereal.timer + 1) | writeini $char($1) status ethereal.timer %ethereal.timer
+    if ($readini($char($1), Status, Ethereal) = yes) { %ethereal.timer = $calc(%ethereal.timer + 1) | writeini $char($1) status ethereal.timer %ethereal.timer
     $set_chr_name($1) | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlyethereal) | unset %ethereal.timer | return }
   }
   else { 
@@ -4183,7 +4181,7 @@ ethereal_check {
 amnesia_check {
   if ($readini($char($1), status, amnesia) = yes) { 
     set %amnesia.timer $readini($char($1), status, amnesia.timer)  
-    if (%amnesia.timer < $status.effects.turns(amnesia)) { %amnesia.timer = $calc(%amnesia.timer + 1) | writeini $char($1) status amnesia.timer %amnesia.timer | $status_message_check(under amnesia)
+    if (%amnesia.timer < $status.effects.turns(amnesia)) { %amnesia.timer = $calc(%amnesia.timer + 1) | writeini $char($1) status amnesia.timer %amnesia.timer 
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyHasAmensia) | unset %amnesia.timer | return 
     }
     else {
@@ -4199,7 +4197,7 @@ charm_check {
     set %charm.timer $readini($char($1), status, charm.timer) | set %charmer $readini($char($1), status, charmer)
     if ($readini($char(%charmer), battle, status) = dead) {  writeini $char($1) status charm.timer 1 | writeini $char($1) status charmed no | $set_chr_name(%charmer) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CharmerDeathWornOff) | unset %charm.timer | unset %charmer | return  }
 
-    if (%charm.timer < $status.effects.turns(charm)) { %charm.timer = $calc(%charm.timer + 1) | writeini $char($1) status charm.timer %charm.timer | $status_message_check(charmed)
+    if (%charm.timer < $status.effects.turns(charm)) { %charm.timer = $calc(%charm.timer + 1) | writeini $char($1) status charm.timer %charm.timer 
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyCharmedMessage) | unset %charm.timer | unset %charmer | return 
     }
     else {
@@ -4214,7 +4212,7 @@ confuse_check {
   if ($readini($char($1), status, confuse) = yes) { 
     set %confuse.timer $readini($char($1), status, confuse.timer) 
     if ((%confuse.timer = $null) || (%confuse.timer < $status.effects.turns(confuse))) {
-      inc %confuse.timer 1 | writeini $char($1) status confuse.timer %confuse.timer | $status_message_check(confused)
+      inc %confuse.timer 1 | writeini $char($1) status confuse.timer %confuse.timer 
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyConfusedMessage) | unset %confuse.timer | return 
     }
     else {
@@ -4229,7 +4227,7 @@ paralysis_check {
   if ($readini($char($1), status, paralysis) = yes) { 
     var %paralysis.timer $readini($char($1), status, paralysis.timer)  
     if (%paralysis.timer = $null) { var %paralysis.timer 0 }
-    if (%paralysis.timer < $status.effects.turns(paralysis)) { %paralysis.timer = $calc(%paralysis.timer + 1) | writeini $char($1) status paralysis.timer %paralysis.timer | $status_message_check(paralyzed)
+    if (%paralysis.timer < $status.effects.turns(paralysis)) { %paralysis.timer = $calc(%paralysis.timer + 1) | writeini $char($1) status paralysis.timer %paralysis.timer
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyParalyzed) | unset %paralysis.timer | return 
     }
     else {
@@ -4244,7 +4242,7 @@ bored_check {
   if ($readini($char($1), status, bored) = yes) { 
     set %bored.timer $readini($char($1), status, bored.timer)  
     if (%bored.timer = $null) { set %bored.timer 0 }
-    if (%bored.timer < $status.effects.turns(bored)) { %bored.timer = $calc(%bored.timer + 1) | writeini $char($1) status bored.timer %bored.timer | $status_message_check(bored)
+    if (%bored.timer < $status.effects.turns(bored)) { %bored.timer = $calc(%bored.timer + 1) | writeini $char($1) status bored.timer %bored.timer
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyBored) | unset %bored.timer | return 
     }
     else {
@@ -4259,7 +4257,7 @@ reflect.check {
   if ($readini($char($1), status, reflect) = yes) { 
     set %reflect.timer $readini($char($1), status, reflect.timer)  
     if (%reflect.timer = $null) { set %reflect.timer 0 }
-    if (%reflect.timer < $status.effects.turns(reflect)) { %reflect.timer = $calc(%reflect.timer + 1) | writeini $char($1) status reflect.timer %reflect.timer | $status_message_check(has a reflective barrier)
+    if (%reflect.timer < $status.effects.turns(reflect)) { %reflect.timer = $calc(%reflect.timer + 1) | writeini $char($1) status reflect.timer %reflect.timer
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyReflected) | unset %reflect.timer | return 
     }
     else {
@@ -4275,7 +4273,7 @@ invincible.status.check {
     set %invincible.timer $readini($char($1), status, invincible.timer)  
 
     if (%invincible.timer = $null) { set %invincible.timer 0 }
-    if (%invincible.timer < $status.effects.turns(invincible)) { %invincible.timer = $calc(%invincible.timer + 1) | writeini $char($1) status invincible.timer %invincible.timer | $status_message_check(Invincible)
+    if (%invincible.timer < $status.effects.turns(invincible)) { %invincible.timer = $calc(%invincible.timer + 1) | writeini $char($1) status invincible.timer %invincible.timer 
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, Currentlyinvincible) | unset %invincible.timer | return 
     }
     else {
@@ -4286,49 +4284,42 @@ invincible.status.check {
   else { return } 
 }
 
-revive_check { 
-  if ($readini($char($1), Status, revive) = yes) { $status_message_check(will auto revive) }
-}
-
-conserveTP_check {
-  if ($readini($char($1), status, conservetp) = yes) { $status_message_check(conserving TP) }
-}
 
 ; Statuses that skip turns but wear off after 1 turn
 intimidated_check { 
-  if ($readini($char($1), Status, intimidate) = yes) { $status_message_check(intimidated)
+  if ($readini($char($1), Status, intimidate) = yes) { 
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, TooIntimidatedToFight)
   }
   else { return } 
 }
 
 asleep_check {
-  if ($readini($char($1), Status, Sleep) = yes) { $status_message_check(asleep)
+  if ($readini($char($1), Status, Sleep) = yes) {
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyAsleep)
   }
   else { return } 
 }
 
 stunned_check {
-  if ($readini($char($1), Status, Stun) = yes) { $status_message_check(stunned)
+  if ($readini($char($1), Status, Stun) = yes) {
   $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyStunned)  }
   else { return } 
 }
 
 stopped_check {
-  if ($readini($char($1), Status, Stop) = yes) { $status_message_check(frozen in time)
+  if ($readini($char($1), Status, Stop) = yes) {
   $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyStopped)  }
   else { return } 
 }
 
 weight_check { 
-  if ($readini($char($1), Status, weight) = yes) { $status_message_check(weighed down)
+  if ($readini($char($1), Status, weight) = yes) {
   $set_chr_name($1) | write $txtfile(temp_status.txt) $display.message($readini(translation.dat, status, CurrentlyWeighed),private) | return }
   else { return } 
 }
 
 staggered_check { 
-  if ($readini($char($1), Status, staggered) = yes) { $status_message_check(staggered)
+  if ($readini($char($1), Status, staggered) = yes) {
     $set_chr_name($1) | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, TooStaggeredToFight)
     writeini $char($1) info CanStagger no
   }
@@ -4336,14 +4327,14 @@ staggered_check {
 }
 
 blind_check { 
-  if ($readini($char($1), Status, blind) = yes) { $status_message_check(blind)
+  if ($readini($char($1), Status, blind) = yes) { 
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, TooBlindToFight)
   }
   else { return } 
 }
 
 petrified_check { 
-  if ($readini($char($1), Status, petrified) = yes) { $status_message_check(petrified)
+  if ($readini($char($1), Status, petrified) = yes) { 
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, TooPetrifiedToFight)
   }
   else { return } 
@@ -4352,7 +4343,7 @@ petrified_check {
 
 ; Magic status effects
 frozen_check { 
-  if ($readini($char($1), Status, frozen) = yes) { $status_message_check(freezing) 
+  if ($readini($char($1), Status, frozen) = yes) { 
     set %hp $readini($char($1), Battle, HP) | $set_chr_name($1)
     set %max.hp $readini($char($1), basestats, hp)
     set %freezing $round($calc(%max.hp * .05),0)
@@ -4365,7 +4356,7 @@ frozen_check {
 }
 
 shock_check { 
-  if ($readini($char($1), Status, shock) = yes) { $status_message_check(shocked) 
+  if ($readini($char($1), Status, shock) = yes) { 
     set %max.hp $readini($char($1), basestats, hp)
     set %shock $round($calc(%max.hp * .05),0)
     unset %max.hp | set %hp $readini($char($1), battle, hp)
@@ -4378,7 +4369,7 @@ shock_check {
 }
 
 burning_check { 
-  if ($readini($char($1), Status, burning) = yes) { $status_message_check(burning) 
+  if ($readini($char($1), Status, burning) = yes) {
     set %max.hp $readini($char($1), basestats, hp)
     set %burning $round($calc(%max.hp * .05),0)
     unset %max.hp | set %hp $readini($char($1), battle, hp)
@@ -4391,7 +4382,7 @@ burning_check {
 }
 
 tornado_check { 
-  if ($readini($char($1), Status, tornado) = yes) { $status_message_check(caught in a tornado) 
+  if ($readini($char($1), Status, tornado) = yes) { 
     set %max.hp $readini($char($1), basestats, hp)
     set %tornado $round($calc(%max.hp * .05),0)
     unset %max.hp | set %hp $readini($char($1), battle, hp)
@@ -4404,7 +4395,7 @@ tornado_check {
 }
 
 drowning_check { 
-  if ($readini($char($1), Status, drowning) = yes) { $status_message_check(drowning) 
+  if ($readini($char($1), Status, drowning) = yes) {
     set %max.hp $readini($char($1), basestats, hp)
     set %drowning $round($calc(%max.hp * .05),0)
     unset %max.hp | set %hp $readini($char($1), battle, hp)
@@ -4417,7 +4408,7 @@ drowning_check {
 }
 
 earthquake_check { 
-  if ($readini($char($1), Status, earthquake) = yes) { $status_message_check(shaking) 
+  if ($readini($char($1), Status, earthquake) = yes) { 
     set %max.hp $readini($char($1), basestats, hp)
     set %shaken $round($calc(%max.hp * .05),0)
     unset %max.hp | set %hp $readini($char($1), battle, hp)
@@ -4434,11 +4425,11 @@ defensedown_check {
   var %defensedown.timer $readini($char($1), status, defensedown.timer)  
   if (%defensedown.timer = $null) { var %defensedown.timer 0 }
   if (%defensedown.timer < $status.effects.turns(defensedown)) { 
-    if ($readini($char($1), Status, DefenseDown) = yes) { $status_message_check(Defense Down) |  %defensedown.timer = $calc(%defensedown.timer + 1) | writeini $char($1) status defensedown.timer %defensedown.timer
+    if ($readini($char($1), Status, DefenseDown) = yes) {  %defensedown.timer = $calc(%defensedown.timer + 1) | writeini $char($1) status defensedown.timer %defensedown.timer
     $set_chr_name($1)  | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlydefensedown) | unset %defensedown.timer | return }
   }
   else { 
-    if ($readini($char($1), Status, DefenseDown) = yes) {   writeini $char($1) status DefenseDown no | writeini $char($1) status defensedown.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, DefenseDownWornOff)  | unset %defensedown.timer | return  }
+    if ($readini($char($1), Status, DefenseDown) = yes) { writeini $char($1) status DefenseDown no | writeini $char($1) status defensedown.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, DefenseDownWornOff)  | unset %defensedown.timer | return  }
   }
   return
 }
@@ -4447,7 +4438,7 @@ strengthdown_check {
   var %strengthdown.timer $readini($char($1), status, strengthdown.timer)  
   if (%strengthdown.timer = $null) { var %strengthdown.timer 0 }
   if (%strengthdown.timer < $status.effects.turns(strdown)) { 
-    if ($readini($char($1), Status, strengthDown) = yes) { $status_message_check(Strength Down) |  %strengthdown.timer = $calc(%strengthdown.timer + 1) | writeini $char($1) status strengthdown.timer %strengthdown.timer
+    if ($readini($char($1), Status, strengthDown) = yes) {  %strengthdown.timer = $calc(%strengthdown.timer + 1) | writeini $char($1) status strengthdown.timer %strengthdown.timer
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlystrengthdown) | unset %strengthdown.timer | return }
   }
   else { 
@@ -4460,7 +4451,7 @@ intdown_check {
   var %intdown.timer $readini($char($1), status, intdown.timer)  
   if (%intdown.timer = $null) { var %intdown.timer 0 }
   if (%intdown.timer < $status.effects.turns(intdown)) { 
-    if ($readini($char($1), Status, intDown) = yes) { $status_message_check(Int Down) |  %intdown.timer = $calc(%intdown.timer + 1) | writeini $char($1) status intdown.timer %intdown.timer
+    if ($readini($char($1), Status, intDown) = yes) { %intdown.timer = $calc(%intdown.timer + 1) | writeini $char($1) status intdown.timer %intdown.timer
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlyintdown) | unset %intdown.timer | return }
   }
   else { 
@@ -4475,7 +4466,7 @@ intup_check {
   if (%intup.timer < $status.effects.turns(intup)) { 
     if (($readini($char($1), Status, intup) = yes) || ($readini($char($1), Status, intup) = on)) { 
       if (($readini($char($1), status, intdown) = yes) || ($readini($char($1), status, intdown) = on)) { writeini $char($1) status intdown no | writeini $char($1) status intup no | return }
-      $status_message_check(int Up) |  %intup.timer = $calc(%intup.timer + 1) | writeini $char($1) status intup.timer %intup.timer
+      %intup.timer = $calc(%intup.timer + 1) | writeini $char($1) status intup.timer %intup.timer
     $set_chr_name($1)  | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlyintup) | unset %intup.timer | return }
   }
   else { 
@@ -4490,7 +4481,7 @@ defenseup_check {
   if (%defenseup.timer < $status.effects.turns(defup)) { 
     if (($readini($char($1), Status, defenseup) = yes) || ($readini($char($1), Status, defenseup) = on)) { 
       if (($readini($char($1), status, defensedown) = yes) || ($readini($char($1), status, defensedown) = on)) { writeini $char($1) status defensedown no | writeini $char($1) status defenseup no | return }
-      $status_message_check(Defense Up) |  %defenseup.timer = $calc(%defenseup.timer + 1) | writeini $char($1) status defenseup.timer %defenseup.timer
+      %defenseup.timer = $calc(%defenseup.timer + 1) | writeini $char($1) status defenseup.timer %defenseup.timer
     $set_chr_name($1)  | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlydefenseup) | unset %defenseup.timer | return }
   }
   else { 
@@ -4505,7 +4496,7 @@ speedup_check {
   if (%speedup.timer < $status.effects.turns(speedup)) { 
     if (($readini($char($1), Status, speedup) = yes) || ($readini($char($1), Status, speedup) = on)) { 
       if ($readini($char($1), status, slow) = yes) { writeini $char($1) status slow no | writeini $char($1) status speedup no | return }
-      $status_message_check(Speed Up) |  %speedup.timer = $calc(%speedup.timer + 1) | writeini $char($1) status speedup.timer %speedup.timer
+      %speedup.timer = $calc(%speedup.timer + 1) | writeini $char($1) status speedup.timer %speedup.timer
     $set_chr_name($1)  | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlyspeedup) | unset %speedup.timer | return }
   }
   else { 
@@ -4519,7 +4510,7 @@ shell_check {
   var %shell.timer $readini($char($1), status, shell.timer)  
   if (%shell.timer = $null) { var %shell.timer 0 }
   if (%shell.timer < $status.effects.turns(shell)) { 
-    if ($readini($char($1), Status, shell) = yes) { $status_message_check(shell) |  %shell.timer = $calc(%shell.timer + 1) | writeini $char($1) status shell.timer %shell.timer | unset %shell.timer | return }
+    if ($readini($char($1), Status, shell) = yes) { %shell.timer = $calc(%shell.timer + 1) | writeini $char($1) status shell.timer %shell.timer | unset %shell.timer | return }
   }
   else { 
     if ($readini($char($1), Status, shell) = yes) {   writeini $char($1) status shell no | writeini $char($1) status shell.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, shellWornOff)  | unset %shell.timer | return  }
@@ -4531,7 +4522,7 @@ protect_check {
   var %protect.timer $readini($char($1), status, protect.timer)  
   if (%protect.timer = $null) { var %protect.timer 0 }
   if (%protect.timer < $status.effects.turns(protect)) { 
-    if ($readini($char($1), Status, Protect) = yes) { $status_message_check(protect) |  %protect.timer = $calc(%protect.timer + 1) | writeini $char($1) status protect.timer %protect.timer | unset %protect.timer | return }
+    if ($readini($char($1), Status, Protect) = yes) { %protect.timer = $calc(%protect.timer + 1) | writeini $char($1) status protect.timer %protect.timer | unset %protect.timer | return }
   }
   else { 
     if ($readini($char($1), Status, Protect) = yes) {   writeini $char($1) status protect no | writeini $char($1) status protect.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, ProtectWornOff)  | unset %protect.timer | return  }
@@ -4568,7 +4559,7 @@ enspell_check {
   var %enspell.timer $readini($char($1), status, en-spell.timer)  
   if (%enspell.timer = $null) { var %enspell.timer 0 }
   if (%enspell.timer < $status.effects.turns(enspell)) { 
-    if (($readini($char($1), Status, En-spell) != none) && ($readini($char($1), Status, En-Spell) != $null)) { var %enspell $readini($char($1), status, en-spell) | $status_message_check(en- $+ %enspell) |  %enspell.timer = $calc(%enspell.timer + 1) | writeini $char($1) status en-spell.timer %enspell.timer | unset %enspell.timer | return }
+    if (($readini($char($1), Status, En-spell) != none) && ($readini($char($1), Status, En-Spell) != $null)) { var %enspell $readini($char($1), status, en-spell) | %enspell.timer = $calc(%enspell.timer + 1) | writeini $char($1) status en-spell.timer %enspell.timer | unset %enspell.timer | return }
   }
   else { 
     if ($readini($char($1), Status, En-Spell) != none) {   writeini $char($1) status en-spell none | writeini $char($1) status en-spell.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, EnspellWornOff)  | unset %enspell.timer | return  }
@@ -4577,10 +4568,6 @@ enspell_check {
 }
 
 ; Boosts and Ignitions
-boosted_check { 
-  if ($readini($char($1), Status, boosted) = yes) { $status_message_check(power boosted) }
-}
-
 ignition_check {
   if ($readini($char($1), Status, ignition.on) = on) { 
     set %original.ignition.name $readini($char($1), status, ignition.name)
@@ -4602,7 +4589,6 @@ ignition_check {
 
     dec %player.current.ig %ignition.cost
     writeini $char($1) battle IgnitionGauge %player.current.ig
-    $status_message_check(ignition boosted)
     unset %ignition.name | unset %ignition.cost | unset %player.current.ig
   }
 }

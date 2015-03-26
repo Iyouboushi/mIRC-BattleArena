@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/21/15
+;;;; Last updated: 03/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -113,7 +113,6 @@ alias uses_item {
   var %user.flag $readini($char($1), info, flag) | var %target.flag $readini($char($4), info, flag)
 
   if (%item.type = instrument) { $display.message($readini(translation.dat, errors,ItemIsUsedForSinging), private) | halt }
-
 
   if (%item.type = food) { 
     $checkchar($4)
@@ -277,8 +276,11 @@ alias uses_item {
   }
 
   if (%item.type = status) {
-    if ((%target.flag != monster) && (%user.flag = $null)) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnMonsters), private) | halt }
-    $item.status($1, $4, $2)
+    if ($readini($dbfile(items.db), $2, amount) = 0) { $item.status($1, $4, $2) }
+    else { 
+      if ((%target.flag != monster) && (%user.flag = $null)) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnMonsters), private) | halt }
+      $item.status($1, $4, $2)
+    }
   }
 
   if (%item.type = revive) {  
@@ -634,9 +636,10 @@ alias item.status {
     }
   }
   unset %status.type.list
-
-  $calculate_damage_items($1, $3, $2)
-  $deal_damage($1, $2, $3)
+  if ($readini($dbfile(items.db), $2, amount) != 0) {
+    $calculate_damage_items($1, $3, $2)
+    $deal_damage($1, $2, $3)
+  }
   $display_Statusdamage_item($1, $2, item, $3) 
   return
 }
@@ -646,32 +649,34 @@ alias display_Statusdamage_item {
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
 
+
   ; Show the damage
   $calculate.stylepoints($1)
   if ($3 != fullbring) {
     $display.message(3 $+ %user $+  $readini($dbfile(items.db), $4, desc), battle)
   }
 
-  if (%guard.message = $null) { $display.message(The attack did4 $bytes(%attack.damage,b) damage %style.rating, battle) }
-  if (%guard.message != $null) { $display.message(%guard.message, battle) | unset %guard.message }
+  if ($readini($dbfile(items.db), $2, amount) = 0) {
+    if (%guard.message = $null) { $display.message(The attack did4 $bytes(%attack.damage,b) damage %style.rating, battle) }
+    if (%guard.message != $null) { $display.message(%guard.message, battle) | unset %guard.message }
 
-  ; Did the person die?  If so, show the death message.
-  if ($readini($char($2), battle, HP) <= 0) { 
-    writeini $char($2) battle status dead 
-    writeini $char($2) battle hp 0
-    $check.clone.death($2)
-    $increase_death_tally($2)
-    $achievement_check($2, SirDiesALot)
-    $display.message($readini(translation.dat, battle, EnemyDefeated), battle)
-    $increase.death.tally($2) 
-    $goldorb_check($2) 
-    $spawn_after_death($2)
-    if ($readini($char($1), info, flag) != monster) {
-      if (%battle.type = monster) {  $add.stylepoints($1, $2, mon_death, $3) | $add.style.orbbonus($1, monster) }
-      if (%battle.type = boss) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss) }
+    ; Did the person die?  If so, show the death message.
+    if ($readini($char($2), battle, HP) <= 0) { 
+      writeini $char($2) battle status dead 
+      writeini $char($2) battle hp 0
+      $check.clone.death($2)
+      $increase_death_tally($2)
+      $achievement_check($2, SirDiesALot)
+      $display.message($readini(translation.dat, battle, EnemyDefeated), battle)
+      $increase.death.tally($2) 
+      $goldorb_check($2) 
+      $spawn_after_death($2)
+      if ($readini($char($1), info, flag) != monster) {
+        if (%battle.type = monster) {  $add.stylepoints($1, $2, mon_death, $3) | $add.style.orbbonus($1, monster) }
+        if (%battle.type = boss) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss) }
+      }
     }
   }
-
   ; If the person isn't dead, display the status message.
   if ($readini($char($2), battle, hp) >= 1) {  $display.message(%statusmessage.display, battle) }
 

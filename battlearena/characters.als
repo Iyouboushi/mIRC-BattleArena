@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/03/15
+;;;; Last updated: 03/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -355,54 +355,24 @@ check.doubledollars {
 player.status { unset %all_status | unset %all_skills | $set_chr_name($1) 
   if ($readini($char($1), Battle, Status) = dead) { set %all_status dead | return } 
   else { 
-    if ($readini($char($1), Battle, Status) = rage) { $status_message_check(rage) } 
-    if ($readini($char($1), Status, poison) = yes) {  $status_message_check(poisoned) }
-    if ($readini($char($1), Status, HeavyPoison) = yes) { $status_message_check(poisoned heavily) }
-    if ($readini($char($1), Status, Poison-heavy) = yes) { $status_message_check(poisoned heavily) }
-    if ($readini($char($1), Status, Blind) = yes) { $status_message_check(blind) } 
-    if ($readini($char($1), Status, Regenerating) = yes) { $status_message_check(regenerating) }
-    if ($readini($char($1), Status, TPRegenerating) = yes) { $status_message_check(regenerating TP) }
-    if ($readini($char($1), Status, Frozen) = yes) { $status_message_check(frozen) } 
-    if ($readini($char($1), Status, shock) = yes) { $status_message_check(shocked) } 
-    if ($readini($char($1), Status, burning) = yes) { $status_message_check(burning) } 
-    if ($readini($char($1), Status, drowning) = yes) { $status_message_check(drowning) } 
-    if ($readini($char($1), Status, earthquake) = yes) { $status_message_check(shaking violently) } 
-    if ($readini($char($1), Status, silence) = yes) { $status_message_check(silenced) } 
-    if ($readini($char($1), Status, intimidated) = yes) { $status_message_check(intimidated) }
-    if ($readini($char($1), Status, weight) = yes) { $status_message_check(weighed down) } 
-    if ($readini($char($1), Status, charmed) = yes) { $status_message_check(charmed by $readini($char($1), Status, Charmer)) }
-    if ($readini($char($1), Status, amnesia) = yes) { $status_message_check(under amnesia) }
-    if ($readini($char($1), status, paralysis) = yes) { $status_message_check(paralyzed) }
-    if ($readini($char($1), Status, drunk) = yes) { $status_message_check(drunk) } 
-    if ($readini($char($1), status, tornado) = yes) { $status_message_check(caught in a tornado) }
-    if ($readini($char($1), status, zombie) = yes) { $status_message_check(a zombie) }
-    if ($readini($char($1), status, slow) = yes) { $status_message_check(slowed) }
-    if ($readini($char($1), status, sleep) = yes) { $status_message_check(asleep) }
-    if ($readini($char($1), status, stun) = yes) { $status_message_check(stunned) }
-    if ($readini($char($1), status, stop) = yes) { $status_message_check(frozen in time) }
-    if ($readini($char($1), status, virus) = yes) { $status_message_check(inflicted with a virus) }
-    if ($readini($char($1), status, curse) = yes) { $status_message_check(cursed) }
-    if ($readini($char($1), status, revive) = yes) { $status_message_check(will auto revive) }
-    if ($readini($char($1), status, petrified) = yes) { $status_message_check(petrified) }
-    if ($readini($char($1), status, bored) = yes) { $status_message_check(bored) }
-    if ($readini($char($1), status, confuse) = yes) { $status_message_check(confused) }
-    if ($readini($char($1), status, reflect) = yes) { $status_message_check(has a reflective barrier) }
-    if ($readini($char($1), status, invincible) = yes) { $status_message_check(invincible) }
-    if ($readini($char($1), skills, drainsamba.on) = on) { $status_message_check(using Drain Samba) }
-    if ($readini($char($1), status, defensedown) = on) { $status_message_check(defense down) }
-    if ($readini($char($1), status, strengthdown) = on) { $status_message_check(strength down) }
-    if ($readini($char($1), status, intdown) = on) { $status_message_check(int down) }
-    if (($readini($char($1), status, defenseup) = on) || ($readini($char($1), status, defenseup) = yes)) { $status_message_check(defense up) }
-    if ($readini($char($1), status, ethereal) = yes) { $status_message_check(ethereal) }
-    if ($readini($char($1), status, ignition.on) = on) { $status_message_check(ignition boosted) }
-    if ($readini($char($1), status, shell) = yes) { $status_message_check(shell) }
-    if ($readini($char($1), status, protect) = yes) { $status_message_check(protect) }
-    if ($readini($char($1), status, SpiritOfHero) = true) { $status_message_check(Spirit of the Hero buff) }
+
+    var %value 1 | var %status.lines $lines($lstfile(statuseffects.lst))
+
+    while (%value <= %status.lines) {
+      var %current.status $read -l $+ %value $lstfile(statuseffects.lst)
+      if (($readini($char($1), Status, %current.status) = yes) || ($readini($char($1), Status, %current.status) = on)) { 
+
+        if ((%current.status = poison) && ($readini($char($1), status, heavypoison) = yes)) { $status_message_check($readini(translation.dat, statuses, HeavyPoison)) }
+        else { $status_message_check($readini(translation.dat, statuses, %current.status)) }
+      } 
+      inc %value 1 
+    }
+
 
     $bar_check($1)
     unset %resists
 
-    if ($readini($char($1), status, en-spell) != none) { var %enspell $readini($char($1), status, en-spell) | $status_message_check(en- $+ %enspell) }
+    if ($readini($char($1), status, en-spell) != none) { var %enspell $readini($char($1), status, en-spell) | $status_message_check(12en- $+ %enspell) }
 
     $player.skills.list($1)
 
@@ -435,6 +405,7 @@ player.skills.list {
   if ($readini($char($1), skills, perfectcounter.on) = on) { $skills_message_check(2Will Perform a Perfect Counter) }
   if ($readini($char($1), skills, FormlessStrike.on) = on) { $skills_message_check(Formless Strikes) }
   if ($readini($char($1), skills, PerfectDefense.on) = on) { $skills_message_check(Perfect Defense) }
+  if ($readini($char($1), skills, drainsamba.on) = on) { $skills_message_check(Drain Samba) }
 
   set %cover.target $readini($char($1), skills, CoverTarget)
   if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(2Covered by %cover.target) }

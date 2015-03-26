@@ -135,7 +135,7 @@ EquipWeaponMonster=$chr(3) $+ 3 $+  $+ %real.name has equipped %weapon.name
 EquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has equipped $gender($1) mech with a $2
 UnEquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has unequipped $gender($1) mech of the $2
 UnequipWeapon=$chr(3) $+ 3 $+  $+ %real.name unequipped the %weapon.equipped.right $iif(%weapon.equipped.left != $null, and the %weapon.equipped.left)
-ViewStatus=$chr(3) $+ 3 $+  $+ %real.name $+ 's status is currently:4 %all_status  3[Active Skills:4 %all_skills $+ 3] $iif($return.potioneffect($nick) != none, [Potion Effect:12 $return.potioneffect($nick) $+ 3])
+ViewStatus=$chr(3) $+ 3 $+  $+ %real.name $+ 's status effects:4 %all_status 3[Active Skills:4 %all_skills $+ 3] $iif($return.potioneffect($nick) != none, [Potion Effect:12 $return.potioneffect($nick) $+ 3])
 OKDesc=$chr(3) $+ 3 $+ Your $2 desc was entered correctly!
 ClearDesc=$chr(3) $+ 3 $+ Your $3 desc has been cleared!
 EquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has equipped the accessory $2
@@ -853,6 +853,63 @@ SSSSmokingHotStyle=$chr(91) $+ $chr(3) $+ 10SSSSmoking Hot Style! $+ $chr(93)
 Jackpot=$chr(91) $+ $chr(3) $+ 10Jackpot! $+ $chr(93)
 MaximumStyle=$chr(91) $+ $chr(3) $+ 10Maximum Style! $+ $chr(93)
 
+
+=======================
+Statuses
+=======================
+[Statuses]
+; Negative status effects
+Freezing=$chr(3) $+ 4 $+ frozen
+Shock=$chr(3) $+ 4 $+ shocked
+Burning=$chr(3) $+ 4 $+ burning
+Drowning=$chr(3) $+ 4 $+ burning
+Earthquake=$chr(3) $+ 4 $+ shaking violently
+Tornado=$chr(3) $+ 4 $+ caught in a tornado
+Rage=$chr(3) $+ 4 $+ enraged
+Poison=$chr(3) $+ 4 $+ poisoned
+HeavyPoison=$chr(3) $+ 4 $+ poisoned heavily
+Blind=$chr(3) $+ 4 $+ blinded
+Silence=$chr(3) $+ 4 $+ silenced
+Intimidate=$chr(3) $+ 4 $+ intimidated
+Weight=$chr(3) $+ 4 $+ weighed down
+Charmed=$chr(3) $+ 4 $+ charmed by $readini($char($1), status, charmer) $+ 
+Amnesia=$chr(3) $+ 4 $+ under amnesia
+Paralysis=$chr(3) $+ 4 $+ paralyzed
+Drunk=$chr(3) $+ 4 $+ drunk
+Zombie=$chr(3) $+ 4 $+ zombified
+Slow=$chr(3) $+ 4 $+ slowed
+Stun=$chr(3) $+ 4 $+ stunned
+Stop=$chr(3) $+ 4 $+ frozen in time
+Virus=$chr(3) $+ 4 $+ inflicted with a virus
+Curse=$chr(3) $+ 4 $+ cursed
+Petrified=$chr(3) $+ 4 $+ petrified
+Bored=$chr(3) $+ 4 $+ bored
+Sleep=$chr(3) $+ 4 $+ asleep
+Confuse=$chr(3) $+ 4 $+ confused
+Weapon.Lock=$chr(3) $+ 4 $+ weapon locked
+DefenseDown=$chr(3) $+ 4 $+ -def
+StrengthDown=$chr(3) $+ 4 $+ -str
+IntDown=$chr(3) $+ 4 $+ -int
+Staggered=$chr(3) $+ 4 $+ staggered
+
+; Positive status effects
+Cocoon=$chr(3) $+ 12 $+ evolving
+Ethereal=$chr(3) $+ 12 $+ ethereal
+Revive=$chr(3) $+ 12 $+ will auto revive
+Reflect=$chr(3) $+ 12 $+ reflect
+Invincible=$chr(3) $+ 12 $+ invincible
+Zombieregenerating=$chr(3) $+ 12 $+ +HP regen
+Regenerating=$chr(3) $+ 12 $+ +HP regen
+TPRegenerating=$chr(3) $+ 12 $+ +TP regen
+ConserveTP=$chr(3) $+ 12 $+ conserving TP
+DefenseUp=$chr(3) $+ 12 $+ +def
+SpeedUp=$chr(3) $+ 12 $+ +spd
+Shell=$chr(3) $+ 12 $+ shell
+Protect=$chr(3) $+ 12 $+ protect
+SpiritOftheHero=$chr(3) $+ 7 $+ Spirit of the Hero buff
+Ignition.on=$chr(3) $+ 7 $+ ignition boosted
+Boosted=$chr(3) $+ 7 $+ power boosted
+FinalGetsuga=$chr(3) $+ 6 $+ final getsuga
 
 =======================
 Conquest Stuff

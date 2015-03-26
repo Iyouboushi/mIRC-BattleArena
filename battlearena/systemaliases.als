@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/21/15
+;;;; Last updated: 03/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2240,7 +2240,7 @@ clear_most_status {
   writeini $char($1) Status amnesia no | writeini $char($1) status paralysis no | writeini $char($1) status zombie no | writeini $char($1) Status slow no 
   writeini $char($1) Status sleep no | writeini $char($1) Status stun no | writeini $char($1) status zombieregenerating no | writeini $char($1) status silence no
   writeini $char($1) status petrified no  | writeini $char($1) status bored no | writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no 
-  writeini $char($1) status intdown no | writeini $char($1) status protect no | writeini $char($1) status shell no 
+  writeini $char($1) status intdown no | writeini $char($1) status protect no | writeini $char($1) status shell no | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0 
 
   writeini $char($1) status poison.timer 0 | writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
   writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0 | writeini $char($1) status confuse.timer 0 
@@ -2281,6 +2281,7 @@ clear_positive_status {
   writeini $char($1) status protect no | writeini $char($1) status shell no | writeini $char($1) status protect.timer 0 | writeini $char($1) status shell.timer 0
   writeini $char($1) status en-spell none | writeini $char($1) status en-spell.timer 0
   writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0
+  writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0
 
   if ($2 != tech) { writeini $char($1) status ignition.on off | remini $char($1) status ignition.name | remini $char($1) status ignition.augment }
 }
