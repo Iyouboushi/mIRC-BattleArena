@@ -481,6 +481,15 @@ Cost=0
 SellPrice=0
 Desc=pulls out a grenade, pulls the pin and hurls it at the battlefield. A few second later, it explodes with a bright flash, blinding all enemies!
 
+[Coffee]
+Type=Status
+Target=Single
+StatusType=speedup
+Amount=0
+Cost=0
+SellPrice=5000
+Desc=takes out a cup of thick black liquid and hands it over to %enemy who drinks it. Hey, why not? %enemy begins to feel a bit hyper from the substance!
+
 =========================
 FOOD ITEMS (+stats)
 =========================
