@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=3500
+Hp=1000
 Tp=1250
 Str=2920
 Def=2980
@@ -10,7 +10,7 @@ Name=Timeless Demon
 
 
 [Battle]
-Hp=3500
+Hp=1000
 Tp=1250
 Str=2920
 Def=2980
@@ -110,7 +110,7 @@ Wind=60
 Water=50
 Ice=50
 Lightning=100
-Light=120
+Light=160
 Dark=20
 HandToHand=100
 Whip=100
