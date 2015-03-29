@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=5500
+Hp=$iif($return_playersinbattle > 1, 4500, 3500)
 Tp=1250
 Str=3920
 Def=7980
@@ -52,7 +52,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=1100
+bosslevel=110
 CanTaunt=false
 
 [Status]
@@ -94,7 +94,7 @@ shell.timer=-1
 
 [Weapons]
 Equipped=SkyGodPower
-SkyGodPower=1100
+SkyGodPower=110
 
 [Skills]
 Resist-Charm=100
@@ -107,11 +107,11 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-BloodBoost=150
+BloodBoost=15
 
 
 [Techniques]
-FlareII=1000
+FlareII=100
 
 
 [Styles]
@@ -127,8 +127,8 @@ SkyGodPower=IgnoreDefense.EnhanceCriticalHits
 
 [NaturalArmor]
 Name=Roc Feathers
-Max=2000
-Current=2000
+Max=700
+Current=700
 
 [modifiers]
 Heal=wind

@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 1100, $round($calc(5500 + (5 * $return_differenceof($return_playerlevelstotal,1550))),0), $round($calc(5500 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 4500, 3500)
 Hp=5500
 Tp=1250
 Str=7920
@@ -53,7 +53,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=1100
+bosslevel=110
 CanTaunt=false
 
 [Status]
@@ -95,7 +95,7 @@ shell.timer=-1
 
 [Weapons]
 Equipped=SkyGodPower
-SkyGodPower=1100
+SkyGodPower=110
 
 [Skills]
 Resist-Charm=100
@@ -108,11 +108,11 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-BloodBoost=150
+BloodBoost=15
 
 
 [Techniques]
-TornadoII=1000
+TornadoII=100
 
 
 [Styles]
@@ -128,8 +128,8 @@ SkyGodPower=IgnoreDefense.EnhanceCriticalHits
 
 [NaturalArmor]
 Name=Wyvern Scales
-Max=5000
-Current=5000
+Max=700
+Current=700
 
 [modifiers]
 Heal=wind

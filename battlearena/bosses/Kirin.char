@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 1550, $round($calc(6000 + (5 * $return_differenceof($return_playerlevelstotal,1550))),0), $round($calc(6000 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 4500, 3500)
 Hp=5500
 Tp=1250
 Str=3920
@@ -53,7 +53,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=1550
+bosslevel=125
 IgnoreDrain=true
 CanTaunt=false
 
@@ -98,7 +98,7 @@ shell.timer=-1
 
 [Weapons]
 Equipped=SkyGodPower
-SkyGodPower=1500
+SkyGodPower=150
 
 [Skills]
 Resist-Charm=100
@@ -115,14 +115,14 @@ BloodBoost=200
 konzen-ittai.on
 konzen-ittai=100
 ClearMind=1
-Bloodpact=900
+Bloodpact=20
 Summon=KirinAvatar
 
 
 [Techniques]
-SpikeFlail=1500
-FlareII=1500
-QuakeII=1500
+SpikeFlail=150
+FlareII=150
+QuakeII=150
 CureII=100
 
 [Styles]
@@ -142,8 +142,8 @@ SkyGodPower=IgnoreDefense.EnhanceSummons.EnhanceCriticalHits.AbsorbIG
 
 [NaturalArmor]
 Name=Godly Shield
-Max=5000
-Current=5000
+Max=1000
+Current=1000
 
 
 [modifiers]

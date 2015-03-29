@@ -2636,6 +2636,7 @@ Monster=Byakko
 Desc=takes out the Gem of the West, a pulsing green gem. It glows brightly before shattering.  A green light shoots out of the sky and down onto the heroes, who are teleported up into Byakko's Chamber.
 AlliedNotes=1200
 Exclusive=yes
+PortalLevel=110
 
 [GemOfTheNorth]
 type=portal
@@ -2647,6 +2648,7 @@ Monster=Genbu
 Desc=takes out the Gem of the North, a pulsing brown gem. It glows brightly before shattering.  A brown light shoots out of the sky and down onto the heroes, who are teleported up into Genbu's Chamber.
 AlliedNotes=1200
 Exclusive=yes
+PortalLevel=110
 
 [GemOfTheEast]
 type=portal
@@ -2658,6 +2660,7 @@ Monster=Seiryu
 Desc=takes out the Gem of the East, a pulsing red gem. It glows brightly before shattering.  A red light shoots out of the sky and down onto the heroes, who are teleported up into Seiryu's Chamber.
 AlliedNotes=1200
 Exclusive=yes
+PortalLevel=110
 
 [GemOfTheSouth]
 type=portal
@@ -2669,6 +2672,7 @@ Monster=Suzaku
 Desc=takes out the Gem of the South, a pulsing white gem. It glows brightly before shattering.  A white light shoots out of the sky and down onto the heroes, who are teleported up into Suzaku's Chamber.
 AlliedNotes=1200
 Exclusive=yes
+PortalLevel=110
 
 [GodSeal]
 type=portal
@@ -2680,6 +2684,7 @@ Monster=Kirin
 Desc=takes out the small glowing orb, which shatters and creates a large portal that leads up into the sky.  After entering, the heroes find themselves inside an ancient shrine of the sky gods, The Shrine of Ru'Avitau.  
 AlliedNotes=2500
 Exclusive=yes
+PortalLevel=120
 
 [MechanicalEye]
 type=portal
@@ -2848,6 +2853,7 @@ Monster=Geryon
 Desc=takes out a small glowing orb that has an engraving of an hourglass on it. %real.name then tosses the orb onto the ground. It shatters and the players feel time slowing down as they are teleported into an underground arena.
 AlliedNotes=1000
 Exclusive=yes
+PortalLevel=150
 
 [JungleOrb]
 type=portal
