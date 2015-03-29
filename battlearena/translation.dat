@@ -862,7 +862,7 @@ Statuses
 Freezing=$chr(3) $+ 4 $+ frozen
 Shock=$chr(3) $+ 4 $+ shocked
 Burning=$chr(3) $+ 4 $+ burning
-Drowning=$chr(3) $+ 4 $+ burning
+Drowning=$chr(3) $+ 4 $+ drowning
 Earthquake=$chr(3) $+ 4 $+ shaking violently
 Tornado=$chr(3) $+ 4 $+ caught in a tornado
 Rage=$chr(3) $+ 4 $+ enraged
