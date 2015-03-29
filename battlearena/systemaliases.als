@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/26/15
+;;;; Last updated: 03/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1301,7 +1301,7 @@ tech.list {
   if (%weapon.equipped.left != $null) { 
     var %techs.list.left $techs.get.list($1, %weapon.equipped.left)
 
-    if (%techs.list.left = $null) { return }
+    if (%techs.list.left = $null) { goto cleantechs }
     var %tech.position 1 
     while (%tech.position <= $numtok(%techs.list.left,46)) {
       var %tech.name $gettok(%techs.list.left,%tech.position,46)
@@ -1310,6 +1310,7 @@ tech.list {
     }
   }
 
+  :cleantechs
   set %replacechar $chr(044) $chr(032)
   %techs.list = $replace(%techs.list, $chr(046), %replacechar)
   unset %replacechar
