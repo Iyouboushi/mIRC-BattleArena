@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/26/15
+;;;; Last updated: 03/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -306,8 +306,6 @@ boost_summon_stats {
   ; $3 = original summon name
 
   var %summon.level 1
-  if ((%summon.level <= 0) || (%summon.level = $null)) { var %summon.level 1 }
-
   inc %summon.level $2
 
   if ($augment.check($1, EnhanceSummons) = true) {  inc %summon.level $calc(%augment.strength * 11)    } 
@@ -331,6 +329,9 @@ boost_summon_stats {
 
   var %tp $readini($char($1 $+ _summon), BaseStats, TP)
   inc %tp $round($calc(%tp * %summon.level),0) 
+
+  if (%tp > 500) { var %tp 500 }
+
   writeini $char($1 $+ _summon) BaseStats TP %tp
 
   $fulls($1 $+ _summon)
@@ -450,7 +451,6 @@ boost_monster_stats {
   ; If the monster is set to only boost it's hp, do that and return
   if ($readini($char($1), info, BattleStats) = hp) { $boost_monster_hp($1, $2, %monster.level) |  return }
 
-
   ; Make sure the [battle] stats are set to what the [basestats] should start off with
   writeini $char($1) battle str $readini($char($1), basestats, str)
   writeini $char($1) battle def $readini($char($1), basestats, def)
@@ -482,14 +482,17 @@ boost_monster_stats {
     writeini $char($1) BaseStats TP %tp
   }
 
+  ; Cap TP at 500 if it's over
+  if (%tp > 500) { writeini $char($1) BaseStats TP 500 }
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ; Adjust the monster's weapon
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   if (($2 != doppelganger) && ($readini($char($1), info, IgnoreWeaponBoost) != true)) {
     ; Set the weapon's power based on the streak if it's higher than the monster's current weapon level
     set %current.monster.weapon $readini($char($1), weapons, equipped)
     set %current.monster.weapon.level $readini($char($1), weapons, %current.monster.weapon)
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; Adjust the monster's weapon
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     if (%current.monster.weapon.level < %winning.streak) { set %current.monster.weapon.level.temp $round($calc(%winning.streak / 5),0) 
       if (%current.monster.weapon.level.temp < %current.monster.weapon.level) { writeini $char($1) weapons %current.monster.weapon %current.monster.weapon.level }
       else { writeini $char($1) weapons %current.monster.weapon %current.monster.weapon.level.temp }
