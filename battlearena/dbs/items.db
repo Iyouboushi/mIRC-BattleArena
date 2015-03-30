@@ -82,7 +82,7 @@ Cost=3500
 SellPrice=2000
 FullbringLevel=5
 FullbringTarget=AOE
-FullbringAmount=800
+FullbringAmount=350
 Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a bright light that heals everyone.
 ConquestItem=true
 
@@ -96,7 +96,7 @@ Cost=8000
 SellPrice=4000
 FullbringLevel=5
 FullbringTarget=AOE
-FullbringAmount=3500
+FullbringAmount=400
 Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a bright light that heals everyone.
 Currency=none
 
@@ -109,7 +109,7 @@ Cost=0
 SellPrice=5000
 FullbringLevel=5
 FullbringTarget=AOE
-FullbringAmount=5000
+FullbringAmount=500
 Fullbringdesc=draws out the soul from a bottle of Bruce "Old Man" Willaker's juice.  The juice's soul is drawn towards everyone and gives off a bright light that heals everyone.
 Currency=none
 
@@ -123,7 +123,7 @@ Cost=$iif($readini(shopnpcs.dat, NPCStatus, Santa) = true, 1000, 0)
 SellPrice=200
 FullbringLevel=5
 FullbringTarget=AOE
-FullbringAmount=2500
+FullbringAmount=400
 Fullbringdesc=draws out the soul from the candy cane.  The soul is drawn over to everyone and gives off a bright red and green colored light that heals everyone
 Currency=none
 
