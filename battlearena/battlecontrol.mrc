@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/26/15
+;;;; Last updated: 03/31/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -985,7 +985,7 @@ alias generate_monster {
       if (%battle.type != ai) { 
         $display.message($readini(translation.dat, events, WarmachineFight), battle) 
 
-        if (($return_winningstreak >= 20) && ($return_winningstreak < 50)) {  
+        if ($return_winningstreak < 50) {  
           set %battle.level.cap $return.levelcapsetting(SmallWarMachine)
           if (%battle.level.cap = null) { set %battle.level.cap 20 } 
         }
