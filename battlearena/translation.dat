@@ -502,6 +502,8 @@ TrustNPCDoesn'tExist=$chr(3) $+ 4 $+ Error: The NPC this item summons does not
 StreakTooLowForTrusts=$chr(3) $+ 4 $+ Error: The arena level is too low for trusts at this time. Trusts can only be used on levels 11+
 NotEnoughHPForSkill=$chr(3) $+ 4 $+ Error: $get_chr_name($1) does not have enough HP to perform this skill!
 Can'tSaveStreakUnder11=$chr(3) $+ 4 $+ Error: The arena level is too low for you to save. This command can only be used on arena levels 11+
+Can'tUseFoodOnOthers=$chr(3) $+ 4 $+ Error: This action has been disabled and cannot be done at this time.
+
 
 =======================
 Battle Related Messages
