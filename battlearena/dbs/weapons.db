@@ -169,7 +169,7 @@ Info=A sword made out of the mythril ore.
 Abilities=FastBlade.BurningBlade.FlatBlade.SeraphBlade
 Element=none
 Hits=1
-BasePower=15
+BasePower=10
 Upgrade=300
 
 [Rebellion]
@@ -179,7 +179,7 @@ Info=Dante's weapon from Devil May Cry.  It's a greatsword with a large skull at
 Abilities=Stinger.MillionStab.Drive.DevilTrigger
 Element=none
 Hits=1
-BasePower=20
+BasePower=15
 Upgrade=500
 2Handed=true
 
@@ -262,7 +262,6 @@ Upgrade=0
 IgnoreDefense=10
 HurtEthereal=true
 
-
 [MasterSword]
 Cost=0
 SpecialWeapon=true
@@ -275,7 +274,6 @@ BasePower=100
 Upgrade=0
 IgnoreDefense=15
 HurtEthereal=true
-
 
 [LexTalionis]
 Cost=3
@@ -442,7 +440,7 @@ Info=A pair of guns that shoot magical ammo and can hit the target twice in one 
 Abilities=RainStorm.ChargedShot.RapidShot
 Element=none
 Hits=2
-BasePower=15
+BasePower=10
 Upgrade=400
 2Handed=true
 
@@ -505,8 +503,8 @@ Type=Gun
 Info=A hand-held machine gun capable of shooting 4-5 times per round.
 Abilities=RainStorm.Detonator
 Element=None
-Hits=$rand(4,5)
-BasePower=25
+Hits=$rand(3,5)
+BasePower=20
 Upgrade=1000
 
 [AK47]
@@ -515,7 +513,7 @@ Type=Rifle
 Info=A selective-fire assault rifle that is black and light brown in color.
 Abilities=Rainstorm.Detonator
 Element=None
-Hits=$rand(3,5)
+Hits=$rand(4,5)
 BasePower=25
 Upgrade=1000
 2Handed=true
@@ -620,8 +618,8 @@ Type=Dagger
 Info=A dagger that is primarily used in the off-hand.
 Abilities=SharkBite.DancingEdge.Cyclone
 Element=None
-Hits=2
-BasePower=30
+Hits=$rand(1,2)
+BasePower=25
 Upgrade=800
 
 [Terpsichore]
@@ -630,8 +628,8 @@ Type=Dagger
 Info=A legendary dagger that has a gold handle and a silver blade. The unique blade is able to split into three.
 Abilities=PyrrhicKleos.RudrasStorm.Exenterator
 Element=None
-Hits=2
-BasePower=40
+Hits=$rand(1,2)
+BasePower=35
 Upgrade=1000
 
 [Mandau]
@@ -640,8 +638,8 @@ Type=Dagger
 Info=A legendary dagger that is bronze and gold in color.
 Abilities=MercyStroke.AeolianEdge.Evisceration
 Element=None
-Hits=2
-BasePower=50
+Hits=$rand(1,2)
+BasePower=40
 Upgrade=1500
 
 
@@ -684,7 +682,7 @@ Upgrade=800
 [Yoichinoyumi]
 Cost=10
 Type=Bow
-Info=A legendary bow used by samurai in the past.
+Info=A legendary bow used by samurai in the past. Charged with Light energy.
 Abilities=EagleEyeShot.NamasArrow.RefulgentArrow
 Element=Light
 Hits=1
@@ -695,7 +693,7 @@ Upgrade=1000
 [Gandiva]
 Cost=15
 Type=Bow
-Info=A legendary Empyrean bow. It is black and gold in color and has two blue jewels in it.
+Info=A legendary Empyrean bow. It is black and gold in color and has two blue jewels in it. Charged with Dark energy.
 Abilities=EagleEyeShot.JishnusRadiance.ApexArrow
 Element=Dark
 Hits=1
@@ -1079,7 +1077,6 @@ Upgrade=1500
 MECH WEAPONS
 =============================================
 
-
 [BasicMechGun]
 Cost=1
 EnergyCost=100
@@ -1310,9 +1307,7 @@ Hits=$rand(2,4)
 BasePower=500
 Upgrade=0
 IgnoreDefense=10
-HurtEthereal=true
 EnergyCost=100
-CanCounter=false
 
 =============================================
 MONSTER WEAPONS
@@ -1363,7 +1358,6 @@ Abilities=FastBlade.Shockwave
 Element=none
 Hits=1
 Basepower=20
-
 
 [Orc_Pike]
 Cost=0
@@ -1418,7 +1412,6 @@ Abilities=TwinSlice.BiteOfLightning.BladeBeam
 Element=Light
 Hits=$rand(1,2)
 BasePower=75
-HurtEthereal=true
 
 [Black_Goddess_Staff]
 Cost=0
@@ -1428,7 +1421,6 @@ Abilities=AeroV.BlizzardV.FireV.DarkV.BanishV.Geohelix.Hydrohelix.Anemohelix.Pyr
 Element=Light
 Hits=1
 Basepower=70
-HurtEthereal=true
 
 [Cell'sKi]
 Cost=0
@@ -1646,7 +1638,6 @@ Element=none
 Hits=2
 BasePower=10
 
-
 [ElementalPower]
 Cost=0
 Type=Wand
@@ -1753,7 +1744,6 @@ Element=none
 Hits=1
 BasePower=20
 Upgrade=0
-HurtEthereal=true
 
 [PeoplesFist]
 Cost=0
@@ -1834,7 +1824,6 @@ Element=None
 Hits=2
 BasePower=20
 Upgrade=0
-HurtEthereal=true
 
 [AlucardSword]
 Cost=0
@@ -1845,7 +1834,6 @@ Element=None
 Hits=$rand(1,2)
 BasePower=15
 Upgrade=0
-HurtEthereal=true
 
 [Auto9]
 Cost=0
@@ -1940,7 +1928,7 @@ Upgrade=0
 Cost=0
 Type=HandtoHand
 Info=The fists of Yoruichi!
-Abilities=DoublePunch.ShoulderTackle.AsuranFists.ShinjinSpiral
+Abilities=DoublePunch.ShoulderTackle.AsuranFists.ShinjinSpiral.ShitotsuSansen
 Element=None
 Hits=2
 BasePower=20
@@ -2351,7 +2339,7 @@ Upgrade=0
 Cost=0
 Type=HandtoHand
 Info=The power of the slimes.
-Abilities=SlimeRam.SlimeStomp.Curaga.FireII.IceII.ThunderII.StoneII.WaterII.AeroII.Flare.Freeze.Burst.Quake.Flood.Tornado.Poison.Blind.Paralyze.Tentacle.Cure.CureII.CureIII.Curaga
+Abilities=SlimeRam.SlimeStomp.Curaga.FireII.IceII.ThunderII.StoneII.WaterII.AeroII.Flare.Freeze.Burst.Quake.Flood.Tornado.Poison.Blind.Paralyze.Cure.CureII.CureIII.Curaga
 Element=None
 Hits=2
 BasePower=15
@@ -2386,8 +2374,6 @@ Element=None
 Hits=2
 BasePower=500
 Upgrade=0
-
-
 
 [Orc_Fists]
 Cost=0
@@ -2448,7 +2434,6 @@ Element=None
 Hits=$rand(2,4)
 BasePower=50
 Upgrade=0
-HurtEthereal=True
 CanShieldReflect=True
 CanCounter=False
 2Handed=true
@@ -2463,7 +2448,6 @@ Hits=1
 BasePower=40
 Upgrade=0
 IgnoreDefense=10
-HurtEthereal=True
 CanCounter=False
 2Handed=true
 
@@ -2476,7 +2460,6 @@ Element=Dark
 Hits=1
 BasePower=40
 Upgrade=0
-HurtEthereal=True
 CanCounter=True
 2Handed=true
 
@@ -2489,7 +2472,6 @@ Element=None
 Hits=$rand(2,4)
 BasePower=50
 Upgrade=0
-HurtEthereal=true
 CanCounter=False
 CanShieldReflect=True
 2Handed=true
@@ -2503,7 +2485,6 @@ Element=Dark
 Hits=1
 BasePower=40
 Upgrade=0
-HurtEthereal=True
 CanCounter=True
 2Handed=true
 
@@ -2516,7 +2497,6 @@ Element=None
 Hits=$rand(1,3)
 BasePower=40
 Upgrade=0
-HurtEthereal=True
 CanCounter=True
 2Handed=true
 
@@ -2590,11 +2570,8 @@ Element=None
 Hits=2
 BasePower=30
 Upgrade=0
-IgnoreDefense=25
-HurtEthereal=True
 2Handed=True
 CanShieldReflect=True
-CanCounter=True
 2Handed=true
 
 [HoleyGloves]
@@ -2618,9 +2595,7 @@ Element=None
 Hits=1
 BasePower=15
 Upgrade=0
-HurtEthereal=True
 2Handed=True
-CanCounter=True
 
 [MarioFists]
 Cost=0
@@ -2632,7 +2607,6 @@ Hits=2
 BasePower=30
 Upgrade=0
 2Handed=True
-CanCounter=True
 
 [ValkyrieSword]
 Cost=0
@@ -3007,7 +2981,7 @@ Info=A pink chainsaw that belongs to Juliet Starling.
 Abilities=ChainsawDash.ChainsawSpin.ChainsawTornado.ChainsawCut.ChainsawAttack.ChainsawCannon
 Element=None
 Hits=$rand(1,3)
-BasePower=28
+BasePower=20
 Upgrade=0
 
 [MegaBusterMk1]
@@ -3050,31 +3024,10 @@ Hits=$rand(1,2)
 BasePower=30
 Upgrade=0
 
-[X-BusterMk2]
-Cost=0
-Type=Gun
-Info=The Weapon of Mega Man X.
-Abilities=
-Element=None
-Hits=$rand(1,2)
-BasePower=30
-Upgrade=0
-
-[X-BusterMk3]
-Cost=0
-Type=Gun
-Info=The Weapon of Mega Man X.
-Abilities=
-Element=None
-Hits=$rand(1,2)
-BasePower=30
-Upgrade=0
-
-
 [SwordOfTheFallenDevil]
 Cost=0
 Type=Sword
-Info=The sword that belongs to Orphen.
+Info=The sword that belongs to Orphen. Contains dark power.
 Abilities=HandOfPyro.Bite_Of_Lightning.HailOfHeavens.PinnacleOfTheSun.HammerOfEvil.ColdnessOfDestruction.FeathersOfTheHurricane.BoltOfThunder.SmokeOfPain.FalconOfDeath
 Element=Dark
 Hits=1
@@ -3263,7 +3216,6 @@ BasePower=50
 Upgrade=0
 IgnoreDefense=5
 
-
 [DiremiteLegs]
 Cost=0
 Type=HandToHand
@@ -3293,7 +3245,6 @@ Element=None
 Hits=1
 BasePower=0
 Upgrade=0
-
 
 [IroncladSword]
 Cost=0
@@ -3365,7 +3316,6 @@ Hits=2
 BasePower=30
 Upgrade=0
 IgnoreDefense=10
-HurtEthereal=true
 
 [Yasoma_Kagura]
 Cost=0
@@ -3377,7 +3327,6 @@ Hits=$rand(1,2)
 BasePower=30
 Upgrade=0
 IgnoreDefense=15
-HurtEthereal=true
 
 [Excaliju]
 Cost=0
@@ -3389,7 +3338,6 @@ Hits=$rand(1,2)
 BasePower=30
 Upgrade=0
 IgnoreDefense=20
-HurtEthereal=true
 
 [Virendra]
 Cost=0
@@ -3401,7 +3349,6 @@ Hits=1
 BasePower=50
 Upgrade=0
 IgnoreDefense=20
-HurtEthereal=true
 
 [DwarvenRuneBlade]
 Cost=0
@@ -3413,7 +3360,6 @@ Hits=$rand(1,2)
 BasePower=15
 Upgrade=0
 IgnoreDefense=15
-HurtEthereal=true
 
 [DwarvenShortbow]
 Cost=0
@@ -3425,8 +3371,6 @@ Hits=1
 BasePower=30
 Upgrade=0
 IgnoreDefense=15
-HurtEthereal=true
-
 
 [Mimic]
 Cost=0
@@ -3438,7 +3382,6 @@ Hits=2
 BasePower=40
 Upgrade=0
 
-
 [StygianRazor]
 Cost=0
 Type=Greatsword
@@ -3448,7 +3391,6 @@ Element=None
 Hits=1
 BasePower=20
 Upgrade=0
-
 
 [Peacemaker]
 Cost=0
@@ -3468,7 +3410,6 @@ Abilities=SwiftBlade.VorpalBlade.AsuranFists.TornadoKick.ShinjinSpiral.ShitotsuS
 Element=None
 Hits=1
 BasePower=30
-HurtEthereal=true
 
 [RyuujinJakka]
 Cost=0
@@ -3478,9 +3419,8 @@ Abilites=AsuranFists.Ikkotsu.Soukotsu.SwiftBlade.VorpalBlade.ChantDuCygne.IttouK
 Element=None
 Hits=1
 BasePower=50
-HurtEthereal=true
 
-[SodeNoShiraYuki]
+[SodeNoShirayuki]
 Cost=0
 Type=Katana
 Info=The zanpakutou that belings to Rukia Kuchiki.
@@ -3488,7 +3428,6 @@ Abilities=SwiftBlade.SavageBlade.Soukatsui.SourenSoukatsui.Rikujoukourou.Byakura
 Element=None
 Hits=1
 BasePower=30
-HurtEthereal=true
 
 [Nejibana]
 Cost=0
@@ -3498,7 +3437,6 @@ Abilities=Soukatsui.SourenSoukatsui.Byakurai.Shakkahou
 Element=None
 Hits=1
 BasePower=30
-HurtEthereal=true
 
 [Cutlass]
 Cost=0
@@ -3519,7 +3457,6 @@ Element=None
 Hits=1
 BasePower=50
 Upgrade=0
-HurtEthereal=true
 
 [Marlene]
 Cost=0
@@ -3530,7 +3467,6 @@ Element=None
 Hits=2
 BasePower=30
 Upgrade=0
-HurtEthereal=true
 
 [FrostWhip]
 Cost=0
@@ -3540,16 +3476,6 @@ Abilities=FrostBite.FreezeII.BlizzajaII
 Element=Ice
 Hits=$rand(1,3)
 BasePower=50
-Upgrade=0
-
-[FomorPower]
-Cost=0
-Type=Sword
-Info=The power of a Fomor
-Abilities=DimensionalDeath.CarnalNightmare.AegisSchism.DancingChains.GrimHalo
-Element=Dark
-Hits=$rand(1,2)
-BasePower=30
 Upgrade=0
 
 [MazaalPower]
@@ -3570,13 +3496,12 @@ Abilities=GenshiCleave.Catastrophe.Entropy.Guillotine
 Element=Light
 Hits=$rand(1,3)
 Basepower=20
-HurtEthereal=true
 Upgrade=0
 
 [HolyMace]
 Cost=0
 Type=Mace
-Info=The Mace used by Kaylona
+Info=The mace used by Kaylona
 Abilities=Curaga.CureV
 Element=None
 Hits=1
@@ -3594,20 +3519,18 @@ Hits=1
 BasePower=200
 Upgrade=0
 IgnoreDefense=10
-HurtEthereal=True
 2Handed=true
 
 [SilverSwords]
 Cost=0
 Type=Sword
 Info=Twin longswords made of silver and crafted with ancient Elvish techniques. Contains the power of lightning.
-Abilities=Twin_SLice.LightningStrike.BladeBeamII
+Abilities=Twin_Slice.LightningStrike.BladeBeamII
 Element=Lightning
 Hits=2
 BasePower=100
 Upgrade=0
 IgnoreDefense=10
-HurtEthereal=true
 2Handed=true
 
 [Morgenstern]
@@ -3620,7 +3543,6 @@ Hits=1
 BasePower=100
 Upgrade=0
 IgnoreDefense=10
-HurtEthereal=true
 
 [WallofFleshMouth]
 Cost=0
@@ -3786,7 +3708,6 @@ Element=None
 Hits=2
 BasePower=10
 CanCounter=true
-HurtEthereal=true
 
 [GoddessBlade]
 Cost=0
@@ -3801,7 +3722,7 @@ CanCounter=false
 [ChatoyantStaff]
 Cost=0
 Type=Stave
-Info=A staff with a dark brown base with a golden tip on bottom and a fancy golden hook on top with a multi-colored ball inside the hook. Heavily customized and enhanced for Nauthima.
+Info=A staff with a dark brown base with a golden tip on bottom and a fancy golden hook on top with a multi-colored ball inside the hook.
 Abilities=AeroV.BlizzardV.FireV.DarkV.BanishV.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix
 Element=None
 Hits=1
@@ -3820,9 +3741,7 @@ Element=Dark
 Hits=1
 BasePower=50
 Upgrade=0
-HurtEthereal=True
 2Handed=True
-CanCounter=false
 
 [MasamuneII]
 Cost=0
@@ -3833,9 +3752,7 @@ Element=Light
 Hits=$rand(1,2)
 BasePower=75
 Upgrade=0
-HurtEthereal=True
 2handed=false
-CanCounter=false
 
 [Socom]
 Cost=0
@@ -3846,22 +3763,18 @@ Element=None
 Hits=$rand(1,2)
 BasePower=200
 Upgrade=0
-HurtEthereal=false
 2handed=false
-CanCounter=false
 
 [PSG-1]
 Cost=0
 Type=Rifle
-Info=Arguably the most accurate semi-auto in the world. The accuracy standard has been field tested: 50 rounds of ammo into an 80 millimeter circle at 300 meters. The main reason for utilization and procurement in this op is that the PSG-1 ejects spent shells to a distance of around ten feet, thus lessening a foe's ability to judge the shooters position. Another reason is that the extremely accurate sights have a default setting of 600 meters, the optimal engagement range.
+Info=Arguably the most accurate semi-auto in the world. The accuracy standard has been field tested: 50 rounds of ammo into an 80 millimeter circle at 300 meters. The main reason for utilization and procurement in this op is that the PSG-1 ejects spent shells to a distance of around ten feet, thus lessening a foe's ability to judge the shooters position.
 Abilities=
 Element=None
 Hits=1
 BasePower=400
 Upgrade=0
-HurtEthereal=false
 2handed=true
-CanCounter=false
 
 [GatoFists]
 Cost=0
@@ -3872,9 +3785,7 @@ Element=none
 Hits=2
 BasePower=20
 Upgrade=0
-HurtEthereal=false
 2handed=true
-CanCounter=false
 
 [GrahfFists]
 Cost=0
@@ -3885,7 +3796,6 @@ Element=Dark
 Hits=$rand(1,2)
 BasePower=50
 Upgrade=0
-HurtEthereal=True
 2handed=True
 CanCounter=False
 
@@ -3898,7 +3808,6 @@ Element=Dark
 Hits=$rand(1,2)
 BasePower=50
 Upgrade=0
-HurtEthereal=True
 EnergyCost=250
 CanCounter=false
 

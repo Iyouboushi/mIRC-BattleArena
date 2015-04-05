@@ -103,7 +103,7 @@ Currency=none
 [Bruce'sJuice]
 Type=heal
 Target=Single
-Amount=15000
+Amount=6000
 Desc=pulls out a refreshing bottle of Bruce "Old Man" Willaker's juice and drinks it.  Ahhhhhhh, the most refreshing juice in the world.
 Cost=0
 SellPrice=5000
@@ -500,6 +500,7 @@ Amount=10
 Desc=pulls out a large pot roast and hands it to %enemy $+ , who munches down.  Mmmm, yummy!
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [Ramen]
 Type=food
@@ -508,6 +509,7 @@ Amount=10
 Desc=pulls out a bowl of ramen and hands it to %enemy $+ , who munches down. Slurrrp!
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [Cavier]
 Type=food
@@ -516,6 +518,7 @@ Amount=10
 Desc=pulls out a small amount of cavier and hands it to %enemy $+ , who eats it slowly.  I say!
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [Pizza]
 Type=food
@@ -524,6 +527,7 @@ Amount=20
 Desc=pulls out a slice of pizza and hands it to %enemy $+ , who munches it down.  Cowabunga!
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [BisonDollar]
 Type=food
@@ -532,6 +536,7 @@ Amount=10
 Desc=pulls out a Bison Dollar and hands it to %enemy who exchanges it for a small TP enhancement.
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [DragonMeat]
 Type=food
@@ -540,6 +545,7 @@ Amount=10
 Desc=pulls out a piece of dragon meat and hands it to %enemy $+ , who cooks it and then munches down.  Mmmm, yummy!
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [CerberusMeat]
 Type=food
@@ -548,6 +554,7 @@ Amount=10
 Desc=pulls out a piece of Cerberus meat and hands it to %enemy $+ , who cooks it and eats it.  Dude, you just ate some of a three-headed dog!
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [WereMeat]
 Type=food
@@ -556,6 +563,7 @@ Amount=15
 Desc=pulls out a piece of meat from a werewolf and hands it to %enemy $+ , who cooks it and eats it. Mmm! It's howling good!
 Cost=5000000
 SellPrice=2000
+Exclusive=yes
 
 [AlphaWereMeat]
 Type=food
@@ -564,6 +572,7 @@ Amount=25
 Desc=pulls out a piece of meat from an alpha werewolf and hands it to %enemy $+ , who cooks it and eats it. Mmm! This meat is so good it makes you want to transform into a howling maniac! 
 Cost=5000000
 SellPrice=5000
+Exclusive=yes
 
 [TurkeyLeg]
 Type=food
@@ -572,6 +581,7 @@ Amount=10
 Desc=pulls out a turkey leg meat and hands it to %enemy $+ , who cooks it and eats it. Mmm! Gobble gobble indeed!
 Cost=5000000
 SellPrice=4000
+Exclusive=yes
 
 [SuperMushroom]
 Type=food
@@ -580,6 +590,7 @@ Amount=20
 Desc=pulls out a Super Mushroom from the Mushroom Kingdom and hands it to %enemy $+ , who munches it down.  $2 does not grow bigger, but instead gains more endurance.
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [FireDragonWine]
 Type=food
@@ -588,6 +599,7 @@ Amount=10
 Desc= pulls out a bottle of alcohol labeled "Fire Dragon Wine" and hands it to %enemy $+ , who drinks the entire bottle. After a moment of intense pain and nausea, $2 feels that $gender($2) defense has increased! 
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [Ambrosia]
 Type=food
@@ -604,14 +616,16 @@ Amount=10
 Desc=pulls out a a plate of foie gras and hands it to %enemy $+ , who then eats it. Uh... let's say it's an aquired taste...
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [KnowledgeSource]
 Type=Food
 Target=int
 Amount=10
-Desc=pulls out a source of knowledge and hands it to %enemy $+ , who then reads it and feels a little smarter!
+Desc=pulls out a book of knowledge and hands it to %enemy $+ , who then reads it and feels a little smarter!
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [SoulPainting]
 Type=food
@@ -620,6 +634,7 @@ Amount=10
 Desc=pulls out a painting drawn by Brauner and hands it to %enemy $+ , who studies it. Indeed. Quite.
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [FishAndChips]
 Type=food
@@ -628,6 +643,7 @@ Amount=10
 Desc=pulls out a basket of fish and chips and hands it to %enemy $+ , who eats it slowly.  Quite! Indeed!
 Cost=5000000
 SellPrice=1000
+Exclusive=yes
 
 [BloodyHeart]
 type=food
@@ -635,7 +651,7 @@ Target=hp
 Amount=100
 Desc=pulls out a bleeding heart and looks at it. People really eat this? Well..uhh..maybe. $set_chr_name($2) %real.name ends up eating it and feels sick for doing so.... but..at least %real.name gains some max HP for it.
 SellPrice=5000
-
+Exclusive=yes
 
 [RottingMeat]
 type=food
@@ -668,79 +684,59 @@ Desc=pulls out a bottle of rum and hands it to %enemy who chugs it down. Arrr! P
 Cost=10000000
 SellPrice=2000
 
-
 [DefenseSource]
-
 Type=Food
-
 Target=def
 Amount=10
-Desc=pulls out a source of defense and hands it to %enemy $+ , who then reads it and feels a little stronger!
-
+Desc=pulls out a book of defense and hands it to %enemy $+ , who then reads it and feels a little stronger!
 Cost=5000000
-
 SellPrice=1000
-
-
+Exclusive=yes
 
 [PowerSource]
-
 Type=Food
-
 Target=str
 Amount=10
-Desc=pulls out a source of power and hands it to %enemy $+ , who then reads it and feels a little more powerful!
-
+Desc=pulls out a book of power and hands it to %enemy $+ , who then reads it and feels a little more powerful!
 Cost=5000000
-
 SellPrice=1000
-
+Exclusive=yes
 
 [Herring]
-
 Type=food
-
 Target=spd
-
 Amount=10
 Desc=takes out a herring and hands it to %enemy $+ , who then stares at it. $set_chr_name($2) $+ %real.name then cooks and eats it, though $gender3($2) then feels an urge to chop down the mightiest tree in the forest...
-
 Cost=10000000
-
 SellPrice=1000
+Exclusive=yes
 
 [BloodScroll]
-
 Type=food
-
 Target=redorbs
 Amount=$rand(500,1000)
 Desc=takes out an ancient blood-colored scroll and hands it to %enemy who then reads it. The scroll begins to dissolve into red orbs that swirl around %enemy before being absorbed.
 Cost=10000000
-
-SellPrice=1000
+SellPrice=200
+Exclusive=yes
 
 [BurntScroll]
-
 Type=food
-
 Target=blackorbs
 Amount=$rand(1,2)
 Desc=takes out an ancient burnt scroll and hands it to %enemy who then reads it. The scroll begins to dissolve into a black mist that swirls around %enemy before being absorbed.
 Cost=10000000
-
 SellPrice=1000
+Exclusive=yes
 
 [TreasureMap]
-
 Type=food
-
 Target=redorbs
 Amount=$rand(1000,2000)
 Desc=takes out old pirate map and hands it to %enemy who then uses it to discover a chest full of red orbs. Yarr!
 Cost=10000000
-
-SellPrice=2000
+SellPrice=200
+Exclusive=yes
 
 [BookOfSkulls]
 Type=Food
@@ -1425,7 +1421,6 @@ BlockAllStatus.Amount=50
 SellPrice=1000
 ShopNPC=TravelMerchant
 
-
 [Ribbon]
 Type=accessory
 Cost=9999999999
@@ -1806,7 +1801,6 @@ Amount=1000
 MechType=RestoreHP
 ConquestItem=true
 
-
 [JungleThorn]
 Type=misc
 Cost=0
@@ -1823,7 +1817,6 @@ Desc=A beautiful rose won from an evil Jungle monster
 Currency=AlliedNotes
 GardenXP=100
 GardenType=Plant
-
 
 [Ink]
 Type=misc
@@ -2095,7 +2088,6 @@ SellPrice=500
 Desc=Taking this stone into hand, you can feel your arm move more freely.
 Currency=AlliedNotes
 ConquestItem=true
-
 
 [UtopianGoldThread]
 type=misc
