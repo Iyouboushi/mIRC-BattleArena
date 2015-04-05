@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/26/15
+;;;; Last updated: 04/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -117,7 +117,10 @@ alias uses_item {
   if (%item.type = food) { 
     $checkchar($4)
     if ($4 = $null) { $item.food($1, $1, $2) }
-    if ($4 != $null) { $item.food($1, $4, $2) }
+    if ($4 != $null) { 
+      if (($return.systemsetting(EnableFoodOnOthers) = false) && ($readini($char($4), info, flag) = $null)) { $display.message($readini(translation.dat, errors, Can'tUseFoodOnOthers),private) | halt }
+      else {  $item.food($1, $4, $2) }
+    }
     $decrease_item($1, $2) | halt 
   }
 
