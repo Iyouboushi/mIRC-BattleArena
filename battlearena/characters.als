@@ -780,7 +780,7 @@ readitems {
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewTrustItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewTrustItems)) }
   }
-  if (%potioningreident.items.list != $null) { 
+  if (%potioningredient.items.list != $null) { 
     if ($2 = channel) { $display.message($readini(translation.dat, system, ViewPotionIngredientItems),private) }
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewPotionIngredientItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewPotionIngredientItems)) }
