@@ -900,8 +900,8 @@ generate_allied_troop {
   $display.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)
 
-  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
+  writeini $txtfile(battle2.txt) battleinfo npcs 1
 
   if (%boss.item != $null) {  writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
   unset %boss.item | unset %current.battlestreak | unset %monster.name | unset %monster.realname
