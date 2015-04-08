@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/30/15
+;;;; Last updated: 04/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1713,7 +1713,6 @@ random.battlefield.ally {
     if (%battleplayers = $null) { var %battleplayers 0 }
     inc %battleplayers 1 
     writeini $txtfile(battle2.txt) BattleInfo Players %battleplayers 
-
   }
 
   if (%losing.streak >= 2) { var %npc.chance 1 }
@@ -1755,7 +1754,13 @@ random.battlefield.ally {
         $fulls(%npc.name) | var %battlenpcs $readini($txtfile(battle2.txt), BattleInfo, npcs) | inc %battlenpcs 1 | writeini $txtfile(battle2.txt) BattleInfo npcs %battlenpcs
         inc %value 1
       }
-      else {  %npc.list = $deltok(%npc.list,%npc.name,46) | dec %value 1 }
+      else {  
+        set %npc.to.remove $findtok(%npc.list, %npc.name, 46)
+        set %npc.list $deltok(%npc.list,%npc.to.remove,46)
+        echo -a npc list: %npc.list
+        if (%npc.list = $null) { inc %value 100 }
+        else {  dec %value 1 }
+      }
     }
   }
   else { return }

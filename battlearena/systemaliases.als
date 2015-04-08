@@ -346,6 +346,8 @@ return_differenceof {
 ; Returns the current winning streak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return_winningstreak {
+  if (%battle.type = ai) { return %ai.battle.level }
+
   if (%portal.bonus = true) {
     var %portal.streak $readini($txtfile(battle2.txt), battleinfo, Portallevel)
     if (%portal.streak = $null) { echo -a portal level is null | return 10 }
@@ -1332,7 +1334,7 @@ techs.get.list {
     if ((%tech_level != $null) && (%tech_level >= 1)) { 
       ; add the tech level to the tech list
       if (%battle.type != ai) {  set %tech_to_add $iif(%my.tp < $readini($dbfile(techniques.db), %tech.name, tp), 5 $+ %tech.name $+ 3, %tech.name) $+ $chr(040) $+ %tech_level $+ $chr(041) }
-      if (%battle.type = ai) {  var %tech_to_add %tech.name | inc %tech.count 1 |  inc %tech.power $readini($dbfile(techniques.db), %tech.name, basepower) }
+      if (%battle.type = ai) {  var %tech_to_add %tech.name | inc %tech.count 1 | inc %tech.power $readini($dbfile(techniques.db), %tech.name, basepower) }
       %tech.list = $addtok(%tech.list,%tech_to_add,46)
     }
 
@@ -1365,8 +1367,17 @@ techs.get.list {
   set %replacechar $chr(044) $chr(032)
   %ignition.tech.list = $replace(%ignition.tech.list, $chr(046), %replacechar)
 
+
+
   unset %value | unset %tech.name | unset %tech_level | unset %ignition.name | unset %techs
   return %tech.list
+}
+
+techs.count {
+  $weapon_equipped($1) 
+  set %techs.list $techs.get.list($1, %weapon.equipped)
+  var %techs.list.left $techs.get.list($1, %weapon.equipped.left)
+  return $numtok(%techs.list, 46)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2774,7 +2785,7 @@ clear_variables {
   unset %amount | unset %current.shoplevel | unset %shop.list | unset %battletxt.lines | unset %battletxt.current.lint
   unset %opponent.flag | unset %spell.element | unset %timer.time |   unset %battletxt.currentline | unset %first.round.protection | unset %first.round.protection.turn
   unset %npc.list | unset %random.npc | unset %npc.to.remove | unset %npc.name | unset %double.attack 
-  unset %shaken | unset %info.fullbringmsg | unset %basepower | unset %fullbring.needed | unset %poison 
+  unset %shaken | unset %info.fullbringmsg | unset %basepower | unset %fullbring.needed | unset %poison | unset %totalwins
   unset %fullbring.type | unset %fullbring.target | unset %fullbring.status | unset %item.base | unset %timer.time | unset %savethepresident
   unset %real.name | unset %weapon.name | unset %weapon.price | unset %steal.item | unset %skip.ai | unset %file.to.read.lines 
   unset %attacker.spd | unset %playerstyle.* | unset %stylepoints.to.add | unset %current.playerstyle.* | unset %styles | unset %wait.your.turn | unset %weapon.list2
@@ -2805,11 +2816,12 @@ clear_variables2 {
   unset %total.summon.items | unset %accessories.list2 | unset %weapon_augment | unset %totalbosss 0 | unset %ignition.description's
   unset %ingredient.to.add | unset %weapons7 | unset %user.gets.second.turn | unset %spd.increase | unset %spd.current 
   unset %temp.damage | unset %cost | unset %current.line | unset %mech.weapon.list2
-  unset unset %weapon.equipped.right | unset unset %weapon.equipped.left | unset %shield.block.line
+  unset %weapon.equipped.right | unset unset %weapon.equipped.left | unset %shield.block.line
   unset %original.ignition.name | unset %holy.aura.user | unset %max.hp.restore | unset %max.tp.restore 
   unset %passive.skills.list2 | unset %prize.list | unset %inflict.meleewpn | unset %weapon.list1 | unset %duplicate.ips
   unset %attacker.level | unset %defender.level | unset %damage.display.color | unset %current.playerstyle
   unset %number.of monsters.needed
+  unset %monster.info.streak.max | unset %monster.info.streak
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3561,33 +3573,34 @@ ai.battle.generate {
   var %npc.level $get.level(%npcfile)
 
   ; Get their techs & ignitions
-  unset %tech.list | unset %weapon.equipped
+  unset %techs.list | unset %weapon.equipped
 
-  $weapon_equipped(%npcfile) | $tech.list(%npcfile, %weapon.equipped) | var %ignitions $ignitions.get.list(%npcfile) 
+  var %total.npc.techs $techs.count(%npcfile)
+  var %ignitions $ignitions.get.list(%npcfile) 
 
-  if (%tech.list = $null) { var %tech.list none | var %total.npc.techs 0 }
+  if (%techs.list = $null) { var %techs.list none }
   if (%ignition.counter = $null) { var %ignition.counter 0 }
 
-  var %ai.npc.techs %tech.list
+  var %ai.npc.techs %techs.list
   inc %npc.level %tech.power
-  inc %npc.level %ignition.counter
+  inc %npc.level %ignition.counter 
+  inc %npc.level %total.npc.techs
 
   if (%ignitions != $null) { var %npc.use.ignitions yes }
-  if (%tech.list != none) { var %total.npc.techs %tech.count }
 
-  unset %tech.list | unset %ignition.counter | unset %tech.count | unset %tech.power | unset %ignitions
+  unset %techs.list | unset %ignition.counter | unset %tech.count | unset %tech.power | unset %ignitions
 
-  $weapon_equipped(%monsterfile) | $tech.list(%monsterfile, %weapon.equipped) | var %ignitions $ignitions.get.list(%monsterfile) 
+  var %ignitions $ignitions.get.list(%monsterfile) 
+  var %total.monster.techs $techs.count(%monsterfile)
 
-  if (%tech.list = $null) { var %tech.list none | var %total.monster.techs 0 }
+  if (%techs.list = $null) { var %techs.list none }
   if (%ignition.counter = $null) { var %ignition.counter 0 }
 
-  var %ai.monster.techs %tech.list
-  inc %monster.level %tech.power
+  var %ai.monster.techs %techs.list
+  inc %monster.level %tech.count
   inc %monster.level %ignition.counter | unset %ignition.counter
 
   if (%ignitions != $null) { var %monster.use.ignitions yes }
-  if (%tech.list != none) { var %total.monster.techs %tech.count }
 
   ; calculate their battle level.
   inc %npc.level $log($readini($char(%npcfile), battle, hp))
