@@ -17,6 +17,10 @@ alias aicheck {
     halt
   }
 
+  ; This will prevent Pay to Attack npcs from just standing around in AI vs AI battles
+  if (($readini($char($1), info, ai_type) = PayToAttack) && (%battle.type = ai)) { writeini $char($1) stuff redorbs 1000 }
+
+
   if (($readini($char($1), info, ai_type) = PayToAttack) && ($readini($char($1), stuff, redorbs) <= 0)) {
     if ($readini($char($1), descriptions, Idle) != $null) { $set_chr_name($1) | $display.message(4 $+ %real.name  $+ $readini($char($1), descriptions, Idle), battle) }
     if ($readini($char($1), descriptions, Idle) = $null) { $set_chr_name($1) | $display.message(4 $+ %real.name watches the battle as $gender3($3) waits to be paid before getting involved., battle) }

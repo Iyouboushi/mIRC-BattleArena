@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/05/15
+;;;; Last updated: 04/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3553,7 +3553,10 @@ ai.battle.generate {
 
   set %npcfile $readini($txtfile(1vs1bet.txt), money, npcfile) | set %monsterfile $readini($txtfile(1vs1bet.txt), money, monsterfile)
 
-  ; Get the levels
+  ; Prevent armos statues from ending the battle prematurely
+  writeini $char(%monsterfile) battle status normal
+
+  ; Get the levels and calculate the most likely to win the battle
   var %monster.level $get.level(%monsterfile)
   var %npc.level $get.level(%npcfile)
 
@@ -3587,12 +3590,18 @@ ai.battle.generate {
   if (%tech.list != none) { var %total.monster.techs %tech.count }
 
   ; calculate their battle level.
-  inc %npc.level $round($calc($readini($char(%npcfile), battle, hp) * .10),0)
-  inc %monster.level $round($calc($readini($char(%monsterfile), battle, hp) * .10),0)
+  inc %npc.level $log($readini($char(%npcfile), battle, hp))
+  inc %monster.level $log($readini($char(%monsterfile), battle, hp))
+
   if ($readini($char(%npcfile), mech, HpMax) != $null) { inc %npc.level 100 }
   if ($readini($char(%monsterfile), mech, HpMax) != $null) { inc %monster.level 100 }
+
   if ($readini($char(%npcfile), info, CanTaunt) != false) { dec %npc.level 10 } 
   if ($readini($char(%monsterfile), info, CanTaunt) != false) { dec %monster.level 10 } 
+
+  if ($readini($char(%monsterfile), info, MetalDefense) = true) { inc %monster.level 10 }
+  if ($readini($char(%npcfile), info, MetalDefense) = true) { inc %npc.level 10 }
+
   if ($readini($char(%monsterfile), naturalarmor, max) != $null) { inc %monster.level $readini($char(%monsterfile), naturalarmor, max) }
 
   ; Set a favorite to win the fight.
@@ -3603,7 +3612,7 @@ ai.battle.generate {
   ; I will expand this later to be "smarter" but for now..random. 
   var %total.gamblers $readini(system.dat, system, PhantomBetters)
   if (%total.gamblers = $null) { var %total.gamblers 13 }
-  if (%total.gambleres < 3) { var %total.gamblers 3 }
+  if (%total.gamblers < 3) { var %total.gamblers 3 }
 
   var %counter 1
 
@@ -3628,7 +3637,6 @@ ai.battle.generate {
         if (%favorite.to.win = npc) { var %money.target 2 }
       }
     }
-
     if (%money.target = 1) { 
       var %money.npc $readini($txtfile(1vs1bet.txt), money, npc)
       inc %money.npc %money.bet
@@ -3639,6 +3647,7 @@ ai.battle.generate {
       inc %money.mon %money.bet
       writeini $txtfile(1vs1bet.txt) money monster %money.mon
     }
+
     var %money.total $readini($txtfile(1vs1bet.txt), money, total)
     inc %money.total %money.bet
     writeini $txtfile(1vs1bet.txt) money total %money.total
