@@ -281,6 +281,7 @@ The shop looks something like this:
 <BattleArena> DoubleLife potion effect: 2 Roses + 1 Tulip + 2 Milk
 <BattleArena> BonusSpoils potion effect: 2 BlueKinstone + GreenKinstone 1 + 1 Milk
 <BattleArena> AugmentBonus potion effect: 2 Redead Ashes + 2 Gibdo Bandages + 1 Milk
+<BattleArena> UtsusemiBonus potion effect: 2 Gremlin Skins + 1 Milk
 <BattleArena> To purchase use !shop buy potioneffect [potion effect name] such as !shop buy potioneffect OrbBonus
 
 If you don't have enough of the spoils to purchase the effect, the bot will inform you what you're missing:
@@ -295,6 +296,7 @@ OrbBonus 	Increases the amount of red orbs you will receive at the end of battle
 DoubleLife 	Causes you to start the next battle with double your max HP or double your current hp (in Players Must Die mode). The enhanced HP will wear off after the battle ends (except in Players Must Die mode since HP isn't reset in that).
 BonusSpoils 	Gives you a 100% chance of receiving a spoil if the monster you fight has something to drop and increases the amount of the item that you will receive at the end of battle. *
 AugmentBonus 	Adds +1 to every augment in the game for the next battle you're in. Stacks with all other augments and bonuses towards Augments.
+UtsusemiBonus 	Will give you 6 shadows upon using the skill Utsusemi. Note that six shadows is max. 
 
 * If you do not receive a spoil at the end of the battle the effect will remain on until you successfully receive a spoil.
 

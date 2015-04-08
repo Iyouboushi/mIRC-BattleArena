@@ -6,8 +6,8 @@ SYSTEM.DAT
 The system.dat controls and stores some information for running the bot. In this section I'll break it down.
 
 If you open the system.dat you'll see the following sections: [botinfo] [system] [statprices] [style] and [version].
-[botinfo]
 
+[botinfo]
 This section keeps the bot owner (person who has access to a few more commands than normal players), the channel the bot sits in and displays all the messages to, the name of the bot, and the bot's password that it sends to nickserv upon connecting. All of this information should be generated the first time you run the bot.
 
 Note, you can have multiple bot owners in version 1.2 and beyond. To do so add them like such:
@@ -189,8 +189,47 @@ This is how fast messages are output in TWITCH mode. By default it's set to 2. I
 
 ShowDeleteEcho=
 If set to true this setting will cause the bot to echo a line showing every time a .char file is erased. Useful for debugging if something is going amiss. False by default.
-[statprices]
 
+EnableFoodOnOthers=
+If set to true this setting will block people from being able to use +stat (food) items on anyone other than themselves. This is set to false by default. 
+
+
+[PlayerLevelCaps]
+This section controls what level the players are capped when they fight in various special battles. This only affects the players if they are above the level set here.
+
+Doppelganger=50
+SmallWarmachine=20
+MediumWarmachine=50
+LargeWarmachine=75
+Bandits=50
+Gremlins=50
+Pirates=75
+FrostLegion=20
+ElderDragon=200
+DemonWall=75
+WallOfFlesh=200
+DefendOutpost=105
+Assault=105
+
+
+[MonsterLevelCaps]
+This section controls what level the monsters are capped at for various special boss battles. This only affects the monsters if they are above the cap set here.
+
+SmallWarmachine=18
+MediumWarmachine=48
+LargeWarmachine=74
+BanditLeader=48
+BanditMinion=45
+Gremlins=45
+PirateMinion=70
+PirateFirstMatey=73
+FrostLegion=15
+ElderDragon=195
+DemonWall=75
+WallOfFlesh=200
+
+
+[statprices]
 This whole section is the base cost, in red orbs, that the shop will sell stat upgrades for. You can lower the prices or raise them here. Defaults are listed below.
 
 hp=150
@@ -208,8 +247,8 @@ This section is for how many base style points a player gets for killing either 
 
 BossDeath=80
 MonDeath=60
-[Mech]
 
+[Mech]
 This section contains controls for mechs.
 
 EnergyCostConstant=
@@ -243,8 +282,8 @@ MaxEngine= The max engine level a mech can have. 5 by default.
 
 MechPurchaseCost=
 The amount of Allied Notes it takes to purchase the base mech. 1000 by default.
-[auctionInfo]
 
+[auctionInfo]
 This section controls the Auction House. It will be automatically generated and updated if the auction house is enabled.
 [version]
 
