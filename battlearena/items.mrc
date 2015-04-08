@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 04/05/15
+;;;; Last updated: 04/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -117,10 +117,7 @@ alias uses_item {
   if (%item.type = food) { 
     $checkchar($4)
     if ($4 = $null) { $item.food($1, $1, $2) }
-    if ($4 != $null) { 
-      if (($return.systemsetting(EnableFoodOnOthers) = false) && ($readini($char($4), info, flag) = $null)) { $display.message($readini(translation.dat, errors, Can'tUseFoodOnOthers),private) | halt }
-      else {  $item.food($1, $4, $2) }
-    }
+    else {  $item.food($1, $4, $2) }
     $decrease_item($1, $2) | halt 
   }
 
@@ -815,6 +812,10 @@ alias item.food {
   ; $1 = user
   ; $2 = target
   ; $3 = item
+
+  if (($return.systemsetting(EnableFoodOnOthers) = false) && ($2 != $1)) {
+    if  ($readini($char($2), info, flag) = $null) { $display.message($readini(translation.dat, errors, Can'tUseFoodOnOthers),private) | halt }
+  }
 
   set %food.type $readini($dbfile(items.db), $3, target)
   set %food.bonus $readini($dbfile(items.db), $3, amount)
