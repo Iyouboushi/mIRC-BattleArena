@@ -1108,6 +1108,7 @@ Battle Arena Bot VERSIONS
 - Added a new system.dat flag: TimeBetweenSave=3600  In seconds, this is how long players have to wait to use !save battle streak
 - Added a new system.dat flag: RedChestBase=$rand(150,700)  This is the base amount of red orbs that will appear in red chests
 - Added a new system.dat flag: WheelGameTime=43200 In seconds, this is how long players have to wait to use !wheel spin 
+- Added a new system.dat flag: EnableFoodOnOthers=  If set to false +stat (food) items can only be used on the owner
 - Added a new system.dat section: [PlayerLevelCaps]  In this section bot owners can set the level caps players have when
   fighting in certain battles. If a player's level is above the cap it will be synced down
 - Added a new system.dat section: [MonsterLevelCaps] In this section bot owners can set the level caps certain bosses
@@ -1224,6 +1225,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with !view-info style doppelganger getting cut off
 - Fixed an issue with the bot not checking left-handed weapons for augments
 - Fixed an issue where a techonly monster could counter a melee attack
+- Fixed an issue with !look in private messages that wouldn't show dual weapons
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
 - Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
