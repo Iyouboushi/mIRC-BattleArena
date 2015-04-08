@@ -531,12 +531,15 @@ boost_monster_hp {
   if ($2 = rage) { %hp = $rand(120000,150000) }
 
   if (%battle.type = ai) { 
-    if ($readini(system.dat, system, IgnoreDmgCap) != true) { var %hp $rand(2000,2500) }
-    if ($readini(system.dat, system, IgnoreDmgCap) = true) { var %hp $rand(10000,15000) }
+    if ($readini(system.dat, system, IgnoreDmgCap) != true) { var %hp $rand(5000,7500) }
+    if ($readini(system.dat, system, IgnoreDmgCap) = true) { var %hp $rand(20000,25000) }
 
     var %increase.multiplier $round($calc(%ai.battle.level / 100),1)
     var %more.hp $round($calc(150 * %increase.multiplier),0)
     inc %hp %more.hp
+    writeini $char($1) BaseStats HP $round(%hp,0)
+    writeini $char($1) Battle HP $round(%hp,0)
+    return
   }
 
   var %hp.modifier 1
