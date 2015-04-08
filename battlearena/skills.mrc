@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/20/15
+;;;; Last updated: 04/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -456,12 +456,12 @@ alias skill.utsusemi { $set_chr_name($1)
   writeini $char($1) skills utsusemi.on on
   writeini $char($1) skills utsusemi.time %current.turn
 
-  if ($augment.check($1, UtsusemiBonus) = true) { 
-    writeini $char($1) skills utsusemi.shadows 4
-  }
-  if ($augment.check($1, UtsusemiBonus) = false) { 
-    writeini $char($1) skills utsusemi.shadows 2
-  }
+  var %number.of.shadows 2
+
+  if ($augment.check($1, UtsusemiBonus) = true) {  inc %number.of.shadows 2  }
+  if ($return.potioneffect($1) = Utsusemi Bonus) { var %number.of.shadows 6 }
+
+  writeini $char($1) skills utsusemi.shadows %number.of.shadows
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction utsusemi
 

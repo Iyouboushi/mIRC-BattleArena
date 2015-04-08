@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/18/15
+;;;; Last updated: 04/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1977,6 +1977,7 @@ alias shop.potioneffects {
     $display.private.message(12DoubleLife 2potion effect: $+ $iif($item.amount($1, Rose) >= 2, 3, 4) 2 Roses2 + $+ $iif($item.amount($1, Tulip) >= 1, 3, 4) 1 Tulip2 + $+ $iif($item.amount($1, Milk) >= 2, 3, 4) 2 Milk)    
     $display.private.message(12BonusSpoils 2potion effect: $+ $iif($item.amount($1, BlueKinstone) >= 2, 3, 4) 2 Blue Kinstones2 + $+ $iif($item.amount($1, GreenKinstone) >= 2, 3, 4) 2 Green Kinstones2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
     $display.private.message(12AugmentBonus 2potion effect: $+ $iif($item.amount($1, RedeadAsh) >= 2, 3, 4) 2 Redead Ashes2 + $+ $iif($item.amount($1, GibdoBandage) >= 2, 3, 4) 2 Gibdo Bandages2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
+    $display.private.message(12UtsusemiBonus 2potion effect: $+ $iif($item.amount($1, GremlinSkin) >= 2, 3, 4) 2 Gremlin Skins2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
 
     $display.private.message(2To purchase use !shop buy potioneffect [potion effect name]  such as !shop buy potioneffect OrbBonus)
   }
@@ -2100,6 +2101,31 @@ alias shop.potioneffects {
 
       writeini $char($1) status PotionEffect Augment Bonus
       $display.private.message(12 $+ %shopnpc.name takes the bandages, ashes and milk and gives a loud chuckle as she drops them into the couldron. After a moment she pours the milk in and creates a rotten-smelling potion. Upon drinking it, you feel as though your augments have been enhanced) 
+
+      halt
+    }
+
+    if ($3 = UtsusemiBonus) { 
+
+      var %gremlinskins.needed 2
+      var %milk.needed 1
+
+      dec %gremlinskins.needed $item.amount($1, gremlinskin)
+      dec %milk.needed $item.amount($1, Milk)  
+
+      if ((%gremlinskins.needed > 0) || (%milk.needed > 0)) { 
+        $display.private.message(4You do not have enough of the required materials for this potion effect.) 
+        if (%gremlinskins.needed < 0) { var %gremlinskins.needed 0 }
+        if (%milk.needed < 0) { var %milk.needed 0 }
+        $display.private.message(4You still need the following:12 %gremlinskins.needed $+ 4x gremlin skin $+ $iif(%gremlinskins.needed > 1 || %gremlinskins.needed = 0, s) -12 %milk.needed $+ 4x Milk)
+        halt
+      }
+
+      writeini $char($1) item_amount GremlinSkin $calc($item.amount($1, gremlinskin) - 2)
+      writeini $char($1) item_amount Milk $calc($item.amount($1, Milk) - 1)
+
+      writeini $char($1) status PotionEffect Utsusemi Bonus
+      $display.private.message(12 $+ %shopnpc.name takes the gremlin skins and milk and gives a loud chuckle as she drops them into the couldron. After a quick stir she hands you a very nasty looking green potion. Upon drinking it, you feel as though your utsusemi shadows will be enhanced) 
 
       halt
     }
