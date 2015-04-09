@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/08/15
+;;;; Last updated: 04/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -444,7 +444,7 @@ boost_monster_stats {
   if ((%battle.type = orbfountain) && ($1 != orb_fountain)) {  dec %monster.level 10  }
 
   ; Is it darkness hitting the monsters?
-  if ($2 = rage) { %monster.level = $calc(%monster.level * 10000) }
+  if ($2 = rage) { %monster.level = $calc(%monster.level + 99999) }
 
   if (%monster.level <= 0) { var %monster.level 1 }
 
@@ -591,12 +591,13 @@ levelsync {
   var %int $readini($char($1), battle, int)
   var %spd $readini($char($1), battle, spd)
 
-  if (%str = 0) { inc %str 5 }
-  if (%def = 0) { inc %def 5 }
-  if (%int = 0) { inc %int 5 }
-  if (%spd = 0) { inc %spd 5 }
+  if (%str <= 5) { var %str 5 | writeini $char($1) battle str 5 }
+  if (%def <= 5) { var %def 5 | writeini $char($1) battle def 5 }
+  if (%int <= 5) { inc %int 5 | writeini $char($1) battle int 5 }
+  if (%spd <= 5) { inc %spd 5 | writeini $char($1) battle spd 5 }
 
   var %level.difference $round($calc($2 - $get.level($1)),0)
+
   var %current.loop 0 
 
   while (%level.difference != 0) {
@@ -1760,7 +1761,6 @@ random.battlefield.ally {
       else {  
         set %npc.to.remove $findtok(%npc.list, %npc.name, 46)
         set %npc.list $deltok(%npc.list,%npc.to.remove,46)
-        echo -a npc list: %npc.list
         if (%npc.list = $null) { inc %value 100 }
         else {  dec %value 1 }
       }
