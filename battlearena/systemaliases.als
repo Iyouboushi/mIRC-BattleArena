@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/08/15
+;;;; Last updated: 04/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3614,6 +3614,8 @@ ai.battle.generate {
 
   if ($readini($char(%monsterfile), info, MetalDefense) = true) { inc %monster.level 10 }
   if ($readini($char(%npcfile), info, MetalDefense) = true) { inc %npc.level 10 }
+
+  if ($readini($char(%monsterfile), skills, MonsterSummon) >= 1) { inc %monster.level 20 }
 
   if ($readini($char(%monsterfile), naturalarmor, max) != $null) { inc %monster.level $readini($char(%monsterfile), naturalarmor, max) }
 
