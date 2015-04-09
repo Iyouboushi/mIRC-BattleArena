@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 04/08/15
+;;;; Last updated: 04/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -62,7 +62,8 @@ on 3:TEXT:!use*:*: {  unset %real.name | unset %enemy | $set_chr_name($nick)
 
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
 
-  $uses_item($nick, $2, $3, $4)
+  if ($4 = $null) { $uses_item($nick, $2, on, $nick) }
+  else {  $uses_item($nick, $2, $3, $4) }
 }
 
 ON 50:TEXT:*uses item * on *:*:{  $set_chr_name($1)
