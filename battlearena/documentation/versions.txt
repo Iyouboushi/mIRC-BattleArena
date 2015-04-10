@@ -1214,6 +1214,8 @@ Battle Arena Bot VERSIONS
 - Changed the way the bot generates the [status effects] list for display. It is now possible to edit them in translation.dat
 - Changed the max amount of TP that monsters/npcs/summons can have to 500.
 - Changed !use so that you can use !use itemname  by itself if you want to use the item on yourself. 
+- Changed the way the bot figures out the favorite to win the AI vs AI battle to also include 
+  Metal Defense and the Monster Summon skill in its calculation.
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
@@ -1227,6 +1229,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with the bot not checking left-handed weapons for augments
 - Fixed an issue where a techonly monster could counter a melee attack
 - Fixed an issue with !look in private messages that wouldn't show dual weapons
+- Fixed an AI vs AI issue where occasionally the bot wouldn't recognize that an NPC had any techs even if he/she does.
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
 - Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle
@@ -1239,6 +1242,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug with items occasionally not showing damage correctly 
 - Fixed a bug in which players could trade armor they were still wearing
 - Fixed a bug in which players could bid on an auction house item without any allied notes
+- Fixed a bug that would cause an infinite loop if there was only 1 NPC in the \npcs\ folder.
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
 - Removed the Final_Guard monster
 - Removed the Prime_Vise monster
