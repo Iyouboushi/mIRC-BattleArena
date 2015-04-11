@@ -460,7 +460,7 @@ alias enter {
     ; Is the player too weak for this streak level?
     if ($return.systemsetting(AllowSpiritOfHero) = true) { 
       if ($return_winningstreak > 10) {
-        if (($calc($return_winningstreak - $get.level($1)) > 30) || ($calc($get.level($1) / $return_winningstreak) < .5)) {
+        if (($calc($return_winningstreak - $get.level($1)) > 35) || ($calc($get.level($1) / $return_winningstreak) < .49)) {
           $levelsync($1, $calc($return_winningstreak - 3))
 
           if ($readini(system.dat, system, PlayersMustDieMode) != true) {
