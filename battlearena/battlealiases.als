@@ -545,7 +545,7 @@ boost_monster_hp {
   var %hp.modifier 1
 
   if ($return_winningstreak <= 10) { inc %hp.modifier $calc(.05 * $return_winningstreak) }
-  if (($return_winningstreak > 10) && ($return_winningstreak <= 500)) { inc %hp.modifier $calc(.01 * $return_winningstreak) }
+  if (($return_winningstreak > 10) && ($return_winningstreak <= 500)) { inc %hp.modifier $calc(.02 * $return_winningstreak) }
   if (($return_winningstreak > 500) && ($return_winningstreak <= 2000)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
   if ($return_winningstreak > 2000) { var %hp.modifier .0035 }
 
@@ -565,7 +565,7 @@ boost_monster_hp {
   ; Increase the hp modifier if more than 1 player is in battle..
   if ($return_playersinbattle > 1) {
     var %increase.amount $round($calc($return_playersinbattle / 2),0)
-    inc %hp.modifier $calc(%increase.amount * .01)
+    inc %hp.modifier $calc(%increase.amount * .05)
   }
 
   if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %hp.modifier .5 }

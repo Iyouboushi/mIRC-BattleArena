@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/09/15
+;;;; Last updated: 04/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3237,7 +3237,7 @@ orb.adjust {
     var %orb.tier -2
   }
 
-  if (%orb.tier = -2) { set %base.redorbs $round($calc(100 + (%base.redorbs * .036)),0) }
+  if (%orb.tier = -2) { set %base.redorbs $round($calc(200 + (%base.redorbs * .055)),0) }
   if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .35)),0) }
   if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .40)),0) }
   if (%orb.tier = 1) { return }
