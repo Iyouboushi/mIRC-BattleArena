@@ -1216,6 +1216,7 @@ Battle Arena Bot VERSIONS
 - Changed !use so that you can use !use itemname  by itself if you want to use the item on yourself. 
 - Changed the way the bot figures out the favorite to win the AI vs AI battle to also include 
   Metal Defense and the Monster Summon skill in its calculation.
+- Changed the way the bot determines the next battle type so that orb fountains and bosses cannot happen back to back
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
