@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/10/15
+;;;; Last updated: 04/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -334,8 +334,11 @@ alias startnormal {
     if ($istok(%boss.battle.numbers,$return_winningstreak, 46) = $false) {   
       if ($return_winningstreak < 10) { var %valid.battle.types monster.monster.orbfountain.monster.monster.monster }
       if (($return_winningstreak >= 10) && ($return_winningstreak < 50)) { var %valid.battle.types boss.monster.orbfountain.monster.monster }
-      if (($return_winningstreak >= 50) && ($return_winningstreak < 100)) { var %valid.battle.types boss.monster.monster.orbfountain.monster.monster }
-      if ($return_winningstreak >= 100) {  var %valid.battle.types boss.monster.monster.orbfountain.monster.monster.monster }
+      if (($return_winningstreak >= 50) && ($return_winningstreak < 100)) { var %valid.battle.types monster.boss.monster.monster.orbfountain.monster.monster }
+      if ($return_winningstreak >= 100) {  var %valid.battle.types monster.boss.monster.monster.orbfountain.monster.monster.monster }
+
+      if ($readini(battlestats.dat, TempBattleInfo, LastBattleType) = boss) { var %valid.battle.types $remtok(%valid.battle.types, boss, 46) }
+      if ($readini(battlestats.dat, TempBattleInfo, LastBattleType) = orbfountain) { var %valid.battle.types $remtok(%valid.battle.types, orbfountain, 46) }
     }
 
     ; If we're not in a boss battle, let's pick one at random.
@@ -355,7 +358,6 @@ alias startnormal {
     var %time.to.enter $readini(system.dat, system, TimeToEnter)
     if (%time.to.enter = $null) { var %time.to.enter 120 }
     var %time.to.enter.minutes $round($calc(%time.to.enter / 60),1)
-
 
     unset %battle.type
 
@@ -401,6 +403,8 @@ alias startnormal {
       halt 
     }
   }
+
+  writeini battlestats.dat TempBattleInfo LastBattleType %start.battle.type
 
   set %battleis on | set %battleisopen on
 
