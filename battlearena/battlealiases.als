@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/09/15
+;;;; Last updated: 04/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -567,6 +567,8 @@ boost_monster_hp {
     var %increase.amount $round($calc($return_playersinbattle / 2),0)
     inc %hp.modifier $calc(%increase.amount * .01)
   }
+
+  if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %hp.modifier .5 }
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
@@ -3873,7 +3875,7 @@ add.monster.drop {
   ; $1 = the player who killed the monster
   ; $2 = the monster's name
 
-  var %drop.items $readini($dbfile(drops.db), drops, $2)
+  var %drop.items $readini($dbfile(spoils.db), drops, $2)
 
   if (%drop.items = $null) { return }
 

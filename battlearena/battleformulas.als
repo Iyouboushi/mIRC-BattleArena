@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/23/15
+;;;; Last updated: 04/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -523,6 +523,9 @@ formula.meleedmg.player {
   if (%blocked.percent < 0) { var %blocked.percent .5 }
   inc %blocked.percent $rand(1,5)
   inc %blocked.percent $log($get.level($3))
+
+  if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %blocked.percent $rand(2,5) }
+
   var %blocked.damage $round($return_percentofvalue(%attack.damage, %blocked.percent),0)
   dec %attack.damage %blocked.damage
 
@@ -722,7 +725,6 @@ formula.meleedmg.monster {
   ; $3 = target / %enemy 
   ; $4 = a special flag for mugger's belt.
 
-
   unset %absorb
   set %attack.damage 0
   var %random.attack.damage.increase $rand(1,10)
@@ -891,6 +893,8 @@ formula.meleedmg.monster {
 
   if ($augment.check($1, IgnoreDefense) = true) {   inc %ignore.defense.percent $calc(%augment.strength * 2) }
 
+  if ($readini(system.dat, system, PlayersMustDieMode) = true) { inc %ignore.defense.percent 10 }
+
   if (%ignore.defense.percent > 0) { 
     var %def.ignored $round($calc(%enemy.defense * (%ignore.defense.percent * .010)),0)
     dec %enemy.defense %def.ignored
@@ -1013,7 +1017,6 @@ formula.meleedmg.monster {
 
   ; Check for a shield block.
   $shield_block_check($3, $1, $2)
-
 
   ; Check for a critical hit.
   var %critical.hit.chance $rand(1,100)
@@ -1263,6 +1266,7 @@ formula.techdmg.monster {
   var %ignore.defense.percent $readini($dbfile(techniques.db), $2, IgnoreDefense)
 
   if ($augment.check($1, IgnoreDefense) = true) {   inc %ignore.defense.percent $calc(%augment.strength * 2) }
+  if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %ignore.defense.percent 15 }
 
   if (%ignore.defense.percent > 0) { 
     var %def.ignored $round($calc(%enemy.defense * (%ignore.defense.percent * .010)),0)
@@ -1641,6 +1645,8 @@ formula.techdmg.player {
   if (%blocked.percent < 0) { var %blocked.percent .5 }
   inc %blocked.percent $rand(1,3)
   inc %blocked.percent $log($get.level($3))
+
+  if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %blocked.percent $rand(2,5) }
 
   var %blocked.damage $round($return_percentofvalue(%attack.damage, %blocked.percent),0)
   dec %attack.damage %blocked.damage
