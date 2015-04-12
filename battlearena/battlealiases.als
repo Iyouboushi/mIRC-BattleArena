@@ -565,7 +565,7 @@ boost_monster_hp {
   ; Increase the hp modifier if more than 1 player is in battle..
   if ($return_playersinbattle > 1) {
     var %increase.amount $round($calc($return_playersinbattle / 2),0)
-    inc %hp.modifier $calc(%increase.amount * .05)
+    inc %hp.modifier $calc(%increase.amount * .20)
   }
 
   if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %hp.modifier .5 }

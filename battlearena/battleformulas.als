@@ -525,7 +525,7 @@ formula.meleedmg.player {
   inc %blocked.percent $log($get.level($3))
 
   if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %blocked.percent $rand(2,5) }
-  if ($return_playersinbattle > 1) { inc %blocked.percent $return_playersinbattle }
+  if ($return_playersinbattle > 1) { inc %blocked.percent $calc($return_playersinbattle * 3) }
 
   var %blocked.damage $round($return_percentofvalue(%attack.damage, %blocked.percent),0)
   dec %attack.damage %blocked.damage
@@ -1648,7 +1648,7 @@ formula.techdmg.player {
   inc %blocked.percent $log($get.level($3))
 
   if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %blocked.percent $rand(2,5) }
-  if ($return_playersinbattle > 1) { inc %blocked.percent $return_playersinbattle }
+  if ($return_playersinbattle > 1) { inc %blocked.percent $calc($return_playersinbattle * 3) }
 
   var %blocked.damage $round($return_percentofvalue(%attack.damage, %blocked.percent),0)
   dec %attack.damage %blocked.damage
