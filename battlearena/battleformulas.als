@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 04/11/15
+;;;; Last updated: 04/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -567,6 +567,9 @@ formula.meleedmg.player {
 
   ; Cap damage, if needed
   $cap.damage($1, $3, melee)
+
+  ; If this current melee attack is using the same weapon as the previous melee attack, nerf the damage
+  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   if (%attack.damage <= 1) {
     set %attack.damage $readini($dbfile(weapons.db), $2, BasePower)
@@ -1717,6 +1720,10 @@ formula.techdmg.player {
       }
     }
   }
+
+  ; If this current tech is using the same weapon as the previous tech attack, nerf the damage
+  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+
 
   ; AOE nerf check for players
   if ($readini($char($1), info, flag) = $null) {
