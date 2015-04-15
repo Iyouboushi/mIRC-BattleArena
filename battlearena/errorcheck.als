@@ -80,7 +80,7 @@ check {
     if (($2 == monsters) || ($2 == mons)) set -u0 %subcategory monsters
     else if (($2 == allies) || ($2 == npcs)) set -u0 %subcategory allies
     else if ($2 == bosses) set -u0 %subcategory bosses
-    else if (($2 != null) && ($2 != ignoreversion)) { echo 2 ' $+ $2 $+ ' isn't a known subcategory. Use monsters, allies or bosses. | halt }
+    else if (($2 != $null) && ($2 != ignoreversion)) { echo 2 ' $+ $2 $+ ' isn't a known subcategory. Use monsters, allies or bosses. | halt }
     check_monsters
   }
   else if (($1 == weapons)) check_weapons
