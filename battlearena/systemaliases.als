@@ -3237,7 +3237,7 @@ orb.adjust {
     var %orb.tier -2
   }
 
-  if (%orb.tier = -2) { set %base.redorbs $round($calc(200 + (%base.redorbs * .075)),0) }
+  if (%orb.tier = -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .20)),0) }
   if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .35)),0) }
   if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .40)),0) }
   if (%orb.tier = 1) { return }
