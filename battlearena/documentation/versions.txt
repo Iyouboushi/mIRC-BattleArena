@@ -1092,6 +1092,7 @@ Battle Arena Bot VERSIONS
   For example, if the file is Iyouboushi_a4kf88 you would use !unzap Iyouboushi_a4kf88
 - Added the bot admin command: !password reset playername  -- This will reset the player's password and send the player
   what the new password is (so use it when the player is online). The bot admin will NOT see the new password. 
+- Added the bot admin command: !toggle SpiritOfTheHero -- This will toggle Spirit of the Hero on and off.
 - Added the bot admin command: !toggle battle messages  -- This will toggle between old and new battle announce messages
 - Added the bot admin command: !toggle bot bold  -- Will turn bold on/off for the bot
 - Added the bot admin command: !time to enter # -- where # is the number of seconds for the !enter period
@@ -1163,6 +1164,9 @@ Battle Arena Bot VERSIONS
 - Added the ability for portal items to have their own custom darkness turn amount. In the item put DarknessTurns=#
 - Added a new battlefield limitation: no-trusts. When set, trust items cannot be used on that battlefield. If a trust or NPC
   was in the battle before using a portal item that has that limitation then the trust/npc will be killed.
+- Added a new battlefield limitation: no-summons. When set summon items cannot be used on that battlefield.
+- Added a new battlefield limitation: no-npcs. When set, npcs cannot appear during that battle.
+- Added spoils.db.  This is where the bot will determine the spoils drops.  drops.db will be for the stylish drop.
 - Changed the !augment commands to work in private or channel. 
 - Changed the !augment list command to allow for more augments to be shown if more than 30 weapons have augments.
 - Changed the portal battles so that they have a level cap. Any player that is above the cap will be lowered to the cap.
@@ -1217,6 +1221,10 @@ Battle Arena Bot VERSIONS
 - Changed the way the bot figures out the favorite to win the AI vs AI battle to also include 
   Metal Defense and the Monster Summon skill in its calculation.
 - Changed the way the bot determines the next battle type so that orb fountains and bosses cannot happen back to back
+  except where a boss battle happens before a guaranteed boss battle level
+- Changed the lockpicking skill to no longer work on red chests.
+- Changed the amount of damage that is done if the same technique or attack is used back to back. It now encourages players
+  to swap weapons or mix up their attacks.
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
