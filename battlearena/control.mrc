@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 03/21/15
+;;;; Last updated: 04/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -210,6 +210,18 @@ on 50:TEXT:!toggle mode playersmustdie*:*:{
   }
 }
 
+; Bot admins can toggle Spirit of the Hero
+on 50:TEXT:!toggle SpiritOfTheHero*:*:{   
+  if ($readini(system.dat, system,AllowSpiritOfHero) = false) { 
+    writeini system.dat system AllowSpiritOfHero true
+    $display.message($readini(translation.dat, system, SpiritOfHeroOn), global)
+  }
+  else {
+    writeini system.dat system AllowSpiritOfHero false
+    $display.message($readini(translation.dat, system, SpiritOfHeroOff), global)
+  }
+}
+
 ; Bot admins can toggle if the bot uses colors
 on 50:TEXT:!toggle bot colors*:*:{   
   if ($readini(system.dat, system,AllowColors) = false) { 
@@ -383,6 +395,7 @@ on 50:TEXT:!leveladjust*:*:{
 
     writeini battlestats.dat battle leveladjust $2
     $display.message($readini(translation.dat, system, SaveLevelAdjust), global)
+    halt
   }
 }
 
