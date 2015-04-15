@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 04/09/15
+;;;; Last updated: 04/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -298,7 +298,11 @@ alias uses_item {
     if (%battleis = on)  { $check_for_double_turn($1) | halt }
   }
 
-  if (%item.type = summon) { $item.summon($1, $2) }
+  if (%item.type = summon) { 
+    if ((no-summon isin %battleconditions) || (no-summons isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }
+    $item.summon($1, $2) 
+
+  }
   $decrease_item($1, $2)
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) | halt }
