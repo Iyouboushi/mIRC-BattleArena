@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/10/15
+;;;; Last updated: 04/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1702,6 +1702,7 @@ random.playersgofirst {
 ; a random NPC 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.battlefield.ally {
+  if ((no-npc isin %battleconditions) || (no-npcs isin %battleconditions)) { return }
   if (%battle.type = manual) { return }
   if (%battle.type = orbfountain) { return }
   if (%battle.type = boss) { return }
