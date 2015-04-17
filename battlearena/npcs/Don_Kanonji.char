@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=300
-Tp=50
-Str=2
-Def=2
-Int=2
-Spd=2
+Hp=1000
+Tp=500
+Str=1
+Def=1
+Int=1
+Spd=1
 Name=Don Kanonji
 
 
 [Battle]
-Hp=300
-Tp=50
-Str=2
-Def=2
-Int=2
-Spd=2
+Hp=1000
+Tp=500
+Str=1
+Def=1
+Int=1
+Spd=1
 Status=alive
 
 
@@ -95,18 +95,48 @@ zombie.timer=1
 
 [Weapons]
 Equipped=KanonjiStaff
-KanonjiStaff=$calc(1 + $current.battlestreak)
+KanonjiStaff=1
 
 
 [Skills]
+Zen=5
+Wizardry=20
 Resist-Charm=100
 Resist-confuse=100
 Resist-Weaponlock=100
 Resist-Disarm=100
 
+
+[Augments]
+KanonjiStaff=HurtEthereal
+
+
 [Techniques]
-KanonBall=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-GoldenKanonBall=$iif($current.battlestreak < 100, 0, $calc(100 + $current.battlestreak))
+KanonBall=1
+GoldenKanonBall=1
 
 
-[Item_Amount]
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=900
+Hp=400
 Tp=200
-Str=175
-Def=165
-Int=150
-Spd=180
-IgnitionGauge=100
+Str=75
+Def=65
+Int=50
+Spd=80
+IgnitionGauge=2
 Name=Aikawa
 
 
 [Battle]
 Hp=900
 Tp=200
-Str=175
-Def=165
-Int=150
-Spd=180
-IgnitionGauge=100
+Str=75
+Def=65
+Int=50
+Spd=80
+IgnitionGauge=2
 Status=alive
 
 
@@ -41,7 +41,7 @@ BossQuote=I have come to take your lives.
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Ambrosia.Superpotion.UltraDiscountCard.PowerSource.DefenseSource.KnowledgeSource
+Drops=
 
 [Monster]
 Type=demon
@@ -58,7 +58,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 ai_type=berserker
-Streak=600
+Streak=100
 IgnoreQuicksilver=true
 CanTaunt=false
 
@@ -97,15 +97,17 @@ MPRegenerating=no
 auto-regen=on
 
 [Weapons]
-Equipped=Valmanway
-Valmanway=500
+Equipped=AikawaFists
+AikawaFists=$calc(1 + $current.battlestreak)
 
 [Skills]
+drainsamba.turn=0
+drainsamba.on=on
+DrainSamba=25
 Zen=5
 WeaponBash=1
 Impetus=20
-Swordmaster=75
-MartialArts=75
+MartialArts=100
 Resist-Paralysis=10
 Resist-Amnesia=10
 Resist-Zombie=100
@@ -117,7 +119,9 @@ Resist-Intimidate=100
 Quicksilver=1
 
 [Techniques]
-MeikyoShisui=20
+AikawaGrab=$calc(1 + $current.battlestreak)
+RollingBlaze=$calc(1 + $current.battlestreak)
+FinalHeaven=$calc(1 + $current.battlestreak)
 
 [Ignitions]
 Sentinel=1
@@ -131,13 +135,13 @@ HitenMitsurugi-ryuXP=1
 [modifiers]
 Heal=Light
 Earth=130
-Fire=130
+Fire=100
 Wind=130
 Water=130
 Ice=130
 Lightning=130
-Light=250
-Dark=150
+Light=150
+Dark=130
 HandToHand=70
 Whip=70
 Sword=70

@@ -43,7 +43,7 @@ Sugitekai=laughs and says "Behold, the true power of darkness!"
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=PotRoast.Ether.Tonic.potion.Blood-Ring.X-Potion.DustyWing
+Drops=
 
 [Monster]
 Type=undead

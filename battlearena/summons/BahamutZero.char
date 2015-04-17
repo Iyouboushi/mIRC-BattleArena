@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=600
-Tp=100
-Str=85
-Def=65
-Int=75
-Spd=75
+Tp=10
+Str=40
+Def=40
+Int=40
+Spd=40
 Name=Bahamut Zero
 
 
 [Battle]
 Hp=600
-Tp=100
-Str=85
-Def=65
-Int=75
-Spd=75
+Tp=10
+Str=40
+Def=40
+Int=40
+Spd=40
 Status=alive
 
 
@@ -98,8 +98,8 @@ Equipped=BahamutPower
 BahamutPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=500
-Wizardry=500
+MartialArts=100
+Wizardry=100
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100

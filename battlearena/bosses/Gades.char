@@ -35,7 +35,7 @@ BossQuote=You have no chance! Prepare for the end!!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=PowerSource.Tonic.Potion.X-Potion.DustyWing.Ether
+Drops=
 
 [Monster]
 Type=

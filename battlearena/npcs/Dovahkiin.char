@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=4000
+Hp=5000
 Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(40 + $current.battlestreak)
-Int=$calc(40 + $current.battlestreak)
-Spd=$calc(40 + $current.battlestreak)
+Str=20
+Def=20
+Int=20
+Spd=20
 IgnitionGauge=50
 Name=The Dragonborn
 
 
 [Battle]
-Hp=4000
+Hp=5000
 Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(40 + $current.battlestreak)
-Int=$calc(40 + $current.battlestreak)
-Spd=$calc(40 + $current.battlestreak)
+Str=20
+Def=20
+Int=20
+Spd=20
 IgnitionGauge=50
 Status=alive
 
@@ -101,13 +101,14 @@ conservetp.on=off
 
 [Weapons]
 Equipped=DragonShouts
-DragonShouts=$calc(40 + $current.battlestreak)
+DragonShouts=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
-SwordMaster=2000
-Wizardry=2000
+SwordMaster=100
+Wizardry=100
 Zen=5
+ClearMind=3
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -124,33 +125,33 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=20
-Crab-Killer=20
-Dragon-Killer=20
-Zombie-Killer=20
-Demon-Killer=20
-Orc-Killer=20
-Yagudo-Killer=20
-Quadav-Killer=20
-Treant-Killer=20
-Plant-Killer=20
-Android-Killer=20
-Worm-Killer=20
-Bat-Killer=20
-Lizard-Killer=20
-Goblin-Killer=20
-Elemental-Killer=20
-Slime-Killer=20
+Undead-Killer=10
+Crab-Killer=10
+Dragon-Killer=10
+Zombie-Killer=10
+Demon-Killer=10
+Orc-Killer=10
+Yagudo-Killer=10
+Quadav-Killer=10
+Treant-Killer=10
+Plant-Killer=10
+Android-Killer=10
+Worm-Killer=10
+Bat-Killer=10
+Lizard-Killer=10
+Goblin-Killer=10
+Elemental-Killer=10
+Slime-Killer=10
 
 [Techniques]
-FusRoDah=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-YolToorShul=$iif($current.battlestreak < 75, 0, $calc(125 + $current.battlestreak))
-FoKrahDiin=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
-StrunBahQo=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
+FusRoDah=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+YolToorShul=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+FoKrahDiin=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+StrunBahQo=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Ignitions]
-DragonAspect=$iif($current.battlestreak < 300, 0, 1)
+DragonAspect=$iif($current.battlestreak < 200, 0, 1)
 
 
 [Item_Amount]
@@ -158,5 +159,35 @@ DragonAspect=$iif($current.battlestreak < 300, 0, 1)
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=20
+WeaponMaster=10
 WeaponMasterXP=1
+
+
+[Augments]
+DragonShouts=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
+
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

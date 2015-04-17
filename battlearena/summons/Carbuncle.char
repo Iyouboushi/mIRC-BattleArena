@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=50
-Def=50
-Int=70
-Spd=70
+Tp=10
+Str=20
+Def=20
+Int=20
+Spd=20
 Name=Carbuncle
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=50
-Def=50
-Int=70
-Spd=70
+Tp=10
+Str=20
+Def=20
+Int=20
+Spd=20
 Status=alive
 
 
@@ -98,8 +98,8 @@ Equipped=CarbunclePower
 WeaponName=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-MartialArts=500
-Wizardry=500
+MartialArts=100
+Wizardry=100
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100

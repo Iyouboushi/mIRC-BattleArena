@@ -35,7 +35,7 @@ BossQuote=I will crush you and add your weapon to my own collection
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Goldorb.DiscountCard.Miser-Ring.MtlRune.GeRune.MaRune.TeRune.MeRune
+Drops=
 
 [Monster]
 Type=demon

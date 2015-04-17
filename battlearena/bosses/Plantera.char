@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 700, $round($calc(5000 + (4 * $return_differenceof($return_playerlevelstotal,700))),0), $round($calc(4500 + $return_playerlevelstotal),0))
+Hp=$iif($return_playersinbattle > 1, 8000, 7000)
 Tp=550
 Str=500
 Def=500
@@ -48,10 +48,10 @@ LastIP=N/a
 Created=N/a
 ai_type=techonly
 Streak=-1000
-BossLevel=400
+BossLevel=250
 CanTaunt=False
 IgnoreQuicksilver=true
-JustReleaseDefense=90
+JustReleaseDefense=100
 ;=======================================
 ; These are optional flags you can set:
 ;========================================
@@ -187,7 +187,7 @@ Resist-Weaponlock=100
 MonsterSummon=$iif($calc(($readini($char(Plantera), battle, hp) / $readini($char(Plantera), basestats, hp)) * 100) <= 50, 1, 0)
 MonsterSummon.Monster=Plantera_Biter
 MonsterSummon.Chance=100
-monstersummon.numberspawn=3
+monstersummon.numberspawn=2
 
 
 [Techniques]
@@ -225,7 +225,35 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
-
+Crissaegrim=50
+Valmanway=50
+Naturaleza=60
+AsuranFists=50
+Ashes=50
+Dismay=50
+ThousandCuts=30
+Tachi:Shoha=60
+Tachi:Rana=60
+Rainstorm=30
+SpinningAttack=30
+TornadoKick=30
+CircularChain=30
+CircleBlade=30
+SonicThrust=30
+ApexArrow=30
+UrielBlade=30
+FellCleave=30
+AeolianEdge=30
+Twin_Slice=30
+LightningStrike=30
+BladeBeamII=30
+TrillionStabs=40
+DoubleBackstab=40
+Chou_Kamehameha=40
+BloodBath=40
+UltimaII=30
+KaustraII=30
+Chivalry=20
 
 [Ignitions]
 PlanteraThornMouth=$iif($calc(($readini($char(Plantera), battle, hp) / $readini($char(Plantera), basestats, hp)) * 100) <= 50, 1, 0)

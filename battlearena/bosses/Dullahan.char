@@ -35,7 +35,7 @@ BossQuote=I am the shadow, the keeper of light. If you want the sun's power, sho
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Potion.vip-membercard.x-potion.goldorb.tonic
+Drops=
 
 [Monster]
 Type=demon

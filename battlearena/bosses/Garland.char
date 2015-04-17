@@ -35,7 +35,7 @@ BossQuote=I, Garland, will knock you all down!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=SuperPotion.IgnitionStar.DiscountCard.UltraDiscountCard.KnowledgeSource.DefenseSource.PowerSource
+Drops=
 
 [Monster]
 Type=

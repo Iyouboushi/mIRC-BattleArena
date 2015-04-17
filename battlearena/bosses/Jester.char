@@ -42,7 +42,7 @@ ShadowCopy=bounces around the battlefield laughing.  Suddenly he stops and looks
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=VitalStar.potion.Fool's-Tablet.Tonic
+Drops=
 
 [Monster]
 Type=demon

@@ -33,7 +33,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-drops=BeetleJaw.BeetleShell.KindredSeal
+drops=
 
 [Info]
 Flag=monster

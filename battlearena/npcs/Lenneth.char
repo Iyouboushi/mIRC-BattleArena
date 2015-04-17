@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=4500
+Hp=5000
 Tp=500
-Str=$calc(55 + $current.battlestreak)
-Def=$calc(55 + $current.battlestreak)
-Int=$calc(55 + $current.battlestreak)
-Spd=$calc(55 + $current.battlestreak)
+Str=20
+Def=20
+Int=20
+Spd=20
 Name=Lenneth Valkyrie
 
 
 [Battle]
-Hp=4500
+Hp=5000
 Tp=500
-Str=$calc(55 + $current.battlestreak)
-Def=$calc(55 + $current.battlestreak)
-Int=$calc(55 + $current.battlestreak)
-Spd=$calc(55 + $current.battlestreak)
+Str=20
+Def=20
+Int=20
+Spd=20
 Status=alive
 
 
@@ -99,21 +99,17 @@ zombie.timer=1
 
 
 [Weapons]
-Equipped=ValkyrieSword
-ValkyrieSword=$calc(60 + $current.battlestreak)
-Gandiva=$calc(60 + $current.battlestreak)
+Equipped=Glance_Reviver
+Glance_Reviver=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Sylvan_Bow=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
-Wizardry=3000
-Swordmaster=3000
-Archery=3000
+Wizardry=100
+Swordmaster=100
+Archery=100
 Zen=5
 ClearMind=3
-MightyStrike=1
-Impetus=20
-WeaponBash=1
-PerfectDefense=1
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -130,32 +126,33 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=20
-Crab-Killer=20
-Dragon-Killer=20
-Zombie-Killer=20
-Demon-Killer=20
-Orc-Killer=20
-Yagudo-Killer=20
-Quadav-Killer=20
-Treant-Killer=20
-Plant-Killer=20
-Android-Killer=20
-Worm-Killer=20
-Bat-Killer=20
-Lizard-Killer=20
-Goblin-Killer=20
-Elemental-Killer=20
-Slime-Killer=20
+Undead-Killer=10
+Crab-Killer=10
+Dragon-Killer=10
+Zombie-Killer=10
+Demon-Killer=10
+Orc-Killer=10
+Yagudo-Killer=10
+Quadav-Killer=10
+Treant-Killer=10
+Plant-Killer=10
+Android-Killer=10
+Worm-Killer=10
+Bat-Killer=10
+Lizard-Killer=10
+Goblin-Killer=10
+Elemental-Killer=10
+Slime-Killer=10
+
 
 [Techniques]
-NibelungValesti=$iif($current.battlestreak < 300, 0, $calc(500 + $current.battlestreak))
-ChantduCygne=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-Requiescat=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
-Atonement=$iif($current.battlestreak < 200, 0, $calc(200 + $current.battlestreak))
-EagleEyeShot=$iif($current.battlestreak < 150, 0, $calc(200 + $current.battlestreak))
-JishnusRadiance=$iif($current.battlestreak < 250, 0, $calc(300 + $current.battlestreak))
-ApexArrow=$iif($current.battlestreak < 100, 0, $calc(150 + $current.battlestreak))
+NibelungValesti=$round($calc(20 + (($current.battlestreak / 2) / 5.5)),0)
+Glowing_Pierce=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Ptero_Attack=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Vertical_Raid=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Spread_Shot=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Tri-Blast=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Infinity_Blast=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]
@@ -168,8 +165,8 @@ GuardianXP=1
 
 
 [Augments]
-ValkyrieSword=TechBonus.MeleeBonus.EnhanceSword
-Gandiva=TechBonus.MeleeBonus.EnhanceRanged
+Glance_Reviver=TechBonus.MeleeBonus.EnhanceSword.HurtEthereal
+Sylvan_Bow=TechBonus.MeleeBonus.EnhanceRanged.HurtEthereal
 
 
 [modifiers]
@@ -184,3 +181,15 @@ Ice=100
 Lightning=100
 Light=200
 Dark=150
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

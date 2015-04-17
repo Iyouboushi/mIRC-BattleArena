@@ -39,7 +39,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Sapphire.Diamond.GoldOre.SilverOre.DarksteelOre
+Drops=
 
 [monster]
 type=worm

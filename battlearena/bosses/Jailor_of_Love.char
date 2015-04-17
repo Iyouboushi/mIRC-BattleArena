@@ -35,7 +35,7 @@ BloodBoost=releases radiation that increases it's strength!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Potion.vip-membercard.x-potion.goldorb
+Drops=
 
 [Monster]
 Type=Aern

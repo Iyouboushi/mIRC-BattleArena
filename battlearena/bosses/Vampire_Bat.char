@@ -34,7 +34,7 @@ BossQuote=You dare to intrude upon Lord Dracula's castle?! For that, you shall d
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=SuperPotion.Ether.Tonic.Holy_Water.Stop_Watch.KnowledgeSource.DefenseSource.PowerSource
+Drops=
 
 [Info]
 Flag=monster

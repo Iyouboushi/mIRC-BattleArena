@@ -35,7 +35,7 @@ BossQuote=We are the knights who say..... NI!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.FireDragonWine.Shihei.UltraDiscountCard.BlueEyesCard.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin.Ectoplasm.BrokenLance.Herring.Potion.Herring.Paper
+Drops=
 
 [Monster]
 Type=

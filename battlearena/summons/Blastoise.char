@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=83
-Def=100
-Int=85
-Spd=78
+Tp=10
+Str=20
+Def=30
+Int=30
+Spd=20
 Name=Blastoise
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=83
-Def=100
-Int=85
-Spd=78
+Tp=10
+Str=20
+Def=30
+Int=30
+Spd=20
 Status=alive
 
 
@@ -31,7 +31,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a large, bipedal tortoise-like Pokémon. Its body is dark blue and is mostly hidden by its tough, brown shell. This shell has a pale yellow underside and a white ridge between the upper and lower halves, which also encircles the arms. Two powerful water cannons reside in the top sides of its shell.
+Char=is a large, bipedal tortoise-like Pokemon. Its body is dark blue and is mostly hidden by its tough, brown shell. This shell has a pale yellow underside and a white ridge between the upper and lower halves, which also encircles the arms. Two powerful water cannons reside in the top sides of its shell.
 Rage=....
 
 [Stuff]
@@ -115,7 +115,33 @@ Resist-Confuse=100
 
 [Techniques]
 Water_Cannon=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+IronTail=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]
 
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=Water
+Earth=100
+Fire=50
+Wind=100
+Water=150
+Ice=50
+Lightning=150
+Light=100
+Dark=100
+HandToHand=90
+Whip=90
+Sword=90
+Gun=90
+Rifle=90
+Katana=90
+Wand=90
+Spear=90
+Scythe=90
+Glyph=90
+GreatSword=90
+Bow=100

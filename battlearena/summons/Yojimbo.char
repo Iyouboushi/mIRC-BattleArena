@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=4000
+Hp=5000
 Tp=500
 Str=$calc(60 + $current.battlestreak)
 Def=$calc(90 + $current.battlestreak)
@@ -11,7 +11,7 @@ Name=Yojimbo
 
 
 [Battle]
-Hp=4000
+Hp=5000
 Tp=500
 Str=$calc(60 + $current.battlestreak)
 Def=$calc(60 + $current.battlestreak)

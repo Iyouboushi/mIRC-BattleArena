@@ -41,7 +41,7 @@ BossQuote=Boo!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=potion.IronOre.Ectoplasm.cloth
+Drops=
 
 [Monster]
 Type=Undead

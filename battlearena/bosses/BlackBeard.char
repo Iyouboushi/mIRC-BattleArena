@@ -39,7 +39,7 @@ BossQuote=Damnation seize my soul if I give you quarters, or take any from you!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=TreasureMap.Treasure-Ring
+Drops=
 
 [Monster]
 Type=undead

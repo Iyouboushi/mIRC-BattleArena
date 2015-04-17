@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=60
-Def=60
-Int=70
-Spd=60
+Tp=10
+Str=20
+Def=20
+Int=30
+Spd=30
 Name=Leviathan
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=60
-Def=60
-Int=70
-Spd=60
+Tp=10
+Str=20
+Def=20
+Int=30
+Spd=30
 Status=alive
 
 
@@ -138,8 +138,8 @@ Heal=water
 Earth=100
 Fire=100
 Wind=100
-Water=200
-Ice=100
+Water=150
+Ice=75
 Lightning=150
 Light=100
 Dark=100

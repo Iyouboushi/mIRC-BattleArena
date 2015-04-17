@@ -41,7 +41,7 @@ BossQuote=I cannot die. Not until I have eradicated you and your kind from this 
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=PotRoast
+Drops=
 
 [monster]
 type=demon

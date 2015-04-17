@@ -42,7 +42,7 @@ ShadowCopy=looks at the battlefield and laughs. "Let's see how you fare against 
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Senzu.Tonic.Potion
+Drops=
 
 [Info]
 Flag=monster

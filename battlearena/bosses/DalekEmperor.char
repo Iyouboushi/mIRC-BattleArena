@@ -41,7 +41,7 @@ BossQuote=You will be EXTERMINATED!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=VitalStar.X-Potion
+Drops=
 
 [Monster]
 Type=android

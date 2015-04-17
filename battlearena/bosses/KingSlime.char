@@ -35,7 +35,7 @@ BossQuote=Glub!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Potion.X-Potion.Ether.Holy_Water.Tonic
+Drops=
 
 [Monster]
 Type=Slime

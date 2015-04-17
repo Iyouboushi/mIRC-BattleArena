@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=80
-Def=70
-Int=40
-Spd=40
+Tp=10
+Str=30
+Def=30
+Int=20
+Spd=20
 Name=Titan
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=80
-Def=70
-Int=40
-Spd=40
+Tp=10
+Str=30
+Def=30
+Int=20
+Spd=30
 Status=alive
 
 
@@ -99,11 +99,9 @@ TitanPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
-Wizardry=500
-MartialArts=500
-MightyStrike=1
-BloodBoost=5
-RoyalGuard=1
+Wizardry=100
+MartialArts=100
+RoyalGuard.on=on
 Resist-Intimidate=100
 Resist-Stun=100
 Resist-Weaponlock=100
@@ -136,7 +134,7 @@ WeaponMasterXP=1
 
 [modifiers]
 Heal=earth
-Earth=200
+Earth=150
 Fire=100
 Wind=150
 Water=100

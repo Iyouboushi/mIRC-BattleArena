@@ -41,7 +41,7 @@ BossQuote=This shall be the end of everything!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=KnowledgeSource.DefenseSource.PowerSource.Tonic.Potion.X-Potion.DustyWing.Ether
+Drops=
 
 [Monster]
 Type=

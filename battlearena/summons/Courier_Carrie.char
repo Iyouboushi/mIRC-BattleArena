@@ -1,19 +1,19 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=50
-Def=80
-Int=60
-Spd=50
+Tp=10
+Str=25
+Def=30
+Int=20
+Spd=20
 Name=Courier Carrie
 
 [Battle]
 Hp=500
-Tp=100
-Str=50
-Def=80
-Int=60
-Spd=50
+Tp=10
+Str=25
+Def=30
+Int=20
+Spd=20
 Status=alive
 
 
@@ -107,6 +107,7 @@ Resist-Confuse=100
 BubbleShower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 BigScissors=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
+
 [Item_Amount]
 
 
@@ -122,20 +123,20 @@ Heal=water
 Earth=100
 Fire=100
 Wind=100
-Water=100
+Water=150
 Ice=110
 Lightning=120
 Light=100
 Dark=100
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+HandToHand=90
+Whip=90
+Sword=90
+Gun=90
+Rifle=90
+Katana=90
+Wand=90
+Spear=90
+Scythe=90
+Glyph=90
+GreatSword=90
+Bow=90

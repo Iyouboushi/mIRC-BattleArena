@@ -34,7 +34,7 @@ BossQuote=...
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Present
+Drops=
 
 [Info]
 Flag=monster

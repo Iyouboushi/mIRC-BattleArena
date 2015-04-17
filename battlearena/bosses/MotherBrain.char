@@ -35,7 +35,7 @@ BossQuote=You dare to challenge me?!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=KnowledgeSource.DefenseSource.PowerSource.Tonic.SuperPotion.X-Potion.Ether.Slurm
+Drops=
 
 [Monster]
 Type=

@@ -183,28 +183,28 @@ StatusType=StrengthDown
 
 [ElvenGoddessMight]
 Name=ElvenGoddessMight
-Hp=2.5
-Str=2.5
-Def=2.5
-Int=1.3
-Spd=1.8
+Hp=1.2
+Str=1.3
+Def=1.3
+Int=1.2
+Spd=1.2
 Augment=MeleeBonus.RenkeiBonus.TechBonus.EnhanceSword.EnhanceKatana.EnhanceHandToHand.EnhanceCriticalHits
 Effect=Status
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Techs=HyperTwinSlice
-Desc=$+ 's body glows a bright white as $gender($1) body bulges with a mighty power, also increasing melee and technique power. Additionally, the battlefield gains a white glow, causing all of %real.name $+ 's enemies to feel slower!
+Desc=$+ 's body glows a bright white as $gender($1) body gains mighty strength, also increasing melee and technique power. Additionally, the battlefield gains a white glow, causing all of %real.name $+ 's enemies to feel slower!
 StatusTarget=enemy
 StatusType=Slow
 
 [ElvenGoddessMagic]
 Name=ElvenGoddessMagic
-Hp=2.0
-Str=1.5
-Def=1.8
-Int=2.5
-Spd=1.5
+Hp=1.2
+Str=1.2
+Def=1.2
+Int=1.3
+Spd=1.3
 Augment=MagicBonus.CuringBonus.EnhanceZen.EnhanceEnfeeble.EnhanceStaff.EnhanceGlyph.EnhanceWand.EnhanceSword.EnhanceStaff
 Effect=Status
 IgnitionTrigger=10
@@ -217,11 +217,11 @@ StatusType=ConserveTP
 
 [WiseReflection]
 Name=WiseReflection
-HP=1.5
-Str=1.3
-Def=1.3
+HP=1.2
+Str=1.2
+Def=1.2
 Int=1.2
-Spd=1
+Spd=1.2
 Augment=MeleeBonus.TechBonus.EnhanceSword.RenkeiBonus
 Effect=Status
 IgnitionTrigger=10
@@ -275,7 +275,7 @@ Techs=
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Desc=smirks and says "Releasing control art restriction to level one."  The surrounding area gains a dark red shade as Alucard now wears a dark red leather straight jacket, longer black hair, and is almost at his full power. Alucard then proceeds to laugh.
+Desc=smirks and says "Releasing control art restriction to level one." The surrounding area gains a dark red shade as Alucard now wears a dark red leather straight jacket, longer black hair, and is almost at his full power. Alucard then proceeds to laugh.
 
 [SSJ1]
 Name=SSJ
@@ -307,10 +307,11 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=grips Suzumebachi with both hands and says, "Sting all enemies to death, Suzumebachi!" The zanpakutou changes to a gold and black gauntlet on %user $+ 's right arm and a stinger-like blade on the right middle finger.
+AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ignitions Sui-FengBankai 1 | writeini $char($1) ignitions Sui-FengShikai 0 | writeini $char($1) ignitions Shunkou-Wind 0
 
 [Sui-FengBankai]
 Name=Bankai
-hp=3
+hp=2
 Str=4
 Def=4
 Int=4
@@ -335,6 +336,7 @@ IgnitionTrigger=10
 IgnitionConsume=5
 Cost=0
 Desc=shouts out "Shunkou!" as wind energy surrounds %user $+ 's body to greatly increase %user $+ 's strength.
+AdditionalCode=writeini $char($1) ignitions Sui-FengShikai 0
 
 [Shunkou-Lightning]
 Name=Shunkou
@@ -363,14 +365,15 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=unsheathes the zanpakutou and says, "Reduce all creation to ash, Ryuujin Jakka!" An extreme release of reiatsu explodes around %user which takes the form of fire.
+AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ignitions YamamotoBankai 1 | writeini $char($1) ignitions YamamotoShikai 0
 
 [YamamotoBankai]
 Name=Bankai
-HP=3
-Str=6
-Def=6
-Int=6
-Spd=6
+HP=1.2
+Str=3
+Def=3
+Int=3
+Spd=3
 Augment=TechBonus.EnhanceKatana.EnhanceCriticalHits.EnhanceZen.IgnoreMetalDefense.IgnoreDefense.IgnoreGuardian
 Techs=ZankaNoTachi:East.ZankaNoTachi:North
 IgnitionTrigger=10
@@ -383,10 +386,10 @@ Effect=Status
 
 [RukiaShikai]
 Name=Shikai
-Hp=1.5
-Str=2
-Def=2
-Int=2.2
+Hp=1.2
+Str=1.5
+Def=1.5
+Int=2
 Spd=2
 Augment=TechBonus.EnhanceKatana.EnhanceZen.MagicBonus
 Techs=SomeNoMai:Tsukishiro.TsugiNoMai:Hakuren.SanNoMai:Shirafune.Juhaku
@@ -394,14 +397,15 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=holds the zanpakutou upside down and says, "Dance, Sode no Shirayuki!" The zanpakutou turns white, gains a longer hilt, and a long white ribbon expands from the pommel of the zanpakutou.
+AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ignitions RukiaBankai 1 | writeini $char($1) ignitions RukiaShikai 0
 
 [RukiaBankai]
 Name=Bankai
-HP=3
-Str=4
-Def=4
-Int=5
-Spd=4
+HP=1.5
+Str=2
+Def=2
+Int=2.5
+Spd=1.5
 Augment=TechBonus.EnhanceKatana.EnhanceCriticalHits.EnhanceZen.IgnoreMetalDefense.IgnoreDefense.IgnoreGuardian
 Techs=HakkanoTogame
 IgnitionTrigger=10
@@ -415,10 +419,10 @@ Effect=Status
 [KaienShikai]
 Name=Shikai
 Hp=2
-Str=2.5
-Def=2.5
-Int=2.5
-Spd=2.5
+Str=2
+Def=2
+Int=2
+Spd=2
 Augment=Techbonus.EnhanceKatana.EnhanceZen.MagicBonus
 Techs=NejibanaWaterDance.NejibanaWaterBlast
 IgnitionTrigger=10
@@ -459,7 +463,7 @@ Desc=is covered in dark energy. As the energy fades, Rose is now wearing dark pu
 
 [ExcalijuProc]
 Name=ExcalijuProc
-hp=2.0
+hp=2
 Str=3
 def=3
 int=3
@@ -474,9 +478,9 @@ Desc=kills a nearby zombie and green sparkles appear around %user $+ , granting 
 
 [KomamuraShikai]
 Name=Shikai
-hp=2.0
-Str=2
-def=2
+hp=2
+Str=2.5
+def=2.5
 int=2
 spd=2
 Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
@@ -485,28 +489,29 @@ IgnitionConsume=10
 Cost=0
 Techs=TenkenSword.TenkenFist
 Desc=shouts out "Roar, Tenken!" though it appears nothing has happened. Suddenly a ghostly sword appears for a moment before vanishing.
+AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ignitions KomamuraBankai 1 | writeini $char($1) ignitions KomamuraShikai 0
 
 [KomamuraBankai]
 Name=Bankai
-hp=2.0
-Str=4
-def=4
-int=4
-spd=4
-Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
+hp=2
+Str=3
+def=3
+int=3
+spd=1
+Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana.IgnoreDefense.IgnoreGuardian.IgnoreMetalDefense
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Techs=TengenSword.TengenSwordSwipe
-Desc=holds his zanpakutou back behind a bit and shouts, "Bankai! Kokujou Tengen Myou'ou!!" A massive being covered in armor appears behind Komamaura and wields an massive sword.
+Desc=holds his zanpakutou back behind a bit and shouts, "Bankai! Kokujou Tengen Myou'ou!!" A massive being covered in armor appears behind Komamaura and wields an massive sword, which mimics Komamura's movements and attacks.
 
 [I-NoOverdrive]
 Name=I-NoOverdrive
-hp=2.0
-Str=1.5
-def=1.5
-int=1.5
-spd=1.5
+hp=1.2
+Str=1.2
+def=1.2
+int=1.2
+spd=1.2
 Augment=MeleeBonus.TechBonus.EnhanceAxe
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -529,41 +534,6 @@ Desc=laughs as her body transforms into a large green plan-looking dragon. She b
 StatusTarget=Self
 StatusType=ConserveTP
 
-[Elemental_Sforzo]
-Name=Elemental Sforzo
-hp=1.2
-Str=1.2
-def=1.2
-int=1.2
-spd=1.2
-Augment=TechBonus.MagicBonus.CuringBonus
-Effect=Status
-IgnitionTrigger=10
-IgnitionConsume=10
-Cost=0
-Techs=HyperTwinSlice
-Desc=$+ 's body and weapon is covered with a rainbow barrier for a moment before disappearing, giving %real.name elemental defense and offense!
-StatusTarget=self
-StatusType=Protect.Shell.Resist-Earth.Resist-Fire.Resist-Wind.Resist-Water.Resist-Ice.Resist-Lightning.Resist-Light.Resist-Dark
-AdditionalCode=writeini $char($1) status En-Spell Lightning
-
-[Domina_Shantotto]
-Name=Domina Shantotto
-hp=1.2
-Str=1.1
-def=1.1
-int=1.1
-spd=1.1
-Augment=MagicBonus.MeleeBonus
-Effect=Status
-IgnitionTrigger=10
-IgnitionConsume=10
-Cost=0
-Techs=UltimaII.KaustraII
-Desc=suddenly grows from the small doll height to about fifty feet in height, as the eyes glow red. You look closely and can now see Shantotto standing on the doll's head, laughing away! "O~hohohohohohoho!"
-StatusTarget=self
-StatusType=ConserveTP
-
 [Red_Dragon]
 Name=RedDragon
 hp=2
@@ -580,11 +550,11 @@ Desc=gains a very serious expression and stares at the battlefield. %users then 
 
 [TensaZangetsu]
 Name=TensaSangetsu
-hp=2
-Str=4
-def=4
-int=4
-spd=5
+hp=1.5
+Str=2
+def=2
+int=2
+spd=2
 Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -595,11 +565,11 @@ AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ig
 
 [HollowIchigo]
 Name=HollowIchigo
-hp=2
-Str=4
-def=4
-int=4
-spd=4
+hp=1.2
+Str=2
+def=2
+int=2
+spd=2
 Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -763,3 +733,35 @@ Cost=0
 StatusTarget=self
 StatusType=Protect.Shell.Resist-Earth.Resist-Fire.Resist-Wind.Resist-Water.Resist-Ice.Resist-Lightning.Resist-Light.Resist-Dark
 Desc=shouts out "MUL QAH DIIV!" and gains the mighty aspect of a dragon. Spectral armor with dragon-like traits also covers %user $+ 's body.
+
+[TwiliPower]
+Name=TwiliPower
+hp=2
+Str=2
+def=2
+int=2
+spd=2
+Augment=MeleeBonus.TechBonus.IgnoreGuardian.IgnoreMetalDefense.IgnoreDefense.EnhanceDoubleTurnChance.MagicBonus
+Effect=Status
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=20
+Techs=TwiliTear.TwiliExplosion
+Desc=smirks as she gains a purple glow along with purple Hylian words spinning around herself, also summoning the giant hand in the process. Midna snaps her fingers, the giant hand mimicing the motion and causes dark energy to cover the battlefield, lowering the defense of all enemies.
+StatusTarget=enemy
+StatusType=defensedown
+
+[AesirMight]
+Name=AesirMight
+Hp=1.2
+Str=1.3
+Def=1.3
+Int=1.2
+Spd=1.2
+Augment=MeleeBonus.RenkeiBonus.TechBonus.EnhanceSword.EnhanceKatana.EnhanceHandToHand.EnhanceCriticalHits
+Effect=Status
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=$+ 's body glows a bright white as $gender($1) body bulges with a mighty power, also increasing melee and technique power. Additionally, the battlefield gains a white glow, causing all of %real.name $+ 's enemies to feel slower!

@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=60
-Def=50
-Int=60
-Spd=70
+Tp=10
+Str=20
+Def=20
+Int=30
+Spd=30
 Name=Garuda
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=60
-Def=50
-Int=60
-Spd=75
+Tp=10
+Str=20
+Def=20
+Int=30
+Spd=30
 Status=alive
 
 
@@ -101,8 +101,8 @@ GarudaPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
-MartialArts=500
-Wizardry=500
+MartialArts=100
+Wizardry=100
 Resist-Intimidate=100
 Resist-Stun=100
 Resist-Weaponlock=100
@@ -139,7 +139,7 @@ WeaponMasterXP=1
 Heal=Wind
 Earth=100
 Fire=100
-Wind=200
+Wind=150
 Water=100
 Ice=150
 Lightning=100

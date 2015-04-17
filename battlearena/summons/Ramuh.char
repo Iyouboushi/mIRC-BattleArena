@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=50
-Def=50
-Int=80
-Spd=50
+Tp=10
+Str=20
+Def=20
+Int=30
+Spd=20
 Name=Ramuh
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=50
-Def=50
-Int=80
-Spd=50
+Tp=10
+Str=20
+Def=20
+Int=30
+Spd=20
 Status=alive
 
 
@@ -99,11 +99,8 @@ OlduumStaff=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
-Wizardry=500
+Wizardry=100
 ClearMind=3
-BloodSpirit=5
-ElementalSeal=1
-ManaWall=1
 manawall.on=on
 Resist-Intimidate=100
 Resist-Stun=100
@@ -141,7 +138,7 @@ Fire=100
 Wind=100
 Water=100
 Ice=100
-Lightning=200
+Lightning=150
 Light=100
 Dark=100
 HandToHand=100

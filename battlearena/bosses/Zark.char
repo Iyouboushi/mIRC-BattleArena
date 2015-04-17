@@ -41,7 +41,7 @@ Shadowcopy=bubbles up as a slimey, tinier, version of himself slips out of his b
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-drops=Slurm
+drops=
 
 [monster]
 type=alien

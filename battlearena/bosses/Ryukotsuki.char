@@ -35,7 +35,7 @@ BossQuote=You shall die!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=DiscountCard.UltraDiscountCard.KindredSeal
+Drops=
 
 [Monster]
 Type=demon

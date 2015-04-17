@@ -41,7 +41,7 @@ BossQuote=This is art!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=SoulPainting
+Drops=
 
 [Monster]
 Type=Undead

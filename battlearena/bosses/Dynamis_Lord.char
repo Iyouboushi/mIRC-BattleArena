@@ -41,7 +41,7 @@ BossQuote=You thought you could defeat me.. but I cannot die. Not until I have e
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=PotRoast.MaRune.TeRune.Merune.GoldOrb
+Drops=
 
 [Info]
 Flag=monster

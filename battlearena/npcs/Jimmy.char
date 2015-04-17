@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2000
 Tp=250
-Str=$calc(10 + $current.battlestreak)
-Def=$calc(10 + $current.battlestreak)
-Int=$calc(10 + $current.battlestreak)
-Spd=$calc(10 + $current.battlestreak)
+Str=10
+Def=10
+Int=10
+Spd=10
 Name=Jimmy
 
 
 [Battle]
 Hp=2000
 Tp=250
-Str=$calc(10 + $current.battlestreak)
-Def=$calc(10 + $current.battlestreak)
-Int=$calc(10 + $current.battlestreak)
-Spd=$calc(10 + $current.battlestreak)
+Str=10
+Def=10
+Int=10
+Spd=10
 Status=alive
 
 
@@ -99,13 +99,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DwarvenRuneBlade
-DwarvenRuneBlade=$calc(20 + $current.battlestreak)
-DwarvenShortBow=$calc(20 + $current.battlestreak)
+DwarvenRuneBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+DwarvenShortBow=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
-Swordmaster=1250
-Archery=1250
+Swordmaster=50
+Archery=50
 Zen=5
 Resist-Charm=100
 Resist-Poison=100
@@ -123,30 +123,30 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=20
-Crab-Killer=20
-Dragon-Killer=20
-Zombie-Killer=20
-Demon-Killer=20
-Orc-Killer=20
-Yagudo-Killer=20
-Quadav-Killer=20
-Treant-Killer=20
-Plant-Killer=20
-Android-Killer=20
-Worm-Killer=20
-Bat-Killer=20
-Lizard-Killer=20
-Goblin-Killer=20
-Elemental-Killer=20
-Slime-Killer=20
+Undead-Killer=5
+Crab-Killer=5
+Dragon-Killer=5
+Zombie-Killer=5
+Demon-Killer=5
+Orc-Killer=5
+Yagudo-Killer=5
+Quadav-Killer=5
+Treant-Killer=5
+Plant-Killer=5
+Android-Killer=5
+Worm-Killer=5
+Bat-Killer=5
+Lizard-Killer=5
+Goblin-Killer=5
+Elemental-Killer=5
+Slime-Killer=5
 
 [Techniques]
-HealingAle=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-FastBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-CircleBlade=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-FlamingArrow=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
-PiercingArrow=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+HealingAle=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+FastBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+CircleBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+FlamingArrow=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+PiercingArrow=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]
@@ -154,5 +154,36 @@ PiercingArrow=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestr
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=15
+WeaponMaster=5
 WeaponMasterXP=1
+
+
+[Augments]
+DwarvenRuneBlade=HurtEthereal
+DwarvenShortbow=HurtEthereal
+
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

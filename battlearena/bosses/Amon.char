@@ -35,7 +35,7 @@ BossQuote=You shall go no further!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=DefenseSource.Tonic.Potion.X-Potion.DustyWing.Ether
+Drops=
 
 [Monster]
 Type=

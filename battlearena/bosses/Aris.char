@@ -40,7 +40,7 @@ BossQuote=I will render you all to ash!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Cavier.Ether.Tonic.potion.x-potion.Wizard's-Amulet.DarkMagicianCard
+Drops=
 
 [Info]
 Flag=monster

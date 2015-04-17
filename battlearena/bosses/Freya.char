@@ -1,0 +1,388 @@
+[BaseStats]
+Hp=$iif($return_playersinbattle > 1, 10000, 15500)
+Tp=5000
+Str=2000
+Def=1533
+Int=1533
+Spd=1533
+IgnitionGauge=500
+Name=Freya
+
+
+[Battle]
+Hp=10000
+Tp=5000
+Str=2000
+Def=1533
+Int=1533
+Spd=1533
+IgnitionGauge=500
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is the Goddess of Creation whose power is second only to Odin. She holds power over creation and death, and believes other races are worthless in comparison to the Aesir.
+Rage=
+BossQuote=My name is Freya! Recall the name on your journey through Hel.
+AesirMight=narrows her eyes and says, "How shall you fare against the true power of the Aesir?" as she gains her true power.
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+Drops=
+
+[Info]
+Flag=monster
+Gender=her
+Gender2=her
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+BossLevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 8000)
+Streak=-1000
+CanTaunt=False
+RageMode=ignore
+IgnoreQuicksilver=true
+IgnoreDrain=true
+JustReleaseDefense=100
+ai_type=techonly
+IgnorePresident=true
+;=======================================
+; These are optional flags you can set:
+;========================================
+; STAGGER:  do you want the monster to be able to be staggered after being hurt for a certain # of damage? 
+; CanStagger=yes/no  
+; StaggerAmount=$rand(#,#)   
+; 
+; IGNORE RAGEMODE
+; RageMode=ignore 
+;
+; IGNORE QUICKSILVER
+; IgnoreQuicksilver=true/false 
+;
+; AI TYPE: berserkers will attack their own allies, defenders won't get a turn. healers only heal, 
+; counteronly will counter melee/take 0 damage from everything else, and techonly only uses techs. Leave blank for normal.
+; ai_type=
+;
+; STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.
+; Streak=
+; StreakMax=
+;
+; FLEEING: Do you want monsters to be able to flee the battle?
+; CanFlee=true/false
+;
+; SPAWNING ANOTHER MONSTER UPON DEATH: If set, when this monster is killed, it'll summon another one that's set.
+; SpawnAfterDeath=nameofmonster
+;
+; BOSS LEVELS are used for bosses that are summoned via portal items. You can make them harder or easier by setting a level.
+; BossLevel=
+; 
+; IGNORE DRAIN is true or false. If set to true, stuff like drainsamba won't work.
+; IgnoreDrain=true/false
+;
+; BIOME is for if you want the boss to only appear under certain battlefields. You can list multiple with periods inbetween.
+; Biome=
+;
+; MOONPHASE is for if you want the monster to only appear during a certain moon phase. You can only list one.
+; Valid list is: Full Moon or Crescent Moon or Gibbous Moon or New Moon or Quarter Moon or Blood Moon  (with the spaces)
+; Moonphase=
+;
+; TIMEOFDAY is for if you want the monster to only appear during certain times of days (game time, not real life)
+; Valid list is: Morning, Noon, Evening and Night.
+; TimeOfDay=
+;
+; Can the monster taunt?   Assumed to be true if blank.
+; CANTAUNT=true/false
+;
+; TAUNTFILE is an optional taunt file if you want your boss to have unique taunts.  If blank it will use the default taunts.txt
+; TAUNTFILE=
+;
+; GUARDIAN is a monster that covers the boss. While the monster is alive the boss will take no damage from items/techs/attacks
+; Guardian=
+;
+; JUSTRELEASEDEFENSE is to block "Just Release" the # is a percent of the damage blocked. 0 = no block, 100 = 100% blocked
+; JustReleaseDefense=
+;
+; HURTBYTAUNT is a special flag. If set to true, taunts done against this boss will deal damage.
+; HurtByTaunt=true/false
+;
+; HEALBYTAUNT is a special flag. If set to true, taunts done against this boss will heal damage. 
+; HealByTaunt=true/false
+;
+; Does the monster appear in President battles? True=yes/False=no
+; IgnorePresident=
+;
+; IMMUNETOMAGIC= is to determine if a boss is completely immune to magic or not. True/false.
+; ImmuneToMagic=true/false
+;
+; DEATHCONDITIONS= if you want the boss to only only if a certain action is performed, you can set it here. Not set by default.
+; Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect
+; You can list multiple by putting a period inbetween such as: melee.magic.status 
+; If the boss is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+; DeathConditions=
+
+[monster]
+; Type is the type of monster it is. 
+type=Aesir
+
+; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
+; Change it to "true" to turn it on.
+TechLearn=true
+
+; Size is the size of the monster. Small/Medium/Large
+size=medium
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+
+[Weapons]
+Equipped=FreyaFists
+FreyaFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000)
+
+
+[Skills]
+Zen=5
+WeaponBash=1
+Impetus=20
+Konzen-Ittai=1
+MartialArts=100
+clearMind=3
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Weaponlock=100
+Resist-Drunk=100
+Resist-Sleep=100
+Resist-Disarm=100
+
+
+[Techniques]
+EtherStrike=$iif(%current.turn <= 5, 0, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000))
+Thunder_Sword=$iif(%current.turn <= 5, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000), 0)
+Thunder_Strike=$iif(%current.turn <= 5, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000), 0)
+Heavenly_Punishment=$iif(%current.turn <= 5, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000), 0)
+Victory_Sword=$iif(%current.turn <= 5, 0, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000))
+
+
+[Item_Amount]
+
+[Ignitions]
+AesirMight=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Freya), battle, hp) / $readini($char(Freya), basestats, hp)) * 100) <= 75, 1, 0))
+
+[Augments]
+FreyaFists=MeleeBonus.RenkeiBonus.TechBonus.IgnoreGuardian
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+WeaponMasterXP=1
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=75
+Fire=75
+Wind=75
+Water=75
+Ice=75
+Lightning=75
+Light=75
+Dark=75
+HandToHand=75
+Whip=75
+Sword=75
+Gun=75
+Rifle=75
+Katana=75
+Wand=75
+Spear=75
+Scythe=75
+Glyph=75
+GreatSword=75
+Bow=75
+Crissaegrim=50
+Valmanway=50
+Naturaleza=60
+AsuranFists=50
+Ashes=50
+Dismay=50
+ThousandCuts=30
+Tachi:Shoha=60
+Tachi:Rana=60
+Rainstorm=30
+SpinningAttack=30
+TornadoKick=30
+CircularChain=30
+CircleBlade=30
+SonicThrust=30
+ApexArrow=30
+UrielBlade=30
+FellCleave=30
+AeolianEdge=30
+Twin_Slice=30
+LightningStrike=30
+BladeBeamII=30
+TrillionStabs=40
+DoubleBackstab=40
+Chou_Kamehameha=40
+BloodBath=40
+UltimaII=30
+KaustraII=30
+Chivalry=20
+DoubleShot=10
+GunBlaze=10
+DoubleShotII=10
+GunBlazeII=10
+DoubleShotIII=10
+GunBlazeIII=10
+TripleShot=10
+GunBlazeIII=10
+DoubleSwing=10
+SwordBlaze=10
+DoubleSwingII=10
+SwordBlazeII=10
+DoubleSwingIII=10
+SwordBlazeIII=10
+TripleSwing=10
+SwordBlazeIII=10
+DoubleStrike=10
+MartialBlaze=10
+DoubleStrikeII=10
+MartialBlazeII=10
+DoubleStrikeIII=10
+MartialBlazeIII=10
+TripleStrike=10
+MartialBlazeIII=10
+BasicMechGun=10
+ImprovedMechGun=10
+FlawlessMechGun=10
+DarksteelOreCannon=10
+BasicMechSword=10
+ImprovedMechSword=10
+FlawlessMechSword=10
+DarksteelOreSword=10
+BasicMechFists=10
+ImprovedMechFists=10
+FlawlessMechFists=10
+DarksteelOreFists=10
+BasicMechStaff=10
+ImprovedMechStaff=10
+FlawlessMechStaff=10
+DarksteelOreStaff=10
+MechUltima=10
+MechKaustra=10
+MechFlare=10
+MechQuake=10
+MechFlood=10
+MechTornado=10
+MechFreeze=10
+MechBurst=10
+MechDarkness=10
+MechBanish=10
+MechFire=10
+MechStone=10
+MechWater=10
+MechWind=10
+MechIce=10
+MechThunder=10
+MechLight=10
+MechShadow=10
+MechFlareII=10
+MechQuakeII=10
+MechFloodII=10
+MechTornadoII=10
+MechFreezeII=10
+MechBurstII=10
+MechDarknessII=10
+MechBanishII=10
+MechFireII=10
+MechStoneII=10
+MechWaterII=10
+MechWindII=10
+MechIceII=10
+MechThunderII=10
+MechLightII=10
+MechShadowII=10
+MechFlareIII=10
+MechQuakeIII=10
+MechFloodIII=10
+MechTornadoIII=10
+MechFreezeIII=10
+MechBurstIII=10
+MechDarknessIII=10
+MechBanishIII=10
+MechFireIII=10
+MechStoneIII=10
+MechWaterIII=10
+MechWindIII=10
+MechIceIII=10
+MechThunderIII=10
+MechLightIII=10
+MechShadowIII=10
+MechFlareIV=10
+MechQuakeIV=10
+MechFloodIV=10
+MechTornadoIV=10
+MechFreezeIV=10
+MechBurstIV=10
+MechDarknessIV=10
+MechBanishIV=10
+MechFireIV=10
+MechStoneIV=10
+MechWaterIV=10
+MechWindIV=10
+MechIceIV=10
+MechThunderIV=10
+MechLightIV=10
+MechShadowIV=10
+
+[NaturalArmor]
+Name=Goddess Defense
+Max=$iif($return_playersinbattle > 1, 1000, 500)
+Current=500

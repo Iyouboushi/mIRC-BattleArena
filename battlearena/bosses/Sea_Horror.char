@@ -40,7 +40,7 @@ BossQuote=Glub glub glub
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-drops=FishAndChips.Ink
+drops=
 
 [Info]
 Flag=monster

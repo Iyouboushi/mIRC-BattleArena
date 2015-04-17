@@ -34,7 +34,7 @@ BossQuote=Those who defy the Shadow Lord shall perish!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=KnowledgeSource.DefenseSource.PowerSource.Tonic.SuperPotion.X-Potion.Ether.Ambrosia
+Drops
 
 [Info]
 Flag=monster

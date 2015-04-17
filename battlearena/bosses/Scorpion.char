@@ -42,7 +42,7 @@ Snatch=holds up a palm towards %enemy and screams "GET OVER HERE!" A small spear
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=shihei.x-potion.ether.Grapling_Hook.Black-Belt.potion
+Drops=
 
 [monster]
 type=demon

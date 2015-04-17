@@ -139,12 +139,12 @@ Elemental-Killer=20
 Slime-Killer=20
 
 [Techniques]
-Hadouken=$iif($current.battlestreak < 300, 0, 9999)
+Hadouken=9999
 
 [Item_Amount]
 
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=50
+WeaponMaster=10
 WeaponMasterXP=1

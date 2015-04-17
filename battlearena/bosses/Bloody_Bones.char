@@ -39,7 +39,7 @@ BossQuote=I will make a necklace out of your bones
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=VitalStar.X-Potion
+Drops=
 
 [Monster]
 Type=undead

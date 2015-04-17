@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=4000
+Hp=5000
 Tp=500
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(70 + $current.battlestreak)
-IgnitionGauge=110
+Str=20
+Def=20
+Int=20
+Spd=20
+IgnitionGauge=60
 Name=Sui-Feng
 
 
 [Battle]
-Hp=4000
+Hp=5000
 Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(35 + $current.battlestreak)
-Int=$calc(30 + $current.battlestreak)
-Spd=$calc(70 + $current.battlestreak)
-IgnitionGauge=110
+Str=20
+Def=20
+Int=20
+Spd=20
+IgnitionGauge=60
 Status=alive
 
 
@@ -101,15 +101,13 @@ conservetp.on=off
 
 [Weapons]
 Equipped=Suzumebachi
-Suzumebachi=$calc(50 + $current.battlestreak)
+Suzumebachi=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-mightystrike=1
 desperateblows=1
-MartialArts=2500
-Wizardry=2500
-SwordMaster=2500
-PerfectDefense=1
+MartialArts=100
+Wizardry=80
+SwordMaster=100
 Zen=5
 Utsusemi=1
 ShadowCopy=1
@@ -131,47 +129,72 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=20
-Crab-Killer=20
-Dragon-Killer=20
-Zombie-Killer=20
-Demon-Killer=20
-Orc-Killer=20
-Yagudo-Killer=20
-Quadav-Killer=20
-Treant-Killer=20
-Plant-Killer=20
-Android-Killer=20
-Worm-Killer=20
-Bat-Killer=20
-Lizard-Killer=20
-Goblin-Killer=20
-Elemental-Killer=20
-Slime-Killer=20
+Undead-Killer=10
+Crab-Killer=10
+Dragon-Killer=10
+Zombie-Killer=10
+Demon-Killer=10
+Orc-Killer=10
+Yagudo-Killer=10
+Quadav-Killer=10
+Treant-Killer=10
+Plant-Killer=10
+Android-Killer=10
+Worm-Killer=10
+Bat-Killer=10
+Lizard-Killer=10
+Goblin-Killer=10
+Elemental-Killer=10
+Slime-Killer=10
 
 [Techniques]
-DoublePunch=$iif($current.battlestreak < 25, 0, $calc(75 + $current.battlestreak))
-ShoulderTackle=$iif($current.battlestreak < 25, 0, $calc(50 + $current.battlestreak))
-AsuranFists=$iif($current.battlestreak < 150, 0, $calc(100 + $current.battlestreak))
-TornadoKick=$iif($current.battlestreak < 50, 0, $calc(125 + $current.battlestreak))
-ShinjinSpiral=$iif($current.battlestreak < 100, 0, $calc(125 + $current.battlestreak))
-SwiftBlade=$iif($current.battlestreak < 25, 0, $calc(75 + $current.battlestreak))
-VorpalBlade=$iif($current.battlestreak < 100, 0, $calc(125 + $current.battlestreak))
-ShitotsuSansen=$iif($current.battlestreak < 50, 0, $calc(100 + $current.battlestreak))
+DoublePunch=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+ShoulderTackle=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+AsuranFists=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+TornadoKick=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+ShinjinSpiral=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+SwiftBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+VorpalBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+ShitotsuSansen=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=25
+WeaponMaster=10
 WeaponMasterXP=1
 
 [Ignitions]
-Shunkou-Wind=$iif($current.battlestreak < 50, 0, 300)
-Sui-FengShikai=$iif($current.battlestreak < 50, 0, 150)
-Sui-FengBankai=$iif($current.battlestreak < 50, 0, 300)
+Shunkou-Wind=$iif($current.battlestreak < 200, 0, 1)
+Sui-FengShikai=$iif($current.battlestreak < 200, 0, 1)
 
 
 [Augments]
-Suzumebachi=EnhanceMelee.UtsusemiBonus.TechBonus
+Suzumebachi=MeleeBonus.UtsusemiBonus.TechBonus.HurtEthereal.EnhanceKatana.MagicBonus.EnhanceDodge.EnhanceParry
+
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

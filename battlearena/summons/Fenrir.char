@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=70
-Def=50
-Int=60
-Spd=50
+Tp=10
+Str=30
+Def=20
+Int=20
+Spd=30
 Name=Fenrir
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=70
-Def=50
-Int=60
-Spd=50
+Tp=10
+Str=30
+Def=20
+Int=20
+Spd=30
 Status=alive
 
 
@@ -100,7 +100,7 @@ FenrirPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
-MartialArts=500
+MartialArts=100
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -142,7 +142,7 @@ Water=100
 Ice=100
 Lightning=100
 Light=150
-Dark=200
+Dark=150
 HandToHand=100
 Whip=100
 Sword=100

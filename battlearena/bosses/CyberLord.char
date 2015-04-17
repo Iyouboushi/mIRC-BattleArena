@@ -41,7 +41,7 @@ BossQuote=You will be deleted!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=VitalStar.X-Potion.Ether
+Drops=
 
 [Monster]
 Type=android

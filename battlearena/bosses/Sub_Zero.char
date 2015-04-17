@@ -42,7 +42,7 @@ ShadowCopy=silently looks on the battlefield before jumping bakwards, leaving be
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=shihei.x-potion.ether.Ice_Coin.Black-Belt.potion
+Drops=
 
 [Info]
 Flag=monster

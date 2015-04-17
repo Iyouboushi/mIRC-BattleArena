@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a large robot that wears a Santa Outfit! He arrives from his death fortress on Neptune and looks at the heroes before taking out his laser rifle!
+Char=is a large robot that wears a Santa Outfit! He arrives from his death fortress on Neptune and looks at the heroes before taking out his laser rifle.
 Rage=screams in rage 
 BossQuote=I've checked my list and you all are very naughty! Very naughty indeed!
 
@@ -35,7 +35,7 @@ BossQuote=I've checked my list and you all are very naughty! Very naughty indeed
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Present
+Drops=
 
 [Monster]
 Type=android

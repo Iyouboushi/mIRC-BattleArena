@@ -35,7 +35,7 @@ BossQuote=Tell me... for what sssearcheth thou, to travel this far? Show me... b
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Potion.vip-membercard.x-potion.goldorb
+Drops=
 
 [Monster]
 Type=Aern

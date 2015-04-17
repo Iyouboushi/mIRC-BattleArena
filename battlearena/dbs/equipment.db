@@ -180,6 +180,7 @@ Augment=MagicBonus
 EquipLocation=Head
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [WarlockChapeau+2]
 Name=Warlock's Chapeau +2
@@ -193,6 +194,7 @@ Augment=MagicBonus.EnhanceZen
 EquipLocation=Head
 cost=50
 SellPrice=1500
+Exclusive=yes
 
 [TwilightHelm]
 Name=Twilight Helmet
@@ -206,6 +208,7 @@ Augment=AutoReraise
 EquipLocation=Head
 cost=50
 SellPrice=2000
+LevelRequirement=250
 
 [UnkaiKabuto]
 Name=Unkai Kabuto
@@ -219,7 +222,7 @@ Augment=EnhanceCounter
 EquipLocation=Head
 cost=50
 SellPrice=3000
-LevelRequirement=6000
+LevelRequirement=300
 
 [UnkaiKabuto+1]
 Name=Unkai Kabuto +1
@@ -233,7 +236,7 @@ Augment=EnhanceCounter
 EquipLocation=Head
 cost=50
 SellPrice=4000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [UnkaiKabuto+2]
@@ -248,7 +251,7 @@ Augment=EnhanceCounter.AdditionalHit.EnhanceCriticalHits
 EquipLocation=Head
 cost=50
 SellPrice=5000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurChappel]
@@ -263,7 +266,7 @@ Augment=MagicBonus
 EquipLocation=Head
 cost=50
 SellPrice=3000
-LevelRequirement=6000
+LevelRequirement=300
 
 [EstoqueurChappel+1]
 Name=Estoqueur's Chappel +1
@@ -277,7 +280,7 @@ Augment=MagicBonus
 EquipLocation=Head
 cost=50
 SellPrice=4000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurChappel+2]
@@ -292,7 +295,7 @@ Augment=MagicBonus.EnhanceMeditate.EnhanceZen
 EquipLocation=Head
 cost=50
 SellPrice=5000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [TantraCrown]
@@ -701,7 +704,7 @@ Augment=IgnoreDefense.EnhanceCriticalHits.EnhanceDefender.MagicBonus.EnhanceRang
 EquipLocation=body
 cost=50
 SellPrice=50000
-LevelRequirement=1500
+LevelRequirement=275
 Exclusive=yes
 
 [AtlantianMail]
@@ -716,7 +719,7 @@ Augment=IgnoreDefense.EnhanceCriticalHits.EnhanceAggressor.EnhanceDodge.EnhanceD
 EquipLocation=body
 cost=50
 SellPrice=50000
-LevelRequirement=2500
+LevelRequirement=300
 Exclusive=yes
 
 [AtlantianRobe]
@@ -731,7 +734,7 @@ Augment=IgnoreDefense.EnhanceDefender.EnhanceDodge.EnhanceDoubleTurnChance.Drain
 EquipLocation=body
 cost=50
 SellPrice=50000
-LevelRequirement=2500
+LevelRequirement=300
 Exclusive=yes
 
 [WarlockTabard]
@@ -787,6 +790,7 @@ Augment=AutoReraise
 EquipLocation=Body
 cost=50
 SellPrice=5000
+LevelRequirement=250
 
 [UnkaiDomaru]
 Name=Unkai Domaru
@@ -800,7 +804,7 @@ Augment=EnhanceDoubleTurnChance
 EquipLocation=Body
 cost=50
 SellPrice=5000
-LevelRequirement=6000
+LevelRequirement=300
 
 [UnkaiDomaru+1]
 Name=Unkai Domaru +1
@@ -814,7 +818,7 @@ Augment=EnhanceDoubleTurnChance
 EquipLocation=Body
 cost=50
 SellPrice=8000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [UnkaiDomaru+2]
@@ -829,7 +833,7 @@ Augment=EnhanceDoubleTurnChance.EnhanceKatana.Drain
 EquipLocation=Body
 cost=50
 SellPrice=10000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurSayon]
@@ -844,7 +848,7 @@ Augment=EnhanceDoubleTurnChance
 EquipLocation=Body
 cost=50
 SellPrice=5000
-LevelRequirement=6000
+LevelRequirement=300
 
 [EstoqueurSayon+1]
 Name=Estoqueur's Sayon +1
@@ -858,7 +862,7 @@ Augment=EnhanceDoubleTurnChance
 EquipLocation=Body
 cost=50
 SellPrice=8000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurSayon+2]
@@ -873,7 +877,7 @@ Augment=EnhanceDoubleTurnChance.Drain.EnhanceGlyph
 EquipLocation=Body
 cost=50
 SellPrice=10000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [TantraCyclas]
@@ -1136,6 +1140,7 @@ cost=50
 SellPrice=500000
 Exclusive=yes
 
+
 [VashTheStampede'sJacket]
 Name=Vash the Stampede's Jacket
 hp=200
@@ -1148,7 +1153,7 @@ Augment=EnhanceRanged.EnhanceParry.EnhanceDodge.EnhanceDefender.EnhanceZen.Enhan
 EquipLocation=Body
 cost=50
 SellPrice=8000
-LevelRequirement=2000
+LevelRequirement=300
 Exclusive=yes
 
 
@@ -1164,7 +1169,7 @@ Augment=EnhanceRanged.EnhanceStylePoints
 EquipLocation=Body
 cost=50
 SellPrice=3000
-LevelRequirement=1000
+LevelRequirement=200
 
 
 
@@ -1290,6 +1295,7 @@ Augment=AutoReraise
 EquipLocation=Legs
 cost=50
 SellPrice=2500
+LevelRequirement=250
 
 [UnkaiHaidate]
 Name=Unkai Haidate
@@ -1303,7 +1309,7 @@ Augment=EnhanceThirdEye
 EquipLocation=Legs
 cost=50
 SellPrice=2000
-LevelRequirement=6000
+LevelRequirement=300
 
 [UnkaiHaidate+1]
 Name=Unkai Haidate +1
@@ -1317,7 +1323,7 @@ Augment=EnhanceThirdEye
 EquipLocation=Legs
 cost=50
 SellPrice=5000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [UnkaiHaidate+2]
@@ -1332,7 +1338,7 @@ Augment=EnhanceThirdEye.UtsusemiBonus.EnhanceHandToHand
 EquipLocation=Legs
 cost=50
 SellPrice=8000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurFuseau]
@@ -1347,7 +1353,7 @@ Augment=CuringBonus
 EquipLocation=Legs
 cost=50
 SellPrice=2000
-LevelRequirement=6000
+LevelRequirement=300
 
 [EstoqueurFuseau+1]
 Name=Estoqueur's Fuseau +1
@@ -1361,7 +1367,7 @@ Augment=CuringBonus
 EquipLocation=Legs
 cost=50
 SellPrice=5000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurFuseau+2]
@@ -1376,7 +1382,7 @@ Augment=CuringBonus.EnhanceDagger.EnhanceZen
 EquipLocation=Legs
 cost=50
 SellPrice=8000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [TantraHose]
@@ -1772,6 +1778,7 @@ Augment=AutoReraise
 EquipLocation=Feet
 cost=50
 SellPrice=3000
+LevelRequirement=250
 
 [UnkaiSune-Ate]
 Name=Unkai Sune-Ate
@@ -1785,7 +1792,7 @@ Augment=RenkeiBonus
 EquipLocation=Feet
 cost=50
 SellPrice=5000
-LevelRequirement=6000
+LevelRequirement=300
 
 [UnkaiSune-Ate+1]
 Name=Unkai Sune-Ate +1
@@ -1799,7 +1806,7 @@ Augment=RenkeiBonus
 EquipLocation=Feet
 cost=50
 SellPrice=8000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [UnkaiSune-Ate+2]
@@ -1814,7 +1821,7 @@ Augment=RenkeiBonus.EnhanceDodge.TechBonus
 EquipLocation=Feet
 cost=50
 SellPrice=10000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurHouseaux]
@@ -1829,7 +1836,7 @@ Augment=EnhanceEnfeeble
 EquipLocation=Feet
 cost=50
 SellPrice=5000
-LevelRequirement=6000
+LevelRequirement=300
 
 [EstoqueurHouseaux+1]
 Name=Estoqueur's Houseaux +1
@@ -1843,7 +1850,7 @@ Augment=EnhanceEnfeeble
 EquipLocation=Feet
 cost=50
 SellPrice=8000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurHouseaux+2]
@@ -1858,7 +1865,7 @@ Augment=EnhanceEnfeeble.AbsorbIG.EnhanceZen
 EquipLocation=Feet
 cost=50
 SellPrice=10000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [TantraGaiters]
@@ -2268,6 +2275,7 @@ Augment=AutoReraise
 EquipLocation=Hands
 cost=50
 SellPrice=3000
+LevleRequirement=250
 
 [UnkaiKote]
 Name=Unkai Kote
@@ -2281,7 +2289,7 @@ Augment=TechBonus
 EquipLocation=Hands
 cost=50
 SellPrice=5000
-LevelRequirement=6000
+LevelRequirement=300
 
 [UnkaiKote+1]
 Name=Unkai Kote +1
@@ -2295,7 +2303,7 @@ Augment=TechBonus
 EquipLocation=Hands
 cost=50
 SellPrice=8000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [UnkaiKote+2]
@@ -2310,7 +2318,7 @@ Augment=TechBonus.MeleeBonus.EnhanceParry
 EquipLocation=Hands
 cost=50
 SellPrice=10000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurGantherots]
@@ -2325,7 +2333,7 @@ Augment=EnhanceParry
 EquipLocation=Hands
 cost=50
 SellPrice=5000
-LevelRequirement=6000
+LevelRequirement=300
 
 [EstoqueurGantherots+1]
 Name=Estoqueur's Gantherots +1
@@ -2339,7 +2347,7 @@ Augment=EnhanceParry
 EquipLocation=Hands
 cost=50
 SellPrice=8000
-LevelRequirement=6500
+LevelRequirement=300
 Exclusive=yes
 
 [EstoqueurGantherots+2]
@@ -2354,7 +2362,7 @@ Augment=EnhanceParry.AbsorbTP.EnhanceSword
 EquipLocation=Hands
 cost=50
 SellPrice=10000
-LevelRequirement=7000
+LevelRequirement=300
 Exclusive=yes
 
 [TantraGloves]
@@ -2649,70 +2657,8 @@ EquipLocation=body
 cost=0
 Exclusive=yes
 
-
-
-[RuneistBandeau+1]
-Name=Runeist Bandeau +1
-HP=600
-TP=300
-str=800
-def=800
-int=1000
-spd=800
-Augment=EnhanceBloodBoost.MagicBonus.EnhanceZen.CuringBonus.EnhanceSword.EnhanceCriticalHits.EnhanceGlyph.TechBonus.EnhanceBloodpact.EnhanceSummons.EnhanceMeditate
-EquipLocation=Head
-Cost=50
-
-[RuneistCoat+1]
-Name=Runeist Coat +1
-HP=600
-TP=300
-str=800
-def=1000
-int=800
-spd=800
-Augment=EnhanceZen.MagicBonus.CuringBonus.EnhanceBloodBoost.EnhanceSword.EnhanceCriticalHits.EnhanceGlyph.TechBonus.EnhanceBloodpact.EnhanceSummons.EnhanceMeditate
-EquipLocation=Body
-Cost=50
-
-[RuneistMitons+1]
-Name=Runeist Mitons +1
-HP=600
-TP=300
-str=900
-def=800
-int=800
-spd=900
-Augment=EnhanceSword.EnhanceCriticalHits.MagicBonus.EnhanceZen.CuringBonus.EnhanceBloodBoost.EnhanceGlyph.TechBonus.EnhanceBloodpact.EnhanceSummons.EnhanceMeditate
-EquipLocation=Hands
-Cost=50
-
-[RuneistTrousers+1]
-Name=Runeist Trousers +1
-HP=600
-TP=300
-str=800
-def=900
-int=900
-spd=800
-Augment=TechBonus.EnhanceDoubleTurnChance.MagicBonus.EnhanceZen.CuringBonus.EnhanceBloodBoost.EnhanceSword.EnhanceCriticalHits.EnhanceBloodpact.EnhanceSummons.EnhanceMeditate
-EquipLocation=Legs
-Cost=50
-
-[RuneistBottes+1]
-Name=Runeist Bottes +1
-HP=600
-TP=300
-str=800
-def=800
-int=800
-spd=1000
-Augment=CuringBonus.MagicBonus.EnhanceZen.EnhanceBloodBoost.EnhanceSword.EnhanceCriticalHits.EnhanceGlyph.TechBonus.EnhanceBloodpact.EnhanceSummons.EnhanceMeditate
-EquipLocation=Feet
-Cost=50
-
-[Nauthima'sHat]
-Name=Nauthima's Hat
+[Lirarian's_Circlet]
+Name=Lirarian's Circlet
 hp=0
 tp=0
 Str=0
@@ -2724,8 +2670,8 @@ EquipLocation=head
 cost=0
 SellPrice=0
 
-[Nauthima'sShirtandCoat]
-Name=Nauthima's Shirt and Coat
+[Lirarian's_Armor]
+Name=Lirarian's Armor
 hp=0
 tp=0
 Str=0
@@ -2737,8 +2683,8 @@ EquipLocation=body
 cost=0
 SellPrice=0
 
-[Nauthima'sGloves]
-Name=Nauthima's Gloves
+[Lirarian's_Gauntlets]
+Name=Lirarian's Gauntlets
 hp=0
 tp=0
 Str=0
@@ -2750,8 +2696,8 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 
-[Nauthima'sPants]
-Name=Nauthima's Pants
+[Lirarian's_Cuisses]
+Name=Lirarian's Cuisses
 hp=0
 tp=0
 Str=0
@@ -2763,8 +2709,8 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 
-[Nauthima'sBoots]
-Name=Nauthima's Boots
+[Lirarian's_Sabatons]
+Name=Lirarian's Sabatons
 hp=0
 tp=0
 Str=0

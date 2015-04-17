@@ -41,7 +41,7 @@ BossQuote=YOU TOO SHALL BE MY PUPPET!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Potion.DustyWing.X-Potion.Thief-Ring.Pizza
+Drops=
 
 [Monster]
 Type=demon

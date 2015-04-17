@@ -41,7 +41,7 @@ BossQuote=No one can defy my will!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=FoieGras.Tonic.Potion.Blessed-Ankh.X-Potion
+Drops=
 
 [Monster]
 Type=human
@@ -113,7 +113,7 @@ ManaWall=1
 
 
 [Techniques]
-Temptation=20
+Temptation=1
 DeltaSpark=20
 TypoonRod=20
 ScarfStab=20

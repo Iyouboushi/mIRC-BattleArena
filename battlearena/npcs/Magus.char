@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=4000
+Hp=5000
 Tp=500
-Str=$calc(60 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(60 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
+Str=15
+Def=15
+Int=15
+Spd=15
 IgnitionGauge=0
 Name=Magus
 
 
 [Battle]
-Hp=4000
+Hp=5000
 Tp=500
-Str=$calc(60 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(60 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
+Str=15
+Def=15
+Int=15
+Spd=15
 IgnitionGauge=0
 Status=alive
 
@@ -47,7 +47,7 @@ LastIP=N/a
 Created=N/a
 Streak=20
 CanTaunt=false
-JustReleaseDefense=75
+Streak=-1000
 ;=======================================
 ; These are optional flags you can set:
 ;========================================
@@ -166,19 +166,14 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=DoomSickle
-DoomSickle=$calc(10 + $current.battlestreak)
+DoomSickle=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
 
 
 [Skills]
-Wizardry=100
-Harvester=100
-MagicMirror=10
 MagicShift=1
-ElementalSeal=1
-MightyStrike=1
-ClearMind=3
 Zen=5
 Resist-Charm=100
 Resist-Poison=100
@@ -197,21 +192,23 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 
+
 [Techniques]
-ThundajaII=$calc(10 + $current.battlestreak)
-BlizzajaII=$calc(10 + $current.battlestreak)
-FirajaII=$calc(10 + $current.battlestreak)
-DarkBomb=$calc(10 + $current.battlestreak)
-DarkMist=$calc(10 + $current.battlestreak)
-Dark_Matter=$calc(10 + $current.battlestreak)
+Thundaja=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
+Blizzaja=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
+Firaja=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
+DarkBomb=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
+DarkMist=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
 
-
-[Item_Amount]
 
 [Styles]
 Equipped=Spellmaster
-SpellMaster=10
+SpellMaster=5
 SpellMasterXP=0
+
+
+[Augments]
+DoomSickle=MeleeBonus.TechBonus.EnhanceScythe.MagicBonus.HurtEthereal
 
 
 [modifiers]
@@ -225,7 +222,7 @@ Water=100
 Ice=100
 Lightning=100
 Light=100
-Dark=100
+Dark=0
 HandToHand=100
 Whip=100
 Sword=100
@@ -238,5 +235,3 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
-
-

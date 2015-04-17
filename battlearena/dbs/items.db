@@ -90,7 +90,7 @@ ConquestItem=true
 Type=heal
 ShopNPC=TravelMerchant
 Target=Single
-Amount=5000
+Amount=4000
 Desc=pulls out bottle of liquid made with blood labeled "Mega Potion" and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
 Cost=8000
 SellPrice=4000
@@ -103,7 +103,7 @@ Currency=none
 [Bruce'sJuice]
 Type=heal
 Target=Single
-Amount=6000
+Amount=5000
 Desc=pulls out a refreshing bottle of Bruce "Old Man" Willaker's juice and drinks it.  Ahhhhhhh, the most refreshing juice in the world.
 Cost=0
 SellPrice=5000
@@ -180,8 +180,8 @@ ShopNPC=Santa
 Type=IgnitionGauge
 Target=single
 Amount=10
-Cost=10000
-SellPrice=2000
+Cost=5000
+SellPrice=1000
 Desc=pulls out a strange purple star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
 ShopNPC=HealingMerchant
 
@@ -379,7 +379,6 @@ Amount=50
 Cost=0
 SellPrice=5000
 Desc=takes out a smelly bottle of thick white liquid and hands it over to %enemy who drinks it. Hey, why not? %enemy begins to feel a bit tipsy from the substance!
-
 
 [BombFlower]
 Type=Damage
@@ -717,7 +716,7 @@ Target=redorbs
 Amount=$rand(500,1000)
 Desc=takes out an ancient blood-colored scroll and hands it to %enemy who then reads it. The scroll begins to dissolve into red orbs that swirl around %enemy before being absorbed.
 Cost=10000000
-SellPrice=200
+SellPrice=50
 Exclusive=yes
 
 [BurntScroll]
@@ -735,7 +734,7 @@ Target=redorbs
 Amount=$rand(1000,2000)
 Desc=takes out old pirate map and hands it to %enemy who then uses it to discover a chest full of red orbs. Yarr!
 Cost=10000000
-SellPrice=200
+SellPrice=50
 Exclusive=yes
 
 [BookOfSkulls]
@@ -836,6 +835,13 @@ Summon=Courier_Carrie
 SummonName=Courier Carrie
 
 [ElvishMedallian]
+Type=summon
+Cost=0
+SellPrice=2000
+Summon=Lirarian
+SummonName=Lirarian
+
+[ElvishCrystal]
 Type=summon
 Cost=0
 SellPrice=2000
@@ -1232,10 +1238,10 @@ SellPrice=10
 Cost=$iif($readini($char($1), weapons, MasterSword) >= 1, 10, 0)
 SummonDesc=$get_chr_name(%trust.npc) pops out of $get_chr_name($1) $+ 's Master Sword and floats in the air.  "Master, I calculate an $rand(80,89) $+ $chr(37) chance of success"
 
-[FireOfTheDragon]
+[Strawberry_Lollipop]
 Type=trust
-NPC=Nauthima
-SummonDesc=$get_chr_name($1) takes out a black bottle of alchohol labeled "Fire of the Dragon." In addition, there are numerous warnings on the label. $get_chr_name($1) is about to return it before it's pulled from $gender($1) hand. $get_chr_name($1) turns and sees a tall elf grinning before chugging down the entire contents of the bottle and tossing it aside. Nauthima: "Sure, I suppose I'll help you!"
+NPC=Bayonetta
+SummonDesc=$get_chr_name($1) takes out a strawberry-flavored lollipop. Before $get_chr_name($1) can do anything else, the lollipop gets taken out of $get_chr_name($1) $+ 's hand. $get_chr_name($1) looks over and sees a tall woman holding the lollipop. Bayonetta: "Oh, very well. I have nothing better to do, so I'll help you out."
 Exclusive=yes
 SellPrice=0
 Cost=500
@@ -1711,6 +1717,7 @@ Desc=a small tank of energy for use by mechs.
 Currency=AlliedNotes
 Amount=200
 MechType=RestoreEnergy
+Exclusive=yes
 
 [MetalScrap]
 Type=misc
@@ -1720,6 +1727,7 @@ Desc=A piece of metal scrap, used to repair mechs.
 Currency=AlliedNotes
 Amount=200
 MechType=RestoreHP
+Exclusive=yes
 
 [E-TankA]
 Type=misc
@@ -1730,6 +1738,7 @@ Currency=AlliedNotes
 Amount=400
 MechType=RestoreEnergy
 ConquestItem=true
+Exclusive=yes
 
 [E-TankB]
 Type=misc
@@ -1740,6 +1749,7 @@ Currency=AlliedNotes
 Amount=600
 MechType=RestoreEnergy
 ConquestItem=true
+Exclusive=yes
 
 [E-TankT]
 Type=misc
@@ -1750,6 +1760,7 @@ Currency=AlliedNotes
 Amount=800
 MechType=RestoreEnergy
 ConquestItem=true
+Exclusive=yes
 
 [E-TankZ]
 Type=misc
@@ -1760,6 +1771,7 @@ Currency=AlliedNotes
 Amount=1000
 MechType=RestoreEnergy
 ConquestItem=true
+Exclusive=yes
 
 [FrameRepairA]
 type=misc
@@ -1770,6 +1782,7 @@ Currency=AlliedNotes
 Amount=400
 MechType=RestoreHP
 ConquestItem=true
+Exclusive=yes
 
 [FrameRepairB]
 type=misc
@@ -1780,6 +1793,7 @@ Currency=AlliedNotes
 Amount=600
 MechType=RestoreHP
 ConquestItem=true
+Exclusive=yes
 
 [FrameRepairE]
 type=misc
@@ -1790,6 +1804,7 @@ Currency=AlliedNotes
 Amount=800
 MechType=RestoreHP
 ConquestItem=true
+Exclusive=yes
 
 [FrameRepairZ]
 type=misc
@@ -1800,6 +1815,7 @@ Currency=AlliedNotes
 Amount=1000
 MechType=RestoreHP
 ConquestItem=true
+Exclusive=yes
 
 [JungleThorn]
 Type=misc
@@ -2471,7 +2487,7 @@ Battlefield=Eastern Palace
 Weather=gloomy
 Monster=Armos_Knight.Small_Armos
 Desc=pulls out a an ancient Armos Medallian that leads the heroes to an old palace on the eastern border.  Inside they overcome many puzzles and dangers to finally reach a boss room.
-AlliedNotes=500
+AlliedNotes=200
 Exclusive=yes
 PortalLevel=30
 
@@ -2483,7 +2499,7 @@ Battlefield=Desert Palace
 weather=dry
 Monster=Red_Lanmola.Green_Lanmola.Blue_Lanmola
 Desc=pulls out an ancient book that leads the heroes to an old palace in the desert.  Inside they overcome many puzzles and dangers before finally reaching a large room full of sand.  The sand seems to be moving.. prepare yourselves!
-AlliedNotes=550
+AlliedNotes=250
 Exclusive=yes
 PortalLevel=30
 
@@ -2495,7 +2511,7 @@ Battlefield=Tower of Hera
 weather=dry
 Monster=Moldorm.MoldormTail
 Desc=takes a special key made to enter the Tower of Hera.  After a climb up a mountain, the heroes enter and climb the tower to the top floor where they're greeted by a massive yellow centipede-snake creature.
-AlliedNotes=550
+AlliedNotes=300
 Exclusive=yes
 PortalLevel=30
 
@@ -2509,6 +2525,7 @@ Monster=Eye_of_Cthulhu
 Desc=takes out a small item that resembles an eye and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Eye of Cthulhu has awoken!]
 AlliedNotes=500
 Exclusive=yes
+PortalLevel=50
 
 [CorruptWormFood]
 type=portal
@@ -2520,6 +2537,7 @@ Monster=Eater_of_Worlds
 Desc=travels to the Corruption. %real.name takes out some rotten meat attached to a bone and tosses it into a deep pit. A loud roar is heard a moment later as a massive worm rises out of the pit. [Eater of Worlds has awoken!]
 AlliedNotes=550
 Exclusive=yes
+PortalLevel=75
 
 [BloodySpine]
 type=portal
@@ -2531,6 +2549,7 @@ Monster=Brain_of_Cthulhu
 Desc=travels to the Crimson. %real.name takes out a small item that resembles a spine, which somehow drips blood and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Brain of Cthulhu has awoken!]
 AlliedNotes=550
 Exclusive=yes
+PortalLevel=75
 
 [DungeonMap]
 type=portal
@@ -2542,6 +2561,7 @@ Monster=Skeletron.Skeletron_LeftArm.Skeletron_RightArm
 Desc=takes out a map which leads to a dungeon. After descending into the dungeon, a loud roar is heard. [Skeletron has awoken!]
 AlliedNotes=600
 Exclusive=yes
+PorltalLevel=100
 
 [MayanMap]
 type=portal
@@ -2688,6 +2708,7 @@ Monster=Retinazer.Spazmatism
 Desc=takes out a small item that resembles a mechanical eye and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [The Twins have awoken!]
 AlliedNotes=1000
 Exclusive=yes
+PortalLevel=200
 
 [MechanicalWorm]
 type=portal
@@ -2699,6 +2720,7 @@ Monster=The_Destroyer
 Desc=takes out a small item that resembles a mechanical worm and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [The Destroyer has awoken!]
 AlliedNotes=1050
 Exclusive=yes
+PortalLevel=200
 
 [MechanicalSkull]
 type=portal
@@ -2710,6 +2732,7 @@ Monster=Skeletron_Prime.Prime_Cannon.Prime_Laser.Prime_Saw.Prime_Vice
 Desc=takes out a small item that resembles a mechanical skull and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Skeletron Prime has awoken!]
 AlliedNotes=1100
 Exclusive=yes
+PortalLevel=225
 
 [Plantera'sBulb]
 type=portal
@@ -2721,6 +2744,7 @@ Monster=Plantera
 Desc=comes across a cave while exploring the jungle. %real.name stumbles over a small, pink bulb while exploring the cave. %real.name decides to destroy it, and upon doing so, a loud roar is heard. [Plantera has awoken!]
 AlliedNotes=1150
 Exclusive=yes
+PortalLevel=250
 
 [HyruleOrb]
 type=portal
@@ -2732,6 +2756,7 @@ Monster=HeroOfTime
 Desc=takes out the small glowing orb that has a Triforce symbol on it and watches as the battlefield is enveloped in a bright light.  When the light clears, the heroes find themselves standing in ancient Hyrule, facing an ancient hero.  
 AlliedNotes=2500
 Exclusive=yes
+PortalLevel=100
 
 [LachesisOrb]
 type=portal
@@ -2743,6 +2768,7 @@ Monster=Rainemard
 Desc=takes out a blue gem that has white light swirling inside. The blue gem shatters a moment later, transporting the players to Horlais Peak.
 AlliedNotes=1000
 Exclusive=yes
+PortalLevel=150
 
 [TavnaziaPass]
 type=portal
@@ -2754,6 +2780,7 @@ Monster=Marchelute
 Desc=takes out the Tavnazia Pass. The paper crumbles and transports everyone to the Valkurm Dunes.
 AlliedNotes=1500
 Exclusive=yes
+PortalLevel=150
 
 [YagudoDrink]
 type=portal
@@ -2765,6 +2792,7 @@ Monster=HuuXalmo
 Desc=takes out a bottle of Yagudo Drink and sets it on the ground. A random Yagudo quickly takes it and teleports everyone to Castle Oztroja.
 AlliedNotes=1500
 Exclusive=yes
+PortalLevel=150
 
 [SpheroidPlate]
 type=portal
@@ -2776,6 +2804,7 @@ Monster=IroncladSeverer
 Desc=takes out a spheroid plate and sets it on the ground. Everyone is then teleported to Abyssea - Misareaux Coast, appearing before the Iron Giant who begins to awaken.
 AlliedNotes=1500
 Exclusive=yes
+PortalLevel=150
 
 [AvatarBlood]
 type=portal
@@ -2787,6 +2816,7 @@ Monster=Awahondo
 Desc=takes out a bottle of avatar blood and tosses it to the ground. It shatters and teleports everyone to Abyssea - Uleguerand Range.
 AlliedNotes=1500
 Exclusive=yes
+PortalLevel=150
 
 [OldOrcBow]
 type=portal
@@ -2798,6 +2828,7 @@ Monster=Prozpuz
 Desc=takes out an old bow and set it down. A random Orc takes the bow and teleports everyone to Davoi.
 AlliedNotes=1500
 Exclusive=yes
+PortalLevel=150
 
 
 ; Kindred Crest Portal Items
@@ -2812,6 +2843,7 @@ Monster=Golem_Controller.Lihzahrd_Golem
 Desc=ventures into a mysterious temple found in the Underground Jungle. After navigating through various traps, %real.name finds a strange altar. %real.name takes out a small power cell and places it onto the altar, which causes a loud roar to be heard. [The Golem has awoken!]
 AlliedNotes=1200
 Exclusive=yes
+PortalLevel=250
 
 [TruffleWorm]
 type=portal
@@ -2823,6 +2855,7 @@ Monster=Duke_Fishron
 Desc=travels to the ocean. %real.name takes out a fishing rod and attaches the truffle worm onto the hook, casting the line into the ocean. After a bit of time, %real.name feels a bite on the line and quickly reels in.. [Duke Fishron has awoken!]
 AlliedNotes=1250
 Exclusive=yes
+PortalLevel=275
 
 [OldOrcSword]
 type=portal
@@ -2834,6 +2867,7 @@ Monster=Gwajboj
 Desc=takes out an old sword and places it into the ground. A random Orc takes the sword and teleports everyone to Davoi.
 AlliedNotes=1750
 Exclusive=yes
+PortalLevel=150
 
 [TimeOrb]
 type=portal
@@ -2869,6 +2903,7 @@ Monster=ShinryuVerus
 Desc=takes out a stone that is a deep crimson in color. %real.name then tosses the stone onto the ground. It shatters and the players are teleported to the Empyreal Paradox.
 AlliedNotes=2750
 Exclusive=yes
+PortalLevel=275
 
 [EvilGuitar]
 type=portal
@@ -2880,6 +2915,7 @@ Monster=I-No
 Desc=pulls out a curious guitar and plays a few strings. Suddenly %real.name and everyone else is teleported to the sky with dark red clouds everywhere.
 AlliedNotes=2750
 Exclusive=yes
+PortalLevel=200
 
 [UnknownPowerSource]
 type=portal
@@ -2898,12 +2934,13 @@ PortalLevel=300
 Type=portal
 Cost=30
 Currency=HighKindredCrest
-Battlefield=Unknown Realm
+Battlefield=Asgard
 Weather=Light
-Monster=EldoraAdlanna.NauthimaTiranadel
-Desc=takes out an orb that has a bright white glow. %real.name then tosses the orb to the ground. The orb shatters and transports all players to a realm that few have seen.
+Monster=Freya.Sif
+Desc=takes out an orb that has a bright white glow. %real.name then tosses the orb to the ground. The orb shatters and transports all players to a realm that few mortals have seen.
 AlliedNotes=3000
 Exclusive=yes
+PortalLevel=300
 
 [AtlantianCrystal]
 Type=portal

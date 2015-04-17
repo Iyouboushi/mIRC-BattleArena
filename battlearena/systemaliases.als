@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/15/15
+;;;; Last updated: 04/17/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -282,9 +282,23 @@ system_defaults_check {
   ; Remove files that are no longer needed.
   .remove $npc(Soifon)
   .remove $npc(Yoruichi_Shihoiun)
+  .remove $npc(Nauthima)
+
   .remove $mon(Demonic_Succubus)
   .remove $mon(Final_Guard)
   .remove $mon(Prime_Vise)
+  .remove $mon(Excenmille)
+  .remove $mon(NajaSalaheem)
+  .remove $mon(Wind-UpShantotto)
+
+  . remove $boss(Adlanna)
+  .remove $boss(Eldora)
+  .remove $boss(EldoraAdlanna)
+  .remove $boss(NauthimaTiranadel)
+  .remove $boss(RuneFencer_Nauthima)
+
+  .remove $summon(Eldora_Adlanna)
+
   .remove $lstfile(items_songs.lst)
 
   ; Remove settings no longer needed

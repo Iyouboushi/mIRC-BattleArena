@@ -1,22 +1,22 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=80
-Def=80
-Int=80
-Spd=80
-IgnitionGauge=100
-Name=Eldora Adlanna
+Tp=10
+Str=60
+Def=60
+Int=60
+Spd=60
+IgnitionGauge=50
+Name=Lirarian
 
 
 [Battle]
-Hp=%00
-Tp=100
-Str=80
-Def=80
-Int=80
-Spd=80
-IgnitionGauge=100
+Hp=500
+Tp=10
+Str=60
+Def=60
+Int=60
+Spd=60
+IgnitionGauge=50
 Status=alive
 
 
@@ -34,9 +34,8 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a powerful Elven goddess. She wears the usual Swordmaster armor has a sword on the left side of her waist.  She looks at the heroes and says, "I guess I'll help you..this once."
+Char=is a lesser Elven goddess who is entrusted with two powerful swords. She has long brown hair, glowing green eyes, and wears dark-red Swordmaster armor. She looks at the heroes and says, "I guess I'll help you..this once."
 Rage=simply narrows her eyes and glares at everyone.
-RepairNaturalArmor=scoffs as a feint white light covers %real.name before fading, restoring %real.name $+ 's natural defense.
 
 
 [Stuff]
@@ -47,6 +46,8 @@ ShopLevel=1.0
 
 [Monster]
 Type=Elf
+TechLearn=False
+Size=Medium
 
 
 [Info]
@@ -98,15 +99,11 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Silver_Goddess_Sword
-Silver_Goddess_Sword=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-
+SilverSwords=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Swordmaster=500
-MartialArts=500
-RoyalGuard=1
-royalguard.on=on
-RepairNaturalArmor=1
+Swordmaster=100
+perfectdefense.on=on
 Resist-Intimidate=100
 Resist-Stun=100
 Resist-Weaponlock=100
@@ -123,46 +120,52 @@ Resist-Confuse=100
 
 
 [Techniques]
-TwinSlice=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
-BiteOfLightning=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-BladeBeam=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Twin_Slice=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+LightningStrike=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BladeBeamII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=5
+WeaponMaster=10
 WeaponMasterXP=1
 
 
 [modifiers]
 Heal=Light
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=200
+Earth=110
+Fire=110
+Wind=110
+Water=110
+Ice=110
+Lightning=110
+Light=150
 Dark=150
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+HandToHand=90
+Whip=90
+Sword=90
+Gun=90
+Rifle=90
+Katana=90
+Wand=90
+Spear=90
+Scythe=90
+Glyph=90
+GreatSword=90
+Bow=90
 
 
 [NaturalArmor]
-Name=Samurai Defense
-Max=3000
-Current=3000
+Name=Goddess Defense
+Max=1000
+Current=1000
 
+[equipment]
+Head=Lirarian's_Circlet
+Body=Lirarian's_Armor
+Hands=Lirarian's_Gauntlets
+Legs=Lirarian's_Cuisses
+Feet=Lirarian's_Sabatons
 
 [Ignitions]
-WiseReflection=1
+WiseReflection=$iif($current.battlestreak < 200, 0, 1)

@@ -20,16 +20,17 @@ Daggers=MainGauche.Mandau.Terpsichore
 Defunct=KaiserKnuckles.LexTalionis.Soulsaber.Almace.Caladbolg.ChainWhip.SpikedSteelWhip.DragontailWhip.Quicksilver.SniperRifle.Annihilator.DeathPenalty.Keitonotachi.Hagun.Masamune.Rhongomiant
 
 ; The lists after this are for monster weapons only.  Players do not have access to these.
-MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower.Aettir
+MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower
+
 MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.SinistralPower.JesterWand.VampireArt.Puppetry.Benihime.PeoplesFist.SuccubusPower.DragonShouts.BlueEyesPower.BlackMagic.DragonSword.OctoArms.Casull&Jackal.AlucardSword.Auto9.Railgun.WoolyTusks.OrochiPower.BogardGloves.GiygasPower.AtlantisPower.Broad_Sword.Rose's_Rapier.ShihouinFists.ImpHorn.GhostPower.ChozoArmCannon.ZeroSaber.SantaRifle.ScorpionFists.Legion
 
 MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.GoylePower.SwordOfTheFallenDevil.X-BusterMk1.X-BusterMk2.X-BusterMk3.MonkeyIsland_Cutlass
 
-MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower
+MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.Morgenstern.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower
 
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.ChatoyantStaff.DoomSickle.MasamuneII.Socom.PSG-1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists
 
 ============================================
 WEAPON TEMPLATE
@@ -2299,31 +2300,34 @@ Upgrade=0
 Cost=0
 Type=Blastoise_Cannons
 Info=The powerful water cannons of Blastoise.
-Abilities=Water_Cannon
+Abilities=Water_Cannon.IronTail
 Element=None
 Hits=$rand(1,2)
 BasePower=30
 CanCounter=false
+HurtEthereal=True
 
 [CharizardFangs]
 Cost=0
 Type=Charizard_Fangs
 Info=The fangs of Charizard.
-Abilities=Fire_Fang
+Abilities=Fire_Fang.IronTail
 Element=None
 Hits=$rand(1,2)
 BasePower=30
 CanCounter=false
+HurtEthereal=True
 
 [PikachuPaws]
 Cost=0
 Type=HandToHand
 Info=The paws of Pikachu.
-Abilities=Thunderbolt
+Abilities=Thunderbolt.IronTail
 Element=None
 Hits=$rand(1,2)
 BasePower=30
 CanCounter=false
+HurtEthereal=True
 
 [DreddGun]
 Cost=0
@@ -2612,7 +2616,7 @@ Upgrade=0
 Cost=0
 Type=Sword
 Info=A legendary sword used by a powerful valkyrie.
-Abilities=NibelungValesti.ChantduCygne.Requiescat.Atonement
+Abilities=NibelungValesti.Glowing_Pierce.Ptero_Attack.Vertical_Raid
 Element=Light
 Hits=1
 BasePower=40
@@ -3509,18 +3513,6 @@ Basepower=55
 Upgrade=0
 HurtEthereal=true
 
-[Aettir]
-Cost=0
-Type=GreatSword
-Info=A large sword that is white in color with a pronged edge. It has a glowing white crystal and black runes on the blade.
-Abilities=Lunge.VivaciousPulse.RuneSwipe.Dimidiation.Resolution.HardSlash.PowerSlash
-Element=None
-Hits=1
-BasePower=200
-Upgrade=0
-IgnoreDefense=10
-2Handed=true
-
 [SilverSwords]
 Cost=0
 Type=Sword
@@ -3532,17 +3524,6 @@ BasePower=100
 Upgrade=0
 IgnoreDefense=10
 2Handed=true
-
-[Morgenstern]
-Cost=0
-Type=Mace
-Info=A long with short spikes. Naja's favorite weapon.
-Abilities=Hexastrike
-Element=None
-Hits=1
-BasePower=100
-Upgrade=0
-IgnoreDefense=10
 
 [WallofFleshMouth]
 Cost=0
@@ -3719,19 +3700,6 @@ Hits=2
 BasePower=10
 CanCounter=false
 
-[ChatoyantStaff]
-Cost=0
-Type=Stave
-Info=A staff with a dark brown base with a golden tip on bottom and a fancy golden hook on top with a multi-colored ball inside the hook.
-Abilities=AeroV.BlizzardV.FireV.DarkV.BanishV.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix
-Element=None
-Hits=1
-BasePower=100
-Upgrade=0
-HurtEthereal=True
-2Handed=True
-CanCounter=false
-
 [DoomSickle]
 Cost=0
 Type=Scythe
@@ -3810,6 +3778,120 @@ BasePower=50
 Upgrade=0
 EnergyCost=250
 CanCounter=false
+
+[MirrorOfTwilight]
+Cost=0
+Type=MirrorOfTwilight
+Info=A powerful treasure of the Twili race. The mirror amplifies Midna's power even further, rendering the Fused Shadow useless.
+Abilities=TwiliEnergy.TwiliFist.TwiliLight.TwiliCannon.TwiliBridge.TwiliWolves.TwilightMirror.TwiliSpear
+Element=None
+Hits=1
+Target=AOE
+BasePower=50
+Upgrade=0
+IgnoreDefense=10
+HurtEthereal=False
+2Handed=True
+CanShieldReflect=True
+CanCounter=False
+
+[ShunShunRika]
+Cost=0
+Type=ShunShunRika
+Info=A set of hairpins belonging to Orihime Inoue that holds six spirits inside it.
+Abilities=SoutenKisshun
+Element=None
+Hits=1
+BasePower=50
+Upgrade=0
+HurtEthereal=False
+2Handed=true
+CanShieldReflect=True
+CanCounter=False
+
+[FreyaFists]
+Cost=0
+Type=HandToHand
+Info=The powerful fists of the Aesir goddess, Freya.
+Abilities=EtherStrike.Thunder_Sword.Thunder_Strike.Heavenly_Punishment.Victory_Sword
+Element=None
+Hits=$rand(1,2)
+BasePower=50
+Upgrade=0
+HurtEthereal=False
+2Handed=True
+CanShieldReflect=True
+CanCounter=False
+
+[Sif's_Sword]
+Cost=0
+Type=Sword
+Info=A powerful sword that belongs to Sif.
+Abilities=BladeBeamII.Twin_Slice.Requiescat
+Element=None
+Hits=1
+BasePower=50
+Upgrade=0
+HurtEthereal=False
+2Handed=False
+CanShieldReflect=False
+CanCounter=False
+
+[Dragonfang]
+Cost=0
+Type=Sword
+Info=A sword that belongs to the Valkyrie, Brunnhilde, but is currently borrowed by Sif.
+Abilities=LightningStrike.DeathBlossom.ChantDuCygne
+Element=None
+Hits=1
+BasePower=50
+Upgrade=0
+HurtEthereal=False
+2Handed=False
+CanShieldReflect=False
+CanCounter=False
+
+[Glance_Reviver]
+Cost=0
+Type=Sword
+Info=A powerful sword that belongs to Lenneth.
+Abilities=NibelungValesti.Glowing_Pierce.Ptero_Attack.Vertical_Raid
+Element=None
+Hits=1
+BasePower=50
+Upgrade=0
+HurtEthereal=False
+2Handed=False
+CanShieldReflect=False
+CanCounter=False
+
+[Sylvan_Bow]
+Cost=0
+Type=Bow
+Info=A bow that belongs to the Light Elves, which also preserves the stability of Alfheim. Currently in use by Lenneth.
+Abilities=Spread_Shot.Tri-Blast.Infinity_Blast
+Element=None
+Hits=1
+BasePower=50
+Upgrade=0
+HurtEthereal=False
+2Handed=true
+CanShieldReflect=False
+CanCounter=False
+
+[AikawaFists]
+Cost=0
+Type=HandToHand
+Info=The fists of Aikawa.
+Abilities=AikawaGrab.RollingBlaze.FinalHeaven
+Element=Dark
+Hits=$rand(1,2)
+BasePower=50
+Upgrade=0
+HurtEthereal=False
+2Handed=True
+CanShieldReflect=False
+CanCounter=False
 
 
 ==============================

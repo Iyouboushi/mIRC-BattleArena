@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=55
-Def=40
-Int=50
-Spd=90
+Tp=10
+Str=20
+Def=20
+Int=20
+Spd=30
 Name=Pikachu
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=55
-Def=40
-Int=50
-Spd=90
+Tp=10
+Str=20
+Def=20
+Int=20
+Spd=30
 Status=alive
 
 
@@ -117,7 +117,30 @@ Resist-Confuse=100
 
 [Techniques]
 Thunderbolt=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-
+IronTail=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 
+
+[modifiers]
+Heal=Lightning
+Earth=150
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=150
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=4000
-Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(40 + $current.battlestreak)
-Int=$calc(60 + $current.battlestreak)
-Spd=$calc(40 + $current.battlestreak)
+Hp=5300
+Tp=5400
+Str=205
+Def=205
+Int=405
+Spd=205
 Name=Kaylona
 
 
 [Battle]
-Hp=4000
-Tp=500
-Str=$calc(40 + $current.battlestreak)
-Def=$calc(40 + $current.battlestreak)
-Int=$calc(60 + $current.battlestreak)
-Spd=$calc(40 + $current.battlestreak)
+Hp=5300
+Tp=5400
+Str=205
+Def=205
+Int=405
+Spd=205
 Status=alive
 
 
@@ -34,12 +34,14 @@ Dused=1
 Char=is a holy cleric. She is wearing a flowing white robe, wielding a Mace, and shield. She is ready to keep her fellow Allies fully healed.
 Rage=looks up to the sky and screams to the heavens!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 ai_type=healer
@@ -52,6 +54,9 @@ LastIP=N/a
 Created=Wed Jan 15 13:45:43 2014
 Flag=NPC
 IgnoreQuicksilver=true
+CanTaunt=false
+RageMode=Ignore
+Streak=11
 
 [Status]
 Poison=no
@@ -95,17 +100,20 @@ slow.timer=1
 zombie.timer=1
 auto-regen=yes
 
+
 [Weapons]
 Equipped=HolyMace
-HolyMace=$calc(40 + $current.battlestreak)
+HolyMace=500
+
 
 [Skills]
-Wizardry=2000
+Wizardry=100
 ClearMind=3
 Zen=10
 manawall.on=on
 royalguard.on=on
-Regen=5
+perfectdefense.on=on
+Regen=10
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -122,42 +130,50 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=20
-Crab-Killer=20
-Dragon-Killer=20
-Zombie-Killer=20
-Demon-Killer=20
-Orc-Killer=20
-Yagudo-Killer=20
-Quadav-Killer=20
-Treant-Killer=20
-Plant-Killer=20
-Android-Killer=20
-Worm-Killer=20
-Bat-Killer=20
-Lizard-Killer=20
-Goblin-Killer=20
-Elemental-Killer=20
-Slime-Killer=20
+
 
 [Techniques]
-Curaga=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
-CureV=$round($calc(125 + (($current.battlestreak / 2) / 5.5)),0)
+Curaga=500
 
-[Ignitions]
 
 [augments]
-HolyMace=MagicBonus.CuringBonus
+HolyMace=CuringBonus.EnhanceZen.HurtEthereal
+
 
 [equipment]
-accessory=Wizard's-Ankh
+Head=HealerCap+2
+Body=HealerBriault+2
+Hands=HealerMitts+2
+Legs=HealerPantaloons+2
+Feet=HealerDuckbills+2
+Accessory=Wizard's-Ankh
 
 
 [Styles]
 Equipped=SpellMaster
-SpellMaster=20
+SpellMaster=10
 SpellMasterXP=1
 
 
-[Item_Amount]
-
+[modifiers]
+Heal=none
+Earth=90
+Fire=90
+Wind=90
+Ice=90
+Water=90
+Lightning=90
+Light=90
+Dark=90
+HandToHand=90
+Whip=90
+Sword=90
+Gun=90
+Rifle=90
+Katana=90
+Wand=90
+Spear=90
+Scythe=90
+Glyph=90
+GreatSword=90
+Bow=90

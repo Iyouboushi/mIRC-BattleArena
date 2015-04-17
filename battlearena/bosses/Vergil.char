@@ -42,7 +42,7 @@ DTrigger=looks at the battlefield and says, "Now I'm MOTIVATED!"  His body begin
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=DustyWing.VitalStar.potion
+Drops=
 
 [monster]
 type=demon

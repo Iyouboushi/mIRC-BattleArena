@@ -40,7 +40,7 @@ MonsterSummon=The Cursed King summons another cursed chesspiece to help it
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Thunder_Orb.Potion.Tonic
+Drops=
 
 [Info]
 Flag=monster

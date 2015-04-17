@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/15/15
+;;;; Last updated: 04/17/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2744,9 +2744,10 @@ counter_melee_action {
 
   if ($readini($char($2), info, flag) = $null) { 
     if (($readini($char($1), info, flag) = npc) || ($readini($char($1), info, flag) = monster)) {
-    %attack.damage = $round($calc(%attack.damage * 100),0) }
+    %attack.damage = $round($calc(%attack.damage * .50),0) }
     inc %attack.damage $rand(1,25)
-    if (%attack.damage >= 999) { set %attack.damage $rand(900,1500) }
+    if (%attack.damage >= 400) { set %attack.damage $rand(300,500) }
+    if (%attack.damage < 1) { set %attack.damage 1 }
   }
 
   if ($readini($char($2), info, flag) = monster) { 

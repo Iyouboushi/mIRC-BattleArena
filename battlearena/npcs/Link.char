@@ -1,22 +1,20 @@
 [BaseStats]
-Hp=4000
+Hp=5000
 Tp=500
-Str=$calc(60 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(60 + $current.battlestreak)
-IgnitionGauge=0
+Str=20
+Def=20
+Int=20
+Spd=20
 Name=Link
 
 
 [Battle]
-Hp=4000
+Hp=5000
 Tp=500
-Str=$calc(60 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(60 + $current.battlestreak)
-IgnitionGauge=0
+Str=20
+Def=20
+Int=20
+Spd=20
 Status=alive
 
 
@@ -93,19 +91,16 @@ auto-regen=no
 
 [Weapons]
 Equipped=MasterSword
-MasterSword=$calc(60 + $current.battlestreak)
+MasterSword=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 EquippedLeft=GoddessShield
 
 
 [Skills]
-WeaponBash=1
 Zen=5
 PerfectDefense=1
 perfectdefense.on=off
-SwordMaster=1000
+SwordMaster=100
 Demolitions=10
-Impetus=20
-WeaponBash=1
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -122,67 +117,94 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=20
-Crab-Killer=20
-Dragon-Killer=20
-Zombie-Killer=20
-Demon-Killer=20
-Orc-Killer=20
-Yagudo-Killer=20
-Quadav-Killer=20
-Treant-Killer=20
-Plant-Killer=20
-Android-Killer=20
-Worm-Killer=20
-Bat-Killer=20
-Lizard-Killer=20
-Goblin-Killer=20
-Elemental-Killer=20
-Slime-Killer=20
+Undead-Killer=10
+Crab-Killer=10
+Dragon-Killer=10
+Zombie-Killer=10
+Demon-Killer=10
+Orc-Killer=10
+Yagudo-Killer=10
+Quadav-Killer=10
+Treant-Killer=10
+Plant-Killer=10
+Android-Killer=10
+Worm-Killer=10
+Bat-Killer=10
+Lizard-Killer=10
+Goblin-Killer=10
+Elemental-Killer=10
+Slime-Killer=10
 
 
 [Techniques]
-SkywardStrike=$iif($current.battlestreak < 50, 0, $calc(300 + $current.battlestreak))
-HurricaneSpin=$iif($current.battlestreak < 50, 0, $calc(150 + $current.battlestreak))
+SkywardStrike=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+HurricaneSpin=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Equipment]
 Accessory=PendantOfCourage
 
+
 [Item_Amount]
-GoddessShield=1
 BombFlower=20
 
+
 [Augments]
-MasterSword=IgnoreGuardian.IgnoreMetalDefense.RenkeiBonus.EnhanceBlocking
+MasterSword=IgnoreGuardian.IgnoreMetalDefense.RenkeiBonus.EnhanceBlocking.HurtEthereal
 
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=20
+WeaponMaster=10
 
 
 [modifiers]
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
-Earth=50
-Fire=50
-Wind=50
-Water=50
-Ice=50
-Lightning=50
-Light=50
-Dark=50
-HandToHand=75
-Whip=75
-Sword=75
-Gun=75
-Rifle=75
-Katana=75
-Wand=75
-Spear=75
-Scythe=75
-Glyph=75
-GreatSword=75
-Bow=75
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
+
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

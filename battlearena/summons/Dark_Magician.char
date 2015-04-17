@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=50
-Def=50
-Int=80
-Spd=50
+Tp=10
+Str=20
+Def=20
+Int=30
+Spd=20
 Name=Dark Magician
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=50
-Def=50
-Int=80
-Spd=50
+Tp=10
+Str=20
+Def=20
+Int=30
+Spd=20
 Status=alive
 
 
@@ -99,12 +99,10 @@ BlackMagic=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
-Wizardry=500
+Wizardry=100
 ClearMind=3
-ManaWall=1
 manawall.on=on
 ElementalSeal=1
-BloodSpirit=5
 Resist-Intimidate=100
 Resist-Stun=100
 Resist-Weaponlock=100
@@ -118,6 +116,7 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
+
 
 [Techniques]
 BlackMagicAttack=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
@@ -135,23 +134,23 @@ SpellMasterXP=1
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=200
-Dark=1
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+Earth=90
+Fire=90
+Wind=90
+Water=90
+Ice=90
+Lightning=90
+Light=90
+Dark=0
+HandToHand=110
+Whip=110
+Sword=110
+Gun=110
+Rifle=110
+Katana=110
+Wand=110
+Spear=110
+Scythe=110
+Glyph=110
+GreatSword=110
+Bow=110

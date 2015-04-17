@@ -41,7 +41,7 @@ RepairNaturalArmor=growls loudly as ice begins to form around his body. After a 
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=DustyWing.X-potion.vitalstar.CerberusMeat
+Drops=
 
 [Info]
 Flag=monster

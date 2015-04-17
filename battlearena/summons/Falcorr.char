@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
-Tp=100
-Str=60
-Def=50
-Int=50
-Spd=70
+Tp=10
+Str=20
+Def=20
+Int=20
+Spd=30
 Name=Faithful Falcorr
 
 
 [Battle]
 Hp=500
-Tp=100
-Str=60
-Def=50
-Int=50
-Spd=70
+Tp=10
+Str=20
+Def=20
+Int=20
+Spd=30
 Status=alive
 
 
@@ -31,7 +31,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a magestic creature known as a Hippogryph that is descended from a griffin. It is part lion, eagle, horse and magical in nature.
+Char=is a majestic creature known as a Hippogryph that is descended from a griffin. It is part lion, eagle, horse and magical in nature.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
 [Stuff]
@@ -99,8 +99,8 @@ Equipped=FalcorrPower
 FalcorrPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
-Wizardry=500
-MartialArts=500
+Wizardry=100
+MartialArts=100
 Zen=5
 Resist-Intimidate=100
 Resist-Stun=100
@@ -129,6 +129,7 @@ ChokeBreath=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 Equipped=WeaponMaster
 WeaponMaster=5
 WeaponMasterXP=1
+
 
 [modifiers]
 Heal=none
