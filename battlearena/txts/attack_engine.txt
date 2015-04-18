@@ -1,0 +1,2 @@
+blows the loud train whistle before running over %enemy
+emits a lot of steam before hitting %enemy
