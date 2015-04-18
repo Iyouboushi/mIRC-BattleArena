@@ -1253,8 +1253,10 @@ Battle Arena Bot VERSIONS
 - Fixed a bug in which players could bid on an auction house item without any allied notes
 - Fixed a bug that would cause an infinite loop if there was only 1 NPC in the \npcs\ folder.
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
-- Removed the Final_Guard monster
-- Removed the Prime_Vise monster
+- Fixed an exploit where player difficulty could be used on early streaks for easy orbs
+- Removed the following monsters: Final_Guard, Prime_Vise, Excenmille, NajaSalaheem, Wind-UpShantotto
+- Removed the following NPCs: Nauthima
+- Removed the following bosses: Adlanna, Eldora, EldoraAdlanna, NauthimaTiranadel, RuneFencer_Nauthima
 - Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
 - Removed the !toggle battle formula bot admin command
 - Removed the bot setting the user levels of bot owner/admins upon starting to prevent a security hole
