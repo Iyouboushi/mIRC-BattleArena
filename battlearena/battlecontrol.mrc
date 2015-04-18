@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/11/15
+;;;; Last updated: 04/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -105,22 +105,38 @@ alias reload.battle.streak {
   var %current.streak $readini(battlestats.dat, Battle, WinningStreak)
   if (%current.streak > 10) {   $display.message($readini(translation.dat, errors, Can'tReloadOnAWinningStreak), private) | halt }
   else { 
-    var %saved.streak $readini($char($1), info, savedstreak)
-    if (%saved.streak = $null) {   $display.message($readini(translation.dat, errors, NoWinningStreakSaved), private) | halt }
-    if (%saved.streak = 0) {   $display.message($readini(translation.dat, errors, NoWinningStreakSaved), private) | halt }
-    writeini battlestats.dat Battle WinningStreak %saved.streak
-    writeini battlestats.dat Battle LosingStreak 0
-    $display.message($readini(translation.dat, system, ReloadBattleStreak), global)
+
+    var %last.reload $readini($char($1), info, reloadstreak.time)
+    var %time.difference $calc($ctime - %last.reload)
+
+    var %time.between.reload $return.systemsetting(TimeBetweenSaveReload)
+    if (%time.between.reload = null) { var %time.between.reload 1200 } 
+
+    if ((%time.difference = $null) || (%time.difference > %time.between.reload)) {
+      var %saved.streak $readini($char($1), info, savedstreak)
+      if (%saved.streak = $null) {  $display.message($readini(translation.dat, errors, NoWinningStreakSaved), private) | halt }
+      if (%saved.streak = 0) {  $display.message($readini(translation.dat, errors, NoWinningStreakSaved), private) | halt }
+
+      writeini battlestats.dat Battle WinningStreak %saved.streak
+      writeini battlestats.dat Battle LosingStreak 0
+      writeini $char($1) Info ReloadStreak.time $ctime
+      $display.message($readini(translation.dat, system, ReloadBattleStreak), global)
+    }
+    else { $display.message($readini(translation.dat, errors, NotEnoughTimeToReload), private) | halt }
   }
 }
 
-on 3:TEXT:!clear battle save*:*:{   $set_chr_name($nick) | $checkchar($nick)
-  if (%battleis = on) {   $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
-  var %saved.streak $readini($char($nick), info, savedstreak)
-  if (%saved.streak = $null) {   $display.message($readini(translation.dat, errors, NoWinningStreakSavedToErase), private) | halt }
+on 3:TEXT:!clear battle save*:*:{ $clear.battle.save($nick) }
+on 3:TEXT:!clear battle streak*:*:{  $clear.battle.save($nick) }
+
+alias clear.battle.save {
+  $set_chr_name($1) | $checkchar($1)
+  if (%battleis = on) {  $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
+  var %saved.streak $readini($char($1), info, savedstreak)
+  if (%saved.streak = $null) { $display.message($readini(translation.dat, errors, NoWinningStreakSavedToErase), private) | halt }
   if (%saved.streak = 0) {   $display.message($readini(translation.dat, errors, NoWinningStreakSavedToErase), private) | halt }
   $display.message($readini(translation.dat, system, ClearedBattleSave), global)
-  remini $char($nick) info savedstreak 
+  remini $char($1) info savedstreak 
 }
 
 ; Bot Owners can have some control over battles

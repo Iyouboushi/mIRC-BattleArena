@@ -412,6 +412,7 @@ LevelTooLowTOSaveaStreak=$chr(3) $+ 4 $+ Error: %real.name $+ 's level is too 
 NoWinningStreakSaved=$chr(3) $+ 4 $+ Error: %real.name does not have an arena level to reload!
 NoWinningStreakSavedToErase=$chr(3) $+ 4 $+ Error: %real.name does not have an arena level save to erase!
 NotEnoughTimeToSave=$chr(3) $+ 4 $+ Error: Not enough time has passed since the last save %real.name did. %real.name still has $duration($calc(%time.between.save - %time.difference)) left. 
+NotEnoughTimeToReload=$chr(3) $+ 4 $+ Error: Not enough time has passed since the last save reload %real.name did. %real.name still has $duration($calc(%time.between.reload - %time.difference)) left. 
 Can'tGiveToNonChar=$chr(3) $+ 4 $+ Error: %real.name cannot give items to a monster or NPC! 
 Can'tGiveNegativeItem=$chr(3) $+ 4 $+ Error: %real.name cannot give a part or negative amounts of an item.
 can'tGiveOrbsToThatchar=$chr(3) $+ 4 $+ Error: %real.name cannot give orbs to that NPC.

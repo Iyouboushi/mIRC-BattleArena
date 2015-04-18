@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/17/15
+;;;; Last updated: 04/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -47,6 +47,7 @@ system_defaults_check {
     if ($readini(system.dat, system, automatedbattlesystem) = $null) { writeini system.dat system automatedbattlesystem on } 
     if ($readini(system.dat, system, TimeBetweenBattles) = $null) { writeini system.dat system TimeBetweenBattles 120 } 
     if ($readini(system.dat, system, TimeBetweenSave) = $null) { writeini system.dat system TimeBetweenSave 3600 } 
+    if ($readini(system.dat, system, TimeBetweenSaveReload) = $null) { writeini system.dat system TimeBetweenSaveReload 1200 } 
     if ($readini(system.dat, system, automatedaibattlecasino) = $null) { writeini system.dat system automatedaibattlecasino off } 
     if ($readini(system.dat, system, aisystem) = $null) { writeini system.dat system aisystem on } 
     if ($readini(system.dat, system, showCustomBattleMessages) = $null) { writeini system.dat system showCustomBattleMessages true  } 
