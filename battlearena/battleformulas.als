@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 04/12/15
+;;;; Last updated: 04/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1721,16 +1721,15 @@ formula.techdmg.player {
     }
   }
 
-  ; If this current tech is using the same weapon as the previous tech attack, nerf the damage
-  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
-
+  ; If this current tech is using the same tech as the previous tech attack, nerf the damage
+  if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
   if ($readini($char($1), info, flag) = $null) {
 
     if (%aoe.turn > 1) {
-      var %aoe.nerf.percent $calc(7 * %aoe.turn)
-      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 5 }
+      var %aoe.nerf.percent $calc(10 * %aoe.turn)
+      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 10 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
       var %aoe.nerf.amount $round($calc(%attack.damage * %aoe.nerf.percent),0)

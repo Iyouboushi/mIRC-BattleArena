@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/23/15
+;;;; Last updated: 04/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1041,13 +1041,13 @@ alias tech.aoe {
               $covercheck(%who.battle, $2, AOE)
 
               if (($readini($char(%who.battle), status, reflect) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) {
-                $calculate_damage_techs($1, $2, $1)
-                if (%attack.damage >= 4000) { set %attack.damage $rand(2800,3500) }
+                $calculate_damage_techs($1, $2, $1, aoe)
+                if (%attack.damage >= 5000) { set %attack.damage $rand(4000,5000) }
                 unset %absorb
                 $deal_damage($1, $1, $2, %absorb)
               }
               else {
-                $calculate_damage_techs($1, $2, %who.battle)
+                $calculate_damage_techs($1, $2, %who.battle, aoe)
                 $deal_damage($1, %who.battle, $2, %absorb)
               }
 
@@ -1089,15 +1089,15 @@ alias tech.aoe {
 
               ; Check for Reflect
               if (($readini($char(%who.battle), status, reflect) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) {
-                $calculate_damage_techs($1, $2, $1)
-                if (%attack.damage >= 4000) { set %attack.damage $rand(2800,3500) }
+                $calculate_damage_techs($1, $2, $1, aoe)
+                if (%attack.damage >= 5000) { set %attack.damage $rand(4000,5000) }
                 unset %absorb
                 $deal_damage($1, $1, $2, %absorb)
                 $display_aoedamage($1, %who.battle, $2, %absorb)
               }
 
               else {
-                $calculate_damage_techs($1, $2, %who.battle)
+                $calculate_damage_techs($1, $2, %who.battle, aoe)
                 $deal_damage($1, %who.battle, $2, %absorb)
                 $display_aoedamage($1, %who.battle, $2, %absorb)
               }
@@ -1148,7 +1148,7 @@ alias calculate_damage_techs {
   ; $1 = user
   ; $2 = technique used
   ; $3 = target
-  ; $4 = optional flag ("heal")
+  ; $4 = optional flag ("heal" or "aoe")
 
   if ($readini($char($1), info, flag) = monster) { $formula.techdmg.monster($1, $2, $3, $4) }
   else { $formula.techdmg.player($1, $2, $3, $4) }
