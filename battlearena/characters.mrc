@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 03/20/15
+;;;; Last updated: 04/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1322,10 +1322,11 @@ on 3:TEXT:!view difficulty*:*:{   $set_chr_name($nick) | $checkchar($nick)
 }
 
 on 3:TEXT:!save difficulty*:*:{   $set_chr_name($nick) | $checkchar($nick) 
+  if (%battleis = on) {   $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
   if ($3 !isnum) { $display.message($readini(translation.dat, errors, DifficultyMustBeNumber),private) | halt }
   if (. isin $3) { $display.message($readini(translation.dat, errors, DifficultyMustBeNumber),private) | halt }
   if ($3 < 0) { $display.message($readini(translation.dat, errors, DifficultyCan'tBeNegative),private) | halt }
-  if ($3 > 200) { $display.message($readini(translation.dat, errors, DifficultyCan'tBeOver200),private) | halt }
+  if ($3 > 100) { $display.message($readini(translation.dat, errors, DifficultyCan'tBeOver100),private) | halt }
 
   writeini $char($nick) info difficulty $3
   $display.message($readini(translation.dat, system, SaveDifficulty), global)

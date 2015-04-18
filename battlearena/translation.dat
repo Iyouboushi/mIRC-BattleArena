@@ -432,6 +432,7 @@ SkillCommandOnlyOnPlayers=$chr(3) $+ 4 $+ Error: This command can only be used
 DifficultyMustBeNumber=$chr(3) $+ 4 $+ Error: The difficulty must be a whole number.
 DifficultyCan'tBeNegative=$chr(3) $+ 4 $+ Error: The difficulty must be either 0 or greater than 0.
 DifficultyCan'tBeOver200=$chr(3) $+ 4 $+ Error: The difficulty can't be greater than 200.
+DifficultyCan'tBeOver100=$chr(3) $+ 4 $+ Error: The difficulty can't be greater than 100.
 AugmentAddCmd=$chr(3) $+ 4 $+ Error: To add an augment use the following: !augment add (weapon name) (rune)
 AugmentRemoveCmd=$chr(3) $+ 4 $+ Error: To remove an augment use the following: !augment remove (weapon name)
 DoNotHaveRune=$chr(3) $+ 4 $+ Error: %real.name does not have that rune to use!
