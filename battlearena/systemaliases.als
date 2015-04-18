@@ -292,7 +292,7 @@ system_defaults_check {
   .remove $mon(NajaSalaheem)
   .remove $mon(Wind-UpShantotto)
 
-  . remove $boss(Adlanna)
+  .remove $boss(Adlanna)
   .remove $boss(Eldora)
   .remove $boss(EldoraAdlanna)
   .remove $boss(NauthimaTiranadel)
