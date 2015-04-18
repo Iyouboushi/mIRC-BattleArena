@@ -30,3 +30,4 @@
 *.default eol=crlf
 *.char eol=crlf
 *.ini eol=crlf
+*.ver eol=crlf
