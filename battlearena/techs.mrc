@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/18/15
+;;;; Last updated: 04/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1020,12 +1020,13 @@ alias tech.aoe {
       if ($readini($char(%who.battle), info, flag) = monster) { inc %battletxt.current.line }
       else { 
 
-        if (($readini($char($1), status, confuse) != yes) && ($1 = %who.battle)) { inc %battletxt.current.line 1 }
+        if ((%mode.pvp = on) && ($1 = %who.battle)) { var %can.hit no }
+        if (($readini($char($1), status, confuse) != yes) && ($1 = %who.battle)) { var %can.hit no }
 
         var %current.status $readini($char(%who.battle), battle, status)
-        if ((%current.status = dead) || (%current.status = runaway)) { inc %battletxt.current.line 1 }
-        else { 
+        if ((%current.status = dead) || (%current.status = runaway)) { var %can.hit no }
 
+        if (%can.hit != no) { 
           if ($readini($char($1), battle, hp) > 0) {
             inc %number.of.hits 1
             var %target.element.heal $readini($char(%who.battle), modifiers, heal)
@@ -1056,9 +1057,9 @@ alias tech.aoe {
 
             }
           }
-
-          inc %battletxt.current.line 1 
         } 
+        unset %can.hit
+        inc %battletxt.current.line 1 
       }
     }
   }
