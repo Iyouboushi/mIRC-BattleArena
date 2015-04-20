@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/18/15
+;;;; Last updated: 04/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -511,12 +511,15 @@ alias enter {
     inc %current.player.levels %player.level
     writeini $txtfile(battle2.txt) BattleInfo PlayerLevels %current.player.levels
 
-    var %current.difficulty $readini($txtfile(battle2.txt), BattleInfo, Difficulty)
-    if (%current.difficulty = $null) { var %current.difficulty 0 }
-    var %player.difficulty $readini($char($1), info, difficulty)
-    if (%player.difficulty = $null) { var %player.difficulty 0 }
-    inc %current.difficulty %player.difficulty
-    writeini $txtfile(battle2.txt) BattleInfo Difficulty %current.difficulty
+    if ($return.systemsetting(AllowPersonalDifficulty) = true) {
+      var %current.difficulty $readini($txtfile(battle2.txt), BattleInfo, Difficulty)
+      if (%current.difficulty = $null) { var %current.difficulty 0 }
+      var %player.difficulty $readini($char($1), info, difficulty)
+      if (%player.difficulty = $null) { var %player.difficulty 0 }
+      inc %current.difficulty %player.difficulty
+      writeini $txtfile(battle2.txt) BattleInfo Difficulty %current.difficulty
+    }
+    if ($return.systemsetting(AllowPersonalDifficulty) != true) { writeini $txtfile(battle2.txt) BattleInfo Difficulty 0 }
 
     var %average.levels $round($calc(%current.player.levels / $readini($txtfile(battle2.txt), BattleInfo, Players)),0)
     writeini $txtfile(battle2.txt) BattleInfo AverageLevel %average.levels
