@@ -59,6 +59,7 @@ WheelGameTime=43200
 TwitchDelayTime=2
 BonusEvent=false
 showCustomBattleMessages=true
+AllowPersonalDifficulty=true
 EnableBandits=true
 EnableGremlins=true
 EnableGoblins=true

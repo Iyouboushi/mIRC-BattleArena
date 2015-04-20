@@ -238,6 +238,8 @@ PlayersMustDieModeOn=$chr(3) $+ 4 $+ The Players Must Die Mode has been turned
 PlayersMustDieModeOff=$chr(3) $+ 4 $+ The Players Must Die Mode has been turned off.
 SpiritOfHeroOn=$chr(3) $+ 4 $+ Spirit of the Hero has been turned on.
 SpiritOfHeroOff=$chr(3) $+ 4 $+ Spirit of the Hero has been turned off.
+AllowPersonalDifficultyOn=$chr(3) $+ 4 $+ Personal Difficulty has been turned on.
+AllowPersonalDifficultyOff=$chr(3) $+ 4 $+ Personal Difficulty has been turned off.
 AllowColorsOn=$chr(3) $+ 4 $+ The Bot's Colors have been turned on.
 AllowColorsOff=$chr(3) $+ 4 $+ The Bot's Colors have been turned off.
 AllowBoldOn=$chr(3) $+ 4 $+ The Bot's Bold has been turned on.
@@ -508,7 +510,8 @@ StreakTooLowForTrusts=$chr(3) $+ 4 $+ Error: The arena level is too low for tr
 NotEnoughHPForSkill=$chr(3) $+ 4 $+ Error: $get_chr_name($1) does not have enough HP to perform this skill!
 Can'tSaveStreakUnder11=$chr(3) $+ 4 $+ Error: The arena level is too low for you to save. This command can only be used on arena levels 11+
 Can'tUseFoodOnOthers=$chr(3) $+ 4 $+ Error: This action has been disabled and cannot be done at this time.
-
+Can'tRaiseStatBeforeOthers=$chr(3) $+ 4 $+ Error: This stat cannot be raised any more until the other stats have been raised higher.
+ActionDisabled=$chr(3) $+ 4 $+ Error: This action has been disabled and cannot be done at this time.
 
 =======================
 Battle Related Messages

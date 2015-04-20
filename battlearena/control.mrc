@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 04/15/15
+;;;; Last updated: 04/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -207,6 +207,18 @@ on 50:TEXT:!toggle mode playersmustdie*:*:{
   else {
     writeini system.dat system PlayersMustDieMode false
     $display.message($readini(translation.dat, system, PlayersMustDieModeOff), global)
+  }
+}
+
+; Bot admins can toggle Personal Difficulty
+on 50:TEXT:!toggle personalDifficulty*:*:{   
+  if ($readini(system.dat, system,AllowPersonalDifficulty) = false) { 
+    writeini system.dat system AllowPersonalDifficulty true
+    $display.message($readini(translation.dat, system, AllowPersonalDifficultyOn), global)
+  }
+  else {
+    writeini system.dat system AllowPersonalDifficulty false
+    $display.message($readini(translation.dat, system, AllowPersonalDifficultyOff), global)
   }
 }
 
