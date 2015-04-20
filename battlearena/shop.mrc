@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 04/08/15
+;;;; Last updated: 04/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1079,6 +1079,15 @@ alias shop.stats {
     }
 
     if (%player.shop.redorbs < %total.price) { $display.private.message(4You do not have enough $readini(system.dat, system, currency) to purchase this upgrade!) | halt }
+
+    var %shop.battlestats str.int.def.spd
+    if ($istok(%shop.battlestats,$3,46) = $true) { 
+      var %current.stat $readini($char($1), basestats, $3) 
+      var %total.stats $calc($readini($char($1), basestats, str) + $readini($char($1), basestats, def) + $readini($char($1), basestats, int) + $readini($char($1), basestats, spd))
+      var %stat.ratio $calc(%current.stat / %total.stats)
+
+      if (%stat.ratio > .45) { $display.private.message($readini(translation.dat, errors, Can'tRaiseStatBeforeOthers)) | halt }
+    }
 
 
     ; if so, increase the amount and add the stat bonus
