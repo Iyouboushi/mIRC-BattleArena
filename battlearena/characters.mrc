@@ -1289,16 +1289,14 @@ on 3:TEXT:!scoreboard:*: {
 
 on 3:TEXT:!score*:*: {
   if ($2 = $null) { 
-    $get.score($nick, null)
-    var %score $readini($char($nick), scoreboard, score)
+    var %score $calculate.score($nick)
     $set_chr_name($nick) | $display.message($readini(translation.dat, system, CurrentScore), private)
   }
   else {
     $checkchar($2) 
     var %flag $readini($char($2), info, flag)
     if ((%flag = monster) || (%flag = npc)) { display.system.message($readini(translation.dat, errors, SkillCommandOnlyOnPlayers), private) | halt }
-    var %score $get.score($2, null)
-    var %score $readini($char($2), scoreboard, score)
+    var %score $calculate.score($2)
     $set_chr_name($2) | $display.message($readini(translation.dat, system, CurrentScore), private)
   }
 }
