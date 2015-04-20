@@ -10,6 +10,8 @@ BeastmenSeal Items
 [05 Seals] AlliedTrainingPaper
 [05 Seals] WormFood
 [10 Seals] DemonBell
+[10 Seals] BombShard
+[10 Seals] MillennialFairPass
 [15 Seals] VirilityCan
 [15 Seals] ArmosMedallian
 [15 Seals] BookOfMudora
@@ -18,7 +20,7 @@ BeastmenSeal Items
 [15 Seals] CorruptWormFood
 [15 Seals] BloodySpine
 [15 Seals] DungeonMap
-[20 Seals] MayanMap
+[20 Seals] MayanMap 
 
 Kindred Seal Items
 [15 Seals] GemOfTheNorth
@@ -38,7 +40,7 @@ Kindred Seal Items
 [20 Seals] SpheroidPlate
 [20 Seals] TavnazianPass
 [20 Seals] OldOrcBow
-[25 Seals] RottingOrb
+[25 Seals] RottingOrb 
 
 Kindred Crest Portal Items
 [15 Crests] LihzahrdPowerCell
@@ -47,15 +49,19 @@ Kindred Crest Portal Items
 [20 Crests] TimeOrb
 [20 Crests] JungleOrb
 [30 Crests] CrimsonTraverserStone
-[30 Crests] EvilGuitar
+[30 Crests] EvilGuitar 
 
 High Kindred Crest Portal Items
 [30 Crests] GoddessOrb
-[30 Crests] AtlantianCrystal
+[30 Crests] AtlantianCrystal 
 
 Crafted Seal Items
 GodSeal
 HyruleOrb
+UnknownPowerSource 
+
+--------------------------------
+
 
 
 ALLIEDTRAININGPAPER
@@ -66,7 +72,7 @@ Portal Item Cost: 5 Beastmen Seals
 Potential Rewards: RustyHelmet, RustyMail, RustyHose, RustyBoots, RustyKnuckles
 Allied Notes Worth: 50
 Danger Level: Low
-Estimated Fight Level: 10~20 
+Current level is capped at 10 
 
 
 
@@ -76,9 +82,9 @@ Allied Intelligence has reported that a Morion Worm has been bothering mining op
 Portal Item: WormFood
 Portal Item Cost: 5 Beastmen Seals
 Potential Rewards: IronOre, GoldOre, DarksteelOre, BeastmenSeal, MageRobe, Ruby
-Allied Notes Worth: 150
+Allied Notes Worth: 50
 Danger Level: Medium
-Estimated Fight Level: 55~60 
+Current level is capped at: 25 
 
 
 
@@ -88,9 +94,32 @@ That insufferable clown, Jester, is back at it and is disrupting the operations 
 Portal Item: DemonBell
 Portal Item Cost: 10 Beastmen Seals
 Potential Rewards: JesterHat, Fool's-Tablet, BeastmanSeal, KindredSeal
-Allied Notes Worth: 300
+Allied Notes Worth: 100
 Danger Level: High
-Estimated Fight Level: 250~300 
+Current level is capped at: 30 
+
+
+
+BOMBSHARD
+Allied intelligence has reported that a very powerful bomb monster is growing in size in the Waughroon Shrine. If allowed to grow to maturity it will be strong enough to wipe an entire city off the face of the map with its powerful explosion. Shami knows that a special bomb shard can be used to lure the beast out into the open where everyone can attack it. But be careful; even an immature bomb such as this can cause an explosion powerful enough to leave behind a massive crater. So kill the creature fast or else.. 
+
+Portal Item: BombShard
+Portal Item Cost: 10 Beastmen Seals
+Potential Rewards: BombFragment, KindredSeal, IgnitionStar
+Allied Notes Worth: 200
+Danger Level: Medium
+Current level is capped at: 30 
+
+
+
+MILLENNIALFAIRPASS
+
+Portal Item: MillennialFairPass
+Portal Item Cost: 10 Beastman Seals
+Potential Rewards: SilverPointsCard
+Allied Notes Worth: 50
+Danger Level: Low
+Current level is capped at: 10 
 
 
 
@@ -100,9 +129,9 @@ The Virility soda company has been producing a mass amount of demonic soda that 
 Portal Item: VirilityCan
 Portal Item Cost: 15 Beastman Seals
 Potential Rewards: Goldorb, Slurm, KindredSeal, Red-Belt
-Allied Notes Worth: 500
+Allied Notes Worth: 250
 Danger Level: Medium
-Estimated Fight Level: 300~400 
+Current level is capped at: 50 
 
 
 
@@ -112,9 +141,9 @@ An ancient palace in the east has been rediscovered but the Allied Forces have b
 Portal Item: ArmosMedallian
 Portal Item Cost: 15 Beastman Seals
 Potential Rewards: KindredSeal, PendantOfCourage
-Allied Notes Worth: 550
+Allied Notes Worth: 200
 Danger Level: Medium
-Estimated Fight Level: 150~300
+Current level is capped at: 30 
 
 
 
@@ -124,9 +153,9 @@ Shami has found an ancient book talking about a desert palace where a pendant of
 Portal Item: BookOfMudora
 Portal Item Cost: 15 Beastman Seals
 Potential Rewards: KindredSeal, PendantOfPower
-Allied Notes Worth: 550
+Allied Notes Worth: 200
 Danger Level: Medium
-Estimated Fight Level: 200~350
+Current level is capped at: 30 
 
 
 
@@ -136,10 +165,55 @@ An ancient and tall tower in the mountains of the north has been rediscovered.  
 Portal Item: HeraKey
 Portal Item Cost: 15 Beastman Seals
 Potential Rewards: KindredSeal, PendantOfWisdom
-Allied Notes Worth: 550
+Allied Notes Worth: 200
 Danger Level: Medium
-Estimated Fight Level: 250~400
+Current level is capped at: 30 
 
+
+
+SUSPICIOUSLOOKINGEYE
+
+Portal Item: SuspicousLookingEye
+Portal Item Cost: 15 Beastman Seals
+Potential Rewards: DemoniteOre
+Allied Notes Worth: 200
+Danger Level: Medium
+Current level is capped at: 50 
+
+
+
+CORRUPTWORMFOOD
+
+Portal Item: CorruptWormFood
+Portal Item Cost: 15 Beastman Seals
+Potential Rewards: ShadowScale
+Allied Notes Worth: 200
+Danger Level: Medium
+Current level is capped at: 75 
+
+
+
+BLOODYSPINE
+
+Portal Item: BloodySpine
+Portal Item Cost: 15 Beastman Seals
+Potential Rewards: CrimtaneOre
+Allied Notes Worth: 200
+Danger Level: Medium
+Current level is capped at: 75
+
+
+
+DUNGEONMAP 
+
+Portal Item: DungeonMap
+Portal Item Cost: 15 Beastman Seals
+Potential Rewards: KindredSeal, BookOfSkulls
+Allied Notes Worth: 200
+Danger Level: High
+Current level is capped at: 100
+
+ 
 
 MAYANMAP
 Shami has discovered an ancient Mayan Map while out on his travels. He's willing to sell it to you for a price.  The Allied Forces HQ requests that you buy the map and investigate the ancient ruins in search of something useful to help fight the armies of evil.
@@ -147,21 +221,9 @@ Shami has discovered an ancient Mayan Map while out on his travels. He's willing
 Portal Item: MapanMap
 Portal Item Cost: 20 Beastman Seals
 Potential Rewards: KindredSeal, Mayan-Charm
-Allied Notes Worth: 550
+Allied Notes Worth: 350
 Danger Level: Medium
-Estimated Fight Level: 250~400 
-
-
-
-HYRULEORB
-There is a legend passed down through the ages about a Hero of Time who once vanquished a great evil and saved an entire kingdom.  It is said that someone who possesses the Pendants of Courage, Power and Wisdom will be able to combine the items into a key that will take the users into the kingdom where this hero once lived.  
-
-Portal Item: HyruleOrb
-Portal Item Cost: Crafted Only
-Potential Rewards: ???
-Allied Notes Worth: 2500
-Danger Level: High
-Estimated Fight Level: 600+
+Current level is capped at: 30 
 
 
 
@@ -175,7 +237,7 @@ Portal Item Cost: 15 Kindred Seals
 Potential Rewards: KindredSeal, GenbuSeal, Genbu'sKabuto
 Allied Notes Worth: 1200
 Danger Level: Extremely High
-Estimated Fight Level: 1100~1500 
+Current level is capped at: 110
 
 
 
@@ -187,7 +249,7 @@ Portal Item Cost: 15 Kindred Seals
 Potential Rewards: KindredSeal, SeiryuSeal, Seiryu'sKote
 Allied Notes Worth: 1200
 Danger Level: Extremely High
-Estimated Fight Level: 1100~1500 
+Current level is capped at: 110
 
 
 
@@ -199,7 +261,7 @@ Portal Item Cost: 15 Kindred Seals
 Potential Rewards: KindredSeal, SuzakuSeal, Suzaku'sSune-Ate
 Allied Notes Worth: 1200
 Danger Level: Extremely High
-Estimated Fight Level: 1100~1500 
+Current level is capped at: 110
 
 
 
@@ -211,7 +273,51 @@ Portal Item Cost: 15 Kindred Seals
 Potential Rewards: KindredSeal, ByakkoSeal, Byakko'sHaidate
 Allied Notes Worth: 1200
 Danger Level: Extremely High
-Estimated Fight Level: 1100~1500 
+Current level is capped at: 110
+
+
+
+MECHANICALEYE
+
+Portal Item: MechanicalEye
+Portal Item Cost: 15 Kindred Seals
+Potential Rewards: SoulOfSight
+Allied Notes Worth: 1000
+Danger Level: High
+Current level is capped at: 200
+
+
+
+MECHANICALWORM
+
+Portal Item: MechanicalWorm
+Portal Item Cost: 15 Kindred Seals
+Potential Rewards: SoulOfMight
+Allied Notes Worth: 1050
+Danger Level: High
+Current level is capped at: 200
+
+
+
+MECHANICALSKULL
+
+Portal Item: MechanicalSkull
+Portal Item Cost: 15 Kindred Seals
+Potential Rewards: SoulOfFright
+Allied Notes Worth: 1100
+Danger Level: High
+Current level is capped at: 225
+
+
+
+PLANTERA'SBULB
+
+Portal Item: Plantera'sBulb
+Portal Item Cost: 15 Kindred Seals
+Potential Rewards: ChlorophyteOre
+Allied Notes Worth: 1150
+Danger Level: Very High
+Current level is capped at: 250
 
 
 
@@ -223,7 +329,7 @@ Portal Item Cost: 20 Kindred Seals
 Potential Rewards: Goldorb, Slurm, KindredSeal, Engine-Ring, BloodScroll
 Allied Notes Worth: 1000
 Danger Level: High
-Estimated Fight Level: 600~700 
+Current level is capped at: 60 
 
 
 
@@ -235,7 +341,7 @@ Portal Item Cost: 20 Kindred Seals
 Potential Rewards: KindredSeal, BloodyHeart, BloodSocks, BloodCrown, BloodHauberk
 Allied Notes Worth: 1000
 Danger Level: Very High
-Estimated Fight Level: 500~600 
+Current level is capped at: 55 
 
 
 
@@ -243,11 +349,11 @@ BANISHINGCHARM
 Allied Intelligence has reported that a very powerful samurai demon by the name of Rasetsu is building an army within the demonic Waughroon Shrine.  The Allied Forces have requested players to banish and stop them before they invade our world.  Alas, reaching the shrine will be difficult.  Perhaps the strange merchant Shami knows of a way inside and would be willing to trade or sell an item to help.
 
 Portal Item: BanishingCharm
-Portal Item Cost: 25 Kindred Seals
+Portal Item Cost: 20 Kindred Seals
 Potential Rewards: KindredSeal, MyochinKote, MyochinSune-Ate, MyochinHaidate, MyochinDomaru, MyochinKabuto
 Allied Notes Worth: 1000
 Danger Level: Very High
-Estimated Fight Level: 500~600 
+Current level is capped at: 50
 
 
 
@@ -257,11 +363,71 @@ So, you're walking through town and you see this guy standing around. You think 
 Shami can help you make the item required to access the battlefield that Rainemard will be waiting in.
 
 Portal Item: LachesisOrb
-Portal Item Cost: 25 Kindred Seals
+Portal Item Cost: 20 Kindred Seals
 Potential Rewards: Warlock's Chapeau, Warlock's Tabard, Warlock's Gloves, Warlock's Tights, Warlock's Boots
-Allied Notes Worth: 500
+Allied Notes Worth: 1000
 Danger Level: High
-Estimated Fight Level: 500 - 600
+Current level is capped at: 150
+
+
+
+AVATARBLOOD
+Intelligence has found out about a large Diremite Spider running around and stealing various items. After its latest theft, it has fled to Abyssea - Uleguerand Range. Shami has an item to lure the monster out of hiding.
+
+Portal Item: Avatar Blood
+Portal Item Cost: 20 Kindred Seals
+Potential Rewards: Summoner Horn, Summoner Doublet, Summoner Spats, Summoner Pigaches, Summoner Bracers, Kindred Seal
+Allied Notes Worth: 1500
+Danger Level: Extremely High
+Current level is capped at: 150
+
+
+
+YAGUDODRINK
+Rumor has it that a powerful Yagudo monk has been ambushing adventurers who have a Yagudo Drink in their possession. Shami has access to such an item and is willing to trade it to adventurers if they're strong enough to fight the Yagudo menace.
+
+Portal Item: Yagudo Drink
+Portal Item Cost: 20 Kindred Seals
+Potential Rewards: Tantra Crown, Tantra Cyclas, Tantra Hose, Tantra Gaiters, Tantra Gloves, Kindred Seal
+Allied Notes Worth: 1500
+Danger Level: Extremely High
+Current level is capped at: 150
+
+
+
+SPHEROIDPLATE
+Allied scouts have seen a strange Iron Giant randomly destroying buildings and even small settlements. Afterwards, it seems to just fall into a pile of parts until someone gets too close, which then it will rise up to attack. Shami has an item that can locate where the Iron Giant is currently at.
+
+Portal Item: Spheroid Plate
+Portal Item Cost: 20 Kindred Seals
+Potential Rewards: Wizard Petasos, Wizard Coat, Wizard Tonban, Wizard Sabots, Wizard Gloves, Kindred Seal
+Allied Notes Worth: 1500
+Danger Level: Extremely High
+Current level is capped at: 150
+
+
+
+TAVNAZIANPASS
+There have been sightings of a shadow in Elvaan form attack random people in the Valkurm Dunes during the late hours. The rumor going around seems to be the Elvaan was a White Mage who had died in battle and is now taking his rage out on people. Shami is willing to trade an item that seems to attract the shadow.
+
+Portal Item: Tavnazian Pass
+Portal Item Cost: 20 Kindred Seals
+Potential Rewards: Healer Cap, Healer Briault, Healer Pantaloons, Healer Duckbills, Healer Mitts, Kindred Seal
+Allied Notes Worth: 1500
+Danger Level: Extremely High
+Current level is capped at: 150
+
+
+
+OLDORCBOW
+A powerful Orc ranger has been stealing equipment from random adventurers with the aid of One-Eyes Gwajboj. Shami has access to a supply of Old Orc Bows that has been known to be one thing Three-Eyed Prozpuz has been after.
+
+Portal Item: Old Orc Bow
+Portal Item Cost: 20 Kindred Seals
+Potential Rewards: Scout Beret, Scout Jerkin, Scout Braccae, Scout Boots, Scout Bracers, Kindred Seal
+Allied Notes Worth: 1500
+Danger Level: Extremely High
+Current level is capped at: 150
 
 
 
@@ -269,23 +435,69 @@ ROTTINGORB
 While we continue to investigate the city in the sky, allied intelligence has discovered that a powerful demon has made its home in a dungeon full of rotting bodies. It seems this body has created a shell made out of dead bodies for protection and is trying to summon an undead army of zombies.  This creature must be stopped at all cost!  Shami is willing to trade an item that will teleport you into the dungeon itself.  But beware!  Reports have indicated that the creature can devour the minions it is summoning to become stronger.
 
 Portal Item: RottingOrb
-Portal Item Cost: 30 Kindred Seals
+Portal Item Cost: 25 Kindred Seals
 Potential Rewards: KindredSeal, RottingMeat, ChaosBurgeonet, ChaosCuirass, ChaosFlanchard, ChaosSollerets, ChaosGauntlets
 Allied Notes Worth: 2500
 Danger Level: Extremely High
-Estimated Fight Level: 1000~1500+ 
+Current level is capped at: 100
 
 
 
-GODSEAL
-Intelligence has gathered that the center chamber on the island is home to Kirin, the king of the Sky Gods.  It is said that his chamber can only be entered by forging a powerful GodSeal using the four Sky God seals.  Sorry, Shami can't help you enter this one!
+LIHZAHRDPOWERCELL
 
-Portal Item: GodSeal
-Portal Item Cost: Crafted Only
-Potential Rewards: KirinSeal, Kirin'sOsode
-Allied Notes Worth: 2500
+Portal Item: LihzahrdPowerCell 
+Portal Item Cost: 15 Kindred Crests
+Potential Rewards: EyeOfTheGolem
+Allied Notes Worth: 1200
+Danger Level: Very High
+Current level is capped at: 250
+
+
+
+TRUFFLEWORM
+
+Portal Item: TruffleWorm
+Portal Item Cost: 15 Kindred Crests
+Potential Rewards: TitaniumOre
+Allied Notes Worth: 1250
 Danger Level: Extremely High
-Estimated Fight Level: 1100~1500
+Current level is capped at: 275
+
+
+
+OLDORCSWORD
+This Orc paladin has been quite the thorn in the side to the nation of San d'Oria. In addition, he has been aiding Three-Eyed Prozpuz in stealing equipment from adventurers. Shami has access to a supply of Old Orc Swords, which has been an item known to get One-Eyed Gwajboj's attention.
+
+Portal Item: Old Orc Sword
+Portal Item Cost: 20 Kindred Crests
+Potential Rewards: Creed Armet, Creed Cuirass, Creed Cuisses, Creed Sabatons, Creed Gauntlets, Kindred Crest
+Allied Notes Worth: 1750
+Danger Level: Extremely High
+Current level is capped at: 150
+
+
+
+TIMEORB
+Legend has it that there was a mighty steed by the name of Geryon who had the power to control time.  The Dark Forces of Evil took interest and managed to capture and corrupt the horse, filling it with a hateful dark energy.  Allied Forces have reported that Geryon is being used to slow down time during attacks on outposts.  It's up to the heroes to free this poor soul from corruption.  Shami has a way of making an orb that can slow time down enough to allow you approach the beast.  Draw it out into the underground arena and good luck.
+
+Portal Item: TimeOrb
+Portal Item Cost: 20 Kindred Crests
+Potential Rewards: EtherealChain, KindredCrest, IgnitionStar
+Allied Notes Worth: 1000
+Danger Level: Extreme High
+Current level is capped at: 150
+
+
+
+JUNGLEORB
+Allied Forces are reporting of two very dangerous monsters in the deep jungle that need to be taken care of.  Echidna, the She-Viper, is breeding an army of Chimeras, while Eccentric Eve is just growing out of control.  Shami has an orb that will help get you to the jungle but is unable to be certain which of the two beasts you will face in combat.  Take caution! Both are extremely powerful..
+
+Portal Item: JungleOrb
+Portal Item Cost: 20 Kindred Crests (15 if the Allied Forces Garden is level 6 or higher)
+Potential Rewards: JungleRose, JungleThorn, KindredCrest, IgnitionStar
+Allied Notes Worth: 1000
+Danger Level: Extreme High
+Current level is capped at: 150
 
 
 
@@ -299,94 +511,7 @@ Portal Item Cost: 30 Kindred Crests
 Potential Rewards: One of the reports claims that Shinryu carries Twilight armor as treasure, but that is all the info gathered.
 Allied Notes Worth: 2750
 Danger Level: God-like
-Estimated Fight Level: 5000 - 6000
-
-
-
-GODDESSORB
-Eldora has been waiting in the shadows, watching as the heroes rise up in the battle ranks, soon to be at level 1900.  Eldora issues a final challenge, to face her true might and possibly gain powerful armor. Additionally, Nauthima Tiranadel, who was once a boss but then joined the heroes as a NPC ally, has Joined Eldora for this battle. She will wield her true magical might in this battle as well.
-
-Shami has been deemed worthy enough to make the portal item for this challenge. However, you most likely should make sure your coffin is prepared, for this could be your final battle. It was nice knowing you!
-
-Portal Item: Goddess Orb
-Portal Item Cost: 50 High Kindred Crests
-Potential Rewards: Eldora simply replied with this: "Unkai armor set and Estoqueur armor set."
-Allied Notes Worth: 3000
-Danger Level: Impossible to gauge
-Estimated Fight Level: 7000 - 8000
-
-Eldora also made the vague comment of upgrading all of the new the armor, but refused to say how. Only when she feels it's time for that information to be disclosed.
-
-
-AVATARBLOOD
-Intelligence has found out about a large Diremite Spider running around and stealing various items. After its latest theft, it has fled to Abyssea - Uleguerand Range. Shami has an item to lure the monster out of hiding.
-
-Portal Item: Avatar Blood
-Portal Item Cost: 25 Kindred Seals
-Potential Rewards: Summoner Horn, Summoner Doublet, Summoner Spats, Summoner Pigaches, Summoner Bracers, Kindred Seal
-Allied Notes Worth: 1000
-Danger Level: Extremely High
-Estimated Fight Level: 1000 - 1100
-
-
-
-YAGUDODRINK
-Rumor has it that a powerful Yagudo monk has been ambushing adventurers who have a Yagudo Drink in their possession. Shami has access to such an item and is willing to trade it to adventurers if they're strong enough to fight the Yagudo menace.
-
-Portal Item: Yagudo Drink
-Portal Item Cost: 25 Kindred Seals
-Potential Rewards: Tantra Crown, Tantra Cyclas, Tantra Hose, Tantra Gaiters, Tantra Gloves, Kindred Seal
-Allied Notes Worth: 1000
-Danger Level: Extremely High
-Estimated Fight Level: 1000 - 1100
-
-
-
-SPHEROIDPLATE
-Allied scouts have seen a strange Iron Giant randomly destroying buildings and even small settlements. Afterwards, it seems to just fall into a pile of parts until someone gets too close, which then it will rise up to attack. Shami has an item that can locate where the Iron Giant is currently at.
-
-Portal Item: Spheroid Plate
-Portal Item Cost: 25 Kindred Seals
-Potential Rewards: Wizard Petasos, Wizard Coat, Wizard Tonban, Wizard Sabots, Wizard Gloves, Kindred Seal
-Allied Notes Worth: 1000
-Danger Level: Extremely High
-Estimated Fight Level: 1000 - 1100
-
-
-
-TAVNAZIANPASS
-There have been sightings of a shadow in Elvaan form attack random people in the Valkurm Dunes during the late hours. The rumor going around seems to be the Elvaan was a White Mage who had died in battle and is now taking his rage out on people. Shami is willing to trade an item that seems to attract the shadow.
-
-Portal Item: Tavnazian Pass
-Portal Item Cost: 25 Kindred Seals
-Potential Rewards: Healer Cap, Healer Briault, Healer Pantaloons, Healer Duckbills, Healer Mitts, Kindred Seal
-Allied Notes Worth: 1000
-Danger Level: Extremely High
-Estimated Fight Level: 1000 - 1100
-
-
-
-OLDORCBOW
-A powerful Orc ranger has been stealing equipment from random adventurers with the aid of One-Eyes Gwajboj. Shami has access to a supply of Old Orc Bows that has been known to be one thing Three-Eyed Prozpuz has been after.
-
-Portal Item: Old Orc Bow
-Portal Item Cost: 25 Kindred Seals
-Potential Rewards: Scout Beret, Scout Jerkin, Scout Braccae, Scout Boots, Scout Bracers, Kindred Seal
-Allied Notes Worth: 1000
-Danger Level: Extremely High
-Estimated Fight Level: 1000 - 1100
-
-
-
-OLDORCSWORD
-This Orc paladin has been quite the thorn in the side to the nation of San d'Oria. In addition, he has been aiding Three-Eyed Prozpuz in stealing equipment from adventurers. Shami has access to a supply of Old Orc Swords, which has been an item known to get One-Eyed Gwajboj's attention.
-
-Portal Item: Old Orc Sword
-Portal Item Cost: 25 Kindred Crests
-Potential Rewards: Creed Armet, Creed Cuirass, Creed Cuisses, Creed Sabatons, Creed Gauntlets, Kindred Crest
-Allied Notes Worth: 1750
-Danger Level: Extremely High
-Estimated Fight Level: 1500 - 1600
+Current level is capped at: 275
 
 
 
@@ -394,32 +519,70 @@ EVILGUITAR
 Reports have mention a that a sadistic woman has been running around and hurting various Allied Forces members and random people in general. The Allied Forces President is asking for the aid of any player that wants to end the reign of terror. Perhaps Shami knows of a way.
 
 Portal Item: EvilGuitar
-Portal Item Cost: 35 Kindred Crests
+Portal Item Cost: 30 Kindred Crests
 Potential Rewards: DiscountCard, MegaPotion, MiserRing
 Allied Notes Worth: 2750
 Danger Level: Extremely High
-Estimated Fight Level: 3500 ~ ???? 
+Current level is capped at: 200
 
 
 
-TIMEORB
-Legend has it that there was a mighty steed by the name of Geryon who had the power to control time.  The Dark Forces of Evil took interest and managed to capture and corrupt the horse, filling it with a hateful dark energy.  Allied Forces have reported that Geryon is being used to slow down time during attacks on outposts.  It's up to the heroes to free this poor soul from corruption.  Shami has a way of making an orb that can slow time down enough to allow you approach the beast.  Draw it out into the underground arena and good luck.
 
-Portal Item: TimeOrb
-Portal Item Cost: 20 Kindred Crests
-Potential Rewards: EtherealChain, KindredCrest, IgnitionStar
-Allied Notes Worth: 1000
-Danger Level: Extreme High
-Estimated Fight Level: 1500~??? 
+GODDESSORB
+Shami has been deemed worthy enough to make the portal item for this challenge. However, you most likely should make sure your coffin is prepared, for this could be your final battle. It was nice knowing you!
+
+Portal Item: GoddessOrb
+Portal Item Cost: 30 High Kindred Crests
+Potential Rewards: EstoqueurSeal, UnkaiSeal
+Allied Notes Worth: 3000
+Danger Level: Godlike
+Current level is capped at: 305
+
+Eldora also made the vague comment of upgrading all of the new the armor, but refused to say how. Only when she feels it's time for that information to be disclosed.
 
 
 
-JUNGLEORB
-Allied Forces are reporting of two very dangerous monsters in the deep jungle that need to be taken care of.  Echidna, the She-Viper, is breeding an army of Chimeras, while Eccentric Eve is just growing out of control.  Shami has an orb that will help get you to the jungle but is unable to be certain which of the two beasts you will face in combat.  Take caution! Both are extremely powerful..
+ATLANTIANCRYSTAL
+From the depths of the ocean it rose: an ancient city shimmering in gold. The powerful being Ashi had finally done it, discovered and revived the ancient city.  He has made it his home and intends to conquer and rule the world from it.  It's up to you to go put an end to the monsterous man known as Ashi Atora.  Shami can create a crystal that will allow you to enter the city for a short time, though it will cost you. 
 
-Portal Item: JungleOrb
-Portal Item Cost: 20 Kindred Crests (15 if the Allied Forces Garden is level 6 or higher)
-Potential Rewards: JungleRose, JungleThorn, KindredCrest, IgnitionStar
-Allied Notes Worth: 1000
-Danger Level: Extreme High
-Estimated Fight Level: 1500~??? 
+Portal Item: AtlantianCrystal
+Portal Item Cost: 30 High Kindred Crests
+Potential Rewards: AtlantianThreadSpool
+Allied Notes Worth: 5000
+Danger Level: Godlike
+Current level is capped at: 300
+
+
+
+GODSEAL
+Intelligence has gathered that the center chamber on the island is home to Kirin, the king of the Sky Gods.  It is said that his chamber can only be entered by forging a powerful GodSeal using the four Sky God seals.  Sorry, Shami can't help you enter this one!
+
+Portal Item: GodSeal
+Portal Item Cost: Crafted Only
+Potential Rewards: KirinSeal, Kirin'sOsode
+Allied Notes Worth: 2500
+Danger Level: Extremely High
+Current level is capped at: 120
+
+
+HYRULEORB
+There is a legend passed down through the ages about a Hero of Time who once vanquished a great evil and saved an entire kingdom.  It is said that someone who possesses the Pendants of Courage, Power and Wisdom will be able to combine the items into a key that will take the users into the kingdom where this hero once lived.  
+
+Portal Item: HyruleOrb
+Portal Item Cost: Crafted Only
+Potential Rewards: ???
+Allied Notes Worth: 2500
+Danger Level: Extremely High
+Current level is capped at: 100
+
+
+
+UNKNOWNPOWERSOURCE
+
+
+Portal Item: UnknownPowerSource
+Portal Item Cost: Crafted Only
+Potential Rewards: AlphaWeltallCore
+Allied Notes Worth: 2500
+Danger Level: Extremely High
+Current level is capped at: 300
