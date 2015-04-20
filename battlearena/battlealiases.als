@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/19/15
+;;;; Last updated: 04/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -553,8 +553,10 @@ boost_monster_hp {
   if (($return_winningstreak > 500) && ($return_winningstreak <= 2000)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
   if ($return_winningstreak > 2000) { var %hp.modifier .0035 }
 
-
-  if (%battle.type = boss) { inc %hp.modifier .05 }
+  if (%battle.type = boss) {
+    inc %hp.modifier .08 
+    if (%hp < 600) { var %hp $round(600,650) } 
+  }
   if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier 1.01 }
   if (%battle.type = assault) { dec %hp.modifier .06 }
 
