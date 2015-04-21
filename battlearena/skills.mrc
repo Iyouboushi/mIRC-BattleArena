@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 04/20/15
+;;;; Last updated: 04/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1740,7 +1740,8 @@ on 3:TEXT:!quicksilver*:*: { $skill.quicksilver($nick) }
 alias skill.quicksilver { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   $no.turn.check($1)
-  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  if ((no-skill isin %battleconditions) || (no-quicksilver isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+
   set %current.playerstyle $readini($char($1), styles, equipped)
   if ((%current.playerstyle != Quicksilver) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the Quicksilver style is equipped!, private) | unset %current.playerstyle | halt }
 
