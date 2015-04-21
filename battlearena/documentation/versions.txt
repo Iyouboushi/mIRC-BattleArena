@@ -1096,6 +1096,7 @@ Battle Arena Bot VERSIONS
 - Added the bot admin command: !toggle battle messages  -- This will toggle between old and new battle announce messages
 - Added the bot admin command: !toggle bot bold  -- Will turn bold on/off for the bot
 - Added the bot admin command: !time to enter # -- where # is the number of seconds for the !enter period
+- Added the bot admin command: toggle personalDifficulty  -- Will turn !save difficulty on/off.
 - Added a CanDodge=true/false flag to techniques. If set to false, it will be impossible to dodge the technique.
 - Added a new flag in system.dat: EnableDNSCheck=true/false   This will allow the bot to attempt to get the host names
   of players. This is necessary to use the player limit.  If disabled the bot won't attempt to use it
@@ -1107,9 +1108,13 @@ Battle Arena Bot VERSIONS
 - Added a new system.dat setting: AllowBold=true/false  If set to false the bot won't show bold
 - Added a new system.dat setting: EnableGremlins=true/false  If set to false the gremlin special boss battle won't happen
 - Added a new system.dat flag: TimeBetweenSave=3600  In seconds, this is how long players have to wait to use !save battle streak
+- Added a new system.dat flag: TimeBetweenSaveReload=1200  In seconds, this is how long players have to wait to use
+  !reload battle streak
 - Added a new system.dat flag: RedChestBase=$rand(150,700)  This is the base amount of red orbs that will appear in red chests
 - Added a new system.dat flag: WheelGameTime=43200 In seconds, this is how long players have to wait to use !wheel spin 
 - Added a new system.dat flag: EnableFoodOnOthers=  If set to false +stat (food) items can only be used on the owner
+- Added a new system.dat flag: AllowPersonalDifficulty=true  If set to false players will no longer be able to use 
+  !save difficulty
 - Added a new system.dat section: [PlayerLevelCaps]  In this section bot owners can set the level caps players have when
   fighting in certain battles. If a player's level is above the cap it will be synced down
 - Added a new system.dat section: [MonsterLevelCaps] In this section bot owners can set the level caps certain bosses
@@ -1225,6 +1230,10 @@ Battle Arena Bot VERSIONS
 - Changed the lockpicking skill to no longer work on red chests.
 - Changed the amount of damage that is done if the same technique or attack is used back to back. It now encourages players
   to swap weapons or mix up their attacks.
+- Changed the way players purchase stats so that one single stat cannot be raised to obscene levels above the rest. While
+  they don't have to be raised completely equally, they have to be within a certain amount of one another.
+- Changed !score so that it will update without needing to use !scoreboard first.
+- Changed and updated every portal boss to have a level cap
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
