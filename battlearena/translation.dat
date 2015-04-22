@@ -106,7 +106,7 @@ ViewMiscItems=$chr(3) $+ 3 $+  $+ %real.name has the following misc items: %m
 ViewMechCoreItems=$chr(3) $+ 3 $+  $+ %real.name has the following mech core items: %mech.items.list 
 ViewMechWeapons=$chr(3) $+ 3 $+  $+ %real.name has the following mech weapons: %mech.weapon.list 
 ViewSealItems=$chr(3) $+ 3 $+  $+ %real.name has the following seals: %seals.items.list 
-ViewPotionIngredientItems=$chr(3) $+ 3 $+  $+ %real.name has the following potion effect ingredient items: %potioningredient.items.list
+ViewPotionIngredientItems=$chr(3) $+ 3 $+  $+ %real.name has the following potion effect ingredient items: %potioningreident.items.list
 ViewArmorHead=$chr(3) $+ 3 $+  $+ %real.name has the following head armor: %armor.head 
 ViewArmorBody=$chr(3) $+ 3 $+  $+ %real.name has the following body armor: %armor.body
 ViewArmorLegs=$chr(3) $+ 3 $+  $+ %real.name has the following leg armor: %armor.legs
@@ -514,7 +514,8 @@ Can'tSaveStreakUnder11=$chr(3) $+ 4 $+ Error: The arena level is too low for y
 Can'tUseFoodOnOthers=$chr(3) $+ 4 $+ Error: This action has been disabled and cannot be done at this time.
 Can'tRaiseStatBeforeOthers=$chr(3) $+ 4 $+ Error: This stat cannot be raised any more until the other stats have been raised higher.
 ActionDisabled=$chr(3) $+ 4 $+ Error: This action has been disabled and cannot be done at this time.
-ActionDisabledForPVP=$chr(3) $+ 4 $+ Error: This action has been disabled in PVP mode and cannot be done at this time.
+ActionDisabledForPVP=$chr(3) $+ 4 $+ Error: This action cannot be done in PVP battles.
+CloneCannotUseSkill=$chr(3) $+ 4 $+ Error: This skill cannot be used by the shadow clone
 
 =======================
 Battle Related Messages

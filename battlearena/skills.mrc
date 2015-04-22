@@ -1461,6 +1461,8 @@ alias skill.clonecontrol {
 
   var %shadow.command $2 | $set_chr_name($1 $+ _clone)
 
+  if (($3 = scavenge) || ($3 = steal)) { $display.message($readini(translation.dat, errors, CloneCannotUseSkill), private) | halt }
+
   if (%shadow.command = taunt) {  $taunt($1 $+ _clone, $3) }
   if (%shadow.command = attack) { set %attack.target $3 | $covercheck($3) |  $attack_cmd($1 $+ _clone , %attack.target) }
   if (%shadow.command = tech) { set %attack.target $4 | $covercheck($4) |  $tech_cmd($1 $+ _clone, $3, %attack.target) }
@@ -1747,9 +1749,9 @@ alias skill.quicksilver { $set_chr_name($1)
   set %current.playerstyle $readini($char($1), styles, equipped)
   if ((%current.playerstyle != Quicksilver) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the Quicksilver style is equipped!, private) | unset %current.playerstyle | halt }
 
-  $check_for_battle($1)
-
   if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
+
+  $check_for_battle($1)
 
   if ($readini($char($1), info, flag) = $null) { 
     set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)

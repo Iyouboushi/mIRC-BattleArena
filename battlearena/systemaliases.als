@@ -1235,7 +1235,7 @@ trusts.get.list {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Builds the NPC Trusts list
+; Builds the Ingredients list
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ingredients.list {
   unset %ingredients.items.list
