@@ -831,6 +831,15 @@ on 3:TEXT:!trusts*:?:{
   else { $trusts.list($nick) | $set_chr_name($nick) | $readtrusts($nick, private) }
 }
 
+on 3:TEXT:!ingredients*:#:{ 
+  if ($2 != $null) { $checkchar($2) | $ingredients.list($2) | $set_chr_name($2) | $readingredients($2, channel) }
+  else { $ingredients.list($nick) | $set_chr_name($nick) | $readingredients($nick, channel) }
+}
+on 3:TEXT:!ingredients*:?:{ 
+  if ($2 != $null) { $checkchar($2) | $ingredients.list($2) | $set_chr_name($2) | $readingredients($2, private) }
+  else { $ingredients.list($nick) | $set_chr_name($nick) | $readingredients($nick, private) }
+}
+
 on 3:TEXT:!armor*:#:{ 
   if ($2 != $null) { $checkchar($2) | $armor.list($2) | $set_chr_name($2) | $readarmor($2, channel) }
   else {  $armor.list($nick) | $set_chr_name($nick) | $set_chr_name($nick) | $readarmor($nick, channel) } 

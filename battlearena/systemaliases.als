@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/19/15
+;;;; Last updated: 04/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1235,6 +1235,42 @@ trusts.get.list {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Builds the NPC Trusts list
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ingredients.list {
+  unset %ingredients.items.list
+  set %ingredients.items.list $ingredients.get.list($1)
+
+  if ($1 = return) { return %ingredients.items.list }
+
+  ; CLEAN UP THE LIST
+  set %replacechar $chr(044) $chr(032)
+  %ingredients.items.list = $replace(%ingredients.items.list, $chr(046), %replacechar)
+
+  unset %value | unset %replacechar
+
+  return
+}
+ingredients.get.list {
+  ; CHECKING POTION INGREDIENT ITEMS
+  var %value 1 | var %items.lines $lines($lstfile(items_potioningredient.lst))
+
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_potioningredient.lst)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) {  %ingredients.items.list = $addtok(%ingredients.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
+
+    unset %item.name | unset %item_amount
+    inc %value 1 
+  }
+  unset %item.name | unset %item_amount
+
+  return %ingredients.items.list
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Builds the Songs list
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 songs.list {
@@ -1840,31 +1876,21 @@ items.list {
     inc %value 1 
   }
 
-  ; CHECKING POTION EFFECT INGREDIENT ITEMS
+  ; CHECKING POTION INGREDIENT ITEMS
   var %value 1 | var %items.lines $lines($lstfile(items_potioningredient.lst))
 
   while (%value <= %items.lines) {
     set %item.name $read -l $+ %value $lstfile(items_potioningredient.lst)
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
-    if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%potioningreident.items.list,46) <= 20) { %potioningreident.items.list = $addtok(%potioningreident.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { 
-        if ($numtok(%potioningredient.items.list2,46) <= 20) { %potioningredient.items.list2 = $addtok(%potioningredient.items.list2, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-        else { 
-          if ($numtok(%potioningredient.items.list3,46) <= 20) { %potioningredient.items.list3 = $addtok(%potioningredient.items.list3, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-          else { 
-            if ($numtok(%potioningredient.items.list4,46) <= 20) { %potioningredient.items.list4 = $addtok(%potioningredient.items.list4, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-            else { %potioningredient.items.list5 = $addtok(%potioningredient.items.list5, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-          } 
-        }
-      }
-    }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) {  %potioningredient.items.list = $addtok(%potioningredient.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
+
     unset %item.name | unset %item_amount
     inc %value 1 
   }
-
   unset %item.name | unset %item_amount
+
 
   ; CLEAN UP THE LISTS
   set %replacechar $chr(044) $chr(032)
@@ -1886,7 +1912,7 @@ items.list {
   %portals.items.list2 = $replace(%portals.items.list2, $chr(046), %replacechar)
   %special.items.list = $replace(%special.items.list, $chr(046), %replacechar)
   %trust.items.list = $replace(%trust.items.list, $chr(046), %replacechar)
-  %potioningreident.items.list = $replace(%potioningreident.items.list, $chr(046), %replacechar)
+  %potioningredient.items.list = $replace(%potioningredient.items.list, $chr(046), %replacechar)
 
   unset %item.name | unset %item_amount | unset %number.of.items | unset %value | unset %food.items | unset %consume.items
   unset %replacechar

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/26/15
+;;;; Last updated: 04/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -714,6 +714,24 @@ readtrusts {
   }    
 
   unset %trust.items.list
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays a char's potion ingredients
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+readingredients {
+  if (%Ingredients.items.list != $null) { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewIngredientItems),private) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewIngredientItems)) }
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewIngredientItems)) }
+  } 
+  else { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoingredients),private) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, HasNoingredients)) }
+    if ($2 = dcc) {  $dcc.private.message($nick, $readini(translation.dat, system, HasNoingredients)) }
+  }    
+
+  unset %ingredients.items.list
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
