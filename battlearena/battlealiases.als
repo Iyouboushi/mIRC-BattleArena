@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/20/15
+;;;; Last updated: 04/22/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -80,6 +80,15 @@ return_playersinbattle {
   if (%total.npcsinbattle != $null) { inc %total.playersinbattle %total.npcsinbattle }
 
   return %total.playersinbattle
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns list of battle participants
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return_peopleinbattle {
+  var %temp.peopleinbattle $readini($txtfile(battle2.txt), battle, list)
+  if (%temp.peopleinbattle = $null) { return null }
+  else { return %temp.peopleinbattle }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

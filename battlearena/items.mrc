@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 04/15/15
+;;;; Last updated: 04/22/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -63,7 +63,11 @@ on 3:TEXT:!use*:*: {  unset %real.name | unset %enemy | $set_chr_name($nick)
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
 
   if ($4 = $null) { $uses_item($nick, $2, on, $nick) }
-  else {  $uses_item($nick, $2, $3, $4) }
+  else {  
+    var %item.target $matchtok($return_peopleinbattle, $4, 1, 46)
+    if (%item.target = $null) { var %item.target $4 }
+    $uses_item($nick, $2, $3, %item.target)
+  }
 }
 
 ON 50:TEXT:*uses item * on *:*:{  $set_chr_name($1)
@@ -77,7 +81,10 @@ ON 50:TEXT:*uses item * on *:*:{  $set_chr_name($1)
   if ((no-item isin $readini($dbfile(battlefields.db), %current.battlefield, limitations)) && (%battleis = on)) { 
     if ($istok($readini($txtfile(battle2.txt), Battle, List), $1, 46) = $true) { $display.message($readini(translation.dat, battle, NotAllowedBattlefieldCondition), private) | halt }
   }  
-  $uses_item($1, $4, $5, $6)
+
+  var %item.target $matchtok($return_peopleinbattle, $6, 1, 46)
+  if (%item.target = $null) { var %item.target $6 }
+  $uses_item($1, $4, $5, %item.target)
 }
 
 ON 3:TEXT:*uses item * on *:*:{  $set_chr_name($1)
@@ -95,7 +102,10 @@ ON 3:TEXT:*uses item * on *:*:{  $set_chr_name($1)
   if ((no-item isin $readini($dbfile(battlefields.db), %current.battlefield, limitations)) && (%battleis = on)) { 
     if ($istok($readini($txtfile(battle2.txt), Battle, List), $1, 46) = $true) { $display.message($readini(translation.dat, battle, NotAllowedBattlefieldCondition), private) | halt }
   }  
-  $uses_item($1, $4, $5, $6)
+
+  var %item.target $matchtok($return_peopleinbattle, $6, 1, 46)
+  if (%item.target = $null) { var %item.target $6 }
+  $uses_item($1, $4, $5, %item.target)
 }
 alias uses_item {
   var %item.type $readini($dbfile(items.db), $2, type)

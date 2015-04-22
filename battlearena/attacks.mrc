@@ -1,16 +1,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 02/28/15
+;;;; Last updated: 04/22/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
   $no.turn.check($nick)
-  $set_chr_name($nick) | set %attack.target $2 | $covercheck($2)
+  $set_chr_name($nick) 
+  set %attack.target $matchtok($return_peopleinbattle, $2, 1, 46)
+  if (%attack.target = $null) { set %attack.target $2 }
+  $covercheck(%attack.target)
   $attack_cmd($nick , %attack.target) 
 } 
 on 3:TEXT:!attack *:#:{ 
   $no.turn.check($nick)
-  $set_chr_name($nick) | set %attack.target $2
+  $set_chr_name($nick)
+  set %attack.target $matchtok($return_peopleinbattle, $2, 1, 46)
+  if (%attack.target = $null) { set %attack.target $2 }
+  $covercheck(%attack.target)
   $attack_cmd($nick , %attack.target) 
 } 
 
@@ -19,7 +25,10 @@ ON 50:TEXT:*attacks *:*:{
   else { 
     $no.turn.check($1,admin)
     if ($readini($char($1), Battle, HP) = $null) { halt }
-    $set_chr_name($1) | set %attack.target $3 | $covercheck($3)
+    $set_chr_name($1) 
+    set %attack.target $matchtok($return_peopleinbattle, $3, 1, 46)
+    if (%attack.target = $null) { set %attack.target $3 }
+    $covercheck(%attack.target)
     $attack_cmd($1 , %attack.target) 
   }
 }
@@ -32,7 +41,10 @@ ON 3:TEXT:*attacks *:*:{
   $no.turn.check($1)
   unset %real.name 
   if ($readini($char($1), Battle, HP) = $null) { halt }
-  $set_chr_name($1) | set %attack.target $3 | $covercheck($3)
+  $set_chr_name($1) 
+  set %attack.target $matchtok($return_peopleinbattle, $3, 1, 46)
+  if (%attack.target = $null) { set %attack.target $3 }
+  $covercheck(%attack.target)
   $attack_cmd($1 , %attack.target) 
 }
 
