@@ -1236,6 +1236,8 @@ Battle Arena Bot VERSIONS
 - Changed !score so that it will update without needing to use !scoreboard first.
 - Changed and updated every portal boss to have a level cap
 - Changed PVP mode to disable Shadow Clones, Spirit of the Hero, and Quicksilver
+- Changed the code to allow partial target name matches on attacks and techs. Example, can now use /me attacks orb to
+  attack an orb_fountain monster.  Or /me attacks man for the Maniac monster.
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
@@ -1249,6 +1251,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with the bot not checking left-handed weapons for augments
 - Fixed an issue where a techonly monster could counter a melee attack
 - Fixed an issue with !look in private messages that wouldn't show dual weapons
+- Fixed an issue where shadow clones could use scavenge or steal
 - Fixed an AI vs AI issue where occasionally the bot wouldn't recognize that an NPC had any techs even if he/she does.
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
