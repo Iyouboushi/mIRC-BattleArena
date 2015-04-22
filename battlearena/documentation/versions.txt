@@ -1235,6 +1235,7 @@ Battle Arena Bot VERSIONS
   they don't have to be raised completely equally, they have to be within a certain amount of one another.
 - Changed !score so that it will update without needing to use !scoreboard first.
 - Changed and updated every portal boss to have a level cap
+- Changed PVP mode to disable Shadow Clones, Spirit of the Hero, and Quicksilver
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
 - Fixed an issue with counter attacks showing the wrong pronouns sometimes.
 - Fixed an issue with lost souls appearing in gauntlet battles.
