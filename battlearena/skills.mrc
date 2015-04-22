@@ -1355,6 +1355,8 @@ alias skill.clone { $set_chr_name($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 
 
+  if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
+
   $checkchar($1)
   if ($skillhave.check($1, shadowcopy) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
@@ -1746,6 +1748,8 @@ alias skill.quicksilver { $set_chr_name($1)
   if ((%current.playerstyle != Quicksilver) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the Quicksilver style is equipped!, private) | unset %current.playerstyle | halt }
 
   $check_for_battle($1)
+
+  if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
 
   if ($readini($char($1), info, flag) = $null) { 
     set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)

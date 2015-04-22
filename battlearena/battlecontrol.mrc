@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/20/15
+;;;; Last updated: 04/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -478,7 +478,7 @@ alias enter {
     remini $char($1) skills lockpicking.on
 
     ; Is the player too weak for this streak level?
-    if ($return.systemsetting(AllowSpiritOfHero) = true) { 
+    if (($return.systemsetting(AllowSpiritOfHero) = true) && (%mode.pvp != on)) { 
       if ($return_winningstreak > 12) {
         if (($calc($return_winningstreak - $get.level($1)) > 35) || ($calc($get.level($1) / $return_winningstreak) < .35)) {
           $levelsync($1, $calc($return_winningstreak - 3))
