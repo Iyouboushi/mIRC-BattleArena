@@ -169,7 +169,7 @@ alias tech_cmd {
   unset %ignition.name | unset %ignition.techs
 
   if ((no-tech isin %battleconditions) || (no-techs isin %battleconditions)) { 
-    if ($readini($char($1), info, ai_type) != healer) { 
+    if (($readini($char($1), info, ai_type) != healer) && ($readini($char($1), info, ai_type) != techonly)) { 
       $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt 
     }
   }

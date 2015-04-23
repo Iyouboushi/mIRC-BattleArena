@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 02/12/15
+;;;; Last updated: 04/22/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -274,7 +274,9 @@ alias ai_itemcheck {
 
 alias ai_techcheck {
   unset %ai.tech | unset %tech.list | unset %techs | unset %number.of.techs
-  if ((no-tech isin %battleconditions) || (no-techs isin %battleconditions)) { return }
+  if ((no-tech isin %battleconditions) || (no-techs isin %battleconditions)) { 
+    if ($readini($char($1), info, ai_type) != techonly) { return }
+  }
   $weapon_equipped($1)
 
   set %techs $readini($dbfile(techniques.db), techs, %weapon.equipped)
