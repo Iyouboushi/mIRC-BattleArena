@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 03/20/15
+;;;; Last updated: 04/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -814,13 +814,19 @@ on 2:Chat:!mech upgrade *: {
 on 2:Chat:ACTION attacks *: { 
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
-  $set_chr_name($nick) | set %attack.target $3 | $covercheck($3)
+  $set_chr_name($nick) 
+  set %attack.target $matchtok($return_peopleinbattle, $3, 1, 46)
+  if (%attack.target = $null) { set %attack.target $3 }
+  $covercheck(%attack.target)
   $attack_cmd($nick , %attack.target) 
 }
 on 2:Chat:attacks *: { 
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
-  $set_chr_name($nick) | set %attack.target $2 | $covercheck($2)
+  $set_chr_name($nick)
+  set %attack.target $matchtok($return_peopleinbattle, $2, 1, 46)
+  if (%attack.target = $null) { set %attack.target $2 }
+  $covercheck(%attack.target)
   $attack_cmd($nick , %attack.target) 
 }
 on 2:Chat:ACTION goes *: { 
@@ -881,13 +887,19 @@ alias revertignition.msg { $dcc.battle.message($readini(translation.dat, system,
 on 2:Chat:ACTION uses * * on *: {
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
-  $set_chr_name($nick) | set %attack.target $6 | $covercheck($6, $4)
+  $set_chr_name($nick) 
+  set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
+  if (%attack.target = $null) { set %attack.target $6 }
+  $covercheck(%attack.target, $4)
   $tech_cmd($nick , $4 , %attack.target, $7) | halt 
 } 
 on 2:Chat:uses * * on *: {
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
-  $set_chr_name($nick) | set %attack.target $5 | $covercheck($5, $3)
+  $set_chr_name($nick) 
+  set %attack.target $matchtok($return_peopleinbattle, $5, 1, 46)
+  if (%attack.target = $null) { set %attack.target $5 }
+  $covercheck(%attack.target, $3)
   $tech_cmd($nick , $3 , %attack.target, $6) | halt 
 } 
 on 2:Chat:ACTION sings *: {
@@ -917,8 +929,10 @@ ON 2:Chat:!use*: {  unset %real.name | unset %enemy
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { $dcc.private.message($nick, $readini(translation.dat, battle, NotAllowedBattleCondition))  | halt }
   if (($person_in_mech($nick) = true) && ($4 = $nick)) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
-
-  $uses_item($nick, $2, $3, $4)
+  set %attack.target $matchtok($return_peopleinbattle, $4, 1, 46)
+  if (%attack.target = $null) { set %attack.target $4 }
+  $covercheck(%attack.target)
+  $uses_item($nick, $2, $3, %attack.target)
 }
 ON 2:Chat:!taunt*: { $set_chr_name($nick)
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
