@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/21/15
+;;;; Last updated: 04/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -439,6 +439,16 @@ on 3:TEXT:!enter:#: {
   if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
   if (%battle.type = ai) { $display.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
   $enter($nick)
+}
+ON 3:TEXT:*enters the battle*:#:  { 
+  if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
+
+  if ($2 != enters) { halt } 
+  if ($readini($char($1), info, flag) = monster) { halt }
+  if ($readini($char($1), stuff, redorbs) = $null) { halt }
+  $controlcommand.check($nick, $1)
+
+  $enter($1)
 }
 ON 50:TEXT:*enters the battle*:#:  { 
   if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
