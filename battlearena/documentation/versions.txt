@@ -1172,6 +1172,7 @@ Battle Arena Bot VERSIONS
 - Added a new battlefield limitation: no-summons. When set summon items cannot be used on that battlefield.
 - Added a new battlefield limitation: no-npcs. When set, npcs cannot appear during that battle.
 - Added a new battlefield limitation: no-quicksilve. When set, players cannot use !quicksilver
+- Added a new battlefield limitation: no-fleeing. When set, players cannot flee from the battlefield
 - Added spoils.db.  This is where the bot will determine the spoils drops.  drops.db will be for the stylish drop.
 - Changed the !augment commands to work in private or channel. 
 - Changed the !augment list command to allow for more augments to be shown if more than 30 weapons have augments.
