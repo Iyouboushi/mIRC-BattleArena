@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 04/22/15
+;;;; Last updated: 04/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -189,7 +189,7 @@ alias ai.buildactionbar {
 
   if (%ai.type = healer) { 
     if ($ai_techcheck($1) = true) { set %action.bar tech }
-    else { set %action.bar flee }
+    else { set %action.bar taunt }
     return
   }
 
@@ -230,6 +230,7 @@ alias ai.buildactionbar {
 
   ; can the monster flee?
   if ($readini($char($1), info, CanFlee) = true) { 
+    if ((no-flee isin %battleconditions) || (no-fleeing isin %battleconditions)) { return }
     if (%battle.type != ai) { %action.bar = %action.bar $+ .flee } 
   }
 

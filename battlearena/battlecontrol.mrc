@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/25/15
+;;;; Last updated: 04/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -594,6 +594,9 @@ alias flee {
   if ($is_charmed($1) = true) { $set_chr_name($1) | $display.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
   if ($is_confused($1) = true) { $set_chr_name($1) | $display.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
 
+  if ((no-flee isin %battleconditions) || (no-fleeing isin %battleconditions)) { 
+    $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt 
+  }
   writeini $char($1) battle status runaway
   $set_chr_name($1) | $display.message($readini(translation.dat, battle, FleeBattle), battle)
 
