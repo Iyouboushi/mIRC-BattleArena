@@ -1,20 +1,18 @@
 BATTLE ARENA BOT 
 --------------
 
-ABOUT
+## ABOUT
 
-This bot is an mIRC game in which you join and kill monsters and bosses to gain orbs and new weapons/skills/techniques.  It's similar to the hit PS2/PS3 series "Devil May Cry", as that's really the inspiration I drew from when I started working on it, but it includes more than just DMC monsters/bosses/weapons/items.   The whole purpose was to make an mIRC game that is completely automated in terms of the battle system. There doesn't need to be a DM around to do !next and control monsters, like in my other major mIRC bot ("Kaiou"). 
-
-Here players join the battle when the bot announces an open battle. After a few minutes, it will generate monsters/bosses and have them join the battle and the battle will start. When it's a monster's or boss' turn, they will automatically do their things. When it's the player's turn, there's a few commands you can do (attack with a weapon, attack with a technique, do a skill, use an item). If the player idles for too long the bot will force their turn and skip over them. This is done so that someone can't disappear for an hour and cause the battle to drag on forever.
-
-There's a bunch of weapons that can be bought and each weapon has a few techniques attached to them. Unlike in Kaiou, you can't make your own techniques but rather have to buy them using red orbs that you earn from battle. You buy weapons using black orbs when you obtain via winning boss fights and being alive at the end of one.
+Battle Arena is a text game written in mIRC's scripting language.  This is a game of good vs evil and was originally inspired heavily by the hit PS2/PS3 series "Devil May Cry".  The gist is that players will join to kill monsters and bosses while gaining new weapons, skills and techniques. Over time the bot has expanded and has become a light RPG with stats, NPCs and special boss battles.
 
 As for the main purpose of the game.. well, the only real purpose is to see how long of a winning streak players can achieve.  The game is designed so that people can hop in and out easily at nearly any time, just as a way to basically kill some boredom.  There is no ultimate goal to obtain or defend.
 
-A full in-depth guide with commands and more indepth information can be found on the Battle Arena wiki:  http://battlearena.heliohost.org/doku.php?id=start
+Once set up the game is entirely automatic and does not need anyone to run it.
+
+A full in-depth guide with commands and more in-depth information can be found on the Battle Arena wiki:  http://battlearena.heliohost.org/doku.php?id=start
 
 
-SETUP
+## SETUP
 
 Getting it set up is easy assuming you unpack the zip in a good location on your computer.
 
@@ -29,12 +27,10 @@ Getting it set up is easy assuming you unpack the zip in a good location on your
 
 Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended.
 
-With version 2.4 the bot SHOULD work if you put the bot in a folder that has spaces (such as C:\Program Files\BattleArena)  but it is still recommended to not do that if you can avoid it.
    
-   
-WHAT'S NEW?
+## WHAT'S NEW?
 
-As usual be sure to read the versions.txt in the documentation folder for a full list of everything this version does.  Listed below are some of the highlights.
+If you have used this bot before and are updating you may be wondering what all has changed.  Well, the versions.txt in the documentation folder has a full list of changes. Listed below are some of the main highlights since version 2.5 complete. 
 
 ADDITIONS:
 * New Method of Doing Monster/Summon/NPC Stats Upon Summoning to Battlefield 
@@ -111,9 +107,10 @@ REMOVALS:
 
 Again, this IS NOT everything. Be sure to read the versions.txt in the documentation folder for a full list of everything as the list is quite extensive.
 
-THANKS
 
-These are people who have helped me by helping me test, making monsters/weapons/etc, finding bugs, or just by giving me some ideas.
+## THANKS
+
+These are people who have helped me by helping me test, making monsters/weapons/etc, finding bugs, or just by giving me some ideas.  This bot would not as good/far along as it is without these fine folks.
 
 * Scott "Smz" of Esper.net
 * Andrio of Esper.net
