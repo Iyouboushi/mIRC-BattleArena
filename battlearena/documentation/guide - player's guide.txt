@@ -1453,56 +1453,56 @@ Each style has a level [the (#) next to the name] and can level up by accumulati
 Many of the styles will gain augment bonuses once leveled high enough. These augments will take effect as long as you have the style equipped and the style reaches the appropriate level.
 
 So now you're wondering what the various styles are and what they do in-game. Here's a list.
-TRICKSTER
 
+TRICKSTER
 This style will enhance the amount of style points you get for taunting. Higher levels of Trickster will increase the amount of style points you get. It'll also give you a bonus to your speed when the bot generates the turn order. Higher levels of the style will result in a bigger increase in speed, thus giving you a better chance of getting your turn earlier. When equipped with this style there's also a (style level)% chance of dodging attacks. Finally, it will enhance the steal % by a random amount (style level doesn't matter in this case, it's the same random chance each time).
 
 Cost: – Players start with this style
 Augments: At level 5 Trickster will gain the EnhanceDodge augment. At level 10 it will have EnhanceDodge and EnhanceStylePoints
-WEAPONMASTER
 
+WEAPONMASTER
 The Weapon Master will enhance melee attacks of all weapon types. It does this by increasing the random damage added onto every melee attack and by enhancing the mastery skill slightly. The amount increases each time the style levels.
 
 Cost: – Players start with this style
 Augments: At level 5 Weaponmaster will gain the EnhanceParry augment.
-GUARDIAN
 
+GUARDIAN
 This style will decrease the amount of damage you take by a percent each level (up to 60% max).
 
 Cost: – Players start with this style
 Augments: At level 5 Guardian will gain the EnhanceBlocking augment. At level 10 it will have EnhanceBlocking and EnhanceDefender.
-SPELLMASTER
 
+SPELLMASTER
 This will enhance magic by roughly 11% per level (up to 90% max).
 
 Cost: 6 Black Orbs
 Augments: At level 5 Guardian will gain the EnhanceBloodSpirit augment. At level 10 it will have EnhanceBloodSpirit, EnhanceStaff, EnhanceWand, and EnhanceGlyph.
-DOPPELGANGER
 
+DOPPELGANGER
 This style will enhance your shadow clone ability, giving your clone more health. The amount of health the clone gets goes up with each level of the style, up to 100%. Also, with this style equipped it is possible to control your shadow clones by using the !shadow command on the clone's turn. Shadow commands are: !shadow attack (target), !shadow taunt (target), !shadow tech (tech name) (target), !shadow skill (skillname) (target if necessary)
 
 Cost: 5 Black Orbs
 Augments: This style has no aguments.
-HITEN MITSURUGI-RYU
 
+HITEN MITSURUGI-RYU
 This style will enhance melee and tech damage done with katana weapons and enhance speed at battle turn generation.
 
 Cost: 5 Black Orbs
 Augments: At level 5 this style will gain the EnhanceDodge augment.
-QUICKSILVER
 
+QUICKSILVER
 This style will allow you to access the !quicksilver command that freezes everyone except you in battle, effectively giving you an extra turn. You can use the !quicksilver command as many times as your style is currently leveled.
 
 Cost: 10 Black Orbs
 Augments: This style has no aguments.
-COUNTERSTANCE
 
-This style will enhance the chance of doing a counter attack by 1% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.
+COUNTERSTANCE
+This style will enhance the chance of doing a counter attack by 2% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.
 
 Cost: 20 Black Orbs
 Augments: This style has no aguments.
-BEASTMASTER
 
+BEASTMASTER
 This style will allow you to control your summon manually while the style is equipped. In order to control the summon, on its turn use commands like summonname attacks target, summonname taunts target, summonname uses its techname on target.
 
 Cost: 5 Black Orbs
