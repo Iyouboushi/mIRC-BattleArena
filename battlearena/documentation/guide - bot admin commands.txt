@@ -1,7 +1,7 @@
 BOT ADMIN COMMANDS
 These commands are commands that only the “bot admins” (set in the system.dat) have access to. I'll try to explain them here.
 
-!startbat or !start bat
+ !startbat or !start bat
 This command starts a battle if there isn't one already going. If this command is used when players can already enter battle, it'll actually cancel the battle.
 
 !start bat PVP
@@ -76,14 +76,44 @@ This command will toggle the random battlefield events on or off.
 !toggle bonus event
 This command will toggle the bonus event. If turned on then all orbs at the end of battle will be doubled.
 
+!toggle scoreboard type
+This toggles between the two scoreboard types
+
+!toggle personalDifficulty
+This toggles the ability for players to use the !save difficulty command which can affect how hard each battle is and increase rewards.
+
+!toggle SpiritOfTheHero
+This toggles whether the player buff “Spirit of the Hero” will take effect or not.
+
+!toggle bot bold
+This turns bold in the bot on and off.
+
+!toggle bot colors
+This turns colors in the bot on and off. Some servers, such as Twitch, do not allow colors and it's advised to turn them off for those servers.
+
+!toggle discountcard message
+This turns the message that displays when players use a discount card on and off.
+
+!toggle battle throttle
+This turns the Battle Throttle option on and off. If it's turned on, players will have to sit a round out before entering the next battle each time they participate in battle. Useful if you have a ton of players and are consistently hitting the player limit.
+
+!toggle damage cap
+This turns the damage cap on and off. If set to off, players can do more than 40k damage max.
+
+!toggle battle messages
+This turns the newer start battle messages on and off. If set to off it will use the old classic message for every main battle type.
+
 !set streak #
 It's possible to manually set the winning streak to whatever you want. You can't set it to a losing streak or to a negative value though.
 
 !leveladjust
 If bot admins want battles to be harder, they can adjust the level by which monsters are boosted by. For example, if a player is on streak level 1, bot admins can set the leveladjust to 50 and a level 1 streak will now act as a level 51 streak including which monsters are summoned during the battles. To turn it off, set the leveladjust to 0 (which is set by default). The difficulty cannot be below 0.
 
-!toggle scoreboard type
-This toggles between the two scoreboard types
+!mimic chance #
+Sets the chance that a treasure chest will become a mimic for players to fight. The # must be 1-100
+
+!clear portal usage (name)
+Clears the current portal usage amount of the player for the day.
 
 !main folder cleanup
 This command cleans the root folder of the bot and removes all .html, .txt, .lst, and .db files. This command was originally created for people who were upgrading the bot from an older version before the new file structure system was done. Typically this command only needs to be used once and only for people who upgraded.
@@ -98,4 +128,4 @@ This will display a full list of all files in the \zapped\ folder. It will also 
 If the bot admin knows the zapped file name, it is now possible to restore it. For example, if the file is Iyouboushi_a4kf88 you would use !unzap Iyouboushi_a4kf88
 
 !password reset playername
-This will reset the player's password and send the player what the new password is (so use it when the player is online). The bot admin will NOT see the new password.
+This will reset the player's password and send the player what the new password is (so use it when the player is online). The bot admin will NOT see the new password. 

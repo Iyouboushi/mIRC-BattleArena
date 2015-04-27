@@ -19,7 +19,7 @@ In other words, a name followed by a period, another name. Don't add a period to
 
 This section controls a lot of the in-game functions and limits such as, but not limited to, base # of orbs for normal monsters and bosses, how many orbs players start with, the name of the currency and the time between battles in minutes.
 
-botType=
+ botType=
 IRC, DCCchat or TWITCH. This tells the bot where to display messages and accept commands. If you have a lot of players and don't want limits on the # of monsters that can appear in battles, use DCCchat mode* (your players will need a client that can do DCC Chat connections). If you are trying to run the bot on Twitch (which is not recommended) set this to TWITCH mode which slows the speed of output down and makes everything output to the channel (no private messages). IRC mode is default and is the most recommended mode for most people/bot owners.
 
 AllowColors=
@@ -66,6 +66,9 @@ How long should the open period for a battle be? This is the time period that pl
 
 TimeBetweenSave=
 How long should players have to wait in between each !save battle streak command? Default is 3600 seconds (or 1 hour). The time here must be in seconds.
+
+TimeBetweenSaveReload=
+How long should players have to wait in between each !reload battle streak command? Default is 1200 seconds (20 minutes). The time here must be in seconds.
 
 maxHP=
 the max amount of HP players can have. By default it's 2500.
@@ -191,7 +194,10 @@ ShowDeleteEcho=
 If set to true this setting will cause the bot to echo a line showing every time a .char file is erased. Useful for debugging if something is going amiss. False by default.
 
 EnableFoodOnOthers=
-If set to true this setting will block people from being able to use +stat (food) items on anyone other than themselves. This is set to false by default. 
+If set to true this setting will block people from being able to use +stat (food) items on anyone other than themselves. This is set to false by default.
+
+AllowPersonalDifficulty=
+If set to false this setting will stop players from using the !save difficulty command which increases the difficulty of battles and rewards. Set to true by default.  
 
 
 [PlayerLevelCaps]

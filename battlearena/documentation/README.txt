@@ -119,6 +119,15 @@ using Login Points--a special currency that you get each new day that
 you log into the game (using !id).  Login Points accumulate every day
 and do not go away until they have been spent.
 
+* Added the SPIRIT OF THE HERO buff
+Are you tired of not being able to do anything in battle because your
+friends are fighting in battle levels that are way higher than your 
+own? Well, never fear.  With the Spirit of the Hero buff it will
+automatically set you somewhat close to the current battle level
+allowing you to participate! The trade off is that you will receive
+a little bit less orbs at the end of battle compared to the others.
+
+
 
 Changes:
 - Changed the !augment commands to work in private or channel. 
@@ -145,6 +154,8 @@ Changes:
 - Changed the way the bot does the stats for monsters, npcs and summons upon summoning to the battlefield.
 - Changed the way the HP for monsters/summons/NPCs/bosses are boosted at the start of battle
 - Changed demon portals so that monsters spawning out of them will be slightly less than the battle streak.
+- Changed the code to allow partial target name matches on attacks and techs. 
+- Changed the way players purchase stats; they must be kept somewhat close to each other now.
 
 Fixes:
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
@@ -171,8 +182,9 @@ Fixes:
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
 
 Removals:
-- Removed the Final_Guard monster
-- Removed the Prime_Vise monster
+- Removed the following monsters: Final_Guard, Prime_Vise, Excenmille, NajaSalaheem, Wind-UpShantotto
+- Removed the following NPCs: Nauthima
+- Removed the following bosses: Adlanna, Eldora, EldoraAdlanna, NauthimaTiranadel, RuneFencer_Nauthima
 - Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
 - Removed the !toggle battle formula bot admin command
 - Removed the bot setting the user levels of bot owner/admins upon starting to prevent a security hole
