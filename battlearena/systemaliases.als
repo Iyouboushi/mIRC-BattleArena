@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/21/15
+;;;; Last updated: 04/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3278,6 +3278,8 @@ orb.adjust {
     remini $char($1) status SpiritOfHero
     var %orb.tier -2
   }
+
+  if ((%moon.phase = Blood Moon) && (%winning.streak > 50)) { inc %orb.tier 1 }
 
   if (%orb.tier = -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .20)),0) }
   if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .35)),0) }
