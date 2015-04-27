@@ -2,9 +2,10 @@ BATTLE ARENA BOT
 --------------
 
 ABOUT
+
 This bot is an mIRC game in which you join and kill monsters and bosses to gain orbs and new weapons/skills/techniques.  It's similar to the hit PS2/PS3 series "Devil May Cry", as that's really the inspiration I drew from when I started working on it, but it includes more than just DMC monsters/bosses/weapons/items.   The whole purpose was to make an mIRC game that is completely automated in terms of the battle system. There doesn't need to be a DM around to do !next and control monsters, like in my other major mIRC bot ("Kaiou"). 
 
-Here players join the battle when the bot announces an open battle. After a few minutes, it will generate monsters/bosses and have them join the battle and the battle will start. When it's a monster's or boss' turn, they will automatically do their things. When it's the player's turn, there's a few commands you can do (attack with a weapon, attack with a technique, do a skill, use an item). If the player idles for too long the bot will force their turn and skip over them. This is done so that someone can't disappear for an hour and cause the battle to drag on forever.
+Here players join the battle when the bot announces an open battle. After a few minutes, it will generate monsters/bosses and have them join the battle and the battle will start. When it's a monster's or boss' turn, they will automatically do their things. When it's the player's turn, there's a few commands you can do (attack with a weapon, attack with a technique, do a skill, use an item). If the player idles for too long the bot will force their turn and skip over them. This is done so that someone can't disappear for an hour and cause the battle to drag on forever.
 
 There's a bunch of weapons that can be bought and each weapon has a few techniques attached to them. Unlike in Kaiou, you can't make your own techniques but rather have to buy them using red orbs that you earn from battle. You buy weapons using black orbs when you obtain via winning boss fights and being alive at the end of one.
 
@@ -13,7 +14,8 @@ As for the main purpose of the game.. well, the only real purpose is to see how 
 A full in-depth guide with commands and more indepth information can be found on the Battle Arena wiki:  http://battlearena.heliohost.org/doku.php?id=start
 
 
-SETUP:
+SETUP
+
 Getting it set up is easy assuming you unpack the zip in a good location on your computer.
 
  1. Do a CLEAN install to C:\BattleArena\  with the complete zip package of the bot (either from this repository or from my website).
@@ -31,6 +33,7 @@ With version 2.4 the bot SHOULD work if you put the bot in a folder that has spa
    
    
 WHAT'S NEW?
+
 As usual be sure to read the versions.txt in the documentation folder for a full list of everything this version does.  Listed below are some of the highlights.
 
 ADDITIONS:
@@ -109,6 +112,7 @@ REMOVALS:
 Again, this IS NOT everything. Be sure to read the versions.txt in the documentation folder for a full list of everything as the list is quite extensive.
 
 THANKS
+
 These are people who have helped me by helping me test, making monsters/weapons/etc, finding bugs, or just by giving me some ideas.
 
 * Scott "Smz" of Esper.net
