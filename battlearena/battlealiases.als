@@ -2714,15 +2714,12 @@ counter_melee {
   ; Check for the CounterStance style
   set %current.playerstyle $readini($char($2), styles, equipped)
   set %current.playerstyle.level $readini($char($2), styles, %current.playerstyle)
-  if (%current.playerstyle = CounterStance) { inc %counter.chance %current.playerstyle.level }
+  if (%current.playerstyle = CounterStance) { inc %counter.chance $calc(2 * %current.playerstyle.level) }
 
   unset %current.playerstyle | unset %current.playerstyle.level 
 
   ; Check for the EnhanceCounter augment.
   if ($augment.check($2, EnhanceCounter) = true) { inc %counter.chance $calc(2 * %augment.strength)  }
-
-  ; If we have a skill that sets the chance to 100%, check it here.
-  ; this is to be added later. :P
 
   ; Now let's see if we countered.
   var %random.chance $rand(1,100)
@@ -2759,9 +2756,9 @@ counter_melee_action {
 
   if ($readini($char($2), info, flag) = $null) { 
     if (($readini($char($1), info, flag) = npc) || ($readini($char($1), info, flag) = monster)) {
-    %attack.damage = $round($calc(%attack.damage * .50),0) }
+    %attack.damage = $round($calc(%attack.damage * .30),0) }
     inc %attack.damage $rand(1,25)
-    if (%attack.damage >= 400) { set %attack.damage $rand(300,500) }
+    if (%attack.damage >= 500) { set %attack.damage $rand(450,550) }
     if (%attack.damage < 1) { set %attack.damage 1 }
   }
 

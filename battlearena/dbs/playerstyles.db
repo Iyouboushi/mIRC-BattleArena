@@ -32,7 +32,7 @@ Quicksilver=This style will allow you to access the !quicksilver command that fr
 
 HitenMitsurugi-ryu=This style will enhance melee and tech damage done with katana weapons and enhance speed at battle turn generation.
 
-CounterStance=This style will enhance the chance of doing a counter attack by 1% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.
+CounterStance=This style will enhance the chance of doing a counter attack by 2% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.
 
 Beastmaster=This style will allow you to control your summon manually while the style is equipped.
 
