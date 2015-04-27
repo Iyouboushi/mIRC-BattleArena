@@ -19,11 +19,11 @@ Table of Contents:
 \_______________________________________________________________________/
 
 
-This bot is an mIRC game in which you join and kill monsters and bosses to gain orbs and new weapons/skills/techniques.  It's similar to the hit PS2/PS3 series "Devil May Cry", as that's really the inspiration I drew from when I started working on it, but it includes more than just DMC monsters/bosses/weapons/items.   The whole purpose was to make an mIRC game that is completely automated in terms of the battle system. There doesnÅft need to be a DM around to do !next and control monsters, like in my other major mIRC bot ("Kaiou").
+This bot is an mIRC game in which you join and kill monsters and bosses to gain orbs and new weapons/skills/techniques.  It's similar to the hit PS2/PS3 series "Devil May Cry", as that's really the inspiration I drew from when I started working on it, but it includes more than just DMC monsters/bosses/weapons/items.   The whole purpose was to make an mIRC game that is completely automated in terms of the battle system. There doesn't need to be a DM around to do !next and control monsters, like in my other major mIRC bot ("Kaiou").
 
-Here players join the battle when the bot announces an open battle. After a few minutes, it will generate monsters/bosses and have them join the battle and the battle will start. When itÅfs a monsterÅfs or bossÅf turn, they will automatically do their things. When itÅfs the playerÅfs turn, thereÅfs a few commands you can do (attack with a weapon, attack with a technique, do a skill, use an item). If the player idles for too long the bot will force their turn and skip over them. This is done so that someone canÅft disappear for an hour and cause the battle to drag on forever.
+Here players join the battle when the bot announces an open battle. After a few minutes, it will generate monsters/bosses and have them join the battle and the battle will start. When itÅ's a monsterÅ's or boss' turn, they will automatically do their things. When itÅ's the player's turn, there's a few commands you can do (attack with a weapon, attack with a technique, do a skill, use an item). If the player idles for too long the bot will force their turn and skip over them. This is done so that someone canÅ't disappear for an hour and cause the battle to drag on forever.
 
-ThereÅ's a bunch of weapons that can be bought and each weapon has a few techniques attached to them. Unlike in Kaiou, you canÅft make your own techniques but rather have to buy them using red orbs that you earn from battle. You buy weapons using black orbs when you obtain via winning boss fights and being alive at the end of one.
+ThereÅ's a bunch of weapons that can be bought and each weapon has a few techniques attached to them. Unlike in Kaiou, you canÅ't make your own techniques but rather have to buy them using red orbs that you earn from battle. You buy weapons using black orbs when you obtain via winning boss fights and being alive at the end of one.
 
 As for the main purpose of the game.. well, the only real purpose is to see how long of a winning streak players can achieve.  The game is designed so that people can hop in and out easily at nearly any time, just as a way to basically kill some boredom.  There is no ultimate goal to obtain or defend.
 
@@ -108,6 +108,8 @@ Changes:
 - Changed the way the bot does the stats for monsters, npcs and summons upon summoning to the battlefield.
 - Changed the way the HP for monsters/summons/NPCs/bosses are boosted at the start of battle
 - Changed demon portals so that monsters spawning out of them will be slightly less than the battle streak.
+- Changed the code to allow partial target name matches on attacks and techs. 
+- Changed the way players purchase stats; they must be kept somewhat close to each other now.
 
 Fixes:
 - Fixed an issue with songs showing resists on targets who shouldn't be affected by the song to begin with.
@@ -134,8 +136,9 @@ Fixes:
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
 
 Removals:
-- Removed the Final_Guard monster
-- Removed the Prime_Vise monster
+- Removed the following monsters: Final_Guard, Prime_Vise, Excenmille, NajaSalaheem, Wind-UpShantotto
+- Removed the following NPCs: Nauthima
+- Removed the following bosses: Adlanna, Eldora, EldoraAdlanna, NauthimaTiranadel, RuneFencer_Nauthima
 - Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
 - Removed the !toggle battle formula bot admin command
 - Removed the bot setting the user levels of bot owner/admins upon starting to prevent a security hole
