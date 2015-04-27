@@ -1,12 +1,7 @@
-Battle Arena Bot - Version 3.0
-Programmed by James "Iyouboushi" (Iyouboushi@gmail.com)
-FREEWARE!
+BATTLE ARENA BOT 
 --------------
- _______________________________________________________________________
-/                                                                       \
-|                                ABOUT                                  |
-\_______________________________________________________________________/
 
+ABOUT
 This bot is an mIRC game in which you join and kill monsters and bosses to gain orbs and new weapons/skills/techniques.  It's similar to the hit PS2/PS3 series "Devil May Cry", as that's really the inspiration I drew from when I started working on it, but it includes more than just DMC monsters/bosses/weapons/items.   The whole purpose was to make an mIRC game that is completely automated in terms of the battle system. There doesn't need to be a DM around to do !next and control monsters, like in my other major mIRC bot ("Kaiou"). 
 
 Here players join the battle when the bot announces an open battle. After a few minutes, it will generate monsters/bosses and have them join the battle and the battle will start. When it's a monster's or boss' turn, they will automatically do their things. When it's the player's turn, there's a few commands you can do (attack with a weapon, attack with a technique, do a skill, use an item). If the player idles for too long the bot will force their turn and skip over them. This is done so that someone can't disappear for an hour and cause the battle to drag on forever.
@@ -17,14 +12,10 @@ As for the main purpose of the game.. well, the only real purpose is to see how 
 
 A full in-depth guide with commands and more indepth information can be found on the Battle Arena wiki:  http://battlearena.heliohost.org/doku.php?id=start
 
- _______________________________________________________________________
-/                                                                       \
-|                                 SETUP                                 |
-\_______________________________________________________________________/
-
-Getting it set up is easy assuming you unpack the zip in a good location on your computer.  
 
 SETUP:
+Getting it set up is easy assuming you unpack the zip in a good location on your computer.
+
  1. Do a CLEAN install to C:\BattleArena\  with the complete zip package of the bot (either from this repository or from my website).
  2. Patch the bot to the latest versions if there are any patches. Don't skip versions unless I specifically say it's all right.  ALSO NOTE: DO NOT HAVE THE BOT RUNNING WHEN YOU APPLY PATCHES!
  3. Run the mirc.exe included with Complete Package.
@@ -38,12 +29,8 @@ Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended
 
 With version 2.4 the bot SHOULD work if you put the bot in a folder that has spaces (such as C:\Program Files\BattleArena)  but it is still recommended to not do that if you can avoid it.
    
- _______________________________________________________________________
-/                                                                       \
-|                             WHAT'S NEW?                               |
-\_______________________________________________________________________/
-
-
+   
+WHAT'S NEW?
 As usual be sure to read the versions.txt in the documentation folder for a full list of everything this version does.  Listed below are some of the highlights.
 
 ADDITIONS:
@@ -121,53 +108,19 @@ REMOVALS:
 
 Again, this IS NOT everything. Be sure to read the versions.txt in the documentation folder for a full list of everything as the list is quite extensive.
 
- _______________________________________________________________________
-/                                                                       \
-|                                THANKS                                 |
-\_______________________________________________________________________/
-
+THANKS
 These are people who have helped me by helping me test, making monsters/weapons/etc, finding bugs, or just by giving me some ideas.
 
-Scott "Smz" of Esper.net
-He helped me with a bunch of ideas, made monsters, made bosses, made tons of armor.  Not only that, he was the first beta tester of version 1.0; Without him, I don't think I could have done this.
-
-Andrio of Esper.net 
-Helped me test out the bot and found a few glitches that needed to be fixed. Not to mention created a debug script that helped find many errors in monster/npc/boss files.
-
-AuXFire of Hawkee
-Caught a major bug with the passwords which made changing your password from the default impossible.
-
-Raiden of Esper.net
-This guy has helped me almost as much as Smz has. He's found countless bugs, gave me ideas for several accessories and skills and helped host the bot on Esper.net.
-
-Sealdrenxia of Twitter
-Discovered a huge bug with !new char that let players use the command over and over to get free orbs.
-
-Rei_Hunter of Esper.net
-Helped give me a ton of ideas for the bot (including, but not limited to, moving cooldown timers to the skills.db, monsters being able to absorb elements for healing, AOE healing, and the ability for monsters to ignore darkness/rage mode).
-
-Trunks on Esper.net
-Since he was translating the bot into German, it sparked the idea of 
-the translation.dat file to try and make the bot a little more friendly for translation.
-
-Roy of Esper.net
-He helped test a few things, found a few bugs and suggested 
-the scoreboard.
-
-Wims of mIRC's official forum
-Helped push me into the correct direction for improving many 
-blocks of code to make them faster and more efficient.
-
-W3TPantsu of Esper.net
-Helped find countless bugs that have been fixed.
-
-Pangaea from my forum
-Had the idea for the scoreboard generating an HTML file to
-make it easier to post scores and stats online.
-
-Anthrax from my forum
-Helped to find bugs and offered suggestions on how to improve the bot.
-
-Karman from my forum
-Helped to find bugs and offered suggestions on how to improve the bot. Also gave me the idea for the Gremlins.
-
+* Scott "Smz" of Esper.net
+* Andrio of Esper.net
+* AuXFire of Hawkee
+* Raiden of Esper.net
+* Sealdrenxia of Twitter
+* Rei_Hunter of Esper.net
+* Trunks of Esper.net
+* Roy of Esper.net
+* Wims of mIRC's official forum
+* W3TPantsu of Esper.net
+* Pangaea from my forum
+* Anthrax from my forum
+* Karman from my forum
