@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/22/15
+;;;; Last updated: 04/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4601,7 +4601,7 @@ enspell_check {
 ignition_check {
   if ($readini($char($1), Status, ignition.on) = on) { 
     set %original.ignition.name $readini($char($1), status, ignition.name)
-    set %ignition.cost $readini($dbfile(ignitions.db), %ignition.name, IgnitionConsume)
+    set %ignition.cost $readini($dbfile(ignitions.db), %original.ignition.name, IgnitionConsume)
     set %player.current.ig $readini($char($1), battle, ignitionGauge)
 
     ; You can uncomment the next line if you want ignitions to only consume half their IG cost if the player misses a turn due to a status effect.
