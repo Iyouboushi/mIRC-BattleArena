@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 04/27/15
+;;;; Last updated: 04/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -318,6 +318,7 @@ alias ai_techcheck {
 
           if (%ai.type = healer) {
             if ($readini($dbfile(techniques.db), %tech.name, type) = heal) { %tech.list = $addtok(%tech.list,%tech.name,46) }
+            if ($readini($dbfile(techniques.db), %tech.name, type) = heal-AOE) { %tech.list = $addtok(%tech.list,%tech.name,46) }
           }
         }
 
