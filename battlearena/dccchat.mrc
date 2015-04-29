@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 04/25/15
+;;;; Last updated: 04/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -890,7 +890,6 @@ on 2:Chat:ACTION uses * * on *: {
   $set_chr_name($nick) 
   set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
   if (%attack.target = $null) { set %attack.target $6 }
-  $covercheck(%attack.target, $4)
   $tech_cmd($nick , $4 , %attack.target, $7) | halt 
 } 
 on 2:Chat:uses * * on *: {
@@ -899,7 +898,6 @@ on 2:Chat:uses * * on *: {
   $set_chr_name($nick) 
   set %attack.target $matchtok($return_peopleinbattle, $5, 1, 46)
   if (%attack.target = $null) { set %attack.target $5 }
-  $covercheck(%attack.target, $3)
   $tech_cmd($nick , $3 , %attack.target, $6) | halt 
 } 
 on 2:Chat:ACTION sings *: {
