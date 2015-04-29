@@ -1268,6 +1268,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug in which players could trade armor they were still wearing
 - Fixed a bug in which players could bid on an auction house item without any allied notes
 - Fixed a bug that would cause an infinite loop if there was only 1 NPC in the \npcs\ folder.
+- Fixed a bug with !access remove that wasn't actually removing the player from the list.
 - Fixed multiple typos and errors found in weapons.db/items.db/techniques.db (courtesy of Andrio)
 - Fixed an exploit where player difficulty could be used on early streaks for easy orbs
 - Removed the following monsters: Final_Guard, Prime_Vise, Excenmille, NajaSalaheem, Wind-UpShantotto
