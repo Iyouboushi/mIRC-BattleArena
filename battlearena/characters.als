@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 04/21/15
+;;;; Last updated: 04/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -46,7 +46,7 @@ character.access {
     var %player.access.list $readini($char($1), access, list)
     if (%player.access.list = $null) { writeini $char($1) access list $nick | var %player.access.list $nick }
     if ($istok(%player.access.list,$3,46) = $true) {   
-      if ($3 != $1) { var %player.access.list $deltok(%player.access.list, $3,46) | writeini $char($1) access list %player.access.list | $display.private.message2($1, $readini(translation.dat, system, AccessCommandRemove)) | halt }
+      if ($3 != $1) { var %player.access.list $remtok(%player.access.list, $3,46) | writeini $char($1) access list %player.access.list | $display.private.message2($1, $readini(translation.dat, system, AccessCommandRemove)) | halt }
       if ($3 = $1) { $display.private.message2($1, $readini(translation.dat, errors, AccessCommandCan'tRemoveSelf)) }
     }
   }
