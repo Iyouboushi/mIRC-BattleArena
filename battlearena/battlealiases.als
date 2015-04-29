@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/27/15
+;;;; Last updated: 04/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -872,6 +872,10 @@ display_damage {
   ; $3 = type of display needs to be done
   ; $4 = weapon/tech/item name
 
+  ; A valid command was done, so let's turn the next timer off before we do this
+  /.timerBattleNext off
+
+  ; Begin displaying the damage
   unset %overkill |  unset %style.rating | unset %target | unset %attacker 
   $set_chr_name($1) | set %user %real.name
   if ($person_in_mech($1) = true) { set %user %real.name $+ 's $readini($char($1), mech, name) } 
@@ -3053,6 +3057,8 @@ battlefield.damage {
 
   set %attack.damage $round($calc(%attack.damage * %streak.increase),0)
   if (%attack.damage > 500) { set %attack.damage 500 }
+
+  set %damage.display.color 4 
 }
 battlefield.event {
   set %debug.location alias battlefield.event
@@ -3726,12 +3732,14 @@ modifer_adjust {
       unset %accessory.amount
     }
 
+    ; Check for augment to cut elemental damage down
+    if ($augment.check($1, EnhanceElementalDefense) = true) { dec %modifier.adjust.value $calc(%augment.strength * 10) } 
+
     unset %current.accessory | unset %current.accessory.type | unset %accessory.amount
   }
   unset %elements
 
-  ; Check for augment to cut elemental damage down
-  if ($augment.check($1, EnhanceElementalDefense) = true) { dec %modifier.adjust.value $calc(%augment.strength * 10) } 
+
 
   ; Turn it into a deciminal
   var %modifier.adjust.value $calc(%modifier.adjust.value / 100) 
