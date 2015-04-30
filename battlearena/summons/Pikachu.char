@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
 Tp=10
-Str=20
-Def=20
-Int=20
-Spd=30
+Str=50
+Def=50
+Int=50
+Spd=60
 Name=Pikachu
 
 
 [Battle]
 Hp=500
 Tp=10
-Str=20
-Def=20
-Int=20
-Spd=30
+Str=50
+Def=50
+Int=50
+Spd=60
 Status=alive
 
 

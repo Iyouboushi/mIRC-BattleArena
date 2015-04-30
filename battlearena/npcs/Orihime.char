@@ -56,6 +56,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
 RageMode=Ignore
+CanFlee=false
 Streak=11
 
 [Status]

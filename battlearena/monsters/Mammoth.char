@@ -92,8 +92,7 @@ MPRegenerating=no
 [Weapons]
 Equipped=WoolyTusks
 WoolyTusks=5
-Strong=HandToHand.Spear.Whip
-Weakness=Gun.Rifle.GreatSword
+
 
 [Skills]
 DesperateBlows=1
@@ -118,15 +117,15 @@ Ice=50
 Lightning=110
 Light=100
 Dark=100
-HandToHand=100
-Whip=100
+HandToHand=80
+Whip=80
 Sword=100
-Gun=100
-Rifle=100
+Gun=120
+Rifle=120
 Katana=100
 Wand=100
-Spear=100
+Spear=80
 Scythe=100
 Glyph=100
-GreatSword=100
+GreatSword=120
 Bow=100

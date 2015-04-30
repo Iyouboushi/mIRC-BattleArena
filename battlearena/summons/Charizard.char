@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
 Tp=10
-Str=30
-Def=20
-Int=30
-Spd=20
+Str=60
+Def=50
+Int=50
+Spd=50
 Name=Charizard
 
 
 [Battle]
 Hp=500
 Tp=10
-Str=30
-Def=20
-Int=30
-Spd=20
+Str=60
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 

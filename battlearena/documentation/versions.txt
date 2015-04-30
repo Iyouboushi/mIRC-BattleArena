@@ -1256,6 +1256,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue where shadow clones could use scavenge or steal
 - Fixed an issue that allowed players to sell accessories they were still wearing
 - Fixed an AI vs AI issue where occasionally the bot wouldn't recognize that an NPC had any techs even if he/she does.
+- Fixed several issues with being able to buy items you shouldn't be able to 
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
 - Fixed a bug in which Inactive monsters would attack even while inactive if they went first in battle

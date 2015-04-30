@@ -2788,7 +2788,7 @@ counter_melee_action {
 ; Check for a multiple wave
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 multiple_wave_check {
-  if ((%battle.type = defendoutpost) || (%battle.type = assault)) {  unset %multiple.wave }
+  if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
 
   if (%multiple.wave = yes) { return }
   if (%battleis = off) { return }

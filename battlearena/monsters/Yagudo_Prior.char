@@ -93,8 +93,9 @@ Equipped=yagudo_wand
 yagudo_wand=15
 
 [Skills]
+DemonPortal=1
 wizardry=20
-demonportal=1
+
 
 [Techniques]
 Sweep=20

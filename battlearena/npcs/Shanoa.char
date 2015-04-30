@@ -97,10 +97,14 @@ zombie.timer=1
 conservetp.on=off
 
 [Weapons]
-Equipped=Glyphs
-Glyphs=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Equipped=DextroCustros
+DextroCustros=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+EquippedLeft=SinestroCustros
+SinestroCustros=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+
 
 [Skills]
+DualWield=1
 Wizardry=100
 Zen=5
 ClearMind=3
@@ -121,32 +125,18 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 Undead-Killer=10
-Crab-Killer=10
-Dragon-Killer=10
-Zombie-Killer=10
 Demon-Killer=10
-Orc-Killer=10
-Yagudo-Killer=10
-Quadav-Killer=10
-Treant-Killer=10
-Plant-Killer=10
-Android-Killer=10
-Worm-Killer=10
-Bat-Killer=10
-Lizard-Killer=10
-Goblin-Killer=10
-Elemental-Killer=10
-Slime-Killer=10
+
 
 [Techniques]
-Ignis=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Grando=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Fulgur=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Nitesco=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Globus=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Acerbatus=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Luminatio=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Dominus=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Ignis=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Grando=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Fulgur=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Nitesco=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Globus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Acerbatus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Luminatio=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Dominus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Item_Amount]
 
@@ -157,7 +147,8 @@ SpellMaster=10
 SpellMasterXP=1
 
 [Augments]
-Glyphs=HurtEthereal.TechBonus.MeleeBonus.MagicBonus.EnhanceGlyph
+DextroCustras=HurtEthereal.TechBonus.MeleeBonus.MagicBonus.EnhanceGlyph
+SinestroCustros=HurtEthereal.TechBonus.MeleeBonus.MagicBonus.EnhanceGlyph
 
 
 [modifiers]

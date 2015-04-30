@@ -103,7 +103,7 @@ auto-regen=on
 
 [Weapons]
 Equipped=KosmosFists
-KosmosFists=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+KosmosFists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
@@ -128,31 +128,15 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=10
-Crab-Killer=10
-Dragon-Killer=10
-Zombie-Killer=10
-Demon-Killer=10
-Orc-Killer=10
-Yagudo-Killer=10
-Quadav-Killer=10
-Treant-Killer=10
-Plant-Killer=10
-Android-Killer=10
-Worm-Killer=10
-Bat-Killer=10
-Lizard-Killer=10
-Goblin-Killer=10
-Elemental-Killer=10
-Slime-Killer=10
+
 
 [Techniques]
-R-Cannon=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+R-Cannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 Hilbert_Effect=1
 S-Chain=1
-DexEtherRa=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-DexEtherFa=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-DexEtherLe=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+DexEtherRa=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DexEtherFa=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DexEtherLe=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Ignitions]

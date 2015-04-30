@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 04/29/15
+;;;; Last updated: 04/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -536,6 +536,7 @@ alias shop.items {
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid item?
     if ($readini($dbfile(items.db), $3, type) = $null) { $display.private.message(4Error: Invalid item. Use! !shop list items to get a valid list) | halt }
+    if ($readini($dbfile(items.db), $3, type) = rune) { $display.private.message(4Error: Invalid item. Use! !shop list items to get a valid list) | halt }
 
     var %currency.type $readini($dbfile(items.db), $3, currency) 
 

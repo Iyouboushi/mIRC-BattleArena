@@ -55,6 +55,7 @@ Flag=NPC
 CanTaunt=True
 TauntFile=taunts_midna.txt
 IgnoreQuicksilver=True
+RageMode=Ignore
 
 [montser]
 type=Twili
@@ -104,7 +105,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=MirrorOfTwilight
-MirrorOfTwilight=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+MirrorOfTwilight=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
@@ -127,34 +128,18 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=20
-Crab-Killer=10
-Dragon-Killer=10
-Zombie-Killer=10
-Demon-Killer=10
-Orc-Killer=10
-Yagudo-Killer=10
-Quadav-Killer=10
-Treant-Killer=10
-Plant-Killer=10
-Android-Killer=10
-Worm-Killer=10
-Bat-Killer=10
-Lizard-Killer=10
-Goblin-Killer=10
-Elemental-Killer=10
-Slime-Killer=10
+
 
 
 [Techniques]
-TwiliEnergy=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliFist=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliLight=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliCannon=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliBridge=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliWolves=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TwilightMirror=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliSpear=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+TwiliEnergy=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwiliFist=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwiliLight=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwiliCannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwiliBridge=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwiliWolves=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwilightMirror=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwiliSpear=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]
@@ -187,7 +172,7 @@ Water=90
 Ice=90
 Lightning=90
 Light=120
-Dark=130
+Dark=0
 HandToHand=100
 Whip=100
 Sword=100

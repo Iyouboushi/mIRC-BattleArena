@@ -1,0 +1,7 @@
+grabs %enemy $+ 's wrist and slams $gender2(%target) into the ground
+punches %enemy in the face
+hits %enemy in the solar plexis
+does an uppercut to %enemy sending $gender2(%target) head over heels
+punches %enemy hard with a left and follows through with a spinning backhand with the right hand
+slams %enemy over the head and upper back with a double-armed overhead hammer strike, pounding $gender2(%target) about an inch into the ground
+charges at %enemy at full speed and executes a $rand(3,6) $+ -hit combo before leaping back into fighting position

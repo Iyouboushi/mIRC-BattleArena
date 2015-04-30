@@ -97,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Rose's_Rapier
-Rose's_Rapier=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Rose's_Rapier=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 SwordMaster=100
@@ -121,29 +121,13 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=10
-Crab-Killer=10
-Dragon-Killer=10
-Zombie-Killer=10
-Demon-Killer=10
-Orc-Killer=10
-Yagudo-Killer=10
-Quadav-Killer=10
-Treant-Killer=10
-Plant-Killer=10
-Android-Killer=10
-Worm-Killer=10
-Bat-Killer=10
-Lizard-Killer=10
-Goblin-Killer=10
-Elemental-Killer=10
-Slime-Killer=10
+
 
 [Techniques]
-WhipSmack=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-MoreAndMore=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-HardBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-DemonsDance=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+WhipSmack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MoreAndMore=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HardBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DemonsDance=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]
@@ -172,7 +156,7 @@ Ice=100
 Water=100
 Lightning=100
 Light=100
-Dark=0
+Dark=100
 HandToHand=100
 Whip=100
 Sword=100

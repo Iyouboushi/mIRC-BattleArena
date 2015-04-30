@@ -497,7 +497,7 @@ Type=food
 Target=str
 Amount=10
 Desc=pulls out a large pot roast and hands it to %enemy $+ , who munches down.  Mmmm, yummy!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -506,7 +506,7 @@ Type=food
 Target=def
 Amount=10
 Desc=pulls out a bowl of ramen and hands it to %enemy $+ , who munches down. Slurrrp!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -515,7 +515,7 @@ Type=food
 Target=int
 Amount=10
 Desc=pulls out a small amount of cavier and hands it to %enemy $+ , who eats it slowly.  I say!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -524,7 +524,7 @@ Type=food
 Target=hp
 Amount=20
 Desc=pulls out a slice of pizza and hands it to %enemy $+ , who munches it down.  Cowabunga!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -533,7 +533,7 @@ Type=food
 Target=tp
 Amount=10
 Desc=pulls out a Bison Dollar and hands it to %enemy who exchanges it for a small TP enhancement.
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -542,7 +542,7 @@ Type=food
 Target=str
 Amount=10
 Desc=pulls out a piece of dragon meat and hands it to %enemy $+ , who cooks it and then munches down.  Mmmm, yummy!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -551,7 +551,7 @@ Type=food
 Target=str
 Amount=10
 Desc=pulls out a piece of Cerberus meat and hands it to %enemy $+ , who cooks it and eats it.  Dude, you just ate some of a three-headed dog!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -560,7 +560,7 @@ Type=food
 Target=str
 Amount=15
 Desc=pulls out a piece of meat from a werewolf and hands it to %enemy $+ , who cooks it and eats it. Mmm! It's howling good!
-Cost=5000000
+Cost=0
 SellPrice=2000
 Exclusive=yes
 
@@ -569,7 +569,7 @@ Type=food
 Target=str
 Amount=25
 Desc=pulls out a piece of meat from an alpha werewolf and hands it to %enemy $+ , who cooks it and eats it. Mmm! This meat is so good it makes you want to transform into a howling maniac! 
-Cost=5000000
+Cost=0
 SellPrice=5000
 Exclusive=yes
 
@@ -578,7 +578,7 @@ Type=food
 Target=str
 Amount=10
 Desc=pulls out a turkey leg meat and hands it to %enemy $+ , who cooks it and eats it. Mmm! Gobble gobble indeed!
-Cost=5000000
+Cost=0
 SellPrice=4000
 Exclusive=yes
 
@@ -587,7 +587,7 @@ Type=food
 Target=hp
 Amount=20
 Desc=pulls out a Super Mushroom from the Mushroom Kingdom and hands it to %enemy $+ , who munches it down.  $2 does not grow bigger, but instead gains more endurance.
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -596,7 +596,7 @@ Type=food
 Target=def
 Amount=10
 Desc= pulls out a bottle of alcohol labeled "Fire Dragon Wine" and hands it to %enemy $+ , who drinks the entire bottle. After a moment of intense pain and nausea, $2 feels that $gender($2) defense has increased! 
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -605,7 +605,7 @@ Type=food
 Target=style
 Amount=30
 Desc=takes out a potion bottle with a golden liquid inside and hands it to %enemy who drinks it. After a moment of warmth feeling, $2 feels more stylish!
-Cost=10000000
+Cost=0
 SellPrice=5000
 
 [FoieGras]
@@ -613,7 +613,7 @@ Type=Food
 Target=spd
 Amount=10
 Desc=pulls out a a plate of foie gras and hands it to %enemy $+ , who then eats it. Uh... let's say it's an aquired taste...
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -622,7 +622,7 @@ Type=Food
 Target=int
 Amount=10
 Desc=pulls out a book of knowledge and hands it to %enemy $+ , who then reads it and feels a little smarter!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -631,7 +631,7 @@ Type=food
 Target=int
 Amount=10
 Desc=pulls out a painting drawn by Brauner and hands it to %enemy $+ , who studies it. Indeed. Quite.
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -640,7 +640,7 @@ Type=food
 Target=int
 Amount=10
 Desc=pulls out a basket of fish and chips and hands it to %enemy $+ , who eats it slowly.  Quite! Indeed!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -651,6 +651,7 @@ Amount=100
 Desc=pulls out a bleeding heart and looks at it. People really eat this? Well..uhh..maybe. $set_chr_name($2) %real.name ends up eating it and feels sick for doing so.... but..at least %real.name gains some max HP for it.
 SellPrice=5000
 Exclusive=yes
+Cost=0
 
 [RottingMeat]
 type=food
@@ -658,13 +659,14 @@ Target=str
 Amount=-10
 Desc=pulls out a slab of brown, smelly, rotting meat. Ugh, who would ever eat this?  Well, $set_chr_name($2) %real.name is forced to eat it and feels sick to $gender($2) stomach.  This isn't helpful at all! %real.name feels weaker than before after eating it.
 SellPrice=2000
+Cost=0
 
 [Slurm]
 Type=food
 Target=style
 Amount=15
 Desc=takes out a small can of Slurm and opens it before handing it to %enemy who drinks it. After a moment, $set_chr_name($2) %real.name feels like going out and partying like Slurms McKenzie! Whimmy wham wham wozzle!
-Cost=10000000
+Cost=0
 SellPrice=2000
 
 [SilverApple]
@@ -672,7 +674,7 @@ Type=food
 Target=style
 Amount=10
 Desc=pulls out a small silver apple and hands it to %enemy who eats it. Woah, a silver apple? That's pretty cool, right? Stylish!
-Cost=10000000
+Cost=0
 SellPrice=2000
 
 [Rum]
@@ -680,7 +682,7 @@ Type=food
 Target=style
 Amount=10
 Desc=pulls out a bottle of rum and hands it to %enemy who chugs it down. Arrr! Pirates be stylish, matey!
-Cost=10000000
+Cost=0
 SellPrice=2000
 
 [DefenseSource]
@@ -688,7 +690,7 @@ Type=Food
 Target=def
 Amount=10
 Desc=pulls out a book of defense and hands it to %enemy $+ , who then reads it and feels a little stronger!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -697,7 +699,7 @@ Type=Food
 Target=str
 Amount=10
 Desc=pulls out a book of power and hands it to %enemy $+ , who then reads it and feels a little more powerful!
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -706,7 +708,7 @@ Type=food
 Target=spd
 Amount=10
 Desc=takes out a herring and hands it to %enemy $+ , who then stares at it. $set_chr_name($2) $+ %real.name then cooks and eats it, though $gender3($2) then feels an urge to chop down the mightiest tree in the forest...
-Cost=10000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -715,7 +717,7 @@ Type=food
 Target=redorbs
 Amount=$rand(500,1000)
 Desc=takes out an ancient blood-colored scroll and hands it to %enemy who then reads it. The scroll begins to dissolve into red orbs that swirl around %enemy before being absorbed.
-Cost=10000000
+Cost=0
 SellPrice=50
 Exclusive=yes
 
@@ -724,7 +726,7 @@ Type=food
 Target=blackorbs
 Amount=$rand(1,2)
 Desc=takes out an ancient burnt scroll and hands it to %enemy who then reads it. The scroll begins to dissolve into a black mist that swirls around %enemy before being absorbed.
-Cost=10000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -733,7 +735,7 @@ Type=food
 Target=redorbs
 Amount=$rand(1000,2000)
 Desc=takes out old pirate map and hands it to %enemy who then uses it to discover a chest full of red orbs. Yarr!
-Cost=10000000
+Cost=0
 SellPrice=50
 Exclusive=yes
 
@@ -742,7 +744,7 @@ Type=Food
 Target=int
 Amount=10
 Desc=takes out a black book covered in skulls and reads it.
-Cost=5000000
+Cost=0
 SellPrice=1000
 Exclusive=yes
 
@@ -1032,63 +1034,63 @@ KEYS
 [BlueKey]
 Type=key
 Unlocks=blue
-Cost=30
+Cost=0
 SellPrice=50
 Desc=A small blue key. It will unlock blue-colored chests.
 
 [RedKey]
 Type=key
 Unlocks=red
-Cost=30
+Cost=0
 SellPrice=50
 Desc=A small red key. It will unlock red-colored chests.
 
 [OrangeKey]
 Type=key
 Unlocks=orange
-Cost=500
+Cost=0
 SellPrice=50
 Desc=A small orange key. It will unlock orange-colored chests.
 
 [GreenKey]
 Type=key
 Unlocks=green
-Cost=30
+Cost=0
 SellPrice=50
 Desc=A small green key. It will unlock green-colored chests.
 
 [GoldKey]
 Type=key
 Unlocks=gold
-Cost=60
+Cost=0
 SellPrice=200
 Desc=A small gold key. It will unlock gold-colored chests.
 
 [BrownKey]
 Type=key
 Unlocks=brown
-Cost=30
+Cost=0
 SellPrice=80
 Desc=A small brown key. It will unlock brown-colored chests.
 
 [SilverKey]
 Type=key
 Unlocks=silver
-Cost=60
+Cost=0
 SellPrice=100
 Desc=A small silver key. It will unlock silver-colored chests.
 
 [PurpleKey]
 Type=key
 Unlocks=purple
-Cost=60
+Cost=0
 SellPrice=150
 Desc=A small purple key. It will unlock purple-colored chests.
 
 [BlackKey]
 Type=key
 Unlocks=black
-Cost=60
+Cost=0
 SellPrice=100
 Desc=A small black key. It will unlock black-colored chests.
 
@@ -1102,7 +1104,7 @@ Target=Single
 Amount=5.0
 Desc=pulls out a special Christmas Discount Card and gives it to %enemy who shows it to the shop clerk.  "Oh wow! You've met Santa! That's awesome! Of course you can have a discount!"  Score!
 Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 20, 45000, 0)
-SellPrice=$iif($shopnpc.present.check(DiscountCardMerchant) = true, 45000, 0)
+SellPrice=$iif($shopnpc.present.check(DiscountCardMerchant) = true, 4500, 0)
 ShopNPC=Santa
 Exclusive=yes
 
@@ -1122,7 +1124,7 @@ Target=Single
 Amount=10.0
 Desc=pulls out a Discount Card and gives it to %enemy who shows it to the shop clerk.  "Ah yes, indeed, part of of our..secret club."  Score!
 Cost=100000
-SellPrice=10000
+SellPrice=1000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
 
@@ -1132,7 +1134,7 @@ Target=Single
 Amount=15.0
 Desc=pulls out a special membership card obtained from the traveling merchant and gives it to %enemy who shows it to the shop clerk.  "No way! You have a membership card from HIM? Of course you get a discount!"
 Cost=140000
-SellPrice=10000
+SellPrice=1000
 Exclusive=yes
 ShopNPC=TravelMerchant
 
@@ -1143,7 +1145,7 @@ Amount=15.0
 Desc=pulls out a bronze Discount Card and gives it to %enemy who shows it to the shop clerk.  "Oh, a bronze member? Not too bad.  Here's your discount!"
 Cost=160000
 ConquestItem=true
-SellPrice=20000
+SellPrice=2000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
 
@@ -1154,7 +1156,7 @@ Amount=20.0
 Desc=pulls out a shiny silver Discount Card and gives it to %enemy who shows it to the shop clerk.  "Woah! A silver member? Well of course you get a discount!"
 Cost=200000
 ConquestItem=true
-SellPrice=30000
+SellPrice=3000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
 
@@ -1165,7 +1167,7 @@ Amount=30.0
 Desc=pulls out a shiny gold Ultra Discount Card and gives it to %enemy who shows it to the shop clerk.  "Woah! No way! You know the president of the shop? Why yes, of course, please!  Here's a hefty discount for you!" 
 Cost=300000
 ConquestItem=true
-SellPrice=40000
+SellPrice=4000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
 
@@ -1269,7 +1271,7 @@ ACCESSORIES
 [Jungle-Medallion]
 Type=accessory
 AccessoryType=IncreaseCriticalHits.IncreaseMeleeDamage.BlockAllStatus
-Cost=9999999999
+Cost=0
 Desc=A Medallian infused with the power of the Jungle Demons. This Medallion will increase critical hits by 15%, increase melee damage based on the number of on-hand red orbs you have and reduce the chance of status effects from happening by 50%. 
 SellPrice=2000
 IncreaseCriticalHits.Amount=15
@@ -1279,7 +1281,7 @@ BlockAllStatus.Amount=50
 [Hourglass-Necklace]
 Type=accessory
 AccessoryType=IgnoreQuickSilver
-Cost=9999999999
+Cost=0
 Desc=A necklace with the power to ignore Quicksilver.
 SellPrice=2000
 
@@ -1315,7 +1317,7 @@ ShopNPC=TravelMerchant
 [Wizard's-Ankh]
 Type=accessory
 AccessoryType=IncreaseHealing.IncreaseSpellDamage
-Cost=9999999999
+Cost=0
 Desc=The combination of a Wizard's Amulet and a Blessed Ankh, this is a necklace that will increase the potentcy of healing and the power of your spells.
 IncreaseHealing.Amount=.20
 IncreaseSpellDamage.Amount=.07
@@ -1334,7 +1336,7 @@ ShopNPC=TravelMerchant
 [Blood-Pendant]
 Type=accessory
 AccessoryType=IncreaseRedOrbs
-Cost=9999999999
+Cost=0
 Desc=A small ring with a small blood-red stone in it.  This accessory will increase the amount of orbs you gain at the end of battles.
 ; .15 = 15% more orbs.  if the reward is 1000 you'll get +150.
 IncreaseRedOrbs.Amount=.15
@@ -1343,7 +1345,7 @@ SellPrice=2000
 [Blood-Crown]
 Type=accessory
 AccessoryType=IncreaseRedOrbs
-Cost=9999999999
+Cost=0
 Desc=A golden crown with a bright red gem sitting in the middle.  This accessory will increase the amount of orbs you gain at the end of battles.
 ; .20 = 20% more orbs.  if the reward is 1000 you'll get +200.
 IncreaseRedOrbs.Amount=.20
@@ -1360,7 +1362,7 @@ ShopNPC=TravelMerchant
 
 [Brown-Belt]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseH2HDamage
 Desc=A cloth belt that proves you're almost finished with your training as a martial arts master master!  This accessory will increase the power of hand to hand attacks.
 IncreaseH2HDamage.Amount=.20
@@ -1368,7 +1370,7 @@ SellPrice=1000
 
 [Black-Belt]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseH2HDamage
 Desc=A cloth belt that proves you're a real hand to hand master!  This accessory will increase the power of hand to hand attacks.
 IncreaseH2HDamage.Amount=.30
@@ -1376,7 +1378,7 @@ SellPrice=2000
 
 [Red-Belt]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseH2HDamage
 Desc=A cloth belt that proves you've gone way beyond the level of a black belt! This accessory will increase the power of hand to hand attacks.
 IncreaseH2HDamage.Amount=.50
@@ -1394,7 +1396,7 @@ ShopNPC=TravelMerchant
 
 [Thief-Ring]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseSteal
 Desc=A tiny ring that increases the chance of successfully stealing from a target.
 IncreaseSteal.Amount=5
@@ -1403,7 +1405,7 @@ SellPrice=2000
 
 [Mugger's-Belt]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=Mug
 Desc=A belt that changes the standard Steal command into Mug. If you wear this accessory you will deal melee damage to the target in addition to stealing from it.
 SellPrice=2000
@@ -1429,7 +1431,7 @@ ShopNPC=TravelMerchant
 
 [Ribbon]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=BlockAllStatus
 Desc=A pretty pink ribbon said to have been worn by a goddess. While wearing this accessory you will become immune to all status effects EXCEPT for curse under a Curse Night.
 ; The amount is added to the target's current resistance amount.  It's a direct amount so 100 = +100%
@@ -1438,14 +1440,14 @@ SellPrice=5000
 
 [Aztec-Goldcoin]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=CurseAddDrain
 Desc=A shiny piece of cursed Aztec Gold. While equipped, this coin will inflict the curse status but will add a +HP Absorb to every melee attack.  The person equipped with this accessory will remain at 0 tp each turn even if items or skills are used.
 SellPrice=1000
 
 [AztecGoldcoin]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=CurseAddDrain
 Desc=A shiny piece of cursed Aztec Gold. While equipped, this coin will inflict the curse status but will add a +HP Absorb to every melee attack.  The person equipped with this accessory will remain at 0 tp each turn even if items or skills are used.
 SellPrice=1000
@@ -1453,7 +1455,7 @@ SellPrice=1000
 [Mayan-Charm]
 Type=accessory
 AccessoryType=IncreaseCriticalHits.BlockAllStatus
-Cost=9999999999
+Cost=0
 Desc=A small ancient Mayan charm infused with the power of the ancient ones. This charm will increase critical hits by 5% and reduce the chance of status effects from happening by 10%. 
 SellPrice=2000
 IncreaseCriticalHits.Amount=5
@@ -1461,7 +1463,7 @@ BlockAllStatus.Amount=10
 
 [Lucky-Rabbit'sFoot]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseCriticalHits
 Desc=A lucky rabbit's foot that enhances the chance for critical hits.
 IncreaseCriticalHits.Amount=10
@@ -1469,7 +1471,7 @@ SellPrice=2000
 
 [4leaf-clover]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseCriticalHits
 Desc=A lucky 4 leaf clover that enhances the chance for critical hits.
 IncreaseCriticalHits.Amount=15
@@ -1477,7 +1479,7 @@ SellPrice=3000
 
 [VIP-MemberCard]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=ReduceShopLevel
 Desc=A special VIP membership card to the shop. While wearing this accessory all purchases will be -1 shop level.  Note, your shop level cannot drop below 1 even while wearing this accessory and your shop level will continue to rise as it would normally.
 ReduceShopLevel.Amount=1
@@ -1494,7 +1496,7 @@ ShopNPC=TravelMerchant
 
 [Prism-Specs]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=ElementalDefense
 Desc=A special pair of sunglasses that enhances the elemental defense of anyone who wears it. This accessory will cut elemental damage done by half, but will also do the same to healing.
 ElementalDefense.Amount=.50
@@ -1511,7 +1513,7 @@ ShopNPC=TravelMerchant
 
 [Mimic-Ring]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseMimicOdds
 Desc=A ring that has the shape of an angry chest on it. Wearing this accessory will increase the odds of a mimic showing up when opening chests by 3%
 IncreaseMimicOdds.Amount=3
@@ -1519,7 +1521,7 @@ SellPrice=3000
 
 [Engine-Ring]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseMechEngineLevel
 Desc=A ring that will help increase mech engine efficiency by 0.5% when worn.
 IncreaseMechEngineLevel.Amount=0.5
@@ -1545,7 +1547,7 @@ ShopNPC=TravelMerchant
 
 [Hero'sMedal]
 Type=accessory
-Cost=9999999999
+Cost=0
 AccessoryType=IncreaseCriticalHits
 Desc=An accessory for a true hero.
 IncreaseCriticalHits.Amount=$iif($readini($char($1), weapons, MasamuneII) >= 1, 90, 0)
@@ -1562,7 +1564,7 @@ ShopNPC=TravelMerchant
 
 [PendantOfPower]
 Type=accessory
-Cost=9999999
+Cost=0
 AccessoryType=IncreaseSwordDamage
 Desc=A bright red pendant that is said to enhance a wearer's ability to fight with a sword. This accessory will increase melee damage done with a sword weapon.
 IncreaseSwordDamage.Amount=.45
@@ -1570,7 +1572,7 @@ SellPrice=3000
 
 [PendantOfWisdom]
 Type=accessory
-Cost=9999999
+Cost=0
 AccessoryType=IncreaseMagic
 Desc=A bright blue pendant that is said to enhance a wearer's spell power. This accessory will increase damage done with magic.
 IncreaseMagic.Amount=.45
@@ -1578,7 +1580,7 @@ SellPrice=3000
 
 [PendantOfCourage]
 Type=accessory
-Cost=9999999
+Cost=0
 AccessoryType=EnhanceBlocking
 Desc=A bright green pendant that is said to enhance a wearer's ability to stand up to an enemy and block more often with a shield. This accessory will increase the odds of blocking an attack while using a shield.
 EnhanceBlocking.Amount=2
@@ -2294,119 +2296,119 @@ RUNES
 
 [EthRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=HurtEthereal
 Desc=This rune will infuse a weapon with the ability to hurt Ethereal monsters.
 
 [MtlRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=IgnoreMetalDefense
 Desc=This rune will infuse a weapon with the ability to cut through the defense of strong "Metal Defense" type monsters (such as Metal Slimes).
 
 [RenRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=RenkeiBonus
 Desc=This rune will infuse a weapon with Enhanced Renkei points when a tech is done with that weapon.
 
 [MeRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=MeleeBonus
 Desc=This rune will infuse a weapon with a melee bonus when melee attacks are done with that weapon.
 
 [TeRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=TechBonus
 Desc=This rune will infuse a weapon with a tech damage bonus when techs are done with that weapon.
 
 [MaRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=MagicBonus
 Desc=This rune will infuse a weapon with a magic damage bonus when magic techs are done with that weapon.
 
 [HiRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=AdditionalHit
 Desc=This rune will infuse a weapon with the ability to do one extra hit per melee attack.
 
 [GeRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=GemConvert
 Desc=This rune will infuse a weapon with the ability to convert monsters into gems upon their deaths.
 
 [SmnRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=EnhanceSummons
 Desc=This rune will infuse a weapon with the ability to enhance summons while the augmented weapon is equipped when using a summon.
 
 [DrnRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=Drain
 Desc=This rune will infuse a weapon with the Drain status. Attacks done with the Drain status on will allow you to absorb some HP back.
 
 [ItmRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=150
 Augment=EnhanceItems
 Desc=This rune will infuse a weapon with the ability to enhance items when the augmented weapon is equipped while using items.
 
 [NinRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=300
 Augment=UtsusemiBonus
 Desc=This rune will infuse a weapon with the ability to enhance the Utsusemi skill when the augmented weapon is equipped while using the skill.
 
 [IgDef]
 type=rune
-Cost=500
+Cost=0
 SellPrice=300
 Augment=IgnoreDefense
 Desc=This rune will infuse a weapon with the ability to ignore some of a target's defense. 
 
 [IgDefRune]
 type=rune
-Cost=500
+Cost=0
 SellPrice=300
 Augment=IgnoreDefense
 Desc=This rune will infuse a weapon with the ability to ignore some of a target's defense. 
 
 [TurtleRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=EnhanceDefender
 Desc=This rune will infuse a weapon with the ability to enhance the skill "Defender" while the augmented weapon is equipped when using the skill. 
 
 [DragonRune]
 Type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=EnhanceAggressor
 Desc=This rune will infuse a weapon with the ability to enhance the skill "Aggressor" while the augmented weapon is equipped when using the skill. 
 
 [EleRune]
 type=rune
-Cost=500
+Cost=0
 SellPrice=200
 Augment=EnhanceElementalDefense
 Desc=This rune will infuse a weapon with the ability to help enhance the user's elemental defense while the augmented weapon is equipped when hit by an elemental attack.
@@ -2450,7 +2452,7 @@ battlefield=Korroloka Tunnel
 Weather=gloomy
 Monster=Morion_Worm
 Desc=travels to the Korroloka Tunnel and takes out the worm food.  After opening it, %real.name sprinkles the food out on the cavern floor.  A large worm pops out of the side of the cavern wall and looks at the heroes..
-AlliedNotes=150
+AlliedNotes=50
 Exclusive=yes
 PortalLevel=25
 
@@ -2462,7 +2464,7 @@ Battlefield=Jester's Lair
 Weather=gloomy
 Monster=Crazy_Jester
 Desc=rings a demonic bell that opens a portal. Upon entering they are greeted with Jester, the insane clown.
-AlliedNotes=300
+AlliedNotes=100
 Exclusive=yes
 PortalLevel=30
 
@@ -2499,7 +2501,7 @@ Battlefield=Desert Palace
 weather=dry
 Monster=Red_Lanmola.Green_Lanmola.Blue_Lanmola
 Desc=pulls out an ancient book that leads the heroes to an old palace in the desert.  Inside they overcome many puzzles and dangers before finally reaching a large room full of sand.  The sand seems to be moving.. prepare yourselves!
-AlliedNotes=250
+AlliedNotes=200
 Exclusive=yes
 PortalLevel=30
 
@@ -2511,7 +2513,7 @@ Battlefield=Tower of Hera
 weather=dry
 Monster=Moldorm.MoldormTail
 Desc=takes a special key made to enter the Tower of Hera.  After a climb up a mountain, the heroes enter and climb the tower to the top floor where they're greeted by a massive yellow centipede-snake creature.
-AlliedNotes=300
+AlliedNotes=200
 Exclusive=yes
 PortalLevel=30
 
@@ -2523,7 +2525,7 @@ Battlefield=Overworld - Night
 Weather=calm
 Monster=Eye_of_Cthulhu
 Desc=takes out a small item that resembles an eye and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Eye of Cthulhu has awoken!]
-AlliedNotes=500
+AlliedNotes=200
 Exclusive=yes
 PortalLevel=50
 
@@ -2535,7 +2537,7 @@ Battlefield=Overworld - The Corruption
 Weather=gloomy
 Monster=Eater_of_Worlds
 Desc=travels to the Corruption. %real.name takes out some rotten meat attached to a bone and tosses it into a deep pit. A loud roar is heard a moment later as a massive worm rises out of the pit. [Eater of Worlds has awoken!]
-AlliedNotes=550
+AlliedNotes=200
 Exclusive=yes
 PortalLevel=75
 
@@ -2547,7 +2549,7 @@ Battlefield=Overworld - The Crimson
 Weather=gloomy
 Monster=Brain_of_Cthulhu
 Desc=travels to the Crimson. %real.name takes out a small item that resembles a spine, which somehow drips blood and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Brain of Cthulhu has awoken!]
-AlliedNotes=550
+AlliedNotes=200
 Exclusive=yes
 PortalLevel=75
 
@@ -2559,7 +2561,7 @@ Battlefield=Overworld - The Dungeon
 Weather=calm
 Monster=Skeletron.Skeletron_LeftArm.Skeletron_RightArm
 Desc=takes out a map which leads to a dungeon. After descending into the dungeon, a loud roar is heard. [Skeletron has awoken!]
-AlliedNotes=600
+AlliedNotes=200
 Exclusive=yes
 PorltalLevel=100
 
@@ -2571,7 +2573,7 @@ Battlefield=Ancient Mayan Ruins
 weather=hot
 Monster=Mazaal.MazaalRHand.MazaalLHand
 Desc=takes the ancient Mayan Map and uses it to locate the remains of ancient Mayan ruins. After much effort, the heroes enter and climb through the ruins to a special chamber where they're greeted by a large Mayan-looking head statue and two large Mayan-looking hand statues.
-AlliedNotes=550
+AlliedNotes=350
 Exclusive=yes
 PortalLevel=30
 
@@ -2583,12 +2585,24 @@ Battlefield=Slurm Factory
 Weather=glomy
 Monster=Poison
 Desc=pulls out a special can of Virility. It sure does look an awful lot like a can of Slurm.  After drinking it, the heroes are pulled into Limbo where they can venture deep into the Virility factory.  After a little bit of exploring, they discover the horror: the secret ingrident comes from the behind of one awfully large demon slug named Poison. Yuck!
-AlliedNotes=500
+AlliedNotes=250
 Exclusive=yes
 PortalLevel=50
 
 
 ; Kindred Seal Portal Items
+
+[EnergyElements]
+type=portal
+Cost=15
+Currency=KindredSeal
+Battlefield=Dr. Wily's Castle
+Weather=Gloomy
+Monster=Gamma.GammaLeftArm.GammaRightArm
+Desc=manages to gather the eight energy elements only to be stolen by the nefarious Dr. Wily! The heroes travel to Dr. Wily's castle in an attempt to defeat him.
+AlliedNotes=1200
+Exclusive=yes
+PortalLevel=150
 
 [IgnisFatuus]
 type=portal
@@ -2923,7 +2937,7 @@ Battlefield=Zohar Cave
 Weather=gloomy
 Monster=Grahf
 Desc=pulls out an unknown source of power, which suddenly covers the heroes in darkness. Once the darkness fades, they appear to be in a cave with a strange golden monolith with a large eye on it. In front of the monolith is a large black and grey mech with black wings. You can also see a person stand on the shoulder of the mech.
-AlliedNotes=5000
+AlliedNotes=2500
 Exclusive=yes
 PortalLevel=300
 
@@ -2950,7 +2964,7 @@ Battlefield=Atlantis
 Weather=Dark
 Monster=AshiAtora
 Desc=takes out an ancient crystal from Atlantis. It begins to pulse then glows bright, covering everyone and the battlefield.  When the glow fades they find themselves in Atlantis.. 
-AlliedNotes=7000
+AlliedNotes=5000
 PortalLevel=300
 DarknessTurns=35
 
@@ -3046,7 +3060,6 @@ SPECIAL ITEMS
 Type=special
 Cost=0
 SellPrice=5000
-Exclusive=yes
 SpecialType=GainWeapon
 Weapon=X-Buster
 Desc=pulls out a set of blueprints for an X-Buster $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a beautiful and functional X-Buster ready for use.
@@ -3055,7 +3068,6 @@ Desc=pulls out a set of blueprints for an X-Buster $iif($2 != $1, and hands it t
 Type=special
 Cost=0
 SellPrice=5000
-Exclusive=yes
 SpecialType=GainWeapon
 Weapon=SilverSword
 Desc=pulls out a set of blueprints for the Silver Sword $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the beautiful and powerful Silver Sword, ready for use.
@@ -3073,7 +3085,6 @@ Desc=pulls out a set of blueprints for the $iif($2 != $1, Genbu's Shield and han
 Type=special
 Cost=0
 SellPrice=5000
-Exclusive=yes
 SpecialType=GainWeapon
 Weapon=MasterSword
 Desc=$iif($2 != $1,pulls out an ancient map from Hyrule and hands it to $set_chr_name($2) %real.name $+ ., pulls out an ancient map from Hyrule.) %real.name then uses it to find the long lost hidden resting place for the ancient Master Sword.  With effort, %real.name pulls it out of its stone and readies it for use.

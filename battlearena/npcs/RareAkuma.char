@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=91500
 Tp=9970
-Str=999999
-Def=999999
-Int=999999
-Spd=999999
+Str=99999
+Def=99999
+Int=99999
+Spd=99999
 Name=Gouki
 
 
 [Battle]
 Hp=91500
 Tp=9970
-Str=999999
-Def=999999
-Int=999999
-Spd=999999
+Str=99999
+Def=99999
+Int=99999
+Spd=99999
 Status=alive
 
 
@@ -95,7 +95,7 @@ slow.timer=1
 zombie.timer=1
 
 [Weapons]
-Equipped=RyuGloves
+Equipped=GoukiGloves
 RyuGloves=9999
 
 [Skills]
@@ -139,10 +139,20 @@ Elemental-Killer=20
 Slime-Killer=20
 
 [Techniques]
-Hadouken=9999
+GouHadouken=9999
+ZankuuHadouken=9999
+GouShouryuken=9999
+TatsumakiZankuuKyaku=9999
+MessatsuGouHadou=$iif($current.battlestreak < 100, 0, 9999)
+MessatsuGouShouryuu=$iif($current.battlestreak < 100, 0, 9999)
+TenmaGouZankuu=$iif($current.battlestreak < 100, 0, 9999)
+ShunGokuSatsu=$iif($current.battlestreak < 200, 0, 9999)
 
 [Item_Amount]
 
+
+[Ignitions]
+ShinAkuma=$iif($current.battlestreak < 200, 0, 1)
 
 [Styles]
 Equipped=WeaponMaster

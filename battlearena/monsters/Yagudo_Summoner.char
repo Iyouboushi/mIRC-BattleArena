@@ -94,8 +94,9 @@ Equipped=yagudo_wand
 yagudo_wand=5
 
 [Skills]
+DemonPortal=1
 wizardry=100
-demonportal=1
+
 Bloodpact=5
 Summon=Titan
 

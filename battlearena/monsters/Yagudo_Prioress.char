@@ -92,10 +92,11 @@ Equipped=yagudo_wand
 yagudo_wand=15
 
 [Skills]
+DemonPortal=1
 wizardry=100
 MagicMirror=10
 MagicShift=1
-demonportal=1
+
 
 [Techniques]
 Sweep=50

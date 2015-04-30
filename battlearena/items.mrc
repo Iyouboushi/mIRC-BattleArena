@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 04/22/15
+;;;; Last updated: 04/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -73,7 +73,9 @@ on 3:TEXT:!use*:*: {  unset %real.name | unset %enemy | $set_chr_name($nick)
 ON 50:TEXT:*uses item * on *:*:{  $set_chr_name($1)
   if ($1 = uses) { halt }
   if ($5 != on) { halt }
-  $no.turn.check($1)
+
+  if ($readini($dbfile(items.db), $4, type) != key) {  $no.turn.check($1) }
+
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { 
     if ((%battleis = on) && ($istok($readini($txtfile(battle2.txt), Battle, List),$1,46) = $true)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }
@@ -94,7 +96,8 @@ ON 3:TEXT:*uses item * on *:*:{  $set_chr_name($1)
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
 
-  $no.turn.check($1)
+  if ($readini($dbfile(items.db), $4, type) != key) { $no.turn.check($1) }
+
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { 
     if ((%battleis = on) && ($istok($readini($txtfile(battle2.txt), Battle, List),$1,46) = $true)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }

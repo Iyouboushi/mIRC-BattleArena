@@ -54,7 +54,7 @@ Created=Sun Feb 1 2015
 Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
-Streak=-1000
+
 
 [Status]
 Poison=no
@@ -99,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=PacPower
-PacPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+PacPower=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
@@ -119,29 +119,13 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=10
-Crab-Killer=10
-Dragon-Killer=10
-Zombie-Killer=10
-Demon-Killer=10
-Orc-Killer=10
-Yagudo-Killer=10
-Quadav-Killer=10
-Treant-Killer=10
-Plant-Killer=10
-Android-Killer=10
-Worm-Killer=10
-Bat-Killer=10
-Lizard-Killer=10
-Goblin-Killer=10
-Elemental-Killer=10
-Slime-Killer=10
+
 
 [Techniques]
-Pac-Jump=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-FireHydrant=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-BonusFruit=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-PowerPellet=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Pac-Jump=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+FireHydrant=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BonusFruit=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+PowerPellet=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 

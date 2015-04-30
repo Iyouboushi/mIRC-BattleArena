@@ -446,6 +446,7 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=begins to gather power. A moment later, Dart's red armor takes a fancier look and covers his body. He also gains two large wings on his back as well.
+AdditionalCode=writeini $char($1) modifiers Fire 0
 
 [DarkDragoon]
 Name=DarkDragoon
@@ -460,6 +461,7 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=is covered in dark energy. As the energy fades, Rose is now wearing dark purple and red armor that covers her body. She also gains to large wings on her back as well.
+AdditionalCode=writeini $char($1) modifiers Dark 0
 
 [ExcalijuProc]
 Name=ExcalijuProc
@@ -765,3 +767,62 @@ IgnitionConsume=10
 Cost=0
 Techs=
 Desc=$+ 's body glows a bright white as $gender($1) body bulges with a mighty power, also increasing melee and technique power. Additionally, the battlefield gains a white glow, causing all of %real.name $+ 's enemies to feel slower!
+
+[DragonInstall]
+Name=DragonInstall
+hp=1.2
+Str=2
+def=2
+int=2
+spd=3
+Augment=MeleeBonus.TechBonus.EnhanceSword
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=NapalmDeath
+Desc=goes into a power-up stance and shouts "Dragon Install!" as a black silhouette covers %user before fading a moment later.
+AdditionalCode=writeini $char($1) status Auto-Regen on
+
+[KyKiskeOverdrive]
+Name=KyKiskeOverdrive
+hp=1.2
+Str=2
+def=2
+int=2
+spd=2
+Augment=MeleeBonus.TechBonus.EnhanceSword
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=RisingForce
+Desc=gains a red aura as %user $+ 's power increases!
+
+[ShinGouki]
+Name=ShinGouki
+hp=1.2
+Str=1.2
+def=1.2
+int=1.2
+spd=1.2
+Augment=MeleeBonus.TechBonus.EnhanceZen
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=ShinShunGokuSatsu.TenshouKairekiJin
+Desc=gains a red aura as %user $+ 's hair turns white and has his power greatly increased.
+AdditionalCode=writeini $char($1) ignitions OniGouki 0
+
+[OniGouki]
+Name=OniGouki
+hp=1.3
+Str=1.7
+def=1.7
+int=1.7
+spd=1.7
+Augment=MeleeBonus.TechBonus.EnhanceZen
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=MeidouGouHadou.TenchiSoukaigen
+Desc=gains a red aura as %user $+ 's hair turns white and now resembles a blue oni, along with gaining vast power by becoming one with the Satsui no Hadou entirely.
+AdditionalCode=writeini $char($1) ignitions ShinGouki 0

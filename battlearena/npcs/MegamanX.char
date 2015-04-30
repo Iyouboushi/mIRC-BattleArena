@@ -98,7 +98,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=X-BusterMk1
-X-BusterMk1=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+X-BusterMk1=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
@@ -122,33 +122,17 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-killer=10
-Crab-killer=10
-Dragon-killer=10
-Zombie-killer=10
-Demon-killer=10
-Orc-killer=10
-Yagudo-killer=10
-Quadav-killer=10
-Treant-killer=10
-Plant-killer=10
-Android-killer=10
-Worm-killer=10
-Bat-killer=10
-Lizard-killer=10
-Goblin-killer=10
-Elemental-killer=10
-Slime-killer=10
+
 
 [Techniques]
-ShotgunIce=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-StormTornado=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-FireWave=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-ChameleonSting=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-ElectricSpark=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-RollingShield=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-BoomerangCutter=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-HomingTorpedo=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+ShotgunIce=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+StormTornado=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+FireWave=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ChameleonSting=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ElectricSpark=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+RollingShield=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BoomerangCutter=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HomingTorpedo=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

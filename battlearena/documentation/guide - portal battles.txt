@@ -23,6 +23,7 @@ BeastmenSeal Items
 [20 Seals] MayanMap 
 
 Kindred Seal Items
+[15 Seals] EnergyElements
 [15 Seals] GemOfTheNorth
 [15 Seals] GemOfTheEast
 [15 Seals] GemOfTheSouth
@@ -225,6 +226,16 @@ Allied Notes Worth: 350
 Danger Level: Medium
 Current level is capped at: 30 
 
+
+
+ENERGYELEMENTS
+
+Portal Item: EnergyElements
+Portal Item Cost: 15 Kindred Seals
+Potential Rewards: Blueprints:X-Buster
+Allied Notes Worth: 1200
+Danger Level: Extremely High
+Current level is capped at: 150 
 
 
 GEMOFTHENORTH

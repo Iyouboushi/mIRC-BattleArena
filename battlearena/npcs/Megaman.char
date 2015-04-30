@@ -99,9 +99,9 @@ zombie.timer=1
 
 [Weapons]
 Equipped=MegaBusterMk1
-MegaBusterMk1=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-MegaBusterMk2=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-MegaBusterMk3=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+MegaBusterMk1=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MegaBusterMk2=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MegaBusterMk3=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
@@ -125,48 +125,32 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=10
-Crab-Killer=10
-Dragon-Killer=10
-Zombie-Killer=10
-Demon-Killer=10
-Orc-Killer=10
-Yagudo-Killer=10
-Quadav-Killer=10
-Treant-Killer=10
-Plant-Killer=10
-Android-Killer=10
-Worm-Killer=10
-Bat-Killer=10
-Lizard-Killer=10
-Goblin-Killer=10
-Elemental-Killer=10
-Slime-Killer=10
+
 
 
 [Techniques]
-HyperBomb=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-SuperArm=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-RollingCutter=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-ThunderBeam=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-IceSlasher=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-FireStorm=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-MetalBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TimeStopper=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-QuickBoomerang=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-LeafShield=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-AirShooter=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-CrashBombs=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-BubbleLead=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-AtomicFire=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-NeedleCannon=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-MagnetMissile=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-GeminiLaser=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-HardKnuckle=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-TopSpin=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-ShadowBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-SparkShock=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-SearchSnake=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+HyperBomb=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SuperArm=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+RollingCutter=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ThunderBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+IceSlasher=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+FireStorm=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MetalBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TimeStopper=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+QuickBoomerang=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+LeafShield=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+AirShooter=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+CrashBombs=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BubbleLead=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+AtomicFire=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+NeedleCannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MagnetMissile=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+GeminiLaser=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HardKnuckle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TopSpin=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ShadowBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SparkShock=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SearchSnake=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Styles]
 Equipped=SpellMaster

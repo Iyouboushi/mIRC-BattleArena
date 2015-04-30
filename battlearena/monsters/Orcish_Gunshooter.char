@@ -95,7 +95,7 @@ Equipped=orcish_gun
 orcish_gun=5
 
 [Skills]
-demonportal=1
+DemonPortal=1
 
 
 [Techniques]

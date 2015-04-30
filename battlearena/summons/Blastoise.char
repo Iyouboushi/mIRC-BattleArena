@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
 Tp=10
-Str=20
-Def=30
-Int=30
-Spd=20
+Str=50
+Def=60
+Int=50
+Spd=50
 Name=Blastoise
 
 
 [Battle]
 Hp=500
 Tp=10
-Str=20
-Def=30
-Int=30
-Spd=20
+Str=50
+Def=60
+Int=50
+Spd=50
 Status=alive
 
 

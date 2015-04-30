@@ -96,10 +96,11 @@ Equipped=QuadavWand_R
 QuadavWand_R=15
 
 [Skills]
+DemonPortal=1
 Zen=5
 ClearMind=1
 Wizardry=10
-demonportal=1
+
 
 [Techniques]
 FireIV=15

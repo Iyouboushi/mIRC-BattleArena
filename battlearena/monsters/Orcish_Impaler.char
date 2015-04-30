@@ -96,7 +96,7 @@ Equipped=orc_pike
 orc_pike=8
 
 [Skills]
-demonportal=1
+DemonPortal=1
 
 
 [Techniques]

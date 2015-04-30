@@ -98,10 +98,10 @@ Zen=5
 
 
 [Techniques]
-Cure=$iif($current.battlestreak <= 30, 500, 0)
-CureII=$iif($current.battlestreak >= 30 && $current.battlestreak <= 50, 500, 0)
-CureIII=$iif($current.battlestreak >= 50 && $current.battlestreak <= 65, 500, 0)
-Curaga=$iif($current.battlestreak >= 50, 500, 0)
+Cure=$iif($current.battlestreak <= 30, 50, 0)
+CureII=$iif($current.battlestreak >= 30 && $current.battlestreak <= 50, 50, 0)
+CureIII=$iif($current.battlestreak >= 50 && $current.battlestreak <= 65, 50, 0)
+Cura=$iif($current.battlestreak >= 50, 50, 0)
 
 
 [Item_Amount]

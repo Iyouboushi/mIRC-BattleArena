@@ -192,6 +192,7 @@ AlucardSword=Requiescat.ChantDuCygne.UrielBlade.SoulSteal.TetraSpirit
 Auto9=RapidShot.LastStand.Detonator.ChargedShot
 Railgun=SniperShot.Detonator.RailShot.RailNuke.RexKick
 WoolyTusks=Stomp.Charge.Roar
+CowLegs=Stomp.Charge.Roar
 OrochiPower=YamiBarai.AoiHana.YaOtome.SakuTsumagushi
 BogardGloves=PowerWave.BurnKnuckle.RisingTackle.PowerGeyser.BusterWolf
 GiygasPower=CannotGrasp.HurtsPlayer.PKRockin
@@ -239,7 +240,7 @@ BlastoiseCannons=Water_Cannon.IronTail
 CharizardFangs=Fire_Fang.IronTail
 PikachuPaws=Thunderbolt.IronTail
 DreddGun=TheLaw.RapidShot.LastStand.GrenadeShot.PierceShot
-SlimePower=SlimeRam.SlimeStomp.Curaga.FireII.IceII.ThunderII.StoneII.WaterII.AeroII.Flare.Freeze.Burst.Quake.Flood.Tornado.Poison.Blind.Paralyze.Tentacle.Cure.CureII.CureIII.Curaga
+SlimePower=SlimeRam.SlimeStomp.Curaga.FireII.IceII.ThunderII.StoneII.WaterII.AeroII.Flare.Freeze.Burst.Quake.Flood.Tornado.Poison.Blind.Paralyze.Tentacle.Cure.CureII.CureIII.Cura
 PowerOfWords=Ni.Herring.Shrubbery
 BombPower=FirajaII.Explode
 WarMachine=FirajaII.Quake.Flare.Tornado.Poison.Blind
@@ -383,6 +384,13 @@ Glance_Reviver=NibelungValesti.Glowing_Pierce.Ptero_Attack.Vertical_Raid
 Sylvan_Bow=Spread_Shot.Tri-Blast.Infinity_Blast
 AikawaFists=AikawaGrab.RollingBlaze.FinalHeaven
 SteamEngine=FirajaII.ThundajaII
+Fireseal=GunFlame.VolcanicViper.BanditRevolver.TyrantFlame
+JunkYardDogMkIII=GunFlame.VolcanicViper.BanditRevolver.TyrantFlame.SaintOratorio
+Thunderseal=StunEdge.VaporThrust.GreedSever.RideTheLightning
+Aquila=Resolution.RideTheLightning.Torcleaver
+GoukiGloves=GouHadouken.ZankuuHadouken.GouShouryuken.TatsumakiZankuuKyaku.MessatsuGouHadou.MessatsuGouShouryuu.TenmaGouZankuu.ShunGokuSatsu
+GammaBody=GammaEnergyBullet
+GammaArm=GammaGrab.GammaThrow.GammaPunch
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -2203,7 +2211,7 @@ Cost=3000
 Element=light
 magic=yes
 stat=int
-CappedAmount=2500
+CappedAmount=2000
 
 [Flare]
 Type=Single
@@ -2951,18 +2959,18 @@ BasePower=20
 Element=Light
 Cost=3000
 Magic=No
-stat=str
+stat=spd
 hits=4
 
 [RudrasStorm]
 Type=Single
 TP=30
-Desc=hits %enemy with a backswing of the dagger before quickling stabbing $gender2($2) with the dagger, causing a large tornado to surround %enemy $+ !
+Desc=hits %enemy with a backswing of the dagger before quickly stabbing $gender2($2) with the dagger, causing a large tornado to surround %enemy $+ !
 BasePower=35
 Element=Wind
 Cost=2000
 Magic=Yes
-stat=str
+stat=spd
 
 [Exenterator]
 Type=Single
@@ -2972,7 +2980,7 @@ BasePower=35
 Element=Ice
 Cost=2000
 Magic=Yes
-stat=str
+stat=spd
 
 [MercyStroke]
 Type=Single
@@ -2982,7 +2990,7 @@ BasePower=60
 Element=Dark
 Cost=2500
 Magic=no
-stat=str
+stat=spd
 renkei=4
 
 [AeolianEdge]
@@ -2993,7 +3001,7 @@ BasePower=20
 Element=Wind
 Cost=2500
 Magic=Yes
-stat=str
+stat=spd
 
 [Evisceration]
 Type=Single
@@ -3003,7 +3011,7 @@ BasePower=18
 Element=None
 Cost=3000
 Magic=No
-stat=str
+stat=spd
 hits=4
 renkei=4
 
@@ -3015,7 +3023,7 @@ BasePower=35
 Element=Wind
 Cost=2000
 Magic=yes
-stat=str
+stat=spd
 
 [SharkBite]
 Type=Single
@@ -3025,7 +3033,7 @@ BasePower=55
 Element=None
 Cost=2000
 Magic=No
-stat=str
+stat=spd
 renkei=4
 
 [DancingEdge]
@@ -3036,7 +3044,7 @@ BasePower=15
 Element=None
 Cost=2500
 Magic=No
-stat=str
+stat=spd
 hits=5
 renkei=4
 
@@ -3052,7 +3060,7 @@ BasePower=15
 Element=Fire
 Cost=800
 Magic=Yes
-stat=str
+stat=spd
 
 [PiercingArrow]
 Type=Single
@@ -3062,7 +3070,7 @@ BasePower=35
 Element=None
 Cost=800
 Magic=No
-stat=str
+stat=spd
 
 [DullingArrow]
 Type=Single
@@ -3073,7 +3081,7 @@ BasePower=10
 Element=None
 Cost=1000
 Magic=No
-stat=str
+stat=spd
 
 [BlastArrow]
 Type=Single
@@ -3083,7 +3091,7 @@ BasePower=40
 Element=None
 Cost=1200
 Magic=No
-stat=str
+stat=spd
 renkei=3
 
 [Sidewinder]
@@ -3094,7 +3102,7 @@ BasePower=35
 Element=None
 Cost=2000
 Magic=No
-stat=str
+stat=spd
 
 [EmpyrealArrow]
 Type=Single
@@ -3104,7 +3112,7 @@ BasePower=45
 Element=Wind
 Cost=2000
 Magic=Yes
-stat=str
+stat=spd
 
 [ArchingArrow]
 Type=AOE
@@ -3114,7 +3122,7 @@ BasePower=50
 Element=Ice
 Cost=3000
 Magic=Yes
-stat=str
+stat=spd
 
 [NamasArrow]
 Type=Single
@@ -3124,7 +3132,7 @@ BasePower=45
 Element=Light
 Cost=2000
 Magic=Yes
-stat=str
+stat=spd
 
 [RefulgentArrow]
 Type=Single
@@ -3134,7 +3142,7 @@ BasePower=45
 Element=Dark
 Cost=2000
 Magic=Yes
-stat=str
+stat=spd
 
 [JishnusRadiance]
 Type=Single
@@ -3144,7 +3152,7 @@ BasePower=45
 Element=Lightning
 Cost=2000
 Magic=Yes
-stat=str
+stat=spd
 
 [ApexArrow]
 Type=AOE
@@ -3154,17 +3162,17 @@ BasePower=30
 Element=None
 Cost=4000
 Magic=No
-stat=str
+stat=spd
 
 [EagleEyeShot]
 Type=Single
 TP=50
 Desc=summons an arrow of powerful energy and takes aim with the bow for a moment before firing the devastating energy arrow into %enemy $+ !
-BasePower=70
+BasePower=75
 Element=Light
 Cost=3500
 Magic=No
-stat=str
+stat=spd
 renkei=4
 
 ===================
@@ -5007,7 +5015,7 @@ stat=str
 Type=Single
 TP=10
 Desc=leaps up at %enemy $+ 's throat and rips a massive amount out.  Tim the Enchanter can be heard laughing somewhere in the background.  "I *warned* you, but did you listen to me? Oh, no, you *knew*, didn't you? Oh, it's just a harmless little *bunny*, isn't it?"
-BasePower=$calc(1.3 * $readini($char($3), basestats, HP))
+BasePower=$calc(1.1 * $readini($char($3), basestats, HP))
 Element=none
 Cost=0
 Magic=No
@@ -7589,7 +7597,7 @@ stat=str
 Type=Single
 TP=10
 Desc=allows %enemy to pet it, acting like it's harmless. Just when %enemy suspects nothing, $set_chr_name($1) %real.name stabs the horn into %enemy $+ !!
-BasePower=$calc(1.8 * $readini($char($3), basestats, HP))
+BasePower=$calc(1.2 * $readini($char($3), basestats, HP))
 Element=None
 Cost=0
 Magic=No
@@ -9522,6 +9530,339 @@ BasePower=25
 Magic=No
 Stat=int
 
+[Pac-Jump]
+Type=Single
+TP=10
+Desc=produces a trampoline to bounce off of. Pac-Man jumps on and starts bouncing higher and higher before doing a crazy dive onto %enemy $+ !
+BasePower=30
+Cost=10
+Magic=No
+stat=str
+Hits=1
+
+[FireHydrant]
+Type=AOE
+TP=10
+Desc=drops a fire hydrant that sprays magically charged water upon all of Pac-Man's targets on the battlefield.
+BasePower=30
+Cost=20
+Element=water
+Magic=yes
+stat=int
+Hits=1
+
+[BonusFruit]
+Type=heal
+TP=10
+Desc=pulls out a small 8bit piece of fruit and tosses it at %enemy who is healed!
+BasePower=5
+Cost=0
+Element=light
+magic=yes
+stat=int
+CappedAmount=300
+
+[PowerPellet]
+Type=AOE
+TP=10
+Desc=pulls out a pulsing magic power pellet and eats it. Pac-Man glows a bright white and all of his enemies become bright blue and weaker. Quickly, Pac-man dashes around the battlefield and eats them all, turning them into little flies for a moment before they regain their forms and take damage.
+BasePower=30
+Cost=20
+Element=light
+Magic=yes
+stat=int
+Hits=1
+HurtEthereal=true
+
+[GunFlame]
+Type=AOE
+Cost=0
+Desc=thrusts the Fireseal into the ground, causing flames to erupt from the battlefield to hit all targets.
+TP=10
+Element=Fire
+Hits=1
+BasePower=30
+Magic=Yes
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[VolcanicViper]
+Type=Single
+Cost=o
+Desc=uppercuts %enemy while surrounded in flames, knocking $gender2($2) into the air. %user then follows up with a mid-air spin kick.
+TP=10
+Element=Fire
+Hits=2
+BasePower=20
+Magic=no
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[BanditRevolver]
+Type=Single
+Cost=0
+Desc=jumps towards %enemy $+ , kicking $gender2($2) twice.
+TP=10
+Element=None
+Hits=2
+BasePower=25
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[TyrantFlame]
+Type=Single
+Cost=0
+Desc=creates a ball of fire in front of himself and proceeds to punch the ball of fire towards %enemy $+ , resulting in a massive explosion.
+TP=10
+Element=Fire
+Hits=1
+BasePower=60
+Magic=Yes
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[SaintOratorio]
+Type=Single
+Cost=0
+Desc=turns the sword, the end of it facing % enemy $+ . Fire explodes around the sword for a moment before moving to the edge of the sword, forming a fang. %user then launches the fang towords %enemy to cause large fire damage.
+TP=10
+Element=Fire
+Hits=1
+BasePower=70
+Magic=True
+IgnoreDefense=15
+HurtEthereal=True
+stat=int
+CanDodge=false
+
+[StunEdge]
+Type=Single
+Cost=0
+Desc=swings the sword in an arc towards %enemy $+ , hurling a blue projectile towards %enemy $+ .
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[VaporThrust]
+Type=Single
+Cost=0
+Desc=performs a backflip, slashing %enemy with the blade which also launches $gender2($2) into the air.
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[GreedSever]
+Type=Single
+Cost=0
+Desc=performs a front flip towards %enemy as the sword glows green. %user hits enemy with the blade, knocking $gender2($2) into the air amd then follows up with a four hit sword combo.
+TP=10
+Element=None
+Hits=5
+BasePower=15
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[RideTheLightning]
+Type=Single
+Cost=0
+Desc=is surrounded by lightning, along with the sword as $gender3($1) charges towards %enemy $+ , slashing with the lightning powered sword as %user gets in range.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=45
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[SacredEdge]
+Type=Single
+Cost=0
+Desc=stands in place as a large blue circle appears in front of %user which then shoots out a large blue sword that strikes %enemy five times.
+TP=10
+Element=None
+Hits=5
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[GouHadouken]
+Type=Single
+Cost=0
+Desc=cups his hands to the side and gathers energy. A moment later, he thrusts his hands forward and hurls a ball of energy towards %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=25
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[ZankuuHadouken]
+Type=Single
+Cost=0
+Desc=hops into the air and gathers power for a moment before hurling a ball of energy towards %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=25
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[Goushouryuken]
+Type=Single
+Cost=0
+Desc=performs a triple rising punch that launches %enemy into the air!
+TP=10
+Element=None
+Hits=3
+BasePower=15
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[TatsumakiZankuuKyaku]
+Type=single
+Cost=0
+Desc=hops shortly into the air and performs a spinning kick towards %enemy that hits twice.
+TP=10
+Element=None
+Hits=2
+BasePower=17
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[MessatsuGouHadou]
+Type=AOE
+Cost=0
+Desc=cups his hands to the side and gathers a large amount of energy. A moment later, he thrusts his hands forward and unleashes a giant ball of energy onto the battlefield!
+TP=10
+Element=Dark
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[MessatsuGouShouryuu]
+Type=Single
+Cost=0
+Desc=performs an even stronger triple rising punch that launches %enemy into the air!
+TP=10
+Element=None
+Hits=3
+BasePower=25
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[TenmaGouZankuu]
+Type=Single
+Cost=0
+Desc=hops into the air and gathers power for a moment before hurling numerous balls of energy towards %enemy $+ !
+TP=10
+Element=Dark
+Hits=8
+BasePower=10
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[ShunGokuSatsu]
+Type=Single
+Cost=0
+Desc=mutters "Messatsu..." as he quickly glides towards %enemy $+ , grabbing %enemy and unleashing a barrage of punches upon %enemy $+ !
+TP=10
+Element=Dark
+Hits=8
+BasePower=12
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+
+[GammaEnergyBullet]
+Type=AOE
+Cost=0
+Desc=gathers power before spitting out a large bullet of energy that slams into the battlefield, exploding into a random element to hit all of the players!
+TP=10
+Element=$read($lstfile(elements.lst))
+Hits=1
+BasePower=40
+Magic=yes
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[GammaGrab]
+Type=Single
+Cost=0
+Desc=grabs %enemy and squeezes tight!
+TP=10
+Element=None
+Hits=1
+BasePower=60
+IgnoreDefense=5
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[GammaThrow]
+Type=Single
+Cost=0
+Desc=grabs %enemy and throws %enemy towards the ground with great power.
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[GammaPunch]
+Type=Single
+Cost=0
+Desc=punches %enemy with one arm before quickly punching %enemy with the other arm!
+TP=10
+Element=None
+Hits=2
+BasePower=25
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
 ========================
 Ignition Techs
 ========================
@@ -9547,7 +9888,7 @@ Cost=0
 Element=light
 magic=yes
 stat=int
-CappedAmount=5000
+CappedAmount=4000
 
 [TrillionStabs]
 Type=Single
@@ -9795,51 +10136,88 @@ stat=str
 Hits=2
 DestroyShadows=4
 
-[Pac-Jump]
-Type=Single
-TP=10
-Desc=produces a trampoline to bounce off of. Pac-Man jumps on and starts bouncing higher and higher before doing a crazy dive onto %enemy $+ !
-BasePower=30
-Cost=10
-Magic=No
-stat=str
-Hits=1
-
-[FireHydrant]
-Type=AOE
-TP=10
-Desc=drops a fire hydrant that sprays magically charged water upon all of Pac-Man's targets on the battlefield.
-BasePower=30
-Cost=20
-Element=water
-Magic=yes
-stat=int
-Hits=1
-
-[BonusFruit]
-Type=heal
-TP=10
-Desc=pulls out a small 8bit piece of fruit and tosses it at %enemy who is healed!
-BasePower=5
+[ShinShungokuSatsu]
+Type=single
 Cost=0
-Element=light
-magic=yes
-stat=int
-CappedAmount=300
-
-
-[PowerPellet]
-Type=AOE
+Desc=shouts out "Prepare yourself! Die one thousand deaths!" as he quickly glides towards %enemy $+ , grabbing %enemy and unleashing a barrage of punches upon %enemy $+ !
 TP=10
-Desc=pulls out a pulsing magic power pellet and eats it. Pac-Man glows a bright white and all of his enemies become bright blue and weaker. Quickly, Pac-man dashes around the battlefield and eats them all, turning them into little flies for a moment before they regain their forms and take damage.
-BasePower=30
-Cost=20
-Element=light
-Magic=yes
-stat=int
-Hits=1
-HurtEthereal=true
+Element=Dark
+Hits=8
+BasePower=20
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+DestroyShadows=4
 
+[TenshouKairekiJin]
+Type=Single
+Cost=0
+Desc=launches %enemy into the air with a high roundhouse kick. %user shouts out "Accept death! The other realm awaits." as a powerful Tatsumaki Zankuukyaku covers %user in a whirlwind. %user then homes in on %enemy $+ , slamming into them with the Tatsumaki Zankuukyaku, sending %enemy crashing into the ground below.
+TP=10
+Element=Wind
+Hits=2
+BasePower=40
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+DestroyShadows=2
+
+[MeidouGouHadou]
+Type=Single
+Cost=0
+Desc=gathers a massive amount of power and shouts out "Ashes to ashes! The gates of hell await!" before thrusting his hand foward, hurling a huge wave of dark enemy upon %enemy $+ ! %user then unleashes a second wave of energy upon %enemy after the first one hits.
+TP=10
+Element=Dark
+Hits=2
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+DestroyShadows=4
+
+[TenchiSoukaigen]
+Type=Single
+Cost=0
+Desc=raises his right hand, dark energy gathering in his hand and shouts out "My power... moves worlds! Stare into the face of Death!" %user jumps into the air and then slams his fist onto %enemy $+ , launching %enemy into the air with a powerful spike of dark energy. %user then follows up with a GouShouryuken, slamming his fist into %enemy 's back.
+TP=10
+Element=Dark
+Hits=2
+BasePower=80
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+DestroyShadows=2
+
+[RisingForce]
+Type=AOE
+Cost=0
+Desc=hops into the air as the sword begins to glow. %user swings the swing in a wide arc at the battlefield, hurling a large beam of lightning energy that covers the battlefield with a large explosion.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=100
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[NapalmDeath]
+Type=AOE
+Cost=0
+Desc=jumps into the air as fire covers the sword and %user $+ . %user gathers power for a moment before slamming down onto the battlefield, causing an explosion of fire to cover the entire battlefield.
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=yes
+HurtEthereal=True
+stat=str
+CanDodge=false
 
 =========================
 MECH TECHS
@@ -11575,12 +11953,12 @@ CanDodge=false
 DestroyShadows=4
 
 [SoutenKisshun]
-Type=Heal-AOE
+Type=heal-AOE
 Cost=0
 Desc=shouts out "Souten Kisshun... I reject!" and summons two of the spirits, Ayame and Shun'ou, which creates a half-oval barrier over all allies and heals their injuries.
 TP=10
 BasePower=50
-Cost=0
+Upgrade=0
 Element=light
 magic=yes
 stat=int
@@ -11754,18 +12132,3 @@ stat=str
 CanDodge=False
 Absorb=Yes
 DestroyShadows=2
-
-========================
-Not used or are for
-example only.
-========================
-
-[AsuraStrike]
-cost=999999999
-type=single
-basepower=$calc( ( $readini(weapons.db, $readini($char($1), Weapons, Equipped), basepower) + ($readini($char($1), battle, str) / 5 ) ) * (8 + (%previous.tp) / 10 ) ) + 250 + (150 * $readini($char($1), Techniques, AsuraStrike) ) ) | unset %previous.tp
-TP=$readini($char($1), Battle, TP) | set %previous.tp $readini($char($1), battle, TP)
-Desc=pours all of the energy to $gender($1) fist and then punches %enemy $+ with an earth shattering punch! [Asura Strike!]
-magic=no
-stat=str
-selfstatus=curse

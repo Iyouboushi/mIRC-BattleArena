@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=120
+Hp=400
 Tp=70
-Str=15
-Def=19
-Int=20
-Spd=25
+Str=30
+Def=38
+Int=40
+Spd=50
 IgnitionGauge=2
 Name=Zark
 
 
 [Battle]
-Hp=120
+Hp=400
 Tp=70
-Str=15
-Def=19
-Int=20
-Spd=25
+Str=30
+Def=38
+Int=40
+Spd=50
 IgnitionGauge=2
 Status=alive
 
@@ -51,19 +51,22 @@ size=medium
 Flag=monster
 Gender=his
 Gender2=him
-CanStagger=yes
-StaggerAmount=$rand(280,340)
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=30
-StreakMax=100
+Streak=40
 CanTaunt=true
+IgnorePresident=true
+IgnoreQuickSilver=true
+JustReleaseDefense=100
+CanFlee=false
 
 [Monster]
-Type=
+Type=alien
+techlearn=false
+size=medium
 
 [Status]
 Poison=no
@@ -100,25 +103,24 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=SpaceGun
-SpaceGun=10
+SpaceGun=$calc(40 + $current.battlestreak)
 
 [Skills]
 drainsamba.turn=0
 drainsamba.on=on
 DrainSamba=25
+resist-disarm=100
+resist-weaponlock=100
+resist-drunk=100
 resist-charm=100
 resist-stun=60
-MightyStrike=10
 ShadowCopy=1
 ShadowCopy_Name=Super Zarklet
 
 [Techniques]
-SpaceBeam=10
-SpaceBoost=5
+SpaceBeam=$calc(40 + $current.battlestreak)
+SpaceBoost=10
 SpaceAbsorb=10
-
-
-
 
 [modifiers]
 Heal=none

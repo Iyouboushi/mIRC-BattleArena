@@ -47,7 +47,7 @@ LastIP=N/a
 Created=N/a
 Streak=20
 CanTaunt=false
-Streak=-1000
+RageMode=ignore
 ;=======================================
 ; These are optional flags you can set:
 ;========================================
@@ -169,11 +169,10 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=DoomSickle
-DoomSickle=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
+DoomSickle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
-MagicShift=1
 Zen=5
 Resist-Charm=100
 Resist-Poison=100
@@ -194,11 +193,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-Thundaja=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
-Blizzaja=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
-Firaja=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
-DarkBomb=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
-DarkMist=$round($calc(1 + (($current.battlestreak / 5) / 5.5)),0)
+Thundaja=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Blizzaja=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Firaja=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DarkBomb=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DarkMist=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Styles]

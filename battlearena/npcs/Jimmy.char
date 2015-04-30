@@ -99,8 +99,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DwarvenRuneBlade
-DwarvenRuneBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-DwarvenShortBow=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+DwarvenRuneBlade=$round($calc(1 + (($current.battlestreak / 3) / 5.5)),0)
+DwarvenShortBow=$round($calc(1 + (($current.battlestreak / 3) / 5.5)),0)
 
 
 [Skills]
@@ -123,30 +123,14 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=5
-Crab-Killer=5
-Dragon-Killer=5
-Zombie-Killer=5
-Demon-Killer=5
-Orc-Killer=5
-Yagudo-Killer=5
-Quadav-Killer=5
-Treant-Killer=5
-Plant-Killer=5
-Android-Killer=5
-Worm-Killer=5
-Bat-Killer=5
-Lizard-Killer=5
-Goblin-Killer=5
-Elemental-Killer=5
-Slime-Killer=5
+
 
 [Techniques]
-HealingAle=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-FastBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-CircleBlade=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-FlamingArrow=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-PiercingArrow=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+HealingAle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+FastBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+CircleBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+FlamingArrow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+PiercingArrow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]

@@ -1,0 +1,38 @@
+[NPCStatus]
+Santa=false
+EasterBunny=true
+DiscountCardMerchant=true
+HealingMerchant=true
+BattleMerchant=true
+SongMerchant=true
+AlliedForcesPresident=true
+ShieldMerchant=true
+WheelMaster=true
+TravelMerchant=false
+Gardener=kidnapped
+PotionWitch=true
+Gambler=true
+
+[Events]
+FrostLegionDefeated=false
+SavedElves=0
+
+[NPCNames]
+Santa=Santa
+EasterBunny=Easter Bunny
+DiscountCardMerchant=Myles the Discount Merchant
+HealingMerchant=Katelyn the Healing Merchant
+BattleMerchant=Gerhardt the Battle Merchant
+SongMerchant=Spoony the Bard
+AlliedForcesPresident=Fjalar Strongarm the Allied Forces President
+ShieldMerchant=Gondo the Shield Merchant
+WheelMaster=Dodoh the Wheel Master
+TravelMerchant=Beedle the Traveling Merchant
+Gardener=Green Thumb the Garden Moogle
+PotionWitch=Syrup the Potion Witch
+Gambler=Setzer the Gambler
+
+[AlliedForcesHQ]
+HQStrength=0
+HQOrbsDonated=0
+PresidentGuards=0

@@ -199,9 +199,9 @@ Resist-Petrify=100
 Resist-Disarm=100
 
 [Techniques]
-ThundajaII=$calc(10 + $current.battlestreak)
-BlizzajaII=$calc(10 + $current.battlestreak)
-FirajaII=$calc(10 + $current.battlestreak)
+Thundaja=$calc(10 + $current.battlestreak)
+Blizzaja=$calc(10 + $current.battlestreak)
+Firaja=$calc(10 + $current.battlestreak)
 DarkBomb=$calc(10 + $current.battlestreak)
 DarkMist=$calc(10 + $current.battlestreak)
 Dark_Matter=$calc(10 + $current.battlestreak)
