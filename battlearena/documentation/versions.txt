@@ -1254,6 +1254,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue where a techonly monster could counter a melee attack
 - Fixed an issue with !look in private messages that wouldn't show dual weapons
 - Fixed an issue where shadow clones could use scavenge or steal
+- Fixed an issue that allowed players to sell accessories they were still wearing
 - Fixed an AI vs AI issue where occasionally the bot wouldn't recognize that an NPC had any techs even if he/she does.
 - Fixed a bug with !augment list that would say players had no augments even if they did.
 - Fixed a bug with !fullbring when used with +TP items.
