@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Allied Forces HQ Garden Commands
-;;;; Last updated: 02/05/15
+;;;; Last updated: 04/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 on 3:TEXT:!garden*:*:{ $garden.control($nick, $2, $3) } 
 
@@ -92,7 +92,7 @@ alias garden.givexp {
     writeini garden.dat GardenStats level %garden.level
     writeini garden.dat GardenStats xp 0
 
-    writeini garden.dat GardenStats bonus $round($calc(50 * %garden.level),0)
+    writeini garden.dat GardenStats bonus $round($calc(100 * %garden.level),0)
 
   }
 }
