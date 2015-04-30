@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 04/19/15
+;;;; Last updated: 04/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -79,7 +79,10 @@ alias shop.start {
     if ($3 !isin %sellable.stuff) { $display.private.message($readini(translation.dat, errors, Can'tSellThat)) | halt }
     var %amount.to.sell $abs($5)
     if (%amount.to.sell = $null) { var %amount.to.sell 1 }
-    if (($3 = item) || ($3 = items)) { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
+    if (($3 = item) || ($3 = items)) {
+      if ($readini($dbfile(items.db), $4, type) = accessory) { $shop.accessories($nick, sell, $4, %amount.to.sell) | halt }
+      else {  $shop.items($nick, sell, $4, %amount.to.sell) | halt }
+    }
     if (($3 = key) || ($3 = keys)) { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
     if (($3 = accessories) || ($3 = accessory))  { $shop.accessories($nick, sell, $4, %amount.to.sell) | halt }
     if (($3 = gems) || ($3 = gem))  { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
@@ -191,13 +194,16 @@ alias shop.accessories {
     if (%player.items = 0) { $display.private.message($readini(translation.dat, errors, DoNotHaveAccessoryToSell)) | halt }
     if (%player.items < $4) { $display.private.message($readini(translation.dat, errors, DoNotHaveEnoughItemToSell)) | halt }
 
+    var %amount.to.sell $4
+
     var %equipped.accessory $readini($char($1), equipment, accessory)
     if (%equipped.accessory = $3) {
-      if (%player.items = 1) { $display.private.message($readini(translation.dat, errors, StillWearingAccessory)) | halt }
+      dec %player.items 1  | dec %amount.to.sell 1
+      if (%player.items <= 0) { $display.private.message($readini(translation.dat, errors, StillWearingAccessory)) | halt }
     }
 
     ; If so, decrease the amount
-    writeini $char($1) item_amount $3 $calc($item.amount($1,$3) - $4)
+    writeini $char($1) item_amount $3 $calc($item.amount($1,$3) - %amount.to.sell)
 
     var %total.price $readini($dbfile(items.db), $3, sellPrice)
 
@@ -213,13 +219,13 @@ alias shop.accessories {
     if (%total.price > 50000) { %total.price = 50000 }
     if ((%total.price = 0) || (%total.price = $null)) {  set %total.price 100  }
 
-    %total.price = $calc($4 * %total.price)
+    %total.price = $calc(%amount.to.sell * %total.price)
 
     var %player.redorbs $readini($char($1), stuff, redorbs)
     inc %player.redorbs %total.price
     writeini $char($1) stuff redorbs %player.redorbs
 
-    $display.private.message($readini(translation.dat, system, SellMessage))
+    $display.private.message($readini(translation.dat, system, SellMessageAccessory))
   }
 }
 

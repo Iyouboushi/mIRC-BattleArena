@@ -149,6 +149,7 @@ NotWearingThatArmor=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $2 $+ .
 ShopLevelLowered=$chr(3) $+ 2 $+ Your shop level has been lowered.  It is now $readini($char($2), stuff, shoplevel) $+ !
 FoodStatIncrease=$chr(3) $+ 2 $+ Your %food.type has permanantly increased by %food.bonus $+ !
 SellMessage=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat takes $4 $3 $+ $iif($4 < 2, ,s) $+  from you and gives you $bytes(%total.price,b) $readini(system.dat, system, currency) $+ !
+SellMessageAccessory=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat takes %amount.to.sell $3 $+ $iif($4 < 2, ,s) $+  from you and gives you $bytes(%total.price,b) $readini(system.dat, system, currency) $+ !
 SellWeaponMessage=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat performs a powerful ritual to unbind the weapon $3 $+  from your body and restores $bytes(%orb.amount,b) black orbs!
 CurrentShopLevel=$chr(3) $+ 2 $+ Your current shop level is $readini($char($nick), stuff, shoplevel) 
 ConvertToGem=$chr(3) $+ 2 $+ %enemy is consumed by a bright rainbow of light and then converted into 1 %gem $+ ! %user then collects it.
