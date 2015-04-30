@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 04/19/15
+;;;; Last updated: 04/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -417,7 +417,7 @@ on 50:TEXT:!time between battles *:*:{
     writeini system.dat System TimeBetweenBattles $4
     $display.message($readini(translation.dat, System, ChangeTime), global)
   }
-  else { $display.message(4You must enter a number for the time),global) | halt }
+  else { $display.message(4You must enter a number for the time,global) | halt }
 }
 
 ; Bot owners can change the time for !enter allownace.
@@ -426,7 +426,7 @@ on 50:TEXT:!time to enter *:*:{
     writeini system.dat System TimeToEnter $4
     $display.message($readini(translation.dat, System, ChangeTimeForEnter), global)
   }
-  else { $display.message(4You must enter a number for the time),global) | halt }
+  else { $display.message(4You must enter a number for the time,global) | halt }
 }
 
 ; Bot admin command for displaying active and zapped player lists.

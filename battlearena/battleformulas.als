@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 04/18/15
+;;;; Last updated: 04/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2568,7 +2568,7 @@ formula.techdmg.player.percent {
   if ($istok(%ignition.techs,$2,46) = $true) { var %user.tech.level 50 }
   unset %ignition.name | unset %ignition.techs
 
-  var %attack.power $calc((%base.stat / 1.5) + (%tech.base + ((%tech.base * %user.tech.level) / 500))))
+  var %attack.power $calc((%base.stat / 1.5) + (%tech.base + ((%tech.base * %user.tech.level) / 500)))
 
   ; Let's add in the base power of the weapon used..
   if ($person_in_mech($1) = false) { set %weapon.used $readini($char($1), weapons, equipped) }
