@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/27/15
+;;;; Last updated: 05/01/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1940,6 +1940,7 @@ alias battle.check.for.end {
 ; ==========================
 alias battlelist { 
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), private) | halt }
+  if ($return_peopleinbattle = null) { $display.message($readini(translation.dat, battle, NoOneJoinedBattleYet), private) | halt }
   unset %battle.list | set %lines $lines($txtfile(battle.txt)) | set %l 1
   while (%l <= %lines) { 
     set %who.battle $read -l [ $+ [ %l ] ] $txtfile(battle.txt) | set %status.battle $readini($char(%who.battle), Battle, Status)
