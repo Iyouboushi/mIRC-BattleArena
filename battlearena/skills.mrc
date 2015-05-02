@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 04/21/15
+;;;; Last updated: 05/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1546,12 +1546,12 @@ alias skill.steal { $set_chr_name($1)
 
     inc %stolen.from.counter 1 | writeini $char($2) status stolencounter %stolen.from.counter 
 
-    set %steal.pool $readini(steal.db, stealpool, $2)
+    set %steal.pool $readini($dbfile(steal.db), stealpool, $2)
     var %steal.orb.amount $rand(100,300) 
 
     if (%steal.pool = $null) { 
-      if ($readini($char($2), Info, flag) = monster) { set %steal.pool $readini(steal.db, stealpool, monster) }
-      if ($readini($char($2), Info, flag) = boss) { set %steal.pool $readini(steal.db, stealpool, boss) }
+      if ($readini($char($2), Info, flag) = monster) { set %steal.pool $readini($dbfile(steal.db), stealpool, monster) }
+      if ($readini($char($2), Info, flag) = boss) { set %steal.pool $readini($dbfile(steal.db), stealpool, boss) }
     }
 
     if (%bloodmoon = on) { var %steal.pool orbs.orbs.orbs.orbs | var %steal.orb.amount $rand(300,500) }

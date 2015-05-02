@@ -1279,3 +1279,9 @@ Battle Arena Bot VERSIONS
 - Removed Battle Formulas 1 & 2. The bot now only has 1 battle formula
 - Removed the !toggle battle formula bot admin command
 - Removed the bot setting the user levels of bot owner/admins upon starting to prevent a security hole
+
+3.0.1
+- Fixed a bug in which !steal wasn't allowing items to be stolen
+- Fixed a bug with AIs who were switching weapons even though they were dual-wielding
+- Fixed a bug in which using !bat info before a battle started would cause the battle to end
+- Fixed an issue in which the ignition TwiliPower could be purchased

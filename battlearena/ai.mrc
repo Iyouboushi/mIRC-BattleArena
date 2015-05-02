@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 04/28/15
+;;;; Last updated: 05/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -870,6 +870,7 @@ alias ai_chooseskill {
 
 alias ai.changeweapon {
   if ($readini($char($1), status, weapon.locked) != $null) { return }
+  if ($readini($char($1), Weapons, EquippedLeft) != $null) { return }
 
   if ($readini($char($1), info, clone) = yes) { return }
   if ($readini($char($1), info, clone) != yes) {

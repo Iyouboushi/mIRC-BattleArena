@@ -1,5 +1,5 @@
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Battle Arena Bot - Version 3.0
+Battle Arena Bot - Version 3.0.1
 Programmed by James "Iyouboushi" (Iyouboushi@gmail.com)
 FREEWARE!
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -86,6 +86,17 @@ you can avoid it.
 As usual be sure to read the versions.txt in the documentation folder
 for a full list of everything this version does.  Listed below are some 
 of the highlights.
+
+
+3.0.1 Fixes a few minor issues that popped up after 3.0's release. 
+
+- Fixed a bug in which !steal wasn't allowing items to be stolen
+- Fixed a bug with AIs who were switching weapons even though they were dual-wielding
+- Fixed a bug in which using !bat info before a battle started would cause the battle to end
+- Fixed an issue in which the ignition TwiliPower could be purchased
+
+
+Below are the 3.0 notes.
 
 * New Method of Doing Monster/Summon/NPC Stats Upon Summoning to Battlefield
 The way the bot determines the stats for monsters, bosses, summons and npcs
