@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/01/15
+;;;; Last updated: 05/04/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2194,8 +2194,8 @@ alias battle.reward.redorbs {
       $orb.adjust(%who.battle)
 
       var %current.redorbs $readini($char(%who.battle), stuff, redorbs)
-      if ($readini($char(%who.battle), battle, status) = runaway) { inc %current.redorbs $round($calc(%base.redorbs / 2.5),0) |  var %total.redorbs.reward $round($calc(%base.redorbs / 2.5),0) }
-      if ($readini($char(%who.battle), battle, status) != runaway) { inc %current.redorbs %base.redorbs |  var %total.redorbs.reward %base.redorbs }
+      if ($readini($char(%who.battle), battle, status) = runaway) { inc %current.redorbs $round($calc(%base.redorbs / 2.5),0) | var %total.redorbs.reward $round($calc(%base.redorbs / 2.5),0) }
+      if ($readini($char(%who.battle), battle, status) != runaway) { inc %current.redorbs %base.redorbs | var %total.redorbs.reward %base.redorbs }
 
       if ($readini($char(%who.battle), battle, status) != runaway) {
 
@@ -2243,9 +2243,6 @@ alias battle.reward.redorbs {
         if (%portal.bonus != true) { $reward.capacitypoints(%who.battle)  }
       }
 
-      writeini $char(%who.battle) stuff redorbs %current.redorbs
-      writeini $char(%who.battle) status orbbonus no
-
       if ((%battle.type = defendoutpost) || (%battle.type = assault)) {  
         if ($current.battlestreak >= 100) { var %streak.level.difference $round($calc(100 - $get.level(%who.battle)),0) }
         else { var %streak.level.difference $round($calc($current.battlestreak - $get.level(%who.battle)),0) }
@@ -2261,7 +2258,13 @@ alias battle.reward.redorbs {
 
       ; To-do: Add in a resting bonus.
 
+      ; Add the orbs to the player
+      writeini $char(%who.battle) stuff redorbs %total.redorbs.reward
+      writeini $char(%who.battle) status orbbonus no
+
+      ; Add the player and the orb amount to the list to be shown 
       %red.orb.winners = $addtok(%red.orb.winners, $+ %who.battle $+  $+ $chr(91) $+ $chr(43) $+ $bytes(%total.redorbs.reward,b) $+ $chr(93),46)
+
 
       if ((%portal.bonus = true) && ($1 = victory)) {
         var %total.portalbattles.won $readini($char(%who.battle), stuff, PortalBattlesWon) 
