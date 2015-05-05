@@ -2193,9 +2193,8 @@ alias battle.reward.redorbs {
       if ((%base.redorbs <= 5000) && (%battle.type = assault)) { set %base.redorbs 5000 }
       $orb.adjust(%who.battle)
 
-      var %current.redorbs $readini($char(%who.battle), stuff, redorbs)
-      if ($readini($char(%who.battle), battle, status) = runaway) { inc %current.redorbs $round($calc(%base.redorbs / 2.5),0) | var %total.redorbs.reward $round($calc(%base.redorbs / 2.5),0) }
-      if ($readini($char(%who.battle), battle, status) != runaway) { inc %current.redorbs %base.redorbs | var %total.redorbs.reward %base.redorbs }
+      if ($readini($char(%who.battle), battle, status) = runaway) { var %total.redorbs.reward $round($calc(%base.redorbs / 2.5),0) }
+      if ($readini($char(%who.battle), battle, status) != runaway) { var %total.redorbs.reward %base.redorbs }
 
       if ($readini($char(%who.battle), battle, status) != runaway) {
 
@@ -2218,14 +2217,12 @@ alias battle.reward.redorbs {
         if ($readini($char(%who.battle), skills, OrbHunter) != $null) {
           var %orbhunter.inc.amount $readini($dbfile(skills.db), orbhunter, amount)
           if (%orbhunter.inc.amount = $null) { var %orbhunter.inc.amount 15 }
-          inc %current.redorbs $round($calc(%orbhunter.inc.amount * $readini($char(%who.battle), skills, OrbHunter)),0) 
           inc %total.redorbs.reward $round($calc(%orbhunter.inc.amount * $readini($char(%who.battle), skills, OrbHunter)),0) 
         }
 
         ;  Check for the an accessory that increases red orbs
         if ($accessory.check(%who.battle, IncreaseRedOrbs) = true) {
           var %increase.orbs.amount $round($calc(%base.redorbs * %accessory.amount),0)
-          inc %current.redorbs %increase.orbs.amount
           inc %total.redorbs.reward %increase.orbs.amount
           unset %accessory.amount
         }
@@ -2234,7 +2231,6 @@ alias battle.reward.redorbs {
         if ($readini($char(%who.battle), status, OrbBonus) = yes) {
           var %orb.bonus $round($calc(%base.redorbs / 100),0)
           if (%orb.bonus <= 100) { var %orb.bonus 100 }
-          inc %current.redorbs %orb.bonus
           inc %total.redorbs.reward %orb.bonus
           writeini $char(%who.battle) status OrbBonus no
         }
@@ -2259,7 +2255,9 @@ alias battle.reward.redorbs {
       ; To-do: Add in a resting bonus.
 
       ; Add the orbs to the player
-      writeini $char(%who.battle) stuff redorbs %total.redorbs.reward
+      var %current.orbs.onhand $readini($char(%who.battle), stuff, redorbs)
+      inc %current.orbs.onhand %total.redorbs.reward
+      writeini $char(%who.battle) stuff redorbs %current.orbs.onhand
       writeini $char(%who.battle) status orbbonus no
 
       ; Add the player and the orb amount to the list to be shown 
