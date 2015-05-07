@@ -1285,3 +1285,6 @@ Battle Arena Bot VERSIONS
 - Fixed a bug with AIs who were switching weapons even though they were dual-wielding
 - Fixed a bug in which using !bat info before a battle started would cause the battle to end
 - Fixed an issue in which the ignition TwiliPower could be purchased
+
+3.1
+- Changed the code for techs and items so that you can use ME as a valid target name to target yourself
