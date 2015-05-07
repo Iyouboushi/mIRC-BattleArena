@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/29/15
+;;;; Last updated: 05/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -92,6 +92,8 @@ ON 3:ACTION:uses * * on *:#:{
   set %attack.target $matchtok($return_peopleinbattle, $5, 1, 46)
   if (%attack.target = $null) { set %attack.target $5 }
 
+  if ($5 = me) { set %attack.target $nick } 
+
   $tech_cmd($nick , $3 , %attack.target, $7) | halt 
 } 
 ON 50:TEXT:*uses * * on *:*:{ 
@@ -104,9 +106,10 @@ ON 50:TEXT:*uses * * on *:*:{
   var %ignitions.list $ignitions.get.list($1)
   set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
   if (%attack.target = $null) { set %attack.target $6 }
+  if ($6 = me) { set %attack.target $1 } 
 
   if ($istok(%ignitions.list, $4, 46) = $true) { unset %ignitions.list | $ignition_cmd($1, $4, $nick) | halt }
-  else { $tech_cmd($1 , $4, $6) | halt }
+  else { $tech_cmd($1 , $4,  %attack.target) | halt }
 }
 ON 3:TEXT:*uses * * on *:*:{ 
   if ($1 = uses) { halt }
@@ -122,9 +125,10 @@ ON 3:TEXT:*uses * * on *:*:{
   var %ignitions.list $ignitions.get.list($1)
   set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
   if (%attack.target = $null) { set %attack.target $6 }
+  if ($6 = me) { set %attack.target $1 } 
 
   if ($istok(%ignitions.list, $4, 46) = $true) { unset %ignitions.list | $ignition_cmd($1, $4, $nick) | halt }
-  else { $tech_cmd($1 , $4, $6) | halt }
+  else { $tech_cmd($1 , $4,  %attack.target) | halt }
 }
 
 alias tech_cmd {
