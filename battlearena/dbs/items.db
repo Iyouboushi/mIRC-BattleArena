@@ -2413,6 +2413,13 @@ SellPrice=200
 Augment=EnhanceElementalDefense
 Desc=This rune will infuse a weapon with the ability to help enhance the user's elemental defense while the augmented weapon is equipped when hit by an elemental attack.
 
+[RngRune]
+type=rune
+Cost=0
+SellPrice=200
+Augment=EnhanceRanged
+Desc=This rune will infuse a weapon with the ability to help enhance a user's ranged weapon, such as a bow, while the augmented weapon is equipped.
+
 
 ========================
 Portal Items
