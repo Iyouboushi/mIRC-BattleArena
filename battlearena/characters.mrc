@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 04/19/15
+;;;; Last updated: 05/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -517,7 +517,7 @@ on 3:TEXT:!misc info*:*: {
   $display.private.message.delay.custom([4Total Battles Participated In12 %misc.totalbattles $+ ] [4Total Portal Battles Won12 %misc.portalswon $+ ] [4Total Deaths12 %misc.totaldeaths $+ ] [4Total Monster Kills12 %misc.totalmonkills $+ ] [4Total Times Fled12 %misc.timesfled $+ ][4Total Lost Souls Killed12 %misc.lostSoulsKilled $+ ] [4Total Times Revived12 %misc.revivedtimes $+ ] [4Total Times Character Has Been Reset12 %misc.resets $+ ],1)
   $display.private.message.delay.custom([4Total Items Sold12 %misc.itemssold $+ ] [4Total Discounts Used12 %misc.discountsUsed $+ ] [4Total Items Given12 %misc.itemsgiven $+ ] [4Total Keys Obtained12 %misc.totalkeys $+ ] [4Total Chests Opened12 %misc.chestsopened $+ ][4Total Monster->Gem Conversions12 %misc.monstersToGems $+ ],2)
   $display.private.message.delay.custom([4Total Battlefield Events Experienced12 %misc.timeshitbybattlefield $+ ]  [4Total Weapons Augmented12 %misc.augments $+ ] [4Total Weapons Reforged12 %misc.reforges $+ ] [4Total Ignitions Performed12 %misc.ignitionsused $+ ] [4Total Dodges Performed12 %misc.timesdodged $+ ] [4Total Parries Performed12 %misc.timesparried $+ ] [4Total Counters Performed12 %misc.timescountered $+ ],2)
-  $display.private.message.delay.custom([4Total Light Spells Casted12 %misc.lightspells $+ ] [4Total Dar Spells Casted12 %misc.darkspells $+ ] [4Total Earth Spells Casted12 %misc.earthspells $+ ] [4Total Fire Spells Casted12 %misc.firespells $+ ] [4Total Wind Spells Casted12 %misc.windspells $+ ] [4Total Water Spells Casted12 %misc.waterspells $+ ] [4Total Ice Spells Casted12 %misc.icespells $+ ] [4Total Lightning Spells Casted12 %misc.lightningspells $+ ],3)
+  $display.private.message.delay.custom([4Total Light Spells Casted12 %misc.lightspells $+ ] [4Total Dark Spells Casted12 %misc.darkspells $+ ] [4Total Earth Spells Casted12 %misc.earthspells $+ ] [4Total Fire Spells Casted12 %misc.firespells $+ ] [4Total Wind Spells Casted12 %misc.windspells $+ ] [4Total Water Spells Casted12 %misc.waterspells $+ ] [4Total Ice Spells Casted12 %misc.icespells $+ ] [4Total Lightning Spells Casted12 %misc.lightningspells $+ ],3)
   $display.private.message.delay.custom([4Total Times Won Under Defender12 %misc.defenderwon $+ ] [4Total Times Won Under Aggressor12 %misc.aggressorwon $+ ] [4Total Blood Boosts Performed12 %misc.bloodboost $+ ] [4Total Blood Spirits Performed12 %misc.bloodspirit $+ ],3)
   $display.private.message.delay.custom([4Total 1vs1 NPC Bets Placed12 %misc.totalbets $+ ] [4Total Amount of Double Dollars Bet12 %currency.symbol $bytes(%misc.totalbetamount,b) $+ ]  [4Total Bids Placed12 %misc.totalauctionbids $+ ] [4Total Auctions Won12 %misc.totalauctionswon $+ ],4)
 }
