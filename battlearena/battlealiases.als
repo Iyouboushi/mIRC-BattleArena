@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/29/15
+;;;; Last updated: 05/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -157,7 +157,13 @@ current.battlestreak {
   if (%portal.bonus != true) {
     var %temp.current.battlestreak $readini(battlestats.dat, battle, WinningStreak)
     if (%temp.current.battlestreak <= 0) { return $readini(battlestats.dat, battle, LosingStreak) }
-    else { return %temp.current.battlestreak }
+    else { 
+
+
+
+
+      return %temp.current.battlestreak 
+    }
   }
 
   if (%portal.bonus = true) {
@@ -2315,6 +2321,7 @@ winningstreak.addmonster.amount {
   if (%battle.type = orbfountain) { return }
   if (%battle.type = demonwall) { return }
   if (%battle.type = assault) { return }
+  if (%battle.type = warmachine) { return }
   if (%battle.type = doppelganger) { return }
   if (%battle.type = monster) { 
     ; If the players have been winning a lot then we need to make things more interesting/difficult for them.
@@ -2798,6 +2805,8 @@ multiple_wave_check {
   if (%portal.multiple.wave = on) { return }
   if (%battle.type = mimic) { return }
   if (%battle.type = ai) { return }
+  if (%boss.type = warmachine) { return }
+  if (%boss.type = elderdragon) { return }
   if (%savethepresident = on) { return }
 
   unset %number.of.monsters.needed

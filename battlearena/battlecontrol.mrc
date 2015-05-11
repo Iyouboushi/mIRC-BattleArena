@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/04/15
+;;;; Last updated: 05/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -847,6 +847,7 @@ alias battle.getmonsters {
             if (%boss.type = FrostLegion) { set %number.of.monsters.needed 0 }
             if (%boss.type = CrystalShadow) { set %number.of.monsters.needed 0 }
             if (%boss.type = gremlins) { set %number.of.monsters.needed 0 }
+            if (%boss.type = warmachine) { set %number.of.monsters.needed 0 }
 
             if (%number.of.monsters.needed > 0) { $generate_monster(monster)   }
           }
@@ -1042,6 +1043,7 @@ alias generate_monster {
         unset %battle.level.cap
       }
       $generate_monster_warmachine
+      echo -a generated machine
     }
 
     if (%boss.type = bandits) {
