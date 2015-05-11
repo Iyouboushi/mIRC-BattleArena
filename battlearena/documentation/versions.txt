@@ -1290,6 +1290,7 @@ Battle Arena Bot VERSIONS
 - Added the RngRune that has EnhanceRanged as an augment.
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
+- Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
 - Fixed a bug with orb rewards for players who are far under the streak and not using SotH
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
