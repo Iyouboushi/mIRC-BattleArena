@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/26/15
+;;;; Last updated: 05/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -298,6 +298,7 @@ system_defaults_check {
   .remove $boss(EldoraAdlanna)
   .remove $boss(NauthimaTiranadel)
   .remove $boss(RuneFencer_Nauthima)
+  .remove $boss(Magus)
 
   .remove $summon(Eldora_Adlanna)
 
