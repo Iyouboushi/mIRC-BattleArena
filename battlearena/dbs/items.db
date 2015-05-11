@@ -966,6 +966,7 @@ SellPrice=400
 Summon=$read -l $+ $rand(1, $lines($lstfile(pokemon.lst))) $lstfile(pokemon.lst)
 SummonName=$readini($summon(%summon.name), basestats, name)
 Desc=pulls out a Pokeball and tosses it at the battlefield, floating in the air for a moment. The Pokeball then opens up, a bright light emerging from it, which summons...
+RandomSummon=true
 
 =========================
 GEMS

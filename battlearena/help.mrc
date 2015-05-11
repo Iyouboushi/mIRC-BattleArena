@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 02/19/15
+;;;; Last updated: 05/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -155,7 +155,7 @@ alias view-info {
       $display.private.message([4Name12 $3 $+ ] [4Type12 Stat Increase $+ ] [4Stat to Increase12 %info.target $+ ] [4Increase Amount12 $iif(%info.amount >= 0, $chr(43)) $+ %info.amount $+ ] %sell.price %exclusive)   
     }
     if (%info.type = Consume) { $display.private.message([4Name12 $3 $+ ] [4Type12 Skill Consumable $+ ] [4Skill That Uses This Item12 $readini($dbfile(items.db), $3, skill) $+ ] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ])    }
-    if (%info.type = Summon) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Summon $+ ] [4This item summons12 $readini($dbfile(items.db), $3, summonname) 4to fight with you $+ ] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ])    }
+    if (%info.type = Summon) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Summon $+ ] [4This item summons12 $iif($readini($dbfile(items.db), $3, RandomSummon) = true, a random summon, $readini($dbfile(items.db), $3, summonname)) 4to fight with you $+ ] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ])    }
     if (%info.type = ShopReset) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Shop Level Change $+ ] [4When used this item reduces your shop level by %info.amount $+ ] %exclusive [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ])    }
     if (%info.type = tp) { $display.private.message([4Name12 $3 $+ ] [4Type12 TP Restore $+ ] [4TP Restored Amount12 %info.amount $+ ]  [4Item Cost12 %info.cost red orbs] %exclusive %info.fullbringmsg) }
     if (%info.type = CureStatus) { $display.private.message([4Name12 $3 $+ ] [4Type12 Cure Status $+ ] [4Item Cost12 %info.cost red orbs] [4Note12 This item will not cure Charm or Intimidation $+ ] %exclusive %info.fullbringmsg) }
