@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 04/30/15
+;;;; Last updated: 05/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1218,13 +1218,6 @@ formula.techdmg.monster {
     $offensive.style.check($1, $2, tech)
   }
 
-  if ($augment.check($1, TechBonus) = true) { 
-    set %tech.bonus.augment $calc(%augment.strength * .25)
-    var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
-    inc %attack.damage %augment.power.increase.amount
-    unset %tech.bonus.augment
-  }
-
   ; Let's increase the attack by a random amount.
   inc %attack.damage $rand(1,10)
 
@@ -1235,6 +1228,16 @@ formula.techdmg.monster {
     if ($readini($char($3), info, ImmuneToMagic) = true) {  $set_chr_name($3) | set %guard.message $readini(translation.dat, battle, ImmuneToMagic) }
   }
 
+  ; Check for TechBonus augment for non-magic techs
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) { 
+    if ($augment.check($1, TechBonus) = true) { 
+      set %tech.bonus.augment $calc(%augment.strength * .25)
+      var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
+      inc %attack.damage %augment.power.increase.amount
+      unset %tech.bonus.augment
+    }
+  }
+
   ;If the element is Light/fire and the target has the ZOMBIE status, then we need to increase the damage
   if ($readini($char($3), status, zombie) = yes) { 
     if ($istok(light.fire,$readini($dbfile(techniques.db), $2, element),46) = $true) { inc %attack.damage $round($calc(%attack.damage * .110),0)
@@ -1242,7 +1245,7 @@ formula.techdmg.monster {
   }
 
   ; If a player is using a monster weapon, which is considered cheating, set the damage to 0.
-  if ($person_in_mech($1) = false) {  set %current.weapon.used $readini($char($1), weapons, equipped) }
+  if ($person_in_mech($1) = false) { set %current.weapon.used $readini($char($1), weapons, equipped) }
   if ($person_in_mech($1) = true) { set %current.weapon.used $readini($char($1), mech, EquippedWeapon) }
 
   if (($readini($dbfile(weapons.db), %current.weapon.used, cost) = 0) && ($readini($dbfile(weapons.db), %current.weapon.used, specialweapon) != true)) {
@@ -1582,13 +1585,6 @@ formula.techdmg.player {
     $offensive.style.check($1, $2, tech)
   }
 
-  if ($augment.check($1, TechBonus) = true) { 
-    set %tech.bonus.augment $calc(%augment.strength * .25)
-    var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
-    inc %attack.damage %augment.power.increase.amount
-    unset %tech.bonus.augment
-  }
-
   ; Let's increase the attack by a random amount.
   inc %attack.damage $rand(1,15)
 
@@ -1597,6 +1593,16 @@ formula.techdmg.player {
 
     $calculate_damage_magic($1, $2, $3)
     if ($readini($char($3), info, ImmuneToMagic) = true) {  $set_chr_name($3) | set %guard.message $readini(translation.dat, battle, ImmuneToMagic) }
+  }
+
+  ; Check for TechBonus augment for non-magic techs
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) { 
+    if ($augment.check($1, TechBonus) = true) { 
+      set %tech.bonus.augment $calc(%augment.strength * .25)
+      var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
+      inc %attack.damage %augment.power.increase.amount
+      unset %tech.bonus.augment
+    }
   }
 
   ;If the element is Light/fire and the target has the ZOMBIE status, then we need to increase the damage
@@ -2282,13 +2288,6 @@ formula.techdmg.player.old {
     $offensive.style.check($1, $2, tech)
   }
 
-  if ($augment.check($1, TechBonus) = true) { 
-    set %tech.bonus.augment $calc(%augment.strength * .25)
-    var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
-    inc %attack.damage %augment.power.increase.amount
-    unset %tech.bonus.augment
-  }
-
   ; Let's increase the attack by a random amount.
   inc %attack.damage $rand(1,15)
 
@@ -2297,6 +2296,16 @@ formula.techdmg.player.old {
 
     $calculate_damage_magic($1, $2, $3)
     if ($readini($char($3), info, ImmuneToMagic) = true) {  $set_chr_name($3) | set %guard.message $readini(translation.dat, battle, ImmuneToMagic) }
+  }
+
+  ; Check for TechBonus augment for non-magic techs
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) { 
+    if ($augment.check($1, TechBonus) = true) { 
+      set %tech.bonus.augment $calc(%augment.strength * .25)
+      var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
+      inc %attack.damage %augment.power.increase.amount
+      unset %tech.bonus.augment
+    }
   }
 
   ;If the element is Light/fire and the target has the ZOMBIE status, then we need to increase the damage
@@ -2603,13 +2612,6 @@ formula.techdmg.player.percent {
     $offensive.style.check($1, $2, tech)
   }
 
-  if ($augment.check($1, TechBonus) = true) { 
-    set %tech.bonus.augment $calc(%augment.strength * .25)
-    var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
-    inc %attack.damage %augment.power.increase.amount
-    unset %tech.bonus.augment
-  }
-
   ; Let's increase the attack by a random amount.
   inc %attack.damage $rand(1,10)
 
@@ -2618,6 +2620,16 @@ formula.techdmg.player.percent {
 
     $calculate_damage_magic($1, $2, $3)
     if ($readini($char($3), info, ImmuneToMagic) = true) {  $set_chr_name($3) | set %guard.message $readini(translation.dat, battle,  ImmuneToMagic) }
+  }
+
+  ; Check for TechBonus augment for non-magic techs
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) { 
+    if ($augment.check($1, TechBonus) = true) { 
+      set %tech.bonus.augment $calc(%augment.strength * .25)
+      var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
+      inc %attack.damage %augment.power.increase.amount
+      unset %tech.bonus.augment
+    }
   }
 
   ;If the element is Light/fire and the target has the ZOMBIE status, then we need to increase the damage
