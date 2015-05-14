@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/10/15
+;;;; Last updated: 05/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -931,7 +931,11 @@ alias generate_monster {
       $fulls(%monster.name) 
       if (%battlemonsters = 10) { set %number.of.monsters.needed 0 }
       inc %value 1
-      else {  %monster.list = $deltok(%monster.list,%monster.name,46) | dec %value 1 }
+      else {  
+        set %monster.to.remove $findtok(%monster.list, %monster.name, 46)
+        set %monster.list $deltok(%monster.list,%monster.to.remove,46)
+        dec %value 1
+      }
     }
   }
 
