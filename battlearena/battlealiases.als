@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/10/15
+;;;; Last updated: 05/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1679,7 +1679,6 @@ random.battlefield.curse {
 ; battlefield limitation.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battlefield.limitations {
-
   if (($return_winningstreak <= 10) && (%portal.bonus != true)) { return }
 
   set %battleconditions $readini($dbfile(battlefields.db), %current.battlefield, limitations)
@@ -2337,6 +2336,9 @@ winningstreak.addmonster.amount {
     if ((%winning.streak > 500) && (%winning.streak <= 800)) { inc %number.of.monsters.needed 1 }
     if (%winning.streak > 800) { inc %number.of.monsters.needed 2 }
   }
+
+  if (($return_winningstreak <= 10) && (%number.of.monsters > 3)) { set %number.of.monsters.needed 3 }
+
   return
 }
 

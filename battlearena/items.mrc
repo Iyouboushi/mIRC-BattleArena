@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 05/07/15
+;;;; Last updated: 05/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -171,9 +171,6 @@ alias uses_item {
     set %current.battlefield $readini($dbfile(items.db), $2, Battlefield)
     writeini $dbfile(battlefields.db) weather current $readini($dbfile(items.db), $2, weather)
 
-    ; check for limitations
-    $battlefield.limitations
-
     if (($readini(system.dat, system, ForcePortalSync) = true) && ($readini($dbfile(items.db), $2, PortalLevel) != $null)) {
       var %portal.level $readini($dbfile(items.db), $2, PortalLevel)
       $portal.sync.players(%portal.level)
@@ -188,6 +185,12 @@ alias uses_item {
     $set_chr_name($1) | $display.message( $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
 
     set %monster.to.spawn $readini($dbfile(items.db), $2, Monster)
+
+    ; Turn on the portal flag
+    set %portal.bonus true
+
+    ; check for limitations
+    $battlefield.limitations
 
     if ($numtok(%monster.to.spawn,46) = 1) { $portal.item.onemonster }
     if ($numtok(%monster.to.spawn,46) > 1) { $portal.item.multimonsters }
@@ -1058,7 +1061,7 @@ alias portal.item.onemonster {
   $display.message($readini(translation.dat, errors, PortalItemNotWorking) , private) | halt  }  
 
   ; Clear the battlefield.
-  set %battle.type boss | set %portal.bonus true
+  set %battle.type boss
   $multiple_wave_clearmonsters
 
   ; Now summon the special boss
@@ -1130,7 +1133,7 @@ alias portal.item.multimonsters {
     if ((%isboss != $true) && (%ismonster != $true)) { inc %value }
     else { 
       set %found.monster true 
-      if (%cleared.battlefield != true) {  set %battle.type boss | set %portal.bonus true |  set %cleared.battlefield true | $multiple_wave_clearmonsters }
+      if (%cleared.battlefield != true) {  set %battle.type boss | set %cleared.battlefield true | $multiple_wave_clearmonsters }
 
       if ($isfile($boss(%current.monster.to.spawn)) = $true) { .copy -o $boss(%current.monster.to.spawn) $char(%current.monster.to.spawn)  }
       if ($isfile($mon(%current.monster.to.spawn)) = $true) {  .copy -o $mon(%current.monster.to.spawn) $char(%current.monster.to.spawn)  }
