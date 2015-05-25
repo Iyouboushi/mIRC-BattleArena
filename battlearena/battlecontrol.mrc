@@ -849,6 +849,7 @@ alias battle.getmonsters {
             if (%boss.type = bandits) { set %number.of.monsters.needed 0 }
             if (%boss.type = pirates) { set %number.of.monsters.needed 0 }
             if (%boss.type = elderdragon) { set %number.of.monsters.needed 0 }
+            if (%boss.type = dinosaurs) { set %number.of.monsters.needed 0 }
             if (%boss.type = FrostLegion) { set %number.of.monsters.needed 0 }
             if (%boss.type = CrystalShadow) { set %number.of.monsters.needed 0 }
             if (%boss.type = gremlins) { set %number.of.monsters.needed 0 }
@@ -947,7 +948,7 @@ alias generate_monster {
   if ($1 = boss) {
     if (%boss.type = $null) { $get_boss_type }
 
-    set %valid.boss.types normal.bandits.gremlins.doppelganger.warmachine.demonwall.wallofflesh.elderdragon.pirates.frostlegion.crystalshadow
+    set %valid.boss.types normal.bandits.gremlins.doppelganger.warmachine.demonwall.wallofflesh.elderdragon.pirates.frostlegion.crystalshadow.dinosaurs
 
     if (%boss.type = $null) { var %boss.type normal }
     if ((%battle.type = assault) || (%battle.type = defendoutpost)) { set %boss.type normal }
@@ -1169,6 +1170,8 @@ alias generate_monster {
 
       $generate_elderdragon
     }
+
+    if (%boss.type = dinosaurs) {  $generate_dinosaur }
 
     if (%boss.type = demonwall) {
       set %demonwall.name Demon Wall

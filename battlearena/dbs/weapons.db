@@ -20,7 +20,7 @@ Daggers=MainGauche.Mandau.Terpsichore
 Defunct=KaiserKnuckles.LexTalionis.Soulsaber.Almace.Caladbolg.Quicksilver.SniperRifle.Annihilator.DeathPenalty.Keitonotachi.Hagun.Masamune.Rhongomiant
 
 ; The lists after this are for monster weapons only.  Players do not have access to these.
-MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower.GammaBody.GammaArm.CowLegs
+MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower.GammaBody.GammaArm.CowLegs.DinoFangs
 
 MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.SinistralPower.JesterWand.VampireArt.Puppetry.Benihime.PeoplesFist.SuccubusPower.DragonShouts.BlueEyesPower.BlackMagic.DragonSword.OctoArms.Casull&Jackal.AlucardSword.Auto9.Railgun.WoolyTusks.OrochiPower.BogardGloves.GiygasPower.AtlantisPower.Broad_Sword.Rose's_Rapier.ShihouinFists.ImpHorn.GhostPower.ChozoArmCannon.ZeroSaber.SantaRifle.ScorpionFists.Legion
 
@@ -1517,6 +1517,15 @@ Cost=0
 Type=HandToHand
 Info=You can't buy this!
 Abilities=FangRush.RadiantBreath.HurricaneBreath.SpikeFlail.AbsoluteTerror.DragonFire
+Element=none
+Hits=$rand(1,2)
+BasePower=15
+
+[DinoFangs]
+Cost=0
+Type=HandToHand
+Info=You can't buy this!
+Abilities=FangRush.SpikeFlail.AbsoluteTerror
 Element=none
 Hits=$rand(1,2)
 BasePower=15

@@ -312,6 +312,7 @@ GoblinsFight=$chr(3) $+ 14 $+ An army of goblins march towards the Allied Forc
 PiratesFight=$chr(3) $+ 14 $+ While taking a ship to the next battlefield a large pirate ship pulls up alongside the Allied Forces' ship and attack it. A band of vicious pirates then board in an attempt to kill and rob the heroes.
 FrostLegionFight=$chr(3) $+ 14 $+ From the depths of the south pole The Frost Legion has awoken and begun their attack! 
 GremlinsFight=$chr(3) $+ 14 $+ Someone fed their pet Mogwai, Stripe, after midnight and now gremlins have taken over a nearby school! The heros are comissioned to go eliminate these pests!
+JurassicParkFight=$chr(3) $+ 14 $+ Warning! Warning! A dangerous dinosaur has escaped its pin in Jurassic Park! The park is requesting immediate assistance from the heroes to stop the terrible beast!
 
 =======================
 Error Messages
