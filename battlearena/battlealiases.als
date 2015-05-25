@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/14/15
+;;;; Last updated: 05/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -69,6 +69,25 @@ return_playerlevelstotal {
   return %total.playerlevels
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns highest player level
+; in the battle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return_playerlevelhighest {
+  var %highest.level $readini($txtfile(battle2.txt), BattleInfo, HighestLevel)
+  if (%highest.level = $null) { return 0 }
+  return %highest.level
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns average player level
+; in the battle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return_playerlevelaverage {
+  var %average.level $readini($txtfile(battle2.txt), BattleInfo, AverageLevel)
+  if (%average.level = $null) { return 0 }
+  return %average.level
+}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns # of players in battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -593,7 +612,7 @@ boost_monster_hp {
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
-  if (%hp > 8000) { var %hp $round($calc(8000 + (%hp * .01)),0) }
+  if (%hp > 10000) { var %hp $round($calc(10000 + (%hp * .10)),0) }
 
   writeini $char($1) BaseStats HP $round(%hp,0)
   writeini $char($1) Battle HP $round(%hp,0)

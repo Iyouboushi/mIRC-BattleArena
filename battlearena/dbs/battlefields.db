@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=calm
+current=Calm
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -871,6 +871,12 @@ scavenge=BeastmenSeal.KindredSeal.KindredCrest
 limitations=no-mech.no-fleeing
 
 [Allied Forces Outpost]
+weather=calm
+NumberOfEvents=0
+scavenge=BeastmenSeal.KindredSeal.KindredCrest
+limitations=no-mech.no-fleeing
+
+[Jurassic Park]
 weather=calm
 NumberOfEvents=0
 scavenge=BeastmenSeal.KindredSeal.KindredCrest

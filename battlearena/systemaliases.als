@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 05/10/15
+;;;; Last updated: 05/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -101,6 +101,7 @@ system_defaults_check {
     if ($readini(system.dat, system, EnableGremlins) = $null) { writeini system.dat system EnableGremlins true }
     if ($readini(system.dat, system, EnableGoblins) = $null) { writeini system.dat system EnableGoblins true }
     if ($readini(system.dat, system, EnablePirates) = $null) { writeini system.dat system EnablePirates true }
+    if ($readini(system.dat, system, EnableDinosaurs) = $null) { writeini system.dat system EnableDinosaurs true }
     if ($readini(system.dat, system, EnableCrystalShadow) = $null) { writeini system.dat system EnableCrystalShadow true }
     if ($readini(system.dat, system, EnablePresidentKidnapping) = $null) { writeini system.dat system EnablePresidentKidnapping true }
     if ($readini(system.dat, system, EnableNPCKidnapping) = $null) { writeini system.dat system EnableNPCKidnapping true }

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 05/14/15
+;;;; Last updated: 05/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -379,10 +379,11 @@ formula.meleedmg.player {
   set %true.base.stat %base.stat
   var %base.stat $log(%base.stat)
 
-  var %weapon.base $calc(1 + $log($readini($char($1), weapons, $2)))
+  ;  var %weapon.base $calc(1 + $log($readini($char($1), weapons, $2)))
+  var %weapon.base $calc(1 + (10 * $log($readini($char($1), weapons, $2))))
 
   ; If the weapon is a hand to hand, it will now receive a bonus based on your fists level.
-  if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
+  ;;  if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
 
   inc %weapon.base %base.weapon.power
 
@@ -521,7 +522,7 @@ formula.meleedmg.player {
 
   var %blocked.percent $log(%enemy.defense)
   if (%blocked.percent < 0) { var %blocked.percent .5 }
-  inc %blocked.percent $rand(1,5)
+  inc %blocked.percent $rand(1,10)
   inc %blocked.percent $log($get.level($3))
 
   if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %blocked.percent $rand(2,5) }
@@ -1562,7 +1563,7 @@ formula.techdmg.player {
 
   set %weapon.base $readini($char($1), weapons, %weapon.used)
   if (%weapon.base = $null) { set %weapon.base 1 }
-  inc %base.power.wpn $calc(1 + $log(%weapon.base))
+  inc %base.power.wpn $calc(1 + (2 * $log(%weapon.base)))
 
   ; Does the user have a mastery in the weapon?  We can add a bonus as well.
   $mastery_check($1, %weapon.used)
@@ -1653,7 +1654,7 @@ formula.techdmg.player {
 
   var %blocked.percent $log(%enemy.defense)
   if (%blocked.percent < 0) { var %blocked.percent .5 }
-  inc %blocked.percent $rand(1,3)
+  inc %blocked.percent $rand(1,10)
   inc %blocked.percent $log($get.level($3))
 
   if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %blocked.percent $rand(2,5) }
