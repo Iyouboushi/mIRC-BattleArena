@@ -108,9 +108,9 @@ Thundaja=7
 
 [modifiers]
 Heal=lightning
-Earth=120
+Earth=130
 Fire=100
-Wind=200
+Wind=130
 Water=40
 Ice=100
 Lightning=200
