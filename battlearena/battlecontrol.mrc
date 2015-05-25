@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/14/15
+;;;; Last updated: 05/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -174,7 +174,13 @@ on 50:TEXT:!clear battle stats*:*:{
   writeini battlestats.dat Battle CapturedPresidents.Fails 0
   writeini battlestats.dat Battle CapturedPresidents.Wins 0
   writeini battlestats.dat Battle CapturedPresidents 0
-
+  writeini battlestats.dat Battle TotalOutpostsDefended 0
+  writeini battlestats.dat Battle TotalAssaultWon 0
+  writeini battlestats.dat Battle TotalAssaultLost 0
+  writeini battlestats.dat Battle TotalOutpostsLost 0
+  writeini battlestats.dat AIBattles totalBattles 0
+  writeini battlestats.dat AIBattles npc 0
+  writeini battlestats.dat AIBattles monster 0
   $display.message($readini(translation.dat, System, WipedBattleStats), global)
 }
 
@@ -753,7 +759,6 @@ alias battlebegin {
   set %who $read -l1 $txtfile(battle.txt) | set %line 1
   set %current.turn 1
   $battlelist(public)
-
 
   if (%savethepresident = on) {  $display.message($readini(translation.dat, battle, Don'tLetPresidentDie), battle)  }
   if (%battle.type = defendoutpost) { $display.message($readini(translation.dat, battle, DefendOutpostForTurns), battle) }
