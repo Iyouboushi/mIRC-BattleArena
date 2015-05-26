@@ -612,7 +612,7 @@ boost_monster_hp {
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
-  if (%hp > 10000) { var %hp $round($calc(10000 + (%hp * .10)),0) }
+  if (%hp > 9000) { var %hp $round($calc(9000 + (%hp * .02)),0) }
 
   writeini $char($1) BaseStats HP $round(%hp,0)
   writeini $char($1) Battle HP $round(%hp,0)
