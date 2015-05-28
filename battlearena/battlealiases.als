@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/25/15
+;;;; Last updated: 05/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -137,6 +137,24 @@ return_maxmonstersinbattle {
 person_in_mech {
   if ($readini($char($1), mech, InUse) = true) { return true }
   else { return false }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Adds a random monster
+; drop to the item pool
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+check_drops {
+  var %boss.item $readini($dbfile(drops.db), drops, $1)
+
+  if (%boss.item = $null) { var %boss.item $readini($char($1), stuff, drops) } 
+  if (%boss.item != $null) {
+    var %temp.drops.list $readini($txtfile(battle2.txt), battle, bonusitem)
+    var %number.of.items $numtok(%temp.drops.list, 46)
+    if (%number.of.items <= 20) {
+      if (%temp.drops.list != $null) { writeini $txtfile(battle2.txt) battle bonusitem %temp.drops.list $+ . $+ %boss.item }
+      if (%temp.drops.list = $null) { writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
+    }
+  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2966,6 +2984,9 @@ spawn_after_death {
   set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%monster.to.spawn,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
   write $txtfile(battle.txt) %monster.to.spawn
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
+
+  ; Check for a drop
+  $check_drops(%monster.to.spawn)
 
   ; display the description of the spawned monster
   $set_chr_name(%monster.to.spawn) 

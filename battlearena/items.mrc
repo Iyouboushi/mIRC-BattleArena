@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 05/14/15
+;;;; Last updated: 05/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1104,15 +1104,9 @@ alias portal.item.onemonster {
   set %first.round.protection yes
 
   ; Get the boss item.
-  var %boss.item $readini($dbfile(drops.db), drops, %monster.to.spawn)
-  if (%boss.item = $null) {  var %boss.item $readini($char(%monster.to.spawn), stuff, drops) }
 
-  if (%boss.item != $null) { 
-    var %boss.item $readini($dbfile(drops.db), drops, %monster.to.spawn)
-    if (%boss.item = $null) {  var %boss.item $readini($char(%monster.to.spawn), stuff, drops) }
-
-    if (%boss.item != $null) { writeini $txtfile(battle2.txt) battle bonusitem %boss.item | unset %boss.item }
-  }
+  ; Check for a drop
+  $check_drops(%monster.to.spawn)
 
   unset %monster.to.spawn
   set %darkness.turns 21
@@ -1198,14 +1192,7 @@ alias portal.item.multimonsters {
       unset %battle.rage.darkness
 
       ; Get the boss item.
-      var %boss.item $readini($dbfile(drops.db), drops, %current.monster.to.spawn)
-      if (%boss.item = $null) {  var %boss.item $readini($char(%current.monster.to.spawn), stuff, drops) }
-
-      if (%boss.item != $null) { 
-        var %boss.drop.list $readini($txtfile(battle2.txt), battle, bonusitem)
-        if (%boss.drop.list != $null) { writeini $txtfile(battle2.txt) battle bonusitem %boss.drop.list $+ . $+ %boss.item | unset %boss.item }
-        if (%boss.drop.list = $null) { writeini $txtfile(battle2.txt) battle bonusitem %boss.item | unset %boss.item }
-      }
+      $check_drops(%current.monster.to.spawn)
 
       inc %value
 

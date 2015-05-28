@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/25/15
+;;;; Last updated: 05/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -915,17 +915,8 @@ alias generate_monster {
       var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
       inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters 
 
-      var %boss.item $readini($dbfile(drops.db), drops, %monster.name)
-      if (%boss.item = $null) {  var %boss.item $readini($char(%monster.name), stuff, drops) }
-
-      if (%boss.item != $null) { 
-        var %temp.drops.list $readini($txtfile(battle2.txt), battle, bonusitem)
-        var %number.of.items $numtok(%temp.drops.list, 46)
-        if (%number.of.items <= 20) { 
-          if (%temp.drops.list != $null) { writeini $txtfile(battle2.txt) battle bonusitem %temp.drops.list $+ . $+ %boss.item }
-          if (%temp.drops.list = $null) { writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
-        }
-      }
+      ; Check for a drop
+      $check_drops(%monster.name)
 
       set %monster.to.remove $findtok(%monster.list, %monster.name, 46)
       set %monster.list $deltok(%monster.list,%monster.to.remove,46)
@@ -990,18 +981,9 @@ alias generate_monster {
         }
         if (%battle.type = ai) { set %ai.monster.name $set_chr_name(%monster.name) %real.name | writeini $txtfile(1vs1bet.txt) money monsterfile %monster.name }
 
-        var %boss.item $readini($dbfile(drops.db), drops, %monster.name)
-        if (%boss.item = $null) {  var %boss.item $readini($char(%monster.name), stuff, drops) }
+        ; Check for a drop
+        $check_drops(%monster.name)
 
-        if (%boss.item != $null) { 
-          var %temp.boss.list $readini($txtfile(battle2.txt), battle, bonusitem)
-
-          var %number.of.items $numtok(%temp.boss.list, 46)
-          if (%number.of.items <= 20) { 
-            if (%temp.boss.list != $null) { writeini $txtfile(battle2.txt) battle bonusitem %temp.boss.list $+ . $+ %boss.item }
-            if (%temp.boss.list = $null) { writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
-          }
-        }
         set %monster.to.remove $findtok(%monster.list, %monster.name, 46)
         set %monster.list $deltok(%monster.list,%monster.to.remove,46)
         write $txtfile(battle.txt) %monster.name
