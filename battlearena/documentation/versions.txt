@@ -1294,6 +1294,7 @@ Battle Arena Bot VERSIONS
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
 - Changed the "TechBonus" augment so that it only applies to non-magic techs
+- Changed the code for checking for an item drop so that it's centralized in one spot instead of spread out across multiple.
 - Fixed a bug with orb rewards for players who are far under the streak and not using SotH
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
