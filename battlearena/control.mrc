@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 04/30/15
+;;;; Last updated: 06/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -210,6 +210,17 @@ on 50:TEXT:!toggle mode playersmustdie*:*:{
   }
 }
 
+; Bot admins can toggle Player Access commands on and off
+on 50:TEXT:!toggle playerAccessCmds*:*:{   
+  if ($readini(system.dat, system,AllowPlayerAccessCmds) = false) { 
+    writeini system.dat system AllowPlayerAccessCmds true
+    $display.message($readini(translation.dat, system, AllowPlayerAccessCmdsOn), global)
+  }
+  else {
+    writeini system.dat system AllowPlayerAccessCmds false
+    $display.message($readini(translation.dat, system, AllowPlayerAccessCmdsOff), global)
+  }
+}
 ; Bot admins can toggle Personal Difficulty
 on 50:TEXT:!toggle personalDifficulty*:*:{   
   if ($readini(system.dat, system,AllowPersonalDifficulty) = false) { 
