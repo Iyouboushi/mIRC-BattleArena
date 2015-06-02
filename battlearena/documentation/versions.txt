@@ -1096,7 +1096,7 @@ Battle Arena Bot VERSIONS
 - Added the bot admin command: !toggle battle messages  -- This will toggle between old and new battle announce messages
 - Added the bot admin command: !toggle bot bold  -- Will turn bold on/off for the bot
 - Added the bot admin command: !time to enter # -- where # is the number of seconds for the !enter period
-- Added the bot admin command: toggle personalDifficulty  -- Will turn !save difficulty on/off.
+- Added the bot admin command: !toggle personalDifficulty  -- Will turn !save difficulty on/off.
 - Added a CanDodge=true/false flag to techniques. If set to false, it will be impossible to dodge the technique.
 - Added a new flag in system.dat: EnableDNSCheck=true/false   This will allow the bot to attempt to get the host names
   of players. This is necessary to use the player limit.  If disabled the bot won't attempt to use it
@@ -1290,11 +1290,14 @@ Battle Arena Bot VERSIONS
 - Added the RngRune that has EnhanceRanged as an augment.
 - Added a new special boss battle type: Dinosaur.
 - Added a new system.dat setting: EnableDinosaurs=true/false  If set to false the dinosaur special boss battle won't happen
+- Added a new system.dat flag: AllowPlayerAccessCmds=true/false  If set to false, players won't be able to control others
+- Added the bot admin command: !toggle playerAccessCmnds  -- Will turn player access commands on/off
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
 - Changed the "TechBonus" augment so that it only applies to non-magic techs
 - Changed the code for checking for an item drop so that it's centralized in one spot instead of spread out across multiple.
+- Changed Player Access commands so that players must have logged in within the last week in order to be controlled.
 - Fixed a bug with orb rewards for players who are far under the streak and not using SotH
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
