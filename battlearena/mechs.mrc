@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MECH COMMANDS
-;;;; Last updated: 01/31/15
+;;;; Last updated: 06/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:activates * mech:#:{ $mech.activate($nick) } 
@@ -13,12 +13,16 @@ ON 3:TEXT:* activates * mech:*:{
   if ($readini($char($1), info, flag) = monster) { halt }
   $no.turn.check($1)
   $controlcommand.check($nick, $1)
+  if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
+  if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
   $mech.activate($1) 
 } 
 ON 3:TEXT:* deactivates * mech:*:{ 
   if (($2 != activates) && ($4 != mech)) { halt }
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
+  if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
+  if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
   $mech.deactivate($1)
 } 
 

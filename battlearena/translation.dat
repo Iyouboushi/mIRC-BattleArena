@@ -243,6 +243,9 @@ SpiritOfHeroOn=$chr(3) $+ 4 $+ Spirit of the Hero has been turned on.
 SpiritOfHeroOff=$chr(3) $+ 4 $+ Spirit of the Hero has been turned off.
 AllowPersonalDifficultyOn=$chr(3) $+ 4 $+ Personal Difficulty has been turned on.
 AllowPersonalDifficultyOff=$chr(3) $+ 4 $+ Personal Difficulty has been turned off.
+AllowPlayerAccessCmdsOn=$chr(3) $+ 4 $+ Player Access Commands has been turned on.
+AllowPlayerAccessCmdsOff=$chr(3) $+ 4 $+ Player Access Commands has been turned off.
+
 AllowColorsOn=$chr(3) $+ 4 $+ The Bot's Colors have been turned on.
 AllowColorsOff=$chr(3) $+ 4 $+ The Bot's Colors have been turned off.
 AllowBoldOn=$chr(3) $+ 4 $+ The Bot's Bold has been turned on.
@@ -518,6 +521,10 @@ Can'tRaiseStatBeforeOthers=$chr(3) $+ 4 $+ Error: This stat cannot be raised a
 ActionDisabled=$chr(3) $+ 4 $+ Error: This action has been disabled and cannot be done at this time.
 ActionDisabledForPVP=$chr(3) $+ 4 $+ Error: This action cannot be done in PVP battles.
 CloneCannotUseSkill=$chr(3) $+ 4 $+ Error: This skill cannot be used by the shadow clone
+PlayerAccessCmdsOff=$chr(3) $+ 4 $+ Error: Player Access commands have been disabled.
+PlayerAccessOffDueToLogin=$chr(3) $+ 4 $+ Error: $1 has not logged in for over a week and is no longer able to be controlled by other players.
+Can'tUseOtherPlayersPortals=$chr(3) $+ 4 $+ Error: You can't use other player's portal items.
+
 
 =======================
 Battle Related Messages

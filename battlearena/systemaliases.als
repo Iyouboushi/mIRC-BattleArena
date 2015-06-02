@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 05/25/15
+;;;; Last updated: 06/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -94,6 +94,7 @@ system_defaults_check {
     if ($readini(system.dat, system, AllowSpiritOfHero) = $null) { writeini system.dat system AllowSpiritOfHero true }
     if ($readini(system.dat, system, EnableFoodOnOthers) = $null) { writeini system.dat system EnableFoodOnOthers true }
     if ($readini(system.dat, system, AllowPersonalDifficulty) = $null) { writeini system.dat system AllowPersonalDifficulty true }
+    if ($readini(system.dat, system, AllowPlayerAccessCmds) = $null) { writeini system.dat system AllowPlayerAccessCmds true }
 
     if ($readini(system.dat, system, EnableDoppelganger) = $null) { writeini system.dat system EnableDoppelganger true }
     if ($readini(system.dat, system, EnableWarmachine) = $null) { writeini system.dat system EnableWarmachine true }
@@ -2245,6 +2246,23 @@ oldchar.check {
   else { $fulls($1, clearSotH) }
 
   return
+}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns true if a char has
+; logged in in the last week
+; false if not
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+char.seeninaweek {
+  var %lastseen.date $readini($char($1), info, LastSeen)
+  if (%lastseen.date = $null) { writeini $char($1) info LastSeen $fulldate | return true }
+  if (%lastseen.date = N/A) { var %lastseen.date $readini($char($1), info, Created) | writeini $char($1) info LastSeen %lastseen.date }
+
+  var %lastseen.ctime $ctime(%lastseen.date)
+  var %ctime.calc.week 604800
+  var %current.ctime $calc( $ctime($fulldate) - %lastseen.ctime)
+
+  if (%current.ctime > %ctime.calc.week) { return false }
+  else { return true }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

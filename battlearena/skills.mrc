@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 05/02/15
+;;;; Last updated: 06/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -10,6 +10,8 @@ ON 3:TEXT:*does *:*:{
   if ($readini($char($1), info, flag) = monster) { halt }
   if ($readini($char($1), stuff, redorbs) = $null) { halt }
   $controlcommand.check($nick, $1)
+  if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
+  if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
   $use.skill($1, $2, $3, $4) 
 }
 alias use.skill { 

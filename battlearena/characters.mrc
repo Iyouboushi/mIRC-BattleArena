@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 05/08/15
+;;;; Last updated: 06/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -608,6 +608,8 @@ ON 3:TEXT:*style change to *:*:{
   if ($2 != style) { halt }
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
+  if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
+  if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
   $no.turn.check($1, return)
   $style.change($1, $3, $5)
 } 
@@ -905,6 +907,8 @@ ON 3:TEXT:*equips *:*:{
   if ($2 != equips) { halt }
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
+  if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
+  if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
   if ($is_charmed($1) = true) { $set_chr_name($1) | $display.message($readini(translation.dat, status, CurrentlyCharmed),private) | halt }
   if ($is_confused($1) = true) { $set_chr_name($1) | $display.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
   if ($readini($char($1), status, weapon.lock) != $null) { $set_chr_name($1) | $display.message($readini(translation.dat, status, CurrentlyWeaponLocked),private) | halt  }
@@ -1253,6 +1257,8 @@ ON 50:TEXT:*taunts *:*:{ $set_chr_name($1)
 ON 3:TEXT:*taunts *:*:{ 
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
+  if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
+  if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
   $set_chr_name($1)
   $no.turn.check($1)
   if ($readini($char($1), Battle, HP) = $null) { halt }

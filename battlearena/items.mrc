@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 05/28/15
+;;;; Last updated: 06/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -99,8 +99,11 @@ ON 3:TEXT:*uses item * on *:*:{  $set_chr_name($1)
 
   if ($readini($char($1), info, flag) = monster) { halt }
   $controlcommand.check($nick, $1)
+  if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
+  if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
 
   if ($readini($dbfile(items.db), $4, type) != key) { $no.turn.check($1) }
+  if ($readini($dbfile(items.db), $4, type = portal) { $display.message($readini(translation.dat, errors, Can'tUseOtherPlayers Portals), private) | halt }
 
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { 

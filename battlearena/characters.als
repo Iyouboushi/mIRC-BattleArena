@@ -1248,7 +1248,6 @@ augments.list {
   unset %augment.list2 | unset %augment.list3 | unset %augment.list4
   unset %weapon.list | unset %base.weapon.list  | unset %weapons
   unset %weapon_augment | unset %mech.weapon.list | unset %mech.weaponlist2 | unset %replacechar
-
 }
 
 augments.strength {
