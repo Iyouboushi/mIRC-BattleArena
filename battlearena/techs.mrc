@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 06/02/15
+;;;; Last updated: 06/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -91,8 +91,11 @@ ON 50:TEXT:*sings *:*:{
 ON 3:ACTION:uses * * on *:#:{ 
   $no.turn.check($nick) |  $set_chr_name($nick)
 
-  set %attack.target $matchtok($return_peopleinbattle, $5, 1, 46)
-  if (%attack.target = $null) { set %attack.target $5 }
+  if ($istok($return_peopleinbattle, $5, 46) = $true) { set %attack.target $5 }
+  else { 
+    set %attack.target $matchtok($return_peopleinbattle, $5, 1, 46)
+    if (%attack.target = $null) { set %attack.target $5 }
+  }
 
   if ($5 = me) { set %attack.target $nick } 
 
@@ -106,8 +109,12 @@ ON 50:TEXT:*uses * * on *:*:{
   $no.turn.check($1,admin)
 
   var %ignitions.list $ignitions.get.list($1)
-  set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
-  if (%attack.target = $null) { set %attack.target $6 }
+  if ($istok($return_peopleinbattle, $6, 46) = $true) { set %attack.target $6 }
+  else { 
+    set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
+    if (%attack.target = $null) { set %attack.target $6 }
+  }
+
   if ($6 = me) { set %attack.target $1 } 
 
   if ($istok(%ignitions.list, $4, 46) = $true) { unset %ignitions.list | $ignition_cmd($1, $4, $nick) | halt }
@@ -127,8 +134,11 @@ ON 3:TEXT:*uses * * on *:*:{
   $no.turn.check($1)
 
   var %ignitions.list $ignitions.get.list($1)
-  set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
-  if (%attack.target = $null) { set %attack.target $6 }
+  if ($istok($return_peopleinbattle, $6, 46) = $true) { set %attack.target $6 }
+  else { 
+    set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
+    if (%attack.target = $null) { set %attack.target $6 }
+  }
   if ($6 = me) { set %attack.target $1 } 
 
   if ($istok(%ignitions.list, $4, 46) = $true) { unset %ignitions.list | $ignition_cmd($1, $4, $nick) | halt }

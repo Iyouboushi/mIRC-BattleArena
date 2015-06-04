@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 04/29/15
+;;;; Last updated: 06/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -815,8 +815,11 @@ on 2:Chat:ACTION attacks *: {
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   $set_chr_name($nick) 
-  set %attack.target $matchtok($return_peopleinbattle, $3, 1, 46)
-  if (%attack.target = $null) { set %attack.target $3 }
+  if ($istok($return_peopleinbattle, $3, 46) = $true) { set %attack.target $3 }
+  else { 
+    set %attack.target $matchtok($return_peopleinbattle, $3, 1, 46)
+    if (%attack.target = $null) { set %attack.target $3 }
+  }
   $covercheck(%attack.target)
   $attack_cmd($nick , %attack.target) 
 }
@@ -824,8 +827,11 @@ on 2:Chat:attacks *: {
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   $set_chr_name($nick)
-  set %attack.target $matchtok($return_peopleinbattle, $2, 1, 46)
-  if (%attack.target = $null) { set %attack.target $2 }
+  if ($istok($return_peopleinbattle, $2, 46) = $true) { set %attack.target $2 }
+  else { 
+    set %attack.target $matchtok($return_peopleinbattle, $2, 1, 46)
+    if (%attack.target = $null) { set %attack.target $2 }
+  }
   $covercheck(%attack.target)
   $attack_cmd($nick , %attack.target) 
 }
@@ -888,16 +894,27 @@ on 2:Chat:ACTION uses * * on *: {
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   $set_chr_name($nick) 
-  set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
-  if (%attack.target = $null) { set %attack.target $6 }
+  if ($istok($return_peopleinbattle, $6, 46) = $true) { set %attack.target $6 }
+  else { 
+    set %attack.target $matchtok($return_peopleinbattle, $6, 1, 46)
+    if (%attack.target = $null) { set %attack.target $6 }
+  }
+  if ($6 = me) { set %attack.target $nick } 
   $tech_cmd($nick , $4 , %attack.target, $7) | halt 
 } 
 on 2:Chat:uses * * on *: {
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   $set_chr_name($nick) 
-  set %attack.target $matchtok($return_peopleinbattle, $5, 1, 46)
-  if (%attack.target = $null) { set %attack.target $5 }
+
+  if ($istok($return_peopleinbattle, $5, 46) = $true) { set %attack.target $5 }
+  else { 
+    set %attack.target $matchtok($return_peopleinbattle, $5, 1, 46)
+    if (%attack.target = $null) { set %attack.target $5 }
+  }
+
+  if ($5 = me) { set %attack.target $nick } 
+
   $tech_cmd($nick , $3 , %attack.target, $6) | halt 
 } 
 on 2:Chat:ACTION sings *: {
@@ -927,8 +944,15 @@ ON 2:Chat:!use*: {  unset %real.name | unset %enemy
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { $dcc.private.message($nick, $readini(translation.dat, battle, NotAllowedBattleCondition))  | halt }
   if (($person_in_mech($nick) = true) && ($4 = $nick)) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
-  set %attack.target $matchtok($return_peopleinbattle, $4, 1, 46)
-  if (%attack.target = $null) { set %attack.target $4 }
+
+  if ($istok($return_peopleinbattle, $4, 46) = $true) { set %item.target $4 }
+  else { 
+    set %item.target $matchtok($return_peopleinbattle, $4, 1, 46)
+    if (%item.target = $null) { set %item.target $4  }
+  }
+
+  if ($4 = me) { set %item.target $nick } 
+
   $covercheck(%attack.target)
   $uses_item($nick, $2, $3, %attack.target)
 }
