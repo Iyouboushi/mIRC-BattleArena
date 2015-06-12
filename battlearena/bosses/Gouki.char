@@ -108,7 +108,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=GoukiGloves
-GoukiGloves=$calc(10 + $current.battlestreak)
+GoukiGloves=$calc(1 + $current.battlestreak)
 
 [Skills]
 royalguard.on=on
@@ -133,14 +133,14 @@ Resist-Disarm=100
 
 
 [Techniques]
-GouHadouken=$calc(10 + $current.battlestreak)
-ZankuuHadouken=$calc(10 + $current.battlestreak)
-GouShouryuken=$calc(10 + $current.battlestreak)
-TatsumakiZankuuKyaku=$calc(10 + $current.battlestreak)
-MessatsuGouHadou=$iif($current.battlestreak < 100, 0, $calc(10 + $current.battlestreak))
-MessatsuGouShouryuu=$iif($current.battlestreak < 100, 0, $calc(10 + $current.battlestreak))
-TenmaGouZankuu=$iif($current.battlestreak < 100, 0, $calc(10 + $current.battlestreak))
-ShunGokuSatsu=$iif($current.battlestreak < 200, 0, $calc(10 + $current.battlestreak))
+GouHadouken=$calc(1 + $current.battlestreak)
+ZankuuHadouken=$calc(1 + $current.battlestreak)
+GouShouryuken=$calc(1 + $current.battlestreak)
+TatsumakiZankuuKyaku=$calc(1 + $current.battlestreak)
+MessatsuGouHadou=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+MessatsuGouShouryuu=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+TenmaGouZankuu=$iif($current.battlestreak < 100, 0, $calc(1 + $current.battlestreak))
+ShunGokuSatsu=$iif($current.battlestreak < 200, 0, $calc(1 + $current.battlestreak))
 
 [Item_Amount]
 
@@ -186,4 +186,5 @@ RapidShot=50
 RainStorm=50
 AsuranFists=50
 Peacemaker=50
-Ultima=20
+Ultima=25
+Resolution=50
