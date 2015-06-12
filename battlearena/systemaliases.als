@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/02/15
+;;;; Last updated: 06/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2882,7 +2882,7 @@ clear_variables2 {
   unset %original.ignition.name | unset %holy.aura.user | unset %max.hp.restore | unset %max.tp.restore 
   unset %passive.skills.list2 | unset %prize.list | unset %inflict.meleewpn | unset %weapon.list1 | unset %duplicate.ips
   unset %attacker.level | unset %defender.level | unset %damage.display.color | unset %current.playerstyle
-  unset %number.of monsters.needed
+  unset %number.of monsters.needed | unset %battle.level.cap
   unset %monster.info.streak.max | unset %monster.info.streak
 }
 
@@ -3301,7 +3301,7 @@ orb.adjust {
 
   if ((%moon.phase = Blood Moon) && (%winning.streak > 50)) { inc %orb.tier 1 }
 
-  if (%orb.tier = -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .20)),0) }
+  if (%orb.tier = -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .18)),0) }
   if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .35)),0) }
   if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .40)),0) }
   if (%orb.tier = 1) { return }
