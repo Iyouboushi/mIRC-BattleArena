@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 06/03/15
+;;;; Last updated: 06/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -135,8 +135,8 @@ alias uses_item {
   unset %item.target
   var %item.type $readini($dbfile(items.db), $2, type)
 
-  if ((((((%item.type != summon) && (%item.type != key) && (%item.type != shopreset) && (%item.type != food) && (%item.type != trust) && (%item.type != portal)))))) {
-    if (($3 != on) || ($3 = $null)) {   $display.message($readini(translation.dat, errors, ItemUseCommandError), private) | halt }
+  if (((((((%item.type != summon) && (%item.type != key) && (%item.type != shopreset) && (%item.type != food) && (%item.type != trust) && (%item.type != increaseWeaponLevel) && (%item.type != portal))))))) {
+    if (($3 != on) || ($3 = $null)) {  $display.message($readini(translation.dat, errors, ItemUseCommandError), private) | halt }
     if ($4 = me) {  $display.message($1 $readini(translation.dat, errors, MustSpecifyName), private) | halt }
     if ($readini($char($4), battle, status) = dead) { $display.message($readini(translation.dat, errors, CannotUseItemOnDead), private) | halt }
     $checkchar($4) 
@@ -155,6 +155,14 @@ alias uses_item {
     if ($4 = $null) { $item.food($1, $1, $2) }
     else {  $item.food($1, $4, $2) }
     $decrease_item($1, $2) | halt 
+  }
+
+  if (%item.type = increaseWeaponLevel) { $set_chr_name($1) 
+    if ($4 = $null) { $display.message($readini(translation.dat, errors, MustSpecifyWeaponname), private) | halt }
+    if (($readini($char($1), weapons, $4) = $null) || ($readini($char($1), weapons, $4) = 0)) { $display.message($readini(translation.dat, errors, MustSpecifyWeaponname), private) | halt }
+
+    $item.increasewpnlvl($1, $4, $2) 
+    $decrease_item($1, $2) | halt
   }
 
   if (%item.type = portal) {
@@ -353,6 +361,25 @@ alias decrease_item {
   dec %check.item 1 
   writeini $char($1) item_amount $2 %check.item
   unset %check.item
+}
+
+alias item.increasewpnlvl {
+  ; $1 = person using the item
+  ; $2 = weapon name
+  ; $3 = item name
+
+  var %current.weapon.level $readini($char($1), weapons, $2)
+  var %weapon.increase.amount $readini($dbfile(items.db), $3, IncreaseAmount)
+  if (%weapon.increase.amount = $null) { var %weapon.increase.amount 1 }
+
+  inc %current.weapon.level %weapon.increase.amount
+  if (%current.weapon.level > 500) {  $display.message($readini(translation.dat, errors, Can'tLevelWeaponOver500),private) | halt }
+
+  writeini $char($1) weapons $2 %current.weapon.level
+
+  $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global)
+  $display.message($readini(translation.dat, system, WeaponLevelIncreasedItem), global)
+
 }
 
 alias item.summon {
