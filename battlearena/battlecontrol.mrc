@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/02/15
+;;;; Last updated: 06/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -409,7 +409,11 @@ alias startnormal {
       if ($return.systemsetting(showCustomBattleMessages) != true) { $display.message($readini(translation.dat, Battle, BattleOpen), global)  }
       if ($return.systemsetting(showCustomBattleMessages) = true) {  $display.message($readini(translation.dat, Battle, BattleOpenOrbFountain), global) }
     }
-    if (%start.battle.type = pvp) { set %mode.pvp on | $display.message($readini(translation.dat, Battle, BattleOpenPVP), global) }
+    if (%start.battle.type = pvp) { set %mode.pvp on 
+
+      if ($2 isnum) { set %battle.level.cap $2 | $display.message($readini(translation.dat, Battle, BattleOpenPVPLevelCap), global) }
+      else { $display.message($readini(translation.dat, Battle, BattleOpenPVP), global) }
+    }
     if (%start.battle.type = gauntlet) { set %battle.type monster | set %mode.gauntlet on | set %nosouls true | set %mode.gauntlet.wave 1 | $display.message($readini(translation.dat, Battle, BattleOpenGauntlet), global)  }
     if (%start.battle.type = manual) { set %battle.type manual | $display.message($readini(translation.dat, Battle, BattleOpenManual), global)  }
     if (%start.battle.type = mimic) { set %battle.type mimic | $display.message($readini(translation.dat, Battle, BattleOpenMimic), global) }
@@ -565,7 +569,7 @@ alias enter {
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { 
 
     if ($return_winningstreak >= 100) { 
-      if (%battle.type = defendoutpost) {    var %battle.level.cap $return.levelcapsetting(DefendOutpost) }
+      if (%battle.type = defendoutpost) {  var %battle.level.cap $return.levelcapsetting(DefendOutpost) }
       if (%battle.type = assault) { var %battle.level.cap $return.levelcapsetting(Assault) }
 
       if (%battle.level.cap = null) { var %battle.level.cap 105 } 
@@ -577,6 +581,10 @@ alias enter {
         $display.message(4 $+ %real.name has been synced to level $calc(5 + $return_winningstreak) for this battle, battle)
       }
     }
+  }
+
+  if ((%mode.pvp = on) && (%battle.level.cap != $null)) {
+    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
   ; Check for the Warbound achievement
