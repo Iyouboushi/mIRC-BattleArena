@@ -231,6 +231,7 @@ GainedEnhancementPoint=$chr(3) $+ 7 $+ You have gained 1 enhancement point bri
 SpiritOfHeroSync=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low for this arena level. $get_chr_name($1) has been infused with the2 Spirit of the Hero4 buff. $get_chr_name($1) $+ 's level is now set temporarily to2 $calc($return_winningstreak - 3)
 ShopExchangeNotes=$chr(3) $+ 2 $+ You exchange %notes.needed allied notes for %currency.symbol %dollarstogive double dollars
 ShopExchangeDoubleDollars=$chr(3) $+ 2 $+ You exchange %currency.symbol %dollars.needed double dollars for %notestogive allied notes
+WeaponLevelIncreasedItem=$chr(3) $+ 2 $+ $get_chr_name($1) $+ 's $2 is now level %current.weapon.level
 
 ; Bot Admin Toggle Messages
 AutomatedBattleOn=$chr(3) $+ 4 $+ The Automated Battle System has been turned on.
@@ -524,7 +525,8 @@ CloneCannotUseSkill=$chr(3) $+ 4 $+ Error: This skill cannot be used by the sh
 PlayerAccessCmdsOff=$chr(3) $+ 4 $+ Error: Player Access commands have been disabled.
 PlayerAccessOffDueToLogin=$chr(3) $+ 4 $+ Error: $1 has not logged in for over a week and is no longer able to be controlled by other players.
 Can'tUseOtherPlayersPortals=$chr(3) $+ 4 $+ Error: You can't use other player's portal items.
-
+MustSpecifyWeaponname=$chr(3) $+ 4 $+ Error: %real.name must specify a valid weapon name to use this item on.
+Can'tLevelWeaponOver500=$chr(3) $+ 4 $+ Error: using this item will push the level of the $2 over the weapon level cap of 500.
 
 =======================
 Battle Related Messages
@@ -536,6 +538,7 @@ BattleOpen=$chr(3) $+ 4 $+ A dimensional portal has been detected.  The enemy fo
 BattleOpenBoss=$chr(3) $+ 4 $+ A powerful dimensional rift has been detected. The enemy force will arrive in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
 BattleOpenOrbFountain=$chr(3) $+ 4 $+ The Allied Forces have detected an orb fountain! The party will be sent to destroy it in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
 BattleOpenPVP=$chr(3) $+ 4 $+ The Allied Forces have opened the coliseum to allow players to fight one another. The PVP battle will begin in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
+BattleOpenPVPLevelCap=$chr(3) $+ 4 $+ The Allied Forces have opened the coliseum to allow players to fight one another at level cap %battle.level.cap $+ . The PVP battle will begin in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
 BattleOpenManual=$chr(3) $+ 4 $+ A Manual battle has been started. Bot Admins will need to add monsters, npcs and bosses individually. The battle will begin in $duration(%time.to.enter) $+ . Players can type !enter if you wish to join the battle!  
 BattleOpenMimic=$chr(3) $+ 4 $+ An evil treasure chest Mimic is ready to fight The battle will begin in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle!  
 BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone willing to brave the gauntlet has $duration(%time.to.enter) to enter before the doors close. Type !enter if you wish to join the battle!  
