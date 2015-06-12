@@ -2517,6 +2517,7 @@ alias skill.provoke { $set_chr_name($1)
   writeini $char($2) skills provoke.target $1
 
   ; Display the desc. 
+  set %enemy $get_chr_name($2) 
   if ($readini($char($1), descriptions, provoke) = $null) { $set_chr_name($2) | set %skill.description makes a series of gestures towards %real.name in order to provoke $gender2($2) }
   else { set %skill.description $readini($char($1), descriptions, provoke) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
