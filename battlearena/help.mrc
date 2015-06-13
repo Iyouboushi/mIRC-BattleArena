@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 05/10/15
+;;;; Last updated: 06/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -175,6 +175,9 @@ alias view-info {
     }
     unset %info.fullbringmsg
   }
+
+  if (%info.type = IncreaseWeaponLevel) { $display.private.message([4Name12 $3 $+ ] [4Type12 Increase Weapon Level] [4Increase Amount12 $readini($dbfile(items.db), $3, IncreaseAmount) $+ ] %exclusive)  }
+
   if (%info.type = portal) {
     if ($readini($dbfile(items.db), $3, PortalLevel) != $null) { var %levelcap [4Level Cap12 $readini($dbfile(items.db), $3, PortalLevel) $+ ] }
     $display.private.message([4Name12 $3 $+ ] [4Type12 Portal $+ ] [4Lair12 $readini($dbfile(items.db), $3, Battlefield) $+ ] %exclusive %levelcap [4Description12 This item will teleport all players on the battlefield through a portal to the lair of a strong boss! $+ ]) 
