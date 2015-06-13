@@ -1300,6 +1300,7 @@ Battle Arena Bot VERSIONS
 - Changed the code for checking for an item drop so that it's centralized in one spot instead of spread out across multiple.
 - Changed Player Access commands so that players must have logged in within the last week in order to be controlled.
 - Changed PVP battles so that bot admins can specify a level cap for players to enter under. Use !startbat pvp # to set the cap
+- Changed the skill Speed to consume 10-25% of a user's HP based on the skill's level
 - Fixed a bug with orb rewards for players who are far under the streak and not using SotH
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
