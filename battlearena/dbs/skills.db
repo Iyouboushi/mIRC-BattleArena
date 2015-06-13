@@ -163,7 +163,7 @@ ACTIVE SKILLS
 Cost=250
 Type=Active
 Max=100
-Info=This skill increases the user's speed when performed.  Increased levels increases the amount of speed when used.
+Info=This skill increases the user's speed when performed.  Increased levels increases the amount of speed when used. Using this skill will consume 10-25% HP based on the skill's level.
 
 [ElementalSeal]
 Cost=425

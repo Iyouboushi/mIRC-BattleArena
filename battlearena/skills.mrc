@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 06/02/15
+;;;; Last updated: 06/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -120,6 +120,15 @@ alias skill.speedup { $set_chr_name($1)
   $check_for_battle($1)
 
   if ($readini($char($1), skills, speed.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle., private)  | halt }
+
+  if ($readini($char($1), info, flag) = $null) { 
+    ; Does the char have enough HP to perform it?
+    var %hp.cost.percent $calc(.25 * $readini($char($1), skills, speed))
+    if (%hp.cost.percent < 10) { var %hp.cost.percent 10 }
+    var %hp.cost $round($return_percentofvalue($readini($char($1), basestats, hp), %hp.cost.percent),0)
+    if (%hp.cost >= $readini($char($1), battle, hp)) { $display.message($readini(translation.dat, errors, NotEnoughHPForSkill) ,private) | halt }
+    else {  writeini $char($1) battle hp $calc($readini($char($1), battle, hp) - %hp.cost)  }
+  }
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, speed) = $null) { set %skill.description forces $gender($1) body to speed up! }
