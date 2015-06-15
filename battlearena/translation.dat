@@ -527,6 +527,8 @@ PlayerAccessOffDueToLogin=$chr(3) $+ 4 $+ Error: $1 has not logged in for over
 Can'tUseOtherPlayersPortals=$chr(3) $+ 4 $+ Error: You can't use other player's portal items.
 MustSpecifyWeaponname=$chr(3) $+ 4 $+ Error: %real.name must specify a valid weapon name to use this item on.
 Can'tLevelWeaponOver500=$chr(3) $+ 4 $+ Error: using this item will push the level of the $2 over the weapon level cap of 500.
+NoPortalsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the use of portals at this time. 
+
 
 =======================
 Battle Related Messages

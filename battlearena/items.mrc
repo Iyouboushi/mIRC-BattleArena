@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 06/11/15
+;;;; Last updated: 06/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -168,8 +168,8 @@ alias uses_item {
   if (%item.type = portal) {
     if (%battleis = on) { $check_for_battle($1) }
     if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), private) | halt }
-
     if (%portal.bonus = true) { $display.message($readini(translation.dat, errors, AlreadyInPortal), private) | halt }
+    if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoPortalsDuringShenron), private) | halt }
 
     if (%mode.gauntlet = on) { $display.message($readini(translation.dat, errors, PortalItemNotWorking) , private) | halt  }  
     if (%battle.type = boss) { $display.message($readini(translation.dat, errors, PortalItemNotWorking) , private) | halt  }  
