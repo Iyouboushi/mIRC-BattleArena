@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 06/14/15
+;;;; Last updated: 06/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -442,7 +442,7 @@ on 50:TEXT:!time to enter *:*:{
 
 ; Bot Admins can toggle which battle formulas are used.
 on 50:TEXT:!toggle damage formula*:*:{   
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) { 
+  if (($return.systemsetting = 1) || ($return.systemsetting = null)) { 
     writeini system.dat system BattleDamageFormula 2
     $display.message($readini(translation.dat, system, BattleFormula2), global)
     halt
