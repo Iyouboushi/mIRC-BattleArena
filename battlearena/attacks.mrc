@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 06/03/15
+;;;; Last updated: 06/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -180,7 +180,10 @@ alias calculate_damage_weapon {
   ; $4 = a special flag for mugger's belt.
 
   if ($readini($char($1), info, flag) = monster) { $formula.meleedmg.monster($1, $2, $3, $4) }
-  else { $formula.meleedmg.player($1, $2, $3, $4) }
+  else { 
+    if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.meleedmg.player.formula2($1, $2, $3, $4) }
+    else { $formula.meleedmg.player($1, $2, $3, $4) }
+  }
 }
 
 

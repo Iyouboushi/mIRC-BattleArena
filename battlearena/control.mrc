@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 06/02/15
+;;;; Last updated: 06/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -438,6 +438,20 @@ on 50:TEXT:!time to enter *:*:{
     $display.message($readini(translation.dat, System, ChangeTimeForEnter), global)
   }
   else { $display.message(4You must enter a number for the time,global) | halt }
+}
+
+; Bot Admins can toggle which battle formulas are used.
+on 50:TEXT:!toggle damage formula*:*:{   
+  if ($readini(system.dat, system, BattleDamageFormula) = 1) { 
+    writeini system.dat system BattleDamageFormula 2
+    $display.message($readini(translation.dat, system, BattleFormula2), global)
+    halt
+  }
+  if ($readini(system.dat, system, BattleDamageFormula) = 2) { 
+    writeini system.dat system BattleDamageFormula 1
+    $display.message($readini(translation.dat, system, BattleFormula1), global)
+    halt
+  }
 }
 
 ; Bot admin command for displaying active and zapped player lists.

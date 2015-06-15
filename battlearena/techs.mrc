@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 06/03/15
+;;;; Last updated: 06/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1175,7 +1175,10 @@ alias calculate_damage_techs {
   ; $4 = optional flag ("heal" or "aoe")
 
   if ($readini($char($1), info, flag) = monster) { $formula.techdmg.monster($1, $2, $3, $4) }
-  else { $formula.techdmg.player($1, $2, $3, $4) }
+  else { 
+    if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.techdmg.player.formula2($1, $2, $3, $4)  }
+    else { $formula.techdmg.player($1, $2, $3, $4) }
+  }
 
   unset %tech.howmany.hits |  unset %enemy.defense | set %multihit.message.on on
   unset %attacker.level | unset %defender.level | unset %tech.count | unset %tech.power | unset %base.weapon

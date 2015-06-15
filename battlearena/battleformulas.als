@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 05/25/15
+;;;; Last updated: 06/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -361,6 +361,403 @@ demon.wall.boost {
 ; for players and NPCs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 formula.meleedmg.player {
+  ; $1 = %user
+  ; $2 = weapon equipped
+  ; $3 = target / %enemy 
+  ; $4 = a special flag for mugger's belt.
+
+  unset %absorb
+  set %attack.damage 0
+  var %random.attack.damage.increase $rand(1,10)
+
+  ; First things first, let's find out the base power.
+  var %base.power $readini(weapons.db, $2, basepower)
+
+  if (%base.power = $null) { var %base.power 1 }
+
+  set %base.stat $readini($char($1), battle, str)
+  $strength_down_check($1)
+
+  if (%base.stat > 999) {  
+    if ($readini($char($1), info, flag) = $null) {  set %base.stat $round($calc(999 + %base.stat / 10),0) }
+    if ($readini($char($1), info, flag) != $null) { set %base.stat $round($calc(999 + %base.stat / 5),0) }
+  }
+
+  set %true.base.stat %base.stat
+
+  var %weapon.base $readini($char($1), weapons, $2)
+  inc %weapon.base $round($calc(%weapon.base * 1.5),0)
+
+  ; If the weapon is a hand to hand, it will now receive a bonus based on your fists level.
+  if ($readini(weapons.db, $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
+
+  inc %weapon.base %base.power
+
+  set %current.accessory $readini($char($3), equipment, accessory) 
+  set %current.accessory.type $readini(items.db, %current.accessory, accessorytype)
+
+  ; Does the user have any mastery of the weapon?
+  $mastery_check($1, $2)
+
+  ; If it's a portal battle this might need to be adjusted to make portal battles easier to balance
+  if (%portal.bonus = true) {
+    if (%weapon.base > $return_winningstreak) { var %weapon.base $return_winningstreak }
+    if (%mastery.bonus > $calc($return_winningstreak + 10)) { var %mastery.bonus $calc($return_winningstreak + 10) }
+  }
+
+  ; Let's add the mastery bonus to the weapon base
+  inc %weapon.base %mastery.bonus
+
+  ; Let's add that to the base power and set it as the attack damage.
+  inc %base.stat %weapon.base
+  inc %attack.damage %base.stat
+
+  ; Let's check for some offensive style enhancements
+  if ($person_in_mech($1) = false) { 
+    $offensive.style.check($1, $2, melee)
+  }
+
+  ;If the element is Light and the target has the ZOMBIE status, then we need to increase the damage
+  if ($readini($char($3), status, zombie) = yes) { 
+    if (%weapon.element = light) {  inc %attack.damage $round($calc(%attack.damage * .110),0) } 
+    if (%weapon.element = fire) {  inc %attack.damage $round($calc(%attack.damage * .110),0) } 
+  } 
+
+  ; Check to see if we have an accessory or augment that enhances the weapon type
+  $melee.weapontype.enhancements($1)
+  unset %weapon.type
+
+  ; Check for Killer Traits
+  $killer.trait.check($1, $3)
+
+  ; Check for MightyStrike
+  if ($person_in_mech($1) = false) { 
+    ; Check for the skill "MightyStrike"
+    if ($mighty_strike_check($1) = true) { 
+      ; Double the attack.
+      %attack.damage = $calc(%attack.damage * 2)
+    }
+
+    ; Check for the "DesperateBlows" skill.
+    if ($desperate_blows_check($1) = true) {
+      var %hp.percent $calc(($readini($char($1), Battle, HP) / $readini($char($1), BaseStats, HP)) *100)
+      if ((%hp.percent >= 10) && (%hp.percent <= 25)) { %attack.damage = $round($calc(%attack.damage * 1.5),0) }
+      if ((%hp.percent > 2) && (%hp.percent < 10)) { %attack.damage = $round($calc(%attack.damage * 2),0) }
+      if ((%hp.percent > 0) && (%hp.percent <= 2)) { %attack.damage = $round($calc(%attack.damage * 2.5),0) }
+    }
+  }
+  ; Let's increase the attack by a random amount.
+  inc %attack.damage %random.attack.damage.increase
+  unset %current.playerstyle | unset %current.playerstyle.level
+
+  if ($person_in_mech($1) = false) { 
+    ;  Check for the miser ring accessory
+
+    if ($accessory.check($1, IncreaseMeleeDamage) = true) {
+      var %redorb.amount $readini($char($1), stuff, redorbs)
+      var %miser-ring.increase $round($calc(%redorb.amount * %accessory.amount),0)
+
+      if (%miser-ring.increase <= 0) { var %miser-ring.increase 1 }
+      if (%miser-ring.increase > 1000) { var %miser-ring.increase 1000 }
+      inc %attack.damage %miser-ring.increase
+      unset %accessory.amount
+    }
+
+    ;  Check for the fool's tablet accessory
+    if ($accessory.check($1, IncreaseMeleeAddPoison) = true) {
+      inc %attack.damage $round($calc(%attack.damage * %accessory.amount),0)
+      unset %accessory.amount
+    }
+  }
+
+  if ($augment.check($1, MeleeBonus) = true) { 
+    set %melee.bonus.augment $calc(%augment.strength * .25)
+    var %augment.power.increase.amount $round($calc(%melee.bonus.augment * %attack.damage),0)
+    inc %attack.damage %augment.power.increase.amount
+    unset %melee.bonus.augment
+  }
+
+  unset %current.accessory.type
+
+  $invincible.check($1, $2, $3)
+  $perfectdefense.check($1, $2, $3)
+  $weapon_parry_check($3, $1, $2)
+  $trickster_dodge_check($3, $1, physical)
+  $royalguard.check($1, $2, $3)
+  $utsusemi.check($1, $2, $3)
+
+  ; Check to see if the melee attack will hurt an ethereal monster
+  $melee.ethereal.check($1, $2, $3)
+
+  unset %statusmessage.display
+  set %status.type.list $readini($dbfile(weapons.db), $2, StatusType)
+
+  if (%status.type.list != $null) { 
+    set %number.of.statuseffects $numtok(%status.type.list, 46) 
+
+    if (%number.of.statuseffects = 1) { $inflict_status($1, $3, %status.type.list) | unset %number.of.statuseffects | unset %status.type.list }
+    if (%number.of.statuseffects > 1) {
+      var %status.value 1
+      while (%status.value <= %number.of.statuseffects) { 
+        set %current.status.effect $gettok(%status.type.list, %status.value, 46)
+        $inflict_status($1, $3, %current.status.effect)
+        inc %status.value 1
+      }  
+      unset %number.of.statuseffects | unset %current.status.effect
+    }
+  }
+  unset %status.type.list
+
+  ; Elementals are strong to melee
+  if ($readini($char($3), monster, type) = elemental) { %attack.damage = $round($calc(%attack.damage - (%attack.damage * .30)),0) } 
+
+  ; Now we're ready to calculate the enemy's defense..  
+  set %enemy.defense $readini($char($3), battle, def)
+
+  $defense_down_check($3)
+  $defense_up_check($3)
+
+  ; Check to see if the weapon has an "IgnoreDefense=" flag.  If so, cut the def down.
+  var %ignore.defense.percent $readini(weapons.db, $2, IgnoreDefense)
+
+  if ($augment.check($1, IgnoreDefense) = true) {   inc %ignore.defense.percent $calc(%augment.strength * 2) }
+
+  if (%ignore.defense.percent > 0) { 
+    var %def.ignored $round($calc(%enemy.defense * (%ignore.defense.percent * .010)),0)
+    dec %enemy.defense %def.ignored
+    if (%enemy.defense <= 0) { set %enemy.defense 1 }
+  }
+
+  if (%enemy.defense <= 0) { set %enemy.defense 1 }
+
+  ; Check for modifiers
+  var %starting.damage %attack.damage
+
+  var %weapon.element $readini($dbfile(weapons.db), $2, element)
+  if ((%weapon.element != $null) && (%weapon.element != none)) {
+    $modifer_adjust($3, %weapon.element)
+  }
+
+  ; Check for weapon type weaknesses.
+  set %weapon.type $readini($dbfile(weapons.db), $2, type)
+  $modifer_adjust($3, %weapon.type)
+
+  ; Check for the weapon name
+  $modifer_adjust($3, $2)
+
+  ; Elementals are strong to melee
+  if ($readini($char($3), monster, type) = elemental) { %attack.damage = $round($calc(%attack.damage - (%attack.damage * .30)),0) } 
+
+  if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
+  if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
+  if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
+
+  var %flag $readini($char($1), info, flag) 
+
+  if (enhance-melee isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
+
+
+  var %flag $readini($char($1), info, flag) 
+
+  $calculate_pDIF($1, $3, melee)
+
+  if (%flag != $null) { 
+    if ($get.level($1) >= $get.level($3)) {   set %attack.damage $round($calc(%attack.damage / 3.5),0)  }
+    if ($get.level($1) < $get.level($3)) {   set %attack.damage $round($calc(%attack.damage / 4.2),0)  }
+  }
+  if (%flag = $null) {
+    if ($get.level($1) >= $get.level($3)) {   set %attack.damage $round($calc(%attack.damage / 2.8),0)  }
+    if ($get.level($1) < $get.level($3)) {   set %attack.damage $round($calc(%attack.damage / 3.9),0)  }
+  }
+
+  %attack.damage = $round($calc(%attack.damage  * %pDIF),0)
+  unset %pdif 
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;; ADJUST THE TOTAL DAMAGE.
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  if ((%flag = $null) || (%flag = npc)) {
+    if ($readini(system.dat, system, IgnoreDmgCap) != true) { 
+      if (%attack.damage > 10000) {
+        set %temp.damage $calc(%attack.damage / 100) 
+        set %attack.damage $calc(10000 + %temp.damage)
+        unset %temp.damage
+        if (%attack.damage >= 50000) { set %attack.damage $rand(45000,47000) }
+      }
+    }
+
+    if (%attack.damage <= 1) {
+      var %base.weapon $readini(weapons.db, $2, BasePower)
+      var %str.increase.amount $round($calc(%true.base.stat * .10),0)
+      inc %base.weapon %str.increase.amount
+      var %min.damage %base.weapon
+      set %attack.damage $readini(weapons.db, $2, BasePower)
+
+      var %attacker.level $get.level($1)
+      var %defender.level $get.level($3)
+      var %level.difference $calc(%defender.level - %attacker.level)
+
+      if (%level.difference >= 300) { 
+        set %attack.damage 1
+        set %min.damage $round($calc(%min.damage / 2),0)
+      }
+
+      set %attack.damage $rand(%min.damage, %attack.damage)
+    }
+
+    inc %attack.damage $rand(1,10)
+  }
+
+  unset %true.base.stat
+
+  if ((%attack.damage > 2000) && ($readini($char($1), info, flag) = monster)) { 
+    if ($readini(system.dat, system, IgnoreDmgCap) != true) { 
+      if (%battle.rage.darkness != on) { set %attack.damage $rand(1000,2100) }
+    }
+  }
+
+  if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
+  unset %enemy.defense | unset %level.ratio
+
+  ; Check for the Guardian style
+  $guardian_style_check($3)
+
+  ; Check for metal defense.  If found, set the damage to 1.
+  $metal_defense_check($3, $1)
+
+  ; In this bot we don't want the attack to ever be lower than 1 except for rare instances...  
+  if (%guard.message = $null) {
+    if (%attack.damage <= 0) { set %attack.damage 1 }
+  }
+
+  ; Check for a shield block.
+  $shield_block_check($3, $1, $2)
+
+  ; In this bot we don't want the attack to ever be lower than 1 except for rare instances...  
+  if (%guard.message = $null) {
+    if (%attack.damage <= 0) { set %attack.damage 1 }
+  }
+  ; Check for a critical hit.
+  var %critical.hit.chance $rand(1,100)
+
+  ; check for the Impetus Passive Skill
+  var %impetus.check $readini($char($1), skills, Impetus)
+  if (%impetus.check != $null) { inc %critical.hit.chance %impetus.check }
+
+  ; If the user is using a h2h weapon, increase the critical hit chance by 1.
+  if ($readini($dbfile(weapons.db), $2, type) = HandToHand) { inc %critical.hit.chance 1 }
+
+  if ($accessory.check($1, IncreaseCriticalHits) = true) {
+    if (%accessory.amount = 0) { var %accessory.amount 1 }
+    inc %critical.hit.chance %accessory.amount
+    unset %accessory.amount
+  }
+
+  unset %player.accessory | unset %accessory.type | unset %accessory.amount
+
+  if ($augment.check($1, EnhanceCriticalHits) = true) { inc %critical.hit.chance %augment.strength }
+
+  if (%critical.hit.chance >= 97) {
+    $set_chr_name($1) |  $display.system.message($readini(translation.dat, battle, LandsACriticalHit), battle)
+    set %attack.damage $round($calc(%attack.damage * 1.5),0)
+  }
+
+  ; If a player is using a monster weapon, which is considered cheating, set the damage to 0.
+  if (($readini($dbfile(weapons.db), $2, cost) = 0) && ($readini($dbfile(weapons.db), $2, SpecialWeapon) != true)) {
+    var %current.flag $readini($char($1), info, flag)
+    if (%current.flag = $null) {  set %attack.damage 0 }
+  }
+
+  if ($accessory.check($1, CurseAddDrain) = true) { unset %accessory.amount | set %absorb absorb }
+  if ($augment.check($1, Drain) = true) {  set %absorb absorb }
+
+  unset %current.accessory | unset %current.accessory.type | writeini $char($1) skills mightystrike.on off
+
+  if ($person_in_mech($1) = false) { writeini $char($1) skills mightystrike.on off }
+
+  ; Is the weapon a multi-hit weapon?  
+  set %weapon.howmany.hits $readini(weapons.db, $2, hits)
+
+  if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
+
+  ; Are we dual-wielding?  If so, increase the hits by the # of hits of the second weapon.
+  if ($readini($char($1), weapons, equippedLeft) != $null) {
+    var %left.hits $readini($dbfile(weapons.db), $readini($char($1), weapons, equippedLeft), hits)
+    if (%left.hits = $null) { var %left.hits 1 }
+    inc %weapon.howmany.hits %left.hits 
+  }
+
+  if ($1 = demon_wall) {  $demon.wall.boost($1) }
+
+  $first_round_dmg_chk($1, $3)
+
+  ; check for melee counter
+  $counter_melee($1, $3, $2)
+
+  ; Check for countering an attack using a shield
+  $shield_reflect_melee($1, $3, $2)
+
+  ; Check for the weapon bash skill
+  $weapon_bash_check($1, $3)
+
+  var %current.element $readini($dbfile(weapons.db), $2, element)
+  if ((%current.element != $null) && (%tech.element != none)) {
+    set %target.element.null $readini($char($3), modifiers, %current.element)
+    if (%target.element.null <= 0) { $set_chr_name($3)
+      set %guard.message $readini(translation.dat, battle, ImmuneToElement) 
+      set %attack.damage 0
+    }
+    unset %target.element.null
+  }
+
+  var %weapon.type $readini($dbfile(weapons.db), $2, type)
+  if (%weapon.type != $null) {
+    set %target.weapon.null $readini($char($3), modifiers, %weapon.type)
+    if (%target.weapon.null <= 0) { $set_chr_name($3)
+      set %guard.message $readini(translation.dat, battle, ImmuneToWeaponType) 
+      set %attack.damage 0 
+    }
+    unset %target.weapon.null
+  }
+
+  ; If the target has Protect on, it will cut  melee damage in half.
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+
+  ; If we came here via mugger's belt, we need to cut the damage in half.
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+
+  ; Check for the En-Spell Buff
+  if ($readini($char($1), status, en-spell) != none) { 
+    $magic.effect.check($1, $3, nothing, en-spell) 
+    $modifer_adjust($3, $readini($char($1), status, en-spell))
+  }
+
+  ; Turn off the True Strike skill
+  writeini $char($1) skills truestrike.on off
+
+  $guardianmon.check($1, $2, $3)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;; CHECK FOR MULTI-HITS
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  if (%attack.damage = 0) { return }
+
+  if (%weapon.howmany.hits = $null) || (%weapon.howmany.hits <= 0) { set %weapon.howmany.hits 1
+    if ((%counterattack != on) && ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe)) { $double.attack.check($1, $3, $rand(1,100)) }
+  }
+  if (%weapon.howmany.hits = 1) {  
+    if ((%counterattack != on) && ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe)) { $double.attack.check($1, $3, $rand(1,100)) }
+  }
+
+  if (%weapon.howmany.hits = 2) {  $double.attack.check($1, $3, 100) }
+  if (%weapon.howmany.hits = 3) { $triple.attack.check($1, $3, 100) }
+  if (%weapon.howmany.hits = 4) { set %weapon.howmany.hits 4 | $fourhit.attack.check($1, $3, 100) }
+  if (%weapon.howmany.hits = 5) { set %weapon.howmany.hits 5 | $fivehit.attack.check($1, $3, 100) }
+  if (%weapon.howmany.hits >= 6) { set %weapon.howmany.hits 6 | $sixhit.attack.check($1, $3, 100) }
+}
+
+formula.meleedmg.player.formula2 {
   ; $1 = %user
   ; $2 = weapon equipped
   ; $3 = target / %enemy 
@@ -1522,6 +1919,337 @@ formula.techdmg.monster {
 ; for players and npcs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 formula.techdmg.player {
+  ; $1 = user
+  ; $2 = technique used
+  ; $3 = target
+  ; $4 = optional flag ("heal")
+
+  if (%attack.damage = $null) { set %attack.damage 0 }
+
+  ; First things first, let's find out the base power.
+  set %base.stat.needed $readini(techniques.db, $2, stat)
+  if (%base.stat.needed = $null) { set %base.stat.needed int }
+
+  set %base.stat $readini($char($1), battle, %base.stat.needed)
+
+  if (%base.stat = str) { $strength_down_check($1) }
+  if (%base.stat = int) {  $int_down_check($1) }
+
+  set %true.base.stat  %base.stat
+
+  if (%base.stat > 999) {  
+    if ($readini($char($1), info, flag) = $null) {  set %base.stat $round($calc(999 + %base.stat / 10),0) }
+    if ($readini($char($1), info, flag) != $null) { set %base.stat $round($calc(999 + %base.stat / 5),0) }
+  }
+
+  var %tech.base $readini(techniques.db, p, $2, BasePower)
+  var %user.tech.level $readini($char($1), Techniques, $2)
+
+  inc %tech.base $round($calc(%user.tech.level * 1.6),0)
+
+  set %ignition.name $readini($char($1), status, ignition.name)
+  set %ignition.techs $readini($dbfile(ignitions.db), %ignition.name, techs)
+  if ($istok(%ignition.techs,$2,46) = $true) { var %user.tech.level 50 }
+  unset %ignition.name | unset %ignition.techs
+
+  ; Let's add in the base power of the weapon used..
+  set %weapon.used $readini($char($1), weapons, equipped)
+  set %base.power.wpn $readini(weapons.db, %weapon.used, basepower)
+
+  if (%base.power.wpn = $null) { var %base.power 1 }
+
+  set %weapon.base $readini($char($1), weapons, %weapon.used)
+
+
+  unset %weapon.used
+
+  ; Does the user have a mastery in the weapon?  We can add a bonus as well.
+  $mastery_check($1, $readini($char($1),weapons,equipped))
+
+  ; If it's a portal battle this might need to be adjusted to make portal battles easier to balance
+  if (%portal.bonus = true) {
+    if (%weapon.base > $return_winningstreak) { var %weapon.base $return_winningstreak }
+    if (%tech.base > $return_winningstreak) { var %tech.base $return_winningstreak }
+    if (%mastery.bonus > $calc($return_winningstreak + 10)) { var %mastery.bonus $calc($return_winningstreak + 10) }
+  }
+
+  inc %base.power.wpn $round($calc(%weapon.base * 1.5),0)
+  inc %base.power.wpn $round($calc(%mastery.bonus / 1.5),0)
+  inc %tech.base %base.power.wpn
+
+  inc %tech.base %user.tech.level
+  inc %base.stat %tech.base
+
+  inc %attack.damage %base.stat
+
+  if ($person_in_mech($1) = false) {
+    ; Let's check for some offensive style enhancements
+    $offensive.style.check($1, $2, tech)
+  }
+
+  ; Is the tech magic?  If so, we need to add some more stuff to it.
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
+
+    $calculate_damage_magic($1, $2, $3)
+    if ($readini($char($3), info, ImmuneToMagic) = true) {  $set_chr_name($3) | set %guard.message $readini(translation.dat, battle, ImmuneToMagic) }
+  }
+
+  ; Check for TechBonus augment for non-magic techs
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) { 
+    if ($augment.check($1, TechBonus) = true) { 
+      set %tech.bonus.augment $calc(%augment.strength * .25)
+      var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
+      inc %attack.damage %augment.power.increase.amount
+      unset %tech.bonus.augment
+    }
+  }
+
+  ; Let's increase the attack by a random amount.
+  inc %attack.damage $rand(1,10)
+
+  ;If the element is Light/fire and the target has the ZOMBIE status, then we need to increase the damage
+  if ($readini($char($3), status, zombie) = yes) { 
+    if ($istok(light.fire,$readini($dbfile(techniques.db), $2, element),46) = $true) { inc %attack.damage $round($calc(%attack.damage * .110),0)
+    } 
+  }
+
+
+  ; If a player is using a monster weapon, which is considered cheating, set the damage to 0.
+  if ($person_in_mech($1) = false) {  set %current.weapon.used $readini($char($1), weapons, equipped) }
+  if ($person_in_mech($1) = true) { set %current.weapon.used $readini($char($1), mech, EquippedWeapon) }
+
+  if (($readini($dbfile(weapons.db), %current.weapon.used, cost) = 0) && ($readini($dbfile(weapons.db), %current.weapon.used, specialweapon) != true)) {
+    var %current.flag $readini($char($1), info, flag)
+    if (%current.flag = $null) {  set %attack.damage 0 }
+  }
+  unset %current.weapon.used | unset %base.power.wpn
+
+  var %tech.type $readini($dbfile(techniques.db), $2, type)
+  if ((%tech.type = heal-aoe) || (%tech.type = heal)) { return }
+
+  ; Now we're ready to calculate the enemy's defense.
+  set %enemy.defense $readini($char($3), battle, def)
+
+  ; Because it's a tech, the enemy's int will play a small part too.
+  var %int.bonus $round($calc($readini($char($3), battle, int) / 3.5),0)
+  if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
+
+  inc %enemy.defense %int.bonus
+
+  ; Now we're ready to calculate the enemy's defense.
+  if ($readini($dbfile(techniques.db), $2, stat) = str) {  
+    set %enemy.defense $readini($char($3), battle, def) 
+    if ($readini($char($3), status, defdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
+  }
+  else { 
+    set %enemy.defense $readini($char($3), battle, int) 
+    if ($readini($char($3), status, intdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
+  }
+
+  $defense_up_check($3)
+
+  ; Check to see if the weapon has an "IgnoreDefense=" flag.  If so, cut the def down.
+  var %ignore.defense.percent $readini($dbfile(techniques.db), $2, IgnoreDefense)
+
+  if ($augment.check($1, IgnoreDefense) = true) {   inc %ignore.defense.percent $calc(%augment.strength * 2) }
+
+  if (%ignore.defense.percent > 0) { 
+    var %def.ignored $round($calc(%enemy.defense * (%ignore.defense.percent * .010)),0)
+    dec %enemy.defense %def.ignored
+  }
+
+
+  ; Check for the modifier adjustments.
+  var %tech.element $readini($dbfile(techniques.db), $2, element)
+
+  if ((%tech.element != $null) && (%tech.element != none)) {
+    if ($numtok(%tech.element,46) = 1) { $modifer_adjust($3, %tech.element) }
+    if ($numtok(%tech.element,46) > 1) { 
+      var %element.number 1 
+      while (%element.number <= $numtok(%tech.element,46)) {
+        var %current.tech.element $gettok(%tech.element, %element.number, 46)
+        $modifer_adjust($3, %current.tech.element)
+        inc %element.number 
+      }
+    } 
+  }
+
+  ; Check to see if the target is resistant/weak to the tech itself
+  ; TO DO: change this to $modifier_adjust($3, + $+ $2) <-- waiting until monsters have been adjusted first
+  $modifer_adjust($3, $2)
+
+  ; Check to see if the target is resistant/weak to the weapon itself
+  $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+
+  if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
+  if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
+  if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
+
+  if ($readini($char($3), info, ai_type) = counteronly) { set %attack.damage 0 | return }
+
+  if (enhance-tech isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
+
+  if ($readini(techniques.db, $2, magic) = yes) {  
+    $calculate_pDIF($1, $3, magic)  
+    set %attack.damage $round($calc(%attack.damage / 4.5),0) 
+  }
+  else { 
+    $calculate_pDIF($1, $3, tech) 
+    set %attack.damage $round($calc(%attack.damage / 1.5),0) 
+  }
+
+  %attack.damage = $round($calc(%attack.damage  * %pDIF),0)
+  unset %pdif 
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;; ADJUST THE TOTAL DAMAGE.
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  var %flag $readini($char($1), info, flag)
+
+  if ((%flag = $null) || (%flag = npc)) { 
+    if ($readini(system.dat, system, IgnoreDmgCap) != true) { 
+      if (%attack.damage > 40000)  { 
+        set %temp.damage $round($calc(%attack.damage / 75),0)
+        set %attack.damage $calc(40000 + %temp.damage)
+        unset %temp.damage
+        if (%attack.damage >= 60000) { set %attack.damage $rand(57000,60000) }
+      }
+    }
+
+    if (%attack.damage <= 1) {
+      var %max.damage $round($calc(%true.base.stat / 10),0)
+      set %attack.damage $rand(1, %max.damage)
+    }
+  }
+
+  if ((%attack.damage > 2500) && (%flag = monster)) { 
+    if ($readini(system.dat, system, IgnoreDmgCap) != true) { 
+      if (%battle.rage.darkness != on) { set %attack.damage $rand(1000,2100) }
+    }
+  }
+
+  inc %attack.damage $rand(1,5)
+  unset %true.base.stat
+
+  ; Check for the Guardian style
+  $guardian_style_check($3)
+
+  ; To be fair to players, we'll limit the damage if it has the ability to ignore guardian.
+  if ($augment.check($1, IgnoreGuardian) = true) { 
+    var %user.flag $readini($char($1), info, flag)
+    if ((%user.flag = monster) && (%battle.rage.darkness != on)) { 
+      if ($readini($char($3), info, flag) = $null) {
+        if (%attack.damage > 2500) { set %attack.damage 2000 } 
+      }
+    }
+  }
+
+  ; If this current tech is using the same tech as the previous tech attack, nerf the damage
+  if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+
+  ; AOE nerf check for players
+  if ($readini($char($1), info, flag) = $null) {
+
+    if (%aoe.turn > 1) {
+      var %aoe.nerf.percent $calc(10 * %aoe.turn)
+      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 10 }
+      if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
+      var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
+      var %aoe.nerf.amount $round($calc(%attack.damage * %aoe.nerf.percent),0)
+      dec %attack.damage %aoe.nerf.amount
+    }
+  }
+
+  ; Check for the Metal Defense flag
+  $metal_defense_check($3)
+
+  ; In this bot we don't want the attack to ever be lower than 1 except for rare instances..
+  if (%guard.message = $null) {
+    if (%attack.damage <= 0) { set %attack.damage 1 }
+  }
+
+  unset %base.stat | unset %current.accessory.type | unset %base.stat.needed
+
+  $invincible.check($1, $2, $3)
+  $perfectdefense.check($1, $2, $3)
+  if ($readini($dbfile(techniques.db), $2, canDodge) != false) {  $trickster_dodge_check($3, $1, tech) }
+  $manawall.check($1, $2, $3)
+  $utsusemi.check($1, $2, $3)
+  $tech.ethereal.check($1, $2, $3)
+
+  unset %statusmessage.display
+  set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
+
+  ; Is the tech a multi-hit weapon?  
+  set %tech.howmany.hits $readini($dbfile(techniques.db), $2, hits)
+
+  $first_round_dmg_chk($1, $3)
+
+  var %current.element $readini($dbfile(techniques.db), $2, element)
+  if ((%current.element != $null) && (%tech.element != none)) {
+    set %target.element.null $readini($char($3), modifiers, %current.element)
+    if (%target.element.null <= 0) { $set_chr_name($3)
+      set %guard.message $readini(translation.dat, battle, ImmuneToElement) 
+      set %attack.damage 0 
+
+      ; This is mostly just for gremlins but might be useful for other things down the road.
+      $readini($char($3), modifier_special, %current.element)
+    }
+    unset %target.element.null
+  }
+
+  set %target.tech.null $readini($char($3), modifiers, $2)
+
+  if (%target.tech.null <= 0) { $set_chr_name($3)
+    set %guard.message $readini(translation.dat, battle, ImmuneToTechName) 
+    set %attack.damage 0 
+  }
+  unset %target.element.null
+
+  if ((%guard.message = $null) && (%attack.damage > 0)) {
+    if (%status.type.list != $null) { 
+      set %number.of.statuseffects $numtok(%status.type.list, 46) 
+
+      if (%number.of.statuseffects = 1) { $inflict_status($1, $3, %status.type.list, $2) | unset %number.of.statuseffects | unset %status.type.list }
+      if (%number.of.statuseffects > 1) {
+        var %status.value 1
+        while (%status.value <= %number.of.statuseffects) { 
+          set %current.status.effect $gettok(%status.type.list, %status.value, 46)
+          $inflict_status($1, $3, %current.status.effect, $2)
+          inc %status.value 1
+        }  
+        unset %number.of.statuseffects | unset %current.status.effect
+      }
+    }
+  }
+  unset %status.type.list
+
+  if (%guard.message = $null) {
+    if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
+      $magic.effect.check($1, $3, $2)
+    }
+  }
+
+  ; If the target has Shell on, it will cut magic damage in half.
+  if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
+
+  ; Check for a Guardian Monster
+  $guardianmon.check($1, $2, $3, $4)
+
+  ; Check for multiple hits now.
+  if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
+  if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
+  if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }
+  if (%tech.howmany.hits = 5) { set %tech.howmany.hits 5 | $fivehit.attack.check($1, $3, 100, tech) }
+  if (%tech.howmany.hits = 6) { set %tech.howmany.hits 6 | $sixhit.attack.check($1, $3, 100, tech) }
+  if (%tech.howmany.hits = 7 ) { set %tech.howmany.hits 7 | $sevenhit.attack.check($1, $3, 100, tech) }
+  if (%tech.howmany.hits >= 8 ) { set %tech.howmany.hits 8 | $eighthit.attack.check($1, $3, 100, tech) }
+
+  ; Check to see if we need to increase the proficiency of a technique.
+  $tech.points($1, $2)
+}
+
+formula.techdmg.player.formula2 {
   ; $1 = user
   ; $2 = technique used
   ; $3 = target
@@ -2855,4 +3583,79 @@ formula.techdmg.player.percent {
 
   unset %attacker.level | unset %defender.level | unset %tech.count | unset %tech.power | unset %base.weapon | unset %random
   unset %capamount
+}
+
+
+
+
+calculate_pDIF {
+  ; $1 = attacker
+  ; $2 = defender
+  ; $3 = melee, tech, magic
+
+  %cRatio = $calc(%attack.damage / %enemy.defense)
+
+  var %attacker.level $get.level($1)
+  var %defender.level $get.level($2)
+  var %level.difference $calc(%attacker.level - %defender.level)
+
+  if (%level.difference >= 50) { var %level.difference 50 }
+  if (%level.difference <= -50) { var %level.difference -50 }
+
+  var %cRatio.modifier $calc(0.05 * %level.difference)
+
+  inc %cRatio %cRatio.modifier
+
+  if (%cRatio > 2) { %cRatio = 2 }
+  else { %cRatio = $round(%cRatio, 3) }
+
+  $calculate_maxpDIF
+  $calculate_minpDIF
+
+  set %pDIF.max $round($calc(10 * %maxpDIF),0)
+  set %pDIF.min $round($calc(10 * %minpDIF),0)
+  set %pDIF $rand(%pDIF.min, %pDIF.max)
+
+  %pDIF = $round($calc(%pDIF / 10),3)
+
+  if (%pDIF <= 0) { 
+    if ($isfile($boss($1)) = $true) { %pDIF = .005 }
+    if (%battle.type = boss) { %pDIF = .005 }
+  }
+
+  unset %pDIF.max | unset %pDIF.min | unset %cRatio
+  unset %maxpDIF | unset %minpDIF 
+
+  if ($3 = melee) {
+    if ($mighty_strike_check($1) = true) {
+      if (%pDIF > 0) {  inc %pDIF .8 }
+      if (%pDIF <= 0) { set %pDIF .5 }
+    }
+  }
+
+  if ($3 = magic) {
+    if ($readini($char($1), skills, elementalseal.on) = on) { 
+      if (%pDIF > 0) {  inc %pDIF .8 }
+      if (%pDIF <= 0) { set %pDIF .5 }
+    }
+  }
+
+  if (%enemy.defense = 1) {
+    if (%pDIF > 0) {  inc %pDIF .5 }
+    if (%pDIF <= 0) { set %pDIF .5 }
+  }
+}
+
+calculate_maxPDIF {
+  if (%cRatio <= 0.5) { set %maxpDIF $calc(0.4 + (1.2 * %cRatio)) }
+  if ((%cRatio > 0.5) && (%cRatio <= 0.833)) { set %maxpDIF 1 }
+  if ((%cRatio > 0.833) && (%cRatio <= 2)) { set %maxpDIF $calc(1 + (1.2 * (%cRatio - .833))) }
+}
+
+calculate_minPDIF {
+  if (%cRatio <= 1.25) { set %minpDIF $calc(-.5 + (%cRatio * 1.2)) }
+  if ((%cRatio > 1.25) && (%cRatio <= 1.5)) {  set %minpDIF 1 }
+  if ((%cRatio > 1.5) && (%cRatio <= 2)) { set %minpDIF $calc(-.8 + (1.2 * %cRatio)) }
+
+  if (%minpDIF <= 0) { set %minpDIF 1 }
 }

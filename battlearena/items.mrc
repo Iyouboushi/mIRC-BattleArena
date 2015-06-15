@@ -726,7 +726,7 @@ alias display_Statusdamage_item {
     $display.message(3 $+ %user $+  $readini($dbfile(items.db), $4, desc), battle)
   }
 
-  if ($readini($dbfile(items.db), $2, amount) = 0) {
+  if ($readini($dbfile(items.db), $2, amount) != 0) {
     if (%guard.message = $null) { $display.message(The attack did4 $bytes(%attack.damage,b) damage %style.rating, battle) }
     if (%guard.message != $null) { $display.message(%guard.message, battle) | unset %guard.message }
 
