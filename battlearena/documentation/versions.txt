@@ -1292,7 +1292,9 @@ Battle Arena Bot VERSIONS
 - Added a new system.dat setting: EnableDinosaurs=true/false  If set to false the dinosaur special boss battle won't happen
 - Added a new system.dat flag: AllowPlayerAccessCmds=true/false  If set to false, players won't be able to control others
 - Added the bot admin command: !toggle playerAccessCmnds  -- Will turn player access commands on/off
+- Added the bot admin command: !toggle damage formula -- Will toggle between the two damage formulas
 - Added a new item type: IncreaseWeaponLevel.  This item type can be used to increase a player's weapon level up to 500
+- Added the old version 2.0 damage formula again, slightly modified, and set it as the default formula
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
@@ -1301,6 +1303,7 @@ Battle Arena Bot VERSIONS
 - Changed Player Access commands so that players must have logged in within the last week in order to be controlled.
 - Changed PVP battles so that bot admins can specify a level cap for players to enter under. Use !startbat pvp # to set the cap
 - Changed the skill Speed to consume 10-25% of a user's HP based on the skill's level
+- Changed portal items so that they cannot be used if Shenron's Wish is on.
 - Fixed a bug with orb rewards for players who are far under the streak and not using SotH
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
