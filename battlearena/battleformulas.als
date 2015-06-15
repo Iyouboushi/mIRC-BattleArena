@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 06/14/15
+;;;; Last updated: 06/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -371,7 +371,7 @@ formula.meleedmg.player {
   var %random.attack.damage.increase $rand(1,10)
 
   ; First things first, let's find out the base power.
-  var %base.power $readini(weapons.db, $2, basepower)
+  var %base.power $readini($dbfile(weapons.db), $2, basepower)
 
   if (%base.power = $null) { var %base.power 1 }
 
@@ -389,12 +389,12 @@ formula.meleedmg.player {
   inc %weapon.base $round($calc(%weapon.base * 1.5),0)
 
   ; If the weapon is a hand to hand, it will now receive a bonus based on your fists level.
-  if ($readini(weapons.db, $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
+  if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
 
   inc %weapon.base %base.power
 
   set %current.accessory $readini($char($3), equipment, accessory) 
-  set %current.accessory.type $readini(items.db, %current.accessory, accessorytype)
+  set %current.accessory.type $readini($dbfile(items.db), %current.accessory, accessorytype)
 
   ; Does the user have any mastery of the weapon?
   $mastery_check($1, $2)
@@ -518,7 +518,7 @@ formula.meleedmg.player {
   $defense_up_check($3)
 
   ; Check to see if the weapon has an "IgnoreDefense=" flag.  If so, cut the def down.
-  var %ignore.defense.percent $readini(weapons.db, $2, IgnoreDefense)
+  var %ignore.defense.percent $readini($dbfile(weapons.db), $2, IgnoreDefense)
 
   if ($augment.check($1, IgnoreDefense) = true) {   inc %ignore.defense.percent $calc(%augment.strength * 2) }
 
@@ -588,11 +588,11 @@ formula.meleedmg.player {
     }
 
     if (%attack.damage <= 1) {
-      var %base.weapon $readini(weapons.db, $2, BasePower)
+      var %base.weapon $readini($dbfile(weapons.db), $2, BasePower)
       var %str.increase.amount $round($calc(%true.base.stat * .10),0)
       inc %base.weapon %str.increase.amount
       var %min.damage %base.weapon
-      set %attack.damage $readini(weapons.db, $2, BasePower)
+      set %attack.damage $readini($dbfile(weapons.db), $2, BasePower)
 
       var %attacker.level $get.level($1)
       var %defender.level $get.level($3)
@@ -677,7 +677,7 @@ formula.meleedmg.player {
   if ($person_in_mech($1) = false) { writeini $char($1) skills mightystrike.on off }
 
   ; Is the weapon a multi-hit weapon?  
-  set %weapon.howmany.hits $readini(weapons.db, $2, hits)
+  set %weapon.howmany.hits $readini($dbfile(weapons.db), $2, hits)
 
   if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
 
@@ -1927,7 +1927,7 @@ formula.techdmg.player {
   if (%attack.damage = $null) { set %attack.damage 0 }
 
   ; First things first, let's find out the base power.
-  set %base.stat.needed $readini(techniques.db, $2, stat)
+  set %base.stat.needed $readini($dbfile(techniques.db), $2, stat)
   if (%base.stat.needed = $null) { set %base.stat.needed int }
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
@@ -1942,7 +1942,7 @@ formula.techdmg.player {
     if ($readini($char($1), info, flag) != $null) { set %base.stat $round($calc(999 + %base.stat / 5),0) }
   }
 
-  var %tech.base $readini(techniques.db, p, $2, BasePower)
+  var %tech.base $readini($dbfile(techniques.db), p, $2, BasePower)
   var %user.tech.level $readini($char($1), Techniques, $2)
 
   inc %tech.base $round($calc(%user.tech.level * 1.6),0)
@@ -1954,7 +1954,7 @@ formula.techdmg.player {
 
   ; Let's add in the base power of the weapon used..
   set %weapon.used $readini($char($1), weapons, equipped)
-  set %base.power.wpn $readini(weapons.db, %weapon.used, basepower)
+  set %base.power.wpn $readini($dbfile(weapons.db), %weapon.used, basepower)
 
   if (%base.power.wpn = $null) { var %base.power 1 }
 
@@ -2089,7 +2089,7 @@ formula.techdmg.player {
 
   if (enhance-tech isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
 
-  if ($readini(techniques.db, $2, magic) = yes) {  
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) {  
     $calculate_pDIF($1, $3, magic)  
     set %attack.damage $round($calc(%attack.damage / 4.5),0) 
   }
