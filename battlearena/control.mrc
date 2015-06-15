@@ -442,7 +442,7 @@ on 50:TEXT:!time to enter *:*:{
 
 ; Bot Admins can toggle which battle formulas are used.
 on 50:TEXT:!toggle damage formula*:*:{   
-  if (($return.systemsetting = 1) || ($return.systemsetting = null)) { 
+  if (($return.systemsetting(BattleDamageFormula) = 1) || ($return.systemsetting(BattleDamageFormula) = null)) { 
     writeini system.dat system BattleDamageFormula 2
     $display.message($readini(translation.dat, system, BattleFormula2), global)
     halt
