@@ -1308,5 +1308,6 @@ Battle Arena Bot VERSIONS
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
 - Fixed an issue with %enemy in a provoke skill description not showing the right name
+- Fixed an issue with "Conserve TP" showing up in both status and skill lists.  It should only be in skills now.
 - Fixed a potential bug with the monster list
 - Fixed a portal battlefield limitation issue that could be exploited
