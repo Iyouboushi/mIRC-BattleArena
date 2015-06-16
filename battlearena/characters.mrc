@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 06/02/15
+;;;; Last updated: 06/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1243,16 +1243,20 @@ on 50:TEXT:!customtitle *:*:{
 on 3:TEXT:!taunt *:*: { $set_chr_name($nick)
   if ($is_charmed($nick) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed),private) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
-  $taunt($nick, $2) | halt 
+  $partial.name.match($nick, $2)
+  $taunt($nick, %attack.target) | halt 
 }
 ON 3:ACTION:taunt*:#:{ 
   $no.turn.check($nick)
-  $taunt($nick , $2) | halt 
+  $partial.name.match($nick, $2)
+  $taunt($nick, %attack.target) | halt 
 } 
 ON 50:TEXT:*taunts *:*:{ $set_chr_name($1)
   $no.turn.check($1)
   if ($readini($char($1), Battle, HP) = $null) { halt }
-  $set_chr_name($1) | $taunt($1, $3)
+  $set_chr_name($1) 
+  $partial.name.match($1, $3)
+  $taunt($1, %attack.target) | halt 
 }
 ON 3:TEXT:*taunts *:*:{ 
   if ($readini($char($1), info, flag) = monster) { halt }
@@ -1262,7 +1266,9 @@ ON 3:TEXT:*taunts *:*:{
   $set_chr_name($1)
   $no.turn.check($1)
   if ($readini($char($1), Battle, HP) = $null) { halt }
-  $set_chr_name($1) | $taunt($1, $3)
+  $set_chr_name($1) 
+  $partial.name.match($1, $3)
+  $taunt($1, %attack.target) | halt 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

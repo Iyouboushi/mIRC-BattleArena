@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/28/15
+;;;; Last updated: 06/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -25,6 +25,24 @@ person_in_battle {
     unset %real.name | halt 
   }
   else { return }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Attempts to match a partial
+; target name to someone in
+; the battle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+partial.name.match {
+  ; $1 = person using the command
+  ; $2 = person they're trying to attack
+
+  if ((($2 = me) || ($2 = himself) || ($2 = herself))) { set %attack.target $1 | return }
+
+  if ($istok($return_peopleinbattle, $2, 46) = $true) { set %attack.target $2 }
+  else { 
+    set %attack.target $matchtok($return_peopleinbattle, $2, 1, 46)
+    if (%attack.target = $null) { set %attack.target $2 }
+  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1455,6 +1473,7 @@ taunt {
   ; $1 = taunter
   ; $2 = target
 
+  unset %attack.target
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoCurrentBattle), private) | halt  }
   $check_for_battle($1) 
   $person_in_battle($2) 

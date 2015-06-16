@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 06/14/15
+;;;; Last updated: 06/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -64,15 +64,8 @@ on 3:TEXT:!use*:*: {  unset %real.name | unset %enemy | $set_chr_name($nick)
 
   if ($4 = $null) { $uses_item($nick, $2, on, $nick) }
   else {  
-
-    if ($istok($return_peopleinbattle, $4, 46) = $true) { set %item.target $4 }
-    else { 
-      set %item.target $matchtok($return_peopleinbattle, $4, 1, 46)
-      if (%item.target = $null) { set %item.target $4  }
-    }
-
-    if ($4 = me) { set %item.target $nick } 
-    $uses_item($nick, $2, $3, %item.target)
+    $partial.name.match($nick, $4)
+    $uses_item($nick, $2, $3, %attack.target)
   }
 }
 
@@ -90,15 +83,8 @@ ON 50:TEXT:*uses item * on *:*:{  $set_chr_name($1)
     if ($istok($readini($txtfile(battle2.txt), Battle, List), $1, 46) = $true) { $display.message($readini(translation.dat, battle, NotAllowedBattlefieldCondition), private) | halt }
   }  
 
-  if ($istok($return_peopleinbattle, $6, 46) = $true) { set %item.target $6 }
-  else { 
-    set %item.target $matchtok($return_peopleinbattle, $6, 1, 46)
-    if (%item.target = $null) { set %item.target $6  }
-  }
-
-  if ($6 = me) { set %item.target $6 } 
-
-  $uses_item($1, $4, $5, %item.target)
+  $partial.name.match($1, $6)
+  $uses_item($1, $4, $5, %attack.target)
 }
 
 ON 3:TEXT:*uses item * on *:*:{  $set_chr_name($1)
@@ -121,18 +107,11 @@ ON 3:TEXT:*uses item * on *:*:{  $set_chr_name($1)
     if ($istok($readini($txtfile(battle2.txt), Battle, List), $1, 46) = $true) { $display.message($readini(translation.dat, battle, NotAllowedBattlefieldCondition), private) | halt }
   }  
 
-  if ($istok($return_peopleinbattle, $6, 46) = $true) { set %item.target $6 }
-  else { 
-    set %item.target $matchtok($return_peopleinbattle, $6, 1, 46)
-    if (%item.target = $null) { set %item.target $6  }
-  }
-
-  if ($6 = me) { set %item.target $6 } 
-
-  $uses_item($1, $4, $5, %item.target)
+  $partial.name.match($1, $6)
+  $uses_item($1, $4, $5, %attack.target)
 }
 alias uses_item {
-  unset %item.target
+  unset %attack.target
   var %item.type $readini($dbfile(items.db), $2, type)
 
   if (((((((%item.type != summon) && (%item.type != key) && (%item.type != shopreset) && (%item.type != food) && (%item.type != trust) && (%item.type != increaseWeaponLevel) && (%item.type != portal))))))) {
