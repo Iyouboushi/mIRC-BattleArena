@@ -48,7 +48,7 @@ NewPassword=$chr(3) $+ 3 $+ Your new password has been set to $3 
 SetGenderNeither=$chr(3) $+ 3 $+ Your gender has been set to its 
 SetGenderMale=$chr(3) $+ 3 $+ Your gender has been set to $2
 SetGenderFemale=$chr(3) $+ 3 $+ Your gender has been set to $2
-ViewMyHP=$chr(3) $+ 3 $+  $+ %real.name $+ 's HP is: $readini($char($nick), Battle, HP) $chr(47) $readini($char($nick), BaseStats, HP)  $+ $chr(91) $+ %hstats $+ 3 $+ $chr(93)  
+ViewMyHP=$chr(3) $+ 3 $+  $+ %real.name $+ 's HP is: $readini($char($nick), Battle, HP) $chr(47) $readini($char($nick), BaseStats, HP)  $+ $chr(91) $+  $+ %hstats $+ 3 $+ $chr(93)  
 ViewMyMechHP=$chr(3) $+ 3 $+  $+ %real.name $+ 's %mech.name HP is: $readini($char($nick), Mech, HpCurrent) $chr(47) $readini($char($nick), Mech, HpMax)  $+ $chr(91) $+ %hstats $+ 3 $+ $chr(93) 
 ViewMyTP=$chr(3) $+ 3 $+  $+ %real.name $+ 's TP is: $readini($char($nick), Battle, TP) $chr(47) $readini($char($nick), BaseStats, TP) 
 ViewMyIG=$chr(3) $+ 3 $+  $+ %real.name $+ 's Ignition Gauge is: $readini($char($nick), Battle, IgnitionGauge) $chr(47) $readini($char($nick), BaseStats, IgnitionGauge) 
@@ -271,24 +271,24 @@ CustomBattleMessagesOff=$chr(3) $+ 4 $+ The New Custom Battle Messages are now
 Health Titles
 =======================
 [health]
-BeyondPerfect=$chr(3) $+ 12 $+ Enhanced 
-Perfect=$chr(3) $+ 12 $+ Perfect 
-Great=$chr(3) $+ 3 $+ Great
-Good=$chr(3) $+ 10 $+ Good 
-Decent=$chr(3) $+ 10 $+ Decent 
-Scratched=$chr(3) $+ 2 $+ Scratched 
-Bruised=$chr(3) $+ 2 $+ Bruised 
-Hurt=$chr(3) $+ 7 $+ Hurt 
-Injured=$chr(3) $+ 7 $+ Injured 
-InjuredBadly=$chr(3) $+ 7 $+ Injured Badly 
-Critical=$chr(3) $+ 4 $+ Critical 
-AliveHairBredth=$chr(3) $+ 4 $+ Alive by a hair's bredth 
-Dead=$chr(3) $+ 4 $+ Dead 
-Smoking=$chr(3) $+ 2 $+ Smoking 
-Sparking=$chr(3) $+ 7 $+ Sparking 
-ShortingOut=$chr(3) $+ 7 $+ Shorting Out 
-malfunctioning=$chr(3) $+ 4 $+ Malfunctioning 
-disabled=$chr(3) $+ 4 $+ Disabled 
+BeyondPerfect=$chr(3) $+ 12 $+ Enhanced 
+Perfect=$chr(3) $+ 12 $+ Perfect 
+Great=$chr(3) $+ 3 $+ Great
+Good=$chr(3) $+ 10 $+ Good 
+Decent=$chr(3) $+ 10 $+ Decent 
+Scratched=$chr(3) $+ 2 $+ Scratched 
+Bruised=$chr(3) $+ 2 $+ Bruised 
+Hurt=$chr(3) $+ 7 $+ Hurt 
+Injured=$chr(3) $+ 7 $+ Injured 
+InjuredBadly=$chr(3) $+ 7 $+ Injured Badly 
+Critical=$chr(3) $+ 4 $+ Critical 
+AliveHairBredth=$chr(3) $+ 4 $+ Alive by a hair's bredth 
+Dead=$chr(3) $+ 4 $+ Dead 
+Smoking=$chr(3) $+ 2 $+ Smoking 
+Sparking=$chr(3) $+ 7 $+ Sparking 
+ShortingOut=$chr(3) $+ 7 $+ Shorting Out 
+malfunctioning=$chr(3) $+ 4 $+ Malfunctioning 
+disabled=$chr(3) $+ 4 $+ Disabled 
 
 =======================
 Event Messages
@@ -600,7 +600,7 @@ DroppedOutofBattle=$chr(3) $+ 4 $+  $+ %real.name has been removed from battle
 CannotFleeBattle=$chr(3) $+ 4 $+ %real.name attempts to flee the battle...but fails.
 DarknessWarning=$chr(3) $+ 4 $+ Darkness will overcome the battlefield in 5 turns..
 DarknessCoversBattlefield=$chr(3) $+ 4 $+ Darkness covers the battlefield enhancing the strength of all remaining monsters!
-TurnMessage=$chr(3) $+ 3 $+ It is %real.name $+ 's turn [Health Status: %hstats $+ 3] [Status Effects:4 %all_status $+ 3] [Active Skills:4 %all_skills $+ 3] $iif($return.potioneffect($1) != none, [Potion Effect:12 $return.potioneffect($1) $+ 3])
+TurnMessage=$chr(3) $+ 3 $+ It is %real.name $+ 's turn [Health Status: %hstats $+ 3] [Status Effects:4 %all_status $+ 3] [Active Skills:4 %all_skills $+ 3] $iif($return.potioneffect($1) != none, [Potion Effect:12 $return.potioneffect($1) $+ 3])
 TurnMessageMech=$chr(3) $+ 3 $+ It is %real.name $+ 's turn [Health Status: %hstats $+ 3] [Energy Level:4 %energy.level $+ 3]
 NoOneJoinedBattleYet=$chr(3) $+ 4 $+ No one has joined the battle yet! 
 BatListTitleMessage=$chr(3) $+ 10 $+ -=BATTLE INFORMATION=-

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/15/15
+;;;; Last updated: 06/17/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -955,7 +955,7 @@ build_battlehp_list {
     if ($readini($char(%who.battle), info, flag) = monster) { inc %battletxt.current.line }
     else { 
       $set_chr_name(%who.battle) | $hp_status_hpcommand(%who.battle) 
-      var %hp.to.add  3 $+ $chr(91) $+  $+ %who.battle $+ :  %hstats $+ 3 $+ $chr(93) 
+      var %hp.to.add  3 $+ $chr(91) $+  $+ %who.battle $+ :  %hstats $+ 3 $+ $chr(93) 
       %battle.hp.list = $addtok(%battle.hp.list,%hp.to.add,46) 
       inc %battletxt.current.line
     }
