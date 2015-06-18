@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 06/15/15
+;;;; Last updated: 06/18/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2091,11 +2091,11 @@ formula.techdmg.player {
 
   if ($readini($dbfile(techniques.db), $2, magic) = yes) {  
     $calculate_pDIF($1, $3, magic)  
-    set %attack.damage $round($calc(%attack.damage / 4.5),0) 
+    set %attack.damage $round($calc(%attack.damage / 3.2),0) 
   }
   else { 
     $calculate_pDIF($1, $3, tech) 
-    set %attack.damage $round($calc(%attack.damage / 1.5),0) 
+    set %attack.damage $round($calc(%attack.damage / 1.75),0) 
   }
 
   %attack.damage = $round($calc(%attack.damage  * %pDIF),0)
@@ -3586,8 +3586,6 @@ formula.techdmg.player.percent {
 }
 
 
-
-
 calculate_pDIF {
   ; $1 = attacker
   ; $2 = defender
@@ -3599,8 +3597,14 @@ calculate_pDIF {
   var %defender.level $get.level($2)
   var %level.difference $calc(%attacker.level - %defender.level)
 
-  if (%level.difference >= 50) { var %level.difference 50 }
-  if (%level.difference <= -50) { var %level.difference -50 }
+  if (($readini($char($1), info, flag) = $null) && ($readini($char($2), info, flag) = monster)) { 
+    if (%level.difference >= 50) { var %level.difference 50 }
+    if (%level.difference <= -500) { var %level.difference -500 }
+  }
+  else { 
+    if (%level.difference >= 50) { var %level.difference 50 }
+    if (%level.difference <= -40) { var %level.difference -40 }
+  }
 
   var %cRatio.modifier $calc(0.05 * %level.difference)
 
@@ -3640,7 +3644,7 @@ calculate_pDIF {
     }
   }
 
-  if (%enemy.defense = 1) {
+  if (%enemy.defense <= 5) {
     if (%pDIF > 0) {  inc %pDIF .5 }
     if (%pDIF <= 0) { set %pDIF .5 }
   }
