@@ -1305,6 +1305,7 @@ Battle Arena Bot VERSIONS
 - Changed the skill Speed to consume 10-25% of a user's HP based on the skill's level
 - Changed portal items so that they cannot be used if Shenron's Wish is on.
 - Fixed a bug with orb rewards for players who are far under the streak and not using SotH
+- Fixed a bug in which fists were being calculated wrong for their damage (being counted twice, basically)
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
 - Fixed an issue with %enemy in a provoke skill description not showing the right name
