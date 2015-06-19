@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/15/15
+;;;; Last updated: 06/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3561,7 +3561,7 @@ double.attack.check {
       $set_chr_name($1) 
 
       if (%multihit.message.on != on) {
-        $display.message($readini(translation.dat, battle, PerformsADoubleAttack)) 
+        $display.message($readini(translation.dat, battle, PerformsADoubleAttack)) | set %multihit.message.on on
       } 
     }
     unset %double.attack.chance | unset %original.attackdmg 

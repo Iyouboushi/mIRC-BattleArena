@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 06/15/15
+;;;; Last updated: 06/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -448,10 +448,22 @@ on 50:TEXT:!toggle damage formula*:*:{
     halt
   }
   if ($readini(system.dat, system, BattleDamageFormula) = 2) { 
+    writeini system.dat system BattleDamageFormula 3
+    $display.message($readini(translation.dat, system, BattleFormula3), global)
+    halt
+  }
+  if ($readini(system.dat, system, BattleDamageFormula) = 3) { 
+    writeini system.dat system BattleDamageFormula 4
+    $display.message($readini(translation.dat, system, BattleFormula4), global)
+    halt
+  }
+
+  if ($readini(system.dat, system, BattleDamageFormula) = 4) { 
     writeini system.dat system BattleDamageFormula 1
     $display.message($readini(translation.dat, system, BattleFormula1), global)
     halt
   }
+
 }
 
 ; Bot admin command for displaying active and zapped player lists.
