@@ -389,7 +389,7 @@ formula.meleedmg.player {
   inc %weapon.base $round($calc(%weapon.base * 1.5),0)
 
   ; If the weapon is a hand to hand, it will now receive a bonus based on your fists level.
-  if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
+  if (($readini($dbfile(weapons.db), $2, type) = HandToHand) && ($2 != fists)) {  inc %weapon.base $readini($char($1), weapons, fists) }
 
   inc %weapon.base %base.power
 
@@ -780,7 +780,7 @@ formula.meleedmg.player.formula2 {
   var %weapon.base $calc(1 + (10 * $log($readini($char($1), weapons, $2))))
 
   ; If the weapon is a hand to hand, it will now receive a bonus based on your fists level.
-  ;;  if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
+  ;;  if (($readini($dbfile(weapons.db), $2, type) = HandToHand) && ($2 != fists)) {  inc %weapon.base $readini($char($1), weapons, fists) }
 
   inc %weapon.base %base.weapon.power
 
@@ -1152,7 +1152,7 @@ formula.meleedmg.monster {
   ;  inc %weapon.base $round($calc(%weapon.base * 1.5),0)
 
   ; If the weapon is a hand to hand, it will now receive a bonus based on your fists level.
-  if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
+  if (($readini($dbfile(weapons.db), $2, type) = HandToHand) && ($2 != fists)) {  inc %weapon.base $readini($char($1), weapons, fists) }
 
   inc %weapon.base %base.weapon.power
 
@@ -2596,7 +2596,7 @@ formula.meleedmg.player.old {
   ;  inc %weapon.base $round($calc(%weapon.base * 1.5),0)
 
   ; If the weapon is a hand to hand, it will now receive a bonus based on your fists level.
-  if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {  inc %weapon.base $readini($char($1), weapons, fists) }
+  if (($readini($dbfile(weapons.db), $2, type) = HandToHand) && ($2 != fists)) {  inc %weapon.base $readini($char($1), weapons, fists) }
 
   inc %weapon.base %base.weapon.power
 
