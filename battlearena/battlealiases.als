@@ -650,6 +650,8 @@ boost_monster_hp {
 
   if (%hp > 9000) { var %hp $round($calc(9000 + (%hp * .02)),0) }
 
+  if (($return.systemsetting(BattleDamageFormula) = 2) || ($return.systemsetting(BattleDamageFormula) = 4)) { var %hp $calc(%hp * 2) }
+
   writeini $char($1) BaseStats HP $round(%hp,0)
   writeini $char($1) Battle HP $round(%hp,0)
   unset %hp
