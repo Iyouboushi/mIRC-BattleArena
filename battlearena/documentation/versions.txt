@@ -1306,9 +1306,11 @@ Battle Arena Bot VERSIONS
 - Changed portal items so that they cannot be used if Shenron's Wish is on.
 - Fixed a bug with orb rewards for players who are far under the streak and not using SotH
 - Fixed a bug in which fists were being calculated wrong for their damage (being counted twice, basically)
+- Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
 - Fixed an issue with %enemy in a provoke skill description not showing the right name
 - Fixed an issue with "Conserve TP" showing up in both status and skill lists.  It should only be in skills now.
+- Fixed an issue where a person who was asleep would still get an extra turn occasionally
 - Fixed a potential bug with the monster list
 - Fixed a portal battlefield limitation issue that could be exploited
