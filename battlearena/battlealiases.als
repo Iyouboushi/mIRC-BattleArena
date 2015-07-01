@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/19/15
+;;;; Last updated: 07/01/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -317,6 +317,7 @@ check_for_double_turn {  $set_chr_name($1)
   unset %wait.your.turn
 
   $random.doubleturn.chance($1)
+
   if ($readini($char($1), skills, doubleturn.on) = on) { 
     if ($readini($char($1), info, flag) != $null) {   /.timerBattleNext 1 45 /next }
     if ($readini($char($1), info, flag) = $null) {
@@ -326,6 +327,7 @@ check_for_double_turn {  $set_chr_name($1)
     }
 
     if ($readini($char($1), battle, hp) <= 0) { $next | halt }
+    if (($readini($char($1), status, blind) = yes) || ($readini($char($1), status, sleep) = yes)) { $next | halt }
 
     $checkchar($1) | writeini $char($1) skills doubleturn.on off | $set_chr_name($1) 
 
@@ -349,6 +351,8 @@ random.doubleturn.chance {
   if (%multiple.wave.noaction = yes) { unset %multiple.wave.noaction | return }
   if ($readini($char($1), battle, hp) <= 0) { return }
   if ($readini($char($1), Status, cocoon) = yes) { return }
+  if ($readini($char($1), Status, blind) = yes) { return }
+  if ($readini($char($1), Status, sleep) = yes) { return }
 
   $battle.check.for.end
 
