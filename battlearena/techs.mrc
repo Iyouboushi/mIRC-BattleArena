@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 06/19/15
+;;;; Last updated: 07/01/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1427,7 +1427,7 @@ alias ignition_cmd {  $set_chr_name($1)
   writeini $char($1) status ignition.on on
   writeini $char($1) status ignition.name $2
   var %ignition.augment $readini($dbfile(ignitions.db), $2, augment)
-  if (%ignition.augent != $null) { writeini $char($1) status ignition.augment %ignition.augment }
+  if (%ignition.augment != $null) { writeini $char($1) status ignition.augment %ignition.augment }
 
   $ignition.triggereffect($1, $2)
 
