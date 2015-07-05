@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 05/02/15
+;;;; Last updated: 07/04/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -357,7 +357,7 @@ alias ai_mechcheck {
   if ($readini($char($1), status, ignition.on) = on) { return false }
   if ($readini($char($1), status, boosted) = yes) { return false }
   if ($person_in_mech($1) = true) { return false }
-  if ((no-mech isin %battleconditions) && (no-mechs isin %battleconditions)) { return false }
+  if ((no-mech isin %battleconditions) || (no-mechs isin %battleconditions)) { return false }
 
   var %base.energycost $round($calc($mech.baseenergycost($1) / 2),0)
   var %mech.currentenergy $readini($char($1), mech, energyCurrent)
