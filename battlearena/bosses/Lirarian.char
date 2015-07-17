@@ -58,6 +58,7 @@ LastIP=N/a
 Created=N/a
 Streak=100
 IgnoreQuicksilver=true
+IgnoreOutpost=true
 CanTaunt=false
 
 [Status]
