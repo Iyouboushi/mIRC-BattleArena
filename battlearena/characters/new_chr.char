@@ -80,6 +80,7 @@ GardenItemsPlanted=0
 WheelsSpun=0
 TrustsUsed=0
 DropsRewarded=0
+DungeonsCleared=0
 
 [Info]
 Gender=his
@@ -219,3 +220,6 @@ Body=none
 Legs=none
 Feet=none
 Hands=none
+
+[dungeons]
+
