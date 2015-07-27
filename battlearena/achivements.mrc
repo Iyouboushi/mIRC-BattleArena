@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ACHIEVEMENTS 
-;;;; Last updated: 02/12/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:!clear achievement*:*:{
@@ -476,7 +476,10 @@ alias achievement_check {
   if ($2 = OnTheEdge) {
     writeini $char($1) achievements $2 true
     $announce_achievement($1, $2, 1)
-    var %current.potions $readini($char($1), stuff, SuperPotion) | inc %current.potions | writeini $char($1) Items SuperPotion %current.potions
+    var %current.potions $readini($char($1), item_amount, SuperPotion) 
+    if (%current.potions = $null) { var %current.potions 0 }
+    inc %current.potions 1 
+    writeini $char($1) Item_Amount SuperPotion %current.potions
   }
 
   if ($2 = JustGettingStarted) {
