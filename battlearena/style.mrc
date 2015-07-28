@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 02/14/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -111,6 +111,8 @@ alias add.style.orbbonus {
   if ($2 = monster) { %multiplier = 1.2 }
   if ($2 = boss) { %multiplier = 1.7 }
 
+  if (%battle.type = dungeon) { %multiplier = 1.3 }
+
   var %orb.bonus.flag $readini($char($3), info, OrbBonus)
   if (%orb.bonus.flag = yes) { inc %multiplier $rand(125,150) }
 
@@ -123,7 +125,6 @@ alias add.style.orbbonus {
   if (%total.orbs.to.add <= 0) { set %total.orbs.to.add 1 } 
 
   inc %current.orb.bonus %total.orbs.to.add
-
   writeini $txtfile(battle2.txt) BattleInfo OrbBonus %current.orb.bonus
   unset %style.points | unset %current.orb.bonus | unset %total.orbs.to.add
 }

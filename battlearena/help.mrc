@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 06/13/15
+;;;; Last updated: 07/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -182,6 +182,18 @@ alias view-info {
     if ($readini($dbfile(items.db), $3, PortalLevel) != $null) { var %levelcap [4Level Cap12 $readini($dbfile(items.db), $3, PortalLevel) $+ ] }
     $display.private.message([4Name12 $3 $+ ] [4Type12 Portal $+ ] [4Lair12 $readini($dbfile(items.db), $3, Battlefield) $+ ] %exclusive %levelcap [4Description12 This item will teleport all players on the battlefield through a portal to the lair of a strong boss! $+ ]) 
   }
+  if (%info.type = dungeon) { 
+    var %dungeon.file $readini($dbfile(items.db), $3, dungeon)
+    var %dungeon.name $readini($dungeonfile(%dungeon.file), info, name)
+    var %dungeon.players.needed $readini($dungeonfile(%dungeon.file), info, PlayersNeeded)
+    if (%dungeon.players.needed = $null) { var %dungeon.players.needed 2 }
+    var %dungeon.level $readini($dungeonfile(%dungeon.file), info, Level)
+    if (%dungeon.level = $null) { var %dungeon.level 15 }
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Dungeon Key $+ ] [4Dungeon Name12 %dungeon.name $+ ] [4Number of Players Needed12 %dungeon.players.needed $+ ] [4Dungeon Level12 %dungeon.level $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) 
+
+
+  }
+
   if (%info.type = mechcore) {  
     var %energy.cost $readini($dbfile(items.db), $3, energyCost)
     var %augments $readini($dbfile(items.db), $3, augment)

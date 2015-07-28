@@ -1305,6 +1305,14 @@ IncreaseSpellDamage.Amount=.07
 SellPrice=2000
 ShopNPC=TravelMerchant
 
+[Cultist-Rosary]
+type=accessory
+AccessoryType=IncreaseSpellDamage
+Cost=0
+Desc=A rosary from the cultists of Tam-Tara Deepcroft. This accessory will increase the power of your spells.
+IncreaseSpelLDamage.Amount=.10
+SellPrice=2000
+
 [Blessed-Ankh]
 Type=accessory
 AccessoryType=IncreaseHealing
@@ -3189,3 +3197,17 @@ Cost=5000
 SellPrice=1000
 Desc=a blue ocarina, used to perform certain songs.
 ShopNPC=SongMerchant
+
+
+=========================
+DUNGEON START ITEMS
+=========================
+[TamTaraKey]
+type=dungeon
+cost=0
+sellprice=10
+Desc=An ancient key used to unlock the dungeon Tam-Tara Deepcroft
+Dungeon=Tam-Tara
+
+
+

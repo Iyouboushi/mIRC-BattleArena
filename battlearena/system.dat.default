@@ -22,7 +22,8 @@ currency=Red Orbs
 BetCurrency=$$
 TimeBetweenBattles=30
 TimeForIdle=180
-TimeToEnter=20
+TimeToEnter=120
+TimeToEnterDungeon=120
 TimeBetweenSave=3600
 TimeBetweenSaveReload=1200
 maxHP=5000
@@ -136,9 +137,9 @@ MechPurchaseCost=1000
 [auctionInfo]
 TimeBetweenAuctions=3600
 startingTime=1384282402
-NumberOfAuctions=87
+NumberOfAuctions=1
 current.item=NewsOrb
 minimumBid=200
 
 [version]
-SystemDatVersion=022415
+SystemDatVersion=072415

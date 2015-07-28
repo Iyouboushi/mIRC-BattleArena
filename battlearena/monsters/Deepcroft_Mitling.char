@@ -1,20 +1,21 @@
 [BaseStats]
-Hp=70
-Tp=40
-Str=7
-Def=5
-Int=5
-Spd=6
+Hp=3000
+Tp=50
+Str=5
+Def=6
+Int=7
+Spd=10
 IgnitionGauge=2
-Name=Enchanted Bones
+Name=Deepcroft Mitling
+
 
 [Battle]
-Hp=70
-Tp=40
-Str=7
-Def=5
-Int=5
-Spd=6
+Hp=3000
+Tp=50
+Str=5
+Def=6
+Int=7
+Spd=10
 IgnitionGauge=2
 Status=alive
 
@@ -31,7 +32,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a black skeleton carrying a large scythe  
+Char=is a large bug-like creature with six legs and 10 eyes.
 Rage=screams in rage 
 
 [Stuff]
@@ -41,20 +42,18 @@ ShopLevel=1.0
 
 [Info]
 Flag=monster
-Gender=his
-Gender2=him
+Gender=its
+Gender2=its
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=5
-StreakMax=10
-CanTaunt=true
-TimeOfDay=Evening.Night
+CanTaunt=false
+Streak=-1000
 
-[Monster]
-Type=undead
+[monster]
+type=spider
 size=medium
 
 [Status]
@@ -91,49 +90,38 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=BoneScythe
-BoneScythe=10
-weakness=whip.handtohand
-Strong=Sword.Gun.Rifle.Katana.Wand.Spear.Scythe.Glyph
+Equipped=spiderlegs
+spiderlegs=15
 
 [Skills]
-Zen=5
 
 
 
 [Techniques]
-BloodSaber=7
-BloodSlash=7
-HorrorCloud=7
-Fire=7
-Stone=7
-Aero=7
-
-
-
-[Item_Amount]
+SpiderWeb=15
+SickleSlash=20
 
 
 
 [modifiers]
-Heal=dark
+Heal=none
 Earth=100
-Fire=130
+Fire=100
 Wind=100
 Water=100
-Ice=100
+Ice=150
 Lightning=100
-Light=130
-Dark=200
+Light=100
+Dark=100
 HandToHand=100
-Whip=110
+Whip=100
 Sword=100
-Gun=70
-Rifle=70
+Gun=100
+Rifle=100
 Katana=100
-Wand=80
-Spear=50
+Wand=100
+Spear=100
 Scythe=100
-Glyph=110
-GreatSword=110
-Bow=60
+Glyph=100
+GreatSword=100
+Bow=100

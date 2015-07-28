@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=70
-Tp=40
-Str=7
-Def=5
-Int=5
-Spd=6
+Hp=2800
+Tp=90
+Str=20
+Def=8
+Int=10
+Spd=22
 IgnitionGauge=2
-Name=Enchanted Bones
+Name=Gravedigger Imp
 
 [Battle]
-Hp=70
-Tp=40
-Str=7
-Def=5
-Int=5
-Spd=6
+Hp=2800
+Tp=90
+Str=20
+Def=8
+Int=10
+Spd=22
 IgnitionGauge=2
 Status=alive
 
@@ -31,7 +31,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a black skeleton carrying a large scythe  
+Char=is a large-sized reddish gray creature with small red wings, a large horn on its forehead and a long pointed tail
 Rage=screams in rage 
 
 [Stuff]
@@ -39,23 +39,22 @@ RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 
+[monster]
+type=imp
+size=small
+
 [Info]
 Flag=monster
-Gender=his
-Gender2=him
+Gender=its
+Gender2=it
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=5
-StreakMax=10
-CanTaunt=true
-TimeOfDay=Evening.Night
-
-[Monster]
-Type=undead
-size=medium
+Streak=-1000
+CanTaunt=false
+IgnoreQuicksilver=true
 
 [Status]
 Poison=no
@@ -91,49 +90,45 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=BoneScythe
-BoneScythe=10
-weakness=whip.handtohand
-Strong=Sword.Gun.Rifle.Katana.Wand.Spear.Scythe.Glyph
+Equipped=ImpHorn
+ImpHorn=30
+weakness=spear.gun.rifle
 
 [Skills]
-Zen=5
-
+resist-amnesia=100
+resist-curse=100
 
 
 [Techniques]
-BloodSaber=7
-BloodSlash=7
-HorrorCloud=7
-Fire=7
-Stone=7
-Aero=7
-
-
+Frenetic_Rip=20
+Abrasive_Tantara=20
+Flare=15
+Tornado=15
 
 [Item_Amount]
 
 
 
 [modifiers]
-Heal=dark
+Heal=none
 Earth=100
-Fire=130
+Fire=120
 Wind=100
 Water=100
 Ice=100
 Lightning=100
-Light=130
-Dark=200
+Light=120
+Dark=60
 HandToHand=100
-Whip=110
+Whip=100
 Sword=100
-Gun=70
-Rifle=70
+Gun=100
+Rifle=100
 Katana=100
-Wand=80
-Spear=50
+Wand=100
+Spear=100
 Scythe=100
-Glyph=110
-GreatSword=110
-Bow=60
+Glyph=100
+GreatSword=100
+Bow=100
+

@@ -227,6 +227,7 @@ BossLevelSynced50=$chr(3) $+ 4 $+ The level cap for this boss battle has been 
 BossLevelSynced75=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 75
 BossLevelSynced100=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 100
 BossLevelSynced200=$chr(3) $+ 4 $+ The level cap for this boss battle has been set to: 200
+DungeonLevelSync=$chr(3) $+ 4 $+ The level cap for this dungeon is: $readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel) 
 GainedEnhancementPoint=$chr(3) $+ 7 $+ You have gained 1 enhancement point bringing your new total to %current.enhancementpoints $+ .
 SpiritOfHeroSync=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low for this arena level. $get_chr_name($1) has been infused with the2 Spirit of the Hero4 buff. $get_chr_name($1) $+ 's level is now set temporarily to2 $calc($return_winningstreak - 3)
 ShopExchangeNotes=$chr(3) $+ 2 $+ You exchange %notes.needed allied notes for %currency.symbol %dollarstogive double dollars
@@ -529,7 +530,14 @@ Can'tUseOtherPlayersPortals=$chr(3) $+ 4 $+ Error: You can't use other player'
 MustSpecifyWeaponname=$chr(3) $+ 4 $+ Error: %real.name must specify a valid weapon name to use this item on.
 Can'tLevelWeaponOver500=$chr(3) $+ 4 $+ Error: using this item will push the level of the $2 over the weapon level cap of 500.
 NoPortalsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the use of portals at this time. 
-
+NoDungeonsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the use of dungeon keys at this time. 
+Can'tUseThisSkillInDungeon=$chr(3) $+ 4 $+ Error: This skill is unavailable while inside of a dungeon. 
+Can'tBoostInDungeon=$chr(3) $+ 4 $+ Error: Ignitions and Weapon Boosts are unavailable while inside of a dungeon
+can'tstartdungeoninbattle=$chr(3) $+ 4 $+ Error: Dungeon Starting Items cannot be used during battle. Try again after the battle is over.
+NotAValidDungeon=$chr(3) $+ 4 $+ Error: This item's dungeon does not exist. Please talk to the bot owner.
+NotEnoughPartyMembersForDungeon=$chr(3) $+ 4 $+ Not enough players have entered to fulfill the party requirements. Please gather more people and try again.
+LevelTooLowForDungeon=$chr(3) $+ 4 $+ Error: $get_chr_name($1) $+ 's level is too low to enter this dungeon.
+CanOnlyStartOneDungeonADay=$chr(3) $+ 4 $+ Error: $get_chr_name($1) can only start one dungeon per 24 hours ( $+ $duration($calc(%dungeon.time.setting - %time.difference)) remaining). Note this restriction is only for starting a dungeon. $get_chr_name($1) can still join other people's dungeon parties.
 
 =======================
 Battle Related Messages
@@ -580,12 +588,15 @@ DrawPortal=$chr(3) $+ 12 $+ Neither heroes nor monsters have won this battle as 
 RewardOrbsLoss=$chr(3) $+ 3 $+ For their efforts, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
 RewardOrbsDraw=$chr(3) $+ 3 $+ For their efforts, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
 RewardOrbsWin=$chr(3) $+ 3 $+ For their victory, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
+RewardOrbsDungeonClear=$chr(3) $+ 3 $+ For clearing the dungeon the party has been rewarded with bonus $readini(system.dat, system, currency) $+ . %red.orb.winners
+FirstTimeDungeonReward=$chr(3) $+ 7 $+ Certain players are receiving a Dungeon Clear Bonus for finishing this dungeon for the first time.
 BlackOrbWin=$chr(3) $+ 3 $+ The following players have absorbed a black orb from the boss: %black.orb.winners
 BonusItemWin=$chr(3) $+ 10 $+  $+ %real.name was the most stylish and has been rewarded with %boss.item x1!
 DropItemWin=$chr(3) $+ 10 $+ These players found spoils from the battle: %item.drop.rewards
 AlliedNotesGain=$chr(3) $+ 3 $+ The Allied Forces reward the heroes with $readini($txtfile(battle2.txt), battle, alliednotes) Allied Notes for their victory.
 KeyWin=$chr(3) $+ 10 $+  $+ %real.name finds 1 %key.color key $+ !
 EnteredTheBattle=$chr(3) $+ 4 $+  $+ %real.name has entered the battle! 
+EnteredTheDungeon=$chr(3) $+ 4 $+  $+ %real.name has joined the dungeon party! 
 CurrentWeather=$chr(3) $+ 3 $+ The weather is currently: $readini($dbfile(battlefields.db), weather, current)
 CurrentMoon=$chr(3) $+ 3 $+ The current moon phase is: $readini($dbfile(battlefields.db), MoonPhase, CurrentMoonPhase)
 CurrentTime=$chr(3) $+ 2 $+ The current time of 12Day $bytes($readini(battlestats.dat, battle, GameDays),b) 2is:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) 
@@ -649,7 +660,7 @@ Don'tLetPresidentDie=$chr(3) $+ 4 $+ The Heroes must protect the president!  I
 SongNotAllowedThisBattle=$chr(3) $+ 4 $+ A Darkness prevents %real.name $+ 's song from working during this battle.
 DefendOutpostForTurns=$chr(3) $+ 4 $+ The Heroes must defend this outpost for %darkness.turns rounds from the monster waves!  
 AssaultOutpost=$chr(3) $+ 4 $+ The Heroes must keep defeating monster forces to weaken the outpost in order to claim it! 
-
+RestMessage=$chr(3) $+ 12 $+ $get_chr_name($1) decides to take a turn off and rest.
 
 =======================
 Status Related Messages

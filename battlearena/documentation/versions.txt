@@ -1295,8 +1295,7 @@ Battle Arena Bot VERSIONS
 - Added the bot admin command: !toggle damage formula -- Will toggle between the damage formulas
 - Added a new item type: IncreaseWeaponLevel.  This item type can be used to increase a player's weapon level up to 500
 - Added the various damage formulas that have been used throughout the bot's history: 1.0, 2.0, 2.5 and 3.0.
-- Added the monster and boss flag: IgnoreOutpost=true/false  If set to true, the monster/boss won't show up in Defend Outpost
-  or Assault type battles. It goes in [info]
+- Added the Dungeon system. 
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
@@ -1317,3 +1316,4 @@ Battle Arena Bot VERSIONS
 - Fixed an issue where a person who was asleep would still get an extra turn occasionally
 - Fixed a potential bug with the monster list
 - Fixed a portal battlefield limitation issue that could be exploited
+- Fixed the "On the Edge" achievement so that it actually gives the Super Potion item correctly

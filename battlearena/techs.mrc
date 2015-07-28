@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 07/01/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -220,6 +220,7 @@ alias tech_cmd {
   if ($readini($dbfile(techniques.db), n, $2, PreScript) != $null) { $readini($dbfile(techniques.db), p, $2, PreScript) }
 
   if (%tech.type = boost) { 
+    if (%battle.type = dungeon) { $display.message($readini(translation.dat, errors, Can'tBoostInDungeon), private) | halt }
     if ($readini($char($1), status, virus) = yes) { $display.message($readini(translation.dat, errors, Can'tBoostHasVirus),private) | halt }
     if (($readini($char($1), status, boosted) = yes) || ($readini($char($1), status, ignition.on) = on)) { 
       if ($readini($char($1), info, flag) = $null) {
@@ -1159,10 +1160,13 @@ alias calculate_damage_techs {
 
   if ($readini($char($1), info, flag) = monster) { $formula.techdmg.monster($1, $2, $3, $4) }
   else { 
-    if (($readini(system.dat, system, BattleDamageFormula) = 1) || ($readini(system.dat, system, BattleDamageFormula) = $null)) { $formula.techdmg.player.formula_3.0($1, $2, $3, $4) }
-    if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
-    if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.techdmg.player.formula_2.0($1, $2, $3, $4)  }
-    if ($readini(system.dat, system, BattleDamageFormula) = 4) { $formula.techdmg.player.formula_1.0($1, $2, $3, $4)  }
+    if (%battle.type = dungeon) { $formula.techdmg.player.formula_3.0($1, $2, $3, $4) }
+    else {
+      if (($readini(system.dat, system, BattleDamageFormula) = 1) || ($readini(system.dat, system, BattleDamageFormula) = $null)) { $formula.techdmg.player.formula_3.0($1, $2, $3, $4) }
+      if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
+      if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.techdmg.player.formula_2.0($1, $2, $3, $4)  }
+      if ($readini(system.dat, system, BattleDamageFormula) = 4) { $formula.techdmg.player.formula_1.0($1, $2, $3, $4)  }
+    }
   }
 
   unset %tech.howmany.hits |  unset %enemy.defense | set %multihit.message.on on
@@ -1379,6 +1383,7 @@ alias ignition_cmd {  $set_chr_name($1)
   ; $2 = boost name
 
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), battle) | halt }
+  if (%battle.type = dungeon) { $display.message($readini(translation.dat, errors, Can'tBoostInDungeon), private) | halt }
   $check_for_battle($1) 
   $amnesia.check($1, ignition) 
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 06/15/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1235,6 +1235,15 @@ on 50:TEXT:!customtitle *:*:{
     remini $char($3) info CustomTitle
     $display.private.message(3The custom title for $3 has been removed.)
   }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; REST COMMAND
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+on 3:TEXT:!rest:*: { 
+  if ($is_charmed($nick) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed),private) | halt }
+  if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
+  $rest.cmd($nick)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

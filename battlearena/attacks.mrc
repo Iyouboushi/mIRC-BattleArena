@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 06/19/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -165,10 +165,14 @@ alias calculate_damage_weapon {
 
   if ($readini($char($1), info, flag) = monster) { $formula.meleedmg.monster($1, $2, $3, $4) }
   else { 
-    if (($readini(system.dat, system, BattleDamageFormula) = 1) || ($readini(system.dat, system, BattleDamageFormula) = $null)) { $formula.meleedmg.player.formula_3.0($1, $2, $3, $4) }
-    if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.meleedmg.player.formula_2.5($1, $2, $3, $4) }
-    if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.meleedmg.player.formula_2.0($1, $2, $3, $4) }
-    if ($readini(system.dat, system, BattleDamageFormula) = 4) { $formula.meleedmg.player.formula_1.0($1, $2, $3, $4) }
+
+    if (%battle.type = dungeon) { $formula.meleedmg.player.formula_3.0($1, $2, $3, $4) }
+    else {
+      if (($readini(system.dat, system, BattleDamageFormula) = 1) || ($readini(system.dat, system, BattleDamageFormula) = $null)) { $formula.meleedmg.player.formula_3.0($1, $2, $3, $4) }
+      if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.meleedmg.player.formula_2.5($1, $2, $3, $4) }
+      if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.meleedmg.player.formula_2.0($1, $2, $3, $4) }
+      if ($readini(system.dat, system, BattleDamageFormula) = 4) { $formula.meleedmg.player.formula_1.0($1, $2, $3, $4) }
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 07/16/15
+;;;; Last updated: 07/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -67,6 +67,7 @@ system_defaults_check {
     if ($readini(system.dat, system, EnableDNSCheck) = $null) { writeini system.dat system EnableDNSCheck true }
     if ($readini(system.dat, system, TimeForIdle) = $null) { writeini system.dat system TimeForIdle 180 }
     if ($readini(system.dat, system, TimeToEnter) = $null) { writeini system.dat system TimeToEnter 120 }
+    if ($readini(system.dat, system, TimeToEnterDungeon) = $null) { writeini system.dat system TimeToEnterDungeon 120 }
     if ($readini(system.dat, system, ShowOrbsCmdInChannel) = $null) { writeini system.dat system ShowOrbsCmdInChannel true }
     if ($readini(system.dat, system, ShowDiscountMessage) = $null) { writeini system.dat system ShowDiscountMessage false }
     if ($readini(system.dat, system, EnableBattlefieldEvents) = $null) { writeini system.dat system EnableBattlefieldEvents true }
@@ -374,6 +375,9 @@ return_winningstreak {
     return %portal.streak 
   }
   if (%portal.bonus != true) { 
+
+    if (%battle.type = dungeon) { return $readini($txtfile(battle2.txt), dungeoninfo, dungeonlevel) }
+
     var %current.winningstreak $readini(battlestats.dat, battle, winningstreak)
     if (%current.winningstreak = $null) { var %current.winningstreak 0 }
 
@@ -526,6 +530,7 @@ zapped { return " $+ $mircdir $+ %player_folder $+ zapped $+ \ $+ $1 $+ .char" }
 lstfile { return " $+ $mircdir $+ lsts\ $+ $1" }
 txtfile {  return " $+ $mircdir $+ txts\ $+ $1" }
 dbfile { return " $+ $mircdir $+ dbs\ $+ $1" }
+dungeonfile { return " $+ $mircdir $+ dungeons\ $+ $1 $+ .dungeon $+ " }
 char_path { return " $+ $mircdir $+ %player_folder $+ " }
 mon_path { return " $+ $mircdir $+ %monster_folder $+ " }
 boss_path { return " $+ $mircdir $+ %boss_folder $+ " }
@@ -2491,7 +2496,6 @@ mon_list_add {
 
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { 
     if ($readini($mon(%name), info, MetalDefense) = true) { return }
-    if ($readini($mon(%name), info, IgnoreOutpost) = true) { return }
   }
 
   ; Check the winning streak #..  some monsters won't show up until a certain streak or higher.
@@ -2569,7 +2573,6 @@ boss_list_add {
 
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { 
     if ($readini($boss(%name), info, MetalDefense) = true) { return }
-    if ($readini($boss(%name), info, IgnoreOutpost) = true) { return }
   }
 
   ; Check the winning streak #..  some monsters won't show up until a certain streak or higher.
@@ -2885,7 +2888,7 @@ clear_variables2 {
   unset %original.ignition.name | unset %holy.aura.user | unset %max.hp.restore | unset %max.tp.restore 
   unset %passive.skills.list2 | unset %prize.list | unset %inflict.meleewpn | unset %weapon.list1 | unset %duplicate.ips
   unset %attacker.level | unset %defender.level | unset %damage.display.color | unset %current.playerstyle
-  unset %number.of monsters.needed | unset %battle.level.cap
+  unset %number.of monsters.needed | unset %battle.level.cap | unset %percent.increase
   unset %monster.info.streak.max | unset %monster.info.streak
 }
 
@@ -2971,6 +2974,7 @@ create_treasurechest {
   dec %chest.type.random $treasurehunter.check
 
   if (%portal.bonus = true) { %chest.type.random = $rand(1,35) }
+  if (%battle.type = dungeon) { %chest.type.random = 1 }
 
   if (%chest.type.random <= 10)  { set %color.chest gold  }
   if ((%chest.type.random > 10) && (%chest.type.random <= 20)) { set %color.chest silver }
@@ -3273,6 +3277,8 @@ orb.adjust {
     if (%winning.streak = $null) { var %winning.streak 100 }
   }
 
+  if (%battle.type = dungeon) { var %winning.streak $calc(%winning.streak * 10) }
+
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { var %winning.streak 100 }
 
   if (%winning.streak < 50) { var %orb.tier -1 }
@@ -3296,6 +3302,7 @@ orb.adjust {
 
   if (%portal.bonus = true) { inc %orb.tier 2 }
   if (%battle.type = defendoutpost) { inc %orb.tier 1 }
+  if (%battle.type = dungeon) { inc %orb.tier 2 }
 
   if ($readini($char($1), status, SpiritOfHero) = true) { 
     remini $char($1) status SpiritOfHero

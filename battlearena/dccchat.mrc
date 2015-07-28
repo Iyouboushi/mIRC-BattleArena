@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 06/15/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -941,6 +941,11 @@ on 2:Chat:taunts *: {
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   $partial.name.match($nick, $2) | $taunt($nick , %attack.target) | halt
+}
+ON 2:Chat:!rest*: { 
+  if ($is_charmed($nick) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed),private) | halt }
+  if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
+  $rest.cmd($nick)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

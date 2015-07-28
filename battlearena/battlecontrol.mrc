@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/11/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -448,7 +448,9 @@ alias startnormal {
 on 3:TEXT:!enter:#: { 
   if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
   if (%battle.type = ai) { $display.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
-  $enter($nick)
+
+  if (%battle.type = dungeon) { $dungeon.enter($nick) }
+  else { $enter($nick) }
 }
 ON 3:TEXT:*enters the battle*:#:  { 
   if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
@@ -459,14 +461,18 @@ ON 3:TEXT:*enters the battle*:#:  {
   if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
   if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
 
-  $enter($1)
+  if (%battle.type = dungeon) { $dungeon.enter($1) }
+  else { $enter($1) }
 }
 ON 50:TEXT:*enters the battle*:#:  { 
   if ($readini(system.dat, system, automatedaibattlecasino) = on) { $display.message($readini(translation.dat, errors, CannotJoinAIBattles), private) | halt } 
-  $enter($1)
+  if (%battle.type = dungeon) { $dungeon.enter($1) }
+  else { $enter($1) }
 }
 
 alias enter {
+  if (%battle.type = dungeon) { $dungeon.enter($1) | halt }
+
   $checkchar($1)
   if (%battleisopen != on) { $set_chr_name($1)
     $display.message($readini(translation.dat, battle, BattleClosed), global)  | halt 
@@ -1044,7 +1050,6 @@ alias generate_monster {
         unset %battle.level.cap
       }
       $generate_monster_warmachine
-      echo -a generated machine
     }
 
     if (%boss.type = bandits) {
@@ -1267,9 +1272,12 @@ alias battle_rage {
 ; Generate the turn order
 ; ==========================
 alias generate_battle_order {
-
   ; Is the battle over? Let's find out.
-  $battle.check.for.end
+  if (%battle.type != dungeon) { $battle.check.for.end }
+  if (%battle.type = dungeon) {
+    if (($dungeon.currentroom = 0) && (%current.turn = 2)) { $battle.check.for.end }
+    if ($dungeon.currentroom > 0) { $battle.check.for.end }
+  }
 
   ; get rid of the Battle Table and the now un-needed file
   if ($isfile(BattleTable.file) = $true) { 
@@ -1442,6 +1450,9 @@ alias endbattle {
   if (((%mode.pvp != on) && (%battle.type != ai) && (%mode.gauntlet != on))) { var %totalbattles $readini(battlestats.dat, Battle, TotalBattles) |  inc %totalbattles 1 | writeini battlestats.dat Battle TotalBattles %totalbattles }
 
   if (($1 = defeat) || ($1 = failure)) {
+
+    if (%battle.type = dungeon) { $dungeon.end(failure) | halt  }
+
     $display.message($readini(translation.dat, battle, BattleIsOver), global)
 
     if ((%mode.pvp != on) && (%battle.type != ai)) {
@@ -1774,6 +1785,7 @@ alias turn {
   set %debug.location alias turn
 
   $hp_status($1) | $set_chr_name($1)
+
   set %status.message $readini(translation.dat, battle, TurnMessage)
 
   if ($person_in_mech($1) = true) { 
@@ -1918,6 +1930,10 @@ alias battle.monster.death.check {
 alias battle.check.for.end {
   set %debug.location battle.check.for.end
 
+  if (%battle.type = dungeon) { 
+    if (($dungeon.currentroom = 0) && (%current.turn = 1)) { return }
+  }
+
   if ((%savethepresident = on) && ($readini($char(alliedforces_president), battle, hp) <= 0)) { /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt  } 
 
   ; Count the total number of monsters in battle
@@ -1927,15 +1943,26 @@ alias battle.check.for.end {
   set %battle.monster.death $battle.monster.death.check
 
   if ((%battle.monster.death = true) && (%battle.player.death = true)) {  writeini $txtfile(1vs1bet.txt) money winner none  | /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle draw | halt } 
-  if ((%battle.monster.death = true) && (%battle.player.death = false)) { 
-    if (%battle.type = ai) { set %ai.winner Winner: [NPC] %ai.npc.name | writeini $txtfile(1vs1bet.txt) money winner npc  } 
-    .timerEndBattle $+ $rand(a,z) 1 4 /endbattle victory | halt 
-  } 
-  if ((%battle.monster.death = false) && (%battle.player.death = true)) { 
-    if (%battle.type = ai) { set %ai.winner Winner: [Monster] %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
-    /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt
-  } 
-  if ((%battle.monster.death = $null) && (%battle.player.death = true)) {  /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle victory | halt } 
+
+  if (%battle.type != dungeon) { 
+    if ((%battle.monster.death = true) && (%battle.player.death = false)) { 
+      if (%battle.type = ai) { set %ai.winner Winner: [NPC] %ai.npc.name | writeini $txtfile(1vs1bet.txt) money winner npc  } 
+      .timerEndBattle $+ $rand(a,z) 1 4 /endbattle victory | halt 
+    } 
+    if ((%battle.monster.death = false) && (%battle.player.death = true)) { 
+      if (%battle.type = ai) { set %ai.winner Winner: [Monster] %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
+      /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt
+    } 
+    if ((%battle.monster.death = $null) && (%battle.player.death = true)) {  /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle victory | halt } 
+  }
+
+  if (%battle.type = dungeon) { 
+    if ($dungeon.dungeonovercheck = true) { $dungeon.end | halt } 
+    else {
+      if ((%battle.monster.death = true) && (%battle.player.death = false)) { $dungeon.clearroom | halt }
+      if ((%battle.player.death = true) && (%battle.monster.death = false)) {  /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt }
+    }
+  }
 
   unset %battle.player.death | unset %battle.monster.death
 }
@@ -1946,6 +1973,7 @@ alias battle.check.for.end {
 alias battlelist { 
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), private) | halt }
   if ($return_peopleinbattle = null) { $display.message($readini(translation.dat, battle, NoOneJoinedBattleYet), private) | halt }
+
   unset %battle.list | set %lines $lines($txtfile(battle.txt)) | set %l 1
   while (%l <= %lines) { 
     set %who.battle $read -l [ $+ [ %l ] ] $txtfile(battle.txt) | set %status.battle $readini($char(%who.battle), Battle, Status)
@@ -1969,6 +1997,8 @@ alias battlelist {
 
   unset %lines | unset %l 
   $battlelist.cleanlist
+
+  if (%battle.type = dungeon) { $dungeon.batinfo(%battle.list) }
 
   if (%current.turn = $null) { var %current.turn 0 }
 
@@ -2061,7 +2091,6 @@ alias battlelist.cleanlist {
 ; ==========================
 ; REWARD ORBS 
 ; ===========================
-
 alias battle.calculate.redorbs {
   set %debug.location battle.calculate.redorbs
   ; $1 = victory, draw, defeat
@@ -2074,6 +2103,7 @@ alias battle.calculate.redorbs {
   if (%battle.type = orbfountain) { set %base.redorbs $readini(system.dat, System, basexp) | inc %base.redorbs $rand(400,500) }
   if (%battle.type = boss) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
   if (%battle.type = mimic) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
+  if (%battle.type = dungeon) { set %base.redorbs $readini(system.dat, System, basebossxp) | inc %base.redorbs 100 }
 
   if (%number.of.monsters.needed = $null) { var %number.of.monsters.needed 1 }
 
@@ -2084,7 +2114,7 @@ alias battle.calculate.redorbs {
   if ($1 = victory) { inc %base.orb.multiplier 1.2 }
   if ($1 = defeat) { inc %base.orb.multiplier .30 }
   if ($1 = draw) { inc %base.orb.multiplier .75 }
-  if (%mode.gauntlet = on) { inc %base.orb.multiplier .25 }
+  if ((%mode.gauntlet = on) || (%battle.type = dungeon)) { inc %base.orb.multiplier .25 }
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { inc %base.orb.multiplier .25 }
 
   ; If the winning streak is above 0, let's add some of it into the orb bonus.
@@ -2093,7 +2123,9 @@ alias battle.calculate.redorbs {
   if (($1 = defeat) || ($1 = draw)) { inc %base.redorbs $round($calc($2 / 1.8),0) }
 
   ; Get the orb bonus that players earned by defeating monsters
-  set %bonus.orbs $round($readini($txtfile(battle2.txt), BattleInfo, OrbBonus),0)
+  if (%battle.type != dungeon) { set %bonus.orbs $round($readini($txtfile(battle2.txt), BattleInfo, OrbBonus),0) }
+  if ((%battle.type = dungeon) && ($3 = true)) { set %bonus.orbs $round($readini($txtfile(battle2.txt), BattleInfo, OrbBonus),0) }
+
   if ((%bonus.orbs = $null) || (%bonus.orbs < 0)) { set %bonus.orbs 0 }
   inc %base.redorbs %bonus.orbs
 
@@ -2101,6 +2133,8 @@ alias battle.calculate.redorbs {
   if (%mode.gauntlet = on) { var %max.orb.reward $readini(system.dat, system, MaxGauntletOrbReward) }
   if (%mode.gauntlet != on) {  var %max.orb.reward $readini(system.dat, system, MaxOrbReward) }
   if (%max.orb.reward = $null) { var %max.orb.reward 20000 }
+
+  if (%battle.type = dungeon) { var %max.orb.reward $calc(%max.orb.reward * 2) }
 
   if (($readini(battlestats.dat, dragonballs, ShenronWish) = on) && (%mode.gauntlet != on)) { %max.orb.reward = $round($calc(%max.orb.reward * 1.2),0) }
 
@@ -2196,6 +2230,22 @@ alias battle.reward.redorbs {
 
       if ((%base.redorbs <= 5000) && (%battle.type = defendoutpost)) { set %base.redorbs 5000 }
       if ((%base.redorbs <= 5000) && (%battle.type = assault)) { set %base.redorbs 5000 }
+
+      if ($2 = true) { 
+        inc %base.redorbs 5000
+        var %dungeonfile $readini($txtfile(battle2.txt), dungeoninfo, dungeonfile)
+        if ($readini($char(%who.battle), dungeons,%dungeonfile) != true) { writeini $char(%who.battle) dungeons %dungeonfile true | set %dungeon.firsttime.clear true | inc %base.redorbs 25000 }
+
+        var %total.dungeons.won $readini($char(%who.battle), stuff, DungeonsCleared) 
+        if (%total.dungeons.won = $null) { var %total.dungeons.won 0 }
+        inc %total.dungeons.won 1 
+
+        writeini $char(%who.battle) stuff DungeonsCleared %total.dungeons.won
+
+        ; TO DO: add an achievement  :: $achievement_check(%who.battle, DungeonCrawler)
+
+      }
+
       $orb.adjust(%who.battle)
 
       if ($readini($char(%who.battle), battle, status) = runaway) { var %total.redorbs.reward $round($calc(%base.redorbs / 2.5),0) }

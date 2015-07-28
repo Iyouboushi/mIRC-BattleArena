@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 06/13/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -111,6 +111,7 @@ on 3:TEXT:!speed*:*: { $skill.speedup($nick) }
 
 alias skill.speedup { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  if (%battle.type = dungeon) { $display.message($readini(translation.dat, errors, Can'tUseThisSkillInDungeon), private) | halt }
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 
@@ -972,6 +973,7 @@ on 3:TEXT:!blood boost*:*: { $skill.bloodboost($nick) }
 
 alias skill.bloodboost { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  if (%battle.type = dungeon) { $display.message($readini(translation.dat, errors, Can'tUseThisSkillInDungeon), private) | halt }
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 
@@ -1041,6 +1043,7 @@ on 3:TEXT:!blood spirit*:*: { $skill.bloodspirit($nick) }
 
 alias skill.bloodspirit { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  if (%battle.type = dungeon) { $display.message($readini(translation.dat, errors, Can'tUseThisSkillInDungeon), private) | halt }
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 
@@ -1362,6 +1365,7 @@ on 3:TEXT:!shadow copy*:*: { $skill.clone($nick) }
 
 alias skill.clone { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  if (%battle.type = dungeon) { $display.message($readini(translation.dat, errors, Can'tUseThisSkillInDungeon), private) | halt }
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 
@@ -2775,7 +2779,7 @@ alias skill.magicmirror { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, MagicMirror, !magicmirror, true)
 
-  ; Check for the item "Shihei" and consume it, or display an error if they don't have any.
+  ; Check for the item "MirrorShard" and consume it, or display an error if they don't have any.
   set %check.item $readini($char($1), item_amount, MirrorShard)
   if ((%check.item = $null) || (%check.item <= 0)) { $display.message(4Error: %real.name does not have enough MirrorShards to perform this skill, private) | halt }
   $decrease_item($1, MirrorShard) 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 07/01/15
+;;;; Last updated: 07/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -312,7 +312,11 @@ reward.capacitypoints {
 check_for_double_turn {  $set_chr_name($1)
   set %debug.location alias check_for_double_turn
 
-  $battle.check.for.end
+  if (%battle.type = dungeon) {
+    if (($dungeon.currentroom = 0) && (%current.turn = 2)) { echo -a checking for end | $battle.check.for.end }
+    if ($dungeon.currentroom > 0) { $battle.check.for.end }
+  }
+  if (%battle.type != dungeon) { $battle.check.for.end }
 
   unset %wait.your.turn
 
@@ -353,6 +357,8 @@ random.doubleturn.chance {
   if ($readini($char($1), Status, cocoon) = yes) { return }
   if ($readini($char($1), Status, blind) = yes) { return }
   if ($readini($char($1), Status, sleep) = yes) { return }
+
+  if ((%battle.type = dungeon) && ($dungeon.currentroom = 0)) { return }
 
   $battle.check.for.end
 
@@ -898,6 +904,7 @@ deal_damage {
         if (%battle.type = defendoutpost) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
         if (%battle.type = assault) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
         if (%portal.bonus = true) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
+        if (%battle.type = dungeon) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
       }
     }
   }
@@ -1611,7 +1618,7 @@ random.weather.pick {
   if (%new.weather = $null) { set %new.weather calm }
   writeini $dbfile(battlefields.db) weather current %new.weather
 
-  if (($1 = inbattle) && (%new.weather = %old.weather)) { return }
+  if (($1 = inbattle) && (%new.weather = %old.weather)) { unset %weather.list | unset %new.weather | return }
 
   $display.message(10The weather changes.  It is now %new.weather, battle) 
 
@@ -2861,6 +2868,7 @@ counter_melee_action {
 multiple_wave_check {
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
 
+  if (%battle.type = dunegon) { return }
   if (%multiple.wave = yes) { return }
   if (%battleis = off) { return }
   if (%battle.type = boss) { return }
@@ -3021,12 +3029,12 @@ spawn_after_death {
   if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
     $display.message.delay($readini(translation.dat, battle, EnteredTheBattle),battle, 0)
     $display.message.delay(12 $+ %real.name  $+ $readini($char(%monster.to.spawn), descriptions, char), battle, 0)
-    $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ ", battle, 0) 
+    if (%bossquote != $null) { $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ ", battle, 0) }
   }
   if ($readini(system.dat, system, botType) = DCCchat) {
     $dcc.battle.message($readini(translation.dat, battle, EnteredTheBattle))
     $dcc.battle.message(12 $+ %real.name  $+ $readini($char(%monster.to.spawn), descriptions, char))
-    $dcc.battle.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ ")
+    if (%bossquote != $null) { $dcc.battle.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ ") }
   }
 
   ; Boost the monster

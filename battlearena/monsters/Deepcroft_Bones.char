@@ -1,15 +1,15 @@
 [BaseStats]
-Hp=70
+Hp=2000
 Tp=40
 Str=7
 Def=5
 Int=5
 Spd=6
 IgnitionGauge=2
-Name=Enchanted Bones
+Name=Deepcroft Bones
 
 [Battle]
-Hp=70
+Hp=2000
 Tp=40
 Str=7
 Def=5
@@ -31,7 +31,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a black skeleton carrying a large scythe  
+Char=is an ancient skeleton carrying a large scythe  
 Rage=screams in rage 
 
 [Stuff]
@@ -48,10 +48,9 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=5
-StreakMax=10
+Streak=-1000
 CanTaunt=true
-TimeOfDay=Evening.Night
+
 
 [Monster]
 Type=undead
@@ -92,27 +91,22 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=BoneScythe
-BoneScythe=10
-weakness=whip.handtohand
-Strong=Sword.Gun.Rifle.Katana.Wand.Spear.Scythe.Glyph
+BoneScythe=25
+
 
 [Skills]
 Zen=5
 
-
-
 [Techniques]
-BloodSaber=7
-BloodSlash=7
-HorrorCloud=7
-Fire=7
-Stone=7
-Aero=7
-
+BloodSaber=25
+BloodSlash=25
+HorrorCloud=15
+Fire=10
+Stone=10
+Aero=10
 
 
 [Item_Amount]
-
 
 
 [modifiers]

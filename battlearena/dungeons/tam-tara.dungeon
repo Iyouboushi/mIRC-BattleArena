@@ -1,0 +1,58 @@
+[Info]
+Name=Tam-Tara Deepcroft
+Rooms=8
+PlayersNeeded=3
+Level=15
+FinalRoom=7
+StartBattleDesc=uses the ancient Tam-Tara key to unlock an old rusty door. As it creaks open the party can smell the stale air and hear the chants of ancient cultists within. 
+ClearDungeonDesc=* The party has vanquished the evil cultists found within Tam-Tara Deepcroft. The land is safe once again.  For now.
+DungeonFail=* The party has failed to stop the evil cultists found within Tam-Tara Deepcroft. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party stands in a large empty room that leads off to the north via a long dark passage. This area is deemed to be safe enough to spend one round to prepare for what lies within.
+Battlefield=Tam-Tara Deepcroft Cavern
+
+
+[1]
+Desc=The party advances forward down the long passage only to stop when monsters are attracted to their footsteps.
+Battlefield=Tam-Tara Deepcroft Cavern
+Monsters=Gravedigger_Imp.Deepcroft_Bat
+
+
+[2]
+Desc=Coming to the end of the passage the party sees crumbling stairs leading up to a platform. Before they can explore it, however, they are accosted with monsters.
+Battlefield=Tam-Tara Deepcroft Cavern
+Monsters=Gravedigger_Imp.Deepcroft_Mitling.Deepcroft_Beetle
+
+
+[3]
+Desc=As the party advances up the stairs to the platform they see a robed figure chanting over a bright blue orb which seems to be shooting a blue beam to another part of the cavern.  There is a magic barrier preventing the heroes from going any further.
+Battlefield=Tam-Tara Deepcroft Cavern
+Monsters=Deepcroft_Cultist.Deepcroft_Orb
+bossroom=true
+
+
+[4]
+Desc=The barrier disappears allowing the party to continue through the dungeon. They pass several human bones and piles of ash. Deep chanting can be heard ahead.
+bossroom=true
+Monsters=Deepcroft_Bat.Deepcroft_Bones.Gravedigger_Imp
+Battlefield=Tam-Tara Deepcroft Cavern
+
+[5]
+Desc=Ahead the party can see another platform with another glowing blue orb.  Before they can approach it another wave of monsters leaps at them.
+Monsters=Deepcroft_Mitling.Deepcroft_Bat
+Battlefield=Tam-Tara Deepcroft Cavern
+
+[6]
+Desc=The party approaches the platform. Ahead they can see the glowing blue orb is shooting a bright light towards a large circular room ahead. The room is protected by another blue barrier. Inside of the protected room they see the five men in dark robes all chanting an ancient language.
+Battlefield=Tam-Tara Deepcroft Cavern
+Monsters=Deepcroft_Zealot.Deepcroft_Orb
+bossroom=true
+
+[7]
+Desc=The final barrier disappears. The party rushes forward into the large circular room but they are too late. Waves of energy shoot from each of the cultists and their bodies fade away as their life force gives life to Galvanth the Dominator--a large Soulflayer. It lets off a large roar and looks at the heroes with destruction in its eyes.
+Battlefield=Tam-Tara Deepcroft Cavern
+Monsters=Galvanth
+bossroom=true
+

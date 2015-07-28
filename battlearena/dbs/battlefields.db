@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=Calm
+current=gloomy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=New
-CurrentMoonTurn=1
+CurrentMoonPhase=Gibbous
+CurrentMoonTurn=3
 
 [MoonPhaseTime]
 full=3
@@ -881,3 +881,11 @@ weather=calm
 NumberOfEvents=0
 scavenge=BeastmenSeal.KindredSeal.KindredCrest
 limitations=no-mech.no-fleeing
+
+
+
+[Tam-Tara Deepcroft Cavern]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

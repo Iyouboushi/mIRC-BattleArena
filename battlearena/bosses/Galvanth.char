@@ -1,64 +1,63 @@
 [BaseStats]
-Hp=$iif($current.battlestreak <= 300, 600, 2000)
-Tp=500
-Str=$iif($current.battlestreak <= 300, 100, 2000)
-Def=$iif($current.battlestreak <= 300, 100, 2000)
-Int=$iif($current.battlestreak <= 300, 100, 2000)
-Spd=$iif($current.battlestreak <= 300, 100, 2000)
-IgnitionGauge=500
-Name=Lirarian
+Hp=18000
+Tp=250
+Str=77
+Def=77
+Int=191
+Spd=96
+Name=Galvanth the Dominator
+IgnitionGauge=50
 
 
 [Battle]
-Hp=1500
-Tp=500
-Str=75
-Def=65
-Int=50
-Spd=80
-IgnitionGauge=500
+Hp=18000
+Tp=250
+Str=77
+Def=77
+Int=191
+Spd=96
 Status=alive
+IgnitionGauge=50
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
-Hused=1
-Dused=1
-Char=is a lesser Elven goddess who is entrusted with two powerful swords. She has long brown hair, glowing green eyes, and wears dark-red Swordmaster armor.
-Rage=simply narrows her eyes and glares at everyone.
-BossQuote=You must prove yourselves before moving forward.
-
+Char=is a large squid-like being. It wears a hooded robe and carries a large staff.
+Rage=screams in rage 
+BossQuote=Your bones will pave the way to my reign
+DeathDescription=gives off a dying wail as he collapses to the ground. Galvanth's body bursts into flames and fades into ashes. 
+MonsterSummon=Galvanth slams his staff into the ground and screams "Come my child, help protect your god as he defeats these defilers!"
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=
+Drops=Cultist-Rosary
 
 [Monster]
-Type=Elf
+Type=demon
 size=medium
 
 [Info]
 Flag=monster
-Gender=her
-Gender2=her
+Gender=his
+Gender2=him
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=100
-IgnoreQuicksilver=true
+Streak=-1000
+bosslevel=22
 CanTaunt=false
+IgnoreQuicksilver=true
+BattleStats=IgnoreHP
+Guardian=Deepcroft_Imp
+JustReleaseDefense=70
 
 [Status]
 Poison=no
@@ -92,66 +91,69 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
+reflect=yes
+reflect.turn=-1
 
 [Weapons]
-Equipped=SilverSwords
-SilverSwords=$calc(1 + $current.battlestreak)
+Equipped=DemonicWeapon
+DemonicWeapon=15
 
 [Skills]
-Zen=5
-WeaponBash=1
-Impetus=20
-Swordmaster=100
-Resist-Paralysis=10
-Resist-Amnesia=10
-Resist-Zombie=100
 Resist-Charm=100
-Resist-Stun=10
-Resist-Blind=10
-Resist-Weaponlock=100
+Resist-Poison=100
+Resist-Zombie=100
 Resist-Intimidate=100
-Resist-Disarm=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Zen=5
+ClearMind=1
+MonsterSummon=$iif($calc(%current.turn % 3) = 0, 1, 0)
+MonsterSummon.Monster=Deepcroft_Imp
+MonsterSummon.Chance=100
+monstersummon.numberspawn=1
+
 
 [Techniques]
-Twin_Slice=$calc(1 + $current.battlestreak)
-LightningStrike=$calc(1 + $current.battlestreak)
-BladeBeamII=$calc(1 + $current.battlestreak)
+Firaja=15
+FireIII=20
+ThunderIII=10
 
-[equipment]
-Head=Lirarian's_Circlet
-Body=Lirarian's_Armor
-Hands=Lirarian's_Gauntlets
-Legs=Lirarian's_Cuisses
-Feet=Lirarian's_Sabatons
 
 [Styles]
-Equipped=Weaponmaster
-Weaponmaster=$iif($current.battlestreak <= 300, 5, 10)
-WeaponmasterXP=1
+Equipped=spellmaster
+spellmaster=1
+
+[Augment]
+Laevatein=AbsorbTP
+
 
 
 [modifiers]
-Heal=Light
-Earth=90
-Fire=90
-Wind=90
-Water=90
-Ice=90
-Lightning=90
+Heal=dark
+Earth=100
+Fire=50
+Wind=100
+Water=100
+Ice=100
+Lightning=100
 Light=130
-Dark=90
-HandToHand=90
-Whip=90
-Sword=90
-Gun=90
-Rifle=90
-Katana=90
-Wand=90
-Spear=90
-Scythe=90
-Glyph=90
-GreatSword=90
-Bow=90
+Dark=250
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
 Crissaegrim=50
 Valmanway=50
 Naturaleza=60
@@ -178,9 +180,7 @@ TrillionStabs=40
 DoubleBackstab=40
 Chou_Kamehameha=40
 BloodBath=40
-Ultima=130
-UltimaII=130
-Kaustra=30
+UltimaII=30
 KaustraII=30
 Chivalry=20
 DoubleShot=10
@@ -223,7 +223,7 @@ BasicMechStaff=10
 ImprovedMechStaff=10
 FlawlessMechStaff=10
 DarksteelOreStaff=10
-MechUltima=130
+MechUltima=10
 MechKaustra=10
 MechFlare=10
 MechQuake=10
@@ -232,14 +232,14 @@ MechTornado=10
 MechFreeze=10
 MechBurst=10
 MechDarkness=10
-MechBanish=130
+MechBanish=10
 MechFire=10
 MechStone=10
 MechWater=10
 MechWind=10
 MechIce=10
 MechThunder=10
-MechLight=130
+MechLight=10
 MechShadow=10
 MechFlareII=10
 MechQuakeII=10
@@ -248,14 +248,14 @@ MechTornadoII=10
 MechFreezeII=10
 MechBurstII=10
 MechDarknessII=10
-MechBanishII=130
+MechBanishII=10
 MechFireII=10
 MechStoneII=10
 MechWaterII=10
 MechWindII=10
 MechIceII=10
 MechThunderII=10
-MechLightII=130
+MechLightII=10
 MechShadowII=10
 MechFlareIII=10
 MechQuakeIII=10
@@ -264,14 +264,14 @@ MechTornadoIII=10
 MechFreezeIII=10
 MechBurstIII=10
 MechDarknessIII=10
-MechBanishIII=130
+MechBanishIII=10
 MechFireIII=10
 MechStoneIII=10
 MechWaterIII=10
 MechWindIII=10
 MechIceIII=10
 MechThunderIII=10
-MechLightIII=130
+MechLightIII=10
 MechShadowIII=10
 MechFlareIV=10
 MechQuakeIV=10
@@ -280,22 +280,12 @@ MechTornadoIV=10
 MechFreezeIV=10
 MechBurstIV=10
 MechDarknessIV=10
-MechBanishIV=130
+MechBanishIV=10
 MechFireIV=10
 MechStoneIV=10
 MechWaterIV=10
 MechWindIV=10
 MechIceIV=10
 MechThunderIV=10
-MechLightIV=130
+MechLightIV=10
 MechShadowIV=10
-
-
-[NaturalArmor]
-Name=Goddess Defense
-Max=$iif($current.battlestreak <= 300, 500, 1000)
-Current=500
-
-
-[Ignitions]
-WiseReflection=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Eldora), battle, hp) / $readini($char(Eldora), basestats, hp)) * 100) <= 75, 1, 0))
