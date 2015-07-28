@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 07/26/15
+;;;; Last updated: 07/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -282,6 +282,7 @@ system_defaults_check {
   /.load -a characters.als
   /.load -a battlealiases.als
   /.load -a  battleformulas.als
+  /.load -a dungeons.als
   /.load -a bossaliases.als
   /.load -a scoreboard.als
 
