@@ -1296,6 +1296,7 @@ Battle Arena Bot VERSIONS
 - Added a new item type: IncreaseWeaponLevel.  This item type can be used to increase a player's weapon level up to 500
 - Added the various damage formulas that have been used throughout the bot's history: 1.0, 2.0, 2.5 and 3.0.
 - Added the Dungeon system. 
+- Added the !Rest command. This command can be used by players on their turn to skip their turn. It does nothing else.
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
