@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 07/27/15
+;;;; Last updated: 08/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2170,6 +2170,8 @@ inflict_status {
 
     }
     unset %current.style 
+
+    if ((%resist.skill >= 100) && (%battle.type = dungeon)) { set %resist.skill 50 }
 
     $ribbon.accessory.check($2)
   }
