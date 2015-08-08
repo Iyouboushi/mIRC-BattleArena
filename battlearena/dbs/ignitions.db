@@ -177,7 +177,7 @@ Effect=Status
 IgnitionTrigger=15
 IgnitionConsume=5
 Cost=0
-Desc=$+ 's body begins to morph and grow horns as %real.name screams.  After a few seconds %enemy has become a full-fledged demon. The resulting energy causes %enemy $+ 's enemies to feel weaker.
+Desc=$+ 's body begins to morph and grow horns as %real.name screams.  After a few seconds %real.name has become a full-fledged demon. The resulting energy causes %real.name $+ 's enemies to feel weaker.
 StatusTarget=enemy
 StatusType=StrengthDown
 
