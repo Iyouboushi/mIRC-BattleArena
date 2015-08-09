@@ -1105,6 +1105,8 @@ display_damage {
     unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
   }
 
+  if (%element.desc != $null) {  $display.message(%element.desc, battle) }
+
   if (%target = $null) { set %target $2 }
   if (%attacker = $null) { set %attacker $1 }
 

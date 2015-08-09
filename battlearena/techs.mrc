@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 07/27/15
+;;;; Last updated: 08/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1291,26 +1291,34 @@ alias magic.effect.check {
   $set_chr_name($2)
 
   if (%spell.element = $null) { return } 
+
   if (%spell.element  = light) {
-    var %total.spell $readini($char($1), stuff, LightSpellsCasted) 
-    if (%total.spell = $null) { var %total.spell 0 }
-    inc %total.spell 1 
-    writeini $char($1) stuff LightSpellsCasted %total.spell
-    $achievement_check($1, BlindedByTheLight)
-    return 
+    if (%aoe.turn > 1) { return }
+    if ($4 = $null) {
+      var %total.spell $readini($char($1), stuff, LightSpellsCasted) 
+      if (%total.spell = $null) { var %total.spell 0 }
+      inc %total.spell 1 
+      writeini $char($1) stuff LightSpellsCasted %total.spell
+      $achievement_check($1, BlindedByTheLight)
+      return 
+    }
   }
   if (%spell.element  = dark) { 
-    var %total.spell $readini($char($1), stuff, DarkSpellsCasted) 
-    if (%total.spell = $null) { var %total.spell 0 }
-    inc %total.spell 1 
-    writeini $char($1) stuff DarkSpellsCasted %total.spell
-    $achievement_check($1, It'sAllDoomAndGloom)
-    return 
+    if (%aoe.turn > 1) { return }
+    if ($4 = $null) {
+      var %total.spell $readini($char($1), stuff, DarkSpellsCasted) 
+      if (%total.spell = $null) { var %total.spell 0 }
+      inc %total.spell 1 
+      writeini $char($1) stuff DarkSpellsCasted %total.spell
+      $achievement_check($1, It'sAllDoomAndGloom)
+      return 
+    }
   }
   if (%spell.element  = fire) { 
     if ((%resist-element = no) || (%resist-element = $null)) { writeini $char($2) Status burning yes | set %element.desc $readini(translation.dat, element, fire) }
 
     if ($4 = $null) {
+      if (%aoe.turn > 1) { return }
       var %total.spell $readini($char($1), stuff, FireSpellsCasted) 
       if (%total.spell = $null) { var %total.spell 0 }
       inc %total.spell 1 
@@ -1321,17 +1329,21 @@ alias magic.effect.check {
   }
   if (%spell.element  = wind) { 
     if ((%resist-element = no) || (%resist-element = $null)) {  writeini $char($2) Status tornado yes | set %element.desc $readini(translation.dat, element, wind) }
-    var %total.spell $readini($char($1), stuff, WindSpellsCasted) 
-    if (%total.spell = $null) { var %total.spell 0 }
-    inc %total.spell 1 
-    writeini $char($1) stuff WindSpellsCasted %total.spell
-    $achievement_check($1, RockYouLikeAHurricane)
-    return 
+    if (%aoe.turn > 1) { return }
+    if ($4 = $null) {
+      var %total.spell $readini($char($1), stuff, WindSpellsCasted) 
+      if (%total.spell = $null) { var %total.spell 0 }
+      inc %total.spell 1 
+      writeini $char($1) stuff WindSpellsCasted %total.spell
+      $achievement_check($1, RockYouLikeAHurricane)
+      return 
+    }
 
   }
   if (%spell.element  = water) { 
     if ((%resist-element = no) || (%resist-element = $null)) { writeini $char($2) Status drowning yes | set %element.desc $readini(translation.dat, element, water) }
     if ($4 = $null) { 
+      if (%aoe.turn > 1) { return } 
       var %total.spell $readini($char($1), stuff, WaterSpellsCasted) 
       if (%total.spell = $null) { var %total.spell 0 }
       inc %total.spell 1 
@@ -1343,6 +1355,7 @@ alias magic.effect.check {
   if (%spell.element  = ice) { 
     if ((%resist-element = no) || (%resist-element = $null)) { writeini $char($2) Status frozen yes | set %element.desc $readini(translation.dat, element, ice) }
     if ($4 = $null) {
+      if (%aoe.turn > 1) { return }
       var %total.spell $readini($char($1), stuff, IceSpellsCasted) 
       if (%total.spell = $null) { var %total.spell 0 }
       inc %total.spell 1 
@@ -1354,6 +1367,7 @@ alias magic.effect.check {
   if (%spell.element  = lightning) { 
     if ((%resist-element = no) || (%resist-element = $null)) {  writeini $char($2) Status shock yes | set %element.desc $readini(translation.dat, element, lightning) }
     if ($4 = $null) {
+      if (%aoe.turn > 1) { return }
       var %total.spell $readini($char($1), stuff, LightningSpellsCasted) 
       if (%total.spell = $null) { var %total.spell 0 }
       inc %total.spell 1 
@@ -1365,6 +1379,7 @@ alias magic.effect.check {
   if (%spell.element  = earth) { 
     if ((%resist-element = no) || (%resist-element = $null)) { writeini $char($2) Status earthquake yes | set %element.desc $readini(translation.dat, element, earth) }
     if ($4 = $null) {
+      if (%aoe.turn > 1) { return }
       var %total.spell $readini($char($1), stuff, EarthSpellsCasted) 
       if (%total.spell = $null) { var %total.spell 0 }
       inc %total.spell 1 
