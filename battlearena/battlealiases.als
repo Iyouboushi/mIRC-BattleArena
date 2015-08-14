@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 08/08/15
+;;;; Last updated: 08/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4473,7 +4473,10 @@ frozen_check {
     unset %max.hp | set %hp $readini($char($1), battle, hp)
     if (%freezing >= %hp) { $display.message($readini(translation.dat, status, FrozenDeath), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
     $goldorb_check($1, magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
-    if (%freezing < %hp) { $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, FrozenMessage) | dec %hp %freezing |  writeini $char($1) Battle HP %hp | return }
+    if (%freezing < %hp) { $set_chr_name($1) 
+      if ($readini($char($1), info, IgnoreElementalMessage) != true) { write $txtfile(temp_status.txt) $readini(translation.dat, status, FrozenMessage) }
+      dec %hp %freezing |  writeini $char($1) Battle HP %hp | return 
+    }
   }
   else { return }
 }
@@ -4486,7 +4489,9 @@ shock_check {
     $set_chr_name($1)
     if (%shock >= %hp) { $display.message($readini(translation.dat, status, ShockDeath), battle)  | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1) | $add.style.effectdeath | $check.clone.death($1)
     $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
-    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, ShockMessage)  | dec %hp %shock |  writeini $char($1) Battle HP %hp | return 
+    $set_chr_name($1) 
+    if ($readini($char($1), info, IgnoreElementalMessage) != true) { write $txtfile(temp_status.txt) $readini(translation.dat, status, ShockMessage) }
+    dec %hp %shock |  writeini $char($1) Battle HP %hp | return 
   }
   else { return }
 }
@@ -4499,7 +4504,9 @@ burning_check {
     $set_chr_name($1)
     if (%burning >= %hp) { $display.message($readini(translation.dat, status, BurningDeath), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
     $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
-    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, BurningMessage) | dec %hp %burning | writeini $char($1) Battle HP %hp | return 
+    $set_chr_name($1) 
+    if ($readini($char($1), info, IgnoreElementalMessage) != true) { write $txtfile(temp_status.txt) $readini(translation.dat, status, BurningMessage) }
+    dec %hp %burning | writeini $char($1) Battle HP %hp | return 
   }
   else { return }
 }
@@ -4512,7 +4519,9 @@ tornado_check {
     $set_chr_name($1)
     if (%tornado >= %hp) { $display.message($readini(translation.dat, status, TornadoDeath), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
     $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
-    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, TornadoMessage) | dec %hp %tornado | writeini $char($1) Battle HP %hp | return 
+    $set_chr_name($1) 
+    if ($readini($char($1), info, IgnoreElementalMessage) != true) { write $txtfile(temp_status.txt) $readini(translation.dat, status, TornadoMessage) }
+    dec %hp %tornado | writeini $char($1) Battle HP %hp | return 
   }
   else { return }
 }
@@ -4525,7 +4534,9 @@ drowning_check {
     $set_chr_name($1)
     if (%drowning >= %hp) { $display.message($readini(translation.dat, status, DrowningDeath), battle)  | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1)  |  $add.style.effectdeath | $check.clone.death($1)
     $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
-    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, DrowningMessage) | writeini $char($1) Battle Status normal | dec %hp %drowning | writeini $char($1) Battle HP %hp | return 
+    $set_chr_name($1)
+    if ($readini($char($1), info, IgnoreElementalMessage) != true) {  write $txtfile(temp_status.txt) $readini(translation.dat, status, DrowningMessage) }
+    writeini $char($1) Battle Status normal | dec %hp %drowning | writeini $char($1) Battle HP %hp | return 
   }
   else { return }
 }
@@ -4538,7 +4549,9 @@ earthquake_check {
     $set_chr_name($1)
     if (%shaken >= %hp) { $display.message($readini(translation.dat, status, EarthquakeDeath),battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1) | $add.style.effectdeath | $check.clone.death($1)
     $goldorb_check($1,magiceffect) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
-    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, EarthquakeMessage)   | writeini $char($1) Battle Status normal | dec %hp %shaken | writeini $char($1) Battle HP %hp | return 
+    $set_chr_name($1) 
+    if ($readini($char($1), info, IgnoreElementalMessage) != true) { write $txtfile(temp_status.txt) $readini(translation.dat, status, EarthquakeMessage)  }
+    writeini $char($1) Battle Status normal | dec %hp %shaken | writeini $char($1) Battle HP %hp | return 
   }
   else { return }
 }
