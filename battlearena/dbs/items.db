@@ -1560,7 +1560,7 @@ Cost=0
 AccessoryType=IncreaseCriticalHits
 Desc=An accessory for a true hero.
 IncreaseCriticalHits.Amount=$iif($readini($char($1), weapons, MasamuneII) >= 1, 90, 0)
-SellPrice=10
+SellPrice=3000
 
 [Axe-Pin]
 Type=accessory
