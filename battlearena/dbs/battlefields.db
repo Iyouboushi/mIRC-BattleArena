@@ -73,13 +73,13 @@ into battlefields.lst
 =============================================================
 
 
-[plains]
+[Plains]
 weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=0
 scavenge=Potion.VitalStar.X-Potion.Shihei.Sokubaku.Topaz.Zircon.Ink.Paper.EarthSphere
 limitations=
 
-[graveyard]
+[Graveyard]
 weather=calm.gloomy.rainy.dry.snowy.stormy
 NumberOfEvents=1
 scavenge=Onyx.Red_Fang.Thunder_Orb.Stop_watch
@@ -116,7 +116,7 @@ Event3Desc=Slurms McKenzie, a crazy party worm wearing sunglasses over it's tiny
 Event3Target=players
 Event3Amount=$rand(500,900)
 
-[farm]
+[Farm]
 weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=1
 scavenge=Potion.Topaz.Milk
@@ -496,7 +496,7 @@ event2=statusonly
 event2statusType=annoyed
 event2Chance=30
 Event2Desc=The leader of the French knights suddenly yells out, "You don't frighten us, English pig dogs! Go and boil your bottoms, you children of a silly person. I blow my nose at you, so-called "Allied Forces!"
-Event2Target=all
+Event2Target=players
 Event2Amount=0
 
 event3=statusonly
@@ -534,84 +534,84 @@ event3=statusonly
 event3statusType=annoyed
 event3Chance=30
 Event3Desc=Colonel: ...Infiltrate... ...the enemy fortress... ...Outer Heaven! ...Destroy... ...the final weapon... ...Metal Gear!
-Event3Target=random
+Event3Target=all
 
 event4=statusonly
 event4statusType=annoyed
 event4Chance=30
 Event4Desc=Colonel: President Baker should be somewhere to the south of where you blasted through the wall. Hurry and save him before the terrorists discover his code.
-Event4Target=random
+Event4Target=all
 
 event5=statusonly
 event5statusType=annoyed
 event5Chance=30
 Event5Desc=Colonel: You got a PSG-1? You can use that against Sniper Wolf. Hurry up and save Meryl!
-Event5Target=random
+Event5Target=all
 
 event6=statusonly
 event6statusType=annoyed
 event6Chance=30
 Event6Desc=Colonel: Your mission is to infiltrate the fortress Galuade, rescue the hostages and neutralize Metal Gear before its assembly is complete.
-Event6Target=random
+Event6Target=all
 
 event7=statusonly
 event7statusType=annoyed
 event7Chance=30
 Event7Desc=Colonel: Variety Level 13. Rescue Meryl, the "Return of Genola."
-Event7Target=random
+Event7Target=all
 
 event8=statusonly
 event8statusType=annoyed
 event8Chance=30
 Event8Desc=Colonel: Kawanishi-Noseguchi, Kinunobebashi, Takiyama, Uguisunomori, Tsuzumigataki, Tada, Hirano, Ichinotorii, Uneno, Yamashita, Sasabe, Kofudai, Tokiwadai, Myoukenguchi.
-Event8Target=random
+Event8Target=all
 
 event9=statusonly
 event9statusType=annoyed
 event9Chance=30
 Event9Desc=Colonel: I noticed this a while back, but you have far too many Game Overs. Sorry to be blunt, but you really stink at this game.
-Event9Target=random
+Event9Target=players
 
 event10=statusonly
 event10statusType=annoyed
 event10Chance=30
 Event10Desc=Colonel: Honestly, though, you have been playing this game for a long time. Don't you have anything else to do with your time?
-Event10Target=random
+Event10Target=players
 
 event11=statusonly
 event11statusType=annoyed
 event11Chance=30
 Event11Desc=Colonel: You seem to get a real thrill out of slaughtering the enemy. Are you frustrated about something?
-Event11Target=random
+Event11Target=players
 
 event12=statusonly
 event12statusType=annoyed
 event12Chance=30
 Event12Desc=Colonel: I hear it's amazing when the famous purple stuffed worm in flap-jaw space with the tuning fork does a raw blink on Hara-Kiri rock. I need scissors! 61!
-Event12Target=random
+Event12Target=all
 
 event13=statusonly
 event13statusType=annoyed
 event13Chance=30
 Event13Desc=Colonel: I was a North American Fall Webworm in my past life. Those were the good old days.... What were you in your former life?
-Event13Target=random
+Event13Target=all
 
 event14=statusonly
 event14statusType=annoyed
 event14Chance=30
 Event14Desc=Colonel: Even my patience has its limits. I just can't leave this thing up to you any longer. I'll do the fighting! You can just go home!
-Event14Target=random
+Event14Target=all
 
 Event15=statusonly
 Event15statusType=annoyed
 Event15Chance=30
 Event15Desc=Colonel: Actually, I am in really bad shape financially. I pay money to my ex-wife as part of our divorce, among other bills... I just had no choice but to make you pay for lunch the other day. I'm really sorry.
-Event15Target=random
+Event15Target=all
 
 Event16=statusonly
 Event16chance=30
 Event16Desc=Colonel: An Anemone or Clematis plant's juice can cause a rash. When pruning them, it's a good idea to wear gloves.
-Event16Target=random
+Event16Target=all
 
 [Raptor News Network Studio]
 weather=calm
@@ -777,25 +777,25 @@ event1Amount=$rand(500,1000)
 [Eastern Palace]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-ignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Desert Palace]
 Weather=dry
 NumberOfEvents=0
-limitations=no-mech.no-ignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Tower of Hera]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-ignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Hyrule Field]
 Weather=light
 NumberOfEvents=0
-limitations=no-mech.no-ignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons
 scavenge=Diamond.BombFlower
 
 [Overworld - Night]
@@ -843,13 +843,13 @@ scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 [Leene Square]
 weather=calm
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons
+limitations=no-mech.no-trusts.no-summons.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Zohar Cave]
 weather=gloomy
 NumberofEvents=0
-limitations=no-item.no-trusts.no-summons.no-quicksilver.no-fleeing
+limitations=no-item.no-trusts.no-summons.no-quicksilver.no-fleeing.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Ancient Mayan Ruins]
@@ -887,5 +887,5 @@ limitations=no-mech.no-fleeing
 [Tam-Tara Deepcroft Cavern]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech
+limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
