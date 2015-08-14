@@ -1949,7 +1949,11 @@ guardian_style_check {
   if (%current.playerstyle = Guardian) { 
     set %current.playerstyle.level $readini($char($1), styles, Guardian)
 
-    if ($person_in_mech($1) = true) {  set %current.playerstyle.level 12 }
+    if ($person_in_mech($1) = true) { set %current.playerstyle.level 12 }
+
+    if (%battle.type = dungeon) || (%portal.bonus = true)) {
+      if ((%current.playerstyle.level > 5) && ($person_in_mech($1) != true)) { set %current.playerstyle.level 5 } 
+    }
 
     var %block.value $calc(%current.playerstyle.level / 15.5)
     if (%block.value > .60) { var %block.value .60 }
