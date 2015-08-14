@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 08/13/15
+;;;; Last updated: 08/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1951,7 +1951,7 @@ guardian_style_check {
 
     if ($person_in_mech($1) = true) { set %current.playerstyle.level 12 }
 
-    if (%battle.type = dungeon) || (%portal.bonus = true)) {
+    if ((%battle.type = dungeon) || (%portal.bonus = true)) {
       if ((%current.playerstyle.level > 5) && ($person_in_mech($1) != true)) { set %current.playerstyle.level 5 } 
     }
 
