@@ -52,6 +52,7 @@ Created=N/a
 BattleStats=ignoreHP
 Streak=30
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=bomb

@@ -51,6 +51,7 @@ LastIP=N/a
 Created=N/a
 Streak=11
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=Demon

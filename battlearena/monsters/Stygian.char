@@ -52,6 +52,7 @@ Created=N/a
 Streak=11
 StreakMax=500
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=Demon
@@ -112,14 +113,14 @@ TurbineCyclone=10
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=120
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=120
-Dark=10
+Earth=80
+Fire=130
+Wind=80
+Water=80
+Ice=80
+Lightning=80
+Light=110
+Dark=0
 HandToHand=100
 Whip=100
 Sword=100

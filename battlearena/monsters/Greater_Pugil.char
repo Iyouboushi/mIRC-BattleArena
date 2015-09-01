@@ -52,6 +52,7 @@ Created=N/a
 Streak=401
 Biome=River.Underwater Cavern.Ocean
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=pugil

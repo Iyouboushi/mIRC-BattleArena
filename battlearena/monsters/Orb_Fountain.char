@@ -47,6 +47,7 @@ LastIP=N/a
 Created=N/a
 ai_type=$iif(%current.turn < %darkness.turns || %current.turn = $null, defender, techonly)
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=
@@ -92,7 +93,7 @@ OrbPower=15
 [Skills]
 
 [Techniques]
-ShatteringBomb=999999
+ShatteringBomb=9999999
 
 [Item_Amount]
 
@@ -104,7 +105,7 @@ Wind=100
 Water=100
 Ice=100
 Lightning=100
-Light=100
+Light=120
 Dark=100
 HandToHand=100
 Whip=100
@@ -113,8 +114,16 @@ Gun=100
 Rifle=100
 Katana=100
 Wand=100
-Spear=100
-Scythe=100
+Spear=120
+Scythe=120
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Dancing=100
+Engine=100
+Mace=100
+PinkChainsaw=100
+Stave=100
+EnergyBlaster=110

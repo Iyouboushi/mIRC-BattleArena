@@ -1,3 +1,0 @@
-swings the staff at %enemy $+'s direction, sending a small non-elemental spell towards %enemy
-runs up and hits %enemy over the head with the staff before dashing back
-slams the staff into %enemy $+ 's side before stepping backwards into a defensive stance

@@ -51,6 +51,7 @@ BossLevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 1200, 7500)
 IgnoreQuickSilver=True
 CanTaunt=False
 JustReleaseDefense=100
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

@@ -52,6 +52,7 @@ Created=N/a
 Streak=-1000
 CanTaunt=false
 IgnoreQuickSilver=true
+IgnoreElementalMessage=true
 
 [monster]
 type=demon

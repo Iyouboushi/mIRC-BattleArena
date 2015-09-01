@@ -52,6 +52,7 @@ Streak=4
 StreakMax=50
 Biome=Underwater Cavern.Beach
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=crab
@@ -122,13 +123,13 @@ Ice=110
 Lightning=120
 Light=100
 Dark=100
-HandToHand=100
-Whip=100
+HandToHand=80
+Whip=80
 Sword=100
 Gun=100
 Rifle=100
 Katana=100
-Wand=100
+Wand=80
 Spear=100
 Scythe=100
 Glyph=100

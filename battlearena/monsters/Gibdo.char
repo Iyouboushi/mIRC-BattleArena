@@ -51,6 +51,7 @@ LastIP=N/a
 Created=N/a
 Streak=25
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=undead

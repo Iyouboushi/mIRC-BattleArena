@@ -59,6 +59,7 @@ Created=N/a
 Streak=100
 IgnoreQuicksilver=true
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no
@@ -298,4 +299,4 @@ Current=500
 
 
 [Ignitions]
-WiseReflection=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Eldora), battle, hp) / $readini($char(Eldora), basestats, hp)) * 100) <= 75, 1, 0))
+WiseReflection=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Lirarian), battle, hp) / $readini($char(Lirarian), basestats, hp)) * 100) <= 75, 1, 0))

@@ -38,7 +38,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=VitalStar
+Drops=
 
 [monster]
 type=bee
@@ -56,6 +56,7 @@ Created=N/a
 Streak=31
 StreakMax=100
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

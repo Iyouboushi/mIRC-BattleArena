@@ -53,6 +53,7 @@ BattleStats=ignoreHP
 Streak=80
 CanTaunt=false
 MoonPhase=New Moon
+IgnoreElementalMessage=true
 
 [Monster]
 Type=undead

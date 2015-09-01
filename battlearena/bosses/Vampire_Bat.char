@@ -47,6 +47,7 @@ LastIP=N/a
 Created=N/a
 Streak=170
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=bat

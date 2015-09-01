@@ -51,6 +51,7 @@ BossLevel=200
 CanTaunt=False
 IgnoreQuicksilver=true
 JustReleaseDefense=100
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

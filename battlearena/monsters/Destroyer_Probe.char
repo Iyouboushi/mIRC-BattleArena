@@ -49,6 +49,7 @@ BossLevel=200
 CanTaunt=False
 IgnoreQuicksilver=true
 RageMode=ignore
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

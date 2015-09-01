@@ -51,6 +51,7 @@ Created=N/a
 Streak=105
 Biome=river.beach
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=crab

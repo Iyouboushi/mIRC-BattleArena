@@ -57,6 +57,7 @@ CanFlee=true
 Streak=31
 StreakMax=101
 CanTaunt=true
+IgnoreElementalMessage=true
 
 [Monster]
 Type=
@@ -121,8 +122,8 @@ Wind=100
 Water=100
 Ice=120
 Lightning=100
-Light=100
-Dark=100
+Light=80
+Dark=80
 HandToHand=100
 Whip=100
 Sword=100

@@ -46,6 +46,7 @@ Created=N/a
 Streak=41
 StreakMax=91
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=lizard

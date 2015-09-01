@@ -49,6 +49,7 @@ Created=N/a
 Streak=-1000
 BossLevel=150
 CanTaunt=false
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

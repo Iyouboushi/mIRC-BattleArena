@@ -57,7 +57,7 @@ Created=N/a
 Streak=150
 StreakMax=250
 CanTaunt=false
-
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

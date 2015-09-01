@@ -34,7 +34,7 @@ MonsterSummon=Leviathan's Center Heart drips %number.of.spaws.needed drop of bl
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=KindredSeal.BloodSocks.BloodyHeart
+Drops=
 
 [Monster]
 Type=
@@ -53,6 +53,7 @@ Streak=-1000
 bosslevel=50
 CanTaunt=false
 Guardian=LeviathanLeftHeart.LeviathanRightHeart
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

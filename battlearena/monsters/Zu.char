@@ -46,6 +46,7 @@ Created=N/a
 Streak=191
 StreakMax=1000
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=bird

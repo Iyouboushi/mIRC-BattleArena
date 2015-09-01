@@ -48,6 +48,7 @@ Created=N/a
 Streak=-1000
 Month=12
 CanTaunt=true
+IgnoreElementalMessage=true
 
 [Monster]
 Type=treant

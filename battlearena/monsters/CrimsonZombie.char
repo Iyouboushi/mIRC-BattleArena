@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=500
 Tp=100
-Str=$calc(300 + $current.battlestreak)
-Def=$calc(300 + $current.battlestreak)
-Int=$calc(300 + $current.battlestreak)
-Spd=$calc(300 + $current.battlestreak)
+Str=$calc(1 + $current.battlestreak)
+Def=$calc(1 + $current.battlestreak)
+Int=$calc(1 + $current.battlestreak)
+Spd=$calc(1 + $current.battlestreak)
 IgnitionGauge=2
 Name=Crimson Zombie
 
 [Battle]
 Hp=500
 Tp=100
-Str=$calc(300 + $current.battlestreak)
-Def=$calc(300 + $current.battlestreak)
-Int=$calc(300 + $current.battlestreak)
-Spd=$calc(300 + $current.battlestreak)
+Str=300
+Def=300
+Int=300
+Spd=300
 IgnitionGauge=2
 Status=alive
 
@@ -46,8 +46,10 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=500
+Streak=101
 CanTaunt=false
+IgnoreElementalMessage=true
+DeathConditions=Magic
 
 [Monster]
 Type=zombie
@@ -88,7 +90,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=zombiefists
-zombiefists=$calc(100 + $current.battlestreak)
+zombiefists=$calc(1 + $current.battlestreak)
 
 [Skills]
 Zen=5
@@ -99,30 +101,30 @@ Resist-Intimidate=100
 Resist-Amnesia=100
 
 [Techniques]
-ZombieBite=$calc(100 + $current.battlestreak)
+ZombieBite=$calc(1 + $current.battlestreak)
 
 [modifiers]
 Heal=none
-Earth=120
+Earth=50
 Fire=200
-Wind=120
-Water=120
-Ice=120
-Lightning=120
-Light=150
-Dark=10
-HandToHand=70
-Whip=70
-Sword=90
-Gun=80
-Rifle=80
-Katana=90
-Wand=90
-Spear=90
-Scythe=120
-Glyph=120
-GreatSword=120
-Bow=90
+Wind=50
+Water=50
+Ice=50
+Lightning=50
+Light=50
+Dark=0
+HandToHand=50
+Whip=50
+Sword=60
+Gun=60
+Rifle=70
+Katana=60
+Wand=50
+Spear=70
+Scythe=60
+Glyph=60
+GreatSword=60
+Bow=70
 RainStorm=40
 SpinningAttack=40
 ApexArrow=40
@@ -130,3 +132,4 @@ TornadoKick=40
 SonicThrust=40
 CircularChain=40
 CircleBlade=40
+ChantDuCygne=100

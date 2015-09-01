@@ -39,7 +39,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-drops=BeastmenSeal.QuadavShell
+drops=
 
 [Info]
 Flag=monster
@@ -53,6 +53,7 @@ Created=N/a
 Streak=51
 StreakMax=100
 CanTaunt=true
+IgnoreElementalMessage=true
 
 [Monster]
 Type=quadav
@@ -113,21 +114,21 @@ Headbutt=10
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
+Earth=80
+Fire=80
+Wind=80
 Water=10
-Ice=100
+Ice=110
 Lightning=130
-Light=100
-Dark=100
-HandToHand=100
-Whip=100
+Light=70
+Dark=70
+HandToHand=80
+Whip=80
 Sword=100
 Gun=100
-Rifle=100
+Rifle=110
 Katana=100
-Wand=100
+Wand=80
 Spear=100
 Scythe=100
 Glyph=100

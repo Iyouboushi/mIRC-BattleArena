@@ -51,6 +51,7 @@ LastIP=N/a
 Created=N/a
 Streak=31
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=bee

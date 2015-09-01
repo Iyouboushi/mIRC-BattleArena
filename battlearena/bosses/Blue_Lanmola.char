@@ -53,6 +53,7 @@ Streak=-1000
 bosslevel=23
 CanTaunt=false
 IgnoreQuicksilver=true
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

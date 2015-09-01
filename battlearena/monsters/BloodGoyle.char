@@ -54,6 +54,7 @@ Created=N/a
 Streak=10
 StreakMax=99
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=demon

@@ -47,6 +47,7 @@ LastIP=N/a
 Created=N/a
 Streak=180
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=Dhalmel

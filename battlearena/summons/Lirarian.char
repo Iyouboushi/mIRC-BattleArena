@@ -61,6 +61,7 @@ LastIP=N/a
 Created=N/a
 IgnoreQuickSilver=true
 CanTaunt=false
+IgnoreElementalMessage=true
 
 
 [Status]

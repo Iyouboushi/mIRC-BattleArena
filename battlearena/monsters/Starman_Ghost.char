@@ -46,6 +46,7 @@ Created=N/a
 Streak=111
 StreakMax=191
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=undead

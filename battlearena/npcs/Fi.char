@@ -55,6 +55,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
 Streak=-1000
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

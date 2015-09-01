@@ -46,6 +46,7 @@ Created=N/a
 StreakMax=4
 Biome=River.Underwater Cavern.Beach
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=crab

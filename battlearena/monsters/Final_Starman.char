@@ -46,6 +46,7 @@ Created=N/a
 Streak=301
 StreakMax=501
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=
@@ -121,13 +122,13 @@ SpellMasterXP=1
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
+Earth=80
+Fire=80
+Wind=80
+Water=80
+Ice=80
 Lightning=130
-Light=100
+Light=80
 Dark=20
 HandToHand=100
 Whip=100

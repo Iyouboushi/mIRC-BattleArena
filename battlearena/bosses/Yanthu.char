@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a Hybrid Elemental made of all elements. A powerful force from the Walk of Echoes, a world between worlds.
+Char=is a Hybrid Elemental, which is made from all elements. A powerful force from the Walk of Echoes, a world between worlds.
 Rage=screams in rage 
 BossQuote=....
 
@@ -53,6 +53,7 @@ Created=N/a
 Streak=300
 StreakMax=600
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

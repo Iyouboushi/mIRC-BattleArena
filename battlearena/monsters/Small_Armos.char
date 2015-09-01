@@ -48,6 +48,7 @@ StreakMax=260
 MetalDefense=true
 CanTaunt=false
 IgnorePresident=true
+IgnoreElementalMessage=true
 
 [monster]
 type=
@@ -111,31 +112,39 @@ FastBlade=$calc(20 + $current.battlestreak)
 
 [modifiers]
 Heal=none
-Earth=50
-Fire=50
-Wind=50
-Water=50
-Ice=50
-Lightning=50
-Light=50
-Dark=50
-HandToHand=30
-Whip=50
-Gun=50
-Rifle=50
-Katana=50
-Wand=50
-Spear=50
-Scythe=50
-Glyph=50
-GreatSword=120
-Bow=100
-Sword=100
+Earth=20
+Fire=20
+Wind=20
+Water=20
+Ice=20
+Lightning=20
+Light=20
+Dark=20
+HandToHand=20
+Whip=20
+Gun=20
+Rifle=20
+Katana=20
+Wand=20
+Spear=20
+Scythe=20
+Glyph=20
+GreatSword=130
+Bow=20
+Sword=20
+Axe=20
+Dagger=20
+Dancing=20
+Engine=20
+Mace=20
+PinkChainsaw=20
+Stave=20
+EnergyBlaster=20
 HolyHandGrenade=500
 BombFragment=200
-XmasGrenade=120
-Dynamite=110
-BombFlower=105
+XmasGrenade=150
+Dynamite=120
+BombFlower=110
 
 
 

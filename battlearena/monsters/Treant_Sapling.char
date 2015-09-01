@@ -46,6 +46,7 @@ LastIP=N/a
 Created=N/a
 Streak=500
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=sapling

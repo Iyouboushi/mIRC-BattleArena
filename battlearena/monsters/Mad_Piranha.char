@@ -53,6 +53,7 @@ Streak=20
 StreakMax=100
 Biome=River.Underwater Cavern
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=

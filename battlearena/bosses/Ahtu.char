@@ -47,7 +47,7 @@ LastIP=N/a
 Created=N/a
 Streak=290
 CanTaunt=false
-
+IgnoreElementalMessage=true
 
 [Monster]
 Type=Treant

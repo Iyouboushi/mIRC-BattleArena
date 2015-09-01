@@ -33,7 +33,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-drops=BeetleJaw.BeetleShell
+drops=
 
 [Info]
 Flag=monster
@@ -47,6 +47,7 @@ Created=N/a
 Streak=50
 StreakMax=200
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=beetle
@@ -102,21 +103,21 @@ RhinoGuard=1
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
+Earth=50
+Fire=80
+Wind=80
+Water=80
 Ice=120
 Lightning=100
-Light=120
-Dark=100
-HandToHand=100
-Whip=100
+Light=80
+Dark=80
+HandToHand=80
+Whip=80
 Sword=100
 Gun=100
 Rifle=100
 Katana=100
-Wand=100
+Wand=80
 Spear=100
 Scythe=100
 Glyph=100

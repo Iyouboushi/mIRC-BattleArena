@@ -42,7 +42,7 @@ DeathMessage=fizzles as it shrinks smaller and smaller.  Its red glow fades and 
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=KindredSeal.IgnitionStar.BombFragment
+Drops=
 
 [Info]
 Flag=monster
@@ -57,6 +57,7 @@ CanTaunt=false
 ai_type=$iif(%current.turn <= 5 || %current.turn = $null, defender, techonly)
 Streak=-1000
 Bosslevel=20
+IgnoreElementalMessage=true
 
 [Monster]
 Type=bomb

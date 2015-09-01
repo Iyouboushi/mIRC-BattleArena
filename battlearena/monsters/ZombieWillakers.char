@@ -52,9 +52,9 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=Monster
-CanTaunt=true
-TauntFile=taunts_brucewillakers.txt
+CanTaunt=false
 Streak=-1000
+IgnoreElementalMessage=true
 
 [monster]
 type=zombie
@@ -102,12 +102,12 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Excaliju
-Excaliju=$calc(100 + $current.battlestreak)
-Virendra=$calc(100 + $current.battlestreak)
+Excaliju=$calc(1 + $current.battlestreak)
+Virendra=$calc(1 + $current.battlestreak)
 
 [Skills]
-Swordmaster=300
-Archery=300
+Swordmaster=100
+Archery=100
 Resist-Paralysis=100
 Resist-Amnesia=100
 Resist-Charm=100
@@ -120,14 +120,37 @@ Zen=5
 
 
 [Techniques]
-Requiescat=$calc(100 + $current.battlestreak)
-MillionStab=$calc(100 + $current.battlestreak)
-ApexArrow=$calc(100 + $current.battlestreak)
-EagleEyeShot=$calc(100 + $current.battlestreak)
+Requiescat=$calc(1 + $current.battlestreak)
+MillionStab=$calc(1 + $current.battlestreak)
+ApexArrow=$calc(1 + $current.battlestreak)
+EagleEyeShot=$calc(1 + $current.battlestreak)
 
 [Item_Amount]
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=5
 WeaponMasterXP=1
+
+[modifiers]
+Heal=none
+Earth=80
+Fire=150
+Wind=80
+Water=80
+Ice=80
+Lightning=80
+Light=20
+Dark=20
+HandToHand=80
+Whip=80
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=80
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100

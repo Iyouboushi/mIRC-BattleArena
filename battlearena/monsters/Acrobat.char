@@ -46,7 +46,7 @@ Created=N/a
 Streak=51
 StreakMax=120
 CanTaunt=false
-
+IgnoreElementalMessage=true
 
 [Monster]
 Type=bat
@@ -124,3 +124,4 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Stave=100

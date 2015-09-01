@@ -52,7 +52,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no
@@ -136,7 +136,7 @@ Nitesco=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 Globus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 Acerbatus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 Luminatio=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Dominus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Dominus=$round($calc(1 + (($current.battlestreak / 2) / 3.5)),0)
 
 [Item_Amount]
 
@@ -155,23 +155,23 @@ SinestroCustros=HurtEthereal.TechBonus.MeleeBonus.MagicBonus.EnhanceGlyph
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=100
-Dark=100
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+Earth=90
+Fire=90
+Wind=90
+Water=90
+Ice=90
+Lightning=90
+Light=90
+Dark=90
+HandToHand=110
+Whip=110
+Sword=110
+Gun=110
+Rifle=110
+Katana=110
+Wand=110
+Spear=110
+Scythe=110
+Glyph=0
+GreatSword=110
+Bow=110

@@ -54,6 +54,7 @@ bosslevel=27
 CanTaunt=false
 IgnoreQuicksilver=true
 DeathConditions=Magic.Tech.MagicEffect
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

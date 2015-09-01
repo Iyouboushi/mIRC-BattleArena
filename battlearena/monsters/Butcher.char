@@ -59,6 +59,7 @@ Created=N/a
 streak=110
 CanTaunt=false
 ai_type=berserker
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

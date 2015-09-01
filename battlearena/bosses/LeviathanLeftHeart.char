@@ -34,7 +34,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=KindredSeal.BloodHauberk
+Drops=
 
 [Monster]
 Type=
@@ -52,6 +52,7 @@ Created=N/a
 Streak=-1000
 bosslevel=48
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

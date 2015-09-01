@@ -55,6 +55,7 @@ Streak=20
 StreakMax=300
 Biome=River.Ocean
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=seamonk

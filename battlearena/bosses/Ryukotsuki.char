@@ -54,6 +54,7 @@ CanStagger=yes
 StaggerAmount=$rand(190,205)
 Streak=300
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

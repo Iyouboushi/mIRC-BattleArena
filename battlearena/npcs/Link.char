@@ -47,6 +47,7 @@ Created=N/a
 IgnoreQuicksilver=true
 CanTaunt=false
 CanUseItems=true
+IgnoreElementalMessage=true
 
 [monster]
 type=Hylian

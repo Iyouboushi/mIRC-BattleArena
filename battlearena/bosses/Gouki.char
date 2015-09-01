@@ -59,6 +59,7 @@ IgnoreQuickSilver=true
 JustReleaseDefense=100
 IgnorePresident=true
 RageMode=Ignore
+IgnoreElementalMessage=true
 
 [monster]
 type=demon

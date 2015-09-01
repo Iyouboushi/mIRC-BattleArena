@@ -39,7 +39,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-drops=IronOre.Sapphire.Topaz.Emerald.Ruby
+drops=
 
 [monster]
 type=worm
@@ -57,6 +57,7 @@ Created=N/a
 Streak=100
 StreakMax=200
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

@@ -38,7 +38,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=TigerFang
+Drops=
 
 [Info]
 Flag=monster
@@ -52,6 +52,7 @@ Created=N/a
 Streak=301
 StreakMax=500
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=tiger

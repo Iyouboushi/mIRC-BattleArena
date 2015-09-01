@@ -58,6 +58,7 @@ Streak=100
 StreakMax=550
 CanTaunt=false
 Biome=Mountain
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

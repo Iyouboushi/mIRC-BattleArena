@@ -46,6 +46,7 @@ Created=N/a
 Streak=172
 StreakMax=271
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=treant

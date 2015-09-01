@@ -45,6 +45,7 @@ LastIP=N/a
 Created=N/a
 Streak=41
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=cactuar

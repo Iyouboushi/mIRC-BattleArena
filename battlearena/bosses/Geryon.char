@@ -57,6 +57,7 @@ IgnoreQuickSilver=true
 JustReleaseDefense=90
 CanStagger=yes
 StaggerAmount=$round($calc(.20 * $readini($char(Geryon), basestats, hp)),0)
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

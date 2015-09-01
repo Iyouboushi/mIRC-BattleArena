@@ -54,6 +54,7 @@ Created=N/a
 Streak=-1000
 BossLevel=275
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

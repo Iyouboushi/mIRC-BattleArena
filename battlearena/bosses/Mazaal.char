@@ -54,6 +54,7 @@ bosslevel=30
 CanTaunt=false
 Guardian=MazaalRHand.MazaalLHand
 IgnoreQuicksilver=true
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

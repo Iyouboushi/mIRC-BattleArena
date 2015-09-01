@@ -46,6 +46,7 @@ Created=N/a
 Streak=5
 StreakMax=10
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=bat

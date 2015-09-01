@@ -53,6 +53,7 @@ Streak=30
 StreakMax=250
 IgnoreQuicksilver=true
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

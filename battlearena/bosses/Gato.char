@@ -51,6 +51,7 @@ CanTaunt=false
 Streak=-1000
 JustReleaseDefense=100
 BossLevel=9
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

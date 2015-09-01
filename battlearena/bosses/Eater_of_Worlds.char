@@ -52,6 +52,7 @@ CanTaunt=False
 IgnoreQuicksilver=true
 JustReleaseDefense=100
 ai_type=techonly
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

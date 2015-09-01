@@ -54,6 +54,7 @@ Created=N/a
 Streak=50
 StreakMax=150
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=Gorgon
@@ -95,7 +96,7 @@ MPRegenerating=no
 [Weapons]
 Equipped=MedusaPower
 MedusaPower=50
-weakness=spear.gun.rifle.katana
+
 
 [Skills]
 resist-amnesia=100

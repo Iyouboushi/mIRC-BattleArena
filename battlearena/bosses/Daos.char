@@ -60,6 +60,7 @@ Streak=110
 SpawnAfterDeath=GuardDaos
 CanTaunt=true
 IgnorePresident=True
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

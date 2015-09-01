@@ -55,6 +55,7 @@ CanTaunt=false
 IgnoreQuicksilver=true
 DeathConditions=Melee.Renkei.Status
 ai_type=techonly
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

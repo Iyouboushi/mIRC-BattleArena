@@ -45,6 +45,7 @@ LastIP=N/a
 Created=N/a
 Streak=51
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=
@@ -111,14 +112,14 @@ FireExplosion=10
 
 [modifiers]
 Heal=none
-Earth=100
+Earth=80
 Fire=50
-Wind=100
-Water=100
-Ice=100
-Lightning=100
+Wind=80
+Water=80
+Ice=80
+Lightning=80
 Light=120
-Dark=80
+Dark=40
 HandToHand=100
 Whip=100
 Sword=100

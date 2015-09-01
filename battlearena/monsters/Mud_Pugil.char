@@ -53,6 +53,7 @@ Streak=101
 StreakMax=200
 Biome=River.Underwater Cavern.Ocean
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=pugil

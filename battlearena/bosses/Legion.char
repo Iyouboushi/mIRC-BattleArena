@@ -36,7 +36,7 @@ MonsterSummon=Legion slams its tentacles into %number.of.spawns.needed lifeless
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=RottingMeat.ChaosBurgeonet.ChaosCuirass.ChaosFlanchard.ChaosSollerets.ChaosGauntlets.RottingMeat.KindredSeal
+Drops=
 
 [Monster]
 Type=undead
@@ -54,6 +54,7 @@ Created=N/a
 Streak=-1000
 bosslevel=96
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

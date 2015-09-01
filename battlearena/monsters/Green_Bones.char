@@ -51,6 +51,7 @@ Created=N/a
 Streak=300
 CanTaunt=true
 TimeOfDay=Evening.Night
+IgnoreElementalMessage=true
 
 [Monster]
 Type=undead
@@ -118,7 +119,7 @@ Wind=150
 Water=100
 Ice=100
 Lightning=100
-Light=100
+Light=80
 Dark=200
 HandToHand=110
 Whip=120

@@ -50,6 +50,7 @@ CanTaunt=False
 IgnoreQuicksilver=true
 JustReleaseDefense=100
 RageMode=ignore
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

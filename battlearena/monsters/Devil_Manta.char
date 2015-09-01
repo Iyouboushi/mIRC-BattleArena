@@ -52,6 +52,7 @@ Created=N/a
 Streak=31
 Biome=River.Underwater Cavern
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=seamonk

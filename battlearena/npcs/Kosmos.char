@@ -57,6 +57,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
+IgnoreElementalMessage=true
 
 
 [Status]
@@ -150,7 +151,7 @@ DinahWeapons=DecreaseMechEnergyCost.EnhanceRanged.EnhanceSword.IgnoreDefense.Ign
 
 [Styles]
 Equipped=Guardian
-Guardian=20
+Guardian=15
 GuardianXP=0
 
 

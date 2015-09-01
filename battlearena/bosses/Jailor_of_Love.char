@@ -54,6 +54,7 @@ Streak=250
 SpawnAfterDeath=AbsoluteVirtue
 IgnoreQuicksilver=true
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

@@ -58,7 +58,7 @@ CanStagger=yes
 JustReleaseDefense=100
 IgnorePresident=true
 CanFlee=false
-
+IgnoreElementalMessage=true
 
 [monster]
 type=Hylian

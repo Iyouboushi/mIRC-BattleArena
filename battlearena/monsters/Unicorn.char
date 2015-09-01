@@ -46,6 +46,7 @@ Created=N/a
 ai_type=berserker
 Streak=401
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=unicorn
@@ -98,6 +99,7 @@ Resist-Poison=100
 Impetus=20
 Resist-Paralysis=100
 
+
 [Techniques]
 HornStab=10
 UnicornKick=100
@@ -108,27 +110,23 @@ HolyII=80
 BanishV=100
 
 
-[Item_Amount]
-
-
-
 [modifiers]
 Heal=none
-Earth=90
-Fire=90
-Wind=90
-Water=90
-Ice=90
-Lightning=90
+Earth=80
+Fire=80
+Wind=80
+Water=80
+Ice=80
+Lightning=80
 Light=25
-Dark=125
-HandToHand=100
-Whip=100
+Dark=120
+HandToHand=80
+Whip=80
 Sword=100
 Gun=100
 Rifle=100
 Katana=100
-Wand=100
+Wand=80
 Spear=100
 Scythe=100
 Glyph=100

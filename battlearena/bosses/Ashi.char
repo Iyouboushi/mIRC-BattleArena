@@ -55,6 +55,7 @@ Streak=50
 IgnoreQuicksilver=true
 CanTaunt=true
 IgnorePresident=True
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

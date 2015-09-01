@@ -40,10 +40,7 @@ Fool's-Tablet
 PinkBow
 Aztec-Goldcoin
 Lucky-Rabbit'sFoot
-AlliedTrainingPaper
-WormFood
-DemonBell
-VirilityCan
+$read -l $+ $rand(1, $lines($lstfile(chest_black.lst))) $lstfile(chest_black.lst)
 EthRune
 MtlRune
 HiRune
@@ -57,6 +54,4 @@ ItmRune
 RenRune
 NinRune
 IgDefRune
-SuperPotion
-MegaPotion
-BigWhoop
+$read -l $+ $rand(1, $lines($lstfile(items_healing.lst))) $lstfile(items_healing.lst)

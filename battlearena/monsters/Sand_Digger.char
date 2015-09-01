@@ -39,7 +39,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-drops=Ruby.Sapphire.Emerald.Topaz
+drops=
 
 [monster]
 type=worm
@@ -58,6 +58,7 @@ Streak=100
 StreakMax=650
 CanTaunt=false
 Biome=Beach
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

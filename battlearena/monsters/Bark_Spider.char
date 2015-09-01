@@ -52,6 +52,7 @@ Created=N/a
 Streak=11
 StreakMax=111
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=spider

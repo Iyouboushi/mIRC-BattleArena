@@ -50,6 +50,7 @@ CanTaunt=false
 streak=-1000
 Guardian=Deepcroft_Cultist
 IgnoreQuicksilver=true
+IgnoreElementalMessage=true
 
 [Monster]
 Type=

@@ -51,6 +51,7 @@ LastIP=N/a
 Created=N/a
 Streak=41
 CanTaunt=true
+IgnoreElementalMessage=true
 
 [Monster]
 Type=demon
@@ -115,8 +116,8 @@ Wind=100
 Water=100
 Ice=50
 Lightning=100
-Light=100
-Dark=10
+Light=20
+Dark=20
 HandToHand=100
 Whip=100
 Sword=100

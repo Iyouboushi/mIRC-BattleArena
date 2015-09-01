@@ -51,6 +51,7 @@ StreakMax=79
 MetalDefense=true
 CanTaunt=false
 IgnorePresident=true
+IgnoreElementalMessage=true
 
 [Monster]
 Type=slime
@@ -123,12 +124,6 @@ Blind=5
 Poison=5
 Paralyze=5
 
-[Item_Amount]
-
-
-[Element]
-Weakness=None
-Strong=Light.Dark.Fire.Ice.Lightning.Stone.Water.Wind
 
 [Styles]
 Equipped=SpellMaster
@@ -138,24 +133,31 @@ SpellMasterXP=1
 
 [modifiers]
 Heal=none
-Earth=50
-Fire=50
-Wind=50
-Water=50
-Ice=50
-Lightning=50
-Light=50
-Dark=50
-HandToHand=50
-Whip=50
-Sword=50
-Gun=50
-Rifle=50
-Katana=50
-Wand=50
-Spear=50
-Scythe=50
-Glyph=50
-GreatSword=50
-Bow=50
-
+Earth=30
+Fire=30
+Wind=30
+Water=30
+Ice=30
+Lightning=30
+Light=30
+Dark=30
+HandToHand=30
+Whip=30
+Sword=30
+Gun=30
+Rifle=30
+Katana=30
+Wand=30
+Spear=30
+Scythe=30
+Glyph=30
+GreatSword=30
+Bow=30
+Axe=30
+Dagger=30
+Dancing=30
+Engine=30
+Mace=30
+PinkChainsaw=30
+Stave=30
+EnergyBlaster=30

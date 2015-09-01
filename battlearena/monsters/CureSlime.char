@@ -47,6 +47,7 @@ CanFlee=true
 Streak=212
 CanTaunt=false
 ai_type=healer
+IgnoreElementalMessage=true
 
 [Monster]
 Type=slime

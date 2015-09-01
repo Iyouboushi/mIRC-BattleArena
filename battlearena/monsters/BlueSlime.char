@@ -47,6 +47,7 @@ CanFlee=true
 Streak=11
 StreakMax=71
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=slime

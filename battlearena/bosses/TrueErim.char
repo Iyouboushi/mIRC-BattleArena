@@ -52,6 +52,7 @@ LastIP=N/a
 Created=N/a
 Streak=350
 CanTaunt=true
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

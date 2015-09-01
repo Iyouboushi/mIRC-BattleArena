@@ -52,6 +52,7 @@ Created=N/a
 Streak=100
 StreakMax=250
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=

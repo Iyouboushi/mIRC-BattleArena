@@ -58,6 +58,7 @@ StreakMax=81
 MetalDefense=true
 CanTaunt=false
 IgnorePresident=true
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

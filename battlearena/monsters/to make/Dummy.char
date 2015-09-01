@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=999975
+Hp=999999
 Tp=50
 Str=0
 Def=0
@@ -9,7 +9,7 @@ Name=Dummy
 
 
 [Battle]
-Hp=999975
+Hp=999999
 Tp=50
 Str=0
 Def=0
@@ -101,6 +101,32 @@ List=
 [Item_Amount]
 
 
-[Element]
-Weakness=fire.ice.light.dark.wind.earth
-Strong=
+[modifiers]
+; Resistances/weaknesses/immunities/heals can be set here.  100 = normal damage, greater than 100 means weakness, 
+; less than 100 means resistances, 0 means immune to it.
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100

@@ -51,6 +51,7 @@ LastIP=N/a
 Created=N/a
 CanTaunt=false
 Streak=-1000
+IgnoreElementalMessage=true
 
 [monster]
 type=spider

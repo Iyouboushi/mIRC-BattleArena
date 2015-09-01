@@ -58,6 +58,7 @@ CanTaunt=false
 JustReleaseDefense=100
 CanStagger=yes
 StaggerAmount=$round($calc(.30 * $readini($char(AshiAtora), basestats, hp)),0)
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

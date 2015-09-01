@@ -51,6 +51,7 @@ Created=N/a
 Streak=300
 CanTaunt=true
 TimeOfDay=Evening.Night
+IgnoreElementalMessage=true
 
 [Monster]
 Type=undead
@@ -111,13 +112,13 @@ Firaja=200
 
 [modifiers]
 Heal=dark
-Earth=100
+Earth=80
 Fire=150
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=100
+Wind=80
+Water=80
+Ice=80
+Lightning=80
+Light=50
 Dark=200
 HandToHand=110
 Whip=120

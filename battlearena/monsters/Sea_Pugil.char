@@ -57,6 +57,7 @@ Streak=201
 StreakMax=400
 Biome=River.Underwater Cavern.Ocean
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

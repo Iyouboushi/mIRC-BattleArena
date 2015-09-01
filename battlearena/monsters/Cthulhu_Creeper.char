@@ -48,6 +48,7 @@ streak=-1000
 BossLevel=75
 CanTaunt=false
 IgnoreQuicksilver=true
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

@@ -87,9 +87,7 @@ IgnitionTrigger=10
 IgnitionConsume=5
 Cost=20
 Techs=DoubleBackstab
-Desc=$+ 's body feels light as a feather as $gender($1) speed is enhanced. %real.name also feels as though $gender3($1) could dodge attacks more easily now! The battlefield glows orange as all of %real.name $+ 's enemies begin to feel as though they can barely move.
-StatusTarget=enemy
-StatusType=Slow
+Desc=$+ 's body feels light as a feather as $gender($1) speed is enhanced. %real.name also feels as though $gender3($1) could dodge attacks more easily now!
 
 [Skydance]
 Name=Skydance
@@ -121,9 +119,7 @@ IgnitionTrigger=15
 IgnitionConsume=5
 Cost=20
 Techs=Chivalry
-Desc=$+ 's body is covered with a magical silver armor that helps deflect damage. All of %real.name $+ 's enemies feel weaker than usual as a strange blue energy shoots through their bodies.
-StatusTarget=enemy
-StatusType=strengthdown
+Desc=$+ 's body is covered with a magical silver armor that helps deflect damage.
 
 [LastResort]
 Name=LastResort
@@ -138,9 +134,7 @@ IgnitionTrigger=15
 IgnitionConsume=5
 Cost=20
 Techs=BloodBath
-Desc=unleashes an unholy blood magic upon $gender($1) weapon.  The magic consumes part of %real.name $+ 's defense but increases $gender($1) strength and adds the drain status to any of $gender($1) weapons. Blood-red ghosts appear on the battlefield and fly into all of %real.name $+ 's enemies, lowering their defense.
-StatusTarget=enemy
-StatusType=defensedown
+Desc=unleashes an unholy blood magic upon $gender($1) weapon.  The magic consumes part of %real.name $+ 's defense but increases $gender($1) strength and adds the drain status to any of $gender($1) weapons.
 
 [SSJ]
 Name=SSJ
@@ -158,7 +152,6 @@ StatusTarget=allies
 StatusType=TPRegenerating
 Techs=Chou_Kamehameha
 Desc=begin to channel an ancient power begins to channel an ancient power meant for another race. $gender($1) energy flares around $gender($1) body, then swirls all around $gender2($1) into a cone in the shape of $gender($1) body, which then turns into $gender($1) aura. The aura is flashing very brightly and violently at the moment. %real.name $+ 's body overloads as energy flares out like wild fire and $gender($1) hair turns gold and $gender($1) eyes green.
-
 
 ==========================
 NPC/Monster/Boss Ignitions

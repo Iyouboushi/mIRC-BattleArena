@@ -45,6 +45,7 @@ LastIP=N/a
 Created=N/a
 Streak=151
 CanTaunt=true
+IgnoreElementalMessage=true
 
 [Monster]
 Type=demon
@@ -116,16 +117,16 @@ WeaponMasterXP=1
 
 [modifiers]
 Heal=Fire
-Earth=100
+Earth=80
 Fire=200
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=100
-Dark=100
-HandToHand=100
-Whip=100
+Wind=80
+Water=120
+Ice=110
+Lightning=80
+Light=50
+Dark=0
+HandToHand=90
+Whip=90
 Sword=100
 Gun=100
 Rifle=100

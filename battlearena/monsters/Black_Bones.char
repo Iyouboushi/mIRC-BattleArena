@@ -6,7 +6,7 @@ Def=5
 Int=5
 Spd=6
 IgnitionGauge=2
-Name=Enchanted Bones
+Name=Black Bones
 
 [Battle]
 Hp=70
@@ -52,6 +52,7 @@ Streak=5
 StreakMax=10
 CanTaunt=true
 TimeOfDay=Evening.Night
+IgnoreElementalMessage=true
 
 [Monster]
 Type=undead

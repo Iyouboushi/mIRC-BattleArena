@@ -52,6 +52,7 @@ Streak=51
 StreakMax=105
 biome=river.beach
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=crab

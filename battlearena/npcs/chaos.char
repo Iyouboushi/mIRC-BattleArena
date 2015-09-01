@@ -144,7 +144,7 @@ AsherGuns=DecreaseMechEnergyCost.EnhanceRanged.IgnoreDefense.IgnoreMetalDefense.
 
 [Styles]
 Equipped=Guardian
-Guardian=10
+Guardian=12
 GuardianXP=1
 
 

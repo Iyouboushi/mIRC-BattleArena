@@ -56,6 +56,7 @@ Created=N/a
 Month=11
 CanTaunt=false
 streak=10
+IgnoreElementalMessage=true
 
 [Monster]
 type=
@@ -135,4 +136,3 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
-

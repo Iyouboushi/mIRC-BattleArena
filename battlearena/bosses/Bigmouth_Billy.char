@@ -51,6 +51,7 @@ LastIP=N/a
 Created=N/a
 StreakMax=50
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [monster]
 type=worm

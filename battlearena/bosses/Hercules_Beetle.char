@@ -47,6 +47,7 @@ Created=N/a
 Streak=110
 StreakMax=300
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=beetle

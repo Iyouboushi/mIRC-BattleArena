@@ -46,6 +46,7 @@ Created=N/a
 Streak=71
 StreakMax=211
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=gnole

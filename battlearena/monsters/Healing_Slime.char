@@ -48,6 +48,7 @@ Streak=102
 StreakMax=201
 CanTaunt=false
 ai_type=healer
+IgnoreElementalMessage=true
 
 [Monster]
 Type=slime

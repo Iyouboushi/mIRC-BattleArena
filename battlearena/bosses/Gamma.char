@@ -56,6 +56,7 @@ IgnorePresident=true
 JustReleaseDefense=100
 BossLevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 150, 300)
 SpawnAfterDeath=GammaWily
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

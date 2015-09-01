@@ -54,6 +54,7 @@ bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 180,$iif($r
 CanTaunt=false
 IgnoreQuickSilver=true
 JustReleaseDefense=90
+IgnoreElementalMessage=true
 
 
 [Status]

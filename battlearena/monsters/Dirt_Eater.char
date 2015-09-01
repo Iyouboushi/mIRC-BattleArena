@@ -45,6 +45,7 @@ LastIP=N/a
 Created=N/a
 StreakMax=4
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=worm
@@ -106,23 +107,23 @@ Zen=5
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
+Earth=20
+Fire=90
 Wind=120
-Water=100
+Water=20
 Ice=100
-Lightning=100
-Light=100
-Dark=100
+Lightning=80
+Light=80
+Dark=80
 HandToHand=100
 Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
+Sword=110
+Gun=110
+Rifle=110
+Katana=110
 Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+Spear=110
+Scythe=110
+Glyph=110
+GreatSword=110
+Bow=110

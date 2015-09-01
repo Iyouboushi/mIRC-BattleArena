@@ -47,6 +47,7 @@ Created=N/a
 Streak=13
 StreakMax=41
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=sapling

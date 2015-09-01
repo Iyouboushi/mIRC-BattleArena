@@ -55,6 +55,7 @@ LastIP=N/a
 Created=N/a
 Streak=100
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=dragon

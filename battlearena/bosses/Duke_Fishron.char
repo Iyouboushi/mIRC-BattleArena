@@ -53,6 +53,7 @@ IgnoreQuicksilver=true
 JustReleaseDefense=100
 RageMode=Ignore
 IgnorePresident=true
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

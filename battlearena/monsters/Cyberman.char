@@ -51,6 +51,7 @@ LastIP=N/a
 Created=N/a
 Streak=21
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=android
@@ -92,7 +93,7 @@ MPRegenerating=no
 [Weapons]
 Equipped=Cyberfists
 Cyberfists=15
-Strong=Gun.Rifle
+
 
 [Skills]
 MartialArts=10
@@ -108,21 +109,21 @@ CyberParalyze=15
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=70
-Wind=70
-Water=70
-Ice=70
+Earth=60
+Fire=60
+Wind=60
+Water=60
+Ice=60
 Lightning=130
-Light=70
-Dark=40
-HandToHand=100
-Whip=100
+Light=60
+Dark=60
+HandToHand=80
+Whip=80
 Sword=100
 Gun=100
 Rifle=100
 Katana=100
-Wand=100
+Wand=80
 Spear=100
 Scythe=100
 Glyph=100

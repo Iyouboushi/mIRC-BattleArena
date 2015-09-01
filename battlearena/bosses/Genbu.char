@@ -36,7 +36,7 @@ BossQuote=I am Genbu, Divine Guardian of the North. The brief spark of your exis
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=GenbuSeal.KindredSeal.Genbu'sKabuto
+Drops=
 
 [Monster]
 Type=Adamantoise
@@ -54,6 +54,7 @@ Created=N/a
 Streak=-1000
 bosslevel=110
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no
@@ -107,7 +108,7 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-BloodBoost=15
+BloodBoost=12
 
 
 [Techniques]

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 07/28/15
+;;;; Last updated: 09/01/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -309,9 +309,14 @@ system_defaults_check {
 
   .remove $lstfile(items_songs.lst)
 
+  .remove $txtfile(attack_Aettir.txt)
+  .remove $txtfile(attack_ChatoyantStaff.txt)
+
   ; Remove settings no longer needed
   if ($readini(system.dat, system, BattleDamageFormula) != $null) { remini system.dat system BattleDamageFormula }
   if ($readini(battlestats.dat, conquest, ConquestPoints) != $null) { remini battlestats.dat conquest ConquestPoints }
+
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -56,6 +56,7 @@ ai_type=berserker
 Streak=-1000
 IgnoreQuicksilver=true
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

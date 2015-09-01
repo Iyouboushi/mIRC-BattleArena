@@ -54,6 +54,7 @@ bosslevel=30
 CanTaunt=false
 Guardian=Small_Armos
 IgnoreQuicksilver=true
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

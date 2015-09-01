@@ -48,6 +48,7 @@ Created=N/a
 ai_type=berserker
 Streak=401
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=

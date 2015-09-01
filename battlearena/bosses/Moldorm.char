@@ -57,6 +57,7 @@ CanTaunt=false
 Guardian=MoldormTail
 ai_type=techonly
 IgnoreQuicksilver=true
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

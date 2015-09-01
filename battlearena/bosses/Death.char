@@ -58,6 +58,7 @@ Created=N/a
 Streak=30
 IgnoreQuicksilver=true
 CanTaunt=true
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no

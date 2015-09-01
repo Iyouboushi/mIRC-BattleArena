@@ -51,6 +51,7 @@ Created=N/a
 Streak=300
 CanTaunt=true
 TimeOfDay=Evening.Night
+IgnoreElementalMessage=true
 
 [Monster]
 Type=undead

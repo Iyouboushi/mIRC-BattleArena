@@ -46,6 +46,7 @@ Created=N/a
 Streak=61
 StreakMax=179
 CanTaunt=false
+IgnoreElementalMessage=true
 
 [Monster]
 Type=dhalmel

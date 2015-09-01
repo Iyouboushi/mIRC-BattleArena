@@ -1025,9 +1025,9 @@ renkei=3
 
 [Scourge]
 Type=Single
-TP=40
+TP=50
 Desc=swings the greatsword down and a large bolt of energy slams into %enemy $+ !
-BasePower=70
+BasePower=60
 Element=Lightning
 Cost=2500
 Magic=no
@@ -1047,12 +1047,12 @@ renkei=4
 
 [Torcleaver]
 Type=AOE
-TP=40
+TP=60
 Desc=leaps into the air and slams the greatsword into the ground, causing a mini-quake to hit all enemies!
-BasePower=70
+BasePower=60
 Element=Earth
 Cost=2500
-Magic=yes
+Magic=no
 stat=str
 
 [Resolution]
