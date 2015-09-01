@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 07/27/15
+;;;; Last updated: 09/01/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2106,6 +2106,8 @@ alias battle.calculate.redorbs {
   if (%battle.type = dungeon) { set %base.redorbs $readini(system.dat, System, basebossxp) | inc %base.redorbs 100 }
 
   if (%number.of.monsters.needed = $null) { var %number.of.monsters.needed 1 }
+
+  if ((((%boss.type = bandits) && (%boss.type = pirates) && (%boss.type = FrostLegion) || (%boss.type = gremlins)))) { inc %number.of.monsters.needed 2 }
 
   %base.redorbs = $round($calc(%base.redorbs * (1 + %number.of.monsters.needed)), 0)
 
