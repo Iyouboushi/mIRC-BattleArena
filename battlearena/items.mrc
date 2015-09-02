@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 07/27/15
+;;;; Last updated: 09/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -155,6 +155,8 @@ alias uses_item {
     if (%mode.gauntlet = on) { $display.message($readini(translation.dat, errors, PortalItemNotWorking) , private) | halt  }  
     if (%battle.type = boss) { $display.message($readini(translation.dat, errors, PortalItemNotWorking) , private) | halt  }  
 
+    if ($return_winningstreak >= 20) { $display.message($readini(translation.dat, errors, StreakTooHighForPortals), private) | halt }
+
     ; Check to see if a portal battle can be done via the limiting..
 
     if (($readini(system.dat, system, LimitPortalBattles) = true) ||  ($readini(system.dat, system, LimitPortalBattles) = $null)) {
@@ -171,31 +173,33 @@ alias uses_item {
       writeini $char($1) info LastPortalDate $adate
     }
 
+    ; Turn on the portal flag
+    set %portal.bonus true
+
+    ; Write the portal's level
+    var %portal.level $readini($dbfile(items.db), $2, PortalLevel)
+    writeini $txtfile(battle2.txt) battleinfo Portallevel %portal.level
+
     ; Change the battlefield
     unset %battleconditions
     set %current.battlefield $readini($dbfile(items.db), $2, Battlefield)
     writeini $dbfile(battlefields.db) weather current $readini($dbfile(items.db), $2, weather)
 
+    ; check for limitations
+    $battlefield.limitations
+
     if (($readini(system.dat, system, ForcePortalSync) = true) && ($readini($dbfile(items.db), $2, PortalLevel) != $null)) {
-      var %portal.level $readini($dbfile(items.db), $2, PortalLevel)
       $portal.sync.players(%portal.level)
       $display.message($readini(translation.dat, system, PortalLevelsSynced), battle)
       writeini $txtfile(battle2.txt) battleinfo averagelevel %portal.level 
       writeini $txtfile(battle2.txt) battleinfo highestlevel %portal.level 
       writeini $txtfile(battle2.txt) battleinfo PlayerLevels %portal.level 
-      writeini $txtfile(battle2.txt) battleinfo Portallevel %portal.level
     } 
 
     ; Show the description
     $set_chr_name($1) | $display.message( $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
 
     set %monster.to.spawn $readini($dbfile(items.db), $2, Monster)
-
-    ; Turn on the portal flag
-    set %portal.bonus true
-
-    ; check for limitations
-    $battlefield.limitations
 
     if ($numtok(%monster.to.spawn,46) = 1) { $portal.item.onemonster }
     if ($numtok(%monster.to.spawn,46) > 1) { $portal.item.multimonsters }

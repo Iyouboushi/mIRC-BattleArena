@@ -1316,6 +1316,7 @@ Battle Arena Bot VERSIONS
 - Changed ignitions to remove str/def/spd down as people were abusing that
 - Changed the technique Torcleaver to not be magic and made its AoE damage and TP cost match the -jaII spells
 - Changed the guardian style to be capped at level 5 in dungeons and portals
+- Changed the streaks you can use a portal item on to 1-20. Anything higher will block portal usage.
 - Fixed a bug with orb rewards for players who are far under the streak and not using SotH
 - Fixed a bug in which fists were being calculated wrong for their damage (being counted twice, basically)
 - Fixed a bug in which NPCs who had mechs would try to use them in no-mech battlefield conditions.
@@ -1325,12 +1326,13 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with %enemy in a provoke skill description not showing the right name
 - Fixed an issue with "Conserve TP" showing up in both status and skill lists.  It should only be in skills now.
 - Fixed an issue where a person who was asleep would still get an extra turn occasionally
+- Fixed an issue with the DTrigger ignition description
 - Fixed a potential bug with the monster list
 - Fixed a portal battlefield limitation issue that could be exploited
 - Fixed the "On the Edge" achievement so that it actually gives the Super Potion item correctly
 - Fixed the elemental spell totals in misc info being counted multiple times on AOEs
 - Fixed a bug with en-spells counting towards the elemental spell totals in misc info when they shouldn't have been
 - Fixed a bug in which the elemental messages for en-spells were not showing upon melee hits
-- Fixed an issue with the DTrigger ignition description
+- Fixed a bug in which npcs and trusts weren't being killed in portals that had no-trust or no-npc set.
 - Removed the elements from NPC weapons
 - Removed attack_Aettir.txt, and attack_ChatoyantStaff.txt as they are no longer needed

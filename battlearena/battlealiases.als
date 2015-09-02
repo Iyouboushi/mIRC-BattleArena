@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 08/14/15
+;;;; Last updated: 09/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1750,7 +1750,9 @@ random.battlefield.curse {
 ; battlefield limitation.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battlefield.limitations {
-  if (($return_winningstreak <= 10) && (%portal.bonus != true)) { return }
+  if ($return_winningstreak <= 10) {
+    if ((%battle.type != dungeon) && (%portal.bonus != true)) { return }
+  }
 
   set %battleconditions $readini($dbfile(battlefields.db), %current.battlefield, limitations)
   if ((no-tech isin %battleconditions) || (no-techs isin %battleconditions)) { $display.message($readini(translation.dat, Events, AncientMeleeOnlySeal), battle)  }

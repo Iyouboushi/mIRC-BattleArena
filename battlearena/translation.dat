@@ -526,6 +526,7 @@ ActionDisabledForPVP=$chr(3) $+ 4 $+ Error: This action cannot be done in PVP 
 CloneCannotUseSkill=$chr(3) $+ 4 $+ Error: This skill cannot be used by the shadow clone
 PlayerAccessCmdsOff=$chr(3) $+ 4 $+ Error: Player Access commands have been disabled.
 PlayerAccessOffDueToLogin=$chr(3) $+ 4 $+ Error: $1 has not logged in for over a week and is no longer able to be controlled by other players.
+StreakTooHighForPortals=$chr(3) $+ 4 $+ Error: Battle Level Streak too high for portals. You can only use portal items on battle levels 1-20
 Can'tUseOtherPlayersPortals=$chr(3) $+ 4 $+ Error: You can't use other player's portal items.
 MustSpecifyWeaponname=$chr(3) $+ 4 $+ Error: %real.name must specify a valid weapon name to use this item on.
 Can'tLevelWeaponOver500=$chr(3) $+ 4 $+ Error: using this item will push the level of the $2 over the weapon level cap of 500.
