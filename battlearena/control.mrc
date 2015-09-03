@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 06/19/15
+;;;; Last updated: 09/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -160,6 +160,13 @@ on 50:TEXT:!unzap *:*: {
 
 ; Force the bot to quit
 on 50:TEXT:!quit*:*:{ /quit $battle.version }
+
+; Force the bot to do a system.dat default check
+on 50:TEXT:!force system default check*:*: { 
+  writeini version.ver versions systemdat $replace($adate, /, )
+  $system_defaults_check
+  .msg $nick 3The bot has finished with the system.dat default check.
+}
 
 ; Add or remove a bot admin (note: cannot remove the person in position 1 with this command)
 on 50:TEXT:!bot admin*:*: {  

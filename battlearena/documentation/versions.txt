@@ -1293,12 +1293,17 @@ Battle Arena Bot VERSIONS
 - Added a new system.dat flag: AllowPlayerAccessCmds=true/false  If set to false, players won't be able to control others
 - Added the bot admin command: !toggle playerAccessCmnds  -- Will turn player access commands on/off
 - Added the bot admin command: !toggle damage formula -- Will toggle between the damage formulas
+- Added the bot admin command: !force system default check  -- will force the bot to do a system.dat defaults check
 - Added a new item type: IncreaseWeaponLevel.  This item type can be used to increase a player's weapon level up to 500
 - Added the various damage formulas that have been used throughout the bot's history: 1.0, 2.0, 2.5 and 3.0.
 - Added the Dungeon system. 
 - Added the !Rest command. This command can be used by players on their turn to skip their turn. It does nothing else.
 - Added a new flag for monsters/npcs/bosses:  IgnoreElementalMessage. It goes in [info]  and if it's set to true 
   the bot won't show the elemental damage message on the target's turn.
+- Added a new shop NPC: Vinz Clortho the Keymaster   After being rescued he will sell dungeon keys for seals
+- Added dungeon keys to the !keys command
+- Added dungeon keys to the shop. Use !shop list dungeonkeys to list, !shop buy dungeonkeys <name> to buy. Need 
+  the Dungeon Key merchant in order to see and purchase the keys.
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
