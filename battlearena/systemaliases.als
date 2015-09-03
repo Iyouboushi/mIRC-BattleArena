@@ -218,6 +218,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCStatus, Gardener) = $null) { writeini shopnpcs.dat NPCStatus Gardener kidnapped }
     if ($readini(shopnpcs.dat, NPCStatus, PotionWitch) = $null) { writeini shopnpcs.dat NPCStatus PotionWitch false }
     if ($readini(shopnpcs.dat, NPCStatus, Gambler) = $null) { writeini shopnpcs.dat NPCStatus Gambler kidnapped }
+    if ($readini(shopnpcs.dat, NPCStatus, DungeonKeyMerchant) = $null) { writeini shopnpcs.dat NPCStatus DungeonKeyMerchant kidnapped }
 
     if ($readini(shopnpcs.dat, Events, FrostLegionDefeated) = $null) { writeini shopnpcs.dat Events FrostLegionDefeated false }
     if ($readini(shopnpcs.dat, Events, SavedElves) = $null) { writeini shopnpcs.dat Events SavedElves 0 }
@@ -243,7 +244,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCNames, Gardener) = $null) { writeini shopnpcs.dat NPCNames Gardener Green Thumb the Garden Moogle }
     if ($readini(shopnpcs.dat, NPCNames, PotionWitch) = $null) { writeini shopnpcs.dat NPCNames PotionWitch Syrup the Potion Witch }
     if ($readini(shopnpcs.dat, NPCNames, Gambler) = $null) { writeini shopnpcs.dat NPCNames Gambler Setzer the Gambler }
-
+    if ($readini(shopnpcs.dat, NPCNames, DungeonKeyMerchant) = $null) { writeini shopnpcs.dat NPCNames DungeonKeyMerchant Vinz Clortho the Keymaster }
 
     ; Allied Forces Garden stuff
     if ($readini(garden.dat, GardenStats, XP) = $null) { writeini garden.dat GardenStats XP 0 }

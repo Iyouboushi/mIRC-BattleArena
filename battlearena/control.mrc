@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 09/02/15
+;;;; Last updated: 09/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -163,7 +163,7 @@ on 50:TEXT:!quit*:*:{ /quit $battle.version }
 
 ; Force the bot to do a system.dat default check
 on 50:TEXT:!force system default check*:*: { 
-  writeini version.ver versions systemdat $replace($adate, /, )
+  writeini version.ver versions systemdat $replace($adate, /, ) $+ _ $+ $ctime
   $system_defaults_check
   .msg $nick 3The bot has finished with the system.dat default check.
 }
