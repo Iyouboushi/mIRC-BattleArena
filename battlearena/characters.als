@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 07/27/15
+;;;; Last updated: 09/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -649,11 +649,19 @@ readkeys {
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewKeysItems)) }
     if ($2 = dcc) {  $dcc.private.message($nick, $readini(translation.dat, system, ViewKeysItems)) }
   } 
-  else { 
+  if (%dungeon.keys.items.list != $null) { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewDungeonKeysItems)) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewDungeonKeysItems)) }
+    if ($2 = dcc) {  $dcc.private.message($nick, $readini(translation.dat, system, ViewDungeonKeysItems)) }
+  } 
+
+  if ((%keys.items.list = $null) && (%dungeon.keys.items.list = $null)) { 
     if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoKeys),private) }
     if ($2 = private) { $display.private.message($readini(translation.dat, system, HasNoKeys)) }
     if ($2 = dcc) {  $dcc.private.message($nick, $readini(translation.dat, system, HasNoKeys)) }
   }    
+
+  unset %dungeon.keys.items.list | unset %keys.items.list
 }
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Displays a char's gems

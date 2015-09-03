@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/01/15
+;;;; Last updated: 09/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1595,7 +1595,7 @@ killer.skills.list {
 ; Builds the Keys list
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 keys.list {
-  unset %items.list | unset %gems.items.list | unset %summons.items.list | unset %keys.items.list | unset %misc.items.list | unset %reset.items.list 
+  unset %items.list | unset %gems.items.list | unset %summons.items.list | unset %keys.items.list | unset %misc.items.list | unset %reset.items.list | unset %dungeon.keys.items.list
 
   ; CHECKING KEYS 
   unset %item.name | unset %item_amount | unset %number.of.items | unset %value
@@ -1614,9 +1614,25 @@ keys.list {
     inc %value 1 
   }
 
-  if ($chr(046) isin %keys.items.list) { set %replacechar $chr(044) $chr(032)
-    %keys.items.list = $replace(%keys.items.list, $chr(046), %replacechar)
+  ; CHECKING DUNGEON KEYS
+  unset %item.name | unset %item_amount | unset %number.of.items | unset %value
+  var %value 1 | var %items.lines $lines($lstfile(items_dungeonkeys.lst))
+
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_dungeonkeys.lst)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) { 
+      %dungeon.keys.items.list = $addtok(%dungeon.keys.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) 
+    }
+    unset %item.name | unset %item_amount
+    inc %value 1 
   }
+
+  if ($chr(046) isin %keys.items.list) { set %replacechar $chr(044) $chr(032) | %keys.items.list = $replace(%keys.items.list, $chr(046), %replacechar)  }
+  if ($chr(046) isin %dungeon.keys.items.list) { set %replacechar $chr(044) $chr(032) | %dungeon.keys.items.list = $replace(%dungeon.keys.items.list, $chr(046), %replacechar)  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
