@@ -19,7 +19,7 @@ Daggers=MainGauche.Mandau.Terpsichore
 Defunct=KaiserKnuckles.LexTalionis.Soulsaber.Almace.Caladbolg.Quicksilver.SniperRifle.Annihilator.DeathPenalty.Keitonotachi.Hagun.Masamune.Rhongomiant
 
 ; The lists after this are for monster weapons only.  Players do not have access to these.
-MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower.GammaBody.GammaArm.CowLegs.DinoFangs
+MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand_R.Mistilteinn.Silver_Goddess_Sword.Black_Goddess_Staff.Cell'sKi.Death's_Scythe.CreeperLegs.ZombieFists.PsychoPower.BedrockBite.Shadow_Blade.MenosPower.DragonFangs.BeeStinger.GoblinSword.YagudoWand.TigerFangs.Pinchers.BoneScythe.AndroidKi.Orcish_Gun.SubZeroFists.Ninjutsu.SlimePower.BallPower.SkyGodPower.GammaBody.GammaArm.CowLegs.DinoFangs.HoundFangs
 
 MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.SinistralPower.JesterWand.VampireArt.Puppetry.Benihime.PeoplesFist.SuccubusPower.DragonShouts.BlueEyesPower.BlackMagic.DragonSword.OctoArms.Casull&Jackal.AlucardSword.Auto9.Railgun.WoolyTusks.OrochiPower.BogardGloves.GiygasPower.AtlantisPower.Broad_Sword.Rose's_Rapier.ShihouinFists.ImpHorn.GhostPower.ChozoArmCannon.ZeroSaber.SantaRifle.ScorpionFists.Legion
 
@@ -29,7 +29,7 @@ MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakSta
 
 MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal
 
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite
 
 ============================================
 WEAPON TEMPLATE
@@ -1529,6 +1529,19 @@ Element=none
 Hits=$rand(1,2)
 BasePower=15
 
+[FlyBite]
+cost=0
+Type=HandToHand
+Info=You can't buy this!
+Abilities=
+Element=dark
+Hits=$rand(1,2)
+BasePower=20
+IgnoreDefense=1
+CanShieldReflect=false
+StatusType=poison
+
+
 [BeeStinger]
 Cost=0
 Type=HandToHand
@@ -1575,6 +1588,15 @@ Hits=1
 BasePower=20
 
 [TigerFangs]
+Cost=0
+Type=HandtoHand
+Info=You can't buy this!
+Abilities=Roar.RazorFang.ClawCyclone
+Element=none
+Hits=$rand(1,2)
+BasePower=5
+
+[HoundFangs]
 Cost=0
 Type=HandtoHand
 Info=You can't buy this!

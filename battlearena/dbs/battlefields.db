@@ -20,7 +20,7 @@ errors.
 ==============================================================
 [MoonPhase]
 CurrentMoonPhase=Gibbous
-CurrentMoonTurn=4
+CurrentMoonTurn=5
 
 [MoonPhaseTime]
 full=3
@@ -38,8 +38,8 @@ remove or modify the time of day section as it will cause
 errors.
 ==============================================================
 [TimeOfDay]
-CurrentTimeOfDay=Morning
-CurrentTimeOfDayTurn=2
+CurrentTimeOfDay=Noon
+CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -884,7 +884,61 @@ limitations=no-mech.no-fleeing
 
 
 
+
+==============================================================
+DUNGEON battlefields
+==============================================================
+
 [Tam-Tara Deepcroft Cavern]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+
+[Haukke Manor Lobby]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haukke Manor Fl 1 - Hallway]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haukke Manor Fl 1 - Rm 1]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haukke Manor Fl 1 - Rm 2]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haukke Manor Cellar]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haukke Manor Top of Staircase]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haukke Manor Fl 2 - Rm 1]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haukke Manor Master Bedroom]
 weather=gloomy
 NumberofEvents=0
 limitations=no-trusts.no-summons.no-mech.no-playerignition

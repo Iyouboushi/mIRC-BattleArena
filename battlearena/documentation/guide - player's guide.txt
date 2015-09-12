@@ -230,6 +230,7 @@ Here's how you get a list of available things to buy within the shop:
 !shop list enhancements 	Gives a list of what you can exchange enhancing points for
 !shop list trusts 	Gives a list of the NPC Trust Items you can exchange login points for
 !shop list potioneffects 	Gives a list of purchasable potion effects if Syrup the Potion Witch is at the HQ
+!shop list dungeonkeys 	Gives a list of dungeon keys available for purchase 
 
 Most things in this game are purchased using red orbs. Red orbs are acquired by defeating enemies via participating in battles and found within red chests. Weapons, Shields, Styles, and Ignitions require black orbs. Black orbs are acquired by surviving a successful boss battle or found randomly in gold chests. Portal Items require special seals, rather than orbs, to purchase. The seals are found in chests and off of random enemies. Gems and alchemy items are purchased using Allied Notes. Allied Notes are a special currency that you can acquire by defeating the foes found within the portal items. Potion Effects require certain monster spoils found by killing monsters. Finally, NPC Trust Items are special items that can summon an NPC buddy to help you fight when you're alone. These items require login points which you accumulate every new day that you log into the game.
 Buying Something In the Shop
@@ -251,6 +252,7 @@ Here's how you get a list of available things to buy within the shop:
 !shop buy enhancements enhancement 	Buys a character enhancement using enhancement points
 !shop buy trusts itemname 		Buys an NPC Trust Items using login points
 !shop buy potioneffects potionname 	Buys the potion effect if Syrup the Potion Witch is at the HQ
+!shop buy dungeonkeys keyname 	        Buys the dungeon key using the correct seal item if the Keymaster NPC is at the HQ 
 
 So let's say you want to upgrade your HP (at least one or two upgrades in HP is recommended). You can do it like this:
 
@@ -1517,6 +1519,27 @@ Because of the way mIRC works and how the battles are set up in Battle Arena, I 
 So here's how it's going to really work.  First off, each technique will be worth a "renkei" value.  The renkei value is what determines which renkei is performed.  Higher level renkeis will result in higher damage.  The damage that the renkei done will be a percentage of the total damage done by the techniques to create the renkei.  Two techniques are needed to create a renkei on a monster.  But there's a catch to that: when it's the monster's turn, the # of techniques used on the monster, the technique damage value, and the renkei value are all reset to 0.  "But Iyou! That means I can't self-skillchain when I'm soloing on here!"  Well, you can and here's how.  You have two options to self-renkei now.  First, you could use Sugitekai to give yourself two turns in a row then use a technique on both turns thus resulting in a renkei.  The other option is via the active skill called Konzen-Ittai.  This skill will double the technique number value.  Basically it means that 1 technique will be counted as 2, thus allowing you to self-skillchain without needing another person or using Sugitekai.
 
 One thing to note though is that magic, status, and AOE type techniques will not cause a renkei to happen.  Mainly this is done to help prevent the bot from flooding out (especially on AOE techniques) but also because magic and status techniques are already sort of haxx to begin with.
+
+
+DUNGEONS
+Dungeons are special battles that are initialized by using an item outside of battle. These battles often simulate what it would be like to go through a dungeon. Players will see various lines describing where they are and what they see as well as face various foes found within.
+DUNGEON INFO
+
+Each dungeon has a specific level and number of players that are required in order to enter. Dungeons will level sync players who are above the level to the dungeon's level. Unlike other types of battles, there is no Spirit of the Hero. Players must be the dungeon's level, minimum, to even enter otherwise they will be unable to join the party.
+
+Something else to note is that players can only start 1 dungeon per 24 hours though they can enter other player's dungeon parties. This only counts if the dungeon meets the player requirement and actually happens. If there isn't enough people to join the player can still try again until it is successful without counting towards the limit.
+
+At the beginning of every dungeon there will be a 1 round empty battle where players can use a skill or buff tech in order to prepare for the monsters found within. If a player does not have a skill or buff technique the command !rest can be used. This command does nothing but skip the player's turn.
+
+Certain skills have been blocked from dungeons. The list includes: Speed, Blood Boost, Blood Spirit, and Shadow Copy.
+
+Red Orbs are rewarded at the end of each individual battle but a large bonus reward is given out if the dungeon is cleared. If this is the player's first time beating the dungeon the reward at the end will be larger than if the dungeon has been done multiple times.
+
+DUNGEON LIST
+
+These are the dungeons found within the defeat Battle Arena.
+Dungeon Name 	        Dungeon Item 	Dungeon Level 	# of Players Needed
+Tam-Tara Deepcroft 	TamTaraKey 	    15 	                3 
 
 
 IGNITIONS

@@ -1,5 +1,3 @@
-BOSS TEMPLATE AND FLAG EXPLANATION
-
 [BaseStats]
 Hp=80
 Tp=50
@@ -68,6 +66,7 @@ CanUseItems=false
 ; HealByTaunt=
 ; IgnorePresident=
 ; DeathConditions=
+; IgnoreElementalMessage=
 
 [monster]
 type=
@@ -221,6 +220,9 @@ Does the monster appear in Save The President battles? True=yes/False=no
 
 DeathConditions=
 If you want the monster to only be able to be killed if a certain action is performed, you can set it here. Not set by default. Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect - You can list multiple by putting a period in between such as: melee.magic.status If the monster is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+
+IgnoreElementalMessage=
+If set to true this flag allows the elemental damage message to not be shown on the monster's turn. Can be set to true or false. It's false by default if this flag is missing.
 [monster] Flags/Settings
 
 type=

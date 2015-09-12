@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/02/15
+;;;; Last updated: 09/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3285,7 +3285,7 @@ accessory.check {
 ; the winning streak.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 orb.adjust {
-  var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
+  var %winning.streak $return_winningstreak
   if (%base.redorbs < 1000) { return }
 
   if (%mode.gauntlet.wave != $null) { inc %winning.streak %mode.gauntlet.wave }      

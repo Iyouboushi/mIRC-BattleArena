@@ -1338,8 +1338,24 @@ type=accessory
 AccessoryType=IncreaseSpellDamage
 Cost=0
 Desc=A rosary from the cultists of Tam-Tara Deepcroft. This accessory will increase the power of your spells.
-IncreaseSpelLDamage.Amount=.10
+IncreaseSpellDamage.Amount=.10
 SellPrice=2000
+
+[Aetherial-Earrings]
+Type=accessory
+AccessoryType=IncreaseMagic
+Cost=0
+Desc=A glowing set of earrings previously worn by Lady Amandine. This accessory will increase the power of magic.
+IncreaseMagic.Amount=.47
+
+[Aetherial-Ring]
+Type=accessory
+AccessoryType=IncreaseMeleeDamage
+Cost=0
+Desc=A glowing ring previously worn by Lady Amandine. This accessory will increase the power of melee attacks based on the number of red orbs on hand.
+SellPrice=2000
+IncreaseMeleeDamage.Amount=.010
+; The max +damage will be 1000, which means at .010 amount it would require 100,000 red orbs on hand to do that damage.
 
 [Blessed-Ankh]
 Type=accessory
@@ -1604,7 +1620,7 @@ Type=accessory
 Cost=0
 AccessoryType=IncreaseSwordDamage
 Desc=A bright red pendant that is said to enhance a wearer's ability to fight with a sword. This accessory will increase melee damage done with a sword weapon.
-IncreaseSwordDamage.Amount=.45
+IncreaseSwordDamage.Amount=.35
 SellPrice=3000
 
 [PendantOfWisdom]
@@ -1612,7 +1628,7 @@ Type=accessory
 Cost=0
 AccessoryType=IncreaseMagic
 Desc=A bright blue pendant that is said to enhance a wearer's spell power. This accessory will increase damage done with magic.
-IncreaseMagic.Amount=.45
+IncreaseMagic.Amount=.35
 SellPrice=3000
 
 [PendantOfCourage]
@@ -3239,5 +3255,11 @@ Desc=An ancient key used to unlock the dungeon Tam-Tara Deepcroft
 Dungeon=Tam-Tara
 exclusive=yes
 
-
-
+[HaukkeManorKey]
+type=dungeon
+cost=50
+currency=KindredSeal
+sellprice=10
+Desc=An old dusty key used to access Haukke Manor
+Dungeon=Haukke_Manor
+exclusive=yes

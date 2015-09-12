@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 07/27/15
+;;;; Last updated: 09/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -201,7 +201,7 @@ dungeon.clearroom {
 
   $display.message(2* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
 
-  /.timerDungeonSlowDown2 1 4 /dungeon.nextroom
+  /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
 }
 
 dungeon.end { 
@@ -349,4 +349,18 @@ dungeon.generatemonsters {
 
   }
   unset %found.monster
+}
+
+
+;================================
+; Aliases below this line are for special
+; dungeons
+;================================
+dungeon.haukke.lampcount {
+  var %haukke.lamps.lit 0
+  if ($readini($char(Haukke_Lamp1), battle, hp) > 0) { inc %haukke.lamps.lit 1 }
+  if ($readini($char(Haukke_Lamp2), battle, hp) > 0) { inc %haukke.lamps.lit 1 }
+  if ($readini($char(Haukke_Lamp3), battle, hp) > 0) { inc %haukke.lamps.lit 1 }
+  if ($readini($char(Haukke_Lamp4), battle, hp) > 0) { inc %haukke.lamps.lit 1 }
+  return %haukke.lamps.lit
 }

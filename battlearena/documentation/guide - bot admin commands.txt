@@ -103,6 +103,12 @@ This turns the damage cap on and off. If set to off, players can do more than 40
 !toggle battle messages
 This turns the newer start battle messages on and off. If set to off it will use the old classic message for every main battle type.
 
+!toggle playerAccessCmnds
+Will turn player access commands on/off
+
+!toggle damage formula
+This command will cycle through the various damage formulas that are within the bot. The list goes 3.0 -> 2.5 -> 2.0 -> 1.0 -> 3.0 
+
 !set streak #
 It's possible to manually set the winning streak to whatever you want. You can't set it to a losing streak or to a negative value though.
 
@@ -129,3 +135,6 @@ If the bot admin knows the zapped file name, it is now possible to restore it. F
 
 !password reset playername
 This will reset the player's password and send the player what the new password is (so use it when the player is online). The bot admin will NOT see the new password. 
+
+!force system default check
+This command will force the bot to do a system.dat defaults check. The bot normally does this check when mIRC is loaded if the version information has changed in version.ver vs what is stored in system.dat. However, there may be certain times when you would want to force the bot to do this check. 
