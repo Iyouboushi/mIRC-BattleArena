@@ -6,7 +6,7 @@ Def=$calc(46 + $current.battlestreak)
 Int=$calc(46 + $current.battlestreak)
 Spd=$calc(46 + $current.battlestreak)
 IgnitionGauge=2
-Name=Thunder Elemental
+Name=Dark Elemental
 
 
 [Battle]
@@ -32,7 +32,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a glowing orb of lightning magic.  It seems resistant to melee.
+Char=is a glowing orb of dark magic.  It seems resistant to melee.
 Rage=screams in rage 
 
 [Stuff]
@@ -103,20 +103,20 @@ ElementalSeal=1
 Wizardry=20
 
 [Techniques]
-Thunder=$iif($current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
-ThunderII=$iif($current.battlestreak >= 50 && $current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
-Thundaja=$iif($current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
+Dark=$iif($current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
+DarkII=$iif($current.battlestreak >= 50 && $current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
+Darkra=$iif($current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
 
 
 
 [modifiers]
-Heal=lightning
-Earth=130
+Heal=wind
+Earth=70
 Fire=70
-Wind=70
-Water=30
-Ice=70
-Lightning=200
+Wind=200
+Water=70
+Ice=120
+Lightning=70
 Light=70
 Dark=70
 HandToHand=10

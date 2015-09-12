@@ -1,0 +1,2 @@
+sends a small non-elemental spell at %enemy
+floats back a bit before charging forward and slams into %enemy

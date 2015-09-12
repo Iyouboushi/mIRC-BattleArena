@@ -20,7 +20,7 @@ errors.
 ==============================================================
 [MoonPhase]
 CurrentMoonPhase=Gibbous
-CurrentMoonTurn=3
+CurrentMoonTurn=4
 
 [MoonPhaseTime]
 full=3
@@ -39,7 +39,7 @@ errors.
 ==============================================================
 [TimeOfDay]
 CurrentTimeOfDay=Morning
-CurrentTimeOfDayTurn=1
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
@@ -512,7 +512,7 @@ event4desc=The French knight leader whispers "Fetchez la vache." to the other kn
 event4target=random
 event4amount=$rand(70,120)
 
-[Arsenal Gear]
+[Arsenal_Gear]
 weather=gloomy
 NumberOfEvents=16
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

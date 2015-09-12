@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/02/15
+;;;; Last updated: 09/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2878,7 +2878,7 @@ counter_melee_action {
 multiple_wave_check {
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
 
-  if (%battle.type = dunegon) { return }
+  if (%battle.type = dungeon) { return }
   if (%multiple.wave = yes) { return }
   if (%battleis = off) { return }
   if (%battle.type = boss) { return }

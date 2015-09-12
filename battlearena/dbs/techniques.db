@@ -59,6 +59,7 @@ IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrif
 Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII.Esuna.Dispel.Merlin'sFinalSpell
 EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII.Esuna.Dispel.Merlin'sFinalSpell
 BahamutsStaff=Ultima.Kaustra.Merlin'sFinalSpell
+
 Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 
 ; Guns 
@@ -169,7 +170,8 @@ BoneScythe=BloodSaber.BloodSlash.HorrorCloud.Fire.Stone.Aero.FireIV.WaterIV.Bliz
 VampireFangs=VampireBite.DoublePunch.ShoulderTackle.SpinningAttack
 SpaceGun=SpaceBeam.Sacrifice.SpaceAbsorb.SpaceBoost
 CerberusClaws=IceRain.Roar.ShoulderTackle
-ElementalPower=FireII.StoneII.IceII.AeroII.WaterII.ThunderII.Firaja.FireV.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja
+ElementalPower=Fire.FireII.Stone.StoneII.Ice.IceII.Aero.AeroII.Water.WaterII.Thunder.ThunderII.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra
+HybridElementalPower=FireIV.FireV.BanishIV.BanishV.StoneIV.StoneV.DarkIV.DarkV.WaterIV.WaterV.BlizzardIV.BlizzardV.AeroIV.AeroV.ThunderIV.ThunderV.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra.ThundajaII.FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Darkra.DarkraII.Holy.HolyII.UltimaII.KaustraII
 FishBite=Screwdriver.AquaBall.Water
 Egyptian_Rod=Temptation.DeltaSpark.TypoonRod.ScarfStab
 SinistralPower=RayGion.FuReia.RahGian.WoRud.ReeDelt.AsuranFists.FinalHeaven.ShinjinSpiral
@@ -279,7 +281,6 @@ EvilChainsaw=DefenseRip.ChainsawSlash
 EvilBuzzsaw=DefenseDestroy.BuzzsawSlash
 TurkeyPower=Gobble
 PoisonFists=PoisonVomit.AcidRain
-HybridElementalPower=Flare.Quake.Flood.Tornado.Freeze.Burst.FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.Firaja.FirajaII.Stoneja.StonejaII.Waterja.WaterjaII.Aeroja.AerojaII.Blizzaja.BlizzajaII.Thundaja.ThundajaII.Darkra_I.Darkra_II.DarkV.Holy.HolyII.BanishV.CureIV
 BatFangs=SonicBoom.BatBite.BatDrill
 BalrogPower=WhipLash.TwinDragonLash.CircularChain.DarkLash.FlameStrike
 DemonicWeapon=HectacombWave.QuadraStrike.SoulDrain.FireIII.ThunderIII.Tachi:Rana.SwiftBlade.Firaja.Thundaja
@@ -289,7 +290,7 @@ TreantPower=Leafstorm.DrillBranch.PineconeBomb.Entangle.SproutSmack.SproutSpin
 StarmanGun=StarBeam.PK-StarStorm.PK-Fire.PK-Ice.PK-Thunder
 GnoleClaws=FeveredPitch.CallOfTheMoon.AsuranClaws.PleniluneEmbrace.NoxBlast
 HippiePeace=Toothbrush.Ruler.YardStick.Calculator
-UnicornHorn=HornStab.UnicornKick.UnicornStomp.UnicornBite.Holy.HolyII.BanishV.DarkV.Darkra_I.Darkra_II.BurstII.ThundajaII.Thors_Hammer
+UnicornHorn=HornStab.UnicornKick.UnicornStomp.UnicornBite.Holy.HolyII.BanishV.DarkV.Darkra.DarkraII.BurstII.ThundajaII.Thors_Hammer
 BirdBeak=TornadoII.AerojaII.WingCutter.HellDive.BroadsideBarrage
 YovraPower=ConcussiveOscillation.PrimalDrill.LuminousDrape.IonShower
 PinkChainsaw=ChainsawDash.ChainsawSpin.ChainsawTornado.ChainsawCut.ChainsawAttack.ChainsawCannon
@@ -950,7 +951,7 @@ GREAT SWORDS
 [HardSlash]
 Type=Single
 TP=10
-Desc=raises the greatsword above $gender($1) head and then swiflty swings the greatsword down upon %enemy $+ !
+Desc=raises the greatsword above $gender($1) head and then swiflty swings the greatsword down upon %enemy $+ .
 BasePower=35
 Element=None
 Cost=500
@@ -972,7 +973,7 @@ renkei=3
 [Shockwave]
 Type=AOE
 TP=30
-Desc=lures all of the enemies close and swings the sword in a half circle to hit all enemies!
+Desc=lures all of the enemies close and swings the sword in a half circle to hit all enemies.
 BasePower=25
 Element=none
 Cost=1500
@@ -1026,7 +1027,7 @@ renkei=3
 [Scourge]
 Type=Single
 TP=50
-Desc=swings the greatsword down and a large bolt of energy slams into %enemy $+ !
+Desc=holds the greatsword up for a moment as it gains a yellow glow. %user then swings the greatsword down, striking %enemy with the element of lightning.
 BasePower=60
 Element=Lightning
 Cost=2500
@@ -1048,7 +1049,7 @@ renkei=4
 [Torcleaver]
 Type=AOE
 TP=60
-Desc=leaps into the air and slams the greatsword into the ground, causing a mini-quake to hit all enemies!
+Desc=holds the greatsword off to the side as it gains a brown glow. %user then charges forward, striking all of the monsters with the element of earth.
 BasePower=60
 Element=Earth
 Cost=2500
@@ -2408,8 +2409,7 @@ stat=int
 [ThundajaII]
 Type=AOE
 TP=60
-Desc=casts the most powerful lightning spell known by any wizard, Thundaja II.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies.  
-BasePower=60
+Desc=casts the most powerful lightning spell known by any wizard, Thundaja II.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies. BasePower=60
 Cost=3500
 Element=lightning
 magic=yes
@@ -3275,8 +3275,8 @@ As a note here: Monster techniques should always cost 10 or less TP to perform f
 [FireIV]
 Type=Single
 TP=10
-Desc=blasts %enemy with a large column of fire!
-BasePower=35
+Desc=blasts %enemy with a large column of fire.
+BasePower=50
 Element=fire
 Cost=0
 Magic=yes
@@ -3285,8 +3285,8 @@ stat=int
 [WaterIV]
 Type=single
 TP=10
-Desc=covers %enemy with a large wave of water!
-BasePower=35
+Desc=covers %enemy with a large wave of water.
+BasePower=50
 Element=water
 Cost=0
 Magic=yes
@@ -3295,19 +3295,59 @@ stat=int
 [BlizzardIV]
 Type=single
 TP=10
-Desc=blasts %enemy with a barrage of ice crystals!
-BasePower=35
+Desc=blasts %enemy with a large shard of ice.
+BasePower=50
 Element=ice
 Cost=0
 Magic=yes
 stat=int
 
-[BanishV]
+[AeroIV]
 Type=Single
 TP=10
-Desc=casts a smaller but more potent explosion of Light energy upon %enemy $+ !
-BasePower=40
+Desc=engulfs %enemy with a medium tornado.
+BasePower=50
+Element=Wind
+Cost=0
+Magic=yes
+stat=int
+
+[StoneIV]
+Type=Single
+TP=10
+Desc=blasts %enemy with a large chunk of earth.
+BasePower=50
+Element=earth
+Cost=0
+Magic=yes
+stat=int
+
+[BanishIV]
+Type=Single
+TP=10
+Desc=engulfs %enemy with a medium sphere of light energy.
+BasePower=50
 Element=light
+Cost=0
+Magic=yes
+stat=int
+
+[DarkIV]
+Type=Single
+TP=10
+Desc=engulfs %enemy with a medium sphere of dark energy.
+BasePower=50
+Element=dark
+Cost=0
+Magic=yes
+stat=int
+
+[ThunderIV]
+Type=Single
+TP=10
+Desc=blasts %enemy with a large spark of lightning.
+BasePower=50
+Element=lightning
 Cost=0
 Magic=yes
 stat=int
@@ -3315,8 +3355,8 @@ stat=int
 [AeroV]
 Type=Single
 TP=10
-Desc=looks at %enemy and raises $gender($1) staff. A moment later, a large tornado engulfs %enemy and slams them into the ground.
-BasePower=40
+Desc=englufs %enemy with a large tornado.
+BasePower=60
 Element=Wind
 Cost=0
 Magic=yes
@@ -3325,8 +3365,8 @@ stat=int
 [BlizzardV]
 Type=single
 TP=10
-Desc=swings $gender($1) staff at %enemy $+ 's direction and several large ice shards shoot towards %enemy $+ .
-BasePower=40
+Desc=blasts %enemy with a massive shard of ice.
+BasePower=60
 Element=Ice
 Cost=0
 Magic=yes
@@ -3335,11 +3375,81 @@ stat=int
 [FireV]
 Type=single
 TP=10
-Desc=points towards %enemy $+ . A moment later, several large pillars of flame explode from the ground and close in upon %enemy $+ , causing large fire damage.
-BasePower=40
+Desc=blasts %enemy with a massive column of fire.
+BasePower=60
 Element=Fire
 Cost=0
 Magic=yes
+stat=int
+
+[BanishV]
+Type=Single
+TP=10
+Desc=engulfs %enemy with a massive sphere of light energy.
+BasePower=60
+Element=light
+Cost=0
+Magic=yes
+stat=int
+
+[DarkV]
+Type=Single
+TP=10
+Desc=engulfs %enemy with a massive sphere of dark energy.
+BasePower=60
+Element=Dark
+Cost=6000
+Magic=Yes
+stat=int
+
+[StoneV]
+Type=Single
+TP=10
+Desc=blasts %enemy with a massive shard of earth.
+BasePower=60
+Element=Earth
+Cost=6000
+Magic=Yes
+stat=int
+
+[WaterV]
+Type=Single
+TP=10
+Desc=covers %enemy with a massive wave of water.
+BasePower=60
+Element=Water
+Cost=6000
+Magic=Yes
+stat=int
+
+[ThunderV]
+Type=Single
+TP=10
+Desc=blasts %enemy with a massive spark of lightning.
+BasePower=60
+Element=Lightning
+Cost=6000
+Magic=Yes
+stat=int
+
+[UltimaII]
+Type=AOE
+TP=100
+Desc=summons a large sphere of green energy to the middle of the arena, which explodes a moment later, dealing damage!
+BasePower=100
+Element=Light
+Cost=0
+Magic=Yes
+stat=int
+
+[KaustraII]
+Type=AOE
+TP=100
+Desc=summons a large sphere of black energy to the middle of the arena, which explodes a moment later, dealing damage!
+BasePower=100
+Element=Dark
+Cost=0
+Magic=Yes
 stat=int
 
 [Sweep]
@@ -7187,46 +7297,6 @@ BasePower=50
 Cost=0
 Magic=no
 stat=str
-
-[Darkra_I]
-Type=AOE
-TP=10
-Desc=floats into the air slightly as %gender3($1) gathers energy. $set_chr_name($1) %real.name then slams the staff into the ground, causing dark energy to expand over all of the battlefield!
-BasePower=35
-Element=Dark
-Cost=0
-Magic=Yes
-stat=int
-
-[Darkra_II]
-Type=AOE
-TP=10
-Desc=spins around as it gathers power for the spell. A small dark orb appears before the orb slams into the battlefield, covering it in darkness!
-BasePower=50
-Element=Dark
-Cost=0
-Magic=Yes
-stat=int
-
-[Holy_II]
-Type=AOE
-TP=10
-Desc=casts a stronger version of Holy. Searing light engulfs the battlefield to damage all targets!
-BasePower=50
-Element=Light
-Cost=0
-Magic=Yes
-stat=int
-
-[DarkV]
-Type=Single
-TP=10
-Desc=summons a very large dark sphere that floats in the air for a moment before it crashes into %enemy $+ !
-BasePower=60
-Element=Dark
-Cost=6000
-Magic=Yes
-stat=int
 
 [SonicBoom]
 Type=AOE

@@ -12,64 +12,63 @@ HEALING ITEMS
 [Potion]
 Type=heal
 Target=Single
-Amount=50
+Amount=100
 Desc=pulls out a potion bottle and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=45
-SellPrice=20
-FullbringLevel=1
-FullbringTarget=AOE
-FullbringAmount=25
-Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a small light that heals everyone.
-
-[RootBeer]
-Type=heal
-Target=Single
-Amount=60
-Desc=pulls out a bottle of fizzy rootbeer and hands it to %enemy $+ , who drinks it down. Teehee. Bubbly.
-Cost=50
+Cost=100
 SellPrice=30
 FullbringLevel=1
 FullbringTarget=AOE
-FullbringAmount=30
-Fullbringdesc=draws out the soul from the rootbeer.  The soul is drawn towards everyone and gives off a small light that heals everyone.
-ShopNPC=TravelMerchant
+FullbringAmount=50
+Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a small light that heals everyone.
 
 [VitalStar]
 Type=heal
 Target=Single
-Amount=80
+Amount=150
 Desc=pulls out a strange green star and tosses it at %enemy $+ .  The star is absorbed and a sense of healing overcomes $gender2($2) $+ .
-Cost=100
+Cost=150
 SellPrice=40
 FullbringLevel=1
 FullbringTarget=AOE
-FullbringAmount=40
+FullbringAmount=75
 Fullbringdesc=draws out the soul from the vital star.  The vital star's soul is drawn to all allies on the battlefield, healing them all.
 
 [X-Potion]
 Type=heal
 ShopNPC=HealingMerchant
 Target=Single
-Amount=150
+Amount=300
 Desc=pulls out an X-potion bottle and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=250
-SellPrice=80
+Cost=300
+SellPrice=100
 FullbringLevel=2
 FullbringTarget=AOE
-FullbringAmount=100
+FullbringAmount=150
 Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a small light that heals everyone.
+
+[RootBeer]
+Type=heal
+Target=Single
+Amount=500
+Desc=pulls out a bottle of fizzy rootbeer and hands it to %enemy $+ , who drinks it down. Teehee. Bubbly.
+Cost=500
+SellPrice=30
+FullbringLevel=1
+FullbringTarget=AOE
+FullbringAmount=250
+Fullbringdesc=draws out the soul from the rootbeer.  The soul is drawn towards everyone and gives off a small light that heals everyone.
 
 [Senzu]
 Type=heal
 ShopNPC=HealingMerchant
 Target=Single
-Amount=600
+Amount=1000
 Desc=pulls out a small green bean and tosses it at %enemy $+ .  After eating it, $gender3($2) feels a surge of health return.
-Cost=$iif($readini(garden.dat, gardenstats, level) <= 3, 500, 300)
-SellPrice=300
+Cost=$iif($readini(garden.dat, gardenstats, level) <= 3, 1000, 800)
+SellPrice=400
 FullbringLevel=4
 FullbringTarget=AOE
-FullbringAmount=200
+FullbringAmount=500
 Fullbringdesc=draws out the soul from the senzu bean.  The battlefield is covered with a soothing light, healing all allies.
 
 [SuperPotion]
@@ -78,11 +77,11 @@ ShopNPC=HealingMerchant
 Target=Single
 Amount=1500
 Desc=pulls out bottle of red liquid labeled "Super Potion" and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=3500
-SellPrice=2000
+Cost=1500
+SellPrice=750
 FullbringLevel=5
 FullbringTarget=AOE
-FullbringAmount=350
+FullbringAmount=750
 Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a bright light that heals everyone.
 ConquestItem=true
 
@@ -92,11 +91,11 @@ ShopNPC=TravelMerchant
 Target=Single
 Amount=4000
 Desc=pulls out bottle of liquid made with blood labeled "Mega Potion" and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=8000
-SellPrice=4000
+Cost=4000
+SellPrice=2000
 FullbringLevel=5
 FullbringTarget=AOE
-FullbringAmount=400
+FullbringAmount=1500
 Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a bright light that heals everyone.
 Currency=none
 
@@ -106,10 +105,10 @@ Target=Single
 Amount=5000
 Desc=pulls out a refreshing bottle of Bruce "Old Man" Willaker's juice and drinks it.  Ahhhhhhh, the most refreshing juice in the world.
 Cost=0
-SellPrice=5000
+SellPrice=3000
 FullbringLevel=5
 FullbringTarget=AOE
-FullbringAmount=500
+FullbringAmount=2000
 Fullbringdesc=draws out the soul from a bottle of Bruce "Old Man" Willaker's juice.  The juice's soul is drawn towards everyone and gives off a bright light that heals everyone.
 Currency=none
 
@@ -123,20 +122,20 @@ Cost=$iif($readini(shopnpcs.dat, NPCStatus, Santa) = true, 1000, 0)
 SellPrice=200
 FullbringLevel=5
 FullbringTarget=AOE
-FullbringAmount=400
+FullbringAmount=1500
 Fullbringdesc=draws out the soul from the candy cane.  The soul is drawn over to everyone and gives off a bright red and green colored light that heals everyone
 Currency=none
 
 [DustyWing]
 Type=tp
 Target=Single
-Amount=20
+Amount=30
 Desc=pulls out a white feather and hands it to %enemy $+ .  The feather is absorbed into %enemy $+ 's body.  %enemy feels $gender2($4) TP being restored.
 Cost=100
 SellPrice=40
 FullbringLevel=1
 FullbringTarget=AOE
-FullbringAmount=10
+FullbringAmount=15
 Fullbringdesc=draws out the soul from the Dusty Wing.  A large white wing shoots up into the sky and explodes into golden light that covers all allies on the battlefield.  Everyone feels their TP being restored.
 
 [Ether]
@@ -145,11 +144,39 @@ ShopNPC=HealingMerchant
 Target=Single
 Amount=60
 Desc=pulls out a bottle of white liquid and hands it to %enemy $+ .  After drinking it, %enemy feels $gender2($4) TP being restored.
-Cost=500
-SellPrice=120
+Cost=250
+SellPrice=100
 FullbringLevel=2
 FullbringTarget=AOE
 FullbringAmount=30
+Fullbringdesc=draws out the soul from the Ether.  A light white rain begins to rain down upon everyone and everyone feels their TP being restored.
+ConquestItem=true
+
+[Mid-Ether]
+Type=tp
+ShopNPC=HealingMerchant
+Target=Single
+Amount=120
+Desc=pulls out a bottle of white liquid and hands it to %enemy $+ .  After drinking it, %enemy feels $gender2($4) TP being restored.
+Cost=500
+SellPrice=200
+FullbringLevel=3
+FullbringTarget=AOE
+FullbringAmount=60
+Fullbringdesc=draws out the soul from the Ether.  A light white rain begins to rain down upon everyone and everyone feels their TP being restored.
+ConquestItem=true
+
+[Hi-Ether]
+Type=tp
+ShopNPC=HealingMerchant
+Target=Single
+Amount=160
+Desc=pulls out a bottle of white liquid and hands it to %enemy $+ .  After drinking it, %enemy feels $gender2($4) TP being restored.
+Cost=750
+SellPrice=350
+FullbringLevel=5
+FullbringTarget=AOE
+FullbringAmount=80
 Fullbringdesc=draws out the soul from the Ether.  A light white rain begins to rain down upon everyone and everyone feels their TP being restored.
 ConquestItem=true
 
@@ -179,8 +206,8 @@ ShopNPC=Santa
 [IgnitionStar]
 Type=IgnitionGauge
 Target=single
-Amount=10
-Cost=5000
+Amount=20
+Cost=2000
 SellPrice=1000
 Desc=pulls out a strange purple star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
 ShopNPC=HealingMerchant
@@ -189,7 +216,7 @@ ShopNPC=HealingMerchant
 Type=Revive
 ShopNPC=HealingMerchant
 Cost=5000
-SellPrice=4000
+SellPrice=3000
 Desc=pulls out a small, pulsing, gold orb and holds it up to %enemy $+ ! %enemy is covered by a bright golden light as the gold orb floats above %real.name $+ 's head and becomes a halo.  %enemy will be automatically revived upon death.
 
 
@@ -200,54 +227,54 @@ BATTLE ITEMS
 [Holy_Water]
 Type=Damage
 Target=Single
-Amount=80
+Amount=150
 Desc=takes out a vial of Holy Water and tosses it on %enemy
-Cost=100
-SellPrice=40
+Cost=200
+SellPrice=100
 Element=light
 FullbringLevel=2
 FullbringTarget=AOE
-FullbringAmount=50
+FullbringAmount=75
 Fullbringdesc=draws out the soul from the holy water.  The sky turns black and a rain made of holy water falls down upon all targets.  This is.. HYDRO STORM!
 ShopNPC=BattleMerchant
 
 [Red_Fang]
 Type=Damage
 Target=Single
-Amount=20
+Amount=150
 Desc=takes out a small glowing red fang and slashes %enemy with it.  The fang snaps and explodes with fire energy.
-Cost=100
-SellPrice=40
+Cost=200
+SellPrice=100
 Element=fire
 FullbringLevel=2
 FullbringTarget=AOE
-FullbringAmount=10
+FullbringAmount=75
 Fullbringdesc=draws out the soul from the red fang.  The soul glows a bright red and then explodes into a firestorm over all enemies on the battlefield.
 
 [Blue_Fang]
 Type=Damage
 Target=Single
-Amount=20
+Amount=150
 Desc=takes out a small glowing blue fang and slashes %enemy with it.  The fang snaps and explodes with ice energy.
-Cost=100
-SellPrice=40
+Cost=200
+SellPrice=100
 Element=ice
 FullbringLevel=2
 FullbringTarget=AOE
-FullbringAmount=10
+FullbringAmount=75
 Fullbringdesc=draws out the soul from the red fang.  The soul glows a bright red and then explodes into a firestorm over all enemies on the battlefield.
 
 [Thunder_Orb]
 Type=Damage
 Target=Single
-Amount=20
+Amount=150
 Desc=takes out a small glowing purple orb and throws it at %enemy $+ 's feet.  The orb shatters and lightning shoots out of it and slams into %enemy $+ !
-Cost=100
-SellPrice=40
+Cost=200
+SellPrice=100
 Element=lightning
 FullbringLevel=2
 FullbringTarget=AOE
-FullbringAmount=10
+FullbringAmount=75
 Fullbringdesc=draws out the soul from the thunder orb.  The sky goes black and a lightning storm erupts on the battlefield, shocking all enemies!
 
 [Stop_Watch]
@@ -323,42 +350,42 @@ Fullbringdesc=takes out a large glowing pointed hat and draws out its soul.  The
 [Fire_Flower]
 Type=Damage
 Target=Single
-Amount=150
-Cost=150
-SellPrice=50
+Amount=300
+Cost=400
+SellPrice=200
 Desc=takes out a small fire flower from the Mushroom Kingdom.  It gets absorbed by %user which allows %user to shoot fireballs at %enemy for a moment before the power wears off.
 Element=fire
 FullbringLevel=3
 FullbringTarget=AOE
-FullbringAmount=100
+FullbringAmount=150
 Fullbringdesc=draws out the soul from the fire flower.  The soul glows a bright red and then explodes several large fireballs that hit all targets on the battlefield.
 ShopNPC=BattleMerchant
 
 [Ice_Coin]
 Type=Damage
 Target=Single
-Amount=150
-Cost=150
-SellPrice=50
+Amount=300
+Cost=400
+SellPrice=200
 Desc=takes out a small blue coin and flips it at %enemy $+ .  The coin hits and covers %enemy with ice.  
 Element=ice
 FullbringLevel=3
 FullbringTarget=AOE
-FullbringAmount=100
+FullbringAmount=150
 Fullbringdesc=draws out the soul from the ice coin.  The soul glows a bright blue and then explodes, causing ice to rain down on all targets on the battlefield.
 ShopNPC=BattleMerchant
 
 [Wind_Vane]
 Type=Damage
 Target=Single
-Amount=150
-Cost=150
-SellPrice=50
+Amount=300
+Cost=400
+SellPrice=200
 Desc=takes out a small green wind vein and spins it at %enemy $+ .  A powerful gust of wind slices %enemy $+ !  
 Element=wind
 FullbringLevel=3
 FullbringTarget=AOE
-FullbringAmount=100
+FullbringAmount=150
 Fullbringdesc=draws out the soul from the wind vane.  The soul glows a bright green and then explodes, causing a small tornado to appear on the battlefield and damage all of %user $+ 's targets.
 ShopNPC=BattleMerchant
 
@@ -811,28 +838,28 @@ SUMMON ITEMS (npc allies)
 [DarkMagicianCard]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Dark_Magician
 SummonName=Dark Magician
 
 [BusterBladerCard]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Buster_Blader
 SummonName=Buster Blader
 
 [BlueEyesCard]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Blue_eyes
 SummonName=Blue Eyes White Dragon
 
 [FishOilBroth]
 Type=summon
 Cost=10000
-SellPrice=100
+SellPrice=2000
 Summon=Courier_Carrie
 SummonName=Courier Carrie
 
@@ -847,13 +874,13 @@ SummonName=Lirarian
 Type=summon
 Cost=0
 SellPrice=2000
-Summon=Eldora_Adlanna
-SummonName=Eldora Adlanna
+Summon=Lirarian
+SummonName=Lirarian
 
 [AlexanderMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Alexander
 SummonName=Alexander
 ShopNPC=BattleMerchant
@@ -875,7 +902,7 @@ SummonName=Bahamut Zero
 [CarbuncleMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Carbuncle
 SummonName=Carbuncle
 ShopNPC=BattleMerchant
@@ -883,7 +910,7 @@ ShopNPC=BattleMerchant
 [SolomonRing]
 Type=summon
 Cost=10000
-SellPrice=400
+SellPrice=1000
 Summon=Doomtrain
 SummonName=Doomtrain
 ShopNPC=BattleMerchant
@@ -891,7 +918,7 @@ ShopNPC=BattleMerchant
 [LuckyBroth]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Falcorr
 SummonName=Faithful Falcorr
 ShopNPC=BattleMerchant
@@ -899,7 +926,7 @@ ShopNPC=BattleMerchant
 [FenrirMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Fenrir
 SummonName=Fenrir
 ShopNPC=BattleMerchant
@@ -907,7 +934,7 @@ ShopNPC=BattleMerchant
 [GarudaMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Garuda
 SummonName=Garuda
 ShopNPC=BattleMerchant
@@ -915,7 +942,7 @@ ShopNPC=BattleMerchant
 [IfritMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Ifrit
 SummonName=Ifrit
 ShopNPC=BattleMerchant
@@ -923,7 +950,7 @@ ShopNPC=BattleMerchant
 [LeviathanMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Leviathan
 SummonName=Leviathan
 ShopNPC=BattleMerchant
@@ -931,7 +958,7 @@ ShopNPC=BattleMerchant
 [RamuhMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Ramuh
 SummonName=Ramuh
 ShopNPC=BattleMerchant
@@ -939,7 +966,7 @@ ShopNPC=BattleMerchant
 [ShivaMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Shiva
 SummonName=Shiva
 ShopNPC=BattleMerchant
@@ -947,7 +974,7 @@ ShopNPC=BattleMerchant
 [TitanMateria]
 Type=summon
 Cost=5000
-SellPrice=400
+SellPrice=1000
 Summon=Titan
 SummonName=Titan
 ShopNPC=BattleMerchant
@@ -955,14 +982,14 @@ ShopNPC=BattleMerchant
 [GuardContract]
 Type=summon
 Cost=500
-SellPrice=1
+SellPrice=100
 Summon=Yojimbo
 SummonName=Yojimbo
 
 [Pokeball]
 Type=summon
 Cost=10000
-SellPrice=400
+SellPrice=2000
 Summon=$read -l $+ $rand(1, $lines($lstfile(pokemon.lst))) $lstfile(pokemon.lst)
 SummonName=$readini($summon(%summon.name), basestats, name)
 Desc=pulls out a Pokeball and tosses it at the battlefield, floating in the air for a moment. The Pokeball then opens up, a bright light emerging from it, which summons...
@@ -974,57 +1001,58 @@ GEMS
 
 [Zircon]
 Type=gem
-Cost=20
-Desc=A small zircon. It is often mistaken for a diamond at first glance but isn't worth anywhere near as much.
+Cost=100
+SellPrice=50
+Desc=A small zircon.
 Currency=AlliedNotes
 
 [Topaz]
 Type=gem
-Cost=50
-SellPrice=70
-Desc=A small topaz
+Cost=100
+SellPrice=50
+Desc=A small topaz.
 Currency=AlliedNotes
 
 [Sapphire]
 Type=gem
-Cost=80
-SellPrice=100
-Desc=A small sapphire
+Cost=100
+SellPrice=50
+Desc=A small sapphire.
 Currency=AlliedNotes
 
 [Onyx]
 Type=gem
-Cost=90
-SellPrice=100
-Desc=A small black onyx
+Cost=100
+SellPrice=50
+Desc=A small black onyx.
 Currency=AlliedNotes
 
 [Opal]
 Type=gem
-Cost=95
-SellPrice=100
-Desc=A small white opal
+Cost=100
+SellPrice=50
+Desc=A small white opal.
 Currency=AlliedNotes
 
 [Emerald]
 Type=gem
-Cost=210
-SellPrice=150
-Desc=A small green emerald
+Cost=100
+SellPrice=50
+Desc=A small green emerald.
 Currency=AlliedNotes
 
 [Ruby]
 Type=gem
-Cost=205
-SellPrice=150
-Desc=A small red ruby
+Cost=100
+SellPrice=50
+Desc=A small red ruby.
 Currency=AlliedNotes
 
 [Diamond]
 Type=gem
-Cost=500
-SellPrice=550
-Desc=A bright white diamond
+Cost=100
+SellPrice=50
+Desc=A bright white diamond.
 Currency=AlliedNotes
 ConquestItem=true
 
@@ -1125,7 +1153,7 @@ Target=Single
 Amount=10.0
 Desc=pulls out a Discount Card and gives it to %enemy who shows it to the shop clerk.  "Ah yes, indeed, part of of our..secret club."  Score!
 Cost=100000
-SellPrice=1000
+SellPrice=5000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
 
@@ -1135,7 +1163,7 @@ Target=Single
 Amount=15.0
 Desc=pulls out a special membership card obtained from the traveling merchant and gives it to %enemy who shows it to the shop clerk.  "No way! You have a membership card from HIM? Of course you get a discount!"
 Cost=140000
-SellPrice=1000
+SellPrice=5000
 Exclusive=yes
 ShopNPC=TravelMerchant
 
@@ -1146,7 +1174,7 @@ Amount=15.0
 Desc=pulls out a bronze Discount Card and gives it to %enemy who shows it to the shop clerk.  "Oh, a bronze member? Not too bad.  Here's your discount!"
 Cost=160000
 ConquestItem=true
-SellPrice=2000
+SellPrice=5000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
 
@@ -1157,7 +1185,7 @@ Amount=20.0
 Desc=pulls out a shiny silver Discount Card and gives it to %enemy who shows it to the shop clerk.  "Woah! A silver member? Well of course you get a discount!"
 Cost=200000
 ConquestItem=true
-SellPrice=3000
+SellPrice=5000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
 
@@ -1168,7 +1196,7 @@ Amount=30.0
 Desc=pulls out a shiny gold Ultra Discount Card and gives it to %enemy who shows it to the shop clerk.  "Woah! No way! You know the president of the shop? Why yes, of course, please!  Here's a hefty discount for you!" 
 Cost=300000
 ConquestItem=true
-SellPrice=4000
+SellPrice=5000
 Exclusive=yes
 ShopNPC=DiscountCardMerchant
 

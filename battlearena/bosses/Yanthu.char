@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=200
+Hp=500
 Tp=200
-Str=22
-Def=45
-Int=70
-Spd=12
+Str=$calc(621 + $current.battlestreak)
+Def=$calc(621 + $current.battlestreak)
+Int=$calc(621 + $current.battlestreak)
+Spd=$calc(621 + $current.battlestreak)
 IgnitionGauge=2
 Name=Scorched Yanthu
 
 
 [Battle]
-Hp=200
+Hp=500
 Tp=200
-Str=22
-Def=45
-Int=70
-Spd=12
+Str=771
+Def=771
+Int=771
+Spd=771
 IgnitionGauge=2
 Status=alive
 
@@ -50,8 +50,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=300
-StreakMax=600
+Streak=150
 CanTaunt=false
 IgnoreElementalMessage=true
 
@@ -90,7 +89,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=HybridElementalPower
-HybridElementalPower=100
+HybridElementalPower=$calc(100 + $current.battlestreak)
 
 [Skills]
 Zen=5
@@ -98,32 +97,32 @@ Wizardry=100
 ClearMind=3
 Resist-Charm=100
 Resist-Intimidate=100
-Resist-Curse=100
-Resist-Blind
+Resist-Stun=100
+Resist-Blind=100
 Manawall=1
 MagicMirror=1
 ElementalSeal=1
 
 
 [Techniques]
-FlareII=55
-FreezeII=55
-FloodII=55
-TornadoII=55
-QuakeII=55
-BurstII=55
-DarkV=55
-BanishV=55
-Holy=40
-HolyII=40
-Darkra_I=40
-Darkra_II=40
-FirajaII=40
-BlizzajaII=40
-WaterjaII=40
-AerojaII=40
-StonejaII=40
-ThundajaII=40
+FireV=$calc(1 + $current.battlestreak)
+FirajaII=$calc(1 + $current.battlestreak)
+BlizzardV=$calc(1 + $current.battlestreak)
+BlizzajaII=$calc(1 + $current.battlestreak)
+WaterV=$calc(1 + $current.battlestreak)
+WaterjaII=$calc(1 + $current.battlestreak)
+AeroV=$calc(1 + $current.battlestreak)
+AerojaII=$calc(1 + $current.battlestreak)
+StoneV=$calc(1 + $current.battlestreak)
+StonejaII=$calc(1 + $current.battlestreak)
+ThunderV=$calc(1 + $current.battlestreak)
+ThundajaII=$calc(1 + $current.battlestreak)
+BanishV=$iif($current.battlestreak >= 110 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
+HolyII=$iif($current.battlestreak >= 110 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
+DarkV=$iif($current.battlestreak >= 110 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
+DarkraII=$iif($current.battlestreak >= 110 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
+UltimaII=$iif($current.battlestreak >= 300, $calc(1 + $current.battlestreak), 0)
+KaustraII=$iif($current.battlestreak >= 300, $calc(1 + $current.battlestreak), 0)
 
 
 [Item_Amount]
@@ -159,3 +158,77 @@ Scythe=80
 Glyph=80
 GreatSword=80
 Bow=80
+Axe=30
+Dagger=30
+Dancing=30
+Engine=30
+Mace=30
+PinkChainsaw=30
+Stave=30
+EnergyBlaster=50
+DoublePunch=10
+ShoulderTackle=10
+SpinningAttack=10
+AsuranFists=10
+FinalHeaven=10
+OneInchPunch=10
+VictorySmite=10
+ShinjinSpiral=10
+TornadoKick=10
+FastBlade=10
+FlatBlade=10
+AerialCross=10
+Stinger=10
+Drive=10
+MillionStab=10
+CircleBlade=10
+VorpalBlade=10
+SwiftBlade=10
+Twin_Slice=10
+HurricaneSpin=10
+Tachi:Enpi=10
+Tachi:Ageha=10
+Chire=10
+ThousandCuts=10
+VorpalScythe=10
+CrossReaper=10
+Guillotine=10
+HardSlash=10
+PowerSlash=10
+SpinningSlash=10
+Resolution=10
+Rainstorm=10
+ChargedShot=10
+RapidShot=10
+SniperShot=10
+SlugShot=10
+WhipLash=10
+LastStand=10
+BlastShot=10
+SerpentBite=10
+TwinDragonLash=10
+CircularChain=10
+Jump=10
+Skewer=10
+LegSweep=10
+PentaThrust=10
+SpiritJump=10
+SoulJump=10
+HighJump=10
+SonicThrust=10
+PiercingArrow=10
+DullingArrow=10
+BlastArrow=10
+Sidewinder=10
+Archingarrow=10
+ApexArrow=10
+FellCleave=10
+UkkosFury=10
+SteelCyclone=10
+Onslaught=10
+Rampage=10
+Ruinator=10
+DancingEdge=10
+PyrrhicKleos=10
+Evisceration=10
+HolyHandGrenade=0

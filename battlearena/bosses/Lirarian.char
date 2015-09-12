@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=$iif($current.battlestreak <= 300, 600, 2000)
 Tp=500
-Str=$iif($current.battlestreak <= 300, 100, 2000)
-Def=$iif($current.battlestreak <= 300, 100, 2000)
-Int=$iif($current.battlestreak <= 300, 100, 2000)
-Spd=$iif($current.battlestreak <= 300, 100, 2000)
+Str=$iif($current.battlestreak <= 300, 515, 1544)
+Def=$iif($current.battlestreak <= 300, 515, 1544)
+Int=$iif($current.battlestreak <= 300, 515, 1544)
+Spd=$iif($current.battlestreak <= 300, 515, 1544)
 IgnitionGauge=500
 Name=Lirarian
 
@@ -12,10 +12,10 @@ Name=Lirarian
 [Battle]
 Hp=1500
 Tp=500
-Str=75
-Def=65
-Int=50
-Spd=80
+Str=515
+Def=515
+Int=515
+Spd=515
 IgnitionGauge=500
 Status=alive
 
@@ -46,6 +46,7 @@ Drops=
 [Monster]
 Type=Elf
 size=medium
+TechLearn=false
 
 [Info]
 Flag=monster
@@ -59,7 +60,7 @@ Created=N/a
 Streak=100
 IgnoreQuicksilver=true
 CanTaunt=false
-IgnoreElementalMessage=true
+IgnorePresident=true
 
 [Status]
 Poison=no
@@ -103,15 +104,17 @@ Zen=5
 WeaponBash=1
 Impetus=20
 Swordmaster=100
-Resist-Paralysis=10
+Resist-Paralysis=100
 Resist-Amnesia=10
 Resist-Zombie=100
 Resist-Charm=100
-Resist-Stun=10
-Resist-Blind=10
+Resist-Stun=75
+Resist-Blind=100
 Resist-Weaponlock=100
 Resist-Intimidate=100
 Resist-Disarm=100
+Resist-Drunk=100
+Resist-Sleep=100
 
 [Techniques]
 Twin_Slice=$calc(1 + $current.battlestreak)
@@ -156,6 +159,7 @@ Bow=90
 Crissaegrim=50
 Valmanway=50
 Naturaleza=60
+Resolution=50
 AsuranFists=50
 Ashes=50
 Dismay=50
@@ -290,7 +294,7 @@ MechIceIV=10
 MechThunderIV=10
 MechLightIV=130
 MechShadowIV=10
-
+HolyHandGrenade=0
 
 [NaturalArmor]
 Name=Goddess Defense

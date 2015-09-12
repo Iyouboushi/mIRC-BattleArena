@@ -1,7 +1,6 @@
 ; Weapons.db is used to store the weapon lists, weapon information, shield lists and shield information.
 
 
-
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai
 Swords=Mythril_Sword.Joyeuse.Rebellion.Agni.Rudra.Excalibur.Murgleis.JewelSword.SilverSword.MasterSword
@@ -1659,12 +1658,22 @@ BasePower=10
 
 [ElementalPower]
 Cost=0
-Type=Wand
-Info=You can't buy this!
-Abilities=FireII.StoneII.IceII.AeroII.WaterII.ThunderII.Firaja.FireV.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja
+Type=Elemental
+Info=The power of the elementals.
+Abilities=Fire.FireII.Stone.StoneII.Ice.IceII.Aero.AeroII.Water.WaterII.Thunder.ThunderII.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra
 Element=none
 Hits=1
 BasePower=10
+
+[HybridElementalPower]
+Cost=0
+Type=Elemental
+Info=The power of the hybrid elementals.
+Abilities=FireIV.FireV.BanishIV.BanishV.StoneIV.StoneV.DarkIV.DarkV.WaterIV.WaterV.BlizzardIV.BlizzardV.AeroIV.AeroV.ThunderIV.ThunderV.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra.ThundajaII.FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Darkra.DarkraII.Holy.HolyII.UltimaII.KaustraII
+Element=None
+Hits=1
+BasePower=20
+Upgrade=0
 
 [MarioFists]
 Cost=0
@@ -2873,16 +2882,6 @@ Abilities=
 Element=none
 Hits=1
 BasePower=30
-Upgrade=0
-
-[HybridElementalPower]
-Cost=0
-Type=Wand
-Info=The power of the hybrid elementals.
-Abilities=Flare.Quake.Flood.Tornado.Freeze.Burst.FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.Firaja.FirajaII.Stoneja.StonejaII.Waterja.WaterjaII.Aeroja.AerojaII.Blizzaja.BlizzajaII.Thundaja.ThundajaII.Darkra_I.Darkra_II.DarkV.Holy.HolyII.BanishV.CureIV
-Element=None
-Hits=1
-BasePower=20
 Upgrade=0
 
 [BatFangs]

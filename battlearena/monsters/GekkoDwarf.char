@@ -46,6 +46,7 @@ Created=N/a
 Streak=21
 CanTaunt=false
 IgnoreElementalMessage=true
+Biome=Arsenal_Gear
 
 [Monster]
 Type=android

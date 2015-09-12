@@ -161,6 +161,7 @@ CircularChain=60
 CircleBlade=60
 SonicThrust=60
 ApexArrow=60
+HolyHandGrenade=0
 
 [NaturalArmor]
 Name=Holy Barrier

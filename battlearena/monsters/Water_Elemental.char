@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=50
+Hp=45
 Tp=90
-Str=5
-Def=12
-Int=7
-Spd=1
+Str=$calc(46 + $current.battlestreak)
+Def=$calc(46 + $current.battlestreak)
+Int=$calc(46 + $current.battlestreak)
+Spd=$calc(46 + $current.battlestreak)
 IgnitionGauge=2
 Name=Water Elemental
 
 
 [Battle]
-Hp=50
+Hp=45
 Tp=90
-Str=5
-Def=12
-Int=7
-Spd=1
+Str=57
+Def=57
+Int=57
+Spd=57
 IgnitionGauge=2
 Status=alive
 
@@ -49,7 +49,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=11
+Streak=21
 StreakMax=101
 CanTaunt=false
 IgnoreElementalMessage=true
@@ -93,17 +93,19 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=ElementalPower
-ElementalPower=10
+ElementalPower=$calc(1 + $current.battlestreak)
 
 
 [Skills]
 ClearMind=1
 Manawall=1
 ElementalSeal=1
+Wizardry=20
 
 [Techniques]
-WaterII=10
-Waterja=10
+Water=$iif($current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
+WaterII=$iif($current.battlestreak >= 50 && $current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
+Waterja=$iif($current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
 
 
 [Item_Amount]
@@ -118,23 +120,89 @@ Ice=70
 Lightning=120
 Light=70
 Dark=70
-HandToHand=30
-Whip=30
-Sword=30
-Gun=30
-Rifle=30
-Katana=30
-Wand=30
-Spear=30
-Scythe=30
-Glyph=40
-GreatSword=30
-Bow=30
-Axe=30
-Dagger=30
-Dancing=30
-Engine=30
-Mace=30
-PinkChainsaw=30
-Stave=30
+HandToHand=10
+Whip=10
+Sword=10
+Gun=10
+Rifle=10
+Katana=10
+Wand=10
+Spear=10
+Scythe=10
+Glyph=30
+GreatSword=10
+Bow=10
+Axe=10
+Dagger=10
+Dancing=10
+Engine=10
+Mace=10
+PinkChainsaw=10
+Stave=10
 EnergyBlaster=50
+DoublePunch=10
+ShoulderTackle=10
+SpinningAttack=10
+AsuranFists=10
+FinalHeaven=10
+OneInchPunch=10
+VictorySmite=10
+ShinjinSpiral=10
+TornadoKick=10
+FastBlade=10
+FlatBlade=10
+AerialCross=10
+Stinger=10
+Drive=10
+MillionStab=10
+CircleBlade=10
+VorpalBlade=10
+SwiftBlade=10
+Twin_Slice=10
+HurricaneSpin=10
+Tachi:Enpi=10
+Tachi:Ageha=10
+Chire=10
+ThousandCuts=10
+VorpalScythe=10
+CrossReaper=10
+Guillotine=10
+HardSlash=10
+PowerSlash=10
+SpinningSlash=10
+Resolution=10
+Rainstorm=10
+ChargedShot=10
+RapidShot=10
+SniperShot=10
+SlugShot=10
+WhipLash=10
+LastStand=10
+BlastShot=10
+SerpentBite=10
+TwinDragonLash=10
+CircularChain=10
+Jump=10
+Skewer=10
+LegSweep=10
+PentaThrust=10
+SpiritJump=10
+SoulJump=10
+HighJump=10
+SonicThrust=10
+PiercingArrow=10
+DullingArrow=10
+BlastArrow=10
+Sidewinder=10
+Archingarrow=10
+ApexArrow=10
+FellCleave=10
+UkkosFury=10
+SteelCyclone=10
+Onslaught=10
+Rampage=10
+Ruinator=10
+DancingEdge=10
+PyrrhicKleos=10
+Evisceration=10
+HolyHandGrenade=0

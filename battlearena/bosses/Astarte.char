@@ -57,7 +57,6 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=50
-StreakMax=250
 CanTaunt=true
 IgnoreElementalMessage=true
 
@@ -100,7 +99,7 @@ shell.timer=0
 
 [Weapons]
 Equipped=Egyptian_Rod
-Egyptian_Rod=20
+Egyptian_Rod=$calc(1 + $current.battlestreak)
 
 
 [Skills]
@@ -115,16 +114,16 @@ ManaWall=1
 
 [Techniques]
 Temptation=1
-DeltaSpark=20
-TypoonRod=20
-ScarfStab=20
+DeltaSpark=$calc(1 + $current.battlestreak)
+TypoonRod=$calc(1 + $current.battlestreak)
+ScarfStab=$calc(1 + $current.battlestreak)
 
 [Item_Amount]
 
 
 [modifiers]
 Heal=none
-Earth=200
+Earth=150
 Fire=10
 Wind=10
 Water=10
@@ -132,17 +131,89 @@ Ice=10
 Lightning=10
 Light=10
 Dark=10
-HandToHand=200
-Whip=200
+HandToHand=150
+Whip=150
 Sword=10
 Gun=10
 Rifle=10
 Katana=10
-Wand=10
+Wand=150
 Spear=10
 Scythe=10
 Glyph=10
 GreatSword=10
-bow=10
-
-
+Bow=10
+Axe=10
+Dagger=10
+Dancing=10
+Engine=150
+Mace=150
+PinkChainsaw=10
+Stave=150
+EnergyBlaster=10
+DoublePunch=150
+ShoulderTackle=150
+SpinningAttack=10
+AsuranFists=10
+FinalHeaven=10
+OneInchPunch=10
+VictorySmite=10
+ShinjinSpiral=10
+TornadoKick=10
+FastBlade=10
+FlatBlade=150
+AerialCross=10
+Stinger=10
+Drive=10
+MillionStab=10
+CircleBlade=10
+VorpalBlade=10
+SwiftBlade=10
+Twin_Slice=10
+HurricaneSpin=10
+Tachi:Enpi=10
+Tachi:Ageha=10
+Chire=10
+ThousandCuts=10
+VorpalScythe=10
+CrossReaper=10
+Guillotine=10
+HardSlash=10
+PowerSlash=10
+SpinningSlash=10
+Resolution=10
+Rainstorm=10
+ChargedShot=10
+RapidShot=10
+SniperShot=10
+SlugShot=150
+WhipLash=10
+LastStand=10
+BlastShot=10
+SerpentBite=10
+TwinDragonLash=150
+CircularChain=10
+Jump=10
+Skewer=10
+LegSweep=10
+PentaThrust=10
+SpiritJump=10
+SoulJump=10
+HighJump=10
+SonicThrust=10
+PiercingArrow=10
+DullingArrow=10
+BlastArrow=10
+Sidewinder=150
+Archingarrow=10
+ApexArrow=10
+FellCleave=10
+UkkosFury=10
+SteelCyclone=10
+Onslaught=10
+Rampage=10
+Ruinator=10
+DancingEdge=10
+PyrrhicKleos=10
+Evisceration=10
+HolyHandGrenade=0

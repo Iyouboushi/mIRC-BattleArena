@@ -155,7 +155,7 @@ SpellMasterXP=1
 [Augments]
 MirrorOfTwilight=MagicBonus.TechBonus.EnhanceHandToHand.HurtEthereal.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian.EnhanceBlocking
 Midna'sCloak=MagicBonus.TechBonus.EnhanceZen.EnhanceParry.EnhanceCounter.EnhanceElementalDefense
-Midna'sSkirt=MagicBonus.TechBonus.RenkeiBonus.EnhanceDodge.EnhanceCriticalHiys.EnhanceDoubleTurnChance
+Midna'sSkirt=MagicBonus.TechBonus.RenkeiBonus.EnhanceDodge.EnhanceCriticalHits.EnhanceDoubleTurnChance
 
 
 [Ignitions]
