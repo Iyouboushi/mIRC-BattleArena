@@ -163,7 +163,6 @@ person_in_mech {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 check_drops {
   var %boss.item $readini($dbfile(drops.db), drops, $1)
-
   if (%boss.item = $null) { var %boss.item $readini($char($1), stuff, drops) } 
   if (%boss.item != $null) {
     var %temp.drops.list $readini($txtfile(battle2.txt), battle, bonusitem)

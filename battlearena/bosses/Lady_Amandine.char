@@ -113,7 +113,7 @@ ClearMind=1
 MonsterSummon=$iif($calc(%current.turn % 3) = 0 && $dungeon.haukke.lampcount > 0, 1, 0)
 MonsterSummon.Monster=Lamp_Bomb
 MonsterSummon.Chance=100
-monstersummon.numberspawn=$iif($dungeon.haukke.lampcount = 4, 4, $iif($dungeon.haukke.lampcount = 3, 3, $iif($dungeon.haukke.lampcount = 2, 2, $dungeon.haukke.lampcount = 1, 1))))
+monstersummon.numberspawn=$dungeon.haukke.lampcount
 
 
 [Techniques]

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/01/15
+;;;; Last updated: 09/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2103,7 +2103,7 @@ alias battle.calculate.redorbs {
   if (%battle.type = orbfountain) { set %base.redorbs $readini(system.dat, System, basexp) | inc %base.redorbs $rand(400,500) }
   if (%battle.type = boss) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
   if (%battle.type = mimic) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
-  if (%battle.type = dungeon) { set %base.redorbs $readini(system.dat, System, basebossxp) | inc %base.redorbs 100 }
+  if (%battle.type = dungeon) { set %base.redorbs $readini(system.dat, System, basebossxp) | inc %base.redorbs $2 }
 
   if (%number.of.monsters.needed = $null) { var %number.of.monsters.needed 1 }
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/12/15
+;;;; Last updated: 09/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3081,14 +3081,14 @@ chest.adjustredorbs {
 give_random_reward {
   if ($readini($txtfile(battle2.txt), battle, bonusitem) != $null) {
 
-    if (%battle.type = boss) { var %reward.chance 100 }
-
-    if (%battle.type != boss) { 
+    if ((%battle.type = boss) || (%battle.type = dungeon)) { var %reward.chance 100 }
+    else { 
       var %reward.chance $rand(1,100)
       inc %reward.chance $treasurehunter.check
 
       if (%battle.type = mimic) { var %reward.chance 100 }
     }
+
 
     if (%reward.chance < 65) { return }
 

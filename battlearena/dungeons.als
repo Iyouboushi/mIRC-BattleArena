@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 09/12/15
+;;;; Last updated: 09/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -145,16 +145,12 @@ dungeon.battlefield {
   else { set  %current.battlefield %dungeon.battlefield }
 }
 
-dungeon.batinfo {
-  ; $1 = %battle.list
-}
-
 dungeon.rewardorbs {
   var %dungeon.level $readini($txtfile(battle2.txt), dungeoninfo, dungeonlevel)
   var %boss.room.check $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, bossroom)
 
-  if (%boss.room = true) { var %dungeon.level $calc(%dungeon.level * 25) }
-  else { var %dungeon.level $calc(%dungeon.level * 15) }
+  if (%boss.room.check = true) { var %dungeon.level $calc(%dungeon.level * 25) }
+  else { var %dungeon.level $calc(%dungeon.level * 10) }
 
   if ($1 = dungeonclear) { var %dungeon.clear true | var %dungeon.level $calc(%dungeon.level + 75) }
 
