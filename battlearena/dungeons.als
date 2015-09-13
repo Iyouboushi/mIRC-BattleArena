@@ -80,7 +80,6 @@ dungeon.enter {
 
   $set_chr_name($1) 
   $display.message($readini(translation.dat, battle, EnteredTheDungeon), global)
-
 }
 
 dungeon.begin {
@@ -134,8 +133,6 @@ dungeon.begin {
   $display.message($readini(translation.dat, battle, StepsUpFirst), battle)
 }
 
-
-
 dungeon.dungeonovercheck {
   var %dungeon.finalroom $readini($dungeonfile($dungeon.dungeonfile), info, finalroom) 
   if ($dungeon.currentroom > %dungeon.finalroom) { return true }
@@ -150,7 +147,6 @@ dungeon.battlefield {
 
 dungeon.batinfo {
   ; $1 = %battle.list
-
 }
 
 dungeon.rewardorbs {
@@ -160,7 +156,7 @@ dungeon.rewardorbs {
   if (%boss.room = true) { var %dungeon.level $calc(%dungeon.level * 25) }
   else { var %dungeon.level $calc(%dungeon.level * 15) }
 
-  if ($1 = dungeonclear) { var %dungeon.clear true | var %dungeon.level $calc(%dungeon.level + 50) }
+  if ($1 = dungeonclear) { var %dungeon.clear true | var %dungeon.level $calc(%dungeon.level + 75) }
 
   if ($1 = failure) {   
     $battle.calculate.redorbs(defeat, %dungeon.level)
@@ -248,19 +244,22 @@ dungeon.nextroom {
   remini $txtfile(battle2.txt) battle bonusitem
   remini $txtfile(battle2.txt) style
 
-  ; Generate dungeon monsters
-  $dungeon.generatemonsters
+  if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, RestoreRoom) = true) { $dungeon.restoreroom }
+  else { 
+    ; Generate dungeon monsters
+    $dungeon.generatemonsters
 
-  $generate_battle_order
-  set %who $read -l1 $txtfile(battle.txt) | set %line 1
-  set %current.turn 1
+    $generate_battle_order
+    set %who $read -l1 $txtfile(battle.txt) | set %line 1
+    set %current.turn 1
 
-  $battlelist(public)
+    $battlelist(public)
 
-  $display.message($readini(translation.dat, battle, StepsUpFirst), battle)
-  unset %wait.your.turn
+    $display.message($readini(translation.dat, battle, StepsUpFirst), battle)
+    unset %wait.your.turn
 
-  $aicheck(%who)
+    $aicheck(%who)
+  }
 }
 
 dungeon.generatemonsters {
@@ -349,6 +348,38 @@ dungeon.generatemonsters {
 
   }
   unset %found.monster
+}
+
+dungeon.restoreroom {
+  ; Restores players to full health, tp, and clears their skill timers.
+
+  $display.message(7* The party feels their health $+ $chr(44)  tp $+ $chr(44)  and power restored in this room)
+
+  var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+
+    if (%flag != monster) { $fulls(%who.battle) |  $clear_skill_timers(%who.battle) |  writeini $char(%who.battle) info NeedsFulls yes }
+
+    inc %battletxt.current.line
+  }
+
+  ; Resync everyone
+  $portal.sync.players($readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel))
+
+  ; Move to the next room.
+  var %current.room $dungeon.currentroom
+  inc %current.room 1
+  writeini $txtfile(battle2.txt) DungeonInfo CurrentRoom %current.room
+
+  if ($dungeon.dungeonovercheck = true) { $dungeon.end | halt } 
+
+  $display.message(2* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
+
+  /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
+
+
 }
 
 
