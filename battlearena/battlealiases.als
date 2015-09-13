@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/12/15
+;;;; Last updated: 09/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -312,7 +312,7 @@ check_for_double_turn {  $set_chr_name($1)
   set %debug.location alias check_for_double_turn
 
   if (%battle.type = dungeon) {
-    if (($dungeon.currentroom = 0) && (%current.turn = 2)) { echo -a checking for end | $battle.check.for.end }
+    if (($dungeon.currentroom = 0) && (%current.turn = 2)) { $battle.check.for.end }
     if ($dungeon.currentroom > 0) { $battle.check.for.end }
   }
   if (%battle.type != dungeon) { $battle.check.for.end }
