@@ -966,6 +966,8 @@ alias ai.monstersummon {
       if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
         var %max.number.of.mons $readini(system.dat, system, MaxNumberOfMonsInBattle)
         if (%max.number.of.mons = $null) { var %max.number.of.mons 6 }
+        if (%battle.type = dungeon) { inc %max.number.of.mons 4 }
+
       }
 
       if ($readini(system.dat, system, botType) = DCCchat) { var %max.number.of.mons 50 }

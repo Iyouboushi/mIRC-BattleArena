@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 09/02/15
+;;;; Last updated: 09/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -57,6 +57,13 @@ alias shop.exchange {
   }
 }
 
+alias shop.categories.list {
+  $display.private.message(2Valid shop categories:)
+  $display.private.message(2Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) Portal $+ $chr(44) Misc) 
+  $display.private.message(2Mech $+ $chr(44) Mech $+ $chr(44) Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys)
+}
+
+
 alias shop.start {
 
   ; For now let's check to make sure the shop level isn't over 25.
@@ -96,7 +103,10 @@ alias shop.start {
       if ($nick isin $readini($txtfile(battle2.txt), Battle, List)) {  $display.private.message($readini(translation.dat, errors, Can'tUseShopInBattle)) | halt }
     }
 
-    if ($3 = $null) {  $display.private.message(4Error: Use !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields/enhancement/trusts/potioneffect/dungeonkeys> <what to buy>)  }
+    if ($3 = $null) {  $display.private.message(4Error: Use !shop buy category itemname)
+      $shop.categories.list 
+      halt 
+    }
     var %amount.to.purchase $abs($5)
     if ((%amount.to.purchase = $null) || (%amount.to.purchase !isnum 1-9999)) { var %amount.to.purchase 1 }
 
@@ -133,13 +143,22 @@ alias shop.start {
       }
     }
 
-    else {  $display.private.message(4Error: Use !shop list <items/techs/skills/stats/weapons/orbs/ignitions/styles/portal/misc/mech/mech items/shields/enhancements/trusts/potioneffect/dungeonkeys>  or !shop buy <items/techs/skills/stats/weapons/orbs/style/ignitions/portal/misc/mech/mech items/shields/enhancements/trusts/potioneffect/dungeonkeys> <what to buy>)  | halt }
+    else { 
+      $display.private.message(4Error: Use 2!shop list category4 or 2!shop buy category itemname)
+      $shop.categories.list 
+      halt 
+    }
+
   }
 
   if ($2 = list) { 
 
     var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys
-    if ($istok(%valid.categories, $3, 46) = $false) { $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/enhancements/trusts>  or !shop buy <items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields/enhancements/trusts/potioneffect/dungeonkeys> <what to buy>)  | halt }
+    if ($istok(%valid.categories, $3, 46) = $false) { 
+      $display.private.message(4Error: Use 2!shop list category4 or 2!shop buy category itemname)
+      $shop.categories.list 
+      halt 
+    }
 
     else {
       if (($3 = enhancement) || ($3 = enhancements))  { $shop.enhancements($nick, list) }
@@ -182,8 +201,11 @@ alias shop.start {
 
   }
 
-  else {  $display.private.message(4Error: Use !shop list <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields>  or !shop buy <<items/techs/skills/stats/weapons/styles/ignitions/orbs/portal/misc/mech/mech items/shields/enhancements> <what to buy>)  | halt }
-
+  else {  
+    $display.private.message(4Error: Use 2!shop list category4 or 2!shop buy category itemname)
+    $shop.categories.list 
+    halt 
+  }
 }
 
 alias shop.accessories {

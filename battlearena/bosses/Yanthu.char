@@ -99,6 +99,7 @@ Resist-Charm=100
 Resist-Intimidate=100
 Resist-Stun=100
 Resist-Blind=100
+Resist-Curse=100
 Manawall=1
 MagicMirror=1
 ElementalSeal=1

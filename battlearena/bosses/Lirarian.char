@@ -61,6 +61,7 @@ Streak=100
 IgnoreQuicksilver=true
 CanTaunt=false
 IgnorePresident=true
+IgnoreOutpost=true
 
 [Status]
 Poison=no

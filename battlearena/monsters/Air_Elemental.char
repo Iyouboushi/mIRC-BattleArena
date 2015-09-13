@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=45
 Tp=90
-Str=$calc(46 + $current.battlestreak)
-Def=$calc(46 + $current.battlestreak)
-Int=$calc(46 + $current.battlestreak)
-Spd=$calc(46 + $current.battlestreak)
+Str=$calc(16 + $current.battlestreak)
+Def=$calc(16 + $current.battlestreak)
+Int=$calc(16 + $current.battlestreak)
+Spd=$calc(16 + $current.battlestreak)
 IgnitionGauge=2
 Name=Air Elemental
 
@@ -12,10 +12,10 @@ Name=Air Elemental
 [Battle]
 Hp=45
 Tp=90
-Str=57
-Def=57
-Int=57
-Spd=57
+Str=16
+Def=16
+Int=16
+Spd=16
 IgnitionGauge=2
 Status=alive
 

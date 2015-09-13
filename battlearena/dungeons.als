@@ -315,7 +315,7 @@ dungeon.generatemonsters {
       var %bossquote $readini($char(%current.monster.to.spawn.name), descriptions, bossquote)
       if (%bossquote != $null) { 
         var %bossquote 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
-        $display.message.delay(%bossquote, battle, %timer.delay) 
+        $display.message(%bossquote, battle) 
       }
     }
 
