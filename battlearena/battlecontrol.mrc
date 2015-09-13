@@ -623,7 +623,7 @@ alias flee {
 
   var %number.of.flees $readini($char($1), stuff, TimesFled)
   if (%number.of.flees = $null) { var %number.of.flees 0 }
-  inc %number.of.items.sold 1
+  inc %number.of.flees 1
   writeini $char($1) stuff TimesFled %number.of.flees
 
   $achievement_check($1, ScardyCat)
