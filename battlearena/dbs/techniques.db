@@ -2410,7 +2410,8 @@ stat=int
 [ThundajaII]
 Type=AOE
 TP=60
-Desc=casts the most powerful lightning spell known by any wizard, Thundaja II.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies. BasePower=60
+Desc=casts the most powerful lightning spell known by any wizard, Thundaja II.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies. 
+BasePower=60
 Cost=3500
 Element=lightning
 magic=yes
