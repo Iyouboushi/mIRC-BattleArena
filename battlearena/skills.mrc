@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 07/27/15
+;;;; Last updated: 09/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1417,6 +1417,13 @@ alias skill.clone { $set_chr_name($1)
   if ($readini($char($1), info, flag) = npc) {
     set %hp $round($calc(%current.hp / 1.8),0)
     writeini $char($1) skills shadowcopy 0
+
+    if (%battle.type = ai) {
+      var %total.players $readini($txtfile(battle2.txt), BattleInfo, Players)
+      inc %total.players 1
+      writeini $txtfile(battle2.txt) BattleInfo Players %total.players
+    }
+
   }
 
   if ($readini($char($1), info, flag) = monster) { 
@@ -1450,6 +1457,8 @@ alias skill.clone { $set_chr_name($1)
   unset %hp
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction shadowcopy
+
+
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
