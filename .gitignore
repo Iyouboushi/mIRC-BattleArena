@@ -1,3 +1,14 @@
+# Character files
+characters/**/*.char
+!characters/new_chr.char
+
+# Data files
+auction_winners.txt
+lsts/monsterdeaths.lst
+shopnpcs.dat
+system.dat
+
+
 #################
 ## Eclipse
 #################
