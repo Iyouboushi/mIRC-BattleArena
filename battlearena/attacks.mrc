@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 07/27/15
+;;;; Last updated: 09/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -104,9 +104,12 @@ alias attack_cmd {
     unset %wpn.element
 
     if ((%counterattack != on) && (%counterattack != shield)) { 
-      $drain_samba_check($1)
+      $drain_samba_check($1) 
+      var %weapon.equipped.original %weapon.equipped
+      if ((%weapon.equipped.left != $null) && ($readini($dbfile(weapons.db), %weapon.equipped.left, type) != shield)) { set %weapon.equipped %weapon.equipped $+ . $+ %weapon.equipped.left }
       $deal_damage($1, $2, %weapon.equipped)
-      $display_damage($1, $2, weapon, %weapon.equipped)
+      $display_damage($1, $2, weapon, %weapon.equipped.original)
+
     }
 
     if (%counterattack = on) { 

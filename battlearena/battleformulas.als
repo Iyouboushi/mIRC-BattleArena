@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 06/19/15
+;;;; Last updated: 07/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -435,6 +435,19 @@ demon.wall.boost {
   inc %demonwall.turnpercent 1  
   set %attack.damage $round($calc(%demonwall.turnpercent * %attack.damage),0)
   unset %demonwall.turnpercent
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks to see if the last melee
+; hit was done with the same
+; weapon(s) and nerfs it if so
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+melee.lastaction.nerfcheck {
+  ; $1 = person we're checking
+  ; $2 = weapon used
+
+  if ($istok($readini($txtfile(battle2.txt), style, $1 $+ .lastaction),$2,46) = $true) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1047,7 +1060,7 @@ formula.meleedmg.player.formula_3.0 {
   $cap.damage($1, $3, melee)
 
   ; If this current melee attack is using the same weapon as the previous melee attack, nerf the damage
-  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+  $melee.lastaction.nerfcheck($1, $2)
 
   if (%attack.damage <= 1) {
     set %attack.damage $readini($dbfile(weapons.db), $2, BasePower)
@@ -1395,7 +1408,7 @@ formula.meleedmg.player.formula_1.0 {
   $cap.damage($1, $3, melee)
 
   ; If this current melee attack is using the same weapon as the previous melee attack, nerf the damage
-  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+  $melee.lastaction.nerfcheck($1, $2)
 
   if (%attack.damage <= 1) {
     set %attack.damage $readini($dbfile(weapons.db), $2, BasePower)
@@ -1785,7 +1798,7 @@ formula.meleedmg.player.formula_2.5 {
   $cap.damage($1, $3, melee)
 
   ; If this current melee attack is using the same weapon as the previous melee attack, nerf the damage
-  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+  $melee.lastaction.nerfcheck($1, $2)
 
   if (%attack.damage <= 1) {
     set %attack.damage $readini($dbfile(weapons.db), $2, BasePower)
