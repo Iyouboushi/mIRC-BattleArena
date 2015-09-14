@@ -2309,7 +2309,7 @@ Currency=AlliedNotes
 Type=misc
 Desc=Parts for a mysterious and powerful sword.
 Cost=0
-SellPrice=100
+SellPrice=5000
 Exclusive=yes
 Currency=AlliedNotes
 

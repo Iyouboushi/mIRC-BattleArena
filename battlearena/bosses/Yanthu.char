@@ -122,8 +122,8 @@ BanishV=$iif($current.battlestreak >= 110 && $current.battlestreak <= 300, $calc
 HolyII=$iif($current.battlestreak >= 110 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
 DarkV=$iif($current.battlestreak >= 110 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
 DarkraII=$iif($current.battlestreak >= 110 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-UltimaII=$iif($current.battlestreak >= 300, $calc(1 + $current.battlestreak), 0)
-KaustraII=$iif($current.battlestreak >= 300, $calc(1 + $current.battlestreak), 0)
+Ultima_II=$iif($current.battlestreak >= 300, $calc(1 + $current.battlestreak), 0)
+Kaustra_II=$iif($current.battlestreak >= 300, $calc(1 + $current.battlestreak), 0)
 
 
 [Item_Amount]

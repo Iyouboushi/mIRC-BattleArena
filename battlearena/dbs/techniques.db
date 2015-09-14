@@ -172,7 +172,7 @@ VampireFangs=VampireBite.DoublePunch.ShoulderTackle.SpinningAttack
 SpaceGun=SpaceBeam.Sacrifice.SpaceAbsorb.SpaceBoost
 CerberusClaws=IceRain.Roar.ShoulderTackle
 ElementalPower=Fire.FireII.Stone.StoneII.Ice.IceII.Aero.AeroII.Water.WaterII.Thunder.ThunderII.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra
-HybridElementalPower=FireIV.FireV.BanishIV.BanishV.StoneIV.StoneV.DarkIV.DarkV.WaterIV.WaterV.BlizzardIV.BlizzardV.AeroIV.AeroV.ThunderIV.ThunderV.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra.ThundajaII.FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Darkra.DarkraII.Holy.HolyII.UltimaII.KaustraII
+HybridElementalPower=FireIV.FireV.BanishIV.BanishV.StoneIV.StoneV.DarkIV.DarkV.WaterIV.WaterV.BlizzardIV.BlizzardV.AeroIV.AeroV.ThunderIV.ThunderV.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra.ThundajaII.FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Darkra.DarkraII.Holy.HolyII.Ultima_II.Kaustra_II
 FishBite=Screwdriver.AquaBall.Water
 Egyptian_Rod=Temptation.DeltaSpark.TypoonRod.ScarfStab
 SinistralPower=RayGion.FuReia.RahGian.WoRud.ReeDelt.AsuranFists.FinalHeaven.ShinjinSpiral
@@ -3434,7 +3434,7 @@ Cost=6000
 Magic=Yes
 stat=int
 
-[UltimaII]
+[Ultima_II]
 Type=AOE
 TP=100
 Desc=summons a large sphere of green energy to the middle of the arena, which explodes a moment later, dealing damage!
@@ -3444,7 +3444,7 @@ Cost=0
 Magic=Yes
 stat=int
 
-[KaustraII]
+[Kaustra_II]
 Type=AOE
 TP=100
 Desc=summons a large sphere of black energy to the middle of the arena, which explodes a moment later, dealing damage!
@@ -12061,7 +12061,7 @@ IgnoreDefense=20
 HurtEthereal=True
 stat=int
 CanDodge=false
-DestroyShadows=8
+DestroyShadows=3
 
 [Thunder_Sword]
 Type=Single
@@ -12101,7 +12101,7 @@ Magic=No
 HurtEthereal=True
 stat=str
 CanDodge=false
-DestroyShadows=2
+DestroyShadows=1
 
 [Victory_Sword]
 Type=Single
@@ -12115,7 +12115,7 @@ Magic=No
 HurtEthereal=True
 stat=str
 CanDodge=false
-DestroyShadows=2
+DestroyShadows=1
 
 [Glowing_Pierce]
 Type=Single

@@ -742,7 +742,7 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 [Asgard]
 Weather=Light
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons.no-quicksilver.no-fleeing
+limitations=no-mech.no-trusts.no-summons.no-quicksilver.no-fleeing.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.Ambrosia
 
 [Atlantis]

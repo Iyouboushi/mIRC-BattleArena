@@ -170,9 +170,7 @@ Effect=Status
 IgnitionTrigger=15
 IgnitionConsume=5
 Cost=0
-Desc=$+ 's body begins to morph and grow horns as %real.name screams.  After a few seconds %real.name has become a full-fledged demon. The resulting energy causes %real.name $+ 's enemies to feel weaker.
-StatusTarget=enemy
-StatusType=StrengthDown
+Desc=$+ 's body begins to morph and grow horns as %real.name screams.  After a few seconds %real.name has become a full-fledged demon.
 
 [ElvenGoddessMight]
 Name=ElvenGoddessMight
@@ -512,7 +510,7 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Techs=LastWillandTestament.Fortissimo.UltimateFortissimo
-Desc=gains a red aura as %user $+ 's power greatly increases!
+Desc=gains a red aura, %user $+'s power slightly increasing.
 
 [EchidnaDragonForm]
 Name=Echidna Dragon Form
@@ -759,7 +757,7 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Techs=
-Desc=$+ 's body glows a bright white as $gender($1) body bulges with a mighty power, also increasing melee and technique power. Additionally, the battlefield gains a white glow, causing all of %real.name $+ 's enemies to feel slower!
+Desc=$+ 's body glows a bright white as $gender($1) body bulges with a mighty power, also increasing melee and technique power.
 
 [DragonInstall]
 Name=DragonInstall

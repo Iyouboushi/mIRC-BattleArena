@@ -60,6 +60,7 @@ JustReleaseDefense=100
 IgnorePresident=true
 RageMode=Ignore
 IgnoreElementalMessage=true
+IgnoreOutpost=true
 
 [monster]
 type=demon
@@ -162,14 +163,14 @@ WeaponMasterXP=1
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=Dark
-Earth=90
-Fire=90
-Wind=90
-Water=90
-Ice=90
-Lightning=90
-Light=90
-Dark=90
+Earth=70
+Fire=70
+Wind=70
+Water=70
+Ice=70
+Lightning=70
+Light=70
+Dark=150
 HandToHand=80
 Whip=80
 Sword=80
@@ -182,6 +183,14 @@ Scythe=80
 Glyph=80
 GreatSword=80
 Bow=80
+Axe=80
+Dagger=80
+Dancing=80
+Engine=80
+Mace=80
+PinkChainsaw=80
+Stave=80
+EnergyBlaster=80
 ChargedShot=50
 RapidShot=50
 RainStorm=50

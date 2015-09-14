@@ -218,7 +218,7 @@ ChantDuCygne=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 800
 [Item_Amount]
 
 [Ignitions]
-AesirMight=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Sif), battle, hp) / $readini($char(Sif), basestats, hp)) * 100) <= 75, 1, 0))
+AesirMight=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Sif), battle, hp) / $readini($char(Sif), basestats, hp)) * 100) <= 80, 1, 0))
 
 [Augments]
 Sif's_Sword=MeleeBonus.RenkeiBonus.TechBonus.IgnoreGuardian
@@ -233,26 +233,34 @@ WeaponMasterXP=1
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
-Earth=75
-Fire=75
-Wind=75
-Water=75
-Ice=75
-Lightning=75
-Light=75
-Dark=75
-HandToHand=75
-Whip=75
-Sword=75
-Gun=75
-Rifle=75
-Katana=75
-Wand=75
-Spear=75
-Scythe=75
-Glyph=75
-GreatSword=75
-Bow=75
+Earth=70
+Fire=70
+Wind=70
+Water=70
+Ice=70
+Lightning=70
+Light=70
+Dark=70
+HandToHand=70
+Whip=70
+Sword=70
+Gun=70
+Rifle=70
+Katana=70
+Wand=70
+Spear=70
+Scythe=70
+Glyph=70
+GreatSword=70
+Bow=70
+Axe=70
+Dagger=70
+Dancing=70
+Engine=70
+Mace=70
+PinkChainsaw=70
+Stave=70
+EnergyBlaster=50
 Crissaegrim=50
 Valmanway=50
 Naturaleza=60
@@ -282,6 +290,25 @@ BloodBath=40
 UltimaII=30
 KaustraII=30
 Chivalry=20
+MillionStab=30
+VictorySmite=30
+ShinjinSpiral=30
+TornadoKick=30
+VorpalScythe=30
+CrossReaper=30
+Guillotine=30
+Resolution=30
+RapidShot=30
+PentaThrust=30
+UkkosFury=30
+Onslaught=30
+Rampage=30
+Ruinator=30
+DancingEdge=30
+PyrrhicKleos=30
+Evisceration=30
+Drakesbane=30
+Stardiver=30
 DoubleShot=10
 GunBlaze=10
 DoubleShotII=10
@@ -388,8 +415,9 @@ MechIceIV=10
 MechThunderIV=10
 MechLightIV=10
 MechShadowIV=10
+HolyHandGrenade=0
 
 [NaturalArmor]
 Name=Goddess Defense
-Max=$iif($return_playersinbattle > 1, 1000, 500)
-Current=500
+Max=2000
+Current=2000
