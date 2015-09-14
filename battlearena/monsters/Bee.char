@@ -110,11 +110,6 @@ MPRegenerating=no
 Equipped=Fists
 Fists=1
 
-; It is possible to make monsters weak or strong against certain weapon types:
-; Weapon types are: HandToHand.Whip.Sword.Gun.Rifle.Katana.Wand.Spear.Scythe.Glyph.GreatSword
-; Weakness=list.weapon.types  
-; Strong=list.weapon.types  
-
 
 [Skills]
 Zen=5
@@ -150,3 +145,11 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Dancing=100
+Engine=100
+Mace=100
+PinkChainsaw=100
+Stave=100
+EnergyBlaster=100
