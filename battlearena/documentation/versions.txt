@@ -1327,9 +1327,7 @@ Battle Arena Bot VERSIONS
 - Changed the elemental weapon to use attack_elemental.txt since they don't technically use staves/wands
 - Changed healing/battle items a little bit
 - Changed elementals to use different techs based on streaks (a minor change)
-- Fixed a bug with orb rewards for players who are far under the streak and not using SotH
-- Fixed a bug in which fists were being calculated wrong for their damage (being counted twice, basically)
-- Fixed a bug in which NPCs who had mechs would try to use them in no-mech battlefield conditions.
+- Changed the way the shop displays certain error messages and what it says when you use !shop by itself. 
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
@@ -1341,8 +1339,14 @@ Battle Arena Bot VERSIONS
 - Fixed a portal battlefield limitation issue that could be exploited
 - Fixed the "On the Edge" achievement so that it actually gives the Super Potion item correctly
 - Fixed the elemental spell totals in misc info being counted multiple times on AOEs
+- Fixed a bug with orb rewards for players who are far under the streak and not using SotH
+- Fixed a bug in which fists were being calculated wrong for their damage (being counted twice, basically)
+- Fixed a bug in which NPCs who had mechs would try to use them in no-mech battlefield conditions.
 - Fixed a bug with en-spells counting towards the elemental spell totals in misc info when they shouldn't have been
 - Fixed a bug in which the elemental messages for en-spells were not showing upon melee hits
 - Fixed a bug in which npcs and trusts weren't being killed in portals that had no-trust or no-npc set.
+- Fixed a bug with AI vs AI battles when NPCs used shadow copy
+- Fixed a bug with !flee not counting the number of times fled properly
+- Fixed an exploit that allowed players to get around the melee penalty if the same weapon is used twice in a row
 - Removed the elements from NPC weapons
 - Removed attack_Aettir.txt, and attack_ChatoyantStaff.txt as they are no longer needed
