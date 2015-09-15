@@ -6,7 +6,7 @@ Def=$calc(414 + $current.battlestreak)
 Int=$calc(414 + $current.battlestreak)
 Spd=$calc(414 + $current.battlestreak)
 IgnitionGauge=2
-Name=Ungewder
+Name=Ungeweder
 
 
 [Battle]
