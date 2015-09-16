@@ -1306,6 +1306,7 @@ Battle Arena Bot VERSIONS
   the Dungeon Key merchant in order to see and purchase the keys.
 - Added missing elementals like fire, light and such
 - Added two more TP restoring items
+- Added a new augment: EnhanceCrafting.  This augment will increase your crafting success rate by 2
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
