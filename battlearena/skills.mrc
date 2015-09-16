@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/14/15
+;;;; Last updated: 09/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2126,6 +2126,11 @@ alias skill.alchemy {
 
     set %base.success $readini($dbfile(crafting.db), $2, successrate)
     inc %base.success $readini($char($1), skills, alchemy)
+
+    if ($augment.check($1, EnhanceCrafting) = true) {
+      inc %base.success $calc(2 + %augment.strength)
+    }
+
     var %random.chance $rand(1,100)
 
     if (%random.chance <= %base.success) { 

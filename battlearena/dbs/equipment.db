@@ -12,6 +12,19 @@ Valid EquipLocations are: Head, Body, Legs, Feet, Hands
 HEAD
 ========
 
+[Chef'sHat]
+Name=Chef's Hat
+hp=0
+tp=0
+Str=0
+def=0
+int=0
+spd=0
+Augment=EnhanceCrafting
+EquipLocation=head
+cost=50
+SellPrice=50
+
 [BucketHat]
 Name=Bucket Hat
 hp=50
