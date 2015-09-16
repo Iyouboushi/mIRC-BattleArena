@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/13/15
+;;;; Last updated: 09/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2178,7 +2178,9 @@ inflict_status {
     }
     unset %current.style 
 
-    if ((%resist.skill >= 100) && (%battle.type = dungeon)) { set %resist.skill 50 }
+    if ((%resist.skill >= 100) && (%battle.type = dungeon)) { 
+      if ($readini($char($2), info, flag) != monster) { set %resist.skill 50 }
+    }
 
     $ribbon.accessory.check($2)
   }
