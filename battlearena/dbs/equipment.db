@@ -561,6 +561,19 @@ Exclusive=yes
 BODY
 ========
 
+[ApprenticeSmock]
+Name=Apprentice Smock
+hp=0
+tp=0
+Str=0
+def=0
+int=0
+spd=0
+Augment=EnhanceCrafting
+EquipLocation=Body
+cost=50
+SellPrice=50
+
 [RustyMail]
 Name=Rusty Mail
 hp=0
@@ -1190,6 +1203,19 @@ LevelRequirement=200
 LEGS
 ========
 
+[ApprenticeChausses]
+Name=Apprentice Chausses
+hp=0
+tp=0
+Str=0
+def=0
+int=0
+spd=0
+Augment=EnhanceCrafting
+EquipLocation=Legs
+cost=50
+SellPrice=50
+
 [RustyHose]
 Name=Rusty Hose
 hp=0
@@ -1647,6 +1673,19 @@ Exclusive=yes
 ========
 FEET
 ========
+
+[ApprenticePattens]
+Name=Apprentice Pattens
+hp=0
+tp=0
+Str=0
+def=0
+int=0
+spd=0
+Augment=EnhanceCrafting
+EquipLocation=Feet
+cost=50
+SellPrice=50
 
 [RustyBoots]
 Name=Rusty Boots
@@ -2130,6 +2169,19 @@ Exclusive=yes
 ========
 HANDS
 ========
+
+[ApprenticeGloves]
+Name=ApprenticeGloves
+hp=0
+tp=0
+Str=0
+def=0
+int=0
+spd=0
+Augment=EnhanceCrafting
+EquipLocation=Hands
+cost=50
+SellPrice=50
 
 [LeatherGloves]
 Name=Leather Gloves

@@ -32,7 +32,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is the warlord that organized the Beastman Confederate into launching an all-out war against the Allied Forces of Altana; he stands an impressive 9 feet tall and carries a broadsword as big as his body.  He wears black armor that is glowing with purple vein-like lines.  This is the Shaodw Lord at full power.
+Char=is the warlord that organized the Beastman Confederate into launching an all-out war against the Allied Forces of Altana; he stands an impressive 9 feet tall and carries a broadsword as big as his body.  He wears black armor that is glowing with purple vein-like lines.  This is the Shadow Lord at full power.
 Rage=screams in rage 
 BossQuote=You thought you could defeat me.. but I cannot die. Not until I have eradicated you and your kind from this world. 
 
@@ -137,3 +137,9 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+HolyHandGrenade=0

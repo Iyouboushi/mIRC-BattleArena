@@ -111,15 +111,15 @@ BanishV=100
 
 
 [modifiers]
-Heal=none
+Heal=light
 Earth=80
 Fire=80
 Wind=80
 Water=80
 Ice=80
 Lightning=80
-Light=25
-Dark=120
+Light=150
+Dark=150
 HandToHand=80
 Whip=80
 Sword=100
@@ -132,3 +132,9 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=80
+EnergyBlaster=50
+HolyHandGrenade=0

@@ -117,15 +117,15 @@ GraveCurse=10
 
 
 [modifiers]
-Heal=none
-Earth=70
-Fire=70
-Wind=70
-Water=100
-Ice=70
-Lightning=100
-Light=130
-Dark=10
+Heal=fire.energyblaster
+Earth=50
+Fire=150
+Wind=50
+Water=50
+Ice=50
+Lightning=50
+Light=150
+Dark=0
 HandToHand=100
 Whip=100
 Sword=100
@@ -138,3 +138,9 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=150
+HolyHandGrenade=0

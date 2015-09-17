@@ -3250,7 +3250,7 @@ DUNGEON START ITEMS
 type=dungeon
 cost=50
 currency=BeastmenSeal
-sellprice=10
+sellprice=1500
 Desc=An ancient key used to unlock the dungeon Tam-Tara Deepcroft
 Dungeon=Tam-Tara
 exclusive=yes
@@ -3259,7 +3259,7 @@ exclusive=yes
 type=dungeon
 cost=50
 currency=KindredSeal
-sellprice=10
+sellprice=1500
 Desc=An old dusty key used to access Haukke Manor
 Dungeon=Haukke_Manor
 exclusive=yes

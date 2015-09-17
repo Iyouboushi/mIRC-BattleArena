@@ -116,7 +116,7 @@ RexKick=100
 
 [modifiers]
 Heal=none
-Earth=100
+Earth=40
 Fire=40
 Wind=40
 Water=40
@@ -126,16 +126,22 @@ Light=40
 Dark=40
 HandToHand=50
 Whip=40
-Sword=90
+Sword=80
 Gun=40
 Rifle=40
-Katana=90
+Katana=80
 Wand=20
 Spear=40
 Scythe=40
-Glyph=90
-GreatSword=90
+Glyph=80
+GreatSword=80
 Bow=10
+Axe=80
+Dagger=80
+Mace=80
+Stave=30
+EnergyBlaster=130
+HolyHandGrenade=0
 
 [Styles]
 Equipped=WeaponMaster

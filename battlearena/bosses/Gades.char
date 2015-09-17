@@ -28,7 +28,7 @@ RageCountDown=0
 [Descriptions]
 Char=is a man with red hair that wears full body armor and carries a large sword. He is Gades, the Sinistral of Destruction.
 Rage=screams in rage 
-BossQuote=You have no chance! Prepare for the end!!
+BossQuote=You have no chance! Prepare for the end!
 
 
 [Stuff]
@@ -51,7 +51,6 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=50
-StreakMax=100
 CanTaunt=true
 
 [Status]
@@ -122,14 +121,14 @@ WeaponMasterXP=1
 
 [modifiers]
 Heal=none
-Earth=110
-Fire=75
-Wind=110
-Ice=110
-Water=110
-Lightning=130
-Light=110
-Dark=10
+Earth=20
+Fire=20
+Wind=20
+Ice=20
+Water=20
+Lightning=200
+Light=20
+Dark=0
 HandToHand=80
 Whip=80
 Sword=80
@@ -142,3 +141,9 @@ Scythe=80
 Glyph=80
 GreatSword=80
 Bow=80
+Axe=80
+Dagger=80
+Mace=80
+Stave=80
+EnergyBlaster=80
+HolyHandGrenade=0

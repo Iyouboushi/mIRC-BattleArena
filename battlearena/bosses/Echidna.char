@@ -35,7 +35,7 @@ BossQuote=The kindest fate I offer is to unify and spend eternity with a child o
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=JungleRose.IgnitionStar.KindredCrest
+Drops=
 
 [Monster]
 Type=Demon
@@ -136,8 +136,8 @@ EchidnaDragonForm=1
 
 [NaturalArmor]
 Name=Jungle Flower Armor
-Max=200
-Current=200
+Max=500
+Current=500
 
 [modifiers]
 Heal=dark
@@ -161,6 +161,12 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+HolyHandGrenade=0
 MillionStab=50
 ChargedShot=170
 Crissaegrim=50

@@ -34,7 +34,7 @@ Hused=1
 Dused=1
 Char=is a powerful being that is a combination of Daos, Gades and Amon.
 Rage=screams in rage 
-BossQuote=Nothing will stand against me this time!!
+BossQuote=Nothing will stand against me this time!
 
 
 [Stuff]
@@ -156,3 +156,9 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+HolyHandGrenade=0

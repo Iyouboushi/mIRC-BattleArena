@@ -98,7 +98,6 @@ MPRegenerating=no
 [Weapons]
 Equipped=SpaceGun
 SpaceGun=6
-Strong=Spear.Sword
 
 [Skills]
 drainsamba.turn=0
@@ -108,10 +107,6 @@ DrainSamba=20
 [Techniques]
 Sacrifice=5
 SpaceBeam=5
-
-
-[Item_Amount]
-pizza=1
 
 
 [modifiers]
@@ -136,3 +131,9 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+HolyHandGrenade=0

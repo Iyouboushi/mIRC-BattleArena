@@ -225,6 +225,7 @@ Mace=50
 Stave=50
 EnergyBlaster=150
 Boomstick=150
+HolyHandGrenade=0
 
 [Styles]
 Equipped=WeaponMaster

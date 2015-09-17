@@ -1,21 +1,20 @@
 [BaseStats]
-Hp=1300
-Tp=920
-Str=12
-Def=15
-Int=17
-Spd=15
+Hp=100
+Tp=250
+Str=15
+Def=12
+Int=18
+Spd=18
 IgnitionGauge=2
-Name=Ghost Bomb
-
+Name=Grim Reaper
 
 [Battle]
-Hp=1300
-Tp=920
-Str=12
-Def=15
-Int=17
-Spd=15
+Hp=100
+Tp=250
+Str=15
+Def=12
+Int=18
+Spd=18
 IgnitionGauge=2
 Status=alive
 
@@ -32,13 +31,20 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is the spirit of a large red bomb. It is floating in the air. It looks like a pale balloon with tiny little arms and a huge ugly grin on its face.
+Char=is a being that wears a thick black cloak and carries a large scythe.
 Rage=screams in rage 
+BossQuote=I will feast on your soul this night!
+
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+Drops=
+
+[Monster]
+Type=undead
+size=medium
 
 [Info]
 Flag=monster
@@ -49,15 +55,10 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BattleStats=ignoreHP
-Streak=80
-CanTaunt=false
-MoonPhase=New Moon
+Streak=50
+IgnoreQuicksilver=true
+CanTaunt=true
 IgnoreElementalMessage=true
-
-[Monster]
-Type=undead
-size=medium
 
 [Status]
 Poison=no
@@ -91,40 +92,35 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
-ethereal=yes
 
 [Weapons]
-Equipped=GhostPower
-GhostPower=15
-weakness=handtohand
-strong=katana.gun.rifle.wand.greatsword.sword.glyph.whip
+Equipped=Death's_Scythe
+Death's_Scythe=10
+
 
 [Skills]
-zen=3
-drainsamba.turn=0
-drainsamba.on=on
-DrainSamba=20
-
+resist-stun=50
+resist-blind=30
+resist-charm=100
 
 [Techniques]
-Explode=$iif(%current.turn = 1, 0, $rand(10,50))
-FirajaII=10
-GraveCurse=10
+Grim_Slash=12
 
 
+[Item_Amount]
 
 [modifiers]
-Heal=fire.energyblaster
-Earth=50
-Fire=150
-Wind=50
-Water=50
-Ice=50
-Lightning=50
-Light=150
-Dark=0
+Heal=dark
+Earth=100
+Fire=100
+Wind=100
+Ice=100
+Water=100
+Lightning=100
+Light=200
+Dark=150
 HandToHand=100
-Whip=100
+Whip=150
 Sword=100
 Gun=100
 Rifle=100
@@ -135,9 +131,5 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
-Axe=100
-Dagger=100
-Mace=100
-Stave=100
-EnergyBlaster=150
-HolyHandGrenade=0
+HydroStorm=500
+Holy_Water=300
