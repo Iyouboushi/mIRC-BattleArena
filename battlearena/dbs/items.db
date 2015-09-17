@@ -2309,7 +2309,7 @@ Currency=AlliedNotes
 Type=misc
 Desc=Parts for a mysterious and powerful sword.
 Cost=0
-SellPrice=5000
+SellPrice=2500
 Exclusive=yes
 Currency=AlliedNotes
 
@@ -3127,10 +3127,11 @@ Desc=pulls out a set of blueprints for an X-Buster $iif($2 != $1, and hands it t
 [Blueprints:SilverSword]
 Type=special
 Cost=0
-SellPrice=5000
+SellPrice=2500
 SpecialType=GainWeapon
 Weapon=SilverSword
 Desc=pulls out a set of blueprints for the Silver Sword $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the beautiful and powerful Silver Sword, ready for use.
+Exclusive=yes
 
 [Blueprints:Genbu'sShield]
 Type=special
