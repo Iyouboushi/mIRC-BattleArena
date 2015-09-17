@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=300
 Tp=200
-Str=$calc(414 + $current.battlestreak)
-Def=$calc(414 + $current.battlestreak)
-Int=$calc(414 + $current.battlestreak)
-Spd=$calc(414 + $current.battlestreak)
+Str=$calc(300 + $current.battlestreak)
+Def=$calc(300 + $current.battlestreak)
+Int=$calc(300 + $current.battlestreak)
+Spd=$calc(300 + $current.battlestreak)
 IgnitionGauge=2
 Name=Baelfyr
 
@@ -12,10 +12,10 @@ Name=Baelfyr
 [Battle]
 Hp=300
 Tp=200
-Str=514
-Def=514
-Int=514
-Spd=514
+Str=300
+Def=300
+Int=300
+Spd=300
 IgnitionGauge=2
 Status=alive
 
@@ -181,7 +181,7 @@ Guillotine=10
 HardSlash=10
 PowerSlash=10
 SpinningSlash=10
-Resolution=10
+Resolution=5
 Rainstorm=10
 ChargedShot=10
 RapidShot=10

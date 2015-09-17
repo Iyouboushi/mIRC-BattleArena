@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=500
 Tp=200
-Str=$calc(621 + $current.battlestreak)
-Def=$calc(621 + $current.battlestreak)
-Int=$calc(621 + $current.battlestreak)
-Spd=$calc(621 + $current.battlestreak)
+Str=$calc(500 + $current.battlestreak)
+Def=$calc(500 + $current.battlestreak)
+Int=$calc(500 + $current.battlestreak)
+Spd=$calc(500 + $current.battlestreak)
 IgnitionGauge=2
 Name=Scorched Yanthu
 
@@ -12,10 +12,10 @@ Name=Scorched Yanthu
 [Battle]
 Hp=500
 Tp=200
-Str=771
-Def=771
-Int=771
-Spd=771
+Str=500
+Def=500
+Int=500
+Spd=500
 IgnitionGauge=2
 Status=alive
 
@@ -197,7 +197,7 @@ Guillotine=10
 HardSlash=10
 PowerSlash=10
 SpinningSlash=10
-Resolution=10
+Resolution=5
 Rainstorm=10
 ChargedShot=10
 RapidShot=10
