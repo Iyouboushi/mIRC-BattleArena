@@ -93,6 +93,18 @@ Equipped=OrbPower
 OrbPower=15
 
 [Skills]
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Sleep=100
+Resist-Stun=100
 
 [Techniques]
 

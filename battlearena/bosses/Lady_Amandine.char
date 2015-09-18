@@ -108,6 +108,7 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Resist-Sleep=100
+Resist-Stun=100
 Zen=5
 ClearMind=1
 MonsterSummon=$iif($calc(%current.turn % 3) = 0 && $dungeon.haukke.lampcount > 0, 1, 0)
