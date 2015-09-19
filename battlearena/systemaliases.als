@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/17/15
+;;;; Last updated: 09/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2520,6 +2520,7 @@ mon_list_add {
 
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { 
     if ($readini($mon(%name), info, MetalDefense) = true) { return }
+    if ($readini($mon(%name), info, IgnoreOutpost) = true) { return }
   }
 
   ; Check the winning streak #..  some monsters won't show up until a certain streak or higher.
@@ -2597,6 +2598,7 @@ boss_list_add {
 
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { 
     if ($readini($boss(%name), info, MetalDefense) = true) { return }
+    if ($readini($boss(%name), info, IgnoreOutpost) = true) { return }
   }
 
   ; Check the winning streak #..  some monsters won't show up until a certain streak or higher.
