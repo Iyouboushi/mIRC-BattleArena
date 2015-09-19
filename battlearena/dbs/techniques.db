@@ -9713,7 +9713,7 @@ CanDodge=false
 [SaintOratorio]
 Type=Single
 Cost=0
-Desc=turns the sword, the end of it facing % enemy $+ . Fire explodes around the sword for a moment before moving to the edge of the sword, forming a fang. %user then launches the fang towords %enemy to cause large fire damage.
+Desc=turns the sword, the end of it facing %enemy $+ . Fire explodes around the sword for a moment before moving to the edge of the sword, forming a fang. %user then launches the fang towords %enemy to cause large fire damage.
 TP=10
 Element=Fire
 Hits=1

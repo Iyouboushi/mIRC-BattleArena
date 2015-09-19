@@ -98,11 +98,11 @@ Cell'sKi=10
 
 [Skills]
 resist-stun=10
-ShadowCopy=1
+ShadowCopy=$iif($current.battlestreak < 50, 0, 1)
 ShadowCopy_Name=Cell Jr
 
 [Techniques]
-PerfectForm=10
+PerfectForm=$iif($current.battlestreak < 100, 0, 1)
 Kamehameha=$current.battlestreak
 
 
