@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 08/18/15
+;;;; Last updated: 09/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -427,9 +427,8 @@ alias ai_gettarget {
   var %provoke.target $readini($char($1), skills, provoke.target)
 
   if (%provoke.target != $null) { 
-    if ($readini($char(%provoke.target), battle, status) = dead) { unset %provoke.target | remini $char($1) skills provoke.target }
+    if (($readini($char(%provoke.target), battle, status) = dead) || ($readini($char(%provoke.target), battle, status) = $null)) { unset %provoke.target | remini $char($1) skills provoke.target }
   }
-
 
   if (%ai.action = tech) { 
     set %tech.type $readini($dbfile(techniques.db), %ai.tech, type)
