@@ -234,6 +234,7 @@ spd=100
 Augment=EnhanceCounter
 EquipLocation=Head
 cost=50
+Exclusive=yes
 SellPrice=3000
 LevelRequirement=300
 
@@ -278,6 +279,7 @@ spd=100
 Augment=MagicBonus
 EquipLocation=Head
 cost=50
+Exclusive=yes
 SellPrice=3000
 LevelRequirement=300
 
@@ -829,6 +831,7 @@ spd=100
 Augment=EnhanceDoubleTurnChance
 EquipLocation=Body
 cost=50
+Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
 
@@ -873,6 +876,7 @@ spd=100
 Augment=EnhanceDoubleTurnChance
 EquipLocation=Body
 cost=50
+Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
 
@@ -1347,6 +1351,7 @@ spd=150
 Augment=EnhanceThirdEye
 EquipLocation=Legs
 cost=50
+Exclusive=yes
 SellPrice=2000
 LevelRequirement=300
 
@@ -1391,6 +1396,7 @@ spd=100
 Augment=CuringBonus
 EquipLocation=Legs
 cost=50
+Exclusive=yes
 SellPrice=2000
 LevelRequirement=300
 
@@ -1843,6 +1849,7 @@ spd=150
 Augment=RenkeiBonus
 EquipLocation=Feet
 cost=50
+Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
 
@@ -1887,6 +1894,7 @@ spd=100
 Augment=EnhanceEnfeeble
 EquipLocation=Feet
 cost=50
+Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
 
@@ -2353,6 +2361,7 @@ spd=100
 Augment=TechBonus
 EquipLocation=Hands
 cost=50
+Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
 
@@ -2397,6 +2406,7 @@ spd=100
 Augment=EnhanceParry
 EquipLocation=Hands
 cost=50
+Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
 
