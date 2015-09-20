@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/16/15
+;;;; Last updated: 09/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4325,7 +4325,8 @@ amnesia_check {
 charm_check {
   if ($readini($char($1), status, charmed) = yes) { 
     set %charm.timer $readini($char($1), status, charm.timer) | set %charmer $readini($char($1), status, charmer)
-    if ($readini($char(%charmer), battle, status) = dead) {  writeini $char($1) status charm.timer 1 | writeini $char($1) status charmed no | $set_chr_name(%charmer) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CharmerDeathWornOff) | unset %charm.timer | unset %charmer | return  }
+    var %charmer.status $readini($char(%charmer), battle, status)
+    if ((%charmer.status = dead) || (%charmer.status = $null)) {  writeini $char($1) status charm.timer 1 | writeini $char($1) status charmed no | $set_chr_name(%charmer) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CharmerDeathWornOff) | unset %charm.timer | unset %charmer | return  }
 
     if (%charm.timer < $status.effects.turns(charm)) { %charm.timer = $calc(%charm.timer + 1) | writeini $char($1) status charm.timer %charm.timer 
       $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyCharmedMessage) | unset %charm.timer | unset %charmer | return 
