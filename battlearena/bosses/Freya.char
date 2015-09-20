@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 1, 10000, 15500)
+Hp=$iif($return_playersinbattle > 1, 15500, 10000)
 Tp=5000
 Str=2000
 Def=1533
@@ -10,7 +10,7 @@ Name=Freya
 
 
 [Battle]
-Hp=10000
+Hp=15500
 Tp=5000
 Str=2000
 Def=1533
@@ -136,7 +136,7 @@ type=Aesir
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
 ; Change it to "true" to turn it on.
-TechLearn=true
+TechLearn=false
 
 ; Size is the size of the monster. Small/Medium/Large
 size=medium
@@ -176,7 +176,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=FreyaFists
-FreyaFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000)
+FreyaFists=$current.battlestreak
 
 
 [Skills]
@@ -203,14 +203,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-EtherStrike=$iif(%current.turn <= 5, 0, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000))
-Thunder_Sword=$iif(%current.turn <= 5, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000), 0)
-Thunder_Strike=$iif(%current.turn <= 5, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000), 0)
-Heavenly_Punishment=$iif(%current.turn <= 5, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000), 0)
-Victory_Sword=$iif(%current.turn <= 5, 0, $iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000))
-
-
-[Item_Amount]
+EtherStrike=$iif(%current.turn <= 5, 0, $current.battlestreak)
+Thunder_Sword=$iif(%current.turn <= 5, $current.battlestreak, 0)
+Thunder_Strike=$iif(%current.turn <= 5, $current.battlestreak, 0)
+Heavenly_Punishment=$iif(%current.turn <= 5, $current.battlestreak, 0)
+Victory_Sword=$iif(%current.turn <= 5, 0, $current.battlestreak)
 
 [Ignitions]
 AesirMight=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Freya), battle, hp) / $readini($char(Freya), basestats, hp)) * 100) <= 80, 1, 0))
@@ -226,14 +223,14 @@ WeaponMasterXP=1
 [modifiers]
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
-Heal=none
+Heal=Light
 Earth=70
 Fire=70
 Wind=70
 Water=70
 Ice=70
 Lightning=70
-Light=70
+Light=120
 Dark=70
 HandToHand=70
 Whip=70
@@ -254,16 +251,16 @@ Engine=70
 Mace=70
 PinkChainsaw=70
 Stave=70
-EnergyBlaster=50
+EnergyBlaster=120
 Crissaegrim=50
 Valmanway=50
-Naturaleza=60
+Naturaleza=50
 AsuranFists=50
 Ashes=50
 Dismay=50
 ThousandCuts=30
-Tachi:Shoha=60
-Tachi:Rana=60
+Tachi:Shoha=50
+Tachi:Rana=50
 Rainstorm=30
 SpinningAttack=30
 TornadoKick=30
@@ -271,7 +268,7 @@ CircularChain=30
 CircleBlade=30
 SonicThrust=30
 ApexArrow=30
-UrielBlade=30
+UrielBlade=120
 FellCleave=30
 AeolianEdge=30
 Twin_Slice=30
@@ -279,11 +276,13 @@ LightningStrike=30
 BladeBeamII=30
 TrillionStabs=40
 DoubleBackstab=40
-Chou_Kamehameha=40
+Chou_Kamehameha=120
 BloodBath=40
-UltimaII=30
+Ultima=120
+Kaustra=30
+UltimaII=120
 KaustraII=30
-Chivalry=20
+Chivalry=120
 MillionStab=30
 VictorySmite=30
 ShinjinSpiral=30
@@ -291,7 +290,7 @@ TornadoKick=30
 VorpalScythe=30
 CrossReaper=30
 Guillotine=30
-Resolution=30
+Resolution=20
 RapidShot=30
 PentaThrust=30
 UkkosFury=30
@@ -300,115 +299,10 @@ Rampage=30
 Ruinator=30
 DancingEdge=30
 PyrrhicKleos=30
-Evisceration=30
-Drakesbane=30
+Evisceration=20
+Drakesbane=120
 Stardiver=30
-DoubleShot=10
-GunBlaze=10
-DoubleShotII=10
-GunBlazeII=10
-DoubleShotIII=10
-GunBlazeIII=10
-TripleShot=10
-GunBlazeIII=10
-DoubleSwing=10
-SwordBlaze=10
-DoubleSwingII=10
-SwordBlazeII=10
-DoubleSwingIII=10
-SwordBlazeIII=10
-TripleSwing=10
-SwordBlazeIII=10
-DoubleStrike=10
-MartialBlaze=10
-DoubleStrikeII=10
-MartialBlazeII=10
-DoubleStrikeIII=10
-MartialBlazeIII=10
-TripleStrike=10
-MartialBlazeIII=10
-BasicMechGun=10
-ImprovedMechGun=10
-FlawlessMechGun=10
-DarksteelOreCannon=10
-BasicMechSword=10
-ImprovedMechSword=10
-FlawlessMechSword=10
-DarksteelOreSword=10
-BasicMechFists=10
-ImprovedMechFists=10
-FlawlessMechFists=10
-DarksteelOreFists=10
-BasicMechStaff=10
-ImprovedMechStaff=10
-FlawlessMechStaff=10
-DarksteelOreStaff=10
-MechUltima=10
-MechKaustra=10
-MechFlare=10
-MechQuake=10
-MechFlood=10
-MechTornado=10
-MechFreeze=10
-MechBurst=10
-MechDarkness=10
-MechBanish=10
-MechFire=10
-MechStone=10
-MechWater=10
-MechWind=10
-MechIce=10
-MechThunder=10
-MechLight=10
-MechShadow=10
-MechFlareII=10
-MechQuakeII=10
-MechFloodII=10
-MechTornadoII=10
-MechFreezeII=10
-MechBurstII=10
-MechDarknessII=10
-MechBanishII=10
-MechFireII=10
-MechStoneII=10
-MechWaterII=10
-MechWindII=10
-MechIceII=10
-MechThunderII=10
-MechLightII=10
-MechShadowII=10
-MechFlareIII=10
-MechQuakeIII=10
-MechFloodIII=10
-MechTornadoIII=10
-MechFreezeIII=10
-MechBurstIII=10
-MechDarknessIII=10
-MechBanishIII=10
-MechFireIII=10
-MechStoneIII=10
-MechWaterIII=10
-MechWindIII=10
-MechIceIII=10
-MechThunderIII=10
-MechLightIII=10
-MechShadowIII=10
-MechFlareIV=10
-MechQuakeIV=10
-MechFloodIV=10
-MechTornadoIV=10
-MechFreezeIV=10
-MechBurstIV=10
-MechDarknessIV=10
-MechBanishIV=10
-MechFireIV=10
-MechStoneIV=10
-MechWaterIV=10
-MechWindIV=10
-MechIceIV=10
-MechThunderIV=10
-MechLightIV=10
-MechShadowIV=10
+Requiescat=120
 HolyHandGrenade=0
 
 [NaturalArmor]

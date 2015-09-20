@@ -58,6 +58,7 @@ Streak=31
 StreakMax=101
 CanTaunt=true
 IgnoreElementalMessage=true
+IgnoreOutpost=true
 
 [Monster]
 Type=

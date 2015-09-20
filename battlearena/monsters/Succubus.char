@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=250
+Hp=400
 Tp=100
-Str=$calc(5 + $current.battlestreak)
-Def=$calc(5 + $current.battlestreak)
-Int=$calc(5 + $current.battlestreak)
-Spd=$calc(10 + $current.battlestreak)
+Str=$calc(130 + $current.battlestreak)
+Def=$calc(130 + $current.battlestreak)
+Int=$calc(130 + $current.battlestreak)
+Spd=$calc(130 + $current.battlestreak)
 IgnitionGauge=2
 Name=Succubus
 
 
 [Battle]
-Hp=250
+Hp=400
 Tp=100
-Str=$calc(5 + $current.battlestreak)
-Def=$calc(5 + $current.battlestreak)
-Int=$calc(5 + $current.battlestreak)
-Spd=$calc(10 + $current.battlestreak)
+Str=130
+Def=130
+Int=130
+Spd=130
 IgnitionGauge=2
 Status=alive
 
@@ -51,6 +51,7 @@ LastIP=N/a
 Created=N/a
 Streak=61
 CanTaunt=true
+IgnoreOutpost=true
 
 [Monster]
 Type=Undead
@@ -91,18 +92,26 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=SuccubusPower
-SuccubusPower=$current.battlestreak
+SuccubusPower=$calc(1 + $current.battlestreak)
 
 [Skills]
-Resist-charm=100
-Resist-zombie=100
-
+Resist-Paralysis=100
+Resist-Amnesia=10
+Resist-Zombie=100
+Resist-Charm=100
+Resist-Stun=25
+Resist-Blind=100
+Resist-Weaponlock=100
+Resist-Intimidate=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Sleep=100
 
 
 [Techniques]
 Temptation=1
-VampireBite=$current.battlestreak
-FireII=$current.battlestreak
+VampireBite=$calc(1 + $current.battlestreak)
+FireII=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -137,3 +146,51 @@ Mace=110
 Stave=110
 EnergyBlaster=120
 HolyHandGrenade=0
+Crissaegrim=60
+Valmanway=60
+Naturaleza=60
+AsuranFists=50
+VictorySmite=50
+ShinjinSpiral=50
+MillionStab=30
+VorpalBlade=50
+DeathBlossom=50
+SwiftBlade=50
+ChantDuCygne=50
+Requiescat=20
+Resolution=20
+Guillotine=20
+Insurgency=40
+Pentathrust=30
+Drakesbane=30
+Stardiver=30
+PyrrhicKleos=40
+Evisceration=30
+DancingEdge=40
+Ultima=30
+Kaustra=30
+Ashes=30
+Dismay=30
+ThousandCuts=30
+Tachi:Shoha=50
+Tachi:Rana=50
+Rainstorm=30
+SpinningAttack=30
+TornadoKick=30
+CircularChain=30
+CircleBlade=30
+SonicThrust=30
+ApexArrow=30
+UrielBlade=30
+FellCleave=30
+AeolianEdge=30
+Twin_Slice=30
+LightningStrike=30
+BladeBeamII=30
+TrillionStabs=70
+DoubleBackstab=70
+Chou_Kamehameha=70
+BloodBath=70
+UltimaII=70
+KaustraII=70
+Chivalry=70

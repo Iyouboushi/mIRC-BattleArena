@@ -52,6 +52,7 @@ Created=N/a
 Streak=110
 CanTaunt=false
 IgnoreElementalMessage=true
+IgnoreOutpost=true
 
 [Monster]
 Type=elemental
