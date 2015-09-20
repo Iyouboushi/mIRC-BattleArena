@@ -510,7 +510,7 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Techs=LastWillandTestament.Fortissimo.UltimateFortissimo
-Desc=gains a red aura, %user $+'s power slightly increasing.
+Desc=gains a red aura, %user $+ 's power slightly increasing.
 
 [EchidnaDragonForm]
 Name=Echidna Dragon Form
