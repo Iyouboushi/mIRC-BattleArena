@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=400
 Tp=70
-Str=$calc(130 + $current.battlestreak)
-Def=$calc(130 + $current.battlestreak)
-Int=$calc(130 + $current.battlestreak)
-Spd=$calc(130 + $current.battlestreak)
+Str=$calc(100 + $current.battlestreak)
+Def=$calc(100 + $current.battlestreak)
+Int=$calc(100 + $current.battlestreak)
+Spd=$calc(100 + $current.battlestreak)
 IgnitionGauge=2
 Name=Zark
 
@@ -12,10 +12,10 @@ Name=Zark
 [Battle]
 Hp=400
 Tp=70
-Str=30
-Def=38
-Int=40
-Spd=50
+Str=100
+Def=100
+Int=100
+Spd=100
 IgnitionGauge=2
 Status=alive
 

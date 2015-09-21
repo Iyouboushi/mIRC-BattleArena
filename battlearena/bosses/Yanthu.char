@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=500
 Tp=200
-Str=$calc(500 + $current.battlestreak)
-Def=$calc(500 + $current.battlestreak)
-Int=$calc(500 + $current.battlestreak)
-Spd=$calc(500 + $current.battlestreak)
+Str=$calc(300 + $current.battlestreak)
+Def=$calc(300 + $current.battlestreak)
+Int=$calc(300 + $current.battlestreak)
+Spd=$calc(300 + $current.battlestreak)
 IgnitionGauge=2
 Name=Scorched Yanthu
 

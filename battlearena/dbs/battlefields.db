@@ -95,7 +95,7 @@ event1Amount=$rand(50,100)
 weather=gloomy
 NumberOfEvents=3
 scavenge=Slurm.Ectoplasm
-limitations=no-trusts.no-summons.no-mech
+limitations=no-trusts.no-summons.no-mech.no-fleeing
 
 event1=damage
 event1Chance=90
@@ -616,115 +616,115 @@ Event16Target=all
 [Raptor News Network Studio]
 weather=calm
 NumberOfEvents=0
-Limitations=no-item.no-trusts.no-mech.no-summons
+Limitations=no-item.no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Raptor News Network Breaking News Broadcast]
 weather=gloomy
 NumberOfEvents=0
-limitations=no-item.no-trusts.no-mech.no-summons
+limitations=no-item.no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Allied Training Field]
 Weather=calm
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 
 [Korroloka Tunnel]
 Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 
 [Jester's Lair]
 Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 
 [Levithan's Heartcore]
 Weather=calm
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 
 [Waughroon Shrine]
 Weather=calm
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 
 [Smelly Dungeon]
 Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 
 [Byakko's Chamber]
 Weather=stormy
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons
+limitations=no-mech.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Genbu's Chamber]
 Weather=dry
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons
+limitations=no-mech.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Seiryu's Chamber]
 Weather=hot
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons
+limitations=no-mech.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Suzaku's Chamber]
 Weather=snowy
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons
+limitations=no-mech.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [The Shrine of Ru'Avitau]
 Weather=light
 NumberOfEvents=0
-limitations=no-mech.no-trusts
+limitations=no-mech.no-trusts.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Horlais Peak]
 Weather=Calm
 NumberOfEvents=0
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Valkurm Dunes]
 Weather=Dry
 NumberOfEvents=0
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Castle Oztroja]
 Weather=Calm
 NumberOfEvents=0
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Abyssea - Misareaux Coast]
 Weather=Calm
 NumberOfEvents=0
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Abyssea - Uleguerand Range]
 Weather=Snowy
 NumberOfEvents=0
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Davoi]
 Weather=Rainy
 NumberOfEvents=0
-limitations=no-trusts.no-mech.no-summons
+limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Abyssea - Empyreal Paradox]
@@ -754,13 +754,13 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.Ambrosia
 [Underground Arena]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons
+limitations=no-mech.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Deep Jungle]
 Weather=calm
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons
+limitations=no-mech.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.BombFlower
 
 [Inner Crystal Chamber]
@@ -777,73 +777,73 @@ event1Amount=$rand(500,1000)
 [Eastern Palace]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Desert Palace]
 Weather=dry
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Tower of Hera]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Hyrule Field]
 Weather=light
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Diamond.BombFlower
 
 [Overworld - Night]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Overworld - The Corruption]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Overworld - The Crimson]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Overworld - The Dungeon]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Underground Jungle]
 Weather=calm
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Underground Jungle - Lihzahrd Temple]
 Weather=gloomy
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Overworld - Ocean]
 Weather=rainy
 NumberOfEvents=0
-limitations=no-mech.no-playerignition.no-trusts.no-summons
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing
 scavenge=Sapphire.Onyx.Ruby.Diamond.BombFlower
 
 [Leene Square]
 weather=calm
 NumberOfEvents=0
-limitations=no-mech.no-trusts.no-summons.no-playerignition
+limitations=no-mech.no-trusts.no-summons.no-playerignition.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Zohar Cave]
@@ -855,7 +855,7 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 [Ancient Mayan Ruins]
 weather=gloomy
 NumberofEvents=0
-limitations=no-item.no-trusts.no-summons
+limitations=no-item.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Dr. Wily's Castle]

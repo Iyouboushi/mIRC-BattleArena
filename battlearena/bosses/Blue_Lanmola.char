@@ -119,7 +119,7 @@ Guardian=3
 [modifiers]
 Heal=earth
 Earth=250
-Fire=50
+Fire=100
 Wind=100
 Water=120
 Ice=150

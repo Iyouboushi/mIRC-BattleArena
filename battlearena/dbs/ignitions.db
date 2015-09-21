@@ -505,11 +505,11 @@ Str=1.2
 def=1.2
 int=1.2
 spd=1.2
-Augment=MeleeBonus.TechBonus.EnhanceAxe
+Augment=MeleeBonus.TechBonus.EnhanceAxe.EnhanceDoubleTurnChance.IgnoreGuardian.IgnoreDefense
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Techs=LastWillandTestament.Fortissimo.UltimateFortissimo
+Techs=
 Desc=gains a red aura, %user $+ 's power slightly increasing.
 
 [EchidnaDragonForm]

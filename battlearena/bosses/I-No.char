@@ -5,7 +5,7 @@ Str=1000
 Def=1000
 Int=1000
 Spd=1000
-IgnitionGauge=100
+IgnitionGauge=9000
 Name=I-No
 
 
@@ -16,7 +16,7 @@ Str=1000
 Def=1000
 Int=1000
 Spd=1000
-IgnitionGauge=100
+IgnitionGauge=9000
 Status=alive
 
 
@@ -29,7 +29,7 @@ RageCountDown=0
 Char=is a woman with short black hair who wears a red leather outfit along with a red hat that has part of a skull shape. She carries her favorite guitar in hand.
 Rage=screams in rage 
 BossQuote=I won't break you. Yet. I haven't told you how unfortunate it is that you were born at all, right?
-
+DeathMessage=pouts for a moment before taking out a metallic plate and hurling it at the heroes and runs away!
 
 [Stuff]
 RedOrbs=0
@@ -47,7 +47,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-CanTaunt=true
+CanTaunt=false
 IgnoreQuicksilver=true
 BossLevel=200
 IgnoreDrain=true
@@ -134,6 +134,7 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
+ignition.on=off
 
 [Weapons]
 Equipped=Marlene
@@ -141,24 +142,32 @@ Marlene=$current.battlestreak
 
 
 [Skills]
+Zen=5
+Clearmind=3
+PerfectDefense=1
+Impetus=20
+WeaponBash=1
+Hatchetman=100
+MartialArts=100
 Resist-Charm=100
 Resist-Intimidate=100
 Resist-Confuse=100
 Resist-Poison=100
-Zen=5
-Clearmind=3
-RoyalGuard=1
-ManaWall=1
-Hatchetman=100
-MartialArts=100
 Resist-WeaponLock=100
-Impetus=20
-WeaponBash=1
 Resist-Disarm=100
 Resist-Amnesia=100
+Resist-Drunk=100
 
 
 [Techniques]
+AntidepressentScale=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
+ChemicalAffection=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
+KyougenJikkou=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
+TaibokuWoSasuruTe=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
+Fortissimo=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
+GenkaiFortissimo=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
+UltimateFortissimo=$iif($readini($char(I-No), status, ignition.on) = on, $current.battlestreak, 0)
+LastWillandTestament=$iif($readini($char(I-No), status, ignition.on) = on, $current.battlestreak, 0)
 
 
 [Item_Amount]
@@ -198,51 +207,54 @@ HolyHandGrenade=0
 Crissaegrim=50
 Valmanway=50
 Naturaleza=50
-AsuranFists=30
-VictorySmite=30
-ShinjinSpiral=30
-MillionStab=30
-VorpalBlade=30
-DeathBlossom=30
-SwiftBlade=30
-ChantDuCygne=30
-Requiescat=30
-Resolution=30
-Guillotine=30
-Insurgency=30
-Pentathrust=30
-Drakesbane=30
-Stardiver=30
-PyrrhicKleos=30
-Evisceration=30
-DancingEdge=30
-Ultima=30
-Kaustra=30
-Ashes=30
-Dismay=30
-ThousandCuts=30
+Crissaegrim=50
+Valmanway=50
+Naturaleza=50
+AsuranFists=45
+VictorySmite=45
+ShinjinSpiral=45
+MillionStab=45
+VorpalBlade=45
+DeathBlossom=45
+SwiftBlade=45
+ChantDuCygne=45
+Requiescat=45
+Resolution=45
+Guillotine=45
+Insurgency=45
+Pentathrust=45
+Drakesbane=45
+Stardiver=45
+PyrrhicKleos=45
+Evisceration=45
+DancingEdge=45
+Ultima=45
+Kaustra=45
+Ashes=45
+Dismay=45
+ThousandCuts=45
 Tachi:Shoha=50
 Tachi:Rana=50
-Rainstorm=30
-SpinningAttack=30
-TornadoKick=30
-CircularChain=30
-CircleBlade=30
-SonicThrust=30
-ApexArrow=30
-UrielBlade=30
-FellCleave=30
-AeolianEdge=30
-Twin_Slice=30
-LightningStrike=30
-BladeBeamII=30
-TrillionStabs=30
-DoubleBackstab=30
-Chou_Kamehameha=30
-BloodBath=30
-UltimaII=30
-KaustraII=30
-Chivalry=30
+Rainstorm=45
+SpinningAttack=45
+TornadoKick=45
+CircularChain=45
+CircleBlade=45
+SonicThrust=45
+ApexArrow=45
+UrielBlade=45
+FellCleave=45
+AeolianEdge=45
+Twin_Slice=45
+LightningStrike=45
+BladeBeamII=45
+TrillionStabs=45
+DoubleBackstab=45
+Chou_Kamehameha=45
+BloodBath=45
+UltimaII=45
+KaustraII=45
+Chivalry=45
 
 [Styles]
 Equipped=WeaponMaster

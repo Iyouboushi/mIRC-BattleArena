@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=400
 Tp=100
-Str=$calc(130 + $current.battlestreak)
-Def=$calc(130 + $current.battlestreak)
-Int=$calc(130 + $current.battlestreak)
-Spd=$calc(130 + $current.battlestreak)
+Str=$calc(90 + $current.battlestreak)
+Def=$calc(90 + $current.battlestreak)
+Int=$calc(90 + $current.battlestreak)
+Spd=$calc(90 + $current.battlestreak)
 IgnitionGauge=2
 Name=Succubus
 
@@ -12,10 +12,10 @@ Name=Succubus
 [Battle]
 Hp=400
 Tp=100
-Str=130
-Def=130
-Int=130
-Spd=130
+Str=90
+Def=90
+Int=90
+Spd=90
 IgnitionGauge=2
 Status=alive
 
@@ -51,7 +51,6 @@ LastIP=N/a
 Created=N/a
 Streak=61
 CanTaunt=true
-IgnoreOutpost=true
 
 [Monster]
 Type=Undead

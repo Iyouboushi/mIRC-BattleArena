@@ -365,6 +365,7 @@ PlanteraBulb=PlanteraSeed.PlanteraThornBall.PlanteraSpores.PlanteraBite
 LihzahrdGolemEyes=GolemEyeLaser
 LihzahrdGolemFists=GolemFistPunch.GolemFistGrab.AsuranFists.ShinjinSpiral
 FishronFins=DetonatingBubble.Sharknado
+Marlene=AntidepressentScale.ChemicalAffection.KyougenJikkou.TaibokuWoSasuruTe.Fortissimo.GenkaiFortissimo.UltimateFortissimo.LastWillandTestament
 Zanmato=Daigoro.Kozuka.Zanmatou
 PacPower=Pac-Jump.FireHydrant.BonusFruit.PowerPellet
 TurkeyPower=Gobble
@@ -9509,32 +9510,109 @@ Cost=0
 Magic=No
 Stat=str
 
-[LastWillandTestament]
+[AntidepressentScale]
 Type=Single
-TP=10
-Desc=changes the battlefield to a concert stage which also has two large, demonic speakers. %user forces %enemy to be tossed back and forth between the speakers as %user rocks out on the guitar. After a minute, %user stops playing and causes an explosion which returns the battlefield to normal.
-BasePower=400
 Cost=0
+Desc=leans over slightly and plays a chord on $gender($1) guitar. %user $+ 's hat takes life ans spits out a musical note of green energy which slams into %enemy $+ !
+TP=20
+Element=None
+Hits=$rand(1,2)
+BasePower=40
+Magic=no
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[ChemicalAffection]
+Type=Single
+Cost=0
+Desc=plays a chord on the guitar as %user performs an upside down spinning kick towards %enemy $+ , hitting %enemy with a wave of lightning energy.
+TP=20
+Element=Lightning
+Hits=1
+BasePower=40
 Magic=No
-Stat=str
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[KyougenJikkou]
+Type=Single
+Cost=0
+Desc=hops into the air, floating for a moment before suddenly spinning forward and slamming the guitar into %enemy $+ !
+TP=20
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+IgnoreDefense=6
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[TaibokuWoSasuruTe]
+Type=Single
+Cost=0
+Desc=rushes towards %enemy and performs an uppercut, blasting %enemy with a wave of random energy.
+TP=20
+Element=$read($lstfile(elements.lst))
+Hits=1
+BasePower=40
+Magic=Yes
+HurtEthereal=true
+stat=str
+CanDodge=false
 
 [Fortissimo]
 Type=Single
 TP=10
 Desc=summons two white orbs which has one angel wing on each. %user gathers energy for a moment before the white orbs unleash blue energy that slams into %enemy $+ .
-BasePower=300
+BasePower=50
 Cost=0
+Hits=$rand(1,3)
 Magic=No
 Stat=str
+CanDodge=false
+HurtEthereal=true
+Element=None
+
+[GenkaiFortissimo]
+Type=AOE
+Cost=0
+Desc=hops into the air as %user $+ 's hat comes alive and blasts the entire arena with a wave of fire!
+TP=20
+Element=Fire
+Hits=1
+BasePower=40
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=false
 
 [UltimateFortissimo]
 Type=AOE
-TP=10
+TP=20
 Desc=summons four white orbs which has one angel wing on each. %user gathers energy for a moment before the white orbs unleash blue energy that covers the entire battlefield.
-BasePower=250
+BasePower=100
 Cost=0
 Magic=No
 Stat=str
+CanDodge=false
+HurtEthereal=true
+Element=None
+
+[LastWillandTestament]
+Type=Single
+TP=20
+Desc=changes the battlefield to a concert stage which also has two large, demonic speakers. %user forces %enemy to be tossed back and forth between the speakers as %user rocks out on the guitar. After a minute, %user stops playing and causes an explosion which returns the battlefield to normal.
+BasePower=150
+Cost=0
+Element=None
+Magic=No
+Stat=str
+CanDodge=false
+HurtEthereal=true
 
 [GenshiCleave]
 Type=AOE
@@ -9914,7 +9992,7 @@ Desc=grabs %enemy and squeezes tight!
 TP=10
 Element=None
 Hits=1
-BasePower=60
+BasePower=40
 IgnoreDefense=5
 Magic=No
 HurtEthereal=true
@@ -9928,7 +10006,7 @@ Desc=grabs %enemy and throws %enemy towards the ground with great power.
 TP=10
 Element=None
 Hits=1
-BasePower=50
+BasePower=40
 Magic=No
 HurtEthereal=true
 stat=str
@@ -9937,11 +10015,11 @@ CanDodge=false
 [GammaPunch]
 Type=Single
 Cost=0
-Desc=punches %enemy with one arm before quickly punching %enemy with the other arm!
+Desc=lines up with %enemy before quickly shooting forward to punch %enemy $+ !
 TP=10
 Element=None
-Hits=2
-BasePower=25
+Hits=1
+BasePower=30
 Magic=No
 HurtEthereal=true
 stat=str

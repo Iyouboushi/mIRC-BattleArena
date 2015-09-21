@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=45
 Tp=90
-Str=$calc(6 + $current.battlestreak)
-Def=$calc(6 + $current.battlestreak)
-Int=$calc(6 + $current.battlestreak)
-Spd=$calc(6 + $current.battlestreak)
+Str=$calc(2 + $current.battlestreak)
+Def=$calc(2 + $current.battlestreak)
+Int=$calc(2 + $current.battlestreak)
+Spd=$calc(2 + $current.battlestreak)
 IgnitionGauge=2
 Name=Dark Elemental
 
@@ -12,10 +12,10 @@ Name=Dark Elemental
 [Battle]
 Hp=45
 Tp=90
-Str=6
-Def=6
-Int=6
-Spd=6
+Str=2
+Def=2
+Int=2
+Spd=2
 IgnitionGauge=2
 Status=alive
 

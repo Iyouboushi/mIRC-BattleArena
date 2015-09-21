@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 1, 15500, 10000)
+Hp=$iif($return_playersinbattle > 1, 12000, 10000)
 Tp=5000
 Str=2000
 Def=1533
@@ -10,7 +10,7 @@ Name=Freya
 
 
 [Battle]
-Hp=15500
+Hp=12000
 Tp=5000
 Str=2000
 Def=1533
@@ -136,7 +136,7 @@ type=Aesir
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
 ; Change it to "true" to turn it on.
-TechLearn=false
+TechLearn=true
 
 ; Size is the size of the monster. Small/Medium/Large
 size=medium
@@ -258,54 +258,54 @@ Naturaleza=50
 AsuranFists=50
 Ashes=50
 Dismay=50
-ThousandCuts=30
+ThousandCuts=45
 Tachi:Shoha=50
 Tachi:Rana=50
-Rainstorm=30
-SpinningAttack=30
-TornadoKick=30
-CircularChain=30
-CircleBlade=30
-SonicThrust=30
-ApexArrow=30
+Rainstorm=45
+SpinningAttack=45
+TornadoKick=54
+CircularChain=45
+CircleBlade=45
+SonicThrust=45
+ApexArrow=45
 UrielBlade=120
-FellCleave=30
-AeolianEdge=30
-Twin_Slice=30
-LightningStrike=30
-BladeBeamII=30
-TrillionStabs=40
-DoubleBackstab=40
+FellCleave=45
+AeolianEdge=45
+Twin_Slice=45
+LightningStrike=45
+BladeBeamII=45
+TrillionStabs=45
+DoubleBackstab=45
 Chou_Kamehameha=120
-BloodBath=40
+BloodBath=45
 Ultima=120
-Kaustra=30
+Kaustra=45
 UltimaII=120
-KaustraII=30
+KaustraII=45
 Chivalry=120
-MillionStab=30
-VictorySmite=30
-ShinjinSpiral=30
-TornadoKick=30
-VorpalScythe=30
-CrossReaper=30
-Guillotine=30
-Resolution=20
-RapidShot=30
-PentaThrust=30
-UkkosFury=30
-Onslaught=30
-Rampage=30
-Ruinator=30
-DancingEdge=30
-PyrrhicKleos=30
-Evisceration=20
+MillionStab=45
+VictorySmite=45
+ShinjinSpiral=45
+TornadoKick=45
+VorpalScythe=45
+CrossReaper=45
+Guillotine=45
+Resolution=45
+RapidShot=45
+PentaThrust=45
+UkkosFury=45
+Onslaught=45
+Rampage=45
+Ruinator=45
+DancingEdge=45
+PyrrhicKleos=45
+Evisceration=45
 Drakesbane=120
-Stardiver=30
+Stardiver=45
 Requiescat=120
 HolyHandGrenade=0
 
 [NaturalArmor]
 Name=Goddess Defense
-Max=2000
-Current=2000
+Max=1000
+Current=1000

@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=300
 Tp=200
-Str=$calc(300 + $current.battlestreak)
-Def=$calc(300 + $current.battlestreak)
-Int=$calc(300 + $current.battlestreak)
-Spd=$calc(300 + $current.battlestreak)
+Str=$calc(150 + $current.battlestreak)
+Def=$calc(150 + $current.battlestreak)
+Int=$calc(150 + $current.battlestreak)
+Spd=$calc(150 + $current.battlestreak)
 IgnitionGauge=2
 Name=Geyfyrst
 
@@ -12,10 +12,10 @@ Name=Geyfyrst
 [Battle]
 Hp=300
 Tp=200
-Str=300
-Def=300
-Int=300
-Spd=300
+Str=150
+Def=150
+Int=150
+Spd=150
 IgnitionGauge=2
 Status=alive
 

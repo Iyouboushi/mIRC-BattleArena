@@ -23,7 +23,7 @@ MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand
 
 MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.SinistralPower.JesterWand.VampireArt.Puppetry.Benihime.PeoplesFist.SuccubusPower.DragonShouts.BlueEyesPower.BlackMagic.DragonSword.OctoArms.Casull&Jackal.AlucardSword.Auto9.Railgun.WoolyTusks.OrochiPower.BogardGloves.GiygasPower.AtlantisPower.Broad_Sword.Rose's_Rapier.ShihouinFists.ImpHorn.GhostPower.ChozoArmCannon.ZeroSaber.SantaRifle.ScorpionFists.Legion
 
-MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.GoylePower.SwordOfTheFallenDevil.X-BusterMk1.X-BusterMk2.X-BusterMk3.MonkeyIsland_Cutlass.TauntPower
+MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.GoylePower.SwordOfTheFallenDevil.X-BusterMk1.X-BusterMk2.X-BusterMk3.MonkeyIsland_Cutlass.TauntPower.Marlene
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros
 
@@ -344,7 +344,7 @@ Upgrade=400
 2Handed=true
 
 [Ragnarok]
-Cost=25
+Cost=50
 Type=GreatSword
 Info=A legendary greatsword that is bronze in color.
 Abilities=Scourge.HerculeanSlash.Resolution.Torcleaver
@@ -355,7 +355,7 @@ Upgrade=1500
 2Handed=true
 
 [Caladbolg]
-Cost=25
+Cost=50
 Type=GreatSword
 Info=A greatsword with a wide and unique blade that has a red and gold design in the middle of the blade.
 Abilities=Torcleaver.Resolution
@@ -924,7 +924,7 @@ BasePower=40
 Upgrade=800
 
 [BahamutsStaff]
-Cost=200
+Cost=500
 Type=Stave
 Info=A mighty staff that Bahamut kept hidden due to its sheer power.
 Abilities=Ultima.Kaustra.Merlin'sFinalSpell
@@ -1004,7 +1004,7 @@ Upgrade=1500
 2Handed=true
 
 [Ryunohige]
-Cost=40
+Cost=50
 Type=Spear
 Info=A powerful spear that's a dark and light grey color with a unique blade on the end.
 Abilities=SoulJump.Drakesbane.LegSweep.Stardiver
@@ -1015,7 +1015,7 @@ Upgrade=2000
 2Handed=true
 
 [Rhongomiant]
-Cost=18
+Cost=25
 Type=Spear
 Info=A large white and light grey spear with multiple blades on the end that form a point.
 Abilities=HighJump.CamlannsTorment.LegSweep.SonicThrust
@@ -3514,10 +3514,10 @@ Upgrade=0
 Cost=0
 TYpe=Axe
 Info=The guitar that I-No loves.
-Abilities=
+Abilities=AntidepressentScale.ChemicalAffection.KyougenJikkou.TaibokuWoSasuruTe.Fortissimo.GenkaiFortissimo.UltimateFortissimo.LastWillandTestament
 Element=None
-Hits=2
-BasePower=30
+Hits=1
+BasePower=50
 Upgrade=0
 
 [FrostWhip]
@@ -4063,7 +4063,7 @@ Info=the arms of the giant robot, Gamma.
 Abilities=GammaGrab.GammaThrow.GammaPunch
 Element=None
 Hits=1
-BasePower=50
+BasePower=40
 Upgrade=0
 IgnoreDefense=5
 HurtEthereal=false
