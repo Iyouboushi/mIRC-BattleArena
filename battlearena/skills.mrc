@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/16/15
+;;;; Last updated: 09/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1393,7 +1393,6 @@ alias skill.clone { $set_chr_name($1)
   writeini $char($1 $+ _clone) info clone yes 
   writeini $char($1 $+ _clone) info cloneowner $1
 
-
   if ($2 = $null) {  writeini $char($1 $+ _clone) basestats name Clone of %real.name }
   if ($2 != $null) { writeini $char($1 $+ _clone) basestats name $2- }
 
@@ -1458,7 +1457,7 @@ alias skill.clone { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction shadowcopy
 
-
+  if (%portal.bonus != true) { writeini $char($1 $+ _clone) info FirstTurn true }
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
@@ -2967,6 +2966,8 @@ alias skill.bloodpact {
   writeini $char($1 $+ _summon) info summon yes
   writeini $char($1 $+ _summon) info owner $1
   writeini $char($1 $+ _summon) access list $1
+
+  if (%portal.bonus != true) { writeini $char($1 $+ _summon) info FirstTurn true }
 
   return
 }

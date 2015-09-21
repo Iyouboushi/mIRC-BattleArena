@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/13/15
+;;;; Last updated: 09/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1702,6 +1702,7 @@ alias endbattle {
 alias next {
   set %debug.location alias next
   unset %skip.ai | unset %file.to.read.lines | unset %user.gets.second.turn
+
   ; Reset the Next timer.
   var %nextTimer $readini(system.dat, system, TimeForIdle)
   if (%nextTimer = $null) { var %nextTimer 180 }
@@ -1751,6 +1752,8 @@ alias turn {
   }
 
   if ($readini($char($1), battle, status) = inactive) {  $next  |  halt  }
+
+  if ($readini($char($1), info, FirstTurn) = true) { writeini $char($1) info FirstTurn false | $next | halt }
 
   ; Is the battle over? Let's find out.
   $battle.check.for.end
