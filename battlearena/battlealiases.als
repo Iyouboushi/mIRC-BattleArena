@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/23/15
+;;;; Last updated: 09/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -208,14 +208,14 @@ current.battlestreak {
 
   if (%battle.type = ai) { return  %ai.battle.level  }
 
-
   if (%portal.bonus != true) {
-
-    if (%battle.type = dungeon) { return $readini($txtfile(battle2.txt), dungeoninfo, dungeonlevel) }
-
     var %temp.current.battlestreak $readini(battlestats.dat, battle, WinningStreak)
     if (%temp.current.battlestreak <= 0) { return $readini(battlestats.dat, battle, LosingStreak) }
     else { 
+
+
+
+
       return %temp.current.battlestreak 
     }
   }
@@ -1766,7 +1766,6 @@ battlefield.limitations {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.surpriseattack {
   if (%savethepresident = on) { return }
-  if (%battle.type = dungeon) { return }
   if ($readini(battlestats.dat, TempBattleInfo, SurpriseAttack) != $null) { remini battlestats.dat TempBattleInfo SurpriseAttack | return } 
 
   set %surpriseattack.chance $rand(1,105)
@@ -1785,7 +1784,6 @@ random.surpriseattack {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.playersgofirst {
   if (%surpriseattack = on) { return }
-  if (%battle.type = dungeon) { return }
   set %playersfirst.chance $rand(1,100)
 
   if (%playersfirst.chance <= 8) { set %playersgofirst on }
