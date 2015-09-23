@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/21/15
+;;;; Last updated: 09/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2300,10 +2300,10 @@ alias battle.reward.redorbs {
       }
 
       if ((%battle.type = defendoutpost) || (%battle.type = assault)) {  
-        if ($current.battlestreak >= 100) { var %streak.level.difference $round($calc(100 - $get.level(%who.battle)),0) }
-        else { var %streak.level.difference $round($calc($current.battlestreak - $get.level(%who.battle)),0) }
+        if ($current.battlestreak >= 100) { var %streak.level.difference $round($calc(100 - $get.level.basestats(%who.battle)),0) }
+        else { var %streak.level.difference $round($calc($current.battlestreak - $get.level.basestats(%who.battle)),0) }
       }
-      else { var %streak.level.difference $round($calc($current.battlestreak - $get.level(%who.battle)),0) }
+      else { var %streak.level.difference $round($calc($current.battlestreak - $get.level.basestats(%who.battle)),0) }
 
       ; Check to see what level the winner is vs the current battlestreak.  If the streak is higher, nerf the orbs.
       if (%streak.level.difference >= 1000) { %total.redorbs.reward = $round($calc(%total.redorbs.reward * .015),0) }

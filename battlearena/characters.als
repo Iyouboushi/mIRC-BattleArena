@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/02/15
+;;;; Last updated: 09/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -143,7 +143,7 @@ get.level.basestats {
   inc %level %spd
 
   var %level $round($calc(%level / 18), 1)
-  return %level
+  return $round(%level,0)
 }
 get.level.old {
   var %str $readini($char($1),battle, str)
