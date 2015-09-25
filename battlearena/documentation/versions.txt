@@ -1331,6 +1331,7 @@ Battle Arena Bot VERSIONS
 - Changed the way the shop displays certain error messages and what it says when you use !shop by itself. 
 - Changed the way summons and clones work when summoned outside of a portal battle. Now they are skipped 
   on the round they are summoned on and will only take action on the following round.
+- Changed the "Battle open" message to show the current winning/losing battle streak at the end of the line.
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
