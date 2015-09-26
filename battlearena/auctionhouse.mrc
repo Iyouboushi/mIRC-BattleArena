@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 02/15/15
+;;;; Last updated: 09/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -80,6 +80,7 @@ alias auctionhouse.bid {
   if ($readini($char($1), status, alliednotes.lock) = true) { $display.private.message2($1, $readini(translation.dat, errors, AlreadyPlacedBid)) |  halt }
 
   if ((. isin $2) || ($2 < 1)) { $display.private.message2($1, 4Error: You must bid a whole number greater than 1.) | halt }
+  if ($2 = $null) { $display.private.message2($1, 4Error: You must supply a number of notes to bid with) | halt }
 
   ; Does the person have that many notes?
   var %current.alliednotes $readini($char($1), stuff, alliednotes)
@@ -92,7 +93,7 @@ alias auctionhouse.bid {
 
   ; Check to see if the person is the highest bidder.
   var %highest.bid $readini(system.dat, auctionInfo, current.bid)
-  if (%highest.bid = $null) || ($2 > %highest.bid) { writeini system.dat auctionInfo current.bid $2 | writeini system.dat auctionInfo current.winner $1 } 
+  if ((%highest.bid = $null) || ($2 > %highest.bid)) { writeini system.dat auctionInfo current.bid $2 | writeini system.dat auctionInfo current.winner $1 } 
 
   ; Write the flag.
   writeini $char($1) status alliednotes.lock true
