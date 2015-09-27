@@ -12,10 +12,10 @@ HEALING ITEMS
 [Potion]
 Type=heal
 Target=Single
-Amount=100
+Amount=3
 Desc=pulls out a potion bottle and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=100
-SellPrice=30
+Cost=30
+SellPrice=15
 FullbringLevel=1
 FullbringTarget=AOE
 FullbringAmount=50
@@ -24,7 +24,7 @@ Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn to
 [VitalStar]
 Type=heal
 Target=Single
-Amount=150
+Amount=10
 Desc=pulls out a strange green star and tosses it at %enemy $+ .  The star is absorbed and a sense of healing overcomes $gender2($2) $+ .
 Cost=150
 SellPrice=40
@@ -37,7 +37,7 @@ Fullbringdesc=draws out the soul from the vital star.  The vital star's soul is 
 Type=heal
 ShopNPC=HealingMerchant
 Target=Single
-Amount=300
+Amount=15
 Desc=pulls out an X-potion bottle and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
 Cost=300
 SellPrice=100
@@ -49,7 +49,7 @@ Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn to
 [RootBeer]
 Type=heal
 Target=Single
-Amount=500
+Amount=20
 Desc=pulls out a bottle of fizzy rootbeer and hands it to %enemy $+ , who drinks it down. Teehee. Bubbly.
 Cost=500
 SellPrice=30
@@ -62,9 +62,9 @@ Fullbringdesc=draws out the soul from the rootbeer.  The soul is drawn towards e
 Type=heal
 ShopNPC=HealingMerchant
 Target=Single
-Amount=1000
+Amount=30
 Desc=pulls out a small green bean and tosses it at %enemy $+ .  After eating it, $gender3($2) feels a surge of health return.
-Cost=$iif($readini(garden.dat, gardenstats, level) <= 3, 1000, 800)
+Cost=$iif($readini(garden.dat, gardenstats, level) <= 3, 1500, 1000)
 SellPrice=400
 FullbringLevel=4
 FullbringTarget=AOE
@@ -75,7 +75,7 @@ Fullbringdesc=draws out the soul from the senzu bean.  The battlefield is covere
 Type=heal
 ShopNPC=HealingMerchant
 Target=Single
-Amount=1500
+Amount=40
 Desc=pulls out bottle of red liquid labeled "Super Potion" and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
 Cost=1500
 SellPrice=750
@@ -89,7 +89,7 @@ ConquestItem=true
 Type=heal
 ShopNPC=TravelMerchant
 Target=Single
-Amount=4000
+Amount=50
 Desc=pulls out bottle of liquid made with blood labeled "Mega Potion" and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
 Cost=4000
 SellPrice=2000
@@ -102,7 +102,7 @@ Currency=none
 [Bruce'sJuice]
 Type=heal
 Target=Single
-Amount=5000
+Amount=120
 Desc=pulls out a refreshing bottle of Bruce "Old Man" Willaker's juice and drinks it.  Ahhhhhhh, the most refreshing juice in the world.
 Cost=0
 SellPrice=3000
@@ -115,7 +115,7 @@ Currency=none
 [CandyCane]
 Type=heal
 Target=Single
-Amount=4000
+Amount=70
 ShopNPC=Santa
 Desc=pulls out a small red and white candy cane and hands it to %enemy who eats it. Cruncy! 
 Cost=$iif($readini(shopnpcs.dat, NPCStatus, Santa) = true, 1000, 0)

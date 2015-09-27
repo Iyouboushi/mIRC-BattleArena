@@ -272,8 +272,24 @@ calculate_heal_items {
 
   set %attack.damage 0
 
-  ; First things first, let's find out the base power.
+  ; First things first, let's find out the base power of the item
   var %item.base $readini($dbfile(items.db), $2, Amount)
+
+  ; Convert that into a percent
+  var %item.base $calc(%item.base / 100)
+
+  ; Determine how much this item will heal.
+  var %max.hp $readini($char($3), basestats, hp)
+  var %item.base $round($calc(%item.base * %max.hp),0)
+
+
+  ; Set the amount the item heals
+  inc %attack.damage %item.base
+
+  ;;;;;;;;;;;;;
+  ;;;  Increase the amount that the item 
+  ;;;; will heal by static values
+  ;;;;;;;;;;;;
 
   ; If we have a skill that enhances healing items, check it here
   var %field.medic.skill $readini($char($1), skills, FieldMedic) 
@@ -283,10 +299,8 @@ calculate_heal_items {
     inc %attack.damage %skill.increase.amount
   }
 
-  inc %attack.damage %item.base
-
   ; Let's increase the attack by a random amount.
-  inc %attack.damage $rand(1,10)
+  inc %attack.damage $rand(1,5)
 
   if ($augment.check($1, EnhanceItems) = true) { 
     inc %attack.damage $round($calc(%attack.damage * .3),0)
