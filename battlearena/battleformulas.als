@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 07/13/15
+;;;; Last updated: 09/27/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1737,51 +1737,44 @@ formula.meleedmg.player.formula_2.5 {
 
   var %flag $readini($char($1), info, flag) 
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;; CALCULATE TOTAL DAMAGE.
-  ;;; FORMULA 1
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  if ($readini(system.dat, system, BattleDamageFormula) = 1) {
+  ; Set the level ratio
 
-    ; Set the level ratio
-
-    if (%flag = monster) { 
-      set %temp.strength %base.stat
-      if (%temp.strength > 800) { set %temp.strength $calc(700 + (%temp.strength / 40))
-        set %temp.strength $round(%temp.strength,0)
-        set %level.ratio $calc(%temp.strength / %enemy.defense)
-      }
-      if (%temp.strength <= 800) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
+  if (%flag = monster) { 
+    set %temp.strength %base.stat
+    if (%temp.strength > 800) { set %temp.strength $calc(700 + (%temp.strength / 40))
+      set %temp.strength $round(%temp.strength,0)
+      set %level.ratio $calc(%temp.strength / %enemy.defense)
     }
-
-    if ((%flag = $null) || (%flag = npc))  { 
-      set %temp.strength %base.stat
-      if (%temp.strength > 6000) { set %temp.strength $calc(6000 + (%temp.strength / 3))
-        set %temp.strength $round(%temp.strength,0)
-        set %level.ratio $calc(%temp.strength / %enemy.defense)
-        unset %temp.strength
-      }
-      if (%temp.strength <= 6000) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
-    }
-
-    ; Calculate the Level Ratio
-    set %level.ratio $calc($readini($char($1), battle, str) / %enemy.defense)
-
-    var %attacker.level $get.level($1)
-    var %defender.level $get.level($3)
-
-    if (%attacker.level > %defender.level) { inc %level.ratio .3 }
-    if (%attacker.level < %defender.level) { dec %level.ratio .3 }
-
-    if (%level.ratio > 2) { set %level.ratio 2 }
-    if (%level.ratio <= .02) { set %level.ratio .02 }
-
-    unset %temp.strength
-
-    ; And let's get the final attack damage..
-    %attack.damage = $round($calc(%attack.damage * %level.ratio),0)
+    if (%temp.strength <= 800) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
   }
+
+  if ((%flag = $null) || (%flag = npc))  { 
+    set %temp.strength %base.stat
+    if (%temp.strength > 6000) { set %temp.strength $calc(6000 + (%temp.strength / 3))
+      set %temp.strength $round(%temp.strength,0)
+      set %level.ratio $calc(%temp.strength / %enemy.defense)
+      unset %temp.strength
+    }
+    if (%temp.strength <= 6000) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
+  }
+
+  ; Calculate the Level Ratio
+  set %level.ratio $calc($readini($char($1), battle, str) / %enemy.defense)
+
+  var %attacker.level $get.level($1)
+  var %defender.level $get.level($3)
+
+  if (%attacker.level > %defender.level) { inc %level.ratio .3 }
+  if (%attacker.level < %defender.level) { dec %level.ratio .3 }
+
+  if (%level.ratio > 2) { set %level.ratio 2 }
+  if (%level.ratio <= .02) { set %level.ratio .02 }
+
+  unset %temp.strength
+
+  ; And let's get the final attack damage..
+  %attack.damage = $round($calc(%attack.damage * %level.ratio),0)
 
   if (enhance-melee isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
 
@@ -1945,6 +1938,7 @@ formula.meleedmg.player.formula_2.5 {
   if (%weapon.howmany.hits = 5) { set %weapon.howmany.hits 5 | $fivehit.attack.check($1, $3, 100) }
   if (%weapon.howmany.hits >= 6) { set %weapon.howmany.hits 6 | $sixhit.attack.check($1, $3, 100) }
 }
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Calculates melee damage
 ; for monsters and bosses
