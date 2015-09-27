@@ -326,9 +326,9 @@ cap.damage {
     var %attacker.level $get.level($1)
     var %defender.level $get.level($2)
     var %level.difference $calc(%attacker.level - %defender.level)
-    if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.5),0)  }
 
-    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * .05),0)  }
+    if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 10),0)  }
+    if ((%level.difference > 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * .05),0)  }
     if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * .07),0)  }
     if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 1),0)  } 
     if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  } 
@@ -365,10 +365,11 @@ cap.damage {
     var %level.difference $calc(%attacker.level - %defender.level)
 
     if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.1),0)  }
-    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  }
+    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * 1.6),0)  }
     if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * 2),0)  }
     if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 3),0)  } 
     if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 3.5),0)  } 
+
     if (%damage.threshold <= 0) { var %damage.threshold 10 }
 
     if (%attack.damage > %damage.threshold) {
