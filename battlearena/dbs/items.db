@@ -115,7 +115,7 @@ Currency=none
 [CandyCane]
 Type=heal
 Target=Single
-Amount=70
+Amount=45
 ShopNPC=Santa
 Desc=pulls out a small red and white candy cane and hands it to %enemy who eats it. Cruncy! 
 Cost=$iif($readini(shopnpcs.dat, NPCStatus, Santa) = true, 1000, 0)

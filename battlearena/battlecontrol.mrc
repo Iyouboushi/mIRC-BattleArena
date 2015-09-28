@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/23/15
+;;;; Last updated: 09/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -737,12 +737,12 @@ alias battlebegin {
   writeini battlestats.dat battle emptyRounds 0
 
   ; Set the # of Turns Before Darkness
-  set %darkness.turns 11
+  set %darkness.turns 16
 
-  if ((%number.of.monsters.needed <= 2) && (%battle.type != boss)) { set %darkness.turns 11 }
+  if ((%number.of.monsters.needed <= 2) && (%battle.type != boss)) { set %darkness.turns 16 }
   if ((%number.of.monsters.needed > 2) && (%battle.type != boss))  { 
-    if ($readini(battlestats.dat, battle, winningstreak) >= 1000) { set %darkness.turns 26 }
-    else { set %darkness.turns 16 }
+    if ($readini(battlestats.dat, battle, winningstreak) >= 1000) { set %darkness.turns 21 }
+    else { set %darkness.turns 21 }
   }
 
   if (%battle.type = boss) { 

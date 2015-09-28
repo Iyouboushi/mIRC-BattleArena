@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/23/15
+;;;; Last updated: 09/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3923,6 +3923,15 @@ guardianmon.check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battle.alliednotes.check {
   var %notes.reward $readini($txtfile(battle2.txt), battle, alliednotes)
+
+  if (%portal.bonus = true) {
+    ; divide the # of notes by the # of players who entered the portal
+    var %temp.num.of.players $readini($txtfile(battle2.txt), battleinfo, players)
+    var %notes.reward $round($calc(%notes.reward / %temp.num.of.players),0)
+    if (%notes.reward < 10) { var %notes.reward 10 }
+    writeini $txtfile(battle2.txt) battle alliednotes %notes.reward
+  }
+
   if (%notes.reward = $null) {
     if (($readini(battlestats.dat, Battle, WinningStreak) >= 2000) && ($readini(battlestats.dat, Battle, WinningStreak) < 3000)) { writeini $txtfile(battle2.txt) battle alliednotes 25 }
     if ($readini(battlestats.dat, Battle, WinningStreak) >= 3000)  { writeini $txtfile(battle2.txt) battle alliednotes 50 }
