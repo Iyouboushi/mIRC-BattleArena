@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/27/15
+;;;; Last updated: 09/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3317,7 +3317,7 @@ formula.techdmg.player.formula_2.5 {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(10 * %aoe.turn)
-      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 10 }
+      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 15 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
       var %aoe.nerf.amount $round($calc(%attack.damage * %aoe.nerf.percent),0)
@@ -3874,7 +3874,7 @@ formula.techdmg.player.formula_3.0 {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(10 * %aoe.turn)
-      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 10 }
+      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 15 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
       var %aoe.nerf.amount $round($calc(%attack.damage * %aoe.nerf.percent),0)

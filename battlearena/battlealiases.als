@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/28/15
+;;;; Last updated: 09/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4053,7 +4053,7 @@ get.random.reward {
   inc %drop.counter 1
   writeini $char($1) stuff DropsRewarded %drop.counter
 
-  %item.drop.rewards = $addtok(%item.drop.rewards, %real.name $+  $+ $chr(91) $+ %drop.reward x $+ %item.reward.amount $+  $+ $chr(93), 46)
+  %item.drop.rewards = $addtok(%item.drop.rewards, %real.name $+  $+ $chr(91) $+ %drop.reward x $+ %item.reward.amount $+  $+ $chr(93) $+ , 46)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/23/15
+;;;; Last updated: 09/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1215,7 +1215,7 @@ augments.list {
     while (%value <= %number.of.weapons) {
       set %weapon.name $gettok(%display.weaponlist, %value, 46)
       set %weapon.name $gettok(%weapon.name,1, 40)
-      set %weapon_augment $readini($char($1), augments, %weapon.name)
+      set %weapon_augment $readini($char($1), augments, $strip(%weapon.name))
 
       if (%weapon_augment != $null) { 
         inc %number.of.augments 1
