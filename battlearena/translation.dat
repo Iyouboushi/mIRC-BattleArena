@@ -270,6 +270,10 @@ EnableBattlefieldEventsOff=$chr(3) $+ 4 $+ Random Battlefield Events are now d
 CustomBattleMessagesOn=$chr(3) $+ 4 $+ The New Custom Battle Messages are now enabled.
 CustomBattleMessagesOff=$chr(3) $+ 4 $+ The New Custom Battle Messages are now disabled.
 
+DragonHunt.ListDragons=$chr(3) $+ 2 $+ The following dragons are still hiding in their lairs across the land
+DragonHunt.CreatedDragon=$chr(3) $+ 4 $+ People all over the land have reported seeing the fearsome dragon %dragonhunt.name
+ creating a lair! It is up to the heroes to locate the lair and destroy the terrible beast.
+DragonHunt.BeginHunt=
 
 =======================
 Health Titles
@@ -540,6 +544,8 @@ NotAValidDungeon=$chr(3) $+ 4 $+ Error: This item's dungeon does not exist. Pl
 NotEnoughPartyMembersForDungeon=$chr(3) $+ 4 $+ Not enough players have entered to fulfill the party requirements. Please gather more people and try again.
 LevelTooLowForDungeon=$chr(3) $+ 4 $+ Error: $get_chr_name($1) $+ 's level is too low to enter this dungeon.
 CanOnlyStartOneDungeonADay=$chr(3) $+ 4 $+ Error: $get_chr_name($1) can only start one dungeon per 24 hours ( $+ $duration($calc(%dungeon.time.setting - %time.difference)) remaining). Note this restriction is only for starting a dungeon. $get_chr_name($1) can still join other people's dungeon parties.
+DragonHunt.NoDragons=$chr(3) $+ 4 $+ There are currently no dragons that have made lairs in the land.
+DragonHunt.Can'tHunt=$chr(3) $+ 4 $+ Error: $get_chr_name($1) cannot hunt for another dragon so soon. ( $+ $duration($calc(%dragon.time.setting - %time.difference)) remaining)
 
 =======================
 Battle Related Messages

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 09/30/15
+;;;; Last updated: 10/01/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1519,9 +1519,13 @@ on 3:TEXT:!augment*:?:{
 }
 
 ; ===================================
-; Dragon Hunt command
+; Dragon Hunt commands
 ; ===================================
 on 3:TEXT:!dragon hunt*:*:{ $character.dragonhunt($nick) } 
+on 3:TEXT:!dragon list*:*:{ 
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
+  $dragonhunt.listdragons 
+} 
 
 ; ===================================
 ; Wheel Master wheel command

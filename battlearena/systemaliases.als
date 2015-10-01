@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/30/15
+;;;; Last updated: 10/01/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4003,13 +4003,78 @@ bot.admin {
 ; Dragon Hunt aliases
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dragonhunt.check {
+  ; This system is not 100% finished so it is being disabled for now
+  return
 
+  var %dragonhunt.lastdragonmade $readini(battlestats.dat, battle, DragonHunt.LastMade)
+  if (%dragonhunt.lastdragonmade = $null) { $dragonhunt.createdragon | halt }
+
+  var %dragon.time.difference $calc($ctime - %dragonhunt.lastdragonmade)
+
+  if (%dragon.time.difference >= 43200) {
+    var %dragon.createchance $rand(1,100)
+    if (%dragon.createchance <= 40) { $dragonhunt.createdragon }
+  }
 }
 
 dragonhunt.createdragon {
+  var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
+  if (%dragonhunt.numberofdragons >= 5) { return }
 
+  ; Pick a random name
+  var %surname Fierce.Destroyer.Evil.Berserk.Chaos.Bloodspawn.Bloodtear.Bloodfang.Darkness
+
+  var %names.lines $lines($lstfile(dragonnames.lst))
+  if ((%names.lines = $null) || (%names.lines = 0)) { write $lstfile(dragonnames.lst) Nasith | var %names.lines 1 }
+
+  var %random.firstname $rand(1,%names.lines)
+
+  var %first.name $read($lstfile(dragonnames.lst), %random.firstname)
+  var %lastnames.total $numtok(%surname,46)
+  var  %random.lastname $rand(1, %lastnames.total) 
+  var %last.name $gettok(%surname,%random.lastname,46)
+
+  var %dragon.name.file %first.name $+ _ $+ %last.name
+  var %dragonhunt.name %first.name %last.name
+
+  writeini $dbfile(dragonhunt.db) %dragon.name.file Name %dragonhunt.name
+
+  ; Write the dragon's created time
+  writeini $dbfile(dragonhunt.db) %dragon.name.file Created $ctime
+
+  ; Pick a random age for the dragon
+  writeini $dbfile(dragonhunt.db) %dragon.name.file Age $rand(100,200)
+
+  ; Show the message
+  $display.message($readini(translation.dat, system, DragonHunt.CreatedDragon), global)
+
+  ; Write the created time to battlestats.dat
+  writeini battlestats.dat battle DragonHunt.LastMade $ctime
 }
 
 dragonhunt.listdragons {
+  var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
+  if ((%dragonhunt.numberofdragons = 0) || (%dragonhunt.numberofdragons = $null)) { $display.message($readini(translation.dat, errors, DragonHunt.NoDragons), private) | halt }
 
+  $display.message($readini(translation.dat, system, DragonHunt.ListDragons), private) 
+
+  ; Cycle through the dragons and build a list
+  var %dragonhunt.totaldragons $ini($dbfile(dragonhunt.db),0)
+  var %dragonhunt.counter 1
+
+  while (%dragonhunt.counter <= %dragonhunt.totaldragons) {
+    var %current.dragon $ini($dbfile(dragonhunt.db), %dragonhunt.counter)
+    var %dragon.name $readini($dbfile(dragonhunt.db), %current.dragon, name)
+
+    ; Calculate the dragon's age..
+    var %dragon.createdtime $readini($dbfile(dragonhunt.db), %current.dragon, created)
+
+    var %dragon.age $round($calc(((($ctime - %dragon.createdtime)/60)/60)/12),0)
+    inc %dragon.age $readini($dbfile(dragonhunt.db), %current.dragon, Age)
+
+    ; Show dragon
+    $display.message.Delay(4 $+ %dragon.name  - Age: %dragon.age, private, 1)
+
+    inc %dragonhunt.counter
+  }
 }
