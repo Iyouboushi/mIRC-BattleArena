@@ -21,6 +21,14 @@ FullbringTarget=AOE
 FullbringAmount=50
 Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a small light that heals everyone.
 
+[CandyCorn]
+Type=heal
+Target=single
+Amount=4
+Desc=pulls out a handful of candy corn and hands it to %enemy $+ , who eats it.  Mmmmm! Tastes like Halloween!
+Cost=0
+SellPrice=50
+
 [VitalStar]
 Type=heal
 Target=Single

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/29/15
+;;;; Last updated: 09/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -164,6 +164,13 @@ person_in_mech {
 check_drops {
   var %boss.item $readini($dbfile(drops.db), drops, $1)
   if (%boss.item = $null) { var %boss.item $readini($char($1), stuff, drops) } 
+
+  if ($left($adate, 2) = 10) { 
+    if ((%battle.type = monster) && ($readini($dbfile(items.db), CandyCorn, amount) != $null)) { 
+      var %boss.item $addtok(%boss.item, CandyCorn, 46)
+    }
+  }
+
   if (%boss.item != $null) {
     var %temp.drops.list $readini($txtfile(battle2.txt), battle, bonusitem)
     var %number.of.items $numtok(%temp.drops.list, 46)
@@ -609,7 +616,7 @@ boost_monster_hp {
 
   var %increase.amount 1
 
-  if ($return_playersinbattle > 1) { inc %increase.amount .3 }
+  if ($return_playersinbattle > 1) { inc %increase.amount .35 }
 
   if ($2 = rage) { %hp = $rand(120000,150000) }
 
@@ -628,9 +635,9 @@ boost_monster_hp {
   var %hp.modifier 1
 
   if ($return_winningstreak <= 10) { inc %hp.modifier $calc(.05 * $return_winningstreak) }
-  if (($return_winningstreak > 10) && ($return_winningstreak <= 500)) { inc %hp.modifier $calc(.02 * $return_winningstreak) }
-  if (($return_winningstreak > 500) && ($return_winningstreak <= 2000)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
-  if ($return_winningstreak > 2000) { var %hp.modifier .0035 }
+  if (($return_winningstreak > 10) && ($return_winningstreak <= 200)) { inc %hp.modifier $calc(.02 * $return_winningstreak) }
+  if (($return_winningstreak > 200) && ($return_winningstreak <= 500)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
+  if ($return_winningstreak > 5000) { var %hp.modifier .0035 }
 
   if (%battle.type = boss) {
     inc %hp.modifier .08 

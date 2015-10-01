@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/19/15
+;;;; Last updated: 09/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3092,6 +3092,7 @@ give_random_reward {
       if (%battle.type = mimic) { var %reward.chance 100 }
     }
 
+    if ($left($adate, 2) = 10) { inc %reward.chance 10 }
 
     if (%reward.chance < 65) { return }
 
@@ -3101,7 +3102,6 @@ give_random_reward {
       set %boss.item.list $readini($txtfile(battle2.txt), battle, bonusitem)
 
       if (%boss.item.list != $null) {
-
         set %boss.item.total $numtok(%boss.item.list,46)
         set %random.boss.item $rand(1, %boss.item.total) 
         set %boss.item $gettok(%boss.item.list,%random.boss.item,46)
@@ -3997,4 +3997,19 @@ bot.admin {
     %bot.admins = $remtok(%bot.admins,$2,46) | $display.message(3 $+ $2 has been removed as a bot admin., private) 
     writeini system.dat botinfo bot.owner %bot.admins | halt 
   }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Dragon Hunt aliases
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dragonhunt.check {
+
+}
+
+dragonhunt.createdragon {
+
+}
+
+dragonhunt.listdragons {
+
 }

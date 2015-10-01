@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/28/15
+;;;; Last updated: 09/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -276,6 +276,9 @@ alias clear_battle {
 
   ; Check for auction stuff.
   $auctionhouse.check 
+
+  ; Check for dragon hunt stuff
+  $dragonhunt.check
 
   halt
 }

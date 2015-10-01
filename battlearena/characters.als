@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/29/15
+;;;; Last updated: 09/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1315,4 +1315,26 @@ augments.strength {
   if (%augment.list = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, system, Noaugments), private) }
   unset %augment.list | unset %augment.list.2 | unset %augment.list.3 | unset %augment.list.4
   unset %weapon.list | unset %base.weapon.list  | unset %weapons
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Dragon Hunt command
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.dragonhunt {
+  ; $1 = person doing the hunting
+
+  ; Has enough time elapsed?
+
+  ; Are there any dragons to hunt?
+
+  var %dragonhunt.chance 2
+
+  ; Check for accessories and augments to improve chances
+
+  var %dragonhunt.randomnum $rand(1,100)
+  if (%dragonhunt.randnum > %dragonhunt.chance) { }
+  else {
+
+  }  
+
 }

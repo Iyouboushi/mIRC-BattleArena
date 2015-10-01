@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 07/27/15
+;;;; Last updated: 09/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1517,6 +1517,11 @@ on 3:TEXT:!augment*:?:{
     $set_chr_name($nick) | $display.message($readini(translation.dat, system, WeaponDeAugmented), global)
   }
 }
+
+; ===================================
+; Dragon Hunt command
+; ===================================
+on 3:TEXT:!dragon hunt*:*:{ $character.dragonhunt($nick) } 
 
 ; ===================================
 ; Wheel Master wheel command
