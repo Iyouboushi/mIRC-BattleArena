@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/30/15
+;;;; Last updated: 10/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -214,6 +214,7 @@ no.mech.check {
 current.battlestreak {
 
   if (%battle.type = ai) { return  %ai.battle.level  }
+  if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
 
 
   if (%portal.bonus != true) {
@@ -654,6 +655,8 @@ boost_monster_hp {
     if (%hp.modifier > 1.2) { var %hp.modifier 1.2 } 
   }
 
+  if (%battle.type = dragonhunt) { inc %hp.modifier 3 }
+
   ; Increase the hp modifier if more than 1 player is in battle..
   if ($return_playersinbattle > 1) {
     var %increase.amount $round($calc($return_playersinbattle / 2),0)
@@ -664,7 +667,8 @@ boost_monster_hp {
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
-  if (%hp > 9000) { var %hp $round($calc(9000 + (%hp * .02)),0) }
+  if ((%hp > 9000) && (%battle.type != dragonhunt)) { var %hp $round($calc(9000 + (%hp * .02)),0) }
+  if ((%hp > 15000) && (%battle.type = dragonhunt)) { var %hp $round($calc(15000 + (%hp * .25)),0) }
 
   if (($return.systemsetting(BattleDamageFormula) = 2) || ($return.systemsetting(BattleDamageFormula) = 4)) { var %hp $calc(%hp * 2) }
 
@@ -1616,6 +1620,7 @@ gemconvert_check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.weather.pick {
   if (%current.battlefield = Dead-End Hallway) { return }
+  if (%current.battlefield = Dragon's Lair) { return }
   if ((weatherlock isin %battleconditions) || (weather-lock isin %battleconditions)) { return }
 
   set %weather.list $readini($dbfile(battlefields.db), %current.battlefield, weather)
@@ -1723,6 +1728,7 @@ timeofday.increase {
 ; battlefield curse
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.battlefield.curse {
+  if (%battle.type = DragonHunt) { return }
   if ($readini(battlestats.dat, battle, WinningStreak) <= 50) { return }
   var %timeofday $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay)
   if ((%timeofday = morning) || (%timeofday = noon)) { return }
@@ -1772,6 +1778,7 @@ battlefield.limitations {
 ; if monsters go first in battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.surpriseattack {
+  if (%battle.type = DragonHunt) { return }
   if (%savethepresident = on) { return }
   if (%battle.type = dungeon) { return }
   if ($readini(battlestats.dat, TempBattleInfo, SurpriseAttack) != $null) { remini battlestats.dat TempBattleInfo SurpriseAttack | return } 
@@ -1791,6 +1798,7 @@ random.surpriseattack {
 ; to see if players go first
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.playersgofirst {
+  if (%battle.type = DragonHunt) { return }
   if (%surpriseattack = on) { return }
   if (%battle.type = dungeon) { return }
   set %playersfirst.chance $rand(1,100)
@@ -1811,6 +1819,7 @@ random.battlefield.ally {
   if (%battle.type = manual) { return }
   if (%battle.type = orbfountain) { return }
   if (%battle.type = boss) { return }
+  if (%battle.type = DragonHunt) { return }
   if (%battle.type = defendoutpost) { 
     if (%number.of.players < 5) { $generate_allied_troop }
     return
@@ -2888,6 +2897,7 @@ counter_melee_action {
 multiple_wave_check {
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
 
+  if (%battle.type = dragonhunt) { return }
   if (%battle.type = dungeon) { return }
   if (%multiple.wave = yes) { return }
   if (%battleis = off) { return }

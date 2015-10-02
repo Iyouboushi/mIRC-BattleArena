@@ -34,6 +34,7 @@ BattleStatsGauntletRecord=$chr(3) $+ 2 $+ The Gauntlet Record is4 %total.gaunt
 BattleStatsPresidentRecord=$chr(3) $+ 2 $+ The President of the Allied Forces has been captured:4 $bytes(%total.capturedpresidents,b) $iif(%total.capturedpresidents < 2, time, times) $+ 2. The heroes have successfully rescued the president $bytes(%total.capturedpresidents.wins,b) $iif(%total.capturedpresidents.wins < 2, time, times) ( $+ $round($calc((%total.capturedpresidents.wins / %total.capturedpresidents)*100),2) $+ $chr(37) $+ ) $+ $chr(44) have failed $bytes(%total.capturedpresidents.fails,b) $iif(%total.capturedpresidents.fails < 2 && %total.capturedpresidents.fails > 0, time, times) ( $+ $round($calc((%total.capturedpresidents.fails / %total.capturedpresidents)*100),2) $+ $chr(37) $+ ) and have ignored $bytes(%total.capturedpresidents.ignored,b) $iif(%total.capturedpresidents.ignored = 1, capture, captures) ( $+ $round($calc((%total.capturedpresidents.ignored / %total.capturedpresidents)*100),2) $+ $chr(37) $+ ).
 BattleStatsOutposts=$chr(3) $+ 2 $+ The Allied Forces have currently defended4 %total.defendedoutposts 2outposts and have lost4 %total.lostoutposts 2outposts to the monster forces.
 BattleStatsMoreInfo=$chr(3) $+ 2 $+ For Conquest information use 4!conquest info2, 4!conquest record2 and 4!conquest points2.  For current Dragonball info use 4!dragonballs
+BattleStatsDragonHuntRecord=$chr(3) $+ 2 $+ The Allied Forces have currently successfully found4 %total.dragonhunts 2dragon lairs
 WipedBattleStats=$chr(3) $+ 4 $+ The Battle Stats have been wiped!
 ChangeTime=$chr(3) $+ 4 $+ Time between battles has been set to: $duration($4)
 ChangeTimeForEnter=$chr(3) $+ 4 $+ Time allowed for the !enter period has been set to: $duration($4)
@@ -271,9 +272,8 @@ CustomBattleMessagesOn=$chr(3) $+ 4 $+ The New Custom Battle Messages are now 
 CustomBattleMessagesOff=$chr(3) $+ 4 $+ The New Custom Battle Messages are now disabled.
 
 DragonHunt.ListDragons=$chr(3) $+ 2 $+ The following dragons are still hiding in their lairs across the land
-DragonHunt.CreatedDragon=$chr(3) $+ 4 $+ People all over the land have reported seeing the fearsome dragon %dragonhunt.name
- creating a lair! It is up to the heroes to locate the lair and destroy the terrible beast.
-DragonHunt.BeginHunt=
+DragonHunt.CreatedDragon=$chr(3) $+ 4 $+ People all over the land have reported seeing the fearsome dragon %dragonhunt.name creating a lair! It is up to the heroes to locate the lair and destroy the terrible beast.
+DragonHunt.BeginHunt=$chr(3) $+ 12 $+ $get_chr_name($2) 4has discovered the lair of the fearsome dragon known as12 %dragonhunt.name $+ 4! A raiding party has been set up to put an end to the beast. To join the party type 12!enter4 now! The raiding party will depart in12 $duration(%time.to.enter) $+ 4. [This is a level12 $dragonhunt.dragonage(%dragonhunt.file.name) 4battle. Anyone more than 5 levels over will be level synced.]
 
 =======================
 Health Titles
@@ -537,6 +537,7 @@ MustSpecifyWeaponname=$chr(3) $+ 4 $+ Error: %real.name must specify a valid w
 Can'tLevelWeaponOver500=$chr(3) $+ 4 $+ Error: using this item will push the level of the $2 over the weapon level cap of 500.
 NoPortalsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the use of portals at this time. 
 NoDungeonsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the use of dungeon keys at this time. 
+NoHuntsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking any chance of successfully finding a dragon's lair at this time. 
 Can'tUseThisSkillInDungeon=$chr(3) $+ 4 $+ Error: This skill is unavailable while inside of a dungeon. 
 Can'tBoostInDungeon=$chr(3) $+ 4 $+ Error: Ignitions and Weapon Boosts are unavailable while inside of a dungeon
 can'tstartdungeoninbattle=$chr(3) $+ 4 $+ Error: Dungeon Starting Items cannot be used during battle. Try again after the battle is over.
@@ -545,7 +546,9 @@ NotEnoughPartyMembersForDungeon=$chr(3) $+ 4 $+ Not enough players have entered 
 LevelTooLowForDungeon=$chr(3) $+ 4 $+ Error: $get_chr_name($1) $+ 's level is too low to enter this dungeon.
 CanOnlyStartOneDungeonADay=$chr(3) $+ 4 $+ Error: $get_chr_name($1) can only start one dungeon per 24 hours ( $+ $duration($calc(%dungeon.time.setting - %time.difference)) remaining). Note this restriction is only for starting a dungeon. $get_chr_name($1) can still join other people's dungeon parties.
 DragonHunt.NoDragons=$chr(3) $+ 4 $+ There are currently no dragons that have made lairs in the land.
-DragonHunt.Can'tHunt=$chr(3) $+ 4 $+ Error: $get_chr_name($1) cannot hunt for another dragon so soon. ( $+ $duration($calc(%dragon.time.setting - %time.difference)) remaining)
+DragonHunt.Can'tHunt=$chr(3) $+ 4 $+ Error: $get_chr_name($1) cannot hunt for another dragon so soon. ( $+ $duration($calc(%dragonhunt.time.setting - %time.difference)) remaining)
+DragonHunt.NoLairFound=$chr(3) $+ 4 $+ $get_chr_name($1) searches throughout the land for a dragon's lair but is unable to successfully find one. Perhaps next time.
+Can'tUseThisSkillInDragonHunt=$chr(3) $+ 4 $+ Error: This skill is unavailable while inside of a dragon's lair. 
 
 =======================
 Battle Related Messages
@@ -586,10 +589,12 @@ EvilhasWonPortal=$chr(3) $+ 12 $+ The forces of evil have won this special battl
 EvilhasWonPresident=$chr(3) $+ 14 $+ The forces of evil have recaptured $readini(shopnpcs.dat, NPCNames, AlliedForcesPresident) after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! The heroes have failed!  The monsters have brutally slaughtered the president and offered the body to their god.
 OutpostBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to defend the outpost! The forces of evil have conqured it and claimed it as their own.
 AssaultBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to capture the enemy outpost and must withdrawal!
+DragonHunt.BattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to defeat the mighty $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, name) who flees the current lair and creates a new one somewhere else in the land.
+DragonHunt.BattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the dreaded $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, name) and as its body crashes into the ground for the final time, the heroes can rest assured that the land is a little bit safer.
 GoodHasWon=$chr(3) $+ 12 $+ The forces of good have won this battle (level $bytes(%thisbattle.winning.streak,b) $+ )  in %current.turn $iif(%current.turn < 2, turn, turns) $+ ! [Current record is: $bytes($readini(battlestats.dat, battle, WinningStreakRecord),b) $+ ]
 GoodHasWonPortal=$chr(3) $+ 12 $+ The forces of good have won this special battle event in %current.turn $iif(%current.turn < 2, turn, turns) $+ !
 OutpostBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monster waves and successfully defended their outpost!
- assaultBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monsters and taken over this outpost! As the monster flag comes down and is replaced with an Allied Forces flag, cheers can be heard all around the heroes. 
+AsssaultBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monsters and taken over this outpost! As the monster flag comes down and is replaced with an Allied Forces flag, cheers can be heard all around the heroes. 
 GoodHasWonPresident=$chr(3) $+ 12 $+ The forces of good have saved the President of the Allied Forces after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
 BattleIsDraw=$chr(3) $+ 12 $+ The battle has come to a draw after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! 
 DrawPortal=$chr(3) $+ 12 $+ Neither heroes nor monsters have won this battle as it comes to a draw after %current.turn $iif(%current.turn < 2, turn, turns) $+ !

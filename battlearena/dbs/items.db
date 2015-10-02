@@ -1772,6 +1772,14 @@ SellPrice=1000
 Exclusive=yes
 Currency=AlliedNotes
 
+[ShadowSpool]
+Type=misc
+Desc=A spool of shadow thread. It's glowing with an ancient shadow power.
+Cost=0
+SellPrice=1000
+Exclusive=yes
+Currency=AlliedNotes
+
 [E-Tank]
 Type=misc
 Cost=50
@@ -1896,6 +1904,27 @@ Desc=A beautiful rose won from an evil Jungle monster
 Currency=AlliedNotes
 GardenXP=100
 GardenType=Plant
+
+[DragonScale]
+type=misc
+Cost=0
+SellPrice=1000
+Desc=A scale from a dragon
+Currency=AlliedNotes
+
+[DragonFang]
+type=misc
+Cost=0
+SellPrice=1000
+Desc=A fang from a dragon
+Currency=AlliedNotes
+
+[DragonEgg]
+type=misc
+Cost=0
+SellPrice=1000
+Desc=A small dragon egg
+Currency=AlliedNotes
 
 [Ink]
 Type=misc
@@ -3035,6 +3064,31 @@ Desc=takes out an ancient crystal from Atlantis. It begins to pulse then glows b
 AlliedNotes=5000
 PortalLevel=300
 DarknessTurns=35
+
+;;;;; SHADOW VERSIONS of the portals
+;;;;; These are basically remakes of the
+;;;;; original portal battles at their original levels
+
+[ShadowGodSeal]
+type=portal
+Cost=10
+Currency=HighKindredCrest
+Battlefield=The Shrine of Ru'Avitau
+Weather=Dark
+Monster=ShadowKirin
+Desc=takes out the small blackened orb, which shatters and creates a large portal that leads up into the sky.  After entering, the heroes find themselves inside a shadow version of an ancient shrine of the sky gods, The Shrine of Ru'Avitau.  
+AlliedNotes=2500
+Exclusive=yes
+
+[ShadowAtlantianCrystal]
+Type=portal
+Cost=20
+Currency=HighKindredCrest
+Battlefield=Atlantis
+Weather=Dark
+Monster=ShadowAshi
+Desc=takes out a blackened ancient crystal from Atlantis. It begins to pulse then all light in the room is sucked away as everyone feels themselves being teleported to an ancient shadow version of Atlantis.. 
+AlliedNotes=5000
 
 
 =========================

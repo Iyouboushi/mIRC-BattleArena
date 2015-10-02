@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/21/15
+;;;; Last updated: 10/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1366,6 +1366,7 @@ on 3:TEXT:!shadow copy*:*: { $skill.clone($nick) }
 alias skill.clone { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if (%battle.type = dungeon) { $display.message($readini(translation.dat, errors, Can'tUseThisSkillInDungeon), private) | halt }
+  if (%battle.type = dragonhunt) { $display.message($readini(translation.dat, errors, Can'tUseThisSkillInDragonHunt), private) | halt }
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 

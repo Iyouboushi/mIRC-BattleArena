@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/30/15
+;;;; Last updated: 10/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1323,18 +1323,52 @@ augments.strength {
 character.dragonhunt {
   ; $1 = person doing the hunting
 
+  if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoHuntsDuringShenron), private) | halt }
+
   ; Has enough time elapsed?
+  var %player.lastHunt $readini($char($1), info, LastDragonHuntTime)
+  var %time.difference $calc($ctime - %player.lastHunt)
+  var %dragonhunt.time.setting 3600
+  if ((%time.difference = $null) || (%time.difference < %dragonhunt.time.setting)) { 
+    $display.message($readini(translation.dat, errors, DragonHunt.Can'tHunt), private)
+    halt 
+  }
 
   ; Are there any dragons to hunt?
+  var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
+  if (%dragonhunt.numberofdragons = 0) { 
+    $display.message($readini(translation.dat, errors, DragonHunt.NoDragons), private) 
+    halt
+  }
 
+  ; Write the time the user has hunted for a lair
+  writeini $char($1) info LastDragonHuntTime $ctime
+
+  ; Check for a dragon's lair
   var %dragonhunt.chance 2
 
   ; Check for accessories and augments to improve chances
 
   var %dragonhunt.randomnum $rand(1,100)
-  if (%dragonhunt.randnum > %dragonhunt.chance) { }
+
+  if (%dragonhunt.randomnum > %dragonhunt.chance) { 
+    $display.message($readini(translation.dat, errors, DragonHunt.NoLairFound), private) 
+    halt
+  }
+
   else {
+    var %dragonhunts.total $readini(battlestats.dat, Battle, TotalDragonHunts)
+    if (%dragonhunts.total = $null) { var %dragonhunts.total 0 }
+    inc %dragonhunts.total 1
+    writeini battlestats.dat Battle TotalDragonHunts %dragonhunts.total
 
+    ; Get the dragon's name that we'll be facing
+    var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
+    var %random.dragon $rand(1,%dragonhunt.numberofdragons)
+    set %dragonhunt.file.name $ini($dbfile(dragonhunt.db), %random.dragon)
+    set %dragonhunt.name $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, name)
+
+    $startnormal(DragonHunt, $1)
+    halt
   }  
-
 }

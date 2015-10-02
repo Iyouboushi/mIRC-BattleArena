@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=gloomy
+current=light
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Gibbous
-CurrentMoonTurn=5
+CurrentMoonPhase=Blood
+CurrentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -38,8 +38,8 @@ remove or modify the time of day section as it will cause
 errors.
 ==============================================================
 [TimeOfDay]
-CurrentTimeOfDay=Noon
-CurrentTimeOfDayTurn=1
+CurrentTimeOfDay=Evening
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
@@ -882,7 +882,11 @@ NumberOfEvents=0
 scavenge=BeastmenSeal.KindredSeal.KindredCrest
 limitations=no-mech.no-fleeing
 
-
+[Dragon's Lair]
+weather=gloomy
+NumberOfEvents=0
+scavenge=BeastmenSeal.KindredSeal.KindredCrest
+limitations=no-mech.no-fleeing.no-trusts.no-summons
 
 
 ==============================================================

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/30/15
+;;;; Last updated: 10/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -16,9 +16,11 @@ alias battle.stats {
   var %total.draws $bytes($readini(battlestats.dat, battle, TotalDraws),b)
   var %total.defendedoutposts $readini(battlestats.dat, battle, TotalOutpostsDefended)
   var %total.lostoutposts $readini(battlestats.dat, battle, TotalOutpostsLost)
+  var %total.dragonhunts $readini(battlestats.dat, battle, TotalDragonHunts)
 
   if (%total.defendedoutposts = $null) { var %total.defendedoutposts 0 }
   if (%total.lostoutposts = $null) { var %total.lostoutposts 0 }
+  if (%total.dragonhunts = $null) { writeini battlestats.dat battle TotalDragonHunts 0 | var %total.dragonhutns 0 }
 
   if (%total.draws = $null) { var %total.draws 0 } 
   var %winning.record $bytes($readini(battlestats.dat, Battle, WinningStreakRecord),b)
@@ -40,6 +42,7 @@ alias battle.stats {
   if ($readini(battlestats.dat, Battle, LosingStreak) != 0) { $display.message($readini(translation.dat, system, BattleStatsLosingStreak), private) }
   if (%total.gauntlet.wins > 0) { $display.message($readini(translation.dat, system, BattleStatsGauntletRecord), private) } 
   if (%total.capturedpresidents > 0) { $display.message($readini(translation.dat, system, BattleStatsPresidentRecord), private) } 
+  if (%total.dragonhunts > 0) { $display.message($readini(translation.dat, system, BattleStatsDragonHuntRecord), private) }
 
   $display.message($readini(translation.dat, system, BattleStatsOutposts), private)
   $display.message($readini(translation.dat, system, BattleStatsMoreInfo), private)
@@ -178,6 +181,7 @@ on 50:TEXT:!clear battle stats*:*:{
   writeini battlestats.dat Battle TotalAssaultWon 0
   writeini battlestats.dat Battle TotalAssaultLost 0
   writeini battlestats.dat Battle TotalOutpostsLost 0
+  writeini battlestats.dat battle TotalDragonHunts 0  
   writeini battlestats.dat AIBattles totalBattles 0
   writeini battlestats.dat AIBattles npc 0
   writeini battlestats.dat AIBattles monster 0
@@ -424,8 +428,9 @@ alias startnormal {
       $display.message($readini(translation.dat, Battle, BattleDefendOutpost), global) 
     }
     if (%start.battle.type = assault) { set %battle.type assault | $display.message($readini(translation.dat, Battle, BattleAssaultOpen), global) }
+    if (%start.battle.type = DragonHunt) { set %battle.type DragonHunt | $display.message($readini(translation.dat, system, DragonHunt.BeginHunt), global) }
 
-    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault
+    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonHunt
     if ($istok(%valid.battle.types,%start.battle.type,46) = $false) {
       $display.message(4Invalid battle type: %start.battle.type ,global) 
       $clear_battle 
@@ -509,7 +514,7 @@ alias enter {
 
     ; Is the player too weak for this streak level?
     if (($return.systemsetting(AllowSpiritOfHero) = true) && (%mode.pvp != on)) { 
-      if ($return_winningstreak > 12) {
+      if (($return_winningstreak > 12) && (%battle.type != DragonHunt)) {
         if (($calc($return_winningstreak - $get.level($1)) > 35) || ($calc($get.level($1) / $return_winningstreak) < .35)) {
           $levelsync($1, $calc($return_winningstreak - 3))
 
@@ -590,6 +595,12 @@ alias enter {
         $display.message(4 $+ %real.name has been synced to level $calc(5 + $return_winningstreak) for this battle, battle)
       }
     }
+  }
+
+  ; Level sync dragon hunt battles
+  if (%battle.type = dragonhunt) {
+    var %battle.level.cap $calc($dragonhunt.dragonage(%dragonhunt.file.name) + 5)
+    if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
   if ((%mode.pvp = on) && (%battle.level.cap != $null)) {
@@ -684,6 +695,8 @@ alias battlebegin {
     if (((%boss.type != bandits) && (%boss.type != pirates) && (%boss.type != FrostLegion))) { unset %current.battlefield | $random.battlefield.pick }
   }
 
+  if (%battle.type = DragonHunt) { set %current.battlefield Dragon's Lair }
+
   if (%savethepresident = on) { set %current.battlefield Monster Dungeon }
 
   if (%battle.type = defendoutpost) { 
@@ -706,7 +719,7 @@ alias battlebegin {
   ; Get a random weather from the battlefield
   $random.weather.pick
 
-  if (%battle.type != ai) {
+  if ((%battle.type != ai) && (%battle.type != dragonhunt)) {
 
     ; Check the moon phase.
     $moonphase
@@ -720,6 +733,11 @@ alias battlebegin {
     ; Check for an NPC Ally to join the battle.
     $random.battlefield.ally
   }
+
+  if (%battle.type = dragonhunt) { 
+    $dragonhunt.createfile
+  }
+
 
   ; Check for a random back attack.
   $random.surpriseattack
@@ -755,6 +773,7 @@ alias battlebegin {
     if ((%demonwall.name = $null) && (%demonwall.fight = on)) { unset %darkness.turns } 
   }
 
+  if (%battle.type = dragonhunt) { set %darkness.turns 35 }
   if (%battle.type = manual) { set %darkness.turns 21 }
   if (%battle.type = orbfountain) { set %darkness.turns 16 } 
   if (%battle.type = defendoutpost) { set %darkness.turns 5 }
@@ -1443,7 +1462,7 @@ alias endbattle {
   ; if defeat, add a small amount of red orbs to everyone..
   ; if draw, add a small amont of red orbs to everyone
 
-  var %thisbattle.winning.streak $readini(battlestats.dat, battle, WinningStreak)
+  var %thisbattle.winning.streak $return_winningstreak
 
   $clear_timers
 
@@ -1471,7 +1490,7 @@ alias endbattle {
 
       }
 
-      if (((%portal.bonus != true) && (%battle.type != mimic) && (%savethepresident != on))) {
+      if ((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != dragonhunt) && (%savethepresident != on)))) {
 
         if (%mode.gauntlet = $null) { 
           if ((%battle.type != defendoutpost) && (%battle.type != assault)) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
@@ -1516,6 +1535,14 @@ alias endbattle {
         writeini battlestats.dat battle TotalAssaultLost %total.assault
       } 
 
+      if (%battle.type = dragonhunt) {
+        $display.message($readini(translation.dat, battle, DragonHunt.BattleLost), global) 
+        ; Level up the dragon
+        var %current.dragonage $dragonhunt.dragonage(%dragonhunt.file.name)
+        inc %current.dragonage $readini($txtfile(battle2.txt), BattleInfo, Players)  
+        writeini $dbfile(dragonhunt.db) %dragonhunt.file.name Age %current.dragonage
+      }
+
       if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) }
       if (%savethepresident = on) { $display.message($readini(translation.dat, battle, EvilHasWonPresident), global) 
 
@@ -1531,7 +1558,7 @@ alias endbattle {
       $battle.reward.redorbs
       $display.message($readini(translation.dat, battle, RewardOrbsLoss), battle)
 
-      $shopnpc.kidnap
+      if (%battle.type != dragonhunt) { $shopnpc.kidnap }
     }
   }
 
@@ -1561,7 +1588,7 @@ alias endbattle {
     if ((%mode.pvp != on) && (%battle.type != ai)) {
       var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
 
-      if ((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%savethepresident != on)))) {
+      if (((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%savethepresident != on))))) {
         var %winning.streak $readini(battlestats.dat, battle, WinningStreak) | inc %winning.streak 1 | writeini battlestats.dat battle WinningStreak %winning.streak
 
         var %winning.streak.record $readini(battlestats.dat, battle, WinningStreakRecord)
@@ -1588,6 +1615,10 @@ alias endbattle {
         writeini battlestats.dat battle TotalOutpostsDefended %total.outposts
       } 
 
+      if (%battle.type = dragonhunt) {
+        $display.message($readini(translation.dat, battle, DragonHunt.BattleWon), global) 
+      }
+
       if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, GoodHasWonPortal), battle) }
       if (%savethepresident = on) { $display.message($readini(translation.dat, battle, GoodHasWonPresident), battle) 
         var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Wins)
@@ -1603,6 +1634,9 @@ alias endbattle {
       $battle.reward.playerstylepoints
       $battle.reward.playerstylexp
       $battle.reward.ignitionGauge.all
+
+      ; Erase the dragon if the battle was a dragon hunt
+      if (%battle.type = DragonHunt) { remini $dbfile(dragonhunt.db) %dragonhunt.file.name }
 
       ; Calculate the amount of conquest points to add.
       var %conquestpoints.to.add  %winning.streak
@@ -1643,7 +1677,7 @@ alias endbattle {
 
       ; If boss battle, do black orbs for select players.
       unset %black.orb.winners
-      if (((%battle.type = boss) || (%battle.type = assault) || (%battle.type = defendoutpost))) {
+      if ((((%battle.type = boss) || (%battle.type = assault) || (%battle.type = dragonhunt) || (%battle.type = defendoutpost)))) {
         $battle.reward.blackorbs 
 
         if (%black.orb.winners != $null) { $display.message($readini(translation.dat, battle, BlackOrbWin), battle)   }
@@ -1696,8 +1730,6 @@ alias endbattle {
   ; then do a $clear_battle
   set %battleis off | $clear_battle | halt
 }
-
-
 
 ; ==========================
 ; The $next command.
@@ -2110,10 +2142,11 @@ alias battle.calculate.redorbs {
   if (%battle.type = boss) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
   if (%battle.type = mimic) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
   if (%battle.type = dungeon) { set %base.redorbs $readini(system.dat, System, basebossxp) | inc %base.redorbs $2 }
+  if (%battle.type = dragonhunt) { set %base.redorbs $calc($readini(system.dat, System, basebossxp) * 2) } 
 
   if (%number.of.monsters.needed = $null) { var %number.of.monsters.needed 1 }
 
-  if ((((%boss.type = bandits) && (%boss.type = pirates) && (%boss.type = FrostLegion) || (%boss.type = gremlins)))) { inc %number.of.monsters.needed 2 }
+  if ((((%boss.type = bandits) || (%boss.type = pirates) || (%boss.type = FrostLegion) || (%boss.type = gremlins)))) { inc %number.of.monsters.needed 2 }
 
   %base.redorbs = $round($calc(%base.redorbs * (1 + %number.of.monsters.needed)), 0)
 
@@ -2143,6 +2176,7 @@ alias battle.calculate.redorbs {
   if (%max.orb.reward = $null) { var %max.orb.reward 20000 }
 
   if (%battle.type = dungeon) { var %max.orb.reward $calc(%max.orb.reward * 2) }
+  if (%battle.type = dragonhunt) { var %max.orb.reward $calc(%max.orb.reward * 1.5) }
 
   if (($readini(battlestats.dat, dragonballs, ShenronWish) = on) && (%mode.gauntlet != on)) { %max.orb.reward = $round($calc(%max.orb.reward * 1.2),0) }
 
@@ -2238,6 +2272,7 @@ alias battle.reward.redorbs {
 
       if ((%base.redorbs <= 5000) && (%battle.type = defendoutpost)) { set %base.redorbs 5000 }
       if ((%base.redorbs <= 5000) && (%battle.type = assault)) { set %base.redorbs 5000 }
+      if ((%base.redorbs <= 8000) && (%battle.type = dragonhunt)) { set %base.redorbs $rand(8000, 9000) }
 
       if ($2 = true) { 
         inc %base.redorbs 5000

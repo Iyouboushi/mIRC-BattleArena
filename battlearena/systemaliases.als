@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/01/15
+;;;; Last updated: 10/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -375,6 +375,7 @@ return_differenceof {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return_winningstreak {
   if (%battle.type = ai) { return %ai.battle.level }
+  if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
 
   if (%portal.bonus = true) {
     var %portal.streak $readini($txtfile(battle2.txt), battleinfo, Portallevel)
@@ -2859,7 +2860,7 @@ restore_ig {
 ; variables.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 clear_variables { 
-  $clear_variables2 | unset *.level
+  $clear_variables2 | unset *.level | unset %dragonhunt.*
   unset %darkness.turns | unset %holy.aura.turn | unset %mech.power | unset %attacker | unset %item.drop.rewards | unset %tp
   unset %boss.type | unset %portal.bonus | unset %holy.aura | unset %darkness.fivemin.warn  | unset %battle.rage.darkness |  unset %battleconditions |  unset %red.orb.winners |  unset %bloodmoon 
   unset %line | unset %file | unset %name | unset %curbat | unset %real.name | unset %attack.target
@@ -3084,7 +3085,7 @@ chest.adjustredorbs {
 give_random_reward {
   if ($readini($txtfile(battle2.txt), battle, bonusitem) != $null) {
 
-    if ((%battle.type = boss) || (%battle.type = dungeon)) { var %reward.chance 100 }
+    if (((%battle.type = boss) || (%battle.type = dragonhunt) || (%battle.type = dungeon))) { var %reward.chance 100 }
     else { 
       var %reward.chance $rand(1,100)
       inc %reward.chance $treasurehunter.check
@@ -3329,6 +3330,7 @@ orb.adjust {
   if (%portal.bonus = true) { inc %orb.tier 2 }
   if (%battle.type = defendoutpost) { inc %orb.tier 1 }
   if (%battle.type = dungeon) { inc %orb.tier 2 }
+  if (%battle.type = dragonhunt) { inc %orb.tier 3 }
 
   if ($readini($char($1), status, SpiritOfHero) = true) { 
     remini $char($1) status SpiritOfHero
@@ -3352,6 +3354,8 @@ orb.adjust {
   if (%orb.tier = 10) { set %base.redorbs $round($calc(%base.redorbs * 4),0) }
   if (%orb.tier = 11) { set %base.redorbs $round($calc(%base.redorbs * 4.1),0) }
   if (%orb.tier = 12) { set %base.redorbs $round($calc(%base.redorbs * 4.2),0) }
+
+  if (%battle.type = dragonhunt) { set %base.redorbs $round($calc(%base.redorbs * 1.85),0) }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4017,12 +4021,21 @@ dragonhunt.check {
   }
 }
 
+dragonhunt.dragonage {
+  var %dragon.createdtime $readini($dbfile(dragonhunt.db), $1, created)
+
+  var %dragon.age $round($calc(((($ctime - %dragon.createdtime)/60)/60)/12),0)
+  inc %dragon.age $readini($dbfile(dragonhunt.db), $1, Age)
+  return %dragon.age
+}
+dragonhunt.dragonelement { return %dragon.element $readini($dbfile(dragonhunt.db), $1, Element) }
+
 dragonhunt.createdragon {
   var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
   if (%dragonhunt.numberofdragons >= 5) { return }
 
   ; Pick a random name
-  var %surname Fierce.Destroyer.Evil.Berserk.Chaos.Bloodspawn.Bloodtear.Bloodfang.Darkness
+  var %surname Chaos.Bloodspawn.Bloodtear.Bloodfang.Darkness.WorldEater.Darkbringer.Bloodclaw.Firebreath.Firestarter
 
   var %names.lines $lines($lstfile(dragonnames.lst))
   if ((%names.lines = $null) || (%names.lines = 0)) { write $lstfile(dragonnames.lst) Nasith | var %names.lines 1 }
@@ -4044,6 +4057,11 @@ dragonhunt.createdragon {
 
   ; Pick a random age for the dragon
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age $rand(100,200)
+
+  ; Pick a random element
+  var %elements fire.ice.wind.shadow.earth
+  var %dragon.element $gettok(%elements,$rand(1, $numtok(%elements,46)),46)
+  writeini $dbfile(dragonhunt.db) %dragon.name.file Element %dragon.element
 
   ; Show the message
   $display.message($readini(translation.dat, system, DragonHunt.CreatedDragon), global)
@@ -4067,13 +4085,10 @@ dragonhunt.listdragons {
     var %dragon.name $readini($dbfile(dragonhunt.db), %current.dragon, name)
 
     ; Calculate the dragon's age..
-    var %dragon.createdtime $readini($dbfile(dragonhunt.db), %current.dragon, created)
-
-    var %dragon.age $round($calc(((($ctime - %dragon.createdtime)/60)/60)/12),0)
-    inc %dragon.age $readini($dbfile(dragonhunt.db), %current.dragon, Age)
+    var %dragonhunt.dragonage $dragonhunt.dragonage(%current.dragon)
 
     ; Show dragon
-    $display.message.Delay(4 $+ %dragon.name  - Age: %dragon.age, private, 1)
+    $display.message.Delay(4 $+ %dragon.name  - Age: %dragonhunt.dragonage - Element: $dragonhunt.dragonelement(%current.dragon) , private, 1)
 
     inc %dragonhunt.counter
   }

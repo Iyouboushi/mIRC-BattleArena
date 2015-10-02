@@ -1518,3 +1518,106 @@ generate_dinosaur {
 
   $battlefield.limitations
 }
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This function will generate
+; the dragon for the dragon
+; hunt
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dragonhunt.createfile {
+
+  .copy -o $char(new_chr) $char(%dragonhunt.file.name)
+
+  var %dragon.level $dragonhunt.dragonage(%dragonhunt.file.name)
+
+  writeini $char(%dragonhunt.file.name) info flag monster 
+  writeini $char(%dragonhunt.file.name) Basestats name $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, name)
+  writeini $char(%dragonhunt.file.name) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
+  writeini $char(%dragonhunt.file.name) info gender its
+  writeini $char(%dragonhunt.file.name) info gender2 its
+  writeini $char(%dragonhunt.file.name) info bosslevel %dragon.level
+  writeini $char(%dragonhunt.file.name) info OrbBonus yes 
+  writeini $char(%dragonhunt.file.name) descriptions char is a large and powerful $dragonhunt.dragonelement(%dragonhunt.file.name) dragon.  
+  writeini $char(%dragonhunt.file.name) monster type dragon
+  writeini $char(%dragonhunt.file.name) info CanTaunt false
+
+  var %base.hp.tp $round($calc(100 * %dragon.level),0)
+  writeini $char(%dragonhunt.file.name) basestats hp %base.hp.tp
+  writeini $char(%dragonhunt.file.name) basestats tp %base.hp.tp
+
+  writeini $char(%dragonhunt.file.name) battle str $rand(19,35)
+  writeini $char(%dragonhunt.file.name) battle def $rand(15,20)
+  writeini $char(%dragonhunt.file.name) battle int $rand(12,19)
+  writeini $char(%dragonhunt.file.name) battle spd $rand(18,25)
+
+  writeini $char(%dragonhunt.file.name) weapons equipped DragonFangs
+  writeini $char(%dragonhunt.file.name) weapons DragonFangs %dragon.level
+  remini $char(%dragonhunt.file.name) weapons Fists
+
+  ; These are techniques all dragons know
+  writeini $char(%dragonhunt.file.name) techniques FangRush %dragon.level
+  writeini $char(%dragonhunt.file.name) techniques SpikeFlail $calc(%dragon.level + 1)
+  writeini $char(%dragonhunt.file.name) techniques AbsoluteTerror %dragon.level
+  writeini $char(%dragonhunt.file.name) techniques DragonFire $calc(%dragon.level + 5) 
+
+  ; Depending on the element of the dragon, it will have different techniques
+  ; To be added
+
+  ; These are the skills that all dragons know
+  writeini $char(%dragonhunt.file.name) skills resist-charm 100
+  writeini $char(%dragonhunt.file.name) skills resist-stun 100
+  writeini $char(%dragonhunt.file.name) skills Resist-blind 100
+  writeini $char(%dragonhunt.file.name) skills Resist-poison 95
+  writeini $char(%dragonhunt.file.name) skills Resist-slow 70
+  writeini $char(%dragonhunt.file.name) skills Resist-Weaponlock 100
+  writeini $char(%dragonhunt.file.name) skills Resist-Curse 70
+
+  ; Depending on the element of the dragon it will have different skills
+  ; To be added
+
+  writeini $char(%dragonhunt.file.name) modifiers light 100
+  writeini $char(%dragonhunt.file.name) modifiers dark 100
+  writeini $char(%dragonhunt.file.name) modifiers fire 100
+  writeini $char(%dragonhunt.file.name) modifiers ice 100
+  writeini $char(%dragonhunt.file.name) modifiers water 100
+  writeini $char(%dragonhunt.file.name) modifiers lightning 100
+  writeini $char(%dragonhunt.file.name) modifiers wind 100
+  writeini $char(%dragonhunt.file.name) modifiers earth 100
+
+  ; Dragon will heal its own element
+  writeini $char(%dragonhunt.file.name) modifiers $dragonhunt.dragonelement(%dragonhunt.file.name) 300
+  writeini $char(%dragonhunt.file.name) modifiers heal $dragonhunt.dragonelement(%dragonhunt.file.name)
+
+  writeini $char(%dragonhunt.file.name) NaturalArmor Name Dragon Scales
+  writeini $char(%dragonhunt.file.name) NaturalArmor Max $calc(5 * %dragon.level)
+  writeini $char(%dragonhunt.file.name) NaturalArmor Current $calc(5 * %dragon.level)
+
+  writeini $char(%dragonhunt.file.name) modifiers HandToHand 40
+  writeini $char(%dragonhunt.file.name) modifiers Whip 40
+  writeini $char(%dragonhunt.file.name) modifiers sword 60
+  writeini $char(%dragonhunt.file.name) modifiers gun 40
+  writeini $char(%dragonhunt.file.name) modifiers rifle 40
+  writeini $char(%dragonhunt.file.name) modifiers katana 60
+  writeini $char(%dragonhunt.file.name) modifiers wand 20
+  writeini $char(%dragonhunt.file.name) modifiers spear 70
+  writeini $char(%dragonhunt.file.name) modifiers scythe 70
+  writeini $char(%dragonhunt.file.name) modifiers GreatSword 70
+  writeini $char(%dragonhunt.file.name) modifiers bow 20
+  writeini $char(%dragonhunt.file.name) modifiers glyph 60
+
+  $boost_monster_hp(%dragonhunt.file.name, dragonhunt, %dragon.level)
+  $levelsync(%dragonhunt.file.name, %dragon.level)
+  writeini $char(%dragonhunt.file.name) basestats str $readini($char(%dragonhunt.file.name), battle, str)
+  writeini $char(%dragonhunt.file.name) basestats def $readini($char(%dragonhunt.file.name), battle, def)
+  writeini $char(%dragonhunt.file.name) basestats int $readini($char(%dragonhunt.file.name), battle, int)
+  writeini $char(%dragonhunt.file.name) basestats spd $readini($char(%dragonhunt.file.name), battle, spd)
+  $fulls(%dragonhunt.file.name, elderdragon) 
+  $levelsync(%dragonhunt.file.name, %dragon.level)
+
+  set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%dragonhunt.file.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %dragonhunt.file.name
+  $set_chr_name(%dragonhunt.file.name)
+  $display.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
+  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
+
+  writeini $txtfile(battle2.txt) battle bonusitem DragonScale.DragonFang.DragonEgg
+}

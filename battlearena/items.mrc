@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/21/15
+;;;; Last updated: 10/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -178,7 +178,21 @@ alias uses_item {
 
     ; Write the portal's level
     var %portal.level $readini($dbfile(items.db), $2, PortalLevel)
-    writeini $txtfile(battle2.txt) battleinfo Portallevel %portal.level
+    if (%portal.level != $null) { writeini $txtfile(battle2.txt) battleinfo Portallevel %portal.level }
+    if (%portal.level = $null) {
+      var %boss.level.monster $gettok($readini($dbfile(items.db), $2, Monster), 1, 46)
+      if ($isfile($boss(%boss.level.monster)) = $true) { 
+        var %boss.level $readini($boss(%boss.level.monster), info, bosslevel)  
+        if (%boss.level != $null) { writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
+      }
+      else {
+        if ($isfile($mon(%boss.level.monster)) = $true) { 
+          var %boss.level $readini($mon(%boss.level.monster), info, bosslevel)  
+          if (%boss.level != $null) { writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
+        }
+      }
+    }
+
 
     ; Change the battlefield
     unset %battleconditions
@@ -1105,7 +1119,7 @@ alias portal.item.onemonster {
   ; write the portal level
   var %boss.level $readini($char(%monster.to.spawn), info, bosslevel)
   var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
-  if (%current.portal.level = $null) { var %current.portal.level 1 }
+  if (%current.portal.level = $null) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo portalevel %boss.level }
 
   if (%boss.level = $null) { var %boss.level %current.portal.level }
   if (%boss.level > %current.portal.level) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
@@ -1168,7 +1182,7 @@ alias portal.item.multimonsters {
       ; write the portal level
       var %boss.level $readini($char(%current.monster.to.spawn), info, bosslevel)
       var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
-      if (%current.portal.level = $null) { var %current.portal.level 1 }
+      if (%current.portal.level = $null) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo portalevel %boss.level }
 
       if (%boss.level = $null) { var %boss.level %current.portal.level }
       if (%boss.level > %current.portal.level) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }

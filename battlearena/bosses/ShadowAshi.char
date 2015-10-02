@@ -1,0 +1,160 @@
+[BaseStats]
+Hp=$round($calc(10000 + $readini($txtfile(battle2.txt), BattleInfo, PlayerLevels)),0)
+Tp=5000
+Str=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .20)),0)
+Def=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .25)),0)
+Int=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .25)),0)
+Spd=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .50)),0)
+IgnitionGauge=500
+Name=Shadow Ashi
+
+
+[Battle]
+Hp=$round($calc(10000 + $readini($txtfile(battle2.txt), BattleInfo, PlayerLevels)),0)
+Tp=5000
+Str=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .20)),0)
+Def=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .25)),0)
+Int=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .25)),0)
+Spd=$round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .50)),0)
+IgnitionGauge=500
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is a the shadow version of Ashi Atora. He is a tall young man with long flowing silver hair. His skin is as pale as the moon, but his eyes are dark and evil. A powerful red aura flares around his body is causing the ground beneath his feet to crack. 
+Rage=red ghosts appears as he yells out in anger!
+BossQuote=Now you shall face the true power of Ashi Atora. Glance upon it and reel in horror!
+
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+Drops=ShadowSpool
+
+[Monster]
+Type=
+TechLearn=true
+size=large
+
+[Info]
+Flag=monster
+Gender=his
+Gender2=him
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+Streak=-1000
+bosslevel=7500
+IgnoreQuicksilver=true
+CanTaunt=false
+JustReleaseDefense=100
+CanStagger=yes
+StaggerAmount=50157
+IgnoreOutpost=true
+IgnoreElementalMessage=true
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+
+[Weapons]
+Equipped=AtlantisPower
+AtlantisPower=8000
+
+
+[Skills]
+Resist-Charm=100
+Resist-Zombie=100
+Resist-Stun=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Drunk=100
+MartialArts=200
+MightyStrike=1
+Bloodboost=20
+PerfectDefense.on=On
+doubleturn.on=on
+TrueStrike.on=on
+
+[Techniques]
+BloodDagger=8000
+AtlantianBlast=6000
+AsuranFists=10000
+AtlantianExplosion=3000
+
+[Item_Amount]
+
+[modifiers]
+Heal=dark
+Earth=100
+Fire=100
+Wind=100
+Ice=100
+Water=100
+Lightning=100
+Light=100
+Dark=6000
+HandToHand=30
+Whip=100
+Sword=100
+Gun=20
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
+Rainstorm=1
+AsuranFists=1
+SpinningAttack=1
+
+[Ignitions]
+AtlantianPower=$iif($calc(($readini($char(AshiAtora), battle, hp) / $readini($char(AshiAtora), basestats, hp)) * 100) <= 75, 1, 0)
+
+
+[Augments]
+AtlantisPower=AbsorbIG.IgnoreDefense
+
+[Styles]
+Equipped=Guardian
+Guardian=10
+GuardianXP=0
