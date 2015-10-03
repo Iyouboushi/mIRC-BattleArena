@@ -1651,12 +1651,12 @@ alias shop.mechitems {
             var %item_to_add  $+ %item.name $+  $+ $chr(040) $+ %item_amount $+ $chr(041) 
 
             if ((%conquest.item = $null) || (%conquest.item = false)) {
-              if (%count.core <= 20) { %mech.core.list = $addtok(%mech.core.list,%item_to_add,46) }
-              if (%count.core > 20) { %mech.core.list2 = $addtok(%mech.core.list2,%item_to_add,46) }  
+              if (%count.core <= 14) { %mech.core.list = $addtok(%mech.core.list,%item_to_add,46) }
+              if (%count.core > 14) { %mech.core.list2 = $addtok(%mech.core.list2,%item_to_add,46) }  
             }
             if ((%conquest.item = true) && (%conquest.status = players)) { 
-              if (%count.core <= 20) { %mech.core.list = $addtok(%mech.core.list,%item_to_add,46) }
-              if (%count.core > 20) { %mech.core.list2 = $addtok(%mech.core.list2,%item_to_add,46) }  
+              if (%count.core <= 14) { %mech.core.list = $addtok(%mech.core.list,%item_to_add,46) }
+              if (%count.core > 14) { %mech.core.list2 = $addtok(%mech.core.list2,%item_to_add,46) }  
             }
           }
 
@@ -1670,8 +1670,8 @@ alias shop.mechitems {
         if ((%player.amount = $null) || (%player.amount = 0)) {
           set %item_amount $readini($dbfile(weapons.db), %item.name, cost)
           var %item_to_add  $+ %item.name $+   $+ $chr(040) $+ %item_amount $+ $chr(041) 
-          if (%count.weapon <= 20) { %mech.weapon.list = $addtok(%mech.weapon.list,%item_to_add,46) }
-          if (%count.weapon > 20) { %mech.weapon.list2 = $addtok(%mech.weapon.list2,%item_to_add,46) }    
+          if (%count.weapon <= 14) { %mech.weapon.list = $addtok(%mech.weapon.list,%item_to_add,46) }
+          if (%count.weapon > 14) { %mech.weapon.list2 = $addtok(%mech.weapon.list2,%item_to_add,46) }    
           inc %count.weapon
         }
       }
