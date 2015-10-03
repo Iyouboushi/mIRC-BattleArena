@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 09/23/15
+;;;; Last updated: 10/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1671,7 +1671,7 @@ alias shop.mechitems {
           set %item_amount $readini($dbfile(weapons.db), %item.name, cost)
           var %item_to_add  $+ %item.name $+   $+ $chr(040) $+ %item_amount $+ $chr(041) 
           if (%count.weapon <= 20) { %mech.weapon.list = $addtok(%mech.weapon.list,%item_to_add,46) }
-          if (%count.weapon > 20) { %mech.weapon.list = $addtok(%mech.weapon.list2,%item_to_add,46) }    
+          if (%count.weapon > 20) { %mech.weapon.list2 = $addtok(%mech.weapon.list2,%item_to_add,46) }    
           inc %count.weapon
         }
       }
