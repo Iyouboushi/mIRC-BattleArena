@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=32000
+Hp=33000
 Tp=250
 Str=77
 Def=77
@@ -10,7 +10,7 @@ IgnitionGauge=50
 
 
 [Battle]
-Hp=32000
+Hp=33000
 Tp=250
 Str=77
 Def=77
@@ -111,7 +111,7 @@ Resist-Sleep=100
 Resist-Stun=100
 Zen=5
 ClearMind=1
-MonsterSummon=$iif($calc(%current.turn % 3) = 0 && $dungeon.haukke.lampcount > 0, 1, 0)
+MonsterSummon=$iif($calc(%current.turn % 2) = 0 && $dungeon.haukke.lampcount > 0, 1, 0)
 MonsterSummon.Monster=Lamp_Bomb
 MonsterSummon.Chance=100
 monstersummon.numberspawn=$dungeon.haukke.lampcount
@@ -178,7 +178,8 @@ TrillionStabs=40
 DoubleBackstab=40
 Chou_Kamehameha=40
 BloodBath=40
-UltimaII=30
+UltimaII=25
+resolution=50
 KaustraII=30
 Chivalry=20
 DoubleShot=10

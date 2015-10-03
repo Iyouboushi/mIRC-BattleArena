@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/02/15
+;;;; Last updated: 10/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -824,6 +824,7 @@ display.private.message.delay {
 }
 display.private.message.delay.custom {
   var %message.to.display $1
+
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
@@ -4007,9 +4008,6 @@ bot.admin {
 ; Dragon Hunt aliases
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dragonhunt.check {
-  ; This system is not 100% finished so it is being disabled for now
-  return
-
   var %dragonhunt.lastdragonmade $readini(battlestats.dat, battle, DragonHunt.LastMade)
   if (%dragonhunt.lastdragonmade = $null) { $dragonhunt.createdragon | halt }
 
@@ -4059,7 +4057,7 @@ dragonhunt.createdragon {
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age $rand(100,200)
 
   ; Pick a random element
-  var %elements fire.ice.wind.shadow.earth
+  var %elements fire.ice.wind.shadow.earth.light.lightning
   var %dragon.element $gettok(%elements,$rand(1, $numtok(%elements,46)),46)
   writeini $dbfile(dragonhunt.db) %dragon.name.file Element %dragon.element
 

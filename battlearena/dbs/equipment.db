@@ -750,6 +750,21 @@ SellPrice=50000
 LevelRequirement=300
 Exclusive=yes
 
+[AtlantianMail+1]
+name=Atlantian Mail+1
+hp=600
+tp=200
+Str=350
+def=300
+int=100
+spd=100
+Augment=IgnoreDefense.EnhanceCriticalHits.EnhanceAggressor.EnhanceDodge.EnhanceDoubleTurnChance.EnhanceKatana.Drain.EnhanceDragonHunting
+EquipLocation=body
+cost=50
+SellPrice=50000
+LevelRequirement=1000
+Exclusive=yes
+
 [AtlantianRobe]
 name=Atlantian Robe
 hp=500
@@ -763,6 +778,21 @@ EquipLocation=body
 cost=50
 SellPrice=50000
 LevelRequirement=300
+Exclusive=yes
+
+[AtlantianRobe+1]
+name=Atlantian Robe+1
+hp=600
+tp=200
+Str=100
+def=300
+int=350
+spd=100
+Augment=IgnoreDefense.EnhanceDefender.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceGlyph.EnhanceWand.EnhanceDragonHunting
+EquipLocation=body
+cost=50
+SellPrice=50000
+LevelRequirement=1000
 Exclusive=yes
 
 [WarlockTabard]

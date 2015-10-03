@@ -1297,6 +1297,7 @@ Battle Arena Bot VERSIONS
 - Added a new item type: IncreaseWeaponLevel.  This item type can be used to increase a player's weapon level up to 500
 - Added the various damage formulas that have been used throughout the bot's history: 1.0, 2.0, 2.5 and 3.0.
 - Added the Dungeon system. 
+- Added the Dragon Hunt system.
 - Added the !Rest command. This command can be used by players on their turn to skip their turn. It does nothing else.
 - Added a new flag for monsters/npcs/bosses:  IgnoreElementalMessage. It goes in [info]  and if it's set to true 
   the bot won't show the elemental damage message on the target's turn.
@@ -1304,9 +1305,13 @@ Battle Arena Bot VERSIONS
 - Added dungeon keys to the !keys command
 - Added dungeon keys to the shop. Use !shop list dungeonkeys to list, !shop buy dungeonkeys <name> to buy. Need 
   the Dungeon Key merchant in order to see and purchase the keys.
-- Added missing elementals like fire, light and such
+- Added the !dragon list command. Using this will display which dragons have made lairs in the land.
+- Added the !dragon hunt command. Once an hour players can use this command to hunt for a dragon's lair and start a battle
+  if it's been found. This command can only be done outside of battle.
+- Added missing elemental monsters.
 - Added two more TP restoring items
 - Added a new augment: EnhanceCrafting.  This augment will increase your crafting success rate by 2
+- Added a new augment: EnhanceDragonHunt. This augment will increase the odds of finding a dragon lair by 5% 
 - Added CandyCorn for monsters to drop during the month of October
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it

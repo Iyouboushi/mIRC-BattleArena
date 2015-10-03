@@ -10,10 +10,15 @@ BasicMechFists
 ImprovedMechFists
 FlawlessMechFists
 DarksteelOreFists
+BasicMechWand
+ImprovedMechWand
+FlawlessMechWand
+DarksteelOreWand
 BasicMechStaff
 ImprovedMechStaff
 FlawlessMechStaff
 DarksteelOreStaff
+TitaniumMechStaff
 BasicMechCore
 EtherealCore
 MagicAmplifier
@@ -29,3 +34,4 @@ Magna
 Omni
 Leenex
 AlphaWeltallFists
+SusanooKatanas

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 10/02/15
+;;;; Last updated: 10/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1348,6 +1348,12 @@ character.dragonhunt {
   var %dragonhunt.chance 2
 
   ; Check for accessories and augments to improve chances
+  if ($augment.check($1, EnhanceDragonHunt) = true) { inc %dragonhunt.chance $calc(5 * %augment.strength) }
+
+  if ($accessory.check($1, EnhanceDragonHunt) = true) {
+    inc %dragonhunt.chance %accessory.amount
+    unset %accessory.amount
+  }
 
   var %dragonhunt.randomnum $rand(1,100)
 

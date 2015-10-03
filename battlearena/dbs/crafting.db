@@ -493,6 +493,17 @@ JewelOfWieldance=2
 EstoqueurSayon+2=1
 AtlantianThreadSpool=1
 
+[AtlantianRobe+1]
+Gem=Diamond
+Ingredients=AtlantianRobe.JewelOfArdor.JewelOfWieldance.AtlantianThreadSpool.ShadowSpool
+SuccessRate=100
+Amount=1
+JewelOfArdor=5
+JewelOfWieldance=5
+AtlantianThreadSpool=5
+AtlantianRobe=1
+ShadowSpool=1
+
 [EstoqueurFuseau+1]
 Gem=Ruby
 Ingredients=JewelOfArdor.JewelOfWieldance.EstoqueurFuseau
@@ -593,6 +604,16 @@ JewelOfWieldance=2
 UnkaiDomaru+2=1
 AtlantianThreadSpool=1
 
+[AtlantianMail+1]
+Gem=Diamond
+Ingredients=AtlantianMail.JewelOfArdor.JewelOfWieldance.AtlantianThreadSpool.ShadowSpool
+SuccessRate=100
+Amount=1
+JewelOfArdor=5
+JewelOfWieldance=5
+AtlantianMail=1
+AtlantianThreadSpool=5
+ShadowSpool=1
 
 [UnkaiKote+1]
 Gem=Zircon

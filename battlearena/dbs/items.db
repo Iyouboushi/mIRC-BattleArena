@@ -1647,6 +1647,14 @@ Desc=A bright green pendant that is said to enhance a wearer's ability to stand 
 EnhanceBlocking.Amount=2
 SellPrice=3000
 
+[DragonCharm]
+Type=accessory
+Cost=0
+AccessoryType=EnhanceDragonHunt
+Desc=A magical charm that has been created to help heroes find the lairs of dragons.  Wearing this charm while undergoing a dragon hunt will increase the chance of finding a lair by 20%
+SellPrice=2000
+EnahnceDragonHunt.Amount=20
+
 =========================
 MISC ITEMS
 =========================

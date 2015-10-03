@@ -5,8 +5,11 @@ characters/**/*.char
 # Data files
 auction_winners.txt
 lsts/monsterdeaths.lst
+battlestats.dat
 shopnpcs.dat
 system.dat
+dbs\dragonhunt.db
+txts\auction_winners.txt
 
 
 #################
