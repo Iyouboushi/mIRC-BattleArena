@@ -146,6 +146,9 @@ Bow=100
 Rainstorm=1
 AsuranFists=1
 SpinningAttack=1
+HolyHandGrenade=1
+Dynamite=10
+
 
 [Ignitions]
 AtlantianPower=$iif($calc(($readini($char(AshiAtora), battle, hp) / $readini($char(AshiAtora), basestats, hp)) * 100) <= 75, 1, 0)
