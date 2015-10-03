@@ -1345,7 +1345,7 @@ character.dragonhunt {
   writeini $char($1) info LastDragonHuntTime $ctime
 
   ; Check for a dragon's lair
-  var %dragonhunt.chance 2
+  var %dragonhunt.chance 5
 
   ; Check for accessories and augments to improve chances
   if ($augment.check($1, EnhanceDragonHunt) = true) { inc %dragonhunt.chance $calc(5 * %augment.strength) }

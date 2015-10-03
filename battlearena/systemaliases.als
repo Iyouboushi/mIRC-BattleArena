@@ -4015,7 +4015,7 @@ dragonhunt.check {
 
   if (%dragon.time.difference >= 43200) {
     var %dragon.createchance $rand(1,100)
-    if (%dragon.createchance <= 40) { $dragonhunt.createdragon }
+    if (%dragon.createchance <= 60) { $dragonhunt.createdragon }
   }
 }
 
@@ -4030,7 +4030,7 @@ dragonhunt.dragonelement { return %dragon.element $readini($dbfile(dragonhunt.db
 
 dragonhunt.createdragon {
   var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
-  if (%dragonhunt.numberofdragons >= 5) { return }
+  if (%dragonhunt.numberofdragons >= 6) { return }
 
   ; Pick a random name
   var %surname Chaos.Bloodspawn.Bloodtear.Bloodfang.Darkness.WorldEater.Darkbringer.Bloodclaw.Firebreath.Firestarter
