@@ -617,7 +617,7 @@ boost_monster_hp {
 
   var %increase.amount 1
 
-  if ($return_playersinbattle > 1) { inc %increase.amount .35 }
+  if ($return_playersinbattle > 1) { inc %increase.amount $calc($return_playersinbattle * .25) }
 
   if ($2 = rage) { %hp = $rand(120000,150000) }
 
@@ -667,7 +667,7 @@ boost_monster_hp {
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
-  if ((%hp > 9000) && (%battle.type != dragonhunt)) { var %hp $round($calc(9000 + (%hp * .02)),0) }
+  if ((%hp > 10000) && (%battle.type != dragonhunt)) { var %hp $round($calc(10000 + (%hp * .02)),0) }
   if ((%hp > 15000) && (%battle.type = dragonhunt)) { var %hp $round($calc(15000 + (%hp * .25)),0) }
 
   if (($return.systemsetting(BattleDamageFormula) = 2) || ($return.systemsetting(BattleDamageFormula) = 4)) { var %hp $calc(%hp * 2) }
