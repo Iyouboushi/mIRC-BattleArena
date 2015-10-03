@@ -762,53 +762,34 @@ There's a bunch of different types of items in the bot currently:  Healing Items
 Healing Items
 These are items that are beneficial to the targets.
 
-Potion - 50 Red Orbs
-The potion will heal roughly 20 HP when used.  It can be used with Fullbring and requires level 1 of that skill.
+[HP healing items will restore a % of a target's max HP]
+Potion
+RootBeer
+VitalStar
+X-Potion
+Senzu
+SuperPotion
+MegaPotion
+Bruce'sJuice
+CandyCane
+CandyCorn
 
-Rootbeer - treasure chest or Beedle's Shop for 50 Red Orbs
-Rootbeer will heal roughly 60 HP when used. It can be used with Fullbring and requires level 1 of that skill.
+[TP healing items will restore a set number of TP to a target]
+DustyWing
+Ether
+Mid-Ether
+Hi-Ether
 
-VitalStar - 100 Red Orbs
-The VitalStar will heal roughly 60 HP when used.  It can be used with Fullbring and requires level 1 of that skill.
+[Clear Status items will remove negative status effects from a traget]
+Tonic
+BoxOfTissues
 
-X-Potion - 250 Red Orbs
-The X-potion will heal roughly 150 HP when used. It can be used with Fullbring and requires level 2 of that skill.
+[Revive items will add the auto-revive status]
+GoldOrb
 
-Senzu - 500 Red Orbs normally, 300 Red Orbs if the Allied Forces HQ Garden is level 4+
-The senzu will heal roughly 500 HP when used.  It can be used with Fullbring and requires level 4 of that skill.
-
-SuperPotion - 3500 Red Orbs
-The Super Potion will heal roughly 1500 HP when used. It can be used with Fullbring and requires level 5 of that skill.
-
-MegaPotion - crafted only
-The Mega Potion will heal roughly 5000 HP when used. It can be used with Fullbring and requires level 5 of that skill.
-
-Bruce'sJuice - ???
-Bruce's Juice will heal roughly 15000 HP when used. It can be used with Fullbring and requires level 5 of that skill.
-
-CandyCane - Santa Only - 1000 Red Orbs
-A Candy Cane will restore 4000 HP when used. It can be used with Fullbring and requires level 5 of that skill.
-
-DustyWing - 100 Red Orbs
-The Dusty Wing will instantly restore 20 TP when used. It can be used with Fullbring and requires level 1 of that skill.
-
-Ether - 500 Red Orbs
-The Ether will instantly restore 60 TP when used. It can be used with Fullbring and requires level 2 of that skill.
-
-Tonic - 1000 Red Orbs
-The tonic will instantly cure most status effects.  It will not cure Charm or Intimidation though.
-
-BoxOfTissues - Can't be bought
-The box of tissues will ease your tears and will instantly cure most status effects.  It will not cure Charm or Intimidation though.
-
-GoldOrb - 8000 Red Orbs
-This item, when used, will bestow the target with the "revive" status.  If the target dies in the same battle, he/she will be revived with 1/2 hp.
-
-IgnitionStar - 20000 Red Orbs
-This item, when used, will instantly restore 10 Ignition Gauge.
-
-XmasStar - Santa only, for 8000 Red Orbs
-This item, when used, will instantly restore 15 Ignition Gauge.
+[Ignition Restore items will restore IG]
+IgnitionStar
+XmasStar
 
 
 Battle Items
@@ -1076,6 +1057,9 @@ Shield-Ring
 PendantOfCourage
 PendantOfWisdom
 PendantOfPower
+Aetherial-Earrings 
+Aetherial-Ring 
+DragonCharm
 
 
 Misc (Crafting) Items
@@ -1117,6 +1101,7 @@ Kurogane
 DiabolicSilk
 DarkOrichalcumIngot
 AtlantianThreadSpool
+ShadowSpool
 JewelOfArdor
 StoneOfWieldance
 JewelOfWieldance
@@ -1150,6 +1135,9 @@ GenbuSeal
 SeiryuSeal
 SuzakuSeal
 KirinSeal
+DragonEgg
+DragonFang
+DragonScale
 
 
 Potion Effect Items
@@ -1540,6 +1528,33 @@ DUNGEON LIST
 These are the dungeons found within the defeat Battle Arena.
 Dungeon Name 	        Dungeon Item 	Dungeon Level 	# of Players Needed
 Tam-Tara Deepcroft 	TamTaraKey 	    15 	                3 
+
+
+DRAGON HUNTING
+A terrible travesty has befallen the land! Dragons from all over are making lairs where they slumber and grow stronger by the day. Please help out the Allied Forces by finding these lairs and putting an end to the fearsome foes that lie within!
+DRAGON HUNT INFO
+
+Once every 12 hours the bot will have a 40% chance of spawning a new dragon that will create a lair in which to slumber in (up to 5 dragons total at a time). After a dragon has spawned the players will have access two two commands:
+
+!dragon list
+This command will display a list of all the dragons that are currently in the land along with their current age (level) and their element. The list looks like this:
+
+<BattleArena> The following dragons are still hiding in their lairs across the land
+<BattleArena> Narebeth WorldEater - Age: 171 - Element: fire
+<BattleArena> Miath Firestarter - Age: 183 - Element: wind
+<BattleArena> Bedelth Bloodfang - Age: 128 - Element: wind
+
+!dragon hunt
+Once every hour this command will allow the player to attempt to search for a lair. Dragons are sneaky and hide their lairs fairly well so it might be rather difficult to find them. However, when one has been found the bot will then start a battle that all active players can join. An example of such:
+
+<BattleArena> Iyouboushi has discovered the lair of the fearsome dragon known as Narebeth WorldEater! A raiding party has been set up to put an end to the beast. To join the party type !enter now! The raiding party will depart in 20secs. [This is a level 171 battle. Anyone more than 5 levels over will be level synced.]
+
+The lair found is random from the list of all available dragons. There is no way to target a specific dragon.
+
+Upon joining the fight players who are +5 levels over the battle's level will be level synced and a boss battle will begin.
+MISC DRAGON HUNT INFORMATION
+
+The dragons will grow stronger the longer they are left alive. Every 12 real life hours the dragon's level will increase by 1. Also if a battle begins with the dragon and the players lose the battle the dragons will level up making them that much harder the next time their new lairs are found.
 
 
 IGNITIONS
