@@ -1389,7 +1389,7 @@ alias shop.weapons {
     var %weapon.level $readini($char($1), weapons, $3)
     if (%weapon.level != $null) { 
 
-      if (%weapon.level >= 500) {  $display.private.message(4You cannot buy any more levels into this weapon.) | halt }
+      if (%weapon.level >= 250) {  $display.private.message(4You cannot buy any more levels into this weapon using the shop. To continue upgrading, please find, craft or purchase weapon upgrade items) | halt }
 
       ; do you have enough to buy it?
       var %player.redorbs $readini($char($1), stuff, redorbs)
