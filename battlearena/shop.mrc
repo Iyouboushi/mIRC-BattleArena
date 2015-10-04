@@ -552,7 +552,8 @@ alias shop.items {
         $display.private.message(9Accessories:2 %shop.list)
       }
 
-      unset %item.price | unset %item.name | unset %shop.list
+      unset %item.price | unset %item.name | unset %shop.list | unset %shop.list2
+      unset %shop.list3 | unset %total.summon.items | unset %check.item
     }
 
   }

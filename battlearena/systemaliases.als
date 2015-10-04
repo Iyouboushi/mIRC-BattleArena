@@ -1787,13 +1787,13 @@ items.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%misc.items.list,46) <= 20) { %misc.items.list = $addtok(%misc.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%misc.items.list,46) <= 15) { %misc.items.list = $addtok(%misc.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       else { 
-        if ($numtok(%misc.items.list2,46) <= 20) { %misc.items.list2 = $addtok(%misc.items.list2, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        if ($numtok(%misc.items.list2,46) <= 15) { %misc.items.list2 = $addtok(%misc.items.list2, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
         else { 
-          if ($numtok(%misc.items.list3,46) <= 20) { %misc.items.list3 = $addtok(%misc.items.list3, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+          if ($numtok(%misc.items.list3,46) <= 15) { %misc.items.list3 = $addtok(%misc.items.list3, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
           else { 
-            if ($numtok(%misc.items.list4,46) <= 20) { %misc.items.list4 = $addtok(%misc.items.list4, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+            if ($numtok(%misc.items.list4,46) <= 15) { %misc.items.list4 = $addtok(%misc.items.list4, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
             else { %misc.items.list5 = $addtok(%misc.items.list5, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
           } 
         }
@@ -1889,7 +1889,10 @@ items.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %special.items.list = $addtok(%special.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+
+      if ($numtok(%special.items.list,46) <= 12) { %special.items.list = $addtok(%special.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { %special.items.list2 = $addtok(%special.items.list2, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+    }
 
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -1945,6 +1948,7 @@ items.list {
   %portals.items.list = $replace(%portals.items.list, $chr(046), %replacechar)
   %portals.items.list2 = $replace(%portals.items.list2, $chr(046), %replacechar)
   %special.items.list = $replace(%special.items.list, $chr(046), %replacechar)
+  %special.items.list2 = $replace(%special.items.list2, $chr(046), %replacechar)
   %trust.items.list = $replace(%trust.items.list, $chr(046), %replacechar)
   %potioningredient.items.list = $replace(%potioningredient.items.list, $chr(046), %replacechar)
 

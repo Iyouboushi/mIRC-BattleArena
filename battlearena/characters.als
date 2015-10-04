@@ -795,8 +795,7 @@ readitems {
     if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewPortalItems)) } 
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewPortalItems)) }
   }
-  if (%misc.items.list != $null) { 
-    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMiscItems),private) | if (%misc.items.list2 != $null) { $display.message( $+ %misc.items.list2,private) } | if (%misc.items.list3 != $null) { $display.message( $+ %misc.items.list3,private) } | if (%misc.items.list4 != $null) { $display.message( $+ %misc.items.list4,private) }  }
+  if (%misc.items.list != $null) { if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMiscItems),private) | if (%misc.items.list2 != $null) { $display.message( $+ %misc.items.list2,private) } |  if (%misc.items.list3 != $null) { $display.message( $+ %misc.items.list3,private) } | if (%misc.items.list4 != $null) { $display.message( $+ %misc.items.list4,private) }  }
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) { $display.private.message(5 $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $display.private.message( $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $display.private.message( $+ %misc.items.list4) } }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) {  $dcc.private.message($nick,  $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $dcc.private.message($nick,  $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $dcc.private.message($nick,  $+ %misc.items.list4) } }
   }
@@ -806,9 +805,9 @@ readitems {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMechCoreItems)) | if (%mech.items.list2 != $null) {  $dcc.private.message($nick,  $+ %mech.items.list2) } }
   }
   if (%special.items.list != $null) { 
-    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewShopSpecialItems),private) }
-    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewShopSpecialItems)) }
-    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewShopSpecialItems)) }
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewShopSpecialItems),private) | if (%special.items.list2 != $null) { $display.message( $+ %special.items.list2) }   }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewShopSpecialItems)) | if (%special.items.list2 != $null) { $display.private.message( $+ %special.items.list2) } } 
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewShopSpecialItems)) | if (%special.items.list2 != $null) { $dcc.private.message($nick,  $+ %special.items.list2) } }
   }
   if (%trust.items.list != $null) { 
     if ($2 = channel) { $display.message($readini(translation.dat, system, ViewTrustItems),private) }
