@@ -116,6 +116,13 @@ Amount=1
 SilverPointsCard=1
 KindredCrest=1
 
+[LargeTitaniteSlab]
+Gem=Onyx
+Ingredients=TitaniteSlab
+SuccessRate=10
+Amount=1
+TitaniteSlab=2
+
 ============
 Portal Items
 ============

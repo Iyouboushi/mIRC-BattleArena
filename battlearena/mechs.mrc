@@ -368,178 +368,178 @@ alias mech.activate {
   if ($readini(system.dat, system, AllowMechs) = false) { $display.message($readini(translation.dat, errors, MechsNotAllowed), private) | halt }
 
   if ((no-mech isin %battleconditions) || (no-mechs isin %battleconditions)) { $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt  }
-  if ((no-playermechs isin %battleconditions) && ($readini($char($1), info, flag) != monster)) { { $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt  }
+  if ((no-playermechs isin %battleconditions) && ($readini($char($1), info, flag) != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt  }
 
-    $set_chr_name($1)
-    $check_for_battle($1)
+  $set_chr_name($1)
+  $check_for_battle($1)
 
-    ; Check to see if the person owns a mech.
-    if ($readini($char($1), mech, HpMax) = $null) {  $display.message($readini(translation.dat, errors, DoNotOwnAMech), private) | halt }
+  ; Check to see if the person owns a mech.
+  if ($readini($char($1), mech, HpMax) = $null) {  $display.message($readini(translation.dat, errors, DoNotOwnAMech), private) | halt }
 
-    ; Is the person boosted or Ignitioned?  Can't use a mech then.
-    if ($readini($char($1), status, ignition.on) = on) {  $display.message($readini(translation.dat, errors, Can'tDoThatWhileBoosted), private) | halt }
-    if ($readini($char($1), status, boosted) = yes) {  $display.message($readini(translation.dat, errors, Can'tDoThatWhileBoosted), private) | halt }
+  ; Is the person boosted or Ignitioned?  Can't use a mech then.
+  if ($readini($char($1), status, ignition.on) = on) {  $display.message($readini(translation.dat, errors, Can'tDoThatWhileBoosted), private) | halt }
+  if ($readini($char($1), status, boosted) = yes) {  $display.message($readini(translation.dat, errors, Can'tDoThatWhileBoosted), private) | halt }
 
-    ; Check for charm/confuse
-    if ($is_charmed($1) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
-    if ($is_confused($1) = true) { $display.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
+  ; Check for charm/confuse
+  if ($is_charmed($1) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
+  if ($is_confused($1) = true) { $display.message($readini(translation.dat, status, CurrentlyConfused), private) | halt }
 
-    ; Check to see if we have enough energy to activate the mech
-    var %base.energycost $round($calc($mech.baseenergycost($1) / 2),0)
-    var %mech.currentenergy $readini($char($1), mech, energyCurrent)
+  ; Check to see if we have enough energy to activate the mech
+  var %base.energycost $round($calc($mech.baseenergycost($1) / 2),0)
+  var %mech.currentenergy $readini($char($1), mech, energyCurrent)
 
-    if (%base.energycost >= %mech.currentenergy) { $display.message($readini(translation.dat, errors, MechNotEnoughEnergyToUse),battle) | halt }
+  if (%base.energycost >= %mech.currentenergy) { $display.message($readini(translation.dat, errors, MechNotEnoughEnergyToUse),battle) | halt }
 
-    ; Does the mech have any health?
-    if ($readini($char($1), mech, hpCurrent) <= 0) { $display.message($readini(translation.dat, errors, MechNotEnoughHealthToUse),battle) | halt }
+  ; Does the mech have any health?
+  if ($readini($char($1), mech, hpCurrent) <= 0) { $display.message($readini(translation.dat, errors, MechNotEnoughHealthToUse),battle) | halt }
 
-    dec %mech.currentenergy %base.energycost
-    writeini $char($1) mech energyCurrent %mech.currentenergy
+  dec %mech.currentenergy %base.energycost
+  writeini $char($1) mech energyCurrent %mech.currentenergy
 
-    ; Activate the mech and multiply the stats.
-    set %mech.engineconstant $readini(system.dat, mech, StatMultiplier)
-    set %mech.enginelevel $readini($char($1), mech, engineLevel)
-    if (%mech.engineconstant = $null) { set %mech.engineconstant 2 }
-    if (%mech.enginelevel = $null) { set %mech.enginelevel 1 }
+  ; Activate the mech and multiply the stats.
+  set %mech.engineconstant $readini(system.dat, mech, StatMultiplier)
+  set %mech.enginelevel $readini($char($1), mech, engineLevel)
+  if (%mech.engineconstant = $null) { set %mech.engineconstant 2 }
+  if (%mech.enginelevel = $null) { set %mech.enginelevel 1 }
 
-    set %mech.power $calc(%mech.engineconstant * %mech.enginelevel)
+  set %mech.power $calc(%mech.engineconstant * %mech.enginelevel)
 
-    var %str $round($calc($readini($char($1), Battle, Str) * %mech.power),0)
-    var %def $round($calc($readini($char($1), Battle, def) * %mech.power),0)
-    var %int $round($calc($readini($char($1), Battle, int) * %mech.power),0)
-    var %spd $round($calc($readini($char($1), Battle, spd) * %mech.power),0)
+  var %str $round($calc($readini($char($1), Battle, Str) * %mech.power),0)
+  var %def $round($calc($readini($char($1), Battle, def) * %mech.power),0)
+  var %int $round($calc($readini($char($1), Battle, int) * %mech.power),0)
+  var %spd $round($calc($readini($char($1), Battle, spd) * %mech.power),0)
 
-    writeini $char($1) Battle Str %str
-    writeini $char($1) Battle Def %def
-    writeini $char($1) Battle Int %int
-    writeini $char($1) Battle Spd %spd
+  writeini $char($1) Battle Str %str
+  writeini $char($1) Battle Def %def
+  writeini $char($1) Battle Int %int
+  writeini $char($1) Battle Spd %spd
 
-    var %mech.description $readini($char($1), descriptions, mech)
-    if (%mech.description = $null) { var %mech.description $readini(translation.dat, battle, MechSummon) }
+  var %mech.description $readini($char($1), descriptions, mech)
+  if (%mech.description = $null) { var %mech.description $readini(translation.dat, battle, MechSummon) }
 
-    $display.message(3 $+ %real.name  $+ %mech.description,battle)
-    writeini $char($1) mech InUse true
+  $display.message(3 $+ %real.name  $+ %mech.description,battle)
+  writeini $char($1) mech InUse true
 
-    unset %mech.power | unset %mech.engineconstant | unset %mech.enginelevel
+  unset %mech.power | unset %mech.engineconstant | unset %mech.enginelevel
 
-    var %total.mechuses $readini($char($1), stuff, TimesMechActivated) 
-    if (%total.mechuses = $null) { var %total.mechuses 0 }
-    inc %total.mechuses 1 
-    writeini $char($1) stuff TimesMechActivated %total.mechuses
-    $achievement_check($1, IAmIronMan)
+  var %total.mechuses $readini($char($1), stuff, TimesMechActivated) 
+  if (%total.mechuses = $null) { var %total.mechuses 0 }
+  inc %total.mechuses 1 
+  writeini $char($1) stuff TimesMechActivated %total.mechuses
+  $achievement_check($1, IAmIronMan)
 
-    $check_for_double_turn($1)
-    halt
+  $check_for_double_turn($1)
+  halt
+}
+
+alias mech.deactivate {
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), battle) | halt }
+
+  $set_chr_name($1)
+  if ($2 = $null) { $check_for_battle($1) }
+
+  ; Is the person in the mech?
+  if ($person_in_mech($1) = false) { $display.message($readini(translation.dat, errors, NotInAMech), private) | halt }
+
+  ; Deactivate the mech.
+  var %mech.engineconstant $readini(system.dat, mech, StatMultiplier)
+  var %mech.enginelevel $readini($char($1), mech, engineLevel)
+  if (%mech.engineconstant = $null) { var %mech.engineconstant 2 }
+  if (%mech.enginelevel = $null) { var %mech.enginelevel 1 }
+
+  set %mech.power $calc(%mech.engineconstant * %mech.enginelevel)
+
+  var %str $round($calc($readini($char($1), Battle, Str) / %mech.power),0)
+  var %def $round($calc($readini($char($1), Battle, def) / %mech.power),0)
+  var %int $round($calc($readini($char($1), Battle, int) / %mech.power),0)
+  var %spd $round($calc($readini($char($1), Battle, spd) / %mech.power),0)
+
+  if (%str <= 5) { var %str 5 }
+  if (%def <= 5) { var %def 5 }
+  if (%int <= 5) { var %int 5 }
+  if (%spd <= 5) { var %spd 5 }
+
+  writeini $char($1) Battle Str %str
+  writeini $char($1) Battle Def %def
+  writeini $char($1) Battle Int %int
+  writeini $char($1) Battle Spd %spd
+
+  writeini $char($1) mech InUse false
+
+  if ($2 = $null) { $display.message($readini(translation.dat, battle, MechDismiss),battle) }
+
+  return
+}
+
+alias mech.statmultiplier { 
+  var %engine.level $calc($readini(system.dat, mech, StatMultiplier) * $readini($char($1), mech, EngineLevel)) 
+
+  if ($accessory.check($1, IncreaseMechEngineLevel) = true) {
+    inc %engine.level %accessory.amount
+    unset %accessory.amount
+  }
+  return %engine.level
+}
+
+alias mech.energydrain { 
+  ; $1 = person
+  ; $2 = melee, tech
+  ; $3 = tech name
+
+  if ($2 = melee) { 
+    set %mech.weapon $readini($char($1), mech, EquippedWeapon)
+    set %energydrain $readini($dbfile(weapons.db), %mech.weapon, energyCost)
+    if (%energydrain = $null) { var %energydrain 100 }
+  }
+  if ($2 = tech) {  
+    set %energydrain $readini($dbfile(techniques.db), $3, energyCost)
+    if (%energydrain = $null) { var %energydrain 100 }
   }
 
-  alias mech.deactivate {
-    if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), battle) | halt }
-
-    $set_chr_name($1)
-    if ($2 = $null) { $check_for_battle($1) }
-
-    ; Is the person in the mech?
-    if ($person_in_mech($1) = false) { $display.message($readini(translation.dat, errors, NotInAMech), private) | halt }
-
-    ; Deactivate the mech.
-    var %mech.engineconstant $readini(system.dat, mech, StatMultiplier)
-    var %mech.enginelevel $readini($char($1), mech, engineLevel)
-    if (%mech.engineconstant = $null) { var %mech.engineconstant 2 }
-    if (%mech.enginelevel = $null) { var %mech.enginelevel 1 }
-
-    set %mech.power $calc(%mech.engineconstant * %mech.enginelevel)
-
-    var %str $round($calc($readini($char($1), Battle, Str) / %mech.power),0)
-    var %def $round($calc($readini($char($1), Battle, def) / %mech.power),0)
-    var %int $round($calc($readini($char($1), Battle, int) / %mech.power),0)
-    var %spd $round($calc($readini($char($1), Battle, spd) / %mech.power),0)
-
-    if (%str <= 5) { var %str 5 }
-    if (%def <= 5) { var %def 5 }
-    if (%int <= 5) { var %int 5 }
-    if (%spd <= 5) { var %spd 5 }
-
-    writeini $char($1) Battle Str %str
-    writeini $char($1) Battle Def %def
-    writeini $char($1) Battle Int %int
-    writeini $char($1) Battle Spd %spd
-
-    writeini $char($1) mech InUse false
-
-    if ($2 = $null) { $display.message($readini(translation.dat, battle, MechDismiss),battle) }
-
-    return
-  }
-
-  alias mech.statmultiplier { 
-    var %engine.level $calc($readini(system.dat, mech, StatMultiplier) * $readini($char($1), mech, EngineLevel)) 
-
-    if ($accessory.check($1, IncreaseMechEngineLevel) = true) {
-      inc %engine.level %accessory.amount
-      unset %accessory.amount
-    }
-    return %engine.level
-  }
-
-  alias mech.energydrain { 
-    ; $1 = person
-    ; $2 = melee, tech
-    ; $3 = tech name
-
-    if ($2 = melee) { 
-      set %mech.weapon $readini($char($1), mech, EquippedWeapon)
-      set %energydrain $readini($dbfile(weapons.db), %mech.weapon, energyCost)
-      if (%energydrain = $null) { var %energydrain 100 }
-    }
-    if ($2 = tech) {  
-      set %energydrain $readini($dbfile(techniques.db), $3, energyCost)
-      if (%energydrain = $null) { var %energydrain 100 }
-    }
-
-    ; Check for the DecreaseMechEnergyCost augment that will decrease the amount of energy needed to run a mech
-    if ($augment.check($1, DecreaseMechEnergyCost) = true) {  dec %energydrain $round($calc(%energydrain *  (%augment.strength *.25)),0) }
+  ; Check for the DecreaseMechEnergyCost augment that will decrease the amount of energy needed to run a mech
+  if ($augment.check($1, DecreaseMechEnergyCost) = true) {  dec %energydrain $round($calc(%energydrain *  (%augment.strength *.25)),0) }
 
 
-    var %current.energylevel $readini($char($1), mech, energyCurrent)
-    dec %current.energylevel %energydrain
-    if (%current.energylevel < 0) { var %current.energylevel 0 }
-    writeini $char($1) mech energyCurrent %current.energylevel
+  var %current.energylevel $readini($char($1), mech, energyCurrent)
+  dec %current.energylevel %energydrain
+  if (%current.energylevel < 0) { var %current.energylevel 0 }
+  writeini $char($1) mech energyCurrent %current.energylevel
 
-    unset %energydrain | unset %mech.weapon
-  }
+  unset %energydrain | unset %mech.weapon
+}
 
-  alias mech.baseenergycost {
-    var %base.amount $readini(system.dat, mech, EnergyCostConstant)
-    if (%base.amount = $null) { var %base.amount 100 }
-    var %mech.weaponenergy $readini($dbfile(weapons.db), $readini($char($1), mech, EquippedWeapon), energyCost)
-    var %mech.corecost $readini($dbfile(items.db), $readini($char($1), mech, EquippedCore), energyCost)
+alias mech.baseenergycost {
+  var %base.amount $readini(system.dat, mech, EnergyCostConstant)
+  if (%base.amount = $null) { var %base.amount 100 }
+  var %mech.weaponenergy $readini($dbfile(weapons.db), $readini($char($1), mech, EquippedWeapon), energyCost)
+  var %mech.corecost $readini($dbfile(items.db), $readini($char($1), mech, EquippedCore), energyCost)
 
-    if (%mech.weaponenergy = $null) { var %mech.weaponenergy 0 }
-    if (%mech.corecost = $null) { var %mech.corecost 0 }
+  if (%mech.weaponenergy = $null) { var %mech.weaponenergy 0 }
+  if (%mech.corecost = $null) { var %mech.corecost 0 }
 
-    inc %base.amount %mech.weaponenergy
-    inc %base.amount %mech.corecost 
+  inc %base.amount %mech.weaponenergy
+  inc %base.amount %mech.corecost 
 
-    return %base.amount
-  }
+  return %base.amount
+}
 
-  alias mech.add {
-    writeini $char($1) item_amount BasicMechCore 1
-    writeini $char($1) item_amount BasicMechGun 1
-    writeini $char($1) mech name Basic Mech
-    writeini $char($1) mech inUse false
-    writeini $char($1) mech EngineLevel 1
-    writeini $char($1) mech HpMax 1000
-    writeini $char($1) mech HpCurrent 1000
-    writeini $char($1) mech EnergyMax 500
-    writeini $char($1) mech EnergyCurrent 500
-    writeini $char($1) mech EquippedCore BasicMechCore
-    writeini $char($1) mech EquippedWeapon BasicMechGun
-    writeini $char($1) mech Augments $readini($dbfile(items.db), BasicMechCore, augment)
-  }
+alias mech.add {
+  writeini $char($1) item_amount BasicMechCore 1
+  writeini $char($1) item_amount BasicMechGun 1
+  writeini $char($1) mech name Basic Mech
+  writeini $char($1) mech inUse false
+  writeini $char($1) mech EngineLevel 1
+  writeini $char($1) mech HpMax 1000
+  writeini $char($1) mech HpCurrent 1000
+  writeini $char($1) mech EnergyMax 500
+  writeini $char($1) mech EnergyCurrent 500
+  writeini $char($1) mech EquippedCore BasicMechCore
+  writeini $char($1) mech EquippedWeapon BasicMechGun
+  writeini $char($1) mech Augments $readini($dbfile(items.db), BasicMechCore, augment)
+}
 
-  alias mech.remove {
-    remini $char($1) mech
-    remini $char($1) item_amount BaiscMechGun
-    remini $char($1) item_amount BasicMechCore
-  }
+alias mech.remove {
+  remini $char($1) mech
+  remini $char($1) item_amount BaiscMechGun
+  remini $char($1) item_amount BasicMechCore
+}

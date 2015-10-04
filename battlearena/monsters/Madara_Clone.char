@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 1, 12000, 10000)
-Tp=5000
-Str=1544
-Def=1544
-Int=1544
-Spd=1544
-IgnitionGauge=500
-Name=Sif
+Hp=8000
+Tp=3000
+Str=2572
+Def=2572
+Int=2572
+Spd=2572
+IgnitionGauge=0
+Name=Clone of Madara
 
 
 [Battle]
-Hp=12000
-Tp=5000
-Str=1544
-Def=1544
-Int=1544
-Spd=1544
-IgnitionGauge=500
+Hp=8000
+Tp=3000
+Str=2572
+Def=2572
+Int=2572
+Spd=2572
+IgnitionGauge=0
 Status=alive
 
 
@@ -26,11 +26,9 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a tall and beautiful warrior-goddess of the Asgard. She is a formidable combatant and has extensive training in unarmed combat and swordsmanship.
-Rage=
-BossQuote=You dare to intrude upon Asgard? You will pay for your impudence, mortals.
-AesirMight=looks at the heroes and says, "Time to feel the true power of an Asgardian warrior."
-
+Char=is a deadly clone of the real Madara Uchiha.
+Rage=screams in rage
+Mech=summons a massive blue Susanoo that has tengu armor, made up of two entirely different sides that are conjoined along their spine, both of which have a distinct face. It holds a blue katana in all four arms. Clone of Madara hops onto the Susanoo and charges towards the heroes.
 
 [Stuff]
 RedOrbs=0
@@ -40,21 +38,19 @@ Drops=
 
 [Info]
 Flag=monster
-Gender=her
-Gender2=her
+Gender=his
+Gender2=him
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BossLevel=300
 Streak=-1000
 CanTaunt=False
 Ragemode=ignore
 IgnoreQuicksilver=true
 IgnoreDrain=true
 JustReleaseDefense=100
-ai_type=techonly
 IgnorePresident=true
 IgnoreElementalMessage=true
 ;=======================================
@@ -133,11 +129,11 @@ IgnoreElementalMessage=true
 
 [monster]
 ; Type is the type of monster it is. 
-type=Aesir
+type=human
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
 ; Change it to "true" to turn it on.
-TechLearn=true
+TechLearn=false
 
 ; Size is the size of the monster. Small/Medium/Large
 size=medium
@@ -174,22 +170,21 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
+PerfectDefense.on=off
+auto-regen=yes
+
 
 [Weapons]
-Equipped=Sif's_Sword
-EquippedLeft=Dragonfang
-Sif's_Sword=$current.battlestreak
-Dragonfang=$current.battlestreak
+Equipped=UchihaPower
+UchihaPower=$current.battlestreak
 
 
 [Skills]
-DualWield=1
 Zen=5
 WeaponBash=1
 Impetus=20
-Konzen-Ittai=1
-SwordMaster=100
 clearMind=3
+Regen=5
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -207,36 +202,25 @@ Resist-Disarm=100
 
 
 [Techniques]
-BladeBeam=$current.battlestreak
-TwinSlice=$current.battlestreak
-BiteOfLightning=$current.battlestreak
-
+Katon:GoukakyuuNoJutsu=$current.battlestreak
 
 [Item_Amount]
 
-[Ignitions]
-AesirMight=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Sif), battle, hp) / $readini($char(Sif), basestats, hp)) * 100) <= 80, 1, 0))
-
 [Augments]
-Sif's_Sword=MeleeBonus.RenkeiBonus.TechBonus.IgnoreGuardian
-Dragonfang=MeleeBonus.RenkeiBonus.TechBonus.IgnoreGuardian
-
-[Styles]
-Equipped=WeaponMaster
-WeaponMaster=10
-WeaponMasterXP=1
+UchihaPower=MeleeBonus.TechBonus.EnhanceZen.IgnoreGuardian.HurtEthereal.IgnoreMetalDefense
+SusanooKatanas=DecreaseMechEnergyCost.IgnoreGuardian.IgnoreMetalDefense
 
 [modifiers]
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
-Heal=Light
+Heal=none
 Earth=70
-Fire=70
+Fire=50
 Wind=70
 Water=70
 Ice=70
 Lightning=70
-Light=200
+Light=70
 Dark=70
 HandToHand=70
 Whip=70
@@ -252,63 +236,73 @@ GreatSword=70
 Bow=70
 Axe=70
 Dagger=70
-Dancing=70
-Engine=70
 Mace=70
-PinkChainsaw=70
 Stave=70
-EnergyBlaster=150
+EnergyBlaster=70
 HolyHandGrenade=0
-Crissaegrim=50
-Valmanway=50
-Naturaleza=50
-AsuranFists=45
-VictorySmite=45
-ShinjinSpiral=45
-MillionStab=45
-VorpalBlade=45
-DeathBlossom=45
-SwiftBlade=45
-ChantDuCygne=45
-Requiescat=120
-Resolution=45
-Guillotine=45
-Insurgency=45
-Pentathrust=45
-Drakesbane=120
-Stardiver=45
-PyrrhicKleos=45
-Evisceration=45
-DancingEdge=45
-Ultima=120
-Kaustra=45
-Ashes=45
-Dismay=45
-ThousandCuts=45
-Tachi:Shoha=50
-Tachi:Rana=50
-Rainstorm=45
-SpinningAttack=45
-TornadoKick=45
-CircularChain=45
-CircleBlade=45
-SonicThrust=45
-ApexArrow=45
-UrielBlade=120
-FellCleave=45
-AeolianEdge=45
-Twin_Slice=45
-LightningStrike=45
-BladeBeamII=45
-TrillionStabs=45
-DoubleBackstab=45
-Chou_Kamehameha=120
-BloodBath=45
-UltimaII=120
-KaustraII=45
-Chivalry=120
+Crissaegrim=40
+Valmanway=40
+Naturaleza=40
+AsuranFists=40
+VictorySmite=40
+ShinjinSpiral=40
+MillionStab=40
+VorpalBlade=40
+DeathBlossom=40
+SwiftBlade=40
+ChantDuCygne=40
+Requiescat=40
+Resolution=40
+Guillotine=40
+Insurgency=40
+Pentathrust=40
+Drakesbane=40
+Stardiver=40
+PyrrhicKleos=40
+Evisceration=40
+DancingEdge=40
+Ultima=40
+Kaustra=40
+Ashes=40
+Dismay=40
+ThousandCuts=40
+Tachi:Shoha=40
+Tachi:Rana=40
+Rainstorm=40
+SpinningAttack=40
+TornadoKick=40
+CircularChain=40
+CircleBlade=40
+SonicThrust=40
+ApexArrow=40
+UrielBlade=40
+FellCleave=40
+AeolianEdge=40
+Twin_Slice=40
+LightningStrike=40
+BladeBeamII=40
+TrillionStabs=40
+DoubleBackstab=40
+Chou_Kamehameha=40
+BloodBath=40
+UltimaII=40
+KaustraII=40
+Chivalry=40
 
-[NaturalArmor]
-Name=Goddess Defense
-Max=1000
-Current=1000
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+WeaponMasterXP=1
+
+
+[Mech]
+name=Susanoo
+inUse=false
+EngineLevel=1.0
+HpMax=5000
+HpCurrent=5000
+EnergyMax=5000
+EnergyCurrent=5000
+EquippedCore=VesselOfAnima
+EquippedWeapon=SusanooKatanas
+Augments=DecreaseMechEnergyCost.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.HurtEthereal

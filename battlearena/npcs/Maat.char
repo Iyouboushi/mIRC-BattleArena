@@ -101,8 +101,8 @@ zombie.timer=1
 conservetp.on=off
 
 [Weapons]
-Equipped=Fists
-Fists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Equipped=Spharai
+Spharai=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
@@ -127,11 +127,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-DoublePunch=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+FinalHeaven=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ShoulderTackle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 AsuranFists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 SpinningAttack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShoulderTackle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-
+OneInchPunch=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Styles]
 Equipped=CounterStance

@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=light
+current=gloomy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Blood
-CurrentMoonTurn=1
+CurrentMoonPhase=Gibbous
+CurrentMoonTurn=5
 
 [MoonPhaseTime]
 full=3
@@ -38,8 +38,8 @@ remove or modify the time of day section as it will cause
 errors.
 ==============================================================
 [TimeOfDay]
-CurrentTimeOfDay=Evening
-CurrentTimeOfDayTurn=2
+CurrentTimeOfDay=Noon
+CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -613,6 +613,24 @@ Event16chance=30
 Event16Desc=Colonel: An Anemone or Clematis plant's juice can cause a rash. When pruning them, it's a good idea to wear gloves.
 Event16Target=all
 
+[Twin Pines Mall - Parking Lot]
+Weather=calm
+NumberofEvents=2
+scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+
+Event1=damage
+Event1Chance=20
+Event1Desc=Doc Brown: Oh, my god. They found me. I don't know how, but they found me! Run for it, Marty! Marty McFly: Who? Doc Brown: Who do you think? THE LIBYANS! -- A Volkswagen T1 van suddenly speeds into the parking lot and one of the Libyans shoots at all the heroes!
+Event1Target=players
+Event1Amount=$rand(50,100)
+
+Event2=statusonly
+Event2StatusType=annoyed
+Event2Chance=20
+Event2Desc=Marty McFly: Wait a minute. Wait a minute, Doc. Ah... Are you telling me that you built a time machine... out of a Delorean? Doc Brown: The way I see it, if you're gonna build a time machine into a car, why not do it with some *style?*
+Event2Target=players
+Event2Amount=0
+
 [Raptor News Network Studio]
 weather=calm
 NumberOfEvents=0
@@ -864,6 +882,37 @@ NumberOfEvents=0
 limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing.no-quicksilver
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
+[Iron Keep]
+Weather=Hot
+NumberOfEvents=1
+limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing.no-quicksilver
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.IronOre
+
+event1=damage
+event1statusType=Burning
+event1Chance=40
+Event1Desc=The molten iron shoots up violently, raining molten iron down upon %real.name $+ .
+Event1Target=random
+Event1Amount=$rand(200,300)
+
+[Land of Lightning]
+weather=Calm
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-playermechs.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Kamui's Dimension]
+weather=Gloomy
+NumberofEvents=1
+limitations=no-trusts.no-summons.no-playermechs.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+event1=damage
+event1Chance=60
+Event1Desc=Obito summons some of the shurikans he has hidden in the dimension and hurls them at all of the heroes!
+Event1Target=players
+Event1Amount=$rand(400,500)
+
 [Monster's Outpost]
 weather=gloomy
 NumberOfEvents=0
@@ -887,7 +936,6 @@ weather=gloomy
 NumberOfEvents=0
 scavenge=BeastmenSeal.KindredSeal.KindredCrest
 limitations=no-mech.no-fleeing.no-trusts.no-summons
-
 
 ==============================================================
 DUNGEON battlefields

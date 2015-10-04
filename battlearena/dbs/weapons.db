@@ -1714,7 +1714,7 @@ BasePower=15
 Cost=0
 Type=HandToHand
 Info=You can't buy this!
-Abilities=FangRush.RadiantBreath.HurricaneBreath.SpikeFlail.AbsoluteTerror.DragonFire.FireII.StoneII.IceII.AeroII.WaterII.ThunderII.DarkII.Holy
+Abilities=FangRush.RadiantBreath.HurricaneBreath.SpikeFlail.AbsoluteTerror.DragonFire
 Element=none
 Hits=$rand(1,2)
 BasePower=15
@@ -4322,10 +4322,10 @@ CanCounter=false
 
 [SusanooKatanas]
 Cost=0
-EnergyCost=500
+EnergyCost=300
 Type=Katana
 Info=Four blue energy katanas held by Madara's Susanoo armor.
-Abilities=FastBlade.FlatBlade.CircleBlade.AerialCross
+Abilities=YonNoTachi:Kagerou.ShichiNoTachi:Yukikaze.HachiNoTachi:Gekkou.KyuuNoTachi:Kassha
 Element=None
 Hits=1
 BasePower=100

@@ -1,0 +1,5 @@
+slashes at %enemy with the kama
+hops back and hurls the kama at %enemy before pulling it back
+hits %enemy with the chain of the kama
+wraps the kama around %enemy $+ 's leg and pulls %enemy to the ground
+constricts %enemy with the chain and throws %enemy to the ground

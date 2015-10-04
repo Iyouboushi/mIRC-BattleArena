@@ -692,8 +692,8 @@ IgnitionConsume=10
 Cost=0
 Desc='s eyes gain a firey glow as metal spikes emerge out from the skull!
 
-[UmbranClimax]
-Name=UmbranClimax
+[WitchTime]
+Name=WitchTime
 hp=2
 Str=2
 def=2
@@ -705,7 +705,24 @@ Techs=QueenSheba.Gomorrah.Malphas.Hekatoncheir.Scolopendra.Phantasmaraneae
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Desc=begins to gain a purple glow as her hair becomes long and flowing, with it now missing from the sleeves of her outfit. %user is now in 'Serious Mode.'
+Desc=begins to gain a purple glow as her hair becomes long and flowing, with it now missing from the sleeves of her outfit.
+StatusTarget=Enemy
+StatusType=Slow
+
+[UmbranClimax]
+Name=UmbranClimax
+hp=2
+Str=2
+def=2
+int=2
+spd=2
+Augment=EnhanceDodge.EnhanceCriticalhits.IgnoreGuardian.IgnoreDefense.EnhanceZen
+Effect=Status
+Techs=Omne.Labolas.Mictlantecuhtli.Baal.Hydra.Diomedes
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=begins to gain a purple glow as her hair becomes long and flowing, with it now missing from the sleeves of her outfit.
 StatusTarget=Enemy
 StatusType=Slow
 AdditionalCode=writeini $char($1) status Auto-Regen on
@@ -803,6 +820,40 @@ Techs=ShinShunGokuSatsu.TenshouKairekiJin
 Desc=gains a red aura as %user $+ 's hair turns white and has his power greatly increased.
 AdditionalCode=writeini $char($1) ignitions OniGouki 0
 
+[SmelterDemonFlame]
+Name=SmelterDemonFlame
+HP=1.2
+Str=1.2
+Def=1.2
+Int=1.2
+Spd=1.2
+Effect=Status
+Augment=MagicBonus.TechBonus.EnhanceMelee.EnhanceCriticalHits.EnhanceZen
+Techs=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=engulfs the room in flames as the Smelter Demon gains power.
+StatusTarget=Enemy
+StatusType=Burning
+
+[IronKingFlame]
+Name=IronKingFlame
+HP=1.3
+Str=1.3
+Def=1.3
+Int=1.3
+Spd=1.3
+Effect=Status
+Augment=MagicBonus.TechBonus.EnhanceMelee.EnhanceCriticalHits.EnhanceZen
+Techs=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=roars loudly as the molten iron shoots up and lands on the battlefield, the Iron King gaining power as well.
+StatusTarget=Enemy
+StatusType=Burning
+
 [OniGouki]
 Name=OniGouki
 hp=1.3
@@ -817,3 +868,53 @@ Cost=0
 Techs=MeidouGouHadou.TenchiSoukaigen
 Desc=gains a red aura as %user $+ 's hair turns white and now resembles a blue oni, along with gaining vast power by becoming one with the Satsui no Hadou entirely.
 AdditionalCode=writeini $char($1) ignitions ShinGouki 0
+
+[ObitoSharingan]
+Name=ObitoSharingan
+hp=1.2
+Str=1.1
+def=1.1
+int=1.1
+spd=1.1
+Augment=MeleeBonus.TechBonus.EnhanceZen.EnhanceHandToHand.EnhanceCriticalHits
+Effect=Status
+Techs=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc='s eyes gain three tomoe in a pinwheel style as %user activates the Sharingan, gaining a slight bit of power.
+StatusTarget=Enemy
+StatusType=Slow
+AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ignitions ObitoMangekyouSharingan 1 | writeini $char($1) ignitions ObitoSharingan 0
+
+[ObitoMangekyouSharingan]
+Name=ObitoMangekyouSharingan
+hp=1.2
+Str=1.3
+def=1.3
+int=1.3
+spd=1.3
+Augment=MeleeBonus.TechBonus.EnhanceZen.EnhanceHandToHand.EnhanceCriticalHits
+Effect=Status
+Techs=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc='s eyes gain a design that is three stretched triangles evenly spaced around the pupil that each curve at the top around the eye to form a circle, making it similar to a pinwheel. At the same time, Obito uses the other part of Kamui to give himself intangibility for a short time.
+StatusTarget=Self
+StatusType=Invincible
+AdditionalCode=writeini $char($1) skills ChangeBattlefield 1
+
+[MadaraJinchuuriki]
+Name=MadaraJinchuuriki
+hp=1.3
+Str=1.3
+def=1.3
+int=1.3
+spd=1.3
+Augment=MeleeBonus.TechBonus.EnhanceZen.EnhanceHandToHand.EnhanceCriticalHits
+Techs=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc='s hair and skin goes pale and now wears a full-bodied black garment with black pants, gloves, and boots, over which he wears a flowing white robe. He also gains the Rinne Sharingan as a third eye, which has a ripple-like pattern which spreads over the eyeball, with red sclerae and irides, containing a pattern of nine tomoe.

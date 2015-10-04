@@ -136,7 +136,7 @@ WeaponMasterXP=1
 [mech]
 name=Delphinus
 inUse=false
-EngineLevel=$iif($current.battlestreak < 1000, 0, 1.2)
+EngineLevel=$iif($current.battlestreak < 1000, 0, 0.7)
 HpMax=20000
 HpCurrent=20000
 EnergyMax=10000

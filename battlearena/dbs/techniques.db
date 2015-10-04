@@ -1,6 +1,6 @@
 [Techs]
 ; H2h
-Fists=DoublePunch.ShoulderTackle.SpinningAttack.AsuranFists
+Fists=DoublePunch.ShoulderTackle.SpinningAttack
 Cerberus=Revolver.Windmill.Crystal
 Ifrit=RollingBlaze.MagmaDrive.Inferno
 Spharai=FinalHeaven.ShoulderTackle.AsuranFists.SpinningAttack.OneInchPunch
@@ -18,6 +18,7 @@ Murgleis=DeathBlossom.SwiftBlade.SavageBlade.Requiescat.SanguineBlade
 LexTalionis=GlorySlash.UrielBlade
 Soulsaber=SpiritsWithin.VorpalBlade.SeraphBlade
 Almace=ChantduCygne.Requiescat.SanguineBlade
+Xiutleato=SavageBlade.SanguineBlade.SwiftBlade.CircleBlade
 SilverSword=Twin_Slice.LightningStrike.BladeBeamII
 MasterSword=SkywardStrike.HurricaneSpin
 
@@ -25,15 +26,16 @@ MasterSword=SkywardStrike.HurricaneSpin
 PowerChordSword=A5.E5.D5.C5
 Soboro=Tachi:Enpi.Tachi:Hobaku.Tachi:Jinpu.Tachi:Goten.Tachi:Kagero
 Yamato=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
-Kogarasumaru=Tachi:Kasha.Tachi:Ageha.Tachi:Rana.Tachi:Fudo.MeikyoShisui
-Crissaegrim=Tachi:Shoha.Tachi:Rana.MeikyoShisui
+Kogarasumaru=Tachi:Kasha.Tachi:Ageha.Tachi:Rana.Tachi:Fudo
+Crissaegrim=Tachi:Shoha.Tachi:Rana
 Valmanway=Tachi:Shoha.Tachi:Rana.MeikyoShisui
 Zangetsu=GetsugaTenshou.TensaZangetsu.FinalGetsuga
 Senbonzakura=Chire.Kageyoshi
 Hyourinmaru=SotenNiZase.DaigurenHyourinmaru
 Keitonotachi=Tachi:Kagero.Tachi:Goten.Tachi:Yukikaze
 Hagun=Tachi:Kaiten.Tachi:Ageha.Tachi:Kasha
-Masamune=Tachi:Fudo.Tachi:Shoha.Tachi:Rana.MeikyoShisui
+Masamune=Tachi:Fudo.Tachi:Shoha.Tachi:Rana
+Ichimonji-Yofusa=Tachi:Fudo.Tachi:Kasha.Tachi:Gekko.Tachi:Yukikaze
 Naturaleza=Ashes.Dismay.ThousandCuts
 
 ; Scythe
@@ -41,6 +43,7 @@ DeathScythe=ShadowOfDeath.DarkHarvest.VorpalScythe
 Vendetta=InfernalScythe.CrossReaper.SpinningScythe
 Redemption=Quietus.Insurgency.NightmareScythe
 Apocalypse=Catastrophe.Entropy.Guillotine
+Xbalanque=Insurgency.NightmareScythe.Guillotine
 
 ; Great Sword
 Braveheart=HardSlash.PowerSlash
@@ -48,18 +51,18 @@ Balmung=Shockwave.SickleMoon.Freezebite
 Nightfall=GroundStrike.SpinningSlash
 Ragnarok=Scourge.HerculeanSlash.Resolution.Torcleaver
 Caladbolg=Torcleaver.Resolution
+Macbain=SpinningSlash.HerculeanSlash.Scourge
 
 ; Wands/Staves
-YewWand=Fire.Stone.Ice.Aero.Water.Thunder.Cure.Dark.Banish.Poison.Blind.Paralyze.Slow.Protect.Shell
-PixiWand=Protect.Shell.BarEarth.BarFire.BarWind.BarWater.BarIce.BarLightning.BarLight.BarDark.EnFire.EnEarth.EnWind.EnWater.EnIce.EnLightning
-OakWand=FireII.StoneII.IceII.AeroII.WaterII.ThunderII.CureII.DarkII.BanishII.Esuna
-PineWand=FireIII.StoneIII.IceIII.AeroIII.WaterIII.ThunderIII.CureIII.DarkIII.BanishIII.Esuna.Dispel
-ElderWand=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy.Esuna.Dispel.Merlin'sFinalSpell
-IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify.Esuna.Dispel
-Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII.Esuna.Dispel.Merlin'sFinalSpell
-EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII.Esuna.Dispel.Merlin'sFinalSpell
+YewWand=Fire.Stone.Ice.Aero.Water.Thunder.Cure.Dark.Banish.Poison.Blind.Paralyze.Slow
+PixiWand=Protect.Shell.BarEarth.BarFire.BarWind.BarWater.BarIce.BarLightning.BarLight.BarDark.EnFire.EnEarth.EnWind.EnWater.EnIce.EnLightning.Esuna.Dispel
+OakWand=FireII.StoneII.IceII.AeroII.WaterII.ThunderII.CureII.DarkII.BanishII
+PineWand=FireIII.StoneIII.IceIII.AeroIII.WaterIII.ThunderIII.CureIII.DarkIII.BanishIII
+ElderWand=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy
+IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
+Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
+EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
 BahamutsStaff=Ultima.Kaustra.Merlin'sFinalSpell
-
 Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 
 ; Guns 
@@ -91,6 +94,7 @@ Corsesca=Jump.PentaThrust.LegSweep
 Gungnir=SpiritJump.Geirskogul.LegSweep
 Ryunohige=SoulJump.Drakesbane.LegSweep.Stardiver
 Rhongomiant=HighJump.CamlannsTorment.LegSweep.SonicThrust
+Upukirex=Jump.HighJump.SpiritJump.SoulJump.Stardiver
 
 ; Bows
 RobinsBow=FlamingArrow.PiercingArrow.DullingArrow
@@ -98,28 +102,28 @@ ShigetoBow=BlastArrow.Sidewinder.FlamingArrow
 LamianKamen=EmpyrealArrow.ArchingArrow.PiercingArrow
 Yoichinoyumi=EagleEyeShot.NamasArrow.RefulgentArrow
 Gandiva=EagleEyeShot.JishnusRadiance.ApexArrow
+HomesteadBow=ApexArrow.Sidewinder.EmpyrealArrow
 
 ; Axes
 Ukonvasara=FellCleave.UkkosFury.KingsJustice
 Bravura=MetatronTorment.Upheaval.SteelCyclone
 Guttler=Onslaught.BoraAxe.Rampage
 Farsha=Cloudsplitter.Ruinator.PrimalRend
+Lightreaver=FellCleave.SteelCyclone.KingsJustice
+Kerehcatl=BoraAxe.Rampage.Ruinator
 
 ; Daggers
 MainGauche=SharkBite.DancingEdge.Cyclone
 Terpsichore=PyrrhicKleos.RudrasStorm.Exenterator
 Mandau=MercyStroke.AeolianEdge.Evisceration
+Vanir_Knife=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vajra) = true, .Evisceration)
+Vajra=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vanir_Knife) = true, .Evisceration)
 
 ; Mech Weapons
 BasicMechGun=DoubleShot.GunBlaze
 ImprovedMechGun=DoubleShotII.GunBlazeII
 FlawlessMechGun=DoubleShotIII.GunBlazeIII
 DarksteelOreCannon=TripleShot.GunBlazeIII
-AsherGuns=ShotBuster.FlareBuster.Cerberus.DoubleShotIII.TripleShot.GunBlazeIII
-ReubenKatanas=IronBlade.GarudasWrath.LotusBlades
-DinahWeapons=R-Fang.X-BusterII.X-Cannon.DoubleShotIII.TripleShot.GunBlazeIII
-DelphinusWeaponSystems=MoonStoneCannon.DoubleShotIII.TripleShot.GunblazeIII
-UmbranArmorGuns=DoubleShotIII.GunBlazeIII
 BasicMechSword=DoubleSwing.SwordBlaze
 ImprovedMechSword=DoubleSwingII.SwordBlazeII
 FlawlessMechSword=DoubleSwingIII.SwordBlazeIII
@@ -128,10 +132,20 @@ BasicMechFists=DoubleStrike.MartialBlaze
 ImprovedMechFists=DoubleStrikeII.MartialBlazeII
 FlawlessMechFists=DoubleStrikeIII.MartialBlazeIII
 DarksteelOreFists=TripleStrike.MartialBlazeIII
-BasicMechStaff=MechFlare.MechQuake.MechFlood.MechTornado.MechFreeze.MechBurst.MechDarkness.MechBanish.MechFire.MechStone.MechWater.MechWind.MechIce.MechThunder.MechLight.MechShadow
-ImprovedMechStaff=MechFlareII.MechQuakeII.MechFloodII.MechTornadoII.MechFreezeII.MechBurstII.MechDarknessII.MechBanishII.MechFireII.MechStoneII.MechWaterII.MechWindII.MechIceII.MechThunderII.MechLightII.MechShadowII
-FlawlessMechStaff=MechFlareIII.MechQuakeIII.MechFloodIII.MechTornadoIII.MechFreezeIII.MechBurstIII.MechDarknessIII.MechBanishIII.MechFireIII.MechStoneIII.MechWaterIII.MechWindIII.MechIceIII.MechThunderIII.MechLightIII.MechShadowIII
-DarksteelOreStaff=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechFireIV.MechStoneIV.MechWaterIV.MechWindIV.MechIceIV.MechThunderIV.MechLightIV.MechShadowIV.MechUltima.MechKaustra
+BasicMechWand=MechFlare.MechQuake.MechFlood.MechTornado.MechFreeze.MechBurst.MechDarkness.MechBanish
+ImprovedMechWand=MechFlareII.MechQuakeII.MechFloodII.MechTornadoII.MechFreezeII.MechBurstII.MechDarknessII.MechBanishII
+FlawlessMechWand=MechFlareIII.MechQuakeIII.MechFloodIII.MechTornadoIII.MechFreezeIII.MechBurstIII.MechDarknessIII.MechBanishIII
+DarksteelOreWand=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV
+BasicMechStaff=MechFire.MechStone.MechWater.MechWind.MechIce.MechThunder.MechLight.MechShadow
+ImprovedMechStaff=MechFireII.MechStoneII.MechWaterII.MechWindII.MechIceII.MechThunderII.MechLightII.MechShadowII
+FlawlessMechStaff=MechFireIII.MechStoneIII.MechWaterIII.MechWindIII.MechIceIII.MechThunderIII.MechLightIII.MechShadowIII
+DarksteelOreStaff=MechFireIV.MechStoneIV.MechWaterIV.MechWindIV.MechIceIV.MechThunderIV.MechLightIV.MechShadowIV
+TitaniumMechStaff=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechUltima.MechKaustra
+AsherGuns=ShotBuster.FlareBuster.Cerberus.DoubleShotIII.TripleShot.GunBlazeIII
+ReubenKatanas=IronBlade.GarudasWrath.LotusBlades
+DinahWeapons=R-Fang.X-BusterII.X-Cannon.DoubleShotIII.TripleShot.GunBlazeIII
+DelphinusWeaponSystems=MoonStoneCannon.DoubleShotIII.TripleShot.GunblazeIII
+UmbranArmorGuns=DoubleShotIII.GunBlazeIII
 
 ; Monster / NPC Weapons
 Yagudo_Fists=Sweep.DoubleKick.FeatherStorm
@@ -382,8 +396,8 @@ GremlinAttack=GremlinBite
 MirrorOfTwilight=TwiliEnergy.TwiliFist.TwiliLight.TwiliCannon.TwiliBridge.TwiliWolves.TwilightMirror.TwiliSpear
 ShunShunRika=SoutenKisshun
 FreyaFists=EtherStrike.Thunder_Sword.Thunder_Strike.Heavenly_Punishment.Victory_Sword
-Sif's_Sword=BladeBeamII.Twin_Slice.Requiescat
-Dragonfang=LightningStrike.DeathBlossom.ChantDuCygne
+Sif's_Sword=BladeBeam.TwinSlice.BiteOfLightning
+Dragonfang=BladeBeam.TwinSlice.BiteOfLightning
 Glance_Reviver=NibelungValesti.Glowing_Pierce.Ptero_Attack.Vertical_Raid
 Sylvan_Bow=Spread_Shot.Tri-Blast.Infinity_Blast
 AikawaFists=AikawaGrab.RollingBlaze.FinalHeaven
@@ -395,6 +409,11 @@ Aquila=Resolution.RideTheLightning.Torcleaver
 GoukiGloves=GouHadouken.ZankuuHadouken.GouShouryuken.TatsumakiZankuuKyaku.MessatsuGouHadou.MessatsuGouShouryuu.TenmaGouZankuu.ShunGokuSatsu
 GammaBody=GammaEnergyBullet
 GammaArm=GammaGrab.GammaThrow.GammaPunch
+SmelterDemonSword=SmelterSlam.SmelterLunge.SmelterStrike.SmelterJump
+OldIronKingClaws=OldIronSwipe.OldIronSlam.OldIronDive.OldIronLaser.OldIronFireSlam.OldIronBreath.OldIronFlames
+UchihaPower=Katon:HousenkaNoJutsu.Katon:BakufuuRanbu.Katon:GoukakyuuNoJutsu
+MadaraGunbai&Kama=Katon:GoukakyuuNoJutsu.Katon:GoukaMekkyaku.Katon:GoukaMesshitsu.Katon:RyuuenHoukaNoJutsu.Mokuton:MokuryuuNoJutsu.Senpou:RantonKouga.Senpou:IntonRaiha.Truth-SeekingBall
+SusanooKatanas=YonNoTachi:Kagerou.ShichiNoTachi:Yukikaze.HachiNoTachi:Gekkou.KyuuNoTachi:Kassha
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -504,7 +523,7 @@ stat=str
 
 [SpinningAttack]
 Type=AOE
-TP=30
+TP=50
 Desc=lures all the battle targets close before performing a swift spinning attack, hitting all of $gender($1) targets at once!
 BasePower=10
 Cost=1000
@@ -548,7 +567,7 @@ renkei=2
 
 [Crystal]
 Type=AOE
-TP=30
+TP=50
 Desc=thrusts the nunchucks into the ground's surface to sprout huge ice pillars that shatter and hit all targets on the battlefield!
 BasePower=25
 Cost=1500
@@ -579,7 +598,7 @@ stat=str
 
 [Inferno]
 Type=AOE
-TP=30
+TP=50
 Desc=jumps into the air as the flame gauntlets glow a bright red.  Suddenly the floor of the battlefield fills with fire then exploding into a massive wall of flames, hitting all enemy targets.
 BasePower=25
 Cost=1500
@@ -624,7 +643,7 @@ hits=5
 
 [TornadoKick]
 Type=AOE
-TP=30
+TP=50
 Desc=performs a spinning kick to all enemies in range before leaping into the air to deliver a second spinning kick to all enemies on the battlefield.
 BasePower=25
 Element=Wind
@@ -673,7 +692,7 @@ hits=8
 
 [Drive]
 Type=AOE
-TP=30
+TP=50
 Desc=lures all the monsters close before performing a swift spinning attack, hitting all of $gender($1) targets at once!
 BasePower=25
 Cost=1500
@@ -694,7 +713,7 @@ renkei=1
 
 [JetStream]
 Type=AOE
-TP=30
+TP=50
 Desc=channels the power of the blade to slash through multiple enemies on the battlefield.
 BasePower=25
 Cost=500
@@ -704,7 +723,7 @@ stat=str
 
 [Tempest]
 Type=AOE
-TP=50
+TP=70
 Desc=begins to spin with both Agni & Rudra, creating a tornado of fire and wind that engulf all of the enemies upon the battlefield.
 BasePower=30
 Cost=500
@@ -714,7 +733,7 @@ stat=str
 
 [Atonement]
 Type=AOE
-TP=40
+TP=70
 Desc=holds the sword up high into the air.  It glows with a holy aura, before %user slams it into the ground, sending out waves of holy light that basks the battlefield, hitting all targets.
 BasePower=40
 Cost=1000
@@ -747,7 +766,7 @@ stat=str
 
 [CircleBlade]
 Type=AOE
-TP=30
+TP=50
 Desc=spins around and stabs the sword into the ground, causing pillars of stone to hit all targets on the battlefield.
 BasePower=20
 Cost=1000
@@ -780,7 +799,7 @@ stat=str
 
 [UrielBlade]
 Type=AOE
-TP=30
+TP=50
 Desc=leaps into the air and slams the sword into the ground, causing an explosion of Light energy to hit all enemies on the battlefield.
 BasePower=25
 Element=Light
@@ -974,7 +993,7 @@ renkei=3
 
 [Shockwave]
 Type=AOE
-TP=30
+TP=50
 Desc=lures all of the enemies close and swings the sword in a half circle to hit all enemies.
 BasePower=25
 Element=none
@@ -1007,7 +1026,7 @@ Hits=2
 
 [GroundStrike]
 Type=AOE
-TP=30
+TP=50
 Desc=leaps into the air and slams the greatsword into the ground, causing an explosion that hits all enemies in range.
 BasePower=25
 Element=none
@@ -1050,7 +1069,7 @@ renkei=4
 
 [Torcleaver]
 Type=AOE
-TP=60
+TP=80
 Desc=holds the greatsword off to the side as it gains a brown glow. %user then charges forward, striking all of the monsters with the element of earth.
 BasePower=60
 Element=Earth
@@ -1060,7 +1079,7 @@ stat=str
 
 [Resolution]
 Type=Single
-TP=60
+TP=70
 Desc=does an impressive series of swings with the greatsword upon %enemy before leaping into the air and slamming the greatsword down on %enemy $+ .
 BasePower=12
 Element=none
@@ -1129,7 +1148,7 @@ hits=2
 
 [SpinningScythe]
 Type=AOE
-TP=30
+TP=50
 Desc=raises the scythe into the air and lures all enemies close, slashing quickly with the scythe to hit all enemies.
 BasePower=20
 Element=Dark
@@ -1232,7 +1251,7 @@ hits=2
 
 [CircularChain]
 Type=AOE
-TP=50
+TP=70
 Desc=strikes out with the whip then begins to spin at a high speed to hit everyone in range with the whip!
 BasePower=25
 Cost=3000
@@ -1277,7 +1296,7 @@ GUNS & RIFLES
 ===================
 [Rainstorm]
 Type=AOE
-TP=50
+TP=80
 Desc=leaps high into the air and rains hundreds of bullets down upon all targets on the battle field
 BasePower=15
 Cost=2500
@@ -1368,7 +1387,7 @@ Hits=2
 
 [Detonator]
 Type=AOE
-TP=30
+TP=50
 Desc=lines up all enemies in the battle and fires a shot that hits all of the enemies!
 BasePower=15
 Element=None
@@ -1553,7 +1572,7 @@ hits=4
 
 [SonicThrust]
 Type=AOE
-TP=40
+TP=80
 Desc=twirls the spear as green energy surrounds the spear. %user then spins around and thrusts the spear foward, causing the green energy to slam into all targets on the field!
 BasePower=15
 Element=none
@@ -1588,7 +1607,7 @@ renkei=3
 
 [Chire]
 Type=AOE
-TP=25
+TP=50
 Desc=looks at the battlefield and goes "Scatter, Senbonzakura."  Senbonzakura's blade separates into a thousand slender, tiny blade fragments, which then fly away from the hilt and hit everyone on the battlefield before reforming into the sword.
 BasePower=20
 Cost=1700
@@ -1800,7 +1819,7 @@ hits=2
 Type=AOE
 Cost=2000
 Desc=leaps in the air, slashing the air with $gender($1) blade. Scorching bursts of fire bombards all foes.
-TP=50
+TP=80
 Element=Fire
 Hits=1
 BasePower=20
@@ -2018,7 +2037,7 @@ stat=int
 
 [Firaja]
 Type=AOE
-TP=45
+TP=90
 Desc=chants the encantation for the ancient and powerful spell Firaja. Colums of fire erupt from the battlefield and engulf all of the targets!
 BasePower=40
 Cost=2000
@@ -2028,7 +2047,7 @@ stat=int
 
 [Stoneja]
 Type=AOE
-TP=45
+TP=90
 Desc=chants the encantation for the ancient and powerful spell Stoneja. The ground shakes violently as the earth spits out giant boulders at all targets.
 BasePower=40
 Cost=2000
@@ -2038,7 +2057,7 @@ stat=
 
 [Waterja]
 Type=AOE
-TP=45
+TP=90
 Desc=casts a powerful water spell known by any wizard, Waterja.  A huge tidal wave floods the battle field, pushing all targets under the water
 BasePower=40
 Cost=2000
@@ -2048,7 +2067,7 @@ stat=int
 
 [Aeroja]
 Type=AOE
-TP=45
+TP=90
 Desc=casts a powerful wind spell known by any wizard, Aeroja.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
 BasePower=40
 Cost=2000
@@ -2058,7 +2077,7 @@ stat=int
 
 [Blizzaja]
 Type=AOE
-TP=45
+TP=90
 Desc=casts a powerful ice spell known by any wizard, Blizzaja.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
 BasePower=40
 Cost=2000
@@ -2068,7 +2087,7 @@ stat=int
 
 [Thundaja]
 Type=AOE
-TP=45
+TP=90
 Desc=casts a powerful lightning spell known by any wizard, Thundaja.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies.  
 BasePower=40
 Cost=2000
@@ -2133,7 +2152,7 @@ stat=int
 
 [Holy]
 Type=AOE
-TP=45
+TP=90
 Desc=casts Holy. A large explosion of Light energy damages everyone in range!
 BasePower=40
 Element=light
@@ -2197,7 +2216,7 @@ CappedAmount=1750
 
 [Cura]
 Type=heal-AOE
-TP=35
+TP=50
 Desc=casts a healing spell on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
 BasePower=30
 Cost=2000
@@ -2208,7 +2227,7 @@ CappedAmount=1250
 
 [Curaga]
 Type=heal-AOE
-TP=50
+TP=70
 Desc=casts Curaga on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
 BasePower=40
 Cost=3000
@@ -2349,7 +2368,7 @@ stat=int
 
 [CureV]
 Type=Heal
-TP=60
+TP=100
 Desc=casts a healing spell on %enemy $+ !  $set_chr_name($2) %real.name is bathed in a refreshing white light.
 BasePower=70
 Element=Light
@@ -2360,7 +2379,7 @@ CappedAmount=4000
 
 [FirajaII]
 Type=AOE
-TP=60
+TP=100
 Desc=casts the most powerful fire spell known by any wizard, Firaja II.  The battlefield erupts in flames!
 BasePower=60
 Cost=3500
@@ -2370,7 +2389,7 @@ stat=int
 
 [StonejaII]
 Type=AOE
-TP=60
+TP=100
 Desc=casts the most powerful stone spell known by any wizard, Stoneja II.  The ground shakes violently as the earth spits out giant boulders at all targets.
 BasePower=60
 Cost=3500
@@ -2380,7 +2399,7 @@ stat=int
 
 [WaterjaII]
 Type=AOE
-TP=60
+TP=100
 Desc=casts the most powerful water spell known by any wizard, Waterja II.  A huge tidal wave floods the battle field, pushing all targets under the water
 BasePower=60
 Cost=3000
@@ -2390,7 +2409,7 @@ stat=int
 
 [AerojaII]
 Type=AOE
-TP=60
+TP=100
 Desc=casts the most powerful wind spell known by any wizard, Aeroja II.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
 BasePower=60
 Cost=3500
@@ -2400,7 +2419,7 @@ stat=int
 
 [BlizzajaII]
 Type=AOE
-TP=60
+TP=100
 Desc=casts the most powerful ice spell known by any wizard, Blizzaja II.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
 BasePower=60
 Cost=3500
@@ -2410,7 +2429,7 @@ stat=int
 
 [ThundajaII]
 Type=AOE
-TP=60
+TP=100
 Desc=casts the most powerful lightning spell known by any wizard, Thundaja II.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies. 
 BasePower=60
 Cost=3500
@@ -2431,7 +2450,7 @@ DestroyShadows=4
 
 [Ultima]
 Type=Single
-TP=250
+TP=300
 Desc=traps %enemy in a large sphere of green energy. The sphere explodes a moment later, causing massive damage!
 BasePower=500
 Element=Light
@@ -2441,7 +2460,7 @@ stat=int
 
 [Kaustra]
 Type=Single
-TP=250
+TP=300
 Desc=traps %enemy in a large sphere of black energy. The sphere explodes a moment later, causing massive damage!
 BasePower=500
 Element=Dark
@@ -2501,7 +2520,7 @@ stat=int
 
 [Darkra]
 Type=AOE
-TP=45
+TP=90
 Desc=floats into the air slightly as $gender3($1) gathers energy. $set_chr_name($1) %real.name then hurls the wand into the ground, causing dark energy to expand over all of the battlefield!
 BasePower=40
 Element=Dark
@@ -2511,7 +2530,7 @@ stat=int
 
 [DarkraII]
 Type=AOE
-TP=60
+TP=100
 Desc=floats into the air slightly as $gender3($1) gathers energy. A small dark orb appears in front of $set_chr_name($1) %real.name for a moment before the orb slams into the battlefield, covering it in darkness!
 BasePower=60
 Element=Dark
@@ -2521,7 +2540,7 @@ stat=int
 
 [HolyII]
 Type=AOE
-TP=60
+TP=100
 Desc=casts a stronger version of Holy. Searing light engulfs the battlefield to damage all targets!
 BasePower=60
 Element=Light
@@ -2621,7 +2640,7 @@ stat=int
 
 [Globus]
 Type=AOE
-TP=40
+TP=80
 Desc=summons two pink spheres of energy and tosses them into the air. The spheres bounce around the battlefield to hit all targets!
 BasePower=25
 Element=earth
@@ -2832,7 +2851,7 @@ AXES
 ===================
 [FellCleave]
 Type=AOE
-TP=30
+TP=60
 Desc=gathers energy for a moment before spinning around the battlefield and cuts all targets with the axe!
 BasePower=20
 Element=None
@@ -2934,7 +2953,7 @@ stat=str
 
 [Ruinator]
 Type=AOE
-TP=30
+TP=60
 Desc=slashes a random enemy twice with the axe before leaping into the air. A moment later, $set_chr_name($1) %real.name slams the axe into the ground, cause blades of light blue energy to cut all of the enemies!
 BasePower=60
 Element=None
@@ -2999,7 +3018,7 @@ renkei=4
 
 [AeolianEdge]
 Type=AOE
-TP=45
+TP=60
 Desc=swings the dagger to the left, then quickly swings the dagger to the right, spinning around with it as well. A circle of green energy forms around $set_chr_name %real.name before exploding around the battlefield!
 BasePower=20
 Element=Wind
@@ -3100,7 +3119,7 @@ renkei=3
 
 [Sidewinder]
 Type=AOE
-TP=45
+TP=60
 Desc=lines up all of the enemies and fires an arrow strong enough to pierce all targets!
 BasePower=35
 Element=None
@@ -3120,7 +3139,7 @@ stat=spd
 
 [ArchingArrow]
 Type=AOE
-TP=60
+TP=80
 Desc=aims the bow at the sky and fires an arrow. After a moment, a storm of ice arrows hits the battlefield!
 BasePower=50
 Element=Ice
@@ -3160,7 +3179,7 @@ stat=spd
 
 [ApexArrow]
 Type=AOE
-TP=60
+TP=90
 Desc=takes aim and fires an arrow that hits all targets before stepping back as multiple energy arrows storm the battlefield!
 BasePower=30
 Element=None
@@ -3643,37 +3662,6 @@ Cost=0
 Element=None
 Magic=no
 stat=int
-
-[TwinSlice]
-Type=single
-TP=10
-Desc=quickly dashes towards %enemy and slices with the sword as $gender3($1) does. %user then spins to face %enemy and swings her sword down across %enemy $+ 's back before moving away.
-BasePower=20
-Element=none
-Cost=0
-Magic=no
-stat=str
-Hits=2
-
-[BiteOfLightning]
-Type=single
-TP=10
-Desc=smirks as lightning begins to dance on $gender($1) sword. %user slices %enemy multiple times before leaping back, swinging $gender($1) sword to send the lightning into %enemy $+ .
-BasePower=25
-Element=Lightning
-Cost=0
-Magic=yes
-stat=int
-
-[BladeBeam]
-Type=AOE
-TP=10
-Desc=holds up $gender($1) sword as a blue energy covers it as %user drives it into the ground. The energy shoots towards one target then splits to hit everyone else on the field.
-BasePower=25
-Element=Light
-Cost=0
-Magic=no
-stat=str
 
 [Kamehameha]
 Type=Single
@@ -6300,61 +6288,6 @@ Cost=0
 Magic=No
 stat=str
 IgnoreDefense=10
-
-[Gomorrah]
-Type=Single
-TP=10
-Desc=shouts out "AVAVAGO!" and summons a large dragon that proceeds to bite %enemy $+!
-BasePower=150
-Element=Dark
-Cost=0
-Magic=No
-stat=int
-IgnoreDefense=50
-
-[Malphas]
-Type=Single
-TP=10
-Desc=shouts out "A GRAA ORS!" and summons a large crow that proceeds to slam its large beak into %enemy $+ !
-BasePower=150
-Element=Dark
-Cost=0
-Magic=No
-stat=int
-IgnoreDefense=50
-
-[Hekatoncheir]
-Type=Single
-TP=10
-Desc=shouts out "AFFA IADA!" and summons six large arms that procced to pummel %enemy $+ !
-BasePower=175
-Element=Dark
-Cost=0
-Magic=No
-stat=int
-IgnoreDefense=50
-
-[Scolopendra]
-Type=Single
-TP=10
-Desc=shouts out "TELOCH VOVIN!" and summons a massive centipede, which quickly wraps around %enemy and crushes %enemy with great force!
-BasePower=200
-Element=Dark
-Cost=0
-Magic=No
-stat=int
-IgnoreDefense=50
-
-[Phantasmaraneae]
-Type=Single
-TP=10
-Desc=shouts out "AZAZAZ PIADPH!" and summons a massive spider which then spits multiple balls of fire at %enemy $+ !
-BasePower=175
-Element=Fire
-Cost=0
-Magic=No
-stat=int
-IgnoreDefense=50
 
 [Braver]
 Type=Single
@@ -10238,17 +10171,154 @@ Cost=0
 Magic=no
 stat=int
 IgnoreDefense=100
+DestroyShadows=8
+CanDodge=false
+HurtEthereal=true
 
-[Chainspell]
+[Gomorrah]
 Type=Single
 TP=10
-Desc=narrows $gender($1) eyes as roman numerals surrounds $gender2($1) $+ self before shattering. %user says, "This is the power of a Red Mage!" and unleashes a powerful barrage of attack spells upon %enemy $+ !
-BasePower=50
+Desc=shouts out "AVAVAGO!" and summons a large dragon that proceeds to bite %enemy $+!
+BasePower=150
 Element=None
 Cost=0
 Magic=No
 stat=int
-Hits=8
+IgnoreDefense=50
+HurtEthereal=true
+
+[Malphas]
+Type=Single
+TP=10
+Desc=shouts out "A GRAA ORS!" and summons a large crow that proceeds to slam its large beak into %enemy $+ !
+BasePower=150
+Element=None
+Cost=0
+Magic=No
+stat=int
+IgnoreDefense=50
+HurtEthereal=true
+
+[Hekatoncheir]
+Type=Single
+TP=10
+Desc=shouts out "AFFA IADA!" and summons six large arms that procced to pummel %enemy $+ !
+BasePower=150
+Element=None
+Cost=0
+Magic=No
+stat=int
+IgnoreDefense=50
+HurtEthereal=true
+
+[Scolopendra]
+Type=Single
+TP=10
+Desc=shouts out "TELOCH VOVIN!" and summons a massive centipede, which quickly wraps around %enemy and crushes %enemy with great force!
+BasePower=150
+Element=None
+Cost=0
+Magic=No
+stat=int
+IgnoreDefense=50
+HurtEthereal=true
+
+[Phantasmaraneae]
+Type=Single
+TP=10
+Desc=shouts out "AZAZAZ PIADPH!" and summons a massive spider which then spits multiple balls of fire at %enemy $+ !
+BasePower=150
+Element=None
+Cost=0
+Magic=No
+stat=int
+IgnoreDefense=50
+HurtEthereal=true
+
+[Omne]
+Type=Single
+TP=10
+Desc=summons a massive angel and demon hybrid that appears to be a combination of Jubileus, The Creator and Queen Sheba, but is a different being entirely. Omne performs a drop kick upon %enemy %+ , causing damage as if getting hit by the Big Bang.
+BasePower=3000
+Element=None
+Cost=0
+Magic=no
+stat=int
+IgnoreDefense=100
+CanDodge=False
+DestroyShadows=16
+
+[MadamaButterfly]
+Type=Single
+TP=10
+Desc=summons half of Madama Butterfly, who then hits %enemy with a devastating headbutt!
+BasePower=500
+Element=None
+Cost=0
+Magic=no
+stat=int
+IgnoreDefense=50
+CanDodge=False
+
+[Labolas]
+Type=Single
+TP=10
+Desc=shouts out "ARGEDCO!" and summons a massive and demonic dog, which then pounces upon %enemy and tears %enemy to shreds.
+BasePower=150
+Element=None
+Cost=0
+Magic=no
+stat=int
+IgnoreDefense=50
+CanDodge=False
+
+[Mictlantecuhtli]
+Type=Single
+TP=10
+Desc=summons a massive and demonic bat which then spins and drills into %enemy $+ !
+BasePower=150
+Element=None
+Cost=0
+Magic=no
+stat=int
+IgnoreDefense=50
+CanDodge=False
+
+[Baal]
+Type=Single
+TP=10
+Desc=summons a massive and demonic toad which then grabs %enemy with its tongue, pulling %enemy into its mouth and chews on %enemy for a bit!
+BasePower=150
+Element=None
+Cost=0
+Magic=no
+stat=int
+IgnoreDefense=50
+CanDodge=False
+
+[Hydra]
+Type=Single
+TP=10
+Desc=summons a massive and demonic version of Medusa's head, one of the snake hairs grabbing and chewing on %enemy a bit before slamming %enemy down into the ground.
+BasePower=150
+Element=None
+Cost=0
+Magic=no
+stat=int
+IgnoreDefense=50
+CanDodge=False
+
+[Diomedes]
+Type=Single
+TP=10
+Desc=summons a massive and demonic horse with a large sword blade, similar to that of a unicorn's horn. The demon rushes forward and performs a devastating slash with the blade.
+BasePower=150
+Element=None
+Cost=0
+Magic=no
+stat=int
+IgnoreDefense=50
+CanDodge=False
 
 [HakkanoTogame]
 Type=AOE
@@ -10261,6 +10331,7 @@ Magic=yes
 stat=int
 Hits=1
 DestroyShadows=4
+HurtEthereal=true
 
 [Red_DragonBurst]
 Type=AOE
@@ -10273,6 +10344,7 @@ Magic=yes
 stat=int
 Hits=1
 DestroyShadows=4
+HurtEthereal=true
 
 [BlackGetsugaTenshou]
 Type=single
@@ -10285,6 +10357,7 @@ Magic=no
 stat=str
 Hits=1
 DestroyShadows=4
+HurtEthereal=true
 
 [DoubleGetsugaTenshou]
 Type=AOE
@@ -10297,6 +10370,7 @@ Magic=no
 stat=str
 Hits=2
 DestroyShadows=4
+HurtEthereal=true
 
 [ShinShungokuSatsu]
 Type=single
@@ -10310,7 +10384,7 @@ Magic=No
 HurtEthereal=True
 stat=str
 CanDodge=false
-DestroyShadows=4
+DestroyShadows=2
 
 [TenshouKairekiJin]
 Type=Single
@@ -10338,7 +10412,7 @@ Magic=No
 HurtEthereal=True
 stat=str
 CanDodge=false
-DestroyShadows=4
+DestroyShadows=2
 
 [TenchiSoukaigen]
 Type=Single
@@ -12126,6 +12200,40 @@ magic=yes
 stat=int
 CappedAmount=3000
 
+[BladeBeam]
+Type=AOE
+TP=10
+Desc=holds up $gender($1) sword as a blue energy covers it as %user drives it into the ground. The energy shoots towards one target then splits to hit everyone else on the field.
+BasePower=25
+Element=Light
+Cost=0
+Magic=no
+stat=str
+DestroyShadows=2
+
+[TwinSlice]
+Type=single
+TP=10
+Desc=quickly dashes towards %enemy and slices with the sword as $gender3($1) does. %user then spins to face %enemy and swings her sword down across %enemy $+ 's back before moving away.
+BasePower=20
+Element=none
+Cost=0
+Magic=no
+stat=str
+Hits=2
+DestroyShadows=2
+
+[BiteOfLightning]
+Type=single
+TP=10
+Desc=smirks as lightning begins to dance on $gender($1) sword. %user slices %enemy multiple times before leaping back, swinging $gender($1) sword to send the lightning into %enemy $+ .
+BasePower=25
+Element=Lightning
+Cost=0
+Magic=yes
+stat=int
+DestroyShadows=2
+
 [EtherStrike]
 Type=AOE
 Cost=0
@@ -12139,7 +12247,7 @@ IgnoreDefense=20
 HurtEthereal=True
 stat=int
 CanDodge=false
-DestroyShadows=3
+DestroyShadows=1
 
 [Thunder_Sword]
 Type=Single
@@ -12294,3 +12402,335 @@ stat=str
 CanDodge=False
 Absorb=Yes
 DestroyShadows=2
+
+[SmelterSlam]
+Type=Single
+Cost=0
+Desc=holds the sword with both hands and performs an overhead slam upon %enemy $+ .
+TP=10
+Element=None
+Hits=1
+BasePower=60
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[SmelterLunge]
+Type=Single
+Cost=0
+Desc=charges towards %enemy and lunges with the sword in an attempt to stab %enemy $+ .
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[SmelterStrike]
+Type=Single
+Cost=0
+Desc=swings the sword twice at %enemy before hooping into the air and swings the sword down upon %enemy $+ .
+TP=10
+Element=None
+Hits=3
+BasePower=25
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[SmelterJump]
+Type=AOE
+Cost=0
+Desc=jumps into the air and slams the sword into the battlefield, causing an explosion of fire to cover the battlefield.
+TP=10
+Element=Fire
+Hits=1
+BasePower=50
+Magic=Yes
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[OldIronSwipe]
+Type=AOE
+Cost=0
+Desc=swipes across the battlefield with one of his arms, hitting all of the players.
+TP=10
+Element=Nonr
+Hits=$rand(1,2)
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[OldIronSlam]
+Type=Single
+Cost=0
+Desc=raises both arms into the air before slamming them down upon %enemy with great force.
+TP=10
+Element=None
+Hits=$rand(1,2)
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[OldIronDive]
+Type=AOE
+Cost=0
+Desc=quickly dives down, causing the molten lava to cover the battlefield and rises to another area of the battlefield.
+TP=10
+Element=Fire
+Hits=1
+BasePower=60
+Magic=yes
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[OldIronLaser]
+Type=Single
+Cost=0
+Desc=gains a fiery glow on his right hand and fires a laser beam at %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[OldIronFireSlam]
+Type=AOE
+Cost=0
+Desc=charges both arms with fire and slams them down onto the battlefield, causing fire to erupt from the battlefield.
+TP=10
+Element=Fire
+Hits=1
+BasePower=50
+Magic=Yes
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[OldIronBreath]
+Type=Single
+Cost=0
+Desc=shoots out a line of fire from his mouth towards %enemy $+ .
+TP=10
+Element=Fire
+Hits=1
+BasePower=50
+Magic=Yes
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[OldIronFlames]
+Type=AOE
+Cost=0
+Desc=shoots flames from his mouth in a wide arc to hit all players on the battlefield.
+TP=10
+Element=Fire
+Hits=1
+BasePower=50
+Magic=yes
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[Katon:HousenkaNoJutsu]
+Type=AOE
+Cost=0
+Desc=performs a series of hand gestures before creating a volley of small fireballs and the hurls them all over the battlefield.
+TP=10
+Element=Fire
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[Katon:BakufuuRanbu]
+Type=AOE
+Cost=0
+Desc=performs a series of hand gestures before unleashing a spiral wave of fire that covers the entire battlefield!
+TP=10
+Element=Fire
+Hits=1
+BasePower=40
+Magic=Yes
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[Katon:GoukakyuuNoJutsu]
+Type=Single
+Cost=0
+Desc=performs a series of hand gestures before spitting out a large ball of fire towards %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[Katon:GoukaMekkyaku]
+Type=AOE
+Cost=0
+Desc=performs a series of hand gestures before spitting out a large fireball that covers the battlefield!
+TP=10
+Element=Fire
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=False
+
+[Katon:GoukaMesshitsu]
+Type=Single
+Cost=0
+Desc=performs a series of hand gestures before spitting out a stream of intense flames at %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=40
+Magic=Yes
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[Katon:RyuuenHoukaNoJutsu]
+Type=AOE
+Cost=0
+Desc=performs a series of hand gestures before summoning numerous dragon head-shaped fireballs that are unleashed upon the entire battlefield.
+TP=1
+Element=Fire
+Hits=1
+BasePower=50
+Magic=yes
+HurtEthereal=true
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[Mokuton:MokuryuuNoJutsu]
+Type=Single
+Cost=0
+Desc=performs a series of hand gestures before summoning a wooden dragon that wraps around %enemy $+ . The head of the dragon bites into %enemy in order to drain health.
+TP=10
+Element=Earth
+Hits=1
+BasePower=50
+Magic=false
+HurtEthereal=true
+stat=str
+CanDodge=false
+Absorb=yes
+StealStatus=true
+DestroyShadows=4
+
+[Senpou:RantonKouga]
+Type=Single
+Cost=0
+Desc=spits out a thin stream of lightning with high cutting power towards %enemy $+ .
+TP=10
+Element=Lightning
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[Senpou:IntonRaiha]
+Type=AOE
+Cost=0
+Desc=performs a series of hand gestures before holding his hands forward and covers the battlefield with powerful lightning.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=false
+
+[Truth-SeekingBall]
+Type=Single
+Cost=0
+Desc=hurls one of the Truth-Seeking Balls towards %enemy with great force!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[YonNoTachi:Kagerou]
+Type=Single
+TP=0
+EnergyCost=250
+Desc=raises $gender($1) katana and slashes %enemy and backs up as a small pillar of flame erupts around %enemy $+ .
+BasePower=40
+Element=Fire
+Cost=0
+Magic=yes
+stat=str
+CanDodge=False
+
+[ShichiNoTachi:Yukikaze]
+Type=Single
+StatusType=Blind
+TP=0
+EnergyCost=250
+Desc=stabs %enemy with the katana and encases %enemy in ice. The ice then shatters, causing Blindness to %enemy $+ !
+BasePower=45
+Element=Ice
+Cost=0
+Magic=no
+stat=str
+CanDodge=False
+
+[HachiNoTachi:Gekkou]
+Type=Single
+StatusType=Curse
+TP=0
+EnergyCost=250
+Desc=charges up a dark energy in $gender($1) blade before doing an impressive spin to release the power on %enemy $+ !
+BasePower=20
+Cost=0
+Element=dark
+magic=no
+stat=str
+CanDodge=False
+
+[KyuuNoTachi:Kassha]
+Type=Single
+StatusType=Paralysis
+TP=0
+EnergyCost=250
+Desc=returns $gender($1) katana to its sheath and pauses for a second before quickly slashing %enemy as a feint image of flower petals appears for a second, causing Paralysis in %enemy $+ !
+BasePower=45
+Element=Light
+Cost=0
+magic=no
+stat=str
+CanDodge=False

@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=$iif($return_playersinbattle > 1, 12000, 10000)
 Tp=5000
-Str=2000
-Def=1533
-Int=1533
-Spd=1533
+Str=1544
+Def=1544
+Int=1544
+Spd=1544
 IgnitionGauge=500
 Name=Freya
 
@@ -12,10 +12,10 @@ Name=Freya
 [Battle]
 Hp=12000
 Tp=5000
-Str=2000
-Def=1533
-Int=1533
-Spd=1533
+Str=1544
+Def=1544
+Int=1544
+Spd=1544
 IgnitionGauge=500
 Status=alive
 
@@ -46,7 +46,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BossLevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 8000)
+BossLevel=300
 Streak=-1000
 CanTaunt=False
 RageMode=ignore

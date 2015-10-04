@@ -1,22 +1,22 @@
 [BaseStats]
 Hp=$iif($return_playersinbattle > 1, 12000, 10000)
-Tp=5000
-Str=1544
-Def=1544
-Int=1544
-Spd=1544
-IgnitionGauge=500
-Name=Sif
+Tp=500
+Str=2059
+Def=2059
+Int=2059
+Spd=2059
+IgnitionGauge=10000000
+Name=Old Iron King
 
 
 [Battle]
 Hp=12000
-Tp=5000
-Str=1544
-Def=1544
-Int=1544
-Spd=1544
-IgnitionGauge=500
+Tp=500
+Str=2059
+Def=2059
+Int=2059
+Spd=2059
+IgnitionGauge=10000000
 Status=alive
 
 
@@ -26,10 +26,9 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a tall and beautiful warrior-goddess of the Asgard. She is a formidable combatant and has extensive training in unarmed combat and swordsmanship.
-Rage=
-BossQuote=You dare to intrude upon Asgard? You will pay for your impudence, mortals.
-AesirMight=looks at the heroes and says, "Time to feel the true power of an Asgardian warrior."
+Char=is a massive red demon with red wings that stands in the molten iron that the Iron Keep fortress is sinking into.
+Rage=roars in rage 
+BossQuote=I will steal your soul and gain even more power!
 
 
 [Stuff]
@@ -40,21 +39,21 @@ Drops=
 
 [Info]
 Flag=monster
-Gender=her
-Gender2=her
+Gender=his
+Gender2=him
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BossLevel=300
+BossLevel=400
 Streak=-1000
-CanTaunt=False
-Ragemode=ignore
+CanTaunt=false
 IgnoreQuicksilver=true
-IgnoreDrain=true
 JustReleaseDefense=100
-ai_type=techonly
+RageMode=ignore
+CanFlee=false
+IgnoreDrain=true
 IgnorePresident=true
 IgnoreElementalMessage=true
 ;=======================================
@@ -133,14 +132,14 @@ IgnoreElementalMessage=true
 
 [monster]
 ; Type is the type of monster it is. 
-type=Aesir
+type=demon
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
 ; Change it to "true" to turn it on.
 TechLearn=true
 
 ; Size is the size of the monster. Small/Medium/Large
-size=medium
+size=large
 
 [Status]
 Poison=no
@@ -176,20 +175,16 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=Sif's_Sword
-EquippedLeft=Dragonfang
-Sif's_Sword=$current.battlestreak
-Dragonfang=$current.battlestreak
+Equipped=OldIronKingClaws
+OldIronKingClaws=$current.battlestreak
 
 
 [Skills]
-DualWield=1
 Zen=5
-WeaponBash=1
 Impetus=20
-Konzen-Ittai=1
-SwordMaster=100
-clearMind=3
+WeaponBash=1
+MartialArts=100
+Resist-Stun=100
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -201,67 +196,58 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Resist-Weaponlock=100
+Resist-Disarm=100
 Resist-Drunk=100
 Resist-Sleep=100
-Resist-Disarm=100
-
 
 [Techniques]
-BladeBeam=$current.battlestreak
-TwinSlice=$current.battlestreak
-BiteOfLightning=$current.battlestreak
+OldIronSwipe=$current.battlestreak
+OldIronSlam=$current.battlestreak
+OldIronDive=$current.battlestreak
+OldIronLaser=$current.battlestreak
+OldIronFireSlam=$current.battlestreak
+OldIronBreath=$current.battlestreak
+OldIronFlames=$current.battlestreak
 
 
 [Item_Amount]
 
-[Ignitions]
-AesirMight=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Sif), battle, hp) / $readini($char(Sif), basestats, hp)) * 100) <= 80, 1, 0))
-
 [Augments]
-Sif's_Sword=MeleeBonus.RenkeiBonus.TechBonus.IgnoreGuardian
-Dragonfang=MeleeBonus.RenkeiBonus.TechBonus.IgnoreGuardian
-
-[Styles]
-Equipped=WeaponMaster
-WeaponMaster=10
-WeaponMasterXP=1
+OldIronKingClaws=MeleeBonus.TechBonus.IgnoreGuardian.HurtEthereal.IgnoreMetalDefense
 
 [modifiers]
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
-Heal=Light
+Heal=Fire
 Earth=70
-Fire=70
+Fire=500
 Wind=70
 Water=70
 Ice=70
-Lightning=70
-Light=200
+Lightning=110
+Light=70
 Dark=70
-HandToHand=70
-Whip=70
-Sword=70
-Gun=70
-Rifle=70
-Katana=70
-Wand=70
-Spear=70
-Scythe=70
-Glyph=70
-GreatSword=70
-Bow=70
-Axe=70
-Dagger=70
-Dancing=70
-Engine=70
-Mace=70
-PinkChainsaw=70
-Stave=70
-EnergyBlaster=150
+HandToHand=90
+Whip=90
+Sword=90
+Gun=90
+Rifle=90
+Katana=90
+Wand=90
+Spear=90
+Scythe=90
+Glyph=90
+GreatSword=90
+Bow=90
+Axe=90
+Dagger=90
+Mace=90
+Stave=90
+EnergyBlaster=90
 HolyHandGrenade=0
-Crissaegrim=50
-Valmanway=50
-Naturaleza=50
+Crissaegrim=45
+Valmanway=45
+Naturaleza=45
 AsuranFists=45
 VictorySmite=45
 ShinjinSpiral=45
@@ -270,23 +256,23 @@ VorpalBlade=45
 DeathBlossom=45
 SwiftBlade=45
 ChantDuCygne=45
-Requiescat=120
+Requiescat=45
 Resolution=45
 Guillotine=45
 Insurgency=45
 Pentathrust=45
-Drakesbane=120
+Drakesbane=45
 Stardiver=45
 PyrrhicKleos=45
 Evisceration=45
 DancingEdge=45
-Ultima=120
+Ultima=45
 Kaustra=45
 Ashes=45
 Dismay=45
 ThousandCuts=45
-Tachi:Shoha=50
-Tachi:Rana=50
+Tachi:Shoha=45
+Tachi:Rana=45
 Rainstorm=45
 SpinningAttack=45
 TornadoKick=45
@@ -294,7 +280,7 @@ CircularChain=45
 CircleBlade=45
 SonicThrust=45
 ApexArrow=45
-UrielBlade=120
+UrielBlade=45
 FellCleave=45
 AeolianEdge=45
 Twin_Slice=45
@@ -302,13 +288,16 @@ LightningStrike=45
 BladeBeamII=45
 TrillionStabs=45
 DoubleBackstab=45
-Chou_Kamehameha=120
+Chou_Kamehameha=45
 BloodBath=45
-UltimaII=120
+UltimaII=45
 KaustraII=45
-Chivalry=120
+Chivalry=45
 
-[NaturalArmor]
-Name=Goddess Defense
-Max=1000
-Current=1000
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+WeaponMasterXP=1
+
+[Ignitions]
+IronKingFlame=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Old_Iron_King), battle, hp) / $readini($char(Old_Iron_King), basestats, hp)) * 100) <= 75, 1, 0))

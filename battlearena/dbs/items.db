@@ -99,8 +99,8 @@ ShopNPC=TravelMerchant
 Target=Single
 Amount=50
 Desc=pulls out bottle of liquid made with blood labeled "Mega Potion" and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=4000
-SellPrice=2000
+Cost=2000
+SellPrice=750
 FullbringLevel=5
 FullbringTarget=AOE
 FullbringAmount=1500
@@ -126,7 +126,7 @@ Target=Single
 Amount=45
 ShopNPC=Santa
 Desc=pulls out a small red and white candy cane and hands it to %enemy who eats it. Cruncy! 
-Cost=$iif($readini(shopnpcs.dat, NPCStatus, Santa) = true, 1000, 0)
+Cost=$iif($readini(shopnpcs.dat, NPCStatus, Santa) = true, 1750, 0)
 SellPrice=200
 FullbringLevel=5
 FullbringTarget=AOE
@@ -158,7 +158,6 @@ FullbringLevel=2
 FullbringTarget=AOE
 FullbringAmount=30
 Fullbringdesc=draws out the soul from the Ether.  A light white rain begins to rain down upon everyone and everyone feels their TP being restored.
-ConquestItem=true
 
 [Mid-Ether]
 Type=tp
@@ -188,6 +187,20 @@ FullbringAmount=80
 Fullbringdesc=draws out the soul from the Ether.  A light white rain begins to rain down upon everyone and everyone feels their TP being restored.
 ConquestItem=true
 
+[Super-Ether]
+Type=tp
+ShopNPC=HealingMerchant
+Target=Single
+Amount=320
+Desc=pulls out a bottle of white liquid and hands it to %enemy $+ .  After drinking it, %enemy feels $gender2($4) TP being restored.
+Cost=1500
+SellPrice=750
+FullbringLevel=5
+FullbringTarget=AOE
+FullbringAmount=100
+Fullbringdesc=draws out the soul from the Ether.  A light white rain begins to rain down upon everyone and everyone feels their TP being restored.
+ConquestItem=true
+
 [Tonic]
 Type=CureStatus
 ShopNPC=HealingMerchant
@@ -205,7 +218,6 @@ Desc=pulls out a small box of tissues and hands it to %enemy who uses them. Stra
 Type=IgnitionGauge
 Target=single
 Amount=15
-Cost=0
 SellPrice=800
 Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 10, 1000, 0)
 Desc=pulls out a green, red and gold colored star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
@@ -215,10 +227,20 @@ ShopNPC=Santa
 Type=IgnitionGauge
 Target=single
 Amount=20
-Cost=2000
+Cost=2500
 SellPrice=1000
 Desc=pulls out a strange purple star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
 ShopNPC=HealingMerchant
+
+[LargeIgnitionStar]
+Type=IgnitionGauge
+Target=single
+Amount=40
+Cost=5000
+SellPrice=1500
+Desc=pulls out a strange purple star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
+ShopNPC=HealingMerchant
+ConquestItem=true
 
 [GoldOrb]
 Type=Revive
@@ -1301,6 +1323,14 @@ Exclusive=yes
 Sellprice=0
 Cost=100
 
+[StrangeCoconut]
+Type=trust
+NPC=FrenchTaunter
+SummonDesc=$get_chr_name($1) takes two of the halves and bangs them together, imitating the sound of a horse galloping. Suddenly, the French Taunter appears next to $get_chr_name($1) $+ !
+Exclusive=yes
+SellPrice=100
+Cost=100
+
 =========================
 ACCESSORIES
 =========================
@@ -2089,6 +2119,62 @@ SellPrice=50
 Desc=A fang from a tiger
 Currency=AlliedNotes
 
+[TitaniteShard]
+Type=increaseWeaponLevel
+IncreaseAmount=1
+Desc=takes out a shard of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
+Cost=50000
+SellPrice=2000
+Exclusive=yes
+ShopNPC=BattleMerchant
+ConquestItem=true
+
+[TitaniteChunk]
+Type=increaseWeaponLevel
+IncreaseAmount=5
+Desc=takes out a chunk of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
+Cost=100000
+SellPrice=2000
+Exclusive=yes
+ShopNPC=BattleMerchant
+ConquestItem=true
+
+[LargeTitaniteChunk]
+Type=increaseWeaponLevel
+IncreaseAmount=15
+Desc=takes out a large chunk of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+[TitaniteSlab]
+Type=increaseWeaponLevel
+IncreaseAmount=25
+Desc=takes out a slab of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+[LargeTitaniteSlab]
+Type=increaseWeaponLevel
+IncreaseAmount=100
+Desc=takes out a large slab of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+[StrangeTitaniteSlab]
+Type=increaseWeaponLevel
+ShopNPC=TravelMerchant
+IncreaseAmount=200
+Desc=takes out a strage blue slab of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
+Cost=1500000
+SellPrice=2000
+Exclusive=yes
+
 [BeastmenSeal]
 type=trade
 cost=50
@@ -2533,7 +2619,7 @@ battlefield=Allied Training Field
 Weather=calm
 Monster=Allied_Scrub
 Desc=visits the Allied Forces and hands the guard the training paper. "You must be here to train the new guy," he says to them before leading them to the training field.
-AlliedNotes=50
+AlliedNotes=250
 Exclusive=yes
 PortalLevel=10
 
@@ -2545,7 +2631,7 @@ Battlefield=Leene Square
 Weather=calm
 Monster=Gato
 Desc=takes out the fair pass, which allows everyone to enter. The heroes take a look around, enjoying the sights. Eventually they come up to an area with a strange robot. The robot sees the heroes and goes to speak into the microphone in its hand.
-AlliedNotes=50
+AlliedNotes=500
 Exclusive=yes
 PortalLevel=10
 
@@ -2557,7 +2643,7 @@ battlefield=Korroloka Tunnel
 Weather=gloomy
 Monster=Morion_Worm
 Desc=travels to the Korroloka Tunnel and takes out the worm food.  After opening it, %real.name sprinkles the food out on the cavern floor.  A large worm pops out of the side of the cavern wall and looks at the heroes..
-AlliedNotes=50
+AlliedNotes=250
 Exclusive=yes
 PortalLevel=25
 
@@ -2569,7 +2655,7 @@ Battlefield=Jester's Lair
 Weather=gloomy
 Monster=Crazy_Jester
 Desc=rings a demonic bell that opens a portal. Upon entering they are greeted with Jester, the insane clown.
-AlliedNotes=100
+AlliedNotes=500
 Exclusive=yes
 PortalLevel=30
 
@@ -2581,7 +2667,7 @@ battlefield=Waughroon Shrine
 Weather=hot
 Monster=Time_Bomb
 Desc=travels to Waughroon Shrine and takes out the bomb shard.  After placing it down into the center of the shrine a large and powerful bomb is lured out and floats onto the battlefield
-AlliedNotes=200
+AlliedNotes=500
 Exclusive=yes
 PortalLevel=30
 DarknessTurns=7
@@ -2594,7 +2680,7 @@ Battlefield=Eastern Palace
 Weather=gloomy
 Monster=Armos_Knight.Small_Armos
 Desc=pulls out a an ancient Armos Medallian that leads the heroes to an old palace on the eastern border.  Inside they overcome many puzzles and dangers to finally reach a boss room.
-AlliedNotes=200
+AlliedNotes=750
 Exclusive=yes
 PortalLevel=30
 
@@ -2606,7 +2692,7 @@ Battlefield=Desert Palace
 weather=dry
 Monster=Red_Lanmola.Green_Lanmola.Blue_Lanmola
 Desc=pulls out an ancient book that leads the heroes to an old palace in the desert.  Inside they overcome many puzzles and dangers before finally reaching a large room full of sand.  The sand seems to be moving.. prepare yourselves!
-AlliedNotes=200
+AlliedNotes=750
 Exclusive=yes
 PortalLevel=30
 
@@ -2618,7 +2704,7 @@ Battlefield=Tower of Hera
 weather=dry
 Monster=Moldorm.MoldormTail
 Desc=takes a special key made to enter the Tower of Hera.  After a climb up a mountain, the heroes enter and climb the tower to the top floor where they're greeted by a massive yellow centipede-snake creature.
-AlliedNotes=200
+AlliedNotes=750
 Exclusive=yes
 PortalLevel=30
 
@@ -2630,7 +2716,7 @@ Battlefield=Overworld - Night
 Weather=calm
 Monster=Eye_of_Cthulhu
 Desc=takes out a small item that resembles an eye and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Eye of Cthulhu has awoken!]
-AlliedNotes=200
+AlliedNotes=750
 Exclusive=yes
 PortalLevel=50
 
@@ -2642,7 +2728,7 @@ Battlefield=Overworld - The Corruption
 Weather=gloomy
 Monster=Eater_of_Worlds
 Desc=travels to the Corruption. %real.name takes out some rotten meat attached to a bone and tosses it into a deep pit. A loud roar is heard a moment later as a massive worm rises out of the pit. [Eater of Worlds has awoken!]
-AlliedNotes=200
+AlliedNotes=750
 Exclusive=yes
 PortalLevel=75
 
@@ -2654,7 +2740,7 @@ Battlefield=Overworld - The Crimson
 Weather=gloomy
 Monster=Brain_of_Cthulhu
 Desc=travels to the Crimson. %real.name takes out a small item that resembles a spine, which somehow drips blood and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Brain of Cthulhu has awoken!]
-AlliedNotes=200
+AlliedNotes=750
 Exclusive=yes
 PortalLevel=75
 
@@ -2666,7 +2752,7 @@ Battlefield=Overworld - The Dungeon
 Weather=calm
 Monster=Skeletron.Skeletron_LeftArm.Skeletron_RightArm
 Desc=takes out a map which leads to a dungeon. After descending into the dungeon, a loud roar is heard. [Skeletron has awoken!]
-AlliedNotes=200
+AlliedNotes=750
 Exclusive=yes
 PorltalLevel=100
 
@@ -2678,7 +2764,7 @@ Battlefield=Ancient Mayan Ruins
 weather=hot
 Monster=Mazaal.MazaalRHand.MazaalLHand
 Desc=takes the ancient Mayan Map and uses it to locate the remains of ancient Mayan ruins. After much effort, the heroes enter and climb through the ruins to a special chamber where they're greeted by a large Mayan-looking head statue and two large Mayan-looking hand statues.
-AlliedNotes=350
+AlliedNotes=1000
 Exclusive=yes
 PortalLevel=30
 
@@ -2690,7 +2776,7 @@ Battlefield=Slurm Factory
 Weather=gloomy
 Monster=Poison
 Desc=pulls out a special can of Virility. It sure does look an awful lot like a can of Slurm.  After drinking it, the heroes are pulled into Limbo where they can venture deep into the Virility factory.  After a little bit of exploring, they discover the horror: the secret ingrident comes from the behind of one awfully large demon slug named Poison. Yuck!
-AlliedNotes=250
+AlliedNotes=750
 Exclusive=yes
 PortalLevel=50
 
@@ -2705,7 +2791,7 @@ Battlefield=Dr. Wily's Castle
 Weather=Gloomy
 Monster=Gamma.GammaLeftArm.GammaRightArm
 Desc=manages to gather the eight energy elements only to be stolen by the nefarious Dr. Wily! The heroes travel to Dr. Wily's castle in an attempt to defeat him.
-AlliedNotes=1200
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=150
 
@@ -2717,7 +2803,7 @@ battlefield=Levithan's Heartcore
 Weather=calm
 Monster=LeviathanLeftHeart.LeviathanCenterHeart.LeviathanRightHeart
 Desc=is swallowed whole by the great and powerful flying demon known as Leviathan.  Once inside, the heroes take the Ignis Fatuus (a small object composed of souls of the fallen) to the demon's heartcore chamber.  The three hearts are protected by a membrane. Suddenly the Ignis Fatuus releases the souls it has collected and the membrane disappears, exposing the three hearts and the only way the beast can be defeated.
-AlliedNotes=1000
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=55
 
@@ -2729,7 +2815,7 @@ Battlefield=Raptor News Network Studio
 Weather=calm
 Monster=Bob_Barbas
 Desc=takes out a small glowing orb that has the initials R.N.N. on it. %real.name then tosses the orb onto the ground. It shatters and the players are teleported into the Raptor News Network.
-AlliedNotes=1000
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=60
 
@@ -2741,7 +2827,7 @@ battlefield=Waughroon Shrine
 Weather=calm
 Monster=Gaki.Onki.Rasetsu
 Desc=takes out the banishing charm; a powerful charm used to banish demons. It begins to glow and creates a portal that teleports the heroes into a demonic shrine where three demons await.
-AlliedNotes=1000
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=50
 
@@ -2765,7 +2851,7 @@ Battlefield=Byakko's Chamber
 Weather=stormy
 Monster=Byakko
 Desc=takes out the Gem of the West, a pulsing green gem. It glows brightly before shattering.  A green light shoots out of the sky and down onto the heroes, who are teleported up into Byakko's Chamber.
-AlliedNotes=1200
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=110
 
@@ -2777,7 +2863,7 @@ Battlefield=Genbu's Chamber
 Weather=dry
 Monster=Genbu
 Desc=takes out the Gem of the North, a pulsing brown gem. It glows brightly before shattering.  A brown light shoots out of the sky and down onto the heroes, who are teleported up into Genbu's Chamber.
-AlliedNotes=1200
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=110
 
@@ -2789,7 +2875,7 @@ Battlefield=Seiryu's Chamber
 Weather=hot
 Monster=Seiryu
 Desc=takes out the Gem of the East, a pulsing red gem. It glows brightly before shattering.  A red light shoots out of the sky and down onto the heroes, who are teleported up into Seiryu's Chamber.
-AlliedNotes=1200
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=110
 
@@ -2801,7 +2887,7 @@ Battlefield=Suzaku's Chamber
 Weather=snowy
 Monster=Suzaku
 Desc=takes out the Gem of the South, a pulsing white gem. It glows brightly before shattering.  A white light shoots out of the sky and down onto the heroes, who are teleported up into Suzaku's Chamber.
-AlliedNotes=1200
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=110
 
@@ -2813,7 +2899,7 @@ Battlefield=The Shrine of Ru'Avitau
 Weather=light
 Monster=Kirin
 Desc=takes out the small glowing orb, which shatters and creates a large portal that leads up into the sky.  After entering, the heroes find themselves inside an ancient shrine of the sky gods, The Shrine of Ru'Avitau.  
-AlliedNotes=2500
+AlliedNotes=3000
 Exclusive=yes
 PortalLevel=120
 
@@ -2825,7 +2911,7 @@ Battlefield=Overworld - Night
 Weather=calm
 Monster=Retinazer.Spazmatism
 Desc=takes out a small item that resembles a mechanical eye and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [The Twins have awoken!]
-AlliedNotes=1000
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=200
 
@@ -2837,7 +2923,7 @@ Battlefield=Overworld - Night
 Weather=calm
 Monster=The_Destroyer
 Desc=takes out a small item that resembles a mechanical worm and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [The Destroyer has awoken!]
-AlliedNotes=1050
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=200
 
@@ -2849,7 +2935,7 @@ Battlefield=Overworld - Night
 Weather=calm
 Monster=Skeletron_Prime.Prime_Cannon.Prime_Laser.Prime_Saw.Prime_Vice
 Desc=takes out a small item that resembles a mechanical skull and tosses it into the air. A loud roar is heard as the item suddenly vanishes. [Skeletron Prime has awoken!]
-AlliedNotes=1100
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=225
 
@@ -2861,7 +2947,7 @@ Battlefield=Underground Jungle
 Weather=calm
 Monster=Plantera
 Desc=comes across a cave while exploring the jungle. %real.name stumbles over a small, pink bulb while exploring the cave. %real.name decides to destroy it, and upon doing so, a loud roar is heard. [Plantera has awoken!]
-AlliedNotes=1150
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=250
 
@@ -2873,7 +2959,7 @@ Battlefield=Hyrule Field
 Weather=light
 Monster=HeroOfTime
 Desc=takes out the small glowing orb that has a Triforce symbol on it and watches as the battlefield is enveloped in a bright light.  When the light clears, the heroes find themselves standing in ancient Hyrule, facing an ancient hero.  
-AlliedNotes=2500
+AlliedNotes=3000
 Exclusive=yes
 PortalLevel=100
 
@@ -2885,7 +2971,7 @@ Battlefield=Horlais Peak
 Weather=Calm
 Monster=Rainemard
 Desc=takes out a blue gem that has white light swirling inside. The blue gem shatters a moment later, transporting the players to Horlais Peak.
-AlliedNotes=1000
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
@@ -2897,7 +2983,7 @@ Battlefield=Valkurm Dunes
 Weather=Dry
 Monster=Marchelute
 Desc=takes out the Tavnazia Pass. The paper crumbles and transports everyone to the Valkurm Dunes.
-AlliedNotes=1500
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
@@ -2909,7 +2995,7 @@ Battlefield=Castle Oztroja
 Weather=Calm
 Monster=HuuXalmo
 Desc=takes out a bottle of Yagudo Drink and sets it on the ground. A random Yagudo quickly takes it and teleports everyone to Castle Oztroja.
-AlliedNotes=1500
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
@@ -2921,7 +3007,7 @@ Battlefield=Abyssea - Misareaux Coast
 Weather=Calm
 Monster=IroncladSeverer
 Desc=takes out a spheroid plate and sets it on the ground. Everyone is then teleported to Abyssea - Misareaux Coast, appearing before the Iron Giant who begins to awaken.
-AlliedNotes=1500
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
@@ -2933,7 +3019,7 @@ Battlefield=Abyssea - Uleguerand Range
 Weather=Snowy
 Monster=Awahondo
 Desc=takes out a bottle of avatar blood and tosses it to the ground. It shatters and teleports everyone to Abyssea - Uleguerand Range.
-AlliedNotes=1500
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
@@ -2945,7 +3031,19 @@ Battlefield=Davoi
 Weather=Calm
 Monster=Prozpuz
 Desc=takes out an old bow and set it down. A random Orc takes the bow and teleports everyone to Davoi.
-AlliedNotes=1500
+AlliedNotes=2000
+Exclusive=yes
+PortalLevel=150
+
+[SmelterDemonSoul]
+type=portal
+Cost=20
+Currency=KindredSeal
+Battlefield=Iron Keep
+Weather=Hot
+Monster=Smelter_Demon
+Desc=takes out the soul of a powerful demon and crushes it in hand, which transports everyone to a section of the Iron Keep fortress. The fortress is slowly sinking into the molten iron.
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
@@ -2960,7 +3058,7 @@ Battlefield=Underground Jungle - Lihzahrd Temple
 Weather=gloomy
 Monster=Golem_Controller.Lihzahrd_Golem
 Desc=ventures into a mysterious temple found in the Underground Jungle. After navigating through various traps, %real.name finds a strange altar. %real.name takes out a small power cell and places it onto the altar, which causes a loud roar to be heard. [The Golem has awoken!]
-AlliedNotes=1200
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=250
 
@@ -2972,7 +3070,7 @@ Battlefield=Overworld - Ocean
 Weather=rainy
 Monster=Duke_Fishron
 Desc=travels to the ocean. %real.name takes out a fishing rod and attaches the truffle worm onto the hook, casting the line into the ocean. After a bit of time, %real.name feels a bite on the line and quickly reels in.. [Duke Fishron has awoken!]
-AlliedNotes=1250
+AlliedNotes=1500
 Exclusive=yes
 PortalLevel=275
 
@@ -2984,7 +3082,7 @@ Battlefield=Davoi
 Weather=Rainy
 Monster=Gwajboj
 Desc=takes out an old sword and places it into the ground. A random Orc takes the sword and teleports everyone to Davoi.
-AlliedNotes=1750
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
@@ -2996,7 +3094,7 @@ Battlefield=Underground Arena
 Weather=gloomy
 Monster=Geryon
 Desc=takes out a small glowing orb that has an engraving of an hourglass on it. %real.name then tosses the orb onto the ground. It shatters and the players feel time slowing down as they are teleported into an underground arena.
-AlliedNotes=1000
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
@@ -3008,31 +3106,31 @@ Battlefield=Deep Jungle
 Weather=calm
 Monster=$iif($rand(1,2) = 1, Echidna, EccentricEve)
 Desc=takes out a small glowing green orb. %real.name then tosses the orb onto the ground. It shatters and the players find themselves in a deep jungle ready to face one of the masters of the jungle.
-AlliedNotes=1000
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=150
 
 [CrimsonTraverserStone]
 type=portal
-Cost=30
+Cost=20
 Currency=KindredCrest
 Battlefield=Abyssea - Empyreal Paradox
 Weather=calm
 Monster=ShinryuVerus
 Desc=takes out a stone that is a deep crimson in color. %real.name then tosses the stone onto the ground. It shatters and the players are teleported to the Empyreal Paradox.
-AlliedNotes=2750
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=275
 
 [EvilGuitar]
 type=portal
-cost=30
+cost=20
 currency=KindredCrest
 battlefield=The Midnight Carnival
 Weather=gloomy
 Monster=I-No
 Desc=pulls out a curious guitar and plays a few strings. Suddenly %real.name and everyone else is teleported to the sky with dark red clouds everywhere.
-AlliedNotes=2750
+AlliedNotes=2000
 Exclusive=yes
 PortalLevel=200
 
@@ -3042,16 +3140,29 @@ Battlefield=Zohar Cave
 Weather=gloomy
 Monster=Grahf
 Desc=pulls out an unknown source of power, which suddenly covers the heroes in darkness. Once the darkness fades, they appear to be in a cave with a strange golden monolith with a large eye on it. In front of the monolith is a large black and grey mech with black wings. You can also see a person stand on the shoulder of the mech.
-AlliedNotes=2500
+AlliedNotes=3000
 Exclusive=yes
 PortalLevel=300
+DarknessTurns=25
+
+[StrangeMask]
+Type=portal
+Cost=20
+Currency=KindredCrest
+Battlefield=Land of Lightning
+Weather=calm
+Monster=Obito_Uchiha
+Desc=takes out an orange mask with a swirl design, which is quickly taken out of hand as the heroes are now standing before a man in a black robe.
+AlliedNotes=2000
+Exclusive=yes
+PortalLevel=300
+DarknessTurns=25
 
 ; High Kindred Crest Portal Items
 
-
 [GoddessOrb]
 Type=portal
-Cost=30
+Cost=20
 Currency=HighKindredCrest
 Battlefield=Asgard
 Weather=Light
@@ -3060,17 +3171,42 @@ Desc=takes out an orb that has a bright white glow. %real.name then tosses the o
 AlliedNotes=3000
 Exclusive=yes
 PortalLevel=300
+DarknessTurns=25
 
 [AtlantianCrystal]
 Type=portal
-Cost=30
+Cost=20
 Currency=HighKindredCrest
 Battlefield=Atlantis
 Weather=Dark
 Monster=AshiAtora
 Desc=takes out an ancient crystal from Atlantis. It begins to pulse then glows bright, covering everyone and the battlefield.  When the glow fades they find themselves in Atlantis.. 
-AlliedNotes=5000
+AlliedNotes=3000
 PortalLevel=300
+DarknessTurns=35
+
+[OldKingSoul]
+Type=portal
+Cost=20
+Currency=HighKindredCrest
+Battlefield=Iron Keep
+Weather=Hot
+Monster=Old_Iron_King
+Desc=takes out the soul of a powerful demon and crushes it in hand, which transports everyone to a section of the Iron Keep fortress, which has an open area near the molten iron where a massive fire demon is standing in.
+AlliedNotes=3000
+Exclusive=yes
+PortalLevel=400
+
+[Gunbai]
+Type=portal
+Cost=20
+Currency=HighKindredCrest
+Battlefield=Land of Lightning
+Weather=Calm
+Monster=Madara_Uchiha
+Desc=takes out a large non-folding fan that is black on the edge, light brown on the inside, and has six tomoe on both sides, red in color. The instant it is placed on the ground, a man with long hair and red armor takes it in hand.
+AlliedNotes=3000
+PortalLevel=500
 DarknessTurns=35
 
 ;;;;; SHADOW VERSIONS of the portals
@@ -3097,7 +3233,6 @@ Weather=Dark
 Monster=ShadowAshi
 Desc=takes out a blackened ancient crystal from Atlantis. It begins to pulse then all light in the room is sucked away as everyone feels themselves being teleported to an ancient shadow version of Atlantis.. 
 AlliedNotes=5000
-
 
 =========================
 MECH CORE ITEMS
@@ -3211,6 +3346,86 @@ Exclusive=yes
 SpecialType=GainWeapon
 Weapon=Genbu'sShield
 Desc=pulls out a set of blueprints for the $iif($2 != $1, Genbu's Shield and hands it to $set_chr_name($2) %real.name $+ , Genbu's Shield.) %real.name then gets to work and builds a beautiful and functional Genbu's Shield ready for use.
+
+[Blueprints:Xiutleato]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Xiutleato
+Desc=pulls out a set of blueprints for the Xiutleato $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Xiutleato, ready for use.
+
+[Blueprints:HomesteadBow]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=HomesteadBow
+Desc=pulls out a set of blueprints for the HomesteadBow $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful HomesteadBow, ready for use.
+
+[Blueprints:Ichimonji-Yofusa]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Ichimonji-Yofusa
+Desc=pulls out a set of blueprints for the Ichimonji-Yofusa $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Ichimonji-Yofusa, ready for use.
+
+[Blueprints:Upukirex]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Upukirex
+Desc=pulls out a set of blueprints for the Upukirex $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Upukirex, ready for use.
+
+[Blueprints:Xbalanque]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Xbalanque
+Desc=pulls out a set of blueprints for the Xbalanque $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Xbalanque, ready for use.
+
+[Blueprints:Macbain]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Macbain
+Desc=pulls out a set of blueprints for the Macbain $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Macbain, ready for use.
+
+[Blueprints:Lightreaver]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Lightreaver
+Desc=pulls out a set of blueprints for the Lightreaver $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Lightreaver, ready for use.
+
+[Blueprints:Kerehcatl]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Kerehcatl
+Desc=pulls out a set of blueprints for the Kerehcatl $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Kerehcatl, ready for use.
+
+[Blueprints:Vanir_Knife]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Vanir_Knife
+Desc=pulls out a set of blueprints for the Vanir Knife $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Vanir Knife, ready for use.
+
+[Blueprints:Vajra]
+Type=special
+Cost=0
+SellPrice=2500
+SpecialType=GainWeapon
+Weapon=Vajra
+Desc=pulls out a set of blueprints for the Vajra $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Vajra, ready for use.
 
 [MasterSwordMap]
 Type=special
