@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 1, 12000, 10000)
+Hp=$iif($return_playersinbattle > 1, 16000, 12000)
 Tp=500
 Str=2059
 Def=2059
@@ -257,7 +257,7 @@ DeathBlossom=45
 SwiftBlade=45
 ChantDuCygne=45
 Requiescat=45
-Resolution=45
+Resolution=35
 Guillotine=45
 Insurgency=45
 Pentathrust=45
@@ -295,9 +295,9 @@ KaustraII=45
 Chivalry=45
 
 [Styles]
-Equipped=WeaponMaster
-WeaponMaster=10
-WeaponMasterXP=1
+Equipped=Guardian
+Guardian=7
+GuardianXP=1
 
 [Ignitions]
 IronKingFlame=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Old_Iron_King), battle, hp) / $readini($char(Old_Iron_King), basestats, hp)) * 100) <= 75, 1, 0))

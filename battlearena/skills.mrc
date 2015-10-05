@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 10/02/15
+;;;; Last updated: 10/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1378,7 +1378,7 @@ alias skill.clone { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
-  if ($isfile($char($1 $+ _clone)) = $true) { $set_chr_name($1) | $display.message(4Error: %real.name has already used this skill for this battle and cannot use it again!, private) | halt }
+  if (($isfile($char($1 $+ _clone)) = $true) && ($readini($char($1), info, ClonesCanClone) != true)) { $set_chr_name($1) | $display.message(4Error: %real.name has already used this skill for this battle and cannot use it again!, private) | halt }
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, shadowcopy) = $null) { set %skill.description releases $gender($1) shadow, which comes to life as a clone, ready to fight. }
@@ -1393,6 +1393,11 @@ alias skill.clone { $set_chr_name($1)
   if ($readini($char($1), info, flag) = $null) { writeini $char($1 $+ _clone) info flag npc }
   writeini $char($1 $+ _clone) info clone yes 
   writeini $char($1 $+ _clone) info cloneowner $1
+
+  var %clones.made $readini($char($1), info, CloneNumber)
+  if (%clones.made = $null) { var %clones.made 0 } 
+  inc %clones.made 1 
+  writeini $char($1 $+ _clone) info CloneNumber %clones.made
 
   if ($2 = $null) {  writeini $char($1 $+ _clone) basestats name Clone of %real.name }
   if ($2 != $null) { writeini $char($1 $+ _clone) basestats name $2- }
@@ -1448,9 +1453,11 @@ alias skill.clone { $set_chr_name($1)
 
   writeini $char($1 $+ _clone) battle hp %hp
   writeini $char($1 $+ _clone) basestats hp %hp
-  writeini $char($1 $+ _clone) skills shadowcopy 0
   writeini $char($1 $+ _clone) info password .8V%N)W1T;W5C:'1H:7,`1__.114
   writeini $char($1 $+ _clone) info CanTaunt false
+  writeini $char($1 $+ _clone) skills shadowcopy 0
+
+  if (($readini($char($1 $+ _clone), info, ClonesCanClone) = true) && (%clones.made  <= 5)) { writeini $char($1 $+ _clone) skills shadowcopy 1 }
 
   remini $char($1 $+ _clone) skills CoverTarget 
 

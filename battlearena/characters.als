@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 10/04/15
+;;;; Last updated: 10/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1345,6 +1345,9 @@ character.dragonhunt {
 
   ; Check for a dragon's lair
   var %dragonhunt.chance 5
+
+  ; If there's more than 3 dragons let's increase the odds of finding one
+  if (%dragonhunt.numberofdragons > 3) { inc %dragonhunt.chance %dragonhunt.numberofdragons } 
 
   ; Check for accessories and augments to improve chances
   if ($augment.check($1, EnhanceDragonHunt) = true) { inc %dragonhunt.chance $calc(5 * %augment.strength) }

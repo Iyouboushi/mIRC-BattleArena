@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 1, 5500, 3500)
-Tp=190
-Str=164
-Def=118
-Int=148
-Spd=156
+Hp=$iif($return_playerlevelstotal >= 280, $round($calc(4000 + (5 * $return_differenceof($return_playerlevelstotal,280))),0), $round($calc(4000 + $return_playerlevelstotal),0))
+Tp=60
+Str=372
+Def=320
+Int=15
+Spd=30
 IgnitionGauge=2
 Name=Jester
 
 
 [Battle]
 Hp=4000
-Tp=190
-Str=164
-Def=118
-Int=148
-Spd=156
+Tp=60
+Str=372
+Def=320
+Int=15
+Spd=30
 IgnitionGauge=2
 Status=alive
 
@@ -43,7 +43,7 @@ DeathMessage=hops around and goes "woo! That was a close one" as he inspects his
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=JesterHat.Fool's-Tablet.BeastmanSeal.KindredSeal
+Drops=JesterHat+1.HighKindredCrest
 
 [Monster]
 Type=demon
@@ -54,15 +54,16 @@ Flag=monster
 Gender=his
 Gender2=him
 CanStagger=yes
-StaggerAmount=$rand(1000,1500)
+StaggerAmount=$rand(5250,5310)
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=29
+bosslevel=250
 CanTaunt=true
+ClonesCanClone=true
 
 [Status]
 Poison=no
@@ -121,22 +122,22 @@ Resist-Drunk=100
 Resist-Sleep=100
 Resist-Disarm=100
 ShadowCopy=1
-Bloodpact=15
+Bloodpact=100
 Summon=Jester's_Ball
 Royalguard.on=on
 Manawall.on=on
 
 
 [Techniques]
-Portal=30
-ClownHead=31
-ClownFire=31
+Portal=250
+ClownHead=300
+ClownFire=300
 
 
 [NaturalArmor]
 Name=Protective Energy Field
-Max=200
-Current=200
+Max=1000
+Current=1000
 
 [modifiers]
 Heal=none

@@ -3213,6 +3213,18 @@ DarknessTurns=35
 ;;;;; These are basically remakes of the
 ;;;;; original portal battles at their original levels
 
+[ShadowDemonBell]
+type=portal
+Cost=5
+Currency=HighKindredCrest
+Battlefield=Jester's Lair
+Weather=gloomy
+Monster=Shadow_Jester
+Desc=rings a demonic bell that opens a portal. Upon entering they are greeted with Jester, the insane clown, who's back yet again to torment everyone.
+AlliedNotes=1000
+Exclusive=yes
+ShadowPortal=true
+
 [ShadowGodSeal]
 type=portal
 Cost=10
@@ -3223,6 +3235,7 @@ Monster=ShadowKirin
 Desc=takes out the small blackened orb, which shatters and creates a large portal that leads up into the sky.  After entering, the heroes find themselves inside a shadow version of an ancient shrine of the sky gods, The Shrine of Ru'Avitau.  
 AlliedNotes=2500
 Exclusive=yes
+ShadowPortal=true
 
 [ShadowAtlantianCrystal]
 Type=portal
@@ -3233,6 +3246,7 @@ Weather=Dark
 Monster=ShadowAshi
 Desc=takes out a blackened ancient crystal from Atlantis. It begins to pulse then all light in the room is sucked away as everyone feels themselves being teleported to an ancient shadow version of Atlantis.. 
 AlliedNotes=5000
+ShadowPortal=true
 
 =========================
 MECH CORE ITEMS

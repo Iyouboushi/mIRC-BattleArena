@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 10/02/15
+;;;; Last updated: 10/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -15,7 +15,7 @@ alias portal.usage.check {
 
     var %last.portal.number.used $readini($char($2), info, PortalsUsedTotal)
     if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }
-    var %portal.uses.left $calc(8 - %last.portal.number.used)
+    var %portal.uses.left $calc(10 - %last.portal.number.used)
 
     if ($1 = channel) { $display.message($readini(translation.dat, system, PortalUsageCheck), private) }
     if ($1 = private) { $display.private.message($readini(translation.dat, system, PortalUsageCheck),private) }
@@ -166,7 +166,7 @@ alias uses_item {
       var %last.portal.number.used $readini($char($1), info, PortalsUsedTotal)
       if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }
 
-      if (%last.portal.number.used >= 8) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, MaxPortalItemsAllowed), private) | halt }
+      if (%last.portal.number.used >= 10) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, MaxPortalItemsAllowed), private) | halt }
 
       inc %last.portal.number.used 1 
       writeini $char($1) info PortalsUsedTotal %last.portal.number.used

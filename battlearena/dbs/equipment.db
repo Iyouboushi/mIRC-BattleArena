@@ -130,6 +130,18 @@ EquipLocation=head
 cost=50
 SellPrice=50
 
+[JesterHat+1]
+hp=50
+tp=150
+Str=0
+def=0
+int=100
+spd=50
+Augment=EnhanceSummons.EnhanceBloodpact
+EquipLocation=head
+cost=50
+SellPrice=50
+
 [CrimsonCrown]
 Name=Crimson Crown
 hp=50

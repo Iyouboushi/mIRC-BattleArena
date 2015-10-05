@@ -1,3 +1,8 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; bossaliases.als
+;;;; Last updated: 10/05/15
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function will pick a 
 ; random boss type
@@ -1608,6 +1613,11 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) NaturalArmor Name Dragon Scales
   writeini $char(%dragonhunt.file.name) NaturalArmor Max $calc(5 * %dragon.level)
   writeini $char(%dragonhunt.file.name) NaturalArmor Current $calc(5 * %dragon.level)
+
+  ; Add guardian style
+  writeini $char(%dragonhunt.file.name) styles equipped Guardian
+  writeini $char(%dragonhunt.file.name) styles Guardian 6
+  writeini $char(%dragonhunt.file.name) styles GuardianXP 1
 
   ; Add modifiers
   writeini $char(%dragonhunt.file.name) modifiers HandToHand 40

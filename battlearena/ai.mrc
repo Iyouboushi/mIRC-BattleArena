@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 09/19/15
+;;;; Last updated: 10/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -660,7 +660,6 @@ alias ai_skillcheck {
   }
   if ($readini($char($1), skills, shadowcopy) >= 1) {
     if (%battle.type = dungeon) { return }
-
     if ($isfile($char($1 $+ _clone)) = $false) { %ai.skilllist  = $addtok(%ai.skilllist, shadowcopy, 46)  }
   }
   if ($readini($char($1), skills, cocoonevolve) >= 1) { 
