@@ -675,6 +675,8 @@ int=0
 Augment=EnhanceDragonHunt.EnhanceDefender
 cost=50
 SellPrice=500
+EquipLocation=body
+
 
 [MyochinDomaru]
 name=Myochin Domaru
