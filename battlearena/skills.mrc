@@ -3145,8 +3145,8 @@ alias skill.retaliation { $set_chr_name($1) |  $check_for_battle($1)
 ;=================
 ; JUST RELEASE
 ;=================
-on 3:TEXT:!justrelease*:*: { $skill.justrelease($nick, $2, !justrelease) }
-on 3:TEXT:!just release*:*: { $skill.justrelease($nick, $3, !justrelease) }
+on 3:TEXT:!justrelease*:*: { $partial.name.match($1, $2) | $skill.justrelease($nick, %attack.target, !justrelease) }
+on 3:TEXT:!just release*:*: { $partial.name.match($1, $3) | $skill.justrelease($nick, %attack.target, !justrelease) }
 
 alias skill.justrelease { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }

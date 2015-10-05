@@ -430,8 +430,8 @@ alias startnormal {
     if (%start.battle.type = assault) { set %battle.type assault | $display.message($readini(translation.dat, Battle, BattleAssaultOpen), global) }
     if (%start.battle.type = DragonHunt) { set %battle.type DragonHunt | $display.message($readini(translation.dat, system, DragonHunt.BeginHunt), global) }
 
-    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonHunt
-    if ($istok(%valid.battle.types,%start.battle.type,46) = $false) {
+    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonhunt
+    if ($istok(%valid.battle.types,$lower(%start.battle.type),46) = $false) {
       $display.message(4Invalid battle type: %start.battle.type ,global) 
       $clear_battle 
       halt 

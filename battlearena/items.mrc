@@ -1019,44 +1019,38 @@ alias wear.armor {
   if ((%battleis = on) && ($1 isin $readini($txtfile(battle2.txt), Battle, List))) { $display.message($readini(translation.dat, errors, CanOnlySwitchArmorOutsideBattle), private) | halt }
 
   set %current.armor $readini($char($1), equipment, %item.location) 
-  if (((%current.armor = $null) || (%current.armor = nothing) || (%current.armor = none))) {
 
-    set %check.item $readini($char($1), Item_Amount, $2) 
-    if ((%check.item <= 0) || (%check.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
+  if (((%current.armor != $null) && (%current.armor != nothing) && (%current.armor != none))) { $remove.armor($1, %current.armor, ignore) }
 
-    var %armor.level.requirement $readini($dbfile(equipment.db), $2, LevelRequirement)
-    if (%armor.level.requirement = $null) { var %armor.level.requirement 0 }
-    if ($round($get.level($1),0) <= %armor.level.requirement) { $display.message($readini(translation.dat, errors, ArmorLevelHigher), private) | halt }
+  set %check.item $readini($char($1), Item_Amount, $2) 
+  if ((%check.item <= 0) || (%check.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
 
-    ; Increase the stats
-    var %hp $round($calc($readini($char($1), Basestats, hp) + $readini($dbfile(equipment.db), $2, hp)),0)
-    var %tp $round($calc($readini($char($1), Basestats, tp) + $readini($dbfile(equipment.db), $2, tp)),0)
-    var %str $round($calc($readini($char($1), Basestats, Str)  + $readini($dbfile(equipment.db), $2, str)),0)
-    var %def $round($calc($readini($char($1), Basestats, def)  + $readini($dbfile(equipment.db), $2, def)),0)
-    var %int $round($calc($readini($char($1), Basestats, int) + $readini($dbfile(equipment.db), $2, int)),0)
-    var %spd $round($calc($readini($char($1), Basestats, spd)  + $readini($dbfile(equipment.db), $2, spd)),0)
+  var %armor.level.requirement $readini($dbfile(equipment.db), $2, LevelRequirement)
+  if (%armor.level.requirement = $null) { var %armor.level.requirement 0 }
+  if ($round($get.level($1),0) <= %armor.level.requirement) { $display.message($readini(translation.dat, errors, ArmorLevelHigher), private) | halt }
 
-    writeini $char($1) Basestats Hp %hp
-    writeini $char($1) Basestats Tp %tp
-    writeini $char($1) Basestats Str %str
-    writeini $char($1) Basestats Def %def
-    writeini $char($1) Basestats Int %int
-    writeini $char($1) Basestats Spd %spd
+  ; Increase the stats
+  var %hp $round($calc($readini($char($1), Basestats, hp) + $readini($dbfile(equipment.db), $2, hp)),0)
+  var %tp $round($calc($readini($char($1), Basestats, tp) + $readini($dbfile(equipment.db), $2, tp)),0)
+  var %str $round($calc($readini($char($1), Basestats, Str)  + $readini($dbfile(equipment.db), $2, str)),0)
+  var %def $round($calc($readini($char($1), Basestats, def)  + $readini($dbfile(equipment.db), $2, def)),0)
+  var %int $round($calc($readini($char($1), Basestats, int) + $readini($dbfile(equipment.db), $2, int)),0)
+  var %spd $round($calc($readini($char($1), Basestats, spd)  + $readini($dbfile(equipment.db), $2, spd)),0)
 
-    $fulls($1, yes)
+  writeini $char($1) Basestats Hp %hp
+  writeini $char($1) Basestats Tp %tp
+  writeini $char($1) Basestats Str %str
+  writeini $char($1) Basestats Def %def
+  writeini $char($1) Basestats Int %int
+  writeini $char($1) Basestats Spd %spd
 
-    ; Equip the armor and tell the world
-    writeini $char($1) equipment %item.location $2
-    $display.message($readini(translation.dat, system, EquippedArmor), global)
+  $fulls($1, yes)
 
-    unset %current.armor
-  }
-  else {  unset %current.armor 
+  ; Equip the armor and tell the world
+  writeini $char($1) equipment %item.location $2
+  $display.message($readini(translation.dat, system, EquippedArmor), global)
 
-    if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {  $display.private.message2($1, $readini(translation.dat, errors, AlreadyWearingArmorThere)) }
-    if ($readini(system.dat, system, botType) = DCCchat) {  $display.message($readini(translation.dat, errors, AlreadyWearingArmorThere), private) }
-    halt 
-  }
+  unset %current.armor
 }
 
 alias remove.armor {
@@ -1086,7 +1080,7 @@ alias remove.armor {
   ; Clear the armor and tell the world
   writeini $char($1) equipment %item.location nothing
 
-  $display.message($readini(translation.dat, system, RemovedArmor), global)
+  if ($3 != ignore) { $display.message($readini(translation.dat, system, RemovedArmor), global) }
 
   unset %item.location | unset %worn.item
 }

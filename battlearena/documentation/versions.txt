@@ -1315,6 +1315,7 @@ Battle Arena Bot VERSIONS
 - Added CandyCorn for monsters to drop during the month of October
 - Added a new Enhancement Point skill: DragonHunter. Will increase odds of finding a dragon's lair by 1% per level
 - Added items to increase weapon levels past 250.
+- Added ClonesCanClone flag for monsters/bosses. If set to true then their shadow clones can make clones themselves (up to 5)
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
@@ -1342,7 +1343,11 @@ Battle Arena Bot VERSIONS
 - Changed the "Battle open" message to show the current winning/losing battle streak at the end of the line.
 - Changed HP healing items to work on a percent amount of a target's max HP rather than a static value.
 - Changed portal battles so that the allied notes reward is split by the number of people who enter the battle
-- Changed the shop so that the maximum amount you can upgrade a weapon via the shop is to level 250.
+- Changed the shop so that the maximum amount play can upgrade a weapon via the shop to is level 250.
+- Changed the armor equip command so that players do not need to !unequip armor before !equip armor 
+  The bot will automatically remove the old armor before wearing the new one.
+- Changed the shop so that shadow portals show up on their own line
+- Changed the max amount of portal items players can use per 24 hours to 10 (up from 8)
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
@@ -1351,6 +1356,8 @@ Battle Arena Bot VERSIONS
 - Fixed an issue where a person who was asleep would still get an extra turn occasionally
 - Fixed an issue with the DTrigger ignition description
 - Fixed an issue with charm not wearing off immediately if the charmer was erased due to multiple wave
+- Fixed an issue with berserker NPCs 
+- Fixed minor issues with the various damage formulas
 - Fixed a potential bug with the monster list
 - Fixed a portal battlefield limitation issue that could be exploited
 - Fixed the "On the Edge" achievement so that it actually gives the Super Potion item correctly
