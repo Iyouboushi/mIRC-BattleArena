@@ -1217,7 +1217,7 @@ alias shop.enhancements {
 
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid item?
-    var %valid.purchase.items hp.ig.str.def.int.spd.stoneskin.SpoilSeeker.TabulaRasa.Demolitions
+    var %valid.purchase.items hp.ig.str.def.int.spd.stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter
 
     if ($istok(%valid.purchase.items, $lower($3), 46) = $false) { $display.private.message(4You cannot purchase that in this shop) | halt }
 
