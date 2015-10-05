@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/03/15
+;;;; Last updated: 10/04/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1024,14 +1024,16 @@ alias shop.get.skills.enhancingpoint {
   unset %shop.list.skills | unset %value 
   var %skills.lines $lines($lstfile(skills_enhancingpoint.lst))
 
+  echo -a lines: %skills.lines
+
   var %value 1
   while (%value <= %skills.lines) {
     set %skill.name $read -l $+ %value $lstfile(skills_enhancingpoint.lst)
     set %skill.max $readini($dbfile(skills.db), %skill.name, max)
     set %skill.have $readini($char($1), skills, %skill.name)
+    if (%skill.have = $null) { var %skill.have 0 }
 
-    if (%skill.have >= %skill.max) { inc %value 1 }
-    else { 
+    if (%skill.have < %skill.max) {
       var %enhancement.purchase.skill $readini($char($1), enhancements, %skill.name)
       if (%enhancement.purchase.skill = $null) { var %enhancement.purchase.skill 0 }
       if (%enhancement.purchase.skill < %skill.max) { %shop.list.skills = $addtok(%shop.list.skills, $+ %skill.name $+ +1 ( $+ $calc(1 + %enhancement.purchase.skill) $+ ),46) }
