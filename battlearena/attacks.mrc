@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 09/13/15
+;;;; Last updated: 10/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -49,10 +49,6 @@ ON 3:TEXT:*attacks *:*:{
 alias attack_cmd { 
   set %debug.location alias attack_cmd
   $check_for_battle($1) | $person_in_battle($2) | $checkchar($2) | var %user.flag $readini($char($1), info, flag) | var %target.flag $readini($char($2), info, flag)
-  if ($is_charmed($1) = true) { var %user.flag monster }
-  if ($is_confused($1) = true) { var %user.flag monster } 
-  if (%mode.pvp = on) { var %user.flag monster }
-
   var %ai.type $readini($char($1), info, ai_type)
 
   if ((%ai.type != berserker) && (%covering.someone != on)) {
@@ -63,6 +59,12 @@ alias attack_cmd {
     }
   }
 
+  if ($is_charmed($1) = true) { var %user.flag monster }
+  if ($is_confused($1) = true) { var %user.flag monster } 
+  if (%tech.type = heal) { var %user.flag monster }
+  if (%tech.type = heal-aoe) { var %user.flag monster }
+  if (%mode.pvp = on) { var %user.flag monster }
+  if (%ai.type = berserker) { var %user.flag monster }
   if (%covering.someone = on) { var %user.flag monster }
 
   if ((%user.flag = $null) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private) | halt }

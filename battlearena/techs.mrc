@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 08/08/15
+;;;; Last updated: 10/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -238,15 +238,16 @@ alias tech_cmd {
   if (%tech.type = ClearStatusNegative) {  $tech.clearstatus($1, $2, $3, negative) }
 
   var %user.flag $readini($char($1), info, flag) | var %target.flag $readini($char($3), info, flag)
+  var %ai.type $readini($char($1), info, ai_type)
 
-  if ($is_charmed($1) = true) { set %user.flag monster }
-  if (%tech.type = heal) { set %user.flag monster }
-  if (%tech.type = heal-aoe) { set %user.flag monster }
-
-  if (%mode.pvp = on) { set %user.flag monster }
-  if ($readini($char($1), status, confuse) = yes) { set %user.flag monster }
-
+  if ($is_charmed($1) = true) { var %user.flag monster }
+  if ($is_confused($1) = true) { var %user.flag monster } 
+  if (%tech.type = heal) { var %user.flag monster }
+  if (%tech.type = heal-aoe) { var %user.flag monster }
+  if (%mode.pvp = on) { var %user.flag monster }
+  if (%ai.type = berserker) { var %user.flag monster }
   if (%covering.someone = on) { var %user.flag monster }
+
 
   if ((%user.flag != monster) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private)  | halt }
 
