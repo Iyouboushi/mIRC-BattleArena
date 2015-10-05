@@ -641,7 +641,6 @@ EquipLocation=body
 cost=50
 SellPrice=100
 
-
 [Haubergeon]
 Name=Haubergeon
 hp=0
@@ -654,6 +653,16 @@ Augment=MeleeBonus
 EquipLocation=body
 cost=50
 SellPrice=150
+
+[DragonMail]
+hp=0
+tp=0
+str=50
+def=100
+int=0
+Augment=EnhanceDragonHunt.EnhanceDefender
+cost=50
+SellPrice=500
 
 [MyochinDomaru]
 name=Myochin Domaru

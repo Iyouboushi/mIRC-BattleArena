@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/04/15
+;;;; Last updated: 10/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1218,6 +1218,7 @@ alias shop.enhancements {
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid item?
     var %valid.purchase.items hp.ig.str.def.int.spd.stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter
+    var %valid.purchase.skills SpoilSeeker.TabulaRasa.Demolitions.DragonHunter
 
     if ($istok(%valid.purchase.items, $lower($3), 46) = $false) { $display.private.message(4You cannot purchase that in this shop) | halt }
 
@@ -1233,7 +1234,9 @@ alias shop.enhancements {
 
     ; Are we hitting the cap amount?
     var %purchase.cap 10
+
     if (((($3 = str) || ($3 = def) || ($3 = int) || ($3 = spd)))) { inc %purchase.cap 20 }
+    if ($istok(%valid.purchase, $lower($3), 46) = $true) { var %purchase.cap $readini($dbfile(skills.db), $3, max) }
 
     if (%enhancement.cost > %purchase.cap) { $display.private.message(4You cannot purchase any more into this upgrade!) | halt }
 
@@ -1281,7 +1284,7 @@ alias shop.enhancements {
     }
 
     ; Is it a skill?
-    if ($istok(stoneskin.spoilseeker.tabularasa.demolitions, $lower($3), 46) = $true) {
+    if ($istok(%valid.purchase.skills, $lower($3), 46) = $true) {
       var %skill.level $readini($char($1), skills, $3)
       if (%skill.level = $null) { var %skill.level 0 }
       inc %skill.level 1 

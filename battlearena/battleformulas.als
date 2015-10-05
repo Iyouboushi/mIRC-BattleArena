@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 10/03/15
+;;;; Last updated: 10/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -381,13 +381,13 @@ cap.damage {
     if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.1),0)  }
     if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * 1.6),0)  }
     if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * 2),0)  }
-    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 3),0)  } 
-    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 3.5),0)  } 
+    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 5),0)  } 
+    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 10),0)  } 
 
     if (%damage.threshold <= 0) { var %damage.threshold 10 }
 
     if (%attack.damage > %damage.threshold) {
-      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 85)  | set %capamount 3000 }
+      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 85)  | set %capamount 5000 }
       if ($person_in_mech($1) = true) { set %temp.damage $calc(%attack.damage / 60) | set %capamount 70000 }
       set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
 
@@ -2619,9 +2619,8 @@ formula.techdmg.monster {
         if (%level.difference < -500) { var %min.damage $round($calc(%min.damage / 10),0) }
       }
 
-      if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
+      if ((%attack.damage >= 1) && ($get.level($1) > $get.level($3))) {
         var %level.difference $calc($get.level($1) - $get.level($3)) 
-
         if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
         if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
       }
@@ -2639,28 +2638,17 @@ formula.techdmg.monster {
   ; Check for the Guardian style
   $guardian_style_check($3)
 
-  ; To be fair to players, we'll limit the damage if it has the ability to ignore guardian.
-  if ($augment.check($1, IgnoreGuardian) = true) { 
-    var %user.flag $readini($char($1), info, flag)
-    if ((%user.flag = monster) && (%battle.rage.darkness != on)) { 
-      if ($readini($char($3), info, flag) = $null) {
-        if (%attack.damage > 2500) { set %attack.damage 2000 } 
-      }
-    }
-  }
-
   ; AOE nerf check for players
   if ($readini($char($1), info, flag) = $null) {
 
     if (%aoe.turn > 1) {
-      var %aoe.nerf.percent $calc(7 * %aoe.turn)
+      var %aoe.nerf.percent $calc(2 * %aoe.turn)
       if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 5 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
       var %aoe.nerf.amount $round($calc(%attack.damage * %aoe.nerf.percent),0)
       dec %attack.damage %aoe.nerf.amount
     }
-
   }
 
   ; Check for the Metal Defense flag

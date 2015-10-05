@@ -322,6 +322,12 @@ Ingredients=DarksteelMail.IronOre.RepairHammer
 Successrate=60
 Amount=1
 
+[Dragonmail]
+Gem=Ruby
+Ingredients=DarksteelMail.IronOre.Dragonscale
+Successrate=100
+Amount=1
+
 [DarksteelMail]
 Gem=Ruby
 Ingredients=DarksteelOre.RepairHammer.RustyMail
