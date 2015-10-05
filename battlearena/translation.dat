@@ -1003,6 +1003,7 @@ AddedNPC=$chr(3) $+ 7* %shopnpc.name has arrived to the Allied Forces HQ ready
 AddedNewPresident=$chr(3) $+ 7* %shopnpc.name has been appointed as the new Allied Forces President. 
 SavedElf=$chr(3) $+ 7* The heroes have saved one of Santa's Elves!  This makes %total.elves.saved $iif(%total.elves.saved = 1, Elf, Elves) saved! $iif(%total.elves.saved = 10 || %total.elves.saved = 20 || %total.elves.saved = 50 || %total.elves.saved = 200, $chr(3) $+ 4 $+ Santa's Shop has become larger! He sells more items in the store now!)
 ShopNPCKidnapped=$chr(3) $+ 7* The Forces of Evil raid the Allied Forces HQ and kidnap %shopnpc.name $+ !
+ShopNPCKidnappedDragon=$chr(3) $+ 7* The terrible dragon %dragon.name leaves its lair to attack the Allied Forces HQ! During the attack %shopnpc.name was picked up and carried away to be delivered to the forces of evil!
 ShopNPCRescued=$chr(3) $+ 7* The Allied Forces have rescued %shopnpc.name $+ !  $iif(%kidnapped.npc = WheelMaster, 2 $+  %shopnpc.name looks at the heroes and says "Thank you for saving me! Come see me at my booth and play the wheel mini game! Use !wheel help for more information") $iif(%kidnapped.npc = Gardener, 2 $+  %shopnpc.name looks at the heroes and says "Thank you for saving me! I went looking for some seeds and flowers for the garden and got $iif(Moogle isin %shopnpc.name, captured Kupo!, captured!) I'll leave gathering of those things to you now. Be sure to come visit the garden soon! Use !garden help for more information")
 
 

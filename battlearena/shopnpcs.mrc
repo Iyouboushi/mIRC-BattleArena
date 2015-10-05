@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 09/02/15
+;;;; Last updated: 10/04/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -198,12 +198,10 @@ alias shopnpc.remove {
 
 ; A Shop NPC gets kidnapped.
 alias shopnpc.kidnap {
-  ; If allow kidnapping = false return
-
   if (($readini(system.dat, system, EnableNPCKidnapping) = $null) ||  ($readini(system.dat, system, EnableNPCKidnapping) = false)) { return }
-  if ($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) { return }
-  if ($rand(1,100) <= 50) { return }
+  if (($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) && ($1 != dragon)) { return }
 
+  if ($rand(1,100) <= 45) { return }
   ; Get a list of NPCs that can be kidnapped.
   if ($shopnpc.present.check(HealingMerchant) = true) { %active.npcs = $addtok(%active.npcs, HealingMerchant, 46) }
   if ($shopnpc.present.check(BattleMerchant) = true) { %active.npcs = $addtok(%active.npcs, BattleMerchant, 46) }
@@ -226,10 +224,15 @@ alias shopnpc.kidnap {
 
   writeini shopnpcs.dat NPCStatus %kidnapped.npc kidnapped
 
-  $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) 
+  if ($1 != dragon) { $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) }
+  if ($1 = dragon) { 
 
+    var %current.dragon $ini($dbfile(dragonhunt.db),  $rand(1, $ini($dbfile(dragonhunt.db),0)))
+    var %dragon.name $readini($dbfile(dragonhunt.db), %current.dragon, name)
+    $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)) 
+    unset %random.dragon | unset %dragon.name
+  }
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
-
 }
 
 ; A Shop NPC gets rescued

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/03/15
+;;;; Last updated: 10/04/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4034,7 +4034,11 @@ dragonhunt.dragonelement { return %dragon.element $readini($dbfile(dragonhunt.db
 
 dragonhunt.createdragon {
   var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
-  if (%dragonhunt.numberofdragons >= 6) { return }
+  if (%dragonhunt.numberofdragons >= 6) { 
+    ; Dragons are full, so let's have a chance that one of them will attack the allied forces HQ
+    $shopnpc.kidnap(dragon) 
+    return 
+  }
 
   ; Pick a random name
   var %surname Chaos.Bloodspawn.Bloodtear.Bloodfang.Darkness.WorldEater.Darkbringer.Bloodclaw.Firebreath.Firestarter
