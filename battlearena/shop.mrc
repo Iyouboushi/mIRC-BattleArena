@@ -1024,8 +1024,6 @@ alias shop.get.skills.enhancingpoint {
   unset %shop.list.skills | unset %value 
   var %skills.lines $lines($lstfile(skills_enhancingpoint.lst))
 
-  echo -a lines: %skills.lines
-
   var %value 1
   while (%value <= %skills.lines) {
     set %skill.name $read -l $+ %value $lstfile(skills_enhancingpoint.lst)
