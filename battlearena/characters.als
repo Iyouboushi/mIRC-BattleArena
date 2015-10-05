@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 10/03/15
+;;;; Last updated: 10/04/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1353,6 +1353,10 @@ character.dragonhunt {
     inc %dragonhunt.chance %accessory.amount
     unset %accessory.amount
   }
+
+  ; Check for DragonHunter skill
+  var %dragonhunter.skill $readini($char($1), skills, DragonHunter)
+  if (%dragonhunter.skill != $null) { inc %dragonhunt.chance %dragonhunter.skill }
 
   var %dragonhunt.randomnum $rand(1,100)
 
