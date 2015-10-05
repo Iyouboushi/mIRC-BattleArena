@@ -4040,23 +4040,22 @@ dragonhunt.createdragon {
     return 
   }
 
-  ; Pick a random name
-  var %surname Chaos.Bloodspawn.Bloodtear.Bloodfang.Darkness.WorldEater.Darkbringer.Bloodclaw.Firebreath.Firestarter
-
+  ; Pick a random first name
   var %names.lines $lines($lstfile(dragonnames.lst))
   if ((%names.lines = $null) || (%names.lines = 0)) { write $lstfile(dragonnames.lst) Nasith | var %names.lines 1 }
-
   var %random.firstname $rand(1,%names.lines)
-
   var %first.name $read($lstfile(dragonnames.lst), %random.firstname)
-  var %lastnames.total $numtok(%surname,46)
-  var  %random.lastname $rand(1, %lastnames.total) 
-  var %last.name $gettok(%surname,%random.lastname,46)
+  unset %names.lines
+
+  ; Pick a random surname
+  var %names.lines $lines($lstfile(dragonlastnames.lst))
+  if ((%names.lines = $null) || (%names.lines = 0)) { write $lstfile(dragonlastnames.lst) BloodFang | var %names.lines 1 }
+  var %random.surname $rand(1,%names.lines)
+  var %last.name $read($lstfile(dragonlastnames.lst), %random.surname)
+  unset %names.lines
 
   var %dragon.name.file %first.name $+ _ $+ %last.name
   var %dragonhunt.name %first.name %last.name
-
-  unset %names.lines
 
   writeini $dbfile(dragonhunt.db) %dragon.name.file Name %dragonhunt.name
 
