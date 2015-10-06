@@ -12468,6 +12468,7 @@ Magic=No
 HurtEthereal=true
 stat=str
 CanDodge=false
+DestroyShadows=2
 
 [OldIronSlam]
 Type=Single
@@ -12482,6 +12483,7 @@ IgnoreDefense=5
 HurtEthereal=true
 stat=str
 CanDodge=false
+DestroyShadows=2
 
 [OldIronDive]
 Type=AOE
@@ -12495,6 +12497,7 @@ Magic=yes
 HurtEthereal=true
 stat=str
 CanDodge=false
+DestroyShadows=2
 
 [OldIronLaser]
 Type=Single
@@ -12509,6 +12512,7 @@ IgnoreDefense=5
 HurtEthereal=true
 stat=str
 CanDodge=false
+DestroyShadows=2
 
 [OldIronFireSlam]
 Type=AOE
@@ -12522,6 +12526,7 @@ Magic=Yes
 HurtEthereal=true
 stat=str
 CanDodge=false
+DestroyShadows=2
 
 [OldIronBreath]
 Type=Single
@@ -12535,6 +12540,7 @@ Magic=Yes
 HurtEthereal=true
 stat=str
 CanDodge=false
+DestroyShadows=2
 
 [OldIronFlames]
 Type=AOE
@@ -12548,6 +12554,7 @@ Magic=yes
 HurtEthereal=true
 stat=str
 CanDodge=false
+DestroyShadows=2
 
 [Katon:HousenkaNoJutsu]
 Type=AOE
