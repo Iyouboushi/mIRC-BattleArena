@@ -37,6 +37,9 @@ ADDITIONS:
 * Added Dragon Hunting.  Dragons can spawn and create lairs around the land and players need to hunt them down.
 * Re-Added nearly every battle formula the bot has had since its inception. This can be toggled by bot owners to pick the one they like the most.
 * Added more armor, items and new portal battles for everyone to enjoy
+* Added new system.dat flags
+* Added new bot admin commands
+* Added new monster/boss flags
 
 CHANGES:
 * Changed PVP battles so that they can be level capped
@@ -52,7 +55,14 @@ FIXES:
 * Fixed a bug with !flee not counting the number of times fled properly
 * Fixed a bug in which provoked NPCs may try to attack dead targets that have been erased due to multiple waves
 * Fixed a bug in which player clones would die if they were summoned before a no-trust or no-npc portal battle happened
-* Fixed a bug with the enhancement point shop that might prevent certain skills from showing up in the shop
+* Fixed a bug in which NPCs who had mechs would try to use them in no-mech battlefield conditions.
+* Fixed a bug with en-spells counting towards the elemental spell totals in misc info when they shouldn't have been
+* Fixed an issue with !view-info and the pokeball summon item
+* Fixed an issue with %enemy in a provoke skill description not showing the right name
+* Fixed an issue with "Conserve TP" showing up in both status and skill lists.  It should only be in skills now.
+* Fixed an issue where a person who was asleep would still get an extra turn occasionally
+* Fixed an issue with charm not wearing off immediately if the charmer was erased due to multiple wave
+* Fixed an issue with berserker NPCs 
 
 REMOVALS:
 * Removed the elements from NPC weapons
