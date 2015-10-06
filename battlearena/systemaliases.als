@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4033,6 +4033,9 @@ dragonhunt.dragonage {
 dragonhunt.dragonelement { return %dragon.element $readini($dbfile(dragonhunt.db), $1, Element) }
 
 dragonhunt.createdragon {
+  ; Write the time to battlestats.dat
+  writeini battlestats.dat battle DragonHunt.LastMade $ctime
+
   var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
   if (%dragonhunt.numberofdragons >= 5) { 
     ; Dragons are full, so let's have a chance that one of them will attack the allied forces HQ
@@ -4072,9 +4075,6 @@ dragonhunt.createdragon {
 
   ; Show the message
   $display.message($readini(translation.dat, system, DragonHunt.CreatedDragon), global)
-
-  ; Write the created time to battlestats.dat
-  writeini battlestats.dat battle DragonHunt.LastMade $ctime
 }
 
 dragonhunt.listdragons {

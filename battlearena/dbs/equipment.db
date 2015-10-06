@@ -667,15 +667,16 @@ cost=50
 SellPrice=150
 
 [DragonMail]
+Name=Dragon Mail
 hp=0
 tp=0
 str=50
 def=100
 int=0
 Augment=EnhanceDragonHunt.EnhanceDefender
+EquipLocation=body
 cost=50
 SellPrice=500
-EquipLocation=body
 
 
 [MyochinDomaru]
