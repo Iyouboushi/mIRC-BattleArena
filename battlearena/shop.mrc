@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -61,6 +61,7 @@ alias shop.categories.list {
   $display.private.message(2Valid shop categories:)
   $display.private.message(2Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) Portal $+ $chr(44) Misc) 
   $display.private.message(2Mech $+ $chr(44) Mech $+ $chr(44) Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys)
+  if ($left($adate, 2) = 10) {  $display.private.message(2Halloween, private) }
 }
 
 
@@ -110,6 +111,7 @@ alias shop.start {
     var %amount.to.purchase $abs($5)
     if ((%amount.to.purchase = $null) || (%amount.to.purchase !isnum 1-9999)) { var %amount.to.purchase 1 }
 
+    if ($3 = halloween) { $shop.halloween($nick, buy, $4, %amount.to.purchase) | halt }
     if (($3 = enhancement) || ($3 = enhancements))  { $shop.enhancements($nick, buy, $4, %amount.to.purchase) | halt }
     if (($3 = items) || ($3 = item))  { $shop.items($nick, buy, $4, %amount.to.purchase) | halt }
     if ((($3 = techs) || ($3 = techniques) || ($3 = tech))) { $shop.techs($nick, buy, $4, %amount.to.purchase) | halt  }
@@ -153,7 +155,7 @@ alias shop.start {
 
   if ($2 = list) { 
 
-    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys
+    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween
     if ($istok(%valid.categories, $3, 46) = $false) { 
       $display.private.message(4Error: Use 2!shop list category4 or 2!shop buy category itemname)
       $shop.categories.list 
@@ -161,6 +163,7 @@ alias shop.start {
     }
 
     else {
+      if ($3 = halloween) { $shop.halloween($nick, list) }
       if (($3 = enhancement) || ($3 = enhancements))  { $shop.enhancements($nick, list) }
       if (($3 = stats) || ($3 = stat)) { $shop.stats($nick, list) }
       if (($3 = items) || ($3 = item)) { $shop.items($nick, list) }
@@ -2316,7 +2319,6 @@ alias shop.trusts {
       $display.private.message.delay.custom(2 $+ %trusts.list1, 1)
     }
 
-
     if (%trusts.list1 = $null) { $display.private.message(4There are no NPC Trust items available for purchase right now)  }
 
     unset %trusts.list1 | unset %item.price | unset %item.name
@@ -2340,6 +2342,67 @@ alias shop.trusts {
     unset %shop.list | unset %currency | unset %player.currency | unset %total.price
     halt
   }
+}
+
+alias shop.halloween {
+  if ($left($adate, 2) != 10) { $display.private.message(4You can only use this shop in October) | halt }
+
+  if ($2 = list) { 
+    unset %shop.list | unset %item.name | unset %item_amount
+
+    var %value 1 | var %items.lines $lines($lstfile(items_halloween.lst))
+
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(items_halloween.lst)
+      set %item.price $readini($dbfile(items.db), %item.name, cost)
+
+      if ((%item.price > 0) && ($item.amount($1, %item.name) <= 0)) {
+        if (%item.price <= $readini($char($1), item_amount, CandyCorn)) {  %halloween.list1 = $addtok(%halloween.list1, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+        else { %halloween.list1 = $addtok(%halloween.list1,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
+      }
+      unset %item.name | unset %item_amount
+      inc %value 1 
+    }
+
+    set %replacechar $chr(044) $chr(032)
+    %halloween.list1 = $replace(%halloween.list1, $chr(046), %replacechar)
+    unset %replacechar
+
+    if (%halloween.list1 != $null) {  
+      $display.private.message.delay.custom(2NPC Trust items are paid for with 4Candy Corn,1)
+      $display.private.message.delay.custom(2 $+ %halloween.list1, 1)
+    }
+
+    if (%halloween.list1 = $null) { $display.private.message(4There are no Halloween store items available for purchase right now)  }
+
+    unset %halloween.list1 | unset %item.price | unset %item.name
+
+  }
+
+  if (($2 = buy) || ($2 = purchase)) {
+
+    if ($readini($dbfile(items.db), $3, cost) = $null) {  $display.private.message(4Error: Invalid Halloween Shop item! Use !shop list halloweens to get a valid list) | halt }
+    if ($readini($dbfile(items.db), $3, cost) = 0) { $display.private.message(4Error: You cannot purchase this item! Use !shop list halloween to get a valid list) | halt }
+    if ($readini($dbfile(items.db), $3, currency) != candycorn) {  $display.private.message(4Error: Invalid Halloween Shop item! Use !shop list halloweens to get a valid list) | halt }
+
+    ; do you have enough to buy it?
+    set %player.currency $readini($char($1), item_amount, CandyCorn)
+    set %total.price $calc($readini($dbfile(items.db), $3, cost) * 1)
+
+    if (%player.currency = $null) { set %player.currency 0 }
+
+    if (%player.currency < %total.price) {  $display.private.message(4You do not have enough Candy Corn to purchase this Halloween shop item!) | unset %currency | unset %player.currency | unset %total.price |  halt }
+    dec %player.currency %total.price
+
+    writeini $char($1) item_amount CandyCorn %player.currency
+    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + 1) 
+    $display.private.message(3You deposit %total.price $iif(%total.price > 1, pieces, piece) of candy corn into a glowing orange bucket and find yourself rewarded with $4  $+ $3 $+ !)
+
+    unset %shop.list | unset %currency | unset %player.currency | unset %total.price
+    halt
+
+  }
+
 }
 
 alias inc.shoplevel {   

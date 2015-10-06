@@ -3563,3 +3563,17 @@ sellprice=1500
 Desc=An old dusty key used to access Haukke Manor
 Dungeon=Haukke_Manor
 exclusive=yes
+
+
+
+
+==========================
+HALLOWEEN SHOP ITEMS
+==========================
+[SpookyHat]
+type=armor
+cost=25
+currency=CandyCorn
+sellprice=0
+Desc=A spooky halloween hat. Check this using !view-info armor SpookyHat to see more information about it. 
+exclusive=yes

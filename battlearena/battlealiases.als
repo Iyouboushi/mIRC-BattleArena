@@ -3889,6 +3889,13 @@ killer.trait.check {
   if (%monster.type = $null) { return }
   set %killer.trait.name %monster.type $+ -killer
   set %killer.trait.amount $readini($char($1), skills, %killer.trait.name)
+  if (%killer.trait.amount = $null) { var %killer.trait.amount 0 }
+
+  ; Check for an augment to enhance killer traits
+  if ($augment.check($1, EnhanceKillerTraits) = true) {
+    inc %killer.trait.amount %augment.strength
+  }
+
   if ((%killer.trait.amount = $null) || (%killer.trait.amount <= 0)) { unset %killer.trait.name | unset %killer.trait.amount | return }
 
   inc %attack.damage $round($calc(%attack.damage * (%killer.trait.amount / 100)),0)
