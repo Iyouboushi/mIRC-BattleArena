@@ -250,6 +250,9 @@ AllowPersonalDifficultyOff=$chr(3) $+ 4 $+ Personal Difficulty has been turned
 AllowPlayerAccessCmdsOn=$chr(3) $+ 4 $+ Player Access Commands has been turned on.
 AllowPlayerAccessCmdsOff=$chr(3) $+ 4 $+ Player Access Commands has been turned off.
 
+AllowAuctionHouseTopicChangeOn=$chr(3) $+ 4 $+ The Auction House will now change the channel's topic.
+AllowAuctionHouseTopicChangeOff=$chr(3) $+ 4 $+ The Auction House will no longer change the channel's topic.
+
 AllowColorsOn=$chr(3) $+ 4 $+ The Bot's Colors have been turned on.
 AllowColorsOff=$chr(3) $+ 4 $+ The Bot's Colors have been turned off.
 AllowBoldOn=$chr(3) $+ 4 $+ The Bot's Bold has been turned on.

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 09/03/15
+;;;; Last updated: 10/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -350,6 +350,27 @@ on 50:TEXT:!toggle automated ai battle*:*:{
   else {
     writeini system.dat system automatedaibattlecasino off
     $display.message($readini(translation.dat, system, AutomatedAIBattleCasinoOff), global)
+  }
+}
+
+; Bot admins can toggle if the auction house changes the channel's topic or not
+on 50:TEXT:!toggle auction house topic change*:*:{   
+  var %allow.topic.change $return.systemsetting(AllowAuctionHouseTopicChange)
+  if (%allow.topic.change = null) { var %allow.topic.change true | writeini system.dat system AllowAuctionHouseTopicChange true }
+
+  if (%allow.topic.change = false) { 
+    writeini system.dat system AllowAuctionHouseTopicChange true
+    $display.message($readini(translation.dat, system, AllowAuctionHouseTopicChangeOn), global)
+    $auctionhouse.topic
+  }
+  else {
+    writeini system.dat system AllowAuctionHouseTopicChange false
+    $display.message($readini(translation.dat, system, AllowAuctionHouseTopicChangeOff), global)
+    var %current.topic $chan(%battlechan).topic
+    var %previous.auction.topic $chr(124) [Current Auction: $readini(system.dat, auctionInfo, current.item) $+ ]
+    var %current.topic $remove(%current.topic, %previous.auction.topic)
+    var %new.topic %current.topic
+    /topic %battlechan %new.topic
   }
 }
 

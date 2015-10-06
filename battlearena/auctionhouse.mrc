@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 09/25/15
+;;;; Last updated: 10/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -155,6 +155,9 @@ alias auctionhouse.create {
   if (%total.auctions = $null) { var %total.auctions 0 }
   inc %total.auctions 1
   writeini system.dat auctionInfo NumberOfAuctions %total.auctions
+
+  ; Check to write the channel's topic
+  $auctionhouse.topic
 }
 
 alias auctionhouse.end {
@@ -201,6 +204,8 @@ alias auctionhouse.end {
     write $txtfile(auction_winners.txt) %auction.number  - $date - $time - No Winner - $readini(system.dat, auctionInfo, current.item)
   }
 
+  writeini system.dat auctionInfo previous.item $readini(system.dat, auctionInfo, current.item)
+
   unset %auction.winner | unset %auction.item | unset %player.amount
 
 }
@@ -224,7 +229,22 @@ alias auctionhouse.clear {
     }
 
     .remove $txtfile(temp_auction_bidders.txt)
+  }
+}
 
+alias auctionhouse.topic {
+  var %allow.topic.change $return.systemsetting(AllowAuctionHouseTopicChange)
+  if (%allow.topic.change = null) { var %allow.topic.change true | writeini system.dat system AllowAuctionHouseTopicChange true }
+
+  if (%allow.topic.change = true) {
+    var %current.topic $chan(%battlechan).topic
+    var %previous.auction.topic $chr(124) [Current Auction: $readini(system.dat, auctionInfo, previous.item) $+ ]
+    var %current.auction.topic [Current Auction: $readini(system.dat, auctionInfo, current.item) $+ ]
+    var %current.topic $remove(%current.topic, %previous.auction.topic)
+    var %new.topic %current.topic $chr(124) %current.auction.topic
+
+    if ($len(%new.topic) >= 390) { return }
+    else { /topic %battlechan %new.topic }
   }
 
 }

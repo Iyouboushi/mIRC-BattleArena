@@ -1291,9 +1291,12 @@ Battle Arena Bot VERSIONS
 - Added a new special boss battle type: Dinosaur.
 - Added a new system.dat setting: EnableDinosaurs=true/false  If set to false the dinosaur special boss battle won't happen
 - Added a new system.dat flag: AllowPlayerAccessCmds=true/false  If set to false, players won't be able to control others
+- Added a new system.dat flag: AllowAuctionHouseTopicChange=true/false  If set to true, the auction house will attempt
+  to change the channel's topic on each new auction that comes up.
 - Added the bot admin command: !toggle playerAccessCmnds  -- Will turn player access commands on/off
 - Added the bot admin command: !toggle damage formula -- Will toggle between the damage formulas
 - Added the bot admin command: !force system default check  -- will force the bot to do a system.dat defaults check
+- Added the bot admin command: !toggle auction house topic change -- Will toggle the auction house topic change on/off
 - Added a new item type: IncreaseWeaponLevel.  This item type can be used to increase a player's weapon level up to 500
 - Added the various damage formulas that have been used throughout the bot's history: 1.0, 2.0, 2.5 and 3.0.
 - Added the Dungeon system. 

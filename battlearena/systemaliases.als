@@ -97,6 +97,7 @@ system_defaults_check {
     if ($readini(system.dat, system, AllowPersonalDifficulty) = $null) { writeini system.dat system AllowPersonalDifficulty true }
     if ($readini(system.dat, system, AllowPlayerAccessCmds) = $null) { writeini system.dat system AllowPlayerAccessCmds true }
     if ($readini(system.dat, system, BattleDamageFormula) = $null) { writeini system.dat system BattleDamageFormula 1 }
+    if ($readini(system.dat, system, AllowAuctionHouseTopicChange) = $null) { writeini system.dat system AllowAuctionHouseTopicChange true }
 
     if ($readini(system.dat, system, EnableDoppelganger) = $null) { writeini system.dat system EnableDoppelganger true }
     if ($readini(system.dat, system, EnableWarmachine) = $null) { writeini system.dat system EnableWarmachine true }
