@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1549,6 +1549,8 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) info CanTaunt false
 
   var %base.hp.tp $round($calc(100 * %dragon.level),0)
+  if ($return_playersinbattle >= 4) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
+
   writeini $char(%dragonhunt.file.name) basestats hp %base.hp.tp
   writeini $char(%dragonhunt.file.name) basestats tp %base.hp.tp
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/02/15
+;;;; Last updated: 10/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -167,7 +167,7 @@ check_drops {
 
   if ($left($adate, 2) = 10) { 
     if ((%battle.type = monster) && ($readini($dbfile(items.db), CandyCorn, amount) != $null)) { 
-      var %boss.item $addtok(%boss.item, CandyCorn, 46)
+      if (%portal.bonus != true) {  var %boss.item $addtok(%boss.item, CandyCorn, 46) }
     }
   }
 
@@ -667,8 +667,8 @@ boost_monster_hp {
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
-  if ((%hp > 10000) && (%battle.type != dragonhunt)) { var %hp $round($calc(10000 + (%hp * .02)),0) }
-  if ((%hp > 15000) && (%battle.type = dragonhunt)) { var %hp $round($calc(15000 + (%hp * .25)),0) }
+  if ((%hp > 20000) && (%battle.type != dragonhunt)) { var %hp $round($calc(20000 + (%hp * .02)),0) }
+  if ((%hp > 25000) && (%battle.type = dragonhunt)) { var %hp $round($calc(25000 + (%hp * .25)),0) }
 
   if (($return.systemsetting(BattleDamageFormula) = 2) || ($return.systemsetting(BattleDamageFormula) = 4)) { var %hp $calc(%hp * 2) }
 

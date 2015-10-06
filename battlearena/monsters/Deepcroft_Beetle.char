@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=1500
+Hp=$iif($return_playersinbattle > 3, $calc(2000 + (100 * $return_playersinbattle)) , 2000)
 Tp=30
 Str=2
 Def=5
