@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 10/06/15
+;;;; Last updated: 10/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -132,6 +132,9 @@ alias view-info {
     if (%info.fullbring != $null) { set %info.fullbringmsg  [4Fullbring Level12 %info.fullbring $+ ] } 
     if (%info.target = AOE-monster) { var %info.target All monsters }
 
+    var %item.currency $readini($dbfile(items.db), $3, currency)
+    if (%item.currency = $null) { var %item.currency red orbs }
+
 
     var %exclusive.test $readini($dbfile(items.db), $3, exclusive)
     if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [4Exclusive12 no $+ ]  }
@@ -144,10 +147,10 @@ alias view-info {
 
     if (%info.type = armor) { $display.private.message(4This item is an armor piece. Use !view-info armor $3 to learn more about it.) }
     if (%info.type = snatch) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Snatch/Grab $+ ] %exclusive [4Description12 This item is used to grab a target and use him/her/it as a protective shield. $+ ])  }
-    if (%info.type = heal) { $display.private.message([4Name12 $3 $+ ] [4Type12 Healing $+ ] [4Heal Amount12 %info.amount $+ $chr(37) of target's maximum HP]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ] %sell.price %exclusive %info.fullbringmsg) }
-    if (%info.type = IgnitionGauge) { $display.private.message([4Name12 $3 $+ ] [4Type12 Ignition Gauge Restore $+ ] [4Restore Amount12 %info.amount $+ ]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ] %sell.price %exclusive %info.fullbringmsg) }
-    if (%info.type = Damage) { $display.private.message([4Name12 $3 $+ ] [4Type12 Damage $+ ] [4Target12 %info.target $+ ]  [4Damage Amount12 %info.amount $+ ] [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ] %sell.price %exclusive %info.fullbringmsg)  }
-    if (%info.type = Status) { $display.private.message([4Name12 $3 $+ ] [4Type12 Status $+ ] [4Target12 %info.target $+ ]  [4Damage Amount12 %info.amount $+ ] [4Status Type12 %info.status $+ ] [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, red orbs) $+ ] %sell.price %exclusive %info.fullbringmsg) }
+    if (%info.type = heal) { $display.private.message([4Name12 $3 $+ ] [4Type12 Healing $+ ] [4Heal Amount12 %info.amount $+ $chr(37) of target's maximum HP]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, %item.currency) $+ ] %sell.price %exclusive %info.fullbringmsg) }
+    if (%info.type = IgnitionGauge) { $display.private.message([4Name12 $3 $+ ] [4Type12 Ignition Gauge Restore $+ ] [4Restore Amount12 %info.amount $+ ]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, %item.currency) $+ ] %sell.price %exclusive %info.fullbringmsg) }
+    if (%info.type = Damage) { $display.private.message([4Name12 $3 $+ ] [4Type12 Damage $+ ] [4Target12 %info.target $+ ]  [4Damage Amount12 %info.amount $+ ] [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, %item.currency) $+ ] %sell.price %exclusive %info.fullbringmsg)  }
+    if (%info.type = Status) { $display.private.message([4Name12 $3 $+ ] [4Type12 Status $+ ] [4Target12 %info.target $+ ]  [4Damage Amount12 %info.amount $+ ] [4Status Type12 %info.status $+ ] [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, %item.currency) $+ ] %sell.price %exclusive %info.fullbringmsg) }
     if (%info.type = Food) {  
       var %info.amount $readini($dbfile(items.db), n, $3, amount)
       %info.amount = $replacex(%info.amount,$chr(36) $+ rand,random)

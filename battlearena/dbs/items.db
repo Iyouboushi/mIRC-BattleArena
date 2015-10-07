@@ -3577,3 +3577,77 @@ currency=CandyCorn
 sellprice=0
 Desc=A spooky halloween hat. Check this using !view-info armor SpookyHat to see more information about it. 
 exclusive=yes
+
+[SpookyCostume]
+type=armor
+cost=25
+currency=CandyCorn
+sellprice=0
+Desc=A spooky halloween costume. Check this using !view-info armor SpookyCostume to see more information about it. 
+exclusive=yes
+
+[SpookyLeggings]
+type=armor
+cost=25
+currency=CandyCorn
+sellprice=0
+Desc=Spooky halloween leggings. Check this using !view-info armor SpookyLeggings to see more information about it. 
+exclusive=yes
+
+[SpookyGloves]
+type=armor
+cost=25
+currency=CandyCorn
+sellprice=0
+Desc=Spooky halloween gloves. Check this using !view-info armor SpookyGloves to see more information about it. 
+exclusive=yes
+
+[SpookyBoots]
+type=armor
+cost=25
+currency=CandyCorn
+sellprice=0
+Desc=Spooky halloween boots. Check this using !view-info armor SpookyBoots to see more information about it. 
+exclusive=yes
+
+[PumpkinPie]
+Type=heal
+cost=10
+currency=CandyCorn
+sellprice=10
+Target=single
+Amount=5
+Desc=Mmmm, some yummy pumpkin pie! %enemy gobbles it down and feels a bit healthier.
+exclusive=yes
+
+[BagOfCandy]
+Type=Status
+Target=Single
+StatusType=speedup
+Amount=0
+Cost=5
+currency=CandyCorn
+SellPrice=50
+Desc=forces %enemy to eat a whole bag of halloween candy. %enemy feels ill but is now SuPeR hYpEr from the sugar.  ZING ZING ZING ZING!
+exclusive=yes
+
+[Witch'sBrew]
+Type=Status
+Target=Single
+StatusType=drunk
+Amount=0
+Cost=10
+currency=CandyCorn
+SellPrice=50
+Desc=fills a goblet from a black cauldron and hands it to %enemy who drinks it. Hey, why not? %enemy begins to feel a bit loaded from the Witch's Brew!
+exclusive=yes
+
+[PumpkinBomb]
+Type=Damage
+Target=Single
+Amount=200
+Cost=20
+SellPrice=100
+Desc=takes out a bomb made out of a jack-o-lantern and tosses it at %enemy causing a messy explosion.
+Element=fire
+

@@ -2348,34 +2348,44 @@ alias shop.halloween {
   if ($left($adate, 2) != 10) { $display.private.message(4You can only use this shop in October) | halt }
 
   if ($2 = list) { 
-    unset %shop.list | unset %item.name | unset %item_amount
+    unset %shop.list | unset %item.name | unset %item_amount | unset %halloween.items.list | unset %halloween.armor.list
 
     var %value 1 | var %items.lines $lines($lstfile(items_halloween.lst))
 
     while (%value <= %items.lines) {
-      set %item.name $read -l $+ %value $lstfile(items_halloween.lst)
-      set %item.price $readini($dbfile(items.db), %item.name, cost)
+      var %item.name $read -l $+ %value $lstfile(items_halloween.lst)
+      var %item.price $readini($dbfile(items.db), %item.name, cost)
+      var %item.type $readini($dbfile(items.db), %item.name, type)
+
+      echo -a name: %item.name :: price: %item.price :: type; %item.type
 
       if ((%item.price > 0) && ($item.amount($1, %item.name) <= 0)) {
-        if (%item.price <= $readini($char($1), item_amount, CandyCorn)) {  %halloween.list1 = $addtok(%halloween.list1, $+ %item.name $+ ( $+ %item.price $+ ),46) }
-        else { %halloween.list1 = $addtok(%halloween.list1,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
+        if (%item.price <= $readini($char($1), item_amount, CandyCorn)) {  
+          if (%item.type = armor) { %halloween.armor.list = $addtok(%halloween.armor.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          else { %halloween.items.list = $addtok(%halloween.items.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+
+        }
+        else { 
+          if (%item.type = armor) { %halloween.armor.list = $addtok(%halloween.armor.list,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          else { %halloween.items.list = $addtok(%halloween.items.list,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
+        }
       }
-      unset %item.name | unset %item_amount
+
       inc %value 1 
     }
 
     set %replacechar $chr(044) $chr(032)
-    %halloween.list1 = $replace(%halloween.list1, $chr(046), %replacechar)
+    %halloween.armor.list = $replace(%halloween.armor.list, $chr(046), %replacechar)
+    %halloween.items.list = $replace(%halloween.items.list, $chr(046), %replacechar)
     unset %replacechar
 
-    if (%halloween.list1 != $null) {  
-      $display.private.message.delay.custom(2NPC Trust items are paid for with 4Candy Corn,1)
-      $display.private.message.delay.custom(2 $+ %halloween.list1, 1)
-    }
+    $display.private.message.delay.custom(2These items and armor pieces are paid for with 4Candy Corn,1)
+    if (%halloween.armor.list != $null) { $display.private.message.delay.custom(4Armor:2 %halloween.armor.list, 1) }
+    if (%halloween.items.list != $null) { $display.private.message.delay.custom(4Items:2 %halloween.items.list, 1) }
 
-    if (%halloween.list1 = $null) { $display.private.message(4There are no Halloween store items available for purchase right now)  }
+    if ((%halloween.armor.list = $null) && (%halloween.items.list = $null)) { $display.private.message(4There are no Halloween store items available for purchase right now)  }
 
-    unset %halloween.list1 | unset %item.price | unset %item.name
+    unset %halloween.armor.list | unset %halloween.items.list | unset %item.price | unset %item.name
 
   }
 

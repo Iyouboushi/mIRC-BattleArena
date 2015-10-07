@@ -628,6 +628,20 @@ EquipLocation=body
 cost=50
 SellPrice=20
 
+[SpookyCostume]
+Name=Spooky Costume
+hp=10
+tp=5
+str=1
+def=1
+int=1
+spd=0
+Augment=EnhanceKillerTraits
+Cost=0
+SellPrice=50
+Exclusive=yes
+EquipLocation=body
+
 [ClothRobe]
 name=Cloth Robe
 hp=0
@@ -1301,6 +1315,20 @@ EquipLocation=legs
 cost=50
 SellPrice=20
 
+[SpookyLeggings]
+Name=Spooky Leggings
+hp=10
+tp=5
+str=1
+def=1
+int=1
+spd=0
+Augment=EnhanceKillerTraits
+Cost=0
+SellPrice=50
+Exclusive=yes
+EquipLocation=legs
+
 [DarksteelHose]
 Name=Darksteel Hose
 hp=10
@@ -1773,6 +1801,20 @@ Augment=none
 EquipLocation=feet
 cost=50
 SellPrice=20
+
+[SpookyBoots]
+Name=Spooky Boots
+hp=10
+tp=5
+str=1
+def=1
+int=1
+spd=0
+Augment=EnhanceKillerTraits
+Cost=0
+SellPrice=50
+Exclusive=yes
+EquipLocation=feet
 
 [DarksteelBoots]
 Name=Darksteel Boots
@@ -2271,6 +2313,20 @@ Augment=none
 EquipLocation=hands
 cost=50
 SellPrice=20
+
+[SpookyGloves]
+Name=Spooky Gloves
+hp=10
+tp=5
+str=1
+def=1
+int=1
+spd=0
+Augment=EnhanceKillerTraits
+Cost=0
+SellPrice=50
+Exclusive=yes
+EquipLocation=hands
 
 [RustyKnuckles]
 Name=Rusty Knuckles
