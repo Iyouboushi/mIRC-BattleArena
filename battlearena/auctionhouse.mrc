@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 10/06/15
+;;;; Last updated: 10/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -40,7 +40,6 @@ alias auctionhouse.winners {
   var %total.winner.lines $lines($txtfile(auction_winners.txt))
   if (%total.winner.lines = 0) { $display.private.message2($1, $readini(translation.dat, errors, NoAuction)) | halt }
 
-
   if ($2 = $null) { 
 
     if (%total.winner.lines <= 3) { var %last.line 3 | var %starting.line 1 }
@@ -56,16 +55,28 @@ alias auctionhouse.winners {
       $display.private.message2($1, $read -l $+ %starting.line $txtfile(auction_winners.txt))
       inc %starting.line
     }
-
   }
 
   if ($2 != $null) {
     if ($2 !isnum) { $display.private.message2($1, 4Error: Must input a number) | halt }
-    var %winner.auctionline $read -l $+ $2 $txtfile(auction_winners.txt)
-    if (%winner.auctionline = $null) {  $display.private.message2($1, 4Error: Invalid auction number) | halt }
-    var %winner.displayline 3Auction No. - Date - Time - Winner - Item - Notes Paid
-    $display.private.message2($1, %winner.displayline)
-    $display.private.message2($1, %winner.auctionline)
+
+    var %auction.lines $lines($txtfile(auction_winners.txt)) 
+    var %current.line 1
+    while (%current.line <= %auction.lines) {
+      var %winner.auctionline $read -l $+ %current.line $txtfile(auction_winners.txt)
+      var %auction.number $gettok(%winner.auctionline, 1, 45)
+
+      if ($2 = %auction.number) { 
+        var %winner.displayline 3Auction No. - Date - Time - Winner - Item - Notes Paid
+        $display.private.message2($1, %winner.displayline)
+        $display.private.message2($1, %winner.auctionline)
+        halt
+      }
+
+      inc %current.line
+    }
+
+    $display.private.message2($1, 4Error: Invalid auction number) | halt 
   }
 
 }
