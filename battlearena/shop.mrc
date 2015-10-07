@@ -2357,8 +2357,6 @@ alias shop.halloween {
       var %item.price $readini($dbfile(items.db), %item.name, cost)
       var %item.type $readini($dbfile(items.db), %item.name, type)
 
-      echo -a name: %item.name :: price: %item.price :: type; %item.type
-
       if ((%item.price > 0) && ($item.amount($1, %item.name) <= 0)) {
         if (%item.price <= $readini($char($1), item_amount, CandyCorn)) {  
           if (%item.type = armor) { %halloween.armor.list = $addtok(%halloween.armor.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
@@ -2386,7 +2384,6 @@ alias shop.halloween {
     if ((%halloween.armor.list = $null) && (%halloween.items.list = $null)) { $display.private.message(4There are no Halloween store items available for purchase right now)  }
 
     unset %halloween.armor.list | unset %halloween.items.list | unset %item.price | unset %item.name
-
   }
 
   if (($2 = buy) || ($2 = purchase)) {
