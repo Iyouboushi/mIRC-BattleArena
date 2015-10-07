@@ -700,6 +700,31 @@ total.player.battles {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns the total average
+; player levels
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+total.player.averagelevel {
+  var %player.totallevels 0
+
+  var %value 1 | var %total.players 0
+  while ($findfile( $char_path , *.char, %value , 0) != $null) {
+    set %file $nopath($findfile($char_path ,*.char,%value)) 
+    set %name $remove(%file,.char)
+
+    if ((%name = new_chr) || (%name = $null)) { inc %value 1 } 
+    if (($readini($char(%name), info, flag) = npc) || ($readini($char(%name), info, flag) = monster)) { inc %value 1 }
+    else { 
+      var %temp.playerlevel $get.level(%name)
+      inc %player.totallevels %temp.playerlevel 
+      inc %total.players 1
+      inc %value 1
+    }
+  }
+  unset %file | unset %name
+  return $round($calc(%player.totallevels / %total.players),0)
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns true/false if 
 ; the bot is allowing colors
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4039,6 +4064,9 @@ dragonhunt.dragonelement { return %dragon.element $readini($dbfile(dragonhunt.db
 dragonhunt.createdragon {
   ; Write the time to battlestats.dat
   writeini battlestats.dat battle DragonHunt.LastMade $ctime
+
+  ; Are players too low level for a dragon to spawn?
+  if ($total.player.averagelevel < 45) { return }
 
   var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
   if (%dragonhunt.numberofdragons >= 5) { 
