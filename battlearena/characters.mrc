@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1643,6 +1643,7 @@ alias wheel.spin {
 ; Gambler Chou-Han game
 ; ===================================
 on 3:TEXT:!chouhan*:*:{ $gamble.game($nick, $2, $3) } 
+on 3:TEXT:!chou-han*:*:{ $gamble.game($nick, $2, $3) } 
 
 alias gamble.game {
   ; $1 = user

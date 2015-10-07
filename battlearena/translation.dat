@@ -319,6 +319,7 @@ DemonWallFight=$chr(3) $+ 14 $+ The heroes are teleported into a long dead-end
 DemonWallFightOver=$chr(3) $+ 14 $+ The %demonwall.name gives off an eerie laugh as the heroes are backed against the wall. With nowhere else to go, the wall continues to press against them until the heroes are squished and the battle ends.
 DemonWallFightWarning=$chr(3) $+ 4 $+ The heroes estimate they have %max.demonwall.turns turns before The %demonwall.name will crush them at the end of the hall.
 ElderDragonFight=$chr(3) $+ 14 $+ The Elder Dragon %elderdragon.name has awoken from its long slumber. With an earth-shaking roar, the dragon claws out of the ground and flies high into the air.  It gives another roar as it then sees the heroes and swoops in for an attack.
+PredatorFight=$chr(3) $+ 14 $+ The heroes feel as though they are being watched and studied by something that they cannot see..
 CrystalShadowFight=$chr(3) $+ 14 $+ The heroes stumble upon a very large and ancient crystal. Upon inspecting it, it glows and teleports the heroes inside of a large crystal chamber where a powerful Crystal Shadow Warrior stands waiting for them.
 BanditsFight=$chr(3) $+ 14 $+ Machine gun sounds fill the air as a bunch of noisy bandits arrive to kill and rob the heroes.
 KidnappedPresident=$chr(3) $+ 14 $+ The President of the Allied Forces has been kidnapped by monsters! Are you a bad enough dude to save the president? $chr(3) $+ 4 $+ The rescue party will depart in %time.to.enter seconds. Type !enter if you wish to join the battle!   

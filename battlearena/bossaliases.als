@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 10/06/15
+;;;; Last updated: 10/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -37,7 +37,10 @@ get_boss_type {
   if ((%winning.streak.check > 75) && (%winning.streak.check < 200)) { 
     if ($readini(system.dat, system, AllowDemonwall) = yes) { var %enable.demonwall true }
   }
-  if ((%winning.streak.check >= 200) && (%winning.streak.check <= 5000)) { var %enable.elderdragon true }
+
+  if ((%winning.streak.check >= 200) && (%winning.streak.check <= 5000)) { 
+    if ($readini(system.dat, system, EnablePredator) = yes) { var %enable.predator true }
+  }
 
   if ((%winning.streak.check >= 200) && (%winning.streak.check <= 5000)) { 
     if ($readini(system.dat, system, AllowWallOfFlesh) = yes) { var %enable.wallofflesh true }
@@ -64,7 +67,7 @@ get_boss_type {
 
   if ((%enable.wallofflesh = true) && (%boss.chance <= 10)) { %boss.choices = %boss.choices $+ .demonwall }
   if ((%enable.demonwall = true) && (%boss.chance <= 15)) { %boss.choices = %boss.choices $+ .demonwall }
-  if ((%enable.elderdragon = true) && (%boss.chance < 20)) { %boss.choices = %boss.choices $+ .elderdragon }
+  if ((%enable.predator = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .predator }  
 
   ; Choose a boss type
 
@@ -1650,4 +1653,61 @@ dragonhunt.createfile {
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
 
   writeini $txtfile(battle2.txt) battle bonusitem DragonScale.DragonFang.DragonEgg
+}
+
+
+predator_fight {
+  $get_mon_list
+  var %monsters.total $numtok(%monster.list,46)
+
+  if ((%monsters.total = 0) || (%monster.list = $null)) { $display.message($readini(translation.dat, Errors, NoMonsAvailable), global) | $endbattle(none) | halt }
+
+  var %number.of.monsters.needed 1
+  set %value 1 
+
+  while (%value <= %number.of.monsters.needed) {
+    if (%monster.list = $null) { inc %value 1 } 
+
+    var %monsters.total $numtok(%monster.list,46)
+    var %random.monster $rand(1, %monsters.total) 
+    var %monster.name $gettok(%monster.list,%random.monster,46)
+    if (%monsters.total = 0) { inc %value 1 }
+
+    if ($readini($mon(%monster.name), battle, hp) != $null) {  .copy -o $mon(%monster.name) $char(%monster.name) | set %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat }
+
+    $set_chr_name(%monster.name) 
+    if (%battle.type != ai) { 
+      if ($readini($mon(%monster.name), battle, hp) != $null) { 
+        $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
+        $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)
+      }
+    }
+
+    if (%battle.type = ai) { set %ai.monster.name $set_chr_name(%monster.name) %real.name | writeini $txtfile(1vs1bet.txt) money monsterfile %monster.name }
+
+    var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
+    inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters 
+
+    set %monster.to.remove $findtok(%monster.list, %monster.name, 46)
+    set %monster.list $deltok(%monster.list,%monster.to.remove,46)
+    write $txtfile(battle.txt) %monster.name
+
+    writeini $char(%monster.name) info SpawnAfterDeath Predator 
+    writeini $char(%monster.name) info BossLevel $calc($1 - 5)
+
+    $boost_monster_stats(%monster.name)
+
+    $fulls(%monster.name) 
+    if (%battlemonsters = 10) { set %number.of.monsters.needed 0 }
+    inc %value 1
+    else {  
+      set %monster.to.remove $findtok(%monster.list, %monster.name, 46)
+      set %monster.list $deltok(%monster.list,%monster.to.remove,46)
+      dec %value 1
+    }
+  }
+
+  if (%battle.type != ai) {
+    $display.message($readini(translation.dat, events, PredatorFight),battle) 
+  }
 }

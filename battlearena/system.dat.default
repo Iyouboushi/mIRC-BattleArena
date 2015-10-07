@@ -91,6 +91,7 @@ DemonWall=75
 WallOfFlesh=200
 DefendOutpost=105
 Assault=105
+Predator=200
 
 [MonsterLevelCaps]
 SmallWarmachine=18
@@ -105,6 +106,7 @@ FrostLegion=15
 ElderDragon=195
 DemonWall=75
 WallOfFlesh=200
+Predator=200
 
 [StatPrices]
 hp=150

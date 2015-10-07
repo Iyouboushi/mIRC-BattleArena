@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/02/15
+;;;; Last updated: 10/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -779,6 +779,8 @@ alias battlebegin {
   if (%battle.type = defendoutpost) { set %darkness.turns 5 }
   if (%battle.type = assault) { set %darkness.turns 35 }
 
+  if (%boss.type = predator) { set %darkness.turns 30 }
+
   if (%mode.pvp = on) { unset %darkness.turns }
   if (%mode.gauntlet = on) { unset %darkness.turns }
   if (%battle.type = ai) { unset %darkness.turns } 
@@ -885,7 +887,7 @@ alias battle.getmonsters {
 
             if (%boss.type = bandits) { set %number.of.monsters.needed 0 }
             if (%boss.type = pirates) { set %number.of.monsters.needed 0 }
-            if (%boss.type = elderdragon) { set %number.of.monsters.needed 0 }
+            if (%boss.type = predator) { set %number.of.monsters.needed 0 }
             if (%boss.type = dinosaurs) { set %number.of.monsters.needed 0 }
             if (%boss.type = FrostLegion) { set %number.of.monsters.needed 0 }
             if (%boss.type = CrystalShadow) { set %number.of.monsters.needed 0 }
@@ -905,6 +907,8 @@ alias battle.getmonsters {
 }
 
 alias generate_monster {
+  echo -a generating monster alias :: $1
+
   if ($1 = orbfountain) {
     .copy -o $mon(orb_fountain) $char(orb_fountain)  | set %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,orb_fountain,46) | writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) orb_fountain
     $boost_monster_stats(orb_fountain) | $fulls(orb_fountain)
@@ -932,7 +936,6 @@ alias generate_monster {
       if (%monster.list = $null) { inc %value 1 } 
 
       set %monsters.total $numtok(%monster.list,46)
-
       if ((%first.mon.pick = true) || (%first.mon.pick = $null)) {  set %random.monster $rand(1, %monsters.total) }
       if (%first.mon.pick = false) { set %random.monster 1 | var %first.mon.pick true }
       set %monster.name $gettok(%monster.list,%random.monster,46)
@@ -959,6 +962,8 @@ alias generate_monster {
       set %monster.list $deltok(%monster.list,%monster.to.remove,46)
       write $txtfile(battle.txt) %monster.name
 
+      if (%boss.type = predator) { writeini $char(%monster.name) info SpawnAfterDeath Predator }
+
       if ($2 = portal) { $boost_monster_stats(%monster.name, demonportal)  }
       else { $boost_monster_stats(%monster.name) }
 
@@ -976,7 +981,7 @@ alias generate_monster {
   if ($1 = boss) {
     if (%boss.type = $null) { $get_boss_type }
 
-    set %valid.boss.types normal.bandits.gremlins.doppelganger.warmachine.demonwall.wallofflesh.elderdragon.pirates.frostlegion.crystalshadow.dinosaurs
+    set %valid.boss.types normal.bandits.gremlins.doppelganger.warmachine.demonwall.wallofflesh.predator.pirates.frostlegion.crystalshadow.dinosaurs
 
     if (%boss.type = $null) { var %boss.type normal }
     if ((%battle.type = assault) || (%battle.type = defendoutpost)) { set %boss.type normal }
@@ -1177,16 +1182,15 @@ alias generate_monster {
       set %current.battlefield South Pole
     }
 
-
-    if (%boss.type = elderdragon) {
+    if (%boss.type = predator) {
       if (%battle.type != ai) { 
-        var %battle.level.cap $return.levelcapsetting(ElderDragon)
+        var %battle.level.cap $return.levelcapsetting(Predator)
         if (%battle.level.cap = null) { var %battle.level.cap 200 } 
         $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
         $portal.sync.players(%battle.level.cap) 
       }
 
-      $generate_elderdragon
+      $predator_fight(%battle.level.cap)
     }
 
     if (%boss.type = dinosaurs) {  $generate_dinosaur }

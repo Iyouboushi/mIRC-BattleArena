@@ -88,6 +88,7 @@ Killer_Rabbit=Holy_Water.HolyHandGrenade.Lucky-Rabbit'sFoot
 KingSlime=Potion.X-Potion.Ether.Holy_Water.Tonic
 Kirin=KirinSeal.Kirin'sOsode
 KnightsNi=Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.Shihei.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin.Ectoplasm.BrokenLance.Potion.Paper
+Predator=$read -l $+ $rand(1, $lines($lstfile(chest_gold.lst))) $lstfile(chest_gold.lst)
 Lady_Amandine=Aetherial-Earrings.Aetherial-Ring
 Leaping_Lizzie=KnowledgeSource.DefenseSource.PowerSource.Tonic.Senzu.X-Potion.Ether
 Leprechaun=GreenKinstone.BlueKinstone.GoldOre

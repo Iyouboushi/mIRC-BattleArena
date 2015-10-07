@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/06/15
+;;;; Last updated: 10/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2909,6 +2909,7 @@ multiple_wave_check {
   if (%battle.type = ai) { return }
   if (%boss.type = warmachine) { return }
   if (%boss.type = elderdragon) { return }
+  if (%boss.type = predator) { return }
   if (%savethepresident = on) { return }
 
   unset %number.of.monsters.needed

@@ -414,6 +414,7 @@ OldIronKingClaws=OldIronSwipe.OldIronSlam.OldIronDive.OldIronLaser.OldIronFireSl
 UchihaPower=Katon:HousenkaNoJutsu.Katon:BakufuuRanbu.Katon:GoukakyuuNoJutsu
 MadaraGunbai&Kama=Katon:GoukakyuuNoJutsu.Katon:GoukaMekkyaku.Katon:GoukaMesshitsu.Katon:RyuuenHoukaNoJutsu.Mokuton:MokuryuuNoJutsu.Senpou:RantonKouga.Senpou:IntonRaiha.Truth-SeekingBall
 SusanooKatanas=YonNoTachi:Kagerou.ShichiNoTachi:Yukikaze.HachiNoTachi:Gekkou.KyuuNoTachi:Kassha
+PredatorSuit=PredatorLaser.PredatorSelfDestruct.PredatorBomb.PredatorClaw
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -8255,6 +8256,49 @@ Element=None
 Cost=0
 Magic=No
 stat=int
+
+[PredatorLaser]
+Type=Single
+TP=10
+Desc=activates a small weapon that pops up out of the shoulder of its armor and aims towards %enemy before firing a bright red laser!
+BasePower=15
+Element=none
+Cost=0
+Magic=No
+stat=int
+DestroyShadows=2
+
+[PredatorSelfDestruct]
+Type=Suicide-AOE
+TP=10
+Desc=gives off an evil laugh as it activates the self destruct on its suit.  Within moments a violent explosion rips through the battlefield, hitting anyone still on it.
+BasePower=50
+Element=Fire
+magic=yes
+cost=0
+stat=hp
+
+[PredatorBomb]
+Type=AOE
+TP=10
+Desc=activates a part of its suit that shoots out a bunch of tiny bombs that explode around everyone on the battlefield
+BasePower=30
+Element=fire
+Cost=0
+Magic=no
+stat=int
+DestroyShadows=3
+
+[PredatorClaw]
+Type=Single
+TP=10
+Desc=rushes forward and activates a claw on its right hand.  Using that claw, the Predator strikes %enemy three times!
+BasePower=30
+Element=None
+Cost=0
+Magic=No
+hits=3
+stat=str
 
 [QuadraStrike]
 Type=Single
