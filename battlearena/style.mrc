@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 07/27/15
+;;;; Last updated: 10/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -182,6 +182,9 @@ alias style.level {
 
 
 alias generate_style_order {
+  ; $1 = null for end of battle or BattleStyle for generating the list in battle
+
+  unset %battle.style.order
 
   ; make the Battle List table
   hmake BattleTable
@@ -236,13 +239,15 @@ alias generate_style_order {
   hfree BattleTable_Temp
 
   ; Erase the old battle.txt and replace it with the new one.
-  .remove $txtfile(battle.txt)
+  if ($1 = $null) { .remove $txtfile(battle.txt) }
 
   var %index = $hget(BattleTable_Sorted,0).item
   while (%index > 0) {
     dec %index
     var %tmp = $hget(BattleTable_Sorted,sorted_ $+ %index)
-    write $txtfile(battle.txt) %tmp
+    if ($1 = $null) { write $txtfile(battle.txt) %tmp }
+    if ($1 = BattleStyle) { %battle.style.order = $addtok(%battle.style.order, %tmp, 46)
+    } 
   }
 
   ; get rid of the sorted table

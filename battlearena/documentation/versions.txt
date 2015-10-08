@@ -1304,6 +1304,8 @@ Battle Arena Bot VERSIONS
 - Added the Dinosaur special boss battle type
 - Added the Predator special boss battle type
 - Added the !Rest command. This command can be used by players on their turn to skip their turn. It does nothing else.
+- Added the !battle style command. This command can be used in battle to see the current style rankings of everyone in
+  the battle. In the event that two peolpe have the same rating it shows them in the order of highest style points.
 - Added a new flag for monsters/npcs/bosses:  IgnoreElementalMessage. It goes in [info]  and if it's set to true 
   the bot won't show the elemental damage message on the target's turn.
 - Added a new shop NPC: Vinz Clortho the Keymaster   After being rescued he will sell dungeon keys for seals

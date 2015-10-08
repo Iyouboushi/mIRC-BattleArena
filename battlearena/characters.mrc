@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 10/07/15
+;;;; Last updated: 10/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -264,6 +264,18 @@ on 3:TEXT:!hp:?: {
     $display.private.message($readini(translation.dat, system, ViewMyMechHP))
   }
 }
+
+on 3:TEXT:!battle style:#: {
+  if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) }
+  $build_battlestyle_list
+  $display.message(%battle.style.list, battle)  | unset %real.name | unset %battle.style.list
+}
+on 3:TEXT:!battle style:?: {
+  if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) }
+  $build_battlestyle_list
+  $display.private.message(%battle.style.list)  | unset %real.name | unset %battle.style.list
+}
+
 on 3:TEXT:!battle hp:#: { 
   if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) }
   $build_battlehp_list

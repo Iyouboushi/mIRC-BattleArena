@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/07/15
+;;;; Last updated: 10/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1007,6 +1007,38 @@ build_battlehp_list {
   if ($chr(046) isin %battle.hp.list) { 
     %battle.hp.list = $replace(%battle.hp.list, $chr(046), $chr(032))
   }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Builds the Battle Style list
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+build_battlestyle_list {
+  unset %battle.style.list
+
+  ; Generate the style ordering
+  $generate_style_order(BattleStyle)
+
+  ; Put together the list
+  var %number.of.people $numtok(%battle.style.order, 46)
+  var %current.person 1
+  while (%current.person <= %number.of.people) {
+    var %person.name $gettok(%battle.style.order,%current.person,46)
+    if ($readini($char(%person.name), info, flag) != monster) {
+      $calculate.stylepoints(%person.name)
+      var %style.to.add  3 $+ %person.name $+ :  %style.rating
+      %battle.style.list = $addtok(%battle.style.list, %style.to.add, 46) 
+      unset %style.rating
+    }
+
+    inc %current.person
+  }
+
+  if ($chr(046) isin %battle.style.list) { set %replacechar $chr(044) $chr(032)
+    %battle.style.list = $replace(%battle.style.list, $chr(046), %replacechar)
+    unset %replacechar
+  }
+  unset %battle.style.order
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
