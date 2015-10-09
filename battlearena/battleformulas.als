@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2639,7 +2639,7 @@ formula.techdmg.monster {
   $guardian_style_check($3)
 
   ; AOE nerf check for players
-  if ($readini($char($1), info, flag) = $null) {
+  if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(2 * %aoe.turn)
@@ -2975,7 +2975,7 @@ formula.techdmg.player.formula_2.0 {
   if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
-  if ($readini($char($1), info, flag) = $null) {
+  if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(10 * %aoe.turn)
@@ -3301,7 +3301,7 @@ formula.techdmg.player.formula_2.5 {
   if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
-  if ($readini($char($1), info, flag) = $null) {
+  if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(10 * %aoe.turn)
@@ -3541,7 +3541,7 @@ formula.techdmg.player.formula_1.0 {
 
 
   ; AOE nerf check for players
-  if ($readini($char($1), info, flag) = $null) {
+  if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(8 * %aoe.turn)
@@ -3858,7 +3858,7 @@ formula.techdmg.player.formula_3.0 {
   if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
-  if ($readini($char($1), info, flag) = $null) {
+  if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(10 * %aoe.turn)
@@ -4571,7 +4571,7 @@ formula.techdmg.player.old {
   }
 
   ; AOE nerf check for players
-  if ($readini($char($1), info, flag) = $null) {
+  if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(7 * %aoe.turn)
@@ -4870,7 +4870,7 @@ formula.techdmg.player.percent {
   }
 
   ; AOE nerf check for players
-  if ($readini($char($1), info, flag) = $null) {
+  if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
       var %aoe.nerf.percent $calc(7 * %aoe.turn)

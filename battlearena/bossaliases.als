@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 10/07/15
+;;;; Last updated: 10/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -463,7 +463,9 @@ generate_demonwall {
   writeini $char(%monster.name) info OrbBonus yes
   writeini $char(%monster.name) info bosslevel %current.battlestreak
 
-  var %base.hp.tp $calc(7 * %current.battlestreak)
+  var %base.hp.tp $calc(9 * %current.battlestreak)
+  if ($return_playersinbattle > 3) { inc %base.hp.tp $calc($return_playersinbattle * 500) }
+
   if (%battle.type != ai) {  writeini $char(%monster.name) basestats hp $iif($return_playersinbattle > 1, $rand(10000,15000), $rand(12000,16000)) }
   if (%battle.type = ai) {  writeini $char(%monster.name) basestats hp $rand(20000,25000) }
 
@@ -498,10 +500,63 @@ generate_demonwall {
   writeini $char(%monster.name) skills Resist-Weaponlock 100
 
   writeini $char(%monster.name) styles equipped Guardian
-  writeini $char(%monster.name) styles guardian 1
+  writeini $char(%monster.name) styles guardian 2
 
   var %reflect.chance $rand(1,100)
   if (%reflect.chance <= 40) { writeini $char(%monster.name) status reflect yes | writeini $char(%monster.name) status reflect.timer 1 }
+
+  ; Modifiers
+  writeini $char(%monster.name) modifiers Fire 30
+  writeini $char(%monster.name) modifiers EnergyBlaster 80
+  writeini $char(%monster.name) modifiers HolyHandGrenade 10
+  writeini $char(%monster.name) modifiers Crissaegrim 50
+  writeini $char(%monster.name) modifiers Valmanway 50
+  writeini $char(%monster.name) modifiers Naturaleza 50
+  writeini $char(%monster.name) modifiers AsuranFists 35
+  writeini $char(%monster.name) modifiers VictorySmite 40
+  writeini $char(%monster.name) modifiers ShinjinSpiral 40
+  writeini $char(%monster.name) modifiers MillionStab 40
+  writeini $char(%monster.name) modifiers VorpalBlade 40
+  writeini $char(%monster.name) modifiers DeathBlossom 40
+  writeini $char(%monster.name) modifiers SwiftBlade 40
+  writeini $char(%monster.name) modifiers ChantDuCygne 40
+  writeini $char(%monster.name) modifiers Requiescat 40
+  writeini $char(%monster.name) modifiers Resolution 35
+  writeini $char(%monster.name) modifiers Guillotine 40
+  writeini $char(%monster.name) modifiers Insurgency 40
+  writeini $char(%monster.name) modifiers Pentathrust 40
+  writeini $char(%monster.name) modifiers Drakesbane 40
+  writeini $char(%monster.name) modifiers Stardiver 40
+  writeini $char(%monster.name) modifiers PyrrhicKleos 40
+  writeini $char(%monster.name) modifiers Evisceration 40
+  writeini $char(%monster.name) modifiers DancingEdge 40
+  writeini $char(%monster.name) modifiers Ultima 40
+  writeini $char(%monster.name) modifiers Kaustra 40
+  writeini $char(%monster.name) modifiers Ashes 40
+  writeini $char(%monster.name) modifiers Dismay 40
+  writeini $char(%monster.name) modifiers ThousandCuts 40
+  writeini $char(%monster.name) modifiers Tachi:Shoha 40
+  writeini $char(%monster.name) modifiers Tachi:Rana 40
+  writeini $char(%monster.name) modifiers Rainstorm 30
+  writeini $char(%monster.name) modifiers SpinningAttack 40
+  writeini $char(%monster.name) modifiers TornadoKick 40
+  writeini $char(%monster.name) modifiers CircularChain 40
+  writeini $char(%monster.name) modifiers CircleBlade 40
+  writeini $char(%monster.name) modifiers SonicThrust 40
+  writeini $char(%monster.name) modifiers ApexArrow 40
+  writeini $char(%monster.name) modifiers UrielBlade 40
+  writeini $char(%monster.name) modifiers FellCleave 40
+  writeini $char(%monster.name) modifiers AeolianEdge 40
+  writeini $char(%monster.name) modifiers Twin_Slice 40
+  writeini $char(%monster.name) modifiers LightningStrike 40
+  writeini $char(%monster.name) modifiers BladeBeamII 40
+  writeini $char(%monster.name) modifiers TrillionStabs 40
+  writeini $char(%monster.name) modifiers DoubleBackstab 40
+  writeini $char(%monster.name) modifiers Chou_Kamehameha 40
+  writeini $char(%monster.name) modifiers BloodBath 40
+  writeini $char(%monster.name) modifiers UltimaII 40
+  writeini $char(%monster.name) modifiers KaustraII 40
+  writeini $char(%monster.name) modifiers Chivalry 40
 
   $fulls(%monster.name)
   $boost_monster_stats(%monster.name, demonwall)
@@ -590,12 +645,64 @@ generate_wallofflesh {
   writeini $char(%monster.name) skills Resist-Weaponlock 100
 
   writeini $char(%monster.name) styles equipped Guardian
-  writeini $char(%monster.name) styles guardian 2
+  writeini $char(%monster.name) styles guardian 3
 
-  writeini $char(%monster.name) modifiers Fire 60
-  writeini $char(%monster.name) modifiers Gun 170
-  writeini $char(%monster.name) modifiers Rifle 200
-  writeini $char(%monster.name) modifiers Bow 120
+  ; Modifiers
+  writeini $char(%monster.name) modifiers Fire 30
+  writeini $char(%monster.name) modifiers Gun 120
+  writeini $char(%monster.name) modifiers Rifle 140
+  writeini $char(%monster.name) modifiers Bow 105
+  writeini $char(%monster.name) modifiers EnergyBlaster 80
+  writeini $char(%monster.name) modifiers HolyHandGrenade 10
+  writeini $char(%monster.name) modifiers Crissaegrim 50
+  writeini $char(%monster.name) modifiers Valmanway 50
+  writeini $char(%monster.name) modifiers Naturaleza 50
+  writeini $char(%monster.name) modifiers AsuranFists 35
+  writeini $char(%monster.name) modifiers VictorySmite 40
+  writeini $char(%monster.name) modifiers ShinjinSpiral 40
+  writeini $char(%monster.name) modifiers MillionStab 40
+  writeini $char(%monster.name) modifiers VorpalBlade 40
+  writeini $char(%monster.name) modifiers DeathBlossom 40
+  writeini $char(%monster.name) modifiers SwiftBlade 40
+  writeini $char(%monster.name) modifiers ChantDuCygne 40
+  writeini $char(%monster.name) modifiers Requiescat 40
+  writeini $char(%monster.name) modifiers Resolution 35
+  writeini $char(%monster.name) modifiers Guillotine 40
+  writeini $char(%monster.name) modifiers Insurgency 40
+  writeini $char(%monster.name) modifiers Pentathrust 40
+  writeini $char(%monster.name) modifiers Drakesbane 40
+  writeini $char(%monster.name) modifiers Stardiver 40
+  writeini $char(%monster.name) modifiers PyrrhicKleos 40
+  writeini $char(%monster.name) modifiers Evisceration 40
+  writeini $char(%monster.name) modifiers DancingEdge 40
+  writeini $char(%monster.name) modifiers Ultima 40
+  writeini $char(%monster.name) modifiers Kaustra 40
+  writeini $char(%monster.name) modifiers Ashes 40
+  writeini $char(%monster.name) modifiers Dismay 40
+  writeini $char(%monster.name) modifiers ThousandCuts 40
+  writeini $char(%monster.name) modifiers Tachi:Shoha 40
+  writeini $char(%monster.name) modifiers Tachi:Rana 40
+  writeini $char(%monster.name) modifiers Rainstorm 30
+  writeini $char(%monster.name) modifiers SpinningAttack 40
+  writeini $char(%monster.name) modifiers TornadoKick 40
+  writeini $char(%monster.name) modifiers CircularChain 40
+  writeini $char(%monster.name) modifiers CircleBlade 40
+  writeini $char(%monster.name) modifiers SonicThrust 40
+  writeini $char(%monster.name) modifiers ApexArrow 40
+  writeini $char(%monster.name) modifiers UrielBlade 40
+  writeini $char(%monster.name) modifiers FellCleave 40
+  writeini $char(%monster.name) modifiers AeolianEdge 40
+  writeini $char(%monster.name) modifiers Twin_Slice 40
+  writeini $char(%monster.name) modifiers LightningStrike 40
+  writeini $char(%monster.name) modifiers BladeBeamII 40
+  writeini $char(%monster.name) modifiers TrillionStabs 40
+  writeini $char(%monster.name) modifiers DoubleBackstab 40
+  writeini $char(%monster.name) modifiers Chou_Kamehameha 40
+  writeini $char(%monster.name) modifiers BloodBath 40
+  writeini $char(%monster.name) modifiers UltimaII 40
+  writeini $char(%monster.name) modifiers KaustraII 40
+  writeini $char(%monster.name) modifiers Chivalry 40
+
 
   var %reflect.chance $rand(1,100)
   if (%reflect.chance <= 70) { writeini $char(%monster.name) status reflect yes | writeini $char(%monster.name) status reflect.timer 1 }
