@@ -12,9 +12,9 @@ Mythril_Sword=FastBlade.BurningBlade.FlatBlade.SeraphBlade
 Rebellion=Stinger.MillionStab.Drive.DevilTrigger
 Agni=AerialCross.JetStream $+ $iif($weapon.linkcheck(Rudra) = true, .Tempest)
 Rudra=AerialCross.JetStream $+ $iif($weapon.linkcheck(Agni) = true, .Tempest)
-Joyeuse=FastBlade.CircleBlade.FlatBlade.UrielBlade.GlorySlash
-Excalibur=Atonement.CircleBlade.SpiritsWithin.VorpalBlade.ChantDuCygne
-Murgleis=DeathBlossom.SwiftBlade.SavageBlade.Requiescat.SanguineBlade
+Joyeuse=FastBlade.CircleBlade.FlatBlade
+Excalibur=Atonement.CircleBlade.SpiritsWithin.VorpalBlade
+Murgleis=DeathBlossom.SwiftBlade.SavageBlade
 LexTalionis=GlorySlash.UrielBlade
 Soulsaber=SpiritsWithin.VorpalBlade.SeraphBlade
 Almace=ChantduCygne.Requiescat.SanguineBlade
@@ -49,8 +49,8 @@ Xbalanque=Insurgency.NightmareScythe.Guillotine
 Braveheart=HardSlash.PowerSlash
 Balmung=Shockwave.SickleMoon.Freezebite
 Nightfall=GroundStrike.SpinningSlash
-Ragnarok=Scourge.HerculeanSlash.Resolution.Torcleaver
-Caladbolg=Torcleaver.Resolution
+Ragnarok=Scourge.Resolution.Torcleaver
+Caladbolg=HerculeanSlash.GroundStrike
 Macbain=SpinningSlash.HerculeanSlash.Scourge
 
 ; Wands/Staves
@@ -67,7 +67,7 @@ Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 
 ; Guns 
 Ebony&Ivory=RainStorm.ChargedShot.RapidShot
-Magnum=HotShot.ChargedShot.RapidShot
+Magnum=ChargedShot.RapidShot
 Hexagun=LastStand.Detonator.BlastShot
 Boomstick=HotShot.BlastShot.Detonator
 Armageddon=SniperShot.WildFire.Coronach.LeadenSalute
@@ -80,7 +80,6 @@ DeathPenalty=LeadenSalute.BlastShot.SlugShot
 
 ; Whips
 LeatherWhip=WhipLash
-Leather_Whip=Whiplash
 DemonWhip=SerpentBite.DarkLash.WhipLash
 Vampire_Killer=HolyLash.TwinDragonLash.CircularChain
 ChainWhip=Whiplash.TwinDragonLash
@@ -205,6 +204,7 @@ BlueEyesPower=BurstStream.AbsoluteTerror.FangRush
 BlackMagic=BlackMagicAttack.ThousandKnives.FireIV
 DragonSword=HardSlash.PowerSlash.Resolution
 OctoArms=Maelstrom.InkJet.Tentacle
+Leather_Whip=Whiplash
 Casull&Jackal=LastStand.RapidShot.RainStorm.BloodDrain
 AlucardSword=Requiescat.ChantDuCygne.UrielBlade.SoulSteal.TetraSpirit
 Auto9=RapidShot.LastStand.Detonator.ChargedShot
