@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/06/15
+;;;; Last updated: 10/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -320,7 +320,7 @@ alias shop.items {
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
       set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
 
-      if (%item.price > 0) {  
+      if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
           if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
           if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
@@ -343,9 +343,9 @@ alias shop.items {
       set %item.name $read -l $+ %value $lstfile(items_battle.lst)
       set %item.price $readini($dbfile(items.db), %item.name, cost)
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
-      set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
+      set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)    
 
-      if (%item.price > 0) {  
+      if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
           if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
           if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
@@ -370,7 +370,7 @@ alias shop.items {
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
       set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
 
-      if (%item.price > 0) {  
+      if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
           if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
           if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
@@ -395,7 +395,7 @@ alias shop.items {
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
       set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
 
-      if (%item.price > 0) {  
+      if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
           inc %total.summon.items 1
           if (%total.summon.items < 20) { 
@@ -430,7 +430,7 @@ alias shop.items {
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
       set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
 
-      if (%item.price > 0) {  
+      if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
           if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
           if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
@@ -456,7 +456,7 @@ alias shop.items {
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
       set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
 
-      if (%item.price > 0) {  
+      if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
           if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
           if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
@@ -482,7 +482,7 @@ alias shop.items {
       set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
       set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
 
-      if (%item.price > 0) {  
+      if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
           if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
           if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
@@ -510,7 +510,7 @@ alias shop.items {
 
       if ($item.amount($1, %item.name) = 0) { 
 
-        if (%item.price > 0) {  
+        if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
           if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
             if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
             if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }

@@ -3650,4 +3650,4 @@ Cost=20
 SellPrice=100
 Desc=takes out a bomb made out of a jack-o-lantern and tosses it at %enemy causing a messy explosion.
 Element=fire
-
+Currency=CandyCorn
