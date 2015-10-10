@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/08/15
+;;;; Last updated: 10/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4090,6 +4090,27 @@ dragonhunt.dragonage {
   var %dragon.age $round($calc(((($ctime - %dragon.createdtime)/60)/60)/12),0)
   inc %dragon.age $readini($dbfile(dragonhunt.db), $1, Age)
   return %dragon.age
+}
+
+dragonhunt.dragonage.combined {
+  var %total.dragon.age 0
+
+  ; Cycle through the dragons 
+  var %dragonhunt.totaldragons $ini($dbfile(dragonhunt.db),0)
+  var %dragonhunt.counter 1
+
+  while (%dragonhunt.counter <= %dragonhunt.totaldragons) {
+    var %current.dragon $ini($dbfile(dragonhunt.db), %dragonhunt.counter)
+    var %dragon.name $readini($dbfile(dragonhunt.db), %current.dragon, name)
+
+    ; Calculate the dragon's age..
+    inc %total.dragon.age $dragonhunt.dragonage(%current.dragon)
+
+    inc %dragonhunt.counter
+  }
+
+  return %total.dragon.age
+
 }
 dragonhunt.dragonelement { return %dragon.element $readini($dbfile(dragonhunt.db), $1, Element) }
 

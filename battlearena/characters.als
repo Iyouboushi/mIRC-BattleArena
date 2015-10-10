@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1348,6 +1348,9 @@ character.dragonhunt {
 
   ; If there's more than 3 dragons let's increase the odds of finding one
   if (%dragonhunt.numberofdragons > 3) { inc %dragonhunt.chance %dragonhunt.numberofdragons } 
+
+  ; If the combined dragon age is over 800 improve the odds of finding one
+  if ($dragonhunt.dragonage.combined > 800) { inc %dragonhunt.chance 10 }
 
   ; Check for accessories and augments to improve chances
   if ($augment.check($1, EnhanceDragonHunt) = true) { inc %dragonhunt.chance $calc(5 * %augment.strength) }
