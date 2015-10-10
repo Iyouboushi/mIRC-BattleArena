@@ -1,10 +1,44 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 10/04/15
+;;;; Last updated: 10/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
 on 3:TEXT:!npc status:?: {  $shopnpc.list(private) }
+on 3:TEXT:!npc news:#: { $shopnpc.news(global) }
+on 3:TEXT:!npc news:?: { $shopnpc.news(private) }
+
+alias shopnpc.news {
+  var %npcnews.kidnapped $readini(shopnpcs.dat, NPCNews, Kidnapped) 
+  var %npcnews.arrived $readini(shopnpcs.dat, NPCNews, Arrived)
+
+  if ((%npcnews.kidnapped = $null) && (%npcnews.arrived = $null)) { 
+
+    if ($1 = global) { $display.message($readini(translation.dat, errors, NoNPCNews),private)  }
+    if ($1 = private) {  $display.private.message($readini(translation.dat, errors, NoNPCNews)) } 
+    if ($1 = dcc) { $dcc.private.message($2, $readini(translation.dat, errors, NoNPCNews)) } 
+    halt
+  }
+
+  if ($1 = global) {
+    $display.message($readini(translation.dat, ShopNPCs, LatestNPCNews),global) 
+    if (%npcnews.kidnapped != $null) { $display.message(4 $+ %npcnews.kidnapped),global) }
+    if (%npcnews.arrived != $null) { $display.message(2 $+ %npcnews.arrived),global) }
+  }
+
+  if ($1 = private) {
+    $display.private.message($readini(translation.dat, ShopNPCs, LatestNPCNews)) 
+    if (%npcnews.kidnapped != $null) { $display.private.message(4 $+ %npcnews.kidnapped) }
+    if (%npcnews.arrived != $null) { $display.private.message(2 $+ %npcnews.arrived) }
+  }
+
+  if ($1 = dcc) {
+    $dcc.private.message($2, $readini(translation.dat, ShopNPCs, LatestNPCNews)) 
+    if (%npcnews.kidnapped != $null) { $dcc.private.message($2, 4 $+ %npcnews.kidnapped) }
+    if (%npcnews.arrived != $null) { $dcc.private.message($2, 2 $+ %npcnews.arrived) }
+  }
+
+}
 
 alias shopnpc.list {
   var %npcstatus.healing $readini(shopnpcs.dat, NPCstatus, HealingMerchant)
@@ -165,7 +199,10 @@ alias shopnpc.add {
   var %shopnpc.name $readini(shopnpcs.dat, NPCNames, $1)
   if (%shopnpc.name = $null) { var %shopnpc.name $1 }
 
-  if ($1 != alliedforcespresident) {  $display.message($readini(translation.dat, shopnpcs, AddedNPC)) }
+  if ($1 != alliedforcespresident) {  
+    $display.message($readini(translation.dat, shopnpcs, AddedNPC)) 
+    writeini shopnpcs.dat NPCNews Arrived $readini(translation.dat, shopnpcs, AddedNPC)
+  }
 
   if ($1 = alliedforcespresident) {
 
@@ -176,10 +213,13 @@ alias shopnpc.add {
       var %shopnpc.name $read($lstfile(presidentnames.lst))
       $display.message($readini(translation.dat, shopnpcs, AddedNewPresident)) 
       var %shopnpc.name %shopnpc.name the Allied Forces President
-
-      if ($isfile($lstfile(presidentnames.lst)) = $false) {  $display.message($readini(translation.dat, shopnpcs, AddedNewPresident))  }
-      writeini shopnpcs.dat NPCNames AlliedForcesPresident %shopnpc.name
     }
+
+
+    if ($isfile($lstfile(presidentnames.lst)) = $false) { $display.message($readini(translation.dat, shopnpcs, AddedNewPresident))  }
+    writeini shopnpcs.dat NPCNames AlliedForcesPresident %shopnpc.name
+
+    writeini shopnpcs.dat NPCNews Arrived $readini(translation.dat, shopnpcs, AddedNewPresident)
   }
 
 }
@@ -224,12 +264,13 @@ alias shopnpc.kidnap {
 
   writeini shopnpcs.dat NPCStatus %kidnapped.npc kidnapped
 
-  if ($1 != dragon) { $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) }
+  if ($1 != dragon) { $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) | writeini shopnpcs.dat NPCNews Kidnapped $readini(translation.dat, shopnpcs, ShopNPCKidnapped) }
   if ($1 = dragon) { 
 
     var %current.dragon $ini($dbfile(dragonhunt.db),  $rand(1, $ini($dbfile(dragonhunt.db),0)))
     var %dragon.name $readini($dbfile(dragonhunt.db), %current.dragon, name)
     $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)) 
+    writeini shopnpcs.dat NPCNews Kidnapped $readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)
     unset %random.dragon | unset %dragon.name
   }
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
@@ -239,7 +280,7 @@ alias shopnpc.kidnap {
 alias shopnpc.rescue {
   if (($readini(system.dat, system, EnableNPCKidnapping) = $null) ||  ($readini(system.dat, system, EnableNPCKidnapping) = false)) { return }
   if ($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) { return }
-  if ($rand(1,100) <= 0) { return }
+  if ($rand(0, 100) <= 10) { return }
 
   ; Get a list of NPCs that have been kidnapped.
   if ($shopnpc.present.check(HealingMerchant) = kidnapped) { %active.npcs = $addtok(%active.npcs, HealingMerchant, 46) }
@@ -265,6 +306,7 @@ alias shopnpc.rescue {
   writeini shopnpcs.dat NPCStatus %kidnapped.npc true
 
   $display.message($readini(translation.dat, shopnpcs, ShopNPCRescued)) 
+  writeini shopnpcs.dat NPCNews Arrived $readini(translation.dat, shopnpcs, ShopNPCRescued)
 
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
 

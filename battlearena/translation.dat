@@ -553,6 +553,7 @@ DragonHunt.NoDragons=$chr(3) $+ 4 $+ There are currently no dragons that have 
 DragonHunt.Can'tHunt=$chr(3) $+ 4 $+ Error: $get_chr_name($1) cannot hunt for another dragon so soon. ( $+ $duration($calc(%dragonhunt.time.setting - %time.difference)) remaining)
 DragonHunt.NoLairFound=$chr(3) $+ 4 $+ $get_chr_name($1) searches throughout the land for a dragon's lair but is unable to successfully find one. Perhaps next time.
 Can'tUseThisSkillInDragonHunt=$chr(3) $+ 4 $+ Error: This skill is unavailable while inside of a dragon's lair. 
+NoNPCNews=$chr(3) $+ 4There is no current news to share about the NPCs.
 
 =======================
 Battle Related Messages
@@ -1002,6 +1003,7 @@ ShenronWishOnMessage=$chr(3) $+ 2 $+ The Dragonballs have been used to grant a p
 Shop NPC Messages
 =======================
 [ShopNPCs]
+LatestNPCNews=$chr(3) $+ 7The following is the latest NPC news
 RemovedNPC=$chr(3) $+ 7* %shopnpc.name has left the Allied Forces HQ and is no longer available to do business with. $iif($1 = Santa, $chr(3) $+ 4 $+ %shopnpc.name waves at the heroes and says "Ho! Ho! Ho! See you next year!") $iif($1 = EasterBunny, $chr(3) $+ 4 $+ %shopnpc.name bounces around the HQ one last time before hopping off into the distance.) $iif($1 = TravelMerchant, $chr(3) $+ 4 $+ %shopnpc.name hops back into his airship and waves bye as he flies off. Don't worry..he'll be back next month.)
 AddedNPC=$chr(3) $+ 7* %shopnpc.name has arrived to the Allied Forces HQ ready to do business. $iif(%shopnpc.name = Santa, $chr(3) $+ 4 $+ %shopnpc.name looks at the heroes and says "Please save my Elves! I need Elves to make more items to sell to you!") $iif(%shopnpc.name = TravelMerchant, $chr(3) $+ 4 $+ %shop.npc lands his large airship at the Allied Forces HQ and welcomes everyone to his shop.) $iif($1 = PotionWitch, To view her wares use !shop list PotionEffect)
 AddedNewPresident=$chr(3) $+ 7* %shopnpc.name has been appointed as the new Allied Forces President. 
