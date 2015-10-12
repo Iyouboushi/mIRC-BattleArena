@@ -169,11 +169,19 @@ alias ai_turn {
   }
 
   ; do an action
-  if (%ai.action = $null) { var %ai.action attack | echo -a 4ERORR: AI ACTION WAS NULL!  }
+  if (%ai.action = $null) { set %ai.action attack | echo -a 4ERORR: AI ACTION WAS NULL!  }
   writeini $txtfile(battle2.txt) BattleInfo $1 $+ .lastactionbar %ai.action
 
-  if (%ai.action = attack) { $ai_gettarget($1) | $attack_cmd($1, %ai.target) | halt }
-  if (%ai.action = tech) { $ai_gettarget($1) |  $tech_cmd($1, %ai.tech, %ai.target) | halt } 
+  if (%ai.action = tech) {
+    $ai_gettarget($1)
+    if (!%ai.target) set %ai.action $iif($readini($char($1), info, ai_type) == techonly, taunt, attack)
+    else { $tech_cmd($1, %ai.tech, %ai.target) | halt }
+  }
+  if (%ai.action = attack) {
+    $ai_gettarget($1)
+    if (!%ai.target) set %ai.action taunt
+    else { $attack_cmd($1, %ai.target) | halt }
+  }
   if (%ai.action = taunt) { set %taunt.action true | $ai_gettarget($1) | $taunt($1 , %ai.target) | halt } 
   if (%ai.action = flee) { $ai.flee($1) | halt }
   if (%ai.action = skill) { $ai_chooseskill($1) | halt }
@@ -453,6 +461,13 @@ alias ai_gettarget {
 
   set %battletxt.lines $lines($txtfile(battle.txt)) | set %battletxt.current.line 1 | unset %tech.type
 
+  if ((%opponent.flag == monster) && ($readini($char($1), info, flag) == npc) && ($is_confused($1) != true)) {
+    if      (%ai.action == tech)   var %element = $readini($dbfile(techniques.db), %ai.tech, Element)
+    else if (%ai.action == attack) var %element = $readini($dbfile(weapons.db), $readini($char($1), Weapons, Equipped), Element)
+
+    if (%element == none) unset %element
+  }
+
   while (%battletxt.current.line <= %battletxt.lines) { 
     set %who.battle.ai $read -l $+ %battletxt.current.line $txtfile(battle.txt)
 
@@ -494,6 +509,12 @@ alias ai_gettarget {
 
       ; The AI is targeting a monster.
       if (%opponent.flag = monster) {
+        ; Ensure that Allied NPCs don't attack monsters with attacks they absorb.
+        if (%element) {
+          var %absorb.list = $readini($char(%who.battle.ai), Modifiers, Heal)
+          if ($istok(%absorb.list, %element, 46) = $true) { inc %battletxt.current.line | continue }
+        }
+
         if ($readini($char(%who.battle.ai), info, flag) = monster) {
 
           ; Get a target for clones
@@ -541,7 +562,7 @@ alias ai_gettarget {
       set %ai.target $gettok(%ai.targetlist,%random.target,46)
     }
 
-    if (%ai.target = $null) { echo -a 4NULL TARGET. SWITCHING TO BERSERK TYPE | set %ai.target $1 | writeini $char($1) info ai_type berserk  }
+    if ((%ai.target = $null) && (%element == $null)) { echo -a 4NULL TARGET. SWITCHING TO BERSERK TYPE | set %ai.target $1 | writeini $char($1) info ai_type berserk  }
   }
 
   if (%ai.action != tech) { 
