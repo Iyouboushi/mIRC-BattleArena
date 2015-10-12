@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -67,7 +67,7 @@ alias attack_cmd {
   if (%ai.type = berserker) { var %user.flag monster }
   if (%covering.someone = on) { var %user.flag monster }
 
-  if ((%user.flag = $null) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private) | halt }
+  if ((%user.flag != monster) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private)  | halt }
   if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious),private)  | unset %real.name | halt }
   if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead),private) | unset %real.name | halt }
   if ($readini($char($2), Battle, Status) = RunAway) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoFled),private) | unset %real.name | halt } 
