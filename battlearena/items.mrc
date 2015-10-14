@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 10/06/15
+;;;; Last updated: 10/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -18,7 +18,7 @@ alias portal.usage.check {
     var %portal.uses.left $calc(10 - %last.portal.number.used)
 
     if ($1 = channel) { $display.message($readini(translation.dat, system, PortalUsageCheck), private) }
-    if ($1 = private) { $display.private.message($readini(translation.dat, system, PortalUsageCheck),private) }
+    if ($1 = private) { $display.private.message($readini(translation.dat, system, PortalUsageCheck)) }
     if ($1 = dcc) { $dcc.private.message($2, $readini(translation.dat, system, PortalUsageCheck)) }
   }
   else {
