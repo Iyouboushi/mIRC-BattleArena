@@ -670,11 +670,10 @@ alias battlebegin {
       inc %current.emptyrounds 1
       writeini battlestats.dat battle emptyRounds %current.emptyrounds
       if (%current.emptyrounds >= %max.emptyrounds) { 
-        if ($readini(battlestats.dat, battle, winningStreak) > 0) { $display.message($readini(translation.dat, system, StreakResetTo0),global) }
+        if ($readini(battlestats.dat, battle, winningStreak) > 0) { $display.message($readini(translation.dat, system, StreakResetTo0),global) | set %force.ai.battle true }
         writeini battlestats.dat battle emptyRounds 0
         writeini battlestats.dat battle winningStreak 0
         writeini battlestats.dat battle losingStreak 0
-        set %force.ai.battle true
       }
 
       $clear_battle 
