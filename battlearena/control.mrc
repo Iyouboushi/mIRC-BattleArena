@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 10/06/15
+;;;; Last updated: 10/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -491,8 +491,34 @@ on 50:TEXT:!toggle damage formula*:*:{
     $display.message($readini(translation.dat, system, BattleFormula1), global)
     halt
   }
-
 }
+
+; Bot admins can set the MOTD, everyone else can just see it
+on 3:TEXT:!motd*:*:{   
+  $checkscript($2-) 
+
+  if (($2 = $null) || ($2 = list)) { 
+    if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
+    else { $display.private.message(4No admin message has been set) }
+    halt
+  }
+
+  if (($2 = remove) && ($istok($readini(system.dat, botinfo, bot.owner), $nick, 46) = $true)) {
+    if ($isfile($txtfile(motd.txt)) = $true) {  .remove $txtfile(motd.txt) }
+    $display.private.message(4The admin message has been removed) 
+    halt
+  }
+
+  if (($2 = set) || ($2 = add)) {
+    if ($istok($readini(system.dat, botinfo, bot.owner), $nick, 46) = $true) {
+      if ($3 = $null) { $display.private.message(4You need to supply a message to set) | halt }
+      if ($isfile($txtfile(motd.txt)) = $true) {  .remove $txtfile(motd.txt) }
+      write $txtfile(motd.txt) $3-
+      $display.private.message(4Admin message has been set)
+    }
+  }
+}
+
 
 ; Bot admin command for displaying active and zapped player lists.
 on 50:TEXT:!display *:*:{  

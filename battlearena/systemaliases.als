@@ -4185,3 +4185,15 @@ dragonhunt.listdragons {
     inc %dragonhunt.counter
   }
 }
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays some messages
+; for people who are logging 
+; in
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+system.intromessage {
+  $display.private.message(2Welcome back4 $readini($char($1), basestats, name) $+ . 2The current local bot time is4 $asctime(hh:nn tt) 2on4 $adate )
+  $display.private.message(2Your currently have: 3 $+ $readini($char($1), stuff, loginpoints) 2login points $+ $chr(44) 3 $+ $bytes($readini($char($1), stuff, redorbs),b) 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ $bytes($readini($char($1), stuff, blackorbs),b) 2Black Orbs $+ $chr(44) 3 $+ $bytes($readini($char($1), stuff, AlliedNotes),b) 2Allied Notes $+ $chr(44) 3 $+ $bytes($readini($char($1), stuff, doubledollars),b) 2double dollars)
+  if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
+  return
+}

@@ -264,13 +264,13 @@ alias shopnpc.kidnap {
 
   writeini shopnpcs.dat NPCStatus %kidnapped.npc kidnapped
 
-  if ($1 != dragon) { $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) | writeini shopnpcs.dat NPCNews Kidnapped $readini(translation.dat, shopnpcs, ShopNPCKidnapped) }
+  if ($1 != dragon) { $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) | writeini shopnpcs.dat NPCNews Kidnapped $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCKidnapped) }
   if ($1 = dragon) { 
 
     var %current.dragon $ini($dbfile(dragonhunt.db),  $rand(1, $ini($dbfile(dragonhunt.db),0)))
     var %dragon.name $readini($dbfile(dragonhunt.db), %current.dragon, name)
     $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)) 
-    writeini shopnpcs.dat NPCNews Kidnapped $readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)
+    writeini shopnpcs.dat NPCNews Kidnapped $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)
     unset %random.dragon | unset %dragon.name
   }
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
@@ -278,9 +278,9 @@ alias shopnpc.kidnap {
 
 ; A Shop NPC gets rescued
 alias shopnpc.rescue {
-  if (($readini(system.dat, system, EnableNPCKidnapping) = $null) ||  ($readini(system.dat, system, EnableNPCKidnapping) = false)) { return }
-  if ($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) { return }
-  if ($rand(0, 100) <= 10) { return }
+  ; if (($readini(system.dat, system, EnableNPCKidnapping) = $null) ||  ($readini(system.dat, system, EnableNPCKidnapping) = false)) { return }
+  ; if ($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) { return }
+  ; if ($rand(0, 100) <= 10) { return }
 
   ; Get a list of NPCs that have been kidnapped.
   if ($shopnpc.present.check(HealingMerchant) = kidnapped) { %active.npcs = $addtok(%active.npcs, HealingMerchant, 46) }
@@ -306,7 +306,7 @@ alias shopnpc.rescue {
   writeini shopnpcs.dat NPCStatus %kidnapped.npc true
 
   $display.message($readini(translation.dat, shopnpcs, ShopNPCRescued)) 
-  writeini shopnpcs.dat NPCNews Arrived $readini(translation.dat, shopnpcs, ShopNPCRescued)
+  writeini shopnpcs.dat NPCNews Arrived $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCRescued)
 
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
 
