@@ -1297,6 +1297,8 @@ Battle Arena Bot VERSIONS
 - Added the bot admin command: !toggle damage formula -- Will toggle between the damage formulas
 - Added the bot admin command: !force system default check  -- will force the bot to do a system.dat defaults check
 - Added the bot admin command: !toggle auction house topic change -- Will toggle the auction house topic change on/off
+- Added the bot admin command: !motd add messagehere -- Will change the motd
+- Added the bot admin command: !motd remove -- Will remove the motd
 - Added a new item type: IncreaseWeaponLevel.  This item type can be used to increase a player's weapon level up to 500
 - Added the various damage formulas that have been used throughout the bot's history: 1.0, 2.0, 2.5 and 3.0.
 - Added the Dungeon system. 
@@ -1307,6 +1309,7 @@ Battle Arena Bot VERSIONS
 - Added the !battle style command. This command can be used in battle to see the current style rankings of everyone in
   the battle. In the event that two peolpe have the same rating it shows them in the order of highest style points.
 - Added the !npc news command. This command will show the players the latest NPC kidnappings and rescues/arrivals
+- Added the !motd command. This command will show the current admin-set message to the player
 - Added a new flag for monsters/npcs/bosses:  IgnoreElementalMessage. It goes in [info]  and if it's set to true 
   the bot won't show the elemental damage message on the target's turn.
 - Added a new shop NPC: Vinz Clortho the Keymaster   After being rescued he will sell dungeon keys for seals
@@ -1324,6 +1327,8 @@ Battle Arena Bot VERSIONS
 - Added a new Enhancement Point skill: DragonHunter. Will increase odds of finding a dragon's lair by 1% per level
 - Added items to increase weapon levels past 250.
 - Added ClonesCanClone flag for monsters/bosses. If set to true then their shadow clones can make clones themselves (up to 5)
+- Added the Message Of the Day (MOTD) for players to see upon logging in
+- Added a list of current currencies for players to see upon logging in
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
@@ -1356,6 +1361,10 @@ Battle Arena Bot VERSIONS
   The bot will automatically remove the old armor before wearing the new one.
 - Changed the shop so that shadow portals show up on their own line
 - Changed the max amount of portal items players can use per 24 hours to 10 (up from 8)
+- Changed the AI slightly to try and prevent NPCs from using techs that will heal monsters [based on Andrio's changes]
+- Changed the AI slightly to try and prevent NPCs from using techs that would inflict the same status a monster already has on
+- Changed the code for how the bot generates the deathboards. It should be able to find the bot-generated monsters now
+- Changed the bot so that if the streak is automatically reset to 0 the next battle will be an AI vs AI battle
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item

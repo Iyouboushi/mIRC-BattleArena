@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Scoreboard Generation
-;;;; Last updated: 04/19/15
+;;;; Last updated: 10/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate.scoreboard {
   set %totalplayers 0
@@ -300,12 +300,153 @@ calculate.score {
   return %score
 }
 
-
 generate.monsterdeathboard {
 
   set %totalmonsters 0 | set %total.deaths 0
 
   var %value 1
+  while (%value <= $ini($lstfile(monsterdeaths.lst), monster,0)) {
+    var %score $readini($lstfile(monsterdeaths.lst), monster, $ini($lstfile(monsterdeaths.lst),$ini($lstfile(monsterdeaths.lst),monster),%value))
+    if (%score != $null) {  inc %total.deaths %score | write scoreboard.txt $ini($lstfile(monsterdeaths.lst),$ini($lstfile(monsterdeaths.lst),monster),%value) | inc %totalmonsters 1 }
+    inc %value 1
+  }
+
+  if ((%totalmonsters <= 2) || (%totalmonsters = $null)) { $display.message($readini(translation.dat, errors, DeathBoardNotEnoughMonsters), private) |  unset %totalmonsters | halt }
+
+  ; Generate the scoreboard.
+
+  ; get rid of the Scoreboard Table and the now un-needed file
+  if ($isfile(ScoreboardTable.file) = $true) { 
+    hfree ScoreboardTable
+    .remove ScoreboardTable.file
+  }
+
+  ; make the Scoreboard List table
+  hmake ScoreBoardTable
+
+  ; load them from the file.   the initial list will be generated from the !enter commands.  
+  var %ScoreBoardtxt.lines $lines(ScoreBoard.txt) | var %ScoreBoardtxt.current.line 1 
+  while (%ScoreBoardtxt.current.line <= %ScoreBoardtxt.lines) { 
+    var %who.ScoreBoard $read -l $+ %ScoreBoardtxt.current.line ScoreBoard.txt
+    set %ScoreBoard.score $readini($lstfile(monsterdeaths.lst), monster,%who.scoreboard)
+
+    if (%ScoreBoard.score <= 0) { set %ScoreBoard.score 0 }
+    hadd ScoreBoardTable %who.ScoreBoard %ScoreBoard.score
+    inc %ScoreBoardtxt.current.line
+  }
+
+  ; save the ScoreBoardTable hashtable to a file
+  hsave ScoreBoardTable ScoreBoardTable.file
+
+  ; load the ScoreBoardTable hashtable (as a temporary table)
+  hmake ScoreBoardTable_Temp
+  hload ScoreBoardTable_Temp ScoreBoardTable.file
+
+  ; sort the ScoreBoard Table
+  hmake ScoreBoardTable_Sorted
+  var %ScoreBoardtableitem, %ScoreBoardtabledata, %ScoreBoardtableindex, %ScoreBoardtablecount = $hget(ScoreBoardTable_Temp,0).item
+  while (%ScoreBoardtablecount > 0) {
+    ; step 1: get the lowest item
+    %ScoreBoardtableitem = $hget(ScoreBoardTable_Temp,%ScoreBoardtablecount).item
+    %ScoreBoardtabledata = $hget(ScoreBoardTable_Temp,%ScoreBoardtablecount).data
+    %ScoreBoardtableindex = 1
+    while (%ScoreBoardtableindex < %ScoreBoardtablecount) {
+      if ($hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).data < %ScoreBoardtabledata) {
+        %ScoreBoardtableitem = $hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).item
+        %ScoreBoardtabledata = $hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).data
+      }
+      inc %ScoreBoardtableindex
+    }
+
+    ; step 2: remove the item from the temp list
+    hdel ScoreBoardTable_Temp %ScoreBoardtableitem
+
+    ; step 3: add the item to the sorted list
+    %ScoreBoardtableindex = sorted_ $+ $hget(ScoreBoardTable_Sorted,0).item
+    hadd ScoreBoardTable_Sorted %ScoreBoardtableindex %ScoreBoardtableitem
+
+    ; step 4: back to the beginning
+    dec %ScoreBoardtablecount
+  }
+
+  ; get rid of the temp table
+  hfree ScoreBoardTable_Temp
+
+  ; Erase the old ScoreBoard.txt and replace it with the new one.
+  .remove ScoreBoard.txt
+
+  var %index = $hget(ScoreBoardTable_Sorted,0).item
+  while (%index > 0) {
+    dec %index
+    var %tmp = $hget(ScoreBoardTable_Sorted,sorted_ $+ %index)
+    write ScoreBoard.txt %tmp
+  }
+
+  ; get rid of the sorted table
+  hfree ScoreBoardTable_Sorted
+
+  ; get rid of the ScoreBoard Table and the now un-needed file
+  hfree ScoreBoardTable
+  .remove ScoreBoardTable.file
+
+  ; unset the ScoreBoard.speed
+  unset %ScoreBoard.speed
+
+
+  if ($1 = total) {  $display.message($readini(translation.dat, system, DeathBoardTotalMon), private) }
+
+  if ($1 = $null) { 
+    if (%totalmonsters < 5) { 
+
+      ; Get the top 3 and display it.
+      unset %score.list | set %current.line 1
+
+      while (%current.line <= 3) { 
+        set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | set %score $bytes( $readini($lstfile(monsterdeaths.lst), monster, %who.score),b)
+        %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)
+        inc %current.line 1 
+      }
+      unset %lines | unset %current.line
+    }
+
+    if ((%totalmonsters >= 5) && (%totalmonsters < 10)) { 
+      unset %score.list | set %current.line 1
+
+      while (%current.line <= 5) { 
+        set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | set %score $bytes($readini($lstfile(monsterdeaths.lst), monster, %who.score),b)
+        %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)
+        inc %current.line 1 
+      }
+      unset %lines | unset %current.line
+    }
+
+
+    if (%totalmonsters >= 10) { 
+      unset %score.list | unset %score.list.2 | set %current.line 1
+      while (%current.line <= 10) { 
+        set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | set %score $bytes($readini($lstfile(monsterdeaths.lst), monster, %who.score),b)
+        if (%current.line <= 5) {  %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)  }
+        if ((%current.line > 5) && (%current.line <= 10)) {  %score.list.2 = %score.list.2 $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32) }
+        inc %current.line 1 
+      }
+      unset %lines | unset %current.line
+    }
+
+    $display.message($readini(translation.dat, system, DeathBoardTitleMon), private)
+    $display.message($chr(3) $+ 2 $+ %score.list, private)
+    if (%score.list.2 != $null) { $display.message($chr(3) $+ 2 $+ %score.list.2, private) }
+
+  }
+
+  unset %totalmonsters | unset %score | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score
+  unset %total.deaths
+}
+
+; This is the old method of generating the deathboard.  Will be removed later.
+generate.monsterdeathboard.old {
+  set %totalmonsters 0 | set %total.deaths 0
+  var %value 1 
+
   while ($findfile( $mon_path , *.char, %value , 0) != $null) {
     set %file $nopath($findfile($mon_path ,*.char,%value)) 
     set %name $remove(%file,.char)
@@ -453,9 +594,148 @@ generate.monsterdeathboard {
 
 
 generate.bossdeathboard {
+  set %totalboss 0 | set %total.deaths 0
 
-  set %totalbosss 0 | set %total.deaths 0
+  var %value 1
+  while (%value <= $ini($lstfile(monsterdeaths.lst), boss,0)) {
+    var %score $readini($lstfile(monsterdeaths.lst), boss, $ini($lstfile(monsterdeaths.lst),$ini($lstfile(monsterdeaths.lst),boss),%value))
+    if (%score != $null) { inc %total.deaths %score | write scoreboard.txt $ini($lstfile(monsterdeaths.lst),$ini($lstfile(monsterdeaths.lst),boss),%value) | inc %totalboss 1 }
+    inc %value 1
+  }
 
+  if ((%totalboss <= 2) || (%totalboss = $null)) { $display.message($readini(translation.dat, errors, DeathBoardNotEnoughmonsters), private) | unset %totalboss | halt }
+
+  ; Generate the scoreboard.
+
+  ; get rid of the Scoreboard Table and the now un-needed file
+  if ($isfile(ScoreboardTable.file) = $true) { 
+    hfree ScoreboardTable
+    .remove ScoreboardTable.file
+  }
+
+  ; make the Scoreboard List table
+  hmake ScoreBoardTable
+
+  ; load them from the file.   the initial list will be generated from the !enter commands.  
+  var %ScoreBoardtxt.lines $lines(ScoreBoard.txt) | var %ScoreBoardtxt.current.line 1 
+  while (%ScoreBoardtxt.current.line <= %ScoreBoardtxt.lines) { 
+    var %who.ScoreBoard $read -l $+ %ScoreBoardtxt.current.line ScoreBoard.txt
+    set %ScoreBoard.score $readini($lstfile(monsterdeaths.lst), boss,%who.scoreboard)
+
+    if (%ScoreBoard.score <= 0) { set %ScoreBoard.score 0 }
+    hadd ScoreBoardTable %who.ScoreBoard %ScoreBoard.score
+    inc %ScoreBoardtxt.current.line
+  }
+
+  ; save the ScoreBoardTable hashtable to a file
+  hsave ScoreBoardTable ScoreBoardTable.file
+
+  ; load the ScoreBoardTable hashtable (as a temporary table)
+  hmake ScoreBoardTable_Temp
+  hload ScoreBoardTable_Temp ScoreBoardTable.file
+
+  ; sort the ScoreBoard Table
+  hmake ScoreBoardTable_Sorted
+  var %ScoreBoardtableitem, %ScoreBoardtabledata, %ScoreBoardtableindex, %ScoreBoardtablecount = $hget(ScoreBoardTable_Temp,0).item
+  while (%ScoreBoardtablecount > 0) {
+    ; step 1: get the lowest item
+    %ScoreBoardtableitem = $hget(ScoreBoardTable_Temp,%ScoreBoardtablecount).item
+    %ScoreBoardtabledata = $hget(ScoreBoardTable_Temp,%ScoreBoardtablecount).data
+    %ScoreBoardtableindex = 1
+    while (%ScoreBoardtableindex < %ScoreBoardtablecount) {
+      if ($hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).data < %ScoreBoardtabledata) {
+        %ScoreBoardtableitem = $hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).item
+        %ScoreBoardtabledata = $hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).data
+      }
+      inc %ScoreBoardtableindex
+    }
+
+    ; step 2: remove the item from the temp list
+    hdel ScoreBoardTable_Temp %ScoreBoardtableitem
+
+    ; step 3: add the item to the sorted list
+    %ScoreBoardtableindex = sorted_ $+ $hget(ScoreBoardTable_Sorted,0).item
+    hadd ScoreBoardTable_Sorted %ScoreBoardtableindex %ScoreBoardtableitem
+
+    ; step 4: back to the beginning
+    dec %ScoreBoardtablecount
+  }
+
+  ; get rid of the temp table
+  hfree ScoreBoardTable_Temp
+
+  ; Erase the old ScoreBoard.txt and replace it with the new one.
+  .remove ScoreBoard.txt
+
+  var %index = $hget(ScoreBoardTable_Sorted,0).item
+  while (%index > 0) {
+    dec %index
+    var %tmp = $hget(ScoreBoardTable_Sorted,sorted_ $+ %index)
+    write ScoreBoard.txt %tmp
+  }
+
+  ; get rid of the sorted table
+  hfree ScoreBoardTable_Sorted
+
+  ; get rid of the ScoreBoard Table and the now un-needed file
+  hfree ScoreBoardTable
+  .remove ScoreBoardTable.file
+
+  ; unset the ScoreBoard.speed
+  unset %ScoreBoard.speed
+
+  if ($1 = total) {  $display.message($readini(translation.dat, system, DeathBoardTotalBoss), private) }
+  if ($1 = $null) {
+
+    if (%totalboss < 5) { 
+
+      ; Get the top 3 and display it.
+      unset %score.list | set %current.line 1
+
+      while (%current.line <= 3) { 
+        set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | set %score $bytes( $readini($lstfile(monsterdeaths.lst), boss, %who.score),b)
+        %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)
+        inc %current.line 1 
+      }
+      unset %lines | unset %current.line
+    }
+
+    if ((%totalboss >= 5) && (%totalboss < 10)) { 
+      unset %score.list | set %current.line 1
+
+      while (%current.line <= 5) { 
+        set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | set %score $bytes($readini($lstfile(monsterdeaths.lst), boss, %who.score),b)
+        %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)
+        inc %current.line 1 
+      }
+      unset %lines | unset %current.line
+    }
+
+    if (%totalboss >= 10) { 
+      unset %score.list | unset %score.list.2 | set %current.line 1
+      while (%current.line <= 10) { 
+        set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | set %score $bytes($readini($lstfile(monsterdeaths.lst), boss, %who.score),b)
+        if (%current.line <= 5) {  %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)  }
+        if ((%current.line > 5) && (%current.line <= 10)) {  %score.list.2 = %score.list.2 $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32) }
+        inc %current.line 1 
+      }
+      unset %lines | unset %current.line
+    }
+
+    $display.message($readini(translation.dat, system, DeathBoardTitleBosses), private)
+    $display.message($chr(3) $+ 2 $+ %score.list, private)
+    if (%score.list.2 != $null) { $display.message($chr(3) $+ 2 $+ %score.list.2, private) }
+  }
+
+  unset %totalboss | unset %score | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score | unset %total.deaths
+}
+
+
+
+
+; This is the old method of generating the deathboard for bosses. Will be removed later.
+generate.bossdeathboard.old {
+  set %totalboss 0 | set %total.deaths 0
   var %value 1
   while ($findfile( $boss_path , *.char, %value , 0) != $null) {
     set %file $nopath($findfile($boss_path ,*.char,%value)) 

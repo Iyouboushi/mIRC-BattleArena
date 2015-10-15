@@ -4192,8 +4192,29 @@ dragonhunt.listdragons {
 ; in
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 system.intromessage {
+  var %player.candycorn $readini($char($1), item_amount, candycorn)
+  if (%player.candycorn = $null) { var %player.candycorn 0 }
+
+  var %player.loginpoints $readini($char($1), stuff, loginpoints)
+  if (%player.loginpoints = $null) { var %player.loginpoints 0 }
+
+  var %player.redorbs $bytes($readini($char($1), stuff, redorbs),b)
+  if (%player.redorbs = $null) { var %player.redorbs 0 }
+
+  var %player.blackorbs $bytes($readini($char($1), stuff, blackorbs),b)
+  if (%player.blackorbs = $null) { var %player.blackorbs 0 }
+
+  var %player.alliednotes $bytes($readini($char($1), stuff, alliednotes),b)
+  if (%player.alliednotes = $null) { var %player.alliednotes 0 }
+
+  var %player.doubledollars $bytes($readini($char($1), stuff, doubledollars),b)
+  if (%player.doubledollars = $null) { var %player.doubledollars 0 }
+
+  var %player.enhancementpoints $bytes($readini($char($1), stuff, EnhancementPoints),b)
+  if (%player.enhancementpoints = $null) { var %player.enhancementpoints 0 }
+
   $display.private.message(2Welcome back4 $readini($char($1), basestats, name) $+ . 2The current local bot time is4 $asctime(hh:nn tt) 2on4 $adate )
-  $display.private.message(2Your currently have: 3 $+ $readini($char($1), stuff, loginpoints) 2login points $+ $chr(44) 3 $+ $bytes($readini($char($1), stuff, redorbs),b) 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ $bytes($readini($char($1), stuff, blackorbs),b) 2Black Orbs $+ $chr(44) 3 $+ $bytes($readini($char($1), stuff, AlliedNotes),b) 2Allied Notes $+ $chr(44) 3 $+ $bytes($readini($char($1), stuff, doubledollars),b) 2double dollars)
+  $display.private.message(2You currently have: 3 $+ %player.loginpoints 2login points $+ $chr(44) 3 $+ %player.redorbs 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ %player.blackorbs 2Black Orbs $+ $chr(44) 3 $+ %player.alliednotes 2Allied Notes $+ $chr(44) 3 $+ %player.doubledollars 2double dollars $+ $chr(44) 3 $+ %player.enhancementpoints 2enhancement points  $iif($left($adate, 2) = 10, and7 %player.candycorn 2candycorn ) )
   if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
   return
 }

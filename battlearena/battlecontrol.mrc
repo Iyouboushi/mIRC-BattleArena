@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/07/15
+;;;; Last updated: 10/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -339,6 +339,8 @@ alias startnormal {
   ; Determine if we have a battle type yet
   var %start.battle.type $1
 
+  if (%force.ai.battle = true) { var %start.battle.type ai | unset %force.ai.battle }
+
   if (($readini(battlestats.dat, conquest, MonsterInfluence) >= 100) && ($current.battlestreak > 20)) {
     if (%start.battle.type = $null) {  var %outpost.chance $rand(1,100) }
     if (%start.battle.type != $null) { var %outpost.chance 100 }
@@ -377,13 +379,13 @@ alias startnormal {
 
   unset %previous.battle.type
 
-  if ($1 = ai) {
+  if (%start.battle.type = ai) {
     var %time.to.enter 30
     $display.message($readini(translation.dat, battle, BattleOpenAIBet), global)
     $ai.battle.generate($2)
   }
 
-  if ($1 != ai) {
+  if (%start.battle.type != ai) {
     var %time.to.enter $readini(system.dat, system, TimeToEnter)
     if (%time.to.enter = $null) { var %time.to.enter 120 }
     var %time.to.enter.minutes $round($calc(%time.to.enter / 60),1)
@@ -672,6 +674,7 @@ alias battlebegin {
         writeini battlestats.dat battle emptyRounds 0
         writeini battlestats.dat battle winningStreak 0
         writeini battlestats.dat battle losingStreak 0
+        set %force.ai.battle true
       }
 
       $clear_battle 
@@ -907,8 +910,6 @@ alias battle.getmonsters {
 }
 
 alias generate_monster {
-  echo -a generating monster alias :: $1
-
   if ($1 = orbfountain) {
     .copy -o $mon(orb_fountain) $char(orb_fountain)  | set %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,orb_fountain,46) | writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) orb_fountain
     $boost_monster_stats(orb_fountain) | $fulls(orb_fountain)
