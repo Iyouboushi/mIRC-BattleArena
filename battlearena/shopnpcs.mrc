@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 10/10/15
+;;;; Last updated: 10/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -201,7 +201,7 @@ alias shopnpc.add {
 
   if ($1 != alliedforcespresident) {  
     $display.message($readini(translation.dat, shopnpcs, AddedNPC)) 
-    writeini shopnpcs.dat NPCNews Arrived $readini(translation.dat, shopnpcs, AddedNPC)
+    writeini shopnpcs.dat NPCNews Arrived  $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, AddedNPC)
   }
 
   if ($1 = alliedforcespresident) {
@@ -219,7 +219,7 @@ alias shopnpc.add {
     if ($isfile($lstfile(presidentnames.lst)) = $false) { $display.message($readini(translation.dat, shopnpcs, AddedNewPresident))  }
     writeini shopnpcs.dat NPCNames AlliedForcesPresident %shopnpc.name
 
-    writeini shopnpcs.dat NPCNews Arrived $readini(translation.dat, shopnpcs, AddedNewPresident)
+    writeini shopnpcs.dat NPCNews Arrived  $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, AddedNewPresident)
   }
 
 }
@@ -278,9 +278,9 @@ alias shopnpc.kidnap {
 
 ; A Shop NPC gets rescued
 alias shopnpc.rescue {
-  ; if (($readini(system.dat, system, EnableNPCKidnapping) = $null) ||  ($readini(system.dat, system, EnableNPCKidnapping) = false)) { return }
-  ; if ($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) { return }
-  ; if ($rand(0, 100) <= 10) { return }
+  if (($readini(system.dat, system, EnableNPCKidnapping) = $null) ||  ($readini(system.dat, system, EnableNPCKidnapping) = false)) { return }
+  if ($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) { return }
+  if ($rand(0, 100) <= 15) { return }
 
   ; Get a list of NPCs that have been kidnapped.
   if ($shopnpc.present.check(HealingMerchant) = kidnapped) { %active.npcs = $addtok(%active.npcs, HealingMerchant, 46) }

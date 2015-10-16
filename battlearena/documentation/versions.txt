@@ -1329,6 +1329,7 @@ Battle Arena Bot VERSIONS
 - Added ClonesCanClone flag for monsters/bosses. If set to true then their shadow clones can make clones themselves (up to 5)
 - Added the Message Of the Day (MOTD) for players to see upon logging in
 - Added a list of current currencies for players to see upon logging in
+- Added the ability for the bot to have dynamic names for certain monster types
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.

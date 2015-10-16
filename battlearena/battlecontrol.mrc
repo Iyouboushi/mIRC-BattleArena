@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/15/15
+;;;; Last updated: 10/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -941,11 +941,38 @@ alias generate_monster {
       set %monster.name $gettok(%monster.list,%random.monster,46)
       if (%monsters.total = 0) { inc %value 1 }
 
-      if ($readini($mon(%monster.name), battle, hp) != $null) {  .copy -o $mon(%monster.name) $char(%monster.name) | set %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat }
+      if ($readini($mon(%monster.name), battle, hp) != $null) { 
 
+        ; Copy the chosen monster template file to the char directory
+        .copy -o $mon(%monster.name) $char(%monster.name) 
+
+        if (%battle.type != dungeon) {
+          ; Check to see if the monster type has a dynamic name
+          var %monster.type $readini($mon(%monster.name), monster, type)
+          if (($lines($lstfile(names_ $+ %monster.type $+ .lst)) > 0) && ($return_winningstreak >= 25)) {
+            var %dynamic.name.chance $rand(1,100)
+
+            if (%dynamic.name.chance <= 30) {
+              var %replacement.line $read($lstfile(names_ $+ %monster.type $+ .lst), $rand(1, $lines($lstfile(names_ $+ %monster.type $+ .lst))))
+              var %replacement.filename $gettok(%replacement.line, 1, 46)
+              var %replacement.realname $gettok(%replacement.line, 2, 46)
+              .rename $char(%monster.name) $char(%replacement.filename)
+              writeini $char(%replacement.filename) basestats name %replacement.realname
+
+              set %monster.name %replacement.filename
+            }
+          }
+        }
+
+        ; Add the monster into the battle
+        set %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat 
+
+      }
+
+      ; Show the description of the monster when it enters
       $set_chr_name(%monster.name) 
       if (%battle.type != ai) { 
-        if ($readini($mon(%monster.name), battle, hp) != $null) { 
+        if ($readini($char(%monster.name), battle, hp) != $null) { 
           $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
           $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)
         }
@@ -992,7 +1019,7 @@ alias generate_monster {
     if (%boss.type = normal) {
 
       if ($rand(1,2) = 1) {
-        if ((%battle.type != assault) && (%battle.type != defendoutpost)) { writeini $txtfile(battle2.txt) BattleInfo CanKidnapNPCs yes }
+        if (%battle.type != defendoutpost) { writeini $txtfile(battle2.txt) BattleInfo CanKidnapNPCs yes }
       }
 
       $get_boss_list
