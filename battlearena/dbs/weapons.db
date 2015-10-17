@@ -337,6 +337,7 @@ HurtEthereal=true
 
 [Xiutleato]
 Cost=0
+SpecialWeapon=true
 Type=Sword
 Info=A sword with a dark red blade and a gold edge, along with a gold hilt and red jewel on the pommel.
 Abilities=SavageBlade.SanguineBlade.SwiftBlade.CircleBlade
@@ -407,6 +408,7 @@ Upgrade=2000
 
 [Macbain]
 Cost=0
+SpecialWeapon=true
 Type=Greatsword
 Info=A greatsword with a black and gold handle and a black blade. Near the the middle of the blade is a red jewel in the shape of an eye.
 Abilities=SpinningSlash.HerculeanSlash.Scourge
@@ -662,6 +664,7 @@ Upgrade=2000
 
 [Lightreaver]
 Cost=0
+SpecialWeapon=true
 Type=Axe
 Info=A large axe that is silver on the axe blade and black on the handle.
 Abilities=FellCleave.SteelCyclone.KingsJustice
@@ -674,6 +677,7 @@ IgnoreDefense=10
 
 [Kerehcatl]
 Cost=0
+SpecialWeapon=true
 Type=Axe
 Info=An axe with a black and gold handle. The axe blades are black with red stripes, sort of like a tiger.
 Abilities=BoraAxe.Rampage.Ruinator
@@ -719,6 +723,7 @@ Upgrade=1500
 
 [Vanir_Knife]
 Cost=0
+SpecialWeapon=true
 Type=Dagger
 Info=A knife with a dark grey handle and a black blade.
 Abilities=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vajra) = true, .Evisceration)
@@ -730,6 +735,7 @@ IgnoreDefense=5
 
 [Vajra]
 Cost=0
+SpecialWeapon=true
 Type=Dagger
 Info=A dagger that is black in color with an intricate silver design on the handle and blade. The blade is wide and has two blue jewels set in the blade.
 Abilities=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vanir_Knife) = true, .Evisceration)
@@ -800,6 +806,7 @@ Upgrade=2000
 [HomesteadBow]
 Cost=0
 Type=Bow
+SpecialWeapon=true
 Info=A bow that is black in color with silver highlights.
 Abilities=ApexArrow.Sidewinder.EmpyrealArrow
 Element=None
@@ -958,6 +965,7 @@ Element=none
 
 [Ichimonji-Yofusa]
 Cost=0
+SpecialWeapon=true
 Type=Katana
 Info=A great katana with a blue and gold handle. The blade of the katana is blue in color.
 Abilities=Tachi:Fudo.Tachi:Kasha.Tachi:Gekko.Tachi:Yukikaze
@@ -1147,6 +1155,7 @@ Upgrade=3000
 
 [Upukirex]
 Cost=0
+SpecialWeapon=true
 Type=Spear
 Info=A spear with a brown and dark red handle and a dark red metal point.
 Abilities=Jump.HighJump.SpiritJump.SoulJump.Stardiver
@@ -1207,6 +1216,7 @@ Upgrade=3000
 
 [Xbalanque]
 Cost=0
+SpecialWeapon=true
 Type=Scythe
 Info=A scythe with a nature-style in design. The handle is similar to a tropical tree with feathers near the top. Behind the scythe blade is a horn from a large animal.
 Abilities=Insurgency.NightmareScythe.Guillotine
