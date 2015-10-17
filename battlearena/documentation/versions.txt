@@ -1330,6 +1330,8 @@ Battle Arena Bot VERSIONS
 - Added the Message Of the Day (MOTD) for players to see upon logging in
 - Added a list of current currencies for players to see upon logging in
 - Added the ability for the bot to have dynamic names for certain monster types
+- Added breakable objects to battlefields. There's a 25% chance that one will spawn on certain battlefields. Although they are
+  technically monsters, they don't get turns and only have 1 HP. Just break them to help boost your style.
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.

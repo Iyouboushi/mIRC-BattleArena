@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/16/15
+;;;; Last updated: 10/17/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1968,20 +1968,25 @@ alias battle.monster.death.check {
   var %death.count 0
   while (%battletxt.current.line <= %battletxt.lines) { 
     var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
-
     var %summon.flag $readini($char(%who.battle), info, summon)
     var %clone.flag $readini($char(%who.battle), info, clone)
     var %doppel.flag $readini($char(%who.battle), info, Doppelganger)
+    var %object.flag $readini($char(%who.battle), monster, type)
 
     if ($readini($char(%who.battle), info, flag) != monster) { inc %battletxt.current.line }
     else {
-      if ((%clone.flag = yes) && (%doppel.flag != yes)) { inc %battletxt.current.line }
-      else if (%summon.flag = yes) { inc %battletxt.current.line }
-      else { 
+      var %increase.count yes
+
+      if ((%clone.flag = yes) && (%doppel.flag != yes)) { var %increase.count no }
+      if (%summon.flag = yes) { var %increase.count no }
+      if (%object.flag = object) { var %increase.count no } 
+
+      if (%increase.count = yes) { 
         var %current.status $readini($char(%who.battle), battle, status)
-        if (((%current.status = dead) || (%current.status = runaway) || (%current.status = inactive))) { inc %death.count 1 | inc %battletxt.current.line 1 }
-        else { inc %battletxt.current.line 1 } 
+        if (((%current.status = dead) || (%current.status = runaway) || (%current.status = inactive))) { inc %death.count 1 }
       }
+
+      inc %battletxt.current.line
     }
   }
 
@@ -2053,7 +2058,11 @@ alias battlelist {
         %battle.list = $addtok(%battle.list,%token.to.add,46) | inc %l 1 
       } 
       else { 
-        if ($readini($char(%who.battle), info, flag) = monster) { var %token.to.add 5 $+ %who.battle }
+        if ($readini($char(%who.battle), info, flag) = monster) { 
+          var %token.to.add 5 $+ %who.battle
+          if ($readini($char(%who.battle), monster, type) = object) { var %token.to.add 14 $+ %who.battle }
+          if (($readini($boss(%who.battle), basestats, hp) != $null) || ($readini($char(%who.battle), monster, boss) = true)) { var %token.to.add 6 $+ %who.battle }
+        }
         if ($readini($char(%who.battle), info, flag) = npc) { var %token.to.add 12 $+ %who.battle }
         if ($readini($char(%who.battle), info, flag) = $null) { var %token.to.add 3 $+ %who.battle }
 

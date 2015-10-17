@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/07/15
+;;;; Last updated: 10/17/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -65,8 +65,9 @@ count.monsters {
         var %summon.flag $readini($char(%count.who.battle), info, summon)
         var %clone.flag $readini($char(%count.who.battle), info, clone)
         var %doppel.flag $readini($char(%count.who.battle), info, Doppelganger)
+        var %object.flag $readini($char(%count.who.battle), monster, type)
 
-        if ((%summon.flag != yes) && (%clone.flag != yes)) {  inc %monsters.in.battle 1 }
+        if (((%summon.flag != yes) && (%object.flag != object) && (%clone.flag != yes))) {  inc %monsters.in.battle 1 }
         if (%doppel.flag = yes) { inc %monsters.in.battle 1 }
       }
 
@@ -3151,6 +3152,8 @@ random.battlefield.pick {
   if (%warp.battlefield != $null) {
     %current.battlefield = %warp.battlefield
     unset %warp.battlefield
+
+    $battlefield.object
     return
   }
 
@@ -3162,7 +3165,39 @@ random.battlefield.pick {
   set %battlefield.random $rand(1,%battlefields.total)
   set %current.battlefield $read($lstfile(battlefields.lst), %battlefield.random)
 
+  $battlefield.object
+
   unset %battlefield.random | unset %battlefields.total
+}
+
+battlefield.object {
+  if (%battle.type = ai) { return }
+
+  var %breakable.objects $readini($dbfile(battlefields.db), %current.battlefield, objects)
+  if (%breakable.objects = $null) { return }
+
+  var %object.chance $rand(1,100)
+
+  if (%object.chance <= 25) {
+    var %object.chosen $gettok(%breakable.objects, $rand(1, $numtok(%breakable.objects, 46)), 46)
+
+    .copy -o $char(new_chr) $char(%object.chosen)
+    writeini $char(%object.chosen) info flag monster 
+    writeini $char(%object.chosen) Basestats name %object.chosen
+    writeini $char(%object.chosen) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
+    writeini $char(%object.chosen) info gender its
+    writeini $char(%object.chosen) info gender2 its
+    writeini $char(%object.chosen) info bosslevel 1
+    writeini $char(%object.chosen) info CanTaunt false
+    writeini $char(%object.chosen) basestats HP 1
+    writeini $char(%object.chosen) battle HP 1
+    writeini $char(%object.chosen) descriptions DeathMessage crumbles into pieces all over the ground
+    writeini $char(%object.chosen) descriptions char is a breakable object
+    writeini $char(%object.chosen) info ai_type defender
+    writeini $char(%object.chosen) monster type object
+
+    set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%object.chosen,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %object.chosen
+  }
 }
 battlefield.damage {
   set %attack.damage $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ amount)

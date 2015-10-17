@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Gibbous
-CurrentMoonTurn=5
+CurrentMoonPhase=New
+CurrentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -38,7 +38,7 @@ remove or modify the time of day section as it will cause
 errors.
 ==============================================================
 [TimeOfDay]
-CurrentTimeOfDay=Noon
+CurrentTimeOfDay=Morning
 CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
@@ -84,6 +84,7 @@ weather=calm.gloomy.rainy.dry.snowy.stormy
 NumberOfEvents=1
 scavenge=Onyx.Red_Fang.Thunder_Orb.Stop_watch
 limitations=no-tech
+Objects=Tombstone.Memorial
 
 event1=damage
 event1Chance=20
@@ -120,6 +121,7 @@ Event3Amount=$rand(500,900)
 weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=1
 scavenge=Potion.Topaz.Milk
+Objects=Swingset.Bench.Fence.Barrel
 
 event1=statusonly
 event1statusType=annoyed
@@ -188,6 +190,8 @@ event2statusType=stun
 weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=4
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+Objects=Bench.Fence.Barrel.Trashcan
+
 
 event1=damage
 event1Chance=10
@@ -217,6 +221,7 @@ Event4Amount=$rand(10,30)
 weather=calm.rainy.windy.hot.dry
 NumberOfEvents=4
 scavenge=AshLog.Hatchet.emerald.BombFlower
+Objects=RottingTree.Bench
 
 event1=heal
 event1Chance=30
@@ -246,6 +251,7 @@ event4Amount=$rand(50,100)
 weather=calm.bright.rainy.stormy.windy.hot.dry
 NumberOfEvents=3
 scavenge=Sand.EarthSphere.Sand.Cloth.BrownKey.Tonic.Sand
+Objects=GiantUmbrella.Cooler.Radio.Chair
 
 event1=damage
 event1statusType=Drowning
@@ -270,6 +276,7 @@ Event3Amount=$rand(20,200)
 weather=calm.bright.rainy.stormy.windy.hot.dry
 NumberOfEvents=2
 scavenge=Sand.EarthSphere.Sand.Cloth.BrownKey.Sand
+Objects=Cactus
 
 event1=damage
 event1statusType=Burning
@@ -312,6 +319,7 @@ Event3Amount=$rand(130,300)
 weather=calm.gloomy
 NumberOfEvents=4
 scavenge=RepairHammer.IronOre.Hatchet.Ink
+Objects=Crate.OldMachine
 
 event1=damage
 event1Chance=40
@@ -367,6 +375,7 @@ weather=calm
 NumberOfEvents=4
 limitations=no-item
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+Objects=OldMachine.ChemistrySet.Flask.Chair
 
 event1=heal
 event1Chance=30
@@ -447,6 +456,7 @@ event1statusType=stun
 weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=1
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+Objects=Swingset.Bench.Fence.Barrel.Crate
 
 event1=damage
 event1Chance=40
@@ -463,6 +473,7 @@ scavenge=Sapphire.WaterJewel.X-Potion
 weather=calm.bright.rainy.stormy.windy.hot.dry
 NumberOfEvents=1
 scavenge=Potion.VitalStar.X-Potion.Shihei.Sokubaku.Topaz.Zircon.Ink.Paper.EarthSphere
+Objects=Swingset.Bench
 
 event1=damage
 event1Chance=20
