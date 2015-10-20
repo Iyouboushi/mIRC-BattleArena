@@ -1,13 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/15/15
+;;;; Last updated: 10/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the bot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battle.version {  
-  if ($readini(version.ver, versions, Bot) = $null) { echo -a 4ERROR: version.ver is either missing or corrupted! | return 3.0 }
+  if ($readini(version.ver, versions, Bot) = $null) { echo -a 4ERROR: version.ver is either missing or corrupted! | return 3.1 }
   else { return $readini(version.ver, versions, Bot) } 
 } 
 
@@ -3129,7 +3129,8 @@ chest.adjustredorbs {
   if ((%winning.streak >= 800) && (%winning.streak < 1000)) { var %orb.tier 6 }
   if ((%winning.streak >= 1000) && (%winning.streak < 1200)) { var %orb.tier 7 }
   if ((%winning.streak >= 1200) && (%winning.streak < 1500)) { var %orb.tier 8 }
-  if (%winning.streak >= 1500) { var %orb.tier 9 }
+  if ((%winning.streak >= 1500) && (%winning.streak < 5000)) { var %orb.tier 9 }
+  if (%winning.streak >= 5000) { var %orb.tier 10 }
 
   if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { inc %orb.tier 1 }
 
@@ -3143,6 +3144,7 @@ chest.adjustredorbs {
   if (%orb.tier = 8) { set %chest.amount $round($calc(%chest.amount * 2.95),0) }
   if (%orb.tier = 9) { set %chest.amount $round($calc(%chest.amount * 3.15),0) }
   if (%orb.tier = 10) { set %chest.amount $round($calc(%chest.amount * 4),0) }
+  if (%orb.tier = 11) { set %chest.amount $round($calc(%chest.amount * 4.2),0) }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
