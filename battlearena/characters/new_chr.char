@@ -81,6 +81,10 @@ WheelsSpun=0
 TrustsUsed=0
 DropsRewarded=0
 DungeonsCleared=0
+TotalDmg.Melee=0
+MeleeHits=0
+TotalDmg.Tech=0
+TechHits=0
 
 [Info]
 Gender=his

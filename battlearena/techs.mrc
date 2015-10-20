@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -437,11 +437,11 @@ alias tech.single {
     $calculate_damage_techs($1, $2, $1)
     if (%attack.damage >= 4000) { set %attack.damage $rand(2800,3500) }
     unset %absorb
-    $deal_damage($1, $1, $2, %absorb)
+    $deal_damage($1, $1, $2, %absorb, tech)
   }
   else { 
     $calculate_damage_techs($1, $2, $3)
-    $deal_damage($1, $3, $2, %absorb)
+    $deal_damage($1, $3, $2, %absorb, tech)
   }
 
   ; Turn off the True Strike skill
@@ -690,7 +690,7 @@ alias tech.suicide {
   if (%bloodmoon = on) { inc %attack.damage $rand(10,50) } 
 
   writeini $char($1) battle hp 0 | writeini $char($1) battle status dead | $increase.death.tally($1) | $set_chr_name($1) 
-  $deal_damage($1, $3, $2)
+  $deal_damage($1, $3, $2, tech)
 
   ; Turn off the True Strike skill
   writeini $char($1) skills truestrike.on off
@@ -723,7 +723,7 @@ alias tech.heal {
 
   if (($istok(%target.element.heal,%tech.element,46) = $false) || (%target.element.heal = $null)) { 
     if ((%mon.status = yes) || (%mon.type = undead)) {
-      $deal_damage($1, $3, $2)
+      $deal_damage($1, $3, $2, tech)
       $display_damage($1, $3, tech, $2)
       return
     } 
@@ -806,7 +806,7 @@ alias do_aoe_heal {
     ;If the target is a zombie, do damage instead of healing it.
     var %mon.status $readini($char(%who.battle), status, zombie) | var %mon.type $readini($char(%who.battle), monster, type)
     if ((%mon.status = yes) || (%mon.type = undead)) {
-      $deal_damage($1, %who.battle, $2)
+      $deal_damage($1, %who.battle, $2, tech)
       $display_damage($1, %who.battle, aoeheal, $2)
       unset %guard.message
     } 
@@ -857,11 +857,11 @@ alias tech.magic {
     $calculate_damage_magic($1, $2, $1)
     if (%attack.damage >= 4000) { set %attack.damage $rand(2800,3500) }
     unset %absorb
-    $deal_damage($1, $1, $2)
+    $deal_damage($1, $1, $2, tech)
   }
   else { 
     $calculate_damage_magic($1, $2, $3)
-    $deal_damage($1, $3, $2)
+    $deal_damage($1, $3, $2, tech)
   }
 
   ; Turn off the True Strike skill
@@ -1053,11 +1053,11 @@ alias tech.aoe {
                 $calculate_damage_techs($1, $2, $1, aoe)
                 if (%attack.damage >= 5000) { set %attack.damage $rand(4000,5000) }
                 unset %absorb
-                $deal_damage($1, $1, $2, %absorb)
+                $deal_damage($1, $1, $2, %absorb, tech)
               }
               else {
                 $calculate_damage_techs($1, $2, %who.battle, aoe)
-                $deal_damage($1, %who.battle, $2, %absorb)
+                $deal_damage($1, %who.battle, $2, %absorb, tech)
               }
 
               $display_aoedamage($1, %who.battle, $2, %absorb)
@@ -1102,12 +1102,12 @@ alias tech.aoe {
                 if (%attack.damage >= 5000) { set %attack.damage $rand(4000,5000) }
                 unset %absorb
                 $deal_damage($1, $1, $2, %absorb)
-                $display_aoedamage($1, %who.battle, $2, %absorb)
+                $display_aoedamage($1, %who.battle, $2, %absorb, tech)
               }
 
               else {
                 $calculate_damage_techs($1, $2, %who.battle, aoe)
-                $deal_damage($1, %who.battle, $2, %absorb)
+                $deal_damage($1, %who.battle, $2, %absorb, tech)
                 $display_aoedamage($1, %who.battle, $2, %absorb)
               }
             }

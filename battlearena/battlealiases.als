@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/17/15
+;;;; Last updated: 10/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -443,7 +443,7 @@ boost_monster_stats {
   var %monster.level 0
 
   ; These are things that will affect the monster level
-  var %winning.streak $readini(battlestats.dat, battle, winningstreak)
+  var %winning.streak $return_winningstreak
   var %level.boost $readini(battlestats.dat, battle, LevelAdjust)
   var %number.of.players.in.battle $readini($txtfile(battle2.txt), battleinfo, players)
   var %difficulty $readini($txtfile(battle2.txt), BattleInfo, Difficulty)
@@ -502,7 +502,7 @@ boost_monster_stats {
   if ($2 = demonportal) { dec %monster.level 2 }
 
   ; Is it a losing streak? If so, set all monsters to level 1
-  if (%winning.streak <= 0) { var %monster.level 1 }
+  if ((%winning.streak <= 0) && (%battle.type != ai)) { var %monster.level 1 }
 
   ; $2 = monstersummon is for the monster summon special skill
   if ($2 = monstersummon) { 
@@ -923,6 +923,28 @@ deal_damage {
   $ai.learncheck($2, $3)
 
   if (%guard.message = $null) { $renkei.calculate($1, $2, $3) }
+
+
+  ; Increase total damage that we're keeping track of
+  echo -a checking for increase damage:  $1 :: $2 :: $3 :: $4 :: $5
+  if ((($4 = tech) || ($4 = melee) || ($5 = tech))) {
+    if (($person_in_mech($1) = false) && (%guard.message = $null)) {
+      if (($4 = tech) || ($5 = tech)) { var %totalstat tech }
+      else { var %totalstat melee }
+
+      var %current.totaldamage $readini($char($1), stuff, totalDmg. $+ %totalstat) 
+      var %current.totalhits $readini($char($1), stuff, %totalstat $+ Hits)
+      if (%current.totaldamage = $null) { var %current.damage 0 }
+      if (%current.totalhits = $null) { var %current.totalhits 0 }
+      inc %current.totalhits 1
+      inc %current.totaldamage %attack.damage
+
+      writeini $char($1) stuff totalDmg. $+ %totalstat %current.totaldamage
+      writeini $char($1) stuff %totalstat $+ Hits %current.totalhits
+    } 
+  }
+
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

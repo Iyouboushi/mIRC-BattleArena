@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 10/11/15
+;;;; Last updated: 10/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -109,18 +109,18 @@ alias attack_cmd {
       $drain_samba_check($1) 
       var %weapon.equipped.original %weapon.equipped
       if ((%weapon.equipped.left != $null) && ($readini($dbfile(weapons.db), %weapon.equipped.left, type) != shield)) { set %weapon.equipped %weapon.equipped $+ . $+ %weapon.equipped.left }
-      $deal_damage($1, $2, %weapon.equipped)
+      $deal_damage($1, $2, %weapon.equipped, melee)
       $display_damage($1, $2, weapon, %weapon.equipped.original)
 
     }
 
     if (%counterattack = on) { 
-      $deal_damage($2, $1, %weapon.equipped)
+      $deal_damage($2, $1, %weapon.equipped, melee)
       $display_damage($1, $2, weapon, %weapon.equipped)
     }
 
     if (%counterattack = shield) { 
-      $deal_damage($2, $1, $readini($char($2), weapons, equippedLeft))
+      $deal_damage($2, $1, $readini($char($2), weapons, equippedLeft), shield)
       $display_damage($1, $2, weapon, $readini($char($2), weapons, equippedLeft))
     }
 
@@ -239,7 +239,7 @@ alias melee.aoe {
               $covercheck(%who.battle, $2, AOE)
 
               $calculate_damage_weapon($1, %weapon.equipped, %who.battle)
-              $deal_damage($1, %who.battle, %weapon.equipped)
+              $deal_damage($1, %who.battle, %weapon.equipped, melee)
 
               $display_aoedamage($1, %who.battle, $2, %absorb, melee)
               unset %attack.damage
@@ -284,7 +284,7 @@ alias melee.aoe {
 
 
               $calculate_damage_weapon($1, %weapon.equipped, %who.battle)
-              $deal_damage($1, %who.battle, %weapon.equipped)
+              $deal_damage($1, %who.battle, %weapon.equipped, melee)
               $display_aoedamage($1, %who.battle, $2, %absorb, melee)
 
             }

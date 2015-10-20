@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 10/14/15
+;;;; Last updated: 10/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -453,6 +453,7 @@ on 3:TEXT:!misc info*:*: {
     var %misc.defenderwon $readini($char($nick), stuff, BattlesWonWithDefender) | var %misc.aggressorwon $readini($char($nick), stuff, BattlesWonWithAggressor)
     var %misc.reforges $readini($char($nick), stuff, WeaponsReforged) | var %misc.totalbets $readini($char($nick), stuff, totalBets) | var %misc.totalbetamount $readini($char($nick), stuff, TotalBetAmount) 
     var %misc.totalauctionbids $readini($char($nick), stuff, AuctionBids) | var %misc.totalauctionswon $readini($char($nick), stuff, AuctionWins)
+    var %misc.averagemelee $character.averagedmg($nick, melee) | var %misc.averagetech $character.averagedmg($nick, tech)
 
     var %misc.target your
     $display.private.message($readini(translation.dat, system, HereIsMiscInfo))
@@ -478,6 +479,7 @@ on 3:TEXT:!misc info*:*: {
     var %misc.defenderwon $readini($char($3), stuff, BattlesWonWithDefender) | var %misc.aggressorwon $readini($char($3), stuff, BattlesWonWithAggressor)
     var %misc.reforges $readini($char($3), stuff, WeaponsReforged) | var %misc.totalbets $readini($char($3), stuff, totalBets) | var %misc.totalbetamount $readini($char($3), stuff, TotalBetAmount) 
     var %misc.totalauctionbids $readini($char($3), stuff, AuctionBids) | var %misc.totalauctionswon $readini($char($3), stuff, AuctionWins)
+    var %misc.averagemelee $character.averagedmg($3, melee) | var %misc.averagetech $character.averagedmg($3, tech)
 
     var %misc.target $3 $+ 's
     $display.private.message($readini(translation.dat, system, HereIsMiscInfo))
@@ -530,6 +532,7 @@ on 3:TEXT:!misc info*:*: {
   $display.private.message.delay.custom([4Total Light Spells Casted12 %misc.lightspells $+ ] [4Total Dark Spells Casted12 %misc.darkspells $+ ] [4Total Earth Spells Casted12 %misc.earthspells $+ ] [4Total Fire Spells Casted12 %misc.firespells $+ ] [4Total Wind Spells Casted12 %misc.windspells $+ ] [4Total Water Spells Casted12 %misc.waterspells $+ ] [4Total Ice Spells Casted12 %misc.icespells $+ ] [4Total Lightning Spells Casted12 %misc.lightningspells $+ ],3)
   $display.private.message.delay.custom([4Total Times Won Under Defender12 %misc.defenderwon $+ ] [4Total Times Won Under Aggressor12 %misc.aggressorwon $+ ] [4Total Blood Boosts Performed12 %misc.bloodboost $+ ] [4Total Blood Spirits Performed12 %misc.bloodspirit $+ ],3)
   $display.private.message.delay.custom([4Total 1vs1 NPC Bets Placed12 %misc.totalbets $+ ] [4Total Amount of Double Dollars Bet12 %currency.symbol $bytes(%misc.totalbetamount,b) $+ ]  [4Total Bids Placed12 %misc.totalauctionbids $+ ] [4Total Auctions Won12 %misc.totalauctionswon $+ ],4)
+  $display.private.message.delay.custom([4Average Melee Damage12 $bytes(%misc.averagemelee,b) $+ ] [4Average Tech Damage12 $bytes(%misc.averagetech,b) $+ ],4)
 }
 
 
@@ -1348,6 +1351,15 @@ on 3:TEXT:!deathboard*:*: {
     if ($2 = $null) { $display.message(4!deathboard <monster/boss>, private) | halt }
   }
   else { $display.message($readini(translation.dat, errors, DeathBoardNotDuringBattle), private) | halt }
+}
+
+on 3:TEXT:!damageboard*:*: {
+  if (%battleis != on) { 
+    if (($2 = tech) || ($2 = techs)) { $generate.damageboard.techs }
+    if ((($2 = melee) || ($2 = weapon) || ($2 = attacks))) { $generate.damageboard.melee } 
+    if ($2 = $null) { $display.message(4!damageboard <melee/tech>, private) | halt }
+  }
+  else { $display.message($readini(translation.dat, errors, DamageBoardNotDuringBattle), private) | halt }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

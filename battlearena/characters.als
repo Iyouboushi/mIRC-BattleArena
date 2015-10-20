@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 10/12/15
+;;;; Last updated: 10/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1387,4 +1387,20 @@ character.dragonhunt {
     $startnormal(DragonHunt, $1)
     halt
   }  
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns the average damage
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.averagedmg {
+  ; $1 = person
+  ; $2 = melee or tech
+
+  var %average.damage $readini($char($1), stuff, TotalDmg. $+ $2)
+  if (%average.damage = $null) { writeini $char($1) stuff TotalDmg. $+ $2 0 | return 0 }
+
+  var %number.of.hits $readini($char($1), stuff, $2 $+ Hits)
+  var %average.damage $round($calc(%average.damage / %number.of.hits),2)
+
+  return %average.damage
 }

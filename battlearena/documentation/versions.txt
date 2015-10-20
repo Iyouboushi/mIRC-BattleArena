@@ -1319,6 +1319,9 @@ Battle Arena Bot VERSIONS
 - Added the !dragon list command. Using this will display which dragons have made lairs in the land.
 - Added the !dragon hunt command. Once an hour players can use this command to hunt for a dragon's lair and start a battle
   if it's been found. This command can only be done outside of battle.
+- Added the ability for the bot to track average melee and tech damage done in battles
+- Added the !damageboard <melee/tech> command. Use it to see a ranking of who's doing the most average damage
+- Added the average melee/tech damage to !misc info
 - Added missing elemental monsters.
 - Added two more TP restoring items
 - Added a new augment: EnhanceCrafting.  This augment will increase your crafting success rate by 2
@@ -1389,6 +1392,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug in which the elemental messages for en-spells were not showing upon melee hits
 - Fixed a bug in which npcs and trusts weren't being killed in portals that had no-trust or no-npc set.
 - Fixed a bug with AI vs AI battles when NPCs used shadow copy
+- Fixed a bug with AI vs AI battles in which if the streak was less than 0 it wouldn't work properly
 - Fixed a bug with !flee not counting the number of times fled properly
 - Fixed a bug in which provoked NPCs may try to attack dead targets that have been erased due to multiple waves
 - Fixed a bug in which player clones would die if they were summoned before a no-trust or no-npc portal battle happened
