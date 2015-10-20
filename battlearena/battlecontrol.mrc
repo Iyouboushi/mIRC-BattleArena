@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/17/15
+;;;; Last updated: 10/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -99,6 +99,18 @@ alias save.battle.streak {
   }
 }
 
+on 3:TEXT:!reset battle streak*:*:{  $reset.battle.streak($nick) } 
+alias reset.battle.streak {
+  var %last.reloadby $readini(battlestats.dat, battle, LastReload)
+
+  if (%last.reloadby != $1) { $display.message(4Only a person who reloads a battle save can reset the streak using this command) | halt }
+
+  writeini battlestats.dat battle LosingStreak 0
+  writeini battlestats.dat battle winningstreak 0
+  remini battlestats.dat battle LastReload
+  $display.message(3The winning streak has been reset to: 0, global)
+}
+
 on 3:TEXT:!reload battle streak*:*:{  $reload.battle.streak($nick, $1, $2, $3) } 
 on 3:TEXT:!reload battle save*:*:{  $reload.battle.streak($nick, $1, $2, $3) } 
 on 3:TEXT:!reload arena level*:*:{  $reload.battle.streak($nick, $1, $2, $3) } 
@@ -123,6 +135,7 @@ alias reload.battle.streak {
       writeini battlestats.dat Battle WinningStreak %saved.streak
       writeini battlestats.dat Battle LosingStreak 0
       writeini $char($1) Info ReloadStreak.time $ctime
+      writeini battlestats.dat battle LastReload $1
       $display.message($readini(translation.dat, system, ReloadBattleStreak), global)
     }
     else { $display.message($readini(translation.dat, errors, NotEnoughTimeToReload), private) | halt }
@@ -674,6 +687,7 @@ alias battlebegin {
         writeini battlestats.dat battle emptyRounds 0
         writeini battlestats.dat battle winningStreak 0
         writeini battlestats.dat battle losingStreak 0
+        remini battlestats.dat battle LastReload
       }
 
       $clear_battle 
