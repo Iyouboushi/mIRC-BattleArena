@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 10/11/15
+;;;; Last updated: 10/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -179,7 +179,6 @@ alias ai_turn {
   } 
 
   if (%ai.action = attack) { $ai_gettarget($1) 
-    $attack_cmd($1, %ai.target) | halt 
     if (%ai.target = $null) { echo -a target null | set %ai.action taunt }
     else { $attack_cmd($1, %ai.target) | halt }
   }
