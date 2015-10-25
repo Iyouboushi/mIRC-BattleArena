@@ -33,7 +33,7 @@ Whips=LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailW
 Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster
 Rifles=Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty
 Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
-Katanas=PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Zangetsu
+Katanas=PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1.Zangetsu
 Katanas2=Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa
 Wands=YewWand.PixiWand.OakWand.PineWand
 Staves=IridialStaff.ElderWand.Laevatein.EbonyWand.BahamutsStaff
@@ -962,6 +962,19 @@ BasePower=90
 Upgrade=3000
 Element=none
 2Handed=true
+
+[Valmanway+1]
+Cost=0
+Type=Katana
+Info=A reforged version of the Valmanway. Outside of Torment battles the katana has a 200 power and ignores 10% defense. Inside of Torment the katana has a power of 600 and ignores 20% defense.
+Abilities=Tachi:Shoha.Tachi:Rana
+Hits=5
+BasePower=$iif(%battle.type = torment, 600, 200)
+Upgrade=3000
+Element=none
+2Handed=true
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+SpecialWeapon=true
 
 [Ichimonji-Yofusa]
 Cost=0

@@ -35,7 +35,7 @@ BossQuote=Now you shall face the true power of Ashi Atora. Glance upon it and re
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=ShadowSpool
+Drops=ShadowSpool.Death'sBreath
 
 [Monster]
 Type=

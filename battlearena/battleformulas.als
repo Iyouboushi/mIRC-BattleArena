@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 10/09/15
+;;;; Last updated: 10/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -324,6 +324,8 @@ cap.damage {
   ; $2 = defender
   ; $3 = tech, melee, etc
 
+  if (%battle.type = torment) { return }
+
   if (($readini(system.dat, system, IgnoreDmgCap) = true) || ($readini($char($2), info, IgnoreDmgCap) = true)) { return }
 
   if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
@@ -407,6 +409,8 @@ cap.damage {
 calculate_attack_leveldiff {
   ; $1 = attacker
   ; $2 = defender
+
+  if (%battle.type = torment) { return }
 
   var %attacker.level $get.level($1)
   var %defender.level $get.level($2)
@@ -1588,13 +1592,16 @@ formula.meleedmg.player.formula_2.5 {
   var %base.stat $readini($char($1), battle, str)
   $strength_down_check($1)
 
-  var %attack.rating $round($calc(%base.stat / 2),0)
+  if (%battle.type = torment) { var %attack.rating %base.stat }
+  if (%battle.type != torment) { 
+    var %attack.rating $round($calc(%base.stat / 2),0)
 
-  if (%attack.rating >= 1000) {  
-    var %base.stat.cap .10
-    if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
-    if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
-    set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
+    if (%attack.rating >= 1000) {  
+      var %base.stat.cap .10
+      if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
+      if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
+      set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
+    }
   }
 
   set %true.base.stat %attack.rating
@@ -1752,26 +1759,27 @@ formula.meleedmg.player.formula_2.5 {
 
   var %flag $readini($char($1), info, flag) 
 
-
   ; Set the level ratio
 
-  if (%flag = monster) { 
-    set %temp.strength %base.stat
-    if (%temp.strength > 800) { set %temp.strength $calc(700 + (%temp.strength / 40))
-      set %temp.strength $round(%temp.strength,0)
-      set %level.ratio $calc(%temp.strength / %enemy.defense)
+  if (%battle.type != torment) {
+    if (%flag = monster) { 
+      set %temp.strength %base.stat
+      if (%temp.strength > 800) { set %temp.strength $calc(700 + (%temp.strength / 40))
+        set %temp.strength $round(%temp.strength,0)
+        set %level.ratio $calc(%temp.strength / %enemy.defense)
+      }
+      if (%temp.strength <= 800) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
     }
-    if (%temp.strength <= 800) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
-  }
 
-  if ((%flag = $null) || (%flag = npc))  { 
-    set %temp.strength %base.stat
-    if (%temp.strength > 6000) { set %temp.strength $calc(6000 + (%temp.strength / 3))
-      set %temp.strength $round(%temp.strength,0)
-      set %level.ratio $calc(%temp.strength / %enemy.defense)
-      unset %temp.strength
+    if ((%flag = $null) || (%flag = npc))  { 
+      set %temp.strength %base.stat
+      if (%temp.strength > 6000) { set %temp.strength $calc(6000 + (%temp.strength / 3))
+        set %temp.strength $round(%temp.strength,0)
+        set %level.ratio $calc(%temp.strength / %enemy.defense)
+        unset %temp.strength
+      }
+      if (%temp.strength <= 6000) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
     }
-    if (%temp.strength <= 6000) {  set %level.ratio $calc(%temp.strength / %enemy.defense) }
   }
 
   ; Calculate the Level Ratio
@@ -1986,7 +1994,7 @@ formula.meleedmg.monster {
   }
 
   var %weapon.base $readini($char($1), weapons, $2)
-  ;  inc %weapon.base $round($calc(%weapon.base * 1.5),0)
+  inc %weapon.base $round($calc(%weapon.base * 1.5),0)
 
   ; If the weapon is a hand to hand, it will now receive a bonus based on your fists level.
   if (($readini($dbfile(weapons.db), $2, type) = HandToHand) && ($2 != fists)) {  inc %weapon.base $readini($char($1), weapons, fists) }
@@ -2132,6 +2140,8 @@ formula.meleedmg.monster {
 
   if ($augment.check($1, IgnoreDefense) = true) {   inc %ignore.defense.percent $calc(%augment.strength * 2) }
 
+  if (%battle.type = torment) { inc %ignore.defense.percent $calc(%torment.level * 5) }
+
   if ($readini(system.dat, system, PlayersMustDieMode) = true) { inc %ignore.defense.percent 10 }
 
   if (%ignore.defense.percent > 0) { 
@@ -2196,6 +2206,8 @@ formula.meleedmg.monster {
     var %level.difference $calc($get.level($1) / $get.level($3))
     var %min.damage $round($calc(%min.damage * %level.difference),0)
 
+    if (%battle.type = torment) { var %level.difference 2 }
+
     if (%min.damage > 500) { var %min.damage 500 }
     if (%min.damage < 1) { var %min.damage 1 }
 
@@ -2211,27 +2223,43 @@ formula.meleedmg.monster {
     if (%battle.rage.darkness = on) { var %min.damage %attack.damage }
 
     if (%battle.rage.darkness != on) { 
-      if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
-        var %level.difference $calc($get.level($1) - $get.level($3)) 
-        if (%level.difference <= 0) && (%level.difference >= -500) { var %min.damage $round($calc(%min.damage / 2),0) }
-        if (%level.difference < -500) { var %min.damage $round($calc(%min.damage / 10),0) }
+
+      if (%battle.type != torment) {
+
+        if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
+          var %level.difference $calc($get.level($1) - $get.level($3)) 
+          if (%level.difference <= 0) && (%level.difference >= -500) { var %min.damage $round($calc(%min.damage / 2),0) }
+          if (%level.difference < -500) { var %min.damage $round($calc(%min.damage / 10),0) }
+        }
+
+        if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
+
+          var %damage.ratio.adjust $calc($get.level($1) / $get.level($3))
+
+          if (%damage.ratio < .10) { var %damage.ratio .10 }
+          if (%damage.ratio > 120) { var %damage.ratio 120 }
+
+          set %attack.damage $round($calc(%attack.damage * %damage.ratio.adjust),0)
+          var %min.damage $round($calc(%min.damage * %damage.ratio.adjust),0)
+
+          var %level.difference $calc($get.level($1) - $get.level($3)) 
+          if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
+          if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
+        }
+
       }
 
-      if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
+    }
 
-        var %damage.ratio.adjust $calc($get.level($1) / $get.level($3))
+    if (%battle.type = torment) { 
+      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(2.5 * %torment.level))
 
-        if (%damage.ratio < .10) { var %damage.ratio .10 }
-        if (%damage.ratio > 120) { var %damage.ratio 120 }
+      if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
 
-        set %attack.damage $round($calc(%attack.damage * %damage.ratio.adjust),0)
-        var %min.damage $round($calc(%min.damage * %damage.ratio.adjust),0)
+      inc %attack.damage $calc(%attack.damage * %torment.level)
+      set %attack.damage $rand(%min.damage, %attack.damage)
 
-        var %level.difference $calc($get.level($1) - $get.level($3)) 
-        if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
-        if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
-      }
-
+      if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $round($calc($readini($char($3), basestats, hp) / 3),0)  }
     }
 
     set %attack.damage $rand(%attack.damage, %min.damage)
@@ -2605,30 +2633,53 @@ formula.techdmg.monster {
     if (%battle.rage.darkness = on) { var %min.damage %attack.damage }
 
     if (%battle.rage.darkness != on) { 
-      var %damage.ratio.adjust $calc($get.level($1) / $get.level($3))
 
-      if (%damage.ratio < .10) { var %damage.ratio .10 }
-      if (%damage.ratio > 120) { var %damage.ratio 120 }
 
-      set %attack.damage $round($calc(%attack.damage * %damage.ratio.adjust),0)
-      var %min.damage $round($calc(%min.damage * %damage.ratio.adjust),0)
 
-      if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
-        var %level.difference $calc($get.level($1) - $get.level($3)) 
-        if (%level.difference <= 0) && (%level.difference >= -500) { var %min.damage $round($calc(%min.damage / 2),0) }
-        if (%level.difference < -500) { var %min.damage $round($calc(%min.damage / 10),0) }
-      }
+      if (%battle.type != torment) {
+        var %damage.ratio.adjust $calc($get.level($1) / $get.level($3))
 
-      if ((%attack.damage >= 1) && ($get.level($1) > $get.level($3))) {
-        var %level.difference $calc($get.level($1) - $get.level($3)) 
-        if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
-        if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
+        if (%damage.ratio < .10) { var %damage.ratio .10 }
+        if (%damage.ratio > 120) { var %damage.ratio 120 }
+
+        set %attack.damage $round($calc(%attack.damage * %damage.ratio.adjust),0)
+        var %min.damage $round($calc(%min.damage * %damage.ratio.adjust),0)
+
+        if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
+          var %level.difference $calc($get.level($1) - $get.level($3)) 
+          if (%level.difference <= 0) && (%level.difference >= -500) { var %min.damage $round($calc(%min.damage / 2),0) }
+          if (%level.difference < -500) { var %min.damage $round($calc(%min.damage / 10),0) }
+        }
+
+        if ((%attack.damage >= 1) && ($get.level($1) > $get.level($3))) {
+          var %level.difference $calc($get.level($1) - $get.level($3)) 
+          if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
+          if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
+        }
       }
     }
+
+
+    if (%battle.type = torment) { 
+      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(5 * %torment.level))
+
+      if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
+
+      inc %attack.damage $calc(%attack.damage * %torment.level)
+      set %attack.damage $rand(%min.damage, %attack.damage)
+
+      if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $round($calc($readini($char($3), basestats, hp) / 3),0)  }
+    }
+
     set %attack.damage $rand(%attack.damage, %min.damage)
-    unset %min.damage
     if ($readini(battlestats.dat, battle, winningstreak) <= 0) { %attack.damage = $round($calc(%attack.damage / 2),0) }
   }
+
+
+  set %attack.damage $rand(%attack.damage, %min.damage)
+  unset %min.damage
+  if ($return_winningstreak <= 0) { %attack.damage = $round($calc(%attack.damage / 2),0) }
+
 
   unset %true.base.stat
 
@@ -3095,14 +3146,16 @@ formula.techdmg.player.formula_2.5 {
 
   set %true.base.stat  %base.stat
 
-  var %attack.rating $round($calc(%base.stat / 2),0)
-
-  if (%attack.rating >= 1000) {  
+  if (%battle.type != torment) { 
+    var %attack.rating $round($calc(%base.stat / 2),0)
+    if (%attack.rating >= 1000)
     var %base.stat.cap .15
     if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
     if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
     set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
   }
+
+  if (%battle.type = torment) { var %attack.rating %base.stat }
 
   var %tech.base $readini($dbfile(techniques.db), p, $2, BasePower)
 
@@ -3176,7 +3229,7 @@ formula.techdmg.player.formula_2.5 {
   }
 
   ; If a player is using a monster weapon, which is considered cheating, set the damage to 0.
-  if ($person_in_mech($1) = false) {  set %current.weapon.used $readini($char($1), weapons, equipped) }
+  if ($person_in_mech($1) = false) { set %current.weapon.used $readini($char($1), weapons, equipped) }
   if ($person_in_mech($1) = true) { set %current.weapon.used $readini($char($1), mech, EquippedWeapon) }
 
   if (($readini($dbfile(weapons.db), %current.weapon.used, cost) = 0) && ($readini($dbfile(weapons.db), %current.weapon.used, specialweapon) != true)) {
@@ -3304,7 +3357,10 @@ formula.techdmg.player.formula_2.5 {
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
-      var %aoe.nerf.percent $calc(10 * %aoe.turn)
+
+      if (%battle.type = torment) { var %aoe.nerf.percent $calc(2 * %aoe.turn) }
+      else {  var %aoe.nerf.percent $calc(10 * %aoe.turn) }
+
       if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 15 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 

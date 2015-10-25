@@ -19,7 +19,7 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=New
+CurrentMoonPhase=Blood
 CurrentMoonTurn=1
 
 [MoonPhaseTime]
@@ -38,7 +38,7 @@ remove or modify the time of day section as it will cause
 errors.
 ==============================================================
 [TimeOfDay]
-CurrentTimeOfDay=Morning
+CurrentTimeOfDay=Night
 CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
@@ -946,6 +946,12 @@ limitations=no-mech.no-fleeing
 weather=gloomy
 NumberOfEvents=0
 scavenge=BeastmenSeal.KindredSeal.KindredCrest
+limitations=no-mech.no-fleeing.no-trusts.no-summons
+
+[Fields of Torment]
+weather=gloomy
+NumberOfEvents=0
+scavenge=KindredSeal.KindredCrest
 limitations=no-mech.no-fleeing.no-trusts.no-summons
 
 ==============================================================

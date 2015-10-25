@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 10/14/15
+;;;; Last updated: 10/24/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -115,6 +115,7 @@ alias uses_item {
   var %item.type $readini($dbfile(items.db), $2, type)
 
   if (%item.type = dungeon) { $item.dungeon($1, $2) | halt }
+  if (%item.type = torment) { $item.torment($1, $2) | halt }
 
   if (((((((%item.type != summon) && (%item.type != key) && (%item.type != shopreset) && (%item.type != food) && (%item.type != trust) && (%item.type != increaseWeaponLevel) && (%item.type != portal))))))) {
     if (($3 != on) || ($3 = $null)) {  $display.message($readini(translation.dat, errors, ItemUseCommandError), private) | halt }
@@ -255,6 +256,7 @@ alias uses_item {
   if (%item.type = consume) { $display.message($readini(translation.dat, errors, ItemIsUsedInSkill), private) | halt }
   if (%item.type = accessory) { $display.message($readini(translation.dat, errors, ItemIsAccessoryEquipItInstead), private) | halt }
   if (%item.type = random) { $item.random($1, $4, $2) | $decrease_item($1, $2) | halt }
+  if (%item.type = TormentReward) { $item.tormentreward($1, $1, $2) | $decrease_item($1, $2) | halt }
   if (%item.type = special) { $item.special($1, $4, $2) | $decrease_item($1, $2) | halt }
   if (%item.type = trust) { 
     if ((no-trust isin %battleconditions) || (no-trusts isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }
@@ -587,6 +589,34 @@ alias item.special {
     unset %song.to.gain | unset %user.song.level
     return
   }
+
+}
+
+alias item.tormentreward {
+  ; $1 = user
+  ; $2 = target
+  ; $3 = item used
+
+  var %present.list items_tormentreward.lst
+
+  var %items.lines $lines($lstfile(%present.list))
+  if (%items.lines = $null) { $display.message(4ERROR: items_tormentrewad.lst is missing or empty!, private) | halt }
+
+  var %random $rand(1, %items.lines)
+  if (%random = $null) { var %random 1 }
+  var %random.item.contents $read -l $+ %random $lstfile(%present.list)
+  var %random.item.name %random.item.contents
+  var %random.item.amount $rand(1,10)
+
+  var %current.reward.items $readini($char($1), item_amount, %random.item.name)
+  if (%current.reward.items = $null) { set %current.reward.items 0 }
+  inc %current.reward.items %random.item.amount
+  writeini $char($1) item_amount %random.item.contents %current.reward.items
+  unset %current.reward.items
+
+  ; Display the desc of the item
+  $set_chr_name($2) | var %enemy %real.name | $set_chr_name($1) 
+  $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global) 
 
 }
 
@@ -1305,6 +1335,32 @@ alias portal.sync.players {
   }
 }
 
+alias item.torment {
+  ; $1 = person using the item
+  ; $2 = item used
+
+  ; If a battle is on, we can't use the item
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tStartTormentInBattle), private) | halt }
+
+  ; can't do this during shenron's wish
+  if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoTormentDuringShenron), private) | halt }
+
+  ; Make sure the player has enough of the item to start a torment battle and then remove the item.
+  var %torment.item $readini($char($1), Item_Amount, $2) 
+  if ((%torment.item <= 0) || (%torment.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
+  dec %torment.item 1
+  writeini $char($1) Item_Amount $2 %torment.item
+
+  ; Get the torment level
+  set %torment.level $readini($dbfile(items.db), $2, TormentLevel)
+  set %torment.creator $1 
+  set %torment.wave 1
+  if (%torment.level = $null) { echo -a 4ERROR: TORMENT LEVEL NULL | set %torment.level 1 }
+
+  ; Start the torment 
+  $startnormal(torment)
+  halt
+}
 
 alias item.dungeon {
   ; $1 = person who used the item
@@ -1313,6 +1369,7 @@ alias item.dungeon {
   ; If a battle is on, we can't use this item.
   if (%battleis = on) { $display.message($readini(translation.dat, errors, can'tstartdungeoninbattle), private) | halt }
 
+  ; can't do this during shenron's wish
   if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoDungeonsDuringShenron), private) | halt }
 
   ; Get the dungeon and make sure the dungeon exists.

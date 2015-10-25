@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 10/20/15
+;;;; Last updated: 10/24/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -792,9 +792,9 @@ readitems {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewShopResetItems)) }
   }
   if (%portals.items.list != $null) { 
-    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewPortalItems),private) } 
-    if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewPortalItems)) } 
-    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewPortalItems)) }
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewPortalItems),private) | if (%portals.items.list2 != $null) { $display.message( $+ %portals.items.list2,private) }  } 
+    if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewPortalItems)) |  if (%portals.items.list2 != $null) { $display.private.message( $+ %portals.items.list2) } } 
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewPortalItems)) | if (%portals.items.list2 != $null) { $dcc.private.message($nick,  $+ %portals.items.list2) } }
   }
   if (%misc.items.list != $null) { if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMiscItems),private) | if (%misc.items.list2 != $null) { $display.message( $+ %misc.items.list2,private) } |  if (%misc.items.list3 != $null) { $display.message( $+ %misc.items.list3,private) } | if (%misc.items.list4 != $null) { $display.message( $+ %misc.items.list4,private) }  }
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) { $display.private.message(5 $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $display.private.message( $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $display.private.message( $+ %misc.items.list4) } }

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/20/15
+;;;; Last updated: 10/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -216,7 +216,7 @@ current.battlestreak {
 
   if (%battle.type = ai) { return  %ai.battle.level  }
   if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
-
+  if (%battle.type = torment) { return $calc(500 * %torment.level) }
 
   if (%portal.bonus != true) {
 
@@ -457,6 +457,8 @@ boost_monster_stats {
   if (%number.of.players.in.battle = $null) { var %number.of.players.in.battle 1 }
   if (%number.of.players.in.battle > 3) { inc %level.boost %number.of.players.in.battle }
 
+  ;;;;;;;; if (%battle.type = torment) { inc %monster.level $return_playerlevelaverage }
+
   ; Check for special boss types
 
   if ($2 = mimic) { 
@@ -670,6 +672,13 @@ boost_monster_hp {
 
   if ((%hp > 20000) && (%battle.type != dragonhunt)) { var %hp $round($calc(20000 + (%hp * .02)),0) }
   if ((%hp > 25000) && (%battle.type = dragonhunt)) { var %hp $round($calc(25000 + (%hp * .25)),0) }
+
+  if (%battle.type = torment) {
+    inc %hp $calc(%torment.level * 500000)
+
+    if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 20000) }
+
+  }
 
   if (($return.systemsetting(BattleDamageFormula) = 2) || ($return.systemsetting(BattleDamageFormula) = 4)) { var %hp $calc(%hp * 2) }
 
@@ -916,6 +925,7 @@ deal_damage {
         if (%battle.type = assault) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
         if (%portal.bonus = true) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
         if (%battle.type = dungeon) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
+        if (%battle.type = torment) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
       }
     }
   }
@@ -924,9 +934,7 @@ deal_damage {
 
   if (%guard.message = $null) { $renkei.calculate($1, $2, $3) }
 
-
   ; Increase total damage that we're keeping track of
-  echo -a checking for increase damage:  $1 :: $2 :: $3 :: $4 :: $5
   if ((($4 = tech) || ($4 = melee) || ($5 = tech))) {
     if (($person_in_mech($1) = false) && (%guard.message = $null)) {
       if (($4 = tech) || ($5 = tech)) { var %totalstat tech }
@@ -1666,6 +1674,8 @@ random.weather.pick {
 ; moon
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 moonphase {
+  if (%battle.type = torment) { return }
+
   set %moonphase $readini($dbfile(battlefields.db), moonphase, CurrentMoonPhase)
   if (%moonphase = $null) { var %moonphase New | remini $dbfile(battlefields.db) moonphase CurrentMoonTurn | writeini $dbfile(battlefields.db) moonphase currentMoonPhase New }
 
@@ -1752,6 +1762,7 @@ timeofday.increase {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.battlefield.curse {
   if (%battle.type = DragonHunt) { return }
+  if (%battle.type = torment) { return }
   if ($readini(battlestats.dat, battle, WinningStreak) <= 50) { return }
   var %timeofday $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay)
   if ((%timeofday = morning) || (%timeofday = noon)) { return }
@@ -1801,6 +1812,7 @@ battlefield.limitations {
 ; if monsters go first in battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.surpriseattack {
+  if (%battle.type = Torment) { return }
   if (%battle.type = DragonHunt) { return }
   if (%savethepresident = on) { return }
   if (%battle.type = dungeon) { return }
@@ -1821,6 +1833,7 @@ random.surpriseattack {
 ; to see if players go first
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.playersgofirst {
+  if (%battle.type = torment) { return }
   if (%battle.type = DragonHunt) { return }
   if (%surpriseattack = on) { return }
   if (%battle.type = dungeon) { return }
@@ -1843,6 +1856,7 @@ random.battlefield.ally {
   if (%battle.type = orbfountain) { return }
   if (%battle.type = boss) { return }
   if (%battle.type = DragonHunt) { return }
+  if (%battle.type = torment) { return }
   if (%battle.type = defendoutpost) { 
     if (%number.of.players < 5) { $generate_allied_troop }
     return
@@ -2118,7 +2132,7 @@ portal.clear.monsters {
 ; For portals
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 portal.summon.monster {
-  ; get a random monster and summon the monster to the battelfield
+  ; get a random monster and summon the monster to the battlelfield
 
   set %number.of.monsters.needed 1
   set %multiple.wave.bonus yes
@@ -2438,6 +2452,7 @@ speed_up_check {
 ; To add based on streak #.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 winningstreak.addmonster.amount {
+  if (%battle.type = torment) { return }
   if (%battle.type = orbfountain) { return }
   if (%battle.type = demonwall) { return }
   if (%battle.type = assault) { return }
@@ -2919,6 +2934,7 @@ counter_melee_action {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 multiple_wave_check {
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
+  if (%battle.type = torment) { unset %multiple.wave }
 
   if (%battle.type = dragonhunt) { return }
   if (%battle.type = dungeon) { return }
@@ -2937,7 +2953,7 @@ multiple_wave_check {
 
   unset %number.of.monsters.needed
 
-  if (((%battle.type != defendoutpost) && (%battle.type != assault) && (%mode.gauntlet != on))) {  
+  if ((((%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != torment) && (%mode.gauntlet != on)))) {  
 
     var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
     if (%winning.streak <= 0) { return }
@@ -2952,6 +2968,9 @@ multiple_wave_check {
   }
 
   if (%mode.gauntlet = on) { var %random.wave.chance 1 | inc %mode.gauntlet.wave 1 }
+
+  if ((%battle.type = torment) && (%torment.wave <= 3)) { inc %torment.wave 1 | var %random.wave.chance 1 }
+  if ((%battle.type = torment) && (%torment.wave > 3)) { $endbattle(victory) | halt }
 
   if ((%battle.type = defendoutpost) && (%darkness.turns > 0)) {  var %random.wave.chance 1 | dec %darkness.turns 1 }
   if ((%battle.type = defendoutpost) && (%darkness.turns <= 0)) { $endbattle(victory) | halt }
@@ -2976,6 +2995,16 @@ multiple_wave_check {
 
   set %number.of.monsters.needed $rand(2,3)
 
+  if (%battle.type = torment) { 
+    var %total.monsters.needed 5
+
+    if ($rand(1,100) <= 50) { set %number.of.monsters.needed 1 | $generate_monster(boss) | dec %total.monsters.needed 1 }
+
+    set %number.of.monsters.needed %total.monsters.needed
+
+    $generate_monster(monster) 
+  }
+
   if (%battle.type != defendoutpost) {
     set %first.round.protection yes
     set %first.round.protection.turn $calc(%current.turn + 1)
@@ -2984,7 +3013,7 @@ multiple_wave_check {
   if ($readini($txtfile(battle2.txt), battleinfo, players) > 1) { inc %number.of.monsters.needed 1 }
 
   if (%mode.gauntlet = $null) {
-    if ((%battle.type != defendoutpost) && (%battle.type != assault)) { $winningstreak.addmonster.amount | $generate_monster(monster) }
+    if (((%battle.type != defendoutpost) && (%battle.type != torment) && (%battle.type != assault))) { $winningstreak.addmonster.amount | $generate_monster(monster) }
   }
 
   if (%battle.type = defendoutpost) { 
@@ -3170,6 +3199,7 @@ renkei.calculate {
 ; BATTLEFIELD stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.battlefield.pick {
+  if (%battle.type = torment) { return }
 
   if (%warp.battlefield != $null) {
     %current.battlefield = %warp.battlefield
@@ -4108,6 +4138,30 @@ add.monster.drop {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Gives everyone a 
+; Horadric Cache item
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+torment.reward {
+  var %torment.reward.amount %torment.level
+  var %torment.reward.item HoradricCache
+
+  unset %torment.drop.rewards
+  set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+    if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+    else { 
+      var %player.amount $readini($char(%who.battle), item_amount, %torment.reward.item)
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount %torment.reward.amount
+      writeini $char(%who.battle) item_amount %torment.reward.item %player.amount
+      %torment.drop.rewards = $addtok(%torment.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ %torment.reward.item x $+ %torment.reward.amount  $+  $+ $chr(93) $+ , 46)
+      inc %battletxt.current.line 1 
+    }
+  }
+}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; rewards a random drop
 ; from the player's item pool
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4146,6 +4200,17 @@ show.random.reward {
   var %replacechar $chr(044) $chr(032)
   %item.drop.rewards = $replace(%item.drop.rewards, $chr(046), %replacechar)
   $display.message($readini(translation.dat, battle, DropItemWin),battle) 
+  unset %item.drop.rewards
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays torment rewards
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+show.torment.reward {
+  if (%torment.drop.rewards = $null) { return }
+  var %replacechar $chr(044) $chr(032)
+  %torment.drop.rewards = $replace(%torment.drop.rewards, $chr(046), %replacechar)
+  $display.message($readini(translation.dat, battle, Torment.DropWin),battle) 
   unset %item.drop.rewards
 }
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 10/08/15
+;;;; Last updated: 10/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -112,6 +112,7 @@ alias add.style.orbbonus {
   if ($2 = boss) { %multiplier = 1.7 }
 
   if (%battle.type = dungeon) { %multiplier = 1.3 }
+  if (%battle.type = torment) { %multiplier = 1.5 }
 
   var %orb.bonus.flag $readini($char($3), info, OrbBonus)
   if (%orb.bonus.flag = yes) { inc %multiplier $rand(125,150) }

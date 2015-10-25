@@ -37,7 +37,7 @@ BloodBoost=growls as its eyes turn red. With a loud roar, Kirin's claws grow lon
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=SuzakuSeal.ByakkoSeal.GenbuSeal.SeiryuSeal
+Drops=Death'sBreath
 
 [Monster]
 Type=Manticore

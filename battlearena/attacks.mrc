@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 10/20/15
+;;;; Last updated: 10/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -172,7 +172,9 @@ alias calculate_damage_weapon {
   else { 
 
     if (%battle.type = dungeon) { $formula.meleedmg.player.formula_3.0($1, $2, $3, $4) }
-    else {
+    if (%battle.type = torment) { $formula.meleedmg.player.formula_2.5($1, $2, $3, $4)  }
+
+    if ((%battle.type != dungeon) && (%battle.type != torment)) { 
       if (($readini(system.dat, system, BattleDamageFormula) = 1) || ($readini(system.dat, system, BattleDamageFormula) = $null)) { $formula.meleedmg.player.formula_3.0($1, $2, $3, $4) }
       if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.meleedmg.player.formula_2.5($1, $2, $3, $4) }
       if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.meleedmg.player.formula_2.0($1, $2, $3, $4) }

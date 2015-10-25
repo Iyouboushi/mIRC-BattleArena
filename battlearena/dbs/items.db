@@ -824,6 +824,13 @@ Desc=pulls out a bright colored present and hands it to %enemy $+ , who opens it
 Cost=0
 SellPrice=9000
 
+[HoradricCache]
+Type=TormentReward
+Desc=pulls out a small glowing box which opens and reveals %random.item.amount $iif(%random.item.amount > 1, %random.item.name $+ s, %random.item.name) inside!
+Cost=0
+SellPrice=1
+Exclusive=yes
+
 =========================
 CONSUMABLE ITEMS (for skills)
 =========================
@@ -1689,6 +1696,13 @@ EnahnceDragonHunt.Amount=20
 MISC ITEMS
 =========================
 
+[Death'sBreath]
+Type=misc
+Cost=0
+SellPrice=1
+Desc=A bottle of vile white liquid that smells like anguish and death. Combining this item with a gold key will result in a torment orb.
+
+
 [Seed]
 Type=misc
 Cost=0
@@ -2119,6 +2133,36 @@ SellPrice=50
 Desc=A fang from a tiger
 Currency=AlliedNotes
 
+[LifeShard]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a pulsing white shard from the Mother Crystal.
+Exclusive=yes
+
+[ArcaneDust]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a bottle full of arcane dust. This is a powerful crafting ingredient 
+Exclusive=yes
+
+[ForgottenSoul]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a small chunk of glowing black and orange ore that can be used to craft legendary equipment
+Exclusive=yes
+
+[ReusablePart]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a part of a salvaged piece of equipment
+Exclusive=yes
+
+
+
 [TitaniteShard]
 Type=increaseWeaponLevel
 IncreaseAmount=1
@@ -2174,6 +2218,16 @@ Desc=takes out a strage blue slab of titanite, setting the weapon on the anvil. 
 Cost=1500000
 SellPrice=2000
 Exclusive=yes
+
+[ExtremeTitaniteSlab]
+Type=increaseWeaponLevel
+IncreaseAmount=150
+Desc=takes out a giganitc blue slab of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
+Cost=0
+SellPrice=2000
+Exclusive=yes
+
+
 
 [BeastmenSeal]
 type=trade
@@ -3335,6 +3389,15 @@ Exclusive=yes
 =========================
 SPECIAL ITEMS
 =========================
+[Blueprints:Valmanway+1]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Valmanway+1
+Desc=pulls out a set of blueprints for an upgraded Valmanway, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the valmanway+1 which glows with power.
+Exclusive=yes
+
 [Blueprints:X-Buster]
 Type=special
 Cost=0
@@ -3651,3 +3714,20 @@ SellPrice=100
 Desc=takes out a bomb made out of a jack-o-lantern and tosses it at %enemy causing a messy explosion.
 Element=fire
 Currency=CandyCorn
+
+
+==========================
+TORMENT BATTLE ITEMS
+==========================
+[TormentOrb1]
+Type=Torment
+TormentLevel=1
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 1] [Minimum Level: 500] 
+
+[TormentOrb2]
+Type=Torment
+TormentLevel=2
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 2] [Minimum Level: 1000] 
+
+
+

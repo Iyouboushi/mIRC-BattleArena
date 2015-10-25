@@ -1305,6 +1305,8 @@ Battle Arena Bot VERSIONS
 - Added the Dragon Hunt system.
 - Added the Dinosaur special boss battle type
 - Added the Predator special boss battle type
+- Added the Torment battle type. Using Torment Orbs players can enter a 3-wave battle against any enemy in the game.
+  Winning will result in items that can be used to craft high level equipment and items.
 - Added the !Rest command. This command can be used by players on their turn to skip their turn. It does nothing else.
 - Added the !battle style command. This command can be used in battle to see the current style rankings of everyone in
   the battle. In the event that two peolpe have the same rating it shows them in the order of highest style points.
@@ -1371,6 +1373,7 @@ Battle Arena Bot VERSIONS
 - Changed the AI slightly to try and prevent NPCs from using techs that would inflict the same status a monster already has on
 - Changed the code for how the bot generates the deathboards. It should be able to find the bot-generated monsters now
 - Changed the bot so that if the streak is automatically reset to 0 the next battle will be an AI vs AI battle
+- Changed the max amount of enhancement points for HP
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item

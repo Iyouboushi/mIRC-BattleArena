@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/20/15
+;;;; Last updated: 10/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -378,6 +378,7 @@ return_differenceof {
 ; Returns the current winning streak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return_winningstreak {
+  if (%battle.type = torment) { return $calc(500 * %torment.level) }
   if (%battle.type = ai) { return %ai.battle.level }
   if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
 
@@ -2581,6 +2582,7 @@ mon_list_add {
   if ((%nosouls = true) && (%name = lost_soul)) { return }
 
   if ((%mode.gauntlet != $null) && ($readini($mon(%name), info, streak) > -500)) { write $txtfile(temporary_mlist.txt) %name | return }
+  if (%battle.type = torment) { write $txtfile(temporary_mlist.txt) %name | return }
   if (%battle.type = ai) { write $txtfile(temporary_mlist.txt) %name | return }
 
   if ((%savethepresident = on) && ($readini($mon(%name), info, IgnorePresident) = true)) { return }
@@ -2660,6 +2662,7 @@ boss_list_add {
   if (((%name = new_boss) || (%name = $null) || (%name = orb_fountain))) { return } 
   if ((%mode.gauntlet != $null) && ($readini($boss(%name), info, streak) > -500)) { write $txtfile(temporary_mlist.txt) %name | return }
   if (%battle.type = ai) { write $txtfile(temporary_mlist.txt) %name | return }
+  if (%battle.type = torment) { write $txtfile(temporary_mlist.txt) %name | return }
 
   if ((%savethepresident = on) && ($readini($mon(%name), info, IgnorePresident) = true)) { return }
 
@@ -2952,6 +2955,7 @@ clear_variables {
   unset %attacker.spd | unset %playerstyle.* | unset %stylepoints.to.add | unset %current.playerstyle.* | unset %styles | unset %wait.your.turn | unset %weapon.list2
 }
 clear_variables2 {
+  unset %torment.*
   unset %max.demonwall.turns | unset %demonwall.name | unset %styles.list | unset %style.name | unset %style.level | unset %player.style.level | unset %style.price | unset %styles
   unset %weapon.name.used | unset %weapon.used.type | unset %quicksilver.used | unset %upgrade.list2
   unset %upgrade.list3 | unset %statusmessage.display | unset %current.turn | unset %surpriseattack
@@ -3373,8 +3377,8 @@ orb.adjust {
   }
 
   if (%battle.type = dungeon) { var %winning.streak $calc(%winning.streak * 10) }
-
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { var %winning.streak 100 }
+  if (%battle.type = torment) { var %winning.streak $calc(500 * %torment.level) }
 
   if (%winning.streak < 50) { var %orb.tier -1 }
   if ((%winning.streak >= 50) && (%winning.streak < 100)) { var %orb.tier 0 }
@@ -3399,6 +3403,7 @@ orb.adjust {
   if (%battle.type = defendoutpost) { inc %orb.tier 1 }
   if (%battle.type = dungeon) { inc %orb.tier 2 }
   if (%battle.type = dragonhunt) { inc %orb.tier 3 }
+  if (%battle.type = torment) { inc %orb.tier 2 }
 
   if ($readini($char($1), status, SpiritOfHero) = true) { 
     remini $char($1) status SpiritOfHero
