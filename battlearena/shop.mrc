@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/09/15
+;;;; Last updated: 10/24/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1196,7 +1196,7 @@ alias shop.enhancements {
     var %enhancement.purchase.spd $readini($char($1), enhancements, spd)
     if (%enhancement.purchase.spd = $null) { var %enhancement.purchase.spd 0 }
 
-    if (%enhancement.purchase.hp < 10) { %shop.list = $addtok(%shop.list,HP+50 ( $+ $calc(1 + %enhancement.purchase.hp) $+ ),46) }
+    if (%enhancement.purchase.hp < 50) { %shop.list = $addtok(%shop.list,HP+50 ( $+ $calc(1 + %enhancement.purchase.hp) $+ ),46) }
     if (%enhancement.purchase.ig < 10) { %shop.list = $addtok(%shop.list,IG+5 ( $+ $calc(1 + %enhancement.purchase.ig) $+ ),46) }
     if (%enhancement.purchase.str < 20) { %shop.list = $addtok(%shop.list,STR+10 ( $+ $calc(1 + %enhancement.purchase.str) $+ ),46) }
     if (%enhancement.purchase.def < 20) { %shop.list = $addtok(%shop.list,DEF+10 ( $+ $calc(1 + %enhancement.purchase.def) $+ ),46) }
@@ -1238,6 +1238,7 @@ alias shop.enhancements {
     ; Are we hitting the cap amount?
     var %purchase.cap 10
 
+    if ($3 = hp) { var %purchase.cap 50 }
     if (((($3 = str) || ($3 = def) || ($3 = int) || ($3 = spd)))) { inc %purchase.cap 20 }
     if ($istok(%valid.purchase, $lower($3), 46) = $true) { var %purchase.cap $readini($dbfile(skills.db), $3, max) }
 
