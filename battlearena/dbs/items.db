@@ -3729,5 +3729,42 @@ Type=Torment
 TormentLevel=2
 Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 2] [Minimum Level: 1000] 
 
+[TormentOrb3]
+Type=Torment
+TormentLevel=3
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 3] [Minimum Level: 1500] 
 
+[TormentOrb4]
+Type=Torment
+TormentLevel=4
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 4] [Minimum Level: 2000] 
 
+[TormentOrb5]
+Type=Torment
+TormentLevel=5
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 5] [Minimum Level: 2500] 
+
+[TormentOrb6]
+Type=Torment
+TormentLevel=6
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 6] [Minimum Level: 3000] 
+
+[TormentOrb7]
+Type=Torment
+TormentLevel=7
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 7] [Minimum Level: 3500] 
+
+[TormentOrb8]
+Type=Torment
+TormentLevel=8
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 8] [Minimum Level: 4000] 
+
+[TormentOrb9]
+Type=Torment
+TormentLevel=9
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 9] [Minimum Level: 4500] 
+
+[TormentOrb10]
+Type=Torment
+TormentLevel=10
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 10] [Minimum Level: 5000] 
