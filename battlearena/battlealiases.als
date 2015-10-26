@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/25/15
+;;;; Last updated: 10/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -829,6 +829,10 @@ deal_damage {
             }
 
             unset %current.accessory | unset %current.accessory.type
+
+            if ((%battle.type = torment) && ($readini($char($1), info, flag) = $null)) {
+              if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+            }
 
             set %life.target $readini($char($1), Battle, HP) | set %life.max $readini($char($1), Basestats, HP)
             inc %life.target %absorb.amount
@@ -2539,6 +2543,8 @@ trickster_dodge_check {
   }
 
   if ($readini($char($2), battle, spd) > $readini($char($1), battle, spd)) { inc %dodge.chance $rand(5,10) } 
+
+  if ((%battle.type = torment) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(10,15) }
 
   if (($readini($char($1), skills, thirdeye.on) = on) && ($3 = physical)) {
     var %thirdeye.turns $readini($char($1), status, thirdeye.turn)

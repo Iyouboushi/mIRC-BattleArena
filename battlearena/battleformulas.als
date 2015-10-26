@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 10/25/15
+;;;; Last updated: 10/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2252,7 +2252,9 @@ formula.meleedmg.monster {
     }
 
     if (%battle.type = torment) { 
-      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(2.5 * %torment.level))
+      var %percent.damage.amount 2.5
+      if ($return_playersinbattle > 1) { inc %percent.damage.amount 2 }
+      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(%percent.damage.amount * %torment.level))
 
       if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
 
@@ -2661,7 +2663,9 @@ formula.techdmg.monster {
 
 
     if (%battle.type = torment) { 
-      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(5 * %torment.level))
+      var %percent.damage.amount 5
+      if ($return_playersinbattle > 1) { inc %percent.damage.amount 2 }
+      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(%percent.damage.amount * %torment.level))
 
       if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
 
