@@ -43,7 +43,7 @@ DeathMessage=hops around and goes "woo! That was a close one" as he inspects his
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=JesterHat+1.HighKindredCrest
+Drops=JesterHat+1.HighKindredCrest.Death'sBreath.KindredCrest
 
 [Monster]
 Type=demon

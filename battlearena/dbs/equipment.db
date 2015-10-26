@@ -145,6 +145,7 @@ cost=50
 SellPrice=50
 
 [JesterHat+1]
+Name=Jester Hat+1
 hp=50
 tp=150
 Str=0
