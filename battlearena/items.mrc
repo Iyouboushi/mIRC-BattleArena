@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 10/24/15
+;;;; Last updated: 10/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -606,7 +606,8 @@ alias item.tormentreward {
   if (%random = $null) { var %random 1 }
   var %random.item.contents $read -l $+ %random $lstfile(%present.list)
   var %random.item.name %random.item.contents
-  var %random.item.amount $rand(1,10)
+  var %random.item.amount $readini($dbfile(items.db), $3, ItemsInside)
+  if (%random.item.amount = $null) { var %random.item.amount $rand(1,10) }
 
   var %current.reward.items $readini($char($1), item_amount, %random.item.name)
   if (%current.reward.items = $null) { set %current.reward.items 0 }

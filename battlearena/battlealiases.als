@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/26/15
+;;;; Last updated: 10/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4148,8 +4148,11 @@ add.monster.drop {
 ; Horadric Cache item
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 torment.reward {
-  var %torment.reward.amount %torment.level
-  var %torment.reward.item HoradricCache
+
+  if (%torment.level <= 10) { var %torment.reward.item HoradricCache | var %torment.reward.amount %torment.level }
+  else { var %torment.reward.item HoradricStash 
+    var %torment.reward.amount $calc(%torment.level - 10)
+  }
 
   unset %torment.drop.rewards
   set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 

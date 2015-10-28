@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/25/15
+;;;; Last updated: 10/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2723,7 +2723,7 @@ npc_list_add {
   set %name $remove(%file,.char)
   if ((%name = new_npc) || (%name = $null)) { return } 
   if (%battle.type = ai) { 
-    if ($readini($char(%name), info, ai_type) = healer) { return }
+    if ($readini($npc(%name), info, ai_type) = healer) { return }
   }
 
   ; Check the winning streak #..  some npcs won't show up until a certain streak or higher.
@@ -2743,7 +2743,6 @@ npc_list_add {
     if ((%biome != $null) && ($istok(%biome,%current.battlefield,46) = $false)) { return }
     if ((%monster.timeofday != $null) && ($istok(%monster.timeofday,%current.time.of.day,46) = $false)) { return }
   }
-
 
   write $txtfile(temporary_mlist.txt) %name 
 }

@@ -830,6 +830,16 @@ Desc=pulls out a small glowing box which opens and reveals %random.item.amount 
 Cost=0
 SellPrice=1
 Exclusive=yes
+ItemsInside=$rand(1,10)
+
+[HoradricStash]
+Type=TormentReward
+Desc=pulls out a small glowing box which opens and reveals %random.item.amount $iif(%random.item.amount > 1, %random.item.name $+ s, %random.item.name) inside!
+Cost=0
+SellPrice=1
+Exclusive=yes
+ItemsInside=$rand(150,250)
+
 
 =========================
 CONSUMABLE ITEMS (for skills)
@@ -3768,3 +3778,8 @@ Desc=An orb full of anguish and torment. Using this item outside of battle will 
 Type=Torment
 TormentLevel=10
 Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 10] [Minimum Level: 5000] 
+
+[TormentOrb11]
+Type=Torment
+TormentLevel=11
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful version of the monsters await. [Level: Torment 11] [Minimum Level: 5500] 
