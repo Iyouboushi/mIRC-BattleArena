@@ -1131,7 +1131,11 @@ weapons.get.list {
 
       if ((%weapon_level != $null) && (%weapon_level >= 1)) { 
         ; add the weapon level to the weapon list
-        var %weapon_to_add  $+ %weapon.name $+ $chr(040) $+ %weapon_level $+ $chr(041) $+ 
+        var %weapon.color 3
+        if (+1 isin %weapon.name) { var %weapon.color 12 }
+        if ($readini($dbfile(weapons.db), %weapon.name, Legendary) = true) { var %weapon.color 7 }
+
+        var %weapon_to_add  $+ %weapon.color $+ %weapon.name $+ 3 $+ $chr(040) $+ %weapon_level $+ $chr(041) $+ 
 
         inc %weaponlist.totalweapons.counter 1
 
@@ -1801,9 +1805,12 @@ items.list {
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
+    var %item.color 4
+    if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 7 }
+
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, 4 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %items.list2 = $addtok(%items.list2, 4 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, %item.color $+ %item.name $+ 4 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { %items.list2 = $addtok(%items.list2, %item.color $+ %item.name $+ 4 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
     }
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -1848,15 +1855,18 @@ items.list {
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
+    var %item.color 5
+    if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 7 }
+
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%misc.items.list,46) <= 15) { %misc.items.list = $addtok(%misc.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%misc.items.list,46) <= 15) { %misc.items.list = $addtok(%misc.items.list, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       else { 
-        if ($numtok(%misc.items.list2,46) <= 15) { %misc.items.list2 = $addtok(%misc.items.list2, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        if ($numtok(%misc.items.list2,46) <= 15) { %misc.items.list2 = $addtok(%misc.items.list2, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
         else { 
-          if ($numtok(%misc.items.list3,46) <= 15) { %misc.items.list3 = $addtok(%misc.items.list3, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+          if ($numtok(%misc.items.list3,46) <= 15) { %misc.items.list3 = $addtok(%misc.items.list3, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
           else { 
-            if ($numtok(%misc.items.list4,46) <= 15) { %misc.items.list4 = $addtok(%misc.items.list4, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-            else { %misc.items.list5 = $addtok(%misc.items.list5, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+            if ($numtok(%misc.items.list4,46) <= 15) { %misc.items.list4 = $addtok(%misc.items.list4, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+            else { %misc.items.list5 = $addtok(%misc.items.list5, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
           } 
         }
       }
@@ -2107,6 +2117,9 @@ armor.list {
 
         if (+1 isin %armor.name) { var %armor.name 2 $+ %armor.name $+ 3 }
         if (+2 isin %armor.name) { var %armor.name 12 $+ %armor.name $+ 3 }
+        if ($readini($dbfile(equipment.db), %armor.name, Legendary) = true) { var %armor.name 7 $+ %armor.name $+ 3 }
+
+
         if (%armor.level > $get.level($1)) { var %armor.name 4 $+ %current.ini.item $+ 3 }
 
         if (% [ $+ token.count. $+ [ %item.type ] ] <= 20) { 
@@ -2158,6 +2171,8 @@ accessories.list {
 
   while (%value <= %items.lines) {
     set %item.name $read -l $+ %value $lstfile(items_accessories.lst)
+    if (+1 isin %item.name) { var %item.name 12 $+ %item.name $+ 3 }
+
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount = 0) { remini $char($1) item_amount %item.name }
 
@@ -3404,6 +3419,8 @@ orb.adjust {
   if (%battle.type = dragonhunt) { inc %orb.tier 3 }
   if (%battle.type = torment) { inc %orb.tier 2 }
 
+  if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { inc %orb.tier 1 }
+
   if ($readini($char($1), status, SpiritOfHero) = true) { 
     remini $char($1) status SpiritOfHero
     var %orb.tier -2
@@ -3411,13 +3428,13 @@ orb.adjust {
 
   if ((%moon.phase = Blood Moon) && (%winning.streak > 50)) { inc %orb.tier 1 }
 
-  if (%orb.tier = -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .18)),0) }
-  if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .35)),0) }
-  if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .40)),0) }
+  if (%orb.tier = -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .20)),0) }
+  if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .45)),0) }
+  if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .50)),0) }
   if (%orb.tier = 1) { return }
-  if (%orb.tier = 2) { set %base.redorbs $round($calc(%base.redorbs * 1.55),0) }
-  if (%orb.tier = 3) { set %base.redorbs $round($calc(%base.redorbs * 1.655),0) }
-  if (%orb.tier = 4) { set %base.redorbs $round($calc(%base.redorbs * 1.792),0) }
+  if (%orb.tier = 2) { set %base.redorbs $round($calc(%base.redorbs * 1.65),0) }
+  if (%orb.tier = 3) { set %base.redorbs $round($calc(%base.redorbs * 1.755),0) }
+  if (%orb.tier = 4) { set %base.redorbs $round($calc(%base.redorbs * 1.812),0) }
   if (%orb.tier = 5) { set %base.redorbs $round($calc(%base.redorbs * 1.898),0) }
   if (%orb.tier = 6) { set %base.redorbs $round($calc(%base.redorbs * 2.390),0) }
   if (%orb.tier = 7) { set %base.redorbs $round($calc(%base.redorbs * 2.55),0) }
@@ -4223,4 +4240,38 @@ system.intromessage {
   $display.private.message(2You currently have: 3 $+ %player.loginpoints 2login points $+ $chr(44) 3 $+ %player.redorbs 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ %player.blackorbs 2Black Orbs $+ $chr(44) 3 $+ %player.alliednotes 2Allied Notes $+ $chr(44) 3 $+ %player.doubledollars 2double dollars $+ $chr(44) 3 $+ %player.enhancementpoints 2enhancement points  $iif($left($adate, 2) = 10, and7 %player.candycorn 2candycorn ) )
   if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
   return
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Select a bounty boss
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+bounty.select {
+  if ($readini(battlestats.dat, Bounty, BossName) = $null) { 
+
+    ; Determine # of bosses in the bot
+    var %bounty.numberofchoices $findfile($boss_path, *.char, 0, 0)
+
+    ; Select one at random
+    var %bounty.randomchoice $rand(1, %bounty.numberofchoices)
+    var %bounty.bossname $findfile($boss_path, *.char, %bounty.randomchoice)
+
+    var %bounty.bossname $nopath(%bounty.bossname) 
+    var %bounty.bossname $remove(%bounty.bossname,.char)
+
+    var %bounty.bossname $remove(%bounty.bossname, $boss_path)
+
+    ; Write it to the file
+    writeini battlestats.dat Bounty BossName %bounty.bossname
+
+    ; Display the message
+    $display.message($readini(translation.dat, system, BountyPlaced),global)
+  }
+}
+
+bounty.display {
+  if ($readini(battlestats.dat, Bounty, BossName) = $null) { $display.message(4There is no current bounty), private) | halt }
+  else {
+    var %bounty.name $readini($boss($readini(battlestats.dat, Bounty, BossName)), basestats, name)
+    $display.message($readini(translation.dat, system, CurrentBounty), private) 
+  } 
 }

@@ -894,6 +894,11 @@ deal_damage {
 
   if ($person_in_mech($2) = false) { 
     if ($readini($char($2), battle, HP) <= 0) { 
+      if ($readini(battlestats.dat, Bounty, BossName) = $2) {
+        writeini $txtfile(battle2.txt) battleinfo bountyclaimed true 
+        writeini $txtfile(battle2.txt) battleinfo bountyclaimedby $get_chr_name($1)
+      }
+
       writeini $char($2) battle status dead 
       writeini $char($2) battle hp 0
 
@@ -1231,6 +1236,9 @@ display_damage {
       ; increase the death tally of the target
       if ($readini($char(%target), battle, status) = dead) {  $increase.death.tally(%target)  }
     }
+
+    ; Check to see if a bounty was claimed
+    if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { $display.message($readini(translation.dat, system, BountyClaimed), battle) } 
 
     $spawn_after_death(%target)
     remini $char(%target) Renkei
@@ -4123,9 +4131,12 @@ add.monster.drop {
 
   var %drop.items $readini($dbfile(spoils.db), drops, $2)
 
+  if ((%battle.type = boss) && (%portal.bonus != true)) {
+    if (($return_winningstreak > 500) && ($rand(1,100) <= 10)) { var %drop.items $addtok(%drop.items, Death'sBreath, 46) } 
+  }
+
   if (%drop.items = $null) { return }
 
-  ; to do: add enhancing skill that increases this
   var %random.chance.reward 40
 
   if ($readini($char($1), skills, SpoilSeeker) != $null) {

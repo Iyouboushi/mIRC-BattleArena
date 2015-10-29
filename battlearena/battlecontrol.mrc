@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/25/15
+;;;; Last updated: 10/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -278,6 +278,9 @@ alias clear_battle {
   ; Clear battle variables
   $clear_variables
 
+  ; Check to see if the bounty was claimed
+  if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { remini battlestats.dat bounty }
+
   ; Remove the battle text files
   .remove $txtfile(battle.txt) | .remove $txtfile(battle2.txt) | .remove MonsterTable.file
   .remove $txtfile(1vs1bet.txt) | .remove $txtfile(1vs1gamblers.txt)
@@ -290,6 +293,9 @@ alias clear_battle {
 
   ; Check for shop NPCs
   $shopnpc.status.check
+
+  ; Check for bounty
+  $bounty.select 
 
   ; Check for auction stuff.
   $auctionhouse.check 
@@ -2441,6 +2447,9 @@ alias battle.reward.redorbs {
 
       ; To-do: Add in a resting bonus.
 
+      ; Write the current time for the current battle
+      writeini $char(%who.battle) Info LastBattleTime $ctime
+
       ; Add the orbs to the player
       var %current.orbs.onhand $readini($char(%who.battle), stuff, redorbs)
       inc %current.orbs.onhand %total.redorbs.reward
@@ -2449,7 +2458,6 @@ alias battle.reward.redorbs {
 
       ; Add the player and the orb amount to the list to be shown 
       %red.orb.winners = $addtok(%red.orb.winners, $+ %who.battle $+  $+ $chr(91) $+ $chr(43) $+ $bytes(%total.redorbs.reward,b) $+ $chr(93),46)
-
 
       if ((%portal.bonus = true) && ($1 = victory)) {
         var %total.portalbattles.won $readini($char(%who.battle), stuff, PortalBattlesWon) 

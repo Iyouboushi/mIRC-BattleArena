@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 10/20/15
+;;;; Last updated: 10/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1227,7 +1227,11 @@ on 50:TEXT:!take *:*:{
   }
 }
 
+; Check on the Dragonballs
 on 1:TEXT:!dragonballs*:*: { $db.display($nick) }
+
+; Check on the Bounty
+on 3:TEXT:!bounty*:*: { $bounty.display }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CUSTOM TITLE CMDS

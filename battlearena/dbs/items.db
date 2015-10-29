@@ -831,6 +831,7 @@ Cost=0
 SellPrice=1
 Exclusive=yes
 ItemsInside=$rand(1,10)
+TormentReward=true
 
 [HoradricStash]
 Type=TormentReward
@@ -839,7 +840,7 @@ Cost=0
 SellPrice=1
 Exclusive=yes
 ItemsInside=$rand(150,250)
-
+TormentReward=true
 
 =========================
 CONSUMABLE ITEMS (for skills)
@@ -1378,6 +1379,15 @@ Desc=The crazy stylish glasses of Kamesennin
 Stylish.Amount=2
 SellPrice=2000
 ShopNPC=TravelMerchant
+
+[Roshi's-Glasses+1]
+Type=accessory
+AccessoryType=Stylish
+Cost=0
+Desc=The crazy stylish glasses of Kamesennin, now even more stylish than before!
+; The amount on this type of accessory is a direct + amount to the style xp at the end of battle.
+Stylish.Amount=5
+SellPrice=5000
 
 [Wizard's-Amulet]
 Type=accessory
@@ -2149,6 +2159,7 @@ cost=0
 SellPrice=1
 Desc=a pulsing white shard from the Mother Crystal.
 Exclusive=yes
+TormentReward=true
 
 [ArcaneDust]
 Type=misc
@@ -2156,6 +2167,7 @@ cost=0
 SellPrice=1
 Desc=a bottle full of arcane dust. This is a powerful crafting ingredient 
 Exclusive=yes
+TormentReward=true
 
 [ForgottenSoul]
 Type=misc
@@ -2163,6 +2175,7 @@ cost=0
 SellPrice=1
 Desc=a small chunk of glowing black and orange ore that can be used to craft legendary equipment
 Exclusive=yes
+TormentReward=true
 
 [ReusablePart]
 Type=misc
@@ -2170,7 +2183,7 @@ cost=0
 SellPrice=1
 Desc=a part of a salvaged piece of equipment
 Exclusive=yes
-
+TormentReward=true
 
 
 [TitaniteShard]

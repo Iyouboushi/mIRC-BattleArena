@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 10/07/15
+;;;; Last updated: 10/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -123,7 +123,7 @@ alias auctionhouse.check {
   ; Checks to see if an auction is in progress and if it needs to wrap up.  
   ; If no auction is currently happening, it will start one.
 
-  if ($readini(system.dat, system, enableauctionhouse) = false) { halt }
+  if ($readini(system.dat, system, enableauctionhouse) = false) { return }
 
   var %auction.time $readini(system.dat, auctionInfo, startingTime)
   var %current.time $ctime 

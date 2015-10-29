@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/28/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -632,6 +632,8 @@ on 2:Chat:!dragonballs*: { $db.display($nick) }
 
 on 2:Chat:!dragon hunt*: { $character.dragonhunt($nick) } 
 on 2:Chat:!dragon list*: {  $dragonhunt.listdragons } 
+
+on 2:Chat:!bounty*: { $bounty.display }
 
 on 2:Chat:ACTION gives *: {
   if ($3 !isnum) {  $gives.command($nick, $5, 1, $3)  }

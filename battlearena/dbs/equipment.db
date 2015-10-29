@@ -1252,7 +1252,7 @@ EquipLocation=Body
 cost=50
 SellPrice=500000
 Exclusive=yes
-
+Legendary=true
 
 [VashTheStampede'sJacket]
 Name=Vash the Stampede's Jacket

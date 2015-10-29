@@ -976,6 +976,7 @@ Element=none
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 
+
 [Ichimonji-Yofusa]
 Cost=0
 SpecialWeapon=true
