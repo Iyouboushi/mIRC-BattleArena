@@ -416,6 +416,7 @@ UchihaPower=Katon:HousenkaNoJutsu.Katon:BakufuuRanbu.Katon:GoukakyuuNoJutsu
 MadaraGunbai&Kama=Katon:GoukakyuuNoJutsu.Katon:GoukaMekkyaku.Katon:GoukaMesshitsu.Katon:RyuuenHoukaNoJutsu.Mokuton:MokuryuuNoJutsu.Senpou:RantonKouga.Senpou:IntonRaiha.Truth-SeekingBall
 SusanooKatanas=YonNoTachi:Kagerou.ShichiNoTachi:Yukikaze.HachiNoTachi:Gekkou.KyuuNoTachi:Kassha
 PredatorSuit=PredatorLaser.PredatorSelfDestruct.PredatorBomb.PredatorClaw
+SnakeFangs=SnakeBite
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -7215,6 +7216,17 @@ Element=None
 Cost=0
 Magic=No
 stat=str
+
+[SnakeBite]
+Type=Single
+StatusType=Poison
+TP=10
+Desc=coils up before leaping out and biting %enemy $+ !
+BasePower=25
+Cost=0
+Magic=no
+Stat=str
+Element=none
 
 [PoisonVomit]
 Type=AOE
