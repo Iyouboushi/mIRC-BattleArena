@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/24/15
+;;;; Last updated: 10/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2137,6 +2137,7 @@ alias shop.potioneffects {
     $display.private.message(12BonusSpoils 2potion effect: $+ $iif($item.amount($1, BlueKinstone) >= 2, 3, 4) 2 Blue Kinstones2 + $+ $iif($item.amount($1, GreenKinstone) >= 2, 3, 4) 2 Green Kinstones2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
     $display.private.message(12AugmentBonus 2potion effect: $+ $iif($item.amount($1, RedeadAsh) >= 2, 3, 4) 2 Redead Ashes2 + $+ $iif($item.amount($1, GibdoBandage) >= 2, 3, 4) 2 Gibdo Bandages2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
     $display.private.message(12UtsusemiBonus 2potion effect: $+ $iif($item.amount($1, GremlinSkin) >= 2, 3, 4) 2 Gremlin Skins2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
+    $display.private.message(12Dragonskin 2potion effect: $+ $iif($item.amount($1, DragonFang) >= 1, 3, 4) 1 Dragon Fang2 + $+ $iif($item.amount($1, DragonEgg) >= 1, 3, 4) 1 Dragon Egg2 + $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
 
     $display.private.message(2To purchase use !shop buy potioneffect [potion effect name]  such as !shop buy potioneffect OrbBonus)
   }
@@ -2285,6 +2286,35 @@ alias shop.potioneffects {
 
       writeini $char($1) status PotionEffect Utsusemi Bonus
       $display.private.message(12 $+ %shopnpc.name takes the gremlin skins and milk and gives a loud chuckle as she drops them into the couldron. After a quick stir she hands you a very nasty looking green potion. Upon drinking it, you feel as though your utsusemi shadows will be enhanced) 
+
+      halt
+    }
+
+    if ($3 = Dragonskin) { 
+
+      var %dragonegg.needed 1
+      var %dragonfang.needed 1
+      var %milk.needed 1
+
+      dec %dragonegg.needed $item.amount($1, DragonEgg))
+      dec %dragonfang.needed $item.amount($1, Dragonfang)
+      dec %milk.needed $item.amount($1, Milk)  
+
+      if (((%dragonegg.needed > 0) || (%dragonfang.needed > 0) || (%milk.needed > 0))) { 
+        $display.private.message(4You do not have enough of the required materials for this potion effect.) 
+        if (%dragonegg.needed < 0) { var %dragonegg.needed 0 }
+        if (%dragonfang.needed < 0) { var %dragonfang.needed 0 }
+        if (%milk.needed < 0) { var %milk.needed 0 }
+        $display.private.message(4You still need the following:12 %dragonegg.needed $+ 4x dragon egg $+ $iif(%dragonegg.needed > 1 || %dragonegg.needed = 0, es) -12 %dragonfang.needed $+ 4x dragon fang $+ $iif(%dragonfang.needed > 1 || %dragonfang.needed = 0, s) -12 %milk.needed $+ 4x Milk)
+        halt
+      }
+
+      writeini $char($1) item_amount dragonfang $calc($item.amount($1, DragonFang) - 1)
+      writeini $char($1) item_amount dragonegg $calc($item.amount($1, DragonEgg) - 1)
+      writeini $char($1) item_amount Milk $calc($item.amount($1, Milk) - 1)
+
+      writeini $char($1) status PotionEffect DragonSkin
+      $display.private.message(12 $+ %shopnpc.name takes the dragon parts and milk and gives a loud chuckle as she drops them into the couldron. After a moment she pours the milk in and creates a bubbling green potion. Upon drinking it, you feel as though your skin has become hard as scales) 
 
       halt
     }

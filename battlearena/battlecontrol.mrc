@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/29/15
+;;;; Last updated: 10/30/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -606,6 +606,14 @@ alias enter {
   ; Full the person entering the battle.
   if (($readini($char($1), info, levelsync) = $null) && ($readini($char($1), status, SpiritOfHero) != true)) { 
     $fulls($1, yes)
+  }
+
+  if ($return.potioneffect($1) = DragonSkin)  { 
+    if ($readini($char($1), NaturalArmor, Name) = $null) {
+      writeini $char($1) NaturalArmor Max 500
+      writeini $char($1) NaturalArmor Current 500
+      writeini $char($1) NaturalArmor Name Dragonskin
+    }
   }
 
   remini $char($1) info levelsync 
@@ -2510,11 +2518,10 @@ alias battle.reward.redorbs {
         if (($1 = victory) && ($readini($char(%who.battle), battle, status) = alive)) { $achievement_check(%who.battle, JustGettingStarted) }
       }
 
-      ; Clear the Augment Bonus and Utsusemi Bonus potion effect
-      if (($return.potioneffect(%who.battle) = Augment Bonus) || ($return.potioneffect(%who.battle) = Utsusemi Bonus)) { 
+      ; Clear certain potion effects
+      if ((($return.potioneffect(%who.battle) = Augment Bonus) || ($return.potioneffect(%who.battle) = Dragonskin) || ($return.potioneffect(%who.battle) = Utsusemi Bonus))) { 
         writeini $char(%who.battle) status PotionEffect none 
       }
-
 
       inc %battletxt.current.line 1 
     }
