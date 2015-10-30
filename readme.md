@@ -23,9 +23,9 @@ Getting it set up is easy assuming you unpack the zip in a good location on your
  5. (as with all mIRC programs) change the nickname and add a server
  6. Connect.
  7. Using another IRC connection as the bot owner's nick, use !new char (nick) without the () to get the character creation process started.
- 8. Follow what the bot tells you to do.  Be sure to check out player_guide.txt as well.
+ 8. Follow what the bot tells you to do.  Be sure to check out guide - player's guide.txt or the game's Wiki (http://battlearena.heliohost.org/doku.php?id=start) as well.
 
-Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended.
+Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended to make life simple.
 
    
 ## WHAT'S NEW?
@@ -35,6 +35,7 @@ If you have used this bot before and are updating you may be wondering what all 
 ADDITIONS:
 * Added Dungeons! Players can obtain keys and start special dungeon battles that take them through a zone full of monsters and bosses.
 * Added Dragon Hunting.  Dragons can spawn and create lairs around the land and players need to hunt them down.
+* Added Torment Battles, which is basically the endgame of the bot.
 * Re-Added nearly every battle formula the bot has had since its inception. This can be toggled by bot owners to pick the one they like the most.
 * Added more armor, items and new portal battles for everyone to enjoy
 * Added new system.dat flags
@@ -47,6 +48,7 @@ CHANGES:
 * Changed the way HP healing items work so that it's a percent of a target's max HP
 * Changed summons and clones so that outside of portal battles they are skipped on the first turn they're used
 * Changed the armor equip command so that players do not need to !unequip armor before !equip armor
+* Changed the way the bot displays certain things
 
 FIXES:
 * Fixed errors with !misc info and !view-info
@@ -67,6 +69,7 @@ FIXES:
 REMOVALS:
 * Removed the elements from NPC weapons
 * Removed attack_Aettir.txt, and attack_ChatoyantStaff.txt as they are no longer needed
+* Removed Elder Dragons (replaced by the Dragon Hunt system)
 
 Again, this IS NOT everything. Be sure to read the versions.txt in the documentation folder for a full list of everything as the list is quite extensive.
 
