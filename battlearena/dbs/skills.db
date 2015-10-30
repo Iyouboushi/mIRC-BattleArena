@@ -64,10 +64,10 @@ Info=This skill increases damage done with a whip.  Increased levels increases t
 
 
 [OrbHunter]
-Cost=250
+Cost=$iif($readini($char($1), skills, OrbHunter <= 19), 250, 2500)
 Type=Passive
-Info=This skill will increase the amount of red orbs you find at the end of battle.
-Max=20
+Info=This skill will increase the amount of red orbs you find at the end of battle.  Note that the base cost of this skill increases to 2500 per level after level 20.
+Max=30
 Amount=15
 
 [ClearMind]

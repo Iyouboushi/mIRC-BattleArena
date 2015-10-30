@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/28/15
+;;;; Last updated: 10/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2445,7 +2445,23 @@ alias battle.reward.redorbs {
 
       if (%total.redorbs.reward <= 5) { %total.redorbs.reward = 5 }
 
-      ; To-do: Add in a resting bonus.
+      ; Calculate a "resting" bonus.  This is a bonus to orbs for people who have been out of battle for a while.
+      var %last.battle $readini($char(%who.battle), Info, LastBattleTime)
+      if (%last.battle = $null) { 
+
+        ; Try to calculate the time it's been since they last logged in
+        var %last.battle $ctime($readini($char(%who.battle), info, LastSeen))
+
+        ; Check again, as a last ditch effort
+        if (%last.battle = $null) { var %last.battle $ctime }
+      }
+      var %rest.time.difference $calc($ctime - %last.battle)
+      var %rest.time $calc(%rest.time.difference /60/60)
+      var %resting.bonus $round($calc(%rest.time * 150),0)
+
+      if (%resting.bonus < 1) { var %resting.bonus 0 }
+
+      inc %total.redorbs.reward %resting.bonus
 
       ; Write the current time for the current battle
       writeini $char(%who.battle) Info LastBattleTime $ctime

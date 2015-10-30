@@ -1303,6 +1303,8 @@ Battle Arena Bot VERSIONS
 - Added the various damage formulas that have been used throughout the bot's history: 1.0, 2.0, 2.5 and 3.0.
 - Added the Dungeon system. 
 - Added the Dragon Hunt system.
+- Added the Bounty system. The game will pick a random boss and if that boss is killed an orb bonus will be applied to
+  the battle.  It will pick a new bounty immediately after the old one has been claimed.
 - Added the Dinosaur special boss battle type
 - Added the Predator special boss battle type
 - Added the Torment battle type. Using Torment Orbs players can enter a 3-wave battle against any enemy in the game.
@@ -1321,6 +1323,7 @@ Battle Arena Bot VERSIONS
 - Added the !dragon list command. Using this will display which dragons have made lairs in the land.
 - Added the !dragon hunt command. Once an hour players can use this command to hunt for a dragon's lair and start a battle
   if it's been found. This command can only be done outside of battle.
+- Added the !bounty command. It will show the current bounty
 - Added the ability for the bot to track average melee and tech damage done in battles
 - Added the !damageboard <melee/tech> command. Use it to see a ranking of who's doing the most average damage
 - Added the average melee/tech damage to !misc info
@@ -1337,6 +1340,8 @@ Battle Arena Bot VERSIONS
 - Added the ability for the bot to have dynamic names for certain monster types
 - Added breakable objects to battlefields. There's a 25% chance that one will spawn on certain battlefields. Although they are
   technically monsters, they don't get turns and only have 1 HP. Just break them to help boost your style.
+- Added a Resting Orb Bonus. For every 1 hour that a player isn't in battle the player will receive +150 orbs to their next
+  battle.
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.
@@ -1374,6 +1379,10 @@ Battle Arena Bot VERSIONS
 - Changed the code for how the bot generates the deathboards. It should be able to find the bot-generated monsters now
 - Changed the bot so that if the streak is automatically reset to 0 the next battle will be an AI vs AI battle
 - Changed the max amount of enhancement points for HP
+- Changed !npc status to be color-coded. Red means kidnapped, maroon means not found yet and green means at the HQ
+- Changed code so that +1 accessories, weapons and armor all show up in blue. Legendary weapons and armor will show up in orange.
+- Changed code so that Torment reward items (Horadric and crafting) show up in orange in the items list
+- Changed the max level of the skill OrbHunter to 30. However, the base cost from 21+ is 2500 per level instead of 250.
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
