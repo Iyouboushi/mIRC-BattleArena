@@ -138,3 +138,6 @@ This will reset the player's password and send the player what the new password 
 
 !force system default check
 This command will force the bot to do a system.dat defaults check. The bot normally does this check when mIRC is loaded if the version information has changed in version.ver vs what is stored in system.dat. However, there may be certain times when you would want to force the bot to do this check. 
+
+!motd add/remove message here for add
+This command will allow a “message of the day” to be shown when players log into their characters. Only one message can be set but it can be changed at any time. 

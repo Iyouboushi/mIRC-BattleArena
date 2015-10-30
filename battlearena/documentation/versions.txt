@@ -1342,6 +1342,7 @@ Battle Arena Bot VERSIONS
   technically monsters, they don't get turns and only have 1 HP. Just break them to help boost your style.
 - Added a Resting Orb Bonus. For every 1 hour that a player isn't in battle the player will receive +150 orbs to their next
   battle.
+- Added a new potion effect: Dragonskin
 - Changed the code for techs and items so that you can use ME as a valid target name to target yourself
 - Changed the warmachine boss battle type to no longer spawn additional monsters alongside it
 - Changed the boss "Magus" to "Maou_Magus" to stop an exploit with the trust NPC Magus.

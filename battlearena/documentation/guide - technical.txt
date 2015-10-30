@@ -15,11 +15,11 @@ Note, you can have multiple bot owners in version 1.2 and beyond. To do so add t
 bot.owner=name.name.name.name
 
 In other words, a name followed by a period, another name. Don't add a period to the end of the last name.
-[system]
 
+[system]
 This section controls a lot of the in-game functions and limits such as, but not limited to, base # of orbs for normal monsters and bosses, how many orbs players start with, the name of the currency and the time between battles in minutes.
 
- botType=
+botType=
 IRC, DCCchat or TWITCH. This tells the bot where to display messages and accept commands. If you have a lot of players and don't want limits on the # of monsters that can appear in battles, use DCCchat mode* (your players will need a client that can do DCC Chat connections). If you are trying to run the bot on Twitch (which is not recommended) set this to TWITCH mode which slows the speed of output down and makes everything output to the channel (no private messages). IRC mode is default and is the most recommended mode for most people/bot owners.
 
 AllowColors=
@@ -102,6 +102,9 @@ true or false, true by default. This toggles the crystal shadow warrior boss typ
 
 EnableGremlins=
 true or false, true by default. This toggles the Gremlin special boss type on and off.
+
+EnablePredator=
+true or false, true by default. This toggles the Predator special boss type on and off.
 
 AllowDemonwall=
 yes/no If you want the demon wall boss battles to exist at ranges 300-600, put this as yes. It's set to yes by default.
@@ -197,7 +200,11 @@ EnableFoodOnOthers=
 If set to true this setting will block people from being able to use +stat (food) items on anyone other than themselves. This is set to false by default.
 
 AllowPersonalDifficulty=
-If set to false this setting will stop players from using the !save difficulty command which increases the difficulty of battles and rewards. Set to true by default.  
+If set to false this setting will stop players from using the !save difficulty command which increases the difficulty of battles and rewards. Set to true by default.
+
+AllowAuctionHouseTopicChange=
+If set to true, the bot will attempt to change the channel's topic with the current Auction House item.
+  
 
 
 [PlayerLevelCaps]
@@ -216,6 +223,7 @@ DemonWall=75
 WallOfFlesh=200
 DefendOutpost=105
 Assault=105
+Predator=200
 
 
 [MonsterLevelCaps]
@@ -233,6 +241,7 @@ FrostLegion=15
 ElderDragon=195
 DemonWall=75
 WallOfFlesh=200
+Predator=200
 
 
 [statprices]
