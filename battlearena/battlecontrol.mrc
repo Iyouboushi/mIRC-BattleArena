@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/30/15
+;;;; Last updated: 10/31/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -998,18 +998,20 @@ alias generate_monster {
 
         if (%battle.type != dungeon) {
           ; Check to see if the monster type has a dynamic name
-          var %monster.type $readini($mon(%monster.name), monster, type)
-          if (($lines($lstfile(names_ $+ %monster.type $+ .lst)) > 0) && ($return_winningstreak >= 25)) {
-            var %dynamic.name.chance $rand(1,100)
+          if ($readini($char(%monster.name), info, streak) >= 1) {
+            var %monster.type $readini($mon(%monster.name), monster, type)
+            if (($lines($lstfile(names_ $+ %monster.type $+ .lst)) > 0) && ($return_winningstreak >= 25)) {
+              var %dynamic.name.chance $rand(1,100)
 
-            if (%dynamic.name.chance <= 30) {
-              var %replacement.line $read($lstfile(names_ $+ %monster.type $+ .lst), $rand(1, $lines($lstfile(names_ $+ %monster.type $+ .lst))))
-              var %replacement.filename $gettok(%replacement.line, 1, 46)
-              var %replacement.realname $gettok(%replacement.line, 2, 46)
-              .rename $char(%monster.name) $char(%replacement.filename)
-              writeini $char(%replacement.filename) basestats name %replacement.realname
+              if (%dynamic.name.chance <= 30) {
+                var %replacement.line $read($lstfile(names_ $+ %monster.type $+ .lst), $rand(1, $lines($lstfile(names_ $+ %monster.type $+ .lst))))
+                var %replacement.filename $gettok(%replacement.line, 1, 46)
+                var %replacement.realname $gettok(%replacement.line, 2, 46)
+                .rename $char(%monster.name) $char(%replacement.filename)
+                writeini $char(%replacement.filename) basestats name %replacement.realname
 
-              set %monster.name %replacement.filename
+                set %monster.name %replacement.filename
+              }
             }
           }
         }
