@@ -1,0 +1,4 @@
+swings at %enemy with the hammer before stepping backwards in a defensive stance
+tries to bash %enemy several times before rolling to the side before %enemy can react
+leaps into the air and brings the hammer down upon %enemy
+strikes at %enemy with $gender(%attacker) hammer

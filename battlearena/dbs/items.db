@@ -3421,6 +3421,15 @@ Weapon=Valmanway+1
 Desc=pulls out a set of blueprints for an upgraded Valmanway, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the valmanway+1 which glows with power.
 Exclusive=yes
 
+[Hero'sWorth]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Mjolnir
+Desc=has proven to be worthy of the power of Thor and can now wield Mjolnir! 
+Exclusive=yes
+
 [Blueprints:X-Buster]
 Type=special
 Cost=0

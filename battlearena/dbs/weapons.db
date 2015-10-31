@@ -21,6 +21,7 @@ GreatSwords=Great Swords
 Axes=Axes
 GreatAxes=Great Axes
 Daggers=Daggers
+Hammers=Hammers
 
 
 ; Below are the weapon lists
@@ -44,6 +45,7 @@ GreatSwords=Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
 Axes=Farsha.Guttler.Kerehcatl
 GreatAxes=Ukonvasara.Bravura.Lightreaver
 Daggers=MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra
+Hammers=Mjolnir
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
 Defunct=
@@ -686,6 +688,24 @@ Hits=1
 BasePower=75
 Upgrade=0
 IgnoreDefense=5
+
+=============================================
+HAMMERS
+=============================================
+
+[Mjolnir]
+Cost=0
+SpecialWeapon=true
+Type=Hammer
+Info=A one-handed hammer with a grey head and brown wrap over the handle. Outside of torment this weapon has a power of 800 with 20% ignore defense but inside torment the power is 1600 with 40% ignore defense. 
+Abilities=Thor'sRage.Thor'sGodforce
+Element=Lightning
+Hits=$rand(1,2)
+BasePower=$iif(%battle.type = torment, 1600, 800)
+Upgrade=3000
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
+SpecialWeapon=true
+legendary=true
 
 =============================================
 DAGGERS

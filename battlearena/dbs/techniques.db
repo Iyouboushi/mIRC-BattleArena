@@ -119,6 +119,9 @@ Mandau=MercyStroke.AeolianEdge.Evisceration
 Vanir_Knife=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vajra) = true, .Evisceration)
 Vajra=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vanir_Knife) = true, .Evisceration)
 
+; Hammers
+Mjolnir=Thor'sRage.Thor'sGodforce
+
 ; Mech Weapons
 BasicMechGun=DoubleShot.GunBlaze
 ImprovedMechGun=DoubleShotII.GunBlazeII
@@ -2682,6 +2685,30 @@ Cost=3000
 magic=yes
 stat=int
 
+===================
+HAMMER TECHS
+===================
+[Thor'sRage]
+Type=AOE
+TP=50
+Desc=spins Mjolnir around as lightning gathers around the hammer. Finally, %user slams the hammer into the ground sending a massive shockwave across the battlefield.
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Element=Lightning
+Cost=50000
+Magic=yes
+stat=str
+DestroyShadows=2
+
+[Thor'sGodforce]
+Type=single
+TP=50
+Desc=holds Mjolnir straight up into the sky. The sky darkens and lightning begins to strike the hammer, charging it up.  After a moment %user aims it at %enemy which sends a gigantic bolt of lightning into $gender2($2) 
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Element=Lightning
+Cost=50000
+Magic=yes
+stat=str
+DestroyShadows=3
 
 ===================
 BUFFS
