@@ -105,11 +105,12 @@ Egyptian_Rod=$calc(1 + $current.battlestreak)
 [Skills]
 Resist-Charm=100
 Resist-Zombie=100
-Resist-Stun=10
+Resist-Stun=30
 Resist-Curse=100
 Resist-Paralysis=100
 RoyalGuard=1
 ManaWall=1
+Resist-Petrify=60
 
 
 [Techniques]

@@ -106,6 +106,8 @@ Resist-Intimidate=100
 Resist-Slow=100
 Resist-Stop=100
 Resist-Weaponlock=100
+Resist-Petrify=60
+
 
 [Techniques]
 Earthquake_Axe=250

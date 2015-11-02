@@ -94,6 +94,8 @@ JumboCactuarNeedles=20
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Intimidate=100
+Resist-Petrify=60
+Resist-Stun=30
 MartialArts=30
 Zen=5
 

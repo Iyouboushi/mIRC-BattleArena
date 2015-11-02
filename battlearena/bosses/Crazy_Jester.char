@@ -125,6 +125,7 @@ Bloodpact=15
 Summon=Jester's_Ball
 Royalguard.on=on
 Manawall.on=on
+Resist-Petrify=60
 
 
 [Techniques]

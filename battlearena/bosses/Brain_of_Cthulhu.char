@@ -187,6 +187,7 @@ MonsterSummon=1
 MonsterSummon.Monster=Cthulhu_Creeper
 MonsterSummon.Chance=100
 monstersummon.numberspawn=2
+Resist-Petrify=60
 
 [Techniques]
 BrainCharge=$current.battlestreak

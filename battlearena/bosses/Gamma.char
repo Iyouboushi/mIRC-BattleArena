@@ -199,6 +199,8 @@ Resist-Weaponlock=100
 Resist-Drunk=100
 Resist-Sleep=100
 Resist-Disarm=100
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 GammaEnergyBullet=$current.battlestreak

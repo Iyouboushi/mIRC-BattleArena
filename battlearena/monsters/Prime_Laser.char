@@ -175,10 +175,11 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Resist-Curse=100
-Resist-stun=100
+Resist-stun=50
 Resist-Drunk=100
 Resist-Weaponlock=100
 Resist-Disarm=100
+Resist-Petrify=50
 
 
 [Techniques]

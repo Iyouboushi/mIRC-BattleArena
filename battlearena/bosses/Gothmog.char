@@ -100,6 +100,7 @@ ManaWall=1
 RoyalGuard=1
 Zen=5
 MightyStrike=1
+Resist-Petrify=60
 
 [Techniques]
 WhipLash=25

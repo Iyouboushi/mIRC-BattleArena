@@ -102,6 +102,7 @@ Death's_Scythe=10
 resist-stun=50
 resist-blind=30
 resist-charm=100
+Resist-Petrify=60
 
 [Techniques]
 GrimReaper=10

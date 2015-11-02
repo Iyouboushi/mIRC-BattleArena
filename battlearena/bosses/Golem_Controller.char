@@ -186,6 +186,7 @@ Resist-Curse=100
 Resist-stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
+Resist-Petrify=60
 
 [Techniques]
 GolemEyeLaser=$current.battlestreak

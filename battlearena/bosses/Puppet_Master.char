@@ -101,6 +101,7 @@ Resist-Zombie=100
 Resist-Stun=50
 Resist-Curse=100
 Resist-Paralysis=100
+Resist-Petrify=60
 DesperateBlows=1
 
 [Techniques]

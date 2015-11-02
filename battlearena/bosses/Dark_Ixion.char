@@ -96,10 +96,11 @@ Zen=5
 ClearMind=3
 Wizardry=100
 MartialArts=100
-Resist-Stun=100
+Resist-Stun=60
 Resist-Poison=100
 Impetus=20
 Resist-Paralysis=100
+Resist-Petrify=60
 
 [Techniques]
 UnicornKick=100

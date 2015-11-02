@@ -106,6 +106,7 @@ Resist-Stun=100
 Resist-Intimidate=100
 Resist-Paralysis=100
 Resist-Drunk=100
+Resist-Petrify=100
 MartialArts=200
 MightyStrike=1
 Bloodboost=20

@@ -112,9 +112,10 @@ Resist-Blind=100
 Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
+Resist-Petrify=60
+Resist-Stun=30
 BloodBoost=10
 MagicMirror=1
-
 
 
 [Techniques]

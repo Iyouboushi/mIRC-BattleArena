@@ -106,6 +106,7 @@ resist-charm=100
 ManaWall=1
 RoyalGuard=1
 Sugitekai=1
+Resist-Petrify=60
 
 [Techniques]
 Dark_Inferno=20

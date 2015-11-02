@@ -197,6 +197,8 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 Resist-Sleep=100
+Resist-Petrify=60
+
 
 [Techniques]
 DoublePunch=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)

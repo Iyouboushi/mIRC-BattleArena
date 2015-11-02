@@ -108,6 +108,8 @@ resist-curse=100
 resist-paralysis=100
 resist-charm=100
 resist-confuse=100
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

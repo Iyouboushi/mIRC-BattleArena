@@ -110,6 +110,8 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 BloodBoost=20
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 Charon=85

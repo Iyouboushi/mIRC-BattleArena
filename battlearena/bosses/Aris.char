@@ -103,6 +103,7 @@ resist-blind=30
 resist-amnesia=100
 resist-silence=100
 resist-curse=60
+Resist-Petrify=60
 
 
 [Techniques]

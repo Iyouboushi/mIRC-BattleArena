@@ -99,6 +99,8 @@ DragonFangs=15
 
 
 [Skills]
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

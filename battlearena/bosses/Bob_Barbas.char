@@ -126,6 +126,8 @@ monstersummon.numberspawn=$iif($return_playersinbattle > 1, 2, 1)
 ChangeBattlefield=1
 ChangeBattlefield.battlefields=Raptor News Network Studio.Raptor News Network Breaking News Broadcast
 ChangeBattlefield.chance=60
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

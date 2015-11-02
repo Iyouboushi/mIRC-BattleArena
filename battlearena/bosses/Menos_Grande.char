@@ -96,6 +96,8 @@ MenosPower=20
 [Skills]
 desperateblows=1
 weaponbash=2
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

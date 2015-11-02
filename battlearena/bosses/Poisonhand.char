@@ -98,6 +98,8 @@ orc_fists=15
 
 [Skills]
 WeaponBash=3
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

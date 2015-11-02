@@ -98,6 +98,8 @@ BedrockBite=55
 
 [Skills]
 desperateblows=1
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

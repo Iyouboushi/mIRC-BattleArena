@@ -111,7 +111,8 @@ Swordmaster=100
 Sugitekai=1
 RoyalGuard=1
 ManaWall=1
-
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 BloodSaber=500

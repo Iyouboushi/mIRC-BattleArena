@@ -101,6 +101,7 @@ Shadow_Blade=10
 [Skills]
 resist-stun=50
 resist-blind=10
+Resist-Petrify=60
 
 
 [Techniques]

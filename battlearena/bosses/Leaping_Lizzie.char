@@ -93,8 +93,9 @@ LizardPower=100
 [Skills]
 Zen=5
 MartialArts=100
-Resist-Stun=25
 Resist-Poison=100
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 BlockHead=55

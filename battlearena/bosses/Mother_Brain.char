@@ -105,6 +105,7 @@ Resist-Curse=100
 Resist-Stop=100
 Resist-Slow=100
 Resist-Stun=100
+Resist-Petrify=60
 
 [Techniques]
 HyperBeam=100

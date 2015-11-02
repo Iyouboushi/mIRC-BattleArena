@@ -107,6 +107,8 @@ Resist-Paralysis=100
 Resist-confuse=100
 Resist-Curse=100
 Resist-stun=100
+Resist-Petrify=60
+
 
 [Techniques]
 

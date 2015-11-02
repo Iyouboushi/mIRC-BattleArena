@@ -112,6 +112,7 @@ Resist-Intimidate=100
 Resist-Stop=20
 Resist=Slow=25
 Resist-Poison=50
+Resist-Petrify=60
 MightyStrike=1
 WeaponBash=1
 CocoonEvolve=1

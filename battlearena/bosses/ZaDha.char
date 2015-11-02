@@ -109,7 +109,8 @@ Resist-Intimidate=100
 Resist-Charm=100
 Resist-Poison=20
 Resist-Paralysis=20
-Resist-Stun=20
+Resist-Stun=30
+Resist-Petrify=60
 MagicMirror=1
 
 [Techniques]

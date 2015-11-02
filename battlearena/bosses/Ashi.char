@@ -97,13 +97,14 @@ AtlantisPower=80
 [Skills]
 Resist-Charm=100
 Resist-Zombie=100
-Resist-Stun=10
+Resist-Stun=30
 Resist-Intimidate=100
 Resist-Paralysis=10
 MartialArts=50
 MightyStrike=1
 Bloodboost=10
 MagicMirror=1
+Resist-Petrify=60
 
 
 [Techniques]

@@ -97,8 +97,9 @@ Zen=5
 ClearMind=3
 MartialArts=100
 Impetus=20
-Resist-Stun=25
+Resist-Stun=30
 Resist-Paralysis=25
+Resist-Petrify=60
 
 [Techniques]
 FeveredPitch=22

@@ -99,10 +99,11 @@ Equipped=Shadow_Blade
 Shadow_Blade=350
 
 [Skills]
-resist-stun=150
-resist-blind=110
+resist-stun=100
+resist-blind=100
 ManaWall=1
 RoyalGuard=1
+Resist-Petrify=60
 
 
 

@@ -101,7 +101,7 @@ Resist-Paralysis=100
 Wizardry=20
 ClearMind=3
 ElementalSeal=3
-
+Resist-Petrify=60
 
 [Techniques]
 FirajaII=20

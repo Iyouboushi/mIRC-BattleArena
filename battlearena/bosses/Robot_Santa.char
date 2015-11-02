@@ -99,7 +99,8 @@ Resist-Stun=50
 Resist-Zombie=100
 Resist-Charm=100
 Resist-Intimidate=100
-Resist-Paralysis=10
+Resist-Paralysis=20
+Resist-Petrify=60
 
 [Techniques]
 LaserStorm=10

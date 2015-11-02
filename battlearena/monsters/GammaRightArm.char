@@ -188,6 +188,8 @@ Resist-Weaponlock=100
 Resist-Drunk=100
 Resist-Sleep=100
 Resist-Disarm=100
+Resist-Petrify=50
+Resist-Stun=50
 
 [Techniques]
 GammaGrab=$current.battlestreak

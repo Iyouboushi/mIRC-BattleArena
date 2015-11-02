@@ -109,13 +109,14 @@ Resist-Paralysis=100
 Resist-Amnesia=10
 Resist-Zombie=100
 Resist-Charm=100
-Resist-Stun=75
 Resist-Blind=100
 Resist-Weaponlock=100
 Resist-Intimidate=100
 Resist-Disarm=100
 Resist-Drunk=100
 Resist-Sleep=100
+Resist-Petrify=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Stun=$iif($current.battlestreak <= 200, 30, 100)
 
 [Techniques]
 Twin_Slice=$calc(1 + $current.battlestreak)

@@ -190,6 +190,7 @@ Resist-confuse=100
 Resist-stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
+Resist-Petrify=60
 
 [Techniques]
 DetonatingBubble=$current.battlestreak

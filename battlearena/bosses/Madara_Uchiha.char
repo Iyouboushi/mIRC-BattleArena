@@ -207,6 +207,8 @@ Resist-Weaponlock=100
 Resist-Drunk=100
 Resist-Sleep=100
 Resist-Disarm=100
+Resist-Petrify=60
+Resist-Stun=30
 PerfectDefense=$iif($readini($char(Madara_Uchiha), status, ignition.on) = on, 1, 0)
 MonsterSummon=$iif($readini($char(Madara_Uchiha), status, ignition.on) = on, 1, 0)
 MonsterSummon.Monster=Madara_Clone

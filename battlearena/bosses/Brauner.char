@@ -99,7 +99,8 @@ VampireArt=15
 Resist-Charm=100
 Resist-Zombie=100
 Resist-Curse=100
-Resist-Stun=5
+Resist-Stun=30
+Resist-Petrify=60
 
 [Techniques]
 BloodArtTechnique=15
@@ -108,7 +109,6 @@ PortraitSmash=15
 CursePainting=15
 
 [Item_Amount]
-pizza=1
 
 
 [modifiers]

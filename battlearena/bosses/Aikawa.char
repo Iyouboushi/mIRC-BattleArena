@@ -113,11 +113,12 @@ Resist-Paralysis=10
 Resist-Amnesia=10
 Resist-Zombie=100
 Resist-Charm=100
-Resist-Stun=10
+Resist-Stun=30
 Resist-Blind=10
 Resist-Weaponlock=100
 Resist-Intimidate=100
 Quicksilver=1
+Resist-Petrify=60
 
 [Techniques]
 AikawaGrab=$calc(1 + $current.battlestreak)

@@ -97,7 +97,8 @@ Equipped=PsychoPower
 PsychoPower=10
 
 [Skills]
-resist-stun=15
+Resist-Petrify=60
+Resist-Stun=30
 resist-blind=15
 
 

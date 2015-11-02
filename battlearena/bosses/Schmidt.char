@@ -105,6 +105,7 @@ Resist-Charm=100
 Resist-Zombie=100
 Resist-Curse=100
 Resist-Stun=45
+Resist-Petrify=60
 ManaWall=1
 RoyalGuard=1
 zen=3

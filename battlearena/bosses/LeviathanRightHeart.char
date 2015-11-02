@@ -102,6 +102,8 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
+Resist-Petrify=60
+Resist-Stun=30
 Impetus=20
 BloodBoost=15
 

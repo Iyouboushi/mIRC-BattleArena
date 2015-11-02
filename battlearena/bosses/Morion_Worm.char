@@ -100,6 +100,8 @@ BedrockBite=50
 [Skills]
 zen=2
 clearmind=1
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

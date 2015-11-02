@@ -103,6 +103,7 @@ Resist-Zombie=100
 Resist-Stun=100
 Resist-Blind=100
 Resist-Amnesia=100
+Resist-Petrify=60
 Zen=5
 
 [Techniques]

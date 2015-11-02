@@ -95,6 +95,8 @@ Zen=5
 MartialArts=100
 MightyStrike=1
 Impetus=10
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 Stomping=50

@@ -107,6 +107,8 @@ Zen=5
 ClearMind=3
 bloodspirit=5
 MagicMirror=1
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

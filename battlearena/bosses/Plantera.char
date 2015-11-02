@@ -185,6 +185,7 @@ Resist-Curse=100
 Resist-stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
+Resist-Petrify=60
 MonsterSummon=$iif($calc(($readini($char(Plantera), battle, hp) / $readini($char(Plantera), basestats, hp)) * 100) <= 50, 1, 0)
 MonsterSummon.Monster=Plantera_Biter
 MonsterSummon.Chance=100

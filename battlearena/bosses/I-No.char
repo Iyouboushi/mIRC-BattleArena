@@ -157,6 +157,8 @@ Resist-WeaponLock=100
 Resist-Disarm=100
 Resist-Amnesia=100
 Resist-Drunk=100
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

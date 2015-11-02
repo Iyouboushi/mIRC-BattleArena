@@ -114,6 +114,7 @@ Resist-Curse=100
 Regen=3
 Resist-Curse=100
 Resist-stun=100
+Resist-Petrify=60
 
 [Techniques]
 

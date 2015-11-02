@@ -109,6 +109,8 @@ Resist-confuse=100
 Resist-Curse=100
 Resist-stun=100
 Resist-sleep=100
+Resist-Petrify=60
+
 
 [Techniques]
 MazaalChomp=$calc(20 + $current.battlestreak)

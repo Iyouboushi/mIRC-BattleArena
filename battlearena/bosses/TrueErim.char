@@ -104,7 +104,8 @@ Resist-Charm=100
 Resist-Zombie=100
 Resist-Stop=100
 Resist-Slow=100
-Resist-Stun=40
+Resist-Stun=50
+Resist-Petrify=60
 MagicMirror=1
 
 [Techniques]

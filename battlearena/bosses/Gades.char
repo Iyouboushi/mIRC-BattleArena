@@ -100,7 +100,8 @@ Resist-Charm=100
 Resist-Zombie=100
 Resist-Stop=100
 Resist-Slow=100
-Resist-Stun=5
+Resist-Petrify=60
+Resist-Stun=30
 BloodBoost=10
 
 

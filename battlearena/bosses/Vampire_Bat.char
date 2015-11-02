@@ -96,6 +96,8 @@ MartialArts=100
 Impetus=20
 MightyStrike=1
 Resist-Poison=100
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 SonicBoom=18

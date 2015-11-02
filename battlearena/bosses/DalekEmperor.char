@@ -98,11 +98,12 @@ Equipped=Gunstick
 Gunstick=15
 
 [Skills]
-Gunslinger=15
-Resist-Stun=20
+Gunslinger=30
+Resist-Stun=30
 Resist-Zombie=100
 Resist-Charm=100
 Resist-Poison=100
+Resist-Petrify=60
 
 [Techniques]
 DalekParalyze=10

@@ -94,6 +94,8 @@ BeetleJaw=$current.battlestreak
 [Skills]
 zen=10
 speed=5
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 PowerAttack=$current.battlestreak

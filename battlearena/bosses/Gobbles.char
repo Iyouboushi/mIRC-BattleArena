@@ -103,6 +103,7 @@ TurkeyPower=20
 [Skills]
 resist-stun=55
 resist-blind=55
+Resist-Petrify=60
 
 
 [Techniques]

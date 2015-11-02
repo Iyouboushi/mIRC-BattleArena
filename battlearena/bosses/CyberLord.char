@@ -97,11 +97,12 @@ Equipped=Cyberfists
 Cyberfists=15
 
 [Skills]
-MartialArts=15
-Resist-Stun=15
+MartialArts=30
+Resist-Stun=30
 Resist-Zombie=100
 Resist-Charm=100
 Resist-Poison=100
+Resist-Petrify=60
 
 [Techniques]
 WristLaser=15

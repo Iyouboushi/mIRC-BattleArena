@@ -100,6 +100,8 @@ OctoArms=10
 
 [Skills]
 DesperateBlows=1
+Resist-Petrify=60
+Resist-Stun=30
 
 
 [Techniques]

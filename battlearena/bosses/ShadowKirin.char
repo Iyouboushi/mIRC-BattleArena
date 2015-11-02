@@ -111,6 +111,8 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
+Resist-Petrify=100
+Resist-Stun=100
 BloodBoost=200
 konzen-ittai.on
 konzen-ittai=100

@@ -104,6 +104,7 @@ CerberusClaws=20
 resist-stun=55
 resist-blind=55
 RepairNaturalArmor=1
+Resist-Petrify=60
 
 
 [Techniques]

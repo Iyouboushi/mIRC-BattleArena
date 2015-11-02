@@ -163,6 +163,7 @@ MartialArts=100
 Resist-Stun=100
 Resist-Poison=100
 Resist-Paralysis=100
+Resist-Petrify=60
 Bloodpact=5
 Summon=Mohawk
 

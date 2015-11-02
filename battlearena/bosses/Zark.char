@@ -116,13 +116,14 @@ Resist-Paralysis=100
 Resist-Amnesia=10
 Resist-Zombie=100
 Resist-Charm=100
-Resist-Stun=25
+Resist-Stun=30
 Resist-Blind=100
 Resist-Weaponlock=100
 Resist-Intimidate=100
 Resist-Disarm=100
 Resist-Drunk=100
 Resist-Sleep=100
+Resist-Petrify=60
 
 [Techniques]
 SpaceBeam=$calc(1 + $current.battlestreak)

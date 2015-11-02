@@ -99,6 +99,7 @@ Resist-Charm=100
 Resist-Intimidate=100
 Resist-Confuse=100
 Resist-Paralysis=10
+Resist-Petrify=60
 
 [Techniques]
 LoveAtFirstSight=20

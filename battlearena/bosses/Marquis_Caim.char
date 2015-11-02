@@ -98,7 +98,8 @@ ClearMind=3
 PoleMaster=100
 Wizardry=100
 Resist-Curse=100
-Resist-Stun=20
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 HectacombWave=20

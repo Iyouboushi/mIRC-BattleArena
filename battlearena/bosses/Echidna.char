@@ -112,6 +112,8 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Resist-Drunk=100
+Resist-Petrify=60
+Resist-Stun=30
 MonsterSummon=$iif($readini($char(Echidna), status, ignition.on) = off, 1, 0)
 MonsterSummon.Monster=Chimera
 MonsterSummon.Chance=$iif($readini($char(Echidna), status, ignition.on) = off, $rand(70,100), 0)

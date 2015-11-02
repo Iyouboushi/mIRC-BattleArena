@@ -96,9 +96,11 @@ Equipped=CuteRabbitTeeth
 CuteRabbitTeeth=10
 
 [Skills]
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
-LookAtTheBones=10
+LookAtTheBones=100
 
 [modifiers]
 Heal=none

@@ -98,10 +98,11 @@ MightyStrike=1
 DrainSamba=10
 ShadowCopy=1
 Impetus=20
-Resist-Stun=25
+Resist-Stun=30
 Resist-Intimidate=100
 Resist-Curse=100
 Resist-Charm=100
+Resist-Petrify=60
 
 [Techniques]
 HectacombWave=20

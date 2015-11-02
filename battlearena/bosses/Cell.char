@@ -97,9 +97,10 @@ Equipped=Cell'sKi
 Cell'sKi=10
 
 [Skills]
-resist-stun=10
+resist-stun=30
 ShadowCopy=$iif($current.battlestreak < 50, 0, 1)
 ShadowCopy_Name=Cell Jr
+Resist-Petrify=60
 
 [Techniques]
 PerfectForm=$iif($current.battlestreak < 100, 0, 1)

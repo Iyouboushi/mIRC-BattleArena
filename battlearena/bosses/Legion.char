@@ -27,7 +27,7 @@ RageCountDown=0
 
 [Descriptions]
 Char=is a large shell made out of human bodies with small tentacles sticking out of it.  It seems to be creating a void from which zombies are spawning.
-BossQuote=My name is Legion: for we are many. 
+BossQuote=My name is Legion; for we are many. 
 Rage=screams in rage 
 MonsterConsume='s tentacles lash out and grab $set_chr_name($2) $+ %real.name $+ , dragging $gender2($2) into Legion, consuming $gender2($2) completely.  Legion gains some of %real.name $+ 's power and grows stronger!
 MonsterSummon=Legion slams its tentacles into %number.of.spawns.needed lifeless bodies and brings them back to life as a mindless zombies, ready to attack the heroes.
@@ -107,6 +107,8 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Resist-drunk=100
+Resist-Petrify=60
+Resist-Stun=30
 Zen=5
 ClearMind=3
 MonsterSummon=1

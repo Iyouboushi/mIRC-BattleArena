@@ -100,7 +100,8 @@ Caladbolg=10
 DesperateBlows=1
 Resist-Charm=100
 Resist-Poison=100
-Resist-Stun=20
+Resist-Stun=30
+Resist-Petrify=60
 
 MonsterSummon=1
 MonsterSummon.Monster=$iif($rand(1,2) = 1, Cursed_Queen, $iif($rand(1,2) = 1, Cursed_Pawn, $iif($rand(1,2) = 1, Cursed_Rook, Cursed_Bishop)))

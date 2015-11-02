@@ -94,9 +94,10 @@ GiygasPower=100
 [Skills]
 Resist-Charm=100
 Resist-Zombie=100
-Resist-Stun=10
 MartialArts=85
 Resist-Paralysis=10
+Resist-Petrify=60
+Resist-Stun=30
 
 [Techniques]
 CannotGrasp=80

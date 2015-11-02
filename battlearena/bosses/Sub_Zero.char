@@ -98,9 +98,10 @@ Equipped=SubZeroFists
 SubZeroFists=10
 
 [Skills]
-resist-stun=10
+resist-stun=30
 resist-charm=90
 resist-poison=50
+Resist-Petrify=60
 ShadowCopy=1
 ShadowCopy_Name=Sub Zero Ice Clone
 Utsusemi=1

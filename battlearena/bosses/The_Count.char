@@ -103,6 +103,7 @@ Dark_Vampiric_Power=25
 resist-stun=50
 resist-curse=100
 resist-charm=100
+Resist-Petrify=60
 ManaWall=1
 RoyalGuard=1
 Sugitekai=1

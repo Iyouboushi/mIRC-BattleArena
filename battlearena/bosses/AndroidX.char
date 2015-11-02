@@ -109,6 +109,7 @@ ManaWall=1
 RoyalGuard=1
 MightyStrike=1
 MagicShift=1
+Resist-Petrify=60
 
 
 [Techniques]

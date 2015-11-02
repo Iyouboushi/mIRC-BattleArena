@@ -184,6 +184,7 @@ Resist-confuse=100
 Resist-stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
+Resist-Petrify=60
 MonsterSummon=$iif($calc(($readini($char(Eater_of_Worlds), battle, hp) / $readini($char(Eater_of_Worlds), basestats, hp)) * 100) <= 50, 1, 0)
 MonsterSummon.Monster=Mini_World_Eater
 MonsterSummon.Chance=100

@@ -96,8 +96,6 @@ MPRegenerating=no
 [Weapons]
 Equipped=SlimePower
 SlimePower=30
-Weak=None
-Strong=HandToHand.Sword.Whip.Gun.Rifle.Katana.Wand.Spear.Scythe.Glyph.GreatSword.Stave.Bow
 
 
 [Skills]
@@ -105,6 +103,8 @@ Resist-Charm=100
 Resist-Poison=50
 Resist-Zombie=100
 Resist-Intimidate=100
+Resist-Petrify=60
+Resist-Stun=30
 Zen=5
 Impetus=20
 MightyStrike=1
