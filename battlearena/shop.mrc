@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/30/15
+;;;; Last updated: 11/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2296,7 +2296,7 @@ alias shop.potioneffects {
       var %dragonfang.needed 1
       var %milk.needed 1
 
-      dec %dragonegg.needed $item.amount($1, DragonEgg))
+      dec %dragonegg.needed $item.amount($1, DragonEgg)
       dec %dragonfang.needed $item.amount($1, Dragonfang)
       dec %milk.needed $item.amount($1, Milk)  
 

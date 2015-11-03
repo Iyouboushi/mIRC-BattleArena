@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/28/15
+;;;; Last updated: 11/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4269,7 +4269,7 @@ bounty.select {
 }
 
 bounty.display {
-  if ($readini(battlestats.dat, Bounty, BossName) = $null) { $display.message(4There is no current bounty), private) | halt }
+  if ($readini(battlestats.dat, Bounty, BossName) = $null) { $display.message(4There is no current bounty, private) | halt }
   else {
     var %bounty.name $readini($boss($readini(battlestats.dat, Bounty, BossName)), basestats, name)
     $display.message($readini(translation.dat, system, CurrentBounty), private) 

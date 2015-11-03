@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 09/18/15
+;;;; Last updated: 11/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -256,10 +256,14 @@ dungeon.nextroom {
 
     $battlelist(public)
 
-    $display.message($readini(translation.dat, battle, StepsUpFirst), battle)
-    unset %wait.your.turn
+    ; To keep someone from sitting and doing nothing for hours at a time, there's a timer that will auto-force the next turn.
+    var %nextTimer $readini(system.dat, system, TimeForIdle)
+    if (%nextTimer = $null) { var %nextTimer 180 }
+    /.timerBattleNext 1 %nextTimer /next forcedturn
 
-    $aicheck(%who)
+    $turn(%who)
+
+    unset %wait.your.turn
   }
 }
 

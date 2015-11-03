@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 10/28/15
+;;;; Last updated: 11/02/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -22,8 +22,8 @@ alias shopnpc.news {
 
   if ($1 = global) {
     $display.message($readini(translation.dat, ShopNPCs, LatestNPCNews),global) 
-    if (%npcnews.kidnapped != $null) { $display.message(4 $+ %npcnews.kidnapped),global) }
-    if (%npcnews.arrived != $null) { $display.message(2 $+ %npcnews.arrived),global) }
+    if (%npcnews.kidnapped != $null) { $display.message(4 $+ %npcnews.kidnapped,global) }
+    if (%npcnews.arrived != $null) { $display.message(2 $+ %npcnews.arrived,global) }
   }
 
   if ($1 = private) {
