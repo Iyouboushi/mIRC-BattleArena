@@ -28,7 +28,7 @@ Hammers=Hammers
 
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles
-Swords=Mythril_Sword.Joyeuse.Rebellion.Agni.Rudra.Excalibur.Murgleis
+Swords=Mythril_Sword.Joyeuse.Rebellion.Agni.Rudra.Excalibur.Excalibur+1.Murgleis
 Swords2=JewelSword.LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato
 Whips=LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip
 Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster
@@ -61,7 +61,7 @@ MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakSta
 
 MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower
 
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws
 
 ============================================
 WEAPON TEMPLATE
@@ -269,6 +269,19 @@ Hits=1
 BasePower=35
 Upgrade=800
 2Handed=true
+
+[Excalibur+1]
+Cost=0
+Type=Sword
+Info=The legendary Excalibur, the weapon of King Arthur, reforged and made stronger. It glows with a holy aura. Outside of Torment battles the sword has a 250 power and ignores 10% defense. Inside of Torment the sword has a power of 700 and ignores 20% defense.
+Abilities=CircleBlade.Atonement.SpiritsWithin.VorpalBlade
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=3000
+Element=light
+2Handed=true
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+SpecialWeapon=true
 
 [Soulsaber]
 Cost=30
@@ -1795,6 +1808,17 @@ BasePower=11
 IgnoreDefense=1
 CanShieldReflect=false
 StatusType=poison
+
+[HarpyClaws]
+cost=0
+Type=HandToHand
+Info=You can't buy this!
+Abilities=FeatherStorm.Aeroja
+Element=wind
+Hits=$rand(1,2)
+BasePower=11
+IgnoreDefense=1
+CanShieldReflect=false
 
 [PredatorSuit]
 cost=0

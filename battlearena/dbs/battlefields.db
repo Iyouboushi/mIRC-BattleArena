@@ -964,6 +964,31 @@ NumberofEvents=0
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
+[Pyramid Hallway]
+weather=calm
+NumberOEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Pyramid Chamber]
+weather=gloomy
+NumberOEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Pyramid Antechamber]
+weather=gloomy
+NumberOEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Pyramid Burial Chamber]
+weather=gloomy
+NumberOEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+
 
 [Haukke Manor Lobby]
 weather=gloomy

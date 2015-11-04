@@ -23,6 +23,8 @@ JewelOfWieldance.Zircon.StoneOfWieldance
 Hourglass-Necklace.Diamond.Ectoplasm.EtherealChain.Hour_Glass
 Mugger's-Belt.Thief-Ring.Purple-Belt
 Roshi's-Glasses+1.Diamond.Roshi's-Glasses
+Wizard's-Amulet+1.Diamond.Wizard's-Amulet
+Cultist-Rosary+1.Diamond.Cultist-Rosary
 VIP-MemberCard.Diamond.DiscontCard.UltraDiscountCard.Paper
 Blood-Pendant.Diamond.Blood-Ring.SilverChain.Ectoplasm
 Prism-Specs.Diamond.FireGem.WindRock.WaterJewel.IceStone.EarthSphere.Thunder_Orb.Holy_Water
@@ -42,6 +44,7 @@ SilverSwordParts.Diamond.HeavyMetalPlate.Titanium_Ore.SoulOfSight.SoulOfMight.So
 Blueprints:Genbu'sShield.Diamond.GenbuSeal.QuadavShell
 Blueprints:SilverSword.Diamond.SilverSwordParts.Kurogane
 Blueprints:Valmanway+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
+Blueprints:Excalibur+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Hero'sWorth.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Eggnog.Sapphire.SmallEgg.Rum.Milk
 EggHelm.Ruby.RustyHelmet.SmallEgg.HardBoiledEgg

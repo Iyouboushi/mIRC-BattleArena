@@ -1398,12 +1398,28 @@ IncreaseSpellDamage.Amount=.07
 SellPrice=2000
 ShopNPC=TravelMerchant
 
+[Wizard's-Amulet+1]
+Type=accessory
+AccessoryType=IncreaseSpellDamage
+Cost=0
+Desc=A shiny metal amulet imbuded with the power of ancient wizards.  Now even more powerful! This accessory will increase the power of your spells.
+IncreaseSpellDamage.Amount=.10
+SellPrice=2000
+
 [Cultist-Rosary]
 type=accessory
 AccessoryType=IncreaseSpellDamage
 Cost=0
 Desc=A rosary from the cultists of Tam-Tara Deepcroft. This accessory will increase the power of your spells.
-IncreaseSpellDamage.Amount=.10
+IncreaseSpellDamage.Amount=.11
+SellPrice=2000
+
+[Cultist-Rosary+1]
+type=accessory
+AccessoryType=IncreaseSpellDamage
+Cost=0
+Desc=An upgraded rosary originally from the cultists of Tam-Tara Deepcroft. This accessory will increase the power of your spells.
+IncreaseSpellDamage.Amount=.121
 SellPrice=2000
 
 [Aetherial-Earrings]
@@ -3419,6 +3435,15 @@ SellPrice=10000
 SpecialType=GainWeapon
 Weapon=Valmanway+1
 Desc=pulls out a set of blueprints for an upgraded Valmanway, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the valmanway+1 which glows with power.
+Exclusive=yes
+
+[Blueprints:Excalibur+1]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Excalibur+1
+Desc=pulls out a set of blueprints for an upgraded Excalibur, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the Excalibur+1 which glows with power.
 Exclusive=yes
 
 [Hero'sWorth]

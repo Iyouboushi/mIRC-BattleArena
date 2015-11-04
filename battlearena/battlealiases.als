@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/28/15
+;;;; Last updated: 11/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -457,8 +457,6 @@ boost_monster_stats {
   if (%number.of.players.in.battle = $null) { var %number.of.players.in.battle 1 }
   if (%number.of.players.in.battle > 3) { inc %level.boost %number.of.players.in.battle }
 
-  ;;;;;;;; if (%battle.type = torment) { inc %monster.level $return_playerlevelaverage }
-
   ; Check for special boss types
 
   if ($2 = mimic) { 
@@ -830,8 +828,10 @@ deal_damage {
 
             unset %current.accessory | unset %current.accessory.type
 
-            if ((%battle.type = torment) && ($readini($char($1), info, flag) = $null)) {
-              if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+            if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+              if ($readini($char($1), info, flag) = $null) {
+                if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+              }
             }
 
             set %life.target $readini($char($1), Battle, HP) | set %life.max $readini($char($1), Basestats, HP)
@@ -961,14 +961,12 @@ deal_damage {
     } 
   }
 
-
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function is for healing
 ; damage done to a target
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 heal_damage {
   ; $1 = person heal damage
   ; $2 = target
@@ -2304,8 +2302,8 @@ inflict_status {
 
   ; If a monster, increase the resistance.
   if ($readini($char($2), info, flag) = monster) {
-    if (%resist.skill = $null) { set %resist.skill 20 }
-    else { inc %resist.skill 20 }
+    if (%resist.skill = $null) { set %resist.skill 45 }
+    else { inc %resist.skill 45 }
     writeini $char($2) skills %resist.have %resist.skill
   }
   unset %resist.have | unset %chance

@@ -133,6 +133,16 @@ ReusablePart=15
 ForgottenSoul=15
 ArcaneDust=10
 
+[Blueprints:Excalibur+1]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
+SuccessRate=100
+Amount=1
+LifeShard=15
+ReusablePart=15
+ForgottenSoul=20
+ArcaneDust=10
+
 [Blueprints:Genbu'sShield]
 Gem=Diamond
 Ingredients=GenbuSeal.QuadavShell
@@ -296,6 +306,20 @@ Gem=Diamond
 Ingredients=Roshi's-Glasses
 SuccessRate=1
 Roshi's-Glasses=5
+Amount=1
+
+[Wizard's-Amulet+1]
+Gem=Diamond
+Ingredients=Wizard's-Amulet
+SuccessRate=1
+Wizard's-Amulet=5
+Amount=1
+
+[Cultist-Rosary+1]
+Gem=Diamond
+Ingredients=Cultist-Rosary+1
+SuccessRate=1
+Cultist-Rosary+1=5
 Amount=1
 
 [Hourglass-Necklace]
