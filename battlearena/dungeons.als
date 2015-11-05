@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 11/02/15
+;;;; Last updated: 11/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -273,7 +273,7 @@ dungeon.generatemonsters {
   var %dungeon.level $readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel)
 
   ; Cycle through and summon each
-  var %value 1 | set %number.of.monsters $numtok(%monster.list,46)
+  var %value 1 | var %multiple.monster.counter 2 | set %number.of.monsters $numtok(%monster.list,46)
   while (%value <= %number.of.monsters) {
     set %current.monster.to.spawn $gettok(%monster.list,%value,46)
 
@@ -283,10 +283,8 @@ dungeon.generatemonsters {
     if ((%isboss != $true) && (%ismonster != $true)) { inc %value }
     else { 
       set %found.monster true 
-
-      var %multiple.monster.counter 2 | var %current.monster.to.spawn.name %current.monster.to.spawn
-      while ($isfile($char(%current.monster.to.spawn.name)) = $true) { var %current.monster.to.spawn.name %current.monster.to.spawn $+ %multiple.monster.counter }
-      inc %multiple.monster.counter 1
+      var %current.monster.to.spawn.name %current.monster.to.spawn
+      while ($isfile($char(%current.monster.to.spawn.name)) = $true) { var %current.monster.to.spawn.name %current.monster.to.spawn $+ %multiple.monster.counter | inc %multiple.monster.counter 1 }
     }
 
     if ($isfile($boss(%current.monster.to.spawn)) = $true) { .copy -o $boss(%current.monster.to.spawn) $char(%current.monster.to.spawn.name)  }

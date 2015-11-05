@@ -29,7 +29,7 @@ RageCountDown=0
 Char=is an elvan witch wearing a large robe and a horned helmet. 
 Rage=screams in rage 
 BossQuote=You have awoken your doom!
-DeathDescription=screams and grabs her head before falling to her knees. "IT CANNOT BE!" she shouts, shaking violently as her body begins to disappear, returning to the ether.  
+DeathMessage=screams and grabs her head before falling to her knees. "IT CANNOT BE!" she shouts, shaking violently as her body begins to disappear, returning to the ether.  
 MonsterSummon=Lady Amandine raises her arms and begins to laugh. The active lamps around the room glow and bombs begin to fly out of the lit lamps.
 
 [Stuff]

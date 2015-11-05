@@ -1,23 +1,23 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(21000 + (100 * $return_playersinbattle)) , 21000)
-Tp=250
-Str=77
-Def=77
-Int=191
-Spd=96
-Name=Galvanth the Dominator
-IgnitionGauge=50
+Hp=$iif($return_playersinbattle > 4, $calc(20000 + (1000 * $return_playersinbattle)) , 20000)
+Tp=520
+Str=30
+Def=35
+Int=59
+Spd=40
+IgnitionGauge=2
+Name=Osiris
 
 
 [Battle]
-Hp=18000
-Tp=250
-Str=77
-Def=77
-Int=191
-Spd=96
+Hp=320
+Tp=520
+Str=30
+Def=35
+Int=49
+Spd=40
+IgnitionGauge=2
 Status=alive
-IgnitionGauge=50
 
 
 [Rage]
@@ -26,38 +26,37 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a large squid-like being. It wears a hooded robe and carries a large staff.
-Rage=screams in rage 
-BossQuote=Your bones will pave the way to my reign
-DeathMessage=gives off a dying wail as he collapses to the ground. Galvanth's body bursts into flames and fades into ashes. 
-MonsterSummon=Galvanth slams his staff into the ground and screams "Come my child, help protect your god as he defeats these defilers!"
+Char=is an ancient god of regeneration and resurrection. It is wrapped in blue mummy wrappings. 
+Rage=red ghosts appears as he yells out in anger!
+BossQuote=You cannot kill me! I shall always come back!
+DeathMessage=falls down into a heap of blue wraps.
+Revive=begins to glow as the blue wraps come back together to reform Osiris who begins laughing.4 "I told you! You cannot kill me!"
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=Cultist-Rosary
 
 [Monster]
-Type=demon
-size=medium
+Type=Demon
+size=large
 
 [Info]
 Flag=monster
-Gender=his
-Gender2=him
+Gender=its
+Gender2=its
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-bosslevel=22
-CanTaunt=false
 IgnoreQuicksilver=true
+CanTaunt=false
+IgnoreElementalMessage=true
 BattleStats=IgnoreHP
-Guardian=Deepcroft_Imp
-JustReleaseDefense=70
+JustReleaseDefense=99
+DeathConditions=MagicEffect.Status.Renkei.Item
 
 [Status]
 Poison=no
@@ -91,71 +90,65 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
-reflect=yes
-reflect.turn=-1
+auto-regen=yes
 
 [Weapons]
-Equipped=DemonicWeapon
-DemonicWeapon=15
+Equipped=Apocalypse
+Apocalypse=100
 
 [Skills]
 Resist-Charm=100
-Resist-Poison=100
 Resist-Zombie=100
+Resist-Stun=100
 Resist-Intimidate=100
-Resist-Amnesia=100
-Resist-Blind=100
-Resist-Slow=100
-Resist-Stop=100
-Resist-Paralysis=100
-Resist-confuse=100
-Resist-Petrify=60
-Resist-Stun=30
-Zen=5
-ClearMind=1
-MonsterSummon=$iif($calc(%current.turn % 3) = 0, 1, 0)
-MonsterSummon.Monster=Deepcroft_Imp
-MonsterSummon.Chance=100
-monstersummon.numberspawn=1
+Resist-Paralysis=90
+Resist-Petrify=90
+Resist-Curse=100
+Impetus=40
+Regen=10
 
 
 [Techniques]
-Firaja=15
-FireIII=20
-ThunderIII=10
+Catastrophe=100
+Entropy=100
+Guillotine=100
+
+
+[Item_Amount]
 
 
 [Styles]
-Equipped=spellmaster
-spellmaster=1
-
-[Augment]
-DemonicWeapon=AbsorbTP
-
+Equipped=guardian
+Guardian=5
+GuardianXP=0
 
 
 [modifiers]
-Heal=dark
+Heal=Dark
 Earth=100
-Fire=50
+Fire=100
 Wind=100
 Water=100
 Ice=100
 Lightning=100
-Light=130
-Dark=250
+Light=110
+Dark=350
 HandToHand=100
 Whip=100
 Sword=100
 Gun=100
 Rifle=100
-Katana=100
+Katana=60
 Wand=100
 Spear=100
 Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
 Crissaegrim=50
 Valmanway=50
 Naturaleza=60
@@ -291,4 +284,5 @@ MechIceIV=10
 MechThunderIV=10
 MechLightIV=10
 MechShadowIV=10
-HolyHandGrenade=0
+HolyHandGrenade=1
+Dynamite=1

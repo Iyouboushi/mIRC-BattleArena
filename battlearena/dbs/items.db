@@ -1553,6 +1553,14 @@ IncreaseMeleeAddPoison.Amount=.30
 SellPrice=500
 ShopNPC=TravelMerchant
 
+[Osiris-Charm]
+Type=accessory
+AccessoryType=AutoRegen
+Cost=0
+Desc=A small ancient charm infused with the power of Osiris. This charm will allow you to have the regeneration skill on automatically.
+SellPrice=2000
+AutoRegen.Amount=1
+
 [PinkBow]
 Type=accessory
 Cost=$iif($left($adate,2) = 02, 75000, 0)
@@ -1594,6 +1602,15 @@ Desc=A small ancient Mayan charm infused with the power of the ancient ones. Thi
 SellPrice=2000
 IncreaseCriticalHits.Amount=5
 BlockAllStatus.Amount=10
+
+[Kan-ra-Charm]
+Type=accessory
+AccessoryType=IncreaseCriticalHits.BlockAllStatus
+Cost=0
+Desc=A small ancient charm infused with the power of Kan-ra. This charm will increase critical hits by 7% and reduce the chance of status effects from happening by 6%. 
+SellPrice=2000
+IncreaseCriticalHits.Amount=7
+BlockAllStatus.Amount=6
 
 [Lucky-Rabbit'sFoot]
 Type=accessory
@@ -3684,7 +3701,14 @@ Desc=An old dusty key used to access Haukke Manor
 Dungeon=Haukke_Manor
 exclusive=yes
 
-
+[Kan-raHand]
+type=dungeon
+cost=75
+currency=KindredSeal
+sellprice=1500
+Desc=The ancient mummified hand of Kan-ra that grants access into its pyramid
+Dungeon=Kan-ra
+exclusive=yes
 
 
 ==========================

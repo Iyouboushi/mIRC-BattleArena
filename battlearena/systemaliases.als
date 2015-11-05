@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/02/15
+;;;; Last updated: 11/05/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2472,6 +2472,10 @@ clear_positive_status {
   writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0
 
   if ($2 != tech) { writeini $char($1) status ignition.on off | remini $char($1) status ignition.name | remini $char($1) status ignition.augment }
+
+  if ($accessory.check($1, AutoRegen) = true) { writeini $char($1) status auto-regen yes }
+  if (($readini($char($1), info, flag) = $null) && ($accessory.check($1, AutoRegen) != true)) { remini $char($1) status auto-regen }
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4246,7 +4250,11 @@ system.intromessage {
 ; Select a bounty boss
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 bounty.select {
-  if ($readini(battlestats.dat, Bounty, BossName) = $null) { 
+  var %bounty.placed $readini(battlestats.dat, Bounty, BountyPlaced)
+  if (%bounty.placed = $null) { var %bounty.placed 0 }
+  var %bounty.time.difference $calc($ctime - %bounty.placed)
+
+  if (($readini(battlestats.dat, Bounty, BossName) = $null) || (%bounty.time.difference > 86400)) { 
 
     ; Determine # of bosses in the bot
     var %bounty.numberofchoices $findfile($boss_path, *.char, 0, 0)
@@ -4262,6 +4270,7 @@ bounty.select {
 
     ; Write it to the file
     writeini battlestats.dat Bounty BossName %bounty.bossname
+    writeini battlestats.dat Bounty BountyPlaced $ctime
 
     ; Display the message
     $display.message($readini(translation.dat, system, BountyPlaced),global)

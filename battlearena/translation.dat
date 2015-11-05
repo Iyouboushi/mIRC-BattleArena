@@ -974,6 +974,7 @@ Invincible=$chr(3) $+ 12 $+ invincible
 Zombieregenerating=$chr(3) $+ 12 $+ +HP regen
 Regenerating=$chr(3) $+ 12 $+ +HP regen
 TPRegenerating=$chr(3) $+ 12 $+ +TP regen
+Auto-Regen=$chr(3) $+ 12 $+ +HP regen
 ConserveTP=$chr(3) $+ 12 $+ conserving TP
 DefenseUp=$chr(3) $+ 12 $+ +def
 SpeedUp=$chr(3) $+ 12 $+ +spd

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 11/02/15
+;;;; Last updated: 11/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -83,7 +83,7 @@ alias shop.start {
 
 
   if ($2 = sell) {
-    var %sellable.stuff items.accessories.accessory.gems.tech.techs.technique.armor.weapon.weapons
+    var %sellable.stuff items.accessories.accessory.gems.tech.techs.technique.armor.weapon.weapons.special.trust.trusts
     if ($3 !isin %sellable.stuff) { $display.private.message($readini(translation.dat, errors, Can'tSellThat)) | halt }
     var %amount.to.sell $abs($5)
     if (%amount.to.sell = $null) { var %amount.to.sell 1 }
@@ -97,6 +97,8 @@ alias shop.start {
     if ((($3 = tech) || ($3 = techs) || ($3 = technique))) { $shop.techs($nick, sell, $4, %amount.to.sell) | halt }
     if ($3 = armor)  { $shop.armor($nick, sell, $4, %amount.to.sell) | halt }
     if ($3 = weapon) { $shop.weapons($nick, sell, $4) | halt }
+    if ($3 = special) { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
+    if (($3 = trustl) || ($3 = trusts)) { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
   }
 
   if (($2 = buy) || ($2 = purchase)) { 

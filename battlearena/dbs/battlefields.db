@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=bright
+current=stormy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Quarter
-CurrentMoonTurn=2
+CurrentMoonPhase=New
+CurrentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -38,7 +38,7 @@ remove or modify the time of day section as it will cause
 errors.
 ==============================================================
 [TimeOfDay]
-CurrentTimeOfDay=Noon
+CurrentTimeOfDay=Day
 CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
@@ -988,7 +988,11 @@ NumberOEvents=0
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
-
+[Pyramid Map Room]
+weather=gloomy
+NumberOEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Lobby]
 weather=gloomy

@@ -230,6 +230,7 @@ AndroidKi=AsuranFists.BioWeaponX
 SubZeroFists=IceBall.GroundIce
 Ninjutsu=Shurikan.Backstab.Smokebomb
 Quetzalcoatl=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Meteor.Poison
+Kan-ra=AerojaII.DarkraII.Meteor
 CuteRabbitTeeth=LookAtTheBones
 RyukotsukiPower=Decapiclops.Oxocutioner.Chimyriad.CursePunch.FireballStop
 DecapiclopsPower=FireSpit.FirePillar.FireExplosion
@@ -423,6 +424,7 @@ SusanooKatanas=YonNoTachi:Kagerou.ShichiNoTachi:Yukikaze.HachiNoTachi:Gekkou.Kyu
 PredatorSuit=PredatorLaser.PredatorSelfDestruct.PredatorBomb.PredatorClaw
 SnakeFangs=SnakeBite
 HarpyClaws=FeatherStorm.Aeroja
+MummyWrap=WrapWhip
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -3537,6 +3539,17 @@ TP=5
 Desc=runs forward and hits %enemy with $gender($1) head!
 BasePower=5
 Element=None
+magic=no
+cost=0
+stat=str
+
+[WrapWhip]
+Type=Single
+StatusType=Stun
+TP=5
+Desc=rushes forward and whips %enemy with $gender($1) wrapping with enough force to cause a stunning moment.
+BasePower=5
+Element=none
 magic=no
 cost=0
 stat=str
