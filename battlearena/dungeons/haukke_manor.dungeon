@@ -15,7 +15,7 @@ Battlefield=Haukke Manor Lobby
 
 
 [1]
-Desc=The party decides to go down the left hallway first. After walking a moment the carpet seems to come to life as several stains pop up ready to attack the party.
+Desc=The party decides to go down the $iif($rand(1,2) = 1, left, right) hallway first. After walking a moment the carpet seems to come to life as several stains pop up ready to attack the party.
 Battlefield=Haukke Manor Fl 1 - Hallway
 Monsters=Carpet_Stain.Carpet_Stain
 
