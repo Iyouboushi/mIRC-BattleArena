@@ -1,0 +1,57 @@
+[Info]
+Name=The Pyramid of Kan-ra
+Rooms=8
+PlayersNeeded=3
+Level=100
+FinalRoom=7
+StartBattleDesc=approaches the ancient pyramid of Kan-ra and holds up the mummified hand of Kan-ra. The earth shakes as the ancient slabs that prevent entry begin to lower, revealing a dark tunnel before the heroes. 
+ClearDungeonDesc=* The party has vanquished the ancient power found within The Pyramid of Kan-ra. 
+DungeonFail=* The party has failed to fully explore the Pyramid of Kan-ra and are forced to retreat. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=As the party advances forward they find ancient heiroglphys depecting Osiris and Kan-ra. Before them they hear scuffling but this area seems safe enough to spend one round to prepare for what lies before them. 
+Battlefield=Pyramid Hallway
+
+
+[1]
+Desc=The party advances around a corner and down a darkened hallway before being stopped by a group of half-mummified monsters that guard this pyramid.
+Battlefield=Pyramid Hallway
+Monsters=Kan-ra_Hound.Kan-ra_Mummy.Kan-ra_Mummy
+
+
+[2]
+Desc=Following the twists and turns of the hallway the group is led to a large square room where several harpies have made their nest.
+Battlefield=Pyramid Chamber
+Monsters=Kan-ra_Harpy.Kan-ra_Harpy.Kan-ra_Harpy
+
+
+[3]
+Desc=The party continues past the now-destroyed nest and stumbles upon more monsters waiting for them
+Battlefield=Pyramid Hallway
+Monsters=Kan-ra_Scarab $+ $iif($rand(1,2) = 1, .Kan-ra_Hound, .Kan-ra_Skeleton) $+ $iif($rand(1,2) = 1, .Kan-ra_Skeleton, .Kan-ra_Mummy)
+
+
+[4]
+Desc=Walking up a set of ancient stairs and following more twists and turns the party eventually arrives to a large room with a gigantic map painted on the wall.  Suddenly the map shatters as a gigantic Harpy Queen busts into the room to avenge her children.
+bossroom=true
+Monsters=Harpy_Queen.Kan-ra_Harpy.Kan-ra_Harpy
+Battlefield=Pyramid Map Room
+
+[5]
+Desc=The heroes see a light coming from where the wall where the map used to sit upon. Stepping through the broken wall they see a new undiscovered hallway and quickly follow it until they meet more foes
+Monsters=Kan-ra_Skeleton.Kan-ra_Mummy $+ $iif($rand(1,2) = 1, .Kan-ra_Hound, .Kan-ra_Scarab)
+Battlefield=Pyramid Hallway
+
+[6]
+Desc=The party finally reaches the light to find that somehow they have reached the peak of the pyramid. The light comes from a small opening at the top and shines down upon a golden plate on the floor. Before they can investigate it however more monsters pour into the room
+Battlefield=Pyramid Antechamber
+Monsters=Kan-ra_Skeleton.Kan-ra_Mummy $+ $iif($rand(1,2) = 1, .Kan-ra_Scarab, .Kan-ra_Harpy)
+
+
+[7]
+Desc=As the monsters die the golden plate opens up revealing a hidden room. Jumping down the heroes find themselves standing in a large burial chamber. A large golden sarcophagus sits in the center of the room. Suddenly the lid of the sarcophagus moves and comes crashing into the ground. A loud growl is heard and suddenly a figure leaps out and prepares for battle.
+Battlefield=Pyramid Burial Chamber
+Monsters=$iif($rand(1,2) = 1, Kan-ra, Osiris)
+bossroom=true
+
