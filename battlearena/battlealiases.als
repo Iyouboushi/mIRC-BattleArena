@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/05/15
+;;;; Last updated: 11/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1550,6 +1550,7 @@ taunt {
   if (%mode.pvp = on) { var %user.flag monster }
 
   if ((%user.flag != monster) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, OnlyTauntMonsters), private) | halt }
+  if (($readini($char($2), monster, type) = object) && (%user.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, OnlyTauntMonsters), private) | halt }
   if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, Can'tTauntWhiledead), private) | unset %real.name | halt }
   if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, Can'tTauntSomeoneWhoIsDead), private) | unset %real.name | halt }
   if ($readini($char($2), Battle, Status) = RunAway) { $display.message($readini(translation.dat, errors, Can'tTauntSomeoneWhoFled), private) | unset %real.name | halt } 
@@ -3958,23 +3959,25 @@ modifer_adjust {
   ; Turn it into a deciminal
   var %modifier.adjust.value $calc(%modifier.adjust.value / 100) 
 
-  ; If it's over 1, then it means the target is weak to the element/weapon so we can adjust the target's def a little as an extra bonus.
-  if (%modifier.adjust.value > 1) {
-    var %mon.temp.def $readini($char($1), battle, def)
-    var %mon.temp.def = $round($calc(%mon.temp.def - (%mon.temp.def * .05)),0)
-    if (%mon.temp.def < 0) { var %mon.temp.def 0 }
-    writeini $char($1) battle def %mon.temp.def
-    set %damage.display.color 7
-  }
+  if ($readini($char($1), info, flag) != $null) {
+    ; If it's over 1, then it means the target is weak to the element/weapon so we can adjust the target's def a little as an extra bonus.
+    if (%modifier.adjust.value > 1) {
+      var %mon.temp.def $readini($char($1), battle, def)
+      var %mon.temp.def = $round($calc(%mon.temp.def - (%mon.temp.def * .05)),0)
+      if (%mon.temp.def < 0) { var %mon.temp.def 0 }
+      writeini $char($1) battle def %mon.temp.def
+      set %damage.display.color 7
+    }
 
-  ; If it's under 1, it means the target is resistant to the element/weapon.  Let's make the monster stronger for using something it's resistant to.
+    ; If it's under 1, it means the target is resistant to the element/weapon.  Let's make the monster stronger for using something it's resistant to.
 
-  if (%modifier.adjust.value < 1) {
-    var %mon.temp.str $readini($char($1), battle, str)
-    var %mon.temp.str = $round($calc(%mon.temp.str + (%mon.temp.str * .05)),0)
-    if (%mon.temp.str < 0) { var %mon.temp.str 0 }
-    writeini $char($1) battle str %mon.temp.str
-    set %damage.display.color 6
+    if (%modifier.adjust.value < 1) {
+      var %mon.temp.str $readini($char($1), battle, str)
+      var %mon.temp.str = $round($calc(%mon.temp.str + (%mon.temp.str * .05)),0)
+      if (%mon.temp.str < 0) { var %mon.temp.str 0 }
+      writeini $char($1) battle str %mon.temp.str
+      set %damage.display.color 6
+    }
   }
 
   ; Adjust the attack damage.

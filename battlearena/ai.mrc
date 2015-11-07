@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 10/20/15
+;;;; Last updated: 11/07/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -476,84 +476,88 @@ alias ai_gettarget {
   while (%battletxt.current.line <= %battletxt.lines) { 
     set %who.battle.ai $read -l $+ %battletxt.current.line $txtfile(battle.txt)
 
-    if (%ai.type = berserker) { 
-      if (%who.battle.ai = $1) { 
-        if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
+    if ($readini($char(%who.battle.ai), monster, type) != object) { 
+
+
+      if (%ai.type = berserker) { 
+        if (%who.battle.ai = $1) { 
+          if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
+        }
+        if (%who.battle.ai != $1) { $add_target }   
       }
-      if (%who.battle.ai != $1) { $add_target }   
-    }
 
-    if (%ai.type != berserker) { 
+      if (%ai.type != berserker) { 
 
-      ; The AI is targeting a player or npc.
-      if (%opponent.flag = player) {
+        ; The AI is targeting a player or npc.
+        if (%opponent.flag = player) {
 
-        if ($readini($char(%who.battle.ai), info, flag) != monster) {
+          if ($readini($char(%who.battle.ai), info, flag) != monster) {
 
-          ; Get a target for clones
-          if ($readini($char($1), info, clone) = yes) {
-            if ($readini($char($1), info, cloneowner) = %who.battle.ai) {  
-              if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
-            }
-            if (($readini($char($1), info, cloneowner) != %who.battle.ai) && (%who.battle.ai != $1)) { $add_target }
-          }
-
-          ; Get a target for non-clones
-          if ($readini($char($1), info, clone) != yes) { 
-            if (($readini($char($1), info, ai_type) = healer) && ($readini($char(%who.battle.ai), status, zombie) = no)) { $add_target }
-
-            if ($readini($char($1), info, ai_type) != healer) { 
-              if (%who.battle.ai = $1) { 
+            ; Get a target for clones
+            if ($readini($char($1), info, clone) = yes) {
+              if ($readini($char($1), info, cloneowner) = %who.battle.ai) {  
                 if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
               }
-              if (%who.battle.ai != $1) { $add_target }   
+              if (($readini($char($1), info, cloneowner) != %who.battle.ai) && (%who.battle.ai != $1)) { $add_target }
+            }
+
+            ; Get a target for non-clones
+            if ($readini($char($1), info, clone) != yes) { 
+              if (($readini($char($1), info, ai_type) = healer) && ($readini($char(%who.battle.ai), status, zombie) = no)) { $add_target }
+
+              if ($readini($char($1), info, ai_type) != healer) { 
+                if (%who.battle.ai = $1) { 
+                  if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
+                }
+                if (%who.battle.ai != $1) { $add_target }   
+              }
             }
           }
         }
-      }
 
-      ; The AI is targeting a monster.
-      if (%opponent.flag = monster) {
+        ; The AI is targeting a monster.
+        if (%opponent.flag = monster) {
 
-        ; Ensure that Allied NPCs don't attack monsters with attacks they absorb.
-        if (%element != $null) {
-          var %absorb.list $readini($char(%who.battle.ai), Modifiers, Heal)
-          if ($istok(%absorb.list, %element, 46) = $true) { inc %battletxt.current.line | continue }
-        }
-
-        if (%status.type != $null) {
-          var %current.target.status $readini($char(%who.battle.ai), status, %status.type) 
-          if (((%current.target.status = true) || (%current.target.status = yes) || (%current.target.status = on))) {  inc %battletxt.current.line | continue }
-        }
-
-        if ($readini($char(%who.battle.ai), info, flag) = monster) {
-
-          ; Get a target for clones
-          if ($readini($char($1), info, clone) = yes) {
-            if ($readini($char($1), info, cloneowner) = %who.battle.ai) {  
-              if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
-            }
-            if (($readini($char($1), info, cloneowner) != %who.battle.ai) && (%who.battle.ai != $1)) { $add_target }
+          ; Ensure that Allied NPCs don't attack monsters with attacks they absorb.
+          if (%element != $null) {
+            var %absorb.list $readini($char(%who.battle.ai), Modifiers, Heal)
+            if ($istok(%absorb.list, %element, 46) = $true) { inc %battletxt.current.line | continue }
           }
 
+          if (%status.type != $null) {
+            var %current.target.status $readini($char(%who.battle.ai), status, %status.type) 
+            if (((%current.target.status = true) || (%current.target.status = yes) || (%current.target.status = on))) {  inc %battletxt.current.line | continue }
+          }
 
-          ; Get a target for non-clones
-          if ($readini($char($1), info, clone) != yes) { 
+          if ($readini($char(%who.battle.ai), info, flag) = monster) {
 
-            if ($readini($char($1), info, ai_type) = healer) {     
-              if ((%who.battle.ai != demon_portal) && ($readini($char(%who.battle.ai), status, zombie) = no)) { $add_target }   
-            }
-            else { 
-              if (%who.battle.ai = $1) { 
+            ; Get a target for clones
+            if ($readini($char($1), info, clone) = yes) {
+              if ($readini($char($1), info, cloneowner) = %who.battle.ai) {  
                 if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
               }
-              if (%who.battle.ai != $1) { $add_target }   
+              if (($readini($char($1), info, cloneowner) != %who.battle.ai) && (%who.battle.ai != $1)) { $add_target }
+            }
 
+
+            ; Get a target for non-clones
+            if ($readini($char($1), info, clone) != yes) { 
+
+              if ($readini($char($1), info, ai_type) = healer) {     
+                if ((%who.battle.ai != demon_portal) && ($readini($char(%who.battle.ai), status, zombie) = no)) { $add_target }   
+              }
+              else { 
+                if (%who.battle.ai = $1) { 
+                  if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
+                }
+                if (%who.battle.ai != $1) { $add_target }   
+
+              }
             }
           }
         }
-      }
 
+      }
     }
 
     inc %battletxt.current.line 1
