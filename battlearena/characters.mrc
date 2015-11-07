@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 10/28/15
+;;;; Last updated: 11/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1547,7 +1547,10 @@ on 3:TEXT:!augment*:?:{
 ; ===================================
 ; Dragon Hunt commands
 ; ===================================
-on 3:TEXT:!dragon hunt*:*:{ $character.dragonhunt($nick) } 
+on 3:TEXT:!dragon hunt*:*:{ 
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
+  $character.dragonhunt($nick) 
+} 
 on 3:TEXT:!dragon list*:*:{ 
   if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
   $dragonhunt.listdragons 
