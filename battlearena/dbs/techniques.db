@@ -2731,7 +2731,7 @@ Stat=int
 [RhinoGuard]
 Type=Buff
 TP=10
-Desc=uses its hard shell to enhance %enemy $+ 's defense.
+Desc=uses its hard shell to magically enhance %enemy $+ 's defense.
 Cost=0
 Element=none
 Magic=no
@@ -8951,15 +8951,15 @@ Magic=Yes
 Stat=str
 
 [MightyHealingAle]
-Type=Heal
+Type=Heal-AOE
 TP=20
-Desc=takes out a bottle of Healing Ale that is more potent than the normal ale and drinks it to recover a vast amount of health!
-BasePower=120
+Desc=takes out a bottle of Healing Ale that is more potent than the normal Healing Ale and drinks it, recovering $gender($1) health. This also causes a magical effect upon the other heroes, healing their wounds.
+BasePower=50
 Element=Light
 Cost=0
 Magic=Yes
 Stat=int
-CappedAmount=6000
+CappedAmount=3000
 
 [DeathStare]
 Type=Single
@@ -8972,15 +8972,15 @@ Magic=No
 Stat=int
 
 [HealingAle]
-Type=Heal
+Type=Heal-AOE
 TP=30
-Desc=takes out a bottle full of Healing Ale created by Old Man Willakers and drinks it to recover a large amount of health!
-BasePower=70
+Desc=takes out a bottle full of Healing Ale created by Old Man Willakers and drinks it, recovering $gender($1) health. This also causes a magical effect upon the other heroes, healing their wounds.
+BasePower=40
 Element=Light
 Cost=0
 Magic=Yes
 Stat=int
-CappedAmount=3000
+CappedAmount=1500
 
 [FrostBite]
 Type=Single
@@ -9317,7 +9317,7 @@ Stat=int
 [SourenSoukatsui]
 Type=Single
 Cost=0
-Desc=pulls back both of $gender($1) leaving a trail of blue energy. %user then says, "Hadou #73, Souren Soukatsui!" and thrusts $gender($1) palms forward, sending a massive burst of blue energy towards %enemy $+ .
+Desc=pulls back both of $gender($1) hands, leaving a trail of blue energy. %user then says, "Hadou #73, Souren Soukatsui!" and thrusts $gender($1) palms forward, sending a massive burst of blue energy towards %enemy $+ .
 TP=50
 Element=None
 Hits=1

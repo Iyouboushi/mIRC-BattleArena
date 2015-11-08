@@ -287,11 +287,11 @@ Desc=begin to channel an ancient power begins to channel an ancient power meant 
 
 [Sui-FengShikai]
 Name=Shikai
-hp=1.5
-Str=2
-Def=2
-Int=2
-Spd=2
+hp=1.2
+Str=1.5
+Def=1.5
+Int=1.5
+Spd=1.5
 Augment=MeleeBonus.TechBonus.IgnoreMetalDefense.EnhanceCriticalHits.IgnoreGuardian
 Techs=NigekiKessatsu
 IgnitionTrigger=10
@@ -302,10 +302,10 @@ AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ig
 
 [Sui-FengBankai]
 Name=Bankai
-hp=2
-Str=4
-Def=4
-Int=4
+hp=1.5
+Str=2
+Def=2
+Int=2
 Spd=1
 Augment=TechBonus.EnhanceCriticalHits.IgnoreMetalDefense.IgnoreGuardian
 Techs=JakuhouRaikouben
@@ -316,11 +316,11 @@ Desc=shouts out "Bankai!" as a pillar of reiatsu explodes around %user before fa
 
 [Shunkou-Wind]
 Name=Shunkou
-HP=2
-Str=2
-Def=2
-Int=2
-Spd=2
+HP=1.2
+Str=1.5
+Def=1.5
+Int=1.5
+Spd=1.5
 Augment=MeleeBonus.EnhanceDodge.TechBonus.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
 Techs=MukyuuShunkou
 IgnitionTrigger=10
@@ -331,11 +331,11 @@ AdditionalCode=writeini $char($1) ignitions Sui-FengShikai 0
 
 [Shunkou-Lightning]
 Name=Shunkou
-hp=2
-Str=2
-def=2
-int=2
-spd=2
+hp=1.5
+Str=1.5
+def=1.5
+int=1.5
+spd=1.5
 Augment=MeleeBonus.EnhanceDodge
 Techs=ShunkouRaigeki
 IgnitionTrigger=10
@@ -345,11 +345,11 @@ Desc=shouts out "Shunkou!" as lightning surrounds %user $+ 's body to greatly in
 
 [YamamotoShikai]
 Name=Shikai
-HP=2
-Str=3
-Def=3
-Int=3
-Spd=3
+HP=1.2
+Str=2
+Def=2
+Int=2
+Spd=2
 Augment=TechBonus.EnhanceKatana.EnhanceCriticalHits
 Techs=Taimatsu.EnnetsuJigoku
 IgnitionTrigger=10
@@ -360,11 +360,11 @@ AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ig
 
 [YamamotoBankai]
 Name=Bankai
-HP=1.2
-Str=3
-Def=3
-Int=3
-Spd=3
+HP=1.5
+Str=1.8
+Def=1.8
+Int=1.8
+Spd=1.8
 Augment=TechBonus.EnhanceKatana.EnhanceCriticalHits.EnhanceZen.IgnoreMetalDefense.IgnoreDefense.IgnoreGuardian
 Techs=ZankaNoTachi:East.ZankaNoTachi:North
 IgnitionTrigger=10
@@ -377,11 +377,11 @@ Effect=Status
 
 [RukiaShikai]
 Name=Shikai
-Hp=1.2
+Hp=1.3
 Str=1.5
 Def=1.5
-Int=2
-Spd=2
+Int=1.5
+Spd=1.5
 Augment=TechBonus.EnhanceKatana.EnhanceZen.MagicBonus
 Techs=SomeNoMai:Tsukishiro.TsugiNoMai:Hakuren.SanNoMai:Shirafune.Juhaku
 IgnitionTrigger=10
@@ -392,28 +392,28 @@ AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ig
 
 [RukiaBankai]
 Name=Bankai
-HP=1.5
-Str=2
-Def=2
-Int=2.5
+HP=1.3
+Str=1.5
+Def=1.5
+Int=1.5
 Spd=1.5
 Augment=TechBonus.EnhanceKatana.EnhanceCriticalHits.EnhanceZen.IgnoreMetalDefense.IgnoreDefense.IgnoreGuardian
 Techs=HakkanoTogame
 IgnitionTrigger=10
 IgnitionConsume=20
 Cost=0
-Desc=holds Sode no Shirayuki to the side, aimed at the battlefield and shouts out "Bankai, Hakka no Togame!" %user now wears a white, ankle lengthed white kimono with lined patterns. The temperatue around the battlefield begins to lower as %user turns pure white and the blade of Sode no Shirayuki changes into ice.
+Desc=holds Sode no Shirayuki to the side, aimed at the battlefield and shouts out "Bankai, Hakka no Togame!" %user now wears a white, ankle lengthed white kimono with lined patterns. The temperature around the battlefield begins to lower as %user turns pure white and the blade of Sode no Shirayuki changes into ice.
 StatusTarget=All
 StatusType=Frozen
 Effect=Status
 
 [KaienShikai]
 Name=Shikai
-Hp=2
-Str=2
-Def=2
-Int=2
-Spd=2
+Hp=1.5
+Str=1.8
+Def=1.8
+Int=1.8
+Spd=1.8
 Augment=Techbonus.EnhanceKatana.EnhanceZen.MagicBonus
 Techs=NejibanaWaterDance.NejibanaWaterBlast
 IgnitionTrigger=10
@@ -426,7 +426,7 @@ Effect=Status
 
 [RedDragoon]
 Name=RedDragoon
-HP=2
+HP=1.5
 Str=2
 Def=2
 Int=2
@@ -441,7 +441,7 @@ AdditionalCode=writeini $char($1) modifiers Fire 0
 
 [DarkDragoon]
 Name=DarkDragoon
-HP=2
+HP=1.5
 Str=2.5
 Def=2.5
 Int=2.5
@@ -456,11 +456,11 @@ AdditionalCode=writeini $char($1) modifiers Dark 0
 
 [ExcalijuProc]
 Name=ExcalijuProc
-hp=2
-Str=3
-def=3
-int=3
-spd=3
+hp=1.5
+Str=2
+def=2
+int=2
+spd=2
 Augment=MeleeBonus.TechBonus.IgnoreGuardian.IgnoreMetalDefense.EnhanceDoubleTurnChance.HurtEthereal.IgnoreDefense.AdditionalHit.EnhanceDoubleTurnChance.EnhanceSword.EnhanceWeaponBash
 Effect=Status
 IgnitionTrigger=10
@@ -471,9 +471,9 @@ Desc=kills a nearby zombie and green sparkles appear around %user $+ , granting 
 
 [KomamuraShikai]
 Name=Shikai
-hp=2
-Str=2.5
-def=2.5
+hp=1.5
+Str=2
+def=2
 int=2
 spd=2
 Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
@@ -487,9 +487,9 @@ AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ig
 [KomamuraBankai]
 Name=Bankai
 hp=2
-Str=3
-def=3
-int=3
+Str=1.5
+def=1.5
+int=1.5
 spd=1
 Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana.IgnoreDefense.IgnoreGuardian.IgnoreMetalDefense
 IgnitionTrigger=10
@@ -500,11 +500,11 @@ Desc=holds his zanpakutou back behind a bit and shouts, "Bankai! Kokujou Tengen 
 
 [I-NoOverdrive]
 Name=I-NoOverdrive
-hp=1.2
-Str=1.2
-def=1.2
-int=1.2
-spd=1.2
+hp=1.3
+Str=1.3
+def=1.3
+int=1.3
+spd=1.3
 Augment=MeleeBonus.TechBonus.EnhanceAxe.EnhanceDoubleTurnChance.IgnoreGuardian.IgnoreDefense
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -529,11 +529,11 @@ StatusType=ConserveTP
 
 [Red_Dragon]
 Name=RedDragon
-hp=2
-Str=4
-def=4
-int=4
-spd=4
+hp=1.5
+Str=2
+def=2
+int=2
+spd=2
 Augment=MeleeBonus.TechBonus.EnhanceCriticalHits
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -543,11 +543,11 @@ Desc=gains a very serious expression and stares at the battlefield. %users then 
 
 [TensaZangetsu]
 Name=TensaSangetsu
-hp=1.5
-Str=2
-def=2
-int=2
-spd=2
+hp=1.3
+Str=1.5
+def=1.5
+int=1.5
+spd=1.5
 Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -558,11 +558,11 @@ AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ig
 
 [HollowIchigo]
 Name=HollowIchigo
-hp=1.2
-Str=2
-def=2
-int=2
-spd=2
+hp=1.5
+Str=1.5
+def=1.5
+int=1.5
+spd=1.5
 Augment=MeleeBonus.TechBonus.EnhanceCriticalHits.EnhanceKatana
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -572,11 +572,11 @@ Desc=holds his left hand in front of his face for a moment, before quickly pulli
 
 [Animus]
 Name=Animus
-hp=3
-Str=4
-def=4
-int=4
-spd=4
+hp=2
+Str=3
+def=3
+int=3
+spd=3
 Augment=MeleeBonus.TechBonus.MagicBonus.RenkeiBonus.EnhanceCriticalHits.EnhanceDodge.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -586,11 +586,11 @@ Desc=closes her eyes for a moment before opening them again. They are now glowin
 
 [BlackArmor]
 Name=BlackArmor
-hp=2.5
-Str=2.5
-def=2.5
-int=2.5
-spd=2.5
+hp=2
+Str=2
+def=2
+int=2
+spd=2
 Augment=MeleeBonus.TechBonus.MagicBonus.RenkeiBonus.EnhanceCriticalHits.EnhanceDodge.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -600,11 +600,11 @@ Desc=finds a mysterious capsule with a small 'W' on it. Zero steps inside and hi
 
 [DrLightCapsule]
 Name=DrLightCapsule
-hp=2.5
-Str=2.5
-def=2.5
-int=2.5
-spd=2.5
+hp=2
+Str=2
+def=2
+int=2
+spd=2
 Augment=MeleeBonus.TechBonus.MagicBonus.RenkeiBonus.EnhanceCriticalHits.EnhanceDodge.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -694,11 +694,11 @@ Desc='s eyes gain a firey glow as metal spikes emerge out from the skull!
 
 [WitchTime]
 Name=WitchTime
-hp=2
-Str=2
-def=2
-int=2
-spd=2
+hp=1.5
+Str=1.5
+def=1.5
+int=1.5
+spd=1.5
 Augment=EnhanceDodge.EnhanceCriticalhits.IgnoreGuardian.IgnoreDefense.EnhanceZen
 Effect=Status
 Techs=QueenSheba.Gomorrah.Malphas.Hekatoncheir.Scolopendra.Phantasmaraneae
@@ -711,11 +711,11 @@ StatusType=Slow
 
 [UmbranClimax]
 Name=UmbranClimax
-hp=2
-Str=2
-def=2
-int=2
-spd=2
+hp=1.5
+Str=1.7
+def=1.7
+int=1.7
+spd=1.7
 Augment=EnhanceDodge.EnhanceCriticalhits.IgnoreGuardian.IgnoreDefense.EnhanceZen
 Effect=Status
 Techs=Omne.Labolas.Mictlantecuhtli.Baal.Hydra.Diomedes
@@ -729,7 +729,7 @@ AdditionalCode=writeini $char($1) status Auto-Regen on
 
 [DragonAspect]
 Name=DragonAspect
-hp=2
+hp=1.5
 Str=2
 def=2
 int=2
@@ -746,7 +746,7 @@ Desc=shouts out "MUL QAH DIIV!" and gains the mighty aspect of a dragon. Spectra
 
 [TwiliPower]
 Name=TwiliPower
-hp=2
+hp=1.5
 Str=2
 def=2
 int=2
@@ -917,4 +917,4 @@ Techs=
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Desc='s hair and skin goes pale and now wears a full-bodied black garment with black pants, gloves, and boots, over which he wears a flowing white robe. He also gains the Rinne Sharingan as a third eye, which has a ripple-like pattern which spreads over the eyeball, with red sclerae and irides, containing a pattern of nine tomoe.
+Desc='s hair and skin goes pale and now wears a full-bodied black garment with black pants, gloves, and boots, over which he wears a flowing white robe. He also gains the Rinne Sharingan as a third eye, that has a ripple-like pattern which spreads over the eyeball, with red sclerae and irides, containing a pattern of nine tomoe.
