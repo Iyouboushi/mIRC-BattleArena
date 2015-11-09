@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 10/26/15
+;;;; Last updated: 11/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2594,96 +2594,66 @@ formula.techdmg.monster {
 
   $cap.damage($1, $3, tech)
 
-  if ((%flag = $null) || (%flag = npc)) {
+  var %min.damage $readini($dbfile(techniques.db), $2, BasePower)
+  inc %min.damage %attack.rating
 
-    if (%attack.damage <= 1) {
-      var %base.tech $readini($dbfile(techniques.db), $2, BasePower)
-      var %int.increase.amount $round($calc(%true.base.stat * .10),0)
-      inc %base.weapon %int.increase.amount
-      var %min.damage %base.weapon
-      set %attack.damage $readini($dbfile(techniques.db), $2, BasePower)
+  var %level.difference $calc($get.level($1) / $get.level($3))
+  var %min.damage $round($calc(%min.damage * %level.difference),0)
 
-      var %attacker.level $get.level($1)
-      var %defender.level $get.level($3)
+  if (%attack.damage <= 10) { 
+    set %attack.damage $readini($dbfile(techniques.db), $2, BasePower)
 
-      if (%attacker.level < %defender.level) { 
-        set %attack.damage 1
-        if (%flag = $null) { set %min.damage $round($calc(%min.damage / 8),0) }
-        else {  set %min.damage $round($calc(%min.damage / 2),0) }
-      }
-      set %attack.damage $rand(%min.damage, %attack.damage)
+    if ($calc($get.level($3) - $get.level($1))  >= -300) { 
+      set %attack.damage 1
+      set %min.damage $round($calc(%min.damage / 1.5),0)
     }
   }
 
-  if ((%flag = monster) && ($readini($char($3), info, flag) = $null)) {
+  if (%battle.rage.darkness = on) { var %min.damage %attack.damage }
 
-    var %min.damage $readini($dbfile(techniques.db), $2, BasePower)
-    inc %min.damage %attack.rating
+  if (%battle.rage.darkness != on) { 
 
-    var %level.difference $calc($get.level($1) / $get.level($3))
-    var %min.damage $round($calc(%min.damage * %level.difference),0)
+    if (%battle.type != torment) {
+      var %damage.ratio.adjust $calc($get.level($1) / $get.level($3))
 
-    if (%attack.damage <= 10) { 
-      set %attack.damage $readini($dbfile(techniques.db), $2, BasePower)
+      if (%damage.ratio < .10) { var %damage.ratio .10 }
+      if (%damage.ratio > 120) { var %damage.ratio 120 }
 
-      if ($calc($get.level($3) - $get.level($1))  >= -300) { 
-        set %attack.damage 1
-        set %min.damage $round($calc(%min.damage / 1.5),0)
+      set %attack.damage $round($calc(%attack.damage * %damage.ratio.adjust),0)
+      var %min.damage $round($calc(%min.damage * %damage.ratio.adjust),0)
+
+      if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
+        var %level.difference $calc($get.level($1) - $get.level($3)) 
+        if (%level.difference <= 0) && (%level.difference >= -500) { var %min.damage $round($calc(%min.damage / 2),0) }
+        if (%level.difference < -500) { var %min.damage $round($calc(%min.damage / 10),0) }
+      }
+
+      if ((%attack.damage >= 1) && ($get.level($1) > $get.level($3))) {
+        var %level.difference $calc($get.level($1) - $get.level($3)) 
+        if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
+        if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
       }
     }
-
-    if (%battle.rage.darkness = on) { var %min.damage %attack.damage }
-
-    if (%battle.rage.darkness != on) { 
-
-
-
-      if (%battle.type != torment) {
-        var %damage.ratio.adjust $calc($get.level($1) / $get.level($3))
-
-        if (%damage.ratio < .10) { var %damage.ratio .10 }
-        if (%damage.ratio > 120) { var %damage.ratio 120 }
-
-        set %attack.damage $round($calc(%attack.damage * %damage.ratio.adjust),0)
-        var %min.damage $round($calc(%min.damage * %damage.ratio.adjust),0)
-
-        if ((%attack.damage >= 1) && ($get.level($1) <= $get.level($3))) {
-          var %level.difference $calc($get.level($1) - $get.level($3)) 
-          if (%level.difference <= 0) && (%level.difference >= -500) { var %min.damage $round($calc(%min.damage / 2),0) }
-          if (%level.difference < -500) { var %min.damage $round($calc(%min.damage / 10),0) }
-        }
-
-        if ((%attack.damage >= 1) && ($get.level($1) > $get.level($3))) {
-          var %level.difference $calc($get.level($1) - $get.level($3)) 
-          if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
-          if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
-        }
-      }
-    }
-
-
-    if (%battle.type = torment) { 
-      var %percent.damage.amount 5
-      if ($return_playersinbattle > 1) { inc %percent.damage.amount 2 }
-      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(%percent.damage.amount * %torment.level))
-
-      if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
-
-      inc %attack.damage $calc(%attack.damage * %torment.level)
-      set %attack.damage $rand(%min.damage, %attack.damage)
-
-      if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $round($calc($readini($char($3), basestats, hp) / 3),0)  }
-    }
-
-    set %attack.damage $rand(%attack.damage, %min.damage)
-    if ($readini(battlestats.dat, battle, winningstreak) <= 0) { %attack.damage = $round($calc(%attack.damage / 2),0) }
   }
 
+  if (%battle.type = torment) { 
+    var %percent.damage.amount 5
+    if ($return_playersinbattle > 1) { inc %percent.damage.amount 2 }
+    var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(%percent.damage.amount * %torment.level))
+
+    if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
+
+    inc %attack.damage $calc(%attack.damage * %torment.level)
+    set %attack.damage $rand(%min.damage, %attack.damage)
+
+    if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $round($calc($readini($char($3), basestats, hp) / 3),0)  }
+  }
 
   set %attack.damage $rand(%attack.damage, %min.damage)
+  if ($readini(battlestats.dat, battle, winningstreak) <= 0) { %attack.damage = $round($calc(%attack.damage / 2),0) }
+
   unset %min.damage
   if ($return_winningstreak <= 0) { %attack.damage = $round($calc(%attack.damage / 2),0) }
-
 
   unset %true.base.stat
 
@@ -2692,19 +2662,6 @@ formula.techdmg.monster {
 
   ; Check for the Guardian style
   $guardian_style_check($3)
-
-  ; AOE nerf check for players
-  if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
-
-    if (%aoe.turn > 1) {
-      var %aoe.nerf.percent $calc(2 * %aoe.turn)
-      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 5 }
-      if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
-      var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
-      var %aoe.nerf.amount $round($calc(%attack.damage * %aoe.nerf.percent),0)
-      dec %attack.damage %aoe.nerf.amount
-    }
-  }
 
   ; Check for the Metal Defense flag
   $metal_defense_check($3)
