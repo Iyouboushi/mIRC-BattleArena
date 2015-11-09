@@ -1,16 +1,16 @@
 [BaseStats]
-Hp=$readini($char(Mini_World_Eater), basestats, hp)
-Tp=$readini($char(Mini_World_Eater), basestats, tp)
-Str=$readini($char(Mini_World_Eater), basestats, str)
-Def=$readini($char(Mini_World_Eater), basestats, def)
-Int=$readini($char(Mini_World_Eater), basestats, int)
-Spd=$readini($char(Mini_World_Eater), basestats, spd)
+Hp=2000
+Tp=300
+Str=250
+Def=250
+Int=250
+Spd=250
 IgnitionGauge=2
 Name=Mini World Eater
 
 
 [Battle]
-Hp=1500
+Hp=2000
 Tp=300
 Str=250
 Def=250
