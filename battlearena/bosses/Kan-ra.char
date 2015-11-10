@@ -102,7 +102,7 @@ Resist-Intimidate=100
 Resist-Paralysis=90
 Resist-Petrify=90
 Resist-Curse=100
-Impetus=60
+Impetus=$calc(%current.turn + 60)
 Wizardry=50
 ClearMind=3
 

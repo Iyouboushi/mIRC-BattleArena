@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/07/15
+;;;; Last updated: 11/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -830,7 +830,7 @@ deal_damage {
 
             if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
               if ($readini($char($1), info, flag) = $null) {
-                if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+                if (%absorb.amount > 500) { var %absorb.amount 500 }
               }
             }
 

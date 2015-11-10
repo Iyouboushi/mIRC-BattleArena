@@ -28,7 +28,7 @@ RageCountDown=0
 [Descriptions]
 Char=is an ancient god of regeneration and resurrection. It is wrapped in blue mummy wrappings. 
 Rage=red ghosts appears as he yells out in anger!
-BossQuote=You cannot kill me! I shall always come back!
+BossQuote=You cannot kill me with your puny weapons and techniques! I shall always come back!
 DeathMessage=falls down into a heap of blue wraps.
 Revive=begins to glow as the blue wraps come back together to reform Osiris who begins laughing.4 "I told you! You cannot kill me!"
 
@@ -53,7 +53,6 @@ Created=N/a
 Streak=-1000
 IgnoreQuicksilver=true
 CanTaunt=false
-IgnoreElementalMessage=true
 BattleStats=IgnoreHP
 JustReleaseDefense=99
 DeathConditions=MagicEffect.Status.Renkei.Item
@@ -105,7 +104,7 @@ Resist-Paralysis=90
 Resist-Petrify=90
 Resist-Curse=100
 Impetus=40
-Regen=10
+Regen=5
 
 
 [Techniques]
