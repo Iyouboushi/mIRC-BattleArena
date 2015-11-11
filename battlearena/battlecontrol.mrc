@@ -1430,6 +1430,7 @@ alias generate_battle_order {
 
     if ($readini($char(%who.battle), battle, status) = inactive) {  inc %battle.speed -9999999999 }
     if ($readini($char(%who.battle), monster, type) = object) { inc %battle.speed -99999999999 }
+    if ($readini($char(%who.battle), info, ai_type) = defender) { inc %battle.speed -999999999999 }
 
     if (%battle.speed <= 0) { set %battle.speed 1 }
 
