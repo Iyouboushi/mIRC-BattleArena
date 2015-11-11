@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/09/15
+;;;; Last updated: 11/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -731,6 +731,9 @@ formula.meleedmg.player.formula_2.0 {
 
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
+
+  ; If this current melee attack is using the same weapon as the previous melee attack, nerf the damage
+  $melee.lastaction.nerfcheck($1, $2)
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -1827,6 +1830,9 @@ formula.meleedmg.player.formula_2.5 {
 
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
+
+  ; If this current melee attack is using the same weapon as the previous melee attack, nerf the damage
+  $melee.lastaction.nerfcheck($1, $2)
 
   ; Check for the Guardian style
   $guardian_style_check($3)

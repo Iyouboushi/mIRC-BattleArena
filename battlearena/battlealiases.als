@@ -828,12 +828,6 @@ deal_damage {
 
             unset %current.accessory | unset %current.accessory.type
 
-            if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
-              if ($readini($char($1), info, flag) = $null) {
-                if (%absorb.amount > 500) { var %absorb.amount 500 }
-              }
-            }
-
             set %life.target $readini($char($1), Battle, HP) | set %life.max $readini($char($1), Basestats, HP)
             inc %life.target %absorb.amount
             if (%life.target >= %life.max) { set %life.target %life.max }
@@ -1169,6 +1163,13 @@ display_damage {
       ; Show how much the person absorbed back.
       var %absorb.amount $round($calc(%attack.damage / 3),0)
       if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
+
+      if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+        if ($readini($char($1), info, flag) = $null) {
+          if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+        }
+      }
+
       $display.message(3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.,battle) 
       unset %absorb
     }
@@ -1180,6 +1181,13 @@ display_damage {
         var %absorb.amount $round($calc(%attack.damage / 3),0)
         if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
         if (%absorb.amount <= 0) { var %absorb.amount 1 }
+
+        if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+          if ($readini($char($1), info, flag) = $null) {
+            if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+          }
+        }
+
         $display.message(3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.,battle) 
         set %life.target $readini($char($1), Battle, HP) | set %life.max $readini($char($1), Basestats, HP)
         inc %life.target %absorb.amount
