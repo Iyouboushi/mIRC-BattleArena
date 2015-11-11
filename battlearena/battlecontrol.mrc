@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/31/15
+;;;; Last updated: 11/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1419,7 +1419,7 @@ alias generate_battle_order {
 
     if (%surpriseattack = on) {
       var %ai.type $readini($char(%who.battle), info, ai_type)
-      if (%ai.type != defender) { 
+      if ((%ai.type != defender) && ($readini($char(%who.battle), monster, type) != object)) { 
         if ($readini($char(%who.battle), info, flag) = monster) { inc %battle.speed 9999999999 }
       }
     }
@@ -1429,6 +1429,7 @@ alias generate_battle_order {
     }
 
     if ($readini($char(%who.battle), battle, status) = inactive) {  inc %battle.speed -9999999999 }
+    if ($readini($char(%who.battle), monster, type) = object) { inc %battle.speed -99999999999 }
 
     if (%battle.speed <= 0) { set %battle.speed 1 }
 
