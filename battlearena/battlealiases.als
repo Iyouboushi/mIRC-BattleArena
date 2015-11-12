@@ -1816,7 +1816,7 @@ random.battlefield.curse {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battlefield.limitations {
   if ($return_winningstreak <= 10) {
-    if ((%battle.type != dungeon) && (%portal.bonus != true)) { return }
+    if (((%battle.type != dungeon) && (%battle.type != torment) && (%portal.bonus != true))) { return }
   }
 
   set %battleconditions $readini($dbfile(battlefields.db), %current.battlefield, limitations)
