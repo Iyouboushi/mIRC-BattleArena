@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/11/15
+;;;; Last updated: 11/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1165,7 +1165,7 @@ display_damage {
       if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
 
       if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
-        if ($readini($char($1), info, flag) = $null) {
+        if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
           if (%absorb.amount > 1500) { var %absorb.amount 1500 }
         }
       }
@@ -1183,7 +1183,7 @@ display_damage {
         if (%absorb.amount <= 0) { var %absorb.amount 1 }
 
         if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
-          if ($readini($char($1), info, flag) = $null) {
+          if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
             if (%absorb.amount > 1500) { var %absorb.amount 1500 }
           }
         }

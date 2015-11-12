@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/10/15
+;;;; Last updated: 11/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2990,7 +2990,7 @@ formula.techdmg.player.formula_2.0 {
   }
 
   ; If this current tech is using the same tech as the previous tech attack, nerf the damage
-  if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
@@ -3318,7 +3318,7 @@ formula.techdmg.player.formula_2.5 {
   }
 
   ; If this current tech is using the same tech as the previous tech attack, nerf the damage
-  if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
@@ -3562,6 +3562,8 @@ formula.techdmg.player.formula_1.0 {
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
   if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
 
+  ; if the tech is the same as what was used in the last round, nerf the damage
+  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
@@ -3581,8 +3583,6 @@ formula.techdmg.player.formula_1.0 {
 
   ; In this bot we don't want the attack to ever be lower than 1 except for rare instances..
   if (%attack.damage <= 0) { set %attack.damage 1 } 
-
-
 
   if ($readini($char($3), info, ai_type) = counteronly) { set %attack.damage 0 | return }
 
@@ -3878,7 +3878,7 @@ formula.techdmg.player.formula_3.0 {
   }
 
   ; If this current tech is using the same tech as the previous tech attack, nerf the damage
-  if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
@@ -4593,6 +4593,9 @@ formula.techdmg.player.old {
     }
   }
 
+  ; If the tech is the same as the last round, nerf the damage
+  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+
   ; AOE nerf check for players
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
@@ -4891,6 +4894,9 @@ formula.techdmg.player.percent {
       }
     }
   }
+
+  ; If the tech is the same as the last round, nerf the damage
+  if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
 
   ; AOE nerf check for players
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
