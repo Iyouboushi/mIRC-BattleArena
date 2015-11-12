@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 10/05/15
+;;;; Last updated: 10/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1494,10 +1494,11 @@ alias skill.clonecontrol {
 
   if (($3 = scavenge) || ($3 = steal)) { $display.message($readini(translation.dat, errors, CloneCannotUseSkill), private) | halt }
 
-  if (%shadow.command = taunt) {  $taunt($1 $+ _clone, $3) }
-  if (%shadow.command = attack) { set %attack.target $3 | $covercheck($3) |  $attack_cmd($1 $+ _clone , %attack.target) }
-  if (%shadow.command = tech) { set %attack.target $4 | $covercheck($4) |  $tech_cmd($1 $+ _clone, $3, %attack.target) }
   if (%shadow.command = skill) { $use.skill($1 $+ _clone, $2, $3, $4) } 
+  if (%shadow.command = taunt) {   $partial.name.match($1, $3) | $taunt($1 $+ _clone, %attack.target) }
+  if (%shadow.command = attack) {  $partial.name.match($1, $3) | $covercheck(%attack.target) | $attack_cmd($1 $+ _clone , %attack.target) }
+  if (%shadow.command = tech) {   $partial.name.match($1, $4) | $tech_cmd($1 $+ _clone, $3, %attack.target) }
+
 }
 
 ;=================
