@@ -3427,7 +3427,7 @@ orb.adjust {
 
   if ($readini($char($1), status, SpiritOfHero) = true) { 
     remini $char($1) status SpiritOfHero
-    var %orb.tier -2
+    var %orb.tier -1
   }
 
   if ((%moon.phase = Blood Moon) && (%winning.streak > 50)) { inc %orb.tier 1 }
