@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/12/15
+;;;; Last updated: 11/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2996,7 +2996,7 @@ formula.techdmg.player.formula_2.0 {
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
-      var %aoe.nerf.percent $calc(10 * %aoe.turn)
+      var %aoe.nerf.percent $calc(7 * %aoe.turn)
       if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 10 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
@@ -3326,9 +3326,9 @@ formula.techdmg.player.formula_2.5 {
     if (%aoe.turn > 1) {
 
       if (%battle.type = torment) { var %aoe.nerf.percent $calc(2 * %aoe.turn) }
-      else {  var %aoe.nerf.percent $calc(10 * %aoe.turn) }
+      else {  var %aoe.nerf.percent $calc(7 * %aoe.turn) }
 
-      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 15 }
+      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 10 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
       var %aoe.nerf.amount $round($calc(%attack.damage * %aoe.nerf.percent),0)
@@ -3569,7 +3569,7 @@ formula.techdmg.player.formula_1.0 {
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
-      var %aoe.nerf.percent $calc(8 * %aoe.turn)
+      var %aoe.nerf.percent $calc(7 * %aoe.turn)
       if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 5 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
@@ -3884,8 +3884,8 @@ formula.techdmg.player.formula_3.0 {
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {
 
     if (%aoe.turn > 1) {
-      var %aoe.nerf.percent $calc(10 * %aoe.turn)
-      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 15 }
+      var %aoe.nerf.percent $calc(7 * %aoe.turn)
+      if ($readini($dbfile(techniques.db), $2, hits) > 1) { inc %aoe.nerf.percent 10 }
       if (%aoe.nerf.percent > 90) { var %aoe.nerf.percent 90 }
       var %aoe.nerf.percent $calc(%aoe.nerf.percent / 100) 
       var %aoe.nerf.amount $round($calc(%attack.damage * %aoe.nerf.percent),0)
