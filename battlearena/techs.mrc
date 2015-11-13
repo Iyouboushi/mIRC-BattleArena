@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 10/25/15
+;;;; Last updated: 11/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -136,8 +136,8 @@ alias tech_cmd {
   ; Make sure some old attack variables are cleared.
   unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
   unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged 
-  unset %techincrease.check |  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
-  unset %multihit.message.on 
+  unset %techincrease.check | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
+  unset %multihit.message.on  | unset %lastaction.nerf
 
   $check_for_battle($1) 
 
@@ -273,6 +273,8 @@ alias tech_cmd {
   if (%tech.type = stealPower) { $covercheck($3, $2) | $tech.stealPower($1, $2, %attack.target ) }
 
   if (%tech.type = AOE) { 
+    if ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction)) { set %lastaction.nerf true }
+
     if ($is_charmed($1) = true) { 
       var %current.flag $readini($char($1), info, flag)
       if ((%current.flag = $null) || (%current.flag = npc)) { $tech.aoe($1, $2, $3, player) | halt }
