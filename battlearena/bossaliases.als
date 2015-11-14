@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 10/09/15
+;;;; Last updated: 11/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -26,7 +26,8 @@ get_boss_type {
   var %winning.streak.check $readini(battlestats.dat, battle, winningstreak)
   if (%mode.gauntlet.wave != $null) { inc %winning.streak.check %mode.gauntlet.wave }
 
-  if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.dinosaur false }
+
+  if ((%winning.streak.check < 50) || (%winning.streak.check > 500)) { var %enable.dinosaur false }
   if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.bandits false }
   if ((%winning.streak.check < 50) || (%winning.streak.check > 100)) { var %enable.doppelganger false }
   if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.gremlins false }
@@ -39,7 +40,7 @@ get_boss_type {
   }
 
   if ((%winning.streak.check >= 200) && (%winning.streak.check <= 5000)) { 
-    if ($readini(system.dat, system, EnablePredator) = yes) { var %enable.predator true }
+    if ($readini(system.dat, system, EnablePredator) = true) { var %enable.predator true }
   }
 
   if ((%winning.streak.check >= 200) && (%winning.streak.check <= 5000)) { 
@@ -52,11 +53,11 @@ get_boss_type {
 
   var %boss.chance $rand(1,100)
 
-  if ((%enable.dinosaur = true) && (%boss.chance <= 8)) { %boss.choices = %boss.choices $+ .dinosaurs }
-  if ((%enable.doppelganger = true) && (%boss.chance <= 10)) { %boss.choices = %boss.choices $+ .doppelganger }
+  if ((%enable.dinosaur = true) && (%boss.chance <= 30)) { %boss.choices = %boss.choices $+ .dinosaurs }
+  if ((%enable.doppelganger = true) && (%boss.chance <= 30)) { %boss.choices = %boss.choices $+ .doppelganger }
   if ((%enable.warmachine = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .warmachine }
-  if ((%enable.bandits = true) && (%boss.chance <= 5)) { %boss.choices = %boss.choices $+ .bandits }
-  if ((%enable.gremlins = true) && (%boss.chance <= 5)) { %boss.choices = %boss.choices $+ .gremlins }
+  if ((%enable.bandits = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .bandits }
+  if ((%enable.gremlins = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .gremlins }
   if ((%enable.crystalshadow = true) && (%boss.chance <= 15)) { 
     if (%winning.streak.check > 15) { %boss.choices = %boss.choices $+ .crystalshadow }
   }
@@ -65,9 +66,9 @@ get_boss_type {
     if ((%winning.streak.check >= 15) && (%winning.streak.check <= 500)) { %boss.choices = %boss.choices $+ .pirates }
   }
 
-  if ((%enable.wallofflesh = true) && (%boss.chance <= 10)) { %boss.choices = %boss.choices $+ .demonwall }
+  if ((%enable.wallofflesh = true) && (%boss.chance <= 25)) { %boss.choices = %boss.choices $+ .wallofflesh }
   if ((%enable.demonwall = true) && (%boss.chance <= 15)) { %boss.choices = %boss.choices $+ .demonwall }
-  if ((%enable.predator = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .predator }  
+  if ((%enable.predator = true) && (%boss.chance <= 50)) { %boss.choices = %boss.choices $+ .predator }  
 
   ; Choose a boss type
 
@@ -1506,7 +1507,8 @@ generate_crystalshadow {
 ; an elder dragon boss
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate_dinosaur {
-  var %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
+
+  var %current.battlestreak $return_winningstreak
   if (%battle.type = ai) { set %current.battlestreak %ai.battle.level }
 
   var %dinoname Tyrannosaurus.Spinosaurus.Giganotosaurus
@@ -1523,7 +1525,9 @@ generate_dinosaur {
   .copy -o $char(new_chr) $char(%monster.name)
 
   var %boss.level $calc(%current.battlestreak + 5)
-  if (%boss.level < $return_playerlevelaverage) { var %boss.level $return_playerlevelaverage }
+  if (%battle.type != ai) { 
+    if (%boss.level < $return_playerlevelaverage) { var %boss.level $return_playerlevelaverage }
+  }
 
   if (%battle.type = ai) { set %ai.monster.name %dinosaur | writeini $txtfile(1vs1bet.txt) money monsterfile %dinosaur }
 
@@ -1801,6 +1805,7 @@ predator_fight {
 
     writeini $char(%monster.name) info SpawnAfterDeath Predator 
     writeini $char(%monster.name) info BossLevel $calc($1 - 5)
+    writeini $char(%monster.name) descriptions DeathMessage falls over dead! Suddenly a Predator leaps out and gives off a loud chuckle as it prepares to face the heroes.
 
     $boost_monster_stats(%monster.name)
 
