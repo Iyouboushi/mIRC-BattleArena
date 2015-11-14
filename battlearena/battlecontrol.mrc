@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 11/11/15
+;;;; Last updated: 11/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2346,7 +2346,8 @@ alias battle.reward.influence {
     var %current.influence $readini(battlestats.dat, conquest, alliedinfluence) 
     if (%current.influence = $null) { var %current.influence 0 }
     var %influence.gain 1
-    if (%battle.type = defendoutpost) { var %influence.gain 50 }
+    if (%battle.type = defendoutpost) { var %influence.gain 40 }
+    if (%battle.type = boss) { var %influence.gain 2 }
     inc %current.influence %influence.gain
     writeini battlestats.dat conquest AlliedInfluence %current.influence
   }
@@ -2451,9 +2452,9 @@ alias battle.reward.redorbs {
       else { var %streak.level.difference $round($calc($current.battlestreak - $get.level.basestats(%who.battle)),0) }
 
       ; Check to see what level the winner is vs the current battlestreak.  If the streak is higher, nerf the orbs.
-      if (%streak.level.difference >= 1000) { %total.redorbs.reward = $round($calc(%total.redorbs.reward * .015),0) }
-      if ((%streak.level.difference > 500) && (%streak.level.difference < 1000)) { %total.redorbs.reward = $round($calc(%total.redorbs.reward * .020),0) }
-      if ((%streak.level.difference > 100) && (%streak.level.difference <= 500)) { %total.redorbs.reward = $round($calc(%total.redorbs.reward * .045),0) }
+      if (%streak.level.difference >= 1000) { %total.redorbs.reward = $round($calc(%total.redorbs.reward * 0.15),0) }
+      if ((%streak.level.difference > 500) && (%streak.level.difference < 1000)) { %total.redorbs.reward = $round($calc(%total.redorbs.reward * 0.25),0) }
+      if ((%streak.level.difference > 100) && (%streak.level.difference <= 500)) { %total.redorbs.reward = $round($calc(%total.redorbs.reward * 0.40),0) }
 
       if (%total.redorbs.reward <= 5) { %total.redorbs.reward = 5 }
 
