@@ -1385,6 +1385,9 @@ Battle Arena Bot VERSIONS
 - Changed code so that +1 accessories, weapons and armor all show up in blue. Legendary weapons and armor will show up in orange.
 - Changed code so that Torment reward items (Horadric and crafting) show up in orange in the items list
 - Changed the max level of the skill OrbHunter to 30. However, the base cost from 21+ is 2500 per level instead of 250.
+- Changed the cost of the Orb Bonus potion effect
+- Changed the chance of certain special bosses to occur
+- Changed the orb penalty for Spirit of the Hero to be not as much
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
@@ -1411,6 +1414,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug in which provoked NPCs may try to attack dead targets that have been erased due to multiple waves
 - Fixed a bug in which player clones would die if they were summoned before a no-trust or no-npc portal battle happened
 - Fixed a bug with the enhancement point shop that might prevent certain skills from showing up in the shop
+- Fixed a bug that would prevent the wall of flesh from ever being chosen
 - Fixed an exploit that allowed players to get around the melee penalty if the same weapon is used twice in a row
 - Removed the elements from NPC weapons
 - Removed attack_Aettir.txt, and attack_ChatoyantStaff.txt as they are no longer needed
