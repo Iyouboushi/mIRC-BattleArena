@@ -617,7 +617,6 @@ Element=fire
 magic=yes
 stat=int
 
-
 [FinalHeaven]
 Type=Single
 TP=40
@@ -689,8 +688,6 @@ magic=no
 stat=str
 renkei=1
 IgnoreDefense=5
-
-Postscript=$iif($readini($char($1), battle, hp) >= 100, writeini $char($1) battle hp $round($calc($readini($char($1), battle, hp) - $return_percentofvalue(%attack.damage, 25)),0))
 
 [MillionStab]
 Type=Single
