@@ -42,7 +42,7 @@ PlayerExists=$chr(3) $+ 4 $+ A character with the name $nick already exists.  
 NameReserved=$chr(3) $+ 4 $+ A character with the name $nick is reserved and cannot be used. Please change your nick and try again.
 CharacterCreated=$chr(3) $+ 3 $+  $+ $nick has entered the dimensional rift to join the battle arena.
 StartingCharOrbs=$chr(3) $+ 2 $+ You enter the arena with a total of %starting.orbs  $+ $readini(system.dat, system, currency) to spend.  
-StartingCharPassword=$chr(3) $+ 2 $+ Your password has been set to %password and it is recommended you change it using the command !newpass %password newpasswordhere in private or at least write the password down.  $chr(3) $+ Passwords cannot be recovered!
+StartingCharPassword=$chr(3) $+ 2 $+ Your password has been set to %password and it is recommended you change it using the command !newpass %password newpasswordhere in private or at least write the password down. $chr(3) $+ Passwords cannot be recovered!
 UnZappedComplete=$chr(3) $+ 10 $+ $+ %real.name has been restored to this dimension. 
 ZappedComplete=$chr(3) $+ 10 $+ $+ %real.name has been erased from this dimension. 
 NewPassword=$chr(3) $+ 3 $+ Your new password has been set to $3 
@@ -78,11 +78,11 @@ ViewCurrentStyle=$chr(3) $+ 3 $+  $+ %real.name is currently using the %curre
 ViewCurrentStyleMaxed=$chr(3) $+ 3 $+  $+ %real.name is currently using the %current.playerstyle style. [Currently Maxed] 
 ViewStyleList=$chr(3) $+ 3 $+  $+ %real.name knows the following styles: %styles.list
 SwitchStyles=$chr(3) $+ 3 $+  $+ %real.name has switched to the $3 style! 
-ViewMyTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following techniques for $gender($nick) $iif($person_in_mech($nick) = true, %weapon.equipped, $iif(%weapon.equipped.left != $null, equipped weapons, %weapon.equipped.right)) $+ : %techs.list 
-ViewOthersTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following techniques for $gender($2) $iif($person_in_mech($2) = true, %weapon.equipped, $iif(%weapon.equipped.left != $null, equipped weapons, %weapon.equipped.right)) $+ : %techs.list 
+ViewMyTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following techniques for $gender($nick) $iif($person_in_mech($nick) = true, $equipment.color(%weapon.equipped) $+ %weapon.equipped $+ 3, $iif(%weapon.equipped.left != $null, equipped weapons, $equipment.color(%weapon.equipped.right) $+ %weapon.equipped.right $+ 3)) $+ : %techs.list 
+ViewOthersTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following techniques for $gender($2) $iif($person_in_mech($2) = true, $equipment.color(%weapon.equipped) $+ %weapon.equipped $+ 3, $iif(%weapon.equipped.left != $null, equipped weapons, $equipment.color(%weapon.equipped.right) $+ %weapon.equipped.right $+ 3)) $+ : %techs.list
 ViewMyIgnitionTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following ignition techniques: %ignition.tech.list 
 ViewOthersIgnitionTechs=$chr(3) $+ 3 $+  $+ %real.name knows the following ignition techniques: %ignition.tech.list
-NoTechsForMe=$chr(3) $+ 3 $+  $+ %real.name does not know any techniques for $gender($nick) %weapon.equipped $+ .
+NoTechsForMe=$chr(3) $+ 3 $+  $+ %real.name does not know any techniques for $gender($nick) $equipment.color(%weapon.equipped) $+  %weapon.equipped $+ 3.
 NoTechsForOthers=$chr(3) $+ 3 $+  $+ %real.name does not know any techniques for $gender($2) %weapon.equipped $+ .
 ViewIgnitions=$chr(3) $+ 3 $+  $+ %real.name has obtained the following Ignitions: %ignitions.list 
 NoIgnitions=$chr(3) $+ 3 $+  $+ %real.name does not know any Ignitions
@@ -126,28 +126,28 @@ HasNoInstruments=$chr(3) $+ 3 $+  $+ %real.name currently has no instruments.
 HasNoIngredients=$chr(3) $+ 3 $+  $+ %real.name currently has no potion ingredients.
 ViewAccessories=$chr(3) $+ 3 $+  $+ %real.name has the following accessories %accessories.list
 ViewSongs=$chr(3) $+ 3 $+  $+ %real.name knows how to perform the following songs: %songs.list
-ViewEquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has the following accessory equipped %equipped.accessory
+ViewEquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has the following accessory equipped $equipment.color(%equipped.accessory) $+ %equipped.accessory
 ViewRunes=$chr(3) $+ 3 $+  $+ %real.name has the following runes %runes.list
 HasNoAccessories=$chr(3) $+ 3 $+  $+ %real.name currently has no accessories. 
 HasNoSongs=$chr(3) $+ 3 $+  $+ %real.name does not currently know any songs. 
 HasNoRunes=$chr(3) $+ 3 $+  $+ %real.name currently has no runes.
 HasNoTrusts=$chr(3) $+ 3 $+  $+ %real.name does not currently have any NPC Trusts.
 HasNoEquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name currently has no accessory equipped. 
-EquipWeaponGM=$chr(3) $+ 3 $+  $+ %real.name has equipped $3 $+ $iif($2 != both,  in $gender($1) $2 hand) $+ .
-EquipWeaponPlayer=$chr(3) $+ 3 $+  $+ %real.name has equipped $3 $+ $iif($2 != both,  in $gender($1) $2 hand) $+ .
-EquipWeaponMonster=$chr(3) $+ 3 $+  $+ %real.name has equipped %weapon.name
+EquipWeaponGM=$chr(3) $+ 3 $+  $+ %real.name has equipped $equipment.color($3) $+ $3 $+ 3 $+ $iif($2 != both,  in $gender($1) $2 hand) $+ .
+EquipWeaponPlayer=$chr(3) $+ 3 $+  $+ %real.name has equipped $equipment.color($3) $+ $3 $+ 3 $+ $iif($2 != both,  in $gender($1) $2 hand) $+ .
+EquipWeaponMonster=$chr(3) $+ 3 $+  $+ %real.name has equipped $equipment.color(%weapon.name) $+ %weapon.name
 EquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has equipped $gender($1) mech with a $2
 UnEquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has unequipped $gender($1) mech of the $2
-UnequipWeapon=$chr(3) $+ 3 $+  $+ %real.name unequipped the %weapon.equipped.right $iif(%weapon.equipped.left != $null, and the %weapon.equipped.left)
+UnequipWeapon=$chr(3) $+ 3 $+  $+ %real.name unequipped the $equipment.color(%weapon.equipped.right) $+ %weapon.equipped.right $+ 3 $iif(%weapon.equipped.left != $null, and the $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left)
 ViewStatus=$chr(3) $+ 3 $+  $+ %real.name $+ 's status effects:4 %all_status 3[Active Skills:4 %all_skills $+ 3] $iif($return.potioneffect($nick) != none, [Potion Effect:12 $return.potioneffect($nick) $+ 3])
 OKDesc=$chr(3) $+ 3 $+ Your $2 desc was entered correctly!
 ClearDesc=$chr(3) $+ 3 $+ Your $3 desc has been cleared!
-EquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has equipped the accessory $2
-RemovedAccessory=$chr(3) $+ 3 $+  $+ %real.name has removed the accessory $2
-EquippedArmor=$chr(3) $+ 3 $+  $+ %real.name is now wearing the $readini($dbfile(equipment.db), $2, name)
-RemovedArmor=$chr(3) $+ 3 $+  $+ %real.name has removed the $readini($dbfile(equipment.db), $2, name)
-NotWearingThatAccessory=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $2 accessory.
-NotWearingThatArmor=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $2 $+ .
+EquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has equipped the accessory $equipment.color($2) $+ $2
+RemovedAccessory=$chr(3) $+ 3 $+  $+ %real.name has removed the accessory $equipment.color($2) $+ $2
+EquippedArmor=$chr(3) $+ 3 $+  $+ %real.name is now wearing the $equipment.color($2) $+ $readini($dbfile(equipment.db), $2, name)
+RemovedArmor=$chr(3) $+ 3 $+  $+ %real.name has removed the $equipment.color($2) $+ $readini($dbfile(equipment.db), $2, name)
+NotWearingThatAccessory=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $equipment.color($2) $+ $2 3accessory.
+NotWearingThatArmor=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $equipment.color($2) $+ $2 $+ 3.
 ShopLevelLowered=$chr(3) $+ 2 $+ Your shop level has been lowered.  It is now $readini($char($2), stuff, shoplevel) $+ !
 FoodStatIncrease=$chr(3) $+ 2 $+ Your %food.type has permanently increased by %food.bonus $+ !
 SellMessage=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat takes $4 $3 $+ $iif($4 < 2, ,s) $+  from you and gives you $bytes(%total.price,b) $readini(system.dat, system, currency) $+ !

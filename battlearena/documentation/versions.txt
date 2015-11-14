@@ -1388,6 +1388,7 @@ Battle Arena Bot VERSIONS
 - Changed the cost of the Orb Bonus potion effect
 - Changed the chance of certain special bosses to occur
 - Changed the orb penalty for Spirit of the Hero to be not as much
+- Changed many lines in translation.dat to be consistent with equipment and weapon colors
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item

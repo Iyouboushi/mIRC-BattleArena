@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/13/15
+;;;; Last updated: 11/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -421,6 +421,17 @@ writehost {
   if ($isfile($char($nick)) = $true) { 
     if ($2 != $null) { writeini $char($1) info lastIP $2 }
   }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns a color for equipment
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+equipment.color {
+  var %equipment.color 3
+  if (+1 isin $1) { var %equipment.color 12 }
+  if (+2 isin $1) { var %equipment.color 6 }
+  if ((($readini($dbfile(weapons.db), $1, legendary) = true) || ($readini($dbfile(items.db), $1, legendary) = true) || ($readini($dbfile(equipment.db), $1, legendary) = true))) { var %equipment.color 7 }
+  return %equipment.color
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2115,8 +2126,8 @@ armor.list {
         var %armor.level $readini($dbfile(equipment.db), %armor.name, LevelRequirement)
         if (%armor.level = $null) { var %armor.level 0 }
 
-        if (+1 isin %armor.name) { var %armor.name 2 $+ %armor.name $+ 3 }
-        if (+2 isin %armor.name) { var %armor.name 12 $+ %armor.name $+ 3 }
+        if (+1 isin %armor.name) { var %armor.name 12 $+ %armor.name $+ 3 }
+        if (+2 isin %armor.name) { var %armor.name 6 $+ %armor.name $+ 3 }
         if ($readini($dbfile(equipment.db), %armor.name, Legendary) = true) { var %armor.name 7 $+ %armor.name $+ 3 }
 
 
@@ -2165,20 +2176,24 @@ armor.list {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 accessories.list {
   ; CHECKING ACCESSORIE
-  unset %accessories.list | unset %accessories.list2
+  unset %accessories.list | unset %accessories.list2 | unset %accessories.list3 | unset %accessories.have
 
-  var %value 1 | var %items.lines $lines($lstfile(items_accessories.lst))
+  var %value 1 | var %items.lines $lines($lstfile(items_accessories.lst)) | var %accessories.have 0
 
   while (%value <= %items.lines) {
     set %item.name $read -l $+ %value $lstfile(items_accessories.lst)
-    if (+1 isin %item.name) { var %item.name 12 $+ %item.name $+ 3 }
+    var %item.name $equipment.color(%item.name) $+ %item.name $+ 3
 
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount = 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%accessories.list,46) <= 20) { %accessories.list = $addtok(%accessories.list, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %accessories.list2 = $addtok(%accessories.list2, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      inc %accessories.have 1
+
+      if (%accessories.have <= 18) {  %accessories.list = $addtok(%accessories.list, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ((%accessories.have > 18) && (%accessories.have <= 36)) { %accessories.list2 = $addtok(%accessories.list2, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if (%accessories.have > 36) {  %accessories.list3 = $addtok(%accessories.list3, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+
     }
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2188,6 +2203,7 @@ accessories.list {
   set %replacechar $chr(044) $chr(032)
   %accessories.list = $replace(%accessories.list, $chr(046), %replacechar)
   %accessories.list2 = $replace(%accessories.list2, $chr(046), %replacechar)
+  %accessories.list3 = $replace(%accessories.list3, $chr(046), %replacechar)
 
   unset %item.name | unset %item_amount | unset %number.of.items | unset %value
   return

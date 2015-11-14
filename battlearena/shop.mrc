@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 11/13/15
+;;;; Last updated: 11/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1410,7 +1410,7 @@ alias shop.weapons {
       $inc.redorbsspent($1, %total.price)
       inc %weapon.level $4
 
-      if (%weapon.level > 500) {   $display.private.message(4Purchasing this amount will put you over the max limit. Please lower the amount and try again.) | halt }
+      if (%weapon.level > 250) {   $display.private.message(4Purchasing this amount will put you over the max limit. Please lower the amount and try again.) | halt }
 
       writeini $char($1) stuff redorbs %player.redorbs
       writeini $char($1) weapons $3 %weapon.level
