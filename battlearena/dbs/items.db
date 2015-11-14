@@ -1429,6 +1429,13 @@ Cost=0
 Desc=A glowing set of earrings previously worn by Lady Amandine. This accessory will increase the power of magic.
 IncreaseMagic.Amount=.47
 
+[Aetherial-Earrings+1]
+Type=accessory
+AccessoryType=IncreaseMagic
+Cost=0
+Desc=A glowing set of earrings previously worn by Lady Amandine. This accessory will increase the power of magic.
+IncreaseMagic.Amount=.49
+
 [Aetherial-Ring]
 Type=accessory
 AccessoryType=IncreaseMeleeDamage

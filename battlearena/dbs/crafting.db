@@ -304,21 +304,28 @@ Accessories
 [Roshi's-Glasses+1]
 Gem=Diamond
 Ingredients=Roshi's-Glasses
-SuccessRate=1
+SuccessRate=100
 Roshi's-Glasses=5
+Amount=1
+
+[Aetherial-Earrings+1]
+Gem=Diamond
+Ingredients=Aetherial-Earrings
+SuccessRate=100
+Aetherial-Earrings=5
 Amount=1
 
 [Wizard's-Amulet+1]
 Gem=Diamond
 Ingredients=Wizard's-Amulet
-SuccessRate=1
+SuccessRate=100
 Wizard's-Amulet=5
 Amount=1
 
 [Cultist-Rosary+1]
 Gem=Diamond
 Ingredients=Cultist-Rosary+1
-SuccessRate=1
+SuccessRate=100
 Cultist-Rosary+1=5
 Amount=1
 
