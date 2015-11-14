@@ -3427,12 +3427,12 @@ orb.adjust {
 
   if ($readini($char($1), status, SpiritOfHero) = true) { 
     remini $char($1) status SpiritOfHero
-    var %orb.tier -1
+    dec %orb.tier 1
   }
 
   if ((%moon.phase = Blood Moon) && (%winning.streak > 50)) { inc %orb.tier 1 }
 
-  if (%orb.tier = -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .20)),0) }
+  if (%orb.tier <= -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .20)),0) }
   if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .45)),0) }
   if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .50)),0) }
   if (%orb.tier = 1) { return }
@@ -3673,6 +3673,7 @@ conquest.display {
 db.shenronwish.check {
   if ($readini(battlestats.dat, dragonballs, ShenronWish) != on) { return }
   if ($readini($char($1), info, flag) != $null) { return }
+  if (%battle.type = ai) { return }
   if (%mode.gauntlet = on) { return }
 
   ;  Shenron's Wish turns on a bunch of skills and status bonuses
@@ -3686,6 +3687,7 @@ db.shenronwish.check {
 }
 
 db.shenronwish.turncheck {
+  if (%battle.type = ai) { return }
   if (($readini(battlestats.dat, dragonballs, ShenronWish) = on) && (%mode.gauntlet != on)) { 
     var %shenronwish.turn $readini(battlestats.dat, dragonballs, ShenronWish.rounds)  
     if (%shenronwish.turn = $null) { var %shenronwish.turn 1 }
