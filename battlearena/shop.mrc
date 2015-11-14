@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 11/11/15
+;;;; Last updated: 11/13/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2134,7 +2134,7 @@ alias shop.potioneffects {
 
   if ($2 = list) { 
     $display.private.message(2This shop is used to purchase special Potion Effects that will take effect during or after you next battle. You can only purchase one at a time.)
-    $display.private.message(12OrbBonus 2potion effect: $+ $iif($item.amount($1, BeetleShell) >= 10, 3, 4) 10 Beetle Shells2 + $+ $iif($item.amount($1, BeetleJaw) >= 10, 3, 4) 10 Beetle Jaws2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)
+    $display.private.message(12OrbBonus 2potion effect: $+ $iif($item.amount($1, BeetleShell) >= 2, 3, 4) 2 Beetle Shells2 + $+ $iif($item.amount($1, BeetleJaw) >= 2, 3, 4) 2 Beetle Jaws2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)
     $display.private.message(12DoubleLife 2potion effect: $+ $iif($item.amount($1, Rose) >= 2, 3, 4) 2 Roses2 + $+ $iif($item.amount($1, Tulip) >= 1, 3, 4) 1 Tulip2 + $+ $iif($item.amount($1, Milk) >= 2, 3, 4) 2 Milk)    
     $display.private.message(12BonusSpoils 2potion effect: $+ $iif($item.amount($1, BlueKinstone) >= 2, 3, 4) 2 Blue Kinstones2 + $+ $iif($item.amount($1, GreenKinstone) >= 2, 3, 4) 2 Green Kinstones2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
     $display.private.message(12AugmentBonus 2potion effect: $+ $iif($item.amount($1, RedeadAsh) >= 2, 3, 4) 2 Redead Ashes2 + $+ $iif($item.amount($1, GibdoBandage) >= 2, 3, 4) 2 Gibdo Bandages2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
@@ -2153,8 +2153,8 @@ alias shop.potioneffects {
 
     if ($3 = OrbBonus) { 
 
-      var %beetle.shells.needed 10
-      var %beetle.jaws.needed 10
+      var %beetle.shells.needed 2
+      var %beetle.jaws.needed 2
       var %milk.needed 1
 
       dec %beetle.shells.needed $item.amount($1, BeetleShell)
@@ -2170,8 +2170,8 @@ alias shop.potioneffects {
         halt
       }
 
-      writeini $char($1) item_amount BeetleShell $calc($item.amount($1, BeetleShell) - 10)
-      writeini $char($1) item_amount BeetleJaw $calc($item.amount($1, BeetleJaw) - 10)
+      writeini $char($1) item_amount BeetleShell $calc($item.amount($1, BeetleShell) - 2)
+      writeini $char($1) item_amount BeetleJaw $calc($item.amount($1, BeetleJaw) - 2)
       writeini $char($1) item_amount Milk $calc($item.amount($1, Milk) - 1)
 
       writeini $char($1) status PotionEffect Orb Bonus
