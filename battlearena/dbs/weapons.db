@@ -22,6 +22,7 @@ Axes=Axes
 GreatAxes=Great Axes
 Daggers=Daggers
 Hammers=Hammers
+Lightsabers=Lightsabers
 
 
 ; Below are the weapon lists
@@ -46,6 +47,7 @@ Axes=Farsha.Guttler.Kerehcatl
 GreatAxes=Ukonvasara.Bravura.Lightreaver
 Daggers=MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra
 Hammers=Mjolnir
+Lightsabers=Lightsaber
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
 Defunct=
@@ -1022,6 +1024,23 @@ BasePower=120
 Upgrade=0
 2Handed=true
 IgnoreDefense=10
+
+=============================================
+LIGHTSABERS
+=============================================
+[Lightsaber]
+Cost=0
+Type=Lightsaber
+Info=An ancient Jedi weapon that creates a powerful plasma beam. Outside of Torment battles the lightsaber has a 1000 power and ignores 10% defense. Inside of Torment the lightsaber has a power of 2000 and ignores 20% defense.
+Abilities=
+Hits=$rand(1,3)
+BasePower=$iif(%battle.type = torment, 2000, 1000)
+Upgrade=3000
+Element=none
+2Handed=false
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+SpecialWeapon=true
+Legendary=true
 
 =============================================
 WANDS & STAVES

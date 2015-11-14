@@ -3479,6 +3479,15 @@ Weapon=Mjolnir
 Desc=has proven to be worthy of the power of Thor and can now wield Mjolnir! 
 Exclusive=yes
 
+[Jedi'sTreasure]
+type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Lightsaber
+Desc=has discovered an old Jedi's treasure that was left behind: his lightsaber.
+Exclusive=yes
+
 [Blueprints:X-Buster]
 Type=special
 Cost=0

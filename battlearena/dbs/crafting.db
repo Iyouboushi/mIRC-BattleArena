@@ -169,7 +169,15 @@ ReusablePart=1000
 ForgottenSoul=1500
 ArcaneDust=1000
 
-
+[Jedi'sTreasure]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
+SuccessRate=100
+Amount=1
+LifeShard=1000
+ReusablePart=1300
+ForgottenSoul=1000
+ArcaneDust=1000
 
 ============
 Misc Items

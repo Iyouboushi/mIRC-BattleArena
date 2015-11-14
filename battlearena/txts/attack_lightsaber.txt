@@ -1,0 +1,3 @@
+swings the humming blade at %enemy before stepping backwards in a defensive stance
+leaps at %enemy and slashes several times before rolling to the side before %enemy can react
+strikes at %enemy with $gender(%attacker) humming blade
