@@ -2182,13 +2182,13 @@ accessories.list {
 
   while (%value <= %items.lines) {
     set %item.name $read -l $+ %value $lstfile(items_accessories.lst)
-    var %item.name $equipment.color(%item.name) $+ %item.name $+ 3
 
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount = 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       inc %accessories.have 1
+      var %item.name $equipment.color(%item.name) $+ %item.name $+ 3
 
       if (%accessories.have <= 18) {  %accessories.list = $addtok(%accessories.list, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       if ((%accessories.have > 18) && (%accessories.have <= 36)) { %accessories.list2 = $addtok(%accessories.list2, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
