@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 10/12/15
+;;;; Last updated: 11/15/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2125,7 +2125,7 @@ alias skill.alchemy {
   if (%player.ingredients < %total.ingredients) { $display.message($readini(translation.dat, errors, MissingIngredients),private)  | halt }
 
   ; Display the desc. 
-  if ($readini($char($1), descriptions, aggressor) = $null) { set %skill.description uses the power of the gem to combine ingredients in an attempt to create something better! }
+  if ($readini($char($1), descriptions, alchemy) = $null) { set %skill.description uses the power of the gem to combine ingredients in an attempt to create something better! }
   else { set %skill.description $readini($char($1), descriptions, alchemy) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, global) 
 

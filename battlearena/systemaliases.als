@@ -1210,6 +1210,7 @@ shields.get.list {
 
       if ((%shield_level != $null) && (%shield_level >= 1)) { 
         ; add the shield level to the shield list
+        var %shield.name $equipment.color(%shield.name) $+ %shield.name $+ 3
         var %shield_to_add  $+ %shield.name $+ 
 
         inc %shieldlist.totalshields.counter 1

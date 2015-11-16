@@ -140,8 +140,8 @@ EquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has equipped $gender($1) mech wit
 UnEquipMechItem=$chr(3) $+ 3 $+  $+ %real.name has unequipped $gender($1) mech of the $2
 UnequipWeapon=$chr(3) $+ 3 $+  $+ %real.name unequipped the $equipment.color(%weapon.equipped.right) $+ %weapon.equipped.right $+ 3 $iif(%weapon.equipped.left != $null, and the $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left)
 ViewStatus=$chr(3) $+ 3 $+  $+ %real.name $+ 's status effects:4 %all_status 3[Active Skills:4 %all_skills $+ 3] $iif($return.potioneffect($nick) != none, [Potion Effect:12 $return.potioneffect($nick) $+ 3])
-OKDesc=$chr(3) $+ 3 $+ Your $2 desc was entered correctly!
-ClearDesc=$chr(3) $+ 3 $+ Your $3 desc has been cleared!
+OKDesc=$chr(3) $+ 3 $+ Your $2 description was entered correctly!
+ClearDesc=$chr(3) $+ 3 $+ Your $3 description has been cleared!
 EquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has equipped the accessory $equipment.color($2) $+ $2
 RemovedAccessory=$chr(3) $+ 3 $+  $+ %real.name has removed the accessory $equipment.color($2) $+ $2
 EquippedArmor=$chr(3) $+ 3 $+  $+ %real.name is now wearing the $equipment.color($2) $+ $readini($dbfile(equipment.db), $2, name)
