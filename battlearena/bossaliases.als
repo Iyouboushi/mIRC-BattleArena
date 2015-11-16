@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 11/13/15
+;;;; Last updated: 11/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -11,6 +11,7 @@ get_boss_type {
 
   if (%savethepresident = on) { set %boss.type normal | return } 
   if (%battle.type = defendoutpost) { set %boss.type normal | return }
+  if (%battle.type = torment) { set %boss.type normal | return }
   if ($return_winningstreak <= 10) { set %boss.type normal | return }
 
   set %boss.choices normal
