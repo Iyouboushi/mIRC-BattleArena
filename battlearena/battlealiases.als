@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/12/15
+;;;; Last updated: 11/17/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3309,10 +3309,10 @@ battlefield.event {
     var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
     while (%battletxt.current.line <= %battletxt.lines) { 
       var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
-      if ($readini($char(%who.battle), battle, status) = dead) { inc %battletxt.current.line }
+      if (($readini($char(%who.battle), battle, status) = dead) || ($readini($char(%who.battle), monster, type) = object)) { inc %battletxt.current.line }
       else {
         if (%event.status.type != $null) { 
-          if ($person_in_mech(%who.battle) = false) {   writeini $char(%who.battle) status %event.status.type yes }
+          if ($person_in_mech(%who.battle) = false)  {  writeini $char(%who.battle) status %event.status.type yes }
         }
         if ($readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number) = damage) { 
 
@@ -3343,7 +3343,7 @@ battlefield.event {
     var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
     while (%battletxt.current.line <= %battletxt.lines) { 
       var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
-      if ((($readini($char(%who.battle), battle, hp) <= 0) || ($person_in_mech(%who.battle) = true) || ($readini($char(%who.battle), battle, status) = runaway))) { inc %battletxt.current.line }
+      if (((($readini($char(%who.battle), battle, hp) <= 0) || ($readini($char(%who.battle), monster, type) = object) || ($person_in_mech(%who.battle) = true) || ($readini($char(%who.battle), battle, status) = runaway)))) { inc %battletxt.current.line }
       else {  %alive.members = $addtok(%alive.members, %who.battle, 46)  }
       inc %battletxt.current.line
     }
@@ -3357,7 +3357,7 @@ battlefield.event {
 
     unset %random.member | unset %alive.members | unset %number.of.members
 
-    if ($readini($char(%member), battle, hp) = $null) { return }
+    if (($readini($char(%member), battle, hp) = $null) || ($readini($char(%member), monster, type) = object)) { return }
 
     $set_chr_name(%member) 
     $display.message(4 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
@@ -3393,7 +3393,7 @@ battlefield.event {
     var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
     while (%battletxt.current.line <= %battletxt.lines) { 
       var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
-      if ($readini($char(%who.battle), battle, hp) <= 0)  { inc %battletxt.current.line }
+      if (($readini($char(%who.battle), battle, hp) <= 0)  || ($readini($char(%who.battle), monster, type) = object)) { inc %battletxt.current.line }
       else if ((($readini($char(%who.battle), info, flag) = $null) || ($person_in_mech(%who.battle) = true) || ($readini($char(%who.battle), info, flag) = npc))) { inc %battletxt.current.line }
       else if ($readini($char(%who.battle), battle, status) = runaway) { inc %battletxt.current.line }
       else {
