@@ -16,4 +16,4 @@ sucker punches %enemy in the face and gives a pair of swift kicks into $gender(%
 grabs %enemy by the hair, lifts up a knee, and slams %enemy rapidly into the knee many times before winding up hard for a last time, slamming %enemy hard with the knee while letting go of $gender(%target) hair
 punches %enemy hard with a left and follows through with a spinning backhand with the right hand
 slams %enemy over the head and upper back with a double-armed overhead hammer strike, pounding $gender2(%target) about an inch into the ground
-charges at %enemy at full speed and executes a $rand(3,6) $+ -hit combo before leaping back into fighting position
+charges at %enemy at full speed and executes a combo attack before leaping back into fighting position
