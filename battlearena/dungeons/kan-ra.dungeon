@@ -52,6 +52,6 @@ Monsters=Kan-ra_Skeleton.Kan-ra_Mummy $+ $iif($rand(1,2) = 1, .Kan-ra_Scarab, .K
 [7]
 Desc=As the monsters die the golden plate opens up revealing a hidden room. Jumping down the heroes find themselves standing in a large burial chamber. A large golden sarcophagus sits in the center of the room. Suddenly the lid of the sarcophagus moves and comes crashing into the ground. A loud growl is heard and suddenly a figure leaps out and prepares for battle.
 Battlefield=Pyramid Burial Chamber
-Monsters=$iif($rand(1,2) = 1, Kan-ra, Osiris)
+Monsters=$iif($rand(1,3) = 1, Osiris, Kan-ra)
 bossroom=true
 
