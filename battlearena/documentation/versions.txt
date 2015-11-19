@@ -1042,7 +1042,7 @@ Battle Arena Bot VERSIONS
 - Changed the way passwords behave. Now they are hashes rather than encodes.  In order for this to work, the bot must
   be running version 6.3 or higher (the old version, 6.16 will still use encode for anyone who doesn't want to upgrade).
 - Changed the Auto Next so that it will boot anyone who misses 3 turns in a single battle out of the battle (sets them
-  as if they fleed the battle).
+  as if they fled the battle).
 - Changed Lost Souls and Orb Fountains to explode once darkness hits.
 - Changed !styles to allow the viewing of other player's styles (such as !styles Iyouboushi)
 - Changed !view-info tech to show the stat modifier of techs.
@@ -1389,6 +1389,8 @@ Battle Arena Bot VERSIONS
 - Changed the chance of certain special bosses to occur
 - Changed the orb penalty for Spirit of the Hero to be not as much
 - Changed many lines in translation.dat to be consistent with equipment and weapon colors
+- Changed the minimum AI vs AI payout ratio to .50
+- Changed the AI vs AI information to hopefully be a bit easier/faster to read and added the betting commands to it
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
