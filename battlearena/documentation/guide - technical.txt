@@ -256,8 +256,8 @@ mnd=250
 agi=250
 spd=250
 ig=800
-[style]
 
+[style]
 This section is for how many base style points a player gets for killing either a boss or a normal monster. Note that just because the default value is 80 for bosses and 60 for monsters it doesn't mean that's exactly how many a player will get (there's other factors for calculating the resulting style points). Defaults are listed below.
 
 BossDeath=80
@@ -309,21 +309,23 @@ This section is used to store the current system.dat version. If your version do
 
 BATTLESTATS.DAT
 The battlestats.dat, at the moment, keeps track of the total number of battles the bot has had, how many wins/losses, and the current winning or losing streak; as well as dragon ball information, conquest information, and AI Battle information.
-[battle]
 
+[battle]
 This section contains information on all the battles that the bot has had since it has started. In here you can see the total number of battles, how many wins, how many losses, how many draws, the current winning or losing streak, the level adjust (which makes battles harder), the gauntlet record, how many empty rounds have occured, how many “game days” have passed, and how many Allied Forces Presidents have been captured/rescued/killed.
 
 This section can be completely cleared by using a bot admin command.
+
 [conquest]
-
 The conquest section contains information on the Conquest system. In here you can see when the last tally was, how many conquest points the players have (negative means monsters are winning), how many orbs players are receiving as a bonus (if they've won the conquest period), who the previous winner was, as well as how many times players and monsters have won.
+
 [dragonballs]
-
 This section contains information on the dragonballs including how many have been found, if they're active or if Shenron's Wish is current (and, if it is, what round it's on).
-[AIBattles]
 
+[AIBattles]
 This section contains information on the AI vs AI Battles including how many total AI battles have occurred and how many times npcs and monsters have won each.
 
+[Bounty]
+This section contains information on the current boss that the bot has picked for a bounty and the time when the bounty was placed.
 
 
 

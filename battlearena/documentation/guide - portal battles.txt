@@ -61,6 +61,14 @@ GodSeal
 HyruleOrb
 UnknownPowerSource 
 
+
+Shadow Portal Items
+Shadow Portal Items are uncapped portals based on how the portal battles used to be before the level sync was added. All of these are paid for using High Kindred Crests.
+
+[05 Crests] ShadowDemonBell
+[10 Crests] ShadowGodSeal
+[20 Crests] ShadowAtlantianCrystal
+
 --------------------------------
 
 
@@ -588,8 +596,8 @@ Current level is capped at: 100
 
 
 
-UNKNOWNPOWERSOURCE
 
+UNKNOWNPOWERSOURCE
 
 Portal Item: UnknownPowerSource
 Portal Item Cost: Crafted Only
@@ -597,3 +605,42 @@ Potential Rewards: AlphaWeltallCore
 Allied Notes Worth: 2500
 Danger Level: Extremely High
 Current level is capped at: 300
+
+
+
+
+SHADOWDEMONBELL
+That insufferable clown, Jester, is back at it and is disrupting the operations of the Allied Forces. They are asking any and all heroes to go put an end to that clown once and for all. Shami knows of a way to enter his lair and has been instructed to sell the item to those brave enough to go. 
+
+Portal Item: ShadowDemonBell
+Portal Item Cost: 5 High Kindred Crests
+Potential Rewards: JesterHat+1, HighKindredCrest, KindredCrest, Death'sBreath
+Allied Notes Worth: 800
+Danger Level: Medium to High
+Current level: 250
+
+
+
+
+SHADOWGODSEAL
+Intelligence has gathered that the center chamber on the island is home to Kirin, the king of the Sky Gods.  Using the power of the shadow god seal, heroes can face the true power of Kirin. 
+
+Portal Item: ShadowGodSeal
+Portal Item Cost: 10 High Kindred Crests
+Potential Rewards: Death'sBreath
+Allied Notes Worth: 2500
+Danger Level: Impossible to Gauge
+Current level: 1500
+
+
+
+
+SHADOWATLANTIANCRYSTAL
+From the depths of the ocean it rose: an ancient city shimmering in gold. The powerful being Ashi had finally done it, discovered and revived the ancient city. He has made it his home and intends to conquer and rule the world from it. It's up to you to go put an end to the monstrous man known as Ashi Atora. Shami can create a crystal that will allow you to enter the city for a short time, though it will cost you. 
+
+Portal Item: ShadowAtlantianCrystal
+Portal Item Cost: 20 High Kindred Crests
+Potential Rewards: ShadowSpool, Death'sBreath
+Allied Notes Worth: 5000
+Danger Level: Impossible to Gauge
+Current level: 700
