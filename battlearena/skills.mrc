@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 11/15/15
+;;;; Last updated: 11/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -12,6 +12,7 @@ ON 3:TEXT:*does *:*:{
   $controlcommand.check($nick, $1)
   if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
   if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
+
   $use.skill($1, $2, $3, $4) 
 }
 alias use.skill { 
@@ -19,6 +20,8 @@ alias use.skill {
   ; $2 = does
   ; $3 = skill name
   ; $4 = target, if necessary
+
+  if ($4 != $null) { $partial.name.match($1, $4) }
 
   if ($3 = speed) { $skill.speedup($1) }
   if ($3 = elementalseal) { $skill.elementalseal($1) }
@@ -28,7 +31,7 @@ alias use.skill {
   if ($3 = manawall) { $skill.manawall($1) } 
   if ($3 = royalguard) { $skill.royalguard($1) }
   if ($3 = utsusemi) { $skill.utsusemi($1) }
-  if ($3 = fullbring) { $skill.fullbring($1, $4) }
+  if ($3 = fullbring) { $skill.fullbring($1, %attack.target) }
   if ($3 = doubleturn) { $skill.doubleturn($1) } 
   if ($3 = sugitekai) { $skill.doubleturn($1) } 
   if ($3 = meditate) { $skill.meditate($1) }
@@ -37,22 +40,22 @@ alias use.skill {
   if ($3 = bloodspirit) { $skill.bloodspirit($1) } 
   if ($3 = drainsamba) { $skill.drainsamba($1) } 
   if ($3 = formlessstrike) { $skill.formlessstrike($1) } 
-  if (($3 = regen) && ($4 = $null)) { $skill.regen($1) } 
-  if (($3 = regen) && ($4 = stop)) { $skill.regen.stop($1) } 
-  if ($3 = kikouheni) { $skill.kikouheni($1, $4) }
+  if (($3 = regen) && (%attack.target = $null)) { $skill.regen($1) } 
+  if (($3 = regen) && (%attack.target = stop)) { $skill.regen.stop($1) } 
+  if ($3 = kikouheni) { $skill.kikouheni($1, %attack.target) }
   if ($3 = shadowcopy) { $skill.clone($1) }  
-  if ($3 = steal) { $skill.steal($1, $4, !steal) } 
-  if ($3 = analysis) { $skill.analysis($1, $4) } 
+  if ($3 = steal) { $skill.steal($1, %attack.target, !steal) } 
+  if ($3 = analysis) { $skill.analysis($1, %attack.target) } 
   if ($3 = quicksilver) { $skill.quicksilver($1) } 
-  if ($3 = cover) { $skill.cover($1, $4) } 
+  if ($3 = cover) { $skill.cover($1, %attack.target) } 
   if ($3 = aggressor) { $skill.aggressor($1) } 
   if ($3 = defender) { $skill.defender($1) }
-  if ($3 = alchemy) { $skill.alchemy($1, $4) } 
-  if ($3 = craft) { $skill.craft($1, $4) }  
+  if ($3 = alchemy) { $skill.alchemy($1, %attack.target) } 
+  if ($3 = craft) { $skill.craft($1, %attack.target) }  
   if ($3 = holyaura) { $skill.holyaura($1) } 
-  if ($3 = provoke) { $skill.provoke($1, $4) }
-  if ($3 = weaponlock) { $skill.weaponlock($1, $4) }  
-  if ($3 = disarm) { $skill.disarm($1, $4) } 
+  if ($3 = provoke) { $skill.provoke($1, %attack.target) }
+  if ($3 = weaponlock) { $skill.weaponlock($1, %attack.target) }  
+  if ($3 = disarm) { $skill.disarm($1, %attack.target) } 
   if ($3 = konzen-ittai) { $skill.konzen-ittai($1) } 
   if ($3 = sealbreak) { $skill.sealbreak($1) }
   if ($3 = magicmirror) { $skill.magicmirror($1) }
@@ -60,13 +63,13 @@ alias use.skill {
   if ($3 = thirdeye) { $skill.thirdeye($1) }
   if ($3 = scavenge) { $skill.scavenge($1) }
   if ($3 = perfectcounter) { $skill.perfectcounter($1) }
-  if ($3 = justrelease) { $skill.justrelease($1, $4, !justrelease) } 
+  if ($3 = justrelease) { $skill.justrelease($1, %attack.target, !justrelease) } 
   if ($3 = retaliation) { $skill.retaliation($1) } 
   if (($3 = lockpicking) || ($3 = lockpick)) { $skill.lockpicking($1) } 
   if ($3 = stoneskin) { $skill.stoneskin($1) }
-  if ($3 = tabularasa) { $skill.tabularasa($1, $4) }
-  if ($3 = snatch) { $skill.snatch($1, $4) }
-  if ($3 = warp) { $skill.warp($1, $4-) } 
+  if ($3 = tabularasa) { $skill.tabularasa($1, %attack.target) }
+  if ($3 = snatch) { $skill.snatch($1, %attack.target) }
+  if ($3 = warp) { $skill.warp($1, %attack.target-) } 
 
   ; Below are monster-only skills
 
@@ -74,8 +77,8 @@ alias use.skill {
   if ($3 = demonportal) { $skill.demonportal($1) }
   if ($3 = cocoon) { $skill.cocoon.evolve($1) }
   if ($3 = cocoonevolve) { $skill.cocoon.evolve($1) }
-  if ($3 = monsterconsume) { $skill.monster.consume($1, $4) }
-  if ($3 = repairNaturalArmor) { $skill.monster.repairnaturalarmor($1, $4) }
+  if ($3 = monsterconsume) { $skill.monster.consume($1, %attack.target) }
+  if ($3 = repairNaturalArmor) { $skill.monster.repairnaturalarmor($1, %attack.target) }
 }
 
 ;=================
@@ -1504,7 +1507,7 @@ alias skill.clonecontrol {
 ;=================
 ; STEAL
 ;=================
-on 3:TEXT:!steal*:*: { $skill.steal($nick, $2, !steal) }
+on 3:TEXT:!steal*:*: { $partial.name.match($1, $2)  | $skill.steal($nick, %attack.target, !steal) }
 
 alias skill.steal { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
