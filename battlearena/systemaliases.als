@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/14/15
+;;;; Last updated: 11/19/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3930,6 +3930,8 @@ ai.battle.payout {
 
   if (%money.winner = npc) { var %payout.ratio $round($calc(%odds.monster / %odds.npc),2) }
   if (%money.winner = monster) { var %payout.ratio $round($calc(%odds.npc / %odds.monster),2) }
+
+  if (%payout.ratio <= .50) { var %payout.ratio .50 }
 
   var %gambler.lines $lines($txtfile(1vs1gamblers.txt)) | var %gamblers.current.line 1 
   while (%gamblers.current.line <= %gambler.lines) { 

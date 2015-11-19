@@ -208,7 +208,7 @@ MechUpgradeEnergy=$chr(3) $+ 2 $+ You pay a crazy engineer %total.price Allied 
 MechUpgradeHealth=$chr(3) $+ 2 $+ You pay a crazy engineer %total.price Allied Notes to upgrade your mech's health levels. When completed, your mech now has + $+ %health.to.increase more max health.
 MechUpgradeEngine=$chr(3) $+ 2 $+ You pay a crazy engineer %total.price Allied Notes to upgrade your mech's engine. When completed, your mech now has + $+ %engine.to.increase more engine efficiency.
 BetPlaced=$chr(3) $+ 2 $+ You place a $3 double dollar bet on $iif($2 = npc, %ai.npc.name, %ai.monster.name)
-BettingPeriodOpened=$chr(3) $+ 2 $+ The betting period is now open
+BettingPeriodOpened=$chr(3) $+ 2 $+ The betting period is now open!  Use !bet npc $$ to bet on12 %ai.npc.name 2or !bet monster $$ to bet on4 %ai.monster.name
 BettingPeriodClosed=$chr(3) $+ 2 $+ The betting period is now closed
 DoubleDollarWinners=$chr(3) $+ 3 $+ Gambling $iif($lines($txtfile(1vs1gamblers.txt)) > 1, Winners, Winner) $+ : %winners
 AuctionWinner=$chr(3) $+ 3 $+ Congratulations! You just won an auction! You just won 1 %auction.item for %auction.cost allied notes.
@@ -587,15 +587,15 @@ BattleAssaultOpen=$chr(3) $+ 4 $+ The Allied Forces are putting together an assa
 
 BattleOpenAIBet=$chr(3) $+ 4 $+ A 1 vs 1 AI Match is about to begin! The battle will begin in %time.to.enter seconds. 
 
-BattleAIInfo=$chr(3) $+ 12 $+ AI Battle information: [NPC] %ai.npc.name vs [Monster] %ai.monster.name on [Arena Level] %ai.battle.level [Favorite to Win]4 $iif(%favorite.to.win = monster, %ai.monster.name, %ai.npc.name)
+BattleAIInfo=$chr(3) $+ 2 $+ AI Battle information:12 %ai.npc.name 2vs4 %ai.monster.name 2on Arena Level %ai.battle.level [Favorite to Win]4 $iif(%favorite.to.win = monster, 4 $+ %ai.monster.name, 12 $+ %ai.npc.name)
 
 ; commenting this out for now. 
 ; with [Opening Odds] of %odds.npc $+  $+ $chr(58) $+  $+ %odds.monster
-; BattleAITechInfoNPC=$chr(3) $+ 12 $+ NPC Tech information: [ $+ %ai.npc.name $+ ]4 %ai.npc.techs
-; BattleAITechInfoMon=$chr(3) $+ 12 $+ Monster Tech information: [ $+ %ai.monster.name $+ ]4 %ai.monster.techs
+; BattleAITechInfoNPC=$chr(3) $+ 2 $+ NPC Tech information: [ $+ %ai.npc.name $+ ]4 %ai.npc.techs
+; BattleAITechInfoMon=$chr(3) $+ 2 $+ Monster Tech information: [ $+ %ai.monster.name $+ ]4 %ai.monster.techs
 
-BattleAITechInfoNPC=$chr(3) $+ 12 $+ [NPC] %ai.npc.name Information [Number of Techs: %total.npc.techs $+ ] [Has an Ignition: $iif(%npc.use.ignitions = yes, yes, no) $+ ] [Has a Mech: $iif($readini($char(%npcfile), mech, HpMax) != $null, yes, no) $+ ] 
-BattleAITechInfoMon=$chr(3) $+ 12 $+ [Monster] %ai.monster.name Information [Number of Techs: %total.monster.techs $+ ] [Has an Ignition: $iif(%monster.use.ignitions = yes, yes, no) $+ ] [Has a Mech: $iif($readini($char(%monsterfile), mech, HpMax) != $null, yes, no) $+ ]
+BattleAITechInfoNPC=$chr(3) $+ 12 $+  $+ %ai.npc.name 2Information [Number of Techs: %total.npc.techs $+ ] [Has an Ignition: $iif(%npc.use.ignitions = yes, yes, no) $+ ] [Has a Mech: $iif($readini($char(%npcfile), mech, HpMax) != $null, yes, no) $+ ] 
+BattleAITechInfoMon=$chr(3) $+ 4 $+  $+ %ai.monster.name 2Information [Number of Techs: %total.monster.techs $+ ] [Has an Ignition: $iif(%monster.use.ignitions = yes, yes, no) $+ ] [Has a Mech: $iif($readini($char(%monsterfile), mech, HpMax) != $null, yes, no) $+ ]
 BattleClosed=$chr(3) $+ 4 $+  $+ %real.name cannot join this battle as either there is no battle or the entry period is already closed.
 NoPlayersOnField=$chr(3) $+ 4 $+ There were no players to meet the monsters on the battlefield!  The battle is over.  
 NotEnoughPlayersOnField=$chr(3) $+ 4 $+ There was not enough players for a PVP match!  The battle is over.
