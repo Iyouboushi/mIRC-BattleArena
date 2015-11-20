@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/17/15
+;;;; Last updated: 11/20/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -888,7 +888,8 @@ deal_damage {
 
   if ($person_in_mech($2) = false) { 
     if ($readini($char($2), battle, HP) <= 0) { 
-      if ($readini(battlestats.dat, Bounty, BossName) = $2) {
+
+      if (($readini(battlestats.dat, Bounty, BossName) = $2) && (%battle.type != ai)) {
         writeini $txtfile(battle2.txt) battleinfo bountyclaimed true 
         writeini $txtfile(battle2.txt) battleinfo bountyclaimedby $get_chr_name($1)
       }
