@@ -14,6 +14,7 @@ Agni=AerialCross.JetStream $+ $iif($weapon.linkcheck(Rudra) = true, .Tempest)
 Rudra=AerialCross.JetStream $+ $iif($weapon.linkcheck(Agni) = true, .Tempest)
 Joyeuse=FastBlade.CircleBlade.FlatBlade
 Excalibur=Atonement.CircleBlade.SpiritsWithin.VorpalBlade
+Excalibur+1=Atonement.CircleBlade.SpiritsWithin.VorpalBlade
 Murgleis=DeathBlossom.SwiftBlade.SavageBlade
 LexTalionis=GlorySlash.UrielBlade
 Soulsaber=SpiritsWithin.VorpalBlade.SeraphBlade
