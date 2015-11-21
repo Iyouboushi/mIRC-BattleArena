@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 11/13/15
+;;;; Last updated: 11/2115
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#:{ 
@@ -1652,7 +1652,7 @@ alias sing.song {
           while (%battletxt.current.line <= %battletxt.lines) { 
             var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
 
-            if (%who.battle != $1) {
+            if ((%who.battle != $1) && ($readini($char(%who.battle), battle, status) != dead)) {
               if ($person_in_mech(%who.battle) = false) {
 
                 var %flag $readini($char(%who.battle), info, flag)
@@ -1689,7 +1689,9 @@ alias sing.song {
           while (%battletxt.current.line <= %battletxt.lines) { 
             var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
 
-            if ($person_in_mech(%who.battle) = false) {  
+
+
+            if (($person_in_mech(%who.battle) = false) && ($readini($char(%who.battle), battle, status) != dead)) {  
             writeini $char(%who.battle) status %status.type.name yes }
 
             inc %battletxt.current.line 1
@@ -1701,7 +1703,8 @@ alias sing.song {
           var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
           while (%battletxt.current.line <= %battletxt.lines) { 
             var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
-            if ($person_in_mech(%who.battle) = false) {
+
+            if (($person_in_mech(%who.battle) = false) && ($readini($char(%who.battle), battle, status) != dead)) {  
 
               var %flag $readini($char(%who.battle), info, flag)
 
