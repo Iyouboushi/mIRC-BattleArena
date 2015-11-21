@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/20/15
+;;;; Last updated: 11/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -672,7 +672,9 @@ boost_monster_hp {
   if ((%hp > 25000) && (%battle.type = dragonhunt)) { var %hp $round($calc(25000 + (%hp * .25)),0) }
 
   if (%battle.type = torment) {
-    inc %hp $calc(%torment.level * 500000)
+    var %torment.hp.multiplier %torment.level
+    if (%torment.hp.multiplier >= 10) { var %torment.hp.multiplier 10 }
+    inc %hp $calc(%torment.hp.multiplier * 500000)
 
     if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 20000) }
 
