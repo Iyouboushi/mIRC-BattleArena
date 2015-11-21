@@ -1,6 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/13/15
+;;;; Last updated: 11/20/15
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Although it may seem ridiculous
+; to have so many damage formulas
+; please do not remove them from the
+; bot. Dungeons use 3.0, Torment 
+; uses 2.5.  By default normal battles
+; use 3.0 as well, though this can be changed.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2741,6 +2748,9 @@ formula.techdmg.monster {
     }
   }
 
+  ; Check for a shield block.
+  $shield_block_check($3, $1, $2)
+
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
@@ -3076,6 +3086,9 @@ formula.techdmg.player.formula_2.0 {
     }
   }
 
+  ; Check for a shield block.
+  $shield_block_check($3, $1, $2)
+
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
@@ -3408,6 +3421,9 @@ formula.techdmg.player.formula_2.5 {
     }
   }
 
+  ; Check for a shield block.
+  $shield_block_check($3, $1, $2)
+
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
@@ -3652,6 +3668,9 @@ formula.techdmg.player.formula_1.0 {
       $magic.effect.check($1, $3, $2)
     }
   }
+
+  ; Check for a shield block.
+  $shield_block_check($3, $1, $2)
 
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
@@ -3966,6 +3985,9 @@ formula.techdmg.player.formula_3.0 {
     }
   }
 
+  ; Check for a shield block.
+  $shield_block_check($3, $1, $2)
+
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
@@ -4238,14 +4260,13 @@ formula.meleedmg.player.old {
   ; Check for metal defense.  If found, set the damage to 1.
   $metal_defense_check($3, $1)
 
+  ; Check for a shield block.
+  $shield_block_check($3, $1, $2)
+
   ; In this bot we don't want the attack to ever be lower than 1 except for rare instances...  
   if (%guard.message = $null) {
     if (%attack.damage <= 0) { set %attack.damage 1 }
   }
-
-  ; Check for a shield block.
-  $shield_block_check($3, $1, $2)
-
 
   ; Check for a critical hit.
   var %critical.hit.chance $rand(1,100)
