@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 10/25/15
+;;;; Last updated: 11/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -130,6 +130,18 @@ alias add.style.orbbonus {
   unset %style.points | unset %current.orb.bonus | unset %total.orbs.to.add
 }
 
+alias stylepoints.decay {
+  ; $1 = player
+  var %current.player.style.points $readini $txtfile(battle2.txt) style $1
+  if (%current.player.style.points = $null) { return }
+
+  var %decay.rate .10
+  if (%current.player.style.points >= 8000) { inc %decay.rate .15 }
+
+  dec %current.player.style.points $round($calc(%current.player.style.points * %decay.rate),2)
+  writeini $txtfile(battle2.txt) style $1 %current.player.style.points
+}
+
 alias add.style.effectdeath {  
   set %current.orb.bonus $readini($txtfile(battle2.txt), BattleInfo, OrbBonus)
   if (%current.orb.bonus = $null) { set %current.orb.bonus 0 }
@@ -180,7 +192,6 @@ alias style.level {
   var %current.playerstyle $readini($char($1), styles, equipped)
   return $readini($char($1), styles, %current.playerstyle)
 }
-
 
 alias generate_style_order {
   ; $1 = null for end of battle or BattleStyle for generating the list in battle

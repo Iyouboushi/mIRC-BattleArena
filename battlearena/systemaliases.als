@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/19/15
+;;;; Last updated: 11/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2619,7 +2619,10 @@ mon_list_add {
 
   if ((%mode.gauntlet != $null) && ($readini($mon(%name), info, streak) > -500)) { write $txtfile(temporary_mlist.txt) %name | return }
   if (%battle.type = torment) { write $txtfile(temporary_mlist.txt) %name | return }
-  if (%battle.type = ai) { write $txtfile(temporary_mlist.txt) %name | return }
+  if (%battle.type = ai) { 
+    if ($readini($mon(%name), info, ai_type) = defender) { return }
+    write $txtfile(temporary_mlist.txt) %name | return
+  }
 
   if ((%savethepresident = on) && ($readini($mon(%name), info, IgnorePresident) = true)) { return }
 
@@ -2760,6 +2763,7 @@ npc_list_add {
   if ((%name = new_npc) || (%name = $null)) { return } 
   if (%battle.type = ai) { 
     if ($readini($npc(%name), info, ai_type) = healer) { return }
+    if ($readini($npc(%name), info, ai_type) = defender) { return }
   }
 
   ; Check the winning streak #..  some npcs won't show up until a certain streak or higher.
@@ -3066,8 +3070,10 @@ reset_char {
   writeini $char($1) stuff ShopLevel 1.0
 
   ; Reset the orbs.  Orbs gained will be 10% of whatever you had spent.
+  var %total.orbs.unspent $readini($char($1), stuff, RedOrbs)
   var %total.orbs.spent $readini($char($1), stuff, RedOrbsSpent)
-  var %new.orbs $round($calc(%total.orbs.spent * .05),0)
+
+  var %new.orbs $round($calc((%total.orbs.spent + %total.orbs.unspent)* .10),0)
   writeini $char($1) stuff RedOrbs %new.orbs
   writeini $char($1) stuff BlackOrbs 1
   writeini $char($1) stuff RedOrbsSpent 0
@@ -3087,13 +3093,35 @@ reset_char {
   remini $char($1) techniques
   writeini $char($1) techniques DoublePunch %doublepunch.level 
 
+  ; Reset the equipment
+  writeini $char($1) equipment accessory none
+  writeini $char($1) equipment head none
+  writeini $char($1) equipment body none
+  writeini $char($1) equipment legs none
+  writeini $char($1) equipment feet none
+  writeini $char($1) equipment hands none
+
+  ; Reset the ignitions
+  remini $char($1) ignitions
+
+  ; Reset the styles
+  remini $char($1) styles
+  writeini $char($1) styles Equipped Trickster
+  writeini $char($1) styles Trickster 1
+  writeini $char($1) styles TricksterXP 0
+  writeini $char($1) styles WeaponMaster 1
+  writeini $char($1) styles WeaponMasterXP 0
+  writeini $char($1) styles Guardian 1
+  writeini $char($1) styles GuardianXP 0
+
+  ; Remove the augments
+  remini $char($1) augments
+
+  ; Increase the total number of times this char has reset
   var %number.of.resets $readini($char($1), stuff, NumberOfResets)
   if (%number.of.resets = $null) { var %number.of.resets 0 }
   inc %number.of.resets 1 
   writeini $char($1) stuff NumberOfResets %number.of.resets
-
-  ; Remove the augments
-  remini $char($1) augments
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

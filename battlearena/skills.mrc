@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 11/19/15
+;;;; Last updated: 11/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1267,7 +1267,8 @@ alias skill.TPregen.calculate {
 }
 
 alias skill.zombieregen.calculate {
-  var %temp.winning.streak $readini(battlestats.dat, battle, winningstreak)
+  var %temp.winning.streak $return_winningstreak
+
   var %difficulty $readini($txtfile(battle2.txt), BattleInfo, Difficulty)
   inc %temp.winning.streak %difficulty
 

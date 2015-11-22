@@ -1965,6 +1965,9 @@ alias turn {
     if (%gauntlet.mode.streak.check = 0) { $clear_certain_skills($1) }
   }
 
+  ; Decay some style points
+  $stylepoints.decay($1)
+
   writeini $char($1) Status burning no | writeini $char($1) Status drowning no | writeini $char($1) Status earthquake no | writeini $char($1) Status tornado no 
   writeini $char($1) Status freezing no | writeini $char($1) status frozen no | writeini $char($1) status shock no
 

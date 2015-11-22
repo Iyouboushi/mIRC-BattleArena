@@ -1391,6 +1391,7 @@ Battle Arena Bot VERSIONS
 - Changed many lines in translation.dat to be consistent with equipment and weapon colors
 - Changed the minimum AI vs AI payout ratio to .50
 - Changed the AI vs AI information to hopefully be a bit easier/faster to read and added the betting commands to it
+- Changed the style point counter so that it can decay per turn. This is similar to DMC where the style meter decreases.
 - Fixed a typo that was preventing ignition augments from working right
 - Fixed a typo in !misc info
 - Fixed an issue with !view-info and the pokeball summon item
