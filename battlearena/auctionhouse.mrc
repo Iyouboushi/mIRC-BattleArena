@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 10/28/15
+;;;; Last updated: 11/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -215,7 +215,8 @@ alias auctionhouse.end {
     write $txtfile(auction_winners.txt) %auction.number  - $date - $time - No Winner - $readini(system.dat, auctionInfo, current.item)
   }
 
-  writeini system.dat auctionInfo previous.item $readini(system.dat, auctionInfo, current.item)
+  if ($readini(system.dat, auctionInfo, current.item) = $null) { writeini system.dat auctionInfo previous.item none }
+  else { writeini system.dat auctionInfo previous.item $readini(system.dat, auctionInfo, current.item) }
 
   unset %auction.winner | unset %auction.item | unset %player.amount
 
