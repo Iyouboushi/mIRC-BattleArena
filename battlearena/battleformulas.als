@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/20/15
+;;;; Last updated: 11/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -196,20 +196,6 @@ calculate_damage_items {
 
   inc %attack.damage %base.stat
 
-  var %starting.damage %attack.damage
-
-  var %current.element $readini($dbfile(items.db), $2, element)
-  if ((%current.element != $null) && (%current.element != none)) {
-    $modifer_adjust($3, %current.element)
-  }
-
-  ; check to see if the target is weak to the specific item
-  $modifer_adjust($3, $2)
-
-  if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
-  if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
-  if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
-
   ; Let's increase the attack by a random amount.
   inc %attack.damage $rand(1,10)
 
@@ -245,6 +231,22 @@ calculate_damage_items {
 
   if (enhance-item isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
 
+  var %starting.damage %attack.damage
+
+  ; Check to see if the target is weak to the item's element (if it has one)
+  var %current.element $readini($dbfile(items.db), $2, element)
+  if ((%current.element != $null) && (%current.element != none)) {
+    $modifer_adjust($3, %current.element)
+  }
+
+  ; check to see if the target is weak to the specific item
+  $modifer_adjust($3, $2)
+
+  if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
+  if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
+  if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
+
+  ; Check for the guardian style
   $guardian_style_check($3)
 
   if ($readini($dbfile(items.db), $2, ignoremetaldefense) != true) { 
@@ -267,6 +269,16 @@ calculate_damage_items {
   $trickster_dodge_check($3, $1)
   $utsusemi.check($1, $2, $3)
   $guardianmon.check($1, $2, $3)
+
+  if ($readini($char($3), modifiers, $2) != $null) {
+    if ($readini($char($3), modifiers, $2) <= 0) {
+      $set_chr_name($3)
+      set %guard.message $readini(translation.dat, battle, ImmuneToItem) 
+      set %attack.damage 0 
+    }
+    unset %target.weapon.null
+  }
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
