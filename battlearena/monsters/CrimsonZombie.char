@@ -49,7 +49,7 @@ Created=N/a
 Streak=101
 CanTaunt=false
 IgnoreElementalMessage=true
-DeathConditions=Magic
+DeathConditions=Magic.Tech
 
 [Monster]
 Type=zombie
