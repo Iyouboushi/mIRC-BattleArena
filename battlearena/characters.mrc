@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 11/06/15
+;;;; Last updated: 11/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1301,6 +1301,10 @@ ON 3:TEXT:*taunts *:*:{
 ;;;; GIVES COMMAND
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 2:ACTION:gives *:*:{  
+  if ($2 !isnum) {  $gives.command($nick, $4, 1, $2)  }
+  else { $gives.command($nick, $5, $2, $3) }
+}
+ON 2:TEXT:!gives *:*:{  
   if ($2 !isnum) {  $gives.command($nick, $4, 1, $2)  }
   else { $gives.command($nick, $5, $2, $3) }
 }

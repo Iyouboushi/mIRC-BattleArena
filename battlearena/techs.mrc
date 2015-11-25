@@ -1,9 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 11/2115
+;;;; Last updated: 11/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-ON 3:ACTION:goes *:#:{ 
+ON 3:ACTION:goes *:#: { 
   if ($3 != $null) { halt }
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   $no.turn.check($nick)
@@ -15,6 +15,18 @@ ON 3:ACTION:goes *:#:{
   else { $tech_cmd($nick , $2, $nick) | halt }
 } 
 
+ON 3:TEXT:!goes *:#:{
+  if ($3 != $null) { halt }
+  if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($nick)
+  $set_chr_name($nick) 
+
+  var %ignitions.list $ignitions.get.list($nick)
+
+  if ($istok(%ignitions.list, $2, 46) = $true) { unset %ignitions.list | $ignition_cmd($nick, $2, $nick) | halt }
+  else { $tech_cmd($nick , $2, $nick) | halt }
+}
+
 ON 3:ACTION:reverts*:#: {
   $check_for_battle($nick) 
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
@@ -25,6 +37,21 @@ ON 3:ACTION:reverts*:#: {
   var %ignition.name $readini($char($nick), status, ignition.name)
   if (%ignition.name = $3) {   
     $revert($nick, $3)  |   var %ignition.name $readini($dbfile(ignitions.db), $readini($char($nick), status, ignition.name), name)
+    $display.message($readini(translation.dat, system, IgnitionReverted),battle)
+    halt
+  }
+  else { $display.message($readini(translation.dat, errors, NotUsingThatIgnition),battle) | halt }
+} 
+ON 3:TEXT:!reverts*:#: {
+  $check_for_battle($nick) 
+  if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  if ($2 = $null) { halt }
+  $no.turn.check($nick)
+  $set_chr_name($nick) 
+
+  var %ignition.name $readini($char($nick), status, ignition.name)
+  if (%ignition.name = $2) {   
+    $revert($nick, $2)  |   var %ignition.name $readini($dbfile(ignitions.db), $readini($char($nick), status, ignition.name), name)
     $display.message($readini(translation.dat, system, IgnitionReverted),battle)
     halt
   }
@@ -77,6 +104,17 @@ ON 3:ACTION:sings *:#:{
   $sing.song($nick, $2)
 }
 
+ON 3:TEXT:!sing *:#:{ 
+  if (%battleis = off) { halt }
+  if ($3 != $null) { halt }
+
+  $set_chr_name($nick) 
+
+  if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($nick) 
+  $sing.song($nick, $2)
+}
+
 ON 50:TEXT:*sings *:*:{ 
   if (%battleis = off) { halt }
   if ($4 != $null) { halt }
@@ -92,6 +130,11 @@ ON 3:ACTION:uses * * on *:#:{
   $no.turn.check($nick) |  $set_chr_name($nick)
   $partial.name.match($nick, $5)
   $tech_cmd($nick , $3 , %attack.target, $7) | halt 
+} 
+ON 3:TEXT:!tech * on *:#:{ 
+  $no.turn.check($nick) |  $set_chr_name($nick)
+  $partial.name.match($nick, $4)
+  $tech_cmd($nick , $2 , %attack.target, $5) | halt 
 } 
 ON 50:TEXT:*uses * * on *:*:{ 
   if ($1 = uses) { halt }

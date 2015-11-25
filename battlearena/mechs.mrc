@@ -1,12 +1,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MECH COMMANDS
-;;;; Last updated: 06/02/15
+;;;; Last updated: 10/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:activates * mech:#:{ $mech.activate($nick) } 
 ON 3:ACTION:deactivates * mech:#:{ $mech.deactivate($nick) } 
 ON 50:TEXT:* activates * mech:*:{ $mech.activate($1) } 
 ON 50:TEXT:*deactivates * mech:*:{ $mech.deactivate($1) } 
+
+ON 3:TEXT:!activates mech:#:{ $mech.activate($nick) } 
+ON 3:TEXT:!deactivates mech:#:{ $mech.deactivate($nick) } 
 
 ON 3:TEXT:* activates * mech:*:{ 
   if (($2 != activates) && ($4 != mech)) { halt }
