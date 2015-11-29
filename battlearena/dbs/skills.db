@@ -289,10 +289,10 @@ Max=40
 Cooldown=6
 
 [Analysis]
-Cost=550
+Cost=$iif($readini($char($1), skills, Analysis < 6), 550, 2500)
 Type=Active
-Info=This skill will allow you to analyze a target. Each level of the skill gives you more detail about the target.
-Max=6
+Info=This skill will allow you to analyze a target. Each level of the skill gives you more detail about the target. Note that the base cost of this skill increases to 2500 per level after level 6.
+Max=7
 
 [Cover]
 Cost=600

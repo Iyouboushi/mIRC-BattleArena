@@ -334,7 +334,14 @@ Amount=1
 Gem=Diamond
 Ingredients=Cultist-Rosary+1
 SuccessRate=100
-Cultist-Rosary+1=5
+Cultist-Rosary=5
+Amount=1
+
+[Blood-Crown+1]
+Gem=Diamond
+Ingredients=Blood-Crown
+SuccessRate=100
+Blood-Crown=5
 Amount=1
 
 [Hourglass-Necklace]

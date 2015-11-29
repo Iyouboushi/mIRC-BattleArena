@@ -1331,6 +1331,7 @@ Battle Arena Bot VERSIONS
 - Added two more TP restoring items
 - Added a new augment: EnhanceCrafting.  This augment will increase your crafting success rate by 2
 - Added a new augment: EnhanceDragonHunt. This augment will increase the odds of finding a dragon lair by 5% 
+- Added a new augment: IncreaseIGGainRate. This augment will increase the amount of IG a player gets at the end of battle.
 - Added CandyCorn for monsters to drop during the month of October
 - Added a new Enhancement Point skill: DragonHunter. Will increase odds of finding a dragon's lair by 1% per level
 - Added items to increase weapon levels past 250.

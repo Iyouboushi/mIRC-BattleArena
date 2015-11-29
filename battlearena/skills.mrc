@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 11/23/15
+;;;; Last updated: 11/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1508,7 +1508,7 @@ alias skill.clonecontrol {
 ;=================
 ; STEAL
 ;=================
-on 3:TEXT:!steal*:*: { $partial.name.match($1, $2)  | $skill.steal($nick, %attack.target, !steal) }
+on 3:TEXT:!steal*:*: { $partial.name.match($nick, $2)  | $skill.steal($nick, %attack.target, !steal) }
 
 alias skill.steal { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
@@ -1622,8 +1622,8 @@ alias skill.steal { $set_chr_name($1)
 ;=================
 ; ANALYSIS
 ;=================
-on 3:TEXT:!analyze*:*: { $skill.analysis($nick, $2) }
-on 3:TEXT:!analysis*:*: { $skill.analysis($nick, $2) }
+on 3:TEXT:!analyze*:*: { $partial.name.match($nick, $2)  | $skill.analysis($nick, %attack.target)  }
+on 3:TEXT:!analysis*:*: { $partial.name.match($nick, $2)  | $skill.analysis($nick, %attack.target) }
 
 alias skill.analysis { $set_chr_name($1)
   $no.turn.check($1)
@@ -1728,6 +1728,9 @@ alias skill.analysis { $set_chr_name($1)
   if (%analysis.element.absorb = $null) { var %analysis.element.absorb none }
   if (%analysis.element.heal = $null) { var %analysis.element.heal none }
 
+  var %analysis.defeat.conditions $readini($char($2), info, DeathConditions)
+  if (%analysis.defeat.conditions = $null) { var %analysis.defeat.conditions none }
+
   set %replacechar $chr(044) $chr(032)
   %analysis.weapon.weak = $replace(%analysis.weapon.weak, $chr(046), %replacechar)
   %analysis.weapon.strength = $replace(%analysis.weapon.strength, $chr(046), %replacechar)
@@ -1735,6 +1738,7 @@ alias skill.analysis { $set_chr_name($1)
   %analysis.element.strength = $replace(%analysis.element.strength, $chr(046), %replacechar)
   %analysis.element.absorb = $replace(%analysis.element.absorb, $chr(046), %replacechar)
   %analysis.element.heal = $replace(%analysis.element.heal, $chr(046), %replacechar)
+  %analysis.defeat.conditions = $replace(%analysis.defeat.conditions, $chr(046), %replacechar)
 
   if (%analysis.level = 1) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP left.) | goto next_turn_check }
   if (%analysis.level = 2) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.) | goto next_turn_check }
@@ -1758,6 +1762,15 @@ alias skill.analysis { $set_chr_name($1)
     $display.private.message(3 $+ %real.name is completely immune to the following elements: %analysis.element.absorb)
     $display.private.message(3 $+ %real.name will be healed by the following elements: %analysis.element.heal)
 
+    goto next_turn_check
+  }
+
+  if (%analysis.level = 7) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
+    $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
+    $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength  $+ $chr(124) %real.name is weak against the following weapon types: %analysis.weapon.weak and weak against the following elements: %analysis.element.weak) 
+    $display.private.message(3 $+ %real.name is completely immune to the following elements: %analysis.element.absorb)
+    $display.private.message(3 $+ %real.name will be healed by the following elements: %analysis.element.heal)
+    if (%analysis.defeat.conditions != none) {  $display.private.message(3 $+ %real.name has special death conditions and will continue to revive if not killed with these conditions) }
     goto next_turn_check
   }
 

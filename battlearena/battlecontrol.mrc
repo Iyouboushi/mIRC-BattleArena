@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 11/21/15
+;;;; Last updated: 11/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -491,6 +491,11 @@ ON 3:TEXT:*enters the battle*:#:  {
   $controlcommand.check($nick, $1)
   if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
   if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
+
+  ; --------------
+  ; In version 3.2 this will be expanded to add a limit to the # of characters one person can enter into battle. 
+  ; TODO: Set a maximum of chars based on battle type, check to see if the user has already entered the max #, and write the # in battle2.txt
+  ; --------------
 
   if (%battle.type = dungeon) { $dungeon.enter($1) }
   else { $enter($1) }
@@ -2601,12 +2606,26 @@ alias battle.reward.playerstylexp {
 ;==========================
 alias battle.reward.ignitionGauge.all {
   set %debug.location battle.reward.ignition.all
-  var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 | set %player.ig.reward 1
+  var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 | 
   while (%battletxt.current.line <= %battletxt.lines) { 
     var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
     var %flag $readini($char(%who.battle), info, flag)
     if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
     else { 
+      set %player.ig.reward 1
+
+      ; Check for an accessory to increase the IG Gain Rate
+      if ($accessory.check(%who.battle, IncreaseIGGainRate) = true) {
+        inc %player.ig.reward %accessory.amount
+        unset %accessory.amount
+      }
+
+      ; Check for an augment to increase the IG Gain Rate
+      if ($augment.check($1, EnhanceEnfeeble) = true) { 
+        inc %player.ig.reward %augment.strength
+      }
+
+
       $restore_ig(%who.battle, %player.ig.reward)
       inc %battletxt.current.line 1 
     }
