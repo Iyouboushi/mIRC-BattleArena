@@ -1492,6 +1492,15 @@ Desc=A golden crown with a bright red gem sitting in the middle.  This accessory
 IncreaseRedOrbs.Amount=.20
 SellPrice=5000
 
+[Blood-Crown+1]
+Type=accessory
+AccessoryType=IncreaseRedOrbs
+Cost=0
+Desc=A golden crown with a bright red gem sitting in the middle.  This accessory will increase the amount of orbs you gain at the end of battles.
+; .22 = 22% more orbs.  if the reward is 1000 you'll get +220.
+IncreaseRedOrbs.Amount=.22
+SellPrice=5000
+
 [Purple-Belt]
 Type=accessory
 Cost=$iif($left($adate,2) = 03, 30000, 0)
