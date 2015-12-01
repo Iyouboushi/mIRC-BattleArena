@@ -22,6 +22,7 @@ Almace=ChantduCygne.Requiescat.SanguineBlade
 Xiutleato=SavageBlade.SanguineBlade.SwiftBlade.CircleBlade
 SilverSword=Twin_Slice.LightningStrike.BladeBeamII
 MasterSword=SkywardStrike.HurricaneSpin
+Z-Blade=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
 
 ; Katana
 PowerChordSword=A5.E5.D5.C5
@@ -977,6 +978,96 @@ Cost=10000
 Magic=no
 stat=str
 
+[GravityBreak]
+Type=Single
+Cost=2500
+Desc=channels $gender($1) ki through the sword, giving it an golden outline of energy that takes on a larger sword shape. %user rushes forward and slashes at %enemy with the ki-enhanced sword.
+TP=50
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=str
+Renkei=4
+
+[DarkBlade]
+Type=Single
+Cost=1500
+Desc=holds the sword to the side for a moment as it gains a dark glow. %user then swings the sword at %enemy, striking %enemy with the element of darkness.
+TP=50
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+HurtEthereal=false
+stat=str
+Renkei=3
+
+[FreezingBlade]
+Type=Single
+Cost=1500
+Desc=holds the sword to the side for a moment as it gains a cyan glow. %user then swings the sword at %enemy, striking %enemy with the element of ice.
+TP=50
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+HurtEthereal=false
+stat=str
+Renkei=3
+
+[LightningBlade]
+Type=Single
+Cost=1500
+Desc=holds the sword to the side for a moment as it gains a yellow glow. %user then swings the sword at %enemy, striking %enemy with the element of lightning.
+TP=50
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+HurtEthereal=false
+stat=str
+Renkei=3
+
+[WaterBlade]
+Type=Single
+Cost=1500
+Desc=holds the sword to the side for a moment as it gains a blue glow. %user then swings the sword at %enemy, striking %enemy with the element of water.
+TP=50
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+HurtEthereal=false
+stat=str
+Renkei=3
+
+[EarthBlade]
+Type=Single
+Cost=1500
+Desc=holds the sword to the side for a moment as it gains a brown glow. %user then swings the sword at %enemy, striking %enemy with the element of earth.
+TP=50
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+HurtEthereal=false
+stat=str
+Renkei=3
+
+[WindBlade]
+Type=Single
+Cost=1500
+Desc=holds the sword to the side for a moment as it gains a green glow. %user then swings the sword at %enemy, striking %enemy with the element of wind.
+TP=50
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+HurtEthereal=false
+stat=str
+Renkei=3
 
 ===================
 GREAT SWORDS
@@ -7473,7 +7564,7 @@ stat=str
 Type=Single
 StatusType=Paralysis
 TP=10
-Desc=hurls several pincecones at %enemy in an attemp to paralyze $gender2($2) $+ !
+Desc=hurls several pincecones at %enemy in an attempt to paralyze $gender2($2) $+ !
 BasePower=10
 Element=None
 Cost=0
@@ -11918,7 +12009,7 @@ Stat=str
 [PlanteraBite]
 Type=single
 Cost=0
-Desc=latches onto %enemy and bites into $gender2($2) $+ , draining some of $gender2($2) blood!
+Desc=latches onto %enemy and bites into $gender2($2) $+ , draining some of $gender($2) blood!
 TP=10
 Element=None
 Hits=1

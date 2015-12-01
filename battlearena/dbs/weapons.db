@@ -30,7 +30,7 @@ Lightsabers=Lightsabers
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles
 Swords=Mythril_Sword.Joyeuse.Rebellion.Agni.Rudra.Excalibur.Excalibur+1.Murgleis
-Swords2=JewelSword.LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato
+Swords2=JewelSword.LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword
 Whips=LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip
 Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster
 Rifles=Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty
@@ -121,7 +121,7 @@ CanCounter=
 [Shields]
 Small=WoodShield.TurtleShield
 Medium=MetalShield.DarksteelShield.Genbu'sShield
-Large=TowerShield.KiteShield
+Large=TowerShield.KiteShield.Aegis.Ochain
 
 
 =============================================
@@ -314,6 +314,17 @@ Element=None
 Hits=1
 BasePower=60
 Upgrade=1500
+
+[Z-Sword]
+Cost=50
+Type=Sword
+Info=A replica of the legendary Z-Sword from the Sacred World of the Kais.
+Abilities=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
+Element=None
+Hits=1
+BasePower=50
+Upgrade=1500
+2Handed=true
 
 [JewelSword]
 Cost=50
@@ -4554,3 +4565,25 @@ BasePower=400
 Upgrade=0
 BlockChance=40
 AbsorbAmount=50
+
+[Aegis]
+Cost=0
+Type=Shield
+Info=A rare and powerful shield that is large and gold in color, with an intricate and fancy design. Outside of Torment, it blocks at 30% chance and absorbs 35% damage. Inside of Torment, it blocks at 50% chance and also absorbs 50% damage.
+Hits=0
+BasePower=$iif(%battle.type = torment, 800, 650)
+Upgrade=0
+BlockChance=$iif(%battle.type = torment, 50, 30)
+AbsorbAmount=$iif(%battle.type = torment, 50, 35)
+Legendary=True
+
+[Ochain]
+Cost=0
+Type=Shield
+Info=A rare and legendary shield that is large and silver in color, with an intricate design and a yellow jewel in the center. Outside of Torment, it blocks at 50% chance and absorbs 50% damage. Inside of Torment, it blocks at 100% chance and also absorbs 75% damage.
+Hits=0
+BasePower=$iif(%battle.type = torment, 700, 500)
+Upgrade=0
+BlockChance=$iif(%battle.type = torment, 100, 50)
+AbsorbAmount=$iif(%battle.type = torment, 75, 50)
+Legendary=True

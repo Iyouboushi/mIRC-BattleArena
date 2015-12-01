@@ -2239,7 +2239,7 @@ TormentReward=true
 Type=increaseWeaponLevel
 IncreaseAmount=1
 Desc=takes out a shard of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
-Cost=40000
+Cost=50000
 SellPrice=2000
 Exclusive=yes
 ShopNPC=BattleMerchant
@@ -2249,7 +2249,7 @@ ConquestItem=true
 Type=increaseWeaponLevel
 IncreaseAmount=5
 Desc=takes out a chunk of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
-Cost=75000
+Cost=100000
 SellPrice=2000
 Exclusive=yes
 ShopNPC=BattleMerchant
@@ -2287,7 +2287,7 @@ Type=increaseWeaponLevel
 ShopNPC=TravelMerchant
 IncreaseAmount=200
 Desc=takes out a strage blue slab of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
-Cost=1750000
+Cost=2000000
 SellPrice=2000
 Exclusive=yes
 
@@ -3478,6 +3478,24 @@ SpecialType=GainWeapon
 Weapon=Excalibur+1
 Desc=pulls out a set of blueprints for an upgraded Excalibur, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the Excalibur+1 which glows with power.
 Exclusive=yes
+
+[Blueprints:Aegis]
+Type=special
+Cost=0
+SellPrice=10000
+Exclusive=yes
+SpecialType=GainWeapon
+Weapon=Aegis
+Desc=pulls out a set of blueprints for the powerful Aegis shield. %real.name then gets to work and builds a beautiful and functional Aegis shield ready for use.
+
+[Blueprints:Ochain]
+Type=special
+Cost=0
+SellPrice=10000
+Exclusive=yes
+SpecialType=GainWeapon
+Weapon=Ochain
+Desc=pulls out a set of blueprints for the rare and legendary Ochain shield. %real.name then gets to work and builds a beautiful and functional Ochain shield ready for use.
 
 [Hero'sWorth]
 Type=special
