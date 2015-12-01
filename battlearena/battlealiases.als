@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/21/15
+;;;; Last updated: 12/01/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -540,6 +540,16 @@ boost_monster_stats {
   if ($readini($char($1), info, BattleStats) = hp) { $boost_monster_hp($1, $2, %monster.level) |  return }
 
   ; Make sure the [battle] stats are set to what the [basestats] should start off with
+  var %basestats.str $readini($char($1), basesats, str)
+  var %basestats.def $readini($char($1), basestats, def)
+  var %basestats.int $readini($char($1), basestats, int)
+  var %basestats.spd $readini($char($1), basestats, spd)
+
+  if (%basestats.str = $null) { writeini $char($1) basestats str 5 }
+  if (%basestats.def = $null) { writeini $char($1) basestats def 5 }
+  if (%basestats.int = $null) { writeini $char($1) basestats int 5 }
+  if (%basestats.spd = $null) { writeini $char($1) basestats spd 5 }
+
   writeini $char($1) battle str $readini($char($1), basestats, str)
   writeini $char($1) battle def $readini($char($1), basestats, def)
   writeini $char($1) battle int $readini($char($1), basestats, int)
