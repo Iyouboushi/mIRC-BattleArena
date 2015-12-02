@@ -55,7 +55,7 @@ IgnoreQuicksilver=true
 CanTaunt=false
 BattleStats=IgnoreHP
 JustReleaseDefense=99
-DeathConditions=MagicEffect.Status.Renkei.Item
+DeathConditions=$iif(%battle.type != torment, MagicEffect.Status.Renkei.Item.Tech)
 
 [Status]
 Poison=no
@@ -283,5 +283,5 @@ MechIceIV=10
 MechThunderIV=10
 MechLightIV=10
 MechShadowIV=10
-HolyHandGrenade=1
-Dynamite=1
+HolyHandGrenade=10
+Dynamite=10
