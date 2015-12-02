@@ -97,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=GoukiGloves
-RyuGloves=9999
+GoukiGloves=9999
 
 [Skills]
 MightyStrike=1
