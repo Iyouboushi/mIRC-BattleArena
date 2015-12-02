@@ -349,6 +349,15 @@ FullbringTarget=AOE
 FullbringAmount=100
 Fullbringdesc=draws out the soul from the angon.  The soul splits into large javalins that slam into all of the enemies on the battlefield.
 
+[RottingMeat]
+type=Status
+Target=Single
+Amount=100
+Desc=pulls out a slab of brown, smelly, rotting meat. Ugh, who would ever eat this?  Well, $set_chr_name($2) %real.name is forced to eat it and feels sick to $gender($2) stomach.  This isn't helpful at all! %real.name feels sick.
+StatusType=poison
+SellPrice=2000
+Cost=0
+
 [SauceAmpulla]
 Type=Status
 ShopNPC=TravelMerchant
@@ -708,14 +717,6 @@ Amount=100
 Desc=pulls out a bleeding heart and looks at it. People really eat this? Well..uhh..maybe. $set_chr_name($2) %real.name ends up eating it and feels sick for doing so.... but..at least %real.name gains some max HP for it.
 SellPrice=5000
 Exclusive=yes
-Cost=0
-
-[RottingMeat]
-type=food
-Target=str
-Amount=-10
-Desc=pulls out a slab of brown, smelly, rotting meat. Ugh, who would ever eat this?  Well, $set_chr_name($2) %real.name is forced to eat it and feels sick to $gender($2) stomach.  This isn't helpful at all! %real.name feels weaker than before after eating it.
-SellPrice=2000
 Cost=0
 
 [Slurm]
