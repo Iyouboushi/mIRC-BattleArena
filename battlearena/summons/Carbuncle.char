@@ -95,7 +95,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=CarbunclePower
-WeaponName=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+CarbunclePower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 MartialArts=100
