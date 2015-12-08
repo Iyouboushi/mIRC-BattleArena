@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 11/25/15
+;;;; Last updated: 12/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -180,12 +180,14 @@ on 3:TEXT:!rdesc *:*:{ $checkchar($2) | $set_chr_name($2) | var %character.descr
 on 3:TEXT:!cdesc *:*:{ $checkscript($2-)  | writeini $char($nick) Descriptions Char $2- | $okdesc($nick , Character) }
 on 3:TEXT:!sdesc *:*:{ $checkscript($2-)  
   if ($readini($char($nick), skills, $2) != $null) { 
+    if ($3 = $null) { $display.private.message(4Invalid description) | halt }
     writeini $char($nick) Descriptions $2 $3- | $okdesc($nick , Skill) 
   }
   if ($readini($char($nick), skills, $2) = $null) { $display.private.message($readini(translation.dat, errors, YouDoNotHaveSkill)) | halt }
 }
 on 3:TEXT:!skill desc *:*:{ $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), skills, $3) != $null) { 
+    if ($4 = $null) { $display.private.message(4Invalid description) | halt }
     writeini $char($nick) Descriptions $3 $4- | $okdesc($nick , Skill) 
   }
   if ($readini($char($nick), skills, $3) = $null) { $display.private.message($readini(translation.dat, errors, YouDoNotHaveSkill)) | halt }
@@ -193,6 +195,7 @@ on 3:TEXT:!skill desc *:*:{ $checkscript($3-)  | $set_chr_name($nick)
 
 on 3:TEXT:!ignition desc *:*:{ $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), ignitions, $3) != $null) { 
+    if ($4 = $null) { $display.private.message(4Invalid description) | halt }
     writeini $char($nick) Descriptions $3 $4- | $okdesc($nick , Ignition) 
   }
   if ($readini($char($nick), ignitions, $3) = $null) {  $display.private.message($readini(translation.dat, errors, DoNotKnowThatIgnition)) | halt }
@@ -203,7 +206,11 @@ on 3:TEXT:!clear desc *:*:{ $checkscript($3-)  | $set_chr_name($nick)
   else { remini $char($nick) descriptions $3 |  $display.private.message($readini(translation.dat, system, ClearDesc)) }
 }
 
-on 3:TEXT:!set desc *:*:{ $checkscript($2-)  | writeini $char($nick) Descriptions Char $3- | $okdesc($nick , Character) }
+on 3:TEXT:!set desc *:*:{ $checkscript($2-)  
+  if ($3 = $null) { $display.private.message(4Invalid description) | halt }
+  writeini $char($nick) Descriptions Char $3- | $okdesc($nick , Character) 
+}
+
 on 3:TEXT:!setgender*:*: { $checkscript($2-)
   if ($2 = neither) { writeini $char($nick) Info Gender its | writeini $char($nick) Info Gender2 its | $display.private.message($readini(translation.dat, system, SetGenderNeither)) | unset %check | halt }
   if ($2 = none) { writeini $char($nick) Info Gender its | writeini $char($nick) Info Gender2 its | $display.private.message($readini(translation.dat, system, SetGenderNeither))  | unset %check | halt }
