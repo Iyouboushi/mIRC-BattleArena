@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 11/29/15
+;;;; Last updated: 12/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -399,7 +399,7 @@ alias startnormal {
   unset %previous.battle.type
 
   if (%start.battle.type = ai) {
-    var %time.to.enter 30
+    var %time.to.enter 60
     $display.message($readini(translation.dat, battle, BattleOpenAIBet), global)
     $ai.battle.generate($2)
   }

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 11/25/15
+;;;; Last updated: 12/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -122,6 +122,25 @@ ON 50:TEXT:*sings *:*:{
   $set_chr_name($1) 
 
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  $sing.song($1, $3)
+}
+
+ON 3:TEXT:*sings *:*:{ 
+  if (%battleis = off) { halt }
+  if ($3 = $null) { halt }
+  if ($4 != $null) { halt }
+  if ($readini($char($1), stuff, redorbs) = $null) { halt }
+  if ($readini($char($1), info, flag) = monster) { halt }
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+
+  $controlcommand.check($nick, $1)
+  if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
+  if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
+
+  $set_chr_name($1) 
+
+
   $no.turn.check($1)
   $sing.song($1, $3)
 }

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/01/15
+;;;; Last updated: 12/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3292,7 +3292,7 @@ battlefield.damage {
   if (%streak.increase < 1) { var %streak.increase 1 }
 
   set %attack.damage $round($calc(%attack.damage * %streak.increase),0)
-  if (%attack.damage > 500) { set %attack.damage 500 }
+  if (%attack.damage > 800) { set %attack.damage 800 }
 
   set %damage.display.color 4 
 }
