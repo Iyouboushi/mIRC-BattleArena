@@ -28,21 +28,21 @@ Lightsabers=Lightsabers
 ; Below are the weapon lists
 
 [Weapons]
-HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles
-Swords=Mythril_Sword.Joyeuse.Rebellion.Agni.Rudra.Excalibur.Excalibur+1.Murgleis
-Swords2=JewelSword.LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword
+HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur
+Swords=Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
+Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword
 Whips=LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip
 Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster
-Rifles=Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty
+Rifles=Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle
 Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
 Katanas=PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1.Zangetsu
 Katanas2=Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa
-Wands=YewWand.PixiWand.OakWand.PineWand
-Staves=IridialStaff.ElderWand.Laevatein.EbonyWand.BahamutsStaff
-Glyphs=Glyphs
+Wands=YewWand.PixiWand.OakWand.PineWand.Aedold
+Staves=IridialStaff.ElderWand.Laevatein.EbonyWand.BahamutsStaff.Uffrat
+Glyphs=Glyphs.Glyphs+1
 Spears=Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex
 Scythes=DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque
-GreatSwords=Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
+GreatSwords=Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
 Axes=Farsha.Guttler.Kerehcatl
 GreatAxes=Ukonvasara.Bravura.Lightreaver
 Daggers=MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra
@@ -61,7 +61,7 @@ MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.Decapiclops
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra
 
@@ -135,18 +135,18 @@ Abilities=DoublePunch.ShoulderTackle.SpinningAttack
 Element=none
 Hits=2
 BasePower=10
-Upgrade=1000
+Upgrade=2000
 2Handed=true
 
 [Cerberus]
-Cost=40
+Cost=30
 Type=HandToHand
 Info=A pair of ice nunchuku with three handles
 Abilities=Revolver.Windmill.Crystal
 Element=ice
 Hits=1
-BasePower=40
-Upgrade=1000
+BasePower=30
+Upgrade=2000
 2Handed=true
 
 [Ifrit]
@@ -156,8 +156,19 @@ Info=A living Devil Arm, the flame gauntlets with heat hotter than a volcano.
 Abilities=RollingBlaze.MagmaDrive.Inferno
 Element=fire
 Hits=$rand(1,2)
+BasePower=30
+Upgrade=2000
+2Handed=true
+
+[KaiserKnuckles]
+Cost=40
+Type=HandToHand
+Info=A hand-to-hand weapon that is silver in color with a yellow trim.
+Abilities=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
+Element=None
+Hits=2
 BasePower=40
-Upgrade=1000
+Upgrade=2500
 2Handed=true
 
 [Verethragna]
@@ -167,31 +178,33 @@ Info=A powerful hand-to-hand weapon which is black and gold in color with two ho
 Abilities=VictorySmite.ShoulderTackle.ShinjinSpiral.SpinningAttack.TornadoKick
 Element=None
 Hits=2
-BasePower=45
-Upgrade=1500
-2Handed=true
-
-[KaiserKnuckles]
-Cost=50
-Type=HandToHand
-Info=A hand-to-hand weapon that is silver in color with a yellow trim.
-Abilities=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
-Element=None
-Hits=2
 BasePower=50
-Upgrade=1000
+Upgrade=3000
 2Handed=true
 
 [Spharai]
 Cost=100
 Type=HandToHand
-Info=Relic pair of hand-to-hand with legendary power. A hand-to-hand weapon that is gold and bronze in color.
+Info=A relic hand-to-hand weapon that is gold and bronze in color.
 Abilities=FinalHeaven.ShoulderTackle.AsuranFists.SpinningAttack.OneInchPunch
 Element=None
 Hits=2
 BasePower=75
-Upgrade=1500
+Upgrade=3500
 2Handed=true
+
+[Oatixur]
+Cost=0
+Type=HandToHand
+Info=A powerful hand-to-hand weapon that is a dark brown and red in color.
+Abilities=TornadoKick.ShinjinSpiral.ShoulderTackle.SpinningAttack
+Element=None
+Hits=2
+BasePower=100
+Upgrade=6000
+IgnoreDefense=10
+2Handed=true
+SpecialWeapon=true
 
 =============================================
 SWORDS
@@ -205,17 +218,6 @@ Element=none
 Hits=1
 BasePower=15
 Upgrade=300
-
-[Rebellion]
-Cost=10
-Type=Sword
-Info=Dante's weapon from Devil May Cry.  It's a greatsword with a large skull at its base.  The skull is half human and half demon.
-Abilities=Stinger.MillionStab.Drive.DevilTrigger
-Element=none
-Hits=1
-BasePower=20
-Upgrade=500
-2Handed=true
 
 [Agni]
 Cost=15
@@ -279,7 +281,7 @@ Info=The legendary Excalibur, the weapon of King Arthur, reforged and made stron
 Abilities=CircleBlade.Atonement.SpiritsWithin.VorpalBlade
 Hits=1
 BasePower=$iif(%battle.type = torment, 700, 250)
-Upgrade=3000
+Upgrade=6000
 Element=light
 2Handed=true
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
@@ -346,7 +348,7 @@ Abilities=Twin_Slice.LightningStrike.BladeBeamII
 Element=Lightning
 Hits=$rand(1,2)
 BasePower=100
-Upgrade=0
+Upgrade=5000
 IgnoreDefense=10
 HurtEthereal=true
 
@@ -359,7 +361,7 @@ Abilities=SkywardStrike.HurricaneSpin
 Element=light
 Hits=2
 BasePower=100
-Upgrade=0
+Upgrade=5000
 IgnoreDefense=15
 HurtEthereal=true
 
@@ -372,12 +374,23 @@ Abilities=SavageBlade.SanguineBlade.SwiftBlade.CircleBlade
 Element=None
 Hits=1
 BasePower=100
-Upgrade=0
+Upgrade=6000
 IgnoreDefense=5
 
 =============================================
 GREAT SWORDS
 =============================================
+
+[Rebellion]
+Cost=40
+Type=GreatSword
+Info=Dante's weapon from Devil May Cry.  It's a greatsword with a large skull at its base.  The skull is half human and half demon.
+Abilities=Stinger.MillionStab.Drive.DevilTrigger
+Element=none
+Hits=1
+BasePower=40
+Upgrade=1500
+2Handed=true
 
 [Braveheart]
 Cost=50
@@ -443,7 +456,7 @@ Abilities=SpinningSlash.HerculeanSlash.Scourge
 Element=None
 Hits=1
 BasePower=120
-Upgrade=0
+Upgrade=6000
 2Handed=true
 IgnoreDefense=10
 
@@ -458,7 +471,7 @@ Abilities=WhipLash
 Element=None
 Hits=$rand(1,3)
 BasePower=15
-Upgrade=500
+Upgrade=1000
 
 [ChainWhip]
 Cost=30
@@ -468,7 +481,7 @@ Abilities=Whiplash
 Element=None
 Hits=$rand(1,3)
 BasePower=20
-Upgrade=800
+Upgrade=1000
 
 [SpikedSteelWhip]
 Cost=40
@@ -478,7 +491,7 @@ Abilities=TwinDragonLash.Whiplash
 Element=None
 Hits=$rand(1,3)
 BasePower=25
-Upgrade=1000
+Upgrade=1500
 
 [DemonWhip]
 Cost=50
@@ -488,7 +501,7 @@ Abilities=SerpentBite.DarkLash.Whiplash
 Element=Dark
 Hits=$rand(1,3)
 BasePower=35
-Upgrade=1000
+Upgrade=2000
 
 [DragontailWhip]
 Cost=55
@@ -498,7 +511,7 @@ Abilities=TwinDragonLash.SerpentBite
 Element=None
 Hits=$rand(1,3)
 BasePower=45
-Upgrade=1500
+Upgrade=2500
 
 [Vampire_Killer]
 Cost=100
@@ -508,7 +521,7 @@ Abilities=HolyLash.TwinDragonLash.CircularChain
 Element=light
 Hits=$rand(1,3)
 BasePower=60
-Upgrade=2500
+Upgrade=3500
 HurtEthereal=true
 
 
@@ -522,9 +535,9 @@ Type=Gun
 Info=A powerful revolver that fires .357 rounds.
 Abilities=ChargedShot.RapidShot
 Element=None
-Hits=2
+Hits=$rand(1,2)
 BasePower=15
-Upgrade=700
+Upgrade=1500
 
 [Ebony&Ivory]
 Cost=40
@@ -534,7 +547,7 @@ Abilities=RainStorm.ChargedShot.RapidShot
 Element=none
 Hits=2
 BasePower=20
-Upgrade=1000
+Upgrade=2000
 2Handed=true
 
 [Quicksilver]
@@ -545,7 +558,7 @@ Abilities=HotShot.RainStorm.ChargedShot
 Element=None
 Hits=$rand(1,2)
 BasePower=30
-Upgrade=1000
+Upgrade=2500
 
 [Hexagun]
 Cost=75
@@ -553,19 +566,19 @@ Type=Gun
 Info=A unique handgun that has six barrels on the end.
 Abilities=LastStand.Detonator.BlastShot
 Element=None
-Hits=2
+Hits=$rand(1,2)
 BasePower=40
-Upgrade=1000
+Upgrade=3000
 
 [SubMachineGun]
-Cost=175
+Cost=150
 Type=Gun
-Info=A hand-held machine gun capable of shooting 3-4 times per round.
+Info=A hand-held machine gun capable of shooting two to three times per round.
 Abilities=RainStorm.Detonator
 Element=None
-Hits=$rand(3,4)
-BasePower=30
-Upgrade=3000
+Hits=$rand(2,3)
+BasePower=20
+Upgrade=4000
 
 [Boomstick]
 Cost=60
@@ -575,7 +588,7 @@ Abilities=HotShot.BlastShot.Detonator
 Element=None
 Hits=1
 BasePower=60
-Upgrade=1200
+Upgrade=2000
 2Handed=true
 
 [SniperRifle]
@@ -586,7 +599,7 @@ Abilities=SniperShot.SlugShot.HotShot
 Element=None
 Hits=1
 BasePower=75
-Upgrade=1200
+Upgrade=2500
 2Handed=true
 
 [Armageddon]
@@ -597,7 +610,7 @@ Abilities=Snipershot.Wildfire.Coronach.LeadenSalute
 Element=None
 Hits=1
 BasePower=85
-Upgrade=1500
+Upgrade=3000
 2Handed=true
 
 [Annihilator]
@@ -608,7 +621,7 @@ Abilities=Coronach.SlugShot.BlastShot
 Element=None
 Hits=1
 BasePower=90
-Upgrade=2000
+Upgrade=3500
 2Handed=true
 
 [DeathPenalty]
@@ -619,18 +632,18 @@ Abilities=LeadenSalute.BlastShot.SlugShot
 Element=None
 Hits=1
 BasePower=100
-Upgrade=3000
+Upgrade=4000
 2Handed=true
 
 [AK47]
-Cost=175
+Cost=300
 Type=Rifle
 Info=A selective-fire assault rifle that is black and light brown in color.
 Abilities=Rainstorm.Detonator
 Element=None
-Hits=$rand(4,5)
+Hits=4
 BasePower=50
-Upgrade=3000
+Upgrade=5000
 2Handed=true
 
 [X-Buster]
@@ -642,7 +655,21 @@ Abilities=ChargedShot
 Element=light
 Hits=1
 BasePower=80
-Upgrade=0
+Upgrade=5000
+
+[VanirRifle]
+Cost=0
+Type=Rifle
+Info=A powerful rifle that is jet black in color.
+Abilities=ChargedShot.BlastShot.Detonator
+Element=None
+Hits=$rand(1,2)
+BasePower=150
+Upgrade=5000
+IgnoreDefense=10
+2Handed=true
+CanCounter=false
+SpecialWeapon=true
 
 =============================================
 AXES
@@ -666,7 +693,7 @@ Abilities=Cloudsplitter.Ruinator.PrimalRend
 Element=None
 Hits=1
 BasePower=50
-Upgrade=1500
+Upgrade=2000
 
 [Ukonvasara]
 Cost=75
@@ -687,7 +714,7 @@ Abilities=MetatronTorment.Upheaval.SteelCyclone
 Element=None
 Hits=1
 BasePower=90
-Upgrade=2000
+Upgrade=3000
 2Handed=true
 
 [Lightreaver]
@@ -699,7 +726,7 @@ Abilities=FellCleave.SteelCyclone.KingsJustice
 Element=None
 Hits=1
 BasePower=120
-Upgrade=0
+Upgrade=5000
 2Handed=true
 IgnoreDefense=10
 
@@ -712,7 +739,7 @@ Abilities=BoraAxe.Rampage.Ruinator
 Element=None
 Hits=1
 BasePower=75
-Upgrade=0
+Upgrade=5000
 IgnoreDefense=5
 
 =============================================
@@ -728,7 +755,7 @@ Abilities=Thor'sRage.Thor'sGodforce
 Element=Lightning
 Hits=$rand(1,2)
 BasePower=$iif(%battle.type = torment, 1600, 800)
-Upgrade=3000
+Upgrade=5000
 IgnoreDefense=$iif(%battle.type = torment, 40, 20)
 SpecialWeapon=true
 legendary=true
@@ -745,7 +772,7 @@ Abilities=SharkBite.DancingEdge.Cyclone
 Element=None
 Hits=$rand(1,2)
 BasePower=35
-Upgrade=1000
+Upgrade=2000
 
 [Terpsichore]
 Cost=50
@@ -755,7 +782,7 @@ Abilities=PyrrhicKleos.RudrasStorm.Exenterator
 Element=None
 Hits=$rand(1,2)
 BasePower=45
-Upgrade=1000
+Upgrade=2500
 
 [Mandau]
 Cost=60
@@ -765,7 +792,7 @@ Abilities=MercyStroke.AeolianEdge.Evisceration
 Element=None
 Hits=$rand(1,2)
 BasePower=55
-Upgrade=1500
+Upgrade=3000
 
 [Vanir_Knife]
 Cost=0
@@ -776,7 +803,7 @@ Abilities=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vajra) = true, .Evisce
 Element=None
 Hits=1
 BasePower=$iif($weapon.linkcheck($1, Vajra) = true, 75, 50)
-Upgrade=0
+Upgrade=4000
 IgnoreDefense=5
 
 [Vajra]
@@ -788,7 +815,7 @@ Abilities=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vanir_Knife) = true, .
 Element=None
 Hits=1
 BasePower=$iif($weapon.linkcheck($1, Vanir_Knife) = true, 75, 50)
-Upgrade=0
+Upgrade=4000
 IgnoreDefense=5
 
 =============================================
@@ -802,7 +829,7 @@ Abilities=FlamingArrow.PiercingArrow.DullingArrow
 Element=None
 Hits=1
 BasePower=20
-Upgrade=800
+Upgrade=1000
 2Handed=true
 
 [ShigetoBow]
@@ -813,7 +840,7 @@ Abilities=BlastArrow.Sidewinder.FlamingArrow
 Element=None
 Hits=1
 BasePower=30
-Upgrade=800
+Upgrade=1500
 2Handed=true
 
 [LamianKamen]
@@ -824,7 +851,7 @@ Abilities=EmpyrealArrow.ArchingArrow.PiercingArrow
 Element=None
 Hits=1
 BasePower=40
-Upgrade=1000
+Upgrade=2000
 2Handed=true
 
 [Yoichinoyumi]
@@ -835,7 +862,7 @@ Abilities=EagleEyeShot.NamasArrow.RefulgentArrow
 Element=Light
 Hits=1
 BasePower=60
-Upgrade=1500
+Upgrade=2500
 2Handed=true
 
 [Gandiva]
@@ -846,7 +873,7 @@ Abilities=EagleEyeShot.JishnusRadiance.ApexArrow
 Element=Dark
 Hits=1
 BasePower=75
-Upgrade=2000
+Upgrade=3000
 2Handed=true
 
 [HomesteadBow]
@@ -858,7 +885,7 @@ Abilities=ApexArrow.Sidewinder.EmpyrealArrow
 Element=None
 Hits=1
 BasePower=120
-Upgrade=0
+Upgrade=5000
 2Handed=true
 IgnoreDefense=10
 
@@ -874,7 +901,7 @@ Abilities=Tachi:Kagero.Tachi:Goten.Tachi:Yukikaze
 Element=none
 Hits=1
 BasePower=30
-Upgrade=500
+Upgrade=1000
 2Handed=true
 
 [Hagun]
@@ -885,7 +912,7 @@ Abilities=Tachi:Kaiten.Tachi:Ageha.Tachi:Kasha
 Element=none
 Hits=1
 BasePower=40
-Upgrade=800
+Upgrade=1500
 2Handed=true
 
 [PowerChordSword]
@@ -896,7 +923,7 @@ Abilities=A5.E5.D5.C5
 Element=none
 Hits=$rand(1,2)
 BasePower=20
-Upgrade=1000
+Upgrade=1500
 2Handed=true
 
 [Soboro]
@@ -907,7 +934,7 @@ Abilities=Tachi:Enpi.Tachi:Hobaku.Tachi:Jinpu.Tachi:Goten.Tachi:Kagero
 Element=none
 Hits=$rand(1,3)
 BasePower=10
-Upgrade=1000
+Upgrade=2000
 2Handed=true
 
 [Zangetsu]
@@ -918,7 +945,7 @@ Abilities=GetsugaTenshou.TensaZangetsu.FinalGetsuga
 Element=none
 Hits=1
 BasePower=50
-Upgrade=2000
+Upgrade=2500
 2Handed=true
 
 [Senbonzakura]
@@ -929,7 +956,7 @@ Abilities=Chire.Kageyoshi
 Element=none
 Hits=1
 BasePower=50
-Upgrade=2000
+Upgrade=2500
 2Handed=true
 
 [Hyourinmaru]
@@ -940,7 +967,7 @@ Abilities=SotenNiZase.DaigurenHyourinmaru
 Element=ice
 Hits=1
 BasePower=50
-Upgrade=2000
+Upgrade=2500
 2Handed=true
 
 [Yamato]
@@ -951,7 +978,7 @@ Abilities=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
 Element=dark
 Hits=1
 BasePower=60
-Upgrade=1500
+Upgrade=3000
 2Handed=true
 
 [Masamune]
@@ -962,7 +989,7 @@ Abilities=Tachi:Fudo.Tachi:Shoha.Tachi:Rana
 Element=None
 Hits=1
 BasePower=65
-Upgrade=1500
+Upgrade=3000
 2Handed=true
 
 [Kogarasumaru]
@@ -973,7 +1000,7 @@ Abilities=Tachi:Kasha.Tachi:Ageha.Tachi:Rana.Tachi:Fudo
 Element=None
 Hits=1
 BasePower=80
-Upgrade=1500
+Upgrade=3000
 2Handed=true
 
 [Naturaleza]
@@ -984,7 +1011,7 @@ Abilities=Ashes.Dismay.ThousandCuts
 Element=Light
 Hits=3
 BasePower=20
-Upgrade=3000
+Upgrade=4000
 2Handed=true
 
 [Crissaegrim]
@@ -994,18 +1021,18 @@ Info=A light-weight katana whose name means "Blessed Wind".
 Abilities=Tachi:Shoha.Tachi:Rana
 Hits=4
 BasePower=70
-Upgrade=2000
+Upgrade=5000
 Element=none
 2Handed=true
 
 [Valmanway]
-Cost=550
+Cost=500
 Type=Katana
 Info=A light-weight katana whose name means "Blessed Wind".  An upgraded version of the Crissaegrim.
 Abilities=Tachi:Shoha.Tachi:Rana.MeikyoShisui
 Hits=5
 BasePower=90
-Upgrade=3000
+Upgrade=6000
 Element=none
 2Handed=true
 
@@ -1016,7 +1043,7 @@ Info=A reforged version of the Valmanway. Outside of Torment battles the katana 
 Abilities=Tachi:Shoha.Tachi:Rana
 Hits=5
 BasePower=$iif(%battle.type = torment, 600, 200)
-Upgrade=3000
+Upgrade=6000
 Element=none
 2Handed=true
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
@@ -1032,7 +1059,7 @@ Abilities=Tachi:Fudo.Tachi:Kasha.Tachi:Gekko.Tachi:Yukikaze
 Element=None
 Hits=1
 BasePower=120
-Upgrade=0
+Upgrade=6000
 2Handed=true
 IgnoreDefense=10
 
@@ -1046,7 +1073,7 @@ Info=An ancient Jedi weapon that creates a powerful plasma beam. Outside of Torm
 Abilities=
 Hits=$rand(1,3)
 BasePower=$iif(%battle.type = torment, 2000, 1000)
-Upgrade=3000
+Upgrade=6000
 Element=none
 2Handed=false
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
@@ -1064,7 +1091,7 @@ Abilities=Protect.Shell.BarEarth.BarFire.BarWind.BarWater.BarIce.BarLightning.Ba
 Element=none
 Hits=1
 BasePower=10
-Upgrade=500
+Upgrade=1000
 
 [YewWand]
 Cost=20
@@ -1073,8 +1100,8 @@ Info=A wand made out of yew wood.
 Abilities=Fire.Stone.Ice.Aero.Water.Thunder.Cure.Poison.Blind.Paralyze.Slow.Dark.Banish
 Element=none
 Hits=1
-BasePower=20
-Upgrade=600
+BasePower=25
+Upgrade=1000
 
 [OakWand]
 Cost=30
@@ -1083,8 +1110,8 @@ Info=A wand made out of oak wood.
 Abilities=FireII.StoneII.IceII.AeroII.WaterII.ThunderII.CureII.DarkII.BanishII
 Element=none
 Hits=1
-BasePower=30
-Upgrade=700
+BasePower=35
+Upgrade=1500
 
 [PineWand]
 Cost=40
@@ -1093,72 +1120,112 @@ Info=A wand made out of pine wood. Still has that new wand smell.
 Abilities=FireIII.StoneIII.IceIII.AeroIII.WaterIII.ThunderIII.CureIII.DarkIII.BanishIII
 Element=none
 Hits=1
-BasePower=40
-Upgrade=800
+BasePower=45
+Upgrade=2000
 
 [ElderWand]
-Cost=50
+Cost=75
 Type=Wand
 Info=One of the most powerful wands ever created in the history of the world.
 Abilities=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy
 Element=none
 Hits=1
-BasePower=50
-Upgrade=1000
+BasePower=55
+Upgrade=2500
 
 [EbonyWand]
-Cost=100
+Cost=150
 Type=Wand
 Info=The second of the most powerful wands in the world. Kept in secret due to its massive power.
 Abilities=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
 Element=none
 Hits=1
-BasePower=60
-Upgrade=1500
+BasePower=65
+Upgrade=3000
+
+[Aedold]
+Cost=0
+Type=Wand
+Info=A "wand" that looks more like a club. It is light and dark grey in color.
+Abilities=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+IgnoreDefense=5
+2Handed=false
+SpecialWeapon=true
 
 [IridialStaff]
-Cost=60
+Cost=75
 Type=Stave
 Info=A staff with a dark brown base with a golden tip on bottom and a fancy golden hook on top with a multi-colored ball inside the hook. It allows use of powerful ancient magic.
 Abilities=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
 Element=None
 Hits=1
-BasePower=60
-Upgrade=1500
+BasePower=65
+Upgrade=2500
 2Handed=true
 
 [Laevatein]
-Cost=100
+Cost=150
 Type=Stave
 Info=A light brown staff with intricate silver designs. The top has four points, that almost resembles an axe on them. Hidden away due to its very strong power.
 Abilities=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 Element=None
 Hits=1
-BasePower=80
-Upgrade=3000
+BasePower=85
+Upgrade=4000
 2Handed=true
 
+[Uffrat]
+Cost=0
+Type=Stave
+Info=A staff with a red handle and silver circle on top. The circle has a pointed top with two more points near the bottom.
+Abilities=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
+Element=None
+Hits=1
+BasePower=120
+Upgrade=5000
+IgnoreDefense=10
+2Handed=true
+SpecialWeapon=true
+
 [BahamutsStaff]
-Cost=700
+Cost=600
 Type=Stave
 Info=A mighty staff that Bahamut kept hidden due to its sheer power.
 Abilities=Ultima.Kaustra.Merlin'sFinalSpell
 Element=None
 Hits=3
 BasePower=90
-Upgrade=3000
+Upgrade=6000
 2Handed=true
 
 [Glyphs]
-Cost=130
+Cost=100
 Type=Glyph
 Info=Powerful magical energy used by the Order of Ecclesia that can become a variety of weapons and spells.
 Abilities=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 Element=None
 Hits=2
-BasePower=60
+BasePower=65
 Upgrade=3000
 2Handed=true
+
+[Glyphs+1]
+Cost=0
+Type=Glyph
+Info=A refined version of the magical glyphs created by the Order of Ecclesia. Outside of Torment battles the glyphs have a power of 200 and ignores 10% defense. Inside of Torment the glyphs have a power of 450 and ignores 20% defense.
+Abilities=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
+Hits=2
+BasePower=$iif(%battle.type = torment, 450, 200)
+HurtEthereal=True
+Upgrade=6000
+Element=none
+2Handed=true
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+SpecialWeapon=true
 
 =============================================
 SPEARS
@@ -1172,7 +1239,7 @@ Abilities=Jump.Skewer.LegSweep
 Element=none
 Hits=1
 BasePower=50
-Upgrade=1000
+Upgrade=1500
 2Handed=true
 
 [Thalassocrat]
@@ -1183,7 +1250,7 @@ Abilities=Jump.ImpulseDrive.LegSweep
 Element=None
 Hits=1
 BasePower=60
-Upgrade=1200
+Upgrade=2000
 2Handed=true
 
 [Gungnir]
@@ -1194,17 +1261,6 @@ Abilities=SpiritJump.Geirskogul.LegSweep
 Element=None
 Hits=1
 BasePower=70
-Upgrade=2000
-2Handed=true
-
-[Corsesca]
-Cost=80
-Type=Spear
-Info=A spear with a a curved blade on the end that's light enough for multiple hits.
-Abilities=Jump.PentaThrust.LegSweep
-Element=none
-Hits=$rand(2,4)
-BasePower=20
 Upgrade=2500
 2Handed=true
 
@@ -1217,6 +1273,17 @@ Element=None
 Hits=1
 BasePower=80
 Upgrade=2500
+2Handed=true
+
+[Corsesca]
+Cost=120
+Type=Spear
+Info=A spear with a a curved blade on the end that's light enough for multiple hits.
+Abilities=Jump.PentaThrust.LegSweep
+Element=none
+Hits=$rand(2,4)
+BasePower=30
+Upgrade=4000
 2Handed=true
 
 [Ryunohige]
@@ -1239,7 +1306,7 @@ Abilities=Jump.HighJump.SpiritJump.SoulJump.Stardiver
 Element=None
 Hits=1
 BasePower=120
-Upgrade=0
+Upgrade=5000
 2Handed=true
 IgnoreDefense=10
 
@@ -1277,7 +1344,7 @@ Abilities=InfernalScythe.CrossReaper.SpinningScythe
 Element=None
 Hits=$rand(1,2)
 BasePower=50
-Upgrade=1000
+Upgrade=4000
 2Handed=true
 
 [Apocalypse]
@@ -1300,7 +1367,7 @@ Abilities=Insurgency.NightmareScythe.Guillotine
 Element=None
 Hits=1
 BasePower=120
-Upgrade=0
+Upgrade=5000
 2Handed=true
 IgnoreDefense=10
 
@@ -1544,7 +1611,7 @@ Cost=0
 EnergyCost=100
 Type=Rifle
 Info=The guns used by the E.S. Asher.
-Abilities=ShotBuster.FlareBuster.Cerberus.DoubleShotIII.TripleShot.GunBlazeIII
+Abilities=ShotBuster.FlareBuster.CerberusBlast.DoubleShotIII.TripleShot.GunBlazeIII
 Element=None
 Hits=2
 BasePower=500
@@ -4473,6 +4540,36 @@ Element=None
 Hits=1
 BasePower=100
 Upgrade=0
+
+[CenaFists]
+Cost=0
+Type=HandToHand
+Info=The fists of John Cena! Yabado! Your time is up, his time is now!
+Abilities=CenaShoulderTackle.Cena_ShoulderTackle.Protoplex.YouCantSeeMe.AttitudeAdjustment
+Element=None
+Hits=$rand(1,2)
+BasePower=50
+Upgrade=0
+IgnoreDefense=5
+HurtEthereal=True
+2Handed=True
+CanShieldReflect=True
+CanCounter=False
+
+[ZemusPower]
+Cost=0
+Type=HandToHand
+Info=The power of the Lunarian, Zemus.
+Abilities=BlackHole.DarkDispel.BigBang.MeteorII.Comet.DarkFlare.DarkQuake.DarkFlood.DarkTornado.DarkFreeze.Dark_Burst
+Element=None
+Hits=2
+BasePower=50
+Upgrade=0
+IgnoreDefense=5
+HurtEthereal=True
+2Handed=True
+CanShieldReflect=True
+CanCounter=False
 
 ==============================
 SHIELDS

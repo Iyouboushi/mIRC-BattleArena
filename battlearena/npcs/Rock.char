@@ -52,6 +52,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
+TauntFile=taunts_therock.txt
 
 [Status]
 Poison=no

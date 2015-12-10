@@ -525,7 +525,7 @@ event4amount=$rand(70,120)
 
 [Arsenal_Gear]
 weather=gloomy
-NumberOfEvents=16
+NumberOfEvents=20
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 limitations=no-trusts.no-summons.no-mech.no-quicksilver
 
@@ -604,7 +604,7 @@ Event12Target=all
 event13=statusonly
 event13statusType=annoyed
 event13Chance=30
-Event13Desc=Colonel: I was a North American Fall Webworm in my past life. Those were the good old days.... What were you in your former life?
+Event13Desc=Colonel: I was a North American Fall Webworm in my past life. Those were the good old days... What were you in your former life?
 Event13Target=all
 
 event14=statusonly
@@ -620,9 +620,34 @@ Event15Desc=Colonel: Actually, I am in really bad shape financially. I pay money
 Event15Target=all
 
 Event16=statusonly
+Event16statusType=annoyed
 Event16chance=30
 Event16Desc=Colonel: An Anemone or Clematis plant's juice can cause a rash. When pruning them, it's a good idea to wear gloves.
 Event16Target=all
+
+Event17=statusonly
+Event17statusType=annoyed
+Event17chance=30
+Event17Desc=Colonel: You wouldn't be trying to give yourself a bogus score using some ingenious trick would you? That's just about as low as anyone could possibly stoop! I can't believe you sometimes...
+Event17Target=all
+
+Event18=statusonly
+Event18statusType=annoyed
+Event18chance=40
+Event18Desc=Colonel: La-Li-Lu-Le-Lo! La-Li-Lu-Le-Lo! La-Li-Lu-Le-Lo!
+Event18Target=all
+
+Event19=statusonly
+Event19statusType=annoyed
+Event19chance=30
+Event19Desc=Colonel: Variety Level 7. Shoot down the space invaders! Training will have to be postponed if we are invaded by UFOs.
+Event19Target=all
+
+Event20=statusonly
+Event20statusType=annoyed
+Event20chance=30
+Event20Desc=Colonel: Mind the gap.
+Event20Target=all
 
 [Twin Pines Mall - Parking Lot]
 Weather=calm
@@ -802,6 +827,12 @@ event1Chance=95
 Event1Desc=The chamber vibrates with energy which then sparks and shoots out, hitting everyone in the chamber.
 Event1Target=all
 event1Amount=$rand(500,1000)
+
+[Lunar Core]
+Weather=gloomy
+NumberOfEvents=0
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+limitations=no-mech.no-trusts.no-summons.no-quicksilver.no-fleeing.no-playerignition
 
 [Eastern Palace]
 Weather=gloomy

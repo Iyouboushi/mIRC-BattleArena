@@ -5,8 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=0
-Name=chaos
+Name=John Cena
 
 
 [Battle]
@@ -16,7 +15,6 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=0
 Status=alive
 
 
@@ -33,8 +31,10 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=appears to be a young man with white hair and a dark tan. He wears a dark blue shirt, white pants, a blue and yellow vest and gloves of the same color. He looks at the battlefield and says, "I guess there's no choice but to fight..."
+Char=is the 15-time WWE World Heavyweight champion and the face of the company. He stands for Hustle, Loyalty, and Respect.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
+DeathMessage=is knocked down to the ground.
+Revive=kicks out at the count of 2 and hops back up to his feet!
 
 [Stuff]
 RedOrbs=0
@@ -52,9 +52,10 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
-IgnoreQuicksilver=true
-CanTaunt=false
+CanTaunt=True
+TauntFile=taunts_johncena.txt
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
+DeathConditions=Renkei.Item
 
 [Status]
 Poison=no
@@ -98,14 +99,14 @@ slow.timer=1
 zombie.timer=1
 
 [Weapons]
-Equipped=HoleyGloves
-HoleyGloves=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Equipped=CenaFists
+CenaFists=$calc(100 + $current.battlestreak)
 
 [Skills]
 MartialArts=100
-Wizardy=100
+Impetus=20
 Zen=5
-ClearMind=3
+Resist-Stun=100
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -116,7 +117,6 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-Resist-Stun=100
 Resist-Drunk=100
 Resist-Weaponlock=100
 Resist-Curse=100
@@ -125,42 +125,13 @@ Resist-Disarm=100
 
 
 [Techniques]
-SeraphimRush=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-AngelShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DemonBanisher=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DivineSpear=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Cataclysm=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SeraphimWave=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HealingDew=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PhoenixStrike=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+CenaShoulderTackle=$calc(100 + $current.battlestreak)
 
+[Augments]
+CenaFists=MeleeBonus.TechBonus.EnhanceDodge.EnhanceParry
 
 [Item_Amount]
 Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)
-
-[Augments]
-HoleyGloves=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge.HurtEthereal
-AsherGuns=DecreaseMechEnergyCost.EnhanceRanged.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian
-
-
-[Styles]
-Equipped=Guardian
-Guardian=12
-GuardianXP=1
-
-
-[mech]
-name=E.S. Asher
-inUse=false
-EngineLevel=$iif($current.battlestreak < 1000, 0, 0.7)
-HpMax=20000
-HpCurrent=20000
-EnergyMax=10000
-EnergyCurrent=10000
-EquippedCore=VesselOfAnima
-EquippedWeapon=AsherGuns
-Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal
-
 
 [modifiers]
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
@@ -186,3 +157,13 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=15
+WeaponMaster=0

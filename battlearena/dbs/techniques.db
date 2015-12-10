@@ -6,6 +6,7 @@ Ifrit=RollingBlaze.MagmaDrive.Inferno
 Spharai=FinalHeaven.ShoulderTackle.AsuranFists.SpinningAttack.OneInchPunch
 Verethragna=VictorySmite.ShoulderTackle.ShinjinSpiral.SpinningAttack.TornadoKick
 KaiserKnuckles=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
+Oatixur=TornadoKick.ShinjinSpiral.ShoulderTackle.SpinningAttack
 
 ; Swords
 Mythril_Sword=FastBlade.BurningBlade.FlatBlade.SeraphBlade
@@ -65,8 +66,11 @@ ElderWand=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy
 IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
 Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
+Aedold=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
+Uffrat=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 BahamutsStaff=Ultima.Kaustra.Merlin'sFinalSpell
 Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
+Glyphs+1=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 
 ; Guns 
 Ebony&Ivory=RainStorm.ChargedShot.RapidShot
@@ -80,6 +84,7 @@ Quicksilver=HotShot.RainStorm.ChargedShot
 SniperRifle=SniperShot.SlugShot.HotShot
 Annihilator=Coronach.SlugShot.BlastShot
 DeathPenalty=LeadenSalute.BlastShot.SlugShot
+VanirRifle=ChargedShot.BlastShot.Detonator
 
 ; Whips
 LeatherWhip=WhipLash
@@ -146,7 +151,7 @@ ImprovedMechStaff=MechFireII.MechStoneII.MechWaterII.MechWindII.MechIceII.MechTh
 FlawlessMechStaff=MechFireIII.MechStoneIII.MechWaterIII.MechWindIII.MechIceIII.MechThunderIII.MechLightIII.MechShadowIII
 DarksteelOreStaff=MechFireIV.MechStoneIV.MechWaterIV.MechWindIV.MechIceIV.MechThunderIV.MechLightIV.MechShadowIV
 TitaniumMechStaff=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechUltima.MechKaustra
-AsherGuns=ShotBuster.FlareBuster.Cerberus.DoubleShotIII.TripleShot.GunBlazeIII
+AsherGuns=ShotBuster.FlareBuster.CerberusBlast.DoubleShotIII.TripleShot.GunBlazeIII
 ReubenKatanas=IronBlade.GarudasWrath.LotusBlades
 DinahWeapons=R-Fang.X-BusterII.X-Cannon.DoubleShotIII.TripleShot.GunBlazeIII
 DelphinusWeaponSystems=MoonStoneCannon.DoubleShotIII.TripleShot.GunblazeIII
@@ -427,6 +432,8 @@ PredatorSuit=PredatorLaser.PredatorSelfDestruct.PredatorBomb.PredatorClaw
 SnakeFangs=SnakeBite
 HarpyClaws=FeatherStorm.Aeroja
 MummyWrap=WrapWhip
+CenaFists=CenaShoulderTackle.Cena_ShoulderTackle.Protoplex.YouCantSeeMe.AttitudeAdjustment
+ZemusPower=BlackHole.DarkDispel.BigBang.MeteorII.Comet.DarkFlare.DarkQuake.DarkFlood.DarkTornado.DarkFreeze.Dark_Burst
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -1199,9 +1206,9 @@ SCYTHE
 Type=Single
 TP=15
 Desc=does a downward slash with the scythe to %enemy $+ , causing an explosion of dark energy.
-BasePower=15
+BasePower=25
 Element=Dark
-Cost=800
+Cost=1000
 Magic=yes
 stat=str
 
@@ -1211,7 +1218,7 @@ TP=10
 Desc=gathers dark energy on the scythe and slices %enemy with the darkness-infused scythe.
 BasePower=35
 Element=Dark
-Cost=500
+Cost=1500
 Magic=no
 stat=str
 renkei=1
@@ -1222,7 +1229,7 @@ TP=20
 Desc=does an upward swing with the scythe, causing grey and red blades to shoot up from the ground and close in upon %enemy $+ .
 BasePower=55
 Element=Dark
-Cost=1000
+Cost=2000
 Magic=no
 stat=str
 renkei=2
@@ -1233,7 +1240,7 @@ TP=30
 Desc=raises the scythe into the air before quickly swinging the scythe at enemy, causing dark energy blades to shoot up from the ground and cut into %enemy $+ .
 BasePower=30
 Element=Dark
-Cost=2000
+Cost=1500
 Magic=yes
 stat=int
 
@@ -1243,7 +1250,7 @@ TP=50
 Desc=slices %enemy with the scythe and spins around to slice %enemy once more.
 BasePower=65
 Element=Dark
-Cost=1000
+Cost=3000
 Magic=no
 stat=str
 renkei=3
@@ -1251,11 +1258,11 @@ hits=2
 
 [SpinningScythe]
 Type=AOE
-TP=50
+TP=60
 Desc=raises the scythe into the air and lures all enemies close, slashing quickly with the scythe to hit all enemies.
 BasePower=20
 Element=Dark
-Cost=2000
+Cost=3000
 Magic=no
 stat=str
 
@@ -1275,18 +1282,18 @@ TP=30
 Desc=slices %enemy multiple times with the scythe, even cutting the air which causes dark energy to bleed from the air.
 BasePower=60
 Element=Dark
-Cost=1500
+Cost=3000
 Magic=no
 stat=str
 renkei=3
 
 [Guillotine]
 Type=Single
-TP=50
+TP=75
 Desc=rushes towards %enemy and slices %enemy four times with the scythe.
-BasePower=12
+BasePower=20
 Element=Dark
-Cost=2000
+Cost=4000
 Magic=no
 stat=str
 renkei=3
@@ -1305,11 +1312,11 @@ renkei=4
 
 [Insurgency]
 Type=Single
-TP=80
+TP=75
 Desc=slices %enemy with the scythe and quickly does a spinning slice afterwards before finally spinning the scythe around, slicing %enemy one last time.
-BasePower=12
+BasePower=20
 Element=Dark
-Cost=4000
+Cost=3000
 Magic=no
 stat=str
 renkei=4
@@ -1318,11 +1325,11 @@ hits=3
 [NightmareScythe]
 Type=single
 StatusType=Blind
-TP=15
+TP=20
 Desc=slices %enemy twice with the scythe and causes dark energy to cover %enemy $+ 's face in an attempt to cause blindness.
-BasePower=5
+BasePower=10
 Element=Dark
-Cost=700
+Cost=2000
 Magic=no
 stat=int
 hits=2
@@ -1399,14 +1406,14 @@ GUNS & RIFLES
 ===================
 [Rainstorm]
 Type=AOE
-TP=80
-Desc=leaps high into the air and rains hundreds of bullets down upon all targets on the battle field
-BasePower=15
-Cost=2500
+TP=90
+Desc=leaps high into the air and rains hundreds of bullets down upon all targets on the battlefield
+BasePower=40
+Cost=2000
 Element=none
 magic=no
 stat=str
-hits=3
+hits=1
 
 [ChargedShot]
 Type=Single
@@ -2111,7 +2118,7 @@ stat=int
 [IceIII]
 Type=Single
 TP=20
-Desc=casts three large icecicles that pierce %enemy $+ !
+Desc=casts three large icicles that pierce %enemy $+ !
 BasePower=25
 Cost=1500
 Element=ice
@@ -2156,7 +2163,7 @@ BasePower=40
 Cost=2000
 Element=earth
 magic=yes
-stat=
+stat=int
 
 [Waterja]
 Type=AOE
@@ -2341,9 +2348,9 @@ CappedAmount=2000
 
 [Flare]
 Type=Single
-TP=30
+TP=45
 Desc=summons a large sphere a fire above %enemy $+ . $set_chr_name($1) %real.name lets the sphere stay for a moment before allowing it to suddenly crash into %enemy $+ , causing severe burn damage!
-BasePower=45
+BasePower=50
 Element=Fire
 Cost=2000
 Magic=Yes
@@ -2351,9 +2358,9 @@ stat=int
 
 [Break]
 Type=Single
-TP=30
+TP=45
 Desc=summons boulders above %enemy which then crushes %enemy underneath $+ !
-BasePower=45
+BasePower=50
 Element=Earth
 Cost=2000
 Magic=Yes
@@ -2361,9 +2368,9 @@ stat=int
 
 [Quake]
 Type=Single
-TP=30
+TP=45
 Desc=causes the ground to shake under %enemy as it opens up and causes %enemy to fall into the hole!
-BasePower=45
+BasePower=50
 Element=Earth
 Cost=2000
 Magic=Yes
@@ -2371,9 +2378,9 @@ stat=int
 
 [Flood]
 Type=Single
-TP=30
+TP=45
 Desc=summons a large flood of water that engulfs %enemy $+ !
-BasePower=45
+BasePower=50
 Element=Water
 Cost=2000
 Magic=Yes
@@ -2381,9 +2388,9 @@ stat=int
 
 [Tornado]
 Type=Single
-TP=30
+TP=45
 Desc=summons a large tornado upon %enemy $+ !
-BasePower=45
+BasePower=50
 Element=Wind
 Cost=2000
 Magic=Yes
@@ -2391,9 +2398,9 @@ stat=int
 
 [Freeze]
 Type=Single
-TP=30
+TP=45
 Desc=encases %enemy in a large crystal of ice, which then explodes to cause ice damage.
-BasePower=45
+BasePower=50
 Element=Ice
 Cost=2000
 Magic=Yes
@@ -2401,9 +2408,9 @@ stat=int
 
 [Burst]
 Type=Single
-TP=30
+TP=45
 Desc=summons a dark cloud above %enemy $+ . A moment later, a giant bolt of lightning strikes %enemy $+ !
-BasePower=45
+BasePower=50
 Element=Lightning
 Cost=2000
 Magic=Yes
@@ -2484,8 +2491,8 @@ CappedAmount=4000
 Type=AOE
 TP=100
 Desc=casts the most powerful fire spell known by any wizard, Firaja II.  The battlefield erupts in flames!
-BasePower=60
-Cost=3500
+BasePower=50
+Cost=3000
 Element=fire
 magic=yes
 stat=int
@@ -2494,8 +2501,8 @@ stat=int
 Type=AOE
 TP=100
 Desc=casts the most powerful stone spell known by any wizard, Stoneja II.  The ground shakes violently as the earth spits out giant boulders at all targets.
-BasePower=60
-Cost=3500
+BasePower=50
+Cost=3000
 Element=earth
 magic=yes
 stat=int
@@ -2504,7 +2511,7 @@ stat=int
 Type=AOE
 TP=100
 Desc=casts the most powerful water spell known by any wizard, Waterja II.  A huge tidal wave floods the battle field, pushing all targets under the water
-BasePower=60
+BasePower=50
 Cost=3000
 Element=water
 magic=yes
@@ -2514,8 +2521,8 @@ stat=int
 Type=AOE
 TP=100
 Desc=casts the most powerful wind spell known by any wizard, Aeroja II.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
-BasePower=60
-Cost=3500
+BasePower=50
+Cost=3000
 Element=wind
 magic=yes
 stat=int
@@ -2524,8 +2531,8 @@ stat=int
 Type=AOE
 TP=100
 Desc=casts the most powerful ice spell known by any wizard, Blizzaja II.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
-BasePower=60
-Cost=3500
+BasePower=50
+Cost=3000
 Element=ice
 magic=yes
 stat=int
@@ -2534,8 +2541,8 @@ stat=int
 Type=AOE
 TP=100
 Desc=casts the most powerful lightning spell known by any wizard, Thundaja II.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies. 
-BasePower=60
-Cost=3500
+BasePower=50
+Cost=3000
 Element=lightning
 magic=yes
 stat=int
@@ -2603,9 +2610,9 @@ stat=int
 
 [Darkness]
 Type=Single
-TP=30
+TP=45
 Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
-BasePower=45
+BasePower=50
 Element=Dark
 Cost=2000
 Magic=Yes
@@ -2635,7 +2642,7 @@ stat=int
 Type=AOE
 TP=100
 Desc=floats into the air slightly as $gender3($1) gathers energy. A small dark orb appears in front of $set_chr_name($1) %real.name for a moment before the orb slams into the battlefield, covering it in darkness!
-BasePower=60
+BasePower=50
 Element=Dark
 Cost=3000
 Magic=Yes
@@ -2645,7 +2652,7 @@ stat=int
 Type=AOE
 TP=100
 Desc=casts a stronger version of Holy. Searing light engulfs the battlefield to damage all targets!
-BasePower=60
+BasePower=50
 Element=Light
 Cost=3000
 Magic=Yes
@@ -2683,7 +2690,7 @@ stat=int
 
 [Light]
 Type=Single
-TP=30
+TP=45
 Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
 BasePower=45
 Element=light
@@ -2703,7 +2710,7 @@ stat=int
 
 [Ignis]
 Type=Single
-TP=30
+TP=45
 Desc=does a backhand gesture and three flames appear and slam into %enemy $+ .
 BasePower=45
 Element=Fire
@@ -2713,7 +2720,7 @@ stat=int
 
 [Grando]
 Type=Single
-TP=30
+TP=45
 Desc=holds $gender($1) hands forward and a large ice crystal forms before speeding toward %enemy $+ .
 BasePower=45
 Element=Ice
@@ -2723,7 +2730,7 @@ stat=int
 
 [Fulgur]
 Type=Single
-TP=30
+TP=45
 Desc=swings $gender($1) right arm up into the air and causes a bolt of lightning to shoot into %enemy $+ !
 BasePower=45
 Element=Lightning
@@ -2733,7 +2740,7 @@ stat=int
 
 [Nitesco]
 Type=Single
-TP=30
+TP=45
 Desc=places $gender($1) hands forward and a concentrated beam of energy shoots forward into %enemy $+ .
 BasePower=45
 Element=Light
@@ -2743,7 +2750,7 @@ stat=int
 
 [Globus]
 Type=AOE
-TP=80
+TP=100
 Desc=summons two pink spheres of energy and tosses them into the air. The spheres bounce around the battlefield to hit all targets!
 BasePower=25
 Element=earth
@@ -2754,7 +2761,7 @@ stat=int
 [Acerbatus]
 Type=Single
 StatusType=Curse
-TP=40
+TP=50
 Desc=summons a large ball of dark energy and sends it slamming into %enemy in an attempt to curse %enemy $+ .
 BasePower=45
 Element=Dark
@@ -2776,7 +2783,7 @@ stat=int
 Type=Single
 TP=60
 Desc=combines the power of Dominus Anger, Hatred, and Agony, to cause a massive explosion of dark energy upon %enemy $+ !
-BasePower=60
+BasePower=65
 Element=Dark
 Cost=3000
 magic=yes
@@ -10757,7 +10764,7 @@ cost=0
 stat=str
 hits=2
 
-[Cerberus]
+[CerberusBlast]
 Type=Single
 TP=0
 EnergyCost=100
@@ -12934,3 +12941,226 @@ magic=no
 stat=str
 CanDodge=False
 
+[CenaShoulderTackle]
+Type=Single
+Cost=0
+Desc=jumps towards %enemy and hits %enemy with a flying shoulder tackle.
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=True
+stat=str
+Renkei=3
+CanDodge=false
+PostScript=writeini $char($1) techniques Cena_ShoulderTackle $calc(100 + $current.battlestreak) | writeini $char($1) techniques CenaShoulderTackle 0
+
+[Cena_ShoulderTackle]
+Type=Single
+Cost=0
+Desc=jumps towards %enemy and hits %enemy with a flying shoulder tackle.
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=True
+stat=str
+Renkei=3
+CanDodge=false
+PostScript=writeini $char($1) techniques Protoplex $calc(100 + $current.battlestreak) | writeini $char($1) techniques Cena_ShoulderTackle 0
+
+[Protoplex]
+Type=Single
+Cost=0
+Desc=lifts %enemy up into the air for a moment before then slamming %enemy down on the ground.
+TP=10
+Element=None
+Hits=1
+BasePower=60
+Magic=No
+HurtEthereal=True
+stat=str
+Renkei=3
+CanDodge=false
+PostScript=writeini $char($1) techniques YouCantSeeMe $calc(100 + $current.battlestreak) | writeini $char($1) techniques Protoplex 0
+
+[YouCantSeeMe]
+Type=Single
+Cost=0
+Desc=slams %enemy to the ground and runs to left and right before stopping at %enemy who is on the ground. %user waves $gender($1) hand in front of $gender($1) face, "You can't see me!" %user then slams $gender($1) right fist into the face of %enemy $+ .
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+HurtEthereal=True
+stat=str
+Renkei=5
+CanDodge=false
+PostScript=writeini $char($1) techniques AttitudeAdjustment $calc(100 + $current.battlestreak) | writeini $char($1) techniques YouCantSeeMe 0
+
+[AttitudeAdjustment]
+Type=Single
+Cost=0
+Desc=lifts %enemy onto $gender($1) shoulders, pausing for a moment before throwing $gender2($2) down to the ground.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+Renkei=5
+CanDodge=false
+
+[BigBang]
+Type=AOE
+Cost=0
+Desc=gathers power as lightning gathers around the battlefield. After a few moments, dark energy explodes from the middle of the battlefield to hit all of the heroes.
+TP=10
+Element=None
+Hits=$rand(1,2)
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+StatusType=Curse
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[BlackHole]
+Type=AOE
+TP=10
+Desc=causes dark energy to expand from the center of the battlefield to strike all of the heroes.
+BasePower=30
+Cost=0
+Element=None
+HurtEthereal=True
+StatusType=Curse
+Hits=1
+Magic=No
+stat=int
+CanDodge=false
+DestroyShadows=3
+Postscript=writeini $char($1) status Invincible yes | writeini $char($1) techniques BlackHole 0 | writeini $char($1) techniques DarkDispel 1
+
+[DarkDispel]
+Type=ClearStatusPositive
+TP=10
+Status=none
+Desc=chants a few words before %enemy begins to glow with a crystalized light that then shatters around $gender2($3) $+ .  %enemy then feels most of $gender($3) positive status effects fading away.
+Element=none
+Cost=0
+Postscript=writeini $char($1) techniques DarkDispel 0 | writeini $char($1) techniques Comet $calc(50 + $current.battlestreak) 
+
+[MeteorII]
+Type=AOE
+TP=10
+Desc=summons two meteors that slam onto the battlefield to hit all of the heroes.
+BasePower=30
+Cost=0
+Element=none
+HurtEthereal=true
+StatusType=Curse
+Hits=2
+magic=no
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[Comet]
+Type=Single
+Cost=0
+Desc=summons a random amount of comets that slam into %enemy with great force.
+TP=10
+Element=None
+Hits=$rand(2,8)
+BasePower=20
+Magic=No
+HurtEthereal=true
+StatusType=Curse
+CanDodge=false
+stat=int
+DestroyShadows=4
+PostScript=writeini $char($1) techniques Comet 0 | writeini $char($1) techniques BigBang $calc(50 + $current.battlestreak) | writeini $char($1) techniques MeteorII $calc(50 + $current.battlestreak) | writeini $char($1) techniques DarkFlare $calc(50 + $current.battlestreak) | writeini $char($1) techniques DarkQuake $calc(50 + $current.battlestreak) | writeini $char($1) techniques DarkFlood $calc(50 + $current.battlestreak) | writeini $char($1) techniques DarkTornado $calc(50 + $current.battlestreak) | writeini $char($1) techniques DarkFreeze $calc(50 + $current.battlestreak) | writeini $char($1) techniques Dark_Burst $calc(50 + $current.battlestreak)
+
+[DarkFlare]
+Type=AOE
+TP=20
+Desc=summons a giant sphere of dark fire above the battlefield, pausing for a moment before letting it fall, covering the battlefield in dark flames.
+BasePower=60
+Element=Fire
+Cost=0
+Magic=Yes
+StatusType=Curse
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[DarkQuake]
+Type=AOE
+TP=20
+Desc=summons a huge chunk of earth, which takes on a darker color. %user then drops the chunk down, causing a wave of darkness and an earthquake at the same time.
+BasePower=60
+Element=Earth
+Cost=0
+Magic=Yes
+StatusType=Curse
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[DarkFlood]
+Type=AOE
+TP=20
+Desc=summons a massive wave of dark water to cover the entire battlefield.
+BasePower=60
+Element=Water
+Cost=0
+Magic=Yes
+StatusType=Curse
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[DarkTornado]
+Type=AOE
+TP=20
+Desc=summons multiple dark tornados that descend upon all of the heroes.
+BasePower=60
+Element=Wind
+Cost=0
+Magic=Yes
+StatusType=Curse
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[DarkFreeze]
+Type=AOE
+TP=20
+Desc=traps all of the heroes in dark ice which explodes a moment later, causing ice damage.
+BasePower=60
+Element=Ice
+Cost=0
+Magic=Yes
+StatusType=Curse
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[Dark_Burst]
+Type=AOE
+TP=20
+Desc=summons several clouds to the battlefield, which barrages all of the heroes with dark bolts of lightning.
+BasePower=60
+Element=Lightning
+Cost=0
+Magic=Yes
+StatusType=Curse
+stat=int
+CanDodge=false
+DestroyShadows=2

@@ -52,6 +52,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
+CanUseItems=$iif(%ai.monster.name = Zemus, true)
 
 
 [Status]
@@ -150,7 +151,7 @@ TenmaGouZankuu=$iif($current.battlestreak < 100, 0, 9999)
 ShunGokuSatsu=$iif($current.battlestreak < 200, 0, 9999)
 
 [Item_Amount]
-
+Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)
 
 [Ignitions]
 ShinAkuma=$iif($current.battlestreak < 200, 0, 1)

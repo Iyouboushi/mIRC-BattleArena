@@ -58,6 +58,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
 IgnoreElementalMessage=true
+CanUseItems=$iif(%ai.monster.name = Zemus, true)
 
 
 [Status]
@@ -129,20 +130,39 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+dragon-killer=10
+undead-killer=10
+zombie-killer=10
+demon-killer=10
+orc-killer=10
+yagudo-killer=10
+quadav-killer=10
+goblin-killer=10
+treant-killer=10
+plant-killer=10
+android-killer=10
+crab-killer=10
+worm-killer=10
+bat-killer=10
+lizard-killer=10
+elemental-killer=10
+slime-killer=10
 
 
 [Techniques]
-R-Cannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+R-Cannon=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 Hilbert_Effect=1
 S-Chain=1
-DexEtherRa=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DexEtherFa=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DexEtherLe=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DexEtherRa=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+DexEtherFa=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+DexEtherLe=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Ignitions]
 Animus=$iif($current.battlestreak < 200, 0, 1)
 
+[Item_Amount]
+Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)
 
 [Augments]
 KosmosFists=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge.EnhanceParry.HurtEthereal
@@ -180,15 +200,33 @@ Ice=100
 Lightning=100
 Light=100
 Dark=100
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+HandToHand=80
+Whip=80
+Sword=80
+Gun=80
+Rifle=80
+Katana=80
+Wand=80
+Spear=80
+Scythe=80
+Glyph=80
+GreatSword=80
+Bow=80
+Axe=80
+Dagger=80
+Mace=80
+Stave=80
+EnergyBlaster=80
+Buzzsaw=80
+Chainsaw=80
+DekuScrub=80
+Elemental=80
+Engine=80
+GammaArm=80
+GammaBody=80
+Hammer=80
+Kusarigama=80
+Lanmola=80
+Lightsaber=80
+Nunchuku=80
+SilverSwords=80

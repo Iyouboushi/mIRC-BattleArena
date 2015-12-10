@@ -307,6 +307,15 @@ FullbringTarget=AOE
 FullbringAmount=75
 Fullbringdesc=draws out the soul from the thunder orb.  The sky goes black and a lightning storm erupts on the battlefield, shocking all enemies!
 
+[Dark-Matter]
+Type=Damage
+Target=single
+Amount=300
+Desc=takes out a strange cube that is pure black in color and hurls it at %enemy $+ , which makes a large explosion of dark energy upon contact.
+Cost=0
+Sellprice=0
+Element=None
+
 [Stop_Watch]
 Type=Status
 Target=Single
@@ -357,6 +366,16 @@ Desc=pulls out a slab of brown, smelly, rotting meat. Ugh, who would ever eat th
 StatusType=poison
 SellPrice=2000
 Cost=0
+
+[PoisonPotion]
+type=Status
+Target=Single
+Amount=50
+Desc=takes out a small potion that contains a mild poison and hurts it at %enemy in an attempt to cause poison.
+StatusType=poison
+SellPrice=500
+Cost=2500
+ShopNPC=BattleMerchant
 
 [SauceAmpulla]
 Type=Status
@@ -3336,6 +3355,18 @@ AlliedNotes=3000
 PortalLevel=500
 DarknessTurns=35
 
+[StrangeCrystal]
+Type=Portal
+Cost=20
+Currency=HighKindredCrest
+Battlefield=Lunar Core
+Weather=Gloomy
+Monster=Zemus
+Desc=takes out a blue crystal and holds it in hand for a moment. It gains a bright glow and transports everyone to the Lunar Core of the Red Moon.
+AlliedNotes=3000
+PortalLevel=1000
+DarknessTurns=35
+
 ;;;;; SHADOW VERSIONS of the portals
 ;;;;; These are basically remakes of the
 ;;;;; original portal battles at their original levels
@@ -3480,6 +3511,15 @@ Weapon=Excalibur+1
 Desc=pulls out a set of blueprints for an upgraded Excalibur, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the Excalibur+1 which glows with power.
 Exclusive=yes
 
+[Blueprints:Glyphs+1]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Glyphs+1
+Desc=pulls out a set of blueprints for upgraded Glyphs, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and creates the Glyphs+1 which glow with magical power.
+Exclusive=yes
+
 [Blueprints:Aegis]
 Type=special
 Cost=0
@@ -3621,6 +3661,42 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Vajra
 Desc=pulls out a set of blueprints for the Vajra $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Vajra, ready for use.
+
+[Blueprints:Oatixur]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Oatixur
+Desc=pulls out a set of blueprints for the Oatixur $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Oatixur, ready for use.
+Exclusive=true
+
+[Blueprints:Uffrat]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Uffrat
+Desc=pulls out a set of blueprints for the Uffrat $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Uffrat, ready for use.
+Exclusive=true
+
+[Blueprints:Aedold]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Aedold
+Desc=pulls out a set of blueprints for the Aedold $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Aedold, ready for use.
+Exclusive=true
+
+[Blueprints:VanirRifle]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=VanirRifle
+Desc=pulls out a set of blueprints for the Vanir Rifle $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Vanir Rifle, ready for use.
+Exclusive=true
 
 [MasterSwordMap]
 Type=special
