@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 11/29/15
+;;;; Last updated: 12/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1899,7 +1899,7 @@ alias skill.cover { $set_chr_name($1)
 ;=================
 ; SNATCH
 ;=================
-on 3:TEXT:!snatch*:*: { $skill.snatch($nick, $2) }
+on 3:TEXT:!snatch*:*: { $partial.name.match($nick, $2)  | $skill.snatch($nick, %attack.target) }
 
 alias skill.snatch { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
@@ -2470,7 +2470,6 @@ alias skill.monster.repairnaturalarmor {
   if (%battleis = on)  { $check_for_double_turn($1) }
 }
 
-
 ;=================
 ; MONSTER SUMMON
 ;=================
@@ -2543,7 +2542,7 @@ alias skill.monstersummon {
 ;=================
 ; PROVOKE
 ;=================
-on 3:TEXT:!provoke*:*: { $skill.provoke($nick, $2) }
+on 3:TEXT:!provoke*:*: { $partial.name.match($nick, $2)  | $skill.provoke($nick, %attack.target) }
 
 alias skill.provoke { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
@@ -2591,8 +2590,8 @@ alias skill.provoke { $set_chr_name($1)
 ;=================
 ; WEAPON LOCK
 ;=================
-on 3:TEXT:!weaponlock*:*: { $skill.weaponlock($nick, $2) }
-on 3:TEXT:!weapon lock*:*: { $skill.weaponlock($nick, $3) }
+on 3:TEXT:!weaponlock*:*: { $partial.name.match($nick, $2)  | $skill.weaponlock($nick, %attack.target) }
+on 3:TEXT:!weapon lock*:*: { $partial.name.match($nick, $3)  | $skill.weaponlock($nick, %attack.target) }
 
 alias skill.weaponlock { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
@@ -2650,13 +2649,11 @@ alias skill.weaponlock { $set_chr_name($1)
       writeini $char($2) status weaponlock.timer 1 
     }
 
-
   }
   if (($readini($char($2), info, flag) = npc) || ($readini($char($2), info, flag) = $null)) {
     writeini $char($2) status weapon.locked yes 
     writeini $char($2) status weaponlock.timer 1 
   }
-
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
@@ -2665,7 +2662,7 @@ alias skill.weaponlock { $set_chr_name($1)
 ;=================
 ; DISARM
 ;=================
-on 3:TEXT:!disarm*:*: { $skill.disarm($nick, $2) }
+on 3:TEXT:!disarm*:*: { $partial.name.match($nick, $2)  | $skill.disarm($nick, %attack.target) }
 
 alias skill.disarm { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
@@ -3272,13 +3269,11 @@ alias skill.stoneskin { $set_chr_name($1)
   unset %current.playerstyle | unset %current.playerstyle.level | unset %stoneskin.used
 }
 
-
-
 ;=================
 ; TABULA ROSA
 ;=================
-on 3:TEXT:!tabularasa*:*: { $skill.tabularasa($nick, $2) }
-on 3:TEXT:!tabula rasa *:*: { $skill.tabularasa($nick, $3) }
+on 3:TEXT:!tabularasa*:*: { $partial.name.match($nick, $2)  | $skill.tabularasa($nick, %attack.target) }
+on 3:TEXT:!tabula rasa *:*: {  $partial.name.match($nick, $3)  | $skill.tabularasa($nick, %attack.target) }
 
 alias skill.tabularasa { $set_chr_name($1)
   if ($skillhave.check($1, TabulaRasa) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
@@ -3295,10 +3290,9 @@ alias skill.tabularasa { $set_chr_name($1)
 
   writeini $char($1) skills tabularasa.time %current.turn
 
-  if ($readini($char($1), descriptions, stoneskin) = $null) { $set_chr_name($2) | set %skill.description unleashes a powerful and ancient technique upon %real.name in an attempt to inflict amnesia. }
+  if ($readini($char($1), descriptions, tabularasa) = $null) { $set_chr_name($2) | set %skill.description unleashes a powerful and ancient technique upon %real.name in an attempt to inflict amnesia. }
   else { set %skill.description $readini($char($1), descriptions, tabularasa) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
-
 
   ; check for immunity/resistance and inflict amensia
   var %resist.skill $readini($char($2), skills, resist-amnesia)
