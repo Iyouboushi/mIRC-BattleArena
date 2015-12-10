@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/09/15
+;;;; Last updated: 12/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1520,7 +1520,7 @@ alias generate_battle_order {
     if (%demonwall.fight = on) { 
       $display.message($readini(translation.dat, events, DemonWallFightOver), battle)
       unset %demonwall.fight 
-      if (%battle.type = ai) { set %ai.winner 2Winner: 4 %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
+      if (%battle.type = ai) { set %ai.winner 2Winner:4 %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
       /endbattle defeat 
       halt 
     }
@@ -2092,11 +2092,11 @@ alias battle.check.for.end {
 
   if (%battle.type != dungeon) { 
     if ((%battle.monster.death = true) && (%battle.player.death = false)) { 
-      if (%battle.type = ai) { set %ai.winner 2Winner: 12 %ai.npc.name | writeini $txtfile(1vs1bet.txt) money winner npc  } 
+      if (%battle.type = ai) { set %ai.winner 2Winner:12 %ai.npc.name | writeini $txtfile(1vs1bet.txt) money winner npc  } 
       .timerEndBattle $+ $rand(a,z) 1 4 /endbattle victory | halt 
     } 
     if ((%battle.monster.death = false) && (%battle.player.death = true)) { 
-      if (%battle.type = ai) { set %ai.winner 2Winner: 4 %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
+      if (%battle.type = ai) { set %ai.winner 2Winner:4 %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
       /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt
     } 
     if ((%battle.monster.death = $null) && (%battle.player.death = true)) {  /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle victory | halt } 
