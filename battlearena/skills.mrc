@@ -3270,10 +3270,10 @@ alias skill.stoneskin { $set_chr_name($1)
 }
 
 ;=================
-; TABULA ROSA
+; TABULA RASA
 ;=================
 on 3:TEXT:!tabularasa*:*: { $partial.name.match($nick, $2)  | $skill.tabularasa($nick, %attack.target) }
-on 3:TEXT:!tabula rasa *:*: {  $partial.name.match($nick, $3)  | $skill.tabularasa($nick, %attack.target) }
+on 3:TEXT:!tabula rasa *:*: { $partial.name.match($nick, $3)  | $skill.tabularasa($nick, %attack.target) }
 
 alias skill.tabularasa { $set_chr_name($1)
   if ($skillhave.check($1, TabulaRasa) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
