@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 12/08/15
+;;;; Last updated: 12/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -988,11 +988,11 @@ on 3:TEXT:!equip *:*: {
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
   if ($readini($char($nick), status, weapon.lock) != $null) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyWeaponLocked),private) | halt  }
 
-
   if (($2 != right) && ($2 != left)) { 
     if ($readini($dbfile(weapons.db), $2, type) = shield) { 
       if ($skillhave.check($nick, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
       var %equiphand left | var %weapon.to.equip $2
+      if ($readini($dbfile(weapons.db), $readini($char($nick), weapons, equipped), 2Handed) = true) { $display.private.message($readini(translation.dat, errors, Using2HWeapon)) | halt }
     }
     if ($readini($dbfile(weapons.db), $2, type) != shield) { 
       var %equiphand right | var %weapon.to.equip $2 
