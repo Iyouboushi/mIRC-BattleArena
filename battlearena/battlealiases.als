@@ -1962,7 +1962,7 @@ death.conditions.check {
   ; $1 = person
   ; $2 = melee, item, tech, renkei, magic, magiceffect, status
 
-  if ($readini($char($1), info, flag) != monster) { return }
+  if ($readini($char($1), info, flag) = $null) { return }
 
   ; Check for death conditions.  If the death condition isn't met, turn on revive.
   var %death.conditions $readini($char($1), info, DeathConditions)
