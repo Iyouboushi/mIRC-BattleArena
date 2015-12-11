@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 11/16/15
+;;;; Last updated: 12/11/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -497,9 +497,13 @@ generate_demonwall {
   writeini $char(%monster.name) skills royalguard.on on
   writeini $char(%monster.name) skills MagicMirror 10
   writeini $char(%monster.name) skills Resist-blind 100
-  writeini $char(%monster.name) skills Resist-slow 100
-  writeini $char(%monster.name) skills Resist-stun 100
+  writeini $char(%monster.name) skills Resist-slow 80
+  writeini $char(%monster.name) skills Resist-stop 100
   writeini $char(%monster.name) skills Resist-Weaponlock 100
+  writeini $char(%monster.name) skills Resist-Paralysis 100
+  writeini $char(%monster.name) skills Resist-Petrify 100
+  writeini $char(%monster.name) skills Resist-Intimidate 100
+  writeini $char(%monster.name) skills Resist-Drunk 100
 
   writeini $char(%monster.name) styles equipped Guardian
   writeini $char(%monster.name) styles guardian 2
@@ -643,11 +647,16 @@ generate_wallofflesh {
   writeini $char(%monster.name) skills royalguard.on on
   writeini $char(%monster.name) skills MagicMirror 10
   writeini $char(%monster.name) skills Resist-blind 100
-  writeini $char(%monster.name) skills Resist-slow 100
+  writeini $char(%monster.name) skills Resist-slow 80
+  writeini $char(%monster.name) skills Resist-stop 100
   writeini $char(%monster.name) skills Resist-Weaponlock 100
+  writeini $char(%monster.name) skills Resist-Paralysis 100
+  writeini $char(%monster.name) skills Resist-Petrify 100
+  writeini $char(%monster.name) skills Resist-Intimidate 100
+  writeini $char(%monster.name) skills Resist-Drunk 100
 
   writeini $char(%monster.name) styles equipped Guardian
-  writeini $char(%monster.name) styles guardian 3
+  writeini $char(%monster.name) styles guardian 4
 
   ; Modifiers
   writeini $char(%monster.name) modifiers Fire 30
