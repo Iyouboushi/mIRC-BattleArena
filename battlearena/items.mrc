@@ -132,7 +132,7 @@ alias uses_item {
 
   if (%item.type = instrument) { $display.message($readini(translation.dat, errors,ItemIsUsedForSinging), private) | halt }
 
-  if (%item.type = misc) { $display.message($readini(translation.dat, errors,ItemIsUsedForCrafting), private) | halt }
+  if ((%item.type = misc) || (%item.type = gem)) { $display.message($readini(translation.dat, errors,ItemIsUsedForCrafting), private) | halt }
 
 
   if (%item.type = food) { 
