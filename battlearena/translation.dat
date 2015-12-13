@@ -405,6 +405,7 @@ Can'tGiveMoreOrbsToNPC=$chr(3) $+ 4 $+ Error: %real.name can only give 1,000 o
 DoesNotHaveEnoughHammers=$chr(3) $+ 4 $+ Error: %real.name does not have enough repair hammers!
 ItemIsUsedInSkill=$chr(3) $+ 4 $+ Error: This item is used via performing a skill. 
 ItemIsUsedForSinging=$chr(3) $+ 4 $+ Error: Instruments are used with the singing command once you have learned songs and cannot be used with !use.
+ItemIsUsedForCrafting=$chr(3) $+ 4 $+ Error: This item is used for crafting or potion effects and cannot be used with this command.
 ItemIsAccessoryEquipItInstead=$chr(3) $+ 4 $+ Error: This item is an accessory and cannot be used like this. Use !wear to equip it.
 ItemCanOnlyBeUsedOnPlayers=$chr(3) $+ 4 $+ Error: This item can only be used on players!
 ItemCanOnlyBeUsedOnMonsters=$chr(3) $+ 4 $+ Error: This item can only be used on monsters!

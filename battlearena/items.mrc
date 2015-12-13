@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 10/28/15
+;;;; Last updated: 12/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -131,6 +131,9 @@ alias uses_item {
   var %user.flag $readini($char($1), info, flag) | var %target.flag $readini($char($4), info, flag)
 
   if (%item.type = instrument) { $display.message($readini(translation.dat, errors,ItemIsUsedForSinging), private) | halt }
+
+  if (%item.type = misc) { $display.message($readini(translation.dat, errors,ItemIsUsedForCrafting), private) | halt }
+
 
   if (%item.type = food) { 
     $checkchar($4)
