@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 12/10/15
+;;;; Last updated: 12/12/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -40,8 +40,10 @@ alias use.skill {
   if ($3 = bloodspirit) { $skill.bloodspirit($1) } 
   if ($3 = drainsamba) { $skill.drainsamba($1) } 
   if ($3 = formlessstrike) { $skill.formlessstrike($1) } 
-  if (($3 = regen) && (%attack.target = $null)) { $skill.regen($1) } 
-  if (($3 = regen) && (%attack.target = stop)) { $skill.regen.stop($1) } 
+  if (($3 = regen) && ($4 = $null)) { $skill.regen($1) } 
+  if (($3 = regen) && ($4 = stop)) { $skill.regen.stop($1) } 
+  if (($3 = regeneration) && ($4 = $null)) { $skill.regen($1) } 
+  if (($3 = regeneration) && ($4 = stop)) { $skill.regen.stop($1) } 
   if ($3 = kikouheni) { $skill.kikouheni($1, %attack.target) }
   if ($3 = shadowcopy) { $skill.clone($1) }  
   if ($3 = steal) { $skill.steal($1, %attack.target, !steal) } 
