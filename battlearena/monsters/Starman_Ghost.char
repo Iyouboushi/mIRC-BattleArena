@@ -109,7 +109,7 @@ PK-Fire=35
 
 
 [modifiers]
-Heal=fire.energyblaster
+Heal=fire
 Earth=50
 Fire=150
 Wind=50
@@ -134,5 +134,5 @@ Axe=100
 Dagger=100
 Mace=100
 Stave=100
-EnergyBlaster=150
+EnergyBlaster=100
 HolyHandGrenade=0

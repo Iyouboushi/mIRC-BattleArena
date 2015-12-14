@@ -92,31 +92,43 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=AtlantisPower
-AtlantisPower=80
+AtlantisPower=$calc(1 + $current.battlestreak)
 
 [Skills]
+Resist-Amnesia=100
+Resist-Blind=100
 Resist-Charm=100
-Resist-Zombie=100
-Resist-Stun=30
+Resist-Confuse=100
+Resist-Disarm=100
+Resist-Drunk=100
 Resist-Intimidate=100
-Resist-Paralysis=10
-MartialArts=50
+Resist-Paralysis=40
+Resist-Petrify=60
+Resist-Poison=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=30
+Resist-Weaponlock=100
+Resist-Zombie=100
+MartialArts=100
 MightyStrike=1
 Bloodboost=10
-MagicMirror=1
-Resist-Petrify=60
+PerfectDefense.on=On
+doubleturn.on=on
+TrueStrike.on=on
 
 
 [Techniques]
-BloodDagger=80
-BloodBlast=80
-BloodBoost=150
+BloodDagger=$calc(1 + $current.battlestreak)
+BloodBlast=$calc(1 + $current.battlestreak)
+BloodBoost=$calc(1 + $current.battlestreak)
 
 [Item_Amount]
 
 
 [modifiers]
-Heal=dark.energyblaster
+Heal=dark
 Earth=80
 Fire=80
 Wind=80
@@ -141,7 +153,7 @@ Axe=80
 Dagger=80
 Mace=80
 Stave=80
-EnergyBlaster=130
+EnergyBlaster=80
 HolyHandGrenade=0
 AsuranFists=45
 VictorySmite=45

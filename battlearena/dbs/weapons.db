@@ -1596,7 +1596,7 @@ BasePower=400
 Upgrade=0
 
 [TitaniumMechStaff]
-Cost=50000
+Cost=35000
 EnergyCost=400
 Type=Stave
 Info=A staff for use by a mech which is made out of titanium ore.

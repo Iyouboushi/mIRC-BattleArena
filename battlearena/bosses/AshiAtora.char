@@ -99,13 +99,22 @@ AtlantisPower=$iif($readini(system.dat, system, ForcePortalSync) = true, 250, 80
 
 
 [Skills]
+Resist-Amnesia=100
+Resist-Blind=100
 Resist-Charm=100
-Resist-Zombie=100
-Resist-Stun=100
-Resist-Intimidate=100
-Resist-Paralysis=100
+Resist-Confuse=100
+Resist-Disarm=100
 Resist-Drunk=100
-Resist-Petrify=100
+Resist-Intimidate=100
+Resist-Paralysis=40
+Resist-Petrify=60
+Resist-Poison=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=30
+Resist-Weaponlock=100
+Resist-Zombie=100
 MartialArts=100
 MightyStrike=1
 Bloodboost=20
@@ -123,7 +132,7 @@ AtlantianExplosion=$iif($readini(system.dat, system, ForcePortalSync) = true, 30
 [Item_Amount]
 
 [modifiers]
-Heal=dark.energyblaster
+Heal=dark
 Earth=80
 Fire=80
 Wind=80
@@ -148,7 +157,7 @@ Axe=80
 Dagger=80
 Mace=80
 Stave=80
-EnergyBlaster=130
+EnergyBlaster=80
 HolyHandGrenade=0
 Crissaegrim=50
 Valmanway=50

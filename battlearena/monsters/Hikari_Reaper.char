@@ -46,6 +46,7 @@ LastIP=N/a
 Created=N/a
 Streak=300
 CanTaunt=false
+IgnoreElementalMessage=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

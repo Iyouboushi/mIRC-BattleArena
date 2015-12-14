@@ -96,8 +96,7 @@ ethereal=yes
 [Weapons]
 Equipped=GhostPower
 GhostPower=15
-weakness=handtohand
-strong=katana.gun.rifle.wand.greatsword.sword.glyph.whip
+
 
 [Skills]
 zen=3
@@ -114,7 +113,7 @@ GraveCurse=10
 
 
 [modifiers]
-Heal=fire.energyblaster
+Heal=fire
 Earth=50
 Fire=150
 Wind=50
@@ -139,5 +138,5 @@ Axe=100
 Dagger=100
 Mace=100
 Stave=100
-EnergyBlaster=150
+EnergyBlaster=100
 HolyHandGrenade=0

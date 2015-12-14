@@ -98,24 +98,14 @@ Masamune=25
 
 [Skills]
 
-
-
 [Techniques]
 Tachi:Fudo=20
 Tachi:Shoha=15
 Tachi:Rana=25
 
 
-
-
-[Element]
-Weakness=light
-Strong=dark.water.earth.wind.ice
-Heal=Fire
-
-
 [modifiers]
-Heal=fire.energyblaster
+Heal=fire
 Earth=50
 Fire=150
 Wind=50
@@ -140,5 +130,5 @@ Axe=100
 Dagger=100
 Mace=100
 Stave=100
-EnergyBlaster=150
+EnergyBlaster=100
 HolyHandGrenade=0

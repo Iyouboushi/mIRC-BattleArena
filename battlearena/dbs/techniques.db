@@ -4949,6 +4949,7 @@ stat=int
 [BloodBlast]
 Type=Single
 TP=10
+StatusType=Curse
 Desc=cuts his wrist, causing some blood to spill out. The blood then turns into a ball of red energy that slams into %enemy $+ !
 BasePower=40
 Element=Dark
@@ -4959,6 +4960,7 @@ stat=int
 [AtlantianBlast]
 Type=Single
 TP=10
+StatusType=Curse
 Desc=cuts his wrist, causing some blood to spill out. The blood then turns into a ball of red energy that slams into %enemy $+ !
 BasePower=40
 Element=Dark
@@ -4970,6 +4972,7 @@ DestroyShadows=3
 [AtlantianExplosion]
 Type=AOE
 TP=100
+StatusType=Curse
 Desc=crosses his arms and floats into the air as the ground ignites into a black flame, hitting everyone on the battlefield. 
 BasePower=10
 Element=Dark
@@ -4982,6 +4985,7 @@ DestroyShadows=4
 Type=Single
 StatusType=Poison
 TP=10
+StatusType=Curse
 Desc=summons a dagger that glows a dark red. He quickly slices %enemy a few times with it, sending poison into $gender($2) body!!
 BasePower=10
 Element=Dark
