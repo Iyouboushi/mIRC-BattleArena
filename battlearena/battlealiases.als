@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/09/15
+;;;; Last updated: 12/14/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3116,6 +3116,8 @@ multiple_wave_clearmonsters {
 ; after one dies.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 spawn_after_death {
+  ; $1 = the monster or npc we're checking
+
   set %monster.to.spawn $readini($char($1), info, SpawnAfterDeath)
 
   if (%monster.to.spawn = $null) { return }
@@ -3161,6 +3163,9 @@ spawn_after_death {
 
   set %multiple.wave.bonus yes
   set %first.round.protection yes
+
+  ; Remove the monster to spawn from the original monster to prevent some silly potential bugs
+  remini $char($1) info SpawnAfterDeath
 }
 
 metal_defense_check {
