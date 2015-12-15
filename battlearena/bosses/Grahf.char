@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$round($calc(5000 + (1000 * $readini($txtfile(battle2.txt), battleinfo, players))),0)
+Hp=10000
 Tp=5000
 Str=$iif($readini(system.dat, system, ForcePortalSync) = true, 6170, 40000)
 Def=$iif($readini(system.dat, system, ForcePortalSync) = true, 6170, 40000)
@@ -10,7 +10,7 @@ Name=Grahf
 
 
 [Battle]
-Hp=7500
+Hp=10000
 Tp=5000
 Str=6170
 Def=6170
@@ -52,6 +52,13 @@ IgnoreQuickSilver=True
 CanTaunt=False
 JustReleaseDefense=100
 IgnoreElementalMessage=true
+BattleStats=ignoreHP
+CanFlee=false
+Ragemode=ignore
+IgnoreDrain=true
+DeathConditions=tech
+IgnorePresident=true
+CanStagger=no
 ;=======================================
 ; These are optional flags you can set:
 ;========================================
@@ -128,14 +135,14 @@ IgnoreElementalMessage=true
 
 [monster]
 ; Type is the type of monster it is. 
-type=
+type=human
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
 ; Change it to "true" to turn it on.
 TechLearn=true
 
 ; Size is the size of the monster. Small/Medium/Large
-size=medium
+size=large
 
 [Status]
 Poison=no
@@ -172,39 +179,40 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=GrahfFists
-GrahfFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000)
+GrahfFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 7500)
 
 
 [Skills]
-MartialArts=$iif($readini(system.dat, system, ForcePortalSync) = true, 1000, 3000)
+MartialArts=100
 Zen=5
 ClearMind=3
-WeaponBash=$iif($readini(system.dat, system, ForcePortalSync) = true, 0, 1)
-Resist-Charm=100
-Resist-Poison=100
-Resist-Zombie=100
-Resist-Intimidate=100
+WeaponBash=1
+PerfectDefense.on=On
+doubleturn.on=on
+TrueStrike.on=on
 Resist-Amnesia=100
 Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Paralysis=100
-Resist-confuse=100
 Resist-Stun=100
-Resist-Drunk=100
 Resist-Weaponlock=100
-Resist-Curse=100
-Resist-Petrify=100
-Resist-Disarm=100
-Resist-Sleep=100
-Resist-Petrify=60
+Resist-Zombie=100
 
 
 [Techniques]
-DoublePunch=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)
-ShoulderTackle=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)
-AsuranFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)
-GrahfEnergyBlast=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 5000)
+DoublePunch=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 7500)
+ShoulderTackle=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 7500)
+AsuranFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 7500)
+GrahfEnergyBlast=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 7500)
 
 
 [Item_Amount]
@@ -296,11 +304,11 @@ Chivalry=45
 [Mech]
 name=Alpha Weltall
 inUse=true
-EngineLevel=2
-HpMax=$iif($readini(system.dat, system, ForcePortalSync) = true, 8000, 30000)
-HpCurrent=8000
-EnergyMax=20000
-EnergyCurrent=20000
+EngineLevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 2, 5)
+HpMax=20000
+HpCurrent=20000
+EnergyMax=100000
+EnergyCurrent=100000
 EquippedCore=VesselOfAnima
 EquippedWeapon=AlphaWeltallFists
 Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal
