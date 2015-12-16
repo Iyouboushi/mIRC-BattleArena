@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/23/15
+;;;; Last updated: 12/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -2591,7 +2591,8 @@ formula.techdmg.monster {
   $modifer_adjust($3, $2)
 
   ; Check to see if the target is resistant/weak to the weapon itself
-  $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+  if ($person_in_mech($1) = false) { $modifer_adjust($3, $readini($char($1), weapons, equipped)) }
+  if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
@@ -2946,7 +2947,8 @@ formula.techdmg.player.formula_2.0 {
   $modifer_adjust($3, $2)
 
   ; Check to see if the target is resistant/weak to the weapon itself
-  $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+  if ($person_in_mech($1) = false) { $modifer_adjust($3, $readini($char($1), weapons, equipped)) }
+  if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
@@ -3278,7 +3280,8 @@ formula.techdmg.player.formula_2.5 {
   $modifer_adjust($3, $2)
 
   ; Check to see if the target is resistant/weak to the weapon itself
-  $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+  if ($person_in_mech($1) = false) { $modifer_adjust($3, $readini($char($1), weapons, equipped)) }
+  if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
@@ -3586,7 +3589,8 @@ formula.techdmg.player.formula_1.0 {
   $modifer_adjust($3, $2)
 
   ; Check to see if the target is resistant/weak to the weapon itself
-  $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+  if ($person_in_mech($1) = false) { $modifer_adjust($3, $readini($char($1), weapons, equipped)) }
+  if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
@@ -3867,12 +3871,12 @@ formula.techdmg.player.formula_3.0 {
   $modifer_adjust($3, $2)
 
   ; Check to see if the target is resistant/weak to the weapon itself
-  $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+  if ($person_in_mech($1) = false) { $modifer_adjust($3, $readini($char($1), weapons, equipped)) }
+  if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
   if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
-
 
   if ($readini($char($3), info, ai_type) = counteronly) { set %attack.damage 0 | return }
 
@@ -4559,7 +4563,8 @@ formula.techdmg.player.old {
   $modifer_adjust($3, $2)
 
   ; Check to see if the target is resistant/weak to the weapon itself
-  $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+  if ($person_in_mech($1) = false) { $modifer_adjust($3, $readini($char($1), weapons, equipped)) }
+  if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
@@ -4886,7 +4891,8 @@ formula.techdmg.player.percent {
   $modifer_adjust($3, $2)
 
   ; Check to see if the target is resistant/weak to the weapon itself
-  $modifer_adjust($3,  $readini($char($1), weapons, equipped))
+  if ($person_in_mech($1) = false) { $modifer_adjust($3, $readini($char($1), weapons, equipped)) }
+  if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
