@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 12/12/15
+;;;; Last updated: 12/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1580,7 +1580,7 @@ alias skill.steal { $set_chr_name($1)
 
   if (%steal.chance >= 85) {
     var %stolen.from.counter $readini($char($2), status, stolencounter)
-    if (%stolen.from.counter >= 2) { $set_chr_name($2) | $display.message(4 $+ %real.name  has nothing left to steal!, battle) | halt }
+    if (%stolen.from.counter >= 3) { $set_chr_name($2) | $display.message(4 $+ %real.name  has nothing left to steal!, battle) | halt }
 
     inc %stolen.from.counter 1 | writeini $char($2) status stolencounter %stolen.from.counter 
 
