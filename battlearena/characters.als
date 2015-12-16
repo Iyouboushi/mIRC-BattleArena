@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 11/14/15
+;;;; Last updated: 12/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -849,15 +849,15 @@ readaccessories {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewAccessories)) }
 
     if (%accessories.list2 != $null) { 
-      if ($2 = channel) {  $display.message(3 $+ %accessories.list2,private) }
-      if ($2 = private) { $display.private.message(3 $+ %accessories.list2) }
-      if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %accessories.list2) }
+      if ($2 = channel) {  $display.message(3 $+ %accessories.list2,private) }
+      if ($2 = private) { $display.private.message(3 $+ %accessories.list2) }
+      if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %accessories.list2) }
     }
 
     if (%accessories.list3 != $null) { 
-      if ($2 = channel) {  $display.message(3 $+ %accessories.list3,private) }
-      if ($2 = private) { $display.private.message(3 $+ %accessories.list3) }
-      if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %accessories.list3) }
+      if ($2 = channel) {  $display.message(3 $+ %accessories.list3,private) }
+      if ($2 = private) { $display.private.message(3 $+ %accessories.list3) }
+      if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %accessories.list3) }
     }
 
     var %equipped.accessory $readini($char($1), equipment, accessory)

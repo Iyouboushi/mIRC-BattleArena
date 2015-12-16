@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/21/15
+;;;; Last updated: 12/16/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2189,11 +2189,12 @@ accessories.list {
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       inc %accessories.have 1
-      var %item.name $equipment.color(%item.name) $+ %item.name $+ 3
 
-      if (%accessories.have <= 18) {  %accessories.list = $addtok(%accessories.list, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      if ((%accessories.have > 18) && (%accessories.have <= 36)) { %accessories.list2 = $addtok(%accessories.list2, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      if (%accessories.have > 36) {  %accessories.list3 = $addtok(%accessories.list3, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      var %item.name $equipment.color(%item.name) $+  $+ %item.name $+ 3
+
+      if (%accessories.have <= 16) {  %accessories.list = $addtok(%accessories.list, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) $+ , 46) }
+      if ((%accessories.have > 16) && (%accessories.have <= 32)) { %accessories.list2 = $addtok(%accessories.list2, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) $+ , 46) }
+      if (%accessories.have > 32) {  %accessories.list3 = $addtok(%accessories.list3, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) $+ , 46) }
 
     }
     unset %item.name | unset %item_amount
