@@ -50,7 +50,6 @@ LastIP=N/a
 Created=N/a
 BossLevel=1000
 IgnoreQuicksilver=true
-IgnoreRageMode=true
 ai_type=$iif(%current.turn >= 2, techonly, defender)
 CanFlee=false
 SpawnAfterDeath=Zeromus

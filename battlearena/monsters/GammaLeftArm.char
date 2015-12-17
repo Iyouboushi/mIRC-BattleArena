@@ -46,7 +46,6 @@ Created=N/a
 Guardian=Gamma
 ai_type=techonly
 IgnoreQuickSilver=true
-RageMode=Ignore
 Streak=-1000
 CanFlee=false
 CanTaunt=false

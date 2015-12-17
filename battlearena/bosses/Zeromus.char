@@ -48,7 +48,6 @@ LastIP=N/a
 Created=N/a
 BossLevel=1000
 IgnoreQuicksilver=true
-IgnoreRageMode=true
 ai_type=techonly
 CanFlee=false
 IgnoreDrain=true

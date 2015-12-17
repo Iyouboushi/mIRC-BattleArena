@@ -48,7 +48,6 @@ LastIP=N/a
 Created=N/a
 ai_type=techonly
 IgnoreQuickSilver=true
-RageMode=Ignore
 Streak=-1000
 CanFlee=false
 CanTaunt=false

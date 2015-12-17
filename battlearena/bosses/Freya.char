@@ -49,7 +49,6 @@ Created=N/a
 BossLevel=300
 Streak=-1000
 CanTaunt=False
-RageMode=ignore
 IgnoreQuicksilver=true
 IgnoreDrain=true
 JustReleaseDefense=100

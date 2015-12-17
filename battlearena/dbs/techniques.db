@@ -402,8 +402,8 @@ GoddessBlade=GoddessCrest.GoddessFlames
 DoomSickle=ThundajaII.BlizzajaII.FirajaII.DarkBomb.DarkMist.Dark_Matter
 MasamuneII=WaterIII.Waterja.SlurpCut.LeapSlash.FrogSquash.CureII.CureIV
 GatoFists=DoublePunch.BoxingGlove
-GrahfFists=DoublePunch.ShoulderTackle.AsuranFists.GrahfEnergyBlast
-AlphaWeltallFists=TripleStrike.MartialBlazeIII
+GrahfFists=GrahfEnergyBlast.GrahfStrike.Grahf_Energy_Blast
+AlphaWeltallFists=Grahf_EnergyBlast.Grahf_Strike
 GibdoBlade=GibdoShriek.HardSlash
 RedeadBlade=RedeadShriek.SpinningSlash
 GremlinAttack=GremlinBite
@@ -12213,16 +12213,84 @@ HurtEthereal=False
 Stat=str
 
 [GrahfEnergyBlast]
-Type=Single
+Type=AOE
 Cost=0
-Desc=cups $gender($1) hands to the side and gathers energy. A moment later, $gender3($1) thrusts $gender($1) hands forward and hurls a ball of dark energy energy towards %enemy $+ !
+Desc=cups $gender($1) hands to the side and gathers energy. A moment later, $gender3($1) thrusts $gender($1) hands forward and hurls a ball of dark energy towards the battlefield, which explodes and covers the field in darkness.
 TP=10
 Element=Dark
 Hits=1
-BasePower=200
+BasePower=100
 Magic=Yes
+StatusType=Curse
 HurtEthereal=True
+IgnoreDefense=5
 Stat=int
+CanDodge=false
+DestroyShadows=3
+Postscript=writeini $char($1) battle str 15429 | writeini $char($1) battle def 15429 | writeini $char($1) battle int 15429 | writeini $char($1) battle spd 15429 | writeini $char($1) techniques Grahf_Energy_Blast $iif(%battle.type = torment, $calc(1 + $current.battlestreak), 1000) | writeini $char($1) techniques GrahfStrike $iif(%battle.type = torment, $calc(1 + $current.battlestreak), 1000) | writeini $char($1) techniques GrahfEnergyBlast 0
+
+[GrahfStrike]
+Type=Single
+Cost=0
+Desc=leaps towards %enemy and performs a two-hit combo attack!
+TP=10
+Element=None
+Hits=2
+BasePower=20
+Magic=No
+StatusType=Curse
+HurtEthereal=True
+IgnoreDefense=5
+stat=str
+CanDodge=false
+DestroyShadows=3
+
+[Grahf_Energy_Blast]
+Type=AOE
+Cost=0
+Desc=cups $gender($1) hands to the side and gathers energy. A moment later, $gender3($1) thrusts $gender($1) hands forward and hurls a ball of dark energy towards the battlefield, which explodes and covers the field in darkness.
+TP=10
+Element=Dark
+Hits=1
+BasePower=100
+Magic=Yes
+StatusType=Curse
+HurtEthereal=True
+IgnoreDefense=5
+Stat=int
+CanDodge=false
+DestroyShadows=3
+
+[Grahf_Strike]
+Type=Single
+Cost=0
+Desc=leaps towards %enemy and performs a two-hit combo attack!
+TP=10
+Element=None
+Hits=2
+BasePower=20
+Magic=No
+HurtEthereal=True
+IgnoreDefense=5
+stat=str
+CanDodge=false
+EnergyCost=1000
+
+[Grahf_EnergyBlast]
+Type=AOE
+Cost=0
+Desc=cups $gender($1) hands to the side and gathers energy. A moment later, $gender3($1) thrusts $gender($1) hands forward and hurls a ball of dark energy towards the battlefield, which explodes and covers the field in darkness.
+TP=10
+Element=Dark
+Hits=1
+BasePower=100
+Magic=Yes
+StatusType=Curse
+HurtEthereal=True
+IgnoreDefense=5
+Stat=int
+CanDodge=false
+EnergyCost=1000
 
 [GoddessFlames]
 Type=Single

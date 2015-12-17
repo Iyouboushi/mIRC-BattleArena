@@ -51,7 +51,6 @@ Streak=-1000
 CanTaunt=false
 IgnoreQuicksilver=true
 JustReleaseDefense=100
-RageMode=ignore
 CanFlee=false
 IgnoreDrain=true
 IgnorePresident=true
