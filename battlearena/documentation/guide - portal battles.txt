@@ -49,12 +49,17 @@ Kindred Crest Portal Items
 [20 Crests] OldOrcSword
 [20 Crests] TimeOrb
 [20 Crests] JungleOrb
-[30 Crests] CrimsonTraverserStone
-[30 Crests] EvilGuitar 
+[20 Crests] CrimsonTraverserStone
+[20 Crests] EvilGuitar
+[20 Crests] StrangeMask 
 
 High Kindred Crest Portal Items
-[30 Crests] GoddessOrb
-[30 Crests] AtlantianCrystal 
+[20 Crests] OldKingSoul
+[20 Crests] Gunbai
+[20 Crests] GoddessOrb
+[20 Crests] AtlantianCrystal
+[20 Crests] StrangeCrystal
+
 
 Crafted Seal Items
 GodSeal
@@ -546,12 +551,34 @@ Current level is capped at: 200
 
 
 
+OLDKINGSOUL
+
+Portal Item: OldKingSoul
+Portal Item Cost: 20 High Kindred Crests
+Potential Rewards: TitaniteSlab
+Allied Notes Worth: 3000
+Danger Level: Impossible to Gauge
+Current level is capped at: 400
+
+
+
+GUNBAI
+
+Portal Item: Gunbai
+Portal Item Cost: 20 High Kindred Crests
+Potential Rewards: Blueprints:Xiutleato, Blueprints:HomesteadBow, Blueprints:Ichimonji-Yofusa, Blueprints:Upukirex, Bluprints:Xbalanque
+
+Allied Notes Worth: 3000
+Danger Level: Impossible to Gauge
+Current level is capped at: 500
+
+
 
 GODDESSORB
 Shami has been deemed worthy enough to make the portal item for this challenge. However, you most likely should make sure your coffin is prepared, for this could be your final battle. It was nice knowing you!
 
 Portal Item: GoddessOrb
-Portal Item Cost: 30 High Kindred Crests
+Portal Item Cost: 20 High Kindred Crests
 Potential Rewards: EstoqueurSeal, UnkaiSeal
 Allied Notes Worth: 3000
 Danger Level: Godlike
@@ -565,11 +592,22 @@ ATLANTIANCRYSTAL
 From the depths of the ocean it rose: an ancient city shimmering in gold. The powerful being Ashi had finally done it, discovered and revived the ancient city.  He has made it his home and intends to conquer and rule the world from it.  It's up to you to go put an end to the monsterous man known as Ashi Atora.  Shami can create a crystal that will allow you to enter the city for a short time, though it will cost you. 
 
 Portal Item: AtlantianCrystal
-Portal Item Cost: 30 High Kindred Crests
+Portal Item Cost: 20 High Kindred Crests
 Potential Rewards: AtlantianThreadSpool
 Allied Notes Worth: 5000
 Danger Level: Godlike
 Current level is capped at: 300
+
+
+
+STRANGECRYSTAL
+
+Portal Item: StrangeCrystal
+Portal Item Cost: 20 High Kindred Crests
+Potential Rewards: Blueprints:Oatixur, Blueprints:Uffrat, Blueprints:Aedold, Blueprints:VanirRifle
+Allied Notes Worth: 3000
+Danger Level: Impossible to Gauge
+Current level is capped at: 1000
 
 
 
@@ -584,6 +622,7 @@ Danger Level: Extremely High
 Current level is capped at: 120
 
 
+
 HYRULEORB
 There is a legend passed down through the ages about a Hero of Time who once vanquished a great evil and saved an entire kingdom.  It is said that someone who possesses the Pendants of Courage, Power and Wisdom will be able to combine the items into a key that will take the users into the kingdom where this hero once lived.  
 
@@ -596,7 +635,6 @@ Current level is capped at: 100
 
 
 
-
 UNKNOWNPOWERSOURCE
 
 Portal Item: UnknownPowerSource
@@ -605,7 +643,6 @@ Potential Rewards: AlphaWeltallCore
 Allied Notes Worth: 2500
 Danger Level: Extremely High
 Current level is capped at: 300
-
 
 
 
@@ -621,7 +658,6 @@ Current level: 250
 
 
 
-
 SHADOWGODSEAL
 Intelligence has gathered that the center chamber on the island is home to Kirin, the king of the Sky Gods.  Using the power of the shadow god seal, heroes can face the true power of Kirin. 
 
@@ -631,7 +667,6 @@ Potential Rewards: Death'sBreath
 Allied Notes Worth: 2500
 Danger Level: Impossible to Gauge
 Current level: 1500
-
 
 
 

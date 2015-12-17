@@ -150,6 +150,9 @@ This command tells you which style you have equipped, which styles you own, and 
 !style change name
 This command will change your style.
 
+!reforge weaponname
+This command will consume 1 repair hammer and the same number of black orbs the weapon costs in order to add a random augment to the weapon. The augment can be any available augment in the game, including many that you cannot get via runes. 
+
 /me gives # item to person
 You can give items/accessories to other players using this command.
 
@@ -922,6 +925,9 @@ This item is used to grab an enemy to use that enemy as a protective shield in b
 XmasGrenade - Santa Only with 50 saved Elves - 1500 Red Orbs
 This item will inflict roughly 1500 damage to a single target.
 
+RottingMeat - Portal Boss Drop
+This item will attempt to inflict poison onto a target.
+
 
 +Stat Items
 These items, when used, will increase your stats or orbs by a certain amount.  You cannot buy these items in the shop and must be found by defeating bosses and being the most stylish.  None of these items can be used with Fullbring.
@@ -954,7 +960,6 @@ PowerSource
 Herring
 TurkeyLeg
 BloodyHeart
-RottingMeat
 BloodScroll
 BurntScroll
 TreasureMap
