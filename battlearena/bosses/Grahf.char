@@ -264,7 +264,7 @@ Ice_Coin=0
 Wind_Vane=0
 BombFlower=0
 Dynamite=0
-BombeFragment=0
+BombFragment=0
 XmasGrenade=0
 HolyHandGrenade=0
 C4=0
@@ -302,7 +302,7 @@ Magnum=$iif(%battle.type = torment, 100, 0)
 Hexagun=$iif(%battle.type = torment, 100, 0)
 SubMachineGun=$iif(%battle.type = torment, 100, 0)
 Quicksilver=$iif(%battle.type = torment, 100, 0)
-X-Buster$iif(%battle.type = torment, 100, 0)
+X-Buster=$iif(%battle.type = torment, 100, 0)
 Boomstick=$iif(%battle.type = torment, 100, 0)
 AK47=$iif(%battle.type = torment, 100, 0)
 Armageddon=$iif(%battle.type = torment, 100, 0)
@@ -600,7 +600,6 @@ AeolianEdge=$iif(%battle.type = torment, 100, 0)
 Evisceration=$iif(%battle.type = torment, 100, 0)
 HyperTwinSlice=$iif(%battle.type = torment, 100, 0)
 AerogaV=$iif(%battle.type = torment, 100, 0)
-Chainspell=$iif(%battle.type = torment, 100, 0)
 Thor'sRage=$iif(%battle.type = torment, 100, 0)
 Thor'sGodForce=$iif(%battle.type = torment, 100, 0)
 Jump=$iif(%battle.type = torment, 100, 0)
@@ -731,7 +730,7 @@ SlurpCut=100
 LeapSlash=100
 FrogSquash=100
 AdamantAxe=100
-MonkeyIslandCutlass=100
+MonkeyIsland_Cutlass=100
 InsultSwordfighting=100
 ValkyrieSword=100
 NibelungValesti=100
@@ -760,7 +759,7 @@ Yasoma_Kagura=100
 SparkWaltz=100
 DragonDance=100
 LightningWaltz=100
-RuebenKatanas=100
+ReubenKatanas=100
 IronBlade=100
 GarudasWrath=100
 LotusBlades=100
@@ -905,7 +904,7 @@ ColdnessOfDestruction=100
 FeathersOfTheHurricane=100
 BoltOfThunder=100
 SmokeOfPain=100
-FalconeOfDeath=100
+FalconOfDeath=100
 PacPower=100
 Pac-Jump=100
 FireHydrant=100
@@ -1044,7 +1043,7 @@ Kuuenzan=100
 Shippuuga=100
 Hyoretsuzan=100
 AlexanderPower=100
-DivineJudement=100
+DivineJudgement=100
 DivineSpear=100
 BahamutPower=100
 MegaFlare=100

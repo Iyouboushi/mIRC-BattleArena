@@ -4,7 +4,8 @@ Tp=250
 Str=266
 Def=266
 Int=266
-Spd=195nGauge=2
+Spd=195
+IgnitionGauge=2
 Name=Haukke Ghost
 
 
