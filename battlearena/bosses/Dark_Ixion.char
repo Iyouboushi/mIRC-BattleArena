@@ -110,8 +110,8 @@ BurstII=100
 ThundajaII=80
 Thors_Hammer=100
 DarkV=80
-Darkra_I=80
-Darkra_II=80
+Darkra=80
+DarkraII=80
 
 [Item_Amount]
 

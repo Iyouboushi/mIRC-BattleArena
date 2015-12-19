@@ -95,7 +95,7 @@ reflect.turn=-1
 
 [Weapons]
 Equipped=HarpyClaws
-BoneScythe=70
+HarpyClaws=70
 
 [Skills]
 Resist-Charm=100
