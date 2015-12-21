@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/16/15
+;;;; Last updated: 12/21/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1757,7 +1757,7 @@ seals.list {
     if (%item_amount = 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %seals.items.list = $addtok(%seals.items.list, 1 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+    %seals.items.list = $addtok(%seals.items.list, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
 
     unset %item.name | unset %item_amount
     inc %value 1 
