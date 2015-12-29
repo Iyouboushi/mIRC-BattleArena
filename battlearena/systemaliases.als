@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/21/15
+;;;; Last updated: 12/29/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -455,7 +455,6 @@ system.start.newbattle {
     if ($shopnpc.present.check(AlliedForcesPresident) != kidnapped) { var %president.chance 9999999999999 }
 
     if (%president.chance <= 25) { var %president.flag boss savethepresident }
-
   }
 
   if (%newbattle.time = $null) { set %newbattle.time 120 }
@@ -468,6 +467,24 @@ system.start.newbattle {
   else {  /.timerBattleStart 0 %newbattle.time /startnormal %president.flag }
 
   unset %newbattle.time
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks to see if someone
+; has entered the max # of
+; controlled chars into battle
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+access.enter.limit.check {
+  ; $1 = the person we're checking
+  var %controlled.chars.entered $readini($txtfile(battle2.txt), BattleInfo, Entered. $+ $1)
+
+  if (%controlled.chars.entered = $null) { var %controlled.chars.entered 0 }
+  inc %controlled.chars.entered 1
+
+  if (%controlled.chars.entered > 2) { $display.message($readini(translation.dat, errors, MaxAccessEnteredBattle), private) | halt }
+
+  writeini $txtfile(battle2.txt) BattleInfo Entered. $+ $1 %controlled.chars.entered
+  return
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

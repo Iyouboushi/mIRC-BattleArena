@@ -347,6 +347,7 @@ AccessCommandError=$chr(3) $+ 4 $+ Error: The command is: !access add/remove/
 AccessCommandCan'tRemoveSelf=$chr(3) $+ 4 $+ Error: You cannot remove yourself from your player access list.
 AccessCommandAlreadyHasAccess=$chr(3) $+ 4 $+ Error: $3 already has access to your character.
 DoNotHaveAccessToThatChar=$chr(3) $+ 4 $+ Error: $1 is not on $2 $+ 's access list and cannot control that character.
+MaxAccessEnteredBattle=$chr(3) $+ 4 $+ Error: $1 has already entered two other access controlled players and cannot enter any more. 
 NeedToMakeACharacter=$chr(3) $+ 4 $+ It seems that you do not have an active character with that name. Please use !new char to create one. If you had one and it's been more than six months the character has been erased and will need to be re-created or the bot's owner will have to restore it.
 Can'tHaveMoreThanTwoChars=$chr(3) $+ 4 $+ Error: You cannot make any more characters. Log into your other characters or have a bot owner erase some first.
 NoScriptsWithCommands=$chr(3) $+ 4 $+ Error: You cannot build scripts with your command!
