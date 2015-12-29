@@ -1430,3 +1430,6 @@ Battle Arena Bot VERSIONS
 - Removed the elements from NPC weapons
 - Removed attack_Aettir.txt, and attack_ChatoyantStaff.txt as they are no longer needed
 - Removed the Elder Dragon boss battle type
+
+3.2
+- Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
