@@ -1432,4 +1432,7 @@ Battle Arena Bot VERSIONS
 - Removed the Elder Dragon boss battle type
 
 3.2
+- Added the system.dat system flag: MaxIdleTurns. Set to 2 by default, this controls how many turns a player can miss
+  before he/she is kicked out of the battle.
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
+- Fixed an issue where certain battle types could override mimic battles
