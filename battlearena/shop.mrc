@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 11/14/15
+;;;; Last updated: 01/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1122,8 +1122,13 @@ alias shop.stats {
       var %current.stat $readini($char($1), basestats, $3) 
       var %total.stats $calc($readini($char($1), basestats, str) + $readini($char($1), basestats, def) + $readini($char($1), basestats, int) + $readini($char($1), basestats, spd))
       var %stat.ratio $calc(%current.stat / %total.stats)
+      var %player.level $get.level($1)
 
-      if (%stat.ratio > .45) { $display.private.message($readini(translation.dat, errors, Can'tRaiseStatBeforeOthers)) | halt }
+      if (%player.level <= 50) { var %stat.ratio.limit .55 }
+      if ((%player.level > 50) && (%player.level <= 1000)) { var %stat.ratio.limit .43 }
+      if (%player.level > 1000) { var %stat.ratio.limit .35 }
+
+      if (%stat.ratio > %stat.ratio.limit) { $display.private.message($readini(translation.dat, errors, Can'tRaiseStatBeforeOthers)) | halt }
     }
 
 
