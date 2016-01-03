@@ -56,8 +56,6 @@ bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 290, 7500)
 IgnoreQuicksilver=true
 CanTaunt=false
 JustReleaseDefense=100
-CanStagger=yes
-StaggerAmount=$round($calc(.30 * $readini($char(AshiAtora), basestats, hp)),0)
 IgnoreElementalMessage=true
 
 [Status]
@@ -210,7 +208,7 @@ Chivalry=40
 
 
 [Ignitions]
-AtlantianPower=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(AshiAtora), battle, hp) / $readini($char(AshiAtora), basestats, hp)) * 100) <= 75, 1, 0))
+AtlantianPower=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(AshiAtora), battle, hp) / $readini($char(AshiAtora), basestats, hp)) * 100) <= 80, 1, 0))
 
 
 [Augments]

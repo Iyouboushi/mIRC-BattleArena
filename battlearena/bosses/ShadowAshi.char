@@ -56,8 +56,6 @@ bosslevel=7500
 IgnoreQuicksilver=true
 CanTaunt=false
 JustReleaseDefense=100
-CanStagger=yes
-StaggerAmount=50157
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 
@@ -213,7 +211,7 @@ Dynamite=10
 
 
 [Ignitions]
-AtlantianPower=$iif($calc(($readini($char(AshiAtora), battle, hp) / $readini($char(AshiAtora), basestats, hp)) * 100) <= 75, 1, 0)
+AtlantianPower=$iif($calc(($readini($char(AshiAtora), battle, hp) / $readini($char(AshiAtora), basestats, hp)) * 100) <= 80, 1, 0)
 
 
 [Augments]

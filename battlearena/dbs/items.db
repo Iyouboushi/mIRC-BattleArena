@@ -217,7 +217,7 @@ Desc=pulls out a small box of tissues and hands it to %enemy who uses them. Stra
 [XmasStar]
 Type=IgnitionGauge
 Target=single
-Amount=15
+Amount=10
 SellPrice=800
 Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 10, 1000, 0)
 Desc=pulls out a green, red and gold colored star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
@@ -226,8 +226,8 @@ ShopNPC=Santa
 [IgnitionStar]
 Type=IgnitionGauge
 Target=single
-Amount=20
-Cost=2500
+Amount=15
+Cost=3000
 SellPrice=1000
 Desc=pulls out a strange purple star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
 ShopNPC=HealingMerchant
@@ -235,8 +235,8 @@ ShopNPC=HealingMerchant
 [LargeIgnitionStar]
 Type=IgnitionGauge
 Target=single
-Amount=40
-Cost=5000
+Amount=20
+Cost=6000
 SellPrice=1500
 Desc=pulls out a strange purple star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
 ShopNPC=HealingMerchant
