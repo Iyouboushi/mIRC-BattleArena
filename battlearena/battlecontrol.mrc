@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/21/15
+;;;; Last updated: 01/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1848,7 +1848,11 @@ alias next {
   if ($1 = ForcedTurn) { 
     var %forced.turns $readini($char(%who), info, SkippedTurns)
     inc %forced.turns 1
-    if ((%forced.turns >= 3) && ($readini($char(%who), info, flag) = $null)) { $display.message($readini(translation.dat, battle, DroppedOutofBattle), battle) |  writeini $char(%who) battle status runaway }
+
+    var %max.idle.turns $return.systemsetting(MaxIdleTurns)
+    if (%max.idle.turns = null) { var %max.idle.turns 2 | writeini system.dat system MaxIdleTurns 2 }
+
+    if ((%forced.turns >= %max.idle.turns) && ($readini($char(%who), info, flag) = $null)) { $display.message($readini(translation.dat, battle, DroppedOutofBattle), battle) |  writeini $char(%who) battle status runaway }
     writeini $char(%who) info SkippedTurns %forced.turns
   }
 

@@ -567,7 +567,7 @@ DragonHunt.NoLairFound=$chr(3) $+ 4 $+ $get_chr_name($1) searches throughout t
 Can'tUseThisSkillInDragonHunt=$chr(3) $+ 4 $+ Error: This skill is unavailable while inside of a dragon's lair. 
 NoNPCNews=$chr(3) $+ 4There is no current news to share about the NPCs.
 Torment.LevelTooLow=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low to enter this torment level.
-
+Can'tDoActionWhileChest=$chr(3) $+ 4 $+ Error: This action cannot be done while a chest is on the battlefield.
 
 =======================
 Battle Related Messages
