@@ -230,7 +230,7 @@ GiygasPower=CannotGrasp.HurtsPlayer.PKRockin
 AtlantisPower=BloodDagger.BloodBoost.BloodBlast.AtlantianBlast.AtlantianExplosion
 Broad_Sword=DoubleSlash.BurningRush.BlazingDynamo.MadnessHero
 Rose's_Rapier=WhipSmack.MoreAndMore.HardBlade.DemonsDance
-ShihouinFists=DoublePunch.ShoulderTackle.AsuranFists.ShinjinSpiral
+ShihouinFists=DoublePunch.ShoulderTackle.AsuranFists.ShinjinSpiral.ShunkouRaigeki.ShunkouRaijinSenkei.ShunkouBakuenMusou
 ImpHorn=Frenetic_Rip.Abrasive_Tantara.Flare.Tornado
 GhostPower=HighJump.CamlannsTorment.LegSweep.SonicThrust.Tachi:Fudo.Tachi:Shoha.Tachi:Rana.GraveCurse.FearTouch.FirajaII.Quake.Explode
 AndroidKi=AsuranFists.BioWeaponX
@@ -553,9 +553,9 @@ stat=str
 
 [AsuranFists]
 Type=Single
-TP=100
+TP=200
 Desc=leaps at %enemy and performs an eight-fold attack on %enemy with all $gender($1) might! 
-BasePower=8
+BasePower=10
 Cost=3000
 Element=none
 magic=no
@@ -957,7 +957,7 @@ stat=int
 
 [BladeBeamII]
 Type=AOE
-TP=200
+TP=100
 Desc=holds up $gender($1) sword as blue energy covers it. %user then drives the sword into the ground, causing vertical waves of blue energy to strike all targets on the battlefield.
 BasePower=60
 Element=none
@@ -10336,10 +10336,30 @@ stat=int
 Type=AOE
 TP=10
 Desc=raises her arms into the air as she gathers power. Lightning appears around Yoruichi as she aims her arms forward. A moment later, a large blast of lightning shoots through the battlefield, hitting everything in range!
-BasePower=30
+BasePower=100
 Element=Lightning
 Cost=0
 Magic=Yes
+stat=int
+
+[ShunkouRaijinSenkei]
+Type=Single
+TP=10
+Desc=gives a wide grin as the lightning wings take the form of Raijin's drums. Parts of Yoruichi's hair raises almost in the style of horns and take on a yellow color as she raises her left arm. Yoruichi pauses for a moment before dropping her left arm and shouts, "Shunkou! Raijin Senkei! as a gigantic bolt of lightning slams into %enemy $+ .
+BasePower=200
+Element=Lightning
+Cost=0
+Magic=Yes
+stat=int
+
+[ShunkouBakuenMusou]
+Type=single
+TP=10
+Desc=charges forward and unleashes the shunkou energy upon %enemy $+ , which causes a giant explosion of fire.
+BasePower=200
+Element=Fire
+Cost=0
+Magic=yes
 stat=int
 
 [CthulhuEyeLaserBurst]

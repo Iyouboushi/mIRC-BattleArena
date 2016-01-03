@@ -145,8 +145,8 @@ int=1.9
 spd=2.4
 Augment=TechBonus.MeleeBonus.EnhanceZen.RenkeiBonus.EnhanceBloodBoost
 Effect=Status
-IgnitionTrigger=20
-IgnitionConsume=30
+IgnitionTrigger=25
+IgnitionConsume=25
 Cost=60
 StatusTarget=allies
 StatusType=TPRegenerating
@@ -332,16 +332,30 @@ AdditionalCode=writeini $char($1) ignitions Sui-FengShikai 0
 [Shunkou-Lightning]
 Name=Shunkou
 hp=1.5
-Str=1.5
-def=1.5
-int=1.5
-spd=1.5
-Augment=MeleeBonus.EnhanceDodge
-Techs=ShunkouRaigeki
+Str=1.7
+def=1.7
+int=1.7
+spd=1.7
+Augment=MeleeBonus.EnhanceDodge.TechBonus.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
+Techs=
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Desc=shouts out "Shunkou!" as lightning surrounds %user $+ 's body to greatly increase %user $+ 's strength.
+Desc=shouts out "Shunkou!" as lightning covers %user $+ 's back and upper shoulders, which then take on the form of wings.
+
+[Shunkou-Fire]
+Name=Shunkou
+hp=1.5
+Str=1.7
+def=1.7
+int=1.7
+spd=1.7
+Augment=MeleeBonus.EnhanceDodge.TechBonus.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
+Techs=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Desc=shouts out "Shunkou!" as fire reiatsu covers %user $+ 's back and upper shoulders.
 
 [YamamotoShikai]
 Name=Shikai

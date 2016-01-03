@@ -2395,11 +2395,11 @@ Upgrade=0
 [ShihouinFists]
 Cost=0
 Type=HandtoHand
-Info=The fists of Yoruichi!
-Abilities=DoublePunch.ShoulderTackle.AsuranFists.ShinjinSpiral.ShitotsuSansen
+Info=The power of the Shihouin clan.
+Abilities=DoublePunch.ShoulderTackle.AsuranFists.ShinjinSpiral.ShitotsuSansen.ShunkouRaigeki.ShunkouRaijinSenkei.ShunkouBakuenMusou
 Element=None
 Hits=2
-BasePower=20
+BasePower=30
 Upgrade=0
 HurtEthereal=true
 

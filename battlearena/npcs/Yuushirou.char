@@ -6,7 +6,7 @@ Def=30
 Int=30
 Spd=40
 IgnitionGauge=100
-Name=Yoruichi Shihouin
+Name=Yuushirou Shihouin
 
 
 [Battle]
@@ -33,13 +33,10 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a woman with dark skin, long purple hair and golden eyes, dressed in a black sleevless shirt, black pants, white shoes and an orange coat. The former 2nd Division Captain of the Gotei 13.
-Rage=narrows her eyes and says "I guess you can keep up with me after all..."
-Utsusemi=laughs as she activates the ability. "What's the matter? Can't find the real me?"
-ShadowCopy=laughs once more as she creates a clone of herself. "Can you handle two of me?"
-Speed=laughs as she increases her speed. "What's wrong? You can't keep up with me?"
-MightyStrike=surrounds her arms with reiatsu, increasing her strength for a short time.
-TrueStrike=focuses her reiatsu as she observes the battlefield.
+Char=is the younger brother of Yoruichi Shihouin and the 23rd head of the Shihouin Clan.
+Rage=narrows his eyes and says "I allow a mere monster to defeat me!"
+MightyStrike=surrounds his arms with reiatsu, increasing his strength for a short time.
+TrueStrike=focuses his reiatsu as he observes the battlefield.
 
 
 [Stuff]
@@ -51,8 +48,8 @@ BlackOrbsSpent=0
 
 
 [Info]
-Gender=her
-Gender2=her
+Gender=his
+Gender2=him
 password=dbzrpg
 passhurt=0
 LastSeen=N/a
@@ -60,7 +57,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreQuicksilver=true
-CanTaunt=true
+CanTaunt=false
 
 
 [Status]
@@ -151,8 +148,7 @@ AsuranFists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 TornadoKick=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 ShinjinSpiral=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 ShitotsuSansen=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShunkouRaigeki=$iif($readini($char(Yoruichi), status, ignition.on) = on, $calc(100 + $current.battlestreak), 0)
-ShunkouRaijinSenkei=$iif($readini($char(Yoruichi), status, ignition.on) = on, $calc(500 + $current.battlestreak), 0)
+ShunkouBakuenMusou=$iif($readini($char(Yuushirou), status, ignition.on) = on, $calc(100 + $current.battlestreak), 0)
 
 
 [Item_Amount]
@@ -165,7 +161,7 @@ WeaponMasterXP=1
 
 
 [Ignitions]
-Shunkou-Lightning=$iif($current.battlestreak < 200, 0, 1)
+Shunkou-Fire=$iif($current.battlestreak < 200, 0, 1)
 
 
 [Augments]
