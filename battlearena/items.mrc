@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 12/12/15
+;;;; Last updated: 01/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1349,6 +1349,9 @@ alias item.torment {
   ; can't do this during shenron's wish
   if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoTormentDuringShenron), private) | halt }
 
+  ; can't do this while a chest exists
+  if ($readini($txtfile(treasurechest.txt), ChestInfo, Color) != $null) { $display.message($readini(translation.dat, errors, Can'tDoActionWhileChest), private) | halt }
+
   ; Make sure the player has enough of the item to start a torment battle and then remove the item.
   var %torment.item $readini($char($1), Item_Amount, $2) 
   if ((%torment.item <= 0) || (%torment.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
@@ -1375,6 +1378,9 @@ alias item.dungeon {
 
   ; can't do this during shenron's wish
   if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoDungeonsDuringShenron), private) | halt }
+
+  ; can't do this while a chest exists
+  if ($readini($txtfile(treasurechest.txt), ChestInfo, Color) != $null) { $display.message($readini(translation.dat, errors, Can'tDoActionWhileChest), private) | halt }
 
   ; Get the dungeon and make sure the dungeon exists.
   var %dungeon.file $readini($dbfile(items.db), $2, dungeon)
