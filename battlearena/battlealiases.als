@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/14/15
+;;;; Last updated: 01/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -839,6 +839,12 @@ deal_damage {
             }
 
             unset %current.accessory | unset %current.accessory.type
+
+            if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+              if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
+                if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+              }
+            }
 
             set %life.target $readini($char($1), Battle, HP) | set %life.max $readini($char($1), Basestats, HP)
             inc %life.target %absorb.amount
