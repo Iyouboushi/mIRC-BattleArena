@@ -482,12 +482,18 @@ Keys
 [PurpleKey]
 Gem=Sapphire
 Ingredients=BlueKey.RedKey
-SuccessRate=70
+SuccessRate=85
 Amount=1
 
 [GoldKey]
 Gem=Topaz
 Ingredients=GoldOre.RedKey
+SuccessRate=85
+Amount=1
+
+[GoldKey]
+Gem=Topaz
+Ingredients=GoldOre.PurpleKey
 SuccessRate=85
 Amount=1
 

@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=$iif($current.battlestreak <= 300, 400, 3000)
-Tp=50
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
-Name=Mad Cow
+Hp=$iif($current.battlestreak <= 300, 500, 5000)
+Tp=75
+Str=$calc(75 + $current.battlestreak)
+Def=$calc(75 + $current.battlestreak)
+Int=$calc(75 + $current.battlestreak)
+Spd=$calc(75 + $current.battlestreak)
+Name=Large Cow
 IgnitionGauge=2
 
 
 [Battle]
-Hp=400
-Tp=50
-Str=50
-Def=50
-Int=50
-Spd=50
+Hp=500
+Tp=75
+Str=75
+Def=75
+Int=75
+Spd=75
 Status=alive
 IgnitionGauge=2
 
@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a cow that isn't very happy to be on the battlefield.
+Char=is a large cow that isn't very happy to be on the battlefield.
 Rage=moos in rage 
 
 [Stuff]
@@ -46,7 +46,7 @@ Created=N/a
 CanFlee=False
 CanTaunt=False
 Biome=Farm
-Streak=25
+Streak=50
 JustReleaseDefense=100
 IgnoreElementalMessage=true
 ;=======================================
@@ -123,7 +123,7 @@ type=cow
 TechLearn=false
 
 ; Size is the size of the monster. Small/Medium/Large
-size=medium
+size=large
 
 
 [Status]

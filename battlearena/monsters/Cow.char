@@ -1,21 +1,21 @@
 [BaseStats]
 Hp=$iif($current.battlestreak <= 300, 400, 3000)
 Tp=50
-Str=$calc(50 + $current.battlestreak)
-Def=$calc(50 + $current.battlestreak)
-Int=$calc(50 + $current.battlestreak)
-Spd=$calc(50 + $current.battlestreak)
-Name=Mad Cow
+Str=$calc(1 + $current.battlestreak)
+Def=$calc(1 + $current.battlestreak)
+Int=$calc(1 + $current.battlestreak)
+Spd=$calc(1 + $current.battlestreak)
+Name=Cow
 IgnitionGauge=2
 
 
 [Battle]
 Hp=400
 Tp=50
-Str=50
-Def=50
-Int=50
-Spd=50
+Str=1
+Def=1
+Int=1
+Spd=1
 Status=alive
 IgnitionGauge=2
 
@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a cow that isn't very happy to be on the battlefield.
+Char=is a simple cow roaming around the farm.
 Rage=moos in rage 
 
 [Stuff]
@@ -46,7 +46,6 @@ Created=N/a
 CanFlee=False
 CanTaunt=False
 Biome=Farm
-Streak=25
 JustReleaseDefense=100
 IgnoreElementalMessage=true
 ;=======================================
@@ -165,12 +164,10 @@ CowLegs=$calc(1 + $current.battlestreak)
 
 
 [Skills]
-DesperateBlows=1
 
 [Techniques]
 Stomp=$calc(1 + $current.battlestreak)
 Charge=$calc(1 + $current.battlestreak)
-Roar=1
 
 
 [modifiers]

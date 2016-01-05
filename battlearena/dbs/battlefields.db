@@ -120,7 +120,7 @@ Event3Amount=$rand(500,900)
 [Farm]
 weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=1
-scavenge=Potion.Topaz.Milk
+scavenge=Topaz.Milk.Seed.Tulip.Rose.DekuSeed
 Objects=Swingset.Bench.Fence.Barrel
 
 event1=statusonly
