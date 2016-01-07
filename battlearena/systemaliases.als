@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 01/02/16
+;;;; Last updated: 01/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1974,7 +1974,8 @@ items.list {
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       if ($numtok(%portals.items.list,46) <= 20) { %portals.items.list = $addtok(%portals.items.list, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %portals.items.list2 = $addtok(%portals.items.list2, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if (($numtok(%portals.items.list,46) >= 20) && ($numtok(%portals.items.lst2,46) <= 20)) {  %portals.items.list2 = $addtok(%portals.items.list2, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if (($numtok(portals.items.list,46) >= 20) && ($numtok(%portals.items.lst2 >= 20)) { %portals.items.list3 = $addtok(%portals.items.list3, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
     }
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2049,6 +2050,7 @@ items.list {
   %statplus.items.list = $replace(%statplus.items.list, $chr(046), %replacechar)
   %portals.items.list = $replace(%portals.items.list, $chr(046), %replacechar)
   %portals.items.list2 = $replace(%portals.items.list2, $chr(046), %replacechar)
+  %portals.items.list3 = $replace(%portals.items.list3, $chr(046), %replacechar)
   %special.items.list = $replace(%special.items.list, $chr(046), %replacechar)
   %special.items.list2 = $replace(%special.items.list2, $chr(046), %replacechar)
   %trust.items.list = $replace(%trust.items.list, $chr(046), %replacechar)
