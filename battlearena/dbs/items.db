@@ -1791,6 +1791,11 @@ Cost=0
 SellPrice=1
 Desc=A bottle of vile white liquid that smells like anguish and death. Combining this item with a gold key will result in a torment orb.
 
+[Trash]
+Type=misc
+Cost=0
+SellPrice=1
+Desc=a piece of trash
 
 [Seed]
 Type=misc
