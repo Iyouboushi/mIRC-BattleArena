@@ -1973,9 +1973,9 @@ items.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%portals.items.list,46) <= 20) { %portals.items.list = $addtok(%portals.items.list, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      if (($numtok(%portals.items.list,46) >= 20) && ($numtok(%portals.items.lst2,46) <= 20)) {  %portals.items.list2 = $addtok(%portals.items.list2, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      if (($numtok(portals.items.list,46) >= 20) && ($numtok(%portals.items.lst2 >= 20)) { %portals.items.list3 = $addtok(%portals.items.list3, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%portals.items.list,46) <= 15) { %portals.items.list = $addtok(%portals.items.list, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if (($numtok(%portals.items.list,46) >= 15) && ($numtok(%portals.items.lst2,46) <= 15)) {  %portals.items.list2 = $addtok(%portals.items.list2, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if (($numtok(portals.items.list,46) >= 15) && ($numtok(%portals.items.lst2) >= 15)) { %portals.items.list3 = $addtok(%portals.items.list3, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
     }
     unset %item.name | unset %item_amount
     inc %value 1 
