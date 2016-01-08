@@ -1434,5 +1434,13 @@ Battle Arena Bot VERSIONS
 3.2
 - Added the system.dat system flag: MaxIdleTurns. Set to 2 by default, this controls how many turns a player can miss
   before he/she is kicked out of the battle.
+- Added new cow monsters
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
+- Changed the !add command to allow the ability for bot admins to add enhancement points
+- Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
+- Changed the shop stat ratio limits (1-50 have a .55 ratio, 50-1000 is .43 and 1000+ is .35)
+- Fixed a bug with Stoneskin in the enhancement shop
 - Fixed an issue where certain battle types could override mimic battles
+- Fixed an issue where portal items were being cut off
+- Fixed an issue with absorb inside of dungeons and torment
+- Fixed a typo with Shenron's Wish
