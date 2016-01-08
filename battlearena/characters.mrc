@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 12/10/15
+;;;; Last updated: 1/08/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1125,10 +1125,12 @@ on 3:TEXT:!achievements*:?: {
 ; Bot admins can manually give an item and orbs to a player..
 on 50:TEXT:!add*:*:{
   $checkchar($2) | $set_chr_name($2) 
-  if ($4 = $null) { $display.private.message(4!add <person> <item name/redorbs/blackorbs/ignition> <ignition name or amount>) | halt }
+  if ($4 = $null) { $display.private.message(4!add <person> <item name/redorbs/blackorbs/ignition/enhancementpoints> <ignition name or amount>) | halt }
   if ($4 <= 0) {  $display.private.message(4cannot add negative amount) | halt }
 
-  if (((($3 != redorbs) && ($3 != blackorbs) && ($3 != doubledollars) && ($3 != ignition)))) {
+  var %add.categories redorbs.blackorbs.doubledollars.enhancementpoints.ignition
+
+  if ($istok(%add.categories,$3,46) = $false) { 
     var %item.type $readini($dbfile(items.db), $3, type)
     if (%item.type = $null) { 
       var %item.type $readini($dbfile(equipment.db), $3, EquipLocation)
@@ -1141,48 +1143,60 @@ on 50:TEXT:!add*:*:{
     halt
   }
 
-  if ($3 = redorbs) { 
-    var %player.amount $readini($char($2), stuff, RedOrbs) 
-    if (%player.amount = $null) { var %player.amount 0 }
-    inc %player.amount $4 | writeini $char($2) stuff  RedOrbs %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $currency, private)
-    halt
-  }
+  else {
 
-  if ($3 = doubledollars) { 
-    var %player.amount $readini($char($2), stuff, DoubleDollars) 
-    if (%player.amount = $null) { var %player.amount 0 }
-    inc %player.amount $4 | writeini $char($2) stuff  DoubleDollars %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $readini(system.dat, system, BetCurrency), private)
-    halt
-  }
-
-  if ($3 = blackorbs) {
-    var %player.amount $readini($char($2), stuff, blackorbs) 
-    if (%player.amount = $null) { var %player.amount 0 }
-    inc %player.amount $4 | writeini $char($2) stuff  BlackOrbs %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 Black Orbs, private)
-    halt
-  }
-
-  if ($3 = ignition) {
-    var %player.ignition.amount $readini($char($2), ignitions, $4)
-    if (%player.ignition.amount >= 1) {  $display.private.message(4 $+ $2 already knows the ignition $4) | halt }
-    else {
-      if ($readini($dbfile(ignitions.db), $4, cost) >= 1) { writeini $char($2) ignition $4 1 | $display.message(4 $+ %real.name has gained the ignition $4, private) | halt }
-      if ($readini($dbfile(ignitions.db), $4, cost) <= 0) { $display.private.message(4Error: players cannot have this ignition.) | halt } 
+    if ($3 = enhancementpoints) {
+      var %player.amount $readini($char($2), stuff, EnhancementPoints) 
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount $4 | writeini $char($2) stuff  EnhancementPoints %player.amount
+      $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 EnhancementPoints, private)
+      halt
     }
 
+    if ($3 = redorbs) { 
+      var %player.amount $readini($char($2), stuff, RedOrbs) 
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount $4 | writeini $char($2) stuff  RedOrbs %player.amount
+      $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $currency, private)
+      halt
+    }
+
+    if ($3 = doubledollars) { 
+      var %player.amount $readini($char($2), stuff, DoubleDollars) 
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount $4 | writeini $char($2) stuff  DoubleDollars %player.amount
+      $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $readini(system.dat, system, BetCurrency), private)
+      halt
+    }
+
+    if ($3 = blackorbs) {
+      var %player.amount $readini($char($2), stuff, blackorbs) 
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount $4 | writeini $char($2) stuff  BlackOrbs %player.amount
+      $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 Black Orbs, private)
+      halt
+    }
+
+    if ($3 = ignition) {
+      var %player.ignition.amount $readini($char($2), ignitions, $4)
+      if (%player.ignition.amount >= 1) {  $display.private.message(4 $+ $2 already knows the ignition $4) | halt }
+      else {
+        if ($readini($dbfile(ignitions.db), $4, cost) >= 1) { writeini $char($2) ignition $4 1 | $display.message(4 $+ %real.name has gained the ignition $4, private) | halt }
+        if ($readini($dbfile(ignitions.db), $4, cost) <= 0) { $display.private.message(4Error: players cannot have this ignition.) | halt } 
+      }
+
+
+    }
   }
 }
 
 ; Bot admins can remove stuff from players..
 on 50:TEXT:!take *:*:{
   $checkchar($2) | $set_chr_name($2) 
-  if ($4 = $null) { $display.private.message(4!take <person> <item name/redorbs/blackorbs/ignition> <ignition name or amount>) | halt }
+  if ($4 = $null) { $display.private.message(4!take <person> <item name/redorbs/blackorbs/ignition/enhancementpoints/enhancementpointskill> <ignition name or amount>) | halt }
   if ($4 <= 0) {  $display.private.message(4cannot remove negative amount) | halt }
 
-  if (((($3 != redorbs) && ($3 != blackorbs) && ($3 != doubledollars) && ($3 != ignition)))) {
+  if (((((($3 != redorbs) && ($3 != blackorbs) && ($3 != doubledollars) && ($3 != enhancementpoints) && ($3 != enhancementpointskill) && ($3 != ignition)))))) {
     var %item.type $readini($dbfile(items.db), $3, type)
     if (%item.type = $null) {
       var %item.type $readini($dbfile(equipment.db), $3, EquipLocation)
@@ -1204,6 +1218,16 @@ on 50:TEXT:!take *:*:{
     if (%player.amount < 0) { var %player.amount 0 }
     writeini $char($2) stuff  RedOrbs %player.amount
     $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 $currency, private)
+    halt
+  }
+
+  if ($3 = enhancementpoints) { 
+    var %player.amount $readini($char($2), stuff, EnhancementPoints) 
+    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(4 $+ $2 doesn't have any enhancement points to remove!) | halt }
+    dec %player.amount $4 
+    if (%player.amount < 0) { var %player.amount 0 }
+    writeini $char($2) stuff  EnhancementPoints %player.amount
+    $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 enhancement points, private)
     halt
   }
 
@@ -1231,6 +1255,13 @@ on 50:TEXT:!take *:*:{
     var %player.ignition.amount $readini($char($2), ignitions, $4)
     if (%player.ignition.amount >= 1) { remini $char($2) ignitions $4 | $display.message(4 $+ %real.name has lost the ignition $4, private) | halt }
     else {  $display.private.message(4 $+ $2 does not know the ignition $4) | halt } 
+  }
+
+  if ($3 = enhancementpointskill) { 
+    remini $char($2) skills $4
+    remini $char($2) enhancements $4
+    $set_chr_name($2) | $display.message(4 $+ %real.name has lost the enhancement point skill: $4, private)
+    halt
   }
 }
 
