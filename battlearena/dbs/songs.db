@@ -39,7 +39,7 @@ Instrument=Harp
 [ToxicMelody]
 Name=Toxic Melody
 TP=200
-Desc=pulls out $gender($1) lute and begins to play an ugly-sounding song.  All of %real.name $+ 's allies start to feel sick as the song poisons their brains.
+Desc=pulls out $gender($1) lute and begins to play an ugly-sounding song.  All of %real.name $+ 's enemies start to feel sick as the song poisons their brains.
 Effect=Status
 Target=Enemies
 Type=Poison
