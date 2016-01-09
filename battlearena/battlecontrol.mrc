@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 01/02/16
+;;;; Last updated: 01/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -990,7 +990,7 @@ alias generate_monster {
     if (%battle.type != boss) { var %first.mon.pick false }
 
     while (%value <= %number.of.monsters.needed) {
-      if (%monster.list = $null) { inc %value 1 } 
+      if (%monster.list = $null) { inc %value 10 } 
 
       set %monsters.total $numtok(%monster.list,46)
       if ((%first.mon.pick = true) || (%first.mon.pick = $null)) {  set %random.monster $rand(1, %monsters.total) }
@@ -1010,13 +1010,22 @@ alias generate_monster {
             if (($lines($lstfile(names_ $+ %monster.type $+ .lst)) > 0) && ($return_winningstreak >= 25)) {
               var %dynamic.name.chance $rand(1,100)
 
+              var %dynamic.name.chance 1
+
               if (%dynamic.name.chance <= 30) {
                 var %replacement.line $read($lstfile(names_ $+ %monster.type $+ .lst), $rand(1, $lines($lstfile(names_ $+ %monster.type $+ .lst))))
                 var %replacement.filename $gettok(%replacement.line, 1, 46)
                 var %replacement.realname $gettok(%replacement.line, 2, 46)
+                var %monster.number 1
+
+                while ($isfile($char(%replacement.filename)) = $true) {
+                  inc %monster.number 1
+                  %replacement.filename = %replacement.filename $+ %monster.number
+                  %replacement.realname = %replacement.realname %monster.number
+                }
+
                 .rename $char(%monster.name) $char(%replacement.filename)
                 writeini $char(%replacement.filename) basestats name %replacement.realname
-
                 set %monster.name %replacement.filename
               }
             }
