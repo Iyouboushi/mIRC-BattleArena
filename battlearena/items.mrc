@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/02/16
+;;;; Last updated: 01/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -182,6 +182,9 @@ alias uses_item {
 
     ; Remove old drop items
     remini $txtfile(battle2.txt) Battle bonusitem
+
+    ; Write the portal item
+    writeini $txtfile(battle2.txt) battleinfo PortalItem $2
 
     ; Write the portal's level
     var %portal.level $readini($dbfile(items.db), $2, PortalLevel)

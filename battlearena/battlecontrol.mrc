@@ -1807,6 +1807,8 @@ alias endbattle {
       if ((%battle.type != orbfountain) && (%battle.type != torment)) { 
         $give_random_reward
 
+        if (%portal.bonus = true) { $portal.spoils.drop }
+
         ; If the reward streak is > 15 then we can check for keys and if it's +25 then we can check for creating a chest
         if ($readini(system.dat, system, EnableChests) = true) {
           if ((%portal.bonus = true) || ($readini(battlestats.dat, dragonballs, ShenronWish) = on)) { $give_random_key_reward | $create_treasurechest  }

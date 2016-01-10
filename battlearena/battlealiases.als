@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 01/02/16
+;;;; Last updated: 01/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4185,6 +4185,55 @@ add.monster.drop {
 
     if ($numtok(%temp.player.list, 46) <= 20) {  writeini $txtfile(battle2.txt) drops $1 %temp.player.list }
   }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Spoil drops for portals
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+portal.spoils.drop {
+  var %most.stylish.player $readini($txtfile(battle2.txt), battle, MostStylish)
+  unset %item.drop.rewards
+
+  var %boss.list $readini($dbfile(items.db), $readini($txtfile(battle2.txt), BattleInfo, PortalItem), Monster)
+
+  set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+
+    if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+    else { 
+
+      if (%who.battle != %most.stylish.player) { 
+
+        var %random.boss.monster $gettok(%boss.list,$numtok(%boss.list, 46),46)
+        var %reward.list $readini($dbfile(spoils.db), drops, %random.boss.monster)
+        if (%reward.list = $null) { return }
+
+        var %drop.reward $gettok(%reward.list,$rand(1,$numtok(%reward.list, 46)),46)
+        var %player.amount $readini($char(%who.battle), Item_Amount, %drop.reward)
+        if (%player.amount = $null) { var %player.amount 0 }
+
+        var %item.reward.amount 1
+        inc %player.amount %item.reward.amount
+
+        writeini $char(%who.battle) item_amount %drop.reward %player.amount
+        $set_chr_name(%who.battle) 
+
+        var %drop.counter $readini($char(%who.battle), stuff, dropsrewarded)
+        if (%drop.counter = $null) { var %drop.counter 0 }
+        inc %drop.counter 1
+        writeini $char($1) stuff DropsRewarded %drop.counter
+
+        %item.drop.rewards = $addtok(%item.drop.rewards, %real.name $+  $+ $chr(91) $+ %drop.reward x $+ %item.reward.amount $+  $+ $chr(93) $+ , 46)
+
+        inc %battletxt.current.line 1 
+      }
+      else { inc %battletxt.current.line 1 }
+
+    }
+  }
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

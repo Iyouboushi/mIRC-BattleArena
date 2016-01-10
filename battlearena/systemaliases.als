@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 01/07/16
+;;;; Last updated: 01/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3273,6 +3273,7 @@ give_random_reward {
 
         $display.message($readini(translation.dat, battle, BonusItemWin),battle) 
         remini $txtfile(battle2.txt) battle bonusitem
+        writeini $txtfile(battle2.txt) battle MostStylish %item.winner
       }
     }
     unset %boss.item | unset %item.winner
