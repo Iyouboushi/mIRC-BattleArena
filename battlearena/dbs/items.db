@@ -3597,6 +3597,7 @@ SellPrice=5000
 SpecialType=GainWeapon
 Weapon=X-Buster
 Desc=pulls out a set of blueprints for an X-Buster $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a beautiful and functional X-Buster ready for use.
+Exclusive=yes
 
 [Blueprints:SilverSword]
 Type=special
@@ -3623,6 +3624,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Xiutleato
 Desc=pulls out a set of blueprints for the Xiutleato $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Xiutleato, ready for use.
+Exclusive=yes
 
 [Blueprints:HomesteadBow]
 Type=special
@@ -3631,6 +3633,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=HomesteadBow
 Desc=pulls out a set of blueprints for the HomesteadBow $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful HomesteadBow, ready for use.
+Exclusive=yes
 
 [Blueprints:Ichimonji-Yofusa]
 Type=special
@@ -3639,6 +3642,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Ichimonji-Yofusa
 Desc=pulls out a set of blueprints for the Ichimonji-Yofusa $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Ichimonji-Yofusa, ready for use.
+Exclusive=yes
 
 [Blueprints:Upukirex]
 Type=special
@@ -3647,6 +3651,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Upukirex
 Desc=pulls out a set of blueprints for the Upukirex $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Upukirex, ready for use.
+Exclusive=yes
 
 [Blueprints:Xbalanque]
 Type=special
@@ -3655,6 +3660,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Xbalanque
 Desc=pulls out a set of blueprints for the Xbalanque $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Xbalanque, ready for use.
+Exclusive=yes
 
 [Blueprints:Macbain]
 Type=special
@@ -3663,6 +3669,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Macbain
 Desc=pulls out a set of blueprints for the Macbain $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Macbain, ready for use.
+Exclusive=yes
 
 [Blueprints:Lightreaver]
 Type=special
@@ -3671,6 +3678,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Lightreaver
 Desc=pulls out a set of blueprints for the Lightreaver $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Lightreaver, ready for use.
+Exclusive=yes
 
 [Blueprints:Kerehcatl]
 Type=special
@@ -3679,6 +3687,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Kerehcatl
 Desc=pulls out a set of blueprints for the Kerehcatl $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Kerehcatl, ready for use.
+Exclusive=yes
 
 [Blueprints:Vanir_Knife]
 Type=special
@@ -3687,6 +3696,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Vanir_Knife
 Desc=pulls out a set of blueprints for the Vanir Knife $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Vanir Knife, ready for use.
+Exclusive=yes
 
 [Blueprints:Vajra]
 Type=special
@@ -3695,6 +3705,7 @@ SellPrice=2500
 SpecialType=GainWeapon
 Weapon=Vajra
 Desc=pulls out a set of blueprints for the Vajra $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the powerful Vajra, ready for use.
+Exclusive=yes
 
 [Blueprints:Oatixur]
 Type=special
@@ -3739,7 +3750,7 @@ SellPrice=5000
 SpecialType=GainWeapon
 Weapon=MasterSword
 Desc=$iif($2 != $1,pulls out an ancient map from Hyrule and hands it to $set_chr_name($2) %real.name $+ ., pulls out an ancient map from Hyrule.) %real.name then uses it to find the long lost hidden resting place for the ancient Master Sword.  With effort, %real.name pulls it out of its stone and readies it for use.
-
+Exclusive=yes
 
 =========================
 SONGS (subset of special)

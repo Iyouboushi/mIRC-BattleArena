@@ -117,6 +117,7 @@ Augment=EnhanceMeditate
 EquipLocation=head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [Genbu'sKabuto]
 name=Genbu's Kabuto
@@ -130,6 +131,7 @@ Augment=EnhanceDefender
 EquipLocation=head
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [JesterHat]
 Name=Jester Hat
@@ -143,6 +145,7 @@ Augment=EnhanceSummons
 EquipLocation=head
 cost=50
 SellPrice=50
+Exclusive=yes
 
 [JesterHat+1]
 Name=Jester Hat+1
@@ -156,6 +159,7 @@ Augment=EnhanceSummons.EnhanceBloodpact
 EquipLocation=head
 cost=50
 SellPrice=50
+Exclusive=yes
 
 [CrimsonCrown]
 Name=Crimson Crown
@@ -181,6 +185,7 @@ Augment=EnhanceBloodBoost
 EquipLocation=head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [ChaosBurgeonet]
 Name=Chaos Burgeonet
@@ -194,6 +199,7 @@ Augment=EnhanceCriticalHits
 EquipLocation=head
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [WarlockChapeau]
 Name=Warlock's Chapeau
@@ -207,6 +213,7 @@ Augment=MagicBonus
 EquipLocation=Head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WarlockChapeau+1]
 Name=Warlock's Chapeau +1
@@ -249,6 +256,7 @@ EquipLocation=Head
 cost=50
 SellPrice=2000
 LevelRequirement=250
+Exclusive=yes
 
 [UnkaiKabuto]
 Name=Unkai Kabuto
@@ -352,6 +360,7 @@ Augment=EnhanceCounter
 EquipLocation=Head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [TantraCrown+1]
 Name=Tantra Crown +1
@@ -393,6 +402,7 @@ Augment=MagicBonus
 EquipLocation=Head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WizardPetasos+1]
 Name=Wizard's Petasos +1
@@ -434,6 +444,7 @@ Augment=CuringBonus
 EquipLocation=Head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [HealerCap+1]
 Name=Healer's Cap +1
@@ -475,6 +486,7 @@ Augment=EnhanceTreasureHunter
 EquipLocation=Head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [ScoutBeret+1]
 Name=Scout's Beret +1
@@ -516,6 +528,7 @@ Augment=EnhanceBloodpact
 EquipLocation=Head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [SummonerHorn+1]
 Name=Summoner's Horn +1
@@ -557,6 +570,7 @@ Augment=EnhanceDefender
 EquipLocation=Head
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [CreedArmet+1]
 Name=Creed Armet +1
@@ -721,6 +735,7 @@ Augment=RenkeiBonus
 EquipLocation=body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [CrimsonHauberk]
 name=Crimson Hauberk
@@ -746,6 +761,7 @@ Augment=EnhanceBloodBoost
 EquipLocation=body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 
 [ChaosCuirass]
@@ -760,6 +776,7 @@ Augment=MeleeBonus.Drain
 EquipLocation=body
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [Kirin'sOsode]
 name=Kirin's Osode
@@ -773,6 +790,7 @@ Augment=IgnoreDefense.EnhanceCriticalHits
 EquipLocation=body
 cost=50
 SellPrice=2000
+Exclusive=yes
 
 [TengokuMail]
 name=Tengoku Mail
@@ -861,6 +879,7 @@ Augment=EnhanceCriticalHits
 EquipLocation=Body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WarlockTabard+1]
 Name=Warlock's Tabard +1
@@ -903,6 +922,7 @@ EquipLocation=Body
 cost=50
 SellPrice=5000
 LevelRequirement=250
+Exclusive=yes
 
 [UnkaiDomaru]
 Name=Unkai Domaru
@@ -1006,6 +1026,7 @@ Augment=EnhanceCounter
 EquipLocation=Body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [TantraCyclas+1]
 Name=Tantra Cycles +1
@@ -1047,6 +1068,7 @@ Augment=MagicBonus
 EquipLocation=Body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WizardCoat+1]
 Name=Wizard's Coat +1
@@ -1088,6 +1110,7 @@ Augment=CuringBonus
 EquipLocation=Body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [HealerBriault+1]
 Name=Healer's Briault +1
@@ -1129,6 +1152,7 @@ Augment=EnhanceCriticalHits
 EquipLocation=Body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [ScoutJerkin+1]
 Name=Scout's Jerkin +1
@@ -1170,6 +1194,7 @@ Augment=EnhanceBloodpact
 EquipLocation=Body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [SummonerDoublet+1]
 Name=Summoner's Doublet +1
@@ -1211,6 +1236,7 @@ Augment=EnhanceDefender
 EquipLocation=Body
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [CreedCuirass+1]
 Name=Creed Cuirass +1
@@ -1284,7 +1310,7 @@ EquipLocation=Body
 cost=50
 SellPrice=3000
 LevelRequirement=200
-
+Exclusive=yes
 
 
 ========
@@ -1356,6 +1382,7 @@ Augment=TechBonus
 EquipLocation=legs
 cost=50
 SellPrice=100
+Exclusive=yes
 
 [ChaosFlanchard]
 Name=Chaos Flanchard
@@ -1369,6 +1396,7 @@ Augment=EnhanceParry
 EquipLocation=legs
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [Byakko'sHaidate]
 name=Byakko's Haidate
@@ -1382,6 +1410,7 @@ Augment=EnhanceDodge
 EquipLocation=legs
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [WarlockTights]
 Name=Warlock's Tights
@@ -1395,6 +1424,7 @@ Augment=CuringBonus
 EquipLocation=Legs
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WarlockTights+1]
 Name=Warlock's Tights +1
@@ -1437,6 +1467,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=2500
 LevelRequirement=250
+Exclusive=yes
 
 [UnkaiHaidate]
 Name=Unkai Haidate
@@ -1540,6 +1571,7 @@ Augment=EnhanceCounter
 EquipLocation=Legs
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [TantraHose+1]
 Name=Tantra Hose +1
@@ -1581,6 +1613,7 @@ Augment=MagicBonus
 EquipLocation=Legs
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WizardTonban+1]
 Name=Wizard's Tonban +1
@@ -1622,6 +1655,7 @@ Augment=CuringBonus
 EquipLocation=Legs
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [HealerPantaloons+1]
 Name=Healer's Pantaloons +1
@@ -1663,6 +1697,7 @@ Augment=EnhanceDodge
 EquipLocation=Legs
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [ScoutBraccae+1]
 Name=Scout's Braccae +1
@@ -1704,6 +1739,7 @@ Augment=EnhanceBloodpact
 EquipLocation=Legs
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [SummonerSpats+1]
 Name=Summoner's Spats +1
@@ -1745,6 +1781,7 @@ Augment=EnhanceDefender
 EquipLocation=Legs
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [CreedCuisses+1]
 Name=Creed Cuisses +1
@@ -1843,6 +1880,7 @@ Augment=EnhanceDodge
 EquipLocation=feet
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [CrimsonSocks]
 name=Crimson Socks
@@ -1868,6 +1906,7 @@ Augment=EnhanceBloodBoost
 EquipLocation=feet
 Cost=50
 SellPrice=500
+Exclusive=yes
 
 [ChaosSollerets]
 Name=Chaos Sollerets
@@ -1881,6 +1920,7 @@ Augment=EnhanceAggressor
 EquipLocation=feet
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [Suzaku'sSune-Ate]
 Name=Suzaku'sSune-Ate
@@ -1894,6 +1934,7 @@ Augment=MagicBonus
 EquipLocation=feet
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [WarlockBoots]
 Name=Warlock's Boots
@@ -1907,6 +1948,7 @@ Augment=EnhanceEnfeeble
 EquipLocation=Feet
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WarlockBoots+1]
 Name=Warlock's Boots +1
@@ -1949,6 +1991,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=3000
 LevelRequirement=250
+Exclusive=yes
 
 [UnkaiSune-Ate]
 Name=Unkai Sune-Ate
@@ -2052,6 +2095,7 @@ Augment=EnhanceCounter
 EquipLocation=Feet
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [TantraGaiters+1]
 Name=Tantra Gaiters +1
@@ -2093,6 +2137,7 @@ Augment=MagicBonus
 EquipLocation=Feet
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WizardSabots+1]
 Name=Wizard's Sabots +1
@@ -2134,6 +2179,7 @@ Augment=CuringBonus
 EquipLocation=Feet
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [HealerDuckbills+1]
 Name=Healer's Duckbills +1
@@ -2175,6 +2221,7 @@ Augment=EnhanceScavenge
 EquipLocation=Feet
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [ScoutBoots+1]
 Name=Scout's Boots +1
@@ -2216,6 +2263,7 @@ Augment=EnhanceBloodpact
 EquipLocation=Feet
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [SummonerPigaches+1]
 Name=Summoner's Pigaches +1
@@ -2257,6 +2305,7 @@ Augment=EnhanceDefender
 EquipLocation=Feet
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [CreedSabatons+1]
 Name=Creed Sabatons +1
@@ -2394,6 +2443,7 @@ Augment=EnhanceParry
 EquipLocation=hands
 cost=50
 SellPrice=100
+Exclusive=yes
 
 [ChaosGauntlets]
 Name=Chaos Gauntlets
@@ -2407,6 +2457,7 @@ Augment=EnhanceWeaponBash
 EquipLocation=hands
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [Seiryu'sKote]
 name=Seiryu's Kote
@@ -2420,6 +2471,7 @@ Augment=EnhanceRanged
 EquipLocation=hands
 cost=50
 SellPrice=1000
+Exclusive=yes
 
 [WarlockGloves]
 Name=Warlock's Gloves
@@ -2433,6 +2485,7 @@ Augment=EnhanceParry
 EquipLocation=Hands
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WarlockGloves+1]
 Name=Warlock's Gloves +1
@@ -2475,6 +2528,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=3000
 LevleRequirement=250
+Exclusive=yes
 
 [UnkaiKote]
 Name=Unkai Kote
@@ -2578,6 +2632,7 @@ Augment=EnhanceCounter
 EquipLocation=Hands
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [TantraGloves+1]
 Name=Tantra Gloves +1
@@ -2619,6 +2674,7 @@ Augment=MagicBonus
 EquipLocation=Hands
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [WizardGloves+1]
 Name=Wizard's Gloves +1
@@ -2660,6 +2716,7 @@ Augment=CuringBonus
 EquipLocation=Hands
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [HealerMitts+1]
 Name=Healer's Mitts +1
@@ -2701,6 +2758,7 @@ Augment=EnhanceSteal
 EquipLocation=Hands
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [ScoutBracers+1]
 Name=Scout's Bracers +1
@@ -2742,6 +2800,7 @@ Augment=EnhanceBloodpact
 EquipLocation=Hands
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [SummonerBracers+1]
 Name=Summoner's Bracers +1
@@ -2783,6 +2842,7 @@ Augment=EnhanceDefender
 EquipLocation=Hands
 cost=50
 SellPrice=500
+Exclusive=yes
 
 [CreedGauntlets+1]
 Name=Creed Gauntlets +1
@@ -2870,6 +2930,7 @@ Augment=none
 EquipLocation=head
 cost=0
 SellPrice=0
+Exclusive=yes
 
 [Lirarian's_Armor]
 Name=Lirarian's Armor
@@ -2883,6 +2944,7 @@ Augment=none
 EquipLocation=body
 cost=0
 SellPrice=0
+Exclusive=yes
 
 [Lirarian's_Gauntlets]
 Name=Lirarian's Gauntlets
@@ -2896,6 +2958,7 @@ Augment=none
 EquipLocation=hands
 cost=0
 SellPrice=0
+Exclusive=yes
 
 [Lirarian's_Cuisses]
 Name=Lirarian's Cuisses
@@ -2909,6 +2972,7 @@ Augment=none
 EquipLocation=legs
 cost=0
 SellPrice=0
+Exclusive=yes
 
 [Lirarian's_Sabatons]
 Name=Lirarian's Sabatons
@@ -2922,3 +2986,4 @@ Augment=none
 EquipLocation=feet
 cost=0
 SellPrice=0
+Exclusive=yes
