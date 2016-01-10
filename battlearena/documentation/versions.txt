@@ -1435,10 +1435,15 @@ Battle Arena Bot VERSIONS
 - Added the system.dat system flag: MaxIdleTurns. Set to 2 by default, this controls how many turns a player can miss
   before he/she is kicked out of the battle.
 - Added new cow monsters
+- Added a new NPC
+- Added a literal "trash" item (it serves no purpose for now)
+- Added the ability to turn purple keys into gold keys via crafting
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
 - Changed the shop stat ratio limits (1-50 have a .55 ratio, 50-1000 is .43 and 1000+ is .35)
+- Changed the SSJ ignition
+- Changed portal battles to make it easier for everyone to get a drop from the battle
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed an issue where certain battle types could override mimic battles
