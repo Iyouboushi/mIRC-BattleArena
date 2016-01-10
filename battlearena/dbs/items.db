@@ -2614,6 +2614,7 @@ Currency=AlliedNotes
 [SilverPointsCard]
 type=misc
 cost=0
+SellPrice=1
 Desc=A card that contains 15 Silver Points.
 Currency=none
 Exclusive=yes
@@ -2621,7 +2622,35 @@ Exclusive=yes
 [SilverSeal]
 type=misc
 cost=0
+SellPrice=1
 Desc=A silver seal made from silver points.
+Currency=none
+Exclusive=yes
+
+
+; Armor and Blueprint Vouchers
+
+[BronzeVoucher]
+type=misc
+cost=0
+SellPrice=100
+Desc=A bronze voucher that can be used to exchange for armor and blueprints
+Currency=none
+Exclusive=yes
+
+[SilverVoucher]
+type=misc
+cost=0
+SellPrice=100
+Desc=A silver voucher that can be used to exchange for armor and blueprints
+Currency=none
+Exclusive=yes
+
+[GoldVoucher]
+type=misc
+cost=0
+SellPrice=100
+Desc=A gold voucher that can be used to exchange for armor and blueprints
 Currency=none
 Exclusive=yes
 
