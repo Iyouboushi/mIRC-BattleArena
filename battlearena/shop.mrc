@@ -1,11 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 01/02/16
+;;;; Last updated: 01/10/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
 on 3:TEXT:!exchange*:*: { $shop.exchange($nick, $2, $3) }
 on 3:TEXT:!sell*:*: { $shop.start(!shop, sell, $2, $3, $4, $5) }
+on 3:TEXT:!voucher list:*: { $shop.voucher.list($nick) }
+on 3:TEXT:!voucher buy *:*: { $shop.voucher.buy($nick, $3, $4) }
 
 alias shop.exchange {
   ; $1 = user
@@ -2539,4 +2541,147 @@ alias shop.get.shop.level {
   if (%shop.level < 1) { set %shop.level 1.0 }
 
   unset %current.accessory | unset %current.accessory.type
+}
+
+
+
+alias shop.voucher.list {
+  ; cycle through the files and get the item name (token position 1) and the cost (token position 2)
+  ; for each types of vouchers (bronze, silver and gold)
+
+  unset %item.name | unset %item_amount | unset %voucher.list.*
+
+  var %player.voucher.bronze $readini($char($1), item_amount, BronzeVoucher)
+  var %player.voucher.silver $readini($char($1), item_amount, SilverVoucher)
+  var %player.voucher.gold $readini($char($1), item_amount, GoldVoucher)
+
+  if (%player.voucher.bronze = $null) { var %player.voucher.bronze 0 }
+  if (%player.voucher.silver = $null) { var %player.voucher.silver 0 }
+  if (%player.voucher.gold = $null) { var %player.voucher.gold 0 }
+
+  ; CHECKING BRONZE VOUCHER LIST
+  var %value 1 | var %items.lines $lines($lstfile(shop_voucherbronze.lst))
+
+  while (%value <= %items.lines) {
+    var %voucher.line  $read -l $+ %value $lstfile(shop_voucherbronze.lst)
+    var %item.name $gettok(%voucher.line, 1, 46)
+    var %item.price $gettok(%voucher.line, 2, 46)
+
+    if (%item.price > %player.voucher.bronze) { var %item.color 5 }
+    else { var %item.color 3 }
+
+    if ($numtok(%voucher.list.bronze, 46) >= 12) { %voucher.list.bronze2 = $addtok(%voucher.list.bronze2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+    else { %voucher.list.bronze = $addtok(%voucher.list.bronze, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+
+    inc %value 1 
+  }
+
+  set %replacechar $chr(044) $chr(032)
+  %voucher.list.bronze = $replace(%voucher.list.bronze, $chr(046), %replacechar)
+  if (%voucher.list.bronze2 != $null) {  %voucher.list.bronze2 = $replace(%voucher.list.bronze2, $chr(046), %replacechar) }
+
+  if (%voucher.list.bronze != $null) { 
+    $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Bronze Vouchers,1)
+  $display.private.message.delay.custom(%voucher.list.bronze, 1) }
+  if (%voucher.list.bronze2 != $null) { $display.private.message.delay.custom(%voucher.list.bronze2, 1) }
+
+  ; CHECKING SILVER VOUCHER LIST
+  var %value 1 | var %items.lines $lines($lstfile(shop_vouchersilver.lst))
+
+  while (%value <= %items.lines) {
+    var %voucher.line  $read -l $+ %value $lstfile(shop_vouchersilver.lst)
+    var %item.name $gettok(%voucher.line, 1, 46)
+    var %item.price $gettok(%voucher.line, 2, 46)
+
+    if (%item.price > %player.voucher.silver) { var %item.color 5 }
+    else { var %item.color 3 }
+
+    if ($numtok(%voucher.list.silver, 46) <= 12) { %voucher.list.silver = $addtok(%voucher.list.silver, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+    else {
+      if ($numtok(%voucher.list.silver2, 46) <= 12) { %voucher.list.silver2 = $addtok(%voucher.list.silver2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+      else { %voucher.list.silver3 = $addtok(%voucher.list.silver3, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+    }
+
+    inc %value 1 
+  }
+
+  set %replacechar $chr(044) $chr(032)
+  %voucher.list.silver = $replace(%voucher.list.silver, $chr(046), %replacechar)
+  if (%voucher.list.silver2 != $null) {  %voucher.list.silver2 = $replace(%voucher.list.silver2, $chr(046), %replacechar) }
+  if (%voucher.list.silver3 != $null) {  %voucher.list.silver3 = $replace(%voucher.list.silver3, $chr(046), %replacechar) }
+
+  if (%voucher.list.silver != $null) {
+    $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Silver Vouchers,1)
+  $display.private.message.delay.custom(%voucher.list.silver, 1) }
+  if (%voucher.list.silver2 != $null) { $display.private.message.delay.custom(%voucher.list.silver2, 1) }
+  if (%voucher.list.silver3 != $null) { $display.private.message.delay.custom(%voucher.list.silver3, 1) }
+
+  ; CHECKING GOLD VOUCHER LIST
+  var %value 1 | var %items.lines $lines($lstfile(shop_vouchergold.lst))
+
+  while (%value <= %items.lines) {
+    var %voucher.line  $read -l $+ %value $lstfile(shop_vouchergold.lst)
+    var %item.name $gettok(%voucher.line, 1, 46)
+    var %item.price $gettok(%voucher.line, 2, 46)
+
+    if (%item.price > %player.voucher.gold) { var %item.color 5 }
+    else { var %item.color 3 }
+
+    if ($numtok(%voucher.list.gold, 46) >= 12) { %voucher.list.gold2 = $addtok(%voucher.list.gold2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+    else { %voucher.list.gold = $addtok(%voucher.list.gold, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+
+    inc %value 1 
+  }
+
+  set %replacechar $chr(044) $chr(032)
+  %voucher.list.gold = $replace(%voucher.list.gold, $chr(046), %replacechar)
+  if (%voucher.list.gold2 != $null) {  %voucher.list.gold2 = $replace(%voucher.list.gold2, $chr(046), %replacechar) }
+
+  if (%voucher.list.gold != $null) { 
+    $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Gold Vouchers,1)
+  $display.private.message.delay.custom(%voucher.list.gold, 1) }
+  if (%voucher.list.gold2 != $null) { $display.private.message.delay.custom(%voucher.list.gold2, 1) }
+
+
+  if (((%voucher.list.bronze = $null) && (%voucher.list.silver = $null) && (%voucher.list.gold = $null))) {  $display.private.message(4There are no voucher items available for purchase right now)  }
+
+  unset %item.price | unset %item.name | unset %voucher.list.* | unset %replacechar
+
+}
+
+alias shop.voucher.buy {
+  ; $1 = the person buying
+  ; $2 = the voucher type: bronze, silver or gold
+  ; $3 = the item being bought
+
+  ; Check to make sure $2 is a valid voucher type
+  var %valid.vouchers bronze.silver.gold
+  if ($istok(%valid.vouchers, $2, 46) = $false) { $display.private.message(4Invalid voucher type. Use !voucher buy bronze/silver/gold itemname) | halt }
+
+  ; Check to make sure $3 is a valid item that can be bought with that voucher
+  var %search.item $3
+  var %search.file shop_voucher $+ $2 $+ .lst
+  var %item.line $read($lstfile(%search.file), nw, * $+ %search.item $+ *)
+
+  if (%item.line = $null) { $display.private.message(4This cannot be bought with the $2 voucher) | halt }
+
+  ; Check to make sure the person has enough to buy the item
+  var %voucher.item.price $gettok(%item.line, 2, 46)
+  var %player.voucher.amount $readini($char($1), item_amount, $2 $+ Voucher)
+  if (%player.voucher.amount = $null) { var %player.voucher.amount 0 }
+
+  if (%player.voucher.amount < %voucher.item.price) { $display.private.message(4You do not have enough $2 vouchers to purchase this item) | halt }
+
+  ; Decrease the voucher amount
+  dec %player.voucher.amount %voucher.item.price
+  writeini $char($1) item_amount $2 $+ Voucher %player.voucher.amount
+
+  ; Increase the player's amount by 1
+  var %player.amount.item $readini($char($1), item_amount, $3)
+  if (%player.amount.item = $null) { var %player.amount.item 0 }
+  inc %player.amount.item 1 
+  writeini $char($1) item_amount $3 %player.amount.item
+
+  ; Show a message that we did the exchange
+  $display.private.message(3You have exchanged %voucher.item.price $2 $iif(%voucher.item.price > 1, vouchers, voucher) for 1 $3)
 }
