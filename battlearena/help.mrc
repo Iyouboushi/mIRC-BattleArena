@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 11/20/15
+;;;; Last updated: 1/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -91,7 +91,6 @@ alias view-info {
     $display.private.message([4Name12 $3 $+ ] [4Type12 Accessory $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])
   }
 
-
   if ($2 = song) { 
     if ($readini($dbfile(songs.db), $3, type) = $null) { $display.private.message(4Invalid item) | halt }
     $display.private.message([4Name12 $3 $+ ] [4Type12 Song $+ ] [4TP Consumed12 $readini($dbfile(songs.db), $3, TP) $+ ] [4Instrument neded12 $readini($dbfile(songs.db), $3, Instrument) $+ ]  [4Song Effect12 $readini($dbfile(songs.db), $3, Type) $+ ] [4Song Target12 $readini($dbfile(songs.db), $3, Target) $+ ])
@@ -143,6 +142,13 @@ alias view-info {
     if (%info.type = trust) { 
       if ($readini($dbfile(items.db), $3, type) = $null) { $display.private.message(4Invalid item) | halt }
       $display.private.message([4Name12 $3 $+ ] [4Type12 NPC Trust $+ ] [4NPC Summoned12 $readini($dbfile(items.db), $3, NPC) $+ ])
+    }
+
+    if (%info.type = Special) {
+      var %info.specialtype $readini($dbfile(items.db), $3, SpecialType)
+      if (%info.specialtype = GainWeapon) { 
+        $display.private.message([4Name12 $3 $+ ] [4Type12 Gain Weapon $+ ] [4Weapon Gained12 $readini($dbfile(items.db), $3, Weapon) $+ ])
+      }
     }
 
     if (%info.type = armor) { $display.private.message(4This item is an armor piece. Use !view-info armor $3 to learn more about it.) }
