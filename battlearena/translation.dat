@@ -1011,7 +1011,7 @@ Dragonball Stuff
 =======================
 [Dragonball]
 ShenronWishActive=$chr(3) $+ 7* Shenron's Wish is Blessing the Players on the Battlefield
-ShenronWishOver=$chr(3) $+ 7* Sheron's Wish's power fades away and the dragonballs become active again. 
+ShenronWishOver=$chr(3) $+ 7* Shenron's Wish's power fades away and the dragonballs become active again. 
 DragonballFound=$chr(3) $+ 7* The players have found a dragonball! This makes %dbs.total out of 7 found!
 ShenronSummoned=$chr(3) $+ 7* The players use the 7 dragonballs to summon The Eternal Dragon Shenron who grants a wish to make players stronger on the battlefield for ten battles!
 DragonballCheck=$chr(3) $+ 2 $+ The Allied Forces of Good have collected %dbs.total dragonballs out of 7 total.
