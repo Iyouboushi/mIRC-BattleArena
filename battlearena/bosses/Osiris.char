@@ -104,7 +104,7 @@ Resist-Paralysis=90
 Resist-Petrify=90
 Resist-Curse=100
 Impetus=40
-Regen=5
+Regen=$iif($return_playersinbattle > 3, 5, 3)
 
 
 [Techniques]
