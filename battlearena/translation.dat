@@ -935,6 +935,7 @@ Statuses
 =======================
 [Statuses]
 ; Negative status effects
+Frozen=$chr(3) $+ 4 $+ frozen
 Freezing=$chr(3) $+ 4 $+ frozen
 Shock=$chr(3) $+ 4 $+ shocked
 Burning=$chr(3) $+ 4 $+ burning
