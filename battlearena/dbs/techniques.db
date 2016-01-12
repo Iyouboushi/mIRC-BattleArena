@@ -3653,8 +3653,8 @@ Element=None
 Magic=no
 Cost=0
 stat=str
-IgnoreDefense=50
-
+IgnoreDefense=$rand(75,85)
+DestroyShadows=6
 
 [WrapWhip]
 Type=Single

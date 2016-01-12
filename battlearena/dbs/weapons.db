@@ -1914,7 +1914,7 @@ Abilities=Homerun
 Element=none
 Hits=$rand(1,2)
 BasePower=20
-IgnoreDefense=50
+IgnoreDefense=$rand(65,85)
 CanShieldReflect=false
 StatusType=DefenseDown.StrengthDown.IntDown
 
