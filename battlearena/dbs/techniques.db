@@ -434,6 +434,7 @@ HarpyClaws=FeatherStorm.Aeroja
 MummyWrap=WrapWhip
 CenaFists=CenaShoulderTackle.Cena_ShoulderTackle.Protoplex.YouCantSeeMe.AttitudeAdjustment
 ZemusPower=BlackHole.DarkDispel.BigBang.MeteorII.Comet.DarkFlare.DarkQuake.DarkFlood.DarkTornado.DarkFreeze.Dark_Burst
+NerfBat=Homerun
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -3641,6 +3642,19 @@ Element=None
 magic=no
 cost=0
 stat=str
+
+[Homerun]
+Type=Single
+StatusType=DefenseDown.StrengthDown.IntDown.Curse.Virus.Amnesia
+TP=5
+Desc=winds up and yells "HOMERUN!" as he whacks %enemy with the bat!
+BasePower=10
+Element=None
+Magic=no
+Cost=0
+stat=str
+IgnoreDefense=50
+
 
 [WrapWhip]
 Type=Single

@@ -667,6 +667,15 @@ Cost=0
 SellPrice=4000
 Exclusive=yes
 
+[CaptainCrunchy]
+type=food
+Target=def
+Amount=1
+Desc=pours a bowl of Captain Crunchy bootleg cereal for %enemy $+ , who eats it.  CRUNCH CRUNCH CRUNCH!  Mmmm! Nothing like a bowl of cereal to toughen you up.
+Cost=0
+SellPrice=100
+Exclusive=yes
+
 [SuperMushroom]
 Type=food
 Target=hp
