@@ -296,7 +296,7 @@ Str=300
 def=240
 int=140
 spd=180
-Augment=EnhanceCounter.AdditionalHit.EnhanceCriticalHits
+Augment=EnhanceCounter.AdditionalHit.EnhanceCriticalHits.EnhanceMeditate
 EquipLocation=Head
 cost=50
 SellPrice=5000
@@ -341,7 +341,7 @@ Str=140
 def=140
 int=300
 spd=140
-Augment=MagicBonus.EnhanceMeditate.EnhanceZen
+Augment=MagicBonus.EnhanceZen.EnhanceEnfeeble
 EquipLocation=Head
 cost=50
 SellPrice=5000
@@ -600,6 +600,20 @@ cost=50
 SellPrice=1500
 Exclusive=yes
 
+[ShadowHelmet]
+Name=Shadow Helmet
+hp=50
+tp=20
+Str=50
+Def=50
+Int=50
+Spd=50
+Augment=EnhanceAxe.EnhanceScythe
+EquipLocation=Head
+Cost=50
+SellPrice=1000
+Exclusive=Yes
+
 ========
 BODY
 ========
@@ -830,7 +844,7 @@ Str=550
 def=500
 int=200
 spd=200
-Augment=IgnoreDefense.EnhanceCriticalHits.EnhanceAggressor.EnhanceDodge.EnhanceDoubleTurnChance.EnhanceKatana.Drain.EnhanceDragonHunt
+Augment=IgnoreDefense.EnhanceAggressor.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.EnhanceCriticalHits.Drain.EnhanceElementalDefense.EnhanceDragonHunt
 EquipLocation=body
 cost=50
 SellPrice=50000
@@ -845,7 +859,7 @@ Str=100
 def=250
 int=300
 spd=100
-Augment=IgnoreDefense.EnhanceDefender.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceGlyph.EnhanceWand
+Augment=IgnoreDefense.EnhanceDefender.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceGlyph.EnhanceWand.EnhanceStaff
 EquipLocation=body
 cost=50
 SellPrice=50000
@@ -860,7 +874,7 @@ Str=200
 def=500
 int=550
 spd=200
-Augment=IgnoreDefense.EnhanceDefender.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceGlyph.EnhanceWand.EnhanceDragonHunt
+Augment=IgnoreDefense.EnhanceDefender.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceElementalDefense.EnhanceGlyph.EnhanceWand.EnhanceStaff.EnhanceEnfeeble.EnhanceDragonHunt
 EquipLocation=body
 cost=50
 SellPrice=50000
@@ -962,7 +976,7 @@ Str=300
 def=240
 int=140
 spd=180
-Augment=EnhanceDoubleTurnChance.EnhanceKatana.Drain
+Augment=EnhanceDoubleTurnChance.Drain.MeleeBonus.EnhanceElementalDefense
 EquipLocation=Body
 cost=50
 SellPrice=10000
@@ -1007,7 +1021,7 @@ Str=140
 def=140
 int=300
 spd=140
-Augment=EnhanceDoubleTurnChance.Drain.EnhanceGlyph
+Augment=MagicBonus.EnhanceEnFeeble.EnhanceDoubleTurnChance.Drain.EnhanceGlyph.EnhanceWand.EnhanceStaff.EnhanceElementalDefense
 EquipLocation=Body
 cost=50
 SellPrice=10000
@@ -1312,6 +1326,19 @@ SellPrice=3000
 LevelRequirement=200
 Exclusive=yes
 
+[ShadowScalemail]
+Name=Shadow Scalemail
+hp=50
+tp=20
+Str=50
+Def=50
+Int=50
+Spd=50
+Augment=EnhanceWhip.EnhanceDagger
+EquipLocation=Body
+Cost=50
+SellPrice=1000
+Exclusive=Yes
 
 ========
 LEGS
@@ -1507,7 +1534,7 @@ Str=200
 def=240
 int=140
 spd=180
-Augment=EnhanceThirdEye.UtsusemiBonus.EnhanceHandToHand
+Augment=EnhanceThirdEye.UtsusemiBonus.MeleeBonus.EnhanceItems
 EquipLocation=Legs
 cost=50
 SellPrice=8000
@@ -1552,7 +1579,7 @@ Str=140
 def=140
 int=300
 spd=140
-Augment=CuringBonus.EnhanceDagger.EnhanceZen
+Augment=MagicBonus.EnhanceEnFeeble.CuringBonus.UtsusemiBonus.EnhanceItems
 EquipLocation=Legs
 cost=50
 SellPrice=8000
@@ -1811,6 +1838,20 @@ cost=50
 SellPrice=1500
 Exclusive=yes
 
+[ShadowCuisses]
+Name=Shadow Cuisses
+hp=50
+tp=20
+Str=50
+Def=50
+Int=50
+Spd=50
+Augment=EnhanceRanged.EnhanceHandToHand
+EquipLocation=Legs
+Cost=50
+SellPrice=1000
+Exclusive=Yes
+
 ========
 FEET
 ========
@@ -2031,7 +2072,7 @@ Str=300
 def=240
 int=140
 spd=180
-Augment=RenkeiBonus.EnhanceDodge.TechBonus
+Augment=EnhanceDodge.TechBonus.RenkeiBonusIncrease.IncreaseIGGainRate
 EquipLocation=Feet
 cost=50
 SellPrice=10000
@@ -2076,7 +2117,7 @@ Str=140
 def=140
 int=300
 spd=140
-Augment=EnhanceEnfeeble.AbsorbIG.EnhanceZen
+Augment=MagicBonus.EnhanceEnFeeble.IncreaseIGGainRate.EnhanceDodge
 EquipLocation=Feet
 cost=50
 SellPrice=10000
@@ -2335,6 +2376,20 @@ cost=50
 SellPrice=1500
 Exclusive=yes
 
+[ShadowGreaves]
+Name=Shadow Greaves
+hp=50
+tp=20
+Str=50
+Def=50
+Int=50
+Spd=50
+Augment=EnhanceSpear.EnhanceGlyph
+EquipLocation=Feet
+Cost=50
+SellPrice=1000
+Exclusive=Yes
+
 ========
 HANDS
 ========
@@ -2568,7 +2623,7 @@ Str=300
 def=240
 int=140
 spd=180
-Augment=TechBonus.MeleeBonus.EnhanceParry
+Augment=EnhanceParry.TechBonus.RenkeiBonus.EnhanceMeditate
 EquipLocation=Hands
 cost=50
 SellPrice=10000
@@ -2613,7 +2668,7 @@ Str=140
 def=140
 int=300
 spd=140
-Augment=EnhanceParry.AbsorbTP.EnhanceSword
+Augment=MagicBonus.EnhanceEnFeeble.EnhanceZen.EnhanceParry.EnhanceGlyph.EnhanceWand.EnhanceStaff
 EquipLocation=Hands
 cost=50
 SellPrice=10000
@@ -2871,6 +2926,20 @@ EquipLocation=Hands
 cost=50
 SellPrice=1500
 Exclusive=yes
+
+[ShadowGauntlets]
+Name=Shadow Gauntlets
+hp=50
+tp=20
+Str=50
+Def=50
+Int=50
+Spd=50
+Augment=EnhanceSword.EnhanceKatana
+EquipLocation=Hands
+Cost=50
+SellPrice=1000
+Exclusive=Yes
 
 =============================
 Monster only armor!

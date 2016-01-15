@@ -3554,6 +3554,15 @@ Weapon=Excalibur+1
 Desc=pulls out a set of blueprints for an upgraded Excalibur, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the Excalibur+1 which glows with power.
 Exclusive=yes
 
+[Blueprints:Z-Sword+1]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Z-Sword+1
+Desc=pulls out a set of blueprints for an upgraded Z-Swordr, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the Z-Sword+1 which glows with power.
+Exclusive=yes
+
 [Blueprints:Glyphs+1]
 Type=special
 Cost=0
@@ -3606,6 +3615,15 @@ SellPrice=5000
 SpecialType=GainWeapon
 Weapon=X-Buster
 Desc=pulls out a set of blueprints for an X-Buster $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a beautiful and functional X-Buster ready for use.
+Exclusive=yes
+
+[Blueprints:SamuraiEdge]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=SamuraiEdge
+Desc=pulls out a set of blueprints for a Samurai Edge $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Samurai Edge ready for use.
 Exclusive=yes
 
 [Blueprints:SilverSword]

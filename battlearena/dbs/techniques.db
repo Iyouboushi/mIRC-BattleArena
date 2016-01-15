@@ -24,6 +24,7 @@ Xiutleato=SavageBlade.SanguineBlade.SwiftBlade.CircleBlade
 SilverSword=Twin_Slice.LightningStrike.BladeBeamII
 MasterSword=SkywardStrike.HurricaneSpin
 Z-Sword=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
+Z-Sword+1=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
 
 ; Katana
 PowerChordSword=A5.E5.D5.C5
@@ -85,6 +86,7 @@ SniperRifle=SniperShot.SlugShot.HotShot
 Annihilator=Coronach.SlugShot.BlastShot
 DeathPenalty=LeadenSalute.BlastShot.SlugShot
 VanirRifle=ChargedShot.BlastShot.Detonator
+SamuraiEdge=ChargedShot.LastStand.Detonator
 
 ; Whips
 LeatherWhip=WhipLash
@@ -1487,7 +1489,7 @@ renkei=1
 [LastStand]
 Type=Single
 TP=30
-Desc=takes aim and fires a shot at %enemy and then spins around and shoots %enemy for a second time!
+Desc=takes aim and fires a shot at %enemy and then spins around and shoots %enemy for a second time.
 BasePower=20
 Element=None
 Cost=1500

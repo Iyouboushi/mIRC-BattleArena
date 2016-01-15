@@ -30,9 +30,9 @@ Lightsabers=Lightsabers
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur
 Swords=Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
-Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword
+Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1
 Whips=LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip
-Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster
+Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge
 Rifles=Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle
 Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
 Katanas=PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1.Zangetsu
@@ -327,6 +327,19 @@ Hits=1
 BasePower=50
 Upgrade=1500
 2Handed=true
+
+[Z-Sword+1]
+Cost=0
+Type=Sword
+Info=An improved replica of the legendary Z-Sword from the Sacred World of the Kais. Outside of Torment battles the sword has a 350 power and ignores 10% defense. Inside of Torment the sword has a power of 850 and ignores 20% defense.
+Abilities=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 850, 350)
+Upgrade=6000
+2Handed=true
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+SpecialWeapon=true
 
 [JewelSword]
 Cost=50
@@ -668,6 +681,20 @@ BasePower=150
 Upgrade=5000
 IgnoreDefense=10
 2Handed=true
+CanCounter=false
+SpecialWeapon=true
+
+[SamuraiEdge]
+Cost=0
+Type=Gun
+Info=A custom made version of the 9mm Beretta 92F created for Special Tactics and Rescue Service, aka S.T.A.R.S. It has been modified to fire .40 S&W calibur bullets and has a longer barrel and compensator for improved accuracy.
+Abilities=ChargedShot.LastStand.Detonator
+Element=None
+Hits=$rand(1,2)
+BasePower=85
+Upgrade=5000
+IgnoreDefense=5
+2handed=false
 CanCounter=false
 SpecialWeapon=true
 

@@ -48,6 +48,7 @@ Blueprints:Genbu'sShield.Diamond.GenbuSeal.QuadavShell
 Blueprints:SilverSword.Diamond.SilverSwordParts.Kurogane
 Blueprints:Valmanway+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Blueprints:Excalibur+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
+Blueprints:Z-Sword+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Hero'sWorth.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Jedi'sTreasure.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Eggnog.Sapphire.SmallEgg.Rum.Milk
@@ -167,6 +168,11 @@ AtlantianRobe.Diamond.AtlantianThreadSpool.JewelOfArdor.JewelOfWieldance.Estoque
 AtlantianRobe+1.Diamond.AtlantianThreadSpool.ShadowSpool.JewelOfArdor.JewelOfWieldance.AtlantianRobe
 AtlantianMail.Diamond.AtlantianThreadSpool.JewelOfArdor.JewelOfWieldance.UnkaiDomaru+2
 AtlantianMail+1.Diamond.AtlatnianThreadSpool.ShadowSpool.JewelOfArdor.JewelOfWieldance.AtlantianMail
+ShadowHelmet.Onyx.Demonite_Ore.Shadow_Scale
+ShadowScalemail.Onyx.Demonite_Ore.Shadow_Scale
+ShadowCuisses.Onyx.Demonite_Ore.Shadow_Scale
+ShadowGreaves.Onyx.Demonite_Ore.Shadow_Scale
+ShadowGauntlets.Onyx.Demonite_Ore.Shadow_Scale
 SilverSeal.Diamond.SilverPointsCard.KindredCrest
 UnknownPowerSource.Diamond.SilverSeal.SoulofSight.SoulofMight.SoulofFright
 Vlar.Ruby.AdvancedFusionEngine.SoulOfMight
