@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/09/16
+;;;; Last updated: 01/20/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1348,6 +1348,7 @@ alias item.torment {
 
   ; If a battle is on, we can't use the item
   if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tStartTormentInBattle), private) | halt }
+  if (%battle.type = ai) { $display.message($readini(translation.dat, errors, Can'tStartTormentInBattle), private) | halt }
 
   ; can't do this during shenron's wish
   if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoTormentDuringShenron), private) | halt }
