@@ -355,7 +355,7 @@ Techs=
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Desc=shouts out "Shunkou!" as fire reiatsu covers %user $+ 's back and upper shoulders.
+Desc=shouts out "Shunkou!" as fire reiatsu covers %user $+ 's back and upper shoulders, which then take on the form of wings.
 
 [YamamotoShikai]
 Name=Shikai

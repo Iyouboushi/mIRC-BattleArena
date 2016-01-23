@@ -136,10 +136,13 @@ BasicMechGun=DoubleShot.GunBlaze
 ImprovedMechGun=DoubleShotII.GunBlazeII
 FlawlessMechGun=DoubleShotIII.GunBlazeIII
 DarksteelOreCannon=TripleShot.GunBlazeIII
+MechBeamGun=TripleShot.GunBlazeIII
+MechBeamRifle=TripleShot.GunBlazeIII
 BasicMechSword=DoubleSwing.SwordBlaze
 ImprovedMechSword=DoubleSwingII.SwordBlazeII
 FlawlessMechSword=DoubleSwingIII.SwordBlazeIII
 DarksteelOreSword=TripleSwing.SwordBlazeIII
+MechBeamSaber=TripleSwing.SwordBlazeIII
 BasicMechFists=DoubleStrike.MartialBlaze
 ImprovedMechFists=DoubleStrikeII.MartialBlazeII
 FlawlessMechFists=DoubleStrikeIII.MartialBlazeIII
@@ -148,11 +151,15 @@ BasicMechWand=MechFlare.MechQuake.MechFlood.MechTornado.MechFreeze.MechBurst.Mec
 ImprovedMechWand=MechFlareII.MechQuakeII.MechFloodII.MechTornadoII.MechFreezeII.MechBurstII.MechDarknessII.MechBanishII
 FlawlessMechWand=MechFlareIII.MechQuakeIII.MechFloodIII.MechTornadoIII.MechFreezeIII.MechBurstIII.MechDarknessIII.MechBanishIII
 DarksteelOreWand=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV
+TitaniumMechWand=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV
 BasicMechStaff=MechFire.MechStone.MechWater.MechWind.MechIce.MechThunder.MechLight.MechShadow
 ImprovedMechStaff=MechFireII.MechStoneII.MechWaterII.MechWindII.MechIceII.MechThunderII.MechLightII.MechShadowII
 FlawlessMechStaff=MechFireIII.MechStoneIII.MechWaterIII.MechWindIII.MechIceIII.MechThunderIII.MechLightIII.MechShadowIII
 DarksteelOreStaff=MechFireIV.MechStoneIV.MechWaterIV.MechWindIV.MechIceIV.MechThunderIV.MechLightIV.MechShadowIV
 TitaniumMechStaff=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechUltima.MechKaustra
+MechBeamScythe=TripleSlice.ScytheBlazeIII
+TitaniumMechKatana=MechJudgmentCut.MechKasha.MechGekko.MechYukikaze
+TitaniumMechWhip=MechDragonLash.MechDarkLash.MechHolyLash.MechCircularChain
 AsherGuns=ShotBuster.FlareBuster.CerberusBlast.DoubleShotIII.TripleShot.GunBlazeIII
 ReubenKatanas=IronBlade.GarudasWrath.LotusBlades
 DinahWeapons=R-Fang.X-BusterII.X-Cannon.DoubleShotIII.TripleShot.GunBlazeIII
@@ -437,6 +444,7 @@ MummyWrap=WrapWhip
 CenaFists=CenaShoulderTackle.Cena_ShoulderTackle.Protoplex.YouCantSeeMe.AttitudeAdjustment
 ZemusPower=BlackHole.DarkDispel.BigBang.MeteorII.Comet.DarkFlare.DarkQuake.DarkFlood.DarkTornado.DarkFreeze.Dark_Burst
 NerfBat=Homerun
+SpiceCane=SpiceRack.SpicySwing.AsuranFists.ShinjinSpiral
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -10780,6 +10788,117 @@ cost=0
 stat=str
 hits=3
 
+[TripleSlice]
+Type=Single
+TP=0
+EnergyCost=500
+Desc=charges towards %enemy with the mech and slashes %enemy three times with the scythe.
+BasePower=50
+Element=none
+magic=no
+cost=0
+stat=str
+hits=3
+
+[ScytheBlazeIII]
+Type=AOE
+TP=0
+EnergyCost=500
+Desc=quickly slashes every enemy on the battlefield with the mech's scythe!
+BasePower=70
+Element=None
+magic=no
+cost=0
+stat=str
+
+[MechJudgmentCut]
+Type=Single
+TP=0
+EnergyCost=500
+Desc=hops back and returns the katana to its sheath for a moment before quickly swinging the katana at %enemy $+ , hurling a sphere of energy towards $gender2($2) $+ !
+BasePower=50
+Element=None
+magic=no
+cost=0
+stat=str
+
+[MechKasha]
+Type=Single
+TP=0
+EnergyCost=500
+Desc=returns $gender($1) katana to its sheath and pauses for a second before quickly slashing %enemy as a feint image of flower petals appears for a second, causing light damage to %enemy $+ !
+BasePower=50
+Element=Light
+magic=no
+cost=0
+stat=str
+
+[MechGekko]
+Type=Single
+TP=0
+EnergyCost=500
+Desc=charges up a dark energy in $gender($1) blade before doing an impressive spin to release the power on %enemy $+ !
+BasePower=50
+Element=Dark
+magic=no
+cost=0
+stat=str
+
+[MechYukikaze]
+Type=Single
+TP=0
+EnergyCost=500
+Desc=stabs %enemy with the katana and encases %enemy in ice. The ice then shatters, causing damage to %enemy $+ !
+BasePower=50
+Element=Ice
+magic=no
+cost=0
+stat=str
+
+[MechDragonLash]
+Type=Single
+TP=0
+EnergyCost=500
+Desc=cracks $gender($1) whip at %enemy $+ , hitting once before spinning around to hit %enemy once more.
+BasePower=50
+Element=none
+magic=no
+cost=0
+stat=str
+
+[MechDarkLash]
+Type=Single
+TP=0
+EnergyCost=500
+Desc=forces the whip to gain a dark aura before cracking the whip to hit %enemy with a dark power.
+BasePower=50
+Element=Dark
+magic=no
+cost=0
+stat=int
+
+[MechHolyLash]
+Type=Single
+TP=0
+EnergyCost=500
+Desc=forces the whip to glow white before cracking the whip to hit %enemy with a holy power.
+BasePower=50
+Element=Light
+magic=no
+cost=0
+stat=int
+
+[MechCircularChain]
+Type=AOE
+TP=0
+EnergyCost=500
+Desc=strikes out with the whip then begins to spin at a high speed to hit everyone in range with the whip!
+BasePower=50
+Element=none
+magic=no
+cost=0
+stat=str
+
 [ShotBuster]
 Type=Single
 TP=0
@@ -10974,7 +11093,7 @@ stat=str
 Type=Single
 TP=0
 EnergyCost=500
-Desc=charges towards %enemy with the mech and slashes %enemy three with the sword.
+Desc=charges towards %enemy with the mech and slashes %enemy three times with the sword.
 BasePower=50
 Element=none
 magic=no
@@ -13272,3 +13391,27 @@ StatusType=Curse
 stat=int
 CanDodge=false
 DestroyShadows=2
+
+[SpiceRack]
+Type=Single
+Cost=0
+Desc=lifts %enemy onto his shoulders, holding on for a moment before falling to the side, driving %enemy down to the ground face-first.
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+IgnoreDefense=5
+stat=str
+Renkei=2
+
+[SpicySwing]
+Type=Single
+Cost=0
+Desc=spits out a ball of fire which floats in front of Curry Man, who then takes a step back. He taps the cane on the ground before pulling the cane back and swings it like a bat, hitting the ball of fire which slams into %enemy at a high speed!
+TP=10
+Element=Fire
+Hits=1
+BasePower=50
+Magic=Yes
+stat=int

@@ -61,7 +61,7 @@ MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.Decapiclops
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat
 
@@ -1446,6 +1446,28 @@ Hits=1
 BasePower=400
 Upgrade=0
 
+[MechBeamGun]
+Cost=35000
+EnergyCost=400
+Type=Gun
+Info=A large gun for use by a mech that fires beams of energy.
+Abilities=TripleShot.GunBlazeIII
+Element=None
+Hits=1
+BasePower=700
+Upgrade=0
+
+[MechBeamRifle]
+Cost=35000
+EnergyCost=400
+Type=Rifle
+Info=A large rifle for use by a mech that fires beams of energy.
+Abilities=TripleShot.GunBlazeIII
+Element=None
+Hits=1
+BasePower=700
+Upgrade=0
+
 [BasicMechSword]
 Cost=400
 EnergyCost=100
@@ -1488,6 +1510,17 @@ Abilities=TripleSwing.SwordBlazeIII
 Element=None
 Hits=1
 BasePower=400
+Upgrade=0
+
+[MechBeamSaber]
+Cost=35000
+EnergyCost=400
+Type=Sword
+Info=A large beam saber for use by a mech.
+Abilities=TripleSwing.SwordBlazeIII
+Element=None
+Hits=1
+BasePower=700
 Upgrade=0
 
 [BasicMechFists]
@@ -1578,6 +1611,17 @@ Hits=1
 BasePower=400
 Upgrade=0
 
+[TitaniumMechWand]
+Cost=35000
+EnergyCost=400
+Type=Wand
+Info=A wand for use by a mech which is made out of titanium ore.
+Abilities=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV
+Element=None
+Hits=1
+BasePower=700
+Upgrade=0
+
 [BasicMechStaff]
 Cost=400
 EnergyCost=100
@@ -1628,6 +1672,39 @@ EnergyCost=400
 Type=Stave
 Info=A staff for use by a mech which is made out of titanium ore.
 Abilities=MechFlareIV.MechQuakeIV.MechFloodIV.MechTornadoIV.MechFreezeIV.MechBurstIV.MechDarknessIV.MechBanishIV.MechUltima.MechKaustra
+Element=None
+Hits=1
+BasePower=700
+Upgrade=0
+
+[MechBeamScythe]
+Cost=35000
+EnergyCost=400
+Type=Scythe
+Info=A large scythe for use by a mech that has a beam cutting edge.
+Abilities=TripleSlice.ScytheBlazeIII
+Element=None
+Hits=1
+BasePower=700
+Upgrade=0
+
+[TitaniumMechKatana]
+Cost=35000
+EnergyCost=400
+Type=Katana
+Info=A katana for use by a mech which is made out of titanium ore.
+Abilities=MechJudgmentCut.MechKasha.MechGekko.MechYukikaze
+Element=None
+Hits=1
+BasePower=700
+Upgrade=0
+
+[TitaniumMechWhip]
+Cost=35000
+EnergyCost=400
+Type=Whip
+Info=A whip for use by a mech which is made out of titanium ore.
+Abilities=MechDragonLash.MechDarkLash.MechHolyLash.MechCircularChain
 Element=None
 Hits=1
 BasePower=700
@@ -4609,6 +4686,21 @@ HurtEthereal=True
 2Handed=True
 CanShieldReflect=True
 CanCounter=False
+
+[SpiceCane]
+Cost=0
+Type=Stave
+Info=The weapon of the King of Spice!
+Abilities=SpiceRack.SpicySwing.AsuranFists.ShinjinSpiral
+Element=None
+Hits=$rand(1,2)
+BasePower=50
+Upgrade=0
+HurtEthereal=True
+IgnoreDefense=5
+2Handed=true
+CanShieldReflect=true
+CanCounter=true
 
 ==============================
 SHIELDS
