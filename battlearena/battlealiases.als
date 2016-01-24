@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 01/09/16
+;;;; Last updated: 01/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -686,12 +686,19 @@ boost_monster_hp {
     if (%torment.hp.multiplier >= 10) { var %torment.hp.multiplier 10 }
     inc %hp $calc(%torment.hp.multiplier * 500000)
 
-    if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 20000) }
-
+    if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 22000) }
   }
 
   if (($return.systemsetting(BattleDamageFormula) = 2) || ($return.systemsetting(BattleDamageFormula) = 4)) { var %hp $calc(%hp * 2) }
 
+  ; boost the HP of monsters by 50% per extra player past 1 (for non-torment battles)
+  if (%battle.type != torment) {
+    if ($return_playersinbattle > 1) {
+      inc %hp $calc(%hp * (.5 * return_playersinbattle))
+    }
+  }
+
+  ; Write the monster's HP
   writeini $char($1) BaseStats HP $round(%hp,0)
   writeini $char($1) Battle HP $round(%hp,0)
   unset %hp
@@ -820,7 +827,10 @@ deal_damage {
   }
 
   ; Add some style points to the user
-  if ($3 != renkei) { $add.stylepoints($1, $2, %attack.damage, $3) }
+  if ($3 != renkei) { 
+    if (%style.attack.damage = $null) { set %style.attack.damage 0 }
+    $add.stylepoints($1, $2, %style.attack.damage, $3) 
+  }
 
   ; If it's an Absorb HP type, we need to add the hp to the person.
   if ($person_in_mech($2) = false) { 
@@ -974,6 +984,8 @@ deal_damage {
     } 
   }
 
+  ; Unset the attack damage used for calculating style meter
+  unset %style.attack.damage 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3582,6 +3594,9 @@ utsusemi.check {
 
   if (($readini($dbfile(weapons.db), $2, ignoreShadows) = true) || ($readini($dbfile(techniques.db), $2, ignoreShadows) = true)) { return } 
 
+  if (($readini($char($1), info, flag) = monster) && (%battle.rage.darkness = on)) { return }
+
+
   if ($person_in_mech($3) = true) { return }
 
   if (%guard.message != $null) { return }
@@ -4029,6 +4044,10 @@ killer.trait.check {
   ; Check for an augment to enhance killer traits
   if ($augment.check($1, EnhanceKillerTraits) = true) {
     inc %killer.trait.amount %augment.strength
+  }
+
+  if ($augment.check($1, Hurt $+ %monster.type) = true) {
+    inc %killer.trait.amount $calc(%augment.strength * 2)
   }
 
   if ((%killer.trait.amount = $null) || (%killer.trait.amount <= 0)) { unset %killer.trait.name | unset %killer.trait.amount | return }

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 12/16/15
+;;;; Last updated: 1/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2161,9 +2161,17 @@ alias skill.alchemy {
     var %random.chance $rand(1,100)
 
     if (%random.chance <= %base.success) { 
-      $display.message($readini(translation.dat, skill, CraftingSuccess), global)
       var %player.amount.item $readini($char($1), item_amount, $2) 
-      inc %player.amount.item $readini($dbfile(crafting.db), $2, amount)
+      if (%player.amount.item = $null) { var %player.amount.item 0 }
+      var %crafting.item.amount $readini($dbfile(crafting.db), $2, amount)
+
+      if ($rand(1,100) = 100) { inc %crafting.item.amount %crafting.item.amount | set %crit.crafting true }
+
+      inc %player.amount.item %crafting.item.amount
+
+      if (%crit.crafting = true) {  $display.message($readini(translation.dat, skill, CriticalCraftingSuccess), global)  }
+      $display.message($readini(translation.dat, skill, CraftingSuccess), global)
+
       writeini $char($1) item_amount $2 %player.amount.item
     }
     if (%random.chance > %base.success) { $display.message($readini(translation.dat, skill, CraftingFailure), global) }
@@ -2173,6 +2181,7 @@ alias skill.alchemy {
     var %crafting.success.total 0
     var %crafting.failure.total 0
     var %crafting.value 1
+    var %total.crafted 0 
 
     while (%crafting.value <= %amount.to.craft) {
       set %base.success $readini($dbfile(crafting.db), $2, successrate)
@@ -2186,7 +2195,14 @@ alias skill.alchemy {
 
       if (%random.chance <= %base.success) { 
         var %player.amount.item $readini($char($1), item_amount, $2) 
-        inc %player.amount.item $readini($dbfile(crafting.db), $2, amount)
+        var %crafting.item.amount $readini($dbfile(crafting.db), $2, amount)
+
+        if ($rand(1,100) = 100) { inc %crafting.item.amount %crafting.item.amount | set %crit.crafting true }
+
+        inc %player.amount.item %crafting.item.amount
+
+        inc %total.crafted %crafting.item.amount
+
         writeini $char($1) item_amount $2 %player.amount.item
         inc %crafting.success.total 1
       }
@@ -2194,8 +2210,8 @@ alias skill.alchemy {
       inc %crafting.value 1
     }
 
+    if (%crit.crafting = true) {  $display.message($readini(translation.dat, skill, CriticalCraftingSuccess), global)  }
     $display.message($readini(translation.dat, skill, CraftingMultiple), global) 
-
   }
 
   var %value 1
@@ -2210,7 +2226,7 @@ alias skill.alchemy {
   }
 
   dec %player.gem.amount %amount.to.craft | writeini $char($1) item_amount %gem.required %player.gem.amount
-
+  unset %crit.crafting 
   unset %gem.required | unset %player.gem.amount | unset %item.name | unset %item_amount | unset %base.success | unset %item_type | unset %amount.needed
 }
 

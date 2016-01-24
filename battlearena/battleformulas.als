@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 12/16/15
+;;;; Last updated: 1/23/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -875,6 +875,8 @@ formula.meleedmg.player.formula_2.0 {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CHECK FOR MULTI-HITS
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  set %style.attack.damage %attack.damage
+
   if (%attack.damage = 0) { return }
 
   if (%weapon.howmany.hits = $null) || (%weapon.howmany.hits <= 0) { set %weapon.howmany.hits 1
@@ -1234,6 +1236,8 @@ formula.meleedmg.player.formula_3.0 {
   ;;; CHECK FOR MULTI-HITS
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+  set %style.attack.damage %attack.damage
+
   if (%attack.damage = 0) { return }
 
   if (%weapon.howmany.hits = $null) || (%weapon.howmany.hits <= 0) { set %weapon.howmany.hits 1
@@ -1581,6 +1585,7 @@ formula.meleedmg.player.formula_1.0 {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CHECK FOR MULTI-HITS
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
 
@@ -1970,6 +1975,7 @@ formula.meleedmg.player.formula_2.5 {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CHECK FOR MULTI-HITS
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
 
@@ -2149,6 +2155,14 @@ formula.meleedmg.monster {
 
   ; Elementals are strong to melee
   if ($readini($char($3), monster, type) = elemental) { %attack.damage = $round($calc(%attack.damage - (%attack.damage * .30)),0) } 
+
+  ; Check for portal damage boost
+  if (%portal.bonus = true) { 
+    var %percent.damage.amount 5
+    if ($return_playersinbattle > 1) { inc %percent.damage.amount 5 }
+    var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
+    inc %attack.damage $round(%percent.damage,0)
+  }
 
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
@@ -2416,6 +2430,7 @@ formula.meleedmg.monster {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CHECK FOR MULTI-HITS
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
 
@@ -2594,6 +2609,16 @@ formula.techdmg.monster {
   if ($person_in_mech($1) = false) { $modifer_adjust($3, $readini($char($1), weapons, equipped)) }
   if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
 
+
+  ; Check for portal damage boost
+  if (%portal.bonus = true) { 
+    var %percent.damage.amount 7
+    if ($return_playersinbattle > 1) { inc %percent.damage.amount 5 }
+    var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
+    inc %attack.damage $round(%percent.damage,0)
+  }
+
+
   if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
   if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
   if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
@@ -2770,7 +2795,11 @@ formula.techdmg.monster {
   ; Check for a Guardian Monster
   $guardianmon.check($1, $2, $3, $4)
 
+  set %style.attack.damage %attack.damage
+
   ; Check for multiple hits now.
+  set %style.attack.damage %attack.damage
+
   if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }
@@ -3110,6 +3139,8 @@ formula.techdmg.player.formula_2.0 {
   $guardianmon.check($1, $2, $3, $4)
 
   ; Check for multiple hits now.
+  set %style.attack.damage %attack.damage
+
   if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }
@@ -3446,6 +3477,8 @@ formula.techdmg.player.formula_2.5 {
   $guardianmon.check($1, $2, $3, $4)
 
   ; Check for multiple hits now.
+  set %style.attack.damage %attack.damage
+
   if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }
@@ -3695,6 +3728,8 @@ formula.techdmg.player.formula_1.0 {
   $guardianmon.check($1, $2, $3, $4)
 
   ; Check for multiple hits now.
+  set %style.attack.damage %attack.damage
+
   if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }
@@ -4011,6 +4046,8 @@ formula.techdmg.player.formula_3.0 {
   $guardianmon.check($1, $2, $3, $4)
 
   ; Check for multiple hits now.
+  set %style.attack.damage %attack.damage
+
   if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }
@@ -4388,6 +4425,7 @@ formula.meleedmg.player.old {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;; CHECK FOR MULTI-HITS
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
 
@@ -4728,6 +4766,8 @@ formula.techdmg.player.old {
   $guardianmon.check($1, $2, $3, $4)
 
   ; Check for multiple hits now.
+  set %style.attack.damage %attack.damage
+
   if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }
@@ -5035,6 +5075,8 @@ formula.techdmg.player.percent {
   $guardianmon.check($1, $2, $3, $4)
 
   ; Check for multiple hits now.
+  set %style.attack.damage %attack.damage
+
   if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }

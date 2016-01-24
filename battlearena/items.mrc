@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/20/16
+;;;; Last updated: 01/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -683,6 +683,7 @@ alias item.damage {
   ; $2 = target
   ; $3 = item used
   $calculate_damage_items($1, $3, $2)
+  set %style.attack.damage %attack.damage
   $deal_damage($1, $2, $3)
   $display_damage($1, $2, item, $3)
 
@@ -747,6 +748,7 @@ alias item.status {
   unset %status.type.list
   if ($readini($dbfile(items.db), $2, amount) != 0) {
     $calculate_damage_items($1, $3, $2)
+    set %style.attack.damage %attack.damage
     $deal_damage($1, $2, $3)
   }
   $display_Statusdamage_item($1, $2, item, $3) 
@@ -845,6 +847,7 @@ alias item.heal {
 
   ;If the target is a zombie, do damage instead of healing it.
   if (($readini($char($2), status, zombie) = yes) || ($readini($char($2), monster, type) = undead)) { 
+    set %style.attack.damage %attack.damage
     $deal_damage($1, $2, $3)
     $display_damage($1, $2, item, $3)
   } 
