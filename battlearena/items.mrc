@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/23/16
+;;;; Last updated: 01/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -106,6 +106,8 @@ ON 3:TEXT:*uses item * on *:*:{  $set_chr_name($1)
   if ((no-item isin $readini($dbfile(battlefields.db), %current.battlefield, limitations)) && (%battleis = on)) { 
     if ($istok($readini($txtfile(battle2.txt), Battle, List), $1, 46) = $true) { $display.message($readini(translation.dat, battle, NotAllowedBattlefieldCondition), private) | halt }
   }  
+
+  if ($readini($char($1), info, clone) = yes) {  $display.message($readini(translation.dat, errors, CloneCannotUseItem), private) | halt }
 
   $partial.name.match($1, $6)
   $uses_item($1, $4, $5, %attack.target)
@@ -682,6 +684,7 @@ alias item.damage {
   ; $1 = user
   ; $2 = target
   ; $3 = item used
+  unset %shield.block.line
   $calculate_damage_items($1, $3, $2)
   set %style.attack.damage %attack.damage
   $deal_damage($1, $2, $3)

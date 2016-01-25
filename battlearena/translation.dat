@@ -543,6 +543,7 @@ Can'tRaiseStatBeforeOthers=$chr(3) $+ 4 $+ Error: This stat cannot be raised a
 ActionDisabled=$chr(3) $+ 4 $+ Error: This action has been disabled and cannot be done at this time.
 ActionDisabledForPVP=$chr(3) $+ 4 $+ Error: This action cannot be done in PVP battles.
 CloneCannotUseSkill=$chr(3) $+ 4 $+ Error: This skill cannot be used by the shadow clone
+CloneCannotUseItem=$chr(3) $+ 4 $+ Error: Shadow clones cannot use items
 PlayerAccessCmdsOff=$chr(3) $+ 4 $+ Error: Player Access commands have been disabled.
 PlayerAccessOffDueToLogin=$chr(3) $+ 4 $+ Error: $1 has not logged in for over a week and is no longer able to be controlled by other players.
 StreakTooHighForPortals=$chr(3) $+ 4 $+ Error: Battle Level Streak too high for portals. You can only use portal items on battle levels 1-20
