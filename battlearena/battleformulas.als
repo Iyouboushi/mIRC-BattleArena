@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 1/24/15
+;;;; Last updated: 1/25/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -440,9 +440,9 @@ calculate_attack_leveldiff {
     if (%level.difference <= 0) { var %level.difference 0 } 
   }
 
-  ; For portals we don't want players to be more than 500 levels over the monster
+  ; For portals we don't want players to be more than 250 levels over the monster
   if ((%portal.bonus = true) && ($readini($char($1), info, flag) != monster)) { 
-    if (%level.difference > 500) { var %level.difference 500 }
+    if (%level.difference > 250) { var %level.difference 250 }
   }
 
   ; If the target is stronger, we need to nerf damage
