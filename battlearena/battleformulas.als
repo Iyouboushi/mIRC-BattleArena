@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 1/23/15
+;;;; Last updated: 1/24/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -438,6 +438,11 @@ calculate_attack_leveldiff {
   ; This will help newbies out for the streaks 1-9
   if (($return_winningstreak < 10) && (%portal.bonus != true)) {  
     if (%level.difference <= 0) { var %level.difference 0 } 
+  }
+
+  ; For portals we don't want players to be more than 500 levels over the monster
+  if ((%portal.bonus = true) && ($readini($char($1), info, flag) != monster)) { 
+    if (%level.difference > 500) { var %level.difference 500 }
   }
 
   ; If the target is stronger, we need to nerf damage
