@@ -1437,6 +1437,8 @@ Battle Arena Bot VERSIONS
 - Added new cow monsters
 - Added a new NPC
 - Added a literal "trash" item (it serves no purpose for now)
+- Added new augments.  Specifically, "Hurt" augments that hurt specific monster types 
+  (such as HurtPlant, HurtDemon, HurtUndead, etc).  Each level of the Hurt augment increases damage against that type by 2%
 - Added the ability to turn purple keys into gold keys via crafting
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
@@ -1444,6 +1446,12 @@ Battle Arena Bot VERSIONS
 - Changed the shop stat ratio limits (1-50 have a .55 ratio, 50-1000 is .43 and 1000+ is .35)
 - Changed the SSJ ignition
 - Changed portal battles to make it easier for everyone to get a drop from the battle
+- Changed crafting so that there's a 1% chance of doing a critical success in which the amount obtained will be doubled
+- Changed the amount of HP monsters have
+- Changed certain things in the battle formulas
+- Changed utsusemi so that it no longer protects players when darkness hits
+- Changed the amount of style points for the style ranking that are obtained with multi-hits.  
+  Now it's only calculated on the damage done with the first hit.
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed an issue where certain battle types could override mimic battles
