@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 01/23/16
+;;;; Last updated: 01/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3980,6 +3980,18 @@ modifer_adjust {
   ; $2 = element or weapon type
 
   if (%guard.message != $null) { return }
+
+  if ($readini($char($1), info, WonderGuard) = true) { 
+    var %modifier.adjust.value $readini($char($1), modifiers, $2)
+
+    if ((%modifier.adjust.value = 0) || (%modifier.adjust.value = $null)) { 
+      set %attack.damage 0 
+      set %damage.display.color 6 
+      set %guard.message $readini(translation.dat, battle, ImmuneToAttack) 
+      return
+
+    } 
+  }
 
   ; Let's get the adjust value.
   var %modifier.adjust.value $readini($char($1), modifiers, $2)

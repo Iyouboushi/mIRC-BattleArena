@@ -688,6 +688,7 @@ ImmuneToWeaponType=$chr(3) $+ 7 $+ %real.name is immune to the %weapon.type we
 ImmuneToTechName=$chr(3) $+ 7 $+ %real.name is immune to the $2 technique!
 ImmuneToMagic=$chr(3) $+ 7 $+ %real.name is immune to magic!
 ImmuneToItem=$chr(3) $+ 7 $+ %real.name is immune to the $2 item!
+ImmuneToAttack=$chr(3) $+ 7 $+ $get_chr_name($1) is immune to this attack!
 ObtainGreenOrb=$chr(3) $+ 3 $+ $set_chr_name($2) $+ %real.name drops a small green orb that restores %orb.restored health to %user $+ !
 ObtainWhiteOrb=$chr(3) $+ 3 $+ $set_chr_name($2) $+ %real.name drops a small white orb that restores %orb.restored TP to %user $+ !
 ObtainOrangeOrb=$chr(3) $+ 3 $+ $set_chr_name($2) $+ %real.name drops a small orange orb that restores %orb.restored IgnitionGauge to %user $+ !
