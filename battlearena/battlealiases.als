@@ -3970,6 +3970,63 @@ eighthit.attack.check {
   if (%multihit.message.on != on) { $display.message($readini(translation.dat, battle, PerformsA8HitAttack),battle) }
   unset %original.attackdmg
 }
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Wonderguard Check
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+wonderguard.check {
+  ; $1 = target
+  ; $2 = weapon/technique/item name
+  ; $3 = type (melee, tech or melee)
+
+  if (%guard.message != $null) { return }
+  if ($readini($char($1), info, WonderGuard) != true) { return }
+
+  var %wonderguard.immune false
+
+  ; Check for immunity of the weapon/tech/item name
+  var %immunity.name $readini($char($1), modifiers, $2)
+  if (%immunity.name = $null) { var %immunity.name 0 }
+
+
+  ; Items only need to check the names
+  if ($3 = item) {
+    if (%immunity.name = 0) { var %wonderguard.immune true }
+  }
+
+
+  ; Techs need to check tech name and tech element
+
+  if ($3 = tech) {
+    ; Get the technique element
+    var %tech.element $readini($dbfile(techniques.db), $2, element)
+    if (%tech.element != $null) { var %immunity.element $readini($char($1), modifiers, %tech.element)
+      if (%immunity.element = $null) { var %immunity.element 0 }
+    }
+
+    if ((%immunity.element = 0) && (%immunity.name = 0)) { var %wonderguard.immune true }
+  }
+
+
+  ; Melee needs to check weapon name and weapon element
+
+  if ($3 = melee) {
+    ; Get the weapon type
+    var %weapon.type $readini($dbfile(weapons.db), $2, type)
+    var %immunity.type $readini($char($1), modifiers, %weapon.type) 
+    if (%immunity.type = $null) { var %immunity.type 0 }
+
+    if ((%immunity.type = 0) && (%immunity.name = 0)) { var %wonderguard.immune true }
+  }
+
+
+  ; Is the monster immune?
+  if (%wonderguard.immune = true) {
+    set %attack.damage 0 
+    set %damage.display.color 6 
+    set %guard.message $readini(translation.dat, battle, ImmuneToAttack) 
+    return
+  }
+}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Modifier Checks for
@@ -3980,18 +4037,6 @@ modifer_adjust {
   ; $2 = element or weapon type
 
   if (%guard.message != $null) { return }
-
-  if ($readini($char($1), info, WonderGuard) = true) { 
-    var %modifier.adjust.value $readini($char($1), modifiers, $2)
-
-    if ((%modifier.adjust.value = 0) || (%modifier.adjust.value = $null)) { 
-      set %attack.damage 0 
-      set %damage.display.color 6 
-      set %guard.message $readini(translation.dat, battle, ImmuneToAttack) 
-      return
-
-    } 
-  }
 
   ; Let's get the adjust value.
   var %modifier.adjust.value $readini($char($1), modifiers, $2)

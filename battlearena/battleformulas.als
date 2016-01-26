@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 1/25/15
+;;;; Last updated: 1/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -269,6 +269,7 @@ calculate_damage_items {
   $trickster_dodge_check($3, $1)
   $utsusemi.check($1, $2, $3)
   $guardianmon.check($1, $2, $3)
+  $wonderguard.check($3, $2, item)
 
   if ($readini($char($3), modifiers, $2) != $null) {
     if ($readini($char($3), modifiers, $2) <= 0) {
@@ -625,6 +626,9 @@ formula.meleedmg.player.formula_2.0 {
 
   ; Check to see if the melee attack will hurt an ethereal monster
   $melee.ethereal.check($1, $2, $3)
+
+  ; Check for WonderGuard
+  $wonderguard.check($3, $2, melee)
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(weapons.db), $2, StatusType)
@@ -1014,6 +1018,7 @@ formula.meleedmg.player.formula_3.0 {
   $trickster_dodge_check($3, $1, physical)
   $royalguard.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
+  $wonderguard.check($3, $2, melee)
 
   ; Check to see if the melee attack will hurt an ethereal monster
   $melee.ethereal.check($1, $2, $3)
@@ -3418,6 +3423,7 @@ formula.techdmg.player.formula_2.5 {
   $manawall.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
   $tech.ethereal.check($1, $2, $3)
+  $wonderguard.check($3, $2, tech)
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -3669,6 +3675,7 @@ formula.techdmg.player.formula_1.0 {
   $manawall.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
   $tech.ethereal.check($1, $2, $3)
+  $wonderguard.check($3, $2, tech)
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -3987,6 +3994,7 @@ formula.techdmg.player.formula_3.0 {
   $manawall.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
   $tech.ethereal.check($1, $2, $3)
+  $wonderguard.check($3, $2, tech)
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -4188,6 +4196,7 @@ formula.meleedmg.player.old {
   $trickster_dodge_check($3, $1, physical)
   $royalguard.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
+  $wonderguard.check($3, $2, tech)
 
   ; Check to see if the melee attack will hurt an ethereal monster
   $melee.ethereal.check($1, $2, $3)
@@ -4710,6 +4719,7 @@ formula.techdmg.player.old {
   $manawall.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
   $tech.ethereal.check($1, $2, $3)
+  $wonderguard.check($3, $2, tech)
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -5017,6 +5027,7 @@ formula.techdmg.player.percent {
   $manawall.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
   $tech.ethereal.check($1, $2, $3)
+  $wonderguard.check($3, $2, tech)
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
