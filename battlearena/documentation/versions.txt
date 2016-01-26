@@ -1440,6 +1440,8 @@ Battle Arena Bot VERSIONS
 - Added new augments.  Specifically, "Hurt" augments that hurt specific monster types 
   (such as HurtPlant, HurtDemon, HurtUndead, etc).  Each level of the Hurt augment increases damage against that type by 2%
 - Added the ability to turn purple keys into gold keys via crafting
+- Added WonderGuard flag for monsters/bosses. In [info] put WonderGuard=true.  If set to true the boss will not be harmed by
+  anything that isn't in [modifiers] or is set to 0 in that section. 
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
