@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 11/07/15
+;;;; Last updated: 1/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -61,8 +61,8 @@ alias ai_turn {
   ; Is it the AI's turn?  This is to prevent some bugs showing up..
   if (%who != $1) { return }
 
-  ; If it's an AI's turn, give the AI 45 seconds to make an action.. in case it hangs up.
-  /.timerBattleNext 1 45 /next
+  ; If it's an AI's turn, give the AI 30 seconds to make an action.. in case it hangs up.
+  /.timerBattleNext 1 30 /next
 
   ; For now the AI will be very, very basic and random.  Later on I'll try to make it more complicated.
   unset %ai.target | unset %ai.targetlist | unset %ai.tech | unset %opponent.flag | unset %ai.skill | unset %ai.skilllist | unset %ai.type | unset %ai.ignition
@@ -134,6 +134,8 @@ alias ai_turn {
   }
 
   if (%mode.pvp = on) { set %opponent.flag player }
+
+  if ((%battle.type = dungeon) && ($dungeon.currentroom = 0)) { $rest.cmd($1) | halt }
 
   ; Now that we have the target type, we need to figure out what kind of action to do.
   $ai.buildactionbar($1)

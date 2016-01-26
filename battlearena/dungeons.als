@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 11/05/15
+;;;; Last updated: 1/26/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -136,6 +136,8 @@ dungeon.begin {
   /.timerBattleNext 1 %nextTimer /next forcedturn
 
   $display.message($readini(translation.dat, battle, StepsUpFirst), battle)
+
+  $aicheck(%who)
 }
 
 dungeon.dungeonovercheck {
