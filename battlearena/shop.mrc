@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 01/10/16
+;;;; Last updated: 02/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -316,7 +316,7 @@ alias shop.items {
     ; get the list of all the shop items..
 
     ; CHECKING HEALING ITEMS
-    unset %shop.list |  var %value 1 | var %items.lines $lines($lstfile(items_healing.lst))
+    unset %shop.list |  unset %shop.list2 | var %value 1 | var %items.lines $lines($lstfile(items_healing.lst)) | var %current.healing.items.found 0
 
     while (%value <= %items.lines) {
       set %item.name $read -l $+ %value $lstfile(items_healing.lst)
@@ -326,8 +326,18 @@ alias shop.items {
 
       if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
-          if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
-          if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          if ((%conquest.item = $null) || (%conquest.item = false)) { 
+            inc %current.healing.items.found 1
+            if (%current.healing.items.found <= 14) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            else { %shop.list2 = $addtok(%shop.list2, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+
+          }
+          if ((%conquest.item = true) && (%conquest.status = players)) { 
+            inc %current.healing.items.found 1
+            if (%current.healing.items.found <= 14) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            else { %shop.list2 = $addtok(%shop.list2, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+
+          }
         }
       }
 
@@ -337,11 +347,13 @@ alias shop.items {
 
     if (%shop.list != $null) {  $shop.cleanlist 
       $display.private.message(3Healing Items:2 %shop.list)
+      if (%shop.list2 != $null) { $display.private.message(2 $+ %shop.list2) }
     }
 
 
     ; CHECKING BATTLE ITEMS
-    unset %shop.list |  var %value 1 | var %items.lines $lines($lstfile(items_battle.lst))
+    unset %shop.list | unset %shop.list2 | var %value 1 | var %items.lines $lines($lstfile(items_battle.lst)) | var %current.battle.items.found 0
+
 
     while (%value <= %items.lines) {
       set %item.name $read -l $+ %value $lstfile(items_battle.lst)
@@ -351,8 +363,17 @@ alias shop.items {
 
       if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
         if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
-          if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
-          if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          if ((%conquest.item = $null) || (%conquest.item = false)) { 
+            inc %current.battle.items.found 1
+            if (%current.battle.items.found <= 14) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            else { %shop.list2 = $addtok(%shop.list2, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          }
+          if ((%conquest.item = true) && (%conquest.status = players)) { 
+            inc %current.battle.items.found 1
+            if (%current.battle.items.found <= 14) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            else { %shop.list2 = $addtok(%shop.list2, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+
+          }
         }
       }
 
@@ -362,11 +383,12 @@ alias shop.items {
 
     if (%shop.list != $null) {  $shop.cleanlist 
       $display.private.message(4Battle Items:2 %shop.list)
+      if (%shop.list2 != $null) { $display.private.message(2 $+ %shop.list2) }
     }
 
 
     ; CHECKING CONSUMABLE ITEMS
-    unset %shop.list |  var %value 1 | var %items.lines $lines($lstfile(items_consumable.lst))
+    unset %shop.list |  unset %shop.list2 | var %value 1 | var %items.lines $lines($lstfile(items_consumable.lst))
 
     while (%value <= %items.lines) {
       set %item.name $read -l $+ %value $lstfile(items_consumable.lst)
