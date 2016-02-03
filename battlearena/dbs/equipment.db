@@ -628,6 +628,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [KasugaKabuto]
 Name=Kasuga Kabuto
@@ -643,6 +644,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [HattoriZukin]
 Name=Hattori Zukin
@@ -658,6 +660,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [ArchmagePetasos]
 Name=Archmage Petasos
@@ -673,6 +676,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [AnkusaHelm]
 Name=Ankusa Helm
@@ -688,6 +692,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 ========
 BODY
@@ -1429,6 +1434,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [KasugaDomaru]
 Name=Kasuga Domaru
@@ -1444,6 +1450,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [HattoriNingi]
 Name=Hattori Ningi
@@ -1459,6 +1466,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [ArchmageCoat]
 Name=Archmage Coat
@@ -1474,6 +1482,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [AnkusaJackcoat]
 Name=Ankusa Jackcoat
@@ -1489,6 +1498,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 ========
 LEGS
@@ -2016,6 +2026,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [KasugaHaidate]
 Name=Kasuga Haidate
@@ -2031,6 +2042,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [HattoriHakama]
 Name=Hattori Hakama
@@ -2046,6 +2058,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [ArchmageTonban]
 Name=Archmage Tonban
@@ -2061,6 +2074,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [AnkusaTrousers]
 Name=Ankusa Trousers
@@ -2076,6 +2090,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 ========
 FEET
@@ -2629,6 +2644,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [KasugaSune-Ate]
 Name=KasugaSune-Ate
@@ -2644,6 +2660,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [HattoriKyahan]
 Name=Hattori Kyahan
@@ -2659,6 +2676,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [ArchmageSabots]
 Name=Archmage Sabots
@@ -2674,6 +2692,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [AnkusaGaiters]
 Name=Ankusa Gaiters
@@ -2689,6 +2708,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 ========
 HANDS
@@ -3255,6 +3275,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [KasugaKote]
 Name=Kasuga Kote
@@ -3270,6 +3291,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [HattoriTekko]
 Name=Hattori Tekko
@@ -3285,6 +3307,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [ArchmageGloves]
 Name=Archmage Gloves
@@ -3300,6 +3323,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 [AnkusaGloves]
 Name=Ankusa Gloves
@@ -3315,6 +3339,7 @@ cost=50
 SellPrice=50
 Legendary=true
 Exclusive=yes
+LevelRequirement=3000
 
 =============================
 Monster only armor!
