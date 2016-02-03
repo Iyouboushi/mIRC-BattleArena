@@ -3335,7 +3335,7 @@ Element=Earth
 Hits=1
 BasePower=40
 Magic=No
-HurtEthereal=Rrue
+HurtEthereal=True
 stat=int
 
 ===================
