@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 1/23/15
+;;;; Last updated: 1/03/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -94,7 +94,7 @@ alias skill.turncheck {
   ; $3 = the skill command
   ; $4 = true/false -> if skill level affects the turn amount
 
-  if ($readini($char($1), info, flag) != $null) { return }
+  if (($readini($char($1), info, flag) != $null) && ($readini($char($1), info, clone) != yes)) { return }
 
   var %skill.turns $readini($dbfile(skills.db), $2, cooldown)
 
