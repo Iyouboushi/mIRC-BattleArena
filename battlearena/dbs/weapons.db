@@ -826,7 +826,7 @@ Cost=0
 SpecialWeapon=true
 Type=Dagger
 Info=A knife with a dark grey handle and a black blade.
-Abilities=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vajra) = true, .Evisceration)
+Abilities=SharkBite.DancingEdge $+ $iif($weapon.linkcheck($1,Vajra) = true, .Evisceration)
 Element=None
 Hits=1
 BasePower=$iif($weapon.linkcheck($1, Vajra) = true, 75, 50)
@@ -838,7 +838,7 @@ Cost=0
 SpecialWeapon=true
 Type=Dagger
 Info=A dagger that is black in color with an intricate silver design on the handle and blade. The blade is wide and has two blue jewels set in the blade.
-Abilities=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vanir_Knife) = true, .Evisceration)
+Abilities=SharkBite.DancingEdge $+ $iif($weapon.linkcheck($1,Vanir_Knife) = true, .Evisceration)
 Element=None
 Hits=1
 BasePower=$iif($weapon.linkcheck($1, Vanir_Knife) = true, 75, 50)
@@ -850,7 +850,7 @@ Cost=0
 SpecialWeapon=true
 Type=Dagger
 Info=A large kunai with a dark blue blade and a gold handle.
-Abilities=Blade:Metsu.Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck(Kannagi) = true, .Blade:Shun.Blade:Hi)
+Abilities=Blade:Metsu.Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck($1,Kannagi) = true, .Blade:Shun.Blade:Hi)
 Element=None
 Hits=1
 BasePower=$iif($weapon.linkcheck($1, Kannagi) = true, 75, 50)
@@ -863,7 +863,7 @@ Cost=0
 SpecialWeapon=true
 Type=Dagger
 Info=A tanto which is all black in color. It has a pattern on both sides which is red in color.
-Abilities=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck(Kikoku) = true, .Blade:Shun.Blade:Hi)
+Abilities=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck($1,Kikoku) = true, .Blade:Shun.Blade:Hi)
 Element=None
 Hits=1
 BasePower=$iif($weapon.linkcheck($1, Kikoku) = true, 75, 50)
