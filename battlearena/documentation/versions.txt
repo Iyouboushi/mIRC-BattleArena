@@ -1442,6 +1442,8 @@ Battle Arena Bot VERSIONS
 - Added the ability to turn purple keys into gold keys via crafting
 - Added WonderGuard flag for monsters/bosses. In [info] put WonderGuard=true.  If set to true the boss will not be harmed by
   anything that isn't in [modifiers] or is set to 0 in that section. 
+- Added legendary armor
+- Added the voucher item system. Using vouchers obtained from portals players will be able to buy armor and weapons
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1456,8 +1458,12 @@ Battle Arena Bot VERSIONS
   Now it's only calculated on the damage done with the first hit.
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
+- Fixed a bug with AI in dungeons
+- Fixed a bug with clones being able to use items
 - Fixed an issue where certain battle types could override mimic battles
 - Fixed an issue where portal items were being cut off
 - Fixed an issue with absorb inside of dungeons and torment
+- Fixed an issue with clones being able to use skills multiple times without a cooldown
+- Fixed a potential issue with certain items in the shop being cut off if there's too many
 - Fixed a typo with Shenron's Wish
 - Fixed a description issue with ToxicMelody
