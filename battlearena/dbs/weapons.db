@@ -45,7 +45,7 @@ Scythes=DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque
 GreatSwords=Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
 Axes=Farsha.Guttler.Kerehcatl
 GreatAxes=Ukonvasara.Bravura.Lightreaver
-Daggers=MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra
+Daggers=MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi
 Hammers=Mjolnir
 Lightsabers=Lightsaber
 
@@ -844,6 +844,32 @@ Hits=1
 BasePower=$iif($weapon.linkcheck($1, Vanir_Knife) = true, 75, 50)
 Upgrade=4000
 IgnoreDefense=5
+
+[Kikoku]
+Cost=0
+SpecialWeapon=true
+Type=Dagger
+Info=A large kunai with a dark blue blade and a gold handle.
+Abilities=Blade:Metsu.Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck(Kannagi) = true, .Blade:Shun.Blade:Hi)
+Element=None
+Hits=1
+BasePower=$iif($weapon.linkcheck($1, Kannagi) = true, 75, 50)
+Upgrade=5000
+IgnoreDefense=5
+LinkedWeapon=Kannagi
+
+[Kannagi]
+Cost=0
+SpecialWeapon=true
+Type=Dagger
+Info=A tanto which is all black in color. It has a pattern on both sides which is red in color.
+Abilities=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck(Kikoku) = true, .Blade:Shun.Blade:Hi)
+Element=None
+Hits=1
+BasePower=$iif($weapon.linkcheck($1, Kikoku) = true, 75, 50)
+Upgrade=5000
+IgnoreDefense=5
+LinkedWeapon=Kikoku
 
 =============================================
 Bows

@@ -127,6 +127,8 @@ Terpsichore=PyrrhicKleos.RudrasStorm.Exenterator
 Mandau=MercyStroke.AeolianEdge.Evisceration
 Vanir_Knife=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vajra) = true, .Evisceration)
 Vajra=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vanir_Knife) = true, .Evisceration)
+Kikoku=Blade:Metsu.Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck(Kannagi) = true, .Blade:Shun.Blade:Hi)
+Kannagi=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck(Kikoku) = true, .Blade:Shun.Blade:Hi)
 
 ; Hammers
 Mjolnir=Thor'sRage.Thor'sGodforce
@@ -1014,7 +1016,7 @@ Type=Single
 Cost=1500
 Desc=holds the sword to the side for a moment as it gains a dark glow. %user then swings the sword at %enemy, striking %enemy with the element of darkness.
 TP=50
-Element=None
+Element=Dark
 Hits=1
 BasePower=35
 Magic=No
@@ -1027,7 +1029,7 @@ Type=Single
 Cost=1500
 Desc=holds the sword to the side for a moment as it gains a cyan glow. %user then swings the sword at %enemy, striking %enemy with the element of ice.
 TP=50
-Element=None
+Element=Ice
 Hits=1
 BasePower=35
 Magic=No
@@ -1040,7 +1042,7 @@ Type=Single
 Cost=1500
 Desc=holds the sword to the side for a moment as it gains a yellow glow. %user then swings the sword at %enemy, striking %enemy with the element of lightning.
 TP=50
-Element=None
+Element=Lightning
 Hits=1
 BasePower=35
 Magic=No
@@ -1053,7 +1055,7 @@ Type=Single
 Cost=1500
 Desc=holds the sword to the side for a moment as it gains a blue glow. %user then swings the sword at %enemy, striking %enemy with the element of water.
 TP=50
-Element=None
+Element=Water
 Hits=1
 BasePower=35
 Magic=No
@@ -1066,7 +1068,7 @@ Type=Single
 Cost=1500
 Desc=holds the sword to the side for a moment as it gains a brown glow. %user then swings the sword at %enemy, striking %enemy with the element of earth.
 TP=50
-Element=None
+Element=Earth
 Hits=1
 BasePower=35
 Magic=No
@@ -1079,7 +1081,7 @@ Type=Single
 Cost=1500
 Desc=holds the sword to the side for a moment as it gains a green glow. %user then swings the sword at %enemy, striking %enemy with the element of wind.
 TP=50
-Element=None
+Element=Wind
 Hits=1
 BasePower=35
 Magic=No
@@ -2305,7 +2307,7 @@ CappedAmount=1250
 
 [CureIII]
 Type=heal
-TP=20
+TP=30
 Desc=casts a healing spell on %enemy $+ !  $set_chr_name($2) %real.name is bathed in a refreshing white light.
 BasePower=40
 Cost=1500
@@ -2316,7 +2318,7 @@ CappedAmount=1750
 
 [CureIV]
 Type=heal
-TP=30
+TP=50
 Desc=casts a healing spell on %enemy $+ !  $set_chr_name($2) %real.name is bathed in a refreshing white light.
 BasePower=50
 Cost=2000
@@ -2337,7 +2339,7 @@ CappedAmount=1750
 
 [Cura]
 Type=heal-AOE
-TP=50
+TP=65
 Desc=casts a healing spell on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
 BasePower=30
 Cost=2000
@@ -2348,7 +2350,7 @@ CappedAmount=1250
 
 [Curaga]
 Type=heal-AOE
-TP=70
+TP=100
 Desc=casts Curaga on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
 BasePower=40
 Cost=3000
@@ -3216,6 +3218,125 @@ stat=spd
 hits=5
 renkei=4
 
+[Blade:Rin]
+Type=Single
+Cost=2000
+Desc=steps forward and stabs at %enemy with the weapon.
+TP=20
+Element=None
+Hits=1
+BasePower=25
+Magic=No
+stat=spd
+Renkei=2
+
+[Blade:Shun]
+Type=Single
+Cost=4000
+Desc=dashes towards %enemy several times while attacking before hopping back and jumping into the air, attacking once more with a diving slash of the weapon.
+TP=80
+Element=None
+Hits=5
+BasePower=12
+Magic=No
+stat=spd
+Renkei=4
+
+[Blade:Hi]
+Type=Single
+Cost=5000
+Desc=performs a leaping uppercut slash with the weapon, leaving an afterimage of a dragon for a brief moment.
+TP=100
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+stat=spd
+Renkei=5
+
+[Blade:Retsu]
+Type=Single
+StatusType=Paralysis
+Cost=2500
+Desc=slashes %enemy once with the weapon before slashing again, attempting to cause paralysis upon %enemy $+ !
+TP=60
+Element=None
+Hits=2
+BasePower=10
+Magic=No
+stat=spd
+Renkei=2
+
+[Blade:Ei]
+Type=Single
+Cost=2000
+Desc=stabs at %enemy with the weapon, which is covered in dark energy.
+TP=50
+Element=Dark
+Hits=1
+BasePower=40
+Magic=Yes
+HurtEthereal=True
+stat=int
+
+[Blade:Jin]
+Type=Single
+Cost=2500
+Desc=performs three quick slashes upon %enemy with the weapon.
+TP=50
+Element=None
+Hits=3
+BasePower=15
+Magic=No
+stat=spd
+Renkei=2
+
+[Blade:Metsu]
+Type=AOE
+Cost=3500
+Desc=performs a series of slashes, creating four balls of energy, which combine into a larger one before creating an explosion of energy to engulf all enemies.
+TP=75
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+stat=spd
+
+[Blade:Teki]
+Type=Single
+Cost=2000
+Desc=slashes at %enemy with the weapon which is covered in water, dealing water elemental damage upon %enemy $+ .
+TP=50
+Element=Water
+Hits=1
+BasePower=40
+Magic=Yes
+HurtEthereal=True
+stat=int
+
+[Blade:To]
+Type=Single
+Cost=2000
+Desc=performs an upper slash with the weapon towards %enemy $+ , causing a large icicle to strike %enemy $+ .
+TP=50
+Element=Ice
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=True
+stat=int
+
+[Blade:Chi]
+Type=Single
+Cost=2000
+Desc=performs an upper slash with the weapon towards %enemy $+ , causing a large chunk of earth to strike %enemy $+ .
+TP=50
+Element=Earth
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=Rrue
+stat=int
 
 ===================
 BOWS
