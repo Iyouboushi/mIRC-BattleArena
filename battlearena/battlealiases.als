@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 01/26/16
+;;;; Last updated: 02/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4063,7 +4063,7 @@ modifer_adjust {
   ; Turn it into a deciminal
   var %modifier.adjust.value $calc(%modifier.adjust.value / 100) 
 
-  if ($readini($char($1), info, flag) != $null) {
+  if (($readini($char($1), info, flag) != $null) && ($readini($char($1), info, clone) != yes)) {
     ; If it's over 1, then it means the target is weak to the element/weapon so we can adjust the target's def a little as an extra bonus.
     if (%modifier.adjust.value > 1) {
       var %mon.temp.def $readini($char($1), battle, def)
