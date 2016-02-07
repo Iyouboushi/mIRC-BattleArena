@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/06/16
+;;;; Last updated: 02/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2430,7 +2430,7 @@ alias battle.reward.redorbs {
       if ($readini($char(%who.battle), battle, status) != runaway) {
 
         if ($1 = victory) { 
-          $get.random.reward(%who.battle) 
+          if (%portal.bonus != true) { $get.random.reward(%who.battle) }
           ; Check for the OnTheEdge achievement (courtesy of Andrio)
           var %current.hp $readini($char(%who.battle), Battle, HP) |  var %max.hp $readini($char(%who.battle), BaseStats, HP) |  var %hp.percent $calc((%current.hp / %max.hp)*100)
           if ((%hp.percent <= 2) && (%hp.percent > 0)) { $achievement_check(%who.battle, OnTheEdge) }
