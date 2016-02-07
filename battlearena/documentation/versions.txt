@@ -1456,6 +1456,7 @@ Battle Arena Bot VERSIONS
 - Changed utsusemi so that it no longer protects players when darkness hits
 - Changed the amount of style points for the style ranking that are obtained with multi-hits.  
   Now it's only calculated on the damage done with the first hit.
+- Changed the way the skills keep track of the turn they are used and when they can be used again
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
