@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 01/09/16
+;;;; Last updated: 02/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -850,7 +850,7 @@ alias battlebegin {
   ; Generate the battle turn order and display who's going first.
   $generate_battle_order
   set %who $read -l1 $txtfile(battle.txt) | set %line 1
-  set %current.turn 1
+  set %current.turn 1 | set %true.turn 1
   $battlelist(public)
 
   if (%savethepresident = on) {  $display.message($readini(translation.dat, battle, Don'tLetPresidentDie), battle)  }
@@ -1512,7 +1512,7 @@ alias generate_battle_order {
   unset %battle.speed
 
   ; increase the current turn.
-  if (%battle.type != defendoutpost) { inc %current.turn 1 }
+  if (%battle.type != defendoutpost) { inc %current.turn 1 | inc %true.turn 1 }
 
   ; Count the total number of monsters in battle
   $count.monsters

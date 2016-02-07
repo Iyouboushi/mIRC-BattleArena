@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 1/26/15
+;;;; Last updated: 2/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -126,7 +126,7 @@ dungeon.begin {
 
   $generate_battle_order
   set %who $read -l1 $txtfile(battle.txt) | set %line 1
-  set %current.turn 1
+  set %current.turn 1 | set %true.turn 1
 
   $battlelist(public)
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 1/03/15
+;;;; Last updated: 2/06/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -94,7 +94,14 @@ alias skill.turncheck {
   ; $3 = the skill command
   ; $4 = true/false -> if skill level affects the turn amount
 
+
   if (($readini($char($1), info, flag) != $null) && ($readini($char($1), info, clone) != yes)) { return }
+
+  if ($readini($char($1), info, clone) = yes) {
+    var %clone.owner $readini($char($1), info, cloneowner) 
+    var %clone.owner.style $readini($char(%clone.owner), styles, equipped)
+    if (%clone.owner.style != doppelganger) { return }
+  }
 
   var %skill.turns $readini($dbfile(skills.db), $2, cooldown)
 
@@ -105,8 +112,8 @@ alias skill.turncheck {
   if (%last.turn.used = $null) { var %next.turn.can.use 0 }
   else { var %next.turn.can.use $calc(%last.turn.used + %skill.turns) }
 
-  if (%current.turn >= %next.turn.can.use) { return }
-  else { $set_chr_name($1) | $display.message($readini(translation.dat, skill, UnableToUseskillAgainSoSoon),private)  | $display.private.message(3You still have $calc(%next.turn.can.use - %current.turn) turns before you can use $3 again) | halt }
+  if (%true.turn >= %next.turn.can.use) { return }
+  else { $set_chr_name($1) | $display.message($readini(translation.dat, skill, UnableToUseskillAgainSoSoon),private)  | $display.private.message(3You still have $calc(%next.turn.can.use - %true.turn) turns before you can use $3 again) | halt }
 }
 
 ;=================
@@ -202,7 +209,7 @@ alias skill.elementalseal { $set_chr_name($1)
 
   ; Toggle the elementalseal-on flag & write the last used time.
   writeini $char($1) skills elementalseal.on on
-  writeini $char($1) skills elementalseal.time %current.turn
+  writeini $char($1) skills elementalseal.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction elementalseal
 
@@ -238,7 +245,7 @@ alias skill.mightystrike { $set_chr_name($1)
 
   ; Toggle the flag & write the last used time.
   writeini $char($1) skills mightystrike.on on
-  writeini $char($1) skills mightystrike.time %current.turn
+  writeini $char($1) skills mightystrike.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction mightystrike
 
@@ -275,7 +282,7 @@ alias skill.truestrike { $set_chr_name($1)
 
   ; Toggle the flag & write the last used time.
   writeini $char($1) skills truestrike.on on
-  writeini $char($1) skills truestrike.time %current.turn
+  writeini $char($1) skills truestrike.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction truestrike
 
@@ -310,7 +317,7 @@ alias skill.manawall { $set_chr_name($1)
 
   ; Toggle the ManaWall-on flag & write the last used time.
   writeini $char($1) skills ManaWall.on on
-  writeini $char($1) skills ManaWall.time %current.turn
+  writeini $char($1) skills ManaWall.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction manawall
 
@@ -345,7 +352,7 @@ alias skill.royalguard { $set_chr_name($1)
 
   ; Toggle the royalguard-on flag & write the last used time.
   writeini $char($1) skills royalguard.on on
-  writeini $char($1) skills royalguard.time %current.turn
+  writeini $char($1) skills royalguard.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction royalguard
 
@@ -435,7 +442,7 @@ alias skill.perfectdefense { $set_chr_name($1)
 
   ; Toggle the flag & write the last used time.
   writeini $char($1) skills perfectdefense.on on
-  writeini $char($1) skills perfectdefense.time %current.turn
+  writeini $char($1) skills perfectdefense.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction perfectdefense
 
@@ -474,7 +481,7 @@ alias skill.utsusemi { $set_chr_name($1)
 
   ; Toggle the utsusemi-on flag & write the last used time.
   writeini $char($1) skills utsusemi.on on
-  writeini $char($1) skills utsusemi.time %current.turn
+  writeini $char($1) skills utsusemi.time %true.turn
 
   var %number.of.shadows 2
 
@@ -877,7 +884,7 @@ alias skill.doubleturn { $set_chr_name($1)
 
   ; Toggle the doubleturn-on flag & write the last used time.
   writeini $char($1) skills doubleturn.on on
-  writeini $char($1) skills doubleturn.time %current.turn
+  writeini $char($1) skills doubleturn.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction sugitekai
 
@@ -910,7 +917,7 @@ alias skill.meditate { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills meditate.time %current.turn
+  writeini $char($1) skills meditate.time %true.turn
 
   ; get TP
   var %tp.current $readini($char($1), battle, tp)
@@ -962,7 +969,7 @@ alias skill.conserveTP { $set_chr_name($1)
 
   ; Toggle the conserveTP-on flag & write the last used time.
   writeini $char($1) status conserveTP yes
-  writeini $char($1) skills conserveTP.time %current.turn
+  writeini $char($1) skills conserveTP.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction conserveTP
 
@@ -1005,7 +1012,7 @@ alias skill.bloodboost { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills bloodboost.time %current.turn
+  writeini $char($1) skills bloodboost.time %true.turn
 
   ; get STR
   set %str.current $readini($char($1), battle, str)
@@ -1075,7 +1082,7 @@ alias skill.bloodspirit { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills bloodspirit.time %current.turn
+  writeini $char($1) skills bloodspirit.time %true.turn
 
   ; get INT
   set %int.current $readini($char($1), battle, int)
@@ -1141,7 +1148,7 @@ alias skill.drainsamba { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills drainsamba.time %current.turn
+  writeini $char($1) skills drainsamba.time %true.turn
 
   if ($readini($char($1), info, flag) = $null) { 
     ; Dec the TP
@@ -1191,7 +1198,7 @@ alias skill.formlessstrike { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills formlessstrike.time %current.turn
+  writeini $char($1) skills formlessstrike.time %true.turn
 
   if ($readini($char($1), info, flag) = $null) { 
     ; Dec the TP
@@ -1233,7 +1240,7 @@ alias skill.regen { $set_chr_name($1)
   $skill.turncheck($1, Regen, !regen, false)
 
   ; write the last used time.
-  writeini $char($1) skills regen.time %current.turn
+  writeini $char($1) skills regen.time %true.turn
 
   if ($readini($char($1), descriptions, regen) = $null) { set %skill.description has gained the regeneration effect.  }
   else { set %skill.description $readini($char($1), descriptions, regen) }
@@ -1350,7 +1357,7 @@ alias skill.kikouheni { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills kikouheni.time %current.turn
+  writeini $char($1) skills kikouheni.time %true.turn
 
   writeini $dbfile(battlefields.db) weather current $2 
   $display.message(3The weather has changed! It is currently $2, battle)
@@ -1540,7 +1547,7 @@ alias skill.steal { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills steal.time %current.turn
+  writeini $char($1) skills steal.time %true.turn
 
   ; If we're using the Mugger's Belt accessory, let's do some damage.
   if ($accessory.check($1, Mug) = true) {
@@ -1812,11 +1819,11 @@ alias skill.quicksilver { $set_chr_name($1)
     if (%quicksilver.turn = $null) { set %quicksilver.turn -1 }
 
     if (%quicksilver.used >= %current.playerstyle.level) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) Quicksilver power again this battle!,private) | unset %current.playerstyle | halt }
-    if (($calc(%quicksilver.turn + 1) = %current.turn) || (%quicksilver.turn = %current.turn)) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) Quicksilver power again so quickly!, private) | unset %current.playerstyle | halt }
+    if (($calc(%quicksilver.turn + 1) = %true.turn) || (%quicksilver.turn = %true.turn)) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) Quicksilver power again so quickly!, private) | unset %current.playerstyle | halt }
   }
 
   inc %quicksilver.used 1 | writeini $char($1) skills quicksilver.used %quicksilver.used
-  writeini $char($1) skills quicksilver.turn %current.turn
+  writeini $char($1) skills quicksilver.turn %true.turn
 
 
   if ($readini($char($1), descriptions, quicksilver) = $null) { $set_chr_name($1) | set %skill.description unleashes the power of Quicksilver! Time seems to stop for everyone except %real.name $+ ! }
@@ -1889,7 +1896,7 @@ alias skill.cover { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills cover.time %current.turn
+  writeini $char($1) skills cover.time %true.turn
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction cover
 
   unset %enemy
@@ -1971,7 +1978,7 @@ alias do.snatch {
   }
 
   ; write the last used time.
-  writeini $char($1) skills snatch.time %current.turn
+  writeini $char($1) skills snatch.time %true.turn
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction snatch
 
   return
@@ -2267,11 +2274,11 @@ alias skill.holyaura { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; Toggle the last time used
-  writeini $char($1) skills holyaura.time %current.turn
+  writeini $char($1) skills holyaura.time %true.turn
 
   if (%max.demonwall.turns = $null) { inc %darkness.turns %skill.level }
   if (%max.demonwall.turns != $null) { inc %max.demonwall.turns %skill.level }
-  set %holy.aura.turn $calc(%current.turn + %skill.level)
+  set %holy.aura.turn $calc(%true.turn + %skill.level)
   set %holy.aura on
   set %holy.aura.user $1
 
@@ -2597,7 +2604,7 @@ alias skill.provoke { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills provoke.time %current.turn
+  writeini $char($1) skills provoke.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction provoke
 
@@ -2652,7 +2659,7 @@ alias skill.weaponlock { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills weaponlock.time %current.turn
+  writeini $char($1) skills weaponlock.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction weaponlock
 
@@ -2714,7 +2721,7 @@ alias skill.disarm { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills disarm.time %current.turn
+  writeini $char($1) skills disarm.time %true.turn
 
   var %disarm.chance $rand(1,100)
   var %skill.disarm $readini($char($1), skills, disarm)
@@ -2764,7 +2771,7 @@ alias skill.konzen-ittai { $set_chr_name($1)
 
   ; Toggle the flag & write the last used time.
   writeini $char($1) skills konzen-ittai.on on
-  writeini $char($1) skills konzen-ittai.time %current.turn
+  writeini $char($1) skills konzen-ittai.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction konzen-ittai
 
@@ -2807,7 +2814,7 @@ alias skill.sealbreak { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; write the last used time.
-  writeini $char($1) skills sealbreak.time %current.turn
+  writeini $char($1) skills sealbreak.time %true.turn
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction sealbreak
 
   var %random.chance $rand(1,100)
@@ -2851,7 +2858,7 @@ alias skill.magicmirror { $set_chr_name($1)
   ; Toggle the magicmirror-on flag & write the last used time.
   writeini $char($1) status reflect yes
   writeini $char($1) status reflect.timer 1
-  writeini $char($1) skills magicmirror.time %current.turn
+  writeini $char($1) skills magicmirror.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction magicmirror
 
@@ -2890,7 +2897,7 @@ alias skill.gamble { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; Toggle the last used flag
-  writeini $char($1) skills gamble.time %current.turn
+  writeini $char($1) skills gamble.time %true.turn
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction gamble
 
   ; Time to gamble, baby!
@@ -3045,7 +3052,7 @@ alias skill.thirdeye { $set_chr_name($1)
 
   ; Toggle the ThirdEye-on flag & write the last used time.
   writeini $char($1) skills ThirdEye.on on
-  writeini $char($1) skills ThirdEye.time %current.turn 
+  writeini $char($1) skills ThirdEye.time %true.turn 
 
   var %thirdeye.dodges $rand(1,2)
 
@@ -3173,7 +3180,7 @@ alias skill.retaliation { $set_chr_name($1) |  $check_for_battle($1)
 
   ; Toggle the Retaliation-on flag & write the last used time.
   writeini $char($1) skills Retaliation.on on
-  writeini $char($1) skills Retaliation.time %current.turn 
+  writeini $char($1) skills Retaliation.time %true.turn 
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
@@ -3306,7 +3313,7 @@ alias skill.tabularasa { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, TabulaRasa, !tabula rasa, true)
 
-  writeini $char($1) skills tabularasa.time %current.turn
+  writeini $char($1) skills tabularasa.time %true.turn
 
   if ($readini($char($1), descriptions, tabularasa) = $null) { $set_chr_name($2) | set %skill.description unleashes a powerful and ancient technique upon %real.name in an attempt to inflict amnesia. }
   else { set %skill.description $readini($char($1), descriptions, tabularasa) }

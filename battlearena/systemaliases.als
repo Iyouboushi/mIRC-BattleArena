@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 01/09/16
+;;;; Last updated: 02/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2992,7 +2992,7 @@ restore_ig {
 ; variables.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 clear_variables { 
-  $clear_variables2 | unset *.level | unset %dragonhunt.*
+  $clear_variables2 | unset *.level | unset %dragonhunt.* | unset %true.turn
   unset %darkness.turns | unset %holy.aura.turn | unset %mech.power | unset %attacker | unset %item.drop.rewards | unset %tp
   unset %boss.type | unset %portal.bonus | unset %holy.aura | unset %darkness.fivemin.warn  | unset %battle.rage.darkness |  unset %battleconditions |  unset %red.orb.winners |  unset %bloodmoon 
   unset %line | unset %file | unset %name | unset %curbat | unset %real.name | unset %attack.target
