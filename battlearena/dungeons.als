@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 2/06/15
+;;;; Last updated: 02/09/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -36,7 +36,7 @@ dungeon.start {
 
 dungeon.enter {
   $checkchar($1)
-  if (%battleisopen != on) { $set_chr_name($1)
+  if ((%battleisopen != on) && ($return.systemsetting(AllowLateEntries != true)) { $set_chr_name($1)
     $display.message($readini(translation.dat, battle, BattleClosed), global)  | halt 
   }
 

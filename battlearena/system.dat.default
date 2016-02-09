@@ -14,6 +14,7 @@ ShowDeleteEcho=false
 AllowColors=true
 AllowBold=true
 BattleThrottle=false
+AllowLateEntries=false
 basexp=100
 basebossxp=500
 baseportalxp=600

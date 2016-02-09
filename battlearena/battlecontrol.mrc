@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/07/16
+;;;; Last updated: 02/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -494,10 +494,8 @@ ON 3:TEXT:*enters the battle*:#:  {
   if ($return.systemsetting(AllowPlayerAccessCmds) = false) { $display.message($readini(translation.dat, errors, PlayerAccessCmdsOff), private) | halt }
   if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
 
-  ; --------------
-  ; In version 3.2 this will be expanded to add a limit to the # of characters one person can enter into battle. 
-  ; TODO: Set a maximum of chars based on battle type, check to see if the user has already entered the max #, and write the # in battle2.txt
-  ; --------------
+  ; Check to see if the person has entered the max # of characters allowed
+  $access.enter.limit.check($nick)
 
   if (%battle.type = dungeon) { $dungeon.enter($1) }
   else { $enter($1) }
@@ -519,7 +517,8 @@ alias enter {
   }
 
   $checkchar($1)
-  if (%battleisopen != on) { $set_chr_name($1)
+
+  if ((%battleisopen != on) && ($return.systemsetting(AllowLateEntries != true)) { $set_chr_name($1)
     $display.message($readini(translation.dat, battle, BattleClosed), global)  | halt 
   }
 
