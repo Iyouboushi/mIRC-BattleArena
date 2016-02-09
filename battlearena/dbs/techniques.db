@@ -12359,7 +12359,7 @@ Hits=1
 BasePower=100
 Magic=no
 Stat=str
-Postscript=$iif($readini($txtfile(battle2.txt), battleinfo, Monsters) < 6, $skill.monstersummon($1, BearShark))
+Postscript=$iif($readini($txtfile(battle2.txt), battleinfo, Monsters) < 6, $skill.monstersummon($1, Shark))
 
 [MarioJump]
 Type=Single
