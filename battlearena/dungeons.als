@@ -36,7 +36,7 @@ dungeon.start {
 
 dungeon.enter {
   $checkchar($1)
-  if ((%battleisopen != on) && ($return.systemsetting(AllowLateEntries != true)) { $set_chr_name($1)
+  if ((%battleisopen != on) && ($return.systemsetting(AllowLateEntries) != true)) { $set_chr_name($1)
     $display.message($readini(translation.dat, battle, BattleClosed), global)  | halt 
   }
 
