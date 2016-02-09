@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 01/07/16
+;;;; Last updated: 02/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1176,6 +1176,7 @@ reforge.weapon {
 
   ; does the player have enough black orbs to reforge it?
   var %reforge.cost $round($calc(2 * ($readini($dbfile(weapons.db), $2, cost))),0)
+  if (%reforge.cost > 20) { var %reforge.cost 20 }
   var %player.blackorbs $readini($char($1), stuff, BlackOrbs)
   if (%player.blackorbs < %reforge.cost) { $display.message($readini(translation.dat, errors, NotEnoughBlackOrbs), private) | halt }
 
