@@ -2249,6 +2249,13 @@ SellPrice=50
 Desc=a chunk of gold ore
 Currency=AlliedNotes
 
+[GoldIngot]
+type=misc
+Cost=100
+SellPrice=50
+Desc=an ingot made from gold ore
+Currency=AlliedNotes
+
 [SilverOre]
 type=misc
 Cost=100
