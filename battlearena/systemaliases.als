@@ -1691,6 +1691,36 @@ killer.skills.list {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Builds the Portal Item list
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+portals.list {
+  unset %portals.items.*
+  var %value 1 | var %items.lines $lines($lstfile(items_portal.lst))
+
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_portal.lst)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) { 
+      if ($numtok(%portals.items.list,46) <= 15) { %portals.items.list = $addtok(%portals.items.list, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { 
+        if ($numtok(%portals.items.list2,46) <= 15)) {  %portals.items.list2 = $addtok(%portals.items.list2, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        else { %portals.items.list3 = $addtok(%portals.items.list3, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      }
+    }
+
+    unset %item.name | unset %item_amount
+    inc %value 1 
+  }
+
+  var %replacechar $chr(044) $chr(032)
+  %portals.items.list = $replace(%portals.items.list, $chr(046), %replacechar)
+  %portals.items.list2 = $replace(%portals.items.list2, $chr(046), %replacechar)
+  %portals.items.list3 = $replace(%portals.items.list3, $chr(046), %replacechar)
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Builds the Keys list
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 keys.list {
@@ -1975,7 +2005,7 @@ items.list {
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       if ($numtok(%portals.items.list,46) <= 15) { %portals.items.list = $addtok(%portals.items.list, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       else { 
-        if ($numtok(%portals.items.lst2,46) <= 15)) {  %portals.items.list2 = $addtok(%portals.items.list2, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        if ($numtok(%portals.items.list2,46) <= 15)) {  %portals.items.list2 = $addtok(%portals.items.list2, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
         else { %portals.items.list3 = $addtok(%portals.items.list3, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       }
     }

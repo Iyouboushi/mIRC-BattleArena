@@ -762,6 +762,25 @@ readingredients {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays a char's portals
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+readportals {
+  if (%portals.items.list != $null) { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewPortalItems),private) | if (%portals.items.list2 != $null) { $display.message( $+ %portals.items.list2,private) }  |  if (%portals.items.list3 != $null) { $display.message( $+ %portals.items.list3,private) } } 
+    if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewPortalItems)) |  if (%portals.items.list2 != $null) { $display.private.message( $+ %portals.items.list2) } |  if (%portals.items.list3 != $null) { $display.private.message( $+ %portals.items.list3) }  } 
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewPortalItems)) | if (%portals.items.list2 != $null) { $dcc.private.message($nick,  $+ %portals.items.list2) } if (%portals.items.list3 != $null) { $dcc.private.message($nick,  $+ %portals.items.list3) } }
+  }
+
+  if (%portals.items.list = $null) { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoportals),private) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, HasNoportals)) }
+    if ($2 = dcc) {  $dcc.private.message($nick, $readini(translation.dat, system, HasNoportals)) }
+  }    
+
+  unset %portals.items.*
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Displays a char's items
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 readitems { 

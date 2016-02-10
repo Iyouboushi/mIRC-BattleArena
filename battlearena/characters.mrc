@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 1/20/15
+;;;; Last updated: 02/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -819,6 +819,15 @@ on 3:TEXT:!instruments*:#:{
 on 3:TEXT:!instruments*:?:{ 
   if ($2 != $null) { $checkchar($2) | $instruments.list($2) | $set_chr_name($2) | $readinstruments($2, private) }
   else {  $instruments.list($nick) | $set_chr_name($nick) | $readinstruments($nick, private) }
+}
+
+on 3:TEXT:!portals*:#:{ 
+  if ($2 != $null) { $checkchar($2) | $portals.list($2) | $set_chr_name($2) | $readportals($2, channel) }
+  else {  $portals.list($nick) | $set_chr_name($nick) | $readportals($nick, channel) }
+}
+on 3:TEXT:!portals*:?:{ 
+  if ($2 != $null) { $checkchar($2) | $portals.list($2) | $set_chr_name($2) | $readportals($2, private) }
+  else {  $portals.list($nick) | $set_chr_name($nick) | $readportals($nick, private) }
 }
 
 on 3:TEXT:!items*:#:{ 

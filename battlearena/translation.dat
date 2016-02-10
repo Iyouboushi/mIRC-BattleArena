@@ -120,6 +120,7 @@ HasNoItems=$chr(3) $+ 3 $+  $+ %real.name currently has no items.
 HasNoMechItems=$chr(3) $+ 3 $+  $+ %real.name currently has no weapons or items for $gender($1) mech. 
 HasNoMechWeapons=$chr(3) $+ 3 $+  $+ %real.name currently has no weapons for $gender($1) mech. 
 HasNoKeys=$chr(3) $+ 3 $+  $+ %real.name currently has no keys.
+HasNoPortals=$chr(3) $+ 3 $+  $+ %real.name currently has no portal items.
 HasNoGems=$chr(3) $+ 3 $+  $+ %real.name currently has no gems.
 HasNoSeals=$chr(3) $+ 3 $+  $+ %real.name currently has no seals.
 HasNoArmor=$chr(3) $+ 3 $+  $+ %real.name currently has no armor. 
