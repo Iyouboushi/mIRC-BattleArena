@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/06/16
+;;;; Last updated: 02/10/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -156,6 +156,11 @@ on 3:TEXT:!log out*:*:{ .auser 1 $nick | mode %battlechan -v $nick | .flush 1 }
 
 ON 2:TEXT:!last seen *:*:{  $checkchar($3)
   var %last.seen $readini($char($3), info, lastseen)
+
+  if (%last.seen != $null) {
+    var %last.seen.ctime $ctime(%last.seen)
+    var %last.seen.duration $duration($calc($ctime - %last.seen.ctime))
+  }
   if (%last.seen = $null) { var %last.seen unknown time }
   $display.message($readini(translation.dat, system, lastseen),private)
 }
