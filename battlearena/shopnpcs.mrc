@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 11/02/15
+;;;; Last updated: 02/10/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -318,7 +318,7 @@ alias shopnpc.add {
 
   if ($1 != alliedforcespresident) {  
     $display.message($readini(translation.dat, shopnpcs, AddedNPC)) 
-    writeini shopnpcs.dat NPCNews Arrived  $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, AddedNPC)
+    writeini shopnpcs.dat NPCNews Arrived  $chr(91) $+  $asctime(mmm dd yyyy) - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, AddedNPC)
   }
 
   if ($1 = alliedforcespresident) {
@@ -336,7 +336,7 @@ alias shopnpc.add {
     if ($isfile($lstfile(presidentnames.lst)) = $false) { $display.message($readini(translation.dat, shopnpcs, AddedNewPresident))  }
     writeini shopnpcs.dat NPCNames AlliedForcesPresident %shopnpc.name
 
-    writeini shopnpcs.dat NPCNews Arrived  $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, AddedNewPresident)
+    writeini shopnpcs.dat NPCNews Arrived  $chr(91) $+ $asctime(mmm dd yyyy) - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, AddedNewPresident)
   }
 
 }
@@ -381,13 +381,13 @@ alias shopnpc.kidnap {
 
   writeini shopnpcs.dat NPCStatus %kidnapped.npc kidnapped
 
-  if ($1 != dragon) { $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) | writeini shopnpcs.dat NPCNews Kidnapped $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCKidnapped) }
+  if ($1 != dragon) { $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnapped)) | writeini shopnpcs.dat NPCNews Kidnapped $chr(91) $+ $asctime(mmm dd yyyy) - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCKidnapped) }
   if ($1 = dragon) { 
 
     var %current.dragon $ini($dbfile(dragonhunt.db),  $rand(1, $ini($dbfile(dragonhunt.db),0)))
     var %dragon.name $readini($dbfile(dragonhunt.db), %current.dragon, name)
     $display.message($readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)) 
-    writeini shopnpcs.dat NPCNews Kidnapped $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)
+    writeini shopnpcs.dat NPCNews Kidnapped $chr(91) $+ $asctime(mmm dd yyyy) - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCKidnappedDragon)
     unset %random.dragon | unset %dragon.name
   }
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
@@ -423,7 +423,7 @@ alias shopnpc.rescue {
   writeini shopnpcs.dat NPCStatus %kidnapped.npc true
 
   $display.message($readini(translation.dat, shopnpcs, ShopNPCRescued)) 
-  writeini shopnpcs.dat NPCNews Arrived $chr(91) $+ $adate - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCRescued)
+  writeini shopnpcs.dat NPCNews Arrived $chr(91) $+ $asctime(mmm dd yyyy) - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCRescued)
 
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
 
