@@ -321,7 +321,7 @@ Upgrade=1500
 Cost=50
 Type=Sword
 Info=A replica of the legendary Z-Sword from the Sacred World of the Kais.
-Abilities=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
+Abilities=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
 Element=None
 Hits=1
 BasePower=50
@@ -332,7 +332,7 @@ Upgrade=1500
 Cost=0
 Type=Sword
 Info=An improved replica of the legendary Z-Sword from the Sacred World of the Kais. Outside of Torment battles the sword has a 350 power and ignores 10% defense. Inside of Torment the sword has a power of 850 and ignores 20% defense.
-Abilities=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
+Abilities=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
 Element=None
 Hits=1
 BasePower=$iif(%battle.type = torment, 850, 350)

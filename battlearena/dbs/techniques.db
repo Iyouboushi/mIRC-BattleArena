@@ -23,8 +23,8 @@ Almace=ChantduCygne.Requiescat.SanguineBlade
 Xiutleato=SavageBlade.SanguineBlade.SwiftBlade.CircleBlade
 SilverSword=Twin_Slice.LightningStrike.BladeBeamII
 MasterSword=SkywardStrike.HurricaneSpin
-Z-Sword=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
-Z-Sword+1=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.WindBlade
+Z-Sword=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
+Z-Sword+1=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
 
 ; Katana
 PowerChordSword=A5.E5.D5.C5
@@ -1076,7 +1076,7 @@ HurtEthereal=false
 stat=str
 Renkei=3
 
-[WindBlade]
+[AirCutter]
 Type=Single
 Cost=1500
 Desc=holds the sword to the side for a moment as it gains a green glow. %user then swings the sword at %enemy, striking %enemy with the element of wind.
