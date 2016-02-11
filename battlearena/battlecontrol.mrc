@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/09/16
+;;;; Last updated: 02/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -517,6 +517,9 @@ alias enter {
   }
 
   $checkchar($1)
+
+  if ($isfile($txtfile(battle2.txt)) = $false) { $set_chr_name($1) |  $display.message($readini(translation.dat, battle, BattleClosed), global)  | halt }
+
 
   if ((%battleisopen != on) && ($return.systemsetting(AllowLateEntries) != true)) { $set_chr_name($1)
     $display.message($readini(translation.dat, battle, BattleClosed), global)  | halt 
