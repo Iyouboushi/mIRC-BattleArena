@@ -465,7 +465,7 @@ alias startnormal {
 
   writeini battlestats.dat TempBattleInfo LastBattleType %start.battle.type
 
-  set %battleis on | set %battleisopen on
+  set %battleis on | set %battleisopen on | writeini $txtfile(battle2.txt) BattleInfo TimeStarted $fulldate
 
   /.timerBattleStart off
 
