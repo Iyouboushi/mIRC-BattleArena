@@ -5,7 +5,7 @@ PlayersNeeded=4
 Level=50
 FinalRoom=8
 StartBattleDesc=unlocks the door to the giant mansion. As the door creaks open the party can feel an aura of evil emitting from within.
-ClearDungeonDesc=* The party has put an end to Lady Amandine's evil plans and cleared Haukke Manor. 
+ClearDungeonDesc=* The party has put an end to Lady Amandine's evil plans and cleared Haukke Manor. [Clear time: %total.battle.duration $+ ]
 DungeonFail=* The party has failed to clear the evil that lives within Haukke Manor and is forced to retreat. 
 
 ; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/06/16
+;;;; Last updated: 02/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -25,6 +25,22 @@ person_in_battle {
     unset %real.name | halt 
   }
   else { return }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns how long a battle
+; lasted
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+battle.calculateBattleDuration {
+  var %total.time $readini($txtfile(battle2.txt), BattleInfo, TimeStarted)
+  if (%total.time != $null) {
+    var %total.battle.time $ctime(%total.time)
+    var %total.battle.duration $duration($calc($ctime - %total.battle.time))
+  }
+  if (%total.time = $null) { var %total.battle.duration unknown time }
+
+
+  return %total.battle.duration
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

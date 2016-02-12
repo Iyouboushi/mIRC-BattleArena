@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 02/09/16
+;;;; Last updated: 02/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -27,6 +27,8 @@ dungeon.start {
   writeini $txtfile(battle2.txt) DungeonInfo DungeonFile $3 
   writeini $txtfile(battle2.txt) DungeonInfo PlayersNeeded %dungeon.players.needed
   writeini $txtfile(battle2.txt) DungeonInfo DungeonLevel %dungeon.level
+
+  writeini $txtfile(battle2.txt) BattleInfo TimeStarted $fulldate
 
   ; Show the dungeon start message.
   $display.message(2 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) 
@@ -204,6 +206,9 @@ dungeon.clearroom {
 }
 
 dungeon.end { 
+
+  var %total.battle.duration $battle.calculateBattleDuration
+
   if ($1 = failure) { 
     $display.message(2 $+ $readini($dungeonfile($dungeon.dungeonfile), info, DungeonFail), global) 
     $dungeon.rewardorbs(failure) 
@@ -384,9 +389,7 @@ dungeon.restoreroom {
 
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
 
-
 }
-
 
 ;================================
 ; Aliases below this line are for special

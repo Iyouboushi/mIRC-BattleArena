@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/11/16
+;;;; Last updated: 02/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1562,15 +1562,14 @@ alias generate_battle_order {
 ; ==========================
 alias endbattle {
   ; $1 can be victory, defeat or draw.
-  ; If victory, add red orbs to everyone..  if boss, add a black orb to all survivors
-  ; if defeat, add a small amount of red orbs to everyone..
-  ; if draw, add a small amont of red orbs to everyone
 
   var %thisbattle.winning.streak $return_winningstreak
 
   $clear_timers
 
   if (%battleis = off) { halt }
+
+  var %total.battle.duration $battle.calculateBattleDuration
 
   ; Let's increase the total number of battles that we've had so far.
   if (((%mode.pvp != on) && (%battle.type != ai) && (%mode.gauntlet != on))) { var %totalbattles $readini(battlestats.dat, Battle, TotalBattles) |  inc %totalbattles 1 | writeini battlestats.dat Battle TotalBattles %totalbattles }

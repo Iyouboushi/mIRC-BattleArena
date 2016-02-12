@@ -5,7 +5,7 @@ PlayersNeeded=3
 Level=100
 FinalRoom=7
 StartBattleDesc=approaches the ancient pyramid of Kan-ra and holds up the mummified hand of Kan-ra. The earth shakes as the ancient slabs that prevent entry begin to lower, revealing a dark tunnel before the heroes. 
-ClearDungeonDesc=* The party has vanquished the ancient power found within The Pyramid of Kan-ra. 
+ClearDungeonDesc=* The party has vanquished the ancient power found within The Pyramid of Kan-ra. [Clear time: %total.battle.duration $+ ]
 DungeonFail=* The party has failed to fully explore the Pyramid of Kan-ra and are forced to retreat. 
 
 ; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
