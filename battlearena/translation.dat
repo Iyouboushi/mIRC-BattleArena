@@ -605,7 +605,7 @@ BattleAITechInfoMon=$chr(3) $+ 4 $+  $+ %ai.monster.name 2Information [Number
 BattleClosed=$chr(3) $+ 4 $+  $+ %real.name cannot join this battle as either there is no battle or the entry period is already closed.
 NoPlayersOnField=$chr(3) $+ 4 $+ There were no players to meet the monsters on the battlefield!  The battle is over.  
 NotEnoughPlayersOnField=$chr(3) $+ 4 $+ There was not enough players for a PVP match!  The battle is over.
-BattleIsOver=$chr(3) $+ 4 $+ The Battle is Over after %total.battle.duration $+ ! 12 $+ %ai.winner
+BattleIsOver=$chr(3) $+ 4 $+ The Battle is Over $iif(%battle.type = ai, after %total.battle.duration) $+ ! 12 $+ %ai.winner
 GauntletOver=$chr(3) $+ 12 $+ The players exit the gauntlet after %mode.gauntlet.wave  $+ $iif(%mode.gauntlet.wave > 1, rounds, round) $+ and %total.battle.duration $+ . $iif(%mode.gauntlet.wave > %gauntlet.record, 2The players have set a new gauntlet record!)
 EvilhasWon=$chr(3) $+ 12 $+ The forces of evil have won this battle (level $bytes($calc($readini(battlestats.dat, Battle, WinningStreak)),b) $+ ) after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! The heroes have lost $bytes($calc($readini(battlestats.dat, Battle, LosingStreak) + 1),b)  $+ $iif($calc($readini(battlestats.dat, Battle, LosingStreak) + 1) < 2, battle, battles) in a row!
 EvilhasWonPortal=$chr(3) $+ 12 $+ The forces of evil have won this special battle event after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ !
