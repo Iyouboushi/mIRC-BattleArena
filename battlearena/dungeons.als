@@ -28,7 +28,7 @@ dungeon.start {
   writeini $txtfile(battle2.txt) DungeonInfo PlayersNeeded %dungeon.players.needed
   writeini $txtfile(battle2.txt) DungeonInfo DungeonLevel %dungeon.level
 
-  writeini $txtfile(battle2.txt) BattleInfo TimeStarted $fulldate
+  writeini $txtfile(battle2.txt) BattleInfo TimeKeyUsed $fulldate
 
   ; Show the dungeon start message.
   $display.message(2 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) 
@@ -89,6 +89,9 @@ dungeon.begin {
   set %battleisopen off
 
   /.timerBattleBegin off
+
+  ; Write the time the dungeon begins
+  writeini $txtfile(battle2.txt) BattleInfo TimeStarted $fulldate
 
   ; First, see if there's any players in the battle..
   var %number.of.players $readini($txtfile(battle2.txt), BattleInfo, Players)

@@ -465,7 +465,7 @@ alias startnormal {
 
   writeini battlestats.dat TempBattleInfo LastBattleType %start.battle.type
 
-  set %battleis on | set %battleisopen on | writeini $txtfile(battle2.txt) BattleInfo TimeStarted $fulldate
+  set %battleis on | set %battleisopen on | writeini $txtfile(battle2.txt) BattleInfo PortalOpened $fulldate
 
   /.timerBattleStart off
 
@@ -702,6 +702,9 @@ alias battlebegin {
   set %battleisopen off
 
   /.timerBattleBegin off
+
+  ; Write the time the battle begins
+  writeini $txtfile(battle2.txt) BattleInfo TimeStarted $fulldate
 
   if (%battle.type = ai) { $ai.battle.createodds | unset %betting.period |  $display.message($readini(translation.dat, system, BettingPeriodClosed), global) }
 
