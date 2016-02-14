@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/10/16
+;;;; Last updated: 02/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -224,6 +224,8 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCStatus, PotionWitch) = $null) { writeini shopnpcs.dat NPCStatus PotionWitch false }
     if ($readini(shopnpcs.dat, NPCStatus, Gambler) = $null) { writeini shopnpcs.dat NPCStatus Gambler kidnapped }
     if ($readini(shopnpcs.dat, NPCStatus, DungeonKeyMerchant) = $null) { writeini shopnpcs.dat NPCStatus DungeonKeyMerchant kidnapped }
+    if ($readini(shopnpcs.dat, NPCStatus, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCStatus GobbieBoxGoblin false }
+
 
     if ($readini(shopnpcs.dat, Events, FrostLegionDefeated) = $null) { writeini shopnpcs.dat Events FrostLegionDefeated false }
     if ($readini(shopnpcs.dat, Events, SavedElves) = $null) { writeini shopnpcs.dat Events SavedElves 0 }
@@ -250,6 +252,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCNames, PotionWitch) = $null) { writeini shopnpcs.dat NPCNames PotionWitch Syrup the Potion Witch }
     if ($readini(shopnpcs.dat, NPCNames, Gambler) = $null) { writeini shopnpcs.dat NPCNames Gambler Setzer the Gambler }
     if ($readini(shopnpcs.dat, NPCNames, DungeonKeyMerchant) = $null) { writeini shopnpcs.dat NPCNames DungeonKeyMerchant Vinz Clortho the Keymaster }
+    if ($readini(shopnpcs.dat, NPCNames, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCNames GobbieBoxGoblin Bountibox the Goblin }
 
     ; Allied Forces Garden stuff
     if ($readini(garden.dat, GardenStats, XP) = $null) { writeini garden.dat GardenStats XP 0 }
@@ -642,6 +645,10 @@ shopnpc.totalinfo  {
       var %temp.totallostsouls $readini($char(%name), stuff, LostSoulsKilled)
       if (%temp.totallostsouls = $null) { var %temp.totallostsouls 0 }
       inc %player.totallostsouls %temp.totallostsouls
+
+      var %temp.itemssold $readini($char(%name), Stuff, ItemsSold)
+      if (%temp.itemssold = $null) { var %temp.itemssold 0 }
+      inc %player.itemssold %temp.itemssold
 
     }    
   }

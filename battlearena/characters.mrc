@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/10/16
+;;;; Last updated: 02/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1821,4 +1821,56 @@ alias gamble.game {
 
   ; Write the time we last gambled
   writeini $char($1) info LastGambleTime $ctime
+}
+
+
+; ===================================
+; Gobbie Box
+; ===================================
+on 3:TEXT:!gobbiebox*:*:{ $gobbiebox($nick, $2) } 
+on 3:TEXT:!gobbie box*:*:{ $gobbiebox($nick, $3) } 
+
+alias gobbiebox {
+  ; $1 = user
+  ; $2 = open or help
+
+  if ($shopnpc.present.check(GobbieBoxGoblin) != true) { $display.private.message(4Error: $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) the goblin is not at the Allied Forces HQ so the gobbie box cannot be used.) | halt }
+
+  if (($2 = help) || ($2 = $null)) { 
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is standing next to a large treasure chest and says 2"Oho! Ya feelin' lucky 'nough tah takes a stab at da myst'ry box?!",1)
+    $display.private.message.delay.custom(2Use !gobbie box open to open the box.  Note that it requires 10 login points to open , 2)
+    halt
+  }
+
+  if ($loginpoints($1, check) < 10) { $display.private.message(4Error: You do not have 10 login points ) | halt }
+  if ($lines($lstfile(chest_gobbiebox.lst)) = 0) { $display.private.message(4ERROR: Gobbie Box lst file not found or empty! Contact the bot admin! | halt }
+
+  ; Subtract the login points
+  var %loginpoints.temp $loginpoints($1, check)
+  dec %loginpoints.temp 10
+  writeini $char($1) stuff LoginPoints %loginpoints.temp
+
+  ; Open the box!
+  var %items.line $rand(1,$lines($lstfile(chest_gobbiebox.lst)))
+  var %random.item.name $read -l $+ %items.line $lstfile(chest_gobbiebox.lst)
+
+  var %current.reward.items $readini($char($1), item_amount, %random.item.name)
+  if (%current.reward.items = $null) { var %current.reward.items 0 }
+  inc %current.reward.items 1
+  writeini $char($1) item_amount %random.item.name %current.reward.items
+
+  echo -a line: %items.line
+  echo -a item chosen: %random.item.name
+  echo -a player amount: %current.reward.items 
+
+
+  $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) opens the box and says2 "Lesee what myst'ries await! Dis box is full o' myst'ries! Dat span da realm's his'try! So whatcha gonna get from da chest...o'..uh, fortunery?")
+  $display.private.message.delay.custom(2"Oooh! Looks at what popped out! I hope it makes yer adventures dat much more adventumarous!",2)
+  $display.private.message.delay.custom(4You have obtained 1 %random.item.name ,3)
+
+  ; Keep track of the # of boxes opened (may be used later for an achievement)
+  var %number.of.gobbieboxes $readini($char($1), stuff, GobbieBoxesOpened)
+  if (%number.of.gobbieboxes = $null) { var %number.of.gobbieboxes 0 }
+  inc %number.of.gobbieboxes 1
+  writeini $char($1) stuff GobbieBoxesOpened %number.of.gobbieboxes
 }

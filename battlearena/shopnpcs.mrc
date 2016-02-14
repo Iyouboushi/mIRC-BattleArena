@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 02/10/16
+;;;; Last updated: 02/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -125,9 +125,16 @@ alias shopnpc.list {
   var %npcstatus.Travel.name $readini(shopnpcs.dat, NPCNames, TravelMerchant)
   if (%npcstatus.Travel.name = $null) { var %npcstatus.Travel.name Travel Merchant }
 
+  var %npcstatus.GobbieBoxGoblin $readini(shopnpcs.dat, NPCstatus, GobbieBoxGoblin)
+  if (%npcstatus.GobbieBoxGoblin = true) { var %npcstatus.GobbieBoxGoblin.color 3 }
+  if (%npcstatus.GobbieBoxGoblin = false) { var %npcstatus.GobbieBoxGoblin.color 5 }
+  if (%npcstatus.GobbieBoxGoblin = kidnapped) { var %npcstatus.GobbieBoxGoblin.color 4 }
+  var %npcstatus.GobbieBoxGoblin.name $readini(shopnpcs.dat, NPCNames, GobbieBoxGoblin)
+  if (%npcstatus.GobbieBoxGoblin.name = $null) { var %npcstatus.GobbieBoxGoblin.name BountiBox the Goblin }
+
   var %npcs.status [ $+ %npcstatus.president.color $+ %npcstatus.president.name $+ ]  [ $+ %npcstatus.healing.color $+ %npcstatus.healing.name $+ ] [ $+ %npcstatus.battle.color $+ %npcstatus.battle.name $+ ] [ $+ %npcstatus.discount.color $+ %npcstatus.discount.name $+ ] [ $+ %npcstatus.song.color $+ %npcstatus.song.name $+ ] [ $+ %npcstatus.shield.color $+ %npcstatus.shield.name $+ ]
   var %npcs.status2 [ $+ %npcstatus.dungeonkey.color $+ %npcstatus.dungeonkey.name $+ ]  [ $+ %npcstatus.potionwitch.color $+ %npcstatus.potionwitch.name $+ ] [ $+ %npcstatus.wheel.color $+ %npcstatus.wheel.name $+ ] [ $+ %npcstatus.gambler.color $+ %npcstatus.gambler.name $+ ] [ $+ %npcstatus.gardener.color $+ %npcstatus.gardener.name $+ ] [ $+ %npcstatus.travel.color $+ %npcstatus.travel.name $+ ]
-
+  var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ]
   ; Check for seasonal NPCs
   if ($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true) { var %seasonal.status %seasonal.status [3Easter Bunny] }
   if ($readini(shopnpcs.dat, NPCstatus, Santa) = true) { 
@@ -141,16 +148,19 @@ alias shopnpc.list {
   if ($1 = global) { 
     $display.message(%npcs.status) 
     $display.message(%npcs.status2) 
+    $display.message(%npcs.status3) 
     if (%seasonal.status != $null) { $display.message(%seasonal.status) }
   }
   if ($1 = private) { 
     $display.private.message(%npcs.status)
     $display.private.message(%npcs.status2)
+    $display.private.message(%npcs.status3)
     if (%seasonal.status != $null) {  $display.private.message(%seasonal.status) }
   }
   if ($1 = dcc) { 
     $dcc.private.message($2, %npcs.status) 
     $dcc.private.message($2, %npcs.status2)
+    $dcc.private.message($2, %npcs.status3)
     if (%seasonal.status != $null) { $dcc.private.message($2,%seasonal.status) }
   }
 
@@ -262,6 +272,7 @@ alias shopnpc.status.check {
   if ($readini(shopnpcs.dat, NPCStatus, SongMerchant) = false) { var %need.to.check.newnpcs true }
   if ($readini(shopnpcs.dat, NPCStatus, ShieldMerchant) = false) { var %need.to.check.newnpcs true }
   if ($readini(shopnpcs.dat, NPCStatus, PotionWitch) = false) { var %need.to.check.newnpcs true }
+  if ($readini(shopnpcs.dat, NPCStatus, GobbieBoxGoblin) = false) { var %need.to.check.newnpcs true }
 
   if (%need.to.check.newnpcs = false) { return }
 
@@ -271,6 +282,7 @@ alias shopnpc.status.check {
   set %player.totalachievements 0
   set %player.totalparries 0
   set %player.totallostsouls 0
+  set %player.itemssold 0
 
   .echo -q $findfile( $char_path , *.char, 0 , 0, shopnpc.totalinfo $1-)
 
@@ -292,8 +304,11 @@ alias shopnpc.status.check {
   ; Check the potion witch NPC
   if (($shopnpc.present.check(PotionWitch) = false) && (%player.totallostsouls >= 200)) { $shopnpc.add(PotionWitch) }
 
+  ; Check the potion witch NPC
+  if (($shopnpc.present.check(GobbieBoxGoblin) = false) && (%player.itemssold >= 200)) { $shopnpc.add(GobbieBoxGoblin) }
+
   unset %player.deaths | unset %player.shoplevels | unset %player.totalbattles | unset %player.totalachievements
-  unset %player.totallostsouls | unset %player.totalparries
+  unset %player.totallostsouls | unset %player.totalparries | unset %player.itemssold
 }
 
 ; Is an NPC at the allied forces HQ?
@@ -369,6 +384,7 @@ alias shopnpc.kidnap {
   if ($shopnpc.present.check(WheelMerchant) = true) { %active.npcs = $addtok(%active.npcs, WheelMerchant, 46) }
   if ($shopnpc.present.check(PotionWitch) = true) { %active.npcs = $addtok(%active.npcs, PotionWitch, 46) }
   if ($shopnpc.present.check(Gambler) = true) { %active.npcs = $addtok(%active.npcs, Gambler, 46) }
+  if ($shopnpc.present.check(GobbieBoxGoblin) = true) { %active.npcs = $addtok(%active.npcs, GobbieBoxGoblin, 46) }
 
   if (%active.npcs = $null) { return }
 
@@ -410,6 +426,7 @@ alias shopnpc.rescue {
   if ($shopnpc.present.check(PotionWitch) = kidnapped) { %active.npcs = $addtok(%active.npcs, PotionWitch, 46) }
   if ($shopnpc.present.check(Gambler) = kidnapped) { %active.npcs = $addtok(%active.npcs, Gambler, 46) }
   if ($shopnpc.present.check(DungeonKeyMerchant) = kidnapped) { %active.npcs = $addtok(%active.npcs, DungeonKeyMerchant, 46) } 
+  if ($shopnpc.present.check(GobbieBoxGoblin) = kidnapped) { %active.npcs = $addtok(%active.npcs, GobbieBoxGoblin, 46) }
 
   if (%active.npcs = $null) { return }
 

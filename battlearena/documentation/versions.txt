@@ -1444,6 +1444,8 @@ Battle Arena Bot VERSIONS
   anything that isn't in [modifiers] or is set to 0 in that section. 
 - Added legendary armor
 - Added the voucher item system. Using vouchers obtained from portals players will be able to buy armor and weapons
+- Added a new Shop NPC: BountiBox the Goblin.  Upon arriving at the HQ, he will unlock the Gobbie Box.
+  Players can use !gobbie box open to exchange 10 login points for a random item from the box
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
