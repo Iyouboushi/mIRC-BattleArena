@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/25/16
+;;;; Last updated: 02/20/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -119,7 +119,7 @@ alias uses_item {
   if (%item.type = dungeon) { $item.dungeon($1, $2) | halt }
   if (%item.type = torment) { $item.torment($1, $2) | halt }
 
-  if (((((((%item.type != summon) && (%item.type != key) && (%item.type != shopreset) && (%item.type != food) && (%item.type != trust) && (%item.type != increaseWeaponLevel) && (%item.type != portal))))))) {
+  if ((((((((%item.type != summon) && (%item.type != key) && (%item.type != shopreset) && (%item.type != food) && (%item.type != trust) && (%item.type != increaseWeaponLevel) && (%item.type != revive) && (%item.type != portal)))))))) {
     if (($3 != on) || ($3 = $null)) {  $display.message($readini(translation.dat, errors, ItemUseCommandError), private) | halt }
     if ($4 = me) {  $display.message($1 $readini(translation.dat, errors, MustSpecifyName), private) | halt }
     if ($readini($char($4), battle, status) = dead) { $display.message($readini(translation.dat, errors, CannotUseItemOnDead), private) | halt }
@@ -342,7 +342,7 @@ alias uses_item {
     }
   }
 
-  if (%item.type = revive) {  
+  if (%item.type = autorevive) {  
     $check_for_battle($1)
     if (%target.flag = monster) {  $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers),private) | halt }
     if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious), private)  | unset %real.name | halt }
@@ -353,6 +353,21 @@ alias uses_item {
     $item.revive($1, $4, $2) 
 
     $decrease_item($1, $2) 
+    if (%battleis = on)  { $check_for_double_turn($1) | halt }
+  }
+
+  if (%item.type = revive) {  
+    $check_for_battle($1)
+    if (%target.flag = monster) {  $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers),private) | halt }
+    if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious), private)  | unset %real.name | halt }
+    if ($readini($char($4), Battle, Status) != dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotUseOnLivePerson), private) | unset %real.name | halt }
+
+    $set_chr_name($4) | var %enemy %real.name | $set_chr_name($1) 
+    $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
+    $decrease_item($1, $2) 
+
+    $character.revive($4)
+
     if (%battleis = on)  { $check_for_double_turn($1) | halt }
   }
 

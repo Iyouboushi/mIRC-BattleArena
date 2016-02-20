@@ -389,6 +389,7 @@ CanNotAttackWhileUnconcious=$chr(3) $+ 4  $+ %real.name cannot attack while un
 CanNotAttackSomeoneWhoIsDead=$chr(3) $+ 4 $+ %real.name cannot attack someone who is dead! 
 CanNotAttackSomeoneWhoFled=$chr(3) $+ 4 $+ %real.name cannot attack $set_chr_name($2) %real.name $+ , because %real.name has run away from the fight! 
 CanNotAttackSomeoneWhoFledTech=$chr(3) $+ 4 $+ %real.name cannot attack $set_chr_name($3) %real.name $+ , because %real.name has run away from the fight! 
+CanNotUseOnLivePerson=$chr(3) $+ 4 $+ %real.name cannot use this item on someone who is still alive.
 DoesNotKnowTech=$chr(3) $+ 4 $+ %real.name does not know how to perform the $2 technique!
 Can'tPerformTechWithWeapon=$chr(3) $+ 4 $+ %real.name cannot perform that technique using $iif(%weapon.equipped.left != $null, $gender($1) equipped weapons, $gender(41) %weapon.equipped)
 NotEnoughTPforTech=$chr(3) $+ 4 $+ %real.name does not have enough TP to perform this technique! 

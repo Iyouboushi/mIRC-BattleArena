@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/12/16
+;;;; Last updated: 02/20/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2006,6 +2006,44 @@ death.conditions.check {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Revives a character with
+; half health
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.revive {
+  ; $1 = player to revive
+
+  var %max.hp $readini($char($1), basestats, hp)
+  set %revive.current.hp $round($calc(%max.hp / 2),0)
+  if (%revive.current.hp <= 0) { set %revive.current.hp 1 }
+  writeini $char($1) battle hp %revive.current.hp
+  writeini $char($1) battle status normal
+  writeini $char($1) status revive no
+  $set_chr_name($1)
+
+  writeini $txtfile(battle2.txt) style $1 0
+  unset %revive.current.hp
+
+  var %number.of.revives $readini($char($1), stuff, RevivedTimes)
+  if (%number.of.revives = $null) { var %number.of.revives 0 }
+  inc %number.of.revives 1
+  writeini $char($1) stuff RevivedTimes %number.of.revives
+  $achievement_check($1, Can'tKeepAGoodManDown)
+
+  writeini $char($1) Status poison no | writeini $char($1) Status HeavyPoison no | writeini $char($1) Status blind no
+  writeini $char($1) Status HeavyPoison no | writeini $char($1) status HeavyPoison no | writeini $char($1) Status curse no 
+  writeini $char($1) Status weight no | writeini $char($1) status virus no | writeini $char($1) status poison.timer 1 | writeini $char($1) status intimidate no
+  writeini $char($1) Status drunk no | writeini $char($1) Status amnesia no | writeini $char($1) status paralysis no | writeini $char($1) status amnesia.timer 1 | writeini $char($1) status paralysis.timer 1 | writeini $char($1) status drunk.timer 1
+  writeini $char($1) status zombie no | writeini $char($1) Status slow no | writeini $char($1) Status sleep no | writeini $char($1) Status stun no
+  writeini $char($1) status boosted no  | writeini $char($1) status curse.timer 1 | writeini $char($1) status slow.timer 1 | writeini $char($1) status zombie.timer 1
+  writeini $char($1) status zombieregenerating no | writeini $char($1) status charmer noOneThatIKnow | writeini $char($1) status charm.timer 1 | writeini $char($1) status charmed no 
+  writeini $char($1) status charm no | writeini $char($1) status bored no | writeini $char($1) status bored.timer 1 | writeini $char($1) status confuse no 
+  writeini $char($1) status confuse.timer 1 | writeini $char($1) status defensedown no | writeini $char($1) status defensedown.timer 0 | writeini $char($1) status strengthdown no 
+  writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown no | writeini $char($1) status intdown.timer 1
+  writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0  | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0
+
+  return
+}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This is the automatic-revival
 ; function.. it's named after the 
 ; Gold Orbs in Devil May Cry
@@ -2018,40 +2056,13 @@ goldorb_check {
   if ($2 != weapon) { $death.conditions.check($1, $2) }
 
   if ($readini($char($1), status, revive) = yes) {
-    var %max.hp $readini($char($1), basestats, hp)
-    set %revive.current.hp $round($calc(%max.hp / 2),0)
-    if (%revive.current.hp <= 0) { set %revive.current.hp 1 }
-    writeini $char($1) battle hp %revive.current.hp
-    writeini $char($1) battle status normal
-    writeini $char($1) status revive no
-    $set_chr_name($1)
 
-    $set_chr_name($1)
+    $character.revive($1)
+
     if ($readini($char($1), descriptions, revive) != $null) {  var %revive.message 7 $+ %real.name  $+ $readini($char($1), descriptions, revive) }
     if ($readini($char($1), descriptions, revive) = $null) { var %revive.message $readini(translation.dat, battle, GoldOrbUsed) }
 
     $display.message.delay(%revive.message, battle, 1) 
-
-    writeini $txtfile(battle2.txt) style $1 0
-    unset %revive.current.hp
-
-    var %number.of.revives $readini($char($1), stuff, RevivedTimes)
-    if (%number.of.revives = $null) { var %number.of.revives 0 }
-    inc %number.of.revives 1
-    writeini $char($1) stuff RevivedTimes %number.of.revives
-    $achievement_check($1, Can'tKeepAGoodManDown)
-
-    writeini $char($1) Status poison no | writeini $char($1) Status HeavyPoison no | writeini $char($1) Status blind no
-    writeini $char($1) Status HeavyPoison no | writeini $char($1) status HeavyPoison no | writeini $char($1) Status curse no 
-    writeini $char($1) Status weight no | writeini $char($1) status virus no | writeini $char($1) status poison.timer 1 | writeini $char($1) status intimidate no
-    writeini $char($1) Status drunk no | writeini $char($1) Status amnesia no | writeini $char($1) status paralysis no | writeini $char($1) status amnesia.timer 1 | writeini $char($1) status paralysis.timer 1 | writeini $char($1) status drunk.timer 1
-    writeini $char($1) status zombie no | writeini $char($1) Status slow no | writeini $char($1) Status sleep no | writeini $char($1) Status stun no
-    writeini $char($1) status boosted no  | writeini $char($1) status curse.timer 1 | writeini $char($1) status slow.timer 1 | writeini $char($1) status zombie.timer 1
-    writeini $char($1) status zombieregenerating no | writeini $char($1) status charmer noOneThatIKnow | writeini $char($1) status charm.timer 1 | writeini $char($1) status charmed no 
-    writeini $char($1) status charm no | writeini $char($1) status bored no | writeini $char($1) status bored.timer 1 | writeini $char($1) status confuse no 
-    writeini $char($1) status confuse.timer 1 | writeini $char($1) status defensedown no | writeini $char($1) status defensedown.timer 0 | writeini $char($1) status strengthdown no 
-    writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown no | writeini $char($1) status intdown.timer 1
-    writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0  | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0
   }
 }
 
