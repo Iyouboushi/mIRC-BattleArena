@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 02/10/16
+;;;; Last updated: 02/20/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -169,7 +169,8 @@ alias view-info {
     if (%info.type = tp) { $display.private.message([4Name12 $3 $+ ] [4Type12 TP Restore $+ ] [4TP Restored Amount12 %info.amount $+ ]  [4Item Cost12 %info.cost red orbs] %exclusive %info.fullbringmsg) }
     if (%info.type = CureStatus) { $display.private.message([4Name12 $3 $+ ] [4Type12 Cure Status $+ ] [4Item Cost12 %info.cost red orbs] [4Note12 This item will not cure Charm or Intimidation $+ ] %exclusive %info.fullbringmsg) }
     if (%info.type = accessory) { $display.private.message([4Name12 $3 $+ ] [4Type12 Accessory $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])  }
-    if (%info.type = revive) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Automatic Revival $+ ] %exclusive [4Description12 When used this item will activate the "Automatic Revive" status.  If you die in battle, you will be revived with 1/2 HP.  $+ ])  }
+    if (%info.type = autorevive) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Automatic Revival $+ ] %exclusive [4Description12 When used this item will activate the "Automatic Revive" status.  If you die in battle, you will be revived with 1/2 HP.  $+ ])  }
+    if (%info.type = revive) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Revival $+ ] %exclusive [4Description12 When used this item will revive a dead player with 1/2 HP.  $+ ])  }
     if (%info.type = key) { $display.private.message([4Name12 $3 $+ ] [4Type12 Key $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])  }
     if (%info.type = gem) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Gem $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])  }
     if (%info.type = misc) { 
