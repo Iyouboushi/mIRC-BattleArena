@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/10/16
+;;;; Last updated: 02/20/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -3368,4 +3368,24 @@ alias skill.warp { $set_chr_name($1)
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, global)
 
   unset %check.item | unset %skill.description
+}
+
+;=================
+; OVERWHELM
+;=================
+; This enhancement point skill increases damage
+; by 1% per skill level
+
+alias skill.overwhelm {
+  ; $1 = the person we're checking
+
+  if (%attack.damage = 0) { return }
+  if (%guard.message != $null) { return }
+
+  var %skill.level $readini($char($1), skills, Overwhelm)
+  if ((%skill.level = 0) || (%skill.level = $null)) { return }
+
+  var %damage.increase $return_percentofvalue(%attack.damage, $calc(2 * %skill.level))
+  inc %attack.damage %damage.increase
+  return
 }

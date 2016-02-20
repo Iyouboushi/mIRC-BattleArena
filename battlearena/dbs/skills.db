@@ -642,3 +642,9 @@ Cost=0
 Type=passive
 Info=This skill will increase the odds of finding a dragon's lair by 1% per skill level, up to 5% max.
 Max=5
+
+[Overwhelm]
+Cost=0
+type=passive
+Info=This skill will increase overall damage against monsters by 1% per skill level
+Max=5

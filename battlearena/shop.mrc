@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 02/03/16
+;;;; Last updated: 02/20/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1234,11 +1234,9 @@ alias shop.enhancements {
     if (%enhancement.purchase.int < 20) { %shop.list = $addtok(%shop.list,INT+10 ( $+ $calc(1 + %enhancement.purchase.int) $+ ),46) }
     if (%enhancement.purchase.spd < 20) { %shop.list = $addtok(%shop.list,SPD+10 ( $+ $calc(1 + %enhancement.purchase.spd) $+ ),46) }
 
-
     ; display the list with the prices.
     $shop.cleanlist
     if (%shop.list != $null) { $display.private.message.delay(2Stat Enhancements5: %shop.list) }
-
 
     ; Check for skills
     $shop.get.skills.enhancingpoint($1)
@@ -1251,8 +1249,8 @@ alias shop.enhancements {
 
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid item?
-    var %valid.purchase.items hp.ig.str.def.int.spd.Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter
-    var %valid.purchase.skills Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter
+    var %valid.purchase.items hp.ig.str.def.int.spd.Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm
+    var %valid.purchase.skills Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm
 
     if ($istok(%valid.purchase.items, $lower($3), 46) = $false) { $display.private.message(4You cannot purchase that in this shop) | halt }
 
@@ -1329,8 +1327,6 @@ alias shop.enhancements {
 
   }
 }
-
-
 
 alias shop.weapons {
   if ($2 = list) {
