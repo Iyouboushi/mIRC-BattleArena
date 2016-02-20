@@ -1447,6 +1447,7 @@ Battle Arena Bot VERSIONS
 - Added a new Shop NPC: BountiBox the Goblin.  Upon arriving at the HQ, he will unlock the Gobbie Box.
   Players can use !gobbie box open to exchange 10 login points for a random item from the box
 - Added the "revive" type item that will revive a dead player with half hp. The PhoenixDown item has been added as an example.
+- Added the enhancement point skill: Overwhelm. This skill will increase overall damage by 2% per skill level
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
