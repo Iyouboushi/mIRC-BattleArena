@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 02/10/16
+;;;; Last updated: 02/20/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -825,7 +825,7 @@ formula.meleedmg.player.formula_2.0 {
   if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
 
   ; Are we dual-wielding?  If so, increase the hits by the # of hits of the second weapon.
-  if ($readini($char($1), weapons, equippedLeft) != $null) {
+  if (($readini($char($1), weapons, equippedLeft) != $null) && ($person_in_mech($1) = false)) {
     var %left.hits $readini($dbfile(weapons.db), $readini($char($1), weapons, equippedLeft), hits)
     if (%left.hits = $null) { var %left.hits 1 }
     inc %weapon.howmany.hits %left.hits 
@@ -1186,7 +1186,7 @@ formula.meleedmg.player.formula_3.0 {
   if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
 
   ; Are we dual-wielding?  If so, increase the hits by the # of hits of the second weapon.
-  if ($readini($char($1), weapons, equippedLeft) != $null) {
+  if (($readini($char($1), weapons, equippedLeft) != $null) && ($person_in_mech($1) = false)) {
     var %left.hits $readini($dbfile(weapons.db), $readini($char($1), weapons, equippedLeft), hits)
     if (%left.hits = $null) { var %left.hits 1 }
     inc %weapon.howmany.hits %left.hits 
@@ -1536,7 +1536,7 @@ formula.meleedmg.player.formula_1.0 {
   if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
 
   ; Are we dual-wielding?  If so, increase the hits by the # of hits of the second weapon.
-  if ($readini($char($1), weapons, equippedLeft) != $null) {
+  if (($readini($char($1), weapons, equippedLeft) != $null) && ($person_in_mech($1) = false)) {
     var %left.hits $readini($dbfile(weapons.db), $readini($char($1), weapons, equippedLeft), hits)
     if (%left.hits = $null) { var %left.hits 1 }
     inc %weapon.howmany.hits %left.hits 
@@ -1926,7 +1926,7 @@ formula.meleedmg.player.formula_2.5 {
   if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
 
   ; Are we dual-wielding?  If so, increase the hits by the # of hits of the second weapon.
-  if ($readini($char($1), weapons, equippedLeft) != $null) {
+  if (($readini($char($1), weapons, equippedLeft) != $null) && ($person_in_mech($1) = false)) {
     var %left.hits $readini($dbfile(weapons.db), $readini($char($1), weapons, equippedLeft), hits)
     if (%left.hits = $null) { var %left.hits 1 }
     inc %weapon.howmany.hits %left.hits 
@@ -2381,7 +2381,7 @@ formula.meleedmg.monster {
   if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
 
   ; Are we dual-wielding?  If so, increase the hits by the # of hits of the second weapon.
-  if ($readini($char($1), weapons, equippedLeft) != $null) {
+  if (($readini($char($1), weapons, equippedLeft) != $null) && ($person_in_mech($1) = false)) {
     var %left.hits $readini($dbfile(weapons.db), $readini($char($1), weapons, equippedLeft), hits)
     if (%left.hits = $null) { var %left.hits 1 }
     inc %weapon.howmany.hits %left.hits 
@@ -4380,7 +4380,7 @@ formula.meleedmg.player.old {
   if ($augment.check($1, AdditionalHit) = true) { inc %weapon.howmany.hits %augment.strength }
 
   ; Are we dual-wielding?  If so, increase the hits by the # of hits of the second weapon.
-  if ($readini($char($1), weapons, equippedLeft) != $null) {
+  if (($readini($char($1), weapons, equippedLeft) != $null) && ($person_in_mech($1) = false)) {
     var %left.hits $readini($dbfile(weapons.db), $readini($char($1), weapons, equippedLeft), hits)
     if (%left.hits = $null) { var %left.hits 1 }
     inc %weapon.howmany.hits %left.hits 
