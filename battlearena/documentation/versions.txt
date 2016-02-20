@@ -1446,6 +1446,7 @@ Battle Arena Bot VERSIONS
 - Added the voucher item system. Using vouchers obtained from portals players will be able to buy armor and weapons
 - Added a new Shop NPC: BountiBox the Goblin.  Upon arriving at the HQ, he will unlock the Gobbie Box.
   Players can use !gobbie box open to exchange 10 login points for a random item from the box
+- Added the "revive" type item that will revive a dead player with half hp. The PhoenixDown item has been added as an example.
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1459,6 +1460,7 @@ Battle Arena Bot VERSIONS
 - Changed the amount of style points for the style ranking that are obtained with multi-hits.  
   Now it's only calculated on the damage done with the first hit.
 - Changed the way the skills keep track of the turn they are used and when they can be used again
+- Changed the original "revive" type item to "AutoRevive"
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
