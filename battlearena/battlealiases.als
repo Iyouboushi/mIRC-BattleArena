@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/20/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -699,7 +699,7 @@ boost_monster_hp {
 
   if (%battle.type = torment) {
     var %torment.hp.multiplier %torment.level
-    if (%torment.hp.multiplier >= 10) { var %torment.hp.multiplier 10 }
+    if (%torment.hp.multiplier >= 15) { var %torment.hp.multiplier 15 }
     inc %hp $calc(%torment.hp.multiplier * 500000)
 
     if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 22000) }
