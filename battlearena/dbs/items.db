@@ -1832,6 +1832,14 @@ Desc=A magical charm that has been created to help heroes find the lairs of drag
 SellPrice=2000
 EnhanceDragonHunt.Amount=20
 
+[Friendship-Ring]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseTrustFriendship
+Desc=A flowery ring that shows that the friendship between an NPC and player.
+SellPrice=1000
+IncreaseTrustFriendship.Amount=1
+
 =========================
 MISC ITEMS
 =========================

@@ -543,9 +543,16 @@ alias item.trust {
   .copy -o $npc(%trust.npc) $char(%trust.npc) | var %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%trust.npc,46) |  writeini $txtfile(battle2.txt) Battle List %curbat 
   write $txtfile(battle.txt) %trust.npc
 
+  var %trust.level $get.level($1)
+
+  if ($accessory.check($1, IncreaseTrustFriendship) = true) {
+    inc %trust.level %accessory.amount
+    unset %accessory.amount
+  }
+
   $boost_monster_hp(%trust.npc)
   $fulls(%trust.npc) 
-  $levelsync(%trust.npc, $get.level($1))
+  $levelsync(%trust.npc, $get.level(%trust.level))
 
   if ($readini($char(%trust.npc), basestats, hp) > 10000) { writeini $char(%trust.npc) basestats hp 10000 | writeini $char(%trust.npc) battle hp 10000 }
   writeini $char(%trust.npc) info TrustNPC true
