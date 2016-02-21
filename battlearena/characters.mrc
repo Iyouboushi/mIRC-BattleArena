@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/13/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1001,7 +1001,11 @@ ON 3:TEXT:*equips *:*:{
 on 3:TEXT:!equip *:*: { 
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ($2 = mech) { $mech.equip($nick, $3) }
-  if ($2 = accessory) { $wear.accessory($nick, $3) | halt }
+  if ($2 = accessory) { 
+    if ($3 isnum) { $wear.accessory($nick, $4, $3) }
+    else {  $wear.accessory($nick, $3, 1) }
+    halt
+  }
   if ($2 = armor) { $wear.armor($nick, $3) | halt }
 
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyCharmed),private) | halt }
@@ -1055,7 +1059,11 @@ on 3:TEXT:!equip *:*: {
 on 3:TEXT:!unequip *:*: { 
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ($2 = mech) { $mech.unequip($nick, $3) | halt }
-  if ($2 = accessory) { $remove.accessory($nick, $3) | halt }
+  if ($2 = accessory) { 
+    if ($3 isnum) {  $remove.accessory($nick, $4, $3) }
+    else {  $remove.accessory($nick, $3, 1) }
+    halt
+  }
   if ($2 = armor) { $remove.armor($nick, $3) | halt }
 
   if ($is_charmed($nick) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed),private) | halt }

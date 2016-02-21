@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 02/09/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -862,6 +862,7 @@ readitems {
 ; Displays a char's accessories
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 readaccessories {
+  ; Display the list of accessories the player has
   if (%accessories.list != $null) { 
     if ($2 = channel) { $display.message($readini(translation.dat, system, ViewAccessories),private) }
     if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewAccessories)) }
@@ -878,7 +879,16 @@ readaccessories {
       if ($2 = private) { $display.private.message(3 $+ %accessories.list3) }
       if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %accessories.list3) }
     }
+  }
+  else { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoAccessories),private) }
+    if ($2 = private) {  $display.private.message($readini(translation.dat, system, HasNoAccessories)) }
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, HasNoAccessories)) } 
+  }
 
+  ; Display which accessories (if any) are equipped
+
+  if ($readini($char($1), enhancements, Accessory2) != true) { 
     var %equipped.accessory $readini($char($1), equipment, accessory)
     if ((%equipped.accessory = $null) || (%equipped.accessory = none)) { 
       if ($2 = channel) {  $display.message($readini(translation.dat, system, HasNoEquippedAccessory),private) }
@@ -892,13 +902,17 @@ readaccessories {
     }
     unset %accessories.list | unset %accessories.list2 | unset %accessories.list3
   }
-  else { 
-    if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoAccessories),private) }
-    if ($2 = private) {  $display.private.message($readini(translation.dat, system, HasNoAccessories)) }
-    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, HasNoAccessories)) } 
-  }
-}
 
+  if ($readini($char($1), enhancements, accessory2) = true) { 
+    var %equipped.accessory $readini($char($1), equipment, accessory)
+    var %equipped.accessory2 $readini($char($1), equipment, accessory2)
+
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewEquippedAccessories),private) }
+    if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewEquippedAccessories)) }
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewEquippedAccessories)) }
+  }
+
+}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Displays a char's songs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

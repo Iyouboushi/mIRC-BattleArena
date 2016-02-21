@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/20/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1032,45 +1032,94 @@ alias item.food {
 ON 50:TEXT:*wears *:*:{ 
   $checkchar($1)
   if ($3 = $null) { halt }
-  if ($3 = accessory) { $wear.accessory($1, $4) }
+  if ($3 = accessory) {
+    if ($3 isnum) { $wear.accessory($1, $5, $4) }
+    else {  $wear.accessory($1, $4, 1) }
+  }
   if ($3 = armor) { $wear.armor($1, $4) }
 }
 ON 50:TEXT:*removes *:*:{ 
   $checkchar($1)
   if ($3 = $null) { halt }
-  if ($3 = accessory) { $remove.accessory($1, $4) }
+  if ($3 = accessory) { 
+    if ($3 isnum) {  $remove.accessory($nick, $5, $4) }
+    else {  $remove.accessory($nick, $4, 1) }
+  }
   if ($3 = armor) { $remove.armor($1, $4) }
 }
 
-
 on 3:TEXT:!wear*:*: {  
   if ($3 = $null) { $display.private.message(4Error: !wear <accessory/armor> <what to wear>, private) | halt }
-  if ($2 = accessory) { $wear.accessory($nick, $3) }
+  if ($2 = accessory) { 
+    if ($3 isnum) { $wear.accessory($nick, $4, $3) }
+    else {  $wear.accessory($nick, $3, 1) }
+  }
   if ($2 = armor) { $wear.armor($nick, $3) }
 }
 on 3:TEXT:!remove*:*: {  
   if ($3 = $null) { $display.private.message(4Error: !remove <accessory/armor> <what to remove>, private) | halt }
-  if ($2 = accessory) { $remove.accessory($nick, $3) }
+  if ($2 = accessory) { 
+    if ($3 isnum) {  $remove.accessory($nick, $4, $3) }
+    else {  $remove.accessory($nick, $3, 1) }
+  }
   if ($2 = armor) { $remove.armor($nick, $3) }
 }
 
 alias wear.accessory {
+  ; $1 = person equipping
+  ; $2 = the accessory
+  ; $3 = the accessory slot (1 by default)
+
   $set_chr_name($1)
   var %item.type $readini($dbfile(items.db), $2, type)
   if (%item.type != accessory) { $display.message($readini(translation.dat, errors, ItemIsNotAccessory), private) | halt }
   set %check.item $readini($char($1), Item_Amount, $2) 
   if ((%check.item <= 0) || (%check.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
   if ((%battleis = on) && ($nick isin $readini($txtfile(battle2.txt), Battle, List))) { $display.message($readini(translation.dat, errors, CanOnlySwitchAccessoriesOutsideBattle), private) | halt }
-  writeini $char($1) equipment accessory $2
-  $display.message($readini(translation.dat, system, EquippedAccessory), global)
+
+  if ($3 = 1) { 
+    var %current.accessory.type $readini($dbfile(items.db), $2, accessoryType)
+    var %accessory2.type  $readini($dbfile(items.db), $readini($char($1), equipment, accessory2), accessoryType)
+    if (%current.accessory.type = %accessory2.type) {  $display.message($readini(translation.dat, errors, Can'tWearSecondOfSameAccessoryType), private) | halt }
+
+    writeini $char($1) equipment accessory $2
+    $display.message($readini(translation.dat, system, EquippedAccessory), global)
+  }
+
+  if ($3 != 1) {
+    var %equipment.slot $readini($char($1), enhancements, accessory2)
+    if (%equipment.slot != true) { $display.message($readini(translation.dat, errors, NoSecondAccessorySlot), global) }
+    if (%equipment.slot = true) {
+      var %current.accessory.type $readini($dbfile(items.db), $2, accessoryType)
+      var %accessory2.type  $readini($dbfile(items.db), $readini($char($1), equipment, accessory), accessoryType)
+
+      if (%current.accessory.type = %accessory2.type) {  $display.message($readini(translation.dat, errors, Can'tWearSecondOfSameAccessoryType), private) | halt }
+
+      writeini $char($1) equipment accessory2 $2
+      $display.message($readini(translation.dat, system, EquippedAccessory2), global)
+    }
+  }
 }
 alias remove.accessory {
+  ; $1 = person removing
+  ; $2 = the accessory
+  ; $3 = the accessory slot (1 by default)
+
   $set_chr_name($1)
-  var %equipped.accessory $readini($char($1), equipment, accessory)
+
+  if ($3 = 1) {  var %equipped.accessory $readini($char($1), equipment, accessory) }
+  else { var %equipped.accessory $readini($char($1), equipment, accessory2) }
+
   if ($2 != %equipped.accessory) { $display.message($readini(translation.dat, system, NotWearingThatAccessory), private)  | halt }
   if ((%battleis = on) && ($nick isin $readini($txtfile(battle2.txt), Battle, List))) { $display.message($readini(translation.dat, errors, CanOnlySwitchAccessoriesOutsideBattle), private) | halt }
-  else { writeini $char($1) equipment accessory none } 
-  $display.message($readini(translation.dat, system, RemovedAccessory), global)
+  else { 
+    if ($3 = 1 ) { writeini $char($1) equipment accessory none 
+      $display.message($readini(translation.dat, system, RemovedAccessory), global)
+    }
+    else { writeini $char($1) equipment accessory2 none 
+      $display.message($readini(translation.dat, system, RemovedAccessory2), global)
+    }
+  } 
 }
 
 alias wear.armor {

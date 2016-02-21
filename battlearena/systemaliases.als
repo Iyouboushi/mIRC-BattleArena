@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/13/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3464,9 +3464,10 @@ accessory.check {
 
   unset %amount
 
-  var %accessory.found false
-  set %current.accessory $readini($char($1), equipment, accessory) 
-  set %accessory.type $readini($dbfile(items.db), %current.accessory, accessoryType)
+  set %accessory.found false | set %accessory.amount 0 
+
+  var %current.accessory $readini($char($1), equipment, accessory) 
+  var %accessory.type $readini($dbfile(items.db), %current.accessory, accessoryType)
 
   if ($istok(%accessory.type,$2,46) = $true) {
     set %accessory.amount $readini($dbfile(items.db), %current.accessory, %accessory.type $+ .amount)
@@ -3474,7 +3475,20 @@ accessory.check {
     if (%accessory.amount = $null) { set %accessory.amount 0 }
     var %accessory.found true
   }
-  if ($istok(%accessory.type,$2,46) = $false) { var %accessory.found false }
+
+  ; Does the player have a secondary accessory slot?  If so, let's check it.
+  if ($readini($char($1), enhancements, accessory2 = true) {
+    var %current.accessory2 $readini($char($1), equipment, accessory2) 
+    var %accessory2.type  $readini($dbfile(items.db), %current.accessory2, accessoryType)
+
+    if ($istok(%accessory2.type,$2,46) = $true) {
+      var %accessory.amount2 $readini($dbfile(items.db), %current.accessory2, %accessory.type $+ .amount)
+      if (%accessory.amount2 = $null) { var %accessory.amount2 0 }
+
+      inc %accessory.amount %accessory.amount2
+      var %accessory.found true
+    }
+  }
 
   unset %current.accessory | unset %accessory.type 
 
@@ -3495,6 +3509,7 @@ orb.adjust {
   if (%difficulty != 0) {  inc %winning.streak %difficulty }
 
   var %orb.tier 1
+
 
   if (%portal.bonus = true) {  
     var %winning.streak $readini($txtfile(battle2.txt), BattleInfo, PortalLevel)
