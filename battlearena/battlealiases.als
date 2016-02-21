@@ -295,6 +295,8 @@ status.effects.turns {
 ; when needed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 reward.capacitypoints {
+  if ((%battle.type = dungeon) || (%battle.type = torment)) { return }
+
 
   var %temp.player.level $get.level($1)
   if (%temp.player.level < 100) { return }
