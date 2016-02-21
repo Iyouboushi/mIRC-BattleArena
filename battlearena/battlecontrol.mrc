@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/12/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1017,7 +1017,7 @@ alias generate_monster {
 
               var %dynamic.name.chance 1
 
-              if (%dynamic.name.chance <= 30) {
+              if (%dynamic.name.chance <= 35) {
                 var %replacement.line $read($lstfile(names_ $+ %monster.type $+ .lst), $rand(1, $lines($lstfile(names_ $+ %monster.type $+ .lst))))
                 var %replacement.filename $gettok(%replacement.line, 1, 46)
                 var %replacement.realname $gettok(%replacement.line, 2, 46)
