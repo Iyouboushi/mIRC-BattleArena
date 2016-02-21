@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 02/10/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -478,7 +478,13 @@ on 2:Chat:!armor*: {
 }
 on 2:Chat:!equip*: {
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
-  if ($2 = accessory) { $wear.accessory($nick, $3) | halt }
+
+  if ($2 = accessory) { 
+    if ($3 isnum) { $wear.accessory($nick, $4, $3) }
+    else {  $wear.accessory($nick, $3, 1) }
+    halt
+  }
+
   if ($2 = armor) { $wear.armor($nick, $3) | halt }
 
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
@@ -543,7 +549,11 @@ alias wield_weapondcc {
 
 on 2:Chat:!unequip*: {
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
-  if ($2 = accessory) { $remove.accessory($nick, $3) }
+  if ($2 = accessory) { 
+    if ($3 isnum) {  $remove.accessory($nick, $4, $3) }
+    else {  $remove.accessory($nick, $3, 1) }
+    halt
+  }
   if ($2 = armor) { $remove.armor($nick, $3) }
 
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
@@ -569,14 +579,20 @@ on 2:Chat:!unequip*: {
 on 2:Chat:!wear*: { 
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
   if ($3 = $null) { $display.message(4Error: !wear <accessory/armor> <what to wear>, private) | halt }
-  if ($2 = accessory) { $wear.accessory($nick, $3) }
+  if ($2 = accessory) { 
+    if ($3 isnum) { $wear.accessory($nick, $4, $3) }
+    else {  $wear.accessory($nick, $3, 1) }
+  }
   if ($2 = armor) { $wear.armor($nick, $3) }
 }
 
 on 2:Chat:!remove*: { 
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
   if ($3 = $null) { $display.message(4Error: !remove <accessory/armor> <what to remove>, private) | halt }
-  if ($2 = accessory) { $remove.accessory($nick, $3) }
+  if ($2 = accessory) { 
+    if ($3 isnum) {  $remove.accessory($nick, $4, $3) }
+    else {  $remove.accessory($nick, $3, 1) }
+  }
   if ($2 = armor) { $remove.armor($nick, $3) }
 }
 
