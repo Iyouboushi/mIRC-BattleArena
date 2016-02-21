@@ -3477,7 +3477,7 @@ accessory.check {
   }
 
   ; Does the player have a secondary accessory slot?  If so, let's check it.
-  if ($readini($char($1), enhancements, accessory2 = true) {
+  if ($readini($char($1), enhancements, accessory2) = true) {
     var %current.accessory2 $readini($char($1), equipment, accessory2) 
     var %accessory2.type  $readini($dbfile(items.db), %current.accessory2, accessoryType)
 
