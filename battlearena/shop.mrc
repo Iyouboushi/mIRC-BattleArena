@@ -1298,7 +1298,7 @@ alias shop.enhancements {
     if (%number.of.enhancement.spent = $null) { var %number.of.enhancement.spent 0 }
     inc %number.of.enhancement.spent %enhancement.cost
     writeini $char($1) stuff EnhancementPointsSpent %number.of.enhancement.spent
-    ; $achievement_check($1, )
+    $achievement_check($1, HarderBetterFasterStronger)
 
     ; Decrease the player's enhancement points
     dec %current.player.ep %enhancement.cost

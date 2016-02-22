@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ACHIEVEMENTS 
-;;;; Last updated: 10/29/15
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:!clear achievement*:*:{
@@ -501,6 +501,14 @@ alias achievement_check {
     writeini $char($1) achievements $2 true
     $announce_achievement($1, $2, 1000)
     var %current.redorbs $readini($char($1), stuff, redorbs) | inc %current.redorbs 1000 | writeini $char($1) stuff redorbs %current.redorbs
+  }
+
+  if ($2 = HarderBetterFasterStronger) { 
+    var %total.enhancements.spent $readini($char($1), stuff, EnhancementPointsSpent) 
+    if (%total.enhancements.spent >= 50) {  writeini $char($1) achievements $2 true 
+      $announce_achievement($1, $2, 10000)
+      var %current.redorbs $readini($char($1), stuff, redorbs) | inc %current.redorbs 10000 | writeini $char($1) stuff redorbs %current.redorbs
+    }
   }
 
 }
