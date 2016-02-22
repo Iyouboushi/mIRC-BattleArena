@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/21/16
+;;;; Last updated: 02/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1860,7 +1860,7 @@ alias gobbiebox {
   }
 
   if ($loginpoints($1, check) < 10) { $display.private.message(4Error: You do not have 10 login points ) | halt }
-  if ($lines($lstfile(chest_gobbiebox.lst)) = 0) { $display.private.message(4ERROR: Gobbie Box lst file not found or empty! Contact the bot admin! | halt }
+  if ($lines($lstfile(chest_gobbiebox.lst)) = 0) { $display.private.message(4ERROR: Gobbie Box lst file not found or empty! Contact the bot admin!) | halt }
 
   ; Subtract the login points
   var %loginpoints.temp $loginpoints($1, check)

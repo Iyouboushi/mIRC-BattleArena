@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/21/16
+;;;; Last updated: 02/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -712,7 +712,7 @@ boost_monster_hp {
   ; boost the HP of monsters by 50% per extra player past 1 (for non-torment battles)
   if (%battle.type != torment) {
     if ($return_playersinbattle > 1) {
-      inc %hp $calc(%hp * (.5 * return_playersinbattle))
+      inc %hp $calc(%hp * (.5 * $return_playersinbattle))
     }
   }
 
