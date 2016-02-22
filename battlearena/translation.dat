@@ -920,6 +920,7 @@ JustGettingStarted=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: 
 ALightInTheDark=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: A Light in the Dark and receives $bytes($3,b) red orbs as a reward!
 OnTheEdge=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: On the Edge and receives $bytes($3,b) SuperPotion as a reward!
 NoOne'sPuppet=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: I'm No One's Puppet and receives $bytes($3,b) red orbs as a reward!
+HarderBetterFasterStronger=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Harder Better Faster Stronger and receives $bytes($3,b) red orbs as a reward!
 
 =======================
 Style Levels
