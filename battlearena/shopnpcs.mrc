@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 02/13/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -132,9 +132,17 @@ alias shopnpc.list {
   var %npcstatus.GobbieBoxGoblin.name $readini(shopnpcs.dat, NPCNames, GobbieBoxGoblin)
   if (%npcstatus.GobbieBoxGoblin.name = $null) { var %npcstatus.GobbieBoxGoblin.name BountiBox the Goblin }
 
+  var %npcstatus.Jeweler $readini(shopnpcs.dat, NPCstatus, Jeweler)
+  if (%npcstatus.Jeweler = true) { var %npcstatus.Jeweler.color 3 }
+  if (%npcstatus.Jeweler = false) { var %npcstatus.Jeweler.color 5 }
+  if (%npcstatus.Jeweler = kidnapped) { var %npcstatus.Jeweler.color 4 }
+  var %npcstatus.Jeweler.name $readini(shopnpcs.dat, NPCNames, Jeweler)
+  if (%npcstatus.Jeweler.name = $null) { var %npcstatus.Jeweler.name Vasu the Jeweler }
+
   var %npcs.status [ $+ %npcstatus.president.color $+ %npcstatus.president.name $+ ]  [ $+ %npcstatus.healing.color $+ %npcstatus.healing.name $+ ] [ $+ %npcstatus.battle.color $+ %npcstatus.battle.name $+ ] [ $+ %npcstatus.discount.color $+ %npcstatus.discount.name $+ ] [ $+ %npcstatus.song.color $+ %npcstatus.song.name $+ ] [ $+ %npcstatus.shield.color $+ %npcstatus.shield.name $+ ]
   var %npcs.status2 [ $+ %npcstatus.dungeonkey.color $+ %npcstatus.dungeonkey.name $+ ]  [ $+ %npcstatus.potionwitch.color $+ %npcstatus.potionwitch.name $+ ] [ $+ %npcstatus.wheel.color $+ %npcstatus.wheel.name $+ ] [ $+ %npcstatus.gambler.color $+ %npcstatus.gambler.name $+ ] [ $+ %npcstatus.gardener.color $+ %npcstatus.gardener.name $+ ] [ $+ %npcstatus.travel.color $+ %npcstatus.travel.name $+ ]
-  var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ]
+  var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ] [ $+ %npcstatus.Jeweler.color $+ %npcstatus.Jeweler.name $+ ]
+
   ; Check for seasonal NPCs
   if ($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true) { var %seasonal.status %seasonal.status [3Easter Bunny] }
   if ($readini(shopnpcs.dat, NPCstatus, Santa) = true) { 
@@ -167,80 +175,6 @@ alias shopnpc.list {
   unset %seasonal.status
 }
 
-alias shopnpc.list.oldstyle {
-  var %npcstatus.healing $readini(shopnpcs.dat, NPCstatus, HealingMerchant)
-  if (%npcstatus.healing = true) { var %npcstatus.healing at the Allied Forces HQ }
-  if (%npcstatus.healing = false) { var %npcstatus.healing not found yet }
-
-  var %npcstatus.battle $readini(shopnpcs.dat, NPCstatus, BattleMerchant)
-  if (%npcstatus.battle = true) { var %npcstatus.battle at the Allied Forces HQ }
-  if (%npcstatus.battle = false) { var %npcstatus.battle not found yet }
-
-  var %npcstatus.discountcard $readini(shopnpcs.dat, NPCstatus, DiscountCardMerchant)
-  if (%npcstatus.discountcard = true) { var %npcstatus.discountcard at the Allied Forces HQ }
-  if (%npcstatus.discountcard = false) { var %npcstatus.discountcard not found yet }
-
-  var %npcstatus.song $readini(shopnpcs.dat, NPCstatus, songMerchant)
-  if (%npcstatus.song = true) { var %npcstatus.song at the Allied Forces HQ }
-  if (%npcstatus.song = false) { var %npcstatus.song not found yet }
-
-  var %npcstatus.shield $readini(shopnpcs.dat, NPCstatus, shieldMerchant)
-  if (%npcstatus.shield = true) { var %npcstatus.shield at the Allied Forces HQ }
-  if (%npcstatus.shield = false) { var %npcstatus.shield not found yet }
-
-  var %npcstatus.wheel $readini(shopnpcs.dat, NPCstatus, WheelMaster)
-  if (%npcstatus.wheel = true) { var %npcstatus.wheel at the Allied Forces HQ }
-  if (%npcstatus.wheel = false) { var %npcstatus.wheel not found yet }
-
-  var %npcstatus.gambler $readini(shopnpcs.dat, NPCstatus, Gambler)
-  if (%npcstatus.gambler = true) { var %npcstatus.gambler at the Allied Forces HQ }
-  if (%npcstatus.gambler = false) { var %npcstatus.gambler not found yet }
-
-  var %npcstatus.gardener $readini(shopnpcs.dat, NPCstatus, gardener)
-  if (%npcstatus.gardener = true) { var %npcstatus.gardener at the Allied Forces HQ }
-  if (%npcstatus.gardener = false) { var %npcstatus.gardener not found yet }
-
-  var %npcstatus.potionWitch $readini(shopnpcs.dat, NPCstatus, potionWitch)
-  if (%npcstatus.potionWitch = true) { var %npcstatus.potionWitch at the Allied Forces HQ }
-  if (%npcstatus.potionWitch = false) { var %npcstatus.potionWitch not found yet }
-
-  var %npcstatus.president $readini(shopnpcs.dat, NPCstatus, AlliedForcesPresident)
-  if (%npcstatus.president = true) { var %npcstatus.president at the Allied Forces HQ }
-  if (%npcstatus.president = false) { var %npcstatus.president not found yet }
-
-  var %npcstatus.travelmerchant $readini(shopnpcs.dat, NPCstatus, TravelMerchant)
-  if (%npcstatus.travelmerchant = true) { var %npcstatus.travelmerchant at the Allied Forces HQ }
-  if (%npcstatus.travelmerchant = false) { var %npcstatus.travelmerchant not here yet }
-
-  var %npcstatus.dungeonkeymaster $readini(shopnpcs.dat, NPCstatus, DungeonKeyMerchant)
-  if (%npcstatus.dungeonkeymaster = true) { var %npcstatus.dungeonkeymaster at the Allied Forces HQ }
-  if (%npcstatus.dungeonkeymaster = false) { var %npcstatus.dungeonkeymaster not found yet }
-
-  var %npcs.status [4Allied Forces President:12 %npcstatus.president $+ 1] [4Healing Items Merchant:12 %npcstatus.healing $+ 1] [4Battle Items Merchant:12 %npcstatus.battle $+ 1] [4Discount Card Merchant:12 %npcstatus.discountcard $+ 1]  [4Shield Merchant:12 %npcstatus.shield $+ 1] [4Dungeon Keymaster:12 %npcstatus.dungeonkeymaster $+ 1]
-  var %npcs.status2 [4Bard:12 %npcstatus.song $+ 1]  [4Gardener:12 %npcstatus.gardener $+ 1] [4Wheel Minigame Master:12 %npcstatus.wheel $+ 1] [4Gambler:12 %npcstatus.gambler $+ 1] [4Traveling Merchant:12 %npcstatus.travelmerchant $+ ]  [4Potion Witch:12 %npcstatus.potionwitch $+ ] 
-
-  var %easter.status [4Easter Bunny?12 $iif($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true, at the Allied Forces HQ, not around yet) $+ 1]
-  var %santa.status [4Santa Saved?12 $readini(shopnpcs.dat, NPCStatus, Santa) $+ 1] [4Number of Elves Saved:12 $readini(shopnpcs.dat,Events, SavedElves) $+ 1]
-  set %seasonal.status $iif( $left($adate, 2) = 04, %easter.status) $iif( $left($adate, 2) = 12, %santa.status)
-
-  if ($1 = global) { 
-    $display.message(%npcs.status) 
-    $display.message(%npcs.status2) 
-    if (%seasonal.status != $null) { $display.message(%seasonal.status) }
-  }
-  if ($1 = private) { 
-    $display.private.message(%npcs.status)
-    $display.private.message(%npcs.status2)
-    if (%seasonal.status != $null) {  $display.private.message(%seasonal.status) }
-  }
-  if ($1 = dcc) { 
-    $dcc.private.message($2, %npcs.status) 
-    $dcc.private.message($2, %npcs.status2)
-    if (%seasonal.status != $null) { $dcc.private.message($2,%seasonal.status) }
-  }
-
-  unset %seasonal.status
-}
 ; Check the various NPCs to see their status.
 alias shopnpc.status.check {
 
@@ -273,6 +207,7 @@ alias shopnpc.status.check {
   if ($readini(shopnpcs.dat, NPCStatus, ShieldMerchant) = false) { var %need.to.check.newnpcs true }
   if ($readini(shopnpcs.dat, NPCStatus, PotionWitch) = false) { var %need.to.check.newnpcs true }
   if ($readini(shopnpcs.dat, NPCStatus, GobbieBoxGoblin) = false) { var %need.to.check.newnpcs true }
+  if ($readini(shopnpcs.dat, NPCStatus, Jeweler) = false) { var %need.to.check.newnpcs true }
 
   if (%need.to.check.newnpcs = false) { return }
 
@@ -283,6 +218,7 @@ alias shopnpc.status.check {
   set %player.totalparries 0
   set %player.totallostsouls 0
   set %player.itemssold 0
+  set %player.enhancementpointsspent 0 
 
   .echo -q $findfile( $char_path , *.char, 0 , 0, shopnpc.totalinfo $1-)
 
@@ -304,8 +240,11 @@ alias shopnpc.status.check {
   ; Check the potion witch NPC
   if (($shopnpc.present.check(PotionWitch) = false) && (%player.totallostsouls >= 200)) { $shopnpc.add(PotionWitch) }
 
-  ; Check the potion witch NPC
+  ; Check the gobbiebox NPC
   if (($shopnpc.present.check(GobbieBoxGoblin) = false) && (%player.itemssold >= 200)) { $shopnpc.add(GobbieBoxGoblin) }
+
+  ; Check the jeweler NPC
+  if (($shopnpc.present.check(Jeweler) = false) && (%player.enhancementpointsspent >= 75)) { $shopnpc.add(Jeweler) }
 
   unset %player.deaths | unset %player.shoplevels | unset %player.totalbattles | unset %player.totalachievements
   unset %player.totallostsouls | unset %player.totalparries | unset %player.itemssold

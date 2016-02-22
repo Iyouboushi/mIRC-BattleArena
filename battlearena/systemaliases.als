@@ -651,6 +651,10 @@ shopnpc.totalinfo  {
       if (%temp.itemssold = $null) { var %temp.itemssold 0 }
       inc %player.itemssold %temp.itemssold
 
+      var %temp.enhancementpoints.spent $readini($char(%name), stuff, EnhancementPointsSpent) 
+      if (%temp.enhancementpoints.spent = $null) { var %temp.enhancementpoints.spent 0 }
+      inc %player.enhancementpointsspent %temp.enhancementpoints.spent 
+
     }    
   }
 
