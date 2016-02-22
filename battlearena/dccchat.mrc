@@ -245,7 +245,10 @@ on 2:Chat:!loginpoints*: {
   if ($1 != $null) { $checkchar($1) | $dcc.private.message($readini(translation.dat, system, ViewOthersLoginPoints)) }
   if ($2 = $null) { $dcc.private.message($readini(translation.dat, system, ViewMyLoginPoints)) }
 }
-
+on 2:Chat:!enhancementpoints*: { 
+  if ($1 != $null) { $checkchar($1) | $dcc.private.message($readini(translation.dat, system, ViewOthersenhancementpoints)) }
+  if ($2 = $null) { $dcc.private.message($readini(translation.dat, system, ViewMyenhancementpoints)) }
+}
 on 2:Chat:!look*: {
   if ($2 = $null) { $lookat($nick) }
   if ($2 != $null) { $checkchar($2) | $lookat($2) }

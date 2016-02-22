@@ -353,6 +353,15 @@ on 3:TEXT:!loginpoints*:?: {
   if ($2 = $null) { $display.private.message($readini(translation.dat, system, ViewMyLoginPoints)) }
 }
 
+on 3:TEXT:!enhancementpoints*:#: {
+  if ($2 != $null) { $checkchar($2) | $display.message($readini(translation.dat, system, ViewOthersEnhancementpoints),private) }
+  if ($2 = $null) { $display.message($readini(translation.dat, system, ViewMyEnhancementpoints),private) }
+}
+on 3:TEXT:!enhancementpoints*:?: {
+  if ($2 != $null) { $checkchar($2) | $display.private.message($readini(translation.dat, system, ViewOthersEnhancementpoints)) }
+  if ($2 = $null) { $display.private.message($readini(translation.dat, system, ViewMyEnhancementpoints)) }
+}
+
 on 3:TEXT:!alliednotes*:#: {  
   if ($2 = $null) { $check.allied.notes($nick, channel) }
   if ($2 != $null) { $checkchar($2) | $check.allied.notes($2, channel) }
@@ -1842,7 +1851,7 @@ alias gobbiebox {
   ; $1 = user
   ; $2 = open or help
 
-  if ($shopnpc.present.check(GobbieBoxGoblin) != true) { $display.private.message(4Error: $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) the goblin is not at the Allied Forces HQ so the gobbie box cannot be used.) | halt }
+  if ($shopnpc.present.check(GobbieBoxGoblin) != true) { $display.private.message(4Error: $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is not at the Allied Forces HQ so the gobbie box cannot be used.) | halt }
 
   if (($2 = help) || ($2 = $null)) { 
     $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is standing next to a large treasure chest and says 2"Oho! Ya feelin' lucky 'nough tah takes a stab at da myst'ry box?!",1)

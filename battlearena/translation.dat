@@ -63,6 +63,8 @@ OrbsLeft=$chr(3) $+ 3 $+ You have $bytes($readini($char($nick), stuff, RedOrbs)
 BlackOrbsLeft=$chr(3) $+ 3 $+ You have $bytes($readini($char($nick), stuff, BlackOrbs),b)  $+ black $iif($bytes($readini($char($nick), stuff, BlackOrbs),b) = 1, orb, orbs) left
 ViewOthersLoginPoints=$chr(3) $+ 3 $+  $+ $get_chr_name($1) has $bytes($loginpoints($1, check),b) login points. 
 ViewMyLoginPoints=$chr(3) $+ 3 $+  $+ $get_chr_name($nick) has $bytes($loginpoints($nick, check),b) login points. 
+ViewOthersEnhancementPoints=$chr(3) $+ 3 $+  $+ $get_chr_name($1) has $bytes($enhancementpoints($1),b) enhancement points and $bytes($capacitypoints($1),b) capacity points.  
+ViewMyEnhancementPoints=$chr(3) $+ 3 $+  $+ $get_chr_name($nick) has $bytes($enhancementpoints($nick),b) enhancement points and $bytes($capacitypoints($nick),b) capacity points. 
 HereIsYourCurrentStats=$chr(3) $+ 3 $+ Here are your current stats:
 HereIsOtherCurrentStats=$chr(3) $+ 3 $+ Here are the current stats for $2 $+ :
 HereIsMiscInfo=$chr(3) $+ 3 $+ Here is %misc.target misc statistical info:

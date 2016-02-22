@@ -225,7 +225,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCStatus, Gambler) = $null) { writeini shopnpcs.dat NPCStatus Gambler kidnapped }
     if ($readini(shopnpcs.dat, NPCStatus, DungeonKeyMerchant) = $null) { writeini shopnpcs.dat NPCStatus DungeonKeyMerchant kidnapped }
     if ($readini(shopnpcs.dat, NPCStatus, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCStatus GobbieBoxGoblin false }
-
+    if ($readini(shopnpcs.dat, NPCStatus, Jeweler) = $null) { writeini shopnpcs.dat NPCStatus Jeweler false }
 
     if ($readini(shopnpcs.dat, Events, FrostLegionDefeated) = $null) { writeini shopnpcs.dat Events FrostLegionDefeated false }
     if ($readini(shopnpcs.dat, Events, SavedElves) = $null) { writeini shopnpcs.dat Events SavedElves 0 }
@@ -253,6 +253,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCNames, Gambler) = $null) { writeini shopnpcs.dat NPCNames Gambler Setzer the Gambler }
     if ($readini(shopnpcs.dat, NPCNames, DungeonKeyMerchant) = $null) { writeini shopnpcs.dat NPCNames DungeonKeyMerchant Vinz Clortho the Keymaster }
     if ($readini(shopnpcs.dat, NPCNames, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCNames GobbieBoxGoblin Bountibox the Goblin }
+    if ($readini(shopnpcs.dat, NPCNames, Jeweler) = $null) { writeini shopnpcs.dat NPCNames Jeweler Vasu the Jeweler }
 
     ; Allied Forces Garden stuff
     if ($readini(garden.dat, GardenStats, XP) = $null) { writeini garden.dat GardenStats XP 0 }
@@ -986,6 +987,22 @@ id_login {
   return
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Capacity Points
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+capacitypoints {
+  var %capacitypoints $readini($char($1), stuff, CapacityPoints)
+  if (%capacitypoints = $null) { return 0 }
+  else { return %capacitypoints }
+}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Enhancement Points
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+enhancementpoints {
+  var %enhancementpoints $readini($char($1), stuff, enhancementPoints)
+  if (%enhancementpoints = $null) { return 0 }
+  else { return %enhancementpoints }
+}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Login Points
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
