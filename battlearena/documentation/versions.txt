@@ -1446,8 +1446,11 @@ Battle Arena Bot VERSIONS
 - Added the voucher item system. Using vouchers obtained from portals players will be able to buy armor and weapons
 - Added a new Shop NPC: BountiBox the Goblin.  Upon arriving at the HQ, he will unlock the Gobbie Box.
   Players can use !gobbie box open to exchange 10 login points for a random item from the box
+- Added a new Shop NPC: Vasu the Jeweler. Upon arriving at the HQ players will be able to unlock a second accessory slot
 - Added the "revive" type item that will revive a dead player with half hp. The PhoenixDown item has been added as an example.
 - Added the enhancement point skill: Overwhelm. This skill will increase overall damage by 2% per skill level
+- Added the enhancement point item: AccessorySlot2. Buying this will cost 10 enhancement points and will allow players to equip
+  a second accessory
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1462,6 +1465,8 @@ Battle Arena Bot VERSIONS
   Now it's only calculated on the damage done with the first hit.
 - Changed the way the skills keep track of the turn they are used and when they can be used again
 - Changed the original "revive" type item to "AutoRevive"
+- Changed the !equip and !wear accessory commands. Now use: !equip/wear accessory [1 or 2] accessoryname
+- Changed the !unequip and !remove accessory commands. Now use: !unequip/remove accessory [1 or 2] accessoryname
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
