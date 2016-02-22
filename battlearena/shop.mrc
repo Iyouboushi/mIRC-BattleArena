@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 02/20/16
+;;;; Last updated: 02/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1242,14 +1242,19 @@ alias shop.enhancements {
     $shop.get.skills.enhancingpoint($1)
     if (%shop.list.skills != $null) { $display.private.message.delay.custom(2Enhancement Skills5: %shop.list.skills,2) }
 
-    ; Check for styles.
+    ; Check for styles (to be added)
+
+    ; Check for the second accessory slot
+    if (($readini($char($1), enhancements, accessory2) != true) && ($shopnpc.present.check(Jeweler) = true)) {
+      $display.private.message.delay.custom(2Equipment Enhancements5: AccessorySlot2 (10),2) 
+    }
 
     unset %shop.list | unset %shop.list.skills
   }
 
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid item?
-    var %valid.purchase.items hp.ig.str.def.int.spd.Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm
+    var %valid.purchase.items hp.ig.str.def.int.spd.Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm.AccessorySlot2
     var %valid.purchase.skills Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm
 
     if ($istok(%valid.purchase.items, $lower($3), 46) = $false) { $display.private.message(4You cannot purchase that in this shop) | halt }
@@ -1258,24 +1263,36 @@ alias shop.enhancements {
     var %enhancement.purchase.item $readini($char($1), enhancements, $3)
     if (%enhancement.purchase.item = $null) { var %enhancement.purchase.item 0 }
 
-    var %enhancement.cost $calc(1 + %enhancement.purchase.item)
-    var %current.player.ep $readini($char($1), stuff, enhancementpoints)
+    if ($3 = AccessorySlot2) { var %enhancement.cost 10 }
+    else {  var %enhancement.cost $calc(1 + %enhancement.purchase.item) }
+
+    var %current.player.ep $enhancementpoints($1)
     if (%current.player.ep = $null) { var %current.player.ep 0 }
 
     if (%current.player.ep < %enhancement.cost) { $display.private.message(4You do not have enough Enhancement Points to purchase this upgrade!) | halt }
 
-    ; Are we hitting the cap amount?
-    var %purchase.cap 10
+    if ($3 != AccessorySlot2) { 
 
-    if ($3 = hp) { var %purchase.cap 50 }
-    if (((($3 = str) || ($3 = def) || ($3 = int) || ($3 = spd)))) { inc %purchase.cap 20 }
-    if ($istok(%valid.purchase, $lower($3), 46) = $true) { var %purchase.cap $readini($dbfile(skills.db), $3, max) }
+      ; Are we hitting the cap amount?
+      var %purchase.cap 10
 
-    if (%enhancement.cost > %purchase.cap) { $display.private.message(4You cannot purchase any more into this upgrade!) | halt }
+      if ($3 = hp) { var %purchase.cap 50 }
+      if (((($3 = str) || ($3 = def) || ($3 = int) || ($3 = spd)))) { inc %purchase.cap 20 }
+      if ($istok(%valid.purchase, $lower($3), 46) = $true) { var %purchase.cap $readini($dbfile(skills.db), $3, max) }
 
-    ; Increase the amount and add the enhancement
-    inc %enhancement.purchase.item 1
-    writeini $char($1) enhancements $3 %enhancement.purchase.item
+      if (%enhancement.cost > %purchase.cap) { $display.private.message(4You cannot purchase any more into this upgrade!) | halt }
+
+      ; Increase the amount and add the enhancement
+      inc %enhancement.purchase.item 1
+      writeini $char($1) enhancements $3 %enhancement.purchase.item
+    }
+
+    if ($3 = AccessorySlot2) { 
+      if ($readini($char($1), enhancements, accessory2) = true) { $display.private.message(4You already own this enhancement!) | halt }
+      if ($shopnpc.present.check(Jeweler) != true) { $display.private.message(4Error: $readini(shopnpcs.dat, NPCNames,Jeweler) is not at the Allied Forces HQ so this upgrade cannot be purchased.) | halt }
+      writeini $char($1) enhancements Accessory2 true
+      writeini $char($1) equipment Accessory2 nothing
+    }
 
     var %number.of.enhancement.spent $readini($char($1), stuff, EnhancementPointsSpent)
     if (%number.of.enhancement.spent = $null) { var %number.of.enhancement.spent 0 }
@@ -1323,6 +1340,11 @@ alias shop.enhancements {
       inc %skill.level 1 
       writeini $char($1) skills $3 %skill.level
       $display.private.message(3You spend $bytes(%enhancement.cost,b) Enhancement Points for +1 to the $3 skill!)
+    }
+
+    if ($3 = AccessorySlot2) { 
+      $display.private.message(3 $+ $readini(shopnpcs.dat, NPCNames,Jeweler) hands you a special accessory upgrade that allows you to wear two accessories at the same time.2 "Now remember! Accessories do nothing if not equipped!") 
+      $display.private.message(3You have spent $bytes(%enhancement.cost,b) Enhancement Points for the second accessory slot. To equip something to this slot use !equip accessory 2 accessoryname)
     }
 
   }
