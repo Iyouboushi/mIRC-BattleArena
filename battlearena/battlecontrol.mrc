@@ -706,7 +706,7 @@ alias battlebegin {
   ; Write the time the battle begins
   writeini $txtfile(battle2.txt) BattleInfo TimeStarted $fulldate
 
-  if (%battle.type = ai) { $ai.battle.createodds | unset %betting.period |  $display.message($readini(translation.dat, system, BettingPeriodClosed), global) }
+  if (%battle.type = ai) { $ai.battle.updateodds | unset %betting.period |  $display.message($readini(translation.dat, system, BettingPeriodClosed), global) }
 
   ; First, see if there's any players in the battle..
   set %number.of.players $readini($txtfile(battle2.txt), BattleInfo, Players)

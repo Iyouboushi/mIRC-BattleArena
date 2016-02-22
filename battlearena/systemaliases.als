@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/21/16
+;;;; Last updated: 02/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4118,9 +4118,12 @@ ai.battle.createodds {
 
   if (%odds.npc <= 1) { var %odds.npc 1 }
   if (%odds.monster <= 1) { var %odds.monster 1 }
-
   writeini $txtfile(1vs1bet.txt) money odds.npc %odds.monster
   writeini $txtfile(1vs1bet.txt) money odds.monster %odds.npc
+}
+
+ai.battle.updateodds {
+  ; Update the odds based on players (to be done later)
 }
 
 ai.battle.place.bet {
