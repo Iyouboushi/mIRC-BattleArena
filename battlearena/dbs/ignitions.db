@@ -537,7 +537,7 @@ Augment=MeleeBonus.EnhanceDodge.TechBonus.IgnoreMetalDefense.EnhanceZen.IgnoreGu
 IgnitionTrigger=10
 IgnitionConsume=20
 Cost=0
-Desc=laughs as her body transforms into a large green plan-looking dragon. She begins to fly around the arena, ready to strike.
+Desc=laughs as her body transforms into a large green plant-looking dragon. She begins to fly around the arena, ready to strike.
 StatusTarget=Self
 StatusType=ConserveTP
 
