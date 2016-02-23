@@ -709,10 +709,10 @@ boost_monster_hp {
 
   if (($return.systemsetting(BattleDamageFormula) = 2) || ($return.systemsetting(BattleDamageFormula) = 4)) { var %hp $calc(%hp * 2) }
 
-  ; boost the HP of monsters by 50% per extra player past 1 (for non-torment battles)
+  ; boost the HP of monsters by 20% per extra player past 1 (for non-torment battles)
   if (%battle.type != torment) {
     if ($return_playersinbattle > 1) {
-      inc %hp $calc(%hp * (.5 * $return_playersinbattle))
+      inc %hp $calc(%hp * (.2 * $return_playersinbattle))
     }
   }
 
