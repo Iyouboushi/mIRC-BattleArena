@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 02/21/16
+;;;; Last updated: 02/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -901,9 +901,14 @@ alias shop.get.skills.passive {
     if (%skill.have >= %skill.max) { inc %value 1 }
     else { 
       set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0)
-      if ((%total.passive.skills <= 15) || (%total.passive.skills = $null)) {  %shop.list.passiveskills = $addtok(%shop.list.passiveskills, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
-      if (%total.passive.skills > 15) {  %shop.list.passiveskills2 = $addtok(%shop.list.passiveskills2, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
-      inc %value 1 | inc %total.passive.skills 1
+
+      if (%skill.price > 0) { 
+
+        if ((%total.passive.skills <= 15) || (%total.passive.skills = $null)) {  %shop.list.passiveskills = $addtok(%shop.list.passiveskills, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
+        if (%total.passive.skills > 15) {  %shop.list.passiveskills2 = $addtok(%shop.list.passiveskills2, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
+        inc %total.passive.skills 1
+      }
+      inc %value 1 
     }
   }
 
