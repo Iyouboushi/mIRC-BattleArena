@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 02/22/16
+;;;; Last updated: 02/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -302,6 +302,12 @@ lookat {
   if (%equipped.armor.hands = $null) { var %equipped.armor.hands nothing }
 
   var %equipped.accessory $equipment.color(%equipped.accessory) $+  $+ %equipped.accessory $+ 3
+
+  if ($readini($char($1), equipment, accessory2) != $null) { 
+    var %equipped.accessory2 $equipment.color($readini($char($1), equipment, accessory2)) $+ $readini($char($1), equipment, accessory2)
+    var %equipped.accessory %equipped.accessory 3and %equipped.accessory2 $+ 3
+  }
+
   var %equipped.armor.head $equipment.color(%equipped.armor.head) $+ %equipped.armor.head $+ 3
   var %equipped.armor.body $equipment.color(%equipped.armor.body) $+ %equipped.armor.body $+ 3
   var %equipped.armor.legs $equipment.color(%equipped.armor.legs) $+ %equipped.armor.legs $+ 3
@@ -313,11 +319,11 @@ lookat {
   if ($readini($char($1), info, CustomTitle) != $null) { var %custom.title " $+ $readini($char($1), info, CustomTitle) $+ " }
 
   if ($readini(system.dat, system, botType) = IRC) { 
-    if ($2 = channel) {  $display.message(3 $+ %real.name %custom.title is wearing %equipped.armor.head on $gender($1) head; %equipped.armor.body on $gender($1) body; %equipped.armor.legs on $gender($1) legs; %equipped.armor.feet on $gender($1) feet; %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory equipped as an accessory and is currently using the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon),private) }
-    if ($2 != channel) { $display.private.message(3 $+ %real.name %custom.title is wearing %equipped.armor.head on $gender($1) head; %equipped.armor.body on $gender($1) body; %equipped.armor.legs on $gender($1) legs; %equipped.armor.feet on $gender($1) feet; %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory equipped as an accessory and is currently using the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon)) }
+    if ($2 = channel) {  $display.message(3 $+ %real.name %custom.title is wearing %equipped.armor.head on $gender($1) head; %equipped.armor.body on $gender($1) body; %equipped.armor.legs on $gender($1) legs; %equipped.armor.feet on $gender($1) feet; %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory equipped $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon),private) }
+    if ($2 != channel) { $display.private.message(3 $+ %real.name %custom.title is wearing %equipped.armor.head on $gender($1) head; %equipped.armor.body on $gender($1) body; %equipped.armor.legs on $gender($1) legs; %equipped.armor.feet on $gender($1) feet; %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon)) }
   }
   if ($readini(system.dat, system, botType) = DCCchat) {
-    var %look.message 3 $+ %real.name is wearing %equipped.armor.head on $gender($1) head, %equipped.armor.body on $gender($1) body, %equipped.armor.legs on $gender($1) legs, %equipped.armor.feet on $gender($1) feet, %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory equipped as an accessory and is currently using the the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon)
+    var %look.message 3 $+ %real.name is wearing %equipped.armor.head on $gender($1) head, %equipped.armor.body on $gender($1) body, %equipped.armor.legs on $gender($1) legs, %equipped.armor.feet on $gender($1) feet, %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory  $+ $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon)
   $dcc.private.message($nick, %look.message) }
 } 
 
