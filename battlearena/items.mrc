@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/21/16
+;;;; Last updated: 02/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1120,10 +1120,10 @@ alias remove.accessory {
   if ($2 != %equipped.accessory) { $display.message($readini(translation.dat, system, NotWearingThatAccessory), private)  | halt }
   if ((%battleis = on) && ($nick isin $readini($txtfile(battle2.txt), Battle, List))) { $display.message($readini(translation.dat, errors, CanOnlySwitchAccessoriesOutsideBattle), private) | halt }
   else { 
-    if ($3 = 1 ) { writeini $char($1) equipment accessory none 
+    if ($3 = 1 ) { writeini $char($1) equipment accessory nothing
       $display.message($readini(translation.dat, system, RemovedAccessory), global)
     }
-    else { writeini $char($1) equipment accessory2 none 
+    else { writeini $char($1) equipment accessory2 nothing 
       $display.message($readini(translation.dat, system, RemovedAccessory2), global)
     }
   } 
