@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/22/16
+;;;; Last updated: 02/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2368,7 +2368,6 @@ fulls {
     writeini $char($1) Battle Tp $readini($char($1), BaseStats, TP)
   }
 
-
   if (($return.potioneffect($1) = Double Life) && (%players.must.die.mode != true)) {
     var %current.hp $readini($char($1), basestats, hp)
     var %current.hp $round($calc(%current.hp * 2),0)
@@ -3182,6 +3181,7 @@ reset_char {
   writeini $char($1) equipment legs none
   writeini $char($1) equipment feet none
   writeini $char($1) equipment hands none
+  remini $char($1) equipment accessory2
 
   ; Reset the ignitions
   remini $char($1) ignitions
@@ -3198,6 +3198,9 @@ reset_char {
 
   ; Remove the augments
   remini $char($1) augments
+
+  ; Remove all enhancements
+  remini $char($1) enhancements
 
   ; Increase the total number of times this char has reset
   var %number.of.resets $readini($char($1), stuff, NumberOfResets)
