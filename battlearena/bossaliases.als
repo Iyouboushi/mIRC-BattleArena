@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 12/11/15
+;;;; Last updated: 02/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1796,6 +1796,8 @@ predator_fight {
 
     if ($readini($mon(%monster.name), battle, hp) != $null) {  .copy -o $mon(%monster.name) $char(%monster.name) | set %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat }
 
+    writeini $char(%monster.name) battle status normal
+
     $set_chr_name(%monster.name) 
     if (%battle.type != ai) { 
       if ($readini($mon(%monster.name), battle, hp) != $null) { 
@@ -1818,8 +1820,9 @@ predator_fight {
     writeini $char(%monster.name) descriptions DeathMessage falls over dead! Suddenly a Predator leaps out and gives off a loud chuckle as it prepares to face the heroes.
 
     $boost_monster_stats(%monster.name)
-
+    $levelsync(%monster.name, $calc($1 - 5))
     $fulls(%monster.name) 
+
     if (%battlemonsters = 10) { set %number.of.monsters.needed 0 }
     inc %value 1
     else {  
