@@ -94,7 +94,6 @@ alias skill.turncheck {
   ; $3 = the skill command
   ; $4 = true/false -> if skill level affects the turn amount
 
-
   if (($readini($char($1), info, flag) != $null) && ($readini($char($1), info, clone) != yes)) { return }
 
   if ($readini($char($1), info, clone) = yes) {
@@ -875,7 +874,7 @@ alias skill.doubleturn { $set_chr_name($1)
   $check_for_battle($1)
 
   ; Check to see if enough time has elapsed
-  $skill.turncheck($1, Sugitekai, !sugitekai, true)
+  $skill.turncheck($1, sugitekai, !sugitekai, true)
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, sugitekai) = $null) { set %skill.description becomes very focused and is able to do two actions next round! }
@@ -884,7 +883,7 @@ alias skill.doubleturn { $set_chr_name($1)
 
   ; Toggle the doubleturn-on flag & write the last used time.
   writeini $char($1) skills doubleturn.on on
-  writeini $char($1) skills doubleturn.time %true.turn
+  writeini $char($1) skills sugitekai.time %true.turn
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction sugitekai
 

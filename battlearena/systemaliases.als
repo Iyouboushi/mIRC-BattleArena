@@ -2524,7 +2524,7 @@ clear_skill_timers {
   remini $char($1) skills konzen-ittai.time | remini $char($1) skills gamble.time | remini $char($1) skills truestrike.time
   remini $char($1) skills magicmirror.time | remini $char($1) skills snatch.time | remini $char($1) skills retaliation.time
   remini $char($1) skills weaponlock.time | remini $char($1) skills PerfectDefense.time | remini $char($1) skills stoneskin.time
-  remini $char($1) skills tabularasa.time
+  remini $char($1) skills tabularasa.time | remini $char($1) skills sugitekai.time
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
