@@ -19,7 +19,7 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=New
+CurrentMoonPhase=Quarter
 CurrentMoonTurn=1
 
 [MoonPhaseTime]
@@ -740,7 +740,7 @@ limitations=no-mech.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [The Shrine of Ru'Avitau]
-Weather=light
+Weather=Bright
 NumberOfEvents=0
 limitations=no-mech.no-trusts.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
