@@ -880,9 +880,9 @@ readitems {
 
   ; Display commands for other inventory items
   if (%items.empty != true) { 
-    if ($2 = channel) { $display.message(3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items  $+ $chr(44) 5!ingredients ,private) }
-    if ($2 = private) {  $display.private.message(3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items $+ $chr(44) 5!ingredients) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items $+ $chr(44) 5!ingredients ) }
+    if ($2 = channel) { $display.message(3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items  $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes ,private) }
+    if ($2 = private) {  $display.private.message(3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes) }
+    if ($2 = dcc) { $dcc.private.message($nick, 3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes ) }
   }
 
   unset %*.items.lis* | unset %items.lis*
