@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/23/16
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1749,10 +1749,46 @@ portals.list {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Builds the Trading Card Item list
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+tradingcards.list {
+  unset %tradingcards.items.*
+  var %value 1 | var %items.lines $lines($lstfile(items_tradingcards.lst)) | var %card.collection 0
+
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_tradingcards.lst)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) { 
+      inc %card.collection 1
+      if ($numtok(%tradingcards.items.list,46) <= 15) { %tradingcards.items.list = $addtok(%tradingcards.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { 
+        if ($numtok(%tradingcards.items.list2,46) <= 15) { %tradingcards.items.list2 = $addtok(%tradingcards.items.list2, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        else { %tradingcards.items.list3 = $addtok(%tradingcards.items.list3, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      }
+    }
+
+    unset %item.name | unset %item_amount
+    inc %value 1 
+  }
+
+  var %replacechar $chr(044) $chr(032)
+  %tradingcards.items.list = $replace(%tradingcards.items.list, $chr(046), %replacechar)
+  %tradingcards.items.list2 = $replace(%tradingcards.items.list2, $chr(046), %replacechar)
+  %tradingcards.items.list3 = $replace(%tradingcards.items.list3, $chr(046), %replacechar)
+
+
+  if (%card.collection >= 30) { 
+    ;  $achievement_check($1, GottaCollectThemAll)
+  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Builds the Keys list
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 keys.list {
-  unset %items.list | unset %gems.items.list | unset %summons.items.list | unset %keys.items.list | unset %misc.items.list | unset %reset.items.list | unset %dungeon.keys.items.list
+  unset %keys.items.list | unset %dungeon.keys.items.list
 
   ; CHECKING KEYS 
   unset %item.name | unset %item_amount | unset %number.of.items | unset %value
@@ -1796,7 +1832,7 @@ keys.list {
 ; Builds the Gems list
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 gems.list {
-  unset %items.list | unset %gems.items.list | unset %summons.items.list | unset %keys.items.list | unset %misc.items.list | unset %reset.items.list 
+  unset %gems.items.list  
 
   ; CHECKING GEMS
   var %value 1 | var %items.lines $lines($lstfile(items_gems.lst))
@@ -1822,7 +1858,7 @@ gems.list {
 ; Builds the Seal list
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 seals.list {
-  unset %items.list | unset %gems.items.list | unset %summons.items.list | unset %keys.items.list | unset %misc.items.list | unset %reset.items.list  | unset %seals.items.list
+  unset %seals.items.list
 
   ; CHECKING SEALS
   var %value 1 | var %items.lines $lines($lstfile(items_seals.lst))
@@ -1935,6 +1971,142 @@ items.list {
     inc %value 1 
   }
 
+  ; CHECKING +STAT
+  var %value 1 | var %items.lines $lines($lstfile(items_food.lst))
+
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_food.lst)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) { 
+    %statplus.items.list = $addtok(%statplus.items.list, 12 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+
+    unset %item.name | unset %item_amount
+    inc %value 1 
+  }
+
+  ; Check for summon items
+  $summonitems.list($1)
+
+  ; Check for mech cores
+  $items.mechcore($1)
+
+  ; Check for special items
+  $specialitems.list($1)
+
+  ; Check for portal items
+  $portals.list($1) 
+
+  ; Check for trust items
+  $trusts.list($1)
+
+  ; Check for potion ingredient items
+  $potioningredient.list($1)
+
+  ; Check for misc items
+  $miscitems.list($1)
+
+  ; Check for keys
+  $keys.list($1) 
+
+  ; Check for gems
+  $gems.list($1)
+
+  ; CLEAN UP THE LISTS
+  var %replacechar $chr(044) $chr(032)
+  %items.list = $replace(%items.list, $chr(046), %replacechar)
+  %items.list2 = $replace(%items.list2, $chr(046), %replacechar)
+  %reset.items.list = $replace(%reset.items.list, $chr(046), %replacechar)
+  %statplus.items.list = $replace(%statplus.items.list, $chr(046), %replacechar)
+
+  unset %item.name | unset %item_amount | unset %number.of.items | unset %value | unset %food.items | unset %consume.items
+  unset %replacechar
+  return
+}
+
+summonitems.list {
+  ; CHECKING SUMMON ITEMS
+  var %value 1 | var %items.lines $lines($lstfile(items_summons.lst))
+
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_summons.lst)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) { 
+
+      if ($numtok(%summons.items.list,46) <= 15) { %summons.items.list = $addtok(%summons.items.list, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { 
+        if ($numtok(%summons.items.list2,46) <= 15) { %summons.items.list2 = $addtok(%summons.items.list2, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        else { 
+          if ($numtok(%summons.items.list3,46) <= 15) { %summons.items.list3 = $addtok(%summons.items.list3, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+          else { 
+            if ($numtok(%summons.items.list4,46) <= 15) { %summons.items.list4 = $addtok(%summons.items.list4, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+            else { %summons.items.list5 = $addtok(%summons.items.list5, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+          } 
+        }
+      }
+
+    }
+    unset %item.name | unset %item_amount
+    inc %value 1 
+  }
+
+  var %replacechar $chr(044) $chr(032)
+  %summons.items.list = $replace(%summons.items.list, $chr(046), %replacechar)
+  %summons.items.list2 = $replace(%summons.items.list2, $chr(046), %replacechar)
+  %summons.items.list3 = $replace(%summons.items.list3, $chr(046), %replacechar)
+  %summons.items.list4 = $replace(%summons.items.list4, $chr(046), %replacechar)
+}
+specialitems.list {
+  ; CHECKING SPECIAL ITEMS
+  var %value 1 | var %items.lines $lines($lstfile(items_special.lst))
+
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_special.lst)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) { 
+
+      if ($numtok(%special.items.list,46) <= 12) { %special.items.list = $addtok(%special.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { %special.items.list2 = $addtok(%special.items.list2, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+    }
+
+    unset %item.name | unset %item_amount
+    inc %value 1 
+  }
+
+  var %replacechar $chr(044) $chr(032)
+  %special.items.list = $replace(%special.items.list, $chr(046), %replacechar)
+  %special.items.list2 = $replace(%special.items.list2, $chr(046), %replacechar)
+}
+
+potioningredient.list {
+  ; CHECKING POTION INGREDIENT ITEMS
+  var %value 1 | var %items.lines $lines($lstfile(items_potioningredient.lst))
+
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_potioningredient.lst)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
+    if ((%item_amount != $null) && (%item_amount >= 1)) {  %potioningredient.items.list = $addtok(%potioningredient.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
+
+    unset %item.name | unset %item_amount
+    inc %value 1 
+  }
+  unset %item.name | unset %item_amount
+
+  var %replacechar $chr(044) $chr(032)
+  %potioningredient.items.list = $replace(%potioningredient.items.list, $chr(046), %replacechar)
+
+  return
+}
+
+miscitems.list {
+
   ; CHECKING MISC ITEMS
   var %value 1 | var %items.lines $lines($lstfile(items_misc.lst))
 
@@ -1963,163 +2135,12 @@ items.list {
     inc %value 1 
   }
 
-  ; CHECKING +STAT
-  var %value 1 | var %items.lines $lines($lstfile(items_food.lst))
+  var %replacechar $chr(044) $chr(032)
 
-  while (%value <= %items.lines) {
-    set %item.name $read -l $+ %value $lstfile(items_food.lst)
-    set %item_amount $readini($char($1), item_amount, %item.name)
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
-
-    if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %statplus.items.list = $addtok(%statplus.items.list, 12 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-
-    unset %item.name | unset %item_amount
-    inc %value 1 
-  }
-
-  ; CHECKING SUMMON ITEMS
-  var %value 1 | var %items.lines $lines($lstfile(items_summons.lst))
-
-  while (%value <= %items.lines) {
-    set %item.name $read -l $+ %value $lstfile(items_summons.lst)
-    set %item_amount $readini($char($1), item_amount, %item.name)
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
-
-    if ((%item_amount != $null) && (%item_amount >= 1)) { 
-
-      if ($numtok(%summons.items.list,46) <= 15) { %summons.items.list = $addtok(%summons.items.list, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { 
-        if ($numtok(%summons.items.list2,46) <= 15) { %summons.items.list2 = $addtok(%summons.items.list2, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-        else { 
-          if ($numtok(%summons.items.list3,46) <= 15) { %summons.items.list3 = $addtok(%summons.items.list3, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-          else { 
-            if ($numtok(%summons.items.list4,46) <= 15) { %summons.items.list4 = $addtok(%summons.items.list4, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-            else { %summons.items.list5 = $addtok(%summons.items.list5, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-          } 
-        }
-      }
-
-    }
-    unset %item.name | unset %item_amount
-    inc %value 1 
-  }
-
-
-  ; CHECKING GEMS
-  var %value 1 | var %items.lines $lines($lstfile(items_gems.lst))
-
-  while (%value <= %items.lines) {
-    set %item.name $read -l $+ %value $lstfile(items_gems.lst)
-    set %item_amount $readini($char($1), item_amount, %item.name)
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
-
-    if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %gems.items.list = $addtok(%gems.items.list, 7 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-
-    unset %item.name | unset %item_amount
-    inc %value 1 
-  }
-
-
-  ; CHECKING PORTAL ITEMS
-  var %value 1 | var %items.lines $lines($lstfile(items_portal.lst))
-
-  while (%value <= %items.lines) {
-    set %item.name $read -l $+ %value $lstfile(items_portal.lst)
-    set %item_amount $readini($char($1), item_amount, %item.name)
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
-
-    if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%portals.items.list,46) <= 15) { %portals.items.list = $addtok(%portals.items.list, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { 
-        if ($numtok(%portals.items.list2,46) <= 15) {  %portals.items.list2 = $addtok(%portals.items.list2, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-        else { %portals.items.list3 = $addtok(%portals.items.list3, 14 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      }
-    }
-
-    unset %item.name | unset %item_amount
-    inc %value 1 
-  }
-
-  $items.mechcore($1)
-
-  ; CHECKING SPECIAL ITEMS
-  var %value 1 | var %items.lines $lines($lstfile(items_special.lst))
-
-  while (%value <= %items.lines) {
-    set %item.name $read -l $+ %value $lstfile(items_special.lst)
-    set %item_amount $readini($char($1), item_amount, %item.name)
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
-
-    if ((%item_amount != $null) && (%item_amount >= 1)) { 
-
-      if ($numtok(%special.items.list,46) <= 12) { %special.items.list = $addtok(%special.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %special.items.list2 = $addtok(%special.items.list2, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-    }
-
-    unset %item.name | unset %item_amount
-    inc %value 1 
-  }
-
-  ; CHECKING TRUST ITEMS
-  var %value 1 | var %items.lines $lines($lstfile(items_trust.lst))
-
-  while (%value <= %items.lines) {
-    set %item.name $read -l $+ %value $lstfile(items_trust.lst)
-    set %item_amount $readini($char($1), item_amount, %item.name)
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
-
-    if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %trust.items.list = $addtok(%trust.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-
-    unset %item.name | unset %item_amount
-    inc %value 1 
-  }
-
-  ; CHECKING POTION INGREDIENT ITEMS
-  var %value 1 | var %items.lines $lines($lstfile(items_potioningredient.lst))
-
-  while (%value <= %items.lines) {
-    set %item.name $read -l $+ %value $lstfile(items_potioningredient.lst)
-    set %item_amount $readini($char($1), item_amount, %item.name)
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
-
-    if ((%item_amount != $null) && (%item_amount >= 1)) {  %potioningredient.items.list = $addtok(%potioningredient.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
-
-    unset %item.name | unset %item_amount
-    inc %value 1 
-  }
-  unset %item.name | unset %item_amount
-
-
-  ; CLEAN UP THE LISTS
-  set %replacechar $chr(044) $chr(032)
-  %items.list = $replace(%items.list, $chr(046), %replacechar)
-  %items.list2 = $replace(%items.list2, $chr(046), %replacechar)
-  %summons.items.list = $replace(%summons.items.list, $chr(046), %replacechar)
-  %summons.items.list2 = $replace(%summons.items.list2, $chr(046), %replacechar)
-  %summons.items.list3 = $replace(%summons.items.list3, $chr(046), %replacechar)
-  %summons.items.list4 = $replace(%summons.items.list4, $chr(046), %replacechar)
-  %gems.items.list = $replace(%gems.items.list, $chr(046), %replacechar)
-  %keys.items.list = $replace(%keys.items.list, $chr(046), %replacechar)
   %misc.items.list = $replace(%misc.items.list, $chr(046), %replacechar)
   %misc.items.list2 = $replace(%misc.items.list2, $chr(046), %replacechar)
   %misc.items.list3 = $replace(%misc.items.list3, $chr(046), %replacechar)
   %misc.items.list4 = $replace(%misc.items.list4, $chr(046), %replacechar)
-  %reset.items.list = $replace(%reset.items.list, $chr(046), %replacechar)
-  %statplus.items.list = $replace(%statplus.items.list, $chr(046), %replacechar)
-  %portals.items.list = $replace(%portals.items.list, $chr(046), %replacechar)
-  %portals.items.list2 = $replace(%portals.items.list2, $chr(046), %replacechar)
-  %portals.items.list3 = $replace(%portals.items.list3, $chr(046), %replacechar)
-  %special.items.list = $replace(%special.items.list, $chr(046), %replacechar)
-  %special.items.list2 = $replace(%special.items.list2, $chr(046), %replacechar)
-  %trust.items.list = $replace(%trust.items.list, $chr(046), %replacechar)
-  %potioningredient.items.list = $replace(%potioningredient.items.list, $chr(046), %replacechar)
-
-  unset %item.name | unset %item_amount | unset %number.of.items | unset %value | unset %food.items | unset %consume.items
-  unset %replacechar
-  return
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

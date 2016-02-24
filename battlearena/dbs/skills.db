@@ -4,70 +4,69 @@ PASSIVE SKILLS
 
 [Swordmaster]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with sword and katana weapons.  Increased levels increases the damage.
 
 [Polemaster]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with spear weapons.  Increased levels increases the damage.
 
 [Gunslinger]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a gun.  Increased levels increases the damage.
 
 [Wizardry]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with stave and wand weapons.  Increased levels increases the damage.
 
 [MartialArts]
 Cost=200
-max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with your hand to hand weapons.  Increased levels increases the damage.
 
 [Archery]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a bow.  Increased levels increases the damage.
 
 [Hatchetman]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with an axe.  Increased levels increases the damage.
 
 [Harvester]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a scythe.  Increased levels increases the damage.
 
 [SleightOfHand]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a dagger.  Increased levels increases the damage.
 
 [Whipster]
 Cost=200
-Max=100
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a whip.  Increased levels increases the damage.
-
 
 [OrbHunter]
 Cost=$iif($readini($char($1), skills, OrbHunter <= 19), 250, 2500)
 Type=Passive
 Info=This skill will increase the amount of red orbs you find at the end of battle.  Note that the base cost of this skill increases to 2500 per level after level 20.
-Max=30
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 50, 30)
 Amount=15
 
 [ClearMind]
@@ -98,7 +97,7 @@ Max=20
 Cost=1900
 Type=Passive
 Info=This skill will allow you to activate summoning items and summon pets/summons to the field to fight for you. Increased levels of the skill will enhance the summon.
-Max=20
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 30, 20)
 
 [Zen]
 Cost=500

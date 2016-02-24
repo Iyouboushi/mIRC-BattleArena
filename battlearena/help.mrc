@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 02/20/16
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -200,9 +200,23 @@ alias view-info {
     var %dungeon.level $readini($dungeonfile(%dungeon.file), info, Level)
     if (%dungeon.level = $null) { var %dungeon.level 15 }
     $display.private.message([4Name12 $3 $+ ] [4Type12 Dungeon Key $+ ] [4Dungeon Name12 %dungeon.name $+ ] [4Number of Players Needed12 %dungeon.players.needed $+ ] [4Dungeon Level12 %dungeon.level $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) 
-
-
   }
+
+  if (%info.type = TormentReward) { 
+    var %amount.given $readini($dbfile(items.db), n, $3, ItemsInside)
+    %amount.given = $replacex(%amount.given,$chr(36) $+ rand,random)
+    %amount.given = $replacex(%amount.given,$chr(44), $chr(45))
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Torment Reward $+ ] [4Items Inside12 %amount.given $+ ] [4This item will give a random amount of12 LifeShard $+ $chr(44) ArcaneDust $+ $chr(44) ForgottenSoul $+ $chr(44) or ResuablePart]) 
+    unset %amount.given
+  }
+
+  if (%info.type = torment) { $display.private.message([4Name12 $3 $+ ] [4Type12 Torment Portal $+ ] [4Torment Level12 $readini($dbfile(items.db), $3, TormentLevel) $+ ] [4Minimum Level to Enter12 $calc(500 * $readini($dbfile(items.db), $3, TormentLevel)) $+ ] [4Description12 An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful versions of the monsters await.]) }
+
+  if (%info.type = TradingCard) { 
+    var %card.numbers $readini($dbfile(items.db), n, $3, Numbers)
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Trading Card $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) 
+  }
+
 
   if (%info.type = mechcore) {  
     var %energy.cost $readini($dbfile(items.db), $3, energyCost)

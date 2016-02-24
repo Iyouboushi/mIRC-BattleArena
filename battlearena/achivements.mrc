@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ACHIEVEMENTS 
-;;;; Last updated: 02/21/16
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:!clear achievement*:*:{
@@ -97,6 +97,12 @@ alias achievement_check {
       $announce_achievement($1, $2, 1)
       var %current.goldorbs $readini($char($1), item_amount, GoldOrb) | inc %current.goldorbs 1 | writeini $char($1) Item_Amount GoldOrb %current.goldorbs
     }
+  }
+
+  if ($2 = GottaCollectThemAll) {
+    writeini $char($1) achievements $2 true 
+    $announce_achievement($1, $2, 1)
+    var %current.tradingcard $readini($char($1), item_amount, TradingCard-050) | inc %current.tradingcard 1 | writeini $char($1) Item_Amount TradingCard-050 %current.tradingcard
   }
 
   if ($2 = Don'tYouHaveaHome) {

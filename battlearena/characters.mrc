@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/22/16
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -844,6 +844,33 @@ on 3:TEXT:!portals*:?:{
   else {  $portals.list($nick) | $set_chr_name($nick) | $readportals($nick, private) }
 }
 
+on 3:TEXT:!misc items*:#:{ 
+  if ($3 != $null) { $checkchar($3) | $miscitems.list($3) | $set_chr_name($3) | $readmiscitems($3, channel) }
+  else {  $miscitems.list($nick) | $set_chr_name($nick) | $readmiscitems($nick, channel) }
+}
+on 3:TEXT:!misc items*:?:{ 
+  if ($3 != $null) { $checkchar($3) | $miscitems.list($3) | $set_chr_name($3) | $readmiscitems($3, private) }
+  else {  $miscitems.list($nick) | $set_chr_name($nick) | $readmiscitems($nick, private) }
+}
+
+on 3:TEXT:!potion ingredients*:#:{ 
+  if ($3 != $null) { $checkchar($3) | $potioningredients.list($3) | $set_chr_name($3) | $readingredients($3, channel) }
+  else {  $potioningredients.list($nick) | $set_chr_name($nick) | $readingredients($nick, channel) }
+}
+on 3:TEXT:!potion ingredients*:?:{ 
+  if ($3 != $null) { $checkchar($3) | $potioningredients.list($3) | $set_chr_name($3) | $readingredients($3, private) }
+  else {  $potioningredients.list($nick) | $set_chr_name($nick) | $readingredients($nick, private) }
+}
+
+on 3:TEXT:!trading cards*:#:{ 
+  if ($3 != $null) { $checkchar($3) | $tradingcards.list($3) | $set_chr_name($3) | $readtradingcards($3, channel) }
+  else {  $tradingcards.list($nick) | $set_chr_name($nick) | $readtradingcards($nick, channel) }
+}
+on 3:TEXT:!trading cards*:?:{ 
+  if ($3 != $null) { $checkchar($3) | $tradingcards.list($3) | $set_chr_name($3) | $readtradingcards($3, private) }
+  else {  $tradingcards.list($nick) | $set_chr_name($nick) | $readtradingcards($nick, private) }
+}
+
 on 3:TEXT:!items*:#:{ 
   if ($2 != $null) { $checkchar($2) | $items.list($2) | $set_chr_name($2) | $readitems($2, channel) }
   else {  $items.list($nick) | $set_chr_name($nick) | $readitems($nick, channel) }
@@ -1411,7 +1438,7 @@ on 50:TEXT:!toggle scoreboard html*:*:{
 }
 
 on 3:TEXT:!scoreboard:*: {
-  if (%battleis != on) { $generate.scoreboard }
+  if (%battleis != on) { $generate.scoreboard | unset %score* }
   else { $display.message($readini(translation.dat, errors, ScoreBoardNotDuringBattle), private) | halt }
 }
 

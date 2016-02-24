@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 12/09/15
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1255,7 +1255,11 @@ alias tech.points {
   if (%aoe.turn > 1) { return }
 
   else { inc %tech.points 1 
-    if (%tech.points >= 500) { writeini $char($1) techniques $2 $+ .points 0
+
+    var %tech.points.needed 500
+    if ($readini($char($1), stuff, NumberOfResets) >= 1) { var %tech.points.needed 250 }
+
+    if (%tech.points >= %tech.points.needed) { writeini $char($1) techniques $2 $+ .points 0
       var %tech.attack.power $readini($char($1), techniques, $2)
       if (%tech.attack.power <= 999) { inc %tech.attack.power 1 |  writeini $char($1) techniques $2 %tech.attack.power
         $display.private.message2($1, $readini(translation.dat, system, TechIncrease)) 

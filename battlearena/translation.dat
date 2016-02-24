@@ -107,6 +107,7 @@ ViewGemItems=$chr(3) $+ 3 $+  $+ %real.name has the following gems: %gems.ite
 ViewKeysItems=$chr(3) $+ 3 $+  $+ %real.name has the following treasure chest keys: %keys.items.list 
 ViewDungeonKeysItems=$chr(3) $+ 3 $+  $+ %real.name has the following dungeon keys: %dungeon.keys.items.list 
 ViewPortalItems=$chr(3) $+ 3 $+  $+ %real.name has the following portal items: %portals.items.list 
+ViewTradingCards=$chr(3) $+ 3 $+  $+ %real.name has the following trading cards: %tradingcards.items.list 
 ViewMiscItems=$chr(3) $+ 3 $+  $+ %real.name has the following misc items: %misc.items.list 
 ViewMechCoreItems=$chr(3) $+ 3 $+  $+ %real.name has the following mech core items: %mech.items.list 
 ViewMechWeapons=$chr(3) $+ 3 $+  $+ %real.name has the following mech weapons: %mech.weapon.list 
@@ -123,6 +124,8 @@ HasNoMechItems=$chr(3) $+ 3 $+  $+ %real.name currently has no weapons or item
 HasNoMechWeapons=$chr(3) $+ 3 $+  $+ %real.name currently has no weapons for $gender($1) mech. 
 HasNoKeys=$chr(3) $+ 3 $+  $+ %real.name currently has no keys.
 HasNoPortals=$chr(3) $+ 3 $+  $+ %real.name currently has no portal items.
+HasNoMiscItems=$chr(3) $+ 3 $+  $+ %real.name currently has no misc items.
+HasNoTradingCards=$chr(3) $+ 3 $+  $+ %real.name currently has no trading cards.
 HasNoGems=$chr(3) $+ 3 $+  $+ %real.name currently has no gems.
 HasNoSeals=$chr(3) $+ 3 $+  $+ %real.name currently has no seals.
 HasNoArmor=$chr(3) $+ 3 $+  $+ %real.name currently has no armor. 
@@ -921,6 +924,7 @@ ALightInTheDark=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: A L
 OnTheEdge=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: On the Edge and receives $bytes($3,b) SuperPotion as a reward!
 NoOne'sPuppet=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: I'm No One's Puppet and receives $bytes($3,b) red orbs as a reward!
 HarderBetterFasterStronger=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Harder Better Faster Stronger and receives $bytes($3,b) red orbs as a reward!
+GottaCollectThemAll=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Gotta Collect Them All and receives  as a reward!
 
 =======================
 Style Levels

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 02/23/16
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -787,6 +787,44 @@ readportals {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays a char's misc items
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+readmiscitems {
+  if (%misc.items.list != $null) {
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMiscItems),private) | if (%misc.items.list2 != $null) { $display.message( $+ %misc.items.list2,private) } |  if (%misc.items.list3 != $null) { $display.message( $+ %misc.items.list3,private) } | if (%misc.items.list4 != $null) { $display.message( $+ %misc.items.list4,private) }  }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) { $display.private.message(5 $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $display.private.message( $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $display.private.message( $+ %misc.items.list4) } }
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) {  $dcc.private.message($nick,  $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $dcc.private.message($nick,  $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $dcc.private.message($nick,  $+ %misc.items.list4) } }
+  }
+
+  if (%misc.items.list = $null) { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoMiscItems),private) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, HasNoMiscItems)) }
+    if ($2 = dcc) {  $dcc.private.message($nick, $readini(translation.dat, system, HasNoMiscItems)) }
+  }    
+
+  unset %miscitems.items.*
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays a char's trading cards
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+readtradingcards {
+  if (%tradingcards.items.list != $null) { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewTradingCards),private) | if (%tradingcards.items.list2 != $null) { $display.message( $+ %tradingcards.items.list2,private) }  |  if (%tradingcards.items.list3 != $null) { $display.message( $+ %tradingcards.items.list3,private) } } 
+    if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewTradingCards)) |  if (%tradingcards.items.list2 != $null) { $display.private.message( $+ %tradingcards.items.list2) } |  if (%tradingcards.items.list3 != $null) { $display.private.message( $+ %tradingcards.items.list3) }  } 
+    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewTradingCards)) | if (%tradingcards.items.list2 != $null) { $dcc.private.message($nick,  $+ %tradingcards.items.list2) } | if (%tradingcards.items.list3 != $null) { $dcc.private.message($nick,  $+ %tradingcards.items.list3) } }
+  }
+
+  if (%tradingcards.items.list = $null) { 
+    if ($2 = channel) { $display.message($readini(translation.dat, system, HasNotradingcards),private) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, HasNotradingcards)) }
+    if ($2 = dcc) {  $dcc.private.message($nick, $readini(translation.dat, system, HasNotradingcards)) }
+  }    
+
+  unset %tradingcards.items.*
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Displays a char's items
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 readitems { 
@@ -806,6 +844,7 @@ readitems {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewStatPlusItems)) }
   }
   if (%summons.items.list != $null) { 
+    echo -a not null
     if ($2 = channel) { $display.message($readini(translation.dat, system, ViewSummonItems),private) }
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewSummonItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewSummonItems)) }
@@ -825,41 +864,27 @@ readitems {
     if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewShopResetItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewShopResetItems)) }
   }
-  if (%portals.items.list != $null) { 
-    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewPortalItems),private) | if (%portals.items.list2 != $null) { $display.message( $+ %portals.items.list2,private) }  |  if (%portals.items.list3 != $null) { $display.message( $+ %portals.items.list3,private) } } 
-    if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewPortalItems)) |  if (%portals.items.list2 != $null) { $display.private.message( $+ %portals.items.list2) } |  if (%portals.items.list3 != $null) { $display.private.message( $+ %portals.items.list3) }  } 
-    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewPortalItems)) | if (%portals.items.list2 != $null) { $dcc.private.message($nick,  $+ %portals.items.list2) } | if (%portals.items.list3 != $null) { $dcc.private.message($nick,  $+ %portals.items.list3) } }
-  }
-  if (%misc.items.list != $null) { if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMiscItems),private) | if (%misc.items.list2 != $null) { $display.message( $+ %misc.items.list2,private) } |  if (%misc.items.list3 != $null) { $display.message( $+ %misc.items.list3,private) } | if (%misc.items.list4 != $null) { $display.message( $+ %misc.items.list4,private) }  }
-    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) { $display.private.message(5 $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $display.private.message( $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $display.private.message( $+ %misc.items.list4) } }
-    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) {  $dcc.private.message($nick,  $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $dcc.private.message($nick,  $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $dcc.private.message($nick,  $+ %misc.items.list4) } }
-  }
-  if (%mech.items.list != $null) { 
-    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMechCoreItems),private) | if (%mech.items.list2 != $null) { $display.message( $+ %mech.items.list2) } } 
-    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMechCoreItems)) | if (%mech.items.list2 != $null) { $display.private.message( $+ %mech.items.list2) } } 
-    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMechCoreItems)) | if (%mech.items.list2 != $null) {  $dcc.private.message($nick,  $+ %mech.items.list2) } }
-  }
   if (%special.items.list != $null) { 
     if ($2 = channel) { $display.message($readini(translation.dat, system, ViewShopSpecialItems),private) | if (%special.items.list2 != $null) { $display.message( $+ %special.items.list2) }   }
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewShopSpecialItems)) | if (%special.items.list2 != $null) { $display.private.message( $+ %special.items.list2) } } 
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewShopSpecialItems)) | if (%special.items.list2 != $null) { $dcc.private.message($nick,  $+ %special.items.list2) } }
   }
-  if (%trust.items.list != $null) { 
-    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewTrustItems),private) }
-    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewTrustItems)) }
-    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewTrustItems)) }
-  }
-  if (%potioningredient.items.list != $null) { 
-    if ($2 = channel) { $display.message($readini(translation.dat, system, ViewPotionIngredientItems),private) }
-    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewPotionIngredientItems)) }
-    if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewPotionIngredientItems)) }
-  }
 
   if (((((((((((%items.list = $null) && (%statplus.items.list = $null) && (%summons.items.list = $null) && (%reset.items.list = $null) && (%gems.items.list = $null) && (%portals.items.list = $null) && (%mech.items.list = $null) && (%special.items.list = $null) && (%trust.items.list = $null) && (%potioningredient.items.list = $null) && (%misc.items.list = $null))))))))))) { 
+    var %items.empty true 
+
     if ($2 = channel) { $display.message($readini(translation.dat, system, HasNoItems),private) }
     if ($2 = private) {  $display.private.message($readini(translation.dat, system, HasNoItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, HasNoItems)) }
   }    
+
+
+  ; Display commands for other inventory items
+  if (%items.empty != true) { 
+    if ($2 = channel) { $display.message(3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items  $+ $chr(44) 5!ingredients ,private) }
+    if ($2 = private) {  $display.private.message(3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items $+ $chr(44) 5!ingredients) }
+    if ($2 = dcc) { $dcc.private.message($nick, 3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items $+ $chr(44) 5!ingredients ) }
+  }
 
   unset %*.items.lis* | unset %items.lis*
 }
@@ -917,6 +942,8 @@ readaccessories {
     if ($2 = private) {  $display.private.message($readini(translation.dat, system, ViewEquippedAccessories)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewEquippedAccessories)) }
   }
+
+  unset %accessories.* | unset %accessory*
 
 }
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

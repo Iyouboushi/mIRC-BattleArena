@@ -1451,6 +1451,9 @@ Battle Arena Bot VERSIONS
 - Added the enhancement point skill: Overwhelm. This skill will increase overall damage by 2% per skill level
 - Added the enhancement point item: AccessorySlot2. Buying this will cost 10 enhancement points and will allow players to equip
   a second accessory
+- Added Trading Card items
+- Added new achievements
+- Added TormentOrb 12-15 and their recipes
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1467,10 +1470,19 @@ Battle Arena Bot VERSIONS
 - Changed the original "revive" type item to "AutoRevive"
 - Changed the !equip and !wear accessory commands. Now use: !equip/wear accessory [1 or 2] accessoryname
 - Changed the !unequip and !remove accessory commands. Now use: !unequip/remove accessory [1 or 2] accessoryname
+- Changed capacity points so that they cannot be obtained from dungeons and torments
+- Changed the Torment Orb recipes so that the max number of death's breath ever required is 5 (down from 10)
+- Changed the amount of HP that torment monsters have in torments 10-15
+- Changed the way the bot displays the weather changes so that it's customizeable by bot owners
+- Changed the max level of certain skills for characters that have reset (used Final Getsuga)
+- Changed the leveling rate of techs for characters that have reset (used Final Getsuga)
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
 - Fixed a bug with clones being able to use items
+- Fixed a bug that was preventing monsters from gaining more HP if more players entered the battle
+- Fixed a bug in which enhancement skills (0 cost) would show up in !shop list skills
+- Fixed two bugs with the Predator fight
 - Fixed an issue where certain battle types could override mimic battles
 - Fixed an issue where portal items were being cut off
 - Fixed an issue with absorb inside of dungeons and torment
