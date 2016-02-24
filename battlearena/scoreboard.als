@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Scoreboard Generation
-;;;; Last updated: 10/20/15
+;;;; Last updated: 02/24/15
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate.scoreboard {
   set %totalplayers 0
@@ -1175,7 +1175,9 @@ html.generate {
   if ($1 = startpage) { 
 
     .remove scoreboard.html
-    write scoreboard.html <center><B> <font size=13> $readini(system.dat, botinfo, questchan) Stats</font> </B></center> <BR><BR> 
+    write scoreboard.html <center><B> <font size=13> $readini(system.dat, botinfo, questchan) Stats</font> </B></center> <BR>
+    write scoreboard.html <center><B> Last generated: $fulldate </B></center> <BR><BR> 
+
 
     write scoreboard.html <table border="1" bordercolor="#FFCC00" style="background-color:#FFFFCC" width="100%" cellpadding="3" cellspacing="3">
 
