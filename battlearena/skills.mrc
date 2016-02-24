@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/20/16
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -878,7 +878,7 @@ alias skill.doubleturn { $set_chr_name($1)
   $skill.turncheck($1, Sugitekai, !sugitekai, true)
 
   ; Display the desc. 
-  if ($readini($char($1), descriptions, doubleturn) = $null) { set %skill.description becomes very focused and is able to do two actions next round! }
+  if ($readini($char($1), descriptions, sugitekai) = $null) { set %skill.description becomes very focused and is able to do two actions next round! }
   else { set %skill.description $readini($char($1), descriptions, doubleturn) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
