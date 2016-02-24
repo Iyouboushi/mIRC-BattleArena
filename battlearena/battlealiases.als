@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/22/16
+;;;; Last updated: 02/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1732,7 +1732,10 @@ random.weather.pick {
 
   if (($1 = inbattle) && (%new.weather = %old.weather)) { unset %weather.list | unset %new.weather | return }
 
-  $display.message(10The weather changes.  It is now %new.weather, battle) 
+  var %weather.line $read($txtfile(weather_ $+ %new.weather $+ .txt))
+  if (%weather.line = $null) {   $display.message(10The weather changes.  It is now %new.weather, battle) }
+  else { $display.message(10 $+ %weather.line, battle) }
+
 
   unset %number.of.weather | unset %new.weather | unset %random | unset %weather.list
 }
