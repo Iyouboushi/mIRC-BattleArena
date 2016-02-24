@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 11/21/15
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -167,7 +167,10 @@ alias add.playerstyle.xp {
   set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
   set %current.playerstyle.xptolevel $calc(500 * %current.playerstyle.level)
 
-  if (%current.playerstyle.level >= 10) { return }
+  var %max.style.level 10
+  if ($readini($char($1), stuff, NumberOfResets) >= 1) { inc %max.style.level 1 }
+
+  if (%current.playerstyle.level >= %max.style.level) { return }
 
   if ($2 = $null) { var %style.xp.to.add 1 } 
   if ($2 != $null) { var %style.xp.to.add $2 }
