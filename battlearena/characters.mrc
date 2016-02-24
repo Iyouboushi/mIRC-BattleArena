@@ -165,6 +165,11 @@ ON 2:TEXT:!last seen *:*:{  $checkchar($3)
   $display.message($readini(translation.dat, system, lastseen),private)
 }
 
+; Check bot version
+on 2:TEXT:!version:*: {
+  $display.message(12Battle Arena Bot Version4 $battle.version,private) 
+}
+
 on 3:TEXT:!weather*:#: {  $display.message($readini(translation.dat, battle, CurrentWeather),private) }
 on 3:TEXT:!weather*:?: {  $display.private.message($readini(translation.dat, battle, CurrentWeather)) }
 on 3:TEXT:!moon*:#: {  $display.message($readini(translation.dat, battle, CurrentMoon),private) }
