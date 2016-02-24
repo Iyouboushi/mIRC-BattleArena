@@ -879,7 +879,7 @@ alias skill.doubleturn { $set_chr_name($1)
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, sugitekai) = $null) { set %skill.description becomes very focused and is able to do two actions next round! }
-  else { set %skill.description $readini($char($1), descriptions, doubleturn) }
+  else { set %skill.description $readini($char($1), descriptions, sugitekai) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
   ; Toggle the doubleturn-on flag & write the last used time.
