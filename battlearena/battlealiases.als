@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/23/16
+;;;; Last updated: 02/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4331,7 +4331,7 @@ portal.spoils.drop {
         var %drop.counter $readini($char(%who.battle), stuff, dropsrewarded)
         if (%drop.counter = $null) { var %drop.counter 0 }
         inc %drop.counter 1
-        writeini $char($1) stuff DropsRewarded %drop.counter
+        writeini $char(%who.battle) stuff DropsRewarded %drop.counter
 
         %item.drop.rewards = $addtok(%item.drop.rewards, %real.name $+  $+ $chr(91) $+ %drop.reward x $+ %item.reward.amount $+  $+ $chr(93) $+ , 46)
 
