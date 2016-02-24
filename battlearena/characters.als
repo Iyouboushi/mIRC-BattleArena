@@ -844,7 +844,6 @@ readitems {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewStatPlusItems)) }
   }
   if (%summons.items.list != $null) { 
-    echo -a not null
     if ($2 = channel) { $display.message($readini(translation.dat, system, ViewSummonItems),private) }
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewSummonItems)) }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewSummonItems)) }
