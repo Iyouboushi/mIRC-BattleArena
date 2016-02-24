@@ -380,7 +380,7 @@ Amount=1
 
 [Cultist-Rosary+1]
 Gem=Diamond
-Ingredients=Cultist-Rosary+1
+Ingredients=Cultist-Rosary
 SuccessRate=100
 Cultist-Rosary=5
 Amount=1
