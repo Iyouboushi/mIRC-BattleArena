@@ -9,8 +9,8 @@ KaiserKnuckles=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
 Oatixur=TornadoKick.ShinjinSpiral.ShoulderTackle.SpinningAttack
 
 ; Swords
+BasicSword=FastBlade
 Mythril_Sword=FastBlade.BurningBlade.FlatBlade.SeraphBlade
-Rebellion=Stinger.MillionStab.Drive.DevilTrigger
 Agni=AerialCross.JetStream $+ $iif($weapon.linkcheck(Rudra) = true, .Tempest)
 Rudra=AerialCross.JetStream $+ $iif($weapon.linkcheck(Agni) = true, .Tempest)
 Joyeuse=FastBlade.CircleBlade.FlatBlade
@@ -27,6 +27,7 @@ Z-Sword=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningB
 Z-Sword+1=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
 
 ; Katana
+BasicKatana=Tachi:Enpi
 PowerChordSword=A5.E5.D5.C5
 Soboro=Tachi:Enpi.Tachi:Hobaku.Tachi:Jinpu.Tachi:Goten.Tachi:Kagero
 Yamato=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
@@ -44,13 +45,16 @@ Ichimonji-Yofusa=Tachi:Fudo.Tachi:Kasha.Tachi:Gekko.Tachi:Yukikaze
 Naturaleza=Ashes.Dismay.ThousandCuts
 
 ; Scythe
+BasicScythe=NightmareScythe
 DeathScythe=ShadowOfDeath.DarkHarvest.VorpalScythe
 Vendetta=InfernalScythe.CrossReaper.SpinningScythe
 Redemption=Quietus.Insurgency.NightmareScythe
 Apocalypse=Catastrophe.Entropy.Guillotine
 Xbalanque=Insurgency.NightmareScythe.Guillotine
 
-; Great Sword
+; Greatsword
+BasicGreatSword=HardSlash
+Rebellion=Stinger.MillionStab.Drive.DevilTrigger
 Braveheart=HardSlash.PowerSlash
 Balmung=Shockwave.SickleMoon.Freezebite
 Nightfall=GroundStrike.SpinningSlash
@@ -59,24 +63,29 @@ Caladbolg=HerculeanSlash.GroundStrike
 Macbain=SpinningSlash.HerculeanSlash.Scourge
 
 ; Wands/Staves
+BasicWand=MagicMissile
 YewWand=Fire.Stone.Ice.Aero.Water.Thunder.Cure.Dark.Banish.Poison.Blind.Paralyze.Slow
 PixiWand=Protect.Shell.BarEarth.BarFire.BarWind.BarWater.BarIce.BarLightning.BarLight.BarDark.EnFire.EnEarth.EnWind.EnWater.EnIce.EnLightning.Esuna.Dispel
 OakWand=FireII.StoneII.IceII.AeroII.WaterII.ThunderII.CureII.DarkII.BanishII
 PineWand=FireIII.StoneIII.IceIII.AeroIII.WaterIII.ThunderIII.CureIII.DarkIII.BanishIII
 ElderWand=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy
-IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
-Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
 Aedold=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
+BasicStaff=MagicStrike
+IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
+Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 Uffrat=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 BahamutsStaff=Ultima.Kaustra.Merlin'sFinalSpell
 Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 Glyphs+1=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 
-; Guns 
+; Guns
+BasicGun=ChargedShot
 Ebony&Ivory=RainStorm.ChargedShot.RapidShot
 Magnum=ChargedShot.RapidShot
 Hexagun=LastStand.Detonator.BlastShot
+SamuraiEdge=ChargedShot.LastStand.Detonator
+BasicRifle=ChargedShot 
 Boomstick=HotShot.BlastShot.Detonator
 Armageddon=SniperShot.WildFire.Coronach.LeadenSalute
 SubMachineGun=RainStorm.Detonator
@@ -86,17 +95,19 @@ SniperRifle=SniperShot.SlugShot.HotShot
 Annihilator=Coronach.SlugShot.BlastShot
 DeathPenalty=LeadenSalute.BlastShot.SlugShot
 VanirRifle=ChargedShot.BlastShot.Detonator
-SamuraiEdge=ChargedShot.LastStand.Detonator
 
 ; Whips
+BasicWhip=WhipLash
 LeatherWhip=WhipLash
 DemonWhip=SerpentBite.DarkLash.WhipLash
 Vampire_Killer=HolyLash.TwinDragonLash.CircularChain
 ChainWhip=Whiplash.TwinDragonLash
 SpikedSteelWhip=TwinDragonLash.Whiplash
 DragontailWhip=TwinDragonLash.SerpentBite
+Alruna=TwinDragonLash.SerpentBite.DarkLash
 
 ; Spears
+BasicSpear=Jump
 Lance=Jump.Skewer.LegSweep
 Thalassocrat=Jump.ImpulseDrive.LegSweep
 Corsesca=Jump.PentaThrust.LegSweep
@@ -106,6 +117,7 @@ Rhongomiant=HighJump.CamlannsTorment.LegSweep.SonicThrust
 Upukirex=Jump.HighJump.SpiritJump.SoulJump.Stardiver
 
 ; Bows
+BasicBow=DullingArrow
 RobinsBow=FlamingArrow.PiercingArrow.DullingArrow
 ShigetoBow=BlastArrow.Sidewinder.FlamingArrow
 LamianKamen=EmpyrealArrow.ArchingArrow.PiercingArrow
@@ -114,14 +126,17 @@ Gandiva=EagleEyeShot.JishnusRadiance.ApexArrow
 HomesteadBow=ApexArrow.Sidewinder.EmpyrealArrow
 
 ; Axes
+BasicGreatAxe=IronTempest
 Ukonvasara=FellCleave.UkkosFury.KingsJustice
 Bravura=MetatronTorment.Upheaval.SteelCyclone
+Lightreaver=FellCleave.SteelCyclone.KingsJustice
+BasicAxe=RagingAxe
 Guttler=Onslaught.BoraAxe.Rampage
 Farsha=Cloudsplitter.Ruinator.PrimalRend
-Lightreaver=FellCleave.SteelCyclone.KingsJustice
 Kerehcatl=BoraAxe.Rampage.Ruinator
 
 ; Daggers
+BasicDagger=WaspSting
 MainGauche=SharkBite.DancingEdge.Cyclone
 Terpsichore=PyrrhicKleos.RudrasStorm.Exenterator
 Mandau=MercyStroke.AeolianEdge.Evisceration
@@ -699,40 +714,6 @@ renkei=3
 ===================
 SWORDS
 ===================
-[Stinger]
-Type=Single
-TP=10
-Desc=launches $gender2($1) $+ self forward, sword first, like a torpedo towards %enemy doing piercing damage!
-BasePower=35
-Cost=500
-Element=none
-magic=no
-stat=str
-renkei=1
-IgnoreDefense=5
-
-[MillionStab]
-Type=Single
-TP=200
-Desc=swings the weapon so fast that it becomes a blur of a million stabs on %enemy $+ !
-BasePower=8
-Cost=4000
-Element=none
-magic=no
-stat=str
-renkei=3
-hits=8
-
-[Drive]
-Type=AOE
-TP=50
-Desc=lures all the monsters close before performing a swift spinning attack, hitting all of $gender($1) targets at once!
-BasePower=25
-Cost=1500
-Element=Lightning
-magic=no
-stat=str
-
 [AerialCross]
 Type=Single
 TP=10
@@ -1092,6 +1073,40 @@ Renkei=3
 ===================
 GREAT SWORDS
 ===================
+[Stinger]
+Type=Single
+TP=10
+Desc=launches $gender2($1) $+ self forward, sword first, like a torpedo towards %enemy doing piercing damage!
+BasePower=35
+Cost=500
+Element=none
+magic=no
+stat=str
+renkei=1
+IgnoreDefense=5
+
+[MillionStab]
+Type=Single
+TP=200
+Desc=swings the weapon so fast that it becomes a blur of a million stabs on %enemy $+ !
+BasePower=8
+Cost=4000
+Element=none
+magic=no
+stat=str
+renkei=3
+hits=8
+
+[Drive]
+Type=AOE
+TP=50
+Desc=lures all the monsters close before performing a swift spinning attack, hitting all of $gender($1) targets at once!
+BasePower=25
+Cost=1500
+Element=Lightning
+magic=no
+stat=str
+
 [HardSlash]
 Type=Single
 TP=10
@@ -1978,6 +1993,30 @@ CanDodge=true
 ===================
 WAND/SPELLS
 ===================
+[MagicMissile]
+Type=Single
+Cost=500
+Desc=waves the wand and hurls a small bolt of non-elemental magic towards %enemy $+ .
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=int
+Renkei=1
+
+[MagicStrike]
+Type=Single
+Cost=500
+Desc=raises the staff and forms a ball of non-elemental magic above %enemy $+ , letting it fall onto enemy a few seconds later.
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=int
+Renkei=1
+
 [Fire]
 Type=Single
 TP=10
@@ -2996,6 +3035,30 @@ Cost=2000
 ===================
 AXES
 ===================
+[RagingAxe]
+Type=Single
+Cost=500
+Desc=performs a quick slash from the axe upon %enemy $+ .
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=str
+Renkei=1
+
+[IronTempest]
+Type=Single
+Cost=500
+Desc=leaps towards %enemy and performs an overhead slash with the great axe.
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=str
+Renkei=1
+
 [FellCleave]
 Type=AOE
 TP=60
@@ -3121,6 +3184,18 @@ stat=str
 ========================
 DAGGERS
 ========================
+[WaspSting]
+Type=Single
+Cost=500
+Desc=runs up to %enemy and performs a quick slash with the dagger before hopping back.
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=spd
+Renkei=1
+
 [PyrrhicKleos]
 Type=Single
 TP=40

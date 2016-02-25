@@ -29,23 +29,23 @@ Lightsabers=Lightsabers
 
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur
-Swords=Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
+Swords=Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword.BasicSword
 Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1
-Whips=LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip
-Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge
-Rifles=Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle
-Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
+Whips=LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Alruna.BasicWhip
+Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge.BasicGun
+Rifles=Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle.BasicRifle
+Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.BasicBow
 Katanas=PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1.Zangetsu
-Katanas2=Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa
-Wands=YewWand.PixiWand.OakWand.PineWand.Aedold
-Staves=IridialStaff.ElderWand.Laevatein.EbonyWand.BahamutsStaff.Uffrat
+Katanas2=Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa.BasicKatana
+Wands=YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold.BasicWand
+Staves=IridialStaff.Laevatein.Uffrat.BahamutsStaff.BasicStaff
 Glyphs=Glyphs.Glyphs+1
-Spears=Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex
-Scythes=DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque
-GreatSwords=Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
-Axes=Farsha.Guttler.Kerehcatl
-GreatAxes=Ukonvasara.Bravura.Lightreaver
-Daggers=MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi
+Spears=Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex.BasicSpear
+Scythes=DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque.BasicScythe
+GreatSwords=Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain.BasicGreatSword
+Axes=Farsha.Guttler.Kerehcatl.BasicAxe
+GreatAxes=Ukonvasara.Bravura.LightreaverBasicGreatAxe
+Daggers=MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi.BasicDagger
 Hammers=Mjolnir
 Lightsabers=Lightsaber
 
@@ -209,6 +209,17 @@ SpecialWeapon=true
 =============================================
 SWORDS
 =============================================
+[BasicSword]
+Cost=1
+Type=Sword
+Info=A basic and plain sword for new adventurers.
+Abilities=FastBlade
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=false
+
 [Mythril_Sword]
 Cost=5
 Type=Sword
@@ -393,6 +404,16 @@ IgnoreDefense=5
 =============================================
 GREAT SWORDS
 =============================================
+[BasicGreatSword]
+Cost=1
+Type=Greatsword
+Info=A basic and plain greatsword for new adventurers.
+Abilities=HardSlash
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=true
 
 [Rebellion]
 Cost=40
@@ -476,6 +497,17 @@ IgnoreDefense=10
 =============================================
 WHIPS
 =============================================
+[BasicWhip]
+Cost=1
+Type=Whip
+Info=A basic and plain whip for new adventurers.
+Abilities=Whiplash
+Element=None
+Hits=$rand(1,3)
+BasePower=4
+Upgrade=500
+2Handed=false
+
 [LeatherWhip]
 Cost=20
 Type=Whip
@@ -537,10 +569,33 @@ BasePower=60
 Upgrade=3500
 HurtEthereal=true
 
+[Alruna]
+Cost=0
+SpecialWeapon=true
+StatusType=curse
+Type=Whip
+Info=A whip containing the soul of a demon who shares the same name as a flower that blooms in Inferno. Laced with thorns, it slithers as if it were alive. Those who can hear the crack of the whip can feel Alraune whisper its curse in their ears.
+Abilities=TwinDragonLash.SerpentBite.DarkLash
+Element=None
+Hits=$rand(2,4)
+BasePower=65
+Upgrade=7500
+2Handed=true
+IgnoreDefense=10
 
 =============================================
 GUNS & RIFLES
 =============================================
+[BasicGun]
+Cost=1
+Type=Gun
+Info=A basic and plain gun for new adventurers.
+Abilities=ChargedShot
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=false
 
 [Magnum]
 Cost=30
@@ -592,6 +647,17 @@ Element=None
 Hits=$rand(2,3)
 BasePower=20
 Upgrade=4000
+
+[BasicRifle]
+Cost=1
+Type=Rifle
+Info=A basic and plain rifle for new adventurers.
+Abilities=ChargedShot
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=true
 
 [Boomstick]
 Cost=60
@@ -701,6 +767,16 @@ SpecialWeapon=true
 =============================================
 AXES
 =============================================
+[BasicAxe]
+Cost=1
+Type=Axe
+Info=A basic and plain axe for new adventurers.
+Abilities=RagingAxe
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=false
 
 [Guttler]
 Cost=45
@@ -721,6 +797,17 @@ Element=None
 Hits=1
 BasePower=50
 Upgrade=2000
+
+[BasicGreatAxe]
+Cost=1
+Type=Greataxe
+Info=A basic and plain greataxe for new adventurers.
+Abilities=IronTempest
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=true
 
 [Ukonvasara]
 Cost=75
@@ -790,6 +877,16 @@ legendary=true
 =============================================
 DAGGERS
 =============================================
+[BasicDagger]
+Cost=1
+Type=Dagger
+Info=A basic and plain dagger for new adventurers.
+Abilities=WaspSting
+Element=None
+Hits=1
+BasePower=11
+Upgrade=2000
+2Handed=false
 
 [MainGauche]
 Cost=40
@@ -874,6 +971,17 @@ LinkedWeapon=Kikoku
 =============================================
 Bows
 =============================================
+[BasicBow]
+Cost=1
+Type=Bow
+Info=A basic and plain bow for new adventurers.
+Abilities=DullingArrow
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=true
+
 [RobinsBow]
 Cost=20
 Type=Bow
@@ -945,6 +1053,16 @@ IgnoreDefense=10
 =============================================
 KATANAS
 =============================================
+[BasicKatana]
+Cost=1
+Type=Katana
+Info=A basic and plain katana for new adventurers.
+Abilities=Tachi:Enpi
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=true
 
 [Keitonotachi]
 Cost=30
@@ -1136,6 +1254,17 @@ Legendary=true
 =============================================
 WANDS & STAVES
 =============================================
+[BasicWand]
+Cost=1
+Type=Wand
+Info=A basic and plain wand for new adventurers.
+Abilities=MagicMissile
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=false
+
 [PixiWand]
 Cost=10
 Type=Wand
@@ -1208,6 +1337,17 @@ Upgrade=0
 IgnoreDefense=5
 2Handed=false
 SpecialWeapon=true
+
+[BasicStaff]
+Cost=1
+Type=Stave
+Info=A basic and plain staff for new adventurers.
+Abilities=MagicStrike
+Element=None
+Hits=1
+BasePower=11
+Upgrade=2000
+2Handed=true
 
 [IridialStaff]
 Cost=75
@@ -1283,6 +1423,16 @@ SpecialWeapon=true
 =============================================
 SPEARS
 =============================================
+[BasicSpear]
+Cost=1
+Type=Spear
+Info=A basic and plain spear for new adventurers.
+Abilities=Jump
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=true
 
 [Lance]
 Cost=50
@@ -1366,6 +1516,16 @@ IgnoreDefense=10
 =============================================
 SCYTHES
 =============================================
+[BasicScythe]
+Cost=1
+Type=Scythe
+Info=A basic and plain scythe for new adventurers.
+Abilities=NightmareScythe
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=true
 
 [DeathScythe]
 Cost=70
@@ -1890,20 +2050,30 @@ BasePower=20
 [Silver_Goddess_Sword]
 Cost=0
 Type=Sword
-Info=A longsword made out of silver and has a blue gem inserted into the guard.
+Info=A longsword made out of silver and has a blue gem inserted into the guard. Given to Lirarian by a previous goddess.
 Abilities=TwinSlice.BiteOfLightning.BladeBeam
 Element=Light
 Hits=$rand(1,2)
 BasePower=75
+2Handed=false
+IgnoreDefense=10
+HurtEthereal=true
+CanShieldReflect=true
+CanCounter=false
 
 [Black_Goddess_Staff]
 Cost=0
 Type=Stave
-Info=A large staff that is black in color. The bottom has gold on it and the top of the staff splits into four before combining back together. A ruby rests in the split and gold runes run along the staff.
+Info=A large staff that is black in color. The bottom has gold on it and the top of the staff splits into four before combining back together. A ruby rests in the split and gold runes run along the staff. Given to Lirarian by a previous goddess.
 Abilities=AeroV.BlizzardV.FireV.DarkV.BanishV
 Element=Light
 Hits=1
 Basepower=70
+2Handed=true
+IgnoreDefense=10
+HurtEthereal=true
+CanShieldReflect=true
+CanCounter=false
 
 [Cell'sKi]
 Cost=0
@@ -4123,6 +4293,9 @@ BasePower=100
 Upgrade=0
 IgnoreDefense=10
 2Handed=true
+HurtEthereal=true
+CanShieldReflect=true
+CanCounter=false
 
 [WallofFleshMouth]
 Cost=0
@@ -4820,6 +4993,8 @@ Upgrade=0
 BlockChance=40
 AbsorbAmount=50
 
+; Special shields that don't fit into the other categories.
+
 [Aegis]
 Cost=0
 Type=Shield
@@ -4841,3 +5016,15 @@ Upgrade=0
 BlockChance=$iif(%battle.type = torment, 100, 50)
 AbsorbAmount=$iif(%battle.type = torment, 75, 50)
 Legendary=True
+
+; Shields for monsters/npcs.
+
+[DemonShield]
+Cost=0
+Type=shield
+Info=A medium sized shield for use by demon knights.
+Hits=0
+BasePower=350
+Upgrade=0
+BlockChance=30
+AbsorbAmount=35

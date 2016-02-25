@@ -174,37 +174,39 @@ Desc=$+ 's body begins to morph and grow horns as %real.name screams.  After a f
 
 [ElvenGoddessMight]
 Name=ElvenGoddessMight
-Hp=1.2
-Str=1.3
-Def=1.3
-Int=1.2
-Spd=1.2
-Augment=MeleeBonus.RenkeiBonus.TechBonus.EnhanceSword.EnhanceKatana.EnhanceHandToHand.EnhanceCriticalHits
+Hp=1.5
+Str=1.5
+Def=1.5
+Int=1.5
+Spd=1.5
+Augment=MeleeBonus.RenkeiBonus.TechBonus.EnhanceSword.EnhanceCriticalHits.EnhanceZen.EnhanceDoubleTurnChance.IgnoreDefense.AdditionalHit
 Effect=Status
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Techs=HyperTwinSlice
-Desc=$+ 's body glows a bright white as $gender($1) body gains mighty strength, also increasing melee and technique power. Additionally, the battlefield gains a white glow, causing all of %real.name $+ 's enemies to feel slower!
+Desc=channels the power of a previous goddess, gaining a mighty strength while also increasing melee and technique power. Additionally, the battlefield gains a white glow, causing all of %real.name $+ 's enemies to feel slower!
 StatusTarget=enemy
 StatusType=Slow
+AdditionalCode=writeini $char($1) weapons equipped Silver_Goddess_Sword | writeini $char($1) weapons Black_Goddess_Staff 0 | writeini $char($1) weapons SilverSwords 0
 
 [ElvenGoddessMagic]
 Name=ElvenGoddessMagic
-Hp=1.2
-Str=1.2
-Def=1.2
-Int=1.3
-Spd=1.3
-Augment=MagicBonus.CuringBonus.EnhanceZen.EnhanceEnfeeble.EnhanceStaff.EnhanceGlyph.EnhanceWand.EnhanceSword.EnhanceStaff
+Hp=1.5
+Str=1.5
+Def=1.5
+Int=1.5
+Spd=1.5
+Augment=MagicBonus.EnhanceZen.EnhanceStaff.EnhanceCriticalHits.EnhanceDoubleTurnChance.IgnoreDefense.AdditionalHit
 Effect=Status
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Techs=AerogaV
-Desc=$+ 's body begins to glow with a red and blue energy. %real.name gains a large increase to $gender($1) spells, along with other increases. %real.name $+ 's next techniques will consume no TP.
+Desc=channels the power of a previous goddess as %real.name $+ 's body glows with red and blue energy. %real.name gains a large increase to $gender($1) spells, along with other increases. %real.name $+ 's next technique will consume no TP.
 StatusTarget=Self
 StatusType=ConserveTP
+AdditionalCode=writeini $char($1) weapons equipped Black_Goddess_Staff | writeini $char($1) weapons Silver_Goddess_Sword 0 | writeini $char($1) weapons SilverSwords 0
 
 [WiseReflection]
 Name=WiseReflection
