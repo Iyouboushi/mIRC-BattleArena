@@ -151,8 +151,8 @@ ON 1:TEXT:!quick id*:*:{ $idcheck($nick , $3, quickid) | mode %battlechan +v $ni
   unset %passhurt 
   /close -m* 
 }
-on 3:TEXT:!logout*:*:{ .auser 1 $nick | mode %battlechan -v $nick | .flush 1 }
-on 3:TEXT:!log out*:*:{ .auser 1 $nick | mode %battlechan -v $nick | .flush 1 }
+on 3:TEXT:!logout*:*:{ .auser 1 $nick | close -c $nick | mode %battlechan -v $nick | .flush 1 }
+on 3:TEXT:!log out*:*:{ .auser 1 $nick | close -c $nick | mode %battlechan -v $nick | .flush 1 }
 
 ON 2:TEXT:!last seen *:*:{  $checkchar($3)
   var %last.seen $readini($char($3), info, lastseen)

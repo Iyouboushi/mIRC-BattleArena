@@ -42,6 +42,7 @@ ChangeTimeForEnter=$chr(3) $+ 4 $+ Time allowed for the !enter period has been s
 PlayerExists=$chr(3) $+ 4 $+ A character with the name $nick already exists.  If this is you, use the !id command with your password in query to log in.  If not, please change your nick and try again.
 NameReserved=$chr(3) $+ 4 $+ A character with the name $nick is reserved and cannot be used. Please change your nick and try again.
 CharacterCreated=$chr(3) $+ 3 $+  $+ $nick has entered the dimensional rift to join the battle arena.
+DccConnected=Received your DCC CHAT connection from $address $+ . Use !logout if this is not you.
 StartingCharOrbs=$chr(3) $+ 2 $+ You enter the arena with a total of %starting.orbs  $+ $readini(system.dat, system, currency) to spend.  
 StartingCharPassword=$chr(3) $+ 2 $+ Your password has been set to %password and it is recommended you change it using the command !newpass %password newpasswordhere in private or at least write the password down. $chr(3) $+ Passwords cannot be recovered!
 UnZappedComplete=$chr(3) $+ 10 $+ $+ %real.name has been restored to this dimension. 
