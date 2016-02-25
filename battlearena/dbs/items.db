@@ -255,6 +255,7 @@ ShopNPC=HealingMerchant
 Cost=5000
 SellPrice=2000
 Desc=holds up a small feather from a phoenix over %enemy $+ . A bright light shines down from above and envelops %enemy and after a moment %enemy is brought back to life.
+ReviveAmount=.50
 
 
 =========================
