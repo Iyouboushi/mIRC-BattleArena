@@ -2016,9 +2016,13 @@ death.conditions.check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 character.revive {
   ; $1 = player to revive
+  ; $2 = revive amount (50% if missing)
+
+  var %character.revive.percent $2 
+  if (%character.revive.percent = $null) { var %character.revive.percent .50 }
 
   var %max.hp $readini($char($1), basestats, hp)
-  set %revive.current.hp $round($calc(%max.hp / 2),0)
+  set %revive.current.hp $round($calc(%max.hp * %character.revive.percent),0)
   if (%revive.current.hp <= 0) { set %revive.current.hp 1 }
   writeini $char($1) battle hp %revive.current.hp
   writeini $char($1) battle status normal

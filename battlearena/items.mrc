@@ -350,7 +350,7 @@ alias uses_item {
 
     $set_chr_name($4) | var %enemy %real.name | $set_chr_name($1) 
     $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
-    $item.revive($1, $4, $2) 
+    $item.autorevive($1, $4, $2) 
 
     $decrease_item($1, $2) 
     if (%battleis = on)  { $check_for_double_turn($1) | halt }
@@ -366,7 +366,9 @@ alias uses_item {
     $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
     $decrease_item($1, $2) 
 
-    $character.revive($4)
+    var %revive.amount $readini($dbfile(items.db), $2, ReviveAmount)
+
+    $character.revive($4, %revive.amount)
 
     if (%battleis = on)  { $check_for_double_turn($1) | halt }
   }
@@ -885,7 +887,7 @@ alias item.heal {
   return
 }
 
-alias item.revive {
+alias item.autorevive {
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
   if ($person_in_mech($2) = true) { $display.message($readini(translation.dat, errors, ItemNotWorkOnMech), private) | halt }
@@ -1387,7 +1389,6 @@ alias portal.sync.players {
 
     if ((no-trust isin %battleconditions) || (no-trusts isin %battleconditions)) { 
       if ($readini($char(%who.battle), info, flag) = npc) { 
-
         if (($readini($char(%who.battle), info, clone) = yes) || ($readini($char(%who.battle), info, summon) = yes)) { 
           if ($readini($char(%who.battle), info, clone) = yes) { var %owner $readini($char(%who.battle), info, cloneowner) }
           if ($readini($char(%who.battle), info, clone) != yes) { var %owner  $readini($char(%who.battle), info, owner) }
