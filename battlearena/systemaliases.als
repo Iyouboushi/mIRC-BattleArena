@@ -850,15 +850,15 @@ display.private.message {
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
-  if ($readini(system.dat, system, botType) = IRC) {
+  if (($event == chat) || ($readini(system.dat, system, botType) = DCCchat)) $dcc.private.message($nick, %message.to.display)
+  elseif ($readini(system.dat, system, botType) = IRC) {
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 1 /.msg $nick %message.to.display
   }
-  if ($readini(system.dat, system, botType) = TWITCH) { 
+  elseif ($readini(system.dat, system, botType) = TWITCH) {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /query %battlechan %message.to.display
   }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($nick, %message.to.display) }
 }
 display.private.message2 {
   var %message.to.display $2-
@@ -866,27 +866,26 @@ display.private.message2 {
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
-  if ($readini(system.dat, system, botType) = IRC) {
+  if (($event == chat) || ($readini(system.dat, system, botType) = DCCchat)) $dcc.private.message($1, %message.to.display)
+  elseif ($readini(system.dat, system, botType) = IRC) {
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 1 /.msg $1 %message.to.display 
   }
-  if ($readini(system.dat, system, botType) = TWITCH) { 
+  elseif ($readini(system.dat, system, botType) = TWITCH) {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /query %battlechan %message.to.display
   }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($1, %message.to.display) }
 }
 display.private.message.delay {
   var %message.to.display $1
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
-  if ($readini(system.dat, system, botType) = IRC) {
+  if (($event == chat) || ($readini(system.dat, system, botType) = DCCchat)) $dcc.private.message($nick, %message.to.display)
+  elseif ($readini(system.dat, system, botType) = IRC) {
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 2 /.msg $nick %message.to.display 
   }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($nick, %message.to.display) }
-
-  if ($readini(system.dat, system, botType) = TWITCH) { 
+  elseif ($readini(system.dat, system, botType) = TWITCH) {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
     inc %twitch.delay 1 
@@ -899,12 +898,11 @@ display.private.message.delay.custom {
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
-  if ($readini(system.dat, system, botType) = IRC) {
+  if (($event == chat) || ($readini(system.dat, system, botType) = DCCchat)) $dcc.private.message($nick, %message.to.display)
+  elseif ($readini(system.dat, system, botType) = IRC) {
     /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 $2 /.msg $nick %message.to.display 
   }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($nick, %message.to.display) }
-
-  if ($readini(system.dat, system, botType) = TWITCH) { 
+  elseif ($readini(system.dat, system, botType) = TWITCH) {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
     inc %twitch.delay $2

@@ -23,6 +23,8 @@ on 3:TEXT:!dcc*:*:{
 ; Enter the DCC chat
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 on 2:open:=: {
+  msg $nick $readini(translation.dat, System, DccConnected)
+
   var %p 1 | var %where $readini($char($nick), DCCchat, Room)
   if (%where = $null) { writeini $char($nick) DCCchat Room Lobby | var %where Lobby }
   if ((%where = BattleRoom) && (%battleis = off)) { writeini $char($nick) DCCchat Room Lobby | var %where Lobby }
@@ -70,7 +72,9 @@ on 2:close:=: { var %p 1
     else {  msg = $+ $chat(%p) 14###4 $nick has left the game. | inc %p 1 }
   }
   close -c $nick
-  .auser 1 $nick | mode %battlechan -v $nick | .flush 1
+  if ($readini(system.dat, system, botType) == DCCChat) {
+    .auser 1 $nick | mode %battlechan -v $nick | .flush 1
+  }
 }
 
 
