@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 02/24/16
+;;;; Last updated: 02/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1233,6 +1233,7 @@ alias calculate_damage_techs {
       if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
       if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.techdmg.player.formula_2.0($1, $2, $3, $4)  }
       if ($readini(system.dat, system, BattleDamageFormula) = 4) { $formula.techdmg.player.formula_1.0($1, $2, $3, $4)  }
+      if ($readini(system.dat, system, BattleDamageFormula) = 5) { $formula.techdmg.player.formula_3.1($1, $2, $3, $4)  }
     }
   }
 

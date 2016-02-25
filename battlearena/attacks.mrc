@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 10/25/15
+;;;; Last updated: 02/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -179,6 +179,7 @@ alias calculate_damage_weapon {
       if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.meleedmg.player.formula_2.5($1, $2, $3, $4) }
       if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.meleedmg.player.formula_2.0($1, $2, $3, $4) }
       if ($readini(system.dat, system, BattleDamageFormula) = 4) { $formula.meleedmg.player.formula_1.0($1, $2, $3, $4) }
+      if ($readini(system.dat, system, BattleDamageFormula) = 5) { $formula.meleedmg.player.formula_3.1($1, $2, $3, $4) }
     }
   }
 }

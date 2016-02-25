@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 10/14/15
+;;;; Last updated: 02/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -487,6 +487,12 @@ on 50:TEXT:!toggle damage formula*:*:{
   }
 
   if ($readini(system.dat, system, BattleDamageFormula) = 4) { 
+    writeini system.dat system BattleDamageFormula 5
+    $display.message($readini(translation.dat, system, BattleFormula5), global)
+    halt
+  }
+
+  if ($readini(system.dat, system, BattleDamageFormula) = 5) { 
     writeini system.dat system BattleDamageFormula 1
     $display.message($readini(translation.dat, system, BattleFormula1), global)
     halt

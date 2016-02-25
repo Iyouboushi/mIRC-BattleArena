@@ -284,6 +284,7 @@ BattleFormula1=$chr(3) $+ 4 $+ The Damage Formula has been set to Version 3.0
 BattleFormula2=$chr(3) $+ 4 $+ The Damage Formula has been set to Version 2.5
 BattleFormula3=$chr(3) $+ 4 $+ The Damage Formula has been set to Version 2.0
 BattleFormula4=$chr(3) $+ 4 $+ The Damage Formula has been set to Version 1.0
+BattleFormula5=$chr(3) $+ 4 $+ The Damage Formula has been set to Version 3.1
 AiSystemOn=$chr(3) $+ 4 $+ The Ai System has been turned on.
 AiSystemOff=$chr(3) $+ 4 $+ The Ai System has been turned off.
 EnableBattlefieldEventsOn=$chr(3) $+ 4 $+ Random Battlefield Events are now enabled.
