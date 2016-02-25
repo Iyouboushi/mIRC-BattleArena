@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 02/12/16
+;;;; Last updated: 02/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -284,7 +284,8 @@ dungeon.generatemonsters {
 
   ; Cycle through and summon each
   var %value 1 | var %multiple.monster.counter 2 | set %number.of.monsters $numtok(%monster.list,46)
-  while (%value <= %number.of.monsters) {
+  while (%value <= %number.of.monsters) { 
+    unset %multiple.monster.found
     set %current.monster.to.spawn $gettok(%monster.list,%value,46)
 
     var %isboss $isfile($boss(%current.monster.to.spawn))
@@ -294,11 +295,20 @@ dungeon.generatemonsters {
     else { 
       set %found.monster true 
       var %current.monster.to.spawn.name %current.monster.to.spawn
-      while ($isfile($char(%current.monster.to.spawn.name)) = $true) { var %current.monster.to.spawn.name %current.monster.to.spawn $+ %multiple.monster.counter | inc %multiple.monster.counter 1 }
+
+      while ($isfile($char(%current.monster.to.spawn.name)) = $true) { 
+        var %current.monster.to.spawn.name %current.monster.to.spawn $+ %multiple.monster.counter 
+        inc %multiple.monster.counter 1 | var %multiple.monster.found true
+      }
     }
 
     if ($isfile($boss(%current.monster.to.spawn)) = $true) { .copy -o $boss(%current.monster.to.spawn) $char(%current.monster.to.spawn.name)  }
     if ($isfile($mon(%current.monster.to.spawn)) = $true) {  .copy -o $mon(%current.monster.to.spawn) $char(%current.monster.to.spawn.name)  }
+
+    if (%multiple.monster.found = true) {  
+      var %real.name.spawn $readini($char(%current.monster.to.spawn), basestats, name) $calc(%multiple.monster.counter - 1)
+      writeini $char(%current.monster.to.spawn.name) basestats name %real.name.spawn
+    }
 
     ; increase the total # of monsters
     set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%current.monster.to.spawn.name,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
