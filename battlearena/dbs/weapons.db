@@ -23,29 +23,30 @@ GreatAxes=Great Axes
 Daggers=Daggers
 Hammers=Hammers
 Lightsabers=Lightsabers
+Misc=Misc
 
 
 ; Below are the weapon lists
 
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur
-Swords=Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword.BasicSword
+Swords=BasicSword.Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
 Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1
-Whips=LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Alruna.BasicWhip
-Guns=Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge.BasicGun
-Rifles=Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle.BasicRifle
-Bows=RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.BasicBow
-Katanas=PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1.Zangetsu
-Katanas2=Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa.BasicKatana
-Wands=YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold.BasicWand
-Staves=IridialStaff.Laevatein.Uffrat.BahamutsStaff.BasicStaff
+Whips=BasicWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Alruna
+Guns=BasicGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge
+Rifles=BasicRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle
+Bows=BasicBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
+Katanas=BasicKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1
+Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa
+Wands=BasicWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold
+Staves=BasicStaff.IridialStaff.Laevatein.Uffrat.BahamutsStaff
 Glyphs=Glyphs.Glyphs+1
-Spears=Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex.BasicSpear
-Scythes=DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque.BasicScythe
-GreatSwords=Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain.BasicGreatSword
-Axes=Farsha.Guttler.Kerehcatl.BasicAxe
-GreatAxes=Ukonvasara.Bravura.LightreaverBasicGreatAxe
-Daggers=MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi.BasicDagger
+Spears=BasicSpear.Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex
+Scythes=BasicScythe.DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque
+GreatSwords=BasicGreatSword.Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
+Axes=BasicAxe.Farsha.Guttler.Kerehcatl
+GreatAxes=BasicGreatAxe.Ukonvasara.Bravura.Lightreaver
+Daggers=BasicDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi
 Hammers=Mjolnir
 Lightsabers=Lightsaber
 

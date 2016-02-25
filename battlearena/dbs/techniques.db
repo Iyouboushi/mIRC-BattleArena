@@ -11,8 +11,8 @@ Oatixur=TornadoKick.ShinjinSpiral.ShoulderTackle.SpinningAttack
 ; Swords
 BasicSword=FastBlade
 Mythril_Sword=FastBlade.BurningBlade.FlatBlade.SeraphBlade
-Agni=AerialCross.JetStream $+ $iif($weapon.linkcheck(Rudra) = true, .Tempest)
-Rudra=AerialCross.JetStream $+ $iif($weapon.linkcheck(Agni) = true, .Tempest)
+Agni=AerialCross.JetStream $+ $iif($weapon.linkcheck($1,Rudra) = true, .Tempest)
+Rudra=AerialCross.JetStream $+ $iif($weapon.linkcheck($1,Agni) = true, .Tempest)
 Joyeuse=FastBlade.CircleBlade.FlatBlade
 Excalibur=Atonement.CircleBlade.SpiritsWithin.VorpalBlade
 Excalibur+1=Atonement.CircleBlade.SpiritsWithin.VorpalBlade
@@ -140,10 +140,10 @@ BasicDagger=WaspSting
 MainGauche=SharkBite.DancingEdge.Cyclone
 Terpsichore=PyrrhicKleos.RudrasStorm.Exenterator
 Mandau=MercyStroke.AeolianEdge.Evisceration
-Vanir_Knife=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vajra) = true, .Evisceration)
-Vajra=SharkBite.DancingEdge $+ $iif($weapon.linkcheck(Vanir_Knife) = true, .Evisceration)
-Kikoku=Blade:Metsu.Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck(Kannagi) = true, .Blade:Shun.Blade:Hi)
-Kannagi=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck(Kikoku) = true, .Blade:Shun.Blade:Hi)
+Vanir_Knife=SharkBite.DancingEdge $+ $iif($weapon.linkcheck($1,Vajra) = true, .Evisceration)
+Vajra=SharkBite.DancingEdge $+ $iif($weapon.linkcheck($1,Vanir_Knife) = true, .Evisceration)
+Kikoku=Blade:Metsu.Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck($1,Kannagi) = true, .Blade:Shun.Blade:Hi)
+Kannagi=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck($1,Kikoku) = true, .Blade:Shun.Blade:Hi)
 
 ; Hammers
 Mjolnir=Thor'sRage.Thor'sGodforce

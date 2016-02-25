@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/24/16
+;;;; Last updated: 02/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4236,6 +4236,9 @@ return.weaponsize {
   if (%temp.weapon.type = spear) { return large }
   if (%temp.weapon.type = scythe) { return large }
   if (%temp.weapon.type = greataxe) { return large }
+  if (%temp.weapon.type = hammer) { return medium }
+  if (%temp.weapon.type = lightsaber) { return medium }
+  if (%temp.weapon.type = chainsaw) { return medium }
 }
 
 monstersize.adjust {
