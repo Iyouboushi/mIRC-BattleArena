@@ -4198,6 +4198,28 @@ SellPrice=100
 Numbers=2.4.5.3
 Desc=A small trading card. On the front is a picture of a large dirt eating worm as it pops out of the ground
 
+[TradingCard-008]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Numbers=3.5.3.4
+Desc=A small trading card. On the front is a picture of a succubus blowing a kiss
+
+[TradingCard-009]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Numbers=4.4.5.3
+Desc=A small trading card. On the front is a picture of a Creeper about to blow up and destroy a house
+
+[TradingCard-010]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Numbers=5.6.5.4
+Desc=A small trading card. On the front is a picture of a Cerberus covered in ice in mid-roar
+
+
 
 
 
