@@ -1454,6 +1454,8 @@ Battle Arena Bot VERSIONS
 - Added Trading Card items
 - Added new achievements
 - Added TormentOrb 12-15 and their recipes
+- Added the !last seen command. This command will tell you when a player was last seen in the channel
+- Added the !version command. This command will tell you the current bot version
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1476,6 +1478,10 @@ Battle Arena Bot VERSIONS
 - Changed the way the bot displays the weather changes so that it's customizeable by bot owners
 - Changed the max level of certain skills for characters that have reset (used Final Getsuga)
 - Changed the leveling rate of techs for characters that have reset (used Final Getsuga)
+- Changed the max level of player styles for characters that have reset (used Final Getsuga) making the maximum 
+  of 11 for those players.
+- Changed !items so that only healing, battle, +stat, summon, shop lower, and songsheet/special items are shown with that
+  command. Everything else has been moved to their own command (which is displayed when !items is used)
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
@@ -1487,6 +1493,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue where portal items were being cut off
 - Fixed an issue with absorb inside of dungeons and torment
 - Fixed an issue with clones being able to use skills multiple times without a cooldown
+- Fixed an issue with the Shrine of Ru'Avitau's weather (had "light" instead of "bright")
 - Fixed a potential issue with certain items in the shop being cut off if there's too many
 - Fixed a typo with Shenron's Wish
 - Fixed a description issue with ToxicMelody
