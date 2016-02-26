@@ -1043,10 +1043,12 @@ formula.meleedmg.player.formula_3.1 {
   if (%enemy.defense <= 0) { set %enemy.defense 1 }
 
   ; Calculate the attack damage based on base stat / enemy's defense
-  set %attack.damage $calc((%base.stat / %enemy.defense) * %attack.damage)
+  set %attack.damage $round($calc((%base.stat / %enemy.defense) * %attack.damage),0)
 
   ; Check for modifiers
   var %starting.damage %attack.damage
+
+  echo -a starting damage: %starting.damage
 
   var %weapon.element $readini($dbfile(weapons.db), $2, element)
   if ((%weapon.element != $null) && (%weapon.element != none)) {
@@ -4147,9 +4149,8 @@ formula.techdmg.player.formula_3.1 {
 
   if (%enemy.defense <= 0) { set %enemy.defense 1 }
 
-
   ; Calculate the attack damage based on base stat / enemy's defense
-  set %attack.damage $calc((%base.stat / %enemy.defense) * %attack.damage)
+  set %attack.damage $round($calc((%base.stat / %enemy.defense) * %attack.damage),0)
 
   var %starting.damage %attack.damage
 
