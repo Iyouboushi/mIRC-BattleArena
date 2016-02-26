@@ -206,7 +206,7 @@ HitenMitsurugi-Ryu=10
 ; less than 100 means resistances, 0 means immune to it.
 Heal=none
 GreatSword=100
-BasicGreatsword=100
+GreatForgedSword=100
 Rebellion=100
 Braveheart=100
 Balmung=100

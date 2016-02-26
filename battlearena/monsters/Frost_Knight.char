@@ -206,7 +206,7 @@ HitenMitsurugi-Ryu=10
 ; less than 100 means resistances, 0 means immune to it.
 Heal=none
 Dagger=100
-BasicDagger=100
+SmallDagger=100
 MainGauche=100
 Mandau=100
 Terpsichore=100

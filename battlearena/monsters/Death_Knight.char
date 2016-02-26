@@ -206,7 +206,7 @@ HitenMitsurugi-Ryu=10
 ; less than 100 means resistances, 0 means immune to it.
 Heal=none
 Katana=100
-BasicKatana=100
+SmallKatana=100
 PowerChordSword=105
 Soboro=100
 Kogarasumaru=110
