@@ -76,6 +76,7 @@ IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrif
 Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 Uffrat=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 BahamutsStaff=Ultima.Kaustra.Merlin'sFinalSpell
+MagicGlyphs=Pulsus
 Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 Glyphs+1=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 
@@ -146,6 +147,7 @@ Kikoku=Blade:Metsu.Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck($1,Ka
 Kannagi=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck($1,Kikoku) = true, .Blade:Shun.Blade:Hi)
 
 ; Hammers
+BronzeHammer=Brainshaker
 Mjolnir=Thor'sRage.Thor'sGodforce
 
 ; Mech Weapons
@@ -2760,6 +2762,18 @@ Cost=3000
 Magic=yes
 stat=int
 
+[Pulsus]
+Type=Single
+Cost=500
+Desc=holds $gender($1) hands forward and launches a non-elemental blast of energy towards %enemy $+ .
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=int
+Renkei=1
+
 [Ignis]
 Type=Single
 TP=45
@@ -2844,6 +2858,18 @@ stat=int
 ===================
 HAMMER TECHS
 ===================
+[Brainshaker]
+Type=Single
+Cost=500
+Desc=simply runs up to %enemy and smashes the hammer over %enemy $+ 's head!
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=str
+Renkei=1
+
 [Thor'sRage]
 Type=AOE
 TP=50

@@ -40,14 +40,14 @@ Katanas=BasicKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valma
 Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa
 Wands=BasicWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold
 Staves=BasicStaff.IridialStaff.Laevatein.Uffrat.BahamutsStaff
-Glyphs=Glyphs.Glyphs+1
+Glyphs=MagicGlyphs.Glyphs.Glyphs+1
 Spears=BasicSpear.Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex
 Scythes=BasicScythe.DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque
 GreatSwords=BasicGreatSword.Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
 Axes=BasicAxe.Farsha.Guttler.Kerehcatl
 GreatAxes=BasicGreatAxe.Ukonvasara.Bravura.Lightreaver
 Daggers=BasicDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi
-Hammers=Mjolnir
+Hammers=BronzeHammer.Mjolnir
 Lightsabers=Lightsaber
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
@@ -860,6 +860,16 @@ IgnoreDefense=5
 =============================================
 HAMMERS
 =============================================
+[BronzeHammer]
+Cost=1
+Type=Hammer
+Info=A basic hammer made out of bronze for new adventurers.
+Abilities=Brainshaker
+Element=None
+Hits=1
+BasePower=11
+Upgrade=300
+2Handed=false
 
 [Mjolnir]
 Cost=0
@@ -1394,6 +1404,17 @@ Element=None
 Hits=3
 BasePower=90
 Upgrade=6000
+2Handed=true
+
+[MagicGlyphs]
+Cost=1
+Type=Glyph
+Info=Basic glyphs created by the Order of Ecclesia for new recruits.
+Abilities=Pulsus
+Element=None
+Hits=$rand(1,2)
+BasePower=5
+Upgrade=500
 2Handed=true
 
 [Glyphs]

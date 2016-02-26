@@ -1,10 +1,8 @@
-activates the Melio Confodere glyph, summoning a rapier and then proceeds to slash %enemy twice with it
-activates the Melio Secare glyph, summoning a large sword and proceeds to swing the sword down upon %enemy
-activates the Melio Hasta glyph, summoning a large spear and proceeds to thrust the spear into %enemy
-activates the Melio Arcus glyph, summoning a magical bow and arrows and proceeds to shoot %enemy twice
-activates the Melio Culter glyph, summoning multiple magical knives and proceeds to throw the knives at %enemy
-activates the Lapiste glyph, summoning a large stone fist and proceeds to punch %enemy twice with it
-activates the Pneuma glyph, summoning two gusts of wind and proceeds to throw them down towards %enemy
-activates Dextro Custos and Sinesro Custos, summoning two heads of Cerberus that proceeds to bite %enemy
-activates Dominus Hatred, shooting a green beam upwards and causes multiple beams to slam into %enemy
-activates Dominus Anger, shooting multiple fireballs towards %enemy
+activates the Confodere glyph, summoning a rapier and then proceeds to slash %enemy twice with it
+activates the Secare glyph, summoning a large sword and proceeds to swing the sword down upon %enemy
+activates the Hasta glyph, summoning a large spear and proceeds to thrust the spear into %enemy
+activates the Arcus glyph, summoning a magical bow and proceeds to shoot %enemy with an energy arrow
+activates the Culter glyph, summoning a magical knife and proceeds to throw the knife at %enemy
+activates the Macir glyph, summoning a magical hammer and proceeds to hit %enemy over the head with it
+activates the Ascia glyph, summoning a magical axe and proceeds to slash %enemy twice with it
+activates the Falcis glyph, summoning a magical scythe and proceeds to slash %enemy twice with it
