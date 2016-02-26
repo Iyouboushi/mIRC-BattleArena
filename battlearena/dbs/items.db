@@ -1990,7 +1990,7 @@ Currency=AlliedNotes
 Type=misc
 Cost=50
 SellPrice=20
-Desc=a small tank of energy for use by mechs.
+Desc=a small tank of energy that is usually used for mechs though occasionally it has other uses.
 Currency=AlliedNotes
 Amount=200
 MechType=RestoreEnergy
@@ -2390,7 +2390,6 @@ Desc=takes out a giganitc blue slab of titanite, setting the weapon on the anvil
 Cost=0
 SellPrice=2000
 Exclusive=yes
-
 
 
 [BeastmenSeal]

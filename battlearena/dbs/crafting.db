@@ -1883,3 +1883,16 @@ Amount=1
 AdvancedFusionEngine=1
 Omni=1
 SoulOfMight=1
+
+============
+Weapons
+============
+[ProtonPack]
+Gem=Diamond
+Ingredients=Ectoplasm.E-Tank.QuadavShell.FireGem
+SuccessRate=55
+Amount=1
+Ectoplasm=5
+E-Tank=5
+QuadavShell=1
+FireGem=1

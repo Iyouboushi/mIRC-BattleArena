@@ -4263,6 +4263,7 @@ return.weaponsize {
   if (%temp.weapon.type = hammer) { return medium }
   if (%temp.weapon.type = lightsaber) { return medium }
   if (%temp.weapon.type = chainsaw) { return medium }
+  if (%temp.weapon.type = ParticleAccelerator) { return medium }
 }
 
 monstersize.adjust {

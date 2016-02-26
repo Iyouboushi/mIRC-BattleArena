@@ -2112,14 +2112,22 @@ alias skill.alchemy {
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ($skillhave.check($1, alchemy) = false) { $set_chr_name($nick) | $display.message($readini(translation.dat, errors, DoNotHaveSkill),private) | halt }
 
-  set %gem.required $readini($dbfile(crafting.db), $2, gem)
-  if (%gem.required = $null) { .unset %gem.required | $display.message($readini(translation.dat, errors, CannotCraftThisItem),private) | halt }
+
+  if ($readini($dbfile(weapons.db), $2, basepower) != $null) {  
+    var %player.amount.weapon $readini($char($1), weapons, $2)
+    if ((%player.amount.weapon != $null) || (%player.amount > 0)) { $display.message(4 $+ $get_chr_name($1) already owns this weapon and cannot craft another!, private) | halt }
+  }
+
+  var %gem.required $readini($dbfile(crafting.db), $2, gem)
+  if (%gem.required = $null) { unset %gem.required | $display.message($readini(translation.dat, errors, CannotCraftThisItem),private) | halt }
 
   var %amount.to.craft $abs($3)
   if (%amount.to.craft = $null) { var %amount.to.craft 1 }
 
   ; Does the user have the gem necessary to craft the item?
-  set %player.gem.amount $readini($char($1), item_amount, %gem.required)  
+  var %player.gem.amount $readini($char($1), item_amount, %gem.required)  
+
+  if (%player.gem.amount <= 0) { remini $char($1) item_amount %gem.required } 
   if (%player.gem.amount = $null) { set %player.gem.amount 0 } 
   if (%player.gem.amount < %amount.to.craft) { unset %player.gem.amount | unset %gem.required | $display.message($readini(translation.dat, errors, MissingCorrectGem),private) | halt } 
 
@@ -2129,11 +2137,24 @@ alias skill.alchemy {
 
   var %value 1
   while (%value <= %total.ingredients) {
-    set %item.name $gettok(%ingredients, %value, 46)
-    set %item_amount $readini($char($1), item_amount, %item.name)
-    set %item_type $readini($dbfile(items.db), %item.name, type)
-    set %amount.needed $calc($readini($dbfile(crafting.db), $2, %item.name) * %amount.to.craft)
-    if (%amount.needed = $null) { set %amount.needed %amount.to.craft }
+    var %item.name $gettok(%ingredients, %value, 46)
+    var %item_amount $readini($char($1), item_amount, %item.name)
+    var %item_type $readini($dbfile(items.db), %item.name, type)
+
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name } 
+    if (%item_amount = $null) { set %item_amount 0 }
+
+    ; How many of the ingredient do we need to craft this?
+    if ($readini($dbfile(weapons.db), $2, power) != $null) { 
+      var %amount.needed $readini($dbfile(crafting.db), $2, %item.name) 
+      if (%amount.needed = $null) { var %amount.needed 1 } 
+    }
+    else { 
+      set %amount.needed $calc($readini($dbfile(crafting.db), $2, %item.name) * %amount.to.craft)
+      if (%amount.needed = $null) { set %amount.needed %amount.to.craft }
+    }
+
+    ; Check to see if we have enough.
 
     if (%item_type = accessory) { 
       var %equipped.accessory $readini($char($1), equipment, accessory) 
@@ -2166,8 +2187,10 @@ alias skill.alchemy {
     if ((%item_amount != $null) && (%item_amount >= %amount.needed)) { 
       inc %player.ingredients 1
     }
+
     inc %value 1 
   }
+
 
   if (%player.ingredients < %total.ingredients) { $display.message($readini(translation.dat, errors, MissingIngredients),private)  | halt }
 
@@ -2189,18 +2212,29 @@ alias skill.alchemy {
     var %random.chance $rand(1,100)
 
     if (%random.chance <= %base.success) { 
-      var %player.amount.item $readini($char($1), item_amount, $2) 
-      if (%player.amount.item = $null) { var %player.amount.item 0 }
-      var %crafting.item.amount $readini($dbfile(crafting.db), $2, amount)
 
-      if ($rand(1,100) = 100) { inc %crafting.item.amount %crafting.item.amount | set %crit.crafting true }
+      ; Figure out if this is a weapon or normal item/armor
+      if ($readini($dbfile(weapons.db), $2, basepower) != $null) { 
+        writeini $char($1) weapons $2 1
+        var %crafting.item.amount 1
+        $display.message($readini(translation.dat, skill, CraftingSuccess), global)
+      }
+      else { 
+        var %player.amount.item $readini($char($1), item_amount, $2) 
+        if (%player.amount.item = $null) { var %player.amount.item 0 }
+        var %crafting.item.amount $readini($dbfile(crafting.db), $2, amount)
 
-      inc %player.amount.item %crafting.item.amount
+        if ($rand(1,100) = 100) { inc %crafting.item.amount %crafting.item.amount | set %crit.crafting true }
 
-      if (%crit.crafting = true) {  $display.message($readini(translation.dat, skill, CriticalCraftingSuccess), global)  }
-      $display.message($readini(translation.dat, skill, CraftingSuccess), global)
+        inc %player.amount.item %crafting.item.amount
 
-      writeini $char($1) item_amount $2 %player.amount.item
+        if (%crit.crafting = true) {  $display.message($readini(translation.dat, skill, CriticalCraftingSuccess), global)  }
+        $display.message($readini(translation.dat, skill, CraftingSuccess), global)
+
+        writeini $char($1) item_amount $2 %player.amount.item
+      }
+
+
     }
     if (%random.chance > %base.success) { $display.message($readini(translation.dat, skill, CraftingFailure), global) }
   }

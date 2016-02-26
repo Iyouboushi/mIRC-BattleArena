@@ -49,6 +49,7 @@ GreatAxes=GreatIronAxe.Ukonvasara.Bravura.Lightreaver
 Daggers=SmallDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi
 Hammers=BronzeHammer.Mjolnir
 Lightsabers=Lightsaber
+Misc=ProtonPack
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
 Defunct=
@@ -1605,6 +1606,27 @@ BasePower=120
 Upgrade=5000
 2Handed=true
 IgnoreDefense=10
+
+
+=============================================
+MISC WEAPONS
+=============================================
+[ProtonPack]
+Cost=0
+SpecialWeapon=true
+Type=ParticleAccelerator
+Info=An energy weapon designed to destroy ghosts. It's a large backpac-sized particle accelerator with a hand-held wand that shoots a stream of protons.
+Abilities=
+Element=none
+Hits=1
+BasePower=$iif($readini($char($2), monster, ghost) = true, 1000, 5)
+HurtEthereal=true
+Upgrade=0
+2Handed=true
+IgnoreDefense=$iif($readini($char($2), monster, ghost) = true, 75, 0)
+
+
+
 
 =============================================
 MECH WEAPONS
