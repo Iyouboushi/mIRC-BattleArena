@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/24/16
+;;;; Last updated: 02/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1644,6 +1644,7 @@ alias skill.analysis { $set_chr_name($1)
 
   var %analysis.flag $readini($char($2), info, flag) 
   if (%analysis.flag != monster) { $display.message($readini(translation.dat, errors, OnlyAnalyzeMonsters), private) | halt }
+
   ; Display the desc. 
   $set_chr_name($2) | set %enemy %real.name
   if ($readini($char($nick), descriptions, analysis) = $null) { set %skill.description focuses intently on %enemy in an attempt to analyze $gender2($2) $+ ! }
@@ -1715,6 +1716,20 @@ alias skill.analysis { $set_chr_name($1)
   if ($readini($char($2), modifiers, greatsword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, greatsword, 46) }
   if ($readini($char($2), modifiers, bow) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, bow, 46) }
 
+  ; Check for weapon normal
+  if ($readini($char($2), modifiers, HandToHand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, handtohand, 46) }
+  if ($readini($char($2), modifiers, Whip) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, whip, 46) }
+  if ($readini($char($2), modifiers, Sword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, sword, 46) }
+  if ($readini($char($2), modifiers, gun) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, gun, 46) }
+  if ($readini($char($2), modifiers, rifle) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, rifle, 46) }
+  if ($readini($char($2), modifiers, katana) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, katana, 46) }
+  if ($readini($char($2), modifiers, wand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, wand, 46) }
+  if ($readini($char($2), modifiers, spear) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, spear, 46) }
+  if ($readini($char($2), modifiers, scythe) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, scythe, 46) }
+  if ($readini($char($2), modifiers, glyph) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, glyph, 46) }
+  if ($readini($char($2), modifiers, greatsword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, greatsword, 46) }
+  if ($readini($char($2), modifiers, bow) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, bow, 46) }
+
   ; Check for weapon resistances
   if ($readini($char($2), modifiers, HandToHand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, handtohand, 46) }
   if ($readini($char($2), modifiers, Whip) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, whip, 46) }
@@ -1739,7 +1754,8 @@ alias skill.analysis { $set_chr_name($1)
   var %analysis.defeat.conditions $readini($char($2), info, DeathConditions)
   if (%analysis.defeat.conditions = $null) { var %analysis.defeat.conditions none }
 
-  set %replacechar $chr(044) $chr(032)
+  var %replacechar $chr(044) $chr(032)
+  %analysis.weapon.normal = $replace(%analysis.weapon.normal, $chr(046), %replacechar)
   %analysis.weapon.weak = $replace(%analysis.weapon.weak, $chr(046), %replacechar)
   %analysis.weapon.strength = $replace(%analysis.weapon.strength, $chr(046), %replacechar)
   %analysis.element.weak = $replace(%analysis.element.weak, $chr(046), %replacechar)
@@ -1756,16 +1772,19 @@ alias skill.analysis { $set_chr_name($1)
   }
   if (%analysis.level = 4) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
     $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
+    $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types:: %analysis.weapon.normal)
     $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength)
     goto next_turn_check
   }
   if (%analysis.level = 5) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
     $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
+    $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types:: %analysis.weapon.normal)
     $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength  $+ $chr(124) %real.name is weak against the following weapon types: %analysis.weapon.weak and weak against the following elements: %analysis.element.weak) 
     goto next_turn_check
   }
   if (%analysis.level = 6) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
     $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
+    $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types:: %analysis.weapon.normal)
     $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength  $+ $chr(124) %real.name is weak against the following weapon types: %analysis.weapon.weak and weak against the following elements: %analysis.element.weak) 
     $display.private.message(3 $+ %real.name is completely immune to the following elements: %analysis.element.absorb)
     $display.private.message(3 $+ %real.name will be healed by the following elements: %analysis.element.heal)
@@ -1775,6 +1794,7 @@ alias skill.analysis { $set_chr_name($1)
 
   if (%analysis.level = 7) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
     $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
+    $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types:: %analysis.weapon.normal)
     $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength  $+ $chr(124) %real.name is weak against the following weapon types: %analysis.weapon.weak and weak against the following elements: %analysis.element.weak) 
     $display.private.message(3 $+ %real.name is completely immune to the following elements: %analysis.element.absorb)
     $display.private.message(3 $+ %real.name will be healed by the following elements: %analysis.element.heal)
