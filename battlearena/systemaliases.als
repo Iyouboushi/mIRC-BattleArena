@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/24/16
+;;;; Last updated: 02/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2106,7 +2106,7 @@ potioningredient.list {
 miscitems.list {
 
   ; CHECKING MISC ITEMS
-  var %value 1 | var %items.lines $lines($lstfile(items_misc.lst))
+  var %value 1 | unset %misc.items.* | var %items.lines $lines($lstfile(items_misc.lst))
 
   while (%value <= %items.lines) {
     set %item.name $read -l $+ %value $lstfile(items_misc.lst)
