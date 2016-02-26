@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 11/23/15
+;;;; Last updated: 02/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -93,6 +93,13 @@ alias auctionhouse.bid {
   if ((. isin $2) || ($2 < 1)) { $display.private.message2($1, 4Error: You must bid a whole number greater than 1.) | halt }
   if ($2 = $null) { $display.private.message2($1, 4Error: You must supply a number of notes to bid with) | halt }
 
+  ; Is the item up for bid a weapon?  If so, does the player already own it?
+
+  if ($readini($dbfile(weapons.db), $readini(system.dat, auctionInfo, current.item), basepower) != $null) {  
+    var %player.amount.weapon $readini($char($1), weapons, $readini(system.dat, auctionInfo, current.item))
+    if ((%player.amount.weapon != $null) || (%player.amount > 0)) { $display.private.message(4You already own this weapon and cannot own another!) | halt }
+  }
+
   ; Does the person have that many notes?
   var %current.alliednotes $readini($char($1), stuff, alliednotes)
   if (%current.alliednotes = $null) { writeini $char($1) stuff alliednotes 0 | var %current.alliednotes 0 }
@@ -184,10 +191,16 @@ alias auctionhouse.end {
   if (%auction.winner != $null) { 
     if ($readini($char(%auction.winner), battle, HP) != $null) { 
       set %auction.item $readini(system.dat, auctionInfo, current.item)
-      set %player.amount $readini($char(%auction.winner), item_amount, %auction.item)
-      if (%player.amount = $null) { var %player.amount 0 }
-      inc %player.amount 1
-      writeini $char(%auction.winner) item_amount %auction.item %player.amount
+
+      if ($readini($dbfile(weapons.db), %auction.item, basepower) != $null) {  
+        writeini $char(%auction.winner) weapons %auction.item 1 
+      }
+      else { 
+        var %player.amount $readini($char(%auction.winner), item_amount, %auction.item)
+        if (%player.amount = $null) { var %player.amount 0 }
+        inc %player.amount 1
+        writeini $char(%auction.winner) item_amount %auction.item %player.amount
+      }
 
       ; Decrease the notes
       var %auction.cost $readini(system.dat, auctionInfo, current.bid)
