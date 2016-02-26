@@ -59,8 +59,9 @@ streak=10
 IgnoreElementalMessage=true
 
 [Monster]
-type=
+type=Undead
 size=medium
+ghost=true
 
 [Status]
 Poison=no

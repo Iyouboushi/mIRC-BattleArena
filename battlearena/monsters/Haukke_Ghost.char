@@ -54,6 +54,7 @@ CanTaunt=false
 [Monster]
 Type=undead
 size=medium
+ghost=true
 
 [Status]
 Poison=no

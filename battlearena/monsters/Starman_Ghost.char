@@ -51,6 +51,7 @@ IgnoreElementalMessage=true
 [Monster]
 Type=undead
 size=medium
+ghost=true
 
 [Status]
 Poison=no
