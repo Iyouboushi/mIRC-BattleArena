@@ -1456,6 +1456,8 @@ Battle Arena Bot VERSIONS
 - Added TormentOrb 12-15 and their recipes
 - Added the !last seen command. This command will tell you when a player was last seen in the channel
 - Added the !version command. This command will tell you the current bot version
+- Added a new style: Wrestlemania.  This style will allow players to use !wrestle on a target to do damage and attempt to
+  inflict stun. This style also increases damage done with HandToHand weapons.
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1482,12 +1484,17 @@ Battle Arena Bot VERSIONS
   of 11 for those players.
 - Changed !items so that only healing, battle, +stat, summon, shop lower, and songsheet/special items are shown with that
   command. Everything else has been moved to their own command (which is displayed when !items is used)
+- Changed battles so that a player can only use a clone or a summon, not both at the same time.
+- Changed the amount of max HP a summon will have.  It's now [500*bloodpact level] max. If the HP goes over that it will cap
+  Note that EnhanceBloodpact augment will raise this by 100 * augment strength
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
 - Fixed a bug with clones being able to use items
 - Fixed a bug that was preventing monsters from gaining more HP if more players entered the battle
 - Fixed a bug in which enhancement skills (0 cost) would show up in !shop list skills
+- Fixed a bug where using !misc items multiple times would cause duplicates to show up
+- Fixed a bug where NPCs/trusts could survive no-npc/no-trust battle conditions on uncapped portals
 - Fixed two bugs with the Predator fight
 - Fixed an issue where certain battle types could override mimic battles
 - Fixed an issue where portal items were being cut off

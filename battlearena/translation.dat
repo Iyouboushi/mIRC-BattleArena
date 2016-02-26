@@ -585,6 +585,7 @@ Can'tDoActionWhileChest=$chr(3) $+ 4 $+ Error: This action cannot be done whil
 CanOnlyUseCommandInDungeons=$chr(3) $+ 4 $+ Error: This action can only be done inside of dungeons.
 NoSecondAccessorySlot=$chr(3) $+ 4 $+ Error: $get_chr_name($1) does not have a second accessory slot to equip this in.
 Can'tWearSecondOfSameAccessoryType=$chr(3) $+ 4 $+ Error: $get_chr_name($1) cannot wear two of the same accessory types.
+CanOnlyUseSummonOrDoppel=$chr(3) $+ 4 $+ Error: $get_chr_name($1) can only use a shadow clone or a summon. Not both.
 
 =======================
 Battle Related Messages

@@ -4219,6 +4219,12 @@ SellPrice=100
 Numbers=5.6.5.4
 Desc=A small trading card. On the front is a picture of a Cerberus covered in ice in mid-roar
 
+[TradingCard-011]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Numbers=6.6.4.5
+Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea
 
 
 

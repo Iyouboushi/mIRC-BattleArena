@@ -420,7 +420,7 @@ boost_summon_stats {
   var %m.flag $readini($char($1), info, flag)
 
   if ((%m.flag = monster) || (%m.flag = npc)) { inc %summon.level $round($calc($get.level($1) / 2),0) }
-  if (%m.flag = $null) { inc %summon.level $round($calc($get.level($1) / 1.45),0) }
+  if (%m.flag = $null) { inc %summon.level $round($calc($get.level($1) / 1.35),0) }
 
   ; Adjust the stats
   $levelsync($1 $+ _summon, %summon.level)
@@ -645,6 +645,7 @@ boost_monster_hp {
   if (%hp < %temp.hp.needed) { var %hp %temp.hp.needed } 
 
   var %increase.amount 1
+  var %hp.modifier 1
 
   if ($return_playersinbattle > 1) { inc %increase.amount $calc($return_playersinbattle * .25) }
 
@@ -661,8 +662,6 @@ boost_monster_hp {
     writeini $char($1) Battle HP $round(%hp,0)
     return
   }
-
-  var %hp.modifier 1
 
   if ($return_winningstreak <= 10) { inc %hp.modifier $calc(.05 * $return_winningstreak) }
   if (($return_winningstreak > 10) && ($return_winningstreak <= 200)) { inc %hp.modifier $calc(.02 * $return_winningstreak) }
@@ -716,10 +715,21 @@ boost_monster_hp {
     }
   }
 
+  if ($2 = bloodpact) {
+    var %summon.owner $readini($char($1), info, owner)
+    var %max.summon.hp $calc($readini($char(%summon.owner), skills, bloodpact) * 500)
+
+    if ($augment.check($1, EnhanceBloodpact) = true) {  inc %max.summon.hp $calc(%augment.strength * 100) }
+
+    if (%hp > %max.summon.hp) { var %hp %max.summon.hp }
+  }
+
   ; Write the monster's HP
   writeini $char($1) BaseStats HP $round(%hp,0)
   writeini $char($1) Battle HP $round(%hp,0)
-  unset %hp
+
+  ; Clear certain variables and return
+  unset %hp | unset %augment.strength
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3576,6 +3586,15 @@ offensive.style.check {
       }    
     }
 
+    ; Check for Wrestlemania for HandToHand damage
+    if (%current.playerstyle = Wrestlemania) {
+      if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {
+        var %amount.to.increase $calc(.05 * %current.playerstyle.level)
+        if (%amount.to.increase >= .80) { var %amount.to.increase .80 }
+        var %wrestlemania.increase $round($calc(%amount.to.increase * %attack.damage),0)
+        inc %attack.damage %wrestlemania.increase
+      }    
+    }
 
   }
 

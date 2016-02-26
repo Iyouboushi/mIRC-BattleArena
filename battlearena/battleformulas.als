@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 02/25/16
+;;;; Last updated: 02/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -3822,17 +3822,10 @@ formula.techdmg.player.formula_1.0 {
 
   inc %base.power.wpn $round($calc(%mastery.bonus / 1.5),0)
 
-  set %current.playerstyle $readini($char($1), styles, equipped)
-  set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
-  if (%current.playerstyle = HitenMitsurugi-ryu) {
-    set %weapon.name.used $readini($char($1),weapons,equipped)
-    set %weapon.used.type $readini($dbfile(weapons.db), %weapon.name.used, type)
-    if (%weapon.used.type = Katana) {
-      var %style.power.increase.amount $round($calc(1.5 * %current.playerstyle.level),0)
-      inc %base.power.wpn %style.power.increase.amount
-    }
+  if ($person_in_mech($1) = false) {
+    ; Let's check for some offensive style enhancements
+    $offensive.style.check($1, $2, tech)
   }
-  unset %current.playerstyle | unset %current.playerstyle.level
 
   inc %tech.base %base.power.wpn
 

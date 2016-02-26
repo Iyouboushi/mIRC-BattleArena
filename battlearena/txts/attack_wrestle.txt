@@ -1,0 +1,5 @@
+runs towards $get_chr_name($2) with one of $gender($1) arms extended at $gender($1) side at full speed! Within seconds, $get_chr_name($1) performs a Clothesline on $get_chr_name($2) $+ !
+gets a running start towards $get_chr_name($2) before jumping up and performing a cross-body right-hand delivered Superman Punch in an attempt to knock $get_chr_name($2) down to the ground!
+grabs $get_chr_name($2) and flips $gender2($2) backwards using a German Suplex!
+leaps up into the air and performs an Elbow Drop on $get_chr_name($2) on the way back down!
+grabs $get_chr_name($2) and leaps up into the air. After flipping $get_chr_name($2) upside down, $get_chr_name($1) performs a devestating Pile Driver as they both come crashing into the ground! 

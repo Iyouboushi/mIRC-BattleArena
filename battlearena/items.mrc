@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/23/16
+;;;; Last updated: 02/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -222,6 +222,9 @@ alias uses_item {
       writeini $txtfile(battle2.txt) battleinfo PlayerLevels %portal.level 
     } 
 
+    if ($readini($dbfile(items.db), $2, PortalLevel) = $null) { $portal.uncapped.battleconditionscheck }
+
+
     ; Show the description
     $set_chr_name($1) | $display.message( $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
 
@@ -375,10 +378,12 @@ alias uses_item {
 
   if (%item.type = summon) { 
     if ((no-summon isin %battleconditions) || (no-summons isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }
+    if ($readini($char($1 $+ _clone), battle, hp) != $null) { $display.message($readini(translation.dat, errors, CanOnlyUseSummonOrDoppel), private) | halt }
     $item.summon($1, $2) 
-
   }
+
   $decrease_item($1, $2)
+
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) | halt }
 }
@@ -1419,6 +1424,48 @@ alias portal.sync.players {
     inc %battletxt.current.line 1
   }
 }
+
+
+alias portal.uncapped.battleconditionscheck {
+
+  var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+
+    if ((no-trust isin %battleconditions) || (no-trusts isin %battleconditions)) { 
+      if ($readini($char(%who.battle), info, flag) = npc) { 
+        if (($readini($char(%who.battle), info, clone) = yes) || ($readini($char(%who.battle), info, summon) = yes)) { 
+          if ($readini($char(%who.battle), info, clone) = yes) { var %owner $readini($char(%who.battle), info, cloneowner) }
+          if ($readini($char(%who.battle), info, clone) != yes) { var %owner  $readini($char(%who.battle), info, owner) }
+          if ($readini($char(%owner), info, flag) != $null) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
+        }
+        if ($readini($char(%who.battle), info, clone) != yes) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
+      }
+    }
+
+    if ((no-summon isin %battleconditions) || (no-summons isin %battleconditions)) { 
+      if ($readini($char(%who.battle), info, summon) = yes) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
+    }
+
+    if ((no-npc isin %battleconditions) || (no-npcs isin %battleconditions)) { 
+
+      if ($readini($char(%who.battle), info, flag) = npc) { 
+
+        if (($readini($char(%who.battle), info, clone) = yes) || ($readini($char(%who.battle), info, summon) = yes)) { 
+          if ($readini($char(%who.battle), info, clone) = yes) { var %owner $readini($char(%who.battle), info, cloneowner) }
+          if ($readini($char(%who.battle), info, clone) != yes) { var %owner  $readini($char(%who.battle), info, owner) }
+          if ($readini($char(%owner), info, flag) != $null) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
+        }
+        if ($readini($char(%who.battle), info, clone) != yes) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
+      }
+    }
+
+    inc %battletxt.current.line 1
+  }
+}
+
+
 
 alias item.torment {
   ; $1 = person using the item

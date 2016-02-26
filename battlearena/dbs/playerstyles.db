@@ -1,5 +1,5 @@
 [styles]
-list=Trickster.WeaponMaster.Guardian.SpellMaster.Doppelganger.HitenMitsurugi-ryu.Quicksilver.CounterStance.Beastmaster
+list=Trickster.WeaponMaster.Guardian.SpellMaster.Doppelganger.HitenMitsurugi-ryu.Quicksilver.CounterStance.Beastmaster.Wrestlemania
 
 
 ; Costs are in black orbs.
@@ -13,6 +13,7 @@ Quicksilver=10
 HitenMitsurugi-ryu=5
 CounterStance=20
 Beastmaster=5
+Wrestlemania=15
 
 
 
@@ -28,14 +29,15 @@ SpellMaster=This will enhance magic by roughly 11% per level (up to 90% max).
 Doppelganger=This style will enhance your shadow clone ability, giving your clone more health.  The amount of health the clone gets goes up with each level of the style, up to 100%. Also, with this style equipped it is possible to control your shadow clones by using the !shadow command on the clone's turn. Shadow commands are: 
 Doppelganger2=!shadow attack (target), !shadow taunt (target), !shadow tech (tech name) (target), !shadow skill (skillname) (target [if necessary])
 
-Quicksilver=This style will allow you to access the !quicksilver command that freezes everyone except you in battle, effectively giving you an extra turn. You can use the !quicksilver command as many times as your style is currently leveled.
+Quicksilver=This style will allow you to access the !quicksilver command that freezes everyone except you in battle, effectively giving you an extra turn. You can use the !quicksilver command as many times as your style is currently leveled.
 
 HitenMitsurugi-ryu=This style will enhance melee and tech damage done with katana weapons and enhance speed at battle turn generation.
 
-CounterStance=This style will enhance the chance of doing a counter attack by 2% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.
+CounterStance=This style will enhance the chance of doing a counter attack by 2% each level. It also allows you to use !perfectcounter once per battle in which you will be able to counter a single melee attack.
 
 Beastmaster=This style will allow you to control your summon manually while the style is equipped.
 
+Wrestlemania=Aim for the top of the wrestling federation and perform your stunning wrestling moves upon your enemies! This style will allow you to use !wrestle targetname command as many times as your style is currently leveled as well as enhance your hand to hand attacks. Note that wrestling cannot KILL a target, only hurt and stun.
 
 
 [Augments]
@@ -48,5 +50,5 @@ Beastmaster=$iif($style.level($1) >= 5, EnhanceBloodpact) $+ $iif($style.level($
 Doppelganger=
 Quicksilver=
 CounterStance=
-
+Wrestlemania=$iif($style.level($1) >= 5, EnhanceHandToHand)
 

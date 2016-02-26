@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/25/16
+;;;; Last updated: 02/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -72,6 +72,7 @@ alias use.skill {
   if ($3 = tabularasa) { $skill.tabularasa($1, %attack.target) }
   if ($3 = snatch) { $skill.snatch($1, %attack.target) }
   if ($3 = warp) { $skill.warp($1, %attack.target-) } 
+  if ($3 = wrestle) { $skill.wrestle($1, %attack.target) }
 
   ; Below are monster-only skills
 
@@ -415,7 +416,7 @@ alias skill.lockpicking { $set_chr_name($1)
 }
 
 ;=================
-; TRUE STRIKE
+; PERFECT DEFENSE
 ;=================
 on 3:TEXT:!perfect defense:*: { $skill.perfectdefense($nick) }
 on 3:TEXT:!perfectdefense:*: { $skill.perfectdefense($nick) }
@@ -1390,6 +1391,7 @@ alias skill.clone { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  if (($readini($char($1), info, flag) = $null) && ($readini($char($1 $+ _summon), battle, hp) != $null)) { $display.message($readini(translation.dat, errors, CanOnlyUseSummonOrDoppel), private) | halt }
   if (($isfile($char($1 $+ _clone)) = $true) && ($readini($char($1), info, ClonesCanClone) != true)) { $set_chr_name($1) | $display.message(4Error: %real.name has already used this skill for this battle and cannot use it again!, private) | halt }
 
   ; Display the desc. 
@@ -1824,7 +1826,7 @@ alias skill.quicksilver { $set_chr_name($1)
   if ((no-skill isin %battleconditions) || (no-quicksilver isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
 
   set %current.playerstyle $readini($char($1), styles, equipped)
-  if ((%current.playerstyle != Quicksilver) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the Quicksilver style is equipped!, private) | unset %current.playerstyle | halt }
+  if (($return.playerstyle($1) != Quicksilver) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the Quicksilver style is equipped!, private) | unset %current.playerstyle | halt }
 
   if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
 
@@ -3012,7 +3014,10 @@ alias skill.bloodpact {
   $display.message(4 $+ %skill.description, battle)
 
   $set_chr_name($1 $+ _summon) | $display.message(12 $+ %real.name  $+ $readini($char($1 $+ _summon), descriptions, char), battle)
+
   writeini $char($1 $+ _summon) info summon yes
+  writeini $char($1 $+ _summon) info owner $1
+  writeini $char($1 $+ _summon) access list $1
 
   if ($augment.check($1, EnhanceBloodpact) != true) {
     ; Set the user's TP to 0.
@@ -3035,9 +3040,7 @@ alias skill.bloodpact {
   }
   if (%temp.flag = npc) { remini $char($1) skills bloodpact }
 
-  writeini $char($1 $+ _summon) info summon yes
-  writeini $char($1 $+ _summon) info owner $1
-  writeini $char($1 $+ _summon) access list $1
+
 
   if (%portal.bonus != true) { writeini $char($1 $+ _summon) info FirstTurn true }
 
@@ -3407,4 +3410,83 @@ alias skill.overwhelm {
   var %damage.increase $return_percentofvalue(%attack.damage, $calc(2 * %skill.level))
   inc %attack.damage %damage.increase
   return
+}
+
+
+;=================
+; WRESTLE
+;=================
+on 3:TEXT:!wrestle *:*: { $partial.name.match($1, $2) | $skill.wrestle($nick, %attack.target) }
+
+alias skill.wrestle { $set_chr_name($1)
+  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead),private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = RunAway) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoFled),private) | unset %real.name | halt } 
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+  $checkchar($2)
+  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  $check_for_battle($1)
+
+  if (($return.playerstyle($1) != Wrestlemania) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the Wrestlemania style is equipped!, private) | halt }
+  if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
+
+  $check_for_battle($1)
+
+  if ($readini($char($1), info, flag) = $null) { 
+    var %current.playerstyle.level $readini($char($1), styles, $return.playerstyle($1))
+    var %wrestle.used $readini($char($1), skills, wrestle.used)
+    var %wrestle.turn $readini($char($1), skills, wrestle.turn)
+    if (%wrestle.used = $null) { set %wrestle.used 0 }
+    if (%wrestle.turn = $null) { set %wrestle.turn -1 }
+
+    if (%wrestle.used >= %current.playerstyle.level) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) wrestling moves again this battle!,private) | unset %current.playerstyle | halt }
+    if (($calc(%wrestle.turn + 1) = %true.turn) || (%wrestle.turn = %true.turn)) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) wrestling moves again so quickly!, private) | unset %current.playerstyle | halt }
+  }
+
+  inc %wrestle.used 1 | writeini $char($1) skills wrestle.used %wrestle.used
+  writeini $char($1) skills wrestle.turn %true.turn
+
+  var %skill.description $read($txtfile(attack_wrestle.txt))
+  if (%skill.description = $nulll) {  $set_chr_name($2) | var %skill.description performs a powerful wrestling move on %real.name $+ ! }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction wrestle
+
+  ; If the target is ethereal, we miss
+  if ($readini($char($2), status, ethereal) = yes) { $display.message(4 $+ %real.name $+ 's wrestling move goes right through $get_chr_name($2) $+ !, battle) }
+  else { 
+    ; Reduce the target's HP by style.level %
+    var %target.hp $readini($char($2), battle, hp)
+    set %attack.damage $return_percentofvalue(%target.hp, %current.playerstyle.level)
+
+    if ($readini($char($2), Info, MetalDefense) = true) { set %attack.damage 1 }
+
+    $deal_damage($1, $2, skill, none)
+    $display_damage($1, $2)
+
+    ; If the target is not a 'large' target, attempt to stun
+    var %monster.size $readini($char($2), monster, size) 
+    if (($person_in_mech($1) = false) && (%monster.size != large)) {
+
+      var %resist.skill $readini($char($2), skills, resist-stun)
+      if (%resist.skill = $null) { var %resist.skill 0 }
+
+      var %stun.chance $rand(1,100)
+      dec %stun.chance %resist.skill
+
+      if ($readini($char($2), battle, hp) > 0) { 
+        if ((%stun.chance >= 1) && (%stun.chance <= 50)) { 
+          writeini $char($2) status stun yes
+          $display.message(4 $+ $get_chr_name($2) is now stunned!, battle)
+        }
+      }
+    }
+  }
+
+  unset %attack.damage
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
 }
