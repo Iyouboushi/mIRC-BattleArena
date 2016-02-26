@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/25/16
+;;;; Last updated: 02/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3546,8 +3546,9 @@ offensive.style.check {
   ; $1 = attacker
   ; $2 = weapon/tech name
   ; $3 = flag: melee, tech, magic
-  set %current.playerstyle $readini($char($1), styles, equipped)
-  set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
+
+  var %current.playerstyle $return.playerstyle($1)
+  var %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
 
   if (%current.playerstyle = WeaponMaster) { 
     if (($3 = melee) || ($3 = tech)) {
@@ -3564,6 +3565,8 @@ offensive.style.check {
   }
 
   if (($3 = melee) || ($3 = tech)) {
+
+    ; Check for Hiten Mitsurugi-ryu for katana damage
     if (%current.playerstyle = HitenMitsurugi-ryu) {
       if ($readini($dbfile(weapons.db), $2, type) = Katana) {
         var %amount.to.increase $calc(.05 * %current.playerstyle.level)
@@ -3572,6 +3575,8 @@ offensive.style.check {
         inc %attack.damage %hmr.increase
       }    
     }
+
+
   }
 
   if ($3 = magic) {
