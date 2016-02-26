@@ -30,23 +30,23 @@ Misc=Misc
 
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur
-Swords=BasicSword.Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
+Swords=ForgedSword.Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
 Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1
-Whips=BasicWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Alruna
-Guns=BasicGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge
-Rifles=BasicRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle
-Bows=BasicBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
-Katanas=BasicKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1
+Whips=BlackWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Alruna
+Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge
+Rifles=HuntingRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle
+Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
+Katanas=SmallKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1
 Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa
-Wands=BasicWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold
-Staves=BasicStaff.IridialStaff.Laevatein.Uffrat.BahamutsStaff
+Wands=WoodenWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold
+Staves=WoodenStaff.IridialStaff.Laevatein.Uffrat.BahamutsStaff
 Glyphs=MagicGlyphs.Glyphs.Glyphs+1
-Spears=BasicSpear.Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex
-Scythes=BasicScythe.DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque
-GreatSwords=BasicGreatSword.Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
-Axes=BasicAxe.Farsha.Guttler.Kerehcatl
-GreatAxes=BasicGreatAxe.Ukonvasara.Bravura.Lightreaver
-Daggers=BasicDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi
+Spears=FightingSpear.Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex
+Scythes=FightingScythe.DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque
+GreatSwords=GreatForgedSword.Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
+Axes=IronAxe.Farsha.Guttler.Kerehcatl
+GreatAxes=GreatIronAxe.Ukonvasara.Bravura.Lightreaver
+Daggers=SmallDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi
 Hammers=BronzeHammer.Mjolnir
 Lightsabers=Lightsaber
 
@@ -210,7 +210,7 @@ SpecialWeapon=true
 =============================================
 SWORDS
 =============================================
-[BasicSword]
+[ForgedSword]
 Cost=1
 Type=Sword
 Info=A basic and plain sword for new adventurers.
@@ -405,7 +405,7 @@ IgnoreDefense=5
 =============================================
 GREAT SWORDS
 =============================================
-[BasicGreatSword]
+[GreatForgedSword]
 Cost=1
 Type=Greatsword
 Info=A basic and plain greatsword for new adventurers.
@@ -498,7 +498,7 @@ IgnoreDefense=10
 =============================================
 WHIPS
 =============================================
-[BasicWhip]
+[BlackWhip]
 Cost=1
 Type=Whip
 Info=A basic and plain whip for new adventurers.
@@ -587,7 +587,7 @@ IgnoreDefense=10
 =============================================
 GUNS & RIFLES
 =============================================
-[BasicGun]
+[HandGun]
 Cost=1
 Type=Gun
 Info=A basic and plain gun for new adventurers.
@@ -649,7 +649,7 @@ Hits=$rand(2,3)
 BasePower=20
 Upgrade=4000
 
-[BasicRifle]
+[HuntingRifle]
 Cost=1
 Type=Rifle
 Info=A basic and plain rifle for new adventurers.
@@ -768,7 +768,7 @@ SpecialWeapon=true
 =============================================
 AXES
 =============================================
-[BasicAxe]
+[IronAxe]
 Cost=1
 Type=Axe
 Info=A basic and plain axe for new adventurers.
@@ -888,7 +888,7 @@ legendary=true
 =============================================
 DAGGERS
 =============================================
-[BasicDagger]
+[SmallDagger]
 Cost=1
 Type=Dagger
 Info=A basic and plain dagger for new adventurers.
@@ -1064,7 +1064,7 @@ IgnoreDefense=10
 =============================================
 KATANAS
 =============================================
-[BasicKatana]
+[SmallKatana]
 Cost=1
 Type=Katana
 Info=A basic and plain katana for new adventurers.
@@ -1265,7 +1265,7 @@ Legendary=true
 =============================================
 WANDS & STAVES
 =============================================
-[BasicWand]
+[WoodenWand]
 Cost=1
 Type=Wand
 Info=A basic and plain wand for new adventurers.
@@ -1349,7 +1349,7 @@ IgnoreDefense=5
 2Handed=false
 SpecialWeapon=true
 
-[BasicStaff]
+[WoodenStaff]
 Cost=1
 Type=Stave
 Info=A basic and plain staff for new adventurers.
@@ -1445,7 +1445,7 @@ SpecialWeapon=true
 =============================================
 SPEARS
 =============================================
-[BasicSpear]
+[FightingSpear]
 Cost=1
 Type=Spear
 Info=A basic and plain spear for new adventurers.
@@ -1538,7 +1538,7 @@ IgnoreDefense=10
 =============================================
 SCYTHES
 =============================================
-[BasicScythe]
+[FightingScythe]
 Cost=1
 Type=Scythe
 Info=A basic and plain scythe for new adventurers.

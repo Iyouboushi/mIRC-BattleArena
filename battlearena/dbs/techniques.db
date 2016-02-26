@@ -9,7 +9,7 @@ KaiserKnuckles=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
 Oatixur=TornadoKick.ShinjinSpiral.ShoulderTackle.SpinningAttack
 
 ; Swords
-BasicSword=FastBlade
+ForgedSword=FastBlade
 Mythril_Sword=FastBlade.BurningBlade.FlatBlade.SeraphBlade
 Agni=AerialCross.JetStream $+ $iif($weapon.linkcheck($1,Rudra) = true, .Tempest)
 Rudra=AerialCross.JetStream $+ $iif($weapon.linkcheck($1,Agni) = true, .Tempest)
@@ -27,7 +27,7 @@ Z-Sword=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningB
 Z-Sword+1=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
 
 ; Katana
-BasicKatana=Tachi:Enpi
+SmallKatana=Tachi:Enpi
 PowerChordSword=A5.E5.D5.C5
 Soboro=Tachi:Enpi.Tachi:Hobaku.Tachi:Jinpu.Tachi:Goten.Tachi:Kagero
 Yamato=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
@@ -45,7 +45,7 @@ Ichimonji-Yofusa=Tachi:Fudo.Tachi:Kasha.Tachi:Gekko.Tachi:Yukikaze
 Naturaleza=Ashes.Dismay.ThousandCuts
 
 ; Scythe
-BasicScythe=NightmareScythe
+FightingScythe=NightmareScythe
 DeathScythe=ShadowOfDeath.DarkHarvest.VorpalScythe
 Vendetta=InfernalScythe.CrossReaper.SpinningScythe
 Redemption=Quietus.Insurgency.NightmareScythe
@@ -53,7 +53,7 @@ Apocalypse=Catastrophe.Entropy.Guillotine
 Xbalanque=Insurgency.NightmareScythe.Guillotine
 
 ; Greatsword
-BasicGreatSword=HardSlash
+GreatForgedSword=HardSlash
 Rebellion=Stinger.MillionStab.Drive.DevilTrigger
 Braveheart=HardSlash.PowerSlash
 Balmung=Shockwave.SickleMoon.Freezebite
@@ -63,7 +63,7 @@ Caladbolg=HerculeanSlash.GroundStrike
 Macbain=SpinningSlash.HerculeanSlash.Scourge
 
 ; Wands/Staves
-BasicWand=MagicMissile
+WoodenWand=MagicMissile
 YewWand=Fire.Stone.Ice.Aero.Water.Thunder.Cure.Dark.Banish.Poison.Blind.Paralyze.Slow
 PixiWand=Protect.Shell.BarEarth.BarFire.BarWind.BarWater.BarIce.BarLightning.BarLight.BarDark.EnFire.EnEarth.EnWind.EnWater.EnIce.EnLightning.Esuna.Dispel
 OakWand=FireII.StoneII.IceII.AeroII.WaterII.ThunderII.CureII.DarkII.BanishII
@@ -71,7 +71,7 @@ PineWand=FireIII.StoneIII.IceIII.AeroIII.WaterIII.ThunderIII.CureIII.DarkIII.Ban
 ElderWand=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy
 EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
 Aedold=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
-BasicStaff=MagicStrike
+WoodenStaff=MagicStrike
 IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
 Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 Uffrat=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
@@ -81,12 +81,12 @@ Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 Glyphs+1=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 
 ; Guns
-BasicGun=ChargedShot
+HandGun=ChargedShot
 Ebony&Ivory=RainStorm.ChargedShot.RapidShot
 Magnum=ChargedShot.RapidShot
 Hexagun=LastStand.Detonator.BlastShot
 SamuraiEdge=ChargedShot.LastStand.Detonator
-BasicRifle=ChargedShot 
+HuntingRifle=ChargedShot 
 Boomstick=HotShot.BlastShot.Detonator
 Armageddon=SniperShot.WildFire.Coronach.LeadenSalute
 SubMachineGun=RainStorm.Detonator
@@ -98,7 +98,7 @@ DeathPenalty=LeadenSalute.BlastShot.SlugShot
 VanirRifle=ChargedShot.BlastShot.Detonator
 
 ; Whips
-BasicWhip=WhipLash
+BlackWhip=WhipLash
 LeatherWhip=WhipLash
 DemonWhip=SerpentBite.DarkLash.WhipLash
 Vampire_Killer=HolyLash.TwinDragonLash.CircularChain
@@ -108,7 +108,7 @@ DragontailWhip=TwinDragonLash.SerpentBite
 Alruna=TwinDragonLash.SerpentBite.DarkLash
 
 ; Spears
-BasicSpear=Jump
+FightingSpear=Jump
 Lance=Jump.Skewer.LegSweep
 Thalassocrat=Jump.ImpulseDrive.LegSweep
 Corsesca=Jump.PentaThrust.LegSweep
@@ -118,7 +118,7 @@ Rhongomiant=HighJump.CamlannsTorment.LegSweep.SonicThrust
 Upukirex=Jump.HighJump.SpiritJump.SoulJump.Stardiver
 
 ; Bows
-BasicBow=DullingArrow
+WoodenBow=DullingArrow
 RobinsBow=FlamingArrow.PiercingArrow.DullingArrow
 ShigetoBow=BlastArrow.Sidewinder.FlamingArrow
 LamianKamen=EmpyrealArrow.ArchingArrow.PiercingArrow
@@ -127,17 +127,17 @@ Gandiva=EagleEyeShot.JishnusRadiance.ApexArrow
 HomesteadBow=ApexArrow.Sidewinder.EmpyrealArrow
 
 ; Axes
-BasicGreatAxe=IronTempest
+GreatIronAxe=IronTempest
 Ukonvasara=FellCleave.UkkosFury.KingsJustice
 Bravura=MetatronTorment.Upheaval.SteelCyclone
 Lightreaver=FellCleave.SteelCyclone.KingsJustice
-BasicAxe=RagingAxe
+IronAxe=RagingAxe
 Guttler=Onslaught.BoraAxe.Rampage
 Farsha=Cloudsplitter.Ruinator.PrimalRend
 Kerehcatl=BoraAxe.Rampage.Ruinator
 
 ; Daggers
-BasicDagger=WaspSting
+SmallDagger=WaspSting
 MainGauche=SharkBite.DancingEdge.Cyclone
 Terpsichore=PyrrhicKleos.RudrasStorm.Exenterator
 Mandau=MercyStroke.AeolianEdge.Evisceration
