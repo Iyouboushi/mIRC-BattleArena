@@ -1048,8 +1048,6 @@ formula.meleedmg.player.formula_3.1 {
   ; Check for modifiers
   var %starting.damage %attack.damage
 
-  echo -a starting damage: %starting.damage
-
   var %weapon.element $readini($dbfile(weapons.db), $2, element)
   if ((%weapon.element != $null) && (%weapon.element != none)) {
     $modifer_adjust($3, %weapon.element)
