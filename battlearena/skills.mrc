@@ -1717,6 +1717,10 @@ alias skill.analysis { $set_chr_name($1)
   if ($readini($char($2), modifiers, glyph) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, glyph, 46) }
   if ($readini($char($2), modifiers, greatsword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, greatsword, 46) }
   if ($readini($char($2), modifiers, bow) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, bow, 46) }
+  if ($readini($char($2), modifiers, dagger) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, dagger, 46) }
+  if ($readini($char($2), modifiers, hammer) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, hammer, 46) }
+  if ($readini($char($2), modifiers, ParticleAccelerator) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, ParticleAccelerator, 46) }
+  if ($readini($char($2), modifiers, lightsaber) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, lightsaber, 46) }
 
   ; Check for weapon normal
   if ($readini($char($2), modifiers, HandToHand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, handtohand, 46) }
@@ -1731,6 +1735,10 @@ alias skill.analysis { $set_chr_name($1)
   if ($readini($char($2), modifiers, glyph) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, glyph, 46) }
   if ($readini($char($2), modifiers, greatsword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, greatsword, 46) }
   if ($readini($char($2), modifiers, bow) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, bow, 46) }
+  if ($readini($char($2), modifiers, dagger) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, dagger, 46) }
+  if ($readini($char($2), modifiers, hammer) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, hammer, 46) }
+  if ($readini($char($2), modifiers, ParticleAccelerator) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, ParticleAccelerator, 46) }
+  if ($readini($char($2), modifiers, lightsaber) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, lightsaber, 46) }
 
   ; Check for weapon resistances
   if ($readini($char($2), modifiers, HandToHand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, handtohand, 46) }
@@ -1745,6 +1753,11 @@ alias skill.analysis { $set_chr_name($1)
   if ($readini($char($2), modifiers, glyph) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, glyph, 46) }
   if ($readini($char($2), modifiers, greatsword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, greatsword, 46) }
   if ($readini($char($2), modifiers, bow) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, bow, 46) }
+  if ($readini($char($2), modifiers, dagger) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, dagger, 46) }
+  if ($readini($char($2), modifiers, hammer) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, hammer, 46) }
+  if ($readini($char($2), modifiers, ParticleAccelerator) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, ParticleAccelerator, 46) }
+  if ($readini($char($2), modifiers, lightsaber) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, lightsaber, 46) }
+
 
   if (%analysis.weapon.strength = $null) { var %analysis.weapon.strength none }
   if (%analysis.weapon.weak = $null) { var %analysis.weapon.weak none }
