@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/21/16
+;;;; Last updated: 02/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -169,6 +169,11 @@ on 50:TEXT:!start bat*:*:{
 on 50:TEXT:!new bat*:*:{   
   if (%battleis = on) { $display.message($readini(translation.dat, errors, BattleAlreadyStarted), private) | halt }
   /.timerBattleStart off | $startnormal($3, $4) 
+}
+
+on 50:TEXT:!bat go:*: {
+  /.timerBattleBegin off
+  $battlebegin
 }
 on 50:TEXT:!end bat*:*:{ $endbattle($3) } 
 on 50:TEXT:!endbat*:*:{  $endbattle($2) } 
@@ -1435,6 +1440,12 @@ alias generate_battle_order {
     }
 
     $speed_up_check(%who.battle)
+
+    if ($accessory.check(%who.battle, IncreaseTurnSpeed) = true) {
+      var %battle.speed.inc $round($calc(%battle.speed * (%accessory.amount / 100)),0)
+      inc %battle.speed %battle.speed.inc
+      unset %accessory.amount
+    }
 
     unset %current.playerstyle | unset %current.playerstyle.level
 

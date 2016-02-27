@@ -1841,6 +1841,15 @@ Desc=A flowery ring that shows that the friendship between an NPC and player.
 SellPrice=1000
 IncreaseTrustFriendship.Amount=1
 
+[Sonic-Ring]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseTurnSpeed
+Desc=You just GOTTA GO FAST when you wear this ring! This ring increases your speed on turn generation
+SellPrice=1000
+; This accessory type uses %.  50% means it increases your speed by 50% during turn generation. Thus 100 speed becomes 150 speed.
+IncreaseTurnSpeed.amount=50
+
 =========================
 MISC ITEMS
 =========================
