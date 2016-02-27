@@ -1858,6 +1858,17 @@ SellPrice=1000
 ; This accessory type uses %.  50% means it increases your speed by 50% during turn generation. Thus 100 speed becomes 150 speed.
 IncreaseTurnSpeed.amount=50
 
+[WorldHeavyweight-Belt]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseWrestlingDamage
+Desc=THE CHAMP IS HERE! Increase your wrestling damage and show them why you're on top!  Wearing this belt increases your wrestling damage by 10%
+SellPrice=1000
+; This accessory will increase wrestling damage by a %
+IncreaseWrestlingDamage.amount=10
+
+
+
 =========================
 MISC ITEMS
 =========================
@@ -4241,6 +4252,13 @@ Cost=0
 SellPrice=100
 Numbers=6.6.4.5
 Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea
+
+[TradingCard-012]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Numbers=5.6.5.5
+Desc=A small trading card. On the front is a picture of Gobbles, the demented and evil turkey, holding a knife in one hand, a fork in the other with a large red bandana over his head
 
 
 

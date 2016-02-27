@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/26/16
+;;;; Last updated: 02/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -325,7 +325,6 @@ system_defaults_check {
   ; Remove settings no longer needed
   if ($readini(system.dat, system, BattleDamageFormula) != $null) { remini system.dat system BattleDamageFormula }
   if ($readini(battlestats.dat, conquest, ConquestPoints) != $null) { remini battlestats.dat conquest ConquestPoints }
-
 
 }
 
@@ -3730,6 +3729,49 @@ recalc_totalbattles {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Conquest Tally aliases
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+conquest.points.calculate {
+
+  if ($1 = victory) { 
+    ; Calculate the amount of conquest points to add.
+    var %conquestpoints.to.add  $2
+    var %conquest.rate 0
+    var %conquest.rate .030
+
+    if (((%battle.type = boss) || (%battle.type = defendoutpost) || (%battle.type = assault))) { 
+      if (%winning.streak < 500) { inc %conquest.rate .03 }
+      if (%winning.streak >= 500) { inc %conquest.rate .01 }
+      var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * %conquest.rate),0) 
+    }
+    if (%battle.type != boss) { var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * %conquest.rate),0) }
+
+    var %conquest.status $readini(battlestats.dat, conquest, ConquestPreviousWinner)
+    if (%conquest.status = players) { var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * .80),0) }
+    if (%conquestpoints.to.add <= 1) { var %conquestpoints.to.add 1 }
+
+    return %conquestpoints.to.add
+  }
+
+  if ($1 = defeat) {
+    ;  Increase monster conquest points
+    var %streak.on $readini(battlestats.dat, Battle,  WinningStreak)
+    var %conquestpoints 0
+    var %player.levels $readini($txtfile(battle2.txt), BattleInfo, PlayerLevels)
+    if (%current.turn > 1) {
+      if (%player.levels >= %streak.on) { var %conquestpoints $round($calc(%streak.on / 1.5),0) }
+      if (%player.levels < %streak.on) { var %conquestpoints $round($calc(%streak.on / 3),0) } 
+    }
+    if (%current.turn <= 1) { 
+      if (%player.levels >= %streak.on) { var %conquestpoints $round($calc(%streak.on / 15),0) }
+      if (%player.levels < %streak.on) { var %conquestpoints $round($calc(%streak.on / 30),0) } 
+    }
+    var %conquest.status $readini(battlestats.dat, conquest, ConquestPreviousWinner)
+    if (%conquest.status = players) { var %conquestpoints $round($calc(%conquestpoints * 1.25),0) }
+
+    return %conquestpoints
+  }
+
+}
+
 conquest.points {
   if ($1 = players) { 
     var %conquest.points $readini(battlestats.dat, conquest, ConquestPointsPlayers)

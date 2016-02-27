@@ -18,10 +18,8 @@ DefenseSource
 PowerSource
 Herring
 TurkeyLeg
-Tonic
 BlueKinstone
 GreenKinstone
-IgnitionStar
 DiscountCard
 MiniDiscountCard
 SilverDiscountCard
@@ -57,3 +55,5 @@ IgDefRune
 $read -l $+ $rand(1, $lines($lstfile(items_healing.lst))) $lstfile(items_healing.lst)
 TitaniteShard
 TitaniteChunk
+WorldHeavyweight-Belt
+$read -l $+ $rand(1, $lines($lstfile(items_tradingcards.lst))) $lstfile(items_tradingcards.lst)

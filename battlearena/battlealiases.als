@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/26/16
+;;;; Last updated: 02/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -801,6 +801,12 @@ deal_damage {
 
   if (%guard.message != $null) { set %attack.damage 0 }
 
+  ; Check to see if we need to remove flawless victory
+  if (%attack.damage > 0) {
+    if (($readini($char($2), info, flag) = npc) || ($readini($char($2), info, flag) = $null)) { writeini $txtfile(battle2.txt) BattleInfo FlawlessVictory false }
+  }
+
+  ; Do we need to wake up a sleeping target?
   if ((%attack.damage > 0) && ($readini($char($2), Status, Sleep) = yes)) { 
     $display.message($readini(translation.dat, status, WakesUp), battle) 
     writeini $char($2) status sleep no

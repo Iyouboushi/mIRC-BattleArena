@@ -3507,6 +3507,13 @@ alias skill.wrestle { $set_chr_name($1)
   else { 
     ; Reduce the target's HP by style.level %
     var %target.hp $readini($char($2), battle, hp)
+
+    ; Check for an accessory to increase the Wrestling Damage
+    if ($accessory.check($1, IncreaseWrestlingDamage) = true) {
+      inc %current.playerstyle.level %accessory.amount
+      unset %accessory.amount
+    }
+
     set %attack.damage $return_percentofvalue(%target.hp, %current.playerstyle.level)
 
     if ($readini($char($2), Info, MetalDefense) = true) { set %attack.damage 1 }
@@ -3523,6 +3530,9 @@ alias skill.wrestle { $set_chr_name($1)
 
       var %stun.chance $rand(1,100)
       dec %stun.chance %resist.skill
+
+      inc %resist.skill 10
+      writeini $char($2) skills resist-stun %resist.skill
 
       if ($readini($char($2), battle, hp) > 0) { 
         if ((%stun.chance >= 1) && (%stun.chance <= 50)) { 

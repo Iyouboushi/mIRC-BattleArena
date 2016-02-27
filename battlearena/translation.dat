@@ -716,6 +716,7 @@ SongNotAllowedThisBattle=$chr(3) $+ 4 $+ A Darkness prevents %real.name $+ 's so
 DefendOutpostForTurns=$chr(3) $+ 4 $+ The Heroes must defend this outpost for %darkness.turns rounds from the monster waves!  
 AssaultOutpost=$chr(3) $+ 4 $+ The Heroes must keep defeating monster forces to weaken the outpost in order to claim it! 
 RestMessage=$chr(3) $+ 12 $+ $get_chr_name($1) decides to take a turn off and rest.
+FlawlessVictory=$chr(3) $+ 7 $+ FLAWLESS VICTORY! The Heroes has finished the battle without being hit and will advance 10 battle levels.
 
 =======================
 Status Related Messages

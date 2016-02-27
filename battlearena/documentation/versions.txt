@@ -1447,7 +1447,8 @@ Battle Arena Bot VERSIONS
 - Added a new Shop NPC: BountiBox the Goblin.  Upon arriving at the HQ, he will unlock the Gobbie Box.
   Players can use !gobbie box open to exchange 10 login points for a random item from the box
 - Added a new Shop NPC: Vasu the Jeweler. Upon arriving at the HQ players will be able to unlock a second accessory slot
-- Added the "revive" type item that will revive a dead player with half hp. The PhoenixDown item has been added as an example.
+- Added the "revive" type item that will revive a dead player with half hp. The BottledFairy and PhoenixDown items 
+  have been added as examples.
 - Added the enhancement point skill: Overwhelm. This skill will increase overall damage by 2% per skill level
 - Added the enhancement point item: AccessorySlot2. Buying this will cost 10 enhancement points and will allow players to equip
   a second accessory
@@ -1458,6 +1459,9 @@ Battle Arena Bot VERSIONS
 - Added the !version command. This command will tell you the current bot version
 - Added a new style: Wrestlemania.  This style will allow players to use !wrestle on a target to do damage and attempt to
   inflict stun. This style also increases damage done with HandToHand weapons.
+- Added a new accessory type: IncreaseTurnSpeed  This type of accessory increases speed during battle turn generation
+- Added a new accessory type: IncreaseWrestlingDamage  This type of accessory increases !wrestle damage
+- Added new weapons
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1487,6 +1491,12 @@ Battle Arena Bot VERSIONS
 - Changed battles so that a player can only use a clone or a summon, not both at the same time.
 - Changed the amount of max HP a summon will have.  It's now [500*bloodpact level] max. If the HP goes over that it will cap
   Note that EnhanceBloodpact augment will raise this by 100 * augment strength
+- Changed several blocks of code to clean them up and make it a bit easier to read and modify
+- Changed the way damage modifiers work, slightly. Now it will check both weapons if dual weapons are used.  All attacks
+  will now check the weapon names. Melee attacks will check the weapon's element and type.  Tech attacks will check
+  the tech's name and tech's element.
+- Changed the code for alchemy so that it is now possible to craft weapons directly
+- Changed the code for the auction house so that is is now possible to bid on weapons directly
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons

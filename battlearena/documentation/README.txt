@@ -95,9 +95,16 @@ Portal bosses now have the ability to give bronze/silver/gold vouchers to player
 don't win the stylish item. These vouchers can then be exchanged to obtain weapons
 and armor pieces.  Use !voucher list and !voucher buy itemname
 
-* Added new Augments
-Several new augments have been added into the game.
+* Added new Augments and Accessory Types
+Several new augments and accessory types have been added into the game.
 
+* Added a Second Accessory Slot
+Once Vasu the Jewler has arrived to the Allied Forces HQ players will be able to purchase
+a second accessory slot with 10 enhancement points.
+
+* Added a new player style: Wrestlemania
+This style will allow players to use !wrestle on a target to do damage and attempt to
+inflict stun. This style also increases damage done with HandToHand weapons.
 
 Changes:
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
@@ -111,12 +118,26 @@ Changes:
 - Changed certain things in the battle formulas
 - Changed utsusemi so that it no longer protects players when darkness hits
 - Changed the amount of style points for the style ranking that are obtained with multi-hits.  
+- Changed the way the skills keep track of the turn they are used and when they can be used again
+- Changed the original "revive" type item to "AutoRevive"
+- Changed the !equip and !wear accessory commands. Now use: !equip/wear accessory [1 or 2] accessoryname
+- Changed the !unequip and !remove accessory commands. Now use: !unequip/remove accessory [1 or 2] accessoryname
+- Changed capacity points so that they cannot be obtained from dungeons and torments
+- Changed the Torment Orb recipes so that the max number of death's breath ever required is 5 (down from 10)
+- Changed the amount of HP that torment monsters have in torments 10-15
+- Changed the way the bot displays the weather changes so that it's customizeable by bot owners
+- Changed the code for alchemy so that it is now possible to craft weapons directly
+- Changed the code for the auction house so that is is now possible to bid on weapons directly
 
 Fixes:
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
 - Fixed a bug with clones being able to use items
+- Fixed a bug that was preventing monsters from gaining more HP if more players entered the battle
+- Fixed a bug in which enhancement skills (0 cost) would show up in !shop list skills
+- Fixed a bug where using !misc items multiple times would cause duplicates to show up
+- Fixed a bug where NPCs/trusts could survive no-npc/no-trust battle conditions on uncapped portals
 - Fixed an issue where certain battle types could override mimic battles
 - Fixed an issue where portal items were being cut off
 - Fixed an issue with absorb inside of dungeons and torment

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/26/16
+;;;; Last updated: 02/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -710,6 +710,9 @@ alias battlebegin {
 
   ; Write the time the battle begins
   writeini $txtfile(battle2.txt) BattleInfo TimeStarted $fulldate
+
+  ; Write the Flawless Victory flag
+  writeini $txtfile(battle2.txt) BattleInfo FlawlessVictory true
 
   if (%battle.type = ai) { $ai.battle.updateodds | unset %betting.period |  $display.message($readini(translation.dat, system, BettingPeriodClosed), global) }
 
@@ -1444,7 +1447,7 @@ alias generate_battle_order {
     if ($accessory.check(%who.battle, IncreaseTurnSpeed) = true) {
       var %battle.speed.inc $round($calc(%battle.speed * (%accessory.amount / 100)),0)
       inc %battle.speed %battle.speed.inc
-      unset %accessory.amount
+      unset %accessory.amount | unset %accessory.found
     }
 
     unset %current.playerstyle | unset %current.playerstyle.level
@@ -1577,274 +1580,22 @@ alias generate_battle_order {
 alias endbattle {
   ; $1 can be victory, defeat or draw.
 
-  var %thisbattle.winning.streak $return_winningstreak
+  set %thisbattle.winning.streak $return_winningstreak
 
   $clear_timers
 
   if (%battleis = off) { halt }
 
-  var %total.battle.duration $battle.calculateBattleDuration
+  set %total.battle.duration $battle.calculateBattleDuration
 
   ; Let's increase the total number of battles that we've had so far.
   if (((%mode.pvp != on) && (%battle.type != ai) && (%mode.gauntlet != on))) { var %totalbattles $readini(battlestats.dat, Battle, TotalBattles) |  inc %totalbattles 1 | writeini battlestats.dat Battle TotalBattles %totalbattles }
 
-  if (($1 = defeat) || ($1 = failure)) {
+  $display.message($readini(translation.dat, battle, BattleIsOver), global)
 
-    if (%battle.type = dungeon) { $dungeon.end(failure) | halt  }
-
-    $display.message($readini(translation.dat, battle, BattleIsOver), global)
-
-    if ((%mode.pvp != on) && (%battle.type != ai)) {
-      if (%mode.gauntlet = $null) {
-        if (((%battle.type != assault) && (%battle.type != torment) && (%battle.type != defendoutpost))) { var %defeats $readini(battlestats.dat, battle, totalLoss) | inc %defeats 1 | writeini battlestats.dat battle totalLoss %defeats }
-      }    
-      if (%mode.gauntlet != $null) {
-        var %gauntlet.record $readini(battlestats.dat, battle, GauntletRecord) 
-        if (%gauntlet.record = $null) { var %gauntlet.record 0 }
-        if (%mode.gauntlet.wave > %gauntlet.record) { writeini battlestats.dat battle GauntletRecord %mode.gauntlet.wave }
-
-        $display.message($readini(translation.dat, battle, GauntletOver), global)
-
-      }
-
-      if ((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != dragonhunt) && (%savethepresident != on)))) {
-
-        if (%mode.gauntlet = $null) { 
-          if (((%battle.type != defendoutpost) && (%battle.type != torment) && (%battle.type != assault))) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
-        }
-
-        if (%mode.gauntlet = $null) {
-          ;  Increase monster conquest points
-          var %streak.on $readini(battlestats.dat, Battle,  WinningStreak)
-          var %conquestpoints 0
-          var %player.levels $readini($txtfile(battle2.txt), BattleInfo, PlayerLevels)
-          if (%current.turn > 1) {
-            if (%player.levels >= %streak.on) { var %conquestpoints $round($calc(%streak.on / 1.5),0) }
-            if (%player.levels < %streak.on) { var %conquestpoints $round($calc(%streak.on / 3),0) } 
-          }
-          if (%current.turn <= 1) { 
-            if (%player.levels >= %streak.on) { var %conquestpoints $round($calc(%streak.on / 15),0) }
-            if (%player.levels < %streak.on) { var %conquestpoints $round($calc(%streak.on / 30),0) } 
-          }
-          var %conquest.status $readini(battlestats.dat, conquest, ConquestPreviousWinner)
-          if (%conquest.status = players) { var %conquestpoints $round($calc(%conquestpoints * 1.25),0) }
-
-          $conquest.points(monsters, %conquestpoints)
-
-          var %losing.streak $readini(battlestats.dat, battle, LosingStreak) | inc %losing.streak 1 | writeini battlestats.dat battle LosingStreak %losing.streak
-          writeini battlestats.dat battle WinningStreak 0
-        }
-      }
-
-      if (%battle.type = defendoutpost) {
-        $display.message($readini(translation.dat, battle, OutpostBattleLost), global) 
-        var %total.defendedoutposts $readini(battlestats.dat, battle, TotalOutpostsLost)
-        if (%total.defendedoutposts = $null) { var %total.defendedoutposts 0 }
-        inc %total.defendedoutposts 1
-        writeini battlestats.dat battle TotalOutpostsLost %total.defendedoutposts
-      } 
-
-      if (%battle.type = assault) {
-        $display.message($readini(translation.dat, battle, AssaultBattleLost), global) 
-        var %total.assault $readini(battlestats.dat, battle, TotalAssaultLost)
-        if (%total.assault = $null) { var %total.assault 0 }
-        inc %total.assault 1
-        writeini battlestats.dat battle TotalAssaultLost %total.assault
-      } 
-
-      if (%battle.type = torment) {
-        $display.message($readini(translation.dat, battle, Torment.BattleLost), global)
-      }
-
-      if (%battle.type = dragonhunt) {
-        $display.message($readini(translation.dat, battle, DragonHunt.BattleLost), global) 
-        ; Level up the dragon
-        var %current.dragonage $dragonhunt.dragonage(%dragonhunt.file.name)
-        inc %current.dragonage $readini($txtfile(battle2.txt), BattleInfo, Players)  
-        writeini $dbfile(dragonhunt.db) %dragonhunt.file.name Age %current.dragonage
-      }
-
-      if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) }
-      if (%savethepresident = on) { $display.message($readini(translation.dat, battle, EvilHasWonPresident), global) 
-
-        var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Fails)
-        if (%presidents.captured = $null) { var %presidents.captured 0 }
-        inc %presidents.captured 1 
-        writeini battlestats.dat battle CapturedPresidents.Fails %presidents.captured 
-
-        writeini shopnpcs.dat NPCStatus AlliedForcesPresident false
-      }
-
-      $battle.calculate.redorbs($1, %thisbattle.winning.streak)
-      $battle.reward.redorbs
-      $display.message($readini(translation.dat, battle, RewardOrbsLoss), battle)
-
-      if (%battle.type != dragonhunt) { $shopnpc.kidnap }
-    }
-  }
-
-  if ($1 = draw) {
-    $display.message($readini(translation.dat, battle, BattleIsOver), global)
-    if ((%mode.pvp != on) && (%battle.type != ai)) {
-
-      if (%portal.bonus != true) { $display.message($readini(translation.dat, battle, BattleIsDraw), global) }
-
-      if (%mode.gauntlet = $null) {
-        var %totaldraws $readini(battlestats.dat, Battle, TotalDraws) 
-        if (%totaldraws = $null) { var %totaldraws 0 } 
-        inc %totaldraws 1 | writeini battlestats.dat Battle TotalDraws %totaldraws
-      }
-
-      if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, DrawPortal), global) }
-
-      $battle.calculate.redorbs($1, %thisbattle.winning.streak)
-      $battle.reward.redorbs
-      $display.message($readini(translation.dat, battle, RewardOrbsDraw), battle)
-    }
-  }
-
-  if ($1 = victory) {
-    $display.message($readini(translation.dat, battle, BattleIsOver), global)
-
-    if ((%mode.pvp != on) && (%battle.type != ai)) {
-      var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
-
-      if ((((((%portal.bonus != true) && (%battle.type != torment) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%savethepresident != on)))))) {
-        var %winning.streak $readini(battlestats.dat, battle, WinningStreak) | inc %winning.streak 1 | writeini battlestats.dat battle WinningStreak %winning.streak
-
-        var %winning.streak.record $readini(battlestats.dat, battle, WinningStreakRecord)
-        if (%winning.streak.record = $null) { var %winning.streak.record 0 }
-        if (%winning.streak > %winning.streak.record) { writeini battlestats.dat battle WinningStreakRecord %winning.streak }
-
-        writeini battlestats.dat battle LosingStreak 0
-        $display.message($readini(translation.dat, battle, GoodHasWon), global)
-      }
-
-      if (%battle.type = assault) { 
-        $display.message($readini(translation.dat, battle, assaultBattleWon), global) 
-        var %total.assaults $readini(battlestats.dat, battle, TotalAssaultWon)
-        if (%total.assaults = $null) { var %total.assaults 0 }
-        inc %total.assaults 1
-        writeini battlestats.dat battle TotalAssaultWon %total.assaults
-      } 
-
-      if (%battle.type = defendoutpost) { 
-        $display.message($readini(translation.dat, battle, OutpostBattleWon), global) 
-        var %total.outposts $readini(battlestats.dat, battle, TotalOutpostsDefended)
-        if (%total.outposts = $null) { var %total.outposts 0 }
-        inc %total.outposts 1
-        writeini battlestats.dat battle TotalOutpostsDefended %total.outposts
-      } 
-
-      if (%battle.type = torment) {
-        $display.message($readini(translation.dat, battle, Torment.BattleWon), global)
-      }
-
-      if (%battle.type = dragonhunt) {
-        $display.message($readini(translation.dat, battle, DragonHunt.BattleWon), global) 
-      }
-
-      if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, GoodHasWonPortal), battle) }
-      if (%savethepresident = on) { $display.message($readini(translation.dat, battle, GoodHasWonPresident), battle) 
-        var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Wins)
-        if (%presidents.captured = $null) { var %presidents.captured 0 }
-        inc %presidents.captured 1 
-        writeini battlestats.dat battle CapturedPresidents.Wins %presidents.captured 
-        writeini shopnpcs.dat NPCStatus AlliedForcesPresident true
-      }
-
-      $battle.alliednotes.check
-      $battle.calculate.redorbs($1, %thisbattle.winning.streak)
-      $battle.reward.redorbs(victory)
-      $battle.reward.playerstylepoints
-      $battle.reward.playerstylexp
-      $battle.reward.ignitionGauge.all
-
-      ; Erase the dragon if the battle was a dragon hunt
-      if (%battle.type = DragonHunt) { remini $dbfile(dragonhunt.db) %dragonhunt.file.name }
-
-      ; Calculate the amount of conquest points to add.
-      var %conquestpoints.to.add  %winning.streak
-      var %conquest.rate 0
-      var %conquest.rate .030
-
-      if (((%battle.type = boss) || (%battle.type = defendoutpost) || (%battle.type = assault))) { 
-        if (%winning.streak < 500) { inc %conquest.rate .03 }
-        if (%winning.streak >= 500) { inc %conquest.rate .01 }
-        var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * %conquest.rate),0) 
-      }
-      if (%battle.type != boss) { var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * %conquest.rate),0) }
-
-      var %conquest.status $readini(battlestats.dat, conquest, ConquestPreviousWinner)
-      if (%conquest.status = players) { var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * .80),0) }
-      if (%conquestpoints.to.add <= 1) { var %conquestpoints.to.add 1 }
-
-      $conquest.points(players, %conquestpoints.to.add)
-
-      if (%battle.type = assault) {
-        var %enemy.conquestpoints $readini(battlestats.dat, conquest, ConquestPointsMonsters)
-        if (%enemy.conquestpoints != $null) { 
-          var %enemy.conquestpoints $round($calc(%enemy.conquestpoints / 2),0)
-          writeini battlestats.dat conquest ConquestPointsMonsters %enemy.conquestpoints
-        }
-      }
-
-      $generate_style_order
-      $display.message($readini(translation.dat, battle, RewardOrbsWin), battle)
-
-      ; Check to see if allied notes are involved.
-      if (((%portal.bonus = true) || (%savethepresident = on) || ($readini($txtfile(battle2.txt), battle, alliednotes) != $null))) { $display.message($readini(translation.dat, battle, AlliedNotesGain), battle)  }
-
-      ; Check for Allied Influence
-      $battle.reward.influence(alliedforces)
-
-      ; If boss battle, do black orbs for select players.
-      unset %black.orb.winners
-      if ((((%battle.type = boss) || (%battle.type = assault) || (%battle.type = dragonhunt) || (%battle.type = defendoutpost)))) {
-        $battle.reward.blackorbs 
-
-        if (%black.orb.winners != $null) { $display.message($readini(translation.dat, battle, BlackOrbWin), battle)   }
-        $give_random_reward
-        $db.dragonball.find
-
-        ; Check for Santa's Elves
-        if ($left($adate, 2) = 12) {
-          var %elf.save.chance $rand(1,100)
-          if (%elf.save.chance <= 10) { $shopnpc.event.saveelf }
-        }
-      }
-
-      if (((%battle.type != defendoutpost) && (%battle.type != torment) && (%battle.type != assault))) { $shopnpc.rescue }
-      if (%boss.type = FrostLegion) { writeini shopnpcs.dat Events FrostLegionDefeated true }
-
-      if (%battle.type = torment) { $torment.reward }
-
-      if ((%battle.type != orbfountain) && (%battle.type != torment)) { 
-        $give_random_reward
-
-        if (%portal.bonus = true) { $portal.spoils.drop }
-
-        ; If the reward streak is > 15 then we can check for keys and if it's +25 then we can check for creating a chest
-        if ($readini(system.dat, system, EnableChests) = true) {
-          if ((%portal.bonus = true) || ($readini(battlestats.dat, dragonballs, ShenronWish) = on)) { $give_random_key_reward | $create_treasurechest  }
-          else {
-
-            if (%winning.streak >= 15) {  $give_random_key_reward }
-            if (%winning.streak >= 25) { 
-              if (%battle.type != mimic) {
-                var %chest.chance $rand(1,100)
-                if (%chest.chance >= 60) {  $create_treasurechest }
-              }
-            }
-          }
-        }
-        $show.random.reward
-      }
-
-      $show.torment.reward
-    }
-  }
-  if (($1 = none) || ($1 = $null)) { $display.message($readini(translation.dat, battle, BattleIsOver), global) }
+  if ($1 = victory) { $battle.end.victory }
+  if (($1 = defeat) || ($1 = failure)) { $battle.end.failure }
+  if ($1 = draw) {  $battle.end.draw }
 
   ; Check to see if Shenron's Wish is active and if we need to turn it off..
   $db.shenronwish.turncheck
@@ -1856,7 +1607,243 @@ alias endbattle {
   $battle.reward.influence(monsterforces)
 
   ; then do a $clear_battle
-  set %battleis off | $clear_battle | halt
+  unset %total.battle.duration | unset %thisbattle.winning.streak | set %battleis off | $clear_battle | halt
+}
+
+; Battle ends in a failure
+alias battle.end.failure {
+
+  if (%battle.type = dungeon) { $dungeon.end(failure) | halt  }
+
+  if ((%mode.pvp = on) || (%battle.type = ai)) { return } 
+
+  if (%mode.gauntlet = $null) {
+    if (((%battle.type != assault) && (%battle.type != torment) && (%battle.type != defendoutpost))) { var %defeats $readini(battlestats.dat, battle, totalLoss) | inc %defeats 1 | writeini battlestats.dat battle totalLoss %defeats }
+  }    
+  if (%mode.gauntlet != $null) {
+    var %gauntlet.record $readini(battlestats.dat, battle, GauntletRecord) 
+    if (%gauntlet.record = $null) { var %gauntlet.record 0 }
+    if (%mode.gauntlet.wave > %gauntlet.record) { writeini battlestats.dat battle GauntletRecord %mode.gauntlet.wave }
+
+    $display.message($readini(translation.dat, battle, GauntletOver), global)
+
+  }
+
+  if ((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != dragonhunt) && (%savethepresident != on)))) {
+
+    if (%mode.gauntlet = $null) { 
+      if (((%battle.type != defendoutpost) && (%battle.type != torment) && (%battle.type != assault))) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
+    }
+
+    if (%mode.gauntlet = $null) {
+
+      var %conquest.points $conquest.points.calculate(defeat, %winning.streak)
+      $conquest.points(monsters, %conquest.points)
+
+      var %losing.streak $readini(battlestats.dat, battle, LosingStreak) | inc %losing.streak 1 | writeini battlestats.dat battle LosingStreak %losing.streak
+      writeini battlestats.dat battle WinningStreak 0
+    }
+  }
+
+  if (%battle.type = defendoutpost) {
+    $display.message($readini(translation.dat, battle, OutpostBattleLost), global) 
+    var %total.defendedoutposts $readini(battlestats.dat, battle, TotalOutpostsLost)
+    if (%total.defendedoutposts = $null) { var %total.defendedoutposts 0 }
+    inc %total.defendedoutposts 1
+    writeini battlestats.dat battle TotalOutpostsLost %total.defendedoutposts
+  } 
+
+  if (%battle.type = assault) {
+    $display.message($readini(translation.dat, battle, AssaultBattleLost), global) 
+    var %total.assault $readini(battlestats.dat, battle, TotalAssaultLost)
+    if (%total.assault = $null) { var %total.assault 0 }
+    inc %total.assault 1
+    writeini battlestats.dat battle TotalAssaultLost %total.assault
+  } 
+
+  if (%battle.type = torment) {
+    $display.message($readini(translation.dat, battle, Torment.BattleLost), global)
+  }
+
+  if (%battle.type = dragonhunt) {
+    $display.message($readini(translation.dat, battle, DragonHunt.BattleLost), global) 
+    ; Level up the dragon
+    var %current.dragonage $dragonhunt.dragonage(%dragonhunt.file.name)
+    inc %current.dragonage $readini($txtfile(battle2.txt), BattleInfo, Players)  
+    writeini $dbfile(dragonhunt.db) %dragonhunt.file.name Age %current.dragonage
+  }
+
+  if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) }
+  if (%savethepresident = on) { $display.message($readini(translation.dat, battle, EvilHasWonPresident), global) 
+
+    var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Fails)
+    if (%presidents.captured = $null) { var %presidents.captured 0 }
+    inc %presidents.captured 1 
+    writeini battlestats.dat battle CapturedPresidents.Fails %presidents.captured 
+
+    writeini shopnpcs.dat NPCStatus AlliedForcesPresident false
+  }
+
+  $battle.calculate.redorbs($1, %thisbattle.winning.streak)
+  $battle.reward.redorbs
+  $display.message($readini(translation.dat, battle, RewardOrbsLoss), battle)
+
+  if (%battle.type != dragonhunt) { $shopnpc.kidnap }
+}
+
+; Battle ends in a victory
+alias battle.end.victory {
+  if ((%mode.pvp = on) || (%battle.type = ai)) { return } 
+
+  var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
+
+  if ((((((%portal.bonus != true) && (%battle.type != torment) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%savethepresident != on)))))) {
+    var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
+    var %winning.streak.increase 1 
+
+    ; Check for Flawless Victory
+    if ((%winning.streak > 50) && ($readini($txtfile(battle2.txt), BattleInfo, FlawlessVictory) = true))  { 
+      $display.message($readini(translation.dat, Battle, FlawlessVictory), global)
+      inc %winning.streak.increase 9 
+    }
+
+    inc %winning.streak %winning.streak.increase
+
+    writeini battlestats.dat battle WinningStreak %winning.streak
+
+    var %winning.streak.record $readini(battlestats.dat, battle, WinningStreakRecord)
+    if (%winning.streak.record = $null) { var %winning.streak.record 0 }
+    if (%winning.streak > %winning.streak.record) { writeini battlestats.dat battle WinningStreakRecord %winning.streak }
+
+    writeini battlestats.dat battle LosingStreak 0
+    $display.message($readini(translation.dat, battle, GoodHasWon), global)
+  }
+
+  if (%battle.type = assault) { 
+    $display.message($readini(translation.dat, battle, assaultBattleWon), global) 
+    var %total.assaults $readini(battlestats.dat, battle, TotalAssaultWon)
+    if (%total.assaults = $null) { var %total.assaults 0 }
+    inc %total.assaults 1
+    writeini battlestats.dat battle TotalAssaultWon %total.assaults
+  } 
+
+  if (%battle.type = defendoutpost) { 
+    $display.message($readini(translation.dat, battle, OutpostBattleWon), global) 
+    var %total.outposts $readini(battlestats.dat, battle, TotalOutpostsDefended)
+    if (%total.outposts = $null) { var %total.outposts 0 }
+    inc %total.outposts 1
+    writeini battlestats.dat battle TotalOutpostsDefended %total.outposts
+  } 
+
+  if (%battle.type = torment) { $display.message($readini(translation.dat, battle, Torment.BattleWon), global)  }
+  if (%battle.type = dragonhunt) {  $display.message($readini(translation.dat, battle, DragonHunt.BattleWon), global)  }
+  if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, GoodHasWonPortal), battle) }
+
+  if (%savethepresident = on) { $display.message($readini(translation.dat, battle, GoodHasWonPresident), battle) 
+    var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Wins)
+    if (%presidents.captured = $null) { var %presidents.captured 0 }
+    inc %presidents.captured 1 
+    writeini battlestats.dat battle CapturedPresidents.Wins %presidents.captured 
+    writeini shopnpcs.dat NPCStatus AlliedForcesPresident true
+  }
+
+  $battle.alliednotes.check
+  $battle.calculate.redorbs($1, %thisbattle.winning.streak)
+  $battle.reward.redorbs(victory)
+  $battle.reward.playerstylepoints
+  $battle.reward.playerstylexp
+  $battle.reward.ignitionGauge.all
+
+  ; Erase the dragon if the battle was a dragon hunt
+  if (%battle.type = DragonHunt) { remini $dbfile(dragonhunt.db) %dragonhunt.file.name }
+
+  var %conquestpoints $conquest.points.calculate(victory, %winning.streak)
+  $conquest.points(players, %conquestpoints)
+
+  if (%battle.type = assault) {
+    var %enemy.conquestpoints $readini(battlestats.dat, conquest, ConquestPointsMonsters)
+    if (%enemy.conquestpoints != $null) { 
+      var %enemy.conquestpoints $round($calc(%enemy.conquestpoints / 2),0)
+      writeini battlestats.dat conquest ConquestPointsMonsters %enemy.conquestpoints
+    }
+  }
+
+  $generate_style_order
+  $display.message($readini(translation.dat, battle, RewardOrbsWin), battle)
+
+  ; Check to see if allied notes are involved.
+  if (((%portal.bonus = true) || (%savethepresident = on) || ($readini($txtfile(battle2.txt), battle, alliednotes) != $null))) { $display.message($readini(translation.dat, battle, AlliedNotesGain), battle)  }
+
+  ; Check for Allied Influence
+  $battle.reward.influence(alliedforces)
+
+  ; If boss battle, do black orbs for select players.
+  unset %black.orb.winners
+  if ((((%battle.type = boss) || (%battle.type = assault) || (%battle.type = dragonhunt) || (%battle.type = defendoutpost)))) {
+    $battle.reward.blackorbs 
+
+    if (%black.orb.winners != $null) { $display.message($readini(translation.dat, battle, BlackOrbWin), battle) }
+    $give_random_reward
+    $db.dragonball.find
+
+    ; Check for Santa's Elves
+    if ($left($adate, 2) = 12) {
+      var %elf.save.chance $rand(1,100)
+      if (%elf.save.chance <= 10) { $shopnpc.event.saveelf }
+    }
+  }
+
+  if (((%battle.type != defendoutpost) && (%battle.type != torment) && (%battle.type != assault))) { $shopnpc.rescue }
+  if (%boss.type = FrostLegion) { writeini shopnpcs.dat Events FrostLegionDefeated true }
+
+  if (%battle.type = torment) { $torment.reward }
+
+  if ((%battle.type != orbfountain) && (%battle.type != torment)) { 
+    $give_random_reward
+
+    if (%portal.bonus = true) { $portal.spoils.drop }
+
+    ; If the reward streak is > 15 then we can check for keys and if it's +25 then we can check for creating a chest
+    if ($readini(system.dat, system, EnableChests) = true) {
+      if ((%portal.bonus = true) || ($readini(battlestats.dat, dragonballs, ShenronWish) = on)) { $give_random_key_reward | $create_treasurechest  }
+      else {
+
+        if (%winning.streak >= 15) {  $give_random_key_reward }
+        if (%winning.streak >= 25) { 
+          if (%battle.type != mimic) {
+            var %chest.chance $rand(1,100)
+            if (%chest.chance >= 60) {  $create_treasurechest }
+          }
+        }
+      }
+    }
+
+
+    $show.random.reward
+  }
+
+  $show.torment.reward
+
+}
+
+; Battle ends in a draw
+alias battle.end.draw { 
+  $display.message($readini(translation.dat, battle, BattleIsOver), global)
+  if ((%mode.pvp = on) || (%battle.type = ai)) { return } 
+
+  if (%portal.bonus != true) { $display.message($readini(translation.dat, battle, BattleIsDraw), global) }
+
+  if (%mode.gauntlet = $null) {
+    var %totaldraws $readini(battlestats.dat, Battle, TotalDraws) 
+    if (%totaldraws = $null) { var %totaldraws 0 } 
+    inc %totaldraws 1 | writeini battlestats.dat Battle TotalDraws %totaldraws
+  }
+
+  if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, DrawPortal), global) }
+
+  $battle.calculate.redorbs($1, %thisbattle.winning.streak)
+  $battle.reward.redorbs
+  $display.message($readini(translation.dat, battle, RewardOrbsDraw), battle)
 }
 
 ; ==========================
@@ -2392,7 +2379,7 @@ alias battle.reward.influence {
     writeini battlestats.dat conquest AlliedInfluence %current.influence
   }
   if ($1 = monsterforces) { 
-    var %influence.gain 1
+    var %influence.gain $rand(1,2)
     if (%battle.type = boss) { inc %influence.gain 1 } 
 
     var %current.influence $readini(battlestats.dat, conquest, MonsterInfluence) 
