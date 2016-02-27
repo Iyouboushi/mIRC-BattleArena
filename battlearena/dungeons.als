@@ -1,10 +1,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 02/25/16
+;;;; Last updated: 02/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
 dungeon.dungeonfile { return $readini($txtfile(battle2.txt), DungeonInfo, DungeonFile) }
+dungeon.bossroomcheck {
+  if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, bossroom) = true) { return true }
+  else { return false }
+}
 
 dungeon.start {
   ; Open the dungeon.

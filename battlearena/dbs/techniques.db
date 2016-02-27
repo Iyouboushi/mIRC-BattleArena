@@ -7,6 +7,7 @@ Spharai=FinalHeaven.ShoulderTackle.AsuranFists.SpinningAttack.OneInchPunch
 Verethragna=VictorySmite.ShoulderTackle.ShinjinSpiral.SpinningAttack.TornadoKick
 KaiserKnuckles=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
 Oatixur=TornadoKick.ShinjinSpiral.ShoulderTackle.SpinningAttack
+AntlionClaws=SpinningAttack.AsuranFists
 
 ; Swords
 ForgedSword=FastBlade
@@ -214,6 +215,7 @@ Shadow_Blade=GigaSlash.KickBack.DarkNova
 MenosPower=Cero
 DragonFangs=FangRush.RadiantBreath.HurricaneBreath.SpikeFlail.AbsoluteTerror.DragonFire.FireII.StoneII.IceII.AeroII.WaterII.ThunderII.DarkII.Holy
 DinoFangs=FangRush.SpikeFlail.AbsoluteTerror
+TurtlePower=TortoiseStomp.EarthBreath
 BeeStinger=FinalSting.SharpSting.FrenzySting
 GoblinSword=GoblinRush.BombToss.BombDrop.FastBlade
 GoblinWand=GoblinRush.BombToss.BombDrop.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Flare.Quake.Flood
@@ -465,6 +467,8 @@ CenaFists=CenaShoulderTackle.Cena_ShoulderTackle.Protoplex.YouCantSeeMe.Attitude
 ZemusPower=BlackHole.DarkDispel.BigBang.MeteorII.Comet.DarkFlare.DarkQuake.DarkFlood.DarkTornado.DarkFreeze.Dark_Burst
 NerfBat=Homerun
 SpiceCane=SpiceRack.SpicySwing.AsuranFists.ShinjinSpiral
+AntlionJaw=PowerAttack.Tremors
+
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -4252,6 +4256,27 @@ Element=light
 Cost=0
 Magic=no
 stat=int
+
+[EarthBreath]
+Type=AOE
+TP=10
+Desc=spews out a cloud of dirt that covers the battlefield!
+BasePower=10
+Element=earth
+Cost=0
+Magic=no
+stat=int
+
+[TortoiseStomp]
+Type=AOE
+TP=10
+Desc=leans up on its back legs before slamming down onto the battlefield sending a powerful shockwave through everyone
+BasePower=10
+Element=earth
+Cost=0
+Magic=no
+stat=str
+Status=stun
 
 [DragonFire]
 Type=AOE

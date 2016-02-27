@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=stormy
+current=dry
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -1072,3 +1072,16 @@ weather=gloomy
 NumberofEvents=0
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Antlion's Den]
+weather=dry
+NumberOfEvents=$iif($dungeon.currentroom = 6, 1, 0)
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Topaz.Emerald.Ruby.Onyx.Diamond
+
+event1=damage
+event1Chance=60
+Event1Desc=The Antlion buries itself under ground as the ceiling rumbles and drops several stalactites down on the heroes!  The Antlion then returns.
+Event1Target=players
+Event1Amount=$rand(400,500)
+

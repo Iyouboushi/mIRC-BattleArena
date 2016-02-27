@@ -1944,6 +1944,12 @@ Cost=0
 SellPrice=5000
 Desc=A pulsing core from a Mimic.
 
+[AntlionMandible]
+Type=misc
+Cost=0
+SellPrice=10
+Desc=An oversized mandible from an Antlion
+
 [Milk]
 Type=misc
 Cost=0
@@ -3985,6 +3991,15 @@ currency=BeastmenSeal
 sellprice=1500
 Desc=An ancient key used to unlock the dungeon Tam-Tara Deepcroft
 Dungeon=Tam-Tara
+exclusive=yes
+
+[AntlionKey]
+type=dungeon
+Cost=60
+currency=BeastmenSeal
+sellprice=1500
+Desc=A key used to unlock the Antlion's Den
+Dungeon=antlion's_den
 exclusive=yes
 
 [HaukkeManorKey]

@@ -1,0 +1,53 @@
+[Info]
+Name=Antlion's Den
+Rooms=7
+PlayersNeeded=3
+Level=20
+FinalRoom=6
+StartBattleDesc=uses the Antlion's Key to unlock a heavy door that blocks the entrance into the Antlion's Den. As the door swings open the party smells a foul odor and can hear rustling in the dark below.
+ 
+ClearDungeonDesc=* The party has vanquished the Antlion and escaped from its den alive to tell the tale. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to recover an antlion's mandible. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party stands in a large dark room. After lighting a torch the party can see a ladder leading down to a sandy area. This area is deemed to be safe enough to spend one round to prepare for what lies within.
+Battlefield=Antlion's Den
+
+
+[1]
+Desc=The party climbs down the ladder, stepping on soft sand below.  As they advance through the darkness they suddenly see a band of Domovoi heading towards them, their daggers drawn and ready.
+Battlefield=Antlion's Den
+Monsters=Domovoi.Domovoi.Domovoi
+
+
+[2]
+Desc=Stepping past the bodies of the Domovoi, the heroes continue their advance. The sand before them shifts and a large adamantoise rises out and towers over the heroes.
+Battlefield=Antlion's Den
+Monsters=Adamantoise
+bossroom=true
+
+
+[3]
+Desc=Using the shell of the dead adamantoise and a rope the heroes are able to decend down further into the den. They begin to hear the weeps of the fallen, who approach them ready to bring the heroes with them into death, accompanied by more Domovoi.
+Battlefield=Antlion's Den
+Monsters=Leshy.Domovoi.Domovoi
+
+
+[4]
+Desc=The heroes continue down further into the darkness.  They reach a large empty chamber where the ground is not as hard. Suddenly a large yellow goopy-looking monster drops down from the ceiling and gives a roar.
+Battlefield=Antlion's Den
+Monsters=Yellow_Jelly
+BossRoom=true
+
+[5]
+Desc=A large rotting sign sticking in the ground reads "ANTLION'S NESTING AREA AHEAD, DO NOT DISTURB!"  While reading the sign the heroes hear a pack of Domovoi approaching quickly.
+Battlefield=Antlion's Den
+Monsters=Domovoi.Domovoi.Domovoi
+
+[6]
+Desc=Finally the heroes have reached the nesting area of the Antlion--a large empty room with large stalactites hanging from the ceiling. The vibrations of their footsteps begin to cause a stir in the sand towards the center of the room and within seconds a giant ant-looking monster with a massive mandible leaps out ready to eat anything that disturbs it. It gives a loud roar, revealing rows of sharp fangs.
+Battlefield=Antlion's Den
+Monsters=Antlion
+bossroom=true
+

@@ -3373,7 +3373,8 @@ battlefield.damage {
 }
 battlefield.event {
   set %debug.location alias battlefield.event
-  if ($readini(battlestats.dat, battle, winningstreak) < 15) { return }
+
+  if (($return_winningstreak < 15) && (%portal.bonus != true)) { return }
   if ($readini(system.dat, system, EnableBattlefieldEvents) != true) { return }
   if (%battle.type = ai) { return }
   if (no-battlefieldeffect isin %battleconditions) { return }

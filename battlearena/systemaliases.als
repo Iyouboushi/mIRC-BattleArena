@@ -3552,7 +3552,6 @@ orb.adjust {
 
   var %orb.tier 1
 
-
   if (%portal.bonus = true) {  
     var %winning.streak $readini($txtfile(battle2.txt), BattleInfo, PortalLevel)
     if (%winning.streak = $null) { var %winning.streak 100 }

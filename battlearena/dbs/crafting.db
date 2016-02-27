@@ -1896,3 +1896,11 @@ Ectoplasm=5
 E-Tank=5
 QuadavShell=1
 FireGem=1
+
+[AntlionClaws]
+Gem=Ruby
+Ingredients=AntlionMandible.DarksteelOre
+Amount=1
+SuccessRate=100
+AntlionMandible=1
+DarksteelOre=2
