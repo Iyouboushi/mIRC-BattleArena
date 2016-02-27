@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/26/16
+;;;; Last updated: 02/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1808,8 +1808,9 @@ alias skill.analysis { $set_chr_name($1)
 
   :next_turn_check
 
+  unset %analysis.* 
   unset %analysis.weapon.weak | unset %analysis.weapon.strength | unset %analysis.element.weak | unset %analysis.element.strength | unset %analysis.element.absorb
-  unset %analysis.element.heal
+  unset %analysis.element.heal | unset %analysis.weapon.normal
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
