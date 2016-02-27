@@ -96,6 +96,7 @@ SniperRifle=SniperShot.SlugShot.HotShot
 Annihilator=Coronach.SlugShot.BlastShot
 DeathPenalty=LeadenSalute.BlastShot.SlugShot
 VanirRifle=ChargedShot.BlastShot.Detonator
+BlueRose=ChargedShot.RapidShot
 
 ; Whips
 BlackWhip=WhipLash

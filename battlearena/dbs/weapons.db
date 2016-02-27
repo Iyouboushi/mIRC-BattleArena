@@ -33,7 +33,7 @@ HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur
 Swords=ForgedSword.Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
 Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1
 Whips=BlackWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Alruna
-Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge
+Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge.BlueRose
 Rifles=HuntingRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle
 Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
 Katanas=SmallKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1
@@ -765,6 +765,19 @@ IgnoreDefense=5
 2handed=false
 CanCounter=false
 SpecialWeapon=true
+
+[BlueRose]
+Cost=0
+Type=Gun
+Info=A unique revolver with an over and under barrel style. This design allows it to fire two magnum rounds with each pull of the trigger
+Abilities=ChargedShot.RapidShot
+Element=none
+Hits=2
+BasePower=20
+Upgrade=2000
+2Handed=false
+SpecialWeapon=true
+IgnoreDefense=5
 
 =============================================
 AXES
