@@ -1684,7 +1684,7 @@ alias battle.end.failure {
     writeini shopnpcs.dat NPCStatus AlliedForcesPresident false
   }
 
-  $battle.calculate.redorbs($1, %thisbattle.winning.streak)
+  $battle.calculate.redorbs(defeat, %thisbattle.winning.streak)
   $battle.reward.redorbs
   $display.message($readini(translation.dat, battle, RewardOrbsLoss), battle)
 
@@ -1748,7 +1748,7 @@ alias battle.end.victory {
   }
 
   $battle.alliednotes.check
-  $battle.calculate.redorbs($1, %thisbattle.winning.streak)
+  $battle.calculate.redorbs(victory, %thisbattle.winning.streak)
   $battle.reward.redorbs(victory)
   $battle.reward.playerstylepoints
   $battle.reward.playerstylexp
@@ -1841,7 +1841,7 @@ alias battle.end.draw {
 
   if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, DrawPortal), global) }
 
-  $battle.calculate.redorbs($1, %thisbattle.winning.streak)
+  $battle.calculate.redorbs(draw, %thisbattle.winning.streak)
   $battle.reward.redorbs
   $display.message($readini(translation.dat, battle, RewardOrbsDraw), battle)
 }
@@ -2409,6 +2409,7 @@ alias battle.reward.redorbs {
       if ((%base.redorbs <= 8000) && (%battle.type = dragonhunt)) { set %base.redorbs $rand(8000, 9000) }
       if ((%base.redorbs <= 10000) && (%battle.type = torment)) { set %base.redorbs 10000 }
 
+      ; Dungeon clear bonus
       if ($2 = true) { 
         inc %base.redorbs 5000
         var %dungeonfile $readini($txtfile(battle2.txt), dungeoninfo, dungeonfile)
@@ -2421,9 +2422,10 @@ alias battle.reward.redorbs {
         writeini $char(%who.battle) stuff DungeonsCleared %total.dungeons.won
 
         ; TO DO: add an achievement  :: $achievement_check(%who.battle, DungeonCrawler)
-
       }
 
+
+      ; Adjust the orbs
       $orb.adjust(%who.battle)
 
       if ($readini($char(%who.battle), battle, status) = runaway) { var %total.redorbs.reward $round($calc(%base.redorbs / 2.5),0) }
