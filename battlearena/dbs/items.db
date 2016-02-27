@@ -249,10 +249,18 @@ Cost=3000
 SellPrice=1000
 Desc=pulls out a small, pulsing, gold orb and holds it up to %enemy $+ ! %enemy is covered by a bright golden light as the gold orb floats above %real.name $+ 's head and becomes a halo.  %enemy will be automatically revived upon death.
 
+[BottledFairy]
+Type=Revive
+ShopNPC=HealingMerchant
+Cost=3000
+SellPrice=2000
+Desc=pulls out a bottled fairy and opens it. After a moment the fairy flies out and into %enemy $+ . A bright light shines down from above and envelops %enemy and after a moment %enemy is brought back to life.
+ReviveAmount=.35
+
 [PhoenixDown]
 Type=Revive
 ShopNPC=HealingMerchant
-Cost=5000
+Cost=6000
 SellPrice=2000
 Desc=holds up a small feather from a phoenix over %enemy $+ . A bright light shines down from above and envelops %enemy and after a moment %enemy is brought back to life.
 ReviveAmount=.50
