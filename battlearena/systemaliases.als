@@ -3525,7 +3525,7 @@ accessory.check {
     var %accessory2.type  $readini($dbfile(items.db), %current.accessory2, accessoryType)
 
     if ($istok(%accessory2.type,$2,46) = $true) {
-      var %accessory.amount2 $readini($dbfile(items.db), %current.accessory2, %accessory.type $+ .amount)
+      var %accessory.amount2 $readini($dbfile(items.db), %current.accessory2, %accessory2.type $+ .amount)
       if (%accessory.amount2 = $null) { var %accessory.amount2 0 }
 
       inc %accessory.amount %accessory.amount2
