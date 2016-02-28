@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/27/16
+;;;; Last updated: 02/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2082,7 +2082,7 @@ alias skill.defender { $set_chr_name($1)
   if ($readini($char($1), skills, defender.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle.,private) | halt }
 
   ; Display the desc. 
-  if ($readini($char($1), descriptions, aggressor) = $null) { set %skill.description decides that the best offense is a good defense and sacrifices $gender($1) strength for defense! }
+  if ($readini($char($1), descriptions, defender) = $null) { set %skill.description decides that the best offense is a good defense and sacrifices $gender($1) strength for defense! }
   else { set %skill.description $readini($char($1), descriptions, defender) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
