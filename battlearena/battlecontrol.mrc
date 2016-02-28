@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/27/16
+;;;; Last updated: 02/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -667,6 +667,8 @@ alias enter {
   inc %total.battles 1
   writeini $char($1) stuff TotalBattles %total.battles
   $achievement_check($1, Warbound)
+
+  if ((%battleisopen = off) && (%curse.night = true)) { writeini $char($1) battle TP 0 }
 }
 
 ; ==========================
