@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/27/16
+;;;; Last updated: 02/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2621,12 +2621,13 @@ trickster_dodge_check {
 
   if ($2 = $1) { return }
   if ($person_in_mech($1) = true) { return }
-  if ($readini($char($2), status, stun) = yes) { return }
-  if ($readini($char($2), status, paralysis) = yes) { return }
-  if ($readini($char($2), status, petrified) = yes) { return }
+  if ($readini($char($1), status, sleep) = yes) { return }
+  if ($readini($char($1), status, stun) = yes) { return }
+  if ($readini($char($1), status, paralysis) = yes) { return }
+  if ($readini($char($1), status, petrified) = yes) { return }
   if ($readini($char($2), skills, truestrike.on) = on) { return }
 
-  if ((%battle.rage.darkness = on) && ($readini($char($3), info, flag) = monster)) { return }
+  if ((%battle.rage.darkness = on) && ($readini($char($2), info, flag) = monster)) { return }
 
   set %current.playerstyle $readini($char($1), styles, equipped)
   set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
