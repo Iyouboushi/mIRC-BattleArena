@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/28/16
+;;;; Last updated: 02/29/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -252,6 +252,18 @@ current.battlestreak {
   }
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns yes/no depending
+; on if the status effect is on
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+statuseffect.check {
+  ; $1 = person we're checking
+  ; $2 = the status effect we're checking
+
+  var %status.effect.check $readini($char($1), status, $2)
+  if (%status.effect.check = $null) { return no }
+  else { return %status.effect.check }
+}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns the number of turns
 ; that status effects last.
@@ -2621,16 +2633,23 @@ trickster_dodge_check {
 
   if ($2 = $1) { return }
   if ($person_in_mech($1) = true) { return }
-  if ($readini($char($1), status, sleep) = yes) { return }
-  if ($readini($char($1), status, stun) = yes) { return }
-  if ($readini($char($1), status, paralysis) = yes) { return }
-  if ($readini($char($1), status, petrified) = yes) { return }
+
+  ; Check to see if the person dodging can't dodge due to status effects
+  if ($statuseffect.check($1, sleep) = yes) { return }
+  if ($statuseffect.check($1, stun) = yes) { return }
+  if ($statuseffect.check($1, paralysis) = yes) { return }
+  if ($statuseffect.check($1, petrified) = yes) { return }
+
+  ; If the attacker has true strike on then the person can't dodge
   if ($readini($char($2), skills, truestrike.on) = on) { return }
 
+  ; Monsters that are in darkness can't miss
   if ((%battle.rage.darkness = on) && ($readini($char($2), info, flag) = monster)) { return }
 
-  set %current.playerstyle $readini($char($1), styles, equipped)
-  set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
+
+  ; Get the status of the person dodging
+  var %current.playerstyle $return.playerstyle($1)
+  var %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
 
   if (((%current.playerstyle != Trickster) && ($augment.check($1, EnhanceDodge) = false) && ($readini($char($1), skills, thirdeye.on) != on))) { unset %current.playerstyle | unset %current.playerstyle.level | return }
   if (%guard.message != $null) { return }
