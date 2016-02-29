@@ -134,9 +134,8 @@ Spinebuster=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Styles]
-Equipped=WeaponMaster
-WeaponMaster=10
-WeaponMasterXP=1
+Equipped=Wrestlemania
+Wrestlemania=12
 
 
 [Augments]

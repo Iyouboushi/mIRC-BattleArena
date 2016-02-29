@@ -162,6 +162,5 @@ Stave=100
 EnergyBlaster=100
 
 [Styles]
-Equipped=WeaponMaster
-WeaponMaster=10
-WeaponMaster=0
+Equipped=Wrestlemania
+Wrestlemania=10

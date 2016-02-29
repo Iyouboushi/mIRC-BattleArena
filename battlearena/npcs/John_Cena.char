@@ -131,7 +131,7 @@ CenaShoulderTackle=$calc(100 + $current.battlestreak)
 CenaFists=MeleeBonus.TechBonus.EnhanceDodge.EnhanceParry
 
 [Item_Amount]
-Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)
+Dark-Matter=$iif(%ai.monster.name = Zemus, 10, 0)
 
 [modifiers]
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
@@ -164,6 +164,5 @@ Stave=100
 EnergyBlaster=100
 
 [Styles]
-Equipped=WeaponMaster
-WeaponMaster=15
-WeaponMaster=0
+Equipped=Wrestlemania
+Wrestlemania=15

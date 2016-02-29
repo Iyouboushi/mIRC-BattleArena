@@ -6,10 +6,12 @@ Wataaaaaa!
 I'm the ghost of Christmas Kick-Your-Butt!
 Who was I supposed to kill again? Meh, it doesn't matter.
 Hey, you! Yeah, $nick(#,$rand(1, $nick(#,0))) $+ ! Here I am busting my butt while you sit on yours. How is that fair?
+Deadpool-Man! Deadpool-Man! Does whatever Deadpool can! Makes a plan, any size, catches thieves and makes them die. Look out! There goes the Deadpool-Man!
 I hear bullets taste like chicken!
 I love me some PINEAPPLE!
 YO MAMA!
 BATHROOM BREAK!
+CHIMICHANGAS!
 Anime power up time!
 Get along little doggy!
 HOW DO YOU LIKE ME NOW?
