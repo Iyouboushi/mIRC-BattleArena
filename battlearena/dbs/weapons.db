@@ -826,6 +826,18 @@ Hits=1
 BasePower=50
 Upgrade=2000
 
+[Kerehcatl]
+Cost=0
+SpecialWeapon=true
+Type=Axe
+Info=An axe with a black and gold handle. The axe blades are black with red stripes, sort of like a tiger.
+Abilities=BoraAxe.Rampage.Ruinator
+Element=None
+Hits=1
+BasePower=75
+Upgrade=5000
+IgnoreDefense=5
+
 [BasicGreatAxe]
 Cost=1
 Type=Greataxe
@@ -839,7 +851,7 @@ Upgrade=300
 
 [Ukonvasara]
 Cost=75
-Type=Axe
+Type=Greataxe
 Info=A powerful great axe that is brown and white in color on the handle with a dark blue edge.
 Abilities=FellCleave.UkkosFury.KingsJustice
 Element=None
@@ -850,7 +862,7 @@ Upgrade=1500
 
 [Bravura]
 Cost=90
-Type=Axe
+Type=Greataxe
 Info=A legendary great axe with a brown handle and an edge that is white and dark grey in color with gold markings.
 Abilities=MetatronTorment.Upheaval.SteelCyclone
 Element=None
@@ -862,7 +874,7 @@ Upgrade=3000
 [Lightreaver]
 Cost=0
 SpecialWeapon=true
-Type=Axe
+Type=Greataxe
 Info=A large axe that is silver on the axe blade and black on the handle.
 Abilities=FellCleave.SteelCyclone.KingsJustice
 Element=None
@@ -871,18 +883,6 @@ BasePower=120
 Upgrade=5000
 2Handed=true
 IgnoreDefense=10
-
-[Kerehcatl]
-Cost=0
-SpecialWeapon=true
-Type=Axe
-Info=An axe with a black and gold handle. The axe blades are black with red stripes, sort of like a tiger.
-Abilities=BoraAxe.Rampage.Ruinator
-Element=None
-Hits=1
-BasePower=75
-Upgrade=5000
-IgnoreDefense=5
 
 =============================================
 HAMMERS
