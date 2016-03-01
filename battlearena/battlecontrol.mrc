@@ -1052,6 +1052,21 @@ alias generate_monster {
 
       }
 
+
+      if ($2 = addactionpoints) {
+        ; Get the action points
+        var %battle.speed $readini($char(%monster.name), battle, speed)
+        var %action.points $action.points(%monster.name, check)
+        inc %action.points 1
+        if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+        if ($readini($char(%monster.name), info, flag) = monster) { inc %action.points 1 }
+        if ($readini($char(%monster.name), info, ai_type) = defender) { var %action.points 0 } 
+        var %max.action.points $round($log(%battle.speed),0)
+        inc %max.action.points 1
+        if (%action.points > %max.action.points) { var %action.points %max.action.points }
+        writeini $txtfile(battle2.txt) ActionPoints %monster.name %action.points
+      }
+
       ; Show the description of the monster when it enters
       $set_chr_name(%monster.name) 
       if (%battle.type != ai) { 
@@ -1143,6 +1158,20 @@ alias generate_monster {
         $boost_monster_stats(%monster.name) 
         $fulls(%monster.name)
         if (%battlemonsters = 10) { set %number.of.monsters.needed 0 }
+
+        if ($2 = addactionpoints) {
+          ; Get the action points
+          var %battle.speed $readini($char(%monster.name), battle, speed)
+          var %action.points $action.points(%monster.name, check)
+          inc %action.points 1
+          if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+          if ($readini($char(%monster.name), info, flag) = monster) { inc %action.points 1 }
+          if ($readini($char(%monster.name), info, ai_type) = defender) { var %action.points 0 } 
+          var %max.action.points $round($log(%battle.speed),0)
+          inc %max.action.points 1
+          if (%action.points > %max.action.points) { var %action.points %max.action.points }
+          writeini $txtfile(battle2.txt) ActionPoints %monster.name %action.points
+        }
         inc %value 1
       }
     }
@@ -2029,7 +2058,8 @@ alias turn {
   if ($readini($char($1), status, sleep) = yes) { set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt  }
   if ($readini($char($1), status, stun) = yes) { set %skip.ai on | writeini $char($1) status stun no | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
   if ($readini($char($1), status, stop) = yes) { set %skip.ai on | writeini $char($1) status stop no | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
-  if ($action.points($1, check) <= 0) { /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
+
+  if (($return.systemsetting(TurnType) = action) && ($action.points($1, check) <= 0)) { /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
 
   if (%skip.ai != on) {
     ; Check for AI

@@ -3226,8 +3226,8 @@ multiple_wave_check {
     var %m.boss.chance $rand(1,100)
     $display.message($readini(translation.dat, system,AnotherWaveArrives) [Gauntlet Round: %mode.gauntlet.wave $+ ], battle) 
     set %number.of.monsters.needed 2  
-    if (%m.boss.chance > 15) { $generate_monster(monster) }
-    if (%m.boss.chance <= 15) { $generate_monster(boss) }
+    if (%m.boss.chance > 15) { $generate_monster(monster, addactionpoints) }
+    if (%m.boss.chance <= 15) { $generate_monster(boss, addactionpoints) }
   }
 }
 
