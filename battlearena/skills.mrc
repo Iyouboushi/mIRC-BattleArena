@@ -2724,6 +2724,20 @@ alias skill.monstersummon {
     }
 
     writeini $char(%monster.name) info master $1
+
+    ; Get the action points
+    var %battle.speed $readini($char(%monster.name), battle, speed)
+    var %action.points $action.points(%monster.name, check)
+    inc %action.points 1
+    if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+    if ($readini($char(%monster.name), info, flag) = monster) { inc %action.points 1 }
+    if ($readini($char(%monster.name), info, ai_type) = defender) { var %action.points 0 } 
+    var %max.action.points $round($log(%battle.speed),0)
+    inc %max.action.points 1
+    if (%action.points > %max.action.points) { var %action.points %max.action.points }
+    writeini $txtfile(battle2.txt) ActionPoints %monster.name %action.points
+
+
     inc %spawn.current 1
   }
 
