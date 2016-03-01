@@ -415,7 +415,7 @@ check_for_double_turn {  $set_chr_name($1)
 
       if ($person_in_mech($1) = true) { %real.name = %real.name $+ 's $readini($char($1), mech, name) }
 
-      $display.message(12 $+ %real.name gets another turn.,battle) 
+      $display.message(12 $+ $get_chr_name($1) gets another turn.,battle) 
 
       set %user.gets.second.turn true
 
@@ -434,7 +434,7 @@ check_for_double_turn {  $set_chr_name($1)
     if (%action.points.left <= 0) { $next | halt }
     else { 
       if ($person_in_mech($1) = true) { %real.name = %real.name $+ 's $readini($char($1), mech, name) }
-    $display.message(12 $+ %real.name gets another action this turn $chr(91) $+  $+ %action.points.left action points left $+ $chr(93),battle) } 
+    $display.message(12 $+ $get_chr_name($1) gets another action this turn $chr(91) $+  $+ %action.points.left action points left $+ $chr(93),battle) } 
 
     ; Fresh timers
     if ($readini($char($1), info, flag) != $null) {   /.timerBattleNext 1 45 /next }
@@ -3191,11 +3191,11 @@ multiple_wave_check {
   if (%battle.type = torment) { 
     var %total.monsters.needed 5
 
-    if ($rand(1,100) <= 50) { set %number.of.monsters.needed 1 | $generate_monster(boss) | dec %total.monsters.needed 1 }
+    if ($rand(1,100) <= 50) { set %number.of.monsters.needed 1 | $generate_monster(bossm addactionpoints) | dec %total.monsters.needed 1 }
 
     set %number.of.monsters.needed %total.monsters.needed
 
-    $generate_monster(monster) 
+    $generate_monster(monster, addactionpoints) 
   }
 
   if (%battle.type != defendoutpost) {
@@ -3210,16 +3210,16 @@ multiple_wave_check {
   }
 
   if (%battle.type = defendoutpost) { 
-    if (%darkness.turns > 1) {  $winningstreak.addmonster.amount | $generate_monster(monster) } 
-    if (%darkness.turns <= 1) { $generate_monster(boss, defendoutpost) }
+    if (%darkness.turns > 1) {  $winningstreak.addmonster.amount | $generate_monster(monster, addactionpoints) } 
+    if (%darkness.turns <= 1) { $generate_monster(boss, defendoutpost, addactionpoints) }
   }
 
   if (%battle.type = assault) { 
     set %number.of.monsters.needed $rand(1,2)
     if ($monster.outpost(status) <= 5) { var %m.boss.chance $rand(1,20) }
     else {  var %m.boss.chance $rand(1,100) }
-    if (%m.boss.chance > 15) { $generate_monster(monster) }
-    if (%m.boss.chance <= 15) { set %number.of.monsters.needed 1 | $generate_monster(boss) | set %number.of monsters.needed $rand(1,2) | $generate_monster(monster)  }
+    if (%m.boss.chance > 15) { $generate_monster(monster, addactionpoints) }
+    if (%m.boss.chance <= 15) { set %number.of.monsters.needed 1 | $generate_monster(boss, addactionpoints) | set %number.of monsters.needed $rand(1,2) | $generate_monster(monster)  }
   }
 
   if (%mode.gauntlet != $null) { 

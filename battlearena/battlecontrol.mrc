@@ -1053,7 +1053,7 @@ alias generate_monster {
       }
 
 
-      if ($2 = addactionpoints) {
+      if (($2 = addactionpoints) || ($3 = addactionpoints)) {
         ; Get the action points
         var %battle.speed $readini($char(%monster.name), battle, speed)
         var %action.points $action.points(%monster.name, check)
