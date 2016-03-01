@@ -1453,7 +1453,7 @@ alias generate_battle_order {
     var %max.action.points $round($log(%battle.speed),0)
     inc %max.action.points 1
 
-    if ($readini(%who.battle), skills, doubleturn.on = on) { writeini $char(%who.battle) skills doubleturn.on off | inc %action.points 5 | inc %max.action.points 5 } 
+    if ($readini(%who.battle), skills, doubleturn.on) = on) { writeini $char(%who.battle) skills doubleturn.on off | inc %action.points 5 | inc %max.action.points 5 } 
 
     if (%action.points > %max.action.points) { var %action.points %max.action.points }
 
