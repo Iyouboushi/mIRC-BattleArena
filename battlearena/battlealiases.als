@@ -229,12 +229,19 @@ action.points {
   if ($2 = initialize) {
     var %battle.speed $readini($char($1), battle, speed)
     var %action.points $action.points($1, check)
-    inc %action.points 1
-    if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
-    if ($readini($char($1), info, flag) = monster) { inc %action.points 1 }
-    if ($readini($char($1), info, ai_type) = defender) { var %action.points 0 } 
     var %max.action.points $round($log(%battle.speed),0)
     inc %max.action.points 1
+
+    inc %action.points 1
+    if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+    if ($readini($char($1), info, flag) = monster) { 
+      if (%portal.bonus = true) { inc %action.points 1 | inc %max.action.points 1 }
+      if (%battle.type = dungeon) { inc %action.points 1 | inc %max.action.points 1 }
+      inc %action.points 1 | inc %max.action.points 1
+    }
+    if ($readini($char($1), info, ai_type) = defender) { var %action.points 0 } 
+
+    ; If the person gains more action ponits than they have, cap it to their max
     if (%action.points > %max.action.points) { var %action.points %max.action.points }
     writeini $txtfile(battle2.txt) ActionPoints $1%action.points
   }

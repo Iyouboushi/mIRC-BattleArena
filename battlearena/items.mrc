@@ -1319,17 +1319,8 @@ alias portal.item.onemonster {
   unset %darkness.fivemin.warn
   unset %battle.rage.darkness
 
-  ; increase action points
-  var %battle.speed $readini($char(%monster.to.spawn), battle, speed)
-  var %action.points $action.points(%monster.to.spawn, check)
-  inc %action.points 1
-  if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
-  if ($readini($char(%monster.to.spawn), info, flag) = monster) { inc %action.points 1 }
-  if ($readini($char(%monster.to.spawn), info, ai_type) = defender) { var %action.points 0 } 
-  var %max.action.points $round($log(%battle.speed),0)
-  inc %max.action.points 1
-  if (%action.points > %max.action.points) { var %action.points %max.action.points }
-  writeini $txtfile(battle2.txt) ActionPoints %monster.to.spawn %action.points
+  ; Initialize the action points 
+  $action.points(%monster.to.spawn)
 
   unset %monster.to.spawn
 
@@ -1414,21 +1405,10 @@ alias portal.item.multimonsters {
       ; Get the boss item.
       $check_drops(%current.monster.to.spawn)
 
-      ; increase action points
-      var %battle.speed $readini($char(%current.monster.to.spawn), battle, speed)
-      var %action.points $action.points(%current.monster.to.spawn, check)
-      inc %action.points 1
-      if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
-      if ($readini($char(%monster.to.spawn), info, flag) = monster) { inc %action.points 1 }
-      if ($readini($char(%monster.to.spawn), info, ai_type) = defender) { var %action.points 0 } 
-      var %max.action.points $round($log(%battle.speed),0)
-      inc %max.action.points 1
-      if (%action.points > %max.action.points) { var %action.points %max.action.points }
-      writeini $txtfile(battle2.txt) ActionPoints %current.monster.to.spawn %action.points
-
+      ; Initialize the action points 
+      $action.points(%current.monster.to.spawn)
 
       inc %value
-
     }
   }
 
