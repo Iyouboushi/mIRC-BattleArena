@@ -1444,15 +1444,17 @@ alias generate_battle_order {
     ; increase action points
     var %action.points $action.points(%who.battle, check)
 
-    if (%clearactionpoints = true) { var %action.points 0 | unset %clearactionpoints }
+    if (%clearactionpoints = true) { var %action.points 0 }
 
     inc %action.points 1
     if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
     if ($readini($char(%who.battle), info, flag) = monster) { inc %action.points 1 }
     if ($readini($char(%who.battle), info, ai_type) = defender) { var %action.points 0 } 
-
     var %max.action.points $round($log(%battle.speed),0)
     inc %max.action.points 1
+
+    if ($readini(%who.battle), skills, doubleturn.on = on) { writeini $char(%who.battle) skills doubleturn.on off | inc %action.points 5 | inc %max.action.points 5 } 
+
     if (%action.points > %max.action.points) { var %action.points %max.action.points }
 
     writeini $txtfile(battle2.txt) ActionPoints %who.battle %action.points
@@ -1487,6 +1489,8 @@ alias generate_battle_order {
     hadd BattleTable %who.battle %battle.speed
     inc %battletxt.current.line
   }
+
+  unset %clearactionpoints
 
   ; save the BattleTable hashtable to a file
   hsave BattleTable BattleTable.file
