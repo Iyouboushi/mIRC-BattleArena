@@ -1547,6 +1547,9 @@ alias skill.clone { $set_chr_name($1)
 
   if (%portal.bonus != true) { writeini $char($1 $+ _clone) info FirstTurn true }
 
+  ; Initialize the action points 
+  $action.points($1 $+ _clone, initialize)
+
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
 }
@@ -3222,7 +3225,8 @@ alias skill.bloodpact {
   }
   if (%temp.flag = npc) { remini $char($1) skills bloodpact }
 
-
+  ; Initialize the action points 
+  $action.points($1 $+ _summon, initialize)
 
   if (%portal.bonus != true) { writeini $char($1 $+ _summon) info FirstTurn true }
 

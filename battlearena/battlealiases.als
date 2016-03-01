@@ -203,7 +203,7 @@ check_drops {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 action.points {
   ; $1 = person
-  ; $2 = check, add or remove
+  ; $2 = check, add, remove or initialize
   ; $3 = amount to add or remove
 
   if ($2 = check) {
@@ -224,6 +224,19 @@ action.points {
     if (%current.actionpoints = $null) { var %current.actionpoints 0 }
     dec %current.actionpoints $3
     writeini $txtfile(battle2.txt) ActionPoints $1 %current.actionpoints
+  }
+
+  if ($2 = initialize) {
+    var %battle.speed $readini($char($1), battle, speed)
+    var %action.points $action.points($1, check)
+    inc %action.points 1
+    if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+    if ($readini($char($1), info, flag) = monster) { inc %action.points 1 }
+    if ($readini($char($1), info, ai_type) = defender) { var %action.points 0 } 
+    var %max.action.points $round($log(%battle.speed),0)
+    inc %max.action.points 1
+    if (%action.points > %max.action.points) { var %action.points %max.action.points }
+    writeini $txtfile(battle2.txt) ActionPoints $1%action.points
   }
 
 }

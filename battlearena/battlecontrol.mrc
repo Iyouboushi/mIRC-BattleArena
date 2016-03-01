@@ -1054,17 +1054,8 @@ alias generate_monster {
 
 
       if (($2 = addactionpoints) || ($3 = addactionpoints)) {
-        ; Get the action points
-        var %battle.speed $readini($char(%monster.name), battle, speed)
-        var %action.points $action.points(%monster.name, check)
-        inc %action.points 1
-        if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
-        if ($readini($char(%monster.name), info, flag) = monster) { inc %action.points 1 }
-        if ($readini($char(%monster.name), info, ai_type) = defender) { var %action.points 0 } 
-        var %max.action.points $round($log(%battle.speed),0)
-        inc %max.action.points 1
-        if (%action.points > %max.action.points) { var %action.points %max.action.points }
-        writeini $txtfile(battle2.txt) ActionPoints %monster.name %action.points
+        ; Initialize the action points 
+        $action.points(%monster.name, initialize)
       }
 
       ; Show the description of the monster when it enters
@@ -1160,17 +1151,8 @@ alias generate_monster {
         if (%battlemonsters = 10) { set %number.of.monsters.needed 0 }
 
         if ($2 = addactionpoints) {
-          ; Get the action points
-          var %battle.speed $readini($char(%monster.name), battle, speed)
-          var %action.points $action.points(%monster.name, check)
-          inc %action.points 1
-          if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
-          if ($readini($char(%monster.name), info, flag) = monster) { inc %action.points 1 }
-          if ($readini($char(%monster.name), info, ai_type) = defender) { var %action.points 0 } 
-          var %max.action.points $round($log(%battle.speed),0)
-          inc %max.action.points 1
-          if (%action.points > %max.action.points) { var %action.points %max.action.points }
-          writeini $txtfile(battle2.txt) ActionPoints %monster.name %action.points
+          ; Initialize the action points 
+          $action.points(%monster.name, initialize)
         }
         inc %value 1
       }
