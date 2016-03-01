@@ -243,7 +243,8 @@ action.points {
 
     ; If the person gains more action ponits than they have, cap it to their max
     if (%action.points > %max.action.points) { var %action.points %max.action.points }
-    writeini $txtfile(battle2.txt) ActionPoints $1%action.points
+
+    writeini $txtfile(battle2.txt) ActionPoints $1 %action.points
   }
 
 }
