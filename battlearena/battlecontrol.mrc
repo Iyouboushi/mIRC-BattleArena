@@ -1963,7 +1963,10 @@ alias turn {
   $hp_status($1) | $set_chr_name($1)
 
   ; Does the person have any action points this round?
-  if ($action.points($1, check) <= 0) { set %skip.ai on |  set %status.message $readini(translation.dat, battle, NoActionPoints) }
+  if ($return.systemsetting(TurnType) = action) {
+    if ($action.points($1, check) <= 0) { set %skip.ai on |  set %status.message $readini(translation.dat, battle, NoActionPoints) }
+    else { set %status.message $readini(translation.dat, battle, TurnMessage) }
+  }
   else { set %status.message $readini(translation.dat, battle, TurnMessage) }
 
   if ($person_in_mech($1) = true) { 

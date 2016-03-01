@@ -229,6 +229,13 @@ on 50:TEXT:!toggle battle system type*:*:{
   }
 }
 
+; clear the battletable
+on 50:TEXT:!clear battletable*:*:{   
+  hfree BattleTable
+  .remove BattleTable.file
+  .msg $nick BattleTable cleared
+}
+
 ; Bot admins can toggle Player Access commands on and off
 on 50:TEXT:!toggle playerAccessCmds*:*:{   
   if ($readini(system.dat, system,AllowPlayerAccessCmds) = false) { 
