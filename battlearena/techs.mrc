@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 02/25/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -310,7 +310,6 @@ alias tech_cmd {
   if (%ai.type = berserker) { var %user.flag monster }
   if (%covering.someone = on) { var %user.flag monster }
 
-
   if ((%user.flag != monster) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private)  | halt }
 
   if (%tech.type = heal) { $tech.heal($1, $2, $3) }
@@ -400,6 +399,9 @@ alias tech.clearstatus {
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($3) | set %enemy %real.name
 
+  ; Decrease the action points
+  $action.points($1, remove, 3)
+
   $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
 
   if ($person_in_mech($1) = false) { 
@@ -419,6 +421,9 @@ alias tech.clearstatus {
 alias tech.buff {
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($3) | set %enemy %real.name
+
+  ; Decrease the action points
+  $action.points($1, remove, 3)
 
   if ($person_in_mech($3) = false) { 
 
@@ -485,6 +490,9 @@ alias tech.buff {
 alias tech.single {
   ; $3 = target
 
+  ; Decrease the action points
+  $action.points($1, remove, 4)
+
   var %tech.element $readini($dbfile(techniques.db), $2, element)
   var %target.element.heal $readini($char($3), modifiers, heal)
   if ((%tech.element != none) && (%tech.element != $null)) {
@@ -524,6 +532,9 @@ alias tech.stealPower {
   ; $3 = target
 
   set %attack.damage 0
+
+  ; Decrease the action points
+  $action.points($1, remove, 4)
 
   $calculate_damage_techs($1, $2, $3)
 
@@ -748,6 +759,9 @@ alias tech.suicide {
 
   set %attack.damage 0
 
+  ; Decrease the action points
+  $action.points($1, remove, 5)
+
   $calculate_damage_techs($1, $2, $3)
 
   ; If it's the blood moon, increase the amount.
@@ -770,6 +784,9 @@ alias tech.heal {
   ; $1 = user
   ; $2 = tech
   ; $3 = target
+
+  ; Decrease the action points
+  $action.points($1, remove, 4)
 
   $calculate_damage_techs($1, $2, $3, heal)
 
@@ -818,6 +835,9 @@ alias tech.aoeheal {
   ; $2 = tech
   ; $3 = target
   set %wait.your.turn on
+
+  ; Decrease the action points
+  $action.points($1, remove, 5)
 
   unset %who.battle | set %number.of.hits 0
   set %attack.damage 0
@@ -917,6 +937,10 @@ alias calculate_aoe_heal {
 ; For magic type techs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias tech.magic {
+
+  ; Decrease the action points
+  $action.points($1, remove, 4)
+
   if (($readini($char($3), status, reflect) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) {
     $calculate_damage_magic($1, $2, $1)
     if (%attack.damage >= 4000) { set %attack.damage $rand(2800,3500) }
@@ -942,6 +966,9 @@ alias tech.boost {
   ; $1 = user
   ; $2 = tech
   ; $3 = target
+
+  ; Decrease the action points
+  $action.points($1, remove, 4)
 
   if ($readini($char($1), status, boosted) != no) { 
     $set_chr_name($1) | $display.message($readini(translation.dat, errors, AlreadyBoosted), battle)
@@ -998,6 +1025,9 @@ alias tech.finalgetsuga {
   ; $1 = user
   ; $2 = tech
   ; $3 = target
+
+  ; Decrease the action points
+  $action.points($1, remove, 4)
 
   if ($readini($char($1), status, FinalGetsuga) != no) { 
     $set_chr_name($1) | $display.message($readini(translation.dat, errors, AlreadyUsedFinalGetsuga), battle)
@@ -1060,6 +1090,9 @@ alias tech.aoe {
 
   unset %who.battle | set %number.of.hits 0
   unset %absorb  | unset %element.desc
+
+  ; Decrease the action points
+  $action.points($1, remove, 6)
 
 
   if ($5 = suicide) {
@@ -1494,6 +1527,9 @@ alias ignition_cmd {  $set_chr_name($1)
   dec %player.current.ig %ignition.cost
   writeini $char($1) Battle IgnitionGauge %player.current.ig
 
+  ; Decrease the action point cost
+  $action.points($1, remove, 5)
+
   ; Display the description
   $set_chr_name($1) | var %user %real.name
 
@@ -1697,6 +1733,9 @@ alias sing.song {
 
     dec %tp.have %tp.needed
     writeini $char($1) battle tp %tp.have
+
+    ; Decrease the action point cost
+    $action.points($1, remove, 5)
 
     ; Perform the song.
     $display.message(3 $+ %real.name $+  $readini($dbfile(songs.db), $2, Desc), battle)

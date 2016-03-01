@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 02/25/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -82,6 +82,12 @@ alias attack_cmd {
   ; Get the weapon equipped
   if ($person_in_mech($1) = false) {  $weapon_equipped($1) }
   if ($person_in_mech($1) = true) { set %weapon.equipped $readini($char($1), mech, equippedweapon) }
+
+  var %action.points.to.decrease $round($log($readini($dbfile(weapons.db), %weapon.equipped, basepower)),0)
+  if (%action.points.to.decrease <= 0) { inc %action.points.to.decrease 1 }
+
+  ; Decrease the action point cost
+  $action.points($1, remove, %action.points.to.decrease)
 
   ; If it's an AOE attack, perform that here.  Else, do a single hit.
 

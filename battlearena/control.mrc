@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 02/25/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -214,6 +214,18 @@ on 50:TEXT:!toggle mode playersmustdie*:*:{
   else {
     writeini system.dat system PlayersMustDieMode false
     $display.message($readini(translation.dat, system, PlayersMustDieModeOff), global)
+  }
+}
+
+; Bot admins can toggle the battle system type
+on 50:TEXT:!toggle battle system type*:*:{   
+  if ($return.systemsetting(TurnType) = action) { 
+    writeini system.dat system TurnType Turn
+    $display.message($readini(translation.dat, system, BattleSystemTypeTurn), global)
+  }
+  else {
+    writeini system.dat system TurnType action
+    $display.message($readini(translation.dat, system, BattleSystemTypeAction), global)
   }
 }
 

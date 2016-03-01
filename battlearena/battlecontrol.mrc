@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/28/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -180,7 +180,7 @@ on 50:TEXT:!endbat*:*:{  $endbattle($2) }
 
 ; Bot owners can force the next turn
 ON 50:TEXT:!next*:*: { 
-  if (%battleis = on)  { $check_for_double_turn(%who) | halt }
+  if (%battleis = on)  { $check_for_double_turn(%who, forcenext) | halt }
   else { $display.message($readini(translation.dat, Errors, NoCurrentBattle), private) | halt }
 }
 
@@ -1430,22 +1430,34 @@ alias generate_battle_order {
   while (%battletxt.current.line <= %battletxt.lines) { 
     var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
     set %battle.speed $readini($char(%who.battle), battle, spd)
-    if ($readini($char(%who.battle), status, slow) = yes) { %battle.speed = $calc(%battle.spd / 2) } 
+    if ($readini($char(%who.battle), status, slow) = yes) { %battle.speed = $calc(%battle.speed / 2) } 
     if ($readini($char(%who.battle), skills, Retaliation.on) = on) { %battle.speed = -1000 }
 
     set %current.playerstyle $readini($char(%who.battle), styles, equipped)
     set %current.playerstyle.level $readini($char(%who.battle), styles, %current.playerstyle)
 
-    if (%current.playerstyle = Trickster) {
-      inc %battle.speed $calc(2 * %current.playerstyle.level)
-    }
-
-    if (%current.playerstyle = HitenMitsurugi-ryu) {
-      inc %battle.speed $calc(3 * %current.playerstyle.level)
-    }
+    if (%current.playerstyle = Trickster) {  inc %battle.speed $calc(2 * %current.playerstyle.level)  }
+    if (%current.playerstyle = HitenMitsurugi-ryu) {  inc %battle.speed $calc(3 * %current.playerstyle.level)  }
 
     $speed_up_check(%who.battle)
 
+    ; increase action points
+    var %action.points $action.points(%who.battle, check)
+
+    if (%clearactionpoints = true) { var %action.points 0 | unset %clearactionpoints }
+
+    inc %action.points 1
+    if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+    if ($readini($char(%who.battle), info, flag) = monster) { inc %action.points 1 }
+    if ($readini($char(%who.battle), info, ai_type) = defender) { var %action.points 0 } 
+
+    var %max.action.points $round($log(%battle.speed),0)
+    inc %max.action.points 1
+    if (%action.points > %max.action.points) { var %action.points %max.action.points }
+
+    writeini $txtfile(battle2.txt) ActionPoints %who.battle %action.points
+
+    ; continue with creating the turn list
     if ($accessory.check(%who.battle, IncreaseTurnSpeed) = true) {
       var %battle.speed.inc $round($calc(%battle.speed * (%accessory.amount / 100)),0)
       inc %battle.speed %battle.speed.inc
@@ -1471,6 +1483,7 @@ alias generate_battle_order {
 
     if (%battle.speed <= 0) { set %battle.speed 1 }
 
+    ; Write the person to the table and increase the counter
     hadd BattleTable %who.battle %battle.speed
     inc %battletxt.current.line
   }
@@ -1945,7 +1958,9 @@ alias turn {
 
   $hp_status($1) | $set_chr_name($1)
 
-  set %status.message $readini(translation.dat, battle, TurnMessage)
+  ; Does the person have any action points this round?
+  if ($action.points($1, check) <= 0) { set %skip.ai on |  set %status.message $readini(translation.dat, battle, NoActionPoints) }
+  else { set %status.message $readini(translation.dat, battle, TurnMessage) }
 
   if ($person_in_mech($1) = true) { 
     $hp_mech_hpcommand($1)
@@ -2007,6 +2022,7 @@ alias turn {
   if ($readini($char($1), status, sleep) = yes) { set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt  }
   if ($readini($char($1), status, stun) = yes) { set %skip.ai on | writeini $char($1) status stun no | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
   if ($readini($char($1), status, stop) = yes) { set %skip.ai on | writeini $char($1) status stop no | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
+  if ($action.points($1, check) <= 0) { /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
 
   if (%skip.ai != on) {
     ; Check for AI
@@ -2152,13 +2168,26 @@ alias battlelist {
       } 
       else { 
         if ($readini($char(%who.battle), info, flag) = monster) { 
-          var %token.to.add 5 $+ %who.battle
-          if ($readini($char(%who.battle), monster, type) = object) { var %token.to.add 14 $+ %who.battle }
-          if (($readini($boss(%who.battle), basestats, hp) != $null) || ($readini($char(%who.battle), monster, boss) = true)) { var %token.to.add 6 $+ %who.battle }
-        }
-        if ($readini($char(%who.battle), info, flag) = npc) { var %token.to.add 12 $+ %who.battle }
-        if ($readini($char(%who.battle), info, flag) = $null) { var %token.to.add 3 $+ %who.battle }
+          unset %action.points
 
+          if (($return.systemsetting(TurnType) = action) && ($readini($char(%who.battle), info, ai_type) != defender)) { var %action.points $chr(91) $+ $action.points(%who.battle, check) $+ $chr(93) }
+
+          var %token.to.add 5 $+ %who.battle $+ %action.points
+          if ($readini($char(%who.battle), monster, type) = object) { var %token.to.add 14 $+ %who.battle }
+          if (($readini($boss(%who.battle), basestats, hp) != $null) || ($readini($char(%who.battle), monster, boss) = true)) { 
+
+            if ($return.systemsetting(TurnType) = action) { var %action.points $chr(91) $+ $action.points(%who.battle, check) $+ $chr(93) }
+            var %token.to.add 6 $+ %who.battle $+ %action.points
+          }
+        }
+        if ($readini($char(%who.battle), info, flag) = npc) { 
+          if ($return.systemsetting(TurnType) = action) { var %action.points $chr(91) $+ $action.points(%who.battle, check) $+ $chr(93) }
+          var %token.to.add 12 $+ %who.battle $+ %action.points
+        }
+        if ($readini($char(%who.battle), info, flag) = $null) { 
+          if ($return.systemsetting(TurnType) = action) { var %action.points $chr(91) $+ $action.points(%who.battle, check) $+ $chr(93) }
+          var %token.to.add 3 $+ %who.battle $+ %action.points
+        }
         if ($readini($char(%who.battle), battle, hp) > 0) { var %token.to.add $replace(%token.to.add, %who.battle,  $+ %who.battle $+ ) }
 
         %battle.list = $addtok(%battle.list,%token.to.add,46) | inc %l 1 

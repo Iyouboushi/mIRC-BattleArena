@@ -9,6 +9,7 @@ botType=IRC
 automatedbattlesystem=off
 automatedaibattlecasino=off
 aisystem=off
+TurnType=turn
 EnableDNSCheck=true
 ShowDeleteEcho=false
 AllowColors=true
@@ -62,6 +63,7 @@ BonusEvent=false
 showCustomBattleMessages=true
 AllowPersonalDifficulty=true
 AllowPlayerAccessCmds=true
+AllowLateEntries=false
 BattleDamageFormula=1
 EnableCrystalShadow=true
 EnableBandits=true
@@ -145,4 +147,4 @@ current.item=NewsOrb
 minimumBid=200
 
 [version]
-SystemDatVersion=072415
+SystemDatVersion=030116

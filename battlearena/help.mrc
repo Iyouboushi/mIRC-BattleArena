@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 02/24/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -236,6 +236,8 @@ alias view-info {
     var %info.type $readini($dbfile(skills.db), $3, type) | var %info.desc $readini($dbfile(skills.db), $3, info)
     var %info.cost $readini($dbfile(skills.db), $3, cost) | var %info.maxlevel $readini($dbfile(skills.db), $3, max)
 
+    if (($return.systemsetting(TurnType) = action) && (%info.type = active)) { var %info.actionpoints $chr(91) $+ 4Action Points Consumed12 $skill.actionpointcheck($3) $+  $+ $chr(93) }
+
     var %info.current $readini($char($nick), skills, $3)
     if (%info.current = $null) { var %info.current 0 }
     var %skill.current [4Your Skill Level12 %info.current 4/12 %info.maxlevel $+ ]
@@ -246,7 +248,7 @@ alias view-info {
 
     var %cost.info.desc $iif(%info.cost != 0, [4Base Cost (before shop level)12 %info.cost $+ ], [4Skill is bought using Enhancement Points])
 
-    $display.private.message([4Name12 $3 $+ ] [4Skill Type12 %info.type $+ ] %cost.info.desc %skill.current %skill.cooldown)
+    $display.private.message([4Name12 $3 $+ ] [4Skill Type12 %info.type $+ ] %cost.info.desc %skill.current %skill.cooldown %info.actionpoints)
     $display.private.message.delay.custom([4Skill Info12 %info.desc $+ ],2)
   }
 

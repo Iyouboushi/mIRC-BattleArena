@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/27/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -50,6 +50,7 @@ system_defaults_check {
     if ($readini(system.dat, system, TimeBetweenSaveReload) = $null) { writeini system.dat system TimeBetweenSaveReload 1200 } 
     if ($readini(system.dat, system, automatedaibattlecasino) = $null) { writeini system.dat system automatedaibattlecasino off } 
     if ($readini(system.dat, system, aisystem) = $null) { writeini system.dat system aisystem on } 
+    if ($readini(system.dat, system, TurnType) = $null) { writeini system.dat system TurnType turn } 
     if ($readini(system.dat, system, showCustomBattleMessages) = $null) { writeini system.dat system showCustomBattleMessages true  } 
     if ($readini(system.dat, system, currency) = $null) { writeini system.dat system currency Red Orbs }
     if ($readini(system.dat, system, basexp) = $null) { writeini system.dat system basexp 100 } 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/24/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -265,6 +265,11 @@ on 50:TEXT:!level sync*:#: { $checkscript($2-)
   $set_chr_name($nick) |   $display.message(4 $+ %real.name is now level $3)
   writeini $char($nick) info levelsync yes
   writeini $char($nick) info NeedsFulls yes
+}
+
+on 3:TEXT:!actionpoints*:#: {
+  if ($2 != $null) { $checkchar($2) | $display.message($readini(translation.dat, system, ViewOthersActionPoints),private) }
+  if ($2 = $null) { $display.message($readini(translation.dat, system, ViewMyActionPoints),private) }
 }
 
 on 3:TEXT:!hp:#: { 

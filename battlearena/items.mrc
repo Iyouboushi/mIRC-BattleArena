@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 02/26/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -246,6 +246,7 @@ alias uses_item {
 
     ; Set a flag for portal battles
     set %previous.battle.type portal
+    set %clearactionpoints true
 
     ; check for custom darkness turns
     var %custom.darkness.turns $readini($dbfile(items.db), $2, DarknessTurns)
@@ -253,11 +254,11 @@ alias uses_item {
 
     if ($readini(system.dat, system, botType) = DCCchat) {  
       $battlelist(public) 
-      if (%battleis = on)  { $check_for_double_turn($1) | halt }
+      if (%battleis = on)  { $check_for_double_turn($1, forcenext) | halt }
     }
     if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
-      /.timerSlowDown $+ $rand(1,1000) $+ $rand(a,z) 1 2 /battlelist public
-      /.timerSlowDown2 $+ $rand(1,1000) $+ $rand(a,z) 1 5 /check_for_double_turn $1 
+      /.timerSlowDown $+ $rand(1,1000) $+ $rand(a,z) 1 3 /battlelist public
+      /.timerSlowDown2 $+ $rand(1,1000) $+ $rand(a,z) 1 5 /check_for_double_turn $1 forcenext
       halt
     }
 
@@ -294,17 +295,29 @@ alias uses_item {
 
   if (%item.type = damage) {
     if ((%target.flag != monster) && (%user.flag = $null)) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnMonsters), private) | halt }
+
+    ; Decrease the action points
+    $action.points($1, remove, 2)
+
     $item.damage($1, $4, $2)
   }
 
   if (%item.type = snatch) {
     if (%target.flag != monster) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnMonsters), private) | halt }
+
+    ; Decrease the action points
+    $action.points($1, remove, 2)
+
     $item.snatch($1, $4, $2)
   }
 
   if (%item.type = heal) {
     $checkchar($4)
     if ((%target.flag = monster) && ($readini($char($4), monster, type) != zombie)) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers), private) | halt }
+
+    ; Decrease the action points
+    $action.points($1, remove, 2)
+
     $item.heal($1, $4, $2)
   }
   if (%item.type = CureStatus) {
@@ -312,6 +325,10 @@ alias uses_item {
     $set_chr_name($4) | var %enemy %real.name
     $item.curestatus($1, $4, $2)
     $decrease_item($1, $2)
+
+    ; Decrease the action points
+    $action.points($1, remove, 1)
+
     ; Time to go to the next turn
     if (%battleis = on)  { $check_for_double_turn($1) | halt }
   }
@@ -324,6 +341,10 @@ alias uses_item {
     $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
     $item.tp($1, $4, $2)
     $decrease_item($1, $2) 
+
+    ; Decrease the action points
+    $action.points($1, remove, 2)
+
     if (%battleis = on)  { $check_for_double_turn($1) | halt }
   }
 
@@ -334,13 +355,25 @@ alias uses_item {
     $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
     $item.ig($1, $4, $2)
     $decrease_item($1, $2) 
+
+    ; Decrease the action points
+    $action.points($1, remove, 2)
+
     if (%battleis = on)  { $check_for_double_turn($1) | halt }
   }
 
   if (%item.type = status) {
-    if ($readini($dbfile(items.db), $2, amount) = 0) { $item.status($1, $4, $2) }
+    if ($readini($dbfile(items.db), $2, amount) = 0) { 
+      ; Decrease the action points
+      $action.points($1, remove, 2)
+      $item.status($1, $4, $2) 
+    }
     else { 
       if ((%target.flag != monster) && (%user.flag = $null)) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnMonsters), private) | halt }
+
+      ; Decrease the action points
+      $action.points($1, remove, 2)
+
       $item.status($1, $4, $2)
     }
   }
@@ -350,6 +383,9 @@ alias uses_item {
     if (%target.flag = monster) {  $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers),private) | halt }
     if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious), private)  | unset %real.name | halt }
     if ($readini($char($4), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead), private) | unset %real.name | halt }
+
+    ; Decrease the action points
+    $action.points($1, remove, 2)
 
     $set_chr_name($4) | var %enemy %real.name | $set_chr_name($1) 
     $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
@@ -365,6 +401,9 @@ alias uses_item {
     if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious), private)  | unset %real.name | halt }
     if ($readini($char($4), Battle, Status) != dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotUseOnLivePerson), private) | unset %real.name | halt }
 
+    ; Decrease the action points
+    $action.points($1, remove, 2)
+
     $set_chr_name($4) | var %enemy %real.name | $set_chr_name($1) 
     $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
     $decrease_item($1, $2) 
@@ -379,6 +418,10 @@ alias uses_item {
   if (%item.type = summon) { 
     if ((no-summon isin %battleconditions) || (no-summons isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }
     if ($readini($char($1 $+ _clone), battle, hp) != $null) { $display.message($readini(translation.dat, errors, CanOnlyUseSummonOrDoppel), private) | halt }
+
+    ; Decrease the action points
+    $action.points($1, remove, 2)
+
     $item.summon($1, $2) 
   }
 
@@ -546,6 +589,10 @@ alias item.trust {
   ; Is this a valid trust NPC?
   var %trust.npc $readini($dbfile(items.db), $3, NPC)
   if ($isfile($npc(%trust.npc)) = $false) { $display.message($readini(translation.dat, errors, TrustNPCDoesn'tExist), battle) | halt }
+
+
+  ; Decrease the action points
+  $action.points($1, remove, 1)
 
   .copy -o $npc(%trust.npc) $char(%trust.npc) | var %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%trust.npc,46) |  writeini $txtfile(battle2.txt) Battle List %curbat 
   write $txtfile(battle.txt) %trust.npc
@@ -1268,10 +1315,23 @@ alias portal.item.onemonster {
   ; Check for a drop
   $check_drops(%monster.to.spawn)
 
-  unset %monster.to.spawn
   set %darkness.turns 21
   unset %darkness.fivemin.warn
   unset %battle.rage.darkness
+
+  ; increase action points
+  var %battle.speed $readini($char(%monster.to.spawn), battle, speed)
+  var %action.points $action.points(%monster.to.spawn, check)
+  inc %action.points 1
+  if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+  if ($readini($char(%monster.to.spawn), info, flag) = monster) { inc %action.points 1 }
+  if ($readini($char(%monster.to.spawn), info, ai_type) = defender) { var %action.points 0 } 
+  var %max.action.points $round($log(%battle.speed),0)
+  inc %max.action.points 1
+  if (%action.points > %max.action.points) { var %action.points %max.action.points }
+  writeini $txtfile(battle2.txt) ActionPoints %monster.to.spawn %action.points
+
+  unset %monster.to.spawn
 
   return
 }
@@ -1353,6 +1413,19 @@ alias portal.item.multimonsters {
 
       ; Get the boss item.
       $check_drops(%current.monster.to.spawn)
+
+      ; increase action points
+      var %battle.speed $readini($char(%current.monster.to.spawn), battle, speed)
+      var %action.points $action.points(%current.monster.to.spawn, check)
+      inc %action.points 1
+      if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+      if ($readini($char(%monster.to.spawn), info, flag) = monster) { inc %action.points 1 }
+      if ($readini($char(%monster.to.spawn), info, ai_type) = defender) { var %action.points 0 } 
+      var %max.action.points $round($log(%battle.speed),0)
+      inc %max.action.points 1
+      if (%action.points > %max.action.points) { var %action.points %max.action.points }
+      writeini $txtfile(battle2.txt) ActionPoints %current.monster.to.spawn %action.points
+
 
       inc %value
 

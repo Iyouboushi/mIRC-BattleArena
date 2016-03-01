@@ -1462,6 +1462,9 @@ Battle Arena Bot VERSIONS
 - Added a new accessory type: IncreaseTurnSpeed  This type of accessory increases speed during battle turn generation
 - Added a new accessory type: IncreaseWrestlingDamage  This type of accessory increases !wrestle damage
 - Added new weapons
+- Added a new battle system type: Action Point based. This system will consume action points to perform actions. When
+  action points are empty the turn is over and it moves onto the next. This is not on by default.
+- Added a new bot admin command: !toggle battle system type
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills

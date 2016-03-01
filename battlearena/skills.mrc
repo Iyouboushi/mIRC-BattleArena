@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/28/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -86,6 +86,18 @@ alias use.skill {
 
 ;=================
 ; This alias checks
+; to see how many
+; action points a skill
+; consumes
+;=================
+alias skill.actionpointcheck {
+  var %action.points.consumed $readini($dbfile(skills.db), $1, ActionPoints)
+  if (%action.points.consumed = $null) { return 1 }
+  else { return %action.points.consumed }
+}
+
+;=================
+; This alias checks
 ; to see if a skill can
 ; be used again
 ;=================
@@ -142,6 +154,9 @@ alias skill.speedup { $set_chr_name($1)
     if (%hp.cost >= $readini($char($1), battle, hp)) { $display.message($readini(translation.dat, errors, NotEnoughHPForSkill) ,private) | halt }
     else {  writeini $char($1) battle hp $calc($readini($char($1), battle, hp) - %hp.cost)  }
   }
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(speed))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, speed) = $null) { set %skill.description forces $gender($1) body to speed up! }
@@ -202,6 +217,9 @@ alias skill.elementalseal { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ElementalSeal, !elemental seal, true)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(elementalseal))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, ElementalSeal) = $null) { set %skill.description uses an ancient technique to enhance $gender($1) next magical spell! }
   else { set %skill.description $readini($char($1), descriptions, ElementalSeal) }
@@ -237,6 +255,9 @@ alias skill.mightystrike { $set_chr_name($1)
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, MightyStrike, !mighty strike, true)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(mightystrike))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, MightyStrike) = $null) { set %skill.description forces energy into $gender($1) weapon, causing the next blow done with it to be double power }
@@ -275,6 +296,9 @@ alias skill.truestrike { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, truestrike, !true strike, true)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(truestrike))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, truestrike) = $null) { set %skill.description focuses intently on $gender($1) target.. }
   else { set %skill.description $readini($char($1), descriptions, truestrike) }
@@ -310,6 +334,9 @@ alias skill.manawall { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ManaWall, !mana wall, true)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(manawall))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, ManaWall) = $null) { set %skill.description uses an ancient technique to produce a powerful magic-blocking barrier around $gender($1) body! }
   else { set %skill.description $readini($char($1), descriptions, ManaWall) }
@@ -344,6 +371,9 @@ alias skill.royalguard { $set_chr_name($1)
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, RoyalGuard, !royal guard, true)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(royalguard))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, royalguard) = $null) { set %skill.description uses an ancient style to negate the next melee attack towards $gender2($1) }
@@ -435,6 +465,9 @@ alias skill.perfectdefense { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, perfectdefense, !perfect defense, true)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(perfectdefense))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, perfectdefense) = $null) { set %skill.description is covered by a powerful barrier that will reduce the next attack done to 0 }
   else { set %skill.description $readini($char($1), descriptions, perfectdefense) }
@@ -473,6 +506,9 @@ alias skill.utsusemi { $set_chr_name($1)
   set %check.item $readini($char($1), item_amount, shihei)
   if ((%check.item = $null) || (%check.item <= 0)) { $set_chr_name($1) | $display.message(4Error: %real.name does not have enough shihei to perform this skill, private) | halt }
   $decrease_item($1, Shihei) 
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(utsusemi))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, utsusemi) = $null) { set %skill.description uses an ancient ninjutsu technique to create shadow copies to absorb attacks. }
@@ -521,6 +557,9 @@ alias skill.fullbring { $set_chr_name($1)
 
   if (%fullbring.target = $null) { unset %check.item | $display.message(4Error: This item does not have a fullbring ability attached to it!, private) | halt }
   $decrease_item($nick, $2)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(fullbring))
 
   if (%fullbring.type = heal) {
     if (%fullbring.target = AOE) { $fullbring.aoeheal($1, $2) }
@@ -877,6 +916,9 @@ alias skill.doubleturn { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, sugitekai, !sugitekai, true)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(sugitekai))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, sugitekai) = $null) { set %skill.description becomes very focused and is able to do two actions next round! }
   else { set %skill.description $readini($char($1), descriptions, sugitekai) }
@@ -910,6 +952,9 @@ alias skill.meditate { $set_chr_name($1)
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Meditate, !meditate, false)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(meditate))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, meditate) = $null) { set %skill.description meditates and feel $gender($1) TP being restored.  }
@@ -962,6 +1007,9 @@ alias skill.conserveTP { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ConserveTP, !conserve tp, true)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(conserveTP))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, conserveTP) = $null) { set %skill.description uses an ancient skill to reduce the cost of $gender($1) next technique to 0. }
   else { set %skill.description $readini($char($1), descriptions, conserveTP) }
@@ -1005,6 +1053,9 @@ alias skill.bloodboost { $set_chr_name($1)
     if (%hp.cost >= $readini($char($1), battle, hp)) { $display.message($readini(translation.dat, errors, NotEnoughHPForSkill) ,private) | halt }
     else {  writeini $char($1) battle hp $calc($readini($char($1), battle, hp) - %hp.cost)  }
   }
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(bloodboost))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, bloodboost) = $null) { set %skill.description sacrifices some of $gender($1) blood for raw strength.  }
@@ -1076,6 +1127,9 @@ alias skill.bloodspirit { $set_chr_name($1)
     else {  writeini $char($1) battle hp $calc($readini($char($1), battle, hp) - %hp.cost)  }
   }
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(bloodspirit))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, bloodspirit) = $null) { set %skill.description sacrifices some of $gender($1) blood for raw intelligence.  }
   else { set %skill.description $readini($char($1), descriptions, bloodspirit) }
@@ -1141,6 +1195,8 @@ alias skill.drainsamba { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, DrainSamba, !drain samba, false)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(DrainSamba))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, drainsamba) = $null) { set %skill.description performs a powerful samba that activates a draining technique on $gender($1) weapon!   }
@@ -1188,9 +1244,11 @@ alias skill.formlessstrike { $set_chr_name($1)
     if (%tp.needed > %tp.current) { unset %tp.current | unset %tp.needed | $display.message(4Error: %real.name does not have enough TP to use this skill!, private) | halt }
   }
 
-
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, FormlessStrike, !formless strike, false)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(FormlessStrike))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, formlessstrike) = $null) { set %skill.description channels some of $gender($1) TP into $gender($1) weapon, activing a power that can hurt ethereal beings.  }
@@ -1241,6 +1299,9 @@ alias skill.regen { $set_chr_name($1)
 
   ; write the last used time.
   writeini $char($1) skills regen.time %true.turn
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(regen))
 
   if ($readini($char($1), descriptions, regen) = $null) { set %skill.description has gained the regeneration effect.  }
   else { set %skill.description $readini($char($1), descriptions, regen) }
@@ -1345,11 +1406,13 @@ alias skill.kikouheni { $set_chr_name($1)
     }
 
     $display.private.message2($1, 4Error: Not a valid weather.  Valid weather types are: %weather.list ) | halt
-
   }
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Kikouheni, !kikouheni, true)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(kikouheni))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, kikouheni) = $null) { set %skill.description summons a mystical power that changes the weather! }
@@ -1393,6 +1456,9 @@ alias skill.clone { $set_chr_name($1)
 
   if (($readini($char($1), info, flag) = $null) && ($readini($char($1 $+ _summon), battle, hp) != $null)) { $display.message($readini(translation.dat, errors, CanOnlyUseSummonOrDoppel), private) | halt }
   if (($isfile($char($1 $+ _clone)) = $true) && ($readini($char($1), info, ClonesCanClone) != true)) { $set_chr_name($1) | $display.message(4Error: %real.name has already used this skill for this battle and cannot use it again!, private) | halt }
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(shadowcopy))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, shadowcopy) = $null) { set %skill.description releases $gender($1) shadow, which comes to life as a clone, ready to fight. }
@@ -1541,6 +1607,9 @@ alias skill.steal { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Steal, !steal, false)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(steal))
+
   ; Display the desc. 
   $set_chr_name($2) | set %enemy %real.name
   if ($readini($char($1), descriptions, steal) = $null) { set %skill.description sneaks around to %enemy in an attempt to steal something! }
@@ -1646,6 +1715,9 @@ alias skill.analysis { $set_chr_name($1)
 
   var %analysis.flag $readini($char($2), info, flag) 
   if (%analysis.flag != monster) { $display.message($readini(translation.dat, errors, OnlyAnalyzeMonsters), private) | halt }
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(analysis))
 
   ; Display the desc. 
   $set_chr_name($2) | set %enemy %real.name
@@ -1860,6 +1932,8 @@ alias skill.quicksilver { $set_chr_name($1)
   inc %quicksilver.used 1 | writeini $char($1) skills quicksilver.used %quicksilver.used
   writeini $char($1) skills quicksilver.turn %true.turn
 
+  ; Decrease the action points
+  $action.points($1, remove, 5)
 
   if ($readini($char($1), descriptions, quicksilver) = $null) { $set_chr_name($1) | set %skill.description unleashes the power of Quicksilver! Time seems to stop for everyone except %real.name $+ ! }
   else { set %skill.description $readini($char($1), descriptions, quicksilver) }
@@ -1924,6 +1998,9 @@ alias skill.cover { $set_chr_name($1)
 
   writeini $char($2) skills CoverTarget $1
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(cover))
+
   ; Display the desc. 
   $set_chr_name($2) | set %enemy %real.name
   if ($readini($char($1), descriptions, cover) = $null) { set %skill.description prepares to leap in front of %enemy in order to defend $gender2($2) }
@@ -1975,6 +2052,9 @@ alias skill.snatch { $set_chr_name($1)
   }
 
   if ($isfile($boss($2)) = $true) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CannotSnatchBosses), private) | halt }
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(snatch))
 
   ; Display the desc. 
   $set_chr_name($2) | set %enemy %real.name
@@ -2037,6 +2117,9 @@ alias skill.aggressor { $set_chr_name($1)
 
   if ($readini($char($1), skills, aggressor.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle., private) | halt }
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(aggressor))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, aggressor) = $null) { set %skill.description gives a loud battle warcry as $gender($1) strength is enhanced at the cost of $gender($1) defense! }
   else { set %skill.description $readini($char($1), descriptions, aggressor) }
@@ -2080,6 +2163,9 @@ alias skill.defender { $set_chr_name($1)
   $check_for_battle($1)
 
   if ($readini($char($1), skills, defender.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle.,private) | halt }
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(defender))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, defender) = $null) { set %skill.description decides that the best offense is a good defense and sacrifices $gender($1) strength for defense! }
@@ -2333,6 +2419,9 @@ alias skill.holyaura { $set_chr_name($1)
 
   var %skill.level $readini($char($1), skills, holyaura)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(holyaura))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, holyaura) = $null) { 
     if (%max.demonwall.turns = $null) { set %skill.description releases a holy aura that covers the battlefield and keeps the darkness at bay for an additional %skill.level $iif(%skill.level > 1,turns, turn) $+ . }
@@ -2468,6 +2557,9 @@ alias skill.monster.consume {
   $checkchar($1)
   if ($readini($char($1), info, flag) = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, PlayersCannotUseSkill),private) | halt } 
 
+  ; Decrease the action points
+  $action.points($1, remove, 1)
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, monsterconsume) = $null) { set %skill.description grabs $set_chr_name($2) $+ %real.name and eats $gender2($2) $+ , gaining some of %real.name $+ 's power in the process! }
   else { set %skill.description $readini($char($1), descriptions, monsterconsume) }
@@ -2520,6 +2612,10 @@ alias skill.demonportal {
   if ($readini($char(demon_portal), battle, hp) > 0) { 
     ; Portal already exists, let's repair it.
     if ($readini($char(demon_portal), battle, hp) < $readini($char(demon_portal), basestats, hp)) { 
+
+      ; Decrease the action points
+      $action.points($1, remove, 1)
+
       $set_chr_name($1) | $display.message(12 $+ %real.name  $+ begins work on repairing the damaged portal., battle)
       set %attack.damage $round($calc($readini($char($1), battle, hp) / 2),0)
       $heal_damage($1, demon_portal, skill)
@@ -2552,6 +2648,9 @@ alias skill.monster.repairnaturalarmor {
 
   $checkchar($1)
   if ($readini($char($1), info, flag) = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, PlayersCannotUseSkill),private) | halt } 
+
+  ; Decrease the action points
+  $action.points($1, remove, 1)
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, repairnaturalarmor) = $null) { $set_chr_name($1) | set %skill.description %real.name repairs $gender($1) armor! }
@@ -2666,6 +2765,9 @@ alias skill.provoke { $set_chr_name($1)
 
   writeini $char($2) skills provoke.target $1
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(provoke))
+
   ; Display the desc. 
   set %enemy $get_chr_name($2) 
   if ($readini($char($1), descriptions, provoke) = $null) { $set_chr_name($2) | set %skill.description makes a series of gestures towards %real.name in order to provoke $gender2($2) }
@@ -2721,6 +2823,9 @@ alias skill.weaponlock { $set_chr_name($1)
   set %check.item $readini($char($1), item_amount, Sokubaku)
   if ((%check.item = $null) || (%check.item <= 0)) { $display.message(4Error: %real.name does not have enough Sokubaku to perform this skill,private) | halt }
   $decrease_item($1, Sokubaku) 
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(weaponlock))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, weaponlock) = $null) { $set_chr_name($2) | set %skill.description uses an ancient technique to place a powerful seal around %real.name $+ 's weapon, preventing $gender2($2) from removing or changing it. }
@@ -2784,6 +2889,9 @@ alias skill.disarm { $set_chr_name($1)
   if (%user.flag = player) && (%target.flag = player) { $readini(translation.dat, errors, CannotDisarmPlayers) | halt }
   if (%user.flag = player) && (%target.flag = npc) { $readini(translation.dat, errors, CannotDisarmPlayers) | halt }
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(disarm))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, disarm) = $null) { $set_chr_name($2) | set %skill.description grapples with %real.name in an attempt to disarm $gender2($2) }
   else { set %skill.description $readini($char($1), descriptions, disarm) }
@@ -2833,6 +2941,9 @@ alias skill.konzen-ittai { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Konzen-ittai, !konzen-ittai, true)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(konzen-ittai))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, Konzen-ittai) = $null) { set %skill.description channels an ancient power of the samurai that helps increase the amount of renkei $gender($1) weapon is worth. }
   else { set %skill.description $readini($char($1), descriptions, Konzen-ittai) }
@@ -2877,6 +2988,9 @@ alias skill.sealbreak { $set_chr_name($1)
   if ((%check.item = $null) || (%check.item <= 0)) { $set_chr_name($1) | $display.message(4Error: %real.name does not have enough Hankai to perform this skill, private) | halt }
   $decrease_item($1, Hankai) 
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(sealbreak))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, sealbreak) = $null) { $set_chr_name($2) | set %skill.description lays some Hankai powder upon the seal and chants a powerful mantra in an attempt to break the seal. }
   else { set %skill.description $readini($char($1), descriptions, sealbreak) }
@@ -2919,6 +3033,9 @@ alias skill.magicmirror { $set_chr_name($1)
   if ((%check.item = $null) || (%check.item <= 0)) { $display.message(4Error: %real.name does not have enough MirrorShards to perform this skill, private) | halt }
   $decrease_item($1, MirrorShard) 
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(magicmirror))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, magicmirror) = $null) { $set_chr_name($1) | set %skill.description pulls out a magic mirror shard which expands into a large reflective barrier around %real.name $+ 's body. }
   else { set %skill.description $readini($char($1), descriptions, magicmirror) }
@@ -2959,6 +3076,9 @@ alias skill.gamble { $set_chr_name($1)
   if ((%check.item = $null) || (%check.item <= 1000)) { $display.message(4Error: %real.name does not have enough $readini(system.dat, system, currency) to perform this skill [need $calc(1000 - %check.item) more!], private) | halt }
   dec %check.item 1000
   writeini $char($1) stuff RedOrbs %check.item
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(gamble))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, gamble) = $null) { $set_chr_name($1) | set %skill.description sacrficies 1000 $readini(system.dat, system, currency) to summon a magic slot machine. %real.name pulls the handle....  }
@@ -3115,6 +3235,9 @@ alias skill.thirdeye { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ThirdEye, !third eye, true)
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(thirdeye))
+
   ; Display the desc. 
   if ($readini($char($1), descriptions, ThirdEye) = $null) { set %skill.description uses an ancient Samurai skill to increase the odds of dodging attacks. }
   else { set %skill.description $readini($char($1), descriptions, ThirdEye) }
@@ -3160,6 +3283,9 @@ alias skill.scavenge { $set_chr_name($1)
   ; Check to see if the battlefield even has an item pool
   set %scavenge.pool $readini($dbfile(battlefields.db), %current.battlefield, scavenge)
   if ((%scavenge.pool = $null) || (%scavenge.pool = none)) { unset %scavenge.pool | $set_chr_name($1) | $display.message($readini(translation.dat, skill, ScavengeNothingToGet), private) | halt }
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(scavenge))
 
   ; Display the desc. 
   $set_chr_name($2) | set %enemy %real.name
@@ -3218,6 +3344,9 @@ alias skill.perfectcounter { $set_chr_name($1) | $check_for_battle($1)
 
   writeini $char($1) skills perfectcounter.on on 
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(perfectcounter))
+
   if ($readini($char($nick), descriptions, PerfectCounter) = $null) { $set_chr_name($1) | set %skill.description performs an ancient technique perfected by monks to ensure a perfect melee counter! }
   else { set %skill.description $readini($char($nick), descriptions, perfectcounter) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
@@ -3242,6 +3371,9 @@ alias skill.retaliation { $set_chr_name($1) |  $check_for_battle($1)
 
   ; Is the skill still on?
   if ($readini($char($1), skills, retaliation.on) = on) { $display.message(4 $+ %real.name cannot use $gender($1) Retaliation again so soon!, private) | halt }
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(retaliation))
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, Retaliation) = $null) { set %skill.description stands perfectly still and waits to be attacked. }
@@ -3281,6 +3413,9 @@ alias skill.justrelease { $set_chr_name($1)
   if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
   if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal from someone who is dead!, private) | unset %real.name | halt }
   if ($readini($char($2), Battle, Status) = RunAway) { $display.message(4 $+ %real.name cannot  Just Release on $set_chr_name($2) %real.name $+ , because %real.name has run away from the fight!, private) | unset %real.name | halt } 
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(justrelease))
 
   ; Display the desc. 
   $set_chr_name($2) | set %enemy %real.name
@@ -3342,10 +3477,15 @@ alias skill.stoneskin { $set_chr_name($1)
 
   writeini $char($1) skills stoneskin.time $ctime
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(stoneskin))
+
+  ; Show the desc
   if ($readini($char($1), descriptions, stoneskin) = $null) { $set_chr_name($1) | set %skill.description unleashes the power of stoneskin! %real.name $+ 's body becomes hard as stone and gains a natural shielding. }
   else { set %skill.description $readini($char($1), descriptions, stoneskin) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
+  ; Add the stoneskin
   var %user.int $readini($char($1), battle, int)
   var %user.stoneskin.level $readini($char($1), skills, stoneskin)
   var %stoneskin.max $round($calc(%user.int * ((%user.stoneskin.level + 10) /100)),0)
@@ -3385,6 +3525,10 @@ alias skill.tabularasa { $set_chr_name($1)
 
   writeini $char($1) skills tabularasa.time %true.turn
 
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(TabulaRasa))
+
+  ; Show the desc
   if ($readini($char($1), descriptions, tabularasa) = $null) { $set_chr_name($2) | set %skill.description unleashes a powerful and ancient technique upon %real.name in an attempt to inflict amnesia. }
   else { set %skill.description $readini($char($1), descriptions, tabularasa) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
@@ -3495,6 +3639,9 @@ alias skill.wrestle { $set_chr_name($1)
 
   inc %wrestle.used 1 | writeini $char($1) skills wrestle.used %wrestle.used
   writeini $char($1) skills wrestle.turn %true.turn
+
+  ; Decrease the action points
+  $action.points($1, remove, 3)
 
   var %skill.description $read($txtfile(attack_wrestle.txt))
   if (%skill.description = $nulll) {  $set_chr_name($2) | var %skill.description performs a powerful wrestling move on %real.name $+ ! }

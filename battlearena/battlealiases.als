@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/29/16
+;;;; Last updated: 03/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -199,6 +199,36 @@ check_drops {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Action Point alias
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+action.points {
+  ; $1 = person
+  ; $2 = check, add or remove
+  ; $3 = amount to add or remove
+
+  if ($2 = check) {
+    var %current.actionpoints $readini($txtfile(battle2.txt), ActionPoints, $1)
+    if (%current.actionpoints = $null) { writeini $txtfile(battle2.txt) ActionPoints $1 0 | return 0 }
+    else { return %current.actionpoints }
+  }
+
+  if ($2 = add) { 
+    var %current.actionpoints $readini($txtfile(battle2.txt), ActionPoints, $1)
+    if (%current.actionpoints = $null) { var %current.actionpoints 0 }
+    inc %current.actionpoints $3
+    writeini $txtfile(battle2.txt) ActionPoints $1 %current.actionpoints
+  }
+
+  if ($2 = remove) {
+    var %current.actionpoints $readini($txtfile(battle2.txt), ActionPoints, $1)
+    if (%current.actionpoints = $null) { var %current.actionpoints 0 }
+    dec %current.actionpoints $3
+    writeini $txtfile(battle2.txt) ActionPoints $1 %current.actionpoints
+  }
+
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Checks for things that would
 ; stop a person from having
 ; a turn.
@@ -209,16 +239,17 @@ no.turn.check {
   if ($readini($char($1), info, flag) = monster) { return }
   if ($readini($char($1), info, flag) = npc) { return }
   $set_chr_name($1)
+
   if ($is_charmed($1) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed), private) | halt }
   if ($is_confused($1) = true) { $display.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
-  if ($readini($char($1), status, blind) != no) { $display.message($readini(translation.dat, status, TooBlindToFight),private) | halt }
-  if ($readini($char($1), status, intimidated) != no) { $display.message($readini(translation.dat, status, TooIntimidatedToFight),private) | halt }
-  if ($readini($char($1), status, paralysis) != no) { $display.message($readini(translation.dat, status, CurrentlyParalyzed),private) | halt }
-  if ($readini($char($1), status, drunk) != no) { $display.message($readini(translation.dat, status, TooDrunkToFight2),private) | halt }
-  if ($readini($char($1), status, petrified) != no) { $display.message($readini(translation.dat, status, TooPetrifiedToFight),private) | halt }
-  if ($readini($char($1), status, stun) != no) { $display.message($readini(translation.dat, status, TooStunnedToFight),private) | halt }
-  if ($readini($char($1), status, stop) != no) { $display.message($readini(translation.dat, status, CurrentlyStopped),private) | halt }
-  if ($readini($char($1), status, sleep) != no) { $display.message($readini(translation.dat, status, CurrentlyAsleep),private) | halt }
+  if ($statuseffect.check($1, petrified) != no) { $display.message($readini(translation.dat, status, TooPetrifiedToFight),private) | halt }
+  if ($statuseffect.check($1, blind) != no) { $display.message($readini(translation.dat, status, TooBlindToFight),private) | halt }
+  if ($statuseffect.check($1, intimidated) != no) { $display.message($readini(translation.dat, status, TooIntimidatedToFight),private) | halt }
+  if ($statuseffect.check($1, paralysis) != no) { $display.message($readini(translation.dat, status, CurrentlyParalyzed),private) | halt }
+  if ($statuseffect.check($1, drunk) != no) { $display.message($readini(translation.dat, status, TooDrunkToFight2),private) | halt }
+  if ($statuseffect.check($1, stun) != no) { $display.message($readini(translation.dat, status, TooStunnedToFight),private) | halt }
+  if ($statuseffect.check($1, stop) != no) { $display.message($readini(translation.dat, status, CurrentlyStopped),private) | halt }
+  if ($statuseffect.check($1, sleep) != no) { $display.message($readini(translation.dat, status, CurrentlyAsleep),private) | halt }
 }
 
 no.mech.check {
@@ -350,6 +381,8 @@ reward.capacitypoints {
 check_for_double_turn {  $set_chr_name($1)
   set %debug.location alias check_for_double_turn
 
+  ; Check for the end of battle
+
   if (%battle.type = dungeon) {
     if (($dungeon.currentroom = 0) && (%current.turn = 2)) { $battle.check.for.end }
     if ($dungeon.currentroom > 0) { $battle.check.for.end }
@@ -358,9 +391,52 @@ check_for_double_turn {  $set_chr_name($1)
 
   unset %wait.your.turn
 
-  $random.doubleturn.chance($1)
+  ; If the person is dead, blind or sleeping, move to the next turn
+  if ($readini($char($1), battle, hp) <= 0) { $next | halt }
+  if (($statuseffect.check($1, blind) = yes) || ($statuseffect.check($1, sleep) = yes)) { $next | halt }
 
-  if ($readini($char($1), skills, doubleturn.on) = on) { 
+  ; Monsters that are in cocoons can't get another turn
+  if ($statuseffect.check($1, cocoon) = yes) { $next | halt }
+
+  ; Check for a double turn chance for turn based
+  if ($return.systemsetting(TurnType) != action) {
+
+    $random.doubleturn.chance($1)
+
+    if ($readini($char($1), skills, doubleturn.on) = on) { 
+      if ($readini($char($1), info, flag) != $null) {   /.timerBattleNext 1 45 /next }
+      if ($readini($char($1), info, flag) = $null) {
+        var %nextTimer $readini(system.dat, system, TimeForIdle)
+        if (%nextTimer = $null) { var %nextTimer 180 }
+        /.timerBattleNext 1 %nextTimer /next
+      }
+
+      $checkchar($1) | writeini $char($1) skills doubleturn.on off | $set_chr_name($1) 
+
+      if ($person_in_mech($1) = true) { %real.name = %real.name $+ 's $readini($char($1), mech, name) }
+
+      $display.message(12 $+ %real.name gets another turn.,battle) 
+
+      set %user.gets.second.turn true
+
+      $aicheck($1) | halt 
+    }
+
+    else { $next | halt }
+  }
+
+  if ($return.systemsetting(TurnType) = action) {
+    var %action.points.left $action.points($1, check)
+    if ($2 = forcenext) { var %action.points.left 0 }
+    if ($dungeon.currentroom = 0) { var %action.points.left 0 } 
+
+    ; If the person has no action points left, time to move to the next turn
+    if (%action.points.left <= 0) { $next | halt }
+    else { 
+      if ($person_in_mech($1) = true) { %real.name = %real.name $+ 's $readini($char($1), mech, name) }
+    $display.message(12 $+ %real.name gets another action this turn $chr(91) $+  $+ %action.points.left action points left $+ $chr(93),battle) } 
+
+    ; Fresh timers
     if ($readini($char($1), info, flag) != $null) {   /.timerBattleNext 1 45 /next }
     if ($readini($char($1), info, flag) = $null) {
       var %nextTimer $readini(system.dat, system, TimeForIdle)
@@ -368,21 +444,10 @@ check_for_double_turn {  $set_chr_name($1)
       /.timerBattleNext 1 %nextTimer /next
     }
 
-    if ($readini($char($1), battle, hp) <= 0) { $next | halt }
-    if (($readini($char($1), status, blind) = yes) || ($readini($char($1), status, sleep) = yes)) { $next | halt }
-
-    $checkchar($1) | writeini $char($1) skills doubleturn.on off | $set_chr_name($1) 
-
-    if ($person_in_mech($1) = true) { %real.name = %real.name $+ 's $readini($char($1), mech, name) }
-
-    $display.message(12 $+ %real.name gets another turn.,battle) 
-
-    set %user.gets.second.turn true
-
+    ; Check for AI action
     $aicheck($1) | halt 
   }
 
-  else { $next | halt }
 }
 
 random.doubleturn.chance {
@@ -392,9 +457,10 @@ random.doubleturn.chance {
   if ($1 = !use) { return }
   if (%multiple.wave.noaction = yes) { unset %multiple.wave.noaction | return }
   if ($readini($char($1), battle, hp) <= 0) { return }
-  if ($readini($char($1), Status, cocoon) = yes) { return }
-  if ($readini($char($1), Status, blind) = yes) { return }
-  if ($readini($char($1), Status, sleep) = yes) { return }
+
+  if ($statuseffect.check($1, cocoon) = yes) { return }
+  if ($statuseffect.check($1,  blind) = yes) { return }
+  if ($statuseffect.check($1, sleep) = yes) { return }
 
   if ((%battle.type = dungeon) && ($dungeon.currentroom = 0)) { return }
 
@@ -1700,6 +1766,9 @@ taunt {
       if ($readini($char($2), info, flag) != $null) { writeini $char($2) skills provoke.target $1 } 
     }
   }
+
+  ; Decrease the action points
+  $action.points($1, remove, 1)
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
