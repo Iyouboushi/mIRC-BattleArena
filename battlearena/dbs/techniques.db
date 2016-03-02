@@ -1149,7 +1149,7 @@ stat=str
 [SickleMoon]
 Type=Single
 TP=20
-Desc=does an upward swing with the greatsword then a downward swing a moment later.
+Desc=does an upward swing with the greatsword then a downward swing upon %enemy a moment later.
 BasePower=55
 Element=none
 Cost=1500
@@ -1160,7 +1160,7 @@ renkei=3
 [Freezebite]
 Type=Single
 TP=25
-Desc=does a backswing with the greatsword then stabs forward with the greatsword.
+Desc=does a backswing with the greatsword then stabs forward towards %enemy with the greatsword.
 BasePower=10
 Element=Ice
 Cost=1500
