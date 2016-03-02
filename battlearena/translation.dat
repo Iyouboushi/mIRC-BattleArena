@@ -832,7 +832,7 @@ AlreadyUsedBloodPact=$chr(3) $+ 4 $+ Error: %real.name has already used Blood 
 CraftingSuccess=$chr(3) $+ 2 $+ %real.name has successfully crafted %crafting.item.amount $2 $+ $if(%amount.to.craft < 2 , ,s) $+ !
 CraftingFailure=$chr(3) $+ 2 $+ %real.name $+ 's alchemy attempt has failed! %real.name loses the gem and all ingredients involved.
 CraftingMultiple=$chr(3) $+ 2 $+ %real.name has successfully crafted %total.crafted $2 $+ $if($calc($readini($dbfile(crafting.db), $2, amount) * %crafting.success.total) < 2 , ,s) $+  and has failed %crafting.failure.total time $+ $iif(%crafting.failure.total = 0 || %crafting.failure.total > 1, s) $+ !
-CriticalCraftingSuccess=$chr(3) $+ 7 $+ %real.name has performed an exceptionally well craft and has doubled the results!
+CriticalCraftingSuccess=$chr(3) $+ 7 $+ %real.name has performed an exceptionally well craft and has increased the results!
 HolyAuraAlreadyOn=$chr(3) $+ 4 $+ Error: A holy aura already protects this battlefield.
 HolyAuraEnd=$chr(3) $+ 12 $+ %real.name $+ 's holy aura has faded. The darkness begins to move towards the battlefield once more.
 AlreadyWeaponLocked=$set_chr_name($2) $+ $chr(3) $+ 4 $+ %real.name is already weapon locked!
