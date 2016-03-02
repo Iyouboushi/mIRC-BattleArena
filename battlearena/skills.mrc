@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/01/16
+;;;; Last updated: 03/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1707,6 +1707,20 @@ alias skill.steal { $set_chr_name($1)
 on 3:TEXT:!analyze*:*: { $partial.name.match($nick, $2)  | $skill.analysis($nick, %attack.target)  }
 on 3:TEXT:!analysis*:*: { $partial.name.match($nick, $2)  | $skill.analysis($nick, %attack.target) }
 
+alias skill.analysis.color {
+  ; $1 current analysis level
+  ; $2 analysis level needed
+  ; $3 resistant, weak, normal
+
+  if ($1 < $2) { return 1,1 }
+  if (($3 = resistant) || ($3 = resist)) { return 6 }
+  if ($3 = weak) { return 7 }
+  if ($3 = normal) { return 3 }
+  if ($3 = stat) { return 3 }
+  if ($3 = immune) { return 4 }
+  if ($3 = heal) { return 4 }
+}
+
 alias skill.analysis { $set_chr_name($1)
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
@@ -1735,111 +1749,127 @@ alias skill.analysis { $set_chr_name($1)
   unset %analysis.element.heal
 
   ; Get the target info
-  var %analysis.hp $readini($char($2), battle, hp) | var %analysis.tp $readini($char($2), battle, tp)
-  var %analysis.str $readini($char($2), battle, str) | var %analysis.def $readini($char($2), battle, def)
-  var %analysis.int $readini($char($2), battle, int) | var %analysis.spd $readini($char($2), battle, spd)
+  var %analysis.hp $skill.analysis.color(%analysis.level, 1, stat) $+ $readini($char($2), battle, hp) $+ 3 
 
-  ; Check for elemental weaknesses
-  if (($readini($char($2), modifiers, earth) > 100) && ($istok($readini($char($2), modifiers, heal), earth, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, earth, 46) }
-  if (($readini($char($2), modifiers, fire) > 100) && ($istok($readini($char($2), modifiers, heal), fire, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, fire, 46) }
-  if (($readini($char($2), modifiers, wind) > 100) && ($istok($readini($char($2), modifiers, heal), wind, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, wind, 46) }
-  if (($readini($char($2), modifiers, ice) > 100) && ($istok($readini($char($2), modifiers, heal), ice, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, ice, 46) }
-  if (($readini($char($2), modifiers, water) > 100) && ($istok($readini($char($2), modifiers, heal), water, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, water, 46) }
-  if (($readini($char($2), modifiers, lightning) > 100) && ($istok($readini($char($2), modifiers, heal), lightning, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, lightning, 46) }
-  if (($readini($char($2), modifiers, light) > 100) && ($istok($readini($char($2), modifiers, heal), light, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, light, 46) }
-  if (($readini($char($2), modifiers, dark) > 100) && ($istok($readini($char($2), modifiers, heal), dark, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, dark, 46) }
+  if (%analysis.level >= 2) { var %analysis.tp $skill.analysis.color(%analysis.level, 2, stat) $+ $readini($char($2), battle, tp) $+ 3 }
+  if (%analysis.level >= 3) { 
+    var %analysis.str $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, str)) $+ 3  | var %analysis.def $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, def) $+ 3
+    var %analysis.int $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, int) $+ 3 | var %analysis.spd $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, spd) $+ 3
+  }
 
-  ; Check for elemental healing
-  if ($istok($readini($char($2), modifiers, heal), earth, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, earth, 46) }
-  if ($istok($readini($char($2), modifiers, heal), fire, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, fire, 46) }
-  if ($istok($readini($char($2), modifiers, heal), wind, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, wind, 46) }
-  if ($istok($readini($char($2), modifiers, heal), ice, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, ice, 46) }
-  if ($istok($readini($char($2), modifiers, heal), water, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, water, 46) }
-  if ($istok($readini($char($2), modifiers, heal), lightning, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, lightning, 46) }
-  if ($istok($readini($char($2), modifiers, heal), light, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, light, 46) }
-  if ($istok($readini($char($2), modifiers, heal), dark, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, dark, 46) }
+  if (%analysis.level >= 4) { 
+    ; Check for elemental weaknesses
+    if (($readini($char($2), modifiers, earth) > 100) && ($istok($readini($char($2), modifiers, heal), earth, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ earth3, 46) }
+    if (($readini($char($2), modifiers, fire) > 100) && ($istok($readini($char($2), modifiers, heal), fire, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ fire3, 46) }
+    if (($readini($char($2), modifiers, wind) > 100) && ($istok($readini($char($2), modifiers, heal), wind, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ wind3, 46) }
+    if (($readini($char($2), modifiers, ice) > 100) && ($istok($readini($char($2), modifiers, heal), ice, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ ice3, 46) }
+    if (($readini($char($2), modifiers, water) > 100) && ($istok($readini($char($2), modifiers, heal), water, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ water3, 46) }
+    if (($readini($char($2), modifiers, lightning) > 100) && ($istok($readini($char($2), modifiers, heal), lightning, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ lightning3, 46) }
+    if (($readini($char($2), modifiers, light) > 100) && ($istok($readini($char($2), modifiers, heal), light, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ light3, 46) }
+    if (($readini($char($2), modifiers, dark) > 100) && ($istok($readini($char($2), modifiers, heal), dark, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ dark3, 46) }
+  }
 
-  ;  Check for elemental resistances
-  if ($readini($char($2), modifiers, earth) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, earth, 46) }
-  if ($readini($char($2), modifiers, fire) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, fire, 46) }
-  if ($readini($char($2), modifiers, wind) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, wind, 46) }
-  if ($readini($char($2), modifiers, ice) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, ice, 46) }
-  if ($readini($char($2), modifiers, water) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, water, 46) }
-  if ($readini($char($2), modifiers, lightning) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, lightning, 46) }
-  if ($readini($char($2), modifiers, light) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, light, 46) }
-  if ($readini($char($2), modifiers, dark) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, dark, 46) }
+  if (%analysis.level >= 5) { 
+    ; Check for elemental healing
+    if ($istok($readini($char($2), modifiers, heal), earth, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ earth3, 46) }
+    if ($istok($readini($char($2), modifiers, heal), fire, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ fire3, 46) }
+    if ($istok($readini($char($2), modifiers, heal), wind, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ wind3, 46) }
+    if ($istok($readini($char($2), modifiers, heal), ice, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ ice3, 46) }
+    if ($istok($readini($char($2), modifiers, heal), water, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ water3, 46) }
+    if ($istok($readini($char($2), modifiers, heal), lightning, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ lightning3, 46) }
+    if ($istok($readini($char($2), modifiers, heal), light, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ light3, 46) }
+    if ($istok($readini($char($2), modifiers, heal), dark, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ dark3, 46) }
 
-  ;  Check for elemental absorb
-  if ($readini($char($2), modifiers, earth) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, earth, 46) }
-  if ($readini($char($2), modifiers, fire) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, fire, 46) }
-  if ($readini($char($2), modifiers, wind) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, wind, 46) }
-  if ($readini($char($2), modifiers, ice) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, ice, 46) }
-  if ($readini($char($2), modifiers, water) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, water, 46) }
-  if ($readini($char($2), modifiers, lightning) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, lightning, 46) }
-  if ($readini($char($2), modifiers, light) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, light, 46) }
-  if ($readini($char($2), modifiers, dark) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, dark, 46) }
+    if (%analysis.element.heal = $null) { %analysis.element.heal = 3none }
 
-  ; Check for weapon weaknesses
-  if ($readini($char($2), modifiers, HandToHand) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, handtohand, 46) }
-  if ($readini($char($2), modifiers, Whip) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, whip, 46) }
-  if ($readini($char($2), modifiers, Sword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, sword, 46) }
-  if ($readini($char($2), modifiers, gun) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, gun, 46) }
-  if ($readini($char($2), modifiers, rifle) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, rifle, 46) }
-  if ($readini($char($2), modifiers, katana) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, katana, 46) }
-  if ($readini($char($2), modifiers, wand) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, wand, 46) }
-  if ($readini($char($2), modifiers, spear) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, spear, 46) }
-  if ($readini($char($2), modifiers, scythe) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, scythe, 46) }
-  if ($readini($char($2), modifiers, glyph) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, glyph, 46) }
-  if ($readini($char($2), modifiers, greatsword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, greatsword, 46) }
-  if ($readini($char($2), modifiers, bow) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, bow, 46) }
-  if ($readini($char($2), modifiers, dagger) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, dagger, 46) }
-  if ($readini($char($2), modifiers, hammer) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, hammer, 46) }
-  if ($readini($char($2), modifiers, ParticleAccelerator) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, ParticleAccelerator, 46) }
-  if ($readini($char($2), modifiers, lightsaber) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, lightsaber, 46) }
+    ;  Check for elemental resistances
+    if ($readini($char($2), modifiers, earth) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ earth3, 46) }
+    if ($readini($char($2), modifiers, fire) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ fire3, 46) }
+    if ($readini($char($2), modifiers, wind) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ wind3, 46) }
+    if ($readini($char($2), modifiers, ice) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ ice3, 46) }
+    if ($readini($char($2), modifiers, water) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ water3, 46) }
+    if ($readini($char($2), modifiers, lightning) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ lightning3, 46) }
+    if ($readini($char($2), modifiers, light) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ light3, 46) }
+    if ($readini($char($2), modifiers, dark) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ dark3, 46) }
 
-  ; Check for weapon normal
-  if ($readini($char($2), modifiers, HandToHand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, handtohand, 46) }
-  if ($readini($char($2), modifiers, Whip) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, whip, 46) }
-  if ($readini($char($2), modifiers, Sword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, sword, 46) }
-  if ($readini($char($2), modifiers, gun) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, gun, 46) }
-  if ($readini($char($2), modifiers, rifle) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, rifle, 46) }
-  if ($readini($char($2), modifiers, katana) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, katana, 46) }
-  if ($readini($char($2), modifiers, wand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, wand, 46) }
-  if ($readini($char($2), modifiers, spear) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, spear, 46) }
-  if ($readini($char($2), modifiers, scythe) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, scythe, 46) }
-  if ($readini($char($2), modifiers, glyph) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, glyph, 46) }
-  if ($readini($char($2), modifiers, greatsword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, greatsword, 46) }
-  if ($readini($char($2), modifiers, bow) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, bow, 46) }
-  if ($readini($char($2), modifiers, dagger) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, dagger, 46) }
-  if ($readini($char($2), modifiers, hammer) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, hammer, 46) }
-  if ($readini($char($2), modifiers, ParticleAccelerator) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, ParticleAccelerator, 46) }
-  if ($readini($char($2), modifiers, lightsaber) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, lightsaber, 46) }
+    if (%analysis.element.strength = $null) { %analysis.element.strength = 3none }
 
-  ; Check for weapon resistances
-  if ($readini($char($2), modifiers, HandToHand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, handtohand, 46) }
-  if ($readini($char($2), modifiers, Whip) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, whip, 46) }
-  if ($readini($char($2), modifiers, Sword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, sword, 46) }
-  if ($readini($char($2), modifiers, gun) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, gun, 46) }
-  if ($readini($char($2), modifiers, rifle) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, rifle, 46) }
-  if ($readini($char($2), modifiers, katana) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, katana, 46) }
-  if ($readini($char($2), modifiers, wand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, wand, 46) }
-  if ($readini($char($2), modifiers, spear) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, spear, 46) }
-  if ($readini($char($2), modifiers, scythe) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, scythe, 46) }
-  if ($readini($char($2), modifiers, glyph) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, glyph, 46) }
-  if ($readini($char($2), modifiers, greatsword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, greatsword, 46) }
-  if ($readini($char($2), modifiers, bow) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, bow, 46) }
-  if ($readini($char($2), modifiers, dagger) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, dagger, 46) }
-  if ($readini($char($2), modifiers, hammer) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, hammer, 46) }
-  if ($readini($char($2), modifiers, ParticleAccelerator) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, ParticleAccelerator, 46) }
-  if ($readini($char($2), modifiers, lightsaber) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, lightsaber, 46) }
+    ;  Check for elemental absorb
+    if ($readini($char($2), modifiers, earth) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ earth3, 46) }
+    if ($readini($char($2), modifiers, fire) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ fire3, 46) }
+    if ($readini($char($2), modifiers, wind) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ wind3, 46) }
+    if ($readini($char($2), modifiers, ice) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ ice3, 46) }
+    if ($readini($char($2), modifiers, water) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ water3, 46) }
+    if ($readini($char($2), modifiers, lightning) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ lightning3, 46) }
+    if ($readini($char($2), modifiers, light) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ light3, 46) }
+    if ($readini($char($2), modifiers, dark) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ dark3, 46) }
 
+    if (%analysis.element.absorb = $null) { %analysis.element.absorb = 3none }
 
-  if (%analysis.weapon.strength = $null) { var %analysis.weapon.strength none }
-  if (%analysis.weapon.weak = $null) { var %analysis.weapon.weak none }
-  if (%analysis.element.weak = $null) { var %analysis.element.weak none }
-  if (%analysis.element.strength = $null) { var %analysis.element.strength none }
-  if (%analysis.element.absorb = $null) { var %analysis.element.absorb none }
-  if (%analysis.element.heal = $null) { var %analysis.element.heal none }
+  }
+
+  if (%analysis.level >= 6) { 
+    ; Check for weapon weaknesses
+    if ($readini($char($2), modifiers, HandToHand) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ handtohand3, 46) }
+    if ($readini($char($2), modifiers, Whip) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ whip3, 46) }
+    if ($readini($char($2), modifiers, Sword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ sword3, 46) }
+    if ($readini($char($2), modifiers, gun) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ gun3, 46) }
+    if ($readini($char($2), modifiers, rifle) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ rifle3, 46) }
+    if ($readini($char($2), modifiers, katana) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ katana3, 46) }
+    if ($readini($char($2), modifiers, wand) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ wand3, 46) }
+    if ($readini($char($2), modifiers, spear) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ spear3, 46) }
+    if ($readini($char($2), modifiers, scythe) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ scythe3, 46) }
+    if ($readini($char($2), modifiers, glyph) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ glyph3, 46) }
+    if ($readini($char($2), modifiers, greatsword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ greatsword3, 46) }
+    if ($readini($char($2), modifiers, bow) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ bow3, 46) }
+    if ($readini($char($2), modifiers, dagger) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ dagger3, 46) }
+    if ($readini($char($2), modifiers, hammer) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ hammer3, 46) }
+    if ($readini($char($2), modifiers, ParticleAccelerator) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ ParticleAccelerator3, 46) }
+    if ($readini($char($2), modifiers, lightsaber) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ lightsaber3, 46) }
+
+    if (%analysis.weapon.weak = $null) { %analysis.weapon.weak = 3none }
+
+    ; Check for weapon normal
+    if ($readini($char($2), modifiers, HandToHand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ handtohand3, 46) }
+    if ($readini($char($2), modifiers, Whip) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ whip3, 46) }
+    if ($readini($char($2), modifiers, Sword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ sword3, 46) }
+    if ($readini($char($2), modifiers, gun) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ gun3, 46) }
+    if ($readini($char($2), modifiers, rifle) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ rifle3, 46) }
+    if ($readini($char($2), modifiers, katana) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ katana3, 46) }
+    if ($readini($char($2), modifiers, wand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ wand3, 46) }
+    if ($readini($char($2), modifiers, spear) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ spear3, 46) }
+    if ($readini($char($2), modifiers, scythe) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ scythe3, 46) }
+    if ($readini($char($2), modifiers, glyph) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ glyph3, 46) }
+    if ($readini($char($2), modifiers, greatsword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ greatsword3, 46) }
+    if ($readini($char($2), modifiers, bow) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ bow3, 46) }
+    if ($readini($char($2), modifiers, dagger) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ dagger3, 46) }
+    if ($readini($char($2), modifiers, hammer) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ hammer3, 46) }
+    if ($readini($char($2), modifiers, ParticleAccelerator) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ ParticleAccelerator3, 46) }
+    if ($readini($char($2), modifiers, lightsaber) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ lightsaber3, 46) }
+
+    if (%analysis.weapon.normal = $null) { %analysis.weapon.normal = 3none }
+
+    ; Check for weapon resistances
+    if ($readini($char($2), modifiers, HandToHand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ handtohand3, 46) }
+    if ($readini($char($2), modifiers, Whip) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ whip3, 46) }
+    if ($readini($char($2), modifiers, Sword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ sword3, 46) }
+    if ($readini($char($2), modifiers, gun) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ gun3, 46) }
+    if ($readini($char($2), modifiers, rifle) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ rifle3, 46) }
+    if ($readini($char($2), modifiers, katana) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ katana3, 46) }
+    if ($readini($char($2), modifiers, wand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ wand3, 46) }
+    if ($readini($char($2), modifiers, spear) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ spear3, 46) }
+    if ($readini($char($2), modifiers, scythe) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ scythe3, 46) }
+    if ($readini($char($2), modifiers, glyph) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ glyph3, 46) }
+    if ($readini($char($2), modifiers, greatsword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ greatsword3, 46) }
+    if ($readini($char($2), modifiers, bow) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ bow3, 46) }
+    if ($readini($char($2), modifiers, dagger) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ dagger3, 46) }
+    if ($readini($char($2), modifiers, hammer) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ hammer3, 46) }
+    if ($readini($char($2), modifiers, ParticleAccelerator) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ ParticleAccelerato3r, 46) }
+    if ($readini($char($2), modifiers, lightsaber) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ lightsaber3, 46) }
+
+    if (%analysis.weapon.strength = $null) { %analysis.weapon.strength = 3none }
+
+  }
 
   var %analysis.defeat.conditions $readini($char($2), info, DeathConditions)
   if (%analysis.defeat.conditions = $null) { var %analysis.defeat.conditions none }
@@ -1854,48 +1884,16 @@ alias skill.analysis { $set_chr_name($1)
   %analysis.element.heal = $replace(%analysis.element.heal, $chr(046), %replacechar)
   %analysis.defeat.conditions = $replace(%analysis.defeat.conditions, $chr(046), %replacechar)
 
-  if (%analysis.level = 1) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP left.) | goto next_turn_check }
-  if (%analysis.level = 2) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.) | goto next_turn_check }
-  if (%analysis.level = 3) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
-    $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
-    goto next_turn_check
-  }
-  if (%analysis.level = 4) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
-    $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
-    $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types:: %analysis.weapon.normal)
-    $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength)
-    goto next_turn_check
-  }
-  if (%analysis.level = 5) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
-    $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
-    $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types:: %analysis.weapon.normal)
-    $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength  $+ $chr(124) %real.name is weak against the following weapon types: %analysis.weapon.weak and weak against the following elements: %analysis.element.weak) 
-    goto next_turn_check
-  }
-  if (%analysis.level = 6) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
-    $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
-    $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types:: %analysis.weapon.normal)
-    $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength  $+ $chr(124) %real.name is weak against the following weapon types: %analysis.weapon.weak and weak against the following elements: %analysis.element.weak) 
-    $display.private.message(3 $+ %real.name is completely immune to the following elements: %analysis.element.absorb)
-    $display.private.message(3 $+ %real.name will be healed by the following elements: %analysis.element.heal)
-
-    goto next_turn_check
-  }
-
-  if (%analysis.level = 7) {  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and %analysis.tp TP left.)
-    $display.private.message(3You also determine %real.name has the following stats: [str: %analysis.str $+ ] [def: %analysis.def $+ ] [int: %analysis.int $+ ] [spd: %analysis.spd $+ ])
-    $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types:: %analysis.weapon.normal)
-    $display.private.message(3 $+ %real.name is also resistant against the following weapon types: %analysis.weapon.strength and is resistant against the following elements: %analysis.element.strength  $+ $chr(124) %real.name is weak against the following weapon types: %analysis.weapon.weak and weak against the following elements: %analysis.element.weak) 
-    $display.private.message(3 $+ %real.name is completely immune to the following elements: %analysis.element.absorb)
-    $display.private.message(3 $+ %real.name will be healed by the following elements: %analysis.element.heal)
-    if (%analysis.defeat.conditions != none) {  $display.private.message(3 $+ %real.name has special death conditions and will continue to revive if not killed with these conditions) }
-    goto next_turn_check
-  }
+  ; Display the analysis..
+  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and $iif(%analysis.tp = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.tp) TP left.)
+  $display.private.message(3 $+ %real.name has the following stats: [str: $iif(%analysis.str = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.str) $+ ] [def: $iif(%analysis.def = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.def) $+ ] [int: $iif(%analysis.int = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.int) $+ ] [spd: $iif(%analysis.spd = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.spd) $+ ])
+  $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types: $iif(%analysis.weapon.normal = $null, $skill.analysis.color(%analysis.level, 1000000, normal) $+ [][][][][] $+ 3, %analysis.weapon.normal) and is resistant against the following weapon types: $iif(%analysis.weapon.strength = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 3, %analysis.weapon.strength) and weak against the following weapon types: $iif(%analysis.weapon.weak = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 3, %analysis.weapon.weak))
+  $display.private.message(3 $+ %real.name is resistant against the following elements: $iif(%analysis.element.strength = $null, $skill.analysis.color(%analysis.level, 1000000, resistant) $+ [][][][][] $+ 3, %analysis.element.strength) and weak against the following elements: $iif(%analysis.element.weak = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 3, %analysis.element.weak) ) 
+  $display.private.message(3 $+ %real.name is completely immune to the following elements: $iif(%analysis.element.absorb = $null, $skill.analysis.color(%analysis.level, 1000000, immune) $+ [][][][][] $+ 3, %analysis.element.absorb)  )
+  $display.private.message(3 $+ %real.name will be healed by the following elements: $iif(%analysis.element.heal = $null, $skill.analysis.color(%analysis.level, 1000000, immune) $+ [][][][][] $+ 3, %analysis.element.heal) )
+  if ((%analysis.defeat.conditions != none) && (%analysis.level >= 7)) {  $display.private.message(3 $+ %real.name has special death conditions and will continue to revive if not killed with these conditions) }
 
   unset %enemy
-
-  :next_turn_check
-
   unset %analysis.* 
   unset %analysis.weapon.weak | unset %analysis.weapon.strength | unset %analysis.element.weak | unset %analysis.element.strength | unset %analysis.element.absorb
   unset %analysis.element.heal | unset %analysis.weapon.normal
