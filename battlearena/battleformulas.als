@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 02/27/16
+;;;; Last updated: 03/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -70,8 +70,10 @@ damage.modifiers.check {
   if ($4 = tech) { 
 
     ; Check for the tech name
-    ; TO DO: for techs change this to $modifier_adjust($3, + $+ $2) <-- waiting until monsters have been adjusted first
-    $modifer_adjust($3, $2)
+    ; if $2 = element, use +techname, else use techname
+    var %elements fire.earth.wind.water.ice.lightning.light.dark
+    if ($istok(%elements, $2, 46) = $true) { $modifer_adjust($3, $chr(43) $+ $2) }
+    else { $modifer_adjust($3, $2) }
 
     ; Check for the tech element
     var %tech.element $readini($dbfile(techniques.db), $2, element)
