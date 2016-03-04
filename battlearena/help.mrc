@@ -327,13 +327,18 @@ alias view-info {
     $display.private.message([4Name12 $3 $+ ] [4Cost12 %info.basecost black $iif(%info.basecost < 2, orb, orbs) $+ ] [4Block Chance12 %info.blockchance $+ $chr(37) $+ ] [4Block Amount12 %info.blockamount $+ $chr(37) $+ ]) 
   }
 
+  if ($2 = style) {
+    if ($readini($dbfile(playerstyles.db), Info, $3) = $null) { $display.private.message(4Invalid style) | halt }
+    $display.private.message(2 $+ $readini($dbfile(playerstyles.db), info, $3))
+    if ($3 = doppelganger) { $display.private.message(2 $+ $readini($dbfile(playerstyles.db), info, Doppelganger2)) }
+  }
+
 
 
   if ($2 = alchemy) {
 
     if ($3 = list) { 
-      unset %crafted.items | unset %crafted.items2 | unset %crafted.items3 | unset %crafted.armor | unset %crafted.armor2 | unset %crafted.armor3 | unset %crafted.armor4 | unset %crafted.armor5 | unset %crafted.armor6 | unset %crafted.armor7
-      unset %crafted.armor8 | unset %crafted.armor9
+      unset %crafted.*
 
       ; Checking items
       var %value 1 | var %crafted.items.lines $lines($lstfile(alchemy_items.lst))
@@ -369,8 +374,11 @@ alias view-info {
                   else { 
                     if ($numtok(%crafted.armor7,46) <= 12) { %crafted.armor7 = $addtok(%crafted.armor7, %item.name, 46) }
                     else {
-                      if ($numtok(%crafted.armor8,46) <= 12) { %crafted.armor7 = $addtok(%crafted.armor8, %item.name, 46) }
-                      else { %crafted.armor9 = $addtok(%crafted.armor9, %item.name, 46) }
+                      if ($numtok(%crafted.armor8,46) <= 12) { %crafted.armor8 = $addtok(%crafted.armor8, %item.name, 46) }
+                      else { 
+                        if ($numtok(%crafted.armor9,46) <= 12) { %crafted.armor9 = $addtok(%crafted.armor9, %item.name, 46) }
+                        else { %crafted.armor10 = $addtok(%crafted.armor10, %item.name, 46) }
+                      }
                     }
                   }
                 }
@@ -395,6 +403,7 @@ alias view-info {
       %crafted.armor7 = $replace(%crafted.armor7, $chr(046), %replacechar)
       %crafted.armor8 = $replace(%crafted.armor8, $chr(046), %replacechar)
       %crafted.armor9 = $replace(%crafted.armor9, $chr(046), %replacechar)
+      %crafted.armor10 = $replace(%crafted.armor10, $chr(046), %replacechar)
 
       if (%crafted.items != $null) { $display.private.message(4Items that can be crafted:12 %crafted.items) }
       if (%crafted.items2 != $null) { $display.private.message(12 $+ %crafted.items2) }
@@ -409,7 +418,9 @@ alias view-info {
       if (%crafted.armor7 != $null) { $display.private.message(12 $+ %crafted.armor7) }
       if (%crafted.armor8 != $null) { $display.private.message(12 $+ %crafted.armor8) }
       if (%crafted.armor9 != $null) { $display.private.message(12 $+ %crafted.armor9) }
+      if (%crafted.armor10 != $null) { $display.private.message(12 $+ %crafted.armor10) }
 
+      unset %crafted.*
       unset %crafted.items | unset %crafted.items2 | unset %crafted.items3 | unset %crafted.armor | unset %crafted.armor2 | unset %crafted.armor3 | unset %crafted.armor4 | unset %crafted.armor5 | unset %crafted.armor6 | unset %crafted.armor7 | unset %crafted.armor8 | unset %crafted.armor9
       unset %replacechar
 
@@ -443,13 +454,7 @@ alias view-info {
     unset %replacechar | unset %amount.needed | unset %item.name | unset %ingredient.list
   }
 
-  if ($2 = style) {
-    if ($readini($dbfile(playerstyles.db), Info, $3) = $null) { $display.private.message(4Invalid style) | halt }
-    $display.private.message(2 $+ $readini($dbfile(playerstyles.db), info, $3))
-    if ($3 = doppelganger) { $display.private.message(2 $+ $readini($dbfile(playerstyles.db), info, Doppelganger2)) }
-  }
 }
-
 
 ON 3:TEXT:!recipe search*:*: { $view-recipe($nick, $3) }
 alias view-recipe {
