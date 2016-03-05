@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/01/16
+;;;; Last updated: 03/05/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3212,7 +3212,7 @@ multiple_wave_check {
   if (%battle.type = torment) { 
     var %total.monsters.needed 5
 
-    if ($rand(1,100) <= 50) { set %number.of.monsters.needed 1 | $generate_monster(bossm addactionpoints) | dec %total.monsters.needed 1 }
+    if ($rand(1,100) <= 50) { set %number.of.monsters.needed 1 | $generate_monster(boss, addactionpoints) | dec %total.monsters.needed 1 }
 
     set %number.of.monsters.needed %total.monsters.needed
 
