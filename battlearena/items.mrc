@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/01/16
+;;;; Last updated: 03/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -606,7 +606,7 @@ alias item.trust {
 
   $boost_monster_hp(%trust.npc)
   $fulls(%trust.npc) 
-  $levelsync(%trust.npc, $get.level(%trust.level))
+  $levelsync(%trust.npc, %trust.level)
 
   if ($readini($char(%trust.npc), basestats, hp) > 10000) { writeini $char(%trust.npc) basestats hp 10000 | writeini $char(%trust.npc) battle hp 10000 }
   writeini $char(%trust.npc) info TrustNPC true
