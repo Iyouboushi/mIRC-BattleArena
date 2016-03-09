@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 03/01/16
+;;;; Last updated: 03/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -808,6 +808,15 @@ on 3:TEXT:!rskills*:#: { $readskills($2, channel) }
 on 3:TEXT:!readskills*:#: { $readskills($2,private) }
 on 3:TEXT:!rskills*:?: { $readskills($2, channel) }
 on 3:TEXT:!readskills*:?: { $readskills($2,private) }
+
+on 3:TEXT:!ammo*:#:{ 
+  if ($2 != $null) { $checkchar($2) | $ammo.list($2) | $set_chr_name($2) | $readammo($2, channel) }
+  else {  $ammo.list($nick) | $set_chr_name($nick) | $readammo($nick, channel) }
+}
+on 3:TEXT:!ammo*:?:{ 
+  if ($2 != $null) { $checkchar($2) | $ammo.list($2) | $set_chr_name($2) | $readammo($2, private) }
+  else {  $ammo.list($nick) | $set_chr_name($nick) | $readammo($nick, private) }
+}
 
 on 3:TEXT:!keys*:#:{ 
   if ($2 != $null) { $checkchar($2) | $keys.list($2) | $set_chr_name($2) | $readkeys($2, channel) }

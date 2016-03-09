@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 02/23/16
+;;;; Last updated: 03/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -555,6 +555,40 @@ alias shop.items {
 
     unset %item.price | unset %item.name | unset %shop.list
 
+
+    ; CHECKING AMMO ITEMS
+    unset %shop.list |  var %value 1 | set %total.ammo.items 0 | var %items.lines $lines($lstfile(items_ammo.lst))
+
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(items_ammo.lst)
+      set %item.price $readini($dbfile(items.db), %item.name, cost)
+      set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
+      set %shopnpc.name $readini($dbfile(items.db), %item.name, shopNPC)
+
+      if ((%item.price > 0) && ($readini($dbfile(items.db), %item.name, Currency) = $null)) {  
+        if ((%shopnpc.name = $null) || ($shopnpc.present.check(%shopnpc.name) = true)) {
+          inc %total.ammo.items 1
+          if (%total.ammo.items < 20) { 
+            if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          }
+          else { 
+            if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list2 = $addtok(%shop.list2, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list2 = $addtok(%shop.list2, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          }
+        }
+      }
+      unset %item.name | unset %item_amount | unset %conquest.item | unset %shopnpc.name
+      inc %value 1 
+    }
+
+    if (%shop.list != $null) {  $shop.cleanlist 
+      $display.private.message(10Ammo:2 %shop.list)
+      if (%shop.list2 != $null) { $display.private.message(2 $+ %shop.list2) }     
+    }
+
+    unset %item.price | unset %item.name | unset %shop.list
+    unset %shop.list3 | unset %total.summon.items | unset %shop.list2 | unset %total.ammo.items
 
     if ($shopnpc.present.check(TravelMerchant) = true) {
       ; CHECKING ACCESSORIES

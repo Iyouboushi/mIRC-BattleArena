@@ -1,19 +1,19 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(10000 + (500 * $return_playersinbattle)) , 10000)
+Hp=$iif($return_playersinbattle > 3, $calc(11000 + (500 * $return_playersinbattle)) , 11000)
 Tp=50
-Str=20
-Def=50
-Int=30
+Str=22
+Def=60
+Int=35
 Spd=2
 IgnitionGauge=2
 Name=Yellow Jelly
 
 [Battle]
-Hp=45
-Tp=90
-Str=20
-Def=50
-Int=30
+Hp=11000
+Tp=50
+Str=22
+Def=60
+Int=35
 Spd=2
 IgnitionGauge=2
 Status=alive

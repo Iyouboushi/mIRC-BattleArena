@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(10000 + (500 * $return_playersinbattle)) , 10000)
+Hp=$iif($return_playersinbattle > 3, $calc(11000 + (500 * $return_playersinbattle)) , 11000)
 Tp=50
-Str=20
+Str=25
 Def=50
-Int=7
+Int=9
 Spd=2
 IgnitionGauge=2
 Name=Adamantoise
 
 
 [Battle]
-Hp=5000
+Hp=11000
 Tp=50
-Str=20
+Str=25
 Def=50
-Int=7
+Int=9
 Spd=2
 IgnitionGauge=2
 Status=alive

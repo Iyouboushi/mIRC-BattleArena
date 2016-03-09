@@ -1,9 +1,9 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(21000 + (100 * $return_playersinbattle)) , 21000)
+Hp=$iif($return_playersinbattle > 3, $calc(25000 + (100 * $return_playersinbattle)) , 25000)
 Tp=250
-Str=77
+Str=87
 Def=177
-Int=91
+Int=101
 Spd=96
 Name=Antlion
 IgnitionGauge=50
@@ -12,9 +12,9 @@ IgnitionGauge=50
 [Battle]
 Hp=18000
 Tp=250
-Str=77
+Str=87
 Def=177
-Int=91
+Int=101
 Spd=96
 Status=alive
 IgnitionGauge=50

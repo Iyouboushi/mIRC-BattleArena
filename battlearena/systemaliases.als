@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/01/16
+;;;; Last updated: 03/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -72,6 +72,7 @@ system_defaults_check {
     if ($readini(system.dat, system, ShowOrbsCmdInChannel) = $null) { writeini system.dat system ShowOrbsCmdInChannel true }
     if ($readini(system.dat, system, ShowDiscountMessage) = $null) { writeini system.dat system ShowDiscountMessage false }
     if ($readini(system.dat, system, EnableBattlefieldEvents) = $null) { writeini system.dat system EnableBattlefieldEvents true }
+    if ($readini(system.dat, system, EnableRandomEvents) = $null) { writeini system.dat system EnableRandomEvents true }
     if ($readini(system.dat, system, GuaranteedBossBattles) = $null) { writeini system.dat system GuaranteedBossBattles 10.15.20.30.60.100.150.180.220.280.320.350.401.440.460.501.560.601.670.705.780.810.890.920.999.1100.1199.1260. 1305.1464.1500.1650.1720.1880.1999.2050.2250.9999  }
     if ($readini(system.dat, system, BonusEvent) = $null) { writeini system.dat system BonusEvent false }
     if ($readini(system.dat, system, IgnoreDmgCap) = $null) { writeini system.dat system IgnoreDmgCap false }
@@ -1196,7 +1197,7 @@ weapons.get.list {
 
         if ($calc($weaponlist.length(%weaponlist.counter) + $len(%weapon_to_add)) > 900) { echo -a line too long, increasing | inc %weaponlist.counter 1 | var %weaponlist.totalweapons.counter 0 } 
 
-        if (%weaponlist.totalweapons.counter >= 20) { inc %weaponlist.counter 1 | var %weaponlist.totalweapons.counter 0 }
+        if (%weaponlist.totalweapons.counter >= 18) { inc %weaponlist.counter 1 | var %weaponlist.totalweapons.counter 0 }
         $weapons.addlist(%weaponlist.counter, %weapon_to_add) 
 
         if ($readini($char($1), info, flag) != $null) { 
@@ -1824,6 +1825,33 @@ keys.list {
 
   if ($chr(046) isin %keys.items.list) { set %replacechar $chr(044) $chr(032) | %keys.items.list = $replace(%keys.items.list, $chr(046), %replacechar)  }
   if ($chr(046) isin %dungeon.keys.items.list) { set %replacechar $chr(044) $chr(032) | %dungeon.keys.items.list = $replace(%dungeon.keys.items.list, $chr(046), %replacechar)  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Builds the Ammo list
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ammo.list {
+  unset %ammo.items.list 
+
+  ; CHECKING ammo 
+  unset %item.name | unset %item_amount | unset %number.of.items | unset %value
+  var %ammo.items $readini($dbfile(items.db), items, ammo)
+  var %number.of.items $numtok(%ammo.items, 46)
+
+  var %value 1
+  while (%value <= %number.of.items) {
+    set %item.name $gettok(%ammo.items, %value, 46)
+    set %item_amount $readini($char($1), item_amount, %item.name)
+    if ((%item_amount != $null) && (%item_amount >= 1)) { 
+      ; add the item and the amount to the item list
+      var %item_to_add 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) 
+      %ammo.items.list = $addtok(%ammo.items.list,%item_to_add,46)
+    }
+    inc %value 1 
+  }
+
+
+  if ($chr(046) isin %ammo.items.list) { set %replacechar $chr(044) $chr(032) | %ammo.items.list = $replace(%ammo.items.list, $chr(046), %replacechar)  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2757,7 +2785,6 @@ mon_list_add {
       if ((%monster.timeofday != $null) && ($istok(%monster.timeofday,%current.time.of.day,46) = $false)) { return }
 
       write $txtfile(temporary_mlist.txt) %name
-
     }
   }
 }
@@ -2788,6 +2815,7 @@ get_boss_list {
     if (%monster.name != $null) { %monster.list = $addtok(%monster.list,%monster.name,46) | inc %token.value 1 }
     else { inc %token.value 15 }
   }
+
   .remove $txtfile(temporary_mlist.txt)
   unset %token.value | unset %current.winning.streak.value | unset %difficulty | unset %current.month
   unset %monster.info.streak | unset %monster.info.streak.max
@@ -4497,4 +4525,32 @@ bounty.display {
     var %bounty.name $readini($boss($readini(battlestats.dat, Bounty, BossName)), basestats, name)
     $display.message($readini(translation.dat, system, CurrentBounty), private) 
   } 
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Perform a random event
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+randomevent.check {
+  if ($return.systemsetting(EnableRandomEvents) = false) { return }
+
+  var %randomevent.lastrandomevent $readini(battlestats.dat, RandomEvents, LastEvent)
+  if (%randomevent.lastrandomevent = $null) { $randomevent.perform | halt }
+
+  var %event.time.difference $calc($ctime - %randomevent.lastrandomevent)
+
+  if (%dragon.time.difference >= 21600) {
+    var %event.chance $rand(1,100)
+    if (%event.chance <= 60) { $randomevent.perform }
+  }
+}
+
+randomevent.perform {
+  ; how many events do we have in events.db?
+
+  ; choose one at random
+
+  ; perform the event
+
+  ; Write the time we did the event
+  writeini battlestats.dat RandomEvents LastEvent $ctime
 }
