@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/01/16
+;;;; Last updated: 03/08/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -242,6 +242,22 @@ alias tech_cmd {
 
   ; Get the weapon equipped
   $weapon_equipped($1)
+
+  ; Does the weapon require ammo to swing?  If so, check to see if we have enough ammo (this only applies for players)
+  var %weapon.ammo $readini($dbfile(weapons.db), %weapon.equipped, AmmoRequired)
+  if ((%weapon.ammo != $null) && ($readini($char($1), info, flag) = $null)) {
+    var %weapon.ammo.amount $readini($dbffile(weapons.db), %weapon.equipped, AmmoAmountNeeded)
+    if (%weapon.ammo.amount = $null) { var %weapon.ammo.amount 1 }
+
+    var %player.ammo.amount $readini($char($1), item_amount, %weapon.ammo)
+    if (%player.ammo.amount = $null) { var %player.ammo.amount 0 }
+
+    if (%player.ammo.amount < %weapon.ammo.amount) { echo -a error | $display.message($readini(translation.dat, errors, NeedAmmoToDoThis), private) | unset %weapon.equipped | halt }
+    dec %player.ammo.amount %weapon.ammo.amount
+    writeini $char($1) item_amount %weapon.ammo %player.ammo.amount
+  }
+
+
 
   $tech.abilitytoperform($1, $2, %weapon.equipped)
 
