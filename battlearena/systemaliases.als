@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/09/16
+;;;; Last updated: 03/10/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1835,18 +1835,18 @@ ammo.list {
 
   ; CHECKING ammo 
   unset %item.name | unset %item_amount | unset %number.of.items | unset %value
-  var %ammo.items $readini($dbfile(items.db), items, ammo)
-  var %number.of.items $numtok(%ammo.items, 46)
+  var %value 1 | var %items.lines $lines($lstfile(items_ammo.lst))
 
-  var %value 1
-  while (%value <= %number.of.items) {
-    set %item.name $gettok(%ammo.items, %value, 46)
+  while (%value <= %items.lines) {
+    set %item.name $read -l $+ %value $lstfile(items_ammo.lst)
     set %item_amount $readini($char($1), item_amount, %item.name)
+
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
+
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      ; add the item and the amount to the item list
-      var %item_to_add 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) 
-      %ammo.items.list = $addtok(%ammo.items.list,%item_to_add,46)
+      %ammo.items.list = $addtok(%ammo.items.list, 10 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) 
     }
+    unset %item.name | unset %item_amount
     inc %value 1 
   }
 
