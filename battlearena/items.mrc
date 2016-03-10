@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/06/16
+;;;; Last updated: 03/10/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -266,6 +266,7 @@ alias uses_item {
 
   if (%item.type = key) { $item.key($1, $4, $2) |  $decrease_item($1, $2)  | halt }
   if (%item.type = consume) { $display.message($readini(translation.dat, errors, ItemIsUsedInSkill), private) | halt }
+  if (%item.type = ammo) { $display.message($readini(translation.dat, errors, ItemIsUsedAsAmmo), private) | halt }
   if (%item.type = accessory) { $display.message($readini(translation.dat, errors, ItemIsAccessoryEquipItInstead), private) | halt }
   if (%item.type = random) { $item.random($1, $4, $2) | $decrease_item($1, $2) | halt }
   if (%item.type = TormentReward) { $item.tormentreward($1, $1, $2) | $decrease_item($1, $2) | halt }
