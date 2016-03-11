@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/08/16
+;;;; Last updated: 03/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1742,13 +1742,15 @@ alias sing.song {
     }
 
     ; Check for ConserveTP
-    if (($readini($char($1), status, conservetp) = yes) || ($readini($char($1), status, conservetp.on) = on)) { var %tp.needed 0 | writeini $char($1) status conserveTP no }
+    if (($readini($char($1), status, conservetp) = yes) || ($readini($char($1), status, conservetp.on) = on)) { var %tp.needed $round($calc(%tp.needed / 2),0) }
 
     if (%tp.needed = $null) { var %tp.needed %tp.have }
     if (%tp.needed > %tp.have) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, NotEnoughTPforTech),private) | halt }
 
     dec %tp.have %tp.needed
     writeini $char($1) battle tp %tp.have
+
+    writeini $char($1) status conserveTP no
 
     ; Decrease the action point cost
     $action.points($1, remove, 5)
@@ -1782,6 +1784,8 @@ alias sing.song {
                 var %resist.skill $readini($char(%who.battle), skills, %resist.name)
                 if (%resist.skill = $null) { var %resist.skill 0 }
 
+                if (%battle.type = torment) { inc %resist.skill $rand(20,25) }
+
                 if (%resist.skill < 100) {
                   if ((%current.flag = $null) && (%flag = monster)) {
                     writeini $char(%who.battle) status %status.type.name yes
@@ -1794,6 +1798,9 @@ alias sing.song {
                     writeini $char(%who.battle) status %status.type.name yes
                   }
                 }
+
+                if (%flag = monster) { writeini $char(%who.battle) skills %resist.name %resist.skill }
+
                 if ($readini($char(%who.battle), skills, %resist.name) >= 100) { $set_chr_name(%who.battle)
                   if (%current.flag = monster) && (%flag != monster) { $display.message(4 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's song,battle) } 
                   if (%current.flag = $null) && (%flag = monster) { $display.message(4 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's song,battle) }
@@ -1810,8 +1817,6 @@ alias sing.song {
           var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
           while (%battletxt.current.line <= %battletxt.lines) { 
             var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
-
-
 
             if (($person_in_mech(%who.battle) = false) && ($readini($char(%who.battle), battle, status) != dead)) {  
             writeini $char(%who.battle) status %status.type.name yes }
