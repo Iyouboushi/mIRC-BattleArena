@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/03/16
+;;;; Last updated: 03/10/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -830,6 +830,9 @@ formula.meleedmg.player.formula_2.0 {
   ; If this current melee attack is using the same weapon as the previous melee attack, nerf the damage
   $melee.lastaction.nerfcheck($1, $2)
 
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+
   ; Check for the Guardian style
   $guardian_style_check($3)
 
@@ -1146,6 +1149,9 @@ formula.meleedmg.player.formula_3.1 {
 
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
+
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -1483,6 +1489,9 @@ formula.meleedmg.player.formula_3.0 {
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
 
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+
   ; Check for the Guardian style
   $guardian_style_check($3)
 
@@ -1817,6 +1826,9 @@ formula.meleedmg.player.formula_1.0 {
 
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
+
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -2198,6 +2210,9 @@ formula.meleedmg.player.formula_2.5 {
 
   ; If this current melee attack is using the same weapon as the previous melee attack, nerf the damage
   $melee.lastaction.nerfcheck($1, $2)
+
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -2636,6 +2651,9 @@ formula.meleedmg.monster {
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
 
+  ; Elite monsters have increased damage
+  if ($eliteflag.check($1) = true) {  inc %attack.damage $round($calc(%attack.damage * .25),0)  }
+
   ; Check for the Guardian style
   $guardian_style_check($3)
 
@@ -3007,6 +3025,9 @@ formula.techdmg.monster {
   inc %attack.damage $rand(1,5)
   unset %true.base.stat
 
+  ; Elite monsters have increased damage
+  if ($eliteflag.check($1) = true) {  inc %attack.damage $round($calc(%attack.damage * .25),0)  }
+
   ; Check for the Guardian style
   $guardian_style_check($3)
 
@@ -3298,6 +3319,9 @@ formula.techdmg.player.formula_2.0 {
 
   inc %attack.damage $rand(1,5)
   unset %true.base.stat
+
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -3607,6 +3631,9 @@ formula.techdmg.player.formula_2.5 {
 
   inc %attack.damage $rand(1,5)
   unset %true.base.stat
+
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -3936,6 +3963,9 @@ formula.techdmg.player.formula_1.0 {
   ; Check for the skill "Overwhelm" and increase the damage if so
   $skill.overwhelm($1)
 
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+
   ; Check for a shield block.
   $shield_block_check($3, $1, $2)
 
@@ -4104,6 +4134,9 @@ formula.techdmg.player.formula_3.1 {
 
   inc %attack.damage $rand(1,5)
   unset %true.base.stat
+
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -4398,6 +4431,9 @@ formula.techdmg.player.formula_3.0 {
 
   inc %attack.damage $rand(1,5)
   unset %true.base.stat
+
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
