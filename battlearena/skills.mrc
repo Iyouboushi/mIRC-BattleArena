@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/02/16
+;;;; Last updated: 03/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1767,6 +1767,8 @@ alias skill.analysis { $set_chr_name($1)
     if (($readini($char($2), modifiers, lightning) > 100) && ($istok($readini($char($2), modifiers, heal), lightning, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ lightning3, 46) }
     if (($readini($char($2), modifiers, light) > 100) && ($istok($readini($char($2), modifiers, heal), light, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ light3, 46) }
     if (($readini($char($2), modifiers, dark) > 100) && ($istok($readini($char($2), modifiers, heal), dark, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ dark3, 46) }
+
+    if (%analysis.element.weak = $null) { %analysis.element.weak = 3none }
   }
 
   if (%analysis.level >= 5) { 
