@@ -5102,7 +5102,7 @@ Info=A rare and legendary shield that is large and silver in color, with an intr
 Hits=0
 BasePower=$iif(%battle.type = torment, 700, 500)
 Upgrade=0
-BlockChance=$iif(%battle.type = torment, 100, 50)
+BlockChance=$iif(%battle.type = torment, 90, 50)
 AbsorbAmount=$iif(%battle.type = torment, 75, 50)
 Legendary=True
 
