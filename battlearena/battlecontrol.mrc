@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/01/16
+;;;; Last updated: 0317/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1049,9 +1049,7 @@ alias generate_monster {
 
         ; Add the monster into the battle
         set %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat 
-
       }
-
 
       if (($2 = addactionpoints) || ($3 = addactionpoints)) {
         ; Initialize the action points 
@@ -1067,6 +1065,9 @@ alias generate_monster {
         }
       }
       if (%battle.type = ai) { set %ai.monster.name $set_chr_name(%monster.name) %real.name | writeini $txtfile(1vs1bet.txt) money monsterfile %monster.name }
+
+      ; If the battle is a torment, assault or defendoutpost we need to make inactive monsters active
+      if (((%battle.type = torment) || (%battle.type = assault) || (%battle.type = defendoutpost))) { writeini $char(%monster.name) battle status normal } 
 
       var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
       inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters 
@@ -1139,6 +1140,11 @@ alias generate_monster {
           $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle)
         }
         if (%battle.type = ai) { set %ai.monster.name $set_chr_name(%monster.name) %real.name | writeini $txtfile(1vs1bet.txt) money monsterfile %monster.name }
+
+
+        ; If the battle is a torment, assault or defendoutpost we need to make inactive monsters active
+        if (((%battle.type = torment) || (%battle.type = assault) || (%battle.type = defendoutpost))) { writeini $char(%monster.name) battle status normal } 
+
 
         ; Check for a drop
         $check_drops(%monster.name)
