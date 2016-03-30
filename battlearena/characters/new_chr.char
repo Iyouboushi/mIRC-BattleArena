@@ -214,6 +214,7 @@ DoublePunch=1
 
 [Item_Amount]
 potion=1
+MiniDiscountCard=1
 
 [scoreboard]
 score=0
