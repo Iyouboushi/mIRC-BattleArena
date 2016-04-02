@@ -57,7 +57,7 @@ Flag=NPC
 CanTaunt=false
 
 [monster]
-type=
+type=frog
 TechLearn=false
 size=Medium
 
@@ -154,7 +154,7 @@ Body=
 Hands=
 Legs=
 Feet=
-Accessory=Hero'sMedal
+Accessory=Hero's_Medal
 
 [Styles]
 Equipped=WeaponMaster
@@ -186,3 +186,8 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100

@@ -997,6 +997,7 @@ Cost=0
 SellPrice=2000
 Summon=Lirarian
 SummonName=Lirarian
+Exclusive=yes
 
 [ElvishCrystal]
 Type=summon
@@ -1004,6 +1005,7 @@ Cost=0
 SellPrice=2000
 Summon=Lirarian
 SummonName=Lirarian
+Exclusive=yes
 
 [AlexanderMateria]
 Type=summon
@@ -1026,6 +1028,7 @@ Cost=0
 SellPrice=2000
 Summon=BahamutZero
 SummonName=Bahamut Zero
+Exclusive=yes
 
 [CarbuncleMateria]
 Type=summon
@@ -1796,8 +1799,8 @@ ShopNPC=TravelMerchant
 Type=accessory
 Cost=0
 AccessoryType=IncreaseCriticalHits
-Desc=An accessory for a true hero.
-IncreaseCriticalHits.Amount=$iif($readini($char($1), weapons, MasamuneII) >= 1, 90, 0)
+Desc=An accessory for a hero. Gives a large increase to critical hits only when wielding the Mastermune.
+IncreaseCriticalHits.Amount=$iif($readini($char($1), weapons, Mastermune) >= 1, 50, 0)
 SellPrice=3000
 
 [Axe-Pin]
@@ -1867,7 +1870,21 @@ SellPrice=1000
 ; This accessory will increase wrestling damage by a %
 IncreaseWrestlingDamage.amount=10
 
+[Spinner_Belt]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseWrestlingDamage
+Desc=A version of the heavyweight title which has a spinner in the center, designed by John Cena.
+SellPrice=30000
+IncreaseWrestlingDamage.amount=50
 
+[Hero's_Medal]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseCriticalHits
+Desc=An accessory for a true hero.
+IncreaseCriticalHits.Amount=$iif($readini($char($1), weapons, MasamuneII) >= 1, 90, 0)
+SellPrice=3000
 
 =========================
 MISC ITEMS
@@ -3888,6 +3905,51 @@ Weapon=MasterSword
 Desc=$iif($2 != $1,pulls out an ancient map from Hyrule and hands it to $set_chr_name($2) %real.name $+ ., pulls out an ancient map from Hyrule.) %real.name then uses it to find the long lost hidden resting place for the ancient Master Sword.  With effort, %real.name pulls it out of its stone and readies it for use.
 Exclusive=yes
 
+[Blueprints:TacticalShotgun]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=TacticalShotgun
+Desc=pulls out a set of blueprints for a tactical shotgun $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Tactical Shotgun ready for use.
+Exclusive=yes
+
+[Blueprints:CompoundBow]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=CompoundBow
+Desc=pulls out a set of blueprints for a compound bow $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Compound Bow ready for use.
+Exclusive=yes
+
+[Blueprints:TacticalPistol]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=TacticalPistol
+Desc=pulls out a set of blueprints for a tactical pistol $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Tactical Pistol ready for use.
+Exclusive=yes
+
+[Blueprints:Thunderclap]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Thunderclap
+Desc=pulls out a set of blueprints for a gilded shotgun $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Thunderclap shotgun ready for use.
+Exclusive=yes
+
+[Blueprints:MasterMune]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Mastermune
+Desc=pulls out a set of blueprints for a powerful sword $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Mastermune ready for use.
+Exclusive=yes
+
 =========================
 SONGS (subset of special)
 =========================
@@ -4195,6 +4257,43 @@ Type=Torment
 TormentLevel=25
 Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful versions of the monsters await. [Level: Torment 25] [Minimum Level: 12500] 
 
+=========================
+AMMO
+=========================
+[RocketAmmo]
+Type=ammo
+Cost=10000
+SellPrice=1000
+Desc=Ammo for a rocket launcher.
+Exclusive=yes
+
+[Arrow]
+Type=ammo
+Cost=2500
+SellPrice=250
+Desc=A common arrow for use by bows.
+Exclusive=yes
+
+[ShotgunShell]
+Type=ammo
+Cost=1250
+SellPrice=125
+Desc=Ammo for use by shotguns.
+Exclusive=yes
+
+[DragonfireShell]
+Type=ammo
+Cost=1250
+SellPrice=125
+Desc=Special shotgun shells that can ignite objects.
+Exclusive=yes
+
+[Bullet]
+Type=ammo
+Cost=2500
+SellPrice=250
+Desc=Basic bullets for use by guns and rifles.
+Exclusive=yes
 
 =========================
 TRADING CARDS
@@ -4204,7 +4303,7 @@ Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=1.2.1.1
-Desc=A small trading card. On the front is a picture of an Orb Fountain glowing brightly
+Desc=A small trading card. On the front is a picture of an Orb Fountain glowing brightly.
 
 [TradingCard-002]
 Type=TradingCard
@@ -4218,21 +4317,21 @@ Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=4.2.3.4
-Desc=A small trading card. On the front is a picture of the bird-like Yagudo ready for battle
+Desc=A small trading card. On the front is a picture of the bird-like Yagudo ready for battle.
 
 [TradingCard-004]
 Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=2.4.4.3
-Desc=A small trading card. On the front is a picture of a green Orc posing with his axe
+Desc=A small trading card. On the front is a picture of a green Orc posing with his axe.
 
 [TradingCard-005]
 Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=3.4.2.4
-Desc=A small trading card. On the front is a picture of a shelled Quadav holding a staff ready to cast a spell
+Desc=A small trading card. On the front is a picture of a shelled Quadav holding a staff ready to cast a spell.
 
 [TradingCard-006]
 Type=TradingCard
@@ -4246,35 +4345,35 @@ Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=2.4.5.3
-Desc=A small trading card. On the front is a picture of a large dirt eating worm as it pops out of the ground
+Desc=A small trading card. On the front is a picture of a large dirt eating worm as it pops out of the ground.
 
 [TradingCard-008]
 Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=3.5.3.4
-Desc=A small trading card. On the front is a picture of a succubus blowing a kiss
+Desc=A small trading card. On the front is a picture of a succubus blowing a kiss.
 
 [TradingCard-009]
 Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=4.4.5.3
-Desc=A small trading card. On the front is a picture of a Creeper about to blow up and destroy a house
+Desc=A small trading card. On the front is a picture of a Creeper about to blow up and destroy a house.
 
 [TradingCard-010]
 Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=5.6.5.4
-Desc=A small trading card. On the front is a picture of a Cerberus covered in ice in mid-roar
+Desc=A small trading card. On the front is a picture of a Cerberus covered in ice in mid-roar.
 
 [TradingCard-011]
 Type=TradingCard
 Cost=0
 SellPrice=100
 Numbers=6.6.4.5
-Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea
+Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea.
 
 [TradingCard-012]
 Type=TradingCard
@@ -4283,7 +4382,9 @@ SellPrice=100
 Numbers=5.6.5.5
 Desc=A small trading card. On the front is a picture of Gobbles, the demented and evil turkey, holding a knife in one hand, a fork in the other with a large red bandana over his head
 
-
-
-
-
+[TradingCard-042]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Numbers=12.12.12.12
+Desc=A small trading card. On the front is a picture of Lirarian floating in the air, wielding both a silver sword and black staff.

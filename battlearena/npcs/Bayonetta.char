@@ -57,7 +57,6 @@ HealByTaunt=true
 IgnoreQuicksilver=true
 CanTaunt=true
 TauntFile=taunts_bayonetta.txt
-RageMode=ignore
 
 [monster]
 type=Human
@@ -158,8 +157,8 @@ WheelofTorture=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Ignitions]
-WitchTime=$iif($current.battlestreak < 200, 0, 1)
-UmbranClimax=$iif($current.battlestreak < 200, 0, 1)
+WitchTime=$iif($current.battlestreak < 350, 0, 1)
+UmbranClimax=$iif($current.battlestreak < 500, 0, 1)
 
 [Item_Amount]
 
@@ -182,7 +181,7 @@ WeaponMasterXP=1
 [Mech]
 name=Umbran Armor
 inUse=false
-EngineLevel=$iif($current.battlestreak < 1000, 0, 0.7)
+EngineLevel=$iif($current.battlestreak < 2000, 0, 0.7)
 HpMax=20000
 HpCurrent=20000
 EnergyMax=10000
@@ -216,3 +215,8 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100

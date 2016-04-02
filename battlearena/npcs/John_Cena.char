@@ -133,6 +133,14 @@ CenaFists=MeleeBonus.TechBonus.EnhanceDodge.EnhanceParry
 [Item_Amount]
 Dark-Matter=$iif(%ai.monster.name = Zemus, 10, 0)
 
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=Spinner_Belt
+
 [modifiers]
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.

@@ -26,6 +26,7 @@ SilverSword=Twin_Slice.LightningStrike.BladeBeamII
 MasterSword=SkywardStrike.HurricaneSpin
 Z-Sword=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
 Z-Sword+1=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
+Mastermune=GrandDream.SavageBlade.Flatblade
 
 ; Katana
 SmallKatana=Tachi:Enpi
@@ -86,7 +87,9 @@ HandGun=ChargedShot
 Ebony&Ivory=RainStorm.ChargedShot.RapidShot
 Magnum=ChargedShot.RapidShot
 Hexagun=LastStand.Detonator.BlastShot
+BlueRose=ChargedShot.RapidShot
 SamuraiEdge=ChargedShot.LastStand.Detonator
+TacticalPistol=RapidShotII.ChargedshotII.LastStandII
 HuntingRifle=ChargedShot 
 Boomstick=HotShot.BlastShot.Detonator
 Armageddon=SniperShot.WildFire.Coronach.LeadenSalute
@@ -97,7 +100,9 @@ SniperRifle=SniperShot.SlugShot.HotShot
 Annihilator=Coronach.SlugShot.BlastShot
 DeathPenalty=LeadenSalute.BlastShot.SlugShot
 VanirRifle=ChargedShot.BlastShot.Detonator
-BlueRose=ChargedShot.RapidShot
+TacticalShotgun=HotShotII.ChargedShotII.BlastShotII
+RocketLauncher=
+ThunderClap=HotShotII.ChargedShotII.BlastShotII
 
 ; Whips
 BlackWhip=WhipLash
@@ -127,6 +132,7 @@ LamianKamen=EmpyrealArrow.ArchingArrow.PiercingArrow
 Yoichinoyumi=EagleEyeShot.NamasArrow.RefulgentArrow
 Gandiva=EagleEyeShot.JishnusRadiance.ApexArrow
 HomesteadBow=ApexArrow.Sidewinder.EmpyrealArrow
+CompoundBow=FlamingArrowII.EagleEyeShotII.BlastArrowII
 
 ; Axes
 GreatIronAxe=IronTempest
@@ -191,7 +197,7 @@ UmbranArmorGuns=DoubleShotIII.GunBlazeIII
 Yagudo_Fists=Sweep.DoubleKick.FeatherStorm
 Yagudo_Wand=Sweep.DoubleKick.FeatherStorm.Fire.Stone.Ice.Aero.Cure.FireII.StoneII.IceII.AeroII
 Dark_Vampiric_Power=Dark_Inferno.Demonic_Megiddo.TrueForm
-guardian_shield=shield_smash.shockwave
+Guardian_Shield=shield_smash.shock_wave
 Orc_Pike=ShoulderTackle.BattleDance.Jump
 Orc_Fists=AsuranFists.ShoulderTackle.BattleDance
 Orc_Sword=ShoulderTackle.BattleDance.Shockwave.SickleMoon.Freezebite
@@ -575,6 +581,7 @@ Cost=500
 Element=none
 magic=no
 stat=str
+Renkei=1
 
 [SpinningAttack]
 Type=AOE
@@ -612,7 +619,7 @@ renkei=1
 [Windmill]
 Type=Single
 TP=15
-Desc=spins the nunchuks around in a propeller-like motion to rapidly slice into %enemy
+Desc=spins the nunchucks around in a propeller-like motion to rapidly slice into %enemy
 BasePower=45
 Cost=1000
 Element=ice
@@ -633,7 +640,7 @@ stat=int
 [MagmaDrive]
 Type=Single
 TP=10
-Desc=leaps up into the air and dives down onto %enemy $+ , with the flame gauntlets covered in flames.
+Desc=leaps up into the air and dives down onto %enemy $+ , with the gauntlets covered in flames.
 BasePower=35
 Cost=700
 Element=fire
@@ -650,6 +657,7 @@ Cost=1000
 Element=fire
 magic=no
 stat=str
+Renkei=2
 
 [Inferno]
 Type=AOE
@@ -688,7 +696,7 @@ hits=4
 Type=Single
 TP=80
 Desc=hits %enemy with a punch, uppercut, a spinning kick that hits twice and ends with slamming the back of $gender($1) fist into %enemy $+ .
-BasePower=10
+BasePower=12
 Element=Fire
 Cost=3000
 Magic=No
@@ -751,6 +759,7 @@ Cost=500
 Element=Fire.Wind
 magic=no
 stat=str
+Renkei=2
 
 [Atonement]
 Type=AOE
@@ -784,6 +793,7 @@ Cost=500
 Element=none
 magic=no
 stat=str
+Renkei=1
 
 [CircleBlade]
 Type=AOE
@@ -817,6 +827,7 @@ Element=None
 Cost=700
 Magic=no
 stat=str
+Renkei=1
 
 [UrielBlade]
 Type=AOE
@@ -848,7 +859,7 @@ Element=none
 Cost=1000
 Magic=no
 stat=str
-renkei=5
+renkei=4
 hits=4
 
 [SeraphBlade]
@@ -914,7 +925,7 @@ hits=3
 [Requiescat]
 Type=Single
 TP=80
-Desc=$+ 's sword glows bright as $gender3($1) begins a dance of sword swings upon %enemy before spinning into the air and slashing %enemy once more which causes an explosion of Light energy.
+Desc=$+ 's sword glows bright as $gender3($1) begins a dance of sword swings upon %enemy before spinning into the air and slashing %enemy once more, which causes an explosion of Light energy.
 BasePower=12
 Element=Light
 Cost=4000
@@ -940,7 +951,7 @@ TP=100
 Desc=quickly dashes past %enemy $+ , slashes as $gender3($1) does. %user then spins to face %enemy to slash down across $gender($2) back before moving away.
 BasePower=75
 Element=none
-Cost=10000
+Cost=7000
 Magic=no
 stat=str
 Hits=2
@@ -952,7 +963,7 @@ TP=100
 Desc=smirks as lightning begins to dance on the sword as %user leaps towards %enemy and slashes with the sword. %user then hops back and swings $gender($1) sword at %enemy $+ , tossing the lighting at %enemy $+ .
 BasePower=75
 Element=Lightning
-Cost=10000
+Cost=7000
 Magic=yes
 stat=int
 
@@ -962,7 +973,7 @@ TP=100
 Desc=holds up $gender($1) sword as blue energy covers it. %user then drives the sword into the ground, causing vertical waves of blue energy to strike all targets on the battlefield.
 BasePower=60
 Element=none
-Cost=10000
+Cost=8000
 Magic=no
 stat=str
 
@@ -982,7 +993,7 @@ TP=100
 Desc=holds the blade outwards and after a brief moment a bright blue light begins to shimmer down the blade of the sword.  Upon unleashing the energy, %user begins to spin around, slashing all of $gender($1) enemies on the battlefield. 
 BasePower=60
 Element=none
-Cost=10000
+Cost=8000
 Magic=no
 stat=str
 
@@ -1076,6 +1087,19 @@ Magic=No
 HurtEthereal=false
 stat=str
 Renkei=3
+
+[GrandDream]
+Type=Single
+Cost=10000
+Desc=raises the sword to the air as Masa, Mune, and Doreen leap from the sword and descend upon %enemy $+ , unleashing a barrage of attacks before quickly returning to the sword.
+TP=300
+Element=Light.Wind
+Hits=8
+BasePower=20
+Magic=No
+IgnoreDefense=5
+stat=str
+Renkei=4
 
 ===================
 GREAT SWORDS
@@ -1368,6 +1392,7 @@ Cost=2000
 Magic=no
 stat=int
 hits=2
+Renkei=2
 
 ===================
 WHIPS
@@ -1414,6 +1439,7 @@ Element=None
 Cost=700
 Magic=no
 stat=int
+Renkei=1
 
 [DarkLash]
 Type=Single
@@ -1435,6 +1461,7 @@ Element=None
 Cost=700
 Magic=No
 stat=int
+Renkei=2
 
 ===================
 GUNS & RIFLES
@@ -1574,6 +1601,70 @@ Cost=3000
 Magic=No
 stat=str
 renkei=4
+
+[HotShotII]
+Type=Single
+Cost=3000
+Desc=takes aim and fires a small fire blast at %enemy $+ !
+TP=100
+Element=Fire
+Hits=1
+BasePower=60
+Magic=Yes
+IgnoreDefense=5
+stat=spd
+
+[ChargedShotII]
+Type=Single
+Cost=3000
+Desc=charges the weapon and releases a powerful bullet infused with energy towards %enemy $+ !
+TP=100
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=15
+stat=spd
+Renkei=2
+
+[BlastShotII]
+Type=Single
+Cost=4000
+Desc=backhands %enemy in the face with $gender($1) gun and then fires a point-blank shot at %enemy $+ 's body!
+TP=100
+Element=None
+Hits=2
+BasePower=35
+Magic=No
+IgnoreDefense=5
+stat=spd
+Renkei=4
+
+[RapidShotII]
+Type=Single
+Cost=3000
+Desc=fires rapidly at %enemy sending a barrage of bullets to do damage.
+TP=100
+Element=None
+Hits=2
+BasePower=30
+Magic=No
+IgnoreDefense=5
+stat=spd
+Renkei=3
+
+[LastStandII]
+Type=Single
+Cost=3000
+Desc=takes aim and fires a shot at %enemy and then spins around and shoots %enemy for a second time.
+TP=100
+Element=None
+Hits=2
+BasePower=30
+Magic=No
+IgnoreDefense=5
+stat=spd
+Renkei=3
 
 ===================
 SPEARS
@@ -1792,6 +1883,7 @@ Cost=700
 Element=earth
 magic=no
 stat=str
+Renkei=1
 
 [Tachi:Jinpu]
 Type=Single
@@ -1815,6 +1907,7 @@ Cost=1200
 Element=dark
 magic=no
 stat=str
+Renkei=2
 
 [A5]
 Type=Single
@@ -1826,6 +1919,7 @@ Cost=800
 Element=fire
 magic=no
 stat=str
+Renkei=1
 
 [E5]
 Type=Single
@@ -1837,6 +1931,7 @@ Cost=800
 Element=dark
 magic=no
 stat=str
+Renkei=1
 
 [C5]
 Type=Single
@@ -1848,6 +1943,7 @@ Cost=800
 Element=light
 magic=no
 stat=str
+Renkei=1
 
 [D5]
 Type=Single
@@ -1859,6 +1955,7 @@ Cost=800
 Element=ice
 magic=no
 stat=str
+Renkei=1
 
 [Tachi:Goten]
 Type=Single
@@ -1892,6 +1989,7 @@ Element=Ice
 Cost=1800
 Magic=no
 stat=str
+Renkei=3
 
 [Tachi:Kasha]
 Type=Single
@@ -1903,6 +2001,7 @@ Element=Light
 Cost=1800
 magic=no
 stat=str
+Renkei=3
 
 [Tachi:Kaiten]
 Type=Single
@@ -1970,7 +2069,6 @@ Hits=1
 BasePower=20
 Magic=yes
 stat=int
-CanDodge=true
 
 [Dismay]
 Type=Single
@@ -1982,7 +2080,7 @@ Hits=3
 BasePower=15
 Magic=No
 stat=str
-CanDodge=true
+Renkei=3
 
 [ThousandCuts]
 Type=Single
@@ -1995,7 +2093,6 @@ BasePower=10
 Magic=no
 stat=str
 Renkei=4
-CanDodge=true
 
 ===================
 WAND/SPELLS
@@ -2010,7 +2107,7 @@ Hits=1
 BasePower=10
 Magic=No
 stat=int
-Renkei=1
+Renkei=2
 
 [MagicStrike]
 Type=Single
@@ -2022,7 +2119,7 @@ Hits=1
 BasePower=10
 Magic=No
 stat=int
-Renkei=1
+Renkei=2
 
 [Fire]
 Type=Single
@@ -2777,7 +2874,7 @@ Hits=1
 BasePower=10
 Magic=No
 stat=int
-Renkei=1
+Renkei=2
 
 [Ignis]
 Type=Single
@@ -2853,7 +2950,7 @@ stat=int
 [Dominus]
 Type=Single
 TP=60
-Desc=combines the power of Dominus Anger, Hatred, and Agony, to cause a massive explosion of dark energy upon %enemy $+ !
+Desc=combines the power of Dominus, which causes a massive explosion of dark energy upon %enemy $+ !
 BasePower=65
 Element=Dark
 Cost=3000
@@ -2873,7 +2970,7 @@ Hits=1
 BasePower=10
 Magic=No
 stat=str
-Renkei=1
+Renkei=2
 
 [Thor'sRage]
 Type=AOE
@@ -3237,6 +3334,7 @@ Cost=3000
 Magic=No
 stat=spd
 hits=4
+Renkei=3
 
 [RudrasStorm]
 Type=Single
@@ -3358,7 +3456,7 @@ Hits=1
 BasePower=70
 Magic=No
 stat=spd
-Renkei=5
+Renkei=4
 
 [Blade:Retsu]
 Type=Single
@@ -3382,7 +3480,6 @@ Element=Dark
 Hits=1
 BasePower=40
 Magic=Yes
-HurtEthereal=True
 stat=int
 
 [Blade:Jin]
@@ -3417,7 +3514,6 @@ Element=Water
 Hits=1
 BasePower=40
 Magic=Yes
-HurtEthereal=True
 stat=int
 
 [Blade:To]
@@ -3428,8 +3524,7 @@ TP=50
 Element=Ice
 Hits=1
 BasePower=40
-Magic=No
-HurtEthereal=True
+Magic=Yes
 stat=int
 
 [Blade:Chi]
@@ -3440,8 +3535,7 @@ TP=50
 Element=Earth
 Hits=1
 BasePower=40
-Magic=No
-HurtEthereal=True
+Magic=Yes
 stat=int
 
 ===================
@@ -3450,7 +3544,7 @@ BOWS
 [FlamingArrow]
 Type=Single
 TP=15
-Desc=lights an arrow on fire and fires it at %enemy $+ !
+Desc=lights an arrow on fire and shoots it at %enemy $+ !
 BasePower=15
 Element=Fire
 Cost=800
@@ -3466,6 +3560,7 @@ Element=None
 Cost=800
 Magic=No
 stat=spd
+Renkei=2
 
 [DullingArrow]
 Type=Single
@@ -3477,6 +3572,7 @@ Element=None
 Cost=1000
 Magic=No
 stat=spd
+Renkei=2
 
 [BlastArrow]
 Type=Single
@@ -3498,6 +3594,7 @@ Element=None
 Cost=2000
 Magic=No
 stat=spd
+Renkei=3
 
 [EmpyrealArrow]
 Type=Single
@@ -3569,6 +3666,44 @@ Cost=3500
 Magic=No
 stat=spd
 renkei=4
+
+[FlamingArrowII]
+Type=Single
+Cost=3000
+Desc=lights an arrow on fire and shoots it at %enemy $+ !
+TP=100
+Element=Fire
+Hits=1
+BasePower=50
+Magic=Yes
+IgnoreDefense=5
+stat=spd
+
+[EagleEyeShotII]
+Type=Single
+Cost=3000
+Desc=summons an arrow made powerful energy and takes aim with the bow for a moment before firing the devastating energy arrow into %enemy $+ !
+TP=100
+Element=Light
+Hits=1
+BasePower=90
+Magic=no
+IgnoreDefense=5
+stat=spd
+Renkei=4
+
+[BlastArrowII]
+Type=Single
+Cost=3000
+Desc=hits %enemy with the bow before hopping back and firing an arrow at %enemy $+ !
+TP=100
+Element=None
+Hits=2
+BasePower=35
+Magic=No
+IgnoreDefense=5
+stat=spd
+Renkei=3
 
 ===================
 BOOSTS
@@ -10513,12 +10648,13 @@ IgnoreDefense=5
 Type=single
 TP=10
 Desc=gives %enemy a death glare as $gender($1) sword glows red. $gender3($1) instantly appears before %enemy $+ , and proceeds to slash %enemy multiple times before %enemy has a chance to react. %user then shoves %enemy away from $gender2($1) $+ .
-BasePower=30
+BasePower=50
 Element=none
 Cost=0
 Magic=no
 stat=str
 Hits=4
+CanDodge=false
 DestroyShadows=4
 
 [AerogaV]
@@ -10530,6 +10666,8 @@ Element=Wind
 Cost=0
 Magic=yes
 stat=int
+CanDodge=false
+DestroyShadows=4
 
 [UltimaII]
 Type=Single
@@ -10597,7 +10735,7 @@ stat=int
 [HiasobiBenihimeJuzutsunagi]
 Type=Single
 TP=10
-Desc=constrains %enemy with the Shibari technique and stabs part of the net a bit away with his sword. He says "Hiasobi, Benihime...Juzutsunagi!" and red orbs appear along the net and explode on %enemy $+ !
+Desc=constrains %enemy with the Shibari technique and stabs part of the net a bit away with his sword. He says "Hiasobi, Benihime...Juzutsunagi!" as red orbs appear along the net and explode on %enemy $+ !
 BasePower=30
 Element=Fire
 Cost=0
@@ -10617,7 +10755,7 @@ stat=int
 [ShunkouRaijinSenkei]
 Type=Single
 TP=10
-Desc=gives a wide grin as the lightning wings take the form of Raijin's drums. Parts of Yoruichi's hair raises almost in the style of horns and take on a yellow color as she raises her left arm. Yoruichi pauses for a moment before dropping her left arm and shouts, "Shunkou! Raijin Senkei! as a gigantic bolt of lightning slams into %enemy $+ .
+Desc=gives a wide grin as the lightning wings take the form of Raijin's drums. Parts of Yoruichi's hair raises almost in the style of horns and take on a yellow color as she raises her left arm. Yoruichi pauses for a moment before dropping her left arm and shouts, "Shunkou, Raijin Senkei! as a gigantic bolt of lightning slams into %enemy $+ .
 BasePower=200
 Element=Lightning
 Cost=0
@@ -10656,20 +10794,6 @@ BasePower=75
 Magic=Yes
 Stat=int
 
-[QueenSheba]
-Type=Single
-TP=10
-Desc=shouts out "TELOCH VOVIN A GRAA ORS TABAORD AVAVAGO!" and summons the mighty Queen Sheba. Queen Sheba kisses her right fist and slams the fist into %enemy with infinitons of force!
-BasePower=1500
-Element=Dark
-Cost=0
-Magic=no
-stat=int
-IgnoreDefense=100
-DestroyShadows=8
-CanDodge=false
-HurtEthereal=true
-
 [Gomorrah]
 Type=Single
 TP=10
@@ -10681,6 +10805,7 @@ Magic=No
 stat=int
 IgnoreDefense=50
 HurtEthereal=true
+PostScript=writeini $char($1) techniques Malphas $calc(1 + $current.battlestreak) | writeini $char($1) techniques Gomorrah 0
 
 [Malphas]
 Type=Single
@@ -10693,11 +10818,12 @@ Magic=No
 stat=int
 IgnoreDefense=50
 HurtEthereal=true
+PostScript=writeini $char($1) techniques Hekatoncheir $calc(1 + $current.battlestreak) | writeini $char($1) techniques Malphas 0
 
 [Hekatoncheir]
 Type=Single
 TP=10
-Desc=shouts out "AFFA IADA!" and summons six large arms that procced to pummel %enemy $+ !
+Desc=shouts out "AFFA IADA!" and summons six large arms that proceeds to pummel %enemy $+ !
 BasePower=150
 Element=None
 Cost=0
@@ -10705,6 +10831,7 @@ Magic=No
 stat=int
 IgnoreDefense=50
 HurtEthereal=true
+PostScript=writeini $char($1) techniques Scolopendra $calc(1 + $current.battlestreak) | writeini $char($1) techniques Hekatoncheir 0
 
 [Scolopendra]
 Type=Single
@@ -10717,6 +10844,7 @@ Magic=No
 stat=int
 IgnoreDefense=50
 HurtEthereal=true
+PostScript=writeini $char($1) techniques Phantasmaraneae $calc(1 + $current.battlestreak) | writeini $char($1) techniques Scolopendra 0
 
 [Phantasmaraneae]
 Type=Single
@@ -10729,31 +10857,23 @@ Magic=No
 stat=int
 IgnoreDefense=50
 HurtEthereal=true
+PostScript=writeini $char($1) techniques QueenSheba $calc(1 + $current.battlestreak) | writeini $char($1) techniques Phantasmaraneae 0
 
-[Omne]
+[QueenSheba]
 Type=Single
 TP=10
-Desc=summons a massive angel and demon hybrid that appears to be a combination of Jubileus, The Creator and Queen Sheba, but is a different being entirely. Omne performs a drop kick upon %enemy %+ , causing damage as if getting hit by the Big Bang.
-BasePower=3000
+Desc=shouts out "TELOCH VOVIN A GRAA ORS TABAORD AVAVAGO!" and summons the mighty Queen Sheba. Queen Sheba kisses her right fist and slams the fist into %enemy with infinitons of force!
+BasePower=1500
 Element=None
 Cost=0
 Magic=no
 stat=int
-IgnoreDefense=100
-CanDodge=False
-DestroyShadows=16
-
-[MadamaButterfly]
-Type=Single
-TP=10
-Desc=summons half of Madama Butterfly, who then hits %enemy with a devastating headbutt!
-BasePower=500
-Element=None
-Cost=0
-Magic=no
-stat=int
+SelfStatus=Curse
 IgnoreDefense=50
-CanDodge=False
+DestroyShadows=8
+CanDodge=false
+HurtEthereal=true
+PostScript=writeini $char($1) techniques Gomorrah $calc(1 + $current.battlestreak) | writeini $char($1) techniques QueenSheba 0
 
 [Labolas]
 Type=Single
@@ -10765,19 +10885,21 @@ Cost=0
 Magic=no
 stat=int
 IgnoreDefense=50
-CanDodge=False
+HurtEthereal=true
+PostScript=writeini $char($1) techniques Mictlantecuhtli $calc(1 + $current.battlestreak) | writeini $char($1) techniques Labolas 0
 
 [Mictlantecuhtli]
 Type=Single
 TP=10
-Desc=summons a massive and demonic bat which then spins and drills into %enemy $+ !
+Desc=summons a massive and demonic bat which then spins at a high speed and drills into %enemy $+ !
 BasePower=150
 Element=None
 Cost=0
 Magic=no
 stat=int
 IgnoreDefense=50
-CanDodge=False
+HurtEthereal=true
+PostScript=writeini $char($1) techniques Baal $calc(1 + $current.battlestreak) | writeini $char($1) techniques Mictlantecuhtli 0
 
 [Baal]
 Type=Single
@@ -10789,7 +10911,8 @@ Cost=0
 Magic=no
 stat=int
 IgnoreDefense=50
-CanDodge=False
+HurtEthereal=true
+PostScript=writeini $char($1) techniques Hydra $calc(1 + $current.battlestreak) | writeini $char($1) techniques Baal 0
 
 [Hydra]
 Type=Single
@@ -10801,7 +10924,8 @@ Cost=0
 Magic=no
 stat=int
 IgnoreDefense=50
-CanDodge=False
+HurtEthereal=true
+PostScript=writeini $char($1) techniques Diomedes $calc(1 + $current.battlestreak) | writeini $char($1) techniques Hydra 0
 
 [Diomedes]
 Type=Single
@@ -10813,7 +10937,39 @@ Cost=0
 Magic=no
 stat=int
 IgnoreDefense=50
+HurtEthereal=true
+PostScript=writeini $char($1) techniques MadamaButterfly $calc(1 + $current.battlestreak) | writeini $char($1) techniques Diomedes 0
+
+[MadamaButterfly]
+Type=Single
+TP=10
+Desc=summons the upper half of Madama Butterfly, who then hits %enemy with a devastating headbutt!
+BasePower=500
+Element=None
+Cost=0
+Magic=no
+stat=int
+IgnoreDefense=50
 CanDodge=False
+DestroyShadows=4
+HurtEthereal=true
+PostScript=writeini $char($1) techniques Omne $calc(1 + $current.battlestreak) | writeini $char($1) techniques MadamaButterfly 0
+
+[Omne]
+Type=Single
+TP=10
+Desc=summons a massive angel and demon hybrid that appears to be a combination of Jubileus, The Creator and Queen Sheba, but is a different being entirely. Omne performs a drop kick upon %enemy %+ , causing damage as if getting hit by the Big Bang.
+BasePower=3000
+Element=None
+Cost=0
+Magic=no
+stat=int
+SelfStatus=Curse
+IgnoreDefense=50
+CanDodge=False
+DestroyShadows=16
+HurtEthereal=true
+PostScript=writeini $char($1) techniques Labolas $calc(1 + $current.battlestreak) | writeini $char($1) techniques Omne 0
 
 [HakkanoTogame]
 Type=AOE
@@ -10827,6 +10983,7 @@ stat=int
 Hits=1
 DestroyShadows=4
 HurtEthereal=true
+CanDodge=false
 
 [Red_DragonBurst]
 Type=AOE
@@ -10840,6 +10997,7 @@ stat=int
 Hits=1
 DestroyShadows=4
 HurtEthereal=true
+CanDodge=false
 
 [BlackGetsugaTenshou]
 Type=single

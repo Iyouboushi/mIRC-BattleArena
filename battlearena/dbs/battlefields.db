@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=dry
+current=windy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Quarter
-CurrentMoonTurn=1
+CurrentMoonPhase=Gibbous
+CurrentMoonTurn=2
 
 [MoonPhaseTime]
 full=3
@@ -39,7 +39,7 @@ errors.
 ==============================================================
 [TimeOfDay]
 CurrentTimeOfDay=Day
-CurrentTimeOfDayTurn=1
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
@@ -933,8 +933,8 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.IronOre
 event1=damage
 event1statusType=Burning
 event1Chance=40
-Event1Desc=The molten iron shoots up violently, raining molten iron down upon %real.name $+ .
-Event1Target=random
+Event1Desc=The molten iron shoots up violently, raining molten iron down upon everyone $+ !
+Event1Target=players
 Event1Amount=$rand(200,300)
 
 [Land of Lightning]
