@@ -416,6 +416,21 @@ BasePower=100
 Upgrade=6000
 IgnoreDefense=5
 
+[Mastermune]
+Cost=0
+Type=Sword
+Info=A powerful Holy sword created with Masa, Mune, and Doreen. Outside of torment this weapon has a power of 800 with 20% ignore defense but inside torment the power is 1600 with 40% ignore defense.
+Abilities=GrandDream.SavageBlade.Flatblade
+Element=Light
+Hits=$rand(1,2)
+BasePower=$iif(%battle.type = torment, 1600, 800)
+Upgrade=10000
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
+HurtEthereal=True
+2Handed=false
+SpecialWeapon=True
+Legendary=True
+
 =============================================
 GREAT SWORDS
 =============================================
@@ -792,6 +807,71 @@ Upgrade=2000
 SpecialWeapon=true
 IgnoreDefense=5
 
+[TacticalPistol]
+Cost=0
+Type=Gun
+Info=A Remington 1911 R1 Enhanced tactical pistol.
+Abilities=RapidShotII.ChargedshotII.LastStandII
+Element=None
+Hits=1
+BasePower=95
+Upgrade=7000
+IgnoreDefense=10
+2Handed=false
+CanCounter=false
+AmmoRequired=Bullet
+AmmoAmountNeeded=1
+SpecialWeapon=True
+
+[TacticalShotgun]
+Cost=0
+Type=Rifle
+Info=A break-action shotgun with two barrels. Designed to fire two shots at once.
+Abilities=HotShotII.ChargedShotII.BlastShotII
+Element=None
+Hits=2
+BasePower=170
+Upgrade=8500
+IgnoreDefense=10
+2Handed=True
+CanCounter=false
+AmmoRequired=ShotgunShell
+AmmoAmountNeeded=2
+SpecialWeapon=True
+
+[RocketLauncher]
+Cost=0
+Type=Rifle
+Info=A weapon that launches a high-explosive rocket propelled grenade.
+Abilities=
+Element=None
+Hits=1
+BasePower=300
+Upgrade=7500
+IgnoreDefense=10
+2Handed=True
+CanCounter=false
+AmmoRequired=RocketAmmo
+AmmoAmountNeeded=1
+SpecialWeapon=True
+
+[Thunderclap]
+Cost=0
+Type=Rifle
+Info=A gilded break-action shotgun that deals heavy fire damage and isn't quiet about it, hence the name. Outside of torment this weapon has a power of 800 with 20% ignore defense but inside torment the power is 1600 with 40% ignore defense.
+Abilities=HotShotII.ChargedShotII.BlastShotII
+Element=Fire
+Hits=2
+BasePower=$iif(%battle.type = torment, 1600, 800)
+Upgrade=10000
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
+2Handed=True
+CanCounter=false
+AmmoRequired=DragonfireShell
+AmmoAmountNeeded=2
+SpecialWeapon=True
+Legendary=True
+
 =============================================
 AXES
 =============================================
@@ -1087,6 +1167,22 @@ BasePower=120
 Upgrade=5000
 2Handed=true
 IgnoreDefense=10
+
+[CompoundBow]
+Cost=0
+Type=Bow
+Info=A modern compound bow that has strong power.
+Abilities=FlamingArrowII.EagleEyeShotII.BlastArrowII
+Element=None
+Hits=1
+BasePower=130
+Upgrade=7000
+IgnoreDefense=15
+2Handed=true
+CanCounter=false
+AmmoRequired=Arrow
+AmmoAmountNeeded=1
+SpecialWeapon=True
 
 =============================================
 KATANAS

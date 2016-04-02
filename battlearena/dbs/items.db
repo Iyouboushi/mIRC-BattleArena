@@ -2430,7 +2430,7 @@ Type=increaseWeaponLevel
 ShopNPC=TravelMerchant
 IncreaseAmount=200
 Desc=takes out a strage blue slab of titanite, setting the weapon on the anvil. %real.name then applies blacksmith techniques to the weapon to strengthen it.
-Cost=2000000
+Cost=3000000
 SellPrice=2000
 Exclusive=yes
 
