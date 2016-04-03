@@ -31,11 +31,11 @@ Misc=Misc
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur.AntlionClaws
 Swords=ForgedSword.Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
-Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1
+Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1.Mastermune
 Whips=BlackWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Alruna
-Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge.BlueRose
-Rifles=HuntingRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle
-Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow
+Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge.BlueRose.TacticalPistol
+Rifles=HuntingRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle.TacticalShotgun.RocketLauncher.Thunderclap
+Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.CompoundBow
 Katanas=SmallKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1
 Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa
 Wands=WoodenWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold

@@ -2332,11 +2332,10 @@ Currency=AlliedNotes
 
 [DarksteelOre]
 type=misc
-Cost=150
+Cost=0
 SellPrice=80
 Desc=a chunk of darksteel ore
-Currency=none
-ConquestItem=true
+Currency=None
 
 [TigerFang]
 Type=misc
@@ -4292,7 +4291,7 @@ Exclusive=yes
 Type=ammo
 Cost=2500
 SellPrice=250
-Desc=Basic bullets for use by guns and rifles.
+Desc=Basic bullets for use by guns or rifles.
 Exclusive=yes
 
 =========================

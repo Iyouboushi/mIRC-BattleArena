@@ -367,10 +367,10 @@ Gem=Onyx
 Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 SuccessRate=100
 Amount=1
-LifeShard=100
-ReusablePart=100
-ForgottenSoul=100
-ArcaneDust=100
+LifeShard=25
+ReusablePart=25
+ForgottenSoul=25
+ArcaneDust=25
 
 ============
 Portal Items
