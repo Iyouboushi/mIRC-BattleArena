@@ -364,11 +364,13 @@ TitaniteSlab=2
 
 [ExtremeTitaniteSlab]
 Gem=Onyx
-Ingredients=ArcaneDust.LifeShard
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 SuccessRate=100
 Amount=1
-ArcaneDust=5
-LifeShard=5
+LifeShard=100
+ReusablePart=100
+ForgottenSoul=100
+ArcaneDust=100
 
 ============
 Portal Items
