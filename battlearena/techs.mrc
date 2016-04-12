@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/11/16
+;;;; Last updated: 04/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -836,6 +836,9 @@ alias tech.heal {
   %attack.damage = $round(%attack.damage,0)
   if ($3 = demon_portal) { set %attack.damage 0 }
   if ($person_in_mech($3) = true) { set %attack.damage 0 }
+
+  ; If the target has max hp we don't need to heal them 
+  if ($readini($char($3), battle, hp) >= $readini($char($3), basestats, hp)) { set %attack.damage 0 } 
 
   $heal_damage($1, $3, $2)
   $display_heal($1, $3, tech, $2)

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/10/16
+;;;; Last updated: 04/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -384,7 +384,6 @@ calculate_heal_items {
   var %max.hp $readini($char($3), basestats, hp)
   var %item.base $round($calc(%item.base * %max.hp),0)
 
-
   ; Set the amount the item heals
   inc %attack.damage %item.base
 
@@ -416,6 +415,8 @@ calculate_heal_items {
 
   ; This should never go below 0, but just in case..
   if (%attack.damage <= 0) { set %attack.damage 1 }
+
+  if ($readini($char($3), battle, hp) >= $readini($char($3), basestats, hp)) { set %attack.damage 0 } 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
