@@ -915,6 +915,10 @@ alias do_aoe_heal {
     } 
 
     else {   
+
+      ; If the target has max hp we don't need to heal them 
+      if ($readini($char(%who.battle), battle, hp) >= $readini($char(%who.battle), basestats, hp)) { set %attack.damage 0 } 
+
       $heal_damage($1, %who.battle, $2)
       $display_heal($1, %who.battle ,aoeheal, $2)
       unset %guard.message
