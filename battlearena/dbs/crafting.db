@@ -143,6 +143,14 @@ Amount=1
 Death'sBreath=5
 GoldKey=1
 
+[TormentOrb30]
+Gem=Diamond
+Ingredients=Death'sBreath.GoldKey
+SuccessRate=100
+Amount=1
+Death'sBreath=5
+GoldKey=1
+
 ============
 Healing Items
 ============
