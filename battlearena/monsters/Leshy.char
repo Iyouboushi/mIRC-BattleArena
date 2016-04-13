@@ -1,8 +1,8 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(7000 + (100 * $return_playersinbattle)) , 7000)
+Hp=$iif($return_playersinbattle > 3, $calc(9000 + (100 * $return_playersinbattle)) , 9000)
 Tp=50
 Str=25
-Def=9
+Def=14
 Int=7
 Spd=25
 IgnitionGauge=2
@@ -13,7 +13,7 @@ Name=Leshy
 Hp=7000
 Tp=50
 Str=25
-Def=9
+Def=14
 Int=7
 Spd=25
 IgnitionGauge=2

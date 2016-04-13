@@ -1,8 +1,8 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(11000 + (500 * $return_playersinbattle)) , 11000)
+Hp=$iif($return_playersinbattle > 3, $calc(15000 + (500 * $return_playersinbattle)) , 15000)
 Tp=50
 Str=25
-Def=50
+Def=90
 Int=9
 Spd=2
 IgnitionGauge=2
@@ -13,7 +13,7 @@ Name=Adamantoise
 Hp=11000
 Tp=50
 Str=25
-Def=50
+Def=90
 Int=9
 Spd=2
 IgnitionGauge=2

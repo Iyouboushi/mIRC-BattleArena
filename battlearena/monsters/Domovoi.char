@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(7000 + (100 * $return_playersinbattle)) , 7000)
+Hp=$iif($return_playersinbattle > 3, $calc(8000 + (100 * $return_playersinbattle)) , 8000)
 Tp=50
-Str=22
-Def=9
+Str=28
+Def=12
 Int=8
-Spd=21
+Spd=23
 IgnitionGauge=2
 Name=Domovoi
 
 
 [Battle]
-Hp=7000
+Hp=8000
 Tp=50
-Str=22
-Def=9
+Str=28
+Def=12
 Int=8
-Spd=21
+Spd=23
 IgnitionGauge=2
 Status=alive
 
