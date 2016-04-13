@@ -1,22 +1,24 @@
 [BaseStats]
-Hp=55
+Hp=$iif($return_playersinbattle > 3, $calc(5000 + (100 * $return_playersinbattle)) , 2000)
 Tp=50
-Str=5
+Str=3
 Def=5
-Int=7
-Spd=1
+Int=8
+Spd=3
 IgnitionGauge=2
-Name=Zombie
+Name=Terror Priest
+
 
 [Battle]
-Hp=55
+Hp=2000
 Tp=50
-Str=5
+Str=3
 Def=5
-Int=7
+Int=8
 Spd=1
 IgnitionGauge=2
 Status=alive
+
 
 [Rage]
 RageBar=0
@@ -26,11 +28,13 @@ RageCountDown=0
 Level=1
 Percent=0
 
+
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a rotting corpse brought back from the dead. 
+Char=is a hooded priest who serves Bahamut and Diablos.
 Rage=screams in rage 
+DeathMessage=collapses to the ground and screams "you fools! Without a sacrifice we shall incur the wrath of the gods! They will punish us!" before dying.
 
 [Stuff]
 RedOrbs=0
@@ -40,19 +44,20 @@ ShopLevel=1.0
 [Info]
 Flag=monster
 Gender=its
-Gender2=its
+Gender2=it
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=11
-StreakMax=99
+Streak=-10000
 CanTaunt=false
-IgnoreElementalMessage=true
+IgnoreQuicksilver=true
+BattleStats=IgnoreHP
+BossLevel=500
 
 [Monster]
-Type=zombie
+Type=human
 size=medium
 
 [Status]
@@ -88,43 +93,41 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
-Equipped=zombiefists
-zombiefists=15
+Equipped=Murgleis
+Murgleis=20
 
 [Skills]
+Swordmaster=5
+Wizardy=3
 
 [Techniques]
-ZombieBite=10
+DeathBlossom=15
+SwiftBlade=10
+SavageBlade=10
+
 
 [modifiers]
 Heal=none
-Earth=80
-Fire=150
-Wind=80
-Water=80
-Ice=80
-Lightning=80
-Light=70
-Dark=1
-HandToHand=80
-Whip=80
+Earth=100
+Fire=130
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=10
+HandToHand=100
+Whip=100
 Sword=100
 Gun=100
 Rifle=100
 Katana=100
-Wand=80
+Wand=100
 Spear=100
 Scythe=100
 Glyph=100
 GreatSword=100
-Bow=50
-Axe=100
-Hammer=100
-Dagger=100
-Dancing=70
-Engine=70
-Mace=70
-PinkChainsaw=150
-Stave=70
-EnergyBlaster=120
+Bow=100
+HolyHandGrenade=0

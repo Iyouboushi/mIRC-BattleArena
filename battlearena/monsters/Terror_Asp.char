@@ -1,35 +1,32 @@
 [BaseStats]
-Hp=55
-Tp=50
-Str=5
-Def=5
-Int=7
-Spd=1
+Hp=$iif($return_playersinbattle > 3, $calc(20039 + (500 * $return_playersinbattle)) , 20039)
+Tp=30
+Str=5192
+Def=7383
+Int=4230
+Spd=15383
 IgnitionGauge=2
-Name=Zombie
+Name=Terror Asp
+
 
 [Battle]
-Hp=55
-Tp=50
-Str=5
-Def=5
-Int=7
-Spd=1
+Hp=1500
+Tp=40
+Str=5192
+Def=7383
+Int=4230
+Spd=15383
 IgnitionGauge=2
 Status=alive
+
 
 [Rage]
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
 
 [Descriptions]
-Hused=1
-Dused=1
-Char=is a rotting corpse brought back from the dead. 
+Char=is a dangerous asp, poised to bite
 Rage=screams in rage 
 
 [Stuff]
@@ -46,14 +43,18 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=11
-StreakMax=99
+Streak=-1000
 CanTaunt=false
+IgnorePresident=true
 IgnoreElementalMessage=true
+IgnoreBattlefieldDamage=true
+bosslevel=1100
+
 
 [Monster]
-Type=zombie
-size=medium
+Type=snake
+size=small
+elite=true
 
 [Status]
 Poison=no
@@ -89,42 +90,56 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=zombiefists
-zombiefists=15
+Equipped=SnakeFangs
+SnakeFangs=500
 
 [Skills]
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=10
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=80
+Resist-confuse=100
 
 [Techniques]
-ZombieBite=10
+SnakeBite=500
+
+[Item_Amount]
+
 
 [modifiers]
 Heal=none
-Earth=80
-Fire=150
-Wind=80
-Water=80
-Ice=80
-Lightning=80
-Light=70
-Dark=1
-HandToHand=80
-Whip=80
+Earth=100
+Fire=120
+Wind=100
+Water=100
+Ice=70
+Lightning=100
+Light=100
+Dark=100
+HandToHand=60
+Whip=100
 Sword=100
 Gun=100
 Rifle=100
 Katana=100
-Wand=80
+Wand=100
 Spear=100
 Scythe=100
 Glyph=100
 GreatSword=100
-Bow=50
+Bow=100
 Axe=100
 Hammer=100
-Dagger=100
-Dancing=70
-Engine=70
-Mace=70
-PinkChainsaw=150
-Stave=70
-EnergyBlaster=120
+HolyHandGrenade=10
+Dynamite=10
+
+
+[Styles]
+Equipped=Trickster
+Guardian=10
+GuardianXP=0

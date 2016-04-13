@@ -474,7 +474,8 @@ ZemusPower=BlackHole.DarkDispel.BigBang.MeteorII.Comet.DarkFlare.DarkQuake.DarkF
 NerfBat=Homerun
 SpiceCane=SpiceRack.SpicySwing.AsuranFists.ShinjinSpiral
 AntlionJaw=PowerAttack.Tremors
-
+GargoyleArms=Stomp
+Doomed=AbyssBlast.AcidBreath.StinkingGas.WhipTongue
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -5232,6 +5233,12 @@ Cost=0
 Element=none
 Magic=no
 stat=str
+DestroyShadows=2
+BasePower=10
+Cost=0
+Element=none
+Magic=no
+stat=str
 
 [YamiBarai]
 Type=Single
@@ -5363,6 +5370,53 @@ Element=Dark
 Cost=0
 magic=no
 stat=int
+
+[AbyssBlast]
+Type=Single
+Tp=10
+BasePower=100
+Element=Dark
+Cost=0
+Magic=no
+stat=int
+Desc=sucks up some air before shooting out a large blast of energy towards %enemy $+ !
+DestroyShadows=3
+
+[AcidBreath]
+Type=AOE
+Status=strengthdown
+TP=10
+BasePower=100
+Element=Dark
+cost=0
+Magic=no
+stat=int
+desc=spews acid breath upon the heroes
+
+
+[StinkingGas]
+Type=AOE
+Status=defensedown
+TP=10
+BasePower=100
+Element=Dark
+cost=0
+Magic=no
+stat=int
+desc=begins to emit a greenish colored gas that fills the room.
+
+[WhipTongue]
+Type=Single
+Tp=10
+BasePower=100
+Element=Dark
+Cost=0
+Magic=no
+stat=str
+Desc=shoots its tongue with violent force towards %enemy $+ !
+DestroyShadows=2
+Status=stun
+
 
 [AtlantianBlast]
 Type=Single

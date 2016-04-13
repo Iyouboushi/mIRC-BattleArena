@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=windy
+current=dry
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Gibbous
-CurrentMoonTurn=2
+CurrentMoonPhase=Full
+CurrentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -1084,4 +1084,81 @@ event1Chance=60
 Event1Desc=The Antlion buries itself under ground as the ceiling rumbles and drops several stalactites down on the heroes!  The Antlion then returns.
 Event1Target=players
 Event1Amount=$rand(400,500)
+
+
+[Tomb of Terror - Opening Hallway]
+weather=gloomy
+NumberOfEvents=0
+scavenge=topaz
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+
+[Tomb of Terror - Gargoyle Room]
+weather=gloomy
+NumberOfEvents=1
+scavenge=topaz
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+
+event1=damage
+event1Chance=70
+Event1Desc=%real.name accidentally steps on a spear hole as a spear shoots out of it.
+Event1Target=random
+Event1Amount=$rand(500,600)
+
+
+[Tomb of Terror - Forsaken Prison]
+weather=gloomy
+NumberOfEvents=1
+scavenge=topaz
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+
+event1=damage
+event1Chance=70
+Event1Desc=An asp crawls out of its hiding place and bites %real.name before returning into the shadows
+Event1Target=random
+Event1Amount=$rand(500,600)
+
+
+[Tomb of Terror - Embalming Lab]
+weather=gloomy
+NumberOfEvents=2
+scavenge=topaz
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+
+event1=damage
+event1Chance=70
+Event1Desc=One of the jars on the shelves lining the room explodes and sends acidic goo onto %real.name $+ !
+Event1Target=random
+Event1Amount=$rand(500,600)
+
+event2=damage
+event1Chance=30
+Event1Desc=A small dart shoots out of the wall and hits %real.name $+ !
+Event1Target=random
+Event1Amount=$rand(200,400)
+
+
+[Tomb of Terror - Chapel]
+weather=gloomy
+NumberOfEvents=0
+scavenge=topaz
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+
+[Tomb of Terror - Inner Sanctum]
+weather=gloomy
+NumberOfEvents=0
+scavenge=topaz
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+
+
+[Tomb of Terror - Throne Room]
+weather=gloomy
+NumberOfEvents=1
+scavenge=topaz
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+
+event1=damage
+event1Chance=50
+Event1Desc=A small creature hiding at the top of one of the pillars stands up and aims a bow and shoots an arrow towards %real.name $+ !
+Event1Target=random
+Event1Amount=$rand(500,600)
 

@@ -1519,6 +1519,13 @@ Cost=0
 Desc=A glowing set of earrings previously worn by Lady Amandine. This accessory will increase the power of magic.
 IncreaseMagic.Amount=.49
 
+[Forbidden-Earrings]
+Type=accessory
+AccessoryType=IncreaseMagic
+Cost=0
+Desc=The ancient and forbidden earrings of Ogama. This accessory will increase the power of magic.
+IncreaseMagic.Amount=.51
+
 [Aetherial-Ring]
 Type=accessory
 AccessoryType=IncreaseMeleeDamage
@@ -1527,6 +1534,17 @@ Desc=A glowing ring previously worn by Lady Amandine. This accessory will increa
 SellPrice=2000
 IncreaseMeleeDamage.Amount=.010
 ; The max +damage will be 1000, which means at .010 amount it would require 100,000 red orbs on hand to do that damage.
+
+
+[Forbidden-Ring]
+Type=accessory
+AccessoryType=IncreaseMeleeDamage
+Cost=0
+Desc=A glowing ring long forgotten from the Tomb of Terror. This accessory will increase the power of melee attacks based on the number of red orbs on hand.
+SellPrice=2000
+IncreaseMeleeDamage.Amount=.050
+; The max +damage will be 1000, which means at .050 amount it would require 50,000 red orbs on hand to do that damage.
+
 
 [Blessed-Ankh]
 Type=accessory
@@ -1582,6 +1600,15 @@ Cost=0
 Desc=A golden crown with a bright red gem sitting in the middle.  This accessory will increase the amount of orbs you gain at the end of battles.
 ; .22 = 22% more orbs.  if the reward is 1000 you'll get +220.
 IncreaseRedOrbs.Amount=.22
+SellPrice=5000
+
+[Forbidden-Crown]
+Type=accessory
+AccessoryType=IncreaseRedOrbs
+Cost=0
+Desc=A black crown with a bright red gem sitting in the middle.  This accessory will increase the amount of orbs you gain at the end of battles.
+; .30= 30% more orbs.  if the reward is 1000 you'll get +300.
+IncreaseRedOrbs.Amount=.30
 SellPrice=5000
 
 [Purple-Belt]
@@ -4092,6 +4119,15 @@ currency=KindredSeal
 sellprice=1500
 Desc=The ancient mummified hand of Kan-ra that grants access into its pyramid
 Dungeon=Kan-ra
+exclusive=yes
+
+[TerrorKey]
+type=dungeon
+cost=100
+currency=HighKindredSeal
+sellprice=1500
+Desc=A rusty key used to unlock the Tomb of Terror.
+Dungeon=Tomb_Terror
 exclusive=yes
 
 

@@ -1,0 +1,46 @@
+[Info]
+Name=Tomb of Terror
+Rooms=7
+PlayersNeeded=1
+Level=1000
+FinalRoom=6
+StartBattleDesc=After being unlocked, the heroes see that the entrance of the tomb is a short, roughly carved passageway, completely filled with cobwebs. Tiny spiders flee from the light and motion caused by opening the tunnel. They step inside and smell the musky air within but cannot see more than a few feet before them.
+ClearDungeonDesc=* The party has survived the legendary Tomb of Terror and walked away with a treasure from it.  [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The Tomb of Terror has claimed even more victims. The party has failed . 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=After lighting a torch the party can see they are in a long, harshly carved passageway. A pair of doors at the end of the hallway are built of heavy oak and iron bars with pull rings to open them. This room seems safe enough to prepare for the horrors within. 
+Battlefield=Tomb of Terror - Opening Hallway
+
+[1]
+Desc=The party opens the door and sees a square room with a huge four-armed Gargoyle sitting in the middle of it.  There are many tiny holes in the floor of this room and occasionally sharp spears shoot out of them and slide back in silently.  As the party approaches the gargoyle it comes to life with a mighty roar.
+Battlefield=Tomb of Terror - Gargoyle Room
+Monsters=Terror_Gargoyle
+
+[2]
+Desc=The destruction of the Gargoyle causes the floor to break and the party to fall down into a darkened forsaken prison area. The chamber is broad but reeks of danger. A mangled pile of bones lies outstreteched on the floor. Hissing can be heard everywhere in this room as several snakes slither out of the dark.
+Battlefield=Tomb of Terror - Forsaken Prison
+Monsters=Terror_Asp.Terror_Asp
+
+[3]
+Desc=The party does a search of the prison and find a loose stone that gives way to a small passage. After crawling through, they enter an embalming lab. Shelves line the walls and each shelf is stuffed with jars, vials, herbs, and other bottles filled with liquids. In the center are two large vats that creatures crawl out of ready for battle.
+Battlefield=Tomb of Terror - Embalming Lab
+Monsters=Terror_Bloodclot.Terror_Zombie
+
+[4]
+Desc=After fleeing the embalming lab the party stumbles upon a chapel with two rows of four wooden pews leading past grandoise landscapes. Symbols of Bahamut and Diablos are encarved in stones that circle the alter where a lone humanoid priest stands laughing. "Welcome! You are to be sacrificed to the gods!"
+Battlefield=Tomb of Terror - Chapel
+Monsters=Terror_Priest
+
+[5]
+Desc=Upon the death of the priest, a wall rumbles and opens to reveal an inner sanctum. Heavy gray smoke fills the room and has an obvious supernatural air about it. The smoke begins to gather together and take form into a large wisp.
+Battlefield=Tomb of Terror - Inner Sanctum
+Monsters=Terror_Wisp
+
+[6]
+Desc=With the thick smoke gone a stairway has been revealed. Following it through twisty passages the party arrives at the throne room of the tomb. The room is lined with pillars every 5 feet which seem decorative as they are not supporting the building. Sitting in the middle is a large throne with a man on it.
+Battlefield=Tomb of Terror - Throne Room
+Monsters=Ogama
+bossroom=true
+
