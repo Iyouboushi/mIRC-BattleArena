@@ -234,6 +234,7 @@ TechIncrease=$chr(3) $+ 3 $+ Your proficiency with $2 has increased! You hav
 AccessCommandList=$chr(3) $+ 3 $+ Your character can be controlled by: %player.access.list
 AccessCommandRemove=$chr(3) $+ 3 $+ Your character can be no longer be controlled by $3
 AccessCommandAdd=$chr(3) $+ 3 $+ Your character can be now be controlled by $3
+ClearedDungeonUsage=$chr(3) $+ 3 $+ $4 $+ 's last dungeon use time has been reset.
 ClearedDailyPortalUsage=$chr(3) $+ 3 $+ $4 $+ 's daily portal usage has been reset to 0.
 PortalUsageCheckUnlimited=$chr(3) $+ 3 $+ %real.name $+  has unlimited portal usage.
 PortalUsageCheck=$chr(3) $+ 3 $+ %real.name $+  has %portal.uses.left more portal uses left today.

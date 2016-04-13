@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 03/01/16
+;;;; Last updated: 04/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -406,6 +406,14 @@ ON 50:TEXT:!clear portal usage *:*: {
   $checkchar($4)
   writeini $char($4) info PortalsUsedTotal 0
   $display.message($readini(translation.dat, system, ClearedDailyPortalUsage), global)
+}
+
+; Bot admins can clear the dungeonl usage of a player
+; !clear dungeon usage playername
+ON 50:TEXT:!clear dungeon usage *:*: {
+  $checkchar($4)
+  writeini $char($4) info LastDungeonStartTime 0
+  $display.message($readini(translation.dat, system, ClearedDungeonUsage), global)
 }
 
 ; Bot admins can manually set the winning streak.
