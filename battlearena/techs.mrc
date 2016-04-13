@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/12/16
+;;;; Last updated: 04/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -859,7 +859,6 @@ alias tech.aoeheal {
   $action.points($1, remove, 5)
 
   unset %who.battle | set %number.of.hits 0
-  set %attack.damage 0
 
   ; Display the tech description
   $set_chr_name($1) | set %user %real.name
@@ -904,6 +903,7 @@ alias do_aoe_heal {
   else { 
     inc %number.of.hits 1
 
+    set %attack.damage 0
     $calculate_aoe_heal($1, $2, $3)
 
     ;If the target is a zombie, do damage instead of healing it.

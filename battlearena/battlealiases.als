@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/11/16
+;;;; Last updated: 04/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3476,8 +3476,10 @@ battlefield.damage {
   var %streak.increase $calc(%current.streak / 100)
   if (%streak.increase < 1) { var %streak.increase 1 }
 
-  set %attack.damage $round($calc(%attack.damage * %streak.increase),0)
-  if (%attack.damage > 800) { set %attack.damage 800 }
+  if (%battle.type != dungeon) { 
+    set %attack.damage $round($calc(%attack.damage * %streak.increase),0)
+    if (%attack.damage > 800) { set %attack.damage 800 }
+  }
 
   set %damage.display.color 4 
 }
@@ -3575,6 +3577,7 @@ battlefield.event {
       if (%attack.damage <= 0) { set %attack.damage 1 }
       $guardianmon.check(battlefield, battlefield, %who.battle)
       if ($readini($char(%who.battle), info, HurtByTaunt) = true) { set %attack.damage 0 }
+      if ($readini($char(%who.battle), info, IgnoreBattlefieldDamage) = true) { set %attack.damage 0 }
       $deal_damage(battlefield, %member, battlefield)
       $display_aoedamage(battlefield, %member, battlefield)
     }

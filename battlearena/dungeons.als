@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 02/27/16
+;;;; Last updated: 04/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -36,7 +36,7 @@ dungeon.start {
 
   ; Show the dungeon start message.
   $display.message(2 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) 
-  $display.message(4This dungeon is level12 %dungeon.level 4and requires12 %dungeon.players.needed players4 to enter. The dungeon will begin in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) 
+  $display.message(4This dungeon is level12 %dungeon.level 4and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 4to enter. The dungeon will begin in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) 
 
 }
 
@@ -323,7 +323,7 @@ dungeon.generatemonsters {
 
     if (%monster.level = $null) { var %monster.level 15 }
     if (%monster.level < %dungeon.level) { var %monster.level %dungeon.level }
-    if (%monster.level > $calc(%dungeon.level + 10)) { var %monster.level $calc(%dungeon.level + 10) }
+    ;   if (%monster.level > $calc(%dungeon.level + 10)) { var %monster.level $calc(%dungeon.level + 10) }
 
     ; display the description of the spawned monster
     $set_chr_name(%current.monster.to.spawn.name) 

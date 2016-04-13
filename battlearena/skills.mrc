@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 04/12/16
+;;;; Last updated: 04/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -634,15 +634,7 @@ alias fullbring.singleheal {
   }
 }
 
-alias fullbring.aoeheal {
-  ; $1 = user
-  ; $2 = item
-
-  unset %who.battle | set %number.of.hits 0
-  set %attack.damage 0
-
-  set %wait.your.turn on
-
+alias fullbring.calcheal {
   ; First things first, let's find out the base power.
   var %item.base $readini($dbfile(items.db), $2, FullbringAmount)
   inc %attack.damage %item.base
@@ -666,7 +658,15 @@ alias fullbring.aoeheal {
 
   ; In this bot we don't want the attack to ever be lower than 1.  
   if (%attack.damage <= 0) { set %attack.damage 1 }
+}
 
+alias fullbring.aoeheal {
+  ; $1 = user
+  ; $2 = item
+
+  unset %who.battle | set %number.of.hits 0
+
+  set %wait.your.turn on
   ; Display the item description
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
@@ -684,6 +684,9 @@ alias fullbring.aoeheal {
       else { 
         inc %number.of.hits 1
 
+        set %attack.damage 0
+        $fullbring.calcheal($1, $2, $3)
+
         ;If the target is a zombie, do damage instead of healing it.
         if ($readini($char(%who.battle), status, zombie) = yes) { 
           $deal_damage($1, %who.battle, $2)
@@ -691,7 +694,6 @@ alias fullbring.aoeheal {
         } 
 
         else {   
-
           ; If the target has max hp we don't need to heal them 
           if ($readini($char(%who.battle), battle, hp) >= $readini($char(%who.battle), basestats, hp)) { set %attack.damage 0 } 
 
