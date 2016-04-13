@@ -1923,11 +1923,6 @@ alias gobbiebox {
   inc %current.reward.items 1
   writeini $char($1) item_amount %random.item.name %current.reward.items
 
-  echo -a line: %items.line
-  echo -a item chosen: %random.item.name
-  echo -a player amount: %current.reward.items 
-
-
   $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) opens the box and says2 "Lesee what myst'ries await! Dis box is full o' myst'ries! Dat span da realm's his'try! So whatcha gonna get from da chest...o'..uh, fortunery?")
   $display.private.message.delay.custom(2"Oooh! Looks at what popped out! I hope it makes yer adventures dat much more adventumarous!",2)
   $display.private.message.delay.custom(4You have obtained 1 %random.item.name ,3)
