@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/09/16
+;;;; Last updated: 04/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2008,6 +2008,7 @@ alias shop.dungeonkeys {
     while (%value <= %items.lines) {
       set %item.name $read -l $+ %value $lstfile(items_dungeonkeys.lst)
       set %item.price $readini($dbfile(items.db), %item.name, cost)
+
       if ((%item.price > 0) && ($readini($char($1), item_amount, %item.name) !isnum)) {  
         if ($readini($dbfile(items.db), %item.name, currency) = BeastmenSeal) { %dungeonkeyss.bstmen = $addtok(%dungeonkeyss.bstmen, $+ %item.name $+ ( $+ %item.price $+ ),46) }
         if ($readini($dbfile(items.db), %item.name, currency) = KindredSeal) { %dungeonkeyss.kindred = $addtok(%dungeonkeyss.kindred, $+ %item.name $+ ( $+ %item.price $+ ),46) }

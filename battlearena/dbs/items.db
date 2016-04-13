@@ -4124,7 +4124,7 @@ exclusive=yes
 [TerrorKey]
 type=dungeon
 cost=100
-currency=HighKindredSeal
+currency=KindredCrest
 sellprice=1500
 Desc=A rusty key used to unlock the Tomb of Terror.
 Dungeon=Tomb_Terror
