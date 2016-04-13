@@ -22,6 +22,6 @@ Blueprints:Kikoku.10
 Blueprints:Kannagi.10
 AtlantianThreadSpool.8
 AlphaWeltallCore.16
-TacticalShotgun.32
-TacticalPistol.32
-CompoundBow.32
+Blueprints:TacticalShotgun.24
+Blueprints:TacticalPistol.24
+Blueprints:CompoundBow.24
