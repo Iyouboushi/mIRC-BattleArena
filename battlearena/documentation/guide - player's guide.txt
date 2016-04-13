@@ -835,7 +835,7 @@ Slime-Killer
 ITEM LIST
 ** As of Nov 18, 2015.
 
-There's a bunch of different types of items in the bot currently:  Healing Items, Battle Items, Consumable (Skill) Items, +Stat Items, Summon Items, Shop Level Reducing Items, Gems, Keys, Accessories, Trust Items, Portal Items and Misc (Crafting) items.  Here's a list of each.
+There's a bunch of different types of items in the bot currently:  Healing Items, Battle Items, Consumable (Skill) Items, +Stat Items, Summon Items, Shop Level Reducing Items, Gems, Keys, Accessories, Trust Items, Portal Items, Ammo and Misc (Crafting) items. Here's a list of each.
 
 Healing Items
 These are items that are beneficial to the targets.
@@ -863,8 +863,12 @@ Hi-Ether
 Tonic
 BoxOfTissues
 
-[Revive items will add the auto-revive status]
+[Auto-Revive items will add the auto-revive status]
 GoldOrb
+
+[Revive items will allow you to revive dead players]
+BottledFairy
+PhoenixDown
 
 [Ignition Restore items will restore IG]
 IgnitionStar
@@ -1100,9 +1104,20 @@ SilverKey
 PurpleKey
 
 
+Ammo
+Ammo is used for certain, high-level, weapons and will be consumed when performing a melee or technique with the weapon.
+
+RocketAmmo
+Arrow
+ShotgunShell
+DragonfireShell
+Bullet
+
+
 Accessories
 Accessories are special items that you can wear to bestow various bonus effects to your character.  Here's a list of current accessories.
 
+4leaf-clover
 Wizard's-Amulet
 Wizard's-Amulet+1
 Blessed-Ankh
@@ -1110,6 +1125,7 @@ Wizard's-Ankh
 Blood-Ring
 Blood-Pendant
 Blood-Crown
+Blood-Crown+1
 Purple-Belt
 Brown-Belt
 Black-Belt
@@ -1129,7 +1145,6 @@ Sword-Pin
 Axe-Pin
 Mugger's-Belt
 Prism-Specs
-4leaf-clover
 Treasure-Ring
 Mimic-Ring
 Engine-Ring
@@ -1149,6 +1164,14 @@ Aetherial-Ring
 DragonCharm
 Osiris-Charm
 Kan-ra-Charm
+Friendship-Ring
+Sonic-Ring
+WorldHeavyweight-Belt
+Hero'sMedal
+TeruTeruBozu
+Forbidden-Earrings
+Forbidden-Ring
+Forbidden-Crown
 
 
 Misc (Crafting) Items

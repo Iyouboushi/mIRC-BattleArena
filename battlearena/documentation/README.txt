@@ -106,6 +106,9 @@ a second accessory slot with 10 enhancement points.
 This style will allow players to use !wrestle on a target to do damage and attempt to
 inflict stun. This style also increases damage done with HandToHand weapons.
 
+* Added two new dungeons
+Added the level 20 dungeon: Antlion's Den and the level 1000 dungeon: Tomb of Terror
+
 Changes:
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points

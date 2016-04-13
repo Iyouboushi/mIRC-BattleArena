@@ -1442,6 +1442,7 @@ Battle Arena Bot VERSIONS
 - Added the ability to turn purple keys into gold keys via crafting
 - Added WonderGuard flag for monsters/bosses. In [info] put WonderGuard=true.  If set to true the boss will not be harmed by
   anything that isn't in [modifiers] or is set to 0 in that section. 
+- Added the IgnoreBattlefieldDamage flag. If set to true, these monsters will take 0 damage from battlefield events
 - Added legendary armor
 - Added the voucher item system. Using vouchers obtained from portals players will be able to buy armor and weapons
 - Added a new Shop NPC: BountiBox the Goblin.  Upon arriving at the HQ, he will unlock the Gobbie Box.
@@ -1454,7 +1455,9 @@ Battle Arena Bot VERSIONS
   a second accessory
 - Added Trading Card items
 - Added new achievements
-- Added TormentOrb 12-15 and their recipes
+- Added new weapons
+- Added TormentOrb 12-15, 20, 25 and 30 and their recipes
+- Added two new dungeons
 - Added the ability for weapons to require ammo to use in melee and tech attacks.  In weapons.db under [weapon] put
   AmmoRequired=itemname  and AmmoAmountNeeded=#
 - Added the !last seen command. This command will tell you when a player was last seen in the channel
@@ -1464,10 +1467,11 @@ Battle Arena Bot VERSIONS
   inflict stun. This style also increases damage done with HandToHand weapons.
 - Added a new accessory type: IncreaseTurnSpeed  This type of accessory increases speed during battle turn generation
 - Added a new accessory type: IncreaseWrestlingDamage  This type of accessory increases !wrestle damage
-- Added new weapons
 - Added a new battle system type: Action Point based. This system will consume action points to perform actions. When
   action points are empty the turn is over and it moves onto the next. This is not on by default.
 - Added a new bot admin command: !toggle battle system type
+- Added a new bot admin command: !clear dungeon usage -- using this command on a player will allow the player to use
+  a dungeon key immediately
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1511,12 +1515,14 @@ Battle Arena Bot VERSIONS
 - Fixed a bug in which enhancement skills (0 cost) would show up in !shop list skills
 - Fixed a bug where using !misc items multiple times would cause duplicates to show up
 - Fixed a bug where NPCs/trusts could survive no-npc/no-trust battle conditions on uncapped portals
+- Fixed a bug where it was possible to get infinite HP while using an ignition
 - Fixed two bugs with the Predator fight
 - Fixed an issue where certain battle types could override mimic battles
 - Fixed an issue where portal items were being cut off
 - Fixed an issue with absorb inside of dungeons and torment
 - Fixed an issue with clones being able to use skills multiple times without a cooldown
 - Fixed an issue with the Shrine of Ru'Avitau's weather (had "light" instead of "bright")
+- Fixed an issue where Darksteel Ore could be bought
 - Fixed a potential issue with certain items in the shop being cut off if there's too many
 - Fixed a typo with Shenron's Wish
 - Fixed a description issue with ToxicMelody
