@@ -523,6 +523,8 @@ Ingredients=BoxOfTissues.BenedictSilk.UtopianGoldThread
 BoxOfTissues=1
 BenedictSilk=1
 UtopianGoldThread=1
+SuccessRate=60
+Amount=1
 
 
 ============
