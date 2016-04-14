@@ -1,7 +1,7 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 4, $calc(13000 + (100 * $return_playersinbattle)) , 13000)
+Hp=$iif($return_playersinbattle > 4, $calc(15000 + (500 * $return_playersinbattle)) , 15000)
 Tp=250
-Str=107
+Str=117
 Def=77
 Int=91
 Spd=96
@@ -12,7 +12,7 @@ IgnitionGauge=50
 [Battle]
 Hp=33000
 Tp=250
-Str=77
+Str=117
 Def=77
 Int=191
 Spd=96
@@ -57,6 +57,7 @@ IgnoreQuicksilver=true
 BattleStats=IgnoreHP
 JustReleaseDefense=90
 IgnoreBattlefieldDamage=true
+SpawnAfterDeath=Ogama_Doomed
 
 [Status]
 Poison=no

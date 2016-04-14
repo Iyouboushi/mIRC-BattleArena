@@ -48,7 +48,7 @@ Streak=-1000
 CanTaunt=false
 IgnoreElementalMessage=true
 IgnoreBattlefieldDamage=true
-BossLevel=900
+BossLevel=1000
 
 [Monster]
 Type=beetle
@@ -96,6 +96,7 @@ resist-charm=100
 resist-stun=80
 resist-paralysis=80
 resist-curse=100
+resist-sleep=100
 
 [Techniques]
 PowerAttack=$current.battlestreak

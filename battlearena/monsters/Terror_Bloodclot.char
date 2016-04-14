@@ -53,7 +53,7 @@ IgnoreElementalMessage=true
 IgnoreOutpost=true
 IgnoreQuickSilver=true
 IgnoreBattlefieldDamage=true
-bosslevel=1000
+bosslevel=1150
 
 [Monster]
 Type=slime
