@@ -5406,16 +5406,17 @@ stat=int
 desc=begins to emit a greenish colored gas that fills the room.
 
 [WhipTongue]
-Type=Single
+Type=StealPower
 Tp=10
-BasePower=100
+BasePower=20
 Element=Dark
 Cost=0
 Magic=no
 stat=str
-Desc=shoots its tongue with violent force towards %enemy $+ !
-DestroyShadows=2
+Desc=shoots its tongue with violent force towards %enemy in an attempt to not only damage but to absorb some of %enemy $+ 's power!
+DestroyShadows=4
 Status=stun
+StealStatus=true
 
 
 [AtlantianBlast]
