@@ -1525,6 +1525,7 @@ AccessoryType=IncreaseMagic
 Cost=0
 Desc=The ancient and forbidden earrings of Ogama. This accessory will increase the power of magic.
 IncreaseMagic.Amount=.51
+exclusive=yes
 
 [Aetherial-Ring]
 Type=accessory
@@ -1544,7 +1545,7 @@ Desc=A glowing ring long forgotten from the Tomb of Terror. This accessory will 
 SellPrice=2000
 IncreaseMeleeDamage.Amount=.050
 ; The max +damage will be 1000, which means at .050 amount it would require 50,000 red orbs on hand to do that damage.
-
+exclusive=yes
 
 [Blessed-Ankh]
 Type=accessory
@@ -1610,6 +1611,7 @@ Desc=A black crown with a bright red gem sitting in the middle.  This accessory 
 ; .30= 30% more orbs.  if the reward is 1000 you'll get +300.
 IncreaseRedOrbs.Amount=.30
 SellPrice=5000
+exclusive=yes
 
 [Purple-Belt]
 Type=accessory

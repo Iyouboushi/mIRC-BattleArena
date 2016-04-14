@@ -517,6 +517,13 @@ Treasure-Ring=1
 SuccessRate=80
 Amount=1
 
+[TeruTeruBozu]
+Gem=Emerald
+Ingredients=BoxOfTissues.BenedictSilk.UtopianGoldThread
+BoxOfTissues=1
+BenedictSilk=1
+UtopianGoldThread=1
+
 
 ============
 Battle Items
