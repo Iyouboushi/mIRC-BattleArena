@@ -104,6 +104,7 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=80
 Resist-confuse=100
+Resist-Sleep=100
 
 [Techniques]
 SnakeBite=500
