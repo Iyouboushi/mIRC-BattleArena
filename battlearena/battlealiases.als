@@ -3575,7 +3575,7 @@ battlefield.event {
       $battlefield.damage
       $metal_defense_check(%member, battlefield)
       if (%attack.damage <= 0) { set %attack.damage 1 }
-      $guardianmon.check(battlefield, battlefield, %who.battle)
+      $guardianmon.check(battlefield, battlefield, %member)
       if ($readini($char(%,member), info, HurtByTaunt) = true) { set %attack.damage 0 }
       if ($readini($char(%member), info, IgnoreBattlefieldDamage) = true) { set %attack.damage 0 }
       $deal_damage(battlefield, %member, battlefield)
@@ -3610,6 +3610,7 @@ battlefield.event {
 
           $guardianmon.check(battlefield, battlefield, %who.battle)
           if ($readini($char(%who.battle), info, HurtByTaunt) = true) { set %attack.damage 0 }
+          if ($readini($char(%who.battle), info, IgnoreBattlefieldDamage) = true) { set %attack.damage 0 }
           $deal_damage(battlefield, %who.battle, battlefield)
           $display_aoedamage(battlefield, %who.battle, battlefield)
         }
@@ -3646,6 +3647,7 @@ battlefield.event {
           if (%attack.damage <= 0) { set %attack.damage 1 }
 
           $guardianmon.check(battlefield, battlefield, %who.battle)
+          if ($readini($char(%who.battle), info, IgnoreBattlefieldDamage) = true) { set %attack.damage 0 }
 
           $deal_damage(battlefield, %who.battle, battlefield)
           $display_aoedamage(battlefield, %who.battle, battlefield)
