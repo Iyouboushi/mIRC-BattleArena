@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=$iif($return_playersinbattle > 4, $calc(43000 + (100 * $return_playersinbattle)) , 43000)
 Tp=250
-Str=11734 
-Def=9412
-Int=11124
-Spd=611
+Str=17192
+Def=10383
+Int=14230
+Spd=10383
 Name=Ogama the Doomed Creature
 IgnitionGauge=50
 
@@ -12,10 +12,10 @@ IgnitionGauge=50
 [Battle]
 Hp=33000
 Tp=250
-Str=11734 
-Def=9412
-Int=11124
-Spd=611
+Str=17192
+Def=10383
+Int=14230
+Spd=10383
 Status=alive
 IgnitionGauge=50
 
@@ -112,7 +112,7 @@ Resist-Stun=100
 Resist-Petrify=60
 Zen=5
 ClearMind=1
-Regen=$iif($return_playersinbattle > 3, 4, 2)
+Regen=$iif($return_playersinbattle > 3, 5, 3)
 
 [Techniques]
 AbyssBlast=500
@@ -121,8 +121,8 @@ StinkingGas=500
 WhipTongue=1500
 
 [Styles]
-Equipped=spellmaster
-spellmaster=2
+Equipped=guardian
+spellmaster=5
 
 [Augment]
 DemonicWeapon=AbsorbTP.EnhanceCriticalHits
@@ -131,18 +131,18 @@ DemonicWeapon=AbsorbTP.EnhanceCriticalHits
 [modifiers]
 Heal=dark
 Earth=100
-Fire=50
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=130
-Dark=250
+Fire=40
+Wind=90
+Water=90
+Ice=90
+Lightning=90
+Light=110
+Dark=550
 HandToHand=100
 Whip=100
 Sword=100
-Gun=100
-Rifle=100
+Gun=60
+Rifle=60
 Katana=100
 Wand=100
 Spear=100
