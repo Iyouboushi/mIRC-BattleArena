@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 02/10/16
+;;;; Last updated: 04/15/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -961,6 +961,7 @@ alias ai.buildportal {
   if ($is_charmed($1) = true) { return }
   if ($readini($char($1), skills, demonportal) >= 1) {  
     if ((%battle.type = defendoutpost) || (%battle.type = assault)) { return }
+    if (%battle.type = torment) { return }
     var %portal.chance $rand(1,110)
     if (%portal.chance <= 25) { $skill.demonportal($1) }
   }
