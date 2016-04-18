@@ -1,7 +1,7 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 4, $calc(43000 + (100 * $return_playersinbattle)) , 43000)
+Hp=$iif($return_playersinbattle > 4, $calc(53000 + (100 * $return_playersinbattle)) , 53000)
 Tp=250
-Str=17192
+Str=19192
 Def=10383
 Int=14230
 Spd=10383
@@ -10,9 +10,9 @@ IgnitionGauge=50
 
 
 [Battle]
-Hp=33000
+Hp=53000
 Tp=250
-Str=17192
+Str=19192
 Def=10383
 Int=14230
 Spd=10383
@@ -112,7 +112,7 @@ Resist-Stun=100
 Resist-Petrify=60
 Zen=5
 ClearMind=1
-Regen=$iif($return_playersinbattle > 3, 5, 3)
+Regen=$iif($return_playersinbattle > 3, 6, 4)
 
 [Techniques]
 AbyssBlast=500
@@ -122,7 +122,7 @@ WhipTongue=1500
 
 [Styles]
 Equipped=guardian
-spellmaster=5
+guardian=7
 
 [Augment]
 DemonicWeapon=AbsorbTP.EnhanceCriticalHits
