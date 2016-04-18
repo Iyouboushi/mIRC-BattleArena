@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/13/16
+;;;; Last updated: 04/17/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3336,10 +3336,14 @@ spawn_after_death {
     if (%bossquote != $null) { $dcc.battle.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ ") }
   }
 
+  var %monster.level $readini($char(%monster.to.spawn), Info, bosslevel)
+  if (%monster.level = $null) { var %monster.level $get.level($1) }
+  if ($get.level($1) > %monster.level) { var %monster.level $get.level($1) }
+
   ; Boost the monster
   $fulls(%monster.to.spawn)
   $boost_monster_stats(%monster.to.spawn) 
-  $levelsync(%monster.to.spawn, $get.level($1))
+  $levelsync(%monster.to.spawn, %monster.level)
 
   set %multiple.wave.bonus yes
   set %first.round.protection yes
