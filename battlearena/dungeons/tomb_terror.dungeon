@@ -29,9 +29,9 @@ Battlefield=Tomb of Terror - Embalming Lab
 Monsters=Terror_Bloodclot.Terror_Zombie
 
 [4]
-Desc=After fleeing the embalming lab the party stumbles upon a chapel with two rows of four wooden pews leading past grandoise landscapes. Symbols of Bahamut and Diablos are encarved in stones that circle the alter where a lone humanoid priest stands laughing. "Welcome! You are to be sacrificed to the gods!"
+Desc=After fleeing the embalming lab the party stumbles upon a chapel with two rows of four wooden pews leading past grandoise landscapes. Symbols of Bahamut and Diablos are encarved in stones that circle the alter where a lone humanoid stands laughing. "Welcome! You are to be sacrificed to the gods!"
 Battlefield=Tomb of Terror - Chapel
-Monsters=Terror_Priest
+Monsters=$iif($rand(1,2) = 1, Terror_Priest, Terror_Warlock)
 
 [5]
 Desc=Upon the death of the priest, a wall rumbles and opens to reveal an inner sanctum. Heavy gray smoke fills the room and has an obvious supernatural air about it. The smoke begins to gather together and take form into a large wisp.

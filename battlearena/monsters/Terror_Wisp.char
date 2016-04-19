@@ -119,7 +119,7 @@ GraveCurse=500
 [modifiers]
 Heal=none
 Earth=0
-Fire=10
+Fire=$rand(3,10)
 Wind=0
 Water=0
 Ice=0
@@ -146,5 +146,5 @@ Dynamite=0
 
 [Styles]
 Equipped=Guardian
-Guardian=3
+Guardian=4
 GuardianXP=0
