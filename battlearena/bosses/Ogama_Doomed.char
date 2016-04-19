@@ -125,17 +125,17 @@ Equipped=guardian
 guardian=7
 
 [Augment]
-DemonicWeapon=AbsorbTP.EnhanceCriticalHits
+Doomed=AbsorbTP.EnhanceCriticalHits.EnhanceDoubleTurnChance.IgnoreGuardian.IgnoreDefense
 
 
 [modifiers]
 Heal=dark
 Earth=100
-Fire=40
-Wind=90
-Water=90
-Ice=90
-Lightning=90
+Fire=$rand(30,40)
+Wind=$rand(80,90)
+Water=$rand(70,90)
+Ice=$rand(85,90)
+Lightning=$rand(85,90)
 Light=110
 Dark=550
 HandToHand=100
