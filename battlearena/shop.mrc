@@ -1349,8 +1349,14 @@ alias shop.enhancements {
 
       if ($3 = hp) {
         var %current.max.hp $readini($char($1), basestats, hp)
-        var %capped.xp $readini(system.dat, system, maxHP)
-        if (%current.max.hp < %capped.xp) { $display.private.message(4Your max HP is under the current cap and you cannot purchase any HP enhancements until you are over the cap) | halt }
+        var %capped.hp $readini(system.dat, system, maxHP)
+        if (%current.max.hp < %capped.hp) { $display.private.message(4Your max HP is under the current cap and you cannot purchase any HP enhancements until you are over the cap) | halt }
+      }
+
+      if ($3 = ig) {
+        var %current.max.ig $readini($char($1), basestats, IgnitionGauge)
+        var %capped.ig $readini(system.dat, system, MaxIG)
+        if (%current.max.ig < %capped.ig) { $display.private.message(4Your max IG is under the current cap and you cannot purchase any IG enhancements until you are over the cap) | halt }
       }
 
 
