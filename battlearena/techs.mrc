@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/13/16
+;;;; Last updated: 04/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -332,6 +332,8 @@ alias tech_cmd {
   if (%tech.type = heal-aoe) { $tech.aoeheal($1, $2, $3) }
   if (%tech.type = single) {  $covercheck($3, $2) | $tech.single($1, $2, %attack.target )  }
   if (%tech.type = suicide) { $covercheck($3, $2) | $tech.suicide($1, $2, %attack.target )  }
+
+  if (%tech.type = death) { $covercheck($3, $2) | $tech.death($1, $2, %attack.target) } 
 
   if (%tech.type = suicide-AOE) { 
     if ($is_charmed($1) = true) { 
@@ -791,6 +793,37 @@ alias tech.suicide {
 
   $display_damage($1, $3, tech, $2)
   return
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Performs an insta-death tech
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+alias tech.death {
+  ; $1 = user
+  ; $2 = tech
+  ; $3 = target
+
+  ; Decrease the action points
+  $action.points($1, remove, 4)
+
+  ; Check for Utsusemi
+  $utsusemi.check($1, $2, $3)
+
+  ; Check for wonderguard
+  $wonderguard.check($3, $2, tech)
+
+  if (%guard.message != $null) { set %attack.damage 0 }
+  else {
+    var %death.chance 15 | var %death.roll $rand(1,100)
+
+    ; later will add the ability for accessories to increase or decrease death chance
+
+    if (%death.roll <= %death.chance) { set %attack.damage $readini($char($3), battle, HP) }
+  }
+
+  $deal_damage($1, $3, $2, %absorb, tech)
+  $display_damage($1, $3, tech, $2, %absorb)
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

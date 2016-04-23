@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/17/16
+;;;; Last updated: 04/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -899,6 +899,12 @@ deal_damage {
   set %attack.damage $round(%attack.damage, 0)
 
   if (%guard.message != $null) { set %attack.damage 0 }
+
+  ; Is the target a TRUE metal defense target? If so, this will always be 1 damage max.
+  if ((%attack.damage > 0) && ($readini($char($2), info, TrueMetalDefense) = true)) { 
+    unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
+    set %attack.damage 1 
+  }
 
   ; Check to see if we need to remove flawless victory
   if (%attack.damage > 0) {
