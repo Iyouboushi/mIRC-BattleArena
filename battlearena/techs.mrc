@@ -803,6 +803,8 @@ alias tech.death {
   ; $2 = tech
   ; $3 = target
 
+  set %attack.damage 0
+
   ; Decrease the action points
   $action.points($1, remove, 4)
 
@@ -814,7 +816,10 @@ alias tech.death {
 
   if (%guard.message != $null) { set %attack.damage 0 }
   else {
-    var %death.chance 15 | var %death.roll $rand(1,100)
+    var %death.chance $readini($dbfile(techniques.db), $2, DeathChance)
+    if (%death.chance = $null) { var %death.chance 15 }
+
+    var %death.roll $rand(1,100)
 
     ; later will add the ability for accessories to increase or decrease death chance
 
