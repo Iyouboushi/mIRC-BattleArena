@@ -126,7 +126,7 @@ BloodDagger=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 8000
 AtlantianBlast=$iif($readini(system.dat, system, ForcePortalSync) = true, 600, 8000)
 AsuranFists=$iif($readini(system.dat, system, ForcePortalSync) = true, 500, 5000)
 AtlantianExplosion=$iif($readini(system.dat, system, ForcePortalSync) = true, 300, 3000)
-
+AtlantianDoom=1
 
 [Item_Amount]
 

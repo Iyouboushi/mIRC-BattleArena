@@ -124,6 +124,7 @@ TrueStrike.on=on
 BloodDagger=$calc(1 + $current.battlestreak)
 BloodBlast=$calc(1 + $current.battlestreak)
 BloodBoost=$calc(1 + $current.battlestreak)
+AtlantianDoom=$iif($current.battlestreak < 500, 0, 1)
 
 [Item_Amount]
 

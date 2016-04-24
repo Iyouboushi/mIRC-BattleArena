@@ -264,7 +264,7 @@ CowLegs=Stomp.Charge.Roar
 OrochiPower=YamiBarai.AoiHana.YaOtome.SakuTsumagushi
 BogardGloves=PowerWave.BurnKnuckle.RisingTackle.PowerGeyser.BusterWolf
 GiygasPower=CannotGrasp.HurtsPlayer.PKRockin
-AtlantisPower=BloodDagger.BloodBoost.BloodBlast.AtlantianBlast.AtlantianExplosion
+AtlantisPower=BloodDagger.BloodBoost.BloodBlast.AtlantianBlast.AtlantianExplosion.AtlantianDoom
 Broad_Sword=DoubleSlash.BurningRush.BlazingDynamo.MadnessHero
 Rose's_Rapier=WhipSmack.MoreAndMore.HardBlade.DemonsDance
 ShihouinFists=DoublePunch.ShoulderTackle.AsuranFists.ShinjinSpiral.ShunkouRaigeki.ShunkouRaijinSenkei.ShunkouBakuenMusou
@@ -4845,14 +4845,15 @@ Magic=no
 stat=int
 
 [IronMaiden]
-Type=Single
+Type=Death
 TP=10
-Desc=says "I need ONLY this!" before opening a large iron maiden and throwing a small wooden doll into it.  The doll then causes %enemy to be teleported in its place.  The iron maiden slams the door shut, the spikes slamming into %enemy $+ !
+Desc=says "I need ONLY this!" before opening a large iron maiden and throwing a small wooden doll into it.  The doll then causes %enemy to be teleported in its place. $iif(%attack.damage = 0, But %enemy manages to escape before the door is closed, The iron maiden slams the door shut and the spikes slamming into %enemy $+ !)
 BasePower=15
 Element=Dark
 Cost=0
 Magic=no
 stat=str
+DeathChance=$iif($return_playersinbattle = 1, 25, $iif($return_playersinbattle > 2, 100, 75))
 
 [RockBottom]
 Type=Single
@@ -5442,6 +5443,18 @@ Cost=0
 Magic=Yes
 stat=int
 DestroyShadows=4
+
+[AtlantianDoom]
+Type=Death
+TP=100
+Desc=sends a powerful wave of ancient and cursed Atlantian energy towards %enemy $+ ! 
+BasePower=10
+Element=Dark
+Cost=0
+Magic=Yes
+stat=int
+DestroyShadows=4
+DeathChance=45
 
 [BloodDagger]
 Type=Single
