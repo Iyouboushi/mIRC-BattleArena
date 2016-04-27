@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 04/13/16
+;;;; Last updated: 04/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -598,8 +598,10 @@ alias fullbring.singleheal {
   var %item.base $readini($dbfile(items.db), $2, FullbringAmount)
   inc %attack.damage %item.base
 
-  ; Increase the amount by a factor of how strong fullbring is
-  set %attack.damage $calc(%attack.damage * $readini($char($1), skills, Fullbring))
+  ; Increase the amount if the player's fullbring level is over the item's fullbring level
+  var %fullbring.level.diff $calc($readini($char($1), skills, Fullbring) - $readini($dbfile(items.db), $2, FullbringLevel))
+  var %fullbring.item.increase $calc(%fullbring.level.diff * %attack.damage)
+  inc %attack.damage %fullbring.item.increase
 
   ; If the person has the FieldMedic skill, increase the amount.
   var %field.medic.skill $readini($char($1), skills, FieldMedic) 
@@ -639,8 +641,10 @@ alias fullbring.calcheal {
   var %item.base $readini($dbfile(items.db), $2, FullbringAmount)
   inc %attack.damage %item.base
 
-  ; Increase the amount by a factor of how strong fullbring is
-  set %attack.damage $calc(%attack.damage * $readini($char($1), skills, Fullbring))
+  ; Increase the amount if the player's fullbring level is over the item's fullbring level
+  var %fullbring.level.diff $calc($readini($char($1), skills, Fullbring) - $readini($dbfile(items.db), $2, FullbringLevel))
+  var %fullbring.item.increase $calc(%fullbring.level.diff * %attack.damage)
+  inc %attack.damage %fullbring.item.increase
 
   ; If the person has the FieldMedic skill, increase the amount.
   var %field.medic.skill $readini($char($1), skills, FieldMedic) 
