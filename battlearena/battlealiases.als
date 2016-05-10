@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/23/16
+;;;; Last updated: 05/10/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3804,6 +3804,8 @@ utsusemi.check {
     if ($readini($dbfile(weapons.db), $2, DestroyShadows) != $null) { inc %shadows.blocked $readini($dbfile(weapons.db), $2, DestroyShadows) }
 
     if ((%battle.rage.darkness = on) && ($readini($char($1), info, flag) = monster)) { inc %shadows.blocked 5 }
+
+    if (($get.level($1) > $get.level($3)) && ($readini($char($1), info, flag) = monster)) { inc %shadows.blocked 1 }
 
     if (%shadows.blocked > %number.of.shadows) { set %shadows.blocked %number.of.shadows }
 

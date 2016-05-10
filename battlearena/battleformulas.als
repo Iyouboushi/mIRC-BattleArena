@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 04/12/16
+;;;; Last updated: 05/10/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -2616,19 +2616,24 @@ formula.meleedmg.monster {
           if (%level.difference >= 0) && (%level.difference <= 500) { inc %min.damage $round($calc(%min.damage * .20),0) }
           if (%level.difference > 500) { inc %min.damage $round($calc(%min.damage * .50),0) }
         }
-
       }
 
+    }
+
+    if (%battle.type = boss) {
+      var %percent.damage.amount $rand(1,2)
+      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
+      inc %attack.damage %percent.damage 
+      inc %min.damage %percent.damage
     }
 
     if (%battle.type = dungeon) {
       if ($dungeon.bossroomcheck = true) { var %percent.damage.amount 5 }
       else { var %percent.damage.amount 3 }
       var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
-      if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
-      else { inc %attack.damage %percent.damage }
+      inc %attack.damage %percent.damage 
+      inc %min.damage %percent.damage
     }
-
 
     if (%battle.type = torment) { 
       var %percent.damage.amount 2.5
@@ -2996,10 +3001,16 @@ formula.techdmg.monster {
       if ($dungeon.bossroomcheck = true) { var %percent.damage.amount 5 }
       else { var %percent.damage.amount 3 }
       var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
-      if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
-      else { inc %attack.damage %percent.damage }
+      inc %attack.damage %percent.damage 
+      inc %min.damage %percent.damage
     }
 
+    if (%battle.type = boss) {
+      var %percent.damage.amount $rand(1,2)
+      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
+      inc %attack.damage %percent.damage 
+      inc %min.damage %percent.damage
+    }
   }
 
   if (%battle.type = torment) { 
