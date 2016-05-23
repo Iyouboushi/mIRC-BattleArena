@@ -133,11 +133,11 @@ armor.stat {
   var %armor.stat 0
 
   ; Check for each armor part
-  if ($return.equipped($1, head) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, head), $2) }
-  if ($return.equipped($1, body) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, body), $2) }
-  if ($return.equipped($1, legs) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, legs), $2) }
-  if ($return.equipped($1, feet) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, feet), $2) }
-  if ($return.equipped($1, hands) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, hands), $2) }
+  if (($return.equipped($1, head) != nothing) && ($return.equipped($1, head) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, head), $2) }
+  if (($return.equipped($1, body) != nothing) && ($return.equipped($1, body) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, body), $2) }
+  if (($return.equipped($1, legs) != nothing) && ($return.equipped($1, legs) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, legs), $2) }
+  if (($return.equipped($1, feet) != nothing) && ($return.equipped($1, feet) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, feet), $2) }
+  if (($return.equipped($1, hands) != nothing) && ($return.equipped($1, hands) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, hands), $2) }
 
   return %armor.stat
 }
