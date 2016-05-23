@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/09/16
+;;;; Last updated: 05/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -121,6 +121,27 @@ gender3 {
   else { return he }
 }
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Calculates the bonus stats
+; This is from armor/weapons/food
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+armor.stat {
+  ; $1 = the person we're checking
+  ; $2 = the stat we're checking
+
+  var %armor.stat 0
+
+  ; Check for each armor part
+  if ($return.equipped($1, head) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, head), $2) }
+  if ($return.equipped($1, body) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, body), $2) }
+  if ($return.equipped($1, legs) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, legs), $2) }
+  if ($return.equipped($1, feet) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, feet), $2) }
+  if ($return.equipped($1, hands) != nothing) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, hands), $2) }
+
+  return %armor.stat
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns level of char
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -129,6 +150,11 @@ get.level {
   var %def $readini($char($1), battle, def)
   var %int $readini($char($1), battle, int)
   var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
+
+  dec %str $armor.stat($1, str)
+  dec %def $armor.stat($1, def)
+  dec %int $armor.stat($1, int)
+  dec %spd $round($calc($armor.stat($1, spd) * .5),0)
 
   var %level %str
   inc %level %def
@@ -144,6 +170,11 @@ get.level.basestats {
   var %def $readini($char($1), basestats, def)
   var %int $readini($char($1), basestats, int)
   var %spd $round($calc($readini($char($1), basestats, spd) * .5),0)
+
+  dec %str $armor.stat($1, str)
+  dec %def $armor.stat($1, def)
+  dec %int $armor.stat($1, int)
+  dec %spd $round($calc($armor.stat($1, spd) * .5),0)
 
   var %level %str
   inc %level %def
@@ -167,6 +198,16 @@ get.level.old {
   var %level $round($calc(%level / 20), 1)
 
   return %level
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns what is equipped in the slot
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return.equipped {
+  ; $1 = person
+  ; $2 = what we're checking (head, body, accessory1, accessory2, etc)
+
+  return $readini($char($1), equipment, $2)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
