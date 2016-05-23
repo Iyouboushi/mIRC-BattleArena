@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/10/16
+;;;; Last updated: 05/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -845,6 +845,11 @@ levelsync {
   var %int $readini($char($1), battle, int)
   var %spd $readini($char($1), battle, spd)
 
+  dec %str $armor.stat($1, str)
+  dec %def $armor.stat($1, def)
+  dec %int $armor.stat($1, int)
+  dec %spd $armor.stat($1, spd)
+
   if (%str <= 5) { var %str 5 | writeini $char($1) battle str 5 }
   if (%def <= 5) { var %def 5 | writeini $char($1) battle def 5 }
   if (%int <= 5) { inc %int 5 | writeini $char($1) battle int 5 }
@@ -870,6 +875,8 @@ levelsync {
     writeini $char($1) battle Spd %spd
 
     var %level.difference $round($calc($2 - $get.level($1)),0)
+
+    writeini $char($1) info levelsync yes
     inc %current.loop 1
   }
 

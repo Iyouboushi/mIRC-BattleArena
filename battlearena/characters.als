@@ -151,10 +151,12 @@ get.level {
   var %int $readini($char($1), battle, int)
   var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
 
-  dec %str $armor.stat($1, str)
-  dec %def $armor.stat($1, def)
-  dec %int $armor.stat($1, int)
-  dec %spd $round($calc($armor.stat($1, spd) * .5),0)
+  if ($readini($char($1), info, levelsync) != yes) {
+    dec %str $armor.stat($1, str)
+    dec %def $armor.stat($1, def)
+    dec %int $armor.stat($1, int)
+    dec %spd $round($calc($armor.stat($1, spd) * .5),0)
+  }
 
   var %level %str
   inc %level %def
