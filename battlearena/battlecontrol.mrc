@@ -1447,6 +1447,7 @@ alias generate_battle_order {
   while (%battletxt.current.line <= %battletxt.lines) { 
     var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
     set %battle.speed $readini($char(%who.battle), battle, spd)
+    inc %battle.speed $armor.stat(%who.battle, spd)
     if ($readini($char(%who.battle), status, slow) = yes) { %battle.speed = $calc(%battle.speed / 2) } 
     if ($readini($char(%who.battle), skills, Retaliation.on) = on) { %battle.speed = -1000 }
 
