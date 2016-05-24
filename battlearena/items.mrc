@@ -1268,8 +1268,11 @@ alias remove.armor.all {
 }
 
 alias remove.armor.oldstyle {
+  $display.message(Removing the $2 armor for $1, global)
+
   $set_chr_name($1)
   set %item.location $readini($dbfile(equipment.db), $2, EquipLocation)
+  if (%item.location = $null) { return }
 
   ; Decrease the stats
   var %armor.hp $round($calc($readini($char($1), Basestats, hp) - $readini($dbfile(equipment.db), $2, hp)),0)
