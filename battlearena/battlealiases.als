@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/23/16
+;;;; Last updated: 05/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2763,7 +2763,13 @@ trickster_dodge_check {
     if (%current.playerstyle.level > 65) { set %current.playerstyle.level 65 }
   }
 
-  if ($readini($char($2), battle, spd) > $readini($char($1), battle, spd)) { inc %dodge.chance $rand(5,10) } 
+  var %attacker.speed $current.spd($2) 
+  inc %attacker.speed $armor.stat($2, spd)
+
+  var %target.speed $current.spd($1)
+  inc %target.speed $armor.stat($1, spd)
+
+  if (%attacker.speed > %target.speed) { inc %dodge.chance $rand(5,10) } 
 
   if ((%battle.type = torment) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(10,15) }
 
