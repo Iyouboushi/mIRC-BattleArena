@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 05/23/16
+;;;; Last updated: 05/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1517,8 +1517,8 @@ character.dragonhunt {
   ; Check for a dragon's lair
   var %dragonhunt.chance 5
 
-  ; If there's more than 3 dragons let's increase the odds of finding one
-  if (%dragonhunt.numberofdragons > 3) { inc %dragonhunt.chance %dragonhunt.numberofdragons } 
+  ; If there's more than 4 dragons let's increase the odds of finding one
+  if (%dragonhunt.numberofdragons > 4) { inc %dragonhunt.chance %dragonhunt.numberofdragons } 
 
   ; If the combined dragon age is over 800 improve the odds of finding one
   if ($dragonhunt.dragonage.combined > 800) { inc %dragonhunt.chance 10 }

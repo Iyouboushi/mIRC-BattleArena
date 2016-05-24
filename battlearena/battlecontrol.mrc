@@ -561,6 +561,7 @@ alias enter {
       if (($return_winningstreak > 12) && (%battle.type != DragonHunt)) {
         if (%battle.type != Torment) { 
           if (($calc($return_winningstreak - $get.level($1)) > 35) || ($calc($get.level($1) / $return_winningstreak) < .35)) {
+            writeini $char($1) info levelsync yes
             $levelsync($1, $calc($return_winningstreak - 3))
 
             if ($readini(system.dat, system, PlayersMustDieMode) != true) {
@@ -630,7 +631,6 @@ alias enter {
     }
   }
 
-  remini $char($1) info levelsync 
   writeini $char($1) info NeedsFulls yes
 
   ; level sync for defend/assault outpost type battles

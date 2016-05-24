@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 05/23/16
+;;;; Last updated: 05/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4347,7 +4347,11 @@ dragonhunt.check {
 
   var %dragon.time.difference $calc($ctime - %dragonhunt.lastdragonmade)
 
-  if (%dragon.time.difference >= 43200) {
+  var %dragon.create.time 43200
+
+  if ($total.player.averagelevel > 500) { var %dragon.create.time 22000 }
+
+  if (%dragon.time.difference >= %dragon.create.time) {
     var %dragon.createchance $rand(1,100)
     if (%dragon.createchance <= 60) { $dragonhunt.createdragon }
   }
@@ -4390,8 +4394,11 @@ dragonhunt.createdragon {
   ; Are players too low level for a dragon to spawn?
   if ($total.player.averagelevel < 45) { return }
 
+  var %max.number.of.dragons 5
+  if ($total.player.averagelevel > 500) { inc %max.number.of.dragons 2 }
+
   var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
-  if (%dragonhunt.numberofdragons >= 5) { 
+  if (%dragonhunt.numberofdragons >= %max.number.of.dragons) { 
     ; Dragons are full, so let's have a chance that one of them will attack the allied forces HQ
     $shopnpc.kidnap(dragon) 
     return 
