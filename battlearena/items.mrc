@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/10/16
+;;;; Last updated: 05/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1204,17 +1204,9 @@ alias wear.armor {
   ; Increase the stats
   var %hp $round($calc($readini($char($1), Basestats, hp) + $readini($dbfile(equipment.db), $2, hp)),0)
   var %tp $round($calc($readini($char($1), Basestats, tp) + $readini($dbfile(equipment.db), $2, tp)),0)
-  var %str $round($calc($readini($char($1), Basestats, Str)  + $readini($dbfile(equipment.db), $2, str)),0)
-  var %def $round($calc($readini($char($1), Basestats, def)  + $readini($dbfile(equipment.db), $2, def)),0)
-  var %int $round($calc($readini($char($1), Basestats, int) + $readini($dbfile(equipment.db), $2, int)),0)
-  var %spd $round($calc($readini($char($1), Basestats, spd)  + $readini($dbfile(equipment.db), $2, spd)),0)
 
   writeini $char($1) Basestats Hp %hp
   writeini $char($1) Basestats Tp %tp
-  writeini $char($1) Basestats Str %str
-  writeini $char($1) Basestats Def %def
-  writeini $char($1) Basestats Int %int
-  writeini $char($1) Basestats Spd %spd
 
   $fulls($1, yes)
 
@@ -1235,17 +1227,9 @@ alias remove.armor {
   ; Decrease the stats
   var %hp $round($calc($readini($char($1), Basestats, hp) - $readini($dbfile(equipment.db), $2, hp)),0)
   var %tp $round($calc($readini($char($1), Basestats, tp) - $readini($dbfile(equipment.db), $2, tp)),0)
-  var %str $round($calc($readini($char($1), Basestats, Str)  - $readini($dbfile(equipment.db), $2, str)),0)
-  var %def $round($calc($readini($char($1), Basestats, def)  - $readini($dbfile(equipment.db), $2, def)),0)
-  var %int $round($calc($readini($char($1), Basestats, int) - $readini($dbfile(equipment.db), $2, int)),0)
-  var %spd $round($calc($readini($char($1), Basestats, spd) - $readini($dbfile(equipment.db), $2, spd)),0)
 
   writeini $char($1) Basestats Hp %hp
   writeini $char($1) Basestats Tp %tp
-  writeini $char($1) Basestats Str %str
-  writeini $char($1) Basestats Def %def
-  writeini $char($1) Basestats Int %int
-  writeini $char($1) Basestats Spd %spd
 
   $fulls($1, yes)
 
@@ -1254,6 +1238,58 @@ alias remove.armor {
 
   if ($3 != ignore) { $display.message($readini(translation.dat, system, RemovedArmor), global) }
 
+  unset %item.location | unset %worn.item
+}
+
+; ==================================================
+; The next two aliases are used to convert the old armor style
+; to the new armor style. In order to do that, all armor had to be
+; removed.
+; ==================================================
+alias remove.armor.all {
+  ; $1 = person
+
+  var %file $nopath($1-) 
+  var %name $remove(%file,.char)
+
+  if (%name = new_chr) { return }
+
+  var %armor.head $return.equipped(%name, head)
+  var %armor.body $return.equipped(%name, body)
+  var %armor.legs $return.equipped(%name, legs)
+  var %armor.hands $return.equipped(%name, hands)
+  var %armor.feet $return.equipped(%name, feet)
+
+  if ((%armor.head != none) && (%armor.head != nothing)) { $remove.armor.oldstyle(%name, %armor.head) }
+  if ((%armor.body != none) && (%armor.body != nothing)) { $remove.armor.oldstyle(%name, %armor.body) }
+  if ((%armor.legs != none) && (%armor.legs != nothing)) { $remove.armor.oldstyle(%name, %armor.legs) }
+  if ((%armor.hands != none) && (%armor.hands != nothing)) { $remove.armor.oldstyle(%name, %armor.hands) }
+  if ((%armor.feet != none) && (%armor.feet != nothing)) { $remove.armor.oldstyle(%name, %armor.feet) }
+}
+
+alias remove.armor.oldstyle {
+  $set_chr_name($1)
+  set %item.location $readini($dbfile(equipment.db), $2, EquipLocation)
+
+  ; Decrease the stats
+  var %armor.hp $round($calc($readini($char($1), Basestats, hp) - $readini($dbfile(equipment.db), $2, hp)),0)
+  var %armor.tp $round($calc($readini($char($1), Basestats, tp) - $readini($dbfile(equipment.db), $2, tp)),0)
+  var %armor.str $round($calc($readini($char($1), Basestats, Str)  - $readini($dbfile(equipment.db), $2, str)),0)
+  var %armor.def $round($calc($readini($char($1), Basestats, def)  - $readini($dbfile(equipment.db), $2, def)),0)
+  var %armor.int $round($calc($readini($char($1), Basestats, int) - $readini($dbfile(equipment.db), $2, int)),0)
+  var %armor.spd $round($calc($readini($char($1), Basestats, spd) - $readini($dbfile(equipment.db), $2, spd)),0)
+
+  writeini $char($1) Basestats Hp %armor.hp
+  writeini $char($1) Basestats Tp %armor.tp
+  writeini $char($1) Basestats Str %armor.str
+  writeini $char($1) Basestats Def %armor.def
+  writeini $char($1) Basestats Int %armor.int
+  writeini $char($1) Basestats Spd %armor.spd
+
+  $fulls($1, yes)
+
+  ; Clear the armor 
+  writeini $char($1) equipment %item.location nothing
   unset %item.location | unset %worn.item
 }
 

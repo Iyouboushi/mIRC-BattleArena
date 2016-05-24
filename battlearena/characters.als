@@ -121,6 +121,13 @@ gender3 {
   else { return he }
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns current stats
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+current.str { return $readini($char($1), battle, str) }
+current.def { return $readini($char($1), battle, def) }
+current.int { return $readini($char($1), battle, int) }
+current.spd { return $readini($char($1), battle, spd) }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Calculates the bonus stats
@@ -151,15 +158,6 @@ get.level {
   var %int $readini($char($1), battle, int)
   var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
 
-  if ($readini($char($1), info, flag) = $null) { 
-    if ($readini($char($1), info, levelsync) != yes) {
-      dec %str $armor.stat($1, str)
-      dec %def $armor.stat($1, def)
-      dec %int $armor.stat($1, int)
-      dec %spd $round($calc($armor.stat($1, spd) * .5),0)
-    }
-  }
-
   var %level %str
   inc %level %def
   inc %level %int
@@ -174,13 +172,6 @@ get.level.basestats {
   var %def $readini($char($1), basestats, def)
   var %int $readini($char($1), basestats, int)
   var %spd $round($calc($readini($char($1), basestats, spd) * .5),0)
-
-  if ($readini($char($1), info, flag) = $null) {
-    dec %str $armor.stat($1, str)
-    dec %def $armor.stat($1, def)
-    dec %int $armor.stat($1, int)
-    dec %spd $round($calc($armor.stat($1, spd) * .5),0)
-  }
 
   var %level %str
   inc %level %def

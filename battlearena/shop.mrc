@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 04/18/16
+;;;; Last updated: 05/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1127,12 +1127,16 @@ alias shop.stats {
 
     var %player.current.hp $readini($char($1), basestats, hp)
     var %player.max.hp $readini(system.dat, system, maxHP)
+    dec %player.max.hp $armor.stat($1, hp)
+
     if (%player.current.hp < %player.max.hp) { 
       %shop.list = $addtok(%shop.list,HP+50 ( $+ %hp.price $+ ),46)
     }
 
     var %player.current.tp $readini($char($1), basestats, tp)
     var %player.max.tp $readini(system.dat, system, maxTP)
+    dec %player.max.tp $armor.stat($1, tp)
+
     if (%player.current.tp < %player.max.tp) {
       %shop.list = $addtok(%shop.list,TP+5 ( $+ %tp.price $+ ),46)
     }
@@ -1165,11 +1169,13 @@ alias shop.stats {
 
     if ($3 = hp) {
       var %player.current.hp $readini($char($1), basestats, hp)
+      dec %player.current.hp $armor.stat($1, hp)
       if (%player.current.hp >= $readini(system.dat, system, maxHP)) { $display.private.message(4Error: You have the maximum amount of HP allowed!) | halt }
     }
 
     if ($3 = tp) {
       var %player.current.tp $readini($char($1), basestats, tp)
+      dec %player.current.tp $armor.stat($1, tp)
       if (%player.current.tp >= $readini(system.dat, system, maxTP)) {  $display.private.message(4Error: You have the maximum amount of TP allowed!) | halt }
     }
 
@@ -1193,7 +1199,6 @@ alias shop.stats {
 
       if (%stat.ratio > %stat.ratio.limit) { $display.private.message($readini(translation.dat, errors, Can'tRaiseStatBeforeOthers)) | halt }
     }
-
 
     ; if so, increase the amount and add the stat bonus
     if (($3 != IG) && ($3 != IgnitionGauge)) {  var %basestat.to.increase $readini($char($1), basestats, $3) }

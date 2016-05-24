@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 05/10/16
+;;;; Last updated: 05/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -597,6 +597,7 @@ formula.meleedmg.player.formula_2.0 {
   if (%base.power = $null) { var %base.power 1 }
 
   set %base.stat $readini($char($1), battle, str)
+  inc %base.stat $armor.stat($1, str)
   $strength_down_check($1)
 
   if (%base.stat > 999) {  
@@ -734,6 +735,7 @@ formula.meleedmg.player.formula_2.0 {
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
+  inc %enemy.defense $armor.stat($3, def)
 
   $defense_down_check($3)
   $defense_up_check($3)
@@ -974,6 +976,7 @@ formula.meleedmg.player.formula_3.1 {
   if (%base.weapon.power = $null) { var %base.weapon.power 1 }
 
   var %base.stat $readini($char($1), battle, str)
+  inc %base.stat $armor.stat($1, str)
   $strength_down_check($1)
 
   set %true.base.stat %base.stat
@@ -1094,6 +1097,7 @@ formula.meleedmg.player.formula_3.1 {
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
+  inc %enemy.defense $armor.stat($3, def)
 
   $defense_down_check($3)
   $defense_up_check($3)
@@ -1291,6 +1295,7 @@ formula.meleedmg.player.formula_3.0 {
   if (%base.weapon.power = $null) { var %base.weapon.power 1 }
 
   var %base.stat $readini($char($1), battle, str)
+  inc %base.stat $armor.stat($1, str)
   $strength_down_check($1)
 
   set %true.base.stat %base.stat
@@ -1422,6 +1427,7 @@ formula.meleedmg.player.formula_3.0 {
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
+  inc %enemy.defense $armor.stat($3, def)
 
   $defense_down_check($3)
   $defense_up_check($3)
@@ -1641,6 +1647,7 @@ formula.meleedmg.player.formula_1.0 {
   if (%base.power = $null) { var %base.power 1 }
 
   set %base.stat $readini($char($1), battle, str)
+  inc %base.stat $armor.stat($1, str)
   $strength_down_check($1)
 
   var %weapon.base $readini($char($1), weapons, $2)
@@ -1768,6 +1775,7 @@ formula.meleedmg.player.formula_1.0 {
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
+  inc %enemy.defense $armor.stat($3, def)
 
   $defense_down_check($3)
   $defense_up_check($3)
@@ -1968,6 +1976,7 @@ formula.meleedmg.player.formula_2.5 {
   if (%base.weapon.power = $null) { var %base.weapon.power 1 }
 
   var %base.stat $readini($char($1), battle, str)
+  inc %base.stat $armor.stat($1, str)
   $strength_down_check($1)
 
   if (%battle.type = torment) { var %attack.rating %base.stat }
@@ -2119,6 +2128,7 @@ formula.meleedmg.player.formula_2.5 {
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
+  inc %enemy.defense $armor.stat($3, def)
 
   $defense_down_check($3)
   $defense_up_check($3)
@@ -2161,7 +2171,7 @@ formula.meleedmg.player.formula_2.5 {
   }
 
   ; Calculate the Level Ratio
-  set %level.ratio $calc($readini($char($1), battle, str) / %enemy.defense)
+  set %level.ratio $calc(($readini($char($1), battle, str) + $armor.stat($1, str)) / %enemy.defense)
 
   var %attacker.level $get.level($1)
   var %defender.level $get.level($3)
@@ -2354,6 +2364,7 @@ formula.meleedmg.monster {
   if (%base.weapon.power = $null) { var %base.weapon.power 1 }
 
   var %base.stat $readini($char($1), battle, str)
+  inc %base.stat $armor.stat($1, str)
   $strength_down_check($1)
 
   set %true.base.stat %base.stat
@@ -2498,7 +2509,8 @@ formula.meleedmg.monster {
   $damage.color.check
 
   ; Now we're ready to calculate the enemy's defense..  
-  set %enemy.defense $readini($char($3), battle, def)
+  set %enemy.defense $current.def($3)
+  inc %enemy.defense $armor.stat($3, def)
 
   $defense_down_check($3)
   $defense_up_check($3)
@@ -2800,9 +2812,10 @@ formula.techdmg.monster {
   if (%base.stat.needed = $null) { set %base.stat.needed int }
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
-
-  if (%base.stat.needed = str) { $strength_down_check($1) }
-  if (%base.stat.needed = int) {  $int_down_check($1) }
+  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
+  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
+  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
 
   set %true.base.stat  %base.stat
 
@@ -2897,10 +2910,11 @@ formula.techdmg.monster {
   if ((%tech.type = heal-aoe) || (%tech.type = heal)) { return }
 
   ; Now we're ready to calculate the enemy's defense.
-  set %enemy.defense $readini($char($3), battle, def)
+  set %enemy.defense $current.def($3)
+  inc %enemy.defense $armor.stat($3, def) 
 
   ; Because it's a tech, the enemy's int will play a small part too.
-  var %int.bonus $round($calc($readini($char($3), battle, int) / 3.5),0)
+  var %int.bonus $round(($calc($readini($char($3), battle, int) + $armor.stat($3, int)) / 3.5),0)
   if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
 
   inc %enemy.defense %int.bonus
@@ -3153,8 +3167,10 @@ formula.techdmg.player.formula_2.0 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat = str) { $strength_down_check($1) }
-  if (%base.stat = int) {  $int_down_check($1) }
+  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
+  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
+  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
 
   set %true.base.stat  %base.stat
 
@@ -3249,21 +3265,24 @@ formula.techdmg.player.formula_2.0 {
   if ((%tech.type = heal-aoe) || (%tech.type = heal)) { return }
 
   ; Now we're ready to calculate the enemy's defense.
-  set %enemy.defense $readini($char($3), battle, def)
+  set %enemy.defense $current.def($3) 
+  inc %enemy.defense $armor.stat($3, def)
 
   ; Because it's a tech, the enemy's int will play a small part too.
-  var %int.bonus $round($calc($readini($char($3), battle, int) / 3.5),0)
+  var %int.bonus $round($calc(($readini($char($3), battle, int) + $armor.stat($3, int)) / 3.5),0)
   if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
 
   inc %enemy.defense %int.bonus
 
   ; Now we're ready to calculate the enemy's defense.
   if ($readini($dbfile(techniques.db), $2, stat) = str) {  
-    set %enemy.defense $readini($char($3), battle, def) 
+    set %enemy.defense $current.def($3)
+    inc %enemy.defense $armor.stat($3, def)
     if ($readini($char($3), status, defdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
   else { 
-    set %enemy.defense $readini($char($3), battle, int) 
+    set %enemy.defense $current.int($3)
+    inc %enemy.defense $armor.stat($3, int)
     if ($readini($char($3), status, intdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
 
@@ -3470,8 +3489,10 @@ formula.techdmg.player.formula_2.5 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { $strength_down_check($1) }
-  if (%base.stat.needed = int) {  $int_down_check($1) }
+  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
+  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
+  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
 
   set %true.base.stat  %base.stat
 
@@ -3571,10 +3592,11 @@ formula.techdmg.player.formula_2.5 {
   if ((%tech.type = heal-aoe) || (%tech.type = heal)) { return }
 
   ; Now we're ready to calculate the enemy's defense.
-  set %enemy.defense $readini($char($3), battle, def)
+  set %enemy.defense $current.def($3)
+  inc %enemy.defense $armor.stat($3, def)
 
   ; Because it's a tech, the enemy's int will play a small part too.
-  var %int.bonus $round($calc($readini($char($3), battle, int) / 3.5),0)
+  var %int.bonus $round($calc(($readini($char($3), battle, int) + $armor.stat($3, int)) / 3.5),0)
   if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
 
   inc %enemy.defense %int.bonus
@@ -3779,9 +3801,12 @@ formula.techdmg.player.formula_1.0 {
   set %base.stat.needed $readini($dbfile(techniques.db), $2, stat)
   if (%base.stat.needed = $null) { set %base.stat.needed int }
 
-  if (%base.stat = str) { $strength_down_check($1) }
-
   set %base.stat $readini($char($1), battle, %base.stat.needed)
+
+  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
+  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
+  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
 
   var %tech.base $readini($dbfile(techniques.db), $2, BasePower)
   var %user.tech.level $readini($char($1), Techniques, $2)
@@ -3850,10 +3875,11 @@ formula.techdmg.player.formula_1.0 {
   if ((%tech.type = heal-aoe) || (%tech.type = heal)) { return }
 
   ; Now we're ready to calculate the enemy's defense.
-  set %enemy.defense $readini($char($3), battle, def)
+  set %enemy.defense $current.def($3)
+  inc %enemy.defense $armor.stat($3, def)
 
   ; Because it's a tech, the enemy's int will play a small part too.
-  var %int.bonus $round($calc($readini($char($3), battle, int) / 3.5),0)
+  var %int.bonus $round($calc(($readini($char($3), battle, int) + $armor.stat($3, int)) / 3.5),0)
   if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
 
   inc %enemy.defense %int.bonus
@@ -4010,8 +4036,10 @@ formula.techdmg.player.formula_3.1 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { $strength_down_check($1) }
-  if (%base.stat.needed = int) {  $int_down_check($1) }
+  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
+  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
+  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
 
   set %true.base.stat %base.stat
 
@@ -4094,11 +4122,13 @@ formula.techdmg.player.formula_3.1 {
 
   ; Now we're ready to calculate the enemy's defense.
   if ($readini($dbfile(techniques.db), $2, stat) = str) {  
-    set %enemy.defense $readini($char($3), battle, def) 
+    set %enemy.defense $current.def($3) 
+    inc %enemy.defense $armor.stat($3, def) 
     if ($readini($char($3), status, defdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
   else { 
-    set %enemy.defense $readini($char($3), battle, int) 
+    set %enemy.defense $current.int($3) 
+    inc %enemy.defense $armor.stat($3, int) 
     if ($readini($char($3), status, intdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
 
@@ -4287,8 +4317,10 @@ formula.techdmg.player.formula_3.0 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { $strength_down_check($1) }
-  if (%base.stat.needed = int) {  $int_down_check($1) }
+  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
+  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
+  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
 
   set %true.base.stat %base.stat
   set %base.stat $log($readini($char($1), battle, %base.stat.needed))
@@ -4382,11 +4414,13 @@ formula.techdmg.player.formula_3.0 {
 
   ; Now we're ready to calculate the enemy's defense.
   if ($readini($dbfile(techniques.db), $2, stat) = str) {  
-    set %enemy.defense $readini($char($3), battle, def) 
+    set %enemy.defense $current.def($3)
+    inc %enemy.defense $armor.stat($3, def)
     if ($readini($char($3), status, defdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
   else { 
-    set %enemy.defense $readini($char($3), battle, int) 
+    set %enemy.defense $current.int($3)
+    inc %enemy.defense $armor.stat($3, int)
     if ($readini($char($3), status, intdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
 
@@ -4590,8 +4624,10 @@ formula.techdmg.player.percent {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { $strength_down_check($1) }
-  if (%base.stat.needed = int) {  $int_down_check($1) }
+  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
+  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
+  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
 
   if (%base.stat > 9999) { set %base.stat $round($calc(9999 + ((%base.stat - 9999) * .10)),0) }
 
@@ -4682,11 +4718,13 @@ formula.techdmg.player.percent {
 
   ; Now we're ready to calculate the enemy's defense.
   if ($readini($dbfile(techniques.db), $2, stat) = str) {  
-    set %enemy.defense $readini($char($3), battle, def) 
+    set %enemy.defense $current.def($3)
+    inc %enemy.defense $armor.stat($3, def)
     if ($readini($char($3), status, defdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
   else { 
-    set %enemy.defense $readini($char($3), battle, int) 
+    set %enemy.defense $current.int($3)
+    inc %enemy.defense $armor.stat($3, int)
     if ($readini($char($3), status, intdown) = yes) { var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
 

@@ -102,6 +102,12 @@ system_defaults_check {
     if ($readini(system.dat, system, AllowAuctionHouseTopicChange) = $null) { writeini system.dat system AllowAuctionHouseTopicChange true }
     if ($readini(system.dat, system, MaxIdleTurns) = $null) { writeini system.dat system MaxIdleTurns 2 }
 
+    ; This is done to convert the armor system from before version 3.2 over and only needs to be done once
+    if ($readini(system.dat, system, ArmorUpdateFinished) = $null) {
+      .echo -q $findfile( $char_path , *.char, 0 , 0, remove.armor.all $1-)
+      writeini system.dat system ArmorUpdateFinished true
+    }
+
     if ($readini(system.dat, system, EnableDoppelganger) = $null) { writeini system.dat system EnableDoppelganger true }
     if ($readini(system.dat, system, EnableWarmachine) = $null) { writeini system.dat system EnableWarmachine true }
     if ($readini(system.dat, system, EnableBandits) = $null) { writeini system.dat system EnableBandits true }
