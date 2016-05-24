@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/10/16
+;;;; Last updated: 05/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2373,7 +2373,7 @@ runes.list {
 ; and regular stats.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 fulls {  
-  if ($2 = clearSotH) { remini $char($1) status SpiritOfHero }
+  if ($2 = clearSotH) { remini $char($1) status SpiritOfHero | remini $char($1) info levelsync }
   if (($readini($char($1), info, NeedsFulls) = no) && ($2 != yes)) { return } 
 
   var %players.must.die.mode $readini(system.dat, system, PlayersMustDieMode) 
