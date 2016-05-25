@@ -2046,7 +2046,7 @@ alias turn {
   if ($readini($char($1), Status, terrify) = yes) { var %skip.turn true }
   if (%too.drunk.to.fight = true) { var %skip.turn true }
 
-  if (%skip.turn = true) {  echo -a skipping turn
+  if (%skip.turn = true) { 
     unset %too.drunk.to.fight  | writeini $char($1) status petrified no | writeini $char($1) status intimidate no 
     writeini $char($1) status terrify no | writeini $char($1) Status blind no | writeini $char($1) status paralysis no
     writeini $char($1) status paralysis.timer 1 | writeini $char($1) status stun no | writeini $char($1) status stop no 
@@ -2739,6 +2739,7 @@ alias turn.statuscheck {
 
   $ignition_check($1) 
 
+  $flying.status.check($1)
   $poison_check($1) | $zombie_check($1) | $zombieregenerating_check($1) | $virus_check($1) 
   $frozen_check($1) | $shock_check($1)  | $burning_check($1) | $tornado_check($1) | $drowning_check($1) | $earthquake_check($1)
   $staggered_check($1) | $intimidated_check($1) | $terrified_check($1) | $blind_check($1) | $curse_check($1) | unset %hp.percent  | $stopped_check($1) |  $charm_check($1) | $confuse_check($1) | $amnesia_check($1) | $paralysis_check($1)

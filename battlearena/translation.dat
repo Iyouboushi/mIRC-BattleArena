@@ -805,6 +805,9 @@ EtherealBlocked=$chr(3) $+ 3 $+  $+ %real.name $+ 's attack goes right through
 EtherealWornOff=$chr(3) $+ 3 $+  $+ %real.name has become corporeal.
 CurrentlyEthereal=$chr(3) $+ 4 $+ %real.name is ethereal! 
 CurrentlyCocoonEvolve=$chr(3) $+ 4 $+ %real.name is in a state of evolution and is unable to act this round.
+CurrentlyFlying=$chr(3) $+ 4 $+ %real.name $+  is currently flying in the air!
+FlyingBlocked=$chr(3) $+ 3 $+  $+ %real.name $+ 's attack cannot reach $set_chr_name($3) %real.name so high in the air!
+FlyingLand=$chr(3) $+ 3 $+  $+ %real.name has landed on the ground.
 CocoonWornOff=breaks through the protective barrier, now stronger and better than before!
 ProtectWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's physical protect status has worn off. 
 ShellWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's magic shell status has worn off. 
@@ -1007,6 +1010,7 @@ IntDown=$chr(3) $+ 4 $+ -int
 Staggered=$chr(3) $+ 4 $+ staggered
 
 ; Positive status effects
+Flying=$chr(3) $+ 12 $+ flying
 Cocoon=$chr(3) $+ 12 $+ evolving
 Ethereal=$chr(3) $+ 12 $+ ethereal
 Revive=$chr(3) $+ 12 $+ will auto revive

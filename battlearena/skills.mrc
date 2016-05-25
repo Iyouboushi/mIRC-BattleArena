@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 04/27/16
+;;;; Last updated: 05/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -82,6 +82,7 @@ alias use.skill {
   if ($3 = cocoonevolve) { $skill.cocoon.evolve($1) }
   if ($3 = monsterconsume) { $skill.monster.consume($1, %attack.target) }
   if ($3 = repairNaturalArmor) { $skill.monster.repairnaturalarmor($1, %attack.target) }
+  if ($3 = flying) { $skill.flying($1) }
 }
 
 ;=================
@@ -2762,6 +2763,37 @@ alias skill.monstersummon {
 
   return
 }
+
+
+;=================
+; MONSTER FLY
+;=================
+alias skill.flying {
+  $set_chr_name($1)
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($readini($char($1), info, flag) = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, PlayersCannotUseSkill),private) | halt } 
+
+  if ($readini($char($1), status, flying) = yes) { 
+    if ($readini($char($1), descriptions, landing) = $null) { set %skill.description flies back to the ground and lands. }
+    else { set %skill.description $readini($char($1), descriptions, landing) }
+    writeini $char($1) status flying no
+    remini $char($1) status flying.timer
+  }
+  else { 
+    if ($readini($char($1), descriptions, flying) = $null) { set %skill.description leaps high into the air and begins to fly around the battlefield }
+    else { set %skill.description $readini($char($1), descriptions, flying) }
+    writeini $char($1) status flying yes
+    writeini $char($1) status flying.timer 0
+  }
+
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
 
 ;=================
 ; PROVOKE

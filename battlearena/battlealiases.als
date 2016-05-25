@@ -322,7 +322,7 @@ statuseffect.check {
 ; that status effects last.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 status.effects.turns {
-  var %negative.status.effects confuse.poison.curse.cocoon.weaponlock.drunk.zombie.virus.slow.defensedown.strdown.intdown.ethereal.charm.paralysis.bored
+  var %negative.status.effects flying.confuse.poison.curse.cocoon.weaponlock.drunk.zombie.virus.slow.defensedown.strdown.intdown.ethereal.charm.paralysis.bored
 
   if ($istok(%negative.status.effects,$1,46) = $true) { 
     if ($return_playersinbattle <= 1) { return 1 }
@@ -343,6 +343,7 @@ status.effects.turns {
     if ($1 = charm) { return 3 }
     if ($1 = paralysis) { return 3 }
     if ($1 = bored) { return 2 }
+    if ($1 = flying) { return 3 }
   }
   else { 
     if ($1 = defup) { return 3 }
@@ -352,6 +353,7 @@ status.effects.turns {
     if ($1 = enspell) { return 5 }
     if ($1 = reflect) { return 2 }
     if ($1 = invincible) { return 2 }
+    if ($1 = flying) { return 5 }
   }
 }
 
@@ -361,7 +363,6 @@ status.effects.turns {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 reward.capacitypoints {
   if ((%battle.type = dungeon) || (%battle.type = torment)) { return }
-
 
   var %temp.player.level $get.level($1)
   if (%temp.player.level < 100) { return }
@@ -376,6 +377,9 @@ reward.capacitypoints {
   if (%capacitypoints > 500) { 
     var %capacitypoints $round($calc(500 + ($current.battlestreak * .10)),0)
   }
+
+  ; For every 1 acheivement obtained the person will gain a + 2 to the capacity points gained
+  inc %capacitypoints $calc($ini($char($1), achievements, 0) * 2)
 
   var %current.cappoints $readini($char($1), stuff, CapacityPoints)
   if (%current.cappoints = $null) { var %current.cappoints 0 }
@@ -2176,6 +2180,7 @@ character.revive {
   writeini $char($1) status confuse.timer 1 | writeini $char($1) status defensedown no | writeini $char($1) status defensedown.timer 0 | writeini $char($1) status strengthdown no 
   writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown no | writeini $char($1) status intdown.timer 1
   writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0  | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0
+  writeini $char($1) status flying no
 
   return
 }
@@ -3754,6 +3759,7 @@ offensive.style.check {
 ; hurt.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 melee.ethereal.check {
+  if (%guard.message != $null) { return } 
   if ($readini($char($3), status, ethereal) = yes) {
     if ((($readini($dbfile(weapons.db), $2, HurtEthereal) != true) && ($augment.check($1, HurtEthereal) = false) && ($readini($char($1), skills, FormlessStrike.on) != on))) {
       $set_chr_name($1) | set %guard.message $readini(translation.dat, status, EtherealBlocked) | set %attack.damage 0 | return
@@ -3766,6 +3772,7 @@ magic.ethereal.check {
   ; $2 = technique
   ; $3 = target
 
+  if (%guard.message != $null) { return } 
   if (($readini($char($3), status, ethereal) = yes) && ($readini($dbfile(techniques.db), $2, magic) != yes)) {
     $set_chr_name($1) | set %guard.message $readini(translation.dat, status, EtherealBlocked) | set %attack.damage 0 | return
   }
@@ -3776,6 +3783,8 @@ tech.ethereal.check {
   ; $2 = technique
   ; $3 = target
 
+  if (%guard.message != $null) { return } 
+
   var %weapon.hurt.ethereal $readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), HurtEthereal)
 
   if ($readini($char($3), status, ethereal) = yes) {
@@ -3784,6 +3793,44 @@ tech.ethereal.check {
     }
   }
 
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; returns true if a weapon
+; is a ranged weapon
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+weapon.ranged.check {
+  if ($readini($dbfile(weapons.db), $2, ranged) = true) { return true }
+
+  var %weapon.type $readini($dbfile(weapons.db), $2, type)
+
+  if (%weapon.type = bow) { return true }
+  if (%weapon.type = gun) { return true }
+  if (%weapon.type = rifle) { return true }
+  if (%weapon.type = Glyph) { return true }
+
+  return false
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Check to see if flying
+; monster can be hurt.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; It is assumed that a ranged
+; weapon will hit a flying target
+; and all techs under
+; the ranged weapon. Also
+; magic will. 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+flying.damage.check {
+  ; $1 = the person who is attacking
+  ; $2 = the weapon the person is using
+  ; $3 = the target
+
+  if ($readini($char($3), status, flying) = yes) {
+    var %israngedweapon $weapon.ranged.check($2)
+    if (%israngedweapon != true) { $set_chr_name($1) | set %guard.message $readini(translation.dat, status, FlyingBlocked) | set %attack.damage 0 | return }
+  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4969,6 +5016,21 @@ invincible.status.check {
   else { return } 
 }
 
+flying.status.check {
+  if ($readini($char($1), status, flying) = yes) { 
+    set %flying.timer $readini($char($1), status, flying.timer)  
+
+    if (%flying.timer = $null) { set %flying.timer 0 }
+    if (%flying.timer < $status.effects.turns(flying)) { %flying.timer = $calc(%flying.timer + 1) | writeini $char($1) status flying.timer %flying.timer 
+      $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, CurrentlyFlying) | unset %flying.timer | return 
+    }
+    else {
+      writeini $char($1) status flying no | writeini $char($1) status flying.timer 0 
+      $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, FlyingLand) | unset %flying.timer | return 
+    }
+  }
+  else { return } 
+}
 
 ; Statuses that skip turns but wear off after 1 turn
 intimidated_check { 

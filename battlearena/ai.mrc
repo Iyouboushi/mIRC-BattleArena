@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 04/15/16
+;;;; Last updated: 05/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -740,6 +740,13 @@ alias ai_skillcheck {
     %ai.skilllist  = $addtok(%ai.skilllist, cover, 46) 
   }
 
+  if ($readini($char($1), skills, flying) >= 1) {
+    var %flying.timer $readini($char($1), status, flying.timer)
+    if (%flying.timer = $null) { %ai.skilllist  = $addtok(%ai.skilllist, flying, 46) } 
+    if (%flying.timer < 2) { return }
+    if (%flying.timer > 2) { %ai.skilllist  = $addtok(%ai.skilllist, flying, 46) } 
+  }
+
   if ($readini($char($1), skills, RepairNaturalArmor) >= 1) { 
     if ($readini($char($1), info, flag) = $null) { return }
     if ($readini($char($1), NaturalArmor, current) = 0) {  %ai.skilllist  = $addtok(%ai.skilllist, repairnaturalarmor, 46)  }
@@ -781,6 +788,7 @@ alias ai_chooseskill {
     if (%shadowcopy.name != $null) { $skill.clone($1, %shadowcopy.name) }
     if (%shadowcopy.name = $null) { $skill.clone($1) } 
   }
+  if (%ai.skill = flying) { $skill.flying($1) }
 
   if (%ai.skill = snatch) { 
     ; Get target

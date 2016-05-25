@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 02/23/16
+;;;; Last updated: 05/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1758,6 +1758,9 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) modifiers GreatSword 70
   writeini $char(%dragonhunt.file.name) modifiers bow 20
   writeini $char(%dragonhunt.file.name) modifiers glyph 60
+
+  ; Add flying skill for older dragons
+  if (%dragon.level >= 200) { writeini $char(%dragonhunt.file.name) skills flying 1 }
 
   $boost_monster_hp(%dragonhunt.file.name, dragonhunt, %dragon.level)
   $levelsync(%dragonhunt.file.name, %dragon.level)

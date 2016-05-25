@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 05/24/16
+;;;; Last updated: 05/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -701,6 +701,7 @@ formula.meleedmg.player.formula_2.0 {
 
   unset %current.accessory.type
 
+  $flying.damage.check($1, $2, $3) 
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   $weapon_parry_check($3, $1, $2)
@@ -1065,6 +1066,7 @@ formula.meleedmg.player.formula_3.1 {
 
   unset %current.accessory.type
 
+  $flying.damage.check($1, $2, $3) 
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   $weapon_parry_check($3, $1, $2)
@@ -1392,6 +1394,7 @@ formula.meleedmg.player.formula_3.0 {
 
   unset %current.accessory.type
 
+  $flying.damage.check($1, $2, $3) 
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   $weapon_parry_check($3, $1, $2)
@@ -1744,6 +1747,7 @@ formula.meleedmg.player.formula_1.0 {
 
   unset %current.accessory.type
 
+  $flying.damage.check($1, $2, $3) 
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   $weapon_parry_check($3, $1, $2)
@@ -2084,6 +2088,7 @@ formula.meleedmg.player.formula_2.5 {
 
   unset %current.accessory.type
 
+  $flying.damage.check($1, $2, $3) 
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   $weapon_parry_check($3, $1, $2)
@@ -2464,6 +2469,7 @@ formula.meleedmg.monster {
 
   unset %current.accessory.type
 
+  $flying.damage.check($1, $2, $3) 
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   $weapon_parry_check($3, $1, $2)
@@ -3067,6 +3073,7 @@ formula.techdmg.monster {
 
   unset %base.stat | unset %current.accessory.type | unset %base.stat.needed
 
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) {  $flying.damage.check($1, %weapon.used, $3)  }
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   if ($readini($dbfile(techniques.db), $2, canDodge) != false) {  $trickster_dodge_check($3, $1, tech) }
@@ -3394,6 +3401,7 @@ formula.techdmg.player.formula_2.0 {
 
   unset %base.stat | unset %current.accessory.type | unset %base.stat.needed
 
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) {  $flying.damage.check($1, %weapon.used, $3)  }
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   if ($readini($dbfile(techniques.db), $2, canDodge) != false) {  $trickster_dodge_check($3, $1, tech) }
@@ -3712,6 +3720,7 @@ formula.techdmg.player.formula_2.5 {
 
   unset %base.stat | unset %current.accessory.type | unset %base.stat.needed
 
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) {  $flying.damage.check($1, %weapon.used, $3)  }
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   if ($readini($dbfile(techniques.db), $2, canDodge) != false) {  $trickster_dodge_check($3, $1, tech) }
@@ -3935,6 +3944,7 @@ formula.techdmg.player.formula_1.0 {
 
   unset %base.stat | unset %current.accessory.type | unset %base.stat.needed
 
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) {  $flying.damage.check($1, %weapon.used, $3)  }
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   if ($readini($dbfile(techniques.db), $2, canDodge) != false) {  $trickster_dodge_check($3, $1, tech) }
@@ -4220,6 +4230,7 @@ formula.techdmg.player.formula_3.1 {
 
   unset %base.stat | unset %current.accessory.type | unset %base.stat.needed
 
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) {  $flying.damage.check($1, %weapon.used, $3)  }
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   if ($readini($dbfile(techniques.db), $2, canDodge) != false) {  $trickster_dodge_check($3, $1, tech) }
@@ -4521,6 +4532,7 @@ formula.techdmg.player.formula_3.0 {
 
   unset %base.stat | unset %current.accessory.type | unset %base.stat.needed
 
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) {  $flying.damage.check($1, %weapon.used, $3)  }
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   if ($readini($dbfile(techniques.db), $2, canDodge) != false) {  $trickster_dodge_check($3, $1, tech) }
@@ -4816,6 +4828,7 @@ formula.techdmg.player.percent {
 
   unset %base.stat | unset %current.accessory.type | unset %base.stat.needed
 
+  if ($readini($dbfile(techniques.db), $2, magic) != yes) {  $flying.damage.check($1, %weapon.used, $3)  }
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   if ($readini($dbfile(techniques.db), $2, canDodge) != false) {  $trickster_dodge_check($3, $1, tech) }
