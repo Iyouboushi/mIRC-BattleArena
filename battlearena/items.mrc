@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 05/24/16
+;;;; Last updated: 05/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1023,16 +1023,17 @@ alias item.food {
     if ($readini($char($2), info, flag) != $null)  {  set %target.stat $readini($char($2), battle, %food.type)  }
     else { set %target.stat $readini($char($2), basestats, %food.type) }
 
-
     if (%food.type = hp) {
       var %player.current.hp $readini($char($2), basestats, hp)
       var %player.max.hp $readini(system.dat, system, maxHP)
+      dec %player.max.hp $armor.stat($1, hp)
       if (%player.current.hp >= %player.max.hp) { $display.message($readini(translation.dat, errors, MaxHPAllowedOthers), private) | halt }
     }
 
     if (%food.type = tp) {
       var %player.current.tp $readini($char($2), basestats, tp)
       var %player.max.tp $readini(system.dat, system, maxTP)
+      dec %player.max.tp $armor.stat($1, tp)
       if (%player.current.tp >= %player.max.tp) { $display.message($readini(translation.dat, errors, MaxTPAllowedOthers), private)  | halt }
     }
 
