@@ -1453,6 +1453,11 @@ Battle Arena Bot VERSIONS
 - Added the enhancement point skill: Overwhelm. This skill will increase overall damage by 2% per skill level
 - Added the enhancement point item: AccessorySlot2. Buying this will cost 10 enhancement points and will allow players to equip
   a second accessory
+- Added the monster only skill: Flying. This skill will cause a monster to take to the skies. A flying monster can
+  only be hurt by ranged weapons and their techniques, magic, and items. Ranged weapons are: bows, guns, rifles and glyphs
+- Added true death techniques. A tech that is type DEATH will instantly kill any target if it hits. The chance to hit
+  is set in the technique information under DeathChance=  Only Utsusemi and WonderGuard can block it 100% of the time.
+- Added a true metal defense flag where no matter what damage will only ever be 1  In [info] put TrueMetalDefense=true
 - Added Trading Card items
 - Added new achievements
 - Added new weapons
@@ -1472,6 +1477,7 @@ Battle Arena Bot VERSIONS
 - Added a new bot admin command: !toggle battle system type
 - Added a new bot admin command: !clear dungeon usage -- using this command on a player will allow the player to use
   a dungeon key immediately
+- Added the terrified status effect. Anyone under this status will lose a turn.
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1507,6 +1513,13 @@ Battle Arena Bot VERSIONS
   the tech's name and tech's element.
 - Changed the code for alchemy so that it is now possible to craft weapons directly
 - Changed the code for the auction house so that is is now possible to bid on weapons directly
+- Changed armor so that it no longer adds STR, DEF, INT or SPD to the player's file
+- Changed armor so that it no longer affects a player's level
+- Changed a few things with dragon hunts so channels that have a higher average level will generate dragons faster
+- Changed the shop so that it checks to see if a player's hp/tp is below the max even with the armor bonus
+- Changed the +stat items so that it checks to see if a player's hp/tp is below the max even with the armor bonus
+- Changed TormentReward items (Horadric Cache/Stash) so that players can open more than once at a time, up to 10 total. 
+  To open more than one: !use ITEMNAME # where # is 1 to 10. If the # is greater than the # owned, it defaults back to 1.
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
