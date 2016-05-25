@@ -1462,7 +1462,7 @@ Battle Arena Bot VERSIONS
 - Added new achievements
 - Added new weapons
 - Added TormentOrb 12-15, 20, 25 and 30 and their recipes
-- Added two new dungeons
+- Added new dungeons
 - Added the ability for weapons to require ammo to use in melee and tech attacks.  In weapons.db under [weapon] put
   AmmoRequired=itemname  and AmmoAmountNeeded=#
 - Added the !last seen command. This command will tell you when a player was last seen in the channel
@@ -1520,6 +1520,8 @@ Battle Arena Bot VERSIONS
 - Changed the +stat items so that it checks to see if a player's hp/tp is below the max even with the armor bonus
 - Changed TormentReward items (Horadric Cache/Stash) so that players can open more than once at a time, up to 10 total. 
   To open more than one: !use ITEMNAME # where # is 1 to 10. If the # is greater than the # owned, it defaults back to 1.
+- Changed the amount of capacity points players gain so that the number of achievements obtained will increase the amount.  
+  The amount increased is: # of achievements * 2.  
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
