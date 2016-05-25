@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/24/16
+;;;; Last updated: 05/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2039,9 +2039,20 @@ alias turn {
 
   if ($readini($char($1), status, staggered) = yes) { set %skip.ai on | writeini $char($1) status staggered no  | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt }
 
-  if ((((($readini($char($1), Status, Blind) = yes) || ($readini($char($1), Status, Petrified) = yes) ||  ($readini($char($1), status, bored) = yes) || ($readini($char($1), Status, intimidate) = yes) || (%too.drunk.to.fight = true))))) { 
-    unset %too.drunk.to.fight  | writeini $char($1) status petrified no | writeini $char($1) status intimidate no | writeini $char($1) Status blind no | writeini $char($1) status paralysis no | writeini $char($1) status paralysis.timer 1 | writeini $char($1) status stun no | writeini $char($1) status stop no |  set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt
+  if ($readini($char($1), Status, Blind) = yes)  { var %skip.turn true }
+  if ($readini($char($1), Status, Petrified) = yes) { var %skip.turn true }
+  if ($readini($char($1), status, bored) = yes) { var %skip.turn true }
+  if ($readini($char($1), Status, intimidate) = yes) { var %skip.turn true }
+  if ($readini($char($1), Status, terrify) = yes) { var %skip.turn true }
+  if (%too.drunk.to.fight = true) { var %skip.turn true }
+
+  if (%skip.turn = true) {  echo -a skipping turn
+    unset %too.drunk.to.fight  | writeini $char($1) status petrified no | writeini $char($1) status intimidate no 
+    writeini $char($1) status terrify no | writeini $char($1) Status blind no | writeini $char($1) status paralysis no
+    writeini $char($1) status paralysis.timer 1 | writeini $char($1) status stun no | writeini $char($1) status stop no 
+    set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt
   }
+
   if ($readini($char($1), Status, cocoon) = yes) { set %skip.ai on |  /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next  | halt }
   if ($readini($char($1), status, paralysis) = yes) { set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next  | halt }
   if ($readini($char($1), status, sleep) = yes) { set %skip.ai on | /.timerThrottle $+ $rand(a,z) $+ $rand(1,100) $+ $rand(a,z) 1 %file.to.read.lines /next | halt  }
@@ -2730,7 +2741,7 @@ alias turn.statuscheck {
 
   $poison_check($1) | $zombie_check($1) | $zombieregenerating_check($1) | $virus_check($1) 
   $frozen_check($1) | $shock_check($1)  | $burning_check($1) | $tornado_check($1) | $drowning_check($1) | $earthquake_check($1)
-  $staggered_check($1) | $intimidated_check($1) | $blind_check($1) | $curse_check($1) | unset %hp.percent  | $stopped_check($1) |  $charm_check($1) | $confuse_check($1) | $amnesia_check($1) | $paralysis_check($1)
+  $staggered_check($1) | $intimidated_check($1) | $terrified_check($1) | $blind_check($1) | $curse_check($1) | unset %hp.percent  | $stopped_check($1) |  $charm_check($1) | $confuse_check($1) | $amnesia_check($1) | $paralysis_check($1)
   $drunk_check($1) | $slowed_check($1) | $asleep_check($1) | $stunned_check($1) | $defensedown_check($1) | $strengthdown_check($1)  | $intdown_check($1) | $ethereal_check($1) 
   $cocoon_check($1) | $weapon_locked($1) | $petrified_check($1)  | $bored_check($1) | $reflect.check($1)
   $invincible.status.check($1) 

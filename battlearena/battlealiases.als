@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/24/16
+;;;; Last updated: 05/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -271,6 +271,7 @@ no.turn.check {
   if ($statuseffect.check($1, stun) != no) { $display.message($readini(translation.dat, status, TooStunnedToFight),private) | halt }
   if ($statuseffect.check($1, stop) != no) { $display.message($readini(translation.dat, status, CurrentlyStopped),private) | halt }
   if ($statuseffect.check($1, sleep) != no) { $display.message($readini(translation.dat, status, CurrentlyAsleep),private) | halt }
+  if ($statuseffect.check($1, terrified) != no) { $display.message($readini(translation.dat, status, TooTerrifiedToFight),private) | halt }
 }
 
 no.mech.check {
@@ -844,11 +845,6 @@ levelsync {
   var %def $readini($char($1), battle, def)
   var %int $readini($char($1), battle, int)
   var %spd $readini($char($1), battle, spd)
-
-  dec %str $armor.stat($1, str)
-  dec %def $armor.stat($1, def)
-  dec %int $armor.stat($1, int)
-  dec %spd $armor.stat($1, spd)
 
   if (%str <= 5) { var %str 5 | writeini $char($1) battle str 5 }
   if (%def <= 5) { var %def 5 | writeini $char($1) battle def 5 }
@@ -2399,7 +2395,7 @@ inflict_status {
     if (%random.status.type = 15) { set %status.type bored | var %status.grammar bored of the battle  }
     if (%random.status.type = 16) { set %status.type confuse | var %status.grammar confused  }
     if (%random.status.type = 17) { set %status.type sleep | var %status.grammar asleep  }
-
+    if (%random.status.type = 18) { set %status.type terrify | var %status.grammar terrified }
   }
 
   if ($3 = stop) { set %status.type stop | var %status.grammar frozen in time }
@@ -2426,6 +2422,7 @@ inflict_status {
   if ($3 = defenseup) { set %status.type defenseup | var %status.grammar gains defense up }
   if ($3 = speedup) { set %status.type speedup | var %status.grammar faster }
   if ($3 = sleep) { set %status.type sleep  | var %status.grammar asleep }
+  if ($3 = terrify) { set %status.type terrify | var %status.grammar terrified }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
 
@@ -2598,6 +2595,7 @@ do.self.inflict.status {
   if (%self.status.type = petrify) { set %status.type petrify  | var %status.grammar petrified }
   if (%self.status.type = bored) { set %status.type bored | var %status.grammar bored of the battle  }
   if (%self.status.type = confuse) { set %status.type confuse  | var %status.grammar confused }
+  if (%self.status.type = terrify) { set %status.type terrify | var %status.grammar terrified }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: %self.status.type | return }
 
@@ -4976,6 +4974,13 @@ invincible.status.check {
 intimidated_check { 
   if ($readini($char($1), Status, intimidate) = yes) { 
     $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, TooIntimidatedToFight)
+  }
+  else { return } 
+}
+
+terrified_check { 
+  if ($readini($char($1), Status, terrify) = yes) { 
+    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, TooTerrifiedToFight)
   }
   else { return } 
 }

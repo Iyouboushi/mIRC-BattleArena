@@ -408,7 +408,7 @@ CanNotAttackSomeoneWhoFled=$chr(3) $+ 4 $+ %real.name cannot attack $set_chr_n
 CanNotAttackSomeoneWhoFledTech=$chr(3) $+ 4 $+ %real.name cannot attack $set_chr_name($3) %real.name $+ , because %real.name has run away from the fight! 
 CanNotUseOnLivePerson=$chr(3) $+ 4 $+ %real.name cannot use this item on someone who is still alive.
 DoesNotKnowTech=$chr(3) $+ 4 $+ %real.name does not know how to perform the $2 technique!
-Can'tPerformTechWithWeapon=$chr(3) $+ 4 $+ %real.name cannot perform that technique using $iif(%weapon.equipped.left != $null, $gender($1) equipped weapons, $gender(41) %weapon.equipped)
+Can'tPerformTechWithWeapon=$chr(3) $+ 4 $+ %real.name cannot perform that technique using $iif(%weapon.equipped.left != $null, $gender($1) equipped weapons, $gender($1) %weapon.equipped)
 NotEnoughTPforTech=$chr(3) $+ 4 $+ %real.name does not have enough TP to perform this technique! 
 AlreadyBoosted=$chr(3) $+ 4 $+ %real.name is already boosted and cannot do so again at this time!
 AlreadyUsedFinalGetsuga=$chr(3) $+ 4 $+ %real.name has already used this technique and cannot do so again. 
@@ -747,6 +747,7 @@ TooDrunkToFight2=$chr(3) $+ 4 $+  $+ %real.name is too drunk to fight!
 TooBlindToFight=$chr(3) $+ 4 $+  $+ %real.name is too blind to fight!
 TooPetrifiedToFight=$chr(3) $+ 4 $+  $+ %real.name is too petrified to fight!
 TooIntimidatedToFight=$chr(3) $+ 4 $+  $+ %real.name is too intimidated to fight!
+TooTerrifiedToFight=$chr(3) $+ 4 $+  $+ %real.name is too terrified to fight!
 TooStaggeredToFight=$chr(3) $+ 4 $+  $+ %real.name is staggered and is unable to fight this round!
 CurrentlyAsleep=$chr(3) $+ 4 $+ %real.name is currently asleep!
 WakesUp=$chr(3) $+ 4 $+ %enemy is no longer asleep!
@@ -983,6 +984,7 @@ HeavyPoison=$chr(3) $+ 4 $+ poisoned heavily
 Blind=$chr(3) $+ 4 $+ blinded
 Silence=$chr(3) $+ 4 $+ silenced
 Intimidate=$chr(3) $+ 4 $+ intimidated
+Terrify=$chr(3) $+ 4 $+ terrified
 Weight=$chr(3) $+ 4 $+ weighed down
 Charmed=$chr(3) $+ 4 $+ charmed by $readini($char($1), status, charmer) $+ 
 Amnesia=$chr(3) $+ 4 $+ under amnesia
