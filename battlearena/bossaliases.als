@@ -1672,6 +1672,8 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) monster type dragon
   writeini $char(%dragonhunt.file.name) info CanTaunt false
 
+  if (%dragon.level >= 150) { writeini $char($1) monster elite true }
+
   var %base.hp.tp $round($calc(100 * %dragon.level),0)
   if ($return_playersinbattle >= 4) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
 
