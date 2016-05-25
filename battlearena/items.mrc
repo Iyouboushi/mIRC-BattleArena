@@ -62,7 +62,10 @@ on 3:TEXT:!use*:*: {  unset %real.name | unset %enemy | $set_chr_name($nick)
 
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
 
-  if ($4 = $null) { $uses_item($nick, $2, on, $nick) }
+  if ($4 = $null) { 
+    if ($readini($dbfile(items.db), $2, type) = tormentreward) { $uses_item($nick, $2, on, $nick, $3) }
+    else { $uses_item($nick, $2, on, $nick) }
+  }
   else {  
     $partial.name.match($nick, $4)
     $uses_item($nick, $2, $3, %attack.target)
@@ -269,7 +272,14 @@ alias uses_item {
   if (%item.type = ammo) { $display.message($readini(translation.dat, errors, ItemIsUsedAsAmmo), private) | halt }
   if (%item.type = accessory) { $display.message($readini(translation.dat, errors, ItemIsAccessoryEquipItInstead), private) | halt }
   if (%item.type = random) { $item.random($1, $4, $2) | $decrease_item($1, $2) | halt }
-  if (%item.type = TormentReward) { $item.tormentreward($1, $1, $2) | $decrease_item($1, $2) | halt }
+  if (%item.type = TormentReward) { 
+    var %amount.to.open $abs($5)
+
+    if ((%amount.to.open = $null) || (%amount.to.open !isnum 1-10)) { var %amount.to.open 1 }
+    if (%amount.to.open > $readini($char($1), Item_Amount, $2)) { var %amount.to.open 1 }
+
+    $item.tormentreward($1, $1, $2, %amount.to.open) | $decrease_item($1, $2, %amount.to.open) | halt 
+  }
   if (%item.type = special) { $item.special($1, $4, $2) | $decrease_item($1, $2) | halt }
   if (%item.type = trust) { 
     if ((no-trust isin %battleconditions) || (no-trusts isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition), private) | halt }
@@ -432,13 +442,16 @@ alias uses_item {
   if (%battleis = on)  { $check_for_double_turn($1) | halt }
 }
 
-
 alias decrease_item {
+  ; $3 = the amount to remove
+
+  var %amount.to.remove $3
+  if ($3 = $null) { var %amount.to.remove 1 }
+
   ; Subtract the item and tell the new total
-  set %check.item $readini($char($1), item_amount, $2)
-  dec %check.item 1 
+  var %check.item $readini($char($1), item_amount, $2)
+  dec %check.item %amount.to.remove 
   writeini $char($1) item_amount $2 %check.item
-  unset %check.item
 }
 
 alias item.increasewpnlvl {
@@ -681,28 +694,67 @@ alias item.tormentreward {
   ; $1 = user
   ; $2 = target
   ; $3 = item used
+  ; $4 = the amount we're opening
 
-  var %present.list items_tormentreward.lst
+  var %reward.list items_tormentreward.lst
 
-  var %items.lines $lines($lstfile(%present.list))
+  var %items.lines $lines($lstfile(%reward.list))
   if (%items.lines = $null) { $display.message(4ERROR: items_tormentrewad.lst is missing or empty!, private) | halt }
 
-  var %random $rand(1, %items.lines)
-  if (%random = $null) { var %random 1 }
-  var %random.item.contents $read -l $+ %random $lstfile(%present.list)
-  var %random.item.name %random.item.contents
-  var %random.item.amount $readini($dbfile(items.db), $3, ItemsInside)
-  if (%random.item.amount = $null) { var %random.item.amount $rand(1,10) }
 
-  var %current.reward.items $readini($char($1), item_amount, %random.item.name)
-  if (%current.reward.items = $null) { set %current.reward.items 0 }
-  inc %current.reward.items %random.item.amount
-  writeini $char($1) item_amount %random.item.contents %current.reward.items
-  unset %current.reward.items
+  if ($4 = 1) { 
+    var %random $rand(1, %items.lines)
+    if (%random = $null) { var %random 1 }
+    var %random.item.contents $read -l $+ %random $lstfile(%reward.list)
+    var %random.item.name %random.item.contents
+    var %random.item.amount $readini($dbfile(items.db), $3, ItemsInside)
+    if (%random.item.amount = $null) { var %random.item.amount $rand(1,10) }
 
-  ; Display the desc of the item
-  $set_chr_name($2) | var %enemy %real.name | $set_chr_name($1) 
-  $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global) 
+    var %current.reward.items $readini($char($1), item_amount, %random.item.name)
+    if (%current.reward.items = $null) { set %current.reward.items 0 }
+    inc %current.reward.items %random.item.amount
+    writeini $char($1) item_amount %random.item.contents %current.reward.items
+    unset %current.reward.items
+
+    ; Display the desc of the item
+    $set_chr_name($2) | var %enemy %real.name | $set_chr_name($1) 
+    $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global) 
+  }
+
+  else {
+    var %lifeshards.count 0
+    var %reusableparts.count 0
+    var %forgottensouls.count 0
+    var %arcanedust.count 0
+
+    var %opening.current.item 1
+    while (%opening.current.item <= $4) { 
+
+      var %random $rand(1, %items.lines)
+      if (%random = $null) { var %random 1 }
+      var %random.item.contents $read -l $+ %random $lstfile(%reward.list)
+      var %random.item.name %random.item.contents
+      var %random.item.amount $readini($dbfile(items.db), $3, ItemsInside)
+      if (%random.item.amount = $null) { var %random.item.amount $rand(1,10) }
+
+      var %current.reward.items $readini($char($1), item_amount, %random.item.name)
+      if (%current.reward.items = $null) { set %current.reward.items 0 }
+      inc %current.reward.items %random.item.amount
+      writeini $char($1) item_amount %random.item.contents %current.reward.items
+      unset %current.reward.items
+
+      if (%random.item.name = lifeshard) { inc %lifeshards.count %random.item.amount }
+      if (%random.item.name = ReusablePart) { inc %reusableparts.count %random.item.amount }
+      if (%random.item.name = ForgottenSoul) { inc %forgottensouls.count %random.item.amount }
+      if (%random.item.name = ArcaneDust) { inc %arcanedust.count %random.item.amount }
+
+      inc %opening.current.item 1
+    }
+
+    ; The display message is temporary and will be fixed later
+    $display.message(3 $+ %real.name  $+ has obtained: %lifeshards.count lifeshards $+ $chr(44)  $+ %reusableparts.count resuable parts $+ $chr(44)  $+ %forgottensouls.count forgotten souls $+ $chr(44) and %arcanedust.count arcane dust  , global) 
+  }
+
 
 }
 
