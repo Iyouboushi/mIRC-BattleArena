@@ -869,6 +869,11 @@ levelsync {
     %int = $round($calc(%int * %difference.ratio),0) 
     %spd = $round($calc(%spd * %difference.ratio),0) 
 
+    if (%str <= 5) { var %str 5  }
+    if (%def <= 5) { var %def 5 }
+    if (%int <= 5) { inc %int 5 }
+    if (%spd <= 5) { inc %spd 5 }
+
     writeini $char($1) battle Str %str
     writeini $char($1) battle Def %def
     writeini $char($1) battle Int %int
