@@ -4401,7 +4401,6 @@ dragonhunt.createdragon {
   if ($total.player.averagelevel < 45) { return }
 
   var %max.number.of.dragons 5
-  if ($total.player.averagelevel > 500) { inc %max.number.of.dragons 2 }
 
   var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
   if (%dragonhunt.numberofdragons >= %max.number.of.dragons) { 
@@ -4433,7 +4432,9 @@ dragonhunt.createdragon {
   writeini $dbfile(dragonhunt.db) %dragon.name.file Created $ctime
 
   ; Pick a random age for the dragon
-  writeini $dbfile(dragonhunt.db) %dragon.name.file Age $rand(100,200)
+  var %dragon.age $rand(100,150)
+  if ($total.player.averagelevel > 500) { inc %dragon.range $rand(150,300) }
+  writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
 
   ; Pick a random element
   var %elements fire.ice.wind.shadow.earth.light.lightning
