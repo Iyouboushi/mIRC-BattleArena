@@ -1191,7 +1191,7 @@ Type=AOE
 TP=50
 Desc=lures all of the enemies close and swings the sword in a half circle to hit all enemies.
 BasePower=25
-Element=none
+Element=lightning
 Cost=1500
 Magic=no
 stat=str
@@ -4341,16 +4341,6 @@ TP=5
 Desc=looks at %enemy and bends to a knee before its giant shield slams towards %enemy with amazing speed!
 BasePower=10
 Element=none
-magic=no
-cost=0
-stat=str
-
-[Shockwave]
-Type=AOE
-TP=10
-Desc=glows with a yellow aura as it slams its massive sword into the ground, sending massive shockwaves to everyone within range!
-BasePower=12
-Element=lightning
 magic=no
 cost=0
 stat=str
