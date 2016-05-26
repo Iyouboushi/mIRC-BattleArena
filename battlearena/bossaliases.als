@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 05/25/16
+;;;; Last updated: 05/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1674,15 +1674,15 @@ dragonhunt.createfile {
 
   if (%dragon.level >= 150) { writeini $char($1) monster elite true }
 
-  var %base.hp.tp $round($calc(100 * %dragon.level),0)
-  if ($return_playersinbattle >= 4) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
+  var %base.hp.tp $round($calc(150 * %dragon.level),0)
+  if ($return_playersinbattle >= 3) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
 
   writeini $char(%dragonhunt.file.name) basestats hp %base.hp.tp
   writeini $char(%dragonhunt.file.name) basestats tp %base.hp.tp
 
   writeini $char(%dragonhunt.file.name) battle str $rand(19,35)
-  writeini $char(%dragonhunt.file.name) battle def $rand(15,20)
-  writeini $char(%dragonhunt.file.name) battle int $rand(12,19)
+  writeini $char(%dragonhunt.file.name) battle def $rand(32,35)
+  writeini $char(%dragonhunt.file.name) battle int $rand(25,30)
   writeini $char(%dragonhunt.file.name) battle spd $rand(18,25)
 
   writeini $char(%dragonhunt.file.name) weapons equipped DragonFangs
@@ -1710,6 +1710,7 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) skills resist-stun 100
   writeini $char(%dragonhunt.file.name) skills Resist-blind 100
   writeini $char(%dragonhunt.file.name) skills Resist-poison 95
+  writeini $char(%dragonhunt.file.name) skills Resist-paralysis 95
   writeini $char(%dragonhunt.file.name) skills Resist-slow 70
   writeini $char(%dragonhunt.file.name) skills Resist-Weaponlock 100
   writeini $char(%dragonhunt.file.name) skills Resist-Curse 70
@@ -1739,8 +1740,8 @@ dragonhunt.createfile {
 
   ; Add the dragon scales
   writeini $char(%dragonhunt.file.name) NaturalArmor Name Dragon Scales
-  writeini $char(%dragonhunt.file.name) NaturalArmor Max $calc(5 * %dragon.level)
-  writeini $char(%dragonhunt.file.name) NaturalArmor Current $calc(5 * %dragon.level)
+  writeini $char(%dragonhunt.file.name) NaturalArmor Max $calc(100 * %dragon.level)
+  writeini $char(%dragonhunt.file.name) NaturalArmor Current $calc(100 * %dragon.level)
 
   ; Add guardian style
   writeini $char(%dragonhunt.file.name) styles equipped Guardian
