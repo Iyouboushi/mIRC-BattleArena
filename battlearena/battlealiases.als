@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/25/16
+;;;; Last updated: 05/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3805,9 +3805,9 @@ tech.ethereal.check {
 ; is a ranged weapon
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 weapon.ranged.check {
-  if ($readini($dbfile(weapons.db), $2, ranged) = true) { return true }
+  if ($readini($dbfile(weapons.db), $1, ranged) = true) { return true }
 
-  var %weapon.type $readini($dbfile(weapons.db), $2, type)
+  var %weapon.type $readini($dbfile(weapons.db), $1, type)
 
   if (%weapon.type = bow) { return true }
   if (%weapon.type = gun) { return true }
@@ -3832,7 +3832,7 @@ flying.damage.check {
   ; $2 = the weapon the person is using
   ; $3 = the target
 
-  if ($readini($char($3), status, flying) = yes) {
+  if ($readini($char($3), status, flying) = yes) { 
     var %israngedweapon $weapon.ranged.check($2)
     if (%israngedweapon != true) { $set_chr_name($1) | set %guard.message $readini(translation.dat, status, FlyingBlocked) | set %attack.damage 0 | return }
   }
