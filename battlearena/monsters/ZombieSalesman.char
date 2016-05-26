@@ -53,6 +53,7 @@ IgnoreElementalMessage=true
 [Monster]
 Type=zombie
 size=medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
 
 [Status]
 Poison=no
@@ -89,12 +90,12 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=zombiefists
-zombiefists=55
+zombiefists=$calc(1 + $current.battlestreak)
 
 [Skills]
 
 [Techniques]
-ZombieBite=50
+ZombieBite=$calc(1 + $current.battlestreak)
 
 [modifiers]
 Heal=none
@@ -126,3 +127,8 @@ Mace=70
 PinkChainsaw=150
 Stave=70
 EnergyBlaster=120
+SamuraiEdge=150
+SamuraiEdge-I=150
+SamuraiEdge-F=150
+SamuraiEdge-E=150
+SamuraiEdge-M=150

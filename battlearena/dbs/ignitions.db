@@ -153,6 +153,20 @@ StatusType=TPRegenerating
 Techs=Chou_Kamehameha
 Desc=begin to channel an ancient power begins to channel an ancient power meant for another race. $gender($1) energy flares around $gender($1) body, then swirls all around $gender2($1) into a cone in the shape of $gender($1) body, which then turns into $gender($1) aura. The aura is flashing very brightly and violently at the moment. %real.name $+ 's body overloads as energy flares out like wild fire and $gender($1) hair turns gold and $gender($1) eyes green.
 
+[GlyphUnion]
+Name=Glyph Union
+hp=1.5
+Str=1.5
+def=1.5
+int=1.5
+spd=1.5
+Augment=MagicBonus.TechBonus.RenkeiBonus
+IgnitionTrigger=15
+IgnitionConsume=10
+Cost=$iif($readini($char($1), weapons, Glyphs) >= 500, 25, 0)
+Techs=Evanescere.Universitas.UnionSecare.UnionCulter.Tellus.Saturnus.Venus
+Desc=unleashes the full power of the Glyphs, gaining new attacks and extra power.
+
 ==========================
 NPC/Monster/Boss Ignitions
 ==========================
@@ -935,3 +949,21 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc='s hair and skin goes pale and now wears a full-bodied black garment with black pants, gloves, and boots, over which he wears a flowing white robe. He also gains the Rinne Sharingan as a third eye, that has a ripple-like pattern which spreads over the eyeball, with red sclerae and irides, containing a pattern of nine tomoe.
+
+[ElementalSforzoII]
+Name=Elemental Sforzo
+hp=1.5
+Str=1.5
+def=1.5
+int=1.5
+spd=1.5
+Augment=TechBonus.MagicBonus.CuringBonus.RenkeiBonus
+Effect=Status
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=$+ 's body and weapon is covered with a rainbow barrier for a moment before disappearing, giving %real.name elemental defense and offense!
+StatusTarget=self
+StatusType=Protect.Shell.Resist-Earth.Resist-Fire.Resist-Wind.Resist-Water.Resist-Ice.Resist-Lightning.Resist-Light.Resist-Dark
+AdditionalCode=writeini $char($1) status En-Spell Lightning

@@ -8,6 +8,7 @@ Swords=Swords
 Swords2=Swords
 Whips=Whips
 Guns=Guns
+Guns2=Guns
 Rifles=Rifles
 Bows=Bows
 Katanas=Katanas
@@ -29,25 +30,26 @@ Misc=Misc
 ; Below are the weapon lists
 
 [Weapons]
-HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur.AntlionClaws
+HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur.AntlionClaws.Spharai+1
 Swords=ForgedSword.Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
 Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1.Mastermune
-Whips=BlackWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Alruna
-Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.SamuraiEdge.BlueRose.TacticalPistol
+Whips=BlackWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Vampire_Killer+1.DemonWhip+1
+Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.BlueRose.TacticalPistol
+Guns2=SamuraiEdge.SamuraiEdge-I.SamuraiEdge-F.SamuraiEdge-E.SamuraiEdge-M
 Rifles=HuntingRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle.TacticalShotgun.RocketLauncher.Thunderclap
-Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.CompoundBow
+Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.CompoundBow.CompoundBow+1
 Katanas=SmallKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1
-Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Ichimonji-Yofusa
+Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Sacrament.Lazarus.Ichimonji-Yofusa
 Wands=WoodenWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold
-Staves=WoodenStaff.IridialStaff.Laevatein.Uffrat.BahamutsStaff
+Staves=WoodenStaff.IridialStaff.Laevatein.Uffrat.BahamutsStaff.Laevatein+1.BahamutsStaff+1
 Glyphs=MagicGlyphs.Glyphs.Glyphs+1
-Spears=FightingSpear.Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex
-Scythes=FightingScythe.DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque
-GreatSwords=GreatForgedSword.Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain
-Axes=IronAxe.Farsha.Guttler.Kerehcatl
-GreatAxes=GreatIronAxe.Ukonvasara.Bravura.Lightreaver
-Daggers=SmallDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi
-Hammers=BronzeHammer.Mjolnir
+Spears=FightingSpear.Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex.Ryunohige+1
+Scythes=FightingScythe.DeathScythe.Vendetta.Apocalypse.Redemption.Xbalanque.Apocalypse+1
+GreatSwords=GreatForgedSword.Rebellion.Braveheart.Balmung.Nightfall.Ragnarok.Caladbolg.Macbain.Ragnarok+1
+Axes=IronAxe.Farsha.Guttler.Kerehcatl.Guttler+1
+GreatAxes=GreatIronAxe.Ukonvasara.Bravura.Lightreaver.Bravura+1
+Daggers=SmallDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi.Mandau+1.Kikoku+1.Kannagi+1
+Hammers=BronzeHammer.WarHammer.BlessedHammer.SteelHammer.Daedalus.Daedalus+1.Mjolnir
 Lightsabers=Lightsaber
 Misc=ProtonPack
 
@@ -63,7 +65,7 @@ MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.Decapiclops
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros.AntlionJaw
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed
 
@@ -152,7 +154,7 @@ Upgrade=2000
 2Handed=true
 
 [Ifrit]
-Cost=40
+Cost=60
 Type=HandToHand
 Info=A living Devil Arm, the flame gauntlets with heat hotter than a volcano.
 Abilities=RollingBlaze.MagmaDrive.Inferno
@@ -163,7 +165,7 @@ Upgrade=2000
 2Handed=true
 
 [KaiserKnuckles]
-Cost=40
+Cost=80
 Type=HandToHand
 Info=A hand-to-hand weapon that is silver in color with a yellow trim.
 Abilities=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
@@ -174,7 +176,7 @@ Upgrade=2500
 2Handed=true
 
 [Verethragna]
-Cost=50
+Cost=150
 Type=HandToHand
 Info=A powerful hand-to-hand weapon which is black and gold in color with two horns on the end.
 Abilities=VictorySmite.ShoulderTackle.ShinjinSpiral.SpinningAttack.TornadoKick
@@ -185,7 +187,7 @@ Upgrade=3000
 2Handed=true
 
 [Spharai]
-Cost=100
+Cost=175
 Type=HandToHand
 Info=A relic hand-to-hand weapon that is gold and bronze in color.
 Abilities=FinalHeaven.ShoulderTackle.AsuranFists.SpinningAttack.OneInchPunch
@@ -220,6 +222,18 @@ IgnoreDefense=5
 2Handed=true
 SpecialWeapon=true
 
+[Spharai+1]
+Cost=0
+Type=HandtoHand
+Info=A reforged version of the Spharai. Outside of Torment battles the weapon has a 200 power and ignores 10% defense. Inside of Torment the weapon has a power of 600 and ignores 20% defense.
+Abilities=FinalHeaven.ShoulderTackle.AsuranFists.OneInchPunch
+Element=None
+Hits=2
+BasePower=$iif(%battle.type = torment, 600, 200)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=true
+SpecialWeapon=true
 
 =============================================
 SWORDS
@@ -490,7 +504,7 @@ Upgrade=1500
 2Handed=true
 
 [Ragnarok]
-Cost=100
+Cost=150
 Type=GreatSword
 Info=A legendary greatsword that is bronze in color.
 Abilities=Scourge.Resolution.Torcleaver
@@ -501,7 +515,7 @@ Upgrade=3000
 2Handed=true
 
 [Nightfall]
-Cost=120
+Cost=100
 Type=GreatSword
 Info=A greatsword with a large blade that has a gap near the point which can attack twice.
 Abilities=GroundStrike.SpinningSlash
@@ -523,6 +537,19 @@ BasePower=120
 Upgrade=6000
 2Handed=true
 IgnoreDefense=10
+
+[Ragnarok+1]
+Cost=0
+Type=Greatsword
+Info=A reforged version of the Ragnarok. Outside of Torment battles the great sword has a 250 power and ignores 10% defense. Inside of Torment the great sword has a power of 700 and ignores 20% defense.
+Abilities=Scourge.Resolution
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=true
+SpecialWeapon=true
 
 =============================================
 WHIPS
@@ -599,19 +626,31 @@ BasePower=60
 Upgrade=3500
 HurtEthereal=true
 
-[Alruna]
+[Vampire_Killer+1]
 Cost=0
-SpecialWeapon=true
-StatusType=curse
 Type=Whip
-Info=A whip containing the soul of a demon who shares the same name as a flower that blooms in Inferno. Laced with thorns, it slithers as if it were alive. Those who can hear the crack of the whip can feel Alraune whisper its curse in their ears.
-Abilities=TwinDragonLash.SerpentBite.DarkLash
-Element=None
-Hits=$rand(2,4)
-BasePower=65
-Upgrade=7500
-2Handed=true
-IgnoreDefense=10
+Info=A reforged version of the Vampire Killer. Outside of Torment battles the whip has a 200 power and ignores 10% defense. Inside of Torment the whip has a power of 600 and ignores 20% defense.
+Abilities=HolyLash.TwinDragonLash.Whiplash
+Element=Light
+Hits=$rand(1,3)
+BasePower=$iif(%battle.type = torment, 600, 200)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=false
+SpecialWeapon=true
+
+[DemonWhip+1]
+Cost=0
+Type=Whip
+Info=A reforged version of the Demon Whip. Outside of Torment battles the whip has a 200 power and ignores 10% defense. Inside of Torment the whip has a power of 600 and ignores 20% defense.
+Abilities=SerpentBite.DarkLash.Whiplash
+Element=Dark
+Hits=$rand(1,3)
+BasePower=$iif(%battle.type = torment, 600, 200)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=false
+SpecialWeapon=true
 
 =============================================
 GUNS & RIFLES
@@ -794,6 +833,71 @@ IgnoreDefense=5
 CanCounter=false
 SpecialWeapon=true
 
+[SamuraiEdge-I]
+Cost=0
+Type=Gun
+Info=A custom made version of the 9mm Beretta 92F created for Special Tactics and Rescue Service, aka S.T.A.R.S. It has been modified to fire .40 S&W calibur ice rounds and has a longer barrel and compensator for improved accuracy.
+Abilities=ChargedShot.LastStand.Detonator
+Element=Ice
+Hits=1
+BasePower=85
+Upgrade=5000
+IgnoreDefense=5
+2handed=false
+CanCounter=false
+AmmoRequired=IceAmmo
+AmmoAmountNeeded=1
+SpecialWeapon=true
+
+[SamuraiEdge-F]
+Cost=0
+Type=Gun
+Info=A custom made version of the 9mm Beretta 92F created for Special Tactics and Rescue Service, aka S.T.A.R.S. It has been modified to fire .40 S&W calibur fire rounds and has a longer barrel and compensator for improved accuracy.
+Abilities=ChargedShot.LastStand.Detonator
+Element=Fire
+Hits=1
+BasePower=85
+Upgrade=5000
+IgnoreDefense=5
+2handed=false
+CanCounter=false
+AmmoRequired=FireAmmo
+AmmoAmountNeeded=1
+SpecialWeapon=true
+
+[SamuraiEdge-E]
+Cost=0
+Type=Gun
+Info=A custom made version of the 9mm Beretta 92F created for Special Tactics and Rescue Service, aka S.T.A.R.S. It has been modified to fire .40 S&W electric rounds and has a longer barrel and compensator for improved accuracy.
+Abilities=ChargedShot.LastStand.Detonator
+Element=Lightning
+Hits=1
+BasePower=85
+Upgrade=5000
+IgnoreDefense=5
+2handed=false
+CanCounter=false
+AmmoRequired=ElectricAmmo
+AmmoAmountNeeded=1
+SpecialWeapon=true
+
+[SamuraiEdge-M]
+Cost=0
+Type=Gun
+Info=A custom made version of the 9mm Beretta 92F created for Special Tactics and Rescue Service, aka S.T.A.R.S. It has been modified to fire larger rounds that explode on contact, which can hit other targets. Trades technique and power to hit all enemies.
+Abilities=
+Element=None
+Hits=1
+Target=AOE
+BasePower=65
+Upgrade=5000
+IgnoreDefense=5
+2handed=true
+CanCounter=false
+AmmoRequired=ExplosionAmmo
+AmmoAmountNeeded=2
+SpecialWeapon=true
+
 [BlueRose]
 Cost=0
 Type=Gun
@@ -918,6 +1022,19 @@ BasePower=75
 Upgrade=5000
 IgnoreDefense=5
 
+[Guttler+1]
+Cost=0
+Type=Axe
+Info=A reforged version of the Guttler. Outside of Torment battles the axe has a 250 power and ignores 10% defense. Inside of Torment the axe has a power of 700 and ignores 20% defense.
+Abilities=Onslaught.BoraAxe.Rampage
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=false
+SpecialWeapon=true
+
 [BasicGreatAxe]
 Cost=1
 Type=Greataxe
@@ -964,6 +1081,19 @@ Upgrade=5000
 2Handed=true
 IgnoreDefense=10
 
+[Bravura+1]
+Cost=0
+Type=Greataxe
+Info=A reforged version of the Bravura. Outside of Torment battles the great axe has a 250 power and ignores 10% defense. Inside of Torment the great axe has a power of 700 and ignores 20% defense.
+Abilities=MetatronTorment.Upheaval.SteelCyclone
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=true
+SpecialWeapon=true
+
 =============================================
 HAMMERS
 =============================================
@@ -977,6 +1107,64 @@ Hits=1
 BasePower=11
 Upgrade=300
 2Handed=false
+
+[Warhammer]
+Cost=15
+Type=Hammer
+Info=A hammer forged for war.
+Abilities=Brainshaker.Skullbreaker.SeraphStrike
+Element=None
+Hits=1
+BasePower=15
+Upgrade=500
+2Handed=false
+
+[BlessedHammer]
+Cost=30
+Type=Hammer
+Info=A hammer blessed with Holy power.
+Abilities=Skullbreaker.SeraphStrike.Hexastrike
+Element=Light
+Hits=1
+BasePower=30
+Upgrade=1000
+HurtEthereal=True
+2Handed=false
+
+[SteelHammer]
+Cost=45
+Type=Hammer
+Info=A hammer forged out of steel.
+Abilities=Skullbreaker.SeraphStrike.Hexastrike
+Element=None
+Hits=1
+BasePower=40
+Upgrade=2000
+2Handed=false
+
+[Daedalus]
+Cost=60
+Type=Hammer
+Info=A hammer made out of rare and powerful materials.
+Abilities=Brainshaker.Hexastrike.BlackHalo.Realmrazer.Randgrith
+Element=None
+Hits=1
+BasePower=60
+Upgrade=2500
+2Handed=false
+
+[Daedalus+1]
+Cost=0
+Type=Hammer
+Info=A reforged version of the Daedalus. Outside of Torment battles the hammer has a 250 power and ignores 10% defense. Inside of Torment the hammer has a power of 700 and ignores 20% defense.
+Abilities=Brainshaker.Hexastrike.BlackHalo.Realmrazer.Randgrith
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=false
+SpecialWeapon=true
 
 [Mjolnir]
 Cost=0
@@ -1086,6 +1274,47 @@ Upgrade=5000
 IgnoreDefense=5
 LinkedWeapon=Kikoku
 
+[Mandau+1]
+Cost=0
+Type=Dagger
+Info=A reforged version of the Mandau. Outside of Torment battles the dagger has a 250 power and ignores 10% defense. Inside of Torment the dagger has a power of 700 and ignores 20% defense.
+Abilities=MercyStroke.Evisceration
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=false
+SpecialWeapon=true
+
+[Kikoku+1]
+Cost=0
+Type=Dagger
+Info=A reforged version of the Kikoku. Outside of Torment battles the dagger has a 250 power and ignores 10% defense. Inside of Torment the dagger has a power of 700 and ignores 20% defense.
+Abilities=Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck($1,Kannagi) = true, .Blade:Shun.Blade:Hi)
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=false
+SpecialWeapon=true
+LinkedWeapon=Kannagi
+
+[Kannagi+1]
+Cost=0
+Type=Dagger
+Info=A reforged version of the Kannagi. Outside of Torment battles the dagger has a 250 power and ignores 10% defense. Inside of Torment the dagger has a power of 700 and ignores 20% defense.
+Abilities=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck($1,Kikoku) = true, .Blade:Shun.Blade:Hi)
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=false
+SpecialWeapon=true
+LinkedWeapon=Kikoku
+
 =============================================
 Bows
 =============================================
@@ -1178,6 +1407,22 @@ Hits=1
 BasePower=130
 Upgrade=7000
 IgnoreDefense=15
+2Handed=true
+CanCounter=false
+AmmoRequired=Arrow
+AmmoAmountNeeded=1
+SpecialWeapon=True
+
+[CompoundBow+1]
+Cost=0
+Type=Bow
+Info=A reforged version of the Compound Bow. Outside of Torment battles the bow has a 200 power and ignores 10% defense. Inside of Torment the bow has a power of 600 and ignores 20% defense.
+Abilities=FlamingArrowII.EagleEyeShotII.BlastArrowII
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 600, 200)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 CanCounter=false
 AmmoRequired=Arrow
@@ -1319,6 +1564,36 @@ BasePower=20
 Upgrade=4000
 2Handed=true
 
+[Sacrament]
+Cost=175
+Type=Katana
+Info=A blue straight edged katana enchanted to be bound to the Primordial Force of Aether. It's edge is serrated, enabling it to cleave through the flesh of one's enemies.
+Abilities=HolyAir:SecondWind.HolyFire:Inferno.HolyIce:IceAge.HolyLightning:Discharge.HolyEarth:Rapture.HolyWater:Rejuvenation
+Element=none
+Hits=1
+Basepower=55
+Upgrade=6500
+IgnoreDefense=10
+HurtEthereal=false
+2handed=true
+CanShieldReflect=false
+CanCounter=true
+
+[Lazarus]
+Cost=250
+Type=Katana
+Info=A red straight edged katana enchanted to be bound to the Primordial Force of Aether. It's edge is pulsating with Nether, enabling it to make contact with ethereal enemies.
+Abilities=DarkWind:Vacuum.DarkFire:Eruption.DarkIce:DeepFreeze.DarkLightning:HighVoltage.DarkEarth:StoneScabbard.DarkWater:TaintedBlood
+Element=none
+Hits=$rand(1,3)
+Basepower=75
+Upgrade=6500
+IgnoreDefense=10
+HurtEthereal=true
+2handed=true
+CanShieldReflect=false
+CanCounter=true
+
 [Crissaegrim]
 Cost=300
 Type=Katana
@@ -1353,7 +1628,6 @@ Element=none
 2Handed=true
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
-
 
 [Ichimonji-Yofusa]
 Cost=0
@@ -1565,6 +1839,32 @@ Element=none
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 
+[Laevatein+1]
+Cost=0
+Type=Stave
+Info=A reforged version of the Laevatein. Outside of Torment battles the staff has a 250 power and ignores 10% defense. Inside of Torment the staff has a power of 700 and ignores 20% defense.
+Abilities=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=true
+SpecialWeapon=true
+
+[BahamutsStaff+1]
+Cost=0
+Type=Stave
+Info=A reforged version of the Bahamut's Staff. Outside of Torment battles the staff has a 200 power and ignores 10% defense. Inside of Torment the staff has a power of 600 and ignores 20% defense.
+Abilities=Ultima.Kaustra
+Element=None
+Hits=3
+BasePower=$iif(%battle.type = torment, 600, 200)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=true
+SpecialWeapon=true
+
 =============================================
 SPEARS
 =============================================
@@ -1635,7 +1935,7 @@ Upgrade=4000
 2Handed=true
 
 [Ryunohige]
-Cost=100
+Cost=150
 Type=Spear
 Info=A powerful spear that's a dark and light grey color with a unique blade on the end.
 Abilities=SoulJump.Drakesbane.LegSweep.Stardiver
@@ -1657,6 +1957,19 @@ BasePower=120
 Upgrade=5000
 2Handed=true
 IgnoreDefense=10
+
+[Ryunohige+1]
+Cost=0
+Type=Spear
+Info=A reforged version of the Ryunohige. Outside of Torment battles the spear has a 250 power and ignores 10% defense. Inside of Torment the spear has a power of 700 and ignores 20% defense.
+Abilities=Drakesbane.Stardiver.Jump.HighJump.SpiritJump.SoulJump
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=true
+SpecialWeapon=true
 
 =============================================
 SCYTHES
@@ -1706,7 +2019,7 @@ Upgrade=4000
 2Handed=true
 
 [Apocalypse]
-Cost=100
+Cost=150
 Type=Scythe
 Info=A legendary scythe that is colored gold and grey that has a large blade.
 Abilities=Catastrophe.Entropy.Guillotine
@@ -1729,6 +2042,18 @@ Upgrade=5000
 2Handed=true
 IgnoreDefense=10
 
+[Apocalypse+1]
+Cost=0
+Type=Scythe
+Info=A reforged version of the Apocalypse. Outside of Torment battles the scythe has a 250 power and ignores 10% defense. Inside of Torment the scythe has a power of 700 and ignores 20% defense.
+Abilities=Catastrophe.Entropy.Guillotine
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 250)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=true
+SpecialWeapon=true
 
 =============================================
 MISC WEAPONS
@@ -2213,11 +2538,26 @@ Element=none
 Hits=$rand(1,2)
 BasePower=20
 
+[SilverSwords]
+Cost=0
+Type=Sword
+Info=Twin longswords made of silver and crafted with ancient Elvish techniques. Contains the power of lightning.
+Abilities=Twin_Slice.LightningStrike.BladeBeamII.Guruthos.Medui
+Element=Lightning
+Hits=2
+BasePower=100
+Upgrade=0
+IgnoreDefense=10
+2Handed=true
+HurtEthereal=true
+CanShieldReflect=true
+CanCounter=false
+
 [Silver_Goddess_Sword]
 Cost=0
 Type=Sword
 Info=A longsword made out of silver and has a blue gem inserted into the guard. Given to Lirarian by a previous goddess.
-Abilities=TwinSlice.BiteOfLightning.BladeBeam
+Abilities=TwinSlice.BiteOfLightning.BladeBeam.Guruthos.Medui
 Element=Light
 Hits=$rand(1,2)
 BasePower=75
@@ -2231,7 +2571,7 @@ CanCounter=false
 Cost=0
 Type=Stave
 Info=A large staff that is black in color. The bottom has gold on it and the top of the staff splits into four before combining back together. A ruby rests in the split and gold runes run along the staff. Given to Lirarian by a previous goddess.
-Abilities=AeroV.BlizzardV.FireV.DarkV.BanishV
+Abilities=Fira.Stonera.Watera.Aera.Blizzara.Thundara.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix.Meteor.Guruthos.Medui
 Element=Light
 Hits=1
 Basepower=70
@@ -2240,6 +2580,21 @@ IgnoreDefense=10
 HurtEthereal=true
 CanShieldReflect=true
 CanCounter=false
+
+[AettirII]
+Cost=0
+Type=AettirII
+Info=A large sword that is white in color with a pronged edge. It has a glowing white crystal and black runes on the blade. A copy of the original which was given to Lirarian.
+Abilities=LungeII.VivaciousPulseII.RuneSwipeII.DimidiationII.ResolutionII.HardSlashII.PowerSlashII.Guruthos.Medui
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+IgnoreDefense=10
+2Handed=true
+HurtEthereal=true
+Legendary=true
+CanShieldReflect=true
 
 [Cell'sKi]
 Cost=0
@@ -4436,7 +4791,7 @@ Upgrade=0
 
 [Marlene]
 Cost=0
-TYpe=Axe
+Type=Axe
 Info=The guitar that I-No loves.
 Abilities=AntidepressentScale.ChemicalAffection.KyougenJikkou.TaibokuWoSasuruTe.Fortissimo.GenkaiFortissimo.UltimateFortissimo.LastWillandTestament
 Element=None
@@ -4484,21 +4839,6 @@ Hits=1
 Basepower=55
 Upgrade=0
 HurtEthereal=true
-
-[SilverSwords]
-Cost=0
-Type=Sword
-Info=Twin longswords made of silver and crafted with ancient Elvish techniques. Contains the power of lightning.
-Abilities=Twin_Slice.LightningStrike.BladeBeamII
-Element=Lightning
-Hits=2
-BasePower=100
-Upgrade=0
-IgnoreDefense=10
-2Handed=true
-HurtEthereal=true
-CanShieldReflect=true
-CanCounter=false
 
 [WallofFleshMouth]
 Cost=0

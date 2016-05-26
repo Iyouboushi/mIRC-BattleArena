@@ -54,6 +54,7 @@ DeathConditions=Magic.Tech
 [Monster]
 Type=zombie
 size=medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
 
 [Status]
 Poison=no
@@ -141,3 +142,8 @@ SonicThrust=40
 CircularChain=40
 CircleBlade=40
 ChantDuCygne=100
+SamuraiEdge=150
+SamuraiEdge-I=150
+SamuraiEdge-F=150
+SamuraiEdge-E=150
+SamuraiEdge-M=150

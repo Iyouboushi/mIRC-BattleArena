@@ -48,6 +48,7 @@ Drops=
 [Monster]
 Type=undead
 size=large
+Elite=$iif($current.battlestreak <= 500, false, true)
 
 [Info]
 Flag=monster
@@ -59,6 +60,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=50
+StreakMax=999
 IgnoreQuicksilver=true
 CanTaunt=true
 

@@ -3775,6 +3775,42 @@ Weapon=SamuraiEdge
 Desc=pulls out a set of blueprints for a Samurai Edge $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Samurai Edge ready for use.
 Exclusive=yes
 
+[Blueprints:SamuraiEdge-I]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=SamuraiEdge-I
+Desc=pulls out a set of blueprints for a Samurai Edge $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Samurai Edge ready for use.
+Exclusive=yes
+
+[Blueprints:SamuraiEdge-F]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=SamuraiEdge-F
+Desc=pulls out a set of blueprints for a Samurai Edge $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Samurai Edge ready for use.
+Exclusive=yes
+
+[Blueprints:SamuraiEdge-E]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=SamuraiEdge-E
+Desc=pulls out a set of blueprints for a Samurai Edge $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Samurai Edge ready for use.
+Exclusive=yes
+
+[Blueprints:SamuraiEdge-M]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=SamuraiEdge-M
+Desc=pulls out a set of blueprints for a Samurai Edge $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Samurai Edge ready for use.
+Exclusive=yes
+
 [Blueprints:Kikoku]
 Type=special
 Cost=0
@@ -3791,6 +3827,141 @@ SellPrice=5000
 SpecialType=GainWeapon
 Weapon=Kannagi
 Desc=pulls out a set of blueprints for a Kannagi $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Kannagi ready for use.
+Exclusive=yes
+
+[Blueprints:Spharai+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Spharai+1
+Desc=pulls out a set of blueprints for a Spharai+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Spharai+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Apocalypse+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Apocalypse+1
+Desc=pulls out a set of blueprints for a Apocalypse+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Apocalypse+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Ragnarok+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Ragnarok+1
+Desc=pulls out a set of blueprints for a Ragnarok+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Ragnarok+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Laevatein+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Laevatein+1
+Desc=pulls out a set of blueprints for a Laevatein+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Laevatein+1 ready for use.
+Exclusive=yes
+
+[Blueprints:BahamutsStaff+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=BahamutsStaff+1
+Desc=pulls out a set of blueprints for a Bahamut's Staff+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Bahamut's Staff+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Vampire_Killer+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Vampire_Killer+1
+Desc=pulls out a set of blueprints for a Vampire Killer+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Vampire Killer+1 ready for use.
+Exclusive=yes
+
+[Blueprints:DemonWhip+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=DemonWhip+1
+Desc=pulls out a set of blueprints for a Demon Whip+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Demon Whip+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Ryunohige+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Ryunohige+1
+Desc=pulls out a set of blueprints for a Ryunohige+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Ryunohige+1 ready for use.
+Exclusive=yes
+
+[Blueprints:CompoundBow+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=CompoundBow+1
+Desc=pulls out a set of blueprints for a Compound Bow+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Compound Bow+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Bravura+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Bravura+1
+Desc=pulls out a set of blueprints for a Bravura+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Bravura+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Guttler+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Guttler+1
+Desc=pulls out a set of blueprints for a Guttler+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Guttler+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Mandau+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Mandau+1
+Desc=pulls out a set of blueprints for a Mandau+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Mandau+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Kikoku+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Kikoku+1
+Desc=pulls out a set of blueprints for a Kikoku+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Kikoku+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Kannagi+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Kannagi+1
+Desc=pulls out a set of blueprints for a Kannagi+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Kannagi+1 ready for use.
+Exclusive=yes
+
+[Blueprints:Daedalus+1]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=SamuraiEdge
+Desc=pulls out a set of blueprints for a Daedalus+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Daedalus+1 ready for use.
 Exclusive=yes
 
 [Blueprints:SilverSword]
@@ -4348,6 +4519,34 @@ Type=ammo
 Cost=2500
 SellPrice=250
 Desc=Basic bullets for use by guns or rifles.
+Exclusive=yes
+
+[IceAmmo]
+Type=ammo
+Cost=2500
+SellPrice=250
+Desc=Ammo that is able to freeze targets.
+Exclusive=yes
+
+[FireAmmo]
+Type=ammo
+Cost=2500
+SellPrice=250
+Desc=Ammo that is able to burn targets.
+Exclusive=yes
+
+[ElectricAmmo]
+Type=ammo
+Cost=2500
+SellPrice=250
+Desc=Ammo that is able to shock targets.
+Exclusive=yes
+
+[ExplosionAmmo]
+Type=ammo
+Cost=1500
+SellPrice=250
+Desc=Ammo that is able to hit more than one target.
 Exclusive=yes
 
 =========================

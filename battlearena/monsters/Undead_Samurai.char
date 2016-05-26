@@ -56,6 +56,7 @@ IgnoreElementalMessage=true
 [Monster]
 Type=undead
 size=medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
 
 [Status]
 Poison=no
@@ -92,7 +93,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Masamune
-Masamune=15
+Masamune=$calc(1 + $current.battlestreak)
 
 
 [Skills]
@@ -100,9 +101,9 @@ Swordmaster=10
 
 
 [Techniques]
-Tachi:Fudo=10
-Tachi:Shoha=5
-Tachi:Rana=15
+Tachi:Fudo=$calc(1 + $current.battlestreak)
+Tachi:Shoha=$calc(1 + $current.battlestreak)
+Tachi:Rana=$calc(1 + $current.battlestreak)
 
 
 [modifiers]
@@ -135,3 +136,8 @@ Mace=70
 PinkChainsaw=150
 Stave=70
 EnergyBlaster=120
+SamuraiEdge=150
+SamuraiEdge-I=150
+SamuraiEdge-F=150
+SamuraiEdge-E=150
+SamuraiEdge-M=150

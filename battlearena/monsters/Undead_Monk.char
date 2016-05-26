@@ -56,6 +56,7 @@ IgnoreElementalMessage=true
 [Monster]
 Type=undead
 size=medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
 
 [Status]
 Poison=no
@@ -93,17 +94,17 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Spharai
-Spharai=15
+Spharai=$calc(1 + $current.battlestreak)
 
 [Skills]
 
 
 [Techniques]
-FinalHeaven=15
-ShoulderTackle=10
-AsuranFists=15
-SpinningAttack=10
-OneInchPunch=10
+FinalHeaven=$calc(1 + $current.battlestreak)
+ShoulderTackle=$calc(1 + $current.battlestreak)
+AsuranFists=$calc(1 + $current.battlestreak)
+SpinningAttack=$calc(1 + $current.battlestreak)
+OneInchPunch=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -139,3 +140,8 @@ Mace=70
 PinkChainsaw=150
 Stave=70
 EnergyBlaster=120
+SamuraiEdge=150
+SamuraiEdge-I=150
+SamuraiEdge-F=150
+SamuraiEdge-E=150
+SamuraiEdge-M=150

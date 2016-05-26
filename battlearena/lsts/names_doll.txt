@@ -1,0 +1,7 @@
+Panzer_Doll.Panzer Doll
+Living_Statue.Living Statue
+Drone.Drone
+Branding_Iron.Branding Iron
+Iron_Maiden.Iron Maiden
+Demonic_Doll.Demonic Doll
+Temple_Guardian.Temple Guardian

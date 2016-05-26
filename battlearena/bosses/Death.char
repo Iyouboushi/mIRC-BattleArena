@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=100
-Tp=250
-Str=15
-Def=12
-Int=18
-Spd=18
+Hp=1000
+Tp=500
+Str=500
+Def=500
+Int=500
+Spd=500
 IgnitionGauge=2
 Name=Death
 
 [Battle]
-Hp=100
-Tp=250
-Str=15
-Def=12
-Int=18
-Spd=18
+Hp=1000
+Tp=500
+Str=500
+Def=500
+Int=500
+Spd=500
 IgnitionGauge=2
 Status=alive
 
@@ -45,6 +45,7 @@ Drops=
 [Monster]
 Type=undead
 size=medium
+Elite=true
 
 [Info]
 Flag=monster
@@ -55,9 +56,11 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=-1000
+Streak=1000
 IgnoreQuicksilver=true
 CanTaunt=true
+IgnorePresident=true
+IgnoreOutpost=true
 IgnoreElementalMessage=true
 
 [Status]
@@ -95,43 +98,76 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Death's_Scythe
-Death's_Scythe=10
-
+Death's_Scythe=$calc(1 + $current.battlestreak)
 
 [Skills]
-resist-stun=50
-resist-blind=30
-resist-charm=100
-Resist-Petrify=60
+Zen=5
+WeaponBash=1
+Impetus=20
+Harvester=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=100
+Resist-Weaponlock=100
+Resist-Zombie=100
 
 [Techniques]
-GrimReaper=10
-Grim_Slash=12
+GrimReaper=$calc(1 + $current.battlestreak)
+Grim_Slash=$calc(1 + $current.battlestreak)
 
-
-[Item_Amount]
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Ice=100
-Water=100
-Lightning=100
-Light=200
+Earth=80
+Fire=80
+Wind=80
+Water=80
+Ice=80
+Lightning=80
+Light=130
 Dark=10
-HandToHand=100
-Whip=150
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
-HydroStorm=500
-Holy_Water=300
+HandToHand=80
+Whip=100
+Sword=80
+Gun=80
+Rifle=80
+Katana=80
+Wand=80
+Spear=80
+Scythe=80
+Glyph=80
+GreatSword=80
+Bow=80
+Axe=80
+Dagger=80
+Mace=80
+Stave=80
+EnergyBlaster=80
+Lightsaber=80
+Hammer=80
+HolyHandGrenade=0
+HydroStorm=200
+Holy_Water=200
+Vampire_Killer+1=110
+DemonWhip+1=50
+BlackWhip=100
+LeatherWhip=100
+DemonWhip=50
+Vampire_Killer=110
+ChainWhip=100
+SpikedSteelWhip=100
+DragontailWhip=100

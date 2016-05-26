@@ -8,6 +8,7 @@ Verethragna=VictorySmite.ShoulderTackle.ShinjinSpiral.SpinningAttack.TornadoKick
 KaiserKnuckles=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
 Oatixur=TornadoKick.ShinjinSpiral.ShoulderTackle.SpinningAttack
 AntlionClaws=SpinningAttack.AsuranFists
+Spharai+1=FinalHeaven.ShoulderTackle.AsuranFists.OneInchPunch
 
 ; Swords
 ForgedSword=FastBlade
@@ -45,6 +46,8 @@ Hagun=Tachi:Kaiten.Tachi:Ageha.Tachi:Kasha
 Masamune=Tachi:Fudo.Tachi:Shoha.Tachi:Rana
 Ichimonji-Yofusa=Tachi:Fudo.Tachi:Kasha.Tachi:Gekko.Tachi:Yukikaze
 Naturaleza=Ashes.Dismay.ThousandCuts
+Sacrament=HolyAir:SecondWind.HolyFire:Inferno.HolyIce:IceAge.HolyLightning:Discharge.HolyEarth:Rapture.HolyWater:Rejuvenation
+Lazarus=DarkWind:Vacuum.DarkFire:Eruption.DarkIce:DeepFreeze.DarkLightning:HighVoltage.DarkEarth:StoneScabbard.DarkWater:TaintedBlood
 
 ; Scythe
 FightingScythe=NightmareScythe
@@ -53,6 +56,7 @@ Vendetta=InfernalScythe.CrossReaper.SpinningScythe
 Redemption=Quietus.Insurgency.NightmareScythe
 Apocalypse=Catastrophe.Entropy.Guillotine
 Xbalanque=Insurgency.NightmareScythe.Guillotine
+Apocalypse+1=Catastrophe.Entropy.Guillotine
 
 ; Greatsword
 GreatForgedSword=HardSlash
@@ -63,6 +67,7 @@ Nightfall=GroundStrike.SpinningSlash
 Ragnarok=Scourge.Resolution.Torcleaver
 Caladbolg=HerculeanSlash.GroundStrike
 Macbain=SpinningSlash.HerculeanSlash.Scourge
+Ragnarok+1=Scourge.Resolution
 
 ; Wands/Staves
 WoodenWand=MagicMissile
@@ -81,6 +86,8 @@ BahamutsStaff=Ultima.Kaustra.Merlin'sFinalSpell
 MagicGlyphs=Pulsus
 Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
 Glyphs+1=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
+Laevatein+1=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
+BahamutsStaff+1=Ultima.Kaustra
 
 ; Guns
 HandGun=ChargedShot
@@ -89,6 +96,10 @@ Magnum=ChargedShot.RapidShot
 Hexagun=LastStand.Detonator.BlastShot
 BlueRose=ChargedShot.RapidShot
 SamuraiEdge=ChargedShot.LastStand.Detonator
+SamuraiEdge-I=ChargedShot.LastStand.Detonator
+SamuraiEdge-F=ChargedShot.LastStand.Detonator
+SamuraiEdge-E=ChargedShot.LastStand.Detonator
+SamuraiEdge-M=
 TacticalPistol=RapidShotII.ChargedshotII.LastStandII
 HuntingRifle=ChargedShot 
 Boomstick=HotShot.BlastShot.Detonator
@@ -112,7 +123,8 @@ Vampire_Killer=HolyLash.TwinDragonLash.CircularChain
 ChainWhip=Whiplash.TwinDragonLash
 SpikedSteelWhip=TwinDragonLash.Whiplash
 DragontailWhip=TwinDragonLash.SerpentBite
-Alruna=TwinDragonLash.SerpentBite.DarkLash
+Vampire_Killer+1=HolyLash.TwinDragonLash.Whiplash
+DemonWhip+1=SerpentBite.DarkLash.Whiplash
 
 ; Spears
 FightingSpear=Jump
@@ -123,6 +135,7 @@ Gungnir=SpiritJump.Geirskogul.LegSweep
 Ryunohige=SoulJump.Drakesbane.LegSweep.Stardiver
 Rhongomiant=HighJump.CamlannsTorment.LegSweep.SonicThrust
 Upukirex=Jump.HighJump.SpiritJump.SoulJump.Stardiver
+Ryunohige+1=Drakesbane.Stardiver.Jump.HighJump.SpiritJump.SoulJump
 
 ; Bows
 WoodenBow=DullingArrow
@@ -133,16 +146,19 @@ Yoichinoyumi=EagleEyeShot.NamasArrow.RefulgentArrow
 Gandiva=EagleEyeShot.JishnusRadiance.ApexArrow
 HomesteadBow=ApexArrow.Sidewinder.EmpyrealArrow
 CompoundBow=FlamingArrowII.EagleEyeShotII.BlastArrowII
+CompoundBow+1=FlamingArrowII.EagleEyeShotII.BlastArrowII
 
 ; Axes
 GreatIronAxe=IronTempest
 Ukonvasara=FellCleave.UkkosFury.KingsJustice
 Bravura=MetatronTorment.Upheaval.SteelCyclone
 Lightreaver=FellCleave.SteelCyclone.KingsJustice
+Bravura+1=MetatronTorment.Upheaval.SteelCyclone
 IronAxe=RagingAxe
 Guttler=Onslaught.BoraAxe.Rampage
 Farsha=Cloudsplitter.Ruinator.PrimalRend
 Kerehcatl=BoraAxe.Rampage.Ruinator
+Guttler+1=Onslaught.BoraAxe.Rampage
 
 ; Daggers
 SmallDagger=WaspSting
@@ -153,9 +169,17 @@ Vanir_Knife=SharkBite.DancingEdge $+ $iif($weapon.linkcheck($1,Vajra) = true, .E
 Vajra=SharkBite.DancingEdge $+ $iif($weapon.linkcheck($1,Vanir_Knife) = true, .Evisceration)
 Kikoku=Blade:Metsu.Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck($1,Kannagi) = true, .Blade:Shun.Blade:Hi)
 Kannagi=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck($1,Kikoku) = true, .Blade:Shun.Blade:Hi)
+Mandau+1=MercyStroke.Evisceration
+Kikoku+1=Blade:Teki.Blade:To.Blade:Chi $+ $iif($weapon.linkcheck($1,Kannagi) = true, .Blade:Shun.Blade:Hi)
+Kannagi+1=Blade:Rin.Blade:Retsu.Blade:Ei.Blade:Jin $+ $iif($weapon.linkcheck($1,Kikoku) = true, .Blade:Shun.Blade:Hi)
 
 ; Hammers
 BronzeHammer=Brainshaker
+WarHammer=Brainshaker.Skullbreaker.SeraphStrike
+BlessedHammer=Skullbreaker.SeraphStrike.Hexastrike
+SteelHammer=Skullbreaker.SeraphStrike.Hexastrike
+Daedalus=Brainshaker.Hexastrike.BlackHalo.Realmrazer.Randgrith
+Daedalus+1=Brainshaker.Hexastrike.BlackHalo.Realmrazer.Randgrith
 Mjolnir=Thor'sRage.Thor'sGodforce
 
 ; Mech Weapons
@@ -213,8 +237,10 @@ BedrockBite=Tremors.FullForceBlow.Stone.StoneII.Quake
 Mistilteinn=Holy.BanishV.WrathOfGuDha.TormentOfGuDha.FireIV.WaterIV.BlizzardIV.Headbutt
 QuadavWand_R=FireIV.WaterIV.BlizzardIV.Poison.Blind.Headbutt.Paralyze
 QuadavSword=FastBlade.CircleBlade.FlatBlade.Headbutt
-Silver_Goddess_Sword=TwinSlice.BiteOfLightning.BladeBeam
-Black_Goddess_Staff=AeroV.BlizzardV.FireV.DarkV.BanishV
+SilverSwords=Twin_Slice.LightningStrike.BladeBeamII.Guruthos.Medui
+Silver_Goddess_Sword=TwinSlice.BiteOfLightning.BladeBeam.Guruthos.Medui
+Black_Goddess_Staff=Fira.Stonera.Watera.Aera.Blizzara.Thundara.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix.Meteor.Guruthos.Medui
+AettirII=LungeII.VivaciousPulseII.RuneSwipeII.DimidiationII.ResolutionII.HardSlashII.PowerSlashII.Guruthos.Medui
 Mariofists=MarioJump.StarPower.Fireflower
 KanonjiStaff=Kanonball.GoldenKanonball
 Shadow_Blade=GigaSlash.KickBack.DarkNova
@@ -409,7 +435,6 @@ GeryonPower=TeleportAttack.ChargeAttack.MissileBarrageGeryon
 EchidnaPower=TailWhip.EchindaCharge
 MalboroVine=BadBreath.ReallyBadBreath.ThornGrab
 TimeBomb=TickTockBoom
-SilverSwords=Twin_Slice.LightningStrike.BladeBeamII
 BeetleJaw=RhinoGuard.PowerAttack
 OrbPower=ShatteringBomb.LostSoulShatter
 WallofFleshMouth=WoFEyeLaser.WoFMouthBite
@@ -2095,6 +2120,174 @@ Magic=no
 stat=str
 Renkei=4
 
+[HolyAir:SecondWind]
+Type=single
+Cost=2500
+Desc=holds Sacrament out towards %enemy $+ . The air in %enemy $+ 's body is painfully drawn out by Aether, leaving %enemy stunned while the air returns to their body.
+TP=70
+Element=Light.Wind
+Hits=2
+BasePower=40
+Magic=yes
+StatusType=stun
+IgnoreDefense=10
+HurtEthereal=false
+stat=int
+
+[HolyFire:Inferno]
+Type=single
+Cost=1500
+Desc=slashes the dirt with $gender($1) weapon. A bright blue light cracks through the earth, swirling %enemy before erupting in a navy blue inferno of Aether-bound fire.
+TP=100
+Element=Light.Fire
+Hits=4
+BasePower=40
+Magic=yes
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+
+[HolyIce:IceAge]
+Type=Single
+Cost=3000
+Desc=stabs Sacrament into the arena floor, kicking up a snowstorm. %user focuses the snowstorm in on %enemy specifically, causing the powdered snow to become razor sharp ice that cuts deep.
+TP=250
+Element=Light.Ice
+Hits=4
+BasePower=100
+Magic=yes
+StatusType=slow
+IgnoreDefense=10
+HurtEthereal=false
+stat=int
+
+[HolyLightning:Discharge]
+Type=single
+Cost=4000
+Desc=holds Sacrament up high, thunder booming. %user then aims $gender($1) weapon at %enemy before releasing a discharge of blue lightning, causing the foe’s nerves to lock from electrical overload.
+TP=250
+Element=Light.Lightning
+Hits=$rand(1,5)
+BasePower=100
+Magic=yes
+StatusType=stun
+IgnoreDefense=10
+HurtEthereal=false
+stat=int
+
+[HolyEarth:Rapture]
+Type=AoE
+Cost=3000
+Desc=holds thrusts Sacrament into the Earth. %user then infuses the Earth with Aether, causing massive pillars of blue crystals to launch out of the ground and strike all foes.
+TP=125
+Element=Light.Earth
+Hits=1
+BasePower=120
+Magic=yes
+IgnoreDefense=10
+HurtEthereal=false
+stat=int
+
+[HolyWater:Rejuvenation]
+Type=Heal
+Cost=4500
+Desc=holds Sacrament out to %enemy before infusing Aether into the water within their body. The mystic force begins mending their wounds, healing them.
+TP=200
+Element=Light.Water
+Hits=1
+BasePower=100
+Magic=yes
+stat=int
+CappedAmount=5000
+
+[DarkAir:Vacuum]
+Type=single
+Cost=3500
+Desc=dashes at %enemy $+ , $gender($1) blade held out. %user slashes an X into %enemy $+ 's chest, vacuum waves rip into existence from the Nether to cause more damage.
+TP=300
+Element=Dark.Wind
+Hits=$rand(5-8)
+BasePower=50
+Magic=no
+StatusType=stun
+IgnoreDefense=10
+HurtEthereal=false
+stat=str
+Renkei=2
+
+[DarkFire:Eruption]
+Type=single
+Cost=3000
+Desc= throws Lazarus at %enemy $+ . Once the blade stabs through the chest, %user kicks the hilt with the bottom of $gender($1) foot to drive the katana deeper. %user then flips back, as a jet black blaze ignites upon %enemy $+ . Afterwards %user retrieves the weapon.
+TP=250
+Element=Dark.Fire
+Hits=3
+BasePower=75
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+Renkei=1
+
+[DarkIce:DeepFreeze]
+Type=Single
+Cost=4000
+Desc=spins Lazarus, holding the weapon in an underhanded stance. %user then stabs the weapon through %enemy $+ 's abdomen, $gender($1) back to the foe. As %user begins walking away from %enemy $+ , a red aura shrouds the victim, blood red ice spikes rupturing from within.
+TP=300
+Element=Dark.Ice
+Hits=$rand(2-5)
+BasePower=100
+Magic=no
+IgnoreDefense=10
+HurtEthereal=false
+stat=str
+Renkei=3
+
+[DarkLightning:HighVoltage]
+Type=single
+Cost=4000
+Desc=rushes %enemy at a near inhuman speed. %user slashes the Achilles tendons, causing %enemy to drop to the ground as %user impales them in the back. %user twists the blade, as if revving a motorcycle, a massive crimson discharge of electricity to electrocute the target.
+TP=250
+Element=Light.Lightning
+Hits=$rand(1,5)
+BasePower=60
+Magic=no
+StatusType=stun
+IgnoreDefense=10
+HurtEthereal=false
+stat=str
+Renkei=3
+
+[DarkEarth:StoneScabbard]
+Type=single
+Cost=3500
+Desc=kicks out %enemy $+ 's leg, before stabbing Lazarus through their chest. A red crystalline shell forms over %enemy $+ , as if they had met Medusa’s gaze.
+TP=150
+Element=Dark.Earth
+Hits=1
+BasePower=100
+Magic=no
+StatusType=petrify
+IgnoreDefense=10
+HurtEthereal=false
+stat=str
+Renkei=2
+
+[DarkWater:TaintedBlood]
+Type=single
+Cost=3500
+Desc= drags the blade along %enemy $+ 's midsection, the Nether flowing into the blood. It turns the water within the blood toxic, damaging %enemy $+ .
+TP=150
+Element=Dark.Water
+Hits=1
+BasePower=100
+Magic=no
+StatusType=Poison
+IgnoreDefense=10
+HurtEthereal=false
+stat=str
+Renkei=1
+
 ===================
 WAND/SPELLS
 ===================
@@ -2963,15 +3156,86 @@ HAMMER TECHS
 ===================
 [Brainshaker]
 Type=Single
+StatusType=Stun
 Cost=500
-Desc=simply runs up to %enemy and smashes the hammer over %enemy $+ 's head!
-TP=10
+Desc=hits %enemy with an upward swing of the hammer, causing a bright flash of light that stuns %enemy $+ .
+TP=15
 Element=None
 Hits=1
-BasePower=10
+BasePower=5
+Magic=No
+stat=str
+Renkei=1
+
+[Skullbreaker]
+Type=Single
+Cost=1000
+Desc=runs up and hits %enemy over the head with a powerful swing of the hammer, causing %enemy to see stars!
+TP=25
+Element=None
+Hits=1
+BasePower=25
 Magic=No
 stat=str
 Renkei=2
+
+[SeraphStrike]
+Type=Single
+Cost=1500
+Desc=hits %enemy with a backwand swing from the hammer, which causes a small explosion of holy energy upon %enemy $+ .
+TP=50
+Element=Light
+Hits=1
+BasePower=35
+Magic=Yes
+stat=int
+
+[Hexastrike]
+Type=Single
+TP=100
+Desc=runs up to %enemy and hits %enemy multiple times with the hammer!
+BasePower=10
+Element=None
+Cost=0
+Magic=No
+stat=str
+hits=6
+renkei=3
+
+[BlackHalo]
+Type=Single
+Cost=2500
+Desc=hits %enemy with the hammer before perfoming a quick spin to hit %enemy a second time, causing a small explosion of dark energy upon %enemy $+ .
+TP=50
+Element=Dark
+Hits=2
+BasePower=18
+Magic=Yes
+stat=int
+
+[Realmrazer]
+Type=Single
+Cost=3500
+Desc=rushes towards %enemy to unleash a barrage of strikes upon %enemy with the hammer!
+TP=120
+Element=None
+Hits=7
+BasePower=10
+Magic=No
+stat=str
+Renkei=4
+
+[Randgrith]
+Type=Single
+Cost=3000
+Desc=performs a backhand swing with the hammer upon %enemy before following up with a quick overhead strike.
+TP=75
+Element=None
+Hits=2
+BasePower=25
+Magic=No
+stat=str
+Renkei=3
 
 [Thor'sRage]
 Type=AOE
@@ -10712,31 +10976,6 @@ stat=def
 renkei=5
 IgnoreDefense=5
 
-[HyperTwinSlice]
-Type=single
-TP=10
-Desc=gives %enemy a death glare as $gender($1) sword glows red. $gender3($1) instantly appears before %enemy $+ , and proceeds to slash %enemy multiple times before %enemy has a chance to react. %user then shoves %enemy away from $gender2($1) $+ .
-BasePower=50
-Element=none
-Cost=0
-Magic=no
-stat=str
-Hits=4
-CanDodge=false
-DestroyShadows=4
-
-[AerogaV]
-Type=AOE
-TP=10
-Desc=spins around before raising $gender($1) staff and arms into the air. Tornado speed winds suddenly blow around all targets, throwing them high into the air and causes them to slam into the ground with great force.
-BasePower=200
-Element=Wind
-Cost=0
-Magic=yes
-stat=int
-CanDodge=false
-DestroyShadows=4
-
 [UltimaII]
 Type=Single
 TP=250
@@ -10756,6 +10995,110 @@ Element=Dark
 Cost=0
 Magic=Yes
 stat=int
+
+[Evanescere]
+Type=Single
+Cost=0
+Desc=unleashes a forward criss-crossing fire and ice wave which slams into %enemy $+ .
+TP=150
+Element=Fire.Ice
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=int
+Renkei=5
+
+[Universitas]
+Type=AOE
+Cost=0
+Desc=creates a wide area tear in space, unleashing powerful light and dark energy upon on all enemies.
+TP=250
+Element=Light.Dark
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=int
+Renkei=5
+
+[UnionSecare]
+Type=Single
+Cost=0
+Desc=raises $gender($1) hands to the air, creating a massive greatsword. %user then swings the greatsword down upon %enemy $+ .
+TP=150
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=str
+Renkei=5
+
+[UnionCulter]
+Type=Single
+Cost=0
+Desc=unleashes a massive barrage of daggers upon %enemy $+ , which almost appears as a blur of knives.
+TP=200
+Element=None
+Hits=8
+BasePower=80
+Magic=No
+IgnoreDefense=5
+stat=str
+Renkei=5
+
+[Tellus]
+Type=Single
+Cost=0
+Desc=unleashes a barrage of wind blades upon %enemy $+ , as if %user was attacking with a Valmanway.
+TP=200
+Element=Wind
+Hits=5
+BasePower=80
+Magic=No
+IgnoreDefense=5
+stat=int
+Renkei=5
+
+[Saturnus]
+Type=Single
+Cost=0
+Desc=raises $gender($1) hands to the air, creating a massive hammer made from stone. %user then swings the rock hammer down upon %enemy $+ .
+TP=150
+Element=Earth
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=int
+Renkei=5
+
+[Venus]
+Type=Single
+Cost=0
+Desc=raises $gender($1) hands to the air, creating a massive beam-sword made from fire and light. %user then swings the beam-sword down upon %enemy $+ .
+TP=150
+Element=Fire.Light
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=int
+Renkei=5
+
+[HyperTwinSlice]
+Type=single
+TP=10
+Desc=gives %enemy a death glare as $gender($1) sword glows red. $gender3($1) instantly appears before %enemy $+ , and proceeds to slash %enemy multiple times before %enemy has a chance to react. %user then shoves %enemy away from $gender2($1) $+ .
+BasePower=50
+Element=none
+Cost=0
+Magic=no
+stat=str
+Hits=4
+CanDodge=false
+DestroyShadows=4
 
 [D-Teneritas]
 Type=AOE
@@ -13889,3 +14232,283 @@ Hits=1
 BasePower=50
 Magic=Yes
 stat=int
+
+[Fira]
+Type=AOE
+TP=10
+Desc=chants the encantation for the ancient and powerful spell, Fira. Columns of fire erupt from the battlefield and engulf all of the targets!
+BasePower=75
+Cost=0
+Element=fire
+magic=yes
+stat=int
+DestroyShadows=2
+
+[Stonera]
+Type=AOE
+TP=10
+Desc=chants the encantation for the ancient and powerful spell, Stonera. The ground shakes violently as the earth spits out giant boulders at all targets.
+BasePower=75
+Cost=0
+Element=earth
+magic=yes
+stat=int
+DestroyShadows=2
+
+[Watera]
+Type=AOE
+TP=10
+Desc=chants the encantation for the ancient and powerful spell, Watera.  A huge tidal wave floods the battle field, pushing all targets under the water
+BasePower=75
+Cost=0
+Element=water
+magic=yes
+stat=int
+DestroyShadows=2
+
+[Aera]
+Type=AOE
+TP=10
+Desc=chants the encantation for the ancient and powerful spell, Aera.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
+BasePower=75
+Cost=0
+Element=wind
+magic=yes
+stat=int
+DestroyShadows=2
+
+[Blizzara]
+Type=AOE
+TP=10
+Desc=chants the encantation for the ancient and powerful spell, Blizzara.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
+BasePower=75
+Cost=0
+Element=ice
+magic=yes
+stat=int
+DestroyShadows=2
+
+[Thundara]
+Type=AOE
+TP=10
+Desc=chants the encantation for the ancient and powerful spell, Thundara.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies.  
+BasePower=75
+Cost=0
+Element=lightning
+magic=yes
+stat=int
+DestroyShadows=2
+
+[Geohelix]
+Type=AOE
+Cost=0
+Desc=covers %enemy with earth elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Earth
+Hits=1
+BasePower=40
+Magic=No
+StatusType=Poison
+stat=int
+DestroyShadows=2
+
+[Hydrohelix]
+Type=AOE
+Cost=0
+Desc=covers %enemy with water elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Water
+Hits=1
+BasePower=40
+Magic=No
+StatusType=Poison
+stat=int
+DestroyShadows=2
+
+[Anemohelix]
+Type=AOE
+Cost=0
+Desc=covers %enemy with wind elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Wind
+Hits=1
+BasePower=40
+Magic=No
+StatusType=Poison
+stat=int
+DestroyShadows=2
+
+[Pyrohelix]
+Type=AOE
+Cost=0
+Desc=covers %enemy with fire elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=40
+Magic=No
+StatusType=Poison
+stat=int
+DestroyShadows=2
+
+[Cryohelix]
+Type=AOE
+Cost=0
+Desc=covers %enemy with ice elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Ice
+Hits=1
+BasePower=40
+Magic=No
+StatusType=Poison
+stat=int
+DestroyShadows=2
+
+[Ionohelix]
+Type=AOE
+Cost=0
+Desc=covers %enemy with lightning elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Lightning
+Hits=1
+BasePower=40
+Magic=No
+StatusType=Poison
+stat=int
+DestroyShadows=2
+
+[Noctohelix]
+Type=AOE
+Cost=0
+Desc=covers %enemy with dark elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=40
+Magic=No
+StatusType=Poison
+stat=int
+DestroyShadows=2
+
+[Luminohelix]
+Type=AOE
+Cost=0
+Desc=covers %enemy with holy elemental energy and dark green mist for a moment, causing both elemental and poison damage upon %enemy $+ !
+TP=10
+Element=Light
+Hits=1
+BasePower=40
+Magic=No
+StatusType=Poison
+stat=int
+DestroyShadows=2
+
+[LungeII]
+Type=Single
+TP=10
+Desc=pulls back the greatsword as three random runes appear for a moment. %user then proceeds to quickly thrust the greatsword towards %enemy three times.
+BasePower=30
+Element=$read($lstfile(elements.lst))
+Cost=0
+Magic=No
+Stat=str
+hits=3
+DestroyShadows=2
+Renkei=3
+
+[VivaciousPulseII]
+Type=Heal
+TP=10
+Desc=chants in Elvish as green runes appear around %user for a moment before White energy covers %user $+ , healing $gender($1) injuries.
+BasePower=30
+Element=Light
+Cost=0
+Magic=Yes
+Stat=int
+CappedAmount=5000
+
+[RuneSwipeII]
+Type=Single
+TP=10
+Desc=mutters under $gender($1) breath as a random rune appears briefly before %user $+ , granting %user $+ 's weapon the random element. %user then slashes at %enemy with the magic-infused weapon.
+BasePower=70
+Element=$read($lstfile(elements.lst))
+Cost=0
+Magic=Yes
+Stat=str
+DestroyShadows=2
+
+[DimidiationII]
+Type=Single
+TP=10
+Desc=raises the weapon into the air as the weapon glows white. %user slashes down with the weapon upon %enemy $+ , taking a step back as Light energy forms before $gender($1) $+ . %user then quickly spins to the right, slashing at %enemy once more with the weapon, the energy fading.
+BasePower=45
+Element=Light
+Cost=0
+Magic=Yes
+Stat=str
+Hits=2
+DestroyShadows=2
+
+[HardSlashII]
+Type=Single
+TP=10
+Desc=raises the greatsword above $gender($1) head and then swiflty swings the greatsword down upon %enemy $+ .
+BasePower=55
+Element=None
+Cost=0
+Magic=no
+stat=str
+renkei=3
+DestroyShadows=2
+
+[PowerSlashII]
+Type=Single
+TP=10
+Desc=stabs forward with the greatsword towards %enemy $+ .
+BasePower=55
+Element=none
+Cost=0
+Magic=no
+stat=str
+renkei=4
+DestroyShadows=2
+
+[ResolutionII]
+Type=Single
+TP=10
+Desc=performs an impressive series of swings with the greatsword upon %enemy before leaping into the air and slamming the greatsword down on %enemy $+ .
+BasePower=25
+Element=none
+Cost=0
+Magic=no
+stat=str
+renkei=4
+Hits=5
+DestroyShadows=4
+
+[Guruthos]
+Type=Single
+Cost=0
+Desc=gains a red and blue aura as %user takes $gender($1) sword in hand. She rushes towards %enemy $+ , delivering a fatal blow to %enemy $+ ! "Nice try, but this is the end for you."
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=str
+CanDodge=false
+DeathChance=100
+
+[Medui]
+Type=AOE
+Cost=0
+Desc=takes $gender($1) sword in hand, raising it to the sky as $gender3($1) gains a red and blue aura. "This is the end for you all," %user says as $gender3($1) stabs the sword into the ground, red and blue energy engulfing the entire arena.
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=str
+CanDodge=false
+DeathChance=100

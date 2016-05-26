@@ -26,9 +26,9 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a much larger bat that is black and red in color. Normally found near the entrance of Dracula's Castle.
+Char=is a much larger bat that is black and red in color.
 Rage=screams in rage 
-BossQuote=You dare to intrude upon Lord Dracula's castle?! For that, you shall die!
+BossQuote=...
 
 [Stuff]
 RedOrbs=0

@@ -150,6 +150,8 @@ SpellMasterXP=1
 DextroCustras=HurtEthereal.TechBonus.MeleeBonus.MagicBonus.EnhanceGlyph
 SinestroCustros=HurtEthereal.TechBonus.MeleeBonus.MagicBonus.EnhanceGlyph
 
+[Ignitions]
+GlyphUnion=$iif($current.battlestreak < 500, 0, 1)
 
 [modifiers]
 ; This section controls how much resistance/weakness this monster has the elements and weapon types.

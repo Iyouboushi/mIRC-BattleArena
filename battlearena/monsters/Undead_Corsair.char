@@ -56,6 +56,7 @@ IgnoreElementalMessage=true
 [Monster]
 Type=undead
 size=medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
 
 [Status]
 Poison=no
@@ -93,16 +94,16 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=DeathPenalty
-DeathPenalty=15
+DeathPenalty=$calc(1 + $current.battlestreak)
 
 [Skills]
 Gunslinger=5
 
 
 [Techniques]
-LeadenSalute=15
-BlastShot=10
-SlugShot=10
+LeadenSalute=$calc(1 + $current.battlestreak)
+BlastShot=$calc(1 + $current.battlestreak)
+SlugShot=$calc(1 + $current.battlestreak)
 
 
 [modifiers]
@@ -135,3 +136,8 @@ Mace=70
 PinkChainsaw=150
 Stave=70
 EnergyBlaster=120
+SamuraiEdge=150
+SamuraiEdge-I=150
+SamuraiEdge-F=150
+SamuraiEdge-E=150
+SamuraiEdge-M=150
