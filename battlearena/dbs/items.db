@@ -2418,7 +2418,6 @@ Desc=a part of a salvaged piece of equipment
 Exclusive=yes
 TormentReward=true
 
-
 [TitaniteShard]
 Type=increaseWeaponLevel
 IncreaseAmount=1
@@ -2482,6 +2481,55 @@ Desc=takes out a giganitc blue slab of titanite, setting the weapon on the anvil
 Cost=0
 SellPrice=2000
 Exclusive=yes
+
+
+[Clom'sTale-01]
+Type=misc
+cost=0
+SellPrice=1
+Desc=The first chapter of six in the saga of the ancient and powerful wizard Clom. In this chapter he discusses at length the benefits of always wearing a helmet.
+Exclusive=yes
+Legendary=true
+
+[Clom'sTale-02]
+Type=misc
+cost=0
+SellPrice=1
+Desc=The second chapter of six in the saga of the ancient and powerful wizard Clom. This chapter seems to be all about the latest body armor fashions.
+Exclusive=yes
+Legendary=true
+
+[Clom'sTale-03]
+Type=misc
+cost=0
+SellPrice=1
+Desc=The third chapter of six in the saga of the ancient and powerful wizard Clom. Clom talks about all the times he had a leg to stand on in this chapter.
+Exclusive=yes
+Legendary=true
+
+[Clom'sTale-04]
+Type=misc
+cost=0
+SellPrice=1
+Desc=The fourth chapter of six in the saga of the ancient and powerful wizard Clom. In this chapter Clom rambles on about something called Safe Tea Boots.
+Exclusive=yes
+Legendary=true
+
+[Clom'sTale-05]
+Type=misc
+cost=0
+SellPrice=1
+Desc=The fifth chapter of six in the saga of the ancient and powerful wizard Clom. This chapter talks about all the times he gave a helping hand to people.
+Exclusive=yes
+Legendary=true
+
+[Clom'sTale-06]
+Type=misc
+cost=0
+SellPrice=1
+Desc=The final chapter in the saga of the ancient and powerful wizard Clom. It is titled "You Are Not Your Jewelry--Until You Are." It seems to be about the accessories Clom wore.
+Exclusive=yes
+Legendary=true
 
 
 [BeastmenSeal]
