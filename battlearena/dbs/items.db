@@ -2587,6 +2587,12 @@ Desc=Surreal, nightmarish patterns adorn this crest, symbolizing a Kindred house
 Currency=AlliedNotes
 ConquestItem=true
 
+[SacredKindredCrest]
+type=trade
+cost=1000
+Desc=The demonically frightful patterns etched into this crest skillfully convey the power possessed by the unholiest of Kindred houses. Rumor has it that there's a strange man willing to trade these for portal items.
+Currency=AlliedNotes
+
 [AncientBeastcoin]
 type=misc
 cost=200
