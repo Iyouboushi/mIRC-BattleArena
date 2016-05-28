@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 03/10/16
+;;;; Last updated: 05/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -965,9 +965,16 @@ ON 2:Chat:!use*: {  unset %real.name | unset %enemy
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyConfused)) | halt }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { $dcc.private.message($nick, $readini(translation.dat, battle, NotAllowedBattleCondition))  | halt }
   if (($person_in_mech($nick) = true) && ($4 = $nick)) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
-  $partial.name.match($nick, $4) 
-  $covercheck(%attack.target)
-  $uses_item($nick, $2, $3, %attack.target)
+
+  if ($4 = $null) {
+    if ($readini($dbfile(items.db), $2, type) = tormentreward) { $uses_item($nick, $2, on, $nick, $3) }
+    else { $uses_item($nick, $2, on, $nick) }
+  }
+  else { 
+    $partial.name.match($nick, $4) 
+    $covercheck(%attack.target)
+    $uses_item($nick, $2, $3, %attack.target)
+  }
 }
 ON 2:Chat:!taunt*: { $set_chr_name($nick)
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $dcc.private.message($nick, $readini(translation.dat, status, CurrentlyCharmed)) | halt }
