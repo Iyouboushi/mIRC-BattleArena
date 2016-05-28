@@ -1938,6 +1938,34 @@ Cost=0
 SellPrice=1
 Desc=A bottle of vile white liquid that smells like anguish and death. Combining this item with a gold key will result in a torment orb.
 
+[IceMod]
+Type=misc
+Cost=0
+SellPrice=1
+Desc=An item which can be combined with the Samurai Edge blueprint to add the ice element.
+Exclusive=yes
+
+[FireMod]
+Type=misc
+Cost=0
+SellPrice=1
+Desc=An item which can be combined with the Samurai Edge blueprint to add the fire element.
+Exclusive=yes
+
+[ElectricMod]
+Type=misc
+Cost=0
+SellPrice=1
+Desc=An item which can be combined with the Samurai Edge blueprint to add the lightning element.
+Exclusive=yes
+
+[ExplosionMod]
+Type=misc
+Cost=0
+SellPrice=1
+Desc=An item which can be combined with the Samurai Edge blueprint to allow area of effect melee.
+Exclusive=yes
+
 [Trash]
 Type=misc
 Cost=0
