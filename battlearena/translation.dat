@@ -57,7 +57,7 @@ ViewMyTP=$chr(3) $+ 3 $+  $+ %real.name $+ 's TP is: $readini($char($nick), B
 ViewMyIG=$chr(3) $+ 3 $+  $+ %real.name $+ 's Ignition Gauge is: $readini($char($nick), Battle, IgnitionGauge) $chr(47) $readini($char($nick), BaseStats, IgnitionGauge) 
 ViewAlliedNotes=$chr(3) $+ 3 $+  $+ %real.name has $bytes(%allied.notes,b) allied notes.
 ViewDoubleDollars=$chr(3) $+ 3 $+  $+ %real.name has %currency.symbol $+ $bytes(%doubledollars,b) double dollars.
-ViewLevel=$chr(3) $+ 3 $+  $+ %real.name is roughly level %player.level
+ViewLevel=$chr(3) $+ 3 $+  $+ %real.name is level %player.level and has an armor level of $iif($2 = $null, $bytes($ilevel($nick),b), $bytes($ilevel($2),b))
 ViewMyOrbs=$chr(3) $+ 3 $+  $+ %real.name has $bytes($readini($char($nick), stuff, RedOrbs),b)  $+ $readini(system.dat, system, currency) and $bytes($readini($char($nick), stuff, BlackOrbs),b)  $+ $iif($readini($char($nick), stuff, BlackOrbs) < 2, Black Orb, Black Orbs) and has spent %orbs.spent  $+ $readini(system.dat, system, currency) and %blackorbs.spent  $+ $iif($readini($char($nick), stuff, BlackOrbs) < 2, Black Orb, Black Orbs) total! 
 ViewOthersOrbs=$chr(3) $+ 3 $+  $+ %real.name has $bytes($readini($char($2), stuff, RedOrbs),b)  $+ $readini(system.dat, system, currency) and $bytes($readini($char($2), stuff, BlackOrbs),b)  $+ $iif($readini($char($2), stuff, BlackOrbs) < 2, Black Orb, Black Orbs) and has spent %orbs.spent  $+ $readini(system.dat, system, currency) and %blackorbs.spent  $+ $iif($readini($char($2), stuff, BlackOrbs) < 2, Black Orb, Black Orbs) total! 
 OrbsLeft=$chr(3) $+ 3 $+ You have $bytes($readini($char($nick), stuff, RedOrbs),b)  $+ $readini(system.dat, system, currency) left

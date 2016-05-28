@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 05/24/16
+;;;; Last updated: 05/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -204,6 +204,27 @@ get.level.old {
   return %level
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns level of armor
+; based on armor's stats
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ilevel {
+
+  var %str $armor.stat($1, str)
+  var %def $armor.stat($1, def)
+  var %int  $armor.stat($1, int)
+  var %spd  $armor.stat($1, spd)
+
+  var %level %str
+  inc %level %def
+  inc %level %int
+  inc %level %spd
+
+  var %level $round($calc(%level / 20), 0)
+
+  return %level
+
+}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns what is equipped in the slot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
