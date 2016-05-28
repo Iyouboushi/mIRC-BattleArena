@@ -750,6 +750,8 @@ alias item.tormentreward {
 
       inc %opening.current.item 1
     }
+   
+     set %real.name $1
 
     ; The display message is temporary and will be fixed later
     $display.message(3 $+ %real.name  $+ has obtained: %lifeshards.count lifeshards $+ $chr(44)  $+ %reusableparts.count resuable parts $+ $chr(44)  $+ %forgottensouls.count forgotten souls $+ $chr(44) and %arcanedust.count arcane dust  , global) 
