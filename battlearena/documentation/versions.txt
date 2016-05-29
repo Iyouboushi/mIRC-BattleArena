@@ -1478,6 +1478,8 @@ Battle Arena Bot VERSIONS
 - Added a new bot admin command: !clear dungeon usage -- using this command on a player will allow the player to use
   a dungeon key immediately
 - Added the terrified status effect. Anyone under this status will lose a turn.
+- Added Elite and SuperElite flags for monsters. Elite=true or SuperElite=true under [monster]  Super/Elite monsters will
+  deal more damage and take less damage from attacks
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
