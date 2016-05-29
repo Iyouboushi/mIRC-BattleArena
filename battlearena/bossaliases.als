@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 05/26/16
+;;;; Last updated: 05/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1672,7 +1672,8 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) monster type dragon
   writeini $char(%dragonhunt.file.name) info CanTaunt false
 
-  if (%dragon.level >= 150) { writeini $char($1) monster elite true }
+  if ((%dragon.level >= 150) && (%dragon.level <= 300)) { writeini $char($1) monster elite true }
+  if (%dragon.level > 300) { writeini $char($1) monster SuperElite true }
 
   var %base.hp.tp $round($calc(150 * %dragon.level),0)
   if ($return_playersinbattle >= 3) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
@@ -1763,7 +1764,7 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) modifiers glyph 60
 
   ; Add flying skill for older dragons
-  if (%dragon.level >= 200) { writeini $char(%dragonhunt.file.name) skills flying 1 }
+  if (%dragon.level >= 150) { writeini $char(%dragonhunt.file.name) skills flying 1 }
 
   $boost_monster_hp(%dragonhunt.file.name, dragonhunt, %dragon.level)
   $levelsync(%dragonhunt.file.name, %dragon.level)

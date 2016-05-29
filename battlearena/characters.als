@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 05/27/16
+;;;; Last updated: 05/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1534,13 +1534,13 @@ character.dragonhunt {
   writeini $char($1) info LastDragonHuntTime $ctime
 
   ; Check for a dragon's lair
-  var %dragonhunt.chance 5
+  var %dragonhunt.chance 4
 
   ; If there's more than 4 dragons let's increase the odds of finding one
   if (%dragonhunt.numberofdragons > 4) { inc %dragonhunt.chance %dragonhunt.numberofdragons } 
 
   ; If the combined dragon age is over 800 improve the odds of finding one
-  if ($dragonhunt.dragonage.combined > 800) { inc %dragonhunt.chance 10 }
+  if ($dragonhunt.dragonage.combined > 800) { inc %dragonhunt.chance 8 }
 
   ; Check for accessories and augments to improve chances
   if ($augment.check($1, EnhanceDragonHunt) = true) { inc %dragonhunt.chance $calc(5 * %augment.strength) }
