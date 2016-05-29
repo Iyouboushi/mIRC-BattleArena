@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/26/16
+;;;; Last updated: 05/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4414,6 +4414,12 @@ guardianmon.check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 eliteflag.check {
   var %eliteflag $readini($char($1), monster, elite)
+  if (%eliteflag = $null) { return false }
+  else { return %eliteflag }
+}
+
+supereliteflag.check {
+  var %eliteflag $readini($char($1), monster, SuperElite)
   if (%eliteflag = $null) { return false }
   else { return %eliteflag }
 }

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 05/25/16
+;;;; Last updated: 05/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -836,6 +836,7 @@ formula.meleedmg.player.formula_2.0 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -1159,6 +1160,7 @@ formula.meleedmg.player.formula_3.1 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -1501,6 +1503,7 @@ formula.meleedmg.player.formula_3.0 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -1842,6 +1845,7 @@ formula.meleedmg.player.formula_1.0 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -2229,6 +2233,7 @@ formula.meleedmg.player.formula_2.5 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -2507,9 +2512,13 @@ formula.meleedmg.monster {
   if (%portal.bonus = true) { 
     var %percent.damage.amount 5
     if ($return_playersinbattle > 1) { inc %percent.damage.amount 5 }
+    if ($eliteflag.check($3) = true) { inc  %percent.damage.amount 5 }
+    if ($supereliteflag.check($3) = true) { inc  %percent.damage.amount 10 }
+
     var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
     inc %attack.damage $round(%percent.damage,0)
   }
+
 
   ; Set the damage color
   $damage.color.check
@@ -2677,6 +2686,7 @@ formula.meleedmg.monster {
 
   ; Elite monsters have increased damage
   if ($eliteflag.check($1) = true) {  inc %attack.damage $round($calc(%attack.damage * .25),0)  }
+  if ($supereliteflag.check($3) = true) { inc %attack.damage $round($calc(%attack.damage * .35),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -2945,8 +2955,11 @@ formula.techdmg.monster {
 
   ; Check for portal damage boost
   if (%portal.bonus = true) { 
-    var %percent.damage.amount 7
+    var %percent.damage.amount 10
     if ($return_playersinbattle > 1) { inc %percent.damage.amount 5 }
+    if ($eliteflag.check($3) = true) { inc  %percent.damage.amount 5 }
+    if ($supereliteflag.check($3) = true) { inc  %percent.damage.amount 10 }
+
     var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
     inc %attack.damage $round(%percent.damage,0)
   }
@@ -3059,6 +3072,7 @@ formula.techdmg.monster {
 
   ; Elite monsters have increased damage
   if ($eliteflag.check($1) = true) {  inc %attack.damage $round($calc(%attack.damage * .25),0)  }
+  if ($supereliteflag.check($3) = true) { inc %attack.damage $round($calc(%attack.damage * .35),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -3360,6 +3374,7 @@ formula.techdmg.player.formula_2.0 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -3676,6 +3691,7 @@ formula.techdmg.player.formula_2.5 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -4013,6 +4029,7 @@ formula.techdmg.player.formula_1.0 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for a shield block.
   $shield_block_check($3, $1, $2)
@@ -4189,6 +4206,7 @@ formula.techdmg.player.formula_3.1 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -4491,6 +4509,7 @@ formula.techdmg.player.formula_3.0 {
 
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
 
   ; Check for the Guardian style
   $guardian_style_check($3)
