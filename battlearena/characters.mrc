@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 05/27/16
+;;;; Last updated: 05/31/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1818,6 +1818,7 @@ alias gamble.game {
 
   if ($readini($char($1), stuff, redorbs) < $2) { $display.private.message(4Error: You do not have $2 $currency to gamble with ) | halt }
   if (($3 != odd) && ($3 != even)) {  $display.private.message.delay.custom(2Use !chouhan #amount odd/even to play [such as !chouhan 100 odd  or !chouhan 50 even] , 2) | halt }
+  if ($2 > 100000) { $display.private.message(4Error: The max amount allowed to bet is $bytes(100000,b)) | halt }
 
   ; Can we gamble again so soon?
   var %last.gamble $readini($char($1),info,LastGambleTime)
@@ -1845,10 +1846,11 @@ alias gamble.game {
   $display.private.message(3Dice Results: [Die 1 reads2 %dice.1 $+ 3] [Die 2 reads:2 %dice.2 $+ 3] [Result:2 %dice.total $+ 3] [12 $+ %result $+ 3])
 
   var %orbs.have $readini($char($1), stuff, redorbs)
+  dec %orbs.have $2
 
   ; Check for loss
-  if ((%result = odd) && ($3 = even)) { dec %orbs.have $2 | var %game.status lose }
-  if ((%result = even) && ($3 = odd)) { dec %orbs.have $2 | var %game.status lose }
+  if ((%result = odd) && ($3 = even)) { var %game.status lose }
+  if ((%result = even) && ($3 = odd)) { var %game.status lose }
 
   ; Check for wins
   if ((%result = odd) && ($3 = odd)) {  inc %orbs.have $round($calc($2 * 2),0) | var %game.status win }
