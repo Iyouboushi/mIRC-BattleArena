@@ -48,6 +48,7 @@ Drops=JesterHat+1.HighKindredCrest.Death'sBreath.KindredCrest
 [Monster]
 Type=demon
 size=medium
+SuperElite=true
 
 [Info]
 Flag=monster

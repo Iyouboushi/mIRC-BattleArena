@@ -41,6 +41,7 @@ Drops=ShadowSpool.Death'sBreath
 Type=
 TechLearn=true
 size=large
+SuperElite=true
 
 [Info]
 Flag=monster

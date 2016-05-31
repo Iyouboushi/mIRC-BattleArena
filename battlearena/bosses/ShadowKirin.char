@@ -42,6 +42,7 @@ Drops=Death'sBreath
 [Monster]
 Type=Manticore
 size=large
+SuperElite=true
 
 [Info]
 Flag=monster
