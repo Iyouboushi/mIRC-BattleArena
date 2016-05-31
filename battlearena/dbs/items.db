@@ -4042,7 +4042,7 @@ Type=special
 Cost=0
 SellPrice=5000
 SpecialType=GainWeapon
-Weapon=SamuraiEdge
+Weapon=Daedalus+1
 Desc=pulls out a set of blueprints for a Daedalus+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Daedalus+1 ready for use.
 Exclusive=yes
 

@@ -3193,14 +3193,14 @@ stat=int
 
 [Hexastrike]
 Type=Single
-TP=100
+Cost=3000
 Desc=runs up to %enemy and hits %enemy multiple times with the hammer!
-BasePower=10
+TP=100
 Element=None
-Cost=0
+hits=6
+BasePower=10
 Magic=No
 stat=str
-hits=6
 renkei=3
 
 [BlackHalo]
