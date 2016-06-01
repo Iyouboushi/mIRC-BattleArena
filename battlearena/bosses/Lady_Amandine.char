@@ -40,6 +40,7 @@ Drops=Aetherial-Earrings.Aetherial-Ring
 
 [Monster]
 size=medium
+SuperElite=true
 
 [Info]
 Flag=monster

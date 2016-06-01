@@ -90,6 +90,7 @@ type=
 ; Change it to "true" to turn it on.
 TechLearn=false
 size=large
+elite=true
 
 [Status]
 Poison=no

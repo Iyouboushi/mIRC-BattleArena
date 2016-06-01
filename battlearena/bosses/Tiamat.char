@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=95
+Hp=195
 Tp=90
 Str=13
 Def=7
@@ -10,7 +10,7 @@ Name=Tiamat
 
 
 [Battle]
-Hp=95
+Hp=195
 Tp=90
 Str=13
 Def=7
@@ -59,6 +59,7 @@ IgnoreElementalMessage=true
 [Monster]
 Type=dragon
 size=large
+elite=true
 
 [Status]
 Poison=no
@@ -95,24 +96,27 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=DragonFangs
-DragonFangs=15
+DragonFangs=$current.battlestreak
 
 
 [Skills]
 Resist-Petrify=60
-Resist-Stun=30
+Resist-Stun=50
+Resist-Curse=100
+Resist-Zombie=100
+Flying=$iif($current.battlestreak > 100, 1, 0)
 
 
 [Techniques]
-FangRush=15
-AbsoluteTerror=10
-SpikeFlail=10
+FangRush=$current.battlestreak
+AbsoluteTerror=$current.battlestreak
+SpikeFlail=$current.battlestreak
 
 
 [NaturalArmor]
 Name=Dragon Scales
-Max=200
-Current=200
+Max=$calc(200 + $current.battlestreak)
+Current=$calc(200 + $current.battlestreak)
 
 
 [modifiers]
@@ -120,9 +124,9 @@ Heal=none
 Earth=100
 Fire=50
 Wind=100
-Water=150
+Water=120
 Ice=50
-Lightning=150
+Lightning=120
 Light=100
 Dark=100
 HandToHand=100

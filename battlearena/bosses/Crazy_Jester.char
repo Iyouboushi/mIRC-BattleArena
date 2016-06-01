@@ -44,6 +44,7 @@ RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 Drops=JesterHat.Fool's-Tablet.BeastmanSeal.KindredSeal
+elite=true
 
 [Monster]
 Type=demon

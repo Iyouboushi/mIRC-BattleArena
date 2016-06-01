@@ -65,6 +65,7 @@ IgnoreOutpost=true
 type=demon
 TechLearn=true
 size=medium
+elite=true
 
 [Status]
 Poison=no

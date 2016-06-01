@@ -41,6 +41,7 @@ Drops=Cultist-Rosary
 [Monster]
 Type=demon
 size=medium
+elite=true
 
 [Info]
 Flag=monster

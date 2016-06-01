@@ -41,6 +41,7 @@ Drops=
 [Monster]
 Type=Adamantoise
 size=large
+elite=true
 
 [Info]
 Flag=monster
