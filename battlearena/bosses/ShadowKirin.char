@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 1550, $round($calc(25000 + (5 * $return_differenceof($return_playerlevelstotal,1550))),0), $round($calc(15000 + $return_playerlevelstotal),0))
+Hp=$iif($return_playerlevelstotal >= 1550, $round($calc(35000 + (5 * $return_differenceof($return_playerlevelstotal,1550))),0), $round($calc(15000 + $return_playerlevelstotal),0))
 Hp=5500
 Tp=1250
 Str=3920
@@ -145,7 +145,7 @@ SkyGodPower=IgnoreDefense.EnhanceSummons.EnhanceCriticalHits.AbsorbIG
 
 [NaturalArmor]
 Name=Godly Shield
-Max=$round($calc(5000+($return_playerlevelhighest * 2)),0)
+Max=$iif($round($calc(5000+($return_playerlevelhighest * 2)),0) > 20000, 20000, $round($calc(5000+($return_playerlevelhighest * 2)),0))
 Current=5000
 
 
@@ -153,7 +153,7 @@ Current=5000
 Heal=earth
 Earth=700
 Fire=50
-Wind=150
+Wind=180
 Water=100
 Ice=100
 Lightning=100
