@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playerlevelstotal >= 1550, $round($calc(35000 + (5 * $return_differenceof($return_playerlevelstotal,1550))),0), $round($calc(15000 + $return_playerlevelstotal),0))
+Hp=$iif($return_playerlevelstotal >= 1550, $round($calc(65000 + (5 * $return_differenceof($return_playerlevelstotal,1550))),0), $round($calc(15000 + $return_playerlevelstotal),0))
 Hp=5500
 Tp=1250
 Str=3920
@@ -312,3 +312,4 @@ MechLightIV=10
 MechShadowIV=10
 HolyHandGrenade=1
 Dynamite=2
+Lightsaber=95
