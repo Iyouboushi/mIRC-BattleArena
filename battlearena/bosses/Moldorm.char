@@ -41,6 +41,7 @@ Drops=
 [Monster]
 Type=
 size=large
+Elite=True
 
 [Info]
 Flag=monster

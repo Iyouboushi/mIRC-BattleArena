@@ -29,7 +29,7 @@ RageCountDown=0
 Char=is a woman with short black hair who wears a red leather outfit along with a red hat that has part of a skull shape. She carries her favorite guitar in hand.
 Rage=screams in rage 
 BossQuote=I won't break you. Yet. I haven't told you how unfortunate it is that you were born at all, right?
-DeathMessage=pouts for a moment before taking out a metallic plate and hurling it at the heroes and runs away!
+DeathMessage=pouts for a moment before taking out a metallic plate and throws it at the heroes before running away!
 
 [Stuff]
 RedOrbs=0
@@ -53,54 +53,12 @@ BossLevel=200
 IgnoreDrain=true
 ai_type=berserker
 IgnorePresident=true
-;=======================================
-; These are optional flags you can set:
-;========================================
-; STAGGER:  do you want the monster to be able to be staggered after being hurt for a certain # of damage? 
-; CanStagger=yes/no  
-; StaggerAmount=$rand(#,#)   
-; 
-; IGNORE RAGEMODE
-; RageMode=ignore 
-;
-; IGNORE QUICKSILVER
-; IgnoreQuicksilver=true  
-;
-; AI TYPE: berserkers will attack their own allies, defenders won't get a turn. Leave blank for normal.
-; ai_type=
-;
-; STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.
-; Streak=
-; StreakMax=
-;
-; FLEEING: Do you want monsters to be able to flee the battle?
-; CanFlee=true/false
-;
-; SPAWNING ANOTHER MONSTER UPON DEATH: If set, when this monster is killed, it'll summon another one that's set.
-; SpawnAfterDeath=nameofmonster
-;
-; BOSS LEVELS are used for bosses that are summoned via portal items. You can make them harder or easier by setting a level.
-; BossLevel=
-; 
-; IGNORE DRAIN is true or false. If set to true, stuff like drainsamba won't work.
-; IgnoreDrain=true/false
-;
-; BIOME is for if you want the boss to only appear under certain battlefields. You can list multiple with periods inbetween.
-; Biome=
-;
-; Can the monster taunt?   Assumed to be true if blank.
-; CANTAUNT=true/false
-;
-; TAUNTFILE is an optional taunt file if you want your boss to have unique taunts.  If blank it will use the default taunts.txt
-; TAUNTFILE=
 
 [monster]
-; Type is the type of monster it is. 
 type=
-; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
-; Change it to "true" to turn it on.
 TechLearn=true
 size=medium
+Elite=true
 
 [Status]
 Poison=no

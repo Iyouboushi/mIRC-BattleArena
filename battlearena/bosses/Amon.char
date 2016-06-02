@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=120
-Tp=150
-Str=18
-Def=18
-Int=18
-Spd=18
+Hp=2000
+Tp=500
+Str=650
+Def=650
+Int=650
+Spd=650
 IgnitionGauge=2
 Name=Amon
 
 
 [Battle]
-Hp=120
-Tp=150
-Str=18
-Def=18
-Int=18
-Spd=18
+Hp=2000
+Tp=500
+Str=650
+Def=650
+Int=650
+Spd=650
 IgnitionGauge=2
 Status=alive
 
@@ -40,6 +40,7 @@ Drops=
 [Monster]
 Type=
 size=medium
+Elite=True
 
 [Info]
 Flag=monster
@@ -50,8 +51,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=60
-StreakMax=100
+Streak=1000
 CanTaunt=true
 
 [Status]
@@ -89,7 +89,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=AmonTrident
-AmonTrident=10
+AmonTrident=$calc(1 + $current.battlestreak)
 
 [Skills]
 Zen=5
@@ -110,13 +110,13 @@ MagicMirror=1
 Resist-Petrify=60
 
 [Techniques]
-RahGian=15
-WoRud=15
-Stardiver=15
-Drakesbane=15
-Skewer=15
-Geirskogul=15
-CamlannsTorment=15
+RahGian=$calc(1 + $current.battlestreak)
+WoRud=$calc(1 + $current.battlestreak)
+Stardiver=$calc(1 + $current.battlestreak)
+Drakesbane=$calc(1 + $current.battlestreak)
+Skewer=$calc(1 + $current.battlestreak)
+Geirskogul=$calc(1 + $current.battlestreak)
+CamlannsTorment=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -124,7 +124,7 @@ CamlannsTorment=15
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=3
+WeaponMaster=10
 WeaponMasterXP=1
 
 [modifiers]

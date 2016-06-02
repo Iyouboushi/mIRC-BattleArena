@@ -40,7 +40,7 @@ Rifles=HuntingRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenal
 Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.CompoundBow.CompoundBow+1
 Katanas=SmallKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1
 Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Sacrament.Lazarus.Ichimonji-Yofusa
-Wands=WoodenWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold
+Wands=WoodenWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold.Seveneyes
 Staves=WoodenStaff.IridialStaff.Laevatein.Uffrat.BahamutsStaff.Laevatein+1.BahamutsStaff+1
 Glyphs=MagicGlyphs.Glyphs.Glyphs+1
 Spears=FightingSpear.Lance.Thalassocrat.Gungnir.Corsesca.Ryunohige.Rhongomiant.Upukirex.Ryunohige+1
@@ -61,11 +61,11 @@ MonsterWpns=Yagudo_Fists.Dark_Vampiric_Power.Guardian_Shield.Orc_Pike.QuadavWand
 
 MonsterWpns2=VampireFangs.SpaceGun.CerberusClaws.ElementalPower.MarioFists.FishBite.Egyptian_Rod.SinistralPower.JesterWand.VampireArt.Puppetry.Benihime.PeoplesFist.SuccubusPower.DragonShouts.BlueEyesPower.BlackMagic.DragonSword.OctoArms.Casull&Jackal.AlucardSword.Auto9.Railgun.WoolyTusks.OrochiPower.BogardGloves.GiygasPower.AtlantisPower.Broad_Sword.Rose's_Rapier.ShihouinFists.ImpHorn.GhostPower.ChozoArmCannon.ZeroSaber.SantaRifle.ScorpionFists.Legion
 
-MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.GoylePower.SwordOfTheFallenDevil.X-BusterMk1.X-BusterMk2.X-BusterMk3.MonkeyIsland_Cutlass.TauntPower.Marlene.OldIronKingClaws
+MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.DecapiclopsPower.OxocutionerPower.ChimyriadPower.GekkoWeapon.GekkoArms.GearRayWeapons.CactuarNeedles.JumboCactuarNeedles.KainsLance.PrishePowers.AbsolutePolearm.DullahanSword.ChunLiBracelets.RyuGloves.KenGloves.AlexanderPower.BahamutPower.CarbunclePower.DoomtrainPower.FalcorrPower.FenrirPower.GarudaPower.IfritPower.LeviathanPower.OlduumStaff.ShivaPower.TitanPower.DreddGun.PowerOfWords.BombPower.Orc_Fists.WarMachine.GoylePower.SwordOfTheFallenDevil.X-BusterMk1.X-BusterMk2.X-BusterMk3.MonkeyIsland_Cutlass.TauntPower.Marlene.OldIronKingClaws.ArcanaPower
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros.AntlionJaw
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe.DollParts
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed
 
@@ -1741,10 +1741,26 @@ Abilities=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.Dar
 Element=None
 Hits=1
 BasePower=100
-Upgrade=0
+Upgrade=5000
 IgnoreDefense=5
 2Handed=false
 SpecialWeapon=true
+
+[Seveneyes]
+Cost=0
+Type=Wand
+Info=A unique wand that relies on regeants for its power. Outside of Torment battles the staff has a 200 power and ignores 10% defense. Inside of Torment the staff has a power of 600 and ignores 20% defense.
+Abilities=Fira.Stonera.Watera.Aera.Blizzara.Thundara.DarkraIII.HolyIII
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 600, 200)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+2Handed=false
+AmmoRequired=Regeant
+AmmoAmountNeeded=4
+SpecialWeapon=true
+Legendary=True
 
 [WoodenStaff]
 Cost=1
@@ -2571,7 +2587,7 @@ CanCounter=false
 Cost=0
 Type=Stave
 Info=A large staff that is black in color. The bottom has gold on it and the top of the staff splits into four before combining back together. A ruby rests in the split and gold runes run along the staff. Given to Lirarian by a previous goddess.
-Abilities=Fira.Stonera.Watera.Aera.Blizzara.Thundara.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix.Meteor.Guruthos.Medui
+Abilities=FiraII.StoneraII.WateraII.AeraII.BlizzaraII.ThundaraII.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix.Meteor.Guruthos.Medui
 Element=Light
 Hits=1
 Basepower=70
@@ -5453,6 +5469,26 @@ IgnoreDefense=5
 2Handed=true
 CanShieldReflect=true
 CanCounter=true
+
+[ArcaneDollParts]
+Cost=0
+Type=HandToHand
+Info=The parts of an arcane doll.
+Abilities=Meltdown.Blitzstrahl.GravityField.Panzerfaust.Typhoon
+Element=None
+Hits=2
+BasePower=25
+Upgrade=0
+
+[ArcanaPower]
+Cost=0
+Type=HandToHand
+Info=The power of the arcane pots.
+Abilities=DoubleRay.MysteriousLight.Spinning_Attack
+Element=None
+Hits=1
+BasePower=50
+Upgrade=0
 
 ==============================
 SHIELDS

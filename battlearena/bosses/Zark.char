@@ -46,6 +46,7 @@ drops=
 [monster]
 type=alien
 size=medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
 
 [Info]
 Flag=monster

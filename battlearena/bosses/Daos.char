@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=130
-Tp=100
-Str=30
-Def=30
-Int=30
-Spd=30
+Hp=3000
+Tp=500
+Str=700
+Def=700
+Int=700
+Spd=700
 IgnitionGauge=2
 Name=Daos
 
 
 [Battle]
-Hp=130
-Tp=100
-Str=30
-Def=30
-Int=30
-Spd=30
+Hp=3000
+Tp=500
+Str=700
+Def=700
+Int=700
+Spd=700
 IgnitionGauge=2
 Status=alive
 
@@ -46,6 +46,7 @@ Drops=
 [Monster]
 Type=
 size=medium
+Elite=True
 
 [Info]
 Flag=monster
@@ -56,7 +57,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=110
+Streak=1000
 SpawnAfterDeath=GuardDaos
 CanTaunt=true
 IgnorePresident=True
@@ -97,7 +98,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=SinistralPower
-SinistralPower=15
+SinistralPower=$calc(1 + $current.battlestreak)
 
 [Skills]
 Zen=5
@@ -117,14 +118,14 @@ Resist-Stun=30
 Resist-Petrify=60
 
 [Techniques]
-RayGion=15
-FuReia=15
-RahGian=15
-WoRud=15
-ReeDelt=15
-AsuranFists=15
-FinalHeaven=15
-ShinjinSpiral=15
+RayGion=$calc(1 + $current.battlestreak)
+FuReia=$calc(1 + $current.battlestreak)
+RahGian=$calc(1 + $current.battlestreak)
+WoRud=$calc(1 + $current.battlestreak)
+ReeDelt=$calc(1 + $current.battlestreak)
+AsuranFists=$calc(1 + $current.battlestreak)
+FinalHeaven=$calc(1 + $current.battlestreak)
+ShinjinSpiral=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -133,7 +134,7 @@ ShinjinSpiral=15
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=3
+WeaponMaster=10
 WeaponMasterXP=1
 
 

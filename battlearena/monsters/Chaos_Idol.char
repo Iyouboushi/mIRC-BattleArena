@@ -1,0 +1,161 @@
+[BaseStats]
+Hp=700
+Tp=200
+Str=200
+Def=200
+Int=200
+Spd=200
+Name=Chaos Idol
+IgnitionGauge=2
+
+
+[Battle]
+Hp=700
+Tp=200
+Str=200
+Def=200
+Int=200
+Spd=200
+Status=alive
+IgnitionGauge=2
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is a large "doll" that is made out of cerment and brought to life with powerful arcane magic.
+Rage=screams in rage 
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+
+[Info]
+Flag=monster
+Gender=its
+Gender2=its
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+Streak=300
+CanTaunt=false
+CanFlee=False
+JustReleaseDefense=100
+IgnorePresident=true
+IgnoreElementalMessage=true
+IgnoreOutpost=true
+
+[monster]
+type=Doll
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+
+[Weapons]
+Equipped=ArcaneDollParts
+ArcaneDollParts=$calc(1 + $current.battlestreak)
+
+
+[Skills]
+Zen=5
+MartialArts=100
+Resist-Amnesia=100
+Resist-Blind=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Petrify=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Poison=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=$iif($current.battlestreak <= 200, 30, 100)
+Resist-Weaponlock=100
+Resist-Zombie=100
+
+[Techniques]
+Meltdown=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) > 1, 1, 0)
+Blitzstrahl=$calc(1 + $current.battlestreak)
+GravityField=$calc(1 + $current.battlestreak)
+Panzerfaust=$calc(1 + $current.battlestreak)
+Typhoon=$calc(1 + $current.battlestreak)
+
+
+[Item_Amount]
+
+[Styles]
+Equipped=Weaponmaster
+Weaponmaster=10
+
+[modifiers]
+; Resistances/weaknesses/immunities/heals can be set here.  100 = normal damage, greater than 100 means weakness, 
+; less than 100 means resistances, 0 means immune to it.
+Heal=none
+Earth=150
+Fire=150
+Wind=150
+Water=150
+Ice=150
+Lightning=150
+Light=150
+Dark=150
+HandToHand=10
+Whip=10
+Sword=10
+Gun=10
+Rifle=10
+Katana=10
+Wand=10
+Spear=10
+Scythe=10
+Glyph=150
+GreatSword=10
+Bow=10
+Axe=10
+Dagger=10
+Mace=10
+Stave=10
+EnergyBlaster=10
+Hammer=10

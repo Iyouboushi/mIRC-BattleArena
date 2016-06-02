@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=1000
-Tp=300
-Str=80
-Def=80
-Int=80
-Spd=80
+Hp=3000
+Tp=500
+Str=675
+Def=675
+Int=675
+Spd=675
 IgnitionGauge=2
 Name=True Erim
 
 
 [Battle]
-Hp=1000
-Tp=300
-Str=80
-Def=80
-Int=80
-Spd=80
+Hp=2000
+Tp=500
+Str=675
+Def=675
+Int=675
+Spd=675
 IgnitionGauge=2
 Status=alive
 
@@ -40,6 +40,7 @@ Drops=
 [Monster]
 Type=
 size=large
+Elite=$iif($current.battlestreak <= 1000, false, true)
 
 [Info]
 Flag=monster
@@ -50,7 +51,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=300
+Streak=1000
 CanTaunt=true
 IgnoreElementalMessage=true
 
@@ -89,7 +90,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=ErimPower
-ErimPower=100
+ErimPower=$calc(1 + $current.battlestreak)
 
 [Skills]
 Zen=5
@@ -109,18 +110,18 @@ Resist-Petrify=60
 MagicMirror=1
 
 [Techniques]
-RayGion=80
-FuReia=80
-RahGian=80
-WoRud=80
-ReeDelt=80
-CureV=75
-ChantDuCygne=75
-DeathBlossom=75
-SavageBlade=75
-Requiescat=75
-DeathRay=100
-MultiDeathRay=85
+RayGion=$calc(1 + $current.battlestreak)
+FuReia=$calc(1 + $current.battlestreak)
+RahGian=$calc(1 + $current.battlestreak)
+WoRud=$calc(1 + $current.battlestreak)
+ReeDelt=$calc(1 + $current.battlestreak)
+CureV=$calc(1 + $current.battlestreak)
+ChantDuCygne=$calc(1 + $current.battlestreak)
+DeathBlossom=$calc(1 + $current.battlestreak)
+SavageBlade=$calc(1 + $current.battlestreak)
+Requiescat=$calc(1 + $current.battlestreak)
+DeathRay=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) = 1, 1, 0)
+MultiDeathRay=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) > 1, 1, 0)
 
 [Item_Amount]
 

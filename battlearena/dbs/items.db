@@ -4046,6 +4046,15 @@ Weapon=Daedalus+1
 Desc=pulls out a set of blueprints for a Daedalus+1 $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Daedalus+1 ready for use.
 Exclusive=yes
 
+[Blueprints:Seveneyes]
+Type=special
+Cost=0
+SellPrice=5000
+SpecialType=GainWeapon
+Weapon=Seveneyes
+Desc=pulls out a set of blueprints for Seveneyes wand $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Seveneyes ready for use.
+Exclusive=yes
+
 [Blueprints:SilverSword]
 Type=special
 Cost=0
@@ -4649,6 +4658,13 @@ Type=ammo
 Cost=1500
 SellPrice=250
 Desc=Ammo that is able to hit more than one target.
+Exclusive=yes
+
+[Regeant]
+Type=ammo
+Cost=500
+SellPrice=100
+Desc=Various items used in conjunction with casting spells.
 Exclusive=yes
 
 =========================

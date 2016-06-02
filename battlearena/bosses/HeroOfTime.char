@@ -64,7 +64,7 @@ IgnoreElementalMessage=true
 type=Hylian
 TechLearn=false
 size=medium
-
+Elite=true
 
 [Status]
 Poison=no

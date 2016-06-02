@@ -78,6 +78,7 @@ PineWand=FireIII.StoneIII.IceIII.AeroIII.WaterIII.ThunderIII.CureIII.DarkIII.Ban
 ElderWand=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy
 EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
 Aedold=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
+Seveneyes=Fira.Stonera.Watera.Aera.Blizzara.Thundara.DarkraIII.HolyIII
 WoodenStaff=MagicStrike
 IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
 Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
@@ -239,7 +240,7 @@ QuadavWand_R=FireIV.WaterIV.BlizzardIV.Poison.Blind.Headbutt.Paralyze
 QuadavSword=FastBlade.CircleBlade.FlatBlade.Headbutt
 SilverSwords=Twin_Slice.LightningStrike.BladeBeamII.Guruthos.Medui
 Silver_Goddess_Sword=TwinSlice.BiteOfLightning.BladeBeam.Guruthos.Medui
-Black_Goddess_Staff=Fira.Stonera.Watera.Aera.Blizzara.Thundara.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix.Meteor.Guruthos.Medui
+Black_Goddess_Staff=FiraII.StoneraII.WateraII.AeraII.BlizzaraII.ThundaraII.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix.Meteor.Guruthos.Medui
 AettirII=LungeII.VivaciousPulseII.RuneSwipeII.DimidiationII.ResolutionII.HardSlashII.PowerSlashII.Guruthos.Medui
 Mariofists=MarioJump.StarPower.Fireflower
 KanonjiStaff=Kanonball.GoldenKanonball
@@ -502,6 +503,8 @@ AntlionJaw=PowerAttack.Tremors
 GargoyleArms=Stomp
 Doomed=AbyssBlast.AcidBreath.StinkingGas.WhipTongue
 OrcAxe=FellCleave.SteelCyclone.ShoulderTackle.BattleDance
+ArcaneDollParts=Meltdown.Blitzstrahl.GravityField.Panzerfaust.Typhoon
+ArcanaPower=DoubleRay.MysteriousLight.Spinning_Attack
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -3006,6 +3009,86 @@ Desc=casts a stronger version of Holy. Searing light engulfs the battlefield to 
 BasePower=50
 Element=Light
 Cost=3000
+Magic=Yes
+stat=int
+
+[Fira]
+Type=AOE
+TP=100
+Desc=chants the encantation for the ancient and powerful spell, Fira. Columns of fire erupt from the battlefield and engulf all of the targets!
+BasePower=75
+Cost=7000
+Element=fire
+magic=yes
+stat=int
+
+[Stonera]
+Type=AOE
+TP=100
+Desc=chants the encantation for the ancient and powerful spell, Stonera. The ground shakes violently as the earth spits out giant boulders at all targets.
+BasePower=75
+Cost=0
+Element=earth
+magic=yes
+stat=int
+
+[Watera]
+Type=AOE
+TP=100
+Desc=chants the encantation for the ancient and powerful spell, Watera.  A huge tidal wave floods the battle field, pushing all targets under the water
+BasePower=75
+Cost=7000
+Element=water
+magic=yes
+stat=int
+
+[Aera]
+Type=AOE
+TP=100
+Desc=chants the encantation for the ancient and powerful spell, Aera.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
+BasePower=75
+Cost=7000
+Element=wind
+magic=yes
+stat=int
+
+[Blizzara]
+Type=AOE
+TP=100
+Desc=chants the encantation for the ancient and powerful spell, Blizzara.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
+BasePower=75
+Cost=7000
+Element=ice
+magic=yes
+stat=int
+
+[Thundara]
+Type=AOE
+TP=100
+Desc=chants the encantation for the ancient and powerful spell, Thundara.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies.  
+BasePower=75
+Cost=7000
+Element=lightning
+magic=yes
+stat=int
+
+[DarkraIII]
+Type=AOE
+TP=100
+Desc=floats into the air slightly as $gender3($1) gathers energy. A small dark orb appears in front of $set_chr_name($1) %real.name for a moment before the orb slams into the battlefield, covering it in darkness!
+BasePower=75
+Element=Dark
+Cost=7000
+Magic=Yes
+stat=int
+
+[HolyIII]
+Type=AOE
+TP=100
+Desc=casts a stronger version of Holy. Searing light engulfs the battlefield to damage all targets!
+BasePower=75
+Element=Light
+Cost=7000
 Magic=Yes
 stat=int
 
@@ -8018,7 +8101,7 @@ stat=str
 hits=8
 
 [DeathRay]
-Type=Single
+Type=Death
 TP=10
 Desc=gathers energy before quickly summoning a large red beam to slam into %enemy $+ !
 BasePower=60
@@ -8026,9 +8109,10 @@ Element=Dark
 Cost=0
 Magic=Yes
 stat=int
+DeathChance=100
 
 [MultiDeathRay]
-Type=AOE
+Type=Death-AOE
 TP=10
 Desc=laughs as she begins to gather power. A moment later, she says "It's time for you all to die!" and summons several red beams of energy to strike the battlefield!
 BasePower=60
@@ -8036,6 +8120,7 @@ Element=Dark
 Cost=0
 Magic=Yes
 stat=int
+DeathChance=100
 
 [ChainsawSlash]
 Type=Single
@@ -10469,7 +10554,7 @@ HurtEthereal=true
 Element=None
 
 [LastWillandTestament]
-Type=Single
+Type=Death
 TP=20
 Desc=changes the battlefield to a concert stage which also has two large, demonic speakers. %user forces %enemy to be tossed back and forth between the speakers as %user rocks out on the guitar. After a minute, %user stops playing and causes an explosion which returns the battlefield to normal.
 BasePower=150
@@ -10479,6 +10564,7 @@ Magic=No
 Stat=str
 CanDodge=false
 HurtEthereal=true
+DeathChance=5
 
 [GenshiCleave]
 Type=AOE
@@ -14224,7 +14310,7 @@ BasePower=50
 Magic=Yes
 stat=int
 
-[Fira]
+[FiraII]
 Type=AOE
 TP=10
 Desc=chants the encantation for the ancient and powerful spell, Fira. Columns of fire erupt from the battlefield and engulf all of the targets!
@@ -14235,7 +14321,7 @@ magic=yes
 stat=int
 DestroyShadows=2
 
-[Stonera]
+[StoneraII]
 Type=AOE
 TP=10
 Desc=chants the encantation for the ancient and powerful spell, Stonera. The ground shakes violently as the earth spits out giant boulders at all targets.
@@ -14246,7 +14332,7 @@ magic=yes
 stat=int
 DestroyShadows=2
 
-[Watera]
+[WateraII]
 Type=AOE
 TP=10
 Desc=chants the encantation for the ancient and powerful spell, Watera.  A huge tidal wave floods the battle field, pushing all targets under the water
@@ -14257,7 +14343,7 @@ magic=yes
 stat=int
 DestroyShadows=2
 
-[Aera]
+[AeraII]
 Type=AOE
 TP=10
 Desc=chants the encantation for the ancient and powerful spell, Aera.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
@@ -14268,7 +14354,7 @@ magic=yes
 stat=int
 DestroyShadows=2
 
-[Blizzara]
+[BlizzaraII]
 Type=AOE
 TP=10
 Desc=chants the encantation for the ancient and powerful spell, Blizzara.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
@@ -14279,7 +14365,7 @@ magic=yes
 stat=int
 DestroyShadows=2
 
-[Thundara]
+[ThundaraII]
 Type=AOE
 TP=10
 Desc=chants the encantation for the ancient and powerful spell, Thundara.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies.  
@@ -14479,7 +14565,7 @@ Hits=5
 DestroyShadows=4
 
 [Guruthos]
-Type=Single
+Type=Death
 Cost=0
 Desc=gains a red and blue aura as %user takes $gender($1) sword in hand. She rushes towards %enemy $+ , delivering a fatal blow to %enemy $+ ! "Nice try, but this is the end for you."
 TP=10
@@ -14492,7 +14578,7 @@ CanDodge=false
 DeathChance=100
 
 [Medui]
-Type=AOE
+Type=Death-AOE
 Cost=0
 Desc=takes $gender($1) sword in hand, raising it to the sky as $gender3($1) gains a red and blue aura. "This is the end for you all," %user says as $gender3($1) stabs the sword into the ground, red and blue energy engulfing the entire arena.
 TP=10
@@ -14503,3 +14589,98 @@ Magic=No
 stat=str
 CanDodge=false
 DeathChance=100
+
+[Meltdown]
+Type=Death-AOE
+Cost=0
+Desc=curls up and levitates for a few moments before causing a massive explosion that covers the entire battlefield.
+TP=10
+Element=Fire
+Hits=1
+BasePower=50
+Magic=No
+stat=int
+CanDodge=false
+DeathChance=100
+
+[Blitzstrahl]
+Type=Single
+Cost=0
+Desc=pulls back the right hand as lightning covers the arm. %user then strikes forward with the arm, causing lightning damage upon %enemy $+ .
+TP=10
+Element=Lightning
+Hits=1
+BasePower=50
+Magic=No
+StatusType=Stun
+stat=int
+
+[GravityField]
+Type=AOE
+Cost=0
+Desc=unleashes a dark energy upon the battlefield, slowing down all of the heroes!
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+StatusType=Slow
+stat=int
+
+[Panzerfaust]
+Type=Single
+Cost=0
+Desc=unleashes two strong hits upon %enemy $+ !
+TP=10
+Element=None
+Hits=2
+BasePower=30
+Magic=No
+stat=Str
+Renkei=2
+
+[Typhoon]
+Type=AOE
+Cost=0
+Desc=holds the arms out to the side, then spins the torso at a high speed to strike all of the heroes!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+stat=Str
+
+[DoubleRay]
+Type=Single
+Cost=0
+Desc=unleashes two rays of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=2
+BasePower=30
+Magic=No
+stat=int
+Renkei=2
+
+[MysteriousLight]
+Type=Single
+Cost=0
+Desc=unleashes a bright light upon %enemy to cause blindness!
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+StatusType=Blind
+stat=Int
+
+[Spinning_Attack]
+Type=AOE
+Cost=0
+Desc=spins around the battlefield, hitting all of the heroes!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+stat=Str

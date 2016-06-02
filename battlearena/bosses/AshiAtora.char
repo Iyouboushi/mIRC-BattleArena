@@ -41,6 +41,7 @@ Drops=
 Type=
 TechLearn=true
 size=large
+Elite=true
 
 [Info]
 Flag=monster

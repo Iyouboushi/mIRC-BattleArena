@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=300
-Tp=300
-Str=70
-Def=70
-Int=70
-Spd=70
+Hp=3500
+Tp=500
+Str=750
+Def=750
+Int=750
+Spd=750
 IgnitionGauge=2
 Name=Guard Daos
 
 
 [Battle]
-Hp=300
-Tp=300
-Str=70
-Def=70
-Int=70
-Spd=70
+Hp=3500
+Tp=500
+Str=750
+Def=750
+Int=750
+Spd=750
 IgnitionGauge=2
 Status=alive
 
@@ -46,6 +46,7 @@ Drops=
 [Monster]
 Type=
 size=large
+Elite=True
 
 [Info]
 Flag=monster
@@ -95,7 +96,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=SinistralPower
-SinistralPower=75
+SinistralPower=$calc(1 + $current.battlestreak)
 
 [Skills]
 Zen=5
@@ -117,14 +118,14 @@ Resist-Petrify=60
 Resist-Stun=30
 
 [Techniques]
-RayGion=60
-FuReia=60
-RahGian=60
-WoRud=60
-ReeDelt=60
-AsuranFists=60
-FinalHeaven=60
-ShinjinSpiral=60
+RayGion=$calc(1 + $current.battlestreak)
+FuReia=$calc(1 + $current.battlestreak)
+RahGian=$calc(1 + $current.battlestreak)
+WoRud=$calc(1 + $current.battlestreak)
+ReeDelt=$calc(1 + $current.battlestreak)
+AsuranFists=$calc(1 + $current.battlestreak)
+FinalHeaven=$calc(1 + $current.battlestreak)
+ShinjinSpiral=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -132,7 +133,7 @@ ShinjinSpiral=60
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=5
+WeaponMaster=10
 WeaponMasterXP=1
 
 [modifiers]

@@ -41,6 +41,7 @@ Drops=
 [Monster]
 Type=undead
 size=large
+Elite=True
 
 [Info]
 Flag=monster

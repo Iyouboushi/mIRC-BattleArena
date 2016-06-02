@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=130
-Tp=200
-Str=22
-Def=25
-Int=30
-Spd=30
+Hp=2000
+Tp=500
+Str=650
+Def=650
+Int=650
+Spd=650
 IgnitionGauge=2
 Name=Erim
 
 
 [Battle]
-Hp=130
-Tp=200
-Str=22
-Def=25
-Int=30
-Spd=30
+Hp=2000
+Tp=500
+Str=650
+Def=650
+Int=650
+Spd=650
 IgnitionGauge=2
 Status=alive
 
@@ -40,6 +40,7 @@ Drops=
 [Monster]
 Type=
 size=medium
+Elite=True
 
 [Info]
 Flag=monster
@@ -50,7 +51,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=70
+Streak=1000
 CanTaunt=true
 
 [Status]
@@ -88,7 +89,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=ErimBlade
-ErimBlade=15
+ErimBlade=$calc(1 + $current.battlestreak)
 
 [Skills]
 Zen=5
@@ -108,16 +109,16 @@ Resist-Stun=30
 MagicMirror=1
 
 [Techniques]
-RayGion=15
-FuReia=15
-RahGian=15
-WoRud=15
-ReeDelt=15
-CureV=15
-ChantDuCygne=15
-DeathBlossom=15
-SavageBlade=15
-Requiescat=15
+RayGion=$calc(1 + $current.battlestreak)
+FuReia=$calc(1 + $current.battlestreak)
+RahGian=$calc(1 + $current.battlestreak)
+WoRud=$calc(1 + $current.battlestreak)
+ReeDelt=$calc(1 + $current.battlestreak)
+CureV=$calc(1 + $current.battlestreak)
+ChantDuCygne=$calc(1 + $current.battlestreak)
+DeathBlossom=$calc(1 + $current.battlestreak)
+SavageBlade=$calc(1 + $current.battlestreak)
+Requiescat=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -125,7 +126,7 @@ Requiescat=15
 
 [Styles]
 Equipped=SpellMaster
-SpellMaster=3
+SpellMaster=10
 SpellMasterXP=1
 
 

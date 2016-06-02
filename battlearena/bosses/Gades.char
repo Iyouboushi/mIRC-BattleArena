@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=110
-Tp=80
-Str=30
-Def=25
-Int=5
-Spd=5
+Hp=2000
+Tp=500
+Str=650
+Def=650
+Int=650
+Spd=650
 IgnitionGauge=2
 Name=Gades
 
 
 [Battle]
-Hp=110
-Tp=80
-Str=30
-Def=25
-Int=5
-Spd=5
+Hp=2000
+Tp=500
+Str=650
+Def=650
+Int=650
+Spd=650
 IgnitionGauge=2
 Status=alive
 
@@ -40,6 +40,7 @@ Drops=
 [Monster]
 Type=
 size=medium
+Elite=True
 
 [Info]
 Flag=monster
@@ -50,7 +51,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=50
+Streak=1000
 CanTaunt=true
 
 [Status]
@@ -88,7 +89,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=GadesBlade
-GadesBlade=15
+GadesBlade=$calc(1 + $current.battlestreak)
 
 [Skills]
 Zen=5
@@ -106,18 +107,18 @@ BloodBoost=10
 
 
 [Techniques]
-Octostrike=15
-Scourge=15
-Torcleaver=15
-Resolution=15
-HerculeanSlash=15
+Octostrike=$calc(1 + $current.battlestreak)
+Scourge=$calc(1 + $current.battlestreak)
+Torcleaver=$calc(1 + $current.battlestreak)
+Resolution=$calc(1 + $current.battlestreak)
+HerculeanSlash=$calc(1 + $current.battlestreak)
 
 [Item_Amount]
 
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=3
+WeaponMaster=10
 WeaponMasterXP=1
 
 [modifiers]
