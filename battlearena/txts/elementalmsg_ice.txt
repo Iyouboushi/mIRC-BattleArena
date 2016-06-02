@@ -1,1 +1,2 @@
 Ice crystals begin to form on %real.name $+ 's body!
+%real.name $+ 's body turns blue as small ice crystals form causing ice burns!

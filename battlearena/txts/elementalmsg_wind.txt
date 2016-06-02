@@ -1,1 +1,2 @@
 A mini tornado encases around %real.name $+ 's body causing cuts!
+Sharp gusts of wind slice %real.name causing small cuts!

@@ -2,3 +2,4 @@ Flames encase around %real.name $+ 's body!
 Flames swell up around %real.name $+ 's body!
 Bright Flames encase around %real.name $+ 's body!
 Bright Flames swell around %real.name $+ 's body!
+%real.name $+ 's body begins to smoke as flames swell and burn!
