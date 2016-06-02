@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/23/16
+;;;; Last updated: 06/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -334,6 +334,25 @@ alias tech_cmd {
   if (%tech.type = suicide) { $covercheck($3, $2) | $tech.suicide($1, $2, %attack.target )  }
 
   if (%tech.type = death) { $covercheck($3, $2) | $tech.death($1, $2, %attack.target) } 
+  if (%tech.type = death-aoe) { 
+    if ($is_charmed($1) = true) { 
+      var %current.flag $readini($char($1), info, flag)
+      if ((%current.flag = $null) || (%current.flag = npc)) { $tech.deathaoe($1, $2, $3, player) | halt }
+      if (%current.flag = monster) { $tech.deathaoe($1, $2, $3, monster) | halt }
+    }
+    else {
+      ; check for confuse.
+      if ($is_confused($1) = true) { 
+        var %random.target.chance $rand(1,2)
+        if (%random.target.chance = 1) { var %user.flag monster }
+        if (%random.target.chance = 2) { unset %user.flag }
+      }
+
+      ; Determine if it's players or monsters
+      if (%user.flag = monster) { $tech.deathaoe($1, $2, $3, player) | halt }
+      if ((%user.flag = $null) || (%user.flag = npc)) { $tech.deathaoe($1, $2, $3, monster) | halt }
+    }
+  } 
 
   if (%tech.type = suicide-AOE) { 
     if ($is_charmed($1) = true) { 
@@ -828,7 +847,158 @@ alias tech.death {
 
   $deal_damage($1, $3, $2, %absorb, tech)
   $display_damage($1, $3, tech, $2, %absorb)
+}
 
+alias tech.deathaoe {
+  ; $1 = user
+  ; $2 = tech
+  ; $3 = target
+  ; $4 = type, either player or monster 
+
+  set %wait.your.turn on
+
+  unset %who.battle | set %number.of.hits 0
+  unset %absorb  | unset %element.desc
+
+  ; Decrease the action points
+  $action.points($1, remove, 4)
+
+
+  ; Display the tech description
+  $set_chr_name($1) | set %user %real.name
+  if ($person_in_mech($1) = true) { set %user %real.name $+ 's $readini($char($1), mech, name) } 
+
+  $set_chr_name($2) | set %enemy %real.name
+  if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
+
+  var %enemy all targets
+
+  $display.message(3 $+ %user  $+ $readini($dbfile(techniques.db), $2, desc), battle)
+  set %showed.tech.desc true
+
+  ; If it's player, search out remaining players that are alive and deal damage and display damage
+  if ($4 = player) {
+    var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+    while (%battletxt.current.line <= %battletxt.lines) { 
+      set %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+      if ($readini($char(%who.battle), info, flag) = monster) { inc %battletxt.current.line }
+      else { 
+
+        if ((%mode.pvp = on) && ($1 = %who.battle)) { var %can.hit no }
+        if (($readini($char($1), status, confuse) != yes) && ($1 = %who.battle)) { var %can.hit no }
+
+        var %current.status $readini($char(%who.battle), battle, status)
+        if ((%current.status = dead) || (%current.status = runaway)) { var %can.hit no }
+
+        if (%can.hit != no) { 
+          if ($readini($char($1), battle, hp) > 0) {
+            inc %number.of.hits 1
+
+            $covercheck(%who.battle, $2, AOE)
+
+            ; Check for Utsusemi
+            $utsusemi.check($1, $2, %who.battle)
+
+            ; Check for wonderguard
+            $wonderguard.check(%who.battle, $2, tech)
+
+            if (%guard.message != $null) { set %attack.damage 0 }
+            else {
+              var %death.chance $readini($dbfile(techniques.db), $2, DeathChance)
+              if (%death.chance = $null) { var %death.chance 15 }
+
+              var %death.roll $rand(1,100)
+
+              ; later will add the ability for accessories to increase or decrease death chance
+
+              if (%death.roll <= %death.chance) { set %attack.damage $readini($char(%who.battle), battle, HP) }
+            }
+
+            $deal_damage($1, %who.battle, $2, %absorb, tech)
+
+
+            $display_aoedamage($1, %who.battle, $2, %absorb)
+            unset %attack.damage
+
+          }
+        }
+        unset %can.hit
+        inc %battletxt.current.line 1 
+      }
+    }
+  }
+
+
+  ; If it's monster, search out remaining monsters that are alive and deal damage and display damage.
+  if ($4 = monster) { 
+    var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 | set %aoe.turn 1
+    while (%battletxt.current.line <= %battletxt.lines) { 
+      set %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+      if ($readini($char(%who.battle), info, flag) != monster) { inc %battletxt.current.line }
+      else { 
+        inc %number.of.hits 1
+        var %current.status $readini($char(%who.battle), battle, status)
+        if ((%current.status = dead) || (%current.status = runaway)) { inc %battletxt.current.line 1 }
+        else { 
+          if ($readini($char($1), battle, hp) > 0) {
+
+
+            $covercheck(%who.battle, $2, AOE)
+
+            ; Check for Utsusemi
+            $utsusemi.check($1, $2, %who.battle)
+
+            ; Check for wonderguard
+            $wonderguard.check(%who.battle, $2, tech)
+
+
+            if (%guard.message != $null) { set %attack.damage 0 }
+            else {
+              var %death.chance $readini($dbfile(techniques.db), $2, DeathChance)
+              if (%death.chance = $null) { var %death.chance 15 }
+
+              var %death.roll $rand(1,100)
+
+              ; later will add the ability for accessories to increase or decrease death chance
+
+              if (%death.roll <= %death.chance) { set %attack.damage $readini($char(%who.battle), battle, HP) }
+            }
+
+            $deal_damage($1, %who.battle, $2, %absorb, tech)
+            $display_aoedamage($1, %who.battle, $2, %absorb)
+
+          }
+
+          inc %battletxt.current.line 1 | inc %aoe.turn 1 | unset %attack.damage
+        } 
+      }
+    }
+  }
+
+  unset %element.desc | unset %showed.tech.desc | unset %aoe.turn
+  set %timer.time $calc(%number.of.hits * 1.1) 
+
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) {
+    ; Clear elemental seal
+    if ($readini($char($1), skills, elementalseal.on) = on) { 
+      writeini $char($1) skills elementalseal.on off 
+    }
+  }
+
+  unset %statusmessage.display
+  if ($readini($char($1), battle, hp) > 0) {
+    set %inflict.user $1 | set %inflict.techwpn $2 
+    $self.inflict_status(%inflict.user, %inflict.techwpn, tech)
+    if (%statusmessage.display != $null) { $display.message(%statusmessage.display, battle) | unset %statusmessage.display }
+  }
+
+  if (%timer.time > 20) { %timer.time = 20 }
+
+  ; Check for a postcript
+  if ($readini($dbfile(techniques.db), n, $2, PostScript) != $null) { $readini($dbfile(techniques.db), p, $2, PostScript) }
+
+  /.timerCheckForDoubleSleep $+ $rand(a,z) $+ $rand(1,1000) 1 %timer.time /check_for_double_turn $1
+  halt
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
