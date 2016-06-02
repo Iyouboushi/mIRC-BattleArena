@@ -2844,7 +2844,7 @@ CappedAmount=4000
 [FirajaII]
 Type=AOE
 TP=100
-Desc=casts the most powerful fire spell known by any wizard, Firaja II.  The battlefield erupts in flames!
+Desc=begins to chant an encanation as fire sparks through the air and quickly causes the battlefield to erupt in flames! 
 BasePower=50
 Cost=3000
 Element=fire
@@ -2854,7 +2854,7 @@ stat=int
 [StonejaII]
 Type=AOE
 TP=100
-Desc=casts the most powerful stone spell known by any wizard, Stoneja II.  The ground shakes violently as the earth spits out giant boulders at all targets.
+Desc=chants an encanation causing the ground to shake violently and columns of earth to shoot up out of the ground before exploding into large boulders that slam into all targets.
 BasePower=50
 Cost=3000
 Element=earth
@@ -2864,7 +2864,7 @@ stat=int
 [WaterjaII]
 Type=AOE
 TP=100
-Desc=casts the most powerful water spell known by any wizard, Waterja II.  A huge tidal wave floods the battle field, pushing all targets under the water
+Desc=chants an encanation that causes a massive tidal wave to flood the entire battlefield, pushing all the targets under the water.
 BasePower=50
 Cost=3000
 Element=water
@@ -2874,7 +2874,7 @@ stat=int
 [AerojaII]
 Type=AOE
 TP=100
-Desc=casts the most powerful wind spell known by any wizard, Aeroja II.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
+Desc=begins to cast Aeroja II. The battlefield howls as sharp wind that cuts like knives flies over all of the targets
 BasePower=50
 Cost=3000
 Element=wind
@@ -2884,7 +2884,7 @@ stat=int
 [BlizzajaII]
 Type=AOE
 TP=100
-Desc=casts the most powerful ice spell known by any wizard, Blizzaja II.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
+Desc=summons a powerful arctic wind to cover the battlefield.  After a few seconds the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
 BasePower=50
 Cost=3000
 Element=ice
@@ -2894,7 +2894,7 @@ stat=int
 [ThundajaII]
 Type=AOE
 TP=100
-Desc=casts the most powerful lightning spell known by any wizard, Thundaja II.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies. 
+Desc=casts Thundaja II. Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies. 
 BasePower=50
 Cost=3000
 Element=lightning

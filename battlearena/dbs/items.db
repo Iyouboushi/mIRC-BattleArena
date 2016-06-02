@@ -4660,7 +4660,7 @@ SellPrice=250
 Desc=Ammo that is able to hit more than one target.
 Exclusive=yes
 
-[Regeant]
+[Reagent]
 Type=ammo
 Cost=500
 SellPrice=100

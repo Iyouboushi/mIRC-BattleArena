@@ -1749,7 +1749,7 @@ SpecialWeapon=true
 [Seveneyes]
 Cost=0
 Type=Wand
-Info=A unique wand that relies on regeants for its power. Outside of Torment battles the staff has a 200 power and ignores 10% defense. Inside of Torment the staff has a power of 600 and ignores 20% defense.
+Info=A unique wand that relies on reagents for its power. Outside of Torment battles the staff has a 200 power and ignores 10% defense. Inside of Torment the staff has a power of 600 and ignores 20% defense.
 Abilities=Fira.Stonera.Watera.Aera.Blizzara.Thundara.DarkraIII.HolyIII
 Element=None
 Hits=1
@@ -1757,7 +1757,7 @@ BasePower=$iif(%battle.type = torment, 600, 200)
 Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
-AmmoRequired=Regeant
+AmmoRequired=Reagent
 AmmoAmountNeeded=4
 SpecialWeapon=true
 Legendary=True
