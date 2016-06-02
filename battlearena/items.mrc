@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 05/25/16
+;;;; Last updated: 06/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -13,9 +13,17 @@ alias portal.usage.check {
 
     $portal.clearusagecheck($2)
 
+
+    var %base.portal.usage.amount 10
     var %last.portal.number.used $readini($char($2), info, PortalsUsedTotal)
+    var %enhancements.portalusage $readini($char($2), enhancements, portalusage)
     if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }
-    var %portal.uses.left $calc(10 - %last.portal.number.used)
+    if (%enhancements.portalusage = $null) { var %enhancements.portalusage 0 }
+
+    inc %base.portal.usage.amount %enhancements.portalusage
+
+    if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }
+    var %portal.uses.left $calc(%base.portal.usage.amount - %last.portal.number.used)
 
     if ($1 = channel) { $display.message($readini(translation.dat, system, PortalUsageCheck), private) }
     if ($1 = private) { $display.private.message($readini(translation.dat, system, PortalUsageCheck)) }
@@ -750,8 +758,8 @@ alias item.tormentreward {
 
       inc %opening.current.item 1
     }
-   
-     set %real.name $1
+
+    set %real.name $1
 
     ; The display message is temporary and will be fixed later
     $display.message(3 $+ %real.name  $+ has obtained: %lifeshards.count lifeshards $+ $chr(44)  $+ %reusableparts.count resuable parts $+ $chr(44)  $+ %forgottensouls.count forgotten souls $+ $chr(44) and %arcanedust.count arcane dust  , global) 
