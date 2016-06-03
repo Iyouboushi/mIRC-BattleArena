@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 06/02/16
+;;;; Last updated: 06/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1954,6 +1954,7 @@ alias sing.song {
     if (($readini($dbfile(songs.db), $2, Effect) = Battlefield) || ($readini($dbfile(songs.db), $2, Effect) = ChangeBattlefield)) { 
       ; If it's a portal battle or crystal warrior battle, don't allow.
       if ((%boss.type = CrystalShadow) || (%portal.bonus = true)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, SongNotAllowedThisBattle), private) | halt }
+      if (%battle.type = dungeon) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, SongNotAllowedThisBattle), private) | halt }
     }
 
     ; Check for ConserveTP

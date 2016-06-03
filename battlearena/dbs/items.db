@@ -1527,6 +1527,25 @@ Desc=The ancient and forbidden earrings of Ogama. This accessory will increase t
 IncreaseMagic.Amount=.51
 exclusive=yes
 
+[Forbidden-Earrings+1]
+Type=accessory
+AccessoryType=IncreaseMagic
+Cost=0
+Desc=A reforged version of the forbidden earrings of Ogama. This accessory will increase the power of magic.
+IncreaseMagic.Amount=.60
+exclusive=yes
+Legendary=true
+
+[Forbidden-Earrings+2]
+Type=accessory
+AccessoryType=IncreaseMagic
+Cost=0
+Desc=The strongest version of the forbidden earrings of Ogama. These have been reforged twice. This accessory will increase the power of magic.
+IncreaseMagic.Amount=.70
+exclusive=yes
+Legendary=true
+
+
 [Aetherial-Ring]
 Type=accessory
 AccessoryType=IncreaseMeleeDamage
@@ -1612,6 +1631,29 @@ Desc=A black crown with a bright red gem sitting in the middle.  This accessory 
 IncreaseRedOrbs.Amount=.30
 SellPrice=5000
 exclusive=yes
+
+[Forbidden-Crown+1]
+Type=accessory
+AccessoryType=IncreaseRedOrbs
+Cost=0
+Desc=A black crown with a bright red gem sitting in the middle. It has been reforged to be more powerful. This accessory will increase the amount of orbs you gain at the end of battles.
+; .45= 45% more orbs.  if the reward is 1000 you'll get +450.
+IncreaseRedOrbs.Amount=.45
+SellPrice=5000
+exclusive=yes
+Legendary=true
+
+[Forbidden-Crown+2]
+Type=accessory
+AccessoryType=IncreaseRedOrbs
+Cost=0
+Desc=A black crown with a bright red gem sitting in the middle. It has been reforged twice to be more powerful. This accessory will increase the amount of orbs you gain at the end of battles.
+; .60= 60% more orbs.  if the reward is 1000 you'll get +600.
+IncreaseRedOrbs.Amount=.60
+SellPrice=5000
+exclusive=yes
+Legendary=true
+
 
 [Purple-Belt]
 Type=accessory
@@ -1763,6 +1805,16 @@ AccessoryType=ReduceShopLevel
 Desc=A special VIP membership card to the shop. While wearing this accessory all purchases will be -1 shop level.  Note, your shop level cannot drop below 1 even while wearing this accessory and your shop level will continue to rise as it would normally.
 ReduceShopLevel.Amount=1
 SellPrice=5000
+
+[VIP-MemberCard+1]
+Type=accessory
+Cost=0
+AccessoryType=ReduceShopLevel
+Desc=A special VIP membership card to the shop. While wearing this accessory all purchases will be -2 shop level.  Note, your shop level cannot drop below 1 even while wearing this accessory and your shop level will continue to rise as it would normally.
+ReduceShopLevel.Amount=2
+SellPrice=5000
+Legendary=true
+Exclusive=yes
 
 [Spear-Pin]
 Type=accessory

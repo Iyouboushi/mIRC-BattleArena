@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/28/16
+;;;; Last updated: 06/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -804,7 +804,7 @@ boost_monster_hp {
 
   if (%battle.type = torment) {
     var %torment.hp.multiplier %torment.level
-    if (%torment.hp.multiplier >= 15) { var %torment.hp.multiplier 15 }
+    if (%torment.hp.multiplier >= 20) { var %torment.hp.multiplier 20 }
     inc %hp $calc(%torment.hp.multiplier * 500000)
 
     if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 22000) }
@@ -1001,9 +1001,11 @@ deal_damage {
 
             unset %current.accessory | unset %current.accessory.type
 
+            if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+
             if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
               if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-                if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+                if (%absorb.amount > 1000) { var %absorb.amount 1000 }
               }
             }
 
@@ -1346,9 +1348,11 @@ display_damage {
       var %absorb.amount $round($calc(%attack.damage / 3),0)
       if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
 
+      if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+
       if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
         if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-          if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+          if (%absorb.amount > 1000) { var %absorb.amount 1000 }
         }
       }
 
@@ -1364,9 +1368,11 @@ display_damage {
         if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
         if (%absorb.amount <= 0) { var %absorb.amount 1 }
 
+        if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+
         if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
           if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-            if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+            if (%absorb.amount > 1000) { var %absorb.amount 1000 }
           }
         }
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 05/24/16
+;;;; Last updated: 06/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1909,7 +1909,8 @@ alias shop.portal {
   if ($2 = list) {
     unset %shop.list | unset %item.name | unset %item_amount | unset %portals.bstmen | unset %portals.kindred | unset %portals.highkindredcrest | unset %portals.kindredcrest
     unset %portals.bstmen2 | unset %portals.kindred2 | unset %portals.kindrecrest2 | unset %portals.highkindredcrest2
-    unset %portals.shadow | unset %portals.shadow2
+    unset %portals.shadow | unset %portals.shadow2 | unset %portals.sacredkindredcrest
+
     var %value 1 | var %items.lines $lines($lstfile(items_portal.lst))
 
     while (%value <= %items.lines) {
@@ -1935,6 +1936,9 @@ alias shop.portal {
           else { %portals.shadow = $addtok(%portals.shadow, $+ %item.name $+ ( $+ %item.price $+ ),46) }
         }
 
+        if (($readini($dbfile(items.db), %item.name, currency) = SacredKindredCrest && ($readini($dbfile(items.db), %item.name, ShadowPortal) != true))  { %portals.sacredkindredcrest = $addtok(%portals.sacredkindredcrest, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+
+
       }
       unset %item.name | unset %item_amount
       inc %value 1 
@@ -1949,6 +1953,7 @@ alias shop.portal {
     %portals.kindredcrest2 = $replace(%portals.kindredcrest2, $chr(046), %replacechar)
     %portals.highkindredcrest = $replace(%portals.highkindredcrest, $chr(046), %replacechar)
     %portals.highkindredcrest2 = $replace(%portals.highkindredcrest2, $chr(046), %replacechar)
+    %portals.sacredkindredcrest = $replace(%portals.sacredkindredcrest, $chr(046), %replacechar)
     %portals.shadow = $replace(%portals.shadow, $chr(046), %replacechar)
     %portals.shadow2 = $replace(%portals.shadow2, $chr(046), %replacechar)
     unset %replacechar
@@ -1978,11 +1983,16 @@ alias shop.portal {
       if (%portals.highkindredcrest2 != $null) {  $display.private.message(2 $+ %portals.shadow2)  }
     }
 
-    if (((((%portals.kindred = $null) && (%portals.bstmen = $null) && (%portals.kindredcrest = $null) && (%portals.shadow = $null) && (%portals.highkindredcrest = $null))))) { $display.private.message(4There are no portal items available for purchase right now)  }
+    if (%portals.sacredkindredcrest != $null) {  
+      $display.private.message.delay.custom(2These portal items are paid for with 4SacredKindredCrests2: %portals.sacredkindredcrest, 3) 
+      if (%portals.sacredkindredcrest2 != $null) {  $display.private.message(2 $+ %portals.sacredkindredcrest2)  }
+    }
+
+    if ((((((%portals.kindred = $null) && (%portals.bstmen = $null) && (%portals.kindredcrest = $null) && (%portals.shadow = $null) && (%portals.sacredkindredcrest = $null) && (%portals.highkindredcrest = $null)))))) { $display.private.message(4There are no portal items available for purchase right now)  }
 
     unset %portals.bstmen | unset %portals.kindred | unset %portals.kindredcrest | unset %portals.highkindredcrest | unset %item.price
     unset %portals.bstmen2 | unset %portals.kindred2 | unset %portals.kindredcrest2 | unset %portals.highkindredcrest2
-    unset %portals.shadow | unset %portals.shadow2
+    unset %portals.shadow | unset %portals.shadow2 | unset %portals.sacredkindredcrest
   }
   if (($2 = buy) || ($2 = purchase)) {
     if ($readini($dbfile(items.db), $3, cost) = $null) {  $display.private.message(4Error: Invalid portal item! Use !shop list portal to get a valid list) | halt }
