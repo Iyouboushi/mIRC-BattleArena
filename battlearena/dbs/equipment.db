@@ -694,6 +694,21 @@ Legendary=true
 Exclusive=yes
 LevelRequirement=3000
 
+[ReverenceCoronet]
+Name=Reverence Coronet
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceDefender.EnhanceCover.EnhanceBlocking.EnhanceSword.EnhanceCounter.EnhanceMeditate.EnhanceZen.EnhanceKillerTraits
+EquipLocation=Head
+cost=50
+SellPrice=50
+Legendary=true
+Exclusive=yes
+LevelRequirement=5000
 
 [WakidoKabuto]
 Name=Wakido Kabuto
