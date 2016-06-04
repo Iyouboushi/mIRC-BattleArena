@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 06/03/16
+;;;; Last updated: 06/04/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1048,6 +1048,9 @@ alias tech.heal {
   ; If the target has max hp we don't need to heal them 
   if ($readini($char($3), battle, hp) >= $readini($char($3), basestats, hp)) { set %attack.damage 0 } 
 
+  ; If the amount being healed is more than the target's max HP, set the max to the HP max
+  if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $readini($char($3), basestats, hp) }
+
   $heal_damage($1, $3, $2)
   $display_heal($1, $3, tech, $2)
 
@@ -1126,6 +1129,9 @@ alias do_aoe_heal {
 
       ; If the target has max hp we don't need to heal them 
       if ($readini($char(%who.battle), battle, hp) >= $readini($char(%who.battle), basestats, hp)) { set %attack.damage 0 } 
+
+      ; If the amount being healed is more than the target's max HP, set the max to the HP max
+      if (%attack.damage > $readini($char(%who.battle), basestats, hp)) { set %attack.damage $readini($char(%who.battle), basestats, hp) }
 
       $heal_damage($1, %who.battle, $2)
       $display_heal($1, %who.battle ,aoeheal, $2)

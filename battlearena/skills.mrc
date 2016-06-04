@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 05/25/16
+;;;; Last updated: 06/04/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -632,6 +632,9 @@ alias fullbring.singleheal {
     ; If the target has max hp we don't need to heal them 
     if ($readini($char($3), battle, hp) >= $readini($char($3), basestats, hp)) { set %attack.damage 0 } 
 
+    ; If the amount being healed is more than the target's max HP, set the max to the HP max
+    if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $readini($char($3), basestats, hp) }
+
     $heal_damage($1, $3, $2)
     $display_heal($1, $3, fullbring, $2)
   }
@@ -701,6 +704,9 @@ alias fullbring.aoeheal {
         else {   
           ; If the target has max hp we don't need to heal them 
           if ($readini($char(%who.battle), battle, hp) >= $readini($char(%who.battle), basestats, hp)) { set %attack.damage 0 } 
+
+          ; If the amount being healed is more than the target's max HP, set the max to the HP max
+          if (%attack.damage > $readini($char(%who.battle), basestats, hp)) { set %attack.damage $readini($char(%who.battle), basestats, hp) }
 
           $heal_damage($1, %who.battle, $2)
           $display_heal($1, %who.battle, fullbring, $2)
