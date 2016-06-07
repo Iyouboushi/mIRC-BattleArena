@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 05/25/16
+;;;; Last updated: 06/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2149,6 +2149,7 @@ miscitems.list {
 
     var %item.color 5
     if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 7 }
+    if ($readini($dbfile(items.db), %item.name, Legendary) = true) { var %item.color 7 }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       if ($numtok(%misc.items.list,46) <= 15) { %misc.items.list = $addtok(%misc.items.list, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
@@ -3063,14 +3064,15 @@ hp_mech_hpcommand {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; $1 = person being restored
 ; $2 = amount
+
 restore_hp {
+  if ($2 = 0) { return }
+
   var %max.hp $readini($char($1), basestats, hp)
   var %current.hp $readini($char($1), battle, hp)
   inc %current.hp $2
-  if ($readini($char($1), status, ignition.on) = off) {
-    if (%current.hp >= %max.hp) { writeini $char($1) battle hp %max.hp }
-    else {  writeini $char($1) battle hp %current.hp }
-  } 
+
+  if (%current.hp >= %max.hp) { writeini $char($1) battle hp %max.hp }
   else {  writeini $char($1) battle hp %current.hp }
 }
 
