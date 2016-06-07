@@ -1195,7 +1195,8 @@ alias shop.stats {
 
       if (%player.level <= 50) { var %stat.ratio.limit .55 }
       if ((%player.level > 50) && (%player.level <= 1000)) { var %stat.ratio.limit .43 }
-      if (%player.level > 1000) { var %stat.ratio.limit .35 }
+      if ((%player.level > 1000) && (%player.level <= 5000)) { var %stat.ratio.limit .35 }
+      if (%player.level > 5000) { var %stat.ratio.limit .30 }
 
       if (%stat.ratio > %stat.ratio.limit) { $display.private.message($readini(translation.dat, errors, Can'tRaiseStatBeforeOthers)) | halt }
     }
