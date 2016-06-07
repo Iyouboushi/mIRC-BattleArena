@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 06/03/16
+;;;; Last updated: 06/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1936,8 +1936,7 @@ alias shop.portal {
           else { %portals.shadow = $addtok(%portals.shadow, $+ %item.name $+ ( $+ %item.price $+ ),46) }
         }
 
-        if (($readini($dbfile(items.db), %item.name, currency) = SacredKindredCrest && ($readini($dbfile(items.db), %item.name, ShadowPortal) != true))  { %portals.sacredkindredcrest = $addtok(%portals.sacredkindredcrest, $+ %item.name $+ ( $+ %item.price $+ ),46) }
-
+        if ($readini($dbfile(items.db), %item.name, currency) =  SacredKindredCrest) { %portals.sacredkindredcrest = $addtok(%portals.sacredkindredcrest, $+ %item.name $+ ( $+ %item.price $+ ),46) }
 
       }
       unset %item.name | unset %item_amount
