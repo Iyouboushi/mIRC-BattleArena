@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 06/04/16
+;;;; Last updated: 06/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -527,9 +527,9 @@ calculate_attack_leveldiff {
     if (%level.difference <= 0) { var %level.difference 0 } 
   }
 
-  ; For portals we don't want players to be more than 250 levels over the monster
+  ; For portals we don't want players to be more than 200 levels over the monster
   if ((%portal.bonus = true) && ($readini($char($1), info, flag) != monster)) { 
-    if (%level.difference > 250) { var %level.difference 250 }
+    if (%level.difference > 200) { var %level.difference 200 }
   }
 
   ; If the target is stronger, we need to nerf damage
@@ -546,12 +546,12 @@ calculate_attack_leveldiff {
   ; The target is weaker, let's boost the damage slightly
   if (%level.difference > 0) { 
     if ((%level.difference >= 2) && (%level.difference < 10)) { inc %attack.damage $round($calc(%attack.damage * .05),0) }
-    if ((%level.difference >= 10) && (%level.difference <= 50)) { inc %attack.damage $round($calc(%attack.damage * .10),0) }
-    if ((%level.difference > 50) && (%level.difference >= 100)) { inc %attack.damage $round($calc(%attack.damage * .15),0) }
-    if ((%level.difference > 100) && (%level.difference >= 150)) { inc %attack.damage $round($calc(%attack.damage * .20),0) }
-    if ((%level.difference > 150) && (%level.difference >= 300)) { inc %attack.damage $round($calc(%attack.damage * .25),0) }
-    if ((%level.difference > 300) && (%level.difference >= 500)) { inc %attack.damage $round($calc(%attack.damage * .28),0) }
-    if (%level.difference > 500)  { inc %attack.damage $round($calc(%attack.damage * .30),0) }
+    if ((%level.difference >= 10) && (%level.difference <= 50)) { inc %attack.damage $round($calc(%attack.damage * .08),0) }
+    if ((%level.difference > 50) && (%level.difference >= 100)) { inc %attack.damage $round($calc(%attack.damage * .10),0) }
+    if ((%level.difference > 100) && (%level.difference >= 150)) { inc %attack.damage $round($calc(%attack.damage * .15),0) }
+    if ((%level.difference > 150) && (%level.difference >= 300)) { inc %attack.damage $round($calc(%attack.damage * .19),0) }
+    if ((%level.difference > 300) && (%level.difference >= 500)) { inc %attack.damage $round($calc(%attack.damage * .22),0) }
+    if (%level.difference > 500)  { inc %attack.damage $round($calc(%attack.damage * .25),0) }
   }
 }
 
