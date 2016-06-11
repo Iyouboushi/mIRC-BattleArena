@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 06/10/16
+;;;; Last updated: 06/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1196,7 +1196,7 @@ alias shop.stats {
       if (%player.level <= 50) { var %stat.ratio.limit .55 }
       if ((%player.level > 50) && (%player.level <= 1000)) { var %stat.ratio.limit .43 }
       if ((%player.level > 1000) && (%player.level <= 5000)) { var %stat.ratio.limit .35 }
-      if (%player.level > 5000) { var %stat.ratio.limit .33.5 }
+      if (%player.level > 5000) { var %stat.ratio.limit .335 }
 
       if (%stat.ratio > %stat.ratio.limit) { $display.private.message($readini(translation.dat, errors, Can'tRaiseStatBeforeOthers)) | halt }
     }
