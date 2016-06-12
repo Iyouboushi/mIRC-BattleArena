@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 05/25/16
+;;;; Last updated: 06/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -308,11 +308,14 @@ alias ai_techcheck {
   while (%value <= %number.of.techs) {
     set %tech.name $gettok(%techs, %value, 46)
     set %tech_level $readini($char($1), techniques, %tech.name)
+
     if ($person_in_mech($1) = true) {  set %tech_level 1 }
     if ($istok(%ignition.techs,%tech.name,46) = $true) { set %tech_level 1 }
 
     if ((%tech_level != $null) && (%tech_level >= 1)) { 
       ; add the tech level to the tech list if we have enough tp
+
+      if (%ai.type = techonly) { inc %current.tp %tp.needed | writeini $char($1) battle TP %current.tp }
 
       if ($person_in_mech($1) = false) { set %tp.needed $readini($dbfile(techniques.db), %tech.name, tp) }
       if ($person_in_mech($1) = true) { set %tp.needed $readini($dbfile(techniques.db), %tech.name, energyCost) }
