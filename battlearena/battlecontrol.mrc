@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/25/16
+;;;; Last updated: 06/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -387,6 +387,9 @@ alias startnormal {
     if (%boss.battle.numbers = $null) { set %boss.battle.numbers 10.15.20.30.60.100.150.180.220.280.320.350.401.440.460.501.560.601.670.705.780.810.890.920.999.1100.1199.1260. 1305.1464.1500.1650.1720.1880.1999.2050.2250.9999  }
     if ($istok(%boss.battle.numbers,$return_winningstreak,46) = $true) { var %start.battle.type boss }
 
+    var %guaranteed.boss.chance $readini(battlestats.dat, TempBattleInfo, BossChance)
+    if ((%guaranteed.boss.chance >= 100) && ($return_winningstreak > 10)) { var %start.battle.type boss }
+
     ; Pick a random chance of boss, monster or orbfountain
     if ($istok(%boss.battle.numbers,$return_winningstreak, 46) = $false) {   
       if ($return_winningstreak < 10) { var %valid.battle.types monster.monster.orbfountain.monster.monster.monster }
@@ -735,6 +738,7 @@ alias battlebegin {
         writeini battlestats.dat battle winningStreak 0
         writeini battlestats.dat battle losingStreak 0
         remini battlestats.dat battle LastReload
+        writeini battlestats.dat TempBattleInfo BossChance 0 
       }
 
       $clear_battle 
@@ -835,6 +839,7 @@ alias battlebegin {
   }
 
   if (%battle.type = boss) { 
+    writeini battlestats.dat TempBattleInfo BossChance 0 
     set %darkness.turns 21
 
     if ((%demonwall.name = Demon Wall) || (%demonwall.name = Wall of Flesh)) { unset %darkness.turns  }
@@ -928,6 +933,14 @@ alias battle.getmonsters {
     }
 
     if (%battle.type = monster) {
+
+      if ($return_winningstreak > 10) { 
+        var %next.bosschance $readini(battlestats.dat, TempBattleInfo, BossChance)
+        if (%next.bosschance = $null) { var %next.bosschance 0 }
+        inc %next.bosschance $rand(1,7)
+        writeini battlestats.dat TempBattleInfo BossChance %next.bosschance
+      }
+
       $generate_monster(monster)
     }
 
