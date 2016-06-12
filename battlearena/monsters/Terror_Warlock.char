@@ -1,17 +1,17 @@
 [BaseStats]
 Hp=$iif($return_playersinbattle > 3, $calc(15000 + (300 * $return_playersinbattle)) , 15000)
-Tp=50
+Tp=500000
 Str=3
 Def=5
 Int=80
 Spd=3
 IgnitionGauge=2
-Name=Terror Priest
+Name=Terror Warlock
 
 
 [Battle]
 Hp=2000
-Tp=50
+Tp=500000
 Str=3
 Def=5
 Int=80
