@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 06/04/16
+;;;; Last updated: 06/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -83,6 +83,7 @@ alias use.skill {
   if ($3 = monsterconsume) { $skill.monster.consume($1, %attack.target) }
   if ($3 = repairNaturalArmor) { $skill.monster.repairnaturalarmor($1, %attack.target) }
   if ($3 = flying) { $skill.flying($1) }
+  if ($3 = weaknessshift) { $skill.weaknessshift($1) }
 }
 
 ;=================
@@ -2799,6 +2800,63 @@ alias skill.flying {
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
 }
+
+
+;=================
+; MONSTER WEAKNESS
+; SHIFT
+;=================
+alias skill.weaknessshift {
+  if ($readini($char($1), info, flag) = $null) { return }
+  if ($readini($char($1), modifiers, HitWithWeakness) != true) { echo -a not hit with weakness | return } 
+  if (($readini($char($1), skills, WeaknessShift) = $null) || ($readini($char($1), skills, WeaknessShift) <= 0)) { echo -a no skill | return }
+
+  if ($readini($char($1), descriptions, weaknessshift) = $null) { set %skill.description flashes with a bright light as $get_chr_name($1) changes weaknesses }
+  else { set %skill.description $readini($char($1), descriptions, weaknessshift) }
+
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+
+  set %magic.types light.dark.fire.ice.water.lightning.wind.earth
+  set %number.of.magic.types $numtok(%magic.types,46)
+
+  set %weapon.types axe.bat.bow.dagger.energyblaster.glyph.greatsword.gun.hamer.handtohand.katana.lightsaber.mace.rifle.scythe.spear.stave.sword.wand.whip
+  set %number.of.weapon.types $numtok(%weapon.types,46)
+
+  var %current.magic.weakness $gettok(%magic.types,$rand(1,%number.of.magic.types),46)
+  var %current.weapon.weakness  $gettok(%weapon.types,$rand(1,%number.of.weapon.types),46)
+
+  ; Cycle through the magic modifiers and set them
+  var %current.magic.mod 1
+  while (%current.magic.mod <= %number.of.magic.types) {
+    var %magic.modifier $gettok(%magic.types, %current.magic.mod, 46)
+
+    if (%magic.modifier = %current.magic.weakness) { writeini $char($1) modifiers %magic.modifier 120 }
+    else { writeini $char($1) modifiers %magic.modifier 10 }
+
+    inc %current.magic.mod 1
+  }
+
+  ; Cycle through the weapon modifiers and set them
+  var %current.weapon.mod 1
+  while (%current.weapon.mod <= %number.of.weapon.types) {
+    var %weapon.modifier $gettok(%weapon.types, %current.weapon.mod, 46)
+
+    if (%weapon.modifier = %current.weapon.weakness) { writeini $char($1) modifiers %weapon.modifier 120 }
+    else { writeini $char($1) modifiers %weapon.modifier 10 }
+
+    inc %current.weapon.mod 1
+  }
+
+  unset %heal.number | unset %heals
+  unset %strengths | unset %strength.number
+  unset %weakness | unset %weakness.number
+  unset %number.of.magic.types | unset %magic.types
+
+  remini $char($1) modifiers HitWithWeakness
+
+}
+
 
 
 ;=================

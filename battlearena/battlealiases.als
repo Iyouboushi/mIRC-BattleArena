@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/03/16
+;;;; Last updated: 06/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1477,6 +1477,9 @@ display_damage {
       }
     }
 
+
+    ; Check for weaknessshift
+    $skill.weaknessshift(%target)
 
   }
 
@@ -4333,6 +4336,7 @@ modifer_adjust {
       var %mon.temp.def = $round($calc(%mon.temp.def - (%mon.temp.def * .05)),0)
       if (%mon.temp.def < 0) { var %mon.temp.def 0 }
       writeini $char($1) battle def %mon.temp.def
+      writeini $char($1) modifiers HitWithWeakness true
       set %damage.display.color 7
     }
 
