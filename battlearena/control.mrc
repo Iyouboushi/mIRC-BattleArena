@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 04/13/16
+;;;; Last updated: 06/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -629,4 +629,9 @@ on 50:TEXT:!password reset *:*:{
 
   .msg $nick 3 $+ $3 $+ 's password has been reset.
   .msg $3 4 $+ $nick has reset your password. Your new password is now: %newpassword 
+}
+
+; Allows a bot admin to see the average player level in the game
+on 50:TEXT:!apl*:*:{  
+  $display.message(3Average Player's Level: $total.player.averagelevel , private)
 }
