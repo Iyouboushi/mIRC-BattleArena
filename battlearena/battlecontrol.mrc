@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/11/16
+;;;; Last updated: 06/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -937,7 +937,8 @@ alias battle.getmonsters {
       if ($return_winningstreak > 10) { 
         var %next.bosschance $readini(battlestats.dat, TempBattleInfo, BossChance)
         if (%next.bosschance = $null) { var %next.bosschance 0 }
-        inc %next.bosschance $rand(1,7)
+        inc %next.bosschance $rand(1,6)
+        inc %next.bosschance $log($return_winningstreak)
         writeini battlestats.dat TempBattleInfo BossChance %next.bosschance
       }
 

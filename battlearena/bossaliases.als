@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 05/28/16
+;;;; Last updated: 06/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1715,6 +1715,9 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) skills Resist-slow 70
   writeini $char(%dragonhunt.file.name) skills Resist-Weaponlock 100
   writeini $char(%dragonhunt.file.name) skills Resist-Curse 70
+  writeini $char(%dragonhunt.file.name) TrueStrike.on on
+
+  if ($rand(1,10) <= 3) { writeini $char(%dragonhunt.file.name) DoubleTurn.on on }
 
   ; Depending on the element of the dragon it will have different skills
   if (%dragon.element = fire) { writeini $char(%dragonhunt.file.name) skills MightyStrike 1  }
@@ -1741,8 +1744,10 @@ dragonhunt.createfile {
 
   ; Add the dragon scales
   writeini $char(%dragonhunt.file.name) NaturalArmor Name Dragon Scales
-  writeini $char(%dragonhunt.file.name) NaturalArmor Max $calc(100 * %dragon.level)
-  writeini $char(%dragonhunt.file.name) NaturalArmor Current $calc(100 * %dragon.level)
+  var %dragon.naturalarmor $calc(100 * %dragon.level)
+  if (%dragon.naturalarmor >= 30000) { var %dragon.naturalarmor 30000 }
+  writeini $char(%dragonhunt.file.name) NaturalArmor Max %dragon.naturalarmor
+  writeini $char(%dragonhunt.file.name) NaturalArmor Current %dragon.naturalarmor
 
   ; Add guardian style
   writeini $char(%dragonhunt.file.name) styles equipped Guardian
