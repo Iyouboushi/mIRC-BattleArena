@@ -908,7 +908,7 @@ alias battle.getmonsters {
     }
     if ((%battle.type != boss) && (%battle.type != orbfountain)) { 
       %number.of.monsters.needed = $round($calc(%number.of.players / 2),0)
-      if (%number.of.monsters.needed > 4) { %number.of.monsters.needed = 4 }
+      if (%number.of.monsters.needed > 5) { %number.of.monsters.needed = 5 }
     }
 
     if ((%battle.type = defendoutpost) && (%darkness.turns > 1)) { %number.of.monsters.needed = 2 }
@@ -924,6 +924,7 @@ alias battle.getmonsters {
 
     ; Check to see if we're over the max number of monsters allowed.
     var %max.number.of.mons $readini(system.dat, system, MaxNumberOfMonsInBattle)
+    if (%max.number.of.mons = $null) { var %max.number.of.mons 10 }
     if (%number.of.monsters >= %max.number.of.mons) { set %number.of.monsters.needed 0 }
 
     ; Generate the monsters..

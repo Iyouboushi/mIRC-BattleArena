@@ -2697,14 +2697,16 @@ winningstreak.addmonster.amount {
     if ((%winning.streak >= 50) && (%winning.streak <= 300)) { inc %number.of.monsters.needed 1 }
     if ((%winning.streak > 300) && (%winning.streak <= 500)) { inc %number.of.monsters.needed 2 }
     if ((%winning.streak > 500) && (%winning.streak <= 1000)) { inc %number.of.monsters.needed 3 }
-    if (%winning.streak > 1000) { inc %number.of.monsters.needed 4 }
+    if ((%winning.streak > 1000) && (%winning.streak <= 5000)) { inc %number.of.monsters.needed 4 }
+    if (%winning.streak > 5000) { inc %number.of.monsters.needed 5 }
 
     if (%bloodmoon = on) { inc %number.of.monsters.needed 2 }
   }
 
   if (%battle.type = boss) {
     if ((%winning.streak > 500) && (%winning.streak <= 800)) { inc %number.of.monsters.needed 1 }
-    if (%winning.streak > 800) { inc %number.of.monsters.needed 2 }
+    if ((%winning.streak > 800) && (%winning.streak <= 2000)) { inc %number.of.monsters.needed 2 }
+    if (%winning.streak > 2000) { inc %number.of.monsters.needed 3 }
   }
 
   if (($return_winningstreak <= 10) && (%number.of.monsters > 3)) { set %number.of.monsters.needed 3 }
