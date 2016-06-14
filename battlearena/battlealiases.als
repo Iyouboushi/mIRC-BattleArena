@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/11/16
+;;;; Last updated: 06/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2720,6 +2720,9 @@ winningstreak.addmonster.amount {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 first_round_dmg_chk {
   if (%battle.type = defendoutpost) { return }
+  if (%battle.type = assault) { return }
+  if (%portal.bonus = true) { return } 
+
   if ((%current.turn = 1) || (%first.round.protection = yes)) { 
     if (%attack.damage <= 5) { return }
 
@@ -3899,6 +3902,7 @@ royalguard.check {
 
   if ($person_in_mech($3) = true) { return }
   if (%guard.message != $null) { return }
+  if (($readini($char($1), info, flag) = monster) && (%battle.rage.darkness = on)) { return }
 
   ; does the target have RoyalGuard on?  If so, reduce the damage to 0.
   if ($readini($char($3), skills, royalguard.on) = on) { 
