@@ -1715,9 +1715,9 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) skills Resist-slow 70
   writeini $char(%dragonhunt.file.name) skills Resist-Weaponlock 100
   writeini $char(%dragonhunt.file.name) skills Resist-Curse 70
-  writeini $char(%dragonhunt.file.name) TrueStrike.on on
+  writeini $char(%dragonhunt.file.name) skills TrueStrike.on on
 
-  if ($rand(1,10) <= 3) { writeini $char(%dragonhunt.file.name) DoubleTurn.on on }
+  if ($rand(1,10) <= 3) { writeini $char(%dragonhunt.file.name) skills DoubleTurn.on on }
 
   ; Depending on the element of the dragon it will have different skills
   if (%dragon.element = fire) { writeini $char(%dragonhunt.file.name) skills MightyStrike 1  }
