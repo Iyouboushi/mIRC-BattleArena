@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/13/16
+;;;; Last updated: 06/16/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4278,7 +4278,7 @@ ai.battle.place.bet {
   writeini $char($1) stuff TotalBets %total.bets
   writeini $char($1) stuff TotalBetAmount %total.bet.amount
 
-  $achievement_check($1, ICanQuitAnyBettingTimeIWant)
+  $achievement_check($1, ICanQuitBettingAnyTimeIWant)
 
   $display.private.message2($1, $readini(translation.dat, system, BetPlaced))
 }
