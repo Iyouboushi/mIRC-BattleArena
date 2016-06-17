@@ -687,62 +687,62 @@ Amount=1
 
 [Forbidden-Earrings+1]
 Gem=Diamond
-Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom's-Tale06.Forbidden-Earrings
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-06.Forbidden-Earrings
 SuccessRate=100
 Amount=1
 LifeShard=1000
 ReusablePart=1000
 ForgottenSoul=1000
 ArcaneDust=1000
-Clom's-Tale06=5
+Clom'sTale-06=5
 Forbidden-Earrings=1
 
 [Forbidden-Earrings+2]
 Gem=Diamond
-Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom's-Tale06.Forbidden-Earrings+1
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-06.Forbidden-Earrings+1
 SuccessRate=100
 Amount=1
 LifeShard=1000
 ReusablePart=1000
 ForgottenSoul=1000
 ArcaneDust=1000
-Clom's-Tale06=10
+Clom'sTale-06=10
 Forbidden-Earrings+1=1
 
 [Forbidden-Crown+1]
 Gem=Diamond
-Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom's-Tale06.Forbidden-Crown
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-06.Forbidden-Crown
 SuccessRate=100
 Amount=1
 LifeShard=1000
 ReusablePart=1000
 ForgottenSoul=1000
 ArcaneDust=1000
-Clom's-Tale06=5
+Clom'sTale-06=5
 Forbidden-Crown=1
 
 [Forbidden-Crown+2]
 Gem=Diamond
-Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom's-Tale06.Forbidden-Crown+1
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-06.Forbidden-Crown+1
 SuccessRate=100
 Amount=1
 LifeShard=1000
 ReusablePart=1000
 ForgottenSoul=1000
 ArcaneDust=1000
-Clom's-Tale06=10
+Clom'sTale-06=10
 Forbidden-Crown+1=1
 
 [VIP-MemberCard+1]
 Gem=Diamond
-Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom's-Tale06.VIP-MemberCard
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-06.VIP-MemberCard
 SuccessRate=100
 Amount=1
 LifeShard=1000
 ReusablePart=1000
 ForgottenSoul=1000
 ArcaneDust=1000
-Clom's-Tale06=15
+Clom'sTale-06=15
 
 [Hourglass-Necklace]
 Gem=Diamond
