@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/14/16
+;;;; Last updated: 06/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1001,11 +1001,11 @@ deal_damage {
 
             unset %current.accessory | unset %current.accessory.type
 
-            if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+            if (%absorb.amount > 500) { var %absorb.amount 500 }
 
             if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
               if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-                if (%absorb.amount > 1000) { var %absorb.amount 1000 }
+                if (%absorb.amount > 350) { var %absorb.amount 350 }
               }
             }
 
@@ -1348,11 +1348,11 @@ display_damage {
       var %absorb.amount $round($calc(%attack.damage / 3),0)
       if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
 
-      if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+      if (%absorb.amount > 500) { var %absorb.amount 500 }
 
       if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
         if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-          if (%absorb.amount > 1000) { var %absorb.amount 1000 }
+          if (%absorb.amount > 350) { var %absorb.amount 350 }
         }
       }
 
@@ -1368,11 +1368,11 @@ display_damage {
         if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
         if (%absorb.amount <= 0) { var %absorb.amount 1 }
 
-        if (%absorb.amount > 1500) { var %absorb.amount 1500 }
+        if (%absorb.amount > 500) { var %absorb.amount 500 }
 
         if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
           if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-            if (%absorb.amount > 1000) { var %absorb.amount 1000 }
+            if (%absorb.amount > 350) { var %absorb.amount 350 }
           }
         }
 
