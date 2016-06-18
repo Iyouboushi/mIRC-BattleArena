@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 05/31/16
+;;;; Last updated: 06/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1171,18 +1171,20 @@ on 3:TEXT:!achievements*:#: {
     if (%achievement.list != $null) { $set_chr_name($2) | $display.message($readini(translation.dat, system, AchievementList),private) 
       if (%achievement.list.2 != $null) { $display.message(3 $+ %achievement.list.2,private) }
       if (%achievement.list.3 != $null) { $display.message(3 $+ %achievement.list.3,private) }
+      if (%achievement.list.4 != $null) { $display.message(3 $+ %achievement.list.4,private) }
     }
     if (%achievement.list = $null) { $set_chr_name($2) |  $display.message($readini(translation.dat, system, NoAchievements),private) }
-    unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %totalachievements | unset %totalachievements.unlocked
+    unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %achievement.list.4 | unset %totalachievements | unset %totalachievements.unlocked
   }
   if ($2 = $null) {
     $achievement.list($nick) 
     if (%achievement.list != $null) { $set_chr_name($nick) | $display.message($readini(translation.dat, system, AchievementList),private) 
       if (%achievement.list.2 != $null) { $display.message(3 $+ %achievement.list.2,private) }
       if (%achievement.list.3 != $null) { $display.message(3 $+ %achievement.list.3,private) }
+      if (%achievement.list.4 != $null) { $display.message(3 $+ %achievement.list.4,private) }
     }
     if (%achievement.list = $null) { $set_chr_name($nick) | $display.message($readini(translation.dat, system, NoAchievements),private)  }
-    unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 |  unset %totalachievements | unset %totalachievements.unlocked
+    unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 |  unset %achievement.list.4 | unset %totalachievements | unset %totalachievements.unlocked
   }
 }
 on 3:TEXT:!achievements*:?: { 
@@ -1190,18 +1192,20 @@ on 3:TEXT:!achievements*:?: {
     if (%achievement.list != $null) { $set_chr_name($2) |  $display.private.message($readini(translation.dat, system, AchievementList))
       if (%achievement.list.2 != $null) { $display.private.message(3 $+ %achievement.list.2) }
       if (%achievement.list.3 != $null) {  $display.private.message(3 $+ %achievement.list.3) }
+      if (%achievement.list.4 != $null) {  $display.private.message(3 $+ %achievement.list.4) }
     }
     if (%achievement.list = $null) { $set_chr_name($2) |  $display.private.message($readini(translation.dat, system, NoAchievements)) }
-    unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 |  unset %totalachievements | unset %totalachievements.unlocked
+    unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %achievement.list.4 |  unset %totalachievements | unset %totalachievements.unlocked
   }
   if ($2 = $null) {
     $achievement.list($nick) 
     if (%achievement.list != $null) { $set_chr_name($nick) |  $display.private.message($readini(translation.dat, system, AchievementList))
       if (%achievement.list.2 != $null) {  $display.private.message(3 $+ %achievement.list.2) }
       if (%achievement.list.3 != $null) {  $display.private.message(3 $+ %achievement.list.3) }
+      if (%achievement.list.4 != $null) {  $display.private.message(3 $+ %achievement.list.4) }
     }
     if (%achievement.list = $null) { $set_chr_name($nick) |  $display.private.message($readini(translation.dat, system, NoAchievements)) }
-    unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %totalachievements | unset %totalachievements.unlocked
+    unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %achievement.list.4 | unset %totalachievements | unset %totalachievements.unlocked
   }
 }
 

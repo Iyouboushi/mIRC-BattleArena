@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ACHIEVEMENTS 
-;;;; Last updated: 02/24/16
+;;;; Last updated: 06/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:!clear achievement*:*:{
@@ -14,7 +14,7 @@ on 50:TEXT:!clear achievement*:*:{
 
 alias achievement.list {
   ; CHECKING ACHIEVEMENTS
-  unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3
+  unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %achievement.list.4
   set %totalachievements $lines($lstfile(achievements.lst)) | set %totalachievements.unlocked 0
 
   var %value 1 | var %achievements.lines $lines($lstfile(achievements.lst))
@@ -30,11 +30,16 @@ alias achievement.list {
       if (%achievement.name = 1.21Gigawatts) { %achievement.name = 1point21Gigawatts }
 
       if ($numtok(%achievement.list,46) <= 12) { %achievement.list = $addtok(%achievement.list, %achievement.name, 46) }
-      else { 
-        if ($numtok(%achievement.list.2,46) >= 12) { %achievement.list.3 = $addtok(%achievement.list.3, %achievement.name, 46) }
-        else { %achievement.list.2 = $addtok(%achievement.list.2, %achievement.name, 46) }
+      else {
+        if ($numtok(%achievement.list.2,46) <= 12) { %achievement.list.2 = $addtok(%achievement.list.2, %achievement.name, 46) }
+        else {
+          if ($numtok(%achievement.list.3,46) <= 12) { %achievement.list.3 = $addtok(%achievement.list.3, %achievement.name, 46) }
+          else { %achievement.list.4 = $addtok(%achievement.list.4, %achievement.name, 46) }
+        }
       }
+
     }
+
     unset %achievement.unlocked
     inc %value 1 
   }
@@ -44,6 +49,7 @@ alias achievement.list {
   %achievement.list = $replace(%achievement.list, $chr(046), %replacechar)
   %achievement.list.2 = $replace(%achievement.list.2, $chr(046), %replacechar)
   %achievement.list.3 = $replace(%achievement.list.3, $chr(046), %replacechar)
+  %achievement.list.4 = $replace(%achievement.list.4, $chr(046), %replacechar)
 
   writeini $char($1) stuff TotalAchievements %totalachievements.unlocked
 }
