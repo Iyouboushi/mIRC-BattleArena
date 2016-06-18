@@ -431,8 +431,7 @@ alias achievement_check {
   }
 
   if ($2 = ICanQuitBettingAnyTimeIWant) { 
-    var %total.bets $readini($char($1), stuff, TotalBets)
-    if (%total.bets > 100) { 
+    if ($readini($char($1), stuff, TotalBets) >= 100) { writeini $char($1) achievements $2 true 
       $announce_achievement($1, $2, 100)
       var %current.doubledollars $readini($char($1), stuff, doubledollars) | inc %current.doubledollars 100 | writeini $char($1) stuff doubledollars %current.doubledollars
     }
