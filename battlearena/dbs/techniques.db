@@ -505,6 +505,7 @@ Doomed=AbyssBlast.AcidBreath.StinkingGas.WhipTongue
 OrcAxe=FellCleave.SteelCyclone.ShoulderTackle.BattleDance
 ArcaneDollParts=Meltdown.Blitzstrahl.GravityField.Panzerfaust.Typhoon
 ArcanaPower=DoubleRay.MysteriousLight.Spinning_Attack
+CuccoBeak=SwarmAttack
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -5731,6 +5732,16 @@ cost=0
 Magic=no
 stat=int
 desc=spews acid breath upon the heroes
+
+[SwarmAttack]
+Type=AOE
+TP=1
+BasePower=120
+Element=none
+Cost=0
+Magic=no
+Stat=str
+Desc=swarms all over the battlefield, flying in and out, pecking and clawing anyone and anything that gets in the way
 
 
 [StinkingGas]
