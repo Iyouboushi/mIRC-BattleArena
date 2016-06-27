@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/18/16
+;;;; Last updated: 06/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1853,7 +1853,7 @@ gemconvert_check {
   if (%monsters.converted = $null) { var %monsters.converted 0 }
   inc %monsters.converted 1 | writeini $char($1) stuff MonstersToGems %monsters.converted
 
-  $achievement_check($2, PrettyGemCollector)
+  $achievement_check($1, PrettyGemCollector)
 
   unset %gem.list | unset %total.gems | unset %random.gem | unset %gem
   return
