@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/14/16
+;;;; Last updated: 06/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -519,7 +519,9 @@ alias enter {
 
   if (%battle.type = torment) {
     var %player.level $get.level.basestats($1) 
-    var %min.playerlevel $calc(%torment.level * 500)
+
+    if (%torment.level = anguish) { var %min.playerlevel 5000 }
+    else {  var %min.playerlevel $calc(%torment.level * 500) }
 
     if (%player.level < %min.playerlevel) { $display.message($readini(translation.dat, errors, Torment.LevelTooLow), global) | halt }
   }
@@ -768,6 +770,8 @@ alias battlebegin {
     set %current.battlefield Fields of Torment 
     writeini $txtfile(battle2.txt) battle alliednotes 500
     set %nosouls true
+
+    if (%torment.level = anguish) { set %torment.level $calc((1000 + $return_playerlevelhighest)/500) }
   }
 
   if (%savethepresident = on) { set %current.battlefield Monster Dungeon }

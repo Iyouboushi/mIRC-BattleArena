@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/27/16
+;;;; Last updated: 06/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4613,6 +4613,9 @@ torment.reward {
   else { var %torment.reward.item HoradricStash 
     if (%torment.level <= 15) {  var %torment.reward.amount $calc(%torment.level - 10) }
     if (%torment.level > 15) { var %torment.reward.amount $round($calc(5 + (%torment.level / 20)),0) }
+
+    if (%torment.reward.amount > 10) { var %torment.reward.amount 10 }
+
   }
 
   unset %torment.drop.rewards
