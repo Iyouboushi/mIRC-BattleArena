@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/28/16
+;;;; Last updated: 06/29/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2729,6 +2729,12 @@ first_round_dmg_chk {
     if (%attack.damage <= 5) { return }
 
     if ($readini($char($1), info, flag) = monster) {
+
+      if (%battle.type = torment) { 
+        var %monster.level $get.level($1)
+        var %player.level $get.level($2)
+        if (%monster.level > $calc(100 + %player.level)) { return }
+      }
 
       if (($readini($char($2), info, flag) = $null) || ($2 = alliedforces_president)) {
         var %max.health $readini($char($2), basestats, hp) 

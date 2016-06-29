@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/28/16
+;;;; Last updated: 06/29/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -520,7 +520,7 @@ alias enter {
   if (%battle.type = torment) {
     var %player.level $get.level.basestats($1) 
 
-    if (%torment.level = anguish) { var %min.playerlevel 5000 }
+    if ((%torment.level = anguish) || (%torment.level = misery)) { var %min.playerlevel 5000 }
     else {  var %min.playerlevel $calc(%torment.level * 500) }
 
     if (%player.level < %min.playerlevel) { $display.message($readini(translation.dat, errors, Torment.LevelTooLow), global) | halt }
@@ -772,6 +772,7 @@ alias battlebegin {
     set %nosouls true
 
     if (%torment.level = anguish) { set %torment.level $calc((1000 + $return_playerlevelhighest)/500) }
+    if (%torment.level = misery) { set %torment.level $calc(1000 + $return_playerlevelhighest) }
   }
 
   if (%savethepresident = on) { set %current.battlefield Monster Dungeon }
@@ -2361,7 +2362,10 @@ alias battle.calculate.redorbs {
   if (%battle.type = mimic) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
   if (%battle.type = dungeon) { set %base.redorbs $readini(system.dat, System, basebossxp) | inc %base.redorbs $2 }
   if (%battle.type = dragonhunt) { set %base.redorbs $calc($readini(system.dat, System, basebossxp) * 2) } 
-  if (%battle.type = torment) { set %base.redorbs $calc($readini(system.dat, System, basebossxp) * %torment.level) } 
+  if (%battle.type = torment) {
+    set %base.redorbs $calc($readini(system.dat, System, basebossxp) * %torment.level) 
+    if (%base.redorbs > 10000) { set %base.redorbs 10000 }
+  } 
 
   if (%number.of.monsters.needed = $null) { var %number.of.monsters.needed 1 }
 

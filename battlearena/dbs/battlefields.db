@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=dry
+current=gloomy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -39,7 +39,7 @@ errors.
 ==============================================================
 [TimeOfDay]
 CurrentTimeOfDay=Day
-CurrentTimeOfDayTurn=2
+CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -983,7 +983,7 @@ limitations=no-mech.no-fleeing.no-trusts.no-summons
 weather=gloomy
 NumberOfEvents=0
 scavenge=KindredSeal.KindredCrest
-limitations=no-mech.no-fleeing.no-trusts.no-summons
+limitations=$iif(%torment.level <= 30000, no-mech.no-fleeing.no-trusts.no-summons)
 
 ==============================================================
 DUNGEON battlefields

@@ -4646,6 +4646,17 @@ Type=Torment
 TormentLevel=60
 Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful versions of the monsters await. [Level: Torment 60] [Minimum Level: 30000]
 
+[AnguishOrb]
+Type=Torment
+TormentLevel=anguish
+Desc=An orb full of anguish and torment. Using this item outside of battle will open a portal to the most powerful torment dimension where powerful versions of monsters await. [Level: Torment ??] [Minimum Level: 5000]
+
+[MiseryOrb]
+Type=Torment
+TormentLevel=misery
+Desc=An orb full of misery. Using this item outside of battle will open a portal into the most powerful torment dimension where monsters of extreme levels will pummel you into oblivion. [Level: Torment ??] [Minimum Level: 5000]
+
+
 =========================
 AMMO
 =========================
