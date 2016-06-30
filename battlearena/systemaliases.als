@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/25/16
+;;;; Last updated: 06/30/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2493,7 +2493,7 @@ fulls {
 oldchar.check {
   var %bot.owners $readini(system.dat, botinfo, bot.owner)
 
-  if ($istok(%bot.owners,$1,46) = $true) { return }
+  if ($istok(%bot.owners,$1,46) = $true) { $fulls($1, clearSotH) | return }
 
   var %lastseen.date $readini($char($1), info, LastSeen)
   if (%lastseen.date = $null) { writeini $char($1) info LastSeen $fulldate | return }
