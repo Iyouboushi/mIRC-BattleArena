@@ -1480,6 +1480,7 @@ Battle Arena Bot VERSIONS
 - Added a new bot admin command: !clear dungeon usage -- using this command on a player will allow the player to use
   a dungeon key immediately
 - Added a new bot admin command: !apl -- Displays the total player's average level in the channel
+- Added a new bot admin command: !toggle first round protection -- Turns First Round Protection on/off
 - Added the terrified status effect. Anyone under this status will lose a turn.
 - Added Elite and SuperElite flags for monsters. Elite=true or SuperElite=true under [monster]  Super/Elite monsters will
   deal more damage and take less damage from attacks
@@ -1528,6 +1529,7 @@ Battle Arena Bot VERSIONS
 - Changed the amount of capacity points players gain so that the number of achievements obtained will increase the amount.  
   The amount increased is: # of achievements * 2.  
 - Changed the way the bot determines when it's time to start a new boss battle for higher battle streaks.
+- Changed torment drops so that players will only receive them from torments if they survive the battle
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons

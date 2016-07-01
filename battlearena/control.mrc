@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 06/13/16
+;;;; Last updated: 07/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -447,6 +447,18 @@ on 50:TEXT:!toggle battlefield events*:*:{
   else {
     writeini system.dat system EnableBattlefieldEvents false
     $display.message($readini(translation.dat, system, EnableBattlefieldEventsOff), global)
+  }
+}
+
+; Bot Admins can toggle the first round protection on or off
+on 50:TEXT:!toggle first round protection*:*:{   
+  if ($return.systemsetting(EnableFirstRoundProtection) = false) { 
+    writeini system.dat system EnableFirstRoundProtection true
+    $display.message($readini(translation.dat, system, FirstRoundProtectionOn), global)
+  }
+  else {
+    writeini system.dat system EnableFirstRoundProtection false
+    $display.message($readini(translation.dat, system, FirstRoundProtectionOff), global)
   }
 }
 

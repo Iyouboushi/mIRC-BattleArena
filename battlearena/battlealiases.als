@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/29/16
+;;;; Last updated: 07/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2725,6 +2725,9 @@ first_round_dmg_chk {
   if (%battle.type = assault) { return }
   if (%portal.bonus = true) { return } 
 
+  if ($return.systemsetting(EnableFirstRoundProtection) = false) { return }
+
+
   if ((%current.turn = 1) || (%first.round.protection = yes)) { 
     if (%attack.damage <= 5) { return }
 
@@ -4612,6 +4615,7 @@ portal.spoils.drop {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Gives everyone a 
 ; Horadric Cache item
+; if the player is alive
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 torment.reward {
 
@@ -4631,11 +4635,15 @@ torment.reward {
     var %flag $readini($char(%who.battle), info, flag)
     if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
     else { 
-      var %player.amount $readini($char(%who.battle), item_amount, %torment.reward.item)
-      if (%player.amount = $null) { var %player.amount 0 }
-      inc %player.amount %torment.reward.amount
-      writeini $char(%who.battle) item_amount %torment.reward.item %player.amount
-      %torment.drop.rewards = $addtok(%torment.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ %torment.reward.item x $+ %torment.reward.amount  $+  $+ $chr(93) $+ , 46)
+
+      if ($readini($char(%who.battle), battle, hp) >= 1) { 
+        var %player.amount $readini($char(%who.battle), item_amount, %torment.reward.item)
+        if (%player.amount = $null) { var %player.amount 0 }
+        inc %player.amount %torment.reward.amount
+        writeini $char(%who.battle) item_amount %torment.reward.item %player.amount
+        %torment.drop.rewards = $addtok(%torment.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ %torment.reward.item x $+ %torment.reward.amount  $+  $+ $chr(93) $+ , 46)
+      }
+
       inc %battletxt.current.line 1 
     }
   }

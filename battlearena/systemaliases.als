@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/30/16
+;;;; Last updated: 07/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -101,6 +101,7 @@ system_defaults_check {
     if ($readini(system.dat, system, BattleDamageFormula) = $null) { writeini system.dat system BattleDamageFormula 1 }
     if ($readini(system.dat, system, AllowAuctionHouseTopicChange) = $null) { writeini system.dat system AllowAuctionHouseTopicChange true }
     if ($readini(system.dat, system, MaxIdleTurns) = $null) { writeini system.dat system MaxIdleTurns 2 }
+    if ($readini(system.dat, system, EnableFirstRoundProtection) = $null) { writeini system.dat system EnableFirstRoundProtection true }
 
     ; This is done to convert the armor system from before version 3.2 over and only needs to be done once
     if ($readini(system.dat, system, ArmorUpdateFinished) = $null) {

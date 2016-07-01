@@ -298,6 +298,9 @@ CustomBattleMessagesOn=$chr(3) $+ 4 $+ The New Custom Battle Messages are now 
 CustomBattleMessagesOff=$chr(3) $+ 4 $+ The New Custom Battle Messages are now disabled.
 BattleSystemTypeTurn=$chr(3) $+ 4 $+ The Battle System Type has been changed to Turn System
 BattleSystemTypeAction=$chr(3) $+ 4 $+ The Battle System Type has been changed to Action System
+FirstRoundProtectionOff=$chr(3) $+ 4 $+ First Round Protection has been turned on
+FirstRoundProtectionOn=$chr(3) $+ 4 $+ First Round Protection has been turned off
+
 
 DragonHunt.ListDragons=$chr(3) $+ 2 $+ The following dragons are still hiding in their lairs across the land
 DragonHunt.CreatedDragon=$chr(3) $+ 4 $+ People all over the land have reported seeing the fearsome dragon %dragonhunt.name creating a lair! It is up to the heroes to locate the lair and destroy the terrible beast.
