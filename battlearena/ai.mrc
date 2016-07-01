@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 06/11/16
+;;;; Last updated: 07/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -69,6 +69,7 @@ alias ai_turn {
   unset %ai.action
 
   set %ai.type $readini($char($1), info, ai_type) 
+  if ((%battle.type = torment) && (%ai.type = berserker)) { set %ai.type normal }
 
   if (%ai.type = portal) { 
     $portal.clear.monsters
