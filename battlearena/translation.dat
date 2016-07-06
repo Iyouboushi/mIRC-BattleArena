@@ -238,6 +238,7 @@ ClearedDungeonUsage=$chr(3) $+ 3 $+ $4 $+ 's last dungeon use time has been re
 ClearedDailyPortalUsage=$chr(3) $+ 3 $+ $4 $+ 's daily portal usage has been reset to 0.
 PortalUsageCheckUnlimited=$chr(3) $+ 3 $+ %real.name $+  has unlimited portal usage.
 PortalUsageCheck=$chr(3) $+ 3 $+ %real.name $+  has %portal.uses.left more portal uses left today.
+DungeonUsageOK=$chr(3) $+ 3 $+ %real.name $+  is able to explore a dungeon right now.
 ScoreBoardHTMLTrue=$chr(3) $+ 3 $+ The Scoreboard will now generate a HTML file in the main folder upon use of the scoreboard command.
 ScoreBoardHTMLFalse=$chr(3) $+ 3 $+ The Scoreboard will no longer generate a HTML file in the main folder upon use of the scoreboard command.
 PortalLevelsSynced=$chr(3) $+ 4 $+ The level cap for this portal battle has been set to: %portal.level
@@ -598,6 +599,7 @@ NoSecondAccessorySlot=$chr(3) $+ 4 $+ Error: $get_chr_name($1) does not have a
 Can'tWearSecondOfSameAccessoryType=$chr(3) $+ 4 $+ Error: $get_chr_name($1) cannot wear two of the same accessory types.
 CanOnlyUseSummonOrDoppel=$chr(3) $+ 4 $+ Error: $get_chr_name($1) can only use a shadow clone or a summon. Not both.
 NeedAmmoToDoThis=$chr(3) $+ 4 $+ Error: $get_chr_name($1) needs more ammo ( $+ %weapon.ammo.amount x %weapon.ammo $+ ) to perform this action.
+DungeonUsageNotReady=$chr(3) $+ 4 $+ %real.name $+  still has $duration($calc(%dungeon.time.setting - %time.difference)) before being able to lead a party into a dungeon.
 
 =======================
 Battle Related Messages

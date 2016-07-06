@@ -1,10 +1,33 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 06/02/16
+;;;; Last updated: 07/05/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
 on 3:TEXT:!portal usage:?: { $portal.usage.check(private, $nick) }
+on 3:TEXT:!dungeon usage:#: { $dungeon.usage.check(channel, $nick) }
+on 3:TEXT:!dungeon usage:?: { $dungeon.usage.check(private, $nick) }
+
+alias dungeon.usage.check {
+  $set_chr_name($2)
+
+  var %player.laststarttime $readini($char($2), info, LastDungeonStartTime)
+  var %current.time $ctime
+  var %time.difference $calc(%current.time - %player.laststarttime)
+
+  var %dungeon.time.setting 86400 
+
+  if ((%time.difference = $null) || (%time.difference < %dungeon.time.setting)) { 
+    if ($1 = channel) { $display.message($readini(translation.dat, errors, DungeonUsageNotReady), private) }
+    if ($1 = private) { $display.private.message($readini(translation.dat, errors, DungeonUsageNotReady)) }
+    if ($1 = dcc) { $dcc.private.message($2, $readini(translation.dat, errors, DungeonUsageNotReady)) }
+    halt 
+  }
+
+  if ($1 = channel) { $display.message($readini(translation.dat, system, DungeonUsageOK), private) }
+  if ($1 = private) { $display.private.message($readini(translation.dat, system, DungeonUsageOK)) }
+  if ($1 = dcc) { $dcc.private.message($2, $readini(translation.dat, system, DungeonUsageOK)) }
+}
 
 alias portal.usage.check { 
   $set_chr_name($2)

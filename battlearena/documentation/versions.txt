@@ -1470,6 +1470,7 @@ Battle Arena Bot VERSIONS
 - Added the !last seen command. This command will tell you when a player was last seen in the channel
 - Added the !version command. This command will tell you the current bot version
 - Added the !ammo command. This command will display the current ammo you own.
+- Added the !dungeon usage command. It will display if a player is able to start a dungeon key or display the time remaining if not
 - Added a new style: Wrestlemania.  This style will allow players to use !wrestle on a target to do damage and attempt to
   inflict stun. This style also increases damage done with HandToHand weapons.
 - Added a new accessory type: IncreaseTurnSpeed  This type of accessory increases speed during battle turn generation
