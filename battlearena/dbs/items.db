@@ -566,7 +566,7 @@ Type=Damage
 Target=Single
 Amount=300
 Cost=0
-SellPrice=0
+SellPrice=2500
 Desc=places some C4 on a random area of the battlefield and waits. Once %enemy is close enough, %user activates the C4 from a distance, causing an explosion!
 Element=fire
 IgnoreMetalDefense=true
@@ -574,12 +574,16 @@ Bomb=true
 
 [Flash_Grenade]
 Type=Status
-Target=AOE
+Target=Single
 StatusType=Blind
-Amount=0
+Amount=1
 Cost=0
-SellPrice=0
-Desc=pulls out a grenade, pulls the pin and hurls it at the battlefield. A few second later, it explodes with a bright flash, blinding all enemies!
+SellPrice=2500
+Desc=pulls out a grenade, pulls the pin and hurls it at %enemy $+ . A few second later, it explodes with a bright flash, blinding %enemy $+ !
+FullbringLevel=5
+FullbringTarget=AOE
+FullbringAmount=1
+Fullbringdesc=draws out the soul from the flash grenade.  The soul floats over the battlefield and then glows a bright white, blinding all targets.
 
 [Coffee]
 Type=Status
