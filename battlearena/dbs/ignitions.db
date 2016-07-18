@@ -163,7 +163,7 @@ spd=1.5
 Augment=MagicBonus.TechBonus.RenkeiBonus
 IgnitionTrigger=15
 IgnitionConsume=10
-Cost=$iif($readini($char($1), weapons, Glyphs) >= 500, 25, 0)
+Cost=$iif($readini($char($1), weapons, Glyphs) >= 500 || $readini($char($1), weapons, Glyphs+1) >= 500, 25, 0)
 Techs=Evanescere.Universitas.UnionSecare.UnionCulter.Tellus.Saturnus.Venus
 Desc=unleashes the full power of the Glyphs, gaining new attacks and extra power.
 
