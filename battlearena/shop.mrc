@@ -62,7 +62,7 @@ alias shop.exchange {
 alias shop.categories.list {
   $display.private.message(2Valid shop categories:)
   $display.private.message(2Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) Portal $+ $chr(44) Misc) 
-  $display.private.message(2Mech $+ $chr(44) Mech $+ $chr(44) Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys)
+  $display.private.message(2Mech $+ $chr(44) Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys)
   if ($left($adate, 2) = 10) {  $display.private.message(2Halloween, private) }
 }
 
