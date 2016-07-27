@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 06/18/16
+;;;; Last updated: 07/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -56,7 +56,7 @@ on 1:TEXT:!new char*:*: {  $checkscript($2-)
   else { inc %current.shoplevel 1 }
 
   var %starting.orbs $readini(system.dat, system, startingorbs)
-  if (%starting.orbs = $null) { starting.orbs = 1000 } 
+  if (%starting.orbs = $null) { %starting.orbs = 1000 } 
   %starting.orbs = $round($calc(%starting.orbs * %current.shoplevel),0) 
 
   ; Create the new character now

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 07/05/16
+;;;; Last updated: 07/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -128,6 +128,7 @@ alias dcc.private.message {
   ; $1 = person
   ; $2 = message
 
+  if ($1 = $null) { echo -a 4ERROR: NO PERSON TO SEND A MESSAGE TO OR DCC CHAT NOT ACTIVE | halt }
   if ($2 = $null) { echo -a 4ERROR: MESSAGE IS NULL, CHECK TRANSLATION.DAT | halt }
   msg = $+ $1 $2
 }
