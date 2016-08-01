@@ -19,7 +19,7 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Full
+CurrentMoonPhase=Quarter
 CurrentMoonTurn=1
 
 [MoonPhaseTime]
@@ -984,6 +984,18 @@ weather=gloomy
 NumberOfEvents=0
 scavenge=KindredSeal.KindredCrest
 limitations=$iif(%torment.level <= 30000, no-mech.no-fleeing.no-trusts.no-summons)
+
+[Monster Dungeon]
+weather=gloomy
+NumberOfEvents=0
+scavenge=BeastmenSeal.KindredSeal.KindredCrest
+limitations=no-mech.no-fleeing
+
+[Treacherous Path]
+weather=gloomy
+NumberOfEvents=0
+scavenge=BeastmenSeal.KindredSeal.KindredCrest
+limitations=no-mech.no-playerignition
 
 ==============================================================
 DUNGEON battlefields

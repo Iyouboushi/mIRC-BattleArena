@@ -931,7 +931,7 @@ CONSUMABLE ITEMS (for skills)
 =========================
 [Shihei]
 Type=consume
-Cost=100
+Cost=500
 SellPrice=20
 Skill=Utsusemi
 
@@ -944,7 +944,7 @@ ShopNPC=BattleMerchant
 
 [Hankai]
 type=consume
-cost=1000
+cost=700
 SellPrice=100
 Skill=SealBreak
 ShopNPC=BattleMerchant
@@ -1973,15 +1973,14 @@ SellPrice=3000
 
 [TeruTeruBozu]
 type=accessory
-Cost=0
-AccessoryType=Stylish.IncreaseHealing.IncreaseRedOrbs
-Desc=A little traditional handmade doll made of cloth. Traditionally farmers would hang these outside their windows by a string to ward off the rain. Hang this little guy off your weapon to bring you more happiness.
-SellPrice=5000
-Stylish.Amount=4
-IncreaseHealing.Amount=.10
+cost=0
+AccessoryType=IncreaseRedOrbs.Stylish.IncreaseHealing
+Desc=A little traditional handmade doll made of cloth. Traditionally farmers would hang these outside their windows by a string to  ward off the rain. Hang this little guy off your weapon to bring you more happiness.
 IncreaseRedOrbs.Amount=.18
+IncreaseHealing.Amount=.10
+Stylish.Amount=4
+SellPrice=5000
 Exclusive=yes
-
 
 
 =========================

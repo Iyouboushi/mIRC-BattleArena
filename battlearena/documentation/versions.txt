@@ -1434,6 +1434,8 @@ Battle Arena Bot VERSIONS
 3.2
 - Added the system.dat system flag: MaxIdleTurns. Set to 2 by default, this controls how many turns a player can miss
   before he/she is kicked out of the battle.
+- Added the "Supply Run" battle type. In this type players need to protect a wagon against a wave of bosses and monsters.
+  Players will be level capped at the current battle streak.  If the wagon dies or all players die, the battle fails.
 - Added new cow monsters
 - Added a new NPC
 - Added a literal "trash" item (it serves no purpose for now)
@@ -1540,6 +1542,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug where using !misc items multiple times would cause duplicates to show up
 - Fixed a bug where NPCs/trusts could survive no-npc/no-trust battle conditions on uncapped portals
 - Fixed a bug where it was possible to get infinite HP while using an ignition
+- Fixed a bug that was preventing accessories with more than one type working correctly.
 - Fixed a bug with the techonly AI types
 - Fixed two bugs with the Predator fight
 - Fixed an issue where certain battle types could override mimic battles

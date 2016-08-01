@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 06/14/16
+;;;; Last updated: 08/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -9,6 +9,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 get_boss_type {
 
+  if (%supplyrun = on) { set %boss.type normal | return } 
   if (%savethepresident = on) { set %boss.type normal | return } 
   if (%battle.type = defendoutpost) { set %boss.type normal | return }
   if (%battle.type = torment) { set %boss.type normal | return }
@@ -26,7 +27,6 @@ get_boss_type {
 
   var %winning.streak.check $readini(battlestats.dat, battle, winningstreak)
   if (%mode.gauntlet.wave != $null) { inc %winning.streak.check %mode.gauntlet.wave }
-
 
   if ((%winning.streak.check < 50) || (%winning.streak.check > 500)) { var %enable.dinosaur false }
   if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.bandits false }
@@ -1035,6 +1035,87 @@ generate_allied_troop {
   if (%boss.item != $null) {  writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
   unset %boss.item | unset %current.battlestreak | unset %monster.name | unset %monster.realname
 }
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This function generates
+; the allied forces wagon
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+generate_wagon {
+  set %current.battlestreak $readini(battlestats.dat, Battle, WinningStreak)
+  if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+
+  set %monster.name supply_wagon | set %monster.realname Supply Wagon
+
+  .copy -o $char(new_chr) $char(%monster.name)
+  writeini $char(%monster.name) info flag npc
+  writeini $char(%monster.name) Basestats name %monster.realname
+  writeini $char(%monster.name) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
+  writeini $char(%monster.name) info gender its
+  writeini $char(%monster.name) info gender2 its
+  writeini $char(%monster.name) info ai_type defender
+
+  if (%current.battlestreak < 100) { var %base.hp.tp $round($calc(45 * %current.battlestreak),0) }
+  else { var %base.hp.tp $round($calc(20 * %current.battlestreak),0) }
+
+  if (%base.hp.tp > 20000) { var %base.hp.tp 20000 }
+
+  writeini $char(%monster.name) basestats hp %base.hp.tp
+  writeini $char(%monster.name) basestats tp %base.hp.tp
+  writeini $char(%monster.name) basestats str 2
+  writeini $char(%monster.name) basestats def 8
+  writeini $char(%monster.name) basestats int 5
+  writeini $char(%monster.name) basestats spd 5
+
+  $levelsync(%monster.name, $calc(%current.battlestreak + 2))
+  writeini $char(%monster.name) battlestats str $readini($char(%monster.name), battle, str)
+  writeini $char(%monster.name) battlestats def $readini($char(%monster.name), battle, def)
+  writeini $char(%monster.name) battlestats int $readini($char(%monster.name), battle, int)
+  writeini $char(%monster.name) battlestats spd $readini($char(%monster.name), battle, spd)
+
+  writeini $char(%monster.name) weapons equipped Fists
+
+  writeini $char(%monster.name) skills Resist-stun 100
+  writeini $char(%monster.name) skills Resist-charm 100
+  writeini $char(%monster.name) skills Resist-poison 100
+  writeini $char(%monster.name) skills Resist-paralysis 100
+
+  writeini $char(%monster.name) descriptions char is a supply wagon sent by the Allied Forces to a nearby outpost for supply delivery.
+
+  $boost_monster_hp(%monster.name)
+  $fulls(%monster.name) 
+
+  set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
+  $set_chr_name(%monster.name) 
+  $display.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
+  var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
+  inc %battletxt.current.line 1 
+
+  set %chest chest_gold.lst
+
+  var %items.lines $lines($lstfile(%chest))
+  if (%items.lines = 0) { set %boss.item Ethrune }
+  else { 
+    set %random $rand(1, %items.lines)
+    if (%random = $null) { var %random 1 }
+    set %random.item.contents $read -l $+ %random $lstfile(%chest)
+    set %boss.item %random.item.contents
+    unset %random.item.contents | unset %random
+  }
+
+  unset %chest 
+
+  if (%current.battlestreak < 100) {  writeini $txtfile(battle2.txt) battle alliednotes 100 }
+  if ((%current.battlestreak >= 100) && (%current.battlestreak < 500)) { writeini $txtfile(battle2.txt) battle alliednotes 200 }
+  if ((%current.battlestreak >= 500) && (%current.battlestreak < 1000)) { writeini $txtfile(battle2.txt) battle alliednotes 400 }
+  if ((%current.battlestreak >= 1000) && (%current.battlestreak < 2000)) { writeini $txtfile(battle2.txt) battle alliednotes 500 }
+  if ((%current.battlestreak >= 2000) && (%current.battlestreak < 3000)) { writeini $txtfile(battle2.txt) battle alliednotes 800 }
+  if (%current.battlestreak >= 3000) {  writeini $txtfile(battle2.txt) battle alliednotes 1000 }
+
+  if (%boss.item != $null) {  writeini $txtfile(battle2.txt) battle bonusitem %boss.item }
+  unset %boss.item | unset %current.battlestreak | unset %monster.name | unset %monster.realname
+}
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function generates

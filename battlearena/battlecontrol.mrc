@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/29/16
+;;;; Last updated: 08/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -202,6 +202,10 @@ on 50:TEXT:!clear battle stats*:*:{
   writeini battlestats.dat Battle TotalAssaultLost 0
   writeini battlestats.dat Battle TotalOutpostsLost 0
   writeini battlestats.dat battle TotalDragonHunts 0  
+  writeini battlestats.dat battle SupplyRuns 0
+  writeini battlestats.dat battle SupplyRuns.Failed 0
+  writeini battlestats.dat battle SupplyRuns.Won 0
+
   writeini battlestats.dat AIBattles totalBattles 0
   writeini battlestats.dat AIBattles npc 0
   writeini battlestats.dat AIBattles monster 0
@@ -431,7 +435,17 @@ alias startnormal {
       set %battle.type boss
     } 
 
-    if ((%start.battle.type = boss) && ($2 != savethepresident)) { 
+    if ($2 = supplyrun) { 
+      set %supplyrun on
+      $display.message($readini(translation.dat, Events, SupplyRun),global) 
+      var %supply.runs $readini(battlestats.dat, battle, SupplyRuns)
+      if (%supply.runs = $null) { var %supply.runs 0 }
+      inc %supply.runs 1 
+      writeini battlestats.dat battle SupplyRuns %supply.runs
+      set %battle.type boss
+    }
+
+    if (((%start.battle.type = boss) && ($2 != supplyrun) && ($2 != savethepresident))) { 
       set %battle.type boss 
       if ($2 != $null) { set %boss.type $2 }
 
@@ -644,16 +658,20 @@ alias enter {
     if ($return_winningstreak >= 100) { 
       if (%battle.type = defendoutpost) {  var %battle.level.cap $return.levelcapsetting(DefendOutpost) }
       if (%battle.type = assault) { var %battle.level.cap $return.levelcapsetting(Assault) }
-
       if (%battle.level.cap = null) { var %battle.level.cap 105 } 
       if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
     }
     else { 
-      if ($get.level($1) > $calc(5 + $return_winningstreak)) { 
-        $levelsync($1, $calc(5 + $return_winningstreak)) 
-        $display.message(4 $+ %real.name has been synced to level $calc(5 + $return_winningstreak) for this battle, battle)
+      if ($get.level($1) > $calc(3 + $return_winningstreak)) { 
+        $levelsync($1, $calc(3 + $return_winningstreak)) 
+        $display.message(4 $+ %real.name has been synced to level $calc(3 + $return_winningstreak) for this battle, battle)
       }
     }
+  }
+
+  ; Level sync the supply wagon battles
+  if (%supplyrun = on) { var %battle.level.cap $return_winningstreak
+    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
   ; Level sync dragon hunt battles
@@ -776,6 +794,10 @@ alias battlebegin {
   }
 
   if (%savethepresident = on) { set %current.battlefield Monster Dungeon }
+  if (%supplyrun = on) { 
+    set %current.battlefield Treacherous Path
+    set %nosouls true
+  }
 
   if (%battle.type = defendoutpost) { 
     set %current.battlefield Allied Forces Outpost 
@@ -879,6 +901,7 @@ alias battlebegin {
   $battlelist(public)
 
   if (%savethepresident = on) {  $display.message($readini(translation.dat, battle, Don'tLetPresidentDie), battle)  }
+  if (%supplyrun = on) {  $display.message($readini(translation.dat, battle, Don'tLetWagonDie), battle)  }
   if (%battle.type = defendoutpost) { $display.message($readini(translation.dat, battle, DefendOutpostForTurns), battle) }
   if (%battle.type = assault) { $display.message($readini(translation.dat, battle, AssaultOutpost), battle) }
 
@@ -994,6 +1017,11 @@ alias battle.getmonsters {
       }
 
       if (%savethepresident = on) { $generate_president }
+      if (%supplyrun = on) { 
+        $generate_wagon
+        $generate_monster(monster) 
+      }
+
     }
   }
 
@@ -1686,7 +1714,7 @@ alias battle.end.failure {
 
   }
 
-  if ((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != dragonhunt) && (%savethepresident != on)))) {
+  if (((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on))))) {
 
     if (%mode.gauntlet = $null) { 
       if (((%battle.type != defendoutpost) && (%battle.type != torment) && (%battle.type != assault))) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
@@ -1732,13 +1760,25 @@ alias battle.end.failure {
 
   if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) }
   if (%savethepresident = on) { $display.message($readini(translation.dat, battle, EvilHasWonPresident), global) 
-
     var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Fails)
     if (%presidents.captured = $null) { var %presidents.captured 0 }
     inc %presidents.captured 1 
     writeini battlestats.dat battle CapturedPresidents.Fails %presidents.captured 
 
     writeini shopnpcs.dat NPCStatus AlliedForcesPresident false
+  }
+
+  if (%supplyrun = on) { $display.message($readini(translation.dat, battle, EvilHasWonSupplyRun), global) 
+    var %supplyruns.failed $readini(battlestats.dat, battle, SupplyRuns.Failed)
+    if (%supplyruns.failed = $null) { var %supplyruns.failed 0 }
+    inc %supplyruns.failed 1 
+    writeini battlestats.dat battle SupplyRuns.Failed %supplyruns.failed 
+
+    var %allied.influence $readini(battlestats.dat, conquest, AlliedInfluence)
+    dec %allied.influence 50 
+    if (%allied.influence <= 0) { var %allied.influence 0 }
+    writeini battlestats.dat conquest AlliedInfluence %allied.influence
+    writeini battlestats.dat conquest SupplyRunChance 0
   }
 
   $battle.calculate.redorbs(defeat, %thisbattle.winning.streak)
@@ -1754,7 +1794,7 @@ alias battle.end.victory {
 
   var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
 
-  if ((((((%portal.bonus != true) && (%battle.type != torment) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%savethepresident != on)))))) {
+  if (((((((%portal.bonus != true) && (%battle.type != torment) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on))))))) {
     var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
     var %winning.streak.increase 1 
 
@@ -1804,6 +1844,19 @@ alias battle.end.victory {
     writeini shopnpcs.dat NPCStatus AlliedForcesPresident true
   }
 
+  if (%supplyrun = on) { $display.message($readini(translation.dat, battle, GoodHasWonSupplyRun), global) 
+    var %supplyruns.won $readini(battlestats.dat, battle, SupplyRuns.Won)
+    if (%supplyruns.won = $null) { var %supplyruns.won 0 }
+    inc %supplyruns.won 1 
+    writeini battlestats.dat battle SupplyRuns.won %supplyruns.Won 
+
+    var %allied.influence $readini(battlestats.dat, conquest, AlliedInfluence)
+    inc %allied.influence 50
+    if (%allied.influence <= 0) { var %allied.influence 0 }
+    writeini battlestats.dat conquest AlliedInfluence %allied.influence
+    writeini battlestats.dat conquest SupplyRunChance 0
+  }
+
   $battle.alliednotes.check
   $battle.calculate.redorbs(victory, %thisbattle.winning.streak)
   $battle.reward.redorbs(victory)
@@ -1829,10 +1882,10 @@ alias battle.end.victory {
   $display.message($readini(translation.dat, battle, RewardOrbsWin), battle)
 
   ; Check to see if allied notes are involved.
-  if (((%portal.bonus = true) || (%savethepresident = on) || ($readini($txtfile(battle2.txt), battle, alliednotes) != $null))) { $display.message($readini(translation.dat, battle, AlliedNotesGain), battle)  }
+  if ((((%portal.bonus = true) || (%savethepresident = on) || (%supplyrun = on) || ($readini($txtfile(battle2.txt), battle, alliednotes) != $null)))) { $display.message($readini(translation.dat, battle, AlliedNotesGain), battle)  }
 
   ; Check for Allied Influence
-  $battle.reward.influence(alliedforces)
+  if (%supplyrun != on) { $battle.reward.influence(alliedforces) }
 
   ; If boss battle, do black orbs for select players.
   unset %black.orb.winners
@@ -1850,7 +1903,7 @@ alias battle.end.victory {
     }
   }
 
-  if (((%battle.type != defendoutpost) && (%battle.type != torment) && (%battle.type != assault))) { $shopnpc.rescue }
+  if ((((%battle.type != defendoutpost) && (%battle.type != torment) && (%supplyrun != on) && (%battle.type != assault)))) { $shopnpc.rescue }
   if (%boss.type = FrostLegion) { writeini shopnpcs.dat Events FrostLegionDefeated true }
 
   if (%battle.type = torment) { $torment.reward }
@@ -2175,6 +2228,7 @@ alias battle.check.for.end {
   }
 
   if ((%savethepresident = on) && ($readini($char(alliedforces_president), battle, hp) <= 0)) { /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt  } 
+  if ((%supplyrun = on) && ($readini($char(supply_wagon), battle, hp) <= 0)) { /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt  } 
 
   ; Count the total number of monsters in battle
   $count.monsters
@@ -2478,6 +2532,12 @@ alias battle.reward.influence {
     inc %current.influence %influence.gain
     writeini battlestats.dat conquest MonsterInfluence %current.influence
   }
+
+  ; increase the chance of a supply run happening
+  var %supplyrun.chance $readini(battlestats.dat, conquest, SupplyRunChance)
+  if (%supplyrun.chance = $null) { var %supplyrun.chance 0 }
+  inc %supplyrun.chance $rand(1,3)
+  writeini battlestats.dat conquest SupplyRunChance %supplyrun.chance
 }
 
 alias battle.reward.redorbs {
