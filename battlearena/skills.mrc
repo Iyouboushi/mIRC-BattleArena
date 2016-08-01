@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 06/11/16
+;;;; Last updated: 08/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2808,14 +2808,13 @@ alias skill.flying {
 ;=================
 alias skill.weaknessshift {
   if ($readini($char($1), info, flag) = $null) { return }
-  if ($readini($char($1), modifiers, HitWithWeakness) != true) { echo -a not hit with weakness | return } 
-  if (($readini($char($1), skills, WeaknessShift) = $null) || ($readini($char($1), skills, WeaknessShift) <= 0)) { echo -a no skill | return }
+  if ($readini($char($1), modifiers, HitWithWeakness) != true) { return } 
+  if (($readini($char($1), skills, WeaknessShift) = $null) || ($readini($char($1), skills, WeaknessShift) <= 0)) { return }
 
   if ($readini($char($1), descriptions, weaknessshift) = $null) { set %skill.description flashes with a bright light as $get_chr_name($1) changes weaknesses }
   else { set %skill.description $readini($char($1), descriptions, weaknessshift) }
 
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
-
 
   set %magic.types light.dark.fire.ice.water.lightning.wind.earth
   set %number.of.magic.types $numtok(%magic.types,46)
