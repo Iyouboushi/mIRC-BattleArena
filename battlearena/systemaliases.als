@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 08/01/16
+;;;; Last updated: 07/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -457,7 +457,6 @@ system.start.newbattle {
   if (%time.between.battles = $null) { var %time.between.battles 120 }
   var %newbattle.time %time.between.battles
 
-  ; Check to see if we need to rescue the president
   var %president.enabled $readini(system.dat, system, EnablePresidentKidnapping)
   if (%president.enabled = $null) { var %president.enabled true }
   if (%president.enabled = true) {
@@ -468,30 +467,17 @@ system.start.newbattle {
     if (%current.battlestreak < 20) { var %president.chance 9999999999999 }
     if ($shopnpc.present.check(AlliedForcesPresident) != kidnapped) { var %president.chance 9999999999999 }
 
-    if (%president.chance <= 25) { var %special.flag boss savethepresident }
+    if (%president.chance <= 25) { var %president.flag boss savethepresident }
   }
-
-  ; Check to see if we need to do an escort mission
-  if ((%special.flag = $null) && ($readini(battlestats.dat, conquest, SupplyRunChance) >= 100)) { 
-    if ($current.battlestreak >= 50) {  var %supplyrun.chance $rand(1,100) }
-    if ($current.battlestreak < 50) { var %supplyrun.chance 0 }
-    if (%supplyrun.chance >= 45) { var %special.flag boss supplyrun }
-
-    var %supplyrun.overallchance $readini(battlestats.dat, conquest, SupplyRunChance) 
-    dec %supplyrun.overallchance 20
-    writeini battlestats.dat conquest SupplyRunChance %supplyrun.overallchance
-  }
-
 
   if (%newbattle.time = $null) { set %newbattle.time 120 }
 
-  if (%special.flag = boss savethepresident) { $display.message($readini(translation.dat, Battle, StartBattlePresident), global) }
-  if (%special.flag = boss supplyrun) { $display.message($readini(translation.dat, Battle, StartBattleSupplyRun), global) }
-  if (%special.flag = $null) { $display.message($readini(translation.dat, Battle, StartBattle), global)  }
+  if (%president.flag = boss savethepresident) { $display.message($readini(translation.dat, Battle, StartBattlePresident), global) }
+  else {  $display.message($readini(translation.dat, Battle, StartBattle), global)  }
 
 
   if ($readini(system.dat, system, automatedaibattlecasino) = on) {  /.timerBattleStart 0 %newbattle.time /startnormal ai }
-  else {  /.timerBattleStart 0 %newbattle.time /startnormal %special.flag }
+  else {  /.timerBattleStart 0 %newbattle.time /startnormal %president.flag }
 
   unset %newbattle.time
 }
@@ -3178,7 +3164,7 @@ clear_variables2 {
   unset %passive.skills.list2 | unset %prize.list | unset %inflict.meleewpn | unset %weapon.list1 | unset %duplicate.ips
   unset %attacker.level | unset %defender.level | unset %damage.display.color | unset %current.playerstyle
   unset %number.of monsters.needed | unset %battle.level.cap | unset %percent.increase
-  unset %monster.info.streak.max | unset %monster.info.streak | unset %supplyrun
+  unset %monster.info.streak.max | unset %monster.info.streak
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3566,7 +3552,8 @@ accessory.check {
   var %accessory.type $readini($dbfile(items.db), %current.accessory, accessoryType)
 
   if ($istok(%accessory.type,$2,46) = $true) {
-    set %accessory.amount $readini($dbfile(items.db), %current.accessory, $2 $+ .amount)
+    set %accessory.amount $readini($dbfile(items.db), %current.accessory, %accessory.type $+ .amount)
+
     if (%accessory.amount = $null) { set %accessory.amount 0 }
     var %accessory.found true
   }
@@ -3577,7 +3564,7 @@ accessory.check {
     var %accessory2.type  $readini($dbfile(items.db), %current.accessory2, accessoryType)
 
     if ($istok(%accessory2.type,$2,46) = $true) {
-      var %accessory.amount2 $readini($dbfile(items.db), %current.accessory2, $2 $+ .amount)
+      var %accessory.amount2 $readini($dbfile(items.db), %current.accessory2, %accessory2.type $+ .amount)
       if (%accessory.amount2 = $null) { var %accessory.amount2 0 }
 
       inc %accessory.amount %accessory.amount2

@@ -357,7 +357,6 @@ PiratesFight=$chr(3) $+ 14 $+ While taking a ship to the next battlefield a lar
 FrostLegionFight=$chr(3) $+ 14 $+ From the depths of the south pole The Frost Legion has awoken and begun their attack! 
 GremlinsFight=$chr(3) $+ 14 $+ Someone fed their pet Mogwai, Stripe, after midnight and now gremlins have taken over a nearby school! The heros are comissioned to go eliminate these pests!
 JurassicParkFight=$chr(3) $+ 14 $+ Warning! Warning! A dangerous dinosaur has escaped its pin in Jurassic Park! The park is requesting immediate assistance from the heroes to stop the terrible beast!
-SupplyRun=$chr(3) $+ 14 $+ The Allied Forces are sending a wagon full of supplies to an outpost. They need all available heroes to help escort and protect the wagon from monsters! Type !enter now to join the escort party
 
 =======================
 Error Messages
@@ -608,7 +607,6 @@ Battle Related Messages
 [Battle]
 StartBattle=$chr(3) $+ 2 $+ * A battle will begin in12 $duration(%newbattle.time) $+ 2.
 StartBattlePresident=$chr(3) $+ 2 $+ * The Allied Forces are putting together a rescue party to save the president. This battle will begin in7 $duration(%newbattle.time) $+ 2.
-StartBattleSupplyRun=$chr(3) $+ 2 $+ * The Allied Forces are putting together a supply run mission. This battle will begin in7 $duration(%newbattle.time) $+ 2.
 BattleOpen=$chr(3) $+ 4 $+ A dimensional portal has been detected.  The enemy force will arrive in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle! 2[Current Battle Level: $iif($readini(battlestats.dat, Battle, LosingStreak) != 0, -) $+ $current.battlestreak $+ ]  
 BattleOpenBoss=$chr(3) $+ 4 $+ A powerful dimensional rift has been detected. The enemy force will arrive in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle! 2[Current Battle Level: $iif($readini(battlestats.dat, Battle, LosingStreak) != 0, -) $+ $current.battlestreak $+ ]  
 BattleOpenOrbFountain=$chr(3) $+ 4 $+ The Allied Forces have detected an orb fountain! The party will be sent to destroy it in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle! 2[Current Battle Level: $iif($readini(battlestats.dat, Battle, LosingStreak) != 0, -) $+ $current.battlestreak $+ ]   
@@ -640,7 +638,6 @@ GauntletOver=$chr(3) $+ 12 $+ The players exit the gauntlet after %mode.gauntle
 EvilhasWon=$chr(3) $+ 12 $+ The forces of evil have won this battle (level $bytes($calc($readini(battlestats.dat, Battle, WinningStreak)),b) $+ ) after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! The heroes have lost $bytes($calc($readini(battlestats.dat, Battle, LosingStreak) + 1),b)  $+ $iif($calc($readini(battlestats.dat, Battle, LosingStreak) + 1) < 2, battle, battles) in a row!
 EvilhasWonPortal=$chr(3) $+ 12 $+ The forces of evil have won this special battle event after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ !
 EvilhasWonPresident=$chr(3) $+ 14 $+ The forces of evil have recaptured $readini(shopnpcs.dat, NPCNames, AlliedForcesPresident) after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! The heroes have failed!  The monsters have brutally slaughtered the president and offered the body to their god.
-EvilHasWonSupplyRun=$chr(3) $+ 14 $+ The forces of evil have destroyed the supply wagon after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! The heroes have failed! 
 OutpostBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to defend the outpost! The forces of evil have conqured it and claimed it as their own.
 AssaultBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to capture the enemy outpost and must withdrawal!
 Torment.BattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to survive the torment and have returned to their own dimension.
@@ -652,7 +649,6 @@ GoodHasWonPortal=$chr(3) $+ 12 $+ The forces of good have won this special battl
 OutpostBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monster waves and successfully defended their outpost!
 AssaultBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monsters and taken over this outpost! As the monster flag comes down and is replaced with an Allied Forces flag, cheers can be heard all around the heroes. 
 GoodHasWonPresident=$chr(3) $+ 12 $+ The forces of good have saved the President of the Allied Forces after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
-GoodHasWonSupplyRun=$chr(3) $+ 12 $+ The forces of good have successfully escorted the supply wagon to its destination after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! The supplies have helped prepare the Allied Forces for their next assault!
 BattleIsDraw=$chr(3) $+ 12 $+ The battle has come to a draw after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! 
 DrawPortal=$chr(3) $+ 12 $+ Neither heroes nor monsters have won this battle as it comes to a draw after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ !
 RewardOrbsLoss=$chr(3) $+ 3 $+ For their efforts, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
@@ -731,7 +727,6 @@ DisabledMech=$chr(3) $+ 4 $+ %enemy has been disabled. $set_chr_name($2) %real
 MechDismiss=$chr(3) $+ 3 $+ %real.name gets out of $gender($1) mech and dismisses it.
 MechSummon=summons $gender($1) $readini($char($1), mech, name) and hops in, ready for battle!
 Don'tLetPresidentDie=$chr(3) $+ 4 $+ The Heroes must protect the president!  If the president dies the battle will be over!
-Don'tLetWagonDie=$chr(3) $+ 4 $+ The Heroes must protect the wagon!  If the wagon is destroyed the battle will be over! 
 SongNotAllowedThisBattle=$chr(3) $+ 4 $+ A Darkness prevents %real.name $+ 's song from working during this battle.
 DefendOutpostForTurns=$chr(3) $+ 4 $+ The Heroes must defend this outpost for %darkness.turns rounds from the monster waves!  
 AssaultOutpost=$chr(3) $+ 4 $+ The Heroes must keep defeating monster forces to weaken the outpost in order to claim it! 
