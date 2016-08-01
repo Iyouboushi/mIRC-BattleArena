@@ -1318,7 +1318,7 @@ LinkedWeapon=Kikoku
 =============================================
 Bows
 =============================================
-[BasicBow]
+[WoodenBow]
 Cost=1
 Type=Bow
 Info=A basic and plain bow for new adventurers.
