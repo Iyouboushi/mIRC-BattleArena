@@ -884,7 +884,7 @@ alias battlebegin {
 
   if (%mode.pvp = on) { unset %darkness.turns }
   if (%mode.gauntlet = on) { unset %darkness.turns }
-  if (%battle.type = ai) { unset %darkness.turns } 
+  if (%battle.type = ai) { set %darkness.turns 100 } 
 
   unset %winning.streak
 

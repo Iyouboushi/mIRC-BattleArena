@@ -1533,6 +1533,7 @@ Battle Arena Bot VERSIONS
   The amount increased is: # of achievements * 2.  
 - Changed the way the bot determines when it's time to start a new boss battle for higher battle streaks.
 - Changed torment drops so that players will only receive them from torments if they survive the battle
+- Changed AI vs AI battles so that after 100 turns darkness will happen
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons

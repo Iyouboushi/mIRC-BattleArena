@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 06/14/16
+;;;; Last updated: 08/01/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -2622,6 +2622,7 @@ formula.meleedmg.monster {
 
     if (%battle.rage.darkness = on) { var %min.damage %attack.damage }
 
+
     if (%battle.rage.darkness != on) { 
 
       if (%battle.type != torment) {
@@ -2805,6 +2806,10 @@ formula.meleedmg.monster {
   writeini $char($1) skills truestrike.on off
 
   $guardianmon.check($1, $2, $3)
+
+  if (%battle.rage.darkness = on) { 
+    if ($readini($char($1), info, flag) = monster) { inc %attack.damage $calc(%attack.damage * 500) } 
+  }
 
   set %style.attack.damage %attack.damage
 
