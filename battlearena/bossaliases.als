@@ -1084,6 +1084,7 @@ generate_wagon {
 
   $boost_monster_hp(%monster.name)
   $fulls(%monster.name) 
+  $levelsync(%monster.name, %current.battlestreak)
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %monster.name
   $set_chr_name(%monster.name) 
@@ -1104,6 +1105,7 @@ generate_wagon {
   }
 
   unset %chest 
+
 
   if (%current.battlestreak < 100) {  writeini $txtfile(battle2.txt) battle alliednotes 100 }
   if ((%current.battlestreak >= 100) && (%current.battlestreak < 500)) { writeini $txtfile(battle2.txt) battle alliednotes 200 }
