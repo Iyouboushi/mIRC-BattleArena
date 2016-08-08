@@ -67,7 +67,7 @@ MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakSta
 
 MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe.DollParts
 
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.CuccoBeak
+MonsterWpns6=berusclaw.CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.CuccoBeak
 
 ============================================
 WEAPON TEMPLATE
@@ -2463,6 +2463,17 @@ EnergyCost=100
 MONSTER WEAPONS
 =============================================
 These are weapons that Monsters use.  They shouldn't be available for players.
+
+[berusclaw]
+Cost=0
+Type=HandToHand
+Info=the Claws of Berus the God of Destruction
+Abilities=KiBlast.TailAttak.AfterImageStrike.HeadShot.KiAi.DestructBeCre.PressurePoint.CanYouKeepUp.ConEnergyBul.FullPowerEngeryBlastVolley.GodOfDestructionWrath.SphereOfDestruction.WrathOfTheGodofDestruction.ExplosiveWave.FireBreath.PalmEnergy.AtomEnergySphere
+Element=none
+Hits=$rand(1,8)
+BasePower=50
+Upgrade=0
+CanCounter=yes
 
 [Yagudo_Fists]
 Cost=0
