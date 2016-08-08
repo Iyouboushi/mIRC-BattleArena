@@ -219,6 +219,7 @@ DelphinusWeaponSystems=MoonStoneCannon.DoubleShotIII.TripleShot.GunblazeIII
 UmbranArmorGuns=DoubleShotIII.GunBlazeIII
 
 ; Monster / NPC Weapons
+berusclaw=KiBlast.TailAttak.AfterImageStrike.HeadShot.KiAi.DestructBeCre.PressurePoint.CanYouKeepUp.ConEnergyBul.FullPowerEngeryBlastVolley.GodOfDestructionWrath.SphereOfDestruction.WrathOfTheGodofDestruction.ExplosiveWave.FireBreath.PalmEnergy.AtomEnergySphere
 Yagudo_Fists=Sweep.DoubleKick.FeatherStorm
 Yagudo_Wand=Sweep.DoubleKick.FeatherStorm.Fire.Stone.Ice.Aero.Cure.FireII.StoneII.IceII.AeroII
 Dark_Vampiric_Power=Dark_Inferno.Demonic_Megiddo.TrueForm
@@ -2169,7 +2170,7 @@ stat=int
 [HolyLightning:Discharge]
 Type=single
 Cost=4000
-Desc=holds Sacrament up high, thunder booming. %user then aims $gender($1) weapon at %enemy before releasing a discharge of blue lightning, causing the foe’s nerves to lock from electrical overload.
+Desc=holds Sacrament up high, thunder booming. %user then aims $gender($1) weapon at %enemy before releasing a discharge of blue lightning, causing the foeÂ’s nerves to lock from electrical overload.
 TP=250
 Element=Light.Lightning
 Hits=$rand(1,5)
@@ -2266,7 +2267,7 @@ Renkei=3
 [DarkEarth:StoneScabbard]
 Type=single
 Cost=3500
-Desc=kicks out %enemy $+ 's leg, before stabbing Lazarus through their chest. A red crystalline shell forms over %enemy $+ , as if they had met Medusa’s gaze.
+Desc=kicks out %enemy $+ 's leg, before stabbing Lazarus through their chest. A red crystalline shell forms over %enemy $+ , as if they had met MedusaÂ’s gaze.
 TP=150
 Element=Dark.Earth
 Hits=1
@@ -14695,3 +14696,149 @@ Hits=1
 BasePower=40
 Magic=No
 stat=Str
+
+[KiBlast]
+Type=Single
+Cost=0
+Desc=fires a strong Ki Blast on %enemy
+TP=5
+Basepower=25
+stat=int
+
+[TailAttack]
+Type=Single
+Cost=0
+Desc=attacks %enemy by hitting them with his tail
+TP=5
+Basepower=27
+stat=str
+
+[AfterImageStrike]
+Type=Single
+Cost=0
+Desc=creates images from himself to confuse %enemy
+Tp=10
+BasePower=29
+stat=spd
+StatusType=Confuse
+
+[HeadShot]
+Type=Single
+Cost=0
+Desc=snap with his finger to knockback %enemy
+TP=10
+Basepower=32
+stat=str
+StatusType=StrengthDown
+
+[KiAi]
+Type=Single
+Cost=0
+Desc=push up his hand and fires a shockwave towards %enemy
+TP=10
+BasePower=35
+stat=int
+
+[DestructBeCre]
+Type=Single
+Cost=0
+Desc=produces a sun-like aura sphere around his body then fires an purple energy wave at %enemy
+TP=15
+Basepower=38
+stat=int
+
+[PressurePoint]
+Type=Single
+Cost=0
+Desc=touching or hitting weakly certain pressure points on %enemy
+TP=15
+BasePower=41
+stat=str
+StatusType=Paralysis
+
+[CanYouKeepUp]
+Type=Single
+Cost=0
+Desc=First, Beerus quickly moves in front of %enemy and delivers a kick to the gut. He then proceeds to rapidly kick %enemy and finishes with a forward left kick, inflicting a huge amount of damage. 
+TP=20
+BasePower=44
+Hits=3
+Stat=str
+
+[ConEnergyBul]
+Type=Single
+Cost=0
+Desc=usually brings their arms to their sides, charges up ki, and then he throws his hands forward one after another as he rapidly fires many energy blasts to %enemy
+TP=10
+BasePower=47
+Hits=$rand(1,8)
+stat=str
+
+[FullPowerEngeryBlastVolley]
+Type=Single
+cost=0
+Desc=fires flurries of large, bright Ki Blasts on %enemy
+TP=15
+Hits=$rand(1,8)
+BasePower=50
+Stat=int
+
+[GodOfDestructionWrath]
+Type=AOE
+cost=0
+Desc=glows purple then fires multiple ki blasts from his aura in all directions.
+TP=15
+BasePower=50
+Hits=$rand(1,8)
+Stat=int
+
+[SphereOfDestruction]
+Type=Single
+Cost=0
+Desc=creates two medium-size flaming energy spheres in his hands and brings them above his head to create one single energy sphere resembling the Sun, which he throws at %enemy. 
+TP=20
+Basepower=100
+Stat=int
+
+[WrathOfTheGodofDestruction]
+Type=STEALPOWER
+cost=0
+Desc=runs quickly to %enemy and snip with his finger on %enemy's head. 
+TP=20
+BasePower=53
+Stat=int
+
+[ExplosiveWave]
+Type=Single
+cost=0
+Desc=Creates a yellow aura that explode around his body to hit %enemy
+TP=25
+BasePower=56
+Stat=int
+
+[FireBreath]
+Type=single
+cost=0
+Desc=fires an immense, blazing flare from their mouth that severely burns %enemy
+TP=30
+Element=fire
+magic=yes
+BasePower=59
+Stat=int
+
+[PalmEnergy]
+Type=Single
+cost=0
+Desc=places his palm on %enemy , infusing yellow ki into them through his palm by having it cover their body as an aura, then he releases and the ki explodes, injuring his foe. 
+TP=30
+BasePower=62
+stat=int
+
+[AtomEnergySphere]
+Type=Single
+cost=0
+Desc=A ki ball that is similar to an atom, which Beerus fires by physically hitting it. The attack is said to be uncatchable and uncrushable.
+TP=30
+BasePower=65
+stat=int
+CanDodge=false
