@@ -3029,21 +3029,22 @@ sort_mlist {
 ; injured, good, etc)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 hp_status { 
-  set %current.hp $readini($char($1), Battle, HP) | set %max.hp $readini($char($1), BaseStats, HP) | set %hp.percent $calc((%current.hp / %max.hp)*100) |  unset %current.hp | unset %max.hp 
-  if (%hp.percent > 100) { set %hstats $readini(translation.dat, health, beyondperfect)  | return }
-  if (%hp.percent = 100) { set %hstats $readini(translation.dat, health, perfect)  | return }
-  if ((%hp.percent < 100) && (%hp.percent >= 90)) { set %hstats $readini(translation.dat, health, great) | return }
-  if ((%hp.percent < 90) && (%hp.percent >= 80)) { set %hstats $readini(translation.dat, health, good) | return }
-  if ((%hp.percent < 80) && (%hp.percent >= 70)) { set %hstats $readini(translation.dat, health, decent) | return }
-  if ((%hp.percent < 70) && (%hp.percent >= 60)) { set %hstats $readini(translation.dat, health, scratched)  | return }
-  if ((%hp.percent < 60) && (%hp.percent >= 50)) { set %hstats $readini(translation.dat, health, bruised) | return }
-  if ((%hp.percent < 50) && (%hp.percent >= 40)) { set %hstats $readini(translation.dat, health, hurt) | return }
-  if ((%hp.percent < 40) && (%hp.percent >= 30)) { set %hstats $readini(translation.dat, health, injured) | return }
-  if ((%hp.percent < 30) && (%hp.percent >= 15)) { set %hstats $readini(translation.dat, health, injuredbadly) | return } 
-  if ((%hp.percent < 15) && (%hp.percent > 2)) { set %hstats $readini(translation.dat, health, critical) | return }
-  if ((%hp.percent <= 2) && (%hp.percent > 0)) { set %hstats $readini(translation.dat, health, AliveHairBredth) | return }
+  set %current.hp $readini($char($1), Battle, HP) | set %max.hp $readini($char($1), BaseStats, HP) | set %hp.percent $round($calc((%current.hp / %max.hp)*100),2) |  unset %current.hp | unset %max.hp 
+  if (%hp.percent > 100) { set %hstats.new 3||||||||||| | set %hstats $readini(translation.dat, health, beyondperfect)  | return }
+  if (%hp.percent = 100) { set %hstats.new 3||||||||||| | set %hstats $readini(translation.dat, health, perfect)  | return }
+  if ((%hp.percent < 100) && (%hp.percent >= 90)) { set %hstats.new 3||||||||||4| | set %hstats $readini(translation.dat, health, great) | return }
+  if ((%hp.percent < 90) && (%hp.percent >= 80)) { set %hstats.new 3|||||||||4|| | set %hstats $readini(translation.dat, health, good) | return }
+  if ((%hp.percent < 80) && (%hp.percent >= 70)) { set %hstats.new 3||||||||4||| | set %hstats $readini(translation.dat, health, decent) | return }
+  if ((%hp.percent < 70) && (%hp.percent >= 60)) { set %hstats.new 3|||||||4|||| | set %hstats $readini(translation.dat, health, scratched)  | return }
+  if ((%hp.percent < 60) && (%hp.percent >= 50)) { set %hstats.new 3||||||4||||| | set %hstats $readini(translation.dat, health, bruised) | return }
+  if ((%hp.percent < 50) && (%hp.percent >= 40)) { set %hstats.new 3|||||4|||||| | set %hstats $readini(translation.dat, health, hurt) | return }
+  if ((%hp.percent < 40) && (%hp.percent >= 30)) { set %hstats.new 3||||4||||||| | set %hstats $readini(translation.dat, health, injured) | return }
+  if ((%hp.percent < 30) && (%hp.percent >= 15)) { set %hstats.new 3|||4|||||||| | set %hstats $readini(translation.dat, health, injuredbadly) | return } 
+  if ((%hp.percent < 15) && (%hp.percent > 2)) { set %hstats.new 3||7||||||||| | set %hstats $readini(translation.dat, health, critical) | return }
+  if ((%hp.percent <= 2) && (%hp.percent > 0)) { set %hstats.new 3|4|||||||||| | set %hstats $readini(translation.dat, health, AliveHairBredth) | return }
   if (%hp.percent <= 0) { set %whoturn $1 |  next | halt }
 }
+
 hp_status_hpcommand { 
   set %current.hp $readini($char($1), Battle, HP) | set %max.hp $readini($char($1), BaseStats, HP) | set %hp.percent $calc((%current.hp / %max.hp)*100) |  unset %current.hp | unset %max.hp 
   if (%hp.percent > 100) { set %hstats $readini(translation.dat, health, beyondperfect)  | return }
