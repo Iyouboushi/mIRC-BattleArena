@@ -228,9 +228,6 @@ alias auctionhouse.end {
     write $txtfile(auction_winners.txt) %auction.number  - $date - $time - No Winner - $readini(system.dat, auctionInfo, current.item)
   }
 
-  if ($readini(system.dat, auctionInfo, current.item) = $null) { writeini system.dat auctionInfo previous.item none }
-  else { writeini system.dat auctionInfo previous.item $readini(system.dat, auctionInfo, current.item) }
-
   unset %auction.winner | unset %auction.item | unset %player.amount
 
 }
@@ -263,10 +260,11 @@ alias auctionhouse.topic {
 
   if (%allow.topic.change = true) {
     var %current.topic $chan(%battlechan).topic
-    var %previous.auction.topic $chr(124) [Current Auction: $readini(system.dat, auctionInfo, previous.item) $+ ]
-    var %current.auction.topic [Current Auction: $readini(system.dat, auctionInfo, current.item) $+ ]
-    var %current.topic $remove(%current.topic, %previous.auction.topic)
-    var %new.topic %current.topic $chr(124) %current.auction.topic
+    var %new.auction.topic $chr(124) [Current Auction: $readini(system.dat, auctionInfo, current.item) $+ ]
+
+    ; Perform the replacement.
+    ; The regular expression will replace any item name, in case an old one is there after a netsplit.
+    .echo -q $regsub(%current.topic, /(?:\| \[Current Auction:\x02[^\x02]*\x02\])?$/, %new.auction.topic, %new.topic)
 
     if ($len(%new.topic) >= 390) { return }
     else { /topic %battlechan %new.topic }
