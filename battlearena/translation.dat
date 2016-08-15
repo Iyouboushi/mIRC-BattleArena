@@ -273,6 +273,9 @@ AllowPersonalDifficultyOff=$chr(3) $+ 4 $+ Personal Difficulty has been turned
 AllowPlayerAccessCmdsOn=$chr(3) $+ 4 $+ Player Access Commands has been turned on.
 AllowPlayerAccessCmdsOff=$chr(3) $+ 4 $+ Player Access Commands has been turned off.
 
+DisplayHealthBarsOn=$chr(3) $+ 4 $+ Health bars will now be displayed.
+DisplayHealthBarsOff=$chr(3) $+ 4 $+ Health bars will no longer be displayed.
+
 AllowAuctionHouseTopicChangeOn=$chr(3) $+ 4 $+ The Auction House will now change the channel's topic.
 AllowAuctionHouseTopicChangeOff=$chr(3) $+ 4 $+ The Auction House will no longer change the channel's topic.
 
@@ -684,7 +687,7 @@ DroppedOutofBattle=$chr(3) $+ 4 $+  $+ $get_chr_name(%who) has been removed fr
 CannotFleeBattle=$chr(3) $+ 4 $+ %real.name attempts to flee the battle...but fails.
 DarknessWarning=$chr(3) $+ 4 $+ Darkness will overcome the battlefield in 5 turns..
 DarknessCoversBattlefield=$chr(3) $+ 4 $+ Darkness covers the battlefield enhancing the strength of all remaining monsters!
-TurnMessage=$chr(3) $+ 3 $+ It is %real.name $+ 's turn [Health Status: $strip(%hstats,b) $+ 3] [Status Effects:4 $strip(%all_status,b) $+ 3] [Active Skills:4 $strip(%all_skills,b) $+ 3] $iif($return.potioneffect($1) != none, [Potion Effect:12 $return.potioneffect($1) $+ 3])
+TurnMessage=$chr(3) $+ 3 $+ It is %real.name $+ 's turn $iif($readini(system.dat, system, DisplayHealthBars) = true,[Health Bar: %healthbar.char $+ 3],[Health Status: $strip(%hstats,b) $+ 3]) [Status Effects:4 $strip(%all_status,b) $+ 3] [Active Skills:4 $strip(%all_skills,b) $+ 3] $iif($return.potioneffect($1) != none, [Potion Effect:12 $return.potioneffect($1) $+ 3])
 NoActionPoints=$chr(3) $+ 4 $+ %real.name has no action points and can take no action this round! 
 TurnMessageMech=$chr(3) $+ 3 $+ It is %real.name $+ 's turn [Health Status: $strip(%hstats,b) $+ 3] [Energy Level:4 %energy.level $+ 3]
 NoOneJoinedBattleYet=$chr(3) $+ 4 $+ No one has joined the battle yet! 
@@ -1112,3 +1115,20 @@ Level8Garden=$chr(3) $+ 3 $+ You notice the garden is starting to look downright
 Level9Garden=$chr(3) $+ 3 $+ You notice the garden is downright epic! The lush and beautiful garden just fills you with happiness.
 Level10Garden=$chr(3) $+ 3 $+ You notice that the garden has grown into a gardener's dream come true.  There is lush greenery everywhere. Nice ponds and benches allow this to be the perfect garden for taking it easy and meditating.  
 
+
+=======================
+Healthbar
+=======================
+[Healthbar]
+Enhanced=$chr(3) $+ 12||||||||||
+100=$chr(3) $+ 3||||||||||
+90=$chr(3) $+ 3|||||||||4|
+80=$chr(3) $+ 3||||||||4||
+70=$chr(3) $+ 3|||||||4|||
+60=$chr(3) $+ 3||||||4||||
+50=$chr(3) $+ 3|||||4|||||
+40=$chr(3) $+ 3||||4||||||
+30=$chr(3) $+ 3|||4|||||||
+20=$chr(3) $+ 3||4||||||||
+10=$chr(3) $+ 3|4|||||||||
+0=$chr(3) $+ 4||||||||||

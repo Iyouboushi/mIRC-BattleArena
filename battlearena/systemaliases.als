@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 08/01/16
+;;;; Last updated: 08/15/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -102,6 +102,7 @@ system_defaults_check {
     if ($readini(system.dat, system, AllowAuctionHouseTopicChange) = $null) { writeini system.dat system AllowAuctionHouseTopicChange true }
     if ($readini(system.dat, system, MaxIdleTurns) = $null) { writeini system.dat system MaxIdleTurns 2 }
     if ($readini(system.dat, system, EnableFirstRoundProtection) = $null) { writeini system.dat system EnableFirstRoundProtection true }
+    if ($readini(system.dat, system, DisplayHealthBars) = $null) { writeini system.dat system DisplayHealthBars false }
 
     ; This is done to convert the armor system from before version 3.2 over and only needs to be done once
     if ($readini(system.dat, system, ArmorUpdateFinished) = $null) {
@@ -3030,6 +3031,7 @@ sort_mlist {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 hp_status { 
   set %current.hp $readini($char($1), Battle, HP) | set %max.hp $readini($char($1), BaseStats, HP) | set %hp.percent $calc((%current.hp / %max.hp)*100) |  unset %current.hp | unset %max.hp 
+  $hp_healthbar
   if (%hp.percent > 100) { set %hstats $readini(translation.dat, health, beyondperfect)  | return }
   if (%hp.percent = 100) { set %hstats $readini(translation.dat, health, perfect)  | return }
   if ((%hp.percent < 100) && (%hp.percent >= 90)) { set %hstats $readini(translation.dat, health, great) | return }
@@ -3046,6 +3048,7 @@ hp_status {
 }
 hp_status_hpcommand { 
   set %current.hp $readini($char($1), Battle, HP) | set %max.hp $readini($char($1), BaseStats, HP) | set %hp.percent $calc((%current.hp / %max.hp)*100) |  unset %current.hp | unset %max.hp 
+  $hp_healthbar
   if (%hp.percent > 100) { set %hstats $readini(translation.dat, health, beyondperfect)  | return }
   if (%hp.percent = 100) { set %hstats $readini(translation.dat, health, perfect)  | return }
   if ((%hp.percent < 100) && (%hp.percent >= 90)) { set %hstats $readini(translation.dat, health, great) | return }
@@ -3062,6 +3065,7 @@ hp_status_hpcommand {
 }
 hp_mech_hpcommand { 
   set %current.hp $readini($char($1), Mech, HpCurrent) | set %max.hp $readini($char($1), Mech, HpMax) | set %hp.percent $calc((%current.hp / %max.hp)*100) |  unset %current.hp | unset %max.hp 
+  $hp_healthbar
   if (%hp.percent >= 100) { set %hstats $readini(translation.dat, health, perfect)  | return }
   if ((%hp.percent < 100) && (%hp.percent >= 90)) { set %hstats $readini(translation.dat, health, great) | return }
   if ((%hp.percent < 90) && (%hp.percent >= 80)) { set %hstats $readini(translation.dat, health, good) | return }
@@ -3073,6 +3077,21 @@ hp_mech_hpcommand {
   if ((%hp.percent < 30) && (%hp.percent > 10)) { set %hstats $readini(translation.dat, health, critical) | return }
   if ((%hp.percent <= 10) && (%hp.percent > 0)) { set %hstats $readini(translation.dat, health, malfunctioning) | return }
   if (%hp.percent <= 0) { set %hstats $readini(translation.dat, health, Disabled)  | return }
+}
+
+hp_healthbar {
+  if (%hp.percent > 100) { set %healthbar.char $readini(translation.dat, healthbar, enhanced)  | return }
+  if (%hp.percent = 100) { set %healthbar.char $readini(translation.dat, healthbar, 100)  | return }
+  if ((%hp.percent < 100) && (%hp.percent >= 90)) { set %healthbar.char $readini(translation.dat, healthbar, 90)  | return }
+  if ((%hp.percent < 90) && (%hp.percent >= 80)) { set %healthbar.char $readini(translation.dat, healthbar, 80)  | return }
+  if ((%hp.percent < 80) && (%hp.percent >= 70)) { set %healthbar.char $readini(translation.dat, healthbar, 70)  | return }
+  if ((%hp.percent < 70) && (%hp.percent >= 60)) { set %healthbar.char $readini(translation.dat, healthbar, 60)  | return }
+  if ((%hp.percent < 60) && (%hp.percent >= 50)) { set %healthbar.char $readini(translation.dat, healthbar, 50)  | return }
+  if ((%hp.percent < 50) && (%hp.percent >= 40)) { set %healthbar.char $readini(translation.dat, healthbar, 40)  | return }
+  if ((%hp.percent < 40) && (%hp.percent >= 30)) { set %healthbar.char $readini(translation.dat, healthbar, 30)  | return }
+  if ((%hp.percent < 30) && (%hp.percent >= 20)) { set %healthbar.char $readini(translation.dat, healthbar, 20)  | return }
+  if ((%hp.percent < 20) && (%hp.percent >= 0)) { set %healthbar.char $readini(translation.dat, healthbar, 10)  | return }
+  if (%hp.percent <= 0)  { set %healthbar.char $readini(translation.dat, healthbar, 0)  | return }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

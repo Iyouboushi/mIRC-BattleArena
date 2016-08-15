@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 07/01/16
+;;;; Last updated: 08/15/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -203,6 +203,18 @@ on 50:TEXT:!main folder cleanup:*:{
   .echo -q $findfile( $mircdir  , *.txt, 0, 0, clean_mainfolder $1-) 
   .echo -q $findfile( $mircdir , *.html, 0, 0, clean_mainfolder $1-) 
   $display.message(4.db & .lst & .txt & .html files have been cleaned up from the main bot folder.)
+}
+
+; Bot admins can toggle Health Bars (replaces the health status)
+on 50:TEXT:!toggle healthbars*:*:{   
+  if ($readini(system.dat, system, DisplayHealthBars) = false) { 
+    writeini system.dat system DisplayHealthBars true
+    $display.message($readini(translation.dat, system, DisplayHealthBarsOn), global)
+  }
+  else {
+    writeini system.dat system DisplayHealthBars false
+    $display.message($readini(translation.dat, system, DisplayHealthBarsOff), global)
+  }
 }
 
 ; Bot admins can toggle Players Must Die Mode
