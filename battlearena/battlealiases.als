@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 07/01/16
+;;;; Last updated: 08/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2711,6 +2711,8 @@ winningstreak.addmonster.amount {
 
   if (($return_winningstreak <= 10) && (%number.of.monsters > 3)) { set %number.of.monsters.needed 3 }
 
+  if ((%supplyrun = on) && ($return_winningstreak > 500)) {  set %number.of.monsters.needed 1  }
+
   return
 }
 
@@ -3214,6 +3216,7 @@ multiple_wave_check {
   if (%boss.type = elderdragon) { return }
   if (%boss.type = predator) { return }
   if (%savethepresident = on) { return }
+  if (%supplyrun = on) { return }
 
   unset %number.of.monsters.needed
 

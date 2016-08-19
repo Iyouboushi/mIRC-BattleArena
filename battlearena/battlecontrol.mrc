@@ -1011,6 +1011,8 @@ alias battle.getmonsters {
             if (%boss.type = gremlins) { set %number.of.monsters.needed 0 }
             if (%boss.type = warmachine) { set %number.of.monsters.needed 0 }
 
+            if ((%supplyrun = on) && ($return_winningstreak > 500)) {  set %number.of.monsters.needed 1  }
+
             if (%number.of.monsters.needed > 0) { $generate_monster(monster)   }
           }
         }

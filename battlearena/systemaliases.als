@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 08/15/16
+;;;; Last updated: 08/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3197,7 +3197,8 @@ clear_variables2 {
   unset %passive.skills.list2 | unset %prize.list | unset %inflict.meleewpn | unset %weapon.list1 | unset %duplicate.ips
   unset %attacker.level | unset %defender.level | unset %damage.display.color | unset %current.playerstyle
   unset %number.of monsters.needed | unset %battle.level.cap | unset %percent.increase
-  unset %monster.info.streak.max | unset %monster.info.streak | unset %supplyrun
+  unset %monster.info.streak.max | unset %monster.info.streak | unset %supplyrun | unset %healthbar.char
+  unset %total.targets | unset %random.target
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 08/01/16
+;;;; Last updated: 08/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1055,15 +1055,15 @@ generate_wagon {
   writeini $char(%monster.name) info gender2 its
   writeini $char(%monster.name) info ai_type defender
 
-  if (%current.battlestreak < 100) { var %base.hp.tp $round($calc(45 * %current.battlestreak),0) }
-  else { var %base.hp.tp $round($calc(20 * %current.battlestreak),0) }
+  if (%current.battlestreak < 100) { var %base.hp.tp $round($calc(40 * %current.battlestreak),0) }
+  else { var %base.hp.tp $round($calc(35 * %current.battlestreak),0) }
 
-  if (%base.hp.tp > 20000) { var %base.hp.tp 20000 }
+  if (%base.hp.tp > 25000) { var %base.hp.tp 25000 }
 
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
   writeini $char(%monster.name) basestats str 2
-  writeini $char(%monster.name) basestats def 8
+  writeini $char(%monster.name) basestats def 9
   writeini $char(%monster.name) basestats int 5
   writeini $char(%monster.name) basestats spd 5
 
