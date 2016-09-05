@@ -1069,9 +1069,11 @@ ShenronWishActive=$chr(3) $+ 7* Shenron's Wish is Blessing the Players on the 
 ShenronWishOver=$chr(3) $+ 7* Shenron's Wish's power fades away and the dragonballs become active again. 
 DragonballFound=$chr(3) $+ 7* The players have found a dragonball! This makes %dbs.total out of 7 found!
 ShenronSummoned=$chr(3) $+ 7* The players use the 7 dragonballs to summon The Eternal Dragon Shenron who grants a wish to make players stronger on the battlefield for ten battles!
-DragonballCheck=$chr(3) $+ 2 $+ The Allied Forces of Good have collected %dbs.total dragonballs out of 7 total.
+DragonballCheck=$chr(3) $+ 2 $+ The Allied Forces of Good have $iif(%dbs.total = 0, not found any dragonballs yet, collected %dbs.total dragonballs out of 7 total $iif(%dbs.total >= 7, and can now use !dragonballs summon to summon Shenron and obtain Shenron's Wish!)) $+ 
 ShenronWishOnMessage=$chr(3) $+ 2 $+ The Dragonballs have been used to grant a powerful bonus to the Allied Forces of Good in battle! The dragonballs are currently stone and will not be available again until the wish is over.
-
+Shenron'sWishReady=$chr(3) $+ 2 $+ All 7 Dragonballs have been gathered and can be used to summon Shenron. Use !dragonballs summon to summon Shenron and obtain Shenron's Wish!
+Shenron'sWishAlreadyOn=$chr(3) $+ 4 $+ Shenron's Wish has already been activated for the Allied Forces!
+NotAllDBsFound=$chr(3) $+ 4 $+ Shenron cannot be summoned yet as all of the dragonballs have not been found. $iif(%dbs.total = 0, No dragonballs have been located yet, Only %dbs.total out of 7 have been found) $+ .
 
 =======================
 Shop NPC Messages

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 07/27/16
+;;;; Last updated: 09/05/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1353,8 +1353,11 @@ on 50:TEXT:!take *:*:{
   }
 }
 
-; Check on the Dragonballs
-on 1:TEXT:!dragonballs*:*: { $db.display($nick) }
+; Check on the Dragonballs and summon Shenron's Wish
+on 1:TEXT:!dragonballs*:*: { 
+  if ($2 = summon) { $db.shenron.activate($nick) } 
+  else { $db.display($nick) }
+}
 
 ; Check on the Bounty
 on 3:TEXT:!bounty*:*: { $bounty.display }

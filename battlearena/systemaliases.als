@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 08/18/16
+;;;; Last updated: 09/05/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3997,17 +3997,34 @@ db.dragonball.find {
 
   ; We found a dragonball! Let's announce it to the world then check for Shenron
   inc %dbs.total 1
+  writeini battlestats.dat dragonballs DragonBallsFound %dbs.total
 
   $display.message($readini(translation.dat, Dragonball, DragonballFound), battle)
 
-  if (%dbs.total < 7) { writeini battlestats.dat dragonballs DragonBallsFound %dbs.total }
+  if (%dbs.total >= 7) { $display.message($readini(translation.dat, Dragonball, Shenron'sWishReady), battle) }
+
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Activate Shenron's Wish
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+db.shenron.activate {
+  var %dbs.total $readini(battlestats.dat, dragonballs, DragonBallsFound)
+  if (%dbs.total = $null) { var %dbs.total 0 }
+
+  ; If it's already activated, let's just tell people it's on.
+  if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, Dragonball, Shenron'sWishAlreadyOn), global) | halt }
+
+  ; If all 7 have been found, activate the wish.
   if (%dbs.total >= 7) { 
     writeini battlestats.dat dragonballs DragonBallsFound 0
     writeini battlestats.dat dragonballs DragonballsActive no
     writeini battlestats.dat dragonballs ShenronWish on
     writeini battlestats.dat dragonballs ShenronWish.rounds 1
-    $display.message($readini(translation.dat, Dragonball, ShenronSummoned), battle)
+    $display.message($readini(translation.dat, Dragonball, ShenronSummoned), global)
   }
+  ; Else, tell the world we can't yet.
+  if (%dbs.total < 7) { $display.message($readini(translation.dat, Dragonball, NotAllDBsFound), global) }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
