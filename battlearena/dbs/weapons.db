@@ -1035,7 +1035,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
 
-[BasicGreatAxe]
+[GreatIronAxe]
 Cost=1
 Type=Greataxe
 Info=A basic and plain greataxe for new adventurers.
@@ -1583,7 +1583,7 @@ CanCounter=true
 Cost=250
 Type=Katana
 Info=A red straight edged katana enchanted to be bound to the Primordial Force of Aether. It's edge is pulsating with Nether, enabling it to make contact with ethereal enemies.
-Abilities=DarkWind:Vacuum.DarkFire:Eruption.DarkIce:DeepFreeze.DarkLightning:HighVoltage.DarkEarth:StoneScabbard.DarkWater:TaintedBlood
+Abilities=DarkAir:Vacuum.DarkFire:Eruption.DarkIce:DeepFreeze.DarkLightning:HighVoltage.DarkEarth:StoneScabbard.DarkWater:TaintedBlood
 Element=none
 Hits=$rand(1,3)
 Basepower=75
@@ -2495,7 +2495,7 @@ BasePower=5
 Cost=0
 Type=sword
 Info=You can't buy this!
-Abilities=Shield_Smash.Shock_wave
+Abilities=Shield_Smash
 Element=none
 Hits=1
 BasePower=2
