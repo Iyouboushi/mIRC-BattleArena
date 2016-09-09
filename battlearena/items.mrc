@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 07/05/16
+;;;; Last updated: 09/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -36,8 +36,7 @@ alias portal.usage.check {
 
     $portal.clearusagecheck($2)
 
-
-    var %base.portal.usage.amount 10
+    var %base.portal.usage.amount $portal.dailymaxlimit
     var %last.portal.number.used $readini($char($2), info, PortalsUsedTotal)
     var %enhancements.portalusage $readini($char($2), enhancements, portalusage)
     if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }

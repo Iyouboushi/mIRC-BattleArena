@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 06/11/16
+;;;; Last updated: 09/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1294,12 +1294,17 @@ alias shop.enhancements {
       $display.private.message.delay.custom(2Equipment Enhancements5: AccessorySlot2 (10),2) 
     }
 
+    ; Check for "Portal Usage Limit"
+    if (($readini($char($1), enhancements, portalusage) <= 2) || ($readini($char($1), enhancements, portalusage) = $null)) { 
+      $display.private.message.delay.custom(2Battle Enhancements5: DailyPortalUsage+1 (10),2) 
+    }
+
     unset %shop.list | unset %shop.list.skills
   }
 
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid item?
-    var %valid.purchase.items hp.ig.str.def.int.spd.Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm.AccessorySlot2
+    var %valid.purchase.items hp.ig.str.def.int.spd.Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm.AccessorySlot2.DailyPortalUsage
     var %valid.purchase.skills Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm
 
     if ($istok(%valid.purchase.items, $lower($3), 46) = $false) { $display.private.message(4You cannot purchase that in this shop) | halt }
@@ -1309,14 +1314,15 @@ alias shop.enhancements {
     if (%enhancement.purchase.item = $null) { var %enhancement.purchase.item 0 }
 
     if ($3 = AccessorySlot2) { var %enhancement.cost 10 }
-    else {  var %enhancement.cost $calc(1 + %enhancement.purchase.item) }
+    if ($3 = DailyPortalUsage) { var %enhancement.cost 10 }
+    if (($3 != AccessorySlot2) && ($3 != DailyPortalUsage)) {  var %enhancement.cost $calc(1 + %enhancement.purchase.item) }
 
     var %current.player.ep $enhancementpoints($1)
     if (%current.player.ep = $null) { var %current.player.ep 0 }
 
     if (%current.player.ep < %enhancement.cost) { $display.private.message(4You do not have enough Enhancement Points to purchase this upgrade!) | halt }
 
-    if ($3 != AccessorySlot2) { 
+    if (($3 != AccessorySlot2) && ($3 != DailyPortalUsage)) { 
 
       ; Are we hitting the cap amount?
       var %purchase.cap 10
@@ -1338,6 +1344,17 @@ alias shop.enhancements {
       writeini $char($1) enhancements Accessory2 true
       writeini $char($1) equipment Accessory2 nothing
     }
+
+    if ($3 = DailyPortalUsage) {
+      var %portalusage $readini($char($1), enhancements, portalusage)
+      if (%portalusage = $null) { var %portalusage 0 } 
+
+      if (%portalusage >= 2) { $display.private.message(4You already own the maximum amount of this enhancement!) | halt }
+      inc %portalusage 1
+      writeini $char($1) Enhancements PortalUsage %portalusage
+
+    }
+
 
     var %number.of.enhancement.spent $readini($char($1), stuff, EnhancementPointsSpent)
     if (%number.of.enhancement.spent = $null) { var %number.of.enhancement.spent 0 }
@@ -1396,6 +1413,10 @@ alias shop.enhancements {
     if ($3 = AccessorySlot2) { 
       $display.private.message(3 $+ $readini(shopnpcs.dat, NPCNames,Jeweler) hands you a special accessory upgrade that allows you to wear two accessories at the same time.2 "Now remember! Accessories do nothing if not equipped!") 
       $display.private.message(3You have spent $bytes(%enhancement.cost,b) Enhancement Points for the second accessory slot. To equip something to this slot use !equip accessory 2 accessoryname)
+    }
+
+    if ($3 = DailyPortalUsage) {
+      $display.private.message(3You spend $bytes(%enhancement.cost,b) Enhancement Points and feel your Daily Portal Usage Limit increase! You can now do $calc($portal.dailymaxlimit + $readini($char($1), enhancements, portalusage)) portals a day.)
     }
 
   }
