@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 06/07/16
+;;;; Last updated: 09/09/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -256,7 +256,7 @@ alias tech_cmd {
       var %player.ammo.amount $readini($char($1), item_amount, %weapon.ammo)
       if (%player.ammo.amount = $null) { var %player.ammo.amount 0 }
 
-      if (%player.ammo.amount > %weapon.ammo.amount) { 
+      if (%player.ammo.amount >= %weapon.ammo.amount) { 
         dec %player.ammo.amount %weapon.ammo.amount
         writeini $char($1) item_amount %weapon.ammo %player.ammo.amount
         var %ammo.amount.met true 
@@ -264,18 +264,20 @@ alias tech_cmd {
     }
 
     ; check the left hand
-    var %weapon.ammo $readini($dbfile(weapons.db), %weapon.equipped.left, AmmoRequired)
+    if (%weapon.equipped.left != $null) { 
+      var %weapon.ammo $readini($dbfile(weapons.db), %weapon.equipped.left, AmmoRequired)
 
-    if ((%weapon.ammo != $null) && (%ammo.amount.met = false)) {
-      var %ammo.needed true
-      var %weapon.ammo.amount $readini($dbfile(weapons.db), %weapon.equipped.left, AmmoAmountNeeded)
-      var %player.ammo.amount $readini($char($1), item_amount, %weapon.ammo)
-      if (%player.ammo.amount = $null) { var %player.ammo.amount 0 }
+      if ((%weapon.ammo != $null) && (%ammo.amount.met = false)) {
+        var %ammo.needed true
+        var %weapon.ammo.amount $readini($dbfile(weapons.db), %weapon.equipped.left, AmmoAmountNeeded)
+        var %player.ammo.amount $readini($char($1), item_amount, %weapon.ammo)
+        if (%player.ammo.amount = $null) { var %player.ammo.amount 0 }
 
-      if (%player.ammo.amount > %weapon.ammo.amount) { 
-        dec %player.ammo.amount %weapon.ammo.amount
-        writeini $char($1) item_amount %weapon.ammo %player.ammo.amount
-        var %ammo.amount.met true 
+        if (%player.ammo.amount >= %weapon.ammo.amount) { 
+          dec %player.ammo.amount %weapon.ammo.amount
+          writeini $char($1) item_amount %weapon.ammo %player.ammo.amount
+          var %ammo.amount.met true 
+        }
       }
     }
 
