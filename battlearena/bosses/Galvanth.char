@@ -134,6 +134,8 @@ spellmaster=1
 DemonicWeapon=AbsorbTP
 
 
+[Equipment]
+Body=DefiledRobe
 
 [modifiers]
 Heal=dark

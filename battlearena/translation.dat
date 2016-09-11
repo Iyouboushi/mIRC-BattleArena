@@ -1134,3 +1134,12 @@ Enhanced=$chr(3) $+ 12||||||||||
 20=$chr(3) $+ 3||4||||||||
 10=$chr(3) $+ 3|4|||||||||
 0=$chr(3) $+ 4||||||||||
+
+
+=======================
+Event Info
+=======================
+[EventInfo]
+April=
+October=It's that creepy time of the season! Collect candy corn and spend it on special event items!
+December=The Winter Holiday festivities have begun! After rescuing Santa players can rescue elves and unlock special items in the various shops.

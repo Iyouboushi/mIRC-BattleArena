@@ -3701,3 +3701,32 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+
+
+[WitchRobe]
+Name=Witch Robe
+hp=0
+tp=0
+Str=100
+def=120
+int=120
+spd=100
+Augment=none
+EquipLocation=body
+Cost=0
+SellPrice=0
+Exclusive=yes
+
+[DefiledRobe]
+Name=Defiled Robe
+hp=0
+tp=0
+Str=80
+def=120
+int=140
+spd=100
+Augment=none
+EquipLocation=body
+Cost=0
+SellPrice=0
+Exclusive=yes

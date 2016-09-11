@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 4, $calc(33000 + (100 * $return_playersinbattle)) , 33000)
+Hp=$iif($return_playersinbattle > 4, $calc(53000 + (100 * $return_playersinbattle)) , 53000)
 Tp=250
 Str=77
 Def=77
@@ -57,6 +57,7 @@ CanTaunt=false
 IgnoreQuicksilver=true
 BattleStats=IgnoreHP
 JustReleaseDefense=90
+ai_type=$iif($calc(%current.turn % 2) = 0 && $dungeon.haukke.lampcount > 0, techonly)
 
 [Status]
 Poison=no
@@ -131,6 +132,8 @@ spellmaster=2
 [Augment]
 DemonicWeapon=AbsorbTP.EnhanceCriticalHits
 
+[Equipment]
+Body=WitchRobe
 
 [modifiers]
 Heal=dark

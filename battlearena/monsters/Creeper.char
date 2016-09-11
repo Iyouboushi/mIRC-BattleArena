@@ -52,6 +52,7 @@ Created=N/a
 Streak=21
 CanTaunt=false
 IgnoreElementalMessage=true
+ai_type=$iif(%current.turn >= 2, techonly)
 
 [monster]
 type=demon
@@ -97,7 +98,7 @@ creeperlegs=1
 
 [Techniques]
 CreeperExplode=5
-Headbutt=1
+Headbutt=$iif(%current.turn >= 3, 0, 1)
 
 
 [modifiers]

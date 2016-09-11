@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 08/01/16
+;;;; Last updated: 09/10/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1072,13 +1072,18 @@ alias generate_monster {
           ; Check to see if the monster type has a dynamic name
           if ($readini($char(%monster.name), info, streak) >= 1) {
             var %monster.type $readini($mon(%monster.name), monster, type)
-            if (($lines($lstfile(names_ $+ %monster.type $+ .lst)) > 0) && ($return_winningstreak >= 25)) {
+            var %monster.class $readini($mon(%monster.name), monster, class)
+
+            var %dynamic.filename names_ $+ %monster.type
+            if (%monster.class != $null) { var %dynamic.filename %dynamic.filename $+ _ $+ %monster.class } 
+
+            var %dynamic.filename %dynamic.filename $+ .lst
+
+            if (($lines($lstfile(%dynamic.filename)) > 0) && ($return_winningstreak >= 25)) {
               var %dynamic.name.chance $rand(1,100)
 
-              var %dynamic.name.chance 1
-
-              if (%dynamic.name.chance <= 35) {
-                var %replacement.line $read($lstfile(names_ $+ %monster.type $+ .lst), $rand(1, $lines($lstfile(names_ $+ %monster.type $+ .lst))))
+              if (%dynamic.name.chance <= 40) {
+                var %replacement.line $read($lstfile(%dynamic.filename), $rand(1, $lines($lstfile(%dynamic.filename))))
                 var %replacement.filename $gettok(%replacement.line, 1, 46)
                 var %replacement.realname $gettok(%replacement.line, 2, 46)
                 var %monster.number 1
