@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=210
-Tp=300
-Str=20
-Def=28
-Int=30
-Spd=39
+Hp=110
+Tp=200
+Str=10
+Def=8
+Int=20
+Spd=9
 IgnitionGauge=2
-Name=Yagudo Conductor
+Name=Yagudo Drummer
 
 [Battle]
-Hp=210
-Tp=300
-Str=20
-Def=28
-Int=30
-Spd=39
+Hp=110
+Tp=200
+Str=10
+Def=8
+Int=20
+Spd=9
 IgnitionGauge=2
 Status=alive
 
@@ -41,6 +41,7 @@ drops=BeastmenSeal
 [monster]
 type=yagudo
 size=medium
+class=brd
 
 [Info]
 Flag=monster
@@ -51,7 +52,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=301
+Streak=50
 CanTaunt=true
 
 [Status]
@@ -89,23 +90,27 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=yagudo_fists
-yagudo_fists=35
+yagudo_fists=$current.battlestreak
 
 [Skills]
 singing=1
 
 [Techniques]
-Sweep=200
-DoubleKick=200
-FeatherStorm=200
+Sweep=$current.battlestreak
+DoubleKick=$current.battlestreak
+FeatherStorm=$current.battlestreak
 
 [songs]
 Knight'sMinne=1
 Army'sPaeon=1
-FoeLullaby=1
+FoeLullaby=$iif($current.battlestreak >= 100, 1, 0)
 ToxicMelody=1
 
 [Item_Amount]
+Lute=1
+Harp=1
+Flute=1
+Ocarina=1
 
 [modifiers]
 Heal=none
