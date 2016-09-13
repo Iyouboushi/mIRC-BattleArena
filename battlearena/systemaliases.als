@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/05/16
+;;;; Last updated: 09/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -317,6 +317,10 @@ system_defaults_check {
   .remove $mon(Excenmille)
   .remove $mon(NajaSalaheem)
   .remove $mon(Wind-UpShantotto)
+  .remove $mon(Orc_Grunt)
+  .remove $mon(Orcish_Grunt)
+  .remove $mon(Yagudo_Drummer)
+  .remove $mon(Yagudo_Piper)
 
   .remove $boss(Adlanna)
   .remove $boss(Eldora)
@@ -4409,8 +4413,10 @@ dragonhunt.check {
   var %dragon.time.difference $calc($ctime - %dragonhunt.lastdragonmade)
 
   var %dragon.create.time 43200
+  var %players.average.level $total.player.averagelevel
 
-  if ($total.player.averagelevel > 500) { var %dragon.create.time 22000 }
+  if ((%players.average.level > 500) && (%players.average.level <= 1000)) { var %dragon.create.time 22000 }
+  if (%players.average.level > 1000) { var %dragon.create.time 18000 }
 
   if (%dragon.time.difference >= %dragon.create.time) {
     var %dragon.createchance $rand(1,100)
@@ -4488,7 +4494,11 @@ dragonhunt.createdragon {
 
   ; Pick a random age for the dragon
   var %dragon.age $rand(100,150)
-  if ($total.player.averagelevel > 500) { inc %dragon.age $rand(150,300) }
+  var %total.player.averagelevel $total.player.averagelevel
+
+  if ((%total.player.averagelevel > 500) && (%total.player.averagelevel <= 1000)) { inc %dragon.age $rand(150,300) }
+  if (%total.player.averagelevel > 10000) { inc %dragon.age $rand(400,600) }
+
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
 
   ; Pick a random element

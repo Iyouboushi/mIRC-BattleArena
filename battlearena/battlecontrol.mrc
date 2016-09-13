@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/10/16
+;;;; Last updated: 09/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -789,7 +789,7 @@ alias battlebegin {
     writeini $txtfile(battle2.txt) battle alliednotes 500
     set %nosouls true
 
-    if (%torment.level = anguish) { set %torment.level $calc((1000 + $return_playerlevelhighest)/500) }
+    if (%torment.level = anguish) { set %torment.level $calc((850 + $return_playerlevelhighest)/500) }
     if (%torment.level = misery) { set %torment.level $calc(1000 + $return_playerlevelhighest) }
   }
 

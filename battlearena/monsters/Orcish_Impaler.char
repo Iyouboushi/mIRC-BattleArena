@@ -44,6 +44,7 @@ drops=BeastmenSeal
 [monster]
 type=orc
 size=medium
+class=drg
 
 [Info]
 Flag=monster
@@ -54,9 +55,8 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=26
-StreakMax=100
-CanTaunt=true
+Streak=5
+CanTaunt=false
 
 [Status]
 Poison=no
@@ -93,15 +93,15 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=orc_pike
-orc_pike=8
+orc_pike=$current.battlestreak
 
 [Skills]
 
 
 [Techniques]
-BattleDance=8
-ShoulderTackle=8
-Jump=8
+BattleDance=$current.battlestreak
+ShoulderTackle=$current.battlestreak
+Jump=$current.battlestreak
 
 [modifiers]
 Heal=none
