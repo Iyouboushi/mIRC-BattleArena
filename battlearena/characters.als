@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/13/16
+;;;; Last updated: 09/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -162,11 +162,11 @@ armor.stat {
 get.level.tnl { 
   var %current.level $get.level($1)
   var %next.level $calc(%current.level + 1)
-  var %tnl $calc(18 * %next.level)
+  var %tnl $calc(18 * %next.level - 9)
   var %str $readini($char($1),battle, str)
   var %def $readini($char($1), battle, def)
   var %int $readini($char($1), battle, int)
-  var %spd $round($calc($readini($char($1), basestats, spd) * .5),0)
+  var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
   var %current.stat.xp $calc(%str + %def + %int + %spd)
   var %tnl $calc(%tnl - %current.stat.xp)
   return %tnl
