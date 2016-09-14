@@ -1140,6 +1140,10 @@ Enhanced=$chr(3) $+ 12||||||||||
 Event Info
 =======================
 [EventInfo]
-April=
-October=It's that creepy time of the season! Collect candy corn and spend it on special event items!
-December=The Winter Holiday festivities have begun! After rescuing Santa players can rescue elves and unlock special items in the various shops.
+February=Love is in the air and Evil Cupid is out to cause chaos! Take him out for special love potions.
+March=Leprechauns have been spotted in the battlefield. Take them out for Kinstones and perhaps a little bit of luck.
+April=The Easter Bunny is in town and has set up shop! Buy lots of eggs and craft your Eggnog and EggHelm while you can.
+July=It's time to celebrate BattleArena's birthday! This year BA turns $calc($right($adate, 4) - 2012) $+ ! Fight Anni monsters to collect Annigifts and join in the celebrations!
+October=It's that creepy time of the season! Collect candy corn and spend it on special event items! Use !shop list halloween for a list of special items
+November=Gobbles the insane and evil turkey along with his army of ghost turkies are on the loose again! Take them out for special TurkeyLeg items.
+December=The Winter Holiday festivities have begun! After rescuing Santa players can rescue elves and unlock special items in the various shops. Also watch out for Robot Santa and evil Xmas Trees.

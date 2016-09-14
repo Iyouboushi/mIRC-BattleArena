@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/12/16
+;;;; Last updated: 09/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4563,6 +4563,19 @@ system.intromessage {
 
   $display.private.message(2Welcome back4 $readini($char($1), basestats, name) $+ . 2The current local bot time is4 $asctime(hh:nn tt) 2on4  $asctime(mmm dd yyyy) 2and this is bot version5 $battle.version )
   $display.private.message(2You currently have: 3 $+ %player.loginpoints 2login points $+ $chr(44) 3 $+ %player.redorbs 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ %player.blackorbs 2Black Orbs $+ $chr(44) 3 $+ %player.alliednotes 2Allied Notes $+ $chr(44) 3 $+ %player.doubledollars 2double dollars $+ $chr(44) 3 $+ %player.enhancementpoints 2enhancement points  $iif($left($adate, 2) = 10, and7 %player.candycorn 2candycorn ) )
+
+  ; Check for month event messages
+  var %current.month $left($adate, 2)
+
+  if (%current.month = 02) { $display.private.message(7*2 $readini(translation.dat, EventInfo, February)) }
+  if (%current.month = 03) { $display.private.message(7*2 $readini(translation.dat, EventInfo, March)) }
+  if (%current.month = 04) { $display.private.message(7*2 $readini(translation.dat, EventInfo, April)) }
+  if (%current.month = 07) { $display.private.message(7*2 $readini(translation.dat, EventInfo, July)) }
+  if (%current.month = 10) { $display.private.message(7*2 $readini(translation.dat, EventInfo, October)) }
+  if (%current.month = 11) { $display.private.message(7*2 $readini(translation.dat, EventInfo, November)) }
+  if (%current.month = 12) { $display.private.message(7*2 $readini(translation.dat, EventInfo, December)) }
+
+  ; Display MOTD if there is one
   if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
   return
 }
