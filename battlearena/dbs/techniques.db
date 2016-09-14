@@ -221,6 +221,7 @@ UmbranArmorGuns=DoubleShotIII.GunBlazeIII
 ; Monster / NPC Weapons
 Yagudo_Fists=Sweep.DoubleKick.FeatherStorm
 Yagudo_Wand=Sweep.DoubleKick.FeatherStorm.Fire.Stone.Ice.Aero.Cure.FireII.StoneII.IceII.AeroII
+Yagudo_Kunai=Sweep.DoubleKick.FeatherStorm
 Dark_Vampiric_Power=Dark_Inferno.Demonic_Megiddo.TrueForm
 Guardian_Shield=shield_smash
 Orc_Pike=ShoulderTackle.BattleDance.Jump
@@ -506,6 +507,9 @@ OrcAxe=FellCleave.SteelCyclone.ShoulderTackle.BattleDance
 ArcaneDollParts=Meltdown.Blitzstrahl.GravityField.Panzerfaust.Typhoon
 ArcanaPower=DoubleRay.MysteriousLight.Spinning_Attack
 CuccoBeak=SwarmAttack
+Sahagin_Fin=SpinningFin.HydroShot.HydroBall
+Sahagin_Spear=SpinningFin.HydroShot.HydroBall.Jump
+MosquitoBite=MosquitoBite
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -4331,6 +4335,39 @@ Cost=0
 Magic=Yes
 stat=int
 
+[SpinningFin]
+Type=AOE
+StatusType=stun
+TP=10
+Desc=charges up energy and then sends a wave of energy from its fin strong enough to hit everyone!
+BasePower=5
+Element=water
+magic=no
+cost=0
+stat=str
+
+[HydroShot]
+Type=Single
+TP=10
+Desc=spits out a jet of water at %enemy $+ !
+BasePower=20
+Element=water
+magic=no
+cost=0
+stat=str
+
+[HydroBall]
+Type=Single
+TP=10
+Desc=creates a large ball of water and throws it at %enemy $+ !
+BasePower=15
+Element=water
+magic=no
+cost=0
+stat=str
+DestroyShadows=2
+Status=StrengthDown
+
 [Sweep]
 Type=AOE
 StatusType=stun
@@ -4896,6 +4933,17 @@ Element=water
 Cost=0
 Magic=no
 stat=str
+
+[MosquitoBite]
+Type=Single
+TP=1
+Desc=latches onto %enemy and attempts to suck out some blood before flying back away
+BasePower=50
+Element=none
+Cost=0
+Magic=no
+absorb=yes
+stat=spd
 
 [BloodSaber]
 Type=AOE

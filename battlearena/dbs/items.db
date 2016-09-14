@@ -2713,6 +2713,12 @@ Desc=This orichalcum ingot from the Near East is deep brown in color.
 Currency=AlliedNotes
 ConquestItem=true
 
+[Mythril]
+type=misc
+cost=0
+SellPrice=5000
+Desc=A small chunk of glowing mythril.
+
 [JewelOfArdor]
 type=misc
 cost=1500

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 07/01/16
+;;;; Last updated: 09/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -185,6 +185,7 @@ alias ai_turn {
     if (%ai.target = $null) { echo -a target null | set %ai.action taunt }
     else { $attack_cmd($1, %ai.target) | halt }
   }
+
 
   if (%ai.action = taunt) { set %taunt.action true | $ai_gettarget($1) | $taunt($1 , %ai.target) | halt } 
   if (%ai.action = flee) { $ai.flee($1) | halt }
@@ -761,7 +762,7 @@ alias ai_skillcheck {
   }
 
   if ($readini($char($1), skills, Singing) >= 1) { 
-    if ($readini($char($1), battle, tp) >= 200) { %ai.skilllist = $addtok(%ai.skilllist, singing, 46) } 
+    if ($readini($char($1), status, curse) = no) { %ai.skilllist = $addtok(%ai.skilllist, singing, 46) } 
   }
 
 }

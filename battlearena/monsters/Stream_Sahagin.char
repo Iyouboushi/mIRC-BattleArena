@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=110
+Hp=120
 Tp=200
 Str=10
-Def=8
-Int=20
-Spd=9
+Def=9
+Int=5
+Spd=12
 IgnitionGauge=2
-Name=Yagudo Conductor
+Name=Stream Sahagin
 
 [Battle]
-Hp=110
+Hp=120
 Tp=200
 Str=10
-Def=8
-Int=20
-Spd=9
+Def=9
+Int=5
+Spd=12
 IgnitionGauge=2
 Status=alive
 
@@ -29,7 +29,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a large feathered bird standing at an impressive 5'8" tall.  It carries an array of instruments and is wearing a black and red dogi that fits its massive feathery body.
+Char=is a medium sized amphibious beastman. It is carrying instruments and has a large blue fin.
 Rage=screams in rage 
 
 [Stuff]
@@ -39,7 +39,7 @@ ShopLevel=1.0
 drops=BeastmenSeal
 
 [monster]
-type=yagudo
+type=sahagin
 size=medium
 class=brd
 
@@ -89,16 +89,16 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=yagudo_fists
-yagudo_fists=$current.battlestreak
+Equipped=sahagin_fin
+sahagin_fin=$current.battlestreak
 
 [Skills]
 singing=1
 
 [Techniques]
-Sweep=$current.battlestreak
-DoubleKick=$current.battlestreak
-FeatherStorm=$current.battlestreak
+SpinningFin=$current.battlestreak
+HydroShot=$current.battlestreak
+HydroBall=$current.battlestreak
 
 [songs]
 Knight'sMinne=1
@@ -113,13 +113,13 @@ Flute=1
 Ocarina=1
 
 [modifiers]
-Heal=none
+Heal=water
 Earth=100
 Fire=100
 Wind=100
-Water=100
-Ice=120
-Lightning=100
+Water=200
+Ice=100
+Lightning=110
 Light=100
 Dark=100
 HandToHand=100
