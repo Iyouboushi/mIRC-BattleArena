@@ -14,62 +14,65 @@ A full in-depth guide with commands and more in-depth information can be found o
 
 ## SETUP
 
-Getting it set up is easy assuming you unpack the zip in a good location on your computer.
+Getting it set up is easy.
 
- 1. Do a CLEAN install to C:\BattleArena\  with the complete zip package of the bot (either from this repository or from my website).
- 2. Patch the bot to the latest versions if there are any patches. Don't skip versions unless I specifically say it's all right.  ALSO NOTE: DO NOT HAVE THE BOT RUNNING WHEN YOU APPLY PATCHES!
- 3. Run the mirc.exe included with Complete Package.
- 4. The bot will attempt to help you get things set up.  Set the bot owner's nick and the IRC channel you wish to game in.  Be sure to set a password for the bot that you'll register to nickserv with.
- 5. (as with all mIRC programs) change the nickname and add a server
- 6. Connect.
- 7. Using another IRC connection as the bot owner's nick, use !new char (nick) without the () to get the character creation process started.
- 8. Follow what the bot tells you to do.  Be sure to check out guide - player's guide.txt or the game's Wiki (http://battlearena.heliohost.org/doku.php?id=start) as well.
+ 1. Clone this repository or download the ZIP.  If you download the zip, unzip it into a folder of your choice (I recommend C:\BattleArena)
+ 2. Run the mirc.exe that is included.
+ 3. The bot will attempt to help you get things set up.  Set the bot owner's nick and the IRC channel you wish to game in.  Be sure to set a password for the bot that you'll register to nickserv with.
+ 4. (as with all mIRC programs) change the nickname and add a server
+ 5. Connect.
+ 6. Using another IRC connection as the bot owner's nick, use !new char (nick) without the () to get the character creation process started.
+ 7. Follow what the bot tells you to do.  Be sure to check out guide - player's guide.txt or the game's Wiki (http://battlearena.heliohost.org/doku.php?id=start) as well.
 
 Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended to make life simple.
 
    
 ## WHAT'S NEW?
 
-If you have used this bot before and are updating you may be wondering what all has changed.  Well, the versions.txt in the documentation folder has a full list of changes. Listed below are some of the main highlights since version 3.0.1. 
+If you have used this bot before and are updating you may be wondering what all has changed.  Well, the versions.txt in the documentation folder has a full list of changes. Listed below are some of the main highlights since version 3.1. 
 
 ADDITIONS:
-* Added Dungeons! Players can obtain keys and start special dungeon battles that take them through a zone full of monsters and bosses.
-* Added Dragon Hunting.  Dragons can spawn and create lairs around the land and players need to hunt them down.
-* Added Torment Battles, which is basically the endgame of the bot.
-* Re-Added nearly every battle formula the bot has had since its inception. This can be toggled by bot owners to pick the one they like the most.
-* Added more armor, items and new portal battles for everyone to enjoy
-* Added new system.dat flags
-* Added new bot admin commands
-* Added new monster/boss flags
+* Added the Supply Run type battle. In this battle type players need to protect a wagon against a wave of monsters.
+* Added new augments
+* Added new monsters and new monster dynamic names
+* Added new enhancement point shop items/skills
+* Added new items
+* Added new achievements
+* Added new Torment levels to challenge players
+* Added new dungeons
 
 CHANGES:
-* Changed PVP battles so that they can be level capped
-* Changed the way the shop works with upgrading weapons to allow +weapon level items to be of use
-* Changed the way HP healing items work so that it's a percent of a target's max HP
-* Changed summons and clones so that outside of portal battles they are skipped on the first turn they're used
-* Changed the armor equip command so that players do not need to !unequip armor before !equip armor
-* Changed the way the bot displays certain things
+* Changed the max number of access-controlled characters players can enter into battle
+* Changed portal battles to make it easier for everyone to get a drop
+* Changed the amount of HP monsters have
+* Changed the way the bot displays the weather changes so that it's customizeable by bot owners
+* Changed maximum amounts of certain skills and styles for players who use Final Getsuga and are reset
+* Changed what !items displays and moved several other item types to their own commands
+* Changed alchemy so that it is now possible to craft weapons directly
+* Changed armor so that it no longer adds the stats directly to the player's file (except HP and TP)
+* Changed armor so that it no longer affects players' levels
+* Changed a few things with dragon hunting for when players' average level hits a certain amount
+* Changed capacity point gain rate to be increased by the number of achievements the player has
+* Changed the dynamic naming system slightly
 
 FIXES:
-* Fixed errors with !misc info and !view-info
-* Fixed errors with the enhancement point shop
-* Fixed a bug with AI vs AI battles
-* Fixed a bug with !flee not counting the number of times fled properly
-* Fixed a bug in which provoked NPCs may try to attack dead targets that have been erased due to multiple waves
-* Fixed a bug in which player clones would die if they were summoned before a no-trust or no-npc portal battle happened
-* Fixed a bug in which NPCs who had mechs would try to use them in no-mech battlefield conditions.
-* Fixed a bug with en-spells counting towards the elemental spell totals in misc info when they shouldn't have been
-* Fixed an issue with !view-info and the pokeball summon item
-* Fixed an issue with %enemy in a provoke skill description not showing the right name
-* Fixed an issue with "Conserve TP" showing up in both status and skill lists.  It should only be in skills now.
-* Fixed an issue where a person who was asleep would still get an extra turn occasionally
-* Fixed an issue with charm not wearing off immediately if the charmer was erased due to multiple wave
-* Fixed an issue with berserker NPCs 
+* Fixed a bug with Stoneskin in the enhancement shop
+* Fixed a bug with AI in dungeons
+* Fixed a bug with clones being able to use items
+* Fixed a bug in which enhancement skills (0 cost) would show up in !shop list skills
+* Fixed a bug where using !misc items multiple times would cause duplicates to show up
+* Fixed a bug where NPCs/trusts could survive no-npc/no-trust battle conditions on uncapped portals
+* Fixed a bug where it was possible to get infinite HP while using an ignition
+* Fixed a bug that was preventing accessories with more than one type working correctly.
+* Fixed a bug with the techonly AI types
+* Fixed two bugs with the Predator fight
+* Fixed an issue where certain battle types could override mimic battles
+* Fixed an issue with absorb inside of dungeons and torment
+* Fixed an issue with clones being able to use skills multiple times without a cooldown
+* Fixed a description issue with ToxicMelody
 
 REMOVALS:
-* Removed the elements from NPC weapons
-* Removed attack_Aettir.txt, and attack_ChatoyantStaff.txt as they are no longer needed
-* Removed Elder Dragons (replaced by the Dragon Hunt system)
+* Removed certain monsters (their names have been added to dynamic naming lists)
 
 Again, this IS NOT everything. Be sure to read the versions.txt in the documentation folder for a full list of everything as the list is quite extensive.
 
@@ -91,3 +94,5 @@ These are people who have helped me by helping me test, making monsters/weapons/
 * Pangaea from my forum
 * Anthrax from my forum
 * Karman from my forum
+* Pentium320 from Esper.net
+* baracouda from Esper.net

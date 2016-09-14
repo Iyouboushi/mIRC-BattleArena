@@ -37,9 +37,13 @@ EnableChests=true
 MaxCharacters=2
 ShowOrbsCmdInChannel=true
 ShowDiscountMessage=false
+DisplayHealthBars=false
+EnableFirstRoundProtection=true
 EnableBattlefieldEvents=true
+EnableFoodOnOthers=true
 IgnoreDmgCap=false
 AllowSpiritOfHero=true
+MaxIdleTurns=2
 GuaranteedBossBattles=10.15.20.30.60.100.150.180.220.280.320.350.401.440.460.501.560.601.670.705.780.810.890.920.999.1100.1199.1260.1305.1464.1500.1650.1720.1880.1999.2050.2250.9999
 MaxNumberOfMonsInBattle=6
 ScoreBoardType=2
@@ -75,6 +79,7 @@ EnableCrystalWarrior=true
 EnablePresidentKidnapping=true
 EnablePirates=true
 EnableDinosaurs=true
+EnableRandomEvents=true
 AllowDemonwall=yes
 AllowWallOfFlesh=yes
 MaxDemonWallTurns=10
@@ -147,4 +152,4 @@ current.item=NewsOrb
 minimumBid=200
 
 [version]
-SystemDatVersion=030116
+SystemDatVersion=091416

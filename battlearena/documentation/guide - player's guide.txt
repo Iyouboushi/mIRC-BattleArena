@@ -581,7 +581,7 @@ Spirit of the Hero 	Automatically applies if the player's level is a certain amo
 
 
 SKILLS
-** As of Feb 25, 2015.
+** As of September 14, 2016.
 
 There are four types of skills in this bot: Passive Skills that are always on, Active Skills that have commands, Resists that help you resist against various status types found in the bot and Killer Traits that help you deal more melee damage to certain monster families.  Each skill has a maximum level that you can obtain in it. Some active skills can only be used once every certain number of minutes.  Of course you must first purchase the skills in the shop before you can use them.
 
@@ -669,6 +669,9 @@ This skill will increase the odds of players getting a spoil after killing a mon
 
 Demolitions
 This skill will enhance bomb attack items (such as dynamite, holy hand grenade, bomb fragment) by 4% per skill level, up to 40% max. This skill is obtained via enhancement points.
+
+Overwhelm
+This skill will increase overall damage against monsters by 2% per skill level
 
 
 Active Skills
@@ -833,7 +836,7 @@ Slime-Killer
 
 
 ITEM LIST
-** As of Nov 18, 2015.
+** As of September 14, 2016.
 
 There's a bunch of different types of items in the bot currently:  Healing Items, Battle Items, Consumable (Skill) Items, +Stat Items, Summon Items, Shop Level Reducing Items, Gems, Keys, Accessories, Trust Items, Portal Items, Ammo and Misc (Crafting) items. Here's a list of each.
 
@@ -931,6 +934,22 @@ This item will inflict roughly 1500 damage to a single target.
 
 RottingMeat - Portal Boss Drop
 This item will attempt to inflict poison onto a target.
+
+Coffee - Cannot be bought
+This item will attempt to inflict speed-up onto a target
+
+C4 - Cannot be bought
+This item will inflict roughly 300 damage to a single target
+
+Flash_Grenade - Cannot be bought
+Attempts to inflict the blind status to all targets on a battlefield
+
+PoisonPotion - 2500 orbs with the Battle Merchant
+Attempts to inflict the poison status onto a target
+
+Dark-Matter - Cannot be bought
+A strange cube that is pure black in color. Not much else is known about the item. 
+
 
 
 +Stat Items
@@ -1253,10 +1272,19 @@ AlphaWeltallCore
 SilverPointsCard
 SilverSeal
 DragonScale
+Trash
+AntlionMandible
+Mythril
 LifeShard
 ArcaneDust
 ReusablePart
 ForgottenSoul
+Clom'sTale-01
+Clom'sTale-02
+Clom'sTale-03
+Clom'sTale-04
+Clom'sTale-05
+Clom'sTale-06 
 
 
 Potion Effect Items
@@ -1362,6 +1390,15 @@ TormentOrb8
 TormentOrb9
 TormentOrb10
 TormentOrb11
+TormentOrb12
+TormentOrb13
+TormentOrb14
+TormentOrb15
+TormentOrb20
+TormentOrb25
+TormentOrb30
+AnguishOrb
+MiseryOrb
 
 
 Songsheets
@@ -1479,6 +1516,23 @@ LargeTitaniteChunk
 TitaniteSlab 	
 LargeTitaniteSlab 	
 StrangeTitaniteSlab 
+
+
+Trading Cards
+Gotta collect them all!
+
+TradingCard-001
+TradingCard-002
+TradingCard-003
+TradingCard-004
+TradingCard-005
+TradingCard-006
+TradingCard-007
+TradingCard-008
+TradingCard-009
+TradingCard-010
+TradingCard-011
+TradingCard-012
 
 
 ACCESSORIES
@@ -1696,8 +1750,10 @@ These are the dungeons found within the Battle Arena.
 
 Dungeon Name 		Dungeon Item 	Dungeon Level 	# of Players Needed
 Tam-Tara Deepcroft 	TamTaraKey 	15 		3
+Antlion's Den		AntlionKey	20		3
 Haukke Manor 		HaukkeManorKey 	50 		4
 The Pyramid of Kan-ra 	Kan-raHand 	100 		3 
+The Tomb of Terror 	TerrorKey 	1000 		1
 
 
 DRAGON HUNTING
@@ -1733,7 +1789,7 @@ HOW TO ENTER
 
 To enter a Torment Battle a player needs a Torment Orb. Currently there are 11 orbs (TormentOrb1, TormentOrb2, etc) and each one increases the Torment Level by 1. Each level represents level 500, so a Torment Orb 2 is level 1000 monsters inside the battle. A Orb 5 is level 2500 and a level 10 is 5000.
 
-In order to craft a Torment Orb there are only two items needed in addition to a diamond gem: 1 gold key and x number of Death'sBreath. The number of Death's Breath needed is the level of the orb you want to craft, up to 10. So a TormentOrb1 needs Death'sBreath x1 while a TormentOrb10 needs Death'sBreath x10. Anything higher than TormentOrb10 still only requires 10 Death'sBreath.
+In order to craft a Torment Orb there are only two items needed in addition to a diamond gem: 1 gold key and x number of Death'sBreath. The number of Death's Breath needed is the level of the orb you want to craft, up to 5. So a TormentOrb1 needs Death'sBreath x1 while a TormentOrb10 needs Death'sBreath x5. Anything higher than TormentOrb10 still only requires 5 Death'sBreath.
 
 Once you have the orb a player can use it outside of battle but be warned that using it will instantly destroy the orb even if no one actually enters the battle.
 
@@ -1769,8 +1825,29 @@ These items are what is used to craft the actual rewards for doing Torment.
 TORMENT RECIPES
 These are the special items that can be crafted using the items from the Horadric Cache. For more information on these, use !view-info alchemy itemname in-game.
 
-ExtremeTitaniteSlab 	Blueprints: Excalibur+1 	Blueprints:Valmanway+1
-Hero'sWorth 		Jedi'sTreasure 	
+Weapons and Items
+------------------
+ExtremeTitaniteSlab 		Blueprints: Excalibur+1 Blueprints:Valmanway+1
+Blueprints: Glyphs+1 		Blueprints:Z-Sword+1 	Blueprints:Aegis
+Blueprints:Ochain 		Blueprints:Spharai+1 	Blueprints:Apocalypse+1
+Blueprints:Ragnarok+1 		Blueprints:Laevatein+1 	Blueprints:BahamutsStaff+1
+Blueprints:Vampire_Killer+1 	Blueprints:DemonWhip+1 	Blueprints:Ryunohige+1
+Blueprints:CompoundBow+1 	Blueprints:Bravura+1 	Blueprints:Guttler+1
+Blueprints:Mandau+1 		Blueprints:Kikoku+1 	Blueprints:Kannagi+1
+Blueprints:Daedalus+1 		Blueprints:Seveneyes 	Blueprints:Thunderclap
+Blueprints:Mastermune 		Hero'sWorth 		Jedi'sTreasure
+
+Armor
+------------------
+ValorCoronet 	KasugaKabuto 	HattoriZukin
+ArchmagePetasos AnkusaHelm 	ValorSurcoat
+KasugaDomaru 	HattoriNingi 	ArchmageCoat
+AnkusaJackcoat 	ValorGauntlets 	KasugaKote
+HattoriTekko 	ArchmageGloves 	AnkusaGloves
+Valorcuisses 	KasugaHaidate 	HattoriHakama
+ArchmageTonban 	AnkusaTrousers 	ValorSabatons
+KasugaSune-Ate 	HattoriKyahan 	ArchmageSabots
+AnkusaGaiters 		
 
 
 IGNITIONS

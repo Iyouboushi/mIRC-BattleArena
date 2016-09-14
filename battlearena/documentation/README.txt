@@ -49,25 +49,22 @@ just as a way to basically kill some boredom.  There is no ultimate goal to obta
 \_______________________________________________________________________/
 
 
-Getting it set up is easy this time around assuming you unpack the zip in a good location on
+Getting it set up is easy assuming you unpack the zip in a good location on
 your computer.  
 
 
 SETUP:
 
- 1. Do a CLEAN install to C:\BattleArena\  with the complete zip package of the bot.
- 2. Patch the bot to the latest versions if there are any patches.
-    don't skip versions unless I specifically say it's all right.  
-    ALSO NOTE: DO NOT HAVE THE BOT RUNNING WHEN YOU APPLY PATCHES!
- 3. Run the mirc.exe included with Complete Package.
- 4. The bot will attempt to help you get things set up.  Set the
-    bot owner's nick and the IRC channel you wish to game in.  Be sure to set a 
-    password for the bot that you'll register to nickserv with.
- 5. (as with all mIRC programs) change the nickname and add a server
- 6. Connect.
- 7. Using another IRC connection as the bot owner's nick, use !new char (nick)
+ 1. Unzip the bot into a folder. I recommend C:\BattleArena\ just to make it easy
+ 2. Run the mIRC.exe that is included
+ 3. The bot will attempt to help you get things set up.  Set the bot owner's nick 
+    and the IRC channel you wish to game in.  Be sure to set a password for the bot 
+    that you'll register to nickserv with.
+ 4. (as with all mIRC programs) change the nickname and add a server
+ 5. Connect.
+ 6. Using another IRC connection as the bot owner's nick, use !new char (nick)
     without the () to get the character creation process started.
- 8. Follow what the bot tells you to do.  Be sure to check out player_guide.txt as well.
+ 7. Follow what the bot tells you to do.  Be sure to check out player_guide.txt as well.
 
 
 Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended.
@@ -106,8 +103,14 @@ a second accessory slot with 10 enhancement points.
 This style will allow players to use !wrestle on a target to do damage and attempt to
 inflict stun. This style also increases damage done with HandToHand weapons.
 
-* Added two new dungeons
+* Added new dungeons
 Added the level 20 dungeon: Antlion's Den and the level 1000 dungeon: Tomb of Terror
+
+* Added new Torment levels
+Several new torment levels have been added to challenge players.
+
+* Added Ammo
+Several new weapons now require special ammo in order to use.
 
 Changes:
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
@@ -131,6 +134,8 @@ Changes:
 - Changed the way the bot displays the weather changes so that it's customizeable by bot owners
 - Changed the code for alchemy so that it is now possible to craft weapons directly
 - Changed the code for the auction house so that is is now possible to bid on weapons directly
+- Changed the dragonballs so that Shenron's Wish has to be activated with a command: !dragonballs summon
+
 
 Fixes:
 - Fixed a bug with Stoneskin in the enhancement shop
@@ -141,6 +146,8 @@ Fixes:
 - Fixed a bug in which enhancement skills (0 cost) would show up in !shop list skills
 - Fixed a bug where using !misc items multiple times would cause duplicates to show up
 - Fixed a bug where NPCs/trusts could survive no-npc/no-trust battle conditions on uncapped portals
+- Fixed a bug that was preventing accessories with more than one type working correctly.
+- Fixed a bug with the techonly AI types
 - Fixed an issue where certain battle types could override mimic battles
 - Fixed an issue where portal items were being cut off
 - Fixed an issue with absorb inside of dungeons and torment
@@ -148,6 +155,7 @@ Fixes:
 - Fixed a potential issue with certain items in the shop being cut off if there's too many
 - Fixed a typo with Shenron's Wish
 - Fixed a description issue with ToxicMelody
+
 
 
 Again, this isn't everything. Be sure to read the versions.txt in the documentation folder for a full 

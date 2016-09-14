@@ -204,8 +204,16 @@ If set to false this setting will stop players from using the !save difficulty c
 
 AllowAuctionHouseTopicChange=
 If set to true, the bot will attempt to change the channel's topic with the current Auction House item.
-  
 
+DisplayHealthBars=
+Displays health bars instead of "Perfect" "Injured Badly" etc on the turn message. Set to false by default.
+
+EnableFirstRoundProtection=
+If set to true then monsters will deal reduced damage to players on the first round of combat. It's set to true by default.
+
+MaxIdleTurns=
+This is how many turns a player can idle before booted out of combat. Set to 2 by default.
+  
 
 [PlayerLevelCaps]
 This section controls what level the players are capped when they fight in various special battles. This only affects the players if they are above the level set here.

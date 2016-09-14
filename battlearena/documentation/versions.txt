@@ -1536,6 +1536,7 @@ Battle Arena Bot VERSIONS
 - Changed torment drops so that players will only receive them from torments if they survive the battle
 - Changed AI vs AI battles so that after 100 turns darkness will happen
 - Changed the dragonballs so that Shenron's Wish has to be activated with a command: !dragonballs summon
+- Changed the dynamic naming system slightly 
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
