@@ -21,7 +21,7 @@ Getting it set up is easy.
  3. The bot will attempt to help you get things set up.  Set the bot owner's nick and the IRC channel you wish to game in.  Be sure to set a password for the bot that you'll register to nickserv with.
  4. (as with all mIRC programs) change the nickname and add a server
  5. Connect.
- 6. Using another IRC connection as the bot owner's nick, use !new char (nick) without the () to get the character creation process started.
+ 6. Using another IRC connection as the bot owner's nick, join the game channel you set and use !new char (nick) without the () to get the character creation process started.
  7. Follow what the bot tells you to do.  Be sure to check out guide - player's guide.txt or the game's Wiki (http://battlearena.heliohost.org/doku.php?id=start) as well.
 
 Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended to make life simple.
@@ -40,6 +40,8 @@ ADDITIONS:
 * Added new achievements
 * Added new Torment levels to challenge players
 * Added new dungeons
+* Added the ability for players to obtain a second accessory slot
+* Added a new (optional) battle system that uses Action Points to perform actions.
 
 CHANGES:
 * Changed the max number of access-controlled characters players can enter into battle
