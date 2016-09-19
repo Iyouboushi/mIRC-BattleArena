@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/09/16
+;;;; Last updated: 09/19/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1324,6 +1324,46 @@ alias remove.armor {
   if ($3 != ignore) { $display.message($readini(translation.dat, system, RemovedArmor), global) }
 
   unset %item.location | unset %worn.item
+}
+
+; ==================================================
+; Gearset commands
+; !gearset set/equip #
+; ==================================================
+on 3:TEXT:!gearset:*: {  
+  if ($3 !isnum) { echo -a give error message | halt }
+  if ($3 > 2) { echo -a give error message | halt }
+  if ($2 = set) { $gearset.set($nick, $3) }
+  if (($2 = equip) || ($2 = wear)) { $gearset.equip($nick, $3) }
+}
+
+alias gearset.set {
+  ; $1 = the person we're setting a gearset for
+  ; $2 = the gearset number
+
+  ; to do: copy the INI of the current [equipment] section to a gearset (1 or 2)
+
+  ; Display a successful message that it's been copied.
+}
+
+alias gearset.equip {
+  $1 = the person
+  $2 = the gearset number
+
+  ; If battle is on, we can't change our armor
+
+  ; Check to see if the gearset number exists
+
+  ; Copy the equipment over to the [equipment]
+
+  ; Check each armor piece to make sure the person still owns it. 
+  ; If the armor is not found, set it to "nothing"
+  var %armor.not.found false
+
+  ; Display message.  If armor was changed display a different message
+
+  if (%armor.not.found = true) { }
+  else { }
 }
 
 ; ==================================================
