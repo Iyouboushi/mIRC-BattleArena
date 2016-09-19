@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/14/16
+;;;; Last updated: 09/19/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -390,6 +390,30 @@ return_percentofvalue {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return_differenceof {
   return $calc($1 - $2)
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Copies an ini 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+copyini {
+  ; $1 = person
+  ; $2 = name of the ini section we're copying
+  ; $3 = the new name of the ini section we're copying to
+  ; For example: $copyini(Iyouboushi, equipment, gearset1)
+
+  var %number.of.ini.items $ini($char($1), $2, 0) | var %current.ini.item.num 1
+  while (%current.ini.item.num <= %number.of.ini.items) { 
+
+    ; get ini item
+    var %current.ini.item $ini($char($1), $2, %current.ini.item.num)
+    var %current.ini.value $readini($char($1), np, $2, %current.ini.item)
+
+    ; Copy the ini item
+    writeini $char($1) $3 %current.ini.item %current.ini.value
+
+    inc %current.ini.item.num
+  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
