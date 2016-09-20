@@ -259,6 +259,12 @@ BountyPlaced=$chr(3) $+ 7 $+ * 2The Allied Forces HQ have placed a bounty on 
 BountyClaimed=$chr(3) $+ 7 $+ * 2 $+ $readini($txtfile(battle2.txt), battleinfo, bountyclaimedby) has defeated a bounty target! An orb bonus has been granted for this battle.
 CurrentBounty=$chr(3) $+ 7 $+ * 2The Allied Forces HQ currently have a bounty on the dreaded4 %bounty.name
 
+; Gearset
+GearsetSuccessful=$chr(3) $+ 3 $+ You have successfully copied your current equipment into gear set $2 $+ . 
+GearsetEquipped=$chr(3) $+ 3 $+ You have successfully changed your equipment to match gear set $2 $+ . 
+GearsetEquippedWithMissing=$chr(3) $+ 3 $+ You have successfully changed your equipment to match gear set $2 4however some pieces of equipment were unable to be worn due to no longer having them in your inventory.
+GearsetView=$chr(3) $+ 3 $+ Gear Set number $2 $+ : [Head $equipment.color(%head.armor) $+ %head.armor $+  3] [Body $equipment.color(%body.armor) $+ %body.armor $+ 3] [Legs $equipment.color(%legs.armor) $+ %legs.armor $+  3] [Feet $equipment.color(%feet.armor) $+ %feet.armor $+  3] [Hands $equipment.color(%hands.armor) $+ %hands.armor $+  3] [Accessory $equipment.color(%accessory1) $+ %accessory1 $+  3] $iif(%accessory2 != $null, [Accessory2 $equipment.color(%accessory2) $+ %accessory2 $+  3])
+
 ; Bot Admin Toggle Messages
 AutomatedBattleOn=$chr(3) $+ 4 $+ The Automated Battle System has been turned on.
 AutomatedBattleOff=$chr(3) $+ 4 $+ The Automated Battle System has been turned off.
@@ -304,8 +310,6 @@ BattleSystemTypeTurn=$chr(3) $+ 4 $+ The Battle System Type has been changed to
 BattleSystemTypeAction=$chr(3) $+ 4 $+ The Battle System Type has been changed to Action System
 FirstRoundProtectionOff=$chr(3) $+ 4 $+ First Round Protection has been turned on
 FirstRoundProtectionOn=$chr(3) $+ 4 $+ First Round Protection has been turned off
-
-
 DragonHunt.ListDragons=$chr(3) $+ 2 $+ The following dragons are still hiding in their lairs across the land
 DragonHunt.CreatedDragon=$chr(3) $+ 4 $+ People all over the land have reported seeing the fearsome dragon %dragonhunt.name creating a lair! It is up to the heroes to locate the lair and destroy the terrible beast.
 DragonHunt.BeginHunt=$chr(3) $+ 12 $+ $get_chr_name($2) 4has discovered the lair of the fearsome dragon known as12 %dragonhunt.name $+ 4! A raiding party has been set up to put an end to the beast. To join the party type 12!enter4 now! The raiding party will depart in12 $duration(%time.to.enter) $+ 4. [This is a level12 $dragonhunt.dragonage(%dragonhunt.file.name) 4battle. Anyone more than 5 levels over will be level synced.]
@@ -604,6 +608,8 @@ Can'tWearSecondOfSameAccessoryType=$chr(3) $+ 4 $+ Error: $get_chr_name($1) ca
 CanOnlyUseSummonOrDoppel=$chr(3) $+ 4 $+ Error: $get_chr_name($1) can only use a shadow clone or a summon. Not both.
 NeedAmmoToDoThis=$chr(3) $+ 4 $+ Error: $get_chr_name($1) needs more ammo ( $+ %weapon.ammo.amount x %weapon.ammo $+ ) to perform this action.
 DungeonUsageNotReady=$chr(3) $+ 4 $+ %real.name $+  still has $duration($calc(%dungeon.time.setting - %time.difference)) before being able to lead a party into a dungeon.
+GearsetError=$chr(3) $+ 4 $+ Error: To set a gear set use !gearset set [1-3] or to equip a gear set use !gearset equip [1-3] and to view what you have set use !gearset view [1-3] and remember to remove the [] around the number.
+GearsetNumberDoesNotExist=$chr(3) $+ 4 $+ Error: That gear set number does not exist and cannot be equipped.
 
 =======================
 Battle Related Messages

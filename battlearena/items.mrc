@@ -1330,40 +1330,101 @@ alias remove.armor {
 ; Gearset commands
 ; !gearset set/equip #
 ; ==================================================
-on 3:TEXT:!gearset:*: {  
-  if ($3 !isnum) { echo -a give error message | halt }
-  if ($3 > 2) { echo -a give error message | halt }
+on 3:TEXT:!gearset*:*: {  
+  if (($3 !isnum) || (. isin $3)) { $display.message($readini(translation.dat, errors, GearsetError), private) |  halt }
+  if (($3 > 3) || ($3 <= 0)) { $display.message($readini(translation.dat, errors, GearsetError), private) |  halt }
   if ($2 = set) { $gearset.set($nick, $3) }
   if (($2 = equip) || ($2 = wear)) { $gearset.equip($nick, $3) }
+  if ($2 = view) { $gearset.view($nick, $3) }
+}
+
+alias gearset.view { 
+  ; $1 = the person
+  ; $2 = the gearset number
+
+  ; Check to see if the gearset number exists
+  if ($readini($char($1), Gearset $+ $2, body) = $null) { $display.private.message2($1,$readini(translation.dat, errors, GearsetNumberDoesNotExist)) | halt }
+
+  var %head.armor $readini($char($1), Gearset $+ $2, head)
+  var %body.armor $readini($char($1), Gearset $+ $2, body)
+  var %legs.armor $readini($char($1), Gearset $+ $2, legs)
+  var %feet.armor $readini($char($1), Gearset $+ $2, feet)
+  var %hands.armor $readini($char($1), Gearset $+ $2, hands)
+  var %accessory1 $readini($char($1), Gearset $+ $2, accessory)
+  var %accessory2 $readini($char($1), Gearset $+ $2, accessory2)
+
+  if (%head.armor = $null) { var %head.armor nothing }
+  if (%body.armor = $null) { var %body.armor nothing }
+  if (%legs.armor = $null) { var %legs.armor nothing }
+  if (%feet.armor = $null) { var %feet.armor nothing }
+  if (%hands.armor = $null) { var %hands.armor nothing }
+  if (%accessory1 = $null) { var %accessory1 nothing }
+
+  ; Display the message
+  $display.private.message2($1, $readini(translation.dat, system, GearsetView))
 }
 
 alias gearset.set {
   ; $1 = the person we're setting a gearset for
   ; $2 = the gearset number
 
-  ; to do: copy the INI of the current [equipment] section to a gearset (1 or 2)
+  ; copy the INI of the current [equipment] section to a gearset (1to 3)
+  $copyini($1, equipment, gearset $+ $2)
 
   ; Display a successful message that it's been copied.
+  $display.private.message2($1, $readini(translation.dat, system, GearsetSuccessful))
 }
 
 alias gearset.equip {
-  $1 = the person
-  $2 = the gearset number
+  ; $1 = the person
+  ; $2 = the gearset number
 
   ; If battle is on, we can't change our armor
+  if ((%battleis = on) && ($1 isin $readini($txtfile(battle2.txt), Battle, List))) { $display.message($readini(translation.dat, errors, CanOnlySwitchArmorOutsideBattle), private) | halt }
 
   ; Check to see if the gearset number exists
+  if ($readini($char($1), Gearset $+ $2, body) = $null) { $display.private.message2($1, $readini(translation.dat, errors, GearsetNumberDoesNotExist)) | halt }
 
   ; Copy the equipment over to the [equipment]
+  $copyini($1, gearset $+ $2, equipment)
 
   ; Check each armor piece to make sure the person still owns it. 
   ; If the armor is not found, set it to "nothing"
   var %armor.not.found false
 
-  ; Display message.  If armor was changed display a different message
+  var %head.armor $readini($char($1), equipment, head)
+  var %body.armor $readini($char($1), equipment, body)
+  var %legs.armor $readini($char($1), equipment, legs)
+  var %feet.armor $readini($char($1), equipment, feet)
+  var %hands.armor $readini($char($1), equipment, hands)
+  var %accessory1 $readini($char($1), equipment, accessory)
+  var %accessory2 $readini($char($1), equipment, accessory2)
 
-  if (%armor.not.found = true) { }
-  else { }
+  if ((%head.armor != nothing) && (%head.armor != $null)) { 
+    if ($item.amount($1, %head.armor) <= 0) { var %armor.not.found true | writeini $char($1) equipment head nothing }
+  }
+  if ((%body.armor != nothing) && (%body.armor != $null)) { 
+    if ($item.amount($1, %body.armor) <= 0) { var %armor.not.found true | writeini $char($1) equipment body nothing }
+  } 
+  if ((%legs.armor != nothing) && (%legs.armor != $null)) { 
+    if ($item.amount($1, %legs.armor) <= 0) { var %armor.not.found true | writeini $char($1) equipment legs nothing }
+  }
+  if ((%feet.armor != nothing) && (%feet.armor != $null)) { 
+    if ($item.amount($1, %feet.armor) <= 0) { var %armor.not.found true | writeini $char($1) equipment feet nothing }
+  }
+  if ((%hands.armor != nothing) && (%hands.armor != $null)) { 
+    if ($item.amount($1, %hands.armor) <= 0) { var %armor.not.found true | writeini $char($1) equipment hands nothing }
+  }
+  if ((%accessory1 != nothing) && (%accessory1 != $null)) { 
+    if ($item.amount($1, %accessory1) <= 0) { var %armor.not.found true | writeini $char($1) equipment accessory nothing }
+  }
+  if ((%accessory2 != nothing) && (%accessory2 != $null)) { 
+    if ($item.amount($1, %accessory2) <= 0) { var %armor.not.found true | writeini $char($1) equipment accessory2 nothing }
+  }
+
+  ; Display message.  If armor was changed display a different message
+  if (%armor.not.found = true) { $display.private.message2($1, $readini(translation.dat, system, GearsetEquippedWithMissing)) }
+  else {  $display.private.message2($1, $readini(translation.dat, system, GearsetEquipped)) }
 }
 
 ; ==================================================
