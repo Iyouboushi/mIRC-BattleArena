@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 02/26/16
+;;;; Last updated: 09/19/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -33,7 +33,7 @@ alias auction.status {
 
 alias auctionhouse.winners { 
   ; $1 = user of the command
-  ; $2 = not used for now, but later will be used to allow you to search through the records
+  ; $2 = a specific auction number
 
   if ($readini(system.dat, system, enableauctionhouse) = false) { $display.private.message($readini(translation.dat, errors, NoAuction)) | halt }
 
@@ -59,6 +59,7 @@ alias auctionhouse.winners {
 
   if ($2 != $null) {
     if ($2 !isnum) { $display.private.message2($1, 4Error: Must input a number) | halt }
+    if ($2 = $readini(system.dat, auctionInfo, numberOfAuctions)) { $display.private.messagee2($1, 4Error: This auction is still live and cannot be checked with this command.) | halt }
 
     var %auction.lines $lines($txtfile(auction_winners.txt)) 
     var %current.line 1
