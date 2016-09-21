@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/19/16
+;;;; Last updated: 09/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1297,12 +1297,17 @@ alias wear.armor {
 
   ; Equip the armor and tell the world
   writeini $char($1) equipment %item.location $2
-  $display.message($readini(translation.dat, system, EquippedArmor), global)
+
+  if ($3 != ignore) {  $display.message($readini(translation.dat, system, EquippedArmor), global) }
 
   unset %current.armor
 }
 
 alias remove.armor {
+  ; $1 = the person
+  ; $2 = the armor name
+  ; $3 = ignore if you don't want the message to be shown
+
   $set_chr_name($1)
   set %item.location $readini($dbfile(equipment.db), $2, EquipLocation)
   set %worn.item $readini($char($1), equipment, %item.location)
@@ -1385,20 +1390,32 @@ alias gearset.equip {
   ; Check to see if the gearset number exists
   if ($readini($char($1), Gearset $+ $2, body) = $null) { $display.private.message2($1, $readini(translation.dat, errors, GearsetNumberDoesNotExist)) | halt }
 
-  ; Copy the equipment over to the [equipment]
-  $copyini($1, gearset $+ $2, equipment)
-
-  ; Check each armor piece to make sure the person still owns it. 
-  ; If the armor is not found, set it to "nothing"
-  var %armor.not.found false
+  ; Silently unequip all armor that is currently equipped (to reduce TP and HP properly)
 
   var %head.armor $readini($char($1), equipment, head)
   var %body.armor $readini($char($1), equipment, body)
   var %legs.armor $readini($char($1), equipment, legs)
   var %feet.armor $readini($char($1), equipment, feet)
   var %hands.armor $readini($char($1), equipment, hands)
-  var %accessory1 $readini($char($1), equipment, accessory)
-  var %accessory2 $readini($char($1), equipment, accessory2)
+
+  if ((%head.armor != nothing) && (%head.armor != $null)) { $remove.armor($1, %head.armor, ignore) }
+  if ((%body.armor != nothing) && (%body.armor != $null)) { $remove.armor($1, %body.armor, ignore) }
+  if ((%legs.armor != nothing) && (%legs.armor != $null)) { $remove.armor($1, %legs.armor, ignore) }
+  if ((%feet.armor != nothing) && (%feet.armor != $null)) { $remove.armor($1, %feet.armor, ignore) }
+  if ((%hands.armor != nothing) && (%hands.armor != $null)) { $remove.armor($1, %hands.armor, ignore) }
+
+  ; Check each armor piece to make sure the person still owns it. 
+  ; If the armor is not found, set it to "nothing"
+  var %armor.not.found false
+
+  ; Set the variables for the armor we're swapping into
+  var %head.armor $readini($char($1), gearset $+ $2, head)
+  var %body.armor $readini($char($1), gearset $+ $2, body)
+  var %legs.armor $readini($char($1), gearset $+ $2, legs)
+  var %feet.armor $readini($char($1), gearset $+ $2, feet)
+  var %hands.armor $readini($char($1), gearset $+ $2, hands)
+  var %accessory1 $readini($char($1), gearset $+ $2, accessory)
+  var %accessory2 $readini($char($1), gearset $+ $2, accessory2)
 
   if ((%head.armor != nothing) && (%head.armor != $null)) { 
     if ($item.amount($1, %head.armor) <= 0) { var %armor.not.found true | writeini $char($1) equipment head nothing }
@@ -1421,6 +1438,13 @@ alias gearset.equip {
   if ((%accessory2 != nothing) && (%accessory2 != $null)) { 
     if ($item.amount($1, %accessory2) <= 0) { var %armor.not.found true | writeini $char($1) equipment accessory2 nothing }
   }
+
+  ; Silently equip armor (to increase TP/HP properly)
+  if ((%head.armor != nothing) && (%head.armor != $null)) { $wear.armor($1, %head.armor, ignore) }
+  if ((%body.armor != nothing) && (%body.armor != $null)) { $wear.armor($1, %body.armor, ignore) }
+  if ((%legs.armor != nothing) && (%legs.armor != $null)) { $wear.armor($1, %legs.armor, ignore) }
+  if ((%feet.armor != nothing) && (%feet.armor != $null)) { $wear.armor($1, %feet.armor, ignore) }
+  if ((%hands.armor != nothing) && (%hands.armor != $null)) { $wear.armor($1, %hands.armor, ignore) }
 
   ; Display message.  If armor was changed display a different message
   if (%armor.not.found = true) { $display.private.message2($1, $readini(translation.dat, system, GearsetEquippedWithMissing)) }
