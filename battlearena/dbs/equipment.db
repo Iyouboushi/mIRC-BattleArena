@@ -3667,6 +3667,57 @@ Legendary=true
 Exclusive=yes
 LevelRequirement=5000
 
+
+[KogaTekko]
+Name=Koga Tekko
+hp=500
+tp=100
+Str=2000
+def=2000
+int=2000
+spd=3000
+Augment=EnhanceSpeed.EnhanceDagger.EnhanceItems.EnhanceCriticalHits.IgnoreDefense.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceElementalDefense.EnhanceDragonHunt
+EquipLocation=Hands
+cost=50
+SellPrice=50
+Legendary=true
+Exclusive=yes
+LevelRequirement=5000
+
+[Spaekona'sGloves]
+Name=Spaekona's Gloves
+hp=500
+tp=100
+Str=2000
+def=2000
+int=3000
+spd=2000
+Augment=MagicBonus.CuringBonus.EnhanceEnfeeble.EnhanceWand.EnhanceStaff.EnhanceGlyph.EnhanceBloodSpirit.IgnoreDefense.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceElementalDefense.EnhanceDragonHunt
+EquipLocation=Hands
+cost=50
+SellPrice=50
+Legendary=true
+Exclusive=yes
+LevelRequirement=5000
+
+[TotemicGloves]
+Name=Totemic Gloves
+hp=500
+tp=100
+Str=2000
+def=2000
+int=2500
+spd=2500
+Augment=EnhanceSummons.EnhanceBloodPact.EnhanceStaff.EnhanceWhip.EnhanceAxe.IgnoreDefense.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceElementalDefense.EnhanceDragonHunt
+EquipLocation=Hands
+cost=50
+SellPrice=50
+Legendary=true
+Exclusive=yes
+LevelRequirement=5000
+
+
+
 =============================
 Monster only armor!
 This armor is going to be 
