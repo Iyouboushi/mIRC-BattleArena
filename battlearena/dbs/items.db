@@ -899,7 +899,6 @@ Type=random
 Desc=pulls out a present and hands it to %enemy $+ , who opens it and finds a %random.item.name inside! Merry XMas!
 SellPrice=7000
 Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 200, 100000, 0)
-SellPrice=50000
 ShopNPC=Santa
 
 [AnniGift]
@@ -3768,7 +3767,7 @@ Cost=500
 SellPrice=200
 Augment=MagicBonus
 EnergyCost=150
-Currency-AlliedNotes
+Currency=AlliedNotes
 Exclusive=yes
 
 [VesselofAnima]
