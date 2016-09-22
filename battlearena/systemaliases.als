@@ -4521,7 +4521,8 @@ dragonhunt.createdragon {
   var %total.player.averagelevel $total.player.averagelevel
 
   if ((%total.player.averagelevel > 500) && (%total.player.averagelevel <= 2000)) { inc %dragon.age $rand(150,300) }
-  if (%total.player.averagelevel > 2000) { inc %dragon.age $rand(400,600) }
+  if ((%total.player.averagelevel > 2000) && (%total.player.averagelevel <= 5000)) { inc %dragon.age $rand(400,600) }
+  if (%total.player.averagelevel > 2000) { inc %dragon.age $rand(700,1200) }
 
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
 

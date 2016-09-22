@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 08/18/16
+;;;; Last updated: 09/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1755,8 +1755,8 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) monster type dragon
   writeini $char(%dragonhunt.file.name) info CanTaunt false
 
-  if ((%dragon.level >= 150) && (%dragon.level <= 300)) { writeini $char($1) monster elite true }
-  if (%dragon.level > 300) { writeini $char($1) monster SuperElite true }
+  if ((%dragon.level >= 150) && (%dragon.level <= 500)) { writeini $char($1) monster elite true }
+  if (%dragon.level > 500) { writeini $char($1) monster SuperElite true }
 
   var %base.hp.tp $round($calc(150 * %dragon.level),0)
   if ($return_playersinbattle >= 3) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
@@ -1799,6 +1799,7 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) skills Resist-Weaponlock 100
   writeini $char(%dragonhunt.file.name) skills Resist-Curse 70
   writeini $char(%dragonhunt.file.name) skills TrueStrike.on on
+  if (%dragon.level >= 800) { writeini $char(%dragonhunt.file.name) desperateblows 1 } 
 
   if ($rand(1,10) <= 3) { writeini $char(%dragonhunt.file.name) skills DoubleTurn.on on }
 
@@ -1806,10 +1807,10 @@ dragonhunt.createfile {
   if (%dragon.element = fire) { writeini $char(%dragonhunt.file.name) skills MightyStrike 1  }
   if (%dragon.element = earth) { writeini $char(%dragonhunt.file.name) skills RoyalGuard 1 }
   if (%dragon.element = ice) { writeini $char(%dragonhunt.file.name) skills ManaWall 1 }
-  if (%dragon.element = wind) { writeini $char(%dragonhunt.file.name) skills Utsusemi 1 | writeini $char(%dragonhunt.file.name) item_amount shihei 10  }
+  if (%dragon.element = wind) { writeini $char(%dragonhunt.file.name) skills Utsusemi 1 | writeini $char(%dragonhunt.file.name) item_amount shihei 10 | writeini $char(%dragonhunt.file.name) utsusemi.on on | writeini $char(%dragonhunt.file.name) utsusemi.shadow $rand(1,3)  }
   if (%dragon.element = water) { writeini $char(%dragonhunt.file.name) skills Sugitekai 1 }
   if (%dragon.element = lightning) { writeini $char(%dragonhunt.file.name) skills WeaponBash 1 }
-  if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) skills Konzen-Ittai 1  }
+  if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) skills Konzen-Ittai 1 | writeini $char(%dragonhunt.file.name) skills shadowcopy 1   }
   if (%dragon.element = light) { writeini $char(%dragonhunt.file.name) skills DrainSamba 1 }
 
   writeini $char(%dragonhunt.file.name) modifiers light 100
