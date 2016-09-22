@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/19/16
+;;;; Last updated: 09/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4520,8 +4520,8 @@ dragonhunt.createdragon {
   var %dragon.age $rand(100,150)
   var %total.player.averagelevel $total.player.averagelevel
 
-  if ((%total.player.averagelevel > 500) && (%total.player.averagelevel <= 1000)) { inc %dragon.age $rand(150,300) }
-  if (%total.player.averagelevel > 10000) { inc %dragon.age $rand(400,600) }
+  if ((%total.player.averagelevel > 500) && (%total.player.averagelevel <= 2000)) { inc %dragon.age $rand(150,300) }
+  if (%total.player.averagelevel > 2000) { inc %dragon.age $rand(400,600) }
 
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
 
