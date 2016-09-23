@@ -2590,6 +2590,7 @@ clear_skills {
   writeini $char($1) skills scavenge.on off | writeini $char($1) skills FormlessStrike.on off | writeini $char($1) skills retaliation.on off
   writeini $char($1) skills truestrike.on off | writeini $char($1) skills PerfectDefense.on off
   remini $char($1) NaturalArmor
+  writeini $char($1) skills bloodboost.on off |  writeini $char($1) skills bloodspirit.on off 
 }
 
 clear_skill_timers {

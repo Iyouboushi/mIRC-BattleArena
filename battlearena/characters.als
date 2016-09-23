@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/14/16
+;;;; Last updated: 09/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -529,7 +529,10 @@ player.skills.list {
   if ($readini($char($1), skills, perfectcounter.on) = on) { $skills_message_check(2Will Perform a Perfect Counter) }
   if ($readini($char($1), skills, FormlessStrike.on) = on) { $skills_message_check(Formless Strikes) }
   if ($readini($char($1), skills, PerfectDefense.on) = on) { $skills_message_check(Perfect Defense) }
-  if ($readini($char($1), skills, drainsamba.on) = on) { $skills_message_check(Drain Samba) }
+  if ($readini($char($1), skills, drainsamba.on) = on) { $skills_message_check(2Drain Samba) }
+  if ($readini($char($1), skills, bloodboost.on) = on) { $skills_message_check(2Blood Boost) }
+  if ($readini($char($1), skills, bloodspirit.on) = on) { $skills_message_check(2Blood Spirit) }
+  if ($readini($char($1), skills, speed.on) = on) { $skills_message_check(2Speed Boost) }
 
   set %cover.target $readini($char($1), skills, CoverTarget)
   if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(2Covered by %cover.target) }

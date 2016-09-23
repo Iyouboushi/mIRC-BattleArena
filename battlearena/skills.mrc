@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 08/01/16
+;;;; Last updated: 09/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -165,9 +165,11 @@ alias skill.speedup { $set_chr_name($1)
   else { set %skill.description $readini($char($1), descriptions, speed) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
+
+  ; ============old method=====================
   ; get spd
-  set %spd.original $readini($char($1), battle, spd)
-  set %spd.current $readini($char($1), battle, spd)
+  var %spd.original $readini($char($1), battle, spd)
+  var %spd.current $readini($char($1), battle, spd)
 
   if (%spd.current > 10000) { set %spd.current $round($calc(10000 + (%spd.original * .01)),0)  }
   if (%spd.current <= 10000) { set %spd.current %spd.original }
@@ -179,24 +181,43 @@ alias skill.speedup { $set_chr_name($1)
     inc %spd.increase $calc(2 + %augment.strength)
   }
 
-  set %percent.increase $return_percentofvalue(%spd.current, %spd.increase)
+  var %percent.increase $skill.speed.calculate($1)
 
   ; increase the spd
   inc %spd.original %percent.increase
-
   writeini $char($1) battle spd %spd.original
+  $display.message(3 $+ %real.name has gained $bytes(%percent.increase,b) Speed!, battle)
+  ; ===========================================
+
 
   ; Toggle the speed-on flag so players can't use it again in the same battle.
   writeini $char($1) skills speed.on on
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction speed
 
-  $display.message(3 $+ %real.name has gained $bytes(%percent.increase,b) Speed!, battle)
-
   unset %spd.increase | unset %spd.current | unset %spd.original
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
+alias skill.speed.calculate {
+  ; Returns the amount of STR that bloodboost gives
+  ; $1 = person we're checking
+
+  var %spd.current $readini($char($1), battle, spd)
+
+  ; Find out the increase amount. 
+  var %spd.increase $readini($char($1), skills, speed)
+  if (%spd.increase = $null) { var %spd.increase 1 }
+
+  if ($augment.check($1, EnhanceSpeed) = true) {
+    inc %spd.increase $calc(2 + %augment.strength)
+  }
+
+  var %percent.increase $return_percentofvalue(%spd.current, %spd.increase) 
+  return %percent.increase
+
 }
 
 ;=================
@@ -1066,7 +1087,7 @@ alias skill.bloodboost { $set_chr_name($1)
   $check_for_battle($1)
 
   ; Has bloodboost been used?
-  if ($readini($char($1), skills, bloodboost.time) != $null) { $display.message($readini(translation.dat, skill, SkillAlreadyUsed), private) | halt }
+  if ($readini($char($1), skills, bloodboost.on) = on) { $display.message($readini(translation.dat, skill, SkillAlreadyUsed), private) | halt }
 
   if ($readini($char($1), info, flag) = $null) { 
     ; Does the char have enough HP to perform it?
@@ -1086,25 +1107,15 @@ alias skill.bloodboost { $set_chr_name($1)
 
   ; write the last used time.
   writeini $char($1) skills bloodboost.time %true.turn
+  writeini $char($1) skills bloodboost.on on
 
-  ; get STR
-  set %str.current $readini($char($1), battle, str)
-
-  ; Find out the increase amount. Bloodmoon increases the amount by a random amount.
-  set %str.increase $calc(2 * $readini($char($1), skills, bloodboost))
-
-  if (%bloodmoon = on) { inc %str.increase $rand(2,5) }
-
-  if ($augment.check($1, EnhanceBloodboost) = true) {
-    inc %str.increase $calc(2 + %augment.strength)
-  }
-
-  set %percent.increase $return_percentofvalue(%str.current, %str.increase)
-
+  ; ============old method=====================
   ; increase the str
-  inc %str.current %percent.increase
+  var %str.current $readini($char($1), battle, str)
+  inc %str.current $skill.bloodboost.calculate($1)
 
   $display.message(3 $+ %real.name has gained $bytes(%percent.increase,b) STR!, battle)  |   writeini $char($1) battle str %str.current
+  ;==========================================
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction bloodboost
 
@@ -1118,6 +1129,26 @@ alias skill.bloodboost { $set_chr_name($1)
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
+alias skill.bloodboost.calculate {
+  ; Returns the amount of STR that bloodboost gives
+  ; $1 = person we're checking
+
+  var %str.current $readini($char($1), battle, str)
+
+  ; Find out the increase amount. Bloodmoon increases the amount by a random amount.
+  var %str.increase $calc(2 * $readini($char($1), skills, bloodboost))
+
+  if (%bloodmoon = on) { inc %str.increase $rand(2,5) }
+
+  if ($augment.check($1, EnhanceBloodboost) = true) {
+    inc %str.increase $calc(2 + %augment.strength)
+  }
+
+  var %percent.increase $return_percentofvalue(%str.current, %str.increase)
+
+  return %percent.increase
 }
 
 ;=================
@@ -1159,27 +1190,19 @@ alias skill.bloodspirit { $set_chr_name($1)
 
   ; write the last used time.
   writeini $char($1) skills bloodspirit.time %true.turn
+  writeini $char($1) skills bloodspirit.on on
 
-  ; get INT
-  set %int.current $readini($char($1), battle, int)
-
-  ; Find out the increase amount. Bloodmoon increases the amount by a random amount.
-  set %int.increase $calc(2 * $readini($char($1), skills, bloodspirit))
-  if (%bloodmoon = on) { inc %int.increase $rand(2,5) }
-
-  if ($augment.check($1, EnhanceBloodSpirit) = true) {
-    inc %int.increase $calc(2 + %augment.strength)
-  }
-
-  set %percent.increase $return_percentofvalue(%int.current, %int.increase)
-
+  ; ============old method=====================
   ; increase the int
-  inc %int.current %percent.increase
+  var %int.current $readini($char($1), battle, int)
+  inc %int.current $skill.bloodspirit.calculate($1)
 
   $display.message(3 $+ %real.name has gained $bytes(%percent.increase,b) INT!, battle)  |   writeini $char($1) battle int %int.current
+  ; ===========================================
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction bloodspirit
 
+  ; Check for achievement.
   var %total.BloodSpirit $readini($char($1), stuff, BloodSpiritTimes) 
   if (%total.BloodSpirit = $null) { var %total.BloodSpirit 0 }
   inc %total.BloodSpirit 1 
@@ -1190,6 +1213,24 @@ alias skill.bloodspirit { $set_chr_name($1)
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
+alias skill.bloodspirit.calculate {
+  ; Returns the amount of STR that bloodboost gives
+  ; $1 = person we're checking
+
+  var %int.current $readini($char($1), battle, int)
+
+  ; Find out the increase amount. Bloodmoon increases the amount by a random amount.
+  var %int.increase $calc(2 * $readini($char($1), skills, bloodspirit))
+  if (%bloodmoon = on) { inc %int.increase $rand(2,5) }
+
+  if ($augment.check($1, EnhanceBloodSpirit) = true) {
+    inc %int.increase $calc(2 + %augment.strength)
+  }
+
+  var %percent.increase $return_percentofvalue(%int.current, %int.increase)
+  return %percent.increase
 }
 
 ;=================
