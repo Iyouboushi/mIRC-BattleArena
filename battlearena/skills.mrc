@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/22/16
+;;;; Last updated: 09/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -165,31 +165,6 @@ alias skill.speedup { $set_chr_name($1)
   else { set %skill.description $readini($char($1), descriptions, speed) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
-
-  ; ============old method=====================
-  ; get spd
-  var %spd.original $readini($char($1), battle, spd)
-  var %spd.current $readini($char($1), battle, spd)
-
-  if (%spd.current > 10000) { set %spd.current $round($calc(10000 + (%spd.original * .01)),0)  }
-  if (%spd.current <= 10000) { set %spd.current %spd.original }
-
-  ; Find out the increase amount. 
-  set %spd.increase $readini($char($1), skills, speed)
-
-  if ($augment.check($1, EnhanceSpeed) = true) {
-    inc %spd.increase $calc(2 + %augment.strength)
-  }
-
-  var %percent.increase $skill.speed.calculate($1)
-
-  ; increase the spd
-  inc %spd.original %percent.increase
-  writeini $char($1) battle spd %spd.original
-  $display.message(3 $+ %real.name has gained $bytes(%percent.increase,b) Speed!, battle)
-  ; ===========================================
-
-
   ; Toggle the speed-on flag so players can't use it again in the same battle.
   writeini $char($1) skills speed.on on
 
@@ -216,8 +191,14 @@ alias skill.speed.calculate {
   }
 
   var %percent.increase $return_percentofvalue(%spd.current, %spd.increase) 
-  return %percent.increase
 
+  return %percent.increase
+}
+
+alias skill.speed.status {
+  ; returns on if on, or off if not
+  if ($readini($char($1), skills, speed.on) = on) { return on }
+  else { return off }
 }
 
 ;=================
@@ -1109,14 +1090,6 @@ alias skill.bloodboost { $set_chr_name($1)
   writeini $char($1) skills bloodboost.time %true.turn
   writeini $char($1) skills bloodboost.on on
 
-  ; ============old method=====================
-  ; increase the str
-  var %str.current $readini($char($1), battle, str)
-  inc %str.current $skill.bloodboost.calculate($1)
-
-  $display.message(3 $+ %real.name has gained $bytes(%percent.increase,b) STR!, battle)  |   writeini $char($1) battle str %str.current
-  ;==========================================
-
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction bloodboost
 
   var %total.bloodboost $readini($char($1), stuff, BloodBoostTimes) 
@@ -1149,6 +1122,12 @@ alias skill.bloodboost.calculate {
   var %percent.increase $return_percentofvalue(%str.current, %str.increase)
 
   return %percent.increase
+}
+
+alias skill.bloodboost.status {
+  ; returns on if on, or off if not
+  if ($readini($char($1), skills, bloodboost.on) = on) { return on }
+  else { return off }
 }
 
 ;=================
@@ -1192,14 +1171,6 @@ alias skill.bloodspirit { $set_chr_name($1)
   writeini $char($1) skills bloodspirit.time %true.turn
   writeini $char($1) skills bloodspirit.on on
 
-  ; ============old method=====================
-  ; increase the int
-  var %int.current $readini($char($1), battle, int)
-  inc %int.current $skill.bloodspirit.calculate($1)
-
-  $display.message(3 $+ %real.name has gained $bytes(%percent.increase,b) INT!, battle)  |   writeini $char($1) battle int %int.current
-  ; ===========================================
-
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction bloodspirit
 
   ; Check for achievement.
@@ -1231,6 +1202,11 @@ alias skill.bloodspirit.calculate {
 
   var %percent.increase $return_percentofvalue(%int.current, %int.increase)
   return %percent.increase
+}
+alias skill.bloodspirit.status {
+  ; returns on if on, or off if not
+  if ($readini($char($1), skills, bloodspirit.on) = on) { return on }
+  else { return off }
 }
 
 ;=================
@@ -2766,6 +2742,9 @@ alias skill.monstersummon {
 
     .copy -o $mon($2) $char(%monster.name)
     writeini $char(%monster.name) Basestats Name %monster.name
+
+    if ($eliteflag.check($1) = true) { writeini $char(%monster.name) Monster Elite true }
+    if ($supereliteflag.check($1) = true) { writeini $char(%monster.name) Monster SuperElite true }
 
     ; Add to battle
     set %curbat $readini($txtfile(battle2.txt), Battle, List)

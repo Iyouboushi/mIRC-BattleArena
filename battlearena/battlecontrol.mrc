@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/12/16
+;;;; Last updated: 09/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1513,6 +1513,8 @@ alias generate_battle_order {
     if (%current.playerstyle = HitenMitsurugi-ryu) {  inc %battle.speed $calc(3 * %current.playerstyle.level)  }
 
     $speed_up_check(%who.battle)
+
+    if ($skill.speed.status(%who.battle) = on) { inc %battle.speed $skill.speed.calculate(%who.battle) }
 
     ; increase action points
     var %action.points $action.points(%who.battle, check)

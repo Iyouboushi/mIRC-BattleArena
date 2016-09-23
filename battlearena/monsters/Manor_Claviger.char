@@ -52,6 +52,7 @@ JustReleaseDefense=90
 [Monster]
 Type=demon
 size=medium
+Elite=true
 
 [Status]
 Poison=no

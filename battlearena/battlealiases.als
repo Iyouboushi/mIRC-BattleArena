@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 08/18/16
+;;;; Last updated: 09/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -629,7 +629,7 @@ boost_monster_stats {
   ; $2 = monstersummon is for the monster summon special skill
   if ($2 = monstersummon) { 
     var %temp.level $get.level($3)
-    var %monster.level $round($calc(%temp.level / 2.2),0)
+    var %monster.level $round($calc(%temp.level / 1.3),0)
     if (%monster.level <= 1) { var %monster.level 2 }
   }
 
@@ -2798,13 +2798,16 @@ trickster_dodge_check {
 
   var %attacker.speed $current.spd($2) 
   inc %attacker.speed $armor.stat($2, spd)
+  if ($skill.speed.status($2) = on) { inc %attacker.speed $skill.speed.calculate($2) }
 
   var %target.speed $current.spd($1)
   inc %target.speed $armor.stat($1, spd)
+  if ($skill.speed.status($1) = on) { inc %target.speed $skill.speed.calculate($1) }
 
   if (%attacker.speed > %target.speed) { inc %dodge.chance $rand(5,10) } 
 
   if ((%battle.type = torment) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(10,15) }
+  if ((%battle.type = dungeon) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(5,10) }
 
   if (($readini($char($1), skills, thirdeye.on) = on) && ($3 = physical)) {
     var %thirdeye.turns $readini($char($1), status, thirdeye.turn)

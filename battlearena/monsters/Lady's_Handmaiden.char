@@ -55,6 +55,7 @@ CanTaunt=true
 [Monster]
 Type=Undead
 size=medium
+Elite=true
 
 [Status]
 Poison=no

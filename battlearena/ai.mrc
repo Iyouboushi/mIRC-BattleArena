@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 09/14/16
+;;;; Last updated: 09/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -658,6 +658,7 @@ alias ai_skillcheck {
   }
   if ($readini($char($1), skills, bloodboost) != $null) { 
     if (%battle.type = dungeon) { return }
+    if ($skill.bloodboost.status($1) = on) { return }
 
     if ($readini($char($1), status, ignition.on) != on) {
       if ($readini($char($1), skills, bloodboost.time) = $null) { %ai.skilllist  = $addtok(%ai.skilllist, bloodboost, 46) }
@@ -665,6 +666,7 @@ alias ai_skillcheck {
   }
   if ($readini($char($1), skills, bloodspirit) != $null) { 
     if (%battle.type = dungeon) { return }
+    if ($skill.bloodspirit.status($1) = on) { return }
 
     if ($readini($char($1), status, ignition.on) != on) {
       if ($readini($char($1), skills, bloodspirit.time) = $null) { %ai.skilllist  = $addtok(%ai.skilllist, bloodspirit, 46) }

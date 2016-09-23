@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 08/01/16
+;;;; Last updated: 09/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -435,12 +435,12 @@ cap.damage {
   if (($readini(system.dat, system, IgnoreDmgCap) = true) || ($readini($char($2), info, IgnoreDmgCap) = true)) { return }
 
   if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
-    if ($3 = melee) { var %damage.threshold 6000 }
-    if ($3 = tech) { var %damage.threshold 8000 }
+    if ($3 = melee) { var %damage.threshold 8000 }
+    if ($3 = tech) { var %damage.threshold 9000 }
 
-    if (%portal.bonus = true) { 
-      if ($readini($char($1), info, flag) = $null) { dec %damage.threshold $round($calc(%damage.threshold / 3),0) }
-      if ($readini($char($1), info, flag) = npc) { dec %damage.threshold $round($calc(%damage.threshold / 4),0) }
+    if ((%portal.bonus = true) || (%battle.type = dungeon))  { 
+      if ($readini($char($1), info, flag) = $null) { dec %damage.threshold $round($calc(%damage.threshold / 4),0) }
+      if ($readini($char($1), info, flag) = npc) { dec %damage.threshold $round($calc(%damage.threshold / 5),0) }
     }
 
     if ($readini(system.dat, system, PlayersMustDieMode) = true)  { dec %damage.threshold 1500 }
@@ -449,7 +449,7 @@ cap.damage {
     var %defender.level $get.level($2)
     var %level.difference $calc(%attacker.level - %defender.level)
 
-    if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 10),0)  }
+    if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 20),0)  }
     if ((%level.difference > 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * .05),0)  }
     if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * .07),0)  }
     if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 1),0)  } 
@@ -465,8 +465,8 @@ cap.damage {
       set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
 
       if (%attack.damage >= %capamount) { 
-        if ($person_in_mech($1) = false) {  inc %attack.damage $round($calc(%attack.damage * 0.01),0) }
-        if ($person_in_mech($1) = true) { inc %attack.damage $round($calc(%attack.damage * 0.05),0) }
+        if ($person_in_mech($1) = false) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.03)),0) }
+        if ($person_in_mech($1) = true) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.05)),0) }
       }
 
       unset %temp.damage | unset %capamount
@@ -476,8 +476,8 @@ cap.damage {
   if ($readini($char($1), info, flag) = monster) {
     if (%battle.rage.darkness = on) { return }
 
-    if ($3 = melee) { var %damage.threshold 3500 }
-    if ($3 = tech) { var %damage.threshold 4000 }
+    if ($3 = melee) { var %damage.threshold 4200 }
+    if ($3 = tech) { var %damage.threshold 5000 }
 
     if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %damage.threshold 7000 }
 
@@ -500,8 +500,8 @@ cap.damage {
       set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
 
       if (%attack.damage >= %capamount) { 
-        if ($person_in_mech($1) = false) {  inc %attack.damage $round($calc(%attack.damage * 0.04),0) }
-        if ($person_in_mech($1) = true) { inc %attack.damage $round($calc(%attack.damage * 0.08),0) }
+        if ($person_in_mech($1) = false) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.02)),0) }
+        if ($person_in_mech($1) = true) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.03)),0) }
       }
 
     }
@@ -601,6 +601,7 @@ formula.meleedmg.player.formula_2.0 {
 
   set %base.stat $readini($char($1), battle, str)
   inc %base.stat $armor.stat($1, str)
+  if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
   $strength_down_check($1)
 
   if (%base.stat > 999) {  
@@ -982,6 +983,7 @@ formula.meleedmg.player.formula_3.1 {
 
   var %base.stat $readini($char($1), battle, str)
   inc %base.stat $armor.stat($1, str)
+  if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
   $strength_down_check($1)
 
   set %true.base.stat %base.stat
@@ -1303,6 +1305,8 @@ formula.meleedmg.player.formula_3.0 {
 
   var %base.stat $readini($char($1), battle, str)
   inc %base.stat $armor.stat($1, str)
+
+  if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
   $strength_down_check($1)
 
   set %true.base.stat %base.stat
@@ -1657,6 +1661,7 @@ formula.meleedmg.player.formula_1.0 {
 
   set %base.stat $readini($char($1), battle, str)
   inc %base.stat $armor.stat($1, str)
+  if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
   $strength_down_check($1)
 
   var %weapon.base $readini($char($1), weapons, $2)
@@ -1988,6 +1993,7 @@ formula.meleedmg.player.formula_2.5 {
 
   var %base.stat $readini($char($1), battle, str)
   inc %base.stat $armor.stat($1, str)
+  if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
   $strength_down_check($1)
 
   if (%battle.type = torment) { var %attack.rating %base.stat }
@@ -2378,6 +2384,7 @@ formula.meleedmg.monster {
 
   var %base.stat $readini($char($1), battle, str)
   inc %base.stat $armor.stat($1, str)
+  if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
   $strength_down_check($1)
 
   set %true.base.stat %base.stat
@@ -2836,10 +2843,19 @@ formula.techdmg.monster {
   if (%base.stat.needed = $null) { set %base.stat.needed int }
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
-  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
-  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
-  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
-  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
+  if (%base.stat.needed = str) { inc %base.stat $armor.stat($1, str) 
+    if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
+    $strength_down_check($1) 
+  } 
+  if (%base.stat.needed = def) { inc %base.stat $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat $armor.stat($1, int) 
+    if ($skill.bloodspirit.status($1) = on) { inc %base.stat $skill.bloodspirit.calculate($1) }
+    $int_down_check($1)
+  } 
+  if (%base.stat.needed = spd) {
+    inc %base.stat.needed $armor.stat($1, spd) 
+    if ($skill.speed.status($1) = on) { inc %base.stat $skill.speed.calculate($1) }
+  } 
 
   set %true.base.stat  %base.stat
 
@@ -2939,6 +2955,7 @@ formula.techdmg.monster {
 
   ; Because it's a tech, the enemy's int will play a small part too.
   var %int.bonus $round(($calc($readini($char($3), battle, int) + $armor.stat($3, int)) / 3.5),0)
+  if ($skill.bloodspirit.status($3) = on) { inc %int.bonus $round($calc($skill.bloodspirit.calculate($3) /3.5),0) }
   if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
 
   inc %enemy.defense %int.bonus
@@ -3196,10 +3213,19 @@ formula.techdmg.player.formula_2.0 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
-  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
-  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
-  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
+  if (%base.stat.needed = str) { inc %base.stat $armor.stat($1, str) 
+    if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
+    $strength_down_check($1) 
+  } 
+  if (%base.stat.needed = def) { inc %base.stat $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat $armor.stat($1, int) 
+    if ($skill.bloodspirit.status($1) = on) { inc %base.stat $skill.bloodspirit.calculate($1) }
+    $int_down_check($1)
+  } 
+  if (%base.stat.needed = spd) {
+    inc %base.stat.needed $armor.stat($1, spd) 
+    if ($skill.speed.status($1) = on) { inc %base.stat $skill.speed.calculate($1) }
+  }
 
   set %true.base.stat  %base.stat
 
@@ -3299,21 +3325,10 @@ formula.techdmg.player.formula_2.0 {
 
   ; Because it's a tech, the enemy's int will play a small part too.
   var %int.bonus $round($calc(($readini($char($3), battle, int) + $armor.stat($3, int)) / 3.5),0)
+  if ($skill.bloodspirit.status($3) = on) { inc %int.bonus $round($calc($skill.bloodspirit.calculate($3) /3.5),0) }
   if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
 
   inc %enemy.defense %int.bonus
-
-  ; Now we're ready to calculate the enemy's defense.
-  if ($readini($dbfile(techniques.db), $2, stat) = str) {  
-    set %enemy.defense $current.def($3)
-    inc %enemy.defense $armor.stat($3, def)
-    if ($readini($char($3), status, defdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
-  }
-  else { 
-    set %enemy.defense $current.int($3)
-    inc %enemy.defense $armor.stat($3, int)
-    if ($readini($char($3), status, intdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
-  }
 
   $defense_up_check($3)
 
@@ -3520,10 +3535,19 @@ formula.techdmg.player.formula_2.5 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
-  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
-  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
-  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
+  if (%base.stat.needed = str) { inc %base.stat $armor.stat($1, str) 
+    if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
+    $strength_down_check($1) 
+  } 
+  if (%base.stat.needed = def) { inc %base.stat $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat $armor.stat($1, int) 
+    if ($skill.bloodspirit.status($1) = on) { inc %base.stat $skill.bloodspirit.calculate($1) }
+    $int_down_check($1)
+  } 
+  if (%base.stat.needed = spd) {
+    inc %base.stat.needed $armor.stat($1, spd) 
+    if ($skill.speed.status($1) = on) { inc %base.stat $skill.speed.calculate($1) }
+  } 
 
   set %true.base.stat  %base.stat
 
@@ -3628,6 +3652,7 @@ formula.techdmg.player.formula_2.5 {
 
   ; Because it's a tech, the enemy's int will play a small part too.
   var %int.bonus $round($calc(($readini($char($3), battle, int) + $armor.stat($3, int)) / 3.5),0)
+  if ($skill.bloodspirit.status($3) = on) { inc %int.bonus $round($calc($skill.bloodspirit.calculate($3) /3.5),0) }
   if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
 
   inc %enemy.defense %int.bonus
@@ -3836,10 +3861,19 @@ formula.techdmg.player.formula_1.0 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
-  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
-  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
-  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
+  if (%base.stat.needed = str) { inc %base.stat $armor.stat($1, str) 
+    if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
+    $strength_down_check($1) 
+  } 
+  if (%base.stat.needed = def) { inc %base.stat $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat $armor.stat($1, int) 
+    if ($skill.bloodspirit.status($1) = on) { inc %base.stat $skill.bloodspirit.calculate($1) }
+    $int_down_check($1)
+  } 
+  if (%base.stat.needed = spd) {
+    inc %base.stat.needed $armor.stat($1, spd) 
+    if ($skill.speed.status($1) = on) { inc %base.stat $skill.speed.calculate($1) }
+  } 
 
   var %tech.base $readini($dbfile(techniques.db), $2, BasePower)
   var %user.tech.level $readini($char($1), Techniques, $2)
@@ -3913,6 +3947,7 @@ formula.techdmg.player.formula_1.0 {
 
   ; Because it's a tech, the enemy's int will play a small part too.
   var %int.bonus $round($calc(($readini($char($3), battle, int) + $armor.stat($3, int)) / 3.5),0)
+  if ($skill.bloodspirit.status($3) = on) { inc %int.bonus $round($calc($skill.bloodspirit.calculate($3) /3.5),0) }
   if ($readini($char($3), status, intdown) = yes) { var %int.bonus $round($calc(%int.bonus / 4),0) }
 
   inc %enemy.defense %int.bonus
@@ -4071,10 +4106,19 @@ formula.techdmg.player.formula_3.1 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
-  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
-  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
-  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
+  if (%base.stat.needed = str) { inc %base.stat $armor.stat($1, str) 
+    if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
+    $strength_down_check($1) 
+  } 
+  if (%base.stat.needed = def) { inc %base.stat $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat $armor.stat($1, int) 
+    if ($skill.bloodspirit.status($1) = on) { inc %base.stat $skill.bloodspirit.calculate($1) }
+    $int_down_check($1)
+  } 
+  if (%base.stat.needed = spd) {
+    inc %base.stat.needed $armor.stat($1, spd) 
+    if ($skill.speed.status($1) = on) { inc %base.stat $skill.speed.calculate($1) }
+  } 
 
   set %true.base.stat %base.stat
 
@@ -4164,6 +4208,7 @@ formula.techdmg.player.formula_3.1 {
   else { 
     set %enemy.defense $current.int($3) 
     inc %enemy.defense $armor.stat($3, int) 
+    if ($skill.bloodspirit.status($3) = on) { inc %enemy.defense $round($calc($skill.bloodspirit.calculate($3) /3.5),0) }
     if ($readini($char($3), status, intdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
 
@@ -4354,14 +4399,21 @@ formula.techdmg.player.formula_3.0 {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
-  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
-  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
-  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
+  if (%base.stat.needed = str) { inc %base.stat $armor.stat($1, str) 
+    if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
+    $strength_down_check($1) 
+  } 
+  if (%base.stat.needed = def) { inc %base.stat $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat $armor.stat($1, int) 
+    if ($skill.bloodspirit.status($1) = on) { inc %base.stat $skill.bloodspirit.calculate($1) }
+    $int_down_check($1)
+  } 
+  if (%base.stat.needed = spd) {
+    inc %base.stat.needed $armor.stat($1, spd) 
+    if ($skill.speed.status($1) = on) { inc %base.stat $skill.speed.calculate($1) }
+  }
 
   set %true.base.stat %base.stat
-  set %base.stat $log($readini($char($1), battle, %base.stat.needed))
-
   var %tech.base $readini($dbfile(techniques.db), p, $2, BasePower)
 
   var %user.tech.level $readini($char($1), Techniques, $2)
@@ -4458,6 +4510,7 @@ formula.techdmg.player.formula_3.0 {
   else { 
     set %enemy.defense $current.int($3)
     inc %enemy.defense $armor.stat($3, int)
+    if ($skill.bloodspirit.status($3) = on) { inc %enemy.defense $round($calc($skill.bloodspirit.calculate($3) /3.5),0) }
     if ($readini($char($3), status, intdown) = yes) {  var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
 
@@ -4663,10 +4716,19 @@ formula.techdmg.player.percent {
 
   set %base.stat $readini($char($1), battle, %base.stat.needed)
 
-  if (%base.stat.needed = str) { inc %base.stat.needed $armor.stat($1, str) | $strength_down_check($1) } 
-  if (%base.stat.needed = def) { inc %base.stat.needed $armor.stat($1, def) } 
-  if (%base.stat.needed = int) { inc %base.stat.needed $armor.stat($1, int) | $int_down_check($1) } 
-  if (%base.stat.needed = spd) { inc %base.stat.needed $armor.stat($1, spd) } 
+  if (%base.stat.needed = str) { inc %base.stat $armor.stat($1, str) 
+    if ($skill.bloodboost.status($1) = on) { inc %base.stat $skill.bloodboost.calculate($1) }
+    $strength_down_check($1) 
+  } 
+  if (%base.stat.needed = def) { inc %base.stat $armor.stat($1, def) } 
+  if (%base.stat.needed = int) { inc %base.stat $armor.stat($1, int) 
+    if ($skill.bloodspirit.status($1) = on) { inc %base.stat $skill.bloodspirit.calculate($1) }
+    $int_down_check($1)
+  } 
+  if (%base.stat.needed = spd) {
+    inc %base.stat.needed $armor.stat($1, spd) 
+    if ($skill.speed.status($1) = on) { inc %base.stat $skill.speed.calculate($1) }
+  }
 
   if (%base.stat > 9999) { set %base.stat $round($calc(9999 + ((%base.stat - 9999) * .10)),0) }
 
@@ -4764,6 +4826,7 @@ formula.techdmg.player.percent {
   else { 
     set %enemy.defense $current.int($3)
     inc %enemy.defense $armor.stat($3, int)
+    if ($skill.bloodspirit.status($3) = on) { inc %enemy.defense $round($calc($skill.bloodspirit.calculate($3) /3.5),0) }
     if ($readini($char($3), status, intdown) = yes) { var %enemy.defense $round($calc(%enemy.defense / 4),0) }
   }
 

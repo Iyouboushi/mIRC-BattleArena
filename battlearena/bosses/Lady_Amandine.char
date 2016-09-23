@@ -118,6 +118,9 @@ MonsterSummon=$iif($calc(%current.turn % 2) = 0 && $dungeon.haukke.lampcount > 0
 MonsterSummon.Monster=Lamp_Bomb
 MonsterSummon.Chance=100
 monstersummon.numberspawn=$dungeon.haukke.lampcount
+DoubleTurn.on=on
+speed.on=on
+Speed=10
 
 
 [Techniques]

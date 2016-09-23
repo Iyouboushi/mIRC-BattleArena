@@ -58,6 +58,7 @@ IgnoreElementalMessage=true
 [monster]
 type=demon
 size=medium
+elite=true
 
 [Status]
 Poison=no
@@ -101,6 +102,7 @@ GoylePower=35
 Resist-Charm=100
 Resist-Poison=100
 Resist-Curse=100
+DoubleTurn.on=on
 
 
 [Techniques]

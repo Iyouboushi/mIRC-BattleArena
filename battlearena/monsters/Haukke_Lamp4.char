@@ -54,6 +54,7 @@ IgnoreElementalMessage=true
 [Monster]
 Type=
 size=large
+Elite=true
 
 [Status]
 Poison=no
