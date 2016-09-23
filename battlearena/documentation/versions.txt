@@ -1541,6 +1541,8 @@ Battle Arena Bot VERSIONS
 - Changed AI vs AI battles so that after 100 turns darkness will happen
 - Changed the dragonballs so that Shenron's Wish has to be activated with a command: !dragonballs summon
 - Changed the dynamic naming system slightly 
+- Changed the BloodBoost, BloodSpirit and Speed skills to no longer add stats directly to the player. 
+  Instead they are added when needed for calculations.
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
@@ -1553,6 +1555,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug that was preventing accessories with more than one type working correctly.
 - Fixed a bug with the techonly AI types
 - Fixed two bugs with the Predator fight
+- Fixed several bugs with the battle formulas and damage caps
 - Fixed an issue where certain battle types could override mimic battles
 - Fixed an issue where portal items were being cut off
 - Fixed an issue with absorb inside of dungeons and torment
