@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=gloomy
+current=stormy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -996,6 +996,20 @@ weather=gloomy
 NumberOfEvents=0
 scavenge=BeastmenSeal.KindredSeal.KindredCrest
 limitations=no-mech.no-playerignition
+
+[Inferno Arena]
+Weather=Hot
+NumberOfEvents=1
+limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+event1=damage
+event1statusType=Burning
+event1Chance=$iif($portal.nailcount > 0, 100, 0)
+Event1Desc=The battlefield glows red and erupts into pillars of flames that engulf all heroes!
+Event1Target=players
+Event1Amount=$rand(800,1000)
+
 
 ==============================================================
 DUNGEON battlefields

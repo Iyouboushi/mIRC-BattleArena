@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/23/16
+;;;; Last updated: 09/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -5442,4 +5442,20 @@ monster.outpost {
     if (%outpost.strength = 1) { return 3|5||||||||| }
     if (%outpost.strength <= 0) { return 5|||||||||| }
   }
+}
+
+;================================
+; Aliases below this line are for special
+; bosses/portals/monsters
+;================================
+portal.nailcount {
+  var %infernal.nails.alive 0
+  if ($readini($char(InfernalNail), battle, hp) > 0) { inc %infernal.nails.alive 1 }
+  if ($readini($char(InfernalNail1), battle, hp) > 0) { inc %infernal.nails.alive 1 }
+  if ($readini($char(InfernalNail2), battle, hp) > 0) { inc %infernal.nails.alive 1 }
+  if ($readini($char(InfernalNail3), battle, hp) > 0) { inc %infernal.nails.alive 1 } 
+  if ($readini($char(InfernalNail4), battle, hp) > 0) { inc %infernal.nails.alive 1 }  
+  if ($readini($char(InfernalNail5), battle, hp) > 0) { inc %infernal.nails.alive 1 }  
+
+  return %infernal.nails.alive
 }

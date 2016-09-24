@@ -3862,3 +3862,20 @@ EquipLocation=body
 Cost=0
 SellPrice=0
 Exclusive=yes
+
+
+[InfernalFlames]
+Name=Infernal Flames
+hp=0
+tp=0
+Str=10000
+def=10000
+int=10000
+spd=10000
+Augment=TechBonus.EnhanceCounter.EnhanceDoubleTurnChance
+EquipLocation=body
+cost=0
+SellPrice=0
+Legendary=true
+Exclusive=yes
+LevelRequirement=5000
