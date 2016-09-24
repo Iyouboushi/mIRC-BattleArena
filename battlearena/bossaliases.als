@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 09/22/16
+;;;; Last updated: 09/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1758,7 +1758,7 @@ dragonhunt.createfile {
   if ((%dragon.level >= 150) && (%dragon.level <= 500)) { writeini $char($1) monster elite true }
   if (%dragon.level > 500) { writeini $char($1) monster SuperElite true }
 
-  var %base.hp.tp $round($calc(150 * %dragon.level),0)
+  var %base.hp.tp $round($calc(140 * %dragon.level),0)
   if ($return_playersinbattle >= 3) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
 
   writeini $char(%dragonhunt.file.name) basestats hp %base.hp.tp

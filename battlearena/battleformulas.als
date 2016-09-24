@@ -496,8 +496,8 @@ cap.damage {
 
     var %level.difference $calc(%attacker.level - %defender.level)
 
-    if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.1),0)  }
-    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * 1.2),0)  }
+    if (%level.difference <= -5) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.1),0)  }
+    if ((%level.difference > 5) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * 1.2),0)  }
     if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * 2),0)  }
     if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 3),0)  } 
     if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 5),0)  } 
@@ -544,8 +544,8 @@ calculate_attack_leveldiff {
 
   ; If the target is stronger, we need to nerf damage
   if (%level.difference < 0) { 
-    if ((%level.difference < 0) && (%level.difference >= -10)) { dec %attack.damage $round($calc(%attack.damage * .10),0) }
-    if ((%level.difference < -10) && (%level.difference >= -50)) { dec %attack.damage $round($calc(%attack.damage * .15),0) }
+    if ((%level.difference < 0) && (%level.difference >= -10)) { dec %attack.damage $round($calc(%attack.damage * .08),0) }
+    if ((%level.difference < -10) && (%level.difference >= -50)) { dec %attack.damage $round($calc(%attack.damage * .10),0) }
     if ((%level.difference <= -50) && (%level.difference >= -100)) { dec %attack.damage $round($calc(%attack.damage * .25),0) }
     if ((%level.difference < -100) && (%level.difference >= -150)) { dec %attack.damage $round($calc(%attack.damage * .30),0) }
     if ((%level.difference < -150) && (%level.difference >= -300)) { dec %attack.damage $round($calc(%attack.damage * .50),0) }
@@ -5014,7 +5014,6 @@ formula.techdmg.player.percent {
   unset %attacker.level | unset %defender.level | unset %tech.count | unset %tech.power | unset %base.weapon | unset %random
   unset %capamount
 }
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CHECK FOR MULTI-HITS
