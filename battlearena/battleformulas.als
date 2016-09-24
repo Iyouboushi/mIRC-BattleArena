@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/23/16
+;;;; Last updated: 09/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -431,12 +431,14 @@ cap.damage {
   ; $3 = tech, melee, etc
 
   if (%battle.type = torment) { return }
-
   if (($readini(system.dat, system, IgnoreDmgCap) = true) || ($readini($char($2), info, IgnoreDmgCap) = true)) { return }
 
+  ; ================
+  ; Cap damage for Players and NPCS
+  ; ================
   if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
     if ($3 = melee) { var %damage.threshold 8000 }
-    if ($3 = tech) { var %damage.threshold 9000 }
+    if ($3 = tech) { var %damage.threshold 15000 }
 
     if ((%portal.bonus = true) || (%battle.type = dungeon))  { 
       if ($readini($char($1), info, flag) = $null) { dec %damage.threshold $round($calc(%damage.threshold / 4),0) }
@@ -452,27 +454,35 @@ cap.damage {
     if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 20),0)  }
     if ((%level.difference > 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * .05),0)  }
     if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * .07),0)  }
-    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 1),0)  } 
-    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 1.5),0)  } 
+    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * .08),0)  } 
+    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * .09),0)  } 
 
     if ($readini($char($1), info, flag) = npc) { dec %damage.threshold 1500 }
 
     if (%damage.threshold <= 0) { var %damage.threshold 10 }
 
     if (%attack.damage > %damage.threshold) {
-      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 100)  | set %capamount 8000 }
+      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 100)  
+        if ($3 = melee) {  set %capamount 8000 }
+        if ($3 = tech) { set %capamount 10000 }
+      }
       if ($person_in_mech($1) = true) { set %temp.damage $calc(%attack.damage / 90) | set %capamount 10000 }
-      set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
+
+      inc %temp.damage %damage.threshold
+      inc %temp.damage $calc(%attack.damage * 0.045) 
 
       if (%attack.damage >= %capamount) { 
-        if ($person_in_mech($1) = false) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.03)),0) }
-        if ($person_in_mech($1) = true) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.05)),0) }
+        if ($person_in_mech($1) = false) {  set %attack.damage $round($calc(%capamount + %temp.damage),0) }
+        if ($person_in_mech($1) = true) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.08)),0) }
       }
 
       unset %temp.damage | unset %capamount
     }
   }
 
+  ; ================
+  ; Cap damage for Monsters
+  ; ================
   if ($readini($char($1), info, flag) = monster) {
     if (%battle.rage.darkness = on) { return }
 
@@ -487,10 +497,10 @@ cap.damage {
     var %level.difference $calc(%attacker.level - %defender.level)
 
     if (%level.difference < 0) { dec %damage.threshold $round($calc($abs(%level.difference) * 1.1),0)  }
-    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * 1.6),0)  }
+    if ((%level.difference >= 0) && (%level.difference <= 100)) { inc %damage.threshold $round($calc(%level.difference * 1.2),0)  }
     if ((%level.difference > 100) && (%level.difference <= 500)) { inc %damage.threshold $round($calc(%level.difference * 2),0)  }
-    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 5),0)  } 
-    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 10),0)  } 
+    if ((%level.difference > 500) && (%level.difference <= 1000)) { inc %damage.threshold $round($calc(%level.difference * 3),0)  } 
+    if (%level.difference > 1000) { inc %damage.threshold $round($calc(%level.difference * 5),0)  } 
 
     if (%damage.threshold <= 0) { var %damage.threshold 10 }
 
@@ -4496,7 +4506,7 @@ formula.techdmg.player.formula_3.0 {
   unset %current.weapon.used | unset %base.power.wpn
 
   ; Increase attack damage by the $log of the base stat.
-  set %attack.damage $round($calc(%attack.damage * %base.stat),0)
+  set %attack.damage $round($calc(%attack.damage * $log(%base.stat)),0)
 
   var %tech.type $readini($dbfile(techniques.db), $2, type)
   if ((%tech.type = heal-aoe) || (%tech.type = heal)) { return }
