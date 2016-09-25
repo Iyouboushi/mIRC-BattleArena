@@ -4345,8 +4345,6 @@ modifer_adjust {
   }
   unset %elements
 
-
-
   ; Turn it into a deciminal
   var %modifier.adjust.value $calc(%modifier.adjust.value / 100) 
 
@@ -5461,7 +5459,10 @@ portal.nailcount {
 }
 
 portal.ifritprime.aitype {
-  if (%current.turn = 2) { return techonly }
-  if ((%current.turn = 5) && ($portal.nailcount > 0)) { return techonly }
-  if ((%current.turn != 2) && (%current.turn != 5)) { return normal }
+  var %ai.type normal
+  if (%current.turn = 2) { var %ai.type techonly }
+  if ((%current.turn = 5) && ($portal.nailcount > 0)) { var %ai.type techonly }
+  if (%current.turn = 10) { var %ai.type techonly }
+
+  return %ai.type
 }

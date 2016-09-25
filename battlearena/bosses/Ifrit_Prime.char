@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(45000 + (100 * $return_playersinbattle)) , 30000)
+Hp=$iif($return_playersinbattle > 3, $calc(45000 + (100 * $return_playersinbattle)) , 38000)
 Tp=250
 Str=97
 Def=87
@@ -124,16 +124,17 @@ MonsterSummon.Monster=InfernalNail
 MonsterSummon.Chance=100
 monstersummon.numberspawn=$iif($return_playersinbattle > 3, $round($calc($return_playersinbattle /1.5),0), 1)
 ShadowCopy=$iif($return_playersinbattle >= 2 && %current.turn >= 7, 1, 0)
+DesperateBlows=1
 
 [Techniques]
 InfernalFire=$iif(%current.turn = 5, 5000, 0)
 InfernalBreath=$iif(%current.turn != 2 && %current.turn != 5, 150, 0)
-InfernalCleansing=$iif(%current.turn = 2, 100, 0)
+InfernalCleansing=$iif(%current.turn = 2 || %current.turn >= 10, 100, 0)
 
 
 [Styles]
 Equipped=Guardian
-Guardian=5
+Guardian=6
 
 [Augment]
 IfritPrimeClaws=AbsorbTP.EnhanceDoubleTurnChance.Drain
