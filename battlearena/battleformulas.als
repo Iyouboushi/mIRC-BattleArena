@@ -486,8 +486,8 @@ cap.damage {
   if ($readini($char($1), info, flag) = monster) {
     if (%battle.rage.darkness = on) { return }
 
-    if ($3 = melee) { var %damage.threshold 4200 }
-    if ($3 = tech) { var %damage.threshold 5000 }
+    if ($3 = melee) { var %damage.threshold 1800 }
+    if ($3 = tech) { var %damage.threshold 2000 }
 
     if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %damage.threshold 7000 }
 
@@ -505,17 +505,24 @@ cap.damage {
     if (%damage.threshold <= 0) { var %damage.threshold 10 }
 
     if (%attack.damage > %damage.threshold) {
-      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 85)  | set %capamount 5000 }
-      if ($person_in_mech($1) = true) { set %temp.damage $calc(%attack.damage / 60) | set %capamount 70000 }
-      set %attack.damage $round($calc(%damage.threshold + %temp.damage),0)
+      if ($person_in_mech($1) = false) {  set %temp.damage $calc(%attack.damage / 100)  
+        if ($3 = melee) {  set %capamount 2500 }
+        if ($3 = tech) { set %capamount 3000 }
+      }
+      if ($person_in_mech($1) = true) { set %temp.damage $calc(%attack.damage / 90) | set %capamount 6000 }
+
+      inc %temp.damage %damage.threshold
+      inc %temp.damage $calc(%attack.damage * 0.025) 
 
       if (%attack.damage >= %capamount) { 
-        if ($person_in_mech($1) = false) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.02)),0) }
-        if ($person_in_mech($1) = true) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.03)),0) }
+        if ($person_in_mech($1) = false) {  set %attack.damage $round($calc(%capamount + %temp.damage),0) }
+        if ($person_in_mech($1) = true) {  set %attack.damage $round($calc(%capamount + (%temp.damage * 0.08)),0) }
       }
 
+      unset %temp.damage | unset %capamount
     }
   }
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2999,7 +3006,6 @@ formula.techdmg.monster {
     inc %attack.damage $round(%percent.damage,0)
   }
 
-
   $damage.color.check
 
   if (%enemy.defense <= 0) { set %enemy.defense 1 }
@@ -3021,8 +3027,6 @@ formula.techdmg.monster {
   ;;; ADJUST THE TOTAL DAMAGE.
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   var %flag $readini($char($1), info, flag)
-
-  $cap.damage($1, $3, tech)
 
   var %min.damage $readini($dbfile(techniques.db), $2, BasePower)
   inc %min.damage %attack.rating
@@ -3108,6 +3112,9 @@ formula.techdmg.monster {
   ; Elite monsters have increased damage
   if ($eliteflag.check($1) = true) {  inc %attack.damage $round($calc(%attack.damage * .25),0)  }
   if ($supereliteflag.check($3) = true) { inc %attack.damage $round($calc(%attack.damage * .35),0)  }
+
+  ; Cap damage
+  $cap.damage($1, $3, tech)
 
   ; Check for the Guardian style
   $guardian_style_check($3)
