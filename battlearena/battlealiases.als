@@ -3781,8 +3781,8 @@ offensive.style.check {
   }
 
   if ($3 = magic) {
-    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .115)
-      if (%magic.bonus.modifier >= 1) { set %magic.bonus.modifier .90 }
+    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .125)
+      if (%magic.bonus.modifier >= 1) { set %magic.bonus.modifier .92 }
     }
   }
 }
