@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(45000 + (100 * $return_playersinbattle)) , 40000)
+Hp=$iif($return_playersinbattle > 3, $calc(45000 + (100 * $return_playersinbattle)) , 30000)
 Tp=250
 Str=97
 Def=87
@@ -123,7 +123,7 @@ MonsterSummon=$iif(%current.turn = 2, 1, 0)
 MonsterSummon.Monster=InfernalNail
 MonsterSummon.Chance=100
 monstersummon.numberspawn=$iif($return_playersinbattle > 3, $round($calc($return_playersinbattle /1.5),0), 1)
-ShadowCopy=$iif($return_playersinbattle >= 3 && %current.turn >= 7, 1, 0)
+ShadowCopy=$iif($return_playersinbattle >= 2 && %current.turn >= 7, 1, 0)
 
 [Techniques]
 InfernalFire=$iif(%current.turn = 5, 5000, 0)
