@@ -113,6 +113,8 @@ resist-charm=100
 resist-petrify=100
 resist-sleep=100
 resist-confuse=100
+resist-disarm=100
+resist-weaponlock=100
 Zen=5
 
 [Techniques]
