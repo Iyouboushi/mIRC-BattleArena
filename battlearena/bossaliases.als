@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 09/24/16
+;;;; Last updated: 09/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1810,7 +1810,7 @@ dragonhunt.createfile {
   if (%dragon.element = wind) { writeini $char(%dragonhunt.file.name) skills Utsusemi 1 | writeini $char(%dragonhunt.file.name) item_amount shihei 10 | writeini $char(%dragonhunt.file.name) skills utsusemi.on on | writeini $char(%dragonhunt.file.name) skills utsusemi.shadow $rand(1,3)  }
   if (%dragon.element = water) { writeini $char(%dragonhunt.file.name) skills Sugitekai 1 }
   if (%dragon.element = lightning) { writeini $char(%dragonhunt.file.name) skills WeaponBash 1 }
-  if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) skills Konzen-Ittai 1 | writeini $char(%dragonhunt.file.name) skills shadowcopy 1   }
+  if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) skills Konzen-Ittai 1  }
   if (%dragon.element = light) { writeini $char(%dragonhunt.file.name) skills DrainSamba 1 }
 
   writeini $char(%dragonhunt.file.name) modifiers light 100
@@ -1835,7 +1835,7 @@ dragonhunt.createfile {
 
   ; Add guardian style
   writeini $char(%dragonhunt.file.name) styles equipped Guardian
-  writeini $char(%dragonhunt.file.name) styles Guardian 6
+  writeini $char(%dragonhunt.file.name) styles Guardian $rand(6,8)
   writeini $char(%dragonhunt.file.name) styles GuardianXP 1
 
   ; Add modifiers
