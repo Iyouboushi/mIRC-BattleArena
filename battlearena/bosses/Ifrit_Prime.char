@@ -43,6 +43,7 @@ Drops=Clom'sTale-01.Clom'sTale-02
 Type=demon
 size=giant
 SuperElite=true
+TechLearn=true
 
 [Info]
 Flag=monster
