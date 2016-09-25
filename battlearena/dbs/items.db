@@ -2468,6 +2468,13 @@ SellPrice=50
 Desc=A fang from a tiger
 Currency=AlliedNotes
 
+[IronBowl]
+Type=misc
+Cost=5000
+SellPrice=100
+Currency=AlliedNotes
+Desc=A large iron bowl
+
 [LifeShard]
 Type=misc
 cost=0
@@ -2563,6 +2570,7 @@ Desc=takes out a giganitc blue slab of titanite, setting the weapon on the anvil
 Cost=0
 SellPrice=2000
 Exclusive=yes
+
 
 
 [Clom'sTale-01]
@@ -3382,6 +3390,18 @@ Desc=takes out the small glowing orb, which shatters and creates a large portal 
 AlliedNotes=3000
 Exclusive=yes
 PortalLevel=120
+
+[BowlOfEmbers]
+type=portal
+Cost=0
+Battlefield=Infernal Arena
+Weather=Hot
+Monster=Ifrit_Prime
+Desc=offers the Bowl of Embers to the gods. The offering is accepted and the heroes find themselves being transported to a large circular arena. Within seconds the outer rim of the arena roars in flames, trapping the heroes inside before a demonic presence approaches. 
+AlliedNotes=5000
+Exclusive=yes
+PortalLevel=5000
+
 
 [MechanicalEye]
 type=portal

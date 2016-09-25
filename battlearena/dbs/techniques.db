@@ -510,6 +510,8 @@ CuccoBeak=SwarmAttack
 Sahagin_Fin=SpinningFin.HydroShot.HydroBall
 Sahagin_Spear=SpinningFin.HydroShot.HydroBall.Jump
 MosquitoBite=MosquitoBite
+IfritPrimeClaws=InfernalFire.InfernalBreath.InfernalCleansing
+InfernalNail=FirajaII
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -3346,7 +3348,7 @@ Element=Lightning
 Cost=50000
 Magic=yes
 stat=str
-DestroyShadows=3
+DestroyShadows=2
 
 ===================
 BUFFS
@@ -14743,3 +14745,41 @@ Hits=1
 BasePower=40
 Magic=No
 stat=Str
+
+[InfernalCleansing]
+Type=AOE
+Cost=0
+Desc=summons a tidal wave of lava to flow over the battlefield burning all of the heroes
+TP=10
+Element=Fire
+Hits=1
+BasePower=200
+Magic=No
+stat=Str
+CanDodge=false
+DestroyShadows=5
+Hits=3
+
+[InfernalFire]
+Type=Death-AOE
+Cost=0
+Desc=looks at the heroes and says "thy soul shall burn for eternity!" He then leaps high into the air before landing on an Infernal Nail. The $iif($portal.nailcount > 1, nails begin, nail begins) to glow and help to amplify Ifrit's destructive power, sending a massive explosion raging across the battlefield.
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+stat=str
+CanDodge=false
+DeathChance=100
+
+[InfernalBreath]
+Type=AOE
+TP=10
+Desc=inhales a gust of air and then breathes fire all over the battlefield! 
+BasePower=200
+Cost=0
+Element=fire
+magic=no
+stat=str
+

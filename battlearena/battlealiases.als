@@ -348,8 +348,8 @@ status.effects.turns {
   else { 
     if ($1 = defup) { return 3 }
     if ($1 = speedup) { return 3 }
-    if ($1 = shell) { return 5 }
-    if ($1 = protect) { return 5 }
+    if ($1 = shell) { return 10 }
+    if ($1 = protect) { return 10 }
     if ($1 = enspell) { return 5 }
     if ($1 = reflect) { return 2 }
     if ($1 = invincible) { return 2 }
@@ -5458,4 +5458,10 @@ portal.nailcount {
   if ($readini($char(InfernalNail5), battle, hp) > 0) { inc %infernal.nails.alive 1 }  
 
   return %infernal.nails.alive
+}
+
+portal.ifritprime.aitype {
+  if (%current.turn = 2) { return techonly }
+  if ((%current.turn = 5) && ($portal.nailcount > 0)) { return techonly }
+  if ((%current.turn != 2) && (%current.turn != 5)) { return normal }
 }

@@ -646,6 +646,18 @@ SoulofSight=1
 SoulofMight=1
 SoulofFright=1
 
+[BowlOfEmbers]
+Gem=Diamond
+Ingredients=IronBowl.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
+SuccessRate=100
+Amount=1
+IronBowl=1
+LifeShard=100
+ReusablePart=100
+ForgottenSoul=100
+ArcaneDust=100
+
+
 ============
 Skill Items
 ============

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 09/23/16
+;;;; Last updated: 09/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -520,7 +520,7 @@ alias tech.buff {
         var %modifier.type $readini($dbfile(techniques.db), $2, modifier)
         set %target.modifier $readini($char($3), modifiers, %modifier.type)
         if (%target.modifier = $null) { var %target.modifier 100 }
-        dec %target.modifier 30 
+        dec %target.modifier 27 
         if (%target.modifier < 0) { var %target.modifier 0 }
         writeini $char($3) modifiers %modifier.type %target.modifier
         unset %target.modifier
