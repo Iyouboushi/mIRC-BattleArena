@@ -93,8 +93,7 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
-reflect=yes
-reflect.turn=-1
+reflect=no
 
 [Weapons]
 Equipped=IfritPrimeClaws
@@ -116,6 +115,8 @@ resist-charm=100
 resist-petrify=100
 resist-sleep=100
 resist-confuse=100
+resist-disarm=100
+resist-weaponlock=100
 Zen=5
 ClearMind=1
 MonsterSummon=$iif(%current.turn = 2, 1, 0)
