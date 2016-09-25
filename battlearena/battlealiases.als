@@ -5454,7 +5454,6 @@ portal.nailcount {
   if ($readini($char(InfernalNail3), battle, hp) > 0) { inc %infernal.nails.alive 1 } 
   if ($readini($char(InfernalNail4), battle, hp) > 0) { inc %infernal.nails.alive 1 }  
   if ($readini($char(InfernalNail5), battle, hp) > 0) { inc %infernal.nails.alive 1 }  
-
   return %infernal.nails.alive
 }
 
@@ -5462,6 +5461,7 @@ portal.ifritprime.aitype {
   var %ai.type normal
   if (%current.turn = 2) { var %ai.type techonly }
   if ((%current.turn = 5) && ($portal.nailcount > 0)) { var %ai.type techonly }
+  if ((%current.turn = 5) && ($portal.nailcount <= 0)) { var %ai.type normal }
   if (%current.turn = 10) { var %ai.type techonly }
 
   return %ai.type
