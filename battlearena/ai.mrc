@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 09/23/16
+;;;; Last updated: 09/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -155,7 +155,7 @@ alias ai_turn {
   if ($readini($char($1), info, ai_type) = techonly) {
     if ($readini($char($1), battle, tp) <= 100) { writeini $char($1) battle tp 500 } 
 
-    if (($1 = orb_fountain) || ($1 = lost_soul)) { writeini $char($1) status curse no }
+    writeini $char($1) status curse no 
 
     ; Can the monster use an ignition?
     if ($readini($char($1), status, ignition.on) != on) {
@@ -178,7 +178,10 @@ alias ai_turn {
   if (%ai.action = tech) { 
     $ai_gettarget($1)
     if (%ai.target = $null) { echo -a target null! | set %ai.action $iif($readini($char($1), info, ai_type) = techonly, taunt, attack)  }
-    else { $tech_cmd($1, %ai.tech, %ai.target) | halt }
+    else { 
+      if (%ai.tech = $null) { echo -a tech null | set %ai.action $iif($readini($char($1), info, ai_type) = techonly, taunt, attack)  }
+      else { $tech_cmd($1, %ai.tech, %ai.target) | halt }
+    }
   } 
 
   if (%ai.action = attack) { $ai_gettarget($1) 
