@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/21/16
+;;;; Last updated: 09/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -424,6 +424,14 @@ alias uses_item {
     if (%target.flag = monster) {  $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers),private) | halt }
     if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious), private)  | unset %real.name | halt }
     if ($readini($char($4), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead), private) | unset %real.name | halt }
+
+    var %total.goldorbs.used $readini($txtfile(battle2.txt), GoldOrbs, $1)
+    if (%total.goldorbs.used = $null) { var %total.goldorbs.used 0 }
+
+    if (%total.goldorbs.used  >= 4) { $display.message($readini(translation.dat, errors, GoldOrbNoLongerWorks), private) | halt }
+
+    inc %total.goldorbs.used 1
+    writeini $txtfile(battle2.txt) GoldOrbs $1 %total.goldorbs.used
 
     ; Decrease the action points
     $action.points($1, remove, 2)
