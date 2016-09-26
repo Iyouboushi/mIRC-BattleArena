@@ -1543,6 +1543,7 @@ Battle Arena Bot VERSIONS
 - Changed the dynamic naming system slightly 
 - Changed the BloodBoost, BloodSpirit and Speed skills to no longer add stats directly to the player. 
   Instead they are added when needed for calculations.
+- Changed gold orbs/auto-revive effect so it can only be used three times total per player per battle
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
@@ -1562,6 +1563,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with clones being able to use skills multiple times without a cooldown
 - Fixed an issue with the Shrine of Ru'Avitau's weather (had "light" instead of "bright")
 - Fixed an issue where Darksteel Ore could be bought
+- Fixed an issue where barspells were't showing up in the battle status line.
 - Fixed a potential issue with certain items in the shop being cut off if there's too many
 - Fixed a typo with Shenron's Wish
 - Fixed a description issue with ToxicMelody
