@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/24/16
+;;;; Last updated: 09/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1714,6 +1714,10 @@ alias portal.sync.players {
 
     if ((no-summon isin %battleconditions) || (no-summons isin %battleconditions)) { 
       if ($readini($char(%who.battle), info, summon) = yes) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
+    }
+
+    if (no-playerclones isin %battleconditions) { 
+      if (($readini($char(%who.battle), info, flag) = npc) && ($readini($char(%who.battle), info, clone) = yes)) { writeini $char(%who.battle) battle hp 0 | writeini $char(%who.battle) battle status dead } 
     }
 
     if ((no-npc isin %battleconditions) || (no-npcs isin %battleconditions)) { 
