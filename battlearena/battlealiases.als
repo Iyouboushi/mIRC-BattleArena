@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/25/16
+;;;; Last updated: 09/26/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4353,10 +4353,12 @@ modifer_adjust {
   if (($readini($char($1), info, flag) != $null) && ($readini($char($1), info, clone) != yes)) {
     ; If it's over 1, then it means the target is weak to the element/weapon so we can adjust the target's def a little as an extra bonus.
     if (%modifier.adjust.value > 1) {
-      var %mon.temp.def $readini($char($1), battle, def)
-      var %mon.temp.def = $round($calc(%mon.temp.def - (%mon.temp.def * .05)),0)
-      if (%mon.temp.def < 0) { var %mon.temp.def 0 }
-      writeini $char($1) battle def %mon.temp.def
+      if ((%portal.bonus != true) && (%battle.type != dungeon)) {
+        var %mon.temp.def $readini($char($1), battle, def)
+        var %mon.temp.def = $round($calc(%mon.temp.def - (%mon.temp.def * .05)),0)
+        if (%mon.temp.def < 0) { var %mon.temp.def 0 }
+        writeini $char($1) battle def %mon.temp.def
+      }
       writeini $char($1) modifiers HitWithWeakness true
       set %damage.display.color 7
     }
