@@ -1000,7 +1000,7 @@ limitations=no-mech.no-playerignition
 [Infernal Arena]
 Weather=Hot
 NumberOfEvents=$iif($portal.nailcount > 0, 1, 0)
-limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver $+ $iif(%current.turn <= 6, .no-playerclones)
+limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver.no-playerclones
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 event1=damage
