@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=calm
+current=stormy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Crescent
-CurrentMoonTurn=2
+CurrentMoonPhase=Gibbous
+CurrentMoonTurn=5
 
 [MoonPhaseTime]
 full=3
@@ -39,7 +39,7 @@ errors.
 ==============================================================
 [TimeOfDay]
 CurrentTimeOfDay=Day
-CurrentTimeOfDayTurn=1
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
@@ -1000,7 +1000,7 @@ limitations=no-mech.no-playerignition
 [Infernal Arena]
 Weather=Hot
 NumberOfEvents=$iif($portal.nailcount > 0, 1, 0)
-limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver
+limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver $+ $iif(%current.turn <= 6, .no-playerclones)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 event1=damage

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/23/16
+;;;; Last updated: 09/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1484,6 +1484,8 @@ alias skill.clone { $set_chr_name($1)
   if (%battle.type = dragonhunt) { $display.message($readini(translation.dat, errors, Can'tUseThisSkillInDragonHunt), private) | halt }
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  if ((no-playerclones isin %battleconditions) && ($readini($char($1), info, flag) = $null)) {  $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+
   $amnesia.check($1, skill) 
 
   if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
