@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/24/16
+;;;; Last updated: 09/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3452,6 +3452,8 @@ renkei.calculate {
   var %renkei.tech.amount $readini($dbfile(techniques.db), $3, Renkei)
 
   if ((%renkei.tech.amount = $null) || (%renkei.tech.amount = 0)) { return }
+
+  if ((%portal.bonus = true) || (%battle.type = dungeon)) { var %renkei.tech.value $round($calc(%renkei.tech.value / 2),0) } 
 
   if ($augment.check($1, RenkeiBonus) = true) { 
     var %bonus $calc(%augment.strength * 2)

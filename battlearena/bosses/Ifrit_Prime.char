@@ -2,9 +2,9 @@
 Hp=$iif($return_playersinbattle > 3, $calc(48000 + (100 * $return_playersinbattle)) , 40000)
 Tp=250
 Str=97
-Def=89
+Def=95
 Int=67
-Spd=76
+Spd=81
 Name=Ifrit Prime
 IgnitionGauge=50
 
@@ -13,9 +13,9 @@ IgnitionGauge=50
 Hp=18000
 Tp=250
 Str=97
-Def=89
+Def=95
 Int=67
-Spd=76
+Spd=81
 Status=alive
 IgnitionGauge=50
 

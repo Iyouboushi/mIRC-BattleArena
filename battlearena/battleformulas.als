@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/24/16
+;;;; Last updated: 09/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -443,6 +443,7 @@ cap.damage {
     if ((%portal.bonus = true) || (%battle.type = dungeon))  { 
       if ($readini($char($1), info, flag) = $null) { dec %damage.threshold $round($calc(%damage.threshold / 4),0) }
       if ($readini($char($1), info, flag) = npc) { dec %damage.threshold $round($calc(%damage.threshold / 5),0) }
+      if ($readini($char($1), info, clone) = yes) { dec %damage.threshold $round($calc(%damage.threshold / 5),0) }
     }
 
     if ($readini(system.dat, system, PlayersMustDieMode) = true)  { dec %damage.threshold 1500 }
