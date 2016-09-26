@@ -1049,6 +1049,15 @@ SpiritOftheHero=$chr(3) $+ 7 $+ Spirit of the Hero buff
 Ignition.on=$chr(3) $+ 7 $+ ignition boosted
 Boosted=$chr(3) $+ 7 $+ power boosted
 FinalGetsuga=$chr(3) $+ 6 $+ final getsuga
+resist-fire=$chr(3) $+ 12 $+ barfire
+resist-lightning=$chr(3) $+ 12 $+ barlightning
+resist-ice=$chr(3) $+ 12 $+ barice
+resist-earth=$chr(3) $+ 12 $+ barearth
+resist-wind=$chr(3) $+ 12 $+ barwind
+resist-water=$chr(3) $+ 12 $+ barwater
+resist-light=$chr(3) $+ 12 $+ barlight
+resist-dark=$chr(3) $+ 12 $+ bardark
+
 
 =======================
 Conquest Stuff
