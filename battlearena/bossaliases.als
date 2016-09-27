@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 09/25/16
+;;;; Last updated: 09/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1796,6 +1796,7 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) skills Resist-poison 95
   writeini $char(%dragonhunt.file.name) skills Resist-paralysis 95
   writeini $char(%dragonhunt.file.name) skills Resist-slow 70
+  writeini $char(%dragonhunt.file.name) skills Resist-Disarm 100
   writeini $char(%dragonhunt.file.name) skills Resist-Weaponlock 100
   writeini $char(%dragonhunt.file.name) skills Resist-Curse 70
   writeini $char(%dragonhunt.file.name) skills TrueStrike.on on
@@ -1824,7 +1825,7 @@ dragonhunt.createfile {
 
   ; Dragon will heal its own element
   writeini $char(%dragonhunt.file.name) modifiers %dragon.element 300
-  writeini $char(%dragonhunt.file.name) modifiers heal $dragonhunt.dragonelement(%dragonhunt.file.name)
+  writeini $char(%dragonhunt.file.name) modifiers heal %dragon.element
 
   ; Add the dragon scales
   writeini $char(%dragonhunt.file.name) NaturalArmor Name Dragon Scales
