@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 09/24/16
+;;;; Last updated: 09/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1041,6 +1041,10 @@ alias tech.heal {
 
   $calculate_damage_techs($1, $2, $3, heal)
 
+  if (%battle.type = dungeon) { 
+    if (%attack.damage >= 1500) { set %attack.damage $round($calc(1500 + (%attack.damage * .01)),0) }
+  }
+
   if ($augment.check($1, CuringBonus) = true) {
     set %healing.increase $calc(%augment.strength * .30)
     inc %attack.damage $round($calc(%attack.damage * %healing.increase),0) 
@@ -1143,6 +1147,11 @@ alias do_aoe_heal {
 
     set %attack.damage 0
     $calculate_aoe_heal($1, $2, $3)
+
+    if (%battle.type = dungeon) { 
+      if (%attack.damage >= 1500) { set %attack.damage $round($calc(1500 + (%attack.damage * .01)),0) }
+    }
+
 
     ;If the target is a zombie, do damage instead of healing it.
     var %mon.status $readini($char(%who.battle), status, zombie) | var %mon.type $readini($char(%who.battle), monster, type)
