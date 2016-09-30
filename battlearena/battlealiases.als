@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/26/16
+;;;; Last updated: 09/29/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4324,6 +4324,7 @@ wonderguard.check {
 modifer_adjust {
   ; $1 = target
   ; $2 = element or weapon type
+  ; $3 = tech or melee
 
   if (%guard.message != $null) { return }
 
@@ -4376,6 +4377,23 @@ modifer_adjust {
 
   ; Adjust the attack damage.
   set %attack.damage $round($calc(%attack.damage * %modifier.adjust.value),0)
+
+
+  ; Adjust further if necessary
+  if (($readini($char($1), modifiers, ResistTechs) >= 1) && ($3 = tech)) { 
+    var %resist.tech.amount $readini($char($1), modifiers, ResistTechs) 
+    var %resist.percent $calc(%resist.tech.amount / 100) 
+    dec %attack.damage $round($calc(%attack.damage * %resist.percent),0)
+    if (%attack.damage <= 0) { var %attack.damage 0 }
+  }
+  if (($readini($char($1), modifiers, ResistMelee) >= 1) && ($3 = melee)) { 
+    var %resist.melee.amount $readini($char($1), modifiers, ResistMelee) 
+    var %resist.percent $calc(%resist.melee.amount / 100) 
+    dec %attack.damage $round($calc(%attack.damage * %resist.percent),0)
+    if (%attack.damage <= 0) { var %attack.damage 0 }
+  }
+
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

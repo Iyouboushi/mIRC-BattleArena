@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/25/16
+;;;; Last updated: 09/29/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -35,12 +35,12 @@ damage.modifiers.check {
 
   ; Check to see if the target is resistant/weak to the weapon itself
   if ($person_in_mech($1) = false) {
-    $modifer_adjust($3, $readini($char($1), weapons, equipped))
+    $modifer_adjust($3, $readini($char($1), weapons, equipped), $4)
 
     ; Check for Left-Hand weapon, if applicable
     if ($readini($char($1), weapons, EquippedLeft) != $null) { 
       var %weapon.type2 $readini($dbfile(weapons.db), $readini($char($1), weapons, EquippedLeft), type)
-      if (%weapon.type2 != shield) {   $modifer_adjust($3, $readini($char($1), weapons, equippedLeft))  }
+      if (%weapon.type2 != shield) {  $modifer_adjust($3, $readini($char($1), weapons, equippedLeft), $4)  }
     }
   }
   if ($person_in_mech($1) = true) { $modifer_adjust($3, $readini($char($1), mech, EquippedWeapon)) }
@@ -72,8 +72,8 @@ damage.modifiers.check {
     ; Check for the tech name
     ; if $2 = element, use +techname, else use techname
     var %elements fire.earth.wind.water.ice.lightning.light.dark
-    if ($istok(%elements, $2, 46) = $true) { $modifer_adjust($3, $chr(43) $+ $2) }
-    else { $modifer_adjust($3, $2) }
+    if ($istok(%elements, $2, 46) = $true) { $modifer_adjust($3, $chr(43) $+ $2, tech) }
+    else { $modifer_adjust($3, $2, tech) }
 
     ; Check for the tech element
     var %tech.element $readini($dbfile(techniques.db), $2, element)
