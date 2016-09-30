@@ -207,6 +207,8 @@ BloodBath=40
 UltimaII=40
 KaustraII=40
 Chivalry=40
+ResistTechs=10
+ResistMelee=10
 
 
 [Ignitions]

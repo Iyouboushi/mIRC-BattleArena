@@ -14761,7 +14761,7 @@ DestroyShadows=5
 Hits=3
 
 [InfernalFire]
-Type=Death-AOE
+Type=$iif(%battle.type != torment, Death-AOE, AOE)
 Cost=0
 Desc=looks at the heroes and says "thy soul shall burn for eternity!" He then leaps high into the air before landing on an Infernal Nail. The $iif($portal.nailcount > 1, nails begin, nail begins) to glow and help to amplify Ifrit's destructive power, sending a massive explosion raging across the battlefield.
 TP=10
