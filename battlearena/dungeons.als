@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 04/13/16
+;;;; Last updated: 10/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -233,11 +233,66 @@ dungeon.end {
     $battle.reward.blackorbs 
     if (%black.orb.winners != $null) { $display.message($readini(translation.dat, battle, BlackOrbWin), battle)   }
     $give_random_reward
+
+
+    $dungeon.spoils.drop
+    $show.random.reward
+
+
     $create_treasurechest
   }
 
   ; then do a $clear_battle
   set %battleis off | $clear_battle | halt
+}
+
+
+dungeon.spoils.drop {
+  var %most.stylish.player $readini($txtfile(battle2.txt), battle, MostStylish)
+  unset %item.drop.rewards
+
+  var %boss.list $readini($dungeonfile($dungeon.dungeonfile), $calc($dungeon.currentroom - 1), monsters)
+
+  if (%boss.list = $null) { return }
+
+  set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+
+    if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+    else { 
+
+      if (%who.battle != %most.stylish.player) { 
+
+        var %random.boss.monster $gettok(%boss.list,$numtok(%boss.list, 46),46)
+        var %reward.list $readini($dbfile(spoils.db), drops, %random.boss.monster)
+        if (%reward.list = $null) { return }
+
+        var %drop.reward $gettok(%reward.list,$rand(1,$numtok(%reward.list, 46)),46)
+        var %player.amount $readini($char(%who.battle), Item_Amount, %drop.reward)
+        if (%player.amount = $null) { var %player.amount 0 }
+
+        var %item.reward.amount 1
+        inc %player.amount %item.reward.amount
+
+        writeini $char(%who.battle) item_amount %drop.reward %player.amount
+        $set_chr_name(%who.battle) 
+
+        var %drop.counter $readini($char(%who.battle), stuff, dropsrewarded)
+        if (%drop.counter = $null) { var %drop.counter 0 }
+        inc %drop.counter 1
+        writeini $char(%who.battle) stuff DropsRewarded %drop.counter
+
+        %item.drop.rewards = $addtok(%item.drop.rewards, %real.name $+  $+ $chr(91) $+ %drop.reward x $+ %item.reward.amount $+  $+ $chr(93) $+ , 46)
+
+        inc %battletxt.current.line 1 
+      }
+      else { inc %battletxt.current.line 1 }
+
+    }
+  }
+
 }
 
 dungeon.nextroom {
@@ -280,6 +335,7 @@ dungeon.nextroom {
     unset %wait.your.turn
   }
 }
+
 
 dungeon.generatemonsters {
   ; Get the list of monsters from the room
