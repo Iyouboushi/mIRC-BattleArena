@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 03/09/16
+;;;; Last updated: 10/04/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -88,7 +88,12 @@ alias view-info {
   if ($2 = accessory) { 
     if ($readini($dbfile(items.db), $3, type) = $null) { $display.private.message(4Invalid item) | halt }
     if ($readini($dbfile(items.db), $3, type) != accessory) { $display.private.message(4Invalid accessory) | halt }
-    $display.private.message([4Name12 $3 $+ ] [4Type12 Accessory $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])
+
+    var %exclusive.test $readini($dbfile(items.db), $3, exclusive)
+    if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [4Exclusive12 no $+ ]  }
+    if (%exclusive.test = yes) {  var %exclusive [4Exclusive12 yes $+ ]  }
+
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Accessory $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ])  
   }
 
   if ($2 = song) { 
@@ -133,7 +138,6 @@ alias view-info {
 
     var %item.currency $readini($dbfile(items.db), $3, currency)
     if (%item.currency = $null) { var %item.currency red orbs }
-
 
     var %exclusive.test $readini($dbfile(items.db), $3, exclusive)
     if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [4Exclusive12 no $+ ]  }
