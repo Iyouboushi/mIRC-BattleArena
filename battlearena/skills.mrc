@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/25/16
+;;;; Last updated: 10/05/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2841,7 +2841,7 @@ alias skill.weaknessshift {
   set %magic.types light.dark.fire.ice.water.lightning.wind.earth
   set %number.of.magic.types $numtok(%magic.types,46)
 
-  set %weapon.types axe.bat.bow.dagger.energyblaster.glyph.greatsword.gun.hamer.handtohand.katana.lightsaber.mace.rifle.scythe.spear.stave.sword.wand.whip
+  set %weapon.types axe.bat.bow.dagger.energyblaster.glyph.greatsword.gun.hammer.handtohand.katana.lightsaber.mace.rifle.scythe.spear.stave.sword.wand.whip
   set %number.of.weapon.types $numtok(%weapon.types,46)
 
   var %current.magic.weakness $gettok(%magic.types,$rand(1,%number.of.magic.types),46)
