@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=68
-Tp=70
+Tp=500
 Str=5
 Def=4
 Int=25
@@ -10,7 +10,7 @@ Name=Aris
 
 [Battle]
 Hp=68
-Tp=70
+Tp=500
 Str=5
 Def=4
 Int=25
@@ -31,7 +31,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=A minion of Ashi, Aris is a frail old man with a longe white beard and short white hair that is balding.  But don't let his frail apperance fool you, he is a master of black magic.
+Char=is a minion of Ashi. He is a frail old man with a long white beard and short white hair that is balding.  But don't let his frail apperance fool you, he is a master of black magic.
 Rage=screams in rage 
 BossQuote=I will render you all to ash!
 
@@ -95,23 +95,38 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=ElderWand
-ElderWand=15
+ElderWand=$calc(1 + $current.battlestreak)
 
 [Skills]
-resist-stun=50
-resist-blind=30
-resist-amnesia=100
-resist-silence=100
-resist-curse=60
-Resist-Petrify=60
-
+Zen=5
+Clearmind=1
+Wizardry=$iif($current.battlestreak <= 200, 40, 100)
+Resist-Amnesia=100
+Resist-Blind=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Petrify=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=$iif($current.battlestreak <= 200, 30, 100)
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
 
 [Techniques]
-Firaja=20
-Stoneja=20
-Waterja=20
-Aeroja=20
-Blizzaja=20
+Firaja=$calc(1 + $current.battlestreak)
+Stoneja=$calc(1 + $current.battlestreak)
+Waterja=$calc(1 + $current.battlestreak)
+Aeroja=$calc(1 + $current.battlestreak)
+Blizzaja=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -120,6 +135,11 @@ Blizzaja=20
 Equipped=SpellMaster
 SpellMaster=2
 SpellMasterXP=0
+
+[NaturalArmor]
+Name=Wizard Shield
+Max=$iif(%battle.type = torment, 1500000, 250)
+Current=250
 
 [modifiers]
 Heal=none
@@ -148,4 +168,11 @@ Dagger=100
 Mace=100
 Stave=100
 EnergyBlaster=100
+Hammer=100
+Lightsaber=100
+Bat=100
 HolyHandGrenade=0
+Dynamite=0
+BombFragment=0
+XmasGrenade=0
+C4=0

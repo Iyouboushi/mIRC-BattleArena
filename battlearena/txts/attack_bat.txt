@@ -1,3 +1,4 @@
-swings the bat at %enemy dealing damage
-laughs at %enemy before swinging the bat to deal damage
-leaps at %enemy swinging the bat
+runs up and hits %enemy over the head with the bat before dashing back
+swings at %enemy with $gender(%attacker) bat
+swings at %enemy before stepping backwards in a defensive stance
+leaps at %enemy and swings several times, rolling to the side before %enemy can react

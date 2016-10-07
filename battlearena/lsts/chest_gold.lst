@@ -56,5 +56,4 @@ $read -l $+ $rand(1, $lines($lstfile(items_healing.lst))) $lstfile(items_healing
 TitaniteShard
 TitaniteChunk
 WorldHeavyweight-Belt
-Hero'sMedal
 $read -l $+ $rand(1, $lines($lstfile(items_tradingcards.lst))) $lstfile(items_tradingcards.lst)

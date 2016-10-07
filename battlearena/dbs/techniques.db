@@ -183,6 +183,13 @@ Daedalus=Brainshaker.Hexastrike.BlackHalo.Realmrazer.Randgrith
 Daedalus+1=Brainshaker.Hexastrike.BlackHalo.Realmrazer.Randgrith
 Mjolnir=Thor'sRage.Thor'sGodforce
 
+; Bats
+BaseballBat=
+
+; Lightsabers
+BlueLightsaber=ForcePush
+Lightsaber=ForcePush
+
 ; Mech Weapons
 BasicMechGun=DoubleShot.GunBlaze
 ImprovedMechGun=DoubleShotII.GunBlazeII
@@ -512,6 +519,10 @@ Sahagin_Spear=SpinningFin.HydroShot.HydroBall.Jump
 MosquitoBite=MosquitoBite
 IfritPrimeClaws=InfernalFire.InfernalBreath.InfernalCleansing
 InfernalNail=FirajaII
+MetroidFangs=MetroidRam.MetroidDrain
+MetroidPrimePower=UltrafrigidBreath.Multi-MissileSystem.SnareBeam.ParticleWaveProjector.MetroidPrimeCharge.PurePhazonBeam.PurePhazonWave
+SpacePirateWeapon=QuantumAssaultCannon.PhotonicPowerScythe.Multi-MissileSytem
+RidleyClaws=KineticBreath.MesonBombLauncher.UltrathermalFlamestrike.Multi-MissileSytem.RidleyClawAttack
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -4060,6 +4071,24 @@ Magic=No
 IgnoreDefense=5
 stat=spd
 Renkei=3
+
+===================
+BAT TECHS
+===================
+
+
+===================
+LIGHTSABER TECHS
+===================
+[ForcePush]
+Type=Single
+TP=50
+Desc=holds $gender($1) hand out, palm facing %enemy for a moment before unleashing an invisble force of energy that slams into %enemy $+ .
+BasePower=50
+Cost=2000
+Element=None
+magic=no
+stat=str
 
 ===================
 BOOSTS
@@ -14783,3 +14812,220 @@ Element=fire
 magic=no
 stat=str
 
+[MetroidRam]
+Type=Single
+Cost=0
+Desc=charges forward, ramming into %enemy before floating back out of range.
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=true
+
+[MetroidDrain]
+Type=Single
+Cost=0
+Desc=latches onto %enemy $+ , draining some health before floating back out of range.
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
+Absorb=yes
+
+[QuantumAssaultCannon]
+Type=AOE
+Cost=0
+Desc=fires a few bursts of yellow-orange energy bolts at all targets on the battlefield.
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[PhotonicPowerScythe]
+Type=Single
+Cost=0
+Desc=gains a yellow glow on the left arm scythe as it charges towards %enemy and strikes with the scythe before backing off.
+TP=10
+Element=None
+Hits=$rand(1,2)
+BasePower=20
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=str
+CanDodge=true
+
+[Multi-MissileSytem]
+Type=Single
+Cost=0
+Desc=primes a missile system before unleashing a random amount of missiles upon %enemy $+ !
+TP=10
+Element=None
+Hits=$rand(2,4)
+BasePower=20
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[KineticBreath]
+Type=AOE
+Cost=0
+Desc=flies up into the air and unleashes a breath attack that covers the battlefield.
+TP=10
+Element=None
+Hits=1
+BasePower=60
+Magic=no
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=2
+
+[MesonBombLauncher]
+Type=AOE
+Cost=0
+Desc=flies over the battlefield, dropping several bombs across the battlefield.
+TP=10
+Element=none
+Hits=1
+BasePower=60
+Magic=no
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=2
+
+[UltrathermalFlamestrike]
+Type=Single
+Cost=0
+Desc=rears his head back before unleashing a stream of fire from his mouth, setting %enemy on fire.
+TP=10
+Element=Fire
+Hits=1
+BasePower=75
+Magic=yes
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=2
+
+[RidleyClawAttack]
+Type=Single
+Cost=0
+Desc=charges forward and strikes %enemy twice with his claws.
+TP=10
+Element=None
+Hits=2
+BasePower=35
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+DestroyShadows=2
+
+[UltrafrigidBreath]
+Type=AOE
+Cost=0
+Desc=spins around, unleashing an ultra frigid breath of ice across the battlefield.
+TP=10
+Element=Ice
+Hits=1
+BasePower=60
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=2
+
+[SnareBeam]
+Type=AOE
+Cost=0
+Desc=covers the battlefield in a net of energy in order to hinder the movement of all targets.
+TP=10
+Element=None
+Hits=1
+BasePower=15
+Magic=no
+StatusType=Slow
+HurtEthereal=true
+stat=int
+CanDodge=true
+
+[ParticleWaveProjector]
+Type=AOE
+Cost=0
+Desc=summons two balls of light blue energy, which bounces around the battlefield to hit all targets.
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=no
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=2
+
+[MetroidPrimeCharge]
+Type=Single
+Cost=0
+Desc=charges towards %enemy $+ , ramming into %enemy with great force.
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=10
+HurtEthereal=True
+stat=str
+CanDodge=true
+DestroyShadows=2
+
+[PurePhazonBeam]
+Type=Single
+Cost=0
+Desc=fires a deadly beam of pure Phazon at %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+StatusType=Poison
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+DestroyShadows=3
+
+[PurePhazonWave]
+Type=AOE
+Cost=0
+Desc=spins around before unleashing deadly Phazon across the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+StatusType=Poison
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+DestroyShadows=4

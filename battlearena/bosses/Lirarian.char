@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($current.battlestreak <= 300, 600, 2000)
+Hp=$iif($current.battlestreak <= 300, 600, 3000)
 Tp=2000
 Str=$iif($current.battlestreak <= 300, 515, 1544)
 Def=$iif($current.battlestreak <= 300, 515, 1544)
@@ -8,8 +8,9 @@ Spd=$iif($current.battlestreak <= 300, 515, 1544)
 IgnitionGauge=9000
 Name=Lirarian
 
+
 [Battle]
-Hp=1500
+Hp=3000
 Tp=2000
 Str=515
 Def=515
@@ -18,13 +19,16 @@ Spd=515
 IgnitionGauge=9000
 Status=alive
 
+
 [Rage]
 RageBar=0
 RageCountDown=0
 
+
 [Limit]
 Level=1
 Percent=0
+
 
 [Descriptions]
 Hused=1
@@ -33,17 +37,21 @@ Char=is an Elven goddess who is entrusted with two powerful weapons. She has lon
 Rage=simply narrows her eyes and glares at everyone.
 BossQuote=You must prove yourselves before moving forward.
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 Drops=
 
+
 [Monster]
 Type=Elf
 size=medium
 TechLearn=$iif($current.battlestreak <= 1000, false, true)
 Elite=$iif($current.battlestreak <= 1000, false, true)
+SuperElite=$iif($current.battlestreak >= 5000, false, true)
+
 
 [Info]
 Flag=monster
@@ -60,6 +68,8 @@ CanTaunt=false
 IgnorePresident=true
 IgnoreOutpost=true
 IgnoreElementalMessage=true
+JustReleaseDefense=100
+
 
 [Status]
 Poison=no
@@ -94,9 +104,11 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=SilverSwords
 SilverSwords=$calc(1 + $current.battlestreak)
+
 
 [Skills]
 Zen=5
@@ -107,18 +119,22 @@ Resist-Amnesia=100
 Resist-Blind=$iif($current.battlestreak <= 200, 60, 100)
 Resist-Charm=100
 Resist-Confuse=100
+Resist-Curse=100
 Resist-Disarm=100
 Resist-Drunk=100
 Resist-Intimidate=100
 Resist-Paralysis=$iif($current.battlestreak <= 200, 60, 100)
 Resist-Petrify=$iif($current.battlestreak <= 200, 60, 100)
 Resist-Poison=100
+Resist-Silence=100
 Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
 Resist-Stun=$iif($current.battlestreak <= 200, 30, 100)
+Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
+
 
 [Techniques]
 Guruthos=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) = 1, 1, 0)
@@ -152,12 +168,14 @@ ResolutionII=$calc(1 + $current.battlestreak)
 HardSlashII=$calc(1 + $current.battlestreak)
 PowerSlashII=$calc(1 + $current.battlestreak)
 
+
 [Equipment]
 Head=Lirarian's_Circlet
 Body=Lirarian's_Armor
 Hands=Lirarian's_Gauntlets
 Legs=Lirarian's_Cuisses
 Feet=Lirarian's_Sabatons
+
 
 [Augments]
 SilverSwords=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus
@@ -175,20 +193,24 @@ Runeist_Mitons=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 Runeist_Trousers=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 Runeist_Bottes=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 
+
 [Styles]
 Equipped=Weaponmaster
 Weaponmaster=10
 
+
 [NaturalArmor]
 Name=Goddess Defense
-Max=$iif($current.battlestreak <= 300, 500, 2500)
-Current=500
+Max=$iif(%battle.type = torment, 1500000, 2000)
+Current=2000
+
 
 [Ignitions]
 WiseReflection=$iif($current.battlestreak >= 1000, 0, 1)
 ElvenGoddessMight=$iif($current.battlestreak <= 1000, 0, 1)
 ElvenGoddessMagic=$iif($current.battlestreak <= 1000, 0, 1)
 ElementalSforzoII=$iif($current.battlestreak <= 5000, 0, 1)
+
 
 [modifiers]
 Heal=Light
@@ -1281,6 +1303,8 @@ UnionCulter=80
 Tellus=80
 Saturnus=80
 Venus=80
+ResistTechs=$iif(%battle.type = torment, 20, 5)
+ResistMelee=$iif(%battle.type = torment, 20, 5)
 Brainshaker=80
 Skullbreaker=80
 SeraphStrike=120

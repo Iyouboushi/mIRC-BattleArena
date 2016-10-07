@@ -1,0 +1,67 @@
+[Info]
+Name=Impact Crater
+Rooms=11
+PlayersNeeded=3
+Level=500
+FinalRoom=10
+StartBattleDesc=leads the party through a temple of Chozo design. They walk to the outside, which has twelve Chozo totems around it. A light emits from the middle once all of the Chozo Artifacts are placed, granting entry to the Impact Crater. However, before they can proceed, a large, flying beast that is similar to a skeletal pterosaur which is covered in metal armor, bombards the arena, destroying the totems and entry point.
+ClearDungeonDesc=* The party has managed to stop Metroid Prime and the Phazon threat. For now. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* Metroid Prime stands victorious over the heroes. The party has failed. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The beast screeches loudly before flying off. The party decides to use this chance to get prepared.
+Battlefield=Chozo Artifact Temple
+
+[1]
+Desc=The beast returns, landing in the center of the temple and gives off another load screech.
+Battlefield=Chozo Artifact Temple
+Monsters=Meta_Ridley
+bossroom=true
+
+[2]
+Desc=The Chozo statues above the temple entrance glow red and focus a beam of energy upon Meta Ridley, forcing him off the arena and into the abyss below. Afterwards, several Chozo ghosts appear in place of the totems, opening the way into the Impact Crater.
+Battlefield=Impact Crater - Entry Point
+RestoreRoom=true
+
+[3]
+Desc=The party continues into the Impact Crater, upon which they see a large creature on the ceiling. Once the party reaches the center of the room, the creature drops down from the ceiling. However, it flees, breaking through a wall as Space Pirates suddenly attack!
+Battlefield=Impact Crater - Phazon Infusion Chamber
+Monsters=Space_Pirate.Space_Pirate.Space_Pirate_Aerotrooper
+
+[4]
+Desc=The party chases after the creature into the next room, only for more Space Pirates to attack.
+Battlefield=Impact Crater - Subchamber 1
+Monsters=Space_Pirate_Aerotrooper.Space_Pirate_Aerotrooper.Space_Pirate_Aerotrooper
+
+[5]
+Desc=The party continues forward, entering a room with blue Phazon in various areas.  A loud screech is heard as a few Metroids suddenly appear.
+Battlefield=Impact Crater - Subchamber 2
+Monsters=Metroid.Metroid.Metroid
+
+[6]
+Desc=The party enters yet another subchamber, which has more blue Phazon, along with a deadlier red version. The familiar screech of a Metroid is heard, as two additional Metroids appear.
+Battlefield=Impact Crater - Subchamber 3
+Monsters=Fission_Metroid.Fission_Metroid
+
+[7]
+Desc=The party enters an eerily quiet subchamber, devoid of any enemies. They decide to rest up for a moment before continuing forward.
+Battlefield=Impact Crater - Subchamber 4
+RestoreRoom=true
+
+[8]
+Desc=The party enters the final subchamber, where they can see the large creature waiting in the center of the room.
+Battlefield=Impact Crater - Subchamber 5
+Monsters=Metroid_Prime
+bossroom=true
+
+[9]
+Desc=Metroid Prime gives off a loud screech as Phazon oozes from the exoskeleton. It smashes through the floor, which leaves a wide hole. The party decide to rest before jumping down into the hole.
+Battlefield=Impact Crater - Subchamber 5
+RestoreRoom=true
+
+[10]
+Desc=The party can see the exoskeleton of Metroid Prime simply laying on the ground, the top missing as it continues to ooze Phazon. The true form of Metroid Prime flies out of the shell and floats in front of the party.
+Battlefield=Impact Crater - Metroid Prime Lair
+Monsters=Metroid_Prime_Core
+bossroom=true

@@ -1435,6 +1435,13 @@ Exclusive=yes
 SellPrice=100
 Cost=100
 
+[ChozoMedallion]
+Type=trust
+NPC=Samus
+SellPrice=1000
+Cost=0
+Exclusive=yes
+
 =========================
 ACCESSORIES
 =========================
@@ -1499,6 +1506,7 @@ Cost=0
 Desc=A rosary from the cultists of Tam-Tara Deepcroft. This accessory will increase the power of your spells.
 IncreaseSpellDamage.Amount=.11
 SellPrice=2000
+Exclusive=yes
 
 [Cultist-Rosary+1]
 type=accessory
@@ -1507,6 +1515,7 @@ Cost=0
 Desc=An upgraded rosary originally from the cultists of Tam-Tara Deepcroft. This accessory will increase the power of your spells.
 IncreaseSpellDamage.Amount=.121
 SellPrice=2000
+Exclusive=yes
 
 [Aetherial-Earrings]
 Type=accessory
@@ -1514,6 +1523,7 @@ AccessoryType=IncreaseMagic
 Cost=0
 Desc=A glowing set of earrings previously worn by Lady Amandine. This accessory will increase the power of magic.
 IncreaseMagic.Amount=.47
+Exclusive=yes
 
 [Aetherial-Earrings+1]
 Type=accessory
@@ -1521,6 +1531,7 @@ AccessoryType=IncreaseMagic
 Cost=0
 Desc=A glowing set of earrings previously worn by Lady Amandine. This accessory will increase the power of magic.
 IncreaseMagic.Amount=.49
+Exclusive=yes
 
 [Forbidden-Earrings]
 Type=accessory
@@ -1528,7 +1539,7 @@ AccessoryType=IncreaseMagic
 Cost=0
 Desc=The ancient and forbidden earrings of Ogama. This accessory will increase the power of magic.
 IncreaseMagic.Amount=.51
-exclusive=yes
+Exclusive=yes
 
 [Forbidden-Earrings+1]
 Type=accessory
@@ -1536,7 +1547,7 @@ AccessoryType=IncreaseMagic
 Cost=0
 Desc=A reforged version of the forbidden earrings of Ogama. This accessory will increase the power of magic.
 IncreaseMagic.Amount=.60
-exclusive=yes
+Exclusive=yes
 Legendary=true
 
 [Forbidden-Earrings+2]
@@ -1545,7 +1556,7 @@ AccessoryType=IncreaseMagic
 Cost=0
 Desc=The strongest version of the forbidden earrings of Ogama. These have been reforged twice. This accessory will increase the power of magic.
 IncreaseMagic.Amount=.70
-exclusive=yes
+Exclusive=yes
 Legendary=true
 
 
@@ -1555,6 +1566,7 @@ AccessoryType=IncreaseMeleeDamage
 Cost=0
 Desc=A glowing ring previously worn by Lady Amandine. This accessory will increase the power of melee attacks based on the number of red orbs on hand.
 SellPrice=2000
+Exclusive=yes
 IncreaseMeleeDamage.Amount=.010
 ; The max +damage will be 1000, which means at .010 amount it would require 100,000 red orbs on hand to do that damage.
 
@@ -1565,6 +1577,7 @@ AccessoryType=IncreaseMeleeDamage
 Cost=0
 Desc=A glowing ring long forgotten from the Tomb of Terror. This accessory will increase the power of melee attacks based on the number of red orbs on hand.
 SellPrice=2000
+Exclusive=yes
 IncreaseMeleeDamage.Amount=.050
 ; The max +damage will be 1000, which means at .050 amount it would require 50,000 red orbs on hand to do that damage.
 exclusive=yes
@@ -1633,7 +1646,7 @@ Desc=A black crown with a bright red gem sitting in the middle.  This accessory 
 ; .30= 30% more orbs.  if the reward is 1000 you'll get +300.
 IncreaseRedOrbs.Amount=.30
 SellPrice=5000
-exclusive=yes
+Exclusive=yes
 
 [Forbidden-Crown+1]
 Type=accessory
@@ -1643,7 +1656,7 @@ Desc=A black crown with a bright red gem sitting in the middle. It has been refo
 ; .45= 45% more orbs.  if the reward is 1000 you'll get +450.
 IncreaseRedOrbs.Amount=.45
 SellPrice=5000
-exclusive=yes
+Exclusive=yes
 Legendary=true
 
 [Forbidden-Crown+2]
@@ -1654,7 +1667,7 @@ Desc=A black crown with a bright red gem sitting in the middle. It has been refo
 ; .60= 60% more orbs.  if the reward is 1000 you'll get +600.
 IncreaseRedOrbs.Amount=.60
 SellPrice=5000
-exclusive=yes
+Exclusive=yes
 Legendary=true
 
 
@@ -1732,6 +1745,7 @@ AccessoryType=AutoRegen
 Cost=0
 Desc=A small ancient charm infused with the power of Osiris. This charm will allow you to have the regeneration skill on automatically.
 SellPrice=2000
+Exclusive=yes
 AutoRegen.Amount=1
 
 [PinkBow]
@@ -1782,6 +1796,7 @@ AccessoryType=IncreaseCriticalHits.BlockAllStatus
 Cost=0
 Desc=A small ancient charm infused with the power of Kan-ra. This charm will increase critical hits by 7% and reduce the chance of status effects from happening by 6%. 
 SellPrice=2000
+Exclusive=yes
 IncreaseCriticalHits.Amount=7
 BlockAllStatus.Amount=6
 
@@ -1885,7 +1900,8 @@ Cost=0
 AccessoryType=IncreaseCriticalHits
 Desc=An accessory for a hero. Gives a large increase to critical hits only when wielding the Mastermune.
 IncreaseCriticalHits.Amount=$iif($readini($char($1), weapons, Mastermune) >= 1, 50, 0)
-SellPrice=3000
+SellPrice=10000
+Exclusive=yes
 
 [Axe-Pin]
 Type=accessory
@@ -2090,6 +2106,7 @@ Type=misc
 Cost=0
 SellPrice=10
 Desc=An oversized mandible from an Antlion
+Exclusive=yes
 
 [Milk]
 Type=misc
@@ -2474,6 +2491,41 @@ Cost=5000
 SellPrice=100
 Currency=AlliedNotes
 Desc=A large iron bowl
+
+[AetherialFragment]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a fragment of the Aetherial accessories from the Haukke Manor.
+Exclusive=yes
+
+[ForbiddenFragment]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a fragment of the Forbidden accessories from the Tomb of Terror.
+Exclusive=yes
+
+[OsirisFragment]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a fragment of the Osiris charm from the Kan-Ra pyramid.
+Exclusive=yes
+
+[Kan-raFragment]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a fragment of the Kan-Ra charm from the Kan-Ra pyramid.
+Exclusive=yes
+
+[CultistFragment]
+Type=misc
+cost=0
+SellPrice=1
+Desc=a fragment of the Cultist Rosary from the Tam-Tara Deepcroft.
+Exclusive=yes
 
 [LifeShard]
 Type=misc
@@ -4464,6 +4516,15 @@ sellprice=1500
 Desc=The ancient mummified hand of Kan-ra that grants access into its pyramid
 Dungeon=Kan-ra
 exclusive=yes
+
+[ChozoArtifacts]
+type=dungeon
+cost=100
+currency=KindredSeal
+sellprice=1500
+Desc=A set of 12 Chozo Artifacts needed to enter the Impact Crater
+Dungeon=Impact_Crater
+Exclusive=yes
 
 [TerrorKey]
 type=dungeon

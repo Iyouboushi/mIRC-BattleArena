@@ -1188,3 +1188,57 @@ Event1Desc=A small creature hiding at the top of one of the pillars stands up an
 Event1Target=random
 Event1Amount=$rand(500,600)
 
+
+[Chozo Artifact Temple]
+weather=rainy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Impact Crater - Entry Point]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Impact Crater - Phazon Infusion Chamber]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Impact Crater - Subchamber 1]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Impact Crater - Subchamber 2]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Impact Crater - Subchamber 3]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Impact Crater - Subchamber 4]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Impact Crater - Subchamber 5]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Impact Crater - Metroid Prime Lair]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

@@ -24,6 +24,7 @@ GreatAxes=Great Axes
 Daggers=Daggers
 Hammers=Hammers
 Lightsabers=Lightsabers
+Bats=BaseballBat
 Misc=Misc
 
 
@@ -50,7 +51,8 @@ Axes=IronAxe.Farsha.Guttler.Kerehcatl.Guttler+1
 GreatAxes=GreatIronAxe.Ukonvasara.Bravura.Lightreaver.Bravura+1
 Daggers=SmallDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kannagi.Mandau+1.Kikoku+1.Kannagi+1
 Hammers=BronzeHammer.WarHammer.BlessedHammer.SteelHammer.Daedalus.Daedalus+1.Mjolnir
-Lightsabers=Lightsaber
+Lightsabers=BlueLightsaber.Lightsaber
+Bats=BaseballBat
 Misc=ProtonPack
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
@@ -65,9 +67,9 @@ MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.Decapiclops
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros.AntlionJaw.Sahagin_Fin.Yagudo_Kunai
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe.DollParts
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe.DollParts.RidleyClaws.SpacePirateWeapon
 
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.MetroidFangs.MetroidPrimePower
 
 ============================================
 WEAPON TEMPLATE
@@ -1645,11 +1647,23 @@ IgnoreDefense=10
 =============================================
 LIGHTSABERS
 =============================================
+[BlueLightsaber]
+Cost=100
+Type=Lightsaber
+Info=An ancient Jedi weapon that creates a powerful plasma beam, that is blue in color.
+Abilities=ForcePush
+Hits=1
+BasePower=75
+Upgrade=3000
+Element=None
+2Handed=false
+IgnoreDefense=10
+
 [Lightsaber]
 Cost=0
 Type=Lightsaber
 Info=An ancient Jedi weapon that creates a powerful plasma beam. Outside of Torment battles the lightsaber has a 1000 power and ignores 10% defense. Inside of Torment the lightsaber has a power of 2000 and ignores 20% defense.
-Abilities=
+Abilities=ForcePush
 Hits=$rand(1,3)
 BasePower=$iif(%battle.type = torment, 2000, 1000)
 Upgrade=6000
@@ -2078,7 +2092,7 @@ MISC WEAPONS
 Cost=0
 SpecialWeapon=true
 Type=ParticleAccelerator
-Info=An energy weapon designed to destroy ghosts. It's a large backpac-sized particle accelerator with a hand-held wand that shoots a stream of protons.
+Info=An energy weapon designed to destroy ghosts. It's a large backpack-sized particle accelerator with a hand-held wand that shoots a stream of protons.
 Abilities=
 Element=none
 Hits=1
@@ -2089,6 +2103,18 @@ Upgrade=0
 IgnoreDefense=$iif($readini($char($2), monster, ghost) = true, 75, 0)
 
 
+=============================================
+BATS
+=============================================
+[BaseballBat]
+Cost=25
+Type=Sword
+Info=A common baseball bat with no special features.
+Abilities=
+Element=None
+Hits=1
+BasePower=25
+Upgrade=800
 
 
 =============================================
@@ -5555,6 +5581,64 @@ Upgrade=0
 Hits=2
 CanShieldReflect=false
 IgnoreDefense=1
+
+[MetroidFangs]
+Cost=0
+Type=HandToHand
+Info=The fangs of a Metroid.
+Abilities=MetroidRam.MetroidDrain
+Element=None
+Hits=1
+BasePower=50
+Upgrade=0
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=false
+CanCounter=false
+
+[MetroidPrimePower]
+Cost=0
+Type=HandToHand
+Info=The power of Metroid Prime.
+Abilities=UltrafrigidBreath.Multi-MissileSystem.SnareBeam.ParticleWaveProjector.MetroidPrimeCharge.PurePhazonBeam.PurePhazonWave
+Element=None
+Hits=1
+BasePower=75
+Upgrade=0
+IgnoreDefense=5
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+CanCounter=false
+
+[SpacePirateWeapon]
+Cost=0
+Type=HandToHand
+Info=The weapon of the Space Pirates.
+Abilities=QuantumAssaultCannon.PhotonicPowerScythe.Multi-MissileSytem
+Element=None
+Hits=1
+BasePower=50
+Upgrade=0
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+CanCounter=false
+
+[RidleyClaws]
+Cost=0
+Type=HandToHand
+Info=The claws of Ridley.
+Abilities=KineticBreath.MesonBombLauncher.UltrathermalFlamestrike.Multi-MissileSytem.RidleyClawAttack
+Element=None
+Hits=2
+BasePower=45
+Upgrade=0
+IgnoreDefense=5
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+CanCounter=false
 
 ==============================
 SHIELDS
