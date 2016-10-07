@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/22/16
+;;;; Last updated: 10/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2498,11 +2498,13 @@ fulls {
   if ($readini($char($1), stuff, TimesFled) = $null) { writeini $char($1) stuff TimesFled 0 }
 
   ; Clear status
-  $clear_status($1)
+  $clear_status($1, $2)
 
   ; If it's not a monster or NPC, we need to clear some more stuff and check for $$.
   if ($readini($char($1), info, flag) = $null) { 
-    $clear_skills($1) | var %stylelist $styles.get.list($1) 
+    if ($2 != dungeon) {  $clear_skills($1)  }
+
+    var %stylelist $styles.get.list($1) 
     .remini $char($1) modifiers
     var %doubledollars $readini($char($1), stuff, doubledollars) 
     if (%doubledollars = $null) { writeini $char($1) stuff doubledollars 100 | var %doubledollars 100 }
@@ -2694,26 +2696,30 @@ clear_status {
   ; Clear Charm, since the clear_negative_status doesn't.
   writeini $char($1) status charmer noOneThatIKnow | writeini $char($1) status charm.timer 0 | writeini $char($1) status charmed no | writeini $char($1) status boosted no 
 
-  ; Positive status effects
-  $clear_positive_status($1)
-
-  writeini $char($1) status orbbonus no | writeini $char($1) status revive no | writeini $char($1) status FinalGetsuga no
-
   ; Magic effects  
   writeini $char($1) Status frozen no | writeini $char($1) status freezing no | writeini $char($1) Status shock no | writeini $char($1) Status burning no 
   writeini $char($1) Status drowning no | writeini $char($1) Status tornado no |  writeini $char($1) Status earthquake no 
 
-  ; The resists are used to resist the magic effect stuff (Freezing, Burning, etc).  Only players need this removed each time.
-  if ($readini($char($1), info, flag) = $null) { 
-    writeini $char($1) status resist-fire no | writeini $char($1) status resist-lightning no | writeini $char($1) status resist-ice no
-    writeini $char($1) status resist-earth no | writeini $char($1) status resist-wind no | writeini $char($1) status resist-water no
-    writeini $char($1) status resist-light no | writeini $char($1) status resist-dark no
+  ; Positive status effects; ignore this if we're in a restore room of a dungeon
+  if ($2 != dungeon) {
+    $clear_positive_status($1)
+
+    writeini $char($1) status orbbonus no | writeini $char($1) status revive no | writeini $char($1) status FinalGetsuga no
+
+    if ($readini($char($1), info, flag) = $null) {  writeini $char($1) status ethereal no | writeini $char($1) status reflect no | writeini $char($1) status reflect.timer 0 | writeini $char($1) status invincible no | writeini $char($1) status invincible.timer 0 }
+    if ($augment.check($1, AutoReraise) = true) { 
+      if (%augment.strength >= 5) { writeini $char($1) status revive yes }
+    }
+
+    ; The resists are used to resist the magic effect stuff (Freezing, Burning, etc).  Only players need this removed each time.
+    if ($readini($char($1), info, flag) = $null) { 
+      writeini $char($1) status resist-fire no | writeini $char($1) status resist-lightning no | writeini $char($1) status resist-ice no
+      writeini $char($1) status resist-earth no | writeini $char($1) status resist-wind no | writeini $char($1) status resist-water no
+      writeini $char($1) status resist-light no | writeini $char($1) status resist-dark no
+    }
+
   }
 
-  if ($readini($char($1), info, flag) = $null) {  writeini $char($1) status ethereal no | writeini $char($1) status reflect no | writeini $char($1) status reflect.timer 0 | writeini $char($1) status invincible no | writeini $char($1) status invincible.timer 0 }
-  if ($augment.check($1, AutoReraise) = true) { 
-    if (%augment.strength >= 5) { writeini $char($1) status revive yes }
-  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

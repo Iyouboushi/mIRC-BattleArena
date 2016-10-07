@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 10/02/16
+;;;; Last updated: 10/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -443,7 +443,7 @@ dungeon.restoreroom {
     var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
     var %flag $readini($char(%who.battle), info, flag)
 
-    if (%flag != monster) { $fulls(%who.battle) |  $clear_skill_timers(%who.battle) |  writeini $char(%who.battle) info NeedsFulls yes }
+    if (%flag != monster) { $fulls(%who.battle, dungeon) |  $clear_skill_timers(%who.battle) |  writeini $char(%who.battle) info NeedsFulls yes }
 
     inc %battletxt.current.line
   }
