@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/16/16
+;;;; Last updated: 10/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3749,10 +3749,10 @@ offensive.style.check {
       $mastery_check($1, $2)
 
       var %amount.to.increase $calc(.045 * %current.playerstyle.level)
-      if (%amount.to.increase >= .70) { var %amount.to.increase .70 }
+      if (%amount.to.increase >= .65) { var %amount.to.increase .65 }
       var %wpnmst.increase $round($calc(%amount.to.increase * %attack.damage),0)
       inc %attack.damage %wpnmst.increase
-      var %playerstyle.bonus $round($calc(%current.playerstyle.level * 1.5),0)
+      var %playerstyle.bonus $round($calc(%current.playerstyle.level * 1.2),0)
       inc %mastery.bonus %playerstyle.bonus
       inc %attack.damage %mastery.bonus
     }
@@ -3783,8 +3783,8 @@ offensive.style.check {
   }
 
   if ($3 = magic) {
-    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .138)
-      if (%magic.bonus.modifier >= 1) { set %magic.bonus.modifier .96 }
+    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .178)
+      if (%magic.bonus.modifier >= 1.5) { set %magic.bonus.modifier 1.5 }
     }
   }
 }
