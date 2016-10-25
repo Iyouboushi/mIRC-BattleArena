@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/29/16
+;;;; Last updated: 10/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -190,7 +190,7 @@ calculate_damage_magic {
   if (%portal.bonus = true) { dec %magic.bonus.modifier .15 }
 
   if ($augment.check($1, MagicBonus) = true) { 
-    set %magic.bonus.augment $calc(%augment.strength * .2)
+    set %magic.bonus.augment $calc(%augment.strength * .35)
     inc %magic.bonus.modifier %magic.bonus.augment
     unset %magic.bonus.augment
   }
