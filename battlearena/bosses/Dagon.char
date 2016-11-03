@@ -29,7 +29,7 @@ RageCountDown=0
 Char=is a large ice toad-like creature with anglerfish feelers. He is glowing red
 Rage=screams in rage 
 BossQuote=I will make you suffer more than you thought possible!
-DeathMessage=Dagon collapses to the ground and sputters "don’t think this is the end… there are more of us" before dying.
+DeathMessage=collapses to the ground and sputters "don’t think this is the end… there are more of us" before dying.
 MonsterSummon=Dagon steps back into some shadows and summons a Rusalka to fight for him.
 
 [Stuff]
