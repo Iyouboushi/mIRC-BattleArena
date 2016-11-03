@@ -3454,6 +3454,16 @@ AlliedNotes=5000
 Exclusive=yes
 PortalLevel=5000
 
+[FortunaCrest]
+Type=portal
+Cost=0
+Battlefield=Fortuna Courtyard
+Weather=Snowy
+Monster=Blue_Rusalka.Red_Rusalka
+Desc=uses the crest to open the gates of the Fortuna Castle and together the heroes venture into the courtyard where they see, through thick snow and shadows, that there are two beautiful naked women glowing blue and red waiting for them. They giggle upon seeing the heroes.
+AlliedNotes=5000
+Exclusive=yes
+PortalLevel=5000
 
 [MechanicalEye]
 type=portal

@@ -67,9 +67,9 @@ MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.Decapiclops
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros.AntlionJaw.Sahagin_Fin.Yagudo_Kunai
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe.DollParts.RidleyClaws.SpacePirateWeapon
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe.DollParts
 
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.MetroidFangs.MetroidPrimePower
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs
 
 ============================================
 WEAPON TEMPLATE
@@ -1659,6 +1659,7 @@ Element=None
 2Handed=false
 IgnoreDefense=10
 
+
 [Lightsaber]
 Cost=0
 Type=Lightsaber
@@ -2086,6 +2087,19 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 
 =============================================
+BATS
+=============================================
+[BaseballBat]
+Cost=25
+Type=Sword
+Info=A common baseball bat with no special features.
+Abilities=
+Element=None
+Hits=1
+BasePower=25
+Upgrade=800
+
+=============================================
 MISC WEAPONS
 =============================================
 [ProtonPack]
@@ -2103,18 +2117,6 @@ Upgrade=0
 IgnoreDefense=$iif($readini($char($2), monster, ghost) = true, 75, 0)
 
 
-=============================================
-BATS
-=============================================
-[BaseballBat]
-Cost=25
-Type=Sword
-Info=A common baseball bat with no special features.
-Abilities=
-Element=None
-Hits=1
-BasePower=25
-Upgrade=800
 
 
 =============================================
@@ -5591,10 +5593,11 @@ Element=None
 Hits=1
 BasePower=50
 Upgrade=0
-HurtEthereal=true
-2Handed=true
+Hits=2
 CanShieldReflect=false
 CanCounter=false
+2Handed=true
+HurtEthereal=true
 
 [MetroidPrimePower]
 Cost=0
@@ -5639,6 +5642,32 @@ HurtEthereal=true
 2Handed=true
 CanShieldReflect=true
 CanCounter=false
+
+
+[Rusalka]
+Cost=0
+Type=HandToHand
+Info=She's a beautiful and naked woman who is glowing an unnatural color
+Abilities=Tantalization.FrozenSolid
+Element=Ice
+BasePower=500
+Upgrade=0
+Hits=2
+CanShieldReflect=false
+IgnoreDefense=10
+
+[DemonToad]
+Cost=0
+Type=HandToHand
+Info=It's a giant ice toad angler fish demon.. good lord
+Abilities=RusalkaWhip.FrogSplash.MmCrunchy.Icicles
+Element=Ice
+BasePower=500
+Upgrade=0
+Hits=$rand(2,3)
+CanShieldReflect=false
+IgnoreDefense=10
+
 
 ==============================
 SHIELDS

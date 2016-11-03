@@ -1010,6 +1010,12 @@ Event1Desc=The battlefield glows red and erupts into pillars of flames that engu
 Event1Target=players
 Event1Amount=600
 
+[Fortuna Courtyard]
+Weather=snowy
+NumberOfEvents=0
+Scavenge=BeastmenSeal.KindredSeal.KindredCrest
+limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver.no-playerclones
+
 
 ==============================================================
 DUNGEON battlefields

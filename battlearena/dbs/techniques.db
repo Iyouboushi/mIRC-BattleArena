@@ -523,6 +523,8 @@ MetroidFangs=MetroidRam.MetroidDrain
 MetroidPrimePower=UltrafrigidBreath.Multi-MissileSystem.SnareBeam.ParticleWaveProjector.MetroidPrimeCharge.PurePhazonBeam.PurePhazonWave
 SpacePirateWeapon=QuantumAssaultCannon.PhotonicPowerScythe.Multi-MissileSytem
 RidleyClaws=KineticBreath.MesonBombLauncher.UltrathermalFlamestrike.Multi-MissileSytem.RidleyClawAttack
+Rusalka=Tantalization.FrozenSolid
+DemonToad=RusalkaWhip.FrogSplash.MmCrunchy.Icicles
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -5076,6 +5078,79 @@ BasePower=10
 Element=water
 magic=yes
 stat=str
+
+[Tantalization]
+Type=AOE
+StatusType=Charm
+TP=10
+Desc=beckons all the heroes to join her and to fight for her before sending out a blast of ice that covers the battlefield
+BasePower=5
+Element=none
+Cost=0
+Magic=no
+stat=int
+
+[FrozenSolid]
+Type=AOE
+StatusType=Freezing
+TP=10
+Desc=flies around the battlefield and brushes up against all of the heroes with her frozen icy body
+BasePower=5
+Element=none
+Cost=0
+Magic=no
+stat=int
+IgnoreShadows=true
+
+[RusalkaWhip]
+Type=AOE
+StatusType=Freezing
+TP=10
+Desc=attaches the Rusalka to its angler fish-like feeler and then does a wide spin around the room
+BasePower=30
+Element=none
+Cost=0
+Magic=no
+Stat=str
+DestroyShadows=2
+
+[FrogSplash]
+Type=Single
+StatusType=Stun
+TP=10
+Desc=leaps high into the air and flies straight down upon %enemy $+ !  Ouch!
+BasePower=30
+Element=none
+Cost=0
+Magic=no
+Stat=str
+IgnoreShadows=true
+
+[MmCrunchy]
+Type=Single
+StatusType=Stun
+TP=10
+Desc=sends out his powerful tongue to snatch onto %enemy with intent of taking a large literal bite out of the hero!
+BasePower=50
+Element=none
+Cost=0
+Magic=no
+Stat=str
+IgnoreShadows=true
+
+[Icicles]
+Type=AOE
+TP=10
+Desc=shoots several icicles off of his back and has them rain down upon the battlefield hitting everyone 
+BasePower=10
+Element=Ice
+Cost=0
+Magic=yes
+Stat=str
+DestroyShadows=3
+
+
+
 
 [Temptation]
 Type=Single

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 10/21/16
+;;;; Last updated: 11/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -733,6 +733,7 @@ boost_monster_hp {
 
   ; If the target is set to ignore hp, return without adjusting it
   if ($readini($char($1), info, BattleStats) = ignoreHP) { return }
+  if ($readini($char($1), info, IgnoreHP) = true) { return }
 
   set %hp $readini($char($1), BaseStats, HP)
 
@@ -2442,6 +2443,7 @@ inflict_status {
   if ($3 = speedup) { set %status.type speedup | var %status.grammar faster }
   if ($3 = sleep) { set %status.type sleep  | var %status.grammar asleep }
   if ($3 = terrify) { set %status.type terrify | var %status.grammar terrified }
+  if ($3 = freezing) { set %status.type frozen | var %status.grammar freezing }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
 
@@ -3748,11 +3750,11 @@ offensive.style.check {
     if (($3 = melee) || ($3 = tech)) {
       $mastery_check($1, $2)
 
-      var %amount.to.increase $calc(.045 * %current.playerstyle.level)
-      if (%amount.to.increase >= .65) { var %amount.to.increase .65 }
+      var %amount.to.increase $calc(.05 * %current.playerstyle.level)
+      if (%amount.to.increase >= .70) { var %amount.to.increase .70 }
       var %wpnmst.increase $round($calc(%amount.to.increase * %attack.damage),0)
       inc %attack.damage %wpnmst.increase
-      var %playerstyle.bonus $round($calc(%current.playerstyle.level * 1.2),0)
+      var %playerstyle.bonus $round($calc(%current.playerstyle.level * 1.5),0)
       inc %mastery.bonus %playerstyle.bonus
       inc %attack.damage %mastery.bonus
     }
@@ -3783,8 +3785,8 @@ offensive.style.check {
   }
 
   if ($3 = magic) {
-    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .178)
-      if (%magic.bonus.modifier >= 1.5) { set %magic.bonus.modifier 1.5 }
+    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .125)
+      if (%magic.bonus.modifier >= 1) { set %magic.bonus.modifier .92 }
     }
   }
 }
