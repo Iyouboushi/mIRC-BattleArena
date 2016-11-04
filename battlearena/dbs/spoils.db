@@ -229,3 +229,7 @@ Yagudo_Prioress=BeastmenSeal
 Yagudo_Scribe=BeastmenSeal
 Yagudo_Summoner=BeastmenSeal
 Yagudo_Zealot=BeastmenSeal
+
+
+Blue_Rusalka=$iif(%portal.bonus = true, Clom'sTale-03.Clom'sTale-04)
+Red_Rusalka=$iif(%portal.bonus = true, Clom'sTale-03.Clom'sTale-04)
