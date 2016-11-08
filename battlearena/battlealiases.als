@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/03/16
+;;;; Last updated: 11/08/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -282,27 +282,24 @@ no.mech.check {
 ; Returns the current streak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 current.battlestreak {
+  var %temp.current.battlestreak $readini(battlestats.dat, battle, WinningStreak)
 
   if (%battle.type = ai) { return  %ai.battle.level  }
   if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
   if (%battle.type = torment) { return $calc(500 * %torment.level) }
-
-  if (%portal.bonus != true) {
-
-    if (%battle.type = dungeon) { return $readini($txtfile(battle2.txt), dungeoninfo, dungeonlevel) }
-
-    var %temp.current.battlestreak $readini(battlestats.dat, battle, WinningStreak)
-    if (%temp.current.battlestreak <= 0) { return $readini(battlestats.dat, battle, LosingStreak) }
-    else { 
-      return %temp.current.battlestreak 
-    }
-  }
-
   if (%portal.bonus = true) {
     var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
     if (%current.portal.level = $null) { return 500 } 
     else { return %current.portal.level }
   }
+  if (%battle.type = dungeon) { return $readini($txtfile(battle2.txt), dungeoninfo, dungeonlevel) }
+  if ((%battle.type = assault) || (%battle.type = defendoutpost)) {
+    if (%temp.current.battlestreak > 100) { return 100 }
+  }
+
+  if (%temp.current.battlestreak <= 0) { return $readini(battlestats.dat, battle, LosingStreak) }
+  else { return %temp.current.battlestreak }
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

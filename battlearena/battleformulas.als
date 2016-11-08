@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/05/16
+;;;; Last updated: 11/08/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -2856,7 +2856,10 @@ formula.techdmg.monster {
 
   if (%attack.damage = $null) { set %attack.damage 0 }
 
-  ; First things first, let's find out the base power.
+  ; How many hits is this technique?
+  set %tech.howmany.hits $readini($dbfile(techniques.db), $2, hits)
+
+  ; Let's find out the base power.
   set %base.stat.needed $readini($dbfile(techniques.db), $2, stat)
   if (%base.stat.needed = $null) { set %base.stat.needed int }
 
@@ -2879,6 +2882,11 @@ formula.techdmg.monster {
   set %true.base.stat %base.stat
 
   var %tech.base $readini($dbfile(techniques.db), p, $2, BasePower)
+  var %base.damage.percent %tech.base
+  if (%base.damage.percent >= 50) { var %base.damage.percent 50 }
+
+  var %attack.rating $return_percentofvalue($readini($char($3), basestats, hp), %base.damage.percent)
+  if (%tech.howmany.hits > 1) { var %attack.rating $round($calc(%attack.rating / 1.5),0) }
 
   var %user.tech.level $readini($char($1), Techniques, $2)
   if (%user.tech.level = $null) { var %user.tech.level 1 }
@@ -2887,10 +2895,6 @@ formula.techdmg.monster {
   set %ignition.techs $readini($dbfile(ignitions.db), %ignition.name, techs)
   if ($istok(%ignition.techs,$2,46) = $true) { var %user.tech.level 50 }
   unset %ignition.name | unset %ignition.techs
-
-  var %base.damage.percent %tech.base
-  if (%base.damage.percent >= 50) { var %base.damage.percent 50 }
-  var %attack.rating $return_percentofvalue($readini($char($3), basestats, hp), %base.damage.percent)
 
   if (%user.tech.level < 100) {  inc %tech.base $round($calc(%user.tech.level * 1.8),0) }
 
@@ -3123,8 +3127,6 @@ formula.techdmg.monster {
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
 
-  ; Is the tech a multi-hit weapon?  
-  set %tech.howmany.hits $readini($dbfile(techniques.db), $2, hits)
 
   $first_round_dmg_chk($1, $3)
 
