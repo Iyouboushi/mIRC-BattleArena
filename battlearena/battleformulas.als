@@ -3024,6 +3024,7 @@ formula.techdmg.monster {
   var %min.damage %attack.rating
   var %level.difference $calc($get.level($1) / $get.level($3))
   var %min.damage $round($calc(%min.damage * %level.difference),0)
+  set %attack.damage $round($calc(%attack.damage * %level.difference),0)
 
   if (%attack.damage <= 1) {
     var %minimum.damage 1
@@ -3035,7 +3036,6 @@ formula.techdmg.monster {
 
   inc %attack.damage $rand(1,5)
   unset %true.base.stat
-
 
   if (%battle.type = dungeon) {
     if ($dungeon.bossroomcheck = true) { var %percent.damage.amount 5 }
