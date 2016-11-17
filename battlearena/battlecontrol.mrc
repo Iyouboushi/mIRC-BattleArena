@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/22/16
+;;;; Last updated: 11/17/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -747,6 +747,11 @@ alias battlebegin {
   if (%battle.type != ai) { 
     if ((%number.of.players = 0) || (%number.of.players = $null)) {  
       $display.message($readini(translation.dat, battle, NoPlayersOnField), global) 
+
+      ; If the total average player's level is 1000 or higher, let's give the monsters some conquest points
+      ; this represents the increasing threat of evil across the world
+      if ($total.player.averagelevel >= 1000) {  $conquest.points(monsters, 2)  }
+
       ; Increase the empty rounds counter and check to see if the empty rounds is > the max allowed before resetting the streak.
       var %max.emptyrounds $readini(system.dat, system, EmptyRoundsBeforeStreakReset)
       var %current.emptyrounds $readini(battlestats.dat, battle, emptyRounds) 
