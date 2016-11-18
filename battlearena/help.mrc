@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 10/04/16
+;;;; Last updated: 11/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -283,7 +283,7 @@ alias view-info {
     if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [4Exclusive12 no $+ ]1  }
     if (%exclusive.test = yes) {  var %exclusive [4Exclusive12 yes $+ ]  }
 
-    $display.private.message([4Name12 %info.name $+ ] [4Armor Location12 %info.location $+ ]  [4Armor Augment12 %info.augment $+ ] [4Armor Level Requirement12 %armor.level.requirement $+ ] %exclusive %sell.price)
+    $display.private.message([4Name12 %info.name $+ ] [4Armor Location12 %info.location $+ ]  [4Armor Augment12 %info.augment $+ ] [4Player Level Requirement12 %armor.level.requirement $+ ] %exclusive %sell.price)
     $display.private.message([4Stats on Armor $+ ] 4Health12 %info.hp  $+ $chr(124) 4TP12 %info.tp   $+ $chr(124) 4 $+ Strength12 %info.str  $+ $chr(124) 4 $+ Defense12 %info.def  $+ $chr(124) 4Intelligence12 %info.int  $+ $chr(124) 4Speed12 %info.spd)
     if (AutoReraise isin %info.augment) { $display.private.message(4The Auto Reraise Augment only works if you have 5 pieces of armor that all have the same augment.  In other words the augment strength must be at least 5 in order to work) } 
   }
