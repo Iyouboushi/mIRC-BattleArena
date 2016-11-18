@@ -750,7 +750,10 @@ alias battlebegin {
 
       ; If the total average player's level is 1000 or higher, let's give the monsters some conquest points
       ; this represents the increasing threat of evil across the world
-      if ($total.player.averagelevel >= 1000) {  $conquest.points(monsters, 2)  }
+      if ($total.player.averagelevel >= 1000) {  
+        $conquest.points(players, -2)  
+        $conquest.points(monsters, 3)  
+      }
 
       ; Increase the empty rounds counter and check to see if the empty rounds is > the max allowed before resetting the streak.
       var %max.emptyrounds $readini(system.dat, system, EmptyRoundsBeforeStreakReset)

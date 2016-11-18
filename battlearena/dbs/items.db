@@ -4835,6 +4835,7 @@ TRADING CARDS
 [TradingCard-001]
 Type=TradingCard
 Cost=0
+Rarity=1
 SellPrice=100
 Numbers=1.2.1.1
 Desc=A small trading card. On the front is a picture of an Orb Fountain glowing brightly.
@@ -4842,6 +4843,7 @@ Desc=A small trading card. On the front is a picture of an Orb Fountain glowing 
 [TradingCard-002]
 Type=TradingCard
 Cost=0
+Rarity=1
 SellPrice=100
 Numbers=2.1.1.1
 Desc=A small trading card. On the front is a picture of a Lost Soul. It looks like it's in pain. Poor guy.
@@ -4849,20 +4851,22 @@ Desc=A small trading card. On the front is a picture of a Lost Soul. It looks li
 [TradingCard-003]
 Type=TradingCard
 Cost=0
+Rarity=1
 SellPrice=100
-Numbers=4.2.3.4
+Numbers=2.1.3.2
 Desc=A small trading card. On the front is a picture of the bird-like Yagudo ready for battle.
 
 [TradingCard-004]
 Type=TradingCard
 Cost=0
+Rarity=1
 SellPrice=100
-Numbers=2.4.4.3
+Numbers=2.4.3.1
 Desc=A small trading card. On the front is a picture of a green Orc posing with his axe.
 
 [TradingCard-005]
 Type=TradingCard
-Cost=0
+Cost=0Rarity=1
 SellPrice=100
 Numbers=3.4.2.4
 Desc=A small trading card. On the front is a picture of a shelled Quadav holding a staff ready to cast a spell.
@@ -4870,6 +4874,7 @@ Desc=A small trading card. On the front is a picture of a shelled Quadav holding
 [TradingCard-006]
 Type=TradingCard
 Cost=0
+Rarity=1
 SellPrice=100
 Numbers=2.2.5.2
 Desc=A small trading card. On the front is a picture of half-rotting zombie. Mmmm brains!
@@ -4877,6 +4882,7 @@ Desc=A small trading card. On the front is a picture of half-rotting zombie. Mmm
 [TradingCard-007]
 Type=TradingCard
 Cost=0
+Rarity=2
 SellPrice=100
 Numbers=2.4.5.3
 Desc=A small trading card. On the front is a picture of a large dirt eating worm as it pops out of the ground.
@@ -4884,6 +4890,7 @@ Desc=A small trading card. On the front is a picture of a large dirt eating worm
 [TradingCard-008]
 Type=TradingCard
 Cost=0
+Rarity=2
 SellPrice=100
 Numbers=3.5.3.4
 Desc=A small trading card. On the front is a picture of a succubus blowing a kiss.
@@ -4891,6 +4898,7 @@ Desc=A small trading card. On the front is a picture of a succubus blowing a kis
 [TradingCard-009]
 Type=TradingCard
 Cost=0
+Rarity=2
 SellPrice=100
 Numbers=4.4.5.3
 Desc=A small trading card. On the front is a picture of a Creeper about to blow up and destroy a house.
@@ -4898,6 +4906,7 @@ Desc=A small trading card. On the front is a picture of a Creeper about to blow 
 [TradingCard-010]
 Type=TradingCard
 Cost=0
+Rarity=3
 SellPrice=100
 Numbers=5.6.5.4
 Desc=A small trading card. On the front is a picture of a Cerberus covered in ice in mid-roar.
@@ -4905,6 +4914,7 @@ Desc=A small trading card. On the front is a picture of a Cerberus covered in ic
 [TradingCard-011]
 Type=TradingCard
 Cost=0
+Rarity=3
 SellPrice=100
 Numbers=6.6.4.5
 Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea.
@@ -4913,12 +4923,14 @@ Desc=A small trading card. On the front is a picture of the puppet master contro
 Type=TradingCard
 Cost=0
 SellPrice=100
+Rarity=3
 Numbers=5.6.5.5
 Desc=A small trading card. On the front is a picture of Gobbles, the demented and evil turkey, holding a knife in one hand, a fork in the other with a large red bandana over his head
 
 [TradingCard-042]
 Type=TradingCard
 Cost=0
+Rarity=5
 SellPrice=100
 Numbers=12.12.12.12
 Desc=A small trading card. On the front is a picture of Lirarian floating in the air, wielding both a silver sword and black staff.
