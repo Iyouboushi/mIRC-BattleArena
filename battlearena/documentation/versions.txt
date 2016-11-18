@@ -1492,6 +1492,7 @@ Battle Arena Bot VERSIONS
 - Added Gear Sets that players can set. Creating a gearset will copy the currently equipped armor to a set that can quickly be
   re-equipped with one command. The commands are: !gearset set 1-3 to create one, !gearset equip 1-3 to equip one and 
   !gearset view 1-3 to see what equipment is currently equipped under the set. It's possible to overwrite equipment sets
+- Added a 50% orb bonus to any player who has less than 10k orbs total (spent + on-hand)
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1544,6 +1545,8 @@ Battle Arena Bot VERSIONS
 - Changed the BloodBoost, BloodSpirit and Speed skills to no longer add stats directly to the player. 
   Instead they are added when needed for calculations.
 - Changed gold orbs/auto-revive effect so it can only be used three times total per player per battle
+- Changed conquest points so that monsters will gain +3 and players will lose -2 per missed battle opportunity if the
+  total average level of all the players is 1000 or more
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 11/03/16
+;;;; Last updated: 11/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -104,6 +104,17 @@ get_redorbs {
   var %tmp.redorbs $readini($char($1), stuff, redorbs)
   if (%tmp.redorbs = $null) { return 0 }
   else { return %tmp.redorbs }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns orbs on hand + spent
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return.totalorbs {
+  var %orbs.onhand $readini($char($1), stuff, redorbs)
+  var %orbs.spent $readini($char($1), stuff, RedOrbsSpent)
+  var %total.orbs $calc(%orbs.onhand + %orbs.spent)
+  if (%total.orbs = $null) { return 0 }
+  else { return %total.orbs }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

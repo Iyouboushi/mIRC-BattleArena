@@ -2075,6 +2075,18 @@ GardenXP=50
 GardenType=flower
 Currency=AlliedNotes
 
+[SmallCarrot]
+Type=misc
+Cost=0
+SellPrice=50
+Desc=a tiny carrot that is not suitable for cooking. Just sell it.
+
+[PoringGoop]
+type=misc
+Cost=0
+SellPrice=50
+Desc=The remains of a poring not suitable for crafting. Sell it.
+
 [BeetleShell]
 Type=misc
 Cost=0

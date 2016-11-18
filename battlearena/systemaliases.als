@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/07/16
+;;;; Last updated: 11/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3884,6 +3884,7 @@ conquest.points {
     var %conquest.points $readini(battlestats.dat, conquest, ConquestPointsPlayers)
     inc %conquest.points $2
     if (%conquest.points >= 6000) { var %conquest.points 6000 }
+    if (%conquest.points <= 0) { var %conquest.points 0 }
     writeini battlestats.dat conquest ConquestPointsPlayers %conquest.points
   }
   if ($1 = monsters) {

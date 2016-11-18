@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 11/17/16
+;;;; Last updated: 11/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2675,6 +2675,12 @@ alias battle.reward.redorbs {
 
       ; Write the current time for the current battle
       writeini $char(%who.battle) Info LastBattleTime $ctime
+
+      ; For newer players let's increase their orb amount by 50% to help them with earlier streaks
+      if ($return.totalorbs(%who.battle) < 10000) {
+        var %orbs.increase $calc(%total.redorbs.reward * .50)
+        inc %total.redorbs.reward %orbs.increase  
+      }
 
       ; Add the orbs to the player
       var %current.orbs.onhand $readini($char(%who.battle), stuff, redorbs)
