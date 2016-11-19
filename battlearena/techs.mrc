@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 09/28/16
+;;;; Last updated: 11/19/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -351,6 +351,7 @@ alias tech_cmd {
   if (%tech.type = heal-aoe) { var %user.flag monster }
   if (%mode.pvp = on) { var %user.flag monster }
   if (%ai.type = berserker) { var %user.flag monster }
+  if ($readini($char($1), monster, berserk) = true) { var %user.flag monster }
   if (%covering.someone = on) { var %user.flag monster }
 
   if ((%user.flag != monster) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private)  | halt }
@@ -414,6 +415,12 @@ alias tech_cmd {
       }
 
       ; Determine if it's players or monsters
+
+      if ($readini($char($1), monster, berserk) = true) {  
+        if ($readini($char(%ai.target), info, flag) = monster) { var %user.flag npc }
+        else { var %user.flag monster } 
+      }
+
       if (%user.flag = monster) { $tech.aoe($1, $2, $3, player) | halt }
       if ((%user.flag = $null) || (%user.flag = npc)) { $tech.aoe($1, $2, $3, monster) | halt }
     }

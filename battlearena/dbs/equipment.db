@@ -3933,6 +3933,21 @@ Cost=0
 SellPrice=0
 Exclusive=yes
 
+[HeavyFin]
+Name=Heavy Fin
+hp=0
+tp=0
+Str=5560
+def=1520
+int=1300
+spd=2380
+Augment=none
+EquipLocation=body
+Cost=0
+SellPrice=0
+Exclusive=yes
+
+
 
 [InfernalFlames]
 Name=Infernal Flames

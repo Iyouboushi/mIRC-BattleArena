@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 10/07/16
+;;;; Last updated: 11/19/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -475,4 +475,41 @@ dungeon.haukke.lampcount {
   if ($readini($char(Haukke_Lamp3), battle, hp) > 0) { inc %haukke.lamps.lit 1 }
   if ($readini($char(Haukke_Lamp4), battle, hp) > 0) { inc %haukke.lamps.lit 1 }
   return %haukke.lamps.lit
+}
+
+
+dungeon.pirate.bubblecount {
+  ; $1 = red or blue
+
+  var %bubble.count 0
+
+  if ($1 = blue) { 
+    if ($readini($char(Blue_Bubble), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble1), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble2), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble3), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble4), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble5), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble6), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble7), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble8), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble9), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Blue_Bubble10), battle, hp) > 0) { inc %bubble.count 1 }
+  }
+
+  if ($1 = red) { 
+    if ($readini($char(Red_Bubble), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble1), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble2), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble3), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble4), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble5), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble6), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble7), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble8), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble9), battle, hp) > 0) { inc %bubble.count 1 }
+    if ($readini($char(Red_Bubble10), battle, hp) > 0) { inc %bubble.count 1 }
+  }
+
+  return %bubble.count
 }

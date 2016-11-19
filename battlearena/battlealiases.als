@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/08/16
+;;;; Last updated: 11/19/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4383,16 +4383,14 @@ modifer_adjust {
     var %resist.tech.amount $readini($char($1), modifiers, ResistTechs) 
     var %resist.percent $calc(%resist.tech.amount / 100) 
     dec %attack.damage $round($calc(%attack.damage * %resist.percent),0)
-    if (%attack.damage <= 0) { var %attack.damage 0 }
+    if (%attack.damage <= 0) { set %attack.damage 0 }
   }
   if (($readini($char($1), modifiers, ResistMelee) >= 1) && ($3 = melee)) { 
     var %resist.melee.amount $readini($char($1), modifiers, ResistMelee) 
     var %resist.percent $calc(%resist.melee.amount / 100) 
     dec %attack.damage $round($calc(%attack.damage * %resist.percent),0)
-    if (%attack.damage <= 0) { var %attack.damage 0 }
+    if (%attack.damage <= 0) { set %attack.damage 0 }
   }
-
-
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

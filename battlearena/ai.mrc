@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 09/24/16
+;;;; Last updated: 11/19/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -488,16 +488,15 @@ alias ai_gettarget {
 
     if ($readini($char(%who.battle.ai), monster, type) != object) { 
 
+      if ((%ai.type = berserker) || ($readini($char($1), monster, berserk) = true)) { 
 
-      if (%ai.type = berserker) { 
         if (%who.battle.ai = $1) { 
           if (($is_confused($1) = true) || ($is_charmed($1) = true)) { $add_target }
         }
         if (%who.battle.ai != $1) { $add_target }   
       }
 
-      if (%ai.type != berserker) { 
-
+      if ((%ai.type != berserker) && ($readini($char($1), monster, berserk) != true)) { 
         ; The AI is targeting a player or npc.
         if (%opponent.flag = player) {
 
