@@ -1456,6 +1456,16 @@ IncreaseCriticalHits.Amount=15
 IncreaseMeleeDamage.Amount=.005
 BlockAllStatus.Amount=50
 
+[Eye-Patch]
+type=accessory
+AccessoryType=Stylish.IncreaseSwordDamage.IncreaseGunDamage
+cost=0
+Desc=A pirate eye-patch with a skull and cross bones on it. How cool! Wearing this accessory will increase your +style points by 1 as well as increase gun and sword damage by 10%.
+SellPrice=2000
+IncreaseSwordDamage.amount=.10
+IncreaseGunDamage.amount=.10
+Stylish.amount=1
+
 [Hourglass-Necklace]
 Type=accessory
 AccessoryType=IgnoreQuickSilver
