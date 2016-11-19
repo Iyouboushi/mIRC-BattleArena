@@ -2633,3 +2633,11 @@ Amount=1
 SuccessRate=100
 AntlionMandible=1
 DarksteelOre=2
+
+[Cutlass]
+Gem=Ruby
+Ingredients=CutlassHandle.DarksteelOre
+Amount=1
+SuccessRate=100
+CutlassHandle=1
+DarksteelOre=2

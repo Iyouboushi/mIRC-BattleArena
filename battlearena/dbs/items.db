@@ -2130,6 +2130,13 @@ SellPrice=10
 Desc=An oversized mandible from an Antlion
 Exclusive=yes
 
+[CutlassHandle]
+type=misc
+Cost=0
+SellPrice=500
+Desc=A cutlass sword handle. The blade is missing
+Exclusive=yes
+
 [Milk]
 Type=misc
 Cost=0

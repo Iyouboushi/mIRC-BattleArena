@@ -32,7 +32,7 @@ Misc=Misc
 
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur.AntlionClaws.Spharai+1
-Swords=ForgedSword.Mythril_Sword.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
+Swords=ForgedSword.Mythril_Sword.Cutlass.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
 Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1.Mastermune
 Whips=BlackWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Vampire_Killer+1.DemonWhip+1
 Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.BlueRose.TacticalPistol
@@ -260,6 +260,16 @@ Element=none
 Hits=1
 BasePower=15
 Upgrade=300
+
+[Cutlass]
+Cost=0
+Type=Sword
+Info=A sword traditionally used by pirates
+Abilities=FastBlade.CircleBlade.FlatBlade
+Element=none
+Hits=1
+BasePower=22
+Upgrade=500
 
 [Agni]
 Cost=15

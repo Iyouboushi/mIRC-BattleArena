@@ -13,6 +13,7 @@ Spharai+1=FinalHeaven.ShoulderTackle.AsuranFists.OneInchPunch
 ; Swords
 ForgedSword=FastBlade
 Mythril_Sword=FastBlade.BurningBlade.FlatBlade.SeraphBlade
+Cutlass=FastBlade.CircleBlade.FlatBlade
 Agni=AerialCross.JetStream $+ $iif($weapon.linkcheck($1,Rudra) = true, .Tempest)
 Rudra=AerialCross.JetStream $+ $iif($weapon.linkcheck($1,Agni) = true, .Tempest)
 Joyeuse=FastBlade.CircleBlade.FlatBlade
