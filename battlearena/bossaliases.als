@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 09/27/16
+;;;; Last updated: 11/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -34,8 +34,8 @@ get_boss_type {
   if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.gremlins false }
   if ((%winning.streak.check < 75) || (%winning.streak.check > 200)) { var %enable.goblins false }
   if (%winning.streak.check >= 250) { var %enable.warmachine false } 
-  if ((%winning.streak.check < 75) || (%winning.streak.check > 200)) { var %enable.pirates false }
-  if (%winning.streak.check >= 500) { var %enable.pirates false } 
+  if ((%winning.streak.check < 75) || (%winning.streak.check > 2000)) { var %enable.pirates false }
+  if (%winning.streak.check >= 5000) { var %enable.pirates false } 
   if ((%winning.streak.check > 75) && (%winning.streak.check < 200)) { 
     if ($readini(system.dat, system, AllowDemonwall) = yes) { var %enable.demonwall true }
   }
@@ -1141,6 +1141,7 @@ generate_pirate_scallywag {
   writeini $char(%monster.name) info gender his
   writeini $char(%monster.name) info gender2 him
   writeini $char(%monster.name) info bosslevel %current.battlestreak
+  writeini $char(%monster.name) monster type pirate
 
   var %base.hp.tp $calc(4 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
@@ -1198,6 +1199,7 @@ generate_pirate_firstmatey {
   writeini $char(%monster.name) info gender his
   writeini $char(%monster.name) info gender2 him
   writeini $char(%monster.name) info bosslevel %current.battlestreak
+  writeini $char(%monster.name) monster type pirate
 
   if ($rand(1,2) = 1) {  writeini $char(%monster.name) info SpawnAfterDeath Silverhook }
   else { writeini $char(%monster.name) info SpawnAfterDeath BlackBeard }
