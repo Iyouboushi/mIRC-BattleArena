@@ -2337,7 +2337,7 @@ TP=10
 Element=None
 Hits=1
 BasePower=10
-Magic=No
+Magic=yes
 stat=int
 Renkei=2
 
