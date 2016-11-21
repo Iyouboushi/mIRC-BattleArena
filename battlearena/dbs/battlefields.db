@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=stormy
+current=rainy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Gibbous
-CurrentMoonTurn=5
+CurrentMoonPhase=Full
+CurrentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -39,7 +39,7 @@ errors.
 ==============================================================
 [TimeOfDay]
 CurrentTimeOfDay=Day
-CurrentTimeOfDayTurn=2
+CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -1054,6 +1054,18 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 [Pyramid Map Room]
 weather=gloomy
 NumberOEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Pirate's Cove]
+weather=gloomy
+NumberofEvents=0
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Pirate's Cove - Inner Chamber]
+weather=gloomy
+NumberofEvents=0
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 

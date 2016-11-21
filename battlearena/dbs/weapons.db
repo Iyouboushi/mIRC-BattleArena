@@ -67,9 +67,9 @@ MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.Decapiclops
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros.AntlionJaw.Sahagin_Fin.Yagudo_Kunai
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.Cutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe.DollParts
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.LargeCutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.AettirII.OrcAxe.DollParts
 
-MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble
+MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog
 
 ============================================
 WEAPON TEMPLATE
@@ -2965,7 +2965,7 @@ BasePower=5
 Cost=0
 Type=HandtoHand
 Info=You can't buy this!
-Abilities=Roar.RazorFang.ClawCyclone
+Abilities=Roar.RazorFang.ClawCyclone.Bite
 Element=none
 Hits=$rand(1,2)
 BasePower=5
@@ -4875,7 +4875,7 @@ Element=None
 Hits=1
 BasePower=30
 
-[Cutlass]
+[LargeCutlass]
 Cost=0
 Type=Sword
 Info=A sword fit for a pirate

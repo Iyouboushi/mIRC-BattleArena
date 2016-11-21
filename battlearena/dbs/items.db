@@ -4538,6 +4538,14 @@ Desc=A key used to unlock the Antlion's Den
 Dungeon=antlion's_den
 exclusive=yes
 
+[SaltyMap]
+type=dungeon
+cost=0
+sellprice=5000
+Desc=A map that reveals the location of Pirate's Cove
+Dungeon=pirate's_cove
+exclusive=yes
+
 [HaukkeManorKey]
 type=dungeon
 cost=50

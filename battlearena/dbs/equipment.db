@@ -952,6 +952,21 @@ cost=50
 SellPrice=1000
 Exclusive=yes
 
+[PlunderedJacket]
+name=Plundered Jacket
+hp=100
+tp=10
+Str=300
+def=370
+int=89
+spd=300
+Augment=EnhanceSword.EnhanceRanged
+EquipLocation=body
+cost=0
+SellPrice=2000
+Exclusive=yes
+LevelRequirements=50
+
 [Kirin'sOsode]
 name=Kirin's Osode
 hp=140

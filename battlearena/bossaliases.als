@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 11/18/16
+;;;; Last updated: 11/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1125,10 +1125,14 @@ generate_wagon {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate_pirate_scallywag {
   ; $1 = the number of the minion
-  set %current.battlestreak $calc($readini(battlestats.dat, Battle, WinningStreak) - 5)
-  if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
 
-  if (%current.battlestreak > $return_levelCapSettingMonster(PirateMinion)) { set %current.battlestreak $return_levelCapSettingMonster(PirateMinion) } 
+  if (%battle.type != dungeon) {
+    set %current.battlestreak $calc($readini(battlestats.dat, Battle, WinningStreak) - 5)
+    if (%current.battlestreak <= 0) { set %current.battlestreak 1 }
+
+    if (%current.battlestreak > $return_levelCapSettingMonster(PirateMinion)) { set %current.battlestreak $return_levelCapSettingMonster(PirateMinion) } 
+  }
+  if (%battle.type = dungeon) { set %current.battlestreak $return_winningstreak }
 
   set %monster.name Pirate_Scallywag $+ $1 | set %monster.realname Pirate Scallywag $1
 
@@ -1156,8 +1160,8 @@ generate_pirate_scallywag {
   writeini $char(%monster.name) techniques BurningBlade $round($calc(%current.battlestreak / 3),0)
   writeini $char(%monster.name) techniques FlatBlade $round($calc(%current.battlestreak / 3),0)
 
-  writeini $char(%monster.name) weapons equipped Cutlass
-  writeini $char(%monster.name) weapons Cutlass $round($calc(%current.battlestreak / 3),0)
+  writeini $char(%monster.name) weapons equipped LargeCutlass
+  writeini $char(%monster.name) weapons LargeCutlass $round($calc(%current.battlestreak / 3),0)
   remini $char(%monster.name) weapons Fists
 
   writeini $char(%monster.name) skills Resist-stun 30
@@ -1217,11 +1221,11 @@ generate_pirate_firstmatey {
   writeini $char(%monster.name) techniques BurningBlade %current.battlestreak
   writeini $char(%monster.name) techniques FlatBlade %current.battlestreak
 
-  writeini $char(%monster.name) weapons equipped Cutlass
-  writeini $char(%monster.name) weapons Cutlass $round($calc(%current.battlestreak / 2),0)
+  writeini $char(%monster.name) weapons equipped LargeCutlass
+  writeini $char(%monster.name) weapons LargeCutlass $round($calc(%current.battlestreak / 2),0)
   remini $char(%monster.name) weapons Fists
 
-  writeini $char(%monster.name) augments Cutlass EnhanceSnatch
+  writeini $char(%monster.name) augments LargeCutlass EnhanceSnatch
 
   writeini $char(%monster.name) skills Resist-stun 60
   writeini $char(%monster.name) skills Resist-charm 100

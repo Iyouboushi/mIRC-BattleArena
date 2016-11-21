@@ -262,7 +262,7 @@ BeeStinger=FinalSting.SharpSting.FrenzySting
 GoblinSword=GoblinRush.BombToss.BombDrop.FastBlade
 GoblinWand=GoblinRush.BombToss.BombDrop.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Flare.Quake.Flood
 TigerFangs=Roar.RazorFang.ClawCyclone
-HoundFangs=Roar.RazorFang.ClawCyclone
+HoundFangs=Roar.RazorFang.ClawCyclone.Bite
 Pinchers=BubbleShower.BigScissors
 BoneScythe=BloodSaber.BloodSlash.HorrorCloud.Fire.Stone.Aero.FireIV.WaterIV.BlizzardIV.Poison.Blind.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja
 VampireFangs=VampireBite.DoublePunch.ShoulderTackle.SpinningAttack
@@ -435,7 +435,7 @@ Suzumebachi=SwiftBlade.VorpalBlade.AsuranFists.TornadoKick.ShinjinSpiral.Shitots
 RyuujinJakka=AsuranFists.Ikkotsu.Soukotsu.SwiftBlade.VorpalBlade.ChantDuCygne.IttouKasou
 SodeNoShirayuki=SwiftBlade.SavageBlade.Soukatsui.SourenSoukatsui.Rikujoukourou.Byakurai.Shakkahou
 Nejibana=Soukatsui.SourenSoukatsui.Byakurai.Shakkahou
-Cutlass=FastBlade.BurningBlade.FlatBlade.SeraphBlade.BloodSaber
+LargeCutlass=FastBlade.BurningBlade.FlatBlade.SeraphBlade.BloodSaber
 WereFists=Roar.RazorFang.ClawCyclone
 Tenken=Shakkahou.VorpalBlade.SwiftBlade
 FrostWhip=FrostBite.FreezeII.BlizzajaII
@@ -4699,6 +4699,17 @@ BasePower=10
 Element=Dark
 magic=no
 cost=0
+stat=str
+
+[Bite]
+Type=Single
+StatusType=DefenseDown
+TP=5
+Desc=bites into %enemy with a powerful bite
+BasePower=10
+Element=none
+magic=no
+Cost=0
 stat=str
 
 [PsychoCrusher]

@@ -413,10 +413,11 @@ on 3:TEXT:!stats*:*: { unset %all_status
     $player.status($nick) | $weapon_equipped($nick) | $display.private.message($readini(translation.dat, system, HereIsYourCurrentStats))
     var %equipped.accessory $readini($char($nick), equipment, accessory) 
     if (%equipped.accessory = $null) { var %equipped.accessory nothing }
+    if (%equipped.accessory != $null) { var %equipped.accessory $equipment.color($readini($char($nick), equipment, accessory)) $+ %equipped.accessory }
 
     if ($readini($char($nick), equipment, accessory2) != $null) { 
       var %equipped.accessory2 $equipment.color($readini($char($nick), equipment, accessory2)) $+ $readini($char($nick), equipment, accessory2)
-      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
     }
 
     var %equipped.armor.head $readini($char($nick), equipment, head) 
@@ -439,7 +440,7 @@ on 3:TEXT:!stats*:*: { unset %all_status
 
     $display.private.message.delay.custom([4HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ ] [4TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($nick) $+ ] [4Armor Level12 $ilevel($nick) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($nick), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($nick), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($nick), stuff, LoginPoints) $+ ]  ,2)
     $display.private.message.delay.custom([4Strength:12 $current.str($nick) 3+ $+ $armor.stat($nick,str) $+ ]  [4Defense:12 $current.def($nick) 3+ $+ $armor.stat($nick,def) $+ ] [4Intelligence:12 $current.int($nick) 3+ $+ $armor.stat($nick,int) $+ ][4Speed:12 $current.spd($nick) 3+ $+ $armor.stat($nick,spd) $+ ], 3)
-    $display.private.message.delay.custom([4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $iif(%weapon.equipped.left != $null, 4and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],4)
+    $display.private.message.delay.custom([4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],4)
     unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right 
     unset %weapon.equipped.left 
   }
@@ -450,6 +451,7 @@ on 3:TEXT:!stats*:*: { unset %all_status
     $player.status($2) | $weapon_equipped($2) | $display.private.message($readini(translation.dat, system, HereIsOtherCurrentStats))
     var %equipped.accessory $readini($char($2), equipment, accessory) 
     if (%equipped.accessory = $null) { var %equipped.accessory nothing }
+    if (%equipped.accessory != $null) { var %equipped.accessory $equipment.color($readini($char($2), equipment, accessory)) $+ %equipped.accessory }
 
     if ($readini($char($1), equipment, accessory2) != $null) { 
       var %equipped.accessory2 $equipment.color($readini($char($2), equipment, accessory2)) $+ $readini($char($2), equipment, accessory2)
@@ -476,7 +478,8 @@ on 3:TEXT:!stats*:*: { unset %all_status
 
     $display.private.message.delay.custom([4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($nick) $+ ] [4Armor Level12 $ilevel($nick) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ]  [4Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($2), stuff, LoginPoints) $+ ],1)
     $display.private.message.delay.custom([4Strength:12 $current.str($2) 3+ $+ $armor.stat($2,str) $+ ]  [4Defense:12 $current.def($2) 3+ $+ $armor.stat($2,def) $+ ] [4Intelligence:12 $current.int($2) 3+ $+ $armor.stat($2,int) $+ ][4Speed:12 $current.spd($2) 3+ $+ $armor.stat($2,spd) $+ ], 2)
-    $display.private.message.delay.custom([4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $iif(%weapon.equipped.left != $null, 4and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],3)
+    $display.private.message.delay.custom([4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],3)
+
     unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right | unset %weapon.equipped
     unset %weapon.equipped.left 
   }
