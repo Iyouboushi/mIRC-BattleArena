@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 11/18/16
+;;;; Last updated: 11/20/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -37,6 +37,8 @@ alias view-info {
     var %info.element $readini($dbfile(techniques.db), $3, Element)
     var %info.ignoredef $readini($dbfile(techniques.db), $3, IgnoreDefense)
     var %info.hits $readini($dbfile(techniques.db), n, $3, hits)
+    %info.hits = $replacex(%info.hits,$chr(36) $+ rand,random)
+    %info.hits = $replacex(%info.hits,$chr(44), $chr(45))
     var %info.stat $readini($dbfile(techniques.db), $3, stat)
     if (%info.stat = $null) { var %info.stat int }
 
