@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 09/05/16
+;;;; Last updated: 11/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -413,6 +413,12 @@ on 3:TEXT:!stats*:*: { unset %all_status
     $player.status($nick) | $weapon_equipped($nick) | $display.private.message($readini(translation.dat, system, HereIsYourCurrentStats))
     var %equipped.accessory $readini($char($nick), equipment, accessory) 
     if (%equipped.accessory = $null) { var %equipped.accessory nothing }
+
+    if ($readini($char($nick), equipment, accessory2) != $null) { 
+      var %equipped.accessory2 $equipment.color($readini($char($nick), equipment, accessory2)) $+ $readini($char($nick), equipment, accessory2)
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+    }
+
     var %equipped.armor.head $readini($char($nick), equipment, head) 
     if (%equipped.armor.head = $null) { var %equipped.armor.head nothing }
     var %equipped.armor.body $readini($char($nick), equipment, body) 
@@ -444,6 +450,12 @@ on 3:TEXT:!stats*:*: { unset %all_status
     $player.status($2) | $weapon_equipped($2) | $display.private.message($readini(translation.dat, system, HereIsOtherCurrentStats))
     var %equipped.accessory $readini($char($2), equipment, accessory) 
     if (%equipped.accessory = $null) { var %equipped.accessory nothing }
+
+    if ($readini($char($1), equipment, accessory2) != $null) { 
+      var %equipped.accessory2 $equipment.color($readini($char($2), equipment, accessory2)) $+ $readini($char($2), equipment, accessory2)
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+    }
+
     var %equipped.armor.head $readini($char($2), equipment, head) 
     if (%equipped.armor.head = $null) { var %equipped.armor.head nothing }
     var %equipped.armor.body $readini($char($2), equipment, body) 
