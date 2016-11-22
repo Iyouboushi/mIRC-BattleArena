@@ -2641,3 +2641,16 @@ Amount=1
 SuccessRate=100
 CutlassHandle=1
 DarksteelOre=2
+
+
+
+=============
+Shields
+=============
+[ShieldOfTheSavage]
+Gem=Diamond
+Ingredients=BrokenShield.DarksteelOre
+Amount=1
+SuccessRate=100
+BrokenShield=1
+DarksteelOre=2

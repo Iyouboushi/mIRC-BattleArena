@@ -38,7 +38,7 @@ ShopLevel=1.0
 [Monster]
 Type=Bubble
 size=medium
-Berserk=true
+Berserk=$iif(%battle.type = dungeon, true, false)
 
 [Info]
 Flag=monster

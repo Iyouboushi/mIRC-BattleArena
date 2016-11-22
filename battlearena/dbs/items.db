@@ -2507,6 +2507,13 @@ SellPrice=80
 Desc=a chunk of darksteel ore
 Currency=None
 
+[BrokenShield]
+type=misc
+Cost=0
+SellPrice=500
+Desc=a broken shield. In this state it is useless. It can be repaired with darksteel ore
+currency=none
+
 [TigerFang]
 Type=misc
 Cost=100

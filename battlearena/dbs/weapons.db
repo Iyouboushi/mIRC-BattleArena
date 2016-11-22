@@ -125,7 +125,7 @@ CanCounter=
 
 
 [Shields]
-Small=WoodShield.TurtleShield
+Small=WoodShield.TurtleShield.ShieldOfTheSavage
 Medium=MetalShield.DarksteelShield.Genbu'sShield
 Large=TowerShield.KiteShield.Aegis.Ochain
 
@@ -5715,6 +5715,16 @@ BasePower=150
 Upgrade=0
 BlockChance=20
 AbsorbAmount=12
+
+[ShieldOfTheSavage]
+Cost=0
+Type=shield
+Info=A shield created by a cult
+Hits=0
+BasePower=160
+Upgrade=0
+BlockChance=25
+AbsorbAmount=10
 
 ; Medium shields.. block middle of the road, absorb middle of the road
 
