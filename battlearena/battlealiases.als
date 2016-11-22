@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/19/16
+;;;; Last updated: 11/2216
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1513,7 +1513,6 @@ display_aoedamage {
   ; $3 = tech name
   ; $4 = flag for if it's a melee
 
-
   if (%damage.display.color = $null) { var %damage.display.color 4 }
 
   unset %overkill | unset %target |  unset %style.rating
@@ -1539,12 +1538,27 @@ display_aoedamage {
 
   if (%target = $null) { set %target $2 }
 
-  if ($4 = absorb) { 
-    ; Show how much the person absorbed back.
-    var %absorb.amount $round($calc(%attack.damage / 2),0)
-    $display.message($readini(translation.dat, tech, AbsorbHPBack), battle)
-  }
 
+
+
+  if ($4 = absorb) { 
+    if (%guard.message = $null) {
+      ; Show how much the person absorbed back.
+      var %absorb.amount $round($calc(%attack.damage / 3),0)
+      if (%bloodmoon = on) {  var %absorb.amount $round($calc(%attack.damage / 1.5),0) }
+
+      if (%absorb.amount > 500) { var %absorb.amount 500 }
+
+      if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+        if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
+          if (%absorb.amount > 350) { var %absorb.amount 350 }
+        }
+      }
+
+      $display.message($readini(translation.dat, tech, AbsorbHPBack), battle)
+      unset %absorb
+    }
+  }
   if (%absorb.message != $null) { 
     if (%guard.message = $null) { 
       $display.message(%absorb.message,battle) 
