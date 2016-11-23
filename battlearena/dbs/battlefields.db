@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=rainy
+current=gloomy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -1061,13 +1061,13 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 weather=gloomy
 NumberofEvents=0
 limitations=no-trusts.no-summons.no-mech.no-playerignition
-scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal
 
 [Pirate's Cove - Inner Chamber]
 weather=gloomy
 NumberofEvents=0
 limitations=no-trusts.no-summons.no-mech.no-playerignition
-scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+scavenge=Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Lobby]
 weather=gloomy

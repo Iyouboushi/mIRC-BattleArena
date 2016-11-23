@@ -98,6 +98,7 @@ flag=monster
 bosslevel=50
 NeedsFulls=no
 streak=-1000
+CanTaunt=false
 
 [monster]
 type=pirate

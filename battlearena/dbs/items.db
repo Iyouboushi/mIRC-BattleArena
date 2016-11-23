@@ -894,6 +894,14 @@ RANDOM
 =========================
 These items, when used, will give the target a random item in the game.
 
+[Pirate'sPlunder]
+type=random
+Desc=pulls out a small treasure chest and opens it to discover a %random.item.name inside!  Arrr!
+SellPrice=2000
+Cost=0
+ItemList=items_pirate'splunder.lst
+exclusive=yes
+
 [Present]
 Type=random
 Desc=pulls out a present and hands it to %enemy $+ , who opens it and finds a %random.item.name inside! Merry XMas!

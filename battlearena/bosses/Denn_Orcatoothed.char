@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(41000 + (100 * $return_playersinbattle)) , 41000)
+Hp=$iif($return_playersinbattle > 3, $calc(121000 + (100 * $return_playersinbattle)) , 121000)
 Tp=200
 Str=20
 Def=25
@@ -9,7 +9,7 @@ IgnitionGauge=2
 Name=Denn the Orcatoothed
 
 [Battle]
-Hp=$iif($return_playersinbattle > 3, $calc(41000 + (100 * $return_playersinbattle)) , 41000)
+Hp=$iif($return_playersinbattle > 3, $calc(121000 + (100 * $return_playersinbattle)) , 121000)
 Tp=200
 Str=20
 Def=25
@@ -58,6 +58,7 @@ Created=N/a
 Streak=-1000
 CanTaunt=false
 bosslevel=$iif(%battle.type = dungeon, 52)
+BattleStats=$iif(%battle.type = dungeon, IgnoreHP)
 
 [Status]
 Poison=no
@@ -109,7 +110,7 @@ Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
 Resist-Petrify=100
-Resist-Stun=70
+Resist-Stun=100
 
 MonsterSummon=1
 MonsterSummon.Monster=$iif($rand(1,2) = 1, blue_bubble, red_bubble)

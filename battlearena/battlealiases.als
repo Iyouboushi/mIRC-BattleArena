@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/2216
+;;;; Last updated: 11/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4073,7 +4073,7 @@ triple.attack.check {
   if (%attack.damage2 <= 0) { set %attack.damage2 1 }
   var %attack.damage.total $calc(%attack.damage1 + %attack.damage2)
 
-  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.2),0))
+  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.5),0))
   if (%attack.damage3 <= 0) { set %attack.damage3 1 }
   var %attack.damage.total $calc(%attack.damage3 + %attack.damage.total)
 
@@ -4100,11 +4100,11 @@ fourhit.attack.check {
   if (%attack.damage2 <= 0) { set %attack.damage2 1 }
   var %attack.damage.total $calc(%attack.damage1 + %attack.damage2)
 
-  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.2),0))
+  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.5),0))
   if (%attack.damage3 <= 0) { set %attack.damage3 1 }
   var %attack.damage.total $calc(%attack.damage3 + %attack.damage.total)
 
-  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.1),0))
+  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.5),0))
   if (%attack.damage4 <= 0) { set %attack.damage4 1 }
   var %attack.damage.total $calc(%attack.damage4 + %attack.damage.total)
 
@@ -4129,15 +4129,15 @@ fivehit.attack.check {
   if (%attack.damage2 <= 0) { set %attack.damage2 1 }
   var %attack.damage.total $calc(%attack.damage1 + %attack.damage2)
 
-  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.2),0))
+  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.5),0))
   if (%attack.damage3 <= 0) { set %attack.damage3 1 }
   var %attack.damage.total $calc(%attack.damage3 + %attack.damage.total)
 
-  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.1),0))
+  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.5),0))
   if (%attack.damage4 <= 0) { set %attack.damage4 1 }
   var %attack.damage.total $calc(%attack.damage4 + %attack.damage.total)
 
-  set %attack.damage5 $abs($round($calc(%original.attackdmg / 4.9),0))
+  set %attack.damage5 $abs($round($calc(%original.attackdmg / 5.2),0))
   if (%attack.damage5 <= 0) { set %attack.damage5 1 }
   var %attack.damage.total $calc(%attack.damage5 + %attack.damage.total)
   set %attack.damage %attack.damage.total 
@@ -4162,15 +4162,15 @@ sixhit.attack.check {
   if (%attack.damage2 <= 0) { set %attack.damage2 1 }
   var %attack.damage.total $calc(%attack.damage1 + %attack.damage2)
 
-  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.2),0))
+  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.5),0))
   if (%attack.damage3 <= 0) { set %attack.damage3 1 }
   var %attack.damage.total $calc(%attack.damage3 + %attack.damage.total)
 
-  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.1),0))
+  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.5),0))
   if (%attack.damage4 <= 0) { set %attack.damage4 1 }
   var %attack.damage.total $calc(%attack.damage4 + %attack.damage.total)
 
-  set %attack.damage5 $abs($round($calc(%original.attackdmg / 4.9),0))
+  set %attack.damage5 $abs($round($calc(%original.attackdmg / 5.2),0))
   if (%attack.damage5 <= 0) { set %attack.damage5 1 }
   var %attack.damage.total $calc(%attack.damage5 + %attack.damage.total)
   set %attack.damage %attack.damage.total 
@@ -4199,17 +4199,18 @@ sevenhit.attack.check {
   if (%attack.damage2 <= 0) { set %attack.damage2 1 }
   var %attack.damage.total $calc(%attack.damage1 + %attack.damage2)
 
-  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.2),0))
+  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.5),0))
   if (%attack.damage3 <= 0) { set %attack.damage3 1 }
   var %attack.damage.total $calc(%attack.damage3 + %attack.damage.total)
 
-  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.1),0))
+  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.5),0))
   if (%attack.damage4 <= 0) { set %attack.damage4 1 }
   var %attack.damage.total $calc(%attack.damage4 + %attack.damage.total)
 
-  set %attack.damage5 $abs($round($calc(%original.attackdmg / 4.9),0))
+  set %attack.damage5 $abs($round($calc(%original.attackdmg / 5.2),0))
   if (%attack.damage5 <= 0) { set %attack.damage5 1 }
   var %attack.damage.total $calc(%attack.damage5 + %attack.damage.total)
+  set %attack.damage %attack.damage.total 
 
   set %attack.damage6 $abs($round($calc(%original.attackdmg / 6.9),0))
   if (%attack.damage6 <= 0) { set %attack.damage6 1 }
@@ -4239,17 +4240,18 @@ eighthit.attack.check {
   if (%attack.damage2 <= 0) { set %attack.damage2 1 }
   var %attack.damage.total $calc(%attack.damage1 + %attack.damage2)
 
-  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.2),0))
+  set %attack.damage3 $abs($round($calc(%original.attackdmg / 3.5),0))
   if (%attack.damage3 <= 0) { set %attack.damage3 1 }
   var %attack.damage.total $calc(%attack.damage3 + %attack.damage.total)
 
-  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.1),0))
+  set %attack.damage4 $abs($round($calc(%original.attackdmg / 4.5),0))
   if (%attack.damage4 <= 0) { set %attack.damage4 1 }
   var %attack.damage.total $calc(%attack.damage4 + %attack.damage.total)
 
-  set %attack.damage5 $abs($round($calc(%original.attackdmg / 4.9),0))
+  set %attack.damage5 $abs($round($calc(%original.attackdmg / 5.2),0))
   if (%attack.damage5 <= 0) { set %attack.damage5 1 }
   var %attack.damage.total $calc(%attack.damage5 + %attack.damage.total)
+  set %attack.damage %attack.damage.total 
 
   set %attack.damage6 $abs($round($calc(%original.attackdmg / 6.9),0))
   if (%attack.damage6 <= 0) { set %attack.damage6 1 }

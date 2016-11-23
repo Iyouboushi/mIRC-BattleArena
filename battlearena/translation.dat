@@ -555,6 +555,7 @@ MechsNotAllowed=$chr(3) $+ 4 $+ Error: The use of mechs is currently disabled 
 ArmorLevelHigher=$chr(3) $+ 4 $+ Error: %real.name cannot wear this armor yet as the armor level is $bytes(%armor.level.requirement,b) but %real.name is only level $bytes($round($get.level($1),0),b)
 MaxPortalItemsAllowed=$chr(3) $+ 4 $+ Error: %real.name has already used the maximum amount of portal items allowed in a 24 hour period. 
 CannotGiveOrbsToPlayers=$chr(3) $+ 4 $+ Error: %real.name cannot give orbs to other players.
+CannotUseRandomItemOnOthers=$chr(3) $+ 4 $+ Error: This item is exclusive and cannot be used on others.
 CannotGiveItem=$chr(3) $+ 4 $+ Error: This item is exclusive to %real.name and cannot be traded to others.
 CannotUseItemOnSomeoneElse=$chr(3) $+ 4 $+ Error: This item is exclusive to %real.name and cannot be used on anyone else.
 CannotUseDiscountCardOnOthers=$chr(3) $+ 4 $+ Error: Shop Reset items cannot be used on others.

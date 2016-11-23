@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 4, $calc(22000 + (100 * $return_playersinbattle)) , 22000)
+Hp=$iif($return_playersinbattle > 4, $calc(42000 + (100 * $return_playersinbattle)) , 42000)
 Tp=250
 Str=37
 Def=313
@@ -9,7 +9,7 @@ IgnitionGauge=0
 Name=Captain Madison
 
 [Battle]
-Hp=$iif($return_playersinbattle > 4, $calc(22000 + (100 * $return_playersinbattle)) , 22000)
+Hp=$iif($return_playersinbattle > 4, $calc(42000 + (100 * $return_playersinbattle)) , 42000)
 Tp=200
 Str=37
 Def=313
@@ -28,7 +28,7 @@ RageCountDown=0
 [Descriptions]
 Char=is a leader of a band of pirates here to defend the booty of Pirate's Cove
 Rage=needs to set a rage desc by typing !ragedesc <desc>
-BossQuote=$iif($dungeon.currentroom=3, Arrr intruders is it? I'll not let you reach the master and our booty!, Play time is over! Your advance ends here!)
+BossQuote=$iif($dungeon.currentroom = 3, Arrr intruders is it? I'll not let you reach the master and our booty!, Play time is over! Your advance ends here!)
 DeathMessage=$iif($dungeon.currentroom = 3, sees that he is losing the battle and turns and flees through a small passage. "Until next time!", falls to the ground dead)
 
 [Stuff]
@@ -100,6 +100,9 @@ flag=monster
 bosslevel=50
 NeedsFulls=no
 streak=-1000
+Guardian=Scurvy_Pirate.Scurvy_Pirate2.Scurvy_Dog.Scurvy_Dog2
+CanTaunt=false
+
 
 [monster]
 type=pirate
@@ -205,7 +208,7 @@ speedup.timer=0
 
 [Weapons]
 Equipped=$iif($dungeon.currentroom = 3, LargeCutlass, Shadow_Blade)
-Shadow_Blade=55
+Shadow_Blade=$iif($dungeon.currentroom != 3, 55)
 LargeCutless=40
 
 [Skills]
@@ -265,3 +268,5 @@ Glyph=100
 GreatSword=100
 Bow=30
 HolyHandGrenade=1
+ResistTechs=$iif($dungeon.currentroom = 3, 10, 20)
+ResistMelee=$iif($dungeon.currentroom = 3, 10, 20)

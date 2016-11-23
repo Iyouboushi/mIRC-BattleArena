@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 11/22/16
+;;;; Last updated: 11/23/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -812,21 +812,26 @@ alias item.random {
   ; $2 = target
   ; $3 = item used
 
+  if (($readini($dbfile(items.db), $3, exclusive) = yes) && ($2 != $1)) { $display.message($readini(translation.dat, errors, CannotUseRandomItemOnOthers), private) | halt }
+
+
   ; This type of item will pick a list at random and then pick a random item from inside that list.
 
-  var %random.list $rand(1,11)
-
-  if (%random.list = 1) { set %present.list items_accessories.lst }
-  if (%random.list = 2) { set %present.list items_battle.lst }
-  if (%random.list = 3) { set %present.list items_consumable.lst }
-  if (%random.list = 4) { set %present.list items_food.lst }
-  if (%random.list = 5) { set %present.list items_gems.lst }
-  if (%random.list = 6) { set %present.list items_healing.lst }
-  if (%random.list = 7) { set %present.list items_misc.lst }
-  if (%random.list = 8) { set %present.list items_portal.lst }
-  if (%random.list = 9) { set %present.list items_reset.lst }
-  if (%random.list = 10) { set %present.list items_summons.lst }
-  if (%random.list = 11) { set %random.item.contents blackorb }
+  var %present.list $readini($dbfile(items.db), $3, ItemList)
+  if (%present.list = $null) { 
+    var %random.list $rand(1,11)
+    if (%random.list = 1) { set %present.list items_accessories.lst }
+    if (%random.list = 2) { set %present.list items_battle.lst }
+    if (%random.list = 3) { set %present.list items_consumable.lst }
+    if (%random.list = 4) { set %present.list items_food.lst }
+    if (%random.list = 5) { set %present.list items_gems.lst }
+    if (%random.list = 6) { set %present.list items_healing.lst }
+    if (%random.list = 7) { set %present.list items_misc.lst }
+    if (%random.list = 8) { set %present.list items_portal.lst }
+    if (%random.list = 9) { set %present.list items_reset.lst }
+    if (%random.list = 10) { set %present.list items_summons.lst }
+    if (%random.list = 11) { set %random.item.contents blackorb }
+  }
 
   if (%random.item.contents = blackorb) { 
     set %random.item.name Black Orb
@@ -837,6 +842,8 @@ alias item.random {
 
   else {
     var %items.lines $lines($lstfile(%present.list))
+    if (%items.lines = $null) { $display.message(4ERROR: %present.list is missing or empty!, private) | halt }
+
     set %random $rand(1, %items.lines)
     if (%random = $null) { var %random 1 }
     set %random.item.contents $read -l $+ %random $lstfile(%present.list)
@@ -853,7 +860,7 @@ alias item.random {
   $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global) 
 
   unset %total.summon.items | unset %random | unset %random.item.contents | unset %present.list
-  unset %random.item.name 
+  unset %random.item.name | unset %enemy 
   return
 
 }
