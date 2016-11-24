@@ -3,5 +3,5 @@
 2Use !shop list category or !shop buy category itemname
 12Valid Categories:
 4Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) Portal $+ $chr(44) Misc
-4Mech $+ $chr(44) Mech $+ $chr(44) Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $iif($left($adate, 2) = 10, and Halloween)
+4Mech $+ $chr(44) Mech $+ $chr(44) Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards $iif($left($adate, 2) = 10, and Halloween)
 2Your current shop level is3 $readini($char($nick), stuff, shoplevel)

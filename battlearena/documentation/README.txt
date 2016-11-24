@@ -104,13 +104,18 @@ This style will allow players to use !wrestle on a target to do damage and attem
 inflict stun. This style also increases damage done with HandToHand weapons.
 
 * Added new dungeons
-Added the level 20 dungeon: Antlion's Den and the level 1000 dungeon: Tomb of Terror
+Added the level 20 dungeon: Antlion's Den, the level 50 dungeon Pirate's Cove,
+thel evel 500 dungeon Impact Crater and the level 1000 dungeon: Tomb of Terror
 
 * Added new Torment levels
 Several new torment levels have been added to challenge players.
 
 * Added Ammo
 Several new weapons now require special ammo in order to use.
+
+* Added Gear Sets
+Creating a gearset will copy the currently equipped armor to a set that can quickly be 
+re-equipped with one command. It is possible to create up to 3 sets to quickly swap between. 
 
 Changes:
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.

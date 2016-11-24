@@ -1455,8 +1455,8 @@ Battle Arena Bot VERSIONS
 - Added the "revive" type item that will revive a dead player with half hp. The BottledFairy and PhoenixDown items 
   have been added as examples.
 - Added the enhancement point skill: Overwhelm. This skill will increase overall damage by 2% per skill level
-- Added the enhancement point item: AccessorySlot2. Buying this will cost 10 enhancement points and will allow players to equip
-  a second accessory
+- Added the enhancement point item: AccessorySlot2. Buying this will cost 10 enhancement points and will allow 
+  players to equip a second accessory
 - Added the enhancement point battle mod: DailyPortalUsage. Buying this will increase your daily portal usage amount by 1
 - Added the monster only skill: Flying. This skill will cause a monster to take to the skies. A flying monster can
   only be hurt by ranged weapons and their techniques, magic, and items. Ranged weapons are: bows, guns, rifles and glyphs
@@ -1491,10 +1491,12 @@ Battle Arena Bot VERSIONS
 - Added Elite and SuperElite flags for monsters. Elite=true or SuperElite=true under [monster]  Super/Elite monsters will
   deal more damage and take less damage from attacks
 - Added information on the special holiday events to when players log in if the event is ongoing.
-- Added Gear Sets that players can set. Creating a gearset will copy the currently equipped armor to a set that can quickly be
-  re-equipped with one command. The commands are: !gearset set 1-3 to create one, !gearset equip 1-3 to equip one and 
-  !gearset view 1-3 to see what equipment is currently equipped under the set. It's possible to overwrite equipment sets
+- Added Gear Sets that players can set. Creating a gearset will copy the currently equipped armor to a set that 
+  can quickly be re-equipped with one command. The commands are: !gearset set 1-3 to create one, 
+  !gearset equip 1-3 to equip one and !gearset view 1-3 to see what equipment is currently equipped under 
+  the set. It's possible to overwrite equipment sets
 - Added a 50% orb bonus to any player who has less than 10k orbs total (spent + on-hand)
+- Added the !weaponboost desc  command. Use it to set a custom weapon boost description
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1533,6 +1535,7 @@ Battle Arena Bot VERSIONS
 - Changed armor so that it no longer adds STR, DEF, INT or SPD to the player's file
 - Changed armor so that it no longer affects a player's level
 - Changed a few things with dragon hunts so channels that have a higher average level will generate dragons faster
+- Changed dragon hunts so that the more dragons are killed the higher level the next dragons will spawn at
 - Changed the shop so that it checks to see if a player's hp/tp is below the max even with the armor bonus
 - Changed the +stat items so that it checks to see if a player's hp/tp is below the max even with the armor bonus
 - Changed TormentReward items (Horadric Cache/Stash) so that players can open more than once at a time, up to 10 total. 

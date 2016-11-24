@@ -243,8 +243,10 @@ Here's how you get a list of available things to buy within the shop:
 !shop list enhancements 	Gives a list of what you can exchange enhancing points for
 !shop list trusts 		Gives a list of the NPC Trust Items you can exchange login points for
 !shop list potioneffects 	Gives a list of purchasable potion effects if Syrup the Potion Witch is at the HQ
+!shop list tradingcards 	Gives a list of trading cards available for purchase if the Cardian NPC is at the HQ
 !shop list dungeonkeys 		Gives a list of dungeon keys available for purchase
-!shop list Halloween 		Gives a list of items in the Halloween Shop (only in Oct) 
+!shop list Halloween 		Gives a list of items in the Halloween Shop (only in Oct)
+!voucher list 			Shows a list of items purchasable with vouchers (obtained in portals) 
 
 Most things in this game are purchased using red orbs. Red orbs are acquired by defeating enemies via participating in battles and found within red chests. Weapons, Shields, Styles, and Ignitions require black orbs. Black orbs are acquired by surviving a successful boss battle or found randomly in gold chests. Portal Items require special seals, rather than orbs, to purchase. The seals are found in chests and off of random enemies. Gems and alchemy items are purchased using Allied Notes. Allied Notes are a special currency that you can acquire by defeating the foes found within the portal items. Potion Effects require certain monster spoils found by killing monsters. Finally, NPC Trust Items are special items that can summon an NPC buddy to help you fight when you're alone. These items require login points which you accumulate every new day that you log into the game.
 
@@ -267,8 +269,10 @@ Here's how you get a list of available things to buy within the shop:
 !shop buy enhancements enhancement 	Buys a character enhancement using enhancement points
 !shop buy trusts itemname 		Buys an NPC Trust Items using login points
 !shop buy potioneffects potionname 	Buys the potion effect if Syrup the Potion Witch is at the HQ
+!shop buy tradingcards itemname 	Buys a trading card/booster set if the Cardian NPC is at the HQ 
 !shop buy dungeonkeys keyname 		Buys the dungeon key using the correct seal item if the Keymaster NPC is at the HQ
-!shop buy Halloween itemname 		Buys the item from the Halloween Shop (only in Oct)  
+!shop buy Halloween itemname 		Buys the item from the Halloween Shop (only in Oct)
+!voucher buy bronze/silver/gold itemname 	Purchases an item using a voucher 
 
 So let's say you want to upgrade your HP (at least one or two upgrades in HP is recommended). You can do it like this:
 
@@ -1196,19 +1200,25 @@ Forbidden-Crown
 Misc (Crafting) Items
 These items are used with the alchemy skill to craft items or are seal items that are used to purchase portal items.
 
-Death'sBreath
+Trash
+SmallCarrot
+PoringGoop
 MimicCore
 QuadavShell
+AntlionMandible
+CutlassHandle
 Seed
 DekuSeed
 SmallEgg
 HardBoiledEgg
+IronBowl
 Ink
 Paper
 AshLog
 Hatchet
 IronOre
 GoldOre
+GoldIngot
 SilverOre
 DarksteelOre
 Ectoplasm
@@ -1231,6 +1241,7 @@ AncientBeastcoin
 CardinalCloth
 Kurogane
 DiabolicSilk
+Mythril
 DarkOrichalcumIngot
 AtlantianThreadSpool
 ShadowSpool
@@ -1247,6 +1258,7 @@ BeastmenSeal
 KindredSeal
 KindredCrest
 HighKindredCrest
+SacredKindredCrest
 ByakkoSeal
 GenbuSeal
 SeiryuSeal
@@ -1272,9 +1284,19 @@ AlphaWeltallCore
 SilverPointsCard
 SilverSeal
 DragonScale
-Trash
-AntlionMandible
-Mythril
+IceMod
+FireMod
+ElectricMod
+ExplosionMod
+BronzeVoucher
+SilverVoucher
+GoldVoucher
+AetherialFragment
+ForbiddenFragment
+OsirisFragment
+Kan-raFragment
+CultistFragment
+Death'sBreath
 LifeShard
 ArcaneDust
 ReusablePart
@@ -1284,7 +1306,7 @@ Clom'sTale-02
 Clom'sTale-03
 Clom'sTale-04
 Clom'sTale-05
-Clom'sTale-06 
+Clom'sTale-06
 
 
 Potion Effect Items
@@ -1376,6 +1398,9 @@ SmelterDemonSoul
 OldKingSoul
 StrangeMask
 Gunbai
+StrangeCrystal
+BowlOfEmbers
+FortunaCrest
 ShadowDemonBell
 ShadowGodSeal
 ShadowAtlantianCrystal
@@ -1482,6 +1507,7 @@ Codec
 BlackRock
 Strawberry_Lollipop
 StrangeCoconut
+ChozoMedallion
 
 
 Special Items
@@ -1519,7 +1545,10 @@ StrangeTitaniteSlab
 
 
 Trading Cards
-Gotta collect them all!
+Collect them all! Trading cards are special items that have a rarity value 
+between * and *****. They also contain four number values. Right now they are 
+only used to collect but in a future update it is possible that there will be 
+a card game added to use them with.
 
 TradingCard-001
 TradingCard-002
@@ -1533,6 +1562,17 @@ TradingCard-009
 TradingCard-010
 TradingCard-011
 TradingCard-012
+TradingCard-013
+TradingCard-014
+TradingCard-015
+TradingCard-016
+TradingCard-017
+TradingCard-018
+TradingCard-019
+TradingCard-020
+TradingCard-021
+TradingCard-022
+TradingCard-042	
 
 
 ACCESSORIES
@@ -1752,7 +1792,9 @@ Dungeon Name 		Dungeon Item 	Dungeon Level 	# of Players Needed
 Tam-Tara Deepcroft 	TamTaraKey 	15 		3
 Antlion's Den		AntlionKey	20		3
 Haukke Manor 		HaukkeManorKey 	50 		4
+Pirate's Cove 		SaltyMap 	50 		3 
 The Pyramid of Kan-ra 	Kan-raHand 	100 		3 
+Impact Crater 		ChozoArtifacts 	500 		3 
 The Tomb of Terror 	TerrorKey 	1000 		1
 
 
@@ -1773,14 +1815,26 @@ This command will display a list of all the dragons that are currently in the la
 !dragon hunt
 Once every hour this command will allow the player to attempt to search for a lair. Dragons are sneaky and hide their lairs fairly well so it might be rather difficult to find them. However, when one has been found the bot will then start a battle that all active players can join. An example of such:
 
-<BattleArena> Iyouboushi has discovered the lair of the fearsome dragon known as Narebeth WorldEater! A raiding party has been set up to put an end to the beast. To join the party type !enter now! The raiding party will depart in 20secs. [This is a level 171 battle. Anyone more than 5 levels over will be level synced.]
+<BattleArena> Iyouboushi has discovered the lair of the fearsome dragon known as Narebeth WorldEater! A raiding party has been set up to put an end to the beast. To join the party type !enter now! The raiding party will depart in 20secs. 
+[This is a level 171 battle. Anyone more than 5 levels over will be level synced.]
 
 The lair found is random from the list of all available dragons. There is no way to target a specific dragon.
 
 Upon joining the fight players who are +5 levels over the battle's level will be level synced and a boss battle will begin.
 
 MISC DRAGON HUNT INFORMATION
-The dragons will grow stronger the longer they are left alive. Every 12 real life hours the dragon's level will increase by 1. Also if a battle begins with the dragon and the players lose the battle the dragons will level up making them that much harder the next time their new lairs are found.
+The dragons will grow stronger the longer they are left alive. Every 12 real life hours the dragon's level will increase
+by 1. Also if a battle begins with the dragon and the players lose the battle the dragons will level up making them that
+much harder the next time their new lairs are found.
+
+The initial age (level) of the dragon is randomly determined when it is created. If the average level of all the players
+is below 500 the dragons will spawn between 100 to 200. Otherwise it will be higher. Dragon age is also increased with
+each dragon hunt dragon's death.
+
+Under certain conditions dragons may leave their lairs and raid the Allied Forces HQ and kidnap either the Allied Forces president or one of the many Special NPCs that are residing there.
+
+One final note: if the average level of all the players is below 50 dragons will not spawn at all.
+
 
 
 TORMENT BATTLES
