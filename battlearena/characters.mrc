@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 11/21/16
+;;;; Last updated: 11/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -215,6 +215,14 @@ on 3:TEXT:!ignition desc *:*:{ $checkscript($3-)  | $set_chr_name($nick)
     writeini $char($nick) Descriptions $3 $4- | $okdesc($nick , Ignition) 
   }
   if ($readini($char($nick), ignitions, $3) = $null) {  $display.private.message($readini(translation.dat, errors, DoNotKnowThatIgnition)) | halt }
+}
+
+on 3:TEXT:!weaponboost desc *:*:{ $checkscript($3-)  | $set_chr_name($nick) 
+  if ($readini($char($nick), techniques, $3) != $null) { 
+    if ($4 = $null) { $display.private.message(4Invalid description) | halt }
+    writeini $char($nick) Descriptions $3 $4- | $okdesc($nick , Boost) 
+  }
+  else {  $display.private.message($readini(translation.dat, errors, DoNotKnowThatIgnition)) | halt }
 }
 
 on 3:TEXT:!clear desc *:*:{ $checkscript($3-)  | $set_chr_name($nick) 

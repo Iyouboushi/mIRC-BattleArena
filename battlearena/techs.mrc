@@ -1269,6 +1269,7 @@ alias tech.boost {
 
   ; If a player is using a monster weapon, which is considered cheating, set the damage to 0.
   set %current.weapon.used $readini($char($1), weapons, equipped)
+
   if ($readini($dbfile(weapons.db), %current.weapon.used, cost) = 0) {
     var %current.flag $readini($char($1), info, flag)
     if (%current.flag = $null) {  set %boost.base.amount 0 }
@@ -1286,12 +1287,13 @@ alias tech.boost {
   writeini $char($1) Battle Spd %spd
 
   $set_chr_name($1) | set %user %real.name
-  $set_chr_name($1) | $display.message(10 $+ %real.name  $+ $readini($dbfile(techniques.db), $2, desc), battle)
+  var %description $readini($char($1), descriptions, $2)
+  if (%description = $null) { $display.message(10 $+ %real.name  $+ $readini($dbfile(techniques.db), $2, desc), battle) }
+  else { $display.message(10 $+ %real.name  $+ %description, battle) }
   writeini $char($1) status boosted yes
 
   ; Check for a postcript
   if ($readini($dbfile(techniques.db), n, $2, PostScript) != $null) { $readini($dbfile(techniques.db), p, $2, PostScript) }
-
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) | halt }
