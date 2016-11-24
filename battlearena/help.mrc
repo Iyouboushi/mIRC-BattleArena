@@ -160,7 +160,7 @@ alias view-info {
     if (%info.type = random) {
       var %sell.price $bytes($readini($dbfile(items.db), $3, SellPrice),b)
       if (%sell.price != $null) { var %sell.price [4Sell Price (before Haggling)12 %sell.price $+ ] } 
-      $display.private.message([4Name12 $3 $+ ] [4Type12 Obtain Random Item $+ ] %exclusive %sell.price [4Description12 $readini($dbfile(items.db), $3, ItemDesc). $+ ])  
+      $display.private.message([4Name12 $3 $+ ] [4Type12 Obtain Random Item $+ ] %exclusive %sell.price [4Description12 $readini($dbfile(items.db), $3, ItemDesc) $+ ])  
     }
 
     if (%info.type = armor) { $display.private.message(4This item is an armor piece. Use !view-info armor $3 to learn more about it.) }

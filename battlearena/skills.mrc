@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 10/05/16
+;;;; Last updated: 11/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1794,7 +1794,7 @@ alias skill.analysis { $set_chr_name($1)
 
   if (%analysis.level >= 2) { var %analysis.tp $skill.analysis.color(%analysis.level, 2, stat) $+ $readini($char($2), battle, tp) $+ 3 }
   if (%analysis.level >= 3) { 
-    var %analysis.str $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, str)) $+ 3  | var %analysis.def $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, def) $+ 3
+    var %analysis.str $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, str) $+ 3  | var %analysis.def $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, def) $+ 3
     var %analysis.int $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, int) $+ 3 | var %analysis.spd $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, spd) $+ 3
   }
 
