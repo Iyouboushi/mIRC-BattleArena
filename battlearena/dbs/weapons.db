@@ -1539,9 +1539,9 @@ Info=Vergil's legendary katana from Devil May Cry.
 Abilities=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
 Element=dark
 Hits=1
-BasePower=60
+BasePower=45
 Upgrade=3000
-2Handed=true
+2Handed=false
 
 [Masamune]
 Cost=65
