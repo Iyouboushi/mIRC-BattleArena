@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 11/19/16
+;;;; Last updated: 11/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1271,7 +1271,7 @@ alias tech.boost {
   set %current.weapon.used $readini($char($1), weapons, equipped)
   if ($readini($dbfile(weapons.db), %current.weapon.used, cost) = 0) {
     var %current.flag $readini($char($1), info, flag)
-    if (%current.flag = $null) {  set boost.base.amount 0 }
+    if (%current.flag = $null) {  set %boost.base.amount 0 }
   }
   unset %current.weapon.used
 
