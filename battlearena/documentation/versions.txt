@@ -1450,6 +1450,8 @@ Battle Arena Bot VERSIONS
 - Added a new Shop NPC: BountiBox the Goblin.  Upon arriving at the HQ, he will unlock the Gobbie Box.
   Players can use !gobbie box open to exchange 10 login points for a random item from the box
 - Added a new Shop NPC: Vasu the Jeweler. Upon arriving at the HQ players will be able to unlock a second accessory slot
+- Added a new Shop NPC: King of Cups the Cardian. Upon being saved players will be able to purchase trading cards and 
+  booster sets via !shop list/buy tradingcards
 - Added the "revive" type item that will revive a dead player with half hp. The BottledFairy and PhoenixDown items 
   have been added as examples.
 - Added the enhancement point skill: Overwhelm. This skill will increase overall damage by 2% per skill level
@@ -1547,6 +1549,7 @@ Battle Arena Bot VERSIONS
 - Changed gold orbs/auto-revive effect so it can only be used three times total per player per battle
 - Changed conquest points so that monsters will gain +3 and players will lose -2 per missed battle opportunity if the
   total average level of all the players is 1000 or more
+- Changed !view-info for "random" type items so that it shows a description
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
@@ -1567,6 +1570,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with the Shrine of Ru'Avitau's weather (had "light" instead of "bright")
 - Fixed an issue where Darksteel Ore could be bought
 - Fixed an issue where barspells were't showing up in the battle status line.
+- Fixed an issue where clones could be revived using revive type items
 - Fixed a potential issue with certain items in the shop being cut off if there's too many
 - Fixed a typo with Shenron's Wish
 - Fixed a description issue with ToxicMelody
