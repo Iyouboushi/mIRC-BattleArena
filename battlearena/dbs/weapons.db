@@ -1506,9 +1506,9 @@ Info=Ichigo's powerful zanpakutou from Bleach
 Abilities=GetsugaTenshou.TensaZangetsu.FinalGetsuga
 Element=none
 Hits=1
-BasePower=50
+BasePower=45
 Upgrade=2500
-2Handed=true
+2Handed=false
 
 [Senbonzakura]
 Cost=50
