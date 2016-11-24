@@ -896,14 +896,26 @@ These items, when used, will give the target a random item in the game.
 
 [Pirate'sPlunder]
 type=random
+ItemDesc=This small treasure chest contains an item that the pirates were hiding on Pirate's Cove
 Desc=pulls out a small treasure chest and opens it to discover a %random.item.name inside!  Arrr!
 SellPrice=2000
 Cost=0
 ItemList=items_pirate'splunder.lst
 exclusive=yes
 
+[BronzeBoosterSet]
+type=random
+ItemDesc=This small envelope contains one trading card with rarity of *
+Desc=pulls out a small brown-colored envelope and opens it to reveal  $+ %random.item.name $+  inside!
+SellPrice=1
+Cost=1000
+ItemList=items_boosterpack.lst
+exclusive=yes
+currency=AlliedNotes
+
 [Present]
 Type=random
+ItemDesc=A small wrapped present that can contain a huge variety of items inside.
 Desc=pulls out a present and hands it to %enemy $+ , who opens it and finds a %random.item.name inside! Merry XMas!
 SellPrice=7000
 Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 200, 100000, 0)
@@ -911,12 +923,14 @@ ShopNPC=Santa
 
 [AnniGift]
 Type=random
+ItemDesc=A bright colored present used to celebrate the creation of the bot's creation. It can contain a huge variety of items inside.
 Desc=pulls out a bright colored present and hands it to %enemy $+ , who opens it and finds a %random.item.name inside!  A firework shoots up and explodes above the heroes. Happy $calc($right($adate, 4) - 2012) year anniversary celebration of the bot's creation!
 Cost=0
 SellPrice=9000
 
 [HoradricCache]
 Type=TormentReward
+ItemDesc=A glowing box that can contain a random number of horadric items inside
 Desc=pulls out a small glowing box which opens and reveals %random.item.amount $iif(%random.item.amount > 1, %random.item.name $+ s, %random.item.name) inside!
 Cost=0
 SellPrice=1
@@ -926,6 +940,7 @@ TormentReward=true
 
 [HoradricStash]
 Type=TormentReward
+ItemDesc=A glowing box that can contain a random number of horadric items inside
 Desc=pulls out a small glowing box which opens and reveals %random.item.amount $iif(%random.item.amount > 1, %random.item.name $+ s, %random.item.name) inside!
 Cost=0
 SellPrice=1
@@ -4886,49 +4901,60 @@ TRADING CARDS
 =========================
 [TradingCard-001]
 Type=TradingCard
-Cost=0
+Cost=500
 Rarity=1
 SellPrice=100
 Numbers=1.2.1.1
 Desc=A small trading card. On the front is a picture of an Orb Fountain glowing brightly.
+Currency=AlliedNotes
+ShopNPC=Cardian
 
 [TradingCard-002]
 Type=TradingCard
-Cost=0
+Cost=600
 Rarity=1
 SellPrice=100
 Numbers=2.1.1.1
 Desc=A small trading card. On the front is a picture of a Lost Soul. It looks like it's in pain. Poor guy.
+Currency=AlliedNotes
+ShopNPC=Cardian
 
 [TradingCard-003]
 Type=TradingCard
-Cost=0
+Cost=700
 Rarity=1
 SellPrice=100
-Numbers=2.1.3.2
+Numbers=4.4.2.3
 Desc=A small trading card. On the front is a picture of the bird-like Yagudo ready for battle.
+Currency=AlliedNotes
+ShopNPC=Cardian
 
 [TradingCard-004]
 Type=TradingCard
-Cost=0
+Cost=800
 Rarity=1
 SellPrice=100
-Numbers=2.4.3.1
+Numbers=2.2.2.7
 Desc=A small trading card. On the front is a picture of a green Orc posing with his axe.
+Currency=AlliedNotes
+ShopNPC=Cardian
 
 [TradingCard-005]
 Type=TradingCard
-Cost=0Rarity=1
+Cost=1000
+Rarity=1
 SellPrice=100
-Numbers=3.4.2.4
+Numbers=3.4.3.3
 Desc=A small trading card. On the front is a picture of a shelled Quadav holding a staff ready to cast a spell.
+Currency=AlliedNotes
+ShopNPC=Cardian
 
 [TradingCard-006]
 Type=TradingCard
 Cost=0
 Rarity=1
 SellPrice=100
-Numbers=2.2.5.2
+Numbers=4.2.3.4
 Desc=A small trading card. On the front is a picture of half-rotting zombie. Mmmm brains!
 
 [TradingCard-007]
@@ -4936,7 +4962,7 @@ Type=TradingCard
 Cost=0
 Rarity=2
 SellPrice=100
-Numbers=2.4.5.3
+Numbers=5.2.4.3
 Desc=A small trading card. On the front is a picture of a large dirt eating worm as it pops out of the ground.
 
 [TradingCard-008]
@@ -4950,34 +4976,116 @@ Desc=A small trading card. On the front is a picture of a succubus blowing a kis
 [TradingCard-009]
 Type=TradingCard
 Cost=0
-Rarity=2
+Rarity=1
 SellPrice=100
-Numbers=4.4.5.3
+Numbers=3.3.4.3
 Desc=A small trading card. On the front is a picture of a Creeper about to blow up and destroy a house.
 
 [TradingCard-010]
 Type=TradingCard
 Cost=0
-Rarity=3
 SellPrice=100
-Numbers=5.6.5.4
-Desc=A small trading card. On the front is a picture of a Cerberus covered in ice in mid-roar.
+Rarity=1
+Numbers=3.4.2.5
+Desc=A small trading card. On the front is a picture of a bee posing with a large pot of honey
 
 [TradingCard-011]
 Type=TradingCard
 Cost=0
-Rarity=3
 SellPrice=100
-Numbers=6.6.4.5
-Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea.
+Rarity=1
+Numbers=4.3.3.3
+Desc=A small trading card. On the front is a picture of a Combat doing a crazy spin in the air
 
 [TradingCard-012]
 Type=TradingCard
 Cost=0
 SellPrice=100
-Rarity=3
-Numbers=5.6.5.5
+Rarity=1
+Numbers=2.5.2.5
+Desc=A small trading card. On the front is a picture of a Dalek yelling EXTERMINATE! to a blue telephone booth
+
+[TradingCard-013]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=1
+Numbers=5.2.5.2
+Desc=A small trading card. On the front is a picture of a swarm of Cuccos in mid-attack against an elf wearing green
+
+[TradingCard-014]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=1
+Numbers=2.2.5.5
+Desc=A small trading card. On the front is a picture of a Gremlin trying to force feed a small fuzzy Mogwai some food
+
+[TradingCard-015]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=1
+Numbers=1.3.7.2
+Desc=A small trading card. On the front is a picture of a metal slime who is smiling as a warrior is holding his hand in pain next to it
+
+[TradingCard-016]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=1
+Numbers=1.1.4.7
+Desc=A small trading card. On the front is a picture of a mosquito and its million brothers floating above a lake
+
+[TradingCard-017]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=1
+Numbers=4.6.1.3
+Desc=A small trading card. On the front is a picture of a Metroid floating on an alien planet
+
+[TradingCard-018]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=1
+Numbers=4.2.4.5
+Desc=A small trading card. On the front is a picture of a Treant handing an apple to an unsuspecting boy
+
+[TradingCard-019]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=1
+Numbers=6.2.2.4
+Desc=A small trading card. On the front is a picture of an Ancient Mummy in the middle of changing its bandages
+
+[TradingCard-020]
+Type=TradingCard
+Cost=0
+Rarity=2
+SellPrice=100
+Numbers=2.3.6.7
+Desc=A small trading card. On the front is a picture of a Cerberus covered in ice in mid-roar.
+
+[TradingCard-021]
+Type=TradingCard
+Cost=0
+Rarity=2
+SellPrice=100
+Numbers=7.2.3.6
+Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea.
+
+[TradingCard-022]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=2
+Numbers=3.6.7.2
 Desc=A small trading card. On the front is a picture of Gobbles, the demented and evil turkey, holding a knife in one hand, a fork in the other with a large red bandana over his head
+
+
 
 [TradingCard-042]
 Type=TradingCard

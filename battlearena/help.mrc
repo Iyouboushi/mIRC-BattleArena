@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 11/20/16
+;;;; Last updated: 11/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -157,6 +157,12 @@ alias view-info {
       }
     }
 
+    if (%info.type = random) {
+      var %sell.price $bytes($readini($dbfile(items.db), $3, SellPrice),b)
+      if (%sell.price != $null) { var %sell.price [4Sell Price (before Haggling)12 %sell.price $+ ] } 
+      $display.private.message([4Name12 $3 $+ ] [4Type12 Obtain Random Item $+ ] %exclusive %sell.price [4Description12 $readini($dbfile(items.db), $3, ItemDesc). $+ ])  
+    }
+
     if (%info.type = armor) { $display.private.message(4This item is an armor piece. Use !view-info armor $3 to learn more about it.) }
     if (%info.type = snatch) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Snatch/Grab $+ ] %exclusive [4Description12 This item is used to grab a target and use him/her/it as a protective shield. $+ ])  }
     if (%info.type = heal) { $display.private.message([4Name12 $3 $+ ] [4Type12 Healing $+ ] [4Heal Amount12 %info.amount $+ $chr(37) of target's maximum HP]  [4Item Cost12 %info.cost $iif(%info.cost != Not Available For Purchase, %item.currency) $+ ] %sell.price %exclusive %info.fullbringmsg) }
@@ -189,7 +195,6 @@ alias view-info {
       else { $display.private.message([4Name12 $3 $+ ] [4Type12 Mech Item; $readini($dbfile(items.db), $3, MechType) $+ ] [4Amount12 $readini($dbfile(items.db), $3, amount) $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) }
     }
     if (%info.type = trade) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Trading Item $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ] %exclusive %sell.price)  }
-    if (%info.type = random) {  $display.private.message([4Name12 $3 $+ ] [4Type12 Random item inside! $+ ] %exclusive %sell.price) }
     if (%info.type = rune) { 
       if ($readini($dbfile(items.db), $3, augment) = $null) { $display.private.message(4Invalid item) | halt }
       $display.private.message([4Name12 $3 $+ ] [4Type12 Rune $+ ] [4Augment12 $readini($dbfile(items.db), $3, augment) $+ ] %exclusive [4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) 
@@ -224,8 +229,19 @@ alias view-info {
   if (%info.type = torment) { $display.private.message([4Name12 $3 $+ ] [4Type12 Torment Portal $+ ] [4Torment Level12 $readini($dbfile(items.db), $3, TormentLevel) $+ ] [4Minimum Level to Enter12 $calc(500 * $readini($dbfile(items.db), $3, TormentLevel)) $+ ] [4Description12 An orb full of anguish and torment. Using this item outside of battle will open a portal to the torment dimension where powerful versions of the monsters await.]) }
 
   if (%info.type = TradingCard) { 
+    var %card.rarity $readini($dbfile(items.db), n, $3, Rarity)
     var %card.numbers $readini($dbfile(items.db), n, $3, Numbers)
-    $display.private.message([4Name12 $3 $+ ] [4Type12 Trading Card $+ ] [4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) 
+
+    if (%card.rarity = 1) { var %card.rarity * }
+    if (%card.rarity = 2) { var %card.rarity ** }
+    if (%card.rarity = 3) { var %card.rarity *** }
+    if (%card.rarity = 4) { var %card.rarity **** }
+    if (%card.rarity = 5) { var %card.rarity ***** }
+
+    var %card.numbers $replace(%card.numbers,$chr(046), $chr(044) $chr(032)) 
+
+    $display.private.message([4Name12 $3 $+ ] [4Type12 Trading Card $+ ] [4Rarity12 %card.rarity $+ ] [4Card Numbers12 %card.numbers $+ ])
+    $display.private.message([4Description12 $readini($dbfile(items.db), $3, desc) $+ ]) 
   }
 
 

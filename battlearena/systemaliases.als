@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/18/16
+;;;; Last updated: 11/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -236,6 +236,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCStatus, DungeonKeyMerchant) = $null) { writeini shopnpcs.dat NPCStatus DungeonKeyMerchant kidnapped }
     if ($readini(shopnpcs.dat, NPCStatus, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCStatus GobbieBoxGoblin false }
     if ($readini(shopnpcs.dat, NPCStatus, Jeweler) = $null) { writeini shopnpcs.dat NPCStatus Jeweler false }
+    if ($readini(shopnpcs.dat, NPCStatus, Cardian) = $null) { writeini shopnpcs.dat NPCStatus Cardian kidnapped }
 
     if ($readini(shopnpcs.dat, Events, FrostLegionDefeated) = $null) { writeini shopnpcs.dat Events FrostLegionDefeated false }
     if ($readini(shopnpcs.dat, Events, SavedElves) = $null) { writeini shopnpcs.dat Events SavedElves 0 }
@@ -264,6 +265,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCNames, DungeonKeyMerchant) = $null) { writeini shopnpcs.dat NPCNames DungeonKeyMerchant Vinz Clortho the Keymaster }
     if ($readini(shopnpcs.dat, NPCNames, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCNames GobbieBoxGoblin Bountibox the Goblin }
     if ($readini(shopnpcs.dat, NPCNames, Jeweler) = $null) { writeini shopnpcs.dat NPCNames Jeweler Vasu the Jeweler }
+    if ($readini(shopnpcs.dat, NPCNames, Cardian) = $null) { writeini shopnpcs.dat NPCNames Cardian King of Cups }
 
     ; Allied Forces Garden stuff
     if ($readini(garden.dat, GardenStats, XP) = $null) { writeini garden.dat GardenStats XP 0 }
@@ -1806,14 +1808,16 @@ tradingcards.list {
 
   while (%value <= %items.lines) {
     set %item.name $read -l $+ %value $lstfile(items_tradingcards.lst)
+
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       inc %card.collection 1
-      if ($numtok(%tradingcards.items.list,46) <= 15) { %tradingcards.items.list = $addtok(%tradingcards.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      set %item.name $replace(%item.name, TradingCard-,$chr(35))
+      if ($numtok(%tradingcards.items.list,46) <= 20) { %tradingcards.items.list = $addtok(%tradingcards.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       else { 
-        if ($numtok(%tradingcards.items.list2,46) <= 15) { %tradingcards.items.list2 = $addtok(%tradingcards.items.list2, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        if ($numtok(%tradingcards.items.list2,46) <= 20) { %tradingcards.items.list2 = $addtok(%tradingcards.items.list2, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
         else { %tradingcards.items.list3 = $addtok(%tradingcards.items.list3, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       }
     }
@@ -2005,12 +2009,12 @@ items.list {
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
-    var %item.color 4
+    var %item.color 5
     if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 7 }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, %item.color $+ %item.name $+ 4 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %items.list2 = $addtok(%items.list2, %item.color $+ %item.name $+ 4 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { %items.list2 = $addtok(%items.list2, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
     }
     unset %item.name | unset %item_amount
     inc %value 1 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 09/09/16
+;;;; Last updated: 11/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -62,7 +62,7 @@ alias shop.exchange {
 alias shop.categories.list {
   $display.private.message(2Valid shop categories:)
   $display.private.message(2Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) Portal $+ $chr(44) Misc) 
-  $display.private.message(2Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys)
+  $display.private.message(2Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards)
   if ($left($adate, 2) = 10) {  $display.private.message(2Halloween, private) }
 }
 
@@ -128,6 +128,8 @@ alias shop.start {
     if (($3 = weapons) || ($3 = weapon)) { $shop.weapons($nick, buy, $4, %amount.to.purchase) }
     if (($3 = shields) || ($3 = shield)) { $shop.shields($nick, buy, $4, %amount.to.purchase) }
     if (($3 = potioneffect) || ($3 = potioneffects)) { $shop.potioneffects($nick, buy, $4) | halt }
+    if (($3 = tradingcard) || ($3 = tradingcards))  { $shop.tradingcards($nick, buy, $4, %amount.to.purchase) | halt }
+
     if ($3 = orbs) { 
       var %amount.to.purchase $abs($4)
       if (%amount.to.purchase = $null) { var %amount.to.purchase 1 }
@@ -159,7 +161,7 @@ alias shop.start {
 
   if ($2 = list) { 
 
-    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween
+    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards
     if ($istok(%valid.categories, $3, 46) = $false) { 
       $display.private.message(4Error: Use 2!shop list category4 or 2!shop buy category itemname)
       $shop.categories.list 
@@ -171,6 +173,7 @@ alias shop.start {
       if (($3 = enhancement) || ($3 = enhancements))  { $shop.enhancements($nick, list) }
       if (($3 = stats) || ($3 = stat)) { $shop.stats($nick, list) }
       if (($3 = items) || ($3 = item)) { $shop.items($nick, list) }
+      if (($3 = tradingcards) || ($3 = tradingcard)) { $shop.tradingcards($nick, list) }
       if (($3 = techs) || ($3 = techniques))  { $shop.techs($nick, list) }
       if (($3 = trusts) || ($3 = trust))  { $shop.trusts($nick, list) }
       if (($3 = potioneffect) || ($3 = potioneffects)) { $shop.potioneffects($nick, list) }
@@ -2225,7 +2228,136 @@ alias shop.alchemy {
     unset %shop.list | unset %currency | unset %player.currency | unset %total.price
     halt
   }
+}
 
+alias shop.tradingcards {
+  var %conquest.status $readini(battlestats.dat, conquest, ConquestPreviousWinner)
+
+  ; Is the shield shop merchant even there?
+  if ($readini(shopnpcs.dat, NPCStatus, Cardian) != true) { $display.private.message(2The cardian merchant is currently unavailable for you to purchase any trading cards.) | halt }
+
+
+
+  if ($2 = list) {
+    unset %shop.list | unset %item.name | unset %item_amount | unset %gems | unset %card | unset %card2 | unset %card3
+    unset %item.name | unset %item_amount | unset %number.of.items | unset %value | unset %shop.list3
+    set %card.item.count 1
+
+    ; CHECKING TRADING CARDS
+    var %value 1 | var %items.lines $lines($lstfile(items_misc.lst))
+
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(items_tradingcards.lst)
+
+      set %item_amount $readini($dbfile(items.db), %item.name, cost)
+      if ((%item_amount != $null) && (%item_amount >= 1)) { 
+        ; add the item and the amount to the item list
+
+        set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
+
+        if ($readini($dbfile(items.db), %item.name, currency) = AlliedNotes) { 
+          var %item_to_add %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) 
+
+          if ((%conquest.item = $null) || (%conquest.item = false)) {
+            if (%card.item.count <= 20) { %shop.list = $addtok(%shop.list,%item_to_add,46) }
+            if ((%card.item.count > 20) && (%card.item.count < 40)) {  %shop.list2 = $addtok(%shop.list2,%item_to_add,46) }
+            if (%card.item.count > 40) { %shop.list3 = $addtok(%shop.list3,%item_to_add,46) }
+          }
+
+          if ((%conquest.item = true) && (%conquest.status = players)) { 
+            if (%card.item.count <= 20) { %shop.list = $addtok(%shop.list,%item_to_add,46) }
+            if ((%card.item.count > 20) && (%card.item.count < 40)) {  %shop.list2 = $addtok(%shop.list2,%item_to_add,46) }
+            if (%card.item.count > 40) { %shop.list3 = $addtok(%shop.list3,%item_to_add,46) }
+          }
+
+          inc %card.item.count 1 
+        }
+      }
+      inc %value 1 | unset %conquest.item
+    }
+
+    if (%shop.list != $null) {  $shop.cleanlist | set %card %shop.list  | set %card2 %shop.list2  | set %card3 %shop.list3 }
+
+    unset %shop.list | unset %item.name | unset %item_amount | unset %card.item.count
+    unset %item.name | unset %item_amount | unset %number.of.items | unset %value
+
+
+    ; CHECKING BOOSTER SETS
+    var %value 1 | var %items.lines $lines($lstfile(items_tradingcardboosters.lst))
+
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(items_tradingcardboosters.lst)
+      set %item_amount $readini($dbfile(items.db), %item.name, cost)
+
+      if ((%item_amount != $null) && (%item_amount >= 1)) { 
+        ; add the item and the amount to the item list
+
+        set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
+
+        if ($readini($dbfile(items.db), %item.name, currency) = AlliedNotes) { 
+          var %item_to_add 7 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) 
+
+          if ((%conquest.item = $null) || (%conquest.item = false)) { %shop.list = $addtok(%shop.list,%item_to_add,46) } 
+          if ((%conquest.item = true) && (%conquest.status = players)) { %shop.list = $addtok(%shop.list,%item_to_add,46) }
+        }
+
+      }
+      inc %value 1 | unset %conquest.item
+    }
+
+    unset %item.name | unset %item_amount | unset %number.of.items | unset %value
+
+    if (%shop.list != $null) { $shop.cleanlist | set %boosters %shop.list  }
+
+
+
+
+    if ((%card != $null) || (%boosters != $null)) { 
+      $display.private.message(2These items are paid for with Allied Notes:)
+
+      if (%card != $null) { $display.private.message.delay.custom(5 $+ %card,2) }
+      if (%card2 != $null) { $display.private.message.delay.custom(5 $+ %card2,3) }
+      if (%card3 != $null) { $display.private.message.delay.custom(5 $+ %card3,3) }
+      if (%boosters != $null) { $display.private.message.delay.custom(%boosters,4) }
+    }
+
+    if ((%card = $null) && (%boosters = $null)) {  $display.private.message.delay.custom(4There are no items available for purchase right now, 2)  }
+
+    unset %shop.list | unset %card | unset %boosters | unset %card2 | unset %card3
+    unset %shop.list2 | unset %shop.list3 
+
+  }
+
+  if (($2 = buy) || ($2 = purchase)) {
+    if ($readini($dbfile(items.db), $3, cost) = $null) { $display.private.message(4Error: Invalid item! Use !shop list tradingcards to get a valid list) | halt }
+    if ($readini($dbfile(items.db), $3, cost) = 0) { $display.private.message(4Error: You cannot purchase this item! Use !shop list tradingcards to get a valid list) | halt }
+
+    if ($readini($char($1), status, alliednotes.lock) = true) { $display.private.message(4You are in the middle of an auction and cannot spend or exchange any allied notes until the auction is over.) | halt }
+
+    ; do you have enough to buy it?
+
+    if ($readini($dbfile(items.db), $3, currency) != AlliedNotes) {  $display.private.message(4You cannot buy this item in this shop.) | halt }
+
+    var %conquest.item $readini($dbfile(items.db), $3, ConquestItem)
+    if ((%conquest.item = true) && (%conquest.status != players)) { $display.private.message(4You cannot buy this item because monsters are in control of the conquest region it comes from! Players must be in control of the conquest in order to purchase this.) | halt }
+
+    var %shopnpc.name $readini($dbfile(items.db), $3, shopNPC)
+    if ((%shopnpc.name != $null) && ($shopnpc.present.check(%shopnpc.name) != true)) {  $display.private.message($readini(translation.dat, errors, ShopNPCNotAvailable)) | halt }
+
+
+    set %player.currency $readini($char($1), stuff, alliednotes)
+    set %total.price $calc($readini($dbfile(items.db), $3, cost) * $4)
+
+    if (%player.currency = $null) { set %player.currency 0 }
+
+    if (%player.currency < %total.price) {  $display.private.message(4You do not have enough Allied Notes to purchase $4 of this item!) | unset %currency | unset %player.currency | unset %total.price |  halt }
+    dec %player.currency %total.price
+    writeini $char($1) stuff AlliedNotes %player.currency
+    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + $4) 
+    $display.private.message(3The cardian takes your %total.price Allied Notes and gives you $4 $3 $+ $iif($4 < 2, , s) $+ !)
+    unset %shop.list | unset %currency | unset %player.currency | unset %total.price
+    halt
+  }
 }
 
 alias shop.orbs {

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 02/21/16
+;;;; Last updated: 11/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -139,9 +139,16 @@ alias shopnpc.list {
   var %npcstatus.Jeweler.name $readini(shopnpcs.dat, NPCNames, Jeweler)
   if (%npcstatus.Jeweler.name = $null) { var %npcstatus.Jeweler.name Vasu the Jeweler }
 
+  var %npcstatus.Cardian $readini(shopnpcs.dat, NPCstatus, Cardian)
+  if (%npcstatus.Cardian = true) { var %npcstatus.Cardian.color 3 }
+  if (%npcstatus.Cardian = false) { var %npcstatus.Cardian.color 5 }
+  if (%npcstatus.Cardian = kidnapped) { var %npcstatus.Cardian.color 4 }
+  var %npcstatus.Cardian.name $readini(shopnpcs.dat, NPCNames, Cardian)
+  if (%npcstatus.Cardian.name = $null) { var %npcstatus.Cardian.name King of Cups }
+
   var %npcs.status [ $+ %npcstatus.president.color $+ %npcstatus.president.name $+ ]  [ $+ %npcstatus.healing.color $+ %npcstatus.healing.name $+ ] [ $+ %npcstatus.battle.color $+ %npcstatus.battle.name $+ ] [ $+ %npcstatus.discount.color $+ %npcstatus.discount.name $+ ] [ $+ %npcstatus.song.color $+ %npcstatus.song.name $+ ] [ $+ %npcstatus.shield.color $+ %npcstatus.shield.name $+ ]
   var %npcs.status2 [ $+ %npcstatus.dungeonkey.color $+ %npcstatus.dungeonkey.name $+ ]  [ $+ %npcstatus.potionwitch.color $+ %npcstatus.potionwitch.name $+ ] [ $+ %npcstatus.wheel.color $+ %npcstatus.wheel.name $+ ] [ $+ %npcstatus.gambler.color $+ %npcstatus.gambler.name $+ ] [ $+ %npcstatus.gardener.color $+ %npcstatus.gardener.name $+ ] [ $+ %npcstatus.travel.color $+ %npcstatus.travel.name $+ ]
-  var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ] [ $+ %npcstatus.Jeweler.color $+ %npcstatus.Jeweler.name $+ ]
+  var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ] [ $+ %npcstatus.Jeweler.color $+ %npcstatus.Jeweler.name $+ ] [ $+ %npcstatus.Cardian.color $+ %npcstatus.Cardian.name $+ ]
 
   ; Check for seasonal NPCs
   if ($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true) { var %seasonal.status %seasonal.status [3Easter Bunny] }
@@ -324,6 +331,7 @@ alias shopnpc.kidnap {
   if ($shopnpc.present.check(PotionWitch) = true) { %active.npcs = $addtok(%active.npcs, PotionWitch, 46) }
   if ($shopnpc.present.check(Gambler) = true) { %active.npcs = $addtok(%active.npcs, Gambler, 46) }
   if ($shopnpc.present.check(GobbieBoxGoblin) = true) { %active.npcs = $addtok(%active.npcs, GobbieBoxGoblin, 46) }
+  if ($shopnpc.present.check(Cardian) = true) { %active.npcs = $addtok(%active.npcs, Cardian, 46) }
 
   if (%active.npcs = $null) { return }
 
@@ -366,6 +374,7 @@ alias shopnpc.rescue {
   if ($shopnpc.present.check(Gambler) = kidnapped) { %active.npcs = $addtok(%active.npcs, Gambler, 46) }
   if ($shopnpc.present.check(DungeonKeyMerchant) = kidnapped) { %active.npcs = $addtok(%active.npcs, DungeonKeyMerchant, 46) } 
   if ($shopnpc.present.check(GobbieBoxGoblin) = kidnapped) { %active.npcs = $addtok(%active.npcs, GobbieBoxGoblin, 46) }
+  if ($shopnpc.present.check(Cardian) = kidnapped) { %active.npcs = $addtok(%active.npcs, Cardian, 46) }
 
   if (%active.npcs = $null) { return }
 
