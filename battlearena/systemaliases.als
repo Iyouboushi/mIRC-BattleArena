@@ -4536,6 +4536,12 @@ dragonhunt.createdragon {
   if ((%total.player.averagelevel > 2000) && (%total.player.averagelevel <= 5000)) { inc %dragon.age $rand(400,600) }
   if (%total.player.averagelevel > 5000) { inc %dragon.age $rand(700,1200) }
 
+
+  var %dragonhunts.dead $readini(battlestats.dat, Battle, DragonHuntDragons.Killed)
+  if (%dragonhunts.dead = $null) { var %dragonhunts.dead 0 }
+
+  inc %dragon.age $calc(%dragonhunts.dead * 10)
+
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
 
   ; Pick a random element

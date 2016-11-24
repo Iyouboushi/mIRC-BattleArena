@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 11/18/16
+;;;; Last updated: 11/24/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1808,6 +1808,16 @@ alias battle.end.failure {
 ; Battle ends in a victory
 alias battle.end.victory {
   if ((%mode.pvp = on) || (%battle.type = ai)) { return } 
+
+  if (%battle.type = DragonHunt) { 
+    var %dragonhunts.dead $readini(battlestats.dat, Battle, DragonHuntDragons.Killed)
+    if (%dragonhunts.dead = $null) { var %dragonhunts.dead 0 }
+
+    inc %dragonhunts.dead 1 
+
+    writeini battlestats.dat Battle DragonHuntDragons.Killed %dragonhunts.dead
+
+  }
 
   var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
 
