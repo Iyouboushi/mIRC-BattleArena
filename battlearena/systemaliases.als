@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/24/16
+;;;; Last updated: 11/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3302,6 +3302,7 @@ reset_char {
 
   ; Reset the techniques
   var %doublepunch.level $readini($char($1), techniques, doublepunch)
+  if (%doublepunch.level = $null) { var %doublepunch.level 1 }
   remini $char($1) techniques
   writeini $char($1) techniques DoublePunch %doublepunch.level 
 
