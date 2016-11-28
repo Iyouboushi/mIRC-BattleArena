@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 11/24/16
+;;;; Last updated: 11/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2250,8 +2250,10 @@ alias battle.monster.death.check {
 alias battle.check.for.end {
   set %debug.location battle.check.for.end
 
+  set %wait.your.turn on
+
   if (%battle.type = dungeon) { 
-    if (($dungeon.currentroom = 0) && (%current.turn = 1)) { return }
+    if (($dungeon.currentroom = 0) && (%current.turn = 1)) { unset %wait.your.turn | return }
   }
 
   if ((%savethepresident = on) && ($readini($char(alliedforces_president), battle, hp) <= 0)) { /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt  } 
@@ -2280,12 +2282,13 @@ alias battle.check.for.end {
   if (%battle.type = dungeon) { 
     if ($dungeon.dungeonovercheck = true) { $dungeon.end | halt } 
     else {
-      if ((%battle.monster.death = true) && (%battle.player.death = false)) { $dungeon.clearroom | halt }
+      if ((%battle.monster.death = true) && (%battle.player.death = false)) { unset %wait.your.turn | $dungeon.clearroom | halt }
       if ((%battle.player.death = true) && (%battle.monster.death = false)) {  /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt }
     }
   }
 
   unset %battle.player.death | unset %battle.monster.death
+  unset %wait.your.turn
 }
 
 ; ==========================
