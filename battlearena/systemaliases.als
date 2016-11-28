@@ -3237,7 +3237,7 @@ clear_variables2 {
   unset %attacker.level | unset %defender.level | unset %damage.display.color | unset %current.playerstyle
   unset %number.of monsters.needed | unset %battle.level.cap | unset %percent.increase
   unset %monster.info.streak.max | unset %monster.info.streak | unset %supplyrun | unset %healthbar.char
-  unset %total.targets | unset %random.target
+  unset %total.targets | unset %random.target | unset %acessory.found | unset %accessory.amount
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

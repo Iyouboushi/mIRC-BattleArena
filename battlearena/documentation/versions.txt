@@ -1564,6 +1564,8 @@ Battle Arena Bot VERSIONS
 - Fixed a bug where it was possible to get infinite HP while using an ignition
 - Fixed a bug that was preventing accessories with more than one type working correctly.
 - Fixed a bug with the techonly AI types
+- Fixed a bug with Final Getsuga
+- Fixed a bug where players could perform more than one action if the final monster in the battle was dead
 - Fixed two bugs with the Predator fight
 - Fixed several bugs with the battle formulas and damage caps
 - Fixed an issue where certain battle types could override mimic battles
