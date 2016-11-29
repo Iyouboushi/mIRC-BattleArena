@@ -952,6 +952,21 @@ cost=50
 SellPrice=1000
 Exclusive=yes
 
+[Acolyte'sRobe]
+name=Acolyte's Robe
+hp=10
+tp=100
+Str=89 
+def=300
+int=370
+spd=300
+Augment=MagicBonus.EnhanceStaff.EnhanceWand
+EquipLocation=body
+cost=0
+SellPrice=2000
+Exclusive=yes
+LevelRequirements=50
+
 [PlunderedJacket]
 name=Plundered Jacket
 hp=100
@@ -2408,6 +2423,37 @@ Augment=None
 EquipLocation=feet
 cost=50
 SellPrice=50
+
+[PlunderedBoots]
+name=Plundered Boots
+hp=100
+tp=10
+Str=70
+def=200
+int=50
+spd=100
+Augment=EnhanceSword.EnhanceRanged
+EquipLocation=body
+cost=0
+SellPrice=2000
+Exclusive=yes
+LevelRequirements=50
+
+[Acolyte'sSandals]
+name=Acolyte's Sandals
+hp=10
+tp=100
+Str=50
+def=100
+int=200
+spd=70
+Augment=MagicBonus.EnhanceStaff.EnhanceWand
+EquipLocation=body
+cost=0
+SellPrice=2000
+Exclusive=yes
+LevelRequirements=50
+
 
 [MyochinSune-Ate]
 Name=Myochin Sune-Ate
