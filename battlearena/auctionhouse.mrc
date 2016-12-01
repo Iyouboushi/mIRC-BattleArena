@@ -59,27 +59,17 @@ alias auctionhouse.winners {
 
   if ($2 != $null) {
     if ($2 !isnum) { $display.private.message2($1, 4Error: Must input a number) | halt }
-    if ($2 = $readini(system.dat, auctionInfo, numberOfAuctions)) { $display.private.messagee2($1, 4Error: This auction is still live and cannot be checked with this command.) | halt }
-
-    var %auction.lines $lines($txtfile(auction_winners.txt)) 
-    var %current.line 1
-    while (%current.line <= %auction.lines) {
-      var %winner.auctionline $read -l $+ %current.line $txtfile(auction_winners.txt)
-      var %auction.number $gettok(%winner.auctionline, 1, 45)
-
-      if ($2 = %auction.number) { 
-        var %winner.displayline 3Auction No. - Date - Time - Winner - Item - Notes Paid
-        $display.private.message2($1, %winner.displayline)
-        $display.private.message2($1, %winner.auctionline)
-        halt
-      }
-
-      inc %current.line
+    if ($2 = $readini(system.dat, auctionInfo, NumberOfAuctions)) { $display.private.message2($1, 4Error: This auction is still live and cannot be checked with this command.) | halt }
+    if ($2 > $readini(system.dat, auctionInfo, NumberOfAuctions)) { $display.private.message2($1, 4Error: This auction doesn't exist.) | halt }
+    var %auction.number $2
+    while ($len(%auction.number) != 5) {
+      var %auction.number 0 $+ %auction.number
     }
-
-    $display.private.message2($1, 4Error: Invalid auction number) | halt 
+    var %winner.displayline 3Auction No. - Date - Time - Winner - Item - Notes Paid
+    var %winner.auctionline $read($txtfile(auction_winners.txt),nw,%auction.number $+ *)
+    $display.private.message2($1, %winner.displayline)
+    $display.private.message2($1, %winner.auctionline)
   }
-
 }
 
 ; Bid on an item
