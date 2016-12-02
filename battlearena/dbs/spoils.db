@@ -234,3 +234,5 @@ Yagudo_Zealot=BeastmenSeal
 
 Blue_Rusalka=$iif(%portal.bonus = true, Clom'sTale-03.Clom'sTale-04)
 Red_Rusalka=$iif(%portal.bonus = true, Clom'sTale-03.Clom'sTale-04)
+Calca=$iif(%portal.bonus = true, Clom'sTale-05.Clom'sTale-06)
+Brina=$iif(%portal.bonus = true, Clom'sTale-05.Clom'sTale-06)

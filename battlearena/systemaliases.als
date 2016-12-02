@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/28/16
+;;;; Last updated: 12/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2629,14 +2629,14 @@ clear_certain_skills {
 clear_most_status {
   writeini $char($1) Status poison no | writeini $char($1) Status HeavyPoison no | writeini $char($1) Status blind no | writeini $char($1) status confuse no
   writeini $char($1) Status Heavy-Poison no | writeini $char($1) status poison-heavy no | writeini $char($1) Status curse no 
-  writeini $char($1) Status weight no | writeini $char($1) status virus no | writeini $char($1) Status drunk no 
+  writeini $char($1) Status weight no | writeini $char($1) status virus no | writeini $char($1) Status drunk no | writeini $char($1) status doll no
   writeini $char($1) Status amnesia no | writeini $char($1) status paralysis no | writeini $char($1) status zombie no | writeini $char($1) Status slow no 
   writeini $char($1) Status sleep no | writeini $char($1) Status stun no | writeini $char($1) status zombieregenerating no | writeini $char($1) status silence no
   writeini $char($1) status petrified no  | writeini $char($1) status bored no | writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no 
   writeini $char($1) status intdown no | writeini $char($1) status protect no | writeini $char($1) status shell no | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0 
 
   writeini $char($1) status poison.timer 0 | writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
-  writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0 | writeini $char($1) status confuse.timer 0 
+  writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0 | writeini $char($1) status doll.timer 0 | writeini $char($1) status confuse.timer 0 
   writeini $char($1) status defensedown.timer 0 |  writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown.timer 0
   writeini $char($1) status protect.timer 0 | writeini $char($1) status shell.timer 0 | writeini $char($1) status virus.timer 0
 }
@@ -2649,13 +2649,14 @@ clear_negative_status {
   writeini $char($1) Status slow no | writeini $char($1) Status sleep no | writeini $char($1) Status stun no |  writeini $char($1) status zombieregenerating no | writeini $char($1) status intimidate no 
   writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no | writeini $char($1) status intdown no  |  writeini $char($1) status stop no | writeini $char($1) status petrified no 
   writeini $char($1) status bored no | remini $char($1) status weapon.locked | writeini $char($1) status confuse no 
-  remini $char($1) status annoyed | writeini $char($1) status terrify no 
+  remini $char($1) status annoyed | writeini $char($1) status terrify no | writeini $char($1) status doll no
 
   ; Clear negative timer statuses
   writeini $char($1) status poison.timer 0 |  writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
   writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0
   writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown.timer 0 | writeini $char($1) status defensedown.timer 0
   writeini $char($1) status bored.timer 0 |  writeini $char($1) status confuse.timer 0 | writeini $char($1) status virus.timer 0
+  writeini $char($1) status doll.timer 0
 
   ; Monsters that are zombies need to be reset as zombies.
   if ($readini($char($1), monster, type) = zombie) {  writeini $char($1) status zombie yes | writeini $char($1) status zombieregenerating yes } 

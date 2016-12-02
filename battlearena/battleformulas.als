@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/08/16
+;;;; Last updated: 12/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -346,12 +346,16 @@ calculate_damage_items {
     }
   }
 
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
   $trickster_dodge_check($3, $1)
   $utsusemi.check($1, $2, $3)
   $guardianmon.check($1, $2, $3)
   $wonderguard.check($3, $2, item)
+
 
   if ($readini($char($3), modifiers, $2) != $null) {
     if ($readini($char($3), modifiers, $2) <= 0) {
@@ -976,8 +980,13 @@ formula.meleedmg.player.formula_2.0 {
   ; Turn off the True Strike skill
   writeini $char($1) skills truestrike.on off
 
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
@@ -1298,8 +1307,13 @@ formula.meleedmg.player.formula_3.1 {
   ; Turn off the True Strike skill
   writeini $char($1) skills truestrike.on off
 
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
@@ -1643,6 +1657,10 @@ formula.meleedmg.player.formula_3.0 {
   ; Turn off the True Strike skill
   writeini $char($1) skills truestrike.on off
 
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1986,8 +2004,13 @@ formula.meleedmg.player.formula_1.0 {
   ; Turn off the True Strike skill
   writeini $char($1) skills truestrike.on off
 
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
@@ -2374,7 +2397,13 @@ formula.meleedmg.player.formula_2.5 {
   ; Turn off the True Strike skill
   writeini $char($1) skills truestrike.on off
 
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
+
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
@@ -2830,7 +2859,14 @@ formula.meleedmg.monster {
   ; Turn off the True Strike skill
   writeini $char($1) skills truestrike.on off
 
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
+
+  ; Set the style amount to the attack damage
+  set %style.attack.damage %attack.damage
 
   if (%battle.rage.darkness = on) { 
     if ($readini($char($1), info, flag) = monster) { inc %attack.damage $calc(%attack.damage * 500) } 
@@ -3184,12 +3220,16 @@ formula.techdmg.monster {
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
-  ; Check for a Guardian Monster
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
 
-  ; Check for multiple hits now.
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  ; Check for multiple hits now
   $multihitcheck.tech($1, $2, $3, $4)
 
   ; Check to see if we need to increase the proficiency of a technique.
@@ -3511,12 +3551,16 @@ formula.techdmg.player.formula_2.0 {
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
-  ; Check for a Guardian Monster
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
 
-  ; Check for multiple hits now.
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  ; Check for multiple hits
   $multihitcheck.tech($1, $2, $3, $4)
 
   ; Check to see if we need to increase the proficiency of a technique.
@@ -3842,12 +3886,16 @@ formula.techdmg.player.formula_2.5 {
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
-  ; Check for a Guardian Monster
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
 
-  ; Check for multiple hits now.
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  ; Check for multiple hits
   $multihitcheck.tech($1, $2, $3, $4)
 
   ; Check to see if we need to increase the proficiency of a technique.
@@ -4082,12 +4130,16 @@ formula.techdmg.player.formula_1.0 {
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
-  ; Check for a Guardian Monster
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
 
-  ; Check for multiple hits now.
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  ; Check for multiple hits
   $multihitcheck.tech($1, $2, $3, $4)
 
   ; Check to see if we need to increase the proficiency of a technique.
@@ -4376,12 +4428,16 @@ formula.techdmg.player.formula_3.1 {
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
-  ; Check for a Guardian Monster
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
 
-  ; Check for multiple hits now.
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  ; Check for multiple hits
   $multihitcheck.tech($1, $2, $3, $4)
 
   ; Check to see if we need to increase the proficiency of a technique.
@@ -4687,12 +4743,16 @@ formula.techdmg.player.formula_3.0 {
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
-  ; Check for a Guardian Monster
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
 
-  ; Check for multiple hits now.
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  ; Check for multiple hits
   $multihitcheck.tech($1, $2, $3, $4)
 
   ; Check to see if we need to increase the proficiency of a technique.
@@ -4990,12 +5050,16 @@ formula.techdmg.player.percent {
   ; If the target has Shell on, it will cut magic damage in half.
   if (($readini($char($3), status, shell) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) { %attack.damage = $round ($calc(%attack.damage / 2),0) }
 
-  ; Check for a Guardian Monster
+  ; If the attacker is a doll, cut the damage in half
+  if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
 
-  ; Check for multiple hits now.
+  ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  ; Check for multiple hits
   $multihitcheck.tech($1, $2, $3, $4)
 
   unset %tech.howmany.hits |  unset %enemy.defense | set %multihit.message.on on

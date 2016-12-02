@@ -20,7 +20,7 @@ errors.
 ==============================================================
 [MoonPhase]
 CurrentMoonPhase=Full
-CurrentMoonTurn=1
+CurrentMoonTurn=3
 
 [MoonPhaseTime]
 full=3

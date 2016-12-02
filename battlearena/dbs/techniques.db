@@ -277,6 +277,9 @@ AmonTrident=RahGian.WoRud.Stardiver.Drakesbane.Skewer.Geirskogul.CamlannsTorment
 JesterWand=Portal.ClownHead.ClownFire
 VampireArt=BloodArtTechnique.PaintingofSoul.PortraitSmash.CursePainting
 Puppetry=FrenchDollAttack.PuppetControl.IronMaiden.MetalStrings
+Calca=
+Brina=
+Calcabrina=TerrifyingGlance.Knockout.Dollhouse
 Benihime=SwiftBlade
 MarioFists=Jump.FireFlower.StarPower
 PeoplesFist=RockBottom.PeoplesElbow.SamoanDrop.FlyingClothesline.Spinebuster
@@ -5327,6 +5330,38 @@ Element=Dark
 Cost=0
 Magic=yes
 stat=int
+
+[TerrifyingGlance]
+Type=Single
+StatusType=Terrify
+TP=10
+Desc=glares at %enemy with its huge porcelain eyes and gives a deep demonic sounding laugh before sending out a large wave of energy out of her fingertips at %enemy
+BasePower=15
+Element=Dark
+Cost=0
+Magic=yes
+stat=str
+
+[Knockout]
+Type=AOE
+TP=10
+Desc=performs a large spin around the room hitting everyone in it
+BasePower=25
+Element=Dark
+Cost=0
+Magic=yes
+stat=str
+
+[Dollhouse]
+Type=Single
+StatusType=Doll.Charm
+TP=10
+Desc=picks up a large dollhouse and slams it over %enemy $+ 's body in an attempt to make a new doll friend!
+BasePower=15
+Element=Dark
+Cost=0
+Magic=yes
+stat=str
 
 [FrenchDollAttack]
 Type=Single

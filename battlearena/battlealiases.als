@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/22/16
+;;;; Last updated: 12/02/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -319,7 +319,7 @@ statuseffect.check {
 ; that status effects last.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 status.effects.turns {
-  var %negative.status.effects flying.confuse.poison.curse.cocoon.weaponlock.drunk.zombie.virus.slow.defensedown.strdown.intdown.ethereal.charm.paralysis.bored
+  var %negative.status.effects flying.confuse.poison.curse.cocoon.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.ethereal.charm.paralysis.bored
 
   if ($istok(%negative.status.effects,$1,46) = $true) { 
     if ($return_playersinbattle <= 1) { return 1 }
@@ -330,6 +330,7 @@ status.effects.turns {
     if ($1 = weaponlock) { return 4 }
     if ($1 = drunk) { return 3 }
     if ($1 = zombie) { return 3 }
+    if ($1 = doll) { return 3 }
     if ($1 = virus) { return 3 }
     if ($1 = slow) { return 3 }
     if ($1 = defensedown) { return 3 }
@@ -2206,7 +2207,7 @@ character.revive {
   writeini $char($1) status confuse.timer 1 | writeini $char($1) status defensedown no | writeini $char($1) status defensedown.timer 0 | writeini $char($1) status strengthdown no 
   writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown no | writeini $char($1) status intdown.timer 1
   writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0  | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0
-  writeini $char($1) status flying no
+  writeini $char($1) status flying no | writeini $char($1) status doll no | writeini $char($1) status doll.timer 0
 
   return
 }
@@ -2438,6 +2439,7 @@ inflict_status {
   if ($3 = amnesia) { set %status.type amnesia | var %status.grammar inflicted with amnesia }
   if ($3 = paralysis) { set %status.type paralysis | var %status.grammar paralyzed }
   if ($3 = zombie) { set %status.type zombie | var %status.grammar a zombie }
+  if ($3 = doll) { set %status.type doll | var %status.grammar a small doll }
   if ($3 = slow) { set %status.type slow | var %status.grammar slowed }
   if ($3 = stun) { set %status.type stun | var %status.grammar stunned }
   if ($3 = curse) { set %status.type curse | var %status.grammar cursed }
@@ -2617,6 +2619,7 @@ do.self.inflict.status {
   if (%self.status.type = amnesia) { set %status.type amnesia | var %status.grammar inflicted with amnesia }
   if (%self.status.type = paralysis) { set %status.type paralysis | var %status.grammar paralyzed }
   if (%self.status.type = zombie) { set %status.type zombie | var %status.grammar a zombie }
+  if (%self.status.type = doll) { set %status.type doll | var %status.grammar a small doll }
   if (%self.status.type = slow) { set %status.type slow | var %status.grammar slowed }
   if (%self.status.type = stun) { set %status.type stun | var %status.grammar stunned }
   if (%self.status.type = curse) { set %status.type curse | var %status.grammar cursed }
@@ -4954,6 +4957,18 @@ zombie_check {
   return
 }
 
+doll_check { 
+  var %doll.timer $readini($char($1), status, doll.timer)  
+  if (%doll.timer < $status.effects.turns(doll)) { 
+    if ($readini($char($1), Status, doll) = yes) { %doll.timer = $calc(%doll.timer + 1) | writeini $char($1) status doll.timer %doll.timer |  writeini $char($1) status dollregenerating on
+    $set_chr_name($1) | return }
+  }
+  else { 
+    if ($readini($char($1), Status, doll) = yes) {   writeini $char($1) status doll no | writeini $char($1) status doll.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, dollWornOff) |  writeini $char($1) status dollregenerating off | unset %doll.timer | return  }
+  }
+  return
+}
+
 virus_check { 
   var %virus.timer $readini($char($1), status, virus.timer)  
   if (%virus.timer < $status.effects.turns(virus)) { 
@@ -5500,4 +5515,21 @@ portal.ifritprime.aitype {
   if (%current.turn = 10) { var %ai.type techonly }
 
   return %ai.type
+}
+
+portal.calcabrina.calcasummon {
+  var %calca.count 0
+  var %brina.count 0
+
+  if ($readini($char(Calca), battle, hp) > 0) { inc %calca.count 1 }
+  if ($readini($char(Calca2), battle, hp) > 0) { inc %calca.count 1 }
+  if ($readini($char(Calca3), battle, hp) > 0) { inc %calca.count 1 }
+  if ($readini($char(Calca4), battle, hp) > 0) { inc %calca.count 1 }
+  if ($readini($char(Brina), battle, hp) > 0) { inc %brina.count 1 }
+  if ($readini($char(Brina2), battle, hp) > 0) { inc %brina.count 1 }
+  if ($readini($char(Brina3), battle, hp) > 0) { inc %brina.count 1 }
+  if ($readini($char(Brina4), battle, hp) > 0) { inc %brina.count 1 }
+
+  if ((%calca.count = 0) && (%brina.count = 0)) { return Calcabrina }
+
 }
