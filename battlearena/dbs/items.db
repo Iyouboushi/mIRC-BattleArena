@@ -3221,6 +3221,8 @@ Desc=visits the Allied Forces and hands the guard the training paper. "You must 
 AlliedNotes=250
 Exclusive=yes
 PortalLevel=10
+Victory=$chr(2) $+ The Allied Scrub has learned a valuable lesson and will use that lesson to grow stronger!
+Defeat=$chr(2) $+ The Allied Scrub does a dance to celebrate the fact that he has bested the heroes in combat! "See? I don't need any training! I'm already the best!"
 
 [MillennialFairPass]
 Type=portal
@@ -3512,6 +3514,8 @@ Desc=offers the Bowl of Embers to the gods. The offering is accepted and the her
 AlliedNotes=5000
 Exclusive=yes
 PortalLevel=5000
+Victory=$chr(2) $+ Ifrit Prime has left behind a Clom's Tale tome so that his secrets may be passed on.
+Defeat=$chr(2) $+ Ifrit Prime gives off a laugh and says "Thou are not worthy of my boon!" before vanishing.
 
 [FortunaCrest]
 Type=portal

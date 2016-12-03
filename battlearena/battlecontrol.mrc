@@ -1776,7 +1776,12 @@ alias battle.end.failure {
     writeini $dbfile(dragonhunt.db) %dragonhunt.file.name Age %current.dragonage
   }
 
-  if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) }
+  if (%portal.bonus = true) { 
+    var %portal.item $readini($txtfile(battle2.txt), BattleInfo, PortalItem)
+    var %portal.defeat.message $readini($dbfile(items.db), %portal.item, Defeat)
+    $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) 
+    if (%portal.defeat.message != $null) { $display.message(4 $+ %portal.defeat.message, global) }
+  }
   if (%savethepresident = on) { $display.message($readini(translation.dat, battle, EvilHasWonPresident), global) 
     var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Fails)
     if (%presidents.captured = $null) { var %presidents.captured 0 }
@@ -1862,7 +1867,13 @@ alias battle.end.victory {
 
   if (%battle.type = torment) { $display.message($readini(translation.dat, battle, Torment.BattleWon), global)  }
   if (%battle.type = dragonhunt) {  $display.message($readini(translation.dat, battle, DragonHunt.BattleWon), global)  }
-  if (%portal.bonus = true) { $display.message($readini(translation.dat, battle, GoodHasWonPortal), battle) }
+
+  if (%portal.bonus = true) { 
+    var %portal.item $readini($txtfile(battle2.txt), BattleInfo, PortalItem)
+    var %portal.defeat.message $readini($dbfile(items.db), %portal.item, Victory)
+    $display.message($readini(translation.dat, battle, GoodHasWonPortal), battle)
+    if (%portal.defeat.message != $null) { $display.message(4 $+ %portal.defeat.message, global) }
+  }
 
   if (%savethepresident = on) { $display.message($readini(translation.dat, battle, GoodHasWonPresident), battle) 
     var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Wins)

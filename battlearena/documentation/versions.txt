@@ -1497,6 +1497,7 @@ Battle Arena Bot VERSIONS
   the set. It's possible to overwrite equipment sets
 - Added a 50% orb bonus to any player who has less than 10k orbs total (spent + on-hand)
 - Added the !weaponboost desc  command. Use it to set a custom weapon boost description
+- Added the ability for portals to have custom victory/defeat messages that are displayed when the portal is over
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
@@ -1576,6 +1577,7 @@ Battle Arena Bot VERSIONS
 - Fixed an issue where Darksteel Ore could be bought
 - Fixed an issue where barspells were't showing up in the battle status line.
 - Fixed an issue where clones could be revived using revive type items
+- Fixed an issue with searching the Auction House previous winners [thanks to Pentium320 who fixed it]
 - Fixed a potential issue with certain items in the shop being cut off if there's too many
 - Fixed a typo with Shenron's Wish
 - Fixed a description issue with ToxicMelody
