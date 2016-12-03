@@ -1498,6 +1498,7 @@ Battle Arena Bot VERSIONS
 - Added a 50% orb bonus to any player who has less than 10k orbs total (spent + on-hand)
 - Added the !weaponboost desc  command. Use it to set a custom weapon boost description
 - Added the ability for portals to have custom victory/defeat messages that are displayed when the portal is over
+- Added the ability for Spawn After Death to have a custom description displayed before it spawns the monster
 - Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
 - Changed the !add command to allow the ability for bot admins to add enhancement points
 - Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills

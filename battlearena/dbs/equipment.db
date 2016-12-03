@@ -4041,3 +4041,19 @@ SellPrice=0
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+
+[DollSkin]
+Name=Doll Skin
+hp=0
+tp=0
+Str=7000
+def=12000
+int=4500
+spd=6000
+Augment=EnhanceCounter.EnhanceDoubleTurnChance
+EquipLocation=body
+cost=0
+SellPrice=0
+Legendary=true
+Exclusive=yes
+LevelRequirement=5000

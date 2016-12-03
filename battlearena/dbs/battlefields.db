@@ -8,7 +8,7 @@ problems.
 ==============================================================
 
 [weather]
-current=gloomy
+current=none
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -19,7 +19,7 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Full
+CurrentMoonPhase=Gibbous
 CurrentMoonTurn=3
 
 [MoonPhaseTime]
@@ -1015,6 +1015,12 @@ Weather=snowy
 NumberOfEvents=0
 Scavenge=BeastmenSeal.KindredSeal.KindredCrest
 limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver.no-playerclones
+
+[Dwarven Castle - Crystal Room]
+Weather=none
+NumberOfEvents=0
+limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver.no-playerclones
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 
 ==============================================================

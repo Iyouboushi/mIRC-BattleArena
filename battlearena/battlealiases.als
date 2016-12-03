@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/02/16
+;;;; Last updated: 12/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3380,6 +3380,14 @@ spawn_after_death {
 
   if (((%isboss != $true) && (%isnpc != $true) && (%ismonster != $true))) { return }  
 
+  ; Check for a description that goes off when this monster is spawned
+  var %spawn.after.death.desc $readini($char($1), descriptions, SpawnAfterDeath)
+  if (%spawn.after.death.desc != $null) { $display.message(4 $+ %spawn.after.death.desc, battle) }
+
+  ; Clear dead monsters
+  $multiple_wave_clearmonsters
+
+  ; Spawn the new monster
   if ($isfile($boss(%monster.to.spawn)) = $true) {  .copy -o $boss(%monster.to.spawn) $char(%monster.to.spawn)  }
   if ($isfile($mon(%monster.to.spawn)) = $true) {  .copy -o $mon(%monster.to.spawn) $char(%monster.to.spawn)  }
   if ($isfile($npc(%monster.to.spawn)) = $true) { .copy -o $npc(%monster.to.spawn) $char(%monster.to.spawn) }

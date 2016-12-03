@@ -3514,7 +3514,7 @@ Desc=offers the Bowl of Embers to the gods. The offering is accepted and the her
 AlliedNotes=5000
 Exclusive=yes
 PortalLevel=5000
-Victory=$chr(2) $+ Ifrit Prime has left behind a Clom's Tale tome so that his secrets may be passed on.
+Victory=$chr(2) $+ Ifrit Prime has left behind a Clom's Tale tome so that his secrets may be passed on.
 Defeat=$chr(2) $+ Ifrit Prime gives off a laugh and says "Thou are not worthy of my boon!" before vanishing.
 
 [FortunaCrest]
@@ -3527,6 +3527,20 @@ Desc=uses the crest to open the gates of the Fortuna Castle and together the her
 AlliedNotes=5000
 Exclusive=yes
 PortalLevel=5000
+
+[AntiDollCharm]
+type=portal
+Cost=0
+Battlefield=Dwarven Castle - Crystal Room
+Weather=none
+Monster=Calca
+Monster2=Calca.Brina.Calca.Brina.Calca.Brina
+Desc=uses the anti-doll charm to break through the power barrier the dolls have placed in the Dwarven crystal room. There they see six dolls dancing playfully. Noticing the heroes they stop and give a light laugh. "Come play with us!"
+AlliedNotes=5000
+Exclusive=yes
+PortalLevel=5000
+Victory=$chr(2) $+ The Vicious Calcabrina has been defeated and the Dwarven King rewards the heroes with a Clom's Tale tome for their help in this matter.
+Defeat=$chr(2) $+ The dolls giggle and say "That was fun! Come back and play with us again some time!" before restoring the powerful barrier
 
 [MechanicalEye]
 type=portal

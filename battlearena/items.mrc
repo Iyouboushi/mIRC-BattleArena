@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 11/23/16
+;;;; Last updated: 12/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1600,8 +1600,9 @@ alias portal.item.onemonster {
 }
 
 alias portal.item.multimonsters {
-  var %value 1 | set %number.of.monsters $numtok(%monster.to.spawn,46)
+  var %value 1 | set %number.of.monsters $numtok(%monster.to.spawn,46) 
   while (%value <= %number.of.monsters) {
+    unset %multiple.monster.found
     set %current.monster.to.spawn $gettok(%monster.to.spawn,%value,46)
 
     var %isboss $isfile($boss(%current.monster.to.spawn))
@@ -1612,61 +1613,75 @@ alias portal.item.multimonsters {
       set %found.monster true 
       if (%cleared.battlefield != true) {  set %battle.type boss | set %cleared.battlefield true | $multiple_wave_clearmonsters }
 
-      if ($isfile($boss(%current.monster.to.spawn)) = $true) { .copy -o $boss(%current.monster.to.spawn) $char(%current.monster.to.spawn)  }
-      if ($isfile($mon(%current.monster.to.spawn)) = $true) {  .copy -o $mon(%current.monster.to.spawn) $char(%current.monster.to.spawn)  }
+      var %current.monster.to.spawn.name %current.monster.to.spawn
+      var %multiple.monster.counter 2 
 
-      ; increase the total # of monsters
-      set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%current.monster.to.spawn,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
-      write $txtfile(battle.txt) %current.monster.to.spawn
-      var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
-
-      ; write the portal level
-      var %boss.level $readini($char(%current.monster.to.spawn), info, bosslevel)
-      var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
-      if (%current.portal.level = $null) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo portalevel %boss.level }
-
-      if (%boss.level = $null) { var %boss.level %current.portal.level }
-      if (%boss.level > %current.portal.level) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
-
-      ; display the description of the spawned monster
-      $set_chr_name(%current.monster.to.spawn) 
-
-      if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
-        var %timer.delay $calc(%value - 1)
-
-        if (%number.of.monsters > 2) { 
-          dec %timer.delay 2
-          if (%timer.delay <= 0) { var %timer.delay 0 }
-        } 
-
-        $display.message.delay($readini(translation.dat, battle, EnteredTheBattle), battle, %timer.delay)
-
-        var %monster.description 12 $+ %real.name  $+ $readini($char(%current.monster.to.spawn), descriptions, char)
-        $display.message.delay(%monster.description, battle, %timer.delay)
-
-        var %bossquote $readini($char(%current.monster.to.spawn), descriptions, bossquote)
-        if (%bossquote != $null) { 
-          var %bossquote 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
-          $display.message.delay(%bossquote, battle, %timer.delay) 
-        }
+      while ($isfile($char(%current.monster.to.spawn.name)) = $true) { 
+        var %current.monster.to.spawn.name %current.monster.to.spawn $+ %multiple.monster.counter 
+        inc %multiple.monster.counter 1 | var %multiple.monster.found true
       }
+    }
+
+    if ($isfile($boss(%current.monster.to.spawn)) = $true) { .copy -o $boss(%current.monster.to.spawn) $char(%current.monster.to.spawn.name)  }
+    if ($isfile($mon(%current.monster.to.spawn)) = $true) {  .copy -o $mon(%current.monster.to.spawn) $char(%current.monster.to.spawn.name)  }
+
+    if (%multiple.monster.found = true) {  
+      var %real.name.spawn $readini($char(%current.monster.to.spawn), basestats, name) $calc(%multiple.monster.counter - 1)
+      writeini $char(%current.monster.to.spawn.name) basestats name %real.name.spawn
+    }
+
+    ; increase the total # of monsters
+    set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%current.monster.to.spawn.name,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
+    write $txtfile(battle.txt) %current.monster.to.spawn.name
+    var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
+
+    ; write the portal level
+    var %boss.level $readini($char(%current.monster.to.spawn), info, bosslevel)
+    var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
+    if (%current.portal.level = $null) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo portalevel %boss.level }
+
+    if (%boss.level = $null) { var %boss.level %current.portal.level }
+    if (%boss.level > %current.portal.level) { var %current.portal.level %boss.level | writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
+
+    ; display the description of the spawned monster
+    $set_chr_name(%current.monster.to.spawn.name) 
+
+    if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
+      var %timer.delay $calc(%value - 1)
+
+      if (%number.of.monsters > 2) { 
+        dec %timer.delay 2
+        if (%timer.delay <= 0) { var %timer.delay 0 }
+      } 
+
+      $display.message.delay($readini(translation.dat, battle, EnteredTheBattle), battle, %timer.delay)
+
+      var %monster.description 12 $+ %real.name  $+ $readini($char(%current.monster.to.spawn.name), descriptions, char)
+      $display.message.delay(%monster.description, battle, %timer.delay)
+
+      var %bossquote $readini($char(%current.monster.to.spawn.name), descriptions, bossquote)
+      if (%bossquote != $null) { 
+        var %bossquote 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
+        $display.message.delay(%bossquote, battle, %timer.delay) 
+      }
+
 
       if ($readini(system.dat, system, botType) = DCCchat) {
         $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
-        $display.message(12 $+ %real.name  $+ $readini($char(%current.monster.to.spawn), descriptions, char), battle)
-        if (%bossquote != $null) {   $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ ", battle) }
+        $display.message(12 $+ %real.name  $+ $readini($char(%current.monster.to.spawn.name), descriptions, char), battle)
+        if (%bossquote != $null) {   $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn.name), descriptions, BossQuote) $+ ", battle) }
       }
 
       ; Boost the monster
-      $levelsync(%current.monster.to.spawn, $calc(%boss.level + $rand(1,2)))
-      writeini $char(%current.monster.to.spawn) basestats str $readini($char(%current.monster.to.spawn), battle, str)
-      writeini $char(%current.monster.to.spawn) basestats def $readini($char(%current.monster.to.spawn), battle, def)
-      writeini $char(%current.monster.to.spawn) basestats int $readini($char(%current.monster.to.spawn), battle, int)
-      writeini $char(%current.monster.to.spawn) basestats spd $readini($char(%current.monster.to.spawn), battle, spd)
+      $levelsync(%current.monster.to.spawn.name, $calc(%boss.level + $rand(1,2)))
+      writeini $char(%current.monster.to.spawn.name) basestats str $readini($char(%current.monster.to.spawn.name), battle, str)
+      writeini $char(%current.monster.to.spawn.name) basestats def $readini($char(%current.monster.to.spawn.name), battle, def)
+      writeini $char(%current.monster.to.spawn.name) basestats int $readini($char(%current.monster.to.spawn.name), battle, int)
+      writeini $char(%current.monster.to.spawn.name) basestats spd $readini($char(%current.monster.to.spawn.name), battle, spd)
 
-      $boost_monster_hp(%current.monster.to.spawn, portal, $get.level(%monster.to.spawn))
+      $boost_monster_hp(%current.monster.to.spawn.name, portal, $get.level(%monster.to.spawn.name))
 
-      $fulls(%current.monster.to.spawn, yes)
+      $fulls(%current.monster.to.spawn.name, yes)
 
       set %multiple.wave.bonus yes
       set %first.round.protection yes
@@ -1675,10 +1690,10 @@ alias portal.item.multimonsters {
       unset %battle.rage.darkness
 
       ; Get the boss item.
-      $check_drops(%current.monster.to.spawn)
+      $check_drops(%current.monster.to.spawn.name)
 
       ; Initialize the action points 
-      $action.points(%current.monster.to.spawn)
+      $action.points(%current.monster.to.spawn.name)
 
       inc %value
     }

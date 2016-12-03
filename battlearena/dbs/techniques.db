@@ -277,8 +277,8 @@ AmonTrident=RahGian.WoRud.Stardiver.Drakesbane.Skewer.Geirskogul.CamlannsTorment
 JesterWand=Portal.ClownHead.ClownFire
 VampireArt=BloodArtTechnique.PaintingofSoul.PortraitSmash.CursePainting
 Puppetry=FrenchDollAttack.PuppetControl.IronMaiden.MetalStrings
-Calca=
-Brina=
+Calca=Heatwave
+Brina=Heatwave
 Calcabrina=TerrifyingGlance.Knockout.Dollhouse
 Benihime=SwiftBlade
 MarioFists=Jump.FireFlower.StarPower
@@ -5362,6 +5362,16 @@ Element=Dark
 Cost=0
 Magic=yes
 stat=str
+
+[Heatwave]
+Type=AOE
+TP=5
+Desc=spins in a circle and shoots a beam of fire out of $gender($1) eyes at everyone on the battlefield
+BasePower=10
+Element=fire
+Cost=0
+Magic=yes
+Stat=int
 
 [FrenchDollAttack]
 Type=Single

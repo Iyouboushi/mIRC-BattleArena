@@ -668,6 +668,19 @@ ReusablePart=100
 ForgottenSoul=100
 ArcaneDust=100
 
+[AntiDollCharm]
+Gem=Diamond
+Ingredients=Paper.Ink.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
+SuccessRate=100
+Amount=1
+SacredKindredCrest=1
+LifeShard=500
+ReusablePart=500
+ForgottenSoul=500
+ArcaneDust=500
+Paper=1
+Ink=1
+
 
 ============
 Skill Items
