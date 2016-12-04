@@ -3385,7 +3385,7 @@ spawn_after_death {
   if (%spawn.after.death.desc != $null) { $display.message(4 $+ %spawn.after.death.desc, battle) }
 
   ; Clear dead monsters
-  $multiple_wave_clearmonsters
+  $portal.clear.monsters
 
   ; Spawn the new monster
   if ($isfile($boss(%monster.to.spawn)) = $true) {  .copy -o $boss(%monster.to.spawn) $char(%monster.to.spawn)  }
