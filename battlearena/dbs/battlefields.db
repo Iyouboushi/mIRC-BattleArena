@@ -19,7 +19,7 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Gibbous
+CurrentMoonPhase=Quarter
 CurrentMoonTurn=3
 
 [MoonPhaseTime]
@@ -39,7 +39,7 @@ errors.
 ==============================================================
 [TimeOfDay]
 CurrentTimeOfDay=Day
-CurrentTimeOfDayTurn=1
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2

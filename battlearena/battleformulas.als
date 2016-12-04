@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 12/02/16
+;;;; Last updated: 12/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -1427,7 +1427,7 @@ formula.meleedmg.player.formula_3.0 {
   }
 
   if ($augment.check($1, MeleeBonus) = true) { 
-    set %melee.bonus.augment $calc(%augment.strength * .25)
+    set %melee.bonus.augment $calc(%augment.strength * .20)
     var %augment.power.increase.amount $round($calc(%melee.bonus.augment * %attack.damage),0)
     inc %attack.damage %augment.power.increase.amount
     unset %melee.bonus.augment
@@ -1467,7 +1467,8 @@ formula.meleedmg.player.formula_3.0 {
   unset %status.type.list
 
   ; Increase attack damage by the $log of the base stat.
-  set %attack.damage $round($calc(%attack.damage * %base.stat),0)
+  inc %attack.damage $round($calc((%attack.damage * %base.stat)/2.5),0)
+  set %attack.damage $round(%attack.damage,0)
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $readini($char($3), battle, def)
@@ -1573,7 +1574,6 @@ formula.meleedmg.player.formula_3.0 {
     inc %critical.hit.chance %accessory.amount
     unset %accessory.amount
   }
-
 
   unset %player.accessory | unset %accessory.type | unset %accessory.amount
 
@@ -2973,7 +2973,7 @@ formula.techdmg.monster {
   ; Check for TechBonus augment for non-magic techs
   if ($readini($dbfile(techniques.db), $2, magic) != yes) { 
     if ($augment.check($1, TechBonus) = true) { 
-      set %tech.bonus.augment $calc(%augment.strength * .25)
+      set %tech.bonus.augment $calc(%augment.strength * .20)
       var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
       inc %attack.damage %augment.power.increase.amount
       unset %tech.bonus.augment
@@ -4600,7 +4600,6 @@ formula.techdmg.player.formula_3.0 {
   set %starting.damage %attack.damage
 
   $damage.modifiers.check($1, $2, $3, tech)
-
   $damage.color.check
 
   if ($readini($char($3), info, ai_type) = counteronly) { set %attack.damage 0 | return }
@@ -4620,6 +4619,7 @@ formula.techdmg.player.formula_3.0 {
     set %attack.damage $readini($dbfile(techniques.db), $2, BasePower)
     set %attack.damage $rand(1, %attack.damage)
   }
+
 
   unset %true.base.stat
 
@@ -4646,6 +4646,7 @@ formula.techdmg.player.formula_3.0 {
   ; If this current tech is using the same tech as the previous tech attack, nerf the damage
   if (($4 != aoe) && ($2 = $readini($txtfile(battle2.txt), style, $1 $+ .lastaction))) { set %attack.damage $round($calc(%attack.damage / 3),0) }
   if (($4 = aoe) && (%lastaction.nerf = true)) { set %attack.damage $round($calc(%attack.damage / 3),0) }
+
 
   ; AOE nerf check for players
   if (($readini($char($1), info, flag) = $null) ||  ($readini($char($1), info, clone) = yes)) {

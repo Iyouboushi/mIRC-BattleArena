@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 11/18/16
+;;;; Last updated: 12/03/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -159,7 +159,7 @@ armor.stat {
   if (($return.equipped($1, hands) != nothing) && ($return.equipped($1, hands) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, hands), $2) }
 
   if ($readini($char($1), info, levelsync) = yes) {
-    var %armor.stat.sync $round($calc(($log(%armor.stat) /4)* $get.level($1)),0)
+    var %armor.stat.sync $round($calc(($log(%armor.stat) /5)* $get.level($1)),0)
     if (%armor.stat.sync > %armor.stat) { return %armor.stat }
     else { return %armor.stat.sync }
   }
