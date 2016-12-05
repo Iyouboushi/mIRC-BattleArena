@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/03/16
+;;;; Last updated: 12/04/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3383,9 +3383,6 @@ spawn_after_death {
   ; Check for a description that goes off when this monster is spawned
   var %spawn.after.death.desc $readini($char($1), descriptions, SpawnAfterDeath)
   if (%spawn.after.death.desc != $null) { $display.message(4 $+ %spawn.after.death.desc, battle) }
-
-  ; Clear dead monsters
-  $portal.clear.monsters
 
   ; Spawn the new monster
   if ($isfile($boss(%monster.to.spawn)) = $true) {  .copy -o $boss(%monster.to.spawn) $char(%monster.to.spawn)  }

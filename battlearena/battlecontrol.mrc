@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/02/16
+;;;; Last updated: 12/04/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2057,6 +2057,9 @@ alias turn {
   if ($readini($char($1), battle, status) = inactive) {  $next  |  halt  }
 
   if ($readini($char($1), info, FirstTurn) = true) { writeini $char($1) info FirstTurn false | $next | halt }
+
+  ; Clear dead monsters
+  $portal.clear.monsters
 
   ; Is the battle over? Let's find out.
   $battle.check.for.end
