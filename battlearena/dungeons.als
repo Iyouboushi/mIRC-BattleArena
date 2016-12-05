@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 11/19/16
+;;;; Last updated: 12/04/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -319,6 +319,9 @@ dungeon.nextroom {
     ; Generate dungeon monsters
     $dungeon.generatemonsters
 
+    ; Generate dungeon npcs
+    $dungeon.generatenpcs
+
     $generate_battle_order
     set %who $read -l1 $txtfile(battle.txt) | set %line 1
     set %current.turn 1
@@ -432,6 +435,94 @@ dungeon.generatemonsters {
   }
   unset %found.monster
 }
+
+
+dungeon.generatenpcs {
+  ; Get the list of npcs from the room
+  var %npc.list $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, npcs)
+  var %dungeon.level $readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel)
+
+  if (%npc.list = $null) { return }
+
+  ; Cycle through and summon each
+  var %value 1 | var %multiple.npc.counter 2 | set %number.of.npcs $numtok(%npc.list,46)
+  while (%value <= %number.of.npcs) { 
+    unset %multiple.npc.found
+    set %current.npc.to.spawn $gettok(%npc.list,%value,46)
+
+    var %isnpc $isfile($npc(%current.npc.to.spawn))
+
+    if ((%isnpc != $true) && (%isnpc != $true)) { inc %value }
+    else { 
+      set %found.npc true 
+      var %current.npc.to.spawn.name %current.npc.to.spawn
+
+      while ($isfile($char(%current.npc.to.spawn.name)) = $true) { 
+        var %current.npc.to.spawn.name %current.npc.to.spawn $+ %multiple.npc.counter 
+        inc %multiple.npc.counter 1 | var %multiple.npc.found true
+      }
+    }
+
+    if ($isfile($npc(%current.npc.to.spawn)) = $true) {  .copy -o $npc(%current.npc.to.spawn) $char(%current.npc.to.spawn.name)  }
+
+    if (%multiple.npc.found = true) {  
+      var %real.name.spawn $readini($char(%current.npc.to.spawn), basestats, name) $calc(%multiple.npc.counter - 1)
+      writeini $char(%current.npc.to.spawn.name) basestats name %real.name.spawn
+    }
+
+    ; increase the total # of npcs
+    set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%current.npc.to.spawn.name,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
+    write $txtfile(battle.txt) %current.npc.to.spawn.name
+    var %battlenpcs $readini($txtfile(battle2.txt), BattleInfo, npcs) | inc %battlenpcs 1 | writeini $txtfile(battle2.txt) BattleInfo npcs %battlenpcs
+
+    var %npc.level $readini($char(%current.npc.to.spawn.name), info, npclevel)
+
+    if (%npc.level = $null) { var %npc.level 15 }
+    if (%npc.level < %dungeon.level) { var %npc.level %dungeon.level }
+    ;   if (%npc.level > $calc(%dungeon.level + 10)) { var %npc.level $calc(%dungeon.level + 10) }
+
+    ; display the description of the spawned npc
+    $set_chr_name(%current.npc.to.spawn.name) 
+
+    if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
+      var %timer.delay $calc(%value - 1)
+
+      if (%number.of.npcs > 2) { 
+        dec %timer.delay 2
+        if (%timer.delay <= 0) { var %timer.delay 0 }
+      } 
+      $display.message(12 $+ %real.name has entered the battle to help the forces of good!,battle)
+
+      var %npcquote $readini($char(%current.npc.to.spawn.name), descriptions, bossquote)
+      if (%npcquote != $null) { 
+        var %npcquote 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.npc.to.spawn), descriptions, npcQuote) $+ "
+        $display.message(%npcquote, battle) 
+      }
+    }
+
+    if ($readini(system.dat, system, botType) = DCCchat) {
+      $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
+      $display.message(12 $+ %real.name  $+ $readini($char(%current.npc.to.spawn.name), descriptions, char), battle)
+      if (%npcquote != $null) {   $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.npc.to.spawn.name), descriptions, npcQuote) $+ ", battle) }
+    }
+
+    ; Boost the npc
+    $levelsync(%current.npc.to.spawn.name, %npc.level)
+    writeini $char(%current.npc.to.spawn.name) basestats str $readini($char(%current.npc.to.spawn.name), battle, str)
+    writeini $char(%current.npc.to.spawn.name) basestats def $readini($char(%current.npc.to.spawn.name), battle, def)
+    writeini $char(%current.npc.to.spawn.name) basestats int $readini($char(%current.npc.to.spawn.name), battle, int)
+    writeini $char(%current.npc.to.spawn.name) basestats spd $readini($char(%current.npc.to.spawn.name), battle, spd)
+
+    $boost_monster_hp(%current.npc.to.spawn.name, dungeon, $get.level(%current.npc.to.spawn.name))
+
+    $fulls(%current.npc.to.spawn.name, yes)
+
+    inc %value
+
+  }
+  unset %found.npc
+}
+
 
 dungeon.restoreroom {
   ; Restores players to full health, tp, and clears their skill timers.
