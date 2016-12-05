@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 12/04/16
+;;;; Last updated: 12/05/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -234,10 +234,8 @@ dungeon.end {
     if (%black.orb.winners != $null) { $display.message($readini(translation.dat, battle, BlackOrbWin), battle)   }
     $give_random_reward
 
-
     $dungeon.spoils.drop
     $show.random.reward
-
 
     $create_treasurechest
   }
@@ -246,12 +244,11 @@ dungeon.end {
   set %battleis off | $clear_battle | halt
 }
 
-
 dungeon.spoils.drop {
   var %most.stylish.player $readini($txtfile(battle2.txt), battle, MostStylish)
   unset %item.drop.rewards
 
-  var %boss.list $readini($dungeonfile($dungeon.dungeonfile), $calc($dungeon.currentroom - 1), monsters)
+  var %boss.list $readini($txtfile(battle2.txt), BattleInfo, SpoilsList)
 
   if (%boss.list = $null) { return }
 
@@ -420,6 +417,11 @@ dungeon.generatemonsters {
     $boost_monster_hp(%current.monster.to.spawn.name, dungeon, $get.level(%current.monster.to.spawn.name))
 
     $fulls(%current.monster.to.spawn.name, yes)
+
+
+    var %spoil.monster.list $readini($txtfile(battle2.txt), BattleInfo, MonsterList)
+    var %spoil.monster.list $addtok(%monster.list, %current.monster.to.spawn.name, 46)
+    writeini $txtfile(battle2.txt) BattleInfo MonsterList %spoil.monster.list
 
     set %multiple.wave.bonus yes
     set %first.round.protection yes
