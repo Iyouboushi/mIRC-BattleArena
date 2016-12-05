@@ -764,6 +764,13 @@ Amount=1
 OsirisFragment=1
 Kan-raFragment=1
 
+[OsirisFragment]
+Gem=Zircon
+Ingredients=Kan-RaFragment
+SuccessRate=100
+Amount=1
+Kan-RaFragment=2
+
 [Wizard's-Amulet+1]
 Gem=Diamond
 Ingredients=Wizard's-Amulet
