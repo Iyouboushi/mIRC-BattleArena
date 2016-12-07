@@ -147,7 +147,7 @@ Upgrade=2000
 2Handed=true
 
 [Cerberus]
-Cost=30
+Cost=25
 Type=HandToHand
 Info=A pair of ice nunchuku with three handles
 Abilities=Revolver.Windmill.Crystal
@@ -158,7 +158,7 @@ Upgrade=2000
 2Handed=true
 
 [Ifrit]
-Cost=60
+Cost=50
 Type=HandToHand
 Info=A living Devil Arm, the flame gauntlets with heat hotter than a volcano.
 Abilities=RollingBlaze.MagmaDrive.Inferno
@@ -169,7 +169,7 @@ Upgrade=2000
 2Handed=true
 
 [KaiserKnuckles]
-Cost=80
+Cost=60
 Type=HandToHand
 Info=A hand-to-hand weapon that is silver in color with a yellow trim.
 Abilities=ShoulderTackle.TornadoKick.OneInchPunch.SpinningAttack
@@ -180,7 +180,7 @@ Upgrade=2500
 2Handed=true
 
 [Verethragna]
-Cost=150
+Cost=75
 Type=HandToHand
 Info=A powerful hand-to-hand weapon which is black and gold in color with two horns on the end.
 Abilities=VictorySmite.ShoulderTackle.ShinjinSpiral.SpinningAttack.TornadoKick
@@ -191,7 +191,7 @@ Upgrade=3000
 2Handed=true
 
 [Spharai]
-Cost=175
+Cost=80
 Type=HandToHand
 Info=A relic hand-to-hand weapon that is gold and bronze in color.
 Abilities=FinalHeaven.ShoulderTackle.AsuranFists.SpinningAttack.OneInchPunch
@@ -213,6 +213,7 @@ Upgrade=6000
 IgnoreDefense=10
 2Handed=true
 SpecialWeapon=true
+MinLevel=100
 
 [AntlionClaws]
 Type=HandToHand
@@ -238,6 +239,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
+MinLevel=500
 
 =============================================
 SWORDS
@@ -352,7 +354,7 @@ BasePower=35
 Upgrade=800
 
 [Almace]
-Cost=50
+Cost=40
 Type=Sword
 Info=A legendary longsword with a very wide blade that contains great power.
 Abilities=ChantduCygne.Requiescat.SanguineBlade
@@ -362,7 +364,7 @@ BasePower=55
 Upgrade=1500
 
 [Murgleis]
-Cost=50
+Cost=40
 Type=Sword
 Info=A legendary rapier with a thorn-like barb in the middle of the blade.
 Abilities=DeathBlossom.SwiftBlade.SavageBlade
@@ -372,7 +374,7 @@ BasePower=60
 Upgrade=1500
 
 [Z-Sword]
-Cost=50
+Cost=40
 Type=Sword
 Info=A replica of the legendary Z-Sword from the Sacred World of the Kais.
 Abilities=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
@@ -394,6 +396,7 @@ Upgrade=6000
 2Handed=true
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
+MinLevel=500
 
 [JewelSword]
 Cost=50
@@ -443,6 +446,7 @@ Hits=1
 BasePower=100
 Upgrade=6000
 IgnoreDefense=5
+MinLevel=100
 
 [Mastermune]
 Cost=0
@@ -458,6 +462,7 @@ HurtEthereal=True
 2Handed=false
 SpecialWeapon=True
 Legendary=True
+MinLevel=2000
 
 =============================================
 GREAT SWORDS
@@ -474,7 +479,7 @@ Upgrade=300
 2Handed=true
 
 [Rebellion]
-Cost=40
+Cost=30
 Type=GreatSword
 Info=Dante's weapon from Devil May Cry.  It's a greatsword with a large skull at its base.  The skull is half human and half demon.
 Abilities=Stinger.MillionStab.Drive.DevilTrigger
@@ -485,7 +490,7 @@ Upgrade=1500
 2Handed=true
 
 [Braveheart]
-Cost=50
+Cost=40
 Type=GreatSword
 Info=A basic looking greatsword.
 Abilities=HardSlash.PowerSlash
@@ -496,7 +501,7 @@ Upgrade=1500
 2Handed=true
 
 [Balmung]
-Cost=60
+Cost=50
 Type=GreatSword
 Info=A greatsword with a wavy black blade and a blue jewel in the guard and pommel of the sword.
 Abilities=Shockwave.SickleMoon.Freezebite
@@ -507,7 +512,7 @@ Upgrade=1500
 2Handed=true
 
 [Caladbolg]
-Cost=75
+Cost=60
 Type=GreatSword
 Info=A greatsword with a wide and unique blade that has a red and gold design in the middle of the blade.
 Abilities=HerculeanSlash.Groundstrike
@@ -518,7 +523,7 @@ Upgrade=1500
 2Handed=true
 
 [Ragnarok]
-Cost=150
+Cost=75
 Type=GreatSword
 Info=A legendary greatsword that is bronze in color.
 Abilities=Scourge.Resolution.Torcleaver
@@ -529,7 +534,7 @@ Upgrade=3000
 2Handed=true
 
 [Nightfall]
-Cost=100
+Cost=75
 Type=GreatSword
 Info=A greatsword with a large blade that has a gap near the point which can attack twice.
 Abilities=GroundStrike.SpinningSlash
@@ -551,6 +556,7 @@ BasePower=120
 Upgrade=6000
 2Handed=true
 IgnoreDefense=10
+MinLevel=100
 
 [Ragnarok+1]
 Cost=0
@@ -564,6 +570,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
+MinLevel=500
 
 =============================================
 WHIPS
@@ -610,7 +617,7 @@ BasePower=25
 Upgrade=1500
 
 [DemonWhip]
-Cost=50
+Cost=40
 Type=Whip
 Info=A whip that's infused with Dark energy.
 Abilities=SerpentBite.DarkLash.Whiplash
@@ -620,7 +627,7 @@ BasePower=35
 Upgrade=2000
 
 [DragontailWhip]
-Cost=55
+Cost=40
 Type=whip
 Info=A whip made from the hide of a dragon.
 Abilities=TwinDragonLash.SerpentBite
@@ -630,7 +637,7 @@ BasePower=45
 Upgrade=2500
 
 [Vampire_Killer]
-Cost=100
+Cost=60
 Type=Whip
 Info=The legendary whip used to kill Dracula
 Abilities=HolyLash.TwinDragonLash.CircularChain
@@ -652,6 +659,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
+MinLevel=500
 
 [DemonWhip+1]
 Cost=0
@@ -665,6 +673,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
+MinLevel=500
 
 =============================================
 GUNS & RIFLES
@@ -681,7 +690,7 @@ Upgrade=300
 2Handed=false
 
 [Magnum]
-Cost=30
+Cost=20
 Type=Gun
 Info=A powerful revolver that fires .357 rounds.
 Abilities=ChargedShot.RapidShot
@@ -691,7 +700,7 @@ BasePower=15
 Upgrade=1500
 
 [Ebony&Ivory]
-Cost=40
+Cost=45
 Type=gun
 Info=A pair of guns that shoot magical ammo and can hit the target twice in one round
 Abilities=RainStorm.ChargedShot.RapidShot
@@ -702,7 +711,7 @@ Upgrade=2000
 2Handed=true
 
 [Quicksilver]
-Cost=50
+Cost=45
 Type=Gun
 Info=A simple gun that is silver and black in color.
 Abilities=HotShot.RainStorm.ChargedShot
@@ -712,7 +721,7 @@ BasePower=30
 Upgrade=2500
 
 [Hexagun]
-Cost=75
+Cost=65
 Type=Gun
 Info=A unique handgun that has six barrels on the end.
 Abilities=LastStand.Detonator.BlastShot
@@ -722,7 +731,7 @@ BasePower=40
 Upgrade=3000
 
 [SubMachineGun]
-Cost=150
+Cost=80
 Type=Gun
 Info=A hand-held machine gun capable of shooting two to three times per round.
 Abilities=RainStorm.Detonator
@@ -743,7 +752,7 @@ Upgrade=300
 2Handed=true
 
 [Boomstick]
-Cost=60
+Cost=50
 Type=Rifle
 Info=A twelve-gauge double-barreled Remington, S-Mart's top of the line. It has a walnut stock, cobalt blue steel, and a hair trigger. Shop smart. Shop S-Mart!
 Abilities=HotShot.BlastShot.Detonator
@@ -754,7 +763,7 @@ Upgrade=2000
 2Handed=true
 
 [SniperRifle]
-Cost=75
+Cost=60
 Type=Rifle
 Info=A rifle made for hitting targets at extreme distances.
 Abilities=SniperShot.SlugShot.HotShot
@@ -765,7 +774,7 @@ Upgrade=2500
 2Handed=true
 
 [Armageddon]
-Cost=85
+Cost=60
 Type=Rifle
 Info=A rifle with a unique look that is very powerful. It is in two shades of grey in color.
 Abilities=Snipershot.Wildfire.Coronach.LeadenSalute
@@ -776,7 +785,7 @@ Upgrade=3000
 2Handed=true
 
 [Annihilator]
-Cost=90
+Cost=75
 Type=Rifle
 Info=A relic rifle with legendary power. It is grey and brown in color with a silver design on the brown and has two barrels.
 Abilities=Coronach.SlugShot.BlastShot
@@ -787,7 +796,7 @@ Upgrade=3500
 2Handed=true
 
 [DeathPenalty]
-Cost=100
+Cost=80
 Type=Rifle
 Info=A rifle that's almost like a minature hand cannon. It is white and dark grey in color with an ornate gold design.
 Abilities=LeadenSalute.BlastShot.SlugShot
@@ -798,7 +807,7 @@ Upgrade=4000
 2Handed=true
 
 [AK47]
-Cost=300
+Cost=200
 Type=Rifle
 Info=A selective-fire assault rifle that is black and light brown in color.
 Abilities=Rainstorm.Detonator
@@ -818,6 +827,7 @@ Element=light
 Hits=1
 BasePower=80
 Upgrade=5000
+MinLevel=100
 
 [VanirRifle]
 Cost=0
@@ -832,6 +842,7 @@ IgnoreDefense=10
 2Handed=true
 CanCounter=false
 SpecialWeapon=true
+MinLevel=100
 
 [SamuraiEdge]
 Cost=0
@@ -846,6 +857,7 @@ IgnoreDefense=5
 2handed=false
 CanCounter=false
 SpecialWeapon=true
+MinLevel=100
 
 [SamuraiEdge-I]
 Cost=0
@@ -862,6 +874,7 @@ CanCounter=false
 AmmoRequired=IceAmmo
 AmmoAmountNeeded=1
 SpecialWeapon=true
+MinLevel=100
 
 [SamuraiEdge-F]
 Cost=0
@@ -878,6 +891,7 @@ CanCounter=false
 AmmoRequired=FireAmmo
 AmmoAmountNeeded=1
 SpecialWeapon=true
+MinLevel=100
 
 [SamuraiEdge-E]
 Cost=0
@@ -894,6 +908,7 @@ CanCounter=false
 AmmoRequired=ElectricAmmo
 AmmoAmountNeeded=1
 SpecialWeapon=true
+MinLevel=100
 
 [SamuraiEdge-M]
 Cost=0
@@ -911,6 +926,7 @@ CanCounter=false
 AmmoRequired=ExplosionAmmo
 AmmoAmountNeeded=2
 SpecialWeapon=true
+MinLevel=100
 
 [BlueRose]
 Cost=0
@@ -940,6 +956,7 @@ CanCounter=false
 AmmoRequired=Bullet
 AmmoAmountNeeded=1
 SpecialWeapon=True
+MinLevel=100
 
 [TacticalShotgun]
 Cost=0
@@ -956,6 +973,7 @@ CanCounter=false
 AmmoRequired=ShotgunShell
 AmmoAmountNeeded=2
 SpecialWeapon=True
+MinLevel=100
 
 [RocketLauncher]
 Cost=0
@@ -972,6 +990,7 @@ CanCounter=false
 AmmoRequired=RocketAmmo
 AmmoAmountNeeded=1
 SpecialWeapon=True
+MinLevel=150
 
 [Thunderclap]
 Cost=0
@@ -989,6 +1008,7 @@ AmmoRequired=DragonfireShell
 AmmoAmountNeeded=2
 SpecialWeapon=True
 Legendary=True
+MinLevel=2000
 
 =============================================
 AXES
@@ -1035,6 +1055,7 @@ Hits=1
 BasePower=75
 Upgrade=5000
 IgnoreDefense=5
+MinLevel=100
 
 [Guttler+1]
 Cost=0
@@ -1048,6 +1069,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
+MinLevel=500
 
 [GreatIronAxe]
 Cost=1
@@ -1061,7 +1083,7 @@ Upgrade=300
 2Handed=true
 
 [Ukonvasara]
-Cost=75
+Cost=65
 Type=Greataxe
 Info=A powerful great axe that is brown and white in color on the handle with a dark blue edge.
 Abilities=FellCleave.UkkosFury.KingsJustice
@@ -1072,7 +1094,7 @@ Upgrade=1500
 2Handed=true
 
 [Bravura]
-Cost=90
+Cost=80
 Type=Greataxe
 Info=A legendary great axe with a brown handle and an edge that is white and dark grey in color with gold markings.
 Abilities=MetatronTorment.Upheaval.SteelCyclone
@@ -1094,6 +1116,7 @@ BasePower=120
 Upgrade=5000
 2Handed=true
 IgnoreDefense=10
+MinLevel=100
 
 [Bravura+1]
 Cost=0
@@ -1107,6 +1130,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
+MinLevel=500
 
 =============================================
 HAMMERS
@@ -1146,7 +1170,7 @@ HurtEthereal=True
 2Handed=false
 
 [SteelHammer]
-Cost=45
+Cost=40
 Type=Hammer
 Info=A hammer forged out of steel.
 Abilities=Skullbreaker.SeraphStrike.Hexastrike
@@ -1157,7 +1181,7 @@ Upgrade=2000
 2Handed=false
 
 [Daedalus]
-Cost=60
+Cost=50
 Type=Hammer
 Info=A hammer made out of rare and powerful materials.
 Abilities=Brainshaker.Hexastrike.BlackHalo.Realmrazer.Randgrith
@@ -1179,6 +1203,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
+MinLevel=500
 
 [Mjolnir]
 Cost=0
@@ -1193,6 +1218,7 @@ Upgrade=5000
 IgnoreDefense=$iif(%battle.type = torment, 40, 20)
 SpecialWeapon=true
 legendary=true
+MinLevel=2000
 
 =============================================
 DAGGERS
@@ -1209,7 +1235,7 @@ Upgrade=2000
 2Handed=false
 
 [MainGauche]
-Cost=40
+Cost=30
 Type=Dagger
 Info=A dagger that is primarily used in the off-hand.
 Abilities=SharkBite.DancingEdge.Cyclone
@@ -1219,7 +1245,7 @@ BasePower=35
 Upgrade=2000
 
 [Terpsichore]
-Cost=50
+Cost=40
 Type=Dagger
 Info=A legendary dagger that has a gold handle and a silver blade. The unique blade is able to split into three.
 Abilities=PyrrhicKleos.RudrasStorm.Exenterator
@@ -1229,7 +1255,7 @@ BasePower=45
 Upgrade=2500
 
 [Mandau]
-Cost=60
+Cost=50
 Type=Dagger
 Info=A legendary dagger that is bronze and gold in color.
 Abilities=MercyStroke.AeolianEdge.Evisceration
@@ -1249,6 +1275,7 @@ Hits=1
 BasePower=$iif($weapon.linkcheck($1, Vajra) = true, 75, 50)
 Upgrade=4000
 IgnoreDefense=5
+MinLevel=100
 
 [Vajra]
 Cost=0
@@ -1261,6 +1288,7 @@ Hits=1
 BasePower=$iif($weapon.linkcheck($1, Vanir_Knife) = true, 75, 50)
 Upgrade=4000
 IgnoreDefense=5
+MinLevel=100
 
 [Kikoku]
 Cost=0
@@ -1274,6 +1302,7 @@ BasePower=$iif($weapon.linkcheck($1, Kannagi) = true, 75, 50)
 Upgrade=5000
 IgnoreDefense=5
 LinkedWeapon=Kannagi
+MinLevel=100
 
 [Kannagi]
 Cost=0
@@ -1287,6 +1316,7 @@ BasePower=$iif($weapon.linkcheck($1, Kikoku) = true, 75, 50)
 Upgrade=5000
 IgnoreDefense=5
 LinkedWeapon=Kikoku
+MinLevel=100
 
 [Mandau+1]
 Cost=0
@@ -1300,6 +1330,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
+MinLevel=500
 
 [Kikoku+1]
 Cost=0
@@ -1314,6 +1345,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
 LinkedWeapon=Kannagi
+MinLevel=500
 
 [Kannagi+1]
 Cost=0
@@ -1328,6 +1360,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
 LinkedWeapon=Kikoku
+MinLevel=500
 
 =============================================
 Bows
@@ -1377,7 +1410,7 @@ Upgrade=2000
 2Handed=true
 
 [Yoichinoyumi]
-Cost=60
+Cost=50
 Type=Bow
 Info=A legendary bow used by samurai in the past. Charged with Light energy.
 Abilities=EagleEyeShot.NamasArrow.RefulgentArrow
@@ -1388,7 +1421,7 @@ Upgrade=2500
 2Handed=true
 
 [Gandiva]
-Cost=75
+Cost=60
 Type=Bow
 Info=A legendary Empyrean bow. It is black and gold in color and has two blue jewels in it. Charged with Dark energy.
 Abilities=EagleEyeShot.JishnusRadiance.ApexArrow
@@ -1410,6 +1443,7 @@ BasePower=120
 Upgrade=5000
 2Handed=true
 IgnoreDefense=10
+MinLevel=100
 
 [CompoundBow]
 Cost=0
@@ -1426,6 +1460,7 @@ CanCounter=false
 AmmoRequired=Arrow
 AmmoAmountNeeded=1
 SpecialWeapon=True
+MinLevel=100
 
 [CompoundBow+1]
 Cost=0
@@ -1442,6 +1477,7 @@ CanCounter=false
 AmmoRequired=Arrow
 AmmoAmountNeeded=1
 SpecialWeapon=True
+MinLevel=500
 
 =============================================
 KATANAS
@@ -1502,7 +1538,7 @@ Upgrade=2000
 2Handed=true
 
 [Zangetsu]
-Cost=50
+Cost=40
 Type=Katana
 Info=Ichigo's powerful zanpakutou from Bleach
 Abilities=GetsugaTenshou.TensaZangetsu.FinalGetsuga
@@ -1513,7 +1549,7 @@ Upgrade=2500
 2Handed=false
 
 [Senbonzakura]
-Cost=50
+Cost=40
 Type=Katana
 Info=Byakuya's powerful zanpakutou from Bleach
 Abilities=Chire.Kageyoshi
@@ -1521,10 +1557,10 @@ Element=none
 Hits=1
 BasePower=50
 Upgrade=2500
-2Handed=true
+2Handed=false
 
 [Hyourinmaru]
-Cost=60
+Cost=40
 Type=Katana
 Info=Hitsugaya's powerful ice zanpakutou from Bleach
 Abilities=SotenNiZase.DaigurenHyourinmaru
@@ -1532,10 +1568,10 @@ Element=ice
 Hits=1
 BasePower=50
 Upgrade=2500
-2Handed=true
+2Handed=false
 
 [Yamato]
-Cost=60
+Cost=45
 Type=Katana
 Info=Vergil's legendary katana from Devil May Cry.
 Abilities=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
@@ -1546,7 +1582,7 @@ Upgrade=3000
 2Handed=false
 
 [Masamune]
-Cost=65
+Cost=55
 Type=Katana
 Info=A katana with a large black blade that is blue and black in color, adorned with gold.
 Abilities=Tachi:Fudo.Tachi:Shoha.Tachi:Rana
@@ -1557,7 +1593,7 @@ Upgrade=3000
 2Handed=true
 
 [Kogarasumaru]
-Cost=80
+Cost=60
 Type=Katana
 Info=A legendary katana with a long blade and slightly curved handle.
 Abilities=Tachi:Kasha.Tachi:Ageha.Tachi:Rana.Tachi:Fudo
@@ -1568,7 +1604,7 @@ Upgrade=3000
 2Handed=true
 
 [Naturaleza]
-Cost=100
+Cost=80
 Type=Katana
 Info=A blade carried by DeathStalker, made by Kasake Sohjin.
 Abilities=Ashes.Dismay.ThousandCuts
@@ -1579,7 +1615,7 @@ Upgrade=4000
 2Handed=true
 
 [Sacrament]
-Cost=175
+Cost=100
 Type=Katana
 Info=A blue straight edged katana enchanted to be bound to the Primordial Force of Aether. It's edge is serrated, enabling it to cleave through the flesh of one's enemies.
 Abilities=HolyAir:SecondWind.HolyFire:Inferno.HolyIce:IceAge.HolyLightning:Discharge.HolyEarth:Rapture.HolyWater:Rejuvenation
@@ -1594,7 +1630,7 @@ CanShieldReflect=false
 CanCounter=true
 
 [Lazarus]
-Cost=250
+Cost=150
 Type=Katana
 Info=A red straight edged katana enchanted to be bound to the Primordial Force of Aether. It's edge is pulsating with Nether, enabling it to make contact with ethereal enemies.
 Abilities=DarkAir:Vacuum.DarkFire:Eruption.DarkIce:DeepFreeze.DarkLightning:HighVoltage.DarkEarth:StoneScabbard.DarkWater:TaintedBlood
@@ -1620,7 +1656,7 @@ Element=none
 2Handed=true
 
 [Valmanway]
-Cost=500
+Cost=400
 Type=Katana
 Info=A light-weight katana whose name means "Blessed Wind".  An upgraded version of the Crissaegrim.
 Abilities=Tachi:Shoha.Tachi:Rana.MeikyoShisui
@@ -1642,6 +1678,7 @@ Element=none
 2Handed=true
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
+MinLevel=500
 
 [Ichimonji-Yofusa]
 Cost=0
@@ -1655,12 +1692,13 @@ BasePower=120
 Upgrade=6000
 2Handed=true
 IgnoreDefense=10
+MinLevel=100
 
 =============================================
 LIGHTSABERS
 =============================================
 [BlueLightsaber]
-Cost=100
+Cost=80
 Type=Lightsaber
 Info=An ancient Jedi weapon that creates a powerful plasma beam, that is blue in color.
 Abilities=ForcePush
@@ -1685,6 +1723,7 @@ Element=none
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 Legendary=true
+MinLevel=2000
 
 =============================================
 WANDS & STAVES
@@ -1741,7 +1780,7 @@ BasePower=45
 Upgrade=2000
 
 [ElderWand]
-Cost=75
+Cost=70
 Type=Wand
 Info=One of the most powerful wands ever created in the history of the world.
 Abilities=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy
@@ -1751,7 +1790,7 @@ BasePower=55
 Upgrade=2500
 
 [EbonyWand]
-Cost=150
+Cost=100
 Type=Wand
 Info=The second of the most powerful wands in the world. Kept in secret due to its massive power.
 Abilities=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
@@ -1772,6 +1811,7 @@ Upgrade=5000
 IgnoreDefense=5
 2Handed=false
 SpecialWeapon=true
+MinLevel=100
 
 [Seveneyes]
 Cost=0
@@ -1788,6 +1828,7 @@ AmmoRequired=Reagent
 AmmoAmountNeeded=4
 SpecialWeapon=true
 Legendary=True
+MinLevel=500
 
 [WoodenStaff]
 Cost=1
@@ -1801,7 +1842,7 @@ Upgrade=2000
 2Handed=true
 
 [IridialStaff]
-Cost=75
+Cost=60
 Type=Stave
 Info=A staff with a dark brown base with a golden tip on bottom and a fancy golden hook on top with a multi-colored ball inside the hook. It allows use of powerful ancient magic.
 Abilities=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
@@ -1812,7 +1853,7 @@ Upgrade=2500
 2Handed=true
 
 [Laevatein]
-Cost=150
+Cost=80
 Type=Stave
 Info=A light brown staff with intricate silver designs. The top has four points, that almost resembles an axe on them. Hidden away due to its very strong power.
 Abilities=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
@@ -1834,11 +1875,12 @@ Upgrade=5000
 IgnoreDefense=10
 2Handed=true
 SpecialWeapon=true
+MinLevel=100
 
 [BahamutsStaff]
-Cost=600
+Cost=400
 Type=Stave
-Info=A mighty staff that Bahamut kept hidden due to its sheer power.
+Info=A mighty staff that Bahamut kept hidden due to its power.
 Abilities=Ultima.Kaustra.Merlin'sFinalSpell
 Element=None
 Hits=3
@@ -1858,7 +1900,7 @@ Upgrade=500
 2Handed=true
 
 [Glyphs]
-Cost=100
+Cost=80
 Type=Glyph
 Info=Powerful magical energy used by the Order of Ecclesia that can become a variety of weapons and spells.
 Abilities=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
@@ -1881,6 +1923,7 @@ Element=none
 2Handed=true
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
+MinLevel=500
 
 [Laevatein+1]
 Cost=0
@@ -1894,6 +1937,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
+MinLevel=500
 
 [BahamutsStaff+1]
 Cost=0
@@ -1907,6 +1951,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
+MinLevel=500
 
 =============================================
 SPEARS
@@ -1923,7 +1968,7 @@ Upgrade=300
 2Handed=true
 
 [Lance]
-Cost=50
+Cost=40
 Type=Spear
 Info=A simple spear made or wood with a large metal spike on top and a smaller one on bottom.
 Abilities=Jump.Skewer.LegSweep
@@ -1934,7 +1979,7 @@ Upgrade=1500
 2Handed=true
 
 [Thalassocrat]
-Cost=60
+Cost=50
 Type=Spear
 Info=A fancy looking spear that's blue and gold and splits into two prongs on top.
 Abilities=Jump.ImpulseDrive.LegSweep
@@ -1945,7 +1990,7 @@ Upgrade=2000
 2Handed=true
 
 [Gungnir]
-Cost=70
+Cost=60
 Type=Spear
 Info=A legendary spear that is a deep blue color with three prongs on the end.
 Abilities=SpiritJump.Geirskogul.LegSweep
@@ -1956,7 +2001,7 @@ Upgrade=2500
 2Handed=true
 
 [Rhongomiant]
-Cost=80
+Cost=70
 Type=Spear
 Info=A large white and light grey spear with multiple blades on the end that form a point.
 Abilities=HighJump.CamlannsTorment.LegSweep.SonicThrust
@@ -1967,7 +2012,7 @@ Upgrade=2500
 2Handed=true
 
 [Corsesca]
-Cost=120
+Cost=100
 Type=Spear
 Info=A spear with a a curved blade on the end that's light enough for multiple hits.
 Abilities=Jump.PentaThrust.LegSweep
@@ -1978,7 +2023,7 @@ Upgrade=4000
 2Handed=true
 
 [Ryunohige]
-Cost=150
+Cost=90
 Type=Spear
 Info=A powerful spear that's a dark and light grey color with a unique blade on the end.
 Abilities=SoulJump.Drakesbane.LegSweep.Stardiver
@@ -2000,6 +2045,7 @@ BasePower=120
 Upgrade=5000
 2Handed=true
 IgnoreDefense=10
+MinLevel=100
 
 [Ryunohige+1]
 Cost=0
@@ -2013,6 +2059,7 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
+MinLevel=500
 
 =============================================
 SCYTHES
@@ -2029,7 +2076,7 @@ Upgrade=300
 2Handed=true
 
 [DeathScythe]
-Cost=70
+Cost=60
 Type=Scythe
 Info=A basic scythe that has a large black edge and a black and dark grey handle.
 Abilities=ShadowOfDeath.DarkHarvest.VorpalScythe
@@ -2040,7 +2087,7 @@ Upgrade=2500
 2Handed=true
 
 [Redemption]
-Cost=80
+Cost=70
 Type=Scythe
 Info=A black and red scythe with a bird-like shape on the blade.
 Abilities=Quietus.Insurgency.NightmareScythe
@@ -2062,7 +2109,7 @@ Upgrade=4000
 2Handed=true
 
 [Apocalypse]
-Cost=150
+Cost=100
 Type=Scythe
 Info=A legendary scythe that is colored gold and grey that has a large blade.
 Abilities=Catastrophe.Entropy.Guillotine
@@ -2084,6 +2131,7 @@ BasePower=120
 Upgrade=5000
 2Handed=true
 IgnoreDefense=10
+MinLevel=100
 
 [Apocalypse+1]
 Cost=0
@@ -2097,12 +2145,13 @@ Upgrade=7000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
+MinLevel=500
 
 =============================================
 BATS
 =============================================
 [BaseballBat]
-Cost=25
+Cost=20
 Type=Sword
 Info=A common baseball bat with no special features.
 Abilities=
@@ -2127,7 +2176,7 @@ HurtEthereal=true
 Upgrade=0
 2Handed=true
 IgnoreDefense=$iif($readini($char($2), monster, ghost) = true, 75, 0)
-
+MinLevel=100
 
 
 
@@ -5842,6 +5891,7 @@ Upgrade=0
 BlockChance=$iif(%battle.type = torment, 50, 30)
 AbsorbAmount=$iif(%battle.type = torment, 50, 35)
 Legendary=True
+MinLevel=500
 
 [Ochain]
 Cost=0
@@ -5853,6 +5903,7 @@ Upgrade=0
 BlockChance=$iif(%battle.type = torment, 90, 50)
 AbsorbAmount=$iif(%battle.type = torment, 75, 50)
 Legendary=True
+MinLevel=1000
 
 ; Shields for monsters/npcs.
 
@@ -5864,4 +5915,4 @@ Hits=0
 BasePower=350
 Upgrade=0
 BlockChance=30
-AbsorbAmount=35
+AbsorbAmount=25
