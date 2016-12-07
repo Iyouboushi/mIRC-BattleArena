@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/02/16
+;;;; Last updated: 12/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1173,6 +1173,34 @@ weapon.linkcheck {
 
   if (($readini($char($1), Weapons,Equipped) = $2) || ($readini($char($1), Weapons, EquippedLeft) = $2)) { return true }
   else { return false }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns the minimum level
+; needed to wield the weapon
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+weapon.minlevel {
+  ; $1 = the weapon name
+
+  var %weapon.minlevel $readini($dbfile(weapons.db), $1, MinLevel)
+  if (%weapon.minlevel = $null) { return 0 }
+  else { return %weapon.minlevel }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Is the player the right level
+; to equip this weapon?
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+wpn.minlevel.check {
+  ; $1 = the person we're checking
+  ; $2 = the weapon we're checking
+
+  if ($readini($char($1), info, flag) != $null) { return }
+
+  var %player.level $get.level.basestats($1)
+  var %wpn.lvl $weapon.minlevel($2)
+
+  if (%wpn.lvl > %player.level) { $display.message($readini(translation.dat, errors, LvlTooLowToEquipWpn), global) | halt }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

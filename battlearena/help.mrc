@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 11/24/16
+;;;; Last updated: 12/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -317,6 +317,7 @@ alias view-info {
     var %info.element $readini($dbfile(weapons.db), $3, Element) | var %info.abilities $readini($dbfile(weapons.db), $3, abilities)
     var %info.ignoredef $readini($dbfile(techniques.db), $3, IgnoreDefense)
     var %info.linkedwpn $readini($dbfile(weapons.db), $3, LinkedWeapon)
+    var %info.minlevel [4Minimum Level Needed to Use12 $weapon.minlevel($3) $+ ]
 
     if ($readini($dbfile(weapons.db), $3, AmmoRequired) != $null) {
       var %info.ammo [4Ammo Required12 $readini($dbfile(weapons.db), $3, AmmoRequired) $+ ] [4Ammo Consumed12 $readini($dbfile(weapons.db), $3, AmmoAmountNeeded) $+ ] 
@@ -332,7 +333,7 @@ alias view-info {
 
     if (%info.ignoredef != $null) { var %info.ignoredefense  [4Ignore Target Defense by12 %info.ignoredef $+ $chr(37) $+ ] }
 
-    $display.private.message([4Name12 $3 $+ ] [4Weapon Type12 %info.type $+ ] [4Weapon Size12 $return.weaponsize($3) $+ ] [4# of Hits12 %info.hits $+ ] %energycost %info.ammo) 
+    $display.private.message([4Name12 $3 $+ ] [4Weapon Type12 %info.type $+ ] [4Weapon Size12 $return.weaponsize($3) $+ ] [4# of Hits12 %info.hits $+ ] %energycost %info.ammo %info.minlevel) 
     $display.private.message([4Base Power12 %info.basepower $+ ] [4Cost12 %info.basecost black $iif(%info.basecost < 2, orb, orbs) $+ ] [4Element of Weapon12 %info.element $+ ] [4Is the weapon 2 Handed?12 $iif($readini($dbfile(weapons.db), $3, 2Handed) = true, yes, no) $+ 4]) 
     $display.private.message([4Abilities of the Weapon12 %info.abilities $+ ] %info.ignoredefense)
     $display.private.message([4Weapon Description12 $readini($dbfile(weapons.db), $3, Info) $+ ])

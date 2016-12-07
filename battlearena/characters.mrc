@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 11/24/16
+;;;; Last updated: 12/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -977,6 +977,7 @@ ON 50:TEXT:*equips *:*:{
   if ($readini($char($1), status, weapon.lock) != $null) { $set_chr_name($1) | $display.message($readini(translation.dat, status, CurrentlyWeaponLocked),private) | halt  }
 
   $set_chr_name($1)
+  $wpn.minlevel.check($1, $3)
 
   if (($3 != right) && ($3 != left)) { 
     if ($readini($dbfile(weapons.db), $3, type) = shield) { 
@@ -1032,6 +1033,7 @@ ON 3:TEXT:*equips *:*:{
   if ($readini($char($1), status, weapon.lock) != $null) { $set_chr_name($1) | $display.message($readini(translation.dat, status, CurrentlyWeaponLocked),private) | halt  }
 
   $set_chr_name($1)
+  $wpn.minlevel.check($1, $3)
 
   if (($3 != right) && ($3 != left)) { 
     if ($readini($dbfile(weapons.db), $3, type) = shield) { 
@@ -1076,6 +1078,8 @@ ON 3:TEXT:*equips *:*:{
   $wield_weapon($1, %equiphand, %weapon.to.equip)
 } 
 
+
+
 on 3:TEXT:!equip *:*: { 
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ($2 = mech) { $mech.equip($nick, $3) }
@@ -1089,6 +1093,8 @@ on 3:TEXT:!equip *:*: {
   if ($is_charmed($nick) = true) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyCharmed),private) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
   if ($readini($char($nick), status, weapon.lock) != $null) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyWeaponLocked),private) | halt  }
+
+  $wpn.minlevel.check($nick, $2)
 
   if (($2 != right) && ($2 != left)) { 
     if ($readini($dbfile(weapons.db), $2, type) = shield) { 
