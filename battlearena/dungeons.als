@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 12/05/16
+;;;; Last updated: 12/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -420,7 +420,7 @@ dungeon.generatemonsters {
 
 
     var %spoil.monster.list $readini($txtfile(battle2.txt), BattleInfo, MonsterList)
-    var %spoil.monster.list $addtok(%monster.list, %current.monster.to.spawn.name, 46)
+    var %spoil.monster.list $addtok(%spoil.monster.list, %current.monster.to.spawn.name, 46)
     writeini $txtfile(battle2.txt) BattleInfo MonsterList %spoil.monster.list
 
     set %multiple.wave.bonus yes
