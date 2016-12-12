@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/06/16
+;;;; Last updated: 12/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3907,6 +3907,9 @@ conquest.points.calculate {
     }
     var %conquest.status $readini(battlestats.dat, conquest, ConquestPreviousWinner)
     if (%conquest.status = players) { var %conquestpoints $round($calc(%conquestpoints * 1.25),0) }
+
+    if (%conquestpoints > 1000) {  var %conquestpoints 1000 }
+
 
     return %conquestpoints
   }
