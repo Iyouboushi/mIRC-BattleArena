@@ -613,6 +613,7 @@ GearsetError=$chr(3) $+ 4 $+ Error: To set a gear set use !gearset set [1-3]
 GearsetNumberDoesNotExist=$chr(3) $+ 4 $+ Error: That gear set number does not exist and cannot be equipped.
 GoldOrbNoLongerWorks=$chr(3) $+ 4 $+ The Gold Orb does not seem to work as $get_chr_name($1) has already used three of them in this battle.
 LvlTooLowToEquipWpn=$chr(3) $+ 4 $+ $get_chr_name($1) is too weak to wield $2 $+ ! [level %wpn.lvl needed]
+SkillNeedsToBeEquippedToUse=$chr(3) $+ 4 $+ This skill needs to be equipped outside of battle in order to be used
 
 =======================
 Battle Related Messages

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 12/06/16
+;;;; Last updated: 12/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -192,7 +192,6 @@ on 3:TEXT:!desc*:?: {
   if ($2 != $null) { $checkchar($2) | $set_chr_name($2) | $display.private.message(3 $+ %real.name  $+ $readini($char($2), n, Descriptions, Char))   | unset %character.description | halt }
   else { $set_chr_name($nick) | $display.private.message(10 $+ %real.name  $+ $readini($char($nick), Descriptions, Char))  }
 }
-on 3:TEXT:!rdesc *:*:{ $checkchar($2) | $set_chr_name($2) | var %character.description $readini($char($2), Descriptions, Char) | $display.message(3 $+ %real.name $+ 's desc: %character.description, private) | unset %character.description | halt }
 on 3:TEXT:!cdesc *:*:{ $checkscript($2-)  | writeini $char($nick) Descriptions Char $2- | $okdesc($nick , Character) }
 on 3:TEXT:!sdesc *:*:{ $checkscript($2-)  
   if ($readini($char($nick), skills, $2) != $null) { 
@@ -350,16 +349,6 @@ on 3:TEXT:!orbs*:?: {
   else { var %orbs.spent $bytes($readini($char($nick), stuff, RedOrbsSpent),b) | var %blackorbs.spent $bytes($readini($char($nick), stuff, BlackOrbsSpent),b) | $set_chr_name($nick) 
     $display.private.message($readini(translation.dat, system, ViewMyOrbs))
   }
-}
-
-on 3:TEXT:!rorbs*:#: { var %orbs.spent $bytes($readini($char($2), stuff, RedOrbsSpent),b) | var %blackorbs.spent $bytes($readini($char($2), stuff, BlackOrbsSpent),b) | $checkchar($2) | $set_chr_name($2) 
-  var %showorbsinchannel $readini(system.dat, system,ShowOrbsCmdInChannel)
-  if (%showorbsinchannel = $null) { var %showorbsinchannel true }
-  if (%showorbsinchannel = true) { $display.message($readini(translation.dat, system, ViewOthersOrbs),private)  }
-  else {  $display.private.message($readini(translation.dat, system, ViewOthersOrbs)) }
-}
-on 3:TEXT:!rorbs*:?: { var %orbs.spent $bytes($readini($char($2), stuff, RedOrbsSpent),b) | var %blackorbs.spent $bytes($readini($char($2), stuff, BlackOrbsSpent),b) | $checkchar($2) | $set_chr_name($2) 
-  $display.private.message($readini(translation.dat, system, ViewOthersOrbs))
 }
 
 on 3:TEXT:!loginpoints*:#: {
@@ -610,16 +599,10 @@ on 3:TEXT:!weapons*:#: {  unset %*.wpn.list | unset %weapon.list
   else { $checkchar($2) | $weapon.list($2) | set %wpn.lst.target $2 }
   /.timerDisplayWeaponList $+ $nick -d 1 3 /display_weapon_lists %wpn.lst.target channel
 }
-on 3:TEXT:!rweapons*:#: { $checkchar($2) | $weapon.list($2)  | $set_chr_name($2) 
-  /.timerDisplayWeaponList $+ $2 -d 1 3 /display_weapon_lists $2 channel
-}
 on 3:TEXT:!weapons*:?: {  unset %*.wpn.list | unset %weapon.list
   if ($2 = $null) { $weapon.list($nick) | set %wpn.lst.target $nick }
   else { $checkchar($2) | $weapon.list($2) | set %wpn.lst.target $2 }
   /.timerDisplayWeaponList $+ $nick -d 1 3 /display_weapon_lists %wpn.lst.target private $nick
-}
-on 3:TEXT:!rweapons*:?: { $checkchar($2) | $weapon.list($2)  | $set_chr_name($2) 
-  /.timerDisplayWeaponList $+ $nick -d 1 3 /display_weapon_lists $2 private $nick
 }
 
 on 3:TEXT:!shields*:#: {  unset %*.shld.list | unset %shield.list
@@ -627,16 +610,10 @@ on 3:TEXT:!shields*:#: {  unset %*.shld.list | unset %shield.list
   else { $checkchar($2) | $shield.list($2) | set %shld.lst.target $2 }
   /.timerDisplayshieldList $+ $nick -d 1 3 /display_shield_lists %shld.lst.target channel
 }
-on 3:TEXT:!rshields*:#: { $checkchar($2) | $shield.list($2)  | $set_chr_name($2) 
-  /.timerDisplayshieldList $+ $2 -d 1 3 /display_shield_lists $2 channel
-}
 on 3:TEXT:!shields*:?: {  unset %*.shld.list | unset %shield.list
   if ($2 = $null) { $shield.list($nick) | set %shld.lst.target $nick }
   else { $checkchar($2) | $shield.list($2) | set %shld.lst.target $2 }
   /.timerDisplayshieldList $+ $nick -d 1 3 /display_shield_lists %shld.lst.target private $nick
-}
-on 3:TEXT:!rshields*:?: { $checkchar($2) | $shield.list($2)  | $set_chr_name($2) 
-  /.timerDisplayshieldList $+ $nick -d 1 3 /display_shield_lists $2 private $nick
 }
 
 on 3:TEXT:!style*:*: {  unset %*.style.list | unset %style.list
@@ -761,28 +738,11 @@ on 3:TEXT:!readtechs*:#: { $checkchar($2) | $weapon_equipped($2) | $tech.list($2
   unset %weapon.equipped.right | unset %weapon.equipped left | unset %weapon.equipped
   unset %techs.list.left | unset %ignition.tech.list
 }
-on 3:TEXT:!rtechs*:#: { $checkchar($2) | $weapon_equipped($2) | $tech.list($2, %weapon.equipped)  | $set_chr_name($2) 
-  if (%techs.list != $null) { $display.message($readini(translation.dat, system, ViewOthersTechs),private) }
-  if (%ignition.tech.list != $null) { $display.message($readini(translation.dat, system, ViewOthersIgnitionTechs),private) }
-  if ((%techs.list = $null) && (%ignition.tech.list = $null)) { $display.message($readini(translation.dat, system, NoTechsForOthers),private) }
-  unset %tech.count | unset %tech.power | unset %replacechar | unset %tech.list | unset %techs.list
-  unset %weapon.equipped.right | unset %weapon.equipped left | unset %weapon.equipped
-  unset %techs.list.left | unset %ignition.tech.list
-}
 on 3:TEXT:!readtechs*:?: { $checkchar($2)
   $weapon_equipped($2) | $tech.list($2, %weapon.equipped)  | $set_chr_name($2) |
   if (%techs.list != $null) { $display.private.message($readini(translation.dat, system, ViewOthersTechs)) }
   if (%ignition.tech.list != $null) {  $display.private.message($readini(translation.dat, system, ViewOthersIgnitionTechs)) }
   if ((%techs.list = $null) && (%ignition.tech.list = $null)) {  $display.private.message($readini(translation.dat, system, NoTechsForOthers)) }
-  unset %tech.count | unset %tech.power | unset %replacechar | unset %tech.list | unset %techs.list
-  unset %weapon.equipped.right | unset %weapon.equipped left | unset %weapon.equipped
-  unset %techs.list.left | unset %ignition.tech.list
-}
-on 3:TEXT:!rtechs*:?: { $checkchar($2)
-  $weapon_equipped($2) | $tech.list($2, %weapon.equipped)  | $set_chr_name($2) |
-  if (%techs.list != $null) { $display.private.message($readini(translation.dat, system, ViewOthersTechs)) }
-  if (%ignition.tech.list != $null) { $display.private.message($readini(translation.dat, system, ViewOthersIgnitionTechs)) }
-  if ((%techs.list = $null) && (%ignition.tech.list = $null)) { $display.private.message($readini(translation.dat, system, NoTechsForOthers)) }
   unset %tech.count | unset %tech.power | unset %replacechar | unset %tech.list | unset %techs.list
   unset %weapon.equipped.right | unset %weapon.equipped left | unset %weapon.equipped
   unset %techs.list.left | unset %ignition.tech.list
@@ -819,18 +779,22 @@ on 3:TEXT:!readignitions*:?: {
   else { $display.private.message($readini(translation.dat, system, NoIgnitions))  }
 }
 
-on 3:TEXT:!skills*:#: { 
-  if ($2 != $null) { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, channel)  }
-  else { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, channel) }
+on 3:TEXT:!skills*:#: {
+  if ($2 = $null) { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, channel) | halt }
+
+  if ($2 = equip) { halt }
+  if (($2 = unequip) || ($2 = remove)) { halt }
+
+  else { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, private)  }
 }
 on 3:TEXT:!skills*:?: { 
-  if ($2 != $null) { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, private)  }
-  else { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, private) }
+  if ($2 = $null) { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, private) | halt }
+
+  if ($2 = equip) { halt }
+  if (($2 = unequip) || ($2 = remove)) { halt }
+
+  else { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, private)  }
 }
-on 3:TEXT:!rskills*:#: { $readskills($2, channel) }
-on 3:TEXT:!readskills*:#: { $readskills($2,private) }
-on 3:TEXT:!rskills*:?: { $readskills($2, channel) }
-on 3:TEXT:!readskills*:?: { $readskills($2,private) }
 
 on 3:TEXT:!ammo*:#:{ 
   if ($2 != $null) { $checkchar($2) | $ammo.list($2) | $set_chr_name($2) | $readammo($2, channel) }

@@ -365,6 +365,16 @@ Syrup is a special NPC that, upon arriving at the HQ, will unlock the Potion Eff
 Vinz Clortho the Keymaster
 Vinz Clortho is a special NPC that, upon being rescued from monsters, will unlock Dungeon Keys in the shop. Use !shop list dungeonkeys or !shop buy dungeonkeys keyname For more information, see the Dungeon section
 
+Bountibox the Goblin
+Bountibox is a strange goblin who stands next to an even stranger treasure chest. Once he's found you can use the command !gobbie box open to use 10 of your login points to gain a random item. For more info: use the command !gobbie box help 
+
+Vasu the Jeweler
+Vasu is a npc that will allow you to use a second accessory slot in exchange for 10 enhancement points. Once you unlock this, you'll need to use the command: !wear accessory 2 [accessory] to wear one on the second slot. 
+
+King of Cups
+King of Cups is a strange Cardian that sells trading cards and booster sets. At the moment, he only sells a small amount of cards and only has one booster set. 
+
+
 Seasonal NPCs
 There's also a few seasonal merchant NPCs that show up under certain conditions in the correct months. I will leave those as a mystery but will note that they sell items mixed in with the various other normal shops (so items/misc/alchemy/etc)
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 07/27/16
+;;;; Last updated: 12/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -452,8 +452,12 @@ on 2:Chat:!ignitions: {
 }
 
 on 2:Chat:!skills*: {
-  if ($2 != $null) { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, dcc)  }
-  else { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, dcc) }
+  if ($2 = $null) { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, dcc) | halt }
+
+  if ($2 = equip) { halt }
+  if (($2 = unequip) || ($2 = remove)) { halt }
+
+  else { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, dcc)  }
 }
 
 on 2:Chat:!ammo*: {

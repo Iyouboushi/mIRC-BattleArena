@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 11/24/16
+;;;; Last updated: 12/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -128,6 +128,31 @@ alias skill.turncheck {
 
   if (%true.turn >= %next.turn.can.use) { return }
   else { $set_chr_name($1) | $display.message($readini(translation.dat, skill, UnableToUseskillAgainSoSoon),private)  | $display.private.message(3You still have $calc(%next.turn.can.use - %true.turn) turns before you can use $3 again) | halt }
+}
+
+;=================
+; Is a skill equipped?
+;=================
+alias skill.equipped.check {
+  ; $1 = the player
+  ; $2 = the skill being checked
+
+  if ($readini($char($1), info, flag) = $null) { 
+    ; To be added in a later version
+    return false
+  }
+  else { return true }
+}
+
+;=================
+; Does the skill need
+; to be equipped to
+; use? returns true/false
+;=================
+alias skill.needtoequip {
+  var %skill.need.equipped $readini($dbfile(skills.db), $1, NeedToEquip)
+  if (%skill.need.equipped = $null) { return false }
+  else { return %skill.need.equipped }
 }
 
 ;=================
