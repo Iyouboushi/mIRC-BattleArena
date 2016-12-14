@@ -2003,9 +2003,7 @@ alias next {
   unset %skip.ai | unset %file.to.read.lines | unset %user.gets.second.turn
 
   ; Reset the Next timer.
-  var %nextTimer $readini(system.dat, system, TimeForIdle)
-  if (%nextTimer = $null) { var %nextTimer 180 }
-  /.timerBattleNext 1 %nextTimer /next ForcedTurn
+  $system.timer.battlenext
 
   if ($1 = ForcedTurn) { 
     var %forced.turns $readini($char(%who), info, SkippedTurns)

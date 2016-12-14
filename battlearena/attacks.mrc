@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 09/09/16
+;;;; Last updated: 12/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -128,16 +128,14 @@ alias attack_cmd {
   }
 
 
-
-
-
-
-
   var %action.points.to.decrease $round($log($readini($dbfile(weapons.db), %weapon.equipped, basepower)),0)
   if (%action.points.to.decrease <= 0) { inc %action.points.to.decrease 1 }
 
   ; Decrease the action point cost
   $action.points($1, remove, %action.points.to.decrease)
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   ; If it's an AOE attack, perform that here.  Else, do a single hit.
 

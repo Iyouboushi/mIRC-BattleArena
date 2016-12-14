@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/12/16
+;;;; Last updated: 12/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -557,6 +557,16 @@ system.autobattle.timercheck {
 
   var %battlestart.timer.secs $timer(battlestart).secs
   if (%battlestart.timer.secs = $null) { $clear_battle }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sets a timer to force a next
+; turn in case someone idles for too long
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+system.timer.battlenext {
+  var %nextTimer $readini(system.dat, system, TimeForIdle)
+  if (%nextTimer = $null) { var %nextTimer 180 }
+  /.timerBattleNext 1 %nextTimer /next ForcedTurn
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 11/24/16
+;;;; Last updated: 12/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -512,6 +512,9 @@ alias tech.buff {
     }
   }
 
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
 
   if ($person_in_mech($3) = false) { 
@@ -563,6 +566,9 @@ alias tech.single {
 
   ; Decrease the action points
   $action.points($1, remove, 4)
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   var %tech.element $readini($dbfile(techniques.db), $2, element)
   var %target.element.heal $readini($char($3), modifiers, heal)
@@ -825,6 +831,9 @@ alias tech.stealPower.old {
 ; Performs a suicide tech
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias tech.suicide {
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   $set_chr_name($1)
   $display.message($readini(translation.dat, tech, SuicideUseAllHP), battle)
 
@@ -1043,6 +1052,9 @@ alias tech.heal {
   ; $2 = tech
   ; $3 = target
 
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   ; Decrease the action points
   $action.points($1, remove, 4)
 
@@ -1108,6 +1120,9 @@ alias tech.aoeheal {
   $action.points($1, remove, 5)
 
   unset %who.battle | set %number.of.hits 0
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   ; Display the tech description
   $set_chr_name($1) | set %user %real.name
@@ -1221,6 +1236,9 @@ alias tech.magic {
   ; Decrease the action points
   $action.points($1, remove, 4)
 
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   if (($readini($char($3), status, reflect) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) {
     $calculate_damage_magic($1, $2, $1)
     if (%attack.damage >= 4000) { set %attack.damage $rand(2800,3500) }
@@ -1255,6 +1273,9 @@ alias tech.boost {
     if ($readini($char($1), info, flag) = monster) { $check_for_double_turn($1) | halt }
     else { halt }
   }
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   ; Get the battle stats
   var %str $readini($char($1), Battle, Str)
@@ -1310,6 +1331,9 @@ alias tech.finalgetsuga {
 
   ; Decrease the action points
   $action.points($1, remove, 4)
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   if ($readini($char($1), status, FinalGetsuga) != no) { 
     $set_chr_name($1) | $display.message($readini(translation.dat, errors, AlreadyUsedFinalGetsuga), battle)
@@ -1375,6 +1399,9 @@ alias tech.aoe {
 
   ; Decrease the action points
   $action.points($1, remove, 6)
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
 
   if ($5 = suicide) {
@@ -1805,6 +1832,9 @@ alias ignition_cmd {  $set_chr_name($1)
 
   if (%player.current.ig < %ignition.cost) { $display.message($readini(translation.dat, Errors, NotEnoughIgnitionGaugeToBoost), battle) | unset %ignition.cost | unset %player.current.ig | halt }
 
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   ; Decrease the ignition gauge the initial cost. 
   dec %player.current.ig %ignition.cost
   writeini $char($1) Battle IgnitionGauge %player.current.ig
@@ -2021,6 +2051,9 @@ alias sing.song {
 
     ; Decrease the action point cost
     $action.points($1, remove, 5)
+
+    ; Clear the BattleNext timer until this action is finished
+    /.timerBattleNext off
 
     ; Perform the song.
     $display.message(3 $+ %real.name $+  $readini($dbfile(songs.db), $2, Desc), battle)

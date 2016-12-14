@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/04/16
+;;;; Last updated: 12/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -429,11 +429,7 @@ check_for_double_turn {  $set_chr_name($1)
 
     if ($readini($char($1), skills, doubleturn.on) = on) { 
       if ($readini($char($1), info, flag) != $null) {   /.timerBattleNext 1 45 /next }
-      if ($readini($char($1), info, flag) = $null) {
-        var %nextTimer $readini(system.dat, system, TimeForIdle)
-        if (%nextTimer = $null) { var %nextTimer 180 }
-        /.timerBattleNext 1 %nextTimer /next
-      }
+      if ($readini($char($1), info, flag) = $null) { $system.timer.battlenext }
 
       $checkchar($1) | writeini $char($1) skills doubleturn.on off | $set_chr_name($1) 
 
@@ -462,11 +458,7 @@ check_for_double_turn {  $set_chr_name($1)
 
     ; Fresh timers
     if ($readini($char($1), info, flag) != $null) {   /.timerBattleNext 1 45 /next }
-    if ($readini($char($1), info, flag) = $null) {
-      var %nextTimer $readini(system.dat, system, TimeForIdle)
-      if (%nextTimer = $null) { var %nextTimer 180 }
-      /.timerBattleNext 1 %nextTimer /next
-    }
+    if ($readini($char($1), info, flag) = $null) { $system.timer.battlenext  }
 
     ; Check for AI action
     $aicheck($1) | halt 
@@ -1766,6 +1758,9 @@ taunt {
   if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, Can'tTauntWhiledead), private) | unset %real.name | halt }
   if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, Can'tTauntSomeoneWhoIsDead), private) | unset %real.name | halt }
   if ($readini($char($2), Battle, Status) = RunAway) { $display.message($readini(translation.dat, errors, Can'tTauntSomeoneWhoFled), private) | unset %real.name | halt } 
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   ; Add some style to the taunter.
   set %stylepoints.to.add $rand(60,80)

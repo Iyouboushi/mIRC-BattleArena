@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 12/13/16
+;;;; Last updated: 12/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -528,6 +528,9 @@ alias item.summon {
   if ($skillhave.check($1, BloodPact) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkillNeeded), private) | halt }
   if ($isfile($char($nick $+ _summon)) = $true) { $set_chr_name($1) | $display.message($readini(translation.dat, skill, AlreadyUsedBloodPact), private)  | halt }
 
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   ; Get the summon via the item.
   set %summon.name $readini($dbfile(items.db), p, $2, summon)
 
@@ -651,9 +654,11 @@ alias item.trust {
   var %trust.npc $readini($dbfile(items.db), $3, NPC)
   if ($isfile($npc(%trust.npc)) = $false) { $display.message($readini(translation.dat, errors, TrustNPCDoesn'tExist), battle) | halt }
 
-
   ; Decrease the action points
   $action.points($1, remove, 1)
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   .copy -o $npc(%trust.npc) $char(%trust.npc) | var %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%trust.npc,46) |  writeini $txtfile(battle2.txt) Battle List %curbat 
   write $txtfile(battle.txt) %trust.npc
@@ -870,6 +875,11 @@ alias item.damage {
   ; $2 = target
   ; $3 = item used
   unset %shield.block.line
+
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   $calculate_damage_items($1, $3, $2)
   set %style.attack.damage %attack.damage
   $deal_damage($1, $2, $3)
@@ -902,6 +912,9 @@ alias item.snatch {
 
   $set_chr_name($2) | var %enemy %real.name
 
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   ; Display the item's description
   $set_chr_name($1) | $display.message(10 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), battle)
 
@@ -915,6 +928,9 @@ alias item.status {
   ; $1 = user
   ; $2 = target
   ; $3 = item used
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(items.db), $3, StatusType) 
@@ -985,6 +1001,9 @@ alias display_Statusdamage_item {
 }
 
 alias item.tp {
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
 
@@ -1003,6 +1022,9 @@ alias item.tp {
 }
 
 alias item.ig {
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
 
@@ -1024,6 +1046,9 @@ alias item.heal {
   ; $1 = user
   ; $2 = target
   ; $3 = item
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   var %item.current.hp $readini($char($2), battle, HP) |   var %item.max.hp $readini($char($2), basestats, HP)
   if ($readini($char($2), info, flag) != monster) {
@@ -1052,6 +1077,10 @@ alias item.autorevive {
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
   if ($person_in_mech($2) = true) { $display.message($readini(translation.dat, errors, ItemNotWorkOnMech), private) | halt }
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
   writeini $char($2) status revive yes 
   return 
 }
@@ -1062,6 +1091,9 @@ alias item.curestatus {
   ; $3 = item
 
   if ($person_in_mech($2) = true) { $display.message($readini(translation.dat, errors, ItemNotWorkOnMech), private) | halt }
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
 
   $clear_most_status($2)
 
