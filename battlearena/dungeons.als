@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 12/07/16
+;;;; Last updated: 12/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -248,7 +248,7 @@ dungeon.spoils.drop {
   var %most.stylish.player $readini($txtfile(battle2.txt), battle, MostStylish)
   unset %item.drop.rewards
 
-  var %boss.list $readini($txtfile(battle2.txt), BattleInfo, SpoilsList)
+  var %boss.list $readini($txtfile(battle2.txt), BattleInfo, MonsterList)
 
   if (%boss.list = $null) { return }
 
@@ -338,6 +338,9 @@ dungeon.nextroom {
 
 
 dungeon.generatemonsters {
+  ; Clear the old spoil list
+  remini $txtfile(battle2.txt) BattleInfo MonsterList
+
   ; Get the list of monsters from the room
   var %monster.list $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, monsters)
   var %dungeon.level $readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel)
