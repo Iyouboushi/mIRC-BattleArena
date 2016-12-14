@@ -7,6 +7,7 @@ This text file is meant to give more information on all the various battles that
 PORTAL ITEMS:
 
 BeastmenSeal Items
+--------------------
 [05 Seals] AlliedTrainingPaper
 [05 Seals] WormFood
 [10 Seals] DemonBell
@@ -23,6 +24,7 @@ BeastmenSeal Items
 [20 Seals] MayanMap 
 
 Kindred Seal Items
+--------------------
 [15 Seals] EnergyElements
 [15 Seals] GemOfTheNorth
 [15 Seals] GemOfTheEast
@@ -41,9 +43,11 @@ Kindred Seal Items
 [20 Seals] SpheroidPlate
 [20 Seals] TavnazianPass
 [20 Seals] OldOrcBow
-[25 Seals] RottingOrb 
+[20 Seals] SmelterDemonSoul
+[25 Seals] RottingOrb
 
 Kindred Crest Portal Items
+--------------------
 [15 Crests] LihzahrdPowerCell
 [15 Crests] TruffleWorm
 [20 Crests] OldOrcSword
@@ -54,6 +58,7 @@ Kindred Crest Portal Items
 [20 Crests] StrangeMask 
 
 High Kindred Crest Portal Items
+--------------------
 [20 Crests] OldKingSoul
 [20 Crests] Gunbai
 [20 Crests] GoddessOrb
@@ -61,13 +66,18 @@ High Kindred Crest Portal Items
 [20 Crests] StrangeCrystal
 
 
-Crafted Seal Items
+Crafted Portal Items
+--------------------
 GodSeal
 HyruleOrb
 UnknownPowerSource 
+BowlOfEmbers
+FortunaCrest
+AntiDollCharm
 
 
 Shadow Portal Items
+--------------------
 Shadow Portal Items are uncapped portals based on how the portal battles used to be before the level sync was added. All of these are paid for using High Kindred Crests.
 
 [05 Crests] ShadowDemonBell
@@ -643,6 +653,39 @@ Potential Rewards: AlphaWeltallCore
 Allied Notes Worth: 2500
 Danger Level: Extremely High
 Current level is capped at: 300
+
+
+
+BOWLOFEMBERS
+
+Portal Item: BowlOfEmbers
+Portal Item Cost: Crafted Only
+Potential Rewards: Clom'sTale-01, Clom'sTale-02
+Allied Notes Worth: 5000
+Danger Level: Extremely High
+Current level is capped at: 5000
+
+
+
+FORTUNACREST
+
+Portal Item: FortunaCrest
+Portal Item Cost: Crafted Only
+Potential Rewards: Clom'sTale-03, Clom'sTale-04
+Allied Notes Worth: 5000
+Danger Level: Extremely High
+Current level is capped at: 5000
+
+
+
+ANTIDOLLCHARM
+
+Portal Item: AntiDollCharm
+Portal Item Cost: Crafted Only
+Potential Rewards: Clom'sTale-05, Clom'sTale-06
+Allied Notes Worth: 5000
+Danger Level: Extremely High
+Current level is capped at: 5000
 
 
 

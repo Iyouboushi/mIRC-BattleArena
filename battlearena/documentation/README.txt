@@ -141,7 +141,6 @@ Changes:
 - Changed the code for the auction house so that is is now possible to bid on weapons directly
 - Changed the dragonballs so that Shenron's Wish has to be activated with a command: !dragonballs summon
 
-
 Fixes:
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
@@ -160,7 +159,6 @@ Fixes:
 - Fixed a potential issue with certain items in the shop being cut off if there's too many
 - Fixed a typo with Shenron's Wish
 - Fixed a description issue with ToxicMelody
-
 
 
 Again, this isn't everything. Be sure to read the versions.txt in the documentation folder for a full 
@@ -261,6 +259,13 @@ Helped to find bugs and offered suggestions on how to improve the bot.
 Karman from my forum
 Helped to find bugs and offered suggestions on how to improve the bot. 
 Also gave me the idea for the Gremlins.
+
+Baracouda from Esper.net
+Offered many suggestions
+
+Pentium320 from Esper.net
+Offered many great ideas and also rewrote some of the auction house
+code to be more efficient. 
 
 
  _______________________________________________________________________

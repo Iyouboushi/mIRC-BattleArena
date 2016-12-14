@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 12/03/16
+;;;; Last updated: 12/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -93,6 +93,26 @@ return.potioneffect {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return.playerstyle {
   return $readini($char($1), styles, equipped)
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Get the character's shop
+; level
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return.shoplevel {
+  var %char.shoplevel $readini($char($1), stuff, shoplevel) 
+  var %min.shoplevel $return.minshoplevel($1)
+
+  ; This will be turned on in the next version
+  ; if (%char.shoplevel < %min.shoplevel) { writeini $char($1) stuff shoplevel %min.shoplevel | var %char.shoplevel %min.shoplevel }
+
+  return %char.shoplevel
+}
+
+return.minshoplevel {
+  var %min.shoplevel $round($log($get.level($1)),1)
+  if (%min.shoplevel > 10) { var %min.shoplevel 10 }
+  return %min.shoplevel
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

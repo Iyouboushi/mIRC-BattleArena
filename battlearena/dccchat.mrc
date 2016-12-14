@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 12/12/16
+;;;; Last updated: 12/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1082,7 +1082,7 @@ ON 2:Chat:!lockpicking*: { $skill.lockpicking($nick) }
 ON 2:Chat:!lockpick*: { $skill.lockpicking($nick) }
 ON 2:Chat:!stoneskin*: { $skill.stoneskin($nick) }
 ON 2:Chat:!tabularasa*: { $skill.tabularasa($nick, $2) }
-
+ON 2:Chat:!wrestle*: { $skill.wrestle($nick, $2) }
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

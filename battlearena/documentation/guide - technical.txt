@@ -582,7 +582,8 @@ items_trust.lst
 monsterdeaths.lst
 names_bee.lst
 names_death_knight.lst
-names_dolls.lst names_flame_knight.lst
+names_dolls.lst 
+names_flame_knight.lst
 names_frost_knight.lst
 names_imp.lst
 names_magicpot.lst

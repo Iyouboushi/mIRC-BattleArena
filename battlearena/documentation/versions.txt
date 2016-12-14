@@ -1554,6 +1554,7 @@ Battle Arena Bot VERSIONS
 - Changed gold orbs/auto-revive effect so it can only be used three times total per player per battle
 - Changed conquest points so that monsters will gain +3 and players will lose -2 per missed battle opportunity if the
   total average level of all the players is 1000 or more
+- Changed the maximum amount of conquest points monsters can win off of one battle to 1000 max.
 - Changed !view-info for "random" type items so that it shows a description
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming

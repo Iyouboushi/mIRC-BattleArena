@@ -124,10 +124,10 @@ This command is used to gather more information on everything in the game.
 !view-info accessory (name) 	Displays information on an accessory
 !view-info ignition (name) 	Displays information on an ignition
 !view-info shield (name) 	Displays information on a shield
-!view-info item (name) 	Displays information on an item
-!view-info song (name) 	Displays information on a song
-!view-info gem (name) 	Displays information on a gem
-!view-info rune (name) 	Displays information on a rune
+!view-info item (name) 		Displays information on an item
+!view-info song (name) 		Displays information on a song
+!view-info gem (name) 		Displays information on a gem
+!view-info rune (name) 		Displays information on a rune
 !view-info skill (name) 	Displays information on a skill
 !view-info style (name) 	Displays information on a style
 !view-info alchemy list 	Returns a list of all items that can be crafted
@@ -316,10 +316,14 @@ If you don't have enough of the spoils to purchase the effect, the bot will info
 Potion Effects
 
 Here's a list of the potion effects and what they actually do.
-OrbBonus 	Increases the amount of red orbs you will receive at the end of battle. At lower streaks it will increase them around 244%
-DoubleLife 	Causes you to start the next battle with double your max HP or double your current hp (in Players Must Die mode). The enhanced HP will wear off after the battle ends (except in Players Must Die mode since HP isn't reset in that).
-BonusSpoils 	Gives you a 100% chance of receiving a spoil if the monster you fight has something to drop and increases the amount of the item that you will receive at the end of battle. *
-AugmentBonus 	Adds +1 to every augment in the game for the next battle you're in. Stacks with all other augments and bonuses towards Augments.
+OrbBonus 	Increases the amount of red orbs you will receive at the end of battle. At lower streaks it 
+		will increase them around 244%
+DoubleLife 	Causes you to start the next battle with double your max HP or double your current hp (in Players Must Die mode). 
+		The enhanced HP will wear off after the battle ends (except in Players Must Die mode since HP isn't reset in that).
+BonusSpoils 	Gives you a 100% chance of receiving a spoil if the monster you fight has something to drop and increases the
+		amount of the item that you will receive at the end of battle. *
+AugmentBonus 	Adds +1 to every augment in the game for the next battle you're in. Stacks with all other augments and 
+		bonuses towards Augments.
 UtsusemiBonus 	Will give you 6 shadows upon using the skill Utsusemi. Note that six shadows is max.
 Dragonskin 	Will give you 500 natural armor to absorb attacks with for one battle 
 
@@ -422,40 +426,40 @@ One, or more, boss(es) will be picked from a list of bosses and it will join the
 
 In addition to an army of normal bosses for the players to face in combat, there are special boss battle types that the player may encounter. These special encounters only appear on certain winning streaks and may be level capped – meaning if your player level is higher than the cap you will be level synced to the cap for the duration of that battle. The unique special boss battle types are:
 
-Doppelganger Battle (only appears on winning streaks 50-100; capped at level 50)
+- Doppelganger Battle (only appears on winning streaks 50-100; capped at level 50)
 Evil doppelgangers of all participating players will be generated and the heroes will be forced to fight themselves.
 
-Warmachine Battle (only appears on winning streaks 10-250; capped at levels 20, 50, 75)
+- Warmachine Battle (only appears on winning streaks 10-250; capped at levels 20, 50, 75)
 The monsters will build a large tank-like boss that will roll out onto the battlefield for the players to fight.
 
-Demon Wall Battle (only appears on winning streaks 75-200; capped at level 75)
+- Demon Wall Battle (only appears on winning streaks 75-200; capped at level 75)
 A special evil demon wall will appear and teleport the players to a special battlefield. In this battlefield the players have 10 turns to defeat the wall before they're crushed to death (instant loss if turn 11 starts).
 
-Wall of Flesh Battle (only appears on winning streaks 200-5000; capped at level 200)
+- Wall of Flesh Battle (only appears after winning streaks 200; capped at level 200)
 A more powerful version of the demon wall will appear and teleport the players to a special battlefield. In this battlefield the players have 15 turns to defeat the wall before they're crushed to death (instant loss if turn 16 starts).
 
-Elder Dragon Battle (only appears on winning streaks 200-5000; capped at level 200)
+- Elder Dragon Battle (only appears on winning streaks 200-5000; capped at level 200)
 A special randomly-created Elder Dragon will appear and attack the players.
 
-Bandit Battle (only appears on winning streaks 50-200; capped at level 50)
+- Bandit Battle (only appears on winning streaks 50-200; capped at level 50)
 A special battle in which the bot will generate a bandit leader and a certain number of bandit minions to attack the players.
 
-Pirate Battle (only appears on winning streaks 75-200; capped at level 75)
+- Pirate Battle (only appears after winning streak 75; capped at level 75)
 A special battle in which the bot will generate a bandit leader and a certain number of bandit minions to attack the players.
 
-Frost Legion Battle (only appears in December on streaks 20+; capped at level 20)
+- Frost Legion Battle (only appears in December on streaks 20+; capped at level 20)
 A special battle in December to take on a legion of frost monsters.
 
-Crystal Shadow Warrior Battle
+- Crystal Shadow Warrior Battle
 A special battle in which the heroes find themselves faced with a powerful foe. This battle may require thinking outside of the box to win.
 
-Gremlin Battle (only appears on streaks 50-200; capped at level 50)
+- Gremlin Battle (only appears on streaks 50-200; capped at level 50)
 A bunch of Gremlins are on the loose at the Allied Forces HQ School. Put an end to their mischief!
 
-Dinosaur Battle (only appears on streaks 50-200; uncapped)
+- Dinosaur Battle (only appears on streaks 50-200; uncapped)
 A dinosaur has escaped its pin from Jurassic Park and the park has called upon the heroes to stop the rampaging beast.
 
-Predator Battle (only appears on streaks 200-5000)
+- Predator Battle (only appears on streaks 200-5000)
 A predator observes a battle then jumps in to take the heroes out. Can the heroes stop this fearsome hunter?
 
 Monster Battle
@@ -463,6 +467,9 @@ As expected, this is the most common type of battle. The bot will generate a num
 
 Save the President!
 The Allied Forces president has been kidnapped. Are you a bad enough dude to rescue the president? If the president dies in this special event the battle will end as a failure. So protect him with everything you've got!
+
+Wagon Escort
+The Allied Forces are sending a supply wagon to an outpost and need brave advenuterers to help protect it from monsters. If the wagon is destroyed the battle will end as a failure.
 
 Defend the Outpost
 As you're fighting the forces of darkness, the monsters are preparing for an assault on an Allied Forces outpost. Once their strike teams are ready and the players are on streaks 20+, they will advance towards their target and it will be up to the players to defend the outpost from 5 waves of monsters.
@@ -560,25 +567,28 @@ Throughout battle there are a variety of effects that can be inflicted upon you 
 
 Negative Status Effects
 
-Poison 	Takes off a fraction of your health each turn. It can stack twice, dealing heavier damage.
+Poison 		Takes off a fraction of your health each turn. It can stack twice, dealing heavier damage.
 Blindness 	Renders the victim unable to fight for 1 turn.
-Stun 	Renders the victim unable to fight for 1 turn.
-Stagger 	Renders the victim unable to fight for 1 turn. Certain monsters, including several bosses, can become staggered after taking a certain amount of damage.
-Virus 	Prevents the victim from using boosts and ignitions for a few turns
-Charm 	Gives the assailant total control of the victim for a few turns which causes them to attack themselves or allies.
+Stun 		Renders the victim unable to fight for 1 turn.
+Stagger 	Renders the victim unable to fight for 1 turn. Certain monsters, including several bosses, 
+		can become staggered after taking a certain amount of damage.
+Virus 		Prevents the victim from using boosts and ignitions for a few turns
+Charm 		Gives the assailant total control of the victim for a few turns which causes them to attack themselves or allies.
 Amnesia 	Renders the victim unable to use his/her/its techniques or skills
 Paralysis 	Renders the victim from moving for a few turns
 Boredom 	Renders the victim bored of the battle and causes several turns to be skipped
-Drunk 	Renders the victim unable to fight for several turns
-Zombie 	Creates a weakness to fire and light on the victim and causes healing effects to damage them instead. Adds a health regeneration to the target.
-Slow 	Greatly reduces the victim's speed stat for a few turns.
-Elemental Damage 	Spells of the fire, ice, lightning, water, earth or wind element will deal an extra 5 % of the victim's maximum health in damage on their next turn, if the caster's level is high enough.
+Drunk 		Renders the victim unable to fight for several turns
+Zombie 		Creates a weakness to fire and light on the victim and causes healing effects to damage them instead. 
+		Adds a health regeneration to the target.
+Slow 		Greatly reduces the victim's speed stat for a few turns.
 Confusion 	Causes the victim to attack at random for a few turns
-Curse 	Reduces the victim of all TP and prevents normal TP regeneration for a few turns.
-Sleep 	Renders the victim unable to act for a few turns. Getting hit will cancel out this effect
+Curse 		Reduces the victim of all TP and prevents normal TP regeneration for a few turns.
+Sleep 		Renders the victim unable to act for a few turns. Getting hit will cancel out this effect
 Str Down 	Reduces the victim's strength attribute for 3/4 for a few turns
 Def Down 	Reduces the victim's defense attribute for 3/4 for a few turns
 Int Down 	Reduces the victim's intelligence attribute for 3/4 for a few turns
+Elemental Dmg 	Spells of the fire, ice, lightning, water, earth or wind element will deal an extra 5% 
+		of the victim's maximum health in damage on their next turn, if the caster's level is high enough.
 
 * Note that str, int and def down won't actually show the stats being reduced in !stats. This is only calculated when it's needed in the battle formulas.
 
@@ -586,16 +596,18 @@ Positive Status Effects
 
 Reflect 	Adds a barrier that bounces a single magic attack back onto the caster
 Protect 	Greatly reduces damage taken from standard melee attacks
-Shell 	Greatly reduces damage taken from magic attacks
-En-Spell 	Imbues the target's standard attacks with elemental power, which can cause victims the elemental damage effect, as well as increasing attack power against monsters weak to the element.
+Shell 		Greatly reduces damage taken from magic attacks
+En-Spell 	Imbues the target's standard attacks with elemental power, which can cause victims 
+		the elemental damage effect, as well as increasing attack power against monsters weak to the element.
 Auto Reraise 	Revives the target with half the health the next time he/she/it falls.
 Ethereal 	Grants immunity to most physical attacks for a few turns.
 Invincible 	Renders the target completely immune from attack
-Spirit of the Hero 	Automatically applies if the player's level is a certain amount under the current battle streak. Will raise all stats and possibly HP to be closer to the streak but will reduce the amount of orbs obtained at the end of battle 
+
+There is also a buff named Spirit of the Hero.  This automatically applies if the player's level is a certain amount under the current battle streak. Will raise all stats and possibly HP to be closer to the streak but will reduce the amount of orbs obtained at the end of battle 
 
 
 SKILLS
-** As of September 14, 2016.
+** As of December 13, 2016.
 
 There are four types of skills in this bot: Passive Skills that are always on, Active Skills that have commands, Resists that help you resist against various status types found in the bot and Killer Traits that help you deal more melee damage to certain monster families.  Each skill has a maximum level that you can obtain in it. Some active skills can only be used once every certain number of minutes.  Of course you must first purchase the skills in the shop before you can use them.
 
@@ -807,6 +819,9 @@ This skill will attempt to inflict a target with amensia. The chance of success 
 Warp - !warp (battlefield name)
 This skill will consume 2000 red orbs and cause the next battlefield to be that of which you pick.  Note that if the next battle is a special boss battle it may overwrite your selection.
 
+Wrestling - !wrestle (target)
+This skill can only be used while using the Wrestlemania style. Using this attack will perform a wrestling move on the target that will deal STYLE LEVEL % damage of the target's max HP.  For example, if the target has 500 max HP and you have level 10 Wrestlemania the skill will deal 50 damage.  There is also a chance that the target will become stunned.  Note that Wrestling cannot kill a target.
+
 
 Resistance Skills
 Like Passive skills, these skills are always on.  All of them do the same thing except with different status effects.  Each level you purchase of a resistance skill lowers the chance that that status effect will take effect on you by 1%.  The maximum is 100, meaning you're completely immune to that status effect**.
@@ -850,7 +865,7 @@ Slime-Killer
 
 
 ITEM LIST
-** As of September 14, 2016.
+** As of December 13, 2016.
 
 There's a bunch of different types of items in the bot currently:  Healing Items, Battle Items, Consumable (Skill) Items, +Stat Items, Summon Items, Shop Level Reducing Items, Gems, Keys, Accessories, Trust Items, Portal Items, Ammo and Misc (Crafting) items. Here's a list of each.
 
@@ -964,6 +979,14 @@ Attempts to inflict the poison status onto a target
 Dark-Matter - Cannot be bought
 A strange cube that is pure black in color. Not much else is known about the item. 
 
+Shuriken - 3000 orbs with the Battle Merchant
+A sharp three pointed blade that can be thrown at enemies to inflict roughly 500 damage.
+
+FumaShuriken - 5000 orbs with the Battle Merchant
+A sharp four pointed blade that can be thrown at enemies to inflict roughly 700 damage.
+
+KogaShuriken - 7000 orbs with the Battle Merchant
+A sharp six pointed blade that can be thrown at enemies to inflict roughly 1000 damage.
 
 
 +Stat Items
@@ -1155,6 +1178,7 @@ Wizard's-Amulet
 Wizard's-Amulet+1
 Blessed-Ankh
 Wizard's-Ankh
+Eye-Patch
 Blood-Ring
 Blood-Pendant
 Blood-Crown
@@ -1173,6 +1197,7 @@ AztecGoldcoin
 Mayan-Charm
 Lucky-Rabbit'sFoot
 VIP-MemberCard
+VIP-MemberCard+1
 Spear-Pin
 Sword-Pin
 Axe-Pin
@@ -1205,6 +1230,8 @@ TeruTeruBozu
 Forbidden-Earrings
 Forbidden-Ring
 Forbidden-Crown
+Forbidden-Crown+1
+Forbidden-Crown+2
 
 
 Misc (Crafting) Items
@@ -1234,6 +1261,7 @@ DarksteelOre
 Ectoplasm
 EtherealChain
 BrokenLance
+BrokenShield
 SilverChain
 FireGem
 IceStone
@@ -1411,6 +1439,7 @@ Gunbai
 StrangeCrystal
 BowlOfEmbers
 FortunaCrest
+AntiDollCharm
 ShadowDemonBell
 ShadowGodSeal
 ShadowAtlantianCrystal
@@ -1582,7 +1611,7 @@ TradingCard-019
 TradingCard-020
 TradingCard-021
 TradingCard-022
-TradingCard-042	
+TradingCard-042
 
 
 ACCESSORIES
@@ -1769,6 +1798,12 @@ This style will allow you to control your summon manually while the style is equ
 
 Cost: 5 Black Orbs
 Augments: At level 5 Beastmaster gains the EnhanceBloodpact augment. At level 10 it will have EnhanceBloodpact and EnhanceSummons
+
+WRESTLEMANIA
+Aim for the top of the wrestling federation and perform your stunning wrestling moves upon your enemies! This style will allow you to use !wrestle targetname command as many times as your style is currently leveled as well as enhance your hand to hand attacks. Note that wrestling cannot KILL a target, only hurt and stun.
+
+Cost: 15 Black Orbs
+Augments: At level 5 Wrestlemania gains the EnhanceHandToHand
 
 
 RENKEI SYSTEM
@@ -1980,11 +2015,11 @@ This command will allow you to plant a valid item that you have found into the g
 
 
 MONSTERS
-Monsters are the main cannon fodder that you will be killing in order to earn orbs to upgrade your character.  As of February 25, 2015 there are a total of 228 monsters.
+Monsters are the main cannon fodder that you will be killing in order to earn orbs to upgrade your character.  As of December 13, 2016 there are a total of 307 monsters and several monsters that can have multiple names.
 
 
 BOSSES
-Bosses are stronger monsters that you will have to face in order to earn precious Black Orbs in order to purcahse new upgrades to your character (including new weapons, ignitions, and styles).  As of February 25, 2015 there are a total of 143 normal bosses that may appearin battle.
+Bosses are stronger monsters that you will have to face in order to earn precious Black Orbs in order to purcahse new upgrades to your character (including new weapons, ignitions, and styles).  As of December 13, 2016 there are a total of 179 normal bosses that may appearin battle.
 
 
 NPCS
@@ -1994,54 +2029,58 @@ NPCs are helpful allies that show up occasionally to help the forces of good win
 ACHIEVEMENTS
 Like most modern games, this game has a list of achievements that you can unlock through various ways.  I encourage everyone to try different things to unlock them all.  The rewards for unlocking them vary, but usually unlock bonus red orbs.  Sometimes you will receive items from the achievements or possibly even a full IG bar as a reward.  Here's a plain list of achievements.  No, I won't spoil how to go about actually unlocking them all--that's up to you to figure out!
 
-Just Getting Started
-Big Spender
-Don't You Have A Home
-Battle Arena Anon
-Don't Forget Your Friends And Family
-Boss Killer
-Sir Dies A Lot
-Make Money
-Scardy Cat
+JustGettingStarted
+BigSpender
+Don'tYouHaveAHome
+BattleArenaAnon
+Don'tForgetYourFriendsAndFamily
+BossKiller
+SirDiesALot
+MakeMoney
+ScardyCat
 Cheapskate
-Can't Keep A Good Man Down
-Monster Slayer
-Pretty Gem Collector
-Master Of Unlocking
-Santa's Little Helper
-Are You The Key Master
-Now You're Playing With Power
-Party Is Getting Crazy
-Can't Touch This
-Never Asked For This
-Allied Scrub
-Allied Soldier
-Allied General
-Glass Cannon
-Stone Wall
-Blood Gone Dry
-Ice Ice Baby
-Disco Inferno
-Blinded By The Light
-Rock You Like A Hurricane
-1.21 gigawatts
-It's All Doom And Gloom
-In Tune With Mother Earth
-Time To Build An Ark
-Hi Ho, Hi Ho
-Blood Gone to Head
-You Bring the Monsters, I'll Bring the Weapons
+Can'tKeepAGoodManDown
+MonsterSlayer
+PrettyGemCollector
+MasterOfUnlocking
+Santa'sLittleHelper
+AreYouTheKeyMaster
+NowYou'rePlayingWithPower
+PartyIsGettingCrazy
+Can'tTouchThis
+NeverAskedForThis
+AlliedScrub
+AlliedSoldier
+AlliedGeneral
+GlassCannon
+StoneWall
+BloodGoneDry
+IceIceBaby
+DiscoInferno
+BlindedByTheLight
+RockYouLikeAHurricane
+1.21gigawatts
+It'sAllDoomAndGloom
+InTuneWithMotherEarth
+TimeToBuildAnArk
+HiHoHiHo
+BloodGoneToHead
+YouBringMonstersI'llBringWeapons
 Warbound
-A Light in the Dark
-Fill Your Dark Soul With Light
-I Am Iron Man
+ALightInTheDark
+FillYourDarkSoulWithLight
+IAmIronMan
 Jackpot
-I Can Quit Betting Any Time I Want
-Mastered Technique
-Super SSStylish
-You've Got A Friend In Me
-On the Edge
-I'm No One's Puppet
+ICanQuitBettingAnyTimeIWant
+DoIHear500
+SoldTotheOneInFront
+MasteredTechnique
+SSStylish
+You'veGotAFriendInMe
+OnTheEdge
+NoOne'sPuppet
+HarderBetterFasterStronger
+GottaCollectThemAll
 
 
 MISC INFO

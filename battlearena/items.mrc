@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 12/03/16
+;;;; Last updated: 12/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1076,7 +1076,10 @@ alias item.shopreset {
   ; $3 = item
 
   var %shop.reset.amount $readini($dbfile(items.db), $3, amount)
-  set %player.shop.level $readini($char($2), stuff, shoplevel)
+  var %player.shop.level $return.shoplevel($2)
+
+  ; This will be turned on in the next version
+  ; if ($return.shoplevel($2) = $return.minshoplevel($2)) { $display.private.message($readini(translation.dat, errors, ShopLevelCannotGoLower)) | halt }
 
   if (%shop.reset.amount != $null) {
     dec %player.shop.level %shop.reset.amount
@@ -1084,7 +1087,7 @@ alias item.shopreset {
     if (%player.shop.level > 1) { writeini $char($2) stuff shoplevel %player.shop.level }
   }
 
-  if (%user = %enemy ) { set %enemy $gender2($1) $+ self }
+  if (%user = %enemy) { set %enemy $gender2($1) $+ self }
 
   $set_chr_name($1)
 
