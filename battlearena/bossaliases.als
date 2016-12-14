@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 12/09/16
+;;;; Last updated: 12/14/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -34,8 +34,7 @@ get_boss_type {
   if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.gremlins false }
   if ((%winning.streak.check < 75) || (%winning.streak.check > 200)) { var %enable.goblins false }
   if (%winning.streak.check >= 250) { var %enable.warmachine false } 
-  ; if ((%winning.streak.check < 75) || (%winning.streak.check > 2000)) { var %enable.pirates false }
-  ; if (%winning.streak.check >= 5000) { var %enable.pirates false } 
+  if (%winning.streak.check < 75) { var %enable.pirates false }
 
   if ((%winning.streak.check >= 100) && (%winning.streak.check < 300)) { 
     if ($readini(system.dat, system, AllowDemonwall) = yes) { var %enable.demonwall true }
