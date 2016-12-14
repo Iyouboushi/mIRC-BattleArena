@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 11/19/16
+;;;; Last updated: 12/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -590,14 +590,13 @@ alias ai_gettarget {
       if ((%element = $null) && (%status.type = $null)) { echo -a 4NULL TARGET. SWITCHING TO BERSERK TYPE | set %ai.target $1 | writeini $char($1) info ai_type berserk }
     }
 
-    if (%ai.action != tech) { 
-      $covercheck(%ai.target, $1) 
-      set %ai.target %attack.target 
-    }
-
     unset %random.target | unset %total.targets | unset %taunt.action
   }
 
+  if (%ai.action != tech) { 
+    $covercheck(%ai.target, $1) 
+    set %ai.target %attack.target 
+  }
 
 }
 alias ai_getmontarget {
