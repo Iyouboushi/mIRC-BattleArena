@@ -124,7 +124,7 @@ MonsterSummon=$iif(%current.battlefield = Raptor News Network Breaking News Broa
 MonsterSummon.Monster=Stygian
 MonsterSummon.Chance=100
 monstersummon.numberspawn=$iif($return_playersinbattle > 1, 2, 1)
-ChangeBattlefield=1
+ChangeBattlefield=$iif(%battle.type = torment, 0, 1)
 ChangeBattlefield.battlefields=Raptor News Network Studio.Raptor News Network Breaking News Broadcast
 ChangeBattlefield.chance=60
 Resist-Petrify=60
