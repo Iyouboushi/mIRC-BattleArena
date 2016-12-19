@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/14/16
+;;;; Last updated: 12/18/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2548,6 +2548,8 @@ fulls {
 
     var %stylelist $styles.get.list($1) 
     .remini $char($1) modifiers
+    .remini $char($1) status staggered
+
     var %doubledollars $readini($char($1), stuff, doubledollars) 
     if (%doubledollars = $null) { writeini $char($1) stuff doubledollars 100 | var %doubledollars 100 }
 
