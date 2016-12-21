@@ -163,7 +163,7 @@ EquippedArmor=$chr(3) $+ 3 $+  $+ %real.name is now wearing the $equipment.co
 RemovedArmor=$chr(3) $+ 3 $+  $+ %real.name has removed the $equipment.color($2) $+ $readini($dbfile(equipment.db), $2, name)
 NotWearingThatAccessory=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $equipment.color($2) $+ $2 3accessory.
 NotWearingThatArmor=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $equipment.color($2) $+ $2 $+ 3.
-ShopLevelLowered=$chr(3) $+ 2 $+ Your shop level has been lowered.  It is now $readini($char($2), stuff, shoplevel) $+ !
+ShopLevelLowered=$chr(3) $+ 2 $+ Your shop level has been lowered.  It is now $return.shoplevel($2) $+ !
 FoodStatIncrease=$chr(3) $+ 2 $+ Your %food.type has permanently increased by %food.bonus $+ !
 SellMessage=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat takes $4 $3 $+ $iif($4 < 2, ,s) $+  from you and gives you $bytes(%total.price,b) $readini(system.dat, system, currency) $+ !
 SellMessageAccessory=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat takes %amount.to.sell $3 $+ $iif($4 < 2, ,s) $+  from you and gives you $bytes(%total.price,b) $readini(system.dat, system, currency) $+ !
@@ -312,7 +312,7 @@ FirstRoundProtectionOff=$chr(3) $+ 4 $+ First Round Protection has been turned 
 FirstRoundProtectionOn=$chr(3) $+ 4 $+ First Round Protection has been turned off
 DragonHunt.ListDragons=$chr(3) $+ 2 $+ The following dragons are still hiding in their lairs across the land
 DragonHunt.CreatedDragon=$chr(3) $+ 4 $+ People all over the land have reported seeing the fearsome dragon %dragonhunt.name creating a lair! It is up to the heroes to locate the lair and destroy the terrible beast.
-DragonHunt.BeginHunt=$chr(3) $+ 12 $+ $get_chr_name($2) 4has discovered the lair of the fearsome dragon known as12 %dragonhunt.name $+ 4! A raiding party has been set up to put an end to the beast. To join the party type 12!enter4 now! The raiding party will depart in12 $duration(%time.to.enter) $+ 4. [This is a level12 $dragonhunt.dragonage(%dragonhunt.file.name) 4battle. Anyone more than 5 levels over will be level synced.]
+DragonHunt.BeginHunt=$chr(3) $+ 12 $+ $get_chr_name($2) 4has discovered the lair of the fearsome12 $dragonhunt.dragonelement(%dragonhunt.file.name) 4dragon known as12 %dragonhunt.name $+ 4! A raiding party has been set up to put an end to the beast. To join the party type 12!enter4 now! The raiding party will depart in12 $duration(%time.to.enter) $+ 4. [This is a level12 $dragonhunt.dragonage(%dragonhunt.file.name) 4battle. Anyone more than 5 levels over will be level synced.]
 
 =======================
 Health Titles
@@ -614,6 +614,7 @@ GearsetNumberDoesNotExist=$chr(3) $+ 4 $+ Error: That gear set number does not
 GoldOrbNoLongerWorks=$chr(3) $+ 4 $+ The Gold Orb does not seem to work as $get_chr_name($1) has already used three of them in this battle.
 LvlTooLowToEquipWpn=$chr(3) $+ 4 $+ $get_chr_name($1) is too weak to wield $2 $+ ! [level %wpn.lvl needed]
 SkillNeedsToBeEquippedToUse=$chr(3) $+ 4 $+ This skill needs to be equipped outside of battle in order to be used
+ShopLevelCannotGoLower=$chr(3) $+ 4 $+ Your shop level is already at its minimum amount and cannot be lowered at this time.
 
 =======================
 Battle Related Messages

@@ -1556,6 +1556,7 @@ Battle Arena Bot VERSIONS
   total average level of all the players is 1000 or more
 - Changed the maximum amount of conquest points monsters can win off of one battle to 1000 max.
 - Changed !view-info for "random" type items so that it shows a description
+- Changed the !dragon hunt found message to show the dragon's element in the enter-the-battle description
 - Fixed a bug with Stoneskin in the enhancement shop
 - Fixed a bug with the dynamic naming
 - Fixed a bug with AI in dungeons
