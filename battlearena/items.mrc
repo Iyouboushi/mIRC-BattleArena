@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 12/14/16
+;;;; Last updated: 12/21/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -1768,13 +1768,15 @@ alias portal.sync.players {
     }
 
     if ((no-trust isin %battleconditions) || (no-trusts isin %battleconditions)) { 
-      if ($readini($char(%who.battle), info, flag) = npc) { 
-        if (($readini($char(%who.battle), info, clone) = yes) || ($readini($char(%who.battle), info, summon) = yes)) { 
-          if ($readini($char(%who.battle), info, clone) = yes) { var %owner $readini($char(%who.battle), info, cloneowner) }
-          if ($readini($char(%who.battle), info, clone) != yes) { var %owner  $readini($char(%who.battle), info, owner) }
-          if ($readini($char(%owner), info, flag) != $null) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
+      if ($readini($char(%who.battle), info, trust) = true) { 
+        if ($readini($char(%who.battle), info, flag) = npc) { 
+          if (($readini($char(%who.battle), info, clone) = yes) || ($readini($char(%who.battle), info, summon) = yes)) { 
+            if ($readini($char(%who.battle), info, clone) = yes) { var %owner $readini($char(%who.battle), info, cloneowner) }
+            if ($readini($char(%who.battle), info, clone) != yes) { var %owner  $readini($char(%who.battle), info, owner) }
+            if ($readini($char(%owner), info, flag) != $null) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
+          }
+          if ($readini($char(%who.battle), info, clone) != yes) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
         }
-        if ($readini($char(%who.battle), info, clone) != yes) { writeini $char(%who.battle) battle status dead | writeini $char(%who.battle) battle hp 0 }
       }
     }
 
