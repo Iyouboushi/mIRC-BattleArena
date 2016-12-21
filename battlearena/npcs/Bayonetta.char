@@ -57,6 +57,7 @@ HealByTaunt=true
 IgnoreQuicksilver=true
 CanTaunt=true
 TauntFile=taunts_bayonetta.txt
+trust=true
 
 [monster]
 type=Human
@@ -162,6 +163,13 @@ UmbranClimax=$iif($current.battlestreak < 500, 0, 1)
 
 [Item_Amount]
 
+[Equipment]
+Head=BayonettaGlasses
+Body=BayonettaOutfit
+Hands=BayonettaGloves
+Legs=BayonettaLeggings
+Feet=BayonettaHeels
+
 [Augments]
 LoveIsBlue=MeleeBonus.TechBonus.MagicBonus.EnhanceParry.EnhanceRanged.HurtEthereal
 Kafka=TechBonus.IgnoreMetalDefense.AdditionalHit.MeleeBonus.EnhanceRanged.HurtEthereal
@@ -169,26 +177,30 @@ Chernobog=IgnoreGuardian.IgnoreDefense.EnhanceScythe.MeleeBonus.TecBonus.HurtEth
 ScarboroughFair=MeleeBonus.TechBonus.MagicBonus.EnhanceParry.EnhanceRange.HurtEthereal
 Kulshedra=MeleeBonus.EnhanceWhip.EnhanceDodge.TechBonus.HurtEthereal
 Shuraba=Drain.RenkeiBonus.EnhanceKatana.MeleeBonus.TechBonus.HurtEthereal
-UmbranArmorGuns=DecreaseMechEnergyCost.EnhanceRanged.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian
+UmbranArmorGuns=EnhanceRanged.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian
+BayonettaGlasses=MeleeBonus.TechBonus.MagicBonus
+BayonettaOutfit=MeleeBonus.TechBonus.MagicBonus
+BayonettaGloves=MeleeBonus.TechBonus.MagicBonus
+BayonettaLeggings=MeleeBonus.TechBonus.MagicBonus
+BayonettaHeels=MeleeBonus.TechBonus.MagicBonus
 
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Mech]
 name=Umbran Armor
 inUse=false
-EngineLevel=$iif($current.battlestreak < 2000, 0, 0.7)
+EngineLevel=$iif($current.battlestreak < 2000, 0, 0.6)
 HpMax=20000
 HpCurrent=20000
 EnergyMax=10000
 EnergyCurrent=10000
 EquippedCore=UmbranMechCore
 EquippedWeapon=UmbranArmorGuns
-Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal
+Augments=DecreaseMechEnergyCost.EnhanceDodge.MeleeBonus.TechBonus.MagicBonus.HurtEthereal
 
 
 [modifiers]
@@ -220,3 +232,6 @@ Dagger=100
 Mace=100
 Stave=100
 EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100

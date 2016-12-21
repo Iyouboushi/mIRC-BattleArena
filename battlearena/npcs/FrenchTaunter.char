@@ -51,6 +51,7 @@ IgnoreQuicksilver=true
 HurtByTaunt=true
 JustReleaseDefense=100
 ai_type=tauntonly
+trust=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

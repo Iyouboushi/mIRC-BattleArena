@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=$iif($current.battlestreak <= 300, 600, 3000)
-Tp=2000
-Str=$iif($current.battlestreak <= 300, 515, 1544)
-Def=$iif($current.battlestreak <= 300, 515, 1544)
-Int=$iif($current.battlestreak <= 300, 515, 1544)
-Spd=$iif($current.battlestreak <= 300, 515, 1544)
-IgnitionGauge=9000
-Name=Lirarian
+Hp=$iif(%battle.type = torment, 20000000, 500000)
+Tp=1000
+Str=514285
+Def=514285
+Int=514285
+Spd=514285
+IgnitionGauge=0
+Name=Asriel Dreemurr
 
 
 [Battle]
-Hp=3000
-Tp=2000
-Str=515
-Def=515
-Int=515
-Spd=515
-IgnitionGauge=9000
+Hp=500000
+Tp=1000
+Str=514285
+Def=514285
+Int=514285
+Spd=514285
+IgnitionGauge=0
 Status=alive
 
 
@@ -25,17 +25,10 @@ RageBar=0
 RageCountDown=0
 
 
-[Limit]
-Level=1
-Percent=0
-
-
 [Descriptions]
-Hused=1
-Dused=1
-Char=is an Elven goddess who is entrusted with two powerful weapons. She has long brown hair, glowing green eyes, and wears dark-red Swordmaster armor.
-Rage=simply narrows her eyes and glares at everyone.
-BossQuote=You must prove yourselves before moving forward.
+Char=appears to be an anthropomorphic nubian goat that is white in color, with black scleras, longer fangs, and horns. He wears a long, dark robe with white sleeves that has a large collar and shoulder pads that are red in color. The robe also has a white Delta Rune on the front.
+Rage=screams in rage 
+BossQuote=Howdy! It's me, your best friend... 3A4S12R11I8E9L0 3D4R12E11E8M9U3R4R1. You know... I don't care about destroying the world anymore. I just want to reset the timeline so that everything unfolds again from the beginning!
 
 
 [Stuff]
@@ -44,32 +37,33 @@ BlackOrbs=1
 ShopLevel=1.0
 Drops=
 
-
-[Monster]
-Type=Elf
-size=medium
-TechLearn=$iif($current.battlestreak <= 1000, false, true)
-Elite=$iif($current.battlestreak <= 1000, false, true)
-SuperElite=$iif($current.battlestreak >= 5000, false, true)
-
-
 [Info]
 Flag=monster
-Gender=her
-Gender2=her
+Gender=his
+Gender2=him
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=100
+BattleStats=ignoreHP
+BossLevel=50000
+ai_type=techonly
 IgnoreQuicksilver=true
-CanTaunt=false
 IgnorePresident=true
+Streak=100000
+IgnoreDrain=true
+CanFlee=false
+JustReleaseDefense=100
+DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
-JustReleaseDefense=100
 
+[monster]
+type=HyperGodOfDeath
+TechLearn=true
+size=Medium
+SuperElite=true
 
 [Status]
 Poison=no
@@ -104,124 +98,66 @@ sleep=no
 stun=no
 MPRegenerating=no
 
-
 [Weapons]
-Equipped=SilverSwords
-SilverSwords=$calc(1 + $current.battlestreak)
+Equipped=HyperGodPower
+HyperGodPower=$calc(1 + $current.battlestreak)
 
 
 [Skills]
 Zen=5
 WeaponBash=1
 Impetus=20
-Swordmaster=100
+MartialArts=100
 Resist-Amnesia=100
-Resist-Blind=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Blind=100
 Resist-Charm=100
 Resist-Confuse=100
 Resist-Curse=100
 Resist-Disarm=100
 Resist-Drunk=100
 Resist-Intimidate=100
-Resist-Paralysis=$iif($current.battlestreak <= 200, 60, 100)
-Resist-Petrify=$iif($current.battlestreak <= 200, 60, 100)
+Resist-Paralysis=100
+Resist-Petrify=100
 Resist-Poison=100
 Resist-Silence=100
 Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Stun=$iif($current.battlestreak <= 200, 30, 100)
+Resist-Stun=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
 
-
 [Techniques]
-Guruthos=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) = 1, 1, 0)
-Medui=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) > 1, 1, 0)
-Twin_Slice=$calc(1 + $current.battlestreak)
-LightningStrike=$calc(1 + $current.battlestreak)
-BladeBeamII=$calc(1 + $current.battlestreak)
-TwinSlice=$calc(1 + $current.battlestreak)
-BiteOfLightning=$calc(1 + $current.battlestreak)
-BladeBeam=$calc(1 + $current.battlestreak)
-FiraII=$calc(1 + $current.battlestreak)
-StoneraII=$calc(1 + $current.battlestreak)
-WateraII=$calc(1 + $current.battlestreak)
-AeraII=$calc(1 + $current.battlestreak)
-BlizzaraII=$calc(1 + $current.battlestreak)
-ThundaraII=$calc(1 + $current.battlestreak)
-Geohelix=$calc(1 + $current.battlestreak)
-Hydrohelix=$calc(1 + $current.battlestreak)
-Anemohelix=$calc(1 + $current.battlestreak)
-Pyrohelix=$calc(1 + $current.battlestreak)
-Cryohelix=$calc(1 + $current.battlestreak)
-Ionohelix=$calc(1 + $current.battlestreak)
-Noctohelix=$calc(1 + $current.battlestreak)
-Luminohelix=$calc(1 + $current.battlestreak)
-Meteor=$calc(1 + $current.battlestreak)
-LungeII=$calc(1 + $current.battlestreak)
-VivaciousPulseII=$calc(1 + $current.battlestreak)
-RuneSwipeII=$calc(1 + $current.battlestreak)
-DimidiationII=$calc(1 + $current.battlestreak)
-ResolutionII=$calc(1 + $current.battlestreak)
-HardSlashII=$calc(1 + $current.battlestreak)
-PowerSlashII=$calc(1 + $current.battlestreak)
+AsrielFire=$calc(1 + $current.battlestreak)
 
-
-[Equipment]
-Head=Lirarian's_Circlet
-Body=Lirarian's_Armor
-Hands=Lirarian's_Gauntlets
-Legs=Lirarian's_Cuisses
-Feet=Lirarian's_Sabatons
-
+[Item_Amount]
 
 [Augments]
-SilverSwords=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus
-Black_Goddess_Staff=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Silver_Goddess_Sword=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus
-AettirII=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Lirarian's_Circlet=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Lirarian's_Armor=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Lirarian's_Gauntlets=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Lirarian's_Cuisses=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Lirarian's_Sabatons=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Runeist_Bandeau=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Runeist_Coat=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Runeist_Mitons=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Runeist_Trousers=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-Runeist_Bottes=MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
-
+HyperGodPower=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 
 [Styles]
 Equipped=Weaponmaster
 Weaponmaster=10
 
-
 [NaturalArmor]
-Name=Goddess Defense
-Max=$iif(%battle.type = torment, 1500000, 2000)
-Current=2000
-
-
-[Ignitions]
-WiseReflection=$iif($current.battlestreak >= 1000, 0, 1)
-ElvenGoddessMight=$iif($current.battlestreak <= 1000, 0, 1)
-ElvenGoddessMagic=$iif($current.battlestreak <= 1000, 0, 1)
-ElementalSforzoII=$iif($current.battlestreak <= 5000, 0, 1)
+Name=Hyper God Defense
+Max=$iif(%battle.type = torment, 1500000, 100000)
+Current=100000
 
 
 [modifiers]
-Heal=Light
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
 Earth=100
 Fire=100
 Wind=100
 Water=100
 Ice=100
 Lightning=100
-Light=150
-Dark=130
+Light=100
+Dark=100
 HandToHand=100
 Whip=100
 Sword=100
@@ -239,7 +175,7 @@ Dagger=100
 Mace=100
 Stave=100
 EnergyBlaster=100
-Lightsaber=100
+LightSaber=100
 Hammer=100
 Fists=75
 Cerberus=75

@@ -1,0 +1,199 @@
+[BaseStats]
+Hp=4000
+Tp=1000
+Str=10268
+Def=10268
+Int=10268
+Spd=10268
+IgnitionGauge=9000
+Name=The Witch
+
+
+[Battle]
+Hp=4000
+Tp=1000
+Str=10268
+Def=10268
+Int=10268
+Spd=10268
+IgnitionGauge=9000
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is a woman with short black hair that wears a black and red outfit. She has white face paint with black around the eyes, random black lines, black around the mouth with a design resembling teeth, and pure black eyes.
+Rage=simply laughs in a crazed manner!
+BossQuote=Oh Allied Heroes... You will decay... Decay... DECAY!
+DeathMessage=This is not the end... We will be back... And we will make you all DECAY!
+Revive=laughs as she simply rises back up, the light around the battlefield begins to go dim as the laughter continues before she says, "We are not done yet... Allied Heroes... We are Chaos and Darkness made flesh!"
+ManaFont=$+ 's body begins to glow a with a dark and ancient energy. The battlefield seems to lose all light as %real.name feels as though $gender($1) spells will do more damage now and all allies of %real.name feel that their next techniques will consume no TP. %real.name then begins to laugh in a crazed manner!
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+
+[Info]
+Flag=monster
+Gender=her
+Gender2=her
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+Guardian=The_Crazzy.The_Monster
+ai_type=techonly
+IgnoreQuicksilver=true
+IgnorePresident=true
+Streak=2000
+IgnoreDrain=true
+CanFlee=false
+JustReleaseDefense=100
+DeathConditions=Renkei
+IgnoreOutpost=true
+IgnoreElementalMessage=true
+
+[monster]
+type=human
+TechLearn=false
+size=medium
+Elite=$iif($current.battlestreak <= 5000, false, true)
+SuperElite=$iif($current.battlestreak >= 5000, false, true)
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+auto-regen=yes
+revive=yes
+invincible=$iif($readini($char(The_Witch), status, revive) = yes, yes, no)
+invincible.timer=3
+
+[Weapons]
+Equipped=Witch'sMagic
+Witch'sMagic=$calc(1 + $current.battlestreak)
+
+
+[Skills]
+Regen=$iif($return_playersinbattle > 3, 5, 3)
+Zen=5
+WeaponBash=1
+Impetus=20
+MartialArts=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+
+[Techniques]
+GreenAsianMist=$calc(1 + $current.battlestreak)
+RedAsianMist=$calc(1 + $current.battlestreak)
+BlueAsianMist=$calc(1 + $current.battlestreak)
+TheRedWedding=$calc(1 + $current.battlestreak)
+SkywardSuplex=$calc(1 + $current.battlestreak)
+FirajaII=$calc(1 + $current.battlestreak)
+DarkraII=$calc(1 + $current.battlestreak)
+Meteor=$calc(1 + $current.battlestreak)
+
+
+[Item_Amount]
+
+[Augments]
+Witch'sMagic=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
+[Styles]
+Equipped=Wrestlemania
+Wrestlemania=10
+
+[NaturalArmor]
+Name=Chaotic Defense
+Max=$iif(%battle.type = torment, 1500000, 5000)
+Current=5000
+
+[Ignitions]
+ManaFont=1
+
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=Dark
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=150
+Dark=500
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
+GrandDream=50
+Thunderclap=60

@@ -154,6 +154,18 @@ Vergil=DustyWing.VitalStar.potion
 Yanthu=Tonic.SuperPotion.Ether
 ZaDha=Pizza.X-Potion.Ether.Tonic
 Zark=Slurm
+Asriel_Dreemurr=$iif(%portal.bonus = true, GoldVoucher, HighKindredCrest)
+Beerus=KindredCrest
+Broken_One=$iif(%portal.bonus = true, GoldVoucher, HighKindredCrest)
+Flowey=KindredCrest
+Mettaton_EX=KindredCrest
+Obsolete_Mule=$iif(%portal.bonus = true, GoldVoucher, HighKindredCrest)
+SansSKeleton=HighKindredCrest
+The_Crazzy=$iif(%portal.bonus = true, GoldVoucher, HighKindredCrest)
+The_Monster=$iif(%portal.bonus = true, GoldVoucher, HighKindredCrest)
+The_Witch=$iif(%portal.bonus = true, GoldVoucher, HighKindredCrest)
+Undyne=HighKindredCrest
+UndyneTheUndying=HighKindredCrest
 
 
 ; Monsters

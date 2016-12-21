@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=5000
+Hp=$iif(%battle.type = dungeon, 20000, 5000)
 Tp=500
 Str=20
 Def=20
@@ -54,7 +54,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
-
+trust=$iif(%battle.type = dungeon, false, true)
 
 [Status]
 Poison=no
@@ -96,6 +96,7 @@ KiRegenerating=no
 curse.timer=1
 slow.timer=1
 zombie.timer=1
+auto-regen=$iif(%battle.type = dungeon, yes, no)
 
 
 [Weapons]
@@ -105,6 +106,7 @@ ChozoArmCannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 [Skills]
 Zen=5
+Regen=$iif(%battle.type = dungeon, 15, 0)
 Gunslinger=100
 MartialArts=100
 Resist-Charm=100
@@ -126,35 +128,35 @@ Resist-Disarm=100
 
 
 [Techniques]
-PoweredShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Missile=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SuperMissile=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Bomb=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PowerBomb=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ScrewAttack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-IceBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PlasmaBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DarkBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DarkBurst=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-LightBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SunBurst=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+PoweredShot=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+Missile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+SuperMissile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+Bomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+PowerBomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+ScrewAttack=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+IceBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+PlasmaBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+DarkBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+DarkBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+LightBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+SunBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
+PhazonBeam=$iif($dungeon.currentroom = 10, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0), 0)
 
 
 [Item_Amount]
 
 
 [Styles]
-Equipped=WeaponMaster
+Equipped=Weaponmaster
 WeaponMaster=10
 
 
 [Equipment]
-Head=ChozoHelmet
-Body=ChozoArmor
-Hands=ChozoArmArmor
-Legs=ChozoLegArmor
-Feet=ChozoFootArmor
-
+Head=$iif(%battle.type = dungeon, PhazonHelmet, ChozoHelmet)
+Body=$iif(%battle.type = dungeon, PhazonArmor, ChozoArmor)
+Hands=$iif(%battle.type = dungeon, PhazonArmArmor, ChozoArmArmor)
+Legs=$iif(%battle.type = dungeon, PhazonLegArmor, ChozoLegArmor)
+Feet=$iif(%battle.type = dungeon, PhazonFootArmor, ChozoFootArmor)
 
 [Augments]
 ChozoArmCannon=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
@@ -163,7 +165,11 @@ ChozoArmor=MeleeBonus.TechBonus.MagicBonus
 ChozoArmArmor=MeleeBonus.TechBonus.MagicBonus
 ChozoLegArmor=MeleeBonus.TechBonus.MagicBonus
 ChozoFootArmor=MeleeBonus.TechBonus.MagicBonus
-
+PhazonHelmet=MeleeBonus.TechBonus.MagicBonus
+PhazonArmor=MeleeBonus.TechBonus.MagicBonus
+PhazonArmArmor=MeleeBonus.TechBonus.MagicBonus
+PhazonLegArmor=MeleeBonus.TechBonus.MagicBonus
+PhazonFoorArmor=MeleeBonus.TechBonus.MagicBonus
 
 [modifiers]
 Heal=none
@@ -194,3 +200,4 @@ Stave=70
 Lightsaber=70
 Hammer=70
 EnergyBlaster=70
+Bat=70

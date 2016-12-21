@@ -48,6 +48,7 @@ Created=N/a
 Streak=20
 CanTaunt=false
 RageMode=ignore
+trust=true
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

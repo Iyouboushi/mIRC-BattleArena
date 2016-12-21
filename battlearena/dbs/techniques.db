@@ -403,7 +403,7 @@ MegaBusterMk1=HyperBomb.SuperArm.RollingCutter.ThunderBeam.IceSlasher.FireStorm
 X-Buster=ChargedShot
 X-BusterMk1=ShotgunIce.StormTornado.FireWave.ChameleonSting.ElectricSpark.RollingShield.BoomerangCutter.HomingTorpedo
 SwordOfTheFallenDevil=HandOfPyro.Bite_Of_Lightning.HailOfHeavens.PinnacleOfTheSun.HammerOfEvil.ColdnessOfDestruction.FeathersOfTheHurricane.BoltOfThunder.SmokeOfPain.FalconOfDeath
-ChozoArmCannon=PoweredShot.Missile.SuperMissile.Bomb.PowerBomb.ScrewAttack.IceBeam.PlasmaBeam.DarkBeam.DarkBurst.LightBeam.SunBurst
+ChozoArmCannon=PoweredShot.Missile.SuperMissile.Bomb.PowerBomb.ScrewAttack.IceBeam.PlasmaBeam.DarkBeam.DarkBurst.LightBeam.SunBurst.PhazonBeam
 ZeroSaber=Raijingeki.Rakuhouha.Ryuenjin.Kuuenzan.Shippuuga.Hyoretsuzan
 SantaRifle=LaserStorm.GrenadeGift.BazookaGift
 BrainWeapon=Rinka.LavaFall.LaserDefense.HyperBeam.BombBeam.PlasmaLaser.BrainStomp.BrainGrab
@@ -530,6 +530,18 @@ RidleyClaws=KineticBreath.MesonBombLauncher.UltrathermalFlamestrike.Multi-Missil
 Rusalka=Tantalization.FrozenSolid
 DemonToad=RusalkaWhip.FrogSplash.MmCrunchy.Icicles
 WaterBubble=TidalWave
+BeerusClaw=KiBlast.KiAi.DestructBeCre.BeerusPressurePoint.CanYouKeepUp.FullPowerEngeryBlastVolley.GodOfDestructionWrath.SphereOfDestruction.ExplosiveWave.FireBreath.PalmEnergy.AtomEnergySphere
+FloweyPetals=FloweyPellets1.FloweyPellets2.FloweyPellets3.FloweyDeathBullets
+UndyneSpear=GreenSoulMode.UndyneArrowsSlow.UndyneArrowsFast.UndyneArrowsFlip.RedSoulMode.UndyneSpearLaunch.UndyneSpearVolley
+UndyneSpearII=GreenSoulModeII.UndyneArrows.RedSoulModeII.UndyneSpearRing.UndyneSpearVolleyII
+MettatonLegs=MettatonLegAttack.MettatonBombs.MettatonRain.UnionRegulatedBreak.MettatonDisco.MettatonDancing
+SansPower=SansStrongAttack.SansBoneWave.SansPlatform.SansGasterBlasterNormal.SansHardWay.SansGasterBlasterLarge.SansPsychokinesis.SansCoolNormalAttack.SansSpecialAttack.SansSpecialAttack2.SansSpecialAttack3
+HyperGodPower=AsrielFire.StarBlazing.ShockerBreaker.ChaosSaber.ChaosBuster.GalactaBlazing.ShockerBreakerII.ChaosSlicer.ChaosBlaster
+BrokenBrilliance=SideEffect.TwistOfFate.BrokenDelete.BrokenBite.AsuranFists.ShinjinSpiral.ShoulderTackle.TotalNonstopDeletion
+ObsoleteFists=SideEffect.TwistOfFate.AsuranFists.ShinjinSpiral.ShoulderTackle.WhisperInTheWind.PoetryInMotion.SwantonBomb
+CrazzyFists=BlackAsianMist.YellowAsianMist.Centralizer.KingKill33.KrimsonKombo.CanonballSenton
+Monster'sFists=BlackHoleSlam.ChokeSlam.AsuranFists.ShinjinSpiral.ShoulderTackle.ShockTreatment
+Witch'sMagic=GreenAsianMist.RedAsianMist.BlueAsianMist.TheRedWedding.SkywardSuplex.FirajaII.DarkraII.Meteor
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -4033,7 +4045,7 @@ stat=spd
 [EagleEyeShot]
 Type=Single
 TP=50
-Desc=summons an arrow of powerful energy and takes aim with the bow for a moment before firing the devastating energy arrow into %enemy $+ !
+Desc=summons an arrow of powerful energy and takes aim with the bow for a moment before firing the energy arrow into %enemy $+ !
 BasePower=75
 Element=Light
 Cost=3500
@@ -9341,6 +9353,20 @@ Element=Light
 Cost=0
 Magic=yes
 Stat=int
+
+[PhazonBeam]
+Type=Single
+Cost=0
+Desc=stands in one of the random phazon pools left by Metroid Prime, which grants Samus the ability to fire pure phazon upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
 
 [Raijingeki]
 Type=Single
@@ -15162,3 +15188,1150 @@ HurtEthereal=true
 stat=str
 CanDodge=true
 DestroyShadows=4
+
+[FloweyPellets1]
+Type=Single
+Cost=0
+Desc=summons white pellets and says, "These are little white friendliness pellets! Get as many as you can!" $iif(%attack.damage = 0, %enemy avoids the pellets. Flowey then says "Hey... buddy... you missed them. Let's try again... okay?", catches all of the pellets!)
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=True
+PostScript=writeini $char($1) techniques FloweyPellets2 $calc(1 + $current.battlestreak) | writeini $char($1) techniques FloweyPellets1 0
+
+[FloweyPellets2]
+Type=Single
+Cost=0
+Desc=summons more pellets and sends them towards %enemy $iif(%attack.damage = 0, who avoids them again. Flowey then says "Is this a joke? Are you braindead? RUN. INTO. THE. BULLETS!", who catches them all again!)
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=True
+PostScript=writeini $char($1) techniques FloweyPellets3 $calc(1 + $current.battlestreak) | writeini $char($1) techniques FloweyPellets2 0
+
+[FloweyPellets3]
+Type=Single
+Cost=0
+Desc=summons yet more pellets, sending them at %enemy $iif(%attack.damage = 0, who avoids them yet again. Flowey then says "You know what's going here... don't you? You just wanted to see me suffer.", who catches them all yet again.)
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=True
+PostScript=writeini $char($1) techniques FloweyPellets3 $calc(1 + $current.battlestreak) | writeini $char($1) techniques FloweyDeathBullets 0
+
+[FloweyDeathBullets]
+Type=AOE
+Cost=0
+Desc='s face turns demented as he summons bullets that circle the entire battlefield and says, "In this world, it's kill or BE killed. Now you all die!" before laughing as he unleashes the bullets upon everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=false
+DestroyShadows=8
+
+[GreenSoulMode]
+Type=AOE
+Cost=0
+Desc=says, "Unless you learn to face danger head-on... you won't last a second against me!" before laughing and swinging her spear, throwing a wave of green energy across the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+DestroyShadows=16
+PostScript=writeini $char($1) techniques UndyneArrowsSlow $calc(1 + $current.battlestreak) | writeini $char($1) techniques GreenSoulMode 0
+
+[UndyneArrowsSlow]
+Type=AOE
+Cost=0
+Desc=summons numerous arrows that seems to come from multiple directions.
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques UndyneArrowsFast $calc(1 + $current.battlestreak) | writeini $char($1) techniques UndyneArrowsSlow 0
+
+[UndyneArrowsFast]
+Type=AOE
+Cost=0
+Desc=summons the same arrows as before, except for at a faster speed!
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=no
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques UndyneArrowsFlip $calc(1 + $current.battlestreak) | writeini $char($1) techniques GreenSoulMode 0
+
+[UndyneArrowsFlip]
+Type=AOE
+Cost=0
+Desc=says, "NGAHHH! Enough warming up!" and summons yet more arrows upon the battlefield. However, once they get close, they flip around everyone to strike from behind!
+TP=10
+Element=None
+Hits=1
+BasePower=80
+Magic=no
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques RedSoulMode $calc(1 + $current.battlestreak) | writeini $char($1) techniques UndyneArrowsFlip 0
+
+[RedSoulMode]
+Type=AOE
+Cost=0
+Desc=laughs before swinging her spear, hurling a wave of green energy across the battlefield, along with several energy spears as well!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=no
+HurtEthereal=true
+stat=str
+CanDodge=false
+PostScript=writeini $char($1) techniques UndyneSpearLaunch $calc(1 + $current.battlestreak) | writeini $char($1) techniques RedSoulMode 0
+
+[UndyneSpearLaunch]
+Type=AOE
+Cost=0
+Desc=launches energy spears from below the battlefield!
+TP=10
+Element=None
+Hits=$rand(3,5)
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques UndyneSpearVolley $calc(1 + $current.battlestreak) | writeini $char($1) techniques UndyneSpearLaunch 0
+
+[UndyneSpearVolley]
+Type=AOE
+Cost=0
+Desc=says, "Not bad! Then how about THIS!?" before hurling a volley of continuous energy spears at the battlefield!
+TP=10
+Element=None
+Hits=8
+BasePower=50
+Magic=no
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques GreenSoulMode $calc(1 + $current.battlestreak) | writeini $char($1) techniques UndyneSpearVolley 0
+
+[GreenSoulModeII]
+Type=AOE
+Cost=0
+Desc=says, "Unless you learn to face danger head-on... you won't last a SECOND against ME!" before laughing and swinging her spear, throwing a wave of green energy across the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=false
+DestroyShadows=16
+PostScript=writeini $char($1) techniques UndyneArrows $calc(1 + $current.battlestreak) | writeini $char($1) techniques GreenSoulModeII 0
+
+[UndyneArrows]
+Type=AOE
+Cost=0
+Desc=unleashes a continuous volley of arrows that randomly move slow, fast, or spins around to hit from behind!
+TP=10
+Element=None
+Hits=8
+BasePower=75
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques RedSoulModeII $calc(1 + $current.battlestreak) | writeini $char($1) techniques UndyneArrows 0
+
+[RedSoulModeII]
+Type=AOE
+Cost=0
+Desc=laughs before swinging her spear, hurling a wave of green energy across the battlefield, along with several energy spears as well!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=false
+PostScript=writeini $char($1) techniques UndyneSpearRing $calc(1 + $current.battlestreak) | writeini $char($1) techniques RedSoulModeII 0
+
+[UndyneSpearRing]
+Type=AOE
+Cost=0
+Desc=summons several energy spears that form a ring around each person before the spears quickly shoot towards them!
+TP=10
+Element=None
+Hits=4
+BasePower=75
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques UndyneSpearVolleyII $calc(1 + $current.battlestreak) | writeini $char($1) techniques UndyneSpearRing 0
+
+[UndyneSpearVolleyII]
+Type=AOE
+Cost=0
+Desc=says, "Then how about THIS!?" before hurling a continuous volley of energy spears!
+TP=10
+Element=None
+Hits=8
+BasePower=75
+Magic=no
+selfstatus=SpeedUp
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques GreenSoulModeII $calc(1 + $current.battlestreak) | writeini $char($1) techniques UndyneSpearVolleyII 0
+
+[MettatonLegAttack]
+Type=AOE
+Cost=0
+Desc=says "Ooooh! I'm just warming up!" as he begins to dance, which causes energy versions of his legs to sweep over the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=str
+CanDodge=False
+PostScript=writeini $char($1) techniques MettatonBombs $calc(1 + $current.battlestreak) | writeini $char($1) techniques MettatonLegAttack 0
+
+[MettatonBombs]
+Type=AOE
+Cost=0
+Desc=says, "Lights! Camera! Bombs!" as several bombs suddenly appear on the battlefield! "Things are blowing up!" is heard from Mettaton as the bombs explode.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+CanDodge=True
+PostScript=writeini $char($1) techniques MettatonRain $calc(1 + $current.battlestreak) | writeini $char($1) techniques MettatonBombs 0
+
+[MettatonRain]
+Type=AOE
+Cost=0
+Desc=summons smaller rectangular versions of himself that glide down from umbrellas. As they get closer to the battlefield, they toss out sharp, metal hearts with the letter "M" embroided upon them.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques UnionRegulatedBreak $calc(1 + $current.battlestreak) | writeini $char($1) techniques MettatonRain 0
+
+[UnionRegulatedBreak]
+Type=AOE
+Cost=0
+Desc=says, "Time for our union-regulated break!" to stop everyone. After the break, Mettaton begins to perfom several dance moves in rapid succession!
+TP=10
+Element=none
+Hits=1
+BasePower=1
+Magic=yes
+StatusType=Stop
+selfstatus=SpeedUp
+HurtEthereal=true
+stat=int
+CanDodge=false
+PostScript=writeini $char($1) techniques MettatonDisco $calc(1 + $current.battlestreak) | writeini $char($1) techniques UnionRegulatedBreak 0
+
+[MettatonDisco]
+Type=AOE
+Cost=0
+Desc=says, "But how are you on the dance floor?! Can you keep up the pace?" as a large disco ball drops down. It begins to spin, unleashing a random amount of deadly lasers across the battlefield!
+TP=10
+Element=None
+Hits=$rand(2,8)
+BasePower=30
+Magic=No
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=4
+PostScript=writeini $char($1) techniques MettatonDancing $calc(1 + $current.battlestreak) | writeini $char($1) techniques MettatonDisco 0
+
+[MettatonDancing]
+Type=AOE
+Cost=0
+Desc=performs a few dance moves before pointing one of his legs at the players and spins around the battlefield to hit everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques MettatonLegAttack $calc(1 + $current.battlestreak) | writeini $char($1) techniques MettatonDancing 0
+
+[SansStrongAttack]
+Type=AOE
+Cost=0
+Desc=slams everyone down with gravity and summons a wave of bones that cover the battlefield. Sans then summons numerous and large Gaster Blasters that unleash lasers in several directions across the battlefield. Afterwards, Sans says, "huh. always wondered why people never use their strongest attack first."
+TP=10
+Element=None
+Hits=8
+BasePower=1
+Magic=No
+StatusType=poison
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=8
+PostScript=writeini $char($1) techniques SansBoneWeave $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansStrongAttack 0
+
+[SansBoneWave]
+Type=AOE
+Cost=0
+Desc=floods the battlefield with several bones of various lengths at a rapid speed, which require dodging or jumping to avoid.
+TP=10
+Element=None
+Hits=8
+BasePower=1
+Magic=No
+StatusType=poison
+HurtEthereal=True
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansPlatform $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansBoneWave 0
+
+[SansPlatform]
+Type=AOE
+Cost=0
+Desc=causes bones to swarm the battlefield, along with various platforms that can be used to avoid the bones.
+TP=10
+Element=None
+Hits=1
+BasePower=1
+Magic=No
+StatusType=posion
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=2
+PostScript=writeini $char($1) techniques SansGasterBlasterNormal $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansPlatform 0
+
+[SansGasterBlasterNormal]
+Type=AOE
+Cost=0
+Desc=summons several Gaster Blasters that fire lasers at everyone from random positions.
+TP=10
+Element=None
+Hits=8
+BasePower=1
+Magic=No
+StatusType=poison
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansHardWay $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansGasterBlasterNormal 0
+
+[SansHardWay]
+Type=AOE
+Cost=0
+Desc=says, "guess you like doing things the hard way, huh?" and unleashes a random variation of the bone waves. Each begins and ends at random, giving almost no time to dodge or react.
+TP=10
+Element=None
+Hits=$rand(2,6)
+BasePower=1
+Magic=No
+StatusType=poison
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansGasterBlasterLarge $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansHardWay 0
+
+[SansGasterBlasterLarge]
+Type=AOE
+Cost=0
+Desc=summons several sets of large Gaster Blasters which fires lasers across the battlefield. Each set appears immediately after the previous, making them difficult to dodge.
+TP=10
+Element=None
+Hits=8
+BasePower=1
+Magic=No
+StatusType=poison
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansPsychokinesis $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansGasterBlasterLarge 0
+
+[SansPsychokinesis]
+Type=AOE
+Cost=0
+Desc='s right eye goes black as his left eye glows blue and yellow as he slams everyone down using his psychokinesis several times. He then pauses slightly before raising bones from below the battlefield to hit everyone.
+TP=10
+Element=None
+Hits=8
+BasePower=1
+Magic=no
+StatusType=poison
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansCoolNormalAttack $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansPsychokinesis 0
+
+[SansCoolNormalAttack]
+Type=AOE
+Cost=0
+Desc=says, "welp, here goes nothing. survive THIS and you'll see my special attack!" as he unleashes all of his previous attacks, one after the other, before numerous Gaster Blasters fire lasers while spinning around everyone on the battlefield. He then ends with several rapid uses of his psychokinesis, before starting to tire out.
+TP=10
+Element=none
+Hits=8
+BasePower=1
+Magic=no
+StatusType=poison
+SelfStatus=SpeedUp
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=8
+PostScript=writeini $char($1) techniques SansSpecialAttack $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansCoolNormalAttack 0
+
+[SansSpecialAttack]
+Type=AOE
+Cost=0
+Desc=says, "all right. that's it. it's time for my special attack. are you ready? here goes nothing." ...Nothing happens. "yep. that's right. it's literally nothing. and it's not going to be anything, either. one of your turns... you're just gonna kill me. so, uh. I've decided... that it's NOT going to be your turn. ever."
+TP=10
+Element=none
+Hits=1
+BasePower=1
+Magic=no
+StatusType=stop
+SelfStatus=SpeedUp
+HurtEthereal=true
+stat=int
+CanDodge=false
+PostScript=writeini $char($1) techniques SansSpecialAttack2 $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansSpecialAttack 0
+
+[SansSpecialAttack2]
+Type=AOE
+Cost=0
+Desc=says, "i'm just gonna keep having MY turn until you give up. even if it means we have to stand here until the end of time. capiche? you'll get bored here. if you haven't gotten bored already, i mean. and then, you'll finally quit."
+TP=10
+Element=none
+Hits=1
+BasePower=1
+Magic=no
+StatusType=stop
+SelfStatus=SpeedUp
+HurtEthereal=true
+stat=int
+CanDodge=false
+PostScript=writeini $char($1) techniques SansSpecialAttack3 $calc(1 + $current.battlestreak) | writeini $char($1) techniques SansSpecialAttack2 0
+
+[SansSpecialAttack3]
+Type=AOE
+Cost=0
+Desc=simple stands there, still allowing it to be his turn, unless your determination allows you to break free.
+TP=10
+Element=none
+Hits=1
+BasePower=1
+Magic=no
+StatusType=stop
+SelfStatus=SpeedUp
+HurtEthereal=true
+stat=int
+CanDodge=true
+
+[AsrielFire]
+Type=AOE
+Cost=0
+Desc=summons "weak" balls of fire which covers the battlefield!
+TP=10
+Element=Fire
+Hits=1
+BasePower=75
+Magic=Yes
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=16
+PostScript=writeini $char($1) techniques StarBlazing $calc(1 + $current.battlestreak) | writeini $char($1) techniques AsrielFire 0
+
+[StarBlazing]
+Type=AOE
+Cost=0
+Desc=causes numerous stars to fall, along with a giant star that explodes into many smaller stars that cover the battlefield!
+TP=10
+Element=None
+Hits=8
+BasePower=75
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques ShockerBreaker $calc(1 + $current.battlestreak) | writeini $char($1) techniques StarBlazing 0
+
+[ShockerBreaker]
+Type=AOE
+Cost=0
+Desc=sweeps the battlefield with numerous bolts of lightning.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=75
+Magic=yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques ChaosSaber $calc(1 + $current.battlestreak) | writeini $char($1) techniques ShockerBreaker 0
+
+[ChaosSaber]
+Type=AOE
+Cost=0
+Desc=summons two swords and swings the left sword followed by the right sword. Asriel then swings both swords, leaving sparks that fly across the battlefield.
+TP=10
+Element=None
+Hits=3
+BasePower=40
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques ChaosBuster $calc(1 + $current.battlestreak) | writeini $char($1) techniques ChaosSaber 0
+
+[ChaosBuster]
+Type=AOE
+Cost=0
+Desc=summons a blaster and fires numerous waves of bullets before the blaster then spins and fires a large beam of energy.
+TP=10
+Element=None
+Hits=8
+BasePower=20
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques GalactaBlazing $calc(1 + $current.battlestreak) | writeini $char($1) techniques ChaosBuster 0
+
+[GalactaBlazing]
+Type=AOE
+Cost=0
+Desc=causes numerous stars to fall, along with a giant star that explodes into smaller stars the sweep the battlefield in a counterclockwise motion!
+TP=10
+Element=None
+Hits=8
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=16
+PostScript=writeini $char($1) techniques ShockerBreakerII $calc(1 + $current.battlestreak) | writeini $char($1) techniques GalactaBlazing 0
+
+[ShockerBreakerII]
+Type=AOE
+Cost=0
+Desc=unleashes lightning bolts in an alternating pattern, then a series of targeted strikes at random before sweeping the battlefield with the lightning bolts.
+TP=10
+Element=Lightning
+Hits=8
+BasePower=100
+Magic=Yes
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques ChaosSlicer $calc(1 + $current.battlestreak) | writeini $char($1) techniques ShockerBreakerII 0
+
+[ChaosSlicer]
+Type=AOE
+Cost=0
+Desc=summons a pair of swords and alternates swinging the left and right swords at a high speed before swinging both and unleashes sparks that sweep the battlefield.
+TP=10
+Element=None
+Hits=6
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques ChaosBlaster $calc(1 + $current.battlestreak) | writeini $char($1) techniques ChaosSlicer 0
+
+[ChaosBlaster]
+Type=AOE
+Cost=0
+Desc=summons a blaster that unleashes numerous waves of bullets before the blaster spins around and fires a large energy laser along with a massive starburst that sweeps over the battlefield.
+TP=10
+Element=None
+Hits=8
+BasePower=100
+Magic=No
+IgnoreDefense=15
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques GalactaBlazing $calc(1 + $current.battlestreak) | writeini $char($1) techniques ChaosBlaster 0
+
+[SideEffect]
+Type=Single
+Cost=0
+Desc=tucks his head under %enemy $+ 's arm and grabs %enemy with both arms before jumping forward and pulls %enemy down to the mat!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[TwistOfFate]
+Type=Single
+Cost=0
+Desc=kicks %enemy in the stomach and places %enemy in a front facelock before then pivoting 180 degrees, placing %enemy $+ 's jaw at %user $'s shoulder before jumping forward to slam %enemy's face onto the mat.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[BrokenDelete]
+Type=AOE
+Cost=0
+Desc=attacks everyone in the ring, shouting out "DELETE!" or "OBSOLETE!" at random with each attack.
+TP=10
+Element=None
+Hits=$rand(1,4)
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[BrokenBite]
+Type=Single
+Cost=0
+Desc=looks even crazier and laughs before he grabs one of %enemy $+ 's arms and takes a bite!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=no
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+Absorb=yes
+
+[TotalNonstopDeletion]
+Type=Death-AOE
+Cost=0
+Desc=says, "This is the end, Heroes of the Allied! The Seven Deities must be appeased!" and laughs as dark clouds cover the sky. Multiple bolts of lightning strikes the entire area as the Broken One shouts "DELETE!" with each strike!
+TP=10
+Element=none
+Hits=1
+BasePower=1
+Magic=No
+IgnoreDefense=100
+HurtEthereal=true
+stat=str
+CanDodge=false
+DeathChance=100
+
+[WhisperInTheWind]
+Type=Single
+Cost=0
+Desc=climbs up onto the top of a turnbuckle in the ring before jumping back with a corkscrew backflip to land on %enemy with a senton splash!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=no
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[PoetryInMotion]
+Type=Single
+Cost=0
+Desc=takes out a metal folding chair and sets it down. Brother Nero then runs forward and uses the chair as a platform to jump towards %enemy $+ , slamming into %enemy with great force!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=no
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[SwantonBomb]
+Type=Single
+Cost=0
+Desc=knocks %enemy down to the ground and hops onto the top of a turnbuckle. Brother Nero then performs a swan dive off of the turnbuckle, waiting until the last possible moment to execute a flip to turn it into a senton splash!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=false
+
+[BlackAsianMist]
+Type=Single
+Cost=0
+Desc=spits out a black mist at %enemy which inflicts %enemy with blindness!
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=no
+StatusType=blind
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[YellowAsianMist]
+Type=Single
+Cost=0
+Desc=spits out a yellow mist at %enemy which inflicts %enemy with paralysis!
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=No
+StatusType=Paralysis
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[Centralizer]
+Type=Single
+Cost=0
+Desc=places %enemy into an inverted facelock and spins under %enemy while holding the facelock, twisting %enemy around so that their face slams onto the mat below!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[KingKill33]
+Type=Single
+Cost=0
+Desc=places %enemy into a front facelock before jumping up and then pulling %enemy on the way back dwo, causing %enemy to hit their head on the mat!
+TP=10
+Element=None
+Hits=1
+BasePower=65
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[KrimsonKombo]
+Type=Single
+Cost=0
+Desc=lifts %enemy up for a powerbomb, pausing for a moment before falling into a kneeling position while throwing %enemy down onto the mat!
+TP=10
+Element=None
+Hits=1
+BasePower=65
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[CannonballSenton]
+Type=Single
+Cost=0
+Desc=runs towards %enemy before suddenly performing a 180 degree front flip, slamming into %enemy with his back!
+TP=10
+Element=None
+Hits=1
+BasePower=65
+Magic=no
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[BlackHoleSlam]
+Type=Single
+Cost=0
+Desc=lifts %enemy into a horizontal position and then spins around twice before slamming %enemy into the mat!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[ChokeSlam]
+Type=Single
+Cost=0
+Desc=lifts %enemy up by the neck, pausing for a moment before then slamming %enemy down onto the mat!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[ShockTreatment]
+Type=Single
+Cost=0
+Desc=lifts %enemy onto his shoulders in a horizontal position before dropping down, the impact causing %enemy to bounce off and fall onto the mat!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[GreenAsianMist]
+Type=Single
+Cost=0
+Desc=spits out a green mist at %enemy which inflicts %enemy with poison!
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=no
+StatusType=poison
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[RedAsianMist]
+Type=Single
+Cost=0
+Desc=spits out a red mist at %enemy which inflicts burning upon %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=10
+Magic=yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[BlueAsianMist]
+Type=Single
+Cost=0
+Desc=spits out a blue mist at %enemy which inflicts %enemy with drowsiness!
+TP=10
+Element=None
+Hits=1
+BasePower=10
+Magic=no
+StatusType=Sleep
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[SkywardSuplex]
+Type=Single
+Cost=0
+Desc=lifts %enemy onto her shoulders and then falls backwards, slamming %enemy down into the mat!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=no
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[TheRedWedding]
+Type=Single
+Cost=0
+Desc=lifts %enemy onto her shoulders, pausing for a moment before throwing %enemy $+ 's legs out to the front and falls backwards towards the mat, causing %enemy to land on their face and upper body with great force!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[KiBlast]
+
+Type=Single
+
+Cost=0
+
+Desc=fires a strong Ki Blast on %enemy
+
+TP=5
+
+Basepower=25
+
+stat=int
+
+
+
+
+
+
+
+[KiAi]
+
+Type=Single
+
+Cost=0
+
+Desc=push up his hand and fires a shockwave towards %enemy
+
+TP=10
+
+BasePower=35
+
+stat=int
+
+
+
+[DestructBeCre]
+
+Type=Single
+
+Cost=0
+
+Desc=produces a sun-like aura around his body then fires an purple energy wave at %enemy
+
+TP=15
+
+Basepower=38
+
+stat=int
+
+
+
+[BeerusPressurePoint]
+
+Type=Single
+
+Cost=0
+
+Desc=hits a pressure point on %enemy $+ , which causes %enemy to become paralyzed.
+TP=15
+
+BasePower=1
+
+stat=str
+
+StatusType=Paralysis
+
+
+
+[CanYouKeepUp]
+
+Type=Single
+
+Cost=0
+
+Desc=quickly moves in front of %enemy and delivers a kick to the gut. Beerus then proceeds to rapidly kick %enemy before finishing with a forward left kick, inflicting a moderate amount of damage.
+TP=20
+
+BasePower=40
+Hits=3
+
+Stat=str
+
+
+
+
+
+[FullPowerEngeryBlastVolley]
+
+Type=Single
+
+cost=0
+
+Desc=fires a random flurry of large, bright ki blasts upon %enemy
+
+TP=15
+
+Hits=$rand(1,8)
+
+BasePower=30
+
+Stat=int
+
+
+
+[GodOfDestructionWrath]
+
+Type=AOE
+
+cost=0
+
+Desc=glows purple before firing a random amount of ki blasts from his aura in all directions.
+
+TP=15
+
+BasePower=40
+Hits=$rand(1,8)
+
+Stat=int
+
+
+
+[SphereOfDestruction]
+
+Type=Single
+
+Cost=0
+
+Desc=creates two medium-size flaming energy spheres in his hands and brings them above his head to create one single energy sphere resembling the Sun, which he then throws at %enemy
+TP=20
+
+Basepower=100
+
+Stat=int
+
+
+[ExplosiveWave]
+
+Type=Single
+
+cost=0
+
+Desc=creates a yellow aura that explodes around his body, causing a wave of energy to hit %enemy
+
+TP=25
+
+BasePower=56
+
+Stat=int
+
+
+
+[FireBreath]
+
+Type=single
+
+cost=0
+
+Desc=fires an immense, blazing flare from his mouth, which severely burns %enemy
+
+TP=30
+
+Element=fire
+
+magic=yes
+
+BasePower=59
+
+Stat=int
+
+
+
+[PalmEnergy]
+
+Type=Single
+
+cost=0
+
+Desc=places his palm on %enemy $+ , infusing yellow ki into %enemy through his palm by having it cover their body as an aura, then he releases and the ki explodes, injuring his foe.
+
+TP=30
+
+BasePower=62
+
+stat=int
+
+
+
+[AtomEnergySphere]
+
+Type=Single
+
+cost=0
+
+Desc=creates a ki ball that is similar to an atom, which Beerus fires it at %enemy by physically hitting it. The attack is said to be uncatchable and uncrushable.
+
+TP=30
+
+BasePower=65
+
+stat=int
+
+CanDodge=false

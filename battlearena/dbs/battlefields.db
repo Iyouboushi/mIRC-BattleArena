@@ -1022,6 +1022,17 @@ NumberOfEvents=0
 limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver.no-playerclones
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
+[BrokenCompound]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-trusts.no-mech.no-summons.no-fleeing
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Mount Ebott - The Barrier]
+Weather=gloomy
+NumberOfEvents=0
+limitations=no-trusts.no-mech.no-summons.no-fleeing
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 ==============================================================
 DUNGEON battlefields

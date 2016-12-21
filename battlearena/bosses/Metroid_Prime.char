@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=200
+Hp=1000
 Tp=1000
 Str=2572
 Def=2572
@@ -10,7 +10,7 @@ Name=Metroid Prime
 
 
 [Battle]
-Hp=200
+Hp=1000
 Tp=1000
 Str=2572
 Def=2572
@@ -184,5 +184,7 @@ HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=10
-ResistMelee=10
+ResistTechs=15
+ResistMelee=15
+GrandDream=60
+Thunderclap=70

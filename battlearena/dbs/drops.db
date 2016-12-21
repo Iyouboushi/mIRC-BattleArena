@@ -174,6 +174,18 @@ ZaDha=Pizza.X-Potion.Ether.Tonic
 Zark=Slurm
 Zemus=Blueprints:Oatixur.Blueprints:Uffrat.Blueprints:Aedold.Blueprints:VanirRifle
 Zeromus=Blueprints:Oatixur.Blueprints:Uffrat.Blueprints:Aedold.Blueprints:VanirRifle
+Asriel_Dreemurr=$iif(%portal.bonus = true, Death'sBreath, HighKindredCrest)
+Beerus=KindredCrest
+Broken_One=KindredCrest
+Flowey=KindredCrest
+Mettaton_EX=KindredCrest
+Obsolete_Mule=KindredCrest
+SansSKeleton=HighKindredCrest
+The_Crazzy=KindredCrest
+The_Monster=KindredCrest
+The_Witch=KindredCrest
+Undyne=HighKindredCrest
+UndyneTheUndying=HighKindredCrest
 
 
 ; Monsters

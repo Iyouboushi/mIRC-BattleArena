@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=100
+Hp=500
 Tp=1000
 Str=2572
 Def=2572
@@ -10,7 +10,7 @@ IgnitionGauge=2
 
 
 [Battle]
-Hp=100
+Hp=500
 Tp=1000
 Str=2572
 Def=2572

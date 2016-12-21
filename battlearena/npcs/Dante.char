@@ -57,6 +57,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=true
 TauntFile=taunts_dante.txt
+trust=true
 
 
 [Status]

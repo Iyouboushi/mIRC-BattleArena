@@ -54,6 +54,7 @@ Created=Sun Feb 1 2015
 Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
+trust=true
 
 
 [Status]

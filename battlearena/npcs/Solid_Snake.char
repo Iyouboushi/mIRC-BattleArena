@@ -55,6 +55,7 @@ Flag=NPC
 CanTaunt=false
 RageMode=Ignore
 CanUseItems=True
+trust=true
 
 
 [Monster]

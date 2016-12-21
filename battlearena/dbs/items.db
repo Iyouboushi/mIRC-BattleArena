@@ -3796,6 +3796,7 @@ Exclusive=yes
 PortalLevel=300
 DarknessTurns=25
 
+
 ; High Kindred Crest Portal Items
 
 [GoddessOrb]
@@ -3859,6 +3860,32 @@ AlliedNotes=3000
 PortalLevel=1000
 DarknessTurns=35
 
+[ObsoleteOrb]
+Type=portal
+Cost=20
+Currency=HighKindredCrest
+Battlefield=BrokenCompound
+Weather=Gloomy
+Monster=BrokenOne.ObsoleteMule
+Desc=takes out a strange orb, holding it in hand for a moment. It gains a dark glow as everyone can hear crazed laughing and "DELETE! DELETE!" coming from the orb before everyone is warped to a large wrestling ring that's in desolate compound, which is located in a forest.
+AlliedNotes=3000
+Exclusive=yes
+PortalLevel=2000
+DarknessTurns=20
+
+[DecayedOrb]
+Type=portal
+Cost=20
+Currency=HighKindredCrest
+Battlefield=BrokenCompound
+Weather=Gloomy
+Monster=The_Witch.The_Crazzy.The_Monster
+Desc=takes out a strange orb, holding it in hand for a moment. It gains a black glow as everyone can hear crazed laughing before everyone is warped to a large wrestling ring that's in desolate compound, which is located in a forest.
+AlliedNotes=3000
+Exclusive=yes
+PortalLevel=2000
+DarknessTurns=20
+
 ;;;;; SHADOW VERSIONS of the portals
 ;;;;; These are basically remakes of the
 ;;;;; original portal battles at their original levels
@@ -3896,6 +3923,19 @@ Weather=Dark
 Monster=ShadowAshi
 Desc=takes out a blackened ancient crystal from Atlantis. It begins to pulse then all light in the room is sucked away as everyone feels themselves being teleported to an ancient shadow version of Atlantis.. 
 AlliedNotes=5000
+Exclusive=yes
+ShadowPortal=true
+
+[BarrierOrb]
+Type=portal
+Cost=20
+Currency=HighKindredCrest
+Battlefield=Mount Ebott - The Barrier
+Weather=Dark
+Monster=Asriel_Dreemurr
+Desc=takes out a small orb that is white in color and throws it to the ground. Everyone is transported to a strange barrier that is under a mountain. After a moment, the room is filled a rainbow of colors.
+AlliedNotes=5000
+Exclusive=yes
 ShadowPortal=true
 
 =========================

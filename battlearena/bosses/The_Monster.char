@@ -1,23 +1,23 @@
 [BaseStats]
-Hp=500
+Hp=4000
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
-Name=Space Pirate Aerotrooper
-IgnitionGauge=2
+Str=10286
+Def=10286
+Int=10286
+Spd=10286
+IgnitionGauge=0
+Name=The Monster
 
 
 [Battle]
-Hp=500
+Hp=4000
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=10286
+Def=10286
+Int=10286
+Spd=10286
+IgnitionGauge=0
 Status=alive
-IgnitionGauge=2
 
 
 [Rage]
@@ -26,36 +26,43 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a bipedal creature with an exoskeleton similar to that of a crustacean, but has some reptilian and avian traits. Part of a notorious and fearsome force, it carries a blaster on the right hand, and a scythe blade on the left. It also carries a missile system, and uses a jetpack to fly around.
-Rage=screams in rage 
+Char=is a giant man who has face paint in a variety of colors on his face.
+Rage=simply laughs in a crazed manner!
+BossQuote=She has made me beautiful... and she will do the same to you all!
+
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 
+
 [Info]
 Flag=monster
-Gender=its
-Gender2=its
+Gender=his
+Gender2=him
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
 ai_type=techonly
-streak=500
+IgnoreQuicksilver=true
+IgnorePresident=true
+Streak=2000
+IgnoreDrain=true
 CanFlee=false
-CanTaunt=false
-JustReleaseDefense=75
-CanStagger=no
-
+JustReleaseDefense=100
+DeathConditions=Tech.Magic
+IgnoreOutpost=true
+IgnoreElementalMessage=true
 
 [monster]
-type=spacepirate
-TechLearn=false
-size=medium
-
+type=human
+TechLearn=true
+size=large
+Elite=$iif($current.battlestreak <= 5000, false, true)
+SuperElite=$iif($current.battlestreak >= 5000, false, true)
 
 [Status]
 Poison=no
@@ -91,17 +98,15 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=SpacePirateWeapon
-SpacePirateWeapon=$calc(1 + $current.battlestreak)
+Equipped=Monster'sFists
+Monster'sFists=$calc(1 + $current.battlestreak)
 
 
 [Skills]
 Zen=5
 WeaponBash=1
 Impetus=20
-Gunslinger=100
-ClearMind=1
-Flying=1
+MartialArts=100
 Resist-Amnesia=100
 Resist-Blind=100
 Resist-Charm=100
@@ -113,6 +118,7 @@ Resist-Intimidate=100
 Resist-Paralysis=100
 Resist-Petrify=100
 Resist-Poison=100
+Resist-Silence=100
 Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
@@ -121,25 +127,28 @@ Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
 
-
 [Techniques]
-QuantumAssaultCannon=$calc(1 + $current.battlestreak)
-PhotonicPowerScythe=$calc(1 + $current.battlestreak)
-Multi-MissileSytem=$calc(1 + $current.battlestreak)
+BlackHoleSlam=$calc(1 + $current.battlestreak)
+ChokeSlam=$calc(1 + $current.battlestreak)
+AsuranFists=$calc(1 + $current.battlestreak)
+ShinjinSpiral=$calc(1 + $current.battlestreak)
+ShoulderTackle=$calc(1 + $current.battlestreak)
+ShockTreatment=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
 
+[Augments]
+Monster'sFists=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 
 [Styles]
-Equipped=Weaponmaster
-Weaponmaster=5
-
-[Augments]
-SpacePirateWeapon=MeleeMonus.TechBonus.MagicBonus
+Equipped=Wrestlemania
+Wrestlemania=10
 
 
 [modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -168,9 +177,6 @@ Stave=100
 EnergyBlaster=100
 Lightsaber=100
 Hammer=100
-HolyHandGrenade=0
-Dynamite=0
-Bomb=0
-XmasGrenade=0
-ResistTechs=10
-ResistMelee=10
+Bat=100
+GrandDream=60
+Thunderclap=60

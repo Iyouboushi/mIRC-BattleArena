@@ -1,0 +1,196 @@
+[BaseStats]
+Hp=5000
+Tp=500
+Str=20
+Def=20
+Int=20
+Spd=20
+Name=Lara Croft
+
+
+[Battle]
+Hp=5000
+Tp=500
+Str=20
+Def=20
+Int=20
+Spd=20
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+[Limit]
+Level=1
+Percent=0
+
+
+
+[Descriptions]
+Hused=1
+Dused=1
+Char=is a British archaeologist and well-known Tomb Raider. She has long, brown hair that is braided into a ponytail, and wears a sleevless green shirt, brown shorts, black gloves, and brown boots.
+Rage=yells in rage!
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1
+RedOrbsSpent=0
+BlackOrbsSpent=0
+
+[Info]
+Gender=her
+Gender2=her
+password=dbzrpg
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=Fri Jun 22 19:56:53 2012
+Flag=NPC
+Streak=500
+CanTaunt=false
+CanFlee=false
+IgnoreOutpost=true
+IgnorePresident=true
+
+[monster]
+type=humans
+TechLearn=false
+size=medium
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noOneThatIKnow
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+boosted=no
+freezing=no
+curse=no
+poison.timer=1
+KiRegenerating=no
+curse.timer=1
+slow.timer=1
+zombie.timer=1
+
+[Weapons]
+Equipped=TacticalPistol
+TacticalPistol=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+CompoundBow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+VanirRifle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Thunderclap=$iif($current.battlestreak >= 5000, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0), 0)
+
+
+[Skills]
+Archery=100
+Gunslinger=100
+Zen=5
+ClearMind=3
+Resist-Charm=100
+Resist-Poison=100
+Resist-Zombie=100
+Resist-Intimidate=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Paralysis=100
+Resist-confuse=100
+Resist-Stun=100
+Resist-Drunk=100
+Resist-Weaponlock=100
+Resist-Curse=100
+Resist-Petrify=100
+Resist-Disarm=100
+
+
+[Techniques]
+RapidShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ChargedshotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+LastStandII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+FlamingArrowII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+EagleEyeShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BlastArrowII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HotShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ChargedShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BlastShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ChargedShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BlastShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Detonator=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+
+[Augments]
+TacticalPistol=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
+CompoundBow=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
+Thunderclap=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
+VanirRifle=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
+
+[Item_Amount]
+Bullet=10000
+Arrow=10000
+DragonfireShell=10000
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+
+[modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+Heal=none
+Earth=100
+Fire=100
+Wind=100
+Water=100
+Ice=100
+Lightning=100
+Light=100
+Dark=100
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100

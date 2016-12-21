@@ -53,7 +53,7 @@ Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
-
+BattleStats=ignoreHP
 
 [Status]
 Poison=no

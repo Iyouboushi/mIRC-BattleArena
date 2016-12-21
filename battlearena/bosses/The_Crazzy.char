@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=125000
+Hp=4000
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
-IgnitionGauge=2
-Name=Metroid Prime Core
+Str=10286
+Def=10286
+Int=10286
+Spd=10286
+IgnitionGauge=0
+Name=The Crazzy
 
 
 [Battle]
-Hp=125000
+Hp=4000
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
-IgnitionGauge=2
+Str=10286
+Def=10286
+Int=10286
+Spd=10286
+IgnitionGauge=0
 Status=alive
 
 
@@ -26,9 +26,9 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is the core essence of Metroid Prime. It is a deep, translucent blue, with six tentacles attached to an elongated body similar to that of a Hunter Metroid. It also has three overdeveloped nuclei, with a mouthless, gaunt,  humanoid face with firey eyes.
-Rage=screams in rage 
-BossQuote=....
+Char=is a man with short hair that wears face paint in a design where it has white above the jaw, and black on the jaw.
+Rage=simply laughs in a crazed manner!
+BossQuote=She gave me a voice... However, she'll take your voices instead!
 
 
 [Stuff]
@@ -37,34 +37,31 @@ BlackOrbs=1
 ShopLevel=1.0
 Drops=
 
-
 [Info]
 Flag=monster
-Gender=its
-Gender2=its
+Gender=his
+Gender2=him
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
 ai_type=techonly
-streak=-1000
-CanFlee=false
-CanTaunt=false
-JustReleaseDefense=100
-BattleStats=ignoreHP
-CanStagger=no
 IgnoreQuicksilver=true
-IgnoreElementalMessage=true
 IgnorePresident=true
+Streak=2000
 IgnoreDrain=true
+CanFlee=false
+JustReleaseDefense=100
+DeathConditions=Tech.Magic
+IgnoreOutpost=true
+IgnoreElementalMessage=true
 
 [monster]
-type=metroid
+type=human
 TechLearn=true
-size=medium
-Elite=$iif(%battle.type = torment, false, true)
-SuperElite=$iif(%battle.type = torment, true, false)
+size=mediumElite=$iif($current.battlestreak <= 5000, false, true)
+SuperElite=$iif($current.battlestreak >= 5000, false, true)
 
 [Status]
 Poison=no
@@ -99,10 +96,9 @@ sleep=no
 stun=no
 MPRegenerating=no
 
-
 [Weapons]
-Equipped=MetroidPrimePower
-MetroidPrimePower=$calc(1 + $current.battlestreak)
+Equipped=CrazzyFists
+CrazzyFists=$calc(1 + $current.battlestreak)
 
 
 [Skills]
@@ -110,7 +106,6 @@ Zen=5
 WeaponBash=1
 Impetus=20
 MartialArts=100
-ClearMind=1
 Resist-Amnesia=100
 Resist-Blind=100
 Resist-Charm=100
@@ -122,6 +117,7 @@ Resist-Intimidate=100
 Resist-Paralysis=100
 Resist-Petrify=100
 Resist-Poison=100
+Resist-Silence=100
 Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
@@ -129,25 +125,29 @@ Resist-Stun=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
-Flying=1
-
 
 [Techniques]
-PurePhazonBeam=$calc(1 + $current.battlestreak)
-PurePhazonWave=$calc(1 + $current.battlestreak)
+BlackAsianMist=$calc(1 + $current.battlestreak)
+YellowAsianMist=$calc(1 + $current.battlestreak)
+Centralizer=$calc(1 + $current.battlestreak)
+KingKill33=$calc(1 + $current.battlestreak)
+KrimsonKombo=$calc(1 + $current.battlestreak)
+CanonballSenton=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
 
+[Augments]
+CrazzyFists=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 
 [Styles]
-Equipped=Weaponmaster
-Weaponmaster=10
+Equipped=Wrestlemania
+Wrestlemania=10
 
-[Augments]
-MetroidPrimePower=MeleeMonus.TechBonus.MagicBonus
 
 [modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types.
+; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -173,15 +173,9 @@ Axe=100
 Dagger=100
 Mace=100
 Stave=100
+EnergyBlaster=100
 Lightsaber=100
 Hammer=100
-EnergyBlaster=100
-HolyHandGrenade=0
-Dynamite=0
-Bomb=0
-XmasGrenade=0
-ResistTechs=20
-ResistMelee=20
+Bat=100
 GrandDream=60
-Thunderclap=70
-PhazonBeam=500
+Thunderclap=60

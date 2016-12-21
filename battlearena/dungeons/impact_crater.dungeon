@@ -1,7 +1,7 @@
 [Info]
 Name=Impact Crater
 Rooms=11
-PlayersNeeded=3
+PlayersNeeded=2
 Level=500
 FinalRoom=10
 StartBattleDesc=leads the party through a temple of Chozo design. They walk to the outside, which has twelve Chozo totems around it. A light emits from the middle once all of the Chozo Artifacts are placed, granting entry to the Impact Crater. However, before they can proceed, a large, flying beast that is similar to a skeletal pterosaur which is covered in metal armor, bombards the arena, destroying the totems and entry point.
@@ -17,6 +17,7 @@ Battlefield=Chozo Artifact Temple
 Desc=The beast returns, landing in the center of the temple and gives off another load screech.
 Battlefield=Chozo Artifact Temple
 Monsters=Meta_Ridley
+npcs=Samus
 bossroom=true
 
 [2]

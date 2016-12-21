@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=800
+Hp=1000
 Tp=300
 Str=$calc(1450 + $current.battlestreak)
 Def=$calc(1450 + $current.battlestreak)
@@ -10,7 +10,7 @@ IgnitionGauge=2
 
 
 [Battle]
-Hp=800
+Hp=1000
 Tp=300
 Str=$calc(1450 + $current.battlestreak)
 Def=$calc(1450 + $current.battlestreak)
@@ -49,7 +49,7 @@ CanFlee=false
 IgnoreDrain=true
 CanTaunt=false
 IgnorePresident=true
-Streak=350
+Streak=1000
 JustReleaseDefense=100
 CanStagger=no
 IgnoreElementalMessage=true
@@ -126,8 +126,13 @@ ChainsawSlash=$calc(1 + $current.battlestreak)
 [Item_Amount]
 
 [Styles]
-equipped=HitenMitsurugi-Ryu
-HitenMitsurugi-Ryu=10
+equipped=Weaponmaster
+Weaponmaster=10
+
+[NaturalArmor]
+Name=DemonicDefense
+Max=$iif(%battle.type = torment, 150000, 6000)
+Current=6000
 
 [Augments]
 EvilChainsaw=MeleeBonus
