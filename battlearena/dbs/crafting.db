@@ -2496,6 +2496,18 @@ ArcaneDust=5000
 Clom'sTale-03=10
 AnkusaTrousers=1
 
+[ReverenceSabtons]
+Gem=Ruby
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-04.ValorSabatons
+SuccessRate=100
+Amount=1
+LifeShard=5000
+ReusablePart=5000
+ForgottenSoul=5000
+ArcaneDust=5000
+Clom'sTale-04=10
+ValorSabatons=1
+
 [WakidoSune-Ate]
 Gem=Ruby
 Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-04.KasugaSune-Ate
@@ -2543,6 +2555,18 @@ ForgottenSoul=5000
 ArcaneDust=5000
 Clom'sTale-04=10
 AnkusaTrousers=1
+
+[ReverenceGauntlets]
+Gem=Ruby
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-05.ValorGauntlets
+SuccessRate=100
+Amount=1
+LifeShard=5000
+ReusablePart=5000
+ForgottenSoul=5000
+ArcaneDust=5000
+Clom'sTale-05=10
+ValorGauntlets=1
 
 [WakidoKote]
 Gem=Ruby
