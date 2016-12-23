@@ -481,6 +481,7 @@ can'tGiveOrbsToThatchar=$chr(3) $+ 4 $+ Error: %real.name cannot give orbs to 
 CannotGiveThatMuchofItem=$chr(3) $+ 4 $+ Error: %real.name does not have $3 of $4 to give!
 CannotGiveToYourself=$chr(3) $+ 4 $+ Error: %real.name cannot give items to $gender2($1) $+ self.
 CannotCraftThisItem=$chr(3) $+ 4 $+ Error: This item cannot be made via alchemy.
+NotAValidAmount=$chr(3) $+ 4 $+ Error: You haven't provided valid amount for alchemy.
 MissingCorrectGem=$chr(3) $+ 4 $+ Error: %real.name is missing the correct gem to craft a $2 $+ !
 MissingIngredients=$chr(3) $+ 4 $+ Error: %real.name is missing the correct ingredients to craft a $2 $+ ! (If the item is an accessory or armor, make sure the ingredient is not equipped)
 PlayersCannotUseSkill=$chr(3) $+ 4 $+ Error: Players are unable to use this skill!

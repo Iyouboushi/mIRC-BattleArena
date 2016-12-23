@@ -2291,7 +2291,10 @@ alias skill.alchemy {
   if (%gem.required = $null) { unset %gem.required | $display.message($readini(translation.dat, errors, CannotCraftThisItem),private) | halt }
 
   var %amount.to.craft $abs($3)
-  if (%amount.to.craft = $null) { var %amount.to.craft 1 }
+  if ($3 !isnum) {
+    if (%amount.to.craft = $null) { var %amount.to.craft 1 }
+    else { $display.message($readini(translation.dat, errors, NotAValidAmount),private) | halt }
+  }
 
   ; Does the user have the gem necessary to craft the item?
   var %player.gem.amount $readini($char($1), item_amount, %gem.required)  
