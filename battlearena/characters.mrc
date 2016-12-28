@@ -450,7 +450,7 @@ on 3:TEXT:!stats*:*: { unset %all_status
     if (%equipped.accessory = $null) { var %equipped.accessory nothing }
     if (%equipped.accessory != $null) { var %equipped.accessory $equipment.color($readini($char($2), equipment, accessory)) $+ %equipped.accessory }
 
-    if ($readini($char($1), equipment, accessory2) != $null) { 
+    if ($readini($char($2), equipment, accessory2) != $null) { 
       var %equipped.accessory2 $equipment.color($readini($char($2), equipment, accessory2)) $+ $readini($char($2), equipment, accessory2)
       var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
     }
