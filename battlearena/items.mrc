@@ -1186,12 +1186,10 @@ alias item.food {
 
     if ($readini($char($2), info, flag) = $null)  { writeini $char($2) basestats %food.type %target.stat }
     if ($readini($char($2), info, flag) != $null)  { writeini $char($2) battle %food.type %target.stat }
-
-    if (%battleis != on) { 
-      set %target.stat $readini($char($2), battle, %food.type)
-      inc %target.stat %food.bonus
-      writeini $char($2) battle %food.type %target.stat 
-    }
+ 
+    set %target.stat $readini($char($2), battle, %food.type)
+    inc %target.stat %food.bonus
+    writeini $char($2) battle %food.type %target.stat 
 
   }
 
