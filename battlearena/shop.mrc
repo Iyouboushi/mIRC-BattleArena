@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 11/24/16
+;;;; Last updated: 01/03/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1191,6 +1191,8 @@ alias shop.stats {
 
     var %shop.battlestats str.int.def.spd
     if ($istok(%shop.battlestats,$3,46) = $true) { 
+      var %current.level $get.level($1)
+
       var %current.stat $readini($char($1), basestats, $3) 
       var %total.stats $calc($readini($char($1), basestats, str) + $readini($char($1), basestats, def) + $readini($char($1), basestats, int) + $readini($char($1), basestats, spd))
       var %stat.ratio $calc(%current.stat / %total.stats)
@@ -1246,6 +1248,12 @@ alias shop.stats {
 
     ; Increase the shop level.
     $inc.shoplevel($1, $4)
+
+    var %new.level $get.level($1)
+    if (%new.level > %current.level) {
+      if ($return.systemsetting(ShowPlayerLevelUp) = true) { $display.message($readini(translation.dat, system, PlayerHasLeveledUp), global) }
+    }
+
   }
 }
 

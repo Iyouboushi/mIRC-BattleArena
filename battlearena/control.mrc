@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 08/15/16
+;;;; Last updated: 01/03/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -307,6 +307,20 @@ on 50:TEXT:!toggle bot bold*:*:{
   else {
     writeini system.dat system AllowBold false
     $display.message($readini(translation.dat, system, AllowBoldOff), global)
+    halt
+  }
+}
+
+; Bot admins can toggle a message to show when players level up via the shop
+on 50:TEXT:!toggle ShowPlayerLevelUpMsg:*:{   
+  if ($readini(system.dat, system,ShowPlayerLevelUp) = false) { 
+    writeini system.dat system ShowPlayerLevelUp true
+    $display.message($readini(translation.dat, system, PlayerLevelUpMsgOn), global)
+    halt
+  }
+  else {
+    writeini system.dat system ShowPlayerLevelUp false
+    $display.message($readini(translation.dat, system, PlayerLevelUpMsgOff), global)
     halt
   }
 }

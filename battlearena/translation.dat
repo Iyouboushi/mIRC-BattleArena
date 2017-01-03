@@ -258,6 +258,7 @@ TormentBattleStarted=$chr(3) $+ 4 $+ $get_chr_name(%torment.creator) $+ 's Tor
 BountyPlaced=$chr(3) $+ 7 $+ * 2The Allied Forces HQ have placed a bounty on the dreaded4 $readini($boss(%bounty.bossname), basestats, name) $+ 2! Killing this boss will result in an orb bonus on that battle.
 BountyClaimed=$chr(3) $+ 7 $+ * 2 $+ $readini($txtfile(battle2.txt), battleinfo, bountyclaimedby) has defeated a bounty target! An orb bonus has been granted for this battle.
 CurrentBounty=$chr(3) $+ 7 $+ * 2The Allied Forces HQ currently have a bounty on the dreaded4 %bounty.name
+PlayerHasLeveledUp=$chr(3) $+ 3 $+ $get_chr_name($1) $+ 's level is now $get.level($1)
 
 ; Gearset
 GearsetSuccessful=$chr(3) $+ 3 $+ You have successfully copied your current equipment into gear set $2 $+ . 
@@ -313,6 +314,9 @@ FirstRoundProtectionOn=$chr(3) $+ 4 $+ First Round Protection has been turned o
 DragonHunt.ListDragons=$chr(3) $+ 2 $+ The following dragons are still hiding in their lairs across the land
 DragonHunt.CreatedDragon=$chr(3) $+ 4 $+ People all over the land have reported seeing the fearsome dragon %dragonhunt.name creating a lair! It is up to the heroes to locate the lair and destroy the terrible beast.
 DragonHunt.BeginHunt=$chr(3) $+ 12 $+ $get_chr_name($2) 4has discovered the lair of the fearsome12 $dragonhunt.dragonelement(%dragonhunt.file.name) 4dragon known as12 %dragonhunt.name $+ 4! A raiding party has been set up to put an end to the beast. To join the party type 12!enter4 now! The raiding party will depart in12 $duration(%time.to.enter) $+ 4. [This is a level12 $dragonhunt.dragonage(%dragonhunt.file.name) 4battle. Anyone more than 5 levels over will be level synced.]
+PlayerLevelUpMsgOn=$chr(3) $+ 4 $+ A message will now show when players level up via the shop
+PlayerLevelUpMsgOff=$chr(3) $+ 4 $+ A message will no longer show when players level up via the shop
+
 
 =======================
 Health Titles
