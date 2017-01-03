@@ -1984,32 +1984,32 @@ alias shop.portal {
 
     if (%portals.bstmen != $null) {  
       $display.private.message.delay.custom(2These portal items are paid for with 4BeastmenSeals2: %portals.bstmen, 1)  
-      if (%portals.bstmen2 != $null) { $display.private.message(2 $+ %portals.bstmen2)  }
+      if (%portals.bstmen2 != $null) { $display.private.message.delay.custom(2 $+ %portals.bstmen2, 1)  }
     }
 
     if (%portals.kindred != $null) {  
       $display.private.message.delay.custom(2These portal items are paid for with 4KindredSeals2: %portals.kindred, 2)  
-      if (%portals.kindred2 != $null) {  $display.private.message(2 $+ %portals.kindred2)  }
+      if (%portals.kindred2 != $null) {  $display.private.message.delay.custom(2 $+ %portals.kindred2, 2)  }
     }
 
     if (%portals.kindredcrest != $null) {  
       $display.private.message.delay.custom(2These portal items are paid for with 4KindredCrests2: %portals.kindredcrest, 3)  
-      if (%portals.kindredcrest2 != $null) {  $display.private.message(2 $+ %portals.kindredcrest2)  }
+      if (%portals.kindredcrest2 != $null) {  $display.private.message.delay.custom(2 $+ %portals.kindredcrest2, 3)  }
     }
 
     if (%portals.highkindredcrest != $null) {  
       $display.private.message.delay.custom(2These portal items are paid for with 4HighKindredCrests2: %portals.highkindredcrest, 3) 
-      if (%portals.highkindredcrest2 != $null) {  $display.private.message(2 $+ %portals.highkindredcrest2)  }
+      if (%portals.highkindredcrest2 != $null) {  $display.private.message.delay.custom(2 $+ %portals.highkindredcrest2, 3)  }
     }
 
     if (%portals.shadow != $null) {  
       $display.private.message.delay.custom(2These shadow portal items are paid for with 4HighKindredCrests2 and are uncapped: %portals.shadow, 3) 
-      if (%portals.highkindredcrest2 != $null) {  $display.private.message(2 $+ %portals.shadow2)  }
+      if (%portals.highkindredcrest2 != $null) {  $display.private.message.delay.custom(2 $+ %portals.shadow2, 3)  }
     }
 
     if (%portals.sacredkindredcrest != $null) {  
       $display.private.message.delay.custom(2These portal items are paid for with 4SacredKindredCrests2: %portals.sacredkindredcrest, 3) 
-      if (%portals.sacredkindredcrest2 != $null) {  $display.private.message(2 $+ %portals.sacredkindredcrest2)  }
+      if (%portals.sacredkindredcrest2 != $null) {  $display.private.message.delay.custom(2 $+ %portals.sacredkindredcrest2, 3)  }
     }
 
     if ((((((%portals.kindred = $null) && (%portals.bstmen = $null) && (%portals.kindredcrest = $null) && (%portals.shadow = $null) && (%portals.sacredkindredcrest = $null) && (%portals.highkindredcrest = $null)))))) { $display.private.message(4There are no portal items available for purchase right now)  }
