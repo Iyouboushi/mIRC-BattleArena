@@ -1589,6 +1589,7 @@ Battle Arena Bot VERSIONS
 - Added a new system flag for showing a message when players level up via buying stats in the shop. It is FALSE by default.
   To toggle it a bot admin needs to use !toggle ShowPlayerLevelUpMsg
 - Added the missing augments and reforged +1 armor
+- Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]
 - Fixed an issue with certain items being shown under the wrong currencies [thanks to Pentium320]

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 12/21/16
+;;;; Last updated: 01/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
@@ -205,7 +205,12 @@ alias uses_item {
       var %last.portal.number.used $readini($char($1), info, PortalsUsedTotal)
       if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }
 
-      if (%last.portal.number.used >= 10) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, MaxPortalItemsAllowed), private) | halt }
+      var %daily.portal.cap 10
+
+      var %enhancements.portalusage $readini($char($1), enhancements, portalusage)
+      if (%enhancements.portalusage != $null) { inc %daily.portal.cap %enhancements.portalusage }
+
+      if (%last.portal.number.used >= %daily.portal.cap) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, MaxPortalItemsAllowed), private) | halt }
 
       inc %last.portal.number.used 1 
       writeini $char($1) info PortalsUsedTotal %last.portal.number.used
@@ -1186,7 +1191,7 @@ alias item.food {
 
     if ($readini($char($2), info, flag) = $null)  { writeini $char($2) basestats %food.type %target.stat }
     if ($readini($char($2), info, flag) != $null)  { writeini $char($2) battle %food.type %target.stat }
- 
+
     set %target.stat $readini($char($2), battle, %food.type)
     inc %target.stat %food.bonus
     writeini $char($2) battle %food.type %target.stat 
