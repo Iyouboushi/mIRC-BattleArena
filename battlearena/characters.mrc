@@ -946,6 +946,7 @@ ON 50:TEXT:*equips *:*:{
   if (($3 != right) && ($3 != left)) { 
     if ($readini($dbfile(weapons.db), $3, type) = shield) { 
       if ($skillhave.check($1, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
+      if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.message(4Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
       var %equiphand left | var %weapon.to.equip $3
     }
     if ($readini($dbfile(weapons.db), $3, type) != shield) { 
@@ -1002,6 +1003,7 @@ ON 3:TEXT:*equips *:*:{
   if (($3 != right) && ($3 != left)) { 
     if ($readini($dbfile(weapons.db), $3, type) = shield) { 
       if ($skillhave.check($1, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
+      if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.private.message(4Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
       var %equiphand left | var %weapon.to.equip $3
     }
     if ($readini($dbfile(weapons.db), $3, type) != shield) { 
