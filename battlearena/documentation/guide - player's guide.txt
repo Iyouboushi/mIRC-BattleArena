@@ -1228,6 +1228,8 @@ WorldHeavyweight-Belt
 Hero'sMedal
 TeruTeruBozu
 Forbidden-Earrings
+Forbidden-Earrings+1
+Forbidden-Earrings+2
 Forbidden-Ring
 Forbidden-Crown
 Forbidden-Crown+1
