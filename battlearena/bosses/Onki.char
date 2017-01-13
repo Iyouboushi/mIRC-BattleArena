@@ -54,6 +54,7 @@ Created=N/a
 Streak=-1000
 bosslevel=45
 CanTaunt=false
+JustReleaseDefense=100
 
 [Status]
 Poison=no

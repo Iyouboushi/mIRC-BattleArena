@@ -53,6 +53,7 @@ Created=N/a
 Streak=120
 CanTaunt=false
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no
@@ -140,4 +141,7 @@ Dagger=100
 Mace=100
 Stave=100
 EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
 HolyHandGrenade=0

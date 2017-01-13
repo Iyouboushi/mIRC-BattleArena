@@ -55,6 +55,7 @@ bosslevel=23
 CanTaunt=false
 IgnoreQuicksilver=true
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no

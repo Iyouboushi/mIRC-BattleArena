@@ -49,6 +49,7 @@ Created=N/a
 Streak=-1000
 BossLevel=150
 CanTaunt=true
+JustReleaseDefense=100
 
 [monster]
 type=orc

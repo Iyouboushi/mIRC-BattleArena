@@ -93,8 +93,8 @@ Created=N/a
 ; Can the monster taunt?   Assumed to be true if blank.
 ; CANTAUNT=true/false
 ;
-; TAUNTFILE is an optional taunt file if you want your boss to have unique taunts.  If blank it will use the default taunts.txt
-; TAUNTFILE=
+; TauntFile is an optional taunt file if you want your boss to have unique taunts.  If blank it will use the default taunts.txt
+; TauntFile=
 ;
 ; GUARDIAN is a monster that covers the boss. While the monster is alive the boss will take no damage from items/techs/attacks
 ; Guardian=
@@ -118,10 +118,22 @@ Created=N/a
 ; Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect
 ; You can list multiple by putting a period inbetween such as: melee.magic.status 
 ; If the boss is killed by something that isn't the death condition, it'll be revived until killed with the condition.
-; DeathConditions=
+;
+; IgnoreElementalMessage=
+; If set to true this flag allows the elemental damage message to not be shown on the monster's turn. Can be set to true or false. It's false by default if this flag is missing. 
+;
+; CanFlee=
+; Determines if the monster can flee the battle.
+;
+; IgnoreQuicksilver=
+; Determines if the monster can ignore the effects of !quicksilver.
+;
+; CanUseItems= 
+; If the monster can use certain items or not in battle. 
+
 
 [monster]
-; Type is the type of monster it is. 
+; Type is the type of monster it is.
 type=
 
 ; TechLearn is a special flag where if it's hit by a tech, it will become immune to that tech for the rest of the battle.
@@ -130,6 +142,12 @@ TechLearn=false
 
 ; Size is the size of the monster. Small/Medium/Large
 size=
+
+; Elite is for monsters being elite, which gives them better stats and defense.
+Elite=
+
+; Super Elite adds even more to stats when set. You should use only one, or the other, not both as they do stack to give even more stats/defense.
+SuperElite=
 
 [Status]
 Poison=no
@@ -175,10 +193,28 @@ monsterweaponname=1
 [Techniques]
 TechName=1
 
+[Augments]
+
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+[Styles]
+
+[NaturalArmor]
+Name=
+Max=
+Current=
+
+[Ignitions]
+
 
 [Item_Amount]
-
-
 
 
 [modifiers]
@@ -210,3 +246,11 @@ Dagger=100
 Mace=100
 Stave=100
 EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

@@ -65,6 +65,7 @@ Streak=-1000
 bosslevel=250
 CanTaunt=true
 ClonesCanClone=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no

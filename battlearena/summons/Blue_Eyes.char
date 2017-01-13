@@ -114,6 +114,7 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
+Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 [Techniques]
 BurstStream=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)

@@ -53,6 +53,7 @@ Streak=-1000
 Bosslevel=$iif($readini(system.dat, system, ForcePortalSync) = true, 26, 50)
 CanTaunt=false
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Monster]
 Type=worm

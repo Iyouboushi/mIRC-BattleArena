@@ -50,6 +50,7 @@ Streak=-1000
 BossLevel=150
 CanTaunt=false
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [monster]
 type=spider

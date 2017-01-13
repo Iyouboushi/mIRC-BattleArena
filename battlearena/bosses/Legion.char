@@ -56,6 +56,7 @@ Streak=-1000
 bosslevel=96
 CanTaunt=false
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no

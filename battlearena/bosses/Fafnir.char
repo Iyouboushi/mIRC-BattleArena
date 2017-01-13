@@ -103,6 +103,7 @@ DragonFangs=100
 DesperateBlows=1
 Resist-Petrify=60
 Resist-Stun=30
+Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 [Techniques]
 FangRush=120

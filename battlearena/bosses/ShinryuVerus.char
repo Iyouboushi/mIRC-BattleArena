@@ -56,6 +56,7 @@ Streak=-1000
 BossLevel=275
 CanTaunt=false
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no
@@ -112,6 +113,7 @@ Resist-Stun=100
 Zen=5
 ClearMind=3
 MartialArts=100
+Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 
 [Techniques]

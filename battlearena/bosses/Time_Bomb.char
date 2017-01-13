@@ -58,6 +58,7 @@ ai_type=$iif(%current.turn <= 5 || %current.turn = $null, defender, techonly)
 Streak=-1000
 Bosslevel=20
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Monster]
 Type=bomb

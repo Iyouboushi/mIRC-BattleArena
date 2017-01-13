@@ -55,6 +55,7 @@ bosslevel=50
 CanTaunt=false
 Guardian=LeviathanLeftHeart.LeviathanRightHeart
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no

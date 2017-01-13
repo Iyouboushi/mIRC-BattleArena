@@ -55,6 +55,7 @@ CanTaunt=false
 IgnoreQuicksilver=true
 DeathConditions=Magic.Tech.MagicEffect
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no

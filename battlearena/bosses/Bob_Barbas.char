@@ -63,6 +63,7 @@ ChangeBattlefield=1
 ChangeBattlefield.battlefields=Raptor News Network Studio.Raptor News Network Breaking News Broadcast
 ChangeBattlefield.chance=50
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 
 [Status]

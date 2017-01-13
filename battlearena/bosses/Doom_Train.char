@@ -49,11 +49,11 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=30
-StreakMax=250
+Streak=50
 IgnoreQuicksilver=true
 CanTaunt=false
 IgnoreElementalMessage=true
+JustReleaseDefense=80
 
 [Status]
 Poison=no

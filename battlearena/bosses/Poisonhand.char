@@ -54,6 +54,7 @@ Created=N/a
 Streak=26
 StreakMax=100
 CanTaunt=true
+JustReleaseDefense=100
 
 [monster]
 type=orc

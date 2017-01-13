@@ -94,6 +94,7 @@ Zen=5
 ClearMind=3
 MartialArts=100
 Wizardry=100
+Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 [Techniques]
 TornadoII=75

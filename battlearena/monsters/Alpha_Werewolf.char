@@ -105,7 +105,7 @@ resist-stun=100
 resist-blind=100
 resist-charm=100
 resist-poison=100
-TrueStrike.on=on
+TrueStrike.on=$iif(%battle.type = torment, off, on)
 
 MonsterSummon=1
 MonsterSummon.Monster=$iif($rand(1,2) = 1, Gray_Werewolf, $iif($rand(1,2) = 1, White_Werewolf, Small_Werewolf))

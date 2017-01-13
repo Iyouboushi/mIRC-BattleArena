@@ -46,6 +46,7 @@ BossLevel=150
 Streak=-1000
 CanTaunt=false
 IgnoreQuickSilver=true
+JustReleaseDefense=100
 
 [monster]
 type=yagudo

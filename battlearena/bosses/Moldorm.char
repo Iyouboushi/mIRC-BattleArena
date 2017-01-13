@@ -59,6 +59,7 @@ Guardian=MoldormTail
 ai_type=techonly
 IgnoreQuicksilver=true
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no

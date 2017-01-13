@@ -57,6 +57,7 @@ IgnoreDmgCap=true
 MetalDefense=$iif($readini($char(MoldormTail), battle, hp) < 10, true, false)
 IgnoreQuicksilver=true
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 
 [Status]

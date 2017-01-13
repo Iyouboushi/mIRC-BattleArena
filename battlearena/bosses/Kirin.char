@@ -57,6 +57,7 @@ bosslevel=125
 IgnoreDrain=true
 CanTaunt=false
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no

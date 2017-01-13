@@ -103,7 +103,7 @@ resist-stun=90
 resist-blind=50
 resist-charm=100
 resist-poison=100
-TrueStrike.on=on
+TrueStrike.on=$iif(%battle.type = torment, off, on)
 
 [Techniques]
 Roar=200

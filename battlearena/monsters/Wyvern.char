@@ -96,7 +96,7 @@ DragonFangs=10
 
 
 [Skills]
-
+Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 [Techniques]
 FangRush=10

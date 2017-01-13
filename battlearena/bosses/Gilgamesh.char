@@ -88,14 +88,15 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Ryunohige
-Ryunohige=100
-Excalibur=200
-Ukonvasara=200
-Masamune=200
-Ragnarok=200
-Apocalypse=200
-DeathPenalty=200
-Mandau=200
+Ryunohige=500
+Excalibur=500
+Ukonvasara=500
+Masamune=500
+Ragnarok=500
+Apocalypse=500
+DeathPenalty=500
+Mandau=500
+Excalipoor=1
 
 [Skills]
 Wizardry=100

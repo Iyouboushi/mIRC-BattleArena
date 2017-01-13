@@ -119,6 +119,11 @@ TechLearn=false
 ; Size is the size of the monster. Small/Medium/Large
 size=
 
+; Elite is for monsters being elite, which gives them better stats and defense.
+Elite=
+
+; Super Elite adds even more to stats when set. You should use only one, or the other, not both as they do stack to give even more stats/defense.
+SuperElite=
 
 [Status]
 Poison=no
@@ -164,9 +169,28 @@ monsterweaponname=1
 [Techniques]
 TechName=1
 
+[Augments]
+
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+[Styles]
+
+[NaturalArmor]
+Name=
+Max=
+Current=
+
+[Ignitions]
+
 
 [Item_Amount]
-
 
 
 [modifiers]
@@ -198,3 +222,11 @@ Dagger=100
 Mace=100
 Stave=100
 EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

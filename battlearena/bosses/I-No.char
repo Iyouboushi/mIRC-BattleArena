@@ -53,6 +53,7 @@ BossLevel=200
 IgnoreDrain=true
 ai_type=berserker
 IgnorePresident=true
+JustReleaseDefense=100
 
 [monster]
 type=

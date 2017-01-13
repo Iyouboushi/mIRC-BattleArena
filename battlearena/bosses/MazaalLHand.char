@@ -56,6 +56,7 @@ IgnoreQuicksilver=true
 DeathConditions=Melee.Renkei.Status
 ai_type=techonly
 IgnoreElementalMessage=true
+JustReleaseDefense=100
 
 [Status]
 Poison=no
