@@ -3,8 +3,16 @@
 ;;;; Last updated: 01/07/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-on 3:TEXT:!portal usage:#: { $portal.usage.check(channel, $nick) }
-on 3:TEXT:!portal usage:?: { $portal.usage.check(private, $nick) }
+on 3:TEXT:!portal*:#: {
+  if ($2 = usage) { $portal.usage.check(channel, $nick) }
+  if ($2 = dropcheck) { $portal.dropcheck.check($3) }
+}
+
+on 3:TEXT:!portal*:?: {
+  if ($2 = usage) { $portal.usage.check(private, $nick) }
+  if ($2 = dropcheck) { $portal.dropcheck.check($3) }
+}
+
 on 3:TEXT:!dungeon usage:#: { $dungeon.usage.check(channel, $nick) }
 on 3:TEXT:!dungeon usage:?: { $dungeon.usage.check(private, $nick) }
 
@@ -56,6 +64,36 @@ alias portal.usage.check {
     if ($1 = private) { $display.private.message($readini(translation.dat, system, PortalUsageCheckUnlimited)) }
     if ($1 = dcc) { $dcc.private.message($2, $readini(translation.dat, system, PortalUsageCheckUnlimited)) }
   }
+}
+
+alias portal.dropcheck.check {
+  ; Alias searches for portals, that drop certain items
+
+  ; $1 = item
+  
+  var %drops.lines $lines($dbfile(drops.db))
+  var %portals.lines $lines($lstfile(items_portal.lst))
+  var %drops.line.counter 1
+  while (%drops.line.counter < %drops.lines) {
+    var %drops.line = $read($dbfile(drops.db), n, %drops.line.counter)
+    if ($istok($gettok(%drops.line, 2, 61), $1, 46)) {
+      var %drops.monster $gettok(%drops.line, 1, 61)
+      var %portals.line.counter 1
+      while (%portals.line.counter < %portals.lines) {
+        var %portal.line $read($lstfile(items_portal.lst), n, %portals.line.counter)
+        var %portal.monster $readini($dbfile(items.db), %portal.line, Monster)
+        if (%drops.monster isin %portal.monster) {
+          if (!%dropcheck.result) { var %dropcheck.result %portal.line }
+          else { %dropcheck.result = $addtok(%dropcheck.result,%portal.line,46) }
+        }
+        inc %portals.line.counter
+      }
+    }
+    inc %drops.line.counter
+  }
+  var %dropcheck.amount $numtok(%dropcheck.result, 46)
+  if (!%dropcheck.result) { $display.private.message($readini(translation.dat, system, PortalDropCheckNoResults)) }
+  else { $display.private.message($readini(translation.dat, system, PortalDropCheckResults)) }
 }
 
 on 3:TEXT:!count*:#: {  
