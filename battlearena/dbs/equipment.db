@@ -1,4 +1,4 @@
-KasugaKabuto===================================================================
+===================================================================
 This file is just to store the stats and augments of the equipment. 
 The actual list of equipment is split up into .lst files. There's
 armor_head.lst, armor_body.lst, armor_legs.lst, armor_feet.lst
@@ -196,6 +196,34 @@ def=20
 int=0
 spd=0
 Augment=EnhanceCriticalHits
+EquipLocation=head
+cost=50
+SellPrice=1000
+Exclusive=yes
+
+[ChaosBurgeonet+1]
+Name=Chaos Burgeonet +1
+hp=110
+tp=60
+Str=180
+def=30
+int=0
+spd=0
+Augment=EnhanceCriticalHits
+EquipLocation=head
+cost=50
+SellPrice=1000
+Exclusive=yes
+
+[ChaosBurgeonet+2]
+Name=Chaos Burgeonet +2
+hp=120
+tp=70
+Str=190
+def=40
+int=0
+spd=0
+Augment=EnhanceCriticalHits.EnhanceScythe
 EquipLocation=head
 cost=50
 SellPrice=1000
@@ -947,6 +975,34 @@ def=50
 int=0
 spd=0
 Augment=MeleeBonus.Drain
+EquipLocation=body
+cost=50
+SellPrice=1000
+Exclusive=yes
+
+[ChaosCuirass+1]
+Name=Chaos Cuirass +1
+hp=110
+tp=60
+Str=180
+def=60
+int=0
+spd=0
+Augment=MeleeBonus.Drain
+EquipLocation=body
+cost=50
+SellPrice=1000
+Exclusive=yes
+
+[ChaosCuirass+2]
+Name=Chaos Cuirass +2
+hp=120
+tp=70
+Str=190
+def=70
+int=0
+spd=0
+Augment=MeleeBonus.Drain.EnhanceScythe
 EquipLocation=body
 cost=50
 SellPrice=1000
@@ -1777,6 +1833,34 @@ cost=50
 SellPrice=1000
 Exclusive=yes
 
+[ChaosFlanchard+1]
+Name=Chaos Flanchard +1
+hp=110
+tp=60
+Str=180
+def=35
+int=0
+spd=0
+Augment=EnhanceParry
+EquipLocation=legs
+cost=50
+SellPrice=1000
+Exclusive=yes
+
+[ChaosFlanchard+2]
+Name=Chaos Flanchard +2
+hp=120
+tp=70
+Str=190
+def=45
+int=0
+spd=0
+Augment=EnhanceParry.EnhanceScythe
+EquipLocation=legs
+cost=50
+SellPrice=1000
+Exclusive=yes
+
 [Byakko'sHaidate]
 name=Byakko's Haidate
 hp=100
@@ -2509,6 +2593,34 @@ cost=50
 SellPrice=1000
 Exclusive=yes
 
+[ChaosSollerets+1]
+Name=Chaos Sollerets +1
+hp=110
+tp=60
+Str=180
+def=35
+int=30
+spd=30
+Augment=EnhanceAggressor
+EquipLocation=feet
+cost=50
+SellPrice=1000
+Exclusive=yes
+
+[ChaosSollerets+2]
+Name=Chaos Sollerets +2
+hp=120
+tp=70
+Str=190
+def=45
+int=40
+spd=40
+Augment=EnhanceAggressor.EnhanceScythe
+EquipLocation=feet
+cost=50
+SellPrice=1000
+Exclusive=yes
+
 [Suzaku'sSune-Ate]
 Name=Suzaku'sSune-Ate
 hp=100
@@ -3216,6 +3328,34 @@ def=25
 int=0
 spd=0
 Augment=EnhanceWeaponBash
+EquipLocation=hands
+cost=50
+SellPrice=500
+Exclusive=yes
+
+[ChaosGauntlets+1]
+Name=Chaos Gauntlets +1
+hp=110
+tp=60
+Str=180
+def=35
+int=0
+spd=0
+Augment=EnhanceWeaponBash
+EquipLocation=hands
+cost=50
+SellPrice=500
+Exclusive=yes
+
+[ChaosGauntlets+2]
+Name=Chaos Gauntlets +2
+hp=120
+tp=70
+Str=190
+def=45
+int=0
+spd=0
+Augment=EnhanceWeaponBash.EnhanceScythe
 EquipLocation=hands
 cost=50
 SellPrice=500
