@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/07/16
+;;;; Last updated: 01/19/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -70,7 +70,7 @@ alias portal.dropcheck.check {
   ; Alias searches for portals, that drop certain items
 
   ; $1 = item
-  
+
   var %drops.lines $lines($dbfile(drops.db))
   var %portals.lines $lines($lstfile(items_portal.lst))
   var %drops.line.counter 1
@@ -1154,7 +1154,7 @@ alias item.shopreset {
   var %player.shop.level $return.shoplevel($2)
 
   ; This will be turned on in the next version
-  ; if ($return.shoplevel($2) = $return.minshoplevel($2)) { $display.private.message($readini(translation.dat, errors, ShopLevelCannotGoLower)) | halt }
+  if ($return.shoplevel($2) = $return.minshoplevel($2)) { $display.private.message($readini(translation.dat, errors, ShopLevelCannotGoLower)) | halt }
 
   if (%shop.reset.amount != $null) {
     dec %player.shop.level %shop.reset.amount

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 01/03/17
+;;;; Last updated: 01/19/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2715,7 +2715,8 @@ alias shop.halloween {
 }
 
 alias inc.shoplevel {   
-  var %shop.level $readini($char($1), stuff, shoplevel) 
+  var %shop.level $return.shoplevel($1)
+
   if (($2 = $null) || ($2 <= 0)) { var %amount.to.increase .1 }
   if (($2 != $null) && ($2 > 0)) { var %amount.to.increase $calc(.1 * $2) }
   inc %shop.level %amount.to.increase 
@@ -2762,7 +2763,7 @@ alias inc.blackorbsspent {
 alias shop.calculate.totalcost {
   var %value 1
   var %total.price.calculate 0
-  set %shop.level $readini($char($1), stuff, shoplevel)
+  set %shop.level $return.shoplevel($1)
   var %max.shoplevel $readini(system.dat, system, Maxshoplevel)
 
   while (%value <= $2) {
@@ -2786,9 +2787,8 @@ alias shop.calculate.totalcost {
   return %total.price.calculate
 }
 
-
 alias shop.get.shop.level {
-  set %shop.level $readini($char($1), stuff, shoplevel)
+  set %shop.level $return.shoplevel($1)
 
   set %current.accessory $readini($char($1), equipment, accessory)
   set %current.accessory.type $readini($dbfile(items.db), %current.accessory, accessorytype)
@@ -2804,8 +2804,6 @@ alias shop.get.shop.level {
 
   unset %current.accessory | unset %current.accessory.type
 }
-
-
 
 alias shop.voucher.list {
   ; cycle through the files and get the item name (token position 1) and the cost (token position 2)

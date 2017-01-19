@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 12/13/16
+;;;; Last updated: 01/19/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -103,15 +103,16 @@ return.shoplevel {
   var %char.shoplevel $readini($char($1), stuff, shoplevel) 
   var %min.shoplevel $return.minshoplevel($1)
 
-  ; This will be turned on in the next version
-  ; if (%char.shoplevel < %min.shoplevel) { writeini $char($1) stuff shoplevel %min.shoplevel | var %char.shoplevel %min.shoplevel }
+  if (%char.shoplevel < %min.shoplevel) { writeini $char($1) stuff shoplevel %min.shoplevel | var %char.shoplevel %min.shoplevel }
 
   return %char.shoplevel
 }
 
 return.minshoplevel {
-  var %min.shoplevel $round($log($get.level($1)),1)
-  if (%min.shoplevel > 10) { var %min.shoplevel 10 }
+  var %min.shoplevel $round($calc($log($get.level.basestats($1)) - 2.6),1)
+
+  if ($get.level($1) <= 100) { var %min.shoplevel 1.0 }
+  if (%min.shoplevel > 5) { var %min.shoplevel 5.0 }
   return %min.shoplevel
 }
 
