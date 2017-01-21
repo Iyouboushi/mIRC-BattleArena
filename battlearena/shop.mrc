@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 01/19/17
+;;;; Last updated: 01/21/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2714,8 +2714,10 @@ alias shop.halloween {
 
 }
 
-alias inc.shoplevel {   
-  var %shop.level $return.shoplevel($1)
+alias inc.shoplevel {
+  ; At this point, the minimum shop level has already been checked.
+  ; Checking it again might cause just-purchased upgrades to increase the shop level too much.
+  var %shop.level $return.shoplevel($1, $true)
 
   if (($2 = $null) || ($2 <= 0)) { var %amount.to.increase .1 }
   if (($2 != $null) && ($2 > 0)) { var %amount.to.increase $calc(.1 * $2) }
@@ -2945,3 +2947,4 @@ alias shop.voucher.buy {
   ; Show a message that we did the exchange
   $display.private.message(3You have exchanged %voucher.item.price $2 $iif(%voucher.item.price > 1, vouchers, voucher) for 1 $3)
 }
+
