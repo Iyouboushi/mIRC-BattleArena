@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 12/13/16
+;;;; Last updated: 01/22/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -900,7 +900,7 @@ alias ai_chooseskill {
     var %monster.master $readini($char($1), info, master) 
     set %ai.target %monster.master
 
-    if (((%monster.master = $null) || ($readini($char(%monster.master), battle, status) = dead) || ($readini($char(%monsters.master), battle, status) = runaway))) {
+    if (((($isfile(%monster.master) = $false) || (%monster.master = $null) || ($readini($char(%monster.master), battle, status) = dead) || ($readini($char(%monsters.master), battle, status) = runaway)))) {
       $ai_getmontarget($1)
       set %total.targets $numtok(%ai.targetlist, 46)
       set %random.target $rand(1,%total.targets)
