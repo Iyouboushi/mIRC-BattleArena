@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/14/16
+;;;; Last updated: 01/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1246,10 +1246,19 @@ display_damage {
 
   }
 
-  if (((((((%double.attack = $null) && (%triple.attack = $null) && (%fourhit.attack = $null) && (%fivehit.attack = $null) && (%sixhit.attack = $null) && (%sevenhit.attack = $null) && (%eighthit.attack = $null))))))) { 
+  ; Set the damage message
+  if (%number.of.hits > 1) { var %damage.message The attack hits4 %number.of.hits times and does %damage.display.color $+  $+ $bytes(%attack.damage,b) total damage. %style.rating }
+  else { var %damage.message The attack does %damage.display.color $+  $+ $bytes(%attack.damage,b) damage. %style.rating }
+
+  ; Display the damage or guard message
+  if (%number.of.hits > 1) { 
+    if (%guard.message != $null) { $display.message(%guard.message,battle)  }
+    if (%guard.message = $null) { $display.message(%damage.message,battle) }
+  }
+  else { 
 
     if ($3 != aoeheal) {
-      if (%guard.message = $null) {  $display.message(The attack did $+ %damage.display.color $+  $bytes(%attack.damage,b) damage to %enemy %style.rating, battle) 
+      if (%guard.message = $null) {  $display.message(%damage.message, battle) 
       }
       if (%guard.message != $null) { $display.message(%guard.message,battle) 
       }
@@ -1258,7 +1267,7 @@ display_damage {
       }
     }
     if ($3 = aoeheal) { 
-      if (%guard.message = $null) {  $display.message(The attack did $+ %damage.display.color $+  $bytes(%attack.damage,b) damage to %enemy %style.rating, battle)    }
+      if (%guard.message = $null) {  $display.message(%damage.message, battle)    }
       if (%guard.message != $null) { $display.message(%guard.message,battle)  }
       if (%element.desc != $null) {  $display.message(%element.desc,battle) 
         unset %element.desc 
@@ -1266,61 +1275,8 @@ display_damage {
     }
   }
 
-  if (%double.attack = true) { 
-    if (%guard.message = $null) {  var %damage.message The first attack did $+ %damage.display.color $+  $bytes(%attack.damage1,b) damage.  The second attack did $+ %damage.display.color $+  $bytes(%attack.damage2,b) damage.  Total physical damage: $+ %damage.display.color $+  $bytes(%attack.damage,b)  $+ %style.rating 
-      $display.message(%damage.message,battle)
-    }
-    if (%guard.message != $null) { $display.message(%guard.message,battle)  }
-    unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
-  }
-  if (%triple.attack = true) {  
-    if (%guard.message = $null) { var %damage.message The first attack did $+ %damage.display.color $+   $bytes(%attack.damage1,b) damage.  The second attack did $+ %damage.display.color $+  $bytes(%attack.damage2,b) damage.  The third attack did $+ %damage.display.color $+  $bytes(%attack.damage3,b) damage.  Total physical damage: $+ %damage.display.color $+  $bytes(%attack.damage,b)  $+ %style.rating
-      $display.message(%damage.message,battle) 
-    }
-    if (%guard.message != $null) { $display.message(%guard.message,battle)  }
-    unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
-  }
 
-  if (%fourhit.attack = true) { 
-    if (%guard.message = $null) { var %damage.message The first attack did $+ %damage.display.color $+   $bytes(%attack.damage1,b) damage.  The second attack did $+ %damage.display.color $+  $bytes(%attack.damage2,b) damage.  The third attack did $+ %damage.display.color $+  $bytes(%attack.damage3,b) damage. The fourth attack did $+ %damage.display.color $+  $bytes(%attack.damage4,b) damage. Total physical damage: $+ %damage.display.color $+  $bytes(%attack.damage,b)  $+ %style.rating
-      $display.message(%damage.message,battle) 
-    }
-    if (%guard.message != $null) {  $display.message(%guard.message,battle)   }
-    unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
-  }
-
-  if (%fivehit.attack = true) { 
-    if (%guard.message = $null) { var %damage.message The first attack did $+ %damage.display.color $+   $bytes(%attack.damage1,b) damage.  The second attack did $+ %damage.display.color $+  $bytes(%attack.damage2,b) damage.  The third attack did $+ %damage.display.color $+  $bytes(%attack.damage3,b) damage. The fourth attack did $+ %damage.display.color $+  $bytes(%attack.damage4,b) damage. The fifth attack did $+ %damage.display.color $+  $bytes(%attack.damage5,b) damage. Total physical damage: $+ %damage.display.color $+  $bytes(%attack.damage,b)  $+ %style.rating 
-      $display.message(%damage.message,battle) 
-    }
-    if (%guard.message != $null) { $display.message(%guard.message,battle)  }
-    unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
-  }
-
-  if (%sixhit.attack = true) { 
-    if (%guard.message = $null) { var %damage.message The first attack did $+ %damage.display.color $+   $bytes(%attack.damage1,b) damage.  The second attack did $+ %damage.display.color $+  $bytes(%attack.damage2,b) damage.  The third attack did $+ %damage.display.color $+  $bytes(%attack.damage3,b) damage. The fourth attack did $+ %damage.display.color $+  $bytes(%attack.damage4,b) damage. The fifth attack did $+ %damage.display.color $+  $bytes(%attack.damage5,b) damage. The sixth attack did $+ %damage.display.color $+  $bytes(%attack.damage6,b) damage.  Total physical damage: $+ %damage.display.color $+  $bytes(%attack.damage,b)  $+ %style.rating
-      $display.message(%damage.message,battle) 
-    }
-    if (%guard.message != $null) { $display.message(%guard.message,battle)   }
-    unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
-  }
-
-  if (%sevenhit.attack = true) { 
-    if (%guard.message = $null) { var %damage.message The first attack did $+ %damage.display.color $+   $bytes(%attack.damage1,b) damage.  The second attack did $+ %damage.display.color $+  $bytes(%attack.damage2,b) damage.  The third attack did $+ %damage.display.color $+  $bytes(%attack.damage3,b) damage. The fourth attack did $+ %damage.display.color $+  $bytes(%attack.damage4,b) damage. The fifth attack did $+ %damage.display.color $+  $bytes(%attack.damage5,b) damage. The sixth attack did $+ %damage.display.color $+  $bytes(%attack.damage6,b) damage. The seventh attack did $+ %damage.display.color $+  $bytes(%attack.damage7,b) damage.  Total physical damage: $+ %damage.display.color $+  $bytes(%attack.damage,b)  $+ %style.rating 
-      $display.message(%damage.message,battle) 
-    }
-    if (%guard.message != $null) { $display.message(%guard.message,battle) 
-    }
-    unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
-  }
-
-  if (%eighthit.attack = true) { 
-    if (%guard.message = $null) { var %damage.message The first attack did $+ %damage.display.color $+  $bytes(%attack.damage1,b) damage.  The second attack did $+ %damage.display.color $+  $bytes(%attack.damage2,b) damage.  The third attack did $+ %damage.display.color $+  $bytes(%attack.damage3,b) damage. The fourth attack did $+ %damage.display.color $+  $bytes(%attack.damage4,b) damage. The fifth attack did $+ %damage.display.color $+  $bytes(%attack.damage5,b) damage. The sixth attack did $+ %damage.display.color $+  $bytes(%attack.damage6,b) damage. The seventh attack did $+ %damage.display.color $+  $bytes(%attack.damage7,b) damage.  The eight attack did $+ %damage.display.color $+  $bytes(%attack.damage8,b) damage. Total physical damage: $+ %damage.display.color $+  $bytes(%attack.damage,b)  $+ %style.rating
-      $display.message(%damage.message,battle) 
-    }
-    if (%guard.message != $null) { $display.message(%guard.message,battle)  }
-    unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
-  }
+  unset %number.of.hits | unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack 
 
   if (%element.desc != $null) {  $display.message(%element.desc, battle) }
 
@@ -4043,6 +3999,7 @@ double.attack.check {
 
   set %double.attack.chance $3
   if (%double.attack.chance >= 90) { set %double.attack true
+    set %number.of.hits 2
 
     set %attack.damage1 %attack.damage
     set %attack.damage2 $abs($round($calc(%original.attackdmg  / 2.1),0))
@@ -4058,7 +4015,7 @@ double.attack.check {
       $set_chr_name($1) 
 
       if (%multihit.message.on != on) {
-        $display.message($readini(translation.dat, battle, PerformsADoubleAttack)) | set %multihit.message.on on
+        set %multihit.message.on on
       } 
     }
     unset %double.attack.chance | unset %original.attackdmg 
@@ -4086,10 +4043,6 @@ triple.attack.check {
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
 
-  if (%multihit.message.on != on) {
-    $display.message($readini(translation.dat, battle, PerformsATripleAttack),battle) 
-  }
-
   unset %original.attackdmg
 }
 fourhit.attack.check {
@@ -4116,8 +4069,6 @@ fourhit.attack.check {
   set %enemy $set_chr_name($2)  %real.name
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
-
-  if (%multihit.message.on != on) { $display.message($readini(translation.dat, battle, PerformsA4HitAttack),battle)   }
 
   unset %original.attackdmg
 }
@@ -4148,8 +4099,6 @@ fivehit.attack.check {
   set %enemy $set_chr_name($2)  %real.name
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
-
-  if (%multihit.message.on != on) { $display.message($readini(translation.dat, battle, PerformsA5HitAttack),battle) }
 
   unset %original.attackdmg
 }
@@ -4187,8 +4136,6 @@ sixhit.attack.check {
   set %enemy $set_chr_name($2)  %real.name
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
-
-  if (%multihit.message.on != on) { $display.message($readini(translation.dat, battle, PerformsA6HitAttack),battle) }
   unset %original.attackdmg
 }
 sevenhit.attack.check {
@@ -4228,14 +4175,13 @@ sevenhit.attack.check {
   set %enemy $set_chr_name($2)  %real.name
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
-
-  if (%multihit.message.on != on) { $display.message($readini(translation.dat, battle, PerformsA7HitAttack),battle) }
   unset %original.attackdmg
 }
 eighthit.attack.check {
   unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
   set %eighthit.attack true
 
+  set %number.of.hits 8
   set %original.attackdmg %attack.damage
 
   set %attack.damage1 %attack.damage
@@ -4274,7 +4220,6 @@ eighthit.attack.check {
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
   $set_chr_name($1) 
 
-  if (%multihit.message.on != on) { $display.message($readini(translation.dat, battle, PerformsA8HitAttack),battle) }
   unset %original.attackdmg
 }
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

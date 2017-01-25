@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 12/03/16
+;;;; Last updated: 01/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -1670,19 +1670,7 @@ formula.meleedmg.player.formula_3.0 {
   set %style.attack.damage %attack.damage
 
   if (%attack.damage = 0) { return }
-
-  if (%weapon.howmany.hits = $null) || (%weapon.howmany.hits <= 0) { set %weapon.howmany.hits 1
-    if ((%counterattack != on) && ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe)) { $double.attack.check($1, $3, $rand(1,100)) }
-  }
-  if (%weapon.howmany.hits = 1) {  
-    if ((%counterattack != on) && ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe)) { $double.attack.check($1, $3, $rand(1,100)) }
-  }
-
-  if (%weapon.howmany.hits = 2) {  $double.attack.check($1, $3, 100) }
-  if (%weapon.howmany.hits = 3) { $triple.attack.check($1, $3, 100) }
-  if (%weapon.howmany.hits = 4) { set %weapon.howmany.hits 4 | $fourhit.attack.check($1, $3, 100) }
-  if (%weapon.howmany.hits = 5) { set %weapon.howmany.hits 5 | $fivehit.attack.check($1, $3, 100) }
-  if (%weapon.howmany.hits >= 6) { set %weapon.howmany.hits 6 | $sixhit.attack.check($1, $3, 100) }
+  $multihitcheck.melee($1, $2, $3, $4)
 }
 
 formula.meleedmg.player.formula_1.0 {
@@ -5082,6 +5070,8 @@ multihitcheck.melee {
   if (%weapon.howmany.hits = 1) {  
     if ((%counterattack != on) && ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe)) { $double.attack.check($1, $3, $rand(1,100)) }
   }
+
+  set %number.of.hits %weapon.howmany.hits
 
   if (%weapon.howmany.hits = 2) {  $double.attack.check($1, $3, 100) }
   if (%weapon.howmany.hits = 3) { $triple.attack.check($1, $3, 100) }
