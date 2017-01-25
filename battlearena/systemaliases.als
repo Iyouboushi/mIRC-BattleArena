@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 01/03/17
+;;;; Last updated: 01/25/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2852,7 +2852,12 @@ mon_list_add {
   if ((%nosouls = true) && (%name = lost_soul)) { return }
 
   if ((%mode.gauntlet != $null) && ($readini($mon(%name), info, streak) > -500)) { write $txtfile(temporary_mlist.txt) %name | return }
-  if (%battle.type = torment) { write $txtfile(temporary_mlist.txt) %name | return }
+
+  if (%battle.type = torment) {
+    var %mon.max.torment.level $readini($mon(%name), info, MaxTormentLevel)
+    if ((%mon.max.torment.level >= %torment.level) || (%mon.max.torment.level = $null)) {  write $txtfile(temporary_mlist.txt) %name | return }
+  }
+
   if (%battle.type = ai) { 
     if ($readini($mon(%name), info, ai_type) = defender) { return }
     write $txtfile(temporary_mlist.txt) %name | return
@@ -2935,7 +2940,11 @@ boss_list_add {
   if (((%name = new_boss) || (%name = $null) || (%name = orb_fountain))) { return } 
   if ((%mode.gauntlet != $null) && ($readini($boss(%name), info, streak) > -500)) { write $txtfile(temporary_mlist.txt) %name | return }
   if (%battle.type = ai) { write $txtfile(temporary_mlist.txt) %name | return }
-  if (%battle.type = torment) { write $txtfile(temporary_mlist.txt) %name | return }
+
+  if (%battle.type = torment) {
+    var %boss.max.torment.level $readini($boss(%name), info, MaxTormentLevel)
+    if ((%boss.max.torment.level >= %torment.level) || (%boss.max.torment.level = $null)) {  write $txtfile(temporary_mlist.txt) %name | return }
+  }
 
   if ((%savethepresident = on) && ($readini($mon(%name), info, IgnorePresident) = true)) { return }
 

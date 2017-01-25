@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/04/16
+;;;; Last updated: 01/25/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -798,7 +798,7 @@ alias battlebegin {
     set %nosouls true
 
     if (%torment.level = anguish) { set %torment.level $calc((850 + $return_playerlevelhighest)/500) }
-    if (%torment.level = misery) { set %torment.level $calc(1000 + $return_playerlevelhighest) }
+    if (%torment.level = misery) { set %torment.level $calc(900 + $return_playerlevelhighest) }
   }
 
   if (%savethepresident = on) { set %current.battlefield Monster Dungeon }
@@ -995,7 +995,7 @@ alias battle.getmonsters {
     }
 
     if (%battle.type = torment) { 
-      $generate_monster(monster) 
+      $generate_monster(monster, torment) 
     }
 
     if (%battle.type = boss) {
@@ -1049,7 +1049,7 @@ alias generate_monster {
   }
 
   if ($1 = monster) {
-    $get_mon_list
+    $get_mon_list($2)
     var %monsters.total $numtok(%monster.list,46)
 
     if ((%monsters.total = 0) || (%monster.list = $null)) { $display.message($readini(translation.dat, Errors, NoMonsAvailable), global) | $endbattle(none) | halt }
@@ -1176,7 +1176,7 @@ alias generate_monster {
         if (%battle.type != defendoutpost) { writeini $txtfile(battle2.txt) BattleInfo CanKidnapNPCs yes }
       }
 
-      $get_boss_list
+      $get_boss_list($2)
       var %monsters.total $numtok(%monster.list,46)
 
       if ((%monsters.total = 0) || (%monster.list = $null)) { $display.message(4Error: There are no bosses in the boss folder.. Have the bot admin check to make sure there are bosses for players to battle!, global) | $endbattle(none) | halt }
@@ -2496,7 +2496,7 @@ alias battle.calculate.redorbs {
   if (%max.orb.reward = $null) { var %max.orb.reward 20000 }
 
   if (%battle.type = dungeon) { var %max.orb.reward $calc(%max.orb.reward * 2) }
-  if (%battle.type = torment) { var %max.orb.reward $calc(%max.orb.reward * 2.5) }
+  if (%battle.type = torment) { var %max.orb.reward $calc(%max.orb.reward * 2.3) }
   if (%battle.type = dragonhunt) { var %max.orb.reward $calc(%max.orb.reward * 1.5) }
 
   if (($readini(battlestats.dat, dragonballs, ShenronWish) = on) && (%mode.gauntlet != on)) { %max.orb.reward = $round($calc(%max.orb.reward * 1.2),0) }

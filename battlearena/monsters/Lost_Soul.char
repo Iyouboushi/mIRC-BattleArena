@@ -48,6 +48,7 @@ LastIP=N/a
 Created=N/a
 ai_type=$iif(%current.turn < %darkness.turns || %current.turn = $null, defender, techonly)
 CanTaunt=false
+MaxTormentLevel=0
 
 [Monster]
 Type=undead

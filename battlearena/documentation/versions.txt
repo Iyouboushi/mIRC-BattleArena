@@ -1590,6 +1590,8 @@ Battle Arena Bot VERSIONS
   To toggle it a bot admin needs to use !toggle ShowPlayerLevelUpMsg
 - Added the missing augments and reforged +1 armor
 - Added the !portal dropcheck command [thanks to Pentium320]
+- Added a MaxTormentLevel flag in [info] for monsters and bosses. Set to 0 it means the monster won't show up in torments,
+  leaving it empty/null will allow the monster to show up on any level of torment.
 - Changed the minimum shop level for players who are 100+.
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]

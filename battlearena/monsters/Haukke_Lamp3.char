@@ -50,6 +50,7 @@ CanTaunt=false
 streak=-1000
 IgnoreQuicksilver=true
 IgnoreElementalMessage=true
+MaxTormentLevel=0
 
 [Monster]
 Type=
