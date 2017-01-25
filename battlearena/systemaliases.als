@@ -2855,7 +2855,13 @@ mon_list_add {
 
   if (%battle.type = torment) {
     var %mon.max.torment.level $readini($mon(%name), info, MaxTormentLevel)
-    if ((%mon.max.torment.level >= %torment.level) || (%mon.max.torment.level = $null)) {  write $txtfile(temporary_mlist.txt) %name | return }
+    var %mon.min.torment.level $readini($mon(%name), info, MinTormentLevel)
+
+    if (%mon.min.torment.level = $null) { var %mon.min.torment.level 1 }
+
+    if (%torment.level >= %mon.min.torment.level) { 
+      if ((%mon.max.torment.level >= %torment.level) || (%mon.max.torment.level = $null)) {  write $txtfile(temporary_mlist.txt) %name | return }
+    }
   }
 
   if (%battle.type = ai) { 
@@ -2943,7 +2949,13 @@ boss_list_add {
 
   if (%battle.type = torment) {
     var %boss.max.torment.level $readini($boss(%name), info, MaxTormentLevel)
-    if ((%boss.max.torment.level >= %torment.level) || (%boss.max.torment.level = $null)) {  write $txtfile(temporary_mlist.txt) %name | return }
+    var %boss.min.torment.level $readini($boss(%name), info, MinTormentLevel)
+
+    if (%boss.min.torment.level = $null) { var %boss.min.torment.level 1 }
+
+    if (%torment.level >= %boss.min.torment.level) { 
+      if ((%boss.max.torment.level >= %torment.level) || (%boss.max.torment.level = $null)) {  write $txtfile(temporary_mlist.txt) %name | return }
+    }
   }
 
   if ((%savethepresident = on) && ($readini($mon(%name), info, IgnorePresident) = true)) { return }
