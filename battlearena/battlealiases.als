@@ -1247,8 +1247,8 @@ display_damage {
   }
 
   ; Set the damage message
-  if (%number.of.hits > 1) { var %damage.message The attack hits4 %number.of.hits times and does %damage.display.color $+  $+ $bytes(%attack.damage,b) total damage. %style.rating }
-  else { var %damage.message The attack does %damage.display.color $+  $+ $bytes(%attack.damage,b) damage. %style.rating }
+  if (%number.of.hits > 1) { var %damage.message The attack hits4 %number.of.hits times and does %damage.display.color $+  $+ $bytes(%attack.damage,b) total damage to %enemy $+ . %style.rating }
+  else { var %damage.message The attack does %damage.display.color $+  $+ $bytes(%attack.damage,b) damage to %enemy $+ . %style.rating }
 
   ; Display the damage or guard message
   if (%number.of.hits > 1) { 
