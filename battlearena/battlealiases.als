@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 01/25/16
+;;;; Last updated: 01/27/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -686,11 +686,7 @@ boost_monster_stats {
 
   $boost_monster_hp($1, $2, %monster.level)
 
-  if ($2 != doppelganger) { 
-    if (%monster.level >= 1000) { %tp = $round($calc(%tp + (%monster.level * 1)),0) }
-    if (%monster.level < 1000) {  %tp = $round($calc(%tp + (%monster.level * 5)),0) }
-    writeini $char($1) BaseStats TP %tp
-  }
+  if ($2 != doppelganger) {  $boost_monster_tp($1, $2, %monster.level)  }
 
   ; Cap TP at 500 if it's over
   if (%tp > 500) { writeini $char($1) BaseStats TP 500 }
@@ -713,6 +709,24 @@ boost_monster_stats {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function is for boosting
+; monster's/npcs's total tp
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+boost_monster_tp {
+  ; $1 = monster
+  ; $2 = same as in the boost mon alias
+  ; $3 = monster level
+
+  ; If the target is set to ignore tp, don't adjusting
+  if (ignoreTP isin $readini($char($1), info, BattleStats)) { return }
+  if ($readini($char($1), info, IgnoreTP) = true) { return }
+
+  if ($3 >= 1000) { %tp = $round($calc(%tp + (%monster.level * 1)),0) }
+  if ($3 < 1000) {  %tp = $round($calc(%tp + (%monster.level * 5)),0) }
+  writeini $char($1) BaseStats TP %tp
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This function is for boosting
 ; monster's/npcs's total hp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 boost_monster_hp {
@@ -722,7 +736,7 @@ boost_monster_hp {
   ; $4 = used for summons (original summon's name)
 
   ; If the target is set to ignore hp, return without adjusting it
-  if ($readini($char($1), info, BattleStats) = ignoreHP) { return }
+  if (ignoreHP isin $readini($char($1), info, BattleStats)) { return }
   if ($readini($char($1), info, IgnoreHP) = true) { return }
 
   set %hp $readini($char($1), BaseStats, HP)
