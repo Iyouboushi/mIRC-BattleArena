@@ -58,6 +58,7 @@ JustReleaseDefense=100
 CanStagger=no
 IgnoreElementalMessage=true
 BattleStats=ignoreHP
+MaxTormentLevel=0
 
 [monster]
 type=Lunarian

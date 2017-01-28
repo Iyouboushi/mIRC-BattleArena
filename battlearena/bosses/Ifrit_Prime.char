@@ -61,6 +61,7 @@ IgnoreQuicksilver=true
 Guardian=InfernalNail.InfernalNail1.InfernalNail2.InfernalNail3.InfernalNail4.InfernalNail5
 JustReleaseDefense=100
 ai_type=$portal.ifritprime.aitype
+MinTormentLevel=10
 
 [Status]
 Poison=no

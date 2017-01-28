@@ -58,6 +58,7 @@ bosslevel=1550
 IgnoreDrain=true
 CanTaunt=false
 JustReleaseDefense=100
+MinTormentLevel=16
 
 [Status]
 Poison=no

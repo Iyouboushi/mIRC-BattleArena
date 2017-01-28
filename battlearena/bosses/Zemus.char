@@ -63,6 +63,7 @@ CanStagger=no
 IgnoreElementalMessage=true
 BattleStats=ignoreHP
 WonderGuard=true
+MinTormentLevel=2
 
 [monster]
 type=Lunarian

@@ -58,6 +58,7 @@ JustReleaseDefense=100
 DeathConditions=Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
+MaxTormentLevel=0
 
 [monster]
 type=fish

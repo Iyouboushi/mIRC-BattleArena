@@ -61,6 +61,7 @@ CanTaunt=false
 ai_type=berserker
 moonphase=Full Moon
 IgnorePresident=true
+MinTormentLevel=3
 
 [Status]
 Poison=no

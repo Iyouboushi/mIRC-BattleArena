@@ -51,12 +51,15 @@ ai_type=techonly
 IgnoreQuicksilver=true
 IgnorePresident=true
 Streak=1000
+StreakMax=49999
 IgnoreDrain=true
 CanFlee=false
 JustReleaseDefense=100
 DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
+MinTormentLevel=2
+MaxTormentLevel=70
 
 
 [monster]

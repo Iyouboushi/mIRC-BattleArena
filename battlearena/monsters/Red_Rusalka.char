@@ -58,6 +58,7 @@ JustReleaseDefense=100
 ai_type=techonly
 SpawnAfterDeath=$iif($current.hp(Dagon) = $null, Dagon)
 IgnoreHP=true
+MinTormentLevel=10
 
 [Status]
 Poison=no

@@ -57,6 +57,7 @@ CanTaunt=false
 IgnorePresident=true
 IgnoreOutpost=true
 IgnoreElementalMessage=true
+MinTormentLevel=2
 
 [Status]
 Poison=no

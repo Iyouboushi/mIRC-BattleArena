@@ -62,6 +62,7 @@ SpawnAfterDeath=GuardDaos
 CanTaunt=true
 IgnorePresident=True
 IgnoreElementalMessage=true
+MinTormentLevel=2
 
 [Status]
 Poison=no

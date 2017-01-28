@@ -53,6 +53,7 @@ LastIP=N/a
 Created=N/a
 Streak=1000
 CanTaunt=true
+MinTormentLevel=2
 
 [Status]
 Poison=no

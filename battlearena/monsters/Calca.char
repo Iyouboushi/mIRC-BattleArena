@@ -57,6 +57,7 @@ IgnoreQuicksilver=true
 JustReleaseDefense=100
 SpawnAfterDeath=$iif(%battle.type != torment, $portal.calcabrina.calcasummon)
 IgnoreHP=true
+MinTormentLevel=10
 
 [Status]
 poison=no

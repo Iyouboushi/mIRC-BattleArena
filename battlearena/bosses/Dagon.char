@@ -59,6 +59,7 @@ CanTaunt=false
 IgnoreQuicksilver=true
 Guardian=Red_Rusalka.Red_Rusalka2.Red_Rusalka3
 JustReleaseDefense=100
+MinTormentLevel=10
 
 [Status]
 Poison=no

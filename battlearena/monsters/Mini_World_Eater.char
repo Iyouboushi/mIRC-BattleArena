@@ -52,6 +52,7 @@ IgnoreQuicksilver=true
 JustReleaseDefense=100
 ai_type=techonly
 IgnoreElementalMessage=true
+MaxTormentLevel=0
 ;=======================================
 ; These are optional flags you can set:
 ;========================================

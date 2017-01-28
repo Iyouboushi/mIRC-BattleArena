@@ -1,10 +1,10 @@
 [BaseStats]
-Hp=$iif(%battle.type = torment, 1500000, 500000)
+Hp=$iif(%battle.type = torment, 20000000, 500000)
 Tp=1000
-Str=$iif(%battle.type = torment, $round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .20)),0), 514285)
-Def=$iif(%battle.type = torment, $round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .20)),0), 514285)
-Int=$iif(%battle.type = torment, $round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .20)),0), 514285)
-Spd=$iif(%battle.type = torment, $round($calc(10000 + ($readini($txtfile(battle2.txt), BattleInfo, HighestLevel) * .20)),0), 514285)
+Str=514285
+Def=514285
+Int=514285
+Spd=514285
 IgnitionGauge=0
 Name=Asriel Dreemurr
 
@@ -46,8 +46,8 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BattleStats=ignoreHP
-BossLevel=$iif(%battle.type = torment, 50000, 7500)
+BattleStats=ignoreHP.ignoreTP
+BossLevel=50000
 ai_type=techonly
 IgnoreQuicksilver=true
 IgnorePresident=true
@@ -58,6 +58,7 @@ JustReleaseDefense=100
 DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
+MinTormentLevel=80
 
 [monster]
 type=HyperGodOfDeath
@@ -142,7 +143,7 @@ Weaponmaster=10
 
 [NaturalArmor]
 Name=Hyper God Defense
-Max=$iif(%battle.type = torment, 500000, 100000)
+Max=$iif(%battle.type = torment, 1500000, 100000)
 Current=100000
 
 

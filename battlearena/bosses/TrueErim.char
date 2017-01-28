@@ -54,6 +54,7 @@ Created=N/a
 Streak=1000
 CanTaunt=true
 IgnoreElementalMessage=true
+MinTormentLevel=2
 
 [Status]
 Poison=no

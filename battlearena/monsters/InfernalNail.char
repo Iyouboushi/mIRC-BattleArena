@@ -57,6 +57,7 @@ IgnoreElementalMessage=true
 IgnoreQuicksilver=true
 JustReleaseDefense=100
 ai_type=techonly
+MaxTormentLevel=0
 
 [Status]
 Poison=no

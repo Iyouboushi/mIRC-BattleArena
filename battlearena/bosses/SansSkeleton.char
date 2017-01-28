@@ -58,6 +58,7 @@ IgnoreOutpost=true
 IgnoreElementalMessage=true
 WonderGuard=true
 CanTaunt=false
+MinTormentLevel=10
 
 [monster]
 type=skeleton

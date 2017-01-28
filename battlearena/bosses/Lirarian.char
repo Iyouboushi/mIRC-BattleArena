@@ -69,6 +69,7 @@ IgnorePresident=true
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 JustReleaseDefense=100
+BaseStats=ignoreTP
 
 
 [Status]

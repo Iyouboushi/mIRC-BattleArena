@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=4000
-Tp=1000
+Tp=4000
 Str=10268
 Def=10268
 Int=10268
@@ -11,7 +11,7 @@ Name=The Witch
 
 [Battle]
 Hp=4000
-Tp=1000
+Tp=4000
 Str=10268
 Def=10268
 Int=10268
@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a woman with short black hair that wears a black and red outfit. She has white face paint with black around the eyes, random black lines, black around the mouth with a design resembling teeth, and pure black eyes.
+Char=is a woman with short black hair, with red tips that wears a black and red outfit. She has white face paint with black around the eyes, random black lines, black around the mouth with a design resembling teeth, and pure black eyes.
 Rage=simply laughs in a crazed manner!
 BossQuote=Oh Allied Heroes... You will decay... Decay... DECAY!
 DeathMessage=This is not the end... We will be back... And we will make you all DECAY!
@@ -58,6 +58,8 @@ JustReleaseDefense=100
 DeathConditions=Renkei
 IgnoreOutpost=true
 IgnoreElementalMessage=true
+MinTormentLevel=4
+BattleStats=ignoreTP
 
 [monster]
 type=human

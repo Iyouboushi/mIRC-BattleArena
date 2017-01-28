@@ -58,6 +58,7 @@ JustReleaseDefense=100
 DeathConditions=Tech
 IgnoreOutpost=true
 IgnoreElementalMessage=true
+MinTormentLevel=20
 
 
 [monster]

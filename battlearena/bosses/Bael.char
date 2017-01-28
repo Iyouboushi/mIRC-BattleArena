@@ -59,6 +59,7 @@ CanTaunt=false
 IgnoreQuicksilver=true
 Guardian=Blue_Rusalka.Blue_Rusalka2.Blue_Rusalka3
 JustReleaseDefense=100
+MinTormentLevel=10
 
 [Status]
 Poison=no

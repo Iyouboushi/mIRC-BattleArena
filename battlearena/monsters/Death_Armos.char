@@ -48,6 +48,7 @@ MetalDefense=true
 CanTaunt=false
 IgnorePresident=true
 IgnoreElementalMessage=true
+MinTormentLevel=2
 
 [monster]
 type=

@@ -537,6 +537,7 @@ UndyneSpearII=GreenSoulModeII.UndyneArrows.RedSoulModeII.UndyneSpearRing.UndyneS
 MettatonLegs=MettatonLegAttack.MettatonBombs.MettatonRain.UnionRegulatedBreak.MettatonDisco.MettatonDancing
 SansPower=SansStrongAttack.SansBoneWave.SansPlatform.SansGasterBlasterNormal.SansHardWay.SansGasterBlasterLarge.SansPsychokinesis.SansCoolNormalAttack.SansSpecialAttack.SansSpecialAttack2.SansSpecialAttack3
 HyperGodPower=AsrielFire.StarBlazing.ShockerBreaker.ChaosSaber.ChaosBuster.GalactaBlazing.ShockerBreakerII.ChaosSlicer.ChaosBlaster
+Excalipoor=KnightsOfTheRotund
 BrokenBrilliance=SideEffect.TwistOfFate.BrokenDelete.BrokenBite.AsuranFists.ShinjinSpiral.ShoulderTackle.TotalNonstopDeletion
 ObsoleteFists=SideEffect.TwistOfFate.AsuranFists.ShinjinSpiral.ShoulderTackle.WhisperInTheWind.PoetryInMotion.SwantonBomb
 CrazzyFists=BlackAsianMist.YellowAsianMist.Centralizer.KingKill33.KrimsonKombo.CanonballSenton
@@ -16335,3 +16336,17 @@ BasePower=65
 stat=int
 
 CanDodge=false
+
+[KnightsOfTheRotund]
+Type=AOE
+Cost=0
+Desc=says, "Witness true power!" as he raises the sword high. After a moment, several out of shape knights just flop onto the ground, and does nothing else. Gilgamesh shouts, "I have been tricked! This weapon is a fake!" The knights vanish and Gilgamesh just hurls the useless blade at the heroes, which bounces around the arena before flying into space like a rocket!
+TP=10
+Element=None
+Hits=1
+BasePower=1
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=true
+Postscript=writeini $char($1) techniques KnightsOfTheRotund 0 | writeini $char($1) weapons Excalipoor 0 | writeini $char($1) weapons equipped Ragnarok

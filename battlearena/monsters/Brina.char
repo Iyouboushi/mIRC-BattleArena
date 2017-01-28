@@ -58,6 +58,7 @@ JustReleaseDefense=100
 ai_type=techonly
 SpawnAfterDeath=$iif(%battle.type != torment, $portal.calcabrina.calcasummon)
 IgnoreHP=true
+MinTormentLevel=10
 
 [Status]
 poison=no

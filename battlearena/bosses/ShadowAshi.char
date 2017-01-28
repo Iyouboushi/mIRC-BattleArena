@@ -59,6 +59,7 @@ CanTaunt=false
 JustReleaseDefense=100
 IgnoreOutpost=true
 IgnoreElementalMessage=true
+MinTormentLevel=15
 
 [Status]
 Poison=no

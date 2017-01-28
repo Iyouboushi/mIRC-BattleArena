@@ -58,6 +58,7 @@ BattleStats=IgnoreHP
 JustReleaseDefense=90
 IgnoreBattlefieldDamage=true
 SpawnAfterDeath=Ogama_Doomed
+MinTormentLevel=2
 
 [Status]
 Poison=no

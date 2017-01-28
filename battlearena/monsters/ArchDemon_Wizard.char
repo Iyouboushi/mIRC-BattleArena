@@ -46,6 +46,7 @@ LastIP=N/a
 Created=N/a
 Streak=1500
 CanTaunt=true
+MinTormentLevel=3
 
 [Monster]
 Type=demon
