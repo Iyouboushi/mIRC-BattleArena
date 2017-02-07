@@ -106,7 +106,22 @@ Created=N/a
 ; You can list multiple by putting a period inbetween such as: melee.magic.status 
 ; If the monster is killed by something that isn't the death condition, it'll be revived until killed with the condition.
 ; DeathConditions=
-
+;
+; If set to true this flag allows the elemental damage message to not be shown on the monster's turn. Can be set to true or false. It's false by default if this flag is missing.
+; IgnoreElementalMessage=
+;
+; If the monster can use certain items or not in battle.
+; CanUseItems=
+;
+; These are special flags that can allow the monster to ignore the bot formula for auto-increasing HP or TP to set custom amounts. There is only HP or TP at the moment. You can ; either use BattleStats=IgnoreHP.IgnoreTP, or **IgnoreHP=True/**IgnoreTP=True. Can be useful on IgnoreTP if the monster uses a lot of player techs. 
+; BattleStats=
+;
+; This can be set to determine which minimum torment level for monsters to show up in. Note, the level you set for this needs to match the TormentOrb number, not the actual level.
+; Example: *MinTormentLevel=4 would mean monsters can show up at torment level 2000, but not lower.
+; MinTormentLevel=
+;
+; The same as above, except the max torment level a monster can show up in.
+; MaxTormentLevel=
 
 [monster]
 ; Type is the type of monster it is. 
