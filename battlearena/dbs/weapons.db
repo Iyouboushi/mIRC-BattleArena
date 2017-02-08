@@ -1699,7 +1699,7 @@ LIGHTSABERS
 =============================================
 [BlueLightsaber]
 Cost=80
-Type=Lightsaber
+Type=LaserSword
 Info=An ancient Jedi weapon that creates a powerful plasma beam, that is blue in color.
 Abilities=ForcePush
 Hits=1
@@ -1712,7 +1712,7 @@ IgnoreDefense=10
 
 [Lightsaber]
 Cost=0
-Type=Lightsaber
+Type=LaserSword
 Info=An ancient Jedi weapon that creates a powerful plasma beam. Outside of Torment battles the lightsaber has a 1000 power and ignores 10% defense. Inside of Torment the lightsaber has a power of 2000 and ignores 20% defense.
 Abilities=ForcePush
 Hits=$rand(1,3)
