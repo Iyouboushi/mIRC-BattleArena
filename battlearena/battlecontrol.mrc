@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 01/25/16
+;;;; Last updated: 02/08/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -102,6 +102,7 @@ alias save.battle.streak {
 on 3:TEXT:!reset battle streak*:*:{  $reset.battle.streak($nick) } 
 alias reset.battle.streak {
   if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
+  if (%battle.type != $null) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
 
   var %last.reloadby $readini(battlestats.dat, battle, LastReload)
 
