@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 01/25/16
+;;;; Last updated: 02/11/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -5081,6 +5081,8 @@ multihitcheck.melee {
 }
 
 multihitcheck.tech {
+  set %number.of.hits %tech.howmany.hits
+
   if (%tech.howmany.hits = 2) {  $double.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 3) { $triple.attack.check($1, $3, 100, tech) }
   if (%tech.howmany.hits = 4) { set %tech.howmany.hits 4 | $fourhit.attack.check($1, $3, 100, tech) }
