@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 01/21/17
+;;;; Last updated: 02/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -102,7 +102,7 @@ return.playerstyle {
 return.shoplevel {
   ; $1 = the short name of the character to check.
   ; $2 = if set to true, the minimum shop level will not be checked.
-  
+
   var %char.shoplevel $readini($char($1), stuff, shoplevel) 
   var %min.shoplevel $return.minshoplevel($1)
 
@@ -1417,7 +1417,7 @@ reforge.weapon {
   $set_chr_name($1)
 
   if (%battleis != on) { $display.message($readini(translation.dat, system, WeaponReforged), global) }
-  if (%battleis = on) { $display.private.message($readini(translation.dat, system, WeaponReforged), global) }
+  if (%battleis = on) { $display.private.message($readini(translation.dat, system, WeaponReforged)) }
 
   var %number.of.augments $readini($char($1), stuff, WeaponsReforged)
   if (%number.of.augments = $null) { var %number.of.augments 0 }
@@ -1656,4 +1656,3 @@ character.averagedmg {
 
   return %average.damage
 }
-
