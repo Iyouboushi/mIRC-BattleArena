@@ -1588,6 +1588,10 @@ Battle Arena Bot VERSIONS
 4.0
 - Added a new system flag for showing a message when players level up via buying stats in the shop. It is FALSE by default.
   To toggle it a bot admin needs to use !toggle ShowPlayerLevelUpMsg
+- Added a new system flag: TechCurrency=orbs/coins.  If set to coins it will use Kill Coins rather than red orbs to 
+  purchase techs. Bot admins can toggle it using !toggle Tech Currency  -- Coins are default
+- Added a new system flag: SkillCurrency=orbs/coins.  If set to coins it will use Kill Coins rather than red orbs 
+  to purchase skills. Bot admins can toggle it using !toggle Skill Currency -- Coins are default
 - Added the missing augments and reforged +1 armor
 - Added the !portal dropcheck command [thanks to Pentium320]
 - Added a MaxTormentLevel flag in [info] for monsters and bosses. Set to 0 it means the monster won't show up in torments,
@@ -1595,9 +1599,12 @@ Battle Arena Bot VERSIONS
 - Added a MinTormentLevel flag in [info] for monsters and bosses. Leaving it empty means the minimum will be 1.
 - Added an IgnoreTP flag. If set to true monsters and npcs won't gain any TP when the bot boosts the level
 - Added a new currency: Kill Coins. These accumulate when players kill monsters and finish battles.
+- Added a new player command: !kill coins  -- This will show the player how many kill coins he/she has
+
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the amount of style points needed to achieve different ranks. It is harder on higher battle levels now.
+- Changed the skill and technique shops to be able to use Kill Coins as their currency to purchase. 
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]

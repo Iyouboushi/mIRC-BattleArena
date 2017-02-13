@@ -508,8 +508,7 @@ check.doubledollars {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Returns a person's
-; kill coins amount
+; Checks a person's Kill Coins
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 check.kill.coins {
   var %kill.coins $readini($char($1), stuff, killcoins) 
@@ -522,6 +521,12 @@ check.kill.coins {
   if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($nick, $readini(translation.dat, system, ViewKillCoins)) }
 
   unset %real.name | unset %hstats 
+}
+
+return.killcoin.count {
+  var %kill.coins $readini($char($1), stuff, killcoins) 
+  if (%kill.coins = $null) { var %kill.coins 0 | writeini $char($1) stuff killcoins 0 }
+  return %kill.coins
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

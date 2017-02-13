@@ -319,7 +319,10 @@ DragonHunt.CreatedDragon=$chr(3) $+ 4 $+ People all over the land have reported 
 DragonHunt.BeginHunt=$chr(3) $+ 12 $+ $get_chr_name($2) 4has discovered the lair of the fearsome12 $dragonhunt.dragonelement(%dragonhunt.file.name) 4dragon known as12 %dragonhunt.name $+ 4! A raiding party has been set up to put an end to the beast. To join the party type 12!enter4 now! The raiding party will depart in12 $duration(%time.to.enter) $+ 4. [This is a level12 $dragonhunt.dragonage(%dragonhunt.file.name) 4battle. Anyone more than 5 levels over will be level synced.]
 PlayerLevelUpMsgOn=$chr(3) $+ 4 $+ A message will now show when players level up via the shop
 PlayerLevelUpMsgOff=$chr(3) $+ 4 $+ A message will no longer show when players level up via the shop
-
+SkillCurrencyOrbs=$chr(3) $+ 4 $+ Skills will now be purchased using Red Orbs
+SkillCurrencyCoins=$chr(3) $+ 4 $+ Skills will now be purchased using Kill Coins
+TechCurrencyOrbs=$chr(3) $+ 4 $+ Techniques will now be purchased using Red Orbs
+TechCurrencyCoins=$chr(3) $+ 4 $+ Techniques will now be purchased using Kill Coins
 
 =======================
 Health Titles

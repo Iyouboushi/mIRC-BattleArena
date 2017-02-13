@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 01/03/17
+;;;; Last updated: 02/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -321,6 +321,34 @@ on 50:TEXT:!toggle ShowPlayerLevelUpMsg:*:{
   else {
     writeini system.dat system ShowPlayerLevelUp false
     $display.message($readini(translation.dat, system, PlayerLevelUpMsgOff), global)
+    halt
+  }
+}
+
+; Bot admins can toggle skill currency
+on 50:TEXT:!toggle Skill Currency:*:{   
+  if ($readini(system.dat, system,SkillCurrency) = coins) { 
+    writeini system.dat system SkillCurrency orbs
+    $display.message($readini(translation.dat, system, SkillCurrencyOrbs), global)
+    halt
+  }
+  else {
+    writeini system.dat system SkillCurrency coins
+    $display.message($readini(translation.dat, system, SkillCurrencyCoins), global)
+    halt
+  }
+}
+
+; Bot admins can toggle tech currency
+on 50:TEXT:!toggle Tech Currency:*:{   
+  if ($readini(system.dat, system,TechCurrency) = coins) { 
+    writeini system.dat system TechCurrency orbs
+    $display.message($readini(translation.dat, system, TechCurrencyOrbs), global)
+    halt
+  }
+  else {
+    writeini system.dat system TechCurrency coins
+    $display.message($readini(translation.dat, system, TechCurrencyCoins), global)
     halt
   }
 }

@@ -53,6 +53,8 @@ system_defaults_check {
     if ($readini(system.dat, system, TurnType) = $null) { writeini system.dat system TurnType turn } 
     if ($readini(system.dat, system, showCustomBattleMessages) = $null) { writeini system.dat system showCustomBattleMessages true  } 
     if ($readini(system.dat, system, currency) = $null) { writeini system.dat system currency Red Orbs }
+    if ($readini(system.dat, system, TechCurrency) = $null) { writeini system.dat system TechCurrency coins }
+    if ($readini(system.dat, system, SkillCurrency) = $null) { writeini system.dat system SkillCurrency coins }
     if ($readini(system.dat, system, basexp) = $null) { writeini system.dat system basexp 100 } 
     if ($readini(system.dat, system, basebossxp) = $null) { writeini system.dat system basebossxp 500 } 
     if ($readini(system.dat, system, baseportalxp) = $null) { writeini system.dat system baseportalxp 600 } 

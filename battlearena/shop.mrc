@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 01/21/17
+;;;; Last updated: 02/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -130,6 +130,8 @@ alias shop.start {
     if (($3 = potioneffect) || ($3 = potioneffects)) { $shop.potioneffects($nick, buy, $4) | halt }
     if (($3 = tradingcard) || ($3 = tradingcards))  { $shop.tradingcards($nick, buy, $4, %amount.to.purchase) | halt }
 
+    if ($3 = alliedforces) { }
+
     if ($3 = orbs) { 
       var %amount.to.purchase $abs($4)
       if (%amount.to.purchase = $null) { var %amount.to.purchase 1 }
@@ -189,6 +191,7 @@ alias shop.start {
         if (($4 = killer) || ($4 = killertraits)) { $shop.skills.killertraits($nick) }
       }
 
+      if ($3 = alliedforces) { }
       if (($3 = weapons) || ($3 = weapon)) { $shop.weapons($nick, list) }
       if (($3 = shields) || ($3 = shield)) { $shop.shields($nick, list) }
       if ($3 = orbs) { $shop.orbs($nick, list) }
@@ -708,6 +711,10 @@ alias shop.items {
 }
 
 alias shop.techs {
+  var %shop.currency.type $return.systemsetting(TechCurrency)
+  if (%shop.currency.type = null) { var %shop.currency.type orbs }
+  if ((%shop.currency.type != coins) && (%shop.currency.type != orbs)) { var %shop.currency.type orbs }
+
   if ($2 = list) {
     unset %shop.list
     ; get the list of the techs for the weapon you have equipped
@@ -725,7 +732,12 @@ alias shop.techs {
     var %value 1
     while (%value <= %number.of.items) {
       set %tech.name $gettok(%tech.list, %value, 46)
-      set %tech.price $round($calc(%shop.level * $readini($dbfile(techniques.db), %tech.name, cost)),0)
+
+
+      if (%shop.currency.type = orbs) { set %tech.price $round($calc(%shop.level * $readini($dbfile(techniques.db), %tech.name, cost)),0) }
+      if (%shop.currency.type = coins) { set %tech.price $round($calc($readini($dbfile(techniques.db), %tech.name, cost) /10),0) }
+
+
       set %player.amount $readini($char($1), techniques, %tech.name)
 
       if ($readini($dbfile(techniques.db), %tech.name, type) = boost) {
@@ -762,7 +774,9 @@ alias shop.techs {
 
     ; display the list with the prices.
     $shop.cleanlist
-    $display.private.message(4Tech Prices2 in $readini(system.dat, system, currency) $+ : %shop.list ) 
+
+    if (%shop.currency.type = orbs) { $display.private.message(4Tech Prices2 paid with $readini(system.dat, system, currency) $+ : %shop.list ) }
+    if (%shop.currency.type = coins) { $display.private.message(4Tech Prices2 paid with Kill Coins: %shop.list ) }
 
     if (%shop.list2 != $null) { 
       $display.private.message.delay(2 $+ %shop.list2 ) 
@@ -783,12 +797,22 @@ alias shop.techs {
     unset %weapon.abilities
 
     ; do you have enough to buy it?
-    var %player.redorbs $readini($char($1), stuff, redorbs)
-    var %base.cost $readini($dbfile(techniques.db), $3, cost)
 
-    set %total.price $shop.calculate.totalcost($1, $4, %base.cost)
+    if (%shop.currency.type = orbs) {
+      var %player.redorbs $readini($char($1), stuff, redorbs)
+      var %base.cost $readini($dbfile(techniques.db), $3, cost)
 
-    if (%player.redorbs < %total.price) { $display.private.message(4You do not have enough $readini(system.dat, system, currency) to purchase this item!) | halt }
+      set %total.price $shop.calculate.totalcost($1, $4, %base.cost)
+
+      if (%player.redorbs < %total.price) { $display.private.message(4You do not have enough $readini(system.dat, system, currency) to purchase this item!) | halt }
+    }
+
+    if (%shop.currency.type = coins) {
+      var %player.coins $return.killcoin.count($1)
+      var %total.price $round($calc($readini($dbfile(techniques.db), $3, cost) /10),0)
+
+      if (%player.coins < %total.price) { $display.private.message(4You do not have enough Kill Coins to purchase this item! You currently need $calc(%total.price - %player.coins) more coins) | halt }
+    }
 
     var %current.techlevel $readini($char($1), techniques, $3)
 
@@ -804,15 +828,24 @@ alias shop.techs {
 
     writeini $char($1) techniques $3 %current.techlevel
 
-    ; decrease amount of orbs you have.
-    dec %player.redorbs %total.price
-    writeini $char($1) stuff redorbs %player.redorbs
-    $inc.redorbsspent($1, %total.price)
+    ; decrease amount of currency
+    if (%shop.currency.type = orbs) {
+      dec %player.redorbs %total.price
+      writeini $char($1) stuff redorbs %player.redorbs
+      $inc.redorbsspent($1, %total.price)
 
-    $display.private.message(3You spend $bytes(%total.price,b)  $+  $readini(system.dat, system, currency) for + $+ $4 to your $3 technique $+ ! $readini(translation.dat, system, OrbsLeft))
+      $display.private.message(3You spend $bytes(%total.price,b)  $+  $readini(system.dat, system, currency) for + $+ $4 to your $3 technique $+ ! $readini(translation.dat, system, OrbsLeft))
 
-    ; Increase the shop level.
-    $inc.shoplevel($1, $4)
+      ; Increase the shop level.
+      $inc.shoplevel($1, $4)
+    }
+
+    if (%shop.currency.type = coins) {
+      dec %player.coins %total.price
+      writeini $char($1) stuff killcoins %player.coins
+      $display.private.message(3You spend $bytes(%total.price,b)  $+  Kill Coins for + $+ $4 to your $3 technique $+ ! You now have $return.killcoin.count($1) Kill Coins left.)
+    }
+
   }
 
   if ($2 = sell) {
@@ -824,38 +857,61 @@ alias shop.techs {
     if (%player.items = $null) {  $display.private.message(4Error: You do not have this tech to sell!) | halt }
     if (%player.items < $4) {  $display.private.message(4Error: You do not have $4 levels of this tech to sell!) | halt }
 
-    set %total.price $readini($dbfile(techniques.db), $3, cost)
+    ; Sell for Orbs
+    if (%shop.currency.type = orbs) {
+      set %total.price $calc($readini($dbfile(techniques.db), $3, cost) / 5),0)
 
+      if (%total.price = $null) { 
+        var %total.price $readini($dbfile(techniques.db), $3, cost)
+        %total.price = $round($calc(%total.price / 5),0)
+      }
 
+      if ((%total.price = 0) || (%total.price = $null)) {  set %total.price 50  }
 
-    var %total.price $readini($dbfile(techniques.db), $3, sellPrice)
+      if ($readini($char($1), skills, haggling) > 0) { 
+        inc %total.price $round($calc(($readini($char($1), skills, Haggling) / 100) * %total.price),0)
+      }
 
-    if (%total.price = $null) { 
-      var %total.price $readini($dbfile(techniques.db), $3, cost)
-      %total.price = $round($calc(%total.price / 5),0)
+      if (%total.price >= $readini($dbfile(techniques.db), $3, cost)) { set %total.price $readini($dbfile(techniques.db), $3, cost) }
+      if (%total.price > 5000) { %total.price = 5000 }
+      if ((%total.price <= 0) || (%total.price = $null)) { %total.price = 50 }
+
+      %total.price = $calc($4 * %total.price)
+
+      var %player.redorbs $readini($char($1), stuff, redorbs)
+      inc %player.redorbs %total.price
+      writeini $char($1) stuff redorbs %player.redorbs
+
+      $display.private.message(3A shop keeper wearing a green and white bucket hat uses a special incantation to take $4 $iif($4 < 2, level, levels) of $3 $+  from you and gives you %total.price $readini(system.dat, system, currency) $+ !)
     }
 
-    if ((%total.price = 0) || (%total.price = $null)) {  set %total.price 50  }
+    ; Sell for Coins
+    if (%shop.currency.type = coins) {
+      set %total.price $calc($readini($dbfile(techniques.db), $3, cost) / 20),0)
+      if ((%total.price <= 1) || (%total.price = $null)) {  set %total.price 1  }
 
-    if ($readini($char($1), skills, haggling) > 0) { 
-      inc %total.price $round($calc(($readini($char($1), skills, Haggling) / 100) * %total.price),0)
-    }
+      if ($readini($char($1), skills, haggling) > 0) { 
+        inc %total.price $round($calc(($readini($char($1), skills, Haggling) / 100) * %total.price),0)
+      }
 
-    ; If so, decrease the amount
+      if (%total.price >= $calc($readini($dbfile(techniques.db), $3, cost) /10)) { set %total.price $calc($readini($dbfile(techniques.db), $3, cost) /10) }
+      if (%total.price > 500) { %total.price = 500 }
+      if ((%total.price <= 0) || (%total.price = $null)) { %total.price = 50 }
+
+      %total.price = $calc($4 * %total.price)
+
+      var %player.coins $readini($char($1), stuff, killcoins) 
+      if (%player.coins = $null) { var %player.coins 0 }
+      inc %player.coins %total.price
+      writeini $char($1) stuff KillCoins %player.coins
+    }   
+
+    ; If so, decrease the tech amount
     dec %player.items $4
     writeini $char($1) techniques $3 %player.items
 
-    if (%total.price >= $readini($dbfile(techniques.db), $3, cost)) { set %total.price $readini($dbfile(techniques.db), $3, cost) }
-    if (%total.price > 5000) { %total.price = 5000 }
-    if ((%total.price <= 0) || (%total.price = $null)) { %total.price = 50 }
+    $display.private.message(3A shop keeper wearing a green and white bucket hat uses a special incantation to take $4 $iif($4 < 2, level, levels) of $3 $+  from you and gives you %total.price Kill Coins!)
 
-    %total.price = $calc($4 * %total.price)
-
-    var %player.redorbs $readini($char($1), stuff, redorbs)
-    inc %player.redorbs %total.price
-    writeini $char($1) stuff redorbs %player.redorbs
-
-    $display.private.message(3A shop keeper wearing a green and white bucket hat uses a special incantation to take $4 $iif($4 < 2, level, levels) of $3 $+  from you and gives you %total.price $readini(system.dat, system, currency) $+ !)
     unset %total.price
   }
 }
@@ -863,26 +919,28 @@ alias shop.techs {
 alias shop.skills {
   unset %shop.list.activeskills | unset %shop.list.passiveskills | unset %shop.list.resistanceskills | unset %total.passive.skills | unset %total.active.skills | unset %shop.list.killertraits
   unset %shop.list.activeskills3
+
+  var %shop.currency.type $return.systemsetting(SkillCurrency)
+
   if ($2 = list) {
     ; get the list of the skills and display the lists
     $shop.get.shop.level($1)
 
     $shop.get.skills.active($1)
-    if (%shop.list.activeskills != $null) {  $display.private.message(4Active Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.activeskills) }
+    if (%shop.list.activeskills != $null) {  $display.private.message(4Active Skill Prices2 in $iif(%shop.currency.type = orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.activeskills) }
     if (%shop.list.activeskills2 != $null) {  $display.private.message(2 $+ %shop.list.activeskills2) }
     if (%shop.list.activeskills3 != $null) {  $display.private.message(2 $+ %shop.list.activeskills3) }
 
     $shop.get.skills.passive($1)
-    if (%shop.list.passiveskills != $null) {  $display.private.message(4Passive Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.passiveskills) }
+    if (%shop.list.passiveskills != $null) {  $display.private.message(4Passive Skill Prices2 in $iif(%shop.currency.type = orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.passiveskills) }
     if (%shop.list.passiveskills2 != $null) {  $display.private.message(2 $+ %shop.list.passiveskills2) }
 
     $shop.get.skills.resistance($1)
-    if (%shop.list.resistanceskills != $null) {  $display.private.message(4Resistance Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.resistanceskills) }
+    if (%shop.list.resistanceskills != $null) {  $display.private.message(4Resistance Skill Prices2 in $iif(%shop.currency.type = orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.resistanceskills) }
 
     $shop.get.skills.killertrait($1)
-    if (%shop.list.killertraits != $null) {  $display.private.message(4Killer Trait Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.killertraits) }
+    if (%shop.list.killertraits != $null) {  $display.private.message(4Killer Trait Skill Prices2 in $iif(%shop.currency.type = orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.killertraits) }
     if (%shop.list.killertraits2 != $null) {  $display.private.message(2 $+ %shop.list.killertraits2) }
-
 
     unset %shop.list.activeskills | unset %shop.list.passiveskills | unset %shop.list.resistanceskills | unset %shop.list.activeskills2 | unset %shop.list.passiveskills2 | unset %total.active.skills | unset %total.passives.skills | unset %shop.list.killertraits
     unset %shop.list.killertraits2 | unset %skill.name | unset %skill.have | unset %replacechar
@@ -902,21 +960,38 @@ alias shop.skills {
     if (%current.skilllevel > %max.skilllevel) { $display.private.message(4You cannot buy any more levels into this skill as you have already hit or will go over the max amount with this purchase amount.) | halt }
 
     ; do you have enough to buy it?
-    var %player.redorbs $readini($char($1), stuff, redorbs)
-    var %base.cost $readini($dbfile(skills.db), $3, cost)
 
-    set %total.price $shop.calculate.totalcost($1, $4, %base.cost)
+    if (%shop.currency.type = orbs) { 
+      var %player.redorbs $readini($char($1), stuff, redorbs)
+      var %base.cost $readini($dbfile(skills.db), $3, cost)
 
-    if (%player.redorbs < %total.price) { $display.private.message(4You do not have enough $readini(system.dat, system, currency) to purchase this item!) | halt }
+      set %total.price $shop.calculate.totalcost($1, $4, %base.cost)
 
+      if (%player.redorbs < %total.price) { $display.private.message(4You do not have enough $readini(system.dat, system, currency) to purchase this skill!) | halt }
+
+      ; decrease amount of orbs you have.
+      dec %player.redorbs %total.price
+      writeini $char($1) stuff redorbs %player.redorbs
+      $inc.redorbsspent($1, %total.price)
+
+      $display.private.message(3You spend $bytes(%total.price,b)  $+ $readini(system.dat, system, currency) for + $+ $4 to your $3 skill $+ ! $readini(translation.dat, system, OrbsLeft))
+    }
+
+    if (%shop.currency.type = coins) { 
+      var %player.coins $return.killcoin.count($1)
+      var %total.price $round($calc($readini($dbfile(skills.db), $3, cost) / 10),0)
+
+      if (%player.coins < %total.price) { $display.private.message(4You do not have enough Kill Coins to purchase this skill! You still need $calc(%total.price - %player.coins) coins in order to make this purchase.) | halt }
+
+      ; decrease amount of coins you have.
+      dec %player.coins %total.price
+      writeini $char($1) stuff killcoins %player.coins
+
+      $display.private.message(3You spend $bytes(%total.price,b)  $+ Kill Coins for + $+ $4 to your $3 skill $+ ! You now have %player.coins Kill Coins left)
+    }
+
+    ; Increase the skill level
     writeini $char($1) skills $3 %current.skilllevel
-
-    ; decrease amount of orbs you have.
-    dec %player.redorbs %total.price
-    writeini $char($1) stuff redorbs %player.redorbs
-    $inc.redorbsspent($1, %total.price)
-
-    $display.private.message(3You spend $bytes(%total.price,b)  $+ $readini(system.dat, system, currency) for + $+ $4 to your $3 skill $+ ! $readini(translation.dat, system, OrbsLeft))
 
     ; Increase the shop level.
     $inc.shoplevel($1, $4)
@@ -924,6 +999,7 @@ alias shop.skills {
 }
 
 alias shop.get.skills.passive {
+  var %shop.currency.type $return.systemsetting(TechCurrency)
 
   ; CHECKING PASSIVE SKILLS
   unset %shop.list | unset %skill.list | unset %shop.list.passiveskills2 | unset %total.passive.skills
@@ -937,7 +1013,9 @@ alias shop.get.skills.passive {
 
     if (%skill.have >= %skill.max) { inc %value 1 }
     else { 
-      set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0)
+
+      if (%shop.currency.type = orbs) { set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0) }
+      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 10),0) } 
 
       if (%skill.price > 0) { 
 
@@ -955,6 +1033,8 @@ alias shop.get.skills.passive {
 }
 
 alias shop.get.skills.active {
+  var %shop.currency.type $return.systemsetting(TechCurrency)
+
   ; CHECKING ACTIVE SKILLS
   unset %skill.list | unset %value | unset %shop.list.activeskills2 | unset %shop.list.activeskills3 | unset %total.active.skills
   var %skills.lines $lines($lstfile(skills_active.lst))
@@ -967,7 +1047,9 @@ alias shop.get.skills.active {
 
     if (%skill.have >= %skill.max) { inc %value 1 }
     else { 
-      set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0)
+      if (%shop.currency.type = orbs) { set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0) }
+      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 10),0) } 
+
       if (%skill.price > 0) { 
         if ((%total.active.skills <= 15) || (%total.active.skills = $null)) {  %shop.list.activeskills = $addtok(%shop.list.activeskills, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
         if ((%total.active.skills > 15) && (%total.active.skills < 28)) {  %shop.list.activeskills2 = $addtok(%shop.list.activeskills2, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
@@ -987,6 +1069,8 @@ alias shop.get.skills.active {
 }
 
 alias shop.get.skills.resistance {
+  var %shop.currency.type $return.systemsetting(TechCurrency)
+
   ; CHECKING RESISTANCES
   unset %skill.list | unset %value
   var %skills.lines $lines($lstfile(skills_resists.lst))
@@ -999,7 +1083,9 @@ alias shop.get.skills.resistance {
 
     if (%skill.have >= %skill.max) { inc %value 1 }
     else { 
-      set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0)
+      if (%shop.currency.type = orbs) { set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0) }
+      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 10),0) } 
+
       if (%skill.price > 0) { %shop.list.resistanceskills = $addtok(%shop.list.resistanceskills, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) } 
       inc %value 1 
     }
@@ -1009,6 +1095,8 @@ alias shop.get.skills.resistance {
 }
 
 alias shop.get.skills.killertrait {
+  var %shop.currency.type $return.systemsetting(TechCurrency)
+
   ; CHECKING KILLER TRAITS
   unset %skill.list | unset %value
   var %skills.lines $lines($lstfile(skills_killertraits.lst))
@@ -1021,7 +1109,8 @@ alias shop.get.skills.killertrait {
 
     if (%skill.have >= %skill.max) { inc %value 1 }
     else { 
-      set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0)
+      if (%shop.currency.type = orbs) { set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0) }
+      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 10),0) } 
 
       if ((%total.killertraits <= 13) || (%total.killertraits = $null)) {  %shop.list.killertraits = $addtok(%shop.list.killertraits, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
       if (%total.killertraits > 13) { %shop.list.killertraits2 = $addtok(%shop.list.killertraits2, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
@@ -1036,6 +1125,8 @@ alias shop.get.skills.killertrait {
 }
 
 alias shop.skills.passive {
+  var %shop.currency.type $return.systemsetting(TechCurrency)
+
   unset %shop.list.passiveskills | unset %shop.list.passiveskills2
   ; get the list of the skills
   $shop.get.shop.level($1)
@@ -1043,7 +1134,7 @@ alias shop.skills.passive {
   $shop.get.skills.passive($1)
 
   ; display the list with the prices.
-  if (%shop.list.passiveskills != $null) {  $display.private.message(4Passive Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.passiveskills) }
+  if (%shop.list.passiveskills != $null) {  $display.private.message(4Passive Skill Prices2 in $iif(%shop.currency.type = orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.passiveskills) }
   if (%shop.list.passiveskills2 != $null) { $display.private.message(2 $+ %shop.list.passiveskills2) }
 
   unset %shop.list.passiveskills |   unset %shop.list.passiveskills2 | unset %total.passive.skills
@@ -1057,7 +1148,7 @@ alias shop.skills.active {
   $shop.get.skills.active($1)
 
   ; display the list with the prices.
-  if (%shop.list.activeskills != $null) {  $display.private.message(4Active Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.activeskills) }
+  if (%shop.list.activeskills != $null) {  $display.private.message(4Active Skill Prices2 in $iif(%shop.currency.type = orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.activeskills) }
   if (%shop.list.activeskills2 != $null) {  $display.private.message(2 $+ %shop.list.activeskills2) }
 
   unset %shop.list.activeskills |   unset %shop.list.activeskills2 | unset %total.active.skills
@@ -1065,25 +1156,29 @@ alias shop.skills.active {
 }
 
 alias shop.skills.resists {
+  var %shop.currency.type $return.systemsetting(TechCurrency)
+
   unset %shop.list.resistanceskills
   ; get the list of the skills
   $shop.get.shop.level($1)
   $shop.get.skills.resistance($1)
 
   ; display the list with the prices.
-  if (%shop.list.resistanceskills != $null) { $display.private.message(4Resistance Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.resistanceskills) }
+  if (%shop.list.resistanceskills != $null) { $display.private.message(4Resistance Skill Prices2 in $iif(%shop.currency.type =orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.resistanceskills) }
 
   unset %shop.list.resistanceskills
   unset %skill.name | unset %skill.have | unset %replacechar
 }
 
 alias shop.skills.killertraits {
+  var %shop.currency.type $return.systemsetting(TechCurrency)
+
   unset %shop.list.killertraits
   ; get the list of the skills
   $shop.get.shop.level($1)
   $shop.get.skills.killertrait($1)
 
-  if (%shop.list.killertraits != $null) {  $display.private.message(4Killer Trait Skill Prices2 in $readini(system.dat, system, currency) $+ : %shop.list.killertraits) }
+  if (%shop.list.killertraits != $null) {  $display.private.message(4Killer Trait Skill Prices2 in $iif(%shop.currency.type =orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.killertraits) }
   if (%shop.list.killertraits2 != $null) {  $display.private.message(2 $+ %shop.list.killertraits2) }
 
   unset %shop.list.killertraits2 | unset %skill.name | unset %skill.have
@@ -2410,6 +2505,8 @@ alias shop.potioneffects {
     $display.private.message(12UtsusemiBonus 2potion effect: $+ $iif($item.amount($1, GremlinSkin) >= 2, 3, 4) 2 Gremlin Skins2 + $+ $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
     $display.private.message(12Dragonskin 2potion effect: $+ $iif($item.amount($1, DragonFang) >= 1, 3, 4) 1 Dragon Fang2 + $+ $iif($item.amount($1, DragonEgg) >= 1, 3, 4) 1 Dragon Egg2 + $iif($item.amount($1, Milk) >= 1, 3, 4) 1 Milk)    
 
+    ; to do: add a Kill Coin Bonus potion effect
+
     $display.private.message(2To purchase use !shop buy potioneffect [potion effect name]  such as !shop buy potioneffect OrbBonus)
   }
 
@@ -2947,4 +3044,3 @@ alias shop.voucher.buy {
   ; Show a message that we did the exchange
   $display.private.message(3You have exchanged %voucher.item.price $2 $iif(%voucher.item.price > 1, vouchers, voucher) for 1 $3)
 }
-

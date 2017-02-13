@@ -3,69 +3,69 @@ PASSIVE SKILLS
 =============================================
 
 [Swordmaster]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with sword and katana weapons.  Increased levels increases the damage.
 
 [Polemaster]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with spear weapons.  Increased levels increases the damage.
 
 [Gunslinger]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a gun.  Increased levels increases the damage.
 
 [Wizardry]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with stave and wand weapons.  Increased levels increases the damage.
 
 [MartialArts]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with your hand to hand weapons.  Increased levels increases the damage.
 
 [Archery]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a bow.  Increased levels increases the damage.
 
 [Hatchetman]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with an axe.  Increased levels increases the damage.
 
 [Harvester]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a scythe.  Increased levels increases the damage.
 
 [SleightOfHand]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a dagger.  Increased levels increases the damage.
 
 [Whipster]
-Cost=200
+Cost=150
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a whip.  Increased levels increases the damage.
 
 [OrbHunter]
-Cost=$iif($readini($char($1), skills, OrbHunter <= 19), 250, 2500)
+Cost=$iif($readini($char($1), skills, OrbHunter <= 19), 150, 1500)
 Type=Passive
-Info=This skill will increase the amount of red orbs you find at the end of battle.  Note that the base cost of this skill increases to 2500 per level after level 20.
+Info=This skill will increase the amount of red orbs you find at the end of battle.  Note that the base cost of this skill increases to 1500 per level after level 20.
 Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 50, 30)
 Amount=15
 
@@ -149,7 +149,7 @@ Info=This skill will decrease the odds that a curse night will happen. This skil
 Max=5
 
 [DualWield]
-Cost=200000
+Cost=100000
 Type=passive
 Info=This skill will allow the user to hold two one-handed weapons and use techniques from both without having to switch weapons. For melee attacks, the # of hits for the attack will be both weapon's # of hits combined. Use !equip left or !equip right to equip to the specified hand. Note, a weapon must be in the right hand before you can equip the left hand.
 Max=1
