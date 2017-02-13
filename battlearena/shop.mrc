@@ -993,8 +993,10 @@ alias shop.skills {
     ; Increase the skill level
     writeini $char($1) skills $3 %current.skilllevel
 
-    ; Increase the shop level.
-    $inc.shoplevel($1, $4)
+    if (%shop.currency.type = orbs) { 
+      ; Increase the shop level.
+      $inc.shoplevel($1, $4)
+    }
   }
 }
 
