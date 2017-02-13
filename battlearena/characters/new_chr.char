@@ -42,6 +42,7 @@ DoubleDollars=100
 CapacityPoints=0
 EnhancementPoints=0
 LoginPoints=0
+KillCoins=0
 ; misc stats
 EnhancementPointsSpent=0
 TotalDeaths=0

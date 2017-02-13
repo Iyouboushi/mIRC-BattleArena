@@ -1594,6 +1594,7 @@ Battle Arena Bot VERSIONS
   leaving it empty/null will allow the monster to show up on any level of torment.
 - Added a MinTormentLevel flag in [info] for monsters and bosses. Leaving it empty means the minimum will be 1.
 - Added an IgnoreTP flag. If set to true monsters and npcs won't gain any TP when the bot boosts the level
+- Added a new currency: Kill Coins. These accumulate when players kill monsters and finish battles.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the amount of style points needed to achieve different ranks. It is harder on higher battle levels now.

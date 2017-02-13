@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 02/11/17
+;;;; Last updated: 02/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -503,6 +503,23 @@ check.doubledollars {
     else { $display.private.message($readini(translation.dat, system, ViewDoubleDollars)) }
   }
   if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($nick, $readini(translation.dat, system, ViewDoubleDollars)) }
+
+  unset %real.name | unset %hstats 
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns a person's
+; kill coins amount
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+check.kill.coins {
+  var %kill.coins $readini($char($1), stuff, killcoins) 
+  if (%kill.coins = $null) { var %kill.coins 0 | writeini $char($1) stuff killcoins 0 }
+  $set_chr_name($1) 
+  if ($readini(system.dat, system, botType) = IRC) {
+    if ($2 = channel) {  $display.message($readini(translation.dat, system, ViewKillCoins),private) } 
+    else { $display.private.message($readini(translation.dat, system, ViewKillCoins)) }
+  }
+  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($nick, $readini(translation.dat, system, ViewKillCoins)) }
 
   unset %real.name | unset %hstats 
 }

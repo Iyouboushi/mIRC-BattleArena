@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/08/16
+;;;; Last updated: 02/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1807,6 +1807,7 @@ alias battle.end.failure {
 
   $battle.calculate.redorbs(defeat, %thisbattle.winning.streak)
   $battle.reward.redorbs
+  $battle.reward.killcoins
   $display.message($readini(translation.dat, battle, RewardOrbsLoss), battle)
 
   if (%battle.type != dragonhunt) { $shopnpc.kidnap }
@@ -1900,6 +1901,7 @@ alias battle.end.victory {
   $battle.alliednotes.check
   $battle.calculate.redorbs(victory, %thisbattle.winning.streak)
   $battle.reward.redorbs(victory)
+  $battle.reward.killcoins
   $battle.reward.playerstylepoints
   $battle.reward.playerstylexp
   $battle.reward.ignitionGauge.all
@@ -1993,6 +1995,7 @@ alias battle.end.draw {
 
   $battle.calculate.redorbs(draw, %thisbattle.winning.streak)
   $battle.reward.redorbs
+  $battle.reward.killcoins
   $display.message($readini(translation.dat, battle, RewardOrbsDraw), battle)
 }
 
@@ -2794,6 +2797,86 @@ alias battle.reward.blackorbs {
     %black.orb.winners = $replace(%black.orb.winners, $chr(046), %replacechar)
   }
   unset %current.status
+}
+
+alias battle.reward.killcoins {
+  set %debug.location battle.reward.killcoins
+  var %original.basecoins 1
+
+  var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+    if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+    else { 
+
+      ; Adjust the base coins based on battle type
+
+      if ((%base.coins <= 5000) && (%battle.type = defendoutpost)) { set %base.coins 2 }
+      if ((%base.coins <= 5000) && (%battle.type = assault)) { set %base.coins 2 }
+      if ((%base.coins <= 8000) && (%battle.type = dragonhunt)) { set %base.coins 2 }
+      if ((%base.coins <= 10000) && (%battle.type = torment)) { set %base.coins 1 }
+
+
+      ; Adjust the orbs
+
+      if ($readini($char(%who.battle), battle, status) = runaway) { var %total.coins.reward $round($calc(%base.coins / 2.5),0) }
+      if ($readini($char(%who.battle), battle, status) != runaway) { var %total.coins.reward %base.coins }
+
+      ; inc coins reward by # of monsters killed
+      var %monsters.killed $readini($txtfile(battle2.txt), Kills, %who.battle) 
+      if (%monsters.killed = $null) { var %monsters.killed 0 }
+      inc %total.coins.reward %monsters.killed
+
+      ; inc coin reward by streak
+      if ($return_winningstreak >= 10) { 
+        var %coins.increase.amount $round($calc($log($return_winningstreak) - 1.3),1)
+        inc %total.coins.reward %coins.increase.amount
+      }
+
+      ; inc coin reward by style
+      var %style.points $readini($txtfile(battle2.txt), style, %who.battle)
+      var %boss.modifier 0
+      if (%battle.type = boss) { inc %boss.modifier 100 }
+      if (%portal.bonus = true) { inc %boss.modifier 100 }
+
+      if ((%style.points > $calc(30 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(50 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
+      if ((%style.points > $calc(50 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(80 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
+      if ((%style.points > $calc(80 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(100 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
+      if ((%style.points > $calc(100 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(110 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
+      if ((%style.points > $calc(110 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(120 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
+      if ((%style.points > $calc(120 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(140 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
+      if ((%style.points > $calc(140 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(180 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
+      if ((%style.points > $calc(180 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(250 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
+      if ((%style.points > $calc(250 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(350 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
+      if ((%style.points > $calc(350 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(450 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
+      if ((%style.points > $calc(450 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(550 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
+      if ((%style.points > $calc(550 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(750 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
+      if ((%style.points > $calc(750 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(1000 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 4 }
+      if ((%style.points > $calc(1000 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(3500 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 4  }
+      if ((%style.points > $calc(3500 + %boss.modifier + $return_winningstreak)) && (%style.points < $calc(6000 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 5 }
+      if (%style.points >= $calc(6000 + %boss.modifier + $return_winningstreak)) { inc %total.coins.reward 5 }
+
+      ;  Check for the an accessory that increases kill coins
+      if ($accessory.check(%who.battle, IncreaseKillCoins) = true) {
+        var %increase.coin.amount $round($calc(%total.coins.reward * %accessory.amount),0)
+        inc %total.coins.reward %increase.coin.amount
+        unset %accessory.amount
+      }
+
+      ; Add the coins to the player
+      var %current.coins.onhand $readini($char(%who.battle), stuff, killcoins)
+      inc %current.coins.onhand %total.coins.reward
+      writeini $char(%who.battle) stuff killcoins %current.coins.onhand
+
+
+      ; Clear certain potion effects
+      if ($return.potioneffect(%who.battle) = Kill Coin Bonus) { writeini $char(%who.battle) status PotionEffect none }
+
+      inc %battletxt.current.line 1 
+    }
+  }
+
 }
 
 ; ===========================

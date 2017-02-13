@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 01/25/17
+;;;; Last updated: 02/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3832,6 +3832,11 @@ inc_monster_kills {
   inc %monster.kills 1 
   writeini $char($1) stuff MonsterKills %monster.kills
   $achievement_check($1, MonsterSlayer)
+
+  var %current.battle.kills $readini($txtfile(battle2.txt), Kills, $1)
+  if (%current.battle.kills = $null) { var %current.battle.kills 0 }
+  inc %current.battle.kills 1
+  writeini $txtfile(battle2.txt) Kills $1 %current.battle.kills
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4660,6 +4665,9 @@ system.intromessage {
   var %player.redorbs $bytes($readini($char($1), stuff, redorbs),b)
   if (%player.redorbs = $null) { var %player.redorbs 0 }
 
+  var %player.killcoins $bytes($readini($char($1), stuff, killcoins),b)
+  if (%player.killcoins = $null) { var %player.killcoins 0 }
+
   var %player.blackorbs $bytes($readini($char($1), stuff, blackorbs),b)
   if (%player.blackorbs = $null) { var %player.blackorbs 0 }
 
@@ -4673,7 +4681,7 @@ system.intromessage {
   if (%player.enhancementpoints = $null) { var %player.enhancementpoints 0 }
 
   $display.private.message(2Welcome back4 $readini($char($1), basestats, name) $+ . 2The current local bot time is4 $asctime(hh:nn tt) 2on4  $asctime(mmm dd yyyy) 2and this is bot version5 $battle.version )
-  $display.private.message(2You currently have: 3 $+ %player.loginpoints 2login points $+ $chr(44) 3 $+ %player.redorbs 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ %player.blackorbs 2Black Orbs $+ $chr(44) 3 $+ %player.alliednotes 2Allied Notes $+ $chr(44) 3 $+ %player.doubledollars 2double dollars $+ $chr(44) 3 $+ %player.enhancementpoints 2enhancement points  $iif($left($adate, 2) = 10, and7 %player.candycorn 2candycorn ) )
+  $display.private.message(2You currently have: 3 $+ %player.loginpoints 2login points $+ $chr(44) 3 $+ %player.redorbs 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ %player.blackorbs 2Black Orbs $+ $chr(44) 3 $+ %player.killcoins 2Kill Coins $+ $chr(44) 3 $+ %player.alliednotes 2Allied Notes $+ $chr(44) 3 $+ %player.doubledollars 2double dollars $+ $chr(44) 3 $+ %player.enhancementpoints 2enhancement points  $iif($left($adate, 2) = 10, and7 %player.candycorn 2candycorn ) )
 
   ; Check for month event messages
   var %current.month $left($adate, 2)

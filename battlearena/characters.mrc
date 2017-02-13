@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 12/12/16
+;;;; Last updated: 02/13/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -401,6 +401,15 @@ on 3:TEXT:!doubledollars*:#: {
 on 3:TEXT:!doubledollars*:?: {  
   if ($2 = $null) { $check.doubledollars($nick, channel) }
   if ($2 != $null) { $checkchar($2) | $check.doubledollars($2, channel) }
+}
+
+on 3:TEXT:!killcoins*:#: {  
+  if ($2 = $null) { $check.kill.coins($nick, channel) }
+  if ($2 != $null) { $checkchar($2) | $check.kill.coins($2, channel) }
+}
+on 3:TEXT:!kill coins*:#: {  
+  if ($3 = $null) { $check.kill.coins($nick, channel) }
+  if ($3 != $null) { $checkchar($3) | $check.kill.coins($3, channel) }
 }
 
 on 3:TEXT:!bet*:*: { $ai.battle.place.bet($nick, $2, $3) } 
