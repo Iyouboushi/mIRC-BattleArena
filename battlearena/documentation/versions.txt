@@ -1596,6 +1596,7 @@ Battle Arena Bot VERSIONS
 - Added an IgnoreTP flag. If set to true monsters and npcs won't gain any TP when the bot boosts the level
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
+- Changed the amount of style points needed to achieve different ranks. It is harder on higher battle levels now.
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 06/20/16
+;;;; Last updated: 02/12/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -9,23 +9,27 @@ alias calculate.stylepoints {
   var %style.points $readini($txtfile(battle2.txt), style, $1)
   if (%style.points = $null) { set %style.points 0 }
 
-  if (%style.points <= 30) { set %style.rating $readini(translation.dat, styles, FlatOutBoring) }
-  if ((%style.points > 30) && (%style.points <=  50)) { set %style.rating $readini(translation.dat, styles, Dope) }
-  if ((%style.points > 50) && (%style.points <=  80)) { set %style.rating $readini(translation.dat, styles, Don'tWorry) }
-  if ((%style.points > 80) && (%style.points <=  100)) { set %style.rating $readini(translation.dat, styles, ComeOn) }
-  if ((%style.points > 100) && (%style.points <=  110)) { set %style.rating $readini(translation.dat, styles, Cool) }
-  if ((%style.points > 110) && (%style.points <=  120)) { set %style.rating $readini(translation.dat, styles, Blast) }
-  if ((%style.points > 120) && (%style.points <=  140)) { set %style.rating $readini(translation.dat, styles, Alright) }
-  if ((%style.points > 140) && (%style.points <=  180)) { set %style.rating $readini(translation.dat, styles, Atomic) }
-  if ((%style.points > 180) && (%style.points <=  250)) { set %style.rating $readini(translation.dat, styles, Sweet) }
-  if ((%style.points > 250) && (%style.points <=  350)) { set %style.rating $readini(translation.dat, styles, Savage) }
-  if ((%style.points > 350) && (%style.points <=  450)) { set %style.rating $readini(translation.dat, styles, SShowtime) }
-  if ((%style.points > 450) && (%style.points <=  550)) { set %style.rating $readini(translation.dat, styles, SSadistic) }
-  if ((%style.points > 550) && (%style.points <= 750)) { set %style.rating $readini(translation.dat, styles, SSStylish) }
-  if ((%style.points > 750) && (%style.points <= 1000)) { set %style.rating $readini(translation.dat, styles, SSSensational) }
-  if ((%style.points > 1000) && (%style.points <= 3500)) { set %style.rating $readini(translation.dat, styles, SSSSmokingHotStyle) }
-  if ((%style.points > 3500) && (%style.points < 6000)) { set %style.rating $readini(translation.dat, styles, Jackpot) }
-  if (%style.points >= 6000) { set %style.rating $readini(translation.dat, styles, MaximumStyle) }
+  var %boss.modifier 0
+  if (%battle.type = boss) { inc %boss.modifier 100 }
+  if (%portal.bonus = true) { inc %boss.modifier 100 }
+
+  if (%style.points <= $calc(30 + %boss.modifier + $return_winningstreak))  { set %style.rating $readini(translation.dat, styles, FlatOutBoring) }
+  if ((%style.points > $calc(30 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(50 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Dope) }
+  if ((%style.points > $calc(50 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(80 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Don'tWorry) }
+  if ((%style.points > $calc(80 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(100 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, ComeOn) }
+  if ((%style.points > $calc(100 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(110 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Cool) }
+  if ((%style.points > $calc(110 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(120 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Blast) }
+  if ((%style.points > $calc(120 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(140 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Alright) }
+  if ((%style.points > $calc(140 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(180 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Atomic) }
+  if ((%style.points > $calc(180 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(250 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Sweet) }
+  if ((%style.points > $calc(250 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(350 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Savage) }
+  if ((%style.points > $calc(350 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(450 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, SShowtime) }
+  if ((%style.points > $calc(450 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(550 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, SSadistic) }
+  if ((%style.points > $calc(550 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(750 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, SSStylish) }
+  if ((%style.points > $calc(750 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(1000 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, SSSensational) }
+  if ((%style.points > $calc(1000 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(3500 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, SSSSmokingHotStyle) }
+  if ((%style.points > $calc(3500 + %boss.modifier + $return_winningstreak)) && (%style.points < $calc(6000 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Jackpot) }
+  if (%style.points >= $calc(6000 + %boss.modifier + $return_winningstreak)) { set %style.rating $readini(translation.dat, styles, MaximumStyle) }
 }
 
 alias add.stylepoints {
