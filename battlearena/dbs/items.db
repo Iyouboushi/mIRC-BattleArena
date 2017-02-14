@@ -47,7 +47,7 @@ ShopNPC=HealingMerchant
 Target=Single
 Amount=15
 Desc=pulls out an X-potion bottle and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=300
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 300, 3000)
 SellPrice=100
 FullbringLevel=2
 FullbringTarget=AOE
@@ -59,7 +59,7 @@ Type=heal
 Target=Single
 Amount=20
 Desc=pulls out a bottle of fizzy rootbeer and hands it to %enemy $+ , who drinks it down. Teehee. Bubbly.
-Cost=500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 500, 5000)
 SellPrice=30
 FullbringLevel=1
 FullbringTarget=AOE
@@ -85,7 +85,7 @@ ShopNPC=HealingMerchant
 Target=Single
 Amount=40
 Desc=pulls out bottle of red liquid labeled "Super Potion" and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=1500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1500, 15000)
 SellPrice=750
 FullbringLevel=5
 FullbringTarget=AOE
@@ -99,7 +99,7 @@ ShopNPC=TravelMerchant
 Target=Single
 Amount=50
 Desc=pulls out bottle of liquid made with blood labeled "Mega Potion" and hands it to %enemy $+ , who drinks it down.  Ahh! Refreshing!
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2000, 20000)
 SellPrice=750
 FullbringLevel=5
 FullbringTarget=AOE
@@ -123,7 +123,7 @@ Currency=none
 [CandyCane]
 Type=heal
 Target=Single
-Amount=45
+Amount=40
 ShopNPC=Santa
 Desc=pulls out a small red and white candy cane and hands it to %enemy who eats it. Cruncy! 
 Cost=$iif($readini(shopnpcs.dat, NPCStatus, Santa) = true, 1750, 0)
@@ -139,7 +139,7 @@ Type=tp
 Target=Single
 Amount=30
 Desc=pulls out a white feather and hands it to %enemy $+ .  The feather is absorbed into %enemy $+ 's body.  %enemy feels $gender2($4) TP being restored.
-Cost=100
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 100, 1000)
 SellPrice=40
 FullbringLevel=1
 FullbringTarget=AOE
@@ -152,7 +152,7 @@ ShopNPC=HealingMerchant
 Target=Single
 Amount=60
 Desc=pulls out a bottle of white liquid and hands it to %enemy $+ .  After drinking it, %enemy feels $gender2($4) TP being restored.
-Cost=250
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 250, 2500)
 SellPrice=100
 FullbringLevel=2
 FullbringTarget=AOE
@@ -165,7 +165,7 @@ ShopNPC=HealingMerchant
 Target=Single
 Amount=120
 Desc=pulls out a bottle of white liquid and hands it to %enemy $+ .  After drinking it, %enemy feels $gender2($4) TP being restored.
-Cost=500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 500, 5000)
 SellPrice=200
 FullbringLevel=3
 FullbringTarget=AOE
@@ -179,7 +179,7 @@ ShopNPC=HealingMerchant
 Target=Single
 Amount=160
 Desc=pulls out a bottle of white liquid and hands it to %enemy $+ .  After drinking it, %enemy feels $gender2($4) TP being restored.
-Cost=750
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 750, 7500)
 SellPrice=350
 FullbringLevel=5
 FullbringTarget=AOE
@@ -193,7 +193,7 @@ ShopNPC=HealingMerchant
 Target=Single
 Amount=320
 Desc=pulls out a bottle of white liquid and hands it to %enemy $+ .  After drinking it, %enemy feels $gender2($4) TP being restored.
-Cost=1500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1500, 15000)
 SellPrice=750
 FullbringLevel=5
 FullbringTarget=AOE
@@ -204,7 +204,7 @@ ConquestItem=true
 [Tonic]
 Type=CureStatus
 ShopNPC=HealingMerchant
-Cost=1000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1000, 5000)
 SellPrice=320
 Desc=pulls out a small bottle of bubbling tonic and hands it to %enemy who drinks it.  After a few seconds, %enemy feels $gender($4) body being restored from most status effects.
 
@@ -226,8 +226,8 @@ ShopNPC=Santa
 [IgnitionStar]
 Type=IgnitionGauge
 Target=single
-Amount=15
-Cost=3000
+Amount=20
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 4000, 30000)
 SellPrice=1000
 Desc=pulls out a strange purple star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
 ShopNPC=HealingMerchant
@@ -235,8 +235,8 @@ ShopNPC=HealingMerchant
 [LargeIgnitionStar]
 Type=IgnitionGauge
 Target=single
-Amount=20
-Cost=6000
+Amount=50
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 7000, 50000)
 SellPrice=1500
 Desc=pulls out a strange purple star and tosses it at %enemy $+ .  The star is absorbed and a sense of power overcomes $gender2($4) $+ .
 ShopNPC=HealingMerchant
@@ -245,14 +245,14 @@ ConquestItem=true
 [GoldOrb]
 Type=AutoRevive
 ShopNPC=HealingMerchant
-Cost=3000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 3000, 10000)
 SellPrice=1000
 Desc=pulls out a small, pulsing, gold orb and holds it up to %enemy $+ ! %enemy is covered by a bright golden light as the gold orb floats above %real.name $+ 's head and becomes a halo.  %enemy will be automatically revived upon death.
 
 [BottledFairy]
 Type=Revive
 ShopNPC=HealingMerchant
-Cost=3000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 15000)
 SellPrice=2000
 Desc=pulls out a bottled fairy and opens it. After a moment the fairy flies out and into %enemy $+ . A bright light shines down from above and envelops %enemy and after a moment %enemy is brought back to life.
 ReviveAmount=.35
@@ -260,7 +260,7 @@ ReviveAmount=.35
 [PhoenixDown]
 Type=Revive
 ShopNPC=HealingMerchant
-Cost=6000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 7000, 20000)
 SellPrice=2000
 Desc=holds up a small feather from a phoenix over %enemy $+ . A bright light shines down from above and envelops %enemy and after a moment %enemy is brought back to life.
 ReviveAmount=.50
@@ -275,7 +275,7 @@ Type=Damage
 Target=Single
 Amount=150
 Desc=takes out a vial of Holy Water and tosses it on %enemy
-Cost=200
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 200, 2000)
 SellPrice=100
 Element=light
 FullbringLevel=2
@@ -289,7 +289,7 @@ Type=Damage
 Target=Single
 Amount=150
 Desc=takes out a small glowing red fang and slashes %enemy with it.  The fang snaps and explodes with fire energy.
-Cost=200
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 200, 2000)
 SellPrice=100
 Element=fire
 FullbringLevel=2
@@ -302,7 +302,7 @@ Type=Damage
 Target=Single
 Amount=150
 Desc=takes out a small glowing blue fang and slashes %enemy with it.  The fang snaps and explodes with ice energy.
-Cost=200
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 200, 2000)
 SellPrice=100
 Element=ice
 FullbringLevel=2
@@ -315,7 +315,7 @@ Type=Damage
 Target=Single
 Amount=150
 Desc=takes out a small glowing purple orb and throws it at %enemy $+ 's feet.  The orb shatters and lightning shoots out of it and slams into %enemy $+ !
-Cost=200
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 200, 2000)
 SellPrice=100
 Element=lightning
 FullbringLevel=2
@@ -337,7 +337,7 @@ Type=Status
 Target=Single
 StatusType=stop
 Amount=10
-Cost=150
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 150, 1500)
 SellPrice=50
 Desc=takes out a small stop watch and activates it before handing it to %enemy $+ .  The stop watch glows blue and %enemy begins to feel time slow down.
 FullbringLevel=3
@@ -351,7 +351,7 @@ Type=Status
 Target=Single
 StatusType=slow
 Amount=10
-Cost=150
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 200, 2000)
 SellPrice=50
 Desc=takes out a small hour glass and flips it before handing it to %enemy $+ .  The hour glass glows green and %enemy begins to feel slow.
 FullbringLevel=3
@@ -367,7 +367,7 @@ Target=Single
 StatusType=defensedown
 Amount=150
 SellPrice=50
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2000, 8000)
 Desc=takes out a large lance that is glowing red and throws it at %enemy $+ .  After being hit, %enemy starts to feel as though $gender($2) defense has been weakened.
 FullbringLevel=5
 FullbringTarget=AOE
@@ -390,7 +390,7 @@ Amount=50
 Desc=takes out a small potion that contains a mild poison and hurls it at %enemy in an attempt to cause poison.
 StatusType=poison
 SellPrice=500
-Cost=2500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 6000)
 ShopNPC=BattleMerchant
 
 [SauceAmpulla]
@@ -400,7 +400,7 @@ Target=Single
 StatusType=strengthdown
 Amount=150
 SellPrice=50
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2000, 8000)
 Desc=takes out a small flask that has a strange bubbling liquid inside and throws it at %enemy $+ .  After being hit by the exploding flask, %enemy starts to feel as though $gender($2) strength has been weakened.
 FullbringLevel=5
 FullbringTarget=AOE
@@ -414,7 +414,7 @@ Target=Single
 StatusType=intdown
 Amount=150
 SellPrice=50
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2000, 8000)
 Desc=takes out a large glowing pointed hat and quickly runs over to %enemy and sits the hat upon $gender($2) head.  After wearing the hat, $gender3($2) doesn't feel so smart any more.. 
 FullbringLevel=5
 FullbringTarget=AOE
@@ -425,7 +425,7 @@ Fullbringdesc=takes out a large glowing pointed hat and draws out its soul.  The
 Type=Damage
 Target=Single
 Amount=300
-Cost=400
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 400, 4000)
 SellPrice=200
 Desc=takes out a small fire flower from the Mushroom Kingdom.  It gets absorbed by %user which allows %user to shoot fireballs at %enemy for a moment before the power wears off.
 Element=fire
@@ -439,7 +439,7 @@ ShopNPC=BattleMerchant
 Type=Damage
 Target=Single
 Amount=300
-Cost=400
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 400, 4000)
 SellPrice=200
 Desc=takes out a small blue coin and flips it at %enemy $+ .  The coin hits and covers %enemy with ice.  
 Element=ice
@@ -453,7 +453,7 @@ ShopNPC=BattleMerchant
 Type=Damage
 Target=Single
 Amount=300
-Cost=400
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 400, 4000)
 SellPrice=200
 Desc=takes out a small green wind vein and spins it at %enemy $+ .  A powerful gust of wind slices %enemy $+ !  
 Element=wind
@@ -486,7 +486,7 @@ Type=Damage
 ShopNPC=TravelMerchant
 Target=Single
 Amount=200
-Cost=6000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 3000, 7000)
 SellPrice=50
 Desc=takes out a small bomb that came from a weird flower and tosses it at %enemy causing a small explosion.
 Element=fire
@@ -556,7 +556,7 @@ Bomb=true
 Type=Snatch
 Target=Single
 Amount=1
-Cost=500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 500, 3000)
 SellPrice=200
 Desc=takes out a grappling hook and swings it around %enemy $+ . After %enemy is hooked, %real.name begins to pull in an attempt to drag %enemy over to $gender2($1) to use as a protective shield.
 ShopNPC=BattleMerchant
@@ -599,7 +599,7 @@ Type=Damage
 Target=Single
 Amount=500
 Desc=pulls out a shuriken with a three point blade and hurls it at %enemy $+ !
-Cost=3000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 3000, 9000)
 SellPrice=1000
 Element=None
 ShopNPC=BattleMerchant
@@ -610,7 +610,7 @@ Type=Damage
 Target=Single
 Amount=700
 Desc=pulls out a shuriken with a four point blade and hurls it at %enemy $+ !
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 12000)
 SellPrice=1500
 Element=None
 ShopNPC=BattleMerchant
@@ -622,7 +622,7 @@ Type=Damage
 Target=Single
 Amount=1000
 Desc=pulls out a shuriken with a six point blade and hurls it at %enemy $+ !
-Cost=7000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 7000, 15000)
 SellPrice=2000
 Element=None
 ShopNPC=BattleMerchant
@@ -953,34 +953,34 @@ CONSUMABLE ITEMS (for skills)
 =========================
 [Shihei]
 Type=consume
-Cost=500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 500, 3000)
 SellPrice=20
 Skill=Utsusemi
 
 [Sokubaku]
 type=consume
-Cost=100
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 100, 1000)
 SellPrice=20
 Skill=WeaponLock
 ShopNPC=BattleMerchant
 
 [Hankai]
 type=consume
-cost=700
+cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 400, 2000)
 SellPrice=100
 Skill=SealBreak
 ShopNPC=BattleMerchant
 
 [MirrorShard]
 type=consume
-cost=3000
+cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2000, 6000)
 SellPrice=200
 Skill=MagicMirror
 ShopNPC=BattleMerchant
 
 [Lockpick]
 type=consume
-Cost=300
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 300, 3000)
 SellPrice=50
 Skill=Lockpicking
 ShopNPC=BattleMerchant
@@ -991,28 +991,28 @@ SUMMON ITEMS (npc allies)
 =========================
 [DarkMagicianCard]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Dark_Magician
 SummonName=Dark Magician
 
 [BusterBladerCard]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Buster_Blader
 SummonName=Buster Blader
 
 [BlueEyesCard]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Blue_eyes
 SummonName=Blue Eyes White Dragon
 
 [FishOilBroth]
 Type=summon
-Cost=10000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=2000
 Summon=Courier_Carrie
 SummonName=Courier Carrie
@@ -1035,7 +1035,7 @@ Exclusive=yes
 
 [AlexanderMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Alexander
 SummonName=Alexander
@@ -1058,7 +1058,7 @@ Exclusive=yes
 
 [CarbuncleMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Carbuncle
 SummonName=Carbuncle
@@ -1066,7 +1066,7 @@ ShopNPC=BattleMerchant
 
 [SolomonRing]
 Type=summon
-Cost=10000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Doomtrain
 SummonName=Doomtrain
@@ -1074,7 +1074,7 @@ ShopNPC=BattleMerchant
 
 [LuckyBroth]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Falcorr
 SummonName=Faithful Falcorr
@@ -1082,7 +1082,7 @@ ShopNPC=BattleMerchant
 
 [FenrirMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Fenrir
 SummonName=Fenrir
@@ -1090,7 +1090,7 @@ ShopNPC=BattleMerchant
 
 [GarudaMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Garuda
 SummonName=Garuda
@@ -1098,7 +1098,7 @@ ShopNPC=BattleMerchant
 
 [IfritMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Ifrit
 SummonName=Ifrit
@@ -1106,7 +1106,7 @@ ShopNPC=BattleMerchant
 
 [LeviathanMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Leviathan
 SummonName=Leviathan
@@ -1114,7 +1114,7 @@ ShopNPC=BattleMerchant
 
 [RamuhMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Ramuh
 SummonName=Ramuh
@@ -1122,7 +1122,7 @@ ShopNPC=BattleMerchant
 
 [ShivaMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Shiva
 SummonName=Shiva
@@ -1130,7 +1130,7 @@ ShopNPC=BattleMerchant
 
 [TitanMateria]
 Type=summon
-Cost=5000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 5000, 10000)
 SellPrice=1000
 Summon=Titan
 SummonName=Titan
@@ -1138,7 +1138,7 @@ ShopNPC=BattleMerchant
 
 [GuardContract]
 Type=summon
-Cost=500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1000, 5000)
 SellPrice=100
 Summon=Yojimbo
 SummonName=Yojimbo
@@ -4905,70 +4905,70 @@ AMMO
 =========================
 [RocketAmmo]
 Type=ammo
-Cost=10000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 10000, 20000)
 SellPrice=1000
 Desc=Ammo for a rocket launcher.
 Exclusive=yes
 
 [Arrow]
 Type=ammo
-Cost=2500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 5000)
 SellPrice=250
 Desc=A common arrow for use by bows.
 Exclusive=yes
 
 [ShotgunShell]
 Type=ammo
-Cost=1250
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1250, 3000)
 SellPrice=125
 Desc=Ammo for use by shotguns.
 Exclusive=yes
 
 [DragonfireShell]
 Type=ammo
-Cost=1250
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1250, 3000)
 SellPrice=125
 Desc=Special shotgun shells that can ignite objects.
 Exclusive=yes
 
 [Bullet]
 Type=ammo
-Cost=2500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1250, 3000)
 SellPrice=250
 Desc=Basic bullets for use by guns or rifles.
 Exclusive=yes
 
 [IceAmmo]
 Type=ammo
-Cost=2500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 5000)
 SellPrice=250
 Desc=Ammo that is able to freeze targets.
 Exclusive=yes
 
 [FireAmmo]
 Type=ammo
-Cost=2500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 5000)
 SellPrice=250
 Desc=Ammo that is able to burn targets.
 Exclusive=yes
 
 [ElectricAmmo]
 Type=ammo
-Cost=2500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 5000)
 SellPrice=250
 Desc=Ammo that is able to shock targets.
 Exclusive=yes
 
 [ExplosionAmmo]
 Type=ammo
-Cost=1500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 5000)
 SellPrice=250
 Desc=Ammo that is able to hit more than one target.
 Exclusive=yes
 
 [Reagent]
 Type=ammo
-Cost=500
+Cost=Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1250, 3000)
 SellPrice=100
 Desc=Various items used in conjunction with casting spells.
 Exclusive=yes
