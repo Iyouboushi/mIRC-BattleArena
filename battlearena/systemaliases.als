@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/13/17
+;;;; Last updated: 02/14/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4570,7 +4570,7 @@ dragonhunt.createdragon {
   writeini battlestats.dat battle DragonHunt.LastMade $ctime
 
   ; Are players too low level for a dragon to spawn?
-  if ($total.player.averagelevel < 45) { return }
+  if ($total.player.averagelevel < 50) { return }
 
   var %max.number.of.dragons 5
 
@@ -4609,14 +4609,16 @@ dragonhunt.createdragon {
 
   if ((%total.player.averagelevel > 500) && (%total.player.averagelevel <= 2000)) { inc %dragon.age $rand(150,300) }
   if ((%total.player.averagelevel > 2000) && (%total.player.averagelevel <= 5000)) { inc %dragon.age $rand(400,600) }
-  if (%total.player.averagelevel > 5000) { inc %dragon.age $rand(700,1200) }
-
+  if (%total.player.averagelevel > 5000) { inc %dragon.age $rand(1000,1500) }
 
   var %dragonhunts.dead $readini(battlestats.dat, Battle, DragonHuntDragons.Killed)
   if (%dragonhunts.dead = $null) { var %dragonhunts.dead 0 }
 
-  inc %dragon.age $calc(%dragonhunts.dead * 10)
+  inc %dragon.age $round($calc($log(%dragonhunts.dead) * 10),0)
 
+  ; To-do: If the Allied Forces have been sent on a mission to bomb new dragons, cut the age in half and clear the mission
+
+  ; Write the age (i.e. level)
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
 
   ; Pick a random element
