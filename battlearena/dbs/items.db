@@ -4968,7 +4968,7 @@ Exclusive=yes
 
 [Reagent]
 Type=ammo
-Cost=Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1250, 3000)
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 1250, 3000)
 SellPrice=100
 Desc=Various items used in conjunction with casting spells.
 Exclusive=yes
