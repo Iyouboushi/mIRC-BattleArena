@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 12/06/16
+;;;; Last updated: 02/21/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -390,7 +390,10 @@ alias view-info {
                       if ($numtok(%crafted.items8,46) <= 12) { %crafted.items8 = $addtok(%crafted.items8, %item.name, 46) }
                       else { 
                         if ($numtok(%crafted.items9,46) <= 12) { %crafted.items9 = $addtok(%crafted.items9, %item.name, 46) }
-                        else { %crafted.items10 = $addtok(%crafted.items10, %item.name, 46) }
+                        else { 
+                          if ($numtok(%crafted.items10,46) <= 12) { %crafted.items10 = $addtok(%crafted.items10, %item.name, 46) }
+                          else { %crafted.items11 = $addtok(%crafted.items11, %item.name, 46) }
+                        }
                       }
                     }
                   }
@@ -427,7 +430,14 @@ alias view-info {
                       if ($numtok(%crafted.armor8,46) <= 12) { %crafted.armor8 = $addtok(%crafted.armor8, %item.name, 46) }
                       else { 
                         if ($numtok(%crafted.armor9,46) <= 12) { %crafted.armor9 = $addtok(%crafted.armor9, %item.name, 46) }
-                        else { %crafted.armor10 = $addtok(%crafted.armor10, %item.name, 46) }
+                        else { 
+                          if ($numtok(%crafted.armor10,46) <= 12) { %crafted.armor10 = $addtok(%crafted.armor10, %item.name, 46) }
+                          else { 
+
+                            if ($numtok(%crafted.armor11,46) <= 12) { %crafted.armor11 = $addtok(%crafted.armor11, %item.name, 46) }
+                            else { %crafted.armor12 = $addtok(%crafted.armor12, %item.name, 46) }
+                          }
+                        }
                       }
                     }
                   }
@@ -445,16 +455,26 @@ alias view-info {
       %crafted.items2 = $replace(%crafted.items2, $chr(046), %replacechar)
       %crafted.items3 = $replace(%crafted.items3, $chr(046), %replacechar)
       %crafted.items4 = $replace(%crafted.items4, $chr(046), %replacechar)
-      %crafted.items = $replace(%crafted.items, $chr(046), %replacechar)
-      %crafted.items2 = $replace(%crafted.items2, $chr(046), %replacechar)
-      %crafted.items3 = $replace(%crafted.items3, $chr(046), %replacechar)
-      %crafted.items4 = $replace(%crafted.items4, $chr(046), %replacechar)
       %crafted.items5 = $replace(%crafted.items5, $chr(046), %replacechar)
       %crafted.items6 = $replace(%crafted.items6, $chr(046), %replacechar)
       %crafted.items7 = $replace(%crafted.items7, $chr(046), %replacechar)
       %crafted.items8 = $replace(%crafted.items8, $chr(046), %replacechar)
       %crafted.items9 = $replace(%crafted.items9, $chr(046), %replacechar)
       %crafted.items10 = $replace(%crafted.items10, $chr(046), %replacechar)
+
+      %crafted.armor = $replace(%crafted.armor, $chr(046), %replacechar)
+      %crafted.armor2 = $replace(%crafted.armor2, $chr(046), %replacechar)
+      %crafted.armor3 = $replace(%crafted.armor3, $chr(046), %replacechar)
+      %crafted.armor4 = $replace(%crafted.armor4, $chr(046), %replacechar)
+      %crafted.armor5 = $replace(%crafted.armor5, $chr(046), %replacechar)
+      %crafted.armor6 = $replace(%crafted.armor6, $chr(046), %replacechar)
+      %crafted.armor7 = $replace(%crafted.armor7, $chr(046), %replacechar)
+      %crafted.armor8 = $replace(%crafted.armor8, $chr(046), %replacechar)
+      %crafted.armor9 = $replace(%crafted.armor9, $chr(046), %replacechar)
+      %crafted.armor10 = $replace(%crafted.armor10, $chr(046), %replacechar)
+      %crafted.armor11 = $replace(%crafted.armor11, $chr(046), %replacechar)
+      %crafted.armor12 = $replace(%crafted.armor12, $chr(046), %replacechar)
+      %crafted.armor13 = $replace(%crafted.armor13, $chr(046), %replacechar)
 
       if (%crafted.items != $null) { $display.private.message(4Items that can be crafted:12 %crafted.items) }
       if (%crafted.items2 != $null) { $display.private.message(12 $+ %crafted.items2) }
@@ -466,6 +486,7 @@ alias view-info {
       if (%crafted.items8 != $null) { $display.private.message(12 $+ %crafted.items8) }
       if (%crafted.items9 != $null) { $display.private.message(12 $+ %crafted.items9) }
       if (%crafted.items10 != $null) { $display.private.message(12 $+ %crafted.items10) }
+      if (%crafted.items11 != $null) { $display.private.message(12 $+ %crafted.items11) }
 
       if (%crafted.armor != $null) { $display.private.message(4Armor that can be crafted:12 %crafted.armor) }
       if (%crafted.armor2 != $null) { $display.private.message(12 $+ %crafted.armor2) }
@@ -477,6 +498,9 @@ alias view-info {
       if (%crafted.armor8 != $null) { $display.private.message(12 $+ %crafted.armor8) }
       if (%crafted.armor9 != $null) { $display.private.message(12 $+ %crafted.armor9) }
       if (%crafted.armor10 != $null) { $display.private.message(12 $+ %crafted.armor10) }
+      if (%crafted.armor11 != $null) { $display.private.message(12 $+ %crafted.armor11) }
+      if (%crafted.armor12 != $null) { $display.private.message(12 $+ %crafted.armor12) }
+      if (%crafted.armor13 != $null) { $display.private.message(12 $+ %crafted.armor13) }
 
       unset %crafted.*
       unset %replacechar
