@@ -57,6 +57,7 @@ CanTaunt=false
 IgnoreQuicksilver=true
 JustReleaseDefense=100
 MinTormentLevel=10
+ActionsPerTurn=$rand(1,3)
 
 [Status]
 poison=no

@@ -18,7 +18,7 @@ Int=191
 Spd=96
 Status=alive
 IgnitionGauge=50
-
+CurrentAction=1
 
 [Rage]
 RageBar=0
@@ -59,6 +59,7 @@ IgnoreQuicksilver=true
 BattleStats=IgnoreHP
 Guardian=Deepcroft_Imp
 JustReleaseDefense=70
+ActionsPerTurn=$iif($calc(%current.turn % 3) = 0, 1, 2)
 
 [Status]
 Poison=no

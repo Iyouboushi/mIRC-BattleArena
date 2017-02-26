@@ -58,6 +58,7 @@ IgnoreQuicksilver=true
 BattleStats=IgnoreHP
 JustReleaseDefense=90
 ai_type=$iif($calc(%current.turn % 2) = 0 && $dungeon.haukke.lampcount > 0, techonly)
+ActionsPerTurn=$iif($calc(%current.turn % 2) = 0, 1, 2)
 
 [Status]
 Poison=no

@@ -60,6 +60,7 @@ IgnoreQuicksilver=true
 Guardian=Red_Rusalka.Red_Rusalka2.Red_Rusalka3
 JustReleaseDefense=100
 MinTormentLevel=10
+ActionsPerTurn=$iif($calc(%current.turn % 6) = 0, 1, $rand(1,2))
 
 [Status]
 Poison=no

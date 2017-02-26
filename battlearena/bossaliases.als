@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 12/14/16
+;;;; Last updated: 02/25/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1763,10 +1763,10 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) monster type dragon
   writeini $char(%dragonhunt.file.name) info CanTaunt false
 
-  if ((%dragon.level >= 150) && (%dragon.level <= 500)) { writeini $char($1) monster elite true }
-  if (%dragon.level > 500) { writeini $char($1) monster SuperElite true }
+  if ((%dragon.level >= 200) && (%dragon.level <= 500)) { writeini $char(%dragonhunt.file.name) monster elite true }
+  if (%dragon.level > 500) { writeini $char(%dragonhunt.file.name) monster SuperElite true }
 
-  var %base.hp.tp $round($calc(140 * %dragon.level),0)
+  var %base.hp.tp $round($calc(110 * %dragon.level),0)
   if ($return_playersinbattle >= 3) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
 
   writeini $char(%dragonhunt.file.name) basestats hp %base.hp.tp
@@ -1863,6 +1863,13 @@ dragonhunt.createfile {
 
   ; Add flying skill for older dragons
   if (%dragon.level >= 150) { writeini $char(%dragonhunt.file.name) skills flying 1 }
+
+  ; Add actions per turn based on level of dragons
+  var %actions.per.turn 1
+  if ((%dragon.level >= 200) && (%dragon.level <= 500)) { inc %actions.per.turn 1 }
+  if (%dragon.level > 500) { inc %actions.per.turn 2 }
+  writeini $char(%dragonhunt.file.name) Info ActionsPerTurn %actions.per.turn
+
 
   $boost_monster_hp(%dragonhunt.file.name, dragonhunt, %dragon.level)
   $levelsync(%dragonhunt.file.name, %dragon.level)
