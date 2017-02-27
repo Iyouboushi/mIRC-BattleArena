@@ -632,7 +632,7 @@ Type=Single
 TP=10
 Desc=performs two very quick punches on %enemy $+ !
 BasePower=20
-Cost=500
+Cost=250
 Element=none
 magic=no
 stat=str
@@ -645,7 +645,7 @@ StatusType=Stun
 TP=10
 Desc=takes off into a run towards %enemy and with all $gender($1) might, $gender3($1) rams $gender($1) shoulder into %enemy $+ !
 BasePower=5
-Cost=500
+Cost=300
 Element=none
 magic=no
 stat=str
@@ -844,7 +844,7 @@ Type=Single
 TP=15
 Desc=performs two very quick slashes upon %enemy $+ .
 BasePower=15
-Cost=500
+Cost=250
 Element=none
 magic=no
 stat=str
@@ -857,7 +857,7 @@ StatusType=Stun
 TP=15
 Desc=hits %enemy hard enough with the flat side of the sword to stun $gender2($2)
 BasePower=5
-Cost=500
+Cost=300
 Element=none
 magic=no
 stat=str
@@ -1744,7 +1744,7 @@ Desc=leaps high into the air and lands down on %enemy $+ !
 BasePower=35
 Element=none
 magic=no
-cost=500
+cost=350
 stat=str
 renkei=1
 
@@ -2335,7 +2335,7 @@ WAND/SPELLS
 ===================
 [MagicMissile]
 Type=Single
-Cost=500
+Cost=250
 Desc=waves the wand and hurls a small bolt of non-elemental magic towards %enemy $+ .
 TP=10
 Element=None
@@ -2347,7 +2347,7 @@ Renkei=2
 
 [MagicStrike]
 Type=Single
-Cost=500
+Cost=350
 Desc=raises the staff and forms a ball of non-elemental magic above %enemy $+ , letting it fall onto enemy a few seconds later.
 TP=10
 Element=None
