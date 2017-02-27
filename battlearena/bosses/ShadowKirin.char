@@ -59,6 +59,7 @@ IgnoreDrain=true
 CanTaunt=false
 JustReleaseDefense=100
 MinTormentLevel=16
+ActionsPerTurn=$iif($calc(%current.turn % 3) = 0, 2, 1)
 
 [Status]
 Poison=no

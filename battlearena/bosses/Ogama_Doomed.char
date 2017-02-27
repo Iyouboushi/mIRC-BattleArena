@@ -58,6 +58,7 @@ BattleStats=IgnoreHP
 JustReleaseDefense=99
 IgnoreBattlefieldDamage=true
 MaxTormentLevel=0
+ActionsPerTurn=$iif($calc(%current.turn % 5) = 0, 2, 1)
 
 [Status]
 Poison=no
