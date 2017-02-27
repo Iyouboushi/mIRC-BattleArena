@@ -81,7 +81,7 @@ alias portal.dropcheck.check {
       var %portals.line.counter 1
       while (%portals.line.counter < %portals.lines) {
         var %portal.line $read($lstfile(items_portal.lst), n, %portals.line.counter)
-        var %portal.monster $readini($dbfile(items.db), %portal.line, Monster)
+        var %portal.monster $readini($dbfile(items.db), n, %portal.line, Monster)
         if (%drops.monster isin %portal.monster) {
           if (!%dropcheck.result) { var %dropcheck.result %portal.line }
           else { %dropcheck.result = $addtok(%dropcheck.result,%portal.line,46) }
