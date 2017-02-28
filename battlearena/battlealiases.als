@@ -3393,8 +3393,8 @@ spawn_after_death {
     var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
 
     var %monster.level $readini($char(%current.monster.to.spawn.name), Info, bosslevel)
-    if (%monster.level = $null) { var %monster.level $get.level(%current.monster.to.spawn.name) }
-    if ($get.level(%current.monster.to.spawn.name) > %monster.level) { var %monster.level $get.level(%current.monster.to.spawn.name) }
+    if (%monster.level = $null) { var %monster.level $get.level($1) }
+    if ($get.level(%current.monster.to.spawn.name) > %monster.level) { var %monster.level $get.level($1) }
 
     ; display the description of the spawned monster
     $set_chr_name(%current.monster.to.spawn.name) 
