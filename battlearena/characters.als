@@ -1640,7 +1640,6 @@ character.dragonhunt {
   if (%dragonhunter.skill != $null) { inc %dragonhunt.chance %dragonhunter.skill }
 
   var %dragonhunt.randomnum $rand(1,100)
-
   if (%dragonhunt.randomnum > %dragonhunt.chance) { 
     $display.message($readini(translation.dat, errors, DragonHunt.NoLairFound), private) 
     halt

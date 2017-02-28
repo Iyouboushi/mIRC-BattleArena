@@ -2418,6 +2418,13 @@ SellPrice=20
 Desc=A splintered lance that is no use as a weapon in its current state.
 Currency=AlliedNotes
 
+[SlimeOil]
+Type=misc
+Cost=0
+SellPrice=1000
+Desc=the oil from a defeated slime
+Currency=AlliedNotes
+
 [Ectoplasm]
 Type=misc
 Cost=200
