@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/25/16
+;;;; Last updated: 02/28/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -893,7 +893,7 @@ alias battlebegin {
 
   if (%mode.pvp = on) { unset %darkness.turns }
   if (%mode.gauntlet = on) { unset %darkness.turns }
-  if (%battle.type = ai) { set %darkness.turns 100 } 
+  if (%battle.type = ai) { set %darkness.turns 50 } 
 
   unset %winning.streak
 
@@ -1453,6 +1453,7 @@ alias battle_rage {
   ; The idea is to make it so battles don't last forever (someone can't stall for 2 hours on one battle).  Players need to kill monsters fast.
 
   if (%battle.type = defendoutpost) { return }
+  if (%battle.type = ai) { $endbattle(draw) | halt } 
 
   set %battle.rage.darkness on
 
