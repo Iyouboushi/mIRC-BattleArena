@@ -3370,14 +3370,26 @@ spawn_after_death {
     var %spawn.after.death.desc $readini($char($1), descriptions, SpawnAfterDeath)
     if (%spawn.after.death.desc != $null) { $display.message(4 $+ %spawn.after.death.desc, battle) }
 
-    ; Spawn the new monster
-    if ($isfile($boss(%monster.to.spawn)) = $true) {  .copy -o $boss(%monster.to.spawn) $char(%monster.to.spawn)  }
-    if ($isfile($mon(%monster.to.spawn)) = $true) {  .copy -o $mon(%monster.to.spawn) $char(%monster.to.spawn)  }
-    if ($isfile($npc(%monster.to.spawn)) = $true) { .copy -o $npc(%monster.to.spawn) $char(%monster.to.spawn) }
+    ; Spawn the new monster, and rename it, if monster repeats.
+    if ($isfile($boss(%monster.to.spawn)) = $true) {
+      if ($isfile($char(%monster.to.spawn)) = $true) { var %monster.to.spawn.new = %monster.to.spawn $+ %spawn.after.death.counter }
+      else { %monster.to.spawn.new = %monster.to.spawn }
+      .copy -o $boss(%monster.to.spawn) $char(%monster.to.spawn.new)
+    }
+    if ($isfile($mon(%monster.to.spawn)) = $true) {
+      if ($isfile($char(%monster.to.spawn)) = $true) { var %monster.to.spawn.new = %monster.to.spawn $+ %spawn.after.death.counter }
+      else { %monster.to.spawn.new = %monster.to.spawn }
+      .copy -o $mon(%monster.to.spawn) $char(%monster.to.spawn.new)
+    }
+    if ($isfile($npc(%monster.to.spawn)) = $true) {
+      if ($isfile($char(%monster.to.spawn)) = $true) { var %monster.to.spawn.new = %monster.to.spawn $+ %spawn.after.death.counter }
+      else { %monster.to.spawn.new = %monster.to.spawn }
+      .copy -o $npc(%monster.to.spawn) $char(%monster.to.spawn.new)
+    }
 
     ; increase the total # of monsters
-    set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%monster.to.spawn,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
-    write $txtfile(battle.txt) %monster.to.spawn
+    set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%monster.to.spawn.new,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
+    write $txtfile(battle.txt) %monster.to.spawn.new
     var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
 
     ; Check for a drop
