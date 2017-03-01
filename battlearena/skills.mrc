@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 02/28/17
+;;;; Last updated: 03/01/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2950,6 +2950,14 @@ alias skill.completeweaknessshift {
   while (%current.resistance <= %total.resistances) { 
     writeini $char($1) skills $read($lstfile(skills_resists.lst), %current.resistance) $rand(0,100)
     inc %current.resistance
+  }
+
+  ; If the skill is set to 2 or higher it will randomly pick a death condition out of the list
+  if ($readini($char($1), skills, CompleteWeaknessShift) >= 2) {
+    var %death.conditions melee.magic.tech.item.renkei.status.magiceffect
+    var %random.deathcondition.number $rand(1,$numtok(%death.conditions,46))
+    var %random.deathcondition $gettok(%death.conditions, %random.deathcondition.number, 46)
+    writeini $char($1) info DeathConditions %random.deathcondition
   }
 
   unset %heal.number | unset %heals
