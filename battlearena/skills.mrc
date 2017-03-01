@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 12/12/16
+;;;; Last updated: 02/28/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2904,6 +2904,58 @@ alias skill.weaknessshift {
 
   remini $char($1) modifiers HitWithWeakness
 
+}
+
+alias skill.completeweaknessshift {
+  ; This skill will randomize weaknesses and resistances to $1
+
+  if ($readini($char($1), descriptions, weaknessshift) = $null) { set %skill.description flashes with a bright light as $get_chr_name($1) changes weaknesses }
+  else { set %skill.description $readini($char($1), descriptions, weaknessshift) }
+
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  set %magic.types light.dark.fire.ice.water.lightning.wind.earth
+  set %number.of.magic.types $numtok(%magic.types,46)
+
+  set %weapon.types axe.bat.bow.dagger.energyblaster.glyph.greatsword.gun.hammer.handtohand.katana.lightsaber.mace.rifle.scythe.spear.stave.sword.wand.whip
+  set %number.of.weapon.types $numtok(%weapon.types,46)
+
+  var %current.magic.weakness $gettok(%magic.types,$rand(1,%number.of.magic.types),46)
+  var %current.weapon.weakness  $gettok(%weapon.types,$rand(1,%number.of.weapon.types),46)
+
+  ; Cycle through the magic modifiers and set them
+  var %current.magic.mod 1
+  while (%current.magic.mod <= %number.of.magic.types) {
+    var %magic.modifier $gettok(%magic.types, %current.magic.mod, 46)
+
+    if (%magic.modifier = %current.magic.weakness) { writeini $char($1) modifiers %magic.modifier 120 }
+    else { writeini $char($1) modifiers %magic.modifier 10 }
+
+    inc %current.magic.mod 1
+  }
+
+  ; Cycle through the weapon modifiers and set them
+  var %current.weapon.mod 1
+  while (%current.weapon.mod <= %number.of.weapon.types) {
+    var %weapon.modifier $gettok(%weapon.types, %current.weapon.mod, 46)
+
+    if (%weapon.modifier = %current.weapon.weakness) { writeini $char($1) modifiers %weapon.modifier 120 }
+    else { writeini $char($1) modifiers %weapon.modifier 10 }
+
+    inc %current.weapon.mod 1
+  }
+
+
+  var %current.resistance 1 | var %total.resistances $lines($lstfile(skills_resists.lst))
+  while (%current.resistance <= %total.resistances) { 
+    writeini $char($1) skills $read($lstfile(skills_resists.lst), %current.resistance) $rand(0,100)
+    inc %current.resistance
+  }
+
+  unset %heal.number | unset %heals
+  unset %strengths | unset %strength.number
+  unset %weakness | unset %weakness.number
+  unset %number.of.magic.types | unset %magic.types
 }
 
 

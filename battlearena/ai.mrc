@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 01/22/16
+;;;; Last updated: 02/28/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -110,6 +110,9 @@ alias ai_turn {
 
   ; If a monster has the skill "magicshift" it can use it here at random.
   $ai.magicshift($1)
+
+  ; If a monster is set to change every weakness, do that now
+  if ($readini($char($1), skills, CompleteWeaknessShift) >= 1) { $skill.completeweaknessshift($1) } 
 
   ;  If a monster can build a demon portal, then it can use it here at random.
   if (%curse.night != true) {  $ai.buildportal($1) }
