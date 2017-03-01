@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/27/17
+;;;; Last updated: 02/28/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -425,15 +425,11 @@ check_for_double_turn {  $set_chr_name($1)
   ; Check for a double turn chance for turn based
   if ($return.systemsetting(TurnType) != action) {
 
-
     var %actioncounter.current $readini($char($1), Battle, CurrentAction)
     var %actioncounter.max $readini($char($1), Info, ActionsPerTurn)
 
     if (%actioncounter.current = $null) { var %actioncounter.current 1 }
     if (%actioncounter.max = $null) { var %actioncounter.max 1 }
-
-    echo -a current action: %actioncounter.current 
-    echo -a max action: %actioncounter.max
 
     if (%actioncounter.max = 1) { $random.doubleturn.chance($1)  }
     if (%actioncounter.current < %actioncounter.max) { writeini $char($1) skills doubleturn.on on }
