@@ -2909,8 +2909,8 @@ alias skill.weaknessshift {
 alias skill.completeweaknessshift {
   ; This skill will randomize weaknesses and resistances to $1
 
-  if ($readini($char($1), descriptions, weaknessshift) = $null) { set %skill.description flashes with a bright light as $get_chr_name($1) changes weaknesses }
-  else { set %skill.description $readini($char($1), descriptions, weaknessshift) }
+  if ($readini($char($1), descriptions, completeweaknessshift) = $null) { set %skill.description flashes with a bright light as $get_chr_name($1) changes weaknesses }
+  else { set %skill.description $readini($char($1), descriptions, completeweaknessshift) }
 
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
