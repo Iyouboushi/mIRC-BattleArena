@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/28/17
+;;;; Last updated: 03/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -699,9 +699,6 @@ boost_monster_stats {
 
   if ($2 != doppelganger) {  $boost_monster_tp($1, $2, %monster.level)  }
 
-  ; Cap TP at 500 if it's over
-  if (%tp > 500) { writeini $char($1) BaseStats TP 500 }
-
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ; Adjust the monster's weapon
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -731,9 +728,16 @@ boost_monster_tp {
   if (ignoreTP isin $readini($char($1), info, BattleStats)) { return }
   if ($readini($char($1), info, IgnoreTP) = true) { return }
 
+  var %tp $readini($char($1), basestats, tp)
+
   if ($3 >= 1000) { %tp = $round($calc(%tp + (%monster.level * 1)),0) }
   if ($3 < 1000) {  %tp = $round($calc(%tp + (%monster.level * 5)),0) }
-  writeini $char($1) BaseStats TP %tp
+
+  ; Cap TP at 500 if it's over
+  if (%tp > 500) { writeini $char($1) BaseStats TP 500 }
+
+  writeini $char($1) BaseStats TP %tp 
+  writeini $char($1) Battle TP %tp
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
