@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/19/17
+;;;; Last updated: 03/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -628,6 +628,7 @@ alias item.open.chest {
 
     if (%chest.item = RedOrbs) { var %mimic.chance -1000 }
     if (%previous.battle.type = portal) { var %mimic.chance -1000 }
+    if (%supplyrun = on) { var %mimic.chance -1000 }
     if (%random.mimic.chance <= %mimic.chance) { $display.message($readini(translation.dat, system, ChestMimic), global) | $start.mimic.battle | return }
   }
 
