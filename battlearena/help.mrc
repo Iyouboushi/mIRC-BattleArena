@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 02/21/17
+;;;; Last updated: 03/14/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -270,8 +270,12 @@ alias view-info {
 
     var %cost.info.desc $iif(%info.cost != 0, [4Base Cost (before shop level)12 %info.cost $+ ], [4Skill is bought using Enhancement Points])
 
+    var %skill.needs.to.be.equipped [4This skill must be 12equipped4 in order to use in battle]
+
+
     $display.private.message([4Name12 $3 $+ ] [4Skill Type12 %info.type $+ ] %cost.info.desc %skill.current %skill.cooldown %info.actionpoints)
     $display.private.message.delay.custom([4Skill Info12 %info.desc $+ ],2)
+    if ($skill.needtoequip($3) = true) { $display.private.message.delay.custom(%skill.needs.to.be.equipped, 2) }
   }
 
 

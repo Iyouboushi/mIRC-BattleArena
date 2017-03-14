@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 02/13/16
+;;;; Last updated: 03/14/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -791,16 +791,24 @@ on 3:TEXT:!readignitions*:?: {
 on 3:TEXT:!skills*:#: {
   if ($2 = $null) { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, channel) | halt }
 
-  if ($2 = equip) { halt }
-  if (($2 = unequip) || ($2 = remove)) { halt }
+  if ($2 = equip) { $skill.equip($nick, $3) halt }
+  if (($2 = unequip) || ($2 = remove)) { $skill.unequip($nick, $3) | halt }
+  if ($2 = equipped) { 
+    if ($3 = $null) { $skill.equipped.list($nick, channel) | halt }
+    else { $skill.equipped.list($3, channel) | halt }
+  }
 
   else { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, private)  }
 }
 on 3:TEXT:!skills*:?: { 
   if ($2 = $null) { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, private) | halt }
 
-  if ($2 = equip) { halt }
-  if (($2 = unequip) || ($2 = remove)) { halt }
+  if ($2 = equip) { $skill.equip($nick, $3, private) | halt }
+  if (($2 = unequip) || ($2 = remove)) { $skill.unequip($nick, $3, private) | halt }
+  if ($2 = equipped) { 
+    if ($3 = $null) { $skill.equipped.list($nick, private) | halt }
+    else { $skill.equipped.list($3, private) | halt }
+  }
 
   else { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, private)  }
 }

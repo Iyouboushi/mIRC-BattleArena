@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/01/17
+;;;; Last updated: 03/14/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -138,8 +138,9 @@ alias skill.equipped.check {
   ; $2 = the skill being checked
 
   if ($readini($char($1), info, flag) = $null) { 
-    ; To be added in a later version
-    return false
+    var %player.equipped.skills $readini($char($1), skills, equipped)
+    if ($istok(%player.equipped.skills,$2,46) = $true) { return true }
+    else { return false }
   }
   else { return true }
 }
@@ -170,6 +171,9 @@ alias skill.speedup { $set_chr_name($1)
   if ($skillhave.check($1, speed) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private) | halt }
   if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
   $check_for_battle($1)
+
+  var %skill.name Speed
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
   if ($readini($char($1), skills, speed.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle., private)  | halt }
 
@@ -243,6 +247,10 @@ alias skill.elementalseal { $set_chr_name($1)
   if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
   $check_for_battle($1)
 
+  var %skill.name ElementalSeal
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ElementalSeal, !elemental seal, true)
 
@@ -281,6 +289,10 @@ alias skill.mightystrike { $set_chr_name($1)
   if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
 
   $check_for_battle($1)
+
+  var %skill.name MightyStrike
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, MightyStrike, !mighty strike, true)
@@ -322,6 +334,9 @@ alias skill.truestrike { $set_chr_name($1)
 
   $check_for_battle($1)
 
+  var %skill.name TrueStrike
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, truestrike, !true strike, true)
 
@@ -360,6 +375,10 @@ alias skill.manawall { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name ManaWall
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ManaWall, !mana wall, true)
 
@@ -397,6 +416,9 @@ alias skill.royalguard { $set_chr_name($1)
   if ($skillhave.check($1, royalguard) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
+
+  var %skill.name RoyalGuard
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, RoyalGuard, !royal guard, true)
@@ -491,6 +513,9 @@ alias skill.perfectdefense { $set_chr_name($1)
 
   $check_for_battle($1)
 
+  var %skill.name PerfectDefense
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, perfectdefense, !perfect defense, true)
 
@@ -527,6 +552,10 @@ alias skill.utsusemi { $set_chr_name($1)
   if ($skillhave.check($1, utsusemi) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
+
+  var %skill.name Utsusemi
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Utsusemi, !utsusemi, true)
@@ -581,6 +610,10 @@ alias skill.fullbring { $set_chr_name($1)
 
   $check_for_battle($nick)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+
+  var %skill.name FullBring
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   set %fullbring.type $readini($dbfile(items.db), $2, type) | set %fullbring.target $readini($dbfile(items.db), $2, FullbringTarget)
 
@@ -962,6 +995,9 @@ alias skill.doubleturn { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name Sugitekai
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, sugitekai, !sugitekai, true)
 
@@ -998,6 +1034,10 @@ alias skill.meditate { $set_chr_name($1)
   if ($skillhave.check($1, meditate) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
+
+  var %skill.name Meditate
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Meditate, !meditate, false)
@@ -1053,6 +1093,10 @@ alias skill.conserveTP { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name ConserveTP
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ConserveTP, !conserve tp, true)
 
@@ -1091,6 +1135,10 @@ alias skill.bloodboost { $set_chr_name($1)
   if ($skillhave.check($1, bloodboost) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
+
+  var %skill.name BloodBoost
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   ; Has bloodboost been used?
   if ($readini($char($1), skills, bloodboost.on) = on) { $display.message($readini(translation.dat, skill, SkillAlreadyUsed), private) | halt }
@@ -1167,6 +1215,9 @@ alias skill.bloodspirit { $set_chr_name($1)
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 
+
+  var %skill.name BloodSpirit
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
   $checkchar($1)
   if ($skillhave.check($1, bloodspirit) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
@@ -1251,6 +1302,10 @@ alias skill.drainsamba { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name DrainSamba
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   if ($readini($char($1), info, flag) = $null) { 
     var %tp.needed 15 | var %tp.current $readini($char($1), battle, tp)
     if (%tp.needed > %tp.current) { $display.message(4Error: %real.name does not have enough TP to use this skill!, private) | halt }
@@ -1303,6 +1358,10 @@ alias skill.formlessstrike { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name FormlessStrike
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   if ($readini($char($1), info, flag) = $null) { 
     set %tp.current $readini($char($1), battle, tp) | set %tp.needed $round($calc(%tp.current * .50),0)
     if (%tp.needed > %tp.current) { unset %tp.current | unset %tp.needed | $display.message(4Error: %real.name does not have enough TP to use this skill!, private) | halt }
@@ -1354,6 +1413,10 @@ alias skill.regen { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
   if ($skillhave.check($1, regen) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+
+  var %skill.name Regen
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   set %current.hp $readini($char($1), Battle, HP)  |  set %max.hp $readini($char($1), BaseStats, HP)
   if (%current.hp >= %max.hp) { $set_chr_name($1) | $display.message(3 $+ %real.name is already at full HP!, private) | halt }
@@ -1463,6 +1526,10 @@ alias skill.kikouheni { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name Kikouheni
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   var %weather.list $readini($dbfile(battlefields.db), weather, list)
   if ($2 !isin %weather.list) {
     if ($chr(046) isin %weather.list) { set %replacechar $chr(044) $chr(032)
@@ -1512,6 +1579,9 @@ alias skill.clone { $set_chr_name($1)
   if ((no-playerclones isin %battleconditions) && ($readini($char($1), info, flag) = $null)) {  $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
 
   $amnesia.check($1, skill) 
+
+  var %skill.name ShadowCopy
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
   if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
 
@@ -1667,6 +1737,10 @@ alias skill.steal { $set_chr_name($1)
   $check_for_battle($1)
   $person_in_battle($2)
 
+  var %skill.name Steal
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   var %target.flag $readini($char($2), info, flag)
   if (%target.flag != monster) { $set_chr_name($1) | $display.message(4 $+ %real.name can only steal from monsters!, private) | halt }
   if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
@@ -1795,6 +1869,10 @@ alias skill.analysis { $set_chr_name($1)
   if ($skillhave.check($1, analysis) = false) { $set_chr_name($nick) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private) | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1) | $person_in_battle($2) 
+
+  var %skill.name Analysis
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   var %analysis.flag $readini($char($2), info, flag) 
   if (%analysis.flag != monster) { $display.message($readini(translation.dat, errors, OnlyAnalyzeMonsters), private) | halt }
@@ -2045,6 +2123,10 @@ alias skill.cover { $set_chr_name($1)
     if ($skillhave.check($1, cover) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill),private) | halt }
   }
 
+  var %skill.name Cover
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1) | $person_in_battle($2) 
 
@@ -2184,6 +2266,9 @@ alias skill.aggressor { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name Aggressor
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
   if ($readini($char($1), skills, aggressor.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle., private) | halt }
 
   ; Decrease the action points
@@ -2230,6 +2315,9 @@ alias skill.defender { $set_chr_name($1)
   if ($skillhave.check($1, defender) = false) { $set_chr_name($nick) | $display.message($readini(translation.dat, errors, DoNotHaveSkill),private) | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
+
+  var %skill.name Defender
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
   if ($readini($char($1), skills, defender.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle.,private) | halt }
 
@@ -2480,6 +2568,10 @@ alias skill.holyaura { $set_chr_name($1)
   if ($skillhave.check($1, holyaura) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
+
+  var %skill.name HolyAura
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   if ((%darkness.turns = $null) && (%demonwall.fight != on)) { $set_chr_name($1) | $display.message($readini(translation.dat, Skill, HolyAuraAlreadyOn), private)  | halt }
 
@@ -2983,6 +3075,9 @@ alias skill.provoke { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1) | $person_in_battle($2) 
 
+  var %skill.name Provoke
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Provoke, !provoke, false)
 
@@ -3036,6 +3131,10 @@ alias skill.weaponlock { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1) | $person_in_battle($2) 
   if (($2 = $1) && ($is_charmed($1) = false))  { $display.message($readini(translation.dat, errors, Can'tAttackYourself),private) | unset %real.name | halt  }
+
+  var %skill.name WeaponLock
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, WeaponLock, !weapon lock, false)
@@ -3110,6 +3209,10 @@ alias skill.disarm { $set_chr_name($1)
   $check_for_battle($1) | $person_in_battle($2) 
   if (($2 = $1) && ($is_charmed($1) = false))  { $display.message($readini(translation.dat, errors, Can'tAttackYourself),private) | unset %real.name | halt  }
 
+  var %skill.name Disarm
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Disarm, !disarm, false)
 
@@ -3174,6 +3277,10 @@ alias skill.konzen-ittai { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name Konzen-ittai
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Konzen-ittai, !konzen-ittai, true)
 
@@ -3213,6 +3320,10 @@ alias skill.sealbreak { $set_chr_name($1)
 
   if ($skillhave.check($1, sealbreak) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill),private) | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+
+  var %skill.name SealBreak
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   if ((no-item isin %battleconditions) && (no-items isin %battleconditions))  { $display.message($readini(translation.dat, errors, SkillWon'tWorkWithSeal), private) | halt }
 
@@ -3264,6 +3375,10 @@ alias skill.magicmirror { $set_chr_name($1)
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, MagicMirror, !magicmirror, true)
 
+  var %skill.name MagicMirror
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   ; Check for the item "MirrorShard" and consume it, or display an error if they don't have any.
   set %check.item $readini($char($1), item_amount, MirrorShard)
   if ((%check.item = $null) || (%check.item <= 0)) { $display.message(4Error: %real.name does not have enough MirrorShards to perform this skill, private) | halt }
@@ -3303,6 +3418,10 @@ alias skill.gamble { $set_chr_name($1)
   if ($skillhave.check($1, gamble) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill),private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
+
+  var %skill.name Gamble
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Gamble, !gamble, true)
@@ -3469,6 +3588,10 @@ alias skill.thirdeye { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
+  var %skill.name ThirdEye
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ThirdEye, !third eye, true)
 
@@ -3513,6 +3636,10 @@ alias skill.scavenge { $set_chr_name($1)
   if ($skillhave.check($1, scavenge) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
+
+  var %skill.name Scavenge
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   ; Can we use scavenge again?
   if ($readini($char($1), skills, scavenge.on) = on) { $display.message($readini(translation.dat, skill, ScavengeAlreadyUsed), private) | halt }
@@ -3603,6 +3730,9 @@ alias skill.retaliation { $set_chr_name($1) |  $check_for_battle($1)
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
 
+  var %skill.name Retaliation
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Retaliation, !retaliation, true)
 
@@ -3644,6 +3774,10 @@ alias skill.justrelease { $set_chr_name($1)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
   $person_in_battle($2)
+
+  var %skill.name JustRelease
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
 
   var %target.flag $readini($char($2), info, flag)
   if (($readini($char($1), info, flag) = $null) && (%target.flag != monster)) { $set_chr_name($1) | $display.message(4 $+ %real.name can only Just Release on monsters!, private) | halt }

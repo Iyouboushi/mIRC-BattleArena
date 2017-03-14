@@ -1610,6 +1610,8 @@ Battle Arena Bot VERSIONS
 - Changed the skill and technique shops to be able to use Kill Coins as their currency to purchase. 
 - Changed SpawnAfterDeath to allow multiple things to spawn 
 - Changed AI vs AI battles so that the battle will end in a draw after 50 turns.
+- Changed active skills so that most of them have to be equipped in order to use in battle. There can only be 5 active skills
+  equipped at a time now. Use !skills equip skillname to equip or !skills remove skillname to remove.
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]

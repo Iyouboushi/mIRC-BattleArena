@@ -333,6 +333,122 @@ skillhave.check {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays which active
+; skills are equipped
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+skill.equipped.list {
+  ; $1 = the person we're checking
+
+  $checkchar($1)
+  var %player.equipped.skills $readini($char($1), skills, equipped)
+  if (%player.equipped.skills = $null) { 
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, HasNoEquippedSkills)) | halt }
+    else { $display.message($readini(translation.dat, system, HasNoEquippedSkills),private) | halt }
+  }
+  else {
+
+    if ($chr(046) isin %player.equipped.skills) { var %replacechar $chr(044) $chr(032) |  var %player.equipped.skills.display $replace(%player.equipped.skills, $chr(046), %replacechar)  }
+
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewEquippedSkills)) | halt }
+    else { $display.message($readini(translation.dat, system, ViewEquippedSkills), private) }
+  }
+
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Equip an active skill
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+skill.equip {
+  ; $1 = the player
+  ; $2 = the skill
+  ; $3 = private/null
+
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
+
+  var %player.equipped.skills $readini($char($1), skills, equipped)
+
+  ; First things first, does the player own this skill?
+  if ($skillhave.check($1, $2) = false) { 
+
+    ; If the skill was left on the equipped list and the player no longer has the skill (such as selling it)
+    ; remove the skill from the equipped list.
+    if ($istok(%player.equipped.skills,$2,46) = $true) { 
+      var %skill.tok.to.remove $findtok(%player.equipped.skills, $2, 46)
+      var %player.equipped.skills = $deltok(%player.equipped.skills, %skill.tok.to.remove, 46)
+      if (%player.equipped.skills = $null) { remini $char($1) skills equipped } 
+      else {  writeini $char($1) skills Equipped %player.equipped.skills }
+    }
+
+    ; Display the error message
+    $display.private.message($readini(translation.dat, errors, PlayerDoesNotOwnSkill)) 
+    halt 
+  }
+
+  ; Does this skill need to be equipped?
+  if ($skill.needtoequip($2) != true) { 
+    if ($3 = private) { $display.private.message($readini(translation.dat, errors, ThisSkillDoesn'tNeedToBeEquipped)) }
+    else { $display.message($readini(translation.dat, errors, ThisSkillDoesn'tNeedToBeEquipped), private) }
+    halt 
+  }
+
+  ; Is it already equipped?
+  if ($istok(%player.equipped.skills,$2,46) = $true) {  
+    $display.private.message($readini(translation.dat, errors, ThisSkillIsAlreadyEquipped))
+    halt 
+  }
+
+  ; Does the player already have 5 skills equipped?
+  if ($numtok(%player.equipped.skills, 46) = 5) { 
+    $display.private.message($readini(translation.dat, errors, MaxSkillsEquipped))
+    halt 
+  }
+
+  ; Go ahead and equip it.
+  %player.equipped.skills = $addtok(%player.equipped.skills,$2,46) 
+  writeini $char($1) skills Equipped %player.equipped.skills
+
+  if ($3 = private) { $display.private.message($readini(translation.dat, errors, SkillHasBeenEquipped)) }
+  else { $display.message($readini(translation.dat, errors, SkillHasBeenEquipped), private) }
+
+  unset %player.equipped.skills
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Unequip an active skill
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+skill.unequip {
+  ;  $1 = the player
+  ; $2 = the skill
+  ; $3 = private/null
+
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
+
+  var %player.equipped.skills $readini($char($1), skills, equipped)
+
+  ; Is it equipped?
+  if ($istok(%player.equipped.skills,$2,46) = $false) {  
+    $display.private.message($readini(translation.dat, errors, SkillNotEquipped))
+    halt 
+  }
+
+
+  ; Go ahead and unequip it.
+  if ($istok(%player.equipped.skills,$2,46) = $true) { 
+    var %skill.tok.to.remove $findtok(%player.equipped.skills, $2, 46)
+    var %player.equipped.skills = $deltok(%player.equipped.skills, %skill.tok.to.remove, 46)
+    if (%player.equipped.skills = $null) { remini $char($1) skills equipped } 
+    else {  writeini $char($1) skills Equipped %player.equipped.skills }
+  }
+
+  if ($3 = private) { $display.private.message($readini(translation.dat, errors, SkillHasBeenUnEquipped)) }
+  else { $display.message($readini(translation.dat, errors, SkillHasBeenUnEquipped), private) }
+
+  unset %player.equipped.skills
+
+
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Check for the treasurehunter
 ; skill.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

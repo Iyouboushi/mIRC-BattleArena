@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/14/17
+;;;; Last updated: 03/14/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1723,6 +1723,10 @@ active.skills.list {
       ; add the skill level to the skill list
       inc %total.skills 1
       var %skill_to_add %skill.name $+ $chr(040) $+ %skill_level $+ $chr(041) 
+
+      if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = true)) { var %skill_to_add 2[3 $+ %skill_to_add $+ 2]3 }
+
+
       if (%total.skills > 13) { %active.skills.list2 = $addtok(%active.skills.list2,%skill_to_add,46) }
       else { %active.skills.list = $addtok(%active.skills.list,%skill_to_add,46) }
     }

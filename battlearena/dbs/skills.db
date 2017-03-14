@@ -164,6 +164,7 @@ Type=Active
 Max=100
 Info=This skill increases the user's speed when performed.  Increased levels increases the amount of speed when used. Using this skill will consume 10-25% HP based on the skill's level.
 ActionPoints=5
+NeedToEquip=true
 
 [ElementalSeal]
 Cost=425
@@ -173,6 +174,7 @@ Info=This skill enhances your next magical spell. Increased levels decreases the
 Cooldown=11
 LevelAdjustsCooldown=true
 ActionPoints=3
+NeedToEquip=true
 
 [MightyStrike]
 Cost=450
@@ -181,6 +183,7 @@ Max=5
 Info=This skill enhances your next attack done with a weapon. Increased levels decreases the amount of time between uses.
 Cooldown=11
 ActionPoints=3
+NeedToEquip=true
 
 [TrueStrike]
 Cost=500
@@ -189,6 +192,7 @@ Max=5
 Info=This skill makes it so your next attack cannot be countered, dodged or parried. This skill will not allow your attacks to hit through shadows, royal guard or mana wall. Increased levels decreases the amount of time between uses.
 Cooldown=11
 ActionPoints=2
+NeedToEquip=true
 
 [ManaWall]
 Cost=450
@@ -197,6 +201,7 @@ Max=6
 Info=This skill reduces the next magic attack used against you to 0.  Increased levels decreases the amount of time between uses.
 Cooldown=11
 ActionPoints=2
+NeedToEquip=true
 
 [RoyalGuard]
 Cost=450
@@ -205,6 +210,7 @@ Max=6
 Info=This skill reduces the next physical attack used against you to 0.  Increased levels decreases the amount of time between uses. The damage blocked with this skill on will be added to your royal guard meter.
 Cooldown=11
 ActionPoints=2
+NeedToEquip=true
 
 [PerfectDefense]
 Cost=1000
@@ -213,6 +219,7 @@ Max=1
 Info=This skill reduces the next attack used against you to 0.
 Cooldown=20
 ActionPoints=2
+NeedToEquip=true
 
 [Fullbring]
 Cost=350
@@ -220,6 +227,7 @@ Type=Active
 Max=5
 Info=This skill allows you to draw out the souls within items and turn single-target items into AOEs.  Fullbring will consume the item you use.
 ActionPoints=2
+NeedToEquip=true
 
 [Sugitekai]
 Cost=900
@@ -228,6 +236,7 @@ Max=5
 Info=This skill allows you to get two turns on your next turn after using this skill. Increased levels decreases the amount of time between uses.
 Cooldown=16
 ActionPoints=2
+NeedToEquip=true
 
 [Meditate]
 Cost=400
@@ -236,6 +245,7 @@ Max=10
 Info=This skill will give you (level * 5) TP back to you instantly.
 Cooldown=5
 ActionPoints=2
+NeedToEquip=true
 
 [ConserveTP]
 Cost=500
@@ -244,6 +254,7 @@ Max=5
 Info=This skill will reduce the cost of your next technique to 0 TP. Increased levels decreases the amount of time between uses.
 Cooldown=16
 ActionPoints=2
+NeedToEquip=true
 
 [BloodBoost]
 Cost=1000
@@ -251,6 +262,7 @@ Type=Active
 Max=10
 Info=This skill will consume (3 * skill level)% hp to give you a (skill level * 2)% boost to your STR.
 ActionPoints=5
+NeedToEquip=true
 
 [BloodSpirit]
 Cost=1000
@@ -258,6 +270,7 @@ Type=Active
 Max=10
 Info=This skill will consume (3 * skill level)% hp to give you a (skill level * 2)% boost to your INT.
 ActionPoints=5
+NeedToEquip=true
 
 [DrainSamba]
 Cost=750
@@ -266,6 +279,7 @@ Max=10
 Info=This skill will consume 10 TP to activate the "drain" status on the user, allowing him/her to gain HP back with every melee attack.  The amount of turns it will last is the level of your skill.  Note that the drain effect will not work on the undead (vampires, skeletons, zombies).
 Cooldown=16
 ActionPoints=2
+NeedToEquip=true
 
 [Regen]
 Cost=700
@@ -274,6 +288,7 @@ Max=20
 Info=This skill will give you the HP regeneration effect.  Every turn you will regenerate ((max hp * skill level %) / 2)) HP back.  The effect will wear off when you reach your maximum HP or if you die.
 Cooldown=16
 ActionPoints=2
+NeedToEquip=true
 
 [Kikouheni]
 Cost=650
@@ -282,6 +297,7 @@ Max=6
 Info=This skill allows the user to change the current weather.  Increased levels of this skill will reduce the amount of time between uses.
 Cooldown=11
 ActionPoints=1
+NeedToEquip=true
 
 [ShadowCopy]
 Cost=1500
@@ -289,6 +305,7 @@ Type=Active
 Info=This skill will create a shadow clone of yourself that has half your current HP to fight in battle with you as an NPC.  It can only be used once per battle, even if the clone dies.
 Max=1
 ActionPoints=5
+NeedToEquip=true
 
 [Utsusemi]
 Cost=500
@@ -297,6 +314,7 @@ Info=This skill will create 2 shadows that will absorb all types of attacks.  In
 Max=10
 Cooldown=20
 ActionPoints=3
+NeedToEquip=true
 
 [Steal]
 Cost=250
@@ -305,6 +323,7 @@ Info=This skill will let you try to steal an item or red orbs from a target.  Ea
 Max=40
 Cooldown=6
 ActionPoints=2
+NeedToEquip=true
 
 [Analysis]
 Cost=$iif($readini($char($1), skills, Analysis < 6), 550, 2500)
@@ -320,6 +339,7 @@ Info=This skill allows you to jump in front of an attack and cover an ally of yo
 Max=1
 Cooldown=3
 ActionPoints=1
+NeedToEquip=true
 
 [Aggressor]
 Cost=500
@@ -327,6 +347,7 @@ Type=Active
 Info=When used, this skill will take (skill level * 10%) of your defense and add it to your strength but will leave your defense at 5.
 Max=10
 ActionPoints=3
+NeedToEquip=true
 
 [Defender]
 Cost=500
@@ -334,6 +355,7 @@ Type=Active
 Info=When used, this skill will take (skill level * 10%) of your strength and add it to your defense but will leave your strength at 5.
 Max=10
 ActionPoints=3
+NeedToEquip=true
 
 [HolyAura]
 Cost=1000
@@ -350,6 +372,7 @@ Info=This skill allows you to provoke an enemy into attacking you instead of ano
 Max=1
 Cooldown=3
 ActionPoints=1
+NeedToEquip=true
 
 [Disarm]
 Cost=500
@@ -358,6 +381,7 @@ Info=This skill will let you try to disarm a target.  Each level increases the p
 Max=30
 Cooldown=11
 ActionPoints=2
+NeedToEquip=true
 
 [WeaponLock]
 Cost=1000
@@ -366,6 +390,7 @@ Info=This skill will consume the item "Sokubaku" and lock a target's weapon for 
 Max=1
 CoolDown=11
 ActionPoints=2
+NeedToEquip=true
 
 [Konzen-Ittai]
 Cost=5000
@@ -374,6 +399,7 @@ Info=This skill, when active, will allow you to perform a Renkei by yourself wit
 Max=1
 CoolDown=11
 ActionPoints=2
+NeedToEquip=true
 
 [SealBreak]
 Cost=2000
@@ -390,6 +416,7 @@ Info=This skill will consume a MirrorShard to create a magical reflective barrie
 Max=5
 Cooldown=16
 ActionPoints=2
+NeedToEquip=true
 
 [Gamble]
 Cost=10000
@@ -398,6 +425,7 @@ Info=This skill will consume 1,000 orbs in exchange for a random event to happen
 Max=5
 Cooldown=16
 ActionPoints=1
+NeedToEquip=true
 
 [Thirdeye]
 Cost=500
@@ -406,6 +434,7 @@ Info=This skill will increase the odds of dodging physical attacks for 1-2 attac
 Max=10
 Cooldown=21
 ActionPoints=2
+NeedToEquip=true
 
 [Scavenge]
 Cost=5000
@@ -420,6 +449,7 @@ Type=Active
 Info=This skill will unleash the stored Royal Guard meter at an enemy.  The damage done is (skill level)% of your Royal Guard meter.  The damage done with this skill cannot be completely resisted or dodged.  Royal Guard meter is built up by successfully blocking attacks using Royal Guard.
 Max=90
 ActionPoints=3
+NeedToEquip=true
 
 [FormlessStrike]
 Cost=750
@@ -428,6 +458,7 @@ Max=10
 Info=This skill will consume 50% of your TP to activate the ability to hurt ethereal monsters with every melee attack.  The amount of turns it will last is the level of your skill.
 Cooldown=15
 ActionPoints=2
+NeedToEquip=true
 
 [Snatch]
 Cooldown=3
@@ -440,6 +471,7 @@ Info=This skill will guarantee the next melee attack towards you will be counter
 Max=5
 Cooldown=21
 ActionPoints=2
+NeedToEquip=true
 
 [Lockpicking]
 Cost=500

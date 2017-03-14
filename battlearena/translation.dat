@@ -142,6 +142,8 @@ ViewSongs=$chr(3) $+ 3 $+  $+ %real.name knows how to perform the following so
 ViewEquippedAccessory=$chr(3) $+ 3 $+  $+ %real.name has the following accessory equipped $equipment.color(%equipped.accessory) $+  $+ %equipped.accessory
 ViewEquippedAccessories=$chr(3) $+ 3 $+  $+ %real.name has the following accessories equipped [Slot 1: $equipment.color(%equipped.accessory) $+  $+ %equipped.accessory $+ 3 $+ ] [Slot 2: $equipment.color(%equipped.accessory2) $+  $+ %equipped.accessory2 $+ 3 $+ ]
 ViewRunes=$chr(3) $+ 3 $+  $+ %real.name has the following runes %runes.list
+ViewEquippedSkills=$chr(3) $+ 3 $+  $+ $get_chr_name($1)  has the following active skills equipped:2 %player.equipped.skills.display 3[Current Skill Slots Used: $numtok(%player.equipped.skills,46) / 5]
+HasNoEquippedSkills=$chr(3) $+ 3 $+  $+ $get_chr_name($1)  has no equipped active skills. [Skill Slots Open: 5 / 5] 
 HasNoAccessories=$chr(3) $+ 3 $+  $+ %real.name currently has no accessories. 
 HasNoSongs=$chr(3) $+ 3 $+  $+ %real.name does not currently know any songs. 
 HasNoRunes=$chr(3) $+ 3 $+  $+ %real.name currently has no runes.
@@ -624,8 +626,16 @@ GearsetError=$chr(3) $+ 4 $+ Error: To set a gear set use !gearset set [1-3]
 GearsetNumberDoesNotExist=$chr(3) $+ 4 $+ Error: That gear set number does not exist and cannot be equipped.
 GoldOrbNoLongerWorks=$chr(3) $+ 4 $+ The Gold Orb does not seem to work as $get_chr_name($1) has already used three of them in this battle.
 LvlTooLowToEquipWpn=$chr(3) $+ 4 $+ $get_chr_name($1) is too weak to wield $2 $+ ! [level %wpn.lvl needed]
-SkillNeedsToBeEquippedToUse=$chr(3) $+ 4 $+ This skill needs to be equipped outside of battle in order to be used
 ShopLevelCannotGoLower=$chr(3) $+ 4 $+ Your shop level is already at its minimum amount and cannot be lowered at this time.
+SkillNeedsToBeEquippedToUse=$chr(3) $+ 4 $+ This skill needs to be equipped outside of battle in order to be used. Use !skills equip %skill.name to equip it
+PlayerDoesNotOwnSkill=$chr(3) $+ 4 $+ You do not own this skill
+ThisSkillDoesn'tNeedToBeEquipped=$chr(3) $+ 4 $+ The $2 skill does not need to be equipped in order to be used.
+ThisSkillIsAlreadyEquipped=$chr(3) $+ 4 $+ You already have the $2 skill equipped.
+MaxSkillsEquipped=$chr(3) $+ 4 $+ You already have 5 skills equipped and cannot equip any others. Use !skills unequip skillname to remove one to free a slot.
+SkillHasBeenEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has equipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / 5]
+SkillNotEquipped=$chr(3) $+ 4 $+ The $2 skill is not currently equipped.
+SkillHasBeenUnEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has unequipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / 5]
+
 
 =======================
 Battle Related Messages
