@@ -397,8 +397,8 @@ skill.equip {
     halt 
   }
 
-  ; Does the player already have 5 skills equipped?
-  if ($numtok(%player.equipped.skills, 46) = 5) { 
+  ; Does the player already have max skills equipped?
+  if ($numtok(%player.equipped.skills, 46) = $return.skill.slots($1)) { 
     $display.private.message($readini(translation.dat, errors, MaxSkillsEquipped))
     halt 
   }
@@ -643,6 +643,21 @@ return.killcoin.count {
   var %kill.coins $readini($char($1), stuff, killcoins) 
   if (%kill.coins = $null) { var %kill.coins 0 | writeini $char($1) stuff killcoins 0 }
   return %kill.coins
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks a person's max
+; skill slots
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+return.skill.slots {
+  ; $1 = the person we're checking
+
+  var %skill.slots 5
+  var %skill.slot.enhancements $readini($char($1), enhancements, SkillSlots)
+
+  if (%skill.slot.enhancements != $null) { inc %skill.slots %skill.slot.enhancements }
+
+  return %skill.slots
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
