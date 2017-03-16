@@ -323,7 +323,6 @@ Info=This skill will let you try to steal an item or red orbs from a target.  Ea
 Max=40
 Cooldown=6
 ActionPoints=2
-NeedToEquip=true
 
 [Analysis]
 Cost=$iif($readini($char($1), skills, Analysis < 6), 550, 2500)
