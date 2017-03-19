@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 02/13/17
+;;;; Last updated: 03/19/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -363,7 +363,7 @@ skill.equip {
   ; $2 = the skill
   ; $3 = private/null
 
-  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
+  $check_for_battle($1)
 
   var %player.equipped.skills $readini($char($1), skills, equipped)
 
@@ -411,6 +411,9 @@ skill.equip {
   else { $display.message($readini(translation.dat, errors, SkillHasBeenEquipped), private) }
 
   unset %player.equipped.skills
+
+  ; if the battle is on..
+  if (%battleis = on) {  $check_for_double_turn($1)   }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -420,8 +423,6 @@ skill.unequip {
   ;  $1 = the player
   ; $2 = the skill
   ; $3 = private/null
-
-  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tDoThisInBattle), private) | halt }
 
   var %player.equipped.skills $readini($char($1), skills, equipped)
 
