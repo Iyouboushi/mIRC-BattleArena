@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/19/17
+;;;; Last updated: 03/20/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -685,7 +685,8 @@ player.status { unset %all_status | unset %all_skills | $set_chr_name($1)
     $bar_check($1)
     unset %resists
 
-    if ($readini($char($1), status, en-spell) != none) { var %enspell $readini($char($1), status, en-spell) | $status_message_check(12en- $+ %enspell) }
+    var %enspell $readini($char($1), status, en-spell)
+    if ((%enspell != $null) && (%enspell != none)) { $status_message_check(12en- $+ %enspell) }
 
     $player.skills.list($1)
 
