@@ -126,7 +126,7 @@ SpellmasterXP=1
 [modifiers]
 Heal=water.ice
 Earth=70
-Fire=200
+Fire=120
 Wind=70
 Water=200
 Ice=200
