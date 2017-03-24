@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 02/13/17
+;;;; Last updated: 03/24/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -445,6 +445,12 @@ on 50:TEXT:!toggle auction house topic change*:*:{
     var %new.topic %current.topic
     /topic %battlechan %new.topic
   }
+}
+
+; Bot admins can set the starting skill slots
+ON 50:TEXT:!set skill slots*:*: {
+  if ($4 !isnum 1-1000) { $display.private.message(4Invalid chance number. Valid numbers are 1-1000) | halt }
+  writeini system.dat system StartingSkillSlots $4 | $display.private.message(3Starting Skill Slots set to: $4)
 }
 
 ; Bot admins can set a chance of mimics appearing

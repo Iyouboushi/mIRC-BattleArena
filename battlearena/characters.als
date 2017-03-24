@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/20/17
+;;;; Last updated: 03/24/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -653,7 +653,9 @@ return.killcoin.count {
 return.skill.slots {
   ; $1 = the person we're checking
 
-  var %skill.slots 5
+  var %skill.slots $return.systemsetting(StartingSkillSlots)
+  if (%skill.slots = null) { var %skill.slots 5 }
+
   var %skill.slot.enhancements $readini($char($1), enhancements, SkillSlots)
 
   if (%skill.slot.enhancements != $null) { inc %skill.slots %skill.slot.enhancements }
