@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/14/17
+;;;; Last updated: 03/27/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -139,7 +139,14 @@ alias skill.equipped.check {
 
   if ($readini($char($1), info, flag) = $null) { 
     var %player.equipped.skills $readini($char($1), skills, equipped)
+
+    ; The skill is equipped and can be used. Return true
     if ($istok(%player.equipped.skills,$2,46) = $true) { return true }
+
+    ; If the skill can be used while in a certain style that the player has equipped, return true
+    else if ($return.playerstyle($1) = $readini($dbfile(skills.db), $2, style)) { return true }
+
+    ; Not equipped, not a style skill, return false
     else { return false }
   }
   else { return true }
