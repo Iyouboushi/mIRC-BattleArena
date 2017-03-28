@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 02/11/16
+;;;; Last updated: 03/27/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -3400,6 +3400,12 @@ formula.techdmg.player.formula_2.0 {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   var %flag $readini($char($1), info, flag)
 
+  ; If the tech is a spell let's boost or nerf it depending on style used
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
+  }
+
   if ((%flag = $null) || (%flag = npc)) { 
     if ($readini(system.dat, system, IgnoreDmgCap) != true) { 
       if (%attack.damage > 40000)  { 
@@ -3727,6 +3733,12 @@ formula.techdmg.player.formula_2.5 {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   var %flag $readini($char($1), info, flag)
 
+  ; If the tech is a spell let's boost or nerf it depending on style used
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
+  }
+
   $cap.damage($1, $3, melee)
 
   if (%attack.damage <= 1) {
@@ -4005,6 +4017,12 @@ formula.techdmg.player.formula_1.0 {
 
   ; And let's get the final attack damage..
   dec %attack.damage %enemy.defense
+
+  ; If the tech is a spell let's boost or nerf it depending on style used
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
+  }
 
   set %starting.damage %attack.damage
 
@@ -4285,6 +4303,12 @@ formula.techdmg.player.formula_3.1 {
   ;;; ADJUST THE TOTAL DAMAGE.
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   var %flag $readini($char($1), info, flag)
+
+  ; If the tech is a spell let's boost or nerf it depending on style used
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
+  }
 
   $cap.damage($1, $3, tech)
 
@@ -4598,6 +4622,12 @@ formula.techdmg.player.formula_3.0 {
   ;;; ADJUST THE TOTAL DAMAGE.
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   var %flag $readini($char($1), info, flag)
+
+  ; If the tech is a spell let's boost or nerf it depending on style used
+  if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
+  }
 
   $calculate_attack_leveldiff($1, $3)
   $cap.damage($1, $3, tech)

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/13/17
+;;;; Last updated: 03/27/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3790,7 +3790,7 @@ offensive.style.check {
   var %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
 
   if (%current.playerstyle = WeaponMaster) { 
-    if (($3 = melee) || ($3 = tech)) {
+    if ($3 = melee) {
       $mastery_check($1, $2)
 
       var %amount.to.increase $calc(.05 * %current.playerstyle.level)
