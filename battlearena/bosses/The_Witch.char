@@ -55,7 +55,7 @@ Streak=2000
 IgnoreDrain=true
 CanFlee=false
 JustReleaseDefense=100
-DeathConditions=Renkei
+DeathConditions=$iif(%battle.type = torment, Tech.Renkei, Renkei)
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
@@ -153,8 +153,8 @@ Meteor=$calc(1 + $current.battlestreak)
 Witch'sMagic=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 
 [Styles]
-Equipped=Wrestlemania
-Wrestlemania=10
+Equipped=SpellMaster
+SpellMaster=10
 
 [NaturalArmor]
 Name=Chaotic Defense

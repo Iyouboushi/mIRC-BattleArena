@@ -26,10 +26,10 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a fish-like monster that now wears black armor with a heart on the chest along with white gloves and pointed boots. Her eye turns white with a black sclera and no longer has an eye patch over the lefteye, which emits a flashng light at random.
+Char=is a fish-like monster that now wears black armor with a heart on the chest along with white gloves and pointed boots. Her eye turns white with a black sclera and no longer has an eye patch over the left eye, which emits a flashng light at random.
 Rage=NGAAAAAAAAAAAAAHHHHHHHHHHHH!
 BossQuote=You're gonna have to try harder than THAT!
-DeathMessage=says, "I WON'T DIE! I WON'T... DIE... I... WON'T... DIE... I... WON'T... I... ..."
+DeathMessage=shouts out, "I WON'T DIE! I WON'T... DIE... I... WON'T... DIE... I... WON'T... I... ..."
 
 
 [Stuff]

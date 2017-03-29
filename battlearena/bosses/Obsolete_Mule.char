@@ -57,6 +57,7 @@ DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
+BattleStats=ignoreTP
 
 [monster]
 type=human
