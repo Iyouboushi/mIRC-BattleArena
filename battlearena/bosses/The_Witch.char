@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=4000
+Hp=6000
 Tp=4000
 Str=10268
 Def=10268
@@ -10,7 +10,7 @@ Name=The Witch
 
 
 [Battle]
-Hp=4000
+Hp=6000
 Tp=4000
 Str=10268
 Def=10268
@@ -55,7 +55,7 @@ Streak=2000
 IgnoreDrain=true
 CanFlee=false
 JustReleaseDefense=100
-DeathConditions=$iif(%battle.type = torment, Tech.Renkei, Renkei)
+DeathConditions=$iif(%battle.type = torment, Tech.Melee, Tech)
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
@@ -101,9 +101,7 @@ sleep=no
 stun=no
 MPRegenerating=no
 auto-regen=yes
-revive=yes
-invincible=$iif($readini($char(The_Witch), status, revive) = yes, yes, no)
-invincible.timer=3
+revive=no
 
 [Weapons]
 Equipped=Witch'sMagic
@@ -158,8 +156,8 @@ SpellMaster=10
 
 [NaturalArmor]
 Name=Chaotic Defense
-Max=$iif(%battle.type = torment, 1500000, 5000)
-Current=5000
+Max=$iif(%battle.type = torment, 1000000, 7000)
+Current=7000
 
 [Ignitions]
 ManaFont=1

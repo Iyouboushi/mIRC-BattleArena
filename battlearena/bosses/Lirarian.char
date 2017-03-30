@@ -70,7 +70,7 @@ IgnoreOutpost=true
 IgnoreElementalMessage=true
 JustReleaseDefense=100
 BaseStats=ignoreTP
-
+ActionsPerTurn=$iif($readini($char(Lirarian), status, ignition.on) = on, $rand(1,2), 1)
 
 [Status]
 Poison=no
