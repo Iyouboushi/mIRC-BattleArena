@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 12/14/16
+;;;; Last updated: 04/03/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1619,6 +1619,9 @@ alias tech.points {
 ; and compares to spell
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias spell.weather.check { 
+
+  if ($return.playerstyle($1) != spellmaster) { return }
+
   var %spell.element $readini($dbfile(techniques.db), $3, element)
   if (%spell.element = $null) { return }
   var %current.weather $readini($dbfile(battlefields.db), weather, current)
