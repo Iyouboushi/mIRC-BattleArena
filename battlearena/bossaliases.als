@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 02/25/17
+;;;; Last updated: 04/05/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1772,10 +1772,10 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) basestats hp %base.hp.tp
   writeini $char(%dragonhunt.file.name) basestats tp %base.hp.tp
 
-  writeini $char(%dragonhunt.file.name) battle str $rand(19,35)
-  writeini $char(%dragonhunt.file.name) battle def $rand(32,35)
-  writeini $char(%dragonhunt.file.name) battle int $rand(25,30)
-  writeini $char(%dragonhunt.file.name) battle spd $rand(18,25)
+  writeini $char(%dragonhunt.file.name) battle str $rand(30,35)
+  writeini $char(%dragonhunt.file.name) battle def $rand(40,50)
+  writeini $char(%dragonhunt.file.name) battle int $rand(20,30)
+  writeini $char(%dragonhunt.file.name) battle spd $rand(21,25)
 
   writeini $char(%dragonhunt.file.name) weapons equipped DragonFangs
   writeini $char(%dragonhunt.file.name) weapons DragonFangs %dragon.level
@@ -1870,6 +1870,8 @@ dragonhunt.createfile {
   if (%dragon.level > 500) { inc %actions.per.turn 2 }
   writeini $char(%dragonhunt.file.name) Info ActionsPerTurn %actions.per.turn
 
+  ; Add en-spell for dragons that are 300+
+  if (%dragon.level >= 300) {  writeini $char($1) status en-spell %dragon.element }
 
   $boost_monster_hp(%dragonhunt.file.name, dragonhunt, %dragon.level)
   $levelsync(%dragonhunt.file.name, %dragon.level)
