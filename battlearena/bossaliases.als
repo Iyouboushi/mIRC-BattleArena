@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 04/05/17
+;;;; Last updated: 04/07/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1871,7 +1871,7 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) Info ActionsPerTurn %actions.per.turn
 
   ; Add en-spell for dragons that are 300+
-  if (%dragon.level >= 300) {  writeini $char($1) status en-spell %dragon.element }
+  if (%dragon.level >= 300) {  writeini $char(%dragonhunt.file.name) status en-spell %dragon.element }
 
   $boost_monster_hp(%dragonhunt.file.name, dragonhunt, %dragon.level)
   $levelsync(%dragonhunt.file.name, %dragon.level)
