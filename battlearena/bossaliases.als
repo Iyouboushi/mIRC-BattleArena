@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 04/07/17
+;;;; Last updated: 04/08/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1870,9 +1870,6 @@ dragonhunt.createfile {
   if (%dragon.level > 500) { inc %actions.per.turn 2 }
   writeini $char(%dragonhunt.file.name) Info ActionsPerTurn %actions.per.turn
 
-  ; Add en-spell for dragons that are 300+
-  if (%dragon.level >= 300) {  writeini $char(%dragonhunt.file.name) status en-spell %dragon.element }
-
   $boost_monster_hp(%dragonhunt.file.name, dragonhunt, %dragon.level)
   $levelsync(%dragonhunt.file.name, %dragon.level)
   writeini $char(%dragonhunt.file.name) basestats str $readini($char(%dragonhunt.file.name), battle, str)
@@ -1881,6 +1878,9 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) basestats spd $readini($char(%dragonhunt.file.name), battle, spd)
   $fulls(%dragonhunt.file.name, elderdragon) 
   $levelsync(%dragonhunt.file.name, %dragon.level)
+
+  ; Add en-spell for dragons that are 500+
+  if (%dragon.level >= 500) {  echo -a writing en-spell %dragon.element | writeini $char(%dragonhunt.file.name) status en-spell %dragon.element }
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%dragonhunt.file.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %dragonhunt.file.name
   $set_chr_name(%dragonhunt.file.name)
