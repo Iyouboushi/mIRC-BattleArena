@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/27/17
+;;;; Last updated: 04/10/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -790,7 +790,9 @@ boost_monster_hp {
   if ($return_winningstreak <= 10) { inc %hp.modifier $calc(.05 * $return_winningstreak) }
   if (($return_winningstreak > 10) && ($return_winningstreak <= 200)) { inc %hp.modifier $calc(.02 * $return_winningstreak) }
   if (($return_winningstreak > 200) && ($return_winningstreak <= 500)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
-  if ($return_winningstreak > 5000) { var %hp.modifier .0035 }
+  if (($return_winningstreak > 500) && ($return_winningstreak <= 1000)) {  inc %hp.modifier $calc(.0035 * $return_winningstreak) }
+  if (($return_winningstreak > 1000) && ($return_winningstreak <= 5000)) {  inc %hp.modifier $calc(.0045 * $return_winningstreak) }
+  if ($return_winningstreak > 5000) { var %hp.modifier .0055 }
 
   if (%battle.type = boss) {
     inc %hp.modifier .08 
@@ -798,6 +800,8 @@ boost_monster_hp {
   }
   if ((%battle.type = defendoutpost) && (%darkness.turns = 1)) { inc %hp.modifier 1.01 }
   if (%battle.type = assault) { dec %hp.modifier .06 }
+
+  if (%battle.type = dungeon) { inc %hp.modifier .05 }
 
   if (%battle.type = ai) {  
     if (%ai.battle.level > 500) { inc %hp.modifier 1 }
@@ -819,8 +823,8 @@ boost_monster_hp {
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
-  if ((%hp > 20000) && (%battle.type != dragonhunt)) { var %hp $round($calc(20000 + (%hp * .02)),0) }
-  if ((%hp > 25000) && (%battle.type = dragonhunt)) { var %hp $round($calc(25000 + (%hp * .25)),0) }
+  if ((%hp > 25000) && (%battle.type != dragonhunt)) { var %hp $round($calc(25000 + (%hp * .025)),0) }
+  if ((%hp > 35000) && (%battle.type = dragonhunt)) { var %hp $round($calc(35000 + (%hp * .25)),0) }
 
   if (%battle.type = torment) {
     var %torment.hp.multiplier %torment.level
