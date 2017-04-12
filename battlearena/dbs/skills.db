@@ -165,6 +165,7 @@ Max=100
 Info=This skill increases the user's speed when performed.  Increased levels increases the amount of speed when used. Using this skill will consume 10-25% HP based on the skill's level.
 ActionPoints=5
 NeedToEquip=true
+Style=Trickster
 
 [ElementalSeal]
 Cost=425
@@ -175,6 +176,7 @@ Cooldown=11
 LevelAdjustsCooldown=true
 ActionPoints=3
 NeedToEquip=true
+Style=Spellmaster
 
 [MightyStrike]
 Cost=450
@@ -184,6 +186,7 @@ Info=This skill enhances your next attack done with a weapon. Increased levels d
 Cooldown=11
 ActionPoints=3
 NeedToEquip=true
+Style=WeaponMaster
 
 [TrueStrike]
 Cost=500
@@ -193,6 +196,7 @@ Info=This skill makes it so your next attack cannot be countered, dodged or parr
 Cooldown=11
 ActionPoints=2
 NeedToEquip=true
+Style=WeaponMaster
 
 [ManaWall]
 Cost=450
@@ -202,6 +206,7 @@ Info=This skill reduces the next magic attack used against you to 0.  Increased 
 Cooldown=11
 ActionPoints=2
 NeedToEquip=true
+Style=Spellmaster
 
 [RoyalGuard]
 Cost=450
@@ -211,6 +216,7 @@ Info=This skill reduces the next physical attack used against you to 0.  Increas
 Cooldown=11
 ActionPoints=2
 NeedToEquip=true
+Style=Guardian
 
 [PerfectDefense]
 Cost=1000
@@ -220,6 +226,7 @@ Info=This skill reduces the next attack used against you to 0.
 Cooldown=20
 ActionPoints=2
 NeedToEquip=true
+Style=Guardian
 
 [Fullbring]
 Cost=350
@@ -237,6 +244,7 @@ Info=This skill allows you to get two turns on your next turn after using this s
 Cooldown=16
 ActionPoints=2
 NeedToEquip=true
+Style=HitenMitsurugi-ryu
 
 [Meditate]
 Cost=400
@@ -255,6 +263,7 @@ Info=This skill will reduce the cost of your next technique to 0 TP. Increased l
 Cooldown=16
 ActionPoints=2
 NeedToEquip=true
+Style=WeaponMaster
 
 [BloodBoost]
 Cost=1000
@@ -263,6 +272,7 @@ Max=10
 Info=This skill will consume (3 * skill level)% hp to give you a (skill level * 2)% boost to your STR.
 ActionPoints=5
 NeedToEquip=true
+Style=WeaponMaster
 
 [BloodSpirit]
 Cost=1000
@@ -271,6 +281,7 @@ Max=10
 Info=This skill will consume (3 * skill level)% hp to give you a (skill level * 2)% boost to your INT.
 ActionPoints=5
 NeedToEquip=true
+Style=Spellmaster
 
 [DrainSamba]
 Cost=750
@@ -298,6 +309,7 @@ Info=This skill allows the user to change the current weather.  Increased levels
 Cooldown=11
 ActionPoints=1
 NeedToEquip=true
+Style=Spellmaster
 
 [ShadowCopy]
 Cost=1500
@@ -306,6 +318,7 @@ Info=This skill will create a shadow clone of yourself that has half your curren
 Max=1
 ActionPoints=5
 NeedToEquip=true
+Style=Doppelganger
 
 [Utsusemi]
 Cost=500
@@ -339,6 +352,7 @@ Max=1
 Cooldown=3
 ActionPoints=1
 NeedToEquip=true
+Style=Guardian
 
 [Aggressor]
 Cost=500
@@ -347,6 +361,7 @@ Info=When used, this skill will take (skill level * 10%) of your defense and add
 Max=10
 ActionPoints=3
 NeedToEquip=true
+Style=WeaponMaster
 
 [Defender]
 Cost=500
@@ -355,6 +370,7 @@ Info=When used, this skill will take (skill level * 10%) of your strength and ad
 Max=10
 ActionPoints=3
 NeedToEquip=true
+Style=Guardian
 
 [HolyAura]
 Cost=1000
@@ -372,6 +388,7 @@ Max=1
 Cooldown=3
 ActionPoints=1
 NeedToEquip=true
+Style=Trickster
 
 [Disarm]
 Cost=500
@@ -381,6 +398,7 @@ Max=30
 Cooldown=11
 ActionPoints=2
 NeedToEquip=true
+Style=Trickster
 
 [WeaponLock]
 Cost=1000
@@ -390,6 +408,7 @@ Max=1
 CoolDown=11
 ActionPoints=2
 NeedToEquip=true
+Style=Trickster
 
 [Konzen-Ittai]
 Cost=5000
@@ -399,6 +418,7 @@ Max=1
 CoolDown=11
 ActionPoints=2
 NeedToEquip=true
+Style=HitenMitsurugi-ryu
 
 [SealBreak]
 Cost=2000
@@ -416,6 +436,7 @@ Max=5
 Cooldown=16
 ActionPoints=2
 NeedToEquip=true
+Style=Spellmaster
 
 [Gamble]
 Cost=10000
@@ -425,6 +446,7 @@ Max=5
 Cooldown=16
 ActionPoints=1
 NeedToEquip=true
+Style=Trickster
 
 [Thirdeye]
 Cost=500
@@ -434,6 +456,7 @@ Max=10
 Cooldown=21
 ActionPoints=2
 NeedToEquip=true
+Style=HitenMitsurugi-ryu
 
 [Scavenge]
 Cost=5000
@@ -458,6 +481,7 @@ Info=This skill will consume 50% of your TP to activate the ability to hurt ethe
 Cooldown=15
 ActionPoints=2
 NeedToEquip=true
+Style=Wrestlemania
 
 [Snatch]
 Cooldown=3
@@ -471,6 +495,7 @@ Max=5
 Cooldown=21
 ActionPoints=2
 NeedToEquip=true
+Style=Guardian
 
 [Lockpicking]
 Cost=500
