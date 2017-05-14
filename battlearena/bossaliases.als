@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 04/08/17
+;;;; Last updated: 05/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1816,7 +1816,7 @@ dragonhunt.createfile {
   if (%dragon.element = fire) { writeini $char(%dragonhunt.file.name) skills MightyStrike 1  }
   if (%dragon.element = earth) { writeini $char(%dragonhunt.file.name) skills RoyalGuard 1 }
   if (%dragon.element = ice) { writeini $char(%dragonhunt.file.name) skills ManaWall 1 }
-  if (%dragon.element = wind) { writeini $char(%dragonhunt.file.name) skills Utsusemi 1 | writeini $char(%dragonhunt.file.name) item_amount shihei 10 | writeini $char(%dragonhunt.file.name) skills utsusemi.on on | writeini $char(%dragonhunt.file.name) skills utsusemi.shadow $rand(1,3)  }
+  if (%dragon.element = wind) { writeini $char(%dragonhunt.file.name) skills utsusemi.on on | writeini $char(%dragonhunt.file.name) skills utsusemi.shadow $rand(2,5)  }
   if (%dragon.element = water) { writeini $char(%dragonhunt.file.name) skills Sugitekai 1 }
   if (%dragon.element = lightning) { writeini $char(%dragonhunt.file.name) skills WeaponBash 1 }
   if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) skills Konzen-Ittai 1  }
