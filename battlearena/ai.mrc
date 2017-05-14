@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 02/28/17
+;;;; Last updated: 05/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -443,6 +443,71 @@ alias ai.flee {
 }
 
 alias ai_gettarget {
+  ; If the Enmity System is disabled, use the old system
+  if ($return.systemsetting(EnableEnmity) != true) { $ai_gettarget.random($1) | return }
+
+  ; Check to see if this AI has been provoked and attack the person who provoked it.
+  var %provoke.target $readini($char($1), skills, provoke.target)
+
+  if (%provoke.target != $null) { 
+    if (($readini($char(%provoke.target), battle, status) = dead) || ($readini($char(%provoke.target), battle, status) = $null)) { unset %provoke.target | remini $char($1) skills provoke.target }
+  }
+
+  if (%provoke.target != $null) { 
+    set %ai.target %provoke.target
+    remini $char($1) skills provoke.target
+    return
+  }
+
+  ; Is this AI a berserk? if so, do it oldschool
+  if ($readini($char($1), info, ai_type) = berserk) { $ai.gettarget.random($1) | return }
+
+  ; Is this battle type a supplywagon or president battle? If so, pick a target at random.
+  if ((%supplyrun = on) || (%savethepresident = on)) { $ai.gettarget.random($1) | return }
+
+  ; Is the enmity list blank?  If so, pick a target at random.
+  var %number.of.enmity.targets $ini($txtfile(battle2.txt), enmity, 0)
+  if ((%number.of.enmity.targets = 0) || (%number.of.enmity.targets = $null)) { $ai_gettarget.random($1) | return }
+
+  ; Is this person an NPC? If so, let's use the old method.
+  if ($readini($char($1), info, Flag) != monster) { $ai_gettarget.random($1) | return }
+
+  ; Look through the enmity list and find who has the largest enmity value
+  var %current.enmity.amount 0 
+  var %current.enmity.counter 1 |  var %number.of.enmity.targets $numtok($return_peopleinbattle, 46)
+
+  while (%current.enmity.counter <= %number.of.enmity.targets) { 
+    var %current.enmity.name $gettok($return_peopleinbattle, %current.enmity.counter, 46)
+
+    ; Is this person dead? if so, remove from the enmity list. 
+    if ($readini($char(%current.enmity.name), Battle, Status) = dead) { remini $txtfile(battle2.txt) enmity %current.enmity.name }
+
+    ; Is this person a monster? If so, remove from enmity list.
+    if ($readini($char(%current.enmity.name), Info, Flag) = monster) { remini $txtfile(battle2.txt) enmity %current.enmity.name }
+
+    ; Grab the current enmity amount of the person.  If it's more than the current amount, this is our new target.
+    var %temp.enmity.amount $enmity(%current.enmity.name, return)
+    if (%temp.enmity.amount != $null) { 
+      if (%temp.enmity.amount > %current.enmity.amount) { set %ai.target %current.enmity.name | var %current.enmity.amount %temp.enmity.amount } 
+    } 
+    inc %current.enmity.counter
+  }
+
+  ; Check to make sure we have a target.  If not, randomly pick one
+  if (%ai.target = $null) { $ai_gettarget.random($1) | return }
+
+  ; We have a valid target. Let's decrease the amount of enmity that person has now.
+  var %reduced.enmity.amount $calc($enmity(%ai.target, return) / 2)
+  writeini $txtfile(battle2.txt) enmity %ai.target %reduced.enmity.amount
+
+  ; Check for cover
+  if (%ai.action != tech) { 
+    $covercheck(%ai.target, $1) 
+    set %ai.target %attack.target 
+  }
+}
+
+alias ai_gettarget.random {
   set %debug.location alias ai.gettarget
   unset %ai.targetlist | unset %tech.type | unset %status.type
 

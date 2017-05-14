@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/05/17
+;;;; Last updated: 05/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -66,6 +66,7 @@ system_defaults_check {
     if ($readini(system.dat, system, MaxGauntletOrbReward) = $null) { writeini system.dat system MaxGauntletOrbReward 50000 } 
     if ($readini(system.dat, system, maxshoplevel) = $null) { writeini system.dat system maxshoplevel 25 } 
     if ($readini(system.dat, system, StartingSkillSlots) = $null) { writeini system.dat system StartingSkillSlots 5 } 
+    if ($readini(system.dat, system, EnableEnmity) = $null) { writeini system.dat system EnableEnmity true }
     if ($readini(system.dat, system, EnableChests) = $null) { writeini system.dat system EnableChests true }
     if ($readini(system.dat, system, MaxCharacters) = $null) { writeini system.dat system MaxCharacters 2 }
     if ($readini(system.dat, system, EnableDNSCheck) = $null) { writeini system.dat system EnableDNSCheck true }

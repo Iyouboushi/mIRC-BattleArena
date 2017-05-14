@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 03/24/17
+;;;; Last updated: 05/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -203,6 +203,18 @@ on 50:TEXT:!main folder cleanup:*:{
   .echo -q $findfile( $mircdir  , *.txt, 0, 0, clean_mainfolder $1-) 
   .echo -q $findfile( $mircdir , *.html, 0, 0, clean_mainfolder $1-) 
   $display.message(4.db & .lst & .txt & .html files have been cleaned up from the main bot folder.)
+}
+
+; Bot admins can toggle the Enmity targeting system
+on 50:TEXT:!toggle enmity*:*:{   
+  if ($readini(system.dat, system, EnableEnmity) = false) { 
+    writeini system.dat system EnableEnmity true
+    $display.message($readini(translation.dat, system, EnmitySystemOn), global)
+  }
+  else {
+    writeini system.dat system EnableEnmity false
+    $display.message($readini(translation.dat, system, EnmitySystemOff), global)
+  }
 }
 
 ; Bot admins can toggle Health Bars (replaces the health status)

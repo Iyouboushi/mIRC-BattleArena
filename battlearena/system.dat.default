@@ -41,6 +41,7 @@ DisplayHealthBars=false
 EnableFirstRoundProtection=true
 EnableBattlefieldEvents=true
 EnableFoodOnOthers=true
+EnableEnmity=true
 IgnoreDmgCap=false
 AllowSpiritOfHero=true
 MaxIdleTurns=2

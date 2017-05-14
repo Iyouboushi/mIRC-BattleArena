@@ -1592,6 +1592,8 @@ Battle Arena Bot VERSIONS
   purchase techs. Bot admins can toggle it using !toggle Tech Currency  -- Coins are default
 - Added a new system flag: SkillCurrency=orbs/coins.  If set to coins it will use Kill Coins rather than red orbs 
   to purchase skills. Bot admins can toggle it using !toggle Skill Currency -- Coins are default
+- Added a new system flag: EnableEnmity=true/false  When true it will use the enmity targeting system
+- Added a new bot admin command: !toggle enmity   Use this to toggle it on and off.
 - Added the missing augments and reforged +1 armor
 - Added the !portal dropcheck command [thanks to Pentium320]
 - Added a MaxTormentLevel flag in [info] for monsters and bosses. Set to 0 it means the monster won't show up in torments,
@@ -1604,6 +1606,8 @@ Battle Arena Bot VERSIONS
   of times the monster/npc can go before moving onto the next person's turn
 - Added a new monster/npc skill: CompleteWeaknessShift.  If set to 1 in [skills] the user will randomize weaknesses and resistances
   to various status effects, weapon types, and elements on EVERY TURN the user gets.
+- Added an enmity targeting system option to the game. When this is on the amount of damage that players do to monsters will
+  help determine which player the monsters target.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the amount of style points needed to achieve different ranks. It is harder on higher battle levels now.

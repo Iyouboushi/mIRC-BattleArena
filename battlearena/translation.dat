@@ -288,6 +288,9 @@ AllowPlayerAccessCmdsOff=$chr(3) $+ 4 $+ Player Access Commands has been turne
 DisplayHealthBarsOn=$chr(3) $+ 4 $+ Health bars will now be displayed.
 DisplayHealthBarsOff=$chr(3) $+ 4 $+ Health bars will no longer be displayed.
 
+EnmitySystemOn=$chr(3) $+ 4 $+ Enmity Targeting System is now enabled.
+EnmitySystemOff=$chr(3) $+ 4 $+ Enmity Targeting System is now disabled.
+
 AllowAuctionHouseTopicChangeOn=$chr(3) $+ 4 $+ The Auction House will now change the channel's topic.
 AllowAuctionHouseTopicChangeOff=$chr(3) $+ 4 $+ The Auction House will no longer change the channel's topic.
 

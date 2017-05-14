@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/10/17
+;;;; Last updated: 05/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1101,6 +1101,7 @@ deal_damage {
 
       writeini $char($2) battle status dead 
       writeini $char($2) battle hp 0
+      remini $txtfile(battle2.txt) enmity $2
 
       if ((%battle.type = assault) && ($readini($char($2), info, flag) = monster)) { 
         if ($isfile($boss($2)) = $true) { $monster.outpost(remove, $rand(2,3)) }
@@ -1161,6 +1162,9 @@ deal_damage {
     } 
   }
 
+  ; Increase enmity
+  if ($readini($char($1), info, flag) != monster) {  $enmity($1, add, %attack.damage) }
+
   ; Unset the attack damage used for calculating style meter
   unset %style.attack.damage 
 }
@@ -1182,6 +1186,9 @@ heal_damage {
   }
 
   if ($person_in_mech($2) = true) { set %attack.damage 0 }
+
+  ; Increase enmity
+  if ($readini($char($1), info, flag) != monster) { $enmity($1, add, $calc(%attack.damage * 2)) }
 
   $restore_hp($2, %attack.damage)
 }
@@ -5479,6 +5486,40 @@ ignition_check {
     unset %ignition.name | unset %ignition.cost | unset %player.current.ig
   }
 }
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Enmity
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+enmity {
+  ; $1 = person
+  ; $2 = add/remove/return
+  ; $3 = amount for add/remove
+
+  if ($2 = add) { 
+    var %current.enmity $readini($txtfile(battle2.txt), Enmity, $1)
+    if (%current.enmity = $null) { var %current.enmity 0 }
+
+    inc %current.enmity $3
+    writeini $txtfile(battle2.txt) Enmity $1 %current.enmity
+  }
+
+  if ($2 = remove) { 
+    var %current.enmity $readini($txtfile(battle2.txt), Enmity, $1)
+    if (%current.enmity = $null) { var %current.enmity 0 }
+
+    dec %current.enmity $3
+    if (%current.enmity < 0) { var %current.enmity 0 }
+    writeini $txtfile(battle2.txt) Enmity $1 %current.enmity
+  }
+
+  if ($2 = return) { 
+    var %current.enmity $readini($txtfile(battle2.txt), Enmity, $1)
+    if (%current.enmity = $null) { return 0 }
+    else { return %current.enmity }
+  }
+}
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Monster Outpost Alias
