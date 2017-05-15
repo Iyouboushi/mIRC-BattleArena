@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/13/17
+;;;; Last updated: 05/15/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -5496,7 +5496,12 @@ enmity {
   ; $2 = add/remove/return
   ; $3 = amount for add/remove
 
+  if ($1 = $null) { return }
+
   if ($2 = add) { 
+
+    if ($1 = battlefield)  { return }
+
     var %current.enmity $readini($txtfile(battle2.txt), Enmity, $1)
     if (%current.enmity = $null) { var %current.enmity 0 }
 
