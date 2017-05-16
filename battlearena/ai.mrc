@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 05/13/17
+;;;; Last updated: 05/15/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -460,10 +460,10 @@ alias ai_gettarget {
   }
 
   ; Is this AI a berserk? if so, do it oldschool
-  if ($readini($char($1), info, ai_type) = berserk) { $ai.gettarget.random($1) | return }
+  if ($readini($char($1), info, ai_type) = berserk) { $ai_gettarget.random($1) | return }
 
   ; Is this battle type a supplywagon or president battle? If so, pick a target at random.
-  if ((%supplyrun = on) || (%savethepresident = on)) { $ai.gettarget.random($1) | return }
+  if ((%supplyrun = on) || (%savethepresident = on)) { $ai_gettarget.random($1) | return }
 
   ; Is the enmity list blank?  If so, pick a target at random.
   var %number.of.enmity.targets $ini($txtfile(battle2.txt), enmity, 0)
