@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 05/15/17
+;;;; Last updated: 05/21/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -481,6 +481,9 @@ alias ai_gettarget {
 
     ; Is this person dead? if so, remove from the enmity list. 
     if ($readini($char(%current.enmity.name), Battle, Status) = dead) { remini $txtfile(battle2.txt) enmity %current.enmity.name }
+
+    ; Has the person fled? If so, remove from the enmity list
+    if ($readini($char(%current.enmity.name), Battle, Status) = runaway) { remini $txtfile(battle2.txt) enmity %current.enmity.name }
 
     ; Is this person a monster? If so, remove from enmity list.
     if ($readini($char(%current.enmity.name), Info, Flag) = monster) { remini $txtfile(battle2.txt) enmity %current.enmity.name }
