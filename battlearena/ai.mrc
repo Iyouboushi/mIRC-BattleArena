@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 05/21/17
+;;;; Last updated: 05/31/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -471,6 +471,10 @@ alias ai_gettarget {
 
   ; Is this person an NPC? If so, let's use the old method.
   if ($readini($char($1), info, Flag) != monster) { $ai_gettarget.random($1) | return }
+
+  ; If the tech is a buff or heal type, let's use the old method
+  if (($readini($dbfile(techniques.db), %ai.tech, type) = buff) || ($readini($dbfile(techniques.db), %ai.tech, type) = heal)) { $ai_gettarget.random($1) | return }
+
 
   ; Look through the enmity list and find who has the largest enmity value
   var %current.enmity.amount 0 
