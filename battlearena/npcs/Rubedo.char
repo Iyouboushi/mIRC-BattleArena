@@ -5,7 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=0
+IgnitionGauge=120
 Name=Rubedo
 
 
@@ -16,7 +16,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=0
+IgnitionGauge=120
 Status=alive
 
 
@@ -54,6 +54,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -99,7 +100,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Vaquero
-Vaquero=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Vaquero=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -125,8 +126,8 @@ Resist-Disarm=100
 
 
 [Techniques]
-Requiem=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-StormWaltz=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Requiem=$round($calc(1 + (($current.battlestreak / 2))))
+StormWaltz=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [ignitions]
@@ -161,8 +162,6 @@ Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

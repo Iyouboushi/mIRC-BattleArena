@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=SelanSwordStaff
-SelanSwordStaff=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SelanSwordStaff=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Wizardry=100
@@ -121,18 +122,18 @@ Resist-Disarm=100
 
 
 [Techniques]
-HolyEnergy=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PhoenixBlow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ChantDuCygne=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DeathBlossom=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Curaga=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-CureV=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FlareII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-QuakeII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FreezeII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FloodII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BurstII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TornadoII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HolyEnergy=$round($calc(1 + (($current.battlestreak / 2))))
+PhoenixBlow=$round($calc(1 + (($current.battlestreak / 2))))
+ChantDuCygne=$round($calc(1 + (($current.battlestreak / 2))))
+DeathBlossom=$round($calc(1 + (($current.battlestreak / 2))))
+Curaga=$round($calc(1 + (($current.battlestreak / 2))))
+CureV=$round($calc(1 + (($current.battlestreak / 2))))
+FlareII=$round($calc(1 + (($current.battlestreak / 2))))
+QuakeII=$round($calc(1 + (($current.battlestreak / 2))))
+FreezeII=$round($calc(1 + (($current.battlestreak / 2))))
+FloodII=$round($calc(1 + (($current.battlestreak / 2))))
+BurstII=$round($calc(1 + (($current.battlestreak / 2))))
+TornadoII=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -149,8 +150,6 @@ SelanSwordStaff=MeleeBonus.TechBonus.MagicBonus.EnhanceStaff.EnhanceSword.HurtEt
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

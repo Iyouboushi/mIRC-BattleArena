@@ -6,7 +6,7 @@ Def=15
 Int=15
 Spd=15
 Name=Dante
-IgnitionGauge=60
+IgnitionGauge=100
 
 
 [Battle]
@@ -17,7 +17,7 @@ Def=15
 Int=15
 Spd=15
 Status=alive
-IgnitionGauge=60
+IgnitionGauge=100
 
 
 [Rage]
@@ -58,6 +58,7 @@ IgnoreQuicksilver=true
 CanTaunt=true
 TauntFile=taunts_dante.txt
 trust=true
+ActionsPerTurn=$rand(1,2)
 
 
 [Status]
@@ -104,8 +105,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Rebellion
-Rebellion=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Ebony&Ivory=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Rebellion=$round($calc(1 + (($current.battlestreak / 2))))
+Ebony&Ivory=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -132,11 +133,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-Stinger=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MillionStab=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Drive=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ChargedShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-RapidShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Stinger=$round($calc(1 + (($current.battlestreak / 2))))
+MillionStab=$round($calc(1 + (($current.battlestreak / 2))))
+Drive=$round($calc(1 + (($current.battlestreak / 2))))
+ChargedShot=$round($calc(1 + (($current.battlestreak / 2))))
+RapidShot=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Styles]

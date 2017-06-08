@@ -5,7 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=120
 Name=Genryuusai Yamamoto
 
 
@@ -16,7 +16,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=120
 Status=alive
 
 
@@ -35,7 +35,7 @@ Hused=1
 Dused=1
 Char=is an old Shinigami who is the Captain of the 1st Division and the Captain Commander of the Gotei 13. The oldest and strongest Shinigami who also carries the powerful Ryuujin Jakka zanpakutou.
 Rage=opens his eyes and gives a very stern stare at the battlefield..
-PerfectDefense=releases Ryuujin Jakka for a moment, and covers himself with a wall of fire to block all attacks.
+PerfectDefense=releases Ryuujin Jakka for a moment and covers himself with a wall of fire to block all attacks.
 
 [Stuff]
 RedOrbs=0
@@ -54,6 +54,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -98,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RyuujinJakka
-RyuujinJakka=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+RyuujinJakka=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -130,13 +131,13 @@ Resist-Disarm=100
 
 
 [Techniques]
-AsuranFists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Ikkotsu=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Soukotsu=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SwiftBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-VorpalBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ChantDuCygne=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-IttouKasou=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+AsuranFists=$round($calc(1 + (($current.battlestreak / 2))))
+Ikkotsu=$round($calc(1 + (($current.battlestreak / 2))))
+Soukotsu=$round($calc(1 + (($current.battlestreak / 2))))
+SwiftBlade=$round($calc(1 + (($current.battlestreak / 2))))
+VorpalBlade=$round($calc(1 + (($current.battlestreak / 2))))
+ChantDuCygne=$round($calc(1 + (($current.battlestreak / 2))))
+IttouKasou=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -156,8 +157,6 @@ RyuujinJakka=EnhanceKatana.TechBonus.MeleeBonus.RenkeiBonus.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

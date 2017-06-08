@@ -53,6 +53,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 trust=true
+ActionsPerTurn=$rand(1,2)
 
 
 [Status]
@@ -100,7 +101,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=MarioFists
-MarioFists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MarioFists=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -126,9 +127,9 @@ Resist-Disarm=100
 
 
 [Techniques]
-MarioJump=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-StarPower=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FireFlower=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MarioJump=$round($calc(1 + (($current.battlestreak / 2))))
+StarPower=$round($calc(1 + (($current.battlestreak / 2))))
+FireFlower=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Styles]
@@ -142,8 +143,6 @@ MarioFists=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

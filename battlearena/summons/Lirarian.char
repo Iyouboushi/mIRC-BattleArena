@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=500
-Tp=50
+Tp=1000
 Str=60
 Def=60
 Int=60
@@ -11,7 +11,7 @@ Name=Lirarian Dalnaal
 
 [Battle]
 Hp=500
-Tp=50
+Tp=1000
 Str=60
 Def=60
 Int=60
@@ -34,7 +34,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a lesser Elven goddess who is entrusted with two powerful swords. She has short brown hair, glowing eyes which are blue and green, and wears dark-red Swordmaster armor. She looks at the heroes and says, "I guess I'll help you... this one time."
+Char=is a lesser Elven goddess who is entrusted with two powerful weapons. She has short brown hair, glowing eyes which are blue and green, and wears dark-red Swordmaster armor. She looks at the heroes and says, "I guess I'll help you... this one time."
 Rage=simply narrows her eyes and glares at everyone.
 
 
@@ -62,6 +62,7 @@ Created=N/a
 IgnoreQuickSilver=true
 CanTaunt=false
 IgnoreElementalMessage=true
+BattleStats=ignoreTP
 
 
 [Status]
@@ -100,7 +101,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Silver_Goddess_Sword
-Silver_Goddess_Sword=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Silver_Goddess_Sword=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Swordmaster=100
@@ -124,9 +125,9 @@ Resist-Zombie=100
 
 
 [Techniques]
-TwinSlice=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BiteOfLightning=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BladeBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwinSlice=$round($calc(1 + (($current.battlestreak / 2))))
+BiteOfLightning=$round($calc(1 + (($current.battlestreak / 2))))
+BladeBeam=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Styles]

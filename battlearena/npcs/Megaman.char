@@ -55,6 +55,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -100,9 +101,9 @@ zombie.timer=1
 
 [Weapons]
 Equipped=MegaBusterMk1
-MegaBusterMk1=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MegaBusterMk2=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MegaBusterMk3=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MegaBusterMk1=$round($calc(1 + (($current.battlestreak / 2))))
+MegaBusterMk2=$round($calc(1 + (($current.battlestreak / 2))))
+MegaBusterMk3=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -130,28 +131,28 @@ Resist-Disarm=100
 
 
 [Techniques]
-HyperBomb=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SuperArm=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-RollingCutter=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ThunderBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-IceSlasher=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FireStorm=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MetalBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TimeStopper=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-QuickBoomerang=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-LeafShield=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-AirShooter=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-CrashBombs=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BubbleLead=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-AtomicFire=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-NeedleCannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MagnetMissile=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-GeminiLaser=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HardKnuckle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TopSpin=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShadowBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SparkShock=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SearchSnake=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HyperBomb=$round($calc(1 + (($current.battlestreak / 2))))
+SuperArm=$round($calc(1 + (($current.battlestreak / 2))))
+RollingCutter=$round($calc(1 + (($current.battlestreak / 2))))
+ThunderBeam=$round($calc(1 + (($current.battlestreak / 2))))
+IceSlasher=$round($calc(1 + (($current.battlestreak / 2))))
+FireStorm=$round($calc(1 + (($current.battlestreak / 2))))
+MetalBlade=$round($calc(1 + (($current.battlestreak / 2))))
+TimeStopper=$round($calc(1 + (($current.battlestreak / 2))))
+QuickBoomerang=$round($calc(1 + (($current.battlestreak / 2))))
+LeafShield=$round($calc(1 + (($current.battlestreak / 2))))
+AirShooter=$round($calc(1 + (($current.battlestreak / 2))))
+CrashBombs=$round($calc(1 + (($current.battlestreak / 2))))
+BubbleLead=$round($calc(1 + (($current.battlestreak / 2))))
+AtomicFire=$round($calc(1 + (($current.battlestreak / 2))))
+NeedleCannon=$round($calc(1 + (($current.battlestreak / 2))))
+MagnetMissile=$round($calc(1 + (($current.battlestreak / 2))))
+GeminiLaser=$round($calc(1 + (($current.battlestreak / 2))))
+HardKnuckle=$round($calc(1 + (($current.battlestreak / 2))))
+TopSpin=$round($calc(1 + (($current.battlestreak / 2))))
+ShadowBlade=$round($calc(1 + (($current.battlestreak / 2))))
+SparkShock=$round($calc(1 + (($current.battlestreak / 2))))
+SearchSnake=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Styles]
 Equipped=SpellMaster
@@ -166,8 +167,6 @@ MegaBusterMK3=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

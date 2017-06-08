@@ -5,7 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=100
+IgnitionGauge=120
 Name=Bayonetta
 
 
@@ -16,7 +16,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=100
+IgnitionGauge=120
 Status=alive
 
 
@@ -58,6 +58,7 @@ IgnoreQuicksilver=true
 CanTaunt=true
 TauntFile=taunts_bayonetta.txt
 trust=true
+ActionsPerTurn=$iif($readini($char(Bayonetta), status, ignition.on) = on, $rand(1,2), 1)
 
 [monster]
 type=Human
@@ -107,12 +108,12 @@ zombie.timer=1
 
 [Weapons]
 Equipped=LoveIsBlue
-LoveIsBlue=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Kafka=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Chernobog=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ScarboroughFair=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Shuraba=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Kulshedra=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+LoveIsBlue=$round($calc(1 + (($current.battlestreak / 2))))
+Kafka=$round($calc(1 + (($current.battlestreak / 2))))
+Chernobog=$round($calc(1 + (($current.battlestreak / 2))))
+ScarboroughFair=$round($calc(1 + (($current.battlestreak / 2))))
+Shuraba=$round($calc(1 + (($current.battlestreak / 2))))
+Kulshedra=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Whipster=100
@@ -142,19 +143,19 @@ Resist-Disarm=100
 
 
 [Techniques]
-BulletClimax=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HeelSlide=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Tachi:Shoha=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Tachi:Rana=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Guillotine=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShadowOfDeath=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwinDragonLash=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SerpentBite=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-EagleEyeShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-JishnusRadiance=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MadamaButterflyFist=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MadamaButterflyHeel=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-WheelofTorture=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BulletClimax=$round($calc(1 + (($current.battlestreak / 2))))
+HeelSlide=$round($calc(1 + (($current.battlestreak / 2))))
+Tachi:Shoha=$round($calc(1 + (($current.battlestreak / 2))))
+Tachi:Rana=$round($calc(1 + (($current.battlestreak / 2))))
+Guillotine=$round($calc(1 + (($current.battlestreak / 2))))
+ShadowOfDeath=$round($calc(1 + (($current.battlestreak / 2))))
+TwinDragonLash=$round($calc(1 + (($current.battlestreak / 2))))
+SerpentBite=$round($calc(1 + (($current.battlestreak / 2))))
+EagleEyeShot=$round($calc(1 + (($current.battlestreak / 2))))
+JishnusRadiance=$round($calc(1 + (($current.battlestreak / 2))))
+MadamaButterflyFist=$round($calc(1 + (($current.battlestreak / 2))))
+MadamaButterflyHeel=$round($calc(1 + (($current.battlestreak / 2))))
+WheelofTorture=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Ignitions]

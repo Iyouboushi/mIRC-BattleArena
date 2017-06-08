@@ -58,7 +58,7 @@ IgnoreOutpost=true
 IgnoreElementalMessage=true
 WonderGuard=true
 CanTaunt=false
-MinTormentLevel=10
+MaxTormentLevel=0
 
 [monster]
 type=skeleton
@@ -162,8 +162,6 @@ Accessory2=true
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -465,3 +463,10 @@ AeolianEdge=0
 Cyclone=0
 EmpyrealArrow=0
 Tellus=0
+Blast_Burn=0
+Hydro_Cannon=0
+Hyper_Beam=0
+Final_Kamehameha=0
+Spirit_Excalibur=0
+Final_Flash=0
+God_Kamehameha=0

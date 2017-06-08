@@ -59,7 +59,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
-
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -105,7 +105,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=Benihime
-Benihime=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Benihime=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 desperateblows=1
@@ -133,7 +133,7 @@ Resist-Disarm=100
 
 
 [Techniques]
-SwiftBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SwiftBlade=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -154,8 +154,6 @@ Benihime=MeleeBonus.TechBonus.HurtEthereal.EnhanceKatana
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

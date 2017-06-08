@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a woman with short black hair, with red tips that wears a black and red outfit. She has white face paint with black around the eyes, random black lines, black around the mouth with a design resembling teeth, and pure black eyes.
+Char=is a woman with short black hair, with red tips that wears a black and red outfit. She has black face paint on her jaw and nose, while the rest is white face paint, but is black and white on the chin to almost resemble a skull. She also has yellow demonic eyes.
 Rage=simply laughs in a crazed manner!
 BossQuote=Oh Allied Heroes... You will decay... Decay... DECAY!
 DeathMessage=This is not the end... We will be back... And we will make you all DECAY!
@@ -164,8 +164,6 @@ ManaFont=1
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=Dark
 Earth=100
 Fire=100
@@ -197,3 +195,10 @@ Hammer=100
 Bat=100
 GrandDream=50
 Thunderclap=60
+Blast_Burn=50
+Hydro_Cannon=50
+Hyper_Beam=50
+Final_Kamehameha=75
+Spirit_Excalibur=50
+Final_Flash=50
+God_Kamehameha=75

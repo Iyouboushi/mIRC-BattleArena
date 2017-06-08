@@ -58,6 +58,7 @@ CanTaunt=false
 RageMode=Ignore
 CanFlee=false
 Streak=11
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no

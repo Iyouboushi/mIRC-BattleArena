@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=500
-Tp=10
+Tp=1000
 Str=20
 Def=20
 Int=20
@@ -10,7 +10,7 @@ Name=Faithful Falcorr
 
 [Battle]
 Hp=500
-Tp=10
+Tp=1000
 Str=20
 Def=20
 Int=20
@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+BattleStats=ignoreTP
 
 
 [Status]
@@ -96,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=FalcorrPower
-FalcorrPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+FalcorrPower=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Wizardry=100
@@ -118,9 +119,9 @@ Resist-Confuse=100
 Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 [Techniques]
-BackHeel=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Jettatura=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-ChokeBreath=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+BackHeel=$round($calc(1 + (($current.battlestreak / 2))))
+Jettatura=$round($calc(1 + (($current.battlestreak / 2))))
+ChokeBreath=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

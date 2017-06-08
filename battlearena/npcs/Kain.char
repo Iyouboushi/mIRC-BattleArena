@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=KainsLance
-KainsLance=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+KainsLance=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 PoleMaster=100
@@ -119,12 +120,12 @@ Resist-Disarm=100
 
 
 [Techniques]
-Jump=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HighJump=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SpiritJump=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SoulJump=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Drakesbane=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Stardiver=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Jump=$round($calc(1 + (($current.battlestreak / 2))))
+HighJump=$round($calc(1 + (($current.battlestreak / 2))))
+SpiritJump=$round($calc(1 + (($current.battlestreak / 2))))
+SoulJump=$round($calc(1 + (($current.battlestreak / 2))))
+Drakesbane=$round($calc(1 + (($current.battlestreak / 2))))
+Stardiver=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -141,8 +142,6 @@ KainsLance=MeleeBonus.TechBonus.EnhanceSpear.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

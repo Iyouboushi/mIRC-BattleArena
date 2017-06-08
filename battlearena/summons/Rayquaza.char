@@ -1,21 +1,23 @@
 [BaseStats]
 Hp=500
 Tp=1000
-Str=50
-Def=50
-Int=50
-Spd=60
-Name=Pikachu
+Str=30
+Def=30
+Int=30
+Spd=30
+Name=Rayquaza
+IgnitionGauge=100
 
 
 [Battle]
 Hp=500
 Tp=1000
-Str=50
-Def=50
-Int=50
-Spd=60
+Str=30
+Def=30
+Int=30
+Spd=30
 Status=alive
+IgnitionGauge=100
 
 
 [Rage]
@@ -31,8 +33,8 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=the Mouse Pokemon. It can generate electric attacks from the electric pouches located in both of its cheeks.
-Rage=....
+Char=is a large, serpentine creature that is green in color. It has red-tipped, rudder-like wings on its shoulders and down its body, and similarly patterned fins on the tip of its tail. Yellow ring-like symbols run across the length the body and it has an additional yellow ring on top of its head. It has two limbs with three-clawed hands, and two long, flat, horn-like structures on its head, with two shorter horns along its jawline. It has small, yellow eyes with black pupils, and two discernible fangs in its upper jaw.
+Rage=needs to set a rage desc by typing !ragedesc <desc>
 
 [Stuff]
 RedOrbs=0
@@ -50,7 +52,15 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
+IgnoreDrain=true
+IgnoreElementalMessage=true
 BattleStats=ignoreTP
+
+
+[monster]
+type=dragon
+TechLearn=false
+size=large
 
 [Status]
 Poison=no
@@ -94,13 +104,12 @@ slow.timer=1
 zombie.timer=1
 
 [Weapons]
-Equipped=PikachuPaws
-PikachuPaws=$round($calc(1 + (($current.battlestreak / 2))))
+Equipped=RayquazaPower
+RayquazaPower=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
 Zen=5
-MartialArts=100
 Resist-Intimidate=100
 Resist-Stun=100
 Resist-Weaponlock=100
@@ -115,24 +124,45 @@ Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
 
-
 [Techniques]
-Thunderbolt=$round($calc(1 + (($current.battlestreak / 2))))
-IronTail=$round($calc(1 + (($current.battlestreak / 2))))
-Volt_Tackle=$round($calc(1 + (($current.battlestreak / 2))))
-Electro_Ball=$round($calc(1 + (($current.battlestreak / 2))))
+Draco_Meteor=$round($calc(1 + (($current.battlestreak / 2))))
+Dragon_Ascent=$iif($current.battlestreak >= 6000, $round($calc(1 + (($current.battlestreak / 2)))), 0)
+Dragon_Claw=$round($calc(1 + (($current.battlestreak / 2))))
+Dragon_Pulse=$round($calc(1 + (($current.battlestreak / 2))))
+
+[Augments]
+
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+[Styles]
+
+
+[NaturalArmor]
+Name=
+Max=
+Current=
+
+[Ignitions]
+MegaRayquaza=$iif($current.battlestreak >= 6000, 1, 0)
 
 [Item_Amount]
 
 
 [modifiers]
-Heal=Lightning
-Earth=150
+Heal=none
+Earth=100
 Fire=100
 Wind=100
 Water=100
 Ice=100
-Lightning=150
+Lightning=100
 Light=100
 Dark=100
 HandToHand=100

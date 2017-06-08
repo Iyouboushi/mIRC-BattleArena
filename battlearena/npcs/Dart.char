@@ -5,7 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=120
 Name=Dart Feld
 
 
@@ -16,7 +16,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=120
 Status=alive
 
 
@@ -53,6 +53,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -98,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Broad_Sword
-Broad_Sword=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Broad_Sword=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -124,10 +125,10 @@ Resist-Disarm=100
 
 
 [Techniques]
-DoubleSlash=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BurningRush=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MadnessHero=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BlazingDynamo=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DoubleSlash=$round($calc(1 + (($current.battlestreak / 2))))
+BurningRush=$round($calc(1 + (($current.battlestreak / 2))))
+MadnessHero=$round($calc(1 + (($current.battlestreak / 2))))
+BlazingDynamo=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

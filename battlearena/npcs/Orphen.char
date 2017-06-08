@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=SwordOfTheFallenDevil
-SwordOfTheFallenDevil=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SwordOfTheFallenDevil=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -121,16 +122,16 @@ Resist-Disarm=100
 
 
 [Techniques]
-HandOfPyro=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Bite_Of_Lightning=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HailOfHeavens=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PinnacleOfTheSun=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HammerOfEvil=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ColdnessOfDestruction=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FeathersOfTheHurricane=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BoltOfThunder=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SmokeOfPain=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FalconOfDeath=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HandOfPyro=$round($calc(1 + (($current.battlestreak / 2))))
+Bite_Of_Lightning=$round($calc(1 + (($current.battlestreak / 2))))
+HailOfHeavens=$round($calc(1 + (($current.battlestreak / 2))))
+PinnacleOfTheSun=$round($calc(1 + (($current.battlestreak / 2))))
+HammerOfEvil=$round($calc(1 + (($current.battlestreak / 2))))
+ColdnessOfDestruction=$round($calc(1 + (($current.battlestreak / 2))))
+FeathersOfTheHurricane=$round($calc(1 + (($current.battlestreak / 2))))
+BoltOfThunder=$round($calc(1 + (($current.battlestreak / 2))))
+SmokeOfPain=$round($calc(1 + (($current.battlestreak / 2))))
+FalconOfDeath=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Styles]
@@ -144,8 +145,6 @@ SwordOfTheFallenDevil=MeleeBonus.MagicBonus.EnhanceSword.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

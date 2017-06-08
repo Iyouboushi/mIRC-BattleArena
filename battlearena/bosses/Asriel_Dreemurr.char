@@ -59,10 +59,11 @@ DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=80
+ActionsPerTurn=$rand(1,2)
 
 [monster]
 type=HyperGodOfDeath
-TechLearn=true
+TechLearn=false
 size=Medium
 SuperElite=true
 
@@ -148,8 +149,6 @@ Current=100000
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -1279,3 +1278,10 @@ Daedalus=90
 Daedalus+1=90
 Sacrament=90
 Lazarus=100
+Blast_Burn=50
+Hydro_Cannon=50
+Hyper_Beam=50
+Final_Kamehameha=75
+Spirit_Excalibur=50
+Final_Flash=50
+God_Kamehameha=75

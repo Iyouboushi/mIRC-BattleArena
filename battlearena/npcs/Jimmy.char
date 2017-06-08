@@ -54,6 +54,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -99,8 +100,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DwarvenRuneBlade
-DwarvenRuneBlade=$round($calc(1 + (($current.battlestreak / 3) / 5.5)),0)
-DwarvenShortBow=$round($calc(1 + (($current.battlestreak / 3) / 5.5)),0)
+DwarvenRuneBlade=$round($calc(1 + (($current.battlestreak / 2))))
+DwarvenShortBow=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -126,11 +127,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-HealingAle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FastBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-CircleBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FlamingArrow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PiercingArrow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HealingAle=$round($calc(1 + (($current.battlestreak / 2))))
+FastBlade=$round($calc(1 + (($current.battlestreak / 2))))
+CircleBlade=$round($calc(1 + (($current.battlestreak / 2))))
+FlamingArrow=$round($calc(1 + (($current.battlestreak / 2))))
+PiercingArrow=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -148,8 +149,6 @@ DwarvenShortbow=HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

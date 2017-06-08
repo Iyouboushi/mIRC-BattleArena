@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BogardGloves
-BogardGloves=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BogardGloves=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -119,11 +120,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-PowerWave=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BurnKnuckle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-RisingTackle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PowerGeyser=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BusterWolf=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+PowerWave=$round($calc(1 + (($current.battlestreak / 2))))
+BurnKnuckle=$round($calc(1 + (($current.battlestreak / 2))))
+RisingTackle=$round($calc(1 + (($current.battlestreak / 2))))
+PowerGeyser=$round($calc(1 + (($current.battlestreak / 2))))
+BusterWolf=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -140,8 +141,6 @@ BogardGloves=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

@@ -1,21 +1,23 @@
 [BaseStats]
 Hp=500
-Tp=10
+Tp=1000
 Str=60
 Def=50
 Int=50
 Spd=50
 Name=Charizard
+IgnitionGauge=100
 
 
 [Battle]
 Hp=500
-Tp=10
+Tp=1000
 Str=60
 Def=50
 Int=50
 Spd=50
 Status=alive
+IgnitionGauge=100
 
 
 [Rage]
@@ -42,14 +44,15 @@ RedOrbsSpent=0
 BlackOrbsSpent=0
 
 [Info]
-Gender=his
-Gender2=him
+Gender=its
+Gender2=its
 password=dbzrpg
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
+BattleStats=ignoreTP
 
 [Status]
 Poison=no
@@ -94,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=CharizardFangs
-CharizardFangs=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+CharizardFangs=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -111,18 +114,20 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
-
+Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 [Techniques]
-Fire_Fang=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-IronTail=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Fire_Fang=$round($calc(1 + (($current.battlestreak / 2))))
+IronTail=$round($calc(1 + (($current.battlestreak / 2))))
+Heat_Wave=$round($calc(1 + (($current.battlestreak / 2))))
+Shadow_Claw=$round($calc(1 + (($current.battlestreak / 2))))
+Flare_Blitz=$round($calc(1 + (($current.battlestreak / 2))))
+Dragon_Claw=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=Fire
 Earth=150
 Fire=150
@@ -144,3 +149,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=150
++Ice=100
++Wind=100
++Water=150
++Dark=100

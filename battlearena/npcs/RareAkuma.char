@@ -53,7 +53,8 @@ Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
-BattleStats=ignoreHP
+BattleStats=ignoreHP.ignoreTP
+ActionsPerTurn=4
 
 [Status]
 Poison=no
@@ -98,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=GoukiGloves
-GoukiGloves=9999
+GoukiGloves=999999
 
 [Skills]
 MightyStrike=1
@@ -141,14 +142,14 @@ Elemental-Killer=20
 Slime-Killer=20
 
 [Techniques]
-GouHadouken=9999
-ZankuuHadouken=9999
-GouShouryuken=9999
-TatsumakiZankuuKyaku=9999
-MessatsuGouHadou=$iif($current.battlestreak < 100, 0, 9999)
-MessatsuGouShouryuu=$iif($current.battlestreak < 100, 0, 9999)
-TenmaGouZankuu=$iif($current.battlestreak < 100, 0, 9999)
-ShunGokuSatsu=$iif($current.battlestreak < 200, 0, 9999)
+GouHadouken=999999
+ZankuuHadouken=999999
+GouShouryuken=999999
+TatsumakiZankuuKyaku=999999
+MessatsuGouHadou=$iif($current.battlestreak < 100, 0, 999999)
+MessatsuGouShouryuu=$iif($current.battlestreak < 100, 0, 999999)
+TenmaGouZankuu=$iif($current.battlestreak < 100, 0, 999999)
+ShunGokuSatsu=$iif($current.battlestreak < 200, 0, 999999)
 
 [Item_Amount]
 Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)

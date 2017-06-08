@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AlucardSword
-AlucardSword=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+AlucardSword=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Swordmaster=100
@@ -120,11 +121,11 @@ Resist-Petrify=100
 Resist-Disarm=100
 
 [Techniques]
-UrielBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ChantduCygne=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Requiescat=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SoulSteal=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TetraSpirit=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+UrielBlade=$round($calc(1 + (($current.battlestreak / 2))))
+ChantduCygne=$round($calc(1 + (($current.battlestreak / 2))))
+Requiescat=$round($calc(1 + (($current.battlestreak / 2))))
+SoulSteal=$round($calc(1 + (($current.battlestreak / 2))))
+TetraSpirit=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

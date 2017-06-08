@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DekarBlade
-DekarBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DekarBlade=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -123,16 +124,16 @@ Resist-Disarm=100
 
 
 [Techniques]
-ExplosionFist=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ExplosionSword=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-GlacialBlast=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Thundershriek=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BombAttack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ArticFreeze=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HolyEnergy=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PhoenixBlow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-OctoStrike=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Skysplitter=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ExplosionFist=$round($calc(1 + (($current.battlestreak / 2))))
+ExplosionSword=$round($calc(1 + (($current.battlestreak / 2))))
+GlacialBlast=$round($calc(1 + (($current.battlestreak / 2))))
+Thundershriek=$round($calc(1 + (($current.battlestreak / 2))))
+BombAttack=$round($calc(1 + (($current.battlestreak / 2))))
+ArticFreeze=$round($calc(1 + (($current.battlestreak / 2))))
+HolyEnergy=$round($calc(1 + (($current.battlestreak / 2))))
+PhoenixBlow=$round($calc(1 + (($current.battlestreak / 2))))
+OctoStrike=$round($calc(1 + (($current.battlestreak / 2))))
+Skysplitter=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

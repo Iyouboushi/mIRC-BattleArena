@@ -149,8 +149,6 @@ Wrestlemania=10
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -182,3 +180,10 @@ Hammer=100
 Bat=100
 GrandDream=60
 Thunderclap=60
+Blast_Burn=50
+Hydro_Cannon=50
+Hyper_Beam=50
+Final_Kamehameha=75
+Spirit_Excalibur=50
+Final_Flash=50
+God_Kamehameha=75

@@ -53,6 +53,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
+ActionsPerTurn=2
 
 [Status]
 Poison=no
@@ -98,9 +99,9 @@ conservetp.on=off
 
 [Weapons]
 Equipped=DextroCustros
-DextroCustros=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DextroCustros=$round($calc(1 + (($current.battlestreak / 2))))
 EquippedLeft=SinestroCustros
-SinestroCustros=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SinestroCustros=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -129,14 +130,14 @@ Demon-Killer=10
 
 
 [Techniques]
-Ignis=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Grando=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Fulgur=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Nitesco=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Globus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Acerbatus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Luminatio=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Dominus=$round($calc(1 + (($current.battlestreak / 2) / 3.5)),0)
+Ignis=$round($calc(1 + (($current.battlestreak / 2))))
+Grando=$round($calc(1 + (($current.battlestreak / 2))))
+Fulgur=$round($calc(1 + (($current.battlestreak / 2))))
+Nitesco=$round($calc(1 + (($current.battlestreak / 2))))
+Globus=$round($calc(1 + (($current.battlestreak / 2))))
+Acerbatus=$round($calc(1 + (($current.battlestreak / 2))))
+Luminatio=$round($calc(1 + (($current.battlestreak / 2))))
+Dominus=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 
@@ -154,8 +155,6 @@ SinestroCustros=HurtEthereal.TechBonus.MeleeBonus.MagicBonus.EnhanceGlyph
 GlyphUnion=$iif($current.battlestreak < 500, 0, 1)
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=90
 Fire=90

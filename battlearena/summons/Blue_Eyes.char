@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=20
 Int=20
@@ -10,7 +10,7 @@ Name=Blue Eyes White Dragon
 
 [Battle]
 Hp=500
-Tp=100
+Tp=1000
 Str=30
 Def=20
 Int=20
@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+BattleStats=ignoreTP
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BlueEyesPower
-BlueEyesPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+BlueEyesPower=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 MartialArts=100
@@ -117,9 +118,9 @@ Resist-Confuse=100
 Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 [Techniques]
-BurstStream=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+BurstStream=$round($calc(1 + (($current.battlestreak / 2))))
 AbsoluteTerror=1
-FangRush=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+FangRush=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 

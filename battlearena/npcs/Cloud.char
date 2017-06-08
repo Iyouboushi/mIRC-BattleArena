@@ -53,6 +53,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -97,7 +98,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BusterSword
-BusterSword=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BusterSword=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -122,13 +123,13 @@ Resist-Disarm=100
 
 
 [Techniques]
-Braver=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-CrossSlash=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Blade_Beam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Climhazzard=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Meteorain=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FinishingTouch=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Omnislash=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Braver=$round($calc(1 + (($current.battlestreak / 2))))
+CrossSlash=$round($calc(1 + (($current.battlestreak / 2))))
+Blade_Beam=$round($calc(1 + (($current.battlestreak / 2))))
+Climhazzard=$round($calc(1 + (($current.battlestreak / 2))))
+Meteorain=$round($calc(1 + (($current.battlestreak / 2))))
+FinishingTouch=$round($calc(1 + (($current.battlestreak / 2))))
+Omnislash=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

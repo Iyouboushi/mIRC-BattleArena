@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RyuGloves
-RyuGloves=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+RyuGloves=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -119,13 +120,13 @@ Resist-Disarm=100
 
 
 [Techniques]
-Hadouken=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShakunetsuHadouken=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Shouryuken=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TatsumakiSenpukyaku=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShinkuHadouken=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShinkuTatsumakiSenpukyaku=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShinShouryuken=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Hadouken=$round($calc(1 + (($current.battlestreak / 2))))
+ShakunetsuHadouken=$round($calc(1 + (($current.battlestreak / 2))))
+Shouryuken=$round($calc(1 + (($current.battlestreak / 2))))
+TatsumakiSenpukyaku=$round($calc(1 + (($current.battlestreak / 2))))
+ShinkuHadouken=$round($calc(1 + (($current.battlestreak / 2))))
+ShinkuTatsumakiSenpukyaku=$round($calc(1 + (($current.battlestreak / 2))))
+ShinShouryuken=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 
@@ -141,8 +142,6 @@ RyuGloves=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

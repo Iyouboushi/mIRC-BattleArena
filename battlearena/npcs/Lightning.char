@@ -54,6 +54,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -99,7 +100,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BlazefireSaber
-BlazefireSaber=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+BlazefireSaber=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -125,12 +126,12 @@ Resist-Disarm=100
 
 
 [Techniques]
-ArmyOfOne=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Blindside=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Flamestrike=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Froststrike=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Sparkstrike=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Aquastrike=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ArmyOfOne=$round($calc(1 + (($current.battlestreak / 2))))
+Blindside=$round($calc(1 + (($current.battlestreak / 2))))
+Flamestrike=$round($calc(1 + (($current.battlestreak / 2))))
+Froststrike=$round($calc(1 + (($current.battlestreak / 2))))
+Sparkstrike=$round($calc(1 + (($current.battlestreak / 2))))
+Aquastrike=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -147,8 +148,6 @@ BlazefireSaber=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

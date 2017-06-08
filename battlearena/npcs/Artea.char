@@ -53,6 +53,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 
 [Status]
@@ -98,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ArteasBow
-ArteasBow=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+ArteasBow=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Archery=100
@@ -123,12 +124,12 @@ Resist-Disarm=100
 
 
 [Techniques]
-GlacialBlast=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-EagleEyeShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-NamasArrow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Sidewinder=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ApexArrow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-JishnusRadiance=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+GlacialBlast=$round($calc(1 + (($current.battlestreak / 2))))
+EagleEyeShot=$round($calc(1 + (($current.battlestreak / 2))))
+NamasArrow=$round($calc(1 + (($current.battlestreak / 2))))
+Sidewinder=$round($calc(1 + (($current.battlestreak / 2))))
+ApexArrow=$round($calc(1 + (($current.battlestreak / 2))))
+JishnusRadiance=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

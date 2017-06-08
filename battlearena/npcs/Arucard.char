@@ -55,6 +55,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=true
 IgnoreElementalMessage=true
+ActionsPerTurn=2
 
 [Status]
 Poison=no
@@ -99,7 +100,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Casull&Jackal
-Casull&Jackal=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Casull&Jackal=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Gunslinger=100
@@ -125,10 +126,10 @@ Resist-Disarm=100
 
 
 [Techniques]
-LastStand=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-RapidShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Rainstorm=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BloodDrain=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+LastStand=$round($calc(1 + (($current.battlestreak / 2))))
+RapidShot=$round($calc(1 + (($current.battlestreak / 2))))
+Rainstorm=$round($calc(1 + (($current.battlestreak / 2))))
+BloodDrain=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Ignitions]

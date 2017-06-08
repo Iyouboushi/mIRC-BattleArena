@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=30
 Int=20
@@ -10,7 +10,7 @@ Name=Buster Blader
 
 [Battle]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=30
 Int=20
@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+BattleStats=ignoreTP
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DragonSword
-DragonSword=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+DragonSword=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Swordmaster=100
@@ -114,13 +115,13 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
-Dragon-Killer=100
+Dragon-Killer=20
 
 
 [Techniques]
-HardSlash=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-PowerSlash=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Resolution=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+HardSlash=$round($calc(1 + (($current.battlestreak / 2))))
+PowerSlash=$round($calc(1 + (($current.battlestreak / 2))))
+Resolution=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 

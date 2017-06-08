@@ -54,6 +54,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -98,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ZeroSaber
-ZeroSaber=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ZeroSaber=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -125,12 +126,12 @@ Resist-Disarm=100
 
 
 [Techniques]
-Raijingeki=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Rakuhouha=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Ryuenjin=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Kuuenzan=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Shippuuga=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Hyoretsuzan=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Raijingeki=$round($calc(1 + (($current.battlestreak / 2))))
+Rakuhouha=$round($calc(1 + (($current.battlestreak / 2))))
+Ryuenjin=$round($calc(1 + (($current.battlestreak / 2))))
+Kuuenzan=$round($calc(1 + (($current.battlestreak / 2))))
+Shippuuga=$round($calc(1 + (($current.battlestreak / 2))))
+Hyoretsuzan=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -151,8 +152,6 @@ BlackArmor=$iif($current.battlestreak < 200, 0, 1)
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

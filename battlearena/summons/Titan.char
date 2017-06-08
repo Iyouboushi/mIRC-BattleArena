@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=30
 Int=20
@@ -10,7 +10,7 @@ Name=Titan
 
 [Battle]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=30
 Int=20
@@ -52,6 +52,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
+BattleStats=ignoreTP
 
 [Status]
 Poison=no
@@ -96,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=TitanPower
-TitanPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+TitanPower=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -119,10 +120,10 @@ Resist-Confuse=100
 
 
 [Techniques]
-AngerOfTheLand=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
-MountainBuster=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Geocrush=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Quake=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+AngerOfTheLand=$round($calc(1 + (($current.battlestreak / 2))))
+MountainBuster=$round($calc(1 + (($current.battlestreak / 2))))
+Geocrush=$round($calc(1 + (($current.battlestreak / 2))))
+Quake=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 

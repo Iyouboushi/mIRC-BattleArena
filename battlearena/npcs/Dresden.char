@@ -56,6 +56,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -100,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RuneOakStaff
-RuneOakStaff=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+RuneOakStaff=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -130,17 +131,17 @@ Resist-Disarm=100
 
 
 [Techniques]
-Forzare=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SoulForzare=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Fuego=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Pyrofeugo=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Dormio=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Fulminos=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Arctis=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Dispertius=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Gravitus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FlickumBicus=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Galvinius=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Forzare=$round($calc(1 + (($current.battlestreak / 2))))
+SoulForzare=$round($calc(1 + (($current.battlestreak / 2))))
+FlickumBicus=$round($calc(1 + (($current.battlestreak / 2))))
+Fuego=$round($calc(1 + (($current.battlestreak / 2))))
+Pyrofeugo=$round($calc(1 + (($current.battlestreak / 2))))
+Dormio=$round($calc(1 + (($current.battlestreak / 2))))
+Fulminos=$round($calc(1 + (($current.battlestreak / 2))))
+Arctis=$round($calc(1 + (($current.battlestreak / 2))))
+Dispertius=$round($calc(1 + (($current.battlestreak / 2))))
+Gravitus=$round($calc(1 + (($current.battlestreak / 2))))
+Galvinius=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -161,8 +162,6 @@ RuneOakStaff=MagicBonus.MeleeBonus.EnhanceStaff.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

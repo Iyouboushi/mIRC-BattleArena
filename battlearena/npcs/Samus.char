@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=$iif(%battle.type = dungeon, 20000, 5000)
-Tp=500
+Tp=1000
 Str=20
 Def=20
 Int=20
@@ -55,6 +55,8 @@ Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
 trust=$iif(%battle.type = dungeon, false, true)
+BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -101,7 +103,7 @@ auto-regen=$iif(%battle.type = dungeon, yes, no)
 
 [Weapons]
 Equipped=ChozoArmCannon
-ChozoArmCannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ChozoArmCannon=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -128,19 +130,19 @@ Resist-Disarm=100
 
 
 [Techniques]
-PoweredShot=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-Missile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-SuperMissile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-Bomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-PowerBomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-ScrewAttack=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-IceBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-PlasmaBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-DarkBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-DarkBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-LightBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-SunBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0))
-PhazonBeam=$iif($dungeon.currentroom = 10, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0), 0)
+PoweredShot=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+Missile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+SuperMissile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+Bomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+PowerBomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+ScrewAttack=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+IceBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+PlasmaBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+DarkBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+DarkBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+LightBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+SunBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
+PhazonBeam=$iif($dungeon.currentroom = 10, $round($calc(1 + (($current.battlestreak / 2)))), 0)
 
 
 [Item_Amount]

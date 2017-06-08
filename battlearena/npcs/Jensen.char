@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -96,8 +97,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Fists
-Fists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SniperRifle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Fists=$round($calc(1 + (($current.battlestreak / 2))))
+SniperRifle=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -123,11 +124,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-DoublePunch=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShoulderTackle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SpinningAttack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-AsuranFists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SniperShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DoublePunch=$round($calc(1 + (($current.battlestreak / 2))))
+ShoulderTackle=$round($calc(1 + (($current.battlestreak / 2))))
+SpinningAttack=$round($calc(1 + (($current.battlestreak / 2))))
+AsuranFists=$round($calc(1 + (($current.battlestreak / 2))))
+SniperShot=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -145,8 +146,6 @@ SniperRifle=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

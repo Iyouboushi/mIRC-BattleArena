@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=20
 Int=20
@@ -10,7 +10,7 @@ Name=Bahamut
 
 [Battle]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=20
 Int=20
@@ -52,6 +52,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
+BattleStats=ignoreTP
 
 [Status]
 Poison=no
@@ -96,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BahamutPower
-BahamutPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+BahamutPower=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 MartialArts=100
@@ -118,8 +119,8 @@ Resist-Confuse=100
 Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
 [Techniques]
-MegaFlare=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
-Impulse=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+MegaFlare=$round($calc(1 + (($current.battlestreak / 2))))
+Impulse=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 

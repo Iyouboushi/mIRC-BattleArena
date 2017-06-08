@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
-Name=Ash
+Hp=$iif(%battle.type = dungeon, 20000, 5000)
+Tp=1000
+Str=20
+Def=20
+Int=20
+Spd=20
+Name=Captain Jack Sparrow
 
 
 [Battle]
 Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
+Tp=1000
+Str=20
+Def=20
+Int=20
+Spd=20
 Status=alive
 
 
@@ -31,8 +31,10 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a man who works in the Housewares section of S-Mart. He wears a blue shirt, dark brown khaki pants, and brown leather boots. He wields a boomstick in his left hand and has a chainsaw attached to his right hand. "Groovy."
-Rage=yells out, "I'm afraid I'm going to have to ask you to leave the store!"
+Char=is a man with dark brown dreadlocks and goatee beard. He wears long sea boots, light brown trousers, white undershirt with a blue waistcoat, a dark brown coat, a red bandanna, and his favorite faded-black tricorne hat.
+Rage=needs to set a rage desc by typing !ragedesc <desc>
+BossQuote=$iif(%battletype = dungeon, Take whatever treasure you want, but leave the rum for me! Savvy?)
+
 
 [Stuff]
 RedOrbs=0
@@ -50,10 +52,18 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
+CanFlee=$iif(%battle.type = dungeon, true, false)
 CanTaunt=true
-TauntFile=taunts_ashwilliams.txt
-trust=true
-ActionsPerTurn=$rand(1,2)
+TauntFile=taunts_captainjacksparrow.txt
+HealByTaunt=true
+IgnorePresident=true
+BattleStats=ignoreTP
+
+
+[monster]
+type=human
+TechLearn=false
+size=medium
 
 [Status]
 Poison=no
@@ -97,12 +107,12 @@ slow.timer=1
 zombie.timer=1
 
 [Weapons]
-Equipped=Boomstick
-Boomstick=$round($calc(1 + (($current.battlestreak / 2))))
+Equipped=Cutlass
+Cutlass=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
-Gunslinger=100
 Zen=5
+SwordMaster=100
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -119,31 +129,39 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-Undead-Killer=10
-
 
 [Techniques]
-HotShot=$round($calc(1 + (($current.battlestreak / 2))))
-BlastShot=$round($calc(1 + (($current.battlestreak / 2))))
-Detonator=$round($calc(1 + (($current.battlestreak / 2))))
+FastBlade=$round($calc(1 + (($current.battlestreak / 2))))
+CircleBlade=$round($calc(1 + (($current.battlestreak / 2))))
+FlatBlade=$round($calc(1 + (($current.battlestreak / 2))))
+
+[Augments]
+Cutlass=TechBonus.MeleeBonus.HurtEthereal
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+
+[NaturalArmor]
+Name=
+Max=
+Current=
+
+[Ignitions]
 
 
 [Item_Amount]
 
 
-[Augments]
-Boomstick=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
-
-
-[Styles]
-Equipped=WeaponMaster
-WeaponMaster=10
-WeaponMasterXP=1
-
-
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -165,3 +183,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

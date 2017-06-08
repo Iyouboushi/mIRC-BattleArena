@@ -5,7 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=120
 Name=Rose
 
 
@@ -16,7 +16,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=120
 Status=alive
 
 
@@ -33,7 +33,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a mysterious woman that wears dark purple armor that has a gold trim. The wielder of the Darkness Dragon spirit.
+Char=is a mysterious woman that wears dark purple armor which has a gold trim. The wielder of the Darkness Dragon spirit.
 Rage=yells out in rage as dark energy surrounds the arena!
 
 [Stuff]
@@ -54,6 +54,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -98,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Rose's_Rapier
-Rose's_Rapier=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Rose's_Rapier=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 SwordMaster=100
@@ -125,10 +126,10 @@ Resist-Disarm=100
 
 
 [Techniques]
-WhipSmack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MoreAndMore=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HardBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DemonsDance=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+WhipSmack=$round($calc(1 + (($current.battlestreak / 2))))
+MoreAndMore=$round($calc(1 + (($current.battlestreak / 2))))
+HardBlade=$round($calc(1 + (($current.battlestreak / 2))))
+DemonsDance=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

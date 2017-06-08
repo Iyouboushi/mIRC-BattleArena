@@ -52,6 +52,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -96,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=GunbladeRevolver
-GunbladeRevolver=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+GunbladeRevolver=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Swordmaster=100
@@ -121,11 +122,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-Renzokuken=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-RoughDivide=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FatedCircle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BlastingZone=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Lionheart=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Renzokuken=$round($calc(1 + (($current.battlestreak / 2))))
+RoughDivide=$round($calc(1 + (($current.battlestreak / 2))))
+FatedCircle=$round($calc(1 + (($current.battlestreak / 2))))
+BlastingZone=$round($calc(1 + (($current.battlestreak / 2))))
+Lionheart=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 
@@ -141,8 +142,6 @@ GunbladeRevolver=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

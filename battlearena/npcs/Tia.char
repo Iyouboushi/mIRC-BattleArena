@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AirWhip
-AirWhip=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+AirWhip=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Whipster=100
@@ -119,10 +120,10 @@ Resist-Disarm=100
 
 
 [Techniques]
-ArticFreeze=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwinDragonLash=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Whiplash=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SerpentBite=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ArticFreeze=$round($calc(1 + (($current.battlestreak / 2))))
+TwinDragonLash=$round($calc(1 + (($current.battlestreak / 2))))
+Whiplash=$round($calc(1 + (($current.battlestreak / 2))))
+SerpentBite=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -139,8 +140,6 @@ AirWhip=MeleeBonus.TechBonus.EnhanceWhip.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

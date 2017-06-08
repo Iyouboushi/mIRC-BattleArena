@@ -54,6 +54,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -98,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Yasoma_Kagura
-Yasoma_Kagura=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Yasoma_Kagura=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -123,9 +124,9 @@ Resist-Disarm=100
 
 
 [Techniques]
-SparkWaltz=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DragonDance=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-LightningWaltz=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SparkWaltz=$round($calc(1 + (($current.battlestreak / 2))))
+DragonDance=$round($calc(1 + (($current.battlestreak / 2))))
+LightningWaltz=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -156,8 +157,6 @@ Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

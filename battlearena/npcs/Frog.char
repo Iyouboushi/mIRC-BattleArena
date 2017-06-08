@@ -55,6 +55,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [monster]
 type=frog
@@ -104,7 +105,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=MasamuneII
-MasamuneII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MasamuneII=$round($calc(1 + (($current.battlestreak / 2))))
 EquippedLeft=Genbu'sShield
 
 [Skills]
@@ -137,13 +138,13 @@ MasamuneII=MeleeBonus.TechBonus.EnhanceBlocking.IgnoreGuardian.IgnoreMetalDefens
 
 
 [Techniques]
-WaterIII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Waterja=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SlurpCut=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-LeapSlash=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FrogSquash=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-CureII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-CureIV=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+WaterIII=$round($calc(1 + (($current.battlestreak / 2))))
+Waterja=$round($calc(1 + (($current.battlestreak / 2))))
+SlurpCut=$round($calc(1 + (($current.battlestreak / 2))))
+LeapSlash=$round($calc(1 + (($current.battlestreak / 2))))
+FrogSquash=$round($calc(1 + (($current.battlestreak / 2))))
+CureII=$round($calc(1 + (($current.battlestreak / 2))))
+CureIV=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -163,8 +164,6 @@ WeaponMasterXP=0
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

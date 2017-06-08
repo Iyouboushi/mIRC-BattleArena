@@ -55,6 +55,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
 TauntFile=taunts_judgedredd.txt
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -100,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DreddGun
-DreddGun=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DreddGun=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -125,11 +126,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-TheLaw=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-GrenadeShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PierceShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-RapidShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-LastStand=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TheLaw=$round($calc(1 + (($current.battlestreak / 2))))
+GrenadeShot=$round($calc(1 + (($current.battlestreak / 2))))
+PierceShot=$round($calc(1 + (($current.battlestreak / 2))))
+RapidShot=$round($calc(1 + (($current.battlestreak / 2))))
+LastStand=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

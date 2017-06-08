@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ChunLiBracelets
-ChunLiBracelets=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ChunLiBracelets=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 MartialArts=100
@@ -119,12 +120,12 @@ Resist-Disarm=100
 
 
 [Techniques]
-SpinningBirdKick=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Kikoken=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Hyakuretsukyaku=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Hazanshu=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Kikosho=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Hosenka=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SpinningBirdKick=$round($calc(1 + (($current.battlestreak / 2))))
+Kikoken=$round($calc(1 + (($current.battlestreak / 2))))
+Hyakuretsukyaku=$round($calc(1 + (($current.battlestreak / 2))))
+Hazanshu=$round($calc(1 + (($current.battlestreak / 2))))
+Kikosho=$round($calc(1 + (($current.battlestreak / 2))))
+Hosenka=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

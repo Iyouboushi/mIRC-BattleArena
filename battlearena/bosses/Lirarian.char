@@ -1,10 +1,10 @@
 [BaseStats]
-Hp=$iif($current.battlestreak <= 300, 600, 3000)
+Hp=3000
 Tp=2000
-Str=$iif($current.battlestreak <= 300, 515, 1544)
-Def=$iif($current.battlestreak <= 300, 515, 1544)
-Int=$iif($current.battlestreak <= 300, 515, 1544)
-Spd=$iif($current.battlestreak <= 300, 515, 1544)
+Str=1544
+Def=1544
+Int=1544
+Spd=1544
 IgnitionGauge=9000
 Name=Lirarian
 
@@ -12,10 +12,10 @@ Name=Lirarian
 [Battle]
 Hp=3000
 Tp=2000
-Str=515
-Def=515
-Int=515
-Spd=515
+Str=1544
+Def=1544
+Int=1544
+Spd=1544
 IgnitionGauge=9000
 Status=alive
 
@@ -48,7 +48,7 @@ Drops=
 [Monster]
 Type=Elf
 size=medium
-TechLearn=$iif($current.battlestreak <= 1000, false, true)
+TechLearn=true
 Elite=$iif($current.battlestreak <= 1000, false, true)
 SuperElite=$iif($current.battlestreak >= 5000, false, true)
 
@@ -62,7 +62,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=100
+Streak=1000
 IgnoreQuicksilver=true
 CanTaunt=false
 IgnorePresident=true
@@ -1343,3 +1343,10 @@ Daedalus=90
 Daedalus+1=90
 Sacrament=90
 Lazarus=100
+Blast_Burn=50
+Hydro_Cannon=50
+Hyper_Beam=50
+Final_Kamehameha=75
+Spirit_Excalibur=50
+Final_Flash=50
+God_Kamehameha=75

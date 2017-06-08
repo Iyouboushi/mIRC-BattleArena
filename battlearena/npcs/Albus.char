@@ -50,6 +50,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -94,7 +95,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Agartha
-Agartha=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Agartha=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -120,11 +121,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-OpticalShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MaxShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Torpor=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TorporRain=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-QuadrupleIgnis=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+OpticalShot=$round($calc(1 + (($current.battlestreak / 2))))
+MaxShot=$round($calc(1 + (($current.battlestreak / 2))))
+Torpor=$round($calc(1 + (($current.battlestreak / 2))))
+TorporRain=$round($calc(1 + (($current.battlestreak / 2))))
+QuadrupleIgnis=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

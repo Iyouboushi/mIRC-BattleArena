@@ -5,7 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=120
 Name=Midna
 
 
@@ -16,7 +16,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=120
 Status=alive
 
 
@@ -57,6 +57,7 @@ TauntFile=taunts_midna.txt
 IgnoreQuicksilver=True
 RageMode=Ignore
 IgnoreElementalMessage=true
+ActionsPerTurn=$rand(1,2)
 
 [montser]
 type=Twili
@@ -106,7 +107,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=MirrorOfTwilight
-MirrorOfTwilight=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+MirrorOfTwilight=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -133,14 +134,14 @@ Resist-Disarm=100
 
 
 [Techniques]
-TwiliEnergy=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliFist=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliLight=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliCannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliBridge=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliWolves=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwilightMirror=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TwiliSpear=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+TwiliEnergy=$round($calc(1 + (($current.battlestreak / 2))))
+TwiliFist=$round($calc(1 + (($current.battlestreak / 2))))
+TwiliLight=$round($calc(1 + (($current.battlestreak / 2))))
+TwiliCannon=$round($calc(1 + (($current.battlestreak / 2))))
+TwiliBridge=$round($calc(1 + (($current.battlestreak / 2))))
+TwiliWolves=$round($calc(1 + (($current.battlestreak / 2))))
+TwilightMirror=$round($calc(1 + (($current.battlestreak / 2))))
+TwiliSpear=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -163,8 +164,6 @@ TwiliPower=$iif($current.battlestreak < 200, 0, 1)
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=Dark
 Earth=90
 Fire=90
@@ -172,8 +171,8 @@ Wind=90
 Water=90
 Ice=90
 Lightning=90
-Light=120
-Dark=0
+Light=150
+Dark=300
 HandToHand=100
 Whip=100
 Sword=100

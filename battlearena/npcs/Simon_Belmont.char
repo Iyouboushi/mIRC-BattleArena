@@ -54,6 +54,7 @@ Flag=NPC
 CanTaunt=false
 Streak=-1000
 trust=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -99,7 +100,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=VampireKiller
-VampireKiller=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+VampireKiller=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -125,12 +126,12 @@ Resist-Disarm=100
 
 
 [Techniques]
-Dagger=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HolyWater=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Cross=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Dagger=$round($calc(1 + (($current.battlestreak / 2))))
+HolyWater=$round($calc(1 + (($current.battlestreak / 2))))
+Cross=$round($calc(1 + (($current.battlestreak / 2))))
 StopWatch=1
-Axe=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DoubleAxe=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Axe=$round($calc(1 + (($current.battlestreak / 2))))
+DoubleAxe=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -147,8 +148,6 @@ VampireKiller=MeleeBonus.TechBonus.EnhanceWhip.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

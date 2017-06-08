@@ -55,6 +55,7 @@ CanTaunt=false
 CanFlee=false
 IgnoreOutpost=true
 IgnorePresident=true
+ActionsPerTurn=$rand(1,2)
 
 [monster]
 type=humans
@@ -104,10 +105,10 @@ zombie.timer=1
 
 [Weapons]
 Equipped=TacticalPistol
-TacticalPistol=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-CompoundBow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-VanirRifle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Thunderclap=$iif($current.battlestreak >= 5000, $round($calc(1 + (($current.battlestreak / 2) / 5.5)),0), 0)
+TacticalPistol=$round($calc(1 + (($current.battlestreak / 2))))
+CompoundBow=$round($calc(1 + (($current.battlestreak / 2))))
+VanirRifle=$round($calc(1 + (($current.battlestreak / 2))))
+Thunderclap=$iif($current.battlestreak >= 5000, $round($calc(1 + (($current.battlestreak / 2)))), 0)
 
 
 [Skills]
@@ -134,18 +135,18 @@ Resist-Disarm=100
 
 
 [Techniques]
-RapidShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ChargedshotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-LastStandII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FlamingArrowII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-EagleEyeShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BlastArrowII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HotShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ChargedShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BlastShotII=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ChargedShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BlastShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Detonator=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+RapidShotII=$round($calc(1 + (($current.battlestreak / 2))))
+ChargedshotII=$round($calc(1 + (($current.battlestreak / 2))))
+LastStandII=$round($calc(1 + (($current.battlestreak / 2))))
+FlamingArrowII=$round($calc(1 + (($current.battlestreak / 2))))
+EagleEyeShotII=$round($calc(1 + (($current.battlestreak / 2))))
+BlastArrowII=$round($calc(1 + (($current.battlestreak / 2))))
+HotShotII=$round($calc(1 + (($current.battlestreak / 2))))
+ChargedShotII=$round($calc(1 + (($current.battlestreak / 2))))
+BlastShotII=$round($calc(1 + (($current.battlestreak / 2))))
+ChargedShot=$round($calc(1 + (($current.battlestreak / 2))))
+BlastShot=$round($calc(1 + (($current.battlestreak / 2))))
+Detonator=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Augments]
 TacticalPistol=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
@@ -163,8 +164,6 @@ Equipped=WeaponMaster
 WeaponMaster=10
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

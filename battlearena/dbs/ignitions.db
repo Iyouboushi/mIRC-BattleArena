@@ -293,13 +293,90 @@ int=1.9
 spd=2.4
 Augment=TechBonus.MeleeBonus.EnhanceZen.RenkeiBonus.EnhanceBloodBoost
 Effect=Status
-IgnitionTrigger=30
-IgnitionConsume=20
+IgnitionTrigger=10
+IgnitionConsume=10
 Cost=0
 StatusTarget=allies
 StatusType=TPRegenerating
-Techs=Chou_Kamehameha
+Techs=ChouKamehameha
 Desc=begin to channel an ancient power begins to channel an ancient power meant for another race. $gender($1) energy flares around $gender($1) body, then swirls all around $gender2($1) into a cone in the shape of $gender($1) body, which then turns into $gender($1) aura. The aura is flashing very brightly and violently at the moment. %real.name $+ 's body overloads as energy flares out like wild fire and $gender($1) hair turns gold and $gender($1) eyes green.
+
+[SSJBlue]
+Name=SSJBlue
+HP=1.2
+Str=8
+Def=8
+Int=8
+Spd=10
+Augment=TechBonus.MeleeBonus.EnhanceZen.RenkeiBonus.EnhanceBloodBoost
+Effect=Status
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+StatusTarget=allies
+StatusType=TPRegenerating
+Techs=God_Kamehameha
+Desc=realizes Super Saiya-jin just wont be enough. So as $gender($1) anger heightens, $gender($1) breathing getting heavy, $gender3($1) screams out with all the anger built inside $gender2($1) $+ . $gender($1) aura stops completely, and there is no sign of power. Suddenly electricity swirls around $gender2($1) violently. It then changes into a vibrant, electric blue aura with a subtle yellow glow, $gender($1) hair and eyes also changing to blue.
+
+[MegaCharizardX]
+Name=MegaCharizardX
+hp=1.3
+Str=1.8
+def=1.8
+int=1.4
+spd=1.4
+Augment=TechBonus.MeleeBonus.EnhanceZen
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=Blast_Burn
+Desc=is covered in a bright light which fades after a moment. Charizard is now more fit and has black and blue coloring, the rest of the body taking on more of a dragon style. It also now breaths blue flames along with the tail flame changing to blue.
+AdditionalCode=writeini $char($1) ignitions MegaCharizardX 0
+
+[MegaCharizardY]
+Name=MegaCharizardY
+hp=1.3
+Str=1.4
+def=1.4
+int=1.8
+spd=1.8
+Augment=MagicBonus.EnhanceZen
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=Blast_Burn
+Desc=is covered in a bright light which fades after a moment. Charizard is now more sleek and expansive, while retaining the normal color bur gaining white pupils. It has larger fangs, small wings on the wrists, while the larger wings take on a more ragged appearance.
+AdditionalCode=writeini $char($1) ignitions MegaCharizardY 0
+
+[MegaBlastoise]
+Name=MegaBlastoise
+hp=1.5
+Str=1.4
+def=1.8
+int=1.8
+spd=1.4
+Augment=TechBonus.MeleeBonus.EnhanceZen.RenkeiBonus
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=Hydro_Cannon
+Desc=is covered in a bright light which fades after a moment. Blastoise is now a bit larger, and has a bigger cannon on its back, along a shell on the arms that has their own water cannon.
+AdditionalCode=writeini $char($1) ignitions MegaBlastoise 0
+
+[MegaRayquaza]
+Name=MegaRayquaza
+hp=1.6
+Str=1.8
+def=1.8
+int=1.8
+spd=1.8
+Augment=TechBonus.MeleeBonus.EnhanceZen.RenkeiBonus.MagicBonus
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=Hyper_Beam
+Desc=is covered in a bright light which fades after a moment. Rayquaza now has a longer body, and its fins and horns are longer, almost blade-like with gold color on the edges. It also has several golden tendrils and orbs along the body.
+AdditionalCode=writeini $char($1) ignitions MegaRayquaza 0
 
 [Sui-FengShikai]
 Name=Shikai
@@ -967,3 +1044,4 @@ Desc=$+ 's body and weapon is covered with a rainbow barrier for a moment before
 StatusTarget=self
 StatusType=Protect.Shell.Resist-Earth.Resist-Fire.Resist-Wind.Resist-Water.Resist-Ice.Resist-Lightning.Resist-Light.Resist-Dark
 AdditionalCode=writeini $char($1) status En-Spell Lightning
+

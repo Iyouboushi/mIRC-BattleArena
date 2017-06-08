@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=30
 Int=20
@@ -10,7 +10,7 @@ Name=Ifrit
 
 [Battle]
 Hp=500
-Tp=10
+Tp=1000
 Str=30
 Def=30
 Int=20
@@ -52,6 +52,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
+BattleStats=ignoreTP
 
 [Status]
 Poison=no
@@ -96,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=IfritPower
-IfirtPower=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+IfirtPower=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -118,10 +119,10 @@ Resist-Confuse=100
 
 
 [Techniques]
-Hellfire=$round($calc(50 + (($current.battlestreak / 2) / 5.5)),0)
-MeteorStrike=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-BurningStrike=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-Flare=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+Hellfire=$round($calc(1 + (($current.battlestreak / 2))))
+MeteorStrike=$round($calc(1 + (($current.battlestreak / 2))))
+BurningStrike=$round($calc(1 + (($current.battlestreak / 2))))
+Flare=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

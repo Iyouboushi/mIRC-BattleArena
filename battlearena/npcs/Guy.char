@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -96,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AdamantAxe
-AdamantAxe=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+AdamantAxe=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -121,11 +122,11 @@ Resist-Disarm=100
 
 
 [Techniques]
-Thundershriek=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BombAttack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FellCleave=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-UkkosFury=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-KingsJustice=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Thundershriek=$round($calc(1 + (($current.battlestreak / 2))))
+BombAttack=$round($calc(1 + (($current.battlestreak / 2))))
+FellCleave=$round($calc(1 + (($current.battlestreak / 2))))
+UkkosFury=$round($calc(1 + (($current.battlestreak / 2))))
+KingsJustice=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

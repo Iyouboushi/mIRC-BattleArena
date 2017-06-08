@@ -53,6 +53,7 @@ Flag=NPC
 ai_type=techonly
 CanTaunt=true
 TauntFile=taunts_curryman.txt
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no

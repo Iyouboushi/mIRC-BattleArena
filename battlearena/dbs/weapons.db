@@ -71,7 +71,7 @@ MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.Iron
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.Excalipoor
 
-MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic
+MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower
 
 ============================================
 WEAPON TEMPLATE
@@ -2752,6 +2752,19 @@ Abilities=Kamehameha.ChouKamehameha.Kienzan
 Hits=2
 BasePower=15
 
+[VejittoKi]
+Cost=0
+Type=HandToHand
+Info=The powerful ki of Vejitto!
+Abilities=Ki_no_Tsurugi.Big_Bang_Flash.Renzoku_Kikouha.Kamehameha.Final_Kamehameha.Spirit_Excalibur.Final_Flash
+Element=None
+Hits=$rand(1,2)
+BasePower=75
+HurtEthereal=True
+2Handed=true
+CanShieldReflect=true
+CanCounter=true
+
 [Death's_Scythe]
 Cost=0
 Type=Scythe
@@ -3774,7 +3787,7 @@ Upgrade=0
 Cost=0
 Type=Blastoise_Cannons
 Info=The powerful water cannons of Blastoise.
-Abilities=Water_Cannon.IronTail
+Abilities=Water_Cannon.IronTail.Hydro_Pump.Rapid_Spin
 Element=None
 Hits=$rand(1,2)
 BasePower=30
@@ -3785,7 +3798,7 @@ HurtEthereal=True
 Cost=0
 Type=Charizard_Fangs
 Info=The fangs of Charizard.
-Abilities=Fire_Fang.IronTail
+Abilities=Fire_Fang.IronTail.Heat_Wave.Shadow_Claw.Flare_Blitz.Dragon_Claw
 Element=None
 Hits=$rand(1,2)
 BasePower=30
@@ -3796,12 +3809,24 @@ HurtEthereal=True
 Cost=0
 Type=HandToHand
 Info=The paws of Pikachu.
-Abilities=Thunderbolt.IronTail
+Abilities=Thunderbolt.IronTail.Volt_Tackle.Electro_Ball
 Element=None
 Hits=$rand(1,2)
 BasePower=30
 CanCounter=false
 HurtEthereal=True
+
+[RayquazaPower]
+Cost=0
+Type=HandToHand
+Info=The power of Rayquaza.
+Abilities=Draco_Meteor.Dragon_Ascent.Dragon_Claw.Dragon_Pulse
+Element=None
+Hits=$rand(1,2)
+BasePower=30
+HurtEthereal=True
+2Handed=true
+CanCounter=true
 
 [DreddGun]
 Cost=0

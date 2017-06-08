@@ -33,7 +33,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a Saiya-jin who was sent to Earth as a baby. He wears an orange dougi over a blue shirt and has black hair. He looks at the group and goes "I'm hungry!" 
+Char=is a Saiya-jin who was sent to Earth as a baby. He wears an orange dougi over a blue shirt and has black hair. He looks at the group and says, "I'm hungry!" 
 SSJ1=begins to scream as his energy flares around his body. The ground shakes, rocks defy gravity before exploding into dust. Goku's energy swirls all around, forming a cone in the shape of his body which then turns into his aura. The aura is flashing very brightly and violently at the moment. Goku's body overloads as energy flares out like wild fire and his hair turns gold and his eyes green.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 MightyStrike=charges his energy causing the ground to shake and his aura to flare up around him.
@@ -55,6 +55,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$iif($readini($char(SonGoku), status, ignition.on) = on, $rand(1,2), 1)
 
 [Status]
 Poison=no
@@ -99,7 +100,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ZKi
-ZKi=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ZKi=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -124,11 +125,13 @@ Resist-Disarm=100
 
 
 [Techniques]
-Kamehameha=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShikanidouKamehameha=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Kamehameha=$round($calc(1 + (($current.battlestreak / 2))))
+ShikanidouKamehameha=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Ignitions]
 SSJ1=$iif($current.battlestreak < 200, 0, 1)
+SSJGod=$iif($current.battlestreak < 600, 0, 1)
+SSJBlue=$iif($current.battlestreak < 2000, 0, 1)
 
 
 [Styles]
@@ -142,8 +145,6 @@ ZKi=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal.EnhanceParry.EnhanceDodg
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

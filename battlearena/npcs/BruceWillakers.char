@@ -57,6 +57,7 @@ CanTaunt=true
 TauntFile=taunts_brucewillakers.txt
 SpawnAfterDeath=ZombieWillakers
 RageMode=ignore
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -101,8 +102,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Excaliju
-Excaliju=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Virendra=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Excaliju=$round($calc(1 + (($current.battlestreak / 2))))
+Virendra=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Swordmaster=100
@@ -127,12 +128,12 @@ Resist-Disarm=100
 
 
 [Techniques]
-Requiescat=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MightyHealingAle=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DeathStare=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ApexArrow=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-EagleEyeShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-MillionStab=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Requiescat=$round($calc(1 + (($current.battlestreak / 2))))
+MightyHealingAle=$round($calc(1 + (($current.battlestreak / 2))))
+DeathStare=$round($calc(1 + (($current.battlestreak / 2))))
+ApexArrow=$round($calc(1 + (($current.battlestreak / 2))))
+EagleEyeShot=$round($calc(1 + (($current.battlestreak / 2))))
+MillionStab=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

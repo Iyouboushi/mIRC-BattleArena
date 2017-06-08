@@ -57,6 +57,7 @@ CanTaunt=false
 Streak=-1000
 IgnoreElementalMessage=true
 trust=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -101,7 +102,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=GoddessBlade
-GoddessBlade=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+GoddessBlade=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -125,8 +126,8 @@ Resist-Disarm=100
 
 
 [Techniques]
-GoddessCrest=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-GoddessFlames=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+GoddessCrest=$round($calc(1 + (($current.battlestreak / 2))))
+GoddessFlames=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

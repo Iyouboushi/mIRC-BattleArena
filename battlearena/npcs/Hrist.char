@@ -102,7 +102,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ValkyrieSword
-ValkyrieSword=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ValkyrieSword=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -130,10 +130,10 @@ Resist-Disarm=100
 
 
 [Techniques]
-NibelungValesti=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Glowing_Pierce=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Ptero_Attack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Vertical_Raid=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+NibelungValesti=$round($calc(1 + (($current.battlestreak / 2))))
+Glowing_Pierce=$round($calc(1 + (($current.battlestreak / 2))))
+Ptero_Attack=$round($calc(1 + (($current.battlestreak / 2))))
+Vertical_Raid=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]
@@ -150,8 +150,6 @@ ValkyrieSword=TechBonus.MeleeBonus.EnhanceSword.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=Light
 Earth=100
 Fire=100

@@ -55,6 +55,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -99,7 +100,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=HoleyGloves
-HoleyGloves=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+HoleyGloves=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 MartialArts=100
@@ -125,14 +126,14 @@ Resist-Disarm=100
 
 
 [Techniques]
-SeraphimRush=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-AngelShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DemonBanisher=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-DivineSpear=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Cataclysm=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-SeraphimWave=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-HealingDew=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PhoenixStrike=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SeraphimRush=$round($calc(1 + (($current.battlestreak / 2))))
+AngelShot=$round($calc(1 + (($current.battlestreak / 2))))
+DemonBanisher=$round($calc(1 + (($current.battlestreak / 2))))
+DivineSpear=$round($calc(1 + (($current.battlestreak / 2))))
+Cataclysm=$round($calc(1 + (($current.battlestreak / 2))))
+SeraphimWave=$round($calc(1 + (($current.battlestreak / 2))))
+HealingDew=$round($calc(1 + (($current.battlestreak / 2))))
+PhoenixStrike=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Item_Amount]

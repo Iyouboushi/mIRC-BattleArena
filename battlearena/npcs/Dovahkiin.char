@@ -5,7 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=50
+IgnitionGauge=100
 Name=The Dragonborn
 
 
@@ -16,7 +16,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=50
+IgnitionGauge=100
 Status=alive
 
 
@@ -55,6 +55,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+ActionsPerTurn=$rand(1,2)
 
 
 [Status]
@@ -101,7 +102,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=DragonShouts
-DragonShouts=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DragonShouts=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -128,10 +129,10 @@ Resist-Disarm=100
 
 
 [Techniques]
-FusRoDah=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-YolToorShul=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FoKrahDiin=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-StrunBahQo=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+FusRoDah=$round($calc(1 + (($current.battlestreak / 2))))
+YolToorShul=$round($calc(1 + (($current.battlestreak / 2))))
+FoKrahDiin=$round($calc(1 + (($current.battlestreak / 2))))
+StrunBahQo=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Ignitions]

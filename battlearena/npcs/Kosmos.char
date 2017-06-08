@@ -5,7 +5,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=200
 Name=KOS-MOS
 
 
@@ -16,7 +16,7 @@ Str=20
 Def=20
 Int=20
 Spd=20
-IgnitionGauge=60
+IgnitionGauge=200
 Status=alive
 
 
@@ -59,6 +59,7 @@ IgnoreQuicksilver=true
 CanTaunt=false
 IgnoreElementalMessage=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
+ActionsPerTurn=2
 
 
 [Status]
@@ -105,7 +106,7 @@ auto-regen=on
 
 [Weapons]
 Equipped=KosmosFists
-KosmosFists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+KosmosFists=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Skills]
@@ -130,32 +131,32 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-dragon-killer=10
-undead-killer=10
-zombie-killer=10
-demon-killer=10
-orc-killer=10
-yagudo-killer=10
-quadav-killer=10
-goblin-killer=10
-treant-killer=10
-plant-killer=10
-android-killer=10
-crab-killer=10
-worm-killer=10
-bat-killer=10
-lizard-killer=10
-elemental-killer=10
-slime-killer=10
+dragon-killer=25
+undead-killer=25
+zombie-killer=25
+demon-killer=25
+orc-killer=25
+yagudo-killer=25
+quadav-killer=25
+goblin-killer=25
+treant-killer=25
+plant-killer=25
+android-killer=25
+crab-killer=25
+worm-killer=25
+bat-killer=25
+lizard-killer=25
+elemental-killer=25
+slime-killer=25
 
 
 [Techniques]
-R-Cannon=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+R-Cannon=$round($calc(1 + (($current.battlestreak / 2))))
 Hilbert_Effect=1
 S-Chain=1
-DexEtherRa=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-DexEtherFa=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-DexEtherLe=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+DexEtherRa=$round($calc(1 + (($current.battlestreak / 2))))
+DexEtherFa=$round($calc(1 + (($current.battlestreak / 2))))
+DexEtherLe=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 [Ignitions]
@@ -189,8 +190,6 @@ Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100

@@ -1,21 +1,23 @@
 [BaseStats]
 Hp=500
-Tp=10
+Tp=1000
 Str=50
 Def=60
 Int=50
 Spd=50
 Name=Blastoise
+IgnitionGauge=100
 
 
 [Battle]
 Hp=500
-Tp=10
+Tp=1000
 Str=50
 Def=60
 Int=50
 Spd=50
 Status=alive
+IgnitionGauge=100
 
 
 [Rage]
@@ -42,14 +44,15 @@ RedOrbsSpent=0
 BlackOrbsSpent=0
 
 [Info]
-Gender=his
-Gender2=him
+Gender=its
+Gender2=its
 password=dbzrpg
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
+BattleStats=ignoreTP
 
 [Status]
 Poison=no
@@ -94,7 +97,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BlastoiseCannons
-BlastoiseCannons=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
+BlastoiseCannons=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -114,16 +117,15 @@ Resist-Confuse=100
 
 
 [Techniques]
-Water_Cannon=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-IronTail=$round($calc(10 + (($current.battlestreak / 2) / 5.5)),0)
-
+Water_Cannon=$round($calc(1 + (($current.battlestreak / 2))))
+IronTail=$round($calc(1 + (($current.battlestreak / 2))))
+Hydro_Pump=$round($calc(1 + (($current.battlestreak / 2))))
+Rapid_Spin=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=Water
 Earth=100
 Fire=50
@@ -144,4 +146,17 @@ Spear=90
 Scythe=90
 Glyph=90
 GreatSword=90
-Bow=100
+Bow=90
+Axe=90
+Dagger=90
+Mace=90
+Stave=90
+EnergyBlaster=100
+Lightsaber=100
+Hammer=90
+Bat=90
++Fire=50
++Ice=50
++Wind=100
++Water=150
++Dark=100

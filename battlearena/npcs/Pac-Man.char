@@ -55,6 +55,7 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
 trust=true
+ActionsPerTurn=$rand(1,2)
 
 
 [Status]
@@ -100,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=PacPower
-PacPower=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+PacPower=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 Zen=5
@@ -123,10 +124,10 @@ Resist-Disarm=100
 
 
 [Techniques]
-Pac-Jump=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-FireHydrant=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BonusFruit=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-PowerPellet=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Pac-Jump=$round($calc(1 + (($current.battlestreak / 2))))
+FireHydrant=$round($calc(1 + (($current.battlestreak / 2))))
+BonusFruit=$round($calc(1 + (($current.battlestreak / 2))))
+PowerPellet=$round($calc(1 + (($current.battlestreak / 2))))
 
 
 

@@ -51,6 +51,7 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
+ActionsPerTurn=$rand(1,2)
 
 [Status]
 Poison=no
@@ -95,7 +96,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=PrishePowers
-PrishePowers=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+PrishePowers=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
 MartialArts=100
@@ -121,15 +122,15 @@ Resist-Disarm=100
 
 
 [Techniques]
-AsuranFists=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-NullifyingDropkick=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-AuroralUppercut=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-TornadoKick=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-OneInchPunch=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-ShinjinSpiral=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-Holy=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-BanishV=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
-CureIV=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+AsuranFists=$round($calc(1 + (($current.battlestreak / 2))))
+NullifyingDropkick=$round($calc(1 + (($current.battlestreak / 2))))
+AuroralUppercut=$round($calc(1 + (($current.battlestreak / 2))))
+TornadoKick=$round($calc(1 + (($current.battlestreak / 2))))
+OneInchPunch=$round($calc(1 + (($current.battlestreak / 2))))
+ShinjinSpiral=$round($calc(1 + (($current.battlestreak / 2))))
+Holy=$round($calc(1 + (($current.battlestreak / 2))))
+BanishV=$round($calc(1 + (($current.battlestreak / 2))))
+CureIV=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 
@@ -144,8 +145,6 @@ PrishePowers=MeleeBonus.TechBonus.MagicBonus.EnhanceHandToHand.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
