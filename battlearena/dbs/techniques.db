@@ -4821,6 +4821,7 @@ Element=dark
 Cost=0
 Magic=no
 stat=str
+renkei=2
 
 [RadiantBreath]
 Type=Single
@@ -4832,6 +4833,7 @@ Element=light
 Cost=0
 Magic=no
 stat=int
+renkei=2
 
 [EarthBreath]
 Type=AOE
