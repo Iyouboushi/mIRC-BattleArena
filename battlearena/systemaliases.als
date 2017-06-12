@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 05/13/17
+;;;; Last updated: 06/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -428,6 +428,7 @@ copyini {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 return_winningstreak {
   if (%battle.type = torment) { return $calc(500 * %torment.level) }
+  if (%battle.type = cosmic) { return 500 }
   if (%battle.type = ai) { return %ai.battle.level }
   if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
 
@@ -2865,6 +2866,8 @@ mon_list_add {
     var %mon.max.torment.level $readini($mon(%name), info, MaxTormentLevel)
     var %mon.min.torment.level $readini($mon(%name), info, MinTormentLevel)
 
+    if ($readini($mon(%name), info, IgnoreTorment) = true) { return } 
+
     if (%mon.min.torment.level = $null) { var %mon.min.torment.level 1 }
 
     if (%torment.level >= %mon.min.torment.level) { 
@@ -2958,6 +2961,8 @@ boss_list_add {
   if (%battle.type = torment) {
     var %boss.max.torment.level $readini($boss(%name), info, MaxTormentLevel)
     var %boss.min.torment.level $readini($boss(%name), info, MinTormentLevel)
+
+    if ($readini($boss(%name), info, IgnoreTorment) = true) { return } 
 
     if (%boss.min.torment.level = $null) { var %boss.min.torment.level 1 }
 
@@ -3274,7 +3279,7 @@ clear_variables {
   unset %fullbring.type | unset %fullbring.target | unset %fullbring.status | unset %item.base | unset %timer.time | unset %savethepresident
   unset %real.name | unset %weapon.name | unset %weapon.price | unset %steal.item | unset %skip.ai | unset %file.to.read.lines 
   unset %attacker.spd | unset %playerstyle.* | unset %stylepoints.to.add | unset %current.playerstyle.* | unset %styles | unset %wait.your.turn | unset %weapon.list2
-  unset %passive.skills.list2
+  unset %passive.skills.list2 | unset %cosmic.level | unset %cosmic.drop.rewards | unset %nosouls
 }
 clear_variables2 {
   unset %torment.*
@@ -3745,6 +3750,7 @@ orb.adjust {
   if (%battle.type = dungeon) { var %winning.streak $calc(%winning.streak * 10) }
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { var %winning.streak 100 }
   if (%battle.type = torment) { var %winning.streak $calc(500 * %torment.level) }
+  if (%battle.type = cosmic) { var %winning.streak $calc(500 + %cosmic.level) }
 
   if (%winning.streak < 50) { var %orb.tier -1 }
   if ((%winning.streak >= 50) && (%winning.streak < 100)) { var %orb.tier 0 }
@@ -3770,6 +3776,7 @@ orb.adjust {
   if (%battle.type = dungeon) { inc %orb.tier 2 }
   if (%battle.type = dragonhunt) { inc %orb.tier 3 }
   if (%battle.type = torment) { inc %orb.tier 2 }
+  if (%battle.type = cosmic) { inc %orb.tier 2 }
 
   if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { inc %orb.tier 1 }
 
@@ -4628,7 +4635,7 @@ dragonhunt.createdragon {
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
 
   ; Pick a random element
-  var %elements fire.ice.wind.shadow.earth.light.lightning
+  var %elements fire.ice.wind.shadow.earth.light.lightning.water
   var %dragon.element $gettok(%elements,$rand(1, $numtok(%elements,46)),46)
   writeini $dbfile(dragonhunt.db) %dragon.name.file Element %dragon.element
 

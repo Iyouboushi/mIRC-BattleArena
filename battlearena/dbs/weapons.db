@@ -240,6 +240,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 SWORDS
@@ -342,6 +343,7 @@ Element=light
 2Handed=true
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
+TormentWeapon=true
 
 [Soulsaber]
 Cost=30
@@ -397,6 +399,7 @@ Upgrade=6000
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 [JewelSword]
 Cost=50
@@ -463,6 +466,7 @@ HurtEthereal=True
 SpecialWeapon=True
 Legendary=True
 MinLevel=2000
+TormentWeapon=true
 
 =============================================
 GREAT SWORDS
@@ -571,6 +575,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 WHIPS
@@ -660,6 +665,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 [DemonWhip+1]
 Cost=0
@@ -674,6 +680,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 GUNS & RIFLES
@@ -1009,6 +1016,7 @@ AmmoAmountNeeded=2
 SpecialWeapon=True
 Legendary=True
 MinLevel=2000
+TormentWeapon=true
 
 =============================================
 AXES
@@ -1070,6 +1078,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 [GreatIronAxe]
 Cost=1
@@ -1131,6 +1140,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 HAMMERS
@@ -1204,6 +1214,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 [Mjolnir]
 Cost=0
@@ -1219,6 +1230,7 @@ IgnoreDefense=$iif(%battle.type = torment, 40, 20)
 SpecialWeapon=true
 legendary=true
 MinLevel=2000
+TormentWeapon=true
 
 =============================================
 DAGGERS
@@ -1331,6 +1343,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=false
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 [Kikoku+1]
 Cost=0
@@ -1346,6 +1359,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 LinkedWeapon=Kannagi
 MinLevel=500
+TormentWeapon=true
 
 [Kannagi+1]
 Cost=0
@@ -1361,6 +1375,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 LinkedWeapon=Kikoku
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 Bows
@@ -1478,6 +1493,7 @@ AmmoRequired=Arrow
 AmmoAmountNeeded=1
 SpecialWeapon=True
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 KATANAS
@@ -1679,6 +1695,7 @@ Element=none
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 [Ichimonji-Yofusa]
 Cost=0
@@ -1724,6 +1741,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 Legendary=true
 MinLevel=2000
+TormentWeapon=true
 
 =============================================
 WANDS & STAVES
@@ -1829,6 +1847,7 @@ AmmoAmountNeeded=4
 SpecialWeapon=true
 Legendary=True
 MinLevel=500
+TormentWeapon=true
 
 [WoodenStaff]
 Cost=1
@@ -1924,6 +1943,7 @@ Element=none
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 [Laevatein+1]
 Cost=0
@@ -1938,6 +1958,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 [BahamutsStaff+1]
 Cost=0
@@ -1952,6 +1973,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 SPEARS
@@ -2060,6 +2082,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 SCYTHES
@@ -2146,6 +2169,7 @@ IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 2Handed=true
 SpecialWeapon=true
 MinLevel=500
+TormentWeapon=true
 
 =============================================
 BATS
@@ -6095,6 +6119,7 @@ BlockChance=$iif(%battle.type = torment, 50, 30)
 AbsorbAmount=$iif(%battle.type = torment, 50, 35)
 Legendary=True
 MinLevel=500
+TormentWeapon=true
 
 [Ochain]
 Cost=0
@@ -6118,4 +6143,27 @@ Hits=0
 BasePower=$iif(%battle.type = torment, 700, 500)
 Upgrade=0
 BlockChance=$iif(%battle.type = torment, 90, 50)
-AbsorbAmount=AbsorbAmount=$iif(%battle.type = torment, 50, 30)
+AbsorbAmount=$iif(%battle.type = torment, 50, 30)
+TormentWeapon=true
+
+
+;=========================
+; Special mythic weapon
+;=========================
+
+[Mythic]
+Cost=0
+Type=$readini($char($1), Mythic, Type)
+Info=A mythical weapon forged by the gods
+Level=$readini($char($1), Mythic, CurrentLevel)
+BasePower=$readini($char($1), Mythic, BasePower)
+Abilities=$readini($char($1), Mythic, Abilities)
+Element=$readini($char($1), Mythic, Element)
+Hits=$readini($char($1), Mythic, Hits)
+Upgrade=0
+2Handed=false
+SpecialWeapon=true
+IgnoreDefense=$readini($char($1), Mythic, IgnoreDefense)
+HurtEthereal=$readini($char($1), Mythic, HurtEthereal)
+AbsorbAmount=$readini($char($1), Mythic, AbsorbAmount)
+

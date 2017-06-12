@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/13/17
+;;;; Last updated: 06/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -129,6 +129,8 @@ on 3:TEXT:!use*:*: {  unset %real.name | unset %enemy | $set_chr_name($nick)
   }
 
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+
+  if ($readini($dbfile(items.db), $2, type) = cosmic) { $item.cosmic($nick, $3, $2) | halt }
 
   if ($4 = $null) { 
     if ($readini($dbfile(items.db), $2, type) = tormentreward) { $uses_item($nick, $2, on, $nick, $3) }
@@ -1920,6 +1922,40 @@ alias item.torment {
   $startnormal(torment)
   halt
 }
+
+
+alias item.cosmic {
+  ; $1 = person using the item
+  ; $2 = the level of the cosmic orb the player wants
+  ; $3 = the item name
+
+  ; If a battle is on, we can't use the item
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tStartCosmicInBattle), private) | halt }
+  if (%battle.type = ai) { $display.message($readini(translation.dat, errors, Can'tStartCosmicInBattle), private) | halt }
+
+  ; can't do this during shenron's wish
+  if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoCosmicDuringShenron), private) | halt }
+
+  ; can't do this while a chest exists
+  if ($readini($txtfile(treasurechest.txt), ChestInfo, Color) != $null) { $display.message($readini(translation.dat, errors, Can'tDoActionWhileChest), private) | halt }
+
+  ; Check for a valid number  
+  if ($2 !isnum 1-100) { $display.message($readini(translation.dat, errors, NeedValidNumberForCosmicLevel), private) | halt }
+
+  ; Make sure the player has enough of the item to start a cosmic battle and then remove the item.
+  var %cosmic.item $readini($char($1), Item_Amount, $3) 
+  if ((%cosmic.item <= 0) || (%cosmic.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
+  dec %cosmic.item 1
+  writeini $char($1) Item_Amount $3 %cosmic.item
+
+  ; Set the cosmic level
+  set %cosmic.level $2
+
+  ; Start the cosmic battle
+  $startnormal(cosmic, $1, $2)
+  halt
+}
+
 
 alias item.dungeon {
   ; $1 = person who used the item

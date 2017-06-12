@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/03/17
+;;;; Last updated: 06/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1569,8 +1569,9 @@ alias calculate_damage_techs {
   else { 
     if (%battle.type = dungeon) { $formula.techdmg.player.formula_3.0($1, $2, $3, $4) }
     if (%battle.type = torment) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
+    if (%battle.type = cosmic) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
 
-    if ((%battle.type != dungeon) && (%battle.type != torment)) { 
+    if (((%battle.type != dungeon) && (%battle.type != cosmic) && (%battle.type != torment))) { 
       if (($readini(system.dat, system, BattleDamageFormula) = 1) || ($readini(system.dat, system, BattleDamageFormula) = $null)) { $formula.techdmg.player.formula_3.0($1, $2, $3, $4) }
       if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
       if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.techdmg.player.formula_2.0($1, $2, $3, $4)  }

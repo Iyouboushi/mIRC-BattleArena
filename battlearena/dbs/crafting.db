@@ -231,6 +231,16 @@ Amount=1
 Death'sBreath=1
 GoldKey=1
 
+[CosmicOrb]
+Gem=Diamond
+Ingredients=LifeShard.ArcaneDust.ForgottenSoul.ReusablePart
+SuccessRate=100
+Amount=1
+LifeShard=500
+ArcaneDust=500
+ForgottenSoul=500
+ReusablePart=500
+
 
 ============
 Healing Items

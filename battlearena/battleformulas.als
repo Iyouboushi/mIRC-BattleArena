@@ -1,11 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/27/17
+;;;; Last updated: 06/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
 ; please do not remove them from the
-; bot. Dungeons use 3.0, Torment 
+; bot. Dungeons use 3.0, Torment & Cosmic
 ; uses 2.5.  By default normal battles
 ; use 3.0 as well, though this can be changed.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -435,6 +435,7 @@ cap.damage {
   ; $3 = tech, melee, etc
 
   if (%battle.type = torment) { return }
+  if (%battle.type = cosmic) { return }
   if (($readini(system.dat, system, IgnoreDmgCap) = true) || ($readini($char($2), info, IgnoreDmgCap) = true)) { return }
 
   ; ================
@@ -2141,6 +2142,9 @@ formula.meleedmg.player.formula_2.5 {
   ; Check to see if the melee attack will hurt an ethereal monster
   $melee.ethereal.check($1, $2, $3)
 
+  ; Check for WonderGuard
+  $wonderguard.check($3, $2, melee)
+
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(weapons.db), $2, StatusType)
 
@@ -2581,6 +2585,7 @@ formula.meleedmg.monster {
   if ($augment.check($1, IgnoreDefense) = true) {   inc %ignore.defense.percent $calc(%augment.strength * 2) }
 
   if (%battle.type = torment) { inc %ignore.defense.percent $calc(%torment.level * 5) }
+  if (%battle.type = cosmic) { inc %ignore.defense.percent $calc(%cosmic.level * 5) }
 
   if ($readini(system.dat, system, PlayersMustDieMode) = true) { inc %ignore.defense.percent 10 }
 
@@ -2720,6 +2725,20 @@ formula.meleedmg.monster {
 
       if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $round($calc($readini($char($3), basestats, hp) / 3),0)  }
     }
+
+    if (%battle.type = cosmic) { 
+      var %percent.damage.amount 2.5
+      if ($return_playersinbattle > 1) { inc %percent.damage.amount 2 }
+      var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(%percent.damage.amount * %cosmic.level))
+
+      if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
+
+      inc %attack.damage $calc(%attack.damage * %cosmic.level)
+      set %attack.damage $rand(%min.damage, %attack.damage)
+
+      if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $round($calc($readini($char($3), basestats, hp) / 3),0)  }
+    }
+
 
     set %attack.damage $rand(%attack.damage, %min.damage)
     if ($readini(battlestats.dat, battle, winningstreak) <= 0) { %attack.damage = $round($calc(%attack.damage / 2),0) }
@@ -3090,6 +3109,19 @@ formula.techdmg.monster {
     if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $round($calc($readini($char($3), basestats, hp) / 3),0)  }
   }
 
+  if (%battle.type = cosmic) { 
+    var %percent.damage.amount 5
+    if ($return_playersinbattle > 1) { inc %percent.damage.amount 2 }
+    var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), $calc(%percent.damage.amount * %cosmic.level))
+
+    if (%min.damage < %percent.damage) { var %min.damage %percent.damage }
+
+    inc %attack.damage $calc(%attack.damage * %cosmic.level)
+    set %attack.damage $rand(%min.damage, %attack.damage)
+
+    if (%attack.damage > $readini($char($3), basestats, hp)) { set %attack.damage $round($calc($readini($char($3), basestats, hp) / 3),0)  }
+  }
+
   set %attack.damage $rand(%attack.damage, %min.damage)
   if ($return_winningstreak <= 0) { %attack.damage = $round($calc(%attack.damage / 2),0) }
 
@@ -3146,7 +3178,7 @@ formula.techdmg.monster {
   $tech.ethereal.check($1, $2, $3)
 
   ; Check for wonderguard
-  $wonderguard.check($3, $2, tech)
+  $wonderguard.check($3, $2, tech, $readini($char($1), weapons, equipped))
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -3402,7 +3434,7 @@ formula.techdmg.player.formula_2.0 {
 
   ; If the tech is a spell let's boost or nerf it depending on style used
   if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
-    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 40) }
     else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
   }
 
@@ -3593,11 +3625,12 @@ formula.techdmg.player.formula_2.5 {
 
   if (%battle.type != torment) { 
     var %attack.rating $round($calc(%base.stat / 2),0)
-    if (%attack.rating >= 1000)
-    var %base.stat.cap .15
-    if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
-    if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
-    set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
+    if (%attack.rating >= 1000) {
+      var %base.stat.cap .15
+      if ($get.level($1) > $get.level($3)) { inc %base.stat.cap .10 }
+      if ($get.level($3) > $get.level($1)) { dec %base.stat.cap .02 }
+      set %base.stat $round($calc(1000 + (%attack.rating * %base.stat.cap)),0) 
+    }
   }
 
   if (%battle.type = torment) { var %attack.rating %base.stat }
@@ -3735,7 +3768,7 @@ formula.techdmg.player.formula_2.5 {
 
   ; If the tech is a spell let's boost or nerf it depending on style used
   if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
-    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 40) }
     else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
   }
 
@@ -3822,7 +3855,7 @@ formula.techdmg.player.formula_2.5 {
   $manawall.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
   $tech.ethereal.check($1, $2, $3)
-  $wonderguard.check($3, $2, tech)
+  $wonderguard.check($3, $2, tech, $readini($char($1), weapons, equipped))
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -4020,7 +4053,7 @@ formula.techdmg.player.formula_1.0 {
 
   ; If the tech is a spell let's boost or nerf it depending on style used
   if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
-    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 40) }
     else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
   }
 
@@ -4068,7 +4101,7 @@ formula.techdmg.player.formula_1.0 {
   $tech.ethereal.check($1, $2, $3)
 
   ; Check for wonderguard
-  $wonderguard.check($3, $2, tech)
+  $wonderguard.check($3, $2, tech, $readini($char($1), weapons, equipped))
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -4306,7 +4339,7 @@ formula.techdmg.player.formula_3.1 {
 
   ; If the tech is a spell let's boost or nerf it depending on style used
   if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
-    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 40) }
     else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
   }
 
@@ -4376,7 +4409,7 @@ formula.techdmg.player.formula_3.1 {
   $tech.ethereal.check($1, $2, $3)
 
   ; Check for wonderguard
-  $wonderguard.check($3, $2, tech)
+  $wonderguard.check($3, $2, tech, $readini($char($1), weapons, equipped))
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -4625,7 +4658,7 @@ formula.techdmg.player.formula_3.0 {
 
   ; If the tech is a spell let's boost or nerf it depending on style used
   if ($readini($dbfile(techniques.db), $2, magic) = yes) { 
-    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 25) }
+    if ($return.playerstyle($1) != spellmaster) { dec %attack.damage $return_percentofvalue(%attack.damage, 40) }
     else { inc %attack.damage $return_percentofvalue(%attack.damage, $readini($char($1), styles, spellmaster))  }
   }
 
@@ -4698,7 +4731,7 @@ formula.techdmg.player.formula_3.0 {
   $tech.ethereal.check($1, $2, $3)
 
   ; Check for wonderguard
-  $wonderguard.check($3, $2, tech)
+  $wonderguard.check($3, $2, tech, $readini($char($1), weapons, equipped))
 
   unset %statusmessage.display
   set %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
@@ -5006,7 +5039,7 @@ formula.techdmg.player.percent {
   $manawall.check($1, $2, $3)
   $utsusemi.check($1, $2, $3)
   $tech.ethereal.check($1, $2, $3)
-  $wonderguard.check($3, $2, tech)
+  $wonderguard.check($3, $2, tech, $readini($char($1), weapons, equipped))
 
   ; Check for the skill "Overwhelm" and increase the damage if so
   $skill.overwhelm($1)

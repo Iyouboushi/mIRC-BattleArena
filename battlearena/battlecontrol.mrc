@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 02/28/16
+;;;; Last updated: 06/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -478,7 +478,9 @@ alias startnormal {
 
     if (%start.battle.type = torment) { set %battle.type torment | $display.message($readini(translation.dat, system, TormentBattleStarted), global) }
 
-    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonhunt.torment
+    if (%start.battle.type = cosmic) { set %battle.type cosmic | $display.message($readini(translation.dat, system, CosmicBattleStarted), global) }
+
+    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonhunt.torment.cosmic
     if ($istok(%valid.battle.types,$lower(%start.battle.type),46) = $false) {
       $display.message(4Invalid battle type: %start.battle.type ,global) 
       $clear_battle 
@@ -539,6 +541,10 @@ alias enter {
     else {  var %min.playerlevel $calc(%torment.level * 500) }
 
     if (%player.level < %min.playerlevel) { $display.message($readini(translation.dat, errors, Torment.LevelTooLow), global) | halt }
+  }
+
+  if (%battle.type = cosmic) {
+    if ($get.level($1) < 500) { $display.message($readini(translation.dat, errors, Cosmic.levelTooLow), global) | halt }
   }
 
   $checkchar($1)
@@ -681,6 +687,12 @@ alias enter {
     if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
+  ; level sync cosmic battles
+  if (%battle.type = cosmic) {
+    var %battle.level.cap 500
+    if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
+  }
+
   if ((%mode.pvp = on) && (%battle.level.cap != $null)) {
     if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
@@ -802,6 +814,12 @@ alias battlebegin {
     if (%torment.level = misery) { set %torment.level $calc(900 + $return_playerlevelhighest) }
   }
 
+  if (%battle.type = Cosmic) {
+    set %current.battlefield Fields of Eternity
+    writeini $txtfile(battle2.txt) battle alliednotes 500
+    set %nosouls true
+  }
+
   if (%savethepresident = on) { set %current.battlefield Monster Dungeon }
   if (%supplyrun = on) { 
     set %current.battlefield Treacherous Path
@@ -883,6 +901,7 @@ alias battlebegin {
   }
 
   if (%battle.type = torment) { set %darkness.turns 71 }
+  if (%battle.type = cosmic) { set %darkness.turns 100 }
   if (%battle.type = dragonhunt) { set %darkness.turns 35 }
   if (%battle.type = manual) { set %darkness.turns 21 }
   if (%battle.type = orbfountain) { set %darkness.turns 16 } 
@@ -955,6 +974,8 @@ alias battle.getmonsters {
 
     $winningstreak.addmonster.amount
 
+    if (%battle.type = cosmic) { %number.of.monsters.needed = 1 }
+
     ; Let's see if there's any monsters already in battle (via !summon).  If so, we don't want more than 10..
     var %number.of.monsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
     if (%number.of.monsters = $null) { var %number.of.monsters 0 } 
@@ -998,6 +1019,8 @@ alias battle.getmonsters {
     if (%battle.type = torment) { 
       $generate_monster(monster, torment) 
     }
+
+    if (%battle.type = cosmic) { $generate_monster(boss, cosmic) } 
 
     if (%battle.type = boss) {
       $generate_monster(boss)
@@ -1160,7 +1183,7 @@ alias generate_monster {
   }
 
   if ($1 = boss) {
-    if (%boss.type = $null) { $get_boss_type }
+    if ((%boss.type = $null) && ($2 != cosmic)) { $get_boss_type }
 
     set %valid.boss.types normal.bandits.gremlins.doppelganger.warmachine.demonwall.wallofflesh.predator.pirates.frostlegion.crystalshadow.dinosaurs
 
@@ -1170,6 +1193,40 @@ alias generate_monster {
     if ($istok(%valid.boss.types,%boss.type,46) = $false) { var %boss.type normal }
 
     unset %valid.boss.types
+
+    if (%battle.type = cosmic) { 
+      var %total.cosmic.bosses $lines($lstfile(cosmic_bosses.lst))
+      var %boss.picked.number $rand(1, %total.cosmic.bosses)
+      var %monster.name $read($lstfile(cosmic_bosses.lst), %boss.picked.number) 
+
+      if ($isfile($boss(%monster.name)) = $null) { $display.message(4Error: Boss not found! Ending Now!) | $endbat | halt }
+
+      ; Copy the file and increase the battle info
+      .copy -o $boss(%monster.name) $char(%monster.name)
+      var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) 
+      set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%monster.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat  |   $set_chr_name(%monster.name) 
+      write $txtfile(battle.txt) %monster.name 
+      var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters 
+
+      ; Display the entering message and quote
+      $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
+      $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)
+      $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle)
+      writeini $char(%monster.name) battle status normal 
+
+      ; Boost the monster
+      if (%cosmic.level > 1) {  $levelsync(%monster.name, $calc(500 + (5 * %cosmic.level))) }
+      else { $levelsync(%monster.name, 500)  }
+
+      writeini $char(%monster.name) basestats str $readini($char(%monster.name), battle, str)
+      writeini $char(%monster.name) basestats def $readini($char(%monster.name), battle, def)
+      writeini $char(%monster.name) basestats int $readini($char(%monster.name), battle, int)
+      writeini $char(%monster.name) basestats spd $readini($char(%monster.name), battle, spd)
+      $boost_monster_hp(%monster.name, cosmic, $get.level(%monster.name))
+      $fulls(%monster.name, yes)
+      return
+    }
+
 
     if (%boss.type = normal) {
 
@@ -1946,12 +2003,13 @@ alias battle.end.victory {
     }
   }
 
-  if ((((%battle.type != defendoutpost) && (%battle.type != torment) && (%supplyrun != on) && (%battle.type != assault)))) { $shopnpc.rescue }
+  if (((((%battle.type != defendoutpost) && (%battle.type != torment) && (%supplyrun != on) && (%battle.type != cosmic) && (%battle.type != assault))))) { $shopnpc.rescue }
   if (%boss.type = FrostLegion) { writeini shopnpcs.dat Events FrostLegionDefeated true }
 
   if (%battle.type = torment) { $torment.reward }
+  if (%battle.type = cosmic) { $cosmic.reward } 
 
-  if ((%battle.type != orbfountain) && (%battle.type != torment)) { 
+  if (((%battle.type != orbfountain) && (%battle.type != cosmic) && (%battle.type != torment))) { 
     $give_random_reward
 
     if (%portal.bonus = true) { $portal.spoils.drop }
@@ -1976,6 +2034,7 @@ alias battle.end.victory {
   }
 
   $show.torment.reward
+  $show.cosmic.reward
 
 }
 

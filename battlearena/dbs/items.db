@@ -4908,6 +4908,25 @@ Desc=An orb full of misery. Using this item outside of battle will open a portal
 
 
 =========================
+COSMIC ITEMS
+=========================
+[CosmicOrb]
+Type=Cosmic
+Desc=An orb from the cosmos. Using this item will teleport you to a special level 500 battle where you can earn Odin Marks.
+Exclusive=yes
+SellPrice=1
+Cost=0
+
+[OdinMark]
+Type=misc
+Desc=A mark from Odin that proves your worth. It is said that the gods will trade you special weapon powers for these.
+Exclusive=yes
+SellPrice=1
+Cost=0
+Legendary=true
+
+
+=========================
 AMMO
 =========================
 [RocketAmmo]

@@ -260,6 +260,9 @@ ShopExchangeNotes=$chr(3) $+ 2 $+ You exchange %notes.needed allied notes for
 ShopExchangeDoubleDollars=$chr(3) $+ 2 $+ You exchange %currency.symbol %dollars.needed double dollars for %notestogive allied notes
 WeaponLevelIncreasedItem=$chr(3) $+ 2 $+ $get_chr_name($1) $+ 's $2 is now level %current.weapon.level
 TormentBattleStarted=$chr(3) $+ 4 $+ $get_chr_name(%torment.creator) $+ 's Torment Orb shatters and creates a large demonic-looking red portal. All brave souls level12 $iif(%torment.level = anguish || %torment.level = misery, 5000, $calc(%torment.level * 500)) 4or higher should use12 !enter 4now to enter this portal if they so wish.  The portal will close in 12 $duration(%time.to.enter)
+
+CosmicBattleStarted=$chr(3) $+ 4 $+ $get_chr_name($2) $+ 's Cosmic Orb shatters and creates a large star-filled portal. All brave souls level12 500 4or higher should use12 !enter 4now to enter this portal if they so wish.  The portal will close in 12 $duration(%time.to.enter)
+
 BountyPlaced=$chr(3) $+ 7 $+ * 2The Allied Forces HQ have placed a bounty on the dreaded4 $readini($boss(%bounty.bossname), basestats, name) $+ 2! Killing this boss will result in an orb bonus on that battle.
 BountyClaimed=$chr(3) $+ 7 $+ * 2 $+ $readini($txtfile(battle2.txt), battleinfo, bountyclaimedby) has defeated a bounty target! An orb bonus has been granted for this battle.
 CurrentBounty=$chr(3) $+ 7 $+ * 2The Allied Forces HQ currently have a bounty on the dreaded4 %bounty.name
@@ -604,10 +607,12 @@ NoPortalsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the u
 NoDungeonsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the use of dungeon keys at this time. 
 NoHuntsDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking any chance of successfully finding a dragon's lair at this time. 
 NoTormentDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the torment dimension at this time. 
+NoCosmicDuringShenron=$chr(3) $+ 4 $+ Error: Shenron's Wish is blocking the cosmic dimension at this time. 
 Can'tUseThisSkillInDungeon=$chr(3) $+ 4 $+ Error: This skill is unavailable while inside of a dungeon. 
 Can'tBoostInDungeon=$chr(3) $+ 4 $+ Error: Ignitions and Weapon Boosts are unavailable while inside of a dungeon
 can'tstartdungeoninbattle=$chr(3) $+ 4 $+ Error: Dungeon Starting Items cannot be used during battle. Try again after the battle is over.
 Can'tStartTormentInBattle=$chr(3) $+ 4 $+ Error: Torment items cannot be used during battle. Try again after the battle is over.
+Can'tStartCosmicInBattle=$chr(3) $+ 4 $+ Error: Cosmic items cannot be used during battle. Try again after the battle is over.
 NotAValidDungeon=$chr(3) $+ 4 $+ Error: This item's dungeon does not exist. Please talk to the bot owner.
 NotEnoughPartyMembersForDungeon=$chr(3) $+ 4 $+ Not enough players have entered to fulfill the party requirements. Please gather more people and try again.
 LevelTooLowForDungeon=$chr(3) $+ 4 $+ Error: $get_chr_name($1) $+ 's level is too low to enter this dungeon.
@@ -618,6 +623,7 @@ DragonHunt.NoLairFound=$chr(3) $+ 4 $+ $get_chr_name($1) searches throughout t
 Can'tUseThisSkillInDragonHunt=$chr(3) $+ 4 $+ Error: This skill is unavailable while inside of a dragon's lair. 
 NoNPCNews=$chr(3) $+ 4There is no current news to share about the NPCs.
 Torment.LevelTooLow=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low to enter this torment level.
+Cosmic.LevelTooLow=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low to enter this cosmic battle.
 Can'tDoActionWhileChest=$chr(3) $+ 4 $+ Error: This action cannot be done while a chest is on the battlefield.
 CanOnlyUseCommandInDungeons=$chr(3) $+ 4 $+ Error: This action can only be done inside of dungeons.
 NoSecondAccessorySlot=$chr(3) $+ 4 $+ Error: $get_chr_name($1) does not have a second accessory slot to equip this in.
@@ -638,6 +644,7 @@ MaxSkillsEquipped=$chr(3) $+ 4 $+ You already have $return.skill.slots($1) skil
 SkillHasBeenEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has equipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / $return.skill.slots($1) $+ ]
 SkillNotEquipped=$chr(3) $+ 4 $+ The $2 skill is not currently equipped.
 SkillHasBeenUnEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has unequipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / $return.skill.slots($1) $+ ]
+NeedValidNumberForCosmicLevel=$chr(3) $+ 4 $+ A valid number must be used for the cosmic level. Use !use cosmicorb levelhere
 
 
 =======================
@@ -702,6 +709,7 @@ BlackOrbWin=$chr(3) $+ 3 $+ The following players have absorbed a black orb from
 BonusItemWin=$chr(3) $+ 10 $+  $+ %real.name was the most stylish and has been rewarded with %boss.item x1!
 DropItemWin=$chr(3) $+ 10 $+ These players found spoils from the battle: %item.drop.rewards
 Torment.DropWin=$chr(3) $+ 10 $+ These players have been rewarded for battle: %torment.drop.rewards
+Cosmic.DropWin=$chr(3) $+ 10 $+ These players have been rewarded for battle: %cosmic.drop.rewards
 AlliedNotesGain=$chr(3) $+ 3 $+ The Allied Forces reward the heroes with $readini($txtfile(battle2.txt), battle, alliednotes) Allied Notes for their victory.
 KeyWin=$chr(3) $+ 10 $+  $+ %real.name finds 1 %key.color key $+ !
 EnteredTheBattle=$chr(3) $+ 4 $+  $+ %real.name has entered the battle! 

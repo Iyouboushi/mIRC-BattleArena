@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=Quarter
-CurrentMoonTurn=3
+CurrentMoonPhase=New
+CurrentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -984,6 +984,12 @@ weather=gloomy
 NumberOfEvents=0
 scavenge=KindredSeal.KindredCrest
 limitations=$iif(%torment.level <= 30000, no-mech.no-fleeing.no-trusts.no-summons)
+
+[Fields of Eternity]
+weather=none
+NumberOfEvents=0
+scavenge=KindredSeal.KindredCrest
+limitations=no-mech.no-fleeing.no-trusts.no-summons
 
 [Monster Dungeon]
 weather=gloomy

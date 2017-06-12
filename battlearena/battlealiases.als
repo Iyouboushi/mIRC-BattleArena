@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/15/17
+;;;; Last updated: 06/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -287,6 +287,7 @@ current.battlestreak {
   if (%battle.type = ai) { return  %ai.battle.level  }
   if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
   if (%battle.type = torment) { return $calc(500 * %torment.level) }
+  if (%battle.type = cosmic) { return 500 }
   if (%portal.bonus = true) {
     var %current.portal.level $readini($txtfile(battle2.txt), battleinfo, portallevel)
     if (%current.portal.level = $null) { return 500 } 
@@ -360,7 +361,7 @@ status.effects.turns {
 ; when needed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 reward.capacitypoints {
-  if ((%battle.type = dungeon) || (%battle.type = torment)) { return }
+  if (((%battle.type = dungeon) || (%battle.type = cosmic) || (%battle.type = torment))) { return }
 
   var %temp.player.level $get.level($1)
   if (%temp.player.level < 100) { return }
@@ -751,8 +752,8 @@ boost_monster_hp {
   ; $4 = used for summons (original summon's name)
 
   ; If the target is set to ignore hp, return without adjusting it
-  if (ignoreHP isin $readini($char($1), info, BattleStats)) { return }
-  if ($readini($char($1), info, IgnoreHP) = true) { return }
+  if ((ignoreHP isin $readini($char($1), info, BattleStats)) && (%battle.type != cosmic)) { return }
+  if (($readini($char($1), info, IgnoreHP) = true) && (%battle.type != cosmic)) { return }
 
   set %hp $readini($char($1), BaseStats, HP)
 
@@ -813,6 +814,8 @@ boost_monster_hp {
 
   if (%battle.type = dragonhunt) { inc %hp.modifier 3 }
 
+  if (%battle.type = cosmic) { inc %hp.modifier 10 }
+
   ; Increase the hp modifier if more than 1 player is in battle..
   if ($return_playersinbattle > 1) {
     var %increase.amount $round($calc($return_playersinbattle / 2),0)
@@ -826,6 +829,7 @@ boost_monster_hp {
   if ((%hp > 25000) && (%battle.type != dragonhunt)) { var %hp $round($calc(25000 + (%hp * .025)),0) }
   if ((%hp > 35000) && (%battle.type = dragonhunt)) { var %hp $round($calc(35000 + (%hp * .25)),0) }
 
+
   if (%battle.type = torment) {
     var %torment.hp.multiplier %torment.level
     if (%torment.hp.multiplier >= 20) { var %torment.hp.multiplier 20 }
@@ -833,6 +837,20 @@ boost_monster_hp {
 
     if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 22000) }
   }
+
+
+  if (%battle.type = cosmic) {
+    var %cosmic.hp.multiplier %cosmic.level
+    if (%cosmic.hp.multiplier >= 20) { var %cosmic.hp.multiplier 20 }
+
+    if ($return_playersinbattle > 1) { var %cosmic.hp 900000 } 
+    else { var %cosmic.hp 500000 } 
+
+    inc %hp $calc(%cosmic.hp.multiplier * %cosmic.hp)
+
+    if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 22000) }
+  }
+
 
   if (($return.systemsetting(BattleDamageFormula) = 2) || ($return.systemsetting(BattleDamageFormula) = 4)) { var %hp $calc(%hp * 2) }
 
@@ -1027,7 +1045,7 @@ deal_damage {
 
             if (%absorb.amount > 500) { var %absorb.amount 500 }
 
-            if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+            if (((%battle.type = torment)  || (%battle.type = cosmic) || (%battle.type = dungeon))) { 
               if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
                 if (%absorb.amount > 350) { var %absorb.amount 350 }
               }
@@ -1136,6 +1154,7 @@ deal_damage {
         if (%portal.bonus = true) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
         if (%battle.type = dungeon) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
         if (%battle.type = torment) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
+        if (%battle.type = cosmic) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
       }
     }
   }
@@ -1337,7 +1356,7 @@ display_damage {
 
       if (%absorb.amount > 500) { var %absorb.amount 500 }
 
-      if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+      if (((%battle.type = torment)  || (%battle.type = cosmic) || (%battle.type = dungeon))) { 
         if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
           if (%absorb.amount > 350) { var %absorb.amount 350 }
         }
@@ -1357,7 +1376,7 @@ display_damage {
 
         if (%absorb.amount > 500) { var %absorb.amount 500 }
 
-        if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+        if (((%battle.type = torment)  || (%battle.type = cosmic) || (%battle.type = dungeon))) { 
           if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
             if (%absorb.amount > 350) { var %absorb.amount 350 }
           }
@@ -1538,7 +1557,7 @@ display_aoedamage {
 
       if (%absorb.amount > 500) { var %absorb.amount 500 }
 
-      if ((%battle.type = torment)  || (%battle.type = dungeon)) { 
+      if (((%battle.type = torment)  || (%battle.type = cosmic) || (%battle.type = dungeon))) { 
         if (($readini($char($1), info, flag) = $null) || ($readini($char($1), info, flag) = npc)) {
           if (%absorb.amount > 350) { var %absorb.amount 350 }
         }
@@ -1895,6 +1914,7 @@ random.weather.pick {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 moonphase {
   if (%battle.type = torment) { return }
+  if (%battle.type = cosmic) { return }
 
   set %moonphase $readini($dbfile(battlefields.db), moonphase, CurrentMoonPhase)
   if (%moonphase = $null) { var %moonphase New | remini $dbfile(battlefields.db) moonphase CurrentMoonTurn | writeini $dbfile(battlefields.db) moonphase currentMoonPhase New }
@@ -1983,6 +2003,7 @@ timeofday.increase {
 random.battlefield.curse {
   if (%battle.type = DragonHunt) { return }
   if (%battle.type = torment) { return }
+  if (%battle.type = cosmic) { return }
   if ($readini(battlestats.dat, battle, WinningStreak) <= 50) { return }
   var %timeofday $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay)
   if ((%timeofday = morning) || (%timeofday = noon)) { return }
@@ -2017,7 +2038,7 @@ random.battlefield.curse {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battlefield.limitations {
   if ($return_winningstreak <= 10) {
-    if (((%battle.type != dungeon) && (%battle.type != torment) && (%portal.bonus != true))) { return }
+    if ((((%battle.type != dungeon) && (%battle.type != torment) && (%battle.type != cosmic) && (%portal.bonus != true)))) { return }
   }
 
   set %battleconditions $readini($dbfile(battlefields.db), %current.battlefield, limitations)
@@ -2033,6 +2054,7 @@ battlefield.limitations {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.surpriseattack {
   if (%battle.type = Torment) { return }
+  if (%battle.type = cosmic) { return }
   if (%battle.type = DragonHunt) { return }
   if (%savethepresident = on) { return }
   if (%battle.type = dungeon) { return }
@@ -2054,6 +2076,7 @@ random.surpriseattack {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.playersgofirst {
   if (%battle.type = torment) { return }
+  if (%battle.type = cosmic) { return }
   if (%battle.type = DragonHunt) { return }
   if (%surpriseattack = on) { return }
   if (%battle.type = dungeon) { return }
@@ -2077,6 +2100,7 @@ random.battlefield.ally {
   if (%battle.type = boss) { return }
   if (%battle.type = DragonHunt) { return }
   if (%battle.type = torment) { return }
+  if (%battle.type = cosmic) { return }
   if (%battle.type = defendoutpost) { 
     if (%number.of.players < 5) { $generate_allied_troop }
     return
@@ -2694,6 +2718,7 @@ speed_up_check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 winningstreak.addmonster.amount {
   if (%battle.type = torment) { return }
+  if (%battle.type = cosmic) { return }
   if (%battle.type = orbfountain) { return }
   if (%battle.type = demonwall) { return }
   if (%battle.type = assault) { return }
@@ -2797,7 +2822,8 @@ trickster_dodge_check {
   if (((%current.playerstyle != Trickster) && ($augment.check($1, EnhanceDodge) = false) && ($readini($char($1), skills, thirdeye.on) != on))) { unset %current.playerstyle | unset %current.playerstyle.level | return }
   if (%guard.message != $null) { return }
 
-  var %dodge.chance $rand(1,110)
+  if (%battle.type = cosmic) { var %dodge.chance $rand(1,250) } 
+  else { var %dodge.chance $rand(1,110) }
 
   if ($augment.check($1, EnhanceDodge) = true) { inc %current.playerstyle.level $calc(20* %augment.strength) | dec %dodge.chance 5
     if (%current.playerstyle.level > 65) { set %current.playerstyle.level 65 }
@@ -2814,6 +2840,7 @@ trickster_dodge_check {
   if (%attacker.speed > %target.speed) { inc %dodge.chance $rand(5,10) } 
 
   if ((%battle.type = torment) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(10,15) }
+  if ((%battle.type = cosmic) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(10,15) }
   if ((%battle.type = dungeon) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(5,10) }
 
   if (($readini($char($1), skills, thirdeye.on) = on) && ($3 = physical)) {
@@ -2880,7 +2907,9 @@ weapon_parry_check {
 
   var %parry.weapon $readini($char($1), weapons, equipped)
   $mastery_check($1, %parry.weapon)
-  var %parry.chance $rand(1,100)
+
+  if (%battle.type = cosmic) { var %parry.chance $rand(1,250) } 
+  else { var %parry.chance $rand(1,100) }
 
   set %current.playerstyle $readini($char($1), styles, equipped)
   set %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
@@ -2900,6 +2929,8 @@ weapon_parry_check {
     var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
     if (%left.hand.weapon.type != shield) { dec %parry.chance $rand(1,2) }
   }
+
+
 
   if (%parry.chance >= 3) { return }
 
@@ -3211,6 +3242,7 @@ counter_melee_action {
 multiple_wave_check {
   if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
   if (%battle.type = torment) { unset %multiple.wave }
+  if (%battle.type = cosmic) { return }
 
   if (%battle.type = dragonhunt) { return }
   if (%battle.type = dungeon) { return }
@@ -3537,6 +3569,7 @@ renkei.calculate {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.battlefield.pick {
   if (%battle.type = torment) { return }
+  if (%battle.type = cosmic) { return }
 
   if (%warp.battlefield != $null) {
     %current.battlefield = %warp.battlefield
@@ -4312,23 +4345,34 @@ eighthit.attack.check {
 wonderguard.check {
   ; $1 = target
   ; $2 = weapon/technique/item name
-  ; $3 = type (melee, tech or melee)
+  ; $3 = type (melee, tech or item)
+  ; $4 = the weapon name, if the type is tech
 
   if (%guard.message != $null) { return }
   if ($readini($char($1), info, WonderGuard) != true) { return }
 
   var %wonderguard.immune false
 
+  if (%battle.type = cosmic) { 
+    ;  only torment weapons will work
+
+    if ($readini($dbfile(weapons.db), $2, TormentWeapon) = true) { echo -a torment weapon |  return }
+    if ($readini($dbfile(weapons.db), $4, TormentWeapon) = true) { echo -a torment weapon | return }
+
+    set %attack.damage 0 
+    set %damage.display.color 6 
+    set %guard.message $readini(translation.dat, battle, ImmuneToAttack) 
+    return
+  }
+
   ; Check for immunity of the weapon/tech/item name
   var %immunity.name $readini($char($1), modifiers, $2)
   if (%immunity.name = $null) { var %immunity.name 0 }
-
 
   ; Items only need to check the names
   if ($3 = item) {
     if (%immunity.name = 0) { var %wonderguard.immune true }
   }
-
 
   ; Techs need to check tech name and tech element
 
@@ -4342,7 +4386,6 @@ wonderguard.check {
     if ((%immunity.element = 0) && (%immunity.name = 0)) { var %wonderguard.immune true }
   }
 
-
   ; Melee needs to check weapon name and weapon element
 
   if ($3 = melee) {
@@ -4353,7 +4396,6 @@ wonderguard.check {
 
     if ((%immunity.type = 0) && (%immunity.name = 0)) { var %wonderguard.immune true }
   }
-
 
   ; Is the monster immune?
   if (%wonderguard.immune = true) {
@@ -4719,6 +4761,36 @@ torment.reward {
     }
   }
 }
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Gives everyone a 
+; Odin Mark
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+cosmic.reward {
+  unset %cosmic.drop.rewards
+
+  var %cosmic.reward.amount %cosmic.level
+  if (%cosmic.reward.amount = $null) { vra %cosmic.reward.amount 1 }
+
+  set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+    if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+    else { 
+
+      var %player.amount $readini($char(%who.battle), item_amount, OdinMark)
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount %cosmic.reward.amount
+      writeini $char(%who.battle) item_amount OdinMark %player.amount
+      %cosmic.drop.rewards = $addtok(%cosmic.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ OdinMark x $+ %cosmic.reward.amount  $+  $+ $chr(93) $+ , 46)
+
+      inc %battletxt.current.line 1 
+    }
+  }
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; rewards a random drop
 ; from the player's item pool
@@ -4769,6 +4841,17 @@ show.torment.reward {
   var %replacechar $chr(044) $chr(032)
   %torment.drop.rewards = $replace(%torment.drop.rewards, $chr(046), %replacechar)
   $display.message($readini(translation.dat, battle, Torment.DropWin),battle) 
+  unset %item.drop.rewards
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays Cosmic rewards
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+show.cosmic.reward {
+  if (%cosmic.drop.rewards = $null) { return }
+  var %replacechar $chr(044) $chr(032)
+  %cosmic.drop.rewards = $replace(%cosmic.drop.rewards, $chr(046), %replacechar)
+  $display.message($readini(translation.dat, battle, Cosmic.DropWin),battle) 
   unset %item.drop.rewards
 }
 
