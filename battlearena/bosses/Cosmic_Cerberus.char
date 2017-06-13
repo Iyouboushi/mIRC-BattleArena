@@ -1,20 +1,21 @@
 [BaseStats]
-Hp=25653
+Hp=2100
 Tp=500
-Str=3127
-Def=2127
-Int=5633
-Spd=1253
+Str=3250
+Def=3000
+Int=1500
+Spd=2500
 IgnitionGauge=2
-Name=Aris
+Name=Cerberus
+
 
 [Battle]
-Hp=25653
+Hp=2100
 Tp=500
-Str=3127
-Def=2127
-Int=5633
-Spd=1253
+Str=3250
+Def=3000
+Int=1500
+Spd=2500
 IgnitionGauge=2
 Status=alive
 
@@ -31,10 +32,10 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=Once a former minion of Ashi he has been revived and imbued with a new-found power to serve Galactus. He is an old man with a long white beard and short white hair that is balding.  But don't let his frail apperance fool you, he is a master of black magic.
+Char=A giant three-headed dog that has been revived to serve Galactus and to help protect the Cosmic Dimension. Cerberus is surrounded by a protective ice armor.
 Rage=screams in rage 
-BossQuote=Prepare thyself for I will render you all to ash!
-
+BossQuote=Leave now, mortal! The likes of you are forbidden in this land. You, who are powerless, are not worthy to set foot here. 
+RepairNaturalArmor=growls loudly as ice begins to form around his body. After a moment his protective ice barrier is completely restored.
 
 [Stuff]
 RedOrbs=0
@@ -51,7 +52,8 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=-10000
+Streak=-1000
+IgnoreElementalMessage=true
 
 ; universal Cosmic battle flags
 CanTaunt=false
@@ -64,8 +66,8 @@ MaxTormentLevel=0
 IgnoreTorment=true
 
 [monster]
-type=human
-size=medium
+type=cerberus
+size=large
 Elite=true
 
 [Status]
@@ -103,13 +105,10 @@ MPRegenerating=no
 
 
 [Weapons]
-Equipped=ElderWand
-ElderWand=$calc(500 + %cosmic.level)
+Equipped=CerberusClaws
+CerberusClaws=$calc(500 + %cosmic.level)
 
 [Skills]
-Zen=5
-Clearmind=1
-Wizardry=$calc(500 + %cosmic.level)
 Resist-Amnesia=100
 Resist-Blind=100
 Resist-Charm=100
@@ -129,27 +128,28 @@ Resist-Stun=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
+RepairNaturalArmor=1
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=5
+WeaponMasterXP=0
 
 [Techniques]
-Firaja=$calc(500 + %cosmic.level)
-Stoneja=$calc(500 + %cosmic.level)
-Waterja=$calc(500 + %cosmic.level)
-Aeroja=$calc(500 + %cosmic.level)
-Blizzaja=$calc(500 + %cosmic.level)
+IceRain=$calc(500 + %cosmic.level)
+Roar=$calc(500 + %cosmic.level)
+ShoulderTackle=$calc(500 + %cosmic.level)
 
 
 [Item_Amount]
 
-[Styles]
-Equipped=SpellMaster
-SpellMaster=10
-SpellMasterXP=0
+
 
 [NaturalArmor]
-Name=Wizard Shield
-Max=5000
-Current=5000
+Name=Large Protective Ice Chunks
+Max=1000
+Current=1000
+
 
 [modifiers]
-Heal=none
-
+Heal=ice

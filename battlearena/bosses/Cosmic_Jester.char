@@ -1,20 +1,21 @@
 [BaseStats]
-Hp=25653
-Tp=500
-Str=3127
-Def=2127
-Int=5633
-Spd=1253
+Hp=110
+Tp=60
+Str=2818
+Def=3274
+Int=2456
+Spd=2912
 IgnitionGauge=2
-Name=Aris
+Name=Jester
+
 
 [Battle]
-Hp=25653
-Tp=500
-Str=3127
-Def=2127
-Int=5633
-Spd=1253
+Hp=110
+Tp=60
+Str=2818
+Def=3274
+Int=2456
+Spd=2912
 IgnitionGauge=2
 Status=alive
 
@@ -31,9 +32,10 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=Once a former minion of Ashi he has been revived and imbued with a new-found power to serve Galactus. He is an old man with a long white beard and short white hair that is balding.  But don't let his frail apperance fool you, he is a master of black magic.
-Rage=screams in rage 
-BossQuote=Prepare thyself for I will render you all to ash!
+Char=is an insane demon that wears a black and purple outfit, along with a red and blue jester cap. He also has a pure white face, a giant nose, plus red and blue eyes. He has been revived to serve Galactus
+Rage=laughs as he has lost his mind! Again!
+BossQuote=Jester's going to spank you on the butt! Spank you on the buuuuuuuuuuuuutt!
+ShadowCopy=bounces around the battlefield laughing.  Suddenly he stops and looks at the heroes with a serious face. "This battle needs more of something! Do you know what the something is or is that too difficult for you to figure out?"  Suddenly he tosses some confetti and a copy of Jester appears beneath it.  "That something is more of ME! Ha-ha-ha-ha!"
 
 
 [Stuff]
@@ -41,6 +43,11 @@ RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 Drops=
+
+[Monster]
+Type=demon
+size=medium
+Elite=true
 
 [Info]
 Flag=monster
@@ -51,10 +58,9 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=-10000
+CanTaunt=true
 
-; universal Cosmic battle flags
-CanTaunt=false
+; Cosmic Battle flags
 WonderGuard=true
 CanStagger=no
 JustReleaseDefense=100
@@ -62,11 +68,6 @@ IgnorePresident=true
 IgnoreQuicksilver=true
 MaxTormentLevel=0
 IgnoreTorment=true
-
-[monster]
-type=human
-size=medium
-Elite=true
 
 [Status]
 Poison=no
@@ -101,15 +102,12 @@ sleep=no
 stun=no
 MPRegenerating=no
 
-
 [Weapons]
-Equipped=ElderWand
-ElderWand=$calc(500 + %cosmic.level)
+Equipped=JesterWand
+JesterWand=$calc(500 + %cosmic.level)
 
 [Skills]
-Zen=5
-Clearmind=1
-Wizardry=$calc(500 + %cosmic.level)
+
 Resist-Amnesia=100
 Resist-Blind=100
 Resist-Charm=100
@@ -129,27 +127,16 @@ Resist-Stun=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
+ShadowCopy=$iif($return_playersinbattle > 2, 1, 0)
 
 [Techniques]
-Firaja=$calc(500 + %cosmic.level)
-Stoneja=$calc(500 + %cosmic.level)
-Waterja=$calc(500 + %cosmic.level)
-Aeroja=$calc(500 + %cosmic.level)
-Blizzaja=$calc(500 + %cosmic.level)
+Portal=$calc(500 + %cosmic.level)
+ClownHead=$calc(500 + %cosmic.level)
+ClownFire=$calc(500 + %cosmic.level)
 
-
-[Item_Amount]
-
-[Styles]
-Equipped=SpellMaster
-SpellMaster=10
-SpellMasterXP=0
-
-[NaturalArmor]
-Name=Wizard Shield
-Max=5000
-Current=5000
+[Equipment]
+Head=JesterHat+1
+Body=TornRobe
 
 [modifiers]
 Heal=none
-
