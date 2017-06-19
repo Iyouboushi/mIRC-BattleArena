@@ -59,6 +59,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 CanTaunt=true
+Streak=-10000
 
 ; Cosmic Battle flags
 WonderGuard=true
