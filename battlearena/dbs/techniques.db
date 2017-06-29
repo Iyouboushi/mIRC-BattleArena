@@ -545,6 +545,10 @@ ObsoleteFists=SideEffect.TwistOfFate.AsuranFists.ShinjinSpiral.ShoulderTackle.Wh
 CrazzyFists=BlackAsianMist.YellowAsianMist.Centralizer.KingKill33.KrimsonKombo.CanonballSenton
 Monster'sFists=BlackHoleSlam.ChokeSlam.AsuranFists.ShinjinSpiral.ShoulderTackle.ShockTreatment
 Witch'sMagic=GreenAsianMist.RedAsianMist.BlueAsianMist.TheRedWedding.SkywardSuplex.FirajaII.DarkraII.Meteor
+LamiaBow=ArrowDeluge.TailSlap.HypnoticSway
+LamiaSword=TidalSlash.TailSlap.HypnoticSway
+LamiaStaff=PoleSwing.TailSlap.HypnoticSway
+LamiaClaws=GustingGouge.HystericBarrage.TailSlap.HypnoticSway
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -15228,6 +15232,87 @@ BasePower=40
 Magic=No
 stat=Str
 
+[ArrowDeluge]
+Type=AOE
+Cost=0
+Desc=charges up several arrows and shoots them at the enemy group!
+TP=20
+Element=None
+Hits=1
+BasePower=30
+Magic=no
+Stat=str
+
+[TidalSlash]
+Type=AOE
+Cost=0
+Desc=sends out a wave of water with the slash of the blade!
+TP=20
+Element=Water
+Hits=1
+BasePower=30
+Magic=no
+Stat=str
+
+[PoleSwing]
+Type=Single
+Cost=0
+Desc=performs an elaborate blow using the staff that %enemy $+ !
+TP=20
+Element=None
+Hits=1
+BasePower=70
+Magic=no
+Stat=str
+
+[GustingGouge]
+Type=AOE
+Cost=0
+Desc=sends a wave of wind upon the battlefield!
+TP=20
+Element=Wind
+Hits=1
+BasePower=30
+Magic=no
+Stat=str
+
+[HystericBarrage]
+Type=Single
+Cost=0
+Desc=performs a five-hit flurry of blows upon %enemy $+ !
+TP=50
+Element=None
+Hits=5
+BasePower=30
+Magic=no
+Stat=str
+
+[TailSlap]
+Type=Single
+Cost=0
+Desc=slithers towards %enemy and performs a powerful slap using her tail!
+TP=30
+Element=None
+Hits=1
+BasePower=70
+Magic=no
+Stat=str
+DestroyShadows=3
+StatusType=stun
+
+[HypnoticSway]
+Type=Single
+Cost=0
+Desc=begins swaying her body in a seductive manner hoping to distract %enemy $+ !
+TP=30
+Element=None
+Hits=1
+BasePower=30
+Magic=no
+Stat=str
+StatusType=Amnesia
+
+
 [InfernalCleansing]
 Type=AOE
 Cost=0
@@ -16427,207 +16512,110 @@ stat=str
 CanDodge=true
 
 [KiBlast]
-
 Type=Single
-
 Cost=0
-
 Desc=fires a strong Ki Blast on %enemy
-
 TP=5
-
 Basepower=25
-
 stat=int
-
-
-
-
-
-
 
 [KiAi]
-
 Type=Single
-
 Cost=0
-
 Desc=push up his hand and fires a shockwave towards %enemy
-
 TP=10
-
 BasePower=35
-
 stat=int
-
-
 
 [DestructBeCre]
-
 Type=Single
-
 Cost=0
-
 Desc=produces a sun-like aura around his body then fires an purple energy wave at %enemy
-
 TP=15
-
 Basepower=38
-
 stat=int
 
-
-
 [BeerusPressurePoint]
-
 Type=Single
-
 Cost=0
-
 Desc=hits a pressure point on %enemy $+ , which causes %enemy to become paralyzed.
 TP=15
-
 BasePower=1
-
 stat=str
-
 StatusType=Paralysis
 
 
 
 [CanYouKeepUp]
-
 Type=Single
-
 Cost=0
-
 Desc=quickly moves in front of %enemy and delivers a kick to the gut. Beerus then proceeds to rapidly kick %enemy before finishing with a forward left kick, inflicting a moderate amount of damage.
 TP=20
-
 BasePower=40
 Hits=3
-
 Stat=str
 
-
-
-
-
 [FullPowerEngeryBlastVolley]
-
 Type=Single
-
 cost=0
-
 Desc=fires a random flurry of large, bright ki blasts upon %enemy
-
 TP=15
-
 Hits=$rand(1,8)
-
 BasePower=30
-
 Stat=int
 
-
-
 [GodOfDestructionWrath]
-
 Type=AOE
-
 cost=0
-
 Desc=glows purple before firing a random amount of ki blasts from his aura in all directions.
-
 TP=15
-
 BasePower=40
 Hits=$rand(1,8)
 
 Stat=int
 
-
-
 [SphereOfDestruction]
-
 Type=Single
-
 Cost=0
-
 Desc=creates two medium-size flaming energy spheres in his hands and brings them above his head to create one single energy sphere resembling the Sun, which he then throws at %enemy
 TP=20
-
 Basepower=100
-
 Stat=int
 
 
 [ExplosiveWave]
-
 Type=Single
-
 cost=0
-
 Desc=creates a yellow aura that explodes around his body, causing a wave of energy to hit %enemy
-
 TP=25
-
 BasePower=56
-
 Stat=int
-
-
 
 [FireBreath]
-
 Type=single
-
 cost=0
-
 Desc=fires an immense, blazing flare from his mouth, which severely burns %enemy
-
 TP=30
-
 Element=fire
-
 magic=yes
-
 BasePower=59
-
 Stat=int
 
-
-
 [PalmEnergy]
-
 Type=Single
-
 cost=0
-
 Desc=places his palm on %enemy $+ , infusing yellow ki into %enemy through his palm by having it cover their body as an aura, then he releases and the ki explodes, injuring his foe.
-
 TP=30
-
 BasePower=62
-
 stat=int
-
-
 
 [AtomEnergySphere]
-
 Type=Single
-
 cost=0
-
 Desc=creates a ki ball that is similar to an atom, which Beerus fires it at %enemy by physically hitting it. The attack is said to be uncatchable and uncrushable.
-
 TP=30
-
 BasePower=65
-
 stat=int
-
 CanDodge=false
 
 [KnightsOfTheRotund]

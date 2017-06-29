@@ -71,7 +71,7 @@ MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.Iron
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.Excalipoor
 
-MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower
+MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws
 
 ============================================
 WEAPON TEMPLATE
@@ -2690,6 +2690,42 @@ Info=You can't buy this!
 Abilities=FastBlade.CircleBlade.FlatBlade.Headbutt
 Element=none
 Hits=1
+BasePower=15
+
+[LamiaSword]
+Cost=0
+Type=sword
+Info=You can't buy this!
+Abilities=TidalSlash.TailSlap.HypnoticSway
+Element=none
+Hits=1
+BasePower=15
+
+[LamiaBow]
+Cost=0
+Type=bow
+Info=You can't buy this!
+Abilities=ArrowDeluge.TailSlap.HypnoticSway
+Element=none
+Hits=1
+BasePower=15
+
+[LamiaStaff]
+Cost=0
+Type=stave
+Info=You can't buy this!
+Abilities=PoleSwing.TailSlap.HypnoticSway
+Element=none
+Hits=1
+BasePower=15
+
+[LamiaClaws]
+Cost=0
+Type=HandToHand
+Info=You can't buy this!
+Abilities=GustingGouge.HystericBarrage.TailSlap.HypnoticSway
+Element=none
+Hits=$rand(1,2)
 BasePower=15
 
 [Mistilteinn]
