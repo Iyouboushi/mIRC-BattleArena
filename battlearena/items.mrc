@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 06/11/17
+;;;; Last updated: 06/29/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -1040,6 +1040,16 @@ alias display_Statusdamage_item {
   }
   ; If the person isn't dead, display the status message.
   if ($readini($char($2), battle, hp) >= 1) {  $display.message(%statusmessage.display, battle) }
+
+  ; If the target is flying and the status was heavy, send the target back to the ground
+  if (($readini($char($2), status, flying) = yes) && ($readini($char($2), status, heavy) = yes)) { 
+    writeini $char($2) status flying no 
+    if ($readini($char($2), info, flag) != $null) { remini $char($2) skills flying }
+    $set_chr_name($2)
+    $display.message($readini(translation.dat, Status, FlyingCrash), battle)
+  }
+
+
 
   unset %statusmessage.display
 

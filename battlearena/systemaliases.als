@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/11/17
+;;;; Last updated: 06/29/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2684,6 +2684,7 @@ clear_most_status {
   writeini $char($1) Status sleep no | writeini $char($1) Status stun no | writeini $char($1) status zombieregenerating no | writeini $char($1) status silence no
   writeini $char($1) status petrified no  | writeini $char($1) status bored no | writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no 
   writeini $char($1) status intdown no | writeini $char($1) status protect no | writeini $char($1) status shell no | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0 
+  writeini $char($1) status heavy no
 
   writeini $char($1) status poison.timer 0 | writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
   writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0 | writeini $char($1) status doll.timer 0 | writeini $char($1) status confuse.timer 0 
@@ -2700,6 +2701,7 @@ clear_negative_status {
   writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no | writeini $char($1) status intdown no  |  writeini $char($1) status stop no | writeini $char($1) status petrified no 
   writeini $char($1) status bored no | remini $char($1) status weapon.locked | writeini $char($1) status confuse no 
   remini $char($1) status annoyed | writeini $char($1) status terrify no | writeini $char($1) status doll no
+  writeini $char($1) status heavy no
 
   ; Clear negative timer statuses
   writeini $char($1) status poison.timer 0 |  writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0

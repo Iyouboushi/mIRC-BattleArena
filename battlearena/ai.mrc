@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 05/31/17
+;;;; Last updated: 06/29/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -824,6 +824,8 @@ alias ai_skillcheck {
   }
 
   if ($readini($char($1), skills, flying) >= 1) {
+    if ($readini($char($1), status, heavy) = yes) { return }
+
     var %flying.timer $readini($char($1), status, flying.timer)
     if (%flying.timer = $null) { %ai.skilllist  = $addtok(%ai.skilllist, flying, 46) } 
     if (%flying.timer < 2) { return }

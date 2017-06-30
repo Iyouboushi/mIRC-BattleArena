@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/11/17
+;;;; Last updated: 06/29/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -342,7 +342,7 @@ status.effects.turns {
     if ($1 = charm) { return 3 }
     if ($1 = paralysis) { return 3 }
     if ($1 = bored) { return 2 }
-    if ($1 = flying) { return 3 }
+    if ($1 = flying) { return 4 }
   }
   else { 
     if ($1 = defup) { return 3 }
@@ -1345,6 +1345,16 @@ display_damage {
   if (%statusmessage.display != $null) { 
     if ($readini($char(%target), battle, hp) > 0) { $display.message(%statusmessage.display,battle) 
       unset %statusmessage.display 
+
+      if (($readini($char(%target), status, flying) = yes) && ($readini($char(%target), status, heavy) = yes)) { 
+        ; if the target is flying, send it back to the ground
+        writeini $char(%target) status flying no 
+        if ($readini($char(%target), info, flag) != $null) { remini $char(%target) skills flying }
+        $set_chr_name(%target)
+        $display.message($readini(translation.dat, Status, FlyingCrash), battle)
+      }
+
+
     }
   }
 
@@ -2472,11 +2482,14 @@ inflict_status {
   if ($3 = sleep) { set %status.type sleep  | var %status.grammar asleep }
   if ($3 = terrify) { set %status.type terrify | var %status.grammar terrified }
   if ($3 = freezing) { set %status.type frozen | var %status.grammar freezing }
+  if ($3 = heavy) { set %status.type heavy | var %status.grammar weighed down }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
 
   var %chance $rand(1,140) | $set_chr_name($1) 
   if ($readini($char($2), skills, utsusemi.on) = on) { set %chance 0 } 
+
+  if ($3 = heavy) { var %chance 255 }
 
   if ($4 != IgnoreResistance) { 
     ; Check for resistance to that status type.
@@ -2550,6 +2563,7 @@ inflict_status {
       if ((%status.type = slow) && ($readini($char($2), status, speedup) != no)) { writeini $char($2) status speedup no }
 
       if ((((%status.type != poison) && (%status.type != charm) && (%status.type != petrify) && (%status.type != removeboost)))) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer %enfeeble.timer   }
+
     }
   }
 
