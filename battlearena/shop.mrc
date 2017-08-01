@@ -3100,7 +3100,7 @@ alias shop.mythic {
   }
 
   if ($2 = stats) { 
-    if ($readini($char($1), Mythic, Level) = $null) { $display.private.message(4You do not have a mythic weapon. To forge one you must use !mythic forge weapontype) | halt }
+    if ($readini($char($1), Mythic, CurrentLevel) = $null) { $display.private.message(4You do not have a mythic weapon. To forge one you must use !mythic forge weapontype) | halt }
 
     var %mythic.type $readini($char($1), Mythic, Type)
     var %mythic.level $round($calc($readini($char($1), Mythic, UpgradesDone) / 5),0)
