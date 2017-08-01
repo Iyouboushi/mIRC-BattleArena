@@ -549,6 +549,7 @@ LamiaBow=ArrowDeluge.TailSlap.HypnoticSway
 LamiaSword=TidalSlash.TailSlap.HypnoticSway
 LamiaStaff=PoleSwing.TailSlap.HypnoticSway
 LamiaClaws=GustingGouge.HystericBarrage.TailSlap.HypnoticSway
+Beholder=CharmRay.ParalyzingRay.FearRay.SlowingRay.SleepRay.DisintegrationRay
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -4891,6 +4892,74 @@ Element=none
 Cost=0
 Magic=no
 stat=int
+
+[CharmRay]
+Type=Single
+StatusType=charm
+TP=10
+Desc=shoots a laser from one of its many eye stalks at %enemy in an attempt to charm %enemy $+ !
+BasePower=20
+Element=none
+Cost=0
+Magic=no
+Stat=int
+
+[ParalyzingRay]
+Type=Single
+StatusType=paralysis
+TP=10
+Desc=shoots a laser from one of its many eye stalks at %enemy in an attempt to paralyze %enemy $+ !
+BasePower=20
+Element=none
+Cost=0
+Magic=no
+Stat=int
+
+[FearRay]
+Type=Single
+StatusType=intimidate
+TP=10
+Desc=shoots a laser from one of its many eye stalks at %enemy in an attempt to strike fear into %enemy $+ 's heart!
+BasePower=20
+Element=none
+Cost=0
+Magic=no
+Stat=int
+
+[SlowingRay]
+Type=Single
+StatusType=slow
+TP=10
+Desc=shoots a laser from one of its many eye stalks at %enemy in an attempt to slow %enemy $+ 's movement!
+BasePower=20
+Element=none
+Cost=0
+Magic=no
+Stat=int
+
+[SleepRay]
+Type=Single
+StatusType=sleep
+TP=10
+Desc=shoots a laser from one of its many eye stalks at %enemy in an attempt to put %enemy to sleep!
+BasePower=20
+Element=none
+Cost=0
+Magic=no
+Stat=int
+
+[DisintegrationRay]
+Type=death
+TP=10
+Desc=gives off an evil laugh before aiming every eye on its body towards %enemy $+ . The eyes charge up powerful lasers that attempt to barrage %enemy $+ !
+BasePower=500
+Element=none
+Cost=0
+Magic=no
+Stat=int
+DeathChance=$iif($return_playersinbattle = 1, 35, $iif($return_playersinbattle > 2, 100, 75))
+DestroyShadows=5
+
 
 [FinalSting]
 Type=suicide-AOE
