@@ -53,7 +53,7 @@ Daggers=SmallDagger.MainGauche.Mandau.Terpsichore.Vanir_Knife.Vajra.Kikoku.Kanna
 Hammers=BronzeHammer.WarHammer.BlessedHammer.SteelHammer.Daedalus.Daedalus+1.Mjolnir
 Lightsabers=BlueLightsaber.Lightsaber
 Bats=BaseballBat
-Misc=ProtonPack
+Misc=ProtonPack.Mythic
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
 Defunct=
@@ -6203,7 +6203,7 @@ Type=$readini($char($1), Mythic, Type)
 Info=A mythical weapon forged by the gods
 Level=$readini($char($1), Mythic, CurrentLevel)
 BasePower=$readini($char($1), Mythic, BasePower)
-Abilities=$readini($char($1), Mythic, Abilities)
+Abilities=$readini($char($1), Mythic, Techs)
 Element=$readini($char($1), Mythic, Element)
 Hits=$readini($char($1), Mythic, Hits)
 Upgrade=0
@@ -6212,4 +6212,5 @@ SpecialWeapon=true
 IgnoreDefense=$readini($char($1), Mythic, IgnoreDefense)
 HurtEthereal=$readini($char($1), Mythic, HurtEthereal)
 AbsorbAmount=$readini($char($1), Mythic, AbsorbAmount)
-
+Legendary=true
+TormentWeapon=true

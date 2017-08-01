@@ -1,0 +1,20 @@
+12::[Mythic Weapon Information]::
+2Mythic weapons are weapons that you can adjust the properties and upgrade using a special currency known as Odinmarks. Odinmarks are found by fighting Cosmic Battles. 
+12::[Commands]::
+2Use !mythic forge weapontype to purchase a mythic. Valid weapon types: HandToHand, Sword, Whip, Gun, Rifle, Bow, Katana, Wand, Stave, Glyph, Spear, Scythe, GreatSword, GreatAxe, Axe, Dagger, Hammer - 4Once set this cannot be changed without completely resetting your mythic weapon.
+2Use !mythic reset yes to completely reset your mythic. Doing so will erase it entirely and you will have to start 100% over.
+2Use !mythic stats to view information on your mythic
+2Use !mythic upgrade Element elementtype to set an element type to your mythic.
+2Use !mythic upgrade HurtEthereal to allow your mythic to hurt ethereal monsters
+2Use !mythic upgrade BasePower/Hits/IgnoreDefense to increase the number of these options.
+2Use !mythic tech add techname to add a technique to the mythic. There are restrictions to this.
+2Use !mythic tech remove techname to remove a technique from the mythic.
+12::[Upgrade Costs]::
+2+5 BasePower - 10 OdinMarks
+2+1 Hit - 50 OdinMarks
+2+1 IgnoreDefense - 50 OdinMarks
+2+HurtEthereal - 10 OdinMarks
+2+Technique - 20 OdinMarks
+2A New Element - 10 OdinMarks
+12::[Technique Restrictions]::
+2Mythics can only have 10 techniques total.  Valid techniques are any technique in the game that you can buy via the shop (it must have a cost) and that you already know.  If you need more you can remove an old one first.

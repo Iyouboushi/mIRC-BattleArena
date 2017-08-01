@@ -1610,6 +1610,7 @@ Battle Arena Bot VERSIONS
 - Added an enmity targeting system option to the game. When this is on the amount of damage that players do to monsters will
   help determine which player the monsters target.
 - Added a new battle type: Cosmic.  Use CosmicOrbs to enter the Cosmic Battles. This battle type rewards winners with OdinMarks
+- Added the mythic weapon that players can forge and upgrade using OdinMarks.  Use !mythic in-game to see all the commands.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the amount of style points needed to achieve different ranks. It is harder on higher battle levels now.

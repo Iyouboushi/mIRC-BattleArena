@@ -191,6 +191,9 @@ BaseballBat=
 BlueLightsaber=ForcePush
 Lightsaber=ForcePush
 
+; Mythic
+Mythic=$readini($char($1), Mythic, Techs)
+
 ; Mech Weapons
 BasicMechGun=DoubleShot.GunBlaze
 ImprovedMechGun=DoubleShotII.GunBlazeII

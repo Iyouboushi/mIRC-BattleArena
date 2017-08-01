@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 02/13/17
+;;;; Last updated: 08/01/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -3045,4 +3045,211 @@ alias shop.voucher.buy {
 
   ; Show a message that we did the exchange
   $display.private.message(3You have exchanged %voucher.item.price $2 $iif(%voucher.item.price > 1, vouchers, voucher) for 1 $3)
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Mythic shop commands
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; !mythic forge type <-- purchase a mythic for 10 OdinMarks
+; !mythic stats <-- Reveals information about your mythic
+; !mythic reset yes <-- Erases the mythic entirely.
+; !mythic upgrade type <-- upgrades BasePower.Hits.IgnoreDefense.HurtEthereal.Element
+; !mythic tech add name <-- adds the tech to the mythic
+
+on 3:TEXT:!mythic*:*: { $shop.mythic($nick, $2, $3, $4, $5) }
+
+alias shop.mythic {
+  if ($2 = $null) { $gamehelp(mythic, $nick) | halt  }
+  if (($2 = reset) && ($3 != yes)) { $display.private.message(4In order to erase your mythic you must use !mythic reset yes - Please note that using this command will completely erase your mythic and you will not receive a refund) | halt }
+  if (($2 = reset) && ($3 = yes)) { remini $char($1) Mythic | $display.private.message(3The mythical weapon has been destroyed.) | halt }
+
+  var %valid.types HandToHand.Sword.Whip.Gun.Rifle.Bow.Katana.Wand.Stave.Glyph.Spear.Scythe.GreatSword.GreatAxe.Axe.Dagger.Hammer
+
+  if (($2 = forge) && ($3 = $null)) { $display.private.message(4Invalid weapon type! Valid types are:2 %valid.types) | halt }
+  if (($2 = forge) && ($3 != $null)) { 
+    ; Do we already have a mythic?
+    if ($readini($char($1), Mythic, Level) != $null) { $display.private.message(4You already have a mythic weapon. To receive a new one you must first reset your old one. Use !mythic reset yes to do so) | halt }
+
+    ; Is it a valid type?
+    if ($istok(%valid.types, $3, 46) = $false) { $display.private.message(4Invalid weapon type! Valid types are:2 %valid.types) | halt }
+
+    ; Do we have enough OdinMarks?
+    var %mythic.cost 10
+    var %current.odinmarks $readini($char($1), Item_Amount, OdinMark)
+    if (%current.odinmarks < %mythic.cost) { $display.private.message(4You do not have enough OdinMarks to forge a mythic) | halt }
+
+    ; Purchase the weapon
+    dec %current.odinmarks %mythic.cost 
+    writeini $char($1) Item_Amount OdinMark %current.odinmarks
+
+    writeini $char($1) Weapons Mythic 1
+    writeini $char($1) Mythic Type $3
+    writeini $char($1) Mythic CurrentLevel 1
+    writeini $char($1) Mythic BasePower 100
+    writeini $char($1) Mythic Element none
+    writeini $char($1) Mythic Hits 1
+    writeini $char($1) Mythic IgnoreDefense 0
+    writeini $char($1) Mythic HurtEthereal no
+    writeini $char($1) Mythic AbsorbAmount 0
+    writeini $char($1) Mythic UpgradesDone 0
+
+    $display.private.message(3Hephaestus takes your %mythic.cost OdinMarks and forges a powerful $3 mythic weapon for you!)
+    $display.private.message(3You can use !mythic stats to see information on your mythic.)
+    halt
+  }
+
+  if ($2 = stats) { 
+    if ($readini($char($1), Mythic, Level) = $null) { $display.private.message(4You do not have a mythic weapon. To forge one you must use !mythic forge weapontype) | halt }
+
+    var %mythic.type $readini($char($1), Mythic, Type)
+    var %mythic.level $round($calc($readini($char($1), Mythic, UpgradesDone) / 5),0)
+    if (%mythic.level < 1) { var %mythic.level 1 }
+
+    var %mythic.basepower $readini($char($1), Mythic, BasePower)
+    var %mythic.element $readini($char($1), Mythic, Element)
+    var %mythic.hits $readini($char($1), Mythic, Hits)
+    var %mythic.IgnoreDefense $readini($char($1), Mythic, IgnoreDefense)
+    var %mythic.HurtEthereal $readini($char($1), Mythic, HurtEthereal)
+    var %mythic.techs $readini($char($1), Mythic, Techs)
+    if (%mythic.techs = $null) { var %mythic.techs none } 
+    else { var %mythic.techs $replace(%mythic.techs, $chr(046), $chr(044) $chr(032)) }
+
+    $display.private.message([4Mythic Type12 %mythic.type $+ ] [4Mythic Level12 %mythic.level $+ ] [4Mythic Base Power12 %mythic.basepower $+ ])
+    $display.private.message([4Mythic Element12 %mythic.element $+ ] [4Num of Hits12 %mythic.hits $+ ] [4Ignore Defense Amount12 %mythic.IgnoreDefense $+ ] [4Mythic Can Hurt Ethereal Monsters?12 %mythic.hurtethereal $+ ])
+    $display.private.message([4Mythic Techs12 %mythic.techs $+ ])
+  }
+
+  if ($2 = upgrade) { 
+    var %valid.upgrades BasePower.Hits.IgnoreDefense.HurtEthereal.Element
+    if ($3 = $null) {  
+      $display.private.message(4Invalid upgrade type! Valid types are:2 %valid.upgrades) 
+      $display.private.message(4Upgrade costs:12 10 OdinMarks for +5 BasePower $+ $chr(44) 50 OdinMarks for +1 Hit $+ $chr(44) 10 OdinMarks for HurtEthereal $+ $chr(44) 10 OdinMarks for a new Element $+ $chr(44) 20 OdinMarks for +1 IgnoreDefense)
+      halt 
+    }
+
+    if ($3 = BasePower) { 
+      var %upgrade.cost 10 | var %upgrade.amount 5
+      $mythic.upgrade.costcheck($1, %upgrade.cost)
+
+      var %current.basepower $readini($char($1), Mythic, BasePower) 
+      inc %current.basepower %upgrade.amount
+      writeini $char($1) Mythic BasePower %current.basepower
+      $mythic.inc.upgrade.count($1)
+
+      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %upgrade.amount more Base Power)
+      halt
+    }
+
+    if ($3 = Hits) { 
+      var %upgrade.cost 50 | var %hit.upgrade 1
+      var %current.hits $readini($char($1), Mythic, Hits) 
+
+      if (%current.hits >= 10) { $display.private.message(4Your mythic has the maximum number of hits allowed!) | halt }
+
+      inc %current.hits %hit.upgrade
+      writeini $char($1) Mythic Hits %current.hits
+      $mythic.inc.upgrade.count($1)
+
+      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %hit.upgrade more Hit)
+      halt
+    }
+
+    if ($3 = HurtEthereal) { 
+      if ($readini($char($1), Mythic, HurtEthereal) = true) { $display.private.message(4You have already purchased this upgrade!) | halt }
+      var %upgrade.cost 10
+      $mythic.upgrade.costcheck($1, %upgrade.cost)
+      writeini $char($1) Mythic HurtEthereal true
+      $mythic.inc.upgrade.count($1)
+      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the power to hurt ethereal creatures)
+      halt
+    }
+
+    if ($3 = Element) {
+      var %valid.elements fire.earth.wind.water.dark.light.lightning
+      if ($istok(%valid.elements, $4, 46) = $false) { $display.private.message(4Invalid element! Valid elements are:2 %valid.elements) | halt }
+
+      var %upgrade.cost 10
+      $mythic.upgrade.costcheck($1, %upgrade.cost)
+      writeini $char($1) Mythic Element $4
+      $mythic.inc.upgrade.count($1)
+      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the $4 element)
+      halt
+    }
+
+    if ($3 = IgnoreDefense) { 
+      var %upgrade.cost 20 | var %upgrade.amount 1 
+      $mythic.upgrade.costcheck($1, %upgrade.cost)
+
+      var %current.ignoredef $readini($char($1), Mythic, IgnoreDefense) 
+
+      if (%current.hits >= 100) { $display.private.message(4Your mythic has the max Ignore Defense possible!) | halt }
+
+      inc %current.ignoredef %upgrade.amount
+      writeini $char($1) Mythic IgnoreDefense %current.ignoredef
+      $mythic.inc.upgrade.count($1)
+
+      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %upgrade.amount more IgnoreDefense)
+      halt
+    }
+  }
+
+  if ($2 = tech) {
+    if ($3 = add) { 
+      if ($numtok($readini($char($1), Mythic, Techs), 46) = 10) { $display.private.message(4Your mythic has used all available technique slots and cannot add any more.) | halt }
+      if ($istok($readini($char($1), Mythic, Techs), $4, 46) = $true) { $display.private.message(4Your mythic already has the $4 technique equipped.) | halt }
+
+      var %upgrade.cost 20
+
+      ; Is this a valid technique?
+      var %technique.cost $readini($dbfile(techniques.db), $4, cost)
+      if ((%technique.cost = $null) || (%technique.cost = 0)) { $display.private.message(4This technique cannot be added to your mythic.) | halt }
+
+      ; Does the player know this technique?
+      var %tech.power $readini($char($1), Techniques, $4)
+      if ((%tech.power = 0) || (%tech.power = $null)) { $display.private.message(4You do not know this technique and thus it cannot be added to your mythic.) | halt }
+
+      ; Lower the OdinMarks
+      $mythic.upgrade.costcheck($1, %upgrade.cost)
+
+      ; Add it to the mythic
+      var %current.techniques $readini($char($1), Mythic, Techs)
+      var %current.techniques $addtok(%current.techniques, $4, 46)
+      writeini $char($1) Mythic Techs %current.techniques
+      $mythic.inc.upgrade.count($1)
+
+      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the $4 technique)
+      halt
+    }
+
+    if ($3 = remove) { 
+      if ($istok($readini($char($1), Mythic, Techs), $4, 46) = $false) { $display.private.message(4Your mythic does not have the $4 technique equipped.) | halt }
+
+      ; Remove it from the mythic
+      var %current.techniques $readini($char($1), Mythic, Techs)
+      var %current.techniques $remtok(%current.techniques, $4, 46)
+      writeini $char($1) Mythic Techs %current.techniques
+      $display.private.message(3Hephaestus has removed the $4 technique from your mythic)
+      halt
+
+    }
+  }
+
+
+}
+
+alias mythic.upgrade.costcheck {
+  ; $1 = the person we're checking
+  ; $2 = the amount it costs
+
+  var %current.odinmarks $readini($char($1), Item_Amount, OdinMark)
+  if (%current.odinmarks <  $2) { $display.private.message(4You do not have enough OdinMarks to purchase this upgrade) | halt }
+  dec %current.odinmarks $2
+  writeini $char($1) Item_Amount OdinMark %current.odinmarks
+}
+
+alias mythic.inc.upgrade.count {
+  var %upgrades.done $readini($char($1), Mythic, UpgradesDone)
+  inc %upgrades.done 1
+  writeini $char($1) Mythic UpgradesDone %upgrades.done
 }
