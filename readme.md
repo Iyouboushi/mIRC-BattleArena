@@ -9,7 +9,7 @@ As for the main purpose of the game.. well, the only real purpose is to see how 
 
 Once set up the game is entirely automatic and does not need anyone to run it.
 
-A full in-depth guide with commands and more in-depth information can be found on the Battle Arena wiki:  http://battlearena.heliohost.org/doku.php?id=start
+A full in-depth guide with commands and more in-depth information can be found on the Battle Arena wiki:  https://github.com/Iyouboushi/mIRC-BattleArena/wiki
 
 
 ## SETUP
@@ -22,59 +22,33 @@ Getting it set up is easy.
  4. (as with all mIRC programs) change the nickname and add a server
  5. Connect.
  6. Using another IRC connection as the bot owner's nick, join the game channel you set and use !new char (nick) without the () to get the character creation process started.
- 7. Follow what the bot tells you to do.  Be sure to check out guide - player's guide.txt or the game's Wiki (http://battlearena.heliohost.org/doku.php?id=start) as well.
+ 7. Follow what the bot tells you to do.  Be sure to check out guide - player's guide.txt or the game's Wiki (https://github.com/Iyouboushi/mIRC-BattleArena/wiki) as well.
 
 Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended to make life simple.
 
    
 ## WHAT'S NEW?
 
-If you have used this bot before and are updating you may be wondering what all has changed.  Well, the versions.txt in the documentation folder has a full list of changes. Listed below are some of the main highlights since version 3.1. 
+If you have used this bot before and are updating you may be wondering what all has changed.  Well, the versions.txt in the documentation folder has a full list of changes. Listed below are some of the main highlights since version 3.2. 
 
 ADDITIONS:
-* Added the Supply Run type battle. In this battle type players need to protect a wagon against a wave of monsters.
-* Added new augments
-* Added new monsters and new monster dynamic names
-* Added new enhancement point shop items/skills
-* Added new items
-* Added new achievements
-* Added new Torment levels to challenge players
-* Added new dungeons
-* Added the ability for players to obtain a second accessory slot
-* Added a new (optional) battle system that uses Action Points to perform actions.
+* Added Kill Coins.  This new currency is used to purchase and upgrade skills and techniques. They accumulate when players kill monsters.
+* Added the Mythic weapon system. Using OdinMarks (a special endgame currency) players can buy and upgrade a special weapon.
+* Added a new battle type: Cosmic.  This is an endgame battle type.
+* Added a minimum shop level for players who are level 100+
+* Added the ability for monsters and NPCs to have multiple attacks per turn.
 
 CHANGES:
-* Changed the max number of access-controlled characters players can enter into battle
-* Changed portal battles to make it easier for everyone to get a drop
-* Changed the amount of HP monsters have
-* Changed the way the bot displays the weather changes so that it's customizeable by bot owners
-* Changed maximum amounts of certain skills and styles for players who use Final Getsuga and are reset
-* Changed what !items displays and moved several other item types to their own commands
-* Changed alchemy so that it is now possible to craft weapons directly
-* Changed armor so that it no longer adds the stats directly to the player's file (except HP and TP)
-* Changed armor so that it no longer affects players' levels
-* Changed a few things with dragon hunting for when players' average level hits a certain amount
-* Changed capacity point gain rate to be increased by the number of achievements the player has
-* Changed the dynamic naming system slightly
+* Changed the way multi-hit melee attacks are displayed
+* Changed the amount of style points needed to achieve different ranks. It is harder on higher levels.
+* Changed SpawnAfterDeath to allow multiple things to spawn.
+* Changed active skills so that most need to be equipped to use. 
 
 FIXES:
-* Fixed a bug with Stoneskin in the enhancement shop
-* Fixed a bug with AI in dungeons
-* Fixed a bug with clones being able to use items
-* Fixed a bug in which enhancement skills (0 cost) would show up in !shop list skills
-* Fixed a bug where using !misc items multiple times would cause duplicates to show up
-* Fixed a bug where NPCs/trusts could survive no-npc/no-trust battle conditions on uncapped portals
-* Fixed a bug where it was possible to get infinite HP while using an ignition
-* Fixed a bug that was preventing accessories with more than one type working correctly.
-* Fixed a bug with the techonly AI types
-* Fixed two bugs with the Predator fight
-* Fixed an issue where certain battle types could override mimic battles
-* Fixed an issue with absorb inside of dungeons and torment
-* Fixed an issue with clones being able to use skills multiple times without a cooldown
-* Fixed a description issue with ToxicMelody
-
-REMOVALS:
-* Removed certain monsters (their names have been added to dynamic naming lists)
+* Fixed a bug where water dragons were not spawning
+* Fixed an issue with alchemy (thanks to Pentium320)
+* Fixed an issue with +stat items (thanks to Pentium320)
+* Fixed an issue where +portal usages weren't actually working correctly
 
 Again, this IS NOT everything. Be sure to read the versions.txt in the documentation folder for a full list of everything as the list is quite extensive.
 
