@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 06/11/17
+;;;; Last updated: 08/05/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -972,10 +972,12 @@ formula.meleedmg.player.formula_2.0 {
   ; If we came here via mugger's belt, we need to cut the damage in half.
   if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
 
-  ; Check for the En-Spell Buff
-  if ($readini($char($1), status, en-spell) != none) { 
-    $magic.effect.check($1, $3, nothing, en-spell) 
-    $modifer_adjust($3, $readini($char($1), status, en-spell))
+  if (%counterattack != on) { 
+    ; Check for the En-Spell Buff
+    if ($readini($char($1), status, en-spell) != none) { 
+      $magic.effect.check($1, $3, nothing, en-spell) 
+      $modifer_adjust($3, $readini($char($1), status, en-spell))
+    }
   }
 
   ; Turn off the True Strike skill
@@ -1299,10 +1301,12 @@ formula.meleedmg.player.formula_3.1 {
   ; If we came here via mugger's belt, we need to cut the damage in half.
   if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
 
-  ; Check for the En-Spell Buff
-  if ($readini($char($1), status, en-spell) != none) { 
-    $magic.effect.check($1, $3, nothing, en-spell) 
-    $modifer_adjust($3, $readini($char($1), status, en-spell))
+  if (%counterattack != on) { 
+    ; Check for the En-Spell Buff
+    if ($readini($char($1), status, en-spell) != none) { 
+      $magic.effect.check($1, $3, nothing, en-spell) 
+      $modifer_adjust($3, $readini($char($1), status, en-spell))
+    }
   }
 
   ; Turn off the True Strike skill
@@ -1649,10 +1653,12 @@ formula.meleedmg.player.formula_3.0 {
   ; If we came here via mugger's belt, we need to cut the damage in half.
   if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
 
-  ; Check for the En-Spell Buff
-  if ($readini($char($1), status, en-spell) != none) { 
-    $magic.effect.check($1, $3, nothing, en-spell) 
-    $modifer_adjust($3, $readini($char($1), status, en-spell))
+  if (%counterattack != on) { 
+    ; Check for the En-Spell Buff
+    if ($readini($char($1), status, en-spell) != none) { 
+      $magic.effect.check($1, $3, nothing, en-spell) 
+      $modifer_adjust($3, $readini($char($1), status, en-spell))
+    }
   }
 
   ; Turn off the True Strike skill
@@ -1984,10 +1990,12 @@ formula.meleedmg.player.formula_1.0 {
   ; If we came here via mugger's belt, we need to cut the damage in half.
   if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
 
-  ; Check for the En-Spell Buff
-  if ($readini($char($1), status, en-spell) != none) { 
-    $magic.effect.check($1, $3, nothing, en-spell) 
-    $modifer_adjust($3, $readini($char($1), status, en-spell))
+  if (%counterattack != on) { 
+    ; Check for the En-Spell Buff
+    if ($readini($char($1), status, en-spell) != none) { 
+      $magic.effect.check($1, $3, nothing, en-spell) 
+      $modifer_adjust($3, $readini($char($1), status, en-spell))
+    }
   }
 
   ; Turn off the True Strike skill
@@ -2380,10 +2388,12 @@ formula.meleedmg.player.formula_2.5 {
   ; If we came here via mugger's belt, we need to cut the damage in half.
   if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
 
-  ; Check for the En-Spell Buff
-  if ($readini($char($1), status, en-spell) != none) { 
-    $magic.effect.check($1, $3, nothing, en-spell) 
-    $modifer_adjust($3, $readini($char($1), status, en-spell))
+  if (%counterattack != on) { 
+    ; Check for the En-Spell Buff
+    if ($readini($char($1), status, en-spell) != none) { 
+      $magic.effect.check($1, $3, nothing, en-spell) 
+      $modifer_adjust($3, $readini($char($1), status, en-spell))
+    }
   }
 
   ; Turn off the True Strike skill
@@ -2857,10 +2867,12 @@ formula.meleedmg.monster {
   ; If we came here via mugger's belt, we need to cut the damage in half.
   if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
 
-  ; Check for the En-Spell Buff
-  if ($readini($char($1), status, en-spell) != none) { 
-    $magic.effect.check($1, $3, nothing, en-spell) 
-    $modifer_adjust($3, $readini($char($1), status, en-spell))
+  if (%counterattack != on) { 
+    ; Check for the En-Spell Buff
+    if ($readini($char($1), status, en-spell) != none) { 
+      $magic.effect.check($1, $3, nothing, en-spell) 
+      $modifer_adjust($3, $readini($char($1), status, en-spell))
+    }
   }
 
   ; Turn off the True Strike skill
