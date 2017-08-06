@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/29/17
+;;;; Last updated: 08/05/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3632,14 +3632,14 @@ augment.check {
     unset %weapon.name.temp
     set %augment.strength 0
 
-    if ($istok(%ignition.augment,$2,46) = $true) {  inc %augment.strength 1 | set %augment.found true }
-    if ($istok(%weapon.augment,$2,46) = $true) {  inc %augment.strength 1 | set %augment.found true }
-    if ($istok(%weapon.augment.left,$2,46) = $true) {  inc %augment.strength 1 | set %augment.found true }
-    if ($istok(%equipment.head.augment,$2,46) = $true) { inc %augment.strength 1 | set %augment.found true }
-    if ($istok(%equipment.body.augment,$2,46) = $true) { inc %augment.strength 1 | set %augment.found true }
-    if ($istok(%equipment.legs.augment,$2,46) = $true) {  inc %augment.strength 1 | set %augment.found true }
-    if ($istok(%equipment.feet.augment,$2,46) = $true) { inc %augment.strength 1 | set %augment.found true }
-    if ($istok(%equipment.hands.augment,$2,46) = $true) { inc %augment.strength 1 | set %augment.found true }
+    if (($istok(%ignition.augment,$2,46) = $true) || (%ignition.augment = all)) {  inc %augment.strength 1 | set %augment.found true }
+    if (($istok(%weapon.augment,$2,46) = $true) || (%weapon.augment = all)) {  inc %augment.strength 1 | set %augment.found true }
+    if (($istok(%weapon.augment.left,$2,46) = $true) || (%weapon.augment.left = all)) {  inc %augment.strength 1 | set %augment.found true }
+    if (($istok(%equipment.head.augment,$2,46) = $true) || (%equipment.head.augment = all)) { inc %augment.strength 1 | set %augment.found true }
+    if (($istok(%equipment.body.augment,$2,46) = $true) || (%equipment.body.augment = all)) { inc %augment.strength 1 | set %augment.found true }
+    if (($istok(%equipment.legs.augment,$2,46) = $true) || (%equipment.legs.augment = all)) {  inc %augment.strength 1 | set %augment.found true }
+    if (($istok(%equipment.feet.augment,$2,46) = $true) || (%equipment.feet.augment = all)) { inc %augment.strength 1 | set %augment.found true }
+    if (($istok(%equipment.hands.augment,$2,46) = $true) || (%equipment.hands.augment = all)) { inc %augment.strength 1 | set %augment.found true }
 
     ; check the name of the armor in the character file too. This is mostly used for NPCs and not players, as players can't augment armor
     if ($istok($readini($char($1), augments, $readini($char($1), equipment, head)),$2,46) = $true) { inc %augment.strength 1 | set %augment.found true }

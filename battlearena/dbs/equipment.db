@@ -1526,6 +1526,7 @@ cost=50
 SellPrice=1500
 Exclusive=yes
 
+
 [Vash'sJacket]
 Name=Vash's Jacket
 hp=1000
@@ -1747,6 +1748,21 @@ Legendary=true
 Exclusive=yes
 LevelRequirement=5000
 
+[DensetsuNoYoroi]
+name=Densetsu No Yoroi
+hp=1000
+tp=200
+Str=9000
+def=9000
+int=9000
+spd=9000
+Augment=all
+EquipLocation=body
+cost=0
+SellPrice=50000
+LevelRequirement=20000
+Exclusive=yes
+Legendary=true
 
 ========
 LEGS
