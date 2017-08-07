@@ -130,13 +130,13 @@ DesperateBlows=1
 
 [Techniques]
 InfernalFire=$iif(%current.turn = 5 && $portal.nailcount > 0, 5000, 0)
-InfernalBreath=$iif(%current.turn != 2 && %current.turn != 5, 250, 0)
-InfernalCleansing=$iif(%current.turn = 2 || %current.turn >= 10, 200, 0)
+InfernalBreath=$iif(%current.turn != 2 && %current.turn != 5, 200, 0)
+InfernalCleansing=$iif(%current.turn = 2 || %current.turn >= 10, 180, 0)
 
 
 [Styles]
 Equipped=Guardian
-Guardian=6
+Guardian=5
 
 [Augment]
 IfritPrimeClaws=AbsorbTP.EnhanceDoubleTurnChance.Drain

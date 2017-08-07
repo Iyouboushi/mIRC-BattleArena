@@ -1014,7 +1014,7 @@ event1statusType=Burning
 event1Chance=100
 Event1Desc=The battlefield glows red and erupts into pillars of flames that engulf all heroes!
 Event1Target=players
-Event1Amount=600
+Event1Amount=400
 
 [Fortuna Courtyard]
 Weather=snowy

@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle >= 3, 20000,40000)
+Hp=$iif($return_playersinbattle >= 3, 17000,26000)
 Tp=250
 Str=7
 Def=17
@@ -124,7 +124,7 @@ FirajaII=500
 
 [Styles]
 Equipped=Guardian
-Guardian=10
+Guardian=9
 
 
 [modifiers]
