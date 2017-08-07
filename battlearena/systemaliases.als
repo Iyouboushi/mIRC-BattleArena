@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 08/05/17
+;;;; Last updated: 08/07/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2255,8 +2255,11 @@ miscitems.list {
           if ($numtok(%misc.items.list3,46) <= 15) { %misc.items.list3 = $addtok(%misc.items.list3, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
           else { 
             if ($numtok(%misc.items.list4,46) <= 15) { %misc.items.list4 = $addtok(%misc.items.list4, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-            else { %misc.items.list5 = $addtok(%misc.items.list5, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-          } 
+            else { 
+              if ($numtok(%misc.items.list5,46) <= 15) { %misc.items.list5 = $addtok(%misc.items.list5, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+              else { %misc.items.list6 = $addtok(%misc.items.list6, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+            } 
+          }
         }
       }
     }
@@ -2270,6 +2273,8 @@ miscitems.list {
   %misc.items.list2 = $replace(%misc.items.list2, $chr(046), %replacechar)
   %misc.items.list3 = $replace(%misc.items.list3, $chr(046), %replacechar)
   %misc.items.list4 = $replace(%misc.items.list4, $chr(046), %replacechar)
+  %misc.items.list5 = $replace(%misc.items.list5, $chr(046), %replacechar)
+  %misc.items.list6 = $replace(%misc.items.list6, $chr(046), %replacechar)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
