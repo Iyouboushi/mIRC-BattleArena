@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Scoreboard Generation
-;;;; Last updated: 02/24/16
+;;;; Last updated: 08/06/16
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate.scoreboard {
   set %totalplayers 0
@@ -240,11 +240,15 @@ calculate.score {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   if (%scoreboard.type = 2) { 
 
-    inc %score $calc($readini($char($1), basestats, hp) / 1000)
-    inc %score $calc($readini($char($1), basestats, tp) / 100)
+
+
+    inc %score $readini($char($1), basestats, hp)
+    inc %score $readini($char($1), basestats, tp)
     inc %score $get.level($1)
+
     inc %score $calc($readini($char($1), stuff, BlackOrbsSpent) / 10)
     inc %score $calc($readini($char($1), stuff, RedOrbsSpent) / 50000)
+
     inc %score $readini($char($1), stuff, MonsterKills)
     inc %score $readini($char($1), stuff, ChestsOpened)
     inc %score $readini($char($1), stuff, NumberOfResets)
@@ -271,21 +275,32 @@ calculate.score {
     inc %score $readini($char($1), stuff, TrustsUsed)
     inc %score $readini($char($1), stuff, DropsRewarded)
     inc %score $readini($char($1), stuff, GamblesWon)
+    inc %score $readini($char($1), stuff, TotalBattles)
+    inc %score $readini($char($1), stuff, DungeonsCleared)
+    inc %score $readini($char($1), stuff, WeaponsReforged)
+    inc %score $readini($char($1), stuff, TimesMechActivated)
+    inc %score $readini($char($1), stuff, GobbieBoxesOpened)
+    inc %score $readini($char($1), stuff, LostSoulsKilled)
+    inc %score $readini($char($1), stuff, EnhancementPointsSpent)
 
-    var %doubledollars $readini($char($1), stuff, doubledollars)
-    if (%doubledollars > 0) { inc %score $round($calc(%doubledollars * .03),0) }
+    inc %score $readini($char($1), stuff, TechHits)
+    inc %score $readini($char($1), stuff, MeleeHits)
 
     var %totalbetamount $readini($char($1), stuff, totalBetAmount)
     if (%totalbetamount > 100) { inc %score $round($calc(%totalbetamount * .03),0) }
 
-    inc %score $readini($char($1), Styles, Trickster)
-    inc %score $readini($char($1), Styles, Guardian)
-    inc %score $readini($char($1), Styles, WeaponMaster)
-    if ($readini($char($1), styles, Spellmaster) != $null) { inc %score $readini($char($1), Styles, Spellmaster) }
-    if ($readini($char($1), styles, QuickSilver) != $null) { inc %score $readini($char($1), Styles, QuickSilver) }
-    if ($readini($char($1), styles, CounterStance) != $null) { inc %score $readini($char($1), Styles, CounterStance) }
-    if ($readini($char($1), styles, Doppelganger) != $null) { inc %score $readini($char($1), Styles, Doppelganger) }
-    if ($readini($char($1), styles, HitenMitsurugi-ryu) != $null) { inc %score $readini($char($1), Styles, HitenMitsurugi-ryu) }
+    var %style.score $readini($char($1), Styles, Trickster)
+    inc %style.score $readini($char($1), Styles, Guardian)
+    inc %style.score $readini($char($1), Styles, WeaponMaster)
+    if ($readini($char($1), styles, Spellmaster) != $null) { inc %style.score $readini($char($1), Styles, Spellmaster) }
+    if ($readini($char($1), styles, QuickSilver) != $null) { inc %style.score $readini($char($1), Styles, QuickSilver) }
+    if ($readini($char($1), styles, CounterStance) != $null) { inc %style.score $readini($char($1), Styles, CounterStance) }
+    if ($readini($char($1), styles, Doppelganger) != $null) { inc %style.score $readini($char($1), Styles, Doppelganger) }
+    if ($readini($char($1), styles, HitenMitsurugi-ryu) != $null) { inc %style.score $readini($char($1), Styles, HitenMitsurugi-ryu) }
+    if ($readini($char($1), styles, Wrestlemania) != $null) { inc %style.score $readini($char($1), Styles, Wrestlemania) }
+    if ($readini($char($1), styles, Beastmaster) != $null) { inc %style.score $readini($char($1), Styles, Beastmaster) }
+
+    inc %score $calc(%style.score * 10)
 
     dec %score $readini($char($1), stuff, TotalDeaths)
     dec %score $readini($char($1), stuff, RevivedTimes)
