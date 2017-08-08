@@ -62,6 +62,7 @@ Guardian=InfernalNail.InfernalNail1.InfernalNail2.InfernalNail3.InfernalNail4.In
 JustReleaseDefense=100
 ai_type=$portal.ifritprime.aitype
 MinTormentLevel=10
+SkipDoubleTurns=true
 
 [Status]
 Poison=no

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/29/17
+;;;; Last updated: 08/08/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -422,6 +422,8 @@ check_for_double_turn {  $set_chr_name($1)
 
   ; Monsters that are in cocoons can't get another turn
   if ($statuseffect.check($1, cocoon) = yes) { $next | halt }
+
+  if ($readini($char($1), info, SkipDoubleTurns) = true) { $next | halt }
 
   ; Check for a double turn chance for turn based
   if ($return.systemsetting(TurnType) != action) {

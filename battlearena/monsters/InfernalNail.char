@@ -58,6 +58,7 @@ IgnoreQuicksilver=true
 JustReleaseDefense=100
 ai_type=techonly
 MaxTormentLevel=0
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
