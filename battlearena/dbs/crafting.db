@@ -2751,6 +2751,7 @@ AnkusaGloves=1
 [DensetsuNoYoroi]
 Gem=Diamond
 Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.TotemicJackcoat.Spaekona'sCoat.KogaNingi.WakidoDomaru.ReverenceSurcoat
+SuccessRate=100
 Amount=1
 LifeShard=10000
 ReusablePart=10000
