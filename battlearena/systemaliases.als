@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 08/07/17
+;;;; Last updated: 08/12/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4563,6 +4563,17 @@ dragonhunt.dragonage {
   return %dragon.age
 }
 
+dragonhunt.battlelevel {
+  var %dragon.battlelevel $readini($dbfile(dragonhunt.db), $1, BattleLevel)
+  if (%dragon.battlelevel != $null) { return %dragon.battlelevel }
+
+  var %dragon.createdtime $readini($dbfile(dragonhunt.db), $1, created)
+
+  var %dragon.age $round($calc(((($ctime - %dragon.createdtime)/60)/60)/12),0)
+  inc %dragon.age $readini($dbfile(dragonhunt.db), $1, Age)
+  return %dragon.age
+}
+
 dragonhunt.dragonage.combined {
   var %total.dragon.age 0
 
@@ -4640,6 +4651,9 @@ dragonhunt.createdragon {
 
   ; Write the age (i.e. level)
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
+
+  ; Write the battle level
+  writeini $dbfile(dragonhunt.db) %dragon.name.file BattleLevel %dragon.age
 
   ; Pick a random element
   var %elements fire.ice.wind.shadow.earth.light.lightning.water
