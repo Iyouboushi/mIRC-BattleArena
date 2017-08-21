@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 08/07/17
+;;;; Last updated: 08/20/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1619,7 +1619,9 @@ augments.list {
         if ((%number.of.augments > 10) && (%number.of.augments <= 20)) { %augment.list2 = $addtok(%augment.list2, %weapon_to_add, 46) }
         if ((%number.of.augments > 20) && (%number.of.augments <= 30)) { %augment.list3 = $addtok(%augment.list3, %weapon_to_add, 46) }
         if ((%number.of.augments > 30) && (%number.of.augments <= 40)) { %augment.list4 = $addtok(%augment.list4, %weapon_to_add, 46) }
-        if (%number.of.augments > 40) { %augment.list5 = $addtok(%augment.list5, %weapon_to_add, 46) }
+        if ((%number.of.augments > 40) && (%number.of.augments <= 50)) {  %augment.list5 = $addtok(%augment.list5, %weapon_to_add, 46) }
+        if (%number.of.augments > 50) {   %augment.list6 = $addtok(%augment.list6, %weapon_to_add, 46) }
+
       }
       inc %value 1 
     }
@@ -1642,6 +1644,7 @@ augments.list {
     %augment.list3 = $replace(%augment.list3, $chr(046), %replacechar)
     %augment.list4 = $replace(%augment.list4, $chr(046), %replacechar)
     %augment.list5 = $replace(%augment.list5, $chr(046), %replacechar)
+    %augment.list6 = $replace(%augment.list6, $chr(046), %replacechar)
   }
   $set_chr_name($1) 
 
@@ -1651,6 +1654,7 @@ augments.list {
     if (%augment.list3 != $null) { $display.message(3 $+ %augment.list3, private) }
     if (%augment.list4 != $null) { $display.message(3 $+ %augment.list4, private) }
     if (%augment.list5 != $null) { $display.message(3 $+ %augment.list5, private) }
+    if (%augment.list6 != $null) { $display.message(3 $+ %augment.list6, private) }
   }
 
   if ($2 = private) {  
@@ -1659,6 +1663,7 @@ augments.list {
     if (%augment.list3 != $null) { $display.private.message(3 $+ %augment.list3) }
     if (%augment.list4 != $null) { $display.private.message(3 $+ %augment.list4) }
     if (%augment.list5 != $null) { $display.private.message(3 $+ %augment.list5) } 
+    if (%augment.list6 != $null) { $display.message(3 $+ %augment.list6, private) }
   }
   unset %augment.list*
   unset %weapon.list | unset %base.weapon.list  | unset %weapons
@@ -1685,7 +1690,9 @@ augments.strength {
       if ((%number.of.augments > 10) && (%number.of.augments <= 20)) { %augment.list.2 = $addtok(%augment.list.2, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
       if ((%number.of.augments > 20) && (%number.of.augments <= 30)) { %augment.list.3 = $addtok(%augment.list.3, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
       if ((%number.of.augments > 30) && (%number.of.augments <= 40)) { %augment.list.4 = $addtok(%augment.list.4, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
-      if (%number.of.augments > 40) { %augment.list.5 = $addtok(%augment.list.5, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if ((%number.of.augments > 40) && (%number.of.augments <= 50)) { %augment.list.5 = $addtok(%augment.list.5, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if ((%number.of.augments > 60) && (%number.of.augments <= 70)) { %augment.list.6 = $addtok(%augment.list.6, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if (%number.of.augments > 70) { %augment.list.7 = $addtok(%augment.list.7, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
 
     }
 
@@ -1709,18 +1716,31 @@ augments.strength {
   if ($chr(046) isin %augment.list.5 ) { set %replacechar $chr(044) $chr(032)
     %augment.list.5 = $replace(%augment.list.5, $chr(046), %replacechar)
   }
+  if ($chr(046) isin %augment.list.6 ) { set %replacechar $chr(044) $chr(032)
+    %augment.list.6 = $replace(%augment.list.6, $chr(046), %replacechar)
+  }
+  if ($chr(046) isin %augment.list.7 ) { set %replacechar $chr(044) $chr(032)
+    %augment.list.7 = $replace(%augment.list.7, $chr(046), %replacechar)
+  }
+  if ($chr(046) isin %augment.list.8 ) { set %replacechar $chr(044) $chr(032)
+    %augment.list.8 = $replace(%augment.list.8, $chr(046), %replacechar)
+  }
 
   if (%augment.list != $null) { $set_chr_name($1) | $display.message($readini(translation.dat, system, augmentList), private)
     if (%augment.list.2 != $null) { $display.message(3 $+ %augment.list.2, private) }
     if (%augment.list.3 != $null) { $display.message(3 $+ %augment.list.3, private) }
     if (%augment.list.4 != $null) { $display.message(3 $+ %augment.list.4, private) }
     if (%augment.list.5 != $null) { $display.message(3 $+ %augment.list.5, private) }
+    if (%augment.list.6 != $null) { $display.message(3 $+ %augment.list.6, private) }
+    if (%augment.list.7 != $null) { $display.message(3 $+ %augment.list.7, private) }
+    if (%augment.list.8 != $null) { $display.message(3 $+ %augment.list.8, private) }
   }
   if (%augment.list = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, system, Noaugments), private) }
   unset %augment.list*
   unset %weapon.list | unset %base.weapon.list  | unset %weapons
   unset %weapon_augment | unset %mech.weapon.list | unset %mech.weaponlist2 | unset %replacechar
   unset %weaponlist.counter | unset %mech.weapon.list2
+  unset %number.of.augments 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
