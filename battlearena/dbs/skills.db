@@ -149,7 +149,7 @@ Info=This skill will decrease the odds that a curse night will happen. This skil
 Max=5
 
 [DualWield]
-Cost=100000
+Cost=85000
 Type=passive
 Info=This skill will allow the user to hold two one-handed weapons and use techniques from both without having to switch weapons. For melee attacks, the # of hits for the attack will be both weapon's # of hits combined. Use !equip left or !equip right to equip to the specified hand. Note, a weapon must be in the right hand before you can equip the left hand.
 Max=1
