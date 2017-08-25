@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 08/12/17
+;;;; Last updated: 08/25/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -683,11 +683,7 @@ alias enter {
 
   ; Level sync dragon hunt battles
   if (%battle.type = dragonhunt) {
-    var %battle.level.cap $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, BattleLevel)  
-    if (%battle.level.cap = $null) { var %battle.level.cap $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, Age) }
-
-    var %battle.level.cap $calc(%battle.level.cap + 5)
-
+    var %battle.level.cap $calc($dragonhunt.dragonage(%dragonhunt.file.name) + 5)
     if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
@@ -2880,9 +2876,9 @@ alias battle.reward.killcoins {
 
       ; Adjust the base coins based on battle type
 
-      if ((%base.coins <= 5000) && (%battle.type = defendoutpost)) { set %base.coins 2 }
-      if ((%base.coins <= 5000) && (%battle.type = assault)) { set %base.coins 2 }
-      if ((%base.coins <= 8000) && (%battle.type = dragonhunt)) { set %base.coins 2 }
+      if ((%base.coins <= 5000) && (%battle.type = defendoutpost)) { set %base.coins 5 }
+      if ((%base.coins <= 5000) && (%battle.type = assault)) { set %base.coins 5 }
+      if ((%base.coins <= 8000) && (%battle.type = dragonhunt)) { set %base.coins 3 }
       if ((%base.coins <= 10000) && (%battle.type = torment)) { set %base.coins 1 }
 
 
@@ -2913,17 +2909,17 @@ alias battle.reward.killcoins {
       if ((%style.points > $calc(80 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(100 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
       if ((%style.points > $calc(100 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(110 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
       if ((%style.points > $calc(110 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(120 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
-      if ((%style.points > $calc(120 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(140 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
-      if ((%style.points > $calc(140 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(180 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
-      if ((%style.points > $calc(180 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(250 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
-      if ((%style.points > $calc(250 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(350 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
-      if ((%style.points > $calc(350 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(450 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
-      if ((%style.points > $calc(450 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(550 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
-      if ((%style.points > $calc(550 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(750 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
-      if ((%style.points > $calc(750 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(1000 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 4 }
-      if ((%style.points > $calc(1000 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(3500 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 4  }
-      if ((%style.points > $calc(3500 + %boss.modifier + $return_winningstreak)) && (%style.points < $calc(6000 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 5 }
-      if (%style.points >= $calc(6000 + %boss.modifier + $return_winningstreak)) { inc %total.coins.reward 5 }
+      if ((%style.points > $calc(120 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(140 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
+      if ((%style.points > $calc(140 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(180 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
+      if ((%style.points > $calc(180 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(250 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
+      if ((%style.points > $calc(250 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(350 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
+      if ((%style.points > $calc(350 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(450 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 4 }
+      if ((%style.points > $calc(450 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(550 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 4 }
+      if ((%style.points > $calc(550 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(750 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 4 }
+      if ((%style.points > $calc(750 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(1000 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 5 }
+      if ((%style.points > $calc(1000 + %boss.modifier + $return_winningstreak)) && (%style.points <= $calc(3500 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 5  }
+      if ((%style.points > $calc(3500 + %boss.modifier + $return_winningstreak)) && (%style.points < $calc(6000 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 6 }
+      if (%style.points >= $calc(6000 + %boss.modifier + $return_winningstreak)) { inc %total.coins.reward 7 }
 
       ;  Check for the an accessory that increases kill coins
       if ($accessory.check(%who.battle, IncreaseKillCoins) = true) {
