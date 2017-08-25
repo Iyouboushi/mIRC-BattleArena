@@ -683,7 +683,9 @@ alias enter {
 
   ; Level sync dragon hunt battles
   if (%battle.type = dragonhunt) {
-    var %battle.level.cap $calc($dragonhunt.dragonage(%dragonhunt.file.name) + 5)
+    var %battle.level.cap $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, BattleLevel)  
+    if (%battle.level.cap = $null) { var %battle.level.cap $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, Age) }
+    var %battle.level.cap $calc(%battle.level.cap + 5)
     if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
