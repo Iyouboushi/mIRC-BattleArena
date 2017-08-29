@@ -1611,6 +1611,7 @@ Battle Arena Bot VERSIONS
   help determine which player the monsters target.
 - Added a new battle type: Cosmic.  Use CosmicOrbs to enter the Cosmic Battles. This battle type rewards winners with OdinMarks
 - Added the mythic weapon that players can forge and upgrade using OdinMarks.  Use !mythic in-game to see all the commands.
+- Added Allied Forces shop to the game. Use !shop list AlliedForces to see the services provided.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the amount of style points needed to achieve different ranks. It is harder on higher battle levels now.
@@ -1619,11 +1620,10 @@ Battle Arena Bot VERSIONS
 - Changed AI vs AI battles so that the battle will end in a draw after 50 turns.
 - Changed active skills so that most of them have to be equipped in order to use in battle. There can only be 5 active skills
   equipped at a time now. Use !skills equip skillname to equip or !skills remove skillname to remove.
-- Changed dragon hunt dragons so that they can have a 'battle level' that the players will always be synced to even if the dragon
-  has leveled up/aged.  I.e. it is now possible to enter a battle where the dragon seriously outlevels the players if players don't
-  kill dragons fast enough or die too often to them.
+- Changed the formula so only players who use SpellMaster will receive the bonus to magic (current element amongst others)
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
+- Fixed a bug where IgnoreGuardian was not working
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]

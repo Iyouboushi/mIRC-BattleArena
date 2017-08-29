@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 08/01/17
+;;;; Last updated: 08/29/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -62,7 +62,7 @@ alias shop.exchange {
 alias shop.categories.list {
   $display.private.message(2Valid shop categories:)
   $display.private.message(2Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) Portal $+ $chr(44) Misc) 
-  $display.private.message(2Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards)
+  $display.private.message(2Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards $+ $chr(44) AlliedForces)
   if ($left($adate, 2) = 10) {  $display.private.message(2Halloween, private) }
 }
 
@@ -129,8 +129,7 @@ alias shop.start {
     if (($3 = shields) || ($3 = shield)) { $shop.shields($nick, buy, $4, %amount.to.purchase) }
     if (($3 = potioneffect) || ($3 = potioneffects)) { $shop.potioneffects($nick, buy, $4) | halt }
     if (($3 = tradingcard) || ($3 = tradingcards))  { $shop.tradingcards($nick, buy, $4, %amount.to.purchase) | halt }
-
-    if ($3 = alliedforces) { }
+    if ($3 = alliedforces) { $shop.alliedforces($nick, buy, $4, $5) | halt }
 
     if ($3 = orbs) { 
       var %amount.to.purchase $abs($4)
@@ -163,7 +162,7 @@ alias shop.start {
 
   if ($2 = list) { 
 
-    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards
+    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards.alliedforces
     if ($istok(%valid.categories, $3, 46) = $false) { 
       $display.private.message(4Error: Use 2!shop list category4 or 2!shop buy category itemname)
       $shop.categories.list 
@@ -191,7 +190,7 @@ alias shop.start {
         if (($4 = killer) || ($4 = killertraits)) { $shop.skills.killertraits($nick) }
       }
 
-      if ($3 = alliedforces) { }
+      if ($3 = alliedforces) { $shop.alliedforces($nick, list) }
       if (($3 = weapons) || ($3 = weapon)) { $shop.weapons($nick, list) }
       if (($3 = shields) || ($3 = shield)) { $shop.shields($nick, list) }
       if ($3 = orbs) { $shop.orbs($nick, list) }
@@ -2743,6 +2742,37 @@ alias shop.trusts {
     unset %shop.list | unset %currency | unset %player.currency | unset %total.price
     halt
   }
+}
+
+alias shop.alliedforces {
+  ; !shop alliedforces list
+  ; !shop alliedforces buy dragonkiller/bombing
+
+  if ($2 = list) { 
+    $display.private.message(2This shop is used to purchase special services from the Allied Forces that will help you defeat the Dragons hiding in their lairs! You can only purchase one at a time.)
+    $display.private.message(12DragonKiller 2 - 5000 Allied Notes - This will spawn a Dragon Killer NPC to help fight the dragon)
+
+  }
+
+  if ($2 = buy) { 
+    var %player.currency $readini($char($1), stuff, alliednotes)
+
+    if ($3 = DragonKiller) { var %shop.cost 5000
+      if ($readini(battlestats.dat, AlliedForces, DragonKiller) = true) { $display.private.message(4This service has already been purchased and will be active during the next successful dragon hunt) | halt }
+
+      if (%player.currency = $null) { set %player.currency 0 }
+      if (%player.currency < %shop.cost) {  $display.private.message(4You do not have enough Allied Notes to purchase this service) | unset %currency | unset %player.currency | unset %total.price |  halt }
+
+      dec %player.currency %shop.cost
+      writeini $char($1) stuff AlliedNotes %player.currency
+
+      writeini battlestats.dat AlliedForces DragonKiller true
+      $display.private.message(2The Allied Forces begin work on the new 12Dragon Killer2 to be ready for your next dragon hunt battle!)
+    }
+
+    if ($3 = bombing) { $display.private.message(4This service is coming in a future update) | halt }
+  }
+
 }
 
 alias shop.halloween {

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 08/08/17
+;;;; Last updated: 08/29/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -989,6 +989,9 @@ deal_damage {
     var %naturalArmorCurrent $readini($char($2), NaturalArmor, Current)
 
     if ((%naturalArmorCurrent != $null) && (%naturalArmorCurrent > 0)) {
+
+      if ($readini($char($1), Info, DragonKiller) = true) { inc %attack.damage $round($calc($readini($char($2), NaturalArmor, Max) * .35),0) }
+
       set %naturalArmorName $readini($char($2), NaturalArmor, Name) 
       set %difference $calc(%attack.damage - %naturalArmorCurrent)
       dec %naturalArmorCurrent %attack.damage | writeini $char($2) NaturalArmor Current %naturalArmorCurrent
@@ -2267,7 +2270,7 @@ goldorb_check {
 ; and reduces damage
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 guardian_style_check {
-  if ($augment.check($1, IgnoreGuardian) = true) { return }
+  if ($augment.check($2, IgnoreGuardian) = true) { return }
 
   set %current.playerstyle $readini($char($1), styles, equipped)
   ; Is the target using the Guardian style?  If so, we need to decrease the damage done.
@@ -3888,8 +3891,8 @@ offensive.style.check {
   }
 
   if ($3 = magic) {
-    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .125)
-      if (%magic.bonus.modifier >= 1) { set %magic.bonus.modifier .92 }
+    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .225)
+      if (%magic.bonus.modifier >= 1) { set %magic.bonus.modifier .95 }
     }
   }
 }
@@ -4372,8 +4375,8 @@ wonderguard.check {
   if (%battle.type = cosmic) { 
     ;  only torment weapons will work
 
-    if ($readini($dbfile(weapons.db), $2, TormentWeapon) = true) { echo -a torment weapon |  return }
-    if ($readini($dbfile(weapons.db), $4, TormentWeapon) = true) { echo -a torment weapon | return }
+    if ($readini($dbfile(weapons.db), $2, TormentWeapon) = true) { return }
+    if ($readini($dbfile(weapons.db), $4, TormentWeapon) = true) { return }
 
     set %attack.damage 0 
     set %damage.display.color 6 

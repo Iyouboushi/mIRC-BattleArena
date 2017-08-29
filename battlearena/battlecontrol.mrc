@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 08/25/17
+;;;; Last updated: 08/29/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -865,6 +865,7 @@ alias battlebegin {
 
   if (%battle.type = dragonhunt) { 
     $dragonhunt.createfile
+    if ($readini(battlestats.dat, AlliedForces, DragonKiller) = true) { $dragonhunt.createdragonkiller }
   }
 
   ; Check for a random back attack.

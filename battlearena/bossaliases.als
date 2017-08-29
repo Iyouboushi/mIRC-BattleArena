@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 05/13/17
+;;;; Last updated: 08/29/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1858,8 +1858,8 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) modifiers spear 70
   writeini $char(%dragonhunt.file.name) modifiers scythe 70
   writeini $char(%dragonhunt.file.name) modifiers GreatSword 70
-  writeini $char(%dragonhunt.file.name) modifiers bow 20
-  writeini $char(%dragonhunt.file.name) modifiers glyph 60
+  writeini $char(%dragonhunt.file.name) modifiers bow 80
+  writeini $char(%dragonhunt.file.name) modifiers glyph 75
 
   ; Add flying skill for older dragons
   if (%dragon.level >= 150) { writeini $char(%dragonhunt.file.name) skills flying 1 }
@@ -1880,7 +1880,7 @@ dragonhunt.createfile {
   $levelsync(%dragonhunt.file.name, %dragon.level)
 
   ; Add en-spell for dragons that are 500+
-  if (%dragon.level >= 500) {  echo -a writing en-spell %dragon.element | writeini $char(%dragonhunt.file.name) status en-spell %dragon.element }
+  if (%dragon.level >= 500) {  writeini $char(%dragonhunt.file.name) status en-spell %dragon.element }
 
   set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%dragonhunt.file.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %dragonhunt.file.name
   $set_chr_name(%dragonhunt.file.name)
@@ -1949,4 +1949,109 @@ predator_fight {
   if (%battle.type != ai) {
     $display.message($readini(translation.dat, events, PredatorFight),battle) 
   }
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This function will generate
+; the dragon for the dragon
+; hunt
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dragonhunt.createdragonkiller {
+
+  .copy -o $char(new_chr) $char(DragonKiller)
+  var %dragon.level $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, BattleLevel) 
+  inc %dragon.level 25
+
+  writeini $char(DragonKiller) info flag npc
+  writeini $char(DragonKiller) Basestats name Dragon Killer
+  writeini $char(DragonKiller) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
+  writeini $char(DragonKiller) info gender its
+  writeini $char(DragonKiller) info gender2 its
+  writeini $char(DragonKiller) info bosslevel %dragon.level
+  writeini $char(DragonKiller) descriptions char is a large and powerful machine designed by the Allied Forces to help slay dragons.  
+  writeini $char(DragonKiller) monster type machine
+  writeini $char(DragonKiller) info CanTaunt false
+  writeini $char(DragonKiller) info IgnoreElementalMessage true
+  writeini $char(DragonKiller) Info DragonKiller true
+
+  if ((%dragon.level >= 500) && (%dragon.level <= 1000)) { writeini $char(DragonKiller) monster elite true }
+  if (%dragon.level > 1000) { writeini $char(DragonKiller) monster SuperElite true }
+
+  var %base.hp.tp $round($calc(5 * %dragon.level),0)
+
+  writeini $char(DragonKiller) basestats hp %base.hp.tp
+  writeini $char(DragonKiller) basestats tp %base.hp.tp
+
+  writeini $char(DragonKiller) battle str $rand(300,500)
+  writeini $char(DragonKiller) battle def $rand(10,20)
+  writeini $char(DragonKiller) battle int $rand(1,3)
+  writeini $char(DragonKiller) battle spd 1
+
+  writeini $char(DragonKiller) weapons equipped CompoundBow+1
+  writeini $char(DragonKiller) weapons CompoundBow+1 $calc(%dragon.level + 520) 
+  remini $char(DragonKiller) weapons Fists
+
+  ; These are the skills that the dragon killer machine has
+  writeini $char(DragonKiller) skills resist-charm 100
+  writeini $char(DragonKiller) skills resist-stun 100
+  writeini $char(DragonKiller) skills Resist-blind 100
+  writeini $char(DragonKiller) skills Resist-poison 100
+  writeini $char(DragonKiller) skills Resist-paralysis 100
+  writeini $char(DragonKiller) skills Resist-slow 100
+  writeini $char(DragonKiller) skills Resist-Disarm 100
+  writeini $char(DragonKiller) skills Resist-Weaponlock 100
+  writeini $char(DragonKiller) skills Resist-Curse 100
+  writeini $char(DragonKiller) skills Resist-Intimidate 100
+  writeini $char(DragonKiller) skills TrueStrike.on on
+  writeini $char(DragonKiller) skills Archery 500
+  writeini $char(DragonKiller) skills Overwhelm 25
+
+  writeini $char(DragonKiller) modifiers light 100
+  writeini $char(DragonKiller) modifiers dark 100
+  writeini $char(DragonKiller) modifiers fire 100
+  writeini $char(DragonKiller) modifiers ice 100
+  writeini $char(DragonKiller) modifiers water 100
+  writeini $char(DragonKiller) modifiers lightning 100
+  writeini $char(DragonKiller) modifiers wind 100
+  writeini $char(DragonKiller) modifiers earth 100
+
+  ; Add guardian style
+  writeini $char(DragonKiller) styles equipped Guardian
+  writeini $char(DragonKiller) styles Guardian $rand(1,3)
+  writeini $char(DragonKiller) styles GuardianXP 1
+
+  ; Add modifiers
+  writeini $char(DragonKiller) modifiers HandToHand 100
+  writeini $char(DragonKiller) modifiers Whip 100
+  writeini $char(DragonKiller) modifiers sword 100
+  writeini $char(DragonKiller) modifiers gun 100
+  writeini $char(DragonKiller) modifiers rifle 100
+  writeini $char(DragonKiller) modifiers katana 100
+  writeini $char(DragonKiller) modifiers wand 100
+  writeini $char(DragonKiller) modifiers spear 100
+  writeini $char(DragonKiller) modifiers scythe 100
+  writeini $char(DragonKiller) modifiers GreatSword 120
+  writeini $char(DragonKiller) modifiers bow 100
+  writeini $char(DragonKiller) modifiers glyph 100
+
+  ; Add augments
+  writeini $char(DragonKiller) augments CompoundBow+1 IgnoreGuardian.MeleeBonus.HurtDragon
+
+  $boost_monster_hp(DragonKiller, dragonhunt, %dragon.level)
+  $levelsync(DragonKiller, %dragon.level)
+  writeini $char(DragonKiller) basestats str $readini($char(DragonKiller), battle, str)
+  writeini $char(DragonKiller) basestats def $readini($char(DragonKiller), battle, def)
+  writeini $char(DragonKiller) basestats int $readini($char(DragonKiller), battle, int)
+  writeini $char(DragonKiller) basestats spd $readini($char(DragonKiller), battle, spd)
+  $fulls(DragonKiller, elderdragon) 
+  $levelsync(DragonKiller, %dragon.level)
+
+  set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,DragonKiller,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) DragonKiller
+  $set_chr_name(DragonKiller)
+  $display.message($readini(translation.dat, events,DragonKiller),battle) 
+  var %battlenpcs $readini($txtfile(battle2.txt), BattleInfo, NPCs) | inc %battlenpcs 1 | writeini $txtfile(battle2.txt) BattleInfo NPCs %battlenpcs
+
+
+  writeini battlestats.dat AlliedForces DragonKiller false
 }

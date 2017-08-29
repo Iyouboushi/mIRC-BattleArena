@@ -383,6 +383,7 @@ FrostLegionFight=$chr(3) $+ 14 $+ From the depths of the south pole The Frost L
 GremlinsFight=$chr(3) $+ 14 $+ Someone fed their pet Mogwai, Stripe, after midnight and now gremlins have taken over a nearby school! The heros are comissioned to go eliminate these pests!
 JurassicParkFight=$chr(3) $+ 14 $+ Warning! Warning! A dangerous dinosaur has escaped its pin in Jurassic Park! The park is requesting immediate assistance from the heroes to stop the terrible beast!
 SupplyRun=$chr(3) $+ 14 $+ The Allied Forces are sending a wagon full of supplies to an outpost. They need all available heroes to help escort and protect the wagon from monsters! Type !enter now to join the escort party
+DragonKiller=$chr(3) $+ 14 $+ The Allied Forces have sent their latest 12Dragon Killer14 machine to help the party dispatch the dragon.
 
 =======================
 Error Messages
