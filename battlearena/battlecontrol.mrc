@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 08/29/17
+;;;; Last updated: 09/06/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -678,7 +678,7 @@ alias enter {
 
   ; Level sync the supply wagon battles
   if (%supplyrun = on) { var %battle.level.cap $return_winningstreak
-    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
+    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, $calc(%battle.level.cap + 5)) | $display.message(4 $+ %real.name has been synced to level $calc(%battle.level.cap +5) for this battle, battle) }
   }
 
   ; Level sync dragon hunt battles

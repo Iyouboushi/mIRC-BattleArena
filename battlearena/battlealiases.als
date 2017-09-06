@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 08/29/17
+;;;; Last updated: 09/06/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2096,6 +2096,8 @@ random.playersgofirst {
   if (%surpriseattack = on) { return }
   if (%battle.type = dungeon) { return }
   set %playersfirst.chance $rand(1,100)
+
+  if (%supplyrun = on) { var %playersfirst.chance 1 }
 
   if (%playersfirst.chance <= 8) { set %playersgofirst on }
   if (%playersgofirst = on) { 
