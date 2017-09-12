@@ -1567,16 +1567,12 @@ alias calculate_damage_techs {
 
   if ($readini($char($1), info, flag) = monster) { $formula.techdmg.monster($1, $2, $3, $4) }
   else { 
-    if (%battle.type = dungeon) { $formula.techdmg.player.formula_3.0($1, $2, $3, $4) }
+    if (%battle.type = dungeon) { $formula.techdmg.player.formula($1, $2, $3, $4) }
     if (%battle.type = torment) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
     if (%battle.type = cosmic) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
 
     if (((%battle.type != dungeon) && (%battle.type != cosmic) && (%battle.type != torment))) { 
-      if (($readini(system.dat, system, BattleDamageFormula) = 1) || ($readini(system.dat, system, BattleDamageFormula) = $null)) { $formula.techdmg.player.formula_3.0($1, $2, $3, $4) }
-      if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.techdmg.player.formula_2.5($1, $2, $3, $4)  }
-      if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.techdmg.player.formula_2.0($1, $2, $3, $4)  }
-      if ($readini(system.dat, system, BattleDamageFormula) = 4) { $formula.techdmg.player.formula_1.0($1, $2, $3, $4)  }
-      if ($readini(system.dat, system, BattleDamageFormula) = 5) { $formula.techdmg.player.formula_3.1($1, $2, $3, $4)  }
+      $formula.techdmg.player.formula($1, $2, $3, $4) 
     }
   }
 
@@ -1639,7 +1635,7 @@ alias spell.weather.check {
 }
 
 alias spell.weather.increase {
-  var %weather.increase = $readini $dbfile(battlefields.db) weather boost
+  var %weather.increase = $readini($dbfile(battlefields.db), weather, boost)
   if ((%weather.increase = $null) || (%weather.increase < 0)) { %increase = .25 }
   var %new.attack.damage = $round($calc(%attack.damage * %weather.increase),0)
   inc %attack.damage %new.attack.damage

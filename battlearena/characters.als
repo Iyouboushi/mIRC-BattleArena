@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 08/20/17
+;;;; Last updated: 09/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -172,6 +172,10 @@ armor.stat {
   ; $1 = the person we're checking
   ; $2 = the stat we're checking
 
+  ; when a player is level synced the armor bonus is added into their stats
+  ; thus we do not need to count it again.
+  if ($readini($char($1), info, levelsync) = yes) { return 0 }
+
   var %armor.stat 0
 
   ; Check for each armor part
@@ -180,13 +184,6 @@ armor.stat {
   if (($return.equipped($1, legs) != nothing) && ($return.equipped($1, legs) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, legs), $2) }
   if (($return.equipped($1, feet) != nothing) && ($return.equipped($1, feet) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, feet), $2) }
   if (($return.equipped($1, hands) != nothing) && ($return.equipped($1, hands) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, hands), $2) }
-
-  if ($readini($char($1), info, levelsync) = yes) {
-    var %armor.stat.sync $round($calc(($log(%armor.stat) /5)* $get.level($1)),0)
-    if (%armor.stat.sync > %armor.stat) { return %armor.stat }
-    else { return %armor.stat.sync }
-  }
-
 
   return %armor.stat
 }
@@ -215,6 +212,25 @@ get.level {
   var %def $readini($char($1), battle, def)
   var %int $readini($char($1), battle, int)
   var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
+
+  var %level %str
+  inc %level %def
+  inc %level %int
+  inc %level %spd
+
+  var %level $round($calc(%level / 18), 1)
+
+  return $round(%level,0)
+}
+get.full.level {
+  var %str $readini($char($1),battle, str)
+  var %def $readini($char($1), battle, def)
+  var %int $readini($char($1), battle, int)
+  var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
+  inc %str $armor.stat($1, str)
+  inc %def $armor.stat($1, def)
+  inc %int $armor.stat($1, int)
+  inc %spd $armor.stat($1, spd)
 
   var %level %str
   inc %level %def
@@ -271,7 +287,7 @@ ilevel {
   inc %level %int
   inc %level %spd
 
-  var %level $round($calc(%level / 20), 0)
+  var %level $round($calc(%level / 18), 0)
 
   return %level
 
@@ -1795,6 +1811,7 @@ character.dragonhunt {
   if (%dragonhunter.skill != $null) { inc %dragonhunt.chance %dragonhunter.skill }
 
   var %dragonhunt.randomnum $rand(1,100)
+  var %dragonhunt.randomnum 1
   if (%dragonhunt.randomnum > %dragonhunt.chance) { 
     $display.message($readini(translation.dat, errors, DragonHunt.NoLairFound), private) 
     halt

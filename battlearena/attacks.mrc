@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 06/11/17
+;;;; Last updated: 09/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -225,17 +225,11 @@ alias calculate_damage_weapon {
   if ($readini($char($1), info, flag) = monster) { $formula.meleedmg.monster($1, $2, $3, $4) }
   else { 
 
-    if (%battle.type = dungeon) { $formula.meleedmg.player.formula_3.0($1, $2, $3, $4) }
+    if (%battle.type = dungeon) { $formula.meleedmg.player.formula($1, $2, $3, $4) }
     if (%battle.type = torment) { $formula.meleedmg.player.formula_2.5($1, $2, $3, $4)  }
     if (%battle.type = cosmic) { $formula.meleedmg.player.formula_2.5($1, $2, $3, $4)  }
 
-    if (((%battle.type != dungeon) && (%battle.type != cosmic) && (%battle.type != torment))) { 
-      if (($readini(system.dat, system, BattleDamageFormula) = 1) || ($readini(system.dat, system, BattleDamageFormula) = $null)) { $formula.meleedmg.player.formula_3.0($1, $2, $3, $4) }
-      if ($readini(system.dat, system, BattleDamageFormula) = 2) { $formula.meleedmg.player.formula_2.5($1, $2, $3, $4) }
-      if ($readini(system.dat, system, BattleDamageFormula) = 3) { $formula.meleedmg.player.formula_2.0($1, $2, $3, $4) }
-      if ($readini(system.dat, system, BattleDamageFormula) = 4) { $formula.meleedmg.player.formula_1.0($1, $2, $3, $4) }
-      if ($readini(system.dat, system, BattleDamageFormula) = 5) { $formula.meleedmg.player.formula_3.1($1, $2, $3, $4) }
-    }
+    if (((%battle.type != dungeon) && (%battle.type != cosmic) && (%battle.type != torment))) { $formula.meleedmg.player.formula($1, $2, $3, $4)  }
   }
 }
 
@@ -414,6 +408,22 @@ alias mastery_check {
 
   set %mastery.bonus $readini($char($1), skills, %mastery.type) 
   if (%mastery.bonus = $null) { set %mastery.bonus 0 }
+
+  var %current.playerstyle $return.playerstyle($1)
+  var %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
+
+  if (%current.playerstyle = WeaponMaster) { 
+    if ($3 = melee) {
+      var %amount.to.increase $calc(.05 * %current.playerstyle.level)
+      if (%amount.to.increase >= .70) { var %amount.to.increase .70 }
+      var %wpnmst.increase $round($calc(%amount.to.increase * %attack.damage),0)
+      inc %attack.damage %wpnmst.increase
+      var %playerstyle.bonus $round($calc(%current.playerstyle.level * 1.5),0)
+      inc %mastery.bonus %playerstyle.bonus
+    }
+  }
+
+
   unset %mastery.type
 }
 

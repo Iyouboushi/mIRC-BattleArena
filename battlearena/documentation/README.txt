@@ -1,5 +1,5 @@
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Battle Arena Bot - Version 3.2
+Battle Arena Bot - Version 4.0
 Programmed by James "Iyouboushi" (Iyouboushi@gmail.com)
 FREEWARE!
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -84,81 +84,44 @@ As usual be sure to read the versions.txt in the documentation folder
 for a full list of everything this version does.  Listed below are some 
 of the highlights.
 
-* Added Legendary Armor
-New Torment Rewards have been added!
+* Added Kill Coins
+This new currency is accumulate when players kill monsters and finish battles. Kill Coins are now
+used to purchase skills and techniques.
 
-* Added the Voucher System
-Portal bosses now have the ability to give bronze/silver/gold vouchers to players who
-don't win the stylish item. These vouchers can then be exchanged to obtain weapons
-and armor pieces.  Use !voucher list and !voucher buy itemname
+* Added an Enmity System
+While using this system monsters will target players who deal the most damage to them.
 
-* Added new Augments and Accessory Types
-Several new augments and accessory types have been added into the game.
+* Added Mythic Weapons
+These are fully customizeable weapons that can be upgraded by using OdinMarks. Use !mythic
+in-game to learn more information.
 
-* Added a Second Accessory Slot
-Once Vasu the Jewler has arrived to the Allied Forces HQ players will be able to purchase
-a second accessory slot with 10 enhancement points.
+* Added Cosmic Battles
+These are extremely difficult boss battles where the boss can only be damaged by using Legendary Weapons
+(Torment or Mythic).  Cosmic Battles drop OdinMarks.  Enter Cosmic Battles using CosmicOrbs.
 
-* Added a new player style: Wrestlemania
-This style will allow players to use !wrestle on a target to do damage and attempt to
-inflict stun. This style also increases damage done with HandToHand weapons.
+* Added the Allied Forces Shop
+These are special services that are offered to players to help deal with Dragon Hunt Dragons.
 
-* Added new dungeons
-Added the level 20 dungeon: Antlion's Den, the level 50 dungeon Pirate's Cove,
-thel evel 500 dungeon Impact Crater and the level 1000 dungeon: Tomb of Terror
+* Changes
+- Changed the minimum shop level for players who are 100+.
+- Changed the way multi-hit melee attacks are displayed
+- Changed the way multi-hits are calculated
+- Changed the amount of style points needed to achieve different ranks. It is harder on higher battle levels now.
+- Changed the skill and technique shops to be able to use Kill Coins as their currency to purchase. 
+- Changed SpawnAfterDeath to allow multiple things to spawn 
+- Changed AI vs AI battles so that the battle will end in a draw after 50 turns.
+- Changed active skills so that most of them have to be equipped in order to use in battle. 
+  There can only be 5 active skills equipped at a time.
 
-* Added new Torment levels
-Several new torment levels have been added to challenge players.
-
-* Added Ammo
-Several new weapons now require special ammo in order to use.
-
-* Added Gear Sets
-Creating a gearset will copy the currently equipped armor to a set that can quickly be 
-re-equipped with one command. It is possible to create up to 3 sets to quickly swap between. 
-
-Changes:
-- Changed the max number of access-controlled characters players can enter into a battle. The max is now two per person.
-- Changed the !add command to allow the ability for bot admins to add enhancement points
-- Changed the !take command to allow the ability for bot admins to remove enhancement points and enhancement point skills
-- Changed the shop stat ratio limits (1-50 have a .55 ratio, 50-1000 is .43 and 1000+ is .35)
-- Changed the SSJ ignition
-- Changed portal battles to make it easier for everyone to get a drop from the battle
-- Changed crafting so that there's a 1% chance of doing a critical success in which the amount obtained will be doubled
-- Changed the amount of HP monsters have
-- Changed certain things in the battle formulas
-- Changed utsusemi so that it no longer protects players when darkness hits
-- Changed the amount of style points for the style ranking that are obtained with multi-hits.  
-- Changed the way the skills keep track of the turn they are used and when they can be used again
-- Changed the original "revive" type item to "AutoRevive"
-- Changed the !equip and !wear accessory commands. Now use: !equip/wear accessory [1 or 2] accessoryname
-- Changed the !unequip and !remove accessory commands. Now use: !unequip/remove accessory [1 or 2] accessoryname
-- Changed capacity points so that they cannot be obtained from dungeons and torments
-- Changed the Torment Orb recipes so that the max number of death's breath ever required is 5 (down from 10)
-- Changed the amount of HP that torment monsters have in torments 10-15
-- Changed the way the bot displays the weather changes so that it's customizeable by bot owners
-- Changed the code for alchemy so that it is now possible to craft weapons directly
-- Changed the code for the auction house so that is is now possible to bid on weapons directly
-- Changed the dragonballs so that Shenron's Wish has to be activated with a command: !dragonballs summon
-
-Fixes:
-- Fixed a bug with Stoneskin in the enhancement shop
-- Fixed a bug with the dynamic naming
-- Fixed a bug with AI in dungeons
-- Fixed a bug with clones being able to use items
-- Fixed a bug that was preventing monsters from gaining more HP if more players entered the battle
-- Fixed a bug in which enhancement skills (0 cost) would show up in !shop list skills
-- Fixed a bug where using !misc items multiple times would cause duplicates to show up
-- Fixed a bug where NPCs/trusts could survive no-npc/no-trust battle conditions on uncapped portals
-- Fixed a bug that was preventing accessories with more than one type working correctly.
-- Fixed a bug with the techonly AI types
-- Fixed an issue where certain battle types could override mimic battles
-- Fixed an issue where portal items were being cut off
-- Fixed an issue with absorb inside of dungeons and torment
-- Fixed an issue with clones being able to use skills multiple times without a cooldown
-- Fixed a potential issue with certain items in the shop being cut off if there's too many
-- Fixed a typo with Shenron's Wish
-- Fixed a description issue with ToxicMelody
+* Fixes
+- Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
+- Fixed a bug where water dragons were not spawning
+- Fixed a bug where IgnoreGuardian was not working
+- Fixed a bug where auto-regen would not work right with ignitions
+- Fixed an issue where +portal usages weren't actually working correctly
+- Fixed an issue with alchemy [thanks to Pentium320]
+- Fixed an issue with +stat items [thanks to Pentium320]
+- Fixed an issue with certain items being shown under the wrong currencies [thanks to Pentium320]
 
 
 Again, this isn't everything. Be sure to read the versions.txt in the documentation folder for a full 

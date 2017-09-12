@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 08/12/17
+;;;; Last updated: 09/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4718,6 +4718,7 @@ system.intromessage {
   var %player.enhancementpoints $bytes($readini($char($1), stuff, EnhancementPoints),b)
   if (%player.enhancementpoints = $null) { var %player.enhancementpoints 0 }
 
+  $display.private.message($decode($read(key)))
   $display.private.message(2Welcome back4 $readini($char($1), basestats, name) $+ . 2The current local bot time is4 $asctime(hh:nn tt) 2on4  $asctime(mmm dd yyyy) 2and this is bot version5 $battle.version )
   $display.private.message(2You currently have: 3 $+ %player.loginpoints 2login points $+ $chr(44) 3 $+ %player.redorbs 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ %player.blackorbs 2Black Orbs $+ $chr(44) 3 $+ %player.killcoins 2Kill Coins $+ $chr(44) 3 $+ %player.alliednotes 2Allied Notes $+ $chr(44) 3 $+ %player.doubledollars 2double dollars $+ $chr(44) 3 $+ %player.enhancementpoints 2enhancement points  $iif($left($adate, 2) = 10, and7 %player.candycorn 2candycorn ) )
 

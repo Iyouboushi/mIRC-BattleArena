@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 05/13/17
+;;;; Last updated: 09/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -97,7 +97,6 @@ on 1:START: {
     .auser 100 %bot.owner
 
     $system_defaults_check
-
   }
 
   echo 12*** This bot is best used with mIRC version4 6.3 12 *** 
@@ -106,6 +105,7 @@ on 1:START: {
   if ($version < 6.3) {   echo 4*** Your version is older than the recommended version for this bot. Some things may not work right.  It is recommended you update. 12 *** }
   if ($version > 6.3) {   echo 4*** Your version is newer than the recommended version for this bot. While it should work, it is currently untested and may have quirks or bugs.  It is recommended you downgrade if you run into any problems. 12 *** }
 
+  if ($sha1($read(key)) != dd4b6aa27721dc5079c70f7159160313bb143720) { .remove key |  write key M`S)4:&ES(&=A;64@:7,@<G5N;FEN9R!T:&4@`D("871T;&4@`D$"<F5N82!"M871T;&4@4WES=&5M(&-R96%T960@8GD@`DH"86UE<R`"20)Y;W5B;W5S:&D@M+2T@079A:6QA8FQE(&9O<B!F<F5E(&%T.@,Q,A\@:'1T<',Z+R]G:71H=6(N?8V]M+TEY;W5B;W5S:&DO;4E20RU"871T;&5!<F5N80`` }
 }
 
 
@@ -577,37 +577,6 @@ on 50:TEXT:!time to enter *:*:{
     $display.message($readini(translation.dat, System, ChangeTimeForEnter), global)
   }
   else { $display.message(4You must enter a number for the time,global) | halt }
-}
-
-; Bot Admins can toggle which battle formulas are used.
-on 50:TEXT:!toggle damage formula*:*:{   
-  if (($return.systemsetting(BattleDamageFormula) = 1) || ($return.systemsetting(BattleDamageFormula) = null)) { 
-    writeini system.dat system BattleDamageFormula 2
-    $display.message($readini(translation.dat, system, BattleFormula2), global)
-    halt
-  }
-  if ($readini(system.dat, system, BattleDamageFormula) = 2) { 
-    writeini system.dat system BattleDamageFormula 3
-    $display.message($readini(translation.dat, system, BattleFormula3), global)
-    halt
-  }
-  if ($readini(system.dat, system, BattleDamageFormula) = 3) { 
-    writeini system.dat system BattleDamageFormula 4
-    $display.message($readini(translation.dat, system, BattleFormula4), global)
-    halt
-  }
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 4) { 
-    writeini system.dat system BattleDamageFormula 5
-    $display.message($readini(translation.dat, system, BattleFormula5), global)
-    halt
-  }
-
-  if ($readini(system.dat, system, BattleDamageFormula) = 5) { 
-    writeini system.dat system BattleDamageFormula 1
-    $display.message($readini(translation.dat, system, BattleFormula1), global)
-    halt
-  }
 }
 
 ; Bot admins can set the MOTD, everyone else can just see it

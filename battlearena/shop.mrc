@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 08/29/17
+;;;; Last updated: 09/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2751,7 +2751,7 @@ alias shop.alliedforces {
   if ($2 = list) { 
     $display.private.message(2This shop is used to purchase special services from the Allied Forces that will help you defeat the Dragons hiding in their lairs! You can only purchase one at a time.)
     $display.private.message(12DragonKiller 2 - 5000 Allied Notes - This will spawn a Dragon Killer NPC to help fight the dragon)
-
+    $display.private.message(12Bombing 2 - 5000 Allied Notes - This will drop a bomb on the dragon's lair which will weaken the dragon within. You can only purchase one at a time.)
   }
 
   if ($2 = buy) { 
@@ -2770,516 +2770,525 @@ alias shop.alliedforces {
       $display.private.message(2The Allied Forces begin work on the new 12Dragon Killer2 to be ready for your next dragon hunt battle!)
     }
 
-    if ($3 = bombing) { $display.private.message(4This service is coming in a future update) | halt }
+    if ($3 = bombing) {  var %shop.cost 5000
+      if ($readini(battlestats.dat, AlliedForces, DragonBombing) = true) { $display.private.message(4This service has already been purchased and will be active during the next successful dragon hunt) | halt }
+
+      if (%player.currency = $null) { set %player.currency 0 }
+      if (%player.currency < %shop.cost) {  $display.private.message(4You do not have enough Allied Notes to purchase this service) | unset %currency | unset %player.currency | unset %total.price |  halt }
+
+      dec %player.currency %shop.cost
+      writeini $char($1) stuff AlliedNotes %player.currency
+
+      writeini battlestats.dat AlliedForces DragonBombing true
+      $display.private.message(2The Allied Forces begin work on the new 12Dragon Buster Bomb2 to be ready for your next dragon hunt battle!)
+    }
   }
 
-}
+  alias shop.halloween {
+    if ($left($adate, 2) != 10) { $display.private.message(4You can only use this shop in October) | halt }
 
-alias shop.halloween {
-  if ($left($adate, 2) != 10) { $display.private.message(4You can only use this shop in October) | halt }
+    if ($2 = list) { 
+      unset %shop.list | unset %item.name | unset %item_amount | unset %halloween.items.list | unset %halloween.armor.list
 
-  if ($2 = list) { 
-    unset %shop.list | unset %item.name | unset %item_amount | unset %halloween.items.list | unset %halloween.armor.list
+      var %value 1 | var %items.lines $lines($lstfile(items_halloween.lst))
 
-    var %value 1 | var %items.lines $lines($lstfile(items_halloween.lst))
+      while (%value <= %items.lines) {
+        var %item.name $read -l $+ %value $lstfile(items_halloween.lst)
+        var %item.price $readini($dbfile(items.db), %item.name, cost)
+        var %item.type $readini($dbfile(items.db), %item.name, type)
+
+        if ((%item.price > 0) && ($item.amount($1, %item.name) <= 0)) {
+          if (%item.price <= $readini($char($1), item_amount, CandyCorn)) {  
+            if (%item.type = armor) { %halloween.armor.list = $addtok(%halloween.armor.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            else { %halloween.items.list = $addtok(%halloween.items.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+
+          }
+          else { 
+            if (%item.type = armor) { %halloween.armor.list = $addtok(%halloween.armor.list,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
+            else { %halloween.items.list = $addtok(%halloween.items.list,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          }
+        }
+
+        inc %value 1 
+      }
+
+      set %replacechar $chr(044) $chr(032)
+      %halloween.armor.list = $replace(%halloween.armor.list, $chr(046), %replacechar)
+      %halloween.items.list = $replace(%halloween.items.list, $chr(046), %replacechar)
+      unset %replacechar
+
+      $display.private.message.delay.custom(2These items and armor pieces are paid for with 4Candy Corn,1)
+      if (%halloween.armor.list != $null) { $display.private.message.delay.custom(4Armor:2 %halloween.armor.list, 1) }
+      if (%halloween.items.list != $null) { $display.private.message.delay.custom(4Items:2 %halloween.items.list, 1) }
+
+      if ((%halloween.armor.list = $null) && (%halloween.items.list = $null)) { $display.private.message(4There are no Halloween store items available for purchase right now)  }
+
+      unset %halloween.armor.list | unset %halloween.items.list | unset %item.price | unset %item.name
+    }
+
+    if (($2 = buy) || ($2 = purchase)) {
+
+      if ($readini($dbfile(items.db), $3, cost) = $null) {  $display.private.message(4Error: Invalid Halloween Shop item! Use !shop list halloweens to get a valid list) | halt }
+      if ($readini($dbfile(items.db), $3, cost) = 0) { $display.private.message(4Error: You cannot purchase this item! Use !shop list halloween to get a valid list) | halt }
+      if ($readini($dbfile(items.db), $3, currency) != candycorn) {  $display.private.message(4Error: Invalid Halloween Shop item! Use !shop list halloweens to get a valid list) | halt }
+
+      ; do you have enough to buy it?
+      set %player.currency $readini($char($1), item_amount, CandyCorn)
+      set %total.price $calc($readini($dbfile(items.db), $3, cost) * 1)
+
+      if (%player.currency = $null) { set %player.currency 0 }
+
+      if (%player.currency < %total.price) {  $display.private.message(4You do not have enough Candy Corn to purchase this Halloween shop item!) | unset %currency | unset %player.currency | unset %total.price |  halt }
+      dec %player.currency %total.price
+
+      writeini $char($1) item_amount CandyCorn %player.currency
+      writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + 1) 
+      $display.private.message(3You deposit %total.price $iif(%total.price > 1, pieces, piece) of candy corn into a glowing orange bucket and find yourself rewarded with $4  $+ $3 $+ !)
+
+      unset %shop.list | unset %currency | unset %player.currency | unset %total.price
+      halt
+
+    }
+
+  }
+
+  alias inc.shoplevel {
+    ; At this point, the minimum shop level has already been checked.
+    ; Checking it again might cause just-purchased upgrades to increase the shop level too much.
+    var %shop.level $return.shoplevel($1, $true)
+
+    if (($2 = $null) || ($2 <= 0)) { var %amount.to.increase .1 }
+    if (($2 != $null) && ($2 > 0)) { var %amount.to.increase $calc(.1 * $2) }
+    inc %shop.level %amount.to.increase 
+    var %max.shop.level $readini(system.dat, system, maxshoplevel)
+    if (%max.shop.level = $null) { var %max.shop.level 25 }
+
+    if (%shop.level >= %max.shop.level) { writeini $char($1) stuff shoplevel %max.shop.level |  $display.private.message(2Your Shop Level has been capped at %max.shop.level)  }
+    else { 
+      writeini $char($1) stuff shoplevel %shop.level  
+      $display.private.message(2Your Shop Level has been increased to %shop.level)
+    }
+    $achievement_check($1, Don'tYouHaveaHome)
+    unset %shop.level
+
+  }
+
+  alias shop.cleanlist {
+    ; CLEAN UP THE LIST
+    set %replacechar $chr(044) $chr(032)
+    %shop.list = $replace(%shop.list, $chr(046), %replacechar)
+    %shop.list2 = $replace(%shop.list2, $chr(046), %replacechar)
+    %shop.list3 = $replace(%shop.list3, $chr(046), %replacechar)
+    unset %replacechar
+  }
+
+  alias inc.redorbsspent {  
+    var %orbs.spent $readini($char($1), stuff, RedOrbsSpent)
+    inc %orbs.spent $2
+    writeini $char($1) stuff RedOrbsSpent %orbs.spent
+    $achievement_check($1, BigSpender)
+    $achievement_check($1, BattleArenaAnon)
+    $achievement_check($1, Don'tForgetYourFriendsAndFamily)
+    return
+  }
+  alias inc.blackorbsspent {
+    var %orbs.spent $readini($char($1), stuff, BlackOrbsSpent)
+    inc %orbs.spent $2
+    writeini $char($1) stuff BlackOrbsSpent %orbs.spent
+
+    $achievement_check($1, BossKiller)
+    return
+  }
+
+  alias shop.calculate.totalcost {
+    var %value 1
+    var %total.price.calculate 0
+    set %shop.level $return.shoplevel($1)
+    var %max.shoplevel $readini(system.dat, system, Maxshoplevel)
+
+    while (%value <= $2) {
+      set %true.shop.level %shop.level
+
+      ; Check for the  VIP-MemberCard accessory
+      if ($accessory.check($1, ReduceShopLevel) = true) {
+        dec %true.shop.level %accessory.amount
+        unset %accessory.amount
+      }
+
+      if (%true.shop.level < 1) { set %true.shop.level 1.0 }
+
+      inc %total.price.calculate $round($calc(%true.shop.level * $3),0)
+
+      if (%max.shoplevel = $null) { var %max.shoplevel 25 }
+      if (%shop.level < %max.shoplevel) {  inc %shop.level .1 }
+      inc %value 1
+    }
+    unset %true.shop.level
+    return %total.price.calculate
+  }
+
+  alias shop.get.shop.level {
+    set %shop.level $return.shoplevel($1)
+
+    set %current.accessory $readini($char($1), equipment, accessory)
+    set %current.accessory.type $readini($dbfile(items.db), %current.accessory, accessorytype)
+
+    ; Check for the  VIP-MemberCard accessory
+    if (%current.accessory.type = ReduceShopLevel) {
+      set %accessory.amount $readini($dbfile(items.db), %current.accessory, amount)
+      dec %shop.level %accessory.amount
+      unset %accessory.amount
+    }
+
+    if (%shop.level < 1) { set %shop.level 1.0 }
+
+    unset %current.accessory | unset %current.accessory.type
+  }
+
+  alias shop.voucher.list {
+    ; cycle through the files and get the item name (token position 1) and the cost (token position 2)
+    ; for each types of vouchers (bronze, silver and gold)
+
+    unset %item.name | unset %item_amount | unset %voucher.list.*
+
+    var %player.voucher.bronze $readini($char($1), item_amount, BronzeVoucher)
+    var %player.voucher.silver $readini($char($1), item_amount, SilverVoucher)
+    var %player.voucher.gold $readini($char($1), item_amount, GoldVoucher)
+
+    if (%player.voucher.bronze = $null) { var %player.voucher.bronze 0 }
+    if (%player.voucher.silver = $null) { var %player.voucher.silver 0 }
+    if (%player.voucher.gold = $null) { var %player.voucher.gold 0 }
+
+    ; CHECKING BRONZE VOUCHER LIST
+    var %value 1 | var %items.lines $lines($lstfile(shop_voucherbronze.lst))
 
     while (%value <= %items.lines) {
-      var %item.name $read -l $+ %value $lstfile(items_halloween.lst)
-      var %item.price $readini($dbfile(items.db), %item.name, cost)
-      var %item.type $readini($dbfile(items.db), %item.name, type)
+      var %voucher.line  $read -l $+ %value $lstfile(shop_voucherbronze.lst)
+      var %item.name $gettok(%voucher.line, 1, 46)
+      var %item.price $gettok(%voucher.line, 2, 46)
 
-      if ((%item.price > 0) && ($item.amount($1, %item.name) <= 0)) {
-        if (%item.price <= $readini($char($1), item_amount, CandyCorn)) {  
-          if (%item.type = armor) { %halloween.armor.list = $addtok(%halloween.armor.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
-          else { %halloween.items.list = $addtok(%halloween.items.list, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+      if (%item.price > %player.voucher.bronze) { var %item.color 5 }
+      else { var %item.color 3 }
 
-        }
-        else { 
-          if (%item.type = armor) { %halloween.armor.list = $addtok(%halloween.armor.list,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
-          else { %halloween.items.list = $addtok(%halloween.items.list,5 $+ %item.name $+ ( $+ %item.price $+ ),46) }
-        }
+      if ($numtok(%voucher.list.bronze, 46) >= 12) { %voucher.list.bronze2 = $addtok(%voucher.list.bronze2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+      else { %voucher.list.bronze = $addtok(%voucher.list.bronze, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+
+      inc %value 1 
+    }
+
+    set %replacechar $chr(044) $chr(032)
+    %voucher.list.bronze = $replace(%voucher.list.bronze, $chr(046), %replacechar)
+    if (%voucher.list.bronze2 != $null) {  %voucher.list.bronze2 = $replace(%voucher.list.bronze2, $chr(046), %replacechar) }
+
+    if (%voucher.list.bronze != $null) { 
+      $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Bronze Vouchers,1)
+    $display.private.message.delay.custom(%voucher.list.bronze, 1) }
+    if (%voucher.list.bronze2 != $null) { $display.private.message.delay.custom(%voucher.list.bronze2, 1) }
+
+    ; CHECKING SILVER VOUCHER LIST
+    var %value 1 | var %items.lines $lines($lstfile(shop_vouchersilver.lst))
+
+    while (%value <= %items.lines) {
+      var %voucher.line  $read -l $+ %value $lstfile(shop_vouchersilver.lst)
+      var %item.name $gettok(%voucher.line, 1, 46)
+      var %item.price $gettok(%voucher.line, 2, 46)
+
+      if (%item.price > %player.voucher.silver) { var %item.color 5 }
+      else { var %item.color 3 }
+
+      if ($numtok(%voucher.list.silver, 46) <= 12) { %voucher.list.silver = $addtok(%voucher.list.silver, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+      else {
+        if ($numtok(%voucher.list.silver2, 46) <= 12) { %voucher.list.silver2 = $addtok(%voucher.list.silver2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+        else { %voucher.list.silver3 = $addtok(%voucher.list.silver3, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
       }
 
       inc %value 1 
     }
 
     set %replacechar $chr(044) $chr(032)
-    %halloween.armor.list = $replace(%halloween.armor.list, $chr(046), %replacechar)
-    %halloween.items.list = $replace(%halloween.items.list, $chr(046), %replacechar)
-    unset %replacechar
+    %voucher.list.silver = $replace(%voucher.list.silver, $chr(046), %replacechar)
+    if (%voucher.list.silver2 != $null) {  %voucher.list.silver2 = $replace(%voucher.list.silver2, $chr(046), %replacechar) }
+    if (%voucher.list.silver3 != $null) {  %voucher.list.silver3 = $replace(%voucher.list.silver3, $chr(046), %replacechar) }
 
-    $display.private.message.delay.custom(2These items and armor pieces are paid for with 4Candy Corn,1)
-    if (%halloween.armor.list != $null) { $display.private.message.delay.custom(4Armor:2 %halloween.armor.list, 1) }
-    if (%halloween.items.list != $null) { $display.private.message.delay.custom(4Items:2 %halloween.items.list, 1) }
+    if (%voucher.list.silver != $null) {
+      $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Silver Vouchers,1)
+    $display.private.message.delay.custom(%voucher.list.silver, 1) }
+    if (%voucher.list.silver2 != $null) { $display.private.message.delay.custom(%voucher.list.silver2, 1) }
+    if (%voucher.list.silver3 != $null) { $display.private.message.delay.custom(%voucher.list.silver3, 1) }
 
-    if ((%halloween.armor.list = $null) && (%halloween.items.list = $null)) { $display.private.message(4There are no Halloween store items available for purchase right now)  }
+    ; CHECKING GOLD VOUCHER LIST
+    var %value 1 | var %items.lines $lines($lstfile(shop_vouchergold.lst))
 
-    unset %halloween.armor.list | unset %halloween.items.list | unset %item.price | unset %item.name
-  }
+    while (%value <= %items.lines) {
+      var %voucher.line  $read -l $+ %value $lstfile(shop_vouchergold.lst)
+      var %item.name $gettok(%voucher.line, 1, 46)
+      var %item.price $gettok(%voucher.line, 2, 46)
 
-  if (($2 = buy) || ($2 = purchase)) {
+      if (%item.price > %player.voucher.gold) { var %item.color 5 }
+      else { var %item.color 3 }
 
-    if ($readini($dbfile(items.db), $3, cost) = $null) {  $display.private.message(4Error: Invalid Halloween Shop item! Use !shop list halloweens to get a valid list) | halt }
-    if ($readini($dbfile(items.db), $3, cost) = 0) { $display.private.message(4Error: You cannot purchase this item! Use !shop list halloween to get a valid list) | halt }
-    if ($readini($dbfile(items.db), $3, currency) != candycorn) {  $display.private.message(4Error: Invalid Halloween Shop item! Use !shop list halloweens to get a valid list) | halt }
+      if ($numtok(%voucher.list.gold, 46) >= 12) { %voucher.list.gold2 = $addtok(%voucher.list.gold2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+      else { %voucher.list.gold = $addtok(%voucher.list.gold, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
 
-    ; do you have enough to buy it?
-    set %player.currency $readini($char($1), item_amount, CandyCorn)
-    set %total.price $calc($readini($dbfile(items.db), $3, cost) * 1)
-
-    if (%player.currency = $null) { set %player.currency 0 }
-
-    if (%player.currency < %total.price) {  $display.private.message(4You do not have enough Candy Corn to purchase this Halloween shop item!) | unset %currency | unset %player.currency | unset %total.price |  halt }
-    dec %player.currency %total.price
-
-    writeini $char($1) item_amount CandyCorn %player.currency
-    writeini $char($1) item_amount $3 $calc($item.amount($1, $3) + 1) 
-    $display.private.message(3You deposit %total.price $iif(%total.price > 1, pieces, piece) of candy corn into a glowing orange bucket and find yourself rewarded with $4  $+ $3 $+ !)
-
-    unset %shop.list | unset %currency | unset %player.currency | unset %total.price
-    halt
-
-  }
-
-}
-
-alias inc.shoplevel {
-  ; At this point, the minimum shop level has already been checked.
-  ; Checking it again might cause just-purchased upgrades to increase the shop level too much.
-  var %shop.level $return.shoplevel($1, $true)
-
-  if (($2 = $null) || ($2 <= 0)) { var %amount.to.increase .1 }
-  if (($2 != $null) && ($2 > 0)) { var %amount.to.increase $calc(.1 * $2) }
-  inc %shop.level %amount.to.increase 
-  var %max.shop.level $readini(system.dat, system, maxshoplevel)
-  if (%max.shop.level = $null) { var %max.shop.level 25 }
-
-  if (%shop.level >= %max.shop.level) { writeini $char($1) stuff shoplevel %max.shop.level |  $display.private.message(2Your Shop Level has been capped at %max.shop.level)  }
-  else { 
-    writeini $char($1) stuff shoplevel %shop.level  
-    $display.private.message(2Your Shop Level has been increased to %shop.level)
-  }
-  $achievement_check($1, Don'tYouHaveaHome)
-  unset %shop.level
-
-}
-
-alias shop.cleanlist {
-  ; CLEAN UP THE LIST
-  set %replacechar $chr(044) $chr(032)
-  %shop.list = $replace(%shop.list, $chr(046), %replacechar)
-  %shop.list2 = $replace(%shop.list2, $chr(046), %replacechar)
-  %shop.list3 = $replace(%shop.list3, $chr(046), %replacechar)
-  unset %replacechar
-}
-
-alias inc.redorbsspent {  
-  var %orbs.spent $readini($char($1), stuff, RedOrbsSpent)
-  inc %orbs.spent $2
-  writeini $char($1) stuff RedOrbsSpent %orbs.spent
-  $achievement_check($1, BigSpender)
-  $achievement_check($1, BattleArenaAnon)
-  $achievement_check($1, Don'tForgetYourFriendsAndFamily)
-  return
-}
-alias inc.blackorbsspent {
-  var %orbs.spent $readini($char($1), stuff, BlackOrbsSpent)
-  inc %orbs.spent $2
-  writeini $char($1) stuff BlackOrbsSpent %orbs.spent
-
-  $achievement_check($1, BossKiller)
-  return
-}
-
-alias shop.calculate.totalcost {
-  var %value 1
-  var %total.price.calculate 0
-  set %shop.level $return.shoplevel($1)
-  var %max.shoplevel $readini(system.dat, system, Maxshoplevel)
-
-  while (%value <= $2) {
-    set %true.shop.level %shop.level
-
-    ; Check for the  VIP-MemberCard accessory
-    if ($accessory.check($1, ReduceShopLevel) = true) {
-      dec %true.shop.level %accessory.amount
-      unset %accessory.amount
+      inc %value 1 
     }
 
-    if (%true.shop.level < 1) { set %true.shop.level 1.0 }
+    set %replacechar $chr(044) $chr(032)
+    %voucher.list.gold = $replace(%voucher.list.gold, $chr(046), %replacechar)
+    if (%voucher.list.gold2 != $null) {  %voucher.list.gold2 = $replace(%voucher.list.gold2, $chr(046), %replacechar) }
 
-    inc %total.price.calculate $round($calc(%true.shop.level * $3),0)
+    if (%voucher.list.gold != $null) { 
+      $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Gold Vouchers,1)
+    $display.private.message.delay.custom(%voucher.list.gold, 1) }
+    if (%voucher.list.gold2 != $null) { $display.private.message.delay.custom(%voucher.list.gold2, 1) }
 
-    if (%max.shoplevel = $null) { var %max.shoplevel 25 }
-    if (%shop.level < %max.shoplevel) {  inc %shop.level .1 }
-    inc %value 1
-  }
-  unset %true.shop.level
-  return %total.price.calculate
-}
 
-alias shop.get.shop.level {
-  set %shop.level $return.shoplevel($1)
+    if (((%voucher.list.bronze = $null) && (%voucher.list.silver = $null) && (%voucher.list.gold = $null))) {  $display.private.message(4There are no voucher items available for purchase right now)  }
 
-  set %current.accessory $readini($char($1), equipment, accessory)
-  set %current.accessory.type $readini($dbfile(items.db), %current.accessory, accessorytype)
+    unset %item.price | unset %item.name | unset %voucher.list.* | unset %replacechar
 
-  ; Check for the  VIP-MemberCard accessory
-  if (%current.accessory.type = ReduceShopLevel) {
-    set %accessory.amount $readini($dbfile(items.db), %current.accessory, amount)
-    dec %shop.level %accessory.amount
-    unset %accessory.amount
   }
 
-  if (%shop.level < 1) { set %shop.level 1.0 }
+  alias shop.voucher.buy {
+    ; $1 = the person buying
+    ; $2 = the voucher type: bronze, silver or gold
+    ; $3 = the item being bought
 
-  unset %current.accessory | unset %current.accessory.type
-}
+    ; Check to make sure $2 is a valid voucher type
+    var %valid.vouchers bronze.silver.gold
+    if ($istok(%valid.vouchers, $2, 46) = $false) { $display.private.message(4Invalid voucher type. Use !voucher buy bronze/silver/gold itemname) | halt }
 
-alias shop.voucher.list {
-  ; cycle through the files and get the item name (token position 1) and the cost (token position 2)
-  ; for each types of vouchers (bronze, silver and gold)
+    ; Check to make sure $3 is a valid item that can be bought with that voucher
+    var %search.item $3
+    var %search.file shop_voucher $+ $2 $+ .lst
+    var %item.line $read($lstfile(%search.file), nw, * $+ %search.item $+ *)
 
-  unset %item.name | unset %item_amount | unset %voucher.list.*
+    if (%item.line = $null) { $display.private.message(4This cannot be bought with the $2 voucher) | halt }
 
-  var %player.voucher.bronze $readini($char($1), item_amount, BronzeVoucher)
-  var %player.voucher.silver $readini($char($1), item_amount, SilverVoucher)
-  var %player.voucher.gold $readini($char($1), item_amount, GoldVoucher)
+    ; Check to make sure the person has enough to buy the item
+    var %voucher.item.price $gettok(%item.line, 2, 46)
+    var %player.voucher.amount $readini($char($1), item_amount, $2 $+ Voucher)
+    if (%player.voucher.amount = $null) { var %player.voucher.amount 0 }
 
-  if (%player.voucher.bronze = $null) { var %player.voucher.bronze 0 }
-  if (%player.voucher.silver = $null) { var %player.voucher.silver 0 }
-  if (%player.voucher.gold = $null) { var %player.voucher.gold 0 }
+    if (%player.voucher.amount < %voucher.item.price) { $display.private.message(4You do not have enough $2 vouchers to purchase this item) | halt }
 
-  ; CHECKING BRONZE VOUCHER LIST
-  var %value 1 | var %items.lines $lines($lstfile(shop_voucherbronze.lst))
+    ; Decrease the voucher amount
+    dec %player.voucher.amount %voucher.item.price
+    writeini $char($1) item_amount $2 $+ Voucher %player.voucher.amount
 
-  while (%value <= %items.lines) {
-    var %voucher.line  $read -l $+ %value $lstfile(shop_voucherbronze.lst)
-    var %item.name $gettok(%voucher.line, 1, 46)
-    var %item.price $gettok(%voucher.line, 2, 46)
+    ; Increase the player's amount by 1
+    var %player.amount.item $readini($char($1), item_amount, $3)
+    if (%player.amount.item = $null) { var %player.amount.item 0 }
+    inc %player.amount.item 1 
+    writeini $char($1) item_amount $3 %player.amount.item
 
-    if (%item.price > %player.voucher.bronze) { var %item.color 5 }
-    else { var %item.color 3 }
-
-    if ($numtok(%voucher.list.bronze, 46) >= 12) { %voucher.list.bronze2 = $addtok(%voucher.list.bronze2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
-    else { %voucher.list.bronze = $addtok(%voucher.list.bronze, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
-
-    inc %value 1 
+    ; Show a message that we did the exchange
+    $display.private.message(3You have exchanged %voucher.item.price $2 $iif(%voucher.item.price > 1, vouchers, voucher) for 1 $3)
   }
 
-  set %replacechar $chr(044) $chr(032)
-  %voucher.list.bronze = $replace(%voucher.list.bronze, $chr(046), %replacechar)
-  if (%voucher.list.bronze2 != $null) {  %voucher.list.bronze2 = $replace(%voucher.list.bronze2, $chr(046), %replacechar) }
 
-  if (%voucher.list.bronze != $null) { 
-    $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Bronze Vouchers,1)
-  $display.private.message.delay.custom(%voucher.list.bronze, 1) }
-  if (%voucher.list.bronze2 != $null) { $display.private.message.delay.custom(%voucher.list.bronze2, 1) }
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ; Mythic shop commands
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ; !mythic forge type <-- purchase a mythic for 10 OdinMarks
+  ; !mythic stats <-- Reveals information about your mythic
+  ; !mythic reset yes <-- Erases the mythic entirely.
+  ; !mythic upgrade type <-- upgrades BasePower.Hits.IgnoreDefense.HurtEthereal.Element
+  ; !mythic tech add name <-- adds the tech to the mythic
 
-  ; CHECKING SILVER VOUCHER LIST
-  var %value 1 | var %items.lines $lines($lstfile(shop_vouchersilver.lst))
+  on 3:TEXT:!mythic*:*: { $shop.mythic($nick, $2, $3, $4, $5) }
 
-  while (%value <= %items.lines) {
-    var %voucher.line  $read -l $+ %value $lstfile(shop_vouchersilver.lst)
-    var %item.name $gettok(%voucher.line, 1, 46)
-    var %item.price $gettok(%voucher.line, 2, 46)
+  alias shop.mythic {
+    if ($2 = $null) { $gamehelp(mythic, $nick) | halt  }
+    if (($2 = reset) && ($3 != yes)) { $display.private.message(4In order to erase your mythic you must use !mythic reset yes - Please note that using this command will completely erase your mythic and you will not receive a refund) | halt }
+    if (($2 = reset) && ($3 = yes)) { remini $char($1) Mythic | $display.private.message(3The mythical weapon has been destroyed.) | halt }
 
-    if (%item.price > %player.voucher.silver) { var %item.color 5 }
-    else { var %item.color 3 }
+    var %valid.types HandToHand.Sword.Whip.Gun.Rifle.Bow.Katana.Wand.Stave.Glyph.Spear.Scythe.GreatSword.GreatAxe.Axe.Dagger.Hammer
 
-    if ($numtok(%voucher.list.silver, 46) <= 12) { %voucher.list.silver = $addtok(%voucher.list.silver, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
-    else {
-      if ($numtok(%voucher.list.silver2, 46) <= 12) { %voucher.list.silver2 = $addtok(%voucher.list.silver2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
-      else { %voucher.list.silver3 = $addtok(%voucher.list.silver3, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+    if (($2 = forge) && ($3 = $null)) { $display.private.message(4Invalid weapon type! Valid types are:2 %valid.types) | halt }
+    if (($2 = forge) && ($3 != $null)) { 
+      ; Do we already have a mythic?
+      if ($readini($char($1), Mythic, Level) != $null) { $display.private.message(4You already have a mythic weapon. To receive a new one you must first reset your old one. Use !mythic reset yes to do so) | halt }
+
+      ; Is it a valid type?
+      if ($istok(%valid.types, $3, 46) = $false) { $display.private.message(4Invalid weapon type! Valid types are:2 %valid.types) | halt }
+
+      ; Do we have enough OdinMarks?
+      var %mythic.cost 10
+      var %current.odinmarks $readini($char($1), Item_Amount, OdinMark)
+      if (%current.odinmarks < %mythic.cost) { $display.private.message(4You do not have enough OdinMarks to forge a mythic) | halt }
+
+      ; Purchase the weapon
+      dec %current.odinmarks %mythic.cost 
+      writeini $char($1) Item_Amount OdinMark %current.odinmarks
+
+      writeini $char($1) Weapons Mythic 1
+      writeini $char($1) Mythic Type $3
+      writeini $char($1) Mythic CurrentLevel 1
+      writeini $char($1) Mythic BasePower 100
+      writeini $char($1) Mythic Element none
+      writeini $char($1) Mythic Hits 1
+      writeini $char($1) Mythic IgnoreDefense 0
+      writeini $char($1) Mythic HurtEthereal no
+      writeini $char($1) Mythic AbsorbAmount 0
+      writeini $char($1) Mythic UpgradesDone 0
+
+      $display.private.message(3Hephaestus takes your %mythic.cost OdinMarks and forges a powerful $3 mythic weapon for you!)
+      $display.private.message(3You can use !mythic stats to see information on your mythic.)
+      halt
     }
 
-    inc %value 1 
+    if ($2 = stats) { 
+      if ($readini($char($1), Mythic, CurrentLevel) = $null) { $display.private.message(4You do not have a mythic weapon. To forge one you must use !mythic forge weapontype) | halt }
+
+      var %mythic.type $readini($char($1), Mythic, Type)
+      var %mythic.level $round($calc($readini($char($1), Mythic, UpgradesDone) / 5),0)
+      if (%mythic.level < 1) { var %mythic.level 1 }
+
+      var %mythic.basepower $readini($char($1), Mythic, BasePower)
+      var %mythic.element $readini($char($1), Mythic, Element)
+      var %mythic.hits $readini($char($1), Mythic, Hits)
+      var %mythic.IgnoreDefense $readini($char($1), Mythic, IgnoreDefense)
+      var %mythic.HurtEthereal $readini($char($1), Mythic, HurtEthereal)
+      var %mythic.techs $readini($char($1), Mythic, Techs)
+      if (%mythic.techs = $null) { var %mythic.techs none } 
+      else { var %mythic.techs $replace(%mythic.techs, $chr(046), $chr(044) $chr(032)) }
+
+      $display.private.message([4Mythic Type12 %mythic.type $+ ] [4Mythic Level12 %mythic.level $+ ] [4Mythic Base Power12 %mythic.basepower $+ ])
+      $display.private.message([4Mythic Element12 %mythic.element $+ ] [4Num of Hits12 %mythic.hits $+ ] [4Ignore Defense Amount12 %mythic.IgnoreDefense $+ ] [4Mythic Can Hurt Ethereal Monsters?12 %mythic.hurtethereal $+ ])
+      $display.private.message([4Mythic Techs12 %mythic.techs $+ ])
+    }
+
+    if ($2 = upgrade) { 
+      var %valid.upgrades BasePower.Hits.IgnoreDefense.HurtEthereal.Element
+      if ($3 = $null) {  
+        $display.private.message(4Invalid upgrade type! Valid types are:2 %valid.upgrades) 
+        $display.private.message(4Upgrade costs:12 10 OdinMarks for +5 BasePower $+ $chr(44) 50 OdinMarks for +1 Hit $+ $chr(44) 10 OdinMarks for HurtEthereal $+ $chr(44) 10 OdinMarks for a new Element $+ $chr(44) 20 OdinMarks for +1 IgnoreDefense)
+        halt 
+      }
+
+      if ($3 = BasePower) { 
+        var %upgrade.cost 10 | var %upgrade.amount 5
+        $mythic.upgrade.costcheck($1, %upgrade.cost)
+
+        var %current.basepower $readini($char($1), Mythic, BasePower) 
+        inc %current.basepower %upgrade.amount
+        writeini $char($1) Mythic BasePower %current.basepower
+        $mythic.inc.upgrade.count($1)
+
+        $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %upgrade.amount more Base Power)
+        halt
+      }
+
+      if ($3 = Hits) { 
+        var %upgrade.cost 50 | var %hit.upgrade 1
+        var %current.hits $readini($char($1), Mythic, Hits) 
+
+        if (%current.hits >= 10) { $display.private.message(4Your mythic has the maximum number of hits allowed!) | halt }
+
+        inc %current.hits %hit.upgrade
+        writeini $char($1) Mythic Hits %current.hits
+        $mythic.inc.upgrade.count($1)
+
+        $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %hit.upgrade more Hit)
+        halt
+      }
+
+      if ($3 = HurtEthereal) { 
+        if ($readini($char($1), Mythic, HurtEthereal) = true) { $display.private.message(4You have already purchased this upgrade!) | halt }
+        var %upgrade.cost 10
+        $mythic.upgrade.costcheck($1, %upgrade.cost)
+        writeini $char($1) Mythic HurtEthereal true
+        $mythic.inc.upgrade.count($1)
+        $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the power to hurt ethereal creatures)
+        halt
+      }
+
+      if ($3 = Element) {
+        var %valid.elements fire.earth.wind.water.dark.light.lightning
+        if ($istok(%valid.elements, $4, 46) = $false) { $display.private.message(4Invalid element! Valid elements are:2 %valid.elements) | halt }
+
+        var %upgrade.cost 10
+        $mythic.upgrade.costcheck($1, %upgrade.cost)
+        writeini $char($1) Mythic Element $4
+        $mythic.inc.upgrade.count($1)
+        $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the $4 element)
+        halt
+      }
+
+      if ($3 = IgnoreDefense) { 
+        var %upgrade.cost 20 | var %upgrade.amount 1 
+        $mythic.upgrade.costcheck($1, %upgrade.cost)
+
+        var %current.ignoredef $readini($char($1), Mythic, IgnoreDefense) 
+
+        if (%current.hits >= 100) { $display.private.message(4Your mythic has the max Ignore Defense possible!) | halt }
+
+        inc %current.ignoredef %upgrade.amount
+        writeini $char($1) Mythic IgnoreDefense %current.ignoredef
+        $mythic.inc.upgrade.count($1)
+
+        $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %upgrade.amount more IgnoreDefense)
+        halt
+      }
+    }
+
+    if ($2 = tech) {
+      if ($3 = add) { 
+        if ($numtok($readini($char($1), Mythic, Techs), 46) = 10) { $display.private.message(4Your mythic has used all available technique slots and cannot add any more.) | halt }
+        if ($istok($readini($char($1), Mythic, Techs), $4, 46) = $true) { $display.private.message(4Your mythic already has the $4 technique equipped.) | halt }
+
+        var %upgrade.cost 20
+
+        ; Is this a valid technique?
+        var %technique.cost $readini($dbfile(techniques.db), $4, cost)
+        if ((%technique.cost = $null) || (%technique.cost = 0)) { $display.private.message(4This technique cannot be added to your mythic.) | halt }
+
+        ; Does the player know this technique?
+        var %tech.power $readini($char($1), Techniques, $4)
+        if ((%tech.power = 0) || (%tech.power = $null)) { $display.private.message(4You do not know this technique and thus it cannot be added to your mythic.) | halt }
+
+        ; Lower the OdinMarks
+        $mythic.upgrade.costcheck($1, %upgrade.cost)
+
+        ; Add it to the mythic
+        var %current.techniques $readini($char($1), Mythic, Techs)
+        var %current.techniques $addtok(%current.techniques, $4, 46)
+        writeini $char($1) Mythic Techs %current.techniques
+        $mythic.inc.upgrade.count($1)
+
+        $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the $4 technique)
+        halt
+      }
+
+      if ($3 = remove) { 
+        if ($istok($readini($char($1), Mythic, Techs), $4, 46) = $false) { $display.private.message(4Your mythic does not have the $4 technique equipped.) | halt }
+
+        ; Remove it from the mythic
+        var %current.techniques $readini($char($1), Mythic, Techs)
+        var %current.techniques $remtok(%current.techniques, $4, 46)
+        writeini $char($1) Mythic Techs %current.techniques
+        $display.private.message(3Hephaestus has removed the $4 technique from your mythic)
+        halt
+
+      }
+    }
+
+
   }
 
-  set %replacechar $chr(044) $chr(032)
-  %voucher.list.silver = $replace(%voucher.list.silver, $chr(046), %replacechar)
-  if (%voucher.list.silver2 != $null) {  %voucher.list.silver2 = $replace(%voucher.list.silver2, $chr(046), %replacechar) }
-  if (%voucher.list.silver3 != $null) {  %voucher.list.silver3 = $replace(%voucher.list.silver3, $chr(046), %replacechar) }
+  alias mythic.upgrade.costcheck {
+    ; $1 = the person we're checking
+    ; $2 = the amount it costs
 
-  if (%voucher.list.silver != $null) {
-    $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Silver Vouchers,1)
-  $display.private.message.delay.custom(%voucher.list.silver, 1) }
-  if (%voucher.list.silver2 != $null) { $display.private.message.delay.custom(%voucher.list.silver2, 1) }
-  if (%voucher.list.silver3 != $null) { $display.private.message.delay.custom(%voucher.list.silver3, 1) }
-
-  ; CHECKING GOLD VOUCHER LIST
-  var %value 1 | var %items.lines $lines($lstfile(shop_vouchergold.lst))
-
-  while (%value <= %items.lines) {
-    var %voucher.line  $read -l $+ %value $lstfile(shop_vouchergold.lst)
-    var %item.name $gettok(%voucher.line, 1, 46)
-    var %item.price $gettok(%voucher.line, 2, 46)
-
-    if (%item.price > %player.voucher.gold) { var %item.color 5 }
-    else { var %item.color 3 }
-
-    if ($numtok(%voucher.list.gold, 46) >= 12) { %voucher.list.gold2 = $addtok(%voucher.list.gold2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
-    else { %voucher.list.gold = $addtok(%voucher.list.gold, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
-
-    inc %value 1 
-  }
-
-  set %replacechar $chr(044) $chr(032)
-  %voucher.list.gold = $replace(%voucher.list.gold, $chr(046), %replacechar)
-  if (%voucher.list.gold2 != $null) {  %voucher.list.gold2 = $replace(%voucher.list.gold2, $chr(046), %replacechar) }
-
-  if (%voucher.list.gold != $null) { 
-    $display.private.message.delay.custom(2These items and armor pieces are paid for with 7Gold Vouchers,1)
-  $display.private.message.delay.custom(%voucher.list.gold, 1) }
-  if (%voucher.list.gold2 != $null) { $display.private.message.delay.custom(%voucher.list.gold2, 1) }
-
-
-  if (((%voucher.list.bronze = $null) && (%voucher.list.silver = $null) && (%voucher.list.gold = $null))) {  $display.private.message(4There are no voucher items available for purchase right now)  }
-
-  unset %item.price | unset %item.name | unset %voucher.list.* | unset %replacechar
-
-}
-
-alias shop.voucher.buy {
-  ; $1 = the person buying
-  ; $2 = the voucher type: bronze, silver or gold
-  ; $3 = the item being bought
-
-  ; Check to make sure $2 is a valid voucher type
-  var %valid.vouchers bronze.silver.gold
-  if ($istok(%valid.vouchers, $2, 46) = $false) { $display.private.message(4Invalid voucher type. Use !voucher buy bronze/silver/gold itemname) | halt }
-
-  ; Check to make sure $3 is a valid item that can be bought with that voucher
-  var %search.item $3
-  var %search.file shop_voucher $+ $2 $+ .lst
-  var %item.line $read($lstfile(%search.file), nw, * $+ %search.item $+ *)
-
-  if (%item.line = $null) { $display.private.message(4This cannot be bought with the $2 voucher) | halt }
-
-  ; Check to make sure the person has enough to buy the item
-  var %voucher.item.price $gettok(%item.line, 2, 46)
-  var %player.voucher.amount $readini($char($1), item_amount, $2 $+ Voucher)
-  if (%player.voucher.amount = $null) { var %player.voucher.amount 0 }
-
-  if (%player.voucher.amount < %voucher.item.price) { $display.private.message(4You do not have enough $2 vouchers to purchase this item) | halt }
-
-  ; Decrease the voucher amount
-  dec %player.voucher.amount %voucher.item.price
-  writeini $char($1) item_amount $2 $+ Voucher %player.voucher.amount
-
-  ; Increase the player's amount by 1
-  var %player.amount.item $readini($char($1), item_amount, $3)
-  if (%player.amount.item = $null) { var %player.amount.item 0 }
-  inc %player.amount.item 1 
-  writeini $char($1) item_amount $3 %player.amount.item
-
-  ; Show a message that we did the exchange
-  $display.private.message(3You have exchanged %voucher.item.price $2 $iif(%voucher.item.price > 1, vouchers, voucher) for 1 $3)
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Mythic shop commands
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; !mythic forge type <-- purchase a mythic for 10 OdinMarks
-; !mythic stats <-- Reveals information about your mythic
-; !mythic reset yes <-- Erases the mythic entirely.
-; !mythic upgrade type <-- upgrades BasePower.Hits.IgnoreDefense.HurtEthereal.Element
-; !mythic tech add name <-- adds the tech to the mythic
-
-on 3:TEXT:!mythic*:*: { $shop.mythic($nick, $2, $3, $4, $5) }
-
-alias shop.mythic {
-  if ($2 = $null) { $gamehelp(mythic, $nick) | halt  }
-  if (($2 = reset) && ($3 != yes)) { $display.private.message(4In order to erase your mythic you must use !mythic reset yes - Please note that using this command will completely erase your mythic and you will not receive a refund) | halt }
-  if (($2 = reset) && ($3 = yes)) { remini $char($1) Mythic | $display.private.message(3The mythical weapon has been destroyed.) | halt }
-
-  var %valid.types HandToHand.Sword.Whip.Gun.Rifle.Bow.Katana.Wand.Stave.Glyph.Spear.Scythe.GreatSword.GreatAxe.Axe.Dagger.Hammer
-
-  if (($2 = forge) && ($3 = $null)) { $display.private.message(4Invalid weapon type! Valid types are:2 %valid.types) | halt }
-  if (($2 = forge) && ($3 != $null)) { 
-    ; Do we already have a mythic?
-    if ($readini($char($1), Mythic, Level) != $null) { $display.private.message(4You already have a mythic weapon. To receive a new one you must first reset your old one. Use !mythic reset yes to do so) | halt }
-
-    ; Is it a valid type?
-    if ($istok(%valid.types, $3, 46) = $false) { $display.private.message(4Invalid weapon type! Valid types are:2 %valid.types) | halt }
-
-    ; Do we have enough OdinMarks?
-    var %mythic.cost 10
     var %current.odinmarks $readini($char($1), Item_Amount, OdinMark)
-    if (%current.odinmarks < %mythic.cost) { $display.private.message(4You do not have enough OdinMarks to forge a mythic) | halt }
-
-    ; Purchase the weapon
-    dec %current.odinmarks %mythic.cost 
+    if (%current.odinmarks <  $2) { $display.private.message(4You do not have enough OdinMarks to purchase this upgrade) | halt }
+    dec %current.odinmarks $2
     writeini $char($1) Item_Amount OdinMark %current.odinmarks
-
-    writeini $char($1) Weapons Mythic 1
-    writeini $char($1) Mythic Type $3
-    writeini $char($1) Mythic CurrentLevel 1
-    writeini $char($1) Mythic BasePower 100
-    writeini $char($1) Mythic Element none
-    writeini $char($1) Mythic Hits 1
-    writeini $char($1) Mythic IgnoreDefense 0
-    writeini $char($1) Mythic HurtEthereal no
-    writeini $char($1) Mythic AbsorbAmount 0
-    writeini $char($1) Mythic UpgradesDone 0
-
-    $display.private.message(3Hephaestus takes your %mythic.cost OdinMarks and forges a powerful $3 mythic weapon for you!)
-    $display.private.message(3You can use !mythic stats to see information on your mythic.)
-    halt
   }
 
-  if ($2 = stats) { 
-    if ($readini($char($1), Mythic, CurrentLevel) = $null) { $display.private.message(4You do not have a mythic weapon. To forge one you must use !mythic forge weapontype) | halt }
-
-    var %mythic.type $readini($char($1), Mythic, Type)
-    var %mythic.level $round($calc($readini($char($1), Mythic, UpgradesDone) / 5),0)
-    if (%mythic.level < 1) { var %mythic.level 1 }
-
-    var %mythic.basepower $readini($char($1), Mythic, BasePower)
-    var %mythic.element $readini($char($1), Mythic, Element)
-    var %mythic.hits $readini($char($1), Mythic, Hits)
-    var %mythic.IgnoreDefense $readini($char($1), Mythic, IgnoreDefense)
-    var %mythic.HurtEthereal $readini($char($1), Mythic, HurtEthereal)
-    var %mythic.techs $readini($char($1), Mythic, Techs)
-    if (%mythic.techs = $null) { var %mythic.techs none } 
-    else { var %mythic.techs $replace(%mythic.techs, $chr(046), $chr(044) $chr(032)) }
-
-    $display.private.message([4Mythic Type12 %mythic.type $+ ] [4Mythic Level12 %mythic.level $+ ] [4Mythic Base Power12 %mythic.basepower $+ ])
-    $display.private.message([4Mythic Element12 %mythic.element $+ ] [4Num of Hits12 %mythic.hits $+ ] [4Ignore Defense Amount12 %mythic.IgnoreDefense $+ ] [4Mythic Can Hurt Ethereal Monsters?12 %mythic.hurtethereal $+ ])
-    $display.private.message([4Mythic Techs12 %mythic.techs $+ ])
+  alias mythic.inc.upgrade.count {
+    var %upgrades.done $readini($char($1), Mythic, UpgradesDone)
+    inc %upgrades.done 1
+    writeini $char($1) Mythic UpgradesDone %upgrades.done
   }
-
-  if ($2 = upgrade) { 
-    var %valid.upgrades BasePower.Hits.IgnoreDefense.HurtEthereal.Element
-    if ($3 = $null) {  
-      $display.private.message(4Invalid upgrade type! Valid types are:2 %valid.upgrades) 
-      $display.private.message(4Upgrade costs:12 10 OdinMarks for +5 BasePower $+ $chr(44) 50 OdinMarks for +1 Hit $+ $chr(44) 10 OdinMarks for HurtEthereal $+ $chr(44) 10 OdinMarks for a new Element $+ $chr(44) 20 OdinMarks for +1 IgnoreDefense)
-      halt 
-    }
-
-    if ($3 = BasePower) { 
-      var %upgrade.cost 10 | var %upgrade.amount 5
-      $mythic.upgrade.costcheck($1, %upgrade.cost)
-
-      var %current.basepower $readini($char($1), Mythic, BasePower) 
-      inc %current.basepower %upgrade.amount
-      writeini $char($1) Mythic BasePower %current.basepower
-      $mythic.inc.upgrade.count($1)
-
-      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %upgrade.amount more Base Power)
-      halt
-    }
-
-    if ($3 = Hits) { 
-      var %upgrade.cost 50 | var %hit.upgrade 1
-      var %current.hits $readini($char($1), Mythic, Hits) 
-
-      if (%current.hits >= 10) { $display.private.message(4Your mythic has the maximum number of hits allowed!) | halt }
-
-      inc %current.hits %hit.upgrade
-      writeini $char($1) Mythic Hits %current.hits
-      $mythic.inc.upgrade.count($1)
-
-      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %hit.upgrade more Hit)
-      halt
-    }
-
-    if ($3 = HurtEthereal) { 
-      if ($readini($char($1), Mythic, HurtEthereal) = true) { $display.private.message(4You have already purchased this upgrade!) | halt }
-      var %upgrade.cost 10
-      $mythic.upgrade.costcheck($1, %upgrade.cost)
-      writeini $char($1) Mythic HurtEthereal true
-      $mythic.inc.upgrade.count($1)
-      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the power to hurt ethereal creatures)
-      halt
-    }
-
-    if ($3 = Element) {
-      var %valid.elements fire.earth.wind.water.dark.light.lightning
-      if ($istok(%valid.elements, $4, 46) = $false) { $display.private.message(4Invalid element! Valid elements are:2 %valid.elements) | halt }
-
-      var %upgrade.cost 10
-      $mythic.upgrade.costcheck($1, %upgrade.cost)
-      writeini $char($1) Mythic Element $4
-      $mythic.inc.upgrade.count($1)
-      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the $4 element)
-      halt
-    }
-
-    if ($3 = IgnoreDefense) { 
-      var %upgrade.cost 20 | var %upgrade.amount 1 
-      $mythic.upgrade.costcheck($1, %upgrade.cost)
-
-      var %current.ignoredef $readini($char($1), Mythic, IgnoreDefense) 
-
-      if (%current.hits >= 100) { $display.private.message(4Your mythic has the max Ignore Defense possible!) | halt }
-
-      inc %current.ignoredef %upgrade.amount
-      writeini $char($1) Mythic IgnoreDefense %current.ignoredef
-      $mythic.inc.upgrade.count($1)
-
-      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with + $+ %upgrade.amount more IgnoreDefense)
-      halt
-    }
-  }
-
-  if ($2 = tech) {
-    if ($3 = add) { 
-      if ($numtok($readini($char($1), Mythic, Techs), 46) = 10) { $display.private.message(4Your mythic has used all available technique slots and cannot add any more.) | halt }
-      if ($istok($readini($char($1), Mythic, Techs), $4, 46) = $true) { $display.private.message(4Your mythic already has the $4 technique equipped.) | halt }
-
-      var %upgrade.cost 20
-
-      ; Is this a valid technique?
-      var %technique.cost $readini($dbfile(techniques.db), $4, cost)
-      if ((%technique.cost = $null) || (%technique.cost = 0)) { $display.private.message(4This technique cannot be added to your mythic.) | halt }
-
-      ; Does the player know this technique?
-      var %tech.power $readini($char($1), Techniques, $4)
-      if ((%tech.power = 0) || (%tech.power = $null)) { $display.private.message(4You do not know this technique and thus it cannot be added to your mythic.) | halt }
-
-      ; Lower the OdinMarks
-      $mythic.upgrade.costcheck($1, %upgrade.cost)
-
-      ; Add it to the mythic
-      var %current.techniques $readini($char($1), Mythic, Techs)
-      var %current.techniques $addtok(%current.techniques, $4, 46)
-      writeini $char($1) Mythic Techs %current.techniques
-      $mythic.inc.upgrade.count($1)
-
-      $display.private.message(3Hephaestus takes your %upgrade.cost OdinMarks and imbues your mythic with the $4 technique)
-      halt
-    }
-
-    if ($3 = remove) { 
-      if ($istok($readini($char($1), Mythic, Techs), $4, 46) = $false) { $display.private.message(4Your mythic does not have the $4 technique equipped.) | halt }
-
-      ; Remove it from the mythic
-      var %current.techniques $readini($char($1), Mythic, Techs)
-      var %current.techniques $remtok(%current.techniques, $4, 46)
-      writeini $char($1) Mythic Techs %current.techniques
-      $display.private.message(3Hephaestus has removed the $4 technique from your mythic)
-      halt
-
-    }
-  }
-
-
-}
-
-alias mythic.upgrade.costcheck {
-  ; $1 = the person we're checking
-  ; $2 = the amount it costs
-
-  var %current.odinmarks $readini($char($1), Item_Amount, OdinMark)
-  if (%current.odinmarks <  $2) { $display.private.message(4You do not have enough OdinMarks to purchase this upgrade) | halt }
-  dec %current.odinmarks $2
-  writeini $char($1) Item_Amount OdinMark %current.odinmarks
-}
-
-alias mythic.inc.upgrade.count {
-  var %upgrades.done $readini($char($1), Mythic, UpgradesDone)
-  inc %upgrades.done 1
-  writeini $char($1) Mythic UpgradesDone %upgrades.done
-}

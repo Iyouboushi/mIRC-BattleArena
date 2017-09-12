@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=30
+Hp=7
 Tp=30
 Str=1
 Def=1
@@ -10,7 +10,7 @@ Name=Poring
 
 
 [Battle]
-Hp=30
+Hp=7
 Tp=30
 Str=1
 Def=1

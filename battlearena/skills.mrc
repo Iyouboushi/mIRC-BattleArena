@@ -1444,7 +1444,12 @@ alias skill.regen { $set_chr_name($1)
   var %regen.amount $skill.regen.calculate($1)
   inc %current.hp %regen.amount
   writeini $char($1) Battle HP %current.hp
-  if (%current.hp > %max.hp) { writeini $char($1) Battle HP %max.hp | $display.message(12 $+ %real.name has regenerated all of $gender($1) HP!, battle)
+
+  if ($readini($char($1), status, ignition.on) = on) {
+    var %max.hp $round($calc($readini($char($1), basestats, hp) * $readini($dbfile(ignitions.db), $readini($char($1), status, ignition.name), hp)),0)
+  }
+
+  if (%current.hp >= %max.hp) { writeini $char($1) Battle HP %max.hp | $display.message(12 $+ %real.name has regenerated all of $gender($1) HP!, battle)
     if (%battleis = on)  { $check_for_double_turn($1) | halt }
   }
   else { 

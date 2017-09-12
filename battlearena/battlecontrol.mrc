@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/06/17
+;;;; Last updated: 09/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -474,10 +474,22 @@ alias startnormal {
       $display.message($readini(translation.dat, Battle, BattleDefendOutpost), global) 
     }
     if (%start.battle.type = assault) { set %battle.type assault | $display.message($readini(translation.dat, Battle, BattleAssaultOpen), global) }
-    if (%start.battle.type = DragonHunt) { set %battle.type DragonHunt | $display.message($readini(translation.dat, system, DragonHunt.BeginHunt), global) }
+    if (%start.battle.type = DragonHunt) { 
+      set %battle.type DragonHunt | $display.message($readini(translation.dat, system, DragonHunt.BeginHunt), global) 
+
+      if ($readini(battlestats.dat, AlliedForces, DragonBombing) = true) { 
+        $display.message($readini(translation.dat, events, DragonHunt.Bombing), global) 
+        var %dragon.level $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, age)
+        var %dragon.level $floor($calc(%dragon.level * .75))
+
+        writeini $dbfile(dragonhunt.db) %dragonhunt.file.name age %dragon.level
+        writeini battlestats.dat AlliedForces DragonBombing false
+      }
+
+
+    }
 
     if (%start.battle.type = torment) { set %battle.type torment | $display.message($readini(translation.dat, system, TormentBattleStarted), global) }
-
     if (%start.battle.type = cosmic) { set %battle.type cosmic | $display.message($readini(translation.dat, system, CosmicBattleStarted), global) }
 
     var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonhunt.torment.cosmic

@@ -1658,7 +1658,7 @@ alias portal.item.onemonster {
   if (%bossquote != $null) {   $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.to.spawn), descriptions, BossQuote) $+ ", battle) }
 
   ; Boost the monster
-  $levelsync(%monster.to.spawn, $calc(%boss.level + $rand(1,2)))
+  $levelsync(%monster.to.spawn, %boss.level)
   writeini $char(%monster.to.spawn) basestats str $readini($char(%monster.to.spawn), battle, str)
   writeini $char(%monster.to.spawn) basestats def $readini($char(%monster.to.spawn), battle, def)
   writeini $char(%monster.to.spawn) basestats int $readini($char(%monster.to.spawn), battle, int)
@@ -1762,7 +1762,7 @@ alias portal.item.multimonsters {
       }
 
       ; Boost the monster
-      $levelsync(%current.monster.to.spawn.name, $calc(%boss.level + $rand(1,2)))
+      $levelsync(%current.monster.to.spawn.name, %boss.level)
       writeini $char(%current.monster.to.spawn.name) basestats str $readini($char(%current.monster.to.spawn.name), battle, str)
       writeini $char(%current.monster.to.spawn.name) basestats def $readini($char(%current.monster.to.spawn.name), battle, def)
       writeini $char(%current.monster.to.spawn.name) basestats int $readini($char(%current.monster.to.spawn.name), battle, int)
@@ -1803,7 +1803,7 @@ alias portal.sync.players {
     var %flag $readini($char(%who.battle), info, flag)
 
     if (%flag != monster) { 
-      if ($get.level(%who.battle) > $1) {  
+      if ($get.level(%who.battle) >= $1) {  
         $levelsync(%who.battle, $1)
         writeini $char(%who.battle) info levelsync yes
         writeini $char(%who.battle) info NeedsFulls yes

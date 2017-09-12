@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/06/17
+;;;; Last updated: 09/11/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -763,7 +763,7 @@ boost_monster_hp {
   var %difficulty $readini($txtfile(battle2.txt), BattleInfo, Difficulty)
   if (%difficulty != $null) { inc %temp.level %difficulty } 
 
-  var %temp.hp.needed $round($calc(%hp + (((%temp.level - 2)  / 5) * 80)),0)
+  var %temp.hp.needed $round($calc(%hp + (((%temp.level - 2)  / 5) * 50)),0)
 
   if ($2 = portal) { 
     if (%temp.hp.needed > %hp) { writeini $char($1) basestats hp %temp.hp.needed | writeini $char($1) battle hp %temp.hp.needed | return }
@@ -790,9 +790,9 @@ boost_monster_hp {
     return
   }
 
-  if ($return_winningstreak <= 10) { inc %hp.modifier $calc(.05 * $return_winningstreak) }
-  if (($return_winningstreak > 10) && ($return_winningstreak <= 200)) { inc %hp.modifier $calc(.02 * $return_winningstreak) }
-  if (($return_winningstreak > 200) && ($return_winningstreak <= 500)) { inc %hp.modifier $calc(.0025 * $return_winningstreak) }
+  if ($return_winningstreak <= 10) { inc %hp.modifier $calc(.03 * $return_winningstreak) }
+  if (($return_winningstreak > 10) && ($return_winningstreak <= 200)) { inc %hp.modifier $calc(.015 * $return_winningstreak) }
+  if (($return_winningstreak > 200) && ($return_winningstreak <= 500)) { inc %hp.modifier $calc(.0020 * $return_winningstreak) }
   if (($return_winningstreak > 500) && ($return_winningstreak <= 1000)) {  inc %hp.modifier $calc(.0035 * $return_winningstreak) }
   if (($return_winningstreak > 1000) && ($return_winningstreak <= 5000)) {  inc %hp.modifier $calc(.0045 * $return_winningstreak) }
   if ($return_winningstreak > 5000) { var %hp.modifier .0055 }
@@ -811,11 +811,10 @@ boost_monster_hp {
   }
 
   if (%battle.type = orbfountain) { 
-    if (%hp.modifier > 1.2) { var %hp.modifier 1.2 } 
+    if (%hp.modifier > 1.12) { var %hp.modifier 1.12 } 
   }
 
   if (%battle.type = dragonhunt) { inc %hp.modifier 3 }
-
   if (%battle.type = cosmic) { inc %hp.modifier 10 }
 
   ; Increase the hp modifier if more than 1 player is in battle..
@@ -878,6 +877,7 @@ boost_monster_hp {
 
   ; Clear certain variables and return
   unset %hp | unset %augment.strength
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -894,19 +894,22 @@ levelsync {
   var %int $readini($char($1), battle, int)
   var %spd $readini($char($1), battle, spd)
 
+  inc %str $armor.stat($1, str)
+  inc %def $armor.stat($1, def)
+  inc %int $armor.stat($1, int)
+  inc %spd $armor.stat($1, spd)
+
   if (%str <= 5) { var %str 5 | writeini $char($1) battle str 5 }
   if (%def <= 5) { var %def 5 | writeini $char($1) battle def 5 }
   if (%int <= 5) { inc %int 5 | writeini $char($1) battle int 5 }
   if (%spd <= 5) { inc %spd 5 | writeini $char($1) battle spd 5 }
 
-  var %level.difference $round($calc($2 - $get.level($1)),0)
-
+  var %level.difference $round($calc($2 - $get.full.level($1)),0)
+  var %difference.ratio $calc($2 / $get.full.level($1))
   var %current.loop 0 
 
   while (%level.difference != 0) {
-    if (%current.loop > 5) { break }
-
-    var %difference.ratio $calc($2 / $get.level($1))
+    if (%current.loop > 10) { break }
 
     %str = $round($calc(%str * %difference.ratio),0) 
     %def = $round($calc(%def * %difference.ratio),0) 
@@ -923,7 +926,9 @@ levelsync {
     writeini $char($1) battle Int %int
     writeini $char($1) battle Spd %spd
 
+    var %current.level $get.full.level($1)
     var %level.difference $round($calc($2 - $get.level($1)),0)
+    var %difference.ratio $calc($2 / $get.level($1))
 
     writeini $char($1) info levelsync yes
     inc %current.loop 1
@@ -3851,22 +3856,10 @@ offensive.style.check {
   ; $2 = weapon/tech name
   ; $3 = flag: melee, tech, magic
 
+  if ($person_in_mech($1) = true) { return }
+
   var %current.playerstyle $return.playerstyle($1)
   var %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
-
-  if (%current.playerstyle = WeaponMaster) { 
-    if ($3 = melee) {
-      $mastery_check($1, $2)
-
-      var %amount.to.increase $calc(.05 * %current.playerstyle.level)
-      if (%amount.to.increase >= .70) { var %amount.to.increase .70 }
-      var %wpnmst.increase $round($calc(%amount.to.increase * %attack.damage),0)
-      inc %attack.damage %wpnmst.increase
-      var %playerstyle.bonus $round($calc(%current.playerstyle.level * 1.5),0)
-      inc %mastery.bonus %playerstyle.bonus
-      inc %attack.damage %mastery.bonus
-    }
-  }
 
   if (($3 = melee) || ($3 = tech)) {
 
@@ -4510,8 +4503,8 @@ modifer_adjust {
 killer.trait.check {
   var %monster.type $readini($char($2), monster, type)
   if (%monster.type = $null) { return }
-  set %killer.trait.name %monster.type $+ -killer
-  set %killer.trait.amount $readini($char($1), skills, %killer.trait.name)
+  var %killer.trait.name %monster.type $+ -killer
+  var %killer.trait.amount $readini($char($1), skills, %killer.trait.name)
   if (%killer.trait.amount = $null) { var %killer.trait.amount 0 }
 
   ; Check for an augment to enhance killer traits
@@ -4523,10 +4516,9 @@ killer.trait.check {
     inc %killer.trait.amount $calc(%augment.strength * 2)
   }
 
-  if ((%killer.trait.amount = $null) || (%killer.trait.amount <= 0)) { unset %killer.trait.name | unset %killer.trait.amount | return }
+  if ((%killer.trait.amount = $null) || (%killer.trait.amount <= 0)) { return 0 }
 
-  inc %attack.damage $round($calc(%attack.damage * (%killer.trait.amount / 100)),0)
-  unset %killer.trait.name | unset %killer.trait.amount 
+  return %killer.trait.amount
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4995,6 +4987,10 @@ TPregenerating_check {
 regen_done_check { 
   set %debug.location regen_done_check
   var %current.regen.hp $readini($char($1), Battle, $3) | var %max.regen.hp $readini($char($1), BaseStats, $3)
+
+  if ($readini($char($1), status, ignition.on) = on) {
+    var %max.regen.hp $round($calc($readini($char($1), BaseStats, $3) * $readini($dbfile(ignitions.db), $readini($char($1), status, ignition.name), $3)),0)
+  }
 
   if (($3 = hp) || ($3 = tp)) {
     if (%current.regen.hp >= %max.regen.hp) { 
