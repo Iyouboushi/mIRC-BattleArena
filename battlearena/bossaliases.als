@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 08/29/17
+;;;; Last updated: 09/13/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1766,16 +1766,16 @@ dragonhunt.createfile {
   if ((%dragon.level >= 200) && (%dragon.level <= 500)) { writeini $char(%dragonhunt.file.name) monster elite true }
   if (%dragon.level > 500) { writeini $char(%dragonhunt.file.name) monster SuperElite true }
 
-  var %base.hp.tp $round($calc(110 * %dragon.level),0)
-  if ($return_playersinbattle >= 3) { inc %base.hp.tp $round($calc(100 * $return_playersinbattle),0) }
+  var %base.hp.tp $round($calc(100 * %dragon.level),0)
+  if ($return_playersinbattle >= 3) { inc %base.hp.tp $round($calc(80 * $return_playersinbattle),0) }
 
   writeini $char(%dragonhunt.file.name) basestats hp %base.hp.tp
   writeini $char(%dragonhunt.file.name) basestats tp %base.hp.tp
 
   writeini $char(%dragonhunt.file.name) battle str $rand(30,35)
-  writeini $char(%dragonhunt.file.name) battle def $rand(40,50)
+  writeini $char(%dragonhunt.file.name) battle def $rand(35,45)
   writeini $char(%dragonhunt.file.name) battle int $rand(20,30)
-  writeini $char(%dragonhunt.file.name) battle spd $rand(21,25)
+  writeini $char(%dragonhunt.file.name) battle spd $rand(15,20)
 
   writeini $char(%dragonhunt.file.name) weapons equipped DragonFangs
   writeini $char(%dragonhunt.file.name) weapons DragonFangs %dragon.level
