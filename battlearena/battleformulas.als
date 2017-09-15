@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/11/17
+;;;; Last updated: 09/14/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -809,18 +809,18 @@ formula.techdmg.player.formula {
     if ($readini($char($3), info, ImmuneToMagic) = true) {  $set_chr_name($3) | set %guard.message $readini(translation.dat, battle, ImmuneToMagic) }
 
     if ($accessory.check($1, IncreaseMagic) = true) {
-      inc %attack.damage $round($calc(%attack.damage * %accessory.amount),0)
+      inc %damage.rating $round($calc(%damage.rating * %accessory.amount),0)
       unset %accessory.amount
     }
 
     ;  Check for the accessories that increase spell damage
     if ($accessory.check($1, IncreaseSpellDamage) = true) {
-      inc %attack.damage $round($calc(%attack.damage * %accessory.amount),0)
+      inc %damage.rating $round($calc(%damage.rating * %accessory.amount),0)
       unset %accessory.amount
     }
 
     ; Elementals are weak to magic
-    if ($readini($char($3), monster, type) = elemental) { inc %magic.bonus.modifier 1.3 } 
+    if ($readini($char($3), monster, type) = elemental) { inc %damage.rating 500 } 
 
     ; Is the weather the right condition to enhance the spell?
     $spell.weather.check($1, $3, $2) 
@@ -829,10 +829,8 @@ formula.techdmg.player.formula {
   ; Check for tech modifiers
   if ($readini($dbfile(techniques.db), $2, magic) != yes) { 
     if ($augment.check($1, TechBonus) = true) { 
-      set %tech.bonus.augment $calc(%augment.strength * .25)
-      var %augment.power.increase.amount $round($calc(%tech.bonus.augment * %attack.damage),0)
-      inc %attack.damage %augment.power.increase.amount
-      unset %tech.bonus.augment
+      var %tech.bonus.augment $calc(%augment.strength * 100)
+      inc %damage.rating %tech.bonust
     }
   }
 
