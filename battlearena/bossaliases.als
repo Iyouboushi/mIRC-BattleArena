@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 09/13/17
+;;;; Last updated: 09/21/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1837,28 +1837,28 @@ dragonhunt.createfile {
 
   ; Add the dragon scales
   writeini $char(%dragonhunt.file.name) NaturalArmor Name Dragon Scales
-  var %dragon.naturalarmor $calc(100 * %dragon.level)
-  if (%dragon.naturalarmor >= 30000) { var %dragon.naturalarmor 30000 }
+  var %dragon.naturalarmor $calc(15 * %dragon.level)
+  if (%dragon.naturalarmor >= 20000) { var %dragon.naturalarmor 20000 }
   writeini $char(%dragonhunt.file.name) NaturalArmor Max %dragon.naturalarmor
   writeini $char(%dragonhunt.file.name) NaturalArmor Current %dragon.naturalarmor
 
   ; Add guardian style
   writeini $char(%dragonhunt.file.name) styles equipped Guardian
-  writeini $char(%dragonhunt.file.name) styles Guardian $rand(6,8)
+  writeini $char(%dragonhunt.file.name) styles Guardian $rand(2,4)
   writeini $char(%dragonhunt.file.name) styles GuardianXP 1
 
   ; Add modifiers
-  writeini $char(%dragonhunt.file.name) modifiers HandToHand 40
-  writeini $char(%dragonhunt.file.name) modifiers Whip 40
-  writeini $char(%dragonhunt.file.name) modifiers sword 60
-  writeini $char(%dragonhunt.file.name) modifiers gun 40
-  writeini $char(%dragonhunt.file.name) modifiers rifle 40
-  writeini $char(%dragonhunt.file.name) modifiers katana 60
-  writeini $char(%dragonhunt.file.name) modifiers wand 20
-  writeini $char(%dragonhunt.file.name) modifiers spear 70
-  writeini $char(%dragonhunt.file.name) modifiers scythe 70
-  writeini $char(%dragonhunt.file.name) modifiers GreatSword 70
-  writeini $char(%dragonhunt.file.name) modifiers bow 80
+  writeini $char(%dragonhunt.file.name) modifiers HandToHand 60
+  writeini $char(%dragonhunt.file.name) modifiers Whip 60
+  writeini $char(%dragonhunt.file.name) modifiers sword 70
+  writeini $char(%dragonhunt.file.name) modifiers gun 60
+  writeini $char(%dragonhunt.file.name) modifiers rifle 60
+  writeini $char(%dragonhunt.file.name) modifiers katana 70
+  writeini $char(%dragonhunt.file.name) modifiers wand 40
+  writeini $char(%dragonhunt.file.name) modifiers spear 80
+  writeini $char(%dragonhunt.file.name) modifiers scythe 80
+  writeini $char(%dragonhunt.file.name) modifiers GreatSword 85
+  writeini $char(%dragonhunt.file.name) modifiers bow 82
   writeini $char(%dragonhunt.file.name) modifiers glyph 75
 
   ; Add flying skill for older dragons

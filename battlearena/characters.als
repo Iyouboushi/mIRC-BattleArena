@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/11/17
+;;;; Last updated: 09/21/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1811,7 +1811,6 @@ character.dragonhunt {
   if (%dragonhunter.skill != $null) { inc %dragonhunt.chance %dragonhunter.skill }
 
   var %dragonhunt.randomnum $rand(1,100)
-  var %dragonhunt.randomnum 1
   if (%dragonhunt.randomnum > %dragonhunt.chance) { 
     $display.message($readini(translation.dat, errors, DragonHunt.NoLairFound), private) 
     halt

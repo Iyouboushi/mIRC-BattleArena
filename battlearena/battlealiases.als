@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/11/17
+;;;; Last updated: 09/21/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -869,6 +869,23 @@ boost_monster_hp {
     if ($augment.check($1, EnhanceBloodpact) = true) {  inc %max.summon.hp $calc(%augment.strength * 100) }
 
     if (%hp > %max.summon.hp) { var %hp %max.summon.hp }
+  }
+
+  if ((((%battle.type != dungeon) && (%battle.type != cosmic) && (%portal.bonus != true) && (%battle.type != torment)))) {
+    if (((%battle.type = boss) || (%battle.type = dragonhunt) || ($isfile($boss($1) = $true)))) { var %max.multiplier 3 }
+    else { var %max.multiplier 2 }
+
+    var %hp.per.level 50
+    if (%battle.type = dragonhunt) { var %hp.per.level 20 } 
+    if ($return_playersinbattle > 1) { inc %hp.per.level 15 }
+
+    var %maximum.hp $calc((%hp.per.level * $return_winningstreak) * %max.multiplier))
+
+    echo -a HP before: %hp
+
+    if (%hp > %maximum.hp) { var %hp %maximum.hp }
+
+    echo -a HP after: %hp
   }
 
   ; Write the monster's HP
