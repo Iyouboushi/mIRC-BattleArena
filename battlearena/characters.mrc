@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 03/14/17
+;;;; Last updated: 09/21/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -482,7 +482,7 @@ on 3:TEXT:!stats*:*: { unset %all_status
     if ($readini($char($2), stuff, EnhancementPoints) = $null) { writeini $char($2) stuff EnhancementPoints 0 }
     if ($readini($char($2), stuff, LoginPoints) = $null) { writeini $char($2) stuff LoginPoints 0 }
 
-    $display.private.message.delay.custom([4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($nick) $+ ] [4Armor Level12 $ilevel($nick) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ]  [4Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($2), stuff, LoginPoints) $+ ],1)
+    $display.private.message.delay.custom([4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($2) $+ ] [4Armor Level12 $ilevel($2) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ]  [4Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($2), stuff, LoginPoints) $+ ],1)
     $display.private.message.delay.custom([4Strength:12 $current.str($2) 3+ $+ $armor.stat($2,str) $+ ]  [4Defense:12 $current.def($2) 3+ $+ $armor.stat($2,def) $+ ] [4Intelligence:12 $current.int($2) 3+ $+ $armor.stat($2,int) $+ ][4Speed:12 $current.spd($2) 3+ $+ $armor.stat($2,spd) $+ ], 2)
     $display.private.message.delay.custom([4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],3)
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 03/14/17
+;;;; Last updated: 09/21/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -261,8 +261,8 @@ on 2:Chat:!look*: {
 }
 on 2:Chat:!level*: {
   if ($1 = !leveladjust) { halt }
-  if ($2 = $null) { $set_chr_name($nick) | var %player.level $bytes($round($get.level($nick),0),b) | $dcc.private.message($nick, $readini(translation.dat, system, ViewLevel)) | unset %real.name }
-  if ($2 != $null) { $checkscript($2-) | $checkchar($2) | $set_chr_name($2) | var %player.level $bytes($round($get.level($2),0),b) | $dcc.private.message($nick, $readini(translation.dat, system, ViewLevel)) | unset %real.name }
+  if ($2 = $null) { $set_chr_name($nick) | var %person.to.check $nick | var %player.level $iif(%portal.bonus = true, $bytes($get.full.level($nick),b), $bytes($round($get.level($nick),0),b)) | $dcc,private.message($nick, $readini(translation.dat, system, ViewLevel)) | unset %real.name }
+  if ($2 != $null) { $checkscript($2-) | $checkchar($2) | $set_chr_name($2) | var %person.to.check $2 | var %player.level $iif(%portal.bonus = true, $bytes($get.full.level($2),b), $bytes($round($get.level($2),0),b)) | $dcc.private.message($nick, $readini(translation.dat, system, ViewLevel)) | unset %real.name }
 }
 
 on 2:Chat:!stats*: { unset %all_status 
@@ -270,6 +270,13 @@ on 2:Chat:!stats*: { unset %all_status
     $battle_stats($nick) | $player.status($nick) | $weapon_equipped($nick) | $dcc.private.message($nick, $readini(translation.dat, system, HereIsYourCurrentStats))
     var %equipped.accessory $readini($char($nick), equipment, accessory) 
     if (%equipped.accessory = $null) { var %equipped.accessory nothing }
+    if (%equipped.accessory != $null) { var %equipped.accessory $equipment.color($readini($char($nick), equipment, accessory)) $+ %equipped.accessory }
+
+    if ($readini($char($nick), equipment, accessory2) != $null) { 
+      var %equipped.accessory2 $equipment.color($readini($char($nick), equipment, accessory2)) $+ $readini($char($nick), equipment, accessory2)
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+    }
+
     var %equipped.armor.head $readini($char($nick), equipment, head) 
     if (%equipped.armor.head = $null) { var %equipped.armor.head nothing }
     var %equipped.armor.body $readini($char($nick), equipment, body) 
@@ -288,20 +295,28 @@ on 2:Chat:!stats*: { unset %all_status
     if ($readini($char($nick), stuff, EnhancementPoints) = $null) { writeini $char($nick) stuff EnhancementPoints 0 }
     if ($readini($char($nick), stuff, LoginPoints) = $null) { writeini $char($nick) stuff LoginPoints 0 }
 
-    $dcc.private.message($nick, [4HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ ] [4TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($nick), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($nick), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($nick), stuff, LoginPoints) $+ ])
-    $dcc.private.message($nick, [4Strength12 %str $+ ]  [4Defense12 %def $+ ] [4Intelligence12 %int $+ ] [4Speed12 %spd $+ ])
-    $dcc.private.message($nick, [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $iif(%weapon.equipped.left != $null, 4and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
+    $dcc.private.message($nick, [4HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ ] [4TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($nick) $+ ] [4Armor Level12 $ilevel($nick) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($nick), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($nick), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($nick), stuff, LoginPoints) $+ ])
+    $dcc.private.message($nick, [4Strength:12 $current.str($nick) 3+ $+ $armor.stat($nick,str) $+ ]  [4Defense:12 $current.def($nick) 3+ $+ $armor.stat($nick,def) $+ ] [4Intelligence:12 $current.int($nick) 3+ $+ $armor.stat($nick,int) $+ ][4Speed:12 $current.spd($nick) 3+ $+ $armor.stat($nick,spd) $+ ])
+    $dcc.private.message($nick, [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
     unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right 
     unset %weapon.equipped.left 
-
   }
   else { 
     $checkchar($2) 
     var %flag $readini($char($2), info, flag)
     if ((%flag = monster) || (%flag = npc)) { $dcc.private.message($nick, $readini(translation.dat, errors, SkillCommandOnlyOnPlayers)) | halt }
     $battle_stats($2) | $player.status($2) | $weapon_equipped($2) | $dcc.private.message($nick, $readini(translation.dat, system, HereIsOtherCurrentStats))
+
+
     var %equipped.accessory $readini($char($2), equipment, accessory) 
     if (%equipped.accessory = $null) { var %equipped.accessory nothing }
+    if (%equipped.accessory != $null) { var %equipped.accessory $equipment.color($readini($char($2), equipment, accessory)) $+ %equipped.accessory }
+
+    if ($readini($char($2), equipment, accessory2) != $null) { 
+      var %equipped.accessory2 $equipment.color($readini($char($2), equipment, accessory2)) $+ $readini($char($2), equipment, accessory2)
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+    }
+
     var %equipped.armor.head $readini($char($2), equipment, head) 
     if (%equipped.armor.head = $null) { var %equipped.armor.head nothing }
     var %equipped.armor.body $readini($char($2), equipment, body) 
@@ -320,12 +335,11 @@ on 2:Chat:!stats*: { unset %all_status
     if ($readini($char($2), stuff, EnhancementPoints) = $null) { writeini $char($2) stuff EnhancementPoints 0 }
     if ($readini($char($2), stuff, LoginPoints) = $null) { writeini $char($2) stuff LoginPoints 0 }
 
-    $dcc.private.message($nick, [4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($2), stuff, LoginPoints) $+ ])
-    $dcc.private.message($nick, [4Strength12 %str $+ ]  [4Defense12 %def $+ ] [4Intelligence12 %int $+ ] [4Speed12 %spd $+ ])
-    $dcc.private.message($nick, [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $iif(%weapon.equipped.left != $null, 4and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
+    $dcc.private.message($nick, [4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($2) $+ ] [4Armor Level12 $ilevel($2) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($2), stuff, LoginPoints) $+ ])
+    $dcc.private.message($nick, [4Strength:12 $current.str($2) 3+ $+ $armor.stat($2,str) $+ ]  [4Defense:12 $current.def($2) 3+ $+ $armor.stat($2,def) $+ ] [4Intelligence:12 $current.int($2) 3+ $+ $armor.stat($2,int) $+ ][4Speed:12 $current.spd($2) 3+ $+ $armor.stat($2,spd) $+ ])
+    $dcc.private.message($nick, [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
     unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right 
-    unset %weapon.equipped.left  
-
+    unset %weapon.equipped.left 
   }
 }
 on 2:CHAT:!misc info*: { 

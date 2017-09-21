@@ -1708,7 +1708,7 @@ alias generate_battle_order {
   unset %battle.speed
 
   ; increase the current turn.
-  if (%battle.type != defendoutpost) { inc %current.turn 1 | inc %true.turn 1 }
+  inc %current.turn 1 | inc %true.turn 1
 
   ; Count the total number of monsters in battle
   $count.monsters
@@ -1734,21 +1734,23 @@ alias generate_battle_order {
   }
 
   ; Check for darkness warning
-  if (%darkness.fivemin.warn != true) { 
+  if (%battle.type != defendoutpost) { 
+    if (%darkness.fivemin.warn != true) { 
 
-    if (%holy.aura.turn != $null) {
-      if (%holy.aura.turn = %current.turn) { unset %holy.aura.turn | $holy_aura_end }
+      if (%holy.aura.turn != $null) {
+        if (%holy.aura.turn = %current.turn) { unset %holy.aura.turn | $holy_aura_end }
+      }
+
+      if (($calc(%darkness.turns - %current.turn) <= 5) && (%darkness.fivemin.warn != true)) { $battle_rage_warning }
     }
-
-    if (($calc(%darkness.turns - %current.turn) <= 5) && (%darkness.fivemin.warn != true)) { $battle_rage_warning }
-  }
-  if (%darkness.fivemin.warn = true) { 
-    ; Check for darkness
-    if (%battle.rage.darkness != on) { 
-      if (%current.turn >= %darkness.turns) { $battle_rage }
+    if (%darkness.fivemin.warn = true) { 
+      ; Check for darkness
+      if (%battle.rage.darkness != on) { 
+        if (%current.turn >= %darkness.turns) { $battle_rage }
+      }
     }
-
   }
+
 }
 
 ; ==========================
