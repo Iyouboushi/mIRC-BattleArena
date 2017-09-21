@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/11/17
+;;;; Last updated: 09/20/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -38,6 +38,32 @@ system_defaults_check {
   if (%help_folder = $null) { set %help_folder help-files\ }
   if (%battleis = $null) { set %battleis off }
   if (%battleisopen = $null) { set %battleisopen off }
+
+  ; Check to see if all the remotes are loaded (except control.mrc as that causes an infinite loop)
+  /.load -rs characters.mrc 
+  /.load -rs ai.mrc
+  /.load -rs battlecontrol.mrc
+  /.load -rs attacks.mrc
+  /.load -rs techs.mrc
+  /.load -rs mechs.mrc
+  /.load -rs items.mrc
+  /.load -rs shop.mrc
+  /.load -rs style.mrc
+  /.load -rs skills.mrc 
+  /.load -rs auctionhouse.mrc
+  /.load -rs achivements.mrc
+  /.load -rs shopnpcs.mrc
+  /.load -rs garden.mrc
+  /.load -rs help.mrc
+  /.load -rs dccchat.mrc
+
+  ; Check to see if the aliases are loaded (except this one as it'd cause a loop)
+  /.load -a characters.als
+  /.load -a battlealiases.als
+  /.load -a  battleformulas.als
+  /.load -a dungeons.als
+  /.load -a bossaliases.als
+  /.load -a scoreboard.als
 
   var %last.system.dat.version $readini(system.dat, version, SystemDatVersion)
   if (%last.system.dat.version != $system.dat.version) { 
@@ -286,32 +312,6 @@ system_defaults_check {
 
     writeini system.dat version SystemDatVersion $system.dat.version
   }
-
-  ; Check to see if all the remotes are loaded (except control.mrc as that causes an infinite loop)
-  /.load -rs characters.mrc 
-  /.load -rs ai.mrc
-  /.load -rs battlecontrol.mrc
-  /.load -rs attacks.mrc
-  /.load -rs techs.mrc
-  /.load -rs mechs.mrc
-  /.load -rs items.mrc
-  /.load -rs shop.mrc
-  /.load -rs style.mrc
-  /.load -rs skills.mrc 
-  /.load -rs auctionhouse.mrc
-  /.load -rs achivements.mrc
-  /.load -rs shopnpcs.mrc
-  /.load -rs garden.mrc
-  /.load -rs help.mrc
-  /.load -rs dccchat.mrc
-
-  ; Check to see if the aliases are loaded (except this one as it'd cause a loop)
-  /.load -a characters.als
-  /.load -a battlealiases.als
-  /.load -a  battleformulas.als
-  /.load -a dungeons.als
-  /.load -a bossaliases.als
-  /.load -a scoreboard.als
 
   ; Remove files that are no longer needed.
   .remove $npc(Soifon)
