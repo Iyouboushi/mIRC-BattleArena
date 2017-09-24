@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 09/21/17
+;;;; Last updated: 09/24/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -260,9 +260,10 @@ on 3:TEXT:!level*:#: { $checkscript($2-)
 }
 on 3:TEXT:!level*:?: { 
   if ($1 = !leveladjust) { halt }
-  if ($2 = $null) { $set_chr_name($nick) | var %player.level $bytes($round($get.level($nick),0),b) | $display.private.message($readini(translation.dat, system, ViewLevel)) | unset %real.name }
-  if ($2 != $null) { $checkscript($2-) | $checkchar($2) | $set_chr_name($2) | var %player.level $bytes($round($get.level($2),0),b) | $display.private.message($readini(translation.dat, system, ViewLevel)) | unset %real.name }
+  if ($2 = $null) { $set_chr_name($nick) | var %person.to.check $nick | var %player.level $iif(%portal.bonus = true, $bytes($get.full.level($nick),b), $bytes($round($get.level($nick),0),b)) | $display.private.message($readini(translation.dat, system, ViewLevel)) | unset %real.name }
+  if ($2 != $null) { $checkscript($2-) | $checkchar($2) | $set_chr_name($2) | var %person.to.check $2 | var %player.level $iif(%portal.bonus = true, $bytes($get.full.level($2),b), $bytes($round($get.level($2),0),b)) | $display.private.message($readini(translation.dat, system, ViewLevel)) | unset %real.name }
 }
+
 
 on 50:TEXT:!level sync*:#: { $checkscript($2-)
   if ($1 = !leveladjust) { halt }
