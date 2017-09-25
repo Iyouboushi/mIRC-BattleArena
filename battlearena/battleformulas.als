@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/14/17
+;;;; Last updated: 09/25/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous
 ; to have so many damage formulas
@@ -901,6 +901,7 @@ formula.techdmg.player.formula {
 
   ; Check for status effects
   if ((%guard.message = $null) && (%attack.damage > 0)) {
+    var %status.type.list $readini($dbfile(techniques.db), $2, StatusType)
     if (%status.type.list != $null) { 
       set %number.of.statuseffects $numtok(%status.type.list, 46) 
 
