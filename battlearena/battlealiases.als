@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/21/17
+;;;; Last updated: 09/27/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -880,12 +880,9 @@ boost_monster_hp {
     if ($return_playersinbattle > 1) { inc %hp.per.level 15 }
 
     var %maximum.hp $calc((%hp.per.level * $return_winningstreak) * %max.multiplier))
-
-    echo -a HP before: %hp
+    if (%maximum.hp = 0) { var %maximum.hp 50 }
 
     if (%hp > %maximum.hp) { var %hp %maximum.hp }
-
-    echo -a HP after: %hp
   }
 
   ; Write the monster's HP
