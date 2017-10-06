@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 06/11/17
+;;;; Last updated: 10/05/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -451,7 +451,9 @@ alias tech.abilitytoperform {
   }
 
   set %weapon.abilities $readini($dbfile(techniques.db), Techs, $3)
-  if (%weapon.equipped.left != $null) { %weapon.abilities = $addtok(%weapon.abilities, $readini($dbfile(techniques.db), Techs, %weapon.equipped.left), 46) } 
+  if (%battle.type != cosmic) { 
+    if (%weapon.equipped.left != $null) { %weapon.abilities = $addtok(%weapon.abilities, $readini($dbfile(techniques.db), Techs, %weapon.equipped.left), 46) } 
+  }
 
   if ($istok(%weapon.abilities,$2,46) = $false) { unset %weapon.abilities |  $set_chr_name($1) | $display.message($readini(translation.dat, errors, Can'tPerformTechWithWeapon),private) | halt }
 
