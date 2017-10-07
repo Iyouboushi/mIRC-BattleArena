@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/22/17
+;;;; Last updated: 10/07/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3609,6 +3609,33 @@ give_random_key_reward {
   unset %key.list | unset %key.item | unset %players.list | unset %random | unset %key.item | unset %current.amount | unset %key.winner | unset %key.color
 }
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Gives a random capsule reward
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+give.random.capsule {
+  var %random.capsule.chance $rand(1,100)
+
+  if (%random.capsule.chance <= 5) { return }
+
+  unset %battle.list | set %lines $lines($txtfile(battle.txt)) | set %l 1
+  while (%l <= %lines) { 
+    set %who.battle $read -l [ $+ [ %l ] ] $txtfile(battle.txt) | set %status.battle $readini($char(%who.battle), Battle, Status)
+    if (%status.battle = dead) { inc %l 1 }
+    else { 
+      if ($readini($char(%who.battle), info, flag) = $null) { %players.list = $addtok(%players.list, %who.battle, 46) }
+      inc %l 1 
+    } 
+  }
+  unset %lines | unset %l 
+
+  if (%players.list = $null) { return }
+
+  ; the rest is to be added soon
+
+}
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Checks for an augment
 ; and returns true/false
@@ -4547,6 +4574,9 @@ dragonhunt.check {
   var %dragon.create.time 43200
   var %players.average.level $total.player.averagelevel
 
+  if ((%players.average.level > 500) && (%players.average.level <= 1000)) { var %dragon.create.time 32000 }
+  if (%players.average.level > 1000) { var %dragon.create.time 28000 }
+
   if (%dragon.time.difference >= %dragon.create.time) {
     var %dragon.createchance $rand(1,100)
     if (%dragon.createchance <= 55) { $dragonhunt.createdragon }
@@ -4643,7 +4673,9 @@ dragonhunt.createdragon {
   var %dragonhunts.dead $readini(battlestats.dat, Battle, DragonHuntDragons.Killed)
   if (%dragonhunts.dead = $null) { var %dragonhunts.dead 0 }
 
-  inc %dragon.age $round($calc($log(%dragonhunts.dead) * 15),0)
+  inc %dragon.age $round($calc($log(%dragonhunts.dead) * 12),0)
+
+  ; To-do: If the Allied Forces have been sent on a mission to bomb new dragons, cut the age in half and clear the mission
 
   ; Write the age (i.e. level)
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age

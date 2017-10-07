@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/11/17
+;;;; Last updated: 10/07/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2047,6 +2047,8 @@ alias battle.end.victory {
     }
 
 
+    $give.random.capsule
+
     $show.random.reward
   }
 
@@ -2683,10 +2685,10 @@ alias battle.reward.redorbs {
       ; Nerf or boost the orbs based on the winning streak
       set %base.redorbs %original.baseredorbs
 
-      if ((%base.redorbs <= 5000) && (%battle.type = defendoutpost)) { set %base.redorbs 5000 }
-      if ((%base.redorbs <= 5000) && (%battle.type = assault)) { set %base.redorbs 5000 }
-      if ((%base.redorbs <= 8000) && (%battle.type = dragonhunt)) { set %base.redorbs $rand(8000, 9000) }
-      if ((%base.redorbs <= 10000) && (%battle.type = torment)) { set %base.redorbs 10000 }
+      if ((%base.redorbs <= 5000) && (%battle.type = defendoutpost)) { set %base.redorbs 2000 }
+      if ((%base.redorbs <= 5000) && (%battle.type = assault)) { set %base.redorbs 2000 }
+      if ((%base.redorbs <= 8000) && (%battle.type = dragonhunt)) { set %base.redorbs $rand(5000, 7000) }
+      if ((%base.redorbs <= 10000) && (%battle.type = torment)) { set %base.redorbs 1000 }
 
       ; Dungeon clear bonus
       if ($2 = true) { 
@@ -2882,7 +2884,7 @@ alias battle.reward.blackorbs {
 
 alias battle.reward.killcoins {
   set %debug.location battle.reward.killcoins
-  var %original.basecoins 1
+  var %original.basecoins 5
 
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
@@ -2898,8 +2900,7 @@ alias battle.reward.killcoins {
       if ((%base.coins <= 8000) && (%battle.type = dragonhunt)) { set %base.coins 3 }
       if ((%base.coins <= 10000) && (%battle.type = torment)) { set %base.coins 1 }
 
-
-      ; Adjust the orbs
+      ; Adjust the coins
 
       if ($readini($char(%who.battle), battle, status) = runaway) { var %total.coins.reward $round($calc(%base.coins / 2.5),0) }
       if ($readini($char(%who.battle), battle, status) != runaway) { var %total.coins.reward %base.coins }
@@ -2950,7 +2951,6 @@ alias battle.reward.killcoins {
       inc %current.coins.onhand %total.coins.reward
       writeini $char(%who.battle) stuff killcoins %current.coins.onhand
 
-
       ; Clear certain potion effects
       if ($return.potioneffect(%who.battle) = Kill Coin Bonus) { writeini $char(%who.battle) status PotionEffect none }
 
@@ -2963,7 +2963,6 @@ alias battle.reward.killcoins {
 ; ===========================
 ; REWARD PLAYER STYLE XP
 ; ===========================
-
 alias battle.reward.playerstylexp {
   set %debug.location battle.reward.playerstyleexp
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
@@ -3032,7 +3031,6 @@ alias turn.statuscheck {
   unset %all_skills | unset %all_status
 
   if ($lines($txtfile(temp_status.txt)) != $null) {   /.remove $txtfile(temp_status.txt) }
-
 
   $ignition_check($1) 
 
