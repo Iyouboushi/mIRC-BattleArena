@@ -2685,10 +2685,10 @@ alias battle.reward.redorbs {
       ; Nerf or boost the orbs based on the winning streak
       set %base.redorbs %original.baseredorbs
 
-      if ((%base.redorbs <= 5000) && (%battle.type = defendoutpost)) { set %base.redorbs 2000 }
-      if ((%base.redorbs <= 5000) && (%battle.type = assault)) { set %base.redorbs 2000 }
-      if ((%base.redorbs <= 8000) && (%battle.type = dragonhunt)) { set %base.redorbs $rand(5000, 7000) }
-      if ((%base.redorbs <= 10000) && (%battle.type = torment)) { set %base.redorbs 1000 }
+      if ((%base.redorbs <= 2000) && (%battle.type = defendoutpost)) { set %base.redorbs 2000 }
+      if ((%base.redorbs <= 2000) && (%battle.type = assault)) { set %base.redorbs 2000 }
+      if ((%base.redorbs <= 5000) && (%battle.type = dragonhunt)) { set %base.redorbs $rand(5000, 7000) }
+      if ((%base.redorbs <= 1000) && (%battle.type = torment)) { set %base.redorbs 1000 }
 
       ; Dungeon clear bonus
       if ($2 = true) { 

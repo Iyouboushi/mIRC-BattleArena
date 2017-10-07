@@ -3768,7 +3768,7 @@ accessory.check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 orb.adjust {
   var %winning.streak $return_winningstreak
-  if (%base.redorbs < 1000) { return }
+  if (%base.redorbs < 2000) { return }
 
   if (%mode.gauntlet.wave != $null) { inc %winning.streak %mode.gauntlet.wave }      
 
@@ -3788,10 +3788,10 @@ orb.adjust {
   if (%battle.type = cosmic) { var %winning.streak $calc(500 + %cosmic.level) }
 
   if (%winning.streak < 50) { var %orb.tier -1 }
-  if ((%winning.streak >= 50) && (%winning.streak < 100)) { var %orb.tier 0 }
-  if ((%winning.streak >= 100) && (%winning.streak < 200)) { var %orb.tier 1 }
-  if ((%winning.streak >= 200) && (%winning.streak < 300)) { var %orb.tier 2 }
-  if ((%winning.streak >= 300) && (%winning.streak < 500)) { var %orb.tier 3 }
+  if ((%winning.streak >= 50) && (%winning.streak < 150)) { var %orb.tier 0 }
+  if ((%winning.streak >= 150) && (%winning.streak < 250)) { var %orb.tier 1 }
+  if ((%winning.streak >= 250) && (%winning.streak < 350)) { var %orb.tier 2 }
+  if ((%winning.streak >= 350) && (%winning.streak < 500)) { var %orb.tier 3 }
   if ((%winning.streak >= 500) && (%winning.streak < 800)) { var %orb.tier 4 }
   if ((%winning.streak >= 800) && (%winning.streak < 1000)) { var %orb.tier 5 }
   if ((%winning.streak >= 1000) && (%winning.streak < 1200)) { var %orb.tier 6 }
