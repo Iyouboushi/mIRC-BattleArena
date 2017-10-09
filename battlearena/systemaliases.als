@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/08/17
+;;;; Last updated: 10/09/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3822,23 +3822,23 @@ orb.adjust {
 
   if ((%moon.phase = Blood Moon) && (%winning.streak > 50)) { inc %orb.tier 1 }
 
-  if (%orb.tier <= -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .20)),0) }
-  if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .45)),0) }
-  if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .50)),0) }
+  if (%orb.tier <= -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .10)),0) }
+  if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .35)),0) }
+  if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .45)),0) }
   if (%orb.tier = 1) { return }
-  if (%orb.tier = 2) { set %base.redorbs $round($calc(%base.redorbs * 1.65),0) }
-  if (%orb.tier = 3) { set %base.redorbs $round($calc(%base.redorbs * 1.755),0) }
-  if (%orb.tier = 4) { set %base.redorbs $round($calc(%base.redorbs * 1.812),0) }
-  if (%orb.tier = 5) { set %base.redorbs $round($calc(%base.redorbs * 1.898),0) }
-  if (%orb.tier = 6) { set %base.redorbs $round($calc(%base.redorbs * 2.390),0) }
-  if (%orb.tier = 7) { set %base.redorbs $round($calc(%base.redorbs * 2.55),0) }
-  if (%orb.tier = 8) { set %base.redorbs $round($calc(%base.redorbs * 2.98),0) }
-  if (%orb.tier = 9) { set %base.redorbs $round($calc(%base.redorbs * 3.25),0) }
-  if (%orb.tier = 10) { set %base.redorbs $round($calc(%base.redorbs * 4),0) }
-  if (%orb.tier = 11) { set %base.redorbs $round($calc(%base.redorbs * 4.1),0) }
-  if (%orb.tier = 12) { set %base.redorbs $round($calc(%base.redorbs * 4.2),0) }
+  if (%orb.tier = 2) { set %base.redorbs $round($calc(%base.redorbs * 1.35),0) }
+  if (%orb.tier = 3) { set %base.redorbs $round($calc(%base.redorbs * 1.455),0) }
+  if (%orb.tier = 4) { set %base.redorbs $round($calc(%base.redorbs * 1.512),0) }
+  if (%orb.tier = 5) { set %base.redorbs $round($calc(%base.redorbs * 1.598),0) }
+  if (%orb.tier = 6) { set %base.redorbs $round($calc(%base.redorbs * 2.190),0) }
+  if (%orb.tier = 7) { set %base.redorbs $round($calc(%base.redorbs * 2.25),0) }
+  if (%orb.tier = 8) { set %base.redorbs $round($calc(%base.redorbs * 2.38),0) }
+  if (%orb.tier = 9) { set %base.redorbs $round($calc(%base.redorbs * 2.55),0) }
+  if (%orb.tier = 10) { set %base.redorbs $round($calc(%base.redorbs * 3),0) }
+  if (%orb.tier = 11) { set %base.redorbs $round($calc(%base.redorbs * 3.1),0) }
+  if (%orb.tier = 12) { set %base.redorbs $round($calc(%base.redorbs * 3.2),0) }
 
-  if (%battle.type = dragonhunt) { set %base.redorbs $round($calc(%base.redorbs * 1.85),0) }
+  if (%battle.type = dragonhunt) { set %base.redorbs $round($calc(%base.redorbs * 1.55),0) }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

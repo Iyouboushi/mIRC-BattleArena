@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 06/29/17
+;;;; Last updated: 10/09/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -1258,6 +1258,13 @@ alias item.food {
     inc %current.redorbs %food.bonus
     writeini $char($2) stuff redorbs %current.redorbs
     var %food.type Red Orbs
+  }
+
+  if (%food.type = killcoins) {
+    var %current.coins $return.killcoin.count($2) 
+    inc %current.coins %food.bonus
+    writeini $char($2) stuff killcoins %current.coins
+    var %food.type Kill Coins
   }
 
   if (%food.type = blackorbs) {

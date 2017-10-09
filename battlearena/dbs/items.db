@@ -883,9 +883,9 @@ Exclusive=yes
 
 [TreasureMap]
 Type=food
-Target=redorbs
-Amount=$rand(1000,2000)
-Desc=takes out old pirate map and hands it to %enemy who then uses it to discover a chest full of red orbs. Yarr!
+Target=killcoins
+Amount=$rand(5,20)
+Desc=takes out old pirate map and hands it to %enemy who then uses it to discover a chest containing some kill coins. Yarr!
 Cost=0
 SellPrice=50
 Exclusive=yes
