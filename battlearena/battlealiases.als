@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/27/17
+;;;; Last updated: 10/08/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1578,9 +1578,9 @@ display_aoedamage {
   if (%guard.message = $null) { $display.message($readini(translation.dat, tech, DisplayAOEDamage), battle)  }
   if (%guard.message != $null) { $display.message(%guard.message, battle) | unset %guard.message }
 
+  unset %statusmessage.display
+
   if (%target = $null) { set %target $2 }
-
-
 
 
   if ($4 = absorb) { 

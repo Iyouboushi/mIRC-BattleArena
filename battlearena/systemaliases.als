@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/07/17
+;;;; Last updated: 10/08/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3322,7 +3322,7 @@ clear_variables2 {
   unset %number.of monsters.needed | unset %battle.level.cap | unset %percent.increase
   unset %monster.info.streak.max | unset %monster.info.streak | unset %supplyrun | unset %healthbar.char
   unset %total.targets | unset %random.target | unset %acessory.found | unset %accessory.amount
-  unset %magic.bonus.modifier
+  unset %magic.bonus.modifier | unset %accessory.found | unset %number.of.augments
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
