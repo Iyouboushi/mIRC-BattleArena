@@ -34,7 +34,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a female android with red eyes and long blue hair. She wears a mostly blue and white outfit, along with a large blue and white visor. She analyzes the battlefield and says, "Eliminating enemy threat."
+Char=is a female battle android with red eyes and long blue hair. She wears a mostly blue and white outfit, along with a large blue and white visor. She analyzes the battlefield and says, "Eliminating enemy threat."
 Rage=quietly analyzes the battlefield.
 
 
@@ -152,12 +152,18 @@ slime-killer=25
 
 [Techniques]
 R-Cannon=$round($calc(1 + (($current.battlestreak / 2))))
+R-Blade=$round($calc(1 + (($current.battlestreak / 2))))
+R-Dragon=$round($calc(1 + (($current.battlestreak / 2))))
+F-Scythe=$round($calc(1 + (($current.battlestreak / 2))))
+R-Drill=$round($calc(1 + (($current.battlestreak / 2))))
+F-RShot=$round($calc(1 + (($current.battlestreak / 2))))
+K-Axe=$round($calc(1 + (($current.battlestreak / 2))))
+K-Valkyrie=$round($calc(1 + (($current.battlestreak / 2))))
 Hilbert_Effect=1
 S-Chain=1
 DexEtherRa=$round($calc(1 + (($current.battlestreak / 2))))
 DexEtherFa=$round($calc(1 + (($current.battlestreak / 2))))
 DexEtherLe=$round($calc(1 + (($current.battlestreak / 2))))
-
 
 [Ignitions]
 Animus=$iif($current.battlestreak < 200, 0, 1)

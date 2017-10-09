@@ -126,6 +126,9 @@ Dragon_Claw=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Item_Amount]
 
+[Ignitions]
+MegaCharizardX=$iif($item.amount($readini($char($1), Info, Owner), Mega_Stone-Prototype) >= 1, 1, 0)
+MegaCharizardY=$iif($item.amount($readini($char($1), Info, Owner), Mega_Stone-Prototype) >= 1, 1, 0)
 
 [modifiers]
 Heal=Fire

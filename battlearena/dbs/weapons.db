@@ -32,14 +32,14 @@ Misc=Misc
 
 [Weapons]
 HandToHand=Fists.Cerberus.Ifrit.Verethragna.Spharai.KaiserKnuckles.Oatixur.AntlionClaws.Spharai+1
-Swords=ForgedSword.Mythril_Sword.Cutlass.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword
-Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1.Mastermune
+Swords=ForgedSword.Mythril_Sword.Cutlass.Joyeuse.Agni.Rudra.Excalibur.Excalibur+1.Murgleis.JewelSword.TrueMasterSword
+Swords2=LexTalionis.Soulsaber.Almace.SilverSword.MasterSword.Xiutleato.Z-Sword.Z-Sword+1.Mastermune.SilverSword+1
 Whips=BlackWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.DragontailWhip.Vampire_Killer+1.DemonWhip+1
 Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.BlueRose.TacticalPistol
 Guns2=SamuraiEdge.SamuraiEdge-I.SamuraiEdge-F.SamuraiEdge-E.SamuraiEdge-M
 Rifles=HuntingRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle.TacticalShotgun.RocketLauncher.Thunderclap
 Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.CompoundBow.CompoundBow+1
-Katanas=SmallKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1
+Katanas=SmallKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1.Yamato+1
 Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Sacrament.Lazarus.Ichimonji-Yofusa
 Wands=WoodenWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold.Seveneyes
 Staves=WoodenStaff.IridialStaff.Laevatein.Uffrat.BahamutsStaff.Laevatein+1.BahamutsStaff+1
@@ -71,7 +71,7 @@ MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.Iron
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.Excalipoor
 
-MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder
+MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth
 
 ============================================
 WEAPON TEMPLATE
@@ -142,7 +142,7 @@ Info=It's your fists.  They are not detachable.
 Abilities=DoublePunch.ShoulderTackle.SpinningAttack
 Element=none
 Hits=2
-BasePower=10
+BasePower=5
 Upgrade=2000
 2Handed=true
 
@@ -455,7 +455,7 @@ MinLevel=100
 Cost=0
 Type=Sword
 Info=A powerful Holy sword created with Masa, Mune, and Doreen. Outside of torment this weapon has a power of 800 with 20% ignore defense but inside torment the power is 1600 with 40% ignore defense.
-Abilities=GrandDream.SavageBlade.Flatblade
+Abilities=GrandDream.SavageBladeII.FlatbladeII
 Element=Light
 Hits=$rand(1,2)
 BasePower=$iif(%battle.type = torment, 1600, 800)
@@ -467,6 +467,40 @@ SpecialWeapon=True
 Legendary=True
 MinLevel=2000
 TormentWeapon=true
+
+[SilverSword+1]
+Cost=0
+Type=Sword
+Info=A reforged version of the Elvish Silver Sword that contains the power of lightning. Outside of torment this weapon has a power of 800 with 20% ignore defense but inside torment the power is 1600 with 40% ignore defense.
+Abilities=Twin_SliceII.LightningStrikeII.BladeBeamIII
+Element=Lightning
+Hits=$rand(1,2)
+BasePower=$iif(%battle.type = torment, 1600, 800)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
+HurtEthereal=True
+2Handed=false
+SpecialWeapon=True
+Legendary=True
+MinLevel=2000
+TormentWeapon=true
+
+[TrueMasterSword]
+Cost=0
+Type=Sword
+Info=The true version of the Master Sword, evil's bane. Outside of torment this weapon has a power of 800 with 20% ignore defense but inside torment the power is 1600 with 40% ignore defense.
+Abilities=SwiftBladeII.SkywardStrikeII.HurricaneSpinII
+Element=Light
+Hits=$rand(1,2)
+BasePower=$iif(%battle.type = torment, 1600, 800)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
+HurtEthereal=true
+2Handed=false
+SpecialWeapon=True
+Legendary=True
+MinLevel=2000
+TormentWeapon=True
 
 =============================================
 GREAT SWORDS
@@ -1003,7 +1037,7 @@ MinLevel=150
 Cost=0
 Type=Rifle
 Info=A gilded break-action shotgun that deals heavy fire damage and isn't quiet about it, hence the name. Outside of torment this weapon has a power of 800 with 20% ignore defense but inside torment the power is 1600 with 40% ignore defense.
-Abilities=HotShotII.ChargedShotII.BlastShotII
+Abilities=HotShotIII.ChargedShotIII.BlastShotIII
 Element=Fire
 Hits=2
 BasePower=$iif(%battle.type = torment, 1600, 800)
@@ -1711,6 +1745,23 @@ Upgrade=6000
 IgnoreDefense=10
 MinLevel=100
 
+[Yamato+1]
+Cost=0
+Type=Katana
+Info=A reforged version of Vergil's legendary katana. Outside of torment this weapon has a power of 950 with 20% ignore defense but inside torment the power is 1800 with 40% ignore defense.
+Abilities=JudgementCutII.SummonedSwords.RisingStar.AerialRave.DevilTriggerII
+Element=Dark
+Hits=$rand(1,2)
+BasePower=$iif(%battle.type = torment, 1800, 950)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
+HurtEthereal=true
+2Handed=true
+SpecialWeapon=True
+Legendary=True
+MinLevel=2000
+TormentWeapon=True
+
 =============================================
 LIGHTSABERS
 =============================================
@@ -1731,7 +1782,7 @@ IgnoreDefense=10
 Cost=0
 Type=LaserSword
 Info=An ancient Jedi weapon that creates a powerful plasma beam. Outside of Torment battles the lightsaber has a 1000 power and ignores 10% defense. Inside of Torment the lightsaber has a power of 2000 and ignores 20% defense.
-Abilities=ForcePush
+Abilities=ForceBlast
 Hits=$rand(1,3)
 BasePower=$iif(%battle.type = torment, 2000, 1000)
 Upgrade=6000
@@ -1835,18 +1886,18 @@ MinLevel=100
 Cost=0
 Type=Wand
 Info=A unique wand that relies on reagents for its power. Outside of Torment battles the staff has a 200 power and ignores 10% defense. Inside of Torment the staff has a power of 600 and ignores 20% defense.
-Abilities=Fira.Stonera.Watera.Aera.Blizzara.Thundara.DarkraIII.HolyIII
+Abilities=Fira.Stonera.Watera.Aera.Blizzara.Thundara.DarkraIII.HolyIII.Curaja
 Element=None
 Hits=1
-BasePower=$iif(%battle.type = torment, 600, 200)
+BasePower=$iif(%battle.type = torment, 1800, 800)
 Upgrade=7000
-IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
 2Handed=false
 AmmoRequired=Reagent
 AmmoAmountNeeded=4
 SpecialWeapon=true
 Legendary=True
-MinLevel=500
+MinLevel=2000
 TormentWeapon=true
 
 [WoodenStaff]
@@ -1922,7 +1973,7 @@ Upgrade=500
 Cost=80
 Type=Glyph
 Info=Powerful magical energy used by the Order of Ecclesia that can become a variety of weapons and spells.
-Abilities=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
+Abilities=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus.Medico.Remedium
 Element=None
 Hits=2
 BasePower=65
@@ -1932,47 +1983,54 @@ Upgrade=3000
 [Glyphs+1]
 Cost=0
 Type=Glyph
-Info=A refined version of the magical glyphs created by the Order of Ecclesia. Outside of Torment battles the glyphs have a power of 200 and ignores 10% defense. Inside of Torment the glyphs have a power of 450 and ignores 20% defense.
-Abilities=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
+Info=A refined version of the magical glyphs created by the Order of Ecclesia. Outside of Torment battles the glyphs have a power of 400 and ignores 20% defense. Inside of Torment the glyphs have a power of 800 and ignores 40% defense.
+Abilities=IgnisII.GrandoII.FulgurII.NitescoII.GlobusII.AcerbatusII.LuminatioII.DominusII.MedicoII.RemediumII
 Hits=2
-BasePower=$iif(%battle.type = torment, 450, 200)
+BasePower=$iif(%battle.type = torment, 800, 400)
 HurtEthereal=True
 Upgrade=6000
 Element=none
 2Handed=true
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
-MinLevel=500
+Legendary=True
+MinLevel=2000
 TormentWeapon=true
 
 [Laevatein+1]
 Cost=0
 Type=Stave
-Info=A reforged version of the Laevatein. Outside of Torment battles the staff has a 250 power and ignores 10% defense. Inside of Torment the staff has a power of 700 and ignores 20% defense.
-Abilities=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
+Info=A reforged version of the Laevatein. Outside of Torment battles the staff has a 1000 power and ignores 20% defense. Inside of Torment the staff has a power of 2000 and ignores 40% defense.
+Abilities=FlareIII.QuakeIII.FloodIII.TornadoIII.FreezeIII.BurstIII.CureVI.DarknessIII.LightIII
 Element=None
 Hits=1
-BasePower=$iif(%battle.type = torment, 700, 250)
+BasePower=$iif(%battle.type = torment, 2000, 1000)
 Upgrade=7000
-IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
 2Handed=true
+AmmoRequired=Reagent
+AmmoAmountNeeded=4
 SpecialWeapon=true
-MinLevel=500
+Legendary=True
+MinLevel=2000
 TormentWeapon=true
 
 [BahamutsStaff+1]
 Cost=0
 Type=Stave
-Info=A reforged version of the Bahamut's Staff. Outside of Torment battles the staff has a 200 power and ignores 10% defense. Inside of Torment the staff has a power of 600 and ignores 20% defense.
-Abilities=Ultima.Kaustra
+Info=A reforged version of the Bahamut's Staff. Outside of Torment battles the staff has a 500 power and ignores 25% defense. Inside of Torment the staff has a power of 900 and ignores 25% defense.
+Abilities=UltimaIII.KaustraIII
 Element=None
 Hits=3
-BasePower=$iif(%battle.type = torment, 600, 200)
+BasePower=$iif(%battle.type = torment, 900, 500)
 Upgrade=7000
-IgnoreDefense=$iif(%battle.type = torment, 20, 10)
+IgnoreDefense=$iif(%battle.type = torment, 25, 15)
 2Handed=true
+AmmoRequired=Reagent
+AmmoAmountNeeded=4
 SpecialWeapon=true
-MinLevel=500
+Legendary=True
+MinLevel=2000
 TormentWeapon=true
 
 =============================================
@@ -3218,7 +3276,7 @@ BasePower=10
 Cost=0
 Type=HandtoHand
 Info=You can't buy this!
-Abilities=Maelstrom.InkJet.Tentacle
+Abilities=Maelstrom.InkJet.Tentacle.Ink_Blot.World's_End.Seawater_Cannon.KrakenGrab.Paralyzing_Touch.Wallop.Clear_Out
 Element=water
 Hits=$rand(1,5)
 BasePower=3
@@ -4147,15 +4205,15 @@ HurtEthereal=true
 [KosmosFists]
 Cost=0
 Type=HandToHand
-Info=The fists of the android, KOS-MOS.
-Abilities=R-Cannon.Hilbert_Effect.S-Chain.DexEtherRa.DexEtherFa.DexEtherLe
+Info=The fists of the battle android, KOS-MOS.
+Abilities=R-Cannon.R-Blade.R-Dragon.F-Scythe.R-Drill.F-RShot.K-Axe.K-Valkyrie.Hilbert_Effect.S-Chain.DexEtherRa.DexEtherFa.DexEtherLe
 Element=None
 Hits=2
-BasePower=30
+BasePower=45
 Upgrade=0
 2Handed=True
+HurtEthereal=true
 CanShieldReflect=True
-2Handed=true
 
 [HoleyGloves]
 Cost=0
@@ -4164,7 +4222,7 @@ Info=The gloves used by chaos.
 Abilities=PhoenixStrike.SeraphimRush.AngelShot.DemonBanisher.DivineSpear.Cataclysm.SeraphimWave.HealingDew
 Element=Light
 Hits=2
-BasePower=30
+BasePower=45
 Upgrade=0
 HurtEthereal=true
 2Handed=true
@@ -4959,7 +5017,7 @@ IgnoreDefense=15
 Cost=0
 Type=HandToHand
 Info=The power of a mimic
-Abilities=AsuranFists
+Abilities=AsuranFists.Deathtrap.Scurvy
 Element=None
 Hits=2
 BasePower=40
@@ -5878,7 +5936,7 @@ Info=The claws of the God of Destruction, Beerus.
 Abilities=KiBlast.KiAi.DestructBeCre.BeerusPressurePoint.CanYouKeepUp.FullPowerEngeryBlastVolley.GodOfDestructionWrath.SphereOfDestruction.ExplosiveWave.FireBreath.PalmEnergy.AtomEnergySphere
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -5892,7 +5950,7 @@ Info=The weapon for the Spear of Justice, Undyne.
 Abilities=GreenSoulMode.UndyneArrowsSlow.UndyneArrowsFast.UndyneArrowsFlip.RedSoulMode.UndyneSpearLaunch.UndyneSpearVolley
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -5906,7 +5964,7 @@ Info=The weapon for the Spear of Justice, Undyne the Undying.
 Abilities=GreenSoulModeII.UndyneArrows.RedSoulModeII.UndyneSpearRing.UndyneSpearVolleyII
 Element=None
 Hits=1
-BasePower=100
+BasePower=70
 IgnoreDefense=15
 HurtEthereal=true
 2Handed=true
@@ -5920,7 +5978,7 @@ Info=The petals of Flowey. Flowey the Flower.
 Abilities=FloweyPellets1.FloweyPellets2.FloweyPellets3.FloweyDeathBullets
 Element=None
 Hits=1
-BasePower=70
+BasePower=40
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -5934,7 +5992,7 @@ Info=With legs like these, who needs arms?
 Abilities=MettatonLegAttack.MettatonBombs.MettatonRain.UnionRegulatedBreak.MettatonDisco.MettatonDancing
 Element=None
 Hits=1
-BasePower=70
+BasePower=40
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -5948,7 +6006,7 @@ Info=The power of Sans.
 Abilities=SansStrongAttack.SansBoneWave.SansPlatform.SansGasterBlasterNormal.SansHardWay.SansGasterBlasterLarge.SansPsychokinesis.SansCoolNormalAttack.SansSpecialAttack.SansSpecialAttack2.SansSpecialAttack3
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -5962,7 +6020,7 @@ Info=The power of the Hyper God of Death.
 Abilities=AsrielFire.StarBlazing.ShockerBreaker.ChaosSaber.ChaosBuster.GalactaBlazing.ShockerBreakerII.ChaosSlicer.ChaosBlaster
 Element=None
 Hits=1
-BasePower=70
+BasePower=55
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -5976,7 +6034,7 @@ Info=The broken brilliance of the Broken One.
 Abilities=SideEffect.TwistOfFate.BrokenDelete.BrokenBite.AsuranFists.ShinjinSpiral.ShoulderTackle.TotalNonstopDeletion
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -5990,7 +6048,7 @@ Info=The obsolete fists of the Obsolete Mule.
 Abilities=SideEffect.TwistOfFate.AsuranFists.ShinjinSpiral.ShoulderTackle.WhisperInTheWind.PoetryInMotion.SwantonBomb
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -6004,7 +6062,7 @@ Info=The fists of The Crazzy.
 Abilities=BlackAsianMist.YellowAsianMist.Centralizer.KingKill33.KrimsonKombo.CanonballSenton
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -6018,7 +6076,7 @@ Info=The fists of The Monster.
 Abilities=BlackHoleSlam.ChokeSlam.AsuranFists.ShinjinSpiral.ShoulderTackle.ShockTreatment
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -6032,7 +6090,7 @@ Info=The power of a Decayed Witch.
 Abilities=GreenAsianMist.RedAsianMist.BlueAsianMist.TheRedWedding.SkywardSuplex.FirajaII.DarkraII.Meteor
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 IgnoreDefense=10
 HurtEthereal=true
 2Handed=true
@@ -6049,6 +6107,85 @@ Hits=1
 BasePower=1
 Upgrade=0
 2Handed=false
+
+[MonkeyFists]
+Cost=0
+Type=HandToHand
+Info=The fists of a monkey.
+Abilities=Stool_Toss.ShoulderTackle.AsuranFists
+Element=None
+Hits=1
+BasePower=50
+HurtEthereal=true
+2Handed=true
+
+[WormMouth]
+Cost=0
+Type=HandToHand
+Info=The mouth of a worm.
+Abilities=Upwell.Waterwhirl.Watery_Grave.Spittle_Splatter
+Element=None
+Hits=1
+BasePower=50
+HurtEthereal=true
+2Handed=true
+
+[NeoShinryuClaws]
+Cost=0
+Type=HandToHand
+Info=The mighty claws of a dragon god.
+Abilities=Water_Aether.Wind_Aether.Fire_Aether.Lightning_Aether.Earth_Aether.Ice_Aether.Right_Wing.Left_Wing.Earth_Breath.Tail_Slam.Line_Charge.Tidal_Wave
+Element=None
+Hits=1
+BasePower=50
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+
+[OmegaMkIIWeaponSystems]
+Cost=0
+Type=HandToHand
+Info=The weapon systems of the fearsome Omega.
+Abilities=Omega_WaveCannon.Omega_Maelstrom.Omega_Flamethrower.Omega_MustardBomb.Omega_Earthquake.Omega_AtomicRay.Omega_RocketCharge
+Element=None
+Hits=1
+BasePower=50
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+
+[MantisClaws]
+Cost=0
+Type=HandToHand
+Info=The claws of a mantis.
+Abilities=Rending_Snath.Standing_Chine
+Element=None
+Hits=1
+BasePower=50
+HurtEthereal=true
+2Handed=true
+
+[HarpeiaBeak]
+Cost=0
+Type=HandToHand
+Info=The beak of a harpy.
+Abilities=Wings_of_Woe
+Element=None
+Hits=1
+BasePower=50
+HurtEthereal=true
+2Handed=true
+
+[NankaMouth]
+Cost=0
+Type=HandToHand
+Info=The mouth of a nanka.
+Abilities=Brackish_Rain.Bog_Bomb.Stagnant_Spray
+Element=Water
+Hits=1
+BasePower=50
+HurtEthereal=true
+2Handed=true
 
 ==============================
 SHIELDS

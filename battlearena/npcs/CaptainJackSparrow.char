@@ -33,7 +33,7 @@ Hused=1
 Dused=1
 Char=is a man with dark brown dreadlocks and goatee beard. He wears long sea boots, light brown trousers, white undershirt with a blue waistcoat, a dark brown coat, a red bandanna, and his favorite faded-black tricorne hat.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
-BossQuote=$iif(%battletype = dungeon, Take whatever treasure you want, but leave the rum for me! Savvy?)
+BossQuote=Take whatever treasure you want, but leave the rum for me! Savvy?
 
 
 [Stuff]

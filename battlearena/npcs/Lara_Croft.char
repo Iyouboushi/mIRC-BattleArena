@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=5000
-Tp=500
+Tp=1000
 Str=20
 Def=20
 Int=20
@@ -10,7 +10,7 @@ Name=Lara Croft
 
 [Battle]
 Hp=5000
-Tp=500
+Tp=1000
 Str=20
 Def=20
 Int=20
@@ -33,6 +33,7 @@ Hused=1
 Dused=1
 Char=is a British archaeologist and well-known Tomb Raider. She has long, brown hair that is braided into a ponytail, and wears a sleevless green shirt, brown shorts, black gloves, and brown boots.
 Rage=yells in rage!
+BossQuote=Seems like I'm not the only one here. Let's work together and see what this island has hidden.
 
 [Stuff]
 RedOrbs=0
@@ -56,6 +57,7 @@ CanFlee=false
 IgnoreOutpost=true
 IgnorePresident=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP
 
 [monster]
 type=humans
@@ -144,6 +146,9 @@ BlastArrowII=$round($calc(1 + (($current.battlestreak / 2))))
 HotShotII=$round($calc(1 + (($current.battlestreak / 2))))
 ChargedShotII=$round($calc(1 + (($current.battlestreak / 2))))
 BlastShotII=$round($calc(1 + (($current.battlestreak / 2))))
+HotShotIII=$round($calc(1 + (($current.battlestreak / 2))))
+ChargedShotIII=$round($calc(1 + (($current.battlestreak / 2))))
+BlastShotIII=$round($calc(1 + (($current.battlestreak / 2))))
 ChargedShot=$round($calc(1 + (($current.battlestreak / 2))))
 BlastShot=$round($calc(1 + (($current.battlestreak / 2))))
 Detonator=$round($calc(1 + (($current.battlestreak / 2))))
@@ -155,9 +160,9 @@ Thunderclap=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
 VanirRifle=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
 
 [Item_Amount]
-Bullet=10000
-Arrow=10000
-DragonfireShell=10000
+Bullet=500
+Arrow=100
+DragonfireShell=150
 
 [Styles]
 Equipped=WeaponMaster

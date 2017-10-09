@@ -1283,3 +1283,52 @@ weather=gloomy
 NumberofEvents=0
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Hullbreaker Beach Dock]
+weather=calm
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Hullbreaker Isle Beach]
+weather=calm
+NumberOfEvents=1
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+event1=damage
+event1Chance=60
+Event1Desc=%real.name gets caught in one of the many traps that's placed around the beach!
+Event1Target=random
+Event1Amount=$rand(200,400)
+
+[Isle Sasquatch Domain]
+weather=calm
+NumberOfEvents=1
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+event1=damage
+event1Chance=60
+Event1Desc=Several smaller monkeys appear, throwing rocks at the party before escaping back into the trees!
+Event1Target=players
+Event1Amount=$rand(200,400)
+
+[Hullbreaker Isle Caverns]
+weather=calm
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Isle Sjoorm Domain]
+weather=calm
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Hullbreaker Isle South Beach]
+weather=calm
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Hullbreaker Isle Wrecked Ship]
+weather=rainy
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

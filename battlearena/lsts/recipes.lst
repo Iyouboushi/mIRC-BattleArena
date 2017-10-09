@@ -75,6 +75,7 @@ SilverKey.Opal.SilverOre.RedKey
 UnkaiArmorPiece.Diamond.HeavyMetalPlate.Titanium_Ore.SoulOfFright
 EstoqueurArmorPiece.Ruby.EyeOfTheGolem.SoulOfMight.SoulOfSight.CardinalCloth
 SilverSwordParts.Diamond.HeavyMetalPlate.Titanium_Ore.SoulOfSight.SoulOfMight.SoulOfFright.Crimtane_Ore
+Mega_Stone-Prototype.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
 Blueprints:Genbu'sShield.Diamond.GenbuSeal.QuadavShell
 Blueprints:SilverSword.Diamond.SilverSwordParts.Kurogane
 Blueprints:Valmanway+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
@@ -102,6 +103,9 @@ Blueprints:Kikoku+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Blueprints:Kannagi+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Blueprints:Daedalus+1.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Blueprints:Seveneyes.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
+Blueprints:Yamato+1.Onyx.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
+Blueprints:TrueMasterSword.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
+Blueprints:SilverSword+1.Sapphire.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
 Hero'sWorth.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Jedi'sTreasure.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Eggnog.Sapphire.SmallEgg.Rum.Milk

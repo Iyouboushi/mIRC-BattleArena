@@ -25,16 +25,19 @@ Soulsaber=SpiritsWithin.VorpalBlade.SeraphBlade
 Almace=ChantduCygne.Requiescat.SanguineBlade
 Xiutleato=SavageBlade.SanguineBlade.SwiftBlade.CircleBlade
 SilverSword=Twin_Slice.LightningStrike.BladeBeamII
+SilverSword+1=Twin_SliceII.LightningStrikeII.BladeBeamIII
 MasterSword=SkywardStrike.HurricaneSpin
+TrueMasterSword=SwiftBladeII.SkywardStrikeII.HurricaneSpinII
 Z-Sword=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
 Z-Sword+1=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
-Mastermune=GrandDream.SavageBlade.Flatblade
+Mastermune=GrandDream.SavageBladeII.FlatbladeII
 
 ; Katana
 SmallKatana=Tachi:Enpi
 PowerChordSword=A5.E5.D5.C5
 Soboro=Tachi:Enpi.Tachi:Hobaku.Tachi:Jinpu.Tachi:Goten.Tachi:Kagero
 Yamato=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
+Yamato+1=JudgementCutII.SummonedSwords.RisingStar.AerialRave.DevilTriggerII
 Kogarasumaru=Tachi:Kasha.Tachi:Ageha.Tachi:Rana.Tachi:Fudo
 Crissaegrim=Tachi:Shoha.Tachi:Rana
 Valmanway=Tachi:Shoha.Tachi:Rana.MeikyoShisui
@@ -79,17 +82,17 @@ PineWand=FireIII.StoneIII.IceIII.AeroIII.WaterIII.ThunderIII.CureIII.DarkIII.Ban
 ElderWand=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Darkra.Holy
 EbonyWand=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
 Aedold=FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Curaga.DarkraII.HolyII
-Seveneyes=Fira.Stonera.Watera.Aera.Blizzara.Thundara.DarkraIII.HolyIII
+Seveneyes=Fira.Stonera.Watera.Aera.Blizzara.Thundara.DarkraIII.HolyIII.Curaja
 WoodenStaff=MagicStrike
 IridialStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.CureIV.Darkness.Light.Petrify
 Laevatein=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 Uffrat=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
 BahamutsStaff=Ultima.Kaustra.Merlin'sFinalSpell
 MagicGlyphs=Pulsus
-Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
-Glyphs+1=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus
-Laevatein+1=FlareII.QuakeII.FloodII.TornadoII.FreezeII.BurstII.CureV.DarknessII.LightII
-BahamutsStaff+1=Ultima.Kaustra
+Glyphs=Ignis.Grando.Fulgur.Nitesco.Globus.Acerbatus.Luminatio.Dominus.Medico.Remedium
+Glyphs+1=IgnisII.GrandoII.FulgurII.NitescoII.GlobusII.AcerbatusII.LuminatioII.DominusII.MedicoII.RemediumII
+Laevatein+1=FlareIII.QuakeIII.FloodIII.TornadoIII.FreezeIII.BurstIII.CureVI.DarknessIII.LightIII
+BahamutsStaff+1=UltimaIII.KaustraIII
 
 ; Guns
 HandGun=ChargedShot
@@ -115,7 +118,7 @@ DeathPenalty=LeadenSalute.BlastShot.SlugShot
 VanirRifle=ChargedShot.BlastShot.Detonator
 TacticalShotgun=HotShotII.ChargedShotII.BlastShotII
 RocketLauncher=
-ThunderClap=HotShotII.ChargedShotII.BlastShotII
+ThunderClap=HotShotIII.ChargedShotIII.BlastShotIII
 
 ; Whips
 BlackWhip=WhipLash
@@ -189,7 +192,7 @@ BaseballBat=
 
 ; Lightsabers
 BlueLightsaber=ForcePush
-Lightsaber=ForcePush
+Lightsaber=ForceBlast
 
 ; Mythic
 Mythic=$readini($char($1), Mythic, Techs)
@@ -294,7 +297,7 @@ Gunstick=DalekParalyze.DalekExterminate.DalekLaser
 BlueEyesPower=BurstStream.AbsoluteTerror.FangRush
 BlackMagic=BlackMagicAttack.ThousandKnives.FireIV
 DragonSword=HardSlash.PowerSlash.Resolution
-OctoArms=Maelstrom.InkJet.Tentacle
+OctoArms=Maelstrom.InkJet.Tentacle.Ink_Blot.World's_End.Seawater_Cannon.KrakenGrab.Paralyzing_Touch.Wallop.Clear_Out
 Leather_Whip=Whiplash
 Casull&Jackal=LastStand.RapidShot.RainStorm.BloodDrain
 AlucardSword=Requiescat.ChantDuCygne.UrielBlade.SoulSteal.TetraSpirit
@@ -371,7 +374,7 @@ DekarBlade=ExplosionFist.ExplosionSword.GlacialBlast.Thundershriek.BombAttack.Ar
 RuneOakStaff=Forzare.SoulForzare.Fuego.Pyrofeugo.Dormio.Fulminos.Arctis.Dispertius.Gravitus.FlickumBicus.Galvinius
 AdamantAxe=Thundershriek.BombAttack.FellCleave.UkkosFury.KingsJustice
 VampireKiller=GrandCross.HydroStorm.Dagger.HolyWater.Cross.StopWatch.Axe.DoubleAxe.Thousand_Knives
-KosmosFists=R-Cannon.Hilbert_Effect.S-Chain.DexEtherRa.DexEtherFa.DexEtherLe
+KosmosFists=R-Cannon.R-Blade.R-Dragon.F-Scythe.R-Drill.F-RShot.K-Axe.K-Valkyrie.Hilbert_Effect.S-Chain.DexEtherRa.DexEtherFa.DexEtherLe
 HoleyGloves=SeraphimRush.AngelShot.DemonBanisher.DivineSpear.Cataclysm.SeraphimWave.HealingDew.PhoenixStrike
 ValkyrieSword=NibelungValesti.Glowing_Pierce.Ptero_Attack.Vertical_Raid
 BlazefireSaber=ArmyOfOne.Blindside.Flamestrike.Froststrike.Sparkstrike.Aquastrike
@@ -435,7 +438,7 @@ Excaliju=MightyHealingAle.DeathStare.Requiescat.MillionStab
 Virendra=MightyHealingAle.DeathStare.ApexArrow.EagleEyeShot
 DwarvenRuneblade=HealingAle.FastBlade.CircleBlade
 DwarvenShortbow=HealingAle.FlamingArrow.PiercingArrow
-Mimic=AsuranFists
+Mimic=AsuranFists.Deathtrap.Scurvy
 StygianRazor=PowerSlash.SeismicImpact.TurbineCyclone
 RNN=DigitalLasers.DigitalWall
 Peacemaker=ChargedShot.RapidShot
@@ -553,6 +556,13 @@ LamiaSword=TidalSlash.TailSlap.HypnoticSway
 LamiaStaff=PoleSwing.TailSlap.HypnoticSway
 LamiaClaws=GustingGouge.HystericBarrage.TailSlap.HypnoticSway
 Beholder=CharmRay.ParalyzingRay.FearRay.SlowingRay.SleepRay.DisintegrationRay
+MonkeyFists=Stool_Toss.ShoulderTackle.AsuranFists
+WormMouth=Upwell.Waterwhirl.Watery_Grave.Spittle_Splatter
+NeoShinryuClaws=Water_Aether.Wind_Aether.Fire_Aether.Lightning_Aether.Earth_Aether.Ice_Aether.Right_Wing.Left_Wing.Earth_Breath.Tail_Slam.Line_Charge.Tidal_Wave
+OmegaWeaponSystems=Omega_WaveCannon.Omega_Maelstrom.Omega_Flamethrower.Omega_MustardBomb.Omega_Earthquake.Omega_AtomicRay.Omega_RocketCharge
+MantisClaws=Rending_Snath.Standing_Chine
+HarpeiaBeak=Wings_of_Woe
+NankaMouth=Brackish_Rain.Bog_Bomb.Stagnant_Spray
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -641,7 +651,7 @@ HAND TO HAND
 Type=Single
 TP=10
 Desc=performs two very quick punches on %enemy $+ !
-BasePower=20
+BasePower=10
 Cost=250
 Element=none
 magic=no
@@ -988,6 +998,31 @@ stat=str
 renkei=4
 hits=2
 
+[SavageBladeII]
+Type=Single
+Cost=50000
+Desc=hits %enemy with a backswing of the sword, using the motion to jump into the air. %user then stabs %enemy with the blade on the way down, causing an explosion of Light energy.
+TP=125
+Element=Light
+Hits=2
+BasePower=$iif(%battle.type = torment, 1000, 250)
+Magic=No
+stat=str
+Renkei=4
+
+[FlatBladeII]
+Type=Single
+StatusType=Stun
+Cost=50000
+Desc=hits %enemy hard enough with the flat side of the sword to stun $gender2($2)
+TP=125
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 300, 75)
+Magic=No
+stat=str
+Renkei=1
+
 [ChantduCygne]
 Type=Single
 TP=70
@@ -1055,6 +1090,44 @@ Cost=8000
 Magic=no
 stat=str
 
+[Twin_SliceII]
+Type=Single
+Cost=50000
+Desc=quickly dashes past %enemy $+ , slashes as $gender3($1) does. %user then spins to face %enemy to slash down across $gender($2) back before moving away.
+TP=125
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Magic=No
+stat=str
+Renkei=4
+DestroyShadows=2
+
+[LightningStrikeII]
+Type=Single
+Cost=50000
+Desc=smirks as lightning begins to dance on the sword as %user leaps towards %enemy and slashes with the sword. %user then hops back and swings $gender($1) sword at %enemy $+ , tossing the lighting at %enemy $+ .
+TP=125
+Element=Lightning
+Hits=1
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Magic=yes
+stat=int
+DestroyShadows=2
+
+[BladeBeamIII]
+Type=AOE
+Cost=50000
+Desc=holds up $gender($1) sword as blue energy covers it. %user then drives the sword into the ground, causing vertical waves of blue energy to strike all targets on the battlefield.
+TP=150
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Magic=No
+HurtEthereal=True
+stat=int
+DestroyShadows=2
+
 [SkywardStrike]
 Type=single
 TP=100
@@ -1074,6 +1147,43 @@ Element=none
 Cost=8000
 Magic=no
 stat=str
+
+[SwiftBladeII]
+Type=Single
+Cost=50000
+Desc=performs three quick slashes upon %enemy with the sword.
+TP=125
+Element=None
+Hits=3
+BasePower=$iif(%battle.type = torment, 1000, 175)
+Magic=No
+stat=str
+Renkei=3
+DestroyShadows=2
+
+[SkywardStrikeII]
+Type=Single
+Cost=50000
+Desc=holds up the blade towards the sky. After a brief moment, a bright white light begins to shimmer down the blade of the sword. After the blade is fully lit, %user swings in a broad arc sending a wave of light energy out towards %enemy $+ !
+TP=125
+Element=Light
+Hits=1
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Magic=Yes
+stat=int
+DestroyShadows=2
+
+[HurricaneSpinII]
+Type=AOE
+Cost=50000
+Desc=holds the blade outwards and after a brief moment a bright blue light begins to shimmer down the blade of the sword.  Upon unleashing the energy, %user begins to spin around, slashing all of $gender($1) enemies on the battlefield.
+TP=150
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Magic=No
+stat=str
+DestroyShadows=2
 
 [GravityBreak]
 Type=Single
@@ -1168,12 +1278,12 @@ Renkei=3
 
 [GrandDream]
 Type=Single
-Cost=10000
+Cost=50000
 Desc=raises the sword to the air as Masa, Mune, and Doreen leap from the sword and descend upon %enemy $+ , unleashing a barrage of attacks before quickly returning to the sword.
 TP=300
 Element=Light.Wind
 Hits=8
-BasePower=20
+BasePower=$iif(%battle.type = torment, 250, 40)
 Magic=No
 IgnoreDefense=5
 stat=str
@@ -1552,7 +1662,7 @@ BasePower=40
 Cost=2000
 Element=none
 magic=no
-stat=str
+stat=spd
 hits=1
 
 [ChargedShot]
@@ -1563,7 +1673,7 @@ BasePower=35
 Cost=1000
 Element=none
 magic=no
-stat=str
+stat=spd
 renkei=2
 IgnoreDefense=10
 
@@ -1575,7 +1685,7 @@ BasePower=20
 Cost=1500
 Element=none
 magic=no
-stat=str
+stat=spd
 renkei=3
 hits=2
 
@@ -1587,7 +1697,7 @@ BasePower=70
 Element=Dark
 Cost=2000
 Magic=No
-stat=str
+stat=spd
 renkei=4
 
 [Wildfire]
@@ -1598,7 +1708,7 @@ BasePower=70
 Element=Fire
 Cost=2000
 Magic=No
-stat=str
+stat=spd
 renkei=4
 
 [LeadenSalute]
@@ -1609,7 +1719,7 @@ BasePower=80
 Element=Wind
 Cost=3000
 Magic=No
-stat=str
+stat=spd
 renkei=4
 
 [HotShot]
@@ -1619,8 +1729,8 @@ Desc=takes aim and fires a small fire blast at %enemy $+ !
 BasePower=30
 Element=Fire
 Cost=500
-Magic=No
-stat=str
+Magic=Yes
+stat=spd
 renkei=1
 
 [LastStand]
@@ -1631,7 +1741,7 @@ BasePower=20
 Element=None
 Cost=1500
 Magic=No
-stat=str
+stat=spd
 renkei=2
 Hits=2
 
@@ -1643,7 +1753,7 @@ BasePower=15
 Element=None
 Cost=1500
 Magic=No
-stat=str
+stat=spd
 
 [SlugShot]
 Type=Single
@@ -1653,9 +1763,9 @@ BasePower=50
 Element=None
 Cost=2000
 Magic=No
-stat=str
+stat=spd
 renkei=3
-IgnoreDefense=20
+IgnoreDefense=15
 
 [BlastShot]
 Type=Single
@@ -1665,7 +1775,7 @@ BasePower=20
 Element=None
 Cost=2000
 Magic=No
-stat=str
+stat=spd
 renkei=4
 hits=2
 
@@ -1677,7 +1787,7 @@ BasePower=65
 Element=None
 Cost=3000
 Magic=No
-stat=str
+stat=spd
 renkei=4
 
 [HotShotII]
@@ -1701,7 +1811,7 @@ Element=None
 Hits=1
 BasePower=70
 Magic=No
-IgnoreDefense=15
+IgnoreDefense=10
 stat=spd
 Renkei=2
 
@@ -1743,6 +1853,45 @@ Magic=No
 IgnoreDefense=5
 stat=spd
 Renkei=3
+
+[HotShotIII]
+Type=Single
+Cost=50000
+Desc=takes aim and fires a small fire blast at %enemy $+ !
+TP=125
+Element=Fire
+Hits=1
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Magic=Yes
+stat=spd
+Renkei=1
+IgnoreDefense=5
+
+[ChargedShotIII]
+Type=Single
+Cost=50000
+Desc=charges the weapon and releases a powerful bullet infused with energy towards %enemy $+ !
+TP=125
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Magic=No
+stat=spd
+Renkei=2
+IgnoreDefense=10
+
+[BlastShotIII]
+Type=Single
+Cost=50000
+Desc=backhands %enemy in the face with $gender($1) gun and then fires a point-blank shot at %enemy $+ 's body!
+TP=125
+Element=None
+Hits=2
+BasePower=$iif(%battle.type = torment, 1000, 250)
+Magic=No
+stat=spd
+Renkei=4
+IgnoreDefense=5
 
 ===================
 SPEARS
@@ -2179,7 +2328,7 @@ Desc=holds Sacrament out towards %enemy $+ . The air in %enemy $+ 's body is pai
 TP=70
 Element=Light.Wind
 Hits=2
-BasePower=40
+BasePower=30
 Magic=yes
 StatusType=stun
 IgnoreDefense=10
@@ -2193,7 +2342,7 @@ Desc=slashes the dirt with $gender($1) weapon. A bright blue light cracks throug
 TP=100
 Element=Light.Fire
 Hits=4
-BasePower=40
+BasePower=30
 Magic=yes
 IgnoreDefense=10
 HurtEthereal=true
@@ -2206,7 +2355,7 @@ Desc=stabs Sacrament into the arena floor, kicking up a snowstorm. %user focuses
 TP=250
 Element=Light.Ice
 Hits=4
-BasePower=100
+BasePower=80
 Magic=yes
 StatusType=slow
 IgnoreDefense=10
@@ -2220,7 +2369,7 @@ Desc=holds Sacrament up high, thunder booming. %user then aims $gender($1) weapo
 TP=250
 Element=Light.Lightning
 Hits=$rand(1,5)
-BasePower=100
+BasePower=80
 Magic=yes
 StatusType=stun
 IgnoreDefense=10
@@ -2234,7 +2383,7 @@ Desc=holds thrusts Sacrament into the Earth. %user then infuses the Earth with A
 TP=125
 Element=Light.Earth
 Hits=1
-BasePower=120
+BasePower=100
 Magic=yes
 IgnoreDefense=10
 HurtEthereal=false
@@ -2259,7 +2408,7 @@ Desc=dashes at %enemy $+ , $gender($1) blade held out. %user slashes an X into %
 TP=300
 Element=Dark.Wind
 Hits=$rand(5,8)
-BasePower=50
+BasePower=40
 Magic=no
 StatusType=stun
 IgnoreDefense=10
@@ -2274,7 +2423,7 @@ Desc= throws Lazarus at %enemy $+ . Once the blade stabs through the chest, %use
 TP=250
 Element=Dark.Fire
 Hits=3
-BasePower=75
+BasePower=50
 Magic=no
 IgnoreDefense=10
 HurtEthereal=true
@@ -2288,7 +2437,7 @@ Desc=spins Lazarus, holding the weapon in an underhanded stance. %user then stab
 TP=300
 Element=Dark.Ice
 Hits=$rand(2,5)
-BasePower=100
+BasePower=80
 Magic=no
 IgnoreDefense=10
 HurtEthereal=false
@@ -2302,7 +2451,7 @@ Desc=rushes %enemy at a near inhuman speed. %user slashes the Achilles tendons, 
 TP=250
 Element=Dark.Lightning
 Hits=$rand(1,5)
-BasePower=60
+BasePower=50
 Magic=no
 StatusType=stun
 IgnoreDefense=10
@@ -2317,7 +2466,7 @@ Desc=kicks out %enemy $+ 's leg, before stabbing Lazarus through their chest. A 
 TP=150
 Element=Dark.Earth
 Hits=1
-BasePower=100
+BasePower=80
 Magic=no
 StatusType=petrify
 IgnoreDefense=10
@@ -2332,13 +2481,65 @@ Desc= drags the blade along %enemy $+ 's midsection, the Nether flowing into the
 TP=150
 Element=Dark.Water
 Hits=1
-BasePower=100
+BasePower=80
 Magic=no
 StatusType=Poison
 IgnoreDefense=10
 HurtEthereal=false
 stat=str
 Renkei=1
+
+[JudgementCutII]
+Type=Single
+Cost=50000
+Desc=hops back and returns the Yamato katana to its sheath for a moment before quickly swinging the katana at %enemy $+ , hurling a sphere of dark energy towards $gender2($2) $+ !
+TP=125
+Element=Dark
+Hits=1
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Magic=No
+stat=str
+Renkei=3
+DestroyShadows=2
+
+[SummonedSwords]
+Type=AOE
+Cost=50000
+Desc=summons several energy version of the Yamato katana around the battlefield, pausing for a moment before unleashing them upon all enemies!
+TP=150
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Magic=No
+HurtEthereal=True
+stat=int
+DestroyShadows=2
+
+[RisingStar]
+Type=Single
+Cost=50000
+Desc=unleashes a spiral cut upon %enemy $+ , which lifts both %user and %enemy into the air!
+TP=125
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Magic=No
+stat=str
+Renkei=4
+DestroyShadows=2
+
+[AerialRave]
+Type=Single
+Cost=50000
+Desc=unleashes several katana slashes upon %enemy $+ , knocking %enemy back down with the last hit!
+TP=125
+Element=None
+Hits=4
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = RisingStar, 750, 500)
+Magic=No
+stat=str
+Renkei=4
+DestroyShadows=2
 
 ===================
 WAND/SPELLS
@@ -2889,6 +3090,77 @@ Magic=Yes
 stat=int
 CappedAmount=4000
 
+[CureVI]
+Type=Heal
+TP=125
+Desc=casts a healing spell on %enemy $+ !  $set_chr_name($2) %real.name is bathed in a refreshing white light.
+BasePower=150
+Element=Light
+Cost=20000
+Magic=Yes
+stat=int
+CappedAmount=9000
+
+[FlareIII]
+Type=Single
+TP=125
+Desc=summons a gigantic sphere of fire above %enemy $+ . $set_chr_name($1) %real.name waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Element=Fire
+Cost=50000
+Magic=Yes
+stat=int
+
+[QuakeIII]
+Type=Single
+TP=125
+Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Element=Earth
+Cost=50000
+Magic=Yes
+stat=int
+
+[FloodIII]
+Type=Single
+TP=125
+Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Element=Water
+Cost=50000
+Magic=Yes
+stat=int
+
+[TornadoIII]
+Type=Single
+TP=125
+Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Element=Wind
+Cost=50000
+Magic=Yes
+stat=int
+
+[FreezeIII]
+Type=Single
+TP=125
+Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Element=Ice
+Cost=50000
+Magic=Yes
+stat=int
+
+[BurstIII]
+Type=Single
+TP=125
+Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Element=Lightning
+Cost=50000
+Magic=Yes
+stat=int
+
 [FirajaII]
 Type=AOE
 TP=100
@@ -2980,6 +3252,26 @@ Cost=15000
 Magic=Yes
 stat=int
 
+[UltimaIII]
+Type=Single
+TP=250
+Desc=begins to chant the words of an ancient and forbidden spell. A huge sphere of blinding white energy surrounds %enemy for a moment before causing a huge explosion, dealing a massive amount of Holy damage to %enemy $+ !
+BasePower=$iif(%battle.type = torment, 2250, 800)
+Element=Light
+Cost=75000
+Magic=Yes
+stat=int
+
+[KaustraIII]
+Type=Single
+TP=250
+Desc=begins to chant the words of an ancient and forbidden spell. A huge sphere of pure black energy surrounds %enemy for a moment before causing a huge explosion, dealing a massive amount of Shadow damage to %enemy $+ !
+BasePower=$iif(%battle.type = torment, 2250, 800)
+Element=Dark
+Cost=75000
+Magic=Yes
+stat=int
+
 [Dark]
 Type=Single
 TP=10
@@ -3030,6 +3322,17 @@ Cost=3000
 Magic=Yes
 stat=int
 
+[DarknessIII]
+Type=Single
+Cost=50000
+Desc=chants as black energy covers %enemy $+ . The energy explodes a moment later, causing large darkness damage upon %enemy $+ !
+TP=100
+Element=Dark
+Hits=1
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Magic=Yes
+stat=int
+
 [Darkra]
 Type=AOE
 TP=90
@@ -3062,81 +3365,92 @@ stat=int
 
 [Fira]
 Type=AOE
-TP=100
+TP=125
 Desc=chants the encantation for the ancient and powerful spell, Fira. Columns of fire erupt from the battlefield and engulf all of the targets!
-BasePower=75
-Cost=7000
+BasePower=$iif(%battle.type = torment, 1700, 400)
+Cost=30000
 Element=fire
 magic=yes
 stat=int
 
 [Stonera]
 Type=AOE
-TP=100
+TP=125
 Desc=chants the encantation for the ancient and powerful spell, Stonera. The ground shakes violently as the earth spits out giant boulders at all targets.
-BasePower=75
-Cost=7000
+BasePower=$iif(%battle.type = torment, 1700, 400)
+Cost=30000
 Element=earth
 magic=yes
 stat=int
 
 [Watera]
 Type=AOE
-TP=100
+TP=125
 Desc=chants the encantation for the ancient and powerful spell, Watera.  A huge tidal wave floods the battle field, pushing all targets under the water
-BasePower=75
-Cost=7000
+BasePower=$iif(%battle.type = torment, 1700, 400)
+Cost=30000
 Element=water
 magic=yes
 stat=int
 
 [Aera]
 Type=AOE
-TP=100
+TP=125
 Desc=chants the encantation for the ancient and powerful spell, Aera.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
-BasePower=75
-Cost=7000
+BasePower=$iif(%battle.type = torment, 1700, 400)
+Cost=30000
 Element=wind
 magic=yes
 stat=int
 
 [Blizzara]
 Type=AOE
-TP=100
+TP=125
 Desc=chants the encantation for the ancient and powerful spell, Blizzara.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
-BasePower=75
-Cost=7000
+BasePower=$iif(%battle.type = torment, 1700, 400)
+Cost=30000
 Element=ice
 magic=yes
 stat=int
 
 [Thundara]
 Type=AOE
-TP=100
+TP=125
 Desc=chants the encantation for the ancient and powerful spell, Thundara.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies.  
-BasePower=75
-Cost=7000
+BasePower=$iif(%battle.type = torment, 1700, 400)
+Cost=30000
 Element=lightning
 magic=yes
 stat=int
 
+[Curaja]
+Type=heal-AOE
+TP=125
+Desc=casts Curaga II on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
+BasePower=125
+Cost=30000
+Element=light
+magic=yes
+stat=int
+CappedAmount=8000
+
 [DarkraIII]
 Type=AOE
-TP=100
+TP=125
 Desc=floats into the air slightly as $gender3($1) gathers energy. A small dark orb appears in front of $set_chr_name($1) %real.name for a moment before the orb slams into the battlefield, covering it in darkness!
-BasePower=75
+BasePower=$iif(%battle.type = torment, 1700, 400)
 Element=Dark
-Cost=7000
+Cost=30000
 Magic=Yes
 stat=int
 
 [HolyIII]
 Type=AOE
-TP=100
+TP=125
 Desc=casts a stronger version of Holy. Searing light engulfs the battlefield to damage all targets!
-BasePower=75
+BasePower=$iif(%battle.type = torment, 1700, 400)
 Element=Light
-Cost=7000
+Cost=30000
 Magic=Yes
 stat=int
 
@@ -3190,23 +3504,34 @@ Cost=3000
 Magic=yes
 stat=int
 
+[LightIII]
+Type=Single
+Cost=50000
+Desc=chants as white energy covers %enemy $+ . The energy explodes a moment later, causing large holy damage upon %enemy $+ !
+TP=100
+Element=Light
+Hits=1
+BasePower=chants as black energy covers %enemy $+ . The energy explodes a moment later, causing large darkness damage upon %enemy $+ !
+Magic=yes
+stat=int
+
 [Pulsus]
 Type=Single
 Cost=500
 Desc=holds $gender($1) hands forward and launches a non-elemental blast of energy towards %enemy $+ .
-TP=10
+TP=25
 Element=None
 Hits=1
-BasePower=10
+BasePower=25
 Magic=No
 stat=int
 Renkei=2
 
 [Ignis]
 Type=Single
-TP=45
+TP=50
 Desc=does a backhand gesture and three flames appear and slam into %enemy $+ .
-BasePower=45
+BasePower=60
 Element=Fire
 Cost=2000
 Magic=yes
@@ -3214,9 +3539,9 @@ stat=int
 
 [Grando]
 Type=Single
-TP=45
+TP=50
 Desc=holds $gender($1) hands forward and a large ice crystal forms before speeding toward %enemy $+ .
-BasePower=45
+BasePower=60
 Element=Ice
 Cost=2000
 Magic=yes
@@ -3224,9 +3549,9 @@ stat=int
 
 [Fulgur]
 Type=Single
-TP=45
+TP=50
 Desc=swings $gender($1) right arm up into the air and causes a bolt of lightning to shoot into %enemy $+ !
-BasePower=45
+BasePower=60
 Element=Lightning
 Cost=2000
 Magic=yes
@@ -3234,9 +3559,9 @@ stat=int
 
 [Nitesco]
 Type=Single
-TP=45
+TP=50
 Desc=places $gender($1) hands forward and a concentrated beam of energy shoots forward into %enemy $+ .
-BasePower=45
+BasePower=60
 Element=Light
 Cost=2000
 Magic=yes
@@ -3244,9 +3569,9 @@ stat=int
 
 [Globus]
 Type=AOE
-TP=100
+TP=75
 Desc=summons two pink spheres of energy and tosses them into the air. The spheres bounce around the battlefield to hit all targets!
-BasePower=25
+BasePower=40
 Element=earth
 Cost=2500
 Magic=yes
@@ -3257,31 +3582,156 @@ Type=Single
 StatusType=Curse
 TP=50
 Desc=summons a large ball of dark energy and sends it slamming into %enemy in an attempt to curse %enemy $+ .
-BasePower=45
+BasePower=60
 Element=Dark
 Cost=2500
 Magic=yes
 stat=int
 
 [Luminatio]
-Type=Single
-TP=60
-Desc=summons two golden spheres of energy and sends them spinning towards %enemy $+ .
-BasePower=65
+Type=AOE
+TP=75
+Desc=summons two golden spheres of energy and sends them spinning towards the battlefield.
+BasePower=50
 Element=Light
-Cost=3000
+Cost=3500
 Magic=yes
 stat=int
 
 [Dominus]
-Type=Single
-TP=60
-Desc=combines the power of Dominus, which causes a massive explosion of dark energy upon %enemy $+ !
-BasePower=65
+Type=AOE
+TP=75
+Desc=combines the power of Dominus, which causes a massive explosion of dark energy upon the battlefield!
+BasePower=50
 Element=Dark
-Cost=3000
+Cost=3500
 magic=yes
 stat=int
+
+[Medico]
+Type=heal
+TP=50
+Desc=casts a healing spell on %enemy $+ !  $set_chr_name($2) %real.name is bathed in a refreshing white light.
+BasePower=50
+Cost=2000
+Element=light
+magic=yes
+stat=int
+CappedAmount=3000
+
+[Remedium]
+Type=heal-AOE
+TP=100
+Desc=casts a healing spell on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
+BasePower=40
+Cost=3000
+Element=light
+magic=yes
+stat=int
+CappedAmount=2000
+
+[IgnisII]
+Type=Single
+TP=100
+Desc=does a backhand gesture and three flames appear and slam into %enemy $+ .
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Element=Fire
+Cost=30000
+Magic=yes
+stat=int
+
+[GrandoII]
+Type=Single
+TP=100
+Desc=holds $gender($1) hands forward and a large ice crystal forms before speeding toward %enemy $+ .
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Element=Ice
+Cost=30000
+Magic=yes
+stat=int
+
+[FulgurII]
+Type=Single
+TP=100
+Desc=swings $gender($1) right arm up into the air and causes a bolt of lightning to shoot into %enemy $+ !
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Element=Lightning
+Cost=30000
+Magic=yes
+stat=int
+
+[NitescoII]
+Type=Single
+TP=100
+Desc=places $gender($1) hands forward and a concentrated beam of energy shoots forward into %enemy $+ .
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Element=Light
+Cost=30000
+Magic=yes
+stat=int
+
+[GlobusII]
+Type=AOE
+TP=125
+Desc=summons two pink spheres of energy and tosses them into the air. The spheres bounce around the battlefield to hit all targets!
+BasePower=$iif(%battle.type = torment, 1250, 250)
+Element=earth
+Cost=30000
+Magic=yes
+stat=int
+
+[AcerbatusII]
+Type=Single
+StatusType=Curse
+TP=100
+Desc=summons a large ball of dark energy and sends it slamming into %enemy in an attempt to curse %enemy $+ .
+BasePower=$iif(%battle.type = torment, 1500, 350)
+Element=Dark
+Cost=25000
+Magic=yes
+stat=int
+
+[LuminatioII]
+Type=AOE
+TP=125
+Desc=summons two golden spheres of energy and sends them spinning towards all enemies on the battlefield.
+BasePower=$iif(%battle.type = torment, 1250, 250)
+Element=Light
+Cost=30000
+Magic=yes
+stat=int
+
+[DominusII]
+Type=Single
+TP=125
+Desc=combines the power of Dominus, which causes a massive explosion of dark energy upon the battlefield!
+BasePower=$iif(%battle.type = torment, 1250, 250)
+Element=Dark
+Cost=30000
+magic=yes
+stat=int
+
+[MedicoII]
+Type=heal
+TP=100
+Desc=casts a healing spell on %enemy $+ !  $set_chr_name($2) %real.name is bathed in a refreshing white light.
+BasePower=125
+Cost=20000
+Element=light
+magic=yes
+stat=int
+CappedAmount=8000
+
+[RemediumII]
+Type=heal-AOE
+TP=125
+Desc=casts a healing spell on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
+BasePower=100
+Cost=30000
+Element=light
+magic=yes
+stat=int
+CappedAmount=7000
 
 ===================
 HAMMER TECHS
@@ -4119,6 +4569,18 @@ Cost=2000
 Element=None
 magic=no
 stat=str
+
+[ForceBlast]
+Type=Single
+Cost=50000
+Desc=holds $gender($1) hand out, palm facing %enemy for a moment before unleashing an invisble force of energy that slams into %enemy $+ , sending %enemy reeling due to the force of the blast.
+TP=125
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 2000, 500)
+Magic=No
+stat=str
+Renkei=2
 
 ===================
 BOOSTS
@@ -8074,86 +8536,100 @@ Cost=0
 Magic=No
 stat=str
 
+[Hilbert_Effect]
+Type=AOE
+StatusType=slow
+TP=10
+Desc=mutters "Hilbert Effect activated," and gathers energy as part of her visor opens. A moment later, a dark aura expands from %user which covers the battlefield, slowing down all enemies!
+BasePower=1
+Element=None
+Cost=0
+Magic=No
+stat=int
+
 [R-Cannon]
 Type=Single
 TP=10
 Desc=holds her right arm forward as it morphs into a small cannon. %user takes arm and fires a burst of red energy towards %enemy $+ .
-BasePower=30
+BasePower=50
 Element=Fire
 Cost=0
-Magic=Yes
+Magic=No
 stat=int
 
 [R-Blade]
 Type=Single
 TP=10
 Desc=rushes towards %enemy as her right arm morphs into a blade. %user slashes at %enemy several times before hopping back.
-BasePower=50
+BasePower=15
 Element=None
 Cost=0
 Magic=No
 stat=str
-
-[X-Buster]
-Type=AOE
-TP=10
-Desc=says "Dispersal mode activated." as she hunches forward a bit. A moment later, %user returns to normal and a wave of blue energy beams are fired from her abdomen and strikes all enemies on the battlefield.
-BasePower=30
-Element=Light
-Cost=0
-Magic=Yes
-stat=int
+Hits=4
 
 [R-Dragon]
 Type=Single
 TP=10
-Desc=rushes towards %enemy as her right arm morphes into a dragon head. %user strikes %enemy a few times before leaping into the air and striking once more on the way down.
-BasePower=70
+Desc=summons a weapon which resembles a dragon head. KOS-MOS then attacks three times, which the weapon does by biting %enemy on each hit. Afterwards, KOS-MOS then leaps into the air, pausing for a moment as a blue sigil appears under %enemy and hurls the weapon down upon %enemy $+ , which causes an explosion to happen!
+BasePower=25
 Element=None
 Cost=0
 Magic=No
 stat=str
+Hits=4
 
-[G-Shot]
+[F-Scythe]
 Type=Single
-TP=10
-Desc=summons two massive gatling guns which has three barrels each. %user says "Eliminating." and fires a large barrage of bullets from the guns into %enemy $+ .
-BasePower=50
-Element=None
 Cost=0
+Desc=summons a scythe with a green energy blade and leaps into the air, performing a slash motion which hurls a green beam of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=80
 Magic=No
+IgnoreDefense=5
+HurtEthereal=true
 stat=str
+DestroyShadows=2
 
-[K-Axe]
+[F-RShot]
 Type=Single
+Cost=0
+Desc=holds her right arm up, as a large railgun suddenly sppears on her shoulder. After a moment, KOS-MOS fires the weapon, which unleashes a large blue energy orb upon %enemy that explodes on contact!
 TP=10
-Desc=leaps into the air and slams the back of her heel onto %enemy with great force!
-BasePower=50
 Element=None
-Cost=0
+Hits=1
+BasePower=100
 Magic=No
+HurtEthereal=true
 stat=str
+CanDodge=false
+DestroyShadows=2
 
-[Hilbert_Effect]
-Type=AOE
-StatusType=defensedown
-TP=10
-Desc=mutters "Hilbert Effect activated." and gathers energy as part of her visor opens. A moment later, a dark aura expands from %user which covers the battlefield.
-BasePower=5
-Element=Dark
+[R-Drill]
+Type=Single
 Cost=0
-Magic=Yes
-stat=int
+Desc=morphs her right arm into a large drill blade and rotates the arm counter-clockwise before poking %enemy three times. KOS-MOS then pulls the arm back, the drill blade spinning and thrust the arm towards %enemy $+ !
+TP=10
+Element=None
+Hits=8
+BasePower=15
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=str
+DestroyShadows=2
 
 [S-Chain]
 Type=Single
-StatusType=Random
+StatusType=strengthdown.defensedown.intdown.curse.heavy
 TP=10
-Desc=mutters "La Serutou Ettal..." and a dark sphere covers %enemy for a moment to cause a random status effect!
-BasePower=5
-Element=Dark
+Desc=floats into the air, holding her arms out. Green, yellow, and blue circles appears behind KOS-MOS, which then fires a barrage of triangle-shaped energy attacks into %enemy $+ , inflicting %enemy with several negative status effects!
+BasePower=1
+Element=None
 Cost=0
-Magic=Yes
+Magic=No
 stat=int
 
 [DexEtherRa]
@@ -8186,15 +8662,72 @@ Cost=0
 Magic=Yes
 stat=int
 
+[G-Shot]
+Type=Single
+TP=10
+Desc=summons a massive gatling gun which has three barrels each, taking a hold on it with her right hand. %user says "Eliminating," and fires a large barrage of bullets from the weapon into %enemy $+ .
+BasePower=40
+Element=None
+Cost=0
+Magic=No
+stat=str
+Hits=8
+
+[X-Buster]
+Type=AOE
+TP=10
+Desc=says "Dispersal mode activated." as she hunches forward a bit. A moment later, %user returns to normal and a wave of blue energy beams is fired from her abdomen and strikes all enemies on the battlefield.
+BasePower=300
+Element=Light
+Cost=0
+Magic=No
+stat=int
+
+[K-Axe]
+Type=Single
+TP=10
+Desc=rushes towards %enemy and performs a spinning kick that hits %enemy in the face with great force!
+BasePower=90
+Element=None
+Cost=0
+Magic=No
+stat=str
+
+[K-Valkyrie]
+Type=Single
+Cost=0
+Desc=charges forward, slashing at %enemy three times with R-Blade before leaping into the air and blasting %enemy with R-Cannon!
+TP=10
+Element=None
+Hits=4
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=false
+DestroyShadows=2
+
+[D-Teneritas]
+Type=AOE
+TP=10
+Desc=gathers energy for a moment as a large sphere of blue energy appears. %user mutters "Relinquish your pain unto me..." and forces the sphere to slam into the battlefield, engulfing all enemies with fire before hurling a small knife into the center, creating a massive explosion!
+BasePower=500
+Element=Fire
+Cost=0
+Magic=No
+stat=int
+Hits=1
+
 [SeraphimRush]
 Type=Single
 TP=10
 Desc=gains a white aura while he rushes towards %enemy and quickly unleashes a barrage of punches.
-BasePower=50
+BasePower=15
 Element=Light
 Cost=0
 Magic=No
 stat=str
+Hits=4
 
 [AngelShot]
 Type=Single
@@ -8256,6 +8789,17 @@ Element=Light
 Cost=0
 Magic=Yes
 stat=int
+
+[PhoenixStrike]
+Type=Single
+TP=10
+Desc=says "Grant freedom to this soul bound by flesh!" as he slowly circles his hands around before suddenly slamming the palms of his hands into %enemy $+ !
+BasePower=100
+Element=Light
+Cost=0
+Magic=No
+stat=str
+Hits=2
 
 [NibelungValesti]
 Type=Single
@@ -11516,7 +12060,7 @@ IgnoreDefense=10
 
 [CuragaII]
 Type=heal-AOE
-TP=150
+TP=125
 Desc=casts Curaga II on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
 BasePower=50
 Cost=0
@@ -11685,6 +12229,20 @@ IgnoreDefense=10
 stat=int
 Renkei=5
 
+[JudgementCutEnd]
+Type=AOE
+Cost=0
+Desc=returns the katana to its sheath, gathering energy. A blue aura appears around %user $+ , who then dashes across the battlefield, attacking every enemy with the katana!
+TP=500
+Element=None
+Hits=8
+BasePower=$iif($readini($char($1), weapons, equipped) = Yamato+1, 80, 1)
+Magic=No
+IgnoreDefense=$iif($readini($char($1), weapons, equipped) = Yamato+1, 10, 1)
+HurtEthereal=$iif($readini($char($1), weapons, equipped) = Yamato+1, true, false)
+stat=str
+DestroyShadows=$iif($readini($char($1), weapons, equipped) = Yamato+1, 3, 1)
+
 [HyperTwinSlice]
 Type=single
 TP=10
@@ -11697,28 +12255,6 @@ stat=str
 Hits=4
 CanDodge=false
 DestroyShadows=4
-
-[D-Teneritas]
-Type=AOE
-TP=10
-Desc=gathers energy for a moment as a large sphere of blue energy appears. %user mutters "Relinquish your pain unto me..." and causes the sphere to slam into the battlefield, causing an explosion of fire to hit all enemies.
-BasePower=200
-Element=Fire
-Cost=0
-Magic=No
-stat=int
-Hits=2
-
-[PhoenixStrike]
-Type=Single
-TP=10
-Desc=says "Grant freedom to this soul bound by flesh!" as he slowly circles his hands around before suddenly slamming the palms of his hands into %enemy $+ !
-BasePower=70
-Element=Light
-Cost=0
-Magic=No
-stat=str
-Hits=2
 
 [NakeBenihime]
 Type=Single
@@ -13863,7 +14399,7 @@ Desc=summons a gigantic frog that leaps onto all enemies on the battlefield!
 TP=10
 Element=None
 Hits=1
-BasePower=$iif( $calc(($readini($char($1), battle, hp) / $readini($char($1), basestats, hp))*100) < 20, 1000, 0)
+BasePower=$iif($calc(($readini($char($1), battle, hp) / $readini($char($1), basestats, hp))*100) < 20, 1000, 0)
 Magic=No
 HurtEthereal=True
 Stat=str
@@ -15647,7 +16183,7 @@ Desc=summons white pellets and says, "These are little white friendliness pellet
 TP=10
 Element=None
 Hits=1
-BasePower=50
+BasePower=30
 Magic=No
 HurtEthereal=true
 stat=int
@@ -15661,7 +16197,7 @@ Desc=summons more pellets and sends them towards %enemy $iif(%attack.damage = 0,
 TP=10
 Element=None
 Hits=1
-BasePower=50
+BasePower=30
 Magic=No
 HurtEthereal=true
 stat=int
@@ -15675,7 +16211,7 @@ Desc=summons yet more pellets, sending them at %enemy $iif(%attack.damage = 0, w
 TP=10
 Element=None
 Hits=1
-BasePower=50
+BasePower=30
 Magic=No
 HurtEthereal=true
 stat=int
@@ -15689,7 +16225,7 @@ Desc='s face turns demented as he summons bullets that circle the entire battlef
 TP=10
 Element=None
 Hits=1
-BasePower=75
+BasePower=55
 Magic=No
 IgnoreDefense=10
 HurtEthereal=true
@@ -15704,7 +16240,7 @@ Desc=says, "Unless you learn to face danger head-on... you won't last a second a
 TP=10
 Element=None
 Hits=1
-BasePower=50
+BasePower=30
 Magic=No
 HurtEthereal=true
 stat=str
@@ -15719,7 +16255,7 @@ Desc=summons numerous arrows that seems to come from multiple directions.
 TP=10
 Element=None
 Hits=1
-BasePower=70
+BasePower=40
 Magic=No
 IgnoreDefense=5
 HurtEthereal=true
@@ -15734,7 +16270,7 @@ Desc=summons the same arrows as before, except for at a faster speed!
 TP=10
 Element=None
 Hits=1
-BasePower=70
+BasePower=40
 Magic=no
 IgnoreDefense=5
 HurtEthereal=true
@@ -15749,7 +16285,7 @@ Desc=says, "NGAHHH! Enough warming up!" and summons yet more arrows upon the bat
 TP=10
 Element=None
 Hits=1
-BasePower=80
+BasePower=50
 Magic=no
 IgnoreDefense=5
 HurtEthereal=true
@@ -15764,7 +16300,7 @@ Desc=laughs before swinging her spear, hurling a wave of green energy across the
 TP=10
 Element=None
 Hits=1
-BasePower=50
+BasePower=30
 Magic=no
 HurtEthereal=true
 stat=str
@@ -15778,7 +16314,7 @@ Desc=launches energy spears from below the battlefield!
 TP=10
 Element=None
 Hits=$rand(3,5)
-BasePower=50
+BasePower=20
 Magic=No
 IgnoreDefense=5
 HurtEthereal=true
@@ -15793,7 +16329,7 @@ Desc=says, "Not bad! Then how about THIS!?" before hurling a volley of continuou
 TP=10
 Element=None
 Hits=8
-BasePower=50
+BasePower=30
 Magic=no
 IgnoreDefense=5
 HurtEthereal=true
@@ -15808,7 +16344,7 @@ Desc=says, "Unless you learn to face danger head-on... you won't last a SECOND a
 TP=10
 Element=None
 Hits=1
-BasePower=75
+BasePower=55
 Magic=no
 IgnoreDefense=10
 HurtEthereal=true
@@ -15824,7 +16360,7 @@ Desc=unleashes a continuous volley of arrows that randomly move slow, fast, or s
 TP=10
 Element=None
 Hits=8
-BasePower=75
+BasePower=45
 Magic=no
 IgnoreDefense=10
 HurtEthereal=true
@@ -15839,7 +16375,7 @@ Desc=laughs before swinging her spear, hurling a wave of green energy across the
 TP=10
 Element=None
 Hits=1
-BasePower=75
+BasePower=55
 Magic=no
 IgnoreDefense=10
 HurtEthereal=true
@@ -15854,7 +16390,7 @@ Desc=summons several energy spears that form a ring around each person before th
 TP=10
 Element=None
 Hits=4
-BasePower=75
+BasePower=45
 Magic=no
 IgnoreDefense=10
 HurtEthereal=true
@@ -15869,7 +16405,7 @@ Desc=says, "Then how about THIS!?" before hurling a continuous volley of energy 
 TP=10
 Element=None
 Hits=8
-BasePower=75
+BasePower=55
 Magic=no
 selfstatus=SpeedUp
 IgnoreDefense=10
@@ -15885,7 +16421,7 @@ Desc=says "Ooooh! I'm just warming up!" as he begins to dance, which causes ener
 TP=10
 Element=None
 Hits=1
-BasePower=70
+BasePower=50
 Magic=No
 IgnoreDefense=5
 HurtEthereal=True
@@ -15900,7 +16436,7 @@ Desc=says, "Lights! Camera! Bombs!" as several bombs suddenly appear on the batt
 TP=10
 Element=None
 Hits=1
-BasePower=100
+BasePower=60
 Magic=No
 IgnoreDefense=5
 HurtEthereal=True
@@ -15915,7 +16451,7 @@ Desc=summons smaller rectangular versions of himself that glide down from umbrel
 TP=10
 Element=None
 Hits=1
-BasePower=100
+BasePower=60
 Magic=No
 IgnoreDefense=5
 HurtEthereal=true
@@ -15946,7 +16482,7 @@ Desc=says, "But how are you on the dance floor?! Can you keep up the pace?" as a
 TP=10
 Element=None
 Hits=$rand(2,8)
-BasePower=30
+BasePower=20
 Magic=No
 HurtEthereal=True
 stat=int
@@ -15961,7 +16497,7 @@ Desc=performs a few dance moves before pointing one of his legs at the players a
 TP=10
 Element=None
 Hits=1
-BasePower=75
+BasePower=65
 Magic=No
 HurtEthereal=true
 stat=str
@@ -16148,7 +16684,7 @@ Desc=summons "weak" balls of fire which covers the battlefield!
 TP=10
 Element=Fire
 Hits=1
-BasePower=75
+BasePower=65
 Magic=Yes
 HurtEthereal=True
 stat=int
@@ -16163,7 +16699,7 @@ Desc=causes numerous stars to fall, along with a giant star that explodes into m
 TP=10
 Element=None
 Hits=8
-BasePower=75
+BasePower=45
 Magic=No
 IgnoreDefense=5
 HurtEthereal=true
@@ -16178,7 +16714,7 @@ Desc=sweeps the battlefield with numerous bolts of lightning.
 TP=10
 Element=Lightning
 Hits=1
-BasePower=75
+BasePower=65
 Magic=yes
 IgnoreDefense=5
 HurtEthereal=true
@@ -16193,7 +16729,7 @@ Desc=summons two swords and swings the left sword followed by the right sword. A
 TP=10
 Element=None
 Hits=3
-BasePower=40
+BasePower=35
 Magic=No
 IgnoreDefense=5
 HurtEthereal=true
@@ -16223,7 +16759,7 @@ Desc=causes numerous stars to fall, along with a giant star that explodes into s
 TP=10
 Element=None
 Hits=8
-BasePower=100
+BasePower=70
 Magic=No
 IgnoreDefense=10
 HurtEthereal=true
@@ -16239,7 +16775,7 @@ Desc=unleashes lightning bolts in an alternating pattern, then a series of targe
 TP=10
 Element=Lightning
 Hits=8
-BasePower=100
+BasePower=70
 Magic=Yes
 IgnoreDefense=10
 HurtEthereal=true
@@ -16254,7 +16790,7 @@ Desc=summons a pair of swords and alternates swinging the left and right swords 
 TP=10
 Element=None
 Hits=6
-BasePower=100
+BasePower=70
 Magic=No
 IgnoreDefense=10
 HurtEthereal=true
@@ -16269,7 +16805,7 @@ Desc=summons a blaster that unleashes numerous waves of bullets before the blast
 TP=10
 Element=None
 Hits=8
-BasePower=100
+BasePower=70
 Magic=No
 IgnoreDefense=15
 HurtEthereal=true
@@ -16616,8 +17152,6 @@ BasePower=1
 stat=str
 StatusType=Paralysis
 
-
-
 [CanYouKeepUp]
 Type=Single
 Cost=0
@@ -16633,7 +17167,7 @@ cost=0
 Desc=fires a random flurry of large, bright ki blasts upon %enemy
 TP=15
 Hits=$rand(1,8)
-BasePower=30
+BasePower=18
 Stat=int
 
 [GodOfDestructionWrath]
@@ -16641,9 +17175,8 @@ Type=AOE
 cost=0
 Desc=glows purple before firing a random amount of ki blasts from his aura in all directions.
 TP=15
-BasePower=40
+BasePower=18
 Hits=$rand(1,8)
-
 Stat=int
 
 [SphereOfDestruction]
@@ -16653,7 +17186,6 @@ Desc=creates two medium-size flaming energy spheres in his hands and brings them
 TP=20
 Basepower=100
 Stat=int
-
 
 [ExplosiveWave]
 Type=Single
@@ -16703,3 +17235,548 @@ HurtEthereal=true
 stat=str
 CanDodge=true
 Postscript=writeini $char($1) techniques KnightsOfTheRotund 0 | writeini $char($1) weapons Excalipoor 0 | writeini $char($1) weapons equipped Ragnarok
+
+[Ink_Blot]
+Type=AOE
+Cost=0
+Desc=covers the battlefield in ink, blinding and slowing down everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=1
+Magic=No
+StatusType=Slow.Blind
+stat=int
+CanDodge=true
+
+[World's_End]
+Type=Single
+Cost=0
+Desc=summons a whirlwind of water upon %enemy $+ !
+TP=10
+Element=Water
+Hits=3
+BasePower=17
+Magic=No
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=2
+
+[Seawater_Cannon]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy and fires a concentrated beam of water at %enemy $+ !
+TP=10
+Element=Water
+Hits=1
+BasePower=60
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=true
+
+[KrakenGrab]
+Type=Single
+Cost=0
+Desc=summons one of its tentacle from the water and grabs onto the leg of %enemy and hurls %enemy across the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+stat=str
+CanDodge=true
+
+[Paralyzing_Touch]
+Type=Single
+Cost=0
+Desc=covers itself in electricity and then charges towards %enemy $+ , causing paralysis upon contact.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=10
+Magic=No
+StatusType=Paralyze
+stat=str
+CanDodge=true
+
+[Wallop]
+Type=Single
+Cost=0
+Desc=pulls back one of its tentacles before slamming it down upon %enemy with enough force to stun %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+StatusType=Stun
+stat=str
+CanDodge=true
+
+[Clear_Out]
+Type=AOE
+Cost=0
+Desc=sweeps the battlefield with its tentacles!
+TP=10
+Element=None
+Hits=1
+BasePower=20
+Magic=No
+stat=str
+CanDodge=true
+
+[Stool_Toss]
+Type=Single
+Cost=0
+Desc=reaches into the ground, pulling out a large rock, and hurls it at %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[Upwell]
+Type=Single
+Cost=0
+Desc=rears back before unleashing a beam of water upon %enemy $+ !
+TP=10
+Element=Water
+Hits=1
+BasePower=40
+Magic=No
+IgnoreDefense=5
+stat=int
+CanDodge=true
+
+[Waterwhirl]
+Type=AOE
+Cost=0
+Desc=quickly spins around and sends a wave of water across the battlefield!
+TP=10
+Element=Water
+Hits=1
+BasePower=20
+Magic=No
+stat=int
+CanDodge=true
+
+[Watery_Grave]
+Type=AOE
+Cost=0
+Desc=covers the battlefield in water and dives down. Sjoorm rushes along under the water, causing several ripples around the battlefield before rising up in the center, turning the water into a spiral that hits everyone on the battlefield!
+TP=10
+Element=Water
+Hits=1
+BasePower=30
+Magic=Yes
+stat=int
+CanDodge=true
+DestroyShadows=2
+
+[Spittle_Splatter]
+Type=Single
+Cost=0
+Desc=spits a large ball of water into the air which eventually comes crashing down upon %enemy $+ !
+TP=10
+Element=Water
+Hits=1
+BasePower=35
+Magic=Yes
+stat=int
+CanDodge=true
+
+[Tidal_Wave]
+Type=AOE
+Cost=0
+Desc=summons a large wave of water at one edge of the battlefield, pausing for a moment before it flows forward and covers the field!
+TP=10
+Element=Water
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=True
+stat=int
+CanDodge=True
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Left_Wing $calc(1 + %cosmic.level) | writeini $char($1) techniques Tidal_Wave 0
+
+[Left_Wing]
+Type=Single
+Cost=0
+Desc=pauses for a moment as the left wing begins to glow. Shinryu then rushes towards %enemy and slams his fist down upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=65
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Right_Wing $calc(1 + %cosmic.level) | writeini $char($1) techniques Left_wing 0
+
+[Right_Wing]
+Type=AOE
+Cost=0
+Desc=pauses for a moment as the right wing begins to glow. Dark energy gathers above the battlefield before shooting out in bursts, hitting everyone multiple times!
+TP=10
+Element=Dark
+Hits=4
+BasePower=8
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Earth_Breath $calc(1 + %cosmic.level) | writeini $char($1) techniques Right_Wing 0
+
+[Earth_Breath]
+Type=AOE
+Cost=0
+Desc=gathers energy for a moment before unleashing an Earth-based breath attack across the battlefield!
+TP=10
+Element=Earth
+Hits=1
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Line_Charge $calc(1 + %cosmic.level) | writeini $char($1) techniques Earth_Breath 0
+
+[Line_Charge]
+Type=AOE
+Cost=0
+Desc=floats back from the battlefield for a moment before charging across the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+DestroyShadows=2
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Tail_Slam $calc(1 + %cosmic.level) | writeini $char($1) techniques Line_Charge 0
+
+[Tail_Slam]
+Type=Single
+Cost=0
+Desc=smashes his tail on the battlefield, hitting %enemy with great force!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Water_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Wind_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Fire_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Lighnting_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Earth_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Ice_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Tail_Slam 0
+
+[Water_Aether]
+Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Cost=0
+Desc=begins to channel the corrupted aether, which takes the form of water. Shinryu then unleashes the aether, covering the entire battlefield with corrupted water!
+TP=10
+Element=Water
+Hits=1
+BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+Magic=Yes
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
+DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+
+[Wind_Aether]
+Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Cost=0
+Desc=begins to channel the corrupted aether, which takes the form of wind. Shinryu then unleashes the aether, covering the entire battlefield with corrupted wind!
+TP=10
+Element=Wind
+Hits=1
+BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+Magic=Yes
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
+DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+
+[Fire_Aether]
+Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Cost=0
+Desc=begins to channel the corrupted aether, which takes the form of fire. Shinryu then unleashes the aether, covering the entire battlefield with corrupted fire!
+TP=10
+Element=Fire
+Hits=1
+BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+Magic=Yes
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
+DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+
+[Lightning_Aether]
+Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Cost=0
+Desc=begins to channel the corrupted aether, which takes the form of lightning. Shinryu then unleashes the aether, covering the entire battlefield with corrupted lightning!
+TP=10
+Element=Lightning
+Hits=1
+BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+Magic=Yes
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
+DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+
+[Earth_Aether]
+Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Cost=0
+Desc=begins to channel the corrupted aether, which takes the form of earth. Shinryu then unleashes the aether, covering the entire battlefield with corrupted earth!
+TP=10
+Element=Earth
+Hits=1
+BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+Magic=Yes
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
+DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+
+[Ice_Aether]
+Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Cost=0
+Desc=begins to channel the corrupted aether, which takes the form of ice. Shinryu then unleashes the aether, covering the entire battlefield with corrupted ice!
+TP=10
+Element=Ice
+Hits=1
+BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+Magic=Yes
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
+DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+
+[Omega_WaveCannon]
+Type=$iif($readini($char(Omega_MkII), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Cost=0
+Desc=floats at the edge of the battlefield, gathering energy. After energy enough is gathered, Omega then unleashes a massive beam of black energy upon the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=$iif($readini($char(Omega_MkII), battle, IgnitionGauge) >= 120, 750, 100)
+Magic=No
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=$iif($readini($char(Omega_MkII), battle, IgnitionGauge) >= 120, 8, 2)
+DeathChance=$iif($readini($char(Omega_MkII), battle, IgnitionGauge) >= 120, 10, 0)
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Omega_Maelstrom $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_WaveCannon 0
+
+[Omega_Maelstrom]
+Type=AOE
+Cost=0
+Desc=summons a large tornado upon the battlefield!
+TP=10
+Element=Wind
+Hits=1
+BasePower=50
+Magic=Yes
+stat=int
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_Flamethrower $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Maelstrom 0
+
+[Omega_Flamethrower]
+Type=Single
+Cost=0
+Desc=unleashes a stream of fire upon %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=65
+Magic=Yes
+stat=int
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_Earthquake $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Flamethrower 0
+
+[Omega_Earthquake]
+Type=AOE
+Cost=0
+Desc=leaps high into the air before slamming down upon the battlefield, causing a miniture earthquake to happen!
+TP=10
+Element=Earth
+Hits=1
+BasePower=65
+Magic=No
+HurtEthereal=true
+IgnoreDefense=5
+stat=int
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_MustardBomb $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Earthquake 0
+
+[Omega_MustardBomb]
+Type=Single
+Cost=0
+Desc=hurls a bomb directly at %enemy $+ , which then explodes into a deadly gas that lowers %enemy $+ 's defense!
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+StatusType=DefenseDown
+HurtEthereal=true
+stat=int
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_AtomicRay $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_MustardBomb 0
+
+[Omega_AtomicRay]
+Type=AOE
+Cost=0
+Desc=floats into the air and unleashes a beam of red energy upon the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=2
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_RocketCharge $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_AtomicRay 0
+
+[Omega_RocketCharge]
+Type=Single
+Cost=0
+Desc=hops back away from everyone, waiting and watching before rushing towards %enemy at a very high speed!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=true
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_WaveCannon $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_RocketCharge 0
+
+[Rending_Snath]
+Type=Single
+Cost=0
+Desc=rears back before then jumping towards %enemy $+ , delivering a hard strike with its claws!
+TP=10
+Element=None
+Hits=1
+BasePower=45
+Magic=No
+StatusType=stun
+stat=str
+CanDodge=true
+
+[Standing_Chine]
+Type=Single
+Cost=0
+Desc=rushes towards %enemy and strikes twice with its claws!
+TP=10
+Element=None
+Hits=2
+BasePower=17
+Magic=No
+stat=str
+CanDodge=true
+
+[Wings_of_Woe]
+Type=AOE
+Cost=0
+Desc=gathers energy for a moment before flapping its wings, unleashing the energy as a deadly attack to everyone on the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=True
+stat=int
+CanDodge=true
+
+[Deathtrap]
+Type=AOE
+Cost=0
+Desc=leaps around the battlefield, biting everyone with its fangs!
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=true
+
+[Scurvy]
+Type=Single
+Cost=0
+Desc=spits a dark green ball at %enemy $+ , causing %enemy to get poisoned!
+TP=10
+Element=Dark
+Hits=1
+BasePower=20
+Magic=No
+StatusType=Posion
+HurtEthereal=true
+stat=int
+CanDodge=true
+
+[Brackish_Rain]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy and spits out a ball of water at %enemy with a quick speed!
+TP=10
+Element=Water
+Hits=1
+BasePower=45
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=true
+
+[Bog_Bomb]
+Type=Single
+Cost=0
+Desc=spits out a murky ball of water at %enemy $+ , which slows down %enemy $+ 's movements!
+TP=10
+Element=Water
+Hits=1
+BasePower=20
+Magic=No
+StatusType=Slow
+HurtEthereal=true
+stat=int
+CanDodge=true
+
+[Stagnant_Spray]
+Type=AOE
+Cost=0
+Desc=scurries to the otherside of the battlefield, pausing for a moment before then unleashing a huge spray of water from its mouth to hit all targets on the battlefield!
+TP=10
+Element=Water
+Hits=1
+BasePower=25
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=true

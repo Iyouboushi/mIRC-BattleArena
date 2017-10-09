@@ -1,0 +1,78 @@
+[Info]
+Name=Hullbreaker Isle
+Rooms=13
+PlayersNeeded=3
+Level=5000
+FinalRoom=12
+StartBattleDesc=and everyone else boards a ship, sailing to the large island, eventually docking at the beach.
+ClearDungeonDesc=* The party has managed to defeat the Kraken. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to solve the mystery of Hullbreaker Isle.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party disembarks from the ship, stepping onto the dock. The party then takes the time to prepare.
+Battlefield=Hullbreaker Beach Dock
+
+[1]
+Desc=The party continues forward, eventually coming up to someone already here, who is standing before a group of enemies.
+Battlefield=Hullbreaker Isle Beach
+npcs=$iif($rand(1,2) = 1, Lara_Croft, CaptainJackSparrow)
+monsters=Isle_Harpeia.Isle_Hornet.Cieldalaes_Mantis
+
+[2]
+Desc=The party continues once again, eventually coming up to a rope bridge with three monkeys in the front, and a huge gorilla standing on the other side of the bridge.
+Battlefield=Hullbreaker Isle Beach
+monsters=Sifaka.Sifaka.Sifaka
+
+[3]
+Desc=The gorilla retreats back into a circular area with several trees as the party moves forward. The gorilla beats its chest and roars, a few other monkeys appearing from the trees.
+Battlefield=Isle Sasquatch Domain
+monsters=Isle_Sasquatch
+BossRoom=true
+
+[4]
+Desc=With the gorilla defeated, the party continues forward, eventually arriving at a cave entrance. They proceed forward and after a while, several giant cobras block the path.
+Battlefield=Hullbreaker Isle Caverns
+monsters=Zuzueca.Zuzueca.Zuzueca
+
+[5]
+Desc=The party continues forward, entering a large cavern with running water. They eventually encounter two large, lizard-like beings that have eggs on their backs.
+Battlefield=Hullbreaker Isle Caverns
+monsters=Ninki_Nanka.Ninki_Nanka
+
+[6]
+Desc=After defeating the nankas, the party arrives in a room with several treasure chests, two empty pedastals, and a closed door. As they examine the door, the chests reveal themselves as mimics!
+Battlefield=Hullbreaker Isle Caverns
+monsters=Isle_Mimic.Isle_Mimic.Isle_Mimic
+
+[7]
+Desc=The party defeats the mimics, two of which drop a stone tablet. The party places them on the pedastals, which causes the door to open. They proceed forward, arriving in a circular cavern with a giant, blue worm waiting in the center.
+Battlefield=Isle Sjoorm Domain
+monsters=Isle_Sjoorm
+BossRoom=true
+
+[8]
+Desc=With the worm defeated, the party proceeds forward, coming up to the top of a waterfall. After carefully scaling down, they arrive at the south beach, and can see the wreck of a large ship just a bit into the distance. Before they can move any further, a few crabs with helmets and a tall, spider-like monster appear from out of nowhere.
+Battlefield=Hullbreaker Isle South Beach
+monsters=Sallet_Crab.Sallet_Crab.Sallet_Crab.Cieldalaes_Crawler
+
+[9]
+Desc=The party continues forward before being eventually stopped by a group of enemies.
+Battlefield=Hullbreaker Isle South Beach
+monsters=Cieldalaes_Crawler.Isle_Harpeia.Cyclomedusa
+
+[10]
+Desc=After defeating the enemies, the group continues towards the ship. However, a wall of water suddenly shoots up as a few water elementals appear.
+Battlefield=Hullbreaker Isle South Beach
+monsters=Seawater_Sprite.Seawater_Sprite.Seawater_Sprite
+
+[11]
+Desc=The wall of water fades as the elementals are defeated. The party decides to take a moment to rest up before going any further.
+Battlefield=Hullbreaker Isle South Beach
+RestoreRoom=true
+
+[12]
+Desc=After resting, the party moves forward. They see several broken platforms, along with the wreckage of the flagship of the dread pirate Mistbeard, The Haar. As they approach, a large Kraken and several of its arms emerge from the water.
+Battlefield=Hullbreaker Isle Wrecked Ship
+monsters=Isle_Kraken.Kraken_Arm.Kraken_Arm.Kraken_Arm.KrakenArm
+BossRoom=true

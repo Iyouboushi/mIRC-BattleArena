@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif(%battle.type = dungeon, 20000, 5000)
+Hp=5000
 Tp=1000
 Str=20
 Def=20
@@ -10,7 +10,7 @@ Name=Samus Aran
 
 [Battle]
 Hp=5000
-Tp=500
+Tp=1000
 Str=20
 Def=20
 Int=20
@@ -54,9 +54,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
-trust=$iif(%battle.type = dungeon, false, true)
 BattleStats=ignoreTP
-ActionsPerTurn=$rand(1,2)
+
 
 [Status]
 Poison=no
@@ -98,17 +97,15 @@ KiRegenerating=no
 curse.timer=1
 slow.timer=1
 zombie.timer=1
-auto-regen=$iif(%battle.type = dungeon, yes, no)
 
 
 [Weapons]
 Equipped=ChozoArmCannon
-ChozoArmCannon=$round($calc(1 + (($current.battlestreak / 2))))
+ChozoArmCannon=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Skills]
 Zen=5
-Regen=$iif(%battle.type = dungeon, 15, 0)
 Gunslinger=100
 MartialArts=100
 Resist-Charm=100
@@ -130,35 +127,35 @@ Resist-Disarm=100
 
 
 [Techniques]
-PoweredShot=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-Missile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-SuperMissile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-Bomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-PowerBomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-ScrewAttack=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-IceBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-PlasmaBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-DarkBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-DarkBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-LightBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-SunBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-PhazonBeam=$iif($dungeon.currentroom = 10, $round($calc(1 + (($current.battlestreak / 2)))), 0)
+PoweredShot=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Missile=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SuperMissile=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+Bomb=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+PowerBomb=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+ScrewAttack=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+IceBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+PlasmaBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DarkBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+DarkBurst=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+LightBeam=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
+SunBurst=$round($calc(1 + (($current.battlestreak / 2) / 5.5)),0)
 
 
 [Item_Amount]
 
 
 [Styles]
-Equipped=Weaponmaster
+Equipped=WeaponMaster
 WeaponMaster=10
 
 
 [Equipment]
-Head=$iif(%battle.type = dungeon, PhazonHelmet, ChozoHelmet)
-Body=$iif(%battle.type = dungeon, PhazonArmor, ChozoArmor)
-Hands=$iif(%battle.type = dungeon, PhazonArmArmor, ChozoArmArmor)
-Legs=$iif(%battle.type = dungeon, PhazonLegArmor, ChozoLegArmor)
-Feet=$iif(%battle.type = dungeon, PhazonFootArmor, ChozoFootArmor)
+Head=ChozoHelmet
+Body=ChozoArmor
+Hands=ChozoArmArmor
+Legs=ChozoLegArmor
+Feet=ChozoFootArmor
+
 
 [Augments]
 ChozoArmCannon=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
@@ -167,11 +164,7 @@ ChozoArmor=MeleeBonus.TechBonus.MagicBonus
 ChozoArmArmor=MeleeBonus.TechBonus.MagicBonus
 ChozoLegArmor=MeleeBonus.TechBonus.MagicBonus
 ChozoFootArmor=MeleeBonus.TechBonus.MagicBonus
-PhazonHelmet=MeleeBonus.TechBonus.MagicBonus
-PhazonArmor=MeleeBonus.TechBonus.MagicBonus
-PhazonArmArmor=MeleeBonus.TechBonus.MagicBonus
-PhazonLegArmor=MeleeBonus.TechBonus.MagicBonus
-PhazonFoorArmor=MeleeBonus.TechBonus.MagicBonus
+
 
 [modifiers]
 Heal=none
@@ -202,4 +195,3 @@ Stave=70
 Lightsaber=70
 Hammer=70
 EnergyBlaster=70
-Bat=70

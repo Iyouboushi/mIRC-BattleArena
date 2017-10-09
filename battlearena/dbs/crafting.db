@@ -577,6 +577,39 @@ ReusablePart=1300
 ForgottenSoul=1000
 ArcaneDust=1000
 
+[Blueprints:Yamato+1]
+Gem=Onyx
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
+SuccessRate=100
+Amount=1
+LifeShard=1000
+ReusablePart=1000
+ForgottenSoul=1000
+ArcaneDust=1000
+Vanadium=2
+
+[Blueprints:TrueMasterSword]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
+SuccessRate=100
+Amount=1
+LifeShard=1000
+ReusablePart=1000
+ForgottenSoul=1000
+ArcaneDust=1000
+Vanadium=2
+
+[Blueprints:SilverSword+1]
+Gem=Sapphire
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
+SuccessRate=100
+Amount=1
+LifeShard=1000
+ReusablePart=1000
+ForgottenSoul=1000
+ArcaneDust=1000
+Vanadium=2
+
 ============
 Misc Items
 ============
@@ -662,6 +695,17 @@ LifeShard=25
 ReusablePart=25
 ForgottenSoul=25
 ArcaneDust=25
+
+[Mega_Stone-Prototype]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
+SuccessRate=100
+Amount=1
+LifeShard=500
+ReusablePart=500
+ForgottenSoul=500
+ArcaneDust=500
+Vanadium=1
 
 ============
 Portal Items

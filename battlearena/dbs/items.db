@@ -1,9 +1,9 @@
 [Items]
-; The gems line is necessary here for the convertogem augment and ability to work right..
-Gems=Zircon.Topaz.Emerald.Ruby.Zircon.Diamond.Sapphire.Opal.Zircon.Onyx
+; The gems line is necessary here for the convertogem augment and ability to work right.
+Gems=Zircon.Topaz.Emerald.Ruby.Diamond.Sapphire.Opal.Onyx
 
 ; Keys are used to open chests. They cannot be bought in stores.  This line needs to stay here for the bot to work.
-Keys=BlueKey.BrownKey.RedKey.OrangeKey.GreenKey.GoldKey.BrownKey.BlueKey.RedKey.SilverKey.PurpleKey.BlackKey
+Keys=BlueKey.BrownKey.RedKey.OrangeKey.GreenKey.GoldKey.BrownKey.SilverKey.PurpleKey.BlackKey
 
 
 =========================
@@ -3017,6 +3017,13 @@ SellPrice=100
 Exclusive=yes
 Currency=AlliedNotes
 
+[Vanadium]
+Type=misc
+cost=0
+SellPrice=1
+Desc=A rare ore that can be used to give new power to weapons or to make a unique stone.
+Exclusive=yes
+
 [SilverSwordParts]
 Type=misc
 Desc=Parts for a mysterious and powerful sword.
@@ -3024,6 +3031,14 @@ Cost=0
 SellPrice=2500
 Exclusive=yes
 Currency=AlliedNotes
+
+[Mega_Stone-Prototype]
+type=misc
+cost=0
+SellPrice=10000
+Desc=A prototype version of the Mega Stone designed to work with all Pokémon.
+Currency=none
+Exclusive=yes
 
 [AdvancedFusionEngine]
 Type=misc
@@ -4333,6 +4348,33 @@ Weapon=SilverSword
 Desc=pulls out a set of blueprints for the Silver Sword $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the beautiful and powerful Silver Sword, ready for use.
 Exclusive=yes
 
+[Blueprints:SilverSword+1]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=SilverSword+1
+Desc=pulls out a set of blueprints for the upgraded Silver Sword $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the beautiful and powerful Silver Sword+1 which glows with power.
+Exclusive=yes
+
+[Blueprints:TrueMasterSword]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=TrueMasterSword
+Desc=pulls out a set of blueprints for an upgraded Master Sword, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the True Master Sword which glows with power.
+Exclusive=yes
+
+[Blueprints:Yamato+1]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Yamato+1
+Desc=pulls out a set of blueprints for an upgraded Yamato, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the Yamato+1 which glows with power.
+Exclusive=yes
+
 [Blueprints:Genbu'sShield]
 Type=special
 Cost=0
@@ -4680,6 +4722,14 @@ Desc=A rusty key used to unlock the Tomb of Terror.
 Dungeon=Tomb_Terror
 exclusive=yes
 
+[Hullbreaker_Isle-Map]
+type=dungeon
+cost=100
+currency=KindredCrest
+sellprice=1500
+Desc=A map leading to a wrecked ship that is rumored to contain a rare ore. It has gained the attention of pirates and archaeologists.
+Dungeon=Hullbreaker_Isle
+Exclusive=yes
 
 ==========================
 HALLOWEEN SHOP ITEMS
@@ -5200,4 +5250,4 @@ Cost=0
 Rarity=5
 SellPrice=100
 Numbers=12.12.12.12
-Desc=A small trading card. On the front is a picture of Lirarian floating in the air, wielding both a silver sword and black staff.
+Desc=A small trading card. On the front is a picture of Lirarian Dalnaal floating in the air, wielding both a silver sword and black staff.

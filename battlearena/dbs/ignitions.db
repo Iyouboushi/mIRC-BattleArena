@@ -156,16 +156,30 @@ Desc=begin to channel an ancient power begins to channel an ancient power meant 
 [GlyphUnion]
 Name=Glyph Union
 hp=1.5
-Str=1.5
-def=1.5
-int=1.5
-spd=1.5
+Str=1.3
+def=1.8
+int=2
+spd=1.3
 Augment=MagicBonus.TechBonus.RenkeiBonus
 IgnitionTrigger=15
 IgnitionConsume=10
-Cost=$iif($readini($char($1), weapons, Glyphs) >= 500 || $readini($char($1), weapons, Glyphs+1) >= 500, 25, 0)
+Cost=$iif($readini($char($1), weapons, Glyphs) >= 500 || $readini($char($1), weapons, Glyphs+1) >= 500, 45, 0)
 Techs=Evanescere.Universitas.UnionSecare.UnionCulter.Tellus.Saturnus.Venus
 Desc=unleashes the full power of the Glyphs, gaining new attacks and extra power.
+
+[DevilTriggerII]
+Name=Devil Trigger
+hp=1.5
+Str=2
+def=1.3
+int=1.3
+spd=2
+Augment=MeleeBonus.TechBonus.RenkeiBonus
+IgnitionTrigger=15
+IgnitionConsume=10
+Cost=$iif($readini($char($1), weapons, Yamato+1) >= 500, 75, 0)
+Techs=JudgementCutEnd
+Desc=channels the power of the blade, gaining a power increase as $gender($1) body morphs into a demonic form.
 
 ==========================
 NPC/Monster/Boss Ignitions
