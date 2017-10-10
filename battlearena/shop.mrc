@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/07/17
+;;;; Last updated: 10/09/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -734,7 +734,7 @@ alias shop.techs {
 
 
       if (%shop.currency.type = orbs) { set %tech.price $round($calc(%shop.level * $readini($dbfile(techniques.db), %tech.name, cost)),0) }
-      if (%shop.currency.type = coins) { set %tech.price $round($calc($readini($dbfile(techniques.db), %tech.name, cost) /10),0) }
+      if (%shop.currency.type = coins) { set %tech.price $round($calc($readini($dbfile(techniques.db), %tech.name, cost) /20),0) }
 
 
       set %player.amount $readini($char($1), techniques, %tech.name)
@@ -808,7 +808,7 @@ alias shop.techs {
 
     if (%shop.currency.type = coins) {
       var %player.coins $return.killcoin.count($1)
-      var %total.price $round($calc($readini($dbfile(techniques.db), $3, cost) /10),0)
+      var %total.price $round($calc($readini($dbfile(techniques.db), $3, cost) /20),0)
 
       if (%player.coins < %total.price) { $display.private.message(4You do not have enough Kill Coins to purchase this item! You currently need $calc(%total.price - %player.coins) more coins) | halt }
     }
@@ -926,6 +926,7 @@ alias shop.skills {
     $shop.get.shop.level($1)
 
     $shop.get.skills.active($1)
+
     if (%shop.list.activeskills != $null) {  $display.private.message(4Active Skill Prices2 in $iif(%shop.currency.type = orbs, $readini(system.dat, system, currency), Kill Coins) $+ : %shop.list.activeskills) }
     if (%shop.list.activeskills2 != $null) {  $display.private.message(2 $+ %shop.list.activeskills2) }
     if (%shop.list.activeskills3 != $null) {  $display.private.message(2 $+ %shop.list.activeskills3) }
@@ -978,7 +979,7 @@ alias shop.skills {
 
     if (%shop.currency.type = coins) { 
       var %player.coins $return.killcoin.count($1)
-      var %total.price $round($calc($readini($dbfile(skills.db), $3, cost) / 10),0)
+      var %total.price $round($calc($readini($dbfile(skills.db), $3, cost) / 20),0)
 
       if (%player.coins < %total.price) { $display.private.message(4You do not have enough Kill Coins to purchase this skill! You still need $calc(%total.price - %player.coins) coins in order to make this purchase.) | halt }
 
@@ -1016,7 +1017,7 @@ alias shop.get.skills.passive {
     else { 
 
       if (%shop.currency.type = orbs) { set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0) }
-      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 10),0) } 
+      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 20),0) } 
 
       if (%skill.price > 0) { 
 
@@ -1049,7 +1050,7 @@ alias shop.get.skills.active {
     if (%skill.have >= %skill.max) { inc %value 1 }
     else { 
       if (%shop.currency.type = orbs) { set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0) }
-      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 10),0) } 
+      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 20),0) } 
 
       if (%skill.price > 0) { 
         if ((%total.active.skills <= 15) || (%total.active.skills = $null)) {  %shop.list.activeskills = $addtok(%shop.list.activeskills, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
@@ -1085,7 +1086,7 @@ alias shop.get.skills.resistance {
     if (%skill.have >= %skill.max) { inc %value 1 }
     else { 
       if (%shop.currency.type = orbs) { set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0) }
-      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 10),0) } 
+      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 20),0) } 
 
       if (%skill.price > 0) { %shop.list.resistanceskills = $addtok(%shop.list.resistanceskills, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) } 
       inc %value 1 
@@ -1111,7 +1112,7 @@ alias shop.get.skills.killertrait {
     if (%skill.have >= %skill.max) { inc %value 1 }
     else { 
       if (%shop.currency.type = orbs) { set %skill.price $round($calc(%shop.level * $readini($dbfile(skills.db), %skill.name, cost)),0) }
-      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 10),0) } 
+      if (%shop.currency.type = coins) { set %skill.price $round($calc($readini($dbfile(skills.db), %skill.name, cost) / 20),0) } 
 
       if ((%total.killertraits <= 13) || (%total.killertraits = $null)) {  %shop.list.killertraits = $addtok(%shop.list.killertraits, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
       if (%total.killertraits > 13) { %shop.list.killertraits2 = $addtok(%shop.list.killertraits2, $+ %skill.name $+ +1 ( $+ %skill.price $+ ),46) }
