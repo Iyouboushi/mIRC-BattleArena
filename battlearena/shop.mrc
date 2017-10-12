@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/09/17
+;;;; Last updated: 10/12/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -61,7 +61,7 @@ alias shop.exchange {
 
 alias shop.categories.list {
   $display.private.message(2Valid shop categories:)
-  $display.private.message(2Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) Portal $+ $chr(44) Misc) 
+  $display.private.message(2Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) KillCoins $+ $chr(44) Portal $+ $chr(44) Misc) 
   $display.private.message(2Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards $+ $chr(44) AlliedForces)
   if ($left($adate, 2) = 10) {  $display.private.message(2Halloween) }
 }
@@ -130,6 +130,12 @@ alias shop.start {
     if (($3 = potioneffect) || ($3 = potioneffects)) { $shop.potioneffects($nick, buy, $4) | halt }
     if (($3 = tradingcard) || ($3 = tradingcards))  { $shop.tradingcards($nick, buy, $4, %amount.to.purchase) | halt }
     if ($3 = alliedforces) { $shop.alliedforces($nick, buy, $4, $5) | halt }
+    if ($3 = killcoins) { 
+      var %amount.to.purchase $abs($4)
+      if ((%amount.to.purchase = $null) || (%amount.to.purchase !isnum 1-9999)) { var %amount.to.purchase 1 }
+      $shop.killcoins($nick, buy, %amount.to.purchase) 
+      halt 
+    }
 
     if ($3 = orbs) { 
       var %amount.to.purchase $abs($4)
@@ -162,7 +168,7 @@ alias shop.start {
 
   if ($2 = list) { 
 
-    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards.alliedforces
+    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards.alliedforces.killcoins
     if ($istok(%valid.categories, $3, 46) = $false) { 
       $display.private.message(4Error: Use 2!shop list category4 or 2!shop buy category itemname)
       $shop.categories.list 
@@ -191,6 +197,7 @@ alias shop.start {
       }
 
       if ($3 = alliedforces) { $shop.alliedforces($nick, list) }
+      if ($3 = killcoins) { $shop.killcoins($nick, list) }
       if (($3 = weapons) || ($3 = weapon)) { $shop.weapons($nick, list) }
       if (($3 = shields) || ($3 = shield)) { $shop.shields($nick, list) }
       if ($3 = orbs) { $shop.orbs($nick, list) }
@@ -734,8 +741,9 @@ alias shop.techs {
 
 
       if (%shop.currency.type = orbs) { set %tech.price $round($calc(%shop.level * $readini($dbfile(techniques.db), %tech.name, cost)),0) }
-      if (%shop.currency.type = coins) { set %tech.price $round($calc($readini($dbfile(techniques.db), %tech.name, cost) /20),0) }
+      if (%shop.currency.type = coins) { set %tech.price $round($calc($readini($dbfile(techniques.db), %tech.name, cost) /25),0) }
 
+      if (%tech.price < 1) { set %tech.price 1 }
 
       set %player.amount $readini($char($1), techniques, %tech.name)
 
@@ -808,7 +816,8 @@ alias shop.techs {
 
     if (%shop.currency.type = coins) {
       var %player.coins $return.killcoin.count($1)
-      var %total.price $round($calc($readini($dbfile(techniques.db), $3, cost) /20),0)
+      var %total.price $round($calc($readini($dbfile(techniques.db), $3, cost) /25),0)
+      if (%tech.price < 1) { var %tech.price 1 }
 
       if (%player.coins < %total.price) { $display.private.message(4You do not have enough Kill Coins to purchase this item! You currently need $calc(%total.price - %player.coins) more coins) | halt }
     }
@@ -2743,6 +2752,37 @@ alias shop.trusts {
     unset %shop.list | unset %currency | unset %player.currency | unset %total.price
     halt
   }
+}
+
+alias shop.killcoins {
+  ; !shop killcoins list
+  ; !shop buy killcoins #
+
+  if ($2 = list) {
+    $display.private.message(2This shop is used to exchange red orbs into kill coins.  For 100000 red orbs you can buy 1 killcoin.)
+    halt
+  }
+
+  if ($2 = buy) {
+
+    ; do you have enough to buy it?
+    %total.price = $calc($3 * 100000)
+
+    var %player.redorbs $readini($char($1), stuff, redorbs)
+    if (%player.redorbs < %total.price) {  $display.private.message(4You do not have enough red orbs to do the exchange!) | halt }
+
+    ; if so, increase the amount
+    var %player.coins $round($readini($char($1), stuff, killcoins),0)
+    inc %player.coins $3
+
+    dec %player.redorbs %total.price
+    writeini $char($1) stuff redorbs %player.redorbs
+    writeini $char($1) stuff killcoins %player.coins
+
+    $display.private.message(3You spend %total.price red $iif(%total.price < 2, orb, orbs) for  $+ $3 killcoins ! $readini(translation.dat, system, RedOrbsLeft))
+    halt
+  }
+
 }
 
 alias shop.alliedforces {

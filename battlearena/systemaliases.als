@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/09/17
+;;;; Last updated: 10/12/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3834,11 +3834,11 @@ orb.adjust {
   if (%orb.tier = 7) { set %base.redorbs $round($calc(%base.redorbs * 2.25),0) }
   if (%orb.tier = 8) { set %base.redorbs $round($calc(%base.redorbs * 2.38),0) }
   if (%orb.tier = 9) { set %base.redorbs $round($calc(%base.redorbs * 2.55),0) }
-  if (%orb.tier = 10) { set %base.redorbs $round($calc(%base.redorbs * 3),0) }
-  if (%orb.tier = 11) { set %base.redorbs $round($calc(%base.redorbs * 3.1),0) }
-  if (%orb.tier = 12) { set %base.redorbs $round($calc(%base.redorbs * 3.2),0) }
+  if (%orb.tier = 10) { set %base.redorbs $round($calc(%base.redorbs * 2.85),0) }
+  if (%orb.tier = 11) { set %base.redorbs $round($calc(%base.redorbs * 3),0) }
+  if (%orb.tier = 12) { set %base.redorbs $round($calc(%base.redorbs * 3.1),0) }
 
-  if (%battle.type = dragonhunt) { set %base.redorbs $round($calc(%base.redorbs * 1.55),0) }
+  if (%battle.type = dragonhunt) { set %base.redorbs $round($calc(%base.redorbs * 1.50),0) }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
