@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 12/13/16
+;;;; Last updated: 10/12/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -32,10 +32,13 @@ dungeon.start {
   writeini $txtfile(battle2.txt) DungeonInfo PlayersNeeded %dungeon.players.needed
   writeini $txtfile(battle2.txt) DungeonInfo DungeonLevel %dungeon.level
 
+
   writeini $txtfile(battle2.txt) BattleInfo TimeKeyUsed $fulldate
 
   ; Show the dungeon start message.
-  $display.message(2 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) 
+  if ($4 != true) { $display.message(2 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) }
+  if ($4 = true) { $display.message(2 $+ $readini($dungeonfile($3), info, StartBattleDesc), global) | writeini $txtfile(battle2.txt) DungeonInfo IgnoreWritingDungeonTime true }
+
   $display.message(4This dungeon is level12 %dungeon.level 4and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 4to enter. The dungeon will begin in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) 
 
 }
@@ -104,8 +107,10 @@ dungeon.begin {
   if ((%number.of.players = 0) || (%number.of.players < $readini($txtfile(battle2.txt), DungeonInfo, PlayersNeeded))) { $display.message($readini(translation.dat, errors, NotEnoughPartyMembersForDungeon), global) | $clear_battle | halt }
 
   ; Dungeon was created successfully so let's write the created time to the person who made it
-  var %dungeon.creator $readini($txtfile(battle2.txt), DungeonInfo, DungeonCreator)
-  writeini $char(%dungeon.creator) info LastDungeonStartTime $ctime
+  if ($readini($txtfile(battle2.txt), DungeonInfo, IgnoreWritingDungeonTime) != true) { 
+    var %dungeon.creator $readini($txtfile(battle2.txt), DungeonInfo, DungeonCreator)
+    writeini $char(%dungeon.creator) info LastDungeonStartTime $ctime
+  }
 
   ; Levelsync everyone
   $display.message($readini(translation.dat, system, DungeonLevelSync), battle)

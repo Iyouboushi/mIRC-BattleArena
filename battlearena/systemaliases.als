@@ -488,6 +488,9 @@ equipment.color {
 ; Starts a new battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 system.start.newbattle {
+
+  if ($1 = true) { $item.dungeon(Treasure_Goblin, TreasureVaultPortal, true) | halt }
+
   if ($readini(system.dat, system, automatedbattlesystem) = off) { return }
 
   var %time.between.battles $readini(system.dat, System, TimeBetweenBattles)
@@ -3835,7 +3838,7 @@ orb.adjust {
   if (%orb.tier = 8) { set %base.redorbs $round($calc(%base.redorbs * 2.38),0) }
   if (%orb.tier = 9) { set %base.redorbs $round($calc(%base.redorbs * 2.55),0) }
   if (%orb.tier = 10) { set %base.redorbs $round($calc(%base.redorbs * 2.85),0) }
-  if (%orb.tier = 11) { set %base.redorbs $round($calc(%base.redorbs * 3),0) }
+  if (%orb.tier = 11) { set %base.redorbs $round($calc(%base.redorbs * 3.0),0) }
   if (%orb.tier = 12) { set %base.redorbs $round($calc(%base.redorbs * 3.1),0) }
 
   if (%battle.type = dragonhunt) { set %base.redorbs $round($calc(%base.redorbs * 1.50),0) }

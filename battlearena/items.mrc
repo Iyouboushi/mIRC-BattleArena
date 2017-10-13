@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 10/09/17
+;;;; Last updated: 10/12/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -1977,6 +1977,7 @@ alias item.cosmic {
 alias item.dungeon {
   ; $1 = person who used the item
   ; $2 = item used
+  ; $3 = "true" -- a flag to ignore chests and last start time
 
   ; If a battle is on, we can't use this item.
   if (%battleis = on) { $display.message($readini(translation.dat, errors, can'tstartdungeoninbattle), private) | halt }
@@ -1985,7 +1986,9 @@ alias item.dungeon {
   if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoDungeonsDuringShenron), private) | halt }
 
   ; can't do this while a chest exists
-  if ($readini($txtfile(treasurechest.txt), ChestInfo, Color) != $null) { $display.message($readini(translation.dat, errors, Can'tDoActionWhileChest), private) | halt }
+  if ($3 != true) { 
+    if ($readini($txtfile(treasurechest.txt), ChestInfo, Color) != $null) { $display.message($readini(translation.dat, errors, Can'tDoActionWhileChest), private) | halt }
+  }
 
   ; Get the dungeon and make sure the dungeon exists.
   var %dungeon.file $readini($dbfile(items.db), $2, dungeon)
@@ -1994,18 +1997,20 @@ alias item.dungeon {
   if (%dungeon.name = $null) { $display.message($readini(translation.dat, errors, NotAValidDungeon), private) | halt }
 
   ; Check to see if the player can start a dungeon today
-  var %player.laststarttime $readini($char($1), info, LastDungeonStartTime)
-  var %current.time $ctime
-  var %time.difference $calc(%current.time - %player.laststarttime)
+  if ($3 != true) { 
+    var %player.laststarttime $readini($char($1), info, LastDungeonStartTime)
+    var %current.time $ctime
+    var %time.difference $calc(%current.time - %player.laststarttime)
 
-  var %dungeon.time.setting 86400 
+    var %dungeon.time.setting 86400 
 
-  if ((%time.difference = $null) || (%time.difference < %dungeon.time.setting)) { 
-    $display.message($readini(translation.dat, errors, CanOnlyStartOneDungeonADay), private)
-    halt 
+    if ((%time.difference = $null) || (%time.difference < %dungeon.time.setting)) { 
+      $display.message($readini(translation.dat, errors, CanOnlyStartOneDungeonADay), private)
+      halt 
+    }
   }
 
   writeini $txtfile(battle2.txt) DungeonInfo DungeonCreator $1
-  $dungeon.start($1, $2, %dungeon.file)
+  $dungeon.start($1, $2, %dungeon.file, $3)
 
 }
