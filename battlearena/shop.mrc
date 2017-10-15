@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/12/17
+;;;; Last updated: 10/14/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -817,6 +817,7 @@ alias shop.techs {
     if (%shop.currency.type = coins) {
       var %player.coins $return.killcoin.count($1)
       var %total.price $round($calc($readini($dbfile(techniques.db), $3, cost) /25),0)
+      var %total.price $calc(%total.price * $4)
       if (%tech.price < 1) { var %tech.price 1 }
 
       if (%player.coins < %total.price) { $display.private.message(4You do not have enough Kill Coins to purchase this item! You currently need $calc(%total.price - %player.coins) more coins) | halt }
@@ -989,6 +990,7 @@ alias shop.skills {
     if (%shop.currency.type = coins) { 
       var %player.coins $return.killcoin.count($1)
       var %total.price $round($calc($readini($dbfile(skills.db), $3, cost) / 20),0)
+      var %total.price $calc(%total.price * $4)
 
       if (%player.coins < %total.price) { $display.private.message(4You do not have enough Kill Coins to purchase this skill! You still need $calc(%total.price - %player.coins) coins in order to make this purchase.) | halt }
 
