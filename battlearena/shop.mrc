@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/14/17
+;;;; Last updated: 10/15/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -896,16 +896,13 @@ alias shop.techs {
 
     ; Sell for Coins
     if (%shop.currency.type = coins) {
-      set %total.price $calc($readini($dbfile(techniques.db), $3, cost) / 20),0)
+      set %total.price $round($calc($readini($dbfile(techniques.db), $3, cost) / 25),0)
       if ((%total.price <= 1) || (%total.price = $null)) {  set %total.price 1  }
 
-      if ($readini($char($1), skills, haggling) > 0) { 
-        inc %total.price $round($calc(($readini($char($1), skills, Haggling) / 100) * %total.price),0)
-      }
-
-      if (%total.price >= $calc($readini($dbfile(techniques.db), $3, cost) /10)) { set %total.price $calc($readini($dbfile(techniques.db), $3, cost) /10) }
-      if (%total.price > 500) { %total.price = 500 }
-      if ((%total.price <= 0) || (%total.price = $null)) { %total.price = 50 }
+      ; Remove a 1% or 1 coin fee for removing the tech
+      var %fee $round($calc(%total.price * .01),0)
+      if (%fee < 1) { var %fee 1 }
+      dec %total.price %fee
 
       %total.price = $calc($4 * %total.price)
 
