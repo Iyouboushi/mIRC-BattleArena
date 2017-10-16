@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/12/17
+;;;; Last updated: 10/16/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3595,13 +3595,15 @@ give_random_key_reward {
 
   set %key.color $readini($dbfile(items.db), %key.item, unlocks)
 
-  $set_chr_name(%key.winner)
+  ; Display the reward message
   $display.message($readini(translation.dat, Battle, KeyWin),battle) 
 
+  ; Add the key to the winner
   set %current.amount $readini($char(%key.winner), item_amount, %key.item) 
   if (%current.amount = $null) { set %current.amount 0 }
   inc %current.amount 1 | writeini $char(%key.winner) item_amount %key.item %current.amount
 
+  ; Add the misc stat for keys obtained
   var %total.number.of.keys $readini($char(%key.winner), stuff, TotalNumberOfKeys) 
   if (%total.number.of.keys = $null) { var %total.number.of.keys 0 }
   inc %total.number.of.keys 1
