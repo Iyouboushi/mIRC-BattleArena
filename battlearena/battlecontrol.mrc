@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/12/17
+;;;; Last updated: 10/17/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2760,6 +2760,12 @@ alias battle.reward.redorbs {
           writeini $char(%who.battle) status OrbBonus no
         }
 
+        ; Check for a buff from the battle condition
+        if ((more-orbs isin %battleconditions) || (enhance-orbs isin %battleconditions)) { 
+          var %increase.orb.amount $round($calc(%total.redorbs.reward * 1.5),0)
+          inc %total.redorbs.reward %increase.orb.amount
+        }
+
         ; Check for enhancement capacity points
         if (%portal.bonus != true) { $reward.capacitypoints(%who.battle)  }
       }
@@ -2953,6 +2959,12 @@ alias battle.reward.killcoins {
         var %increase.coin.amount $round($calc(%total.coins.reward * %accessory.amount),0)
         inc %total.coins.reward %increase.coin.amount
         unset %accessory.amount
+      }
+
+      ; Check for a buff from the battle condition
+      if ((more-coins isin %battleconditions) || (enhance-coins isin %battleconditions)) { 
+        var %increase.coin.amount $round($calc(%total.coins.reward * 2),0)
+        inc %total.coins.reward %increase.coin.amount
       }
 
       ; Add the coins to the player

@@ -890,6 +890,15 @@ Cost=0
 SellPrice=50
 Exclusive=yes
 
+[PiggyBank]
+Type=food
+Target=killcoins
+Amount=$rand(30,100)
+Desc=takes out a shiny pink piggy bank and hands it to %enemy who then smashes it open to discover some kill coins inside. Yippee!
+Cost=0
+SellPrice=50
+Exclusive=yes
+
 [BookOfSkulls]
 Type=Food
 Target=int
