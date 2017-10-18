@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/17/17
+;;;; Last updated: 10/18/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2927,7 +2927,8 @@ alias battle.reward.killcoins {
 
       ; inc coin reward by streak
       if ($return_winningstreak >= 10) { 
-        var %coins.increase.amount $round($calc($log($return_winningstreak) - 1.3),1)
+        var %coins.increase.amount $round($calc($return_winningstreak ^.5001),0)
+        if (%coins.increase.amount >= 150) { var %coins.increase.amount 150 }
         inc %total.coins.reward %coins.increase.amount
       }
 
