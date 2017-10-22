@@ -3108,6 +3108,64 @@ Desc=A gold voucher that can be used to exchange for armor and blueprints
 Currency=none
 Exclusive=yes
 
+
+; Tech increase items
+
+[CodexOfPoetics]
+Type=increaseTechLevel
+IncreaseAmount=1
+Desc=takes out a codex of poetics and studies it. Suddenly %real.name knows how to perform the technique better!
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+[CodexOfLore]
+Type=increaseTechLevel
+IncreaseAmount=5
+Desc=takes out a codex of lore and studies it. Suddenly %real.name knows how to perform the technique better!
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+[CodexOfScripture]
+Type=increaseTechLevel
+IncreaseAmount=10
+Desc=takes out a codex of scripture and studies it. Suddenly %real.name knows how to perform the technique better!
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+[CodexOfVerity]
+Type=increaseTechLevel
+IncreaseAmount=20
+Desc=takes out a codex of verity and studies it. Suddenly %real.name knows how to perform the technique better!
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+[CodexOfCreation]
+Type=increaseTechLevel
+IncreaseAmount=50
+Desc=takes out a codex of creation and studies it. Suddenly %real.name knows how to perform the technique better!
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+[CodexOfMythology]
+Type=increaseTechLevel
+IncreaseAmount=100
+Desc=takes out a codex of mythology and studies it. Suddenly %real.name knows how to perform the technique better!
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
+
 =========================
 RUNES
 =========================
