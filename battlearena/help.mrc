@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 08/01/17
+;;;; Last updated: 10/22/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -205,6 +205,7 @@ alias view-info {
   }
 
   if (%info.type = IncreaseWeaponLevel) { $display.private.message([4Name12 $3 $+ ] [4Type12 Increase Weapon Level] [4Increase Amount12 $readini($dbfile(items.db), $3, IncreaseAmount) $+ ] %exclusive)  }
+  if (%info.type = IncreaseTechLevel) { $display.private.message([4Name12 $3 $+ ] [4Type12 Increase Technique Level] [4Increase Amount12 $readini($dbfile(items.db), $3, IncreaseAmount) $+ ] %exclusive)  }
 
   if (%info.type = portal) {
     if ($readini($dbfile(items.db), $3, PortalLevel) != $null) { var %levelcap [4Level Cap12 $readini($dbfile(items.db), $3, PortalLevel) $+ ] }
