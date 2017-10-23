@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/18/17
+;;;; Last updated: 10/22/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2967,6 +2967,9 @@ alias battle.reward.killcoins {
         var %increase.coin.amount $round($calc(%total.coins.reward * 2),0)
         inc %total.coins.reward %increase.coin.amount
       }
+
+      ; Check for bounty
+      if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { inc %total.coins.reward 20 }
 
       ; Add the coins to the player
       var %current.coins.onhand $readini($char(%who.battle), stuff, killcoins)

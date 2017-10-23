@@ -3115,10 +3115,11 @@ Exclusive=yes
 Type=increaseTechLevel
 IncreaseAmount=1
 Desc=takes out a codex of poetics and studies it. Suddenly %real.name knows how to perform the technique better!
-Cost=0
+Cost=100000
 SellPrice=2000
 Exclusive=yes
 ConquestItem=true
+ShopNPC=BattleMerchant
 
 [CodexOfLore]
 Type=increaseTechLevel

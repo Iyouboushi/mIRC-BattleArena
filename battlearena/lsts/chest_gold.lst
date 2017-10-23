@@ -56,3 +56,4 @@ $read -l $+ $rand(1, $lines($lstfile(items_healing.lst))) $lstfile(items_healing
 TitaniteShard
 TitaniteChunk
 WorldHeavyweight-Belt
+CodexOfLore
