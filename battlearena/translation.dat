@@ -670,6 +670,7 @@ BattleOpenGauntlet=$chr(3) $+ 4 $+ The doors to the gauntlet are open. Anyone 
 BattleDefendOutpost=$chr(3) $+ 4 $+ An outpost of the Allied Forces HQ is under attack! Reinforcements are requested immediately! The reinforcements will depart in $duration(%time.to.enter) $+ . Type !enter to join!  
 BattleAssaultOpen=$chr(3) $+ 4 $+ The Allied Forces are putting together an assault team to take out an enemy outpost. If you wish to be a part of this team, type !enter to join. The reinforcements will depart in $duration(%time.to.enter) $+ .
 
+EggHatches=$chr(3) $+ 4 $+ $get_chr_name($1) cracks open and $get_chr_name(%hatched.monster) comes out of the former egg!
 
 BattleOpenAIBet=$chr(3) $+ 4 $+ A 1 vs 1 AI Match is about to begin! The battle will begin in %time.to.enter seconds. 
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 06/29/17
+;;;; Last updated: 10/26/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -9,6 +9,8 @@ alias aicheck {
 
   ; Determine if the current person in battle is a monster or not.  If so, they need to do a turn.  If not, return.
   if (($is_charmed($1) = true) || ($is_confused($1) = true)) { /.timerAIthink $+ $rand(a,z) $+ $rand(1,1000) 1 6 /ai_turn $1 | halt }
+
+  if ($readini($char($1), info, ai_type) = egg) { $ai.egg($1) }
 
   ; Check to see if it's a defender type. If so, next turn it.  This is needed for surprise attacks on certain monsters..
   if ($readini($char($1), info, ai_type) = defender) {
@@ -1122,4 +1124,100 @@ alias ai.learncheck {
   if ($readini($char($1), monster, techlearn) != true) { return }
   if ($readini($dbfile(techniques.db), $2, type) = $null) { return }
   writeini $char($1) modifiers $2 0
+}
+
+alias ai.egg {
+  ; $1 = the name of the monster
+
+  var %egg.hatch.turns $readini($char($1), monster, hatch.turns) 
+  dec %egg.hatch.turns 1
+  writeini $char($1) monster hatch.turns %egg.hatch.turns
+
+  if (%egg.hatch.turns >= 0) { 
+    ; Display an idle message then go to the next turn.
+    var %idle.message $readini($char($1), descriptions, EggIdle) 
+    if (%idle.message = $null) { var %idle.message  $+ $1 sits quietly }
+
+    $display.message(4 $+ %idle.message, battle) 
+
+    $next | halt 
+  } 
+
+  ; get the monster the egg is hatching into
+  var %hatched.monster $readini($char($1), monster, hatch.monster)
+  if (%hatched.monster = $null) { $next | halt }
+
+  var %hatched.monster.file %hatched.monster
+
+  ; Display the hatch message
+  var %hatch.message $readini($char($1), descriptions, EggHatch) 
+  if (%hatch.message = $null) { var %hatch.message $readini(translation.dat, battle, EggHatches) }
+  $display.message(%hatch.message, battle)
+
+  ; Check to see if the monster already exists..  if so, just increase the # at the end of its name.
+  if ($isfile($char(%hatched.monster.file)) = $true) {
+    var %value 2
+
+    while ($isfile($char(%hatched.monster.file)) = $true) {
+      var %hatched.monster.file %hatched.monster $+ %value
+      inc %value
+    }
+  }
+
+  echo -a copying the monster
+  .copy -o $mon(%hatched.monster) $char(%hatched.monster.file)
+  writeini $char(%hatched.monster.file) Basestats Name %hatched.monster
+
+  if ($eliteflag.check($1) = true) { writeini $char(%hatched.monster.file) Monster Elite true }
+  if ($supereliteflag.check($1) = true) { writeini $char(%hatched.monster.file) Monster SuperElite true }
+
+  ; Add to battle
+  set %curbat $readini($txtfile(battle2.txt), Battle, List)
+  %curbat = $addtok(%curbat,%hatched.monster.file,46)
+  %curbat = $remtok(%curbat, $1, 1, 46)
+
+  writeini $txtfile(battle2.txt) Battle List %curbat
+  write $txtfile(battle.txt) %hatched.monster.file
+
+  var %current.line 1 | var %max.lines $lines($txtfile(battle.txt))
+  while (%current.line <= %max.lines) { 
+    var %current.line.name $read($txtfile(battle.txt), %current.line)
+
+    if (%current.line.name != $1) { write $txtfile(battle_temp.txt) %current.line.name }
+
+    inc %current.line 1
+  }
+
+  .remove $txtfile(battle.txt)
+  .rename $txtfile(battle_temp.txt) $txtfile(battle.txt)
+
+  ; Adjust the level of the monster that is hatched
+  $levelsync(%hatched.monster.file, $return_winningstreak)
+  writeini $char(%hatched.monster.file) basestats str $readini($char(%hatched.monster.file), battle, str)
+  writeini $char(%hatched.monster.file) basestats def $readini($char(%hatched.monster.file), battle, def)
+  writeini $char(%hatched.monster.file) basestats int $readini($char(%hatched.monster.file), battle, int)
+  writeini $char(%hatched.monster.file) basestats spd $readini($char(%hatched.monster.file), battle, spd)
+  $boost_monster_hp(%hatched.monster.file, portal, $get.level(%hatched.monster.file))
+  $fulls(%hatched.monster.file, yes) 
+
+  ; Display the desc of the monsters
+  $set_chr_name(%hatched.monster.file) | $display.message(12 $+ %real.name  $+ $readini($char(%hatched.monster.file), descriptions, char), battle)
+
+  writeini $char(%hatched.monster.file) info master $1
+
+  ; Get the action points
+  var %battle.speed $readini($char(%hatched.monster.file), battle, speed)
+  var %action.points $action.points(%hatched.monster.file, check)
+  inc %action.points 1
+  if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
+  if ($readini($char(%hatched.monster.file), info, flag) = monster) { inc %action.points 1 }
+  if ($readini($char(%hatched.monster.file), info, ai_type) = defender) { var %action.points 0 } 
+  var %max.action.points $round($log(%battle.speed),0)
+  inc %max.action.points 1
+  if (%action.points > %max.action.points) { var %action.points %max.action.points }
+  writeini $txtfile(battle2.txt) ActionPoints %hatched.monster.file %action.points
+
+  ; Move onto the next person
+  $next 
+  halt
 }

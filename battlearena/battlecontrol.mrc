@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/22/17
+;;;; Last updated: 10/26/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1617,6 +1617,7 @@ alias generate_battle_order {
     if (%battle.speed >= 1) { inc %action.points $round($log(%battle.speed),0) }
     if ($readini($char(%who.battle), info, flag) = monster) { inc %action.points 1 }
     if ($readini($char(%who.battle), info, ai_type) = defender) { var %action.points 0 } 
+    if ($readini($char(%who.battle), info, ai_type) = egg) { var %action.points 1 } 
     var %max.action.points $round($log(%battle.speed),0)
     inc %max.action.points 1
 
@@ -1637,7 +1638,7 @@ alias generate_battle_order {
 
     if (%surpriseattack = on) {
       var %ai.type $readini($char(%who.battle), info, ai_type)
-      if ((%ai.type != defender) && ($readini($char(%who.battle), monster, type) != object)) { 
+      if (((%ai.type != defender) && (%ai.type != egg) && ($readini($char(%who.battle), monster, type) != object))) { 
         if ($readini($char(%who.battle), info, flag) = monster) { inc %battle.speed 9999999999 }
       }
     }
@@ -1649,6 +1650,7 @@ alias generate_battle_order {
     if ($readini($char(%who.battle), battle, status) = inactive) {  inc %battle.speed -9999999999 }
     if ($readini($char(%who.battle), monster, type) = object) { inc %battle.speed -99999999999 }
     if ($readini($char(%who.battle), info, ai_type) = defender) { inc %battle.speed -999999999999 }
+    if ($readini($char(%who.battle), info, ai_type) = egg) { inc %battle.speed -999999999999 }
 
     if (%battle.speed <= 0) { set %battle.speed 1 }
 
