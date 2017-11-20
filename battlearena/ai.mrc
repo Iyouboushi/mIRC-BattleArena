@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 10/26/17
+;;;; Last updated: 11/19/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -205,8 +205,7 @@ alias ai_turn {
 
 alias ai.buildactionbar {
   ; This alias builds a list of actions the user is able to do.
-  var %last.actionbar.action  $readini($txtfile(battle2.txt), Battleinfo, $1 $+ .lastactionbar)
-
+  var %last.actionbar.action $readini($txtfile(battle2.txt), Battleinfo, $1 $+ .lastactionbar)
 
   if (%ai.type = healer) { 
     if ($ai_techcheck($1) = true) { set %action.bar tech }
@@ -218,6 +217,9 @@ alias ai.buildactionbar {
 
   ; If the monster is under amnesia, just attack.
   if ($readini($char($1), status, amnesia) = yes) { return }
+
+  ; If the monster is charmed, just attack
+  if ($is_charmed($1) = true) { return }
 
   ; Can the monster taunt?
   if (($person_in_mech($1) = false) && ($readini($char($1), status, ignition.on) != on)) {
