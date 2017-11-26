@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 09/21/17
+;;;; Last updated: 11/26/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1797,6 +1797,12 @@ dragonhunt.createfile {
   if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) techniques DarkII %dragon.level }
   if (%dragon.element = light) { writeini $char(%dragonhunt.file.name) techniques Holy %dragon.level }
 
+  ; Add actions per turn based on level of dragons
+  var %actions.per.turn 1
+  if ((%dragon.level >= 200) && (%dragon.level <= 500)) { inc %actions.per.turn 1 }
+  if (%dragon.level > 500) { inc %actions.per.turn 2 }
+  writeini $char(%dragonhunt.file.name) Info ActionsPerTurn %actions.per.turn
+
   ; These are the skills that all dragons know
   writeini $char(%dragonhunt.file.name) skills resist-charm 100
   writeini $char(%dragonhunt.file.name) skills resist-stun 100
@@ -1817,7 +1823,7 @@ dragonhunt.createfile {
   if (%dragon.element = earth) { writeini $char(%dragonhunt.file.name) skills RoyalGuard 1 }
   if (%dragon.element = ice) { writeini $char(%dragonhunt.file.name) skills ManaWall 1 }
   if (%dragon.element = wind) { writeini $char(%dragonhunt.file.name) skills utsusemi.on on | writeini $char(%dragonhunt.file.name) skills utsusemi.shadow $rand(2,5)  }
-  if (%dragon.element = water) { writeini $char(%dragonhunt.file.name) skills Sugitekai 1 }
+  if ((%dragon.element = water) && (%actions.per.turn = 1)) { writeini $char(%dragonhunt.file.name) skills Sugitekai 1 }
   if (%dragon.element = lightning) { writeini $char(%dragonhunt.file.name) skills WeaponBash 1 }
   if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) skills Konzen-Ittai 1  }
   if (%dragon.element = light) { writeini $char(%dragonhunt.file.name) skills DrainSamba 1 }
@@ -1863,12 +1869,6 @@ dragonhunt.createfile {
 
   ; Add flying skill for older dragons
   if (%dragon.level >= 150) { writeini $char(%dragonhunt.file.name) skills flying 1 }
-
-  ; Add actions per turn based on level of dragons
-  var %actions.per.turn 1
-  if ((%dragon.level >= 200) && (%dragon.level <= 500)) { inc %actions.per.turn 1 }
-  if (%dragon.level > 500) { inc %actions.per.turn 2 }
-  writeini $char(%dragonhunt.file.name) Info ActionsPerTurn %actions.per.turn
 
   $boost_monster_hp(%dragonhunt.file.name, dragonhunt, %dragon.level)
   $levelsync(%dragonhunt.file.name, %dragon.level)

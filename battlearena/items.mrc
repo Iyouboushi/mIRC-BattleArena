@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 10/22/17
+;;;; Last updated: 11/26/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -506,11 +506,18 @@ alias uses_item {
 
   if (%item.type = revive) {  
     $check_for_battle($1)
+    var %target.flag $readini($char($4), info, flag)
+
     if (%target.flag = monster) {  $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers),private) | halt }
     if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious), private)  | unset %real.name | halt }
     if ($readini($char($4), Battle, Status) != dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotUseOnLivePerson), private) | unset %real.name | halt }
 
-    if (((%clone.flag = true) || (%doppel.flag = true) || (%object.flag = true))) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers),private) | halt }
+    var %summon.flag $readini($char($4), info, summon)
+    var %clone.flag $readini($char($4), info, clone)
+    var %doppel.flag $readini($char($4), info, Doppelganger)
+    var %object.flag $readini($char($4), monster, type)
+
+    if (((%clone.flag = true) || (%doppel.flag = true) || (%object.flag = object))) { $display.message($readini(translation.dat, errors, ItemCanOnlyBeUsedOnPlayers),private) | halt }
 
     ; Decrease the action points
     $action.points($1, remove, 2)

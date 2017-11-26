@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/27/17
+;;;; Last updated: 11/26/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1501,7 +1501,7 @@ alias skill.tpregen {
   else { set %skill.description $readini($char($1), descriptions, TPregen) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
-  var %regen.amount $skill.regen.calculate($1)
+  var %regen.amount $skill.TPregen.calculate($1)
   inc %current.tp %regen.amount
   writeini $char($1) Battle TP %current.tp
   if (%current.tp > %max.tp) { writeini $char($1) Battle TP %max.tp | $display.message(12 $+ %real.name has regenerated all of $gender($1) TP!, battle)

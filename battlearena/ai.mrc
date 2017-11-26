@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 11/19/17
+;;;; Last updated: 11/26/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -449,6 +449,9 @@ alias ai.flee {
 alias ai_gettarget {
   ; If the Enmity System is disabled, use the old system
   if ($return.systemsetting(EnableEnmity) != true) { $ai_gettarget.random($1) | return }
+
+  ; Is the user charmed?  If so, use the old method.
+  if ($is_charmed($1) = true) { $ai_gettarget.random($1) | return }
 
   ; Check to see if this AI has been provoked and attack the person who provoked it.
   var %provoke.target $readini($char($1), skills, provoke.target)
