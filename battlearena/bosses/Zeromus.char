@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=$iif(%battle.type = torment, 500000, 75000)
 Tp=2000
-Str=5143
-Def=5143
-Int=5143
-Spd=5143
+Str=4543
+Def=4543
+Int=4543
+Spd=4543
 IgnitionGauge=0
 Name=Zeromus
 
@@ -12,10 +12,10 @@ Name=Zeromus
 [Battle]
 Hp=75000
 Tp=2000
-Str=5143
-Def=5143
-Int=5143
-Spd=5143
+Str=4543
+Def=4543
+Int=4543
+Spd=4543
 IgnitionGauge=0
 Status=alive
 
@@ -59,6 +59,7 @@ CanStagger=no
 IgnoreElementalMessage=true
 BattleStats=ignoreHP
 MaxTormentLevel=0
+SkipDoubleTurns=true
 
 [monster]
 type=Lunarian
@@ -101,7 +102,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=ZemusPower
-ZemusPower=$calc(50 + $current.battlestreak)
+ZemusPower=$calc(1 + $current.battlestreak)
 
 [Skills]
 Wizardry=100
@@ -146,7 +147,7 @@ elemental-killer=10
 slime-killer=10
 
 [Techniques]
-BlackHole=$calc(50 + $current.battlestreak)
+BlackHole=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
@@ -164,8 +165,6 @@ Max=$iif(%battle.type = torment, 1500000, 2000)
 Current=2000
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=Dark
 Earth=100
 Fire=100
@@ -1186,5 +1185,5 @@ MechDragonLash=0
 MechDarkLash=0
 MechHolyLash=0
 MechCircularChain=0
-ResistTechs=10
-ResistMelee=10
+ResistTechs=5
+ResistMelee=5

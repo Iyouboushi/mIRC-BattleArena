@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=20000
 Tp=1000
-Str=5143
-Def=5143
-Int=5143
-Spd=5143
+Str=4543
+Def=4543
+Int=4543
+Spd=4543
 IgnitionGauge=0
 Name=Zemus
 
@@ -12,10 +12,10 @@ Name=Zemus
 [Battle]
 Hp=20000
 Tp=1000
-Str=5143
-Def=5143
-Int=5143
-Spd=5143
+Str=4543
+Def=4543
+Int=4543
+Spd=4543
 IgnitionGauge=0
 Status=alive
 
@@ -29,7 +29,7 @@ RageCountDown=0
 Char=is an evil Lunarian with dark blue skin and yellow eyes. He is the only one amongst the Lunarians who advocates world domination.
 Rage=screams in rage 
 BossQuote=My hatred will not be stanched until it has consumed all else! You shall be next. Come! Pass into this darkness I have wrought!
-DeathMessage=The body dies... but the spirit lives on...
+DeathMessage=says, "The body dies... but the spirit lives on..." as the body fades and a large, alien monster rises in place of Zemus.
 Revive=simply laughs and says, "Your attacks have no effect against the darkness!"
 DefenderAI=$chr(2) $+ %real.name $+  $iif(%current.turn = 1, simply stands idle, $iif(%current.turn = 2, begins to shake))
 
@@ -63,7 +63,8 @@ CanStagger=no
 IgnoreElementalMessage=true
 BattleStats=ignoreHP
 WonderGuard=true
-MinTormentLevel=2
+MinTormentLevel=0
+SkipDoubleTurns=true
 
 [monster]
 type=Lunarian
@@ -106,7 +107,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=ZemusPower
-ZemusPower=$calc(50 + $current.battlestreak)
+ZemusPower=$calc(1 + $current.battlestreak)
 
 
 [Skills]
@@ -152,14 +153,14 @@ elemental-killer=10
 slime-killer=10
 
 [Techniques]
-BigBang=$iif(%current.turn >= 2, $calc(50 + $current.battlestreak), 0)
-MeteorII=$iif(%current.turn >= 3, $calc(50 + $current.battlestreak), 0)
-DarkFlare=$iif(%current.turn >= 3, $calc(50 + $current.battlestreak), 0)
-DarkQuake=$iif(%current.turn >= 3, $calc(50 + $current.battlestreak), 0)
-DarkFlood=$iif(%current.turn >= 3, $calc(50 + $current.battlestreak), 0)
-DarkTornado=$iif(%current.turn >= 3, $calc(50 + $current.battlestreak), 0)
-DarkFreeze=$iif(%current.turn >= 3, $calc(50 + $current.battlestreak), 0)
-Dark_Burst=$iif(%current.turn >= 3, $calc(50 + $current.battlestreak), 0)
+BigBang=$iif(%current.turn >= 2, $calc(1 + $current.battlestreak), 0)
+MeteorII=$iif(%current.turn >= 3, $calc(1 + $current.battlestreak), 0)
+DarkFlare=$iif(%current.turn >= 3, $calc(1 + $current.battlestreak), 0)
+DarkQuake=$iif(%current.turn >= 3, $calc(1 + $current.battlestreak), 0)
+DarkFlood=$iif(%current.turn >= 3, $calc(1 + $current.battlestreak), 0)
+DarkTornado=$iif(%current.turn >= 3, $calc(1 + $current.battlestreak), 0)
+DarkFreeze=$iif(%current.turn >= 3, $calc(1 + $current.battlestreak), 0)
+Dark_Burst=$iif(%current.turn >= 3, $calc(1 + $current.battlestreak), 0)
 
 [Item_Amount]
 
@@ -171,8 +172,6 @@ Equipped=SpellMaster
 SpellMaster=10
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=0
 Fire=0
@@ -697,7 +696,7 @@ Kulshedra=0
 BulletClimax=0
 HeelSlide=0
 MadamaButterflyFist=0
-Dark-Matter=9000
+Dark-Matter=9999
 DarkMatter=0
 Dark_Matter=0
 MadamaButterflyHeel=0
