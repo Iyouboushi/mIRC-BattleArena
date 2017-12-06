@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 10/26/17
+;;;; Last updated: 12/06/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -276,9 +276,12 @@ alias clear_battle {
   ; Check to see if a treasure goblin is in this battle. If so, a random chance that a treasure dungeon will begin.
   var %people.in.battle $readini($txtfile(battle2.txt), Battle, List)
   if (($istok(%people.in.battle,treasure_goblin,46) = $true) && ($1 = victory)) { 
-    if ($isfile($dungeonfile(treasurevault)) = $true) { 
-      ; a 10% chance of this happening
-      if ($rand(1,100) <= 10) { var %open.treasuredungeon true }
+
+    if ((%battle.type != cosmic) && (%battle.type != torment))  {
+      if ($isfile($dungeonfile(treasure_vault)) = $true) { 
+        ; a 10% chance of this happening
+        if ($rand(1,100) <= 25) { var %open.treasuredungeon true }
+      }
     }
   }
 
@@ -2138,6 +2141,7 @@ alias turn {
 
   if ($readini($char($1), info, ai_type) = defender) {
     if ($readini($char($1), descriptions, DefenderAI) != $null) { $set_chr_name($1) | $display.message(4 $+ $readini($char($1), descriptions, DefenderAI), battle) }
+    $ai.monstersummon($1) 
     $next 
     halt
   }

@@ -178,6 +178,7 @@ dungeon.rewardorbs {
   if ($1 = failure) {   
     $battle.calculate.redorbs(defeat, %dungeon.level)
     $battle.reward.redorbs(defeat )
+    $battle.reward.killcoins
   } 
   else { 
     $battle.calculate.redorbs(victory, %dungeon.level, %dungeon.clear)
@@ -185,6 +186,7 @@ dungeon.rewardorbs {
     $battle.reward.playerstylepoints
     $battle.reward.playerstylexp
     $battle.reward.ignitionGauge.all
+    $battle.reward.killcoins
   }
 
   if (%dungeon.firsttime.clear = true) { 

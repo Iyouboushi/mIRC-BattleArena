@@ -19,8 +19,8 @@ do not remove or modify the Moon Phase section as it will cause
 errors.
 ==============================================================
 [MoonPhase]
-CurrentMoonPhase=New
-CurrentMoonTurn=1
+CurrentMoonPhase=Quarter
+CurrentMoonTurn=3
 
 [MoonPhaseTime]
 full=3
@@ -39,7 +39,7 @@ errors.
 ==============================================================
 [TimeOfDay]
 CurrentTimeOfDay=Day
-CurrentTimeOfDayTurn=2
+CurrentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -64,7 +64,8 @@ Valid Event Types: damage, heal, statusonly
 
 Valid Limitations: no-tech, no-item, no-skill, no-ignition
                    enhance-item, enhance-melee, enhance-tech
-                   no-mech, no-trusts, no-summons
+                   no-mech, no-trusts, no-summons, enhance-orbs
+                   enhance-coins
  * note that no-trusts also means no npcs in portal battles
 
 ** If you make a new battlefield and want the bot to be able
@@ -1151,6 +1152,13 @@ event1Chance=60
 Event1Desc=The Antlion buries itself under ground as the ceiling rumbles and drops several stalactites down on the heroes!  The Antlion then returns.
 Event1Target=players
 Event1Amount=$rand(400,500)
+
+
+[Gobbie Treasure Vault]
+weather=none
+NumberOfEvents=0
+Limitations=no-mech.no-playerignition.enhance-coins.enhance-orbs
+scavenge=Topaz.Emerald.Ruby.Onyx.Diamond
 
 
 [Tomb of Terror - Opening Hallway]

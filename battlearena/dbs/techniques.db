@@ -266,7 +266,7 @@ DragonFangs=FangRush.RadiantBreath.HurricaneBreath.SpikeFlail.AbsoluteTerror.Dra
 DinoFangs=FangRush.SpikeFlail.AbsoluteTerror
 TurtlePower=TortoiseStomp.EarthBreath
 BeeStinger=FinalSting.SharpSting.FrenzySting
-GoblinSword=GoblinRush.BombToss.BombDrop.FastBlade
+GoblinSword=GoblinRush.BombToss.BombDrop.FastBlade.GreedySlash
 GoblinWand=GoblinRush.BombToss.BombDrop.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Cura.Flare.Quake.Flood
 TigerFangs=Roar.RazorFang.ClawCyclone
 HoundFangs=Roar.RazorFang.ClawCyclone.Bite
@@ -5461,6 +5461,16 @@ Type=Single
 TP=10
 Desc=rushes %enemy and attacks three times, knocking %enemy backwards.
 BasePower=15
+Element=none
+Cost=0
+Magic=no
+stat=str
+
+[GreedySlash]
+Type=Single
+TP=30
+Desc=tosses several gold coins into %enemy $+ 's face before rushing and slashing multiple times with his blade. 
+BasePower=50
 Element=none
 Cost=0
 Magic=no

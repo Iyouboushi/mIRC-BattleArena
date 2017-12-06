@@ -1,0 +1,35 @@
+[Info]
+Name=Gobbie Treasure Vault
+Rooms=4
+PlayersNeeded=1
+Level=15
+FinalRoom=3
+StartBattleDesc=The Treasure Goblin creates a portal to the Gobbie Treasure Vault realm in an attempt to escape death.  Unfortunately for the Goblin, death still arrives but now there is a portal for all heroes to enter.
+ClearDungeonDesc=* The party has escaped the Gobbie Treasure Vault with some treasure in-hand. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to successfully raid the Gobbie Treasure Vault. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party stands in a large room where treasure lines the floors and walls.  It appears to be safe here before going forward down a staircase that lays before you.
+Battlefield=Gobbie Treasure Vault
+
+
+[1]
+Desc=The party stumbles down the staircase and sees even more treasure piled up as well as a few goblins counting coins. Upon seeing the dungeon party the goblins brace for battle!
+Battlefield=Gobbie Treasure Vault
+Monsters=Miser_Goblin.Greedy_Goblin
+
+
+[2]
+Desc=Advancing forward the party stumbles upon another goblin and a large green pot that seems to be alive.  Behind them is a large door leading into a throne room.
+Battlefield=Gobbie Treasure Vault
+Monsters=Miser_Goblin.Pot_O_Greed
+
+
+[3]
+Desc=The party advances into the throne room where they see a ginormous obese goblin sitting on a chair surrounded by tons of gems and gold coins. Upon seeing the dungeon party the goblin struggles to get onto its feet and prepares for a fight.
+Battlefield=Gobbie Treasure Vault
+Monsters=Gluttonous_Goblin
+bossroom=true
+
+

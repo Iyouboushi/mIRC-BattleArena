@@ -23,6 +23,7 @@ IncreaseDaggerDamage
 IncreaseSpellDamage
 IncreaseHealing
 IncreaseRedOrbs
+IncreaseKillCoins
 IncreaseMeleeDamage
 IncreaseSteal
 IncreaseCriticalHits
@@ -37,3 +38,4 @@ IncreaseIGGainRate
 IncreaseTrustFriendship
 IncreaseTurnSpeed
 IncreaseWrestlingDamage
+IncreaseDBChance

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 10/16/17
+;;;; Last updated: 12/06/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4161,6 +4161,10 @@ db.dragonball.find {
 
   var %dbs.random.chance $rand(1,100)
   var %dbs.chance $readini(battlestats.dat, dragonballs, DragonballChance)
+
+  if ($accessory.check(%who.battle, IncreaseDBChance) = true) { inc %dbs.chance %accessory.amount  }
+
+
   if (%dbs.random.chance > %dbs.chance) { return }
 
   ; We found a dragonball! Let's announce it to the world then check for Shenron

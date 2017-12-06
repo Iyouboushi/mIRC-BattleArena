@@ -922,6 +922,15 @@ Cost=0
 ItemList=items_pirate'splunder.lst
 exclusive=yes
 
+[GobbieSpoil]
+type=random
+ItemDesc=This small treasure bag contains an item from the Gobbie Treasure Vault. Use it to discover what's inside!
+Desc=pulls out a small treasure bag and opens it to discover a %random.item.name inside!  Score!
+SellPrice=2000
+Cost=0
+ItemList=items_gobbiespoil.lst
+exclusive=yes
+
 [BronzeBoosterSet]
 type=random
 ItemDesc=This small envelope contains one trading card with rarity of *
@@ -1515,6 +1524,15 @@ Cost=0
 Desc=A necklace with the power to ignore Quicksilver.
 SellPrice=2000
 
+[Dragonball-Radar]
+type=accessory
+AccessoryType=IncreaseDBChance
+Cost=0
+Desc=A small green radar that helps locate dragon balls.
+; The amount on this accessory is a direct + amount to the chance of finding a dragon ball at the end of battle.
+IncreaseDBChance.Amount=25
+SellPrice=1000
+
 [Roshi's-Glasses]
 Type=accessory
 AccessoryType=Stylish
@@ -1652,6 +1670,16 @@ Desc=The combination of a Wizard's Amulet and a Blessed Ankh, this is a necklace
 IncreaseHealing.Amount=.20
 IncreaseSpellDamage.Amount=.07
 SellPrice=5000
+
+[Bling-Ring]
+type=accessory
+AccessoryType=IncreaseKillCoins
+Cost=0
+Desc=A small ring that helps discover more Kill Coins from enemies.
+; .10 = 10% more coins.  If the reward is 1000 you'll get +100
+IncreaseKillCoins.Amount=.10
+SellPrice=1500
+
 
 [Blood-Ring]
 Type=accessory
@@ -4797,6 +4825,15 @@ currency=KindredCrest
 sellprice=1500
 Desc=A map leading to a wrecked ship that is rumored to contain a rare ore. It has gained the attention of pirates and archaeologists.
 Dungeon=Hullbreaker_Isle
+Exclusive=yes
+
+[TreasureVaultPortal]
+type=dungeon
+Cost=0
+Currency=
+SellPrice=0
+Desc=A portal created by rare chance when a Treasure Goblin is killed.
+Dungeon=Treasure_Vault
 Exclusive=yes
 
 ==========================

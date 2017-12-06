@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 11/26/17
+;;;; Last updated: 12/06/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -15,6 +15,7 @@ alias aicheck {
   ; Check to see if it's a defender type. If so, next turn it.  This is needed for surprise attacks on certain monsters..
   if ($readini($char($1), info, ai_type) = defender) {
     if ($readini($char($1), descriptions, DefenderAI) != $null) { $set_chr_name($1) | $display.message(4 $+ $readini($char($1), descriptions, DefenderAI), battle) }
+    $ai.monstersummon($1)
     $next 
     halt
   }
@@ -1098,6 +1099,10 @@ alias ai.changebattlefield {
 alias ai.monstersummon {
   set %debug.location ai.monstersummon
   if ($is_charmed($1) = true) { return }
+
+  echo -a in here for $1
+  echo -a skill: $readini($char($1), skills, monstersummon)
+
   if ($readini($char($1), skills, monstersummon) >= 1) { 
     $portal.clear.monsters
     var %summon.chance $rand(1,100)

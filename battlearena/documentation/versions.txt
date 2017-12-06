@@ -1613,6 +1613,8 @@ Battle Arena Bot VERSIONS
 - Added the mythic weapon that players can forge and upgrade using OdinMarks.  Use !mythic in-game to see all the commands.
 - Added Allied Forces shop to the game. Use !shop list AlliedForces to see the services provided.
 - Added a key file. Do not modify or remove this file or the bot will not work correctly. 
+- Added Treasure Goblins to the game. Upon killing one in a non cosmic/non torment battle there is a 25% chance that it will 
+  open a portal to the Gobbie Treasure Vault dungeon. This is the only way to access that dungeon.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated
@@ -1630,4 +1632,5 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]
 - Fixed an issue with certain items being shown under the wrong currencies [thanks to Pentium320]
-- Removed !toggle damage formula  -- The old formulas are still in the bot but I want to focus on one formula for players now.
+- Removed !toggle damage formula  -- The old formulas are still in the bot but I want to focus on one formula for players
+  moving forward.
