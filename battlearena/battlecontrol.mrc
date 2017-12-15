@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/06/17
+;;;; Last updated: 12/15/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2030,7 +2030,7 @@ alias battle.end.victory {
     ; Check for Santa's Elves
     if ($left($adate, 2) = 12) {
       var %elf.save.chance $rand(1,100)
-      if (%elf.save.chance <= 10) { $shopnpc.event.saveelf }
+      if (%elf.save.chance <= 30) { $shopnpc.event.saveelf }
     }
   }
 
@@ -2044,6 +2044,14 @@ alias battle.end.victory {
     $give_random_reward
 
     if (%portal.bonus = true) { $portal.spoils.drop }
+
+    ; Check for a small chance of saving one of Santa's Elves in Dec on streaks 1000+
+    if ((%portal.bonus != true) && ($current.battlestreak >= 1000)) { 
+      if ($left($adate, 2) = 12) {
+        var %elf.save.chance $rand(1,100)
+        if (%elf.save.chance <= 10) { $shopnpc.event.saveelf }
+      }
+    }
 
     ; If the reward streak is > 15 then we can check for keys and if it's +25 then we can check for creating a chest
     if ($readini(system.dat, system, EnableChests) = true) {
