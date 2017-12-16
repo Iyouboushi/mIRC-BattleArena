@@ -12,10 +12,10 @@ IgnitionGauge=2
 [Battle]
 Hp=2500
 Tp=250
-Str=514
-Def=514
-Int=514
-Spd=514
+Str=414
+Def=414
+Int=414
+Spd=414
 Status=inactive
 IgnitionGauge=2
 
@@ -49,6 +49,7 @@ Created=N/a
 CanTaunt=false
 IgnorePresident=true
 Streak=101
+SkipDoubleTurns=true
 
 [monster]
 TechLearn=false
@@ -90,7 +91,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=CuccoBeak
-CuccoBeak=$calc(500 + $current.battlestreak)
+CuccoBeak=$calc(150 + $current.battlestreak)
 
 
 
@@ -116,7 +117,7 @@ Resist-Disarm-100
 
 MonsterSummon=$iif($readini($char(Cucco), Battle, Status) = Inactive, 0, 1)
 MonsterSummon.Monster=Cucco_Swarm
-MonsterSummon.Chance=100
+MonsterSummon.Chance=55
 monstersummon.numberspawn=1
 
 

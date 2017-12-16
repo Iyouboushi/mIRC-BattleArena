@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=16663
 Tp=1000
-Str=3812
-Def=4749
-Int=7624
-Spd=5624
+Str=1812
+Def=2749
+Int=3624
+Spd=2624
 IgnitionGauge=2
 Name=Microplasm
 
@@ -12,10 +12,10 @@ Name=Microplasm
 [Battle]
 Hp=16663
 Tp=1000
-Str=3812
-Def=4749
-Int=7624
-Spd=5624
+Str=1812
+Def=2749
+Int=3624
+Spd=2624
 IgnitionGauge=2
 Status=alive
 
@@ -58,6 +58,8 @@ SpawnAfterDeath=$iif(%battle.type != torment, Nanoplasm)
 IgnorePresident=true
 MinTormentLevel=5
 ActionsPerTurn=1
+SkipDoubleTurns=true
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no
@@ -289,6 +291,5 @@ MechShadowIV=10
 HolyHandGrenade=0
 GrandDream=60
 Thunderclap=70
-
 ResistTechs=10
 ResistMelee=10

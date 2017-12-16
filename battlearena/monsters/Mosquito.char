@@ -53,6 +53,8 @@ Created=N/a
 Streak=150
 CanTaunt=false
 ai_type=techonly
+SkipDoubleTurns=true
+BattleStats=IgnoreTP
 
 [Monster]
 Type=Bug
@@ -110,7 +112,7 @@ Resist-Sleep=100
 
 MonsterSummon=1
 MonsterSummon.Monster=Mosquito
-MonsterSummon.Chance=60
+MonsterSummon.Chance=45
 monstersummon.numberspawn=$iif($readini($char(Mosquito), battle, hp) <= 100, $rand(2,3), 2)
 
 

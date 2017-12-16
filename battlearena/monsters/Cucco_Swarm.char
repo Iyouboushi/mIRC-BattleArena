@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=5500
 Tp=25000
-Str=$calc(514 + $current.battlestreak)
-Def=$calc(514 + $current.battlestreak)
-Int=$calc(514 + $current.battlestreak)
-Spd=$calc(514 + $current.battlestreak)
+Str=$calc(314 + $current.battlestreak)
+Def=$calc(314 + $current.battlestreak)
+Int=$calc(314 + $current.battlestreak)
+Spd=$calc(314 + $current.battlestreak)
 Name=Cucco Swarm
 IgnitionGauge=2
 
@@ -12,10 +12,10 @@ IgnitionGauge=2
 [Battle]
 Hp=5500
 Tp=25000
-Str=614
-Def=614
-Int=614
-Spd=614
+Str=314
+Def=314
+Int=314
+Spd=314
 Status=normal
 IgnitionGauge=2
 
@@ -49,6 +49,7 @@ CanTaunt=false
 IgnorePresident=true
 Streak=-1000
 ai_type=techonly
+BattleStats=IgnoreTP
 
 [monster]
 TechLearn=false
@@ -91,7 +92,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=CuccoBeak
-CuccoBeak=$calc(900 + $current.battlestreak)
+CuccoBeak=$calc(150 + $current.battlestreak)
 
 
 
@@ -115,7 +116,7 @@ Resist-Petrify=100
 Resist-Disarm-100
 
 [Techniques]
-SwarmAttack=$calc(900 + $current.battlestreak)
+SwarmAttack=$calc(150 + $current.battlestreak)
 
 [Item_Amount]
 

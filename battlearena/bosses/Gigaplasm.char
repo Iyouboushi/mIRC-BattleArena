@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=40663
+Hp=30663
 Tp=1000
-Str=8812
-Def=6749
-Int=5624
+Str=3812
+Def=3749
+Int=3624
 Spd=624
 IgnitionGauge=2
 Name=Gigaplasm
 
 
 [Battle]
-Hp=40663
+Hp=30663
 Tp=1000
-Str=8812
-Def=6749
-Int=5624
+Str=3812
+Def=3749
+Int=3624
 Spd=624
 IgnitionGauge=2
 Status=alive
@@ -58,6 +58,8 @@ IgnoreElementalMessage=true
 SpawnAfterDeath=$iif(%battle.type != torment, Macroplasm.Macroplasm)
 IgnorePresident=true
 MinTormentLevel=5
+SkipDoubleTurns=true
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no
@@ -289,6 +291,5 @@ MechShadowIV=10
 HolyHandGrenade=0
 GrandDream=60
 Thunderclap=70
-
-ResistTechs=60
-ResistMelee=60
+ResistTechs=45
+ResistMelee=45

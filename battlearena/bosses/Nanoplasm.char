@@ -3,8 +3,8 @@ Hp=15000
 Tp=1000
 Str=1812
 Def=3749
-Int=8624
-Spd=7624
+Int=3624
+Spd=2624
 IgnitionGauge=2
 Name=Nanoplasm
 
@@ -14,8 +14,8 @@ Hp=15000
 Tp=1000
 Str=1812
 Def=3749
-Int=8624
-Spd=7624
+Int=3624
+Spd=2624
 IgnitionGauge=2
 Status=alive
 
@@ -57,6 +57,8 @@ IgnoreElementalMessage=true
 IgnorePresident=true
 MinTormentLevel=5
 ActionsPerTurn=2
+SkipDoubleTurns=true
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no
@@ -288,3 +290,5 @@ MechShadowIV=10
 HolyHandGrenade=0
 GrandDream=60
 Thunderclap=70
+ResistTechs=10
+ResistMelee=10
