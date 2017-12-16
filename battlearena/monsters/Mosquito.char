@@ -110,7 +110,7 @@ Resist-Sleep=100
 
 MonsterSummon=1
 MonsterSummon.Monster=Mosquito
-MonsterSummon.Chance=100
+MonsterSummon.Chance=60
 monstersummon.numberspawn=$iif($readini($char(Mosquito), battle, hp) <= 100, $rand(2,3), 2)
 
 
