@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/16/17
+;;;; Last updated: 12/23/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2030,7 +2030,8 @@ alias battle.end.victory {
     ; Check for Santa's Elves
     if ($left($adate, 2) = 12) {
       var %elf.save.chance $rand(1,100)
-      if (%elf.save.chance <= 30) { $shopnpc.event.saveelf }
+      inc %elf.save.chance $left($date, 2)
+      if (%elf.save.chance >= 70) { $shopnpc.event.saveelf }
     }
   }
 
@@ -2046,10 +2047,11 @@ alias battle.end.victory {
     if (%portal.bonus = true) { $portal.spoils.drop }
 
     ; Check for a small chance of saving one of Santa's Elves in Dec on streaks 1000+
-    if ((%portal.bonus != true) && ($current.battlestreak >= 1000)) { 
+    if ((%portal.bonus != true) && ($current.battlestreak >= 500)) { 
       if ($left($adate, 2) = 12) {
         var %elf.save.chance $rand(1,100)
-        if (%elf.save.chance <= 10) { $shopnpc.event.saveelf }
+        inc %elf.save.chance $left($date, 2)
+        if (%elf.save.chance >= 80) { $shopnpc.event.saveelf }
       }
     }
 
