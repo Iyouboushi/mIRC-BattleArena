@@ -946,7 +946,7 @@ Type=random
 ItemDesc=A small wrapped present that can contain a huge variety of items inside.
 Desc=pulls out a present and hands it to %enemy $+ , who opens it and finds a %random.item.name inside! Merry XMas!
 SellPrice=7000
-Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 200, 100000, 0)
+Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 100, 1000000, 0)
 ShopNPC=Santa
 
 [AnniGift]
