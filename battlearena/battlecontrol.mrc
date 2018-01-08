@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/23/17
+;;;; Last updated: 01/08/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -280,7 +280,7 @@ alias clear_battle {
     if ((%battle.type != cosmic) && (%battle.type != torment))  {
       if ($isfile($dungeonfile(treasure_vault)) = $true) { 
         ; a 10% chance of this happening
-        if ($rand(1,100) <= 25) { var %open.treasuredungeon true }
+        if ($rand(1,100) <= 45) { var %open.treasuredungeon true }
       }
     }
   }
