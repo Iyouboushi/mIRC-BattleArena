@@ -847,7 +847,7 @@ Cost=0
 Desc=begins to gain a purple glow as her hair becomes long and flowing, with it now missing from the sleeves of her outfit.
 StatusTarget=Enemy
 StatusType=Slow
-AdditionalCode=writeini $char($1) status Auto-Regen on | writeini $char($1) techniques Labolas $calc(1 + $current.battlestreak)
+AdditionalCode=writeini $char($1) status Auto-Regen on | writeini $char($1) skills Regen=40 | writeini $char($1) techniques Labolas $calc(1 + $current.battlestreak)
 
 [DragonAspect]
 Name=DragonAspect

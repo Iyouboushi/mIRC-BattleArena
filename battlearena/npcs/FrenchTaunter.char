@@ -50,7 +50,7 @@ CanFlee=false
 IgnoreQuicksilver=true
 HurtByTaunt=true
 JustReleaseDefense=100
-ai_type=tauntonly
+ai_type=$iif(%boss.type = crystalshadow, tauntonly, techonly)
 trust=true
 ActionsPerTurn=$rand(1,2)
 
@@ -95,7 +95,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=TauntPower
-TauntPower=1
+TauntPower=$iif(%battle.type = ai, %ai.battle.level, $round($calc($return_playerlevelstotal / 2),0))
 
 
 [Skills]
@@ -119,7 +119,8 @@ Resist-Petrify=100
 Resist-Disarm=100
 
 [Techniques]
-
+Cow_Launch=$iif(%battle.type = ai, %ai.battle.level, $round($calc($return_playerlevelstotal / 2),0))
+Chicken_Toss=$iif(%battle.type = ai, %ai.battle.level, $round($calc($return_playerlevelstotal / 2),0))
 
 [Item_Amount]
 

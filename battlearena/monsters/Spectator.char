@@ -1,21 +1,21 @@
 [BaseStats]
 Hp=5272
-Tp=1250
+Tp=1500
 Str=223
-Def=4234
-Int=2986
-Spd=3165
+Def=3234
+Int=2286
+Spd=2165
 Name=Spectator
 IgnitionGauge=10
 
 
 [Battle]
 Hp=5272
-Tp=1250
+Tp=1500
 Str=223
-Def=4234
-Int=2986
-Spd=3165
+Def=3234
+Int=2286
+Spd=2165
 Status=alive
 IgnitionGauge=10
 
@@ -57,6 +57,7 @@ IgnoreQuicksilver=true
 JustReleaseDefense=80
 MinTormentLevel=10
 ActionsPerTurn=2
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no
@@ -160,4 +161,4 @@ HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=45
+ResistTechs=20

@@ -503,6 +503,7 @@ Fireseal=GunFlame.VolcanicViper.BanditRevolver.TyrantFlame
 JunkYardDogMkIII=GunFlame.VolcanicViper.BanditRevolver.TyrantFlame.SaintOratorio
 Thunderseal=StunEdge.VaporThrust.GreedSever.RideTheLightning
 Aquila=Resolution.RideTheLightning.Torcleaver
+TauntPower=Cow_Launch.Chicken_Toss
 GoukiGloves=GouHadouken.ZankuuHadouken.GouShouryuken.TatsumakiZankuuKyaku.MessatsuGouHadou.MessatsuGouShouryuu.TenmaGouZankuu.ShunGokuSatsu
 GammaBody=GammaEnergyBullet
 GammaArm=GammaGrab.GammaThrow.GammaPunch
@@ -11894,6 +11895,34 @@ Magic=No
 HurtEthereal=true
 stat=str
 CanDodge=false
+
+[Cow_Launch]
+Type=Single
+Cost=0
+Desc=says, "Fetchez la vache!" as several more French soldiers appear, with a large cow sitting on a catapult. A few moments pass before the French Taunter gives the signal to fire, upon which the cow is launched at %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+Renkei=2
+CanDodge=True
+
+[Chicken_Toss]
+Type=AOE
+Cost=0
+Desc=hurls a bunch of angry chickens at all of the enemies on the battlefield while laughing!
+TP=10
+Element=None
+Hits=1
+BasePower=35
+Magic=No
+HurtEthereal=true
+stat=str
+CanDodge=True
 
 [GouHadouken]
 Type=Single
