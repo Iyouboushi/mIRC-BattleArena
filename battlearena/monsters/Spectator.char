@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=5272
 Tp=1500
-Str=223
-Def=3234
-Int=2286
-Spd=2165
+Str=1200
+Def=2500
+Int=1800
+Spd=1200
 Name=Spectator
 IgnitionGauge=10
 
@@ -12,10 +12,10 @@ IgnitionGauge=10
 [Battle]
 Hp=5272
 Tp=1500
-Str=223
-Def=3234
-Int=2286
-Spd=2165
+Str=1200
+Def=2500
+Int=1800
+Spd=1200
 Status=alive
 IgnitionGauge=10
 
@@ -161,4 +161,5 @@ HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=20
+ResistTechs=10
+ResistMelee=10

@@ -1,9 +1,9 @@
 [BaseStats]
 Hp=1250
 Tp=1150
-Str=943
-Def=815
-Int=823
+Str=743
+Def=515
+Int=523
 Spd=181
 IgnitionGauge=2
 Name=Small Werewolf
@@ -11,9 +11,9 @@ Name=Small Werewolf
 [Battle]
 Hp=1250
 Tp=1150
-Str=943
-Def=815
-Int=823
+Str=743
+Def=515
+Int=523
 Spd=181
 IgnitionGauge=2
 Status=alive
@@ -59,6 +59,7 @@ streak=30
 CanTaunt=false
 ai_type=berserker
 moonphase=Full Moon
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no

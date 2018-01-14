@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=1850
 Tp=1150
-Str=1243
-Def=1115
-Int=950
-Spd=581
+Str=943
+Def=815
+Int=750
+Spd=481
 IgnitionGauge=2
 Name=Gray Werewolf
 
 [Battle]
 Hp=1850
 Tp=1150
-Str=1243
-Def=1115
-Int=950
-Spd=581
+Str=943
+Def=815
+Int=750
+Spd=481
 IgnitionGauge=2
 Status=alive
 
@@ -59,6 +59,7 @@ streak=120
 CanTaunt=false
 ai_type=berserker
 moonphase=Full Moon
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no
@@ -103,7 +104,7 @@ resist-stun=100
 resist-blind=50
 resist-charm=100
 resist-poison=100
-TrueStrike.on=on
+TrueStrike.on=$iif(%battle.type = torment, off, on)
 
 [Techniques]
 Roar=500

@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=125000
+Hp=160000
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2272
+Def=2272
+Int=2272
+Spd=2272
 IgnitionGauge=2
 Name=Metroid Prime Core
 
 
 [Battle]
-Hp=125000
+Hp=160000
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2272
+Def=2272
+Int=2272
+Spd=2272
 IgnitionGauge=2
 Status=alive
 
@@ -52,7 +52,7 @@ streak=-1000
 CanFlee=false
 CanTaunt=false
 JustReleaseDefense=100
-BattleStats=ignoreHP
+BattleStats=ignoreHP.IgnoreTP
 CanStagger=no
 IgnoreQuicksilver=true
 IgnoreElementalMessage=true
@@ -61,7 +61,7 @@ IgnoreDrain=true
 
 [monster]
 type=metroid
-TechLearn=true
+TechLearn=false
 size=medium
 Elite=$iif(%battle.type = torment, false, true)
 SuperElite=$iif(%battle.type = torment, true, false)
@@ -142,7 +142,7 @@ PurePhazonWave=$calc(1 + $current.battlestreak)
 
 [Styles]
 Equipped=Weaponmaster
-Weaponmaster=10
+Weaponmaster=8
 
 [Augments]
 MetroidPrimePower=MeleeMonus.TechBonus.MagicBonus
@@ -180,15 +180,15 @@ HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=20
-ResistMelee=20
+ResistTechs=10
+ResistMelee=10
 GrandDream=60
 Thunderclap=70
 PhazonBeam=500
 Blast_Burn=50
 Hydro_Cannon=50
 Hyper_Beam=50
-Final_Kamehameha=75
+Final_Kamehameha=70
 Spirit_Excalibur=50
 Final_Flash=50
-God_Kamehameha=75
+God_Kamehameha=70

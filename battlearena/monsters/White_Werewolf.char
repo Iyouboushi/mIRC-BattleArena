@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=2850
 Tp=1150
-Str=2943
-Def=2615
-Int=2550
-Spd=2081
+Str=2443
+Def=2315
+Int=2250
+Spd=1881
 IgnitionGauge=2
 Name=White Werewolf
 
 [Battle]
 Hp=2850
 Tp=1150
-Str=2943
-Def=2615
-Int=2550
-Spd=2081
+Str=2443
+Def=2315
+Int=2250
+Spd=1881
 IgnitionGauge=2
 Status=alive
 
@@ -59,6 +59,7 @@ streak=500
 CanTaunt=false
 ai_type=berserker
 moonphase=Full Moon
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no

@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=1000
+Hp=1500
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2272
+Def=2272
+Int=2272
+Spd=2272
 IgnitionGauge=2
 Name=Metroid Prime
 
 
 [Battle]
-Hp=1000
+Hp=1500
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2272
+Def=2272
+Int=2272
+Spd=2272
 IgnitionGauge=2
 Status=alive
 
@@ -56,6 +56,7 @@ IgnoreQuicksilver=true
 IgnoreElementalMessage=true
 IgnorePresident=true
 IgnoreDrain=true
+BattleStats=IgnoreTP
 
 [monster]
 type=metroid
@@ -143,7 +144,7 @@ MetroidPrimeCharge=$calc(1 + $current.battlestreak)
 
 [Styles]
 Equipped=Weaponmaster
-Weaponmaster=10
+Weaponmaster=8
 
 
 [Augments]
@@ -184,14 +185,14 @@ HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=15
-ResistMelee=15
+ResistTechs=5
+ResistMelee=5
 GrandDream=60
 Thunderclap=70
 Blast_Burn=50
 Hydro_Cannon=50
 Hyper_Beam=50
-Final_Kamehameha=75
+Final_Kamehameha=70
 Spirit_Excalibur=50
 Final_Flash=50
-God_Kamehameha=75
+God_Kamehameha=70

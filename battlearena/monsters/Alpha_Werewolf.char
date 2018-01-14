@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=5850
 Tp=1150
-Str=9343
-Def=8815
-Int=7950
-Spd=5081
+Str=7343
+Def=6815
+Int=5950
+Spd=4081
 IgnitionGauge=2
 Name=Alpha Werewolf
 
 [Battle]
 Hp=5850
 Tp=1150
-Str=9343
-Def=8815
-Int=7950
-Spd=5081
+Str=7343
+Def=6815
+Int=5950
+Spd=4081
 IgnitionGauge=2
 Status=alive
 
@@ -62,6 +62,7 @@ ai_type=berserker
 moonphase=Full Moon
 IgnorePresident=true
 MinTormentLevel=3
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no
@@ -110,7 +111,7 @@ TrueStrike.on=$iif(%battle.type = torment, off, on)
 
 MonsterSummon=1
 MonsterSummon.Monster=$iif($rand(1,2) = 1, Gray_Werewolf, $iif($rand(1,2) = 1, White_Werewolf, Small_Werewolf))
-MonsterSummon.Chance=85
+MonsterSummon.Chance=60
 monstersummon.numberspawn=1
 
 

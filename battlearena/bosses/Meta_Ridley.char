@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=1000
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2272
+Def=2272
+Int=2272
+Spd=2272
 IgnitionGauge=2
 Name=Meta Ridley
 
@@ -12,10 +12,10 @@ Name=Meta Ridley
 [Battle]
 Hp=1000
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2272
+Def=2272
+Int=2272
+Spd=2272
 IgnitionGauge=2
 Status=alive
 
@@ -56,7 +56,7 @@ IgnoreQuicksilver=true
 IgnoreElementalMessage=true
 IgnorePresident=true
 IgnoreDrain=true
-
+BattleStats=IgnoreTP
 
 [monster]
 type=
@@ -145,7 +145,7 @@ RidleyClawAttack=$calc(1 + $current.battlestreak)
 
 [Styles]
 Equipped=Weaponmaster
-Weaponmaster=10
+Weaponmaster=8
 
 
 [Augments]
@@ -184,7 +184,7 @@ HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=10
-ResistMelee=10
+ResistTechs=8
+ResistMelee=8
 GrandDream=60
 Thunderclap=70

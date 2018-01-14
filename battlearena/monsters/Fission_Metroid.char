@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=500
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2000
+Def=2000
+Int=2000
+Spd=2000
 Name=Fission Metroid
 IgnitionGauge=2
 
@@ -12,10 +12,10 @@ IgnitionGauge=2
 [Battle]
 Hp=500
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2000
+Def=2000
+Int=2000
+Spd=2000
 Status=alive
 IgnitionGauge=2
 
@@ -52,6 +52,7 @@ CanTaunt=false
 IgnoreElementalMessage=true
 JustReleaseDefense=75
 CanStagger=no
+BattleStats=IgnoreTP
 
 
 [monster]
@@ -147,36 +148,34 @@ MetroidFangs=MeleeMonus.TechBonus.MagicBonus
 
 [modifiers]
 Heal=none
-Earth=50
-Fire=50
-Wind=50
-Water=50
-Ice=200
-Lightning=50
-Light=50
-Dark=50
-HandToHand=75
-Whip=75
-Sword=75
-Gun=75
-Rifle=75
-Katana=75
-Wand=75
-Spear=75
-Scythe=75
-Glyph=75
-GreatSword=75
-Bow=75
-Axe=75
-Dagger=75
-Mace=75
-Stave=75
-Lightsaber=100
-Hammer=75
-EnergyBlaster=125
+Earth=40
+Fire=40
+Wind=40
+Water=40
+Ice=300
+Lightning=40
+Light=40
+Dark=40
+HandToHand=65
+Whip=65
+Sword=65
+Gun=65
+Rifle=65
+Katana=65
+Wand=65
+Spear=65
+Scythe=65
+Glyph=65
+GreatSword=65
+Bow=65
+Axe=65
+Dagger=65
+Mace=65
+Stave=65
+Lightsaber=150
+Hammer=65
+EnergyBlaster=200
 HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=10
-ResistMelee=10

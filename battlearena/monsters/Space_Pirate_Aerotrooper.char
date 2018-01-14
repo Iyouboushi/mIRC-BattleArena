@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=500
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2000
+Def=2000
+Int=2000
+Spd=2000
 Name=Space Pirate Aerotrooper
 IgnitionGauge=2
 
@@ -12,10 +12,10 @@ IgnitionGauge=2
 [Battle]
 Hp=500
 Tp=1000
-Str=2572
-Def=2572
-Int=2572
-Spd=2572
+Str=2000
+Def=2000
+Int=2000
+Spd=2000
 Status=alive
 IgnitionGauge=2
 
@@ -49,6 +49,7 @@ CanFlee=false
 CanTaunt=false
 JustReleaseDefense=75
 CanStagger=no
+BattleStats=IgnoreTP
 
 
 [monster]
@@ -172,5 +173,5 @@ HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=10
-ResistMelee=10
+ResistTechs=5
+ResistMelee=5
