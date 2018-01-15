@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 01/08/18
+;;;; Last updated: 01/15/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2986,6 +2986,24 @@ alias battle.reward.killcoins {
 
       ; Check for bounty
       if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { inc %total.coins.reward 20 }
+
+      ; Calculate a "resting" bonus.  This is a bonus to coins for people who have been out of battle for a while.
+      var %last.battle $readini($char(%who.battle), Info, LastBattleTime)
+      if (%last.battle = $null) { 
+
+        ; Try to calculate the time it's been since they last logged in
+        var %last.battle $ctime($readini($char(%who.battle), info, LastSeen))
+
+        ; Check again, as a last ditch effort
+        if (%last.battle = $null) { var %last.battle $ctime }
+      }
+      var %rest.time.difference $calc($ctime - %last.battle)
+      var %rest.time $calc(%rest.time.difference /60/60)
+      var %resting.bonus $round($calc(%rest.time * 2),0)
+
+      if (%resting.bonus < 1) { var %resting.bonus 0 }
+
+      inc %total.coins.reward %resting.bonus
 
       ; Add the coins to the player
       var %current.coins.onhand $readini($char(%who.battle), stuff, killcoins)
