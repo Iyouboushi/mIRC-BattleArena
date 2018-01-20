@@ -1001,7 +1001,7 @@ hits=2
 
 [SavageBladeII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=hits %enemy with a backswing of the sword, using the motion to jump into the air. %user then stabs %enemy with the blade on the way down, causing an explosion of Light energy.
 TP=125
 Element=Light
@@ -1014,7 +1014,7 @@ Renkei=4
 [FlatBladeII]
 Type=Single
 StatusType=Stun
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=hits %enemy hard enough with the flat side of the sword to stun $gender2($2)
 TP=125
 Element=None
@@ -1065,7 +1065,7 @@ TP=100
 Desc=quickly dashes past %enemy $+ , slashes as $gender3($1) does. %user then spins to face %enemy to slash down across $gender($2) back before moving away.
 BasePower=75
 Element=none
-Cost=7000
+Cost=5000
 Magic=no
 stat=str
 Hits=2
@@ -1077,7 +1077,7 @@ TP=100
 Desc=smirks as lightning begins to dance on the sword as %user leaps towards %enemy and slashes with the sword. %user then hops back and swings $gender($1) sword at %enemy $+ , tossing the lighting at %enemy $+ .
 BasePower=75
 Element=Lightning
-Cost=7000
+Cost=5000
 Magic=yes
 stat=int
 
@@ -1087,13 +1087,13 @@ TP=100
 Desc=holds up $gender($1) sword as blue energy covers it. %user then drives the sword into the ground, causing vertical waves of blue energy to strike all targets on the battlefield.
 BasePower=60
 Element=none
-Cost=8000
+Cost=6500
 Magic=no
 stat=str
 
 [Twin_SliceII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=quickly dashes past %enemy $+ , slashes as $gender3($1) does. %user then spins to face %enemy to slash down across $gender($2) back before moving away.
 TP=125
 Element=None
@@ -1106,7 +1106,7 @@ DestroyShadows=2
 
 [LightningStrikeII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=smirks as lightning begins to dance on the sword as %user leaps towards %enemy and slashes with the sword. %user then hops back and swings $gender($1) sword at %enemy $+ , tossing the lighting at %enemy $+ .
 TP=125
 Element=Lightning
@@ -1118,7 +1118,7 @@ DestroyShadows=2
 
 [BladeBeamIII]
 Type=AOE
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 60000, 11750)
 Desc=holds up $gender($1) sword as blue energy covers it. %user then drives the sword into the ground, causing vertical waves of blue energy to strike all targets on the battlefield.
 TP=150
 Element=None
@@ -1135,7 +1135,7 @@ TP=100
 Desc=holds up the blade towards the sky. After a brief moment, a bright white light begins to shimmer down the blade of the sword. After the blade is fully lit, %user swings in a broad arc sending a wave of light energy out towards %enemy $+ !
 BasePower=75
 Element=Light
-Cost=8000
+Cost=5000
 Magic=yes
 stat=int
 
@@ -1145,13 +1145,13 @@ TP=100
 Desc=holds the blade outwards and after a brief moment a bright blue light begins to shimmer down the blade of the sword.  Upon unleashing the energy, %user begins to spin around, slashing all of $gender($1) enemies on the battlefield. 
 BasePower=60
 Element=none
-Cost=8000
+Cost=6500
 Magic=no
 stat=str
 
 [SwiftBladeII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=performs three quick slashes upon %enemy with the sword.
 TP=125
 Element=None
@@ -1164,7 +1164,7 @@ DestroyShadows=2
 
 [SkywardStrikeII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=holds up the blade towards the sky. After a brief moment, a bright white light begins to shimmer down the blade of the sword. After the blade is fully lit, %user swings in a broad arc sending a wave of light energy out towards %enemy $+ !
 TP=125
 Element=Light
@@ -1176,7 +1176,7 @@ DestroyShadows=2
 
 [HurricaneSpinII]
 Type=AOE
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 60000, 11750)
 Desc=holds the blade outwards and after a brief moment a bright blue light begins to shimmer down the blade of the sword.  Upon unleashing the energy, %user begins to spin around, slashing all of $gender($1) enemies on the battlefield.
 TP=150
 Element=None
@@ -1279,7 +1279,7 @@ Renkei=3
 
 [GrandDream]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 55000, 10000)
 Desc=raises the sword to the air as Masa, Mune, and Doreen leap from the sword and descend upon %enemy $+ , unleashing a barrage of attacks before quickly returning to the sword.
 TP=300
 Element=Light.Wind
@@ -1857,7 +1857,7 @@ Renkei=3
 
 [HotShotIII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=takes aim and fires a small fire blast at %enemy $+ !
 TP=125
 Element=Fire
@@ -1870,7 +1870,7 @@ IgnoreDefense=5
 
 [ChargedShotIII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=charges the weapon and releases a powerful bullet infused with energy towards %enemy $+ !
 TP=125
 Element=None
@@ -1883,7 +1883,7 @@ IgnoreDefense=10
 
 [BlastShotIII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=backhands %enemy in the face with $gender($1) gun and then fires a point-blank shot at %enemy $+ 's body!
 TP=125
 Element=None
@@ -2492,7 +2492,7 @@ Renkei=1
 
 [JudgementCutII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=hops back and returns the Yamato katana to its sheath for a moment before quickly swinging the katana at %enemy $+ , hurling a sphere of dark energy towards $gender2($2) $+ !
 TP=125
 Element=Dark
@@ -2505,7 +2505,7 @@ DestroyShadows=2
 
 [SummonedSwords]
 Type=AOE
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 60000, 11750)
 Desc=summons several energy version of the Yamato katana around the battlefield, pausing for a moment before unleashing them upon all enemies!
 TP=150
 Element=None
@@ -2518,7 +2518,7 @@ DestroyShadows=2
 
 [RisingStar]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=unleashes a spiral cut upon %enemy $+ , which lifts both %user and %enemy into the air!
 TP=125
 Element=None
@@ -2531,7 +2531,7 @@ DestroyShadows=2
 
 [AerialRave]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=unleashes several katana slashes upon %enemy $+ , knocking %enemy back down with the last hit!
 TP=125
 Element=None
@@ -3097,7 +3097,7 @@ TP=125
 Desc=casts a healing spell on %enemy $+ !  $set_chr_name($2) %real.name is bathed in a refreshing white light.
 BasePower=150
 Element=Light
-Cost=20000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 20000, 9500)
 Magic=Yes
 stat=int
 CappedAmount=9000
@@ -3108,7 +3108,7 @@ TP=125
 Desc=summons a gigantic sphere of fire above %enemy $+ . $set_chr_name($1) %real.name waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Element=Fire
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3118,7 +3118,7 @@ TP=125
 Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Element=Earth
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3128,7 +3128,7 @@ TP=125
 Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Element=Water
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3138,7 +3138,7 @@ TP=125
 Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Element=Wind
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3148,7 +3148,7 @@ TP=125
 Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Element=Ice
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3158,7 +3158,7 @@ TP=125
 Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Element=Lightning
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3239,7 +3239,7 @@ TP=300
 Desc=traps %enemy in a large sphere of green energy. The sphere explodes a moment later, causing massive damage!
 BasePower=500
 Element=Light
-Cost=15000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 15000, 7500)
 Magic=Yes
 stat=int
 
@@ -3249,7 +3249,7 @@ TP=300
 Desc=traps %enemy in a large sphere of black energy. The sphere explodes a moment later, causing massive damage!
 BasePower=500
 Element=Dark
-Cost=15000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 15000, 7500)
 Magic=Yes
 stat=int
 
@@ -3259,7 +3259,7 @@ TP=250
 Desc=begins to chant the words of an ancient and forbidden spell. A huge sphere of blinding white energy surrounds %enemy for a moment before causing a huge explosion, dealing a massive amount of Holy damage to %enemy $+ !
 BasePower=$iif(%battle.type = torment, 2250, 800)
 Element=Light
-Cost=75000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3269,7 +3269,7 @@ TP=250
 Desc=begins to chant the words of an ancient and forbidden spell. A huge sphere of pure black energy surrounds %enemy for a moment before causing a huge explosion, dealing a massive amount of Shadow damage to %enemy $+ !
 BasePower=$iif(%battle.type = torment, 2250, 800)
 Element=Dark
-Cost=75000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3325,7 +3325,7 @@ stat=int
 
 [DarknessIII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=chants as black energy covers %enemy $+ . The energy explodes a moment later, causing large darkness damage upon %enemy $+ !
 TP=100
 Element=Dark
@@ -3369,7 +3369,7 @@ Type=AOE
 TP=125
 Desc=chants the encantation for the ancient and powerful spell, Fira. Columns of fire erupt from the battlefield and engulf all of the targets!
 BasePower=$iif(%battle.type = torment, 1700, 400)
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=fire
 magic=yes
 stat=int
@@ -3379,7 +3379,7 @@ Type=AOE
 TP=125
 Desc=chants the encantation for the ancient and powerful spell, Stonera. The ground shakes violently as the earth spits out giant boulders at all targets.
 BasePower=$iif(%battle.type = torment, 1700, 400)
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=earth
 magic=yes
 stat=int
@@ -3389,7 +3389,7 @@ Type=AOE
 TP=125
 Desc=chants the encantation for the ancient and powerful spell, Watera.  A huge tidal wave floods the battle field, pushing all targets under the water
 BasePower=$iif(%battle.type = torment, 1700, 400)
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=water
 magic=yes
 stat=int
@@ -3399,7 +3399,7 @@ Type=AOE
 TP=125
 Desc=chants the encantation for the ancient and powerful spell, Aera.  The battlefield howls as sharp wind that cuts like knives flies over all of the targets
 BasePower=$iif(%battle.type = torment, 1700, 400)
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=wind
 magic=yes
 stat=int
@@ -3409,7 +3409,7 @@ Type=AOE
 TP=125
 Desc=chants the encantation for the ancient and powerful spell, Blizzara.  An ice wind fills the battlefield as the ground begins to freeze.  Large columns of ice shoot out of the ground and explode on all targets.
 BasePower=$iif(%battle.type = torment, 1700, 400)
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=ice
 magic=yes
 stat=int
@@ -3419,7 +3419,7 @@ Type=AOE
 TP=125
 Desc=chants the encantation for the ancient and powerful spell, Thundara.  Dark clouds cover the battlefield and large bolts of lightning shoot out and strike all enemies.  
 BasePower=$iif(%battle.type = torment, 1700, 400)
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=lightning
 magic=yes
 stat=int
@@ -3429,7 +3429,7 @@ Type=heal-AOE
 TP=125
 Desc=casts Curaga II on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
 BasePower=125
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=light
 magic=yes
 stat=int
@@ -3441,7 +3441,7 @@ TP=125
 Desc=floats into the air slightly as $gender3($1) gathers energy. A small dark orb appears in front of $set_chr_name($1) %real.name for a moment before the orb slams into the battlefield, covering it in darkness!
 BasePower=$iif(%battle.type = torment, 1700, 400)
 Element=Dark
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3451,7 +3451,7 @@ TP=125
 Desc=casts a stronger version of Holy. Searing light engulfs the battlefield to damage all targets!
 BasePower=$iif(%battle.type = torment, 1700, 400)
 Element=Light
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
 
@@ -3507,7 +3507,7 @@ stat=int
 
 [LightIII]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=chants as white energy covers %enemy $+ . The energy explodes a moment later, causing large holy damage upon %enemy $+ !
 TP=100
 Element=Light
@@ -3637,7 +3637,7 @@ TP=100
 Desc=does a backhand gesture and three flames appear and slam into %enemy $+ .
 BasePower=$iif(%battle.type = torment, 1500, 350)
 Element=Fire
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 Magic=yes
 stat=int
 
@@ -3647,7 +3647,7 @@ TP=100
 Desc=holds $gender($1) hands forward and a large ice crystal forms before speeding toward %enemy $+ .
 BasePower=$iif(%battle.type = torment, 1500, 350)
 Element=Ice
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 Magic=yes
 stat=int
 
@@ -3657,7 +3657,7 @@ TP=100
 Desc=swings $gender($1) right arm up into the air and causes a bolt of lightning to shoot into %enemy $+ !
 BasePower=$iif(%battle.type = torment, 1500, 350)
 Element=Lightning
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 Magic=yes
 stat=int
 
@@ -3667,7 +3667,7 @@ TP=100
 Desc=places $gender($1) hands forward and a concentrated beam of energy shoots forward into %enemy $+ .
 BasePower=$iif(%battle.type = torment, 1500, 350)
 Element=Light
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 Magic=yes
 stat=int
 
@@ -3677,7 +3677,7 @@ TP=125
 Desc=summons two pink spheres of energy and tosses them into the air. The spheres bounce around the battlefield to hit all targets!
 BasePower=$iif(%battle.type = torment, 1250, 250)
 Element=earth
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=yes
 stat=int
 
@@ -3688,7 +3688,7 @@ TP=100
 Desc=summons a large ball of dark energy and sends it slamming into %enemy in an attempt to curse %enemy $+ .
 BasePower=$iif(%battle.type = torment, 1500, 350)
 Element=Dark
-Cost=25000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=yes
 stat=int
 
@@ -3698,7 +3698,7 @@ TP=125
 Desc=summons two golden spheres of energy and sends them spinning towards all enemies on the battlefield.
 BasePower=$iif(%battle.type = torment, 1250, 250)
 Element=Light
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=yes
 stat=int
 
@@ -3708,7 +3708,7 @@ TP=125
 Desc=combines the power of Dominus, which causes a massive explosion of dark energy upon the battlefield!
 BasePower=$iif(%battle.type = torment, 1250, 250)
 Element=Dark
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 magic=yes
 stat=int
 
@@ -3717,7 +3717,7 @@ Type=heal
 TP=100
 Desc=casts a healing spell on %enemy $+ !  $set_chr_name($2) %real.name is bathed in a refreshing white light.
 BasePower=125
-Cost=20000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 30000, 8500)
 Element=light
 magic=yes
 stat=int
@@ -3728,7 +3728,7 @@ Type=heal-AOE
 TP=125
 Desc=casts a healing spell on the battlefield.  All of %user $+ 's allies are bathed in a refreshing white light.
 BasePower=100
-Cost=30000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=light
 magic=yes
 stat=int
@@ -3826,7 +3826,7 @@ TP=50
 Desc=spins Mjolnir around as lightning gathers around the hammer. Finally, %user slams the hammer into the ground sending a massive shockwave across the battlefield.
 BasePower=$iif(%battle.type = torment, 1500, 350)
 Element=Lightning
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 60000, 11750)
 Magic=yes
 stat=str
 DestroyShadows=2
@@ -3837,7 +3837,7 @@ TP=50
 Desc=holds Mjolnir straight up into the sky. The sky darkens and lightning begins to strike the hammer, charging it up.  After a moment %user aims it at %enemy which sends a gigantic bolt of lightning into $gender2($2) 
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Element=Lightning
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=yes
 stat=str
 DestroyShadows=2
@@ -3850,7 +3850,7 @@ Type=Buff
 TP=20
 Desc=casts the spell of Protect upon %enemy $+ ! A bright white crystal-like outline appears over %enemy $+ 's body then fades. %enemy feels stronger against melee attacks now.
 Status=Protect
-Cost=2500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 Element=light
 Magic=yes
 Stat=int
@@ -3870,7 +3870,7 @@ Type=Buff
 TP=20
 Desc=casts the spell of Shell upon %enemy $+ ! A bright green crystal-like outline appears over %enemy $+ 's body then fades. %enemy feels stronger against magic attacks now.
 Status=Shell
-Cost=2500
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 Element=light
 Magic=yes
 Stat=int
@@ -3881,7 +3881,7 @@ TP=50
 Desc=casts a protective spell to lessen the damage from earth-based attacks. A bright flash of brown covers %enemy $+ 's body before fading.
 Status=Resist-Earth
 Modifier=earth
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [BarFire]
 Type=Buff
@@ -3889,7 +3889,7 @@ TP=50
 Desc=casts a protective spell to lessen the damage from fire-based attacks. A bright flash of red covers %enemy $+ 's body before fading.
 Status=Resist-Fire
 Modifier=fire
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [BarWind]
 Type=Buff
@@ -3897,7 +3897,7 @@ TP=50
 Desc=casts a protective spell to lessen the damage from wind-based attacks. A bright flash of green covers %enemy $+ 's body before fading.
 Status=Resist-Wind
 Modifier=wind
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [BarWater]
 Type=Buff
@@ -3905,7 +3905,7 @@ TP=50
 Desc=casts a protective spell to lessen the damage from water-based attacks. A bright flash of blue covers %enemy $+ 's body before fading.
 Status=Resist-Water
 Modifier=water
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [BarIce]
 Type=Buff
@@ -3913,7 +3913,7 @@ TP=50
 Desc=casts a protective spell to lessen the damage from ice-based attacks. A bright flash of blue covers %enemy $+ 's body before fading.
 Status=Resist-Ice
 Modifier=ice
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [BarLightning]
 Type=Buff
@@ -3921,7 +3921,7 @@ TP=50
 Desc=casts a protective spell to lessen the damage from lightning-based attacks. A bright flash of purple covers %enemy $+ 's body before fading.
 Status=Resist-Lightning
 Modifier=lightning
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [BarLight]
 Type=Buff
@@ -3929,7 +3929,7 @@ TP=50
 Desc=casts a protective spell to lessen the damage from light-based attacks. A bright flash of white covers %enemy $+ 's body before fading.
 Status=Resist-Light
 Modifier=light
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [BarDark]
 Type=Buff
@@ -3937,7 +3937,7 @@ TP=50
 Desc=casts a protective spell to lessen the damage from dark-based attacks. A bright flash of black covers %enemy $+ 's body before fading.
 Status=Resist-Dark
 Modifier=dark
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [EnFire]
 Type=buff
@@ -3945,7 +3945,7 @@ TP=50
 Status=en-spell
 Desc=enchants %enemy $+ 's weapon with the power of fire.  Small flames flare up around %enemy $+ 's weapon.
 Element=fire
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [EnEarth]
 Type=buff
@@ -3953,7 +3953,7 @@ TP=50
 Status=en-spell
 Desc=enchants %enemy $+ 's weapon with the power of earth.  Small chunks of dirt float around %enemy $+ 's weapon.
 Element=earth
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [EnWind]
 Type=buff
@@ -3961,7 +3961,7 @@ TP=50
 Status=en-spell
 Desc=enchants %enemy $+ 's weapon with the power of wind. The air around %enemy $+ 's weapon swirls.
 Element=wind
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [EnWater]
 Type=buff
@@ -3969,7 +3969,7 @@ TP=50
 Status=en-spell
 Desc=enchants %enemy $+ 's weapon with the power of water.  Small drops of water float around %enemy $+ 's weapon.
 Element=water
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [EnIce]
 Type=buff
@@ -3977,7 +3977,7 @@ TP=50
 Status=en-spell
 Desc=enchants %enemy $+ 's weapon with the power of ice.  Small ice chunks float up around %enemy $+ 's weapon.
 Element=ice
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [EnLightning]
 Type=buff
@@ -3985,7 +3985,7 @@ TP=50
 Status=en-spell
 Desc=enchants %enemy $+ 's weapon with the power of lightning.  Small sparks sizzle around %enemy $+ 's weapon.
 Element=lightning
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 ===================
 CLEARING STATUSES
@@ -3997,7 +3997,7 @@ TP=100
 Status=none
 Desc=chants a few words and summons a bright glowing white ball that floats towards %enemy $+ . After a moment the ball enters %enemy and covers $gender($3) body with a white healing light that clears %enemy $+ 's negative status effects.
 Element=none
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 [Dispel]
 Type=ClearStatusPositive
@@ -4005,7 +4005,7 @@ TP=200
 Status=none
 Desc=chants a few words before %enemy begins to glow with a crystalized light that then shatters around $gender2($3) $+ .  %enemy then feels most of $gender($3) positive status effects fading away.
 Element=none
-Cost=2000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 2500, 750)
 
 
 ===================
@@ -4573,7 +4573,7 @@ stat=str
 
 [ForceBlast]
 Type=Single
-Cost=50000
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Desc=holds $gender($1) hand out, palm facing %enemy for a moment before unleashing an invisble force of energy that slams into %enemy $+ , sending %enemy reeling due to the force of the blast.
 TP=125
 Element=None
@@ -4632,7 +4632,7 @@ TP=20
 Desc=compressess all of $gender($1) power into one final boost to $gender($1) body.  At the end of the battle, all of $gender($1) power will disappear.
 BasePower=100
 Element=none
-cost=3000
+cost=750
 
 [Merlin'sFinalSpell]
 Type=finalgetsuga
@@ -4640,7 +4640,7 @@ TP=20
 Desc=casts Merlin's final spell, a secret spell that drains the power of the wand into $gender($1) body giving a massive but temporary boost in power. At the end of the battle, all of $gender($1) power will disappear.
 BasePower=100
 Element=none
-cost=3000
+cost=750
 
 [MeikyoShisui]
 Type=finalgetsuga
@@ -4648,7 +4648,7 @@ TP=20
 Desc=uses an ancient secret technique of the Samurai that allows $gender2($1) to draw power directly from the blade.  $1 feels $gender($1) body gaining a massive, but temporary, boost in power. At the end of the battle, all of $gender($1) power will disappear.
 BasePower=100
 Element=none
-cost=3000
+cost=750
 
 [TrueForm]
 Type=boost
