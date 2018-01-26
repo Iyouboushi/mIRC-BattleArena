@@ -5423,7 +5423,7 @@ Element=none
 Cost=0
 Magic=no
 Stat=int
-DeathChance=$iif($return_playersinbattle = 1, 35, $iif($return_playersinbattle > 2, 100, 75))
+DeathChance=$iif($return_playersinbattle = 1, 35, $iif($return_playersinbattle > 2, 80, 65))
 DestroyShadows=5
 
 

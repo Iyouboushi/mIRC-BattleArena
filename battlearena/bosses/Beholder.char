@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=20272
 Tp=1250
-Str=223
-Def=4234
-Int=2986
-Spd=3165
+Str=1223
+Def=2234
+Int=2086
+Spd=2165
 Name=Beholder
 IgnitionGauge=10
 
@@ -12,10 +12,10 @@ IgnitionGauge=10
 [Battle]
 Hp=20272
 Tp=1250
-Str=223
-Def=4234
-Int=2986
-Spd=3165
+Str=1223
+Def=2234
+Int=2086
+Spd=2165
 Status=alive
 IgnitionGauge=10
 
@@ -57,6 +57,7 @@ IgnoreQuicksilver=true
 JustReleaseDefense=80
 MinTormentLevel=20
 ActionsPerTurn=2
+BattleStats=IgnoreTP
 
 [Status]
 Poison=no
@@ -130,7 +131,7 @@ DisintegrationRay=500
 
 [Styles]
 Equipped=Guardian
-Guardian=4
+Guardian=3
 
 [Equipment]
 
@@ -161,4 +162,4 @@ HolyHandGrenade=0
 Dynamite=0
 Bomb=0
 XmasGrenade=0
-ResistTechs=65
+ResistTechs=30
