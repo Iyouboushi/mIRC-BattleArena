@@ -17426,7 +17426,7 @@ Desc=summons a large wave of water at one edge of the battlefield, pausing for a
 TP=10
 Element=Water
 Hits=1
-BasePower=50
+BasePower=40
 Magic=No
 HurtEthereal=True
 stat=int
@@ -17440,7 +17440,7 @@ Desc=pauses for a moment as the left wing begins to glow. Shinryu then rushes to
 TP=10
 Element=None
 Hits=1
-BasePower=65
+BasePower=50
 Magic=No
 IgnoreDefense=5
 HurtEthereal=true
@@ -17470,7 +17470,7 @@ Desc=gathers energy for a moment before unleashing an Earth-based breath attack 
 TP=10
 Element=Earth
 Hits=1
-BasePower=50
+BasePower=40
 Magic=No
 IgnoreDefense=5
 HurtEthereal=true
@@ -17501,7 +17501,7 @@ Desc=smashes his tail on the battlefield, hitting %enemy with great force!
 TP=10
 Element=None
 Hits=1
-BasePower=50
+BasePower=40
 Magic=No
 IgnoreDefense=5
 HurtEthereal=true
@@ -17510,115 +17510,108 @@ CanDodge=true
 Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Water_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Wind_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Fire_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Lighnting_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Earth_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Ice_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Tail_Slam 0
 
 [Water_Aether]
-Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Type=AOE
 Cost=0
 Desc=begins to channel the corrupted aether, which takes the form of water. Shinryu then unleashes the aether, covering the entire battlefield with corrupted water!
 TP=10
 Element=Water
 Hits=1
-BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+BasePower=250
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
-DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
-DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+DestroyShadows=2
 Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Wind_Aether]
-Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Type=AOE
 Cost=0
 Desc=begins to channel the corrupted aether, which takes the form of wind. Shinryu then unleashes the aether, covering the entire battlefield with corrupted wind!
 TP=10
 Element=Wind
 Hits=1
-BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+BasePower=250
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
-DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
-DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+DestroyShadows=2
 Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Fire_Aether]
-Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Type=AOE
 Cost=0
 Desc=begins to channel the corrupted aether, which takes the form of fire. Shinryu then unleashes the aether, covering the entire battlefield with corrupted fire!
 TP=10
 Element=Fire
 Hits=1
-BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+BasePower=250
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
-DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
-DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+DestroyShadows=2
 Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Lightning_Aether]
-Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Type=AOE
 Cost=0
 Desc=begins to channel the corrupted aether, which takes the form of lightning. Shinryu then unleashes the aether, covering the entire battlefield with corrupted lightning!
 TP=10
 Element=Lightning
 Hits=1
-BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+BasePower=250
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
-DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
-DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+DestroyShadows=2
 Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Earth_Aether]
-Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Type=AOE
 Cost=0
 Desc=begins to channel the corrupted aether, which takes the form of earth. Shinryu then unleashes the aether, covering the entire battlefield with corrupted earth!
 TP=10
 Element=Earth
 Hits=1
-BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+BasePower=250
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
-DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
-DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+DestroyShadows=2
 Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Ice_Aether]
-Type=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Type=AOE
 Cost=0
 Desc=begins to channel the corrupted aether, which takes the form of ice. Shinryu then unleashes the aether, covering the entire battlefield with corrupted ice!
 TP=10
 Element=Ice
 Hits=1
-BasePower=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 500, 100)
+BasePower=250
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
-DestroyShadows=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 4, 2)
-DeathChance=$iif($readini($char(Neo_Shinryu), battle, IgnitionGauge) >= 120, 5, 0)
+DestroyShadows=2
 Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Omega_WaveCannon]
-Type=$iif($readini($char(Omega_MkII), battle, IgnitionGauge) >= 120, Death-AOE, AOE)
+Type=AOE
 Cost=0
 Desc=floats at the edge of the battlefield, gathering energy. After energy enough is gathered, Omega then unleashes a massive beam of black energy upon the battlefield!
 TP=10
 Element=None
 Hits=1
-BasePower=$iif($readini($char(Omega_MkII), battle, IgnitionGauge) >= 120, 750, 100)
+BasePower=300
 Magic=No
 HurtEthereal=True
 stat=Int
 CanDodge=False
-DestroyShadows=$iif($readini($char(Omega_MkII), battle, IgnitionGauge) >= 120, 8, 2)
-DeathChance=$iif($readini($char(Omega_MkII), battle, IgnitionGauge) >= 120, 10, 0)
+DestroyShadows=2
 Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Omega_Maelstrom $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_WaveCannon 0
 
 [Omega_Maelstrom]
@@ -17628,7 +17621,7 @@ Desc=summons a large tornado upon the battlefield!
 TP=10
 Element=Wind
 Hits=1
-BasePower=50
+BasePower=40
 Magic=Yes
 stat=int
 CanDodge=true
@@ -17641,7 +17634,7 @@ Desc=unleashes a stream of fire upon %enemy $+ !
 TP=10
 Element=Fire
 Hits=1
-BasePower=65
+BasePower=50
 Magic=Yes
 stat=int
 CanDodge=true
@@ -17654,7 +17647,7 @@ Desc=leaps high into the air before slamming down upon the battlefield, causing 
 TP=10
 Element=Earth
 Hits=1
-BasePower=65
+BasePower=50
 Magic=No
 HurtEthereal=true
 IgnoreDefense=5
@@ -17665,13 +17658,12 @@ Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techn
 [Omega_MustardBomb]
 Type=Single
 Cost=0
-Desc=hurls a bomb directly at %enemy $+ , which then explodes into a deadly gas that lowers %enemy $+ 's defense!
+Desc=hurls a bomb directly at %enemy $+ , which then explodes into a deadly gas!
 TP=10
 Element=None
 Hits=1
-BasePower=30
+BasePower=65
 Magic=No
-StatusType=DefenseDown
 HurtEthereal=true
 stat=int
 CanDodge=true
@@ -17684,7 +17676,7 @@ Desc=floats into the air and unleashes a beam of red energy upon the battlefield
 TP=10
 Element=None
 Hits=1
-BasePower=50
+BasePower=40
 Magic=No
 HurtEthereal=true
 stat=int
