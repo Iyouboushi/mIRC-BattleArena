@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 11/26/17
+;;;; Last updated: 01/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -220,6 +220,8 @@ alias uses_item {
   if (%item.type = increaseWeaponLevel) { $set_chr_name($1) 
     if ($4 = $null) { $display.message($readini(translation.dat, errors, MustSpecifyWeaponname), private) | halt }
     if (($readini($char($1), weapons, $4) = $null) || ($readini($char($1), weapons, $4) = 0)) { $display.message($readini(translation.dat, errors, MustSpecifyWeaponname), private) | halt }
+    if ($4 = mythic) { $display.message($readini(translation.dat, errors, CannotUpgradeMythicWithItem), private) | halt }
+
 
     $item.increasewpnlvl($1, $4, $2) 
     $decrease_item($1, $2) | halt

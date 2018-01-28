@@ -650,7 +650,7 @@ SkillHasBeenEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has equipped the $2 sk
 SkillNotEquipped=$chr(3) $+ 4 $+ The $2 skill is not currently equipped.
 SkillHasBeenUnEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has unequipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / $return.skill.slots($1) $+ ]
 NeedValidNumberForCosmicLevel=$chr(3) $+ 4 $+ A valid number must be used for the cosmic level. Use !use cosmicorb levelhere
-
+CannotUpgradeMythicWithItem=$chr(3) $+ 4 $+ The Mythic weapon cannot be upgraded by using items.
 
 =======================
 Battle Related Messages
