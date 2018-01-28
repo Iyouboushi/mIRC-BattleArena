@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/06/17
+;;;; Last updated: 01/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -5005,6 +5005,8 @@ regen_done_check {
   if ($readini($char($1), status, ignition.on) = on) {
     var %max.regen.hp $round($calc($readini($char($1), BaseStats, $3) * $readini($dbfile(ignitions.db), $readini($char($1), status, ignition.name), $3)),0)
   }
+
+  if ($readini($char($1), Status, PotionEffect) = Double Life) { set %max.regen.hp $calc(%max.regen.hp * 2) } 
 
   if (($3 = hp) || ($3 = tp)) {
     if (%current.regen.hp >= %max.regen.hp) { 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 11/26/17
+;;;; Last updated: 01/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1426,7 +1426,10 @@ alias skill.regen { $set_chr_name($1)
 
 
   set %current.hp $readini($char($1), Battle, HP)  |  set %max.hp $readini($char($1), BaseStats, HP)
-  if (%current.hp >= %max.hp) { $set_chr_name($1) | $display.message(3 $+ %real.name is already at full HP!, private) | halt }
+
+  if ($readini($char($1), Status, PotionEffect) = Double Life) { set %max.hp $calc(%max.hp * 2) } 
+
+  if (%current.hp >= %max.hp) { $set_chr_name($1) | $display.message(3 $+ %real.name is already at full HP!, private) | unset %current.hp | unset %max.hp | halt }
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Regen, !regen, false)
@@ -1464,6 +1467,9 @@ alias skill.regen { $set_chr_name($1)
 
 alias skill.regen.calculate {
   var %max.hp $readini($char($1), basestats, hp)
+
+  if ($readini($char($1), Status, PotionEffect) = Double Life) { var %max.hp $calc(%max.hp * 2) } 
+
   var %skill.level $readini($char($1), skills, regen)
   if (%skill.level = $null) { var %skill.level 1 }
   set %amount $return_percentofvalue(%max.hp, %skill.level)
