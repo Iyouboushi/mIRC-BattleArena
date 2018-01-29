@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 09/11/17
+;;;; Last updated: 01/29/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -146,7 +146,8 @@ on 1:DISCONNECT:{
   .flush 1 | .flush 3 | .flush 50
 }
 
-on 2:TEXT:!bot admin*:*: {  $bot.admin(list) }
+on 2:TEXT:!bot admin*:?: { $bot.admin(list, private) }
+on 2:TEXT:!bot admin*:#: { $bot.admin(list) }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Bot Admin Commands
@@ -169,8 +170,14 @@ on 50:TEXT:!force system default check*:*: {
 }
 
 ; Add or remove a bot admin (note: cannot remove the person in position 1 with this command)
-on 50:TEXT:!bot admin*:*: {  
+on 50:TEXT:!bot admin*:#: {  
   if (($3 = $null) || ($3 = list)) { $bot.admin(list) }
+  if ($3 = add) { $bot.admin(add, $4) }
+  if ($3 = remove) { $bot.admin(remove, $4) }
+}
+
+on 50:TEXT:!bot admin*:?: {  
+  if (($3 = $null) || ($3 = list)) { $bot.admin(list, private) }
   if ($3 = add) { $bot.admin(add, $4) }
   if ($3 = remove) { $bot.admin(remove, $4) }
 }

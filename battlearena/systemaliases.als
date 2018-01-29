@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/06/17
+;;;; Last updated: 01/29/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4549,7 +4549,9 @@ bot.admin {
       set %replacechar $chr(044) $chr(032)
       %bot.admins = $replace(%bot.admins, $chr(046), %replacechar)
       unset %replacechar
-      $display.message(3Bot Admins:12 %bot.admins, private) | halt 
+      if ($2 != private) {  $display.message(3Bot Admins:12 %bot.admins, private) }
+      if ($2 = private) { $display.private.message(3Bot Admins:12 %bot.admins) }
+      halt 
     }
   }
 
