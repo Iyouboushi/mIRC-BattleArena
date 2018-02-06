@@ -62,6 +62,18 @@ Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
 Type=Passive
 Info=This skill increases damage done with a whip.  Increased levels increases the damage.
 
+[Hammermaster]
+Cost=150
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
+Type=Passive
+Info=This skill increases damage done with hammer weapons.  Increased levels increases the damage.
+
+[JediArts]
+Cost=150
+Max=$iif($readini($char($1), stuff, NumberOfResets) >= 1, 150, 100)
+Type=Passive
+Info=This skill increases damage done with lightsaber weapons.  Increased levels increases the damage.
+
 [OrbHunter]
 Cost=$iif($readini($char($1), skills, OrbHunter <= 19), 150, 1500)
 Type=Passive

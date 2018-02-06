@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 09/11/17
+;;;; Last updated: 02/06/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -402,9 +402,12 @@ alias mastery_check {
   if (%type.of.weapon = spear) { set %mastery.type Polemaster }
   if (%type.of.weapon = bow) { set %mastery.type Archery }
   if (%type.of.weapon = axe) { set %mastery.type Hatchetman }
+  if (%type.of.weapon = greataxe) { set %mastery.type Hatchetman }
   if (%type.of.weapon = scythe) { set %mastery.type Harvester }
   if (%type.of.weapon = dagger) { set %mastery.type SleightOfHand }
   if (%type.of.weapon = whip) { set %mastery.type Whipster }
+  if (%type.of.weapon = lightsaber) { set %mastery.type JediArts }
+  if (%type.of.weapon = hammer) { set %mastery.type Hammermaster }
 
   set %mastery.bonus $readini($char($1), skills, %mastery.type) 
   if (%mastery.bonus = $null) { set %mastery.bonus 0 }
