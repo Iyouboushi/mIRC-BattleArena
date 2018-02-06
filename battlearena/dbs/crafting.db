@@ -1080,12 +1080,6 @@ Amount=1
 
 [GoldKey]
 Gem=Topaz
-Ingredients=GoldOre.RedKey
-SuccessRate=85
-Amount=1
-
-[GoldKey]
-Gem=Topaz
 Ingredients=GoldIngot.PurpleKey
 SuccessRate=85
 Amount=1
