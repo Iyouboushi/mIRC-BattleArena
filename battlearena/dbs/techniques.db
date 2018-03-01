@@ -2366,7 +2366,7 @@ stat=int
 [HolyLightning:Discharge]
 Type=single
 Cost=4000
-Desc=holds Sacrament up high, thunder booming. %user then aims $gender($1) weapon at %enemy before releasing a discharge of blue lightning, causing the foe’s nerves to lock from electrical overload.
+Desc=holds Sacrament up high, thunder booming. %user then aims $gender($1) weapon at %enemy before releasing a discharge of blue lightning, causing the foeÂ’s nerves to lock from electrical overload.
 TP=250
 Element=Light.Lightning
 Hits=$rand(1,5)
@@ -2463,7 +2463,7 @@ Renkei=3
 [DarkEarth:StoneScabbard]
 Type=single
 Cost=3500
-Desc=kicks out %enemy $+ 's leg, before stabbing Lazarus through their chest. A red crystalline shell forms over %enemy $+ , as if they had met Medusa’s gaze.
+Desc=kicks out %enemy $+ 's leg, before stabbing Lazarus through their chest. A red crystalline shell forms over %enemy $+ , as if they had met MedusaÂ’s gaze.
 TP=150
 Element=Dark.Earth
 Hits=1
@@ -3512,7 +3512,7 @@ Desc=chants as white energy covers %enemy $+ . The energy explodes a moment late
 TP=100
 Element=Light
 Hits=1
-BasePower=chants as black energy covers %enemy $+ . The energy explodes a moment later, causing large darkness damage upon %enemy $+ !
+BasePower=$iif(%battle.type = torment, 2000, 500)
 Magic=yes
 stat=int
 
