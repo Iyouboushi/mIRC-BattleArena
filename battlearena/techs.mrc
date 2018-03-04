@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 10/05/17
+;;;; Last updated: 03/03/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1852,12 +1852,26 @@ alias ignition_cmd {  $set_chr_name($1)
   else { set %ignition.description $readini($char($1), descriptions, $2) }
   $set_chr_name($1) | $display.message(10 $+ %real.name  $+ %ignition.description, battle)
 
+  ; get the ignition level
+  var %ignition.level $readini($char($1), Ignitions, $2)
+
+  ; get the ignition increase based on level
+  var %ignition.increase 0
+  if (%ignition.level > 1) { var %ignition.increase $calc(.10 * %ignition.level) }
+
+  ; get the stat values
+  var %hp.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, hp))
+  var %str.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, str))
+  var %def.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, def))
+  var %int.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, int))
+  var %spd.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, spd))
+
   ; Increase the stats
-  var %hp $round($calc($readini($char($1), Battle, Hp) * $readini($dbfile(ignitions.db), $2, hp)),0)
-  var %str $round($calc($readini($char($1), Battle, Str) * $readini($dbfile(ignitions.db), $2, str)),0)
-  var %def $round($calc($readini($char($1), Battle, def) * $readini($dbfile(ignitions.db), $2, def)),0)
-  var %int $round($calc($readini($char($1), Battle, int) * $readini($dbfile(ignitions.db), $2, int)),0)
-  var %spd $round($calc($readini($char($1), Battle, spd) * $readini($dbfile(ignitions.db), $2, spd)),0)
+  var %hp $round($calc($readini($char($1), Battle, Hp) * %hp.increase),0)
+  var %str $round($calc($readini($char($1), Battle, Str) * %str.increase),0)
+  var %def $round($calc($readini($char($1), Battle, def) * %def.increase),0)
+  var %int $round($calc($readini($char($1), Battle, int) * %int.increase),0)
+  var %spd $round($calc($readini($char($1), Battle, spd) * %spd.increase),0)
 
   writeini $char($1) Battle Hp %hp
   writeini $char($1) Battle Str %str
@@ -1986,12 +2000,26 @@ alias revert {
   ; $1 = person
   ; $2 = ignition name
 
+  ; get the ignition level
+  var %ignition.level $readini($char($1), Ignitions, $2)
+
+  ; get the ignition increase based on level
+  var %ignition.increase 0
+  if (%ignition.level > 1) { var %ignition.increase $calc(.10 * %ignition.level) }
+
+  ; get the stat values
+  var %hp.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, hp))
+  var %str.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, str))
+  var %def.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, def))
+  var %int.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, int))
+  var %spd.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), $2, spd))
+
   ; Decrease the stats
-  var %hp $round($calc($readini($char($1), Battle, hp) / $readini($dbfile(ignitions.db), $2, hp)),0)
-  var %str $round($calc($readini($char($1), Battle, Str) / $readini($dbfile(ignitions.db), $2, str)),0)
-  var %def $round($calc($readini($char($1), Battle, def) / $readini($dbfile(ignitions.db), $2, def)),0)
-  var %int $round($calc($readini($char($1), Battle, int) / $readini($dbfile(ignitions.db), $2, int)),0)
-  var %spd $round($calc($readini($char($1), Battle, spd) / $readini($dbfile(ignitions.db), $2, spd)),0)
+  var %hp $round($calc($readini($char($1), Battle, Hp) / %hp.increase),0)
+  var %str $round($calc($readini($char($1), Battle, Str) / %str.increase),0)
+  var %def $round($calc($readini($char($1), Battle, def) / %def.increase),0)
+  var %int $round($calc($readini($char($1), Battle, int) / %int.increase),0)
+  var %spd $round($calc($readini($char($1), Battle, spd) / %spd.increase),0)
 
   if (%hp <= 5) { var %hp 5 }
   if (%str <= 5) { var %str 5 }

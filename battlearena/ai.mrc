@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 12/06/17
+;;;; Last updated: 03/03/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -1099,9 +1099,6 @@ alias ai.changebattlefield {
 alias ai.monstersummon {
   set %debug.location ai.monstersummon
   if ($is_charmed($1) = true) { return }
-
-  echo -a in here for $1
-  echo -a skill: $readini($char($1), skills, monstersummon)
 
   if ($readini($char($1), skills, monstersummon) >= 1) { 
     $portal.clear.monsters
