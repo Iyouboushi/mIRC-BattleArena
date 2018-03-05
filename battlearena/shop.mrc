@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/15/17
+;;;; Last updated: 03/04/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1411,7 +1411,7 @@ alias shop.enhancements {
     }
 
     ; Check for "Portal Usage Limit"
-    if (($readini($char($1), enhancements, portalusage) <= 2) || ($readini($char($1), enhancements, portalusage) = $null)) { 
+    if (($readini($char($1), enhancements, portalusage) < 2) || ($readini($char($1), enhancements, portalusage) = $null)) { 
       $display.private.message.delay.custom(2Battle Enhancements5: DailyPortalUsage+1 (10),2) 
     }
 
