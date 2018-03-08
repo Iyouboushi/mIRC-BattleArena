@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/04/18
+;;;; Last updated: 03/08/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1995,13 +1995,14 @@ alias shop.ignitions {
     unset %shop.list |  var %value 1 | set %total.ignitions 0 | var %ignitions.lines $lines($lstfile(ignitions.lst))
 
     while (%value <= %ignitions.lines) {
-      set %ig.name $read -l $+ %value $lstfile(ignitions.lst)
-      set %ig.price $readini($dbfile(ignitions.db), %ig.name, cost)
+      var %ig.name $read -l $+ %value $lstfile(ignitions.lst)
+      var %ig.price $readini($dbfile(ignitions.db), %ig.name, cost)
+      var %player.ignition.level $readini($char($1), ignitions, %ig.name)
+      if (%player.ignition.level = $null) { var %player.ignition.level 0 }
+      var %ig.price $calc((1 + %player.ignition.level) * %ig.price)
+
       if (%ig.price > 0) {  
-
-        set %player.ignition.level $readini($char($1), ignitions, %ig.name)
-
-        if ((%player.ignition.level = $null) || (%player.ignition.level <= 0)) {
+        if (%player.ignition.level < 10) {
           inc %total.ignitions 1
           if (%total.ignitions < 20) { %shop.list = $addtok(%shop.list, $+ %ig.name $+ ( $+ %ig.price $+ ),46) }
           else { %shop.list2 = $addtok(%shop.list2, $+ %ig.name $+ ( $+ %ig.price $+ ),46) }
@@ -2013,8 +2014,8 @@ alias shop.ignitions {
 
 
     if (%shop.list != $null) {  $shop.cleanlist 
-      $display.private.message(2New ignition prices are in Black Orbs.)
-      $display.private.message(4New ignitions:2 %shop.list)
+      $display.private.message(2Ignition prices are in Black Orbs.)
+      $display.private.message(4Ignitions:2 %shop.list)
       set %replacechar $chr(044) $chr(032)
       %shop.list2 = $replace(%shop.list2, $chr(046), %replacechar)
       unset %replacechar
@@ -2028,16 +2029,24 @@ alias shop.ignitions {
   if (($2 = buy) || ($2 = purchase)) {
     if ($readini($dbfile(ignitions.db), $3, cost) = $null) { $display.private.message(4Error: Invalid ignition! Use !shop list ignitions to get a valid list) | halt }
     if ($readini($dbfile(ignitions.db), $3, cost) = 0) { $display.private.message(4Error: You cannot purchase this ignition! Use !shop list ignitions to get a valid list) | halt }
+
     var %ignition.level $readini($char($1), ignitions, $3)
+    if (%ignition.level >= 10) { $display.private.message(4Error: You cannot upgrade this ignition any further!) | halt }
+
+    ; calculate the cost
+    if (%ignition.level = $null) { var %ignition.level 0 }
+    var %total.price $readini($dbfile(ignitions.db), $3, cost)
+    var %total.price $calc((1 + %ignition.level) * %total.price)
+
     ; do you have enough to buy it?
     var %player.blackorbs $readini($char($1), stuff, blackorbs) 
-    var %total.price $readini($dbfile(ignitions.db), $3, cost)
-    if (%player.blackorbs < %total.price) { $display.private.message(4You do not have enough black orbs to purchase this item!) | halt }
+
+    if (%player.blackorbs < %total.price) { $display.private.message(4You do not have enough black orbs to purchase this ignition upgrade!) | halt }
     dec %player.blackorbs %total.price
     writeini $char($1) stuff blackorbs %player.blackorbs
     $inc.blackorbsspent($1, %total.price)
-    writeini $char($1) ignitions $3 1
-    $display.private.message(3You spend %total.price black $iif(%total.price < 2, orb, orbs) to purchase $3 $+ ! $readini(translation.dat, system, BlackOrbsLeft))
+    writeini $char($1) ignitions $3 $calc(1 + %ignition.level)
+    $display.private.message(3You spend %total.price black $iif(%total.price < 2, orb, orbs) to purchase +1 to $3 $+ ! $3 is now level $calc(%ignition.level + 1) $+ /10. $readini(translation.dat, system, BlackOrbsLeft))
     unset %ignitions.list | unset %ignition.name | unset %ignition.level | unset %ignition.price | unset %ignitions
     halt
   }

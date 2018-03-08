@@ -1,4 +1,4 @@
-[Techs]
+﻿[Techs]
 ; H2h
 Fists=DoublePunch.ShoulderTackle.SpinningAttack
 Cerberus=Revolver.Windmill.Crystal
@@ -564,6 +564,9 @@ OmegaWeaponSystems=Omega_WaveCannon.Omega_Maelstrom.Omega_Flamethrower.Omega_Mus
 MantisClaws=Rending_Snath.Standing_Chine
 HarpeiaBeak=Wings_of_Woe
 NankaMouth=Brackish_Rain.Bog_Bomb.Stagnant_Spray
+CyclopsAxe=FellCleave.RagingAxe.IronTempest
+CyclopsSpear=SonicThrust.CamlannsTorment.ImpulseDrive
+CyclopsHammer=Brainshaker.Skullbreaker
 
 ============================================
 TECHNIQUE TEMPLATE

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 10/22/17
+;;;; Last updated: 03/08/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -71,14 +71,23 @@ alias view-info {
     if (%info.effect = status) { var %info.status.type ( $+ $readini($dbfile(ignitions.db), $3, StatusType) $+ ) }
     var %info.trigger $readini($dbfile(ignitions.db), $3, IgnitionTrigger)
     var %info.consume $readini($dbfile(ignitions.db), $3, IgnitionConsume)
-    var %info.hp $readini($dbfile(ignitions.db), $3, hp)
-    var %info.str $readini($dbfile(ignitions.db), $3, str)
-    var %info.def $readini($dbfile(ignitions.db), $3, def)
-    var %info.int $readini($dbfile(ignitions.db), $3, int)
-    var %info.spd $readini($dbfile(ignitions.db), $3, spd)
-    var %info.techs $readini($dbfile(ignitions.db), $3, techs)
-    if (%info.techs = $null) { var %info.techs none }
 
+    var %info.level $readini($char($1), ignitions, $3)
+    if (%info.level = $null) { var %info.level 1 }
+
+    ; get the ignition increase based on level
+    var %ignition.increase 0
+    if (%info.level > 1) { var %ignition.increase $calc(.10 * %info.level) }
+
+    ; get the stat values
+    var %info.hp $calc(%ignition.increase + $readini($dbfile(ignitions.db), $3, hp))
+    var %info.str $calc(%ignition.increase + $readini($dbfile(ignitions.db), $3, str))
+    var %info.def $calc(%ignition.increase + $readini($dbfile(ignitions.db), $3, def))
+    var %info.int $calc(%ignition.increase + $readini($dbfile(ignitions.db), $3, int))
+    var %info.spd $calc(%ignition.increase + $readini($dbfile(ignitions.db), $3, spd))
+    var %info.techs $readini($dbfile(ignitions.db), $3, techs)
+
+    if (%info.techs = $null) { var %info.techs none }
 
     if ($chr(046) isin %info.augment) { set %replacechar $chr(044) $chr(032)
       %info.augment = $replace(%info.augment, $chr(046), %replacechar)
@@ -86,7 +95,7 @@ alias view-info {
 
     $display.private.message([4Name12 %info.name $+ ] [4Amount of Ignition Gauge Consumed Upon Use12 %info.trigger $+ ] [4Amount of Ignition Gauge Needed Each Round12 %info.consume $+ ] [4Bonus Augment12 %info.augment $+ ] [4Trigger Effect12 %info.effect %info.status.type $+ ])   
     $display.private.message([4Techs12 %info.techs $+ ])
-    $display.private.message([4Stat Multipliers $+ ] 4Health x12 %info.hp  $+ $chr(124) 4 $+ Strength x12 %info.str  $+ $chr(124) 4 $+ Defense x12 %info.def  $+ $chr(124) 4Intelligence x12 %info.int  $+ $chr(124) 4Speed x12 %info.spd)
+    $display.private.message([4Stat Multipliers for level12 %info.level $+ ] 4Health x12 %info.hp  $+ $chr(124) 4 $+ Strength x12 %info.str  $+ $chr(124) 4 $+ Defense x12 %info.def  $+ $chr(124) 4Intelligence x12 %info.int  $+ $chr(124) 4Speed x12 %info.spd)
   }
 
   if ($2 = accessory) { 
