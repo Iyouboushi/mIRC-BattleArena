@@ -4776,28 +4776,49 @@ system.intromessage {
   ; Display MOTD if there is one
   if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
 
-
+  ; ============================
   ; Calculate the daily login reward
+  ; ============================
   ; has the player already received a reward today?
+  var %last.dailylogin $readini($char($1), Info, LastDailyLogin)
+  if (%last.dailylogin = $adate) { return }
+  writeini $char($1) info LastDailyLogin $adate
 
   ; get the # of lines in the daily login list
-  ; var %daily.login.lines $lines($lstfile(dailylogin.lst))
+  var %daily.login.lines $lines($lstfile(dailylogin.lst))
+  if ((%daily.login.lines = $null) || (%daily.login.lines = 0)) { return }
 
   ; get the current login day the player is on and add 1
-  ; var %player.login.number 
-  ; if (%player.login.number = $null) { var %player.login.number 0 }
-  ; inc %player.login.number 1
+  var %player.login.number $readini($char($1), Info, DailyLoginNumber)
+  if (%player.login.number = $null) { var %player.login.number 0 }
+  inc %player.login.number 1
 
   ; if the current day is greater than the total # of login lines, reset back to 1
-  ; if (%player.login.number > %daily.login.lines) { var %player.login.number 1 }
+  if (%player.login.number > %daily.login.lines) { var %player.login.number 1 }
+
+  ; write the daily login day counter
+  writeini $char($1) Info DailyLoginNumber %player.login.number
 
   ; get the reward and amount
+  var %reward.line $read($lstfile(dailylogin.lst), %player.login.number)
+  var %reward.type $gettok(%reward.line, 1, 46)
+  var %reward.amount $gettok(%reward.line, 2, 46)
 
   ; give the reward to the player
+  var %stuff.rewards RedOrbs.BlackOrbs.AlliedNotes.KillCoins
+  if ($istok(%stuff.rewards, %reward.type, 46) = $true) { 
+    var %player.amount $readini($char($1), stuff, %reward.type)
+    inc %player.amount %reward.amount
+    writeini $char($1) stuff %reward.type %player.amount  
+  }
+  else {
+    var %player.amount $readini($char($1), item_amount, %reward.type)
+    inc %player.amount %reward.amount
+    writeini $char($1) item_amount %reward.type %player.amount
+  }
 
   ; show the reward line
-
-  ; write the time
+  $display.private.message(2For logging into the game today you have received4 %reward.amount %reward.type $+ 2!)
 
   return
 }
