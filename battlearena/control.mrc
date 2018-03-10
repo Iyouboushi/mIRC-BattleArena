@@ -99,7 +99,7 @@ on 1:START: {
     $system_defaults_check
   }
 
-  echo 12*** This bot is best used with mIRC version4 6.3 12 *** 
+  echo 12*** This bot is best used with mIRC version4 7.41 12 *** 
   echo 12*** You are currently using mIRC version4 $version 12 ***
 
   if ($version = 6.3) { echo 4*** While this used to be the recommended version for this bot, there are now some issues with readini and techniques.db.  Be aware that the game will not run properly any more with this version. Please upgrade to 7.41. 12 *** }
