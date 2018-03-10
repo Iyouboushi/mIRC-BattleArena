@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/09/18
+;;;; Last updated: 03/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1720,6 +1720,8 @@ active.skills.list {
   unset %active.skills.list | unset %active.skills.list2 | unset %total.skills
   var %skills.lines $lines($lstfile(skills_active.lst))
 
+  var %playerstyle $readini($char($1), styles, equipped)
+
   var %value 1
   while (%value <= %skills.lines) {
     set %skill.name $read -l $+ %value $lstfile(skills_active.lst)
@@ -1730,8 +1732,11 @@ active.skills.list {
       inc %total.skills 1
       var %skill_to_add %skill.name $+ $chr(040) $+ %skill_level $+ $chr(041) 
 
-      if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = true)) { var %skill_to_add 2[3 $+ %skill_to_add $+ 2]3 }
+      if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = true)) { 
 
+        if (%playerstyle = $readini($dbfile(skills.db), %skill.name, style)) { var %skill_to_add 5[3 $+ %skill_to_add $+ 5]3 }
+        else { var %skill_to_add 2[3 $+ %skill_to_add $+ 2]3 }
+      }
 
       if (%total.skills > 13) { %active.skills.list2 = $addtok(%active.skills.list2,%skill_to_add,46) }
       else { %active.skills.list = $addtok(%active.skills.list,%skill_to_add,46) }
