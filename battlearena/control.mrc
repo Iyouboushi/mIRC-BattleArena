@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 01/29/18
+;;;; Last updated: 03/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -102,12 +102,12 @@ on 1:START: {
   echo 12*** This bot is best used with mIRC version4 6.3 12 *** 
   echo 12*** You are currently using mIRC version4 $version 12 ***
 
-  if ($version < 6.3) {   echo 4*** Your version is older than the recommended version for this bot. Some things may not work right.  It is recommended you update. 12 *** }
-  if ($version > 6.3) {   echo 4*** Your version is newer than the recommended version for this bot. While it should work, it is currently untested and may have quirks or bugs.  It is recommended you downgrade if you run into any problems. 12 *** }
+  if ($version = 6.3) { echo 4*** While this used to be the recommended version for this bot, there are now some issues with readini and techniques.db.  Be aware that the game will not run properly any more with this version. Please upgrade to 7.41. 12 *** }
+  if (($version > 6.3) && ($version < 7.41)) { echo 4*** Your version is older than the recommended version for this bot. Some things may not work right.  It is recommended you update. 12 *** }
+  if ($version > 7.41) { echo 4*** Your version is newer than the recommended version for this bot. While it should work, it is currently untested and may have quirks or bugs.  It is recommended you downgrade to 7.41 if you run into any problems. 12 *** }
 
   if ($sha1($read(key)) != dd4b6aa27721dc5079c70f7159160313bb143720) { .remove key |  write key M`S)4:&ES(&=A;64@:7,@<G5N;FEN9R!T:&4@`D("871T;&4@`D$"<F5N82!"M871T;&4@4WES=&5M(&-R96%T960@8GD@`DH"86UE<R`"20)Y;W5B;W5S:&D@M+2T@079A:6QA8FQE(&9O<B!F<F5E(&%T.@,Q,A\@:'1T<',Z+R]G:71H=6(N?8V]M+TEY;W5B;W5S:&DO;4E20RU"871T;&5!<F5N80`` }
 }
-
 
 on 1:CONNECT: {
   ; Start a keep alive timer.

@@ -7,7 +7,7 @@
 ; Version of the bot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battle.version {  
-  if ($readini(version.ver, versions, Bot) = $null) { echo -a 4ERROR: version.ver is either missing or corrupted! | return 3.1 }
+  if ($readini(version.ver, versions, Bot) = $null) { echo -a 4ERROR: version.ver is either missing or corrupted! | return 4.0 }
   else { return $readini(version.ver, versions, Bot) } 
 } 
 
@@ -398,7 +398,6 @@ return_percentofvalue {
 return_differenceof {
   return $calc($1 - $2)
 }
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Copies an ini 
@@ -4776,6 +4775,30 @@ system.intromessage {
 
   ; Display MOTD if there is one
   if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
+
+
+  ; Calculate the daily login reward
+  ; has the player already received a reward today?
+
+  ; get the # of lines in the daily login list
+  ; var %daily.login.lines $lines($lstfile(dailylogin.lst))
+
+  ; get the current login day the player is on and add 1
+  ; var %player.login.number 
+  ; if (%player.login.number = $null) { var %player.login.number 0 }
+  ; inc %player.login.number 1
+
+  ; if the current day is greater than the total # of login lines, reset back to 1
+  ; if (%player.login.number > %daily.login.lines) { var %player.login.number 1 }
+
+  ; get the reward and amount
+
+  ; give the reward to the player
+
+  ; show the reward line
+
+  ; write the time
+
   return
 }
 
