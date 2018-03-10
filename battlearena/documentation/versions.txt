@@ -1607,6 +1607,7 @@ Battle Arena Bot VERSIONS
   of times the monster/npc can go before moving onto the next person's turn
 - Added a new monster/npc skill: CompleteWeaknessShift.  If set to 1 in [skills] the user will randomize weaknesses and resistances
   to various status effects, weapon types, and elements on EVERY TURN the user gets.
+- Added a new player skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
 - Added an enmity targeting system option to the game. When this is on the amount of damage that players do to monsters will
   help determine which player the monsters target.
 - Added a new battle type: Cosmic.  Use CosmicOrbs to enter the Cosmic Battles. This battle type rewards winners with OdinMarks

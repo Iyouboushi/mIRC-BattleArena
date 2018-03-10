@@ -523,6 +523,15 @@ Max=1
 Info=This skill allows the user to change what battlefield the next battle will take place on at the cost of 2,000 $readini(system.dat, system, currency) $+ . This skill can only be used OUTSIDE of battle.  Use it as !warp battlefieldname 
 ActionPoints=0
 
+[CriticalFocus]
+Cost=5000
+Type=Active
+Max=1
+Info=This skill will cause your next attack to be a critical hit.
+ActionPoints=1
+Cooldown=15
+NeedToEquip=true
+
 =============================================
 RESISTS
 =============================================

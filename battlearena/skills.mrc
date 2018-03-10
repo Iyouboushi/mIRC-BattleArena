@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 01/27/18
+;;;; Last updated: 03/08/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -63,6 +63,7 @@ alias use.skill {
   if ($3 = magicmirror) { $skill.magicmirror($1) }
   if ($3 = gamble) { $skill.gamble($1) }
   if ($3 = thirdeye) { $skill.thirdeye($1) }
+  if ($3 = criticalfocus) { $skill.criticalfocus($1) }
   if ($3 = scavenge) { $skill.scavenge($1) }
   if ($3 = perfectcounter) { $skill.perfectcounter($1) }
   if ($3 = justrelease) { $skill.justrelease($1, %attack.target, !justrelease) } 
@@ -1347,6 +1348,49 @@ alias skill.drainsamba { $set_chr_name($1)
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
 }
+
+
+;=================
+; CRITICAL FOCUS
+;=================
+on 3:TEXT:!criticalfocus*:*: { $skill.criticalfocus($nick) }
+on 3:TEXT:!critical focus*:*: { $skill.criticalfocus($nick) }
+
+alias skill.criticalfocus { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($skillhave.check($1, criticalfocus) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+
+  var %skill.name CriticalFocus
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, CriticalFocus, !critical focus, false)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(CriticalFocus))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, criticalfocus) = $null) { set %skill.description becomes hyper focused in this battle.   }
+  else { set %skill.description $readini($char($1), descriptions, criticalfocus) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; write the last used time.
+  writeini $char($1) skills criticalfocus.time %true.turn
+  writeini $char($1) skills criticalfocus.on on
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction criticalfocus
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
 
 ;=================
 ; FORMLESS STRIKE

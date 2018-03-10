@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/21/17
+;;;; Last updated: 03/08/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -741,6 +741,7 @@ player.skills.list {
   if ($readini($char($1), skills, bloodboost.on) = on) { $skills_message_check(2Blood Boost) }
   if ($readini($char($1), skills, bloodspirit.on) = on) { $skills_message_check(2Blood Spirit) }
   if ($readini($char($1), skills, speed.on) = on) { $skills_message_check(2Speed Boost) }
+  if ($readini($char($1), skills, criticalfocus.on) = on) { $skills_message_check(2Focused) }
 
   set %cover.target $readini($char($1), skills, CoverTarget)
   if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(2Covered by %cover.target) }
