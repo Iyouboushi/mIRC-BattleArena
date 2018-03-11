@@ -4818,7 +4818,7 @@ system.intromessage {
   }
 
   ; show the reward line
-  $display.private.message(2For logging into the game today you have received4 %reward.amount %reward.type $+ 2!)
+  $display.private.message(2For logging into the game today you have received4 %reward.amount 2x4 %reward.type $+ 2!)
 
   return
 }

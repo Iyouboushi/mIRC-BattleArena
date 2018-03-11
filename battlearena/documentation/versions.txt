@@ -1607,7 +1607,9 @@ Battle Arena Bot VERSIONS
   of times the monster/npc can go before moving onto the next person's turn
 - Added a new monster/npc skill: CompleteWeaknessShift.  If set to 1 in [skills] the user will randomize weaknesses and resistances
   to various status effects, weapon types, and elements on EVERY TURN the user gets.
-- Added a new player skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
+- Added a new player active skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
+- Added a new player passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
+  death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
 - Added an enmity targeting system option to the game. When this is on the amount of damage that players do to monsters will
   help determine which player the monsters target.
 - Added a new battle type: Cosmic.  Use CosmicOrbs to enter the Cosmic Battles. This battle type rewards winners with OdinMarks
@@ -1618,6 +1620,7 @@ Battle Arena Bot VERSIONS
   open a portal to the Gobbie Treasure Vault dungeon. This is the only way to access that dungeon.
 - Added the ability for ignitions to be upgradeable. In the shop just purchase the ignition again.  Each ignition can be purchased
   (that is, upgraded) up to 10 times. Each time adds .10 to the stat multiplier. The cost is base black orbs * level upgrading to.
+- Added daily login rewards.  Every time a player logs in they will recieve a certain amount of an item based on a lst file.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated

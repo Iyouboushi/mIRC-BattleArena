@@ -928,6 +928,7 @@ FormlessStrikeWornOff=$chr(3) $+ 12 $+ %real.name $+ 's formless strike has wo
 SkillAlreadyUsed=$chr(3) $+ 4 $+ Error: %real.name has already used this skill for this battle and cannot use it again!
 LockpickingInUse=$chr(3) $+ 4 $+ Error: %real.name cannot use the lockpicking skill again so soon. Try again after joining a battle.
 LockpickingFailed=$chr(3) $+ 4 $+  $+ %real.name $+ 's lockpick breaks and the chest remains unopened.
+DieHardTriggered=$chr(3) $+ 4 $+  $+ $get_chr_name(%target) $+ 's determination and will causes $gender2(%target) to fight past a defeating blow!
 
 =======================
 Tech Related Messages

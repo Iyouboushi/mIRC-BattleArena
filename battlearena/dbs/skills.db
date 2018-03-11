@@ -761,3 +761,9 @@ Cost=0
 type=passive
 Info=This skill will increase overall damage against monsters by 2% per skill level
 Max=5
+
+[DieHard]
+Cost=0
+type=passive
+Info=You are a little harder to kill. With this skill there is a 1% chance per skill level of surviving a blow that would normally kill you.
+Max=10
