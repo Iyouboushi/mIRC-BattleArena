@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/10/18
+;;;; Last updated: 03/11/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1190,7 +1190,6 @@ deal_damage {
 
       }
       else {
-        echo -a revived!  Let's do that here.
         var %life.restored $return_percentofvalue($readini($char($2), basestats, hp), $readini($char($2), skills, DieHard))
         writeini $char($2) Battle HP %life.restored
         writeini $char($2) Battle Status Alive
