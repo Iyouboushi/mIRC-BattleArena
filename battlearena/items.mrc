@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/27/18
+;;;; Last updated: 03/11/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -1245,6 +1245,13 @@ alias item.food {
   set %food.type $readini($dbfile(items.db), $3, target)
   set %food.bonus $readini($dbfile(items.db), $3, amount)
   var %food.basestats str.def.int.spd.hp.tp
+  var %core.stats str.def.int.spd
+
+  if ($istok(%core.stats, %food.type, 46) = $true) {
+    var %skill.bonus $readini($char($2), skills, connoisseur)
+    if (%skill.bonus != $null) { inc %food.bonus 5 }
+  }
+
 
   if ($istok(%food.basestats,%food.type,46) = $true) { 
     ; Increase the base stat..

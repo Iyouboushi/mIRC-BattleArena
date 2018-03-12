@@ -1610,6 +1610,7 @@ Battle Arena Bot VERSIONS
 - Added a new player active skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
 - Added a new player passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
   death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
+- Added a new player passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd
 - Added an enmity targeting system option to the game. When this is on the amount of damage that players do to monsters will
   help determine which player the monsters target.
 - Added a new battle type: Cosmic.  Use CosmicOrbs to enter the Cosmic Battles. This battle type rewards winners with OdinMarks

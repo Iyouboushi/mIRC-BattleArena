@@ -99,6 +99,13 @@ Type=Passive
 Info=This skill will increase the amount of health items will heal by 5*skill level.
 Max=30
 
+[Connoisseur]
+Cost=1000
+Type=passive
+Info=You can understand the finer art of food.  As such you will gain a +5 bonus to any food that gives a bonus to core stats (str, def, int or spd).
+Max=1
+
+
 [Impetus]
 Cost=150
 Type=Passive
