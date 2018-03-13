@@ -409,6 +409,15 @@ ActionPoints=1
 NeedToEquip=true
 Style=Trickster
 
+[ShieldFocus]
+Cost=1000
+Info=When you activate this skill your shield is guaranteed to block 100% of a single attack if the attack can be blocked.
+Max=1
+Cooldown=30
+ActionPoints=2
+NeedToEquip=true
+Style=Guardian
+
 [Disarm]
 Cost=500
 Type=Active

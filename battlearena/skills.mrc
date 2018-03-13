@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/08/18
+;;;; Last updated: 03/12/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -52,6 +52,7 @@ alias use.skill {
   if ($3 = cover) { $skill.cover($1, %attack.target) } 
   if ($3 = aggressor) { $skill.aggressor($1) } 
   if ($3 = defender) { $skill.defender($1) }
+  if ($3 = shieldfocus) { $skill.shieldfocus($1) }
   if ($3 = alchemy) { $skill.alchemy($1, %attack.target) } 
   if ($3 = craft) { $skill.craft($1, %attack.target) }  
   if ($3 = holyaura) { $skill.holyaura($1) } 
@@ -1391,6 +1392,56 @@ alias skill.criticalfocus { $set_chr_name($1)
   if (%battleis = on)  { $check_for_double_turn($1) }
 }
 
+
+;=================
+; SHIELD FOCUS
+;=================
+on 3:TEXT:!shieldfocus*:*: { $skill.shieldfocus($nick) }
+on 3:TEXT:!shield focus*:*: { $skill.shieldfocus($nick) }
+
+alias skill.shieldfocus { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($skillhave.check($1, shieldfocus) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+
+  var %skill.name ShieldFocus
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, ShieldFocus, !shield focus, false)
+
+  ; Is the player using a shield?
+  var %left.hand.weapon $readini($char($1), weapons, equippedLeft)
+  if (%left.hand.weapon = $null) { var %shield.check false }
+  var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
+  if (%left.hand.weapon.type != shield) { var %shield.check false }
+
+  if (%shield.check = false) { $display.message(4 $+ $get_chr_name($1) is not using a shield and cannot use this skill at this moment., battle) | halt } 
+
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(ShieldFocus))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, shieldfocus) = $null) { set %skill.description readies $gender($1) shield in anticipation of the next attack.  }
+  else { set %skill.description $readini($char($1), descriptions, shieldfocus) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; write the last used time.
+  writeini $char($1) skills shieldfocus.time %true.turn
+  writeini $char($1) skills shieldfocus.on on
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction shieldfocus
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
+}
 
 ;=================
 ; FORMLESS STRIKE

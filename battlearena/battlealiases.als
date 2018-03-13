@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/11/18
+;;;; Last updated: 03/12/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3031,6 +3031,13 @@ shield_block_check {
   ; $3 = weapon used
 
   unset %shield.block.line
+
+  ; Is the defender using a shield?
+  var %left.hand.weapon $readini($char($1), weapons, equippedLeft)
+  if (%left.hand.weapon = $null) { return }
+  var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
+  if (%left.hand.weapon.type != shield) { return }
+
   if (%counterattack = on) { return }
   if ($person_in_mech($1) = true) { return }
   if ($readini($char($2), status, stun) = yes) { return }
@@ -3038,12 +3045,6 @@ shield_block_check {
   if ($readini($char($2), skills, truestrike.on) = on) { return }
   if (%guard.message != $null) { return }
   if ((%battle.rage.darkness = on) && ($readini($char($2), info, flag) = monster)) { return }
-
-  ; Is the defender using a shield?
-  var %left.hand.weapon $readini($char($1), weapons, equippedLeft)
-  if (%left.hand.weapon = $null) { return }
-  var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
-  if (%left.hand.weapon.type != shield) { return }
 
   ; Get the blocking chance of the shield
   var %shield.blocking.chance $readini($dbfile(weapons.db), %left.hand.weapon, BlockChance)
@@ -3053,12 +3054,17 @@ shield_block_check {
     unset %accessory.amount
   }
 
+  if ($readini($char($1), skills, ShieldFocus.on) = on) { var %shield.blocking.chance 100  }
+
   ; Attempt to block using the shield.
   var %block.chance $rand(1,100)
   if (%block.chance > %shield.blocking.chance) { return }
 
   ; Determine how much damage is absorbed via the shield.
   var %shield.blocking.amount $readini($dbfile(weapons.db), %left.hand.weapon, AbsorbAmount)
+
+  if ($readini($char($1), skills, ShieldFocus.on) = on) { var %shield.blocking.amount 100 | writeini $char($1) skills ShieldFocus.on off  }
+
   var %percent.blocked $round($return_percentofvalue(%attack.damage,%shield.blocking.amount),0)
   if (%percent.blocked <= 0) { var %percent.blocked 1 }
 

@@ -1608,6 +1608,8 @@ Battle Arena Bot VERSIONS
 - Added a new monster/npc skill: CompleteWeaknessShift.  If set to 1 in [skills] the user will randomize weaknesses and resistances
   to various status effects, weapon types, and elements on EVERY TURN the user gets.
 - Added a new player active skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
+- Added a new player active skill: ShieldFocus. This skill will make your shield block 100% of the next attack if the attack can be
+  blocked. A shield must be equipped in order to use this skill.
 - Added a new player passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
   death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
 - Added a new player passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd
