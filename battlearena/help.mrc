@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 03/08/18
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -166,6 +166,13 @@ alias view-info {
       if (%info.specialtype = GainWeapon) { 
         $display.private.message([4Name12 $3 $+ ] [4Type12 Gain Weapon $+ ] [4Weapon Gained12 $readini($dbfile(items.db), $3, Weapon) $+ ])
       }
+      if (%info.specialtype = GainSong) { 
+        $display.private.message([4Name12 $3 $+ ] [4Type12 Learn Song $+ ] [4Song Learned12 $readini($dbfile(items.db), $3, Song) $+ ])
+      }
+      if (%info.specialtype = GainSkill) { 
+        $display.private.message([4Name12 $3 $+ ] [4Type12 Learn Skill $+ ] [4Skill Learned12 $readini($dbfile(items.db), $3, Skill) $+ ])
+      }
+
     }
 
     if (%info.type = random) {

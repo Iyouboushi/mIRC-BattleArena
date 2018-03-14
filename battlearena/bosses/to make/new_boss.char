@@ -259,3 +259,49 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+
+
+
+
+;=====================================================================
+; This is a way you can set up a monster
+; or boss to do a rotation. 
+; Valid actions: free, attack, tech, taunt, skill, flee, 
+                 ignition*, item*, mech*
+; attack = use a normal melee attack
+; tech = use a technique
+; skill = use a skill
+; free = do whatever the monster wants
+; flee = attempt to flee the battle
+; ignition = use an ignition
+; item = use an item
+; mech = activate a mech
+;
+; NOTE: It is not advisible to set item, mech, or ignition
+; unless you have a VERY LONG rotation list. If the monster repeats
+; that action again it will most likely throw an error.
+;======================================================================
+;[Rotation]
+;Current=0
+;1=
+;2=
+;3=
+;4=
+;5=
+;6=
+;7=
+;8=
+;9=
+;10=
+; etc
+;
+; Example:
+; [Rotation]
+; Current=0
+; 1=Free
+; 2=Tech
+; 3=Attack
+; 4=Taunt
+; 5=Attack
+; 6=Tech
+; 7=Tech

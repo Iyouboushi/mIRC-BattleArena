@@ -161,3 +161,11 @@ Mace=30
 PinkChainsaw=30
 Stave=30
 EnergyBlaster=30
+
+
+[Rotations]
+Current=0
+1=free
+2=tech
+3=tech
+4=flee

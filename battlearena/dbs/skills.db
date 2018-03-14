@@ -173,6 +173,12 @@ Type=passive
 Info=This skill will allow the user to hold two one-handed weapons and use techniques from both without having to switch weapons. For melee attacks, the # of hits for the attack will be both weapon's # of hits combined. Use !equip left or !equip right to equip to the specified hand. Note, a weapon must be in the right hand before you can equip the left hand.
 Max=1
 
+[SwiftCast]
+Cost=0
+Type=passive
+Info=You have become faster at casting spells and as such you are able to deal more damage with spells. Your spell damage will increase by 10%.
+Max=1
+
 =============================================
 ACTIVE SKILLS
 =============================================
@@ -426,6 +432,14 @@ Cooldown=30
 ActionPoints=2
 NeedToEquip=true
 
+[DoubleCast]
+Cost=0
+Info=You have learned how to cast two of the same spell at once. Your magic techniques will deal +1 more hit than normal.
+Max=1
+Cooldown=20
+ActionPoints=2
+NeedToEquip=true
+
 [Disarm]
 Cost=500
 Type=Active
@@ -555,6 +569,7 @@ Info=This skill will cause your next attack to be a critical hit.
 ActionPoints=1
 Cooldown=15
 NeedToEquip=true
+
 
 =============================================
 RESISTS

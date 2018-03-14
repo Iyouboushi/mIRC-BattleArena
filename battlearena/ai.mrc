@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 03/03/18
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -214,13 +214,13 @@ alias ai.buildactionbar {
     return
   }
 
-  set %action.bar attack
-
   ; If the monster is under amnesia, just attack.
   if ($readini($char($1), status, amnesia) = yes) { return }
 
   ; If the monster is charmed, just attack
   if ($is_charmed($1) = true) { return }
+
+  set %action.bar attack
 
   ; Can the monster taunt?
   if (($person_in_mech($1) = false) && ($readini($char($1), status, ignition.on) != on)) {
@@ -266,6 +266,9 @@ alias ai.buildactionbar {
 
   ; Adding attack on there once more for good measure if it wasn't the last action
   if (%last.actionbar.action != attack) {  %action.bar = %action.bar $+ .attack }
+
+  $ai.rotation.perform($1)
+
 }
 
 alias ai_itemcheck {
@@ -1131,6 +1134,20 @@ alias ai.learncheck {
   if ($readini($char($1), monster, techlearn) != true) { return }
   if ($readini($dbfile(techniques.db), $2, type) = $null) { return }
   writeini $char($1) modifiers $2 0
+}
+
+alias ai.return.rotationnum { return $readini($char($1), rotations, current) }
+alias ai.rotation.perform {
+  var %current.rotation $ai.return.rotationnum($1) 
+  if (%current.rotation = $null) { var %current.rotation 0 }
+  inc %current.rotation 1
+  if ($readini($char($1), rotations, %current.rotation) = $null) { var %current.rotation 1 }
+
+  writeini $char($1) rotations current %current.rotation
+  var %rotation.action $readini($char($1), rotations, %current.rotation)
+
+  if ((%rotation.action = $null) || (%rotation.action = free)) { return }
+  else { set %action.bar %rotation.action }
 }
 
 alias ai.egg {

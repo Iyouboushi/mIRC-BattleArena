@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/13/18
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -744,6 +744,7 @@ player.skills.list {
   if ($readini($char($1), skills, criticalfocus.on) = on) { $skills_message_check(2Critical Focus) }
   if ($readini($char($1), skills, shieldfocus.on) = on) { $skills_message_check(2Shield Focus) }
   if ($readini($char($1), skills, barrage.on) = on) { $skills_message_check(2Barrage) }
+  if ($readini($char($1), skills, doublecast.on) = on) { $skills_message_check(2DoubleCast) }
 
   set %cover.target $readini($char($1), skills, CoverTarget)
   if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(2Covered by %cover.target) }

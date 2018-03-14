@@ -584,6 +584,7 @@ CannotUseDiscountCardOnOthers=$chr(3) $+ 4 $+ Error: Shop Reset items cannot b
 ShopNPCNotAvailable=$chr(3) $+ 4 $+ The NPC that sells this item is currently unavailable.
 AlreadyLearnedThisWeapon=$chr(3) $+ 4 $+ Error: %real.name has already obtained the %weapon.to.gain $+ .
 AlreadyLearnedThisSong=$chr(3) $+ 4 $+ Error: %real.name has already learned how to perform the %song.to.gain song.
+AlreadyLearnedThisSkill=$chr(3) $+ 4 $+ Error: %real.name has already learned the %song.to.gain skill.
 Can'tReforgepInBattle=$chr(3) $+ 4 $+ Error: %real.name cannot reforge weapons in battle.
 Can'tUseSkillInBattle=$chr(3) $+ 4 $+ Error: %real.name cannot use this skill in battle.
 Don'tKnowThatSong=$chr(3) $+ 4 $+ Error: %real.name does not know how to sing that song.

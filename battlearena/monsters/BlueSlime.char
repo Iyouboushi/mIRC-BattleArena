@@ -133,3 +133,12 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+
+[Rotations]
+Current=0
+1=free
+2=tech
+3=tech
+4=attack
+5=free
+6=flee

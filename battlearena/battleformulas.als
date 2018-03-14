@@ -1,14 +1,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/25/17
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Although it may seem ridiculous
-; to have so many damage formulas
-; please do not remove them from the
-; bot. Dungeons use 3.0, Torment & Cosmic
-; uses 2.5.  
-; By default melee uses $calculate.damage.rating.melee
-; By default techs use: 
+; Although it may seem ridiculous to have
+; so many damage formulas please do not 
+; remove them from the bot. Torment & Cosmic
+; use 2.5 while Dungeons and normal battles use the defaults.
+
+; By default melee uses $formula.meleedmg.player.formula
+; By default techs use: $formula.techdmg.player.formula
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1025,6 +1025,9 @@ formula.techdmg.player.formula {
   ; Check to see if we need to increase the proficiency of a technique.
   $tech.points($1, $2)
 
+  ; Check to see if SwiftCast is on and if this tech is a spell.
+  $swiftcast_check($1, $2)
+
   if (%attack.damage = 0) { return }
 
   ; Check for multiple hits
@@ -1062,12 +1065,13 @@ multihitcheck.melee {
   if (%multihit.message.on != on) {
     set %multihit.message.on on
   }
-
 }
 
 multihitcheck.tech {
   set %number.of.hits $readini($dbfile(techniques.db), $2, hits)
   if (%number.of.hits = $null) { set %number.of.hits 1 }
+
+  if ($doublecast_check($1, $2) = true) { inc %number.of.hits 1 | writeini $char($1) skills doublecast.on off }
 
   var %original.attack.damage %attack.damage
   var %current.hit 2
@@ -3142,6 +3146,8 @@ formula.meleedmg.player.formula_2.5 {
     inc %weapon.howmany.hits %left.hits 
   }
 
+  if ($barrage_check($1, $2) = true) { inc %weapon.howmany.hits 3 | writeini $char($1) skills barrage.on off }
+
   if ($1 = demon_wall) {  $demon.wall.boost($1) }
 
   $first_round_dmg_chk($1, $3)
@@ -4038,6 +4044,9 @@ formula.techdmg.monster {
 
   ; Check for the skill "Overwhelm" and increase the damage if so
   $skill.overwhelm($1)
+
+  ; Check to see if SwiftCast is on and if this tech is a spell.
+  $swiftcast_check($1, $2)
 
   ; Check for a shield block.
   $shield_block_check($3, $1, $2)
@@ -4967,6 +4976,9 @@ formula.techdmg.player.formula_1.0 {
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
+
+  ; Check to see if SwiftCast is on and if this tech is a spell.
+  $swiftcast_check($1, $2)
 
   ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage

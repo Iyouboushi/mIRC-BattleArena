@@ -1605,16 +1605,21 @@ Battle Arena Bot VERSIONS
 - Added a new player command: !kill coins  -- This will show the player how many kill coins he/she has
 - Added the ability for monsters and npcs to go multiple times on a turn. In [Info] put ActionsPerTurn=# where # is the number
   of times the monster/npc can go before moving onto the next person's turn
+- Added a new item type: GainSkill.  These items will teach players new skills that cannot be bought.
 - Added a new monster/npc skill: CompleteWeaknessShift.  If set to 1 in [skills] the user will randomize weaknesses and resistances
   to various status effects, weapon types, and elements on EVERY TURN the user gets.
-- Added a new player active skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
-- Added a new player active skill: ShieldFocus. This skill will make your shield block 100% of the next attack if the attack can be
+- Added a new active skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
+- Added a new active skill: ShieldFocus. This skill will make your shield block 100% of the next attack if the attack can be
   blocked. A shield must be equipped in order to use this skill.
-- Added a new player active skill: Barrage. This skill will make your next melee attack done with a ranged weapon (bow, gun or rifle)
+- Added a new active skill: Barrage. This skill will make your next melee attack done with a ranged weapon (bow, gun or rifle)
   do +3 more hits than it would normally. The skill only takes effect when damage is done with a ranged weapon.
-- Added a new player passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
+- Added a new active skill: DoubleCast. This skill will make your next spell do +1 more hit than it would normally.
+  This skill cannot be purchased and must be learned.
+- Added a new passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
   death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
-- Added a new player passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd
+- Added a new passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd
+- Added a new passive skill: SwiftCast. This skill will increase spell damage by 10%.   This skill cannot be purchased 
+  and must be learned.
 - Added an enmity targeting system option to the game. When this is on the amount of damage that players do to monsters will
   help determine which player the monsters target.
 - Added a new battle type: Cosmic.  Use CosmicOrbs to enter the Cosmic Battles. This battle type rewards winners with OdinMarks
@@ -1632,6 +1637,9 @@ Battle Arena Bot VERSIONS
   without equipping it and for 200 orbs instead of 1000. This style also increases damage done with Ranged weapons at level 5.
   The higher the style's level the higher rarity of cards you can use with Card Shark.
 - Added new trading cards
+- Added the ability for monsters, bosses and NPCs to have rotations. These are set blueprints on how they will react each battle.
+  The information on how to set it up is in new_npc.char, new_mon.char and new_boss.char at the bottom of the file. Or see the
+  MetalSlime and BlueSlime files for an example.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated

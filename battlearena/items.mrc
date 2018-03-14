@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/11/18
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -817,6 +817,20 @@ alias item.special {
 
     $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global)
     unset %song.to.gain | unset %user.song.level
+    return
+  }
+
+  if (%special.type = GainSkill) { 
+    set %skill.to.gain  $readini($dbfile(items.db), $3, Skill)
+
+    ; Check to see if the user already has this skill
+    set %user.skill.level $readini($char($2), skills, %skill.to.gain)
+    if (%user.skill.level != $null) {  unset %user.skill.level | $set_chr_name($2) | $display.message($readini(translation.dat, errors, AlreadyLearnedThisSkill), private) | unset %skill.to.gain | halt }
+
+    writeini $char($2) skills %skill.to.gain 1
+
+    $display.message(3 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global)
+    unset %skill.to.gain | unset %user.skill.level
     return
   }
 

@@ -4733,6 +4733,28 @@ Desc=pulls out a sheet of music and begins to study it. After some time passes,
 
 
 =========================
+LEARNSKILL (subset of special)
+=========================
+[AncientMystery:SwiftCast]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=SwiftCast
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of Swift Cast.
+
+[AncientMystery:DoubleCast]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=DoubleCast
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of Double Cast.
+
+
+=========================
 INSTRUMENTS
 =========================
 [Flute]

@@ -3934,7 +3934,7 @@ offensive.style.check {
   }
 
   if ($3 = magic) {
-    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .225)
+    if (%current.playerstyle = SpellMaster) { inc %magic.bonus.modifier $calc(%current.playerstyle.level * .30)
       if (%magic.bonus.modifier >= 1) { set %magic.bonus.modifier .95 }
     }
   }
@@ -3995,6 +3995,35 @@ barrage_check {
 
   if ($readini($char($1), skills, barrage.on) = on) { return true }
   else { return false }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks to see if the doublecast
+; skill is on and if the tech is
+; magic or not
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+doublecast_check {
+  ; $1 = the person we're checking
+  ; $2 = the tech name
+
+  var %magic.check $readini($dbfile(techniques.db), $2, spell)
+  if ((%magic.check = no) || (%magic.check = $null)) { return false }
+
+  if ($readini($char($1), skills, doublecast.on) = on) { return true }
+  else { eturn false }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks to see if the user
+; has the SwiftCast skill
+; and if the technique is magic
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+swiftcast_check {
+  ; $1 = the person we're checking
+  ; $2 = the tech name
+
+  if (($readini($char($1), skills, swiftcast) = $null) || ($readini($char($1), skills, swiftcast) = 0)) { return }
+  set %attack.damage $round($calc(%attack.damage + (%attack.damage * .10)),0)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

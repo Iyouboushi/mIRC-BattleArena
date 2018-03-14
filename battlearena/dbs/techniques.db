@@ -598,6 +598,9 @@ BasePower=
 ; Magic is either yes or no.  If yes it will do extra damage based on element and weather (and other things)
 Magic=
 
+; If the technique is an actual spell put yes here.
+Spell=
+
 ; StatusType is an optional value if you want the tech to inflict a status against the target.
 StatusType=
 
@@ -2560,6 +2563,7 @@ BasePower=10
 Magic=Yes
 stat=int
 Renkei=2
+Spell=yes
 
 [MagicStrike]
 Type=Single
@@ -2572,6 +2576,7 @@ BasePower=10
 Magic=yes
 stat=int
 Renkei=2
+Spell=yes
 
 [Fire]
 Type=Single
@@ -2582,6 +2587,7 @@ Cost=500
 Element=fire
 magic=yes
 stat=int
+Spell=yes
 
 [Stone]
 Type=Single
@@ -2592,6 +2598,7 @@ Cost=500
 Element=earth
 magic=yes
 stat=int
+Spell=yes
 
 [Aero]
 Type=Single
@@ -2602,6 +2609,7 @@ Cost=500
 Element=wind
 magic=yes
 stat=int
+Spell=yes
 
 [Ice]
 Type=Single
@@ -2612,6 +2620,7 @@ Cost=500
 Element=ice
 magic=yes
 stat=int
+Spell=yes
 
 [Water]
 Type=Single
@@ -2622,6 +2631,7 @@ Cost=500
 Element=water
 magic=yes
 stat=int
+Spell=yes
 
 [Thunder]
 Type=Single
@@ -2632,6 +2642,7 @@ Cost=500
 Element=lightning
 magic=yes
 stat=int
+Spell=yes
 
 [FireII]
 Type=Single
@@ -2642,6 +2653,7 @@ Cost=800
 Element=fire
 magic=yes
 stat=int
+Spell=yes
 
 [StoneII]
 Type=Single
@@ -2652,6 +2664,7 @@ Cost=800
 Element=earth
 magic=yes
 stat=int
+Spell=yes
 
 [AeroII]
 Type=Single
@@ -2662,6 +2675,7 @@ Cost=800
 Element=wind
 magic=yes
 stat=int
+Spell=yes
 
 [IceII]
 Type=Single
@@ -2672,6 +2686,7 @@ Cost=800
 Element=ice
 magic=yes
 stat=int
+Spell=yes
 
 [WaterII]
 Type=Single
@@ -2682,6 +2697,7 @@ Cost=800
 Element=water
 magic=yes
 stat=int
+Spell=yes
 
 [ThunderII]
 Type=Single
@@ -2692,6 +2708,7 @@ Cost=800
 Element=lightning
 magic=yes
 stat=int
+Spell=yes
 
 [FireIII]
 Type=Single
@@ -2702,6 +2719,7 @@ Cost=1500
 Element=fire
 magic=yes
 stat=int
+Spell=yes
 
 [StoneIII]
 Type=Single
@@ -2712,6 +2730,7 @@ Cost=1500
 Element=earth
 magic=yes
 stat=int
+Spell=yes
 
 [AeroIII]
 Type=Single
@@ -2722,6 +2741,7 @@ Cost=1500
 Element=wind
 magic=yes
 stat=int
+Spell=yes
 
 [IceIII]
 Type=Single
@@ -2732,6 +2752,7 @@ Cost=1500
 Element=ice
 magic=yes
 stat=int
+Spell=yes
 
 [WaterIII]
 Type=Single
@@ -2742,6 +2763,7 @@ Cost=1500
 Element=water
 magic=yes
 stat=int
+Spell=yes
 
 [ThunderIII]
 Type=Single
@@ -2752,6 +2774,7 @@ Cost=1500
 Element=lightning
 magic=yes
 stat=int
+Spell=yes
 
 [Firaja]
 Type=AOE
@@ -2762,6 +2785,7 @@ Cost=2000
 Element=fire
 magic=yes
 stat=int
+Spell=yes
 
 [Stoneja]
 Type=AOE
@@ -2772,6 +2796,7 @@ Cost=2000
 Element=earth
 magic=yes
 stat=int
+Spell=yes
 
 [Waterja]
 Type=AOE
@@ -2782,6 +2807,7 @@ Cost=2000
 Element=water
 magic=yes
 stat=int
+Spell=yes
 
 [Aeroja]
 Type=AOE
@@ -2792,6 +2818,7 @@ Cost=2000
 Element=wind
 magic=yes
 stat=int
+Spell=yes
 
 [Blizzaja]
 Type=AOE
@@ -2802,6 +2829,7 @@ Cost=2000
 Element=ice
 magic=yes
 stat=int
+Spell=yes
 
 [Thundaja]
 Type=AOE
@@ -2812,6 +2840,7 @@ Cost=2000
 Element=lightning
 magic=yes
 stat=int
+Spell=yes
 
 [Poison]
 Type=Single
@@ -2823,6 +2852,7 @@ Cost=700
 Element=none
 Magic=no
 stat=int
+Spell=yes
 
 [Slow]
 Type=Single
@@ -2834,6 +2864,7 @@ Cost=700
 Element=none
 Magic=yes
 Stat=int
+Spell=yes
 
 [Petrify]
 Type=Single
@@ -2845,6 +2876,7 @@ Cost=2000
 Element=none
 Magic=yes
 Stat=int
+Spell=yes
 
 [Blind]
 Type=Single
@@ -2856,6 +2888,7 @@ Cost=700
 Element=none
 Magic=no
 stat=int
+Spell=yes
 
 [Paralyze]
 Type=Single
@@ -2867,6 +2900,7 @@ Cost=700
 Element=none
 Magic=no
 stat=int
+Spell=yes
 
 [Holy]
 Type=AOE
@@ -2877,6 +2911,7 @@ Element=light
 Cost=1500
 Magic=yes
 stat=int
+Spell=yes
 
 [Cure]
 Type=heal
@@ -2888,6 +2923,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=650
+Spell=yes
 
 [CureII]
 Type=heal
@@ -2899,6 +2935,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=1250
+Spell=yes
 
 [CureIII]
 Type=heal
@@ -2910,6 +2947,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=1750
+Spell=yes
 
 [CureIV]
 Type=heal
@@ -2921,6 +2959,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=3000
+Spell=yes
 
 [FirstAid]
 Type=heal
@@ -2942,6 +2981,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=1250
+Spell=yes
 
 [Curaga]
 Type=heal-AOE
@@ -2953,6 +2993,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=2000
+Spell=yes
 
 [Flare]
 Type=Single
@@ -2963,6 +3004,7 @@ Element=Fire
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [Break]
 Type=Single
@@ -2973,6 +3015,7 @@ Element=Earth
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [Quake]
 Type=Single
@@ -2983,6 +3026,7 @@ Element=Earth
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [Flood]
 Type=Single
@@ -2993,6 +3037,7 @@ Element=Water
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [Tornado]
 Type=Single
@@ -3003,6 +3048,7 @@ Element=Wind
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [Freeze]
 Type=Single
@@ -3013,6 +3059,7 @@ Element=Ice
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [Burst]
 Type=Single
@@ -3023,6 +3070,7 @@ Element=Lightning
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [FlareII]
 Type=Single
@@ -3033,6 +3081,7 @@ Element=Fire
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [QuakeII]
 Type=Single
@@ -3043,6 +3092,7 @@ Element=Earth
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [FloodII]
 Type=Single
@@ -3053,6 +3103,7 @@ Element=Water
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [TornadoII]
 Type=Single
@@ -3063,6 +3114,7 @@ Element=Wind
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [FreezeII]
 Type=Single
@@ -3073,6 +3125,7 @@ Element=Ice
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [BurstII]
 Type=Single
@@ -3083,6 +3136,7 @@ Element=Lightning
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [CureV]
 Type=Heal
@@ -3094,6 +3148,7 @@ Cost=3500
 Magic=Yes
 stat=int
 CappedAmount=4000
+Spell=yes
 
 [CureVI]
 Type=Heal
@@ -3105,6 +3160,7 @@ Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 20000, 9500)
 Magic=Yes
 stat=int
 CappedAmount=9000
+Spell=yes
 
 [FlareIII]
 Type=Single
@@ -3115,6 +3171,7 @@ Element=Fire
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [QuakeIII]
 Type=Single
@@ -3125,6 +3182,7 @@ Element=Earth
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [FloodIII]
 Type=Single
@@ -3135,6 +3193,7 @@ Element=Water
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [TornadoIII]
 Type=Single
@@ -3145,6 +3204,7 @@ Element=Wind
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [FreezeIII]
 Type=Single
@@ -3155,6 +3215,7 @@ Element=Ice
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [BurstIII]
 Type=Single
@@ -3165,6 +3226,7 @@ Element=Lightning
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [FirajaII]
 Type=AOE
@@ -3175,6 +3237,7 @@ Cost=3000
 Element=fire
 magic=yes
 stat=int
+Spell=yes
 
 [StonejaII]
 Type=AOE
@@ -3185,6 +3248,7 @@ Cost=3000
 Element=earth
 magic=yes
 stat=int
+Spell=yes
 
 [WaterjaII]
 Type=AOE
@@ -3195,6 +3259,7 @@ Cost=3000
 Element=water
 magic=yes
 stat=int
+Spell=yes
 
 [AerojaII]
 Type=AOE
@@ -3205,6 +3270,7 @@ Cost=3000
 Element=wind
 magic=yes
 stat=int
+Spell=yes
 
 [BlizzajaII]
 Type=AOE
@@ -3215,6 +3281,7 @@ Cost=3000
 Element=ice
 magic=yes
 stat=int
+Spell=yes
 
 [ThundajaII]
 Type=AOE
@@ -3225,6 +3292,7 @@ Cost=3000
 Element=lightning
 magic=yes
 stat=int
+Spell=yes
 
 [Meteor]
 Type=AOE
@@ -3236,6 +3304,7 @@ Element=none
 magic=yes
 stat=int
 DestroyShadows=4
+Spell=yes
 
 [Ultima]
 Type=Single
@@ -3246,6 +3315,7 @@ Element=Light
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 15000, 7500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [Kaustra]
 Type=Single
@@ -3256,6 +3326,7 @@ Element=Dark
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 15000, 7500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [UltimaIII]
 Type=Single
@@ -3266,6 +3337,8 @@ Element=Light
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+DestroyShadows=2
+Spell=yes
 
 [KaustraIII]
 Type=Single
@@ -3275,7 +3348,9 @@ BasePower=$iif(%battle.type = torment, 2250, 800)
 Element=Dark
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
+DestroyShadows=2
 stat=int
+Spell=yes
 
 [Dark]
 Type=Single
@@ -3286,6 +3361,7 @@ Element=Dark
 Cost=500
 Magic=Yes
 stat=int
+Spell=yes
 
 [DarkII]
 Type=Single
@@ -3296,6 +3372,7 @@ Element=Dark
 Cost=800
 Magic=Yes
 stat=int
+Spell=yes
 
 [DarkIII]
 Type=Single
@@ -3306,6 +3383,7 @@ Element=Dark
 Cost=1200
 Magic=Yes
 stat=int
+Spell=yes
 
 [Darkness]
 Type=Single
@@ -3316,6 +3394,7 @@ Element=Dark
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [DarknessII]
 Type=Single
@@ -3326,6 +3405,7 @@ Element=Dark
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [DarknessIII]
 Type=Single
@@ -3337,6 +3417,7 @@ Hits=1
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [Darkra]
 Type=AOE
@@ -3347,6 +3428,7 @@ Element=Dark
 Cost=2000
 Magic=Yes
 stat=int
+Spell=yes
 
 [DarkraII]
 Type=AOE
@@ -3357,6 +3439,7 @@ Element=Dark
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [HolyII]
 Type=AOE
@@ -3367,6 +3450,7 @@ Element=Light
 Cost=3000
 Magic=Yes
 stat=int
+Spell=yes
 
 [Fira]
 Type=AOE
@@ -3377,6 +3461,7 @@ Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=fire
 magic=yes
 stat=int
+Spell=yes
 
 [Stonera]
 Type=AOE
@@ -3387,6 +3472,7 @@ Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=earth
 magic=yes
 stat=int
+Spell=yes
 
 [Watera]
 Type=AOE
@@ -3397,6 +3483,7 @@ Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=water
 magic=yes
 stat=int
+Spell=yes
 
 [Aera]
 Type=AOE
@@ -3407,6 +3494,7 @@ Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=wind
 magic=yes
 stat=int
+Spell=yes
 
 [Blizzara]
 Type=AOE
@@ -3417,6 +3505,7 @@ Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=ice
 magic=yes
 stat=int
+Spell=yes
 
 [Thundara]
 Type=AOE
@@ -3427,6 +3516,7 @@ Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Element=lightning
 magic=yes
 stat=int
+Spell=yes
 
 [Curaja]
 Type=heal-AOE
@@ -3438,6 +3528,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=8000
+Spell=yes
 
 [DarkraIII]
 Type=AOE
@@ -3448,6 +3539,7 @@ Element=Dark
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [HolyIII]
 Type=AOE
@@ -3458,6 +3550,7 @@ Element=Light
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=Yes
 stat=int
+Spell=yes
 
 [Banish]
 Type=Single
@@ -3468,6 +3561,7 @@ Element=light
 Cost=500
 Magic=yes
 stat=int
+Spell=yes
 
 [BanishII]
 Type=Single
@@ -3478,6 +3572,7 @@ Element=light
 Cost=800
 Magic=yes
 stat=int
+Spell=yes
 
 [BanishIII]
 Type=Single
@@ -3488,6 +3583,7 @@ Element=light
 Cost=1200
 Magic=yes
 stat=int
+Spell=yes
 
 [Light]
 Type=Single
@@ -3498,6 +3594,7 @@ Element=light
 Cost=2000
 Magic=yes
 stat=int
+Spell=yes
 
 [LightII]
 Type=Single
@@ -3508,6 +3605,7 @@ Element=light
 Cost=3000
 Magic=yes
 stat=int
+Spell=yes
 
 [LightIII]
 Type=Single
@@ -3519,6 +3617,7 @@ Hits=1
 BasePower=$iif(%battle.type = torment, 2000, 500)
 Magic=yes
 stat=int
+Spell=yes
 
 [Pulsus]
 Type=Single
@@ -3541,6 +3640,7 @@ Element=Fire
 Cost=2000
 Magic=yes
 stat=int
+Spell=yes
 
 [Grando]
 Type=Single
@@ -3551,6 +3651,7 @@ Element=Ice
 Cost=2000
 Magic=yes
 stat=int
+Spell=yes
 
 [Fulgur]
 Type=Single
@@ -3561,6 +3662,7 @@ Element=Lightning
 Cost=2000
 Magic=yes
 stat=int
+Spell=yes
 
 [Nitesco]
 Type=Single
@@ -3571,6 +3673,7 @@ Element=Light
 Cost=2000
 Magic=yes
 stat=int
+Spell=yes
 
 [Globus]
 Type=AOE
@@ -3581,6 +3684,7 @@ Element=earth
 Cost=2500
 Magic=yes
 stat=int
+Spell=yes
 
 [Acerbatus]
 Type=Single
@@ -3592,6 +3696,7 @@ Element=Dark
 Cost=2500
 Magic=yes
 stat=int
+Spell=yes
 
 [Luminatio]
 Type=AOE
@@ -3602,6 +3707,7 @@ Element=Light
 Cost=3500
 Magic=yes
 stat=int
+Spell=yes
 
 [Dominus]
 Type=AOE
@@ -3612,6 +3718,7 @@ Element=Dark
 Cost=3500
 magic=yes
 stat=int
+Spell=yes
 
 [Medico]
 Type=heal
@@ -3623,6 +3730,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=3000
+Spell=yes
 
 [Remedium]
 Type=heal-AOE
@@ -3634,6 +3742,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=2000
+Spell=yes
 
 [IgnisII]
 Type=Single
@@ -3644,6 +3753,7 @@ Element=Fire
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 Magic=yes
 stat=int
+Spell=yes
 
 [GrandoII]
 Type=Single
@@ -3654,6 +3764,7 @@ Element=Ice
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 Magic=yes
 stat=int
+Spell=yes
 
 [FulgurII]
 Type=Single
@@ -3664,6 +3775,7 @@ Element=Lightning
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 Magic=yes
 stat=int
+Spell=yes
 
 [NitescoII]
 Type=Single
@@ -3674,6 +3786,7 @@ Element=Light
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 Magic=yes
 stat=int
+Spell=yes
 
 [GlobusII]
 Type=AOE
@@ -3684,6 +3797,7 @@ Element=earth
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=yes
 stat=int
+Spell=yes
 
 [AcerbatusII]
 Type=Single
@@ -3695,6 +3809,7 @@ Element=Dark
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=yes
 stat=int
+Spell=yes
 
 [LuminatioII]
 Type=AOE
@@ -3705,6 +3820,7 @@ Element=Light
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 50000, 9500)
 Magic=yes
 stat=int
+Spell=yes
 
 [DominusII]
 Type=Single
@@ -3715,6 +3831,7 @@ Element=Dark
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 40000, 8500)
 magic=yes
 stat=int
+Spell=yes
 
 [MedicoII]
 Type=heal
@@ -3726,6 +3843,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=8000
+Spell=yes
 
 [RemediumII]
 Type=heal-AOE
@@ -3737,6 +3855,7 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=7000
+Spell=yes
 
 ===================
 HAMMER TECHS
