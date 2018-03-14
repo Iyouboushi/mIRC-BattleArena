@@ -448,6 +448,15 @@ Cooldown=20
 ActionPoints=2
 NeedToEquip=true
 
+[ThinAir]
+Cost=0
+Info=With this ancient practice you will be able to cast the next spell using no tp.  You will not consume a turn when using this skill.
+Max=1
+Cooldown=15
+ActionPoints=2
+NeedToEquip=true
+Style=Spellmaster
+
 [Invigorate]
 Cost=0
 Info=With this ancient practice you will be able to instantly restore 200 missing TP to keep yourself in the flow of battle.  You will not consume a turn when using this skill.

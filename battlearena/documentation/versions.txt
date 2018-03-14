@@ -1621,6 +1621,8 @@ Battle Arena Bot VERSIONS
   bonus, if you hit max HP while using this skill you will gain +100 HP over your max HP limit.
 - Added a new active skill: Duality. This skill will cause your next non-spell/single target technique to do +1 more hit.
   This skill cannot be purchased and must be learned.
+- Added a new active skill: ThinAir. This skill will cause your next magic spell to consume 0 TP upon use.
+  This skill cannot be purchased and must be learned.
 - Added a new passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
   death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
 - Added a new passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd
@@ -1634,6 +1636,7 @@ Battle Arena Bot VERSIONS
 - Added a key file. Do not modify or remove this file or the bot will not work correctly. 
 - Added Treasure Goblins to the game. Upon killing one in a non cosmic/non torment battle there is a 25% chance that it will 
   open a portal to the Gobbie Treasure Vault dungeon. This is the only way to access that dungeon.
+- Added new dungeons
 - Added the ability for ignitions to be upgradeable. In the shop just purchase the ignition again.  Each ignition can be purchased
   (that is, upgraded) up to 10 times. Each time adds .10 to the stat multiplier. The cost is base black orbs * level upgrading to.
 - Added daily login rewards.  Every time a player logs in they will recieve a certain amount of an item based on a lst file.

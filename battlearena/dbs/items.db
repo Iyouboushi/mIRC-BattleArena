@@ -976,6 +976,34 @@ Exclusive=yes
 ItemsInside=$rand(150,250)
 TormentReward=true
 
+[Bronze-trimmedSack]
+type=random
+ItemDesc=This small bag with bronze trimming contains a random item discovered from the Lost Tower of the Ancients.
+Desc=pulls out a small bronze-trimmed sack and opens it to discover a %random.item.name inside! 
+SellPrice=2000
+Cost=0
+ItemList=items_bronzesack.lst
+exclusive=yes
+
+[Silver-trimmedSack]
+type=random
+ItemDesc=This small bag with silver trimming contains a random item discovered from the Lost Tower of the Ancients.
+Desc=pulls out a small silver-trimmed sack and opens it to discover a %random.item.name inside! 
+SellPrice=2000
+Cost=0
+ItemList=items_silversack.lst
+exclusive=yes
+
+[Gold-trimmedSack]
+type=random
+ItemDesc=This small bag with gold trimming contains a random item discovered from the Lost Tower of the Ancients.
+Desc=pulls out a small gold-trimmed sack and opens it to discover a %random.item.name inside! 
+SellPrice=2000
+Cost=0
+ItemList=items_goldsack.lst
+exclusive=yes
+
+
 =========================
 CONSUMABLE ITEMS (for skills)
 =========================
@@ -4780,6 +4808,15 @@ SpecialType=GainSkill
 Skill=Duality
 Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of Duality.
 
+[AncientMystery:ThinAir]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=ThinAir
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of ThinAir.
+
 
 
 =========================
@@ -4866,6 +4903,42 @@ currency=KindredSeal
 sellprice=1500
 Desc=The ancient mummified hand of Kan-ra that grants access into its pyramid
 Dungeon=Kan-ra
+exclusive=yes
+
+[AncientMap]
+type=dungeon
+cost=100
+currency=KindredSeal
+sellprice=1500
+Desc=An ancient map pointing to a lost city.  Who knows what secrets lay hidden there.
+Dungeon=Lost_City
+exclusive=yes
+
+[LostTowerKey-01]
+type=dungeon
+cost=0
+currency=none
+sellprice=1500
+Desc=A key found from the Lost City of the Ancients. It appears this key will unlock the first floor of The Lost Tower of the Ancients.
+Dungeon=LostTower-Fl1
+exclusive=yes
+
+[LostTowerKey-02]
+type=dungeon
+cost=$iif($readini($char($1), dungeons, LostTower-Fl1) = true, 100, 0)
+currency=KindredCrest
+sellprice=1500
+Desc=A key forged after studying the lock on the second floor of the Lost Tower of the Ancients.  This key will unlock the second floor. 
+Dungeon=LostTower-Fl2
+exclusive=yes
+
+[LostTowerKey-03]
+type=dungeon
+cost=$iif($readini($char($1), dungeons, LostTower-Fl2) = true, 100, 0)
+currency=KindredCrest
+sellprice=1500
+Desc=A key forged after studying the lock on the third floor of the Lost Tower of the Ancients.  This key will unlock the second floor. 
+Dungeon=LostTower-Fl3
 exclusive=yes
 
 [ChozoArtifacts]
@@ -5454,9 +5527,6 @@ SellPrice=100
 Numbers=8.3.3.6
 Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea.
 Powers=FrenchDollAttack.PuppetControl.IronMaiden.MetalStrings
-
-
-
 
 [TradingCard-042]
 Type=TradingCard

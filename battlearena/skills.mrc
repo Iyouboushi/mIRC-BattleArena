@@ -36,6 +36,7 @@ alias use.skill {
   if ($3 = sugitekai) { $skill.doubleturn($1) } 
   if ($3 = meditate) { $skill.meditate($1) }
   if ($3 = conserveTP) { $skill.conserveTP($1) } 
+  if ($3 = thinair) { $skill.thinair($1) } 
   if ($3 = bloodboost) { $skill.bloodboost($1) } 
   if ($3 = bloodspirit) { $skill.bloodspirit($1) } 
   if ($3 = drainsamba) { $skill.drainsamba($1) } 
@@ -1110,7 +1111,6 @@ alias skill.conserveTP { $set_chr_name($1)
   var %skill.name ConserveTP
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
-
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, ConserveTP, !conserve tp, true)
 
@@ -1128,8 +1128,49 @@ alias skill.conserveTP { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction conserveTP
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  ; Player gets another turn
+  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+}
+
+;=================
+; THIN AIR
+;=================
+on 3:TEXT:!thinair*:*: { $skill.thinair($nick) }
+on 3:TEXT:!thin air*:*: { $skill.thinair($nick) }
+
+alias skill.thinair { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($skillhave.check($1, thinair) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+
+  var %skill.name thinair
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, thinair, !thin air, true)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(thinair))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, thinair) = $null) { set %skill.description uses an ancient skill to reduce the cost of $gender($1) next spell to 0. }
+  else { set %skill.description $readini($char($1), descriptions, thinair) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; Toggle the thinair-on flag & write the last used time.
+  writeini $char($1) skills thinair.on on
+  writeini $char($1) skills thinair.time %true.turn
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction thinair
+
+  ; Player gets another turn
+  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
 }
 
 ;=================

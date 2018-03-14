@@ -294,6 +294,8 @@ alias tech_cmd {
 
     ; Check for ConserveTP
     if (($readini($char($1), status, conservetp) = yes) || ($readini($char($1), status, conservetp.on) = on)) { set %tp.needed 0 | writeini $char($1) status conserveTP no }
+    if (($readini($char($1), skills, thinair.on) = on) && ($readini($dbfile(techniques.db), $2, spell) = yes)) { set %tp.needed 0 | writeini $char($1) skills thinair.on off }
+
     if (%tp.needed = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotKnowTech), private) | halt }
     if (%tp.needed > %tp.have) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, NotEnoughTPforTech),private) | halt }
   }

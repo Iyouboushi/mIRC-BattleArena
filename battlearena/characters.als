@@ -746,6 +746,7 @@ player.skills.list {
   if ($readini($char($1), skills, barrage.on) = on) { $skills_message_check(2Barrage) }
   if ($readini($char($1), skills, doublecast.on) = on) { $skills_message_check(2DoubleCast) }
   if ($readini($char($1), skills, duality.on) = on) { $skills_message_check(2Duality) }
+  if ($readini($char($1), skills, thinair.on) = on) { $skills_message_check(2Thin Air) }
 
   set %cover.target $readini($char($1), skills, CoverTarget)
   if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(2Covered by %cover.target) }

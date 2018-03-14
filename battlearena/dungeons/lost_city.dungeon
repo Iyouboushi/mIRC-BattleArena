@@ -1,0 +1,58 @@
+[Info]
+Name=The Lost City of the Ancients
+Rooms=8
+PlayersNeeded=3
+Level=100
+FinalRoom=7
+StartBattleDesc=uses the Ancient Map to discover a lost city of the Antaal. As the party approaches the entrance of the city they can see large mold-like substance covering nearly everything within.
+ClearDungeonDesc=* The party has vanquished the evil that dwelled within the city and uncovered the entrance to a Lost Tower. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to clear the city and is forced to flee to safety. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The air is thick and the white mold-like substance rains down upon them like snow as the party enters the city.  Ahead they can hear muffled noises but it seems safe enough to spend a round here to prepare.
+Battlefield=Lost City Entrance
+
+
+[1]
+Desc=The heroes pass under a large arch and are now walking along a long street.  As they walk forward they see two large mushroom-looking creatures bouncing towards them.  Their stalks open to reveal large rows of teeth.
+Battlefield=Lost City Road
+Monsters=Ancient_Demonstool.Ancient_Demonstool
+
+
+[2]
+Desc=Following the road the party can see a large over-run marketplace just up ahead.  However before they can get there two large moth-looking monsters fly down from a moldy tree along with another mushroom bouncing into the fray.
+Battlefield=Lost City Road
+Monsters=Ancient_Wamoura.Ancient_Wamoura.Ancient_Demonstool
+
+
+[3]
+Desc=The party pushes into the market place only to see a large lanky but decaying beast with a huge mouth at the pit of its stomach. Its eyes glow red and its two long arms reach out towards the party.
+Battlefield=Lost City Marketplace
+Monsters=Decaying_Gourmand
+bossroom=true
+
+
+[4]
+Desc=The party walks up a flight of stairs and around a corner towards another section of the ancient marketplace. Old rotting stalls can be seen lining the sides of the path.  As they take in the view another wave of monsters approaches seeking a fresh meal.
+Monsters=Ancient_Hecteyes. $+ $iif($rand(1,2) = 1, Ancient.Wamoura, Ancient_Demonstool) $+ .Ancient_Demonstool
+Battlefield=Lost City Marketplace
+
+[5]
+Desc=The party reaches the end of the marketplace and appears to be approaching a large courtyard. Ahead they can see a dilapidated palace and behind that a huge tower reaching towards the sky. The courtyard is blocked by a large moldy spore that seems to be spitting out Demonstools.
+Monsters=Ancient_MoldColony.Ancient_Demonstool
+Battlefield=Lost City Marketplace
+
+
+[6]
+Desc=After that disgusting mess, the party pushes into the courtyard and is greeted by a wamoura three times the size of the previous ones they've encountered.  It takes flight and prepares for battle.
+Battlefield=Lost City Courtyard
+Monsters=Arioch
+bossroom=true
+
+[7]
+Desc=Eager to escape the snowing mold the party pushes into the palace and carefully advances to the throne room where an ancient half-mold, half-human being sits. Upon seeing the party it stands up and picks up two very large axes.
+Battlefield=Lost City Throneroom
+Monsters=Vicegerent
+bossroom=true
+

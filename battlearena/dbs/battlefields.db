@@ -1,25 +1,10 @@
-==============================================================
-The weather is now controlled via this file rather than
-weather.lst.  It works the same though.  Boost= how much 
-the correct weather will boost a magic spell.
-
-Do not remove the [weather] section or the bot will have 
-problems.
-==============================================================
-
 [weather]
-current=none
+current=gloomy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
-
-==============================================================
-The moon phases are controlled in this file as well.  Please
-do not remove or modify the Moon Phase section as it will cause
-errors.
-==============================================================
 [MoonPhase]
-CurrentMoonPhase=Quarter
+CurrentMoonPhase=Full
 CurrentMoonTurn=3
 
 [MoonPhaseTime]
@@ -31,48 +16,15 @@ crescent=2
 blood=1
 BloodMoonChance=60
 
-
-==============================================================
-The "Time of Day" is controlled in this file. Please do not
-remove or modify the time of day section as it will cause
-errors.
-==============================================================
 [TimeOfDay]
-CurrentTimeOfDay=Day
-CurrentTimeOfDayTurn=1
+Currenttimeofday=Day
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
 noon=2
 evening=2
 night=2
-
-
-==============================================================
-Battlefields are where the players face the monsters.
-The battlefields themselves control the weather and
-may have events that occasionally happen. There
-can be more than one event set per battlefield. 
-
-Please look at the pre-existing events for 
-how to set it all up.
-
-Valid Targets: all, random, monsters, players
- * note that "players" as a target also affects NPCs
-
-Valid Event Types: damage, heal, statusonly
-
-Valid Limitations: no-tech, no-item, no-skill, no-ignition
-                   enhance-item, enhance-melee, enhance-tech
-                   no-mech, no-trusts, no-summons, enhance-orbs
-                   enhance-coins
- * note that no-trusts also means no npcs in portal battles
-
-** If you make a new battlefield and want the bot to be able
-to select it for battles, make sure you put the name of it
-into battlefields.lst
-=============================================================
-
 
 [Plains]
 weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
@@ -86,7 +38,6 @@ NumberOfEvents=1
 scavenge=Onyx.Red_Fang.Thunder_Orb.Stop_watch
 limitations=no-tech
 Objects=Tombstone.Memorial
-
 event1=damage
 event1Chance=20
 Event1Desc=%real.name trips and falls into an open grave! Ow!
@@ -98,20 +49,17 @@ weather=gloomy
 NumberOfEvents=3
 scavenge=Slurm.Ectoplasm
 limitations=no-trusts.no-summons.no-mech.no-fleeing
-
 event1=damage
 event1Chance=90
 Event1Desc=Drops of acid leak from the pipes in the ceiling and rain down upon %real.name $+ !
 Event1Target=random
 event1Amount=$rand(50,100)
-
 event2=statusonly
 event2statusType=annoyed
 event2Chance=20
 Event2Desc=Strange orange-looking people named Grunka Lunkas come out and began to sing.  It merely annoys %real.name more than doing any harm.
 Event2Target=random
 Event2Amount=0
-
 event3=heal
 event3Chance=10
 Event3Desc=Slurms McKenzie, a crazy party worm wearing sunglasses over it's tiny little slug-like eyes, pops out of nowhere and yells "WHIMMY! WHAM WHAM WOZZLE!" and begins to dance and play some music before leaving a slimey trail of goo behind him as he leaves. His crazy partying has healed all of the heroes.
@@ -123,7 +71,6 @@ weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=1
 scavenge=Topaz.Milk.Seed.Tulip.Rose.DekuSeed
 Objects=Swingset.Bench.Fence.Barrel
-
 event1=statusonly
 event1statusType=annoyed
 event1chance=10
@@ -135,14 +82,12 @@ event1amount=0
 weather=bright.hot.dry.stormy.gloomy
 NumberOfEvents=2
 scavenge=ruby.Fire_Flower.IgnitionStar.RedKey.FireGem
-
 event1=damage
 event1statusType=Burning
 event1Chance=40
 Event1Desc=The volcano erupts violently, raining magma down upon %real.name $+ .
 Event1Target=random
 Event1Amount=$rand(50,100)
-
 event2=statusonly
 event2statusType=Blind
 event2Chance=30
@@ -155,13 +100,11 @@ weather=gloomy.dry.hot
 NumberOfEvents=2
 scavenge=diamond.IronOre.GoldOre.SilverOre
 limitations=no-mech
-
 event1=Damage
 event1Chance=35
 Event1Desc=A large stalactite falls from the ceiling and slams into %real.name on the battlefield.
 Event1Target=random
 Event1Amount=$rand(20,50)
-
 event2=Damage
 event2Chance=20
 Event2Desc=The low lighting in the cavern causes %real.name to stumble and trip, falling face first onto a stalagmite growing out of the floor. Ow! It might take a turn to recover from this!
@@ -173,13 +116,11 @@ event2statusType=stun
 weather=gloomy.calm.rainy
 NumberOfEvents=2
 scavenge=diamond.IronOre.GoldOre.SilverOre
-
 event1=Damage
 event1Chance=35
 Event1Desc=A large stalactite falls from the ceiling and slams into %real.name on the battlefield.
 Event1Target=random
 Event1Amount=$rand(20,50)
-
 event2=Damage
 event2Chance=20
 Event2Desc=The low lighting in the cavern causes %real.name to stumble and trip, falling face first onto a stalagmite growing out of the floor. Ow! It might take a turn to recover from this!
@@ -192,26 +133,21 @@ weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=4
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
 Objects=Bench.Fence.Barrel.Trashcan
-
-
 event1=damage
 event1Chance=10
 Event1Desc=The ferris wheel comes loose and rolls onto the battlefield before tipping over and smashes %real.name $+ !
 Event1Target=random
 Event1Amount=$rand(150,200)
-
 event2=statusonly
 event2Chance=30
 Event2statusType=defensedown
 Event2Desc=A carnie plays a game with the monsters on the battlegrounds but they lose!  Now they're tired from trying to win a carnival game!
 Event2Target=monsters
-
 event3=statusonly
 event3Chance=30
 Event3statusType=strengthdown
 Event3Desc=A bearded woman bets all the players that they can't ring the bell on a carnival game! Try as they might, they're unable to do so! Now they're exhausted from trying!
 Event3Target=players
-
 event4=damage
 event4Chance=20
 Event4Desc=An evil psychotic clown leaps from behind a booth and smashes %real.name with a large hammer before honking a horn and fleeing!
@@ -223,25 +159,21 @@ weather=calm.rainy.windy.hot.dry
 NumberOfEvents=4
 scavenge=AshLog.Hatchet.emerald.BombFlower
 Objects=RottingTree.Bench
-
 event1=heal
 event1Chance=30
 Event1Desc=A fairy flips out of a nearby bush and sprinkles some healing dust on %real.name before before zipping away out of sight.
 Event1Target=random
 Event1Amount=$rand(50,100)
-
 event2=statusonly
 event2Chance=40
 Event2Desc=A glowing blue fairy flies out of a tree and sprinkles green dust over %real.name before flying away out of sight. 
 Event2Target=random
 event2StatusType=Regenerating
-
 event3=statusonly
 event3Chance=40
 Event3Desc=An orange fairy flies out from under a rock and sprinkles orange dust over %real.name before flying away out of sight. 
 Event3Target=random
 event3StatusType=TPRegenerating
-
 event4=damage
 event4Chance=20
 Event4Desc=A large tree falls in the forest and slams into %real.name $+ ! Ouch!
@@ -253,20 +185,17 @@ weather=calm.bright.rainy.stormy.windy.hot.dry
 NumberOfEvents=3
 scavenge=Sand.EarthSphere.Sand.Cloth.BrownKey.Tonic.Sand
 Objects=GiantUmbrella.Cooler.Radio.Chair
-
 event1=damage
 event1statusType=Drowning
 event1Chance=20
 Event1Desc=A large tidal wave approaches the beach and then swallows %real.name $+ , dealing damage!
 Event1Target=random
 Event1Amount=$rand(50,100)
-
 event2=statusonly
 event2statusType=Burning
 event2Chance=30
 Event2Desc=The hot sun beats down on the battlefield. Suddenly %real.name feels a bit..too hot.
 Event2Target=random
-
 event3=heal
 event3Chance=30
 Event3Desc=A random beach-goer runs up to %real.name $+ . "Sup! Here, don't want you catching a burn! See ya later dude!"  The random person receives a bottle of sunblock, which is then applied. Ahh, refreshing!
@@ -278,14 +207,12 @@ weather=calm.bright.rainy.stormy.windy.hot.dry
 NumberOfEvents=2
 scavenge=Sand.EarthSphere.Sand.Cloth.BrownKey.Sand
 Objects=Cactus
-
 event1=damage
 event1statusType=Burning
 event1Chance=30
 Event1Desc=The hot sun beats down on the battlefield. Everyone realizes they're starting to develop a sunburn.  A really bad one!
 Event1Target=all
 Event1Amount=$rand(20,100)
-
 event2=damage
 event2Chance=20
 Event2Desc=A mummy rises out of the sand and casts a random curse upon all players of the battlefield!
@@ -297,19 +224,16 @@ event2StatusType=curse
 weather=none.bright.dry
 NumberOfEvents=3
 scavenge=slurm.x-potion.IgnitionStar.Red_Fang.Thunder_Orb.Hour_Glass.Zircon
-
 event1=heal
 event1Chance=30
 Event1Desc=A strange UFO flies overhead, stopping above the moon and beaming a bright light down upon it, healing all the players on the battlefield.
 Event1Target=players
 Event1Amount=$rand(50,100)
-
 event2=statusonly
 event2statusType=bored
 event2Chance=20
 Event2Desc=Two pixelated aliens--one pink and the other green--appear on the battlefield and give everyone the bird.  %real.name  suddenly loses all interest in the battlefield as the aliens turn and walk off, disappearing as fast as they had come. 
 Event2Target=random
-
 event3=damage
 event3Chance=10
 Event3Desc=A large evil-looking spaceship floats above the moon and begins to shoot several large lasers down upon it, damaging %real.name $+ !
@@ -321,26 +245,22 @@ weather=calm.gloomy
 NumberOfEvents=4
 scavenge=RepairHammer.IronOre.Hatchet.Ink
 Objects=Crate.OldMachine
-
 event1=damage
 event1Chance=40
 Event1Desc=A large saw comes loose from a machine and rolls across the battlefield, eventually slicing %real.name $+ .
 Event1Target=random
 Event1Amount=$rand(30,80)
-
 event2=damage
 event2Chance=20
 Event2Desc=A large power generator sparks as cables fly loose, electricty zapping %real.name $+ !
 Event2Target=random
 Event2Amount=$rand(20,100)
 Event2StatusType=shock
-
 event3=damage
 event3Chance=30
 Event3Desc=A loud groan is heard as a large metal beam from the ceiling falls and slams into the battlefield, hitting %real.name below!
 Event3Target=random
 Event3Amount=$rand(30,80)
-
 event4=damage
 event4Chance=50
 Event4Desc=A small machine explodes near %real.name $+ , causing fire damage!
@@ -352,19 +272,16 @@ Event4StatusType=burning
 weather=calm.rainy.windy.stormy
 NumberOfEvents=3
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
-
 event1=statusonly
 event1Chance=30
 Event1statusType=slow
 Event1Desc=The swamp bubbles and begins to drag %real.name down into the bog. Yuck! It's all gooey and thick. %real.name feels slow trying to get free. 
 Event1Target=random
-
 event2=damage
 event2Chance=40
 Event2Desc=A large gator snags onto %real.name $+ , biting hard.
 Event2Target=random
 Event2Amount=$rand(50,100)
-
 event3=damage
 event3Chance=10
 Event3Desc=The whole swamp begins to bubble and rise as a strange black monster rises out of it.  It roars in anger and takes a huge swipe, dealing damage to %real.name $+ .
@@ -377,25 +294,21 @@ NumberOfEvents=4
 limitations=no-item
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
 Objects=OldMachine.ChemistrySet.Flask.Chair
-
 event1=heal
 event1Chance=30
 Event1Desc=A young girl with blonde pigtails and a pink tutu suddenly hops around the laboratory. She stops at a button and says, "Ooooooh! What does this button do?" and presses it, a green light covering all heroes. Soon a short young boy with red hair and a lab suit chases the girl out of the lab. "Dee Dee! Get out of my laboratory!"
 Event1Target=players
 Event1Amount=$rand(50,100)
-
 event2=statusonly
 event2Chance=30
 Event2Desc=A young girl with blonde pigtails and a pink tutu suddenly hops around the laboratory. She stops at a button and says, "Ooooooh! What does this button do?" and presses it, an orange light covering %real.name $+ . Soon a short young boy with red hair and a lab suit chases the girl out of the lab. "Dee Dee! Get out of my laboratory!"
 Event2Target=random
 event2StatusType=TPRegenerating
-
 event3=damage
 event3Chance=30
 Event3Desc=A young girl with blonde pigtails and a pink tutu suddenly hops around the laboratory. She stops at a button and says, "Ooooooh! What does this button do?" and presses it, a large device dumps heavy junk on the monsters. Soon a short young boy with red hair and a lab suit chases the girl out of the lab. "Dee Dee! Get out of my laboratory!"
 Event3Target=monsters
 Event3Amount=$rand(30,80)
-
 Event4=damage
 Event4chance=30
 Event4Desc=A tall young boy with a black bowl-cut hairstyle appears before the heroes. "Welcome to my laboratory!" he shouts before activating a machine. An explosion hits all of the heroes, and the young boy runs off laughing. "HA HA HA! HA HA HA HA HA! HA HA HA!"
@@ -406,7 +319,6 @@ Even4Amount=$rand(30,80)
 weather=calm.snowy.windy
 NumberOfEvents=1
 scavenge=IceStone.Zircon.Ice_Coin
-
 event1=damage
 event1Chance=40
 Event1Desc=A yeti pops out of the snow and scratches %real.name with its claws.
@@ -417,7 +329,6 @@ Event1Amount=$rand(30,65)
 weather=snowy
 NumberOfEvents=1
 scavenge=IceStone.Zircon.Ice_Coin
-
 event1=damage
 event1Chance=30
 Event1Desc=A small ice demon flies out of the snow and scratches %real.name with its claws.
@@ -433,7 +344,6 @@ scavenge=Sapphire.WaterJewel.X-Potion
 weather=calm.rainy.stormy.windy
 NumberOfEvents=1
 scavenge=Sapphire.WaterJewel.X-Potion
-
 event1=damage
 event1Chance=40
 Event1Desc=A sea monster pops up out of the water and hits %real.name with a tidal wave!
@@ -445,7 +355,6 @@ weather=snowy.windy
 NumberOfEvents=1
 scavenge=Sapphire.WaterJewel.Ice_Coin.IceStone
 limitations=no-quicksilver
-
 event1=Damage
 event1Chance=20
 Event1Desc=%real.name falls through a crack in the ice and into the freezing water! It might take a turn to recover from this!
@@ -458,7 +367,6 @@ weather=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 NumberOfEvents=1
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
 Objects=Swingset.Bench.Fence.Barrel.Crate
-
 event1=damage
 event1Chance=40
 Event1Desc=The ground starts to rumble as the villagers charge through town trying to be first in line for a big sale at the market! Soon, %real.name is trampled by this stampede of humanity! Ow! Ow! Stop stepping on my face!
@@ -475,7 +383,6 @@ weather=calm.bright.rainy.stormy.windy.hot.dry
 NumberOfEvents=1
 scavenge=Potion.VitalStar.X-Potion.Shihei.Sokubaku.Topaz.Zircon.Ink.Paper.EarthSphere
 Objects=Swingset.Bench
-
 event1=damage
 event1Chance=20
 Event1Desc=%real.name gets hit in the head with a flying bocce ball. Darn kids!
@@ -496,28 +403,24 @@ scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.Dust
 weather=calm
 NumberOfEvents=4
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
-
 event1=statusonly
 event1statusType=annoyed
 event1Chance=30
 Event1Desc=%real.name asks why the French knights are in the Battle Arena. The leader of the knights yells out, "Mind your own business!"
 Event1Target=random
 Event1Amount=0
-
 event2=statusonly
 event2statusType=annoyed
 event2Chance=30
 Event2Desc=The leader of the French knights suddenly yells out, "You don't frighten us, English pig dogs! Go and boil your bottoms, you children of a silly person. I blow my nose at you, so-called "Allied Forces!"
 Event2Target=players
 Event2Amount=0
-
 event3=statusonly
 event3statusType=annoyed
 event3chance=30
 event3desc=%real.name says "Now look here.." The French knight leader suddenly interrupts and shouts, "I don't want to talk to you no more, you empty headed animal food trough wiper! I fart in your general direction. Your mother was a hamster and your father smelt of elderberries!"
 Event3target=random
 Event3Amount=0
-
 event4=damage
 event4chance=20
 event4desc=The French knight leader whispers "Fetchez la vache." to the other knights. After a moment of confusion, a large cow is suddenly flung out of the castle and lands on %real.name below!
@@ -529,121 +432,101 @@ weather=gloomy
 NumberOfEvents=20
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 limitations=no-trusts.no-summons.no-mech.no-quicksilver
-
 event1=statusonly
 event1statusType=annoyed
 event1Chance=30
 Event1Desc=Colonel: %real.name $+ , turn the game console off right now! %real.name $+ : What did you say? Colonel: The mission is a failure! Cut the power right now! %real.name $+ : What's wrong with you? Colonel: Don't worry, it's a game! It's a game just like usual. Rosemary: You'll ruin your eyes playing so close to the TV.
 Event1Target=random
-
 event2=statusonly
 event2statusType=annoyed
 event2Chance=30
 Event2Desc=Colonel: %real.name $+ , something happened to me last Thursday when I was driving home. I had a couple of miles to go, I looked up and saw a glowing orange object in the sky, to the east! It was moving very irregulary. Suddenly, there was intense light all around me, and when I came to, I was home. What do you think happened to me?  %real.name $+ : Huh? Colonel: Fine, forget it...
 Event2Target=random
-
 event3=statusonly
 event3statusType=annoyed
 event3Chance=30
 Event3Desc=Colonel: ...Infiltrate... ...the enemy fortress... ...Outer Heaven! ...Destroy... ...the final weapon... ...Metal Gear!
 Event3Target=all
-
 event4=statusonly
 event4statusType=annoyed
 event4Chance=30
 Event4Desc=Colonel: President Baker should be somewhere to the south of where you blasted through the wall. Hurry and save him before the terrorists discover his code.
 Event4Target=all
-
 event5=statusonly
 event5statusType=annoyed
 event5Chance=30
 Event5Desc=Colonel: You got a PSG-1? You can use that against Sniper Wolf. Hurry up and save Meryl!
 Event5Target=all
-
 event6=statusonly
 event6statusType=annoyed
 event6Chance=30
 Event6Desc=Colonel: Your mission is to infiltrate the fortress Galuade, rescue the hostages and neutralize Metal Gear before its assembly is complete.
 Event6Target=all
-
 event7=statusonly
 event7statusType=annoyed
 event7Chance=30
 Event7Desc=Colonel: Variety Level 13. Rescue Meryl, the "Return of Genola."
 Event7Target=all
-
 event8=statusonly
 event8statusType=annoyed
 event8Chance=30
 Event8Desc=Colonel: Kawanishi-Noseguchi, Kinunobebashi, Takiyama, Uguisunomori, Tsuzumigataki, Tada, Hirano, Ichinotorii, Uneno, Yamashita, Sasabe, Kofudai, Tokiwadai, Myoukenguchi.
 Event8Target=all
-
 event9=statusonly
 event9statusType=annoyed
 event9Chance=30
 Event9Desc=Colonel: I noticed this a while back, but you have far too many Game Overs. Sorry to be blunt, but you really stink at this game.
 Event9Target=players
-
 event10=statusonly
 event10statusType=annoyed
 event10Chance=30
 Event10Desc=Colonel: Honestly, though, you have been playing this game for a long time. Don't you have anything else to do with your time?
 Event10Target=players
-
 event11=statusonly
 event11statusType=annoyed
 event11Chance=30
 Event11Desc=Colonel: You seem to get a real thrill out of slaughtering the enemy. Are you frustrated about something?
 Event11Target=players
-
 event12=statusonly
 event12statusType=annoyed
 event12Chance=30
 Event12Desc=Colonel: I hear it's amazing when the famous purple stuffed worm in flap-jaw space with the tuning fork does a raw blink on Hara-Kiri rock. I need scissors! 61!
 Event12Target=all
-
 event13=statusonly
 event13statusType=annoyed
 event13Chance=30
 Event13Desc=Colonel: I was a North American Fall Webworm in my past life. Those were the good old days... What were you in your former life?
 Event13Target=all
-
 event14=statusonly
 event14statusType=annoyed
 event14Chance=30
 Event14Desc=Colonel: Even my patience has its limits. I just can't leave this thing up to you any longer. I'll do the fighting! You can just go home!
 Event14Target=all
-
 Event15=statusonly
 Event15statusType=annoyed
 Event15Chance=30
 Event15Desc=Colonel: Actually, I am in really bad shape financially. I pay money to my ex-wife as part of our divorce, among other bills... I just had no choice but to make you pay for lunch the other day. I'm really sorry.
 Event15Target=all
-
 Event16=statusonly
 Event16statusType=annoyed
 Event16chance=30
 Event16Desc=Colonel: An Anemone or Clematis plant's juice can cause a rash. When pruning them, it's a good idea to wear gloves.
 Event16Target=all
-
 Event17=statusonly
 Event17statusType=annoyed
 Event17chance=30
 Event17Desc=Colonel: You wouldn't be trying to give yourself a bogus score using some ingenious trick would you? That's just about as low as anyone could possibly stoop! I can't believe you sometimes...
 Event17Target=all
-
 Event18=statusonly
 Event18statusType=annoyed
 Event18chance=40
 Event18Desc=Colonel: La-Li-Lu-Le-Lo! La-Li-Lu-Le-Lo! La-Li-Lu-Le-Lo!
 Event18Target=all
-
 Event19=statusonly
 Event19statusType=annoyed
 Event19chance=30
 Event19Desc=Colonel: Variety Level 7. Shoot down the space invaders! Training will have to be postponed if we are invaded by UFOs.
 Event19Target=all
-
 Event20=statusonly
 Event20statusType=annoyed
 Event20chance=30
@@ -654,13 +537,11 @@ Event20Target=all
 Weather=calm
 NumberofEvents=2
 scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
-
 Event1=damage
 Event1Chance=20
 Event1Desc=Doc Brown: Oh, my god. They found me. I don't know how, but they found me! Run for it, Marty! Marty McFly: Who? Doc Brown: Who do you think? THE LIBYANS! -- A Volkswagen T1 van suddenly speeds into the parking lot and one of the Libyans shoots at all the heroes!
 Event1Target=players
 Event1Amount=$rand(50,100)
-
 Event2=statusonly
 Event2StatusType=annoyed
 Event2Chance=20
@@ -822,7 +703,6 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.BombFlower
 weather=calm
 limitations=no-mech.no-summons.no-trusts.no-fleeing.no-skill
 NumberOfEvents=1
-
 event1=damage
 event1Chance=95
 Event1Desc=The chamber vibrates with energy which then sparks and shoots out, hitting everyone in the chamber.
@@ -930,7 +810,6 @@ Weather=Hot
 NumberOfEvents=1
 limitations=no-mech.no-playerignition.no-trusts.no-summons.no-fleeing.no-quicksilver
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond.IronOre
-
 event1=damage
 event1statusType=Burning
 event1Chance=40
@@ -949,7 +828,6 @@ weather=Gloomy
 NumberofEvents=1
 limitations=no-trusts.no-summons.no-playermechs.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-
 event1=damage
 event1Chance=60
 Event1Desc=Obito summons some of the shurikans he has hidden in the dimension and hurls them at all of the heroes!
@@ -1009,7 +887,6 @@ Weather=Hot
 NumberOfEvents=$iif($portal.nailcount > 0, 1, 0)
 limitations=no-mech.no-ignitions.no-summons.no-fleeing.no-quicksilver.no-playerclones
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-
 event1=damage
 event1statusType=Burning
 event1Chance=100
@@ -1040,10 +917,6 @@ Weather=gloomy
 NumberOfEvents=0
 limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-
-==============================================================
-DUNGEON battlefields
-==============================================================
 
 [Tam-Tara Deepcroft Cavern]
 weather=gloomy
@@ -1146,20 +1019,17 @@ weather=dry
 NumberOfEvents=$iif($dungeon.currentroom = 6, 1, 0)
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Topaz.Emerald.Ruby.Onyx.Diamond
-
 event1=damage
 event1Chance=60
 Event1Desc=The Antlion buries itself under ground as the ceiling rumbles and drops several stalactites down on the heroes!  The Antlion then returns.
 Event1Target=players
 Event1Amount=$rand(400,500)
 
-
 [Gobbie Treasure Vault]
 weather=none
 NumberOfEvents=0
 Limitations=no-mech.no-playerignition.enhance-coins.enhance-orbs
 scavenge=Topaz.Emerald.Ruby.Onyx.Diamond
-
 
 [Tomb of Terror - Opening Hallway]
 weather=gloomy
@@ -1172,45 +1042,34 @@ weather=gloomy
 NumberOfEvents=1
 scavenge=topaz
 limitations=no-trusts.no-summons.no-mech.no-playerignition
-
 event1=damage
 event1Chance=70
 Event1Desc=%real.name accidentally steps on a spear hole as a spear shoots out of it.
 Event1Target=random
 Event1Amount=$rand(500,600)
 
-
 [Tomb of Terror - Forsaken Prison]
 weather=gloomy
 NumberOfEvents=1
 scavenge=topaz
 limitations=no-trusts.no-summons.no-mech.no-playerignition
-
 event1=damage
 event1Chance=70
 Event1Desc=An asp crawls out of its hiding place and bites %real.name before returning into the shadows
 Event1Target=random
 Event1Amount=$rand(500,600)
 
-
 [Tomb of Terror - Embalming Lab]
 weather=gloomy
 NumberOfEvents=2
 scavenge=topaz
 limitations=no-trusts.no-summons.no-mech.no-playerignition
-
 event1=damage
-event1Chance=70
-Event1Desc=One of the jars on the shelves lining the room explodes and sends acidic goo onto %real.name $+ !
-Event1Target=random
-Event1Amount=$rand(500,600)
-
-event2=damage
 event1Chance=30
 Event1Desc=A small dart shoots out of the wall and hits %real.name $+ !
 Event1Target=random
 Event1Amount=$rand(200,400)
-
+event2=damage
 
 [Tomb of Terror - Chapel]
 weather=gloomy
@@ -1224,19 +1083,16 @@ NumberOfEvents=0
 scavenge=topaz
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 
-
 [Tomb of Terror - Throne Room]
 weather=gloomy
 NumberOfEvents=1
 scavenge=topaz
 limitations=no-trusts.no-summons.no-mech.no-playerignition
-
 event1=damage
 event1Chance=50
 Event1Desc=A small creature hiding at the top of one of the pillars stands up and aims a bow and shoots an arrow towards %real.name $+ !
 Event1Target=random
 Event1Amount=$rand(500,600)
-
 
 [Chozo Artifact Temple]
 weather=rainy
@@ -1302,7 +1158,6 @@ weather=calm
 NumberOfEvents=1
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-
 event1=damage
 event1Chance=60
 Event1Desc=%real.name gets caught in one of the many traps that's placed around the beach!
@@ -1314,7 +1169,6 @@ weather=calm
 NumberOfEvents=1
 limitations=no-trusts.no-summons.no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-
 event1=damage
 event1Chance=60
 Event1Desc=Several smaller monkeys appear, throwing rocks at the party before escaping back into the trees!
@@ -1339,4 +1193,34 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 [Hullbreaker Isle Wrecked Ship]
 weather=rainy
 limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Lost City Entrance]
+weather=moldy
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Lost City Road]
+weather=moldy
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Lost City Marketplace]
+weather=moldy
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Lost City Courtyard]
+weather=moldy
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Lost City Throneroom]
+weather=moldy
+limitations=no-trusts.no-summons.no-mech.no-playerignition
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Lost Tower]
+weather=none
+limitations=no-mech.no-playerignition
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

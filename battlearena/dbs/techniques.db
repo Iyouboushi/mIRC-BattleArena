@@ -568,6 +568,11 @@ CyclopsAxe=FellCleave.RagingAxe.IronTempest
 CyclopsSpear=SonicThrust.CamlannsTorment.ImpulseDrive
 CyclopsHammer=Brainshaker.Skullbreaker
 HippogryphTalon=Jettatura.ChokeBreath.BackHeel.HoofVolley
+Spores=DarkSpore.ParalyzingSpore.SporeBite
+Wamoura=ErraticFlutter.MagmaFan
+Goobbue=SnottySneeze.Uppercut.InhaleAndChew
+Hecteyes=HexEye.PetroGaze
+Vicegerent=BoraAxe.Rampage.Ruinator.Onslaught
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -17936,3 +17941,118 @@ Magic=No
 HurtEthereal=true
 stat=int
 CanDodge=true
+
+[DarkSpore]
+Type=AOE
+StatusType=blind
+Cost=0
+Desc=unleashes numerous spores across the battlefield, hitting everyone and making it hard to see.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+Stat=str
+
+[ParalyzingSpore]
+Type=AOE
+StatusType=Paralysis
+Cost=0
+Desc=unleashes numerous sickly-looking spores across the battlefield, hitting everyone and causing their musicles to seize up.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+Stat=str
+
+[SporeBite]
+Type=Single
+Cost=0
+Desc=leaps at %enemy and takes a bite!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+Stat=str
+
+[ErraticFlutter]
+Type=AOE
+Cost=0
+Desc=flaps its large wings above the battlefield and sends gusts of sharp wind hitting everyone.
+TP=10
+Element=wind
+Hits=1
+BasePower=150
+Magic=No
+Stat=str
+
+[MagmaFan]
+Type=AOE
+Cost=0
+Desc=spits out a small amount of fire onto the battlefield and flaps its large wings to spread the fire around hitting everyone. 
+TP=10
+Element=fire
+Hits=1
+BasePower=150
+Magic=No
+Stat=str
+
+[SnottySneeze]
+Type=AOE
+StatusType=Slow
+Cost=0
+Desc=sneezes forcefully and covers the battlefield with thick snot, slowing down anyone who touches it.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+Stat=str
+
+[Uppercut]
+Type=Single
+Cost=0
+Desc=performs a powerful uppercut upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=350
+Magic=No
+Stat=str
+
+[InhaleAndChew]
+Type=Death
+TP=10
+Desc=forcefully attempts to suck %enemy into its mouth so that it can have a decent meal!
+BasePower=60
+Element=none
+Cost=0
+Magic=none
+stat=str
+DeathChance=100
+
+[HexEyes]
+Type=Single
+Cost=0
+StatusType=curse
+Desc=gazes at %enemy and sends a powerful curse.
+TP=10
+Element=Dark
+Hits=1
+BasePower=250
+Magic=No
+Stat=int
+
+[PetroGaze]
+Type=AOE
+StatusType=Paralysis
+Cost=0
+Desc=opens all of its many eyes and glares at everyone on the battlefield.  Dark energy surges around everyone's body.
+TP=10
+Element=Dark
+Hits=1
+BasePower=100
+Magic=No
+Stat=str

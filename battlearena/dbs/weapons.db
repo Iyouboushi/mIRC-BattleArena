@@ -71,7 +71,7 @@ MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.Iron
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.Excalipoor
 
-MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon
+MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue
 
 ============================================
 WEAPON TEMPLATE
@@ -5822,6 +5822,30 @@ Upgrade=0
 CanShieldReflect=false
 IgnoreDefense=1
 
+[Spores]
+Cost=0
+Type=HandToHand
+Info=The attack of a spore
+Abilities=DarkSpore.ParalyzingSpore.SporeBite
+Element=none
+BasePower=50
+Hits=$rand(1,2)
+Upgrade=0
+CanShieldReflect=false
+IgnoreDefense=1
+
+[Wamoura]
+Cost=0
+Type=HandToHand
+Info=The attack of a wamoura
+Abilities=ErraticFlutter.MagmaFan
+Element=fire
+BasePower=50
+Hits=$rand(1,2)
+Upgrade=0
+CanShieldReflect=false
+IgnoreDefense=1
+
 [IfritPrimeClaws]
 Cost=0
 Type=HandToHand
@@ -6234,6 +6258,38 @@ Hits=1
 BasePower=50
 HurtEthereal=true
 2Handed=true
+
+[Goobbue]
+Cost=0
+Type=HandToHand
+Info=The attacks of a Goobbue
+Abilities=SnottySneeze.Uppercut.InhaleAndChew
+Element=none
+Hits=1
+BasePower=100
+2Handed=true
+
+[Hecteyes]
+Cost=0
+Type=HandToHand
+Info=The attacks of a hecteyes
+Abilities=HexEye.PetroGaze
+Element=Dark
+Hits=$rand(1,2)
+BasePower=100
+
+[Vicegerent]
+Cost=0
+Type=Axe
+Info=The axes of Vicegerent
+Abilities=BoraAxe.Rampage.Ruinator.Onslaught
+Element=Dark
+Hits=$rand(1,5)
+BasePower=100
+HurtEthereal=true
+IgnoreDefense=5
+
+
 
 ==============================
 SHIELDS
