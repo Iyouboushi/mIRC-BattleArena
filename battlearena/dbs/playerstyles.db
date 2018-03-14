@@ -1,5 +1,5 @@
 [styles]
-list=Trickster.WeaponMaster.Guardian.SpellMaster.Doppelganger.HitenMitsurugi-ryu.Quicksilver.CounterStance.Beastmaster.Wrestlemania
+list=Trickster.WeaponMaster.Guardian.SpellMaster.Doppelganger.HitenMitsurugi-ryu.Quicksilver.CounterStance.Beastmaster.Wrestlemania.HighRoller
 
 
 ; Costs are in black orbs.
@@ -14,6 +14,7 @@ HitenMitsurugi-ryu=5
 CounterStance=20
 Beastmaster=5
 Wrestlemania=15
+HighRoller=15
 
 
 
@@ -39,6 +40,8 @@ Beastmaster=This style will allow you to control your summon manually while the 
 
 Wrestlemania=Aim for the top of the wrestling federation and perform your stunning wrestling moves upon your enemies! This style will allow you to use !wrestle targetname command as many times as your style is currently leveled as well as enhance your hand to hand attacks. Note that wrestling cannot KILL a target, only hurt and stun.
 
+HighRoller=Gamble your way to victory with this highly luck-based style. This style will allow you to unlock the full potential of the Trading Cards with !CardShark cardname target and use the !Gamble skill without equipping it (and at a lower cost!). As the style levels you will be able to use higher rarity cards.
+
 
 [Augments]
 Trickster=$iif($style.level($1) >= 5, EnhanceDodge) $+ $iif($style.level($1) = 10, .EnhanceStylePoints)
@@ -51,4 +54,4 @@ Doppelganger=
 Quicksilver=
 CounterStance=
 Wrestlemania=$iif($style.level($1) >= 5, EnhanceHandToHand)
-
+HighRoller=$iif($style.level($1) >= 5, EnhanceRanged)

@@ -1627,6 +1627,11 @@ Battle Arena Bot VERSIONS
   (that is, upgraded) up to 10 times. Each time adds .10 to the stat multiplier. The cost is base black orbs * level upgrading to.
 - Added daily login rewards.  Every time a player logs in they will recieve a certain amount of an item based on a lst file.
 - Added a new song.
+- Added a new style: HighRoller.  This style will allow players to use !cardshark trading-cardname target to unleash the power of
+  the trading card (i.e. use a monster's techniques. The technique chosen is random). This style will also let you use !Gamble
+  without equipping it and for 200 orbs instead of 1000. This style also increases damage done with Ranged weapons at level 5.
+  The higher the style's level the higher rarity of cards you can use with Card Shark.
+- Added new trading cards
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated

@@ -567,6 +567,7 @@ NankaMouth=Brackish_Rain.Bog_Bomb.Stagnant_Spray
 CyclopsAxe=FellCleave.RagingAxe.IronTempest
 CyclopsSpear=SonicThrust.CamlannsTorment.ImpulseDrive
 CyclopsHammer=Brainshaker.Skullbreaker
+HippogryphTalon=Jettatura.ChokeBreath.BackHeel.HoofVolley
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -5741,7 +5742,7 @@ DestroyShadows=3
 Type=Single
 StatusType=Charm
 TP=10
-Desc=is surrounded by hearts and says "Come hither!" to %enemy $+ , throwing the hearts at %enemy $+ . She then says, "Fight, my love!" and laughs.
+Desc=is surrounded by hearts and says "Come hither!" to %enemy $+ , throwing the hearts at %enemy $+ . $gender3($1) then says, "Fight, my love!" and laughs.
 BasePower=5
 Element=none
 Cost=0
@@ -7559,6 +7560,17 @@ Element=None
 Cost=0
 Magic=No
 stat=str
+
+[HoofVolley]
+Type=Death
+TP=10
+Desc=focuses all of its power into one devestating kick with its legs against %enemy $+ !
+BasePower=50
+Element=none
+Cost=0
+Magic=No
+Stat=str
+DeathChance=$iif($return_playersinbattle = 1, 30, $iif($return_playersinbattle > 2, 100, 85))
 
 [Jettatura]
 Type=Single

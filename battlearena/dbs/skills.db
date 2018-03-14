@@ -477,12 +477,12 @@ Style=Spellmaster
 [Gamble]
 Cost=10000
 Type=Active
-Info=This skill will consume 1,000 orbs in exchange for a random event to happen.  Random events include, but are not limited to: gaining a random item, refilling the Ignition Gauge, restoring HP, taking damage, and inflicting a status effect upon yourself. Increased levels decreases the amount of time between uses.
+Info=This skill will consume orbs in exchange for a random event to happen.  Random events include, but are not limited to: gaining a random item, refilling the Ignition Gauge, restoring HP, taking damage, and inflicting a status effect upon yourself. Increased levels decreases the amount of time between uses. The cost is 1000 unless you are using the HighRoller style in which case it'll be 200.
 Max=5
 Cooldown=16
 ActionPoints=1
 NeedToEquip=true
-Style=Trickster
+Style=HighRoller
 
 [Thirdeye]
 Cost=500

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/13/18
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -3590,15 +3590,19 @@ alias skill.gamble { $set_chr_name($1)
 
   ; Check for 1k orbs
   set %check.item $readini($char($1), stuff, RedOrbs)
-  if ((%check.item = $null) || (%check.item <= 1000)) { $display.message(4Error: %real.name does not have enough $readini(system.dat, system, currency) to perform this skill [need $calc(1000 - %check.item) more!], private) | halt }
-  dec %check.item 1000
+  var %gamble.cost 1000
+
+  if ($return.playerstyle($1) = HighRoller) { var %gamble.cost 200 }
+
+  if ((%check.item = $null) || (%check.item <= %gamble.cost)) { $display.message(4Error: %real.name does not have enough $readini(system.dat, system, currency) to perform this skill [need $calc(%gamble.cost - %check.item) more!], private) | halt }
+  dec %check.item %gamble.cost
   writeini $char($1) stuff RedOrbs %check.item
 
   ; Decrease the action points
   $action.points($1, remove, $skill.actionpointcheck(gamble))
 
   ; Display the desc. 
-  if ($readini($char($1), descriptions, gamble) = $null) { $set_chr_name($1) | set %skill.description sacrficies 1000 $readini(system.dat, system, currency) to summon a magic slot machine. %real.name pulls the handle....  }
+  if ($readini($char($1), descriptions, gamble) = $null) { $set_chr_name($1) | set %skill.description sacrficies %gamble.cost $readini(system.dat, system, currency) to summon a magic slot machine. %real.name pulls the handle....  }
   else { set %skill.description $readini($char($1), descriptions, gamble) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
@@ -4141,7 +4145,7 @@ alias skill.overwhelm {
 ;=================
 ; WRESTLE
 ;=================
-on 3:TEXT:!wrestle *:*: { $partial.name.match($1, $2) | $skill.wrestle($nick, %attack.target) }
+on 3:TEXT:!wrestle *:*: { $partial.name.match($nick, $2) | $skill.wrestle($nick, %attack.target) }
 
 alias skill.wrestle { $set_chr_name($1)
   if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead),private) | unset %real.name | halt }
@@ -4223,7 +4227,90 @@ alias skill.wrestle { $set_chr_name($1)
     }
   }
 
-  unset %attack.damage
+  unset %attack.damage | unset %skill.description
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
+
+;=================
+; CARD SHARK
+;=================
+on 3:TEXT:!cardshark *:*: { 
+  if ($3 = $null) { $display.message(4Error: !cardshark item target,private) | halt }
+  if ($readini($dbfile(items.db), $2, type) != TradingCard) { $display.message(4Error: !cardshark trading-card target,private) | halt }
+  if (($readini($char($nick), item_amount, $2) = $null) || ($readini($char($nick), item_amount, $2) <= 0)) { $set_chr_name($1) | $display.message(4Error: $nick does not have any $2 to perform this skill, private) | halt }
+
+  $partial.name.match($nick, $3) |  $skill.cardshark($nick, %attack.target, $2) 
+}
+
+alias skill.cardshark { $set_chr_name($1)
+  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead),private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = RunAway) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoFled),private) | unset %real.name | halt } 
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+  $checkchar($2)
+  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  $check_for_battle($1)
+
+  if (($return.playerstyle($1) != HighRoller) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the HighRoller style is equipped!, private) | halt }
+  if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
+
+  ; Check the rarity of the card vs the level of the style
+  var %style.level $readini($char($1), styles, HighRoller)
+  var %card.rarity $readini($dbfile(items.db), $3, Rarity)
+  if (%style.level < %card.rarity) {  $display.message(4Error: %real.name cannot use this card as the rarity is too high for the current style level.) | halt  }
+
+  $check_for_battle($1)
+
+  ; Decrease the action points
+  $action.points($1, remove, 3)
+
+  ; Show the description
+  if ($readini($char($1), descriptions, CardShark) = $null) { var %skill.description unleashes the power of the monster pictured on the $3 $+ ! }
+  else { set %skill.description $readini($char($1), descriptions, CardShark) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+  unset %skill.description
+
+  ; Write the last action
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction CardShark
+
+  ; Decrease the amount of the card
+  var %card.amount $readini($char($1), item_amount, $3)
+  dec %card.amount 1
+  writeini $char($1) item_amount $3 %card.amount
+
+  ; Activate one of the random techniques
+  var %card.powers $readini($dbfile(items.db), $3, Powers)
+  var %total.techs $numtok(%card.powers, 46)
+  var %random.tech $rand(1, %total.techs)
+  var %card.technique $gettok(%card.powers,%random.tech,46)
+
+  echo -a technique: %card.technique
+
+  ; Clear some attack variables
+  unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
+  unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged 
+  unset %techincrease.check | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
+  unset %multihit.message.on  | unset %lastaction.nerf
+
+  ; Perform the technique upon the target
+  ; Get the tech type
+  var %tech.type $readini($dbfile(techniques.db), %card.technique, type)
+
+  if (%tech.type = heal) { $tech.heal($1, %card.technique, %attack.target) }
+  if (%tech.type = heal-aoe) { $tech.aoeheal($1, %card.technique, %attack.target) }
+  if (%tech.type = single) {  $covercheck(%attack.target, $2) | $tech.single($1, %card.technique, %attack.target )  }
+  if (%tech.type = suicide) { $covercheck(%attack.target, $2) | $tech.suicide($1, %card.technique, %attack.target )  }
+  if (%tech.type = death) { $covercheck(%attack.target, $2) | $tech.death($1, %card.technique, %attack.target) } 
+  if (%tech.type = death-aoe) { $covercheck(%attack.target, AOE) | $tech.deathaoe($1, %card.technique, %attack.target, monster) | halt }
+  if (%tech.type = suicide-AOE) { $covercheck(%attack.target, AOE) | $tech.aoe($1, %card.technique, %attack.target, monster, suicide) | halt }
+  if (%tech.type = status) { $covercheck(%attack.target, $2) | $tech.single($1, %card.technique, %attack.target ) } 
+  if (%tech.type = stealPower) { $covercheck(%attack.target, $2) | $tech.stealPower($1, %card.technique, %attack.target ) }
+  if (%tech.type = AOE) { $covercheck(%attack.target, AOE) | $tech.aoe($1, %card.technique, %attack.target, monster) | halt }
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }

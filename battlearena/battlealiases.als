@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/13/18
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -498,8 +498,10 @@ random.doubleturn.chance {
 
   if ($readini($char($1), skills, doubleturn.on) != on) {
     var %double.turn.chance $rand(1,100)
-    if ($augment.check($1, EnhanceDoubleTurnChance) = true) {  inc %double.turn.chance $calc(2 * %augment.strength) }
+    if ($augment.check($1, EnhanceDoubleTurnChance) = true) { inc %double.turn.chance $calc(2 * %augment.strength) }
     if ($readini($char($1), info, flag) = monster) { inc %double.turn.chance $rand(1,5) }
+
+    if ($return.playerstyle($1) != HighRoller) { inc %double.turn.chance $rand(1,2) }     
 
     if (%double.turn.chance >= 99) { writeini $char($1) skills doubleturn.on on | $set_chr_name($1) 
       $display.message($readini(translation.dat, system, RandomChanceGoesAgain),battle) 

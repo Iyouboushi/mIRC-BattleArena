@@ -1,21 +1,20 @@
 [BaseStats]
-Hp=110
-Tp=60
-Str=12
-Def=25
-Int=24
-Spd=30
+Hp=230
+Tp=190
+Str=58
+Def=28
+Int=28
+Spd=62
 IgnitionGauge=2
-Name=Puppet Master
-
+Name=Alkonost
 
 [Battle]
-Hp=110
-Tp=60
-Str=12
-Def=25
-Int=24
-Spd=30
+Hp=130
+Tp=190
+Str=58
+Def=28
+Int=28
+Spd=62
 IgnitionGauge=2
 Status=alive
 
@@ -24,45 +23,37 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
-Hused=1
-Dused=1
-Char=is a giant wooden head with four spider-like arms.
+Char=is a large winged beast as big as a horse and talons as large as a human's hand.
 Rage=screams in rage 
-BossQuote=YOU TOO SHALL BE MY PUPPET!
-
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=
-
-[Monster]
-Type=demon
-size=large
 
 [Info]
 Flag=monster
-Gender=his
-Gender2=him
+Gender=its
+Gender2=its
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-CanTaunt=true
-Streak=50
+Streak=100
+CanTaunt=false
+IgnoreElementalMessage=true
+
+[Monster]
+Type=Hippogryph
+size=medium
 
 [Status]
 Poison=no
 HeavyPoison=no
-Regenerating=no
+Regenerating=yes
 Blind=no
 Frozen=no
 Shock=no
@@ -93,36 +84,34 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=Puppetry
-Puppetry=15
+Equipped=HippogryphTalon
+HippogryphTalon=$calc(5 + $current.battlestreak)
 
 [Skills]
-Resist-Charm=100
-Resist-Zombie=100
-Resist-Stun=50
-Resist-Curse=100
-Resist-Paralysis=100
-Resist-Petrify=60
-DesperateBlows=1
+Impetus=30
+TrueStrike.on=on
 
 [Techniques]
-FrenchDollAttack=10
-PuppetControl=10
-IronMaiden=20
+Jettatura=$current.battlestreak
+ChokeBreath=$current.battlestreak
+BackHeel=$current.battlestreak
+HoofVolley=$current.battlestreak
+
 
 [Item_Amount]
 
 
+
 [modifiers]
-Heal=none
-Earth=30
-Fire=200
-Wind=100
-Water=30
-Ice=100
-Lightning=1
+Heal=Wind
+Earth=100
+Fire=100
+Wind=200
+Water=100
+Ice=120
+Lightning=100
 Light=100
-Dark=30
+Dark=100
 HandToHand=100
 Whip=100
 Sword=100
