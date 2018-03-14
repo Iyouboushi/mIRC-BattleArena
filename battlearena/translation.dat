@@ -187,6 +187,7 @@ FinalGetsugaWarning=$chr(3) $+ 4 $+ This technique is a Final Getsuga type, whi
 ScoreBoardTitle=$chr(3) $+ 3The Top Players in %battlechan
 DeathBoardTitleMon=$chr(3) $+ 3The Top Monster Deaths in %battlechan
 DeathBoardTitleBosses=$chr(3) $+ 3The Top Boss Deaths in %battlechan
+DeathBoardTitlePlayers=$chr(3) $+ 3The Top Players Who Have Died in %battlechan
 DeathBoardTotalMon=$chr(3) $+ 3There have be $bytes(%total.deaths,b) monster kills in %battlechan
 DeathBoardTotalBoss=$chr(3) $+ 3There have be $bytes(%total.deaths,b) boss kills in %battlechan
 DamageBoardTitle.Melee=$chr(3) $+ 3The Highest Average Melee Damage Players in %battlechan

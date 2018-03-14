@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 09/24/17
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1502,7 +1502,9 @@ on 3:TEXT:!deathboard*:*: {
   if (%battleis != on) { 
     if ((($2 = monster) || ($2 = mon) || ($2 = monsters))) { $generate.monsterdeathboard($3) }
     if (($2 = boss) || ($2 = bosses)) { $generate.bossdeathboard($3) } 
-    if ($2 = $null) { $display.message(4!deathboard <monster/boss>, private) | halt }
+    if (($2 = player) || ($2 = players)) { $generate.playerdeathboard($3) } 
+
+    if ($2 = $null) { $display.message(4!deathboard <monster/boss/players>, private) | halt }
   }
   else { $display.message($readini(translation.dat, errors, DeathBoardNotDuringBattle), private) | halt }
 }
