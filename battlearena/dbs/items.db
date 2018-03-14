@@ -5180,6 +5180,7 @@ Numbers=1.2.1.1
 Desc=A small trading card. On the front is a picture of an Orb Fountain glowing brightly.
 Currency=AlliedNotes
 ShopNPC=Cardian
+Powers=ShatteringBomb
 
 [TradingCard-002]
 Type=TradingCard
@@ -5190,6 +5191,7 @@ Numbers=2.1.1.1
 Desc=A small trading card. On the front is a picture of a Lost Soul. It looks like it's in pain. Poor guy.
 Currency=AlliedNotes
 ShopNPC=Cardian
+Powers=LostSoulShatter
 
 [TradingCard-003]
 Type=TradingCard
@@ -5200,6 +5202,7 @@ Numbers=4.4.2.3
 Desc=A small trading card. On the front is a picture of the bird-like Yagudo ready for battle.
 Currency=AlliedNotes
 ShopNPC=Cardian
+Powers=Sweep.DoubleKick.FeatherStorm
 
 [TradingCard-004]
 Type=TradingCard
@@ -5210,6 +5213,7 @@ Numbers=2.2.2.7
 Desc=A small trading card. On the front is a picture of a green Orc posing with his axe.
 Currency=AlliedNotes
 ShopNPC=Cardian
+Powers=ShoulderTackle.BattleDance
 
 [TradingCard-005]
 Type=TradingCard
@@ -5228,6 +5232,7 @@ Rarity=1
 SellPrice=100
 Numbers=4.2.3.4
 Desc=A small trading card. On the front is a picture of half-rotting zombie. Mmmm brains!
+Powers=Headbutt
 
 [TradingCard-007]
 Type=TradingCard
@@ -5236,6 +5241,7 @@ Rarity=2
 SellPrice=100
 Numbers=5.2.4.3
 Desc=A small trading card. On the front is a picture of a large dirt eating worm as it pops out of the ground.
+Powers=Tremors.FullForceBlow
 
 [TradingCard-008]
 Type=TradingCard
@@ -5244,6 +5250,7 @@ Rarity=2
 SellPrice=100
 Numbers=3.5.3.4
 Desc=A small trading card. On the front is a picture of a succubus blowing a kiss.
+Powers=VampireBite.Temptation.Fire
 
 [TradingCard-009]
 Type=TradingCard
@@ -5252,6 +5259,7 @@ Rarity=1
 SellPrice=100
 Numbers=3.3.4.3
 Desc=A small trading card. On the front is a picture of a Creeper about to blow up and destroy a house.
+Powers=CreeperExplode.Headbutt
 
 [TradingCard-010]
 Type=TradingCard
@@ -5260,6 +5268,7 @@ SellPrice=100
 Rarity=1
 Numbers=3.4.2.5
 Desc=A small trading card. On the front is a picture of a bee posing with a large pot of honey
+Powers=FinalSting.SharpSting.FrenzySting
 
 [TradingCard-011]
 Type=TradingCard
@@ -5268,6 +5277,7 @@ SellPrice=100
 Rarity=1
 Numbers=4.3.3.3
 Desc=A small trading card. On the front is a picture of a Combat doing a crazy spin in the air
+Powers=SonicBoom.BatBite.BatDrill
 
 [TradingCard-012]
 Type=TradingCard
@@ -5276,6 +5286,7 @@ SellPrice=100
 Rarity=1
 Numbers=2.5.2.5
 Desc=A small trading card. On the front is a picture of a Dalek yelling EXTERMINATE! to a blue telephone booth
+Powers=DalekParalyze.DalekExterminate.DalekLaser
 
 [TradingCard-013]
 Type=TradingCard
@@ -5284,6 +5295,7 @@ SellPrice=100
 Rarity=1
 Numbers=5.2.5.2
 Desc=A small trading card. On the front is a picture of a swarm of Cuccos in mid-attack against an elf wearing green
+Powers=SwarmAttack
 
 [TradingCard-014]
 Type=TradingCard
@@ -5292,6 +5304,7 @@ SellPrice=100
 Rarity=1
 Numbers=2.2.5.5
 Desc=A small trading card. On the front is a picture of a Gremlin trying to force feed a small fuzzy Mogwai some food
+Powers=GremlinBite
 
 [TradingCard-015]
 Type=TradingCard
@@ -5300,6 +5313,7 @@ SellPrice=100
 Rarity=1
 Numbers=1.3.7.2
 Desc=A small trading card. On the front is a picture of a metal slime who is smiling as a warrior is holding his hand in pain next to it
+Powers=SlimeRam.SlimeStomp.FireII.IceII
 
 [TradingCard-016]
 Type=TradingCard
@@ -5308,6 +5322,7 @@ SellPrice=100
 Rarity=1
 Numbers=1.1.4.7
 Desc=A small trading card. On the front is a picture of a mosquito and its million brothers floating above a lake
+Powers=MosquitoBite
 
 [TradingCard-017]
 Type=TradingCard
@@ -5316,6 +5331,7 @@ SellPrice=100
 Rarity=1
 Numbers=4.6.1.3
 Desc=A small trading card. On the front is a picture of a Metroid floating on an alien planet
+Powers=MetroidRam.MetroidDrain
 
 [TradingCard-018]
 Type=TradingCard
@@ -5324,6 +5340,7 @@ SellPrice=100
 Rarity=1
 Numbers=4.2.4.5
 Desc=A small trading card. On the front is a picture of a Treant handing an apple to an unsuspecting boy
+Powers=Leafstorm.DrillBranch.PineconeBomb.Entangle.SproutSmack.SproutSpin
 
 [TradingCard-019]
 Type=TradingCard
@@ -5332,6 +5349,7 @@ SellPrice=100
 Rarity=1
 Numbers=6.2.2.4
 Desc=A small trading card. On the front is a picture of an Ancient Mummy in the middle of changing its bandages
+Powers=MummyCurse.MummyBandage
 
 [TradingCard-020]
 Type=TradingCard
@@ -5340,6 +5358,7 @@ Rarity=2
 SellPrice=100
 Numbers=2.3.6.7
 Desc=A small trading card. On the front is a picture of a Cerberus covered in ice in mid-roar.
+Powers=IceRain.Roar.ShoulderTackle
 
 [TradingCard-021]
 Type=TradingCard
@@ -5348,6 +5367,7 @@ Rarity=2
 SellPrice=100
 Numbers=7.2.3.6
 Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea.
+Powers=FrenchDollAttack.PuppetControl.IronMaiden.MetalStrings
 
 [TradingCard-022]
 Type=TradingCard
@@ -5356,7 +5376,7 @@ SellPrice=100
 Rarity=2
 Numbers=3.6.7.2
 Desc=A small trading card. On the front is a picture of Gobbles, the demented and evil turkey, holding a knife in one hand, a fork in the other with a large red bandana over his head
-
+Powers=Gobble
 
 
 [TradingCard-042]
@@ -5366,3 +5386,4 @@ Rarity=5
 SellPrice=100
 Numbers=12.12.12.12
 Desc=A small trading card. On the front is a picture of Lirarian Dalnaal floating in the air, wielding both a silver sword and black staff.
+Powers=Twin_Slice.LightningStrike.BladeBeamII.Guruthos.Medui
