@@ -1147,7 +1147,11 @@ alias ai.rotation.perform {
   var %rotation.action $readini($char($1), rotations, %current.rotation)
 
   if ((%rotation.action = $null) || (%rotation.action = free)) { return }
-  else { set %action.bar %rotation.action }
+
+  if ((%rotation.action = ignition) && ($readini($char($1), status, ignition.on) = on)) { return }
+  if ((%rotation.action = mech) && ($person_in_mech($1) = true)) { return }  
+
+  set %action.bar %rotation.action
 }
 
 alias ai.egg {
