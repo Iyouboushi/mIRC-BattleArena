@@ -2660,7 +2660,8 @@ clear_skills {
   remini $char($1) NaturalArmor
   writeini $char($1) skills bloodboost.on off |  writeini $char($1) skills bloodspirit.on off 
   writeini $char($1) skills criticalfocus.on off | writeini $char($1) skills shieldfocus.on off
-  writeini $char($1) skills barrage.on off | writeini $char($1) skills doublecast.on off | writeini $cahr($1) skills duality.on off
+  writeini $char($1) skills barrage.on off | writeini $char($1) skills doublecast.on off
+  writeini $char($1) skills duality.on off
 }
 
 clear_skill_timers {
