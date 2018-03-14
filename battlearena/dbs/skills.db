@@ -416,6 +416,7 @@ NeedToEquip=true
 Style=Trickster
 
 [ShieldFocus]
+Type=active
 Cost=1000
 Info=When you activate this skill your shield is guaranteed to block 100% of a single attack if the attack can be blocked.
 Max=1
@@ -426,6 +427,7 @@ Style=Guardian
 
 [Barrage]
 Cost=5000
+Type=active
 Info=This skill will cause you to rapid fire more ranged ammo at a target dealing +3 more hits than you would normally on a normal melee attack. Note that this skill requires a bow, gun or rifle equipped to use.  The +3 will only be applied to a normal melee hit using one of those ranged weapons.
 Max=1
 Cooldown=30
@@ -433,6 +435,7 @@ ActionPoints=2
 NeedToEquip=true
 
 [Duality]
+Type=active
 Cost=0
 Info=You have learned how to be more lethal with your single-target non-magic techniques. Your next technique will deal +1 more hit than normal.
 Max=1
@@ -442,6 +445,7 @@ NeedToEquip=true
 
 [DoubleCast]
 Cost=0
+Type=active
 Info=You have learned how to cast two of the same spell at once. Your magic techniques will deal +1 more hit than normal.
 Max=1
 Cooldown=20
@@ -450,6 +454,7 @@ NeedToEquip=true
 
 [ThinAir]
 Cost=0
+Type=active
 Info=With this ancient practice you will be able to cast the next spell using no tp.  You will not consume a turn when using this skill.
 Max=1
 Cooldown=15
@@ -459,6 +464,7 @@ Style=Spellmaster
 
 [Invigorate]
 Cost=0
+Type=active
 Info=With this ancient practice you will be able to instantly restore 200 missing TP to keep yourself in the flow of battle.  You will not consume a turn when using this skill.
 Max=1
 Cooldown=10
@@ -467,6 +473,7 @@ NeedToEquip=true
 
 [ThrillOfBattle]
 Cost=0
+Type=active
 Info=You absolutely love the thrill of battle and with this ancient skill you will be able to restore 600 missing HP.  As a bonus 100 HP can go over your maximum HP limit. You will not consume a turn when using this skill.
 Max=1
 Cooldown=50
