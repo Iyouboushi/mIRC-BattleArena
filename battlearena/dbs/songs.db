@@ -53,4 +53,11 @@ Effect=Battlefield
 Type=no-battlefieldeffect
 Instrument=Ocarina
 
+[SwiftSong]
+Name=Swift Song
+TP=200
+Desc=pulls out $gender($1) harp and begins to play a swift song that sends a wave of green energy. The energy swirls around %real.name $+ 's allies' feet and they all feel faster.
+Effect=Status
+Target=Allies
+Type=SpeedUp
 

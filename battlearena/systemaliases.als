@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/12/18
+;;;; Last updated: 03/13/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2660,6 +2660,7 @@ clear_skills {
   remini $char($1) NaturalArmor
   writeini $char($1) skills bloodboost.on off |  writeini $char($1) skills bloodspirit.on off 
   writeini $char($1) skills criticalfocus.on off | writeini $char($1) skills shieldfocus.on off
+  writeini $char($1) skills barrage.on off
 }
 
 clear_skill_timers {
@@ -2674,7 +2675,7 @@ clear_skill_timers {
   remini $char($1) skills magicmirror.time | remini $char($1) skills snatch.time | remini $char($1) skills retaliation.time
   remini $char($1) skills weaponlock.time | remini $char($1) skills PerfectDefense.time | remini $char($1) skills stoneskin.time
   remini $char($1) skills tabularasa.time | remini $char($1) skills sugitekai.time | remini $char($1) skills wrestle.turn | remini $char($1) skills wrestle.used
-  remini $char($1) skills criticalfocus.time | remini $char($1) skills shieldfocus.time
+  remini $char($1) skills criticalfocus.time | remini $char($1) skills shieldfocus.time | remini $char($1) skills barrage.time
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

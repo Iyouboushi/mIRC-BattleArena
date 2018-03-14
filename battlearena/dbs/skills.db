@@ -418,6 +418,14 @@ ActionPoints=2
 NeedToEquip=true
 Style=Guardian
 
+[Barrage]
+Cost=5000
+Info=This skill will cause you to rapid fire more ranged ammo at a target dealing +3 more hits than you would normally on a normal melee attack. Note that this skill requires a bow, gun or rifle equipped to use.  The +3 will only be applied to a normal melee hit using one of those ranged weapons.
+Max=1
+Cooldown=30
+ActionPoints=2
+NeedToEquip=true
+
 [Disarm]
 Cost=500
 Type=Active

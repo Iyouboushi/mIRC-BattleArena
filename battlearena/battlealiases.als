@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/12/18
+;;;; Last updated: 03/13/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3977,7 +3977,22 @@ tech.ethereal.check {
       $set_chr_name($1) | set %guard.message $readini(translation.dat, status, EtherealBlocked) | set %attack.damage 0 | return
     }
   }
+}
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks to see if the barrage
+; skill is on and if the weapon is
+; a ranged weapon or not
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+barrage_check {
+  ; $1 = the person we're checking
+  ; $2 = the weapon name
+
+  var %weapon.type.check $readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), type)
+  if (((%weapon.type.check != bow) && (%weapon.type != gun) && (%weapon.type != rifle))) { return false } 
+
+  if ($readini($char($1), skills, barrage.on) = on) { return true }
+  else { return false }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -4713,6 +4713,16 @@ SpecialType=GainSong
 Song=SongOfPeace
 Desc=pulls out a sheet of music and begins to study it. After some time passes, %real.name has learned how to perform the Song of Peace using an ocarina.
 
+[Songsheet:Swiftsong]
+Type=special
+Cost=0
+ShopNPC=SongMerchant
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSong
+Song=SwiftSong
+Desc=pulls out a sheet of music and begins to study it. After some time passes, %real.name has learned how to perform the Swift Song using a harp.
+
 
 =========================
 INSTRUMENTS

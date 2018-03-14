@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/12/18
+;;;; Last updated: 03/13/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -64,6 +64,7 @@ alias use.skill {
   if ($3 = magicmirror) { $skill.magicmirror($1) }
   if ($3 = gamble) { $skill.gamble($1) }
   if ($3 = thirdeye) { $skill.thirdeye($1) }
+  if ($3 = barrage) { $skill.barrage($1) }
   if ($3 = criticalfocus) { $skill.criticalfocus($1) }
   if ($3 = scavenge) { $skill.scavenge($1) }
   if ($3 = perfectcounter) { $skill.perfectcounter($1) }
@@ -1442,6 +1443,54 @@ alias skill.shieldfocus { $set_chr_name($1)
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
 }
+
+
+;=================
+; BARRAGE
+;=================
+on 3:TEXT:!barrage*:*: { $skill.Barrage($nick) }
+
+alias skill.barrage { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($skillhave.check($1, Barrage) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+
+  var %skill.name Barrage
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, Barrage, !barrage, false)
+
+  ; Is the player using a ranged weapon?
+  var %equipped.weapon $readini($char($1), weapons, equipped)
+  var %weapon.type $readini($dbfile(weapons.db), %equipped.weapon, type)
+  echo -a weapon: %equipped.weapon vs %weapon.type
+  if (((%weapon.type != bow) && (%weapon.type != gun) && (%weapon.type != rifle))) { $display.message(4 $+ $get_chr_name($1) is not using a ranged weapon and cannot use this skill at this moment., battle) | halt } 
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(Barrage))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, Barrage) = $null) { set %skill.description prepares to send the next volley of ranged attacks at a faster pace.  }
+  else { set %skill.description $readini($char($1), descriptions, Barrage) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; write the last used time.
+  writeini $char($1) skills Barrage.time %true.turn
+  writeini $char($1) skills Barrage.on on
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction Barrage
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
 
 ;=================
 ; FORMLESS STRIKE

@@ -697,6 +697,8 @@ formula.meleedmg.player.formula {
     inc %weapon.howmany.hits %left.hits 
   }
 
+  if ($barrage_check($1, $2) = true) { inc %weapon.howmany.hits 3 | writeini $char($1) skills barrage.on off }
+
   ; check for melee counter
   $counter_melee($1, $3, $2)
 

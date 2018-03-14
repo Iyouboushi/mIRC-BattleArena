@@ -1610,6 +1610,8 @@ Battle Arena Bot VERSIONS
 - Added a new player active skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
 - Added a new player active skill: ShieldFocus. This skill will make your shield block 100% of the next attack if the attack can be
   blocked. A shield must be equipped in order to use this skill.
+- Added a new player active skill: Barrage. This skill will make your next melee attack done with a ranged weapon (bow, gun or rifle)
+  do +3 more hits than it would normally. The skill only takes effect when damage is done with a ranged weapon.
 - Added a new player passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
   death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
 - Added a new player passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd
@@ -1624,6 +1626,7 @@ Battle Arena Bot VERSIONS
 - Added the ability for ignitions to be upgradeable. In the shop just purchase the ignition again.  Each ignition can be purchased
   (that is, upgraded) up to 10 times. Each time adds .10 to the stat multiplier. The cost is base black orbs * level upgrading to.
 - Added daily login rewards.  Every time a player logs in they will recieve a certain amount of an item based on a lst file.
+- Added a new song.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated
