@@ -77,6 +77,9 @@ alias use.skill {
   if ($3 = snatch) { $skill.snatch($1, %attack.target) }
   if ($3 = warp) { $skill.warp($1, %attack.target-) } 
   if ($3 = wrestle) { $skill.wrestle($1, %attack.target) }
+  if ($3 = invigorate) { $skill.invigorate($1) }
+  if ($3 = ThrillOfBattle) { $skill.thrillofbattle($1) } 
+  if ($3 = duality) { $skill.duality($1) }
 
   ; Below are monster-only skills
 
@@ -1531,6 +1534,146 @@ alias skill.doublecast { $set_chr_name($1)
   if (%battleis = on)  { $check_for_double_turn($1) }
 }
 
+
+;=================
+; duality
+;=================
+on 3:TEXT:!duality*:*: { $skill.duality($nick) }
+
+alias skill.duality { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($skillhave.check($1, duality) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+
+  var %skill.name duality
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, duality, !duality, false)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(duality))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, duality) = $null) { set %skill.description uses ancient wisdom to increase the leathality of $gender($1) next single-target technique }
+  else { set %skill.description $readini($char($1), descriptions, duality) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; write the last used time.
+  writeini $char($1) skills duality.time %true.turn
+  writeini $char($1) skills duality.on on
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction duality
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
+;=================
+; Invigorate
+;=================
+on 3:TEXT:!invigorate*:*: { $skill.invigorate($nick) }
+
+alias skill.invigorate { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($skillhave.check($1, doublecast) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+
+  var %skill.name invigorate
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, invigorate, !invigorate, false)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(invigorate))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, invigorate) = $null) { set %skill.description uses an ancient battle tactic to restore some of $gender($1) missing TP.  }
+  else { set %skill.description $readini($char($1), descriptions, invigorate) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; write the last used time.
+  writeini $char($1) skills invigorate.time %true.turn
+
+  ; write last action
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction invigorate
+
+  ; Restore 200 TP
+  $restore_tp($1, 200)
+
+  ; Display a message
+  $display.message(3 $+ $get_chr_name($1) restores2 200 3TP, battle)
+
+  ; Player gets another turn
+  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+}
+
+;=================
+; Invigorate
+;=================
+on 3:TEXT:!thrillofbattle*:*: { $skill.thrillofbattle($nick) }
+on 3:TEXT:!thrill of battle*:*: { $skill.thrillofbattle($nick) }
+
+alias skill.thrillofbattle { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($skillhave.check($1, doublecast) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+
+  var %skill.name thrillofbattle
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, thrillofbattle, !thrillofbattle, false)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(thrillofbattle))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, thrillofbattle) = $null) { set %skill.description uses an ancient battle tactic to gain HP and keep this battle going! }
+  else { set %skill.description $readini($char($1), descriptions, thrillofbattle) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; write the last used time.
+  writeini $char($1) skills thrillofbattle.time %true.turn
+
+  ; write last action
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction thrillofbattle
+
+  ; Restore some missing HP
+  $restore_hp($1, 500)
+
+  ; Give +100 HP on top of that.
+  var %current.hp $readini($char($1), battle, HP)
+  if (%current.hp = $readini($char($1), basestats, hp)) { var %max.hp true }
+  inc %current.hp 100
+  writeini $char($1) battle HP %current.hp
+
+  ; Display a message
+  if (%max.hp = true) { $display.message(3 $+ $get_chr_name($1) has restored2 5003 base HP and gained2 100 3temporary Max HP, battle) }
+  else { $display.message(3 $+ $get_chr_name($1) restores2 600 3HP, battle) }
+
+  ; Player gets another turn
+  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+}
 
 ;=================
 ; FORMLESS STRIKE

@@ -1615,6 +1615,12 @@ Battle Arena Bot VERSIONS
   do +3 more hits than it would normally. The skill only takes effect when damage is done with a ranged weapon.
 - Added a new active skill: DoubleCast. This skill will make your next spell do +1 more hit than it would normally.
   This skill cannot be purchased and must be learned.
+- Added a new active skill: Invigorate. This skill will instantly restore 200 TP and will not consume your turn.
+  This skill cannot be purchased and must be learned.
+- Added a new active skill: ThrillOfBattle. This skill will instantly restore 600 HP and will not consume your turn. As an added
+  bonus, if you hit max HP while using this skill you will gain +100 HP over your max HP limit.
+- Added a new active skill: Duality. This skill will cause your next non-spell/single target technique to do +1 more hit.
+  This skill cannot be purchased and must be learned.
 - Added a new passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
   death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
 - Added a new passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd

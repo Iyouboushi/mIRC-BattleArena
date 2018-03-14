@@ -432,12 +432,36 @@ Cooldown=30
 ActionPoints=2
 NeedToEquip=true
 
+[Duality]
+Cost=0
+Info=You have learned how to be more lethal with your single-target non-magic techniques. Your next technique will deal +1 more hit than normal.
+Max=1
+Cooldown=20
+ActionPoints=2
+NeedToEquip=true
+
 [DoubleCast]
 Cost=0
 Info=You have learned how to cast two of the same spell at once. Your magic techniques will deal +1 more hit than normal.
 Max=1
 Cooldown=20
 ActionPoints=2
+NeedToEquip=true
+
+[Invigorate]
+Cost=0
+Info=With this ancient practice you will be able to instantly restore 200 missing TP to keep yourself in the flow of battle.  You will not consume a turn when using this skill.
+Max=1
+Cooldown=10
+ActionPoints=2
+NeedToEquip=true
+
+[ThrillOfBattle]
+Cost=0
+Info=You absolutely love the thrill of battle and with this ancient skill you will be able to restore 600 missing HP.  As a bonus 100 HP can go over your maximum HP limit. You will not consume a turn when using this skill.
+Max=1
+Cooldown=50
+ActionPoints=3
 NeedToEquip=true
 
 [Disarm]

@@ -1072,6 +1072,7 @@ multihitcheck.tech {
   if (%number.of.hits = $null) { set %number.of.hits 1 }
 
   if ($doublecast_check($1, $2) = true) { inc %number.of.hits 1 | writeini $char($1) skills doublecast.on off }
+  if ($duality_check($1, $2) = true) { inc %number.of.hits 1 | writeini $char($1) skills duality.on off }
 
   var %original.attack.damage %attack.damage
   var %current.hit 2

@@ -4010,7 +4010,23 @@ doublecast_check {
   if ((%magic.check = no) || (%magic.check = $null)) { return false }
 
   if ($readini($char($1), skills, doublecast.on) = on) { return true }
-  else { eturn false }
+  else { return false }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks to see if the duality
+; skill is on and if the tech is
+; a single non-spell type
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+duality_check {
+  ; $1 = the person we're checking
+  ; $2 = the tech name
+
+  if ($readini($dbfile(techniques.db), $2, spell) = yes) { return false }
+  if ($readini($dbfile(techniques.db), $2, type) != single) { return false }
+
+  if ($readini($char($1), skills, duality.on) = on) { return true }
+  else { return false }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

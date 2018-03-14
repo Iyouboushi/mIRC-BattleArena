@@ -4753,6 +4753,34 @@ SpecialType=GainSkill
 Skill=DoubleCast
 Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of Double Cast.
 
+[AncientMystery:Invigorate]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=Invigorate
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of Invigorate.
+
+[AncientMystery:ThrillOfBattle]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=ThrillOfBattle
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient Thrill Of Battle skill.
+
+[AncientMystery:Duality]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=Duality
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of Duality.
+
+
 
 =========================
 INSTRUMENTS
