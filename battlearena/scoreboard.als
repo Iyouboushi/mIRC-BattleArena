@@ -893,9 +893,6 @@ generate.bossdeathboard.old {
   unset %totalboss | unset %score | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score | unset %total.deaths
 }
 
-
-
-
 get.playerdeaths {
   set %file $nopath($1-) 
   set %name $remove(%file,.char)
@@ -905,7 +902,6 @@ get.playerdeaths {
   inc %totalplayers 1
   var %score $readini($char(%name), Stuff, TotalDeaths)
   write scoreboard.txt %name 
-  writeini $char(%name) scoreboard AverageDmg.Tech %score
 }  
 
 
