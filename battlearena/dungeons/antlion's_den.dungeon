@@ -1,7 +1,8 @@
 [Info]
 Name=Antlion's Den
 Rooms=7
-PlayersNeeded=3
+PlayersNeeded=1
+PlayersRecommended=3
 Level=20
 FinalRoom=6
 StartBattleDesc=uses the Antlion's Key to unlock a heavy door that blocks the entrance into the Antlion's Den. As the door swings open the party smells a foul odor and can hear rustling in the dark below.

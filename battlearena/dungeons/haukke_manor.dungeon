@@ -1,7 +1,8 @@
 [Info]
 Name=Haukke Manor
 Rooms=9
-PlayersNeeded=4
+PlayersNeeded=1
+PlayersRecommended=4
 Level=50
 FinalRoom=8
 StartBattleDesc=unlocks the door to the giant mansion. As the door creaks open the party can feel an aura of evil emitting from within.

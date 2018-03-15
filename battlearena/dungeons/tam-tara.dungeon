@@ -1,7 +1,8 @@
 [Info]
 Name=Tam-Tara Deepcroft
 Rooms=8
-PlayersNeeded=3
+PlayersNeeded=1
+PlayersRecommended=3
 Level=15
 FinalRoom=7
 StartBattleDesc=uses the ancient Tam-Tara key to unlock an old rusty door. As it creaks open the party can smell the stale air and hear the chants of ancient cultists within. 

@@ -1,7 +1,8 @@
 [Info]
 Name=The Lost City of the Ancients
 Rooms=8
-PlayersNeeded=2
+PlayersNeeded=1
+PlayersRecommended=3
 Level=100
 FinalRoom=7
 StartBattleDesc=uses the Ancient Map to discover a lost city of the Antaal. As the party approaches the entrance of the city they can see large mold-like substance covering nearly everything within.
@@ -35,7 +36,7 @@ bossroom=true
 
 [4]
 Desc=The party walks up a flight of stairs and around a corner towards another section of the ancient marketplace. Old rotting stalls can be seen lining the sides of the path.  As they take in the view another wave of monsters approaches seeking a fresh meal.
-Monsters=Ancient_Hecteyes. $+ $iif($rand(1,2) = 1, Ancient.Wamoura, Ancient_Demonstool) $+ .Ancient_Demonstool
+Monsters=Ancient_Hecteyes.Ancient_Demonstool. $+ $iif($rand(1,2) = 1, Ancient_Wamoura, Ancient_Demonstool)
 Battlefield=Lost City Marketplace
 
 [5]

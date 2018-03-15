@@ -1,7 +1,8 @@
 [Info]
 Name=The Pyramid of Kan-ra
 Rooms=8
-PlayersNeeded=3
+PlayersNeeded=1
+PlayersRecommended=3
 Level=100
 FinalRoom=7
 StartBattleDesc=approaches the ancient pyramid of Kan-ra and holds up the mummified hand of Kan-ra. The earth shakes as the ancient slabs that prevent entry begin to lower, revealing a dark tunnel before the heroes. 

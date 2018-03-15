@@ -2,6 +2,7 @@
 Name=Gobbie Treasure Vault
 Rooms=4
 PlayersNeeded=1
+PlayersRecommended=1
 Level=15
 FinalRoom=3
 StartBattleDesc=The Treasure Goblin creates a portal to the Gobbie Treasure Vault realm in an attempt to escape death.  Unfortunately for the Goblin, death still arrives but now there is a portal for all heroes to enter.
