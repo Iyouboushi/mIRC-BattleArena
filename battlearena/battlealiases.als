@@ -3991,7 +3991,9 @@ barrage_check {
   ; $2 = the weapon name
 
   var %weapon.type.check $readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), type)
-  if (((%weapon.type.check != bow) && (%weapon.type != gun) && (%weapon.type != rifle))) { return false } 
+
+  var %ranged.types bow.gun.rifle
+  if ($istok(%ranged.types, %weapon.type.check, 46) = $false) { return false }
 
   if ($readini($char($1), skills, barrage.on) = on) { return true }
   else { return false }
