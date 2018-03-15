@@ -1040,12 +1040,13 @@ get.playerkills {
 
   inc %totalplayers 1
   var %score $readini($char(%name), Stuff, MonsterKills)
+  inc %grand.total %score
   write scoreboard.txt %name 
 }  
 
 
 generate.playerkillboard {
-  set %totalplayers 0
+  set %totalplayers 0 | set %grand.total 0
   .echo -q $findfile( $char_path , *.char, 0 , 0, get.playerkills $1-)
 
   if (%totalplayers <= 2) { $display.message($readini(translation.dat, errors, KillBoardNotEnoughPlayers), private)  | .remove scoreboard.txt | unset %totalplayers | halt }
@@ -1168,7 +1169,10 @@ generate.playerkillboard {
   $display.message($readini(translation.dat, system, KillBoardTitle), private)
   $display.message($chr(3) $+ 2 $+ %score.list, private)
   if (%score.list.2 != $null) { $display.message($chr(3) $+ 2 $+ %score.list.2, private)  }
+  $display.message(2Total monsters killed:4 $bytes(%grand.total,b), private)
+
   unset %totalplayers | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score
+  unset %grandtotal
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
