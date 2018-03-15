@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 03/14/18
+;;;; Last updated: 03/15/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -8,6 +8,11 @@ dungeon.dungeonfile { return $readini($txtfile(battle2.txt), DungeonInfo, Dungeo
 dungeon.bossroomcheck {
   if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, bossroom) = true) { return true }
   else { return false }
+}
+dungeon.recommendedplayers {
+  var %recommended.players $readini($dungeonfile($dungeon.dungeonfile), info, PlayersRecommended)
+  if (%recommended.players = $null) { var %recommended.players 2 }
+  else { return %recommended.players }
 }
 
 dungeon.start {

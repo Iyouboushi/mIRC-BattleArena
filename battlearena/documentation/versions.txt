@@ -1660,6 +1660,8 @@ Battle Arena Bot VERSIONS
 - Changed AI vs AI battles so that the battle will end in a draw after 50 turns.
 - Changed active skills so that most of them have to be equipped in order to use in battle. There can only be 5 active skills
   equipped at a time now. Use !skills equip skillname to equip or !skills remove skillname to remove.
+- Changed dungeons so that they can all be entered alone but they have a recommended party size.
+- Changed dungeons so that if a player enters alone or below the party size trusts and summons can be used.
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working

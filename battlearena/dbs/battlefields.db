@@ -1,11 +1,11 @@
 [weather]
-current=gloomy
+current=dry
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
-CurrentMoonPhase=Full
-CurrentMoonTurn=3
+CurrentMoonPhase=Crescent
+currentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -918,106 +918,111 @@ NumberOfEvents=0
 limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
+
+======================================================
+DUNGEON BATTLEFIELDS
+======================================================
+
 [Tam-Tara Deepcroft Cavern]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Pyramid Hallway]
 weather=calm
 NumberOEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Pyramid Chamber]
 weather=gloomy
 NumberOEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Pyramid Antechamber]
 weather=gloomy
 NumberOEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Pyramid Burial Chamber]
 weather=gloomy
 NumberOEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Pyramid Map Room]
 weather=gloomy
 NumberOEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Pirate's Cove]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal
 
 [Pirate's Cove - Inner Chamber]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Lobby]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Fl 1 - Hallway]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Fl 1 - Rm 1]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Fl 1 - Rm 2]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Cellar]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Top of Staircase]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Fl 2 - Rm 1]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Haukke Manor Master Bedroom]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Antlion's Den]
 weather=dry
 NumberOfEvents=$iif($dungeon.currentroom = 6, 1, 0)
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Topaz.Emerald.Ruby.Onyx.Diamond
 event1=damage
 event1Chance=60
@@ -1028,20 +1033,20 @@ Event1Amount=$rand(400,500)
 [Gobbie Treasure Vault]
 weather=none
 NumberOfEvents=0
-Limitations=no-mech.no-playerignition.enhance-coins.enhance-orbs
+Limitations=enhance-coins.enhance-orbs.no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Topaz.Emerald.Ruby.Onyx.Diamond
 
 [Tomb of Terror - Opening Hallway]
 weather=gloomy
 NumberOfEvents=0
 scavenge=topaz
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 
 [Tomb of Terror - Gargoyle Room]
 weather=gloomy
 NumberOfEvents=1
 scavenge=topaz
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 event1=damage
 event1Chance=70
 Event1Desc=%real.name accidentally steps on a spear hole as a spear shoots out of it.
@@ -1052,7 +1057,7 @@ Event1Amount=$rand(500,600)
 weather=gloomy
 NumberOfEvents=1
 scavenge=topaz
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 event1=damage
 event1Chance=70
 Event1Desc=An asp crawls out of its hiding place and bites %real.name before returning into the shadows
@@ -1063,7 +1068,7 @@ Event1Amount=$rand(500,600)
 weather=gloomy
 NumberOfEvents=2
 scavenge=topaz
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 event1=damage
 event1Chance=30
 Event1Desc=A small dart shoots out of the wall and hits %real.name $+ !
@@ -1075,19 +1080,19 @@ event2=damage
 weather=gloomy
 NumberOfEvents=0
 scavenge=topaz
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 
 [Tomb of Terror - Inner Sanctum]
 weather=gloomy
 NumberOfEvents=0
 scavenge=topaz
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 
 [Tomb of Terror - Throne Room]
 weather=gloomy
 NumberOfEvents=1
 scavenge=topaz
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 event1=damage
 event1Chance=50
 Event1Desc=A small creature hiding at the top of one of the pillars stands up and aims a bow and shoots an arrow towards %real.name $+ !
@@ -1097,66 +1102,66 @@ Event1Amount=$rand(500,600)
 [Chozo Artifact Temple]
 weather=rainy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Impact Crater - Entry Point]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Impact Crater - Phazon Infusion Chamber]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Impact Crater - Subchamber 1]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Impact Crater - Subchamber 2]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Impact Crater - Subchamber 3]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Impact Crater - Subchamber 4]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Impact Crater - Subchamber 5]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Impact Crater - Metroid Prime Lair]
 weather=gloomy
 NumberofEvents=0
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Hullbreaker Beach Dock]
 weather=calm
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Hullbreaker Isle Beach]
 weather=calm
 NumberOfEvents=1
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 event1=damage
 event1Chance=60
@@ -1167,7 +1172,7 @@ Event1Amount=$rand(200,400)
 [Isle Sasquatch Domain]
 weather=calm
 NumberOfEvents=1
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 event1=damage
 event1Chance=60
@@ -1177,50 +1182,50 @@ Event1Amount=$rand(200,400)
 
 [Hullbreaker Isle Caverns]
 weather=calm
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Isle Sjoorm Domain]
 weather=calm
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Hullbreaker Isle South Beach]
 weather=calm
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Hullbreaker Isle Wrecked Ship]
 weather=rainy
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Lost City Entrance]
 weather=moldy
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Lost City Road]
 weather=moldy
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Lost City Marketplace]
 weather=moldy
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Lost City Courtyard]
 weather=moldy
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Lost City Throneroom]
 weather=moldy
-limitations=no-trusts.no-summons.no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Lost Tower]
 weather=none
-limitations=no-mech.no-playerignition
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
