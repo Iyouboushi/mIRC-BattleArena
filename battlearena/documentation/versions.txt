@@ -1650,6 +1650,7 @@ Battle Arena Bot VERSIONS
   The information on how to set it up is in new_npc.char, new_mon.char and new_boss.char at the bottom of the file. Or see the
   MetalSlime and BlueSlime files for an example.
 - Added the !deathboard players command.  This will generate the top players who have died the most in the game.
+- Added the !killboard command. This will generate the top monster killers in the game.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated

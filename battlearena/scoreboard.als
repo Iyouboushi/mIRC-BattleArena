@@ -1032,6 +1032,145 @@ generate.playerdeathboard {
   unset %totalplayers | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score
 }
 
+get.playerkills {
+  set %file $nopath($1-) 
+  set %name $remove(%file,.char)
+
+  if (%name = new_chr) { return }
+
+  inc %totalplayers 1
+  var %score $readini($char(%name), Stuff, MonsterKills)
+  write scoreboard.txt %name 
+}  
+
+
+generate.playerkillboard {
+  set %totalplayers 0
+  .echo -q $findfile( $char_path , *.char, 0 , 0, get.playerkills $1-)
+
+  if (%totalplayers <= 2) { $display.message($readini(translation.dat, errors, KillBoardNotEnoughPlayers), private)  | .remove scoreboard.txt | unset %totalplayers | halt }
+
+  ; Generate the scoreboard.
+
+  ; get rid of the Scoreboard Table and the now un-needed file
+  if ($isfile(ScoreboardTable.file) = $true) { 
+    hfree ScoreboardTable
+    .remove ScoreboardTable.file
+  }
+
+  ; make the Scoreboard List table
+  hmake ScoreBoardTable
+
+  ; load them from the file.   
+  var %ScoreBoardtxt.lines $lines(ScoreBoard.txt) | var %ScoreBoardtxt.current.line 1 
+  while (%ScoreBoardtxt.current.line <= %ScoreBoardtxt.lines) { 
+    var %who.ScoreBoard $read -l $+ %ScoreBoardtxt.current.line ScoreBoard.txt
+    set %ScoreBoard.score $readini($char(%who.ScoreBoard), Stuff, MonsterKills)
+
+    if (%ScoreBoard.score <= 0) { set %ScoreBoard.score 0 }
+
+    hadd ScoreBoardTable %who.ScoreBoard %ScoreBoard.score
+    inc %ScoreBoardtxt.current.line
+  }
+
+  ; save the ScoreBoardTable hashtable to a file
+  hsave ScoreBoardTable ScoreBoardTable.file
+
+  ; load the ScoreBoardTable hashtable (as a temporary table)
+  hmake ScoreBoardTable_Temp
+  hload ScoreBoardTable_Temp ScoreBoardTable.file
+
+  ; sort the ScoreBoard Table
+  hmake ScoreBoardTable_Sorted
+  var %ScoreBoardtableitem, %ScoreBoardtabledata, %ScoreBoardtableindex, %ScoreBoardtablecount = $hget(ScoreBoardTable_Temp,0).item
+  while (%ScoreBoardtablecount > 0) {
+    ; step 1: get the lowest item
+    %ScoreBoardtableitem = $hget(ScoreBoardTable_Temp,%ScoreBoardtablecount).item
+    %ScoreBoardtabledata = $hget(ScoreBoardTable_Temp,%ScoreBoardtablecount).data
+    %ScoreBoardtableindex = 1
+    while (%ScoreBoardtableindex < %ScoreBoardtablecount) {
+      if ($hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).data < %ScoreBoardtabledata) {
+        %ScoreBoardtableitem = $hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).item
+        %ScoreBoardtabledata = $hget(ScoreBoardTable_Temp,%ScoreBoardtableindex).data
+      }
+      inc %ScoreBoardtableindex
+    }
+
+    ; step 2: remove the item from the temp list
+    hdel ScoreBoardTable_Temp %ScoreBoardtableitem
+
+    ; step 3: add the item to the sorted list
+    %ScoreBoardtableindex = sorted_ $+ $hget(ScoreBoardTable_Sorted,0).item
+    hadd ScoreBoardTable_Sorted %ScoreBoardtableindex %ScoreBoardtableitem
+
+    ; step 4: back to the beginning
+    dec %ScoreBoardtablecount
+  }
+
+  ; get rid of the temp table
+  hfree ScoreBoardTable_Temp
+
+  ; Erase the old ScoreBoard.txt and replace it with the new one.
+  .remove ScoreBoard.txt
+
+  var %index = $hget(ScoreBoardTable_Sorted,0).item
+  while (%index > 0) {
+    dec %index
+    var %tmp = $hget(ScoreBoardTable_Sorted,sorted_ $+ %index)
+    write ScoreBoard.txt %tmp
+  }
+
+  ; get rid of the sorted table
+  hfree ScoreBoardTable_Sorted
+
+  ; get rid of the ScoreBoard Table and the now un-needed file
+  hfree ScoreBoardTable
+  .remove ScoreBoardTable.file
+
+  ; unset the ScoreBoard.speed
+  unset %ScoreBoard.speed
+
+  if (%totalplayers < 5) { 
+
+    ; Get the top 3 and display it.
+    unset %score.list | set %current.line 1
+    while (%current.line <= 3) { 
+      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), Stuff, MonsterKills),b)
+      %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)
+      inc %current.line 1 
+    }
+    unset %lines | unset %current.line
+  }
+
+  if ((%totalplayers >= 5) && (%totalplayers < 10)) { 
+    unset %score.list | set %current.line 1
+    while (%current.line <= 5) { 
+      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), Stuff, MonsterKills),b)
+      %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)
+      inc %current.line 1 
+    }
+    unset %lines | unset %current.line
+  }
+
+
+  if (%totalplayers >= 10) { 
+    unset %score.list | unset %score.list.2 | set %current.line 1
+    while (%current.line <= 10) { 
+      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), Stuff, MonsterKills),b)
+      if (%current.line <= 5) {  %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)  }
+      if ((%current.line > 5) && (%current.line <= 10)) {  %score.list.2 = %score.list.2 $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32) }
+      inc %current.line 1 
+    }
+    unset %lines | unset %current.line
+  }
+
+
+  $display.message($readini(translation.dat, system, KillBoardTitle), private)
+  $display.message($chr(3) $+ 2 $+ %score.list, private)
+  if (%score.list.2 != $null) { $display.message($chr(3) $+ 2 $+ %score.list.2, private)  }
+  unset %totalplayers | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Generate a board
 ; for average tech damage

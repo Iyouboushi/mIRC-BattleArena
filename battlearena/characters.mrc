@@ -1518,6 +1518,14 @@ on 3:TEXT:!damageboard*:*: {
   else { $display.message($readini(translation.dat, errors, DamageBoardNotDuringBattle), private) | halt }
 }
 
+on 3:TEXT:!killboard*:*: {
+  if (%battleis != on) { 
+    if (($2 = player) || ($2 = players)) { $generate.playerkillboard($3) } 
+    if ($2 = $null) { $generate.playerkillboard($3) }
+  }
+  else { $display.message($readini(translation.dat, errors, KillBoardNotDuringBattle), private) | halt }
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DIFFICULTY CMNDS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
