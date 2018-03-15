@@ -991,14 +991,12 @@ generate.playerdeathboard {
   ; unset the ScoreBoard.speed
   unset %ScoreBoard.speed
 
-
-
   if (%totalplayers < 5) { 
 
     ; Get the top 3 and display it.
     unset %score.list | set %current.line 1
     while (%current.line <= 3) { 
-      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), scoreboard, AverageDmg.Tech),b)
+      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), Stuff, TotalDeaths),b)
       %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)
       inc %current.line 1 
     }
@@ -1008,7 +1006,7 @@ generate.playerdeathboard {
   if ((%totalplayers >= 5) && (%totalplayers < 10)) { 
     unset %score.list | set %current.line 1
     while (%current.line <= 5) { 
-      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), scoreboard, AverageDmg.Tech),b)
+      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), Stuff, TotalDeaths),b)
       %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)
       inc %current.line 1 
     }
@@ -1019,7 +1017,7 @@ generate.playerdeathboard {
   if (%totalplayers >= 10) { 
     unset %score.list | unset %score.list.2 | set %current.line 1
     while (%current.line <= 10) { 
-      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), scoreboard, AverageDmg.Tech),b)
+      set %who.score $read -l [ $+ [ %current.line ] ] scoreboard.txt | var %score $bytes($readini($char(%who.score), Stuff, TotalDeaths),b)
       if (%current.line <= 5) {  %score.list = %score.list $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32)  }
       if ((%current.line > 5) && (%current.line <= 10)) {  %score.list.2 = %score.list.2 $chr(91) $+  $+ $chr(35) $+ %current.line $+  %who.score $chr(40) $+ %score $+ $chr(41) $+ $chr(93) $chr(32) }
       inc %current.line 1 
