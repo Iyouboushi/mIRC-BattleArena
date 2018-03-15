@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 10/12/17
+;;;; Last updated: 03/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -23,7 +23,10 @@ dungeon.start {
   set %battle.type dungeon
 
   var %dungeon.players.needed $readini($dungeonfile($3), info, PlayersNeeded)
-  if (%dungeon.players.needed = $null) { var %dungeon.players.needed 2 }
+  if (%dungeon.players.needed = $null) { var %dungeon.players.needed 1 }
+
+  var %dungeon.players.recommended $readini($dungeonfile($3), Info, PlayersRecommended)
+  if (%dungeon.players.recommended = $null) { var %dungeon.players.recommended 2 }
 
   var %dungeon.level $readini($dungeonfile($3), info, Level)
   if (%dungeon.level = $null) { var %dungeon.level 15 }
@@ -39,7 +42,7 @@ dungeon.start {
   if ($4 != true) { $display.message(2 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) }
   if ($4 = true) { $display.message(2 $+ $readini($dungeonfile($3), info, StartBattleDesc), global) | writeini $txtfile(battle2.txt) DungeonInfo IgnoreWritingDungeonTime true }
 
-  $display.message(4This dungeon is level12 %dungeon.level 4and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 4to enter. The dungeon will begin in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) 
+  $display.message(4This dungeon is level12 %dungeon.level 4and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 4to enter (12 $+ %dungeon.players.recommended 4 $iif(%dungeon.players.recommended = 1, player, players) recommended). The dungeon will begin in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) 
 
 }
 
