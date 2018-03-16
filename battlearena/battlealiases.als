@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/14/18
+;;;; Last updated: 03/16/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -5099,7 +5099,19 @@ regen_done_check {
   var %current.regen.hp $readini($char($1), Battle, $3) | var %max.regen.hp $readini($char($1), BaseStats, $3)
 
   if ($readini($char($1), status, ignition.on) = on) {
-    var %max.regen.hp $round($calc($readini($char($1), BaseStats, $3) * $readini($dbfile(ignitions.db), $readini($char($1), status, ignition.name), $3)),0)
+
+    var %ignition.name $readini($char($1), status, ignition.name)
+
+    ; get the ignition level
+    var %ignition.level $readini($char($1), Ignitions, %ignition.name)
+
+    ; get the ignition increase based on level
+    var %ignition.increase 0
+    if (%ignition.level > 1) { var %ignition.increase $calc(.10 * %ignition.level) }
+
+    ; get the stat values
+    var %hp.increase $calc(%ignition.increase + $readini($dbfile(ignitions.db), %ignition.name, hp))
+    var %max.regen.hp $round($calc($readini($char($1), BaseStats, Hp) * %hp.increase),0)
   }
 
   if ($readini($char($1), Status, PotionEffect) = Double Life) { set %max.regen.hp $calc(%max.regen.hp * 2) } 
