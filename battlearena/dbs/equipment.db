@@ -24,6 +24,7 @@ Augment=EnhanceCrafting
 EquipLocation=head
 cost=50
 SellPrice=50
+Protection=0
 
 [BucketHat]
 Name=Bucket Hat
@@ -37,6 +38,7 @@ Augment=none
 EquipLocation=head
 cost=50
 SellPrice=30
+Protection=0
 
 [RustyHelmet]
 Name=Rusty Helmet
@@ -50,6 +52,7 @@ Augment=none
 EquipLocation=head
 cost=50
 SellPrice=20
+Protection=0
 
 [EggHelm]
 Name=Egg Helmet
@@ -64,6 +67,7 @@ EquipLocation=head
 cost=0
 SellPrice=100
 Exclusive=yes
+Protection=0
 
 [SpookyHat]
 Name=Spooky Hat
@@ -78,6 +82,7 @@ Cost=0
 SellPrice=50
 Exclusive=yes
 EquipLocation=head
+Protection=0
 
 [FloppyHat]
 Name=Floppy Hat
@@ -91,6 +96,7 @@ Augment=none
 EquipLocation=head
 cost=50
 SellPrice=20
+Protection=0
 
 [DarksteelHelmet]
 Name=Darksteel Helmet
@@ -104,6 +110,7 @@ Augment=none
 EquipLocation=head
 cost=50
 SellPrice=50
+Protection=0
 
 [MyochinKabuto]
 Name=Myochin Kabuto
@@ -118,6 +125,7 @@ EquipLocation=head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [Genbu'sKabuto]
 name=Genbu's Kabuto
@@ -132,6 +140,7 @@ EquipLocation=head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [JesterHat]
 Name=Jester Hat
@@ -146,6 +155,7 @@ EquipLocation=head
 cost=50
 SellPrice=50
 Exclusive=yes
+Protection=0
 
 [JesterHat+1]
 Name=Jester Hat+1
@@ -160,6 +170,7 @@ EquipLocation=head
 cost=50
 SellPrice=50
 Exclusive=yes
+Protection=0
 
 [CrimsonCrown]
 Name=Crimson Crown
@@ -172,6 +183,7 @@ spd=0
 EquipLocation=head
 cost=50
 SellPrice=200
+Protection=0
 
 [BloodCrown]
 Name=Blood Crown
@@ -186,6 +198,7 @@ EquipLocation=head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ChaosBurgeonet]
 Name=Chaos Burgeonet
@@ -200,6 +213,7 @@ EquipLocation=head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ChaosBurgeonet+1]
 Name=Chaos Burgeonet +1
@@ -214,6 +228,7 @@ EquipLocation=head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ChaosBurgeonet+2]
 Name=Chaos Burgeonet +2
@@ -228,6 +243,7 @@ EquipLocation=head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockChapeau]
 Name=Warlock's Chapeau
@@ -242,6 +258,7 @@ EquipLocation=Head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WarlockChapeau+1]
 Name=Warlock's Chapeau +1
@@ -256,6 +273,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockChapeau+2]
 Name=Warlock's Chapeau +2
@@ -270,6 +288,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [TwilightHelm]
 Name=Twilight Helmet
@@ -285,6 +304,7 @@ cost=50
 SellPrice=2000
 LevelRequirement=250
 Exclusive=yes
+Protection=0
 
 [UnkaiKabuto]
 Name=Unkai Kabuto
@@ -300,6 +320,7 @@ cost=50
 Exclusive=yes
 SellPrice=3000
 LevelRequirement=300
+Protection=0
 
 [UnkaiKabuto+1]
 Name=Unkai Kabuto +1
@@ -315,6 +336,7 @@ cost=50
 SellPrice=4000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [UnkaiKabuto+2]
 Name=Unkai Kabuto +2
@@ -330,6 +352,7 @@ cost=50
 SellPrice=5000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurChappel]
 Name=Estoqueur's Chappel
@@ -345,6 +368,7 @@ cost=50
 Exclusive=yes
 SellPrice=3000
 LevelRequirement=300
+Protection=0
 
 [EstoqueurChappel+1]
 Name=Estoqueur's Chappel +1
@@ -360,6 +384,7 @@ cost=50
 SellPrice=4000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurChappel+2]
 Name=Estoqueur's Chappel +2
@@ -375,6 +400,7 @@ cost=50
 SellPrice=5000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [TantraCrown]
 Name=Tantra Crown
@@ -389,6 +415,7 @@ EquipLocation=Head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [TantraCrown+1]
 Name=Tantra Crown +1
@@ -403,6 +430,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [TantraCrown+2]
 Name=Tantra Crown +2
@@ -417,6 +445,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [WizardPetasos]
 Name=Wizard's Petasos
@@ -431,6 +460,7 @@ EquipLocation=Head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WizardPetasos+1]
 Name=Wizard's Petasos +1
@@ -445,6 +475,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WizardPetasos+2]
 Name=Wizard's Petasos +2
@@ -459,6 +490,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [HealerCap]
 Name=Healer's Cap
@@ -473,6 +505,7 @@ EquipLocation=Head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [HealerCap+1]
 Name=Healer's Cap +1
@@ -487,6 +520,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [HealerCap+2]
 Name=Healer's Cap +2
@@ -501,6 +535,7 @@ EquipLocation=Head
 cost=50
 SellPrice=2000
 Exclusive=yes
+Protection=0
 
 [ScoutBeret]
 Name=Scout's Beret
@@ -515,6 +550,7 @@ EquipLocation=Head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ScoutBeret+1]
 Name=Scout's Beret +1
@@ -529,6 +565,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ScoutBeret+2]
 Name=Scout's Beret +2
@@ -543,6 +580,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [SummonerHorn]
 Name=Summoner's Horn
@@ -557,6 +595,7 @@ EquipLocation=Head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [SummonerHorn+1]
 Name=Summoner's Horn +1
@@ -571,6 +610,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [SummonerHorn+2]
 Name=Summoner's Horn +2
@@ -585,6 +625,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [CreedArmet]
 Name=Creed Armet
@@ -599,6 +640,7 @@ EquipLocation=Head
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [CreedArmet+1]
 Name=Creed Armet +1
@@ -613,6 +655,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [CreedArmet+2]
 Name=Creed Armet +2
@@ -627,6 +670,7 @@ EquipLocation=Head
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [ShadowHelmet]
 Name=Shadow Helmet
@@ -641,6 +685,7 @@ EquipLocation=Head
 Cost=50
 SellPrice=1000
 Exclusive=Yes
+Protection=0
 
 [ValorCoronet]
 Name=Valor Coronet
@@ -657,6 +702,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [KasugaKabuto]
 Name=Kasuga Kabuto
@@ -673,6 +719,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [HattoriZukin]
 Name=Hattori Zukin
@@ -689,6 +736,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [ArchmagePetasos]
 Name=Archmage Petasos
@@ -705,6 +753,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [AnkusaHelm]
 Name=Ankusa Helm
@@ -721,6 +770,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [ReverenceCoronet]
 Name=Reverence Coronet
@@ -737,6 +787,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [WakidoKabuto]
 Name=Wakido Kabuto
@@ -753,6 +804,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [KogaHatsuburi]
 Name=Koga Hatsuburi
@@ -769,6 +821,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [Spaekona'sPetasos]
 Name=Spaekona's Petasos
@@ -785,6 +838,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [TotemicHelm]
 Name=Totemic Helm
@@ -801,6 +855,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 ========
 BODY
@@ -818,6 +873,7 @@ Augment=EnhanceCrafting
 EquipLocation=Body
 cost=50
 SellPrice=50
+Protection=0
 
 [RustyMail]
 Name=Rusty Mail
@@ -831,6 +887,7 @@ Augment=none
 EquipLocation=body
 cost=50
 SellPrice=20
+Protection=0.10
 
 [TornRobe]
 name=Torn Robe
@@ -844,6 +901,7 @@ Augment=none
 EquipLocation=body
 cost=50
 SellPrice=20
+Protection=0
 
 [SpookyCostume]
 Name=Spooky Costume
@@ -858,6 +916,7 @@ Cost=0
 SellPrice=50
 Exclusive=yes
 EquipLocation=body
+Protection=0
 
 [ClothRobe]
 name=Cloth Robe
@@ -871,6 +930,7 @@ Augment=none
 EquipLocation=body
 cost=50
 SellPrice=50
+Protection=0
 
 [MageRobe]
 name=Mage Robe
@@ -884,6 +944,7 @@ Augment=MagicBonus
 EquipLocation=body
 cost=50
 SellPrice=100
+Protection=0
 
 [DarksteelMail]
 Name=Darksteel Mail
@@ -897,6 +958,7 @@ Augment=none
 EquipLocation=body
 cost=50
 SellPrice=100
+Protection=0
 
 [Haubergeon]
 Name=Haubergeon
@@ -910,6 +972,7 @@ Augment=MeleeBonus
 EquipLocation=body
 cost=50
 SellPrice=150
+Protection=0
 
 [DragonMail]
 Name=Dragon Mail
@@ -923,7 +986,7 @@ Augment=EnhanceDragonHunt.EnhanceDefender
 EquipLocation=body
 cost=50
 SellPrice=500
-
+Protection=0
 
 [MyochinDomaru]
 name=Myochin Domaru
@@ -938,6 +1001,7 @@ EquipLocation=body
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [CrimsonHauberk]
 name=Crimson Hauberk
@@ -950,6 +1014,7 @@ spd=0
 EquipLocation=body
 cost=50
 SellPrice=300
+Protection=0
 
 [BloodHauberk]
 name=Blood Hauberk
@@ -964,7 +1029,7 @@ EquipLocation=body
 cost=50
 SellPrice=500
 Exclusive=yes
-
+Protection=0
 
 [ChaosCuirass]
 Name=Chaos Cuirass
@@ -979,6 +1044,7 @@ EquipLocation=body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ChaosCuirass+1]
 Name=Chaos Cuirass +1
@@ -993,6 +1059,7 @@ EquipLocation=body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ChaosCuirass+2]
 Name=Chaos Cuirass +2
@@ -1007,6 +1074,7 @@ EquipLocation=body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [Acolyte'sRobe]
 name=Acolyte's Robe
@@ -1022,6 +1090,7 @@ cost=0
 SellPrice=2000
 Exclusive=yes
 LevelRequirements=50
+Protection=0
 
 [PlunderedJacket]
 name=Plundered Jacket
@@ -1037,6 +1106,7 @@ cost=0
 SellPrice=2000
 Exclusive=yes
 LevelRequirements=50
+Protection=0
 
 [Kirin'sOsode]
 name=Kirin's Osode
@@ -1051,6 +1121,7 @@ EquipLocation=body
 cost=50
 SellPrice=2000
 Exclusive=yes
+Protection=0
 
 [TengokuMail]
 name=Tengoku Mail
@@ -1066,6 +1137,7 @@ cost=50
 SellPrice=50000
 LevelRequirement=275
 Exclusive=yes
+Protection=0
 
 [AtlantianMail]
 name=Atlantian Mail
@@ -1081,6 +1153,7 @@ cost=50
 SellPrice=50000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [AtlantianMail+1]
 name=Atlantian Mail+1
@@ -1096,6 +1169,7 @@ cost=50
 SellPrice=50000
 LevelRequirement=1000
 Exclusive=yes
+Protection=0
 
 [AtlantianRobe]
 name=Atlantian Robe
@@ -1111,6 +1185,7 @@ cost=50
 SellPrice=50000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [AtlantianRobe+1]
 name=Atlantian Robe+1
@@ -1126,6 +1201,7 @@ cost=50
 SellPrice=50000
 LevelRequirement=1000
 Exclusive=yes
+Protection=0
 
 [WarlockTabard]
 Name=Warlock's Tabard
@@ -1140,6 +1216,7 @@ EquipLocation=Body
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WarlockTabard+1]
 Name=Warlock's Tabard +1
@@ -1154,6 +1231,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockTabard+2]
 Name=Warlock's Tabard +2
@@ -1168,6 +1246,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [TwilightMail]
 Name=Twilight Mail
@@ -1183,6 +1262,7 @@ cost=50
 SellPrice=5000
 LevelRequirement=250
 Exclusive=yes
+Protection=0
 
 [UnkaiDomaru]
 Name=Unkai Domaru
@@ -1198,6 +1278,7 @@ cost=50
 Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
+Protection=0
 
 [UnkaiDomaru+1]
 Name=Unkai Domaru +1
@@ -1213,6 +1294,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [UnkaiDomaru+2]
 Name=Unkai Domaru +2
@@ -1228,6 +1310,7 @@ cost=50
 SellPrice=10000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurSayon]
 Name=Estoqueur's Sayon
@@ -1243,6 +1326,7 @@ cost=50
 Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
+Protection=0
 
 [EstoqueurSayon+1]
 Name=Estoqueur's Sayon +1
@@ -1258,6 +1342,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurSayon+2]
 Name=Estoqueur's Sayon +2
@@ -1273,6 +1358,7 @@ cost=50
 SellPrice=10000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [TantraCyclas]
 Name=Tantra Cycles
@@ -1287,6 +1373,7 @@ EquipLocation=Body
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [TantraCyclas+1]
 Name=Tantra Cycles +1
@@ -1301,6 +1388,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [TantraCyclas+2]
 Name=Tantra Cycles +2
@@ -1315,6 +1403,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [WizardCoat]
 Name=Wizard's Coat
@@ -1329,6 +1418,7 @@ EquipLocation=Body
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WizardCoat+1]
 Name=Wizard's Coat +1
@@ -1343,6 +1433,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WizardCoat+2]
 Name=Wizard's Coat +2
@@ -1357,6 +1448,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [HealerBriault]
 Name=Healer's Briault
@@ -1371,6 +1463,7 @@ EquipLocation=Body
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [HealerBriault+1]
 Name=Healer's Briault +1
@@ -1385,6 +1478,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [HealerBriault+2]
 Name=Healer's Briault +2
@@ -1399,6 +1493,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [ScoutJerkin]
 Name=Scout's Jerkin
@@ -1413,6 +1508,7 @@ EquipLocation=Body
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ScoutJerkin+1]
 Name=Scout's Jerkin +1
@@ -1427,6 +1523,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ScoutJerkin+2]
 Name=Scout's Jerkin +2
@@ -1441,6 +1538,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [SummonerDoublet]
 Name=Summoner's Doublet
@@ -1455,6 +1553,7 @@ EquipLocation=Body
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [SummonerDoublet+1]
 Name=Summoner's Doublet +1
@@ -1469,6 +1568,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [SummonerDoublet+2]
 Name=Summoner's Doublet +2
@@ -1483,6 +1583,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [CreedCuirass]
 Name=Creed Cuirass
@@ -1497,6 +1598,7 @@ EquipLocation=Body
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [CreedCuirass+1]
 Name=Creed Cuirass +1
@@ -1511,6 +1613,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [CreedCuirass+2]
 Name=Creed Cuirass +2
@@ -1525,7 +1628,7 @@ EquipLocation=Body
 cost=50
 SellPrice=1500
 Exclusive=yes
-
+Protection=0
 
 [Vash'sJacket]
 Name=Vash's Jacket
@@ -1541,6 +1644,7 @@ cost=50
 SellPrice=500000
 Exclusive=yes
 Legendary=true
+Protection=0
 
 [VashTheStampede'sJacket]
 Name=Vash the Stampede's Jacket
@@ -1556,6 +1660,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 
 [Vashu'sJacket]
@@ -1572,6 +1677,7 @@ cost=50
 SellPrice=3000
 LevelRequirement=200
 Exclusive=yes
+Protection=0
 
 [ShadowScalemail]
 Name=Shadow Scalemail
@@ -1586,6 +1692,7 @@ EquipLocation=Body
 Cost=50
 SellPrice=1000
 Exclusive=Yes
+Protection=0
 
 [ValorSurcoat]
 Name=Valor Surcoat
@@ -1602,6 +1709,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [KasugaDomaru]
 Name=Kasuga Domaru
@@ -1618,6 +1726,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [HattoriNingi]
 Name=Hattori Ningi
@@ -1634,6 +1743,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [ArchmageCoat]
 Name=Archmage Coat
@@ -1650,6 +1760,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [AnkusaJackcoat]
 Name=Ankusa Jackcoat
@@ -1666,7 +1777,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
-
+Protection=0
 
 [ReverenceSurcoat]
 Name=Reverence Surcoat
@@ -1683,6 +1794,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [WakidoDomaru]
 Name=Wakido Domaru
@@ -1699,6 +1811,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [KogaNingi]
 Name=Koga Ningi
@@ -1715,6 +1828,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [Spaekona'sCoat]
 Name=Spaekona's Coat
@@ -1731,6 +1845,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [TotemicJackcoat]
 Name=Totemic Jackcoat
@@ -1747,6 +1862,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [DensetsuNoYoroi]
 name=Densetsu No Yoroi
@@ -1763,6 +1879,7 @@ SellPrice=50000
 LevelRequirement=20000
 Exclusive=yes
 Legendary=true
+Protection=0
 
 ========
 LEGS
@@ -1780,6 +1897,7 @@ Augment=EnhanceCrafting
 EquipLocation=Legs
 cost=50
 SellPrice=50
+Protection=0
 
 [RustyHose]
 Name=Rusty Hose
@@ -1793,6 +1911,7 @@ Augment=none
 EquipLocation=legs
 cost=50
 SellPrice=20
+Protection=0
 
 [SpookyLeggings]
 Name=Spooky Leggings
@@ -1807,6 +1926,7 @@ Cost=0
 SellPrice=50
 Exclusive=yes
 EquipLocation=legs
+Protection=0
 
 [DarksteelHose]
 Name=Darksteel Hose
@@ -1820,6 +1940,7 @@ Augment=none
 EquipLocation=legs
 cost=50
 SellPrice=50
+Protection=0
 
 [MyochinHaidate]
 Name=Myochin Haidate
@@ -1834,6 +1955,7 @@ EquipLocation=legs
 cost=50
 SellPrice=100
 Exclusive=yes
+Protection=0
 
 [ChaosFlanchard]
 Name=Chaos Flanchard
@@ -1848,6 +1970,7 @@ EquipLocation=legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ChaosFlanchard+1]
 Name=Chaos Flanchard +1
@@ -1862,6 +1985,7 @@ EquipLocation=legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ChaosFlanchard+2]
 Name=Chaos Flanchard +2
@@ -1876,6 +2000,7 @@ EquipLocation=legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [Byakko'sHaidate]
 name=Byakko's Haidate
@@ -1890,6 +2015,7 @@ EquipLocation=legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockTights]
 Name=Warlock's Tights
@@ -1904,6 +2030,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WarlockTights+1]
 Name=Warlock's Tights +1
@@ -1918,6 +2045,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockTights+2]
 Name=Warlock's Tights +2
@@ -1932,6 +2060,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [TwilightCuisses]
 Name=Twilight Cuisses
@@ -1947,6 +2076,7 @@ cost=50
 SellPrice=2500
 LevelRequirement=250
 Exclusive=yes
+Protection=0
 
 [UnkaiHaidate]
 Name=Unkai Haidate
@@ -1962,6 +2092,7 @@ cost=50
 Exclusive=yes
 SellPrice=2000
 LevelRequirement=300
+Protection=0
 
 [UnkaiHaidate+1]
 Name=Unkai Haidate +1
@@ -1977,6 +2108,7 @@ cost=50
 SellPrice=5000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [UnkaiHaidate+2]
 Name=Unkai Haidate +2
@@ -1992,6 +2124,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurFuseau]
 Name=Estoqueur's Fuseau
@@ -2007,6 +2140,7 @@ cost=50
 Exclusive=yes
 SellPrice=2000
 LevelRequirement=300
+Protection=0
 
 [EstoqueurFuseau+1]
 Name=Estoqueur's Fuseau +1
@@ -2022,6 +2156,7 @@ cost=50
 SellPrice=5000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurFuseau+2]
 Name=Estoqueur's Fuseau +2
@@ -2037,6 +2172,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [TantraHose]
 Name=Tantra Hose
@@ -2051,6 +2187,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [TantraHose+1]
 Name=Tantra Hose +1
@@ -2065,6 +2202,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [TantraHose+2]
 Name=Tantra Hose +2
@@ -2079,6 +2217,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [WizardTonban]
 Name=Wizard's Tonban
@@ -2093,6 +2232,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WizardTonban+1]
 Name=Wizard's Tonban +1
@@ -2107,6 +2247,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WizardTonban+2]
 Name=Wizard's Tonban +2
@@ -2121,6 +2262,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [HealerPantaloons]
 Name=Healer's Pantaloons
@@ -2135,6 +2277,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [HealerPantaloons+1]
 Name=Healer's Pantaloons +1
@@ -2149,6 +2292,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [HealerPantaloons+2]
 Name=Healer's Pantaloons +2
@@ -2163,6 +2307,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [ScoutBraccae]
 Name=Scout's Braccae
@@ -2177,6 +2322,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ScoutBraccae+1]
 Name=Scout's Braccae +1
@@ -2191,6 +2337,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ScoutBraccae+2]
 Name=Scout's Braccae +2
@@ -2205,6 +2352,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [SummonerSpats]
 Name=Summoner's Spats
@@ -2219,6 +2367,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [SummonerSpats+1]
 Name=Summoner's Spats +1
@@ -2233,6 +2382,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [SummonerSpats+2]
 Name=Summoner's Spats +2
@@ -2247,6 +2397,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [CreedCuisses]
 Name=Creed Cuisses
@@ -2261,6 +2412,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [CreedCuisses+1]
 Name=Creed Cuisses +1
@@ -2275,6 +2427,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [CreedCuisses+2]
 Name=Creed Cuisses +2
@@ -2289,6 +2442,7 @@ EquipLocation=Legs
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [ShadowCuisses]
 Name=Shadow Cuisses
@@ -2303,6 +2457,7 @@ EquipLocation=Legs
 Cost=50
 SellPrice=1000
 Exclusive=Yes
+Protection=0
 
 [Valorcuisses]
 Name=Valor Cuisses
@@ -2319,6 +2474,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [KasugaHaidate]
 Name=Kasuga Haidate
@@ -2335,6 +2491,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [HattoriHakama]
 Name=Hattori Hakama
@@ -2351,6 +2508,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [ArchmageTonban]
 Name=Archmage Tonban
@@ -2367,6 +2525,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [AnkusaTrousers]
 Name=Ankusa Trousers
@@ -2383,6 +2542,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 
 [ReverenceCuisses]
@@ -2400,6 +2560,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [WakidoHaidate]
 Name=Wakido Haidate
@@ -2416,6 +2577,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [KogaHakama]
 Name=Koga Hakama
@@ -2432,6 +2594,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [Spaekona'sTonban]
 Name=Spaekona's Tonban
@@ -2448,6 +2611,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [TotemicTrousers]
 Name=Totemic Trousers
@@ -2464,6 +2628,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 
 
@@ -2483,6 +2648,7 @@ Augment=EnhanceCrafting
 EquipLocation=Feet
 cost=50
 SellPrice=50
+Protection=0
 
 [RustyBoots]
 Name=Rusty Boots
@@ -2496,6 +2662,7 @@ Augment=none
 EquipLocation=feet
 cost=50
 SellPrice=20
+Protection=0.10
 
 [SpookyBoots]
 Name=Spooky Boots
@@ -2510,6 +2677,7 @@ Cost=0
 SellPrice=50
 Exclusive=yes
 EquipLocation=feet
+Protection=0
 
 [DarksteelBoots]
 Name=Darksteel Boots
@@ -2523,6 +2691,7 @@ Augment=None
 EquipLocation=feet
 cost=50
 SellPrice=50
+Protection=0
 
 [PlunderedBoots]
 name=Plundered Boots
@@ -2538,6 +2707,7 @@ cost=0
 SellPrice=2000
 Exclusive=yes
 LevelRequirements=50
+Protection=0
 
 [Acolyte'sSandals]
 name=Acolyte's Sandals
@@ -2553,7 +2723,7 @@ cost=0
 SellPrice=2000
 Exclusive=yes
 LevelRequirements=50
-
+Protection=0
 
 [MyochinSune-Ate]
 Name=Myochin Sune-Ate
@@ -2568,6 +2738,7 @@ EquipLocation=feet
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [CrimsonSocks]
 name=Crimson Socks
@@ -2580,6 +2751,7 @@ spd=0
 EquipLocation=feet
 Cost=50
 SellPrice=100
+Protection=0
 
 [BloodSocks]
 name=Blood Socks
@@ -2594,6 +2766,7 @@ EquipLocation=feet
 Cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ChaosSollerets]
 Name=Chaos Sollerets
@@ -2608,6 +2781,7 @@ EquipLocation=feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ChaosSollerets+1]
 Name=Chaos Sollerets +1
@@ -2622,6 +2796,7 @@ EquipLocation=feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ChaosSollerets+2]
 Name=Chaos Sollerets +2
@@ -2636,6 +2811,7 @@ EquipLocation=feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [Suzaku'sSune-Ate]
 Name=Suzaku'sSune-Ate
@@ -2650,6 +2826,7 @@ EquipLocation=feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockBoots]
 Name=Warlock's Boots
@@ -2664,6 +2841,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WarlockBoots+1]
 Name=Warlock's Boots +1
@@ -2678,6 +2856,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockBoots+2]
 Name=Warlock's Boots +2
@@ -2692,6 +2871,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [TwilightSabatons]
 Name=Twilight Sabatons
@@ -2707,6 +2887,7 @@ cost=50
 SellPrice=3000
 LevelRequirement=250
 Exclusive=yes
+Protection=0
 
 [UnkaiSune-Ate]
 Name=Unkai Sune-Ate
@@ -2722,6 +2903,7 @@ cost=50
 Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
+Protection=0
 
 [UnkaiSune-Ate+1]
 Name=Unkai Sune-Ate +1
@@ -2737,6 +2919,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [UnkaiSune-Ate+2]
 Name=Unkai Sune-Ate +2
@@ -2752,6 +2935,7 @@ cost=50
 SellPrice=10000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurHouseaux]
 Name=Estoqueur's Houseaux
@@ -2767,6 +2951,7 @@ cost=50
 Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
+Protection=0
 
 [EstoqueurHouseaux+1]
 Name=Estoqueur's Houseaux +1
@@ -2782,6 +2967,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurHouseaux+2]
 Name=Estoqueur's Houseaux +2
@@ -2797,6 +2983,7 @@ cost=50
 SellPrice=10000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [TantraGaiters]
 Name=Tantra Gaiters
@@ -2811,6 +2998,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [TantraGaiters+1]
 Name=Tantra Gaiters +1
@@ -2825,6 +3013,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [TantraGaiters+2]
 Name=Tantra Gaiters +2
@@ -2839,6 +3028,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [WizardSabots]
 Name=Wizard's Sabots
@@ -2853,6 +3043,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WizardSabots+1]
 Name=Wizard's Sabots +1
@@ -2867,6 +3058,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WizardSabots+2]
 Name=Wizard's Sabots +2
@@ -2881,6 +3073,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [HealerDuckbills]
 Name=Healer's Duckbills
@@ -2895,6 +3088,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [HealerDuckbills+1]
 Name=Healer's Duckbills +1
@@ -2909,6 +3103,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [HealerDuckbills+2]
 Name=Healer's Duckbills +2
@@ -2923,6 +3118,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [ScoutBoots]
 Name=Scout's Boots
@@ -2937,6 +3133,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ScoutBoots+1]
 Name=Scout's Boots +1
@@ -2951,6 +3148,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ScoutBoots+2]
 Name=Scout's Boots +2
@@ -2965,6 +3163,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [SummonerPigaches]
 Name=Summoner's Pigaches
@@ -2979,6 +3178,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [SummonerPigaches+1]
 Name=Summoner's Pigaches +1
@@ -2993,6 +3193,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [SummonerPigaches+2]
 Name=Summoner's Pigaches +2
@@ -3007,6 +3208,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [CreedSabatons]
 Name=Creed Sabatons
@@ -3021,6 +3223,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [CreedSabatons+1]
 Name=Creed Sabatons +1
@@ -3035,6 +3238,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [CreedSabatons+2]
 Name=Creed Sabatons +2
@@ -3049,6 +3253,7 @@ EquipLocation=Feet
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [ShadowGreaves]
 Name=Shadow Greaves
@@ -3063,6 +3268,7 @@ EquipLocation=Feet
 Cost=50
 SellPrice=1000
 Exclusive=Yes
+Protection=0
 
 [ValorSabatons]
 Name=Valor Sabatons
@@ -3079,6 +3285,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [KasugaSune-Ate]
 Name=KasugaSune-Ate
@@ -3095,6 +3302,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [HattoriKyahan]
 Name=Hattori Kyahan
@@ -3111,6 +3319,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [ArchmageSabots]
 Name=Archmage Sabots
@@ -3127,6 +3336,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [AnkusaGaiters]
 Name=Ankusa Gaiters
@@ -3143,6 +3353,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [ReverenceSabtons]
 Name=Reverence Sabtons
@@ -3159,6 +3370,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [WakidoSune-Ate]
 Name=Wakido Sune-Ate
@@ -3175,6 +3387,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [KogaKyahan]
 Name=Koga Kyahan
@@ -3191,6 +3404,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [Spaekona'sSabots]
 Name=Spaekona's Sabots
@@ -3207,6 +3421,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [TotemicGaiters]
 Name=Totemic Gaiters
@@ -3223,6 +3438,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 
 ========
@@ -3241,6 +3457,7 @@ Augment=EnhanceCrafting
 EquipLocation=Hands
 cost=50
 SellPrice=50
+Protection=0
 
 [LeatherGloves]
 Name=Leather Gloves
@@ -3254,6 +3471,7 @@ Augment=none
 EquipLocation=hands
 cost=50
 SellPrice=20
+Protection=0
 
 [SpookyGloves]
 Name=Spooky Gloves
@@ -3268,6 +3486,7 @@ Cost=0
 SellPrice=50
 Exclusive=yes
 EquipLocation=hands
+Protection=0
 
 [RustyKnuckles]
 Name=Rusty Knuckles
@@ -3281,6 +3500,7 @@ Augment=none
 EquipLocation=hands
 cost=50
 SellPrice=20
+Protection=0.10
 
 [SpikedKnuckles]
 Name=Spiked Knuckles
@@ -3294,6 +3514,7 @@ Augment=none
 EquipLocation=hands
 cost=50
 SellPrice=50
+Protection=0
 
 [RustyGloves]
 Name=Rusty Gloves
@@ -3307,6 +3528,7 @@ Augment=none
 EquipLocation=hands
 cost=50
 SellPrice=20
+Protection=0.10
 
 [DarksteelGloves]
 Name=Darksteel Gloves
@@ -3320,6 +3542,7 @@ Augment=None
 EquipLocation=hands
 cost=50
 SellPrice=50
+Protection=0
 
 [MyochinKote]
 Name=Myochin Kote
@@ -3334,6 +3557,7 @@ EquipLocation=hands
 cost=50
 SellPrice=100
 Exclusive=yes
+Protection=0
 
 [ChaosGauntlets]
 Name=Chaos Gauntlets
@@ -3348,6 +3572,7 @@ EquipLocation=hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ChaosGauntlets+1]
 Name=Chaos Gauntlets +1
@@ -3362,6 +3587,7 @@ EquipLocation=hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ChaosGauntlets+2]
 Name=Chaos Gauntlets +2
@@ -3376,6 +3602,7 @@ EquipLocation=hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [Seiryu'sKote]
 name=Seiryu's Kote
@@ -3390,6 +3617,7 @@ EquipLocation=hands
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockGloves]
 Name=Warlock's Gloves
@@ -3404,6 +3632,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WarlockGloves+1]
 Name=Warlock's Gloves +1
@@ -3418,6 +3647,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WarlockGloves+2]
 Name=Warlock's Gloves +2
@@ -3432,6 +3662,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [TwilightGauntlets]
 Name=Twilight Gauntlets
@@ -3447,6 +3678,7 @@ cost=50
 SellPrice=3000
 LevleRequirement=250
 Exclusive=yes
+Protection=0
 
 [UnkaiKote]
 Name=Unkai Kote
@@ -3462,6 +3694,7 @@ cost=50
 Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
+Protection=0
 
 [UnkaiKote+1]
 Name=Unkai Kote +1
@@ -3477,6 +3710,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [UnkaiKote+2]
 Name=Unkai Kote +2
@@ -3492,6 +3726,7 @@ cost=50
 SellPrice=10000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurGantherots]
 Name=Estoqueur's Gantherots
@@ -3507,6 +3742,7 @@ cost=50
 Exclusive=yes
 SellPrice=5000
 LevelRequirement=300
+Protection=0
 
 [EstoqueurGantherots+1]
 Name=Estoqueur's Gantherots +1
@@ -3522,6 +3758,7 @@ cost=50
 SellPrice=8000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [EstoqueurGantherots+2]
 Name=Estoqueur's Gantherots +2
@@ -3537,6 +3774,7 @@ cost=50
 SellPrice=10000
 LevelRequirement=300
 Exclusive=yes
+Protection=0
 
 [TantraGloves]
 Name=Tantra Gloves
@@ -3551,6 +3789,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [TantraGloves+1]
 Name=Tantra Gloves +1
@@ -3565,6 +3804,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [TantraGloves+2]
 Name=Tantra Gloves +2
@@ -3579,6 +3819,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [WizardGloves]
 Name=Wizard's Gloves
@@ -3593,6 +3834,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [WizardGloves+1]
 Name=Wizard's Gloves +1
@@ -3607,6 +3849,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [WizardGloves+2]
 Name=Wizard's Gloves +2
@@ -3621,6 +3864,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [HealerMitts]
 Name=Healer's Mitts
@@ -3635,6 +3879,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [HealerMitts+1]
 Name=Healer's Mitts +1
@@ -3649,6 +3894,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [HealerMitts+2]
 Name=Healer's Mitts +2
@@ -3663,6 +3909,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [ScoutBracers]
 Name=Scout's Bracers
@@ -3677,6 +3924,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [ScoutBracers+1]
 Name=Scout's Bracers +1
@@ -3691,6 +3939,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [ScoutBracers+2]
 Name=Scout's Bracers +2
@@ -3705,6 +3954,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [SummonerBracers]
 Name=Summoner's Bracers
@@ -3719,6 +3969,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [SummonerBracers+1]
 Name=Summoner's Bracers +1
@@ -3733,6 +3984,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [SummonerBracers+2]
 Name=Summoner's Bracers +2
@@ -3747,6 +3999,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [CreedGauntlets]
 Name=Creed Gauntlets
@@ -3761,6 +4014,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=500
 Exclusive=yes
+Protection=0
 
 [CreedGauntlets+1]
 Name=Creed Gauntlets +1
@@ -3775,6 +4029,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1000
 Exclusive=yes
+Protection=0
 
 [CreedGauntlets+2]
 Name=Creed Gauntlets +2
@@ -3789,6 +4044,7 @@ EquipLocation=Hands
 cost=50
 SellPrice=1500
 Exclusive=yes
+Protection=0
 
 [ShadowGauntlets]
 Name=Shadow Gauntlets
@@ -3803,6 +4059,7 @@ EquipLocation=Hands
 Cost=50
 SellPrice=1000
 Exclusive=Yes
+Protection=0
 
 [ValorGauntlets]
 Name=Valor Gauntlets
@@ -3819,6 +4076,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [KasugaKote]
 Name=Kasuga Kote
@@ -3835,6 +4093,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [HattoriTekko]
 Name=Hattori Tekko
@@ -3851,6 +4110,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [ArchmageGloves]
 Name=Archmage Gloves
@@ -3867,6 +4127,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [AnkusaGloves]
 Name=Ankusa Gloves
@@ -3883,6 +4144,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=3000
+Protection=0
 
 [ReverenceGauntlets]
 Name=Reverence Gauntlets
@@ -3899,6 +4161,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [WakidoKote]
 Name=Wakido Kote
@@ -3915,6 +4178,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 
 [KogaTekko]
@@ -3932,6 +4196,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [Spaekona'sGloves]
 Name=Spaekona's Gloves
@@ -3948,6 +4213,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [TotemicGloves]
 Name=Totemic Gloves
@@ -3964,6 +4230,7 @@ SellPrice=50
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 
 
@@ -3986,6 +4253,7 @@ Augment=AbsorbIG
 EquipLocation=body
 cost=0
 Exclusive=yes
+Protection=0
 
 [LevithanRightHeart]
 Name=Levithan's Right Heart
@@ -3999,6 +4267,7 @@ Augment=AbsorbTP
 EquipLocation=body
 cost=0
 Exclusive=yes
+Protection=0
 
 [LevithanCenterHeart]
 Name=Levithan's Center Heart
@@ -4012,6 +4281,7 @@ Augment=
 EquipLocation=body
 cost=0
 Exclusive=yes
+Protection=0
 
 [ChozoHelmet]
 Name=Chozo Helmet
@@ -4026,6 +4296,7 @@ EquipLocation=head
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [ChozoArmor]
 Name=Chozo Armor
@@ -4040,6 +4311,7 @@ EquipLocation=body
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [ChozoArmArmor]
 Name=Chozo Arm Armor
@@ -4054,6 +4326,7 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [ChozoLegArmor]
 Name=Chozo Leg Armor
@@ -4068,6 +4341,7 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [ChozoFootArmor]
 Name=Chozo Foot Armor
@@ -4082,6 +4356,7 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [Lirarian's_Circlet]
 Name=Lirarian's Circlet
@@ -4096,6 +4371,7 @@ EquipLocation=head
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [Lirarian's_Armor]
 Name=Lirarian's Armor
@@ -4110,6 +4386,7 @@ EquipLocation=body
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [Lirarian's_Gauntlets]
 Name=Lirarian's Gauntlets
@@ -4124,6 +4401,7 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [Lirarian's_Cuisses]
 Name=Lirarian's Cuisses
@@ -4138,6 +4416,7 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [Lirarian's_Sabatons]
 Name=Lirarian's Sabatons
@@ -4152,6 +4431,7 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 
 [WitchRobe]
@@ -4167,6 +4447,7 @@ EquipLocation=body
 Cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [DefiledRobe]
 Name=Defiled Robe
@@ -4181,6 +4462,7 @@ EquipLocation=body
 Cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [HeavyFin]
 Name=Heavy Fin
@@ -4195,8 +4477,7 @@ EquipLocation=body
 Cost=0
 SellPrice=0
 Exclusive=yes
-
-
+Protection=0
 
 [InfernalFlames]
 Name=Infernal Flames
@@ -4213,6 +4494,7 @@ SellPrice=0
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [FrozenToadBody]
 Name=Frozen Toad Body
@@ -4229,6 +4511,7 @@ SellPrice=0
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [DollSkin]
 Name=Doll Skin
@@ -4245,6 +4528,7 @@ SellPrice=0
 Legendary=true
 Exclusive=yes
 LevelRequirement=5000
+Protection=0
 
 [PhazonHelmet]
 Name=Phazon Helmet
@@ -4259,6 +4543,7 @@ EquipLocation=head
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [PhazonArmor]
 Name=Phazon Armor
@@ -4273,6 +4558,7 @@ EquipLocation=body
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [PhazonArmArmor]
 Name=Phazon Arm Armor
@@ -4287,6 +4573,7 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [PhazonLegArmor]
 Name=Phazon Leg Armor
@@ -4301,6 +4588,7 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [PhazonFootArmor]
 Name=Phazon Foot Armor
@@ -4315,6 +4603,7 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [BayonettaGlasses]
 Name=Bayonetta Glasses
@@ -4329,6 +4618,7 @@ EquipLocation=head
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [BayonettaOutfit]
 Name=Bayonetta Outfit
@@ -4343,6 +4633,7 @@ EquipLocation=body
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [Bayonetta Gloves]
 Name=Bayonetta Gloves
@@ -4357,6 +4648,7 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [BayonettaLeggings]
 Name=Bayonetta Leggings
@@ -4371,6 +4663,7 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [BayonettaHeels]
 Name=Bayonetta Heels
@@ -4385,6 +4678,7 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneEyepatch]
 Name=Undyne Eyepatch
@@ -4399,6 +4693,7 @@ EquipLocation=head
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneShirt]
 Name=Undyne Shirt
@@ -4413,6 +4708,7 @@ EquipLocation=body
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneGloves]
 Name=Undyne Gloves
@@ -4427,6 +4723,7 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndynePants]
 Name=Undyne Pants
@@ -4441,6 +4738,7 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneBoots]
 Name=Undyne Boots
@@ -4455,6 +4753,7 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneHelmet]
 Name=Undyne Helmet
@@ -4469,6 +4768,7 @@ EquipLocation=head
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneArmor]
 Name=Undyne Armor
@@ -4483,6 +4783,7 @@ EquipLocation=body
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneGauntlets]
 Name=Undyne Gauntlets
@@ -4497,6 +4798,7 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneArmoredLeggings]
 Name=Undyne Armored Leggings
@@ -4511,6 +4813,7 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyneGreaves]
 Name=Undyne Greaves
@@ -4525,6 +4828,7 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyingArmor]
 Name=Undying Armor
@@ -4539,6 +4843,7 @@ EquipLocation=body
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyingGauntlets]
 Name=Undying Gauntlets
@@ -4553,6 +4858,7 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyingArmoredLeggings]
 Name=Undying Armored Leggings
@@ -4567,6 +4873,7 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [UndyingGreaves]
 Name=Undying Greaves
@@ -4581,6 +4888,7 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [SansHoodie]
 Name=Sans Hoodie
@@ -4595,6 +4903,7 @@ EquipLocation=body
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [SansGloves]
 Name=Sans Gloves
@@ -4609,6 +4918,7 @@ EquipLocation=hands
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [SansShorts]
 Name=Sans Shorts
@@ -4623,6 +4933,7 @@ EquipLocation=legs
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0
 
 [SansSlippers]
 Name=Sans Slippers
@@ -4637,3 +4948,4 @@ EquipLocation=feet
 cost=0
 SellPrice=0
 Exclusive=yes
+Protection=0

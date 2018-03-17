@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/14/18
+;;;; Last updated: 03/17/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -187,6 +187,28 @@ armor.stat {
 
   return %armor.stat
 }
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Calculates the protection value
+; This is from armor/
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+armor.protection {
+  ; $1 = the person we're checking
+
+  var %armor.protection 0
+
+  ; Check for each armor part
+  if (($return.equipped($1, head) != nothing) && ($return.equipped($1, head) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, head), Protection) }
+  if (($return.equipped($1, body) != nothing) && ($return.equipped($1, body) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, body), Protection) }
+  if (($return.equipped($1, legs) != nothing) && ($return.equipped($1, legs) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, legs), Protection) }
+  if (($return.equipped($1, feet) != nothing) && ($return.equipped($1, feet) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, feet), Protection) }
+  if (($return.equipped($1, hands) != nothing) && ($return.equipped($1, hands) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, hands), Protection) }
+
+  if (%armor.protection = $null) { return 0 }
+  else { return %armor.protection }
+}
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns TNL of char
