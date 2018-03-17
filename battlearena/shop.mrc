@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/10/18
+;;;; Last updated: 03/17/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -3166,6 +3166,8 @@ alias shop.mythic {
     ; Do we have enough OdinMarks?
     var %mythic.cost 10
     var %current.odinmarks $readini($char($1), Item_Amount, OdinMark)
+    if (%current.odinmarks = $null) { var %current.odinmarks 0 }
+
     if (%current.odinmarks < %mythic.cost) { $display.private.message(4You do not have enough OdinMarks to forge a mythic) | halt }
 
     ; Purchase the weapon
@@ -3332,6 +3334,7 @@ alias mythic.upgrade.costcheck {
   ; $2 = the amount it costs
 
   var %current.odinmarks $readini($char($1), Item_Amount, OdinMark)
+  if (%current.odinmarks = $null) { var %current.odinmarks 0 }
   if (%current.odinmarks <  $2) { $display.private.message(4You do not have enough OdinMarks to purchase this upgrade) | halt }
   dec %current.odinmarks $2
   writeini $char($1) Item_Amount OdinMark %current.odinmarks
