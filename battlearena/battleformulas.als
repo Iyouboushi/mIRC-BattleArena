@@ -1,14 +1,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/14/18
+;;;; Last updated: 03/17/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
-; so many damage formulas please do not 
-; remove them from the bot. Torment & Cosmic
-; use 2.5 while Dungeons and normal battles use the defaults.
+; so many damage formulas please do not
+; remove them from the bot. 
 
 ; By default melee uses $formula.meleedmg.player.formula
 ; By default techs use: $formula.techdmg.player.formula
+; Dungeons use the defaults
+; Torment uses 2.5
+; Cosmic uses 2.5
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1314,6 +1316,9 @@ cap.damage {
   ; ================
   if ($readini($char($1), info, flag) = monster) {
     if (%battle.rage.darkness = on) { return }
+
+    if (%battle.type = dungeon) { return }
+    if (%portal.bonus = true) { return }
 
     if ($3 = melee) { var %damage.threshold 1800 }
     if ($3 = tech) { var %damage.threshold 2000 }
@@ -3363,24 +3368,16 @@ formula.meleedmg.monster {
   }
   unset %status.type.list
 
-  set %starting.damage %attack.damage
-
-  $damage.modifiers.check($1, $2, $3, melee)
-
   ; Check for portal damage boost
   if (%portal.bonus = true) { 
     var %percent.damage.amount 5
     if ($return_playersinbattle > 1) { inc %percent.damage.amount 5 }
-    if ($eliteflag.check($3) = true) { inc  %percent.damage.amount 5 }
-    if ($supereliteflag.check($3) = true) { inc  %percent.damage.amount 10 }
+    if ($eliteflag.check($1) = true) { inc  %percent.damage.amount 5 }
+    if ($supereliteflag.check($1) = true) { inc  %percent.damage.amount 10 }
 
     var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
     inc %attack.damage $round(%percent.damage,0)
   }
-
-
-  ; Set the damage color
-  $damage.color.check
 
   ; Now we're ready to calculate the enemy's defense..  
   set %enemy.defense $current.def($3)
@@ -3559,9 +3556,18 @@ formula.meleedmg.monster {
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
 
-  ; Elite monsters have increased damage
-  if ($eliteflag.check($1) = true) {  inc %attack.damage $round($calc(%attack.damage * .25),0)  }
-  if ($supereliteflag.check($3) = true) { inc %attack.damage $round($calc(%attack.damage * .35),0)  }
+  ; if we're in a portal or dungeon  then decrease damage by armor protection
+  if ((%portal.bonus = true) || (%battle.type = dungeon)) { set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) }
+
+  ; set starting damage and check for modifiers  
+  set %starting.damage %attack.damage
+  $damage.modifiers.check($1, $2, $3, tech)
+
+  ; Elite monsters take less damage
+  if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
+  if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
+
+  $damage.color.check
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -3849,8 +3855,8 @@ formula.techdmg.monster {
   if (%portal.bonus = true) { 
     var %percent.damage.amount 10
     if ($return_playersinbattle > 1) { inc %percent.damage.amount 5 }
-    if ($eliteflag.check($3) = true) { inc  %percent.damage.amount 5 }
-    if ($supereliteflag.check($3) = true) { inc  %percent.damage.amount 10 }
+    if ($eliteflag.check($1) = true) { inc  %percent.damage.amount 5 }
+    if ($supereliteflag.check($1) = true) { inc %percent.damage.amount 10 }
 
     var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
     inc %attack.damage $round(%percent.damage,0)
@@ -3858,12 +3864,6 @@ formula.techdmg.monster {
 
   ; Calculate the attack damage based on log of base stat / log of enemy's defense
   set %attack.damage $round($calc(($log(%base.stat) / $log(%enemy.defense)) * %attack.damage),0)
-
-  set %starting.damage %attack.damage
-
-  $damage.modifiers.check($1, $2, $3, tech)
-
-  $damage.color.check
 
   if ($readini($char($3), info, ai_type) = counteronly) { set %attack.damage 0 | return }
 
@@ -3941,9 +3941,18 @@ formula.techdmg.monster {
 
   $cap.damage($1, $3, tech)
 
+  ; if we're in a portal or dungeon  then decrease damage by armor protection
+  if ((%portal.bonus = true) || (%battle.type = dungeon)) { set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) }
+
+  ; set starting damage and check for modifiers  
+  set %starting.damage %attack.damage
+  $damage.modifiers.check($1, $2, $3, tech)
+
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
   if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
+
+  $damage.color.check
 
   ; Check for the Guardian style
   $guardian_style_check($3)
@@ -4219,13 +4228,6 @@ formula.techdmg.player.formula_2.0 {
     dec %enemy.defense %def.ignored
   }
 
-  ; Check for modifiers
-  set %starting.damage %attack.damage
-
-  $damage.modifiers.check($1, $2, $3, tech)
-
-  $damage.color.check
-
   if ($readini($char($3), info, ai_type) = counteronly) { set %attack.damage 0 | return }
 
   if (enhance-tech isin %battleconditions) { inc %attack.damage $return_percentofvalue(%attack.damage, 10) }
@@ -4272,9 +4274,15 @@ formula.techdmg.player.formula_2.0 {
   inc %attack.damage $rand(1,5)
   unset %true.base.stat
 
+  ; set starting damage and check for modifiers  
+  set %starting.damage %attack.damage
+  $damage.modifiers.check($1, $2, $3, tech)
+
   ; Elite monsters take less damage
   if ($eliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .30),0)  }
   if ($supereliteflag.check($3) = true) { dec %attack.damage $round($calc(%attack.damage *  .45),0)  }
+
+  $damage.color.check
 
   ; Check for the Guardian style
   $guardian_style_check($3)

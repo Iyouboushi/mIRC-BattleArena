@@ -3381,6 +3381,7 @@ Exclusive=yes
 PortalLevel=10
 Victory=$chr(2) $+ The Allied Scrub has learned a valuable lesson and will use that lesson to grow stronger!
 Defeat=$chr(2) $+ The Allied Scrub does a dance to celebrate the fact that he has bested the heroes in combat! "See? I don't need any training! I'm already the best!"
+RecommendedPartySize=1
 
 [MillennialFairPass]
 Type=portal
@@ -3393,6 +3394,7 @@ Desc=takes out the fair pass, which allows everyone to enter. The heroes take a 
 AlliedNotes=500
 Exclusive=yes
 PortalLevel=10
+RecommendedPartySize=1
 
 [WormFood]
 type=portal
@@ -3405,6 +3407,7 @@ Desc=travels to the Korroloka Tunnel and takes out the worm food.  After opening
 AlliedNotes=250
 Exclusive=yes
 PortalLevel=25
+RecommendedPartySize=1
 
 [DemonBell]
 type=portal
@@ -3417,6 +3420,7 @@ Desc=rings a demonic bell that opens a portal. Upon entering they are greeted wi
 AlliedNotes=500
 Exclusive=yes
 PortalLevel=30
+RecommendedPartySize=1
 
 [BombShard]
 type=portal
@@ -3430,6 +3434,7 @@ AlliedNotes=500
 Exclusive=yes
 PortalLevel=30
 DarknessTurns=7
+RecommendedPartySize=2
 
 [ArmosMedallian]
 type=portal

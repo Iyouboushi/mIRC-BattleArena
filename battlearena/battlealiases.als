@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/16/18
+;;;; Last updated: 03/17/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2828,6 +2828,8 @@ first_round_dmg_chk {
   if (%portal.bonus = true) { return } 
 
   if ($return.systemsetting(EnableFirstRoundProtection) = false) { return }
+  if ((%battle.type = dungeon) && (%true.turn > 1)) { return }
+
 
 
   if ((%current.turn = 1) || (%first.round.protection = yes)) { 
