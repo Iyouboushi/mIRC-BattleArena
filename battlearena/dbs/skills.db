@@ -610,6 +610,15 @@ ActionPoints=1
 Cooldown=15
 NeedToEquip=true
 
+[QuickPockets]
+Cost=0
+Type=Active
+Max=1
+Info=Your speed allows you to quickly use an item without consuming your turn in battle.
+ActionPoints=1
+Cooldown=15
+NeedToEquip=true
+
 
 =============================================
 RESISTS

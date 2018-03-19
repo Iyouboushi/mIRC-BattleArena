@@ -4820,8 +4820,16 @@ SellPrice=5000
 Exclusive=yes
 SpecialType=GainSkill
 Skill=ThinAir
-Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of ThinAir.
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of ThinAir.
 
+[AncientMystery:QuickPockets]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=QuickPockets
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of QuickPockets.
 
 
 =========================

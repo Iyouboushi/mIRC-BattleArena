@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/14/18
+;;;; Last updated: 03/18/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -81,6 +81,7 @@ alias use.skill {
   if ($3 = invigorate) { $skill.invigorate($1) }
   if ($3 = ThrillOfBattle) { $skill.thrillofbattle($1) } 
   if ($3 = duality) { $skill.duality($1) }
+  if ($3 = quickpockets) { $skill.quickpockets($1) }
 
   ; Below are monster-only skills
 
@@ -1172,6 +1173,49 @@ alias skill.thinair { $set_chr_name($1)
   ; Player gets another turn
   $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
 }
+
+
+;=================
+; QUICK POCKETS
+;=================
+on 3:TEXT:!quickpockets*:*: { $skill.quickpockets($nick) }
+on 3:TEXT:!quick pockets*:*: { $skill.quickpockets($nick) }
+
+alias skill.quickpockets { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+  if ($skillhave.check($1, quickpockets) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+
+  var %skill.name quickpockets
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, quickpockets, !quick pockets, true)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(quickpockets))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, quickpockets) = $null) { set %skill.description uses an ancient skill to prepare to quickly use an item without consuming a turn. }
+  else { set %skill.description $readini($char($1), descriptions, quickpockets) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; Toggle the quickpockets-on flag & write the last used time.
+  writeini $char($1) skills quickpockets.on on
+  writeini $char($1) skills quickpockets.time %true.turn
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction quickpockets
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
 
 ;=================
 ; BLOOD BOOST

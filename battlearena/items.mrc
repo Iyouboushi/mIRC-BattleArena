@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/14/18
+;;;; Last updated: 03/18/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -425,8 +425,11 @@ alias uses_item {
     ; Decrease the action points
     $action.points($1, remove, 1)
 
-    ; Time to go to the next turn
-    if (%battleis = on)  { $check_for_double_turn($1) | halt }
+    if (%battleis = on)  {
+      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+      else { $check_for_double_turn($1) | halt }
+    }
+
   }
 
   if (%item.type = tp) { 
@@ -441,7 +444,11 @@ alias uses_item {
     ; Decrease the action points
     $action.points($1, remove, 2)
 
-    if (%battleis = on)  { $check_for_double_turn($1) | halt }
+    if (%battleis = on)  {
+      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+      else { $check_for_double_turn($1) | halt }
+    }
+
   }
 
   if (%item.type = ignitiongauge) { 
@@ -455,7 +462,11 @@ alias uses_item {
     ; Decrease the action points
     $action.points($1, remove, 2)
 
-    if (%battleis = on)  { $check_for_double_turn($1) | halt }
+    if (%battleis = on)  {
+      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+      else { $check_for_double_turn($1) | halt }
+    }
+
   }
 
   if (%item.type = status) {
@@ -503,7 +514,12 @@ alias uses_item {
     $item.autorevive($1, $4, $2) 
 
     $decrease_item($1, $2) 
-    if (%battleis = on)  { $check_for_double_turn($1) | halt }
+
+    if (%battleis = on)  {
+      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+      else { $check_for_double_turn($1) | halt }
+    }
+
   }
 
   if (%item.type = revive) {  
@@ -532,7 +548,11 @@ alias uses_item {
 
     $character.revive($4, %revive.amount)
 
-    if (%battleis = on)  { $check_for_double_turn($1) | halt }
+    if (%battleis = on)  {
+      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+      else { $check_for_double_turn($1) | halt }
+    }
+
   }
 
   if (%item.type = summon) { 
@@ -547,8 +567,10 @@ alias uses_item {
 
   $decrease_item($1, $2)
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) | halt }
+  if (%battleis = on)  {
+    if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+    else { $check_for_double_turn($1) | halt }
+  }
 }
 
 alias decrease_item {
@@ -774,8 +796,7 @@ alias item.trust {
   writeini $char($1) stuff TrustsUsed %number.of.trusts
   $achievement_check($1, You'veGotAFriendInMe)
 
-  writeini $char($1) skills doubleturn.on on
-  $check_for_double_turn($1)
+  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle)
 
   halt 
 }

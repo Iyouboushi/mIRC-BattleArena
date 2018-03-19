@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/14/18
+;;;; Last updated: 03/18/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2661,7 +2661,7 @@ clear_skills {
   writeini $char($1) skills bloodboost.on off |  writeini $char($1) skills bloodspirit.on off 
   writeini $char($1) skills criticalfocus.on off | writeini $char($1) skills shieldfocus.on off
   writeini $char($1) skills barrage.on off | writeini $char($1) skills doublecast.on off
-  writeini $char($1) skills duality.on off | writeini $char($1) skills thinair.on off
+  writeini $char($1) skills duality.on off | writeini $char($1) skills thinair.on off | writeini $char($1) skills quickpockets.on off
 }
 
 clear_skill_timers {
@@ -2678,7 +2678,7 @@ clear_skill_timers {
   remini $char($1) skills tabularasa.time | remini $char($1) skills sugitekai.time | remini $char($1) skills wrestle.turn | remini $char($1) skills wrestle.used
   remini $char($1) skills criticalfocus.time | remini $char($1) skills shieldfocus.time | remini $char($1) skills barrage.time
   remini $char($1) skills doublecast.time | remini $char($1) skills invigorate.time | remini $char($1) skills thrillofbattle.time
-  remini $char($1) skills duality.time | remini $char($1) skills thinair.time
+  remini $char($1) skills duality.time | remini $char($1) skills thinair.time | remini $char($1) skills quickpockets.time
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
