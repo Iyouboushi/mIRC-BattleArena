@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/17/18
+;;;; Last updated: 03/20/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -668,7 +668,7 @@ boost_monster_stats {
   if ($readini($char($1), info, BattleStats) = hp) { $boost_monster_hp($1, $2, %monster.level) |  return }
 
   ; Make sure the [battle] stats are set to what the [basestats] should start off with
-  var %basestats.str $readini($char($1), basesats, str)
+  var %basestats.str $readini($char($1), basestats, str)
   var %basestats.def $readini($char($1), basestats, def)
   var %basestats.int $readini($char($1), basestats, int)
   var %basestats.spd $readini($char($1), basestats, spd)
@@ -1549,7 +1549,8 @@ display_damage {
   if ($person_in_mech($2) = true) { 
     ; Is the mech destroyed?
     if ($readini($char($2), mech, HpCurrent) <= 0) {  var %mech.name $readini($char($2), mech, name)
-      $display.message($readini(translation.dat, battle, DisabledMech), battle)
+      if ($readini($char($2), Descriptions, MechDestroyed) = $null) { $display.message($readini(translation.dat, battle, DisabledMech), battle) }
+      else { $display.message(4 $+ $get_chr_name($2)  $+ $readini($char($2), Descriptions, MechDestroyed), battle) }
       $mech.deactivate($2, true)
     }
   }
