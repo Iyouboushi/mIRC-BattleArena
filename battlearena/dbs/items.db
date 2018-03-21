@@ -4185,6 +4185,15 @@ EnergyCost=500
 Currency=AlliedNotes
 Exclusive=yes
 
+[BoneDragonCore]
+Type=MechCore
+Cost=-1
+SellPrice=0
+Augment=
+EnergyCost=0
+Currency=AlliedNotes
+Exclusive=yes
+
 =========================
 SPECIAL ITEMS
 =========================

@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=$iif($return_playersinbattle > 3, $calc(5000 + (100 * $return_playersinbattle)) , 5000)
+Tp=1150
+Str=100
+Def=257
+Int=551
+Spd=205
 IgnitionGauge=2
-Name=Shrapnel
+Name=Tower Homunculus
 
 
 [Battle]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=45
+Tp=90
+Str=100
+Def=257
+Int=551
+Spd=205
 IgnitionGauge=2
 Status=alive
 
@@ -32,7 +32,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a large red bomb that floats in the air. It looks like a balloon with tiny little arms and a huge ugly grin on its face.
+Char=is a glowing spire of energy that is floating in the air. The spire is rotating the colors of a rainbow.
 Rage=screams in rage 
 
 [Stuff]
@@ -42,21 +42,21 @@ ShopLevel=1.0
 
 [Info]
 Flag=monster
-Gender=his
-Gender2=him
+Gender=its
+Gender2=its
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BattleStats=ignoreHP
-Streak=30
+Streak=-1000
 CanTaunt=false
 IgnoreElementalMessage=true
+IgnoreOutpost=true
 
 [Monster]
-Type=bomb
-size=medium
+Type=elemental
+size=small
 
 [Status]
 Poison=no
@@ -92,23 +92,47 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=BombPower
-BombPower=10
+Equipped=ElementalPower
+ElementalPower=100
 
 [Skills]
+ClearMind=1
+Wizardry=20
+Zen=50
+Resist-Amnesia=100
+Resist-Silence=100
+Resist-Curse=100
+Resist-Paralysis=100
+Resist-Charm=100
 
 [Techniques]
-Explode=10
-FirajaII=10
-
+Fire=100
+FireII=100
+Stone=100
+StoneII=100
+Ice=100
+IceII=100
+Aero=100
+AeroII=100
+Water=100
+WaterII=100
+Thunder=100
+ThunderII=100
+Firaja=100
+Stoneja=100
+Waterja=100
+Aeroja=100
+Blizzaja=100
+Holy=100
+Darkra=100
 
 [modifiers]
-Heal=fire
+Heal=none
 Earth=100
 Fire=100
 Wind=100
 Water=100
-Ice=110
+Ice=100
 Lightning=100
 Light=100
 Dark=100
@@ -124,3 +148,13 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+HolyHandGrenade=0
+Dynamite=0
+Bomb=0
+XmasGrenade=0
+ResistMelee=65
+
+[Rotations]
+Current=0
+1=Tech
+2=Tech

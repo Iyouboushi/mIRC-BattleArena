@@ -573,6 +573,9 @@ Wamoura=ErraticFlutter.MagmaFan
 Goobbue=SnottySneeze.Uppercut.InhaleAndChew
 Hecteyes=HexEye.PetroGaze
 Vicegerent=BoraAxe.Rampage.Ruinator.Onslaught
+BoneDragon=RadiantBreath.HurricaneBreath.SpikeFlail
+Qutrub=SharkBite.DancingEdge.Evisceration.Mangle
+Phlegethon=SpinningSlash.HerculeanSlash.Scourge.AncientFlare
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -18056,3 +18059,28 @@ Hits=1
 BasePower=100
 Magic=No
 Stat=str
+
+[Mangle]
+Type=Single
+TP=50
+Desc=$iif(%guard.message = $null, leaps upon %enemy and begins to stab and bite as many times as possible before being thrown off!, leaps towards %enemy but misses)
+BasePower=25
+Element=None
+Cost=0
+Magic=No
+Spell=no
+stat=spd
+hits=8
+renkei=4
+
+[AncientFlare]
+Type=AOE
+TP=50
+Desc=casts an ancient version of flare that ignites the battlefield and everyone on it into flames! 
+BasePower=80
+Element=Fire
+Cost=0
+Magic=yes
+Spell=yes
+stat=int
+hits=2

@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=$iif($return_playersinbattle > 3, $calc(9000 + (100 * $return_playersinbattle)) , 9000)
+Tp=1150
+Str=220
+Def=257
+Int=251
+Spd=305
 IgnitionGauge=2
-Name=Shrapnel
+Name=Tower Bomb
 
 
 [Battle]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=1300
+Tp=920
+Str=220
+Def=257
+Int=251
+Spd=305
 IgnitionGauge=2
 Status=alive
 
@@ -32,7 +32,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a large red bomb that floats in the air. It looks like a balloon with tiny little arms and a huge ugly grin on its face.
+Char=is glowing blue bomb covered in flames. t is floating in the air. It looks like a pale balloon with tiny little arms and a huge ugly grin on its face.
 Rage=screams in rage 
 
 [Stuff]
@@ -50,7 +50,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 BattleStats=ignoreHP
-Streak=30
+Streak=-1000
 CanTaunt=false
 IgnoreElementalMessage=true
 
@@ -90,16 +90,18 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
+ethereal=yes
+
 
 [Weapons]
 Equipped=BombPower
-BombPower=10
+BombPower=100
 
 [Skills]
 
 [Techniques]
-Explode=10
-FirajaII=10
+Explode=$iif(%current.turn < 3, 0, $rand(50,100))
+FirajaII=100
 
 
 [modifiers]
@@ -124,3 +126,12 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+
+[Rotations]
+Current=0
+1=Free
+2=Tech
+3=Attack
+4=Free
+5=Free
+6=Tech

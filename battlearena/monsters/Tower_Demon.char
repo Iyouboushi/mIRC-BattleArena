@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=$iif($return_playersinbattle > 3, $calc(9000 + (100 * $return_playersinbattle)) , 9000)
+Tp=1150
+Str=300
+Def=257
+Int=251
+Spd=205
 IgnitionGauge=2
-Name=Shrapnel
+Name=Tower Demon
 
 
 [Battle]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=520
+Tp=520
+Str=300
+Def=257
+Int=251
+Spd=205
 IgnitionGauge=2
 Status=alive
 
@@ -24,15 +24,9 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
-Hused=1
-Dused=1
-Char=is a large red bomb that floats in the air. It looks like a balloon with tiny little arms and a huge ugly grin on its face.
+Char=is a tall demon that has a dark blue outer shell for defense. It carries a scythe in hand.
 Rage=screams in rage 
 
 [Stuff]
@@ -49,13 +43,11 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BattleStats=ignoreHP
-Streak=30
+Streak=-1000
 CanTaunt=false
-IgnoreElementalMessage=true
 
 [Monster]
-Type=bomb
+Type=demon
 size=medium
 
 [Status]
@@ -92,26 +84,35 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=BombPower
-BombPower=10
+Equipped=DemonicWeapon
+DemonicWeapon=100
 
 [Skills]
+Zen=10
+PoleMaster=50
 
 [Techniques]
-Explode=10
-FirajaII=10
+HectacombWave=100
+QuadraStrike=100
+SoulDrain=100
 
+[Item_Amount]
+
+[styles]
+Equipped=WeaponMaster
+WeaponMaster=5
+WeaponMasterXP=1
 
 [modifiers]
-Heal=fire
+Heal=none
 Earth=100
 Fire=100
 Wind=100
 Water=100
-Ice=110
+Ice=100
 Lightning=100
-Light=100
-Dark=100
+Light=130
+Dark=10
 HandToHand=100
 Whip=100
 Sword=100
@@ -124,3 +125,14 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+
+[Augment]
+Laevatein=AbsorbTP
+
+[Rotations]
+Current=0
+1=Attack
+2=Tech
+3=Tech
+4=Attack
+5=Free

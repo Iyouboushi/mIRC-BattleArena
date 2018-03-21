@@ -1,44 +1,45 @@
 [BaseStats]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
-IgnitionGauge=2
-Name=Shrapnel
+Hp=$iif($return_playersinbattle >= 3, 8000,5000)
+Tp=250
+Str=7
+Def=17
+Int=87
+Spd=25
+Name=Ancient Tower Firewall
+IgnitionGauge=50
 
 
 [Battle]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
-IgnitionGauge=2
+Hp=18000
+Tp=250
+Str=97
+Def=87
+Int=67
+Spd=76
 Status=alive
+IgnitionGauge=50
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
-Hused=1
-Dused=1
-Char=is a large red bomb that floats in the air. It looks like a balloon with tiny little arms and a huge ugly grin on its face.
+Char=is a large wall of fire protecting its master
 Rage=screams in rage 
+DeathMessage=fizzles and fades out leaving its master vulnerable again.
+
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+
+[Monster]
+Type=
+size=medium
+Elite=true
 
 [Info]
 Flag=monster
@@ -49,14 +50,15 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BattleStats=ignoreHP
-Streak=30
+Streak=-1000
+bosslevel=100
 CanTaunt=false
 IgnoreElementalMessage=true
-
-[Monster]
-Type=bomb
-size=medium
+IgnoreQuicksilver=true
+JustReleaseDefense=100
+ai_type=defender
+MaxTormentLevel=0
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -90,25 +92,49 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
+reflect=no
+
 
 [Weapons]
-Equipped=BombPower
-BombPower=10
+Equipped=
+
 
 [Skills]
+Resist-Intimidate=100
+Resist-Terrified=100
+resist-paralysis=100
+resist-blind=100
+resist-poison=100
+resist-amnesia=100
+resist-curse=100
+resist-zombie=100
+resist-slow=100
+resist-stun=100
+resist-stop=100
+resist-charm=100
+resist-petrify=100
+resist-sleep=100
+resist-confuse=100
+resist-disarm=100
+resist-weaponlock=100
+Zen=5
 
 [Techniques]
-Explode=10
-FirajaII=10
+
+
+
+[Styles]
+Equipped=Guardian
+Guardian=1
 
 
 [modifiers]
 Heal=fire
 Earth=100
-Fire=100
+Fire=1500
 Wind=100
 Water=100
-Ice=110
+Ice=100
 Lightning=100
 Light=100
 Dark=100
@@ -124,3 +150,7 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+HolyHandGrenade=0
+Dynamite=0
+Bomb=0
+XmasGrenade=0

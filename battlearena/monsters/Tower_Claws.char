@@ -1,21 +1,20 @@
 [BaseStats]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=$iif($return_playersinbattle > 3, $calc(7000 + (100 * $return_playersinbattle)) , 7000)
+Tp=1150
+Str=300
+Def=257
+Int=211
+Spd=255
 IgnitionGauge=2
-Name=Shrapnel
-
+Name=Tower Claws
 
 [Battle]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=7000
+Tp=1150
+Str=300
+Def=257
+Int=211
+Spd=255
 IgnitionGauge=2
 Status=alive
 
@@ -32,31 +31,31 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a large red bomb that floats in the air. It looks like a balloon with tiny little arms and a huge ugly grin on its face.
+Char=is a large blue and black tiger with huge fangs
 Rage=screams in rage 
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+Drops=
+
+[monster]
+type=tiger
+size=medium
 
 [Info]
 Flag=monster
-Gender=his
-Gender2=him
+Gender=its
+Gender2=its
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BattleStats=ignoreHP
-Streak=30
+Streak=-1000
 CanTaunt=false
 IgnoreElementalMessage=true
-
-[Monster]
-Type=bomb
-size=medium
 
 [Status]
 Poison=no
@@ -92,24 +91,38 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=BombPower
-BombPower=10
+Equipped=TigerFangs
+TigerFangs=100
 
 [Skills]
+Resist-Paralysis=100
+Resist-Amnesia=10
+Resist-Zombie=100
+Resist-Charm=100
+Resist-Stun=25
+Resist-Weaponlock=100
+Resist-Intimidate=100
+Resist-Disarm=100
+Resist-Drunk=100
 
 [Techniques]
-Explode=10
-FirajaII=10
+Roar=100
+RazorFang=100
+ClawCyclone=110
+
+[Item_Amount]
+
+
 
 
 [modifiers]
-Heal=fire
+Heal=none
 Earth=100
-Fire=100
+Fire=110
 Wind=100
 Water=100
-Ice=110
-Lightning=100
+Ice=60
+Lightning=110
 Light=100
 Dark=100
 HandToHand=100

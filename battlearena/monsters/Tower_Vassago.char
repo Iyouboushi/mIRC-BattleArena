@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=$iif($return_playersinbattle > 3, $calc(12000 + (100 * $return_playersinbattle)) , 10000)
+Tp=920
+Str=15
+Def=25
+Int=17
+Spd=15
 IgnitionGauge=2
-Name=Shrapnel
+Name=Tower Vassago
 
 
 [Battle]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=10000
+Tp=920
+Str=15
+Def=25
+Int=17
+Spd=15
 IgnitionGauge=2
 Status=alive
 
@@ -32,8 +32,9 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a large red bomb that floats in the air. It looks like a balloon with tiny little arms and a huge ugly grin on its face.
+Char=is a large ancient gargoyle that gives a loud roar
 Rage=screams in rage 
+ShadowCopy=glows bright red before splitting violently into two!
 
 [Stuff]
 RedOrbs=0
@@ -49,13 +50,12 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BattleStats=ignoreHP
-Streak=30
+Streak=-1000
 CanTaunt=false
 IgnoreElementalMessage=true
 
-[Monster]
-Type=bomb
+[monster]
+type=demon
 size=medium
 
 [Status]
@@ -90,37 +90,52 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
+ethereal=no
 
 [Weapons]
-Equipped=BombPower
-BombPower=10
+Equipped=GoylePower
+GoylePower=100
 
 [Skills]
+Resist-Charm=100
+Resist-Poison=100
+Resist-Curse=100
+
 
 [Techniques]
-Explode=10
-FirajaII=10
-
+SpinningAttack=100
 
 [modifiers]
-Heal=fire
-Earth=100
+Heal=none
+Earth=50
 Fire=100
-Wind=100
-Water=100
-Ice=110
+Wind=60
+Water=50
+Ice=50
 Lightning=100
-Light=100
-Dark=100
+Light=120
+Dark=20
 HandToHand=100
-Whip=100
+Whip=40
 Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
+Gun=50
+Rifle=50
+Katana=50
+Wand=50
+Spear=50
+Scythe=50
+Glyph=50
+GreatSword=110
+Bow=50
+HolyHandGrenade=1
+
+[Styles]
+Equipped=Guardian
+Guardian=2
+GuardianXP=1
+
+[Rotations]
+Current=0
+1=Attack
+2=Tech
+3=Free

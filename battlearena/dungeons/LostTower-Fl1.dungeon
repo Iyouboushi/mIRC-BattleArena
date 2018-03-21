@@ -1,0 +1,80 @@
+[Info]
+Name=The Lost Tower of the Ancients  - Floor 1
+Rooms=10
+PlayersNeeded=1
+PlayersRecommended=3
+Level=100
+FinalRoom=9
+StartBattleDesc=uses the key found in the Ancient Lost City to unlock the Ancient Tower of the Antaal. The doors creak open and the tower seems to be coming to life as lights flicker on all above the party.
+
+ClearDungeonDesc=* The party has vanquished the defenses of the first floor and discovered the locked entrance to the second floor. Perhaps the Allied Forces can forge a key to unlock the next floor. [Clear time: %total.battle.duration $+ ]
+
+DungeonFail=* The party has failed to clear the first floor of the tower and is forced to flee.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party enters the tower and discover it is much bigger on the inside than it appears.  Low lights glow orange all around the room's ceiling and they see a staircase leading up.  In the distance they hear the roars and groans of ancient creatures that are slowly coming out of stasis. 
+Battlefield=Lost Tower
+
+
+[1]
+Desc=The party advances up the stairs and see large pods where creatures were in stasis but now free.  A pack of monsters approach the party eager for their first meal in centuries. 
+Battlefield=Lost Tower
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,3))
+
+[2]
+Desc=A loud voice echoes throughout the tower: Intruders Detected! Activating Defense Systems! After the voices fades another pack of monsters approach the party.
+Battlefield=Lost Tower
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,4))
+
+[3]
+Desc=The party notices a set of stairs leading downwards towards a darker room. As they approach more monsters approach ready to defend the tower.
+Battlefield=Lost Tower
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(2,4))
+
+[4]
+Desc=The party has reached a large room where bones litter the ground. Standing in the middle of the room is a large skeleton wielding a polearm. With a loud whistle the bones begin to shift and form in the middle in the shape of a large dragon. The skelton then hops onto the dragon and prepares for battle!
+Monsters=Bone_Rider
+Battlefield=Lost Tower
+bossroom=true
+
+[5]
+Desc=With the Bone Rider dead, the party presses forward only to go up a flight of stairs into a large room where lava is flowing on both sides of the path. Larger monsters are seen walking around and despite the party's best efforts to sneak across unseen they are spotted and monsters rush forward!
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(5,6))
+Battlefield=Lost Tower
+
+
+[6]
+Desc=The heat of the lava fills the room and makes it hard to breathe as the party continues onwards towards another patrol of monsters.
+Battlefield=Lost Tower
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(5,7))
+
+[7]
+Desc=Finally reaching the end of the lava room the party is confronted with a lone beast blocking the path.
+Monsters=Aynu-kaysey
+Battlefield=Lost Tower
+BossRoom=true
+
+[8]
+Desc=Upon defeating the terrible lone beast, the party continues forward and comes into a large room with what appears to be an elevator.  Before it can be activated another group of monsters approach.
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(8,10))
+Battlefield=Lost Tower
+
+[9]
+Desc=The elevator comes to life when the party gets on it. It takes the party upwards into a large room where a locked door stands behind a lone man who appears to be guarding it.
+Monsters=Phlegethon
+Battlefield=Lost Tower
+BossRoom=true
+
+
+[MonsterList]
+1=Tower_Eye.Tower_Homunculus
+2=Tower_Eye.Tower_Demon
+3=Tower_Homunculus.Tower_Eye.Tower_Demon
+4=Tower_Eye.Tower_Claws
+5=Tower_Balloon.Tower_Bomb
+6=Tower_Bomb.Tower_Giant
+7=Tower_Giant.Tower_Claws
+8=Tower_Eye.Tower_Bomb
+9=Tower_Vassago.Tower_Nemesis
+10=Tower_Giant.Tower_Nemesis

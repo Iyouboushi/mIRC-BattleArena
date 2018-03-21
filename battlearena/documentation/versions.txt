@@ -1666,6 +1666,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working
 - Fixed a bug where auto-regen would not work right with ignitions
+- Fixed a bug where the strenght stat of monsters was not being adjusted properly upon monster spawn/copying.
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]

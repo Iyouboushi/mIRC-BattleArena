@@ -1,21 +1,20 @@
 [BaseStats]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=$iif($return_playersinbattle > 3, $calc(12000 + (100 * $return_playersinbattle)) , 10000)
+Tp=920
+Str=35
+Def=15
+Int=5
+Spd=6
 IgnitionGauge=2
-Name=Shrapnel
-
+Name=Tower Giant
 
 [Battle]
-Hp=1500
-Tp=20
-Str=8
-Def=5
-Int=9
-Spd=10
+Hp=10000
+Tp=70
+Str=35
+Def=15
+Int=5
+Spd=6
 IgnitionGauge=2
 Status=alive
 
@@ -32,7 +31,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a large red bomb that floats in the air. It looks like a balloon with tiny little arms and a huge ugly grin on its face.
+Char=is a huge human-like monster that stands an impressive 10 feet tall.  It is carrying a large great sword that no more than a normal sized-sword to the giant.
 Rage=screams in rage 
 
 [Stuff]
@@ -49,14 +48,12 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-BattleStats=ignoreHP
-Streak=30
+Streak=-1000
 CanTaunt=false
-IgnoreElementalMessage=true
 
 [Monster]
-Type=bomb
-size=medium
+Type=giant
+size=large
 
 [Status]
 Poison=no
@@ -92,27 +89,45 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=BombPower
-BombPower=10
+Equipped=Nightfall
+Nightfall=100
 
 [Skills]
+Resist-Paralysis=100
+Resist-Amnesia=10
+Resist-Zombie=100
+Resist-Charm=100
+Resist-Stun=25
+Resist-Blind=100
+Resist-Weaponlock=100
+Resist-Intimidate=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Sleep=100
+Resist-Curse=100
+
+
 
 [Techniques]
-Explode=10
-FirajaII=10
+GroundStrike=100
+SpinningSlash=100
+
+
+
+[Item_Amount]
 
 
 [modifiers]
-Heal=fire
-Earth=100
-Fire=100
+Heal=none
+Earth=40
+Fire=130
 Wind=100
-Water=100
-Ice=110
-Lightning=100
+Water=70
+Ice=120
+Lightning=70
 Light=100
-Dark=100
-HandToHand=100
+Dark=40
+HandToHand=50
 Whip=100
 Sword=100
 Gun=100
@@ -124,3 +139,9 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+
+[Rotations]
+Current=0
+1=Free
+2=Attack
+3=Tech
