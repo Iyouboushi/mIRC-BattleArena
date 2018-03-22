@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/20/18
+;;;; Last updated: 03/22/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1707,6 +1707,12 @@ display_aoedamage {
       $display.message($readini(translation.dat, battle, DisabledMech), battle)
       writeini $char($2) mech inuse false
     }
+  }
+
+  ; If Diehard triggered, let's show a message
+  if (%diehard.message = true) { 
+    $display.message($readini(translation.dat, skill, DieHardTriggered), battle)
+    unset %diehard.message
   }
 
 

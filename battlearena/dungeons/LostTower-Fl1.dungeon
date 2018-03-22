@@ -33,7 +33,7 @@ Battlefield=Lost Tower
 Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(2,4))
 
 [4]
-Desc=The party has reached a large room where bones litter the ground. Standing in the middle of the room is a large skeleton wielding a polearm. With a loud whistle the bones begin to shift and form in the middle in the shape of a large dragon. The skelton then hops onto the dragon and prepares for battle!
+Desc=The party has reached a large room where bones litter the ground. Standing in the middle of the room is a large skeleton wielding a polearm. With a loud whistle the bones begin to shift and form in the middle in the shape of a large dragon. The skeleton then hops onto the dragon and prepares for battle!
 Monsters=Bone_Rider
 Battlefield=Lost Tower
 bossroom=true
