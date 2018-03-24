@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/03/18
+;;;; Last updated: 03/23/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1599,6 +1599,8 @@ alias tech.points {
   if (%aoe.turn > 1) { return }
 
   else { inc %tech.points 1 
+
+    if ($readini($char($1), skills, Tensai) >= 1) { inc %tech.points 4 }
 
     var %tech.points.needed 500
     if ($readini($char($1), stuff, NumberOfResets) >= 1) { var %tech.points.needed 250 }

@@ -179,6 +179,14 @@ Type=passive
 Info=You have become faster at casting spells and as such you are able to deal more damage with spells. Your spell damage will increase by 10%.
 Max=1
 
+[Tensai]
+Cost=0
+Type=passive
+Info=You learn how to improve your techniques faster than most people.  With this skill you will gain +5 technique xp per technique use instead of the usual +1.
+Max=1
+
+
+
 =============================================
 ACTIVE SKILLS
 =============================================

@@ -1628,6 +1628,8 @@ Battle Arena Bot VERSIONS
 - Added a new passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd
 - Added a new passive skill: SwiftCast. This skill will increase spell damage by 10%.   This skill cannot be purchased 
   and must be learned.
+- Added a new passive skill: Tensai. This skill will increase the rate that techs level up when being used. It will be 5x instead of
+  1x. This skill cannot be purchased and must be learned.
 - Added an enmity targeting system option to the game. When this is on the amount of damage that players do to monsters will
   help determine which player the monsters target.
 - Added a new battle type: Cosmic.  Use CosmicOrbs to enter the Cosmic Battles. This battle type rewards winners with OdinMarks
@@ -1651,6 +1653,8 @@ Battle Arena Bot VERSIONS
   MetalSlime and BlueSlime files for an example.
 - Added the !deathboard players command.  This will generate the top players who have died the most in the game.
 - Added the !killboard command. This will generate the top monster killers in the game.
+- Added the ability for dungeons to have a Max Player limit.  The dungeon will automatically start if the max number is met.
+  In [Info] put MaxPlayers=#   If # is null or 0 then there is no max.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated
