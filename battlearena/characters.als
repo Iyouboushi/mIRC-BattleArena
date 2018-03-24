@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/17/18
+;;;; Last updated: 03/23/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -386,6 +386,7 @@ skill.equipped.list {
   else {
 
     if ($chr(046) isin %player.equipped.skills) { var %replacechar $chr(044) $chr(032) |  var %player.equipped.skills.display $replace(%player.equipped.skills, $chr(046), %replacechar)  }
+    else { var %player.equipped.skills.display %player.equipped.skills }
 
     if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewEquippedSkills)) | halt }
     else { $display.message($readini(translation.dat, system, ViewEquippedSkills), private) }

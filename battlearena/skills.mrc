@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/18/18
+;;;; Last updated: 03/23/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -1672,7 +1672,7 @@ alias skill.invigorate { $set_chr_name($1)
   $amnesia.check($1, skill) 
 
   $checkchar($1)
-  if ($skillhave.check($1, doublecast) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if ($skillhave.check($1, invigorate) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
@@ -1707,7 +1707,7 @@ alias skill.invigorate { $set_chr_name($1)
 }
 
 ;=================
-; Invigorate
+; Thrill Of Battle
 ;=================
 on 3:TEXT:!thrillofbattle*:*: { $skill.thrillofbattle($nick) }
 on 3:TEXT:!thrill of battle*:*: { $skill.thrillofbattle($nick) }
@@ -1719,7 +1719,7 @@ alias skill.thrillofbattle { $set_chr_name($1)
   $amnesia.check($1, skill) 
 
   $checkchar($1)
-  if ($skillhave.check($1, doublecast) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
+  if ($skillhave.check($1, thrillofbattle) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $check_for_battle($1)
 
