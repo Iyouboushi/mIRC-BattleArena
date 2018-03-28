@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/18/18
+;;;; Last updated: 03/28/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -516,7 +516,7 @@ alias uses_item {
     $decrease_item($1, $2) 
 
     if (%battleis = on)  {
-      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off | halt }
       else { $check_for_double_turn($1) | halt }
     }
 
@@ -549,7 +549,7 @@ alias uses_item {
     $character.revive($4, %revive.amount)
 
     if (%battleis = on)  {
-      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+      if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off | halt }
       else { $check_for_double_turn($1) | halt }
     }
 
@@ -568,7 +568,7 @@ alias uses_item {
   $decrease_item($1, $2)
 
   if (%battleis = on)  {
-    if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off }
+    if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off | halt }
     else { $check_for_double_turn($1) | halt }
   }
 }
