@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/23/18
+;;;; Last updated: 03/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -2101,7 +2101,7 @@ alias sing.song {
 
         var %status.target $readini($dbfile(songs.db), $2, Target)
 
-        if (%status.target = self) {  writeini $char($1) status %status.type.name yes }
+        if (%status.target = self) { writeini $char($1) status %status.type.name yes }
 
         if ((%status.target = enemy) || (%status.target = enemies)) { 
           var %current.flag $readini($char($1), info, flag)
@@ -2169,15 +2169,12 @@ alias sing.song {
 
               var %flag $readini($char(%who.battle), info, flag)
 
-              if ((%current.flag = $null) && (%flag = $null)) {
-                writeini $char(%who.battle) status %status.type.name yes
+              if ((%current.flag = $null) || (%current.flag = npc)) {
+                if ((%flag = npc) || (%flag = $null)) { writeini $char(%who.battle) status %status.type.name yes }
               }
-              if ((%current.flag = monster) && (%flag = monster)) {
-                writeini $char(%who.battle) status %status.type.name yes
-              }
-              if ((%current.flag = $null) && (%flag = npc)) {
-                writeini $char(%who.battle) status %status.type.name yes
-              }
+
+              if ((%current.flag = monster) && (%flag = monster)) { writeini $char(%who.battle) status %status.type.name yes  }
+
             }
 
             inc %battletxt.current.line 1

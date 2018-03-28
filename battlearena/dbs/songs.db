@@ -60,4 +60,14 @@ Desc=pulls out $gender($1) harp and begins to play a swift song that sends a wav
 Effect=Status
 Target=Allies
 Type=SpeedUp
+Instrument=Harp
+
+[EtherealMelody]
+Name=Ethereal Melody
+TP=0
+Desc=pulls out $gender($1) harp and begins to play an eerie melody that seems to pull everyone into an ethereal plane..
+Effect=Status
+Target=Allies
+Type=Ethereal
+Instrument=Harp
 

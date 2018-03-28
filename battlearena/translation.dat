@@ -871,6 +871,7 @@ IntDownWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's int down status has worn o
 WeaponLockWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's weapon lock has broken. %real.name is able to change weapons again.
 EtherealBlocked=$chr(3) $+ 3 $+  $+ %real.name $+ 's attack goes right through $set_chr_name($3) %real.name doing no damage!
 EtherealWornOff=$chr(3) $+ 3 $+  $+ %real.name has become corporeal.
+NonEtherealBlocked=$chr(3) $+ 3 $+  $+ %real.name $+ 's attack does not seem to damage $set_chr_name($3) %real.name $+ !
 CurrentlyEthereal=$chr(3) $+ 4 $+ %real.name is ethereal! 
 CurrentlyCocoonEvolve=$chr(3) $+ 4 $+ %real.name is in a state of evolution and is unable to act this round.
 CurrentlyFlying=$chr(3) $+ 4 $+ %real.name $+  is currently flying in the air!

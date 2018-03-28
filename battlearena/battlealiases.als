@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/22/18
+;;;; Last updated: 03/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -320,7 +320,7 @@ statuseffect.check {
 ; that status effects last.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 status.effects.turns {
-  var %negative.status.effects flying.confuse.poison.curse.cocoon.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.ethereal.charm.paralysis.bored
+  var %negative.status.effects flying.confuse.poison.curse.cocoon.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.charm.paralysis.bored
 
   if ($istok(%negative.status.effects,$1,46) = $true) { 
     if ($return_playersinbattle <= 1) { return 1 }
@@ -337,7 +337,6 @@ status.effects.turns {
     if ($1 = defensedown) { return 3 }
     if ($1 = strdown) { return 3 }
     if ($1 = intdown) { return 3 }
-    if ($1 = ethereal) { return 3 }
     if ($1 = amnesia) { return 3 }
     if ($1 = charm) { return 3 }
     if ($1 = paralysis) { return 3 }
@@ -353,6 +352,7 @@ status.effects.turns {
     if ($1 = reflect) { return 2 }
     if ($1 = invincible) { return 2 }
     if ($1 = flying) { return 5 }
+    if ($1 = ethereal) { return 3 }
   }
 }
 

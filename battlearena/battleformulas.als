@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/17/18
+;;;; Last updated: 03/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -33,6 +33,9 @@ damage.modifiers.check {
   ; $2 = the weapon or tech name
   ; $3 = the target
   ; $4 = melee or tech
+
+  if (($readini($char($3), Modifiers, EtherealDamageOnly) = true) && ($readini($char($1), status, ethereal) != yes)) { 
+  set %attack.damage 0 | $set_chr_name($1) | set %guard.message $readini(translation.dat, status, NonEtherealBlocked) | return }
 
   ;;;;;;;;;;;;;; All attacks check the weapon itself
 
