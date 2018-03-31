@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/17/18
+;;;; Last updated: 03/31/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2241,6 +2241,39 @@ alias shop.alchemy {
 
     while (%value <= %items.lines) {
       set %item.name $read -l $+ %value $lstfile(items_misc.lst)
+
+      set %item_amount $readini($dbfile(items.db), %item.name, cost)
+      if ((%item_amount != $null) && (%item_amount >= 1)) { 
+        ; add the item and the amount to the item list
+
+        set %conquest.item $readini($dbfile(items.db), %item.name, ConquestItem)
+
+        if ($readini($dbfile(items.db), %item.name, currency) = AlliedNotes) { 
+          var %item_to_add %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) 
+
+          if ((%conquest.item = $null) || (%conquest.item = false)) {
+            if (%misc.item.count <= 20) { %shop.list = $addtok(%shop.list,%item_to_add,46) }
+            if ((%misc.item.count > 20) && (%misc.item.count < 40)) {  %shop.list2 = $addtok(%shop.list2,%item_to_add,46) }
+            if (%misc.item.count > 40) { %shop.list3 = $addtok(%shop.list3,%item_to_add,46) }
+          }
+
+          if ((%conquest.item = true) && (%conquest.status = players)) { 
+            if (%misc.item.count <= 20) { %shop.list = $addtok(%shop.list,%item_to_add,46) }
+            if ((%misc.item.count > 20) && (%misc.item.count < 40)) {  %shop.list2 = $addtok(%shop.list2,%item_to_add,46) }
+            if (%misc.item.count > 40) { %shop.list3 = $addtok(%shop.list3,%item_to_add,46) }
+          }
+
+          inc %misc.item.count 1 
+        }
+      }
+      inc %value 1 | unset %conquest.item
+    }
+
+    ; CHECKING SEAL ITEMS
+    var %value 1 | var %items.lines $lines($lstfile(items_seals.lst))
+
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(items_seals.lst)
 
       set %item_amount $readini($dbfile(items.db), %item.name, cost)
       if ((%item_amount != $null) && (%item_amount >= 1)) { 
