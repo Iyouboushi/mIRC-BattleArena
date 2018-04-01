@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=5000
-Tp=500
+Tp=1000
 Str=20
 Def=20
 Int=20
@@ -10,7 +10,7 @@ Name=Hrist
 
 [Battle]
 Hp=5000
-Tp=500
+Tp=1000
 Str=20
 Def=20
 Int=20
@@ -55,8 +55,9 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
-ai_type=berserker
-IgnorePresident=True
+ai_type=
+BattleStats=IgnoreTP
+
 
 [Status]
 Poison=no
@@ -126,6 +127,7 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=20
 
 
 
@@ -141,8 +143,7 @@ Vertical_Raid=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Styles]
 Equipped=WeaponMaster
-Guardian=10
-GuardianXP=1
+WeaponMaster=10
 
 
 [Augments]
