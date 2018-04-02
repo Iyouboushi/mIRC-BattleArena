@@ -1003,6 +1003,15 @@ Cost=0
 ItemList=items_goldsack.lst
 exclusive=yes
 
+[AlliedLockBox]
+type=random
+ItemDesc=A treasure chest given to you as a reward for your service.  What's inside?  Open it to find out.
+Desc=pulls out a small treasure chest and opens it to discover a %random.item.name inside!
+SellPrice=5000
+Cost=0
+ItemList=items_alliedlockbox.lst
+exclusive=yes
+
 
 =========================
 CONSUMABLE ITEMS (for skills)

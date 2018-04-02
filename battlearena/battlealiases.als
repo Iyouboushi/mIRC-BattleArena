@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/27/18
+;;;; Last updated: 04/01/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -826,6 +826,12 @@ boost_monster_hp {
   }
 
   if ($readini(system.dat, system, PlayersMustDieMode) = true)  { inc %hp.modifier .5 }
+
+  if (%besieged = on) {
+    if (%besieged.squad < 3) { var %hp.modifier 1.5 }  
+    if ((%besieged.squad >= 3) && (%besieged.squad < 5)) { var %hp.modifier 2 }
+    if (%besieged.squad >= 5) { var %hp.modifier 2.55 }
+  }
 
   var %hp $round($calc(%hp + (%hp * %hp.modifier)),0)
 
@@ -2070,6 +2076,7 @@ timeofday.increase {
 ; battlefield curse
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.battlefield.curse {
+  if (%besieged = on) { return }
   if (%battle.type = DragonHunt) { return }
   if (%battle.type = torment) { return }
   if (%battle.type = cosmic) { return }
@@ -2122,6 +2129,7 @@ battlefield.limitations {
 ; if monsters go first in battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 random.surpriseattack {
+  if (%besieged = on) { return }
   if (%battle.type = Torment) { return }
   if (%battle.type = cosmic) { return }
   if (%battle.type = DragonHunt) { return }
@@ -3323,29 +3331,31 @@ counter_melee_action {
 ; Check for a multiple wave
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 multiple_wave_check {
-  if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
-  if (%battle.type = torment) { unset %multiple.wave }
-  if (%battle.type = cosmic) { return }
+  if (%besieged != on) { 
+    if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
+    if (%battle.type = torment)  { unset %multiple.wave }
+    if (%battle.type = cosmic) { return }
 
-  if (%battle.type = dragonhunt) { return }
-  if (%battle.type = dungeon) { return }
-  if (%multiple.wave = yes) { return }
-  if (%battleis = off) { return }
-  if (%battle.type = boss) { return }
-  if (%demonwall.fight = on) { return } 
-  if (%portal.bonus = true) { return }
-  if (%portal.multiple.wave = on) { return }
-  if (%battle.type = mimic) { return }
-  if (%battle.type = ai) { return }
-  if (%boss.type = warmachine) { return }
-  if (%boss.type = elderdragon) { return }
-  if (%boss.type = predator) { return }
-  if (%savethepresident = on) { return }
-  if (%supplyrun = on) { return }
+    if (%battle.type = dragonhunt) { return }
+    if (%battle.type = dungeon) { return }
+    if (%multiple.wave = yes) { return }
+    if (%battleis = off) { return }
+    if (%battle.type = boss) { return }
+    if (%demonwall.fight = on) { return } 
+    if (%portal.bonus = true) { return }
+    if (%portal.multiple.wave = on) { return }
+    if (%battle.type = mimic) { return }
+    if (%battle.type = ai) { return }
+    if (%boss.type = warmachine) { return }
+    if (%boss.type = elderdragon) { return }
+    if (%boss.type = predator) { return }
+    if (%savethepresident = on) { return }
+    if (%supplyrun = on) { return }
+  }
 
   unset %number.of.monsters.needed
 
-  if ((((%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != torment) && (%mode.gauntlet != on)))) {  
+  if (((((%besieged != on) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != torment) && (%mode.gauntlet != on))))) {  
 
     var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
     if (%winning.streak <= 0) { return }
@@ -3370,12 +3380,32 @@ multiple_wave_check {
   if ((%battle.type = assault) && ( $monster.outpost(status) >= 1)) {  var %random.wave.chance 1 }
   if ((%battle.type = assault) && ( $monster.outpost(status) <= 0)) {  $endbattle(victory) | halt }
 
+  if ((%besieged = on) && (%besieged.squad <= 5)) { var %random.wave.chance 1 }
+  if ((%beiseged = on) && (%besieged.squad > 5)) { $endbattle(victory) | halt }  
+
   if (%random.wave.chance > %multiple.wave.chance) { return }
 
   set %multiple.wave yes | set %multiple.wave.bonus yes | set %multiple.wave.noaction yes
 
   ; Clear out the old monsters.
   $multiple_wave_clearmonsters
+
+  ; besieged type
+  if (%besieged = on) {
+    inc %besieged.squad 1
+    $generate_monster(besieged)
+
+    if (%besieged.squad < 5) { $display.message(4The next squad of monsters has arrived!,battle) }
+    if (%besieged.squad = 5) { $display.message(4The final squad of monsters has arrived!,battle) }
+
+    $generate_battle_order
+    set %who $read -l1 $txtfile(battle.txt) | set %line 1
+    set %current.turn 1 | set %true.turn 1
+    $battlelist(public)
+
+    $next
+    halt
+  }
 
   ; Create the next wave
   if (%mode.gauntlet = $null) {  
@@ -4894,7 +4924,6 @@ torment.reward {
   }
 }
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Gives everyone a 
 ; Odin Mark
@@ -4917,6 +4946,34 @@ cosmic.reward {
       inc %player.amount %cosmic.reward.amount
       writeini $char(%who.battle) item_amount OdinMark %player.amount
       %cosmic.drop.rewards = $addtok(%cosmic.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ OdinMark x $+ %cosmic.reward.amount  $+  $+ $chr(93) $+ , 46)
+
+      inc %battletxt.current.line 1 
+    }
+  }
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Gives everyone an 
+; AlliedLockBox
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+besieged.reward {  
+  unset %besieged.drop.rewards
+
+  var %besieged.reward.amount 1
+
+  set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+    if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+    else { 
+
+      var %player.amount $readini($char(%who.battle), item_amount, AlliedLockBox)
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount %besieged.reward.amount
+      writeini $char(%who.battle) item_amount AlliedLockBox %player.amount
+      %besieged.drop.rewards = $addtok(%besieged.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ AlliedLockBox x $+ %besieged.reward.amount  $+  $+ $chr(93) $+ , 46)
 
       inc %battletxt.current.line 1 
     }
@@ -4984,6 +5041,17 @@ show.cosmic.reward {
   var %replacechar $chr(044) $chr(032)
   %cosmic.drop.rewards = $replace(%cosmic.drop.rewards, $chr(046), %replacechar)
   $display.message($readini(translation.dat, battle, Cosmic.DropWin),battle) 
+  unset %item.drop.rewards
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays Besieged rewards
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+show.besieged.reward {
+  if (%besieged.drop.rewards = $null) { return }
+  var %replacechar $chr(044) $chr(032)
+  %besieged.drop.rewards = $replace(%besieged.drop.rewards, $chr(046), %replacechar)
+  $display.message($readini(translation.dat, battle, Besieged.DropWin),battle) 
   unset %item.drop.rewards
 }
 

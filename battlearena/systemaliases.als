@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/18/18
+;;;; Last updated: 04/01/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -428,6 +428,7 @@ copyini {
 return_winningstreak {
   if (%battle.type = torment) { return $calc(500 * %torment.level) }
   if (%battle.type = cosmic) { return 500 }
+  if (%besieged = on) { return 100 }
   if (%battle.type = ai) { return %ai.battle.level }
   if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
 
@@ -2928,7 +2929,7 @@ mon_list_add {
       if (%current.winning.streak.value > %monster.info.streak.max) { return }
 
       if (((%monster.moonphase = $null) && (%biome = $null) && (%monster.timeofday = $null))) { write $txtfile(temporary_mlist.txt) %name | return  }
-      if ((%monster.moonphase != $null) && (%monster.moonphaes != %moon.phase)) { return }
+      if ((%monster.moonphase != $null) && (%monster.moonphase != %moon.phase)) { return }
       if ((%biome != $null) && ($istok(%biome,%current.battlefield,46) = $false)) { return }
       if ((%monster.timeofday != $null) && ($istok(%monster.timeofday,%current.time.of.day,46) = $false)) { return }
 
@@ -3018,7 +3019,7 @@ boss_list_add {
       if (%current.winning.streak.value > %monster.info.streak.max) { return }
 
       if (((%monster.moonphase = $null) && (%biome = $null) && (%monster.timeofday = $null))) { write $txtfile(temporary_mlist.txt) %name | return  }
-      if ((%monster.moonphase != $null) && (%monster.moonphaes != %moon.phase)) { return }
+      if ((%monster.moonphase != $null) && (%monster.moonphase != %moon.phase)) { return }
       if ((%biome != $null) && ($istok(%biome,%current.battlefield,46) = $false)) { return }
       if ((%monster.timeofday != $null) && ($istok(%monster.timeofday,%current.time.of.day,46) = $false)) { return }
 
@@ -3276,6 +3277,7 @@ restore_ig {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 clear_variables { 
   $clear_variables2 | unset *.level | unset %dragonhunt.* | unset %true.turn
+  unset %besieged on | unset %besieged.squad
   unset %darkness.turns | unset %holy.aura.turn | unset %mech.power | unset %attacker | unset %item.drop.rewards | unset %tp
   unset %boss.type | unset %portal.bonus | unset %holy.aura | unset %darkness.fivemin.warn  | unset %battle.rage.darkness |  unset %battleconditions |  unset %red.orb.winners |  unset %bloodmoon 
   unset %line | unset %file | unset %name | unset %curbat | unset %real.name | unset %attack.target
@@ -4580,6 +4582,21 @@ bot.admin {
 
     %bot.admins = $remtok(%bot.admins,$2,46) | $display.message(3 $+ $2 has been removed as a bot admin., private) 
     writeini system.dat botinfo bot.owner %bot.admins | halt 
+  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Besieged Check
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+besieged.check {
+  var %monster.strength $readini(battlestats.dat, MonsterForces, Strength)
+  if (%monster.strength = $null) { var %monster.strength 0 }
+  inc %monster.strength $rand(0,1)
+  writeini battlestats.dat MonsterForces Strength %monster.strength
+
+  if (%monster.strength >= 100) { 
+    var %besieged.chance $rand(1,100) 
+    if (%besieged.chance = 100) { $startnormal(besieged) } 
   }
 }
 

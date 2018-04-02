@@ -1605,6 +1605,8 @@ Battle Arena Bot VERSIONS
 - Added a new player command: !kill coins  -- This will show the player how many kill coins he/she has
 - Added the ability for monsters and npcs to go multiple times on a turn. In [Info] put ActionsPerTurn=# where # is the number
   of times the monster/npc can go before moving onto the next person's turn
+- Added a new battle type: Besieged. This is a rare battle event where an army of five squadrons of monsters will attack the
+  Allied Forces HQ. It is not recommended to take on this army alone as losing has dire consequences.
 - Added a new item type: GainSkill.  These items will teach players new skills that cannot be bought.
 - Added a new monster/npc skill: CompleteWeaknessShift.  If set to 1 in [skills] the user will randomize weaknesses and resistances
   to various status effects, weapon types, and elements on EVERY TURN the user gets.

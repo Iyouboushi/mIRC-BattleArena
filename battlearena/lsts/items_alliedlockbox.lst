@@ -1,0 +1,4 @@
+$read -l $+ $rand(1, $lines($lstfile(chest_gold.lst))) $lstfile(chest_gold.lst)
+PiggyBank
+CodexOfMythology
+ExtremeTitaniteSlab

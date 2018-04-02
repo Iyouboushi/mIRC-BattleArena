@@ -386,6 +386,7 @@ FrostLegionFight=$chr(3) $+ 14 $+ From the depths of the south pole The Frost L
 GremlinsFight=$chr(3) $+ 14 $+ Someone fed their pet Mogwai, Stripe, after midnight and now gremlins have taken over a nearby school! The heros are comissioned to go eliminate these pests!
 JurassicParkFight=$chr(3) $+ 14 $+ Warning! Warning! A dangerous dinosaur has escaped its pin in Jurassic Park! The park is requesting immediate assistance from the heroes to stop the terrible beast!
 SupplyRun=$chr(3) $+ 14 $+ The Allied Forces are sending a wagon full of supplies to an outpost. They need all available heroes to help escort and protect the wagon from monsters! Type !enter now to join the escort party
+Besieged=$chr(3) $+ 14 $+ The Allied Forces spies have reported that the monsters are amassing a full army to attack the Allied HQ. All available heroes are encouraged to help defend the HQ! Type !enter now to join the defense party.
 DragonKiller=$chr(3) $+ 14 $+ The Allied Forces have sent their latest 12Dragon Killer14 machine to help the party dispatch the dragon.
 Dragonhunt.Bombing=$chr(3) $+ 14 $+ The Allied Forces fly an airship over the dragon's lair and drop a large 12Dragon Buster Bomb14 on the lair. The dragon within has been weakened.
 
@@ -664,6 +665,7 @@ Battle Related Messages
 StartBattle=$chr(3) $+ 2 $+ * A battle will begin in12 $duration(%newbattle.time) $+ 2.
 StartBattlePresident=$chr(3) $+ 2 $+ * The Allied Forces are putting together a rescue party to save the president. This battle will begin in7 $duration(%newbattle.time) $+ 2.
 StartBattleSupplyRun=$chr(3) $+ 2 $+ * The Allied Forces are putting together a supply run mission. This battle will begin in7 $duration(%newbattle.time) $+ 2.
+StartBattleBeseiged=$chr(3) $+ 2 $+ * The Allied Spy Force have reported spotting a massive army of monsters approaching the Allied Forces HQ! This battle will begin in7 $duration(%newbattle.time) $+ 2.
 BattleOpen=$chr(3) $+ 4 $+ A dimensional portal has been detected.  The enemy force will arrive in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle! 2[Current Battle Level: $iif($readini(battlestats.dat, Battle, LosingStreak) != 0, -) $+ $current.battlestreak $+ ]  
 BattleOpenBoss=$chr(3) $+ 4 $+ A powerful dimensional rift has been detected. The enemy force will arrive in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle! 2[Current Battle Level: $iif($readini(battlestats.dat, Battle, LosingStreak) != 0, -) $+ $current.battlestreak $+ ]  
 BattleOpenOrbFountain=$chr(3) $+ 4 $+ The Allied Forces have detected an orb fountain! The party will be sent to destroy it in $duration(%time.to.enter) $+ . Type !enter if you wish to join the battle! 2[Current Battle Level: $iif($readini(battlestats.dat, Battle, LosingStreak) != 0, -) $+ $current.battlestreak $+ ]   
@@ -697,6 +699,7 @@ EvilhasWon=$chr(3) $+ 12 $+ The forces of evil have won this battle (level $byt
 EvilhasWonPortal=$chr(3) $+ 12 $+ The forces of evil have won this special battle event after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ !
 EvilhasWonPresident=$chr(3) $+ 14 $+ The forces of evil have recaptured $readini(shopnpcs.dat, NPCNames, AlliedForcesPresident) after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! The heroes have failed!  The monsters have brutally slaughtered the president and offered the body to their god.
 EvilHasWonSupplyRun=$chr(3) $+ 14 $+ The forces of evil have destroyed the supply wagon after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! The heroes have failed! 
+EvilHasWonBesieged=$chr(3) $+ 14 $+ The army of evil have won this war in %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! The heroes have failed and the Allied Forces HQ has taken massive damage!
 OutpostBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to defend the outpost! The forces of evil have conqured it and claimed it as their own.
 AssaultBattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to capture the enemy outpost and must withdrawal!
 Torment.BattleLost=$chr(3) $+ 12 $+ The Allied Forces were unable to survive the torment and have returned to their own dimension.
@@ -709,6 +712,7 @@ OutpostBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monster wa
 AssaultBattleWon=$chr(3) $+ 12 $+ The Allied Forces have defeated the monsters and taken over this outpost! As the monster flag comes down and is replaced with an Allied Forces flag, cheers can be heard all around the heroes. 
 GoodHasWonPresident=$chr(3) $+ 12 $+ The forces of good have saved the President of the Allied Forces after %current.turn $iif(%current.turn < 2, turn, turns) $+ !
 GoodHasWonSupplyRun=$chr(3) $+ 12 $+ The forces of good have successfully escorted the supply wagon to its destination after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! The supplies have helped prepare the Allied Forces for their next assault!
+GoodHasWonBesieged=$chr(3) $+ 12 $+ The forces of good have successfully defended the Allied Forces HQ after %current.turn $iif(%current.turn < 2, turn, turns) $+ ! The forces of evil have taken massive casualties.
 BattleIsDraw=$chr(3) $+ 12 $+ The battle has come to a draw after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ ! 
 DrawPortal=$chr(3) $+ 12 $+ Neither heroes nor monsters have won this battle as it comes to a draw after %current.turn $iif(%current.turn < 2, turn, turns) and %total.battle.duration $+ !
 RewardOrbsLoss=$chr(3) $+ 3 $+ For their efforts, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
@@ -721,6 +725,7 @@ BonusItemWin=$chr(3) $+ 10 $+  $+ %real.name was the most stylish and has been
 DropItemWin=$chr(3) $+ 10 $+ These players found spoils from the battle: %item.drop.rewards
 Torment.DropWin=$chr(3) $+ 10 $+ These players have been rewarded for battle: %torment.drop.rewards
 Cosmic.DropWin=$chr(3) $+ 10 $+ These players have been rewarded for battle: %cosmic.drop.rewards
+Besieged.DropWin=$chr(3) $+ 10 $+ These players have been rewarded for battle: %besieged.drop.rewards
 AlliedNotesGain=$chr(3) $+ 3 $+ The Allied Forces reward the heroes with $readini($txtfile(battle2.txt), battle, alliednotes) Allied Notes for their victory.
 KeyWin=$chr(3) $+ 10 $+  $+ $get_chr_name(%key.winner) finds 1 %key.color key $+ !
 EnteredTheBattle=$chr(3) $+ 4 $+  $+ %real.name has entered the battle! 
@@ -790,6 +795,7 @@ MechSummon=summons $gender($1) $readini($char($1), mech, name) and hops in, read
 Don'tLetPresidentDie=$chr(3) $+ 4 $+ The Heroes must protect the president!  If the president dies the battle will be over!
 Don'tLetWagonDie=$chr(3) $+ 4 $+ The Heroes must protect the wagon!  If the wagon is destroyed the battle will be over! 
 SongNotAllowedThisBattle=$chr(3) $+ 4 $+ A Darkness prevents %real.name $+ 's song from working during this battle.
+BesiegedGoal=$chr(3) $+ 4 $+ The Heroes must defeat the monster army in order to save the Allied Forces HQ!
 DefendOutpostForTurns=$chr(3) $+ 4 $+ The Heroes must defend this outpost for %darkness.turns rounds from the monster waves!  
 AssaultOutpost=$chr(3) $+ 4 $+ The Heroes must keep defeating monster forces to weaken the outpost in order to claim it! 
 RestMessage=$chr(3) $+ 12 $+ $get_chr_name($1) decides to take a turn off and rest.
