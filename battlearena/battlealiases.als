@@ -3381,7 +3381,7 @@ multiple_wave_check {
   if ((%battle.type = assault) && ( $monster.outpost(status) <= 0)) {  $endbattle(victory) | halt }
 
   if ((%besieged = on) && (%besieged.squad <= 5)) { var %random.wave.chance 1 }
-  if ((%beiseged = on) && (%besieged.squad > 5)) { $endbattle(victory) | halt }  
+  if ((%besieged = on) && (%besieged.squad > 5)) { $endbattle(victory) | halt }  
 
   if (%random.wave.chance > %multiple.wave.chance) { return }
 
