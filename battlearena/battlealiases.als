@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/01/18
+;;;; Last updated: 04/02/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -5052,7 +5052,7 @@ show.besieged.reward {
   var %replacechar $chr(044) $chr(032)
   %besieged.drop.rewards = $replace(%besieged.drop.rewards, $chr(046), %replacechar)
   $display.message($readini(translation.dat, battle, Besieged.DropWin),battle) 
-  unset %item.drop.rewards
+  unset %item.drop.rewards | unset %besieged.drop.rewards
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

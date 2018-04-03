@@ -4595,7 +4595,7 @@ besieged.check {
   writeini battlestats.dat MonsterForces Strength %monster.strength
 
   if (%monster.strength >= 100) { 
-    var %besieged.chance $rand(1,100) 
+    var %besieged.chance $rand(1,200) 
     if (%besieged.chance = 100) { $startnormal(besieged) } 
   }
 }
