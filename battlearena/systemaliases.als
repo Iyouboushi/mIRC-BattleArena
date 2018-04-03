@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/02/18
+;;;; Last updated: 04/03/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4594,10 +4594,18 @@ besieged.check {
   inc %monster.strength $rand(0,1)
   writeini battlestats.dat MonsterForces Strength %monster.strength
 
-  if (%monster.strength >= 100) { 
-    var %besieged.chance $rand(1,200) 
-    if (%besieged.chance = 100) { $startnormal(besieged) } 
+
+  if ($return_winningstreak >= 100) { 
+    if (%monster.strength >= 100) { 
+
+      if (%monster.strength < 500) { var %besieged.chance $rand(1,200) }
+      if ((%monster.strength > 500) && (%monster.strength < 1000)) { var %beiseged.chance $rand(1,100) }
+      if (%monster.strength >= 1000) { var %besieged.chance $rand(50,100) }
+
+      if (%besieged.chance = 100) { $startnormal(besieged) } 
+    }
   }
+
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

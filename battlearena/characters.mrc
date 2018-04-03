@@ -492,6 +492,12 @@ on 3:TEXT:!stats*:*: { unset %all_status
   }
 }
 
+on 3:TEXT:!monster strength:*: {
+  var %monster.strength $readini(battlestats.dat, MonsterForces, Strength)
+  if (%monster.strength = $null) { var %monster.strength 0 }
+  $display.message($readini(translation.dat, System, CheckMonsterStrength), global) 
+}
+
 on 3:TEXT:!misc info*:*: { 
   if ($3 = $null) { 
     var %misc.totalbattles $readini($char($nick), stuff, TotalBattles) |  var %misc.totaldeaths $readini($char($nick), stuff, TotalDeaths)

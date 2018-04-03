@@ -334,6 +334,8 @@ SkillCurrencyOrbs=$chr(3) $+ 4 $+ Skills will now be purchased using Red Orbs
 SkillCurrencyCoins=$chr(3) $+ 4 $+ Skills will now be purchased using Kill Coins
 TechCurrencyOrbs=$chr(3) $+ 4 $+ Techniques will now be purchased using Red Orbs
 TechCurrencyCoins=$chr(3) $+ 4 $+ Techniques will now be purchased using Kill Coins
+CheckMonsterStrength=$chr(3) $+ 2 $+ The Allied Spy Force reports that the monster army strength is currently at4 %monster.strength $+ $chr(37) $+ 2.  $iif(%monster.strength < 100, The monster army is not ready to attack the Allied Forces HQ, The monster army could attack the HQ at any time. Be ready!) 
+
 
 =======================
 Health Titles
