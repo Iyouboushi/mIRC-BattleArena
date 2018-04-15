@@ -2671,6 +2671,13 @@ SellPrice=1
 Desc=a fragment of the Cultist Rosary from the Tam-Tara Deepcroft.
 Exclusive=yes
 
+[SpicedRum]
+Type=misc
+Cost=100
+SellPrice=25
+Desc=Spiced rum used to make eggnog.
+Currency=none
+
 [LifeShard]
 Type=misc
 cost=0
