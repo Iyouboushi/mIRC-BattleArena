@@ -61,7 +61,7 @@ Amount=20
 Desc=pulls out a bottle of fizzy rootbeer and hands it to %enemy $+ , who drinks it down. Teehee. Bubbly.
 Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 500, 5000)
 SellPrice=30
-FullbringLevel=1
+FullbringLevel=3
 FullbringTarget=AOE
 FullbringAmount=250
 Fullbringdesc=draws out the soul from the rootbeer.  The soul is drawn towards everyone and gives off a small light that heals everyone.
@@ -105,12 +105,12 @@ FullbringLevel=5
 FullbringTarget=AOE
 FullbringAmount=1500
 Fullbringdesc=draws out the soul from the potion.  The potion's soul is drawn towards everyone and gives off a bright light that heals everyone.
-Currency=none
+ConquestItem=true
 
 [Bruce'sJuice]
 Type=heal
 Target=Single
-Amount=120
+Amount=100
 Desc=pulls out a refreshing bottle of Bruce "Old Man" Willaker's juice and drinks it.  Ahhhhhhh, the most refreshing juice in the world.
 Cost=0
 SellPrice=3000
