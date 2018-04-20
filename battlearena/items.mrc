@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/28/18
+;;;; Last updated: 04/19/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -684,6 +684,7 @@ alias item.open.chest {
       unset %accessory.amount
     }
 
+    if ((%battleis = on) || (%battle.type = dungeon)) { var %mimic.chance -10000 }
     if (%chest.item = RedOrbs) { var %mimic.chance -1000 }
     if (%previous.battle.type = portal) { var %mimic.chance -1000 }
     if (%supplyrun = on) { var %mimic.chance -1000 }
