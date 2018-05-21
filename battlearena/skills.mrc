@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/23/18
+;;;; Last updated: 05/21/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2831,17 +2831,17 @@ alias skill.alchemy {
     var %item_amount $readini($char($1), item_amount, %item.name)
     var %item_type $readini($dbfile(items.db), %item.name, type)
 
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name } 
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name | set %item_amount 0 } 
     if (%item_amount = $null) { set %item_amount 0 }
 
     ; How many of the ingredient do we need to craft this?
     if ($readini($dbfile(weapons.db), $2, power) != $null) { 
-      var %amount.needed $readini($dbfile(crafting.db), $2, %item.name) 
-      if (%amount.needed = $null) { var %amount.needed 1 } 
+      set %amount.needed $readini($dbfile(crafting.db), $2, %item.name) 
+      if ((%amount.needed = $null) || (%amount.needed = 0)) { set %amount.needed 1 } 
     }
     else { 
       set %amount.needed $calc($readini($dbfile(crafting.db), $2, %item.name) * %amount.to.craft)
-      if (%amount.needed = $null) { set %amount.needed %amount.to.craft }
+      if ((%amount.needed = $null) || (%amount.needed = 0)) { set %amount.needed %amount.to.craft }
     }
 
     ; Check to see if we have enough.
@@ -2878,6 +2878,7 @@ alias skill.alchemy {
       inc %player.ingredients 1
     }
 
+    unset %amount.needed
     inc %value 1 
   }
 
