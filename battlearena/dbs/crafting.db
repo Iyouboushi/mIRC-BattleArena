@@ -1060,11 +1060,11 @@ Amount=1
 
 [Eggnog]
 Gem=Sapphire
-Ingredients=SmallEgg.Rum.Milk
+Ingredients=SmallEgg.SpicedRum.Milk
 SuccessRate=100
 Amount=1
 SmallEgg=2
-Rum=1
+SpicedRum=1
 Milk=1
 
 
