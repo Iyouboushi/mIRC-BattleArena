@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/02/18
+;;;; Last updated: 06/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4259,6 +4259,7 @@ covercheck {
 
   var %cover.status $readini($char(%cover.target), battle, status)
   if ((%cover.status = dead) || (%cover.status = runaway)) { writeini $char($1) skills CoverTarget none | set %attack.target $1 | return } 
+  if ($readini($char(%cover.target), Battle, HP) <= 0) { writeini $char($1) skills CoverTarget none | set %attack.target $1 | return } 
 
   if ($readini($dbfile(techniques.db), $2, Type) = heal) { set %attack.target $1 | return }
   if ($readini($dbfile(techniques.db), $2, Type) = heal-AOE) { set %attack.target $1 | return }
