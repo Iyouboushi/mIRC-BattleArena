@@ -55,6 +55,7 @@ CanFlee=false
 CanTaunt=false
 IgnorePresident=true
 BattleStats=ignoreTP
+ai_type=$iif(%battle.type = dungeon && $readini($char(Thanatos), Battle, Status) != alive, defender)
 
 
 [monster]
@@ -200,6 +201,6 @@ Bat=100
 Current=0
 1=skill
 2=attack
-3=attack
+3=skill
 4=attack
 5=attack

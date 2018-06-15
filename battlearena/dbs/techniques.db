@@ -576,6 +576,7 @@ Vicegerent=BoraAxe.Rampage.Ruinator.Onslaught
 BoneDragon=RadiantBreath.HurricaneBreath.SpikeFlail
 Qutrub=SharkBite.DancingEdge.Evisceration.Mangle
 Phlegethon=SpinningSlash.HerculeanSlash.Scourge.AncientFlare
+HollowPower=Cero.HollowBite.HollowSlash
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -17973,6 +17974,28 @@ Stat=str
 Type=Single
 Cost=0
 Desc=leaps at %enemy and takes a bite!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+Stat=str
+
+[HollowBite]
+Type=Single
+Cost=0
+Desc=leaps at %enemy and attempts to take a bite!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+Stat=str
+
+[HollowSlash]
+Type=Single
+Cost=0
+Desc=leaps at %enemy and attempts to slash with its claws!
 TP=10
 Element=None
 Hits=1

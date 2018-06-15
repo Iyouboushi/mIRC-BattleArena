@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=75
-Tp=30
-Str=9
-Def=2
-Int=3
-Spd=3
+Tp=50
+Str=15
+Def=14
+Int=10
+Spd=12
 IgnitionGauge=2
-Name=Menos Grande
+Name=Hollow
 
 [Battle]
 Hp=75
-Tp=30
-Str=9
-Def=2
-Int=3
-Spd=3
+Tp=50
+Str=15
+Def=14
+Int=10
+Spd=12
 IgnitionGauge=2
 Status=alive
 
@@ -27,35 +27,39 @@ RageCountDown=0
 Level=1
 Percent=0
 
+[monster]
+type=hollow
+size=medium
+
 
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a huge hollow standing 2-6 stories tall.  It is all black except for its face, which is pure white and has a long pointed nose.  This is a Gillian-class Menos, also known as the Menos Grande.
-BossQuote=AROOOOOOOOOOOOOOOOOOOOO!
+Char=is a warped ethereal creature with a large hole in its chest and a white mask on its face. It gives off an eerie roar.
 Rage=screams in rage 
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=
 
 [Info]
 Flag=monster
-Gender=his
-Gender2=him
+Gender=its
+Gender2=it
 password=battlearena
 passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
+Streak=12
 CanTaunt=false
-IgnoreQuicksilver=true
+IgnoreQuicksilver=false
 
-[monster]
-type=hollow
-size=large
+[Monster]
+Type=undead
+size=medium
+ghost=true
 
 [Status]
 Poison=no
@@ -89,34 +93,31 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
+ethereal=yes
 
 [Weapons]
-Equipped=MenosPower
-MenosPower=20
+Equipped=HollowPower
+HollowPower=$calc(1 + $current.battlestreak)
+
 
 [Skills]
-desperateblows=1
-weaponbash=2
-Resist-Petrify=60
-Resist-Stun=30
-
 
 [Techniques]
-Cero=$calc(1 + $current.battlestreak)
-
-[Item_Amount]
+HollowBite=$calc(1 + $current.battlestreak)
+HollowSlash=$calc(1 + $current.battlestreak)
+Cero=$iif($current.battlestreak > 100, $current.battlestreak, 0)
 
 
 [modifiers]
-Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=200
-Dark=40
+Heal=dark
+Earth=50
+Fire=50
+Wind=50
+Water=50
+Ice=50
+Lightning=50
+Light=110
+Dark=1000
 HandToHand=100
 Whip=100
 Sword=100
@@ -129,6 +130,11 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
 Zangetsu=200
 Senbonzakura=200
 Hyourinmaru=200
