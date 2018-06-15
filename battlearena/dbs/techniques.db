@@ -577,6 +577,8 @@ BoneDragon=RadiantBreath.HurricaneBreath.SpikeFlail
 Qutrub=SharkBite.DancingEdge.Evisceration.Mangle
 Phlegethon=SpinningSlash.HerculeanSlash.Scourge.AncientFlare
 HollowPower=Cero.HollowBite.HollowSlash
+MechanicPower=MechanicStrike.MechanicZap.MechanicSlash.MechanicExplosion
+Bioform=BioAttack91.BioAttack112.BioAttack331.BioAttack999
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -17981,6 +17983,53 @@ BasePower=150
 Magic=No
 Stat=str
 
+
+[BioAttack112]
+Type=AOE
+StatusType=blind
+Cost=0
+Desc=unleashes a green cloud of gas across the battlefield, hitting everyone and making it hard to see.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+Stat=str
+
+[BioAttack331]
+Type=AOE
+StatusType=Paralysis
+Cost=0
+Desc=roars as large green spikes shoot outs of its body in an attempt to hit everyone on the battlefield. Anyone hit feels their muscles seize up.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+Stat=str
+
+[BioAttack91]
+Type=Single
+Cost=0
+Desc=leaps at %enemy and takes a bite!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+Stat=str
+
+[BioAttack999]
+Type=AOE
+Cost=0
+Desc=charges up with energy before unleashing it as bomb that hits the entire battlefield.
+TP=10
+Element=None
+Hits=1
+BasePower=500
+Magic=No
+Stat=int
+
 [HollowBite]
 Type=Single
 Cost=0
@@ -18002,6 +18051,50 @@ Hits=1
 BasePower=150
 Magic=No
 Stat=str
+
+[MechanicStrike]
+Type=Single
+Cost=0
+Desc=runs up and attempts to punch %enemy with its metal fist.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+Stat=str
+
+[MechanicZap]
+Type=Single
+Cost=0
+Desc=shoots a bolt of lightning out of its hand at %enemy $+ .
+TP=10
+Element=Lightning
+Hits=1
+BasePower=150
+Magic=No
+Stat=int
+
+[MechanicSlash]
+Type=Single
+Cost=0
+Desc=runs up and attempts to slash %enemy with its slashing hand.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+Stat=str
+
+[MechanicExplosion]
+Type=AOE
+Cost=0
+Desc=holds up its large cannon arm and shoots a large fireball that hits the entire battlefield. 
+TP=10
+Element=Fire
+Hits=1
+BasePower=150
+Magic=No
+Stat=int
 
 [ErraticFlutter]
 Type=AOE

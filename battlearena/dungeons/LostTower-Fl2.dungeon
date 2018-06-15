@@ -1,0 +1,78 @@
+[Info]
+Name=The Lost Tower of the Ancients  - Floor 2
+Rooms=10
+PlayersNeeded=1
+PlayersRecommended=3
+Level=100
+FinalRoom=9
+StartBattleDesc=uses the key forged to open the locked door at the end of the first floor.  The doors creak open and reveal a staircase leading upwards into the unknown.
+
+ClearDungeonDesc=* The party has defeated the bioforms and experiments of the second floor and discovered the locked entrance to the final floor. Perhaps the Allied Forces can forge a key to unlock the next floor. $iif($readini($char(WanderingBard), Battle, Status) = alive, The wandering bard looks at the party and tips his hat. "Perhaps we will meet again") [Clear time: %total.battle.duration $+ ]
+
+DungeonFail=* The party has failed to clear the second floor of the tower and is forced to flee.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party advances up the stairs and sees a man with long brown hair under a big floppy hat. He wears a waistcoat and carries a harp. "Ah, good day. It seems we are on the same path. Let us travel together, eh?"
+Battlefield=Lost Tower
+
+[1]
+Desc=The party finishes climbing the stairs and sees large machines everywhere. Several human-sized robots turn and see the party and zip forwards ready for a fight.
+Battlefield=Lost Tower
+npcs=WanderingBard
+Monsters=Tower_Repurposer.Tower_Hunter
+
+[2]
+Desc=A loud voice echoes throughout the tower: "Intruders Detected! Stop them!"  More robots approach the party.
+Battlefield=Lost Tower
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,3))
+
+[3]
+Desc=The party notices that several machines in this section of the tower seem to be pumping green liquid into a room further down the path. As they approach the room more robots approach to stop them.
+Battlefield=Lost Tower
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(2,4))
+
+[4]
+Desc=The party enters the room to see the machines pumping the green liquid into a human-sized creature. As the machines empty the creature roars to life and destroys several robots before setting its sights upon the party.
+Monsters=BioForm182
+Battlefield=Lost Tower
+bossroom=true
+
+[5]
+Desc=With the bioform defeated, the party takes a moment to rest before moving forward. $iif($readini($char(WanderingBard), Battle, Status) = alive, The Wandering Bard looks at the party and sighs. "The greatest foe still lies ahead. Prepare yourselves.")
+Battlefield=Lost Tower
+RestoreRoom=true
+
+[6]
+Desc=The party hears a loud voice echo throughout the tower: "Intruders have defeated 182! Protect your master!"  Monsters approach the party!
+Battlefield=Lost Tower
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(5,7))
+
+[7]
+Desc=As they rush past more empty containers they see a bright light ahead as more monsters approach to stop them.
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(5,7))
+Battlefield=Lost Tower
+
+[8]
+Desc=The bright light grows closer as yet even more monsters leap out to stop them.
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(8,10))
+Battlefield=Lost Tower
+
+[9]
+Desc=The party enters into the room with the bright light to discover the light is emitting from a large robotic creature holding a large axe.  Behind it lies a large door.  
+Monsters=Thanatos
+Battlefield=Lost Tower
+BossRoom=true
+
+
+[MonsterList]
+1=Tower_Repurposer.Tower_Hunter
+2=Tower_Hunter.Tower_Conjurer
+3=Tower_Exterminator.Tower_Hunter
+4=Tower_Repurposer.Tower_Exterminator
+5=Tower_Cobra.Tower_Giant
+6=Tower_Hunter.Tower_Cobra
+7=Tower_Cobra.Tower_Hornet
+8=Tower_Hunter.Tower_Giant
+9=Tower_Orc.Tower_Exterminator
+10=Tower_Orc.Tower_Yagudo

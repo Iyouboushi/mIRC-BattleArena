@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 03/24/18
+;;;; Last updated: 06/15/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -49,7 +49,7 @@ dungeon.start {
   if ($4 != true) { $display.message(2 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) }
   if ($4 = true) { $display.message(2 $+ $readini($dungeonfile($3), info, StartBattleDesc), global) | writeini $txtfile(battle2.txt) DungeonInfo IgnoreWritingDungeonTime true }
 
-  if (%dungeon.max.players = 0) { $display.message(4This dungeon is level12 %dungeon.level 4and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 4to enter (12 $+ %dungeon.players.recommended 4 $iif(%dungeon.players.recommended = 1, player, players) recommended). The dungeon will begin in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) }
+  if (%dungeon.max.players = 0) { $display.message(4This dungeon is level12 %dungeon.level 4and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 4to enter (12 $+ %dungeon.players.recommended $+ 4 $iif(%dungeon.players.recommended = 1, player, players) recommended). The dungeon will begin in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) }
   else { $display.message(4This dungeon is level12 %dungeon.level 4and will start after12 %dungeon.max.players $iif(%dungeon.max.players = 1, player 4enters, players 4enter) or in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) }
 
 }

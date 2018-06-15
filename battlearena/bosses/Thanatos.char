@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a large glowing human creature with full plate armor and a large axe.
+Char=is a large glowing robotic creature with full plate armor and a large axe.
 Rage=screams in rage 
 BossQuote=No being on this mortal plane can hurt me! You will be destroyed!
 DeathMessage=collapses to the ground and screams "it..it cannot be! Xande.. my master..." before dying.
@@ -37,7 +37,7 @@ BlackOrbs=1
 ShopLevel=1.0
 
 [Monster]
-Type=human
+Type=android
 size=giant
 SuperElite=true
 TechLearn=true
@@ -128,7 +128,7 @@ Equipped=Guardian
 Guardian=4
 
 [Augment]
-Bravura+1=AbsorbTP.Drain
+Bravura+1=AbsorbTP.Drain.HurtEthereal
 
 
 [modifiers]
