@@ -1,0 +1,25 @@
+[Info]
+Name=The Mirror Trial
+Rooms=2
+PlayersNeeded=1
+PlayersRecommended=1
+PlayersMax=1
+Level=250
+FinalRoom=1
+Reward=AncientMystery:Tensai
+StartBattleDesc=holds up a mirror which begins to vibrate and glow. After a moment, the mirror opens a portal and invites $readini($txtfile(Battle2.txt), DungeonInfo, DungeonCreator) into the Hall of Reflections where a trial will take place.
+ClearDungeonDesc=* $readini($txtfile(Battle2.txt), DungeonInfo, DungeonCreator) has passed the trial of the mirror. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* $readini($txtfile(Battle2.txt), DungeonInfo, DungeonCreator) has failed the trial. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=$readini($txtfile(Battle2.txt), DungeonInfo, DungeonCreator) is standing in the Hall of Reflections.  Mirrors line the room.  It seems there is a brief moment to relax before the trial will begin.
+Battlefield=Hall of Reflections
+
+[1]
+Desc=A mirror shatters and suddenly there is a perfect copy of $readini($txtfile(Battle2.txt), DungeonInfo, DungeonCreator) standing in the room, ready to do battle.
+Battlefield=Hall of Reflections
+Monsters=dungeon.evilclone
+bossroom=true
+
+

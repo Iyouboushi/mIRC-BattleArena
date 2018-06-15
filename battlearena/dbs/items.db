@@ -4856,6 +4856,15 @@ SpecialType=GainSkill
 Skill=QuickPockets
 Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of QuickPockets.
 
+[AncientMystery:Tensai]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=Tensai
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has become a tensai with weapon skill usage.
+
 
 =========================
 INSTRUMENTS
@@ -5013,6 +5022,15 @@ Currency=
 SellPrice=0
 Desc=A portal created by rare chance when a Treasure Goblin is killed.
 Dungeon=Treasure_Vault
+Exclusive=yes
+
+[MirrorOfReflections]
+type=dungeon
+Cost=100
+currency=KindredCrest
+Desc=A glowing mirror designed to test your might.
+SellPrice=1000
+Dungeon=Mirror_Trial
 Exclusive=yes
 
 ==========================

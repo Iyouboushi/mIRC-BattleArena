@@ -1,11 +1,11 @@
 [weather]
-current=dry
+current=stormy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
 CurrentMoonPhase=Crescent
-currentMoonTurn=1
+CurrentMoonTurn=2
 
 [MoonPhaseTime]
 full=3
@@ -18,7 +18,7 @@ BloodMoonChance=60
 
 [TimeOfDay]
 Currenttimeofday=Day
-CurrentTimeOfDayTurn=2
+currentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -918,11 +918,6 @@ NumberOfEvents=0
 limitations=no-trusts.no-mech.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
-
-======================================================
-DUNGEON BATTLEFIELDS
-======================================================
-
 [Tam-Tara Deepcroft Cavern]
 weather=gloomy
 NumberofEvents=0
@@ -1228,4 +1223,10 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 [Lost Tower]
 weather=none
 limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Hall of Reflections]
+Weather=stormy
+NumberOfEvents=0
+limitations=no-mech.no-trusts.no-summons.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
