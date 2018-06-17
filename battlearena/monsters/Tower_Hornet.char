@@ -122,8 +122,8 @@ Resist-Zombie=100
 
 [Techniques]
 FinalSting=1
-SharpSting=$calc(1 + $current.battlestreak)
-FrenzySting=$calc(1 + $current.battlestreak)
+SharpSting=50
+FrenzySting=50
 
 [Item_Amount]
 
