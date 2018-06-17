@@ -695,7 +695,7 @@ dungeon.evilclone {
 
   set %multiple.wave.bonus yes
   set %first.round.protection yes
-  set %darkness.turns 21
+  set %darkness.turns 51
   unset %darkness.fivemin.warn
   unset %battle.rage.darkness
 }
