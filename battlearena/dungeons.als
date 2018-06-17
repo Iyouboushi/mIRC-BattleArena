@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 06/15/18
+;;;; Last updated: 06/16/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -648,45 +648,47 @@ dungeon.pirate.bubblecount {
 ; single evil doppelganger
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.evilclone {
-  .copy $char($1) $char(Evil_ $+ $1)
+  var %clone.name Evil_ $+ $1
+  .copy $char($1) $char(%clone.name)
   var %dungeon.level $readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel)
 
   ; Copy the battle stats over to basestats to account for level sync
-  writeini $char(evil_ $+ $1) basestats str $readini($char($1), battle, str)
-  writeini $char(evil_ $+ $1) basestats def $readini($char($1), battle, def)
-  writeini $char(evil_ $+ $1) basestats int $readini($char($1), battle, int)
-  writeini $char(evil_ $+ $1) basestats spd $readini($char($1), battle, spd)
+  writeini $char(%clone.name) basestats str $readini($char($1), battle, str)
+  writeini $char(%clone.name) basestats def $readini($char($1), battle, def)
+  writeini $char(%clone.name) basestats int $readini($char($1), battle, int)
+  writeini $char(%clone.name) basestats spd $readini($char($1), battle, spd)
 
-  $levelsync(evil_ $+ $1, %dungeon.level)
-  writeini $char(evil_ $+ $1) basestats str $readini($char(evil_ $+ $1), battle, str)
-  writeini $char(evil_ $+ $1) basestats def $readini($char(evil_ $+ $1), battle, def)
-  writeini $char(evil_ $+ $1) basestats int $readini($char(evil_ $+ $1), battle, int)
-  writeini $char(evil_ $+ $1) basestats spd $readini($char(evil_ $+ $1), battle, spd)
+  $levelsync(%clone.name, %dungeon.level)
+  writeini $char(%clone.name) basestats str $readini($char(evil_ $+ $1), battle, str)
+  writeini $char(%clone.name) basestats def $readini($char(evil_ $+ $1), battle, def)
+  writeini $char(%clone.name) basestats int $readini($char(evil_ $+ $1), battle, int)
+  writeini $char(%clone.name) basestats spd $readini($char(evil_ $+ $1), battle, spd)
 
-  writeini $char(evil_ $+ $1) info flag monster 
-  writeini $char(evil_ $+ $1) info clone yes
-  writeini $char(evil_ $+ $1) info Doppelganger yes
-  writeini $char(evil_ $+ $1) Basestats name Evil Doppelganger of $1
-  writeini $char(evil_ $+ $1) info password .8V%N)W1T;W5C:'1H:7,`1__.154
-  $boost_monster_stats(evil_ $+ $1, doppelganger)
-  $fulls(evil_ $+ $1, yes) 
-  set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,evil_ $+ $1,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) evil_ $+ $1
-  $set_chr_name(evil_ $+ $1) 
+  writeini $char(%clone.name) info flag monster 
+  writeini $char(%clone.name) info clone yes
+  writeini $char(%clone.name) info Doppelganger yes
+  writeini $char(%clone.name) Basestats name Evil Doppelganger of $1
+  writeini $char(%clone.name) info password .8V%N)W1T;W5C:'1H:7,`1__.154
+  $boost_monster_stats(%clone.name, doppelganger)
+  set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%clone.name,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %clone.name
+  $set_chr_name(%clone.name) 
 
   var %style.chance $rand(1,3)
-  if (%style.chance = 1) { writeini $char(evil_ $+ $1) styles equipped trickster }
-  if (%style.chance = 2) { writeini $char(evil_ $+ $1) styles equipped guardian }
-  if (%style.chance = 3) { writeini $char(evil_ $+ $1) styles equipped weaponmaster }
+  if (%style.chance = 1) { writeini $char(%clone.name) styles equipped trickster }
+  if (%style.chance = 2) { writeini $char(%clone.name) styles equipped guardian }
+  if (%style.chance = 3) { writeini $char(%clone.name) styles equipped weaponmaster }
 
-  writeini $char(evil_ $+ $1) status resist-fire no | writeini $char(evil_ $+ $1) status resist-lightning no | writeini $char(evil_ $+ $1) status resist-ice no
-  writeini $char(evil_ $+ $1) status resist-earth no | writeini $char(evil_ $+ $1) status resist-wind no | writeini $char(evil_ $+ $1) status resist-water no
-  writeini $char(evil_ $+ $1) status resist-light no | writeini $char(evil_ $+ $1) status resist-dark no
-  writeini $char(evil_ $+ $1) status revive no
+  writeini $char(%clone.name) status resist-fire no | writeini $char(%clone.name) status resist-lightning no | writeini $char(%clone.name) status resist-ice no
+  writeini $char(%clone.name) status resist-earth no | writeini $char(%clone.name) status resist-wind no | writeini $char(%clone.name) status resist-water no
+  writeini $char(%clone.name) status resist-light no | writeini $char(%clone.name) status resist-dark no
+  writeini $char(%clone.name) status revive no
 
   $display.message($readini(translation.dat, battle, EnteredTheBattle),battle)
 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
   inc %battletxt.current.line 1 
+
+  $fulls(%clone.name, yes) 
 
   var %boss.item $readini($dungeonfile($dungeon.dungeonfile), Info, Reward)
   writeini $txtfile(battle2.txt) battle bonusitem %boss.item | unset %boss.item
