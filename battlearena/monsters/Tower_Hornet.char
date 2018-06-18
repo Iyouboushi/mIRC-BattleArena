@@ -3,8 +3,8 @@ Hp=1000
 Tp=1000
 Str=100
 Def=75
-Int=60
-Spd=80
+Int=80
+Spd=60
 IgnitionGauge=2
 Name=Tower Hornet
 
@@ -13,8 +13,8 @@ Hp=1000
 Tp=1000
 Str=100
 Def=75
-Int=60
-Spd=80
+Int=80
+Spd=60
 IgnitionGauge=2
 Status=alive
 
@@ -122,8 +122,7 @@ Resist-Zombie=100
 
 [Techniques]
 FinalSting=1
-SharpSting=50
-FrenzySting=50
+SharpSting=10
 
 [Item_Amount]
 
