@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 03/14/18
+;;;; Last updated: 06/18/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -185,13 +185,21 @@ on 3:TEXT:!access *:*: {
 }
 
 on 3:TEXT:!desc*:#: {  
-  if ($2 != $null) { $checkchar($2) | $set_chr_name($2) | $display.message(3 $+ %real.name  $+ $readini($char($2), Descriptions, Char), private)  | unset %character.description | halt }
-  else { $set_chr_name($nick) | $display.message(10 $+ %real.name  $+ $readini($char($nick), Descriptions, Char),private)  }
+  if ($2 != $null) { $checkchar($2) | $show.desc($2) }
+  else { $show.desc($nick) }
 }
 on 3:TEXT:!desc*:?: {  
-  if ($2 != $null) { $checkchar($2) | $set_chr_name($2) | $display.private.message(3 $+ %real.name  $+ $readini($char($2), n, Descriptions, Char))   | unset %character.description | halt }
-  else { $set_chr_name($nick) | $display.private.message(10 $+ %real.name  $+ $readini($char($nick), Descriptions, Char))  }
+  if ($2 != $null) { $checkchar($2) | $show.desc($2, private) }
+  else { $show.desc($nick, private) }
 }
+
+alias show.desc {
+  $set_chr_name($1)
+  if ($2 = private) { $display.private.message(3 $+ %real.name  $+ $readini($char($1), Descriptions, Char)) }
+  else { $display.message(3 $+ %real.name  $+ $readini($char($1), Descriptions, Char), private)  }
+  unset %character.description
+}
+
 on 3:TEXT:!cdesc *:*:{ $checkscript($2-)  | writeini $char($nick) Descriptions Char $2- | $okdesc($nick , Character) }
 on 3:TEXT:!sdesc *:*:{ $checkscript($2-)  
   if ($readini($char($nick), skills, $2) != $null) { 
@@ -319,6 +327,15 @@ on 3:TEXT:!battle hp:?: {
   if (%battleis != on) { $display.private.message($readini(translation.dat, errors, NoBattleCurrently)) }
   $build_battlehp_list
   $display.private.message(%battle.hp.list)  | unset %real.name | unset %hstats | unset %battle.hp.list
+}
+
+on 3:TEXT:!enmity:#: { 
+  if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $display.message($readini(translation.dat, battle, highestenmity),private) 
+}
+on 3:TEXT:!enmity:?: { 
+  if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $display.private.message($readini(translation.dat, battle, highestenmity)) 
 }
 
 on 3:TEXT:!tp:#:$set_chr_name($nick) | $display.message($readini(translation.dat, system, ViewMyTP),private) | unset %real.name

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 03/14/18
+;;;; Last updated: 06/18/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -486,10 +486,27 @@ alias ai_gettarget {
   ; If the tech is a buff or heal type, let's use the old method
   if (($readini($dbfile(techniques.db), %ai.tech, type) = buff) || ($readini($dbfile(techniques.db), %ai.tech, type) = heal)) { $ai_gettarget.random($1) | return }
 
+  set %ai.target $ai.enmity.getname
 
+  ; Check to make sure we have a target.  If not, randomly pick one
+  if ((%ai.target = $null) || (%ai.target = noone)) { $ai_gettarget.random($1) | return }
+
+  ; We have a valid target. Let's decrease the amount of enmity that person has now.
+  var %reduced.enmity.amount $calc($enmity(%ai.target, return) / 2)
+  writeini $txtfile(battle2.txt) enmity %ai.target %reduced.enmity.amount
+
+  ; Check for cover
+  if (%ai.action != tech) { 
+    $covercheck(%ai.target, $1) 
+    set %ai.target %attack.target 
+  }
+}
+
+alias ai.enmity.getname {
   ; Look through the enmity list and find who has the largest enmity value
   var %current.enmity.amount 0 
   var %current.enmity.counter 1 |  var %number.of.enmity.targets $numtok($return_peopleinbattle, 46)
+  var %highest.enmity noone
 
   while (%current.enmity.counter <= %number.of.enmity.targets) { 
     var %current.enmity.name $gettok($return_peopleinbattle, %current.enmity.counter, 46)
@@ -506,23 +523,12 @@ alias ai_gettarget {
     ; Grab the current enmity amount of the person.  If it's more than the current amount, this is our new target.
     var %temp.enmity.amount $enmity(%current.enmity.name, return)
     if (%temp.enmity.amount != $null) { 
-      if (%temp.enmity.amount > %current.enmity.amount) { set %ai.target %current.enmity.name | var %current.enmity.amount %temp.enmity.amount } 
+      if (%temp.enmity.amount > %current.enmity.amount) { var %highest.enmity %current.enmity.name | var %current.enmity.amount %temp.enmity.amount } 
     } 
     inc %current.enmity.counter
   }
 
-  ; Check to make sure we have a target.  If not, randomly pick one
-  if (%ai.target = $null) { $ai_gettarget.random($1) | return }
-
-  ; We have a valid target. Let's decrease the amount of enmity that person has now.
-  var %reduced.enmity.amount $calc($enmity(%ai.target, return) / 2)
-  writeini $txtfile(battle2.txt) enmity %ai.target %reduced.enmity.amount
-
-  ; Check for cover
-  if (%ai.action != tech) { 
-    $covercheck(%ai.target, $1) 
-    set %ai.target %attack.target 
-  }
+  return %highest.enmity
 }
 
 alias ai_gettarget.random {

@@ -627,6 +627,24 @@ ActionPoints=1
 Cooldown=15
 NeedToEquip=true
 
+[LucidDreaming]
+Cost=0
+Type=Active
+Max=1
+Info=This skill allows you to cut your current enmity in half.
+ActionPoints=1
+Cooldown=15
+NeedToEquip=false
+
+[SoftBlows]
+Cost=0
+Type=Active
+Max=1
+Info=This skill allows your next attack to generate no enmity.  This skill does not consume a turn.
+ActionPoints=1
+Cooldown=15
+NeedToEquip=false
+
 
 =============================================
 RESISTS

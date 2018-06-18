@@ -1,0 +1,2 @@
+attempts to fly in and bite %enemy
+attempts to dive and slam its body into %enemy

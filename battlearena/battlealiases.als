@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/10/18
+;;;; Last updated: 06/18/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -5804,6 +5804,8 @@ enmity {
 
     if ($1 = battlefield)  { return }
 
+    if ($readini($char($1), skills, softblows.on) = on) { writeini $char($1) skills softblows.on off | return }
+
     var %current.enmity $readini($txtfile(battle2.txt), Enmity, $1)
     if (%current.enmity = $null) { var %current.enmity 0 }
 
@@ -5901,5 +5903,38 @@ portal.calcabrina.calcasummon {
   if ($readini($char(Brina4), battle, hp) > 0) { inc %brina.count 1 }
 
   if ((%calca.count = 0) && (%brina.count = 0)) { return Calcabrina }
+}
+
+hydra.head.calculate {
+  ; The # of heads a hydra has is dependent on its health %
+  ; Every 20% damage it loses 1 head.  At 20% or less it only has 1 max.
+
+  var %current.hp.percent $round($calc(100 * ($current.hp($1) / $readini($char($1), BaseStats, HP))),0)
+
+  var %max.heads $readini($char($1), Info, MaxHeads)
+  if (%max.heads = $null) { var %max.heads 5 }
+
+  if (%current.hp.percent >= 100) { return %max.heads }
+  if ((%current.hp.percent < 100) && (%current.hp.percent >= 80)) {
+    dec %max.heads 1
+    if (%max.heads <= 0) { var %max.heads 1 }
+    return %max.heads 
+  }
+  if ((%current.hp.percent < 80) && (%current.hp.percent >= 60)) {
+    dec %max.heads 2
+    if (%max.heads <= 0) { var %max.heads 1 }
+    return %max.heads 
+  }
+  if ((%current.hp.percent < 60) && (%current.hp.percent >= 40)) {
+    dec %max.heads 3
+    if (%max.heads <= 0) { var %max.heads 1 }
+    return %max.heads 
+  }
+  if ((%current.hp.percent < 40) && (%current.hp.percent >= 20)) {
+    dec %max.heads 4
+    if (%max.heads <= 0) { var %max.heads 1 }
+    return %max.heads 
+  }
+  if (%current.hp.percent < 20) { return 1 }
 
 }

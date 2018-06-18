@@ -1821,6 +1821,14 @@ Desc=A cloth belt that proves you've gone way beyond the level of a black belt! 
 IncreaseH2HDamage.Amount=.50
 SellPrice=5000
 
+[Dragon-Belt]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseH2HDamage
+Desc=A cloth belt that proves you've gone way beyond the level of even the red belt! This accessory will increase the power of hand to hand attacks.
+IncreaseH2HDamage.Amount=.80
+SellPrice=5000
+
 [Miser-Ring]
 Type=accessory
 Cost=$iif($left($adate,2) = 04, 80000, 0)
@@ -4864,6 +4872,24 @@ Exclusive=yes
 SpecialType=GainSkill
 Skill=Tensai
 Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has become a tensai with weapon skill usage.
+
+[AncientMystery:LucidDreaming]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=LucidDreaming
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of LucidDreaming.
+
+[AncientMystery:SoftBlows]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=LucidDreaming
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of SoftBlows.
 
 
 =========================

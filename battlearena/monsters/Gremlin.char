@@ -232,4 +232,4 @@ GreatSword=100
 Bow=100
 
 [modifier_adjust]
-water=$iif($return_monstersinbattle=< $return_maxmonstersinbattle, $skill.monstersummon(gremlin, gremlin))
+water=$iif($return_monstersinbattle <= $return_maxmonstersinbattle, $skill.monstersummon(gremlin, gremlin))

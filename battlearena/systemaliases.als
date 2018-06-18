@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/15/18
+;;;; Last updated: 06/18/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2658,11 +2658,12 @@ clear_skills {
   writeini $char($1) skills konzen-ittai.on off |  writeini $char($1) skills thirdeye.on off | writeini $char($1) status thirdeye.turn 0 
   writeini $char($1) skills scavenge.on off | writeini $char($1) skills FormlessStrike.on off | writeini $char($1) skills retaliation.on off
   writeini $char($1) skills truestrike.on off | writeini $char($1) skills PerfectDefense.on off
-  remini $char($1) NaturalArmor
   writeini $char($1) skills bloodboost.on off |  writeini $char($1) skills bloodspirit.on off 
   writeini $char($1) skills criticalfocus.on off | writeini $char($1) skills shieldfocus.on off
   writeini $char($1) skills barrage.on off | writeini $char($1) skills doublecast.on off
   writeini $char($1) skills duality.on off | writeini $char($1) skills thinair.on off | writeini $char($1) skills quickpockets.on off
+  writeini $char($1) skills softblows.on off
+  remini $char($1) NaturalArmor
 }
 
 clear_skill_timers {
@@ -2680,6 +2681,7 @@ clear_skill_timers {
   remini $char($1) skills criticalfocus.time | remini $char($1) skills shieldfocus.time | remini $char($1) skills barrage.time
   remini $char($1) skills doublecast.time | remini $char($1) skills invigorate.time | remini $char($1) skills thrillofbattle.time
   remini $char($1) skills duality.time | remini $char($1) skills thinair.time | remini $char($1) skills quickpockets.time
+  remini $char($1) skills luciddreaming.time | remini $char($1) skills softblows.time
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

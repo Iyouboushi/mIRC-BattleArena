@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 05/21/18
+;;;; Last updated: 06/18/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2831,17 +2831,17 @@ alias skill.alchemy {
     var %item_amount $readini($char($1), item_amount, %item.name)
     var %item_type $readini($dbfile(items.db), %item.name, type)
 
-    if (%item_amount <= 0) { remini $char($1) item_amount %item.name | set %item_amount 0 } 
+    if (%item_amount <= 0) { remini $char($1) item_amount %item.name } 
     if (%item_amount = $null) { set %item_amount 0 }
 
     ; How many of the ingredient do we need to craft this?
     if ($readini($dbfile(weapons.db), $2, power) != $null) { 
-      set %amount.needed $readini($dbfile(crafting.db), $2, %item.name) 
-      if ((%amount.needed = $null) || (%amount.needed = 0)) { set %amount.needed 1 } 
+      var %amount.needed $readini($dbfile(crafting.db), $2, %item.name) 
+      if (%amount.needed = $null) { var %amount.needed 1 } 
     }
     else { 
       set %amount.needed $calc($readini($dbfile(crafting.db), $2, %item.name) * %amount.to.craft)
-      if ((%amount.needed = $null) || (%amount.needed = 0)) { set %amount.needed %amount.to.craft }
+      if (%amount.needed = $null) { set %amount.needed %amount.to.craft }
     }
 
     ; Check to see if we have enough.
@@ -2878,7 +2878,6 @@ alias skill.alchemy {
       inc %player.ingredients 1
     }
 
-    unset %amount.needed
     inc %value 1 
   }
 
@@ -4213,7 +4212,6 @@ alias skill.justrelease { $set_chr_name($1)
   var %skill.name JustRelease
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
-
   var %target.flag $readini($char($2), info, flag)
   if (($readini($char($1), info, flag) = $null) && (%target.flag != monster)) { $set_chr_name($1) | $display.message(4 $+ %real.name can only Just Release on monsters!, private) | halt }
   if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
@@ -4558,8 +4556,6 @@ alias skill.cardshark { $set_chr_name($1)
   var %random.tech $rand(1, %total.techs)
   var %card.technique $gettok(%card.powers,%random.tech,46)
 
-  echo -a technique: %card.technique
-
   ; Clear some attack variables
   unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
   unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged 
@@ -4583,4 +4579,73 @@ alias skill.cardshark { $set_chr_name($1)
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
+;=================
+; LUCID DREAMING
+;=================
+on 3:TEXT:!luciddreaming*:*: { $skill.luciddreaming($nick) }
+on 3:TEXT:!lucid dreaming*:*: { $skill.luciddreaming($nick) }
+
+alias skill.luciddreaming { $set_chr_name($1) |  $check_for_battle($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+
+  var %skill.name luciddreaming
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, luciddreaming, !luciddreaming, true)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(luciddreaming))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, luciddreaming) = $null) { set %skill.description performs an ancient technique to reduce $gender($1) enmity. }
+  else { set %skill.description $readini($char($1), descriptions, luciddreaming) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; write the last used time.
+  writeini $char($1) skills luciddreaming.time %true.turn 
+
+  ; Cut the enmity in half
+  var %current.enmity $enmity($1, return)
+  $enmity($1, remove, $calc(%current.enmity / 2))
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) }
+}
+
+;=================
+; SOFT BLOWS
+;=================
+on 3:TEXT:!softblows*:*: { $skill.softblows($nick) }
+on 3:TEXT:!soft blows:*: { $skill.softblows($nick) }
+
+alias skill.softblows { $set_chr_name($1) |  $check_for_battle($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+
+  var %skill.name softblows
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, softblows, !softblows, true)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(softblows))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, softblows) = $null) { set %skill.description performs an ancient technique to deal damage without increasing enmity }
+  else { set %skill.description $readini($char($1), descriptions, softblows) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; Turn the skill on and write the last used time.
+  writeini $char($1) skills softblows.on on
+  writeini $char($1) skills softblows.time %true.turn 
+
+  ; Player gets another turn
+  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
 }

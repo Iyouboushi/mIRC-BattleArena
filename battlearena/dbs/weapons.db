@@ -73,6 +73,8 @@ MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.Skelet
 
 MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue.Qutrub.Phlegethon.HollowPower.MechanicPower
 
+MonsterWpns8=Flameskull.HydraHeads
+
 ============================================
 WEAPON TEMPLATE
 
@@ -4508,7 +4510,7 @@ Upgrade=0
 
 [BatFangs]
 Cost=0
-Type=HandToHand
+Type=bats
 Info=The fangs of a bat.
 Abilities=SonicBoom.BatBite.BatDrill
 Element=None
@@ -4814,6 +4816,16 @@ Abilities=MummyCurse.MummyBandage
 Element=dark
 Hits=$rand(1,2)
 BasePower=30
+Upgrade=0
+
+[Flameskull]
+Cost=0
+Type=flameskull
+Info=Power of a flaming skull
+Abilities=FireII.Firaja
+Element=Fire
+Hits=$rand(1,2)
+BasePower=20
 Upgrade=0
 
 [GremlinAttack]
@@ -5878,6 +5890,19 @@ Hits=$rand(1,2)
 Upgrade=0
 CanShieldReflect=false
 
+[HydraHeads]
+Cost=0
+Type=Hydra
+Info=The attack of a hydra
+Abilities=
+Element=water
+BasePower=$calc($hydra.head.calculate * 25)
+Hits=$hydra.head.calculate($1)
+Upgrade=0
+CanShieldReflect=false
+
+
+
 [Wamoura]
 Cost=0
 Type=HandToHand
@@ -6237,7 +6262,7 @@ HurtEthereal=true
 
 [WormMouth]
 Cost=0
-Type=HandToHand
+Type=worm
 Info=The mouth of a worm.
 Abilities=Upwell.Waterwhirl.Watery_Grave.Spittle_Splatter
 Element=None

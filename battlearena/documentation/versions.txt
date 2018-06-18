@@ -1597,6 +1597,9 @@ Battle Arena Bot VERSIONS
 - Added the missing augments and reforged +1 armor
 - Added the !portal dropcheck command [thanks to Pentium320]
 - Added the !monster strength command. This will give you an idea on how soon a besieged battle will begin.
+- Added the !deathboard players command.  This will generate the top players who have died the most in the game.
+- Added the !killboard command. This will generate the top monster killers in the game.
+- Added the !enmity command. This will show who has the highest enmity and is being targeted by monsters.
 - Added a MaxTormentLevel flag in [info] for monsters and bosses. Set to 0 it means the monster won't show up in torments,
   leaving it empty/null will allow the monster to show up on any level of torment.
 - Added a MinTormentLevel flag in [info] for monsters and bosses. Leaving it empty means the minimum will be 1.
@@ -1626,6 +1629,10 @@ Battle Arena Bot VERSIONS
   This skill cannot be purchased and must be learned.
 - Added a new active skill: ThinAir. This skill will cause your next magic spell to consume 0 TP upon use.
   This skill cannot be purchased and must be learned.
+- Added a new active skill: LucidDreaming. This skill will instantly cut your current enmity in half.
+  This skill cannot be purchased and must be learned.
+- Added a new active skill: SoftBlows. This skill will cause your next attack to not increase enmity.
+  This skill cannot be purchased and must be learned.
 - Added a new passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
   death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
 - Added a new passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd
@@ -1654,8 +1661,6 @@ Battle Arena Bot VERSIONS
 - Added the ability for monsters, bosses and NPCs to have rotations. These are set blueprints on how they will react each battle.
   The information on how to set it up is in new_npc.char, new_mon.char and new_boss.char at the bottom of the file. Or see the
   MetalSlime and BlueSlime files for an example.
-- Added the !deathboard players command.  This will generate the top players who have died the most in the game.
-- Added the !killboard command. This will generate the top monster killers in the game.
 - Added the ability for dungeons to have a Max Player limit.  The dungeon will automatically start if the max number is met.
   In [Info] put MaxPlayers=#   If # is null or 0 then there is no max.
 - Changed the minimum shop level for players who are 100+.
