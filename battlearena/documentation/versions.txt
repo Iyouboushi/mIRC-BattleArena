@@ -1668,6 +1668,7 @@ Battle Arena Bot VERSIONS
 - Changed the way multi-hits are calculated
 - Changed the amount of style points needed to achieve different ranks. It is harder on higher battle levels now.
 - Changed the skill and technique shops to be able to use Kill Coins as their currency to purchase. 
+- Changed the "Analysis" skill to no longer consume a turn but it can only be used once per turn.
 - Changed SpawnAfterDeath to allow multiple things to spawn 
 - Changed AI vs AI battles so that the battle will end in a draw after 50 turns.
 - Changed active skills so that most of them have to be equipped in order to use in battle. There can only be 5 active skills

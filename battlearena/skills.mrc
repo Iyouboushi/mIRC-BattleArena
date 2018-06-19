@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 06/18/18
+;;;; Last updated: 06/19/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2303,9 +2303,11 @@ alias skill.analysis { $set_chr_name($1)
   var %skill.name Analysis
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
-
   var %analysis.flag $readini($char($2), info, flag) 
   if (%analysis.flag != monster) { $display.message($readini(translation.dat, errors, OnlyAnalyzeMonsters), private) | halt }
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, analysis, !analyze, false)
 
   ; Decrease the action points
   $action.points($1, remove, $skill.actionpointcheck(analysis))
@@ -2474,8 +2476,12 @@ alias skill.analysis { $set_chr_name($1)
   unset %analysis.weapon.weak | unset %analysis.weapon.strength | unset %analysis.element.weak | unset %analysis.element.strength | unset %analysis.element.absorb
   unset %analysis.element.heal | unset %analysis.weapon.normal
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  ; write the last used time.
+  writeini $char($1) skills analysis.time %true.turn
+
+
+  ; Player gets another turn
+  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
 }
 
 ;=================

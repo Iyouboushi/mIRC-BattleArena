@@ -2681,7 +2681,7 @@ clear_skill_timers {
   remini $char($1) skills criticalfocus.time | remini $char($1) skills shieldfocus.time | remini $char($1) skills barrage.time
   remini $char($1) skills doublecast.time | remini $char($1) skills invigorate.time | remini $char($1) skills thrillofbattle.time
   remini $char($1) skills duality.time | remini $char($1) skills thinair.time | remini $char($1) skills quickpockets.time
-  remini $char($1) skills luciddreaming.time | remini $char($1) skills softblows.time
+  remini $char($1) skills luciddreaming.time | remini $char($1) skills softblows.time | remini $char($1) skills analysis.time
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
