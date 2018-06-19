@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/01/18
+;;;; Last updated: 06/19/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1321,7 +1321,7 @@ alias generate_monster {
       ; Display the entering message and quote
       $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
       $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)
-      $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle)
+      if ($readini($char(%monster.name), descriptions, BossQuote) != $null) { $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle) }
       writeini $char(%monster.name) battle status normal 
 
       ; Boost the monster
@@ -1368,7 +1368,7 @@ alias generate_monster {
         if (%battle.type != ai) { 
           $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
           $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)
-          $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle)
+          if ($readini($char(%monster.name), descriptions, BossQuote) != $null) { $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle) }
         }
         if (%battle.type = ai) { set %ai.monster.name $set_chr_name(%monster.name) %real.name | writeini $txtfile(1vs1bet.txt) money monsterfile %monster.name }
 
