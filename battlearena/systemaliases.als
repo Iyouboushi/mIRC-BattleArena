@@ -3987,9 +3987,11 @@ conquest.points.calculate {
     var %conquest.rate 0
     var %conquest.rate .030
 
+    var %conquest.streak $readini(battlestats.dat, battle, WinningStreak)
+
     if (((%battle.type = boss) || (%battle.type = defendoutpost) || (%battle.type = assault))) { 
-      if (%winning.streak < 500) { inc %conquest.rate .03 }
-      if (%winning.streak >= 500) { inc %conquest.rate .01 }
+      if (%conquest.winning.streak < 500) { inc %conquest.rate .03 }
+      if (%conquest.winning.streak >= 500) { inc %conquest.rate .01 }
       var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * %conquest.rate),0) 
     }
     if (%battle.type != boss) { var %conquestpoints.to.add $round($calc(%conquestpoints.to.add * %conquest.rate),0) }

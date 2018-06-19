@@ -1376,7 +1376,6 @@ alias generate_monster {
         ; If the battle is a torment, assault or defendoutpost we need to make inactive monsters active
         if (((%battle.type = torment) || (%battle.type = assault) || (%battle.type = defendoutpost))) { writeini $char(%monster.name) battle status normal } 
 
-
         ; Check for a drop
         $check_drops(%monster.name)
 
@@ -2008,10 +2007,11 @@ alias battle.end.victory {
 
   }
 
+  var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
   var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
 
   if ((((((((%portal.bonus != true) && (%battle.type != torment) && (%besieged != on) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on)))))))) {
-    var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
+
     var %winning.streak.increase 1 
 
     ; Check for Flawless Victory
