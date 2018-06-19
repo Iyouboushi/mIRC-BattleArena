@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=$iif(%battle.type = dungeon, 20000, 5000)
-Tp=1000
+Tp=2000
 Str=20
 Def=20
 Int=20
@@ -10,7 +10,7 @@ Name=Wandering Bard
 
 [Battle]
 Hp=5000
-Tp=1000
+Tp=2000
 Str=20
 Def=20
 Int=20
@@ -109,7 +109,7 @@ Equipped=HomesteadBow
 HomesteadBow=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Skills]
-Zen=5
+Zen=10
 SwordMaster=100
 Resist-Charm=100
 Resist-Poison=100

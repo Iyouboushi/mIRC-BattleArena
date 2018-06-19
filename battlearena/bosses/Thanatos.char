@@ -125,7 +125,7 @@ SteelCyclone=100
 
 [Styles]
 Equipped=Guardian
-Guardian=4
+Guardian=3
 
 [Augment]
 Bravura+1=AbsorbTP.Drain.HurtEthereal
@@ -164,8 +164,8 @@ Final_Kamehameha=75
 Spirit_Excalibur=50
 Final_Flash=50
 God_Kamehameha=75
-ResistTechs=$calc(10 + %current.turn)
-ResistMelee=$calc(10 + %current.turn)
+ResistTechs=$calc(5 + %current.turn)
+ResistMelee=$calc(5 + %current.turn)
 
 [Rotations]
 Current=0
