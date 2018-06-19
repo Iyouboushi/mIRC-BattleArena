@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/18/18
+;;;; Last updated: 06/19/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3591,21 +3591,21 @@ give_random_key_reward {
     set %who.battle $read -l [ $+ [ %l ] ] $txtfile(battle.txt) | set %status.battle $readini($char(%who.battle), Battle, Status)
     if (%status.battle = dead) { inc %l 1 }
     else { 
-      if ($readini($char(%who.battle), info, flag) = $null) { %players.list = $addtok(%players.list, %who.battle, 46) }
+      if ($readini($char(%who.battle), info, flag) = $null) { %keys.players.list = $addtok(%keys.players.list, %who.battle, 46) }
       inc %l 1 
     } 
   }
   unset %lines | unset %l 
 
-  if (%players.list = $null) { return }
+  if (%keys.players.list = $null) { return }
 
-  set %random $rand(1, $numtok(%players.list,46))
-  if (%random = $null) { var %random 1 }
-  set %key.winner $gettok(%players.list,%random,46)
+  set %key.random $rand(1, $numtok(%keys.players.list,46))
+  if (%key.random = $null) { var %key.random 1 }
+  set %key.winner $gettok(%keys.players.list,%key.random,46)
 
   set %key.list $readini($dbfile(items.db), items, keys)
-  set %random $rand(1, $numtok(%key.list,46))
-  if (%random = $null) { var %random 1 }
+  set %key.random $rand(1, $numtok(%key.list,46))
+  if (%key.random = $null) { var %key.random 1 }
   set %key.item $gettok(%key.list,%random,46)
 
   set %key.color $readini($dbfile(items.db), %key.item, unlocks)
@@ -3625,8 +3625,7 @@ give_random_key_reward {
   writeini $char(%key.winner) stuff TotalNumberOfKeys %total.number.of.keys
   $achievement_check(%key.winner, AreYouTheKeyMaster)
 
-
-  unset %key.list | unset %key.item | unset %players.list | unset %random | unset %key.item | unset %current.amount | unset %key.winner | unset %key.color
+  unset %key.list | unset %key.item | unset %keys.players.list | unset %key.random | unset %key.item | unset %current.amount | unset %key.winner | unset %key.color
 }
 
 
