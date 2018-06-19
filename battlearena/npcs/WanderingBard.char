@@ -55,7 +55,7 @@ CanFlee=false
 CanTaunt=false
 IgnorePresident=true
 BattleStats=ignoreTP
-ai_type=$iif(%battle.type = dungeon && $readini($char(Thanatos), Battle, Status) != alive, defender)
+ai_type=$iif(%battle.type = dungeon && Thanatos !isin $readini($txtfile(battle2.txt), Battle, List), defender)
 
 
 [monster]
