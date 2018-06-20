@@ -3604,9 +3604,9 @@ give_random_key_reward {
   set %key.winner $gettok(%keys.players.list,%key.random,46)
 
   set %key.list $readini($dbfile(items.db), items, keys)
-  set %key.random $rand(1, $numtok(%key.list,46))
-  if (%key.random = $null) { var %key.random 1 }
-  set %key.item $gettok(%key.list,%random,46)
+  set %random.key $rand(1, $numtok(%key.list,46))
+  if (%random.key = $null) { var %random.key 1 }
+  set %key.item $gettok(%key.list,%random.key,46)
 
   set %key.color $readini($dbfile(items.db), %key.item, unlocks)
 
