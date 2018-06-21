@@ -52,7 +52,6 @@ Created=N/a
 Streak=-1000
 CanTaunt=false
 IgnoreElementalMessage=true
-BossLevel=5000
 MinTormentLevel=10
 BattleStats=ignoreTP
 
