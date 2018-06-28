@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 06/19/18
+;;;; Last updated: 06/28/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -105,6 +105,17 @@ alias skill.actionpointcheck {
   var %action.points.consumed $readini($dbfile(skills.db), $1, ActionPoints)
   if (%action.points.consumed = $null) { return 1 }
   else { return %action.points.consumed }
+}
+
+;=================
+; This alias will return
+; true if instant=true
+; is set in the skill.
+;=================
+alias skill.instantcheck {
+  ; $1 = the skill name
+  if ($readini($dbfile(skills.db), $1, Instant) = true) { return true }
+  else { return false }
 }
 
 ;=================
@@ -2480,8 +2491,17 @@ alias skill.analysis { $set_chr_name($1)
   writeini $char($1) skills analysis.time %true.turn
 
 
-  ; Player gets another turn
-  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+  if ($skill.instantcheck(%skill.name) = true) {
+    ; Player gets another turn
+    $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | halt
+  }
+  if ($skill.instantcheck(%skill.name) = false) {
+    ; Time to go to the next turn
+    if (%battleis = on)  { $check_for_double_turn($1) }
+  }
+
+
+
 }
 
 ;=================

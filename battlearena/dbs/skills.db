@@ -377,6 +377,7 @@ Info=This skill will allow you to analyze a target. Each level of the skill give
 Max=7
 ActionPoints=1
 Cooldown=1
+Instant=false
 
 [Cover]
 Cost=600
