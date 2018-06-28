@@ -1742,9 +1742,10 @@ augments.strength {
       if ((%number.of.augments > 20) && (%number.of.augments <= 30)) { %augment.list.3 = $addtok(%augment.list.3, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
       if ((%number.of.augments > 30) && (%number.of.augments <= 40)) { %augment.list.4 = $addtok(%augment.list.4, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
       if ((%number.of.augments > 40) && (%number.of.augments <= 50)) { %augment.list.5 = $addtok(%augment.list.5, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
-      if ((%number.of.augments > 60) && (%number.of.augments <= 70)) { %augment.list.6 = $addtok(%augment.list.6, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
-      if ((%number.of.augments > 70) && (%number.of.augments <= 80)) { %augment.list.7 = $addtok(%augment.list.7, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
-      if (%number.of.augments > 80) { %augment.list.8 = $addtok(%augment.list.8, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if ((%number.of.augments > 50) && (%number.of.augments <= 60)) { %augment.list.6 = $addtok(%augment.list.6, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if ((%number.of.augments > 60) && (%number.of.augments <= 70)) { %augment.list.7 = $addtok(%augment.list.7, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if ((%number.of.augments > 70) && (%number.of.augments <= 80)) { %augment.list.8 = $addtok(%augment.list.8, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
+      if (%number.of.augments > 80) { %augment.list.9 = $addtok(%augment.list.9, %augment.name $+ [ $+ %augment.strength $+ ], 46) }
 
     }
 
@@ -1777,6 +1778,9 @@ augments.strength {
   if ($chr(046) isin %augment.list.8 ) { set %replacechar $chr(044) $chr(032)
     %augment.list.8 = $replace(%augment.list.8, $chr(046), %replacechar)
   }
+  if ($chr(046) isin %augment.list.9 ) { set %replacechar $chr(044) $chr(032)
+    %augment.list.9 = $replace(%augment.list.9, $chr(046), %replacechar)
+  }
 
   if (%augment.list != $null) { $set_chr_name($1) | $display.message($readini(translation.dat, system, augmentList), private)
     if (%augment.list.2 != $null) { $display.message(3 $+ %augment.list.2, private) }
@@ -1786,6 +1790,7 @@ augments.strength {
     if (%augment.list.6 != $null) { $display.message(3 $+ %augment.list.6, private) }
     if (%augment.list.7 != $null) { $display.message(3 $+ %augment.list.7, private) }
     if (%augment.list.8 != $null) { $display.message(3 $+ %augment.list.8, private) }
+    if (%augment.list.9 != $null) { $display.message(3 $+ %augment.list.9, private) }
   }
   if (%augment.list = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, system, Noaugments), private) }
   unset %augment.list*
