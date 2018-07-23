@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=110
-Tp=60
+Tp=500
 Str=2818
 Def=3274
 Int=2456
@@ -11,7 +11,7 @@ Name=Cosmic Jester
 
 [Battle]
 Hp=110
-Tp=60
+Tp=500
 Str=2818
 Def=3274
 Int=2456
