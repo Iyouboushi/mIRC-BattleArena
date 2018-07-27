@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 03/10/18
+;;;; Last updated: 07/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -695,3 +695,16 @@ on 50:TEXT:!password reset *:*:{
 on 50:TEXT:!apl*:*:{  
   $display.message(3Average Player's Level: $total.player.averagelevel , private)
 }
+
+
+;====================
+; This is to block some
+; spam bots on Esper.
+; This section will be removed
+; when the problem is over.
+;====================
+
+on 1:TEXT:Hey, I thought you guys might be interested in this blog by freenode staff member*:#:{
+  /ban %battlechan $nick
+  /kick %battlechan $nick
+}  
