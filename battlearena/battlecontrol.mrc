@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/19/18
+;;;; Last updated: 08/09/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2901,32 +2901,22 @@ alias battle.reward.redorbs {
 
       if (%total.redorbs.reward <= 5) { %total.redorbs.reward = 5 }
 
-      ; Calculate a "resting" bonus.  This is a bonus to orbs for people who have been out of battle for a while.
-      var %last.battle $readini($char(%who.battle), Info, LastBattleTime)
-      if (%last.battle = $null) { 
 
-        ; Try to calculate the time it's been since they last logged in
-        var %last.battle $ctime($readini($char(%who.battle), info, LastSeen))
+      ; For the first 24 hours that a player starts the game there will be a 20% bonus to orbs to help them out.
+      var %player.created.time $ctime($readini($char(%who.battle), Info, Created))
+      var %time.calculated $calc($ctime - %player.created.time)
 
-        ; Check again, as a last ditch effort
-        if (%last.battle = $null) { var %last.battle $ctime }
-      }
-      var %rest.time.difference $calc($ctime - %last.battle)
-      var %rest.time $calc(%rest.time.difference /60/60)
-      var %resting.bonus $round($calc(%rest.time * 150),0)
-
-      if (%resting.bonus < 1) { var %resting.bonus 0 }
-
-      inc %total.redorbs.reward %resting.bonus
-
-      ; Write the current time for the current battle
-      writeini $char(%who.battle) Info LastBattleTime $ctime
+      if (%time.calculated <= 86400) { inc %total.redorbs.reward $round($calc(%total.redorbs.reward * .25),0)  }
 
       ; For newer players let's increase their orb amount by 50% to help them with earlier streaks
       if ($return.totalorbs(%who.battle) < 10000) {
         var %orbs.increase $calc(%total.redorbs.reward * .50)
         inc %total.redorbs.reward %orbs.increase  
       }
+
+      ; Calculate a "resting" bonus.  This is a bonus to orbs for people who have been out of battle for a while.
+      var %resting.bonus $character.resting.bonus(%who.battle)
+      inc %total.redorbs.reward %resting.bonus
 
       ; Add the orbs to the player
       var %current.orbs.onhand $readini($char(%who.battle), stuff, redorbs)
@@ -3073,6 +3063,12 @@ alias battle.reward.killcoins {
       if ((%style.points > $calc(3500 + %boss.modifier + $return_winningstreak)) && (%style.points < $calc(6000 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 10 }
       if (%style.points >= $calc(6000 + %boss.modifier + $return_winningstreak)) { inc %total.coins.reward 11 }
 
+      ; For the first 24 hours that a player starts the game there will be a 50% bonus to killcoins to help them out.
+      var %player.created.time $ctime($readini($char(%who.battle), Info, Created))
+      var %time.calculated $calc($ctime - %player.created.time)
+
+      if (%time.calculated <= 86400) {  var %total.coins.reward $calc(%total.coins.reward * 2) }
+
       ;  Check for the an accessory that increases kill coins
       if ($accessory.check(%who.battle, IncreaseKillCoins) = true) {
         var %increase.coin.amount $round($calc(%total.coins.reward * %accessory.amount),0)
@@ -3089,23 +3085,11 @@ alias battle.reward.killcoins {
       ; Check for bounty
       if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { inc %total.coins.reward 20 }
 
-      ; Calculate a "resting" bonus.  This is a bonus to coins for people who have been out of battle for a while.
-      var %last.battle $readini($char(%who.battle), Info, LastBattleTime)
-      if (%last.battle = $null) { 
-
-        ; Try to calculate the time it's been since they last logged in
-        var %last.battle $ctime($readini($char(%who.battle), info, LastSeen))
-
-        ; Check again, as a last ditch effort
-        if (%last.battle = $null) { var %last.battle $ctime }
-      }
-      var %rest.time.difference $calc($ctime - %last.battle)
-      var %rest.time $calc(%rest.time.difference /60/60)
-      var %resting.bonus $round($calc(%rest.time * 2),0)
-
-      if (%resting.bonus < 1) { var %resting.bonus 0 }
-
+      ; Check for a resting bonus
+      var %resting.bonus $character.resting.bonus.killcoins(%who.battle)
       inc %total.coins.reward %resting.bonus
+
+
 
       ; Add the coins to the player
       var %current.coins.onhand $readini($char(%who.battle), stuff, killcoins)
@@ -3114,6 +3098,9 @@ alias battle.reward.killcoins {
 
       ; Clear certain potion effects
       if ($return.potioneffect(%who.battle) = Kill Coin Bonus) { writeini $char(%who.battle) status PotionEffect none }
+
+      ; Write the current time for the current battle
+      writeini $char(%who.battle) Info LastBattleTime $ctime
 
       inc %battletxt.current.line 1 
     }

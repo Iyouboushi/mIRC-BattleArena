@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 06/27/18
+;;;; Last updated: 08/09/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1888,4 +1888,50 @@ character.averagedmg {
   var %average.damage $round($calc(%average.damage / %number.of.hits),2)
 
   return %average.damage
+}
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns the resting bonus
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.resting.bonus.orbs {
+  ; Calculate a "resting" bonus.  This is a bonus to orbs for people who have been out of battle for a while.
+  var %last.battle $readini($char(%who.battle), Info, LastBattleTime)
+  if (%last.battle = $null) { 
+
+    ; Try to calculate the time it's been since they last logged in
+    var %last.battle $ctime($readini($char($1), info, LastSeen))
+
+    ; Check again, as a last ditch effort
+    if (%last.battle = $null) { var %last.battle $ctime }
+  }
+
+  var %rest.time.difference $calc($ctime - %last.battle)
+  var %rest.time $calc(%rest.time.difference /60/60)
+  var %resting.bonus $round($calc(%rest.time * 150),0)
+
+  if (%resting.bonus < 1) { var %resting.bonus 0 }
+
+  return %resting.bonus
+}
+character.resting.bonus.killcoins {
+  ; Calculate a "resting" bonus.  This is a bonus to coins for people who have been out of battle for a while.
+  var %last.battle $readini($char($1), Info, LastBattleTime)
+  if (%last.battle = $null) { 
+
+    ; Try to calculate the time it's been since they last logged in
+    var %last.battle $ctime($readini($char(%who.battle), info, LastSeen))
+
+    ; Check again, as a last ditch effort
+    if (%last.battle = $null) { var %last.battle $ctime }
+  }
+
+  var %rest.time.difference $calc($ctime - %last.battle)
+  var %rest.time $calc(%rest.time.difference /60/60)
+  var %resting.bonus $round($calc(%rest.time * 2),0)
+
+  if (%resting.bonus < 1) { var %resting.bonus 0 }
+
+  return %resting.bonus
 }
