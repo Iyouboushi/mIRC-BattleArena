@@ -73,7 +73,7 @@ MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.Skelet
 
 MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue.Qutrub.Phlegethon.HollowPower.MechanicPower
 
-MonsterWpns8=Flameskull.HydraHeads
+MonsterWpns8=Flameskull.HydraHeads.Xande_Staff
 
 ============================================
 WEAPON TEMPLATE
@@ -6380,6 +6380,18 @@ BasePower=100
 Upgrade=0
 2Handed=true
 IgnoreDefense=5
+
+[Xande_Staff]
+Cost=0
+Type=Stave
+Info=The staff of King Xande
+Abilities=TowerAbsorb.AncientQuaga.King'sMight
+Element=Dark
+Hits=1
+BasePower=100
+Upgrade=0
+2Handed=false
+IgnoreDefense=10
 
 
 

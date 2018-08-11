@@ -580,6 +580,7 @@ HollowPower=Cero.HollowBite.HollowSlash
 MechanicPower=MechanicStrike.MechanicZap.MechanicSlash.MechanicExplosion
 Bioform=BioAttack91.BioAttack112.BioAttack331.BioAttack999
 Flameskull=FireII.Firaja
+Xande_Staff=TowerAbsorb.AncientQuaga.King'sMight
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -18201,3 +18202,44 @@ Magic=yes
 Spell=yes
 stat=int
 hits=2
+
+[TowerAbsorb]
+Type=StealPower
+TP=10
+Desc=activates a function of the tower. After a moment the floor glows red and a blast of green energy shoots into %enemy before forming into a ball that floats towards Xande. After a moment Xande absorbs the energy and grows stronger.
+BasePower=10
+Element=None
+Cost=0
+Magic=No
+stat=int
+IgnoreShadows=true
+Magic=no
+Spell=no
+
+[AncientQuaga]
+Type=AOE
+TP=10
+Desc=casts an ancient version of quake that shakes the entire the battlefield and hurts everyone on it.
+BasePower=80
+Element=Earth
+Cost=0
+Magic=yes
+Spell=yes
+stat=int
+hits=2
+DestroyShadows=3
+
+[King'sMight]
+Type=Single
+StatusType=poison.blind.slow.virus.curse
+TP=10
+Desc=yells "Your power is insignificant to that of the true king! Bow before me and disappear!" as he holds up his staff towards %enemy $+ .  The light in the room grows dim as a huge ball of black energy forms at the end of the staff and flies right towards %enemy $+ !
+BasePower=70
+Element=Dark
+Cost=0
+Magic=no
+Spell=no
+stat=int
+hits=3
+DestroyShadows=4
+
