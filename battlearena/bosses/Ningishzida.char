@@ -37,6 +37,7 @@ ShopLevel=1.0
 [Monster]
 Type=Hydra
 size=large
+Elite=true
 
 [Info]
 Flag=monster

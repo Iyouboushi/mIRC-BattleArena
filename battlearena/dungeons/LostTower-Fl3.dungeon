@@ -1,0 +1,55 @@
+[Info]
+Name=The Lost Tower of the Ancients  - Floor 3
+Rooms=8
+PlayersNeeded=1
+PlayersRecommended=3
+Level=100
+FinalRoom=7
+StartBattleDesc=uses the key forged to open the locked door at the end of the second floor.  The doors creak open and reveal a staircase leading upwards into the unknown.
+
+ClearDungeonDesc=* The party has defeated the ancient king Xande and cleared the Lost Tower of the Ancients! [Clear time: %total.battle.duration $+ ]
+
+DungeonFail=* The party has failed to clear the third floor of the tower and is forced to flee.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party advances up the stairs and sees machines powering up and coming to life. A loud voice begins to say something in an ancient language the party cannot understand.  Despite this, this seems like a safe place to prepare before pressing forward.
+Battlefield=Lost Tower
+
+[1]
+Desc=A mechanical door whirrs open and leads out into a long hallway.  As the party advances they see several heavily armed guards come running towards them shouting something in an ancient language.
+Battlefield=Lost Tower
+Monsters=Tower_Kingsguard.Tower_Kingsguard
+
+[2]
+Desc=A loud roar echos throughout the hallway as the heroes race down it. More guards appear and draw their weapons.
+Battlefield=Lost Tower
+Monsters=Tower_Kingsguard.Tower_Kingsmage.Tower_Kingsguard
+
+[3]
+Desc=One of the fallen King's Guard shouts the word "Ningishzida" before dying.  The heroes approach a large glowing glyph at the end of the hallway. Touching it the wall opens to reveal a large room with an even larger 5 headed hydra who gives off multiple loud roars.
+Battlefield=Lost Tower
+Monsters=Ningishzida
+bossroom=true
+
+[4]
+Desc=With the fallen beast a loud voice echos throughout the tower. "Approach all who seek an audience with the king."  The floor begins to rise like an elevator. After a moment more King's Guard fall into the room from above.
+Monsters=Tower_Kingsguard.Tower_Kingsmage.Tower_Kingsguard
+Battlefield=Lost Tower
+
+
+[5]
+Desc=The elevator comes to a stop and another door opens. The party takes a moment to heal before pressing forward.
+Battlefield=Lost Tower
+RestoreRoom=true
+
+[6]
+Desc=The party continues forward and sees a throne room ahead.  More guards rush at the heroes in an attempt to prevent them from reaching the king.
+Battlefield=Lost Tower
+Monsters=Tower_Kingsguard.Tower_Kingsmage.Tower_Kingsmage
+
+[7]
+Desc=Stepping over the falling bodies of the guard the heroes approach the throne room where they see a giant man with long flowing red hair and dark skin. He wears black armor that has a long flowing cape on the back. He carries a large staff in one hand.  He looks dwn at the heroes, stands up and laughs. 
+Monsters=Xande
+Battlefield=Lost Tower
+BossRoom=true
