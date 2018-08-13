@@ -173,6 +173,7 @@ The_Monster=$iif(%portal.bonus = true, GoldVoucher, HighKindredCrest)
 The_Witch=$iif(%portal.bonus = true, GoldVoucher, HighKindredCrest)
 Undyne=HighKindredCrest
 UndyneTheUndying=HighKindredCrest
+Xande=Gold-trimmedSack
 
 
 ; Monsters
