@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 08/09/18
+;;;; Last updated: 08/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -3007,7 +3007,7 @@ alias battle.reward.blackorbs {
 
 alias battle.reward.killcoins {
   set %debug.location battle.reward.killcoins
-  var %original.basecoins 8
+  var %original.basecoins 10
 
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
@@ -3018,9 +3018,9 @@ alias battle.reward.killcoins {
 
       ; Adjust the base coins based on battle type
 
-      if ((%base.coins <= 5000) && (%battle.type = defendoutpost)) { set %base.coins 10 }
-      if ((%base.coins <= 5000) && (%battle.type = assault)) { set %base.coins 10 }
-      if ((%base.coins <= 8000) && (%battle.type = dragonhunt)) { set %base.coins 5 }
+      if ((%base.coins <= 5000) && (%battle.type = defendoutpost)) { set %base.coins 15 }
+      if ((%base.coins <= 5000) && (%battle.type = assault)) { set %base.coins 15 }
+      if ((%base.coins <= 8000) && (%battle.type = dragonhunt)) { set %base.coins 10 }
       if ((%base.coins <= 10000) && (%battle.type = torment)) { set %base.coins 1 }
 
       ; Adjust the coins
@@ -3088,8 +3088,6 @@ alias battle.reward.killcoins {
       ; Check for a resting bonus
       var %resting.bonus $character.resting.bonus.killcoins(%who.battle)
       inc %total.coins.reward %resting.bonus
-
-
 
       ; Add the coins to the player
       var %current.coins.onhand $readini($char(%who.battle), stuff, killcoins)
