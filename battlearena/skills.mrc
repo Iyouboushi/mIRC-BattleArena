@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 06/28/18
+;;;; Last updated: 08/27/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2866,8 +2866,8 @@ alias skill.alchemy {
       if (%amount.needed = $null) { var %amount.needed 1 } 
     }
     else { 
-      set %amount.needed $calc($readini($dbfile(crafting.db), $2, %item.name) * %amount.to.craft)
-      if (%amount.needed = $null) { set %amount.needed %amount.to.craft }
+      set %amount.needed $calc($readini($dbfile(crafting.db), $2, %item.name) * %amount.to.craft )
+      if ((%amount.needed = $null) || (%amount.needed = 0)) { set %amount.needed %amount.to.craft }
     }
 
     ; Check to see if we have enough.
