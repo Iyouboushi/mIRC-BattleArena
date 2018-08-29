@@ -199,6 +199,7 @@ Info=This skill increases the user's speed when performed.  Increased levels inc
 ActionPoints=5
 NeedToEquip=true
 Style=Trickster
+Instant=false
 
 [ElementalSeal]
 Cost=425
@@ -210,6 +211,7 @@ LevelAdjustsCooldown=true
 ActionPoints=3
 NeedToEquip=true
 Style=Spellmaster
+Instant=false
 
 [MightyStrike]
 Cost=450
@@ -220,6 +222,7 @@ Cooldown=11
 ActionPoints=3
 NeedToEquip=true
 Style=WeaponMaster
+Instant=false
 
 [TrueStrike]
 Cost=500
@@ -230,6 +233,7 @@ Cooldown=11
 ActionPoints=2
 NeedToEquip=true
 Style=WeaponMaster
+Instant=false
 
 [ManaWall]
 Cost=450
@@ -240,6 +244,7 @@ Cooldown=11
 ActionPoints=2
 NeedToEquip=true
 Style=Spellmaster
+Instant=false
 
 [RoyalGuard]
 Cost=450
@@ -250,6 +255,7 @@ Cooldown=11
 ActionPoints=2
 NeedToEquip=true
 Style=Guardian
+Instant=false
 
 [PerfectDefense]
 Cost=1000
@@ -260,6 +266,7 @@ Cooldown=20
 ActionPoints=2
 NeedToEquip=true
 Style=Guardian
+Instant=false
 
 [Fullbring]
 Cost=350
@@ -268,6 +275,7 @@ Max=5
 Info=This skill allows you to draw out the souls within items and turn single-target items into AOEs.  Fullbring will consume the item you use.
 ActionPoints=2
 NeedToEquip=true
+Instant=false
 
 [Sugitekai]
 Cost=900
@@ -278,6 +286,7 @@ Cooldown=16
 ActionPoints=2
 NeedToEquip=true
 Style=HitenMitsurugi-ryu
+Instant=false
 
 [Meditate]
 Cost=400
@@ -287,6 +296,7 @@ Info=This skill will give you (level * 5) TP back to you instantly.
 Cooldown=5
 ActionPoints=2
 NeedToEquip=true
+Instant=false
 
 [ConserveTP]
 Cost=500
@@ -297,6 +307,7 @@ Cooldown=16
 ActionPoints=2
 NeedToEquip=true
 Style=WeaponMaster
+Instant=true
 
 [BloodBoost]
 Cost=1000
@@ -306,6 +317,7 @@ Info=This skill will consume (3 * skill level)% hp to give you a (skill level * 
 ActionPoints=5
 NeedToEquip=true
 Style=WeaponMaster
+Instant=false
 
 [BloodSpirit]
 Cost=1000
@@ -315,6 +327,7 @@ Info=This skill will consume (3 * skill level)% hp to give you a (skill level * 
 ActionPoints=5
 NeedToEquip=true
 Style=Spellmaster
+Instant=false
 
 [DrainSamba]
 Cost=750
@@ -324,6 +337,7 @@ Info=This skill will consume 10 TP to activate the "drain" status on the user, a
 Cooldown=16
 ActionPoints=2
 NeedToEquip=true
+Instant=false
 
 [Regen]
 Cost=700
@@ -333,6 +347,7 @@ Info=This skill will give you the HP regeneration effect.  Every turn you will r
 Cooldown=16
 ActionPoints=2
 NeedToEquip=true
+Instant=false
 
 [Kikouheni]
 Cost=650
@@ -343,6 +358,7 @@ Cooldown=11
 ActionPoints=1
 NeedToEquip=true
 Style=Spellmaster
+Instant=false
 
 [ShadowCopy]
 Cost=1500
@@ -352,6 +368,7 @@ Max=1
 ActionPoints=5
 NeedToEquip=true
 Style=Doppelganger
+Instant=false
 
 [Utsusemi]
 Cost=500
@@ -361,6 +378,7 @@ Max=10
 Cooldown=20
 ActionPoints=3
 NeedToEquip=true
+Instant=false
 
 [Steal]
 Cost=250
@@ -369,6 +387,7 @@ Info=This skill will let you try to steal an item or red orbs from a target.  Ea
 Max=40
 Cooldown=6
 ActionPoints=2
+Instant=false
 
 [Analysis]
 Cost=$iif($readini($char($1), skills, Analysis < 6), 550, 2500)
@@ -388,6 +407,7 @@ Cooldown=3
 ActionPoints=1
 NeedToEquip=true
 Style=Guardian
+Instant=false
 
 [Aggressor]
 Cost=500
@@ -397,6 +417,7 @@ Max=10
 ActionPoints=3
 NeedToEquip=true
 Style=WeaponMaster
+Instant=false
 
 [Defender]
 Cost=500
@@ -406,6 +427,7 @@ Max=10
 ActionPoints=3
 NeedToEquip=true
 Style=Guardian
+Instant=false
 
 [HolyAura]
 Cost=1000
@@ -414,6 +436,7 @@ Info=This skill will extend the amount of time you have to fight before Darkness
 Max=5
 Cooldown=11
 ActionPoints=2
+Instant=false
 
 [Provoke]
 Cost=600
@@ -424,6 +447,7 @@ Cooldown=3
 ActionPoints=1
 NeedToEquip=true
 Style=Trickster
+Instant=false
 
 [ShieldFocus]
 Type=active
@@ -434,6 +458,7 @@ Cooldown=30
 ActionPoints=2
 NeedToEquip=true
 Style=Guardian
+Instant=false
 
 [Barrage]
 Cost=5000
@@ -443,6 +468,7 @@ Max=1
 Cooldown=30
 ActionPoints=2
 NeedToEquip=true
+Instant=false
 
 [Duality]
 Type=active
@@ -452,6 +478,7 @@ Max=1
 Cooldown=20
 ActionPoints=2
 NeedToEquip=true
+Instant=false
 
 [DoubleCast]
 Cost=0
@@ -461,6 +488,7 @@ Max=1
 Cooldown=20
 ActionPoints=2
 NeedToEquip=true
+Instant=false
 
 [ThinAir]
 Cost=0
@@ -471,6 +499,7 @@ Cooldown=15
 ActionPoints=2
 NeedToEquip=true
 Style=Spellmaster
+Instant=true
 
 [Invigorate]
 Cost=0
@@ -480,6 +509,7 @@ Max=1
 Cooldown=10
 ActionPoints=2
 NeedToEquip=true
+Instant=true
 
 [ThrillOfBattle]
 Cost=0
@@ -489,6 +519,7 @@ Max=1
 Cooldown=50
 ActionPoints=3
 NeedToEquip=true
+Instant=true
 
 [Disarm]
 Cost=500
@@ -499,6 +530,7 @@ Cooldown=11
 ActionPoints=2
 NeedToEquip=true
 Style=Trickster
+Instant=false
 
 [WeaponLock]
 Cost=1000
@@ -509,6 +541,7 @@ CoolDown=11
 ActionPoints=2
 NeedToEquip=true
 Style=Trickster
+Instant=false
 
 [Konzen-Ittai]
 Cost=5000
@@ -519,6 +552,7 @@ CoolDown=11
 ActionPoints=2
 NeedToEquip=true
 Style=HitenMitsurugi-ryu
+Instant=false
 
 [SealBreak]
 Cost=2000
@@ -527,6 +561,7 @@ Info=This skill will allow you to attempt to break a Melee-Only Ancient Seal pla
 Max=9
 CoolDown=6
 ActionPoints=1
+Instant=false
 
 [MagicMirror]
 Cost=15000
@@ -537,6 +572,7 @@ Cooldown=16
 ActionPoints=2
 NeedToEquip=true
 Style=Spellmaster
+Instant=false
 
 [Gamble]
 Cost=10000
@@ -547,6 +583,7 @@ Cooldown=16
 ActionPoints=1
 NeedToEquip=true
 Style=HighRoller
+Instant=false
 
 [Thirdeye]
 Cost=500
@@ -557,6 +594,7 @@ Cooldown=21
 ActionPoints=2
 NeedToEquip=true
 Style=HitenMitsurugi-ryu
+Instant=false
 
 [Scavenge]
 Cost=5000
@@ -564,6 +602,7 @@ Type=Active
 Info=This skill allows you to dig into the ground of a battlefield in an attempt to find a buried item. The items that can be found depend on the current battlefield. You may only use this skill one time per battle regardless if it's successful or not.  Increased levels of this skill increase the odds of finding an item.
 Max=20
 ActionPoints=1
+Instant=false
 
 [JustRelease]
 Cost=10000
@@ -572,6 +611,7 @@ Info=This skill will unleash the stored Royal Guard meter at an enemy.  The dama
 Max=90
 ActionPoints=3
 NeedToEquip=true
+Instant=false
 
 [FormlessStrike]
 Cost=750
@@ -582,10 +622,12 @@ Cooldown=15
 ActionPoints=2
 NeedToEquip=true
 Style=Wrestlemania
+Instant=false
 
 [Snatch]
 Cooldown=3
 ActionPoints=2
+Instant=false
 
 [Retaliation]
 Cost=2000
@@ -596,6 +638,7 @@ Cooldown=21
 ActionPoints=2
 NeedToEquip=true
 Style=Guardian
+Instant=false
 
 [Lockpicking]
 Cost=500
@@ -619,6 +662,7 @@ Info=This skill will cause your next attack to be a critical hit.
 ActionPoints=1
 Cooldown=15
 NeedToEquip=true
+Instant=false
 
 [QuickPockets]
 Cost=0
@@ -628,6 +672,7 @@ Info=Your speed allows you to quickly use an item without consuming your turn in
 ActionPoints=1
 Cooldown=15
 NeedToEquip=true
+Instant=false
 
 [LucidDreaming]
 Cost=0
@@ -637,6 +682,7 @@ Info=This skill allows you to cut your current enmity in half.
 ActionPoints=1
 Cooldown=15
 NeedToEquip=false
+Instant=false
 
 [SoftBlows]
 Cost=0
@@ -646,6 +692,7 @@ Info=This skill allows your next attack to generate no enmity.  This skill does 
 ActionPoints=1
 Cooldown=15
 NeedToEquip=false
+Instant=true
 
 
 =============================================

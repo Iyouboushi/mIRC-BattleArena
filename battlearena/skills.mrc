@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 08/27/18
+;;;; Last updated: 08/29/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -82,6 +82,7 @@ alias use.skill {
   if ($3 = ThrillOfBattle) { $skill.thrillofbattle($1) } 
   if ($3 = duality) { $skill.duality($1) }
   if ($3 = quickpockets) { $skill.quickpockets($1) }
+  if ($3 = LucidDreaming) { $skill.luciddreaming($1) }
 
   ; Below are monster-only skills
 
@@ -116,6 +117,21 @@ alias skill.instantcheck {
   ; $1 = the skill name
   if ($readini($dbfile(skills.db), $1, Instant) = true) { return true }
   else { return false }
+}
+
+;=================
+; This alias will move 
+; onto the next turn if
+; the skill is not instant.
+;=================
+alias skill.nextturn.check {
+  ; $1 the skill name
+  ; $2 the user
+
+  if ($skill.instantcheck($1) = true) { $display.message(12 $+ $get_chr_name($2) gets another action this turn.,battle) | halt }
+  else { 
+    if (%battleis = on)  { $check_for_double_turn($1) | halt }
+  }
 }
 
 ;=================
@@ -228,8 +244,7 @@ alias skill.speedup { $set_chr_name($1)
 
   unset %spd.increase | unset %spd.current | unset %spd.original
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(speed, $1)
 }
 
 alias skill.speed.calculate {
@@ -295,8 +310,7 @@ alias skill.elementalseal { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction elementalseal
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(ElementalSeal, $1)
 }
 
 ;=================
@@ -338,8 +352,7 @@ alias skill.mightystrike { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction mightystrike
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(MightyStrike, $1)
 }
 
 
@@ -381,8 +394,7 @@ alias skill.truestrike { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction truestrike
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(TrueStrike, $1)
 }
 
 ;=================
@@ -423,8 +435,7 @@ alias skill.manawall { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction manawall
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(ManaWall, $1)
 }
 
 ;=================
@@ -464,8 +475,7 @@ alias skill.royalguard { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction royalguard
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(RoyalGuard, $1)
 }
 
 
@@ -560,8 +570,7 @@ alias skill.perfectdefense { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction perfectdefense
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(PerfectDefense, $1)
 }
 
 ;=================
@@ -613,8 +622,7 @@ alias skill.utsusemi { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction utsusemi
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Utsusemi, $1)
 }
 
 ;=================
@@ -669,8 +677,7 @@ alias skill.fullbring { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction fullbring
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Fullbring, $1)
 }
 
 alias fullbring.singleheal { 
@@ -1042,8 +1049,7 @@ alias skill.doubleturn { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction sugitekai
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $next }
+  if (%battleis = on) { $next }
 }
 
 ;=================
@@ -1099,8 +1105,7 @@ alias skill.meditate { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction meditate
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Meditate, $1)
 }
 
 ;=================
@@ -1140,8 +1145,7 @@ alias skill.conserveTP { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction conserveTP
 
-  ; Player gets another turn
-  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+  $skill.nextturn.check(ConserveTP, $1)
 }
 
 ;=================
@@ -1181,8 +1185,7 @@ alias skill.thinair { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction thinair
 
-  ; Player gets another turn
-  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+  $skill.nextturn.check(ThinAir, $1)
 }
 
 
@@ -1223,8 +1226,7 @@ alias skill.quickpockets { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction quickpockets
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(QuickPockets, $1)
 }
 
 
@@ -1283,8 +1285,7 @@ alias skill.bloodboost { $set_chr_name($1)
 
   unset %str.current | unset %str.increase | unset %percent.increase
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(BloodBoost, $1)
 }
 
 alias skill.bloodboost.calculate {
@@ -1368,8 +1369,7 @@ alias skill.bloodspirit { $set_chr_name($1)
 
   unset %int.increase | unset %int.current | unset %percent.increase
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(BloodSpirit, $1)
 }
 
 alias skill.bloodspirit.calculate {
@@ -1447,8 +1447,7 @@ alias skill.drainsamba { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction drainsamba
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(DrainSamba, $1)
 }
 
 
@@ -1489,8 +1488,7 @@ alias skill.criticalfocus { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction criticalfocus
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(CriticalFocus, $1)
 }
 
 
@@ -1540,8 +1538,7 @@ alias skill.shieldfocus { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction shieldfocus
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(ShieldFocus, $1)
 }
 
 
@@ -1586,8 +1583,7 @@ alias skill.barrage { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction Barrage
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Barrage, $1)
 }
 
 ;=================
@@ -1626,8 +1622,7 @@ alias skill.doublecast { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction doublecast
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(DoubleCast, $1)
 }
 
 
@@ -1667,8 +1662,7 @@ alias skill.duality { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction duality
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Duality, $1)
 }
 
 ;=================
@@ -1713,8 +1707,7 @@ alias skill.invigorate { $set_chr_name($1)
   ; Display a message
   $display.message(3 $+ $get_chr_name($1) restores2 200 3TP, battle)
 
-  ; Player gets another turn
-  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+  $skill.nextturn.check(Invigorate, $1)
 }
 
 ;=================
@@ -1767,8 +1760,7 @@ alias skill.thrillofbattle { $set_chr_name($1)
   if (%max.hp = true) { $display.message(3 $+ $get_chr_name($1) has restored2 5003 base HP and gained2 100 3temporary Max HP, battle) }
   else { $display.message(3 $+ $get_chr_name($1) restores2 600 3HP, battle) }
 
-  ; Player gets another turn
-  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+  $skill.nextturn.check(ThrillOfBattle, $1)
 }
 
 ;=================
@@ -1824,8 +1816,7 @@ alias skill.formlessstrike { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction formlessstrike
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(FormlessStrike, $1)
 }
 
 ;=================
@@ -2000,8 +1991,7 @@ alias skill.kikouheni { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction kikouheni
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Kikouheni, $1)
 }
 
 ;=================
@@ -2127,8 +2117,7 @@ alias skill.clone { $set_chr_name($1)
   ; Initialize the action points 
   $action.points($1 $+ _clone, initialize)
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(ShadowCopy, $1)
 }
 ;=================
 ; SHADOW CONTROL
@@ -2278,8 +2267,7 @@ alias skill.steal { $set_chr_name($1)
 
   unset %enemy | unset %steal.pool
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Steal, $1)
 }
 
 ;=================
@@ -2491,17 +2479,7 @@ alias skill.analysis { $set_chr_name($1)
   writeini $char($1) skills analysis.time %true.turn
 
 
-  if ($skill.instantcheck(%skill.name) = true) {
-    ; Player gets another turn
-    $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | halt
-  }
-  if ($skill.instantcheck(%skill.name) = false) {
-    ; Time to go to the next turn
-    if (%battleis = on)  { $check_for_double_turn($1) }
-  }
-
-
-
+  $skill.nextturn.check(%skill.name, $1)
 }
 
 ;=================
@@ -2620,8 +2598,7 @@ alias skill.cover { $set_chr_name($1)
 
   unset %enemy
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Cover, $1)
 }
 
 ;=================
@@ -2673,8 +2650,7 @@ alias skill.snatch { $set_chr_name($1)
 
   unset %enemy
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Snatch, $1)
 }
 
 alias do.snatch {
@@ -2753,8 +2729,7 @@ alias skill.aggressor { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction aggressor
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Aggressor, $1)
 }
 
 ;=================
@@ -2805,8 +2780,7 @@ alias skill.defender { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction defender
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Defender, $1)
 }
 
 
@@ -3062,8 +3036,7 @@ alias skill.holyaura { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction holyaura
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(HolyAura, $1)
 }
 
 alias holy_aura_end {
@@ -3514,8 +3487,6 @@ alias skill.completeweaknessshift {
   unset %number.of.magic.types | unset %magic.types
 }
 
-
-
 ;=================
 ; PROVOKE
 ;=================
@@ -3566,8 +3537,7 @@ alias skill.provoke { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction provoke
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Provoke, $1)
 }
 
 ;=================
@@ -3645,8 +3615,7 @@ alias skill.weaponlock { $set_chr_name($1)
     writeini $char($2) status weaponlock.timer 1 
   }
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(WeaponLock, $1)
 }
 
 ;=================
@@ -3713,8 +3682,7 @@ alias skill.disarm { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction disarm
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Disarm, $1)
 }
 
 ;=================
@@ -3754,8 +3722,7 @@ alias skill.konzen-ittai { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction konzen-ittai
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Konzen-ittai, $1)
 }
 
 ;=================
@@ -3808,8 +3775,7 @@ alias skill.sealbreak { $set_chr_name($1)
   if (%random.chance <= %chance.of.working) { $display.message($readini(translation.dat, skill, SealBreaks), battle) | unset %battleconditions }
   if (%random.chance > %chance.of.working) { $display.message($readini(translation.dat, skill, SealStays), battle) }
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(SealBreak, $1)
 }
 
 ;=================
@@ -3855,8 +3821,7 @@ alias skill.magicmirror { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction magicmirror
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(MagicMirror, $1)
 }
 
 ;=================
@@ -3967,9 +3932,7 @@ alias skill.gamble { $set_chr_name($1)
     writeini $char($1) battle IgnitionGauge $readini($char($1), basestats, IgnitionGauge)
   }
 
-
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Gamble, $1)
 }
 
 ;=================
@@ -4077,8 +4040,7 @@ alias skill.thirdeye { $set_chr_name($1)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction ThirdEye
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(ThirdEye, $1)
 }
 
 ;=================
@@ -4147,8 +4109,7 @@ alias skill.scavenge { $set_chr_name($1)
 
   unset %enemy | unset %total.items | unset %random.item | unset %scavenge.item | unset %current.item.total | unset %scavenge.pool 
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(Scavenge, $1)
 }
 
 ;=================
@@ -4175,9 +4136,9 @@ alias skill.perfectcounter { $set_chr_name($1) | $check_for_battle($1)
   else { set %skill.description $readini($char($nick), descriptions, perfectcounter) }
   $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
   unset %current.playerstyle | unset %current.playerstyle.level | unset %quicksilver.used
+
+  $skill.nextturn.check(PerfectCounter, $1)
 }
 
 ;=================
@@ -4211,9 +4172,9 @@ alias skill.retaliation { $set_chr_name($1) |  $check_for_battle($1)
   writeini $char($1) skills Retaliation.on on
   writeini $char($1) skills Retaliation.time %true.turn 
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
   unset %current.playerstyle | unset %current.playerstyle.level | unset %quicksilver.used
+
+  $skill.nextturn.check(Retaliation, $1)
 }
 
 ;=================
@@ -4285,8 +4246,7 @@ alias skill.justrelease { $set_chr_name($1)
 
   unset %enemy
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(JustRelease, $1)
 }
 
 ;=================
@@ -4329,9 +4289,9 @@ alias skill.stoneskin { $set_chr_name($1)
 
   $display.message(12 $+ %real.name has gained %stoneskin.max natural armor, battle) 
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
   unset %current.playerstyle | unset %current.playerstyle.level | unset %stoneskin.used
+
+  $skill.nextturn.check(StoneSkin, $1)
 }
 
 ;=================
@@ -4380,9 +4340,9 @@ alias skill.tabularasa { $set_chr_name($1)
     } 
   }
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
   unset %current.playerstyle | unset %current.playerstyle.level | unset %stoneskin.used
+
+  $skill.nextturn.check(TabulaRasa, $1)
 }
 
 ;=================
@@ -4603,8 +4563,7 @@ alias skill.cardshark { $set_chr_name($1)
   if (%tech.type = stealPower) { $covercheck(%attack.target, $2) | $tech.stealPower($1, %card.technique, %attack.target ) }
   if (%tech.type = AOE) { $covercheck(%attack.target, AOE) | $tech.aoe($1, %card.technique, %attack.target, monster) | halt }
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(CardShark, $1)
 }
 
 ;=================
@@ -4639,8 +4598,7 @@ alias skill.luciddreaming { $set_chr_name($1) |  $check_for_battle($1)
   var %current.enmity $enmity($1, return)
   $enmity($1, remove, $calc(%current.enmity / 2))
 
-  ; Time to go to the next turn
-  if (%battleis = on)  { $check_for_double_turn($1) }
+  $skill.nextturn.check(LucidDreaming, $1)
 }
 
 ;=================
@@ -4672,6 +4630,5 @@ alias skill.softblows { $set_chr_name($1) |  $check_for_battle($1)
   writeini $char($1) skills softblows.on on
   writeini $char($1) skills softblows.time %true.turn 
 
-  ; Player gets another turn
-  $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) 
+  $skill.nextturn.check(SoftBlows, $1)
 }
