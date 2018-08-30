@@ -1614,6 +1614,8 @@ Battle Arena Bot VERSIONS
 - Added a new item type: GainSkill.  These items will teach players new skills that cannot be bought.
 - Added a new monster/npc skill: CompleteWeaknessShift.  If set to 1 in [skills] the user will randomize weaknesses and resistances
   to various status effects, weapon types, and elements on EVERY TURN the user gets.
+- Added a new active skill: Desynth.  This skill will break down crafted items back into one of each of their ingredients.
+  This skill can only be learned once Alchemy has been learned.
 - Added a new active skill: CriticalFocus. This skill will increase the critical hit chance to 100% on the next attack.
 - Added a new active skill: ShieldFocus. This skill will make your shield block 100% of the next attack if the attack can be
   blocked. A shield must be equipped in order to use this skill.
@@ -1676,6 +1678,8 @@ Battle Arena Bot VERSIONS
   equipped at a time now. Use !skills equip skillname to equip or !skills remove skillname to remove.
 - Changed dungeons so that they can all be entered alone but they have a recommended party size.
 - Changed dungeons so that if a player enters alone or below the party size trusts and summons can be used.
+- Changed the "food" type items so that more than one stat can be affected. Just put a . between the stats, like str.def.int
+  It is recommended not to use TP or HP in the stat list for multiple stats though due to issues that would arise.
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working

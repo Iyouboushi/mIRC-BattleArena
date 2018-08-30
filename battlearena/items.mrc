@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 04/19/18
+;;;; Last updated: 08/30/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -1278,7 +1278,6 @@ alias item.food {
     if  ($readini($char($2), info, flag) = $null) { $display.message($readini(translation.dat, errors, Can'tUseFoodOnOthers),private) | halt }
   }
 
-  set %food.type $readini($dbfile(items.db), $3, target)
   set %food.bonus $readini($dbfile(items.db), $3, amount)
   var %food.basestats str.def.int.spd.hp.tp
   var %core.stats str.def.int.spd
@@ -1288,71 +1287,80 @@ alias item.food {
     if (%skill.bonus != $null) { inc %food.bonus 5 }
   }
 
+  if (%food.bonus <= 0) { 
+    if ($2 != $1) { unset %food.bonus | $display.private.message(4This item cannot be used on other players. Only on monsters or yourself.) | halt }
+  }
 
-  if ($istok(%food.basestats,%food.type,46) = $true) { 
-    ; Increase the base stat..
+  var %food.type.list $readini($dbfile(items.db), $3, target)
+  var %current.food.type 1
+  while (%current.food.type <= $numtok(%food.type.list, 46)) {
 
-    if (%food.bonus <= 0) { 
-      if ($2 != $1) {  $display.private.message(4This item cannot be used on other players. Only on monsters or yourself.) | halt }
+    var %food.type $gettok(%food.type.list, %current.food.type, 46)
+
+    if ($istok(%food.basestats,%food.type,46) = $true) { 
+      ; Increase the base stat..
+
+      if ($readini($char($2), info, flag) != $null)  {  set %target.stat $readini($char($2), battle, %food.type)  }
+      else { set %target.stat $readini($char($2), basestats, %food.type) }
+
+      if (%food.type = hp) {
+        var %player.current.hp $readini($char($2), basestats, hp)
+        var %player.max.hp $readini(system.dat, system, maxHP)
+        dec %player.max.hp $armor.stat($1, hp)
+        if (%player.current.hp >= %player.max.hp) { $display.message($readini(translation.dat, errors, MaxHPAllowedOthers), private) | halt }
+      }
+
+      if (%food.type = tp) {
+        var %player.current.tp $readini($char($2), basestats, tp)
+        var %player.max.tp $readini(system.dat, system, maxTP)
+        dec %player.max.tp $armor.stat($1, tp)
+        if (%player.current.tp >= %player.max.tp) { $display.message($readini(translation.dat, errors, MaxTPAllowedOthers), private)  | halt }
+      }
+
+      inc %target.stat %food.bonus
+
+      if (%target.stat < 5) { var %target.stat 5 }
+
+      if ($readini($char($2), info, flag) = $null)  { writeini $char($2) basestats %food.type %target.stat }
+      if ($readini($char($2), info, flag) != $null)  { writeini $char($2) battle %food.type %target.stat }
+
+      set %target.stat $readini($char($2), battle, %food.type)
+      inc %target.stat %food.bonus
+      writeini $char($2) battle %food.type %target.stat 
     }
 
-    if ($readini($char($2), info, flag) != $null)  {  set %target.stat $readini($char($2), battle, %food.type)  }
-    else { set %target.stat $readini($char($2), basestats, %food.type) }
-
-    if (%food.type = hp) {
-      var %player.current.hp $readini($char($2), basestats, hp)
-      var %player.max.hp $readini(system.dat, system, maxHP)
-      dec %player.max.hp $armor.stat($1, hp)
-      if (%player.current.hp >= %player.max.hp) { $display.message($readini(translation.dat, errors, MaxHPAllowedOthers), private) | halt }
+    if (%food.type = style) { 
+      $add.playerstyle.xp($2, %food.bonus)
     }
 
-    if (%food.type = tp) {
-      var %player.current.tp $readini($char($2), basestats, tp)
-      var %player.max.tp $readini(system.dat, system, maxTP)
-      dec %player.max.tp $armor.stat($1, tp)
-      if (%player.current.tp >= %player.max.tp) { $display.message($readini(translation.dat, errors, MaxTPAllowedOthers), private)  | halt }
+    if (%food.type = redorbs) {
+      var %current.redorbs $readini($char($2), stuff, redorbs)
+      inc %current.redorbs %food.bonus
+      writeini $char($2) stuff redorbs %current.redorbs
+      var %food.type Red Orbs
     }
 
-    inc %target.stat %food.bonus
+    if (%food.type = killcoins) {
+      var %current.coins $return.killcoin.count($2) 
+      inc %current.coins %food.bonus
+      writeini $char($2) stuff killcoins %current.coins
+      var %food.type Kill Coins
+    }
 
-    if (%target.stat < 5) { var %target.stat 5 }
+    if (%food.type = blackorbs) {
+      var %current.orbs $readini($char($2), stuff, BlackOrbs)
+      inc %current.orbs %food.bonus
+      writeini $char($2) stuff BlackOrbs %current.orbs
+      var %food.type Black Orb(s)
+    }
 
-    if ($readini($char($2), info, flag) = $null)  { writeini $char($2) basestats %food.type %target.stat }
-    if ($readini($char($2), info, flag) != $null)  { writeini $char($2) battle %food.type %target.stat }
-
-    set %target.stat $readini($char($2), battle, %food.type)
-    inc %target.stat %food.bonus
-    writeini $char($2) battle %food.type %target.stat 
-
-  }
-
-  if (%food.type = style) { 
-    $add.playerstyle.xp($2, %food.bonus)
-  }
-
-  if (%food.type = redorbs) {
-    var %current.redorbs $readini($char($2), stuff, redorbs)
-    inc %current.redorbs %food.bonus
-    writeini $char($2) stuff redorbs %current.redorbs
-    var %food.type Red Orbs
-  }
-
-  if (%food.type = killcoins) {
-    var %current.coins $return.killcoin.count($2) 
-    inc %current.coins %food.bonus
-    writeini $char($2) stuff killcoins %current.coins
-    var %food.type Kill Coins
-  }
-
-  if (%food.type = blackorbs) {
-    var %current.orbs $readini($char($2), stuff, BlackOrbs)
-    inc %current.orbs %food.bonus
-    writeini $char($2) stuff BlackOrbs %current.orbs
-    var %food.type Black Orb(s)
+    inc %current.food.type 1
   }
 
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
+
+  if ($chr(046) isin %food.type.list) { var %multifood yes | %food.type.list = $replace(%food.type.list, $chr(046), $chr(044) $chr(032)) }
 
   if (%user = %enemy ) { set %enemy $gender2($1) $+ self }
   $set_chr_name($1) 
@@ -1366,7 +1374,7 @@ alias item.food {
     if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {   $display.private.message2($2, $readini(translation.dat, system,FoodStatIncrease)) }
     if ($readini(system.dat, system, botType) = DCCchat) { $dcc.private.message($2, $readini(translation.dat, system,FoodStatIncrease)) }
   }
-  unset %food.bonus | unset %target.stat | unset %food.type
+  unset %food.bonus | unset %target.stat | unset %food.type | unset %food.type.list
   return
 }
 

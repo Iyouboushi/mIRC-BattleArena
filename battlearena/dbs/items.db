@@ -908,6 +908,24 @@ Cost=0
 SellPrice=1000
 Exclusive=yes
 
+[MonsterElixerA]
+Type=Food
+Target=str.def
+Amount=50
+Desc=takes out a bubbling red potion and drinks it. A surge of energy flows through %enemy $+ 's body!
+Cost=0
+SellPrice=5000
+Exlusive=yes
+
+[MonsterElixerB]
+Type=Food
+Target=int.spd
+Amount=50
+Desc=takes out a bubbling purple potion and drinks it. A surge of energy flows through %enemy $+ 's body!
+Cost=0
+SellPrice=5000
+Exlusive=yes
+
 =========================
 RANDOM
 =========================

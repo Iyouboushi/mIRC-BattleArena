@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 08/29/18
+;;;; Last updated: 08/30/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2979,6 +2979,92 @@ alias skill.alchemy {
 
   dec %player.gem.amount %amount.to.craft | writeini $char($1) item_amount %gem.required %player.gem.amount
   unset %crit.crafting 
+  unset %gem.required | unset %player.gem.amount | unset %item.name | unset %item_amount | unset %base.success | unset %item_type | unset %amount.needed
+}
+
+;=================
+; DESYNTH
+;=================
+on 3:TEXT:!desynth*:*: { $skill.desynth($nick, $2, $3) }
+
+alias skill.desynth { 
+  ; $1 = person desynthing
+  ; $2 = the item you're trying to desynth
+  ; $3 = how many you want to desynth
+
+  $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  if ($skillhave.check($1, desynth) = false) { $set_chr_name($nick) | $display.message($readini(translation.dat, errors, DoNotHaveSkill),private) | halt }
+
+
+  if ($readini($dbfile(crafting.db), $2, Ingredients) = $null) { $display.message(4 $+ $get_chr_name($1) cannot desynth this item!, private) | halt }
+
+  var %gem.required $readini($dbfile(crafting.db), $2, gem)
+  if (%gem.required = $null) { unset %gem.required | $display.message(4 $+ $get_chr_name($1) cannot desynth this item!, private) | halt }
+
+  var %amount.to.desynth $abs($3)
+  if ($3 !isnum) {
+    if (%amount.to.desynth = $null) { var %amount.to.desynth 1 }
+    else { $display.message($readini(translation.dat, errors, NotAValidAmount),private) | halt }
+  }
+
+  ; Does the user have the gem necessary to desynth the item?
+  var %player.gem.amount $readini($char($1), item_amount, %gem.required)  
+  if (%player.gem.amount <= 0) { remini $char($1) item_amount %gem.required } 
+  if (%player.gem.amount = $null) { set %player.gem.amount 0 } 
+  if (%player.gem.amount < %amount.to.desynth) { unset %player.gem.amount | unset %gem.required | $display.message($readini(translation.dat, errors, MissingCorrectGemDesynth),private) | halt } 
+
+  ; Does the player have the item to desynth?
+  var %player.desynth.item.amount $readini($char($1), item_amount, $2)
+
+  var %equipped.accessory $readini($char($1), equipment, accessory) 
+  if (%equipped.accessory = $2) { dec %player.desynth.item.amount 1 }
+  var %equipped.accessory2 $readini($char($1), equipment, accessory2) 
+  if (%equipped.accessory2 = $2) { dec %player.desynth.item.amount 1 }
+  var %equipped.armor $readini($char($1), equipment, head) 
+  if (%equipped.armor = $2) { dec %player.desynth.item.amount 1 }
+  var %equipped.armor $readini($char($1), equipment, body) 
+  if (%equipped.armor = $2) { dec %player.desynth.item.amount 1 }
+  var %equipped.armor $readini($char($1), equipment, legs) 
+  if (%equipped.armor = $2) { dec %player.desynth.item.amount 1 }
+  var %equipped.armor $readini($char($1), equipment, feet) 
+  if (%equipped.armor = $2) { dec %player.desynth.item.amount 1 }
+  var %equipped.armor $readini($char($1), equipment, hands) 
+  if (%equipped.armor = $2) { dec %player.desynth.item.amount 1 }
+
+  if (%player.desynth.item.amount < %amount.to.desynth) { unset %player.gem.amount | unset %gem.required | $display.message($readini(translation.dat, errors, MissingIngredientsDesynth),private) | halt }
+
+  ; Decrease the item from the player
+  dec %player.desynth.item.amount %amount.to.desynth 
+  writeini $char($1) item_amount $2 %player.desynth.item.amount
+  dec %player.gem.amount %amount.to.desynth | writeini $char($1) item_amount %gem.required %player.gem.amount
+
+
+  ; Desynth the item!
+  ; Go through the ingredient list of the original item and add each.
+
+  var %ingredients $readini($dbfile(crafting.db), $2, ingredients)
+  var %total.ingredients $numtok(%ingredients, 46)
+  var %value 1
+  while (%value <= %total.ingredients) {
+    var %item.name $gettok(%ingredients, %value, 46)
+    var %item_amount $readini($char($1), item_amount, %item.name)
+
+    if ((%item_amount <= 0) || (%item_amount = $null)) { set %item_amount 0 }
+    inc %item_amount %amount.to.desynth
+    writeini $char($1) item_amount %item.name %item_amount
+    unset %item_amount
+    inc %value 1 
+  }
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, desynth) = $null) { set %skill.description uses the power of the gem to break the $2 into base ingredients. }
+  else { set %skill.description $readini($char($1), descriptions, desynth) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, global) 
+
+  var %ingredients $replace(%ingredients, $chr(046), $chr(044) $chr(032)) 
+  $display.message($readini(translation.dat, skill, DesynthSuccess), global)
+
   unset %gem.required | unset %player.gem.amount | unset %item.name | unset %item_amount | unset %base.success | unset %item_type | unset %amount.needed
 }
 

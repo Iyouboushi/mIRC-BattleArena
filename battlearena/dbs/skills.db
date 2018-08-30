@@ -149,6 +149,12 @@ Type=passive
 Info=This skill will allow you to use gems to create items. Each level of this skill will raise the success rate of creating an item by 1%.  Use !view-info alchemy list  to get a list of items you can craft and !view-info alchemy (item)  to view the ingredients necessary.
 Max=20
 
+[Desynth]
+Cost=$iif($readini($char($1), Skills, Alchemy) >= 1, 2000, 0)
+Type=passive
+Info=This skill will allow you to use gems to break down crafted items. You will receive 1 of each of the crafted item's base ingredients back upon breaking down an item.
+Max=1
+
 [TreasureHunter]
 Cost=1000
 Type=passive

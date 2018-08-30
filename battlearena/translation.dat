@@ -167,7 +167,7 @@ RemovedArmor=$chr(3) $+ 3 $+  $+ %real.name has removed the $equipment.color(
 NotWearingThatAccessory=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $equipment.color($2) $+ $2 3accessory.
 NotWearingThatArmor=$chr(3) $+ 3 $+  $+ %real.name is not wearing the $equipment.color($2) $+ $2 $+ 3.
 ShopLevelLowered=$chr(3) $+ 2 $+ Your shop level has been lowered.  It is now $return.shoplevel($2) $+ !
-FoodStatIncrease=$chr(3) $+ 2 $+ Your %food.type has permanently increased by %food.bonus $+ !
+FoodStatIncrease=$chr(3) $+ 2 $+ Your %food.type.list  $+ $iif(%multifood = yes, have, has) permanently increased by %food.bonus $+ !
 SellMessage=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat takes $4 $3 $+ $iif($4 < 2, ,s) $+  from you and gives you $bytes(%total.price,b) $readini(system.dat, system, currency) $+ !
 SellMessageAccessory=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat takes %amount.to.sell $3 $+ $iif($4 < 2, ,s) $+  from you and gives you $bytes(%total.price,b) $readini(system.dat, system, currency) $+ !
 SellWeaponMessage=$chr(3) $+ 3 $+ A shop keeper wearing a green and white bucket hat performs a powerful ritual to unbind the weapon $3 $+  from your body and restores $bytes(%orb.amount,b) black orbs!
@@ -509,7 +509,9 @@ CannotGiveToYourself=$chr(3) $+ 4 $+ Error: %real.name cannot give items to $g
 CannotCraftThisItem=$chr(3) $+ 4 $+ Error: This item cannot be made via alchemy.
 NotAValidAmount=$chr(3) $+ 4 $+ Error: You haven't provided valid amount for alchemy.
 MissingCorrectGem=$chr(3) $+ 4 $+ Error: %real.name is missing the correct gem to craft a $2 $+ !
+MissingCorrectGemDesynth=$chr(3) $+ 4 $+ Error: %real.name is missing the correct gem to desynth a $2 $+ !
 MissingIngredients=$chr(3) $+ 4 $+ Error: %real.name is missing the correct ingredients to craft a $2 $+ ! (If the item is an accessory or armor, make sure the ingredient is not equipped)
+MissingIngredientsDesynth=$chr(3) $+ 4 $+ Error: %real.name is missing the correct amount of $2 $+  to desynth!
 PlayersCannotUseSkill=$chr(3) $+ 4 $+ Error: Players are unable to use this skill!
 Can'tBoostHasVirus=$chr(3) $+ 4 $+ Error: %real.name has a virus that is preventing $gender2($1) from boosting! 
 DarknessAlreadyInEffect=$chr(3) $+ 4 $+ Error: %real.name cannot use this skill because darkness has already taken effect on the battlefield.
@@ -918,6 +920,7 @@ CoverTargetDead=$set_chr_name($2) $chr(3) $+ 4 $+ %real.name cannot be covered 
 AlreadyBeingProvoked=$set_chr_name($2) $+ $chr(3) $+ 4 $+ %real.name is already being provoked by someone else!
 ProvokeTargetDead=$set_chr_name($2) $chr(3) $+ 4 $+ %real.name cannot be provoked because $gender3($2) is dead or has fled!
 AlreadyUsedBloodPact=$chr(3) $+ 4 $+ Error: %real.name has already used Blood Pact for this battle and cannot use it again!
+DesynthSuccess=$chr(3) $+ 2 $+ %real.name has successfully desynthed %amount.to.desynth x $2 and has received %amount.to.desynth of the following ingredients:12 %ingredients
 CraftingSuccess=$chr(3) $+ 2 $+ %real.name has successfully crafted %crafting.item.amount $2 $+ $if(%amount.to.craft < 2 , ,s) $+ !
 CraftingFailure=$chr(3) $+ 2 $+ %real.name $+ 's alchemy attempt has failed! %real.name loses the gem and all ingredients involved.
 CraftingMultiple=$chr(3) $+ 2 $+ %real.name has successfully crafted %total.crafted $2 $+ $if($calc($readini($dbfile(crafting.db), $2, amount) * %crafting.success.total) < 2 , ,s) $+  and has failed %crafting.failure.total time $+ $iif(%crafting.failure.total = 0 || %crafting.failure.total > 1, s) $+ !
