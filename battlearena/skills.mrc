@@ -130,7 +130,7 @@ alias skill.nextturn.check {
 
   if ($skill.instantcheck($1) = true) { $display.message(12 $+ $get_chr_name($2) gets another action this turn.,battle) | halt }
   else { 
-    if (%battleis = on)  { $check_for_double_turn($1) | halt }
+    if (%battleis = on)  { $check_for_double_turn($2) | halt }
   }
 }
 
