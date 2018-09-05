@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/31/18
+;;;; Last updated: 09/05/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -741,7 +741,7 @@ alias shop.techs {
 
 
       if (%shop.currency.type = orbs) { set %tech.price $round($calc(%shop.level * $readini($dbfile(techniques.db), %tech.name, cost)),0) }
-      if (%shop.currency.type = coins) { set %tech.price $round($calc($readini($dbfile(techniques.db), %tech.name, cost) /25),0) }
+      if (%shop.currency.type = coins) { set %tech.price $readini($dbfile(techniques.db), %tech.name, CoinCost) }
 
       if (%tech.price < 1) { set %tech.price 1 }
 
@@ -816,7 +816,7 @@ alias shop.techs {
 
     if (%shop.currency.type = coins) {
       var %player.coins $return.killcoin.count($1)
-      var %total.price $round($calc($readini($dbfile(techniques.db), $3, cost) /25),0)
+      var %total.price $readini($dbfile(techniques.db), $3, CoinCost)
       var %total.price $calc(%total.price * $4)
       if (%tech.price < 1) { var %tech.price 1 }
 
