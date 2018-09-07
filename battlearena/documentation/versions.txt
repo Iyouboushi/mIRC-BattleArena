@@ -1680,6 +1680,7 @@ Battle Arena Bot VERSIONS
 - Changed dungeons so that if a player enters alone or below the party size trusts and summons can be used.
 - Changed the "food" type items so that more than one stat can be affected. Just put a . between the stats, like str.def.int
   It is recommended not to use TP or HP in the stat list for multiple stats though due to issues that would arise.
+- Changed the !hp, !tp, and !ig commands so that they can be used on other players. Note that they cannot be used on monsters or npcs.
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working

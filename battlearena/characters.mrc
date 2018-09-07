@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 06/18/18
+;;;; Last updated: 09/06/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -216,6 +216,38 @@ on 3:TEXT:!skill desc *:*:{ $checkscript($3-)  | $set_chr_name($nick)
   if ($readini($char($nick), skills, $3) = $null) { $display.private.message($readini(translation.dat, errors, YouDoNotHaveSkill)) | halt }
 }
 
+
+on 3:TEXT:!ignitions*:#:{ 
+  if ($2 = $null) { $ignition.list($nick) | $set_chr_name($nick) 
+    if (%ignitions.list != $null) { $display.message($readini(translation.dat, system, ViewIgnitions),private) | unset %ignitions.list }
+    else { $display.message($readini(translation.dat, system, NoIgnitions),private)  }
+  }
+  else { $checkchar($2) | $ignition.list($2)  | $set_chr_name($2) 
+    if (%ignitions.list != $null) { $display.message($readini(translation.dat, system, ViewIgnitions),private) | unset %ignitions.list }
+    else { $display.message($readini(translation.dat, system, NoIgnitions),private)  }
+  }
+}
+on 3:TEXT:!readignitions*:#: {
+  $checkchar($2) | $ignition.list($2)  | $set_chr_name($2) 
+  if (%ignitions.list != $null) { $display.message($readini(translation.dat, system, ViewIgnitions),private) }
+  else { $display.message($readini(translation.dat, system, NoIgnitions),private) }
+}
+on 3:TEXT:!ignitions*:?:{ 
+  if ($2 = $null) { $ignition.list($nick) | $set_chr_name($nick) 
+    if (%ignitions.list != $null) { $display.private.message($readini(translation.dat, system, ViewIgnitions)) | unset %ignitions.list }
+    else { $display.private.message($readini(translation.dat, system, NoIgnitions))  }
+  }
+  else { $checkchar($2) | $ignition.list($2)  | $set_chr_name($2) 
+    if (%ignitions.list != $null) { $display.private.message($readini(translation.dat, system, ViewIgnitions)) | unset %ignitions.list }
+    else { $display.private.message($readini(translation.dat, system, NoIgnitions))  }
+  }
+}
+on 3:TEXT:!readignitions*:?: {
+  $checkchar($2) | $ignition.list($2)  | $set_chr_name($2) 
+  if (%ignitions.list != $null) { $display.private.message($readini(translation.dat, system, ViewIgnitions)) }
+  else { $display.private.message($readini(translation.dat, system, NoIgnitions))  }
+}
+
 on 3:TEXT:!ignition desc *:*:{ $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), ignitions, $3) != $null) { 
     if ($4 = $null) { $display.private.message(4Invalid description) | halt }
@@ -272,7 +304,6 @@ on 3:TEXT:!level*:?: {
   if ($2 != $null) { $checkscript($2-) | $checkchar($2) | $set_chr_name($2) | var %person.to.check $2 | var %player.level $iif(%portal.bonus = true, $bytes($get.full.level($2),b), $bytes($round($get.level($2),0),b)) | $display.private.message($readini(translation.dat, system, ViewLevel)) | unset %real.name }
 }
 
-
 on 50:TEXT:!level sync*:#: { $checkscript($2-)
   if ($1 = !leveladjust) { halt }
   if ($3 = $null) { $display.private.message(4Error: Need to enter a number of level to sync to) | halt }
@@ -288,23 +319,13 @@ on 3:TEXT:!actionpoints*:#: {
   if ($2 = $null) { $display.message($readini(translation.dat, system, ViewMyActionPoints),private) }
 }
 
-on 3:TEXT:!hp:#: { 
-  $set_chr_name($nick) | $hp_status_hpcommand($nick) 
-  $display.message($readini(translation.dat, system, ViewMyHP), private)
-
-  if ($person_in_mech($nick) = true) { var %mech.name $readini($char($nick), mech, name) | $hp_mech_hpcommand($nick) 
-    $display.message($readini(translation.dat, system, ViewMyMechHP), private)
-  }
-  unset %real.name | unset %hstats 
-
+on 3:TEXT:!hp*:#: { 
+  if ($2 = $null) { $character.hp.check($nick, public) }
+  else { $checkchar($2) | $character.hp.check($2, public) }
 }
-on 3:TEXT:!hp:?: { 
-  $set_chr_name($nick) | $hp_status_hpcommand($nick) 
-  $display.private.message($readini(translation.dat, system, ViewMyHP)) | unset %real.name | unset %hstats 
-
-  if ($person_in_mech($nick) = true) { var %mech.name $readini($char($nick), mech, name) | $hp_mech_hpcommand($nick) 
-    $display.private.message($readini(translation.dat, system, ViewMyMechHP))
-  }
+on 3:TEXT:!hp*:?: { 
+  if ($2 = $null) { $character.hp.check($nick, private) }
+  else { $checkchar($2) | $character.hp.check($2, private) }
 }
 
 on 3:TEXT:!battle style:#: {
@@ -338,12 +359,24 @@ on 3:TEXT:!enmity:?: {
   $display.private.message($readini(translation.dat, battle, highestenmity)) 
 }
 
-on 3:TEXT:!tp:#:$set_chr_name($nick) | $display.message($readini(translation.dat, system, ViewMyTP),private) | unset %real.name
-on 3:TEXT:!tp:?:$set_chr_name($nick) | $display.private.message($readini(translation.dat, system, ViewMyTP)) | unset %real.name
-on 3:TEXT:!ig:#:$set_chr_name($nick) | $display.message($readini(translation.dat, system, ViewMyIG),private) | unset %real.name
-on 3:TEXT:!ignition gauge:#:$set_chr_name($nick) | $display.message($readini(translation.dat, system, ViewMyIG),private) | unset %real.name
-on 3:TEXT:!ig:?:$set_chr_name($nick) | $display.private.message($readini(translation.dat, system, ViewMyIG)) | unset %real.name
-on 3:TEXT:!ignition gauge:?:$set_chr_name($nick) | $display.private.message($readini(translation.dat, system, ViewMyIG))  | unset %real.name
+on 3:TEXT:!tp*:#: { 
+  if ($2 = $null) { $character.tp.check($nick, public) }
+  else { $checkchar($2) | $character.tp.check($2, public) }
+}
+on 3:TEXT:!tp*:?: { 
+  if ($2 = $null) { $character.tp.check($nick, private) }
+  else { $checkchar($2) | $character.tp.check($2, private) }
+}
+
+on 3:TEXT:!ig*:#: { 
+  if ($2 = $null) { $character.ig.check($nick, public) }
+  else { $checkchar($2) | $character.ig.check($2, public) }
+}
+on 3:TEXT:!ig*:?: { 
+  if ($2 = $null) { $character.ig.check($nick, private) }
+  else { $checkchar($2) | $character.ig.check($2, private) }
+}
+
 on 3:TEXT:!orbs*:#: { 
   if ($2 != $null) { $checkchar($2) | var %orbs.spent $bytes($readini($char($2), stuff, RedOrbsSpent),b) | var %blackorbs.spent $bytes($readini($char($2), stuff, BlackOrbsSpent),b) | $set_chr_name($2) 
 
@@ -779,37 +812,6 @@ on 3:TEXT:!readtechs*:?: { $checkchar($2)
   unset %tech.count | unset %tech.power | unset %replacechar | unset %tech.list | unset %techs.list
   unset %weapon.equipped.right | unset %weapon.equipped left | unset %weapon.equipped
   unset %techs.list.left | unset %ignition.tech.list
-}
-
-on 3:TEXT:!ignitions*:#:{ 
-  if ($2 = $null) { $ignition.list($nick) | $set_chr_name($nick) 
-    if (%ignitions.list != $null) { $display.message($readini(translation.dat, system, ViewIgnitions),private) | unset %ignitions.list }
-    else { $display.message($readini(translation.dat, system, NoIgnitions),private)  }
-  }
-  else { $checkchar($2) | $ignition.list($2)  | $set_chr_name($2) 
-    if (%ignitions.list != $null) { $display.message($readini(translation.dat, system, ViewIgnitions),private) | unset %ignitions.list }
-    else { $display.message($readini(translation.dat, system, NoIgnitions),private)  }
-  }
-}
-on 3:TEXT:!readignitions*:#: {
-  $checkchar($2) | $ignition.list($2)  | $set_chr_name($2) 
-  if (%ignitions.list != $null) { $display.message($readini(translation.dat, system, ViewIgnitions),private) }
-  else { $display.message($readini(translation.dat, system, NoIgnitions),private) }
-}
-on 3:TEXT:!ignitions*:?:{ 
-  if ($2 = $null) { $ignition.list($nick) | $set_chr_name($nick) 
-    if (%ignitions.list != $null) { $display.private.message($readini(translation.dat, system, ViewIgnitions)) | unset %ignitions.list }
-    else { $display.private.message($readini(translation.dat, system, NoIgnitions))  }
-  }
-  else { $checkchar($2) | $ignition.list($2)  | $set_chr_name($2) 
-    if (%ignitions.list != $null) { $display.private.message($readini(translation.dat, system, ViewIgnitions)) | unset %ignitions.list }
-    else { $display.private.message($readini(translation.dat, system, NoIgnitions))  }
-  }
-}
-on 3:TEXT:!readignitions*:?: {
-  $checkchar($2) | $ignition.list($2)  | $set_chr_name($2) 
-  if (%ignitions.list != $null) { $display.private.message($readini(translation.dat, system, ViewIgnitions)) }
-  else { $display.private.message($readini(translation.dat, system, NoIgnitions))  }
 }
 
 on 3:TEXT:!skills*:#: {
