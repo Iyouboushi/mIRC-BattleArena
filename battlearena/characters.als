@@ -156,6 +156,73 @@ gender3 {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays a target's HP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.hp.check { 
+  ; $1 = the person we're checking
+  ; $2 = public or private
+
+  if ($readini($char($1), info, flag) != $null) {
+    if ($2 = public) { $display.message($readini(translation.dat, errors, Can'tUseCommandOnMonsters), private) } 
+    if ($2 = private) { $display.private.message($readini(translation.dat, errors, Can'tUseCommandOnMonsters)) } 
+    halt
+  }
+
+  $set_chr_name($1) | $hp_status_hpcommand($1) 
+  if ($person_in_mech(1) = true) { 
+    var %mech.name $readini($char($1), mech, name) | $hp_mech_hpcommand($1) 
+    if ($2 = public) { $display.message($readini(translation.dat, system, ViewMyMechHP), private) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMyMechHP)) }
+  }
+  else { 
+    if ($2 = public) { $display.message($readini(translation.dat, system, ViewMyHP), private) }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMyHP)) }
+  }
+
+  unset %real.name | unset %hstats 
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays a target's TP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.tp.check { 
+  ; $1 = the person we're checking
+  ; $2 = public or private
+
+  if ($readini($char($1), info, flag) != $null) {
+    if ($2 = public) { $display.message($readini(translation.dat, errors, Can'tUseCommandOnMonsters), private) } 
+    if ($2 = private) { $display.private.message($readini(translation.dat, errors, Can'tUseCommandOnMonsters)) } 
+    halt
+  }
+
+  $set_chr_name($1) 
+  if ($2 = public) { $display.message($readini(translation.dat, system, ViewMyTP), private) }
+  if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMyTP)) }
+
+  unset %real.name 
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays a target's TP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.ig.check { 
+  ; $1 = the person we're checking
+  ; $2 = public or private
+
+  if ($readini($char($1), info, flag) != $null) {
+    if ($2 = public) { $display.message($readini(translation.dat, errors, Can'tUseCommandOnMonsters), private) } 
+    if ($2 = private) { $display.private.message($readini(translation.dat, errors, Can'tUseCommandOnMonsters)) } 
+    halt
+  }
+
+  $set_chr_name($1) 
+  if ($2 = public) { $display.message($readini(translation.dat, system, ViewMyIG), private) }
+  if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMyIG)) }
+
+  unset %real.name 
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns current stats
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 current.hp { return $readini($char($1), battle, hp) }
