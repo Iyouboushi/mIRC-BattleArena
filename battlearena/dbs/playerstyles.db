@@ -1,5 +1,5 @@
 [styles]
-list=Trickster.WeaponMaster.Guardian.SpellMaster.Doppelganger.HitenMitsurugi-ryu.Quicksilver.CounterStance.Beastmaster.Wrestlemania.HighRoller
+list=Trickster.WeaponMaster.Guardian.SpellMaster.Doppelganger.HitenMitsurugi-ryu.Quicksilver.CounterStance.Beastmaster.Wrestlemania.HighRoller.TreasureHunter
 
 
 ; Costs are in black orbs.
@@ -15,11 +15,12 @@ CounterStance=20
 Beastmaster=5
 Wrestlemania=15
 HighRoller=15
+TreasureHunter=15
 
 
 
 [Info]
-Trickster=This style will enhance the amount of style points you get for taunting. Higher levels of Trickster will increase the amount of style points you get. It'll also give you a bonus to your speed in battle.  Higher levels of the style will result in a bigger increase in speed. When equipped with this style there's also a (style level)% chance of dodging attacks. Finally, it will enhance the steal % by a random amount.
+Trickster=This style will enhance the amount of style points you get for taunting. Higher levels of Trickster will increase the amount of style points you get. It'll also give you a bonus to your speed in battle.  Higher levels of the style will result in a bigger increase in speed. When equipped with this style there's also a (style level)% chance of dodging attacks. 
 
 WeaponMaster=This style will enhance melee attacks of all weapon types.  It does this by increasing the random damage added onto every melee attack and by enhancing the mastery skill slightly.  The amount increases each time the style levels.
 
@@ -42,6 +43,8 @@ Wrestlemania=Aim for the top of the wrestling federation and perform your stunni
 
 HighRoller=Gamble your way to victory with this highly luck-based style. This style will allow you to unlock the full potential of the Trading Cards with !CardShark cardname target and use the !Gamble skill without equipping it (and at a lower cost!). As the style levels you will be able to use higher rarity cards.
 
+TreasureHunter=Sneak and Steal--er I mean Treasure Hunt--your way to riches. This style will enhance your dagger usage, increase your chance of receiving spoils, enhance your stealing chance and give you access to !TrickAttack and !SneakAttack. Sneak Attack will make your next attack critical if you have the lowest enmity. Trick Attack will make your next attack be critical if you have the highest enmity and reduce your enmity to 1 after the attack. Trick & Sneak Attack cannot be used solo.
+
 
 [Augments]
 Trickster=$iif($style.level($1) >= 5, EnhanceDodge) $+ $iif($style.level($1) = 10, .EnhanceStylePoints)
@@ -55,3 +58,4 @@ Quicksilver=
 CounterStance=
 Wrestlemania=$iif($style.level($1) >= 5, EnhanceHandToHand)
 HighRoller=$iif($style.level($1) >= 5, EnhanceRanged)
+TreasureHunter=EnhanceSteal.EnhanceDagger $+ $iif($style.level($1) >= 5, .EnhanceTreasureHunter)

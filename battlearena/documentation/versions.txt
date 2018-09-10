@@ -1661,6 +1661,9 @@ Battle Arena Bot VERSIONS
   the trading card (i.e. use a monster's techniques. The technique chosen is random). This style will also let you use !Gamble
   without equipping it and for 200 orbs instead of 1000. This style also increases damage done with Ranged weapons at level 5.
   The higher the style's level the higher rarity of cards you can use with Card Shark.
+- Added a new style: TreasureHunter. This style will enhance dagger usage, increase player's chances of receiving spoils, 
+  enhance stealing chance and give players access to !TrickAttack and !SneakAttack. Trick Attack and Sneak Attack both give a
+  guarantee to critical hit as long as the player has the most and least amount of enmity respectively.
 - Added new trading cards
 - Added the ability for monsters, bosses and NPCs to have rotations. These are set blueprints on how they will react each battle.
   The information on how to set it up is in new_npc.char, new_mon.char and new_boss.char at the bottom of the file. Or see the
@@ -1681,6 +1684,8 @@ Battle Arena Bot VERSIONS
 - Changed the "food" type items so that more than one stat can be affected. Just put a . between the stats, like str.def.int
   It is recommended not to use TP or HP in the stat list for multiple stats though due to issues that would arise.
 - Changed the !hp, !tp, and !ig commands so that they can be used on other players. Note that they cannot be used on monsters or npcs.
+- Changed Trickster so that it no longer affects the stealing chance. This has been moved to the TreasureHunter style instead.
+- Changed !view-help skill so that it will show the style skills if a player tries to view them.
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working

@@ -3586,6 +3586,31 @@ AlliedNotes=750
 Exclusive=yes
 PortalLevel=50
 
+; Season orb is still under construction and is not live in the game yet.
+[SeasonOrb]
+type=portal
+Cost=100
+Currency=BeastmenSeal
+Battlefield=The Field of Seasons
+Weather=normal
+Monster=$readini($dbfile(items.db), SeasonOrb, $left($adate,2))
+Desc=holds up the orb which glows and teleports the party into the Field of Seasons where they will be faced with a different challenge each month.
+AlliedNotes=100
+Exclusive=yes
+PortalLevel=100
+01=
+02=
+03=
+04=CloudOfDarkness
+05=
+06=
+07=Ultros
+08=
+09=
+10=Wrexsoul
+11=
+12=
+
 
 ; Kindred Seal Portal Items
 

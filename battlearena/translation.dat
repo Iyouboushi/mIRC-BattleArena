@@ -662,6 +662,8 @@ SkillNotEquipped=$chr(3) $+ 4 $+ The $2 skill is not currently equipped.
 SkillHasBeenUnEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has unequipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / $return.skill.slots($1) $+ ]
 NeedValidNumberForCosmicLevel=$chr(3) $+ 4 $+ A valid number must be used for the cosmic level. Use !use cosmicorb levelhere
 CannotUpgradeMythicWithItem=$chr(3) $+ 4 $+ The Mythic weapon cannot be upgraded by using items.
+SkillCannotBeUsedSolo=$chr(3) $+ 4 $+ The $2 skill cannot be used if you are alone in battle.
+
 
 =======================
 Battle Related Messages
@@ -758,6 +760,7 @@ NoOneJoinedBattleYet=$chr(3) $+ 4 $+ No one has joined the battle yet!
 BatListTitleMessage=$chr(3) $+ 10 $+ -=BATTLE INFORMATION=-
 StepsUpFirst=$chr(3) $+ 2 $+ $set_chr_name(%who) $+ %real.name steps up first in the battle!
 LandsACriticalHit=$chr(3) $+ 4 $+ %real.name lands a critical hit! 
+LandsADirectCriticalHit=$chr(3) $+ 4 $+ %real.name lands a direct critical hit!
 PerformsADoubleAttack=$chr(3) $+ 4 $+ %real.name performs a double $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
 PerformsATripleAttack=$chr(3) $+ 4 $+ %real.name performs a triple $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
 PerformsA4HitAttack=$chr(3) $+ 4 $+ %real.name performs a four hit $iif($4 = tech, attack!, $iif($readini($char($1), weapons, equippedLeft) != $null, attack against %enemy using two weapons!, attack against %enemy $+ !))
@@ -805,8 +808,7 @@ DefendOutpostForTurns=$chr(3) $+ 4 $+ The Heroes must defend this outpost for %
 AssaultOutpost=$chr(3) $+ 4 $+ The Heroes must keep defeating monster forces to weaken the outpost in order to claim it! 
 RestMessage=$chr(3) $+ 12 $+ $get_chr_name($1) decides to take a turn off and rest.
 FlawlessVictory=$chr(3) $+ 7 $+ FLAWLESS VICTORY! The Heroes has finished the battle without being hit and will advance 10 battle levels.
-HighestEnmity=$chr(3) $+ 12 $+ $ai.enmity.getname 4currently has the highest enmity and is being targeted by monsters.
-
+HighestEnmity=$chr(3) $+ $iif(%highest.enmity.person = no one, 4 Monsters are targeting a12 random player4 as no one has the highest enmity yet., 12 $+ %highest.enmity.person 4currently has the highest enmity and is being targeted by monsters.) $iif($return_playersinbattle > 1 && $enmity(%lowest.enmity.person, return) > 0, 12 $+ $character.enmity.getname(Lowest) 4has the lowest amount of enmity in this battle)
 
 =======================
 Status Related Messages
@@ -818,6 +820,8 @@ CurrentlyAmnesia=$chr(3) $+ 4 $+  $+ %real.name cannot remember how to perform
 PoisonWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's poison has worn off. 
 PoisonKills=$chr(3) $+ 4 $+  $+ %real.name grabs $gender($1) chest in pain from the posion as $gender($1) eyes roll back into $gender($1) head. %real.name collapses to the ground--dead.
 PoisonMessage=$chr(3) $+ 4 $+  $+ %real.name grabs $gender($1) chest in pain from the poison. 
+DoomCountDown=$chr(3) $+ 4 $+  $+ %real.name is currently doomed and $iif(%doom.timer = 1, will die next turn, will die in %doom.timer turns!)
+DoomKills=$chr(3) $+ 4 $+  $+ $get_chr_name($1) $+ 's time is up and the doom status has claimed $gender($1) life! $get_chr_name($1) collapses to the ground dead.
 CurrentlyCursed=$chr(3) $+ 4 $+  $+ %real.name is cursed!
 CurseWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's curse has worn off.
 TooDrunkToFight=$chr(3) $+ 4 $+  $+ %real.name stumbles over and collapses to the ground with a loud hiccup, missing a turn.
@@ -1057,6 +1061,7 @@ Statuses
 =======================
 [Statuses]
 ; Negative status effects
+Doom=$chr(3) $+ 4 $+ doomed
 Frozen=$chr(3) $+ 4 $+ frozen
 Freezing=$chr(3) $+ 4 $+ frozen
 Shock=$chr(3) $+ 4 $+ shocked

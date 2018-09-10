@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/27/18
+;;;; Last updated: 09/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -99,7 +99,6 @@ damage.modifiers.check {
   }
 
 }
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Calculates damage item amount
@@ -546,10 +545,20 @@ formula.criticalhit.chance {
   if ($augment.check($1, EnhanceCriticalHits) = true) { inc %critical.hit.chance %augment.strength }
 
   if ($readini($char($1), skills, criticalfocus.on) = on) { var %critical.hit.chance 100  |  writeini $char($1) skills criticalfocus.on off } 
+  if ($readini($char($1), skills, trickattack.on) = on) {  var %critical.hit.chance 100  |  remini $char($1) skills trickattack.on | writeini $txtfile(battle2.txt) enmity $1 1 | var %directhit on } 
+  if ($readini($char($1), skills, sneakattack.on) = on) {  var %critical.hit.chance 100  |  remini $char($1) skills sneakattack.on | var %directhit on } 
 
   if (%critical.hit.chance >= 97) {
-    $set_chr_name($1) |  $display.message($readini(translation.dat, battle, LandsACriticalHit), battle)
-    set %attack.damage $round($calc(%attack.damage * 1.5),0)
+    $set_chr_name($1)
+
+    if (%directhit = $null) { 
+      $display.message($readini(translation.dat, battle, LandsACriticalHit), battle)
+      set %attack.damage $round($calc(%attack.damage * 1.5),0)
+    }
+    if (%directhit = on) {
+      $display.message($readini(translation.dat, battle, LandsADirectCriticalHit), battle)
+      set %attack.damage $round($calc(%attack.damage * 2),0)
+    }
   }
 }
 

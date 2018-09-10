@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/19/18
+;;;; Last updated: 09/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2682,6 +2682,7 @@ clear_skill_timers {
   remini $char($1) skills doublecast.time | remini $char($1) skills invigorate.time | remini $char($1) skills thrillofbattle.time
   remini $char($1) skills duality.time | remini $char($1) skills thinair.time | remini $char($1) skills quickpockets.time
   remini $char($1) skills luciddreaming.time | remini $char($1) skills softblows.time | remini $char($1) skills analysis.time
+  remini $char($1) skills trickattack.on  | remini $char($1) skills sneakattack.on 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2721,7 +2722,7 @@ clear_negative_status {
   writeini $char($1) Status slow no | writeini $char($1) Status sleep no | writeini $char($1) Status stun no |  writeini $char($1) status zombieregenerating no | writeini $char($1) status intimidate no 
   writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no | writeini $char($1) status intdown no  |  writeini $char($1) status stop no | writeini $char($1) status petrified no 
   writeini $char($1) status bored no | remini $char($1) status weapon.locked | writeini $char($1) status confuse no 
-  remini $char($1) status annoyed | writeini $char($1) status terrify no | writeini $char($1) status doll no
+  remini $char($1) status annoyed | writeini $char($1) status terrify no | writeini $char($1) status doll no | writeini $char($1) status doom no
   writeini $char($1) status heavy no
 
   ; Clear negative timer statuses
@@ -2729,7 +2730,7 @@ clear_negative_status {
   writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0
   writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown.timer 0 | writeini $char($1) status defensedown.timer 0
   writeini $char($1) status bored.timer 0 |  writeini $char($1) status confuse.timer 0 | writeini $char($1) status virus.timer 0
-  writeini $char($1) status doll.timer 0
+  writeini $char($1) status doll.timer 0 | remini $char($1) status doom.timer 
 
   ; Monsters that are zombies need to be reset as zombies.
   if ($readini($char($1), monster, type) = zombie) {  writeini $char($1) status zombie yes | writeini $char($1) status zombieregenerating yes } 
@@ -3304,7 +3305,7 @@ clear_variables {
   unset %real.name | unset %weapon.name | unset %weapon.price | unset %steal.item | unset %skip.ai | unset %file.to.read.lines 
   unset %attacker.spd | unset %playerstyle.* | unset %stylepoints.to.add | unset %current.playerstyle.* | unset %styles | unset %wait.your.turn | unset %weapon.list2
   unset %passive.skills.list2 | unset %cosmic.level | unset %cosmic.drop.rewards | unset %nosouls | unset %current.npc.to.spawn
-  unset %grand.total | unset %number.of.npcs
+  unset %grand.total | unset %number.of.npcs | unset %doom.timer
 }
 clear_variables2 {
   unset %torment.*

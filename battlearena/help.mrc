@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 03/14/18
+;;;; Last updated: 09/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -275,7 +275,7 @@ alias view-info {
   if ($2 = skill) { 
     if ($readini($dbfile(skills.db), $3, type) = $null) { $display.private.message(4Invalid skill)  | halt }
     var %info.type $readini($dbfile(skills.db), $3, type) | var %info.desc $readini($dbfile(skills.db), $3, info)
-    var %info.cost $readini($dbfile(skills.db), $3, cost) | var %info.maxlevel $readini($dbfile(skills.db), $3, max)
+    var %info.cost $readini($dbfile(skills.db), $3, Cost) | var %info.maxlevel $readini($dbfile(skills.db), $3, max)
     var %info.style $readini($dbfile(skills.db), $3, style)
 
     if (($return.systemsetting(TurnType) = action) && (%info.type = active)) { var %info.actionpoints $chr(91) $+ 4Action Points Consumed12 $skill.actionpointcheck($3) $+  $+ $chr(93) }
@@ -288,19 +288,29 @@ alias view-info {
     ; Have to decrease it by 1 to make it show the correct turn count.
     if (%info.cooldown != $null) { dec %info.cooldown 1 | var %skill.cooldown [4Base Turns Between Uses12 %info.cooldown $+ ] }
 
-    var %cost.info.desc $iif(%info.cost != 0, [4Base Cost (before shop level)12 %info.cost $+ ], [4Skill is bought using Enhancement Points])
+    if ($return.systemsetting(SkillCurrency) = orbs) { 
+      var %cost.info.desc $iif(%info.cost != 0, [4Base Cost (before shop level)12 %info.cost $+ ], [4Skill is bought using Enhancement Points])
+    }
+    else { 
+      var %cost.info.desc $iif(%info.cost != 0, [4Cost12 $readini($dbfile(skills.db), $3, CoinCost) 4killcoins], [4Skill is bought using Enhancement Points])
+    }
 
     var %skill.needs.to.be.equipped [4This skill must be 12equipped4 in order to use in battle]
 
-
-    $display.private.message([4Name12 $3 $+ ] [4Skill Type12 %info.type $+ ] %cost.info.desc %skill.current %skill.cooldown %info.actionpoints)
-    $display.private.message.delay.custom([4Skill Info12 %info.desc $+ ],2)
-    if ($skill.needtoequip($3) = true) { 
-      $display.private.message.delay.custom(%skill.needs.to.be.equipped, 2) 
-      if (%info.style != $null) { $display.private.message.delay.custom(7*2 This skill does not need to be equipped to use if you are using the %info.style style, 2) }
+    if ($readini($dbfile(skills.db), $3, StyleSkill) != true) { 
+      $display.private.message([4Name12 $3 $+ ] [4Skill Type12 %info.type $+ ] %cost.info.desc %skill.current %skill.cooldown %info.actionpoints)
+      $display.private.message.delay.custom([4Skill Info12 %info.desc $+ ],2)
+      if ($skill.needtoequip($3) = true) { 
+        $display.private.message.delay.custom(%skill.needs.to.be.equipped, 2) 
+        if (%info.style != $null) { $display.private.message.delay.custom(7*2 This skill does not need to be equipped to use if you are using the %info.style style, 2) }
+      }
     }
-  }
+    else {
+      $display.private.message([4Name12 $3 $+ ] [4Skill Type12 %info.type $+ ] %info.actionpoints)
+      $display.private.message.delay.custom([4Skill Info12 %info.desc $+ ],2)
+    }
 
+  }
 
   if ($2 = armor) { 
     if ($readini($dbfile(equipment.db), $3, name) = $null) { $display.private.message(4Error: Invalid Armor) | halt }

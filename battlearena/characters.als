@@ -276,6 +276,74 @@ armor.protection {
   else { return %armor.protection }
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns enmity name
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.enmity.getname {
+  ; $1 = highest or lowest
+
+  if ($1 = highest) { 
+    ; Look through the enmity list and find who has the largest enmity value
+    var %current.enmity.amount 0 
+    var %current.enmity.counter 1 |  var %number.of.enmity.targets $numtok($return_peopleinbattle, 46)
+    var %highest.enmity no one
+
+    while (%current.enmity.counter <= %number.of.enmity.targets) { 
+      var %current.enmity.name $gettok($return_peopleinbattle, %current.enmity.counter, 46)
+
+      ; Is this person dead? if so, remove from the enmity list. 
+      if ($readini($char(%current.enmity.name), Battle, Status) = dead) { remini $txtfile(battle2.txt) enmity %current.enmity.name }
+
+      ; Has the person fled? If so, remove from the enmity list
+      if ($readini($char(%current.enmity.name), Battle, Status) = runaway) { remini $txtfile(battle2.txt) enmity %current.enmity.name }
+
+      ; Is this person a monster? If so, remove from enmity list.
+      if ($readini($char(%current.enmity.name), Info, Flag) = monster) { remini $txtfile(battle2.txt) enmity %current.enmity.name }
+
+      ; Grab the current enmity amount of the person.  If it's more than the current amount, this is our new target.
+      var %temp.enmity.amount $enmity(%current.enmity.name, return)
+      if (%temp.enmity.amount != $null) { 
+        if (%temp.enmity.amount > %current.enmity.amount) { var %highest.enmity %current.enmity.name | var %current.enmity.amount %temp.enmity.amount } 
+      } 
+      inc %current.enmity.counter
+    }
+
+    return %highest.enmity
+  }
+
+  if ($1 = lowest) { 
+    ; Look through the enmity list and find who has the lowest enmity value
+    var %highest.name $ai.enmity.getname
+    var %current.enmity.amount $readini($txtfile(battle2.txt), enmity, %highest.name)
+
+    if (%current.enmity.amount = $null) { var %current.enmity.amount 1 } 
+    var %current.enmity.counter 1 |  var %number.of.enmity.targets $numtok($return_peopleinbattle, 46)
+    var %lowest.enmity no one
+
+    while (%current.enmity.counter <= %number.of.enmity.targets) { 
+      var %current.enmity.name $gettok($return_peopleinbattle, %current.enmity.counter, 46)
+
+      ; Is this person dead? if so, remove from the enmity list. 
+      if ($readini($char(%current.enmity.name), Battle, Status) = dead) { remini $txtfile(battle2.txt) enmity %current.enmity.name | var %ignore.person true }
+
+      ; Has the person fled? If so, remove from the enmity list
+      if ($readini($char(%current.enmity.name), Battle, Status) = runaway) { remini $txtfile(battle2.txt) enmity %current.enmity.name | var %ignore.person true }
+
+      ; Is this person a monster? If so, remove from enmity list.
+      if ($readini($char(%current.enmity.name), Info, Flag) = monster) { remini $txtfile(battle2.txt) enmity %current.enmity.name | var %ignore.person true }
+
+      ; Grab the current enmity amount of the person.  If it's more than the current amount, this is our new target.
+      var %temp.enmity.amount $enmity(%current.enmity.name, return)
+
+      if ((%temp.enmity.amount != $null) && (%ignore.person != true)) { 
+        if (%temp.enmity.amount < %current.enmity.amount) { var %lowest.enmity %current.enmity.name | var %current.enmity.amount %temp.enmity.amount } 
+      } 
+      inc %current.enmity.counter
+    }
+
+    return %lowest.enmity
+  }
+}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns TNL of char

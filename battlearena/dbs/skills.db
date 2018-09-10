@@ -442,6 +442,7 @@ Max=40
 Cooldown=6
 ActionPoints=2
 Instant=false
+NeedToEquip=false
 
 [Analysis]
 Cost=$iif($readini($char($1), skills, Analysis) < 6, 550, 2500)
@@ -777,6 +778,86 @@ ActionPoints=1
 Cooldown=15
 NeedToEquip=false
 Instant=true
+
+
+=============================================
+STYLE RELATED SKILLS
+These skills cannot be purchased and can only
+be used while in certain styles.
+=============================================
+
+[Quicksilver]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill allows you to slow time allowing you to get an extra move while your enemies are frozen in place. This move can only be performed in the Quicksilver style.
+ActionPoints=1
+Instant=True
+NeedToEquip=false
+Style=Quicksilver
+StyleSkill=true
+
+[PerfectCounter]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill allows you to counter one melee attack once per battle. This skill can only be used while in the CounterStance style.
+ActionPoints=1
+Instant=True
+NeedToEquip=false
+Style=CounterStance
+StyleSkill=true
+
+[Wrestle]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill allows you to wrestle a target. Note that wrestling cannot KILL a target, only hurt and stun.  This skill can only be used while in the Wrestlemania style.
+ActionPoints=1
+Instant=True
+NeedToEquip=false
+Style=Wrestlemania
+StyleSkill=true
+
+[CardShark]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill allows you to unlock the full potential of Trading Cards. This skill can only be used while in the HighRoller style.
+ActionPoints=1
+Instant=True
+NeedToEquip=false
+Style=HighRoller
+StyleSkill=true
+
+[TrickAttack]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill allows your next attack to become a critical hit if you have the highest enmity value in battle. After attacking with this skill on your enmity will be set to 1. This move can only be used while using the TreasureHunter style.
+ActionPoints=1
+Instant=True
+NeedToEquip=false
+Style=TreasureHunter
+StyleSkill=true
+
+[SneakAttack]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill allows your next attack to become a critical hit if you have the lowest enmity value in battle. This move can only be used while using the TreasureHunter style.
+ActionPoints=1
+Instant=True
+NeedToEquip=false
+Style=TreasureHunter
+StyleSkill=true
+
 
 
 =============================================

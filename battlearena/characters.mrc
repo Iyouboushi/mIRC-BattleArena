@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 09/06/18
+;;;; Last updated: 09/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -352,10 +352,18 @@ on 3:TEXT:!battle hp:?: {
 
 on 3:TEXT:!enmity:#: { 
   if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+
+  var %highest.enmity.person $character.enmity.getname(Highest)
+  var %lowest.enmity.person $character.enmity.getname(Lowest)
+
   $display.message($readini(translation.dat, battle, highestenmity),private) 
 }
 on 3:TEXT:!enmity:?: { 
   if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+
+  var %highest.enmity.person $character.enmity.getname(Highest)
+  var %lowest.enmity.person $character.enmity.getname(Lowest)
+
   $display.private.message($readini(translation.dat, battle, highestenmity)) 
 }
 

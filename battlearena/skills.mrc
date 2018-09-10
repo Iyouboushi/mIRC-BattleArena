@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 08/30/18
+;;;; Last updated: 09/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -83,6 +83,8 @@ alias use.skill {
   if ($3 = duality) { $skill.duality($1) }
   if ($3 = quickpockets) { $skill.quickpockets($1) }
   if ($3 = LucidDreaming) { $skill.luciddreaming($1) }
+  if ($3 = trickattack) { $skill.trickattack($1) }
+  if ($3 = sneakattack) { $skill.sneakattack($1) }
 
   ; Below are monster-only skills
 
@@ -519,8 +521,10 @@ alias skill.lockpicking { $set_chr_name($1)
 
   var %skill.level $readini($char($1), skills, lockpicking)
   var %lockpicking.chance $calc(3 * %skill.level)
-  var %chest.open.chance $rand(1,100)
 
+  if ($return.playerstyle($1) = TreasureHunter) { inc %lockpicking.chance 10 }
+
+  var %chest.open.chance $rand(1,100)
   if (%chest.open.chance <= %lockpicking.chance) {
     ; Open the chest.
     $item.open.chest($1)
@@ -1491,7 +1495,6 @@ alias skill.criticalfocus { $set_chr_name($1)
   $skill.nextturn.check(CriticalFocus, $1)
 }
 
-
 ;=================
 ; SHIELD FOCUS
 ;=================
@@ -2170,7 +2173,6 @@ alias skill.steal { $set_chr_name($1)
   var %skill.name Steal
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
-
   var %target.flag $readini($char($2), info, flag)
   if (%target.flag != monster) { $set_chr_name($1) | $display.message(4 $+ %real.name can only steal from monsters!, private) | halt }
   if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
@@ -2226,7 +2228,7 @@ alias skill.steal { $set_chr_name($1)
   if ($augment.check($1, EnhanceSteal) = true) {  inc %steal.chance $calc(2 * %augment.strength) }
 
   var %current.playerstyle $readini($char($1), styles, equipped)
-  if (%current.playerstyle = Trickster) { inc %steal.chance $rand(5,10) }
+  if (%current.playerstyle = TreasureHunter) { inc %steal.chance $rand(5,10) }
 
   if (%steal.chance >= 85) {
     var %stolen.from.counter $readini($char($2), status, stolencounter)
@@ -2261,7 +2263,7 @@ alias skill.steal { $set_chr_name($1)
       $set_chr_name($1) | $display.message($readini(translation.dat, skill, StealItem), battle)
     }
   }
-  else { $set_chr_name($1) | $display.message($readini(translation.dat, skill, UnableTosteal), battle) }
+  else { $set_chr_name($1) | $display.message($readini(translation.dat, skill, UnableToSteal), battle) }
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction steal 
 
@@ -4208,8 +4210,7 @@ alias skill.perfectcounter { $set_chr_name($1) | $check_for_battle($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
-  set %current.playerstyle $readini($char($1), styles, equipped)
-  if (%current.playerstyle != CounterStance) { $display.message(4Error: This command can only be used while the CounterStance style is equipped!, private) | unset %current.playerstyle | halt }
+  if ($return.playerstyle($1) != CounterStance) { $display.message(4Error: This command can only be used while the CounterStance style is equipped!, private) | unset %current.playerstyle | halt }
 
   if ($readini($char($1), skills, perfectcounter.on) != $null) { $display.message(4 $+ %real.name cannot use $gender($1) Perfect Counter again this battle!, private) | halt }
 
@@ -4225,6 +4226,90 @@ alias skill.perfectcounter { $set_chr_name($1) | $check_for_battle($1)
   unset %current.playerstyle | unset %current.playerstyle.level | unset %quicksilver.used
 
   $skill.nextturn.check(PerfectCounter, $1)
+}
+
+;=================
+; SNEAK ATTACK
+; Grants a critical
+; hit if user has the
+; lowest enmity
+;=================
+on 3:TEXT:!sneakattack*:*: { $skill.sneakattack($nick) }
+on 3:TEXT:!sneak attack*:*: { $skill.sneakattack($nick) }
+
+alias skill.sneakattack { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+
+  ; This skill cannot be used if a player is alone in battle
+  if ($return_playersinbattle = 1) { $display.message($readini(translation.dat, errors, SkillCannotBeUsedSolo), private) | halt }
+
+  if ($return.playerstyle($1) != TreasureHunter) { $display.message(4Error: This command can only be used while the TreasureHunter style is equipped!, private) | unset %current.playerstyle | halt }
+
+  if ($readini($char($1), skills, sneakattack.on) != $null) { $display.message(4 $+ %real.name cannot use $gender($1) Sneak Attack again so soon!, private) | halt }
+
+  ; Does the player have the lowest enmity?
+  var %lowest.enmity.person $character.enmity.getname(Lowest)  
+  if (%lowest.enmity.person != $1) { $display.message(4 $+ %real.name cannot use $gender($1) Sneak Attack because $gender($3) does not have the lowest enmity in battle!, private) | halt }
+
+  writeini $char($1) skills sneakattack.on on 
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(sneakattack))
+
+  if ($readini($char($nick), descriptions, SneakAttack) = $null) { $set_chr_name($1) | set %skill.description sneaks behind the monsters while they are too busy focused on $character.enmity.getname(Highest) $+ ! }
+  else { set %skill.description $readini($char($nick), descriptions, SneakAttack) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  unset %current.playerstyle | unset %current.playerstyle.level | unset %quicksilver.used
+
+  $skill.nextturn.check(SneakAttack, $1)
+}
+
+;=================
+; TRICK ATTACK
+; Grants a critical
+; hit if user has the
+; highest enmity
+;=================
+on 3:TEXT:!trickattack*:*: { $skill.trickattack($nick) }
+on 3:TEXT:!trick attack*:*: { $skill.trickattack($nick) }
+
+alias skill.trickattack { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  $checkchar($1)
+
+  ; This skill cannot be used if a player is alone in battle
+  if ($return_playersinbattle = 1) { $display.message($readini(translation.dat, errors, SkillCannotBeUsedSolo), private) | halt }
+
+  if ($return.playerstyle($1) != TreasureHunter) { $display.message(4Error: This command can only be used while the TreasureHunter style is equipped!, private) | unset %current.playerstyle | halt }
+
+  if ($readini($char($1), skills, trickattack.on) != $null) { $display.message(4 $+ %real.name cannot use $gender($1) trick attack again so soon!, private) | halt }
+
+  ; Does the player have the highest enmity?
+  var %highest.enmity.person $character.enmity.getname(Highest)  
+  if (%highest.enmity.person != $1) { $display.message(4 $+ %real.name cannot use $gender($1) trick attack because $gender($3) does not have the highest enmity in battle!, private) | halt }
+
+  writeini $char($1) skills trickattack.on on 
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(trickattack))
+
+  if ($readini($char($nick), descriptions, trickattack) = $null) { $set_chr_name($1) | set %skill.description prepares to perform a bold attack while the monsters are focused on $gender2($1) $+ ! }
+  else { set %skill.description $readini($char($nick), descriptions, trickattack) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  unset %current.playerstyle | unset %current.playerstyle.level | unset %quicksilver.used
+
+  $skill.nextturn.check(trickattack, $1)
 }
 
 ;=================

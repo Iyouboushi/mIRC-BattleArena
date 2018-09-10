@@ -1,11 +1,11 @@
 [weather]
-current=stormy
+current=hot
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
-CurrentMoonPhase=Crescent
-CurrentMoonTurn=2
+CurrentMoonPhase=Gibbous
+CurrentMoonTurn=3
 
 [MoonPhaseTime]
 full=3
@@ -1229,4 +1229,10 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 Weather=stormy
 NumberOfEvents=0
 limitations=no-mech.no-trusts.no-summons.no-fleeing
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Field of Seasons]
+Weather=calm
+NumberOfEvents=0
+limitations=no-mech.no-trusts.no-playerignition.no-fleeing
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

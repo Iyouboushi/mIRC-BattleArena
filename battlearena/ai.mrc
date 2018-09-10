@@ -530,7 +530,6 @@ alias ai.enmity.getname {
 
   return %highest.enmity
 }
-
 alias ai_gettarget.random {
   set %debug.location alias ai.gettarget
   unset %ai.targetlist | unset %tech.type | unset %status.type

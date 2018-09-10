@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/18/18
+;;;; Last updated: 09/10/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -324,6 +324,7 @@ status.effects.turns {
 
   if ($istok(%negative.status.effects,$1,46) = $true) { 
     if ($return_playersinbattle <= 1) { return 1 }
+    if ($1 = doom) { return 4 }
     if ($1 = confuse) { return 3 }
     if ($1 = poison) { return 3 }
     if ($1 = curse) { return 3 }
@@ -2552,6 +2553,7 @@ inflict_status {
   if ($3 = terrify) { set %status.type terrify | var %status.grammar terrified }
   if ($3 = freezing) { set %status.type frozen | var %status.grammar freezing }
   if ($3 = heavy) { set %status.type heavy | var %status.grammar weighed down }
+  if ($3 = doom) {  set %status.type doom | var %status.grammar doomed }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
 
@@ -2559,6 +2561,9 @@ inflict_status {
   if ($readini($char($2), skills, utsusemi.on) = on) { set %chance 0 } 
 
   if ($3 = heavy) { var %chance 255 }
+  if ($3 = doom) {
+    if ((%portal.bonus = true) || (%battle.type = dungeon)) { var %chance 255 } 
+  }
 
   if ($4 != IgnoreResistance) { 
     ; Check for resistance to that status type.
@@ -2612,6 +2617,7 @@ inflict_status {
       if ($readini($char($2), status, ignition.on) = on) { var %chance 100 | var %ignition.name $readini($char($2), status, ignition.name) | $revert($2,%ignition.name) }
     }
 
+
     if (%chance <= 0) { $set_chr_name($2) 
       if (%statusmessage.display != $null) { set %statusmessage.display %statusmessage.display :: %real.name has resisted $set_chr_name($1) %real.name $+ 's $lower(%status.type) status effect! }
       if (%statusmessage.display = $null) { set %statusmessage.display 4 $+ %real.name has resisted $set_chr_name($1) %real.name $+ 's $lower(%status.type) status effect! }
@@ -2630,8 +2636,9 @@ inflict_status {
       if (%status.type = curse) { writeini $char($2) Status %status.type yes | writeini $char($2) battle tp 0 }
       if (%status.type = petrify) { writeini $char($2) status petrified yes }
       if ((%status.type = slow) && ($readini($char($2), status, speedup) != no)) { writeini $char($2) status speedup no }
+      if (%status.type = doom) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer 3 }
 
-      if ((((%status.type != poison) && (%status.type != charm) && (%status.type != petrify) && (%status.type != removeboost)))) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer %enfeeble.timer   }
+      if (((((%status.type != doom) && (%status.type != poison) && (%status.type != charm) && (%status.type != petrify) && (%status.type != removeboost))))) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer %enfeeble.timer   }
 
     }
   }
@@ -4830,6 +4837,8 @@ add.monster.drop {
 
   if ($return.potioneffect($1) = Bonus Spoils) { inc %random.chance.reward 100 }
 
+  if ($return.playerstyle($1) = TreasureHunter) { inc %random.chance.reward 30 }
+
   if ($rand(1,100) <= %random.chance.reward) { 
     var %drop.reward $gettok(%drop.items,$rand(1,$numtok(%drop.items, 46)),46)
     var %temp.player.list $readini($txtfile(battle2.txt), drops, $1)
@@ -5298,6 +5307,22 @@ doll_check {
     if ($readini($char($1), Status, doll) = yes) {   writeini $char($1) status doll no | writeini $char($1) status doll.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, dollWornOff) |  writeini $char($1) status dollregenerating off | unset %doll.timer | return  }
   }
   return
+}
+
+doom_check { 
+  var %doom.timer $readini($char($1), status, doom.timer)  
+
+  if (%doom.timer = $null) { return }
+
+  if (%doom.timer > 1) { 
+    dec %doom.timer 1 | writeini $char($1) status doom.timer %doom.timer
+    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, doomCountDown) | return 
+  }
+
+  if (%doom.timer = 1) { remini $char($1) status doom.timer | writeini $char($1) status doom no
+    $display.message($readini(translation.dat, status, DoomKills), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1) | $add.style.effectdeath | $check.clone.death($1)
+    $goldorb_check($1, status) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt 
+  }
 }
 
 virus_check { 
