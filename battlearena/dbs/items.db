@@ -3263,6 +3263,15 @@ SellPrice=2000
 Exclusive=yes
 ConquestItem=true
 
+[CodexOfTheHoradric]
+Type=increaseTechLevel
+IncreaseAmount=75
+Desc=takes out a codex of the Horadric and studies it. Suddenly %real.name knows how to perform the technique better!
+Cost=0
+SellPrice=2000
+Exclusive=yes
+ConquestItem=true
+
 [CodexOfMythology]
 Type=increaseTechLevel
 IncreaseAmount=100
