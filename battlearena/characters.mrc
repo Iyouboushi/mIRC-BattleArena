@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 09/10/18
+;;;; Last updated: 09/13/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -72,11 +72,11 @@ on 1:TEXT:!new char*:*: {  $checkscript($2-)
   ; Generate a password
   set %password battlearena $+ $rand(1,100) $+ $rand(a,z)
 
-  writeini $char($nick) info password $encode(%password)
+  if ($version < 6.3) { writeini $char($nick)  info PasswordType encode | writeini $char($nick) info password $encode(%password)  }
+  else { writeini $char($nick) info PasswordType hash |  writeini $char($nick) info password $sha1(%password) }
 
   $display.private.message($readini(translation.dat, system, StartingCharOrbs))
   $display.private.message($readini(translation.dat, system, StartingCharPassword))
-
 
   ; Write current host
   if ($site != $null) { writeini $char($nick) info LastIP $site } 

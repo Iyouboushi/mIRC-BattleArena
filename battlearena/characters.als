@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 08/09/18
+;;;; Last updated: 09/13/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2025,14 +2025,12 @@ character.averagedmg {
   return %average.damage
 }
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns the resting bonus
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-character.resting.bonus.orbs {
+character.resting.bonus.orbs { 
   ; Calculate a "resting" bonus.  This is a bonus to orbs for people who have been out of battle for a while.
-  var %last.battle $readini($char(%who.battle), Info, LastBattleTime)
+  var %last.battle $readini($char($1), Info, LastBattleTime)
   if (%last.battle = $null) { 
 
     ; Try to calculate the time it's been since they last logged in
@@ -2056,7 +2054,7 @@ character.resting.bonus.killcoins {
   if (%last.battle = $null) { 
 
     ; Try to calculate the time it's been since they last logged in
-    var %last.battle $ctime($readini($char(%who.battle), info, LastSeen))
+    var %last.battle $ctime($readini($char($1), info, LastSeen))
 
     ; Check again, as a last ditch effort
     if (%last.battle = $null) { var %last.battle $ctime }

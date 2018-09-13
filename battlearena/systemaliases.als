@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/10/18
+;;;; Last updated: 09/13/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4807,52 +4807,67 @@ system.intromessage {
   if (%current.month = 11) { $display.private.message(7*2 $readini(translation.dat, EventInfo, November)) }
   if (%current.month = 12) { $display.private.message(7*2 $readini(translation.dat, EventInfo, December)) }
 
-  ; Display MOTD if there is one
-  if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
-
   ; ============================
   ; Calculate the daily login reward
   ; ============================
   ; has the player already received a reward today?
   var %last.dailylogin $readini($char($1), Info, LastDailyLogin)
-  if (%last.dailylogin = $adate) { return }
-  writeini $char($1) info LastDailyLogin $adate
+  if (%last.dailylogin = $adate) { var %ignore.dailylogin true }
 
-  ; get the # of lines in the daily login list
-  var %daily.login.lines $lines($lstfile(dailylogin.lst))
-  if ((%daily.login.lines = $null) || (%daily.login.lines = 0)) { return }
+  if (%ignore.dailylogin != true) {   
+    writeini $char($1) info LastDailyLogin $adate
 
-  ; get the current login day the player is on and add 1
-  var %player.login.number $readini($char($1), Info, DailyLoginNumber)
-  if (%player.login.number = $null) { var %player.login.number 0 }
-  inc %player.login.number 1
+    ; get the # of lines in the daily login list
+    var %daily.login.lines $lines($lstfile(dailylogin.lst))
+    if ((%daily.login.lines = $null) || (%daily.login.lines = 0)) { return }
 
-  ; if the current day is greater than the total # of login lines, reset back to 1
-  if (%player.login.number > %daily.login.lines) { var %player.login.number 1 }
+    ; get the current login day the player is on and add 1
+    var %player.login.number $readini($char($1), Info, DailyLoginNumber)
+    if (%player.login.number = $null) { var %player.login.number 0 }
+    inc %player.login.number 1
 
-  ; write the daily login day counter
-  writeini $char($1) Info DailyLoginNumber %player.login.number
+    ; if the current day is greater than the total # of login lines, reset back to 1
+    if (%player.login.number > %daily.login.lines) { var %player.login.number 1 }
 
-  ; get the reward and amount
-  var %reward.line $read($lstfile(dailylogin.lst), %player.login.number)
-  var %reward.type $gettok(%reward.line, 1, 46)
-  var %reward.amount $gettok(%reward.line, 2, 46)
+    ; write the daily login day counter
+    writeini $char($1) Info DailyLoginNumber %player.login.number
 
-  ; give the reward to the player
-  var %stuff.rewards RedOrbs.BlackOrbs.AlliedNotes.KillCoins
-  if ($istok(%stuff.rewards, %reward.type, 46) = $true) { 
-    var %player.amount $readini($char($1), stuff, %reward.type)
-    inc %player.amount %reward.amount
-    writeini $char($1) stuff %reward.type %player.amount  
+    ; get the reward and amount
+    var %reward.line $read($lstfile(dailylogin.lst), %player.login.number)
+    var %reward.type $gettok(%reward.line, 1, 46)
+    var %reward.amount $gettok(%reward.line, 2, 46)
+
+    ; give the reward to the player
+    var %stuff.rewards RedOrbs.BlackOrbs.AlliedNotes.KillCoins
+    if ($istok(%stuff.rewards, %reward.type, 46) = $true) { 
+      var %player.amount $readini($char($1), stuff, %reward.type)
+      inc %player.amount %reward.amount
+      writeini $char($1) stuff %reward.type %player.amount  
+    }
+    else {
+      var %player.amount $readini($char($1), item_amount, %reward.type)
+      inc %player.amount %reward.amount
+      writeini $char($1) item_amount %reward.type %player.amount
+    }
+
+    ; show the reward line
+    $display.private.message(2[12Login Bonus2] For logging into the game today you have received4 %reward.amount 2x4 %reward.type $+ 2!)
   }
-  else {
-    var %player.amount $readini($char($1), item_amount, %reward.type)
-    inc %player.amount %reward.amount
-    writeini $char($1) item_amount %reward.type %player.amount
+
+  ; ============================
+  ; Display the daily resting bonus
+  ; ============================
+  var %resting.bonus.orbs $character.resting.bonus.orbs($1)
+  var %resting.bonus.killcoins $character.resting.bonus.killcoins($1)
+
+  if (%resting.bonus.orbs > 1) {
+    $display.private.message(2[12Resting Bonus2] In your next battle you will receive a bonus of4 $bytes(%resting.bonus.orbs,b) 2 $+ $return.systemsetting(currency) and4 $bytes(%resting.bonus.killcoins,b) 2killcoins)
   }
 
-  ; show the reward line
-  $display.private.message(2For logging into the game today you have received4 %reward.amount 2x4 %reward.type $+ 2!)
+  ; ============================
+  ; Display the MOTD if there is one
+  ; ============================
+  if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4[Current Admin Message]2 $read($txtfile(motd.txt))) }
 
   return
 }
