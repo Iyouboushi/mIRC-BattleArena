@@ -2,6 +2,7 @@
 Battle Arena Bot - Version 4.0
 Programmed by James "Iyouboushi" (Iyouboushi@gmail.com)
 FREEWARE!
+https://github.com/Iyouboushi/mIRC-BattleArena
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 Table of Contents:
@@ -42,7 +43,6 @@ As for the main purpose of the game.. well, the only real purpose is to see how 
 players can achieve.  The game is designed so that people can hop in and out easily at nearly any time,
 just as a way to basically kill some boredom.  There is no ultimate goal to obtain or defend.
 
-
  _______________________________________________________________________
 /                                                                       \
 |                                 SETUP                                 |
@@ -72,7 +72,6 @@ Note, you do NOT have to install it to C:\BattleArena\ However, it's recommended
 With version 2.4 the bot SHOULD work if you put the bot in a folder that has spaces 
 (such as C:\Program Files\BattleArena)  but it is still recommended to not do that if 
 you can avoid it.
-
    
  _______________________________________________________________________
 /                                                                       \
@@ -133,13 +132,11 @@ list of everything
 \_______________________________________________________________________/
 
 
-
 Patches are made when I feel there are enough errors or new 
 ideas to implement that it deserves to be done.  In other words, you shouldn't 
 ask when a patch will be made and released.  Just keep an eye on the website or
 message board occasionally and see if I've added a topic about a patch in development 
 or if there has been one released recently.  
-
 
  _______________________________________________________________________
 /                                                                       \
@@ -156,7 +153,6 @@ there are still tons of code that could probably be rewritten and improved.
 If you want to recode stuff, feel free.  I've got nothing against it.  I really
 wish you luck.  If you manage to vastly improve anything, I'd love to see it.
 Just send me a quick email (listed at the bottom of this document).  
-
 
  _______________________________________________________________________
 /                                                                       \

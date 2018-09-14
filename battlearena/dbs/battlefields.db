@@ -1,11 +1,11 @@
 [weather]
-current=hot
+current=none
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
 CurrentMoonPhase=Gibbous
-CurrentMoonTurn=3
+CurrentMoonTurn=5
 
 [MoonPhaseTime]
 full=3
@@ -1235,4 +1235,29 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 Weather=calm
 NumberOfEvents=0
 limitations=no-mech.no-trusts.no-playerignition.no-fleeing
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Phantom Train - Carriage Car]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Phantom Train - Storage Car]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Phantom Train - Dining Car]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Phantom Train - Engine Room]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Train Tracks]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

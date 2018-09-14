@@ -2140,6 +2140,16 @@ Stylish.Amount=4
 SellPrice=5000
 Exclusive=yes
 
+[Train-Ring]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseMechEngineLevel.IncreaseWrestlingDamage
+Desc=A ring that will help increase mech engine efficiency by 0.3% when worn as well as increase wrestling damage by 25%
+IncreaseMechEngineLevel.Amount=0.3
+IncreaseWrestlingDamage.amount=25
+SellPrice=5000
+Exclusive=yes
+
 
 =========================
 MISC ITEMS
@@ -5030,6 +5040,15 @@ Desc=The ancient mummified hand of Kan-ra that grants access into its pyramid
 Dungeon=Kan-ra
 exclusive=yes
 
+[TrainTicket]
+type=dungeon
+cost=100
+currency=KindredSeal
+sellprice=1500
+Desc=A train ticket and a note that says "Please save my precious Elayne from certain death.."
+Dungeon=phantom_train
+exclusive=yes
+
 [AncientMap]
 type=dungeon
 cost=100
@@ -5661,6 +5680,16 @@ SellPrice=100
 Numbers=8.3.3.6
 Desc=A small trading card. On the front is a picture of the puppet master controlling many dolls to drink tea.
 Powers=FrenchDollAttack.PuppetControl.IronMaiden.MetalStrings
+
+[TradingCard-035]
+Type=TradingCard
+Cost=0
+Rarity=4
+SellPrice=100
+Numbers=7.2.5.4
+Desc=A small trading card. On the front is a picture of the phantom train with many undead passengers posing.
+Powers=DiabolicWhistle.WheelToss
+
 
 [TradingCard-042]
 Type=TradingCard

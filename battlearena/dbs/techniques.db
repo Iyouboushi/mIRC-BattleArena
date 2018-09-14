@@ -498,7 +498,7 @@ Dragonfang=BladeBeam.TwinSlice.BiteOfLightning
 Glance_Reviver=NibelungValesti.Glowing_Pierce.Ptero_Attack.Vertical_Raid
 Sylvan_Bow=Spread_Shot.Tri-Blast.Infinity_Blast
 AikawaFists=AikawaGrab.RollingBlaze.FinalHeaven
-SteamEngine=FirajaII.ThundajaII
+SteamEngine=FirajaII.ThundajaII.DiabolicWhistle.WheelToss
 Fireseal=GunFlame.VolcanicViper.BanditRevolver.TyrantFlame
 JunkYardDogMkIII=GunFlame.VolcanicViper.BanditRevolver.TyrantFlame.SaintOratorio
 Thunderseal=StunEdge.VaporThrust.GreedSever.RideTheLightning
@@ -18605,3 +18605,32 @@ Spell=no
 stat=int
 hits=3
 DestroyShadows=4
+
+[DiabolicWhistle]
+Type=Single
+StatusType=poison.blind.slow.curse.doom
+TP=10
+Desc=blows its whistle loudly and a huge cloud of smoke comes down and engulfs %enemy $+ ! 
+BasePower=70
+Element=Dark
+Cost=0
+Magic=no
+Spell=no
+stat=int
+hits=3
+DestroyShadows=4
+
+
+[WheelToss]
+Type=AOE
+TP=10
+Desc=unhitches a huge spare wheel and throws it at the battlefield.
+BasePower=80
+Element=Dark
+Cost=0
+Magic=no
+Spell=no
+stat=str
+hits=2
+DestroyShadows=2
+

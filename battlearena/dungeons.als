@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 06/16/18
+;;;; Last updated: 09/14/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -136,6 +136,10 @@ dungeon.begin {
 
   $display.message(2* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
 
+  /.timerDungeonFullyStart 1 3 /dungeon.firstroom
+}
+
+dungeon.firstroom {
   ; The dungeon begins here. Everyone has 1 round to prepare.
 
   ; Get the battlefield
@@ -340,6 +344,9 @@ dungeon.nextroom {
 
     ; Generate dungeon npcs
     $dungeon.generatenpcs
+
+    ; Generate dungeon objects
+    $dungeon.objects 
 
     $generate_battle_order
     set %who $read -l1 $txtfile(battle.txt) | set %line 1
@@ -590,8 +597,42 @@ dungeon.restoreroom {
   $display.message(2* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
 
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
+}
+
+dungeon.objects {  echo -a -----dungeon.objects
+  var %breakable.objects $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, objects)
+  echo -a breakable objects: %breakable.objects
+  if (%breakable.objects = $null) { return }
+
+  var %number.of.objects $numtok(%breakable.objects,46)
+  var %current.object 1
+  while (%current.object <= %number.of.objects) {
+    var %object.chosen $gettok(%breakable.objects, %current.object, 46)
+
+    echo -a object chosen: %object.chosen
+
+    .copy -o $char(new_chr) $char(%object.chosen)
+    writeini $char(%object.chosen) info flag monster 
+    writeini $char(%object.chosen) Basestats name %object.chosen
+    writeini $char(%object.chosen) info password .8V%N)W1T;W5C:'1H:7,`1__.1134
+    writeini $char(%object.chosen) info gender its
+    writeini $char(%object.chosen) info gender2 its
+    writeini $char(%object.chosen) info bosslevel 1
+    writeini $char(%object.chosen) info CanTaunt false
+    writeini $char(%object.chosen) basestats HP 1
+    writeini $char(%object.chosen) battle HP 1
+    writeini $char(%object.chosen) descriptions DeathMessage crumbles into pieces all over the ground
+    writeini $char(%object.chosen) descriptions char is a breakable object
+    writeini $char(%object.chosen) info ai_type defender
+    writeini $char(%object.chosen) monster type object
+
+    set %curbat $readini($txtfile(battle2.txt), Battle, List) |  %curbat = $addtok(%curbat,%object.chosen,46) |  writeini $txtfile(battle2.txt) Battle List %curbat | write $txtfile(battle.txt) %object.chosen
+
+    inc %current.object
+  }
 
 }
+
 
 ;================================
 ; Aliases below this line are for special

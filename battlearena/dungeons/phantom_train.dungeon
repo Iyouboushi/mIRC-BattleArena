@@ -1,0 +1,72 @@
+[Info]
+Name=The Phantom Train
+Rooms=9
+PlayersNeeded=1
+PlayersRecommended=3
+Level=100
+FinalRoom=8
+StartBattleDesc=uses the train pass to allow access to the party to board a large black train.
+
+ClearDungeonDesc=* The party has managed to save Elayne and escape being transported to The Other Side. [Clear time: %total.battle.duration $+ ]
+
+DungeonFail=* The party has failed to save Elayne from being transported to The Other Side and are forced to jump off the Phantom Train!
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party has boarded the dreaded Phantom Train--a train dedicated to take souls to The Other Side. Now they must begin the search for Elyane and find a way to save her. The current car they are in seems to be empty and safe. Prepare and begin the trek..
+Battlefield=The Phantom Train - Carriage Car
+
+[1]
+Desc=The party exits the current train car and carefully passes into the next. Here they see many dead passengers sitting in seats awaiting their arrival to The Other Side. Some of the passengers stand up and approach the party with intent to harm the living..
+Battlefield=The Phantom Train - Carriage Car
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,3))
+
+[2]
+Desc=The party rushes through the car and into the next where again they see more seats with more passengers. Like before, some take an interest in the living..
+Battlefield=The Phantom Train - Carriage Car
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(2,4))
+
+[3]
+Desc=The party pushes forward into the next car to find a bunch of crates and boxes. Standing in the middle of the car is a mostly skeletal man who turns and cackles gleefully at the sight of living people.
+Battlefield=The Phantom Train - Storage Car
+Monsters=Demi_Lich
+bossroom=true
+Objects=small_crate.medium_create.small_box.large_box
+
+[4]
+Desc=The party exits the storage car and enters a food car. Here a ghostly waitor brings them some food and upon trying it the party feels refreshed and ready to press forward.
+RestoreRoom=true
+
+[5]
+Desc=Ghosts begin to pile into the food car to enjoy their last meal.  Some take an interest in the living and want to make them join the dead..
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(4,8))
+Battlefield=The Phantom Train - Dining Car
+
+[6]
+Desc=The heroes pass forward into the final car, the engine car. The undead passengers begin to chase after the party yelling "NOOOOOOOOOO ESCAAAAPE!" Looks like a battle is inevitable.
+Battlefield=The Phantom Train - Engine Room
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(8,10))
+
+[7]
+Desc=Finally the party has found Elyane but she is unable to leave the train while it is going this fast.  More unsightly passengers enter the room from behind in an attempt to stop the party from leaving.
+Battlefield=The Phantom Train - Engine Room
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(8,10))
+
+[8]
+Desc=The party realizes the only way to save Elayne is to physically stop the train. Quickly they exit the engine car via a small window and stand along the tracks ready to... physically kill a train... ?  Uhh stop it.  Somehow.
+Monsters=Phantom_Train
+Battlefield=Train Tracks
+BossRoom=true
+
+
+[MonsterList]
+1=Phantom_Passenger.Ghoulish_Passenger
+2=Phantom_Passenger.Phantom_Passenger
+3=Ghoulish_Passenger.Haunted_Passenger
+4=Haunted_Passenger.Boney_Passenger
+5=Phantom_Passenger.Boney_Passenger
+6=Ghoulish_Passenger.Boney_Passenger
+7=Boney_Passenger.Slimey_Passenger
+8=Ghoulish_Passenger.Slimey_Passenger
+9=Phantom_Passenger.Slimey_Passenger
+10=Ghoulish_Passenger.Slimey_Passenger
