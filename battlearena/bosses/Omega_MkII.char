@@ -105,8 +105,8 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=OmegaWeaponSystems
-OmegaWeaponSystems=$calc(500 + %cosmic.level)
+Equipped=OmegaMkIIWeaponSystems
+OmegaMkIIWeaponSystems=$calc(500 + %cosmic.level)
 
 
 [Skills]

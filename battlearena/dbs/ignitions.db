@@ -151,7 +151,7 @@ Cost=60
 StatusTarget=allies
 StatusType=TPRegenerating
 Techs=Chou_Kamehameha
-Desc=begin to channel an ancient power begins to channel an ancient power meant for another race. $gender($1) energy flares around $gender($1) body, then swirls all around $gender2($1) into a cone in the shape of $gender($1) body, which then turns into $gender($1) aura. The aura is flashing very brightly and violently at the moment. %real.name $+ 's body overloads as energy flares out like wild fire and $gender($1) hair turns gold and $gender($1) eyes green.
+Desc=begins to channel an ancient power begins to channel an ancient power meant for another race. $gender($1) energy flares around $gender($1) body, then swirls all around $gender2($1) into a cone in the shape of $gender($1) body, which then turns into $gender($1) aura. The aura is flashing very brightly and violently at the moment. %real.name $+ 's body overloads as energy flares out like wild fire and $gender($1) hair turns gold and $gender($1) eyes green.
 
 [GlyphUnion]
 Name=Glyph Union
@@ -180,6 +180,23 @@ IgnitionConsume=10
 Cost=$iif($readini($char($1), weapons, Yamato+1) >= 500, 75, 0)
 Techs=JudgementCutEnd
 Desc=channels the power of the blade, gaining a power increase as $gender($1) body morphs into a demonic form.
+
+[UltraInstinct]
+Name=Ultra Instinct
+hp=2
+Str=3
+def=3
+int=3
+spd=3
+Augment=TechBonus.MeleeBonus.UtsusemiBonus.EnhanceZen.RenkeiBonus.EnhanceBloodBoost
+Effect=Status
+IgnitionTrigger=30
+IgnitionConsume=50
+Cost=$iif($get.level($1) >= 5000, 5000, 0)
+StatusTarget=Self
+StatusType=$iif($readini($char($1), Ignitions, UltraInstinct) = 10, Invincible, DefenseUp)
+Techs=
+Desc=lets go of conscious thought and suddenly surges with the ultimate power said to be impossible for moratls to achieve. %real.name $+ 's hair turns white and a rainbora aura flares around $gender($1) body. %real.name has unlocked the power of Ultra Instinct--at least for a short while.
 
 ==========================
 NPC/Monster/Boss Ignitions
