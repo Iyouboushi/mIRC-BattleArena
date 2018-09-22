@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Jin Uzuki
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -55,6 +55,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -99,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Yasoma_Kagura
-Yasoma_Kagura=$round($calc(1 + (($current.battlestreak / 2))))
+Yasoma_Kagura=500
 
 
 [Skills]
@@ -124,9 +126,9 @@ Resist-Disarm=100
 
 
 [Techniques]
-SparkWaltz=$round($calc(1 + (($current.battlestreak / 2))))
-DragonDance=$round($calc(1 + (($current.battlestreak / 2))))
-LightningWaltz=$round($calc(1 + (($current.battlestreak / 2))))
+SparkWaltz=500
+DragonDance=500
+LightningWaltz=500
 
 
 [Item_Amount]
@@ -140,17 +142,16 @@ ReubenKatanas=DecreaseMechEnergyCost.EnhanceKatana.IgnoreDefense.IgnoreMetalDefe
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=0
 
 
 [mech]
 name=E.S. Reuben
 inUse=false
-EngineLevel=$iif($current.battlestreak < 1000, 0, 0.7)
-HpMax=20000
-HpCurrent=20000
-EnergyMax=10000
-EnergyCurrent=10000
+EngineLevel=$iif($current.battlestreak < 5000, 0, 0.7)
+HpMax=30000
+HpCurrent=30000
+EnergyMax=20000
+EnergyCurrent=20000
 EquippedCore=VesselOfAnima
 EquippedWeapon=ReubenKatanas
 Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal
@@ -178,3 +179,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

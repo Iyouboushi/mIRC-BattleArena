@@ -1,6 +1,6 @@
 [BaseStats]
-Hp=91500
-Tp=9970
+Hp=10000
+Tp=10000
 Str=99999
 Def=99999
 Int=99999
@@ -9,8 +9,8 @@ Name=Gouki
 
 
 [Battle]
-Hp=91500
-Tp=9970
+Hp=10000
+Tp=10000
 Str=99999
 Def=99999
 Int=99999
@@ -55,6 +55,7 @@ IgnoreElementalMessage=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
 BattleStats=ignoreHP.ignoreTP
 ActionsPerTurn=4
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -140,24 +141,24 @@ Lizard-Killer=20
 Goblin-Killer=20
 Elemental-Killer=20
 Slime-Killer=20
+DieHard=75
 
 [Techniques]
 GouHadouken=999999
 ZankuuHadouken=999999
 GouShouryuken=999999
 TatsumakiZankuuKyaku=999999
-MessatsuGouHadou=$iif($current.battlestreak < 100, 0, 999999)
-MessatsuGouShouryuu=$iif($current.battlestreak < 100, 0, 999999)
-TenmaGouZankuu=$iif($current.battlestreak < 100, 0, 999999)
-ShunGokuSatsu=$iif($current.battlestreak < 200, 0, 999999)
+MessatsuGouHadou=$iif($current.battlestreak < 500, 0, 999999)
+MessatsuGouShouryuu=$iif($current.battlestreak < 500, 0, 999999)
+TenmaGouZankuu=$iif($current.battlestreak < 500, 0, 999999)
+ShunGokuSatsu=$iif($current.battlestreak < 500, 0, 999999)
 
 [Item_Amount]
-Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)
+Dark-Matter=$iif(%ai.monster.name = Zemus, 10, 0)
 
 [Ignitions]
-ShinAkuma=$iif($current.battlestreak < 200, 0, 1)
+ShinAkuma=$iif($current.battlestreak < 2000, 0, 1)
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1

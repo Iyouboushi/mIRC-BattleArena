@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Lenneth Valkyrie
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -56,6 +56,8 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -101,8 +103,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Glance_Reviver
-Glance_Reviver=$round($calc(1 + (($current.battlestreak / 2))))
-Sylvan_Bow=$round($calc(1 + (($current.battlestreak / 2))))
+Glance_Reviver=500
+Sylvan_Bow=500
 
 
 [Skills]
@@ -127,17 +129,17 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+Die-Hard=25
 
 
 [Techniques]
-NibelungValesti=$round($calc(1 + (($current.battlestreak / 2))))
-Glowing_Pierce=$round($calc(1 + (($current.battlestreak / 2))))
-Ptero_Attack=$round($calc(1 + (($current.battlestreak / 2))))
-Vertical_Raid=$round($calc(1 + (($current.battlestreak / 2))))
-Spread_Shot=$round($calc(1 + (($current.battlestreak / 2))))
-Tri-Blast=$round($calc(1 + (($current.battlestreak / 2))))
-Infinity_Blast=$round($calc(1 + (($current.battlestreak / 2))))
+NibelungValesti=500
+Glowing_Pierce=500
+Ptero_Attack=500
+Vertical_Raid=500
+Spread_Shot=500
+Tri-Blast=500
+Infinity_Blast=500
 
 
 [Item_Amount]
@@ -146,7 +148,6 @@ Infinity_Blast=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=Guardian
 Guardian=10
-GuardianXP=1
 
 
 [Augments]
@@ -176,3 +177,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=150

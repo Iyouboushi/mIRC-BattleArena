@@ -371,7 +371,7 @@ Shuraba=Tachi:Shoha.Tachi:Rana
 Kulshedra=TwinDragonLash.SerpentBite.DarkLash
 BusterSword=Braver.CrossSlash.Blade_Beam.Climhazzard.Meteorain.FinishingTouch.Omnislash
 DekarBlade=ExplosionFist.ExplosionSword.GlacialBlast.Thundershriek.BombAttack.ArticFreeze.HolyEnergy.PhoenixBlow.OctoStrike.Skysplitter
-RuneOakStaff=Forzare.SoulForzare.Fuego.Pyrofeugo.Dormio.Fulminos.Arctis.Dispertius.Gravitus.FlickumBicus.Galvinius
+RuneOakStaff=Forzare.SoulForzare.Fuego.Pyrofeugo.Dormio.Fulminos.Arctis.Dispertius.Gravitus.FlickumBicus.Galvinius.Infriga.InfrigaForzare
 AdamantAxe=Thundershriek.BombAttack.FellCleave.UkkosFury.KingsJustice
 VampireKiller=GrandCross.HydroStorm.Dagger.HolyWater.Cross.StopWatch.Axe.DoubleAxe.Thousand_Knives
 KosmosFists=R-Cannon.R-Blade.R-Dragon.F-Scythe.R-Drill.F-RShot.K-Axe.K-Valkyrie.Hilbert_Effect.S-Chain.DexEtherRa.DexEtherFa.DexEtherLe
@@ -411,7 +411,7 @@ MegaBusterMk1=HyperBomb.SuperArm.RollingCutter.ThunderBeam.IceSlasher.FireStorm
 X-Buster=ChargedShot
 X-BusterMk1=ShotgunIce.StormTornado.FireWave.ChameleonSting.ElectricSpark.RollingShield.BoomerangCutter.HomingTorpedo
 SwordOfTheFallenDevil=HandOfPyro.Bite_Of_Lightning.HailOfHeavens.PinnacleOfTheSun.HammerOfEvil.ColdnessOfDestruction.FeathersOfTheHurricane.BoltOfThunder.SmokeOfPain.FalconOfDeath
-ChozoArmCannon=PoweredShot.Missile.SuperMissile.Bomb.PowerBomb.ScrewAttack.IceBeam.PlasmaBeam.DarkBeam.DarkBurst.LightBeam.SunBurst.PhazonBeam
+ChozoArmCannon=PoweredShot.Missile.SuperMissile.Bomb.PowerBomb.ScrewAttack.IceBeam.PlasmaBeam.DarkBeam.DarkBurst.LightBeam.SunBurst.PhazonBeam.PhazonBeamII
 ZeroSaber=Raijingeki.Rakuhouha.Ryuenjin.Kuuenzan.Shippuuga.Hyoretsuzan
 SantaRifle=LaserStorm.GrenadeGift.BazookaGift
 BrainWeapon=Rinka.LavaFall.LaserDefense.HyperBeam.BombBeam.PlasmaLaser.BrainStomp.BrainGrab
@@ -491,7 +491,7 @@ GibdoBlade=GibdoShriek.HardSlash
 RedeadBlade=RedeadShriek.SpinningSlash
 GremlinAttack=GremlinBite
 MirrorOfTwilight=TwiliEnergy.TwiliFist.TwiliLight.TwiliCannon.TwiliBridge.TwiliWolves.TwilightMirror.TwiliSpear
-ShunShunRika=SoutenKisshun
+ShunShunRika=SoutenKisshun.KotenZanshun
 FreyaFists=EtherStrike.Thunder_Sword.Thunder_Strike.Heavenly_Punishment.Victory_Sword
 Sif's_Sword=BladeBeam.TwinSlice.BiteOfLightning
 Dragonfang=BladeBeam.TwinSlice.BiteOfLightning
@@ -582,6 +582,9 @@ MechanicPower=MechanicStrike.MechanicZap.MechanicSlash.MechanicExplosion
 Bioform=BioAttack91.BioAttack112.BioAttack331.BioAttack999
 Flameskull=FireII.Firaja
 Xande_Staff=TowerAbsorb.AncientQuaga.King'sMight
+DeadpoolKatanas=FastBlade.FlatBlade.CircleBlade.VorpalBlade.PineappleSurprise.HaveGunWillShoot
+DoubleDesertEagles=Rainstorm.RapidShot.LastStand.MurderSpree
+KoumoriKnife=WaspSting.Evisceration.SharkBite.DancingEdge.MurderSpreeII
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -8751,6 +8754,7 @@ Element=None
 Cost=0
 Magic=No
 stat=str
+Postscript=writeini $char($1) battle IgnitionGauge 20
 
 [CrossSlash]
 Type=Single
@@ -8762,6 +8766,7 @@ Element=None
 Cost=0
 Magic=No
 stat=str
+Postscript=writeini $char($1) battle IgnitionGauge 20
 
 [Blade_Beam]
 Type=AOE
@@ -8772,6 +8777,7 @@ Element=None
 Cost=0
 Magic=No
 stat=int
+Postscript=writeini $char($1) battle IgnitionGauge 20
 
 [Climhazzard]
 Type=Single
@@ -8782,6 +8788,7 @@ Element=None
 Cost=0
 Magic=No
 stat=str
+Postscript=writeini $char($1) battle IgnitionGauge 20
 
 [Meteorain]
 Type=AOE
@@ -8792,6 +8799,7 @@ Element=Fire
 Cost=0
 Magic=Yes
 stat=int
+Postscript=writeini $char($1) battle IgnitionGauge 20
 
 [FinishingTouch]
 Type=Single
@@ -8802,17 +8810,20 @@ Element=Wind
 Cost=0
 Magic=Yes
 stat=int
+Postscript=writeini $char($1) battle IgnitionGauge 20
+DeathChance=10
 
 [Omnislash]
 Type=Single
 TP=20
-Desc=holds the Buster Sword forward as it gains a white glow. Cloud then proceeds to unleash a barrage of sword slashes upon %enemy $+ !
-BasePower=25
+Desc=says, "Breaking my limits" as he holds the Buster Sword forward as it gains a white glow. Cloud then proceeds to unleash a barrage of sword slashes upon %enemy $+ !
+BasePower=100
 Element=None
 Cost=0
 Magic=No
 stat=str
 hits=8
+Postscript=writeini $char($1) battle IgnitionGauge 0
 
 [ExplosionFist]
 Type=AOE
@@ -8837,7 +8848,7 @@ stat=str
 [Forzare]
 Type=Single
 TP=10
-Desc=swings his staff and shouts "Forzare!"  An invisible force of energy then proceeds to slam into %enemy $+ !
+Desc=swings his staff and shouts, "Forzare!"  An invisible force of energy then proceeds to slam into %enemy $+ !
 BasePower=50
 Element=None
 Cost=0
@@ -8847,7 +8858,7 @@ stat=str
 [SoulForzare]
 Type=Single
 TP=10
-Desc=shouts out "Forzare!" and a silvery-white hand of energy proceeds to slam into %enemy $+ !
+Desc=shouts out, "Forzare!" as a silvery-white hand of energy proceeds to slam into %enemy $+ !
 BasePower=30
 Element=Light
 Cost=0
@@ -8857,7 +8868,7 @@ stat=int
 [Fuego]
 Type=Single
 TP=10
-Desc=aims his blasting rod at %enemy and shouts "Fuego!"  A large blast of fire slams into %enemy $+ !
+Desc=aims his blasting rod at %enemy and shouts, "Fuego!"  A large blast of fire slams into %enemy $+ !
 BasePower=30
 Element=Fire
 Cost=0
@@ -8867,7 +8878,7 @@ stat=int
 [Pyrofeugo]
 Type=AOE
 TP=10
-Desc=shouts out "Pyrofuego!" and he aims at the ground with his blasting rod. A large burst of fire then explodes on the battlefield!
+Desc=shouts out, "Pyrofuego!" as he aims at the ground with his blasting rod. A large burst of fire then explodes on the battlefield!
 BasePower=40
 Element=Fire
 Cost=0
@@ -8888,7 +8899,7 @@ stat=int
 [Fulminos]
 Type=Single
 TP=10
-Desc=shouts out "Fulminos!" as he points the staff at %enemy $+ , which causes a bolt of lightning to strike!
+Desc=shouts out, "Fulminos!" as he points the staff at %enemy $+ , which causes a bolt of lightning to strike!
 BasePower=30
 Element=Lightning
 Cost=0
@@ -8898,7 +8909,7 @@ stat=int
 [Arctis]
 Type=Single
 TP=10
-Desc=shouts out "Arctis!" as he points the staff at %enemy $+ , which causes a wave of ice to slam into %enemy $+ !
+Desc=shouts out, "Arctis!" as he points the staff at %enemy $+ , which causes a wave of ice to slam into %enemy $+ !
 BasePower=30
 Element=Ice
 Cost=0
@@ -8908,7 +8919,7 @@ stat=int
 [Dispertius]
 Type=AOE
 TP=10
-Desc=shouts out "Dispertius!" and strikes the ground with his staff. A moment later, the battlefield splits to cause all enemies to fall in!
+Desc=shouts out, "Dispertius!" and strikes the ground with his staff. A moment later, the battlefield splits to cause all enemies to fall in!
 BasePower=30
 Element=Earth
 Cost=0
@@ -8919,7 +8930,7 @@ stat=int
 Type=AOE
 StatusType=Slow
 TP=10
-Desc=shouts out "Gravitus!" as he swings his staff. All enemies on the battlefield feels gravity increase, causing them to slow down!
+Desc=shouts out, "Gravitus!" as he swings his staff. All enemies on the battlefield feels gravity increase, causing them to slow down!
 BasePower=10
 Element=Dark
 Cost=0
@@ -8929,7 +8940,7 @@ stat=int
 [FlickumBicus]
 Type=Single
 TP=10
-Desc=mutters "Flickum Bicus" as he points at %enemy $+ , causing a small burst of fire to hit %enemy $+ .
+Desc=mutters, "Flickum Bicus" as he points at %enemy $+ , causing a small burst of fire to hit %enemy $+ .
 BasePower=10
 Element=Fire
 Cost=0
@@ -8946,6 +8957,36 @@ Element=Lightning
 Cost=0
 Magic=Yes
 stat=int
+
+[Infriga]
+Type=AOE
+Cost=0
+Desc=stares at the battlefield and says, "Infriga." All of the enemies on the battlefield begin to feel warmth leave their bodies and become covered in ice.
+TP=10
+Element=Ice
+Hits=1
+BasePower=50
+Magic=true
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=false
+DestroyShadows=16
+
+[InfrigaForzare]
+Type=AOE
+Cost=0
+Desc=stares at the battlefield and says, "Infriga." All of the enemies on the battlefield begin to feel warmth leave their bodies and become covered in ice. Dresden then spins his staff around and slams it onto the ground, shouting out "FORZARE!" which causes an explosion of force that sends all enemies flying back.
+TP=10
+Element=Ice
+Hits=1
+BasePower=75
+Magic=true
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=false
+DestroyShadows=16
 
 [Thundershriek]
 Type=Single
@@ -9547,7 +9588,8 @@ Element=None
 Cost=0
 Magic=No
 stat=str
-hits=7
+hits=$rand(7,8)
+Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Lionheart 1000 | writeini $char($1) techniques Renzokuken 0
 
 [RoughDivide]
 Type=Single
@@ -9558,6 +9600,7 @@ Element=None
 Cost=0
 Magic=No
 stat=str
+Postscript=writeini $char($1) battle IgnitionGauge 20
 
 [FatedCircle]
 Type=AOE
@@ -9568,6 +9611,7 @@ Element=None
 Cost=0
 Magic=No
 stat=str
+Postscript=writeini $char($1) battle IgnitionGauge 20
 
 [BlastingZone]
 Type=AOE
@@ -9578,17 +9622,19 @@ Element=None
 Cost=0
 Magic=No
 stat=str
+Postscript=writeini $char($1) battle IgnitionGauge 20
 
 [Lionheart]
 Type=Single
 TP=10
 Desc=rushes forward as the gunblade changes to the Lionheart and glows white. Squall slashes %enemy over and over before hopping back. He then says, "Mission accomplished." and slashes %enemy one final time.
-BasePower=25
-Element=Light
+BasePower=100
+Element=None
 Cost=0
 Magic=no
-stat=int
+stat=str
 hits=8
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Lionheart 0 | writeini $char($1) techniques Renzokuken $iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 500, 0)
 
 [CutlassFury]
 Type=Single
@@ -10705,6 +10751,22 @@ IgnoreDefense=10
 HurtEthereal=true
 stat=int
 CanDodge=true
+Postscript=writeini $char($1) techniques PhazonBeamII 750 | writeini $char($1) techniques PhazonBeam 0
+
+[PhazonBeamII]
+Type=Single
+Cost=0
+Desc=stands in one of the random phazon pools left by Metroid Prime, which grants Samus the ability to fire pure phazon upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
+Postscript=writeini $char($1) techniques PhazonBeam 750 | writeini $char($1) techniques PhazonBeamII 0
 
 [Raijingeki]
 Type=Single
@@ -15216,7 +15278,7 @@ DestroyShadows=4
 [SoutenKisshun]
 Type=heal-AOE
 Cost=0
-Desc=shouts out "Souten Kisshun... I reject!" and summons two of the spirits, Ayame and Shun'ou, which creates a half-oval barrier over all allies and heals their injuries.
+Desc=shouts out, "Souten Kisshun... I reject!" and summons two of the spirits, Ayame and Shun'ou, which creates a half-oval barrier over all allies and heals their injuries.
 TP=10
 BasePower=50
 Upgrade=0
@@ -15224,6 +15286,20 @@ Element=light
 magic=yes
 stat=int
 CappedAmount=3000
+
+[KotenZanshun]
+Type=Single
+Cost=0
+Desc=shouts out, "Koten Zanshun.... I reject!" and summons one of the spirits, Tsubaki, who flies past %enemy $+ , giving %enemy a deadly cut.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+Renkei=2
 
 [BladeBeam]
 Type=AOE
@@ -18635,3 +18711,60 @@ stat=str
 hits=2
 DestroyShadows=2
 
+[PineappleSurprise]
+Type=AOE
+Cost=0
+Desc=takes out a grenade, pulling the pin, tossing it into the battlefield and shouts, "WHO LIKES PINEAPPLES?"  It explodes a few seconds later, causing a large explosion.
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[HaveGunWillShoot]
+Type=AOE
+Cost=0
+Desc=takes out two guns and fires upon all enemies while shouting, "BANG! BANG! BANG BANG!"
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=spd
+
+[MurderSpree]
+Type=AOE
+Cost=0
+Desc=begins to laugh uncontrollably as she dances around the battlefield, shooting all enemies in vital locations to kill them instantly.
+TP=10
+Element=None
+Hits=8
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=spd
+CanDodge=false
+DestroyShadows=16
+DeathChance=100
+
+[MurderSpreeII]
+Type=AOE
+Cost=0
+Desc=begins to laugh uncontrollably as she dances around the battlefield, stabbing all enemies in vital locations to kill them instantly.
+TP=10
+Element=None
+Hits=8
+BasePower=50
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=spd
+CanDodge=false
+DestroyShadows=16
+DeathChance=100

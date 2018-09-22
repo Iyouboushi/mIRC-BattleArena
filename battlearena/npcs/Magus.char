@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 IgnitionGauge=0
 Name=Magus
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 IgnitionGauge=0
 Status=alive
 
@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a tall man with long purple hair, long ears, and weas a red cape over his armor and clothing. The man also carries a large scythe in hand as well.
+Char=is a tall man with long purple hair, long ears, and weas a red cape over his armor and clothing. He also carries a large scythe in hand as well.
 Rage=screams in rage 
 
 
@@ -34,7 +34,7 @@ Rage=screams in rage
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=
+
 
 [Info]
 Flag=npc
@@ -47,9 +47,10 @@ LastIP=N/a
 Created=N/a
 Streak=20
 CanTaunt=false
-RageMode=ignore
 trust=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [monster]
 type=human
@@ -92,7 +93,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=DoomSickle
-DoomSickle=$round($calc(1 + (($current.battlestreak / 2))))
+DoomSickle=500
 
 
 [Skills]
@@ -113,20 +114,19 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=30
 
 [Techniques]
-Thundaja=$round($calc(1 + (($current.battlestreak / 2))))
-Blizzaja=$round($calc(1 + (($current.battlestreak / 2))))
-Firaja=$round($calc(1 + (($current.battlestreak / 2))))
-DarkBomb=$round($calc(1 + (($current.battlestreak / 2))))
-DarkMist=$round($calc(1 + (($current.battlestreak / 2))))
+Thundaja=750
+Blizzaja=750
+Firaja=750
+DarkBomb=750
+DarkMist=750
 
 
 [Styles]
 Equipped=Spellmaster
-SpellMaster=5
-SpellMasterXP=0
+SpellMaster=10
 
 
 [Augments]
@@ -155,3 +155,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=0

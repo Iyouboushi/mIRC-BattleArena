@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Judge Dredd
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -56,6 +56,8 @@ Flag=NPC
 CanTaunt=true
 TauntFile=taunts_judgedredd.txt
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -101,7 +103,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DreddGun
-DreddGun=$round($calc(1 + (($current.battlestreak / 2))))
+DreddGun=500
 
 
 [Skills]
@@ -123,14 +125,15 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=25
 
 
 [Techniques]
-TheLaw=$round($calc(1 + (($current.battlestreak / 2))))
-GrenadeShot=$round($calc(1 + (($current.battlestreak / 2))))
-PierceShot=$round($calc(1 + (($current.battlestreak / 2))))
-RapidShot=$round($calc(1 + (($current.battlestreak / 2))))
-LastStand=$round($calc(1 + (($current.battlestreak / 2))))
+TheLaw=500
+GrenadeShot=500
+PierceShot=500
+RapidShot=500
+LastStand=500
 
 
 [Item_Amount]
@@ -143,12 +146,9 @@ DreddGun=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -170,3 +170,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

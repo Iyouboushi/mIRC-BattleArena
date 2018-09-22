@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=120
+Hp=9000
+Tp=1000
+Str=100
+Def=100
+Int=100
+Spd=100
+IgnitionGauge=150
 Name=Genryuusai Yamamoto
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=120
+Hp=9000
+Tp=1000
+Str=100
+Def=100
+Int=100
+Spd=100
+IgnitionGauge=150
 Status=alive
 
 
@@ -35,7 +35,7 @@ Hused=1
 Dused=1
 Char=is an old Shinigami who is the Captain of the 1st Division and the Captain Commander of the Gotei 13. The oldest and strongest Shinigami who also carries the powerful Ryuujin Jakka zanpakutou.
 Rage=opens his eyes and gives a very stern stare at the battlefield..
-PerfectDefense=releases Ryuujin Jakka for a moment and covers himself with a wall of fire to block all attacks.
+PerfectDefense=releases Ryuujin Jakka for a moment and covers himself with a wall of deadly fire to block all attacks.
 
 [Stuff]
 RedOrbs=0
@@ -55,6 +55,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -99,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RyuujinJakka
-RyuujinJakka=$round($calc(1 + (($current.battlestreak / 2))))
+RyuujinJakka=1000
 
 
 [Skills]
@@ -128,28 +130,28 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=50
 
 [Techniques]
-AsuranFists=$round($calc(1 + (($current.battlestreak / 2))))
-Ikkotsu=$round($calc(1 + (($current.battlestreak / 2))))
-Soukotsu=$round($calc(1 + (($current.battlestreak / 2))))
-SwiftBlade=$round($calc(1 + (($current.battlestreak / 2))))
-VorpalBlade=$round($calc(1 + (($current.battlestreak / 2))))
-ChantDuCygne=$round($calc(1 + (($current.battlestreak / 2))))
-IttouKasou=$round($calc(1 + (($current.battlestreak / 2))))
+AsuranFists=1000
+Ikkotsu=1000
+Soukotsu=1000
+SwiftBlade=1000
+VorpalBlade=1000
+ChantDuCygne=1000
+IttouKasou=1000
 
 
 [Item_Amount]
 
 
 [Ignitions]
-YamamotoShikai=$iif($current.battlestreak < 200, 0, 1)
+YamamotoShikai=$iif($current.battlestreak < 2000, 0, 1)
 
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=10
+WeaponMaster=15
 
 
 [Augments]
@@ -159,7 +161,7 @@ RyuujinJakka=EnhanceKatana.TechBonus.MeleeBonus.RenkeiBonus.HurtEthereal
 [modifiers]
 Heal=none
 Earth=100
-Fire=100
+Fire=0
 Wind=100
 Water=100
 Ice=100
@@ -178,3 +180,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

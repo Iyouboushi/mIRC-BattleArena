@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=$iif(%battle.type = dungeon, 20000, 5000)
 Tp=2000
-Str=20
-Def=20
-Int=20
-Spd=20
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Wandering Bard
 
 
 [Battle]
 Hp=5000
 Tp=2000
-Str=20
-Def=20
-Int=20
-Spd=20
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -106,7 +106,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=HomesteadBow
-HomesteadBow=$round($calc(1 + (($current.battlestreak / 2))))
+HomesteadBow=500
 
 [Skills]
 Zen=10

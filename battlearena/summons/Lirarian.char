@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=60
 Def=60
 Int=60
 Spd=60
-IgnitionGauge=50
+IgnitionGauge=100
 Name=Lirarian Dalnaal
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=60
 Def=60
 Int=60
 Spd=60
-IgnitionGauge=50
+IgnitionGauge=100
 Status=alive
 
 
@@ -62,7 +62,9 @@ Created=N/a
 IgnoreQuickSilver=true
 CanTaunt=false
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 
 [Status]
@@ -101,7 +103,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Silver_Goddess_Sword
-Silver_Goddess_Sword=$round($calc(1 + (($current.battlestreak / 2))))
+Silver_Goddess_Sword=750
 
 [Skills]
 Swordmaster=100
@@ -122,12 +124,12 @@ Resist-Stop=100
 Resist-Stun=100
 Resist-Weaponlock=100
 Resist-Zombie=100
-
+DieHard=30
 
 [Techniques]
-TwinSlice=$round($calc(1 + (($current.battlestreak / 2))))
-BiteOfLightning=$round($calc(1 + (($current.battlestreak / 2))))
-BladeBeam=$round($calc(1 + (($current.battlestreak / 2))))
+TwinSlice=750
+BiteOfLightning=750
+BladeBeam=750
 
 
 [Styles]

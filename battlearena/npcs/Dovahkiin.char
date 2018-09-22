@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Name=The Dragonborn
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Status=alive
 
 
@@ -56,6 +56,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 
 [Status]
@@ -102,7 +104,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=DragonShouts
-DragonShouts=$round($calc(1 + (($current.battlestreak / 2))))
+DragonShouts=500
 
 
 [Skills]
@@ -126,17 +128,18 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=25
 
 
 [Techniques]
-FusRoDah=$round($calc(1 + (($current.battlestreak / 2))))
-YolToorShul=$round($calc(1 + (($current.battlestreak / 2))))
-FoKrahDiin=$round($calc(1 + (($current.battlestreak / 2))))
-StrunBahQo=$round($calc(1 + (($current.battlestreak / 2))))
+FusRoDah=500
+YolToorShul=500
+FoKrahDiin=500
+StrunBahQo=500
 
 
 [Ignitions]
-DragonAspect=$iif($current.battlestreak < 200, 0, 1)
+DragonAspect=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Item_Amount]
@@ -145,7 +148,6 @@ DragonAspect=$iif($current.battlestreak < 200, 0, 1)
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Augments]
@@ -153,8 +155,6 @@ DragonShouts=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -176,3 +176,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

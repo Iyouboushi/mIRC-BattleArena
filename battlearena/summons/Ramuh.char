@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -9,7 +9,7 @@ Name=Ramuh
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -52,7 +52,9 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -97,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=OlduumStaff
-OlduumStaff=$round($calc(1 + (($current.battlestreak / 2))))
+OlduumStaff=500
 
 [Skills]
 Zen=5
@@ -117,13 +119,13 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
-
+DieHard=25
 
 [Techniques]
-JudgementBolt=$round($calc(1 + (($current.battlestreak / 2))))
-Thunderstorm=$round($calc(1 + (($current.battlestreak / 2))))
-ChaoticStrike=$round($calc(1 + (($current.battlestreak / 2))))
-Burst=$round($calc(1 + (($current.battlestreak / 2))))
+JudgementBolt=500
+Thunderstorm=500
+ChaoticStrike=500
+Burst=500
 
 [Item_Amount]
 

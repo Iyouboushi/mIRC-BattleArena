@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=100
+Hp=9000
+Tp=1500
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Name=Arucard
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=100
+Hp=9000
+Tp=1500
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Status=alive
 
 
@@ -56,6 +56,8 @@ IgnoreQuicksilver=true
 CanTaunt=true
 IgnoreElementalMessage=true
 ActionsPerTurn=2
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -100,7 +102,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Casull&Jackal
-Casull&Jackal=$round($calc(1 + (($current.battlestreak / 2))))
+Casull&Jackal=500
 
 [Skills]
 Gunslinger=100
@@ -123,17 +125,18 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=90
 
 
 [Techniques]
-LastStand=$round($calc(1 + (($current.battlestreak / 2))))
-RapidShot=$round($calc(1 + (($current.battlestreak / 2))))
-Rainstorm=$round($calc(1 + (($current.battlestreak / 2))))
-BloodDrain=$round($calc(1 + (($current.battlestreak / 2))))
+LastStand=750
+RapidShot=750
+Rainstorm=750
+BloodDrain=750
 
 
 [Ignitions]
-CromwellApproval=$iif($current.battlestreak < 200, 0, 1)
+CromwellApproval=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Item_Amount]
@@ -146,12 +149,9 @@ Casull&Jackal=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -160,7 +160,7 @@ Water=100
 Ice=100
 Lightning=100
 Light=100
-Dark=100
+Dark=0
 HandToHand=100
 Whip=100
 Sword=100
@@ -173,3 +173,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Curry Man
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -54,6 +54,8 @@ ai_type=techonly
 CanTaunt=true
 TauntFile=taunts_curryman.txt
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -98,7 +100,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=SpiceCane
-SpiceCane=$calc(50 + $current.battlestreak)
+SpiceCane=500
 
 [Skills]
 MartialArts=100
@@ -120,22 +122,25 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=25
 
 
 [Techniques]
-SpiceRack=$calc(50 + $current.battlestreak)
-SpicySwing=$calc(50 + $current.battlestreak)
-AsuranFists=$calc(50 + $current.battlestreak)
-ShinjinSpiral=$calc(50 + $current.battlestreak)
+SpiceRack=500
+SpicySwing=500
+AsuranFists=500
+ShinjinSpiral=500
 
 [Augments]
 SpiceCane=MeleeBonus.TechBonus.EnhanceDodge.EnhanceParry
 
 [Item_Amount]
 
+[Styles]
+Equipped=Wrestlemania
+Wrestlemania=10
+
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -162,7 +167,11 @@ Dagger=100
 Mace=100
 Stave=100
 EnergyBlaster=100
-
-[Styles]
-Equipped=Wrestlemania
-Wrestlemania=10
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

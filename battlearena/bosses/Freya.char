@@ -228,6 +228,9 @@ Drakesbane=120
 Stardiver=45
 Requiescat=120
 HolyHandGrenade=0
+MurderSpree=0
+MurderSpreeII=0
+FinishingTouch=0
 
 [NaturalArmor]
 Name=Goddess Defense

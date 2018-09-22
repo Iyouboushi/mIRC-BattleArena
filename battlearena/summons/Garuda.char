@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -9,7 +9,7 @@ Name=Garuda
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -52,7 +52,9 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -98,7 +100,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=GarudaPower
-GarudaPower=$round($calc(1 + (($current.battlestreak / 2))))
+GarudaPower=500
 
 
 [Skills]
@@ -118,13 +120,13 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
-
+DieHard=25
 
 [Techniques]
-AerialBlast=$round($calc(1 + (($current.battlestreak / 2))))
-PredatorClaws=$round($calc(1 + (($current.battlestreak / 2))))
-WindBlade=$round($calc(1 + (($current.battlestreak / 2))))
-Tornado=$round($calc(1 + (($current.battlestreak / 2))))
+AerialBlast=500
+PredatorClaws=500
+WindBlade=500
+Tornado=500
 
 
 [Item_Amount]

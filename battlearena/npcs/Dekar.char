@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Dekar
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -52,6 +52,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -96,7 +98,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DekarBlade
-DekarBlade=$round($calc(1 + (($current.battlestreak / 2))))
+DekarBlade=500
 
 
 [Skills]
@@ -121,19 +123,20 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=25
 
 
 [Techniques]
-ExplosionFist=$round($calc(1 + (($current.battlestreak / 2))))
-ExplosionSword=$round($calc(1 + (($current.battlestreak / 2))))
-GlacialBlast=$round($calc(1 + (($current.battlestreak / 2))))
-Thundershriek=$round($calc(1 + (($current.battlestreak / 2))))
-BombAttack=$round($calc(1 + (($current.battlestreak / 2))))
-ArticFreeze=$round($calc(1 + (($current.battlestreak / 2))))
-HolyEnergy=$round($calc(1 + (($current.battlestreak / 2))))
-PhoenixBlow=$round($calc(1 + (($current.battlestreak / 2))))
-OctoStrike=$round($calc(1 + (($current.battlestreak / 2))))
-Skysplitter=$round($calc(1 + (($current.battlestreak / 2))))
+ExplosionFist=500
+ExplosionSword=500
+GlacialBlast=500
+Thundershriek=500
+BombAttack=500
+ArticFreeze=500
+HolyEnergy=500
+PhoenixBlow=500
+OctoStrike=500
+Skysplitter=500
 
 
 [Item_Amount]
@@ -146,12 +149,9 @@ DekarBlade=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -173,3 +173,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

@@ -1076,3 +1076,32 @@ StatusTarget=self
 StatusType=Protect.Shell.Resist-Earth.Resist-Fire.Resist-Wind.Resist-Water.Resist-Ice.Resist-Lightning.Resist-Light.Resist-Dark
 AdditionalCode=writeini $char($1) status En-Spell Lightning
 
+[WinterKnightMantle]
+Name=Winter Knight Mantle
+hp=2
+Str=2
+def=3
+int=3
+spd=2
+Augment=MagicBonus.MeleeBonus.EnhanceZen
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+StatusTarget=Self
+StatusType=DefenseUp
+Desc=channels the power of the Winter Knight, increasing the power of ice magic, strength, stamina, while also adjusting the threshold for pain to be nonexistent.
+
+[Murcielago]
+Name=Murcielago
+hp=2
+Str=2
+def=2
+int=2
+spd=3
+Augment=TechBonus.MeleeBonus.EnhanceZen.EnhanceDagger.EnhanceGun
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=grins as a black silhouette covers her, leaving only white for the lenses on the glasses and a large smile.

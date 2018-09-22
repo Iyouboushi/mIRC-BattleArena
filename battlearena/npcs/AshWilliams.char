@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Ash
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -54,6 +54,8 @@ CanTaunt=true
 TauntFile=taunts_ashwilliams.txt
 trust=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -98,7 +100,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Boomstick
-Boomstick=$round($calc(1 + (($current.battlestreak / 2))))
+Boomstick=500
 
 [Skills]
 Gunslinger=100
@@ -120,12 +122,13 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 Undead-Killer=10
+DieHard=30
 
 
 [Techniques]
-HotShot=$round($calc(1 + (($current.battlestreak / 2))))
-BlastShot=$round($calc(1 + (($current.battlestreak / 2))))
-Detonator=$round($calc(1 + (($current.battlestreak / 2))))
+HotShot=500
+BlastShot=500
+Detonator=500
 
 
 [Item_Amount]
@@ -138,12 +141,9 @@ Boomstick=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -165,3 +165,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

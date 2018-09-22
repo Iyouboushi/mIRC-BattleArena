@@ -1,20 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=500
 Name=Harry Dresden
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=500
 Status=alive
 
 
@@ -35,7 +37,6 @@ Char=is a tall man with brown hair. He wears all black with a dark brown duster 
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 Utsusemi=mutters "Lumen, camerus... factum," and two more versions of Harry Dresden appear.
 Perfectdefense=raises his left arm and a silver chain is visible. The chain has five small shields made out of five different metals. A light blue barrier appears around %user to block all attacks.
-MagicMirror=mutters a few words under his breath and a reflective barrier forms around himself.
 
 
 [Stuff]
@@ -57,6 +58,10 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
+IgnoreElementalMessage=$iif($readini($char(Dresden), status, ignition.on) = on, true, false)
+
 
 [Status]
 Poison=no
@@ -101,13 +106,13 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RuneOakStaff
-RuneOakStaff=$round($calc(1 + (($current.battlestreak / 2))))
+RuneOakStaff=500
 
 
 [Skills]
 Zen=5
 ClearMind=3
-Wizardry=100
+Wizardry=$iif($readini($char(Dresden), status, ignition.on) = on, 250, 100)
 Gunslinger=100
 MartialArts=100
 Utsusemi=1
@@ -128,29 +133,33 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=25
 
 
 [Techniques]
-Forzare=$round($calc(1 + (($current.battlestreak / 2))))
-SoulForzare=$round($calc(1 + (($current.battlestreak / 2))))
-FlickumBicus=$round($calc(1 + (($current.battlestreak / 2))))
-Fuego=$round($calc(1 + (($current.battlestreak / 2))))
-Pyrofeugo=$round($calc(1 + (($current.battlestreak / 2))))
-Dormio=$round($calc(1 + (($current.battlestreak / 2))))
-Fulminos=$round($calc(1 + (($current.battlestreak / 2))))
-Arctis=$round($calc(1 + (($current.battlestreak / 2))))
-Dispertius=$round($calc(1 + (($current.battlestreak / 2))))
-Gravitus=$round($calc(1 + (($current.battlestreak / 2))))
-Galvinius=$round($calc(1 + (($current.battlestreak / 2))))
+Forzare=500
+SoulForzare=500
+FlickumBicus=500
+Fuego=500
+Pyrofeugo=500
+Dormio=500
+Fulminos=500
+Arctis=$iif($readini($char(Dresden), status, ignition.on) = on, 1000, 500)
+Dispertius=500
+Gravitus=500
+Galvinius=500
+Infriga=$iif($readini($char(Dresden), status, ignition.on) = on, 1000, 500)
+InfrigaForzare=$iif($readini($char(Dresden), status, ignition.on) = on, 1000, 500)
 
 
 [Item_Amount]
 
+[Ignitions]
+WinterKnightMantle=$iif($current.battlestreak < 1000, 0, 1)
 
 [Styles]
 Equipped=Spellmaster
-Spellmaster=10
-SpellmasterXP=1
+Spellmaster=$iif($readini($char(Dresden), status, ignition.on) = on, 20, 10)
 
 
 [equipment]
@@ -160,14 +169,13 @@ accessory=Wizard's-Amulet
 [augments]
 RuneOakStaff=MagicBonus.MeleeBonus.EnhanceStaff.HurtEthereal
 
-
 [modifiers]
 Heal=none
 Earth=100
 Fire=100
 Wind=100
 Water=100
-Ice=100
+Ice=$iif($readini($char(Dresden), status, ignition.on) = on, 0, 100)
 Lightning=100
 Light=100
 Dark=100
@@ -183,3 +191,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=$iif($readini($char(Dresden), status, ignition.on) = on, 0, 100)
++Wind=100
++Water=100
++Dark=100

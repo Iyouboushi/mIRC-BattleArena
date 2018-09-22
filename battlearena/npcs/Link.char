@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Link
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -49,6 +49,8 @@ CanTaunt=false
 CanUseItems=true
 IgnoreElementalMessage=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [monster]
 type=Hylian
@@ -93,7 +95,7 @@ auto-regen=no
 
 [Weapons]
 Equipped=MasterSword
-MasterSword=$round($calc(1 + (($current.battlestreak / 2))))
+MasterSword=500
 EquippedLeft=GoddessShield
 
 
@@ -119,12 +121,12 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=30
 
 
 [Techniques]
-SkywardStrike=$round($calc(1 + (($current.battlestreak / 2))))
-HurricaneSpin=$round($calc(1 + (($current.battlestreak / 2))))
+SkywardStrike=750
+HurricaneSpin=750
 
 
 [Equipment]
@@ -166,3 +168,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

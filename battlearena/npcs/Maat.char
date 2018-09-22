@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=9000
 Name=Maat
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=9000
 Status=alive
 
 
@@ -57,7 +57,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
 ActionsPerTurn=$rand(1,2)
-
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -103,7 +104,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=Spharai
-Spharai=$round($calc(1 + (($current.battlestreak / 2))))
+Spharai=500
 
 
 [Skills]
@@ -125,19 +126,18 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=50
 
 [Techniques]
-FinalHeaven=$round($calc(1 + (($current.battlestreak / 2))))
-ShoulderTackle=$round($calc(1 + (($current.battlestreak / 2))))
-AsuranFists=$round($calc(1 + (($current.battlestreak / 2))))
-SpinningAttack=$round($calc(1 + (($current.battlestreak / 2))))
-OneInchPunch=$round($calc(1 + (($current.battlestreak / 2))))
+FinalHeaven=500
+ShoulderTackle=500
+AsuranFists=1000
+SpinningAttack=500
+OneInchPunch=500
 
 [Styles]
 Equipped=CounterStance
 CounterStance=10
-WeaponMasterXP=1
 
 
 [equipment]
@@ -149,13 +149,13 @@ Fists=EnhanceCounter.MeleeBonus.TechBonus.HurtEthereal.EnhanceHandToHand
 
 
 [ignitions]
-Overdrive=$iif($current.battlestreak < 200, 0, 1)
-Benediction=$iif($current.battlestreak < 200, 0, 1)
-Manafont=$iif($current.battlestreak < 200, 0, 1)
-Karakuri=$iif($current.battlestreak < 200, 0, 1)
-Skydance=$iif($current.battlestreak < 200, 0, 1)
-Sentinel=$iif($current.battlestreak < 200, 0, 1)
-LastResort=$iif($current.battlestreak < 200, 0, 1)
+Overdrive=$iif($current.battlestreak < 1000, 0, 1)
+Benediction=$iif($current.battlestreak < 1000, 0, 1)
+Manafont=$iif($current.battlestreak < 1000, 0, 1)
+Karakuri=$iif($current.battlestreak < 1000, 0, 1)
+Skydance=$iif($current.battlestreak < 1000, 0, 1)
+Sentinel=$iif($current.battlestreak < 1000, 0, 1)
+LastResort=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [modifiers]
@@ -180,3 +180,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

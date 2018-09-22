@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=120
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Name=Bayonetta
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=120
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Status=alive
 
 
@@ -58,7 +58,9 @@ IgnoreQuicksilver=true
 CanTaunt=true
 TauntFile=taunts_bayonetta.txt
 trust=true
-ActionsPerTurn=$iif($readini($char(Bayonetta), status, ignition.on) = on, $rand(1,2), 1)
+ActionsPerTurn=$iif($readini($char(Bayonetta), status, ignition.on) = on, 2, $rand(1,2))
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [monster]
 type=Human
@@ -108,12 +110,12 @@ zombie.timer=1
 
 [Weapons]
 Equipped=LoveIsBlue
-LoveIsBlue=$round($calc(1 + (($current.battlestreak / 2))))
-Kafka=$round($calc(1 + (($current.battlestreak / 2))))
-Chernobog=$round($calc(1 + (($current.battlestreak / 2))))
-ScarboroughFair=$round($calc(1 + (($current.battlestreak / 2))))
-Shuraba=$round($calc(1 + (($current.battlestreak / 2))))
-Kulshedra=$round($calc(1 + (($current.battlestreak / 2))))
+LoveIsBlue=500
+Kafka=500
+Chernobog=500
+ScarboroughFair=500
+Shuraba=500
+Kulshedra=500
 
 [Skills]
 Whipster=100
@@ -140,27 +142,27 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=30
 
 [Techniques]
-BulletClimax=$round($calc(1 + (($current.battlestreak / 2))))
-HeelSlide=$round($calc(1 + (($current.battlestreak / 2))))
-Tachi:Shoha=$round($calc(1 + (($current.battlestreak / 2))))
-Tachi:Rana=$round($calc(1 + (($current.battlestreak / 2))))
-Guillotine=$round($calc(1 + (($current.battlestreak / 2))))
-ShadowOfDeath=$round($calc(1 + (($current.battlestreak / 2))))
-TwinDragonLash=$round($calc(1 + (($current.battlestreak / 2))))
-SerpentBite=$round($calc(1 + (($current.battlestreak / 2))))
-EagleEyeShot=$round($calc(1 + (($current.battlestreak / 2))))
-JishnusRadiance=$round($calc(1 + (($current.battlestreak / 2))))
-MadamaButterflyFist=$round($calc(1 + (($current.battlestreak / 2))))
-MadamaButterflyHeel=$round($calc(1 + (($current.battlestreak / 2))))
-WheelofTorture=$round($calc(1 + (($current.battlestreak / 2))))
+BulletClimax=750
+HeelSlide=750
+Tachi:Shoha=750
+Tachi:Rana=750
+Guillotine=750
+ShadowOfDeath=750
+TwinDragonLash=750
+SerpentBite=750
+EagleEyeShot=750
+JishnusRadiance=750
+MadamaButterflyFist=750
+MadamaButterflyHeel=750
+WheelofTorture=750
 
 
 [Ignitions]
-WitchTime=$iif($current.battlestreak < 350, 0, 1)
-UmbranClimax=$iif($current.battlestreak < 500, 0, 1)
+WitchTime=$iif($current.battlestreak < 1000, 0, 1)
+UmbranClimax=$iif($current.battlestreak < 1000, 0, 1)
 
 [Item_Amount]
 
@@ -194,19 +196,17 @@ WeaponMaster=10
 [Mech]
 name=Umbran Armor
 inUse=false
-EngineLevel=$iif($current.battlestreak < 2000, 0, 0.6)
-HpMax=20000
-HpCurrent=20000
-EnergyMax=10000
-EnergyCurrent=10000
+EngineLevel=$iif($current.battlestreak < 5000, 0, 1.0)
+HpMax=30000
+HpCurrent=30000
+EnergyMax=20000
+EnergyCurrent=20000
 EquippedCore=UmbranMechCore
 EquippedWeapon=UmbranArmorGuns
 Augments=DecreaseMechEnergyCost.EnhanceDodge.MeleeBonus.TechBonus.MagicBonus.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -236,3 +236,8 @@ EnergyBlaster=100
 Lightsaber=100
 Hammer=100
 Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

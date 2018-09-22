@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Alucard
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -32,7 +32,7 @@ Percent=0
 Hused=1
 Dused=1
 Char=is a tall man with long silver hair dressed in a black outfit with a black cape and wields the Alucard Sword. The half-vampire son of Dracula.
-Rage=yells in rage s his anger reaches the limit.
+Rage=yells in rage as his anger reaches the limit.
 
 [Stuff]
 RedOrbs=0
@@ -52,6 +52,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -96,7 +98,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AlucardSword
-AlucardSword=$round($calc(1 + (($current.battlestreak / 2))))
+AlucardSword=500
 
 [Skills]
 Swordmaster=100
@@ -119,13 +121,14 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=25
 
 [Techniques]
-UrielBlade=$round($calc(1 + (($current.battlestreak / 2))))
-ChantduCygne=$round($calc(1 + (($current.battlestreak / 2))))
-Requiescat=$round($calc(1 + (($current.battlestreak / 2))))
-SoulSteal=$round($calc(1 + (($current.battlestreak / 2))))
-TetraSpirit=$round($calc(1 + (($current.battlestreak / 2))))
+UrielBlade=500
+ChantduCygne=500
+Requiescat=500
+SoulSteal=500
+TetraSpirit=500
 
 
 [Item_Amount]
@@ -138,12 +141,9 @@ AlucardSword=TechBonus.MeleeBonus.EnhanceSword.HurtEthereal
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -152,7 +152,7 @@ Water=100
 Ice=100
 Lightning=100
 Light=100
-Dark=100
+Dark=0
 HandToHand=100
 Whip=100
 Sword=100
@@ -165,3 +165,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

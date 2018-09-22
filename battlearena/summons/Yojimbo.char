@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=5000
+Hp=9000
 Tp=1000
 Str=$calc(60 + $current.battlestreak)
 Def=$calc(90 + $current.battlestreak)
@@ -11,7 +11,7 @@ Name=Yojimbo
 
 
 [Battle]
-Hp=5000
+Hp=9000
 Tp=1000
 Str=$calc(60 + $current.battlestreak)
 Def=$calc(60 + $current.battlestreak)
@@ -63,7 +63,9 @@ Created=N/a
 IgnoreQuickSilver=true
 CanTaunt=false
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 
 [Status]
@@ -120,7 +122,7 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
-
+DieHard=25
 
 [Techniques]
 Daigoro=$iif($get_redorbs($1) > 100 && $get_redorbs($1) < 500, $round($calc(50 + (($current.battlestreak / 3) / 10.5)),0))

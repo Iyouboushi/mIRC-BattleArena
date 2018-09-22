@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Mega Man
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -53,9 +53,12 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
+ai_Type=techonly
 CanTaunt=false
 IgnoreElementalMessage=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -101,9 +104,9 @@ zombie.timer=1
 
 [Weapons]
 Equipped=MegaBusterMk1
-MegaBusterMk1=$round($calc(1 + (($current.battlestreak / 2))))
-MegaBusterMk2=$round($calc(1 + (($current.battlestreak / 2))))
-MegaBusterMk3=$round($calc(1 + (($current.battlestreak / 2))))
+MegaBusterMk1=500
+MegaBusterMk2=500
+MegaBusterMk3=500
 
 
 [Skills]
@@ -127,37 +130,36 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=25
 
 
 [Techniques]
-HyperBomb=$round($calc(1 + (($current.battlestreak / 2))))
-SuperArm=$round($calc(1 + (($current.battlestreak / 2))))
-RollingCutter=$round($calc(1 + (($current.battlestreak / 2))))
-ThunderBeam=$round($calc(1 + (($current.battlestreak / 2))))
-IceSlasher=$round($calc(1 + (($current.battlestreak / 2))))
-FireStorm=$round($calc(1 + (($current.battlestreak / 2))))
-MetalBlade=$round($calc(1 + (($current.battlestreak / 2))))
-TimeStopper=$round($calc(1 + (($current.battlestreak / 2))))
-QuickBoomerang=$round($calc(1 + (($current.battlestreak / 2))))
-LeafShield=$round($calc(1 + (($current.battlestreak / 2))))
-AirShooter=$round($calc(1 + (($current.battlestreak / 2))))
-CrashBombs=$round($calc(1 + (($current.battlestreak / 2))))
-BubbleLead=$round($calc(1 + (($current.battlestreak / 2))))
-AtomicFire=$round($calc(1 + (($current.battlestreak / 2))))
-NeedleCannon=$round($calc(1 + (($current.battlestreak / 2))))
-MagnetMissile=$round($calc(1 + (($current.battlestreak / 2))))
-GeminiLaser=$round($calc(1 + (($current.battlestreak / 2))))
-HardKnuckle=$round($calc(1 + (($current.battlestreak / 2))))
-TopSpin=$round($calc(1 + (($current.battlestreak / 2))))
-ShadowBlade=$round($calc(1 + (($current.battlestreak / 2))))
-SparkShock=$round($calc(1 + (($current.battlestreak / 2))))
-SearchSnake=$round($calc(1 + (($current.battlestreak / 2))))
+HyperBomb=500
+SuperArm=500
+RollingCutter=500
+ThunderBeam=500
+IceSlasher=500
+FireStorm=500
+MetalBlade=500
+TimeStopper=500
+QuickBoomerang=500
+LeafShield=500
+AirShooter=500
+CrashBombs=500
+BubbleLead=500
+AtomicFire=500
+NeedleCannon=500
+MagnetMissile=500
+GeminiLaser=500
+HardKnuckle=500
+TopSpin=500
+ShadowBlade=500
+SparkShock=500
+SearchSnake=500
 
 [Styles]
 Equipped=SpellMaster
 SpellMaster=10
-SpellMasterXP=1
 
 
 [Augments]
@@ -188,3 +190,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

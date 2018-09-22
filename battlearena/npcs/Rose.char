@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=120
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Name=Rose
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=120
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Status=alive
 
 
@@ -55,6 +55,8 @@ Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -99,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Rose's_Rapier
-Rose's_Rapier=$round($calc(1 + (($current.battlestreak / 2))))
+Rose's_Rapier=500
 
 [Skills]
 SwordMaster=100
@@ -123,13 +125,13 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=50
 
 [Techniques]
-WhipSmack=$round($calc(1 + (($current.battlestreak / 2))))
-MoreAndMore=$round($calc(1 + (($current.battlestreak / 2))))
-HardBlade=$round($calc(1 + (($current.battlestreak / 2))))
-DemonsDance=$round($calc(1 + (($current.battlestreak / 2))))
+WhipSmack=500
+MoreAndMore=500
+HardBlade=500
+DemonsDance=500
 
 
 [Item_Amount]
@@ -138,11 +140,10 @@ DemonsDance=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Ignitions]
-DarkDragoon=$iif($current.battlestreak < 200, 0, 1)
+DarkDragoon=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Augments]
@@ -158,7 +159,7 @@ Ice=100
 Water=100
 Lightning=100
 Light=100
-Dark=100
+Dark=0
 HandToHand=100
 Whip=100
 Sword=100
@@ -171,3 +172,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=0

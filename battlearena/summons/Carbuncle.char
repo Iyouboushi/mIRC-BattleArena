@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -9,7 +9,7 @@ Name=Carbuncle
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -51,7 +51,9 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -96,7 +98,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=CarbunclePower
-CarbunclePower=$round($calc(1 + (($current.battlestreak / 2))))
+CarbunclePower=500
 
 [Skills]
 MartialArts=100
@@ -115,11 +117,12 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
+DieHard=25
 
 [Techniques]
-SearingLight=$round($calc(1 + (($current.battlestreak / 2))))
-HealingRuby=$round($calc(1 + (($current.battlestreak / 2))))
-PoisonNails=$round($calc(1 + (($current.battlestreak / 2))))
+SearingLight=500
+HealingRuby=500
+PoisonNails=500
 
 
 [Item_Amount]

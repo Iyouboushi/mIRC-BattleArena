@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
-Str=20
-Def=30
-Int=20
-Spd=20
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Alexander
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
-Str=20
-Def=30
-Int=20
-Spd=20
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -52,7 +52,9 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -97,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=AlexanderPower
-AlexanderPower=$round($calc(1 + (($current.battlestreak / 2))))
+AlexanderPower=500
 
 [Skills]
 MartialArts=100
@@ -117,11 +119,12 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
+DieHard=25
 
 [Techniques]
-DivineJudement=$round($calc(1 + (($current.battlestreak / 2))))
-DivineSpear=$round($calc(1 + (($current.battlestreak / 2))))
-Holy=$round($calc(1 + (($current.battlestreak / 2))))
+DivineJudement=500
+DivineSpear=500
+Holy=500
 
 [Item_Amount]
 
@@ -129,7 +132,6 @@ Holy=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=Guardian
 Guardian=5
-GuardianXP=1
 
 
 [modifiers]

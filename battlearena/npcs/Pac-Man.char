@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
-IgnitionGauge=50
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Name=Pac-Man
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
-IgnitionGauge=50
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Status=alive
 
 
@@ -56,7 +56,8 @@ IgnoreQuicksilver=true
 CanTaunt=false
 trust=true
 ActionsPerTurn=$rand(1,2)
-
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -101,7 +102,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=PacPower
-PacPower=$round($calc(1 + (($current.battlestreak / 2))))
+PacPower=500
 
 [Skills]
 Zen=5
@@ -121,13 +122,13 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=30
 
 [Techniques]
-Pac-Jump=$round($calc(1 + (($current.battlestreak / 2))))
-FireHydrant=$round($calc(1 + (($current.battlestreak / 2))))
-BonusFruit=$round($calc(1 + (($current.battlestreak / 2))))
-PowerPellet=$round($calc(1 + (($current.battlestreak / 2))))
+Pac-Jump=750
+FireHydrant=750
+BonusFruit=750
+PowerPellet=750
 
 
 
@@ -135,8 +136,7 @@ PowerPellet=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Styles]
 Equipped=Trickster
-Trickster=3
-TricksterXP=1
+Trickster=5
 
 
 [Augments]
@@ -165,3 +165,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=2000
-Tp=250
-Str=10
-Def=10
-Int=10
-Spd=10
+Hp=5000
+Tp=500
+Str=25
+Def=25
+Int=25
+Spd=25
 Name=Jimmy
 
 
 [Battle]
-Hp=2000
-Tp=250
-Str=10
-Def=10
-Int=10
-Spd=10
+Hp=5000
+Tp=500
+Str=25
+Def=25
+Int=25
+Spd=25
 Status=alive
 
 
@@ -55,6 +55,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -100,8 +102,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=DwarvenRuneBlade
-DwarvenRuneBlade=$round($calc(1 + (($current.battlestreak / 2))))
-DwarvenShortBow=$round($calc(1 + (($current.battlestreak / 2))))
+DwarvenRuneBlade=250
+DwarvenShortBow=250
 
 
 [Skills]
@@ -124,14 +126,14 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=25
 
 [Techniques]
-HealingAle=$round($calc(1 + (($current.battlestreak / 2))))
-FastBlade=$round($calc(1 + (($current.battlestreak / 2))))
-CircleBlade=$round($calc(1 + (($current.battlestreak / 2))))
-FlamingArrow=$round($calc(1 + (($current.battlestreak / 2))))
-PiercingArrow=$round($calc(1 + (($current.battlestreak / 2))))
+HealingAle=250
+FastBlade=250
+CircleBlade=250
+FlamingArrow=250
+PiercingArrow=250
 
 
 [Item_Amount]
@@ -140,7 +142,6 @@ PiercingArrow=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=5
-WeaponMasterXP=1
 
 
 [Augments]
@@ -170,3 +171,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

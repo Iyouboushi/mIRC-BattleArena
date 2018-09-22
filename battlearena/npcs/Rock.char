@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=The Rock
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -54,6 +54,8 @@ Flag=NPC
 CanTaunt=true
 TauntFile=taunts_therock.txt
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -99,7 +101,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=PeoplesFist
-PeoplesFist=$round($calc(1 + (($current.battlestreak / 2))))
+PeoplesFist=500
 
 [Skills]
 Zen=5
@@ -120,14 +122,14 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=25
 
 [Techniques]
-RockBottom=$round($calc(1 + (($current.battlestreak / 2))))
-PeoplesElbow=$round($calc(1 + (($current.battlestreak / 2))))
-SamoanDrop=$round($calc(1 + (($current.battlestreak / 2))))
-FlyingClothesline=$round($calc(1 + (($current.battlestreak / 2))))
-Spinebuster=$round($calc(1 + (($current.battlestreak / 2))))
+RockBottom=500
+PeoplesElbow=500
+SamoanDrop=500
+FlyingClothesline=500
+Spinebuster=500
 
 
 [Item_Amount]
@@ -136,7 +138,7 @@ Spinebuster=$round($calc(1 + (($current.battlestreak / 2))))
 
 [Styles]
 Equipped=Wrestlemania
-Wrestlemania=12
+Wrestlemania=15
 
 
 [Augments]
@@ -165,3 +167,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

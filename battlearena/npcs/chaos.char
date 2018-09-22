@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 IgnitionGauge=0
 Name=chaos
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 IgnitionGauge=0
 Status=alive
 
@@ -56,6 +56,7 @@ IgnoreQuicksilver=true
 CanTaunt=false
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
 ActionsPerTurn=$rand(1,2)
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -100,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=HoleyGloves
-HoleyGloves=$round($calc(1 + (($current.battlestreak / 2))))
+HoleyGloves=500
 
 [Skills]
 MartialArts=100
@@ -123,21 +124,21 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=90
 
 [Techniques]
-SeraphimRush=$round($calc(1 + (($current.battlestreak / 2))))
-AngelShot=$round($calc(1 + (($current.battlestreak / 2))))
-DemonBanisher=$round($calc(1 + (($current.battlestreak / 2))))
-DivineSpear=$round($calc(1 + (($current.battlestreak / 2))))
-Cataclysm=$round($calc(1 + (($current.battlestreak / 2))))
-SeraphimWave=$round($calc(1 + (($current.battlestreak / 2))))
-HealingDew=$round($calc(1 + (($current.battlestreak / 2))))
-PhoenixStrike=$round($calc(1 + (($current.battlestreak / 2))))
+SeraphimRush=750
+AngelShot=750
+DemonBanisher=750
+DivineSpear=750
+Cataclysm=750
+SeraphimWave=750
+HealingDew=750
+PhoenixStrike=750
 
 
 [Item_Amount]
-Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)
+Dark-Matter=$iif(%ai.monster.name = Zemus, 10, 0)
 
 [Augments]
 HoleyGloves=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge.HurtEthereal
@@ -146,26 +147,23 @@ AsherGuns=DecreaseMechEnergyCost.EnhanceRanged.IgnoreDefense.IgnoreMetalDefense.
 
 [Styles]
 Equipped=Guardian
-Guardian=12
-GuardianXP=1
+Guardian=15
 
 
 [mech]
 name=E.S. Asher
 inUse=false
-EngineLevel=$iif($current.battlestreak < 1000, 0, 0.7)
-HpMax=20000
-HpCurrent=20000
-EnergyMax=10000
-EnergyCurrent=10000
+EngineLevel=$iif($current.battlestreak < 5000, 0, 0.7)
+HpMax=30000
+HpCurrent=30000
+EnergyMax=20000
+EnergyCurrent=20000
 EquippedCore=VesselOfAnima
 EquippedWeapon=AsherGuns
 Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -187,3 +185,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

@@ -129,6 +129,7 @@ Resist-Stun=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
+DieHard=10
 
 [Techniques]
 GreenSoulMode=$calc(1 + $current.battlestreak)
@@ -205,3 +206,6 @@ Final_Kamehameha=75
 Spirit_Excalibur=50
 Final_Flash=50
 God_Kamehameha=75
+MurderSpree=0
+MurderSpreeII=0
+FinishingTouch=0

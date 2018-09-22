@@ -231,6 +231,9 @@ BloodBath=45
 UltimaII=120
 KaustraII=45
 Chivalry=120
+MurderSpree=0
+MurderSpreeII=0
+FinishingTouch=0
 
 [NaturalArmor]
 Name=Goddess Defense

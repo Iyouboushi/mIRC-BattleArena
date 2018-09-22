@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=50
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=120
 Name=Cloud Strife
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=50
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=0
 Status=alive
 
 
@@ -33,7 +33,7 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a young man with spiky hair and wears the SOLDIER outfit. He wields the Buster Sword weapon.
+Char=is a young man with spiky hair and wears the SOLDIER outfit. He wields the large Buster Sword weapon.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
 [Stuff]
@@ -52,8 +52,11 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
+ai_type=techonly
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -98,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BusterSword
-BusterSword=$round($calc(1 + (($current.battlestreak / 2))))
+BusterSword=500
 
 
 [Skills]
@@ -120,17 +123,17 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=25
 
 
 [Techniques]
-Braver=$round($calc(1 + (($current.battlestreak / 2))))
-CrossSlash=$round($calc(1 + (($current.battlestreak / 2))))
-Blade_Beam=$round($calc(1 + (($current.battlestreak / 2))))
-Climhazzard=$round($calc(1 + (($current.battlestreak / 2))))
-Meteorain=$round($calc(1 + (($current.battlestreak / 2))))
-FinishingTouch=$round($calc(1 + (($current.battlestreak / 2))))
-Omnislash=$round($calc(1 + (($current.battlestreak / 2))))
-
+Braver=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
+CrossSlash=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
+Blade_Beam=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
+Climhazzard=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
+Meteorain=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
+FinishingTouch=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
+Omnislash=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 1000, 0)
 
 [Item_Amount]
 
@@ -138,7 +141,6 @@ Omnislash=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Augments]
@@ -146,8 +148,6 @@ BusterSword=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -169,3 +169,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

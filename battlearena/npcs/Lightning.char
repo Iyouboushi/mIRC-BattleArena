@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Lightning
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -55,6 +55,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -100,7 +102,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BlazefireSaber
-BlazefireSaber=$round($calc(1 + (($current.battlestreak / 2))))
+BlazefireSaber=500
 
 
 [Skills]
@@ -123,15 +125,15 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=500
 
 [Techniques]
-ArmyOfOne=$round($calc(1 + (($current.battlestreak / 2))))
-Blindside=$round($calc(1 + (($current.battlestreak / 2))))
-Flamestrike=$round($calc(1 + (($current.battlestreak / 2))))
-Froststrike=$round($calc(1 + (($current.battlestreak / 2))))
-Sparkstrike=$round($calc(1 + (($current.battlestreak / 2))))
-Aquastrike=$round($calc(1 + (($current.battlestreak / 2))))
+ArmyOfOne=500
+Blindside=500
+Flamestrike=500
+Froststrike=500
+Sparkstrike=500
+Aquastrike=500
 
 
 [Item_Amount]
@@ -140,7 +142,6 @@ Aquastrike=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Augments]
@@ -169,3 +170,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=60
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Name=Urahara Kisuke
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=60
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Status=alive
 
 
@@ -60,6 +60,8 @@ IgnoreQuicksilver=true
 CanTaunt=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -105,7 +107,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=Benihime
-Benihime=$round($calc(1 + (($current.battlestreak / 2))))
+Benihime=500
 
 [Skills]
 desperateblows=1
@@ -130,23 +132,23 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=30
 
 [Techniques]
-SwiftBlade=$round($calc(1 + (($current.battlestreak / 2))))
+SwiftBlade=500
 
 
 [Item_Amount]
-Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)
+Dark-Matter=$iif(%ai.monster.name = Zemus, 10, 0)
 
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
+
 
 [Ignitions]
-OkiroBenihime=$iif($current.battlestreak < 200, 0, 1)
+OkiroBenihime=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Augments]
@@ -175,3 +177,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

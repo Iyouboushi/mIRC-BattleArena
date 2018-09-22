@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
+Hp=9000
 Tp=1000
-Str=20
-Def=20
-Int=20
-Spd=20
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Lara Croft
 
 
 [Battle]
-Hp=5000
+Hp=9000
 Tp=1000
-Str=20
-Def=20
-Int=20
-Spd=20
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -33,7 +33,7 @@ Hused=1
 Dused=1
 Char=is a British archaeologist and well-known Tomb Raider. She has long, brown hair that is braided into a ponytail, and wears a sleevless green shirt, brown shorts, black gloves, and brown boots.
 Rage=yells in rage!
-BossQuote=Seems like I'm not the only one here. Let's work together and see what this island has hidden.
+BossQuote=$iif(%battletype = dungeon, Seems like I'm not the only one here. Let's work together and see what this island has hidden.)
 
 [Stuff]
 RedOrbs=0
@@ -51,16 +51,14 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
-Streak=500
 CanTaunt=false
 CanFlee=false
-IgnoreOutpost=true
-IgnorePresident=true
 ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [monster]
-type=humans
+type=human
 TechLearn=false
 size=medium
 
@@ -107,10 +105,10 @@ zombie.timer=1
 
 [Weapons]
 Equipped=TacticalPistol
-TacticalPistol=$round($calc(1 + (($current.battlestreak / 2))))
-CompoundBow=$round($calc(1 + (($current.battlestreak / 2))))
-VanirRifle=$round($calc(1 + (($current.battlestreak / 2))))
-Thunderclap=$iif($current.battlestreak >= 5000, $round($calc(1 + (($current.battlestreak / 2)))), 0)
+TacticalPistol=500
+CompoundBow=500
+VanirRifle=500
+Thunderclap=$iif($current.battlestreak >= 5000, 500, 0)
 
 
 [Skills]
@@ -134,24 +132,24 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=25
 
 [Techniques]
-RapidShotII=$round($calc(1 + (($current.battlestreak / 2))))
-ChargedshotII=$round($calc(1 + (($current.battlestreak / 2))))
-LastStandII=$round($calc(1 + (($current.battlestreak / 2))))
-FlamingArrowII=$round($calc(1 + (($current.battlestreak / 2))))
-EagleEyeShotII=$round($calc(1 + (($current.battlestreak / 2))))
-BlastArrowII=$round($calc(1 + (($current.battlestreak / 2))))
-HotShotII=$round($calc(1 + (($current.battlestreak / 2))))
-ChargedShotII=$round($calc(1 + (($current.battlestreak / 2))))
-BlastShotII=$round($calc(1 + (($current.battlestreak / 2))))
-HotShotIII=$round($calc(1 + (($current.battlestreak / 2))))
-ChargedShotIII=$round($calc(1 + (($current.battlestreak / 2))))
-BlastShotIII=$round($calc(1 + (($current.battlestreak / 2))))
-ChargedShot=$round($calc(1 + (($current.battlestreak / 2))))
-BlastShot=$round($calc(1 + (($current.battlestreak / 2))))
-Detonator=$round($calc(1 + (($current.battlestreak / 2))))
+RapidShotII=500
+ChargedshotII=500
+LastStandII=500
+FlamingArrowII=500
+EagleEyeShotII=500
+BlastArrowII=500
+HotShotII=500
+ChargedShotII=500
+BlastShotII=500
+HotShotIII=500
+ChargedShotIII=500
+BlastShotIII=500
+ChargedShot=500
+BlastShot=500
+Detonator=500
 
 [Augments]
 TacticalPistol=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
@@ -198,3 +196,8 @@ EnergyBlaster=100
 Lightsaber=100
 Hammer=100
 Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -9,7 +9,7 @@ Name=Dark Magician
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -51,7 +51,9 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -96,7 +98,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BlackMagic
-BlackMagic=$round($calc(1 + (($current.battlestreak / 2))))
+BlackMagic=500
 
 [Skills]
 Zen=5
@@ -120,9 +122,9 @@ Resist-Confuse=100
 
 
 [Techniques]
-BlackMagicAttack=$round($calc(1 + (($current.battlestreak / 2))))
-ThousandKnives=$round($calc(1 + (($current.battlestreak / 2))))
-FireIV=$round($calc(1 + (($current.battlestreak / 2))))
+BlackMagicAttack=500
+ThousandKnives=500
+FireIV=500
 
 [Item_Amount]
 

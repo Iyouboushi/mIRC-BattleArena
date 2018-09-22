@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=30
 Def=30
@@ -10,7 +10,7 @@ IgnitionGauge=100
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=30
 Def=30
@@ -54,7 +54,9 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreDrain=true
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 
 [monster]
@@ -105,7 +107,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RayquazaPower
-RayquazaPower=$round($calc(1 + (($current.battlestreak / 2))))
+RayquazaPower=750
 
 
 [Skills]
@@ -123,12 +125,13 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
+DieHard=25
 
 [Techniques]
-Draco_Meteor=$round($calc(1 + (($current.battlestreak / 2))))
-Dragon_Ascent=$iif($current.battlestreak >= 6000, $round($calc(1 + (($current.battlestreak / 2)))), 0)
-Dragon_Claw=$round($calc(1 + (($current.battlestreak / 2))))
-Dragon_Pulse=$round($calc(1 + (($current.battlestreak / 2))))
+Draco_Meteor=750
+Dragon_Ascent=750
+Dragon_Claw=750
+Dragon_Pulse=750
 
 [Augments]
 

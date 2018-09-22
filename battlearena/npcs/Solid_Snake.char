@@ -1,22 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
-IgnitionGauge=0
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 Name=Solid Snake
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
-IgnitionGauge=0
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 Status=alive
 
 
@@ -57,6 +55,8 @@ RageMode=Ignore
 CanUseItems=True
 trust=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Monster]
 type=human
@@ -106,9 +106,9 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Fists
-Fists=$round($calc(1 + (($current.battlestreak / 2))))
-Socom=$round($calc(1 + (($current.battlestreak / 2))))
-PSG-1=$round($calc(1 + (($current.battlestreak / 2))))
+Fists=500
+Socom=500
+PSG-1=500
 
 [Augments]
 Fists=MeleeBonus.TechBonus.HurtEthereal
@@ -137,13 +137,13 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 Android-Killer=20
-
+DieHard=30
 
 
 [Techniques]
-DoublePunch=$round($calc(1 + (($current.battlestreak / 2))))
-ShoulderTackle=$round($calc(1 + (($current.battlestreak / 2))))
-AsuranFists=$round($calc(1 + (($current.battlestreak / 2))))
+DoublePunch=750
+ShoulderTackle=750
+AsuranFists=750
 
 
 [Item_Amount]
@@ -152,6 +152,9 @@ Flash_Grenade=10
 Grappling_Hook=10
 HolyHandGrenade=1
 
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
 
 [Augments]
 Fists=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
@@ -180,3 +183,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

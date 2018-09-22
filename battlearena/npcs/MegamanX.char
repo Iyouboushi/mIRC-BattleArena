@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=60
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Name=Mega Man X
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=60
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Status=alive
 
 
@@ -52,9 +52,12 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
+ai_type=techonly
 CanTaunt=false
 IgnoreElementalMessage=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -100,7 +103,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=X-BusterMk1
-X-BusterMk1=$round($calc(1 + (($current.battlestreak / 2))))
+X-BusterMk1=500
 
 
 [Skills]
@@ -124,17 +127,17 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=25
 
 [Techniques]
-ShotgunIce=$round($calc(1 + (($current.battlestreak / 2))))
-StormTornado=$round($calc(1 + (($current.battlestreak / 2))))
-FireWave=$round($calc(1 + (($current.battlestreak / 2))))
-ChameleonSting=$round($calc(1 + (($current.battlestreak / 2))))
-ElectricSpark=$round($calc(1 + (($current.battlestreak / 2))))
-RollingShield=$round($calc(1 + (($current.battlestreak / 2))))
-BoomerangCutter=$round($calc(1 + (($current.battlestreak / 2))))
-HomingTorpedo=$round($calc(1 + (($current.battlestreak / 2))))
+ShotgunIce=500
+StormTornado=500
+FireWave=500
+ChameleonSting=500
+ElectricSpark=500
+RollingShield=500
+BoomerangCutter=500
+HomingTorpedo=500
 
 
 [Item_Amount]
@@ -143,11 +146,10 @@ HomingTorpedo=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=SpellMaster
 SpellMaster=10
-SpellMasterXP=1
 
 
 [Ignitions]
-DrLightCapsule=$iif($current.battlestreak < 200, 0, 1)
+DrLightCapsule=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Augments]
@@ -176,3 +178,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

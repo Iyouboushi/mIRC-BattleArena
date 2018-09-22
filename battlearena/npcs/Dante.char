@@ -1,23 +1,23 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 Name=Dante
-IgnitionGauge=100
+IgnitionGauge=150
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 Status=alive
-IgnitionGauge=100
+IgnitionGauge=150
 
 
 [Rage]
@@ -59,6 +59,8 @@ CanTaunt=true
 TauntFile=taunts_dante.txt
 trust=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 
 [Status]
@@ -105,8 +107,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Rebellion
-Rebellion=$round($calc(1 + (($current.battlestreak / 2))))
-Ebony&Ivory=$round($calc(1 + (($current.battlestreak / 2))))
+Rebellion=500
+Ebony&Ivory=500
 
 
 [Skills]
@@ -130,24 +132,23 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=30
 
 [Techniques]
-Stinger=$round($calc(1 + (($current.battlestreak / 2))))
-MillionStab=$round($calc(1 + (($current.battlestreak / 2))))
-Drive=$round($calc(1 + (($current.battlestreak / 2))))
-ChargedShot=$round($calc(1 + (($current.battlestreak / 2))))
-RapidShot=$round($calc(1 + (($current.battlestreak / 2))))
+Stinger=750
+MillionStab=750
+Drive=750
+ChargedShot=750
+RapidShot=750
 
 
 [Styles]
 Equipped=Trickster
-SpellMaster=10
-SpellMasterXP=0
+Trickster=10
 
 
 [Ignitions]
-DTrigger=$iif($current.battlestreak < 200, 0, 1)
+DTrigger=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Augments]
@@ -158,8 +159,6 @@ Ifrit=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -181,3 +180,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

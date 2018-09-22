@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=3000
-Tp=5000
-Str=1
-Def=1
-Int=1
-Spd=1
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 Name=French Taunter
 IgnitionGauge=0
 
 
 [Battle]
-Hp=3000
-Tp=5000
-Str=1
-Def=1
-Int=1
-Spd=1
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 Status=alive
 IgnitionGauge=0
 
@@ -49,10 +49,11 @@ TauntFile=taunts_frenchtaunter.txt
 CanFlee=false
 IgnoreQuicksilver=true
 HurtByTaunt=true
-JustReleaseDefense=100
 ai_type=$iif(%boss.type = crystalshadow, tauntonly, techonly)
 trust=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [monster]
 type=human
@@ -95,7 +96,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=TauntPower
-TauntPower=$iif(%battle.type = ai, %ai.battle.level, $round($calc($return_playerlevelstotal / 2),0))
+TauntPower=500
 
 
 [Skills]
@@ -119,12 +120,14 @@ Resist-Petrify=100
 Resist-Disarm=100
 
 [Techniques]
-Cow_Launch=$iif(%battle.type = ai, %ai.battle.level, $round($calc($return_playerlevelstotal / 2),0))
-Chicken_Toss=$iif(%battle.type = ai, %ai.battle.level, $round($calc($return_playerlevelstotal / 2),0))
+Cow_Launch=750
+Chicken_Toss=750
 
 [Item_Amount]
 
-
+[Styles]
+Equipped=Guardian
+Guardian=10
 
 [modifiers]
 Heal=none
@@ -148,8 +151,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
-
-[Styles]
-Equipped=Guardian
-Guardian=10
-GuardianXP=1
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

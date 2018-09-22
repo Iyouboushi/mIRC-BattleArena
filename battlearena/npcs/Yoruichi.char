@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=30
-Def=30
-Int=30
-Spd=40
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=200
+IgnitionGauge=150
 Name=Yoruichi Shihouin
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=30
-Def=30
-Int=30
-Spd=40
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=200
+IgnitionGauge=150
 Status=alive
 
 
@@ -62,6 +62,9 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=true
 ActionsPerTurn=2
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
+IgnoreElementalMessage=true
 
 [Status]
 Poison=no
@@ -107,7 +110,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=ShihouinFists
-ShihouinFists=$round($calc(1 + (($current.battlestreak / 2))))
+ShihouinFists=500
 
 [Skills]
 mightystrike=1
@@ -142,17 +145,17 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=55
 
 [Techniques]
-DoublePunch=$round($calc(1 + (($current.battlestreak / 2))))
-ShoulderTackle=$round($calc(1 + (($current.battlestreak / 2))))
-AsuranFists=$round($calc(1 + (($current.battlestreak / 2))))
-TornadoKick=$round($calc(1 + (($current.battlestreak / 2))))
-ShinjinSpiral=$round($calc(1 + (($current.battlestreak / 2))))
-ShitotsuSansen=$round($calc(1 + (($current.battlestreak / 2))))
-ShunkouRaigeki=$iif($readini($char(Yoruichi), status, ignition.on) = on, $calc(100 + $current.battlestreak), 0)
-ShunkouRaijinSenkei=$iif($readini($char(Yoruichi), status, ignition.on) = on, $calc(500 + $current.battlestreak), 0)
+DoublePunch=750
+ShoulderTackle=750
+AsuranFists=750
+TornadoKick=750
+ShinjinSpiral=750
+ShitotsuSansen=750
+ShunkouRaigeki=$iif($readini($char(Yoruichi), status, ignition.on) = on, 750, 0)
+ShunkouRaijinSenkei=$iif($readini($char(Yoruichi), status, ignition.on) = on, 750, 0)
 
 
 [Item_Amount]
@@ -161,11 +164,10 @@ ShunkouRaijinSenkei=$iif($readini($char(Yoruichi), status, ignition.on) = on, $c
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Ignitions]
-Shunkou-Lightning=$iif($current.battlestreak < 200, 0, 1)
+Shunkou-Lightning=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Augments]
@@ -194,3 +196,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

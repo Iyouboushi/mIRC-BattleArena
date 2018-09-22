@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 IgnitionGauge=200
 Name=KOS-MOS
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
 IgnitionGauge=200
 Status=alive
 
@@ -60,7 +60,7 @@ CanTaunt=false
 IgnoreElementalMessage=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
 ActionsPerTurn=2
-
+BattleStats=IgnoreTP.IgnoreHP
 
 [Status]
 Poison=no
@@ -106,7 +106,7 @@ auto-regen=on
 
 [Weapons]
 Equipped=KosmosFists
-KosmosFists=$round($calc(1 + (($current.battlestreak / 2))))
+KosmosFists=500
 
 
 [Skills]
@@ -151,25 +151,25 @@ slime-killer=25
 
 
 [Techniques]
-R-Cannon=$round($calc(1 + (($current.battlestreak / 2))))
-R-Blade=$round($calc(1 + (($current.battlestreak / 2))))
-R-Dragon=$round($calc(1 + (($current.battlestreak / 2))))
-F-Scythe=$round($calc(1 + (($current.battlestreak / 2))))
-R-Drill=$round($calc(1 + (($current.battlestreak / 2))))
-F-RShot=$round($calc(1 + (($current.battlestreak / 2))))
-K-Axe=$round($calc(1 + (($current.battlestreak / 2))))
-K-Valkyrie=$round($calc(1 + (($current.battlestreak / 2))))
+R-Cannon=1000
+R-Blade=1000
+R-Dragon=1000
+F-Scythe=1000
+R-Drill=1000
+F-RShot=1000
+K-Axe=1000
+K-Valkyrie=1000
 Hilbert_Effect=1
 S-Chain=1
-DexEtherRa=$round($calc(1 + (($current.battlestreak / 2))))
-DexEtherFa=$round($calc(1 + (($current.battlestreak / 2))))
-DexEtherLe=$round($calc(1 + (($current.battlestreak / 2))))
+DexEtherRa=1000
+DexEtherFa=1000
+DexEtherLe=1000
 
 [Ignitions]
-Animus=$iif($current.battlestreak < 200, 0, 1)
+Animus=$iif($current.battlestreak < 1000, 0, 1)
 
 [Item_Amount]
-Dark-Matter=$iif(%ai.monster.name = Zemus, 1, 0)
+Dark-Matter=$iif(%ai.monster.name = Zemus, 10, 0)
 
 [Augments]
 KosmosFists=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge.EnhanceParry.HurtEthereal
@@ -179,17 +179,16 @@ DinahWeapons=DecreaseMechEnergyCost.EnhanceRanged.EnhanceSword.IgnoreDefense.Ign
 [Styles]
 Equipped=Guardian
 Guardian=15
-GuardianXP=0
 
 
 [mech]
 name=E.S. Dinah
 inUse=false
-EngineLevel=$iif($current.battlestreak < 1000, 0, 0.7)
-HpMax=20000
-HpCurrent=20000
-EnergyMax=10000
-EnergyCurrent=10000
+EngineLevel=$iif($current.battlestreak < 5000, 0, 0.7)
+HpMax=30000
+HpCurrent=30000
+EnergyMax=20000
+EnergyCurrent=20000
 EquippedCore=VesselOfAnima
 EquippedWeapon=DinahWeapons
 Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal
@@ -197,14 +196,14 @@ Augments=DecreaseMechEnergyCost.EnhanceDodge.EnhanceDoubleTurnChance.MeleeBonus.
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=100
-Dark=100
+Earth=80
+Fire=80
+Wind=80
+Water=80
+Ice=80
+Lightning=80
+Light=80
+Dark=80
 HandToHand=80
 Whip=80
 Sword=80
@@ -235,3 +234,9 @@ Lanmola=80
 Lightsaber=80
 Nunchuku=80
 SilverSwords=80
+Bat=80
++Fire=80
++Ice=80
++Wind=80
++Water=80
++Dark=80

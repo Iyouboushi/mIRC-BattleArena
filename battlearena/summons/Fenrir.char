@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=30
 Def=20
@@ -9,7 +9,7 @@ Name=Fenrir
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=30
 Def=20
@@ -51,7 +51,9 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -97,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=FenrirPower
-FenrirPower=$round($calc(1 + (($current.battlestreak / 2))))
+FenrirPower=500
 
 
 [Skills]
@@ -116,12 +118,12 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
-
+DieHard=25
 
 [Techniques]
-HowlingMoon=$round($calc(1 + (($current.battlestreak / 2))))
-CrescentFang=$round($calc(1 + (($current.battlestreak / 2))))
-EclipseBite=$round($calc(1 + (($current.battlestreak / 2))))
+HowlingMoon=500
+CrescentFang=500
+EclipseBite=500
 
 
 [Item_Amount]

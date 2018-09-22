@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=120
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Name=Dart Feld
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=120
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=150
 Status=alive
 
 
@@ -54,6 +54,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -99,7 +101,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Broad_Sword
-Broad_Sword=$round($calc(1 + (($current.battlestreak / 2))))
+Broad_Sword=500
 
 
 [Skills]
@@ -122,13 +124,13 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=25
 
 [Techniques]
-DoubleSlash=$round($calc(1 + (($current.battlestreak / 2))))
-BurningRush=$round($calc(1 + (($current.battlestreak / 2))))
-MadnessHero=$round($calc(1 + (($current.battlestreak / 2))))
-BlazingDynamo=$round($calc(1 + (($current.battlestreak / 2))))
+DoubleSlash=500
+BurningRush=500
+MadnessHero=500
+BlazingDynamo=500
 
 
 [Item_Amount]
@@ -137,7 +139,6 @@ BlazingDynamo=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Augments]
@@ -145,13 +146,13 @@ Broad_Sword=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
 
 
 [Ignitions]
-RedDragoon=$iif($current.battlestreak < 200, 0, 1)
+RedDragoon=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [modifiers]
 Heal=none
 Earth=100
-Fire=100
+Fire=0
 Wind=100
 Ice=100
 Water=100
@@ -170,3 +171,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=0
++Ice=100
++Wind=100
++Water=100
++Dark=100

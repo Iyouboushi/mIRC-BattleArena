@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=60
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Name=Old Man Willakers
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
-IgnitionGauge=60
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Status=alive
 
 
@@ -58,6 +58,8 @@ TauntFile=taunts_brucewillakers.txt
 SpawnAfterDeath=ZombieWillakers
 RageMode=ignore
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -102,8 +104,8 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Excaliju
-Excaliju=$round($calc(1 + (($current.battlestreak / 2))))
-Virendra=$round($calc(1 + (($current.battlestreak / 2))))
+Excaliju=500
+Virendra=500
 
 [Skills]
 Swordmaster=100
@@ -125,15 +127,16 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=30
 
 
 [Techniques]
-Requiescat=$round($calc(1 + (($current.battlestreak / 2))))
-MightyHealingAle=$round($calc(1 + (($current.battlestreak / 2))))
-DeathStare=$round($calc(1 + (($current.battlestreak / 2))))
-ApexArrow=$round($calc(1 + (($current.battlestreak / 2))))
-EagleEyeShot=$round($calc(1 + (($current.battlestreak / 2))))
-MillionStab=$round($calc(1 + (($current.battlestreak / 2))))
+Requiescat=750
+MightyHealingAle=750
+DeathStare=750
+ApexArrow=750
+EagleEyeShot=750
+MillionStab=750
 
 
 [Item_Amount]
@@ -142,7 +145,6 @@ MillionStab=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Augments]
@@ -151,12 +153,10 @@ Virendra=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
 
 
 [Ignitions]
-ExcalijuProc=$iif($current.battlestreak < 200, 0, 1)
+ExcalijuProc=$iif($current.battlestreak < 500, 0, 1)
 
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=100
 Fire=100
@@ -178,3 +178,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

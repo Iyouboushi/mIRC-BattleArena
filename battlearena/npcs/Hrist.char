@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
+Hp=9000
 Tp=1000
-Str=20
-Def=20
-Int=20
-Spd=20
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Hrist
 
 
 [Battle]
-Hp=5000
+Hp=9000
 Tp=1000
-Str=20
-Def=20
-Int=20
-Spd=20
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -55,9 +55,9 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
-ai_type=
-BattleStats=IgnoreTP
-
+ai_type=techonly
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -103,7 +103,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ValkyrieSword
-ValkyrieSword=$round($calc(1 + (($current.battlestreak / 2))))
+ValkyrieSword=500
 
 
 [Skills]
@@ -127,15 +127,14 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-DieHard=20
-
+DieHard=25
 
 
 [Techniques]
-NibelungValesti=$round($calc(1 + (($current.battlestreak / 2))))
-Glowing_Pierce=$round($calc(1 + (($current.battlestreak / 2))))
-Ptero_Attack=$round($calc(1 + (($current.battlestreak / 2))))
-Vertical_Raid=$round($calc(1 + (($current.battlestreak / 2))))
+NibelungValesti=500
+Glowing_Pierce=500
+Ptero_Attack=500
+Vertical_Raid=500
 
 
 [Item_Amount]
@@ -172,3 +171,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=0

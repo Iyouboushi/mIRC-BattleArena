@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -9,7 +9,7 @@ Name=Leviathan
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -52,7 +52,9 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -97,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=LeviathanPower
-LeviathanPower=$round($calc(1 + (($current.battlestreak / 2))))
+LeviathanPower=500
 
 
 [Skills]
@@ -117,13 +119,13 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
-
+DieHard=25
 
 [Techniques]
-TidalWave=$round($calc(1 + (($current.battlestreak / 2))))
-TailWhip=$round($calc(1 + (($current.battlestreak / 2))))
-GrandFall=$round($calc(1 + (($current.battlestreak / 2))))
-Flood=$round($calc(1 + (($current.battlestreak / 2))))
+TidalWave=500
+TailWhip=500
+GrandFall=500
+Flood=500
 
 
 [Item_Amount]

@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Ryudo
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -52,6 +52,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -96,7 +98,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=RyudoSword
-RyudoSword=$round($calc(1 + (($current.battlestreak / 2))))
+RyudoSword=500
 
 [Skills]
 Zen=5
@@ -117,13 +119,13 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=25
 
 [Techniques]
-TenseikenSlash=$round($calc(1 + (($current.battlestreak / 2))))
-FlyingTenseiken=$round($calc(1 + (($current.battlestreak / 2))))
-PurpleLightning=$round($calc(1 + (($current.battlestreak / 2))))
-SkyDragonSlash=$round($calc(1 + (($current.battlestreak / 2))))
+TenseikenSlash=500
+FlyingTenseiken=500
+PurpleLightning=500
+SkyDragonSlash=500
 
 
 [Item_Amount]
@@ -132,7 +134,6 @@ SkyDragonSlash=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Augments]
@@ -161,3 +162,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

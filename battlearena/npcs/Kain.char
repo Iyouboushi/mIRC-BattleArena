@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Kain Highwind
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=20
-Def=20
-Int=20
-Spd=20
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -41,6 +41,7 @@ ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
 
+
 [Info]
 Gender=his
 Gender2=him
@@ -52,6 +53,8 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -96,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=KainsLance
-KainsLance=$round($calc(1 + (($current.battlestreak / 2))))
+KainsLance=500
 
 [Skills]
 PoleMaster=100
@@ -117,15 +120,16 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=25
 
 
 [Techniques]
-Jump=$round($calc(1 + (($current.battlestreak / 2))))
-HighJump=$round($calc(1 + (($current.battlestreak / 2))))
-SpiritJump=$round($calc(1 + (($current.battlestreak / 2))))
-SoulJump=$round($calc(1 + (($current.battlestreak / 2))))
-Drakesbane=$round($calc(1 + (($current.battlestreak / 2))))
-Stardiver=$round($calc(1 + (($current.battlestreak / 2))))
+Jump=500
+HighJump=500
+SpiritJump=500
+SoulJump=500
+Drakesbane=500
+Stardiver=500
 
 
 [Item_Amount]
@@ -134,7 +138,6 @@ Stardiver=$round($calc(1 + (($current.battlestreak / 2))))
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Augments]
@@ -163,3 +166,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

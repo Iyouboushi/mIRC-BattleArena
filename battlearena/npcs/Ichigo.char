@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Name=Ichigo Kurosaki
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=15
-Def=15
-Int=15
-Spd=15
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=75
+Def=75
+Int=75
+Spd=75
+IgnitionGauge=150
 Status=alive
 
 
@@ -56,9 +56,10 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-Streak=-1000
 trust=true
-ActionsPerTurn=$iif($readini($char(Ichigo), status, ignition.on) = on, 2, 1)
+ActionsPerTurn=$iif($readini($char(Ichigo), status, ignition.on) = on, 2, $rand(1,2))
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -104,7 +105,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=Zangetsu
-Zangetsu=$round($calc(1 + (($current.battlestreak / 2))))
+Zangetsu=500
 
 
 [Skills]
@@ -127,11 +128,11 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=25
 
 
 [Techniques]
-GetsugaTenshou=$round($calc(1 + (($current.battlestreak / 2))))
+GetsugaTenshou=750
 
 
 [Item_Amount]
@@ -144,11 +145,10 @@ Zangetsu=MeleeBonus.TechBonus.EnhanceKatana.HurtEthereal
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Ignitions]
-TensaZangetsu=$iif($current.battlestreak < 300, 0, 1)
+TensaZangetsu=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [modifiers]
@@ -173,3 +173,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

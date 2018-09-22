@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=$iif(%battle.type = dungeon, 30000, 15000)
+Hp=9000
 Tp=1500
-Str=20
-Def=20
-Int=20
-Spd=20
+Str=75
+Def=75
+Int=75
+Spd=75
 Name=Samus Aran
 
 
 [Battle]
-Hp=15000
+Hp=9000
 Tp=1500
-Str=20
-Def=20
-Int=20
-Spd=20
+Str=75
+Def=75
+Int=75
+Spd=75
 Status=alive
 
 
@@ -58,6 +58,7 @@ trust=$iif(%battle.type = dungeon, false, true)
 BattleStats=IgnoreHP.IgnoreTP
 ActionsPerTurn=$rand(1,2)
 ai_type=techonly
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -104,7 +105,7 @@ auto-regen=$iif(%battle.type = dungeon, yes, no)
 
 [Weapons]
 Equipped=ChozoArmCannon
-ChozoArmCannon=$round($calc(1 + (($current.battlestreak / 2))))
+ChozoArmCannon=500
 
 
 [Skills]
@@ -128,22 +129,22 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=30
 
 [Techniques]
-PoweredShot=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-Missile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-SuperMissile=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-Bomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-PowerBomb=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-ScrewAttack=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-IceBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-PlasmaBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-DarkBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-DarkBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-LightBeam=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-SunBurst=$iif($dungeon.currentroom = 10, 0, $round($calc(1 + (($current.battlestreak / 2)))))
-PhazonBeam=$iif($dungeon.currentroom = 10, 1000, 0)
+PoweredShot=$iif($dungeon.currentroom = 10, 0, 500)
+Missile=$iif($dungeon.currentroom = 10, 0, 500)
+SuperMissile=$iif($dungeon.currentroom = 10, 0, 500)
+Bomb=$iif($dungeon.currentroom = 10, 0, 500)
+PowerBomb=$iif($dungeon.currentroom = 10, 0, 500)
+ScrewAttack=$iif($dungeon.currentroom = 10, 0, 500)
+IceBeam=$iif($dungeon.currentroom = 10, 0, 500)
+PlasmaBeam=$iif($dungeon.currentroom = 10, 0, 500)
+DarkBeam=$iif($dungeon.currentroom = 10, 0, 500)
+DarkBurst=$iif($dungeon.currentroom = 10, 0, 500)
+LightBeam=$iif($dungeon.currentroom = 10, 0, 500)
+SunBurst=$iif($dungeon.currentroom = 10, 0, 500)
+PhazonBeam=$iif($dungeon.currentroom = 10, 750, 0)
 
 
 [Item_Amount]
@@ -200,9 +201,14 @@ Axe=100
 Dagger=100
 Mace=100
 Stave=100
+EnergyBlaster=100
 Lightsaber=100
 Hammer=100
-EnergyBlaster=100
 Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100
 ResistTechs=$iif($dungeon.currentroom = 10, 25, 10)
 ResistMelee=$iif($dungeon.currentroom = 10, 25, 10)

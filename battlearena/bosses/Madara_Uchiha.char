@@ -311,6 +311,9 @@ BloodBath=45
 UltimaII=45
 KaustraII=45
 Chivalry=45
+MurderSpree=0
+MurderSpreeII=0
+FinishingTouch=0
 
 [Styles]
 Equipped=WeaponMaster

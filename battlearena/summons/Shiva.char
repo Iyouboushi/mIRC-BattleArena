@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -9,7 +9,7 @@ Name=Shiva
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=20
 Def=20
@@ -52,7 +52,9 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -97,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=ShivaPower
-ShivaPower=$round($calc(1 + (($current.battlestreak / 2))))
+ShivaPower=500
 
 [Skills]
 Zen=5
@@ -118,13 +120,13 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
-
+DieHard=25
 
 [Techniques]
-DiamondDust=$round($calc(1 + (($current.battlestreak / 2))))
-HeavenlyStrike=$round($calc(1 + (($current.battlestreak / 2))))
-AxeKick=$round($calc(1 + (($current.battlestreak / 2))))
-Freeze=$round($calc(1 + (($current.battlestreak / 2))))
+DiamondDust=500
+HeavenlyStrike=500
+AxeKick=500
+Freeze=500
 
 [Item_Amount]
 

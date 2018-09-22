@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=5000
-Tp=500
-Str=30
-Def=30
-Int=30
-Spd=40
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=100
+IgnitionGauge=150
 Name=Yuushirou Shihouin
 
 
 [Battle]
-Hp=5000
-Tp=500
-Str=30
-Def=30
-Int=30
-Spd=40
-IgnitionGauge=100
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=100
+IgnitionGauge=150
 Status=alive
 
 
@@ -59,6 +59,8 @@ Flag=NPC
 IgnoreQuicksilver=true
 CanTaunt=false
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -104,7 +106,7 @@ conservetp.on=off
 
 [Weapons]
 Equipped=ShihouinFists
-ShihouinFists=$round($calc(1 + (($current.battlestreak / 2))))
+ShihouinFists=500
 
 [Skills]
 mightystrike=1
@@ -139,16 +141,16 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=30
 
 [Techniques]
-DoublePunch=$round($calc(1 + (($current.battlestreak / 2))))
-ShoulderTackle=$round($calc(1 + (($current.battlestreak / 2))))
-AsuranFists=$round($calc(1 + (($current.battlestreak / 2))))
-TornadoKick=$round($calc(1 + (($current.battlestreak / 2))))
-ShinjinSpiral=$round($calc(1 + (($current.battlestreak / 2))))
-ShitotsuSansen=$round($calc(1 + (($current.battlestreak / 2))))
-ShunkouBakuenMusou=$iif($readini($char(Yuushirou), status, ignition.on) = on, $calc(100 + $current.battlestreak), 0)
+DoublePunch=500
+ShoulderTackle=500
+AsuranFists=500
+TornadoKick=500
+ShinjinSpiral=500
+ShitotsuSansen=500
+ShunkouBakuenMusou=$iif($readini($char(Yuushirou), status, ignition.on) = on, 500, 0)
 
 
 [Item_Amount]
@@ -157,11 +159,10 @@ ShunkouBakuenMusou=$iif($readini($char(Yuushirou), status, ignition.on) = on, $c
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [Ignitions]
-Shunkou-Fire=$iif($current.battlestreak < 200, 0, 1)
+Shunkou-Fire=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Augments]
@@ -190,3 +191,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

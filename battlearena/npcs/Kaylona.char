@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=5300
-Tp=5400
-Str=205
-Def=205
-Int=405
-Spd=205
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Kaylona
 
 
 [Battle]
-Hp=5300
-Tp=5400
-Str=205
-Def=205
-Int=405
-Spd=205
+Hp=9000
+Tp=1000
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -57,8 +57,9 @@ IgnoreQuicksilver=true
 CanTaunt=false
 RageMode=Ignore
 CanFlee=false
-Streak=11
 ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -132,7 +133,7 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-
+DieHard=50
 
 [Techniques]
 Curaga=500
@@ -154,28 +155,40 @@ Accessory=Wizard's-Ankh
 [Styles]
 Equipped=SpellMaster
 SpellMaster=10
-SpellMasterXP=1
 
 
 [modifiers]
 Heal=none
-Earth=90
-Fire=90
-Wind=90
-Ice=90
-Water=90
-Lightning=90
-Light=90
-Dark=90
-HandToHand=90
-Whip=90
-Sword=90
-Gun=90
-Rifle=90
-Katana=90
-Wand=90
-Spear=90
-Scythe=90
-Glyph=90
-GreatSword=90
-Bow=90
+Earth=75
+Fire=75
+Wind=75
+Ice=75
+Water=75
+Lightning=75
+Light=40
+Dark=120
+HandToHand=75
+Whip=75
+Sword=75
+Gun=75
+Rifle=75
+Katana=75
+Wand=75
+Spear=75
+Scythe=75
+Glyph=75
+GreatSword=75
+Bow=75
+Axe=75
+Dagger=75
+Mace=75
+Stave=75
+EnergyBlaster=75
+Lightsaber=75
+Hammer=75
+Bat=75
++Fire=75
++Ice=75
++Wind=75
++Water=75
++Dark=120

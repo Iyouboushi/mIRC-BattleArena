@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=500
+Hp=9000
 Tp=1000
 Str=50
 Def=60
@@ -10,7 +10,7 @@ IgnitionGauge=100
 
 
 [Battle]
-Hp=500
+Hp=9000
 Tp=1000
 Str=50
 Def=60
@@ -52,7 +52,9 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
-BattleStats=ignoreTP
+ActionsPerTurn=$rand(1,2)
+BattleStats=IgnoreTP.IgnoreHP
+SkipDoubleTurns=true
 
 [Status]
 Poison=no
@@ -97,7 +99,7 @@ zombie.timer=1
 
 [Weapons]
 Equipped=BlastoiseCannons
-BlastoiseCannons=$round($calc(1 + (($current.battlestreak / 2))))
+BlastoiseCannons=500
 
 [Skills]
 Zen=5
@@ -114,13 +116,13 @@ Resist-Stop=100
 Resist-Charm=100
 Resist-Petrify=100
 Resist-Confuse=100
-
+DieHard=25
 
 [Techniques]
-Water_Cannon=$round($calc(1 + (($current.battlestreak / 2))))
-IronTail=$round($calc(1 + (($current.battlestreak / 2))))
-Hydro_Pump=$round($calc(1 + (($current.battlestreak / 2))))
-Rapid_Spin=$round($calc(1 + (($current.battlestreak / 2))))
+Water_Cannon=500
+IronTail=500
+Hydro_Pump=500
+Rapid_Spin=500
 
 [Item_Amount]
 
