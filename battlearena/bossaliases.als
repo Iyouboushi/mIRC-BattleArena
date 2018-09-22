@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 06/15/18
+;;;; Last updated: 09/22/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -352,6 +352,9 @@ generate_elderdragon {
   writeini $char(%monster.name) modifiers lightning 100
   writeini $char(%monster.name) modifiers wind 100
   writeini $char(%monster.name) modifiers earth 100
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
   writeini $char(%monster.name) NaturalArmor Name Dragon Scales
   writeini $char(%monster.name) NaturalArmor Max %current.battlestreak
@@ -565,6 +568,9 @@ generate_demonwall {
   writeini $char(%monster.name) modifiers UltimaII 40
   writeini $char(%monster.name) modifiers KaustraII 40
   writeini $char(%monster.name) modifiers Chivalry 40
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
   $fulls(%monster.name)
   $boost_monster_stats(%monster.name, demonwall)
@@ -715,6 +721,9 @@ generate_wallofflesh {
   writeini $char(%monster.name) modifiers UltimaII 40
   writeini $char(%monster.name) modifiers KaustraII 40
   writeini $char(%monster.name) modifiers Chivalry 40
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
 
   var %reflect.chance $rand(1,100)
@@ -798,6 +807,10 @@ generate_bandit_leader {
   writeini $char(%monster.name) skills Resist-charm 80
   writeini $char(%monster.name) skills Resist-poison 5
   writeini $char(%monster.name) skills Resist-paralysis 10
+
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
   writeini $char(%monster.name) descriptions char is the leader of a wild pack of bandits.
   writeini $char(%monster.name) descriptions snatch uses a chain he has to try and take a hostage
@@ -1238,6 +1251,10 @@ generate_pirate_firstmatey {
   writeini $char(%monster.name) skills Snatch 10
   writeini $char(%monster.name) skills Swordmaster 50
 
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
+
   writeini $char(%monster.name) descriptions char is the first mate of the band of pirates. His smell is only matched by his prowless with a cutlass.
   writeini $char(%monster.name) descriptions snatch tries to take a hostage!
   writeini $char(%monster.name) descriptions BossQuote Arrrr!  We be wanting yer booty! So hand it over and perhapse me and me mates will let ye live!
@@ -1311,6 +1328,10 @@ generate_gremlin {
   writeini $char(%monster.name) modifiers water 0
   writeini $char(%monster.name) modifiers light 300
   writeini $char(%monster.name) modifier_special water $eval($iif($return_monstersinbattle < $return_maxmonstersinbattle, $skill.monstersummon($3, Gremlin)),0)
+
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
   $fulls(%monster.name) 
   $boost_monster_stats(%monster.name)
@@ -1466,6 +1487,9 @@ generate_frost_monster {
   writeini $char(%monster.name) modifiers ice 2000
   writeini $char(%monster.name) modifiers fire 110
   writeini $char(%monster.name) modifiers wind 50
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
   writeini $char(%monster.name) descriptions char is a monster made out of ice
   $levelsync(%monster.name, %current.battlestreak)
@@ -1568,6 +1592,9 @@ generate_crystalshadow {
   writeini $char(%monster.name) modifiers GreatSword 1
   writeini $char(%monster.name) modifiers bow 1
   writeini $char(%monster.name) modifiers glyph 1
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
   $fulls(%monster.name, crystal_shadow) 
   $boost_monster_stats(%monster.name, Crystal_Shadow)
@@ -1698,6 +1725,9 @@ generate_dinosaur {
   writeini $char(%monster.name) modifiers glyph 60
   writeini $char(%monster.name) modifiers ultima 10
   writeini $char(%monster.name) modifiers Kaustra 10
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
   $levelsync(%monster.name, %boss.level)
   writeini $char(%monster.name) basestats str $readini($char(%monster.name), battle, str)
@@ -1866,6 +1896,9 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) modifiers GreatSword 85
   writeini $char(%dragonhunt.file.name) modifiers bow 82
   writeini $char(%dragonhunt.file.name) modifiers glyph 75
+  writeini $char(%monster.name) modifiers FinishingTouch 0
+  writeini $char(%monster.name) modifiers MurderSpree 0
+  writeini $char(%monster.name) modifiers MurderSpreeII 0
 
   ; Add flying skill for older dragons
   if (%dragon.level >= 150) { writeini $char(%dragonhunt.file.name) skills flying 1 }
@@ -1933,6 +1966,10 @@ predator_fight {
     writeini $char(%monster.name) info BossLevel $calc($1 - 5)
     writeini $char(%monster.name) descriptions DeathMessage falls over dead! Suddenly a Predator leaps out and gives off a loud chuckle as it prepares to face the heroes.
 
+    writeini $char(%monster.name) modifiers FinishingTouch 0
+    writeini $char(%monster.name) modifiers MurderSpree 0
+    writeini $char(%monster.name) modifiers MurderSpreeII 0
+
     $boost_monster_stats(%monster.name)
     $levelsync(%monster.name, $calc($1 - 5))
     $fulls(%monster.name) 
@@ -1954,8 +1991,8 @@ predator_fight {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This function will generate
-; the dragon for the dragon
-; hunt
+; the dragon killer npc for the
+; dragon hunt
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dragonhunt.createdragonkiller {
 
