@@ -5378,6 +5378,14 @@ SellPrice=1
 Cost=0
 Legendary=true
 
+[ValorMedal]
+Type=misc
+Desc=A medal that shows that you have survived an exceptionally difficult battle.
+Exclusive=yes
+SellPrice=1
+Cost=0
+Legendary=true
+
 
 =========================
 AMMO

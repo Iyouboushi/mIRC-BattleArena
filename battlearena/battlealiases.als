@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/10/18
+;;;; Last updated: 09/24/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4956,6 +4956,37 @@ cosmic.reward {
       inc %player.amount %cosmic.reward.amount
       writeini $char(%who.battle) item_amount OdinMark %player.amount
       %cosmic.drop.rewards = $addtok(%cosmic.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ OdinMark x $+ %cosmic.reward.amount  $+  $+ $chr(93) $+ , 46)
+
+      inc %battletxt.current.line 1 
+    }
+  }
+
+  $valormedals.reward
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Gives everyone a 
+; Valor Points
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+valormedals.reward {
+
+  if (%cosmic.level <= 100) { return }
+
+  var %cosmic.reward.amount $calc(%cosmic.level - 100)
+  if (%cosmic.reward.amount = $null) { vra %cosmic.reward.amount 1 }
+
+  set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+    if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+    else { 
+
+      var %player.amount $readini($char(%who.battle), item_amount, ValorMedals)
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount %cosmic.reward.amount
+      writeini $char(%who.battle) item_amount ValorMedals %player.amount
+      %cosmic.drop.rewards = $addtok(%cosmic.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ ValorMedal x $+ %cosmic.reward.amount  $+  $+ $chr(93) $+ , 46)
 
       inc %battletxt.current.line 1 
     }
