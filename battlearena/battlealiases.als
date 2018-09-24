@@ -4942,7 +4942,7 @@ cosmic.reward {
   unset %cosmic.drop.rewards
 
   var %cosmic.reward.amount %cosmic.level
-  if (%cosmic.reward.amount = $null) { vra %cosmic.reward.amount 1 }
+  if (%cosmic.reward.amount = $null) { var %cosmic.reward.amount 1 }
 
   set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
@@ -4973,7 +4973,7 @@ valormedals.reward {
   if (%cosmic.level <= 100) { return }
 
   var %cosmic.reward.amount $calc(%cosmic.level - 100)
-  if (%cosmic.reward.amount = $null) { vra %cosmic.reward.amount 1 }
+  if (%cosmic.reward.amount = $null) { var %cosmic.reward.amount 1 }
 
   set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
