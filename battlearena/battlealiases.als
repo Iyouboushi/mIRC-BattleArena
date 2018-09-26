@@ -4965,8 +4965,8 @@ cosmic.reward {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Gives everyone a 
-; Valor Points
+; Gives everyone
+; Valor Medals
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 valormedals.reward {
 
@@ -4982,10 +4982,10 @@ valormedals.reward {
     if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
     else { 
 
-      var %player.amount $readini($char(%who.battle), item_amount, ValorMedals)
+      var %player.amount $readini($char(%who.battle), item_amount, ValorMedal)
       if (%player.amount = $null) { var %player.amount 0 }
       inc %player.amount %cosmic.reward.amount
-      writeini $char(%who.battle) item_amount ValorMedals %player.amount
+      writeini $char(%who.battle) item_amount ValorMedal %player.amount
       %cosmic.drop.rewards = $addtok(%cosmic.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ ValorMedal x $+ %cosmic.reward.amount  $+  $+ $chr(93) $+ , 46)
 
       inc %battletxt.current.line 1 
