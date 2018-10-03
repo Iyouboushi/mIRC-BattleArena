@@ -1881,6 +1881,23 @@ Exclusive=yes
 Legendary=true
 Protection=0
 
+[DensetsuNoYoroi+1]
+name=Densetsu No Yoroi +1
+hp=2000
+tp=300
+Str=10000
+def=10000
+int=10000
+spd=10000
+Augment=all
+EquipLocation=body
+cost=0
+SellPrice=50000
+LevelRequirement=25000
+Exclusive=yes
+Legendary=true
+Protection=0
+
 ========
 LEGS
 ========

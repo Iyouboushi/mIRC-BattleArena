@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=2100
-Tp=500
-Str=3250
-Def=3000
-Int=1500
-Spd=2500
+HP=15390
+TP=550
+str=3219
+def=1811
+int=2716
+spd=2515
 IgnitionGauge=2
-Name=Cosmic Cerberus
+Name=The Count
 
 
 [Battle]
-Hp=2100
-Tp=500
-Str=3250
-Def=3000
-Int=1500
-Spd=2500
+HP=15390
+TP=550
+str=3219
+def=1811
+int=2716
+spd=2515
 IgnitionGauge=2
 Status=alive
 
@@ -32,16 +32,23 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a giant three-headed dog that has been revived to serve Galactus and to help protect the Cosmic Dimension. Cerberus is surrounded by a protective ice armor.
+Char=has a rather regal appearance, with long white hair wearing a black tuxedo and a long black and red cape. He has been revived to serve Galactus
 Rage=screams in rage 
-BossQuote=Leave now, mortal! The likes of you are forbidden in this land. You, who are powerless, are not worthy to set foot here. 
-RepairNaturalArmor=growls loudly as ice begins to form around his body. After a moment his protective ice barrier is completely restored.
+BossQuote=This long slumber has given me strength!
+RoyalGuard=laughs at the heroes and says "Your attacks are no match for the prince of darkness!"
+ManaWall=laughs at the heroes and says "Your puny magic is no match for the prince of darkness!"
+Sugitekai=laughs and says "Behold, the true power of darkness!"
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 Drops=
+
+[Monster]
+Type=undead
+size=large
+Elite=true
 
 [Info]
 Flag=monster
@@ -53,9 +60,8 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-IgnoreElementalMessage=true
 
-; universal Cosmic battle flags
+; Universal Cosmic flags
 CanTaunt=false
 WonderGuard=true
 CanStagger=no
@@ -64,11 +70,6 @@ IgnorePresident=true
 IgnoreQuicksilver=true
 MaxTormentLevel=0
 IgnoreTorment=true
-
-[monster]
-type=cerberus
-size=large
-Elite=true
 
 [Status]
 Poison=no
@@ -103,10 +104,9 @@ sleep=no
 stun=no
 MPRegenerating=no
 
-
 [Weapons]
-Equipped=CerberusClaws
-CerberusClaws=$calc(500 + %cosmic.level)
+Equipped=Dark_Vampiric_Power
+Dark_Vampiric_Power=$calc(500 + %cosmic.level)
 
 [Skills]
 Resist-Amnesia=100
@@ -128,29 +128,19 @@ Resist-Stun=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
-RepairNaturalArmor=1
+ManaWall=1
+RoyalGuard=1
+Sugitekai=1
+
+[Techniques]
+Dark_Inferno=$calc(500 + %cosmic.level)
+Demonic_Megiddo=$calc(500 + %cosmic.level)
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=5
 WeaponMasterXP=0
 
-[Techniques]
-IceRain=$calc(500 + %cosmic.level)
-Roar=$calc(500 + %cosmic.level)
-ShoulderTackle=$calc(500 + %cosmic.level)
-
-
-[Item_Amount]
-
-
-
-[NaturalArmor]
-Name=Large Protective Ice Chunks
-Max=1000
-Current=1000
-
-
 [modifiers]
-Heal=ice
-Ice=200
+Heal=dark
+Dark=300
