@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 09/05/18
+;;;; Last updated: 10/03/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2901,8 +2901,8 @@ alias shop.halloween {
     unset %replacechar
 
     $display.private.message.delay.custom(2These items and armor pieces are paid for with 4Candy Corn,1)
-    if (%halloween.armor.list != $null) { $display.private.message.delay.custom(4Armor:2 %halloween.armor.list, 1) }
-    if (%halloween.items.list != $null) { $display.private.message.delay.custom(4Items:2 %halloween.items.list, 1) }
+    if (%halloween.armor.list != $null) { $display.private.message.delay.custom(4Armor:2 %halloween.armor.list, 1) }
+    if (%halloween.items.list != $null) { $display.private.message.delay.custom(4Items:2 %halloween.items.list, 1) }
 
     if ((%halloween.armor.list = $null) && (%halloween.items.list = $null)) { $display.private.message(4There are no Halloween store items available for purchase right now)  }
 

@@ -5215,6 +5215,24 @@ Desc=takes out a bomb made out of a jack-o-lantern and tosses it at %enemy causi
 Element=fire
 Currency=CandyCorn
 
+[BigBooCharm]
+Type=summon
+Cost=10
+SellPrice=1000
+Summon=BigBoo
+SummonName=Big Boo
+Currency=CandyCorn
+
+[Jack-o-Lantern]
+Type=food
+Target=int
+Amount=10
+Desc=pulls out a smiling Jack-o-Lantern and hands it to %enemy who eats it.  Spooky!
+Cost=50
+SellPrice=1000
+Exclusive=yes
+Currency=CandyCorn
+
 
 ==========================
 TORMENT BATTLE ITEMS
