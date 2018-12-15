@@ -6584,7 +6584,7 @@ TormentWeapon=true
 [Ochain]
 Cost=0
 Type=Shield
-Info=A rare and legendary shield that is large and silver in color, with an intricate design and a yellow jewel in the center. Outside of Torment, it blocks at 50% chance and absorbs 50% damage. Inside of Torment, it blocks at 100% chance and also absorbs 75% damage.
+Info=A rare and legendary shield that is large and silver in color, with an intricate design and a yellow jewel in the center. Outside of Torment, it blocks at 50% chance and absorbs 50% damage. Inside of Torment, it blocks at 90% chance and also absorbs 75% damage.
 Hits=0
 BasePower=$iif(%battle.type = torment, 700, 500)
 Upgrade=0
