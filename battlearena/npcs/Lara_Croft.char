@@ -33,7 +33,8 @@ Hused=1
 Dused=1
 Char=is a British archaeologist and well-known Tomb Raider. She has long, brown hair that is braided into a ponytail, and wears a sleevless green shirt, brown shorts, black gloves, and brown boots.
 Rage=yells in rage!
-BossQuote=$iif(%battletype = dungeon, Seems like I'm not the only one here. Let's work together and see what this island has hidden.)
+BossQuote=$iif(%battle.type = dungeon, Seems like I'm not the only one here. Let's work together and see what this island has hidden.)
+npcQuote=$iif(%battle.type = dungeon, Seems like I'm not the only one here. Let's work together and see what this island has hidden.)
 
 [Stuff]
 RedOrbs=0
