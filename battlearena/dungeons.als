@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 09/14/18
+;;;; Last updated: 12/17/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -538,7 +538,7 @@ dungeon.generatenpcs {
       } 
       $display.message(12 $+ %real.name has entered the battle to help the forces of good!,battle)
 
-      var %npcquote $readini($char(%current.npc.to.spawn.name), descriptions, bossquote)
+      var %npcquote $readini($char(%current.npc.to.spawn.name), descriptions, npcquote)
       if (%npcquote != $null) { 
         var %npcquote 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.npc.to.spawn), descriptions, npcQuote) $+ "
         $display.message(%npcquote, battle) 
