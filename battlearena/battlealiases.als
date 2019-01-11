@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 09/24/18
+;;;; Last updated: 01/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -320,7 +320,7 @@ statuseffect.check {
 ; that status effects last.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 status.effects.turns {
-  var %negative.status.effects flying.confuse.poison.curse.cocoon.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.charm.paralysis.bored
+  var %negative.status.effects confuse.poison.curse.cocoon.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.charm.paralysis.bored
 
   if ($istok(%negative.status.effects,$1,46) = $true) { 
     if ($return_playersinbattle <= 1) { return 1 }
@@ -342,7 +342,6 @@ status.effects.turns {
     if ($1 = charm) { return 3 }
     if ($1 = paralysis) { return 3 }
     if ($1 = bored) { return 2 }
-    if ($1 = flying) { return 4 }
   }
   else { 
     if ($1 = defup) { return 3 }
@@ -2554,6 +2553,7 @@ inflict_status {
   if ($3 = freezing) { set %status.type frozen | var %status.grammar freezing }
   if ($3 = heavy) { set %status.type heavy | var %status.grammar weighed down }
   if ($3 = doom) {  set %status.type doom | var %status.grammar doomed }
+  if ($3 = flying) {  set %status.type flying  | var %status.grammar flying }
 
   if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
 
@@ -2563,6 +2563,10 @@ inflict_status {
   if ($3 = heavy) { var %chance 255 }
   if ($3 = doom) {
     if ((%portal.bonus = true) || (%battle.type = dungeon)) { var %chance 255 } 
+  }
+
+  if ($4 = item) { 
+    if (($readini($char($1), info, flag) = $nulll) && $readini($char($2), info, flag) = $null)) { var %chance 255 }  
   }
 
   if ($4 != IgnoreResistance) { 

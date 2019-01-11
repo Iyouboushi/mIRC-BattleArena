@@ -1053,6 +1053,15 @@ Ingredients=Glass.WaterJewel.Slurm
 SuccessRate=50
 Amount=10
 
+[FlyingDraught]
+Gem=Sapphire
+Ingredients=Glass.WaterJewel.HippogryphFeather
+HippogryphFeather=2
+Glass=1
+WaterJewel=1
+SuccessRate=100
+Amount=1
+
 [DunceCap]
 Gem=Topaz
 Ingredients=Cloth.Ectoplasm

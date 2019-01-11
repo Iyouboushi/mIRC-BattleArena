@@ -604,6 +604,15 @@ Cost=0
 SellPrice=5000
 Desc=takes out a cup of thick black liquid and hands it over to %enemy who drinks it. Hey, why not? %enemy begins to feel a bit hyper from the substance!
 
+[FlyingDraught]
+Type=Status
+Target=Single
+StatusType=flying
+Amount=0
+Cost=0
+SellPrice=1000
+Desc=takes out a bottle of bubbling cloudy blue liquid and hands it to %enemy who drinks it. Suddenly %enemy feels light as air and begins flying!
+
 [Shuriken]
 Type=Damage
 Target=Single
@@ -964,7 +973,7 @@ Type=random
 ItemDesc=A small wrapped present that can contain a huge variety of items inside.
 Desc=pulls out a present and hands it to %enemy $+ , who opens it and finds a %random.item.name inside! Merry XMas!
 SellPrice=7000
-Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 100, 1000000, 0)
+Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 100, 200000, 0)
 ShopNPC=Santa
 
 [AnniGift]

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/19/18
+;;;; Last updated: 01/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -1059,14 +1059,14 @@ alias item.status {
       var %status.value 1
       while (%status.value <= %number.of.statuseffects) { 
         set %current.status.effect $gettok(%status.type.list, %status.value, 46)
-        $inflict_status($1, $2, %current.status.effect)
+        $inflict_status($1, $2, %current.status.effect, item)
         inc %status.value 1
       }  
       unset %number.of.statuseffects | unset %current.status.effect
     }
   }
   unset %status.type.list
-  if ($readini($dbfile(items.db), $2, amount) != 0) {
+  if ($readini($dbfile(items.db), $3, amount) != 0) {
     $calculate_damage_items($1, $3, $2)
     set %style.attack.damage %attack.damage
     $deal_damage($1, $2, $3)
@@ -1087,7 +1087,7 @@ alias display_Statusdamage_item {
     $display.message(3 $+ %user $+  $readini($dbfile(items.db), $4, desc), battle)
   }
 
-  if ($readini($dbfile(items.db), $2, amount) != 0) {
+  if ($readini($dbfile(items.db), $4, amount) != 0) {
     if (%guard.message = $null) { $display.message(The attack did4 $bytes(%attack.damage,b) damage %style.rating, battle) }
     if (%guard.message != $null) { $display.message(%guard.message, battle) | unset %guard.message }
 

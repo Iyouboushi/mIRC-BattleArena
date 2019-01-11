@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/13/18
+;;;; Last updated: 01/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2750,6 +2750,7 @@ clear_positive_status {
   writeini $char($1) status en-spell none | writeini $char($1) status en-spell.timer 0
   writeini $char($1) status defenseup no | writeini $char($1) status defenseup.timer 0
   writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0
+  writeini $char($1) status flying no | writeini $char($1) status flying.timer 0
 
   if ($2 != tech) { writeini $char($1) status ignition.on off | remini $char($1) status ignition.name | remini $char($1) status ignition.augment }
 

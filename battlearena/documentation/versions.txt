@@ -1692,6 +1692,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug where auto-regen would not work right with ignitions
 - Fixed a bug where the strenght stat of monsters was not being adjusted properly upon monster spawn/copying.
 - Fixed a bug where new characters who don't set their passwords immediately would be unable to log in again.
+- Fixed a bug with status battle type items dealing damage when they shouldn't be.
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]
