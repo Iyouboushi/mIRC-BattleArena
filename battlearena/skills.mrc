@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/10/18
+;;;; Last updated: 01/21/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -3360,7 +3360,13 @@ alias skill.monstersummon {
   if (%number.of.spawns.needed = $null) { var %number.of.spawns.needed 1 }
 
   ; Is it a valid monster? If not, return.
-  if ($isfile($mon(%monster.name)) = $false) { return }
+  if ($isfile($mon(%monster.name)) = $false) { var %monster.found false }
+  if (%monster.found = false) { 
+    if ($isfile($boss(%monster.name)) = $false) { var %monster.found false }
+    else { var %monster.found true | var %monster.boss true }
+  }
+
+  if (%monster.found = false) { return }
 
   ; Display the desc. 
   if ($readini($char($1), descriptions, monstersummon) = $null) { $set_chr_name($1) | set %skill.description %real.name opens a vortex and summons %number.of.spawns.needed $2 $+ $iif(%number.of.spawns.needed < 2, , s) into the battle. }
@@ -3379,7 +3385,8 @@ alias skill.monstersummon {
       }
     }
 
-    .copy -o $mon($2) $char(%monster.name)
+    if (%monster.boss = true) {  .copy -o $boss($2) $char(%monster.name) }
+    else { .copy -o $mon($2) $char(%monster.name) }
     writeini $char(%monster.name) Basestats Name %monster.name
 
     if ($eliteflag.check($1) = true) { writeini $char(%monster.name) Monster Elite true }
