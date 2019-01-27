@@ -1,0 +1,72 @@
+[Info]
+Name=Fort Grimtol
+Rooms=10
+PlayersNeeded=1
+PlayersRecommended=3
+Level=50
+FinalRoom=9
+StartBattleDesc=follows a dangerous path towards Fort Grimtol and prepares to sneak into a heavily guarded enemy base.
+ClearDungeonDesc=* The party has defeated the horrifying beast that the forces of evil were raising and escaped with their lives. As a reward the Allied Forces give a powerful elixer made with research taken from Grimtol. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed their mission into Fort Grimtol and are forced to retreat.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party has snuck into the shadows of a large storage room and has a moment to prepare for their mission.
+Battlefield=Fort Grimtol - Storage Room
+
+
+[1]
+Desc=The party exits the storage room and enters the main storage compound of the fortress.  As they advance they see members of the 12th Legion patrolling.  There doesn't seem to be a way to sneak past them..
+Battlefield=Fort Grimtol - Storage Compound
+Monsters=12thLegion_Laquearius.12thLegion_Cannis
+
+
+[2]
+Desc=Quickly the party continues their trek through the storage compound and approach another patrol.
+Battlefield=Fort Grimtol - Storage Compound
+Monsters=12thLegion_Laquearius.12thLegion_Avenger
+
+
+[3]
+Desc=The party sees the entrance into the first part of the testing compound but are blocked by a magitek mech and a guard. Quickly the party moves to take them out.
+Battlefield=Fort Grimtol - Storage Compound
+Monsters=12thLegion_Vanguard.12thLegion_Laquearius
+
+
+[4]
+Desc=As the party rushes into the testing compound several powerful laser beams engage to block the paths forward and back.  A side door opens and a vehicle-demon hybrid wheels out and grins.  Looks like you'll have to win if you want to keep moving forward.
+Battlefield=Fort Grimtol - Testing Compound
+Monsters=Magna_Roader
+BossRoom=true
+
+[5]
+Desc=The laser beams disengage and allow the party to move further into the testing compound.  The party arrives in a large circular room where two large pods are hissing and appear to be activating.
+Battlefield=Fort Grimtol - Testing Compound
+Monsters=Magitek_Pod.Magitek_Pod
+
+
+[6]
+Desc=Rushing past the destroyed pods the party enters another room. Another pod is being activated as guards protect it.
+Battlefield=Fort Grimtol - Testing Compound
+Monsters=12thLegion_Laquearius.Magitek_Pod.12thLegion_Avenger
+
+
+[7]
+Desc=The party can see an elevator ahead that leads to the central compound.  It is likely the mission target is in that area.  However before they can reach it a man with long spikey rainbow-colored hair steps out in front of them.
+Battlefield=Fort Grimtol - Testing Compound
+Monsters=Number_XXV
+BossRoom=true
+
+
+[8]
+Desc=The party enters the elevator and rides upwards towards the central compound. They take a moment here to rest.
+Battlefield=Fort Grimtol - Central Compound Elevator
+RestoreRoom=true
+
+
+[9]
+Desc=The party enters the central compound testing center where scientists have just finished their work on the ultimate lab created monster--Inferno.  The guards in the room run towards the heroes as Inferno roars to life and joins the fray.
+Battlefield=Fort Grimtol - Central Compound
+Monsters=12thLegion_Laquearius.12thLegion_Slasher.Inferno
+bossroom=true
+

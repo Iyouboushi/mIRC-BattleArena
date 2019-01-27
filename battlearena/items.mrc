@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 01/11/19
+;;;; Last updated: 01/27/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -189,6 +189,10 @@ alias uses_item {
   unset %attack.target
   var %item.type $readini($dbfile(items.db), $2, type)
 
+  set %check.item $readini($char($1), Item_Amount, $2) 
+  if ((%check.item <= 0) || (%check.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
+
+
   if (%item.type = dungeon) { $item.dungeon($1, $2) | halt }
   if (%item.type = torment) { $item.torment($1, $2) | halt }
 
@@ -200,8 +204,6 @@ alias uses_item {
     if (%battleis = on) { $person_in_battle($4) }
   }
 
-  set %check.item $readini($char($1), Item_Amount, $2) 
-  if ((%check.item <= 0) || (%check.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
 
   var %user.flag $readini($char($1), info, flag) | var %target.flag $readini($char($4), info, flag)
 

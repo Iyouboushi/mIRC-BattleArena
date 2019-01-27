@@ -585,6 +585,9 @@ Xande_Staff=TowerAbsorb.AncientQuaga.King'sMight
 DeadpoolKatanas=FastBlade.FlatBlade.CircleBlade.VorpalBlade.PineappleSurprise.HaveGunWillShoot
 DoubleDesertEagles=Rainstorm.RapidShot.LastStand.MurderSpree
 KoumoriKnife=WaspSting.Evisceration.SharkBite.DancingEdge.MurderSpreeII
+MagnaRider=Wheel.WildSpeed
+MagitekPod=ExplosiveRelease
+KetuRahu=KetuSlash.RahuBlaster.KetuRahuCrash
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -5556,6 +5559,17 @@ magic=no
 cost=0
 stat=hp
 IgnoreShadows=true
+
+[ExplosiveRelease]
+Type=Suicide-AOE
+TP=0
+Desc=has finished its purpose and explodes as its occupant escapes the pod.
+BasePower=1
+Element=none
+Magic=no
+Cost=0
+stat=hp
+CanDodge=true
 
 [CellExplode]
 Type=suicide-AOE
@@ -16909,6 +16923,73 @@ HurtEthereal=true
 stat=str
 CanDodge=true
 PostScript=writeini $char($1) techniques RedSoulMode $calc(1 + $current.battlestreak) | writeini $char($1) techniques UndyneArrowsFlip 0
+
+[Wheel]
+Type=Single
+Cost=0
+TP=20
+Desc=rolls up to %enemy and leans up and comes down hard, $iif(%guard.message = $null, smashing %enemy with one of its body's wheels, attempting to hit %enemy with one of its body's wheels)
+BasePower=100
+Magic=no
+IgnoreDefense=15
+HurtEthereal=true
+Stat=str
+CanDodge=true
+
+[WildSpeed]
+Type=AOE
+Cost=0
+Desc=revs up its wheels and begins to zoom around the room at wild speeds, hitting everyone on it multiple times
+TP=10
+Element=none
+Hits=$rand(2,3)
+BasePower=30
+Magic=no
+IgnoreDefense=1
+Stat=spd
+HurtEthereal=true
+CanDodge=false
+
+[KetuSlash]
+Type=Single
+Cost=0
+TP=20
+Desc=roars and approaches %enemy before raising both of its scythe-like hands and $iif(%guard.message = $null, smashing %enemy with all of its power, attempts to smash %enemy with all of its power)
+BasePower=100
+Magic=no
+IgnoreDefense=25
+HurtEthereal=true
+Stat=str
+CanDodge=true
+
+[RahuBlaster]
+Type=AOE
+Cost=0
+Desc=roars as green energy begins to build in its left claw. After a moment the green energy sparks and shoots out, hitting everyone on the battlefield.
+TP=10
+Element=none
+Hits=$rand(2,3)
+BasePower=50
+Magic=no
+IgnoreDefense=1
+Stat=int
+HurtEthereal=true
+CanDodge=false
+
+[KetuRahuCrash]
+Type=AOE
+Cost=0
+Desc=raises both of its scythe-like claws before smashing them down into the ground sending an earthquake across the battlefield
+TP=10
+Element=none
+Hits=1
+BasePower=20
+Magic=no
+IgnoreDefense=1
+Stat=str
+HurtEthereal=true
+CanDodge=false
+
 
 [RedSoulMode]
 Type=AOE

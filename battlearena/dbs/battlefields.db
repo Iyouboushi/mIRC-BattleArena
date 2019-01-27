@@ -1,5 +1,5 @@
 [weather]
-current=none
+current=windy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
@@ -18,7 +18,7 @@ BloodMoonChance=60
 
 [TimeOfDay]
 Currenttimeofday=Day
-currentTimeOfDayTurn=1
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
@@ -1258,6 +1258,26 @@ limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeo
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Train Tracks]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Fort Grimtol - Storage Room]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Fort Grimtol - Storage Compound]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Fort Grimtol - Testing Compound]
+weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Fort Grimtol - Central Compound]
 weather=none
 limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

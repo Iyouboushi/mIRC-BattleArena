@@ -73,7 +73,7 @@ MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.Skelet
 
 MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue.Qutrub.Phlegethon.HollowPower.MechanicPower
 
-MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife
+MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu
 
 ============================================
 WEAPON TEMPLATE
@@ -5908,8 +5908,44 @@ Element=none
 BasePower=50
 Hits=$rand(1,2)
 Upgrade=0
-CanSHieldReflect=false
+CanShieldReflect=false
 IgnoreDefense=2
+
+[MagnaRider]
+Cost=0
+Type=HandToHand
+Info=The power of Magna Rider
+Abilities=Wheel.WildSpeed
+Element=fire
+BasePower=50
+Hits=$rand(1,2)
+Upgrade=0
+CanShieldReflect=false
+IgnoreDefense=2
+
+[KetuRahu]
+Cost=0
+Type=Scythe
+Abilities=KetuSlash.RahuBlaster.KetuRahuCrash
+Element=none
+BasePower=50
+Hits=$rand(2,4)
+Upgrade=0
+CanShieldReflect=false
+IgnoreDefense=2
+
+
+
+[MagitekPod]
+Cost=0
+Type=HandToHand
+Abilities=ExplosiveRelease
+Element=none
+BasePower=1
+Hits=1
+Upgrade=0
+CanShieldReflect=false
+IgnoreDefense=0
 
 [HollowPower]
 Cost=0

@@ -5023,6 +5023,15 @@ Desc=A key used to unlock the Antlion's Den
 Dungeon=antlion's_den
 exclusive=yes
 
+[GrimtolMissionReport]
+type=dungeon
+Cost=100
+Currency=BeastmenSeal
+SellPrice=100
+Desc=A report instructing you to infilitrate Fort Grimtol and destroy the enemy's secret weapon before it is unleashed upon the world.
+Dungeon=fort_grimtol
+exclusive=yes
+
 [SaltyMap]
 type=dungeon
 cost=0

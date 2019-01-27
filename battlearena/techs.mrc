@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/27/18
+;;;; Last updated: 01/27/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1546,7 +1546,7 @@ alias tech.aoe {
     if (%statusmessage.display != $null) { $display.message(%statusmessage.display, battle) | unset %statusmessage.display }
   }
 
-  if ($5 = suicide) {   writeini $char($1) battle hp 0 | writeini $char($1) battle status dead | $set_chr_name($1) |  $increase.death.tally($1)  }
+  if ($5 = suicide) { writeini $char($1) battle hp 0 | writeini $char($1) battle status dead | $set_chr_name($1) | $increase.death.tally($1) | $spawn_after_death($1)  }
 
   ; Turn off the True Strike skill
   writeini $char($1) skills truestrike.on off
