@@ -54,6 +54,7 @@ JustReleaseDefense=100
 CanFlee=false
 IgnoreOutpost=true
 MinTormentLevel=550
+Streak=-1000
 
 [Monster]
 Type=machine

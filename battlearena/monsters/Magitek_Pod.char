@@ -53,6 +53,7 @@ SpawnAfterDeath=$iif(%current.turn = 3, Hypertuned)
 IgnorePresident=True
 IgnoreElementalMessage=true
 BattleStats=IgnoreHP
+Streak=-1000
 
 [Monster]
 Type=machine
