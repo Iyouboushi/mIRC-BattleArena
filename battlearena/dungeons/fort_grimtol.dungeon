@@ -36,7 +36,7 @@ Monsters=12thLegion_Vanguard.12thLegion_Laquearius
 [4]
 Desc=As the party rushes into the testing compound several powerful laser beams engage to block the paths forward and back.  A side door opens and a vehicle-demon hybrid wheels out and grins.  Looks like you'll have to win if you want to keep moving forward.
 Battlefield=Fort Grimtol - Testing Compound
-Monsters=Magna_Roader
+Monsters=Magna_Rider
 BossRoom=true
 
 [5]
