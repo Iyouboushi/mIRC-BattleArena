@@ -54,6 +54,7 @@ IgnorePresident=True
 IgnoreElementalMessage=true
 BattleStats=IgnoreHP
 Streak=-1000
+Guardian=12thLegion_Laquearius.12thLegion_Avenger
 
 [Monster]
 Type=machine
