@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 4, $calc(9000 + (100 * $return_playersinbattle)) , 9000)
+Hp=$iif($return_playersinbattle > 4, $calc(8000 + (100 * $return_playersinbattle)) , 8000)
 Tp=1150
 Str=290
 Def=257
@@ -9,7 +9,7 @@ IgnitionGauge=2
 Name=The 12th Legion Cannis
 
 [Battle]
-Hp=8850
+Hp=7850
 Tp=1150
 Str=290
 Def=257
