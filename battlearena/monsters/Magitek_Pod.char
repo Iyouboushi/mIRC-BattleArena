@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 4, $calc(9000 + (100 * $return_playersinbattle)) , 9000)
+Hp=$iif($return_playersinbattle > 4, $calc(12000 + (100 * $return_playersinbattle)) , 12000)
 Tp=50
 Str=5
 Def=100
@@ -8,7 +8,7 @@ Spd=8
 Name=Magitek Pod
 
 [Battle]
-Hp=$iif($return_playersinbattle > 4, $calc(9000 + (100 * $return_playersinbattle)) , 9000)
+Hp=$iif($return_playersinbattle > 4, $calc(1200 + (100 * $return_playersinbattle)) , 1200)
 Tp=50
 Str=5
 Def=100
@@ -30,7 +30,7 @@ Dused=1
 Char=is a large pod 
 Rage=screams in rage
 DefenderAI=$chr(2) $+ %real.name continues to activate
-DeathMessage=has been freed from its bonds and disappears from this world but not before leaving behind red orbs.
+DeathMessage=has been destroyed before it can activate.
 
 [Stuff]
 RedOrbs=0
