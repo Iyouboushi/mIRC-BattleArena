@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 01/11/19
+;;;; Last updated: 02/08/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -868,11 +868,11 @@ display.message {
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
-  if ($readini(system.dat, system, botType) = IRC) {  query %battlechan %message.to.display  }
+  if ($readini(system.dat, system, botType) = IRC) {  msg %battlechan %message.to.display  }
   if ($readini(system.dat, system, botType) = TWITCH) {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
-    /.timerThrottleDisplayMessage $+ $2 $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /query %battlechan %message.to.display 
+    /.timerThrottleDisplayMessage $+ $2 $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /msg %battlechan %message.to.display 
   }
   if ($readini(system.dat, system, botType) = DCCchat) { 
     if ((%battle.type = ai) && ($2 = battle)) { $dcc.global.message(%message.to.display) | return } 
@@ -896,14 +896,14 @@ display.message.delay {
   if (%delay.time = $null) { var %delay.time 1 }
 
   if ($readini(system.dat, system, botType) = IRC) { 
-    /.timerThrottleDisplayMessage $+ $2 $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %delay.time /query %battlechan %message.to.display
+    /.timerThrottleDisplayMessage $+ $2 $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %delay.time /msg %battlechan %message.to.display
   }
 
   if ($readini(system.dat, system, botType) = TWITCH) { 
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
     inc %delay.time %twitch.delay
-    /.timerThrottleDisplayMessage $+ $2 $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %delay.time /query %battlechan %message.to.display
+    /.timerThrottleDisplayMessage $+ $2 $+ $rand(1,100) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %delay.time /msg %battlechan %message.to.display
   }
 
   if ($readini(system.dat, system, botType) = DCCchat) { 
@@ -929,7 +929,7 @@ display.private.message {
   elseif ($readini(system.dat, system, botType) = TWITCH) {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
-    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /query %battlechan %message.to.display
+    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /msg %battlechan %message.to.display
   }
 }
 display.private.message2 {
@@ -945,7 +945,7 @@ display.private.message2 {
   elseif ($readini(system.dat, system, botType) = TWITCH) {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
-    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /query %battlechan %message.to.display
+    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /msg %battlechan %message.to.display
   }
 }
 display.private.message.delay {
@@ -961,7 +961,7 @@ display.private.message.delay {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
     inc %twitch.delay 1 
-    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /query %battlechan %message.to.display
+    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /msg %battlechan %message.to.display
   }
 }
 display.private.message.delay.custom {
@@ -978,7 +978,7 @@ display.private.message.delay.custom {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
     inc %twitch.delay $2
-    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /query %battlechan %message.to.display
+    /.timerDisplayPM $+ $rand(1,1000) $+ $rand(a,z) $+ $rand(1,1000) -d 1 %twitch.delay /msg %battlechan %message.to.display
   }
 }
 
