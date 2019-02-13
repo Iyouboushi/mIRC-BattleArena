@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 01/11/19
+;;;; Last updated: 02/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2118,6 +2118,9 @@ battlefield.limitations {
   }
 
   set %battleconditions $readini($dbfile(battlefields.db), %current.battlefield, limitations)
+
+  if ((%battle.type = dungeon) || (%portal.bonus = true) { return }
+
   if ((no-tech isin %battleconditions) || (no-techs isin %battleconditions)) { $display.message($readini(translation.dat, Events, AncientMeleeOnlySeal), battle)  }
   if ((no-skill isin %battleconditions) || (no-skills isin %battleconditions)) { $display.message($readini(translation.dat, Events, AncientNoSkillsSeal), battle)  }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { $display.message($readini(translation.dat, Events, AncientNoItemsSeal), battle)  }
