@@ -2119,7 +2119,7 @@ battlefield.limitations {
 
   set %battleconditions $readini($dbfile(battlefields.db), %current.battlefield, limitations)
 
-  if ((%battle.type = dungeon) || (%portal.bonus = true) { return }
+  if ((%battle.type = dungeon) || (%portal.bonus = true)) { return }
 
   if ((no-tech isin %battleconditions) || (no-techs isin %battleconditions)) { $display.message($readini(translation.dat, Events, AncientMeleeOnlySeal), battle)  }
   if ((no-skill isin %battleconditions) || (no-skills isin %battleconditions)) { $display.message($readini(translation.dat, Events, AncientNoSkillsSeal), battle)  }
