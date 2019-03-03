@@ -38,7 +38,7 @@ Whips=BlackWhip.LeatherWhip.DemonWhip.Vampire_Killer.ChainWhip.SpikedSteelWhip.D
 Guns=HandGun.Ebony&Ivory.Magnum.Hexagun.SubMachineGun.Quicksilver.X-Buster.BlueRose.TacticalPistol
 Guns2=SamuraiEdge.SamuraiEdge-I.SamuraiEdge-F.SamuraiEdge-E.SamuraiEdge-M
 Rifles=HuntingRifle.Boomstick.AK47.Armageddon.SniperRifle.Annihilator.DeathPenalty.VanirRifle.TacticalShotgun.RocketLauncher.Thunderclap
-Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.CompoundBow.CompoundBow+1
+Bows=WoodenBow.RobinsBow.ShigetoBow.LamianKamen.Yoichinoyumi.Gandiva.HomesteadBow.CompoundBow.CompoundBow+1.RakshasaGreatBow
 Katanas=SmallKatana.PowerChordSword.Soboro.Kogarasumaru.Yamato.Crissaegrim.Valmanway.Valmanway+1.Yamato+1
 Katanas2=Zangetsu.Senbonzakura.Hyourinmaru.Keitonotachi.Hagun.Masamune.Naturaleza.Sacrament.Lazarus.Ichimonji-Yofusa
 Wands=WoodenWand.YewWand.PixiWand.OakWand.PineWand.ElderWand.EbonyWand.Aedold.Seveneyes
@@ -1530,6 +1530,25 @@ AmmoAmountNeeded=1
 SpecialWeapon=True
 MinLevel=500
 TormentWeapon=true
+
+[RakshasaGreatBow]
+Cost=0
+Type=Bow
+Info=A legendary Great Bow. Outside of Torment battles the bow has a 300 power and ignores 15% defense. Inside of Torment the bow has a power of 700 and ignores 30% defense.
+Abilities=FlamingArrowII.EagleEyeShotII.BlastArrowII
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 700, 300)
+Upgrade=7000
+IgnoreDefense=$iif(%battle.type = torment, 30, 15)
+2Handed=true
+CanCounter=false
+AmmoRequired=Arrow
+AmmoAmountNeeded=1
+MinLevel=1000
+TormentWeapon=true
+SpecialWeapon=True
+Legendary=True
 
 =============================================
 KATANAS

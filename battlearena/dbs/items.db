@@ -2159,6 +2159,17 @@ IncreaseWrestlingDamage.amount=25
 SellPrice=5000
 Exclusive=yes
 
+[ValorRing]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseCriticalHits.ElementalDefense.EnhanceBlocking.IncreaseIGGain
+Desc=A glowing ring that will increase critical hit chance, enhance blocking %, increase elemental defense and increase the amount of IG gained.
+IncreaseCriticalHits.Amount=20
+ElementalDefense.Amount=.50
+IncreaseIGGainRate.Amount=10
+EnhanceBlocking.Amount=2
+SellPrice=5000
+
 
 =========================
 MISC ITEMS
@@ -4803,6 +4814,15 @@ SellPrice=10000
 SpecialType=GainWeapon
 Weapon=Mastermune
 Desc=pulls out a set of blueprints for a powerful sword $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Mastermune ready for use.
+Exclusive=yes
+
+[Blueprints:RakshasaGreatBow]
+Type=special
+Cost=0
+SellPrice=1000
+SpecialType=GainWeapon
+Weapon=RakshasaGreatBow
+Desc=pulls out a set of blueprints for a legendary bow $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Rakshasa Great Bow ready for use.
 Exclusive=yes
 
 =========================

@@ -610,6 +610,18 @@ ForgottenSoul=1000
 ArcaneDust=1000
 Vanadium=2
 
+[Blueprints:RakshasaGreatBow]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.ValorMedal
+SuccessRate=100
+Amount=1
+LifeShard=2500
+ReusablePart=2500
+ForgottenSoul=2500
+ArcaneDust=2500
+ValorMedal=150
+
+
 ============
 Misc Items
 ============
@@ -1036,6 +1048,16 @@ UtopianGoldThread=1
 SuccessRate=60
 Amount=1
 
+[ValorRing]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.ValorMedal
+LifeShard=100
+ReusablePart=100
+ForgottonSoul=100
+ArcaneDust=100
+ValorMedal=100
+SuccessRate=100
+Amount=1
 
 ============
 Battle Items
@@ -2894,7 +2916,6 @@ Amount=1
 SuccessRate=100
 CutlassHandle=1
 DarksteelOre=2
-
 
 
 =============
