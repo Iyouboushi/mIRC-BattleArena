@@ -1048,7 +1048,7 @@ UtopianGoldThread=1
 SuccessRate=60
 Amount=1
 
-[ValorRing]
+[Valor-Ring]
 Gem=Diamond
 Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.ValorMedal
 LifeShard=100

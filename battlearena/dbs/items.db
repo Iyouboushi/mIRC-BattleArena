@@ -2159,6 +2159,19 @@ IncreaseWrestlingDamage.amount=25
 SellPrice=5000
 Exclusive=yes
 
+[Valor-Ring]
+Type=accessory
+Cost=0
+AccessoryType=IncreaseCriticalHits.ElementalDefense.EnhanceBlocking.IncreaseIGGain
+Desc=A glowing ring that will increase critical hit chance, enhance blocking %, increase elemental defense and increase the amount of IG gained.
+IncreaseCriticalHits.Amount=20
+ElementalDefense.Amount=.50
+IncreaseIGGainRate.Amount=10
+EnhanceBlocking.Amount=2
+SellPrice=5000
+
+; This version of the ValorRing will be deleted later.  Renaming it to Valor-Ring to keep in line with the other rings.
+; Only keeping this copy for now in case someone has already crafted it.
 [ValorRing]
 Type=accessory
 Cost=0
