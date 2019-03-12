@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 09/10/18
+;;;; Last updated: 03/12/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -106,12 +106,12 @@ alias reset.battle.streak {
 
   var %last.reloadby $readini(battlestats.dat, battle, LastReload)
 
-  if (%last.reloadby != $1) { $display.message(4Only a person who reloads a battle save can reset the streak using this command) | halt }
+  if (%last.reloadby != $1) { $display.message(04Only a person who reloads a battle save can reset the streak using this command) | halt }
 
   writeini battlestats.dat battle LosingStreak 0
   writeini battlestats.dat battle winningstreak 0
   remini battlestats.dat battle LastReload
-  $display.message(3The winning streak has been reset to: 0, global)
+  $display.message(03The winning streak has been reset to: 0, global)
 }
 
 on 3:TEXT:!reload battle streak*:*:{  $reload.battle.streak($nick, $1, $2, $3) } 
@@ -517,7 +517,7 @@ alias startnormal {
 
     var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonhunt.torment.cosmic.besieged.supplyrun
     if ($istok(%valid.battle.types,$lower(%start.battle.type),46) = $false) {
-      $display.message(4Invalid battle type: %start.battle.type ,global) 
+      $display.message(04Invalid battle type: %start.battle.type ,global) 
       $clear_battle 
       halt 
     }
@@ -703,24 +703,24 @@ alias enter {
       if (%battle.type = defendoutpost) {  var %battle.level.cap $return.levelcapsetting(DefendOutpost) }
       if (%battle.type = assault) { var %battle.level.cap $return.levelcapsetting(Assault) }
       if (%battle.level.cap = null) { var %battle.level.cap 105 } 
-      if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
+      if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(04 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
     }
     else { 
       if ($get.level($1) > $calc(3 + $return_winningstreak)) { 
         $levelsync($1, $calc(3 + $return_winningstreak)) 
-        $display.message(4 $+ %real.name has been synced to level $calc(3 + $return_winningstreak) for this battle, battle)
+        $display.message(04 $+ %real.name has been synced to level $calc(3 + $return_winningstreak) for this battle, battle)
       }
     }
   }
 
   ; Level sync the supply wagon battles
   if (%supplyrun = on) { var %battle.level.cap $return_winningstreak
-    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, $calc(%battle.level.cap + 5)) | $display.message(4 $+ %real.name has been synced to level $calc(%battle.level.cap +5) for this battle, battle) }
+    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, $calc(%battle.level.cap + 5)) | $display.message(04 $+ %real.name has been synced to level $calc(%battle.level.cap +5) for this battle, battle) }
   }
 
   ; Level sync the besieged battles
   if (%besieged = on) { var %battle.level.cap $return_winningstreak
-    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
+    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(04 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
   ; Level sync dragon hunt battles
@@ -728,17 +728,17 @@ alias enter {
     var %battle.level.cap $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, BattleLevel)  
     if (%battle.level.cap = $null) { var %battle.level.cap $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, Age) }
     var %battle.level.cap $calc(%battle.level.cap + 5)
-    if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
+    if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(04 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
   ; level sync cosmic battles
   if (%battle.type = cosmic) {
     var %battle.level.cap 500
-    if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
+    if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(04 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
   if ((%mode.pvp = on) && (%battle.level.cap != $null)) {
-    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(4 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
+    if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(04 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
   ; Check for the Warbound achievement
@@ -972,7 +972,7 @@ alias battlebegin {
     set %first.round.protection.turn 1
   }
 
-  if (%besieged = on) {  $display.message(4The first squad of monsters has arrived!, battle)  }
+  if (%besieged = on) {  $display.message(04The first squad of monsters has arrived!, battle)  }
 
   ; Generate the battle turn order and display who's going first.
   $generate_battle_order
@@ -1311,7 +1311,7 @@ alias generate_monster {
       var %boss.picked.number $rand(1, %total.cosmic.bosses)
       var %monster.name $read($lstfile(cosmic_bosses.lst), %boss.picked.number) 
 
-      if ($isfile($boss(%monster.name)) = $null) { $display.message(4Error: Boss not found! Ending Now!) | $endbat | halt }
+      if ($isfile($boss(%monster.name)) = $null) { $display.message(04Error: Boss not found! Ending Now!) | $endbat | halt }
 
       ; Copy the file and increase the battle info
       .copy -o $boss(%monster.name) $char(%monster.name)
@@ -1323,7 +1323,7 @@ alias generate_monster {
       ; Display the entering message and quote
       $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
       $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)
-      if ($readini($char(%monster.name), descriptions, BossQuote) != $null) { $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle) }
+      if ($readini($char(%monster.name), descriptions, BossQuote) != $null) { $display.message(02 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle) }
       writeini $char(%monster.name) battle status normal 
 
       ; Boost the monster
@@ -1349,7 +1349,7 @@ alias generate_monster {
       $get_boss_list($2)
       var %monsters.total $numtok(%monster.list,46)
 
-      if ((%monsters.total = 0) || (%monster.list = $null)) { $display.message(4Error: There are no bosses in the boss folder.. Have the bot admin check to make sure there are bosses for players to battle!, global) | $endbattle(none) | halt }
+      if ((%monsters.total = 0) || (%monster.list = $null)) { $display.message(04Error: There are no bosses in the boss folder.. Have the bot admin check to make sure there are bosses for players to battle!, global) | $endbattle(none) | halt }
       if (%mode.gauntlet != $null) { set %number.of.monsters.needed 2  }
       if (%battle.type = defendoutpost) { set %number.of.monsters.needed 1 }
       if (%battle.type = assault) { set %number.of.monsters.needed 1 }
@@ -1370,7 +1370,7 @@ alias generate_monster {
         if (%battle.type != ai) { 
           $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
           $display.message(12 $+ %real.name  $+ $readini($char(%monster.name), descriptions, char), battle)
-          if ($readini($char(%monster.name), descriptions, BossQuote) != $null) { $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle) }
+          if ($readini($char(%monster.name), descriptions, BossQuote) != $null) { $display.message(02 $+ %real.name looks at the heroes and says " $+ $readini($char(%monster.name), descriptions, BossQuote) $+ ", battle) }
         }
         if (%battle.type = ai) { set %ai.monster.name $set_chr_name(%monster.name) %real.name | writeini $txtfile(1vs1bet.txt) money monsterfile %monster.name }
 
@@ -1479,7 +1479,7 @@ alias generate_monster {
       if (%battle.type != ai) { 
         $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
         $display.message(12 $+ %real.name  $+ $readini($char(Stripe), descriptions, char), battle)
-        $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(stripe), descriptions, BossQuote) $+ ", battle)
+        $display.message(02 $+ %real.name looks at the heroes and says " $+ $readini($char(stripe), descriptions, BossQuote) $+ ", battle)
       }
 
       if ($readini(battlestats.dat, Battle, WinningStreak) > 100) {  var %number.of.gremlins.needed $rand(2,3) }
@@ -1825,7 +1825,7 @@ alias generate_battle_order {
     if (%demonwall.fight = on) { 
       $display.message($readini(translation.dat, events, DemonWallFightOver), battle)
       unset %demonwall.fight 
-      if (%battle.type = ai) { set %ai.winner 2Winner:4 %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
+      if (%battle.type = ai) { set %ai.winner 02Winner:04 %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
       /endbattle defeat 
       halt 
     }
@@ -1963,7 +1963,7 @@ alias battle.end.failure {
     var %portal.item $readini($txtfile(battle2.txt), BattleInfo, PortalItem)
     var %portal.defeat.message $readini($dbfile(items.db), %portal.item, Defeat)
     $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) 
-    if (%portal.defeat.message != $null) { $display.message(4 $+ %portal.defeat.message, global) }
+    if (%portal.defeat.message != $null) { $display.message(04 $+ %portal.defeat.message, global) }
   }
   if (%savethepresident = on) { $display.message($readini(translation.dat, battle, EvilHasWonPresident), global) 
     var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Fails)
@@ -2066,7 +2066,7 @@ alias battle.end.victory {
     var %portal.item $readini($txtfile(battle2.txt), BattleInfo, PortalItem)
     var %portal.defeat.message $readini($dbfile(items.db), %portal.item, Victory)
     $display.message($readini(translation.dat, battle, GoodHasWonPortal), battle)
-    if (%portal.defeat.message != $null) { $display.message(4 $+ %portal.defeat.message, global) }
+    if (%portal.defeat.message != $null) { $display.message(04 $+ %portal.defeat.message, global) }
   }
 
   if (%savethepresident = on) { $display.message($readini(translation.dat, battle, GoodHasWonPresident), battle) 
@@ -2254,7 +2254,7 @@ alias turn {
   if ((%status = dead) || (%status = runaway)) { unset %status | $next | halt }
 
   if ($readini($char($1), info, ai_type) = defender) {
-    if ($readini($char($1), descriptions, DefenderAI) != $null) { $set_chr_name($1) | $display.message(4 $+ $readini($char($1), descriptions, DefenderAI), battle) }
+    if ($readini($char($1), descriptions, DefenderAI) != $null) { $set_chr_name($1) | $display.message(04 $+ $readini($char($1), descriptions, DefenderAI), battle) }
     $ai.monstersummon($1) 
     $next 
     halt
@@ -2498,11 +2498,11 @@ alias battle.check.for.end {
 
   if (%battle.type != dungeon) { 
     if ((%battle.monster.death = true) && (%battle.player.death = false)) { 
-      if (%battle.type = ai) { set %ai.winner 2Winner:12 %ai.npc.name | writeini $txtfile(1vs1bet.txt) money winner npc  } 
+      if (%battle.type = ai) { set %ai.winner 02Winner:12 %ai.npc.name | writeini $txtfile(1vs1bet.txt) money winner npc  } 
       .timerEndBattle $+ $rand(a,z) 1 4 /endbattle victory | halt 
     } 
     if ((%battle.monster.death = false) && (%battle.player.death = true)) { 
-      if (%battle.type = ai) { set %ai.winner 2Winner:4 %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
+      if (%battle.type = ai) { set %ai.winner 02Winner:04 %ai.monster.name | writeini $txtfile(1vs1bet.txt) money winner monster  } 
       /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle defeat | halt
     } 
     if ((%battle.monster.death = $null) && (%battle.player.death = true)) {  /.timerEndBattle $+ $rand(a,z) 1 4 /endbattle victory | halt } 
@@ -2533,7 +2533,7 @@ alias battlelist {
     if (%status.battle = $null) { inc %l 1 }
     else { 
       if ((%status.battle = dead) || (%status.battle = runaway)) { 
-        var %token.to.add 4 $+ %who.battle
+        var %token.to.add 04 $+ %who.battle
         %battle.list = $addtok(%battle.list,%token.to.add,46) | inc %l 1 
       } 
       else { 
@@ -2556,7 +2556,7 @@ alias battlelist {
         }
         if ($readini($char(%who.battle), info, flag) = $null) { 
           if ($return.systemsetting(TurnType) = action) { var %action.points $chr(91) $+ $action.points(%who.battle, check) $+ $chr(93) }
-          var %token.to.add 3 $+ %who.battle $+ %action.points
+          var %token.to.add 03 $+ %who.battle $+ %action.points
         }
         if ($readini($char(%who.battle), battle, hp) > 0) { var %token.to.add $replace(%token.to.add, %who.battle,  $+ %who.battle $+ ) }
 
@@ -2575,27 +2575,27 @@ alias battlelist {
   if ($1 = $null) {
     if (%battle.list = $null) { $display.message($readini(translation.dat, battle, NoOneJoinedBattleYet), private) | unset %battle.list | unset %who.battle | $endbattle(none) | halt }
 
-    if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 $replace(%battleconditions, $chr(046), $chr(044) $chr(032)) $+ 4] } 
+    if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 $replace(%battleconditions, $chr(046), $chr(044) $chr(032)) $+ 04] } 
 
     $display.message($readini(translation.dat, battle, BatListTitleMessage), private)
-    $display.message(4[Turn #:12 %current.turn $+ 4] [Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 4] [Moon Phase:12 %moon.phase $+ 4] [Time of Day:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) $+ 4] [Battlefield:12 %current.battlefield $+ 4] %batlist.battleconditions, private)
+    $display.message(04[Turn #:12 %current.turn $+ 04] [Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 04] [Moon Phase:12 %moon.phase $+ 04] [Time of Day:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) $+ 04] [Battlefield:12 %current.battlefield $+ 04] %batlist.battleconditions, private)
 
     if ((%darkness.turns != $null) && (%battle.type != ai)) { 
       var %darkness.countdown $calc(%darkness.turns - %current.turn) 
       if (%battle.type = defendoutpost) {  
-        if (%darkness.turns > 0) { $display.message(4[The Outpost will be defended in:12 %darkness.turns 4waves], private) }
+        if (%darkness.turns > 0) { $display.message(04[The Outpost will be defended in:12 %darkness.turns 04waves], private) }
       }
       if (%battle.type != defendoutpost)  {
-        if (%darkness.countdown > 0) { $display.message(4[Darkness will occur in:12 %darkness.countdown 4turns], private) }
-        if (%darkness.countdown <= 0) { $display.message(4[Darkness12 has overcome 4the battlefield], private) }
+        if (%darkness.countdown > 0) { $display.message(04[Darkness will occur in:12 %darkness.countdown 04turns], private) }
+        if (%darkness.countdown <= 0) { $display.message(04[Darkness12 has overcome 04the battlefield], private) }
       }
 
-      if (%battle.type = assault) {  $display.message(4[Outpost Strength: $monster.outpost(strengthbar) $+ 4], private) }
+      if (%battle.type = assault) {  $display.message(04[Outpost Strength: $monster.outpost(strengthbar) $+ 04], private) }
 
     }
 
     if (%battle.type != ai) { 
-      $display.message(4[Battle Order: %battle.list $+ 4], private) 
+      $display.message(04[Battle Order: %battle.list $+ 04], private) 
     }
 
     if (%battle.type = ai) { 
@@ -2605,7 +2605,7 @@ alias battlelist {
 
       var %currency.symbol $readini(system.dat, system, BetCurrency)
       if (%currency.symbol = $null) { var %currency.symbol $chr(36) $+ $chr(36) }
-      $display.message(4[Total Betting Amount:12 %currency.symbol $+ $bytes(%money.bet,b) $+ 4] [Odds:12 %odds.npc $+ $chr(58) $+ %odds.monster $+ 4], private)
+      $display.message(04[Total Betting Amount:12 %currency.symbol $+ $bytes(%money.bet,b) $+ 04] [Odds:12 %odds.npc $+ $chr(58) $+ %odds.monster $+ 04], private)
     }
 
     unset %battle.list | unset %who.battle
@@ -2613,27 +2613,27 @@ alias battlelist {
   if ($1 = public) { 
     if (%battle.list = $null) { $display.message($readini(translation.dat, battle, NoOneJoinedBattleYet), battle) | unset %battle.list | unset %who.battle | $endbattle(none) | halt }
 
-    if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 $replace(%battleconditions, $chr(046), $chr(044) $chr(032)) $+ 4] } 
+    if (%battleconditions != $null) { var %batlist.battleconditions [Conditions:12 $replace(%battleconditions, $chr(046), $chr(044) $chr(032)) $+ 04] } 
 
     $display.message($readini(translation.dat, battle, BatListTitleMessage), battle)
-    $display.message(4[Turn #:12 %current.turn $+ 4][Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 4] [Moon Phase:12 %moon.phase $+ 4] [Time of Day:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) $+ 4] [Battlefield:12 %current.battlefield $+ 4] %batlist.battleconditions, battle)
+    $display.message(04[Turn #:12 %current.turn $+ 04][Weather:12 $readini($dbfile(battlefields.db), weather, current) $+ 04] [Moon Phase:12 %moon.phase $+ 04] [Time of Day:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) $+ 04] [Battlefield:12 %current.battlefield $+ 04] %batlist.battleconditions, battle)
 
     if ((%darkness.turns != $null) && (%battle.type != ai)) { 
       var %darkness.countdown $calc(%darkness.turns - %current.turn) 
 
       if (%battle.type = defendoutpost) {  
-        if (%darkness.turns > 0) { $display.message(4[The Outpost will be defended in:12 %darkness.turns 4waves], battle) }
+        if (%darkness.turns > 0) { $display.message(04[The Outpost will be defended in:12 %darkness.turns 04waves], battle) }
       } 
       if (%battle.type != defendoutpost)  {
-        if (%darkness.countdown > 0) { $display.message(4[Darkness will occur in:12 %darkness.countdown 4turns], battle) }
-        if (%darkness.countdown <= 0) { $display.message(4[Darkness12 has overcome 4the battlefield], battle) }
+        if (%darkness.countdown > 0) { $display.message(04[Darkness will occur in:12 %darkness.countdown 04turns], battle) }
+        if (%darkness.countdown <= 0) { $display.message(04[Darkness12 has overcome 04the battlefield], battle) }
       }
 
-      if (%battle.type = assault) {  $display.message(4[Outpost Strength: $monster.outpost(strengthbar) $+ 4], battle) }
+      if (%battle.type = assault) {  $display.message(04[Outpost Strength: $monster.outpost(strengthbar) $+ 04], battle) }
     }
 
     if (%battle.type != ai) { 
-      $display.message(4[Battle Order: %battle.list $+ 4], battle) 
+      $display.message(04[Battle Order: %battle.list $+ 04], battle) 
     }
 
     if (%battle.type = ai) { 
@@ -2643,7 +2643,7 @@ alias battlelist {
 
       var %currency.symbol $readini(system.dat, system, BetCurrency)
       if (%currency.symbol = $null) { var %currency.symbol $chr(36) $+ $chr(36) }
-      $display.message(4[Total Betting Amount:12 %currency.symbol $+ $bytes(%money.bet,b)  $+ 4] [Odds:12 %odds.npc $+ $chr(58) $+ %odds.monster $+ 4], battle)
+      $display.message(04[Total Betting Amount:12 %currency.symbol $+ $bytes(%money.bet,b)  $+ 04] [Odds:12 %odds.npc $+ $chr(58) $+ %odds.monster $+ 04], battle)
     }
 
     unset %battle.list | unset %who.battle

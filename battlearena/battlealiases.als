@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 02/13/19
+;;;; Last updated: 03/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1106,7 +1106,7 @@ deal_damage {
         if (%tp.user >= %tp.max) { writeini $char($1) battle tp %tp.max }
         if (%tp.user < %tp.max) { writeini $char($1) battle tp %tp.user }
 
-        $set_chr_name($1) | set %absorb.message 3 $+ %real.name absorbs %tp.absorb.amount TP from $set_chr_name($2) %real.name $+ !
+        $set_chr_name($1) | set %absorb.message 03 $+ %real.name absorbs %tp.absorb.amount TP from $set_chr_name($2) %real.name $+ !
         set %tp.max $readini($char($2), basestats, tp) 
         dec %tp.target %tp.absorb.amount
         if (%tp.target <= 0) { writeini $char($2) battle tp 0 }
@@ -1130,7 +1130,7 @@ deal_damage {
           if (%ig.user >= %ig.max) { writeini $char($1) battle IgnitionGauge %ig.max }
           if (%ig.user < %ig.max) { writeini $char($1) battle IgnitionGauge %ig.user }
 
-          $set_chr_name($1) | set %absorb.message 3 $+ %real.name absorbs %ig.absorb.amount Ignition Gauge from $set_chr_name($2) %real.name $+ !
+          $set_chr_name($1) | set %absorb.message 03 $+ %real.name absorbs %ig.absorb.amount Ignition Gauge from $set_chr_name($2) %real.name $+ !
 
           set %ig.max $readini($char($2), basestats, IgnitionGauge) 
           dec %ig.target %ig.absorb.amount
@@ -1281,7 +1281,7 @@ display_damage {
   $set_chr_name($2) | set %enemy %real.name
   if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
 
-  if (%damage.display.color = $null) { var %damage.display.color 4 }
+  if (%damage.display.color = $null) { var %damage.display.color 04 }
 
   ; Show a random attack description
   if ($3 = weapon) { 
@@ -1299,7 +1299,7 @@ display_damage {
         $set_chr_name($1) | set %enemy %real.name | set %target $1 | set %attacker $2 | $set_chr_name($2) | set %user %real.name 
       }
 
-    $display.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)  }
+    $display.message(03 $+ %user $+  $read %attack.file  $+ 03., battle)  }
   }
 
   if (%counterattack = shield) {
@@ -1307,7 +1307,7 @@ display_damage {
     set  %weapon.type $readini($dbfile(weapons.db), %weapon.equipped, type)
     var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt)
 
-    $display.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)  
+    $display.message(03 $+ %user $+  $read %attack.file  $+ 03., battle)  
 
     $display.message($readini(translation.dat, battle, ShieldCountered), battle)
     $set_chr_name($1) | set %enemy %real.name | set %target $1 | set %attacker $2 | $set_chr_name($2) | set %user %real.name 
@@ -1318,7 +1318,7 @@ display_damage {
   }
 
   if ($3 = tech) {
-    if (%showed.tech.desc != true) { $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $4, desc), battle) }
+    if (%showed.tech.desc != true) { $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $4, desc), battle) }
 
     if ($readini($dbfile(techniques.db), $4, magic) = yes) {
       ; Clear elemental seal
@@ -1332,12 +1332,12 @@ display_damage {
   }
 
   if ($3 = item) {
-    $display.message(3 $+ %user $+  $readini($dbfile(items.db), $4, desc), battle)
+    $display.message(03 $+ %user $+  $readini($dbfile(items.db), $4, desc), battle)
   }
 
-  if ($3 = fullbring) { $display.message(3 $+ %user $+  $readini($dbfile(items.db), $4, fullbringdesc), battle) } 
+  if ($3 = fullbring) { $display.message(03 $+ %user $+  $readini($dbfile(items.db), $4, fullbringdesc), battle) } 
 
-  if ($3 = renkei) { $display.message($readini(translation.dat, system, RenkeiPerformed) 3 $+ %renkei.description, battle) |  unset %style.rating  }
+  if ($3 = renkei) { $display.message($readini(translation.dat, system, RenkeiPerformed) 03 $+ %renkei.description, battle) |  unset %style.rating  }
 
   ; Show the damage
   if ((($3 != item) && ($3 != renkei) && ($1 != battlefield))) { 
@@ -1354,7 +1354,7 @@ display_damage {
   }
 
   ; Set the damage message
-  if (%number.of.hits > 1) { var %damage.message The attack hits4 %number.of.hits times and does %damage.display.color $+  $+ $bytes(%attack.damage,b) total damage to %enemy $+ . %style.rating }
+  if (%number.of.hits > 1) { var %damage.message The attack hits04 %number.of.hits times and does %damage.display.color $+  $+ $bytes(%attack.damage,b) total damage to %enemy $+ . %style.rating }
   else { var %damage.message The attack does %damage.display.color $+  $+ $bytes(%attack.damage,b) damage to %enemy $+ . %style.rating }
 
   ; Display the damage or guard message
@@ -1420,7 +1420,7 @@ display_damage {
         }
       }
 
-      $display.message(3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.,battle) 
+      $display.message(03 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.,battle) 
       unset %absorb
     }
   }
@@ -1440,7 +1440,7 @@ display_damage {
           }
         }
 
-        $display.message(3 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.,battle) 
+        $display.message(03 $+ %user absorbs $bytes(%absorb.amount,b) HP back from the damage.,battle) 
         set %life.target $readini($char($1), Battle, HP) | set %life.max $readini($char($1), Basestats, HP)
         inc %life.target %absorb.amount
         if (%life.target >= %life.max) { set %life.target %life.max }
@@ -1464,7 +1464,7 @@ display_damage {
       if ($readini($char($1), info, flag) != monster) { 
         writeini $char(%target) battle status alive
 
-        if ($readini($char(%target), descriptions, Awaken) != $null) { $display.message(4 $+ %enemy  $+ $readini($char(%target), descriptions, Awaken), battle) }
+        if ($readini($char(%target), descriptions, Awaken) != $null) { $display.message(04 $+ %enemy  $+ $readini($char(%target), descriptions, Awaken), battle) }
         if ($readini($char(%target), descriptions, Awaken) = $null) { $display.message($readini(translation.dat, battle, inactivealive),battle)    }
         $next 
       }
@@ -1556,7 +1556,7 @@ display_damage {
     ; Is the mech destroyed?
     if ($readini($char($2), mech, HpCurrent) <= 0) {  var %mech.name $readini($char($2), mech, name)
       if ($readini($char($2), Descriptions, MechDestroyed) = $null) { $display.message($readini(translation.dat, battle, DisabledMech), battle) }
-      else { $display.message(4 $+ $get_chr_name($2)  $+ $readini($char($2), Descriptions, MechDestroyed), battle) }
+      else { $display.message(04 $+ $get_chr_name($2)  $+ $readini($char($2), Descriptions, MechDestroyed), battle) }
       $mech.deactivate($2, true)
     }
   }
@@ -1585,7 +1585,7 @@ display_aoedamage {
   ; $3 = tech name
   ; $4 = flag for if it's a melee
 
-  if (%damage.display.color = $null) { var %damage.display.color 4 }
+  if (%damage.display.color = $null) { var %damage.display.color 04 }
 
   unset %overkill | unset %target |  unset %style.rating
   $set_chr_name($1) | set %user %real.name
@@ -1646,7 +1646,7 @@ display_aoedamage {
     if ($readini($char(%target), battle, status) = inactive) {
       if ($readini($char($1), info, flag) != monster) { 
         writeini $char(%target) battle status alive
-        if ($readini($char(%target), descriptions, Awaken) != $null) { $display.message(4 $+ %enemy  $+ $readini($char(%target), descriptions, Awaken), battle) }
+        if ($readini($char(%target), descriptions, Awaken) != $null) { $display.message(04 $+ %enemy  $+ $readini($char(%target), descriptions, Awaken), battle) }
         if ($readini($char(%target), descriptions, Awaken) = $null) { $display.message($readini(translation.dat, battle, inactivealive),battle)    }
       }
     }
@@ -1745,24 +1745,24 @@ display_heal {
   if ($3 = tech) {
     if (%showed.tech.desc != true) {
       $set_chr_name($1)
-      $display.message(3 $+ %real.name $+  $readini($dbfile(techniques.db), $4, desc),battle) 
+      $display.message(03 $+ %real.name $+  $readini($dbfile(techniques.db), $4, desc),battle) 
     }
   }
 
   if ($3 = item) {
-    $display.message(3 $+ %user $+  $readini($dbfile(items.db), $4, desc),battle) 
+    $display.message(03 $+ %user $+  $readini($dbfile(items.db), $4, desc),battle) 
   }
 
   if ($3 = weapon) { 
     var %weapon.type $readini($dbfile(weapons.db), $4, type) | var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt)
-    $display.message(3 $+ %user $+  $read %attack.file  $+ 3.,battle) 
+    $display.message(03 $+ %user $+  $read %attack.file  $+ 03.,battle) 
   }
 
   ; Show the damage healed
   if (%guard.message = $null) {  $set_chr_name($2) |  $set_chr_name($2)
     $set_chr_name($2) | set %enemy %real.name
     if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
-    $display.message(3 $+ %enemy has been healed for $bytes(%attack.damage,b) health!, battle) 
+    $display.message(03 $+ %enemy has been healed for $bytes(%attack.damage,b) health!, battle) 
   }
   if (%guard.message != $null) { 
     $set_chr_name($2) | set %enemy %real.name
@@ -1774,7 +1774,7 @@ display_heal {
   ; Did the person die?  If so, show the death message.
   if ($readini($char($2), battle, HP) <= 0) { 
     $set_chr_name($2) 
-    $display.message(4 $+ %enemy has been defeated by %user $+ !  %overkill,battle) 
+    $display.message(04 $+ %enemy has been defeated by %user $+ !  %overkill,battle) 
     $achievement_check($1, FillYourDarkSoulWithLight)
   }
 
@@ -2206,7 +2206,7 @@ random.battlefield.ally {
     $get_npc_list
     var %npcs.total $numtok(%npc.list,46)
     if ((%npcs.total = 0) || (%npc.list = $null)) { 
-      $display.message(4Error: There are no NPCs in the NPC folder.. Have the bot owner check to make sure there are npcs there!,battle) 
+      $display.message(04Error: There are no NPCs in the NPC folder.. Have the bot owner check to make sure there are npcs there!,battle) 
       return 
     }
 
@@ -2225,7 +2225,7 @@ random.battlefield.ally {
         writeini $txtfile(battle2.txt) battleinfo npcs 1
 
         if (%battle.type != ai) { 
-          $display.message(4 $+ %real.name has entered the battle to help the forces of good!,battle)
+          $display.message(04 $+ %real.name has entered the battle to help the forces of good!,battle)
           $display.message(12 $+ %real.name  $+ $readini($char(%npc.name), descriptions, char),battle)
         }
 
@@ -2558,7 +2558,7 @@ inflict_status {
   if ($3 = doom) {  set %status.type doom | var %status.grammar doomed }
   if ($3 = flying) {  set %status.type flying  | var %status.grammar flying }
 
-  if (%status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
+  if (%status.grammar = $null) { echo -a 04Invalid status type: $3 | return }
 
   var %chance $rand(1,140) | $set_chr_name($1) 
   if ($readini($char($2), skills, utsusemi.on) = on) { set %chance 0 } 
@@ -2615,7 +2615,7 @@ inflict_status {
 
   if (%resist.skill >= 100) { $set_chr_name($2) 
     if (%statusmessage.display != $null) { set %statusmessage.display %statusmessage.display :: %real.name is immune to the %status.type status! }
-    if (%statusmessage.display = $null) { set %statusmessage.display 4 $+ %real.name is immune to the %status.type status! }
+    if (%statusmessage.display = $null) { set %statusmessage.display 04 $+ %real.name is immune to the %status.type status! }
   }
   if ((%resist.skill < 100) || (%resist.skill = $null)) {
 
@@ -2627,15 +2627,15 @@ inflict_status {
 
     if (%chance <= 0) { $set_chr_name($2) 
       if (%statusmessage.display != $null) { set %statusmessage.display %statusmessage.display :: %real.name has resisted $set_chr_name($1) %real.name $+ 's $lower(%status.type) status effect! }
-      if (%statusmessage.display = $null) { set %statusmessage.display 4 $+ %real.name has resisted $set_chr_name($1) %real.name $+ 's $lower(%status.type) status effect! }
+      if (%statusmessage.display = $null) { set %statusmessage.display 04 $+ %real.name has resisted $set_chr_name($1) %real.name $+ 's $lower(%status.type) status effect! }
     }
     if ((%chance > 0) && (%chance <= 45)) { $set_chr_name($1)
       if (%statusmessage.display != $null) { set %statusmessage.display %statusmessage.display :: $set_chr_name($1) %real.name $+ 's $lower(%status.type) status effect has failed }
-      if (%statusmessage.display = $null) {  set %statusmessage.display 4 $+ %real.name $+ 's $lower(%status.type) status effect has failed against $set_chr_name($2) %real.name $+ ! }
+      if (%statusmessage.display = $null) {  set %statusmessage.display 04 $+ %real.name $+ 's $lower(%status.type) status effect has failed against $set_chr_name($2) %real.name $+ ! }
     }
     if (%chance > 45) { $set_chr_name($2) 
       if (%statusmessage.display != $null) {  set %statusmessage.display %statusmessage.display :: $set_chr_name($2) %real.name is now %status.grammar $+ ! } 
-      if (%statusmessage.display = $null) {   $set_chr_name($2) | set %statusmessage.display 4 $+ %real.name is now %status.grammar $+ ! }
+      if (%statusmessage.display = $null) {   $set_chr_name($2) | set %statusmessage.display 04 $+ %real.name is now %status.grammar $+ ! }
 
       if (%status.type = poison) && ($readini($char($2), status, poison) = yes) { writeini $char($2) status poison no | writeini $char($2) status HeavyPoison yes | writeini $char($2) status poison.timer %enfeeble.timer }
       if (%status.type = poison) && ($readini($char($2), status, HeavyPoison) != yes) { writeini $char($2) status poison yes | writeini $char($2) status poison.timer %enfeeble.timer }
@@ -2720,7 +2720,7 @@ self.inflict_status {
 }
 
 do.self.inflict.status {
-  if (%self.status.type = $null) { echo -a 4Null status type! Invalid. | return }
+  if (%self.status.type = $null) { echo -a 04Null status type! Invalid. | return }
 
   if (%self.status.type = charm) { unset %self.status.type | unset %inflict.user | unset %inflict.techwpn | return }
   if (%self.status.type = stop) { set %status.type stop | var %status.grammar frozen in time }
@@ -2744,10 +2744,10 @@ do.self.inflict.status {
   if (%self.status.type = confuse) { set %status.type confuse  | var %status.grammar confused }
   if (%self.status.type = terrify) { set %status.type terrify | var %status.grammar terrified }
 
-  if (%status.grammar = $null) { echo -a 4Invalid status type: %self.status.type | return }
+  if (%status.grammar = $null) { echo -a 04Invalid status type: %self.status.type | return }
 
   if (%statusmessage.display != $null) {  set %statusmessage.display %statusmessage.display and %status.grammar $+ ! } 
-  if (%statusmessage.display = $null) {   $set_chr_name(%inflict.user) | set %statusmessage.display 4 $+ %real.name is now %status.grammar $+ ! }
+  if (%statusmessage.display = $null) {   $set_chr_name(%inflict.user) | set %statusmessage.display 04 $+ %real.name is now %status.grammar $+ ! }
 
   if (%status.type != paralysis) {  var %enfeeble.timer $rand(0,1) }
   if (%status.type = paralysis) {  var %enfeeble.timer $rand(1,2) }
@@ -3409,8 +3409,8 @@ multiple_wave_check {
     inc %besieged.squad 1
     $generate_monster(besieged)
 
-    if (%besieged.squad < 5) { $display.message(4The next squad of monsters has arrived!,battle) }
-    if (%besieged.squad = 5) { $display.message(4The final squad of monsters has arrived!,battle) }
+    if (%besieged.squad < 5) { $display.message(04The next squad of monsters has arrived!,battle) }
+    if (%besieged.squad = 5) { $display.message(04The final squad of monsters has arrived!,battle) }
 
     $generate_battle_order
     set %who $read -l1 $txtfile(battle.txt) | set %line 1
@@ -3759,7 +3759,7 @@ battlefield.damage {
     if (%attack.damage > 800) { set %attack.damage 800 }
   }
 
-  set %damage.display.color 4 
+  set %damage.display.color 04 
 }
 battlefield.event {
   set %debug.location alias battlefield.event
@@ -3783,7 +3783,7 @@ battlefield.event {
   if ($readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ statusType) != $null) { set %event.status.type $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ statusType) }
 
   if (%battlefield.event.target = all) {
-    $display.message(4 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
+    $display.message(04 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
 
     var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
     while (%battletxt.current.line <= %battletxt.lines) { 
@@ -3839,7 +3839,7 @@ battlefield.event {
     if (($readini($char(%member), battle, hp) = $null) || ($readini($char(%member), monster, type) = object)) { return }
 
     $set_chr_name(%member) 
-    $display.message(4 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
+    $display.message(04 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
 
     if (%event.status.type != $null) { 
       if ($person_in_mech(%member) = false) {  writeini $char(%member) status %event.status.type yes }
@@ -3869,7 +3869,7 @@ battlefield.event {
   }
 
   if (%battlefield.event.target = monsters) {
-    $display.message(4 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
+    $display.message(04 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
     var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
     while (%battletxt.current.line <= %battletxt.lines) { 
       var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
@@ -3903,7 +3903,7 @@ battlefield.event {
   }
 
   if (%battlefield.event.target = players) {
-    $display.message(4 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
+    $display.message(04 $+ $readini($dbfile(battlefields.db), %current.battlefield, event $+ %battlefield.event.number $+ desc), battle)
     var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1
     while (%battletxt.current.line <= %battletxt.lines) { 
       var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
@@ -5913,17 +5913,17 @@ monster.outpost {
     var %outpost.strength $readini($txtfile(battle2.txt), battle, outpostStrength)
     if (%outpost.strength = $null) { var %outpost.strength 10 }
 
-    if (%outpost.strength = 10) { return 3|||||||||| }
-    if (%outpost.strength = 9) { return 3|||||||||5| }
-    if (%outpost.strength = 8) { return 3||||||||5|| }
-    if (%outpost.strength = 7) { return 3|||||||5||| }
-    if (%outpost.strength = 6) { return 3||||||5|||| }
-    if (%outpost.strength = 5) { return 3|||||5||||| }
-    if (%outpost.strength = 4) { return 3||||5|||||| }
-    if (%outpost.strength = 3) { return 3|||5||||||| }
-    if (%outpost.strength = 2) { return 3||5|||||||| }
-    if (%outpost.strength = 1) { return 3|5||||||||| }
-    if (%outpost.strength <= 0) { return 5|||||||||| }
+    if (%outpost.strength = 10) { return 03|||||||||| }
+    if (%outpost.strength = 9) { return 03|||||||||05| }
+    if (%outpost.strength = 8) { return 03||||||||05|| }
+    if (%outpost.strength = 7) { return 03|||||||05||| }
+    if (%outpost.strength = 6) { return 03||||||05|||| }
+    if (%outpost.strength = 5) { return 03|||||05||||| }
+    if (%outpost.strength = 4) { return 03||||05|||||| }
+    if (%outpost.strength = 3) { return 03|||05||||||| }
+    if (%outpost.strength = 2) { return 03||05|||||||| }
+    if (%outpost.strength = 1) { return 03|05||||||||| }
+    if (%outpost.strength <= 0) { return 05|||||||||| }
   }
 }
 

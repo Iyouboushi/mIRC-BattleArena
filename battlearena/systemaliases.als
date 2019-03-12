@@ -1,13 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 02/08/19
+;;;; Last updated: 03/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Version of the bot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battle.version {  
-  if ($readini(version.ver, versions, Bot) = $null) { echo -a 4ERROR: version.ver is either missing or corrupted! | return 4.0 }
+  if ($readini(version.ver, versions, Bot) = $null) { echo -a 04ERROR: version.ver is either missing or corrupted! | return 4.0 }
   else { return $readini(version.ver, versions, Bot) } 
 } 
 
@@ -15,7 +15,7 @@ battle.version {
 ; Version of the system.dat file
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 system.dat.version { 
-  if ($readini(version.ver, versions, systemdat) = $null) { echo -a 4ERROR: version.ver is either missing or corrupted! | return 0 }
+  if ($readini(version.ver, versions, systemdat) = $null) { echo -a 04ERROR: version.ver is either missing or corrupted! | return 0 }
   else { return $readini(version.ver, versions, systemdat) } 
 } 
 
@@ -477,10 +477,10 @@ writehost {
 ; Returns a color for equipment
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 equipment.color {
-  var %equipment.color 3
+  var %equipment.color 03
   if (+1 isin $1) { var %equipment.color 12 }
   if (+2 isin $1) { var %equipment.color 6 }
-  if ((($readini($dbfile(weapons.db), $1, legendary) = true) || ($readini($dbfile(items.db), $1, legendary) = true) || ($readini($dbfile(equipment.db), $1, legendary) = true))) { var %equipment.color 7 }
+  if ((($readini($dbfile(weapons.db), $1, legendary) = true) || ($readini($dbfile(items.db), $1, legendary) = true) || ($readini($dbfile(equipment.db), $1, legendary) = true))) { var %equipment.color 07 }
   return %equipment.color
 }
 
@@ -868,7 +868,7 @@ display.message {
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
 
-  if ($readini(system.dat, system, botType) = IRC) {  msg %battlechan %message.to.display  }
+  if ($readini(system.dat, system, botType) = IRC) {  /msg %battlechan %message.to.display  }
   if ($readini(system.dat, system, botType) = TWITCH) {
     var %twitch.delay $readini(system.dat, system, TwitchDelayTime)
     if (%twitch.delay = $null) { var %twitch.delay 2 }
@@ -986,16 +986,16 @@ display.private.message.delay.custom {
 ; Returns the status line
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 status_message_check { 
-  if (%all_status = $null) { %all_status = 4 $+ $1- | return }
-  else { %all_status = 4 $+ %all_status $+ $chr(0160) $+ 3 $+ $chr(124) $+ 4 $+ $chr(0160) $+ $1- | return }
+  if (%all_status = $null) { %all_status = 04 $+ $1- | return }
+  else { %all_status = 04 $+ %all_status $+ $chr(0160) $+ 03 $+ $chr(124) $+ 04 $+ $chr(0160) $+ $1- | return }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns the skills line
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 skills_message_check { 
-  if (%all_skills = $null) { %all_skills = 4 $+ $1- | return }
-  else { %all_skills = 4 $+ %all_skills $+ $chr(0160) $+ 3 $+ $chr(124) $+ 4 $+ $chr(0160) $+ $1- | return }
+  if (%all_skills = $null) { %all_skills = 04 $+ $1- | return }
+  else { %all_skills = 04 $+ %all_skills $+ $chr(0160) $+ 03 $+ $chr(124) $+ 04 $+ $chr(0160) $+ $1- | return }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1003,7 +1003,7 @@ skills_message_check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 idcheck { 
   if ($readini($char($1), info, flag) != $null) { $display.private.message($readini(translation.dat, errors, Can'tLogIntoThisChar)) | halt }
-  if ($readini($char($1), info, banned) = yes) {  $display.private.message(4This character has been banned and cannot be used to log in.) | halt }
+  if ($readini($char($1), info, banned) = yes) {  $display.private.message(04This character has been banned and cannot be used to log in.) | halt }
   $passhurt($1) | $password($1)
   if (%password = $null) { unset %passhurt | unset %password |  $display.private.message($readini(translation.dat, errors, NeedToMakeACharacter)) | halt }
   if ($2 = $null) { halt }
@@ -1126,7 +1126,7 @@ build_battlehp_list {
     if ($readini($char(%who.battle), info, flag) = monster) { inc %battletxt.current.line }
     else { 
       $set_chr_name(%who.battle) | $hp_status_hpcommand(%who.battle) 
-      var %hp.to.add  3 $+ $chr(91) $+  $+ %who.battle $+ :  %hstats $+ 3 $+ $chr(93) 
+      var %hp.to.add  03 $+ $chr(91) $+  $+ %who.battle $+ :  %hstats $+ 03 $+ $chr(93) 
       %battle.hp.list = $addtok(%battle.hp.list,%hp.to.add,46) 
       inc %battletxt.current.line
     }
@@ -1153,7 +1153,7 @@ build_battlestyle_list {
     var %person.name $gettok(%battle.style.order,%current.person,46)
     if ($readini($char(%person.name), info, flag) != monster) {
       $calculate.stylepoints(%person.name)
-      var %style.to.add  3 $+ %person.name $+ :  %style.rating
+      var %style.to.add  03 $+ %person.name $+ :  %style.rating
       %battle.style.list = $addtok(%battle.style.list, %style.to.add, 46) 
       unset %style.rating
     }
@@ -1250,8 +1250,8 @@ weapons.mech {
 
     if ($readini($dbfile(weapons.db), %item.name, type) != $null) {
       if ((%item_amount != $null) && (%item_amount >= 1)) { 
-        if ($numtok(%mech.weapon.list,46) <= 20) { %mech.weapon.list = $addtok(%mech.weapon.list, 3 $+ %item.name, 46) }
-        else { %mech.weapon.list2 = $addtok(%mech.weapon.list2, 3 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        if ($numtok(%mech.weapon.list,46) <= 20) { %mech.weapon.list = $addtok(%mech.weapon.list, 03 $+ %item.name, 46) }
+        else { %mech.weapon.list2 = $addtok(%mech.weapon.list2, 03 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       }
     }
     unset %item.name | unset %item_amount
@@ -1286,11 +1286,11 @@ weapons.get.list {
 
       if ((%weapon_level != $null) && (%weapon_level >= 1)) { 
         ; add the weapon level to the weapon list
-        var %weapon.color 3
+        var %weapon.color 03
         if (+1 isin %weapon.name) { var %weapon.color 12 }
-        if ($readini($dbfile(weapons.db), %weapon.name, Legendary) = true) { var %weapon.color 7 }
+        if ($readini($dbfile(weapons.db), %weapon.name, Legendary) = true) { var %weapon.color 07 }
 
-        var %weapon_to_add  $+ %weapon.color $+ %weapon.name $+ 3 $+ $chr(040) $+ %weapon_level $+ $chr(041) $+ 
+        var %weapon_to_add  $+ %weapon.color $+ %weapon.name $+ 03 $+ $chr(040) $+ %weapon_level $+ $chr(041) $+ 
 
         inc %weaponlist.totalweapons.counter 1
 
@@ -1354,7 +1354,7 @@ shields.get.list {
 
       if ((%shield_level != $null) && (%shield_level >= 1)) { 
         ; add the shield level to the shield list
-        var %shield.name $equipment.color(%shield.name) $+ %shield.name $+ 3
+        var %shield.name $equipment.color(%shield.name) $+ %shield.name $+ 03
         var %shield_to_add  $+ %shield.name $+ 
 
         inc %shieldlist.totalshields.counter 1
@@ -1625,7 +1625,7 @@ techs.get.list {
 
     if ((%tech_level != $null) && (%tech_level >= 1)) { 
       ; add the tech level to the tech list
-      if (%battle.type != ai) {  set %tech_to_add $iif(%my.tp < $readini($dbfile(techniques.db), %tech.name, tp), 5 $+ %tech.name $+ 3, %tech.name) $+ $chr(040) $+ %tech_level $+ $chr(041) }
+      if (%battle.type != ai) {  set %tech_to_add $iif(%my.tp < $readini($dbfile(techniques.db), %tech.name, tp), 5 $+ %tech.name $+ 03, %tech.name) $+ $chr(040) $+ %tech_level $+ $chr(041) }
       if (%battle.type = ai) {  var %tech_to_add %tech.name | inc %tech.count 1 | inc %tech.power $readini($dbfile(techniques.db), %tech.name, basepower) }
       %tech.list = $addtok(%tech.list,%tech_to_add,46)
     }
@@ -1644,7 +1644,7 @@ techs.get.list {
     if (%techs != $null) {
       while (%value <= %number.of.techs) {
         set %tech.name $gettok(%techs, %value, 46)
-        var %tech_to_add 7 $+ %tech.name 
+        var %tech_to_add 07 $+ %tech.name 
         %ignition.tech.list = $addtok(%ignition.tech.list,%tech_to_add,46)
         inc %value 1
       }
@@ -1734,8 +1734,8 @@ active.skills.list {
 
       if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = true)) { 
 
-        if (%playerstyle = $readini($dbfile(skills.db), %skill.name, style)) { var %skill_to_add 5[3 $+ %skill_to_add $+ 5]3 }
-        else { var %skill_to_add 2[3 $+ %skill_to_add $+ 2]3 }
+        if (%playerstyle = $readini($dbfile(skills.db), %skill.name, style)) { var %skill_to_add 5[03 $+ %skill_to_add $+ 5]03 }
+        else { var %skill_to_add 02[03 $+ %skill_to_add $+ 02]03 }
       }
 
       if (%total.skills > 13) { %active.skills.list2 = $addtok(%active.skills.list2,%skill_to_add,46) }
@@ -1979,7 +1979,7 @@ gems.list {
     if (%item_amount = 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %gems.items.list = $addtok(%gems.items.list, 7 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+    %gems.items.list = $addtok(%gems.items.list, 07 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
 
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2034,8 +2034,8 @@ items.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, 3 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %items.list2 = $addtok(%items.list2, 3 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, 03 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { %items.list2 = $addtok(%items.list2, 03 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
     }
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2050,8 +2050,8 @@ items.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, 4 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %items.list2 = $addtok(%items.list2, 4 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, 04 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { %items.list2 = $addtok(%items.list2, 04 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
     }
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2066,7 +2066,7 @@ items.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     var %item.color 5
-    if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 7 }
+    if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 07 }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
@@ -2101,7 +2101,7 @@ items.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %reset.items.list = $addtok(%reset.items.list, 2 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+    %reset.items.list = $addtok(%reset.items.list, 02 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
 
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2252,8 +2252,8 @@ miscitems.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     var %item.color 5
-    if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 7 }
-    if ($readini($dbfile(items.db), %item.name, Legendary) = true) { var %item.color 7 }
+    if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 07 }
+    if ($readini($dbfile(items.db), %item.name, Legendary) = true) { var %item.color 07 }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       if ($numtok(%misc.items.list,46) <= 15) { %misc.items.list = $addtok(%misc.items.list, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
@@ -2330,8 +2330,8 @@ items.mechcore {
 
     if ($readini($dbfile(items.db), %item.name, type) = mechCore) {
       if ((%item_amount != $null) && (%item_amount >= 1)) { 
-        if ($numtok(%mech.items.list,46) <= 20) { %mech.items.list = $addtok(%mech.items.list, 3 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-        else { %mech.items.list2 = $addtok(%mech.items.list2, 3 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        if ($numtok(%mech.items.list,46) <= 20) { %mech.items.list = $addtok(%mech.items.list, 03 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        else { %mech.items.list2 = $addtok(%mech.items.list2, 03 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       }
     }
     unset %item.name | unset %item_amount
@@ -2371,12 +2371,12 @@ armor.list {
         var %armor.level $readini($dbfile(equipment.db), %armor.name, LevelRequirement)
         if (%armor.level = $null) { var %armor.level 0 }
 
-        if (+1 isin %armor.name) { var %armor.name 12 $+ %armor.name $+ 3 }
-        if (+2 isin %armor.name) { var %armor.name 6 $+ %armor.name $+ 3 }
-        if ($readini($dbfile(equipment.db), %armor.name, Legendary) = true) { var %armor.name 7 $+ %armor.name $+ 3 }
+        if (+1 isin %armor.name) { var %armor.name 12 $+ %armor.name $+ 03 }
+        if (+2 isin %armor.name) { var %armor.name 6 $+ %armor.name $+ 03 }
+        if ($readini($dbfile(equipment.db), %armor.name, Legendary) = true) { var %armor.name 07 $+ %armor.name $+ 03 }
 
 
-        if (%armor.level > $get.level($1)) { var %armor.name 4 $+ %current.ini.item $+ 3 }
+        if (%armor.level > $get.level($1)) { var %armor.name 04 $+ %current.ini.item $+ 03 }
 
         if (% [ $+ token.count. $+ [ %item.type ] ] <= 20) { 
           % [ $+ armor. $+ [ %item.type ] ] = $addtok(% [ $+ armor. $+ [ %item.type ] ] , %armor.name $+ $chr(040) $+ %current.ini.value $+ $chr(041),46) 
@@ -2434,7 +2434,7 @@ accessories.list {
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       inc %accessories.have 1
 
-      var %item.name $equipment.color(%item.name) $+  $+ %item.name $+ 3
+      var %item.name $equipment.color(%item.name) $+  $+ %item.name $+ 03
 
       if (%accessories.have <= 16) {  %accessories.list = $addtok(%accessories.list, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) $+ , 46) }
       if ((%accessories.have > 16) && (%accessories.have <= 32)) { %accessories.list2 = $addtok(%accessories.list2, %item.name $+ $chr(040) $+ %item_amount $+ $chr(041) $+ , 46) }
@@ -2468,7 +2468,7 @@ runes.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %runes.list = $addtok(%runes.list, 7 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+    %runes.list = $addtok(%runes.list, 07 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
 
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2618,7 +2618,7 @@ oldchar.check {
 
   if (%current.ctime > %ctime.calc.sixmonths) { 
     ; It's been greater than six months.  Zap the char.
-    echo -a 4 $+ $1 is older than 6 months and is being removed..
+    echo -a 04 $+ $1 is older than 6 months and is being removed..
     $zap_char($1)
   }
 
@@ -2765,7 +2765,7 @@ clear_positive_status {
 clear_status {
   if ($readini($char($1), status, finalgetsuga) = yes) {
     $reset_char($1) | $set_chr_name($1)
-    $display.message(4 $+ %real.name feels all of $gender($1) power leaving $gender($1) body -- resetting $gender2($1) back to level 1.,global) 
+    $display.message(04 $+ %real.name feels all of $gender($1) power leaving $gender($1) body -- resetting $gender2($1) back to level 1.,global) 
 
     unset %real.name
   }
@@ -3929,12 +3929,12 @@ increase_death_tally {
 check.clone.death {
   if ($isfile($char($1 $+ _clone)) = $true) { 
     if ($readini($char($1 $+ _clone), battle, status) != dead) { writeini $char($1 $+ _clone) battle status dead | writeini $char($1 $+ _clone) battle hp 0 | $set_chr_name($1 $+ _clone) 
-      $display.message(4 $+ %real.name disappears back into $set_chr_name($1) %real.name $+ 's shadow., battle) 
+      $display.message(04 $+ %real.name disappears back into $set_chr_name($1) %real.name $+ 's shadow., battle) 
     }
   }
   if ($isfile($char($1 $+ _summon)) = $true) { 
     if ($readini($char($1 $+ _summon), battle, status) != dead) { writeini $char($1 $+ _summon) battle status dead | writeini $char($1 $+ _summon) battle hp 0 | $set_chr_name($1 $+ _summon) 
-      $display.message(4 $+ %real.name fades away.,battle) 
+      $display.message(04 $+ %real.name fades away.,battle) 
     }
   }
 }
@@ -4562,31 +4562,31 @@ buildzappedlist {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 bot.admin {
   if ($1 = list) { var %bot.admins $readini(system.dat, botinfo, bot.owner) 
-    if (%bot.admins = $null) { $display.message(4There are no bot admins set., private) | halt }
+    if (%bot.admins = $null) { $display.message(04There are no bot admins set., private) | halt }
     else {
       set %replacechar $chr(044) $chr(032)
       %bot.admins = $replace(%bot.admins, $chr(046), %replacechar)
       unset %replacechar
-      if ($2 != private) {  $display.message(3Bot Admins:12 %bot.admins, private) }
-      if ($2 = private) { $display.private.message(3Bot Admins:12 %bot.admins) }
+      if ($2 != private) {  $display.message(03Bot Admins:12 %bot.admins, private) }
+      if ($2 = private) { $display.private.message(03Bot Admins:12 %bot.admins) }
       halt 
     }
   }
 
   if ($1 = add) { $checkchar($2) | var %bot.admins $readini(system.dat, botinfo, bot.owner) 
-    if ($istok(%bot.admins,$2,46) = $true) { $display.message(4Error: $2 is already a bot admin, private) | halt }
-    %bot.admins = $addtok(%bot.admins,$2,46) | $display.message(3 $+ $2 has been added as a bot admin., private) 
+    if ($istok(%bot.admins,$2,46) = $true) { $display.message(04Error: $2 is already a bot admin, private) | halt }
+    %bot.admins = $addtok(%bot.admins,$2,46) | $display.message(03 $+ $2 has been added as a bot admin., private) 
     writeini system.dat botinfo bot.owner %bot.admins | halt 
   }
 
   if ($1 = remove) { var %bot.admins $readini(system.dat, botinfo, bot.owner) 
-    if ($istok(%bot.admins,$2,46) = $false) { $display.message(4Error: $2 is not a bot admin, private) | halt }
+    if ($istok(%bot.admins,$2,46) = $false) { $display.message(04Error: $2 is not a bot admin, private) | halt }
 
     ; The bot admin in the first position is considered to be the "bot owner" and cannot be removed via this command.
     var %bot.owner $gettok(%bot.admins,1,46)
-    if ($2 = %bot.owner) { $display.message(4Error: $2 cannot be removed from the bot admin list using this command, private) | halt }
+    if ($2 = %bot.owner) { $display.message(04Error: $2 cannot be removed from the bot admin list using this command, private) | halt }
 
-    %bot.admins = $remtok(%bot.admins,$2,46) | $display.message(3 $+ $2 has been removed as a bot admin., private) 
+    %bot.admins = $remtok(%bot.admins,$2,46) | $display.message(03 $+ $2 has been removed as a bot admin., private) 
     writeini system.dat botinfo bot.owner %bot.admins | halt 
   }
 }
@@ -4757,7 +4757,7 @@ dragonhunt.listdragons {
     var %dragonhunt.dragonage $dragonhunt.dragonage(%current.dragon)
 
     ; Show dragon
-    $display.message.Delay(4 $+ %dragon.name  - Age: %dragonhunt.dragonage - Element: $dragonhunt.dragonelement(%current.dragon) , private, 1)
+    $display.message.Delay(04 $+ %dragon.name  - Age: %dragonhunt.dragonage - Element: $dragonhunt.dragonelement(%current.dragon) , private, 1)
 
     inc %dragonhunt.counter
   }
@@ -4794,19 +4794,19 @@ system.intromessage {
   if (%player.enhancementpoints = $null) { var %player.enhancementpoints 0 }
 
   $display.private.message($decode($read(key)))
-  $display.private.message(2Welcome back4 $readini($char($1), basestats, name) $+ . 2The current local bot time is4 $asctime(hh:nn tt) 2on4  $asctime(mmm dd yyyy) 2and this is bot version5 $battle.version )
-  $display.private.message(2You currently have: 3 $+ %player.loginpoints 2login points $+ $chr(44) 3 $+ %player.redorbs 2 $+ $readini(system.dat, system, currency) $+ $chr(44) 3 $+ %player.blackorbs 2Black Orbs $+ $chr(44) 3 $+ %player.killcoins 2Kill Coins $+ $chr(44) 3 $+ %player.alliednotes 2Allied Notes $+ $chr(44) 3 $+ %player.doubledollars 2double dollars $+ $chr(44) 3 $+ %player.enhancementpoints 2enhancement points  $iif($left($adate, 2) = 10, and7 %player.candycorn 2candycorn ) )
+  $display.private.message(02Welcome back04 $readini($char($1), basestats, name) $+ . 02The current local bot time is04 $asctime(hh:nn tt) 02on04  $asctime(mmm dd yyyy) 02and this is bot version5 $battle.version )
+  $display.private.message(02You currently have: 03 $+ %player.loginpoints 02login points $+ $chr(44) 03 $+ %player.redorbs 02 $+ $readini(system.dat, system, currency) $+ $chr(44) 03 $+ %player.blackorbs 02Black Orbs $+ $chr(44) 03 $+ %player.killcoins 02Kill Coins $+ $chr(44) 03 $+ %player.alliednotes 02Allied Notes $+ $chr(44) 03 $+ %player.doubledollars 02double dollars $+ $chr(44) 03 $+ %player.enhancementpoints 02enhancement points  $iif($left($adate, 2) = 10, and07 %player.candycorn 02candycorn ) )
 
   ; Check for month event messages
   var %current.month $left($adate, 2)
 
-  if (%current.month = 02) { $display.private.message(7*2 $readini(translation.dat, EventInfo, February)) }
-  if (%current.month = 03) { $display.private.message(7*2 $readini(translation.dat, EventInfo, March)) }
-  if (%current.month = 04) { $display.private.message(7*2 $readini(translation.dat, EventInfo, April)) }
-  if (%current.month = 07) { $display.private.message(7*2 $readini(translation.dat, EventInfo, July)) }
-  if (%current.month = 10) { $display.private.message(7*2 $readini(translation.dat, EventInfo, October)) }
-  if (%current.month = 11) { $display.private.message(7*2 $readini(translation.dat, EventInfo, November)) }
-  if (%current.month = 12) { $display.private.message(7*2 $readini(translation.dat, EventInfo, December)) }
+  if (%current.month = 02) { $display.private.message(07*02 $readini(translation.dat, EventInfo, February)) }
+  if (%current.month = 03) { $display.private.message(07*02 $readini(translation.dat, EventInfo, March)) }
+  if (%current.month = 04) { $display.private.message(07*02 $readini(translation.dat, EventInfo, April)) }
+  if (%current.month = 07) { $display.private.message(07*02 $readini(translation.dat, EventInfo, July)) }
+  if (%current.month = 10) { $display.private.message(07*02 $readini(translation.dat, EventInfo, October)) }
+  if (%current.month = 11) { $display.private.message(07*02 $readini(translation.dat, EventInfo, November)) }
+  if (%current.month = 12) { $display.private.message(07*02 $readini(translation.dat, EventInfo, December)) }
 
   ; ============================
   ; Calculate the daily login reward
@@ -4852,7 +4852,7 @@ system.intromessage {
     }
 
     ; show the reward line
-    $display.private.message(2[12Login Bonus2] For logging into the game today you have received4 %reward.amount 2x4 %reward.type $+ 2!)
+    $display.private.message(02[12Login Bonus02] For logging into the game today you have received04 %reward.amount 02x04 %reward.type $+ 02!)
   }
 
   ; ============================
@@ -4862,13 +4862,13 @@ system.intromessage {
   var %resting.bonus.killcoins $character.resting.bonus.killcoins($1)
 
   if (%resting.bonus.orbs > 1) {
-    $display.private.message(2[12Resting Bonus2] In your next battle you will receive a bonus of4 $bytes(%resting.bonus.orbs,b) 2 $+ $return.systemsetting(currency) and4 $bytes(%resting.bonus.killcoins,b) 2killcoins)
+    $display.private.message(02[12Resting Bonus02] In your next battle you will receive a bonus of04 $bytes(%resting.bonus.orbs,b) 02 $+ $return.systemsetting(currency) and04 $bytes(%resting.bonus.killcoins,b) 02killcoins)
   }
 
   ; ============================
   ; Display the MOTD if there is one
   ; ============================
-  if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4[Current Admin Message]2 $read($txtfile(motd.txt))) }
+  if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(04[Current Admin Message]02 $read($txtfile(motd.txt))) }
 
   return
 }
@@ -4905,7 +4905,7 @@ bounty.select {
 }
 
 bounty.display {
-  if ($readini(battlestats.dat, Bounty, BossName) = $null) { $display.message(4There is no current bounty, private) | halt }
+  if ($readini(battlestats.dat, Bounty, BossName) = $null) { $display.message(04There is no current bounty, private) | halt }
   else {
     var %bounty.name $readini($boss($readini(battlestats.dat, Bounty, BossName)), basestats, name)
     $display.message($readini(translation.dat, system, CurrentBounty), private) 

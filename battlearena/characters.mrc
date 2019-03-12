@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 09/13/18
+;;;; Last updated: 03/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -167,7 +167,7 @@ ON 2:TEXT:!last seen *:*:{  $checkchar($3)
 
 ; Check bot version
 on 2:TEXT:!version:*: {
-  $display.message(12Battle Arena Bot Version4 $battle.version,private) 
+  $display.message(12Battle Arena Bot Version04 $battle.version,private) 
 }
 
 on 3:TEXT:!weather*:#: {  $display.message($readini(translation.dat, battle, CurrentWeather),private) }
@@ -195,22 +195,22 @@ on 3:TEXT:!desc*:?: {
 
 alias show.desc {
   $set_chr_name($1)
-  if ($2 = private) { $display.private.message(3 $+ %real.name  $+ $readini($char($1), Descriptions, Char)) }
-  else { $display.message(3 $+ %real.name  $+ $readini($char($1), Descriptions, Char), private)  }
+  if ($2 = private) { $display.private.message(03 $+ %real.name  $+ $readini($char($1), Descriptions, Char)) }
+  else { $display.message(03 $+ %real.name  $+ $readini($char($1), Descriptions, Char), private)  }
   unset %character.description
 }
 
 on 3:TEXT:!cdesc *:*:{ $checkscript($2-)  | writeini $char($nick) Descriptions Char $2- | $okdesc($nick , Character) }
 on 3:TEXT:!sdesc *:*:{ $checkscript($2-)  
   if ($readini($char($nick), skills, $2) != $null) { 
-    if ($3 = $null) { $display.private.message(4Invalid description) | halt }
+    if ($3 = $null) { $display.private.message(04Invalid description) | halt }
     writeini $char($nick) Descriptions $2 $3- | $okdesc($nick , Skill) 
   }
   if ($readini($char($nick), skills, $2) = $null) { $display.private.message($readini(translation.dat, errors, YouDoNotHaveSkill)) | halt }
 }
 on 3:TEXT:!skill desc *:*:{ $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), skills, $3) != $null) { 
-    if ($4 = $null) { $display.private.message(4Invalid description) | halt }
+    if ($4 = $null) { $display.private.message(04Invalid description) | halt }
     writeini $char($nick) Descriptions $3 $4- | $okdesc($nick , Skill) 
   }
   if ($readini($char($nick), skills, $3) = $null) { $display.private.message($readini(translation.dat, errors, YouDoNotHaveSkill)) | halt }
@@ -250,7 +250,7 @@ on 3:TEXT:!readignitions*:?: {
 
 on 3:TEXT:!ignition desc *:*:{ $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), ignitions, $3) != $null) { 
-    if ($4 = $null) { $display.private.message(4Invalid description) | halt }
+    if ($4 = $null) { $display.private.message(04Invalid description) | halt }
     writeini $char($nick) Descriptions $3 $4- | $okdesc($nick , Ignition) 
   }
   if ($readini($char($nick), ignitions, $3) = $null) {  $display.private.message($readini(translation.dat, errors, DoNotKnowThatIgnition)) | halt }
@@ -258,7 +258,7 @@ on 3:TEXT:!ignition desc *:*:{ $checkscript($3-)  | $set_chr_name($nick)
 
 on 3:TEXT:!weaponboost desc *:*:{ $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), techniques, $3) != $null) { 
-    if ($4 = $null) { $display.private.message(4Invalid description) | halt }
+    if ($4 = $null) { $display.private.message(04Invalid description) | halt }
     writeini $char($nick) Descriptions $3 $4- | $okdesc($nick , Boost) 
   }
   else {  $display.private.message($readini(translation.dat, errors, DoNotKnowThatIgnition)) | halt }
@@ -270,7 +270,7 @@ on 3:TEXT:!clear desc *:*:{ $checkscript($3-)  | $set_chr_name($nick)
 }
 
 on 3:TEXT:!set desc *:*:{ $checkscript($2-)  
-  if ($3 = $null) { $display.private.message(4Invalid description) | halt }
+  if ($3 = $null) { $display.private.message(04Invalid description) | halt }
   writeini $char($nick) Descriptions Char $3- | $okdesc($nick , Character) 
 }
 
@@ -285,13 +285,13 @@ on 3:TEXT:!setgender*:*: { $checkscript($2-)
 on 3:TEXT:!level*:#: { $checkscript($2-)
   if ($1 = !leveladjust) { halt }
   if (($1 = !level) && ($2 = sync)) {
-    if ($3 = $null) { $display.private.message(4Error: Need to enter a number of level to sync to) | halt }
-    if ($3 >= $get.level($nick)) { $display.private.message(4Error: The level to sync to must be lower than your current level) | halt }
-    if ($3 <= 0) { $display.private.message(4Error: Cannot sync to level 0 or lower) | halt }
+    if ($3 = $null) { $display.private.message(04Error: Need to enter a number of level to sync to) | halt }
+    if ($3 >= $get.level($nick)) { $display.private.message(04Error: The level to sync to must be lower than your current level) | halt }
+    if ($3 <= 0) { $display.private.message(04Error: Cannot sync to level 0 or lower) | halt }
     $levelsync($nick, $3)
     writeini $char($nick) info levelsync yes
     writeini $char($nick) info NeedsFulls yes
-    $set_chr_name($nick) |   $display.message(4 $+ %real.name is now level $3) 
+    $set_chr_name($nick) |   $display.message(04 $+ %real.name is now level $3) 
     halt
   }
 
@@ -306,10 +306,10 @@ on 3:TEXT:!level*:?: {
 
 on 50:TEXT:!level sync*:#: { $checkscript($2-)
   if ($1 = !leveladjust) { halt }
-  if ($3 = $null) { $display.private.message(4Error: Need to enter a number of level to sync to) | halt }
-  if ($3 <= 0) { $display.private.message(4Error: Cannot sync to level 0 or lower) | halt }
+  if ($3 = $null) { $display.private.message(04Error: Need to enter a number of level to sync to) | halt }
+  if ($3 <= 0) { $display.private.message(04Error: Cannot sync to level 0 or lower) | halt }
   $levelsync($nick, $3)
-  $set_chr_name($nick) |   $display.message(4 $+ %real.name is now level $3)
+  $set_chr_name($nick) |   $display.message(04 $+ %real.name is now level $3)
   writeini $char($nick) info levelsync yes
   writeini $char($nick) info NeedsFulls yes
 }
@@ -482,7 +482,7 @@ on 3:TEXT:!stats*:*: { unset %all_status
 
     if ($readini($char($nick), equipment, accessory2) != $null) { 
       var %equipped.accessory2 $equipment.color($readini($char($nick), equipment, accessory2)) $+ $readini($char($nick), equipment, accessory2)
-      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 03
     }
 
     var %equipped.armor.head $readini($char($nick), equipment, head) 
@@ -503,9 +503,9 @@ on 3:TEXT:!stats*:*: { unset %all_status
     if ($readini($char($nick), stuff, EnhancementPoints) = $null) { writeini $char($nick) stuff EnhancementPoints 0 }
     if ($readini($char($nick), stuff, LoginPoints) = $null) { writeini $char($nick) stuff LoginPoints 0 }
 
-    $display.private.message.delay.custom([4HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ ] [4TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($nick) $+ ] [4Armor Level12 $ilevel($nick) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($nick), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($nick), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($nick), stuff, LoginPoints) $+ ]  ,2)
-    $display.private.message.delay.custom([4Strength:12 $current.str($nick) 3+ $+ $armor.stat($nick,str) $+ ]  [4Defense:12 $current.def($nick) 3+ $+ $armor.stat($nick,def) $+ ] [4Intelligence:12 $current.int($nick) 3+ $+ $armor.stat($nick,int) $+ ][4Speed:12 $current.spd($nick) 3+ $+ $armor.stat($nick,spd) $+ ], 3)
-    $display.private.message.delay.custom([4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],4)
+    $display.private.message.delay.custom([04HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ ] [04TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ ] [04Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ ] [04Level12 $get.level($nick) $+ ] [04Armor Level12 $ilevel($nick) $+ ] [04Status12 %all_status $+ ] [04Royal Guard Meter12 %blocked.meter $+ ] [04Capacity Points12 $readini($char($nick), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [04Enhancement Points12 $readini($char($nick), stuff, EnhancementPoints) $+ ] [04Login Points12 $readini($char($nick), stuff, LoginPoints) $+ ]  ,2)
+    $display.private.message.delay.custom([04Strength:12 $current.str($nick) 03+ $+ $armor.stat($nick,str) $+ ]  [04Defense:12 $current.def($nick) 03+ $+ $armor.stat($nick,def) $+ ] [04Intelligence:12 $current.int($nick) 03+ $+ $armor.stat($nick,int) $+ ][04Speed:12 $current.spd($nick) 03+ $+ $armor.stat($nick,spd) $+ ], 3)
+    $display.private.message.delay.custom([04 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 04 and12 %weapon.equipped.left) $+ ]  [04 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [04 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],4)
     unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right 
     unset %weapon.equipped.left 
   }
@@ -520,7 +520,7 @@ on 3:TEXT:!stats*:*: { unset %all_status
 
     if ($readini($char($2), equipment, accessory2) != $null) { 
       var %equipped.accessory2 $equipment.color($readini($char($2), equipment, accessory2)) $+ $readini($char($2), equipment, accessory2)
-      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 03
     }
 
     var %equipped.armor.head $readini($char($2), equipment, head) 
@@ -541,9 +541,9 @@ on 3:TEXT:!stats*:*: { unset %all_status
     if ($readini($char($2), stuff, EnhancementPoints) = $null) { writeini $char($2) stuff EnhancementPoints 0 }
     if ($readini($char($2), stuff, LoginPoints) = $null) { writeini $char($2) stuff LoginPoints 0 }
 
-    $display.private.message.delay.custom([4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($2) $+ ] [4Armor Level12 $ilevel($2) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ]  [4Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($2), stuff, LoginPoints) $+ ],1)
-    $display.private.message.delay.custom([4Strength:12 $current.str($2) 3+ $+ $armor.stat($2,str) $+ ]  [4Defense:12 $current.def($2) 3+ $+ $armor.stat($2,def) $+ ] [4Intelligence:12 $current.int($2) 3+ $+ $armor.stat($2,int) $+ ][4Speed:12 $current.spd($2) 3+ $+ $armor.stat($2,spd) $+ ], 2)
-    $display.private.message.delay.custom([4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],3)
+    $display.private.message.delay.custom([04HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [04TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [04Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [04Level12 $get.level($2) $+ ] [04Armor Level12 $ilevel($2) $+ ] [04Status12 %all_status $+ ] [04Royal Guard Meter12 %blocked.meter $+ ]  [04Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [04Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [04Login Points12 $readini($char($2), stuff, LoginPoints) $+ ],1)
+    $display.private.message.delay.custom([04Strength:12 $current.str($2) 03+ $+ $armor.stat($2,str) $+ ]  [04Defense:12 $current.def($2) 03+ $+ $armor.stat($2,def) $+ ] [04Intelligence:12 $current.int($2) 03+ $+ $armor.stat($2,int) $+ ][04Speed:12 $current.spd($2) 03+ $+ $armor.stat($2,spd) $+ ], 2)
+    $display.private.message.delay.custom([04 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 04 and12 %weapon.equipped.left) $+ ]  [04 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [04 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ],3)
 
     unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right | unset %weapon.equipped
     unset %weapon.equipped.left 
@@ -649,13 +649,13 @@ on 3:TEXT:!misc info*:*: {
   var %currency.symbol $readini(system.dat, system, BetCurrency)
   if (%currency.symbol = $null) { var %currency.symbol $chr(36) $+ $chr(36) }
 
-  $display.private.message.delay.custom([4Total Battles Participated In12 %misc.totalbattles $+ ] [4Total Portal Battles Won12 %misc.portalswon $+ ] [4Total Deaths12 %misc.totaldeaths $+ ] [4Total Monster Kills12 %misc.totalmonkills $+ ] [4Total Times Fled12 %misc.timesfled $+ ][4Total Lost Souls Killed12 %misc.lostSoulsKilled $+ ] [4Total Times Revived12 %misc.revivedtimes $+ ] [4Total Times Character Has Been Reset12 %misc.resets $+ ],1)
-  $display.private.message.delay.custom([4Total Items Sold12 %misc.itemssold $+ ] [4Total Discounts Used12 %misc.discountsUsed $+ ] [4Total Items Given12 %misc.itemsgiven $+ ] [4Total Keys Obtained12 %misc.totalkeys $+ ] [4Total Chests Opened12 %misc.chestsopened $+ ][4Total Monster->Gem Conversions12 %misc.monstersToGems $+ ],2)
-  $display.private.message.delay.custom([4Total Battlefield Events Experienced12 %misc.timeshitbybattlefield $+ ]  [4Total Weapons Augmented12 %misc.augments $+ ] [4Total Weapons Reforged12 %misc.reforges $+ ] [4Total Ignitions Performed12 %misc.ignitionsused $+ ] [4Total Dodges Performed12 %misc.timesdodged $+ ] [4Total Parries Performed12 %misc.timesparried $+ ] [4Total Counters Performed12 %misc.timescountered $+ ],2)
-  $display.private.message.delay.custom([4Total Light Spells Casted12 %misc.lightspells $+ ] [4Total Dark Spells Casted12 %misc.darkspells $+ ] [4Total Earth Spells Casted12 %misc.earthspells $+ ] [4Total Fire Spells Casted12 %misc.firespells $+ ] [4Total Wind Spells Casted12 %misc.windspells $+ ] [4Total Water Spells Casted12 %misc.waterspells $+ ] [4Total Ice Spells Casted12 %misc.icespells $+ ] [4Total Lightning Spells Casted12 %misc.lightningspells $+ ],3)
-  $display.private.message.delay.custom([4Total Times Won Under Defender12 %misc.defenderwon $+ ] [4Total Times Won Under Aggressor12 %misc.aggressorwon $+ ] [4Total Blood Boosts Performed12 %misc.bloodboost $+ ] [4Total Blood Spirits Performed12 %misc.bloodspirit $+ ],3)
-  $display.private.message.delay.custom([4Total 1vs1 NPC Bets Placed12 %misc.totalbets $+ ] [4Total Amount of Double Dollars Bet12 %currency.symbol $bytes(%misc.totalbetamount,b) $+ ]  [4Total Bids Placed12 %misc.totalauctionbids $+ ] [4Total Auctions Won12 %misc.totalauctionswon $+ ],4)
-  $display.private.message.delay.custom([4Average Melee Damage12 $bytes(%misc.averagemelee,b) $+ ] [4Average Tech Damage12 $bytes(%misc.averagetech,b) $+ ],4)
+  $display.private.message.delay.custom([04Total Battles Participated In12 %misc.totalbattles $+ ] [04Total Portal Battles Won12 %misc.portalswon $+ ] [04Total Deaths12 %misc.totaldeaths $+ ] [04Total Monster Kills12 %misc.totalmonkills $+ ] [04Total Times Fled12 %misc.timesfled $+ ][04Total Lost Souls Killed12 %misc.lostSoulsKilled $+ ] [04Total Times Revived12 %misc.revivedtimes $+ ] [04Total Times Character Has Been Reset12 %misc.resets $+ ],1)
+  $display.private.message.delay.custom([04Total Items Sold12 %misc.itemssold $+ ] [04Total Discounts Used12 %misc.discountsUsed $+ ] [04Total Items Given12 %misc.itemsgiven $+ ] [04Total Keys Obtained12 %misc.totalkeys $+ ] [04Total Chests Opened12 %misc.chestsopened $+ ][04Total Monster->Gem Conversions12 %misc.monstersToGems $+ ],2)
+  $display.private.message.delay.custom([04Total Battlefield Events Experienced12 %misc.timeshitbybattlefield $+ ]  [04Total Weapons Augmented12 %misc.augments $+ ] [04Total Weapons Reforged12 %misc.reforges $+ ] [04Total Ignitions Performed12 %misc.ignitionsused $+ ] [04Total Dodges Performed12 %misc.timesdodged $+ ] [04Total Parries Performed12 %misc.timesparried $+ ] [04Total Counters Performed12 %misc.timescountered $+ ],2)
+  $display.private.message.delay.custom([04Total Light Spells Casted12 %misc.lightspells $+ ] [04Total Dark Spells Casted12 %misc.darkspells $+ ] [04Total Earth Spells Casted12 %misc.earthspells $+ ] [04Total Fire Spells Casted12 %misc.firespells $+ ] [04Total Wind Spells Casted12 %misc.windspells $+ ] [04Total Water Spells Casted12 %misc.waterspells $+ ] [04Total Ice Spells Casted12 %misc.icespells $+ ] [04Total Lightning Spells Casted12 %misc.lightningspells $+ ],3)
+  $display.private.message.delay.custom([04Total Times Won Under Defender12 %misc.defenderwon $+ ] [04Total Times Won Under Aggressor12 %misc.aggressorwon $+ ] [04Total Blood Boosts Performed12 %misc.bloodboost $+ ] [04Total Blood Spirits Performed12 %misc.bloodspirit $+ ],3)
+  $display.private.message.delay.custom([04Total 1vs1 NPC Bets Placed12 %misc.totalbets $+ ] [04Total Amount of Double Dollars Bet12 %currency.symbol $bytes(%misc.totalbetamount,b) $+ ]  [04Total Bids Placed12 %misc.totalauctionbids $+ ] [04Total Auctions Won12 %misc.totalauctionswon $+ ],4)
+  $display.private.message.delay.custom([04Average Melee Damage12 $bytes(%misc.averagemelee,b) $+ ] [04Average Tech Damage12 $bytes(%misc.averagetech,b) $+ ],4)
 }
 
 
@@ -997,7 +997,7 @@ ON 50:TEXT:*equips *:*:{
   if (($3 != right) && ($3 != left)) { 
     if ($readini($dbfile(weapons.db), $3, type) = shield) { 
       if ($skillhave.check($1, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
-      if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.message(4Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
+      if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.message(04Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
       var %equiphand left | var %weapon.to.equip $3
     }
     if ($readini($dbfile(weapons.db), $3, type) != shield) { 
@@ -1007,7 +1007,7 @@ ON 50:TEXT:*equips *:*:{
   if ($3 = right) {
     if ($readini($dbfile(weapons.db), $4, type) = shield) { 
       if ($skillhave.check($1, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
-      if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.message(4Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
+      if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.message(04Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
       var %equiphand left | var %weapon.to.equip $4
     }
     if ($readini($dbfile(weapons.db), $4, type) != shield) { 
@@ -1019,7 +1019,7 @@ ON 50:TEXT:*equips *:*:{
     if ($skillhave.check($1, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
 
     ; Is the right-hand weapon a 2h weapon?
-    if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.private.message(4Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
+    if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.private.message(04Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
 
     ; Set the variables.
     var %equiphand left | var %weapon.to.equip $4
@@ -1055,7 +1055,7 @@ ON 3:TEXT:*equips *:*:{
   if (($3 != right) && ($3 != left)) { 
     if ($readini($dbfile(weapons.db), $3, type) = shield) { 
       if ($skillhave.check($1, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
-      if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.private.message(4Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
+      if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.private.message(04Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
       var %equiphand left | var %weapon.to.equip $3
     }
     if ($readini($dbfile(weapons.db), $3, type) != shield) { 
@@ -1076,7 +1076,7 @@ ON 3:TEXT:*equips *:*:{
     if ($skillhave.check($1, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
 
     ; Is the right-hand weapon a 2h weapon?
-    if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.private.message(4Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
+    if ($readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), 2Handed) = true) { $display.private.message(04Error: %real.name $+ 's current weapon is a two-handed weapon.) | halt }
 
     ; Set the variables.
     var %equiphand left | var %weapon.to.equip $4
@@ -1127,7 +1127,7 @@ on 3:TEXT:!equip *:*: {
   if ($2 = right) {
     if ($readini($dbfile(weapons.db), $3, type) = shield) { 
       if ($skillhave.check($nick, DualWield) = false) { $display.message($readini(translation.dat, errors, Can'tDualWield), public) | halt }
-      if ($readini($dbfile(weapons.db), $readini($char($nick), weapons, equipped), 2Handed) = true) { $display.private.message(4Error: Your current weapon is a two-handed weapon.) | halt }
+      if ($readini($dbfile(weapons.db), $readini($char($nick), weapons, equipped), 2Handed) = true) { $display.private.message(04Error: Your current weapon is a two-handed weapon.) | halt }
       var %equiphand left | var %weapon.to.equip $3
     }
     if ($readini($dbfile(weapons.db), $3, type) != shield) { 
@@ -1190,7 +1190,7 @@ on 3:TEXT:!status:#: { $player.status($nick) | $display.message($readini(transla
 on 3:TEXT:!status:?: { $player.status($nick) | $display.private.message($readini(translation.dat, system, ViewStatus)) | unset %all_status }
 
 on 3:TEXT:!total deaths *:#: { 
-  if ($3 = $null) {  $display.private.message(4!total deaths target) | halt }
+  if ($3 = $null) {  $display.private.message(04!total deaths target) | halt }
   if ($isfile($boss($3)) = $true) { set %total.deaths $readini($lstfile(monsterdeaths.lst), boss, $3) | set %real.name $readini($boss($3), basestats, name) }
   else  if ($isfile($mon($3)) = $true) { set  %total.deaths $readini($lstfile(monsterdeaths.lst), monster, $3) |  set %real.name $readini($mon($3), basestats, name) }
   else {
@@ -1202,7 +1202,7 @@ on 3:TEXT:!total deaths *:#: {
   unset %total.deaths
 }
 on 3:TEXT:!total deaths *:?: { 
-  if ($3 = $null) {  $display.private.message(4!total deaths target) | halt }
+  if ($3 = $null) {  $display.private.message(04!total deaths target) | halt }
   if ($isfile($boss($3)) = $true) { set %total.deaths $readini($lstfile(monsterdeaths.lst), boss, $3) | set %real.name $readini($boss($3), basestats, name) }
   else  if ($isfile($mon($3)) = $true) { set  %total.deaths $readini($lstfile(monsterdeaths.lst), monster, $3) |  set %real.name $readini($mon($3), basestats, name) }
   else {
@@ -1217,9 +1217,9 @@ on 3:TEXT:!total deaths *:?: {
 on 3:TEXT:!achievements*:#: { 
   if ($2 != $null) { $checkchar($2) | $achievement.list($2) 
     if (%achievement.list != $null) { $set_chr_name($2) | $display.message($readini(translation.dat, system, AchievementList),private) 
-      if (%achievement.list.2 != $null) { $display.message(3 $+ %achievement.list.2,private) }
-      if (%achievement.list.3 != $null) { $display.message(3 $+ %achievement.list.3,private) }
-      if (%achievement.list.4 != $null) { $display.message(3 $+ %achievement.list.4,private) }
+      if (%achievement.list.2 != $null) { $display.message(03 $+ %achievement.list.2,private) }
+      if (%achievement.list.3 != $null) { $display.message(03 $+ %achievement.list.3,private) }
+      if (%achievement.list.4 != $null) { $display.message(03 $+ %achievement.list.4,private) }
     }
     if (%achievement.list = $null) { $set_chr_name($2) |  $display.message($readini(translation.dat, system, NoAchievements),private) }
     unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %achievement.list.4 | unset %totalachievements | unset %totalachievements.unlocked
@@ -1227,9 +1227,9 @@ on 3:TEXT:!achievements*:#: {
   if ($2 = $null) {
     $achievement.list($nick) 
     if (%achievement.list != $null) { $set_chr_name($nick) | $display.message($readini(translation.dat, system, AchievementList),private) 
-      if (%achievement.list.2 != $null) { $display.message(3 $+ %achievement.list.2,private) }
-      if (%achievement.list.3 != $null) { $display.message(3 $+ %achievement.list.3,private) }
-      if (%achievement.list.4 != $null) { $display.message(3 $+ %achievement.list.4,private) }
+      if (%achievement.list.2 != $null) { $display.message(03 $+ %achievement.list.2,private) }
+      if (%achievement.list.3 != $null) { $display.message(03 $+ %achievement.list.3,private) }
+      if (%achievement.list.4 != $null) { $display.message(03 $+ %achievement.list.4,private) }
     }
     if (%achievement.list = $null) { $set_chr_name($nick) | $display.message($readini(translation.dat, system, NoAchievements),private)  }
     unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 |  unset %achievement.list.4 | unset %totalachievements | unset %totalachievements.unlocked
@@ -1238,9 +1238,9 @@ on 3:TEXT:!achievements*:#: {
 on 3:TEXT:!achievements*:?: { 
   if ($2 != $null) { $checkchar($2) | $achievement.list($2) 
     if (%achievement.list != $null) { $set_chr_name($2) |  $display.private.message($readini(translation.dat, system, AchievementList))
-      if (%achievement.list.2 != $null) { $display.private.message(3 $+ %achievement.list.2) }
-      if (%achievement.list.3 != $null) {  $display.private.message(3 $+ %achievement.list.3) }
-      if (%achievement.list.4 != $null) {  $display.private.message(3 $+ %achievement.list.4) }
+      if (%achievement.list.2 != $null) { $display.private.message(03 $+ %achievement.list.2) }
+      if (%achievement.list.3 != $null) {  $display.private.message(03 $+ %achievement.list.3) }
+      if (%achievement.list.4 != $null) {  $display.private.message(03 $+ %achievement.list.4) }
     }
     if (%achievement.list = $null) { $set_chr_name($2) |  $display.private.message($readini(translation.dat, system, NoAchievements)) }
     unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %achievement.list.4 |  unset %totalachievements | unset %totalachievements.unlocked
@@ -1248,9 +1248,9 @@ on 3:TEXT:!achievements*:?: {
   if ($2 = $null) {
     $achievement.list($nick) 
     if (%achievement.list != $null) { $set_chr_name($nick) |  $display.private.message($readini(translation.dat, system, AchievementList))
-      if (%achievement.list.2 != $null) {  $display.private.message(3 $+ %achievement.list.2) }
-      if (%achievement.list.3 != $null) {  $display.private.message(3 $+ %achievement.list.3) }
-      if (%achievement.list.4 != $null) {  $display.private.message(3 $+ %achievement.list.4) }
+      if (%achievement.list.2 != $null) {  $display.private.message(03 $+ %achievement.list.2) }
+      if (%achievement.list.3 != $null) {  $display.private.message(03 $+ %achievement.list.3) }
+      if (%achievement.list.4 != $null) {  $display.private.message(03 $+ %achievement.list.4) }
     }
     if (%achievement.list = $null) { $set_chr_name($nick) |  $display.private.message($readini(translation.dat, system, NoAchievements)) }
     unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %achievement.list.4 | unset %totalachievements | unset %totalachievements.unlocked
@@ -1260,8 +1260,8 @@ on 3:TEXT:!achievements*:?: {
 ; Bot admins can manually give an item and orbs to a player..
 on 50:TEXT:!add*:*:{
   $checkchar($2) | $set_chr_name($2) 
-  if ($4 = $null) { $display.private.message(4!add <person> <item name/redorbs/blackorbs/ignition/enhancementpoints> <ignition name or amount>) | halt }
-  if ($4 <= 0) {  $display.private.message(4cannot add negative amount) | halt }
+  if ($4 = $null) { $display.private.message(04!add <person> <item name/redorbs/blackorbs/ignition/enhancementpoints> <ignition name or amount>) | halt }
+  if ($4 <= 0) {  $display.private.message(04cannot add negative amount) | halt }
 
   var %add.categories redorbs.blackorbs.doubledollars.enhancementpoints.ignition
 
@@ -1269,12 +1269,12 @@ on 50:TEXT:!add*:*:{
     var %item.type $readini($dbfile(items.db), $3, type)
     if (%item.type = $null) { 
       var %item.type $readini($dbfile(equipment.db), $3, EquipLocation)
-      if (%item.type = $null) { $display.private.message(4invalid item) | halt }
+      if (%item.type = $null) { $display.private.message(04invalid item) | halt }
     }
     var %player.amount $readini($char($2), item_amount, $3) 
     if (%player.amount = $null) { var %player.amount 0 }
     inc %player.amount $4 | writeini $char($2) item_amount $3 %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $3 $+ $iif($4 > 1, s), private)
+    $set_chr_name($2) | $display.message(04 $+ %real.name has gained $4 $3 $+ $iif($4 > 1, s), private)
     halt
   }
 
@@ -1284,7 +1284,7 @@ on 50:TEXT:!add*:*:{
       var %player.amount $readini($char($2), stuff, EnhancementPoints) 
       if (%player.amount = $null) { var %player.amount 0 }
       inc %player.amount $4 | writeini $char($2) stuff  EnhancementPoints %player.amount
-      $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 EnhancementPoints, private)
+      $set_chr_name($2) | $display.message(04 $+ %real.name has gained $4 EnhancementPoints, private)
       halt
     }
 
@@ -1292,7 +1292,7 @@ on 50:TEXT:!add*:*:{
       var %player.amount $readini($char($2), stuff, RedOrbs) 
       if (%player.amount = $null) { var %player.amount 0 }
       inc %player.amount $4 | writeini $char($2) stuff  RedOrbs %player.amount
-      $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $currency, private)
+      $set_chr_name($2) | $display.message(04 $+ %real.name has gained $4 $currency, private)
       halt
     }
 
@@ -1300,7 +1300,7 @@ on 50:TEXT:!add*:*:{
       var %player.amount $readini($char($2), stuff, DoubleDollars) 
       if (%player.amount = $null) { var %player.amount 0 }
       inc %player.amount $4 | writeini $char($2) stuff  DoubleDollars %player.amount
-      $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 $readini(system.dat, system, BetCurrency), private)
+      $set_chr_name($2) | $display.message(04 $+ %real.name has gained $4 $readini(system.dat, system, BetCurrency), private)
       halt
     }
 
@@ -1308,16 +1308,16 @@ on 50:TEXT:!add*:*:{
       var %player.amount $readini($char($2), stuff, blackorbs) 
       if (%player.amount = $null) { var %player.amount 0 }
       inc %player.amount $4 | writeini $char($2) stuff  BlackOrbs %player.amount
-      $set_chr_name($2) | $display.message(4 $+ %real.name has gained $4 Black Orbs, private)
+      $set_chr_name($2) | $display.message(04 $+ %real.name has gained $4 Black Orbs, private)
       halt
     }
 
     if ($3 = ignition) {
       var %player.ignition.amount $readini($char($2), ignitions, $4)
-      if (%player.ignition.amount >= 1) {  $display.private.message(4 $+ $2 already knows the ignition $4) | halt }
+      if (%player.ignition.amount >= 1) {  $display.private.message(04 $+ $2 already knows the ignition $4) | halt }
       else {
-        if ($readini($dbfile(ignitions.db), $4, cost) >= 1) { writeini $char($2) ignition $4 1 | $display.message(4 $+ %real.name has gained the ignition $4, private) | halt }
-        if ($readini($dbfile(ignitions.db), $4, cost) <= 0) { $display.private.message(4Error: players cannot have this ignition.) | halt } 
+        if ($readini($dbfile(ignitions.db), $4, cost) >= 1) { writeini $char($2) ignition $4 1 | $display.message(04 $+ %real.name has gained the ignition $4, private) | halt }
+        if ($readini($dbfile(ignitions.db), $4, cost) <= 0) { $display.private.message(04Error: players cannot have this ignition.) | halt } 
       }
 
 
@@ -1328,75 +1328,75 @@ on 50:TEXT:!add*:*:{
 ; Bot admins can remove stuff from players..
 on 50:TEXT:!take *:*:{
   $checkchar($2) | $set_chr_name($2) 
-  if ($4 = $null) { $display.private.message(4!take <person> <item name/redorbs/blackorbs/ignition/enhancementpoints/enhancementpointskill> <ignition name or amount>) | halt }
-  if ($4 <= 0) {  $display.private.message(4cannot remove negative amount) | halt }
+  if ($4 = $null) { $display.private.message(04!take <person> <item name/redorbs/blackorbs/ignition/enhancementpoints/enhancementpointskill> <ignition name or amount>) | halt }
+  if ($4 <= 0) {  $display.private.message(04cannot remove negative amount) | halt }
 
   if (((((($3 != redorbs) && ($3 != blackorbs) && ($3 != doubledollars) && ($3 != enhancementpoints) && ($3 != enhancementpointskill) && ($3 != ignition)))))) {
     var %item.type $readini($dbfile(items.db), $3, type)
     if (%item.type = $null) {
       var %item.type $readini($dbfile(equipment.db), $3, EquipLocation)
-      if (%item.type = $null) {  $display.private.message(4invalid item) | halt }
+      if (%item.type = $null) {  $display.private.message(04invalid item) | halt }
     }
     var %player.amount $readini($char($2), item_amount, $3) 
-    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(4 $+ $2 doesn't have any of this item to remove!) | halt }
+    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(04 $+ $2 doesn't have any of this item to remove!) | halt }
     dec %player.amount $4 
     if (%player.amount < 0) { var %player.amount 0 }
     if (%player.amount = 0) { remini $char($2) item_amount $3 }
     else {  writeini $char($2) item_amount $3 %player.amount }
-    $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 $3 $+ (s), private)
+    $set_chr_name($2) | $display.message(04 $+ %real.name has lost $4 $3 $+ (s), private)
     halt
   }
 
   if ($3 = redorbs) { 
     var %player.amount $readini($char($2), stuff, RedOrbs) 
-    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(4 $+ $2 doesn't have any red orbs to remove!) | halt }
+    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(04 $+ $2 doesn't have any red orbs to remove!) | halt }
     dec %player.amount $4 
     if (%player.amount < 0) { var %player.amount 0 }
     writeini $char($2) stuff  RedOrbs %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 $currency, private)
+    $set_chr_name($2) | $display.message(04 $+ %real.name has lost $4 $currency, private)
     halt
   }
 
   if ($3 = enhancementpoints) { 
     var %player.amount $readini($char($2), stuff, EnhancementPoints) 
-    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(4 $+ $2 doesn't have any enhancement points to remove!) | halt }
+    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(04 $+ $2 doesn't have any enhancement points to remove!) | halt }
     dec %player.amount $4 
     if (%player.amount < 0) { var %player.amount 0 }
     writeini $char($2) stuff  EnhancementPoints %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 enhancement points, private)
+    $set_chr_name($2) | $display.message(04 $+ %real.name has lost $4 enhancement points, private)
     halt
   }
 
   if ($3 = blackorbs) {
     var %player.amount $readini($char($2), stuff, BlackOrbs) 
-    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(4 $+ $2 doesn't have any black orbs to remove!) | halt }
+    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(04 $+ $2 doesn't have any black orbs to remove!) | halt }
     dec %player.amount $4 
     if (%player.amount < 0) { var %player.amount 0 }
     writeini $char($2) stuff  BlackOrbs %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 Black Orbs, private)
+    $set_chr_name($2) | $display.message(04 $+ %real.name has lost $4 Black Orbs, private)
     halt
   }
 
   if ($3 = doubledollars) { 
     var %player.amount $readini($char($2), stuff, DoubleDollars) 
-    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(4 $+ $2 doesn't have any double dollars to remove!) | halt }
+    if (%player.amount = $null) { var %player.amount 0 |  $display.private.message(04 $+ $2 doesn't have any double dollars to remove!) | halt }
     dec %player.amount $4 
     if (%player.amount < 0) { var %player.amount 0 }
     writeini $char($2) stuff  DoubleDollars %player.amount
-    $set_chr_name($2) | $display.message(4 $+ %real.name has lost $4 Double Dollars, private)
+    $set_chr_name($2) | $display.message(04 $+ %real.name has lost $4 Double Dollars, private)
     halt
   }
 
   if ($3 = ignition) {
     var %player.ignition.amount $readini($char($2), ignitions, $4)
-    if (%player.ignition.amount >= 1) { remini $char($2) ignitions $4 | $display.message(4 $+ %real.name has lost the ignition $4, private) | halt }
-    else {  $display.private.message(4 $+ $2 does not know the ignition $4) | halt } 
+    if (%player.ignition.amount >= 1) { remini $char($2) ignitions $4 | $display.message(04 $+ %real.name has lost the ignition $4, private) | halt }
+    else {  $display.private.message(04 $+ $2 does not know the ignition $4) | halt } 
   }
 
   if ($3 = enhancementpointskill) { 
     remini $char($2) skills $4
     remini $char($2) enhancements $4
-    $set_chr_name($2) | $display.message(4 $+ %real.name has lost the enhancement point skill: $4, private)
+    $set_chr_name($2) | $display.message(04 $+ %real.name has lost the enhancement point skill: $4, private)
     halt
   }
 }
@@ -1414,20 +1414,20 @@ on 3:TEXT:!bounty*:*: { $bounty.display }
 ;;;; CUSTOM TITLE CMDS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 on 50:TEXT:!customtitle *:*:{
-  if (($2 != add) && ($2 != remove)) {  $display.private.message(4!customtitle add/remove person custom title) | halt }
-  if ($3 = $null) {  $display.private.message(4!customtitle add/remove person custom title) | halt }
-  if ($4 = $null) {  $display.private.message(4!customtitle add/remove person custom title) | halt }
+  if (($2 != add) && ($2 != remove)) {  $display.private.message(04!customtitle add/remove person custom title) | halt }
+  if ($3 = $null) {  $display.private.message(04!customtitle add/remove person custom title) | halt }
+  if ($4 = $null) {  $display.private.message(04!customtitle add/remove person custom title) | halt }
 
   $checkchar($3) | $checkscript($4-)
 
   if ($2 = add) {
     writeini $char($3) info CustomTitle $4-
-    $display.private.message(3The custom title for $3 has been set to: $4-)
+    $display.private.message(03The custom title for $3 has been set to: $4-)
   }
 
   if ($2 = remove) {
     remini $char($3) info CustomTitle
-    $display.private.message(3The custom title for $3 has been removed.)
+    $display.private.message(03The custom title for $3 has been removed.)
   }
 }
 
@@ -1537,7 +1537,7 @@ on 3:TEXT:!deathboard*:*: {
     if (($2 = boss) || ($2 = bosses)) { $generate.bossdeathboard($3) } 
     if (($2 = player) || ($2 = players)) { $generate.playerdeathboard($3) } 
 
-    if ($2 = $null) { $display.message(4!deathboard <monster/boss/players>, private) | halt }
+    if ($2 = $null) { $display.message(04!deathboard <monster/boss/players>, private) | halt }
   }
   else { $display.message($readini(translation.dat, errors, DeathBoardNotDuringBattle), private) | halt }
 }
@@ -1546,7 +1546,7 @@ on 3:TEXT:!damageboard*:*: {
   if (%battleis != on) { 
     if (($2 = tech) || ($2 = techs)) { $generate.damageboard.techs }
     if ((($2 = melee) || ($2 = weapon) || ($2 = attacks))) { $generate.damageboard.melee } 
-    if ($2 = $null) { $display.message(4!damageboard <melee/tech>, private) | halt }
+    if ($2 = $null) { $display.message(04!damageboard <melee/tech>, private) | halt }
   }
   else { $display.message($readini(translation.dat, errors, DamageBoardNotDuringBattle), private) | halt }
 }
@@ -1758,19 +1758,19 @@ alias wheel.control {
   ; $1 = user
   ; $2 = command
 
-  if ($shopnpc.present.check(WheelMaster) != true) { $display.private.message(4Error: $readini(shopnpcs.dat, NPCNames,WheelMaster) is not at the Allied Forces HQ so the wheel cannot be used.) | halt }
+  if ($shopnpc.present.check(WheelMaster) != true) { $display.private.message(04Error: $readini(shopnpcs.dat, NPCNames,WheelMaster) is not at the Allied Forces HQ so the wheel cannot be used.) | halt }
 
   if ($2 = help) { 
     ; Display the help for the wheel control and rules
     var %wheel.cost $readini(system.dat, system, WheelGameCost)
     if (%wheel.cost = $null) { writeini system.dat system WheelGameCost 500 | var %wheel.cost 500 }
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you.. gives a big smile... toots his horn and says.. 2"Step right up and spin the wheel! Only %wheel.cost $currency $+ ! Use !wheel spin to play and try to win some great items! You can play once every 12 hours!" , 1)
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you.. gives a big smile... toots his horn and says.. 02"Step right up and spin the wheel! Only %wheel.cost $currency $+ ! Use !wheel spin to play and try to win some great items! You can play once every 12 hours!" , 1)
 
   }
 
   if ($2 = spin) {
     ; Make sure the file exists for the game.
-    if ($lines($lstfile(wheelgame.lst)) = $null) { $display.private.message(4Error wheelgame.lst is either missing or empty! Have the bot owner fix this!) | halt } 
+    if ($lines($lstfile(wheelgame.lst)) = $null) { $display.private.message(04Error wheelgame.lst is either missing or empty! Have the bot owner fix this!) | halt } 
 
     ; Can we spin again so soon?
     var %last.spin $readini($char($1),info,LastWheelTime)
@@ -1781,7 +1781,7 @@ alias wheel.control {
     if (%spin.time.setting = null) { var %spin.time.setting 43200 }
 
     if ((%time.difference = $null) || (%time.difference < %spin.time.setting)) { 
-      $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you and shakes his head.2 "Sorry.. only one spin per $duration(%spin.time.setting) $+ ! Try again later."  4It has been $duration(%time.difference) since the last time you played. ) 
+      $display.private.message(04 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you and shakes his head.02 "Sorry.. only one spin per $duration(%spin.time.setting) $+ ! Try again later."  04It has been $duration(%time.difference) since the last time you played. ) 
       halt 
     }
 
@@ -1789,7 +1789,7 @@ alias wheel.control {
     var %wheel.cost $readini(system.dat, system, WheelGameCost)
     if (%wheel.cost = $null) { writeini system.dat system WheelGameCost 500 | var %wheel.cost 500 }
     var %orbs.have $round($readini($char($1), stuff, redorbs),0)
-    if (%orbs.have < %wheel.cost) { $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you and shakes his head sadly.2 "Sorry.. you don't have enough $currency to play the game. It costs %wheel.cost to spin the wheel!") | halt }
+    if (%orbs.have < %wheel.cost) { $display.private.message(04 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you and shakes his head sadly.02 "Sorry.. you don't have enough $currency to play the game. It costs %wheel.cost to spin the wheel!") | halt }
     dec %orbs.have %wheel.cost
     var %orbs.spent $readini($char($1), stuff, RedOrbsSpent)
     inc %orbs.spent %wheel.cost
@@ -1811,7 +1811,7 @@ alias wheel.control {
     writeini $char($1) info LastWheelTime $ctime
   }
 
-  if (($2 != help) && ($2 != spin)) { $display.private.message(4Error: !wheel help or !wheel spin) | halt }
+  if (($2 != help) && ($2 != spin)) { $display.private.message(04Error: !wheel help or !wheel spin) | halt }
 }
 
 alias wheel.spin {
@@ -1832,13 +1832,13 @@ alias wheel.spin {
   var %delay.time.2 $calc(%delay.time.1 + 4)
 
   if (%wheel.location = lose) {
-    $display.private.message.delay.custom(7The wheel slowly comes to a stop.. on LOSE.  $readini(shopnpcs.dat, NPCNames,WheelMaster) gives a loud sigh.2 "Sorry!  It looks like you did not win today! But take this as a concession prize... ", %delay.time.1 )
+    $display.private.message.delay.custom(7The wheel slowly comes to a stop.. on LOSE.  $readini(shopnpcs.dat, NPCNames,WheelMaster) gives a loud sigh.02 "Sorry!  It looks like you did not win today! But take this as a concession prize... ", %delay.time.1 )
     var %prize BoxOfTissues
     if ($readini($dbfile(items.db), %prize, type) = $null) { var %prize Potion }
   }
 
   if (%wheel.location != lose) {
-    $display.private.message.delay.custom(7The wheel slowly comes to a stop.. on WIN.  $readini(shopnpcs.dat, NPCNames,WheelMaster) gives a triumphant toot on his horn.2 "You win! You win! Here.. take this as your prize... ", %delay.time.1 )
+    $display.private.message.delay.custom(7The wheel slowly comes to a stop.. on WIN.  $readini(shopnpcs.dat, NPCNames,WheelMaster) gives a triumphant toot on his horn.02 "You win! You win! Here.. take this as your prize... ", %delay.time.1 )
 
     ; Get the list of prize items
     set %prize.list $gettok(%wheel.location, 2, 46)
@@ -1854,7 +1854,7 @@ alias wheel.spin {
   inc %item.amount 1
   writeini $char($1) item_amount %prize %item.amount
 
-  $display.private.message.delay.custom(3You have won 1 %prize , %delay.time.2)
+  $display.private.message.delay.custom(03You have won 1 %prize , %delay.time.2)
 
   unset %prize.list
 
@@ -1872,18 +1872,18 @@ alias gamble.game {
   ; $2 = amount of orbs to bet or help
   ; $3 = odd or even
 
-  if ($shopnpc.present.check(Gambler) != true) { $display.private.message(4Error: $readini(shopnpcs.dat, NPCNames,Gambler) is not at the Allied Forces HQ so gambling game cannot be used.) | halt }
+  if ($shopnpc.present.check(Gambler) != true) { $display.private.message(04Error: $readini(shopnpcs.dat, NPCNames,Gambler) is not at the Allied Forces HQ so gambling game cannot be used.) | halt }
 
   if ((((($3 = $null) || ($2 !isnum) || (. isin $2) || ($2 < 1) || ($2 = help))))) { 
     ; Display the help and rules
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) looks at you.. and nods. 2"So you're interested in the gambling game eh? Well it's simple. I'll roll 2 dice and you have to tell me if the added result will be even or odd. You can gamble with as many $currency as you have on hand once per day. If you win I'll double the wager but if you lose I'll take all that you bet!",1)
-    $display.private.message.delay.custom(2Use !chouhan #amount odd/even to play [such as !chouhan 100 odd  or !chouhan 50 even] , 2)
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) looks at you.. and nods. 02"So you're interested in the gambling game eh? Well it's simple. I'll roll 2 dice and you have to tell me if the added result will be even or odd. You can gamble with as many $currency as you have on hand once per day. If you win I'll double the wager but if you lose I'll take all that you bet!",1)
+    $display.private.message.delay.custom(02Use !chouhan #amount odd/even to play [such as !chouhan 100 odd  or !chouhan 50 even] , 2)
     halt
   }
 
-  if ($readini($char($1), stuff, redorbs) < $2) { $display.private.message(4Error: You do not have $2 $currency to gamble with ) | halt }
-  if (($3 != odd) && ($3 != even)) {  $display.private.message.delay.custom(2Use !chouhan #amount odd/even to play [such as !chouhan 100 odd  or !chouhan 50 even] , 2) | halt }
-  if ($2 > 100000) { $display.private.message(4Error: The max amount allowed to bet is $bytes(100000,b)) | halt }
+  if ($readini($char($1), stuff, redorbs) < $2) { $display.private.message(04Error: You do not have $2 $currency to gamble with ) | halt }
+  if (($3 != odd) && ($3 != even)) {  $display.private.message.delay.custom(02Use !chouhan #amount odd/even to play [such as !chouhan 100 odd  or !chouhan 50 even] , 2) | halt }
+  if ($2 > 100000) { $display.private.message(04Error: The max amount allowed to bet is $bytes(100000,b)) | halt }
 
   ; Can we gamble again so soon?
   var %last.gamble $readini($char($1),info,LastGambleTime)
@@ -1893,7 +1893,7 @@ alias gamble.game {
   var %gamble.time.setting 86400 
 
   if ((%time.difference = $null) || (%time.difference < %gamble.time.setting)) { 
-    $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,Gambler) looks at you and shakes his head.2 "Sorry.. you can only gamble once per $duration(%gamble.time.setting) $+ ! Try again later."  4It has been $duration(%time.difference) since the last time you played. ) 
+    $display.private.message(04 $+ $readini(shopnpcs.dat, NPCNames,Gambler) looks at you and shakes his head.02 "Sorry.. you can only gamble once per $duration(%gamble.time.setting) $+ ! Try again later."  04It has been $duration(%time.difference) since the last time you played. ) 
     halt 
   }
 
@@ -1903,12 +1903,12 @@ alias gamble.game {
   var %dice.total $calc(%dice.1 + %dice.2)
   var %even 2.4.6.8.10.12
 
-  $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,Gambler) takes two dice and tosses them into a cup. After shaking it the cup is flipped upside down onto a mat and slowly lifted up.)
+  $display.private.message(04 $+ $readini(shopnpcs.dat, NPCNames,Gambler) takes two dice and tosses them into a cup. After shaking it the cup is flipped upside down onto a mat and slowly lifted up.)
 
   if ($istok(%even, %dice.total, 46) = $true) { var %result even }
   else { var %result odd }
 
-  $display.private.message(3Dice Results: [Die 1 reads2 %dice.1 $+ 3] [Die 2 reads:2 %dice.2 $+ 3] [Result:2 %dice.total $+ 3] [12 $+ %result $+ 3])
+  $display.private.message(03Dice Results: [Die 1 reads02 %dice.1 $+ 03] [Die 2 reads:02 %dice.2 $+ 03] [Result:02 %dice.total $+ 03] [12 $+ %result $+ 03])
 
   var %orbs.have $readini($char($1), stuff, redorbs)
   dec %orbs.have $2
@@ -1935,7 +1935,7 @@ alias gamble.game {
     if (%number.of.wins = $null) { var %number.of.wins 0 }
     inc %number.of.wins 1 
     writeini $char($1) stuff GamblesWon %number.of.wins
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a sly smile.2 "Seems you've won. Here's your prize." 3You have won $bytes($round($calc($2 * 2),0),b)  $+ $currency,1)
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a sly smile.02 "Seems you've won. Here's your prize." 03You have won $bytes($round($calc($2 * 2),0),b)  $+ $currency,1)
   }
 
   if (%game.status = lose) { 
@@ -1944,7 +1944,7 @@ alias gamble.game {
     inc %number.of.losses 1 
     writeini $char($1) stuff GamblesLost %number.of.losses
 
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a laugh.2 "That's too bad. You lose. Such is Lady Luck! ." 3You have lost $bytes($2,b)  $+ $currency,1)
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a laugh.02 "That's too bad. You lose. Such is Lady Luck! ." 03You have lost $bytes($2,b)  $+ $currency,1)
 
   }
 
@@ -1965,16 +1965,16 @@ alias gobbiebox {
   ; $1 = user
   ; $2 = open or help
 
-  if ($shopnpc.present.check(GobbieBoxGoblin) != true) { $display.private.message(4Error: $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is not at the Allied Forces HQ so the gobbie box cannot be used.) | halt }
+  if ($shopnpc.present.check(GobbieBoxGoblin) != true) { $display.private.message(04Error: $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is not at the Allied Forces HQ so the gobbie box cannot be used.) | halt }
 
   if (($2 = help) || ($2 = $null)) { 
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is standing next to a large treasure chest and says 2"Oho! Ya feelin' lucky 'nough tah takes a stab at da myst'ry box?!",1)
-    $display.private.message.delay.custom(2Use !gobbie box open to open the box.  Note that it requires 10 login points to open , 2)
+    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is standing next to a large treasure chest and says 02"Oho! Ya feelin' lucky 'nough tah takes a stab at da myst'ry box?!",1)
+    $display.private.message.delay.custom(02Use !gobbie box open to open the box.  Note that it requires 10 login points to open , 2)
     halt
   }
 
-  if ($loginpoints($1, check) < 10) { $display.private.message(4Error: You do not have 10 login points ) | halt }
-  if ($lines($lstfile(chest_gobbiebox.lst)) = 0) { $display.private.message(4ERROR: Gobbie Box lst file not found or empty! Contact the bot admin!) | halt }
+  if ($loginpoints($1, check) < 10) { $display.private.message(04Error: You do not have 10 login points ) | halt }
+  if ($lines($lstfile(chest_gobbiebox.lst)) = 0) { $display.private.message(04ERROR: Gobbie Box lst file not found or empty! Contact the bot admin!) | halt }
 
   ; Subtract the login points
   var %loginpoints.temp $loginpoints($1, check)
@@ -1990,9 +1990,9 @@ alias gobbiebox {
   inc %current.reward.items 1
   writeini $char($1) item_amount %random.item.name %current.reward.items
 
-  $display.private.message(4 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) opens the box and says2 "Lesee what myst'ries await! Dis box is full o' myst'ries! Dat span da realm's his'try! So whatcha gonna get from da chest...o'..uh, fortunery?")
-  $display.private.message.delay.custom(2"Oooh! Looks at what popped out! I hope it makes yer adventures dat much more adventumarous!",2)
-  $display.private.message.delay.custom(4You have obtained 1 %random.item.name ,3)
+  $display.private.message(04 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) opens the box and says02 "Lesee what myst'ries await! Dis box is full o' myst'ries! Dat span da realm's his'try! So whatcha gonna get from da chest...o'..uh, fortunery?")
+  $display.private.message.delay.custom(02"Oooh! Looks at what popped out! I hope it makes yer adventures dat much more adventumarous!",2)
+  $display.private.message.delay.custom(04You have obtained 1 %random.item.name ,3)
 
   ; Keep track of the # of boxes opened (may be used later for an achievement)
   var %number.of.gobbieboxes $readini($char($1), stuff, GobbieBoxesOpened)

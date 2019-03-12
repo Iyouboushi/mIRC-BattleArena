@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/13/18
+;;;; Last updated: 03/12/18
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -726,29 +726,29 @@ lookat {
   var %equipped.armor.hands $readini($char($1), equipment, hands) 
   if (%equipped.armor.hands = $null) { var %equipped.armor.hands nothing }
 
-  var %equipped.accessory $equipment.color(%equipped.accessory) $+  $+ %equipped.accessory $+ 3
+  var %equipped.accessory $equipment.color(%equipped.accessory) $+  $+ %equipped.accessory $+ 03
 
   if ($readini($char($1), equipment, accessory2) != $null) { 
     var %equipped.accessory2 $equipment.color($readini($char($1), equipment, accessory2)) $+ $readini($char($1), equipment, accessory2)
-    var %equipped.accessory %equipped.accessory 3and %equipped.accessory2 $+ 3
+    var %equipped.accessory %equipped.accessory 03and %equipped.accessory2 $+ 03
   }
 
-  var %equipped.armor.head $equipment.color(%equipped.armor.head) $+ %equipped.armor.head $+ 3
-  var %equipped.armor.body $equipment.color(%equipped.armor.body) $+ %equipped.armor.body $+ 3
-  var %equipped.armor.legs $equipment.color(%equipped.armor.legs) $+ %equipped.armor.legs $+ 3
-  var %equipped.armor.feet $equipment.color(%equipped.armor.feet) $+ %equipped.armor.feet $+ 3 
-  var %equipped.armor.hands $equipment.color(%equipped.armor.hands) $+ %equipped.armor.hands $+ 3
+  var %equipped.armor.head $equipment.color(%equipped.armor.head) $+ %equipped.armor.head $+ 03
+  var %equipped.armor.body $equipment.color(%equipped.armor.body) $+ %equipped.armor.body $+ 03
+  var %equipped.armor.legs $equipment.color(%equipped.armor.legs) $+ %equipped.armor.legs $+ 03
+  var %equipped.armor.feet $equipment.color(%equipped.armor.feet) $+ %equipped.armor.feet $+ 03 
+  var %equipped.armor.hands $equipment.color(%equipped.armor.hands) $+ %equipped.armor.hands $+ 03
 
   var %weapon.equipped $equipment.color(%weapon.equipped) $+ %weapon.equipped
 
   if ($readini($char($1), info, CustomTitle) != $null) { var %custom.title " $+ $readini($char($1), info, CustomTitle) $+ " }
 
   if ($readini(system.dat, system, botType) = IRC) { 
-    if ($2 = channel) {  $display.message(3 $+ %real.name %custom.title is wearing %equipped.armor.head on $gender($1) head; %equipped.armor.body on $gender($1) body; %equipped.armor.legs on $gender($1) legs; %equipped.armor.feet on $gender($1) feet; %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory equipped $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon),private) }
-    if ($2 != channel) { $display.private.message(3 $+ %real.name %custom.title is wearing %equipped.armor.head on $gender($1) head; %equipped.armor.body on $gender($1) body; %equipped.armor.legs on $gender($1) legs; %equipped.armor.feet on $gender($1) feet; %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon)) }
+    if ($2 = channel) {  $display.message(03 $+ %real.name %custom.title is wearing %equipped.armor.head on $gender($1) head; %equipped.armor.body on $gender($1) body; %equipped.armor.legs on $gender($1) legs; %equipped.armor.feet on $gender($1) feet; %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory equipped $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the %weapon.equipped $iif(%weapon.equipped.left != $null, 03and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 03weapons, 03weapon),private) }
+    if ($2 != channel) { $display.private.message(03 $+ %real.name %custom.title is wearing %equipped.armor.head on $gender($1) head; %equipped.armor.body on $gender($1) body; %equipped.armor.legs on $gender($1) legs; %equipped.armor.feet on $gender($1) feet; %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the %weapon.equipped $iif(%weapon.equipped.left != $null, 03and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 03weapons, 03weapon)) }
   }
   if ($readini(system.dat, system, botType) = DCCchat) {
-    var %look.message 3 $+ %real.name is wearing %equipped.armor.head on $gender($1) head, %equipped.armor.body on $gender($1) body, %equipped.armor.legs on $gender($1) legs, %equipped.armor.feet on $gender($1) feet, %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory  $+ $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the the %weapon.equipped $iif(%weapon.equipped.left != $null, 3and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 3weapons, 3weapon)
+    var %look.message 03 $+ %real.name is wearing %equipped.armor.head on $gender($1) head, %equipped.armor.body on $gender($1) body, %equipped.armor.legs on $gender($1) legs, %equipped.armor.feet on $gender($1) feet, %equipped.armor.hands on $gender($1) hands. %real.name also has %equipped.accessory  $+ $iif(%equipped.accessory2 = $null, as an accessory, as accessories) and is currently using the the %weapon.equipped $iif(%weapon.equipped.left != $null, 03and $equipment.color(%weapon.equipped.left) $+ %weapon.equipped.left 03weapons, 03weapon)
   $dcc.private.message($nick, %look.message) }
 } 
 
@@ -866,8 +866,8 @@ player.status { unset %all_status | unset %all_skills | $set_chr_name($1)
 
     $player.skills.list($1)
 
-    if (%all_status = $null) { %all_status = 3Normal }
-    if (%all_skills = $null) { %all_skills = 3None }
+    if (%all_status = $null) { %all_status = 03Normal }
+    if (%all_skills = $null) { %all_skills = 03None }
     return
   }
   unset %real.name | unset %status 
@@ -879,36 +879,36 @@ player.status { unset %all_status | unset %all_skills | $set_chr_name($1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 player.skills.list {
   unset %all_skills
-  if ($readini($char($1), status, conservetp.on) = on) { $skills_message_check(2conserving TP) }
-  if ($readini($char($1), status, conservetp) = yes) { $skills_message_check(2conserving TP) }
-  if ($readini($char($1), skills, utsusemi.on) = on) { $skills_message_check(2Utsusemi[ $+ $readini($char($1), skills, utsusemi.shadows) $+ ]) }
-  if ($readini($char($1), skills, royalguard.on) = on) { $skills_message_check(2Royal Guard) }
-  if ($readini($char($1), skills, manawall.on) = on) { $skills_message_check(2Mana Wall) }
-  if ($readini($char($1), skills, mightystrike.on) = on) { $skills_message_check(2Mighty Strike) }
-  if ($readini($char($1), skills, truestrike.on) = on) { $skills_message_check(2True Strike) }
-  if ($readini($char($1), skills, elementalseal.on) = on) { $skills_message_check(2Elemental Seal) }
-  if ($readini($char($1), skills, thirdeye.on) = on) { $skills_message_check(2Third Eye) }
-  if ($readini($char($1), skills, retaliation.on) = on) { $skills_message_check(2Retaliation) }
-  if ($readini($char($1), skills, konzen-ittai.on) = on) { $skills_message_check(2Konzen-Ittai) }
-  if ($readini($char($1), skills, defender.on) = on) { $skills_message_check(2Defender) }
-  if ($readini($char($1), skills, aggressor.on) = on) { $skills_message_check(2Aggressor) }
-  if ($readini($char($1), skills, perfectcounter.on) = on) { $skills_message_check(2Will Perform a Perfect Counter) }
+  if ($readini($char($1), status, conservetp.on) = on) { $skills_message_check(02conserving TP) }
+  if ($readini($char($1), status, conservetp) = yes) { $skills_message_check(02conserving TP) }
+  if ($readini($char($1), skills, utsusemi.on) = on) { $skills_message_check(02Utsusemi[ $+ $readini($char($1), skills, utsusemi.shadows) $+ ]) }
+  if ($readini($char($1), skills, royalguard.on) = on) { $skills_message_check(02Royal Guard) }
+  if ($readini($char($1), skills, manawall.on) = on) { $skills_message_check(02Mana Wall) }
+  if ($readini($char($1), skills, mightystrike.on) = on) { $skills_message_check(02Mighty Strike) }
+  if ($readini($char($1), skills, truestrike.on) = on) { $skills_message_check(02True Strike) }
+  if ($readini($char($1), skills, elementalseal.on) = on) { $skills_message_check(02Elemental Seal) }
+  if ($readini($char($1), skills, thirdeye.on) = on) { $skills_message_check(02Third Eye) }
+  if ($readini($char($1), skills, retaliation.on) = on) { $skills_message_check(02Retaliation) }
+  if ($readini($char($1), skills, konzen-ittai.on) = on) { $skills_message_check(02Konzen-Ittai) }
+  if ($readini($char($1), skills, defender.on) = on) { $skills_message_check(02Defender) }
+  if ($readini($char($1), skills, aggressor.on) = on) { $skills_message_check(02Aggressor) }
+  if ($readini($char($1), skills, perfectcounter.on) = on) { $skills_message_check(02Will Perform a Perfect Counter) }
   if ($readini($char($1), skills, FormlessStrike.on) = on) { $skills_message_check(Formless Strikes) }
   if ($readini($char($1), skills, PerfectDefense.on) = on) { $skills_message_check(Perfect Defense) }
-  if ($readini($char($1), skills, drainsamba.on) = on) { $skills_message_check(2Drain Samba) }
-  if ($readini($char($1), skills, bloodboost.on) = on) { $skills_message_check(2Blood Boost) }
-  if ($readini($char($1), skills, bloodspirit.on) = on) { $skills_message_check(2Blood Spirit) }
-  if ($readini($char($1), skills, speed.on) = on) { $skills_message_check(2Speed Boost) }
-  if ($readini($char($1), skills, criticalfocus.on) = on) { $skills_message_check(2Critical Focus) }
-  if ($readini($char($1), skills, shieldfocus.on) = on) { $skills_message_check(2Shield Focus) }
-  if ($readini($char($1), skills, barrage.on) = on) { $skills_message_check(2Barrage) }
-  if ($readini($char($1), skills, doublecast.on) = on) { $skills_message_check(2DoubleCast) }
-  if ($readini($char($1), skills, duality.on) = on) { $skills_message_check(2Duality) }
-  if ($readini($char($1), skills, thinair.on) = on) { $skills_message_check(2Thin Air) }
-  if ($readini($char($1), skills, quickpockets.on) = on) { $skills_message_check(2Quick Pockets) }
+  if ($readini($char($1), skills, drainsamba.on) = on) { $skills_message_check(02Drain Samba) }
+  if ($readini($char($1), skills, bloodboost.on) = on) { $skills_message_check(02Blood Boost) }
+  if ($readini($char($1), skills, bloodspirit.on) = on) { $skills_message_check(02Blood Spirit) }
+  if ($readini($char($1), skills, speed.on) = on) { $skills_message_check(02Speed Boost) }
+  if ($readini($char($1), skills, criticalfocus.on) = on) { $skills_message_check(02Critical Focus) }
+  if ($readini($char($1), skills, shieldfocus.on) = on) { $skills_message_check(02Shield Focus) }
+  if ($readini($char($1), skills, barrage.on) = on) { $skills_message_check(02Barrage) }
+  if ($readini($char($1), skills, doublecast.on) = on) { $skills_message_check(02DoubleCast) }
+  if ($readini($char($1), skills, duality.on) = on) { $skills_message_check(02Duality) }
+  if ($readini($char($1), skills, thinair.on) = on) { $skills_message_check(02Thin Air) }
+  if ($readini($char($1), skills, quickpockets.on) = on) { $skills_message_check(02Quick Pockets) }
 
   set %cover.target $readini($char($1), skills, CoverTarget)
-  if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(2Covered by %cover.target) }
+  if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(02Covered by %cover.target) }
 
   unset %cover.target
 }
@@ -959,7 +959,7 @@ display_weapon_lists {  $set_chr_name($1)
       set %display.weaponlist $weapons.returnlist(%weapon.counter)
       %display.weaponlist = $replace(%display.weaponlist, $chr(046), %replacechar)
 
-      $display.message(3 $+ %display.weaponlist)
+      $display.message(03 $+ %display.weaponlist)
       $weapons.unsetlist(%weapon.counter) | unset %display.weaponlist
       inc %weapon.counter
       if (%weapon.counter > 100) { echo -a breaking to prevent a flood | break }
@@ -973,7 +973,7 @@ display_weapon_lists {  $set_chr_name($1)
       set %display.weaponlist $weapons.returnlist(%weapon.counter)
       %display.weaponlist = $replace(%display.weaponlist, $chr(046), %replacechar)
 
-      $display.private.message2($3,3 $+ %display.weaponlist)
+      $display.private.message2($3,03 $+ %display.weaponlist)
       $weapons.unsetlist(%weapon.counter) | unset %display.weaponlist
       inc %weapon.counter
       if (%weapon.counter > 100) { echo -a breaking to prevent a flood | break }
@@ -987,7 +987,7 @@ display_weapon_lists {  $set_chr_name($1)
       set %display.weaponlist $weapons.returnlist(%weapon.counter)
       %display.weaponlist = $replace(%display.weaponlist, $chr(046), %replacechar)
 
-      $dcc.private.message($3,3 $+ %display.weaponlist)
+      $dcc.private.message($3,03 $+ %display.weaponlist)
       $weapons.unsetlist(%weapon.counter) | unset %display.weaponlist
       inc %weapon.counter
       if (%weapon.counter > 100) { echo -a breaking to prevent a flood | break }
@@ -1013,7 +1013,7 @@ display_shield_lists {  $set_chr_name($1)
       set %display.shieldlist $shields.returnlist(%shield.counter)
       %display.shieldlist = $replace(%display.shieldlist, $chr(046), %replacechar)
 
-      $display.message(3 $+ %display.shieldlist,private)
+      $display.message(03 $+ %display.shieldlist,private)
       $shields.unsetlist(%shield.counter) | unset %display.shieldlist
       inc %shield.counter
       if (%shield.counter > 100) { echo -a breaking to prevent a flood | break }
@@ -1027,7 +1027,7 @@ display_shield_lists {  $set_chr_name($1)
       set %display.shieldlist $shields.returnlist(%shield.counter)
       %display.shieldlist = $replace(%display.shieldlist, $chr(046), %replacechar)
 
-      $display.private.message2($3,3 $+ %display.shieldlist)
+      $display.private.message2($3,03 $+ %display.shieldlist)
       $shields.unsetlist(%shield.counter) | unset %display.shieldlist
       inc %shield.counter
       if (%shield.counter > 100) { echo -a breaking to prevent a flood | break }
@@ -1041,7 +1041,7 @@ display_shield_lists {  $set_chr_name($1)
       set %display.shieldlist $shields.returnlist(%shield.counter)
       %display.shieldlist = $replace(%display.shieldlist, $chr(046), %replacechar)
 
-      $dcc.private.message($3,3 $+ %display.shieldlist)
+      $dcc.private.message($3,03 $+ %display.shieldlist)
       $shields.unsetlist(%shield.counter) | unset %display.shieldlist
       inc %shield.counter
       if (%shield.counter > 100) { echo -a breaking to prevent a flood | break }
@@ -1084,30 +1084,30 @@ readskills {
   if (%passive.skills.list != $null) { 
     if ($2 = channel) { 
       $display.message($readini(translation.dat, system, ViewPassiveSkills),private)
-      if (%passive.skills.list2 != $null) { $display.message(3 $+ %passive.skills.list2,private) }
+      if (%passive.skills.list2 != $null) { $display.message(03 $+ %passive.skills.list2,private) }
     }
     if ($2 = private) {
       $display.private.message($readini(translation.dat, system, ViewPassiveSkills))
-      if (%passive.skills.list2 != $null) { $display.private.message(3 $+ %passive.skills.list2) }
+      if (%passive.skills.list2 != $null) { $display.private.message(03 $+ %passive.skills.list2) }
     }
     if ($2 = dcc) {
       $dcc.private.message($nick, $readini(translation.dat, system, ViewPassiveSkills))
-      if (%passive.skills.list2 != $null) { $dcc.private.message($nick, 3 $+ %passive.skills.list2) }
+      if (%passive.skills.list2 != $null) { $dcc.private.message($nick, 03 $+ %passive.skills.list2) }
     }
 
   }
   if (%active.skills.list != $null) { 
     if ($2 = channel) { 
       $display.message($readini(translation.dat, system, ViewActiveSkills),private)
-      if (%active.skills.list2 != $null) { $display.message(3 $+ %active.skills.list2,private) }
+      if (%active.skills.list2 != $null) { $display.message(03 $+ %active.skills.list2,private) }
     }
     if ($2 = private) {
       $display.private.message($readini(translation.dat, system, ViewActiveSkills))
-      if (%active.skills.list2 != $null) { $display.private.message(3 $+ %active.skills.list2) }
+      if (%active.skills.list2 != $null) { $display.private.message(03 $+ %active.skills.list2) }
     }
     if ($2 = dcc) {
       $dcc.private.message($nick, $readini(translation.dat, system, ViewActiveSkills))
-      if (%active.skills.list2 != $null) { $dcc.private.message($nick, 3 $+ %active.skills.list2) }
+      if (%active.skills.list2 != $null) { $dcc.private.message($nick, 03 $+ %active.skills.list2) }
     }
   }
 
@@ -1374,9 +1374,9 @@ readitems {
 
   ; Display commands for other inventory items
   if (%items.empty != true) { 
-    if ($2 = channel) { $display.message(3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items  $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes  $+ $chr(44) 10!ammo,private) }
-    if ($2 = private) {  $display.private.message(3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes $+ $chr(44) 10!ammo) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3Other item commands:5 !misc items3 $+ $chr(44) 3!seals3 $+ $chr(44) 15!portals3 $+ $chr(44) 7!gems3 $+ $chr(44) 6!instruments3 $+ $chr(44) 14!keys3 $+ $chr(44) 6!trusts3 $+ $chr(44) 5!trading cards3 $+ $chr(44) 3!mech items $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes $+ $chr(44) 10!ammo) }
+    if ($2 = channel) { $display.message(03Other item commands:5 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 7!gems03 $+ $chr(44) 6!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 6!trusts03 $+ $chr(44) 5!trading cards03 $+ $chr(44) 03!mech items  $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes  $+ $chr(44) 10!ammo,private) }
+    if ($2 = private) {  $display.private.message(03Other item commands:5 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 7!gems03 $+ $chr(44) 6!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 6!trusts03 $+ $chr(44) 5!trading cards03 $+ $chr(44) 03!mech items $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes $+ $chr(44) 10!ammo) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03Other item commands:5 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 7!gems03 $+ $chr(44) 6!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 6!trusts03 $+ $chr(44) 5!trading cards03 $+ $chr(44) 03!mech items $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes $+ $chr(44) 10!ammo) }
   }
 
   unset %*.items.lis* | unset %items.lis*
@@ -1393,15 +1393,15 @@ readaccessories {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewAccessories)) }
 
     if (%accessories.list2 != $null) { 
-      if ($2 = channel) {  $display.message(3 $+ %accessories.list2,private) }
-      if ($2 = private) { $display.private.message(3 $+ %accessories.list2) }
-      if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %accessories.list2) }
+      if ($2 = channel) {  $display.message(03 $+ %accessories.list2,private) }
+      if ($2 = private) { $display.private.message(03 $+ %accessories.list2) }
+      if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %accessories.list2) }
     }
 
     if (%accessories.list3 != $null) { 
-      if ($2 = channel) {  $display.message(3 $+ %accessories.list3,private) }
-      if ($2 = private) { $display.private.message(3 $+ %accessories.list3) }
-      if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %accessories.list3) }
+      if ($2 = channel) {  $display.message(03 $+ %accessories.list3,private) }
+      if ($2 = private) { $display.private.message(03 $+ %accessories.list3) }
+      if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %accessories.list3) }
     }
   }
   else { 
@@ -1449,9 +1449,9 @@ readsongs {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, Viewsongs)) }
 
     if (%songs.list2 != $null) { 
-      if ($2 = channel) {  $display.message(3 $+ %songs.list2,private) }
-      if ($2 = private) {  $display.private.message(3 $+ %songs.list2) }
-      if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %songs.list2) }
+      if ($2 = channel) {  $display.message(03 $+ %songs.list2,private) }
+      if ($2 = private) {  $display.private.message(03 $+ %songs.list2) }
+      if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %songs.list2) }
     }
   }
   else { 
@@ -1472,19 +1472,19 @@ readarmor {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewArmorHead)) }
   }
   if (%armor.head2 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.head2,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.head2) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.head2) }
+    if ($2 = channel) { $display.message(03 $+ %armor.head2,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.head2) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.head2) }
   }
   if (%armor.head3 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.head3,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.head3) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.head3) }
+    if ($2 = channel) { $display.message(03 $+ %armor.head3,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.head3) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.head3) }
   }
   if (%armor.head4 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.head4,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.head4) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.head4) }
+    if ($2 = channel) { $display.message(03 $+ %armor.head4,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.head4) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.head4) }
   }
 
   if (%armor.body != $null) { 
@@ -1493,19 +1493,19 @@ readarmor {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewArmorBody)) }
   }
   if (%armor.body2 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.body2,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.body2) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.body2) }
+    if ($2 = channel) { $display.message(03 $+ %armor.body2,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.body2) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.body2) }
   }
   if (%armor.body3 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.body3,private) }
-    if ($2 = private) {  $display.private.message(3 $+ %armor.body3) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.body3) }
+    if ($2 = channel) { $display.message(03 $+ %armor.body3,private) }
+    if ($2 = private) {  $display.private.message(03 $+ %armor.body3) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.body3) }
   }
   if (%armor.body4 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.body4,private) }
-    if ($2 = private) {  $display.private.message(3 $+ %armor.body4) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.body4) }
+    if ($2 = channel) { $display.message(03 $+ %armor.body4,private) }
+    if ($2 = private) {  $display.private.message(03 $+ %armor.body4) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.body4) }
   }
 
   if (%armor.legs != $null) { 
@@ -1514,19 +1514,19 @@ readarmor {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewArmorLegs)) }
   }
   if (%armor.legs2 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.legs2,private) }
-    if ($2 = private) {  $display.private.message(3 $+ %armor.legs2) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.legs2) }
+    if ($2 = channel) { $display.message(03 $+ %armor.legs2,private) }
+    if ($2 = private) {  $display.private.message(03 $+ %armor.legs2) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.legs2) }
   }
   if (%armor.legs3 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.legs3,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.legs3) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.legs3) }
+    if ($2 = channel) { $display.message(03 $+ %armor.legs3,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.legs3) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.legs3) }
   }
   if (%armor.legs4 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.legs4,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.legs4) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.legs4) }
+    if ($2 = channel) { $display.message(03 $+ %armor.legs4,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.legs4) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.legs4) }
   }
 
   if (%armor.feet != $null) { 
@@ -1535,19 +1535,19 @@ readarmor {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewArmorFeet)) }
   }
   if (%armor.feet2 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.feet2,private) }
-    if ($2 = private) {  $display.private.message(3 $+ %armor.feet2) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.feet2) }
+    if ($2 = channel) { $display.message(03 $+ %armor.feet2,private) }
+    if ($2 = private) {  $display.private.message(03 $+ %armor.feet2) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.feet2) }
   }
   if (%armor.feet3 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.feet3,private) }
-    if ($2 = private) {  $display.private.message(3 $+ %armor.feet3) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.feet3) }
+    if ($2 = channel) { $display.message(03 $+ %armor.feet3,private) }
+    if ($2 = private) {  $display.private.message(03 $+ %armor.feet3) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.feet3) }
   }
   if (%armor.feet4 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.feet4,private) }
-    if ($2 = private) {  $display.private.message(3 $+ %armor.feet4) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.feet4) }
+    if ($2 = channel) { $display.message(03 $+ %armor.feet4,private) }
+    if ($2 = private) {  $display.private.message(03 $+ %armor.feet4) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.feet4) }
   }
 
   if (%armor.hands != $null) {
@@ -1556,19 +1556,19 @@ readarmor {
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewArmorHands)) }
   }
   if (%armor.hands2 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.hands2,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.hands2) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.hands2) }
+    if ($2 = channel) { $display.message(03 $+ %armor.hands2,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.hands2) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.hands2) }
   }
   if (%armor.hands3 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.hands3,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.hands3) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.hands3) }
+    if ($2 = channel) { $display.message(03 $+ %armor.hands3,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.hands3) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.hands3) }
   }
   if (%armor.hands4 != $null) { 
-    if ($2 = channel) { $display.message(3 $+ %armor.hands4,private) }
-    if ($2 = private) { $display.private.message(3 $+ %armor.hands4) }
-    if ($2 = dcc) { $dcc.private.message($nick, 3 $+ %armor.hands4) }
+    if ($2 = channel) { $display.message(03 $+ %armor.hands4,private) }
+    if ($2 = private) { $display.private.message(03 $+ %armor.hands4) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03 $+ %armor.hands4) }
   }
 
   if (((((%armor.head = $null) && (%armor.body = $null) && (%armor.legs = $null) && (%armor.feet = $null) && (%armor.hands = $null))))) { 
@@ -1834,22 +1834,22 @@ augments.list {
 
   if (($2 = $null) || ($2 = channel)) {
     $display.message($readini(translation.dat, system, ListOfAugments), private)
-    if (%augment.list2 != $null) { $display.message(3 $+ %augment.list2, private) }
-    if (%augment.list3 != $null) { $display.message(3 $+ %augment.list3, private) }
-    if (%augment.list4 != $null) { $display.message(3 $+ %augment.list4, private) }
-    if (%augment.list5 != $null) { $display.message(3 $+ %augment.list5, private) }
-    if (%augment.list6 != $null) { $display.message(3 $+ %augment.list6, private) }
-    if (%augment.list7 != $null) { $display.message(3 $+ %augment.list7, private) }
+    if (%augment.list2 != $null) { $display.message(03 $+ %augment.list2, private) }
+    if (%augment.list3 != $null) { $display.message(03 $+ %augment.list3, private) }
+    if (%augment.list4 != $null) { $display.message(03 $+ %augment.list4, private) }
+    if (%augment.list5 != $null) { $display.message(03 $+ %augment.list5, private) }
+    if (%augment.list6 != $null) { $display.message(03 $+ %augment.list6, private) }
+    if (%augment.list7 != $null) { $display.message(03 $+ %augment.list7, private) }
   }
 
   if ($2 = private) {  
     $display.private.message($readini(translation.dat, system, ListOfAugments))
-    if (%augment.list2 != $null) { $display.private.message(3 $+ %augment.list2) }
-    if (%augment.list3 != $null) { $display.private.message(3 $+ %augment.list3) }
-    if (%augment.list4 != $null) { $display.private.message(3 $+ %augment.list4) }
-    if (%augment.list5 != $null) { $display.private.message(3 $+ %augment.list5) } 
-    if (%augment.list6 != $null) { $display.private.message(3 $+ %augment.list6) }
-    if (%augment.list7 != $null) { $display.private.message(3 $+ %augment.list7) }
+    if (%augment.list2 != $null) { $display.private.message(03 $+ %augment.list2) }
+    if (%augment.list3 != $null) { $display.private.message(03 $+ %augment.list3) }
+    if (%augment.list4 != $null) { $display.private.message(03 $+ %augment.list4) }
+    if (%augment.list5 != $null) { $display.private.message(03 $+ %augment.list5) } 
+    if (%augment.list6 != $null) { $display.private.message(03 $+ %augment.list6) }
+    if (%augment.list7 != $null) { $display.private.message(03 $+ %augment.list7) }
   }
   unset %augment.list*
   unset %weapon.list | unset %base.weapon.list  | unset %weapons
@@ -1918,14 +1918,14 @@ augments.strength {
   }
 
   if (%augment.list != $null) { $set_chr_name($1) | $display.message($readini(translation.dat, system, augmentList), private)
-    if (%augment.list.2 != $null) { $display.message(3 $+ %augment.list.2, private) }
-    if (%augment.list.3 != $null) { $display.message(3 $+ %augment.list.3, private) }
-    if (%augment.list.4 != $null) { $display.message(3 $+ %augment.list.4, private) }
-    if (%augment.list.5 != $null) { $display.message(3 $+ %augment.list.5, private) }
-    if (%augment.list.6 != $null) { $display.message(3 $+ %augment.list.6, private) }
-    if (%augment.list.7 != $null) { $display.message(3 $+ %augment.list.7, private) }
-    if (%augment.list.8 != $null) { $display.message(3 $+ %augment.list.8, private) }
-    if (%augment.list.9 != $null) { $display.message(3 $+ %augment.list.9, private) }
+    if (%augment.list.2 != $null) { $display.message(03 $+ %augment.list.2, private) }
+    if (%augment.list.3 != $null) { $display.message(03 $+ %augment.list.3, private) }
+    if (%augment.list.4 != $null) { $display.message(03 $+ %augment.list.4, private) }
+    if (%augment.list.5 != $null) { $display.message(03 $+ %augment.list.5, private) }
+    if (%augment.list.6 != $null) { $display.message(03 $+ %augment.list.6, private) }
+    if (%augment.list.7 != $null) { $display.message(03 $+ %augment.list.7, private) }
+    if (%augment.list.8 != $null) { $display.message(03 $+ %augment.list.8, private) }
+    if (%augment.list.9 != $null) { $display.message(03 $+ %augment.list.9, private) }
   }
   if (%augment.list = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, system, Noaugments), private) }
   unset %augment.list*

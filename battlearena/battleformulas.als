@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/10/18
+;;;; Last updated: 03/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -18,9 +18,9 @@
 ; display color
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 damage.color.check {
-  if (%starting.damage > %attack.damage) { set %damage.display.color 6 }
-  if (%starting.damage < %attack.damage) { set %damage.display.color 7 }
-  if (%starting.damage = %attack.damage) { set %damage.display.color 4 }
+  if (%starting.damage > %attack.damage) { set %damage.display.color 06 }
+  if (%starting.damage < %attack.damage) { set %damage.display.color 07 }
+  if (%starting.damage = %attack.damage) { set %damage.display.color 04 }
 
   unset %starting.damage
 }
