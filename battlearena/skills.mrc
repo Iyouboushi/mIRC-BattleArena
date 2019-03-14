@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 01/21/19
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -165,7 +165,7 @@ alias skill.turncheck {
   else { var %next.turn.can.use $calc(%last.turn.used + %skill.turns) }
 
   if (%true.turn >= %next.turn.can.use) { return }
-  else { $set_chr_name($1) | $display.message($readini(translation.dat, skill, UnableToUseskillAgainSoSoon),private)  | $display.private.message(3You still have $calc(%next.turn.can.use - %true.turn) turns before you can use $3 again) | halt }
+  else { $set_chr_name($1) | $display.message($readini(translation.dat, skill, UnableToUseskillAgainSoSoon),private)  | $display.private.message(03You still have $calc(%next.turn.can.use - %true.turn) turns before you can use $3 again) | halt }
 }
 
 ;=================
@@ -214,13 +214,13 @@ alias skill.speedup { $set_chr_name($1)
   $amnesia.check($1, skill) 
   $checkchar($1)
   if ($skillhave.check($1, speed) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private) | halt }
-  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  if (%battleis = off) { $display.message(04There is no battle currently!, private) | halt }
   $check_for_battle($1)
 
   var %skill.name Speed
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
-  if ($readini($char($1), skills, speed.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle., private)  | halt }
+  if ($readini($char($1), skills, speed.on) = on) { $set_chr_name($1) | $display.message(04 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle., private)  | halt }
 
   if ($readini($char($1), info, flag) = $null) { 
     ; Does the char have enough HP to perform it?
@@ -288,7 +288,7 @@ alias skill.elementalseal { $set_chr_name($1)
 
   $checkchar($1)
   if ($skillhave.check($1, ElementalSeal) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
-  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  if (%battleis = off) { $display.message(04There is no battle currently!, private) | halt }
   $check_for_battle($1)
 
   var %skill.name ElementalSeal
@@ -329,7 +329,7 @@ alias skill.mightystrike { $set_chr_name($1)
 
   $checkchar($1)
   if ($skillhave.check($1, MightyStrike) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
-  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  if (%battleis = off) { $display.message(04There is no battle currently!, private) | halt }
 
   $check_for_battle($1)
 
@@ -372,7 +372,7 @@ alias skill.truestrike { $set_chr_name($1)
 
   $checkchar($1)
   if ($skillhave.check($1, truestrike) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
-  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  if (%battleis = off) { $display.message(04There is no battle currently!, private) | halt }
 
   $check_for_battle($1)
 
@@ -506,7 +506,7 @@ alias skill.lockpicking { $set_chr_name($1)
 
   ; Check to see if the user has enough lockpicks.
   set %check.item $readini($char($1), item_amount, lockpick)
-  if ((%check.item = $null) || (%check.item <= 0)) { $set_chr_name($1) | $display.message(4Error: %real.name does not have enough lockpicks to perform this skill, private) | halt }
+  if ((%check.item = $null) || (%check.item <= 0)) { $set_chr_name($1) | $display.message(04Error: %real.name does not have enough lockpicks to perform this skill, private) | halt }
   $decrease_item($1, lockpick) 
 
   set %keyinuse true
@@ -550,7 +550,7 @@ alias skill.perfectdefense { $set_chr_name($1)
   $amnesia.check($1, skill) 
   $checkchar($1)
   if ($skillhave.check($1, perfectdefense) = false) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoNotHaveSkill), private)  | halt }
-  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  if (%battleis = off) { $display.message(04There is no battle currently!, private) | halt }
 
   $check_for_battle($1)
 
@@ -602,7 +602,7 @@ alias skill.utsusemi { $set_chr_name($1)
 
   ; Check for the item "Shihei" and consume it, or display an error if they don't have any.
   set %check.item $readini($char($1), item_amount, shihei)
-  if ((%check.item = $null) || (%check.item <= 0)) { $set_chr_name($1) | $display.message(4Error: %real.name does not have enough shihei to perform this skill, private) | halt }
+  if ((%check.item = $null) || (%check.item <= 0)) { $set_chr_name($1) | $display.message(04Error: %real.name does not have enough shihei to perform this skill, private) | halt }
   $decrease_item($1, Shihei) 
 
   ; Decrease the action points
@@ -642,10 +642,10 @@ alias skill.fullbring { $set_chr_name($1)
   $set_chr_name($1) | $amnesia.check($1, skill) 
 
   set %check.item $readini($char($1), Item_Amount, $2) 
-  if ((%check.item <= 0) || (%check.item = $null)) { unset %check.item | $set_chr_name($1) | $display.message(4Error: %real.name does not have that item., private) | halt }
+  if ((%check.item <= 0) || (%check.item = $null)) { unset %check.item | $set_chr_name($1) | $display.message(04Error: %real.name does not have that item., private) | halt }
 
   set %fullbring.check $readini($char($1), skills, fullbring) | set %fullbring.needed $readini($dbfile(items.db), $2, FullbringLevel)
-  if (%fullbring.needed > %fullbring.check) { $display.message(4Error: %real.name does not have a high enough Fullbring skill level to perform Fullbring on this item!, private) | halt }
+  if (%fullbring.needed > %fullbring.check) { $display.message(04Error: %real.name does not have a high enough Fullbring skill level to perform Fullbring on this item!, private) | halt }
 
   $check_for_battle($nick)
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
@@ -656,7 +656,7 @@ alias skill.fullbring { $set_chr_name($1)
 
   set %fullbring.type $readini($dbfile(items.db), $2, type) | set %fullbring.target $readini($dbfile(items.db), $2, FullbringTarget)
 
-  if (%fullbring.target = $null) { unset %check.item | $display.message(4Error: This item does not have a fullbring ability attached to it!, private) | halt }
+  if (%fullbring.target = $null) { unset %check.item | $display.message(04Error: This item does not have a fullbring ability attached to it!, private) | halt }
   $decrease_item($nick, $2)
 
   ; Decrease the action points
@@ -690,7 +690,7 @@ alias fullbring.singleheal {
   ; $3 = target
 
   ; Display the fullbring desc
-  $display.message(3 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
+  $display.message(03 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
 
   set %attack.damage 0
 
@@ -778,7 +778,7 @@ alias fullbring.aoeheal {
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
 
-  $display.message(3 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
+  $display.message(03 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
 
   ; If it's player, search out remaining players that are alive and deal damage and display damage
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
@@ -830,7 +830,7 @@ alias fullbring.aoestatus {
   ; Display the item description
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
-  $display.message(3 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
+  $display.message(03 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
 
   ; Get the fullbring status type
   set %fullbring.status $readini($dbfile(items.db), $2, StatusType)
@@ -856,7 +856,7 @@ alias fullbring.aoestatus {
   if (%fullbring.status = confuse) { set %status.type confuse  | var %tech.status.grammar confused }
   if (%fullbring.status = removeboost) { set %status.type removeboost | var %tech.status.grammar no longer boosted }
 
-  if (%tech.status.grammar = $null) { echo -a 4Invalid status type: $3 | return }
+  if (%tech.status.grammar = $null) { echo -a 04Invalid status type: $3 | return }
 
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
@@ -884,15 +884,15 @@ alias fullbring.aoestatus {
         }
 
         if ((%resist.skill != $null) && (%resist.skill > 0)) { 
-          if (%resist.skill >= 100) { set %statusmessage.display 4 $+ %real.name is immune to the %fullbring.status status! }
+          if (%resist.skill >= 100) { set %statusmessage.display 04 $+ %real.name is immune to the %fullbring.status status! }
           else { dec %chance %resist.skill }
         }
 
 
         if (%chance >= 50) {
-          if ((%chance = 50) && (%fullbring.status = poison)) { $set_chr_name(%who.battle) | set %statusmessage.display 4 $+ %real.name is now %tech.status.grammar $+ !  | writeini $char(%who.battle) Status poison-heavy yes }
-          if ((%chance = 50) && (%fullbring.status != poison)) { $set_chr_name(%who.battle) | set %statusmessage.display 4 $+ %real.name is now %tech.status.grammar $+ !  | writeini $char(%who.battle) Status %fullbring.status yes }
-          else { $set_chr_name(%who.battle) | set %statusmessage.display 4 $+ %real.name is now %tech.status.grammar $+ !  | writeini $char(%who.battle) Status %fullbring.status yes 
+          if ((%chance = 50) && (%fullbring.status = poison)) { $set_chr_name(%who.battle) | set %statusmessage.display 04 $+ %real.name is now %tech.status.grammar $+ !  | writeini $char(%who.battle) Status poison-heavy yes }
+          if ((%chance = 50) && (%fullbring.status != poison)) { $set_chr_name(%who.battle) | set %statusmessage.display 04 $+ %real.name is now %tech.status.grammar $+ !  | writeini $char(%who.battle) Status %fullbring.status yes }
+          else { $set_chr_name(%who.battle) | set %statusmessage.display 04 $+ %real.name is now %tech.status.grammar $+ !  | writeini $char(%who.battle) Status %fullbring.status yes 
             if (%fullbring.status = charm) { writeini $char(%who.battle) status charmed yes | writeini $char($2) status charmer $1 | writeini $char(%who.battle) status charm.timer $rand(2,3) }
             if (%fullbring.status = curse) { writeini $char(%who.battle) battle tp 0 }
             if (%fullbring.status = removeboost) { 
@@ -904,9 +904,9 @@ alias fullbring.aoestatus {
           }
         }
         else {
-          if (%resist.skill >= 100) { $set_chr_name(%who.battle) | set %statusmessage.display 4 $+ %real.name is immune to the %fullbring.status status! }
-          if ((%resist.skill  >= 1) && (%resist.skill < 100)) { $set_chr_name(%who.battle) | set %statusmessage.display 4 $+ %real.name has resisted $set_chr_name($1) %real.name $+ 's $lower(%fullbring.status) status effect! }
-          if ((%resist.skill <= 0) || (%resist.skill = $null)) { $set_chr_name($1) | set %statusmessage.display 4 $+ %real.name $+ 's $lower(%fullbring.status) status effect has failed against $set_chr_name(%who.battle) %real.name $+ ! }
+          if (%resist.skill >= 100) { $set_chr_name(%who.battle) | set %statusmessage.display 04 $+ %real.name is immune to the %fullbring.status status! }
+          if ((%resist.skill  >= 1) && (%resist.skill < 100)) { $set_chr_name(%who.battle) | set %statusmessage.display 04 $+ %real.name has resisted $set_chr_name($1) %real.name $+ 's $lower(%fullbring.status) status effect! }
+          if ((%resist.skill <= 0) || (%resist.skill = $null)) { $set_chr_name($1) | set %statusmessage.display 04 $+ %real.name $+ 's $lower(%fullbring.status) status effect has failed against $set_chr_name(%who.battle) %real.name $+ ! }
         }
 
 
@@ -943,7 +943,7 @@ alias fullbring.aoedamage {
   ; Display the item description
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
-  $display.message(3 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
+  $display.message(03 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
 
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
@@ -980,7 +980,7 @@ alias fullbring.aoetp {
   ; Display the item description
   set %user $get_chr_name($1)
   set %enemy $get_chr_name($2)
-  $display.message(3 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
+  $display.message(03 $+ %user  $+ $readini($dbfile(items.db), $2, Fullbringdesc), battle)
 
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
@@ -1003,7 +1003,7 @@ alias fullbring.aoetp {
         if (%tp.current >= $readini($char(%who.battle.fullbring), basestats, tp)) { writeini $char(%who.battle.fullbring) battle tp $readini($char(%who.battle.fullbring), basestats, tp) }
         else { writeini $char(%who.battle.fullbring) battle tp %tp.current }
 
-        $display.message(3 $+ %enemy has regained %tp.amount TP!, battle)
+        $display.message(03 $+ %enemy has regained %tp.amount TP!, battle)
       }
     }
     inc %battletxt.current.line 1 
@@ -1104,8 +1104,8 @@ alias skill.meditate { $set_chr_name($1)
   ; increase the tp and make sure it's not over the max
   inc %tp.current %tp.increase
 
-  if (%tp.current >= %tp.max) { $display.message(3 $+ %real.name has restored all of $gender($1) TP!, battle) | writeini $char($1) battle tp %tp.max }
-  if (%tp.current < %tp.max) { $display.message(3 $+ %real.name has restored %tp.increase TP!, battle) | writeini $char($1) battle tp %tp.current }
+  if (%tp.current >= %tp.max) { $display.message(03 $+ %real.name has restored all of $gender($1) TP!, battle) | writeini $char($1) battle tp %tp.max }
+  if (%tp.current < %tp.max) { $display.message(03 $+ %real.name has restored %tp.increase TP!, battle) | writeini $char($1) battle tp %tp.current }
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction meditate
 
@@ -1422,7 +1422,7 @@ alias skill.drainsamba { $set_chr_name($1)
 
   if ($readini($char($1), info, flag) = $null) { 
     var %tp.needed 15 | var %tp.current $readini($char($1), battle, tp)
-    if (%tp.needed > %tp.current) { $display.message(4Error: %real.name does not have enough TP to use this skill!, private) | halt }
+    if (%tp.needed > %tp.current) { $display.message(04Error: %real.name does not have enough TP to use this skill!, private) | halt }
   }
 
   ; Check to see if enough time has elapsed
@@ -1447,7 +1447,7 @@ alias skill.drainsamba { $set_chr_name($1)
 
   writeini $char($1) skills drainsamba.turn 0 | writeini $char($1) skills drainsamba.on on
 
-  $display.message(3 $+ %real.name has gained the drain status for $readini($char($1), skills, drainsamba) melee attacks!, battle)
+  $display.message(03 $+ %real.name has gained the drain status for $readini($char($1), skills, drainsamba) melee attacks!, battle)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction drainsamba
 
@@ -1524,7 +1524,7 @@ alias skill.shieldfocus { $set_chr_name($1)
   var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
   if (%left.hand.weapon.type != shield) { var %shield.check false }
 
-  if (%shield.check = false) { $display.message(4 $+ $get_chr_name($1) is not using a shield and cannot use this skill at this moment., battle) | halt } 
+  if (%shield.check = false) { $display.message(04 $+ $get_chr_name($1) is not using a shield and cannot use this skill at this moment., battle) | halt } 
 
 
   ; Decrease the action points
@@ -1570,7 +1570,7 @@ alias skill.barrage { $set_chr_name($1)
   ; Is the player using a ranged weapon?
   var %equipped.weapon $readini($char($1), weapons, equipped)
   var %weapon.type $readini($dbfile(weapons.db), %equipped.weapon, type)
-  if (((%weapon.type != bow) && (%weapon.type != gun) && (%weapon.type != rifle))) { $display.message(4 $+ $get_chr_name($1) is not using a ranged weapon and cannot use this skill at this moment., battle) | halt } 
+  if (((%weapon.type != bow) && (%weapon.type != gun) && (%weapon.type != rifle))) { $display.message(04 $+ $get_chr_name($1) is not using a ranged weapon and cannot use this skill at this moment., battle) | halt } 
 
   ; Decrease the action points
   $action.points($1, remove, $skill.actionpointcheck(Barrage))
@@ -1708,7 +1708,7 @@ alias skill.invigorate { $set_chr_name($1)
   $restore_tp($1, 200)
 
   ; Display a message
-  $display.message(3 $+ $get_chr_name($1) restores2 200 3TP, battle)
+  $display.message(03 $+ $get_chr_name($1) restores02 200 03TP, battle)
 
   $skill.nextturn.check(Invigorate, $1)
 }
@@ -1760,8 +1760,8 @@ alias skill.thrillofbattle { $set_chr_name($1)
   writeini $char($1) battle HP %current.hp
 
   ; Display a message
-  if (%max.hp = true) { $display.message(3 $+ $get_chr_name($1) has restored2 5003 base HP and gained2 100 3temporary Max HP, battle) }
-  else { $display.message(3 $+ $get_chr_name($1) restores2 600 3HP, battle) }
+  if (%max.hp = true) { $display.message(03 $+ $get_chr_name($1) has restored02 50003 base HP and gained02 100 03temporary Max HP, battle) }
+  else { $display.message(03 $+ $get_chr_name($1) restores02 600 03HP, battle) }
 
   $skill.nextturn.check(ThrillOfBattle, $1)
 }
@@ -1789,7 +1789,7 @@ alias skill.formlessstrike { $set_chr_name($1)
 
   if ($readini($char($1), info, flag) = $null) { 
     set %tp.current $readini($char($1), battle, tp) | set %tp.needed $round($calc(%tp.current * .50),0)
-    if (%tp.needed > %tp.current) { unset %tp.current | unset %tp.needed | $display.message(4Error: %real.name does not have enough TP to use this skill!, private) | halt }
+    if (%tp.needed > %tp.current) { unset %tp.current | unset %tp.needed | $display.message(04Error: %real.name does not have enough TP to use this skill!, private) | halt }
   }
 
   ; Check to see if enough time has elapsed
@@ -1815,7 +1815,7 @@ alias skill.formlessstrike { $set_chr_name($1)
 
   writeini $char($1) skills formlessstrike.turn 1 | writeini $char($1) skills formlessstrike.on on
 
-  $display.message(3 $+ %real.name has gained the hurt ethereal status for $readini($char($1), skills, formlessstrike) melee attacks!, battle)
+  $display.message(03 $+ %real.name has gained the hurt ethereal status for $readini($char($1), skills, formlessstrike) melee attacks!, battle)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction formlessstrike
 
@@ -1846,7 +1846,7 @@ alias skill.regen { $set_chr_name($1)
 
   if ($readini($char($1), Status, PotionEffect) = Double Life) { set %max.hp $calc(%max.hp * 2) } 
 
-  if (%current.hp >= %max.hp) { $set_chr_name($1) | $display.message(3 $+ %real.name is already at full HP!, private) | unset %current.hp | unset %max.hp | halt }
+  if (%current.hp >= %max.hp) { $set_chr_name($1) | $display.message(03 $+ %real.name is already at full HP!, private) | unset %current.hp | unset %max.hp | halt }
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Regen, !regen, false)
@@ -1918,7 +1918,7 @@ alias skill.zombieregen.calculate {
 
 alias skill.tpregen {
   set %current.tp $readini($char($1), Battle, TP)  |  set %max.tp $readini($char($1), BaseStats, TP)
-  if (%current.tp >= %max.tp) { $set_chr_name($1) | $display.message(3 $+ %real.name is already at full TP!, private) | halt }
+  if (%current.tp >= %max.tp) { $set_chr_name($1) | $display.message(03 $+ %real.name is already at full TP!, private) | halt }
 
   if ($readini($char($1), descriptions, TPregen) = $null) { set %skill.description has gained the tp regeneration effect.  }
   else { set %skill.description $readini($char($1), descriptions, TPregen) }
@@ -1941,8 +1941,8 @@ alias skill.tpregen {
 
 alias skill.regen.stop {
   set %check $readini($char($1), Status, regenerating)
-  if (%check = yes) { writeini $char($1) Status Regenerating no | $set_chr_name($1) | $display.message(3 $+ %real.name stops regenerating, battle) | halt }
-  else { $set_chr_name($1) | $display.message(4Error: %real.name is not regenerating!, private) | halt }
+  if (%check = yes) { writeini $char($1) Status Regenerating no | $set_chr_name($1) | $display.message(03 $+ %real.name stops regenerating, battle) | halt }
+  else { $set_chr_name($1) | $display.message(04Error: %real.name is not regenerating!, private) | halt }
 }
 
 ;=================
@@ -1971,7 +1971,7 @@ alias skill.kikouheni { $set_chr_name($1)
       var %weather.list $replace(%weather.list, $chr(046), %replacechar)
     }
 
-    $display.private.message2($1, 4Error: Not a valid weather.  Valid weather types are: %weather.list ) | halt
+    $display.private.message2($1, 04Error: Not a valid weather.  Valid weather types are: %weather.list ) | halt
   }
 
   ; Check to see if enough time has elapsed
@@ -1989,7 +1989,7 @@ alias skill.kikouheni { $set_chr_name($1)
   writeini $char($1) skills kikouheni.time %true.turn
 
   writeini $dbfile(battlefields.db) weather current $2 
-  $display.message(3The weather has changed! It is currently $2, battle)
+  $display.message(03The weather has changed! It is currently $2, battle)
   %battleconditions = $addtok(%battleconditions, weather-lock, 46)
 
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction kikouheni
@@ -2025,7 +2025,7 @@ alias skill.clone { $set_chr_name($1)
   $check_for_battle($1)
 
   if (($readini($char($1), info, flag) = $null) && ($readini($char($1 $+ _summon), battle, hp) != $null)) { $display.message($readini(translation.dat, errors, CanOnlyUseSummonOrDoppel), private) | halt }
-  if (($isfile($char($1 $+ _clone)) = $true) && ($readini($char($1), info, ClonesCanClone) != true)) { $set_chr_name($1) | $display.message(4Error: %real.name has already used this skill for this battle and cannot use it again!, private) | halt }
+  if (($isfile($char($1 $+ _clone)) = $true) && ($readini($char($1), info, ClonesCanClone) != true)) { $set_chr_name($1) | $display.message(04Error: %real.name has already used this skill for this battle and cannot use it again!, private) | halt }
 
   ; Decrease the action points
   $action.points($1, remove, $skill.actionpointcheck(shadowcopy))
@@ -2174,10 +2174,10 @@ alias skill.steal { $set_chr_name($1)
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
   var %target.flag $readini($char($2), info, flag)
-  if (%target.flag != monster) { $set_chr_name($1) | $display.message(4 $+ %real.name can only steal from monsters!, private) | halt }
-  if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
-  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal from someone who is dead!, private) | unset %real.name | halt }
-  if ($readini($char($2), Battle, Status) = RunAway) { $display.message(4 $+ %real.name cannot steal from $set_chr_name($2) %real.name $+ , because %real.name has run away from the fight!, private) | unset %real.name | halt } 
+  if (%target.flag != monster) { $set_chr_name($1) | $display.message(04 $+ %real.name can only steal from monsters!, private) | halt }
+  if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot steal from someone who is dead!, private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = RunAway) { $display.message(04 $+ %real.name cannot steal from $set_chr_name($2) %real.name $+ , because %real.name has run away from the fight!, private) | unset %real.name | halt } 
 
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Steal, !steal, false)
@@ -2232,7 +2232,7 @@ alias skill.steal { $set_chr_name($1)
 
   if (%steal.chance >= 85) {
     var %stolen.from.counter $readini($char($2), status, stolencounter)
-    if (%stolen.from.counter >= 3) { $set_chr_name($2) | $display.message(4 $+ %real.name  has nothing left to steal!, battle) | halt }
+    if (%stolen.from.counter >= 3) { $set_chr_name($2) | $display.message(04 $+ %real.name  has nothing left to steal!, battle) | halt }
 
     inc %stolen.from.counter 1 | writeini $char($2) status stolencounter %stolen.from.counter 
 
@@ -2254,7 +2254,7 @@ alias skill.steal { $set_chr_name($1)
     if (%steal.item = orbs) { 
       if (%steal.orb.amount = $null) { var %steal.orb.amount $rand(100,300)  }
       var %current.orb.amount $readini($char($1), stuff, redorbs) | inc %current.orb.amount %steal.orb.amount | writeini $char($1) stuff redorbs %current.orb.amount 
-      $set_chr_name($1) | $display.message(2 $+ %real.name has stolen %steal.orb.amount $readini(system.dat, system, currency) from $set_chr_name($2) %real.name $+ ! , battle)
+      $set_chr_name($1) | $display.message(02 $+ %real.name has stolen %steal.orb.amount $readini(system.dat, system, currency) from $set_chr_name($2) %real.name $+ ! , battle)
     }
     else {
       set %current.item.total $readini($char($1), Item_Amount, %steal.item) 
@@ -2284,12 +2284,12 @@ alias skill.analysis.color {
   ; $3 resistant, weak, normal
 
   if ($1 < $2) { return 1,1 }
-  if (($3 = resistant) || ($3 = resist)) { return 6 }
-  if ($3 = weak) { return 7 }
-  if ($3 = normal) { return 3 }
-  if ($3 = stat) { return 3 }
-  if ($3 = immune) { return 4 }
-  if ($3 = heal) { return 4 }
+  if (($3 = resistant) || ($3 = resist)) { return 06 }
+  if ($3 = weak) { return 07 }
+  if ($3 = normal) { return 03 }
+  if ($3 = stat) { return 03 }
+  if ($3 = immune) { return 04 }
+  if ($3 = heal) { return 04 }
 }
 
 alias skill.analysis { $set_chr_name($1)
@@ -2326,127 +2326,127 @@ alias skill.analysis { $set_chr_name($1)
   unset %analysis.element.heal
 
   ; Get the target info
-  var %analysis.hp $skill.analysis.color(%analysis.level, 1, stat) $+ $readini($char($2), battle, hp) $+ 3 
+  var %analysis.hp $skill.analysis.color(%analysis.level, 1, stat) $+ $readini($char($2), battle, hp) $+ 03 
 
-  if (%analysis.level >= 2) { var %analysis.tp $skill.analysis.color(%analysis.level, 2, stat) $+ $readini($char($2), battle, tp) $+ 3 }
+  if (%analysis.level >= 2) { var %analysis.tp $skill.analysis.color(%analysis.level, 2, stat) $+ $readini($char($2), battle, tp) $+ 03 }
   if (%analysis.level >= 3) { 
-    var %analysis.str $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, str) $+ 3  | var %analysis.def $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, def) $+ 3
-    var %analysis.int $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, int) $+ 3 | var %analysis.spd $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, spd) $+ 3
+    var %analysis.str $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, str) $+ 03  | var %analysis.def $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, def) $+ 03
+    var %analysis.int $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, int) $+ 03 | var %analysis.spd $skill.analysis.color(%analysis.level, 3, stat) $+ $readini($char($2), battle, spd) $+ 03
   }
 
   if (%analysis.level >= 4) { 
     ; Check for elemental weaknesses
-    if (($readini($char($2), modifiers, earth) > 100) && ($istok($readini($char($2), modifiers, heal), earth, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ earth3, 46) }
-    if (($readini($char($2), modifiers, fire) > 100) && ($istok($readini($char($2), modifiers, heal), fire, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ fire3, 46) }
-    if (($readini($char($2), modifiers, wind) > 100) && ($istok($readini($char($2), modifiers, heal), wind, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ wind3, 46) }
-    if (($readini($char($2), modifiers, ice) > 100) && ($istok($readini($char($2), modifiers, heal), ice, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ ice3, 46) }
-    if (($readini($char($2), modifiers, water) > 100) && ($istok($readini($char($2), modifiers, heal), water, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ water3, 46) }
-    if (($readini($char($2), modifiers, lightning) > 100) && ($istok($readini($char($2), modifiers, heal), lightning, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ lightning3, 46) }
-    if (($readini($char($2), modifiers, light) > 100) && ($istok($readini($char($2), modifiers, heal), light, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ light3, 46) }
-    if (($readini($char($2), modifiers, dark) > 100) && ($istok($readini($char($2), modifiers, heal), dark, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ dark3, 46) }
+    if (($readini($char($2), modifiers, earth) > 100) && ($istok($readini($char($2), modifiers, heal), earth, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ earth03, 46) }
+    if (($readini($char($2), modifiers, fire) > 100) && ($istok($readini($char($2), modifiers, heal), fire, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ fire03, 46) }
+    if (($readini($char($2), modifiers, wind) > 100) && ($istok($readini($char($2), modifiers, heal), wind, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ wind03, 46) }
+    if (($readini($char($2), modifiers, ice) > 100) && ($istok($readini($char($2), modifiers, heal), ice, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ ice03, 46) }
+    if (($readini($char($2), modifiers, water) > 100) && ($istok($readini($char($2), modifiers, heal), water, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ water03, 46) }
+    if (($readini($char($2), modifiers, lightning) > 100) && ($istok($readini($char($2), modifiers, heal), lightning, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ lightning03, 46) }
+    if (($readini($char($2), modifiers, light) > 100) && ($istok($readini($char($2), modifiers, heal), light, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ light03, 46) }
+    if (($readini($char($2), modifiers, dark) > 100) && ($istok($readini($char($2), modifiers, heal), dark, 46) = $false)) { %analysis.element.weak = $addtok(%analysis.element.weak, $skill.analysis.color(%analysis.level, 4, weak) $+ dark03, 46) }
 
-    if (%analysis.element.weak = $null) { %analysis.element.weak = 3none }
+    if (%analysis.element.weak = $null) { %analysis.element.weak = 03none }
   }
 
   if (%analysis.level >= 5) { 
     ; Check for elemental healing
-    if ($istok($readini($char($2), modifiers, heal), earth, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ earth3, 46) }
-    if ($istok($readini($char($2), modifiers, heal), fire, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ fire3, 46) }
-    if ($istok($readini($char($2), modifiers, heal), wind, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ wind3, 46) }
-    if ($istok($readini($char($2), modifiers, heal), ice, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ ice3, 46) }
-    if ($istok($readini($char($2), modifiers, heal), water, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ water3, 46) }
-    if ($istok($readini($char($2), modifiers, heal), lightning, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ lightning3, 46) }
-    if ($istok($readini($char($2), modifiers, heal), light, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ light3, 46) }
-    if ($istok($readini($char($2), modifiers, heal), dark, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ dark3, 46) }
+    if ($istok($readini($char($2), modifiers, heal), earth, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ earth03, 46) }
+    if ($istok($readini($char($2), modifiers, heal), fire, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ fire03, 46) }
+    if ($istok($readini($char($2), modifiers, heal), wind, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ wind03, 46) }
+    if ($istok($readini($char($2), modifiers, heal), ice, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ ice03, 46) }
+    if ($istok($readini($char($2), modifiers, heal), water, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ water03, 46) }
+    if ($istok($readini($char($2), modifiers, heal), lightning, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ lightning03, 46) }
+    if ($istok($readini($char($2), modifiers, heal), light, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ light03, 46) }
+    if ($istok($readini($char($2), modifiers, heal), dark, 46) = $true) { %analysis.element.heal = $addtok(%analysis.element.heal, $skill.analysis.color(%analysis.level, 5, heal) $+ dark03, 46) }
 
-    if (%analysis.element.heal = $null) { %analysis.element.heal = 3none }
+    if (%analysis.element.heal = $null) { %analysis.element.heal = 03none }
 
     ;  Check for elemental resistances
-    if ($readini($char($2), modifiers, earth) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ earth3, 46) }
-    if ($readini($char($2), modifiers, fire) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ fire3, 46) }
-    if ($readini($char($2), modifiers, wind) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ wind3, 46) }
-    if ($readini($char($2), modifiers, ice) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ ice3, 46) }
-    if ($readini($char($2), modifiers, water) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ water3, 46) }
-    if ($readini($char($2), modifiers, lightning) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ lightning3, 46) }
-    if ($readini($char($2), modifiers, light) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ light3, 46) }
-    if ($readini($char($2), modifiers, dark) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ dark3, 46) }
+    if ($readini($char($2), modifiers, earth) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ earth03, 46) }
+    if ($readini($char($2), modifiers, fire) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ fire03, 46) }
+    if ($readini($char($2), modifiers, wind) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ wind03, 46) }
+    if ($readini($char($2), modifiers, ice) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ ice03, 46) }
+    if ($readini($char($2), modifiers, water) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ water03, 46) }
+    if ($readini($char($2), modifiers, lightning) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ lightning03, 46) }
+    if ($readini($char($2), modifiers, light) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ light03, 46) }
+    if ($readini($char($2), modifiers, dark) < 100) { %analysis.element.strength = $addtok(%analysis.element.strength, $skill.analysis.color(%analysis.level, 5, resistant) $+ dark03, 46) }
 
-    if (%analysis.element.strength = $null) { %analysis.element.strength = 3none }
+    if (%analysis.element.strength = $null) { %analysis.element.strength = 03none }
 
     ;  Check for elemental absorb
-    if ($readini($char($2), modifiers, earth) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ earth3, 46) }
-    if ($readini($char($2), modifiers, fire) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ fire3, 46) }
-    if ($readini($char($2), modifiers, wind) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ wind3, 46) }
-    if ($readini($char($2), modifiers, ice) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ ice3, 46) }
-    if ($readini($char($2), modifiers, water) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ water3, 46) }
-    if ($readini($char($2), modifiers, lightning) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ lightning3, 46) }
-    if ($readini($char($2), modifiers, light) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ light3, 46) }
-    if ($readini($char($2), modifiers, dark) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ dark3, 46) }
+    if ($readini($char($2), modifiers, earth) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ earth03, 46) }
+    if ($readini($char($2), modifiers, fire) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ fire03, 46) }
+    if ($readini($char($2), modifiers, wind) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ wind03, 46) }
+    if ($readini($char($2), modifiers, ice) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ ice03, 46) }
+    if ($readini($char($2), modifiers, water) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ water03, 46) }
+    if ($readini($char($2), modifiers, lightning) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ lightning03, 46) }
+    if ($readini($char($2), modifiers, light) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ light03, 46) }
+    if ($readini($char($2), modifiers, dark) = 0) { %analysis.element.absorb = $addtok(%analysis.element.absorb, $skill.analysis.color(%analysis.level, 5, immune) $+ dark03, 46) }
 
-    if (%analysis.element.absorb = $null) { %analysis.element.absorb = 3none }
+    if (%analysis.element.absorb = $null) { %analysis.element.absorb = 03none }
 
   }
 
   if (%analysis.level >= 6) { 
     ; Check for weapon weaknesses
-    if ($readini($char($2), modifiers, HandToHand) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ handtohand3, 46) }
-    if ($readini($char($2), modifiers, Whip) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ whip3, 46) }
-    if ($readini($char($2), modifiers, Sword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ sword3, 46) }
-    if ($readini($char($2), modifiers, gun) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ gun3, 46) }
-    if ($readini($char($2), modifiers, rifle) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ rifle3, 46) }
-    if ($readini($char($2), modifiers, katana) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ katana3, 46) }
-    if ($readini($char($2), modifiers, wand) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ wand3, 46) }
-    if ($readini($char($2), modifiers, spear) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ spear3, 46) }
-    if ($readini($char($2), modifiers, scythe) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ scythe3, 46) }
-    if ($readini($char($2), modifiers, glyph) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ glyph3, 46) }
-    if ($readini($char($2), modifiers, greatsword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ greatsword3, 46) }
-    if ($readini($char($2), modifiers, bow) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ bow3, 46) }
-    if ($readini($char($2), modifiers, dagger) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ dagger3, 46) }
-    if ($readini($char($2), modifiers, hammer) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ hammer3, 46) }
-    if ($readini($char($2), modifiers, ParticleAccelerator) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ ParticleAccelerator3, 46) }
-    if ($readini($char($2), modifiers, lightsaber) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ lightsaber3, 46) }
+    if ($readini($char($2), modifiers, HandToHand) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ handtohand03, 46) }
+    if ($readini($char($2), modifiers, Whip) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ whip03, 46) }
+    if ($readini($char($2), modifiers, Sword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ sword03, 46) }
+    if ($readini($char($2), modifiers, gun) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ gun03, 46) }
+    if ($readini($char($2), modifiers, rifle) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ rifle03, 46) }
+    if ($readini($char($2), modifiers, katana) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ katana03, 46) }
+    if ($readini($char($2), modifiers, wand) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ wand03, 46) }
+    if ($readini($char($2), modifiers, spear) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ spear03, 46) }
+    if ($readini($char($2), modifiers, scythe) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ scythe03, 46) }
+    if ($readini($char($2), modifiers, glyph) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ glyph03, 46) }
+    if ($readini($char($2), modifiers, greatsword) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ greatsword03, 46) }
+    if ($readini($char($2), modifiers, bow) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ bow03, 46) }
+    if ($readini($char($2), modifiers, dagger) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ dagger03, 46) }
+    if ($readini($char($2), modifiers, hammer) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ hammer03, 46) }
+    if ($readini($char($2), modifiers, ParticleAccelerator) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ ParticleAccelerator03, 46) }
+    if ($readini($char($2), modifiers, lightsaber) > 100) { %analysis.weapon.weak = $addtok(%analysis.weapon.weak, $skill.analysis.color(%analysis.level, 6, weak) $+ lightsaber03, 46) }
 
-    if (%analysis.weapon.weak = $null) { %analysis.weapon.weak = 3none }
+    if (%analysis.weapon.weak = $null) { %analysis.weapon.weak = 03none }
 
     ; Check for weapon normal
-    if ($readini($char($2), modifiers, HandToHand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ handtohand3, 46) }
-    if ($readini($char($2), modifiers, Whip) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ whip3, 46) }
-    if ($readini($char($2), modifiers, Sword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ sword3, 46) }
-    if ($readini($char($2), modifiers, gun) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ gun3, 46) }
-    if ($readini($char($2), modifiers, rifle) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ rifle3, 46) }
-    if ($readini($char($2), modifiers, katana) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ katana3, 46) }
-    if ($readini($char($2), modifiers, wand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ wand3, 46) }
-    if ($readini($char($2), modifiers, spear) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ spear3, 46) }
-    if ($readini($char($2), modifiers, scythe) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ scythe3, 46) }
-    if ($readini($char($2), modifiers, glyph) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ glyph3, 46) }
-    if ($readini($char($2), modifiers, greatsword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ greatsword3, 46) }
-    if ($readini($char($2), modifiers, bow) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ bow3, 46) }
-    if ($readini($char($2), modifiers, dagger) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ dagger3, 46) }
-    if ($readini($char($2), modifiers, hammer) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ hammer3, 46) }
-    if ($readini($char($2), modifiers, ParticleAccelerator) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ ParticleAccelerator3, 46) }
-    if ($readini($char($2), modifiers, lightsaber) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ lightsaber3, 46) }
+    if ($readini($char($2), modifiers, HandToHand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ handtohand03, 46) }
+    if ($readini($char($2), modifiers, Whip) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ whip03, 46) }
+    if ($readini($char($2), modifiers, Sword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ sword03, 46) }
+    if ($readini($char($2), modifiers, gun) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ gun03, 46) }
+    if ($readini($char($2), modifiers, rifle) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ rifle03, 46) }
+    if ($readini($char($2), modifiers, katana) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ katana03, 46) }
+    if ($readini($char($2), modifiers, wand) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ wand03, 46) }
+    if ($readini($char($2), modifiers, spear) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ spear03, 46) }
+    if ($readini($char($2), modifiers, scythe) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ scythe03, 46) }
+    if ($readini($char($2), modifiers, glyph) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ glyph03, 46) }
+    if ($readini($char($2), modifiers, greatsword) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ greatsword03, 46) }
+    if ($readini($char($2), modifiers, bow) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ bow03, 46) }
+    if ($readini($char($2), modifiers, dagger) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ dagger03, 46) }
+    if ($readini($char($2), modifiers, hammer) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ hammer03, 46) }
+    if ($readini($char($2), modifiers, ParticleAccelerator) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ ParticleAccelerator03, 46) }
+    if ($readini($char($2), modifiers, lightsaber) = 100) { %analysis.weapon.normal = $addtok(%analysis.weapon.normal, $skill.analysis.color(%analysis.level, 6, normal) $+ lightsaber03, 46) }
 
-    if (%analysis.weapon.normal = $null) { %analysis.weapon.normal = 3none }
+    if (%analysis.weapon.normal = $null) { %analysis.weapon.normal = 03none }
 
     ; Check for weapon resistances
-    if ($readini($char($2), modifiers, HandToHand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ handtohand3, 46) }
-    if ($readini($char($2), modifiers, Whip) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ whip3, 46) }
-    if ($readini($char($2), modifiers, Sword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ sword3, 46) }
-    if ($readini($char($2), modifiers, gun) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ gun3, 46) }
-    if ($readini($char($2), modifiers, rifle) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ rifle3, 46) }
-    if ($readini($char($2), modifiers, katana) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ katana3, 46) }
-    if ($readini($char($2), modifiers, wand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ wand3, 46) }
-    if ($readini($char($2), modifiers, spear) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ spear3, 46) }
-    if ($readini($char($2), modifiers, scythe) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ scythe3, 46) }
-    if ($readini($char($2), modifiers, glyph) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ glyph3, 46) }
-    if ($readini($char($2), modifiers, greatsword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ greatsword3, 46) }
-    if ($readini($char($2), modifiers, bow) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ bow3, 46) }
-    if ($readini($char($2), modifiers, dagger) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ dagger3, 46) }
-    if ($readini($char($2), modifiers, hammer) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ hammer3, 46) }
-    if ($readini($char($2), modifiers, ParticleAccelerator) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ ParticleAccelerato3r, 46) }
-    if ($readini($char($2), modifiers, lightsaber) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ lightsaber3, 46) }
+    if ($readini($char($2), modifiers, HandToHand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ handtohand03, 46) }
+    if ($readini($char($2), modifiers, Whip) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ whip03, 46) }
+    if ($readini($char($2), modifiers, Sword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ sword03, 46) }
+    if ($readini($char($2), modifiers, gun) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ gun03, 46) }
+    if ($readini($char($2), modifiers, rifle) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ rifle03, 46) }
+    if ($readini($char($2), modifiers, katana) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ katana03, 46) }
+    if ($readini($char($2), modifiers, wand) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ wand03, 46) }
+    if ($readini($char($2), modifiers, spear) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ spear03, 46) }
+    if ($readini($char($2), modifiers, scythe) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ scythe03, 46) }
+    if ($readini($char($2), modifiers, glyph) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ glyph03, 46) }
+    if ($readini($char($2), modifiers, greatsword) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ greatsword03, 46) }
+    if ($readini($char($2), modifiers, bow) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ bow03, 46) }
+    if ($readini($char($2), modifiers, dagger) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ dagger03, 46) }
+    if ($readini($char($2), modifiers, hammer) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ hammer03, 46) }
+    if ($readini($char($2), modifiers, ParticleAccelerator) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ ParticleAccelerato03r, 46) }
+    if ($readini($char($2), modifiers, lightsaber) < 100) { %analysis.weapon.strength = $addtok(%analysis.weapon.strength, $skill.analysis.color(%analysis.level, 6, resist) $+ lightsaber03, 46) }
 
-    if (%analysis.weapon.strength = $null) { %analysis.weapon.strength = 3none }
+    if (%analysis.weapon.strength = $null) { %analysis.weapon.strength = 03none }
 
   }
 
@@ -2464,13 +2464,13 @@ alias skill.analysis { $set_chr_name($1)
   %analysis.defeat.conditions = $replace(%analysis.defeat.conditions, $chr(046), %replacechar)
 
   ; Display the analysis..
-  $set_chr_name($2) | $display.private.message(3You analyze %real.name and determine $gender3($2) has %analysis.hp HP and $iif(%analysis.tp = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.tp) TP left.)
-  $display.private.message(3 $+ %real.name has the following stats: [str: $iif(%analysis.str = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.str) $+ ] [def: $iif(%analysis.def = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.def) $+ ] [int: $iif(%analysis.int = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.int) $+ ] [spd: $iif(%analysis.spd = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 3, %analysis.spd) $+ ])
-  $display.private.message(3 $+ %real.name can be hurt normally with the following weapon types: $iif(%analysis.weapon.normal = $null, $skill.analysis.color(%analysis.level, 1000000, normal) $+ [][][][][] $+ 3, %analysis.weapon.normal) and is resistant against the following weapon types: $iif(%analysis.weapon.strength = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 3, %analysis.weapon.strength) and weak against the following weapon types: $iif(%analysis.weapon.weak = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 3, %analysis.weapon.weak))
-  $display.private.message(3 $+ %real.name is resistant against the following elements: $iif(%analysis.element.strength = $null, $skill.analysis.color(%analysis.level, 1000000, resistant) $+ [][][][][] $+ 3, %analysis.element.strength) and weak against the following elements: $iif(%analysis.element.weak = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 3, %analysis.element.weak) ) 
-  $display.private.message(3 $+ %real.name is completely immune to the following elements: $iif(%analysis.element.absorb = $null, $skill.analysis.color(%analysis.level, 1000000, immune) $+ [][][][][] $+ 3, %analysis.element.absorb)  )
-  $display.private.message(3 $+ %real.name will be healed by the following elements: $iif(%analysis.element.heal = $null, $skill.analysis.color(%analysis.level, 1000000, immune) $+ [][][][][] $+ 3, %analysis.element.heal) )
-  if ((%analysis.defeat.conditions != none) && (%analysis.level >= 7)) {  $display.private.message(3 $+ %real.name has special death conditions and will continue to revive if not killed with these conditions) }
+  $set_chr_name($2) | $display.private.message(03You analyze %real.name and determine $gender3($2) has %analysis.hp HP and $iif(%analysis.tp = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 03, %analysis.tp) TP left.)
+  $display.private.message(03 $+ %real.name has the following stats: [str: $iif(%analysis.str = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 03, %analysis.str) $+ ] [def: $iif(%analysis.def = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 03, %analysis.def) $+ ] [int: $iif(%analysis.int = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 03, %analysis.int) $+ ] [spd: $iif(%analysis.spd = $null, $skill.analysis.color(%analysis.level, 1000000, stat) $+ [][][][][] $+ 03, %analysis.spd) $+ ])
+  $display.private.message(03 $+ %real.name can be hurt normally with the following weapon types: $iif(%analysis.weapon.normal = $null, $skill.analysis.color(%analysis.level, 1000000, normal) $+ [][][][][] $+ 03, %analysis.weapon.normal) and is resistant against the following weapon types: $iif(%analysis.weapon.strength = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 03, %analysis.weapon.strength) and weak against the following weapon types: $iif(%analysis.weapon.weak = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 03, %analysis.weapon.weak))
+  $display.private.message(03 $+ %real.name is resistant against the following elements: $iif(%analysis.element.strength = $null, $skill.analysis.color(%analysis.level, 1000000, resistant) $+ [][][][][] $+ 03, %analysis.element.strength) and weak against the following elements: $iif(%analysis.element.weak = $null, $skill.analysis.color(%analysis.level, 1000000, weak) $+ [][][][][] $+ 03, %analysis.element.weak) ) 
+  $display.private.message(03 $+ %real.name is completely immune to the following elements: $iif(%analysis.element.absorb = $null, $skill.analysis.color(%analysis.level, 1000000, immune) $+ [][][][][] $+ 03, %analysis.element.absorb)  )
+  $display.private.message(03 $+ %real.name will be healed by the following elements: $iif(%analysis.element.heal = $null, $skill.analysis.color(%analysis.level, 1000000, immune) $+ [][][][][] $+ 03, %analysis.element.heal) )
+  if ((%analysis.defeat.conditions != none) && (%analysis.level >= 7)) {  $display.private.message(03 $+ %real.name has special death conditions and will continue to revive if not killed with these conditions) }
 
   unset %enemy
   unset %analysis.* 
@@ -2495,7 +2495,7 @@ alias skill.quicksilver { $set_chr_name($1)
   if ((no-skill isin %battleconditions) || (no-quicksilver isin %battleconditions)) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
 
   set %current.playerstyle $readini($char($1), styles, equipped)
-  if (($return.playerstyle($1) != Quicksilver) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the Quicksilver style is equipped!, private) | unset %current.playerstyle | halt }
+  if (($return.playerstyle($1) != Quicksilver) && ($readini($char($1), info, flag) = $null)) { $display.message(04Error: This command can only be used while the Quicksilver style is equipped!, private) | unset %current.playerstyle | halt }
 
   if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
 
@@ -2508,8 +2508,8 @@ alias skill.quicksilver { $set_chr_name($1)
     if (%quicksilver.used = $null) { set %quicksilver.used 0 }
     if (%quicksilver.turn = $null) { set %quicksilver.turn -1 }
 
-    if (%quicksilver.used >= %current.playerstyle.level) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) Quicksilver power again this battle!,private) | unset %current.playerstyle | halt }
-    if (($calc(%quicksilver.turn + 1) = %true.turn) || (%quicksilver.turn = %true.turn)) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) Quicksilver power again so quickly!, private) | unset %current.playerstyle | halt }
+    if (%quicksilver.used >= %current.playerstyle.level) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot use $gender($1) Quicksilver power again this battle!,private) | unset %current.playerstyle | halt }
+    if (($calc(%quicksilver.turn + 1) = %true.turn) || (%quicksilver.turn = %true.turn)) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot use $gender($1) Quicksilver power again so quickly!, private) | unset %current.playerstyle | halt }
   }
 
   inc %quicksilver.used 1 | writeini $char($1) skills quicksilver.used %quicksilver.used
@@ -2703,7 +2703,7 @@ alias skill.aggressor { $set_chr_name($1)
   var %skill.name Aggressor
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
-  if ($readini($char($1), skills, aggressor.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle., private) | halt }
+  if ($readini($char($1), skills, aggressor.on) = on) { $set_chr_name($1) | $display.message(04 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle., private) | halt }
 
   ; Decrease the action points
   $action.points($1, remove, $skill.actionpointcheck(aggressor))
@@ -2752,7 +2752,7 @@ alias skill.defender { $set_chr_name($1)
   var %skill.name Defender
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
-  if ($readini($char($1), skills, defender.on) = on) { $set_chr_name($1) | $display.message(4 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle.,private) | halt }
+  if ($readini($char($1), skills, defender.on) = on) { $set_chr_name($1) | $display.message(04 $+ %real.name has already used this skill once this battle and cannot use it again until the next battle.,private) | halt }
 
   ; Decrease the action points
   $action.points($1, remove, $skill.actionpointcheck(defender))
@@ -2804,7 +2804,7 @@ alias skill.alchemy {
 
   if ($readini($dbfile(weapons.db), $2, basepower) != $null) {  
     var %player.amount.weapon $readini($char($1), weapons, $2)
-    if ((%player.amount.weapon != $null) || (%player.amount > 0)) { $display.message(4 $+ $get_chr_name($1) already owns this weapon and cannot craft another!, private) | halt }
+    if ((%player.amount.weapon != $null) || (%player.amount > 0)) { $display.message(04 $+ $get_chr_name($1) already owns this weapon and cannot craft another!, private) | halt }
   }
 
   var %gem.required $readini($dbfile(crafting.db), $2, gem)
@@ -2999,10 +2999,10 @@ alias skill.desynth {
   if ($skillhave.check($1, desynth) = false) { $set_chr_name($nick) | $display.message($readini(translation.dat, errors, DoNotHaveSkill),private) | halt }
 
 
-  if ($readini($dbfile(crafting.db), $2, Ingredients) = $null) { $display.message(4 $+ $get_chr_name($1) cannot desynth this item!, private) | halt }
+  if ($readini($dbfile(crafting.db), $2, Ingredients) = $null) { $display.message(04 $+ $get_chr_name($1) cannot desynth this item!, private) | halt }
 
   var %gem.required $readini($dbfile(crafting.db), $2, gem)
-  if (%gem.required = $null) { unset %gem.required | $display.message(4 $+ $get_chr_name($1) cannot desynth this item!, private) | halt }
+  if (%gem.required = $null) { unset %gem.required | $display.message(04 $+ $get_chr_name($1) cannot desynth this item!, private) | halt }
 
   var %amount.to.desynth $abs($3)
   if ($3 !isnum) {
@@ -3336,7 +3336,7 @@ alias skill.monster.repairnaturalarmor {
   ; Display the desc. 
   if ($readini($char($1), descriptions, repairnaturalarmor) = $null) { $set_chr_name($1) | set %skill.description %real.name repairs $gender($1) armor! }
   else { set %skill.description %real.name  $+ $readini($char($1), descriptions, repairnaturalarmor) }
-  $display.message(4 $+ %skill.description, battle)
+  $display.message(04 $+ %skill.description, battle)
 
   var %max.armor $readini($char($1), NaturalArmor, Max)
   writeini $char($1) NaturalArmor Current %max.armor
@@ -3371,7 +3371,7 @@ alias skill.monstersummon {
   ; Display the desc. 
   if ($readini($char($1), descriptions, monstersummon) = $null) { $set_chr_name($1) | set %skill.description %real.name opens a vortex and summons %number.of.spawns.needed $2 $+ $iif(%number.of.spawns.needed < 2, , s) into the battle. }
   else { set %skill.description $readini($char($1), descriptions, monstersummon) }
-  $display.message(4 $+ %skill.description, battle)
+  $display.message(04 $+ %skill.description, battle)
 
   var %spawn.current 1
   while (%spawn.current <= %number.of.spawns.needed) {
@@ -3677,7 +3677,7 @@ alias skill.weaponlock { $set_chr_name($1)
 
   ; Check for the item "Sokubaku" and consume it, or display an error if they don't have any.
   set %check.item $readini($char($1), item_amount, Sokubaku)
-  if ((%check.item = $null) || (%check.item <= 0)) { $display.message(4Error: %real.name does not have enough Sokubaku to perform this skill,private) | halt }
+  if ((%check.item = $null) || (%check.item <= 0)) { $display.message(04Error: %real.name does not have enough Sokubaku to perform this skill,private) | halt }
   $decrease_item($1, Sokubaku) 
 
   ; Decrease the action points
@@ -3850,7 +3850,7 @@ alias skill.sealbreak { $set_chr_name($1)
 
   ; Check for the item "Hankai" and consume it, or display an error if they don't have any.
   set %check.item $readini($char($1), item_amount, Hankai)
-  if ((%check.item = $null) || (%check.item <= 0)) { $set_chr_name($1) | $display.message(4Error: %real.name does not have enough Hankai to perform this skill, private) | halt }
+  if ((%check.item = $null) || (%check.item <= 0)) { $set_chr_name($1) | $display.message(04Error: %real.name does not have enough Hankai to perform this skill, private) | halt }
   $decrease_item($1, Hankai) 
 
   ; Decrease the action points
@@ -3898,7 +3898,7 @@ alias skill.magicmirror { $set_chr_name($1)
 
   ; Check for the item "MirrorShard" and consume it, or display an error if they don't have any.
   set %check.item $readini($char($1), item_amount, MirrorShard)
-  if ((%check.item = $null) || (%check.item <= 0)) { $display.message(4Error: %real.name does not have enough MirrorShards to perform this skill, private) | halt }
+  if ((%check.item = $null) || (%check.item <= 0)) { $display.message(04Error: %real.name does not have enough MirrorShards to perform this skill, private) | halt }
   $decrease_item($1, MirrorShard) 
 
   ; Decrease the action points
@@ -3948,7 +3948,7 @@ alias skill.gamble { $set_chr_name($1)
 
   if ($return.playerstyle($1) = HighRoller) { var %gamble.cost 200 }
 
-  if ((%check.item = $null) || (%check.item <= %gamble.cost)) { $display.message(4Error: %real.name does not have enough $readini(system.dat, system, currency) to perform this skill [need $calc(%gamble.cost - %check.item) more!], private) | halt }
+  if ((%check.item = $null) || (%check.item <= %gamble.cost)) { $display.message(04Error: %real.name does not have enough $readini(system.dat, system, currency) to perform this skill [need $calc(%gamble.cost - %check.item) more!], private) | halt }
   dec %check.item %gamble.cost
   writeini $char($1) stuff RedOrbs %check.item
 
@@ -3978,11 +3978,11 @@ alias skill.gamble { $set_chr_name($1)
   if ((%gamble.chance > 10) && (%gamble.chance <= 15)) { $display.message(12The slot machine spins and %real.name wins! %real.name $+ 's TP has been restored!, battle)
     writeini $char($1) battle tp $readini($char($1), basestats, tp)
   }
-  if ((%gamble.chance > 15) && (%gamble.chance <= 45)) { $inflict_status(Slot Machine, $1, random, IgnoreResistance) | $set_chr_name($1) | $display.message(12The slot machine spins and %real.name loses!4  %statusmessage.display, battle)  | unset %statusmessage.display  }
+  if ((%gamble.chance > 15) && (%gamble.chance <= 45)) { $inflict_status(Slot Machine, $1, random, IgnoreResistance) | $set_chr_name($1) | $display.message(12The slot machine spins and %real.name loses!04  %statusmessage.display, battle)  | unset %statusmessage.display  }
   if ((%gamble.chance > 45) && (%gamble.chance <= 55)) { $clear_most_status($1) | $display.message(12The slot machine spins and %real.name wins! Most of %real.name $+ 's statuses have been removed!, battle) }
   if ((%gamble.chance > 55) && (%gamble.chance <= 65)) { 
     writeini $char($1) battle hp $round($calc($readini($char($1), battle, hp) /2),0)
-    $display.message(12The slot machine spins and %real.name loses!4 %real.name loses half of $gender($1) current HP! , battle)
+    $display.message(12The slot machine spins and %real.name loses!04 %real.name loses half of $gender($1) current HP! , battle)
   }
 
   if ((%gamble.chance > 65) && (%gamble.chance <= 75)) {
@@ -4018,7 +4018,7 @@ alias skill.gamble { $set_chr_name($1)
   }
   if ((%gamble.chance > 85) && (%gamble.chance <= 95)) { $set_chr_name($1) | $display.message(12The slot machine spins and %real.name loses!  But nothing seems to happen!, battle) }
   if ((%gamble.chance > 95) && (%gamble.chance < 100)) {
-    $inflict_status(Slot Machine, $1, random, IgnoreResistance) | $display.message(12BUST! %real.name $+ 's health and tp are cut in half! 4  %statusmessage.display, battle) | unset %statusmessage.display 
+    $inflict_status(Slot Machine, $1, random, IgnoreResistance) | $display.message(12BUST! %real.name $+ 's health and tp are cut in half! 04  %statusmessage.display, battle) | unset %statusmessage.display 
     writeini $char($1) battle hp $round($calc($readini($char($1), battle, hp) /2),0)
     writeini $char($1) battle tp $round($calc($readini($char($1), battle, tp) /2),0)
   }
@@ -4052,7 +4052,7 @@ alias skill.bloodpact {
   $set_chr_name($1) 
   if ($readini($char($1), descriptions, bloodpact) = $null) { $set_chr_name($1  $+ _summon) | set %skill.description The $3 explodes and summons %real.name $+ !   }
   else { set %skill.description  $+ %real.name  $+ $readini($char($1), descriptions, bloodpact) }
-  $display.message(4 $+ %skill.description, battle)
+  $display.message(04 $+ %skill.description, battle)
 
   $set_chr_name($1 $+ _summon) | $display.message(12 $+ %real.name  $+ $readini($char($1 $+ _summon), descriptions, char), battle)
 
@@ -4217,9 +4217,9 @@ alias skill.perfectcounter { $set_chr_name($1) | $check_for_battle($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   $no.turn.check($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
-  if ($return.playerstyle($1) != CounterStance) { $display.message(4Error: This command can only be used while the CounterStance style is equipped!, private) | unset %current.playerstyle | halt }
+  if ($return.playerstyle($1) != CounterStance) { $display.message(04Error: This command can only be used while the CounterStance style is equipped!, private) | unset %current.playerstyle | halt }
 
-  if ($readini($char($1), skills, perfectcounter.on) != $null) { $display.message(4 $+ %real.name cannot use $gender($1) Perfect Counter again this battle!, private) | halt }
+  if ($readini($char($1), skills, perfectcounter.on) != $null) { $display.message(04 $+ %real.name cannot use $gender($1) Perfect Counter again this battle!, private) | halt }
 
   writeini $char($1) skills perfectcounter.on on 
 
@@ -4255,13 +4255,13 @@ alias skill.sneakattack { $set_chr_name($1)
   ; This skill cannot be used if a player is alone in battle
   if ($return_playersinbattle = 1) { $display.message($readini(translation.dat, errors, SkillCannotBeUsedSolo), private) | halt }
 
-  if ($return.playerstyle($1) != TreasureHunter) { $display.message(4Error: This command can only be used while the TreasureHunter style is equipped!, private) | unset %current.playerstyle | halt }
+  if ($return.playerstyle($1) != TreasureHunter) { $display.message(04Error: This command can only be used while the TreasureHunter style is equipped!, private) | unset %current.playerstyle | halt }
 
-  if ($readini($char($1), skills, sneakattack.on) != $null) { $display.message(4 $+ %real.name cannot use $gender($1) Sneak Attack again so soon!, private) | halt }
+  if ($readini($char($1), skills, sneakattack.on) != $null) { $display.message(04 $+ %real.name cannot use $gender($1) Sneak Attack again so soon!, private) | halt }
 
   ; Does the player have the lowest enmity?
   var %lowest.enmity.person $character.enmity.getname(Lowest)  
-  if (%lowest.enmity.person != $1) { $display.message(4 $+ %real.name cannot use $gender($1) Sneak Attack because $gender($3) does not have the lowest enmity in battle!, private) | halt }
+  if (%lowest.enmity.person != $1) { $display.message(04 $+ %real.name cannot use $gender($1) Sneak Attack because $gender($3) does not have the lowest enmity in battle!, private) | halt }
 
   writeini $char($1) skills sneakattack.on on 
 
@@ -4297,13 +4297,13 @@ alias skill.trickattack { $set_chr_name($1)
   ; This skill cannot be used if a player is alone in battle
   if ($return_playersinbattle = 1) { $display.message($readini(translation.dat, errors, SkillCannotBeUsedSolo), private) | halt }
 
-  if ($return.playerstyle($1) != TreasureHunter) { $display.message(4Error: This command can only be used while the TreasureHunter style is equipped!, private) | unset %current.playerstyle | halt }
+  if ($return.playerstyle($1) != TreasureHunter) { $display.message(04Error: This command can only be used while the TreasureHunter style is equipped!, private) | unset %current.playerstyle | halt }
 
-  if ($readini($char($1), skills, trickattack.on) != $null) { $display.message(4 $+ %real.name cannot use $gender($1) trick attack again so soon!, private) | halt }
+  if ($readini($char($1), skills, trickattack.on) != $null) { $display.message(04 $+ %real.name cannot use $gender($1) trick attack again so soon!, private) | halt }
 
   ; Does the player have the highest enmity?
   var %highest.enmity.person $character.enmity.getname(Highest)  
-  if (%highest.enmity.person != $1) { $display.message(4 $+ %real.name cannot use $gender($1) trick attack because $gender($3) does not have the highest enmity in battle!, private) | halt }
+  if (%highest.enmity.person != $1) { $display.message(04 $+ %real.name cannot use $gender($1) trick attack because $gender($3) does not have the highest enmity in battle!, private) | halt }
 
   writeini $char($1) skills trickattack.on on 
 
@@ -4336,7 +4336,7 @@ alias skill.retaliation { $set_chr_name($1) |  $check_for_battle($1)
   $skill.turncheck($1, Retaliation, !retaliation, true)
 
   ; Is the skill still on?
-  if ($readini($char($1), skills, retaliation.on) = on) { $display.message(4 $+ %real.name cannot use $gender($1) Retaliation again so soon!, private) | halt }
+  if ($readini($char($1), skills, retaliation.on) = on) { $display.message(04 $+ %real.name cannot use $gender($1) Retaliation again so soon!, private) | halt }
 
   ; Decrease the action points
   $action.points($1, remove, $skill.actionpointcheck(retaliation))
@@ -4378,10 +4378,10 @@ alias skill.justrelease { $set_chr_name($1)
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
   var %target.flag $readini($char($2), info, flag)
-  if (($readini($char($1), info, flag) = $null) && (%target.flag != monster)) { $set_chr_name($1) | $display.message(4 $+ %real.name can only Just Release on monsters!, private) | halt }
-  if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
-  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot steal from someone who is dead!, private) | unset %real.name | halt }
-  if ($readini($char($2), Battle, Status) = RunAway) { $display.message(4 $+ %real.name cannot  Just Release on $set_chr_name($2) %real.name $+ , because %real.name has run away from the fight!, private) | unset %real.name | halt } 
+  if (($readini($char($1), info, flag) = $null) && (%target.flag != monster)) { $set_chr_name($1) | $display.message(04 $+ %real.name can only Just Release on monsters!, private) | halt }
+  if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot steal from someone who is dead!, private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = RunAway) { $display.message(04 $+ %real.name cannot  Just Release on $set_chr_name($2) %real.name $+ , because %real.name has run away from the fight!, private) | unset %real.name | halt } 
 
   ; Decrease the action points
   $action.points($1, remove, $skill.actionpointcheck(justrelease))
@@ -4441,7 +4441,7 @@ alias skill.stoneskin { $set_chr_name($1)
   $amnesia.check($1, skill) 
   $check_for_battle($1)
 
-  if ($readini($char($1), skills, stoneskin.time) != $null) { $display.message(4Error: This skill can only be used once per battle!, private) | halt }
+  if ($readini($char($1), skills, stoneskin.time) != $null) { $display.message(04Error: This skill can only be used once per battle!, private) | halt }
 
   writeini $char($1) skills stoneskin.time $ctime
 
@@ -4506,15 +4506,15 @@ alias skill.tabularasa { $set_chr_name($1)
   if (%resist.skill = $null) { var %resist.skill 0 }
 
   $set_chr_name($2)
-  if (%resist.skill = 100) { $display.message(4 $+ %real.name is immune to the amnesia status!, battle)
+  if (%resist.skill = 100) { $display.message(04 $+ %real.name is immune to the amnesia status!, battle)
   }
   if (%resist.skill < 100) { 
     var %inflict.chance $calc(40 + $readini($char($1), skills, tabularasa))
     dec %inflict.chance %resist.skill
-    if (%inflict.chance <= 0) { $display.message(4 $+ %real.name has resisted the amnesia status!, battle) }
+    if (%inflict.chance <= 0) { $display.message(04 $+ %real.name has resisted the amnesia status!, battle) }
     if ($rand(1,100) <= %inflict.chance) { 
       writeini $char($2) status amnesia yes
-      $display.message(4 $+ %real.name is now inflicted with amnesia!, battle)
+      $display.message(04 $+ %real.name is now inflicted with amnesia!, battle)
     } 
   }
 
@@ -4530,15 +4530,15 @@ on 3:TEXT:!warp *:*: { $skill.warp($nick, $2-) }
 alias skill.warp { $set_chr_name($1)
   if ($skillhave.check($1, warp) = false) { $set_chr_name($1) | $display.system.message($readini(translation.dat, errors, DoNotHaveSkill), private) | halt }
   if ((%battleis = on) && (%battleisopen != on)) { $display.system.message($readini(translation.dat, errors, Can'tUseSkillInBattle), private) | halt }
-  if (%warp.battlefield != $null) { $display.message(4The Warp skill has already been used this battle!, private) | halt }
+  if (%warp.battlefield != $null) { $display.message(04The Warp skill has already been used this battle!, private) | halt }
 
   ; Check the battlefield.
   var %battlefield = $read($lstfile(battlefields.lst), w, $2-)
-  if (%battlefield = $null) { $display.private.message2($1, 4There is no such battlefield or you cannot warp to it using this skill.) | halt  }
+  if (%battlefield = $null) { $display.private.message2($1, 04There is no such battlefield or you cannot warp to it using this skill.) | halt  }
 
   ; Check for 2k orbs
   set %check.item $readini($char($1), stuff, RedOrbs)
-  if ((%check.item = $null) || (%check.item <= 2000)) { $display.system.message(4Error: %real.name does not have enough $readini(system.dat, system, currency) to perform this skill [need $calc(2000 - %check.item) more!], private) | halt }
+  if ((%check.item = $null) || (%check.item <= 2000)) { $display.system.message(04Error: %real.name does not have enough $readini(system.dat, system, currency) to perform this skill [need $calc(2000 - %check.item) more!], private) | halt }
   dec %check.item 2000
   writeini $char($1) stuff RedOrbs %check.item
 
@@ -4586,10 +4586,10 @@ alias skill.wrestle { $set_chr_name($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 
   $checkchar($2)
-  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  if (%battleis = off) { $display.message(04There is no battle currently!, private) | halt }
   $check_for_battle($1)
 
-  if (($return.playerstyle($1) != Wrestlemania) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the Wrestlemania style is equipped!, private) | halt }
+  if (($return.playerstyle($1) != Wrestlemania) && ($readini($char($1), info, flag) = $null)) { $display.message(04Error: This command can only be used while the Wrestlemania style is equipped!, private) | halt }
   if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
 
   $check_for_battle($1)
@@ -4601,8 +4601,8 @@ alias skill.wrestle { $set_chr_name($1)
     if (%wrestle.used = $null) { set %wrestle.used 0 }
     if (%wrestle.turn = $null) { set %wrestle.turn -1 }
 
-    if (%wrestle.used >= %current.playerstyle.level) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) wrestling moves again this battle!,private) | unset %current.playerstyle | halt }
-    if (($calc(%wrestle.turn + 1) = %true.turn) || (%wrestle.turn = %true.turn)) { $set_chr_name($1) | $display.message(4 $+ %real.name cannot use $gender($1) wrestling moves again so quickly!, private) | unset %current.playerstyle | halt }
+    if (%wrestle.used >= %current.playerstyle.level) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot use $gender($1) wrestling moves again this battle!,private) | unset %current.playerstyle | halt }
+    if (($calc(%wrestle.turn + 1) = %true.turn) || (%wrestle.turn = %true.turn)) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot use $gender($1) wrestling moves again so quickly!, private) | unset %current.playerstyle | halt }
   }
 
   inc %wrestle.used 1 | writeini $char($1) skills wrestle.used %wrestle.used
@@ -4618,7 +4618,7 @@ alias skill.wrestle { $set_chr_name($1)
   writeini $txtfile(battle2.txt) style $1 $+ .lastaction wrestle
 
   ; If the target is ethereal, we miss
-  if ($readini($char($2), status, ethereal) = yes) { $display.message(4 $+ %real.name $+ 's wrestling move goes right through $get_chr_name($2) $+ !, battle) }
+  if ($readini($char($2), status, ethereal) = yes) { $display.message(04 $+ %real.name $+ 's wrestling move goes right through $get_chr_name($2) $+ !, battle) }
   else { 
     ; Reduce the target's HP by style.level %
     var %target.hp $readini($char($2), battle, hp)
@@ -4652,7 +4652,7 @@ alias skill.wrestle { $set_chr_name($1)
       if ($readini($char($2), battle, hp) > 0) { 
         if ((%stun.chance >= 1) && (%stun.chance <= 50)) { 
           writeini $char($2) status stun yes
-          $display.message(4 $+ $get_chr_name($2) is now stunned!, battle)
+          $display.message(04 $+ $get_chr_name($2) is now stunned!, battle)
         }
       }
     }
@@ -4669,9 +4669,9 @@ alias skill.wrestle { $set_chr_name($1)
 ; CARD SHARK
 ;=================
 on 3:TEXT:!cardshark *:*: { 
-  if ($3 = $null) { $display.message(4Error: !cardshark item target,private) | halt }
-  if ($readini($dbfile(items.db), $2, type) != TradingCard) { $display.message(4Error: !cardshark trading-card target,private) | halt }
-  if (($readini($char($nick), item_amount, $2) = $null) || ($readini($char($nick), item_amount, $2) <= 0)) { $set_chr_name($1) | $display.message(4Error: $nick does not have any $2 to perform this skill, private) | halt }
+  if ($3 = $null) { $display.message(04Error: !cardshark item target,private) | halt }
+  if ($readini($dbfile(items.db), $2, type) != TradingCard) { $display.message(04Error: !cardshark trading-card target,private) | halt }
+  if (($readini($char($nick), item_amount, $2) = $null) || ($readini($char($nick), item_amount, $2) <= 0)) { $set_chr_name($1) | $display.message(04Error: $nick does not have any $2 to perform this skill, private) | halt }
 
   $partial.name.match($nick, $3) |  $skill.cardshark($nick, %attack.target, $2) 
 }
@@ -4684,16 +4684,16 @@ alias skill.cardshark { $set_chr_name($1)
   if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
   $amnesia.check($1, skill) 
   $checkchar($2)
-  if (%battleis = off) { $display.message(4There is no battle currently!, private) | halt }
+  if (%battleis = off) { $display.message(04There is no battle currently!, private) | halt }
   $check_for_battle($1)
 
-  if (($return.playerstyle($1) != HighRoller) && ($readini($char($1), info, flag) = $null)) { $display.message(4Error: This command can only be used while the HighRoller style is equipped!, private) | halt }
+  if (($return.playerstyle($1) != HighRoller) && ($readini($char($1), info, flag) = $null)) { $display.message(04Error: This command can only be used while the HighRoller style is equipped!, private) | halt }
   if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
 
   ; Check the rarity of the card vs the level of the style
   var %style.level $readini($char($1), styles, HighRoller)
   var %card.rarity $readini($dbfile(items.db), $3, Rarity)
-  if (%style.level < %card.rarity) {  $display.message(4Error: %real.name cannot use this card as the rarity is too high for the current style level.) | halt  }
+  if (%style.level < %card.rarity) {  $display.message(04Error: %real.name cannot use this card as the rarity is too high for the current style level.) | halt  }
 
   $check_for_battle($1)
 

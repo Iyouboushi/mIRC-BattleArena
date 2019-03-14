@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 01/27/19
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -477,7 +477,7 @@ alias tech.clearstatus {
   ; Decrease the action points
   $action.points($1, remove, 3)
 
-  $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
+  $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
 
   if ($person_in_mech($1) = false) { 
     if ($4 = positive) { $clear_positive_status($3, tech) }
@@ -519,7 +519,7 @@ alias tech.buff {
   ; Clear the BattleNext timer until this action is finished
   /.timerBattleNext off
 
-  $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
+  $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
 
   if ($person_in_mech($3) = false) { 
 
@@ -647,7 +647,7 @@ alias tech.stealPower {
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($3) | set %enemy %real.name
 
-  $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
+  $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
 
   if ($person_in_mech($3) = false) {  
 
@@ -763,7 +763,7 @@ alias tech.stealPower.old {
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($3) | set %enemy %real.name
 
-  $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
+  $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
 
   if ($person_in_mech($3) = false) {  
 
@@ -920,7 +920,7 @@ alias tech.deathaoe {
 
   var %enemy all targets
 
-  $display.message(3 $+ %user  $+ $readini($dbfile(techniques.db), $2, desc), battle)
+  $display.message(03 $+ %user  $+ $readini($dbfile(techniques.db), $2, desc), battle)
   set %showed.tech.desc true
 
   ; If it's player, search out remaining players that are alive and deal damage and display damage
@@ -1131,7 +1131,7 @@ alias tech.aoeheal {
   ; Display the tech description
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($3) | set %enemy %real.name
-  $display.message(3 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
+  $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
 
   var %caster.flag $readini($char($1), info, flag)
   if ($readini($char($1), status, confuse) = yes) { var %caster.flag monster }
@@ -1423,7 +1423,7 @@ alias tech.aoe {
 
   var %enemy all targets
 
-  $display.message(3 $+ %user  $+ $readini($dbfile(techniques.db), $2, desc), battle)
+  $display.message(03 $+ %user  $+ $readini($dbfile(techniques.db), $2, desc), battle)
   set %showed.tech.desc true
 
   if ($readini($dbfile(techniques.db), $2, absorb) = yes) { set %absorb absorb }
@@ -2090,7 +2090,7 @@ alias sing.song {
     /.timerBattleNext off
 
     ; Perform the song.
-    $display.message(3 $+ %real.name $+  $readini($dbfile(songs.db), $2, Desc), battle)
+    $display.message(03 $+ %real.name $+  $readini($dbfile(songs.db), $2, Desc), battle)
 
     if ($readini($dbfile(songs.db), $2, Effect) = status) { 
       set %number.of.effects $numtok($readini($dbfile(songs.db), $2, Type),46)
@@ -2136,9 +2136,9 @@ alias sing.song {
                 if (%flag = monster) { writeini $char(%who.battle) skills %resist.name %resist.skill }
 
                 if ($readini($char(%who.battle), skills, %resist.name) >= 100) { $set_chr_name(%who.battle)
-                  if (%current.flag = monster) && (%flag != monster) { $display.message(4 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's song,battle) } 
-                  if (%current.flag = $null) && (%flag = monster) { $display.message(4 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's song,battle) }
-                  if (%current.flag = npc) && (%flag = monster) { $display.message(4 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's song,battle) }
+                  if (%current.flag = monster) && (%flag != monster) { $display.message(04 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's song,battle) } 
+                  if (%current.flag = $null) && (%flag = monster) { $display.message(04 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's song,battle) }
+                  if (%current.flag = npc) && (%flag = monster) { $display.message(04 $+ %real.name is not affected by $set_chr_name($1) %real.name $+ 's song,battle) }
                 }
               }
             }

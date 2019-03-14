@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 04/01/18
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -22,127 +22,127 @@ alias shopnpc.news {
 
   if ($1 = global) {
     $display.message($readini(translation.dat, ShopNPCs, LatestNPCNews),global) 
-    if (%npcnews.kidnapped != $null) { $display.message(4 $+ %npcnews.kidnapped,global) }
-    if (%npcnews.arrived != $null) { $display.message(2 $+ %npcnews.arrived,global) }
+    if (%npcnews.kidnapped != $null) { $display.message(04 $+ %npcnews.kidnapped,global) }
+    if (%npcnews.arrived != $null) { $display.message(02 $+ %npcnews.arrived,global) }
   }
 
   if ($1 = private) {
     $display.private.message($readini(translation.dat, ShopNPCs, LatestNPCNews)) 
-    if (%npcnews.kidnapped != $null) { $display.private.message(4 $+ %npcnews.kidnapped) }
-    if (%npcnews.arrived != $null) { $display.private.message(2 $+ %npcnews.arrived) }
+    if (%npcnews.kidnapped != $null) { $display.private.message(04 $+ %npcnews.kidnapped) }
+    if (%npcnews.arrived != $null) { $display.private.message(02 $+ %npcnews.arrived) }
   }
 
   if ($1 = dcc) {
     $dcc.private.message($2, $readini(translation.dat, ShopNPCs, LatestNPCNews)) 
-    if (%npcnews.kidnapped != $null) { $dcc.private.message($2, 4 $+ %npcnews.kidnapped) }
-    if (%npcnews.arrived != $null) { $dcc.private.message($2, 2 $+ %npcnews.arrived) }
+    if (%npcnews.kidnapped != $null) { $dcc.private.message($2, 04 $+ %npcnews.kidnapped) }
+    if (%npcnews.arrived != $null) { $dcc.private.message($2, 02 $+ %npcnews.arrived) }
   }
 
 }
 
 alias shopnpc.list {
   var %npcstatus.healing $readini(shopnpcs.dat, NPCstatus, HealingMerchant)
-  if (%npcstatus.healing = true) { var %npcstatus.healing.color 3 }
-  if (%npcstatus.healing = false) { var %npcstatus.healing.color 5 }
-  if (%npcstatus.healing = kidnapped) { var %npcstatus.healing.color 4 }
+  if (%npcstatus.healing = true) { var %npcstatus.healing.color 03 }
+  if (%npcstatus.healing = false) { var %npcstatus.healing.color 05 }
+  if (%npcstatus.healing = kidnapped) { var %npcstatus.healing.color 04 }
   var %npcstatus.healing.name $readini(shopnpcs.dat, NPCNames, HealingMerchant)
   if (%npcstatus.healing.name = $null) { var %npcstatus.healing.name Healing Merchant }
 
   var %npcstatus.Battle $readini(shopnpcs.dat, NPCstatus, BattleMerchant)
-  if (%npcstatus.Battle = true) { var %npcstatus.Battle.color 3 }
-  if (%npcstatus.Battle = false) { var %npcstatus.Battle.color 5 }
-  if (%npcstatus.Battle = kidnapped) { var %npcstatus.Battle.color 4 }
+  if (%npcstatus.Battle = true) { var %npcstatus.Battle.color 03 }
+  if (%npcstatus.Battle = false) { var %npcstatus.Battle.color 05 }
+  if (%npcstatus.Battle = kidnapped) { var %npcstatus.Battle.color 04 }
   var %npcstatus.Battle.name $readini(shopnpcs.dat, NPCNames, BattleMerchant)
   if (%npcstatus.Battle.name = $null) { var %npcstatus.Battle.name Battle Merchant }
 
   var %npcstatus.Discount $readini(shopnpcs.dat, NPCstatus, DiscountCardMerchant)
-  if (%npcstatus.Discount = true) { var %npcstatus.Discount.color 3 }
-  if (%npcstatus.Discount = false) { var %npcstatus.Discount.color 5 }
-  if (%npcstatus.Discount = kidnapped) { var %npcstatus.Discount.color 4 }
+  if (%npcstatus.Discount = true) { var %npcstatus.Discount.color 03 }
+  if (%npcstatus.Discount = false) { var %npcstatus.Discount.color 05 }
+  if (%npcstatus.Discount = kidnapped) { var %npcstatus.Discount.color 04 }
   var %npcstatus.Discount.name $readini(shopnpcs.dat, NPCNames, DiscountCardMerchant)
   if (%npcstatus.Discount.name = $null) { var %npcstatus.Discount.name Discount Card Merchant }
 
   var %npcstatus.Song $readini(shopnpcs.dat, NPCstatus, SongMerchant)
-  if (%npcstatus.Song = true) { var %npcstatus.Song.color 3 }
-  if (%npcstatus.Song = false) { var %npcstatus.Song.color 5 }
-  if (%npcstatus.Song = kidnapped) { var %npcstatus.Song.color 4 }
+  if (%npcstatus.Song = true) { var %npcstatus.Song.color 03 }
+  if (%npcstatus.Song = false) { var %npcstatus.Song.color 05 }
+  if (%npcstatus.Song = kidnapped) { var %npcstatus.Song.color 04 }
   var %npcstatus.Song.name $readini(shopnpcs.dat, NPCNames, SongMerchant)
   if (%npcstatus.Song.name = $null) { var %npcstatus.Song.name Song Merchant }
 
   var %npcstatus.Shield $readini(shopnpcs.dat, NPCstatus, ShieldMerchant)
-  if (%npcstatus.Shield = true) { var %npcstatus.Shield.color 3 }
-  if (%npcstatus.Shield = false) { var %npcstatus.Shield.color 5 }
-  if (%npcstatus.Shield = kidnapped) { var %npcstatus.Shield.color 4 }
+  if (%npcstatus.Shield = true) { var %npcstatus.Shield.color 03 }
+  if (%npcstatus.Shield = false) { var %npcstatus.Shield.color 05 }
+  if (%npcstatus.Shield = kidnapped) { var %npcstatus.Shield.color 04 }
   var %npcstatus.Shield.name $readini(shopnpcs.dat, NPCNames, ShieldMerchant)
   if (%npcstatus.Shield.name = $null) { var %npcstatus.Shield.name Shield Merchant }
 
   var %npcstatus.Wheel $readini(shopnpcs.dat, NPCstatus, WheelMaster)
-  if (%npcstatus.Wheel = true) { var %npcstatus.Wheel.color 3 }
-  if (%npcstatus.Wheel = false) { var %npcstatus.Wheel.color 5 }
-  if (%npcstatus.Wheel = kidnapped) { var %npcstatus.Wheel.color 4 }
+  if (%npcstatus.Wheel = true) { var %npcstatus.Wheel.color 03 }
+  if (%npcstatus.Wheel = false) { var %npcstatus.Wheel.color 05 }
+  if (%npcstatus.Wheel = kidnapped) { var %npcstatus.Wheel.color 04 }
   var %npcstatus.Wheel.name $readini(shopnpcs.dat, NPCNames, WheelMaster)
   if (%npcstatus.Wheel.name = $null) { var %npcstatus.Wheel.name Wheel Master }
 
   var %npcstatus.President $readini(shopnpcs.dat, NPCstatus, AlliedForcesPresident)
-  if (%npcstatus.President = true) { var %npcstatus.President.color 3 }
-  if (%npcstatus.President = false) { var %npcstatus.President.color 5 }
-  if (%npcstatus.President = kidnapped) { var %npcstatus.President.color 4 }
+  if (%npcstatus.President = true) { var %npcstatus.President.color 03 }
+  if (%npcstatus.President = false) { var %npcstatus.President.color 05 }
+  if (%npcstatus.President = kidnapped) { var %npcstatus.President.color 04 }
   var %npcstatus.President.name $readini(shopnpcs.dat, NPCNames, AlliedForcesPresident)
   if (%npcstatus.President.name = $null) { var %npcstatus.President.name Allied Forces President }
 
   var %npcstatus.Gambler $readini(shopnpcs.dat, NPCstatus, Gambler)
-  if (%npcstatus.Gambler = true) { var %npcstatus.Gambler.color 3 }
-  if (%npcstatus.Gambler = false) { var %npcstatus.Gambler.color 5 }
-  if (%npcstatus.Gambler = kidnapped) { var %npcstatus.Gambler.color 4 }
+  if (%npcstatus.Gambler = true) { var %npcstatus.Gambler.color 03 }
+  if (%npcstatus.Gambler = false) { var %npcstatus.Gambler.color 05 }
+  if (%npcstatus.Gambler = kidnapped) { var %npcstatus.Gambler.color 04 }
   var %npcstatus.Gambler.name $readini(shopnpcs.dat, NPCNames, Gambler)
   if (%npcstatus.Gambler.name = $null) { var %npcstatus.Gambler.name Gambler }
 
   var %npcstatus.Gardener $readini(shopnpcs.dat, NPCstatus, Gardener)
-  if (%npcstatus.Gardener = true) { var %npcstatus.Gardener.color 3 }
-  if (%npcstatus.Gardener = false) { var %npcstatus.Gardener.color 5 }
-  if (%npcstatus.Gardener = kidnapped) { var %npcstatus.Gardener.color 4 }
+  if (%npcstatus.Gardener = true) { var %npcstatus.Gardener.color 03 }
+  if (%npcstatus.Gardener = false) { var %npcstatus.Gardener.color 05 }
+  if (%npcstatus.Gardener = kidnapped) { var %npcstatus.Gardener.color 04 }
   var %npcstatus.Gardener.name $readini(shopnpcs.dat, NPCNames, Gardener)
   if (%npcstatus.Gardener.name = $null) { var %npcstatus.Gardener.name Gardener }
 
   var %npcstatus.PotionWitch $readini(shopnpcs.dat, NPCstatus, PotionWitch)
-  if (%npcstatus.PotionWitch = true) { var %npcstatus.PotionWitch.color 3 }
-  if (%npcstatus.PotionWitch = false) { var %npcstatus.PotionWitch.color 5 }
-  if (%npcstatus.PotionWitch = kidnapped) { var %npcstatus.PotionWitch.color 4 }
+  if (%npcstatus.PotionWitch = true) { var %npcstatus.PotionWitch.color 03 }
+  if (%npcstatus.PotionWitch = false) { var %npcstatus.PotionWitch.color 05 }
+  if (%npcstatus.PotionWitch = kidnapped) { var %npcstatus.PotionWitch.color 04 }
   var %npcstatus.PotionWitch.name $readini(shopnpcs.dat, NPCNames, PotionWitch)
   if (%npcstatus.PotionWitch.name = $null) { var %npcstatus.PotionWitch.name PotionWitch }
 
   var %npcstatus.DungeonKey $readini(shopnpcs.dat, NPCstatus, DungeonKeyMerchant)
-  if (%npcstatus.DungeonKey = true) { var %npcstatus.DungeonKey.color 3 }
-  if (%npcstatus.DungeonKey = false) { var %npcstatus.DungeonKey.color 5 }
-  if (%npcstatus.DungeonKey = kidnapped) { var %npcstatus.DungeonKey.color 4 }
+  if (%npcstatus.DungeonKey = true) { var %npcstatus.DungeonKey.color 03 }
+  if (%npcstatus.DungeonKey = false) { var %npcstatus.DungeonKey.color 05 }
+  if (%npcstatus.DungeonKey = kidnapped) { var %npcstatus.DungeonKey.color 04 }
   var %npcstatus.DungeonKey.name $readini(shopnpcs.dat, NPCNames, DungeonKeyMerchant)
   if (%npcstatus.DungeonKey.name = $null) { var %npcstatus.DungeonKey.name Dungeon Key Merchant }
 
   var %npcstatus.Travel $readini(shopnpcs.dat, NPCstatus, TravelMerchant)
-  if (%npcstatus.Travel = true) { var %npcstatus.Travel.color 3 }
-  if (%npcstatus.Travel = false) { var %npcstatus.Travel.color 5 }
-  if (%npcstatus.Travel = kidnapped) { var %npcstatus.Travel.color 4 }
+  if (%npcstatus.Travel = true) { var %npcstatus.Travel.color 03 }
+  if (%npcstatus.Travel = false) { var %npcstatus.Travel.color 05 }
+  if (%npcstatus.Travel = kidnapped) { var %npcstatus.Travel.color 04 }
   var %npcstatus.Travel.name $readini(shopnpcs.dat, NPCNames, TravelMerchant)
   if (%npcstatus.Travel.name = $null) { var %npcstatus.Travel.name Travel Merchant }
 
   var %npcstatus.GobbieBoxGoblin $readini(shopnpcs.dat, NPCstatus, GobbieBoxGoblin)
-  if (%npcstatus.GobbieBoxGoblin = true) { var %npcstatus.GobbieBoxGoblin.color 3 }
-  if (%npcstatus.GobbieBoxGoblin = false) { var %npcstatus.GobbieBoxGoblin.color 5 }
-  if (%npcstatus.GobbieBoxGoblin = kidnapped) { var %npcstatus.GobbieBoxGoblin.color 4 }
+  if (%npcstatus.GobbieBoxGoblin = true) { var %npcstatus.GobbieBoxGoblin.color 03 }
+  if (%npcstatus.GobbieBoxGoblin = false) { var %npcstatus.GobbieBoxGoblin.color 05 }
+  if (%npcstatus.GobbieBoxGoblin = kidnapped) { var %npcstatus.GobbieBoxGoblin.color 04 }
   var %npcstatus.GobbieBoxGoblin.name $readini(shopnpcs.dat, NPCNames, GobbieBoxGoblin)
   if (%npcstatus.GobbieBoxGoblin.name = $null) { var %npcstatus.GobbieBoxGoblin.name BountiBox the Goblin }
 
   var %npcstatus.Jeweler $readini(shopnpcs.dat, NPCstatus, Jeweler)
-  if (%npcstatus.Jeweler = true) { var %npcstatus.Jeweler.color 3 }
-  if (%npcstatus.Jeweler = false) { var %npcstatus.Jeweler.color 5 }
-  if (%npcstatus.Jeweler = kidnapped) { var %npcstatus.Jeweler.color 4 }
+  if (%npcstatus.Jeweler = true) { var %npcstatus.Jeweler.color 03 }
+  if (%npcstatus.Jeweler = false) { var %npcstatus.Jeweler.color 05 }
+  if (%npcstatus.Jeweler = kidnapped) { var %npcstatus.Jeweler.color 04 }
   var %npcstatus.Jeweler.name $readini(shopnpcs.dat, NPCNames, Jeweler)
   if (%npcstatus.Jeweler.name = $null) { var %npcstatus.Jeweler.name Vasu the Jeweler }
 
   var %npcstatus.Cardian $readini(shopnpcs.dat, NPCstatus, Cardian)
-  if (%npcstatus.Cardian = true) { var %npcstatus.Cardian.color 3 }
-  if (%npcstatus.Cardian = false) { var %npcstatus.Cardian.color 5 }
-  if (%npcstatus.Cardian = kidnapped) { var %npcstatus.Cardian.color 4 }
+  if (%npcstatus.Cardian = true) { var %npcstatus.Cardian.color 03 }
+  if (%npcstatus.Cardian = false) { var %npcstatus.Cardian.color 05 }
+  if (%npcstatus.Cardian = kidnapped) { var %npcstatus.Cardian.color 04 }
   var %npcstatus.Cardian.name $readini(shopnpcs.dat, NPCNames, Cardian)
   if (%npcstatus.Cardian.name = $null) { var %npcstatus.Cardian.name King of Cups }
 
@@ -151,11 +151,11 @@ alias shopnpc.list {
   var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ] [ $+ %npcstatus.Jeweler.color $+ %npcstatus.Jeweler.name $+ ] [ $+ %npcstatus.Cardian.color $+ %npcstatus.Cardian.name $+ ]
 
   ; Check for seasonal NPCs
-  if ($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true) { var %seasonal.status %seasonal.status [3Easter Bunny] }
+  if ($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true) { var %seasonal.status %seasonal.status [03Easter Bunny] }
   if ($readini(shopnpcs.dat, NPCstatus, Santa) = true) { 
-    var %seasonal.status %seasonal.status [3Santa] [3Number of Elves Saved:12 $readini(shopnpcs.dat,Events, SavedElves) $+ ]
+    var %seasonal.status %seasonal.status [03Santa] [03Number of Elves Saved:12 $readini(shopnpcs.dat,Events, SavedElves) $+ ]
   }
-  if ($left($adate, 2) = 10) { var %seasonal.status %seasonal.status [7Halloween Shop is Open] }
+  if ($left($adate, 2) = 10) { var %seasonal.status %seasonal.status [07Halloween Shop is Open] }
 
 
   ; Display the NPCs

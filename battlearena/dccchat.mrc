@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 09/21/17
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -32,7 +32,7 @@ on 2:open:=: {
   while ($chat(%p) != $null) { 
     msg = $+ $chat(%p) 10 $+ %real.name  $+  $readini($char($nick), Descriptions, Char) 
     if ($chat(%p) == $nick) { inc %p 1 }
-    else {  msg = $+ $chat(%p) 14###4 $nick has entered the %where $+ . | inc %p 1 }
+    else {  msg = $+ $chat(%p) 14###04 $nick has entered the %where $+ . | inc %p 1 }
   }
 
   $dcc.who'sonline($nick)
@@ -44,7 +44,7 @@ on 2:open:=: {
 alias dcc.check.for.double.login {
   var %double.check 1
   while ($chat(%double.check) != $null) {
-    if ($chat(%double.check) = $1) { .msg $nick 4You are already logged into the game elsewhere! | set %dcc.alreadyloggedin true }
+    if ($chat(%double.check) = $1) { .msg $nick 04You are already logged into the game elsewhere! | set %dcc.alreadyloggedin true }
     inc %double.check
   }
 }
@@ -54,10 +54,10 @@ alias dcc.check.for.double.login {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias dcc.who'sonline {
   var %who.online 1
-  $dcc.private.message($1, 3Who's Online)
+  $dcc.private.message($1, 03Who's Online)
   while ($chat(%who.online) != $null) {
     var %online.location $readini($char($chat(%who.online)), DCCchat, Room)
-    var %online.name 7[ $+ %online.location $+ ] 2 $+ $chat(%who.online)
+    var %online.name 07[ $+ %online.location $+ ] 02 $+ $chat(%who.online)
     $dcc.private.message($1, %online.name)
     inc %who.online 1
   }
@@ -69,7 +69,7 @@ alias dcc.who'sonline {
 on 2:close:=: { var %p 1
   while ($chat(%p) != $null) { 
     if ($chat(%p) == $nick) { inc %p 1 }
-    else {  msg = $+ $chat(%p) 14###4 $nick has left the game. | inc %p 1 }
+    else {  msg = $+ $chat(%p) 14###04 $nick has left the game. | inc %p 1 }
   }
   close -c $nick
   if ($readini(system.dat, system, botType) == DCCChat) {
@@ -128,8 +128,8 @@ alias dcc.private.message {
   ; $1 = person
   ; $2 = message
 
-  if ($1 = $null) { echo -a 4ERROR: NO PERSON TO SEND A MESSAGE TO OR DCC CHAT NOT ACTIVE | halt }
-  if ($2 = $null) { echo -a 4ERROR: MESSAGE IS NULL, CHECK TRANSLATION.DAT | halt }
+  if ($1 = $null) { echo -a 04ERROR: NO PERSON TO SEND A MESSAGE TO OR DCC CHAT NOT ACTIVE | halt }
+  if ($2 = $null) { echo -a 04ERROR: MESSAGE IS NULL, CHECK TRANSLATION.DAT | halt }
   msg = $+ $1 $2
 }
 
@@ -172,8 +172,8 @@ on 2:Chat:!recipe search*: { $view-recipe($nick, $3) }
 
 on 2:Chat:!toggle battle chat*: { 
   var %listen.to.battle.flag $readini($char($nick), DCCchat, ListenToBattleFlag)
-  if ((%listen.to.battle.flag = false) || (%listen.to.battle.flag = $null)) { writeini $char($nick) DCCchat ListenToBattleFlag true | $dcc.private.message($nick, 3Battle Chat has been enabled. You can now see the battle chat even if you are not in the battles.) | halt }
-  if (%listen.to.battle.flag = true) { writeini $char($nick) DCCchat ListenToBattleFlag false | $dcc.private.message($nick, 3Battle Chat has been disabled. You will no longer see most battle chat messages unless you join the battles.) | halt }
+  if ((%listen.to.battle.flag = false) || (%listen.to.battle.flag = $null)) { writeini $char($nick) DCCchat ListenToBattleFlag true | $dcc.private.message($nick, 03Battle Chat has been enabled. You can now see the battle chat even if you are not in the battles.) | halt }
+  if (%listen.to.battle.flag = true) { writeini $char($nick) DCCchat ListenToBattleFlag false | $dcc.private.message($nick, 03Battle Chat has been disabled. You will no longer see most battle chat messages unless you join the battles.) | halt }
 }
 on 2:Chat:!conquest*: { $conquest.display }
 on 2:Chat:!battle stats*: { $battle.stats }
@@ -207,7 +207,7 @@ on 2:Chat:!orbs*: {
   }
 }
 ON 2:Chat:!desc*: { 
-  if ($2 != $null) { $checkchar($2) | $set_chr_name($2) | $dcc.private.message($nick,3 $+ %real.name  $+ $readini($char($2), Descriptions, Char))   | unset %character.description | halt }
+  if ($2 != $null) { $checkchar($2) | $set_chr_name($2) | $dcc.private.message($nick,03 $+ %real.name  $+ $readini($char($2), Descriptions, Char))   | unset %character.description | halt }
   else { $set_chr_name($nick) | $dcc.private.message($nick,10 $+ %real.name  $+ $readini($char($nick), Descriptions, Char))  }
 }
 ON 2:Chat:!cdesc *: { $checkscript($2-)  | writeini $char($nick) Descriptions Char $2- | $okdesc($nick , Character) }
@@ -274,7 +274,7 @@ on 2:Chat:!stats*: { unset %all_status
 
     if ($readini($char($nick), equipment, accessory2) != $null) { 
       var %equipped.accessory2 $equipment.color($readini($char($nick), equipment, accessory2)) $+ $readini($char($nick), equipment, accessory2)
-      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 03
     }
 
     var %equipped.armor.head $readini($char($nick), equipment, head) 
@@ -295,9 +295,9 @@ on 2:Chat:!stats*: { unset %all_status
     if ($readini($char($nick), stuff, EnhancementPoints) = $null) { writeini $char($nick) stuff EnhancementPoints 0 }
     if ($readini($char($nick), stuff, LoginPoints) = $null) { writeini $char($nick) stuff LoginPoints 0 }
 
-    $dcc.private.message($nick, [4HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ ] [4TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($nick) $+ ] [4Armor Level12 $ilevel($nick) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($nick), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($nick), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($nick), stuff, LoginPoints) $+ ])
-    $dcc.private.message($nick, [4Strength:12 $current.str($nick) 3+ $+ $armor.stat($nick,str) $+ ]  [4Defense:12 $current.def($nick) 3+ $+ $armor.stat($nick,def) $+ ] [4Intelligence:12 $current.int($nick) 3+ $+ $armor.stat($nick,int) $+ ][4Speed:12 $current.spd($nick) 3+ $+ $armor.stat($nick,spd) $+ ])
-    $dcc.private.message($nick, [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
+    $dcc.private.message($nick, [04HP12 $readini($char($nick), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, HP) $+ ] [04TP12 $readini($char($nick), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, TP) $+ ] [04Ignition Gauge12 $readini($char($nick), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($nick), BaseStats, IgnitionGauge) $+ ] [04Level12 $get.level($nick) $+ ] [04Armor Level12 $ilevel($nick) $+ ] [04Status12 %all_status $+ ] [04Royal Guard Meter12 %blocked.meter $+ ] [04Capacity Points12 $readini($char($nick), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [04Enhancement Points12 $readini($char($nick), stuff, EnhancementPoints) $+ ] [04Login Points12 $readini($char($nick), stuff, LoginPoints) $+ ])
+    $dcc.private.message($nick, [04Strength:12 $current.str($nick) 03+ $+ $armor.stat($nick,str) $+ ]  [04Defense:12 $current.def($nick) 03+ $+ $armor.stat($nick,def) $+ ] [04Intelligence:12 $current.int($nick) 03+ $+ $armor.stat($nick,int) $+ ][04Speed:12 $current.spd($nick) 03+ $+ $armor.stat($nick,spd) $+ ])
+    $dcc.private.message($nick, [04 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 04 and12 %weapon.equipped.left) $+ ]  [04 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [04 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
     unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right 
     unset %weapon.equipped.left 
   }
@@ -314,7 +314,7 @@ on 2:Chat:!stats*: { unset %all_status
 
     if ($readini($char($2), equipment, accessory2) != $null) { 
       var %equipped.accessory2 $equipment.color($readini($char($2), equipment, accessory2)) $+ $readini($char($2), equipment, accessory2)
-      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 3
+      var %equipped.accessory %equipped.accessory 12and %equipped.accessory2 $+ 03
     }
 
     var %equipped.armor.head $readini($char($2), equipment, head) 
@@ -335,9 +335,9 @@ on 2:Chat:!stats*: { unset %all_status
     if ($readini($char($2), stuff, EnhancementPoints) = $null) { writeini $char($2) stuff EnhancementPoints 0 }
     if ($readini($char($2), stuff, LoginPoints) = $null) { writeini $char($2) stuff LoginPoints 0 }
 
-    $dcc.private.message($nick, [4HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [4TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [4Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [4Level12 $get.level($2) $+ ] [4Armor Level12 $ilevel($2) $+ ] [4Status12 %all_status $+ ] [4Royal Guard Meter12 %blocked.meter $+ ] [4Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [4Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [4Login Points12 $readini($char($2), stuff, LoginPoints) $+ ])
-    $dcc.private.message($nick, [4Strength:12 $current.str($2) 3+ $+ $armor.stat($2,str) $+ ]  [4Defense:12 $current.def($2) 3+ $+ $armor.stat($2,def) $+ ] [4Intelligence:12 $current.int($2) 3+ $+ $armor.stat($2,int) $+ ][4Speed:12 $current.spd($2) 3+ $+ $armor.stat($2,spd) $+ ])
-    $dcc.private.message($nick, [4 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 4 and12 %weapon.equipped.left) $+ ]  [4 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [4 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [4 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
+    $dcc.private.message($nick, [04HP12 $readini($char($2), Battle, HP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, HP) $+ ] [04TP12 $readini($char($2), Battle, TP) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, TP) $+ ] [04Ignition Gauge12 $readini($char($2), Battle, IgnitionGauge) $+ 1/ $+ 12 $+ $readini($char($2), BaseStats, IgnitionGauge) $+ ] [04Level12 $get.level($2) $+ ] [04Armor Level12 $ilevel($2) $+ ] [04Status12 %all_status $+ ] [04Royal Guard Meter12 %blocked.meter $+ ] [04Capacity Points12 $readini($char($2), stuff, CapacityPoints)  $+ 1/12 $+ 10000 $+ ] [04Enhancement Points12 $readini($char($2), stuff, EnhancementPoints) $+ ] [04Login Points12 $readini($char($2), stuff, LoginPoints) $+ ])
+    $dcc.private.message($nick, [04Strength:12 $current.str($2) 03+ $+ $armor.stat($2,str) $+ ]  [04Defense:12 $current.def($2) 03+ $+ $armor.stat($2,def) $+ ] [04Intelligence:12 $current.int($2) 03+ $+ $armor.stat($2,int) $+ ][04Speed:12 $current.spd($2) 03+ $+ $armor.stat($2,spd) $+ ])
+    $dcc.private.message($nick, [04 $+ $readini(translation.dat, system, CurrentWeaponEquipped) 12 $+ %weapon.equipped.right $+ $iif(%weapon.equipped.left != $null, 04 and12 %weapon.equipped.left) $+ ]  [04 $+ $readini(translation.dat, system, CurrentAccessoryEquipped) 12 $+ %equipped.accessory $+ ]  [04 $+ $readini(translation.dat, system, CurrentArmorHeadEquipped) 12 $+ %equipped.armor.head $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorBodyEquipped) 12 $+ %equipped.armor.body $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorLegsEquipped) 12 $+ %equipped.armor.legs $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorFeetEquipped) 12 $+ %equipped.armor.feet $+ ] [04 $+ $readini(translation.dat, system, CurrentArmorHandsEquipped) 12 $+ %equipped.armor.hands $+ ])
     unset %spd | unset %str | unset %def | unset %int | unset %status | unset %comma_replace | unset %comma_new | unset %all_status | unset %weapon.equipped.right 
     unset %weapon.equipped.left 
   }
@@ -422,11 +422,11 @@ on 2:CHAT:!misc info*: {
   if (%misc.defenderwon = $null) { var %misc.defenderwon 0 }
   if (%misc.aggressorwon = $null) { var %misc.aggressorwon 0 }
 
-  $dcc.private.message($nick, [4Total Battles Partcipated12 %misc.totalbattles $+ 1] [4Total Portal Battles Won12 %misc.portalswon $+ 1] [4Total Deaths12 %misc.totaldeaths $+ 1] [4Total Monster Kills12 %misc.totalmonkills $+ 1] [4Total Times Fled12 %misc.timesfled $+ 1][4Total Lost Souls Killed12 %misc.lostSoulsKilled $+ 1] [4Total Times Revived12 %misc.revivedtimes $+ 1] [4Total Times Character Has Been Reset12 %misc.resets $+ 1])
-  $dcc.private.message($nick, [4Total Items Sold12 %misc.itemssold $+ 1] [4Total Discounts Used12 %misc.discountsUsed $+ 1] [4Total Items Given12 %misc.itemsgiven $+ 1] [4Total Keys Obtained12 %misc.totalkeys $+ 1] [4Total Chests Opened12 %misc.chestsopened $+ 1][4Total Monster->Gem Conversions12 %misc.monstersToGems $+ 1])
-  $dcc.private.message($nick, [4Total Battlefield Events Experienced12 %misc.timeshitbybattlefield $+ 1]  [4Total Weapons Augmented12 %misc.augments $+ 1] [4Total Weapons Reforged12 %misc.reforges $+ 1] [4Total Ignitions Performed12 %misc.ignitionsused $+ 1] [4Total Dodges Performed12 %misc.timesdodged $+ 1] [4Total Parries Performed12 %misc.timesparried $+ 1] [4Total Counters Performed12 %misc.timescountered $+ 1])
-  $dcc.private.message($nick, [4Total Light Spells Casted12 %misc.lightspells $+ 1] [4Total Dar Spells Casted12 %misc.darkspells $+ 1] [4Total Earth Spells Casted12 %misc.earthspells $+ 1] [4Total Fire Spells Casted12 %misc.firespells $+ 1] [4Total Wind Spells Casted12 %misc.windspells $+ 1] [4Total Water Spells Casted12 %misc.waterspells $+ 1] [4Total Ice Spells Casted12 %misc.icespells $+ 1] [4Total Lightning Spells Casted12 %misc.lightningspells $+ 1])
-  $dcc.private.message($nick, [4Total Times Won Under Defender12 %misc.defenderwon $+ 1] [4Total Times Won Under Aggressor12 %misc.aggressorwon $+ 1] [4Total Blood Boosts Performed12 %misc.bloodboost $+ 1] [4Total Blood Spirits Performed12 %misc.bloodspirit $+ 1])
+  $dcc.private.message($nick, [04Total Battles Partcipated12 %misc.totalbattles $+ 1] [04Total Portal Battles Won12 %misc.portalswon $+ 1] [04Total Deaths12 %misc.totaldeaths $+ 1] [04Total Monster Kills12 %misc.totalmonkills $+ 1] [04Total Times Fled12 %misc.timesfled $+ 1][04Total Lost Souls Killed12 %misc.lostSoulsKilled $+ 1] [04Total Times Revived12 %misc.revivedtimes $+ 1] [04Total Times Character Has Been Reset12 %misc.resets $+ 1])
+  $dcc.private.message($nick, [04Total Items Sold12 %misc.itemssold $+ 1] [04Total Discounts Used12 %misc.discountsUsed $+ 1] [04Total Items Given12 %misc.itemsgiven $+ 1] [04Total Keys Obtained12 %misc.totalkeys $+ 1] [04Total Chests Opened12 %misc.chestsopened $+ 1][04Total Monster->Gem Conversions12 %misc.monstersToGems $+ 1])
+  $dcc.private.message($nick, [04Total Battlefield Events Experienced12 %misc.timeshitbybattlefield $+ 1]  [04Total Weapons Augmented12 %misc.augments $+ 1] [04Total Weapons Reforged12 %misc.reforges $+ 1] [04Total Ignitions Performed12 %misc.ignitionsused $+ 1] [04Total Dodges Performed12 %misc.timesdodged $+ 1] [04Total Parries Performed12 %misc.timesparried $+ 1] [04Total Counters Performed12 %misc.timescountered $+ 1])
+  $dcc.private.message($nick, [04Total Light Spells Casted12 %misc.lightspells $+ 1] [04Total Dar Spells Casted12 %misc.darkspells $+ 1] [04Total Earth Spells Casted12 %misc.earthspells $+ 1] [04Total Fire Spells Casted12 %misc.firespells $+ 1] [04Total Wind Spells Casted12 %misc.windspells $+ 1] [04Total Water Spells Casted12 %misc.waterspells $+ 1] [04Total Ice Spells Casted12 %misc.icespells $+ 1] [04Total Lightning Spells Casted12 %misc.lightningspells $+ 1])
+  $dcc.private.message($nick, [04Total Times Won Under Defender12 %misc.defenderwon $+ 1] [04Total Times Won Under Aggressor12 %misc.aggressorwon $+ 1] [04Total Blood Boosts Performed12 %misc.bloodboost $+ 1] [04Total Blood Spirits Performed12 %misc.bloodspirit $+ 1])
 }
 
 on 2:Chat:!weapons*: { unset %*.wpn.list | unset %weapon.list
@@ -614,7 +614,7 @@ on 2:Chat:!unequip*: {
 
 on 2:Chat:!wear*: { 
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
-  if ($3 = $null) { $display.message(4Error: !wear <accessory/armor> <what to wear>, private) | halt }
+  if ($3 = $null) { $display.message(04Error: !wear <accessory/armor> <what to wear>, private) | halt }
   if ($2 = accessory) { 
     if ($3 isnum) { $wear.accessory($nick, $4, $3) }
     else {  $wear.accessory($nick, $3, 1) }
@@ -624,7 +624,7 @@ on 2:Chat:!wear*: {
 
 on 2:Chat:!remove*: { 
   if ($person_in_mech($nick) = true) { $dcc.private.message($nick, $readini(translation.dat, errors, Can'tDoThatInMech)) | halt }
-  if ($3 = $null) { $display.message(4Error: !remove <accessory/armor> <what to remove>, private) | halt }
+  if ($3 = $null) { $display.message(04Error: !remove <accessory/armor> <what to remove>, private) | halt }
   if ($2 = accessory) { 
     if ($3 isnum) {  $remove.accessory($nick, $4, $3) }
     else {  $remove.accessory($nick, $3, 1) }
@@ -654,7 +654,7 @@ on 2:Chat:!xp*: { unset %*.style.list | unset %style.list
 }
 
 on 2:Chat:!total deaths*: { 
-  if ($3 = $null) { $dcc.private.message($nick,4Error: Use !total deaths target) | halt }
+  if ($3 = $null) { $dcc.private.message($nick,04Error: Use !total deaths target) | halt }
   if ($isfile($boss($3)) = $true) { set %total.deaths $readini($lstfile(monsterdeaths.lst), boss, $3) | set %real.name $readini($boss($3), basestats, name) }
   else if ($isfile($mon($3)) = $true) { set %total.deaths $readini($lstfile(monsterdeaths.lst), monster, $3) |  set %real.name $readini($mon($3), basestats, name) }
   else {
@@ -669,8 +669,8 @@ on 2:Chat:!total deaths*: {
 on 2:Chat:!achievements*: {
   if ($2 != $null) { $checkchar($2) | $achievement.list($2) 
     if (%achievement.list != $null) { $set_chr_name($2) | $dcc.private.message($nick,$readini(translation.dat, system, AchievementList))
-      if (%achievement.list.2 != $null) { $dcc.private.message($nick,3 $+ %achievement.list.2) }
-      if (%achievement.list.3 != $null) { $dcc.private.message($nick,3 $+ %achievement.list.3) }
+      if (%achievement.list.2 != $null) { $dcc.private.message($nick,03 $+ %achievement.list.2) }
+      if (%achievement.list.3 != $null) { $dcc.private.message($nick,03 $+ %achievement.list.3) }
     }
     if (%achievement.list = $null) { $set_chr_name($2) | $dcc.private.message($nick,$readini(translation.dat, system, NoAchievements)) }
     unset %achievement.list | unset %achievement.list.2 | unset %achievement.list.3 | unset %totalachievements | unset %totalachievements.unlocked
@@ -679,8 +679,8 @@ on 2:Chat:!achievements*: {
   if ($2 = $null) {
     $achievement.list($nick) 
     if (%achievement.list != $null) { $set_chr_name($nick) | $dcc.private.message($nick,$readini(translation.dat, system, AchievementList))
-      if (%achievement.list.2 != $null) { $dcc.private.message($nick,3 $+ %achievement.list.2) }
-      if (%achievement.list.3 != $null) { $dcc.private.message($nick,3 $+ %achievement.list.3) }
+      if (%achievement.list.2 != $null) { $dcc.private.message($nick,03 $+ %achievement.list.2) }
+      if (%achievement.list.3 != $null) { $dcc.private.message($nick,03 $+ %achievement.list.3) }
 
     }
     if (%achievement.list = $null) { $set_chr_name($nick) | $dcc.private.message($nick,$readini(translation.dat, system, NoAchievements)) }
@@ -818,7 +818,7 @@ on 2:Chat:!deathboard*: {
   if (%battleis != on) { 
     if ((($2 = monster) || ($2 = mon) || ($2 = monsters))) { $generate.monsterdeathboard }
     if (($2 = boss) || ($2 = bosses)) { $generate.bossdeathboard } 
-    if ($2 = $null) { $display.message(4!deathboard <monster/boss>, private) | halt }
+    if ($2 = $null) { $display.message(04!deathboard <monster/boss>, private) | halt }
   }
   else { $display.message($readini(translation.dat, errors, DeathBoardNotDuringBattle), private) | halt }
 }
@@ -865,7 +865,7 @@ on 2:Chat:!mech weapons*: { $mech.weapons($nick, dcc) }
 on 2:Chat:!mech name *: { $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), mech, HpMax) = $null) {  $display.private.message($readini(translation.dat, errors, DoNotOwnAMech)) | halt }
   writeini $char($nick) Mech Name $3- 
-  $display.private.message(3Mech name set to: %real.name $+ 's $3- ) 
+  $display.private.message(03Mech name set to: %real.name $+ 's $3- ) 
 }
 on 2:Chat:!mech desc *: {  $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), mech, HpMax) = $null) {  $display.private.message($readini(translation.dat, errors, DoNotOwnAMech)) | halt }
@@ -1171,12 +1171,12 @@ ON 50:Chat:* taunts*: {
   $set_chr_name($1) | $taunt($1, $3)
 }
 ON 50:Chat:!set streak*: { 
-  if ($3 = $null) { .msg $nick 4!set streak # | halt }
+  if ($3 = $null) { .msg $nick 04!set streak # | halt }
   if ($3 <= 0) { .msg $nick the streak cannot be negative or 0. | halt }
   if (. isin $3) { .msg $nick the streak must be a whole number. | halt }
   writeini battlestats.dat battle LosingStreak 0
   writeini battlestats.dat battle winningstreak $3
-  $display.message(3The winning streak has been set to: $3, global)
+  $display.message(03The winning streak has been set to: $3, global)
 }
 
 ON 50:Chat:!toggle ai system*: { 
@@ -1219,7 +1219,7 @@ alias dcc.emote {
       var %where $readini($char($nick), DCCchat, Room)
       if (%where = $null) { writeini $char($nick) DCCchat Room Lobby | var %where Lobby }
       if ((%where = BattleRoom) && (%battleis = off)) { writeini $char($nick) DCCchat Room Lobby | var %where Lobby }
-      msg = $+ $chat(%p) 13*4[ $+ %where $+ ]7 $nick %emotion $+ 13 $+  *  | inc %p 1
+      msg = $+ $chat(%p) 13*04[ $+ %where $+ ]07 $nick %emotion $+ 13 $+  *  | inc %p 1
     }
   }
   unset %emotion | halt
@@ -1241,7 +1241,7 @@ on 2:CHAT:*:{ unset %^p
   var %p 1
   while ($chat(%p) != $null) {  var %nick $chat(%p) 
     if (%nick = $nick) { inc %p 1 }
-    else {  msg = $+ $chat(%p) 4[ $+ %where $+ ] < $+ $nick $+ > 12 $+ $1-   | inc %p 1 } 
+    else {  msg = $+ $chat(%p) 04[ $+ %where $+ ] < $+ $nick $+ > 12 $+ $1-   | inc %p 1 } 
   }
   unset %p |  halt 
 }

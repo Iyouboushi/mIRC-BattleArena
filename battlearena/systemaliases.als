@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/12/19
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -479,7 +479,7 @@ writehost {
 equipment.color {
   var %equipment.color 03
   if (+1 isin $1) { var %equipment.color 12 }
-  if (+2 isin $1) { var %equipment.color 6 }
+  if (+2 isin $1) { var %equipment.color 06 }
   if ((($readini($dbfile(weapons.db), $1, legendary) = true) || ($readini($dbfile(items.db), $1, legendary) = true) || ($readini($dbfile(equipment.db), $1, legendary) = true))) { var %equipment.color 07 }
   return %equipment.color
 }
@@ -1464,7 +1464,7 @@ trusts.get.list {
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
-    if ((%item_amount != $null) && (%item_amount >= 1)) {  %trust.items.list = $addtok(%trust.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
+    if ((%item_amount != $null) && (%item_amount >= 1)) {  %trust.items.list = $addtok(%trust.items.list, 06 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
 
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -1500,7 +1500,7 @@ ingredients.get.list {
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
-    if ((%item_amount != $null) && (%item_amount >= 1)) {  %ingredients.items.list = $addtok(%ingredients.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
+    if ((%item_amount != $null) && (%item_amount >= 1)) {  %ingredients.items.list = $addtok(%ingredients.items.list, 05 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
 
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -1625,7 +1625,7 @@ techs.get.list {
 
     if ((%tech_level != $null) && (%tech_level >= 1)) { 
       ; add the tech level to the tech list
-      if (%battle.type != ai) {  set %tech_to_add $iif(%my.tp < $readini($dbfile(techniques.db), %tech.name, tp), 5 $+ %tech.name $+ 03, %tech.name) $+ $chr(040) $+ %tech_level $+ $chr(041) }
+      if (%battle.type != ai) {  set %tech_to_add $iif(%my.tp < $readini($dbfile(techniques.db), %tech.name, tp), 05 $+ %tech.name $+ 03, %tech.name) $+ $chr(040) $+ %tech_level $+ $chr(041) }
       if (%battle.type = ai) {  var %tech_to_add %tech.name | inc %tech.count 1 | inc %tech.power $readini($dbfile(techniques.db), %tech.name, basepower) }
       %tech.list = $addtok(%tech.list,%tech_to_add,46)
     }
@@ -1734,7 +1734,7 @@ active.skills.list {
 
       if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = true)) { 
 
-        if (%playerstyle = $readini($dbfile(skills.db), %skill.name, style)) { var %skill_to_add 5[03 $+ %skill_to_add $+ 5]03 }
+        if (%playerstyle = $readini($dbfile(skills.db), %skill.name, style)) { var %skill_to_add 05[03 $+ %skill_to_add $+ 05]03 }
         else { var %skill_to_add 02[03 $+ %skill_to_add $+ 02]03 }
       }
 
@@ -1871,10 +1871,10 @@ tradingcards.list {
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
       inc %card.collection 1
       set %item.name $replace(%item.name, TradingCard-,$chr(35))
-      if ($numtok(%tradingcards.items.list,46) <= 20) { %tradingcards.items.list = $addtok(%tradingcards.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%tradingcards.items.list,46) <= 20) { %tradingcards.items.list = $addtok(%tradingcards.items.list, 05 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       else { 
-        if ($numtok(%tradingcards.items.list2,46) <= 20) { %tradingcards.items.list2 = $addtok(%tradingcards.items.list2, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-        else { %tradingcards.items.list3 = $addtok(%tradingcards.items.list3, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        if ($numtok(%tradingcards.items.list2,46) <= 20) { %tradingcards.items.list2 = $addtok(%tradingcards.items.list2, 05 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        else { %tradingcards.items.list3 = $addtok(%tradingcards.items.list3, 05 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       }
     }
 
@@ -1927,7 +1927,7 @@ keys.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      %dungeon.keys.items.list = $addtok(%dungeon.keys.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) 
+      %dungeon.keys.items.list = $addtok(%dungeon.keys.items.list, 06 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) 
     }
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2065,12 +2065,12 @@ items.list {
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
-    var %item.color 5
+    var %item.color 05
     if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 07 }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %items.list2 = $addtok(%items.list2, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%items.list,46) <= 20) { %items.list = $addtok(%items.list, %item.color $+ %item.name $+ 05 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { %items.list2 = $addtok(%items.list2, %item.color $+ %item.name $+ 05 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
     }
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2206,8 +2206,8 @@ specialitems.list {
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
 
-      if ($numtok(%special.items.list,46) <= 12) { %special.items.list = $addtok(%special.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-      else { %special.items.list2 = $addtok(%special.items.list2, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%special.items.list,46) <= 12) { %special.items.list = $addtok(%special.items.list, 06 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      else { %special.items.list2 = $addtok(%special.items.list2, 06 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
     }
 
     unset %item.name | unset %item_amount
@@ -2228,7 +2228,7 @@ potioningredient.list {
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
-    if ((%item_amount != $null) && (%item_amount >= 1)) {  %potioningredient.items.list = $addtok(%potioningredient.items.list, 5 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
+    if ((%item_amount != $null) && (%item_amount >= 1)) {  %potioningredient.items.list = $addtok(%potioningredient.items.list, 05 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46)  }
 
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2251,21 +2251,21 @@ miscitems.list {
     set %item_amount $readini($char($1), item_amount, %item.name)
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
-    var %item.color 5
+    var %item.color 05
     if ($readini($dbfile(items.db), %item.name, TormentReward) = true) { var %item.color 07 }
     if ($readini($dbfile(items.db), %item.name, Legendary) = true) { var %item.color 07 }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-      if ($numtok(%misc.items.list,46) <= 15) { %misc.items.list = $addtok(%misc.items.list, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+      if ($numtok(%misc.items.list,46) <= 15) { %misc.items.list = $addtok(%misc.items.list, %item.color $+ %item.name $+ 05 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
       else { 
-        if ($numtok(%misc.items.list2,46) <= 15) { %misc.items.list2 = $addtok(%misc.items.list2, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+        if ($numtok(%misc.items.list2,46) <= 15) { %misc.items.list2 = $addtok(%misc.items.list2, %item.color $+ %item.name $+ 05 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
         else { 
-          if ($numtok(%misc.items.list3,46) <= 15) { %misc.items.list3 = $addtok(%misc.items.list3, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+          if ($numtok(%misc.items.list3,46) <= 15) { %misc.items.list3 = $addtok(%misc.items.list3, %item.color $+ %item.name $+ 05 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
           else { 
-            if ($numtok(%misc.items.list4,46) <= 15) { %misc.items.list4 = $addtok(%misc.items.list4, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+            if ($numtok(%misc.items.list4,46) <= 15) { %misc.items.list4 = $addtok(%misc.items.list4, %item.color $+ %item.name $+ 05 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
             else { 
-              if ($numtok(%misc.items.list5,46) <= 15) { %misc.items.list5 = $addtok(%misc.items.list5, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
-              else { %misc.items.list6 = $addtok(%misc.items.list6, %item.color $+ %item.name $+ 5 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+              if ($numtok(%misc.items.list5,46) <= 15) { %misc.items.list5 = $addtok(%misc.items.list5, %item.color $+ %item.name $+ 05 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+              else { %misc.items.list6 = $addtok(%misc.items.list6, %item.color $+ %item.name $+ 05 $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
             } 
           }
         }
@@ -2298,7 +2298,7 @@ instruments.list {
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name }
 
     if ((%item_amount != $null) && (%item_amount >= 1)) { 
-    %instruments.items.list = $addtok(%instruments.items.list, 6 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
+    %instruments.items.list = $addtok(%instruments.items.list, 06 $+ %item.name $+ $chr(040) $+ %item_amount $+ $chr(041), 46) }
 
     unset %item.name | unset %item_amount
     inc %value 1 
@@ -2372,7 +2372,7 @@ armor.list {
         if (%armor.level = $null) { var %armor.level 0 }
 
         if (+1 isin %armor.name) { var %armor.name 12 $+ %armor.name $+ 03 }
-        if (+2 isin %armor.name) { var %armor.name 6 $+ %armor.name $+ 03 }
+        if (+2 isin %armor.name) { var %armor.name 06 $+ %armor.name $+ 03 }
         if ($readini($dbfile(equipment.db), %armor.name, Legendary) = true) { var %armor.name 07 $+ %armor.name $+ 03 }
 
 
@@ -4794,7 +4794,7 @@ system.intromessage {
   if (%player.enhancementpoints = $null) { var %player.enhancementpoints 0 }
 
   $display.private.message($decode($read(key)))
-  $display.private.message(02Welcome back04 $readini($char($1), basestats, name) $+ . 02The current local bot time is04 $asctime(hh:nn tt) 02on04  $asctime(mmm dd yyyy) 02and this is bot version5 $battle.version )
+  $display.private.message(02Welcome back04 $readini($char($1), basestats, name) $+ . 02The current local bot time is04 $asctime(hh:nn tt) 02on04  $asctime(mmm dd yyyy) 02and this is bot version05 $battle.version )
   $display.private.message(02You currently have: 03 $+ %player.loginpoints 02login points $+ $chr(44) 03 $+ %player.redorbs 02 $+ $readini(system.dat, system, currency) $+ $chr(44) 03 $+ %player.blackorbs 02Black Orbs $+ $chr(44) 03 $+ %player.killcoins 02Kill Coins $+ $chr(44) 03 $+ %player.alliednotes 02Allied Notes $+ $chr(44) 03 $+ %player.doubledollars 02double dollars $+ $chr(44) 03 $+ %player.enhancementpoints 02enhancement points  $iif($left($adate, 2) = 10, and07 %player.candycorn 02candycorn ) )
 
   ; Check for month event messages

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AUCTION HOUSE COMMANDS
-;;;; Last updated: 09/19/16
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; See info on the auction
@@ -48,7 +48,7 @@ alias auctionhouse.winners {
       var %last.line %total.winner.lines
     }
 
-    var %winner.displayline 3Auction No. - Date - Time - Winner - Item - Notes Paid
+    var %winner.displayline 03Auction No. - Date - Time - Winner - Item - Notes Paid
     $display.private.message2($1, %winner.displayline)
 
     while (%starting.line <= %last.line) {
@@ -58,14 +58,14 @@ alias auctionhouse.winners {
   }
 
   if ($2 != $null) {
-    if ($2 !isnum) { $display.private.message2($1, 4Error: Must input a number) | halt }
-    if ($2 = $readini(system.dat, auctionInfo, NumberOfAuctions)) { $display.private.message2($1, 4Error: This auction is still live and cannot be checked with this command.) | halt }
-    if ($2 > $readini(system.dat, auctionInfo, NumberOfAuctions)) { $display.private.message2($1, 4Error: This auction doesn't exist.) | halt }
+    if ($2 !isnum) { $display.private.message2($1, 04Error: Must input a number) | halt }
+    if ($2 = $readini(system.dat, auctionInfo, NumberOfAuctions)) { $display.private.message2($1, 04Error: This auction is still live and cannot be checked with this command.) | halt }
+    if ($2 > $readini(system.dat, auctionInfo, NumberOfAuctions)) { $display.private.message2($1, 04Error: This auction doesn't exist.) | halt }
     var %auction.number $2
     while ($len(%auction.number) != 5) {
       var %auction.number 0 $+ %auction.number
     }
-    var %winner.displayline 3Auction No. - Date - Time - Winner - Item - Notes Paid
+    var %winner.displayline 03Auction No. - Date - Time - Winner - Item - Notes Paid
     var %winner.auctionline $read($txtfile(auction_winners.txt),nw,%auction.number $+ *)
     $display.private.message2($1, %winner.displayline)
     $display.private.message2($1, %winner.auctionline)
@@ -81,14 +81,14 @@ alias auctionhouse.bid {
   ; Has the person already bid on this auction?  If so, we can't bid again.
   if ($readini($char($1), status, alliednotes.lock) = true) { $display.private.message2($1, $readini(translation.dat, errors, AlreadyPlacedBid)) |  halt }
 
-  if ((. isin $2) || ($2 < 1)) { $display.private.message2($1, 4Error: You must bid a whole number greater than 1.) | halt }
-  if ($2 = $null) { $display.private.message2($1, 4Error: You must supply a number of notes to bid with) | halt }
+  if ((. isin $2) || ($2 < 1)) { $display.private.message2($1, 04Error: You must bid a whole number greater than 1.) | halt }
+  if ($2 = $null) { $display.private.message2($1, 04Error: You must supply a number of notes to bid with) | halt }
 
   ; Is the item up for bid a weapon?  If so, does the player already own it?
 
   if ($readini($dbfile(weapons.db), $readini(system.dat, auctionInfo, current.item), basepower) != $null) {  
     var %player.amount.weapon $readini($char($1), weapons, $readini(system.dat, auctionInfo, current.item))
-    if ((%player.amount.weapon != $null) || (%player.amount > 0)) { $display.private.message(4You already own this weapon and cannot own another!) | halt }
+    if ((%player.amount.weapon != $null) || (%player.amount > 0)) { $display.private.message(04You already own this weapon and cannot own another!) | halt }
   }
 
   ; Does the person have that many notes?
@@ -143,7 +143,7 @@ alias auctionhouse.create {
   ; Creates an auction.
 
   var %auction.lines $lines($lstfile(items_auctionhouse.lst))
-  if ((%auction.lines = $null) || (%auction.lines = 0)) { echo -a 4,1ERROR! NO ITEMS IN ITEMS_AUCTIONHOUSE.LST | halt }
+  if ((%auction.lines = $null) || (%auction.lines = 0)) { echo -a 04,1ERROR! NO ITEMS IN ITEMS_AUCTIONHOUSE.LST | halt }
 
   set %random.aitem $rand(1,%auction.lines)
   set %auction.line $read -l $+ %random.aitem $lstfile(items_auctionhouse.lst)
@@ -153,7 +153,7 @@ alias auctionhouse.create {
 
   unset %auction.line | unset %random.aitem 
 
-  if (%auction.minbid = $null) {  echo -a 4,1ERROR! NO MIN BID FOR THE AUCTION ITEM %auction.item | halt }
+  if (%auction.minbid = $null) {  echo -a 04,1ERROR! NO MIN BID FOR THE AUCTION ITEM %auction.item | halt }
 
   writeini system.dat auctionInfo current.item %auction.item
   writeini system.dat auctionInfo minimumBid %auction.minbid

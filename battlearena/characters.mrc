@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 03/12/19
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1764,7 +1764,7 @@ alias wheel.control {
     ; Display the help for the wheel control and rules
     var %wheel.cost $readini(system.dat, system, WheelGameCost)
     if (%wheel.cost = $null) { writeini system.dat system WheelGameCost 500 | var %wheel.cost 500 }
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you.. gives a big smile... toots his horn and says.. 02"Step right up and spin the wheel! Only %wheel.cost $currency $+ ! Use !wheel spin to play and try to win some great items! You can play once every 12 hours!" , 1)
+    $display.private.message.delay.custom(07 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you.. gives a big smile... toots his horn and says.. 02"Step right up and spin the wheel! Only %wheel.cost $currency $+ ! Use !wheel spin to play and try to win some great items! You can play once every 12 hours!" , 1)
 
   }
 
@@ -1818,7 +1818,7 @@ alias wheel.spin {
   var %random.wheel.spot $rand(1, $lines($lstfile(wheelgame.lst)))
   var %wheel.location $read -l $+ %random.wheel.spot $lstfile(wheelgame.lst)
 
-  $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you.. gives a big smile... toots his horn and spins the wheel!, 1)
+  $display.private.message.delay.custom(07 $+ $readini(shopnpcs.dat, NPCNames,WheelMaster) looks at you.. gives a big smile... toots his horn and spins the wheel!, 1)
 
   var %wheel.turns $rand(2,3) | var %i 1
   while (%i < %wheel.turns) {
@@ -1832,13 +1832,13 @@ alias wheel.spin {
   var %delay.time.2 $calc(%delay.time.1 + 4)
 
   if (%wheel.location = lose) {
-    $display.private.message.delay.custom(7The wheel slowly comes to a stop.. on LOSE.  $readini(shopnpcs.dat, NPCNames,WheelMaster) gives a loud sigh.02 "Sorry!  It looks like you did not win today! But take this as a concession prize... ", %delay.time.1 )
+    $display.private.message.delay.custom(07The wheel slowly comes to a stop.. on LOSE.  $readini(shopnpcs.dat, NPCNames,WheelMaster) gives a loud sigh.02 "Sorry!  It looks like you did not win today! But take this as a concession prize... ", %delay.time.1 )
     var %prize BoxOfTissues
     if ($readini($dbfile(items.db), %prize, type) = $null) { var %prize Potion }
   }
 
   if (%wheel.location != lose) {
-    $display.private.message.delay.custom(7The wheel slowly comes to a stop.. on WIN.  $readini(shopnpcs.dat, NPCNames,WheelMaster) gives a triumphant toot on his horn.02 "You win! You win! Here.. take this as your prize... ", %delay.time.1 )
+    $display.private.message.delay.custom(07The wheel slowly comes to a stop.. on WIN.  $readini(shopnpcs.dat, NPCNames,WheelMaster) gives a triumphant toot on his horn.02 "You win! You win! Here.. take this as your prize... ", %delay.time.1 )
 
     ; Get the list of prize items
     set %prize.list $gettok(%wheel.location, 2, 46)
@@ -1876,7 +1876,7 @@ alias gamble.game {
 
   if ((((($3 = $null) || ($2 !isnum) || (. isin $2) || ($2 < 1) || ($2 = help))))) { 
     ; Display the help and rules
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) looks at you.. and nods. 02"So you're interested in the gambling game eh? Well it's simple. I'll roll 2 dice and you have to tell me if the added result will be even or odd. You can gamble with as many $currency as you have on hand once per day. If you win I'll double the wager but if you lose I'll take all that you bet!",1)
+    $display.private.message.delay.custom(07 $+ $readini(shopnpcs.dat, NPCNames,Gambler) looks at you.. and nods. 02"So you're interested in the gambling game eh? Well it's simple. I'll roll 2 dice and you have to tell me if the added result will be even or odd. You can gamble with as many $currency as you have on hand once per day. If you win I'll double the wager but if you lose I'll take all that you bet!",1)
     $display.private.message.delay.custom(02Use !chouhan #amount odd/even to play [such as !chouhan 100 odd  or !chouhan 50 even] , 2)
     halt
   }
@@ -1935,7 +1935,7 @@ alias gamble.game {
     if (%number.of.wins = $null) { var %number.of.wins 0 }
     inc %number.of.wins 1 
     writeini $char($1) stuff GamblesWon %number.of.wins
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a sly smile.02 "Seems you've won. Here's your prize." 03You have won $bytes($round($calc($2 * 2),0),b)  $+ $currency,1)
+    $display.private.message.delay.custom(07 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a sly smile.02 "Seems you've won. Here's your prize." 03You have won $bytes($round($calc($2 * 2),0),b)  $+ $currency,1)
   }
 
   if (%game.status = lose) { 
@@ -1944,7 +1944,7 @@ alias gamble.game {
     inc %number.of.losses 1 
     writeini $char($1) stuff GamblesLost %number.of.losses
 
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a laugh.02 "That's too bad. You lose. Such is Lady Luck! ." 03You have lost $bytes($2,b)  $+ $currency,1)
+    $display.private.message.delay.custom(07 $+ $readini(shopnpcs.dat, NPCNames,Gambler) gives a laugh.02 "That's too bad. You lose. Such is Lady Luck! ." 03You have lost $bytes($2,b)  $+ $currency,1)
 
   }
 
@@ -1968,7 +1968,7 @@ alias gobbiebox {
   if ($shopnpc.present.check(GobbieBoxGoblin) != true) { $display.private.message(04Error: $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is not at the Allied Forces HQ so the gobbie box cannot be used.) | halt }
 
   if (($2 = help) || ($2 = $null)) { 
-    $display.private.message.delay.custom(7 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is standing next to a large treasure chest and says 02"Oho! Ya feelin' lucky 'nough tah takes a stab at da myst'ry box?!",1)
+    $display.private.message.delay.custom(07 $+ $readini(shopnpcs.dat, NPCNames,GobbieBoxGoblin) is standing next to a large treasure chest and says 02"Oho! Ya feelin' lucky 'nough tah takes a stab at da myst'ry box?!",1)
     $display.private.message.delay.custom(02Use !gobbie box open to open the box.  Note that it requires 10 login points to open , 2)
     halt
   }

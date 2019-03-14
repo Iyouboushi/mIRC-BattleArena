@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 02/06/18
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -255,7 +255,7 @@ alias melee.aoe {
 
   var %weapon.type $readini($dbfile(weapons.db), $2, type) |  var %attack.file $txtfile(attack_ $+ %weapon.type $+ .txt) 
 
-  $display.message(3 $+ %user $+  $read %attack.file  $+ 3., battle)
+  $display.message(03 $+ %user $+  $read %attack.file  $+ 03., battle)
   set %showed.melee.desc true
 
   if ($readini($dbfile(weapons.db), $2, absorb) = yes) { set %absorb absorb }
@@ -465,7 +465,7 @@ alias weapon_bash_check {
     if ($augment.check($1, EnhanceWeaponBash) = true) { inc %weapon.bash.chance %augment.strength  } 
 
     if (%stun.chance <= %weapon.bash.chance) {
-      writeini $char($2) status stun yes | $set_chr_name($2) | set %statusmessage.display 4 $+ %real.name has been stunned by the blow!
+      writeini $char($2) status stun yes | $set_chr_name($2) | set %statusmessage.display 04 $+ %real.name has been stunned by the blow!
     }
   }
 }

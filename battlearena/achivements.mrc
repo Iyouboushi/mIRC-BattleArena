@@ -1,15 +1,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ACHIEVEMENTS 
-;;;; Last updated: 06/18/16
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:!clear achievement*:*:{
   $checkchar($3)
-  if ($4 = $null) { $display.message(4!clear achievement <person> <achievement name>, private) | halt }
+  if ($4 = $null) { $display.message(04!clear achievement <person> <achievement name>, private) | halt }
 
   .remini $char($3) achievements $4 
-  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {   $display.message(4Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .,global) }
-  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.global.message(4Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .) }
+  if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) {   $display.message(04Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .,global) }
+  if ($readini(system.dat, system, botType) = DCCchat) { $dcc.global.message(04Achievement ( $+ $4  $+ ) has been cleared for $3 $+ .) }
 }
 
 alias achievement.list {

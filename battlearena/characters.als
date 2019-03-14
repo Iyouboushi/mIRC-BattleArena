@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/12/18
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1286,7 +1286,7 @@ readportals {
 readmiscitems {
   if (%misc.items.list != $null) {
     if ($2 = channel) { $display.message($readini(translation.dat, system, ViewMiscItems),private) | if (%misc.items.list2 != $null) { $display.message( $+ %misc.items.list2,private) } |  if (%misc.items.list3 != $null) { $display.message( $+ %misc.items.list3,private) } | if (%misc.items.list4 != $null) { $display.message( $+ %misc.items.list4,private) } | if (%misc.items.list5 != $null) { $display.message( $+ %misc.items.list5,private) } | if (%misc.items.list6 != $null) { $display.message( $+ %misc.items.list6,private) } }
-    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) { $display.private.message(5 $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $display.private.message( $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $display.private.message( $+ %misc.items.list4) } | if (%misc.items.list5 != $null) { $display.private.message( $+ %misc.items.list5) } | if (%misc.items.list6 != $null) { $display.private.message( $+ %misc.items.list6) } }
+    if ($2 = private) { $display.private.message($readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) { $display.private.message(05 $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $display.private.message( $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $display.private.message( $+ %misc.items.list4) } | if (%misc.items.list5 != $null) { $display.private.message( $+ %misc.items.list5) } | if (%misc.items.list6 != $null) { $display.private.message( $+ %misc.items.list6) } }
     if ($2 = dcc) { $dcc.private.message($nick, $readini(translation.dat, system, ViewMiscItems)) | if (%misc.items.list2 != $null) {  $dcc.private.message($nick,  $+ %misc.items.list2) } | if (%misc.items.list3 != $null) { $dcc.private.message($nick,  $+ %misc.items.list3) } | if (%misc.items.list4 != $null) { $dcc.private.message($nick,  $+ %misc.items.list4) } |  if (%misc.items.list5 != $null) { $dcc.private.message($nick,  $+ %misc.items.list5) } |  if (%misc.items.list6 != $null) { $dcc.private.message($nick,  $+ %misc.items.list6) } }
   }
 
@@ -1374,9 +1374,9 @@ readitems {
 
   ; Display commands for other inventory items
   if (%items.empty != true) { 
-    if ($2 = channel) { $display.message(03Other item commands:5 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 7!gems03 $+ $chr(44) 6!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 6!trusts03 $+ $chr(44) 5!trading cards03 $+ $chr(44) 03!mech items  $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes  $+ $chr(44) 10!ammo,private) }
-    if ($2 = private) {  $display.private.message(03Other item commands:5 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 7!gems03 $+ $chr(44) 6!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 6!trusts03 $+ $chr(44) 5!trading cards03 $+ $chr(44) 03!mech items $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes $+ $chr(44) 10!ammo) }
-    if ($2 = dcc) { $dcc.private.message($nick, 03Other item commands:5 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 7!gems03 $+ $chr(44) 6!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 6!trusts03 $+ $chr(44) 5!trading cards03 $+ $chr(44) 03!mech items $+ $chr(44) 5!ingredients $+ $chr(44) 7!runes $+ $chr(44) 10!ammo) }
+    if ($2 = channel) { $display.message(03Other item commands:05 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 07!gems03 $+ $chr(44) 06!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 06!trusts03 $+ $chr(44) 05!trading cards03 $+ $chr(44) 03!mech items  $+ $chr(44) 05!ingredients $+ $chr(44) 07!runes  $+ $chr(44) 10!ammo,private) }
+    if ($2 = private) {  $display.private.message(03Other item commands:05 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 07!gems03 $+ $chr(44) 06!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 06!trusts03 $+ $chr(44) 05!trading cards03 $+ $chr(44) 03!mech items $+ $chr(44) 05!ingredients $+ $chr(44) 07!runes $+ $chr(44) 10!ammo) }
+    if ($2 = dcc) { $dcc.private.message($nick, 03Other item commands:05 !misc items03 $+ $chr(44) 03!seals03 $+ $chr(44) 15!portals03 $+ $chr(44) 07!gems03 $+ $chr(44) 06!instruments03 $+ $chr(44) 14!keys03 $+ $chr(44) 06!trusts03 $+ $chr(44) 05!trading cards03 $+ $chr(44) 03!mech items $+ $chr(44) 05!ingredients $+ $chr(44) 07!runes $+ $chr(44) 10!ammo) }
   }
 
   unset %*.items.lis* | unset %items.lis*

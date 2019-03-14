@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; MECH COMMANDS
-;;;; Last updated: 10/25/15
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:activates * mech:#:{ $mech.activate($nick) } 
@@ -52,13 +52,13 @@ on 3:TEXT:!mech desc *:*:{ $checkscript($3-)  | $set_chr_name($nick)
 on 3:TEXT:!mech name *:*:{ $checkscript($3-)  | $set_chr_name($nick) 
   if ($readini($char($nick), mech, HpMax) = $null) {  $display.private.message($readini(translation.dat, errors, DoNotOwnAMech)) | halt }
   writeini $char($nick) Mech Name $3- 
-  $display.private.message(3Mech name set to: %real.name $+ 's $3- ) 
+  $display.private.message(03Mech name set to: %real.name $+ 's $3- ) 
 }
 
 alias mech.upgrade {
   var %valid.categories hp.health.energy.engine.cost.list
 
-  if ($istok(%valid.categories, $3, 46) = $false) { $display.private.message(4Error: !mech upgrade <hp/health/engine/energy/cost> <amount>)  | halt }
+  if ($istok(%valid.categories, $3, 46) = $false) { $display.private.message(04Error: !mech upgrade <hp/health/engine/energy/cost> <amount>)  | halt }
 
   if (($3 = cost) || ($3 = list)) {
     var %health.cost $readini(system.dat, mech, HealthUpgradeCost)
@@ -72,8 +72,8 @@ alias mech.upgrade {
 
     var %upgrade.cost Health( $+ %health.cost $+ ) $+ ,  Energy( $+ %energy.cost $+ ), Engine( $+ %engine.cost $+ )
 
-    $display.private.message(2All prices are in Allied Notes)
-    $display.private.message(4Cost to Upgrade2: %upgrade.cost)
+    $display.private.message(02All prices are in Allied Notes)
+    $display.private.message(04Cost to Upgrade02: %upgrade.cost)
     halt
   }
 
@@ -137,7 +137,7 @@ alias mech.calccost {
 
   if (%player.currency = $null) { set %player.currency 0 }
 
-  if (%player.currency < %total.price) {  $display.private.message(4You do not have enough Allied Notes to purchase this upgrade!) | unset %currency | unset %cost | unset %player.currency | unset %total.price | halt }
+  if (%player.currency < %total.price) {  $display.private.message(04You do not have enough Allied Notes to purchase this upgrade!) | unset %currency | unset %cost | unset %player.currency | unset %total.price | halt }
   dec %player.currency %total.price
   writeini $char($1) stuff AlliedNotes %player.currency
 }
@@ -207,8 +207,8 @@ alias mech.stats {
   if (%techs.list = $null) { var %techs.list none }
 
   ; Show the current mech information
-  $display.private.message([4Name12 %mech.name $+ 1] [4HP12 %mech.currentHP $+ 1/ $+ 12 $+ %mech.maxHP $+ 1] [4Energy12 %mech.currentEnergy $+ 1/ $+ 12 $+ %mech.maxEnergy $+ 1] [4Engine Level12 %mech.engine $+ 1] [4Base Energy Requirement12 %mech.baseEnergyRequired $+ 1])  
-  $display.private.message([4Equipped Weapon12 %mech.equippedWeapon $+ 1] [4Equipped Core Piece12 %mech.equippedCore $+ 1]  [4Techs Available12 %techs.list $+ 1]   ) 
+  $display.private.message([04Name12 %mech.name $+ 1] [04HP12 %mech.currentHP $+ 1/ $+ 12 $+ %mech.maxHP $+ 1] [04Energy12 %mech.currentEnergy $+ 1/ $+ 12 $+ %mech.maxEnergy $+ 1] [04Engine Level12 %mech.engine $+ 1] [04Base Energy Requirement12 %mech.baseEnergyRequired $+ 1])  
+  $display.private.message([04Equipped Weapon12 %mech.equippedWeapon $+ 1] [04Equipped Core Piece12 %mech.equippedCore $+ 1]  [04Techs Available12 %techs.list $+ 1]   ) 
 
   unset %mech.equippedWeapon | unset %tech.list 
 
@@ -420,7 +420,7 @@ alias mech.activate {
   var %mech.description $readini($char($1), descriptions, mech)
   if (%mech.description = $null) { var %mech.description $readini(translation.dat, battle, MechSummon) }
 
-  $display.message(3 $+ %real.name  $+ %mech.description,battle)
+  $display.message(03 $+ %real.name  $+ %mech.description,battle)
   writeini $char($1) mech InUse true
 
   unset %mech.power | unset %mech.engineconstant | unset %mech.enginelevel

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 12/17/18
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -46,11 +46,11 @@ dungeon.start {
   writeini $txtfile(battle2.txt) BattleInfo TimeKeyUsed $fulldate
 
   ; Show the dungeon start message.
-  if ($4 != true) { $display.message(2 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) }
-  if ($4 = true) { $display.message(2 $+ $readini($dungeonfile($3), info, StartBattleDesc), global) | writeini $txtfile(battle2.txt) DungeonInfo IgnoreWritingDungeonTime true }
+  if ($4 != true) { $display.message(02 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) }
+  if ($4 = true) { $display.message(02 $+ $readini($dungeonfile($3), info, StartBattleDesc), global) | writeini $txtfile(battle2.txt) DungeonInfo IgnoreWritingDungeonTime true }
 
-  if (%dungeon.max.players = 0) { $display.message(4This dungeon is level12 %dungeon.level 4and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 4to enter (12 $+ %dungeon.players.recommended $+ 4 $iif(%dungeon.players.recommended = 1, player, players) recommended). The dungeon will begin in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) }
-  else { $display.message(4This dungeon is level12 %dungeon.level 4and will start after12 %dungeon.max.players $iif(%dungeon.max.players = 1, player 4enters, players 4enter) or in12 $duration(%time.to.enter) $+ 4. Use !enter if you wish to join the party. , global) }
+  if (%dungeon.max.players = 0) { $display.message(04This dungeon is level12 %dungeon.level 04and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 04to enter (12 $+ %dungeon.players.recommended $+ 04 $iif(%dungeon.players.recommended = 1, player, players) recommended). The dungeon will begin in12 $duration(%time.to.enter) $+ 04. Use !enter if you wish to join the party. , global) }
+  else { $display.message(04This dungeon is level12 %dungeon.level 04and will start after12 %dungeon.max.players $iif(%dungeon.max.players = 1, player 04enters, players 04enter) or in12 $duration(%time.to.enter) $+ 04. Use !enter if you wish to join the party. , global) }
 
 }
 
@@ -134,7 +134,7 @@ dungeon.begin {
   ; move the dungeon to room 0 and show the opening message
   writeini $txtfile(battle2.txt) DungeonInfo CurrentRoom 0
 
-  $display.message(2* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
+  $display.message(02* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
 
   /.timerDungeonFullyStart 1 3 /dungeon.firstroom
 }
@@ -233,7 +233,7 @@ dungeon.clearroom {
 
   if ($dungeon.dungeonovercheck = true) { $dungeon.end | halt } 
 
-  $display.message(2* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
+  $display.message(02* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
 
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
 }
@@ -243,12 +243,12 @@ dungeon.end {
   var %total.battle.duration $battle.calculateBattleDuration
 
   if ($1 = failure) { 
-    $display.message(2 $+ $readini($dungeonfile($dungeon.dungeonfile), info, DungeonFail), global) 
+    $display.message(02 $+ $readini($dungeonfile($dungeon.dungeonfile), info, DungeonFail), global) 
     $dungeon.rewardorbs(failure) 
   }
 
   else { 
-    $display.message(2 $+ $readini($dungeonfile($dungeon.dungeonfile), info, cleardungeondesc), global) 
+    $display.message(02 $+ $readini($dungeonfile($dungeon.dungeonfile), info, cleardungeondesc), global) 
 
     ; give orb rewards
     $dungeon.rewardorbs(dungeonClear)
@@ -437,7 +437,7 @@ dungeon.generatemonsters {
 
         var %bossquote $readini($char(%current.monster.to.spawn.name), descriptions, bossquote)
         if (%bossquote != $null) { 
-          var %bossquote 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
+          var %bossquote 02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
           $display.message(%bossquote, battle) 
         }
       }
@@ -445,7 +445,7 @@ dungeon.generatemonsters {
       if ($readini(system.dat, system, botType) = DCCchat) {
         $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
         $display.message(12 $+ %real.name  $+ $readini($char(%current.monster.to.spawn.name), descriptions, char), battle)
-        if (%bossquote != $null) {   $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn.name), descriptions, BossQuote) $+ ", battle) }
+        if (%bossquote != $null) {   $display.message(02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn.name), descriptions, BossQuote) $+ ", battle) }
       }
 
       ; Boost the monster
@@ -540,7 +540,7 @@ dungeon.generatenpcs {
 
       var %npcquote $readini($char(%current.npc.to.spawn.name), descriptions, npcquote)
       if (%npcquote != $null) { 
-        var %npcquote 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.npc.to.spawn), descriptions, npcQuote) $+ "
+        var %npcquote 02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.npc.to.spawn), descriptions, npcQuote) $+ "
         $display.message(%npcquote, battle) 
       }
     }
@@ -548,7 +548,7 @@ dungeon.generatenpcs {
     if ($readini(system.dat, system, botType) = DCCchat) {
       $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
       $display.message(12 $+ %real.name  $+ $readini($char(%current.npc.to.spawn.name), descriptions, char), battle)
-      if (%npcquote != $null) {   $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.npc.to.spawn.name), descriptions, npcQuote) $+ ", battle) }
+      if (%npcquote != $null) {   $display.message(02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.npc.to.spawn.name), descriptions, npcQuote) $+ ", battle) }
     }
 
     ; Boost the npc
@@ -572,7 +572,7 @@ dungeon.generatenpcs {
 dungeon.restoreroom {
   ; Restores players to full health, tp, and clears their skill timers.
 
-  $display.message(7* The party feels their health $+ $chr(44)  tp $+ $chr(44)  and power restored in this room)
+  $display.message(07* The party feels their health $+ $chr(44)  tp $+ $chr(44)  and power restored in this room)
 
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
@@ -594,7 +594,7 @@ dungeon.restoreroom {
 
   if ($dungeon.dungeonovercheck = true) { $dungeon.end | halt } 
 
-  $display.message(2* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
+  $display.message(02* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
 
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
 }

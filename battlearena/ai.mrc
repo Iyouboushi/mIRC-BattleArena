@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 06/18/18
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -14,7 +14,7 @@ alias aicheck {
 
   ; Check to see if it's a defender type. If so, next turn it.  This is needed for surprise attacks on certain monsters..
   if ($readini($char($1), info, ai_type) = defender) {
-    if ($readini($char($1), descriptions, DefenderAI) != $null) { $set_chr_name($1) | $display.message(4 $+ $readini($char($1), descriptions, DefenderAI), battle) }
+    if ($readini($char($1), descriptions, DefenderAI) != $null) { $set_chr_name($1) | $display.message(04 $+ $readini($char($1), descriptions, DefenderAI), battle) }
     $ai.monstersummon($1)
     $next 
     halt
@@ -25,8 +25,8 @@ alias aicheck {
 
 
   if (($readini($char($1), info, ai_type) = PayToAttack) && ($readini($char($1), stuff, redorbs) <= 0)) {
-    if ($readini($char($1), descriptions, Idle) != $null) { $set_chr_name($1) | $display.message(4 $+ %real.name  $+ $readini($char($1), descriptions, Idle), battle) }
-    if ($readini($char($1), descriptions, Idle) = $null) { $set_chr_name($1) | $display.message(4 $+ %real.name watches the battle as $gender3($3) waits to be paid before getting involved., battle) }
+    if ($readini($char($1), descriptions, Idle) != $null) { $set_chr_name($1) | $display.message(04 $+ %real.name  $+ $readini($char($1), descriptions, Idle), battle) }
+    if ($readini($char($1), descriptions, Idle) = $null) { $set_chr_name($1) | $display.message(04 $+ %real.name watches the battle as $gender3($3) waits to be paid before getting involved., battle) }
     $next 
     halt
   }
@@ -178,7 +178,7 @@ alias ai_turn {
   }
 
   ; do an action
-  if (%ai.action = $null) { set %ai.action attack | echo -a 4ERORR: AI ACTION WAS NULL!  }
+  if (%ai.action = $null) { set %ai.action attack | echo -a 04ERORR: AI ACTION WAS NULL!  }
   writeini $txtfile(battle2.txt) BattleInfo $1 $+ .lastactionbar %ai.action
 
   if (%ai.action = tech) { 
@@ -678,7 +678,7 @@ alias ai_gettarget.random {
     }
 
     if (%ai.target = $null) { 
-      if ((%element = $null) && (%status.type = $null)) { echo -a 4NULL TARGET. SWITCHING TO BERSERK TYPE | set %ai.target $1 | writeini $char($1) info ai_type berserk }
+      if ((%element = $null) && (%status.type = $null)) { echo -a 04NULL TARGET. SWITCHING TO BERSERK TYPE | set %ai.target $1 | writeini $char($1) info ai_type berserk }
     }
 
     unset %random.target | unset %total.targets | unset %taunt.action
@@ -926,7 +926,7 @@ alias ai_chooseskill {
 
       ; If it's still null, let's just taunt someone at random.
       if (%ai.target = $null) {
-        echo -a 4AI WAS UNABLE TO FIND A TARGET, TAUNTING AT RANDOM
+        echo -a 04AI WAS UNABLE TO FIND A TARGET, TAUNTING AT RANDOM
         unset %random.target | unset %total.targets 
         set %taunt.action true | $ai_gettarget($1) |  $taunt($1 , %ai.target) | halt 
       } 
@@ -973,7 +973,7 @@ alias ai_chooseskill {
   }
 
   if (%ai.skill = $null) {
-    echo -a 4AI TRYING TO USE A NULL SKILL, taunting instead
+    echo -a 04AI TRYING TO USE A NULL SKILL, taunting instead
     unset %random.target | unset %total.targets 
     set %taunt.action true | $ai_gettarget($1) |  $taunt($1 , %ai.target) | halt 
   }
@@ -1109,6 +1109,7 @@ alias ai.monstersummon {
   if ($is_charmed($1) = true) { return }
 
   if ($readini($char($1), skills, monstersummon) >= 1) { 
+
     $portal.clear.monsters
     var %summon.chance $rand(1,100)
     if (%summon.chance <= $readini($char($1), skills, monstersummon.chance)) {
@@ -1171,7 +1172,7 @@ alias ai.egg {
     var %idle.message $readini($char($1), descriptions, EggIdle) 
     if (%idle.message = $null) { var %idle.message  $+ $1 sits quietly }
 
-    $display.message(4 $+ %idle.message, battle) 
+    $display.message(04 $+ %idle.message, battle) 
 
     $next | halt 
   } 

@@ -743,10 +743,10 @@ formula.meleedmg.player.formula {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   if (%counterattack != on) { 
     ; Check for the En-Spell Buff
@@ -1782,10 +1782,10 @@ formula.meleedmg.player.formula_2.0 {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   if (%counterattack != on) { 
     ; Check for the En-Spell Buff
@@ -2111,10 +2111,10 @@ formula.meleedmg.player.formula_3.1 {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   if (%counterattack != on) { 
     ; Check for the En-Spell Buff
@@ -2463,10 +2463,10 @@ formula.meleedmg.player.formula_3.0 {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   if (%counterattack != on) { 
     ; Check for the En-Spell Buff
@@ -2800,10 +2800,10 @@ formula.meleedmg.player.formula_1.0 {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   if (%counterattack != on) { 
     ; Check for the En-Spell Buff
@@ -3200,10 +3200,10 @@ formula.meleedmg.player.formula_2.5 {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   if (%counterattack != on) { 
     ; Check for the En-Spell Buff
@@ -3680,10 +3680,10 @@ formula.meleedmg.monster {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   if (%counterattack != on) { 
     ; Check for the En-Spell Buff
@@ -5926,10 +5926,10 @@ formula.meleedmg.player.formula_4.0 {
   }
 
   ; If the target has Protect on, it will cut  melee damage in half.
-  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($readini($char($3), status, protect) = yes) { %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   ; If we came here via mugger's belt, we need to cut the damage in half.
-  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 6 }
+  if ($4 = mugger's-belt) {  %attack.damage = $round($calc(%attack.damage / 2),0) |  set %damage.display.color 06 }
 
   if (%counterattack != on) { 
     ; Check for the En-Spell Buff

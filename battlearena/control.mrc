@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 07/27/18
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -43,18 +43,18 @@ on 1:START: {
 
   if (%first.run = false) { 
     set %bot.owner $readini(system.dat, botinfo, bot.owner) 
-    if (%bot.owner = $null) { echo 4*** WARNING: There is no bot admin set.  Please fix this now. 
+    if (%bot.owner = $null) { echo 04*** WARNING: There is no bot admin set.  Please fix this now. 
     set %bot.owner $?="Please enter the bot admin's IRC nick" |  writeini system.dat botinfo bot.owner %bot.owner | .auser 100 %bot.owner }
-    else { echo 12*** The bot admin list is currently set to:4 %bot.owner 12*** 
+    else { echo 12*** The bot admin list is currently set to:04 %bot.owner 12*** 
     }
 
     set %battlechan $readini(system.dat, botinfo, questchan) 
-    if (%battlechan = $null) { echo 4*** WARNING: There is no battle channel set.  Please fix this now. 
+    if (%battlechan = $null) { echo 04*** WARNING: There is no battle channel set.  Please fix this now. 
     set %battlechan $?="Please enter the IRC channel you're using (include the #)" |  writeini system.dat botinfo questchan %battlechan }
-    else { echo 12*** The battle channel is currently set to:4 %battlechan 12*** }
+    else { echo 12*** The battle channel is currently set to:04 %battlechan 12*** }
 
     set %bot.name $readini(system.dat, botinfo, botname)
-    if (%bot.name = $null) { echo 4*** WARNING: The bot's nick is not set in the system file.  Please fix this now.
+    if (%bot.name = $null) { echo 04*** WARNING: The bot's nick is not set in the system file.  Please fix this now.
     set %bot.name $?="Please enter the nick you wish the bot to use" | writeini system.dat botinfo botname %bot.name | /nick %bot.name }
     else { /nick %bot.name } 
 
@@ -64,7 +64,7 @@ on 1:START: {
       var %botpass $?="Enter a password that you will use for the bot on Nickserv"
       if (%botpass = $null) { var %bosspass none }
       writeini system.dat botinfo botpass %botpass
-      echo 12*** OK.  Your password has been set to4 %botpass  -- Don't forget to register the bot with nickserv.
+      echo 12*** OK.  Your password has been set to04 %botpass  -- Don't forget to register the bot with nickserv.
     }
 
     $system_defaults_check
@@ -75,23 +75,23 @@ on 1:START: {
     echo 12*** Please set your bot's nick/name now.   Normal IRC nick rules apply (no spaces, for example) 
     set %bot.name $?="Please enter the nick you wish the bot to use"
     writeini system.dat botinfo botname %bot.name | /nick %bot.name
-    echo 12*** Great.  The bot's nick is now set to4 %bot.name
+    echo 12*** Great.  The bot's nick is now set to04 %bot.name
 
     echo 12*** Please set a bot owner now.  
     set %bot.owner $?="Please enter the bot owner's IRC nick"
     writeini system.dat botinfo bot.owner %bot.owner
-    echo 12*** Great.  The bot owner has been set to4 %bot.owner
+    echo 12*** Great.  The bot owner has been set to04 %bot.owner
 
     echo 12*** Now please set the IRC channel you plan to use the bot in
     set %battlechan $?="Enter an IRC channel (include the #)"
     writeini system.dat botinfo questchan %battlechan
-    echo 12*** The battles will now take place in4 %battlechan
+    echo 12*** The battles will now take place in04 %battlechan
 
     echo 12*** Now please set the password you plan to register the bot with
     var %botpass $?="Enter a password"
     if (%botpass = $null) { var %bosspass none }
     writeini system.dat botinfo botpass %botpass
-    echo 12*** OK.  Your password has been set to4 %botpass  -- Don't forget to register the bot with nickserv.
+    echo 12*** OK.  Your password has been set to04 %botpass  -- Don't forget to register the bot with nickserv.
 
     set %first.run false
     .auser 100 %bot.owner
@@ -99,12 +99,12 @@ on 1:START: {
     $system_defaults_check
   }
 
-  echo 12*** This bot is best used with mIRC version4 7.41 12 *** 
-  echo 12*** You are currently using mIRC version4 $version 12 ***
+  echo 12*** This bot is best used with mIRC version04 7.41 12 *** 
+  echo 12*** You are currently using mIRC version04 $version 12 ***
 
-  if ($version = 6.3) { echo 4*** While this used to be the recommended version for this bot, there are now some issues with readini and techniques.db.  Be aware that the game will not run properly any more with this version. Please upgrade to 7.41. 12 *** }
-  if (($version > 6.3) && ($version < 7.41)) { echo 4*** Your version is older than the recommended version for this bot. Some things may not work right.  It is recommended you update. 12 *** }
-  if ($version > 7.41) { echo 4*** Your version is newer than the recommended version for this bot. While it should work, it is currently untested and may have quirks or bugs.  It is recommended you downgrade to 7.41 if you run into any problems. 12 *** }
+  if ($version = 6.3) { echo 04*** While this used to be the recommended version for this bot, there are now some issues with readini and techniques.db.  Be aware that the game will not run properly any more with this version. Please upgrade to 7.41. 12 *** }
+  if (($version > 6.3) && ($version < 7.41)) { echo 04*** Your version is older than the recommended version for this bot. Some things may not work right.  It is recommended you update. 12 *** }
+  if ($version > 7.41) { echo 04*** Your version is newer than the recommended version for this bot. While it should work, it is currently untested and may have quirks or bugs.  It is recommended you downgrade to 7.41 if you run into any problems. 12 *** }
 
   if ($sha1($read(key)) != dd4b6aa27721dc5079c70f7159160313bb143720) { .remove key |  write key M`S)4:&ES(&=A;64@:7,@<G5N;FEN9R!T:&4@`D("871T;&4@`D$"<F5N82!"M871T;&4@4WES=&5M(&-R96%T960@8GD@`DH"86UE<R`"20)Y;W5B;W5S:&D@M+2T@079A:6QA8FQE(&9O<B!F<F5E(&%T.@,Q,A\@:'1T<',Z+R]G:71H=6(N?8V]M+TEY;W5B;W5S:&DO;4E20RU"871T;&5!<F5N80`` }
 }
@@ -155,7 +155,7 @@ on 2:TEXT:!bot admin*:#: { $bot.admin(list) }
 ; Bot Admins have  the ability to zap/erase characters.
 on 50:TEXT:!zap *:*: {  $set_chr_name($2) | $checkchar($2) | $zap_char($2) | $display.message($readini(translation.dat, system, zappedcomplete),global) | halt }
 on 50:TEXT:!unzap *:*: {  
-  if ($isfile($zapped($2)) = $false) { $display.private.message(4Error: $2 does not exist as a zapped file) | halt }
+  if ($isfile($zapped($2)) = $false) { $display.private.message(04Error: $2 does not exist as a zapped file) | halt }
   $unzap_char($2) | $display.message($readini(translation.dat, system, unzappedcomplete),global) | halt
 }
 
@@ -166,7 +166,7 @@ on 50:TEXT:!quit*:*:{ /quit $battle.version }
 on 50:TEXT:!force system default check*:*: { 
   writeini version.ver versions systemdat $replace($adate, /, ) $+ _ $+ $ctime
   $system_defaults_check
-  .msg $nick 3The bot has finished with the system.dat default check.
+  .msg $nick 03The bot has finished with the system.dat default check.
 }
 
 ; Add or remove a bot admin (note: cannot remove the person in position 1 with this command)
@@ -200,7 +200,7 @@ on 50:TEXT:!debug dump*:*:{
   write %debug.filename ai target: %ai.target
   write %debug.filename ai tech: %ai.tech
 
-  $display.message(4Variables File dumped as file: %debug.filename, private)
+  $display.message(04Variables File dumped as file: %debug.filename, private)
 }
 
 ; Cleans out the main folder of .txt, .lst, and .db files.
@@ -209,7 +209,7 @@ on 50:TEXT:!main folder cleanup:*:{
   .echo -q $findfile( $mircdir  , *.db, 0, 0, clean_mainfolder $1-) 
   .echo -q $findfile( $mircdir  , *.txt, 0, 0, clean_mainfolder $1-) 
   .echo -q $findfile( $mircdir , *.html, 0, 0, clean_mainfolder $1-) 
-  $display.message(4.db & .lst & .txt & .html files have been cleaned up from the main bot folder.)
+  $display.message(04.db & .lst & .txt & .html files have been cleaned up from the main bot folder.)
 }
 
 ; Bot admins can toggle the Enmity targeting system
@@ -468,15 +468,15 @@ on 50:TEXT:!toggle auction house topic change*:*:{
 
 ; Bot admins can set the starting skill slots
 ON 50:TEXT:!set skill slots*:*: {
-  if ($4 !isnum 1-1000) { $display.private.message(4Invalid chance number. Valid numbers are 1-1000) | halt }
-  writeini system.dat system StartingSkillSlots $4 | $display.private.message(3Starting Skill Slots set to: $4)
+  if ($4 !isnum 1-1000) { $display.private.message(04Invalid chance number. Valid numbers are 1-1000) | halt }
+  writeini system.dat system StartingSkillSlots $4 | $display.private.message(03Starting Skill Slots set to: $4)
 }
 
 ; Bot admins can set a chance of mimics appearing
 ; !mimic chance #  (where # is 1-100)
 ON 50:TEXT:!mimic chance*:*: {
-  if ($3 !isnum 1-100) { $display.private.message(4Invalid chance number. Valid numbers are 1-100) | halt }
-  writeini system.dat system MimicChance $3 | $display.private.message(3Mimic chance set to: $3 percent)
+  if ($3 !isnum 1-100) { $display.private.message(04Invalid chance number. Valid numbers are 1-100) | halt }
+  writeini system.dat system MimicChance $3 | $display.private.message(03Mimic chance set to: $3 percent)
 }
 
 ; Bot admins can clear the portal usage of a player
@@ -497,12 +497,12 @@ ON 50:TEXT:!clear dungeon usage *:*: {
 
 ; Bot admins can manually set the winning streak.
 on 50:TEXT:!set streak*:*:{   
-  if ($3 = $null) { $display.private.message(4!set streak number) | halt }
-  if ($3 < 0) {  $display.private.message(4The streak cannot be negative.) | halt }
-  if (. isin $3) { $display.private.message(4The streak must be a whole number.) | halt }
+  if ($3 = $null) { $display.private.message(04!set streak number) | halt }
+  if ($3 < 0) {  $display.private.message(04The streak cannot be negative.) | halt }
+  if (. isin $3) { $display.private.message(04The streak must be a whole number.) | halt }
   writeini battlestats.dat battle LosingStreak 0
   writeini battlestats.dat battle winningstreak $3
-  $display.message(3The winning streak has been set to: $3, global)
+  $display.message(03The winning streak has been set to: $3, global)
 }
 
 ; Bot admins can toggle the AI system on/off.
@@ -574,7 +574,7 @@ on 50:TEXT:!time between battles *:*:{
     writeini system.dat System TimeBetweenBattles $4
     $display.message($readini(translation.dat, System, ChangeTime), global)
   }
-  else { $display.message(4You must enter a number for the time,global) | halt }
+  else { $display.message(04You must enter a number for the time,global) | halt }
 }
 
 ; Bot owners can change the time for !enter allownace.
@@ -583,7 +583,7 @@ on 50:TEXT:!time to enter *:*:{
     writeini system.dat System TimeToEnter $4
     $display.message($readini(translation.dat, System, ChangeTimeForEnter), global)
   }
-  else { $display.message(4You must enter a number for the time,global) | halt }
+  else { $display.message(04You must enter a number for the time,global) | halt }
 }
 
 ; Bot admins can set the MOTD, everyone else can just see it
@@ -591,23 +591,23 @@ on 3:TEXT:!motd*:*:{
   $checkscript($2-) 
 
   if (($2 = $null) || ($2 = list)) { 
-    if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(4Current Admin Message2: $read($txtfile(motd.txt))) }
-    else { $display.private.message(4No admin message has been set) }
+    if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(04Current Admin Message02: $read($txtfile(motd.txt))) }
+    else { $display.private.message(04No admin message has been set) }
     halt
   }
 
   if (($2 = remove) && ($istok($readini(system.dat, botinfo, bot.owner), $nick, 46) = $true)) {
     if ($isfile($txtfile(motd.txt)) = $true) {  .remove $txtfile(motd.txt) }
-    $display.private.message(4The admin message has been removed) 
+    $display.private.message(04The admin message has been removed) 
     halt
   }
 
   if (($2 = set) || ($2 = add)) {
     if ($istok($readini(system.dat, botinfo, bot.owner), $nick, 46) = $true) {
-      if ($3 = $null) { $display.private.message(4You need to supply a message to set) | halt }
+      if ($3 = $null) { $display.private.message(04You need to supply a message to set) | halt }
       if ($isfile($txtfile(motd.txt)) = $true) {  .remove $txtfile(motd.txt) }
       write $txtfile(motd.txt) $3-
-      $display.private.message(4Admin message has been set)
+      $display.private.message(04Admin message has been set)
     }
   }
 }
@@ -622,13 +622,13 @@ on 50:TEXT:!display *:*:{
 
     ; do a loop to show the text file to the bot admin
     var %number.of.entries $lines($nick $+ _players.txt)
-    if (%number.of.entries = 0) { $display.private.message(4No players found) }
+    if (%number.of.entries = 0) { $display.private.message(04No players found) }
     else {
-      $display.private.message(3Active Player List)
+      $display.private.message(03Active Player List)
 
       var %entry.line 1
       while (%entry.line <= %number.of.entries) {
-        $display.private.message.delay(2 $+ $read($nick $+ _players.txt, %entry.line))
+        $display.private.message.delay(02 $+ $read($nick $+ _players.txt, %entry.line))
         inc %entry.line 1
       }
     }
@@ -655,14 +655,14 @@ on 50:TEXT:!display *:*:{
 
     ; do a loop to show the text file to the bot admin
     var %number.of.entries $lines($nick $+ _zapped.txt)
-    if (%number.of.entries = 0) { $display.private.message(4No zapped players found) }
+    if (%number.of.entries = 0) { $display.private.message(04No zapped players found) }
     else {
-      $display.private.message(3Zapped Player List - zapped time)
+      $display.private.message(03Zapped Player List - zapped time)
 
       var %entry.line 1
       while (%entry.line <= %number.of.entries) {
         var %delay.time %entry.line
-        $display.private.message.delay.custom(2 $+ $read($nick $+ _zapped.txt, %entry.line), %delay.time)
+        $display.private.message.delay.custom(02 $+ $read($nick $+ _zapped.txt, %entry.line), %delay.time)
         inc %entry.line 1
       }
     }
@@ -675,7 +675,7 @@ on 50:TEXT:!display *:*:{
 ; bot admin command to reset a player's password
 ; !password reset <playername>
 on 50:TEXT:!password reset *:*:{  
-  if ($3 = $null) { .msg $nick 4!password reset playername | halt }
+  if ($3 = $null) { .msg $nick 04!password reset playername | halt }
   $checkchar($3)
 
   var %encode.type $readini($char($3), info, PasswordType) 
@@ -687,13 +687,13 @@ on 50:TEXT:!password reset *:*:{
   if (%encode.type = encode) { writeini $char($3) info password $encode(%newpassword)  }
   if (%encode.type = hash) { writeini $char($3) info password $sha1(%newpassword)  }
 
-  .msg $nick 3 $+ $3 $+ 's password has been reset.
-  .msg $3 4 $+ $nick has reset your password. Your new password is now: %newpassword 
+  .msg $nick 03 $+ $3 $+ 's password has been reset.
+  .msg $3 04 $+ $nick has reset your password. Your new password is now: %newpassword 
 }
 
 ; Allows a bot admin to see the average player level in the game
 on 50:TEXT:!apl*:*:{  
-  $display.message(3Average Player's Level: $total.player.averagelevel , private)
+  $display.message(03Average Player's Level: $total.player.averagelevel , private)
 }
 
 

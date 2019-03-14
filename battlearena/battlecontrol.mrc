@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/12/18
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2542,12 +2542,12 @@ alias battlelist {
 
           if (($return.systemsetting(TurnType) = action) && ($readini($char(%who.battle), info, ai_type) != defender)) { var %action.points $chr(91) $+ $action.points(%who.battle, check) $+ $chr(93) }
 
-          var %token.to.add 5 $+ %who.battle $+ %action.points
+          var %token.to.add 05 $+ %who.battle $+ %action.points
           if ($readini($char(%who.battle), monster, type) = object) { var %token.to.add 14 $+ %who.battle }
           if (($readini($boss(%who.battle), basestats, hp) != $null) || ($readini($char(%who.battle), monster, boss) = true)) { 
 
             if ($return.systemsetting(TurnType) = action) { var %action.points $chr(91) $+ $action.points(%who.battle, check) $+ $chr(93) }
-            var %token.to.add 6 $+ %who.battle $+ %action.points
+            var %token.to.add 06 $+ %who.battle $+ %action.points
           }
         }
         if ($readini($char(%who.battle), info, flag) = npc) { 

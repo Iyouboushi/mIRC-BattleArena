@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/12/19
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1477,7 +1477,7 @@ display_damage {
     $increase_death_tally(%target)
     $achievement_check(%target, SirDiesALot)
     $gemconvert_check($1, %target, $3, $4)
-    if (%attack.damage > $readini($char(%target), basestats, hp)) { set %overkill 7<<OVERKILL>> }
+    if (%attack.damage > $readini($char(%target), basestats, hp)) { set %overkill 07<<OVERKILL>> }
 
     $display.message($readini(translation.dat, battle, EnemyDefeated), battle)
     unset %overkill
@@ -1692,7 +1692,7 @@ display_aoedamage {
     $check.clone.death(%target)
     $increase_death_tally(%target)
     $achievement_check(%target, SirDiesALot)
-    if (%attack.damage > $readini($char(%target), basestats, hp)) { set %overkill 7<<OVERKILL>> }
+    if (%attack.damage > $readini($char(%target), basestats, hp)) { set %overkill 07<<OVERKILL>> }
     $display.message($readini(translation.dat, battle, EnemyDefeated), battle)
 
     if ($readini($dbfile(techniques.db), $3, magic) = yes) {  $goldorb_check(%target, magic)  }
@@ -1874,7 +1874,7 @@ taunt {
 
   var %taunt $read($txtfile(%taunt.file))
 
-  $display.message(2 $+ %real.name looks at $set_chr_name($2) %real.name and says " $+ %taunt $+ "  %style.rating, battle) 
+  $display.message(02 $+ %real.name looks at $set_chr_name($2) %real.name and says " $+ %taunt $+ "  %style.rating, battle) 
 
   : If the monster is HurtByTaunt, do damage.  Else, do a random effect.
 
@@ -2324,7 +2324,7 @@ goldorb_check {
 
     $character.revive($1)
 
-    if ($readini($char($1), descriptions, revive) != $null) {  var %revive.message 7 $+ %real.name  $+ $readini($char($1), descriptions, revive) }
+    if ($readini($char($1), descriptions, revive) != $null) {  var %revive.message 07 $+ %real.name  $+ $readini($char($1), descriptions, revive) }
     if ($readini($char($1), descriptions, revive) = $null) { var %revive.message $readini(translation.dat, battle, GoldOrbUsed) }
 
     $display.message.delay(%revive.message, battle, 1) 
@@ -3581,7 +3581,7 @@ spawn_after_death {
 
       var %bossquote $readini($char(%current.monster.to.spawn.name), descriptions, bossquote)
       if (%bossquote != $null) { 
-        var %bossquote 2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
+        var %bossquote 02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
         $display.message(%bossquote, battle) 
       }
     }
@@ -3589,7 +3589,7 @@ spawn_after_death {
     if ($readini(system.dat, system, botType) = DCCchat) {
       $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
       $display.message(12 $+ %real.name  $+ $readini($char(%current.monster.to.spawn.name), descriptions, char), battle)
-      if (%bossquote != $null) {   $display.message(2 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn.name), descriptions, BossQuote) $+ ", battle) }
+      if (%bossquote != $null) {   $display.message(02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn.name), descriptions, BossQuote) $+ ", battle) }
     }
 
     ; Boost the monster
@@ -4538,7 +4538,7 @@ wonderguard.check {
     if ($readini($dbfile(weapons.db), $4, TormentWeapon) = true) { return }
 
     set %attack.damage 0 
-    set %damage.display.color 6 
+    set %damage.display.color 06 
     set %guard.message $readini(translation.dat, battle, ImmuneToAttack) 
     return
   }
@@ -4578,7 +4578,7 @@ wonderguard.check {
   ; Is the monster immune?
   if (%wonderguard.immune = true) {
     set %attack.damage 0 
-    set %damage.display.color 6 
+    set %damage.display.color 06 
     set %guard.message $readini(translation.dat, battle, ImmuneToAttack) 
     return
   }
@@ -4628,7 +4628,7 @@ modifer_adjust {
         writeini $char($1) battle def %mon.temp.def
       }
       writeini $char($1) modifiers HitWithWeakness true
-      set %damage.display.color 7
+      set %damage.display.color 07
     }
 
     ; If it's under 1, it means the target is resistant to the element/weapon.  Let's make the monster stronger for using something it's resistant to.
@@ -4638,7 +4638,7 @@ modifer_adjust {
       var %mon.temp.str = $round($calc(%mon.temp.str + (%mon.temp.str * .05)),0)
       if (%mon.temp.str < 0) { var %mon.temp.str 0 }
       writeini $char($1) battle str %mon.temp.str
-      set %damage.display.color 6
+      set %damage.display.color 06
     }
   }
 

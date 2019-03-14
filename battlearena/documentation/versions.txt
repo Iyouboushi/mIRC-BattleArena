@@ -1699,5 +1699,6 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]
 - Fixed an issue with certain items being shown under the wrong currencies [thanks to Pentium320]
+- Fixed an issue with some color codes causing issues
 - Removed !toggle damage formula  -- The old formulas are still in the bot but I want to focus on one formula for players
   moving forward.

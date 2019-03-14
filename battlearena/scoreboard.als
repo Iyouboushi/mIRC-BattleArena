@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Scoreboard Generation
-;;;; Last updated: 03/14/18
+;;;; Last updated: 03/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 generate.scoreboard {
   set %totalplayers 0
@@ -1169,7 +1169,7 @@ generate.playerkillboard {
   $display.message($readini(translation.dat, system, KillBoardTitle), private)
   $display.message($chr(3) $+ 2 $+ %score.list, private)
   if (%score.list.2 != $null) { $display.message($chr(3) $+ 2 $+ %score.list.2, private)  }
-  $display.message(2Total monsters killed:4 $bytes(%grand.total,b), private)
+  $display.message(02Total monsters killed:04 $bytes(%grand.total,b), private)
 
   unset %totalplayers | unset %score.list | unset %score.list.2 | unset %who.score |  .remove ScoreBoard.txt | unset %ScoreBoard.score
   unset %grandtotal
