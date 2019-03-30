@@ -1053,6 +1053,15 @@ display_shield_lists {  $set_chr_name($1)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns a player's limit break %
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+limitbreak.percent {
+  var %limit.percent $readini($char($1), Battle, LimitBreakPercent)
+  if (%limit.percent = $null) { return 0 }
+  else { return %limit.percent }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Displays a char's style xp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 show.stylexp {

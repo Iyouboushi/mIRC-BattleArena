@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/29/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4757,6 +4757,32 @@ battle.alliednotes.check {
     if (($readini(battlestats.dat, Battle, WinningStreak) >= 2000) && ($readini(battlestats.dat, Battle, WinningStreak) < 3000)) { writeini $txtfile(battle2.txt) battle alliednotes 25 }
     if ($readini(battlestats.dat, Battle, WinningStreak) >= 3000)  { writeini $txtfile(battle2.txt) battle alliednotes 50 }
   }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Increases a target's limit break %
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+limitbreak.percent.increase {
+  var %limitbreak.percent $limitbreak.percent($1)
+  if (%limitbreak.percent = 100) { return }
+
+  var %limitbreak.rate 0
+  var %current.level $get.level($1)
+
+  if (%current.level <= 20) { var %limitbreak.rate 140 }
+  if ((%current.level > 20) && (%current.level <= 100)) { var %limitbreak.rate 324 }
+  if ((%current.level > 100) && (%current.level <= 500)) { var %limitbreak.rate 435 }
+  if ((%current.level > 500) && (%current.level <= 1000)) { var %limitbreak.rate 506 }
+  if (%current.level > 1000) { var %limitbreak.rate 700 }
+
+  var %lb.maxhp $readini($char($1), BaseStats, HP)
+
+  var %limitbreak.increase.amount $round($calc(((300 * %attack.damage) / %lb.maxhp) * (256 / %limitbreak.rate)),0)
+
+  inc %limitbreak.percent %limitbreak.increase.amount
+  if (%limitbreak.percent > 100) { var %limitbreak.percent 100 } 
+
+  writeini $char($1) Battle LimitBreakPercent %limitbreak.percent 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

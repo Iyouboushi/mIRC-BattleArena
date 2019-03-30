@@ -93,6 +93,13 @@ NoTechsForMe=$chr(3) $+ 3 $+  $+ %real.name does not know any techniques for $
 NoTechsForOthers=$chr(3) $+ 3 $+  $+ %real.name does not know any techniques for $gender($2) %weapon.equipped $+ .
 ViewIgnitions=$chr(3) $+ 3 $+  $+ %real.name has obtained the following Ignitions: %ignitions.list 
 NoIgnitions=$chr(3) $+ 3 $+  $+ %real.name does not know any Ignitions
+
+NoLimitsForMe=$chr(3) $+ 03 $+  $+ %real.name does not know any limit breaks
+NoLimitsForOthers=$chr(3) $+ 03 $+  $+ %real.name does not know any limit breaks
+ViewMyLimitBreaks=$chr(3) $+ 03 $+  $+ %real.name knows the following 12limit breaks3: %limits.list
+ViewOthersLimitBreaks=$chr(3) $+ 03 $+  $+ %real.name knows the following 12limit breaks3: %limits.list
+ViewLimitPercent=$chr(3) $+ 03 $+ %real.name $+ 's limit break bar is at: %limit.percent $+ $chr(37)
+
 ViewPassiveSkills=$chr(3) $+ 3 $+  $+ %real.name knows the following 12passive3 skills: %passive.skills.list
 ViewPassiveSkills2=$chr(3) $+ 3 $+  $+ %passive.skills.list2
 ViewActiveSkills=$chr(3) $+ 3 $+  $+ %real.name knows the following 12active3 skills: %active.skills.list

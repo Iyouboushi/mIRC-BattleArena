@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DCC CHAT CMDS
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/29/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -464,6 +464,31 @@ on 2:Chat:!ignitions: {
     else { $dcc.private.message($nick, $readini(translation.dat, system, NoIgnitions))  }
   }
 }
+
+on 2:Chat:!limits*: { unset %limits.list
+  if ($2 = $null) { $limits.list($nick) | $set_chr_name($nick) 
+    if (%limits.list != $null) { var %limit.percent $limitbreak.percent($nick) | $dcc.private.message($nick, $readini(translation.dat, system, ViewMyLimitBreaks)) | $dcc.private.message($nick, $readini(translation.dat, system, ViewLimitPercent)) }
+    if (%limits.list = $null) { $dcc.private.message($nick, $readini(translation.dat, system, NoLimitsForMe))  }
+  }
+  else { $checkchar($2) | $limits.list($2)  | $set_chr_name($2) 
+    if (%limits.list != $null) { var %limit.percent $limitbreak.percent($2) | $dcc.private.message($nick, $readini(translation.dat, system, ViewOthersLimitBreaks)) | $dcc.private.message($nick, $readini(translation.dat, system, ViewLimitPercent)) }
+    if (%limits.list = $null) { $dcc.private.messages($readini(translation.dat, system, NoLimitsForOthers))  }  
+  }
+  unset %replacechar | unset %limits.list
+}
+
+on 2:Chat:!limits breaks*: { unset %limits.list
+  if ($3 = $null) { $limits.list($nick) | $set_chr_name($nick) 
+    if (%limits.list != $null) { var %limit.percent $limitbreak.percent($nick) | $dcc.private.message($nick, $readini(translation.dat, system, ViewMyLimitBreaks)) | $dcc.private.message($nick, $readini(translation.dat, system, ViewLimitPercent)) }
+    if (%limits.list = $null) { $dcc.private.message($nick, $readini(translation.dat, system, NoLimitsForMe))  }
+  }
+  else { $checkchar($3) | $limits.list($3)  | $set_chr_name($3) 
+    if (%limits.list != $null) { var %limit.percent $limitbreak.percent($2) | $dcc.private.message($nick, $readini(translation.dat, system, ViewOthersLimitBreaks)) | $dcc.private.message($nick, $readini(translation.dat, system, ViewLimitPercent)) }
+    if (%limits.list = $null) { $dcc.private.messages($readini(translation.dat, system, NoLimitsForOthers))  }  
+  }
+  unset %replacechar | unset %limits.list
+}
+
 
 on 2:Chat:!skills*: {
   if ($2 = $null) { $skills.list($nick) | $set_chr_name($nick) | $readskills($nick, dcc) | halt }

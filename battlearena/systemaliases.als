@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/29/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1577,6 +1577,23 @@ ignitions.get.list {
     inc %value 1 
   }
   return %ignitions.list
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Builds the Limit Break list
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+limits.list {
+  unset %limits.list
+  var %total.limits $ini($char($1), LimitBreaks, 0)
+  if ((%total.limits = $null) || (%total.limits = 0)) { return }
+
+  var %current.limit 1
+
+  while (%current.limit <= %total.limits) {
+    var %limit.name $ini($char($1), LimitBreaks, %current.limit)
+    %limits.list = $addtok(%limits.list, 07 $+ %limit.name, 46)
+    inc %current.limit
+  }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

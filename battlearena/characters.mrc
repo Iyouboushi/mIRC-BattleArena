@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/29/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -845,6 +845,30 @@ on 3:TEXT:!skills*:?: {
   }
 
   else { $checkchar($2) | $skills.list($2) | $set_chr_name($2) | $readskills($2, private)  }
+}
+
+on 3:TEXT:!limits*:#: {  unset %limits.list
+  if ($2 = $null) { $limits.list($nick) | $set_chr_name($nick) 
+    if (%limits.list != $null) { var %limit.percent $limitbreak.percent($nick) | $display.message($readini(translation.dat, system, ViewMyLimitBreaks),private) | $display.message($readini(translation.dat, system, ViewLimitPercent),private) }
+    if (%limits.list = $null) { $display.message($readini(translation.dat, system, NoLimitsForMe),private)  }
+  }
+  else { $checkchar($2) | $limits.list($2)  | $set_chr_name($2) 
+    if (%limits.list != $null) { var %limit.percent $limitbreak.percent($2) | $display.message($readini(translation.dat, system, ViewOthersLimitBreaks),private) | $display.message($readini(translation.dat, system, ViewLimitPercent),private) }
+    if (%limits.list = $null) { $display.message($readini(translation.dat, system, NoLimitsForOthers),private)  }  
+  }
+  unset %replacechar | unset %limits.list
+}
+
+on 3:TEXT:!limit breaks*:#: { unset %limits.list
+  if ($3 = $null) { $limits.list($nick) | $set_chr_name($nick) 
+    if (%limits.list != $null) { var %limit.percent $limitbreak.percent($nick) | $display.message($readini(translation.dat, system, ViewMyLimitBreaks),private) | $display.message($readini(translation.dat, system, ViewLimitPercent),private) }
+    if (%limits.list = $null) { $display.message($readini(translation.dat, system, NoLimitsForMe),private)  }
+  }
+  else { $checkchar($3) | $limits.list($3)  | $set_chr_name($3) 
+    if (%limits.list != $null) { var %limit.percent $limitbreak.percent($3) | $display.message($readini(translation.dat, system, ViewOthersLimitBreaks),private) | $display.message($readini(translation.dat, system, ViewLimitPercent),private) }
+    if (%limits.list = $null) { $display.message($readini(translation.dat, system, NoLimitsForOthers),private)  }  
+  }
+  unset %replacechar | unset %limits.list
 }
 
 on 3:TEXT:!ammo*:#:{ 

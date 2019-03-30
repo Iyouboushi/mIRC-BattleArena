@@ -18,6 +18,7 @@ Int=5
 Spd=5
 IgnitionGauge=0
 Status=alive
+LimitBreakPercent=0
 
 
 [Rage]
@@ -212,6 +213,9 @@ GuardianXP=0
 DoublePunch=1
 
 [Ignitions]
+
+
+[LimitBreaks]
 
 
 [Item_Amount]
