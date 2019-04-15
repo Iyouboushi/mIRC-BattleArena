@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/29/19
+;;;; Last updated: 04/19/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2080,6 +2080,7 @@ random.battlefield.curse {
   if (%battle.type = DragonHunt) { return }
   if (%battle.type = torment) { return }
   if (%battle.type = cosmic) { return }
+  if (%battle.type = monsterfair) { return }
   if ($readini(battlestats.dat, battle, WinningStreak) <= 50) { return }
   var %timeofday $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay)
   if ((%timeofday = morning) || (%timeofday = noon)) { return }
@@ -2113,6 +2114,8 @@ random.battlefield.curse {
 ; battlefield limitation.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battlefield.limitations {
+  if (%battle.type = monsterfair) { return }
+
   if ($return_winningstreak <= 10) {
     if ((((%battle.type != dungeon) && (%battle.type != torment) && (%battle.type != cosmic) && (%portal.bonus != true)))) { return }
   }
@@ -2138,6 +2141,7 @@ random.surpriseattack {
   if (%battle.type = DragonHunt) { return }
   if (%savethepresident = on) { return }
   if (%battle.type = dungeon) { return }
+  if (%battle.type = monsterfair) { return }
   if ($readini(battlestats.dat, TempBattleInfo, SurpriseAttack) != $null) { remini battlestats.dat TempBattleInfo SurpriseAttack | return } 
 
   set %surpriseattack.chance $rand(1,105)
@@ -2160,6 +2164,8 @@ random.playersgofirst {
   if (%battle.type = DragonHunt) { return }
   if (%surpriseattack = on) { return }
   if (%battle.type = dungeon) { return }
+  if (%battle.type = monsterfair) { return }
+
   set %playersfirst.chance $rand(1,100)
 
   if (%supplyrun = on) { var %playersfirst.chance 1 }
@@ -2183,8 +2189,9 @@ random.battlefield.ally {
   if (%battle.type = DragonHunt) { return }
   if (%battle.type = torment) { return }
   if (%battle.type = cosmic) { return }
+  if (%battle.type = monsterfair) { return }
   if (%battle.type = defendoutpost) { 
-    if (%number.of.players < 5) { $generate_allied_troop }
+    if (%number.of.players < 3) { $generate_allied_troop }
     return
   }
 
@@ -3349,6 +3356,7 @@ multiple_wave_check {
     if ((%battle.type = defendoutpost) || (%battle.type = assault)) { unset %multiple.wave }
     if (%battle.type = torment)  { unset %multiple.wave }
     if (%battle.type = cosmic) { return }
+    if (%battle.type = monsterfair) { return }
 
     if (%battle.type = dragonhunt) { return }
     if (%battle.type = dungeon) { return }
@@ -3697,6 +3705,7 @@ renkei.calculate {
 random.battlefield.pick {
   if (%battle.type = torment) { return }
   if (%battle.type = cosmic) { return }
+  if (%battle.type = monsterfair) { return }
 
   if (%warp.battlefield != $null) {
     %current.battlefield = %warp.battlefield
@@ -5026,7 +5035,6 @@ valormedals.reward {
   }
 }
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Gives everyone an 
 ; AlliedLockBox
@@ -5048,6 +5056,33 @@ besieged.reward {
       inc %player.amount %besieged.reward.amount
       writeini $char(%who.battle) item_amount AlliedLockBox %player.amount
       %besieged.drop.rewards = $addtok(%besieged.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ AlliedLockBox x $+ %besieged.reward.amount  $+  $+ $chr(93) $+ , 46)
+
+      inc %battletxt.current.line 1 
+    }
+  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Gives everyone a 
+; PrizeTicket
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+monsterfair.reward {
+  unset %monsterfair.drop.rewards
+
+  var %monsterfair.reward.amount 1
+
+  set %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+    if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+    else { 
+
+      var %player.amount $readini($char(%who.battle), item_amount, PrizeTicket)
+      if (%player.amount = $null) { var %player.amount 0 }
+      inc %player.amount %monsterfair.reward.amount
+      writeini $char(%who.battle) item_amount PrizeTicket %player.amount
+      %monsterfair.drop.rewards = $addtok(%monsterfair.drop.rewards,  $+ $get_chr_name(%who.battle) $+  $+ $chr(91) $+ PrizeTicket x $+ %monsterfair.reward.amount  $+  $+ $chr(93) $+ , 46) 
 
       inc %battletxt.current.line 1 
     }
@@ -5127,6 +5162,17 @@ show.besieged.reward {
   %besieged.drop.rewards = $replace(%besieged.drop.rewards, $chr(046), %replacechar)
   $display.message($readini(translation.dat, battle, Besieged.DropWin),battle) 
   unset %item.drop.rewards | unset %besieged.drop.rewards
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Displays The Monster Fair rewards
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+show.monsterfair.reward {
+  if (%monsterfair.drop.rewards = $null) { return }
+  var %replacechar $chr(044) $chr(032)
+  %monsterfair.drop.rewards = $replace(%monsterfair.drop.rewards, $chr(046), %replacechar)
+  $display.message($readini(translation.dat, battle, monsterfair.DropWin),battle) 
+  unset %item.drop.rewards
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

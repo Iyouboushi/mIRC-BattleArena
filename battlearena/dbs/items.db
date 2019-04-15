@@ -3258,6 +3258,25 @@ Currency=none
 Exclusive=yes
 
 
+; Monster Fair items
+[MonsterFairTicket]
+type=MonsterFair
+Cost=500
+SellPrice=10
+ViewDesc=A ticket to enter the Monster Fair. Using this item outside of battle will cause the daily Monster Fair battle set to start. This item will be consumed upon use.
+Desc=pulls out a glowing ticket to the Monster Fair.  In a flash a portal opens and several gentle-looking monsters wave the heroes on in  Those who wish to test their strength may now enter the fair.
+Currency=AlliedNotes
+Exclusive=yes 
+
+[PrizeTicket]
+type=misc
+cost=0
+SellPrice=100
+Desc=A ticket won from the Monster Fair. This can be used to exchange for items.
+Currency=none
+Exclusive=yes
+
+
 ; Tech increase items
 
 [CodexOfPoetics]

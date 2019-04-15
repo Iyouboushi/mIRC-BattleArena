@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/19/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -277,10 +277,10 @@ alias clear_battle {
   var %people.in.battle $readini($txtfile(battle2.txt), Battle, List)
   if (($istok(%people.in.battle,treasure_goblin,46) = $true) && ($1 = victory)) { 
 
-    if ((%battle.type != cosmic) && (%battle.type != torment))  {
+    if (((%battle.type != cosmic) && (%battle.type != MonsterFair) && (%battle.type != torment)))  {
       if ($isfile($dungeonfile(treasure_vault)) = $true) { 
-        ; a 10% chance of this happening
-        if ($rand(1,100) <= 45) { var %open.treasuredungeon true }
+        ; a 55% chance of this happening
+        if ($rand(1,100) <= 55) { var %open.treasuredungeon true }
       }
     }
   }
@@ -514,8 +514,9 @@ alias startnormal {
 
     if (%start.battle.type = torment) { set %battle.type torment | $display.message($readini(translation.dat, system, TormentBattleStarted), global) }
     if (%start.battle.type = cosmic) { set %battle.type cosmic | $display.message($readini(translation.dat, system, CosmicBattleStarted), global) }
+    if (%start.battle.type = monsterfair) { set %battle.type monsterfair | $display.message($readini(translation.dat, system, MonsterFairBattleStarted), global) }
 
-    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonhunt.torment.cosmic.besieged.supplyrun
+    var %valid.battle.types ai.boss.monster.orbbattle.orbfountain.orb_fountain.pvp.gauntlet.manual.mimic.defendoutpost.assault.dragonhunt.torment.cosmic.besieged.supplyrun.monsterfair
     if ($istok(%valid.battle.types,$lower(%start.battle.type),46) = $false) {
       $display.message(04Invalid battle type: %start.battle.type ,global) 
       $clear_battle 
@@ -580,6 +581,10 @@ alias enter {
 
   if (%battle.type = cosmic) {
     if ($get.level($1) < 500) { $display.message($readini(translation.dat, errors, Cosmic.levelTooLow), global) | halt }
+  }
+
+  if (%battle.type = monsterfair) {
+    if ($get.level($1) < 100) { $display.message($readini(translation.dat, errors, MonsterFair.levelTooLow), global) | halt }
   }
 
   $checkchar($1)
@@ -737,6 +742,12 @@ alias enter {
     if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(04 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
 
+  ; level sync monster fair battles
+  if (%battle.type = MonsterFair) {
+    var %battle.level.cap 100
+    if ($get.level($1) > %battle.level.cap) { $levelsync($1, %battle.level.cap) |  $display.message(04 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
+  }
+
   if ((%mode.pvp = on) && (%battle.level.cap != $null)) {
     if ($get.level($1) > %battle.level.cap) {  $levelsync($1, %battle.level.cap) | $display.message(04 $+ %real.name has been synced to level %battle.level.cap for this battle, battle) }
   }
@@ -864,6 +875,12 @@ alias battlebegin {
     set %nosouls true
   }
 
+  if (%battle.type = MonsterFair) { 
+    set %current.battlefield Monster Fair
+    set %battleconditions $readini($dbfile(MonsterFair.db), $gettok($adate,2,47), Restrictions)
+    writeini $dbfile(battlefields.db) weather current none
+  }
+
   if (%savethepresident = on) { set %current.battlefield Monster Dungeon }
 
   if (%supplyrun = on) { 
@@ -948,8 +965,9 @@ alias battlebegin {
     if ((%demonwall.name = $null) && (%demonwall.fight = on)) { unset %darkness.turns } 
   }
 
-  if (%battle.type = torment) { set %darkness.turns 71 }
+  if (%battle.type = torment) { set %darkness.turns 75 }
   if (%battle.type = cosmic) { set %darkness.turns 100 }
+  if (%battle.type = monsterfair) { set %darkness.turns 100 }
   if (%battle.type = dragonhunt) { set %darkness.turns 35 }
   if (%battle.type = manual) { set %darkness.turns 21 }
   if (%battle.type = orbfountain) { set %darkness.turns 16 } 
@@ -1005,6 +1023,7 @@ alias battlebegin {
 alias battle.getmonsters {
 
   if (%besieged = on) { $generate_monster(besieged) }
+  if (%battle.type = monsterfair) { $monsterfair.getmonsters | return }
 
   if ((%mode.pvp != on) && (%besieged != on)) {
     set %winning.streak $readini(battlestats.dat, battle, winningstreak)
@@ -1588,6 +1607,88 @@ alias generate_monster {
   }
 }
 
+alias monsterfair.getmonsters {
+  var %fair.day $gettok($adate,2,47)
+  set %monster.list $readini($dbfile(MonsterFair.db), %fair.day, Monsters)
+
+  var %value 1 | var %multiple.monster.counter 2 | set %number.of.monsters $numtok(%monster.list,46)
+  while (%value <= %number.of.monsters) { 
+
+    unset %found.monster
+    unset %multiple.monster.found
+    set %current.monster.to.spawn $gettok(%monster.list,%value,46)
+
+    var %isboss $isfile($boss(%current.monster.to.spawn))
+    var %ismonster $isfile($mon(%current.monster.to.spawn))
+
+    if ((%isboss != $true) && (%ismonster != $true)) { inc %value }
+    else { 
+      set %found.monster true 
+      var %current.monster.to.spawn.name %current.monster.to.spawn
+
+      while ($isfile($char(%current.monster.to.spawn.name)) = $true) { 
+        var %current.monster.to.spawn.name %current.monster.to.spawn $+ %multiple.monster.counter 
+        inc %multiple.monster.counter 1 | var %multiple.monster.found true
+      }
+    }
+
+    if ($isfile($boss(%current.monster.to.spawn)) = $true) { .copy -o $boss(%current.monster.to.spawn) $char(%current.monster.to.spawn.name)  }
+    if ($isfile($mon(%current.monster.to.spawn)) = $true) {  .copy -o $mon(%current.monster.to.spawn) $char(%current.monster.to.spawn.name)  }
+
+    if (%multiple.monster.found = true) {  
+      var %real.name.spawn $readini($char(%current.monster.to.spawn), basestats, name) $calc(%multiple.monster.counter - 1)
+      writeini $char(%current.monster.to.spawn.name) basestats name %real.name.spawn
+    }
+
+    ; increase the total # of monsters
+    set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%current.monster.to.spawn.name,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
+    write $txtfile(battle.txt) %current.monster.to.spawn.name
+    var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
+
+    var %monster.level 100
+
+    ; display the description of the spawned monster
+    $set_chr_name(%current.monster.to.spawn.name) 
+
+    if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
+      var %timer.delay $calc(%value - 1)
+
+      if (%number.of.monsters > 2) { 
+        dec %timer.delay 2
+        if (%timer.delay <= 0) { var %timer.delay 0 }
+      } 
+
+      $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
+
+      var %bossquote $readini($char(%current.monster.to.spawn.name), descriptions, bossquote)
+      if (%bossquote != $null) { 
+        var %bossquote 02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
+        $display.message(%bossquote, battle) 
+      }
+    }
+
+    if ($readini(system.dat, system, botType) = DCCchat) {
+      $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
+      $display.message(12 $+ %real.name  $+ $readini($char(%current.monster.to.spawn.name), descriptions, char), battle)
+      if (%bossquote != $null) {   $display.message(02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn.name), descriptions, BossQuote) $+ ", battle) }
+    }
+
+    ; Boost the monster
+    $levelsync(%current.monster.to.spawn.name, %monster.level)
+    writeini $char(%current.monster.to.spawn.name) basestats str $readini($char(%current.monster.to.spawn.name), battle, str)
+    writeini $char(%current.monster.to.spawn.name) basestats def $readini($char(%current.monster.to.spawn.name), battle, def)
+    writeini $char(%current.monster.to.spawn.name) basestats int $readini($char(%current.monster.to.spawn.name), battle, int)
+    writeini $char(%current.monster.to.spawn.name) basestats spd $readini($char(%current.monster.to.spawn.name), battle, spd)
+
+    $boost_monster_hp(%current.monster.to.spawn.name, dungeon, $get.level(%current.monster.to.spawn.name))
+
+    $fulls(%current.monster.to.spawn.name, yes)
+    inc %value
+
+  }
+  unset %found.monster
+
+}
 ; ==========================
 ; Battle Rage alias
 ; ==========================
@@ -1895,7 +1996,7 @@ alias battle.end.failure {
   if ((%mode.pvp = on) || (%battle.type = ai)) { return } 
 
   if (%mode.gauntlet = $null) {
-    if (((%battle.type != assault) && (%battle.type != torment) && (%battle.type != defendoutpost))) { var %defeats $readini(battlestats.dat, battle, totalLoss) | inc %defeats 1 | writeini battlestats.dat battle totalLoss %defeats }
+    if (((((%battle.type != assault) && (%battle.type != cosmic) && (%battle.type = monsterfair) && (%battle.type != torment) && (%battle.type != defendoutpost))))) { var %defeats $readini(battlestats.dat, battle, totalLoss) | inc %defeats 1 | writeini battlestats.dat battle totalLoss %defeats }
   }    
   if (%mode.gauntlet != $null) {
     var %gauntlet.record $readini(battlestats.dat, battle, GauntletRecord) 
@@ -1906,7 +2007,7 @@ alias battle.end.failure {
 
   }
 
-  if (((((%portal.bonus != true) && (%battle.type != mimic) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on))))) {
+  if ((((((((%portal.bonus != true) && (%battle.type != cosmic) && (%battle.type != torment) && (%battle.type != monsterfair) && (%battle.type != mimic) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on)))))))) {
 
     if (%mode.gauntlet = $null) { 
       if (((%battle.type != defendoutpost) && (%battle.type != torment) && (%battle.type != assault))) { $display.message($readini(translation.dat, battle, EvilHasWon), global) }
@@ -1949,6 +2050,14 @@ alias battle.end.failure {
 
   if (%battle.type = torment) {
     $display.message($readini(translation.dat, battle, Torment.BattleLost), global)
+  }
+
+  if (%battle.type = cosmic) {
+    $display.message($readini(translation.dat, battle, Cosmic.BattleLost), global)
+  }
+
+  if (%battle.type = monsterfair) {
+    $display.message($readini(translation.dat, battle, MonsterFair.BattleLost), global)
   }
 
   if (%battle.type = dragonhunt) {
@@ -2012,7 +2121,7 @@ alias battle.end.victory {
   var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
   var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
 
-  if ((((((((%portal.bonus != true) && (%battle.type != torment) && (%besieged != on) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on)))))))) {
+  if (((((((((%portal.bonus != true) && (%battle.type != torment) && (%battle.type != monsterfair) && (%besieged != on) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on))))))))) {
 
     var %winning.streak.increase 1 
 
@@ -2059,6 +2168,7 @@ alias battle.end.victory {
     $conquest.points(monsters,-1000) | $conquest.points(players,1000)
   } 
 
+  if (%battle.type = monsterfair) { $display.message($readini(translation.dat, battle, MonsterFair.BattleWon), global)  }
   if (%battle.type = torment) { $display.message($readini(translation.dat, battle, Torment.BattleWon), global)  }
   if (%battle.type = dragonhunt) {  $display.message($readini(translation.dat, battle, DragonHunt.BattleWon), global)  }
 
@@ -2138,14 +2248,15 @@ alias battle.end.victory {
     }
   }
 
-  if ((((((%battle.type != defendoutpost) && (%besieged != on) && (%battle.type != torment) && (%supplyrun != on) && (%battle.type != cosmic) && (%battle.type != assault)))))) { $shopnpc.rescue }
+  if (((((((%battle.type != defendoutpost) && (%besieged != on) && (%battle.type != MonsterFair) && (%battle.type != torment) && (%supplyrun != on) && (%battle.type != cosmic) && (%battle.type != assault))))))) { $shopnpc.rescue }
   if (%boss.type = FrostLegion) { writeini shopnpcs.dat Events FrostLegionDefeated true }
 
   if (%battle.type = torment) { $torment.reward }
   if (%battle.type = cosmic) { $cosmic.reward } 
+  if (%battle.type = monsterfair) { $monsterfair.reward }  
   if (%besieged = on) { $besieged.reward } 
 
-  if (((%battle.type != orbfountain) && (%battle.type != cosmic) && (%battle.type != torment))) { 
+  if ((((%battle.type != orbfountain) && (%battle.type != cosmic) && (%battle.type != monsterfair) && (%battle.type != torment)))) { 
     $give_random_reward
 
     if (%portal.bonus = true) { $portal.spoils.drop }
@@ -2183,6 +2294,7 @@ alias battle.end.victory {
   $show.torment.reward
   $show.cosmic.reward
   $show.besieged.reward
+  $show.monsterfair.reward
 }
 
 ; Battle ends in a draw

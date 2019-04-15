@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/14/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -131,6 +131,7 @@ on 3:TEXT:!use*:*: {  unset %real.name | unset %enemy | $set_chr_name($nick)
   if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
 
   if ($readini($dbfile(items.db), $2, type) = cosmic) { $item.cosmic($nick, $3, $2) | halt }
+  if ($readini($dbfile(items.db), $2, type) = MonsterFair) { $item.monsterfair($nick, $2) | halt }
 
   if ($4 = $null) { 
     if ($readini($dbfile(items.db), $2, type) = tormentreward) { $uses_item($nick, $2, on, $nick, $3) }
@@ -170,7 +171,7 @@ ON 3:TEXT:*uses item * on *:*:{  $set_chr_name($1)
   if ($char.seeninaweek($1) = false) { $display.message($readini(translation.dat, errors, PlayerAccessOffDueToLogin), private) | halt }
 
   if ($readini($dbfile(items.db), $4, type) != key) { $no.turn.check($1) }
-  if ($readini($dbfile(items.db), $4, type) = portal) { $display.message($readini(translation.dat, errors, Can'tUseOtherPlayers Portals), private) | halt }
+  if (($readini($dbfile(items.db), $4, type) = portal) || ($readini($dbfile(items.db), $4, type) = MonsterFair)) { $display.message($readini(translation.dat, errors, Can'tUseOtherPlayers Portals), private) | halt }
 
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
   if ((no-item isin %battleconditions) || (no-items isin %battleconditions)) { 
@@ -196,7 +197,7 @@ alias uses_item {
   if (%item.type = dungeon) { $item.dungeon($1, $2) | halt }
   if (%item.type = torment) { $item.torment($1, $2) | halt }
 
-  if (((((((((%item.type != summon) && (%item.type != key) && (%item.type != shopreset) && (%item.type != food) && (%item.type != trust) && (%item.type != increaseWeaponLevel) && (%item.type != increaseTechLevel) && (%item.type != revive) && (%item.type != portal))))))))) {
+  if ((((((((((%item.type != summon) && (%item.type != key) && (%item.type != shopreset) && (%item.type != food) && (%item.type != trust) && (%item.type != increaseWeaponLevel) && (%item.type != increaseTechLevel) && (%item.type != revive) && (%item.type != monsterfair) && (%item.type != portal)))))))))) {
     if (($3 != on) || ($3 = $null)) {  $display.message($readini(translation.dat, errors, ItemUseCommandError), private) | halt }
     if ($4 = me) {  $display.message($1 $readini(translation.dat, errors, MustSpecifyName), private) | halt }
     if ($readini($char($4), battle, status) = dead) { $display.message($readini(translation.dat, errors, CannotUseItemOnDead), private) | halt }
@@ -210,7 +211,6 @@ alias uses_item {
   if (%item.type = instrument) { $display.message($readini(translation.dat, errors,ItemIsUsedForSinging), private) | halt }
 
   if ((%item.type = misc) || (%item.type = gem)) { $display.message($readini(translation.dat, errors,ItemIsUsedForCrafting), private) | halt }
-
 
   if (%item.type = food) { 
     $checkchar($4)
@@ -311,10 +311,7 @@ alias uses_item {
       writeini $txtfile(battle2.txt) battleinfo PlayerLevels %portal.level 
     } 
 
-
-
     if ($readini($dbfile(items.db), $2, PortalLevel) = $null) { $portal.uncapped.battleconditionscheck }
-
 
     ; Show the description
     $set_chr_name($1) | $display.message( $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
@@ -352,8 +349,9 @@ alias uses_item {
       /.timerSlowDown2 $+ $rand(1,1000) $+ $rand(a,z) 1 5 /check_for_double_turn $1 forcenext
       halt
     }
-
   }
+
+
 
   if (%item.type = key) { $item.key($1, $4, $2) |  $decrease_item($1, $2)  | halt }
   if (%item.type = consume) { $display.message($readini(translation.dat, errors, ItemIsUsedInSkill), private) | halt }
@@ -858,7 +856,6 @@ alias item.special {
     unset %skill.to.gain | unset %user.skill.level
     return
   }
-
 }
 
 alias item.tormentreward {
@@ -2028,7 +2025,6 @@ alias item.torment {
   halt
 }
 
-
 alias item.cosmic {
   ; $1 = person using the item
   ; $2 = the level of the cosmic orb the player wants
@@ -2061,6 +2057,35 @@ alias item.cosmic {
   halt
 }
 
+
+alias item.monsterfair {
+  ; $1 = person using the item
+  ; $2 = item used
+
+  ; If a battle is on, we can't use the item
+  if (%battleis = on) { $display.message($readini(translation.dat, errors, Can'tStartInBattle), private) | halt }
+  if (%battle.type = ai) { $display.message($readini(translation.dat, errors, Can'tStartInBattle), private) | halt }
+
+  ; can't do this during shenron's wish
+  if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NotThisItemDuringShenron), private) | halt }
+
+  ; can't do this while a chest exists
+  if ($readini($txtfile(treasurechest.txt), ChestInfo, Color) != $null) { $display.message($readini(translation.dat, errors, Can'tDoActionWhileChest), private) | halt }
+
+  ; Make sure the player has enough of the item to start a Monster Fair battle and then remove the item.
+  var %monsterfair.item $readini($char($1), Item_Amount, MonsterFairTicket) 
+  if ((%monsterfair.item <= 0) || (%monsterfair.item = $null)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, DoesNotHaveThatItem), private) | halt }
+  dec %monsterfair.item 1
+  writeini $char($1) Item_Amount $2 %monsterfair.item
+
+  ; Get the monsterfair level
+  set %monsterfair.level 100
+  set %monsterfair.creator $1 
+
+  ; Start the monsterfair 
+  $startnormal(monsterfair, $1)
+  halt
+}
 
 alias item.dungeon {
   ; $1 = person who used the item

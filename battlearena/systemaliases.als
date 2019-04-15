@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/29/19
+;;;; Last updated: 04/19/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -428,6 +428,7 @@ copyini {
 return_winningstreak {
   if (%battle.type = torment) { return $calc(500 * %torment.level) }
   if (%battle.type = cosmic) { return 500 }
+  if (%battle.type = monsterfair) { return 100 }
   if (%besieged = on) { return 100 }
   if (%battle.type = ai) { return %ai.battle.level }
   if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
@@ -3323,7 +3324,7 @@ clear_variables {
   unset %real.name | unset %weapon.name | unset %weapon.price | unset %steal.item | unset %skip.ai | unset %file.to.read.lines 
   unset %attacker.spd | unset %playerstyle.* | unset %stylepoints.to.add | unset %current.playerstyle.* | unset %styles | unset %wait.your.turn | unset %weapon.list2
   unset %passive.skills.list2 | unset %cosmic.level | unset %cosmic.drop.rewards | unset %nosouls | unset %current.npc.to.spawn
-  unset %grand.total | unset %number.of.npcs | unset %doom.timer
+  unset %grand.total | unset %number.of.npcs | unset %doom.timer | unset %monsterfair*
 }
 clear_variables2 {
   unset %torment.*

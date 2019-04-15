@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/14/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -2062,6 +2062,11 @@ alias sing.song {
     ; Check for the instrument of the song.
     var %instrument.needed $readini($dbfile(songs.db), $2, instrument)
     if (($readini($char($1), item_amount, %instrument.needed) = $null) || ($readini($char($1), item_amount, %instrument.needed) <= 0)) { $display.message($readini(translation.dat, errors, Don'tHaveInstrument), private) | halt }
+
+
+    if ((no-songs isin %battleconditions) || (no-singing isin %battleconditions)) { 
+      $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt 
+    }
 
     ; Does the player have enough TP?
     var %tp.needed $readini($dbfile(songs.db), p, $2, TP) | var %tp.have $readini($char($1), battle, tp)
