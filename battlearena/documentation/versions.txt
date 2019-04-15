@@ -1672,6 +1672,10 @@ Battle Arena Bot VERSIONS
   MetalSlime and BlueSlime files for an example.
 - Added the ability for dungeons to have a Max Player limit.  The dungeon will automatically start if the max number is met.
   In [Info] put MaxPlayers=#   If # is null or 0 then there is no max.
+- Added limit breaks. Limit breaks are stronger than normal attacks. They must be purchased in the shop. Once purchased each limit
+  requires a certain percent on the limit break meter. Use !limit breaks to see which limits you own and the % of the meter. Use
+  /me limit breaks [targetname] with [limitbreakname] to use a limit break. All limits will reset the meter to 0% no matter how much
+  it needs.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated

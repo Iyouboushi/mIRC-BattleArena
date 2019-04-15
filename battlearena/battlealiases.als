@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/19/19
+;;;; Last updated: 04/15/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1208,6 +1208,8 @@ deal_damage {
   }
 
   $ai.learncheck($2, $3)
+  $limitbreak.percent.increase($2)
+
 
   if (%guard.message = $null) { $renkei.calculate($1, $2, $3) }
 
@@ -1231,6 +1233,8 @@ deal_damage {
 
   ; Increase enmity
   if ($readini($char($1), info, flag) != monster) {  $enmity($1, add, %attack.damage) }
+
+
 
   ; Unset the attack damage used for calculating style meter
   unset %style.attack.damage 
@@ -1331,6 +1335,10 @@ display_damage {
     }
   }
 
+  if ($3 = limitbreak) {
+    $display.message(03 $+ %user $+  $readini($dbfile(limitbreaks.db), $4, desc), battle)
+  }
+
   if ($3 = item) {
     $display.message(03 $+ %user $+  $readini($dbfile(items.db), $4, desc), battle)
   }
@@ -1354,8 +1362,13 @@ display_damage {
   }
 
   ; Set the damage message
-  if (%number.of.hits > 1) { var %damage.message The attack hits04 %number.of.hits times and does %damage.display.color $+  $+ $bytes(%attack.damage,b) total damage to %enemy $+ . %style.rating }
-  else { var %damage.message The attack does %damage.display.color $+  $+ $bytes(%attack.damage,b) damage to %enemy $+ . %style.rating }
+
+  if ($3 != limitbreak) { 
+    if (%number.of.hits > 1) { var %damage.message The attack hits04 %number.of.hits times and does %damage.display.color $+  $+ $bytes(%attack.damage,b) total damage to %enemy $+ . %style.rating }
+    else { var %damage.message The attack does %damage.display.color $+  $+ $bytes(%attack.damage,b) damage to %enemy $+ . %style.rating }
+  }
+  if ($3 = limitbreak) { var %damage.message The limit break does %damage.display.color $+  $+ $bytes(%attack.damage,b) damage to %enemy $+ . %style.rating 
+  }
 
   ; Display the damage or guard message
   if (%number.of.hits > 1) { 
@@ -4773,7 +4786,7 @@ battle.alliednotes.check {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 limitbreak.percent.increase {
   var %limitbreak.percent $limitbreak.percent($1)
-  if (%limitbreak.percent = 100) { return }
+  if (%limitbreak.percent = 400) { return }
 
   var %limitbreak.rate 0
   var %current.level $get.level($1)
@@ -4789,7 +4802,7 @@ limitbreak.percent.increase {
   var %limitbreak.increase.amount $round($calc(((300 * %attack.damage) / %lb.maxhp) * (256 / %limitbreak.rate)),0)
 
   inc %limitbreak.percent %limitbreak.increase.amount
-  if (%limitbreak.percent > 100) { var %limitbreak.percent 100 } 
+  if (%limitbreak.percent > 400) { var %limitbreak.percent 400 } 
 
   writeini $char($1) Battle LimitBreakPercent %limitbreak.percent 
 }

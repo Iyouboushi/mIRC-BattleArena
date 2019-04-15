@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/14/19
+;;;; Last updated: 04/15/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -92,6 +92,60 @@ ON 3:TEXT:*reverts from *:*:{
   }
   else { $display.message($readini(translation.dat, errors, NotUsingThatIgnition),private) | halt }
 }
+
+
+ON 3:ACTION:limit breaks * with *:#:{
+  if (%battleis = off) { halt }
+  if ($3 = $null) { halt }
+  if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($nick) 
+  $limitbreak_cmd($nick, $5, $3)
+}
+
+ON 50:TEXT:*limit breaks * with *:*:{ 
+  $check_for_battle($1) 
+  if ($4 = $null) { halt }
+  $no.turn.check($1,admin)
+  if (%battleis = off) { halt }
+  if ($3 = $null) { halt }
+  if ($person_in_mech($nick) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $limitbreak_cmd($1, $6, $4)
+}
+
+alias limitbreak_cmd { 
+  ; $1 = the person performing
+  ; $2 = the limit break name
+  ; $3 = the target
+
+  ; Make sure some old attack variables are cleared.
+  unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
+  unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged 
+  unset %techincrease.check | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
+  unset %multihit.message.on  | unset %lastaction.nerf
+
+  $check_for_battle($1) 
+
+  ; does the player own this limit break?
+  if ($readini($char($1), LimitBreaks, $2) != 1) { $display.message($readini(translation.dat, errors, DoNotKnowLimitBreak), private) | halt }
+
+  ; Does the player have enough limit break meter to perform the limit break?
+  var %meter.needed $readini($dbfile(limitbreaks.db), $2, MeterNeeded)
+  if ($readini($char($1), Battle, LimitBreakPercent) < %meter.needed) { $display.message($readini(translation.dat, errors, NotEnoughLimitMeter), private) | halt }
+
+  ; Is there a no-limits battle condition?
+  if (((no-limit isin %battleconditions) || (no-limitbreaks isin %battleconditions) || (no-limits isin %battleconditions))) { 
+    $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt 
+  }
+
+  if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackWhileUnconcious),private)  | unset %real.name | halt }
+  if ($readini($char($3), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead),private) | unset %real.name | halt }
+  if ($readini($char($3), Battle, Status) = RunAway) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoFledTech),private) | unset %real.name | halt } 
+
+  ; Perform the limit break
+  $partial.name.match($1, $3)
+  $limitbreak.attack($1, $2,  %attack.target)
+}
+
 
 ON 3:ACTION:sings *:#:{ 
   if (%battleis = off) { halt }
@@ -2042,8 +2096,6 @@ alias revert {
   writeini $char($1) status ignition.on off
 }
 
-
-
 ; ======================
 ; Singing Aliases
 ; ======================
@@ -2217,3 +2269,42 @@ alias sing.song {
   }
   if ($istok(%songs.list, $2, 46) = $false) { unset %songs.list | $display.message($readini(translation.dat, errors, Don'tKnowThatSong), private) | unset %songs.list | halt } 
 } 
+
+
+
+
+; ======================
+; Limit Break Aliases
+; ======================
+alias limitbreak.attack {
+  ; $1 = the user
+  ; $2 = the limit break name
+  ; $3 = the target
+
+  ; Set the user's limit break meter back to 0
+  writeini $char($1) Battle LimitBreakPercent 0  
+
+  ; Get the base damage
+  $weapon_equipped($1)
+  $calculate_damage_weapon($1, %weapon.equipped, $3)
+
+  ; Get the multiplier of the limit break
+  var %multiplier $readini($dbfile(limitbreaks.db), $2, Multiplier)
+
+  ; Increase the damage
+  set %attack.damage $round($calc(%attack.damage * %multiplier),0)
+
+  ; Deal the damage
+  $deal_damage($1, $3, %weapon.equipped, limitbreak)
+
+  ; Display damage
+  $display_damage($1, $3, limitbreak, $2)
+
+  unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
+  unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged | unset %covering.someone
+  unset %techincrease.check |  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
+  unset %multihit.message.on | unset %critical.hit.chance
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) | halt }
+}

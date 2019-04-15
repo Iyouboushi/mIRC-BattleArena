@@ -669,13 +669,14 @@ PlayerDoesNotOwnSkill=$chr(3) $+ 4 $+ You do not own this skill
 ThisSkillDoesn'tNeedToBeEquipped=$chr(3) $+ 4 $+ The $2 skill does not need to be equipped in order to be used.
 ThisSkillIsAlreadyEquipped=$chr(3) $+ 4 $+ You already have the $2 skill equipped.
 MaxSkillsEquipped=$chr(3) $+ 4 $+ You already have $return.skill.slots($1) skills equipped and cannot equip any others. Use !skills unequip skillname to remove one to free a slot.
-SkillHasBeenEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has equipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / $return.skill.slots($1) $+ ]
+SkillHasBeenEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has equipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / $return.skill.slots($1) $+ ]
 SkillNotEquipped=$chr(3) $+ 4 $+ The $2 skill is not currently equipped.
 SkillHasBeenUnEquipped=$chr(3) $+ 3 $+ $get_chr_name($1) has unequipped the $2 skill. [Current Skill Slots Used: $numtok(%player.equipped.skills,46) / $return.skill.slots($1) $+ ]
 NeedValidNumberForCosmicLevel=$chr(3) $+ 4 $+ A valid number must be used for the cosmic level. Use !use cosmicorb levelhere
 CannotUpgradeMythicWithItem=$chr(3) $+ 4 $+ The Mythic weapon cannot be upgraded by using items.
 SkillCannotBeUsedSolo=$chr(3) $+ 4 $+ The $2 skill cannot be used if you are alone in battle.
-
+DoNotKnowLimitBreak=$chr(3) $+ 04 $+ $get_chr_name($1) does not know the $2 limit break. 
+NotEnoughLimitMeter=$chr(3) $+ 04 $+ $get_chr_name($1) does not have enough limit break meter to perform the $2 limit break.
 
 =======================
 Battle Related Messages
