@@ -2270,9 +2270,6 @@ alias sing.song {
   if ($istok(%songs.list, $2, 46) = $false) { unset %songs.list | $display.message($readini(translation.dat, errors, Don'tKnowThatSong), private) | unset %songs.list | halt } 
 } 
 
-
-
-
 ; ======================
 ; Limit Break Aliases
 ; ======================
@@ -2280,6 +2277,12 @@ alias limitbreak.attack {
   ; $1 = the user
   ; $2 = the limit break name
   ; $3 = the target
+
+  ; Increase how many times this player has done a limit break
+  var %number.of.limitbreaks.used $readini($char($1), stuff, LimitBreaksPerformed)
+  if (%number.of.limitbreaks.used = $null) { var %number.of.limitbreaks.used 0 }
+  inc %number.of.limitbreaks.used 1
+  writeini $char($1) stuff LimitBreaksPerformed %number.of.limitbreaks.used
 
   ; Set the user's limit break meter back to 0
   writeini $char($1) Battle LimitBreakPercent 0  

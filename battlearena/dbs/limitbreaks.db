@@ -1,6 +1,7 @@
 [CrossSlash]
+Name=Cross Slash
 Cost=1
-Currency=blackorb
 Multiplier=1.1
 MeterNeeded=100
 Desc=summons aether together to create a sword that is then used to perform a quick two slashes on %enemy before the aether disappears.
+

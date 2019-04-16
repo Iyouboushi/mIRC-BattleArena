@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/15/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -62,7 +62,7 @@ alias shop.exchange {
 alias shop.categories.list {
   $display.private.message(02Valid shop categories:)
   $display.private.message(02Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) KillCoins $+ $chr(44) Portal $+ $chr(44) Misc) 
-  $display.private.message(02Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards $+ $chr(44) AlliedForces)
+  $display.private.message(02Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards $+ $chr(44) AlliedForces $+ $chr(44) LimitBreaks $+ $chr(44) MonsterFair)
   if ($left($adate, 2) = 10) {  $display.private.message(02Halloween) }
 }
 
@@ -100,7 +100,7 @@ alias shop.start {
     if ($3 = armor)  { $shop.armor($nick, sell, $4, %amount.to.sell) | halt }
     if ($3 = weapon) { $shop.weapons($nick, sell, $4) | halt }
     if ($3 = special) { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
-    if (($3 = trustl) || ($3 = trusts)) { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
+    if (($3 = trust) || ($3 = trusts)) { $shop.items($nick, sell, $4, %amount.to.sell) | halt }
   }
 
   if (($2 = buy) || ($2 = purchase)) { 
@@ -144,7 +144,9 @@ alias shop.start {
     }
     if (($3 = style) || ($3 = styles))  { $shop.styles($nick, buy, $4) | halt }
     if (($3 = trusts) || ($3 = trust))  { $shop.trusts($nick, buy, $4) | halt }
+    if (($3 = monsterfair) || ($3 = monsterfairprizes)) { $shop.monsterfair($nick, buy, $4) | halt } 
     if (($3 = ignition) || ($3 = ignitions))  { $shop.ignitions($nick, buy, $4) | halt }
+    if (($3 = limitbreak) || ($3 = limitbreaks)) { $shop.limitbreaks($nick, buy, $4) | halt }
 
     if ($3 = mech) {
       if ($4 = $null) { 
@@ -168,7 +170,7 @@ alias shop.start {
 
   if ($2 = list) { 
 
-    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards.alliedforces.killcoins
+    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards.alliedforces.killcoins.limitbreaks.monsterfair
     if ($istok(%valid.categories, $3, 46) = $false) { 
       $display.private.message(04Error: Use 02!shop list category04 or 02!shop buy category itemname)
       $shop.categories.list 
@@ -183,6 +185,8 @@ alias shop.start {
       if (($3 = tradingcards) || ($3 = tradingcard)) { $shop.tradingcards($nick, list) }
       if (($3 = techs) || ($3 = techniques))  { $shop.techs($nick, list) }
       if (($3 = trusts) || ($3 = trust))  { $shop.trusts($nick, list) }
+      if (($3 = monsterfair) || ($3 = monsterfairprizes)) { $shop.monsterfair($nick, list) }
+      if (($3 = limitbreak) || ($3 = limitbreaks)) { $shop.limitbreaks($nick, list) }
       if (($3 = potioneffect) || ($3 = potioneffects)) { $shop.potioneffects($nick, list) }
       if (($3 = skills) || ($3 = skill)) { 
         if ($4 = $null) { $shop.skills($nick, list) | halt }
@@ -2795,6 +2799,64 @@ alias shop.trusts {
   }
 }
 
+
+
+alias shop.limitbreaks {
+  if ($2 = list) {
+    unset %shop.list | unset %item.name | unset %item_amount | unset %limitbreaks.list1
+
+    var %value 1 | var %items.lines $lines($lstfile(items_trust.lst))
+
+    while (%value <= %items.lines) {
+      set %item.name $read -l $+ %value $lstfile(limitbreaks.lst)
+      set %item.price $readini($dbfile(limitbreaks.db), %item.name, cost)
+
+      if ((%item.price > 0) && ($readini($char($1), LimitBreaks, %item.name) != 1)) {
+        if (%item.price <= $readini($char($1), stuff, blackorbs)) {  %limitbreaks.list1 = $addtok(%limitbreaks.list1, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+        else { %limitbreaks.list1 = $addtok(%limitbreaks.list1,07 $+ %item.name $+ ( $+ %item.price $+ ),46) }
+      }
+      unset %item.name | unset %item_amount
+      inc %value 1 
+    }
+
+    set %replacechar $chr(044) $chr(032)
+    %limitbreaks.list1 = $replace(%limitbreaks.list1, $chr(046), %replacechar)
+    unset %replacechar
+
+    if (%limitbreaks.list1 != $null) {  
+      $display.private.message.delay.custom(02Limit Breaks are paid for with 04Black Orbs,1)
+      $display.private.message.delay.custom(02 $+ %limitbreaks.list1, 1)
+    }
+
+    if (%limitbreaks.list1 = $null) { $display.private.message(04There are currently no Limit Breaks available for purchase right now)  }
+
+    unset %limitbreaks.list1 | unset %item.price | unset %item.name
+  }
+  if (($2 = buy) || ($2 = purchase)) {
+    if ($readini($dbfile(limitbreaks.db), $3, cost) = $null) {  $display.private.message(04Error: Invalid Limit Break! Use !shop list limitbreaks to get a valid list) | halt }
+    if ($readini($dbfile(limitbreaks.db), $3, cost) = 0) { $display.private.message(04Error: You cannot purchase this Limit Break! Use !shop list limitbreaks to get a valid list) | halt }
+    if ($readini($char($1), LimitBreaks, $3) >= 1) { $display.private.message(04Error: You already know how to perform this Limit Break!) | halt }
+
+    ; do you have enough to buy it?
+    set %player.currency $readini($char($1), stuff, BlackOrbs)
+    set %total.price $calc($readini($dbfile(limitbreaks.db), $3, cost) * 1)
+
+    if (%player.currency = $null) { set %player.currency 0 }
+
+    if (%player.currency < %total.price) {  $display.private.message(04You do not have enough Black Orbs to purchase this Limit Break!) | unset %currency | unset %player.currency | unset %total.price |  halt }
+    dec %player.currency %total.price
+    writeini $char($1) stuff BlackOrbs %player.currency
+    writeini $char($1) LimitBreaks $3 1 
+    $display.private.message(03A bright orange light shines down upon you and when it clears you find you now know how to perform the: $3 $+ ! )
+
+    $inc.blackorbsspent($1, %total.price)
+
+    unset %shop.list | unset %currency | unset %player.currency | unset %total.price
+    halt
+  }
+}
+
+
 alias shop.killcoins {
   ; !shop killcoins list
   ; !shop buy killcoins #
@@ -3169,6 +3231,80 @@ alias shop.voucher.buy {
   $display.private.message(03You have exchanged %voucher.item.price $2 $iif(%voucher.item.price > 1, vouchers, voucher) for 1 $3)
 }
 
+
+alias shop.monsterfair {
+
+  if ($2 = list) { 
+    ; Cycle through the list and get the cost (in PrizeTicket)
+    unset %item.name | unset %item_amount | unset %prize.list.*
+
+    var %player.ticket $readini($char($1), item_amount, PrizeTicket)
+
+    if (%player.ticket = $null) { var %player.ticket 0 }
+
+    ; CHECKING PRIZE LIST
+    var %value 1 | var %items.lines $lines($lstfile(MonsterFairPrizes.lst))
+
+    while (%value <= %items.lines) {
+      var %prize.line  $read -l $+ %value $lstfile(MonsterFairPrizes.lst)
+      var %item.name $gettok(%prize.line, 1, 46)
+      var %item.price $gettok(%prize.line, 2, 46)
+
+      if (%item.price > %player.ticket) { var %item.color 05 }
+      else { var %item.color 03 }
+
+      if ($numtok(%prize.list, 46) >= 12) { %prize.list2 = $addtok(%prize.list2, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+      else { %prize.list = $addtok(%prize.list, $+ %item.color $+ %item.name $+ ( $+ %item.price $+ ) $+ ,46) }
+
+      inc %value 1 
+    }
+
+    set %replacechar $chr(044) $chr(032)
+    %prize.list = $replace(%prize.list, $chr(046), %replacechar)
+    if (%prize.list2 != $null) {  %prize.list2 = $replace(%prize.list2, $chr(046), %replacechar) }
+
+    if (%prize.list != $null) { 
+      $display.private.message.delay.custom(02These are the available prizes you can exchange 07PrizeTickets 02for.,1)
+      $display.private.message.delay.custom(%prize.list, 1) 
+    }
+    if (%prize.list2 != $null) { $display.private.message.delay.custom(%prize.list2, 1) }
+
+    if (%prize.list = $null) { $display.private.message(04There are no prizes available right now)  }
+
+    unset %item.price | unset %item.name | unset %prize.list* | unset %replacechar
+
+  }
+
+  if ($2 = buy) { 
+
+    ; Check to make sure $3 is a valid item that can be bought with a prize ticket
+    var %search.item $3
+    var %search.file MonsterFairPrizes.lst
+    var %item.line $read($lstfile(%search.file), nw, * $+ %search.item $+ *)
+
+    if (%item.line = $null) { $display.private.message(04This cannot be bought using prize tickets) | halt }
+
+    ; Check to make sure the person has enough to buy the item
+    var %prize.item.price $gettok(%item.line, 2, 46)
+    var %player.prize.amount $readini($char($1), item_amount, PrizeTicket)
+    if (%player.prize.amount = $null) { var %player.prize.amount 0 }
+
+    if (%player.prize.amount < %prize.item.price) { $display.private.message(04You do not have enough PrizeTickets to purchase this item) | halt }
+
+    ; Decrease the prize amount
+    dec %player.prize.amount %prize.item.price
+    writeini $char($1) item_amount PrizeTicket %player.prize.amount
+
+    ; Increase the player's amount by 1
+    var %player.amount.item $readini($char($1), item_amount, $3)
+    if (%player.amount.item = $null) { var %player.amount.item 0 }
+    inc %player.amount.item 1 
+    writeini $char($1) item_amount $3 %player.amount.item
+
+    ; Show a message that we did the exchange
+    $display.private.message(03You have exchanged %prize.item.price $iif(%prize.item.price > 1, PrizeTickets, PrizeTicket) for 1 $3)
+  }
+}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Mythic shop commands

@@ -87,6 +87,7 @@ TotalDmg.Melee=0
 MeleeHits=0
 TotalDmg.Tech=0
 TechHits=0
+LimitBreaksPerformed=0
 
 [Info]
 Gender=his

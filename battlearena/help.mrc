@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/15/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -29,8 +29,8 @@ alias gamehelp {
 
 ON 1:TEXT:!view-info*:*: { $view-info($nick, $2, $3, $4) }
 alias view-info {
-  if ($2 = $null) { var %error.message 04Error: The command is missing what you want to view.  Use it like:  !view-info <tech $+ $chr(44) item $+ $chr(44) skill $+ $chr(44) weapon, armor, accessory, ignition, shield> <name> (and remember to remove the < >) | $display.private.message(%error.message) | halt }
-  if ($3 = $null) { var %error.message 04Error: The command is missing the name of what you want to view.   Use it like:  !view-info <tech, item, skill, weapon, armor, accessory, ignition, shield> <name> (and remember to remove the < >) | $display.private.message(%error.message) | halt }
+  if ($2 = $null) { var %error.message 04Error: The command is missing what you want to view.  Use it like:  !view-info <tech $+ $chr(44) item $+ $chr(44) skill $+ $chr(44) weapon, armor, accessory, ignition, shield, limitbreak> <name> (and remember to remove the < >) | $display.private.message(%error.message) | halt }
+  if (($3 = $null) && ($2 != monsterfair)) { var %error.message 04Error: The command is missing the name of what you want to view.   Use it like:  !view-info <tech, item, skill, weapon, armor, accessory, ignition, shield> <name> (and remember to remove the < >) | $display.private.message(%error.message) | halt }
 
   if ($2 = tech) { 
     if ($readini($dbfile(techniques.db), $3, type) = $null) { $display.private.message(04Error: Invalid technique) | halt }
@@ -61,6 +61,25 @@ alias view-info {
     if (%info.type = buff) { 
       $display.private.message([04Name12 $3 $+ ] [04Target Type12 %info.type $+ ] [04TP needed to use12 %info.tp $+ ])
     }
+  }
+
+  if ($2 = limitbreak) { 
+    if ($readini($dbfile(limitbreaks.db), $3, name) = $null) { $display.private.message(04Error: Invalid limitbreak) | halt }
+    var %info.name $readini($dbfile(limitbreaks.db), $3, name)
+    var %info.multiplier $readini($dbfile(limitbreaks.db), $3, Multiplier)
+    var %info.meterneeded $readini($dbfile(limitbreaks.db), $3, MeterNeeded)
+
+    $display.private.message([04Name12 %info.name $+ ] [4Damage Multiplier12 %info.multiplier $+ ] [04Amount of Limit Break Meter Needed12 %info.meterneeded $+ ])   
+  }
+
+  if ($2 = monsterfair) {
+    var %info.monsterlist $readini($dbfile(MonsterFair.db), $gettok($adate,2,47), Monsters)
+    var %info.restrictions $readini($dbfile(MonsterFair.db), $gettok($adate,2,47), Restrictions)
+    var %replacechar $chr(044) $chr(032) |  %info.monsterlist = $replace(%info.monsterlist, $chr(046), %replacechar) | %info.restrictions = $replace(%info.restrictions, $chr(046), %replacechar) 
+
+    $display.private.message([03Today's date is: $adate $+ ])
+    $display.private.message(04[Today's monster set:12 %info.monsterlist $+ ] [04Today's battle restrictions:12 %info.restrictions $+ ])
+
   }
 
   if ($2 = ignition) { 
