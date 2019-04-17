@@ -1,10 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 03/13/19
+;;;; Last updated: 04/16/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
   unset %statusmessage.display | unset %action.bar | unset %song.name | unset %ai.item | unset %element | unset %status.type
+  unset %ai.limitbreaklist | unset %ai.limitbreak
   remini $char($1) renkei
 
   ; Determine if the current person in battle is a monster or not.  If so, they need to do a turn.  If not, return.
@@ -195,6 +196,11 @@ alias ai_turn {
     else { $attack_cmd($1, %ai.target) | halt }
   }
 
+  if (%ai.action = limitbreak) { $ai_gettarget($1) 
+    if (%ai.target = $null) { echo -a target null! | set %ai.action $iif($readini($char($1), info, ai_type) = techonly, taunt, attack)  }
+    else { $ai.getlimit($1) | $limitbreak.attack($1, %ai.limitbreak, %ai.target) | halt } 
+  }
+
 
   if (%ai.action = taunt) { set %taunt.action true | $ai_gettarget($1) | $taunt($1 , %ai.target) | halt } 
   if (%ai.action = flee) { $ai.flee($1) | halt }
@@ -228,6 +234,11 @@ alias ai.buildactionbar {
       if (%last.actionbar.action != taunt) {  %action.bar = %action.bar $+ .taunt }
     }
   }
+
+  ; Can the monster use a limit break?
+  if ($person_in_mech($1) = false) { $ai_limitbreakcheck($1) }
+  if (%ai.limitbreaklist != $null) { %action.bar = %action.bar $+ .limitbreak }
+
 
   ; Can the monster use skills?
   if ($person_in_mech($1) = false) {  $ai_skillcheck($1) }
@@ -268,6 +279,30 @@ alias ai.buildactionbar {
   if (%last.actionbar.action != attack) {  %action.bar = %action.bar $+ .attack }
 
   $ai.rotation.perform($1)
+}
+
+alias ai_limitbreakcheck {
+  unset %ai.limitbreak | unset %ai.limitbreaklist
+
+  if (((no-limit isin %battleconditions) || (no-limitbreaks isin %battleconditions) || (no-limits isin %battleconditions))) { return }
+
+  ; Go through the list of limit breaks the AI knows and see if the AI has enough meter to perform them. If so, add it to the list.
+  var %ai.limitmeter $readini($char($1), Battle, LimitBreakPercent)
+  if ((%ai.limitmeter = $null) || (%ai.limitmeter = 0)) { return }
+
+  unset %limits.list
+  var %total.limits $ini($char($1), LimitBreaks, 0)
+  if ((%total.limits = $null) || (%total.limits = 0)) { return }
+
+  var %current.limit 1
+  while (%current.limit <= %total.limits) {
+    var %limit.name $ini($char($1), LimitBreaks, %current.limit)
+    var %limit.meterneeded $readini($dbfile(limitbreaks.db), %limit.name, MeterNeeded)
+
+    if (%ai.limitmeter >= %limit.meterneeded) { %ai.limitbreaklist = $addtok(%ai.limitbreaklist, %limit.name, 46) }
+
+    inc %current.limit
+  }
 
 }
 
@@ -725,6 +760,13 @@ alias add_target {
   return
 }
 
+alias ai.getlimit {
+  var %total.limits $numtok(%ai.limitbreaklist, 46)
+  var %random.limit $rand(1,%total.limits)
+  set %ai.limitbreak $gettok(%ai.limitbreaklist,%random.limit,46)
+}
+
+
 alias ai_choosetech {
   set %total.techs $numtok(%tech.list, 46)
   set %random.tech $rand(1,%total.techs)
@@ -1156,6 +1198,7 @@ alias ai.rotation.perform {
 
   if ((%rotation.action = ignition) && ($readini($char($1), status, ignition.on) = on)) { return }
   if ((%rotation.action = mech) && ($person_in_mech($1) = true)) { return }  
+  if ((%rotation.action = limitbreak) && ($readini($char($1), Battle, LimitBreakPercent) < 100)) { return }
 
   set %action.bar %rotation.action
 }
@@ -1198,7 +1241,6 @@ alias ai.egg {
     }
   }
 
-  echo -a copying the monster
   .copy -o $mon(%hatched.monster) $char(%hatched.monster.file)
   writeini $char(%hatched.monster.file) Basestats Name %hatched.monster
 

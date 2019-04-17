@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/15/19
+;;;; Last updated: 04/16/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1336,7 +1336,9 @@ display_damage {
   }
 
   if ($3 = limitbreak) {
-    $display.message(03 $+ %user $+  $readini($dbfile(limitbreaks.db), $4, desc), battle)
+    var %custom.description $readini($char($1), Descriptions, $4)
+    if (%custom.description = $null) { $display.message(03 $+ %user $+  $readini($dbfile(limitbreaks.db), $4, desc), battle) }
+    else { $display.message(03 $+ %user $+  %custom.description, battle) }
   }
 
   if ($3 = item) {
