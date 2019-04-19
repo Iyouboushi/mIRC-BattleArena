@@ -2281,7 +2281,7 @@ Desc=A shell from a beetle
 
 [QuadavShell]
 Type=misc
-Cost=1000
+Cost=0
 SellPrice=10
 Desc=A shell from a Quadav
 ShopNPC=TravelMerchant
@@ -2693,7 +2693,7 @@ currency=none
 
 [TigerFang]
 Type=misc
-Cost=100
+Cost=0
 SellPrice=50
 Desc=A fang from a tiger
 Currency=AlliedNotes

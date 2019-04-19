@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/16/19
+;;;; Last updated: 04/19/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4802,6 +4802,15 @@ limitbreak.percent.increase {
   var %lb.maxhp $readini($char($1), BaseStats, HP)
 
   var %limitbreak.increase.amount $round($calc(((300 * %attack.damage) / %lb.maxhp) * (256 / %limitbreak.rate)),0)
+
+  ; check for augments and accessories to increase the limit break meter faster
+  if ($augment.check($1, IncreaseLimitBreakMeter) = true) { inc %limitbreak.increase.amount $calc(2 * %augment.strength) }
+
+  if ($accessory.check($1, IncreaseLimitBreakMeter) = true) {
+    inc %limitbreak.increase.amount %accessory.amount
+    unset %accessory.amount
+  }
+
 
   inc %limitbreak.percent %limitbreak.increase.amount
   if (%limitbreak.percent > 400) { var %limitbreak.percent 400 } 
