@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 04/29/19
+;;;; Last updated: 04/21/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -340,12 +340,12 @@ on 3:TEXT:!battle style:?: {
 }
 
 on 3:TEXT:!battle hp:#: { 
-  if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) }
+  if (%battleis != on) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
   $build_battlehp_list
   $display.message(%battle.hp.list, battle)  | unset %real.name | unset %hstats | unset %battle.hp.list
 }
 on 3:TEXT:!battle hp:?: { 
-  if (%battleis != on) { $display.private.message($readini(translation.dat, errors, NoBattleCurrently)) }
+  if (%battleis != on) { $display.private.message($readini(translation.dat, errors, NoBattleCurrently)) | halt }
   $build_battlehp_list
   $display.private.message(%battle.hp.list)  | unset %real.name | unset %hstats | unset %battle.hp.list
 }
