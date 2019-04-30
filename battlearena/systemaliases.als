@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/15/19
+;;;; Last updated: 04/30/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -868,6 +868,8 @@ display.message {
   var %message.to.display $1
   if ($allowcolors = false) { var %message.to.display $strip(%message.to.display, c) }
   if ($allowbold = false) { var %message.to.display $strip(%message.to.display, b) }
+
+  if (%message.to.display = $null) { var %message.to.display 4NULL message. This is an error. }
 
   if ($readini(system.dat, system, botType) = IRC) {  /msg %battlechan %message.to.display  }
   if ($readini(system.dat, system, botType) = TWITCH) {
