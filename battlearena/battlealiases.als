@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 04/19/19
+;;;; Last updated: 05/03/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -5226,7 +5226,8 @@ poison_check {
       set %max.hp $readini($char($1), basestats, hp)
       set %poison $round($calc(%max.hp * .10),0)
       set %hp $readini($char($1), Battle, HP)  |   unset %max.hp
-      if (%poison >= %hp) { $display.message(%status.message, battle) | $set_chr_name($1) | $display.message($readini(translation.dat, status, PoisonKills), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead |  $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
+
+      if (%poison >= %hp) { $player.status($1) | set %status.message $readini(translation.dat, battle, TurnMessage) |  $display.message(%status.message, battle) | $set_chr_name($1) | $display.message($readini(translation.dat, status, PoisonKills), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead |  $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
       $goldorb_check($1,status) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
       if (%poison < %hp) {
         $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, PoisonMessage) | dec %hp %poison | writeini $char($1) Battle HP %hp |  unset %hp | unset %poison 
@@ -5251,7 +5252,7 @@ HeavyPoison {
   set %poison $round($calc(%max.hp * .20),0)
   set %hp $readini($char($1), Battle, HP) | $set_chr_name($1)
   unset %max.hp
-  if (%poison >= %hp) { $display.message(%status.message, battle) | $display.message($readini(translation.dat, status, PoisonKills), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1) | $add.style.effectdeath | $check.clone.death($1)
+  if (%poison >= %hp) { $player.status($1) | set %status.message $readini(translation.dat, battle, TurnMessage) | $display.message(%status.message, battle) | $display.message($readini(translation.dat, status, PoisonKills), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead | $increase.death.tally($1) | $add.style.effectdeath | $check.clone.death($1)
   $goldorb_check($1, status) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
   if (%poison < %hp) { $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, PoisonMessage) | dec %hp %poison | writeini $char($1) Battle HP %hp | unset %hp | unset %poison 
 
