@@ -27,7 +27,7 @@ The "Text Here" will be red (color 4 in mIRC) If you change the
 System | Player Messages
 =======================
 [System]
-LastSeen=$chr(3) $+ .4 $+ $3 2last logged in on4 %last.seen $iif(%last.seen.duration != $null,2[ $+ %last.seen.duration ago])
+LastSeen=$chr(3) $+ 04 $+ $3 2last logged in on4 %last.seen $iif(%last.seen.duration != $null,2[ $+ %last.seen.duration ago])
 BattleStatsData=$chr(3) $+ 02 $+ There has been a total of4 %total.battles 2battles fought.  The players have won %total.wins ( $+ $round($calc(($readini(battlestats.dat, Battle, TotalWins) / $readini(battlestats.dat, Battle, TotalBattles))*100),2) $+ $chr(37) $+ ) lost %total.losses ( $+ $round($calc(($readini(battlestats.dat, Battle, TotalLoss) / $readini(battlestats.dat, Battle, TotalBattles))*100),2) $+ $chr(37) $+ ) and have had %total.draws draws ( $+ $round($calc(($readini(battlestats.dat, Battle, TotalDraws) / $readini(battlestats.dat, Battle, TotalBattles))*100),2) $+ $chr(37) $+ )
 BattleStatsWinningStreak=$chr(3) $+ 2 $+ The players are currently on level4 $bytes($readini(battlestats.dat, Battle, WinningStreak),b) $+ 2!  %winning.record 
 BattleStatsLosingStreak=$chr(3) $+ 2 $+ The players have lost $bytes($readini(battlestats.dat, Battle, LosingStreak),b)  $+ $iif($readini(battlestats.dat, Battle, LosingStreak) < 2, battle, battles) in a row!
