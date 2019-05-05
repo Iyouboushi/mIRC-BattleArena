@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/19/19
+;;;; Last updated: 05/05/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1933,19 +1933,22 @@ alias generate_battle_order {
   }
 
   ; Check for darkness warning
-  if (%battle.type != defendoutpost) { 
-    if (%darkness.fivemin.warn != true) { 
 
-      if (%holy.aura.turn != $null) {
-        if (%holy.aura.turn = %current.turn) { unset %holy.aura.turn | $holy_aura_end }
+  if ($1 != dungeonnewroom) { 
+    if (%battle.type != defendoutpost) { 
+      if (%darkness.fivemin.warn != true) { 
+
+        if (%holy.aura.turn != $null) {
+          if (%holy.aura.turn = %current.turn) { unset %holy.aura.turn | $holy_aura_end }
+        }
+
+        if (($calc(%darkness.turns - %current.turn) <= 5) && (%darkness.fivemin.warn != true)) { $battle_rage_warning }
       }
-
-      if (($calc(%darkness.turns - %current.turn) <= 5) && (%darkness.fivemin.warn != true)) { $battle_rage_warning }
-    }
-    if (%darkness.fivemin.warn = true) { 
-      ; Check for darkness
-      if (%battle.rage.darkness != on) { 
-        if (%current.turn >= %darkness.turns) { $battle_rage }
+      if (%darkness.fivemin.warn = true) { 
+        ; Check for darkness
+        if (%battle.rage.darkness != on) { 
+          if (%current.turn >= %darkness.turns) { $battle_rage }
+        }
       }
     }
   }
@@ -2761,7 +2764,6 @@ alias battlelist {
     unset %battle.list | unset %who.battle
   }
 }
-
 
 alias battlelist.cleanlist {
   ; CLEAN UP THE LIST

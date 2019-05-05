@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 03/13/19
+;;;; Last updated: 05/05/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -155,7 +155,9 @@ dungeon.firstroom {
   writeini battlestats.dat battle emptyRounds 0
 
   ; Set the # of Turns Before Darkness
-  set %darkness.turns 20
+  set %darkness.turns 30
+  set %battle.rage.darkness false
+  set %darkness.fivemin.warn false
 
   $generate_battle_order
   set %who $read -l1 $txtfile(battle.txt) | set %line 1
@@ -332,7 +334,9 @@ dungeon.nextroom {
   writeini battlestats.dat battle emptyRounds 0
 
   ; Set the # of Turns Before Darkness
-  set %darkness.turns 20
+  set %darkness.turns 30
+  set %battle.rage.darkness false
+  set %darkness.fivemin.warn false
 
   remini $txtfile(battle2.txt) battle bonusitem
   remini $txtfile(battle2.txt) style
@@ -348,7 +352,7 @@ dungeon.nextroom {
     ; Generate dungeon objects
     $dungeon.objects 
 
-    $generate_battle_order
+    $generate_battle_order(dungeonnewroom)
     set %who $read -l1 $txtfile(battle.txt) | set %line 1
     set %current.turn 1
 
