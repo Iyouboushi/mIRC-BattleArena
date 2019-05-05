@@ -1693,6 +1693,7 @@ Battle Arena Bot VERSIONS
 - Changed Trickster so that it no longer affects the stealing chance. This has been moved to the TreasureHunter style instead.
 - Changed !view-help skill so that it will show the style skills if a player tries to view them.
 - Changed the MonsterSummon skill so that it can now summon boss monsters (files in \bosses\)
+- Changed the max amount for certain enhancement point upgrades.
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working
@@ -1701,6 +1702,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug where new characters who don't set their passwords immediately would be unable to log in again.
 - Fixed a bug with status battle type items dealing damage when they shouldn't be.
 - Fixed a bug where it was possible to use dungeon keys that the player did not actually own
+- Fixed a bug where dying from poison would hang the bot.
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]

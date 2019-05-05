@@ -183,20 +183,20 @@ Desc=channels the power of the blade, gaining a power increase as $gender($1) bo
 
 [UltraInstinct]
 Name=Ultra Instinct
-hp=2
-Str=3
-def=3
-int=3
-spd=3
-Augment=TechBonus.MeleeBonus.UtsusemiBonus.EnhanceZen.RenkeiBonus.EnhanceBloodBoost
+hp=4.5
+Str=3.5
+def=3.5
+int=3.5
+spd=3.5
+Augment=TechBonus.MeleeBonus.UtsusemiBonus.EnhanceZen.RenkeiBonus.EnhanceBloodBoost.EnhanceDodge.EnhanceParry.EnhanceBlocking
 Effect=Status
 IgnitionTrigger=30
 IgnitionConsume=50
-Cost=$iif($get.level($1) < 5000, 0, $iif($readini($char($1), Ignitions, UltraInstinct) = $null, 5000, 500))
+Cost=$iif($get.level($1) < 4500, 0, $iif($readini($char($1), Ignitions, UltraInstinct) = $null, 4500, 450))
 StatusTarget=Self
 StatusType=$iif($readini($char($1), Ignitions, UltraInstinct) = 10, Invincible, DefenseUp)
 Techs=
-Desc=lets go of conscious thought and suddenly surges with the ultimate power said to be impossible for moratls to achieve. %real.name $+ 's hair turns white and a rainbora aura flares around $gender($1) body. %real.name has unlocked the power of Ultra Instinct--at least for a short while.
+Desc=lets go of conscious thought and suddenly surges with the ultimate power said to be impossible for moratls to achieve. %real.name $+ 's hair turns white and a rainborw aura flares around $gender($1) body. %real.name has unlocked the power of Ultra Instinct--at least for a short while.
 
 ==========================
 NPC/Monster/Boss Ignitions

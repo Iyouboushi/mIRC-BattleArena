@@ -1,7 +1,108 @@
+==============================================
+Limit breaks are powerful single target attacks
+that deal a multiplier to a player's normal
+melee damage hit.  For example, CrossSlash does
+1.5xmelee hit damage.  So if a player normally
+did 100 damage it would now do 150.  
+
+Limit breaks will fully consume the limit break 
+bar even if it only requires 100% to perform. 
+
+Limit breaks are created as follows:
+
+[Name]
+Name=The name (can be with spaces)
+Cost=The cost, in black orbs. 0 means can't purchase
+Multiplier=The damage multiplier
+MeterNeeded=100-400 what % does the player need
+            to perform this limit break?
+Desc=What is shown when the limit break is used.
+
+
+Don't forget to add the limit break to 
+limitbreaks.lst if you want players to be able
+to purchase them.
+==============================================
+
+
+==============================================
+"Level 1" limit breaks.  
+All cost 1 orb and have a power of 1.5x damage
+==============================================
+
 [CrossSlash]
 Name=Cross Slash
 Cost=1
-Multiplier=1.1
+Multiplier=1.5
 MeterNeeded=100
 Desc=summons aether together to create a sword that is then used to perform a quick two slashes on %enemy before the aether disappears.
 
+[BeatRush]
+Name=Beat Rush
+Cost=1
+Multiplier=1.5
+MeterNeeded=100
+Desc=gathers powerful aether around $gender($1) hands before rushing forward towards %enemy and performing a several hit combo.  The aether then disappears.
+
+[BigShot]
+Name=Big Shot
+Cost=1
+Multiplier=1.5
+MeterNeeded=100
+Desc=summons aether together to create a large gun that is then used to fire one giant ball of energy towards %enemy before the aether disappears.
+
+==============================================
+"Level 2" limit breaks.  
+All cost 5 orbs and have a power of 2x damage
+They also require limit breaks to have been
+used at least 10 times before they show up in
+the shop.
+==============================================
+
+[Meteodrive]
+Name=Meteodrive
+Cost=$iif($readini($char($1), Stuff, LimitBreaksPerformed) < 10, 0, 5)
+Multiplier=2
+MeterNeeded=100
+Desc=begins summoning a large amount of aether that gathers together in the form of a large meteor. After a moment the meteor slams down on %enemy before the aether disappears.
+
+[GrenadeBomb]
+Name=Grenade Bomb
+Cost=$iif($readini($char($1), Stuff, LimitBreaksPerformed) < 10, 0, 5)
+Multiplier=2
+MeterNeeded=100
+Desc=picks up a random rock from the battlefield and imbudes it with enough aether to create a grenade. %user then tosses it towards %enemy and watches it explode.
+
+==============================================
+"Level 3" limit breaks.  
+All cost 10 orbs and have a power of 3x damage
+They also require limit breaks to have been
+used at least 30 times before they show up
+in the shop.
+==============================================
+
+
+
+==============================================
+"Level 4" limit breaks.  
+All cost 20 orbs and have a power of 4x damage
+They also require limit breaks to have been
+used at least 50 times before they show up in
+the shop.
+==============================================
+
+
+==============================================
+"Level 5+" limit breaks.  
+All cost 50 orbs and have varying power
+They also require limit breaks to have been
+used at least 100 times before they show up in
+the shop. They may also have different requirements.
+==============================================
+
+
+
+==============================================
+Monster/NPC limit breaks.  These should not
+be available to the players.
+==============================================

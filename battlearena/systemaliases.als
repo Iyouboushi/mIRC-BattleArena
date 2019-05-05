@@ -1597,6 +1597,11 @@ limits.list {
     %limits.list = $addtok(%limits.list, 07 $+ %limit.name, 46)
     inc %current.limit
   }
+
+  ; Clean the list
+  set %replacechar $chr(044) $chr(032)
+  %limits.list = $replace(%limits.list, $chr(046), %replacechar)
+  unset %replacechar  
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

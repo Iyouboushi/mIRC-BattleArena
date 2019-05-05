@@ -1831,7 +1831,7 @@ alias generate_battle_order {
       }
     }
 
-    if (%playersgofirst = on) {
+    if ((%playersgofirst = on) || (%cosmic.level >= 5)) {
       if ($readini($char(%who.battle), info, flag) = $null) { inc %battle.speed 9999999999 }
     }
 
