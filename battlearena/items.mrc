@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 04/14/19
+;;;; Last updated: 05/05/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -2041,7 +2041,7 @@ alias item.cosmic {
   if ($readini($txtfile(treasurechest.txt), ChestInfo, Color) != $null) { $display.message($readini(translation.dat, errors, Can'tDoActionWhileChest), private) | halt }
 
   ; Check for a valid number  
-  if ($2 !isnum 1-500) { $display.message($readini(translation.dat, errors, NeedValidNumberForCosmicLevel), private) | halt }
+  if ($2 !isnum 1-1000) { $display.message($readini(translation.dat, errors, NeedValidNumberForCosmicLevel), private) | halt }
 
   ; Make sure the player has enough of the item to start a cosmic battle and then remove the item.
   var %cosmic.item $readini($char($1), Item_Amount, $3) 

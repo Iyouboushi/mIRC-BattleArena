@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 04/15/19
+;;;; Last updated: 05/05/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1393,11 +1393,11 @@ alias shop.enhancements {
     if (%enhancement.purchase.spd = $null) { var %enhancement.purchase.spd 0 }
 
     if (%enhancement.purchase.hp < 50) { %shop.list = $addtok(%shop.list,HP+50 ( $+ $calc(1 + %enhancement.purchase.hp) $+ ),46) }
-    if (%enhancement.purchase.ig < 10) { %shop.list = $addtok(%shop.list,IG+5 ( $+ $calc(1 + %enhancement.purchase.ig) $+ ),46) }
-    if (%enhancement.purchase.str < 20) { %shop.list = $addtok(%shop.list,STR+10 ( $+ $calc(1 + %enhancement.purchase.str) $+ ),46) }
-    if (%enhancement.purchase.def < 20) { %shop.list = $addtok(%shop.list,DEF+10 ( $+ $calc(1 + %enhancement.purchase.def) $+ ),46) }
-    if (%enhancement.purchase.int < 20) { %shop.list = $addtok(%shop.list,INT+10 ( $+ $calc(1 + %enhancement.purchase.int) $+ ),46) }
-    if (%enhancement.purchase.spd < 20) { %shop.list = $addtok(%shop.list,SPD+10 ( $+ $calc(1 + %enhancement.purchase.spd) $+ ),46) }
+    if (%enhancement.purchase.ig < 20) { %shop.list = $addtok(%shop.list,IG+5 ( $+ $calc(1 + %enhancement.purchase.ig) $+ ),46) }
+    if (%enhancement.purchase.str < 50) { %shop.list = $addtok(%shop.list,STR+10 ( $+ $calc(1 + %enhancement.purchase.str) $+ ),46) }
+    if (%enhancement.purchase.def < 50) { %shop.list = $addtok(%shop.list,DEF+10 ( $+ $calc(1 + %enhancement.purchase.def) $+ ),46) }
+    if (%enhancement.purchase.int < 50) { %shop.list = $addtok(%shop.list,INT+10 ( $+ $calc(1 + %enhancement.purchase.int) $+ ),46) }
+    if (%enhancement.purchase.spd < 50) { %shop.list = $addtok(%shop.list,SPD+10 ( $+ $calc(1 + %enhancement.purchase.spd) $+ ),46) }
 
     ; display the list with the prices.
     $shop.cleanlist
