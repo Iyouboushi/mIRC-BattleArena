@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/03/19
+;;;; Last updated: 05/05/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -817,7 +817,7 @@ boost_monster_hp {
   }
 
   if (%battle.type = dragonhunt) { inc %hp.modifier 3 }
-  if (%battle.type = cosmic) { inc %hp.modifier 10 }
+  if (%battle.type = cosmic) { inc %hp.modifier 8.5 }
 
   ; Increase the hp modifier if more than 1 player is in battle..
   if ($return_playersinbattle > 1) {
@@ -852,12 +852,12 @@ boost_monster_hp {
     var %cosmic.hp.multiplier %cosmic.level
     if (%cosmic.hp.multiplier >= 20) { var %cosmic.hp.multiplier 20 }
 
-    if ($return_playersinbattle > 1) { var %cosmic.hp 900000 } 
-    else { var %cosmic.hp 500000 } 
+    if ($return_playersinbattle > 1) { var %cosmic.hp 750000 } 
+    else { var %cosmic.hp 450000 } 
 
     inc %hp $calc(%cosmic.hp.multiplier * %cosmic.hp)
 
-    if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 22000) }
+    if ($return_playersinbattle > 1) { inc %hp $calc($return_playersinbattle * 20000) }
   }
 
 
