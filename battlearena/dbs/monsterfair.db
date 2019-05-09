@@ -39,7 +39,7 @@ Monsters=Vampire_Bat.BeeBear.BloodGoyle.Citadel_Bats
 Restrictions=no-ignition.no-mech
 
 [11]
-Monsters=Yagudo_Herald.Yagudo_Oracle_Yagudo_Prior_Yagudo_Scribe.Yagudo_Conductor
+Monsters=Yagudo_Herald.Yagudo_Oracle.Yagudo_Prior.Yagudo_Scribe.Yagudo_Conductor
 Restrictions=no-ignition.no-mech
 
 [12]
@@ -59,7 +59,7 @@ Monsters=M_Bison.Ninja_Assassin.Ravager
 Restrictions=no-ignition.no-mech
 
 [16]
-Monsters=Beholder.Cyclops_Guard.Cyclops_Impaler_Cyclops_Warrior
+Monsters=Beholder.Cyclops_Guard.Cyclops_Impaler.Cyclops_Warrior
 Restrictions=no-ignition.no-mech
 
 [17]
@@ -87,7 +87,7 @@ Monsters=Dune_Widow.Bark_Spider.Demonic_Spider
 Restrictions=no-ignition.no-mech
 
 [23]
-Monsters=Leaping_Lizzie.Rock_Lizzard.Cactuar.Desert_Beetle
+Monsters=Leaping_Lizzie.Rock_Lizard.Cactuar.Desert_Beetle
 Restrictions=no-ignition.no-mech
 
 [24]
