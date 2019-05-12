@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/05/19
+;;;; Last updated: 05/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -3031,7 +3031,7 @@ alias battle.reward.redorbs {
       }
 
       ; Calculate a "resting" bonus.  This is a bonus to orbs for people who have been out of battle for a while.
-      var %resting.bonus $character.resting.bonus(%who.battle)
+      var %resting.bonus $character.resting.bonus.orbs(%who.battle)
       inc %total.redorbs.reward %resting.bonus
 
       ; Add the orbs to the player
