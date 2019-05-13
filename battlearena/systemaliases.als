@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/30/19
+;;;; Last updated: 05/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3986,9 +3986,20 @@ clear_dead_monsters {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 recalc_totalbattles {
   var %total.battles 0
-  inc %total.battles $readini(battlestats.dat, battle, TotalWins)
-  inc %total.battles $readini(battlestats.dat, battle, TotalLoss)
-  inc %total.battles $readini(battlestats.dat, battle, TotalDraws)
+
+  var %total.wins $readini(battlestats.dat, battle, TotalWins)
+  if (%total.wins = $null) { var %total.wins 0 }
+
+  var %total.losses $readini(battlestats.dat, battle, TotalLoss)
+  if (%total.losses = $null) { var %total.losses 0 }
+
+  var %total.draws $readini(battlestats.dat, battle, TotalDraws)
+  if (%total.draws = $null) { var %total.draws 0 }
+
+  inc %total.battles %total.wins
+  inc %total.battles %total.losses
+  inc %total.draws %total.draws
+
   writeini battlestats.dat battle TotalBattles %total.battles
 
   var %total.npcwins $readini(battlestats.dat, AIbattles, npc) 
