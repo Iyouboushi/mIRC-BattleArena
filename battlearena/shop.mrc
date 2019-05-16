@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 05/05/19
+;;;; Last updated: 05/16/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1447,8 +1447,9 @@ alias shop.enhancements {
       ; Are we hitting the cap amount?
       var %purchase.cap 10
 
+      if ($3 = ig) { var %purchase.cap 20 }
       if ($3 = hp) { var %purchase.cap 50 }
-      if (((($3 = str) || ($3 = def) || ($3 = int) || ($3 = spd)))) { inc %purchase.cap 20 }
+      if (((($3 = str) || ($3 = def) || ($3 = int) || ($3 = spd)))) { inc %purchase.cap 50 }
       if ($istok(%valid.purchase.skills, $lower($3), 46) = $true) { var %purchase.cap $readini($dbfile(skills.db), $3, max) }
 
       if (%enhancement.cost > %purchase.cap) { $display.private.message(04You cannot purchase any more into this upgrade!) | halt }
