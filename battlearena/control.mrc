@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 03/13/19
+;;;; Last updated: 05/17/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -612,6 +612,11 @@ on 3:TEXT:!motd*:*:{
   }
 }
 
+; Bot admins can force a random NPC to be saved with this command:
+; @npc rescue
+on 50:TEXT:@npc rescue*:*:{ 
+  $shopnpc.rescue(100)
+}
 
 ; Bot admin command for displaying active and zapped player lists.
 on 50:TEXT:!display *:*:{  

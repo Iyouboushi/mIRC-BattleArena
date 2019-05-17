@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 05/12/19
+;;;; Last updated: 05/17/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4752,13 +4752,13 @@ dragonhunt.createdragon {
   var %total.player.averagelevel $total.player.averagelevel
 
   if ((%total.player.averagelevel > 500) && (%total.player.averagelevel <= 2000)) { inc %dragon.age $rand(150,300) }
-  if ((%total.player.averagelevel > 2000) && (%total.player.averagelevel <= 5000)) { inc %dragon.age $rand(400,600) }
-  if (%total.player.averagelevel > 5000) { inc %dragon.age $rand(1000,1500) }
+  if ((%total.player.averagelevel > 2000) && (%total.player.averagelevel <= 5000)) { inc %dragon.age $rand(500,900) }
+  if (%total.player.averagelevel > 5000) { inc %dragon.age $rand(1000,2500) }
 
   var %dragonhunts.dead $readini(battlestats.dat, Battle, DragonHuntDragons.Killed)
   if (%dragonhunts.dead = $null) { var %dragonhunts.dead 0 }
 
-  inc %dragon.age $round($calc($log(%dragonhunts.dead) * 15),0)
+  inc %dragon.age $round($calc($log(%dragonhunts.dead) * 20),0)
 
   ; Write the age (i.e. level)
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age

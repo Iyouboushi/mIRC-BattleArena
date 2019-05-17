@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 03/13/19
+;;;; Last updated: 05/16/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1896,9 +1896,9 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) modifiers GreatSword 85
   writeini $char(%dragonhunt.file.name) modifiers bow 82
   writeini $char(%dragonhunt.file.name) modifiers glyph 75
-  writeini $char(%monster.name) modifiers FinishingTouch 0
-  writeini $char(%monster.name) modifiers MurderSpree 0
-  writeini $char(%monster.name) modifiers MurderSpreeII 0
+  writeini $char(%dragonhunt.file.name) modifiers FinishingTouch 0
+  writeini $char(%dragonhunt.file.name) modifiers MurderSpree 0
+  writeini $char(%dragonhunt.file.name) modifiers MurderSpreeII 0
 
   ; Add flying skill for older dragons
   if (%dragon.level >= 150) { writeini $char(%dragonhunt.file.name) skills flying 1 }

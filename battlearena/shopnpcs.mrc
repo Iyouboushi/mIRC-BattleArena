@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 03/13/19
+;;;; Last updated: 05/17/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -362,8 +362,10 @@ alias shopnpc.kidnap {
 ; A Shop NPC gets rescued
 alias shopnpc.rescue {
   if (($readini(system.dat, system, EnableNPCKidnapping) = $null) ||  ($readini(system.dat, system, EnableNPCKidnapping) = false)) { return }
-  if ($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) { return }
-  if ($rand(0, 100) <= 15) { return }
+  if (($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) && ($1 = $null)) { return }
+
+  if ($1 != $null) { var %rescue.chance $1 }
+  if (%rescue.chance <= 15) { return }
 
   ; Get a list of NPCs that have been kidnapped.
   if ($shopnpc.present.check(HealingMerchant) = kidnapped) { %active.npcs = $addtok(%active.npcs, HealingMerchant, 46) }
@@ -394,7 +396,6 @@ alias shopnpc.rescue {
   writeini shopnpcs.dat NPCNews Arrived $chr(91) $+ $asctime(mmm dd yyyy) - $asctime(hh:nn tt) $+ $chr(93) $readini(translation.dat, shopnpcs, ShopNPCRescued)
 
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
-
 
 }
 alias shopnpc.event.saveelf {

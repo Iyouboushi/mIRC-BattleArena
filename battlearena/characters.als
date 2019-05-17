@@ -842,6 +842,7 @@ return.skill.slots {
 ; statuses
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 player.status { unset %all_status | unset %all_skills | $set_chr_name($1) 
+
   if ($readini($char($1), Battle, Status) = dead) { set %all_status dead | return } 
   else { 
 
@@ -856,7 +857,6 @@ player.status { unset %all_status | unset %all_skills | $set_chr_name($1)
       } 
       inc %value 1 
     }
-
 
     $bar_check($1)
     unset %resists
@@ -1996,6 +1996,9 @@ character.dragonhunt {
   if (%dragonhunter.skill != $null) { inc %dragonhunt.chance %dragonhunter.skill }
 
   var %dragonhunt.randomnum $rand(1,100)
+
+  var %dragonhunt.randomnum 1
+
   if (%dragonhunt.randomnum > %dragonhunt.chance) { 
     $display.message($readini(translation.dat, errors, DragonHunt.NoLairFound), private) 
     halt
