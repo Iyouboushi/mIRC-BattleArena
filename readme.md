@@ -63,7 +63,6 @@ These are people who have helped me by helping me test, making monsters/weapons/
 * Raiden of Esper.net
 * Sealdrenxia of Twitter
 * Rei_Hunter of Esper.net
-* Trunks of Esper.net
 * Roy of Esper.net
 * Wims of mIRC's official forum
 * W3TPantsu of Esper.net
