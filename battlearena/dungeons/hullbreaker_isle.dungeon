@@ -75,5 +75,5 @@ RestoreRoom=true
 [12]
 Desc=After resting, the party moves forward. They see several broken platforms, along with the wreckage of the flagship of the dread pirate Mistbeard, The Haar. As they approach, a large Kraken and several of its arms emerge from the water.
 Battlefield=Hullbreaker Isle Wrecked Ship
-monsters=Isle_Kraken.Kraken_Arm.Kraken_Arm.Kraken_Arm.KrakenArm
+monsters=Isle_Kraken.Kraken_Arm.Kraken_Arm.Kraken_Arm.Kraken_Arm
 BossRoom=true
