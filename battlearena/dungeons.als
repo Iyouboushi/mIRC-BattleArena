@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 05/05/19
+;;;; Last updated: 05/29/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -603,17 +603,14 @@ dungeon.restoreroom {
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
 }
 
-dungeon.objects {  echo -a -----dungeon.objects
+dungeon.objects {  
   var %breakable.objects $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, objects)
-  echo -a breakable objects: %breakable.objects
   if (%breakable.objects = $null) { return }
 
   var %number.of.objects $numtok(%breakable.objects,46)
   var %current.object 1
   while (%current.object <= %number.of.objects) {
     var %object.chosen $gettok(%breakable.objects, %current.object, 46)
-
-    echo -a object chosen: %object.chosen
 
     .copy -o $char(new_chr) $char(%object.chosen)
     writeini $char(%object.chosen) info flag monster 
