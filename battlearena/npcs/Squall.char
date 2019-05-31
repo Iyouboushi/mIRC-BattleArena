@@ -127,7 +127,6 @@ Resist-Disarm=100
 DieHard=25
 
 [Techniques]
-KeenEdge=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
 RoughDivide=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
 FatedCircle=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
 BlastingZone=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
