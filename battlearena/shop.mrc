@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 05/16/19
+;;;; Last updated: 05/31/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -3444,7 +3444,7 @@ alias shop.mythic {
 
       var %current.ignoredef $readini($char($1), Mythic, IgnoreDefense) 
 
-      if (%current.hits >= 100) { $display.private.message(04Your mythic has the max Ignore Defense possible!) | halt }
+      if (%current.ignoredef >= 100) { $display.private.message(04Your mythic has the max Ignore Defense possible!) | halt }
 
       inc %current.ignoredef %upgrade.amount
       writeini $char($1) Mythic IgnoreDefense %current.ignoredef
