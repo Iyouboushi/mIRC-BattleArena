@@ -3314,6 +3314,7 @@ alias shop.monsterfair {
 ; !mythic stats <-- Reveals information about your mythic
 ; !mythic reset yes <-- Erases the mythic entirely.
 ; !mythic upgrade type <-- upgrades BasePower.Hits.IgnoreDefense.HurtEthereal.Element
+; !mythic type type <-- changes the type of weapon the mythic is. This will erase the tech list.
 ; !mythic tech add name <-- adds the tech to the mythic
 
 on 3:TEXT:!mythic*:*: { $shop.mythic($nick, $2, $3, $4, $5) }
@@ -3357,6 +3358,32 @@ alias shop.mythic {
 
     $display.private.message(03Hephaestus takes your %mythic.cost OdinMarks and forges a powerful $3 mythic weapon for you!)
     $display.private.message(03You can use !mythic stats to see information on your mythic.)
+    halt
+  }
+
+  if ($2 = type) { 
+    if ($readini($char($1), Mythic, CurrentLevel) = $null) { $display.private.message(04You do not have a mythic weapon. To forge one you must use !mythic forge weapontype) | halt }
+
+    var %valid.types HandToHand.Sword.Whip.Gun.Rifle.Bow.Katana.Wand.Stave.Glyph.Spear.Scythe.GreatSword.GreatAxe.Axe.Dagger.Hammer
+
+    ; Is it a valid type?
+    if ($istok(%valid.types, $3, 46) = $false) { $display.private.message(04Invalid weapon type! Valid types are:02 %valid.types) | halt }
+
+    ; Do we have enough OdinMarks?
+    var %mythic.cost 10
+    var %current.odinmarks $readini($char($1), Item_Amount, OdinMark)
+    if (%current.odinmarks = $null) { var %current.odinmarks 0 }
+
+    if (%current.odinmarks < %mythic.cost) { $display.private.message(04You do not have enough OdinMarks to reforge the mythic) | halt }
+
+    ; Reforge weapon
+    dec %current.odinmarks %mythic.cost 
+    writeini $char($1) Item_Amount OdinMark %current.odinmarks
+    remini $char($1) Mythic Techs
+    writeini $char($1) Mythic Type $3
+
+    $display.private.message(03Hephaestus takes your %mythic.cost OdinMarks and reforges your mythic weapon to a type $3 $+ .  The process destroys the techniques that the weapon knew.)
+
     halt
   }
 
