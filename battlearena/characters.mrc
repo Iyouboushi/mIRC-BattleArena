@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 04/21/19
+;;;; Last updated: 05/30/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -469,6 +469,15 @@ on 3:TEXT:!killcoins*:#: {
 on 3:TEXT:!kill coins*:#: {  
   if ($3 = $null) { $check.kill.coins($nick, channel) }
   if ($3 != $null) { $checkchar($3) | $check.kill.coins($3, channel) }
+}
+
+on 3:TEXT:!odinmarks*:#: {  
+  if ($3 = $null) { $item.countcmd($nick, odinmark, public) }
+  if ($3 != $null) { $checkchar($2) | $item.countcmd($2, odinmark, public) }
+}
+on 3:TEXT:!odin marks*:#: {  
+  if ($3 = $null) { $item.countcmd($nick, odinmark, public) }
+  if ($3 != $null) { $checkchar($3) | $item.countcmd($3, odinmark, public) }
 }
 
 on 3:TEXT:!bet*:*: { $ai.battle.place.bet($nick, $2, $3) } 
