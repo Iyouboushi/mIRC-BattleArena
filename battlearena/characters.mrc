@@ -472,7 +472,7 @@ on 3:TEXT:!kill coins*:#: {
 }
 
 on 3:TEXT:!odinmarks*:#: {  
-  if ($3 = $null) { $item.countcmd($nick, odinmark, public) }
+  if ($2 = $null) { $item.countcmd($nick, odinmark, public) }
   if ($2 != $null) { $checkchar($2) | $item.countcmd($2, odinmark, public) }
 }
 on 3:TEXT:!odin marks*:#: {  
