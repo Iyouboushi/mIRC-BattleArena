@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 06/01/19
+;;;; Last updated: 06/02/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -706,9 +706,12 @@ on 50:TEXT:!apl*:*:{
 ; without needing access to the files themselves.  It is recommended
 ; only to use this if you know what you're doing as it can easily mess up
 ; a file.
-; Later this will be expanded to edit other files beyond characters.
+;;;;;;;;;;;;;;;;;;;;
 ; @edit character <charactername> <ini section> <ini item> <new ini value>
 ; Example: @edit character iyouboushi BaseStats hp 100  <-- would change the base HP to 100
+; @edit dat <datfile>.dat <ini section> <ini item> <new item value>
+; Example: @edit dat garden.dat GardenStats xp 1000
+;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:@edit *:*:{  
 
@@ -717,6 +720,14 @@ on 50:TEXT:@edit *:*:{
     if ($6 = $null) { .msg $nick 04@edit character name section item value | halt }
     writeini $char($3) $4 $5 $6
     .msg $nick 03 $+ $3 $+ 's file has been edited so that $4 $5 has been set to $6 $+ .
+  }
+
+  if ($2 = dat) { 
+    if ($isfile($3) = $false) { .msg $nick 04Invalid dat file | halt }
+    if ($6 = $null) { .msg $nick 04@edit dat name.dat section item value | halt }
+
+    writeini $3 $4 $5 $6
+    .msg $nick 03 $+ $3 $+ 's dat file has been edited so that $4 $5 has been set to $6 $+ .
   }
 
 }
