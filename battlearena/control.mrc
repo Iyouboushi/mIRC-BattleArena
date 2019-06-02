@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 05/17/19
+;;;; Last updated: 06/01/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -702,6 +702,24 @@ on 50:TEXT:!apl*:*:{
 }
 
 
+; This command is for bot admins to be able to edit files/inis
+; without needing access to the files themselves.  It is recommended
+; only to use this if you know what you're doing as it can easily mess up
+; a file.
+; Later this will be expanded to edit other files beyond characters.
+; @edit character <charactername> <ini section> <ini item> <new ini value>
+; Example: @edit character iyouboushi BaseStats hp 100  <-- would change the base HP to 100
+
+on 50:TEXT:@edit *:*:{  
+
+  if ($2 = character) {
+    $checkchar($3)
+    if ($6 = $null) { .msg $nick 04@edit character name section item value | halt }
+    writeini $char($3) $4 $5 $6
+    .msg $nick 03 $+ $3 $+ 's file has been edited so that $4 $5 has been set to $6 $+ .
+  }
+
+}
 ;====================
 ; This is to block some
 ; spam bots on Esper.
