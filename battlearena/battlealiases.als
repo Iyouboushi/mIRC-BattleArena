@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 05/05/19
+;;;; Last updated: 06/01/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4130,6 +4130,8 @@ weapon.ranged.check {
 
   var %weapon.type $readini($dbfile(weapons.db), $1, type)
 
+  if ($1 = mythic) { var %weapon.type $readini($char($2), Mythic, Type) }
+
   if (%weapon.type = bow) { return true }
   if (%weapon.type = gun) { return true }
   if (%weapon.type = rifle) { return true }
@@ -4154,7 +4156,7 @@ flying.damage.check {
   ; $3 = the target
 
   if ($readini($char($3), status, flying) = yes) { 
-    var %israngedweapon $weapon.ranged.check($2)
+    var %israngedweapon $weapon.ranged.check($2, $1)
     if (%israngedweapon != true) { $set_chr_name($1) | set %guard.message $readini(translation.dat, status, FlyingBlocked) | set %attack.damage 0 | return }
   }
 }
