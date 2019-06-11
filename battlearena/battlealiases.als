@@ -1167,8 +1167,6 @@ deal_damage {
 
         if ($readini($char($2), Info, CoinBonus) = true) { writeini $txtfile(battle2.txt) battleinfo bonuscoins true }
 
-        if ($readini($txtfile(battle2.txt), battleinfo, bonuscoins) = true) { inc %total.coins.reward 10 }
-
         ; give some ignition points if necessary
         $battle.reward.ignitionGauge.single($2)
 
