@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 05/12/19
+;;;; Last updated: 06/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -3197,6 +3197,8 @@ alias battle.reward.killcoins {
         var %increase.coin.amount $round($calc(%total.coins.reward * 2),0)
         inc %total.coins.reward %increase.coin.amount
       }
+
+      if ($readini($txtfile(battle2.txt), battleinfo, bonuscoins) = true) { inc %total.coins.reward 10 }
 
       ; Check for bounty
       if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { inc %total.coins.reward 20 }

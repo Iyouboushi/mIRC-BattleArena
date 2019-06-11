@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/01/19
+;;;; Last updated: 06/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1164,6 +1164,10 @@ deal_damage {
           if ($isfile($boss($2)) = $true) { $monster.outpost(remove, $rand(2,3)) }
           if ($isfile($mon($2)) = $true) { $monster.outpost(remove, 1) }
         }
+
+        if ($readini($char($2), Info, CoinBonus) = true) { writeini $txtfile(battle2.txt) battleinfo bonuscoins true }
+
+        if ($readini($txtfile(battle2.txt), battleinfo, bonuscoins) = true) { inc %total.coins.reward 10 }
 
         ; give some ignition points if necessary
         $battle.reward.ignitionGauge.single($2)
