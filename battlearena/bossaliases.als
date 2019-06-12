@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 05/16/19
+;;;; Last updated: 06/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1780,6 +1780,7 @@ dragonhunt.createfile {
 
   var %dragon.level $dragonhunt.dragonage(%dragonhunt.file.name)
   var %dragon.element $dragonhunt.dragonelement(%dragonhunt.file.name) 
+
   if (%dragon.element = shadow) { var %dragon.element dark }
 
   writeini $char(%dragonhunt.file.name) info flag monster 
@@ -1793,11 +1794,15 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) monster type dragon
   writeini $char(%dragonhunt.file.name) info CanTaunt false
 
+  if ($dragonhunt.ancientcheck(%dragonhunt.file.name) = true) { writeini $char(%dragonhunt.file.name) info CoinBonus true }
+
   if ((%dragon.level >= 200) && (%dragon.level <= 500)) { writeini $char(%dragonhunt.file.name) monster elite true }
   if (%dragon.level > 500) { writeini $char(%dragonhunt.file.name) monster SuperElite true }
 
   var %base.hp.tp $round($calc(100 * %dragon.level),0)
   if ($return_playersinbattle >= 3) { inc %base.hp.tp $round($calc(80 * $return_playersinbattle),0) }
+
+  if ($dragonhunt.ancientcheck(%dragonhunt.file.name) = true) { inc %base.hp.tp 500 }
 
   writeini $char(%dragonhunt.file.name) basestats hp %base.hp.tp
   writeini $char(%dragonhunt.file.name) basestats tp %base.hp.tp
@@ -1816,6 +1821,12 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) techniques SpikeFlail $calc(%dragon.level + 1)
   writeini $char(%dragonhunt.file.name) techniques AbsoluteTerror %dragon.level
   writeini $char(%dragonhunt.file.name) techniques DragonFire $calc(%dragon.level + 5) 
+
+
+  if ($dragonhunt.ancientcheck(%dragonhunt.file.name) = true) { 
+    writeini $char(%dragonhunt.file.name) techniques SpikeFlail $calc(%dragon.level + 50)
+    writeini $char(%dragonhunt.file.name) techniques DragonFire $calc(%dragon.level + 50)
+  }
 
   ; Depending on the element of the dragon, it will have different techniques
   if (%dragon.element = fire) { writeini $char(%dragonhunt.file.name) techniques FireII %dragon.level }

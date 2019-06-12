@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 05/17/19
+;;;; Last updated: 06/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2748,7 +2748,7 @@ clear_negative_status {
   writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no | writeini $char($1) status intdown no  |  writeini $char($1) status stop no | writeini $char($1) status petrified no 
   writeini $char($1) status bored no | remini $char($1) status weapon.locked | writeini $char($1) status confuse no 
   remini $char($1) status annoyed | writeini $char($1) status terrify no | writeini $char($1) status doll no | writeini $char($1) status doom no
-  writeini $char($1) status heavy no
+  writeini $char($1) status heavy no 
 
   ; Clear negative timer statuses
   writeini $char($1) status poison.timer 0 |  writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
@@ -4668,6 +4668,12 @@ dragonhunt.check {
   }
 }
 
+dragonhunt.ancientcheck {
+  var %ancient.dragon $readini($dbfile(dragonhunt.db), $1, Ancient)
+  if (%ancient.dragon = $null) { return false }
+  else { return true }
+}
+
 dragonhunt.dragonage {
   var %dragon.createdtime $readini($dbfile(dragonhunt.db), $1, created)
 
@@ -4725,6 +4731,10 @@ dragonhunt.createdragon {
     return 
   }
 
+  ; Is this dragon going to be an ancient dragon?  Ancient dragons are stronger and create harder battles.
+  var %ancient.chance $rand(1,100)
+  if (%ancient.chance >= 95) { var %ancient.dragon true }
+
   ; Pick a random first name
   var %names.lines $lines($lstfile(dragonnames.lst))
   if ((%names.lines = $null) || (%names.lines = 0)) { write $lstfile(dragonnames.lst) Nasith | var %names.lines 1 }
@@ -4740,7 +4750,8 @@ dragonhunt.createdragon {
   unset %names.lines
 
   var %dragon.name.file %first.name $+ _ $+ %last.name
-  var %dragonhunt.name %first.name %last.name
+  if (%ancient.dragon = true) {   var %dragonhunt.name %first.name %last.name the Ancient One }
+  else {  var %dragonhunt.name %first.name %last.name }
 
   writeini $dbfile(dragonhunt.db) %dragon.name.file Name %dragonhunt.name
 
@@ -4762,6 +4773,11 @@ dragonhunt.createdragon {
 
   ; Write the age (i.e. level)
   writeini $dbfile(dragonhunt.db) %dragon.name.file Age %dragon.age
+
+  if (%ancient.dragon = true) { 
+    writeini $dbfile(dragonhunt.db) %dragon.name.file Age $calc(%dragon.age + $rand(100,150)) 
+    writeini $dbfile(dragonhunt.db) %dragon.name.file Ancient true   
+  } 
 
   ; Write the battle level
   writeini $dbfile(dragonhunt.db) %dragon.name.file BattleLevel %dragon.age
@@ -4792,8 +4808,11 @@ dragonhunt.listdragons {
     ; Calculate the dragon's age..
     var %dragonhunt.dragonage $dragonhunt.dragonage(%current.dragon)
 
+    ; Get the battlefield level
+    var %dragonhunt.battlelevel $readini($dbfile(dragonhunt.db), %current.dragon, BattleLevel)
+
     ; Show dragon
-    $display.message.Delay(04 $+ %dragon.name  - Age: %dragonhunt.dragonage - Element: $dragonhunt.dragonelement(%current.dragon) , private, 1)
+    $display.message.Delay(04 $+ %dragon.name ::  05Age:04 %dragonhunt.dragonage :: 05Element04: $dragonhunt.dragonelement(%current.dragon) :: 05Battle Level04: %dragonhunt.battlelevel , private, 1)
 
     inc %dragonhunt.counter
   }
