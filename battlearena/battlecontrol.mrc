@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/11/19
+;;;; Last updated: 08/14/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2251,7 +2251,6 @@ alias battle.end.victory {
     }
   }
 
-  if (((((((%battle.type != defendoutpost) && (%besieged != on) && (%battle.type != MonsterFair) && (%battle.type != torment) && (%supplyrun != on) && (%battle.type != cosmic) && (%battle.type != assault))))))) { $shopnpc.rescue }
   if (%boss.type = FrostLegion) { writeini shopnpcs.dat Events FrostLegionDefeated true }
 
   if (%battle.type = torment) { $torment.reward }
@@ -2298,6 +2297,8 @@ alias battle.end.victory {
   $show.cosmic.reward
   $show.besieged.reward
   $show.monsterfair.reward
+
+  $shopnpc.rescue
 }
 
 ; Battle ends in a draw

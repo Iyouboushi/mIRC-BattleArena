@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 05/17/19
+;;;; Last updated: 08/14/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -359,13 +359,27 @@ alias shopnpc.kidnap {
   unset %active.npcs | unset %kidnapped.npc |  unset %total.npcs | unset %random.npc | unset %shopnpc.name
 }
 
-; A Shop NPC gets rescued
+; A Chance that a Shop NPC gets rescued
 alias shopnpc.rescue {
   if (($readini(system.dat, system, EnableNPCKidnapping) = $null) ||  ($readini(system.dat, system, EnableNPCKidnapping) = false)) { return }
-  if (($readini($txtfile(battle2.txt), BattleInfo, CanKidnapNPCS) != yes) && ($1 = $null)) { return }
 
+  ; Certain battles cannot result in saving NPCs
+  if (%battle.type = orbfountain) { return }
+  if (%battle.type = monster) { return }
+  if (%battle.type = defendoutpost) { return }
+  if (%battle.type = MonsterFair) { return }
+  if (%battle.type = Torment) { return }
+  if (%battle.type = Cosmic) { return }
+  if (%battle.type = mimic) { return }
+  if (%battle.type = dungeon) { return } 
+  if (%besieged = on) { return }
+  if (%supplyrun = on) { return }
+  if (%portal.bonus = true) { return }
+
+  ; Random chance of saving an NPC with this battle.
+  var %rescue.chance $rand(1,100)
   if ($1 != $null) { var %rescue.chance $1 }
-  if (%rescue.chance <= 15) { return }
+  if (%rescue.chance <= 40) { return }
 
   ; Get a list of NPCs that have been kidnapped.
   if ($shopnpc.present.check(HealingMerchant) = kidnapped) { %active.npcs = $addtok(%active.npcs, HealingMerchant, 46) }
