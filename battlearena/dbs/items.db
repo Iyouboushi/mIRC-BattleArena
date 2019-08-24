@@ -1305,6 +1305,14 @@ Desc=A bright white diamond.
 Currency=AlliedNotes
 ConquestItem=true
 
+[DragonDiamond]
+Type=gem
+Cost=0
+SellPrice=10000
+Desc=A glowing white diamond that was created by an ancient dragon.
+Currency=none
+ConquestItem=false
+
 =========================
 KEYS
 =========================
@@ -3817,6 +3825,7 @@ Exclusive=yes
 PortalLevel=5000
 Victory=$chr(2) $+ Ifrit Prime has left behind a Clom's Tale tome so that his secrets may be passed on.
 Defeat=$chr(2) $+ Ifrit Prime gives off a laugh and says "Thou are not worthy of my boon!" before vanishing.
+StatWeight=.95
 
 [FortunaCrest]
 Type=portal
@@ -3828,6 +3837,7 @@ Desc=uses the crest to open the gates of the Fortuna Castle and together the her
 AlliedNotes=5000
 Exclusive=yes
 PortalLevel=5000
+StatWeight=.95
 
 [AntiDollCharm]
 type=portal
@@ -3841,6 +3851,7 @@ Exclusive=yes
 PortalLevel=5000
 Victory=$chr(2) $+ The Vicious Calcabrina has been defeated and the Dwarven King rewards the heroes with a Clom's Tale tome for their help in this matter.
 Defeat=$chr(2) $+ The dolls giggle and say "That was fun! Come back and play with us again some time!" before restoring the powerful barrier
+StatWeight=.95
 
 [MechanicalEye]
 type=portal
@@ -4124,6 +4135,7 @@ Desc=takes out an ancient crystal from Atlantis. It begins to pulse then glows b
 AlliedNotes=3000
 PortalLevel=300
 DarknessTurns=35
+StatWeight=.95
 
 [OldKingSoul]
 Type=portal
@@ -4202,6 +4214,7 @@ Desc=rings a demonic bell that opens a portal. Upon entering they are greeted wi
 AlliedNotes=1000
 Exclusive=yes
 ShadowPortal=true
+StatWeight=.90
 
 [ShadowGodSeal]
 type=portal
@@ -4214,6 +4227,7 @@ Desc=takes out the small blackened orb, which shatters and creates a large porta
 AlliedNotes=2500
 Exclusive=yes
 ShadowPortal=true
+StatWeight=.90
 
 [ShadowAtlantianCrystal]
 Type=portal
@@ -4226,6 +4240,7 @@ Desc=takes out a blackened ancient crystal from Atlantis. It begins to pulse the
 AlliedNotes=5000
 Exclusive=yes
 ShadowPortal=true
+StatWeight=.80
 
 [BarrierOrb]
 Type=portal
@@ -4238,6 +4253,7 @@ Desc=takes out a small orb that is white in color and throws it to the ground. E
 AlliedNotes=5000
 Exclusive=yes
 ShadowPortal=true
+StatWeight=.90
 
 =========================
 MECH CORE ITEMS

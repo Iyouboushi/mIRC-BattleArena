@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 06/12/19
+;;;; Last updated: 08/23/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1931,7 +1931,8 @@ dragonhunt.createfile {
   $display.message($readini(translation.dat, battle, EnteredTheBattle),battle) 
   var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
 
-  writeini $txtfile(battle2.txt) battle bonusitem DragonScale.DragonFang.DragonEgg
+  if ($dragonhunt.ancientcheck(%dragonhunt.file.name) = true) { writeini $txtfile(battle2.txt) battle bonusitem DragonDiamond }
+  else { writeini $txtfile(battle2.txt) battle bonusitem DragonScale.DragonFang.DragonEgg }
 }
 
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 06/12/19
+;;;; Last updated: 08/23/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -349,15 +349,26 @@ character.enmity.getname {
 ; Returns TNL of char
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 get.level.tnl { 
-  var %current.level $get.level($1)
+  var %current.level $get.level.basestats($1)
   var %next.level $calc(%current.level + 1)
-  var %tnl $calc(18 * %next.level - 9)
-  var %str $readini($char($1),battle, str)
-  var %def $readini($char($1), battle, def)
-  var %int $readini($char($1), battle, int)
-  var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
-  var %current.stat.xp $calc(%str + %def + %int + %spd)
-  var %tnl $calc(%tnl - %current.stat.xp)
+
+  var %str $readini($char($1), BaseStats, str)
+  var %def $readini($char($1), basestats, def)
+  var %int $readini($char($1), basestats, int)
+  var %spd $readini($char($1), basestats, spd)
+
+  var %current.stats.now %str
+  inc %current.stats.now %def
+  inc %current.stats.now %int
+  inc %current.stats.now %spd
+
+  if (%current.level <= 100) {
+    var %total.stats.needed $calc(20  * %next.level)
+    var %tnl $calc(%total.stats.needed - %current.stats.now)
+    return %tnl
+  }
+
+  var %tnl to be fixed later
   return %tnl
 }
 
@@ -368,22 +379,35 @@ get.level {
   var %str $readini($char($1),battle, str)
   var %def $readini($char($1), battle, def)
   var %int $readini($char($1), battle, int)
-  var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
+  var %spd $readini($char($1), battle, spd)
 
   var %level %str
   inc %level %def
   inc %level %int
   inc %level %spd
 
-  var %level $round($calc(%level / 18), 1)
+  var %temporary.level $round($calc(%level / 20), 1)
+  var %weight $get.level.statweight($1, %temporary.level)
 
+  if ($readini($char($1), info, flag) = monster) {  var %level $floor($calc(%level * %weight)) }
+  if ($readini($char($1), info, flag) != monster) { 
+
+    if (%level > 2000) {
+      dec %level 2000
+      var %level $calc(%level * $get.level.statweight($1, %temporary.level))
+      var %level $floor(%level)
+      inc %level 2000
+    }
+  }
+
+  var %level $floor($calc(%level / 20))
   return $round(%level,0)
 }
 get.full.level {
   var %str $readini($char($1),battle, str)
   var %def $readini($char($1), battle, def)
   var %int $readini($char($1), battle, int)
-  var %spd $round($calc($readini($char($1), battle, spd) * .5),0)
+  var %spd $readini($char($1), battle, spd)
   inc %str $armor.stat($1, str)
   inc %def $armor.stat($1, def)
   inc %int $armor.stat($1, int)
@@ -394,22 +418,53 @@ get.full.level {
   inc %level %int
   inc %level %spd
 
-  var %level $round($calc(%level / 18), 1)
+  var %temporary.level $round($calc(%level / 20), 1)
+  var %weight $get.level.statweight($1, %temporary.level)
 
+  if ($readini($char($1), info, flag) = monster) { 
+    var %level $floor($calc(%level * %weight))
+  }
+  if ($readini($char($1), info, flag) != monster) { 
+
+    if (%level > 2000) {
+      dec %level 2000
+      var %level $calc(%level * %weight)
+      var %level $floor(%level)
+      inc %level 2000
+    }
+  }
+
+  var %level $floor($calc(%level / 20))
   return $round(%level,0)
 }
 get.level.basestats {
   var %str $readini($char($1), BaseStats, str)
   var %def $readini($char($1), basestats, def)
   var %int $readini($char($1), basestats, int)
-  var %spd $round($calc($readini($char($1), basestats, spd) * .5),0)
+  var %spd $readini($char($1), basestats, spd)
 
   var %level %str
   inc %level %def
   inc %level %int
   inc %level %spd
 
-  var %level $round($calc(%level / 18), 1)
+  var %temporary.level $round($calc(%level / 20), 1)
+  var %weight $get.level.statweight($1, %temporary.level)
+
+  if ($readini($char($1), info, flag) = monster) { 
+    var %level $floor($calc(%level * %weight))
+  }
+  if ($readini($char($1), info, flag) != monster) { 
+
+    if (%level > 2000) {
+      dec %level 2000
+      var %level $calc(%level * %weight)
+      var %level $floor(%level)
+      inc %level 2000
+    }
+  }
+
+  var %level $floor($calc(%level / 20))
   return $round(%level,0)
 }
 get.level.old {
@@ -428,6 +483,52 @@ get.level.old {
   return %level
 }
 
+get.level.statweight {
+  var %weight 1
+
+  if ($readini($char($1), info, flag) = monster) { 
+    if (%battle.type = defendoutpost) { return %weight }
+    if (%battle.type = MonsterFair) { return %weight }
+    if (%battle.type = Torment) { return %weight }
+    if (%battle.type = Cosmic) { return %weight }
+    if (%battle.type = mimic) { return %weight }
+    if (%battle.type = dungeon) { 
+      ; to do: check to see if the monsters/boss in the dungeon room needs a different weight
+      return %weight
+
+    } 
+    if (%besieged = on) { return %weight }
+    if (%supplyrun = on) { return %weight }
+
+    if (%portal.bonus = true) { 
+      var %portal.item $readini($txtfile(battle2.txt), battleinfo, PortalItem)
+      var %statweight $readini($dbfile(items.db), %portal.item, StatWeight)
+
+      if (%statweight = $null) { return %weight }
+      else { return %statweight }
+    }
+
+    var %current.streak $return_winningstreak
+
+    if (%current.streak <= 100) { return %weight }
+    if ((%current.streak > 100) && (%current.streak <= 500)) { var %weight .98 }
+    if ((%current.strek >= 500) && (%current.streak <= 1000)) { var %weight .96 }
+    if ((%current.streak > 1000) && (%current.streak <= 5000)) { var %weight .95 }
+    if (%current.streak > 5000) { var %weight .92 }
+  }
+  else {
+    if ($2 < 100) { return 1 }
+    if (($2 >= 101) && ($2 <= 500)) { var %weight .95 }
+    if (($2 > 500) && ($2 <= 1000)) { var %weight .90 }
+    if (($2 > 1000) && ($2 <= 5000)) { var %weight .85 }
+    if (($2 > 5000) && ($2 <= 10000)) { var %weight .80 }
+    if (($2 > 10000) && ($2 <= 20000)) { var %weight .75 }
+    if ($2 > 20000) { var %weight .70 }
+  }
+
+  return %weight
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Returns level of armor
 ; based on armor's stats
@@ -444,7 +545,7 @@ ilevel {
   inc %level %int
   inc %level %spd
 
-  var %level $round($calc(%level / 18), 0)
+  var %level $round($calc(%level / 20), 0)
 
   return %level
 
