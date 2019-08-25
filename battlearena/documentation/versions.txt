@@ -1595,6 +1595,7 @@ Battle Arena Bot VERSIONS
 - Added a new system flag: EnableEnmity=true/false  When true it will use the enmity targeting system
 - Added a new bot admin command: !toggle enmity   Use this to toggle it on and off.
 - Added the missing augments and reforged +1 armor
+- Added a protection value to armor.  Armor can now block a % of damage that a player would normally take.
 - Added the !portal dropcheck command [thanks to Pentium320]
 - Added the !monster strength command. This will give you an idea on how soon a besieged battle will begin.
 - Added the !deathboard players command.  This will generate the top players who have died the most in the game.
@@ -1694,6 +1695,7 @@ Battle Arena Bot VERSIONS
 - Changed !view-help skill so that it will show the style skills if a player tries to view them.
 - Changed the MonsterSummon skill so that it can now summon boss monsters (files in \bosses\)
 - Changed the max amount for certain enhancement point upgrades.
+- Changed the amount of stat points it takes to "level up" on levels 101+
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working
