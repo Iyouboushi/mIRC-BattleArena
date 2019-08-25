@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/12/19
+;;;; Last updated: 08/25/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -616,6 +616,7 @@ formula.meleedmg.player.formula {
   var %ignore.defense.percent $readini($dbfile(weapons.db), $2, IgnoreDefense)
 
   if ($augment.check($1, IgnoreDefense) = true) {   inc %ignore.defense.percent $calc(%augment.strength * 2) }
+  if (%ignore.defense.percent > 100) { var %ignore.defense.percent 100 }
 
   if (%ignore.defense.percent > 0) { 
     var %def.ignored $round($calc(%enemy.defense * (%ignore.defense.percent * .010)),0)
@@ -3568,8 +3569,8 @@ formula.meleedmg.monster {
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
 
-  ; if we're in a portal or dungeon  then decrease damage by armor protection
-  if ((%portal.bonus = true) || (%battle.type = dungeon)) { set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) }
+  ; decrease damage by armor protection
+  set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) 
 
   ; set starting damage and check for modifiers  
   set %starting.damage %attack.damage
@@ -3953,8 +3954,8 @@ formula.techdmg.monster {
 
   $cap.damage($1, $3, tech)
 
-  ; if we're in a portal or dungeon  then decrease damage by armor protection
-  if ((%portal.bonus = true) || (%battle.type = dungeon)) { set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) }
+  ; decrease damage by armor protection
+  set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) 
 
   ; set starting damage and check for modifiers  
   set %starting.damage %attack.damage
