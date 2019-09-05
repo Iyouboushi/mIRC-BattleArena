@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 05/29/19
+;;;; Last updated: 09/05/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -342,6 +342,8 @@ dungeon.nextroom {
   remini $txtfile(battle2.txt) style
 
   if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, RestoreRoom) = true) { $dungeon.restoreroom }
+  if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, StoryRoom) = true) { $dungeon.storyroom }
+
   else { 
     ; Generate dungeon monsters
     $dungeon.generatemonsters
@@ -602,6 +604,21 @@ dungeon.restoreroom {
 
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
 }
+
+dungeon.storyroom {
+  ; This room is only there to display text.  It doesn't heal anyone like a restore room.
+
+  var %current.room $dungeon.currentroom
+  inc %current.room 1
+  writeini $txtfile(battle2.txt) DungeonInfo CurrentRoom %current.room
+
+  if ($dungeon.dungeonovercheck = true) { $dungeon.end | halt } 
+
+  $display.message(02* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
+
+  /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
+}
+
 
 dungeon.objects {  
   var %breakable.objects $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, objects)
