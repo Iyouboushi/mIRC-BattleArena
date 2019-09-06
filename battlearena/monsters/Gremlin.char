@@ -29,6 +29,7 @@ RageCountDown=0
 [Descriptions]
 Char=is an ugly green monster with large bat-like ears and sharp teeth. It gives a mischievous laugh
 Rage=needs to set a rage desc by typing !ragedesc <desc>
+monstersummon=The Gremlin howls in pain as its skin begins to bubble from the water. After a moment a large chunk flies off and reveals itself to be another Gremlin who joins the battle.
 
 [Stuff]
 ; currencies
@@ -231,5 +232,5 @@ Glyph=100
 GreatSword=100
 Bow=100
 
-[modifier_adjust]
+[modifier_special]
 water=$iif($return_monstersinbattle <= $return_maxmonstersinbattle, $skill.monstersummon(gremlin, gremlin))

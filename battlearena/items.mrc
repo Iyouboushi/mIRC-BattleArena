@@ -2124,7 +2124,7 @@ alias item.dungeon {
   }
 
   ; Is the dungeon available to do?
-  if ($readini($dungeonfile(%dungeon.file), info, Open) = false) { echo -a false | $display.message($readini(translation.dat, errors, DungeonNotOpen), private) | halt }
+  if ($readini($dungeonfile(%dungeon.file), info, Open) = false) { $display.message($readini(translation.dat, errors, DungeonNotOpen), private) | halt }
 
   writeini $txtfile(battle2.txt) DungeonInfo DungeonCreator $1
   $dungeon.start($1, $2, %dungeon.file, $3)

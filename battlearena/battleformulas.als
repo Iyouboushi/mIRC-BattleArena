@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 08/25/19
+;;;; Last updated: 09/06/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -783,6 +783,8 @@ formula.meleedmg.player.formula {
   unset %damage.rating | unset %killer.trait.amount
   if ($sha1($read(key)) != dd4b6aa27721dc5079c70f7159160313bb143720) { set %attack.damage 0 }
 
+  var %weapon.type $readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), type)
+  if ($readini($char($3), n, modifier_special, %weapon.type) != $null) { $readini($char($3), modifier_special, %weapon.type) } 
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -812,6 +814,8 @@ formula.techdmg.player.formula {
     unset %target.element.null
   }
 
+  var %weapon.type $readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), type)
+  if ($readini($char($3), n, modifier_special, %weapon.type) != $null) { $readini($char($3), modifier_special, %weapon.type) } 
 
   var %target.tech.null $readini($char($3), modifiers, $2)
 
@@ -2826,6 +2830,9 @@ formula.meleedmg.player.formula_1.0 {
   ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  var %weapon.type $readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), type)
+  if ($readini($char($3), n, modifier_special, %weapon.type) != $null) { $readini($char($3), modifier_special, %weapon.type) } 
+
   if (%attack.damage = 0) { return }
 
   ; Check for multiple hits
@@ -3226,6 +3233,9 @@ formula.meleedmg.player.formula_2.5 {
   ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
+  var %weapon.type $readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), type)
+  if ($readini($char($3), n, modifier_special, %weapon.type) != $null) { $readini($char($3), modifier_special, %weapon.type) } 
+
   if (%attack.damage = 0) { return }
 
   ; Check for multiple hits
@@ -3569,8 +3579,8 @@ formula.meleedmg.monster {
   if (%guard.message = $null) {  inc %attack.damage $rand(1,3) }
   unset %enemy.defense | unset %level.ratio
 
-  ; decrease damage by armor protection
-  set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) 
+  ; if we're in a portal or dungeon  then decrease damage by armor protection
+  if ((%portal.bonus = true) || (%battle.type = dungeon)) { set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) }
 
   ; set starting damage and check for modifiers  
   set %starting.damage %attack.damage
@@ -3954,8 +3964,8 @@ formula.techdmg.monster {
 
   $cap.damage($1, $3, tech)
 
-  ; decrease damage by armor protection
-  set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) 
+  ; if we're in a portal or dungeon  then decrease damage by armor protection
+  if ((%portal.bonus = true) || (%battle.type = dungeon)) { set %attack.damage $round($calc(%attack.damage - (%attack.damage * ($armor.protection($3) / 100))),0) }
 
   ; set starting damage and check for modifiers  
   set %starting.damage %attack.damage

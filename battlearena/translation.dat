@@ -641,6 +641,7 @@ Can'tStartTormentInBattle=$chr(3) $+ 04 $+ Error: Torment items cannot be used
 Can'tStartInBattle=$chr(3) $+ 04 $+ Error: This item cannot be used during battle. Try again after the battle is over.
 Can'tStartCosmicInBattle=$chr(3) $+ 04 $+ Error: Cosmic items cannot be used during battle. Try again after the battle is over.
 NotAValidDungeon=$chr(3) $+ 04 $+ Error: This item's dungeon does not exist. Please talk to the bot owner.
+DungeonNotOpen=$chr(3) $+ 04 $+ Error: This dungeon is currently unavailable.
 NotEnoughPartyMembersForDungeon=$chr(3) $+ 04 $+ Not enough players have entered to fulfill the party requirements. Please gather more people and try again.
 LevelTooLowForDungeon=$chr(3) $+ 04 $+ Error: $get_chr_name($1) $+ 's level is too low to enter this dungeon.
 CanOnlyStartOneDungeonADay=$chr(3) $+ 04 $+ Error: $get_chr_name($1) can only start one dungeon per 24 hours ( $+ $duration($calc(%dungeon.time.setting - %time.difference)) remaining). Note this restriction is only for starting a dungeon. $get_chr_name($1) can still join other people's dungeon parties.
