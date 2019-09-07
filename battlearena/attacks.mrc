@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 03/13/19
+;;;; Last updated: 09/06/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -575,6 +575,16 @@ alias melee.weapontype.enhancements {
 
   if (%weapon.type = gun) {
     if ($accessory.check($1, IncreaseGunDamage) = true) {
+      inc %attack.damage $round($calc(%attack.damage * %accessory.amount),0)
+      unset %accessory.amount
+    }
+
+    ; Check for an augment
+    if ($augment.check($1, EnhanceRanged) = true) { inc %attack.damage $calc(%augment.strength * 100)  } 
+  }
+
+  if (%weapon.type = chakram) {
+    if ($accessory.check($1, IncreaseChakramDamage) = true) {
       inc %attack.damage $round($calc(%attack.damage * %accessory.amount),0)
       unset %accessory.amount
     }
