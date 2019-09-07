@@ -562,6 +562,17 @@ alias melee.weapontype.enhancements {
     if ($augment.check($1, EnhanceSword) = true) { inc %attack.damage $calc(%augment.strength * 100)  } 
   }
 
+  if (%weapon.type = gunblade) {
+    if ($accessory.check($1, IncreaseGunbladeDamage) = true) {
+      inc %attack.damage $round($calc(%attack.damage * %accessory.amount),0)
+      unset %accessory.amount
+    }
+
+    ; Check for an augment
+    if ($augment.check($1, EnhanceRanged) = true) { inc %attack.damage $calc(%augment.strength * 100)  } 
+    if ($augment.check($1, EnhanceSword) = true) { inc %attack.damage $calc(%augment.strength * 100)  }     
+  }
+
   if (%weapon.type = whip) {
 
     if ($accessory.check($1, IncreaseWhipDamage) = true) {
