@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/12/19
+;;;; Last updated: 09/08/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -837,6 +837,36 @@ total.player.averagelevel {
   }
   unset %file | unset %name
   return $round($calc(%player.totallevels / %total.players),0)
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Returns the total number of active players
+; Active players are players who have logged in 
+; in the last 3 days.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+active.players.count {
+  var %activeplayers 0
+
+  var %value 1 | var %total.players 0
+  while ($findfile( $char_path , *.char, %value , 0) != $null) {
+    set %file $nopath($findfile($char_path ,*.char,%value)) 
+    set %name $remove(%file,.char)
+
+    var %lastseen.date $readini($char(%name), info, LastSeen)
+
+    if ((%lastseen.date = $null) || (%lastseen.date = N/A)) { inc %value 1 }
+    else { 
+
+      var %lastseen.ctime $ctime(%lastseen.date)
+      var %ctime.calc.days 259200
+      var %current.ctime $calc( $ctime($fulldate) - %lastseen.ctime)
+
+      if (%current.ctime <= %ctime.calc.days) { inc %activeplayers 1 }
+      inc %value 1
+    }
+  }
+  unset %file | unset %name
+  return %activeplayers
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4659,7 +4689,11 @@ dragonhunt.check {
 
   var %dragon.time.difference $calc($ctime - %dragonhunt.lastdragonmade)
 
-  var %dragon.create.time 43200
+  var %active.players $active.players.count
+  if (%active.players <= 2) { var %dragon.create.time 86400 }
+  if ((%active.players > 2) && (%active.players <= 5)) { var %dragon.create.time 43200 }
+  if (%active.players > 5) { var %dragon.create.time 28800 }
+
   var %players.average.level $total.player.averagelevel
 
   if (%dragon.time.difference >= %dragon.create.time) {

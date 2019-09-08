@@ -732,6 +732,13 @@ ForgottenSoul=500
 ArcaneDust=500
 Vanadium=1
 
+[OrbCrystal]
+Gem=Ruby
+Ingredients=RedOrbs
+SuccessRate=100
+Amount=1
+RedOrbs=1000
+
 ============
 Portal Items
 ============

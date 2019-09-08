@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/13/19
+;;;; Last updated: 09/07/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -2830,8 +2830,13 @@ alias skill.alchemy {
   var %value 1
   while (%value <= %total.ingredients) {
     var %item.name $gettok(%ingredients, %value, 46)
-    var %item_amount $readini($char($1), item_amount, %item.name)
-    var %item_type $readini($dbfile(items.db), %item.name, type)
+
+    if (%item.name = RedOrbs) { var %item_amount $readini($char($1), stuff, RedOrbs)  }
+    if (%item.name = BlackOrbs) { var %item_amount $readini($char($1), stuff, BlackOrbs) }
+    if ((%item.name != RedOrbs) && (%item.name != BlackOrbs)) { 
+      var %item_amount $readini($char($1), item_amount, %item.name)
+      var %item_type $readini($dbfile(items.db), %item.name, type)
+    }
 
     if (%item_amount <= 0) { remini $char($1) item_amount %item.name } 
     if (%item_amount = $null) { set %item_amount 0 }
@@ -2971,11 +2976,21 @@ alias skill.alchemy {
   var %value 1
   while (%value <= %total.ingredients) {
     set %item.name $gettok(%ingredients, %value, 46)
-    set %item_amount $readini($char($1), item_amount, %item.name)
     set %amount.needed $readini($dbfile(crafting.db), $2, %item.name)
     if (%amount.needed = $null) { set %amount.needed 1 }
     set %amount.needed $calc(%amount.needed * %amount.to.craft)
-    dec %item_amount %amount.needed | writeini $char($1) item_amount %item.name %item_amount
+
+    if ((%item.name != RedOrbs) && (%item.name != BlackOrbs)) { 
+      set %item_amount $readini($char($1), item_amount, %item.name)
+      dec %item_amount %amount.needed | writeini $char($1) item_amount %item.name %item_amount
+    }
+
+    else { 
+      set %item_amount $readini($char($1), stuff, %item.name)
+      dec %item_amount %amount.needed 
+      writeini $char($1) stuff %item.name %item_amount
+    }
+
     inc %value 1 
   }
 

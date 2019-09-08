@@ -2196,6 +2196,12 @@ SellPrice=5000
 MISC ITEMS
 =========================
 
+[OrbCrystal]
+type=misc
+Cost=0
+Sell=500
+Desc=A crystal made purely out of red orbs.  It glows red.
+
 [Death'sBreath]
 Type=misc
 Cost=0
