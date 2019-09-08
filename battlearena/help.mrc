@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 04/15/19
+;;;; Last updated: 09/08/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -342,6 +342,9 @@ alias view-info {
     var %info.int $readini($dbfile(equipment.db), $3, int)
     var %info.spd $readini($dbfile(equipment.db), $3, spd)
     var %info.location $readini($dbfile(equipment.db), $3, EquipLocation)
+    var %info.protection $readini($dbfile(equipment.db), $3, Protection)
+
+    if (%info.protection = $null) { var %info.protection 0 }
 
     var %armor.level.requirement $readini($dbfile(equipment.db), $3, LevelRequirement)
     if (%armor.level.requirement = $null) { var %armor.level.requirement 0 }
@@ -357,7 +360,7 @@ alias view-info {
     if ((%exclusive.test = $null) || (%exclusive.test = no)) { var %exclusive [04Exclusive12 no $+ ]1  }
     if (%exclusive.test = yes) {  var %exclusive [04Exclusive12 yes $+ ]  }
 
-    $display.private.message([04Name12 %info.name $+ ] [04Armor Location12 %info.location $+ ]  [04Armor Augment12 %info.augment $+ ] [04Player Level Requirement12 %armor.level.requirement $+ ] %exclusive %sell.price)
+    $display.private.message([04Name12 %info.name $+ ] [04Armor Location12 %info.location $+ ] [04Damage Mitigation12 %info.protection $+ $chr(37) $+ ] [04Armor Augment12 %info.augment $+ ] [04Player Level Requirement12 %armor.level.requirement $+ ] %exclusive %sell.price)
     $display.private.message([04Stats on Armor $+ ] 04Health12 %info.hp  $+ $chr(124) 04TP12 %info.tp   $+ $chr(124) 04 $+ Strength12 %info.str  $+ $chr(124) 04 $+ Defense12 %info.def  $+ $chr(124) 04Intelligence12 %info.int  $+ $chr(124) 04Speed12 %info.spd)
     if (AutoReraise isin %info.augment) { $display.private.message(04The Auto Reraise Augment only works if you have 5 pieces of armor that all have the same augment.  In other words the augment strength must be at least 5 in order to work) } 
   }
