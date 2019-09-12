@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 05/31/19
+;;;; Last updated: 09/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2897,6 +2897,8 @@ alias shop.alliedforces {
     $display.private.message(02This shop is used to purchase special services from the Allied Forces that will help you defeat the Dragons hiding in their lairs! You can only purchase one at a time.)
     $display.private.message(12DragonKiller 02 - 5000 Allied Notes - This will spawn a Dragon Killer NPC to help fight the dragon)
     $display.private.message(12Bombing 02 - 5000 Allied Notes - This will drop a bomb on the dragon's lair which will weaken the dragon within. You can only purchase one at a time.)
+    $display.private.message(12DragonElimination 02 - 50000 Allied Notes - The Allied Forces will hire a special group of heroes to eliminate a dragon.)
+
   }
 
   if ($2 = buy) { 
@@ -2927,6 +2929,36 @@ alias shop.alliedforces {
       writeini battlestats.dat AlliedForces DragonBombing true
       $display.private.message(02The Allied Forces begin work on the new 12Dragon Buster Bomb02 to be ready for your next dragon hunt battle!)
     }
+
+    if ($3 = DragonElimination) {  var %shop.cost 50000
+      if (%player.currency = $null) { set %player.currency 0 }
+      if (%player.currency < %shop.cost) {  $display.private.message(04You do not have enough Allied Notes to purchase this service) | unset %currency | unset %player.currency | unset %total.price |  halt }
+
+      ; Are there any dragons to hunt?
+      ; Are there any dragons to hunt?
+      var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
+      if (%dragonhunt.numberofdragons = 0) { 
+        $display.private.message($readini(translation.dat, errors, DragonHunt.NoDragons)) 
+        halt
+      }
+
+      ; Pay the Allied Forces
+      dec %player.currency %shop.cost
+      writeini $char($1) stuff AlliedNotes %player.currency
+
+      ; Get the dragon name
+      var %dragonhunt.numberofdragons $ini($dbfile(dragonhunt.db),0)
+      var %random.dragon $rand(1,%dragonhunt.numberofdragons)
+      var %dragonhunt.file.name $ini($dbfile(dragonhunt.db), %random.dragon)
+      var %dragonhunt.name $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, name)
+
+      ; Kill the dragon
+      remini $dbfile(dragonhunt.db) %dragonhunt.file.name
+
+      ; Display the message
+      $display.message(07*02 The Allied Forces hire a group known as the Scions to track down the dragon %dragonhunt.name and eliminate it!  One dragon less in this world. ,global)
+    }
+
   }
 }
 

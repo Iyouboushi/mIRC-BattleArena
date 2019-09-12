@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 08/23/19
+;;;; Last updated: 09/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1822,7 +1822,6 @@ dragonhunt.createfile {
   writeini $char(%dragonhunt.file.name) techniques AbsoluteTerror %dragon.level
   writeini $char(%dragonhunt.file.name) techniques DragonFire $calc(%dragon.level + 5) 
 
-
   if ($dragonhunt.ancientcheck(%dragonhunt.file.name) = true) { 
     writeini $char(%dragonhunt.file.name) techniques SpikeFlail $calc(%dragon.level + 50)
     writeini $char(%dragonhunt.file.name) techniques DragonFire $calc(%dragon.level + 50)
@@ -1837,6 +1836,11 @@ dragonhunt.createfile {
   if (%dragon.element = lightning) { writeini $char(%dragonhunt.file.name) techniques ThunderII %dragon.level }
   if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) techniques DarkII %dragon.level }
   if (%dragon.element = light) { writeini $char(%dragonhunt.file.name) techniques Holy %dragon.level }
+  if (%dragon.element = crystal) { 
+    writeini $char(%dragonhunt.file.name) techniques FireII %dragon.level 
+    writeini $char(%dragonhunt.file.name) techniques Holy %dragon.level
+    writeini $char(%dragonhunt.file.name) techniques DarkII %dragon.level 
+  }
 
   ; Add actions per turn based on level of dragons
   var %actions.per.turn 1
@@ -1868,6 +1872,11 @@ dragonhunt.createfile {
   if (%dragon.element = lightning) { writeini $char(%dragonhunt.file.name) skills WeaponBash 1 }
   if (%dragon.element = dark) { writeini $char(%dragonhunt.file.name) skills Konzen-Ittai 1  }
   if (%dragon.element = light) { writeini $char(%dragonhunt.file.name) skills DrainSamba 1 }
+  if (%dragon.element = crystal) { 
+    writeini $char(%dragonhunt.file.name) skills MightyStrike 1
+    writeini $char(%dragonhunt.file.name) skills Konzen-Ittai 1
+    writeini $char(%dragonhunt.file.name) skills DrainSamba 1
+  }
 
   writeini $char(%dragonhunt.file.name) modifiers light 100
   writeini $char(%dragonhunt.file.name) modifiers dark 100
@@ -1881,6 +1890,13 @@ dragonhunt.createfile {
   ; Dragon will heal its own element
   writeini $char(%dragonhunt.file.name) modifiers %dragon.element 300
   writeini $char(%dragonhunt.file.name) modifiers heal %dragon.element
+
+  if (%dragon.element = crystal) { 
+    writeini $char(%dragonhunt.file.name) modifiers light 300
+    writeini $char(%dragonhunt.file.name) modifiers dark 300
+    writeini $char(%dragonhunt.file.name) modifiers fire 300
+    writeini $char(%dragonhunt.file.name) modifiers heal light.dark.fire
+  }
 
   ; Add the dragon scales
   writeini $char(%dragonhunt.file.name) NaturalArmor Name Dragon Scales

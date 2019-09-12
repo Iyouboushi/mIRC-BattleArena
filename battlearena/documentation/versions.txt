@@ -1677,6 +1677,7 @@ Battle Arena Bot VERSIONS
   requires a certain percent on the limit break meter. Use !limit breaks to see which limits you own and the % of the meter. Use
   /me limit breaks [targetname] with [limitbreakname] to use a limit break. All limits will reset the meter to 0% no matter how much
   it needs.
+- Added the ability for Red Orbs and Black Orbs to be used in alchemy.
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
 - Changed the way multi-hits are calculated
@@ -1696,6 +1697,9 @@ Battle Arena Bot VERSIONS
 - Changed the MonsterSummon skill so that it can now summon boss monsters (files in \bosses\)
 - Changed the max amount for certain enhancement point upgrades.
 - Changed the amount of stat points it takes to "level up" on levels 101+
+- Changed the dragon hunt dragon generation.  The time it takes to generate a new dragon has changed based on how many
+  "active players" there are in the game at the time of dragon gen check.  A player is considered active if he/she has 
+  logged in within 48 hours. 
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working
