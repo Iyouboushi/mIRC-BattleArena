@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 09/05/19
+;;;; Last updated: 09/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -603,6 +603,7 @@ dungeon.restoreroom {
   $display.message(02* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
 
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
+  halt
 }
 
 dungeon.storyroom {
@@ -617,6 +618,7 @@ dungeon.storyroom {
   $display.message(02* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
 
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
+  halt
 }
 
 
