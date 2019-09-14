@@ -943,7 +943,7 @@ These items, when used, will give the target a random item in the game.
 [Pirate'sPlunder]
 type=random
 ItemDesc=This small treasure chest contains an item that the pirates were hiding on Pirate's Cove
-Desc=pulls out a small treasure chest and opens it to discover a %random.item.name inside!  Arrr!
+Desc=pulls out a small treasure chest and opens it to discover %random.item.amount $+ x %random.item.name inside!  Arrr!
 SellPrice=2000
 Cost=0
 ItemList=items_pirate'splunder.lst
@@ -952,7 +952,7 @@ exclusive=yes
 [GobbieSpoil]
 type=random
 ItemDesc=This small treasure bag contains an item from the Gobbie Treasure Vault. Use it to discover what's inside!
-Desc=pulls out a small treasure bag and opens it to discover a %random.item.name inside!  Score!
+Desc=pulls out a small treasure bag and opens it to discover %random.item.amount $+ x %random.item.name inside!  Score!
 SellPrice=2000
 Cost=0
 ItemList=items_gobbiespoil.lst
@@ -961,7 +961,7 @@ exclusive=yes
 [BronzeBoosterSet]
 type=random
 ItemDesc=This small envelope contains one trading card with rarity of *
-Desc=pulls out a small brown-colored envelope and opens it to reveal  $+ %random.item.name $+  inside!
+Desc=pulls out a small brown-colored envelope and opens it to reveal %random.item.amount $+ x  $+ %random.item.name $+  inside!
 SellPrice=1
 Cost=1000
 ItemList=items_boosterpack.lst
@@ -971,7 +971,7 @@ currency=AlliedNotes
 [Present]
 Type=random
 ItemDesc=A small wrapped present that can contain a huge variety of items inside.
-Desc=pulls out a present and hands it to %enemy $+ , who opens it and finds a %random.item.name inside! Merry XMas!
+Desc=pulls out a present and hands it to %enemy $+ , who opens it and finds %random.item.amount $+ x %random.item.name inside! Merry XMas!
 SellPrice=7000
 Cost=$iif($readini(shopnpcs.dat, events, SavedElves) >= 100, 200000, 0)
 ShopNPC=Santa
@@ -979,7 +979,7 @@ ShopNPC=Santa
 [AnniGift]
 Type=random
 ItemDesc=A bright colored present used to celebrate the creation of the bot's creation. It can contain a huge variety of items inside.
-Desc=pulls out a bright colored present and hands it to %enemy $+ , who opens it and finds a %random.item.name inside!  A firework shoots up and explodes above the heroes. Happy $calc($right($adate, 4) - 2012) year anniversary celebration of the bot's creation!
+Desc=pulls out a bright colored present and hands it to %enemy $+ , who opens it and finds %random.item.amount $+ x %random.item.name inside!  A firework shoots up and explodes above the heroes. Happy $calc($right($adate, 4) - 2012) year anniversary celebration of the bot's creation!
 Cost=0
 SellPrice=9000
 
@@ -1006,7 +1006,7 @@ TormentReward=true
 [Bronze-trimmedSack]
 type=random
 ItemDesc=This small bag with bronze trimming contains a random item discovered from the Lost Tower of the Ancients.
-Desc=pulls out a small bronze-trimmed sack and opens it to discover a %random.item.name inside! 
+Desc=pulls out a small bronze-trimmed sack and opens it to discover %random.item.amount $+ x %random.item.name inside! 
 SellPrice=2000
 Cost=0
 ItemList=items_bronzesack.lst
@@ -1015,7 +1015,7 @@ exclusive=yes
 [Silver-trimmedSack]
 type=random
 ItemDesc=This small bag with silver trimming contains a random item discovered from the Lost Tower of the Ancients.
-Desc=pulls out a small silver-trimmed sack and opens it to discover a %random.item.name inside! 
+Desc=pulls out a small silver-trimmed sack and opens it to discover %random.item.amount $+ x %random.item.name inside! 
 SellPrice=2000
 Cost=0
 ItemList=items_silversack.lst
@@ -1024,7 +1024,7 @@ exclusive=yes
 [Gold-trimmedSack]
 type=random
 ItemDesc=This small bag with gold trimming contains a random item discovered from the Lost Tower of the Ancients.
-Desc=pulls out a small gold-trimmed sack and opens it to discover a %random.item.name inside! 
+Desc=pulls out a small gold-trimmed sack and opens it to discover %random.item.amount $+ x %random.item.name inside! 
 SellPrice=2000
 Cost=0
 ItemList=items_goldsack.lst
@@ -1033,7 +1033,7 @@ exclusive=yes
 [AlliedLockBox]
 type=random
 ItemDesc=A treasure chest given to you as a reward for your service.  What's inside?  Open it to find out.
-Desc=pulls out a small treasure chest and opens it to discover a %random.item.name inside!
+Desc=pulls out a small treasure chest and opens it to discover %random.item.amount $+ x %random.item.name inside!
 SellPrice=5000
 Cost=0
 ItemList=items_alliedlockbox.lst

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/06/19
+;;;; Last updated: 09/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -967,12 +967,23 @@ alias item.random {
 
     set %random $rand(1, %items.lines)
     if (%random = $null) { var %random 1 }
-    set %random.item.contents $read -l $+ %random $lstfile(%present.list)
-    set %random.item.name %random.item.contents
+
+    ; get the item and amount
+    var %random.item.line $read($lstfile(%present.list), %random)
+
+    if ($numtok(%random.item.line,46) = 1) { 
+      var %random.item.name %random.item.line
+      set %random.item.amount 1
+    }
+    else {
+      var %random.item.name $gettok(%random.item.line, 1, 46)
+      set %random.item.amount $gettok(%random.item.line, 2, 46)
+    }
+
     set %current.reward.items $readini($char($1), item_amount, %random.item.name)
     if (%current.reward.items = $null) { set %current.reward.items 0 }
-    inc %current.reward.items %chest.amount
-    writeini $char($1) item_amount %random.item.contents %current.reward.items
+    inc %current.reward.items %random.item.amount
+    writeini $char($1) item_amount %random.item.name %current.reward.items
     unset %current.reward.items
   }
 
@@ -981,7 +992,7 @@ alias item.random {
   $display.message(03 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global) 
 
   unset %total.summon.items | unset %random | unset %random.item.contents | unset %present.list
-  unset %random.item.name | unset %enemy 
+  unset %random.item.name | unset %enemy | unset %random.item.amount
   return
 
 }
