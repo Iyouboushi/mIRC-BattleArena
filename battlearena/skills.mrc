@@ -37,6 +37,7 @@ alias use.skill {
   if ($3 = meditate) { $skill.meditate($1) }
   if ($3 = conserveTP) { $skill.conserveTP($1) } 
   if ($3 = thinair) { $skill.thinair($1) } 
+  if ($3 = sentinel) { $skill.sentinel($1) } 
   if ($3 = bloodboost) { $skill.bloodboost($1) } 
   if ($3 = bloodspirit) { $skill.bloodspirit($1) } 
   if ($3 = drainsamba) { $skill.drainsamba($1) } 
@@ -1192,7 +1193,6 @@ alias skill.thinair { $set_chr_name($1)
   $skill.nextturn.check(ThinAir, $1)
 }
 
-
 ;=================
 ; QUICK POCKETS
 ;=================
@@ -1232,6 +1232,64 @@ alias skill.quickpockets { $set_chr_name($1)
 
   $skill.nextturn.check(QuickPockets, $1)
 }
+
+
+;=================
+; SENTINEL
+;=================
+on 3:TEXT:!sentinel*:*: { $skill.sentinel($nick) }
+on 3:TEXT:!sentinel*:*: { $skill.sentinel($nick) }
+
+alias skill.sentinel { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+  $checkchar($1)
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+
+  if (($return.playerstyle($1) != Guardian) && ($readini($char($1), info, flag) = $null)) { $display.message(04Error: This command can only be used while the Guardian style is equipped!, private) | halt }
+  if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
+
+  $check_for_battle($1)
+
+  if ($readini($char($1), info, flag) = $null) { 
+    var %current.playerstyle.level $readini($char($1), styles, $return.playerstyle($1))
+    var %sent.used $readini($char($1), skills, sentinel.used)
+    var %sentinel.turn $readini($char($1), skills, sentinel.turn)
+    if (%sent.used = $null) { set %sent.used 0 }
+    if (%sentinel.turn = $null) { set %sentinel.turn -1 }
+
+    if (%sent.used >= %current.playerstyle.level) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot use $gender($1) sentinel skill again this battle!,private) | unset %current.playerstyle | halt }
+    if (($calc(%sentinel.turn + 1) = %true.turn) || (%sentinel.turn = %true.turn)) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot use $gender($1) sentinel skill again so quickly!, private) | unset %current.playerstyle | halt }
+  }
+
+  inc %sent.used 1 | writeini $char($1) skills sentinel.used %sent.used
+  writeini $char($1) skills sentinel.turn %true.turn
+
+  ; Decrease the action points
+  $action.points($1, remove, 1)
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, sentinel) = $null) { set %skill.description uses a guarding technique to take less damage. }
+  else { set %skill.description $readini($char($1), descriptions, sentinel) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; Toggle the sentinel-on flag & write the last used time.
+  writeini $char($1) skills sentinel.on on
+  writeini $char($1) skills sentinel.turn %true.turn
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction sentinel
+
+  ; Double the enmity
+  var %enmity $readini($txtfile(battle2.txt), enmity, $1)
+  if ((%enmity = $null) || (%enmity = 0)) { var %enmity 1 }
+  var %enmity $calc(%enmity * 2)
+  writeini $txtfile(battle2.txt) enmity $1 %enmity
+
+  $skill.nextturn.check(Sentinel, $1)
+}
+
 
 
 ;=================

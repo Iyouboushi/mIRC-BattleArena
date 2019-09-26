@@ -1636,6 +1636,9 @@ Battle Arena Bot VERSIONS
   This skill cannot be purchased and must be learned.
 - Added a new active skill: SoftBlows. This skill will cause your next attack to not increase enmity.
   This skill cannot be purchased and must be learned.
+- Added a new active style skill: Sentinel.  This skill can only be used while using the Guardian style.  Using it with !sentinel
+  will cause your enmity to double and you will gain a +10% armor bonus to the next hit. If you have no armor you will still receive
+  a 10% bonus to reducing damage.
 - Added a new passive skill: DieHard. This skill will give a % of a chance to survive a blow that would otherwise result in
   death.  This is an enhancement skill. The chance to survive is skill level %.  Upon surviving you will get the same % back in HP.
 - Added a new passive skill: Connoisseur. This skill will give a +5 bonus to food items that add to str, def, int or spd

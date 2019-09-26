@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 08/23/19
+;;;; Last updated: 09/26/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -271,6 +271,8 @@ armor.protection {
   if (($return.equipped($1, legs) != nothing) && ($return.equipped($1, legs) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, legs), Protection) }
   if (($return.equipped($1, feet) != nothing) && ($return.equipped($1, feet) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, feet), Protection) }
   if (($return.equipped($1, hands) != nothing) && ($return.equipped($1, hands) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, hands), Protection) }
+
+  if ($readini($char($1), skills, sentinel.on) = on) { writeini $char($1) skills sentinel.on off | inc %armor.protection 10 }
 
   if (%armor.protection = $null) { return 0 }
   else { return %armor.protection }
@@ -983,6 +985,7 @@ player.skills.list {
   if ($readini($char($1), status, conservetp.on) = on) { $skills_message_check(02conserving TP) }
   if ($readini($char($1), status, conservetp) = yes) { $skills_message_check(02conserving TP) }
   if ($readini($char($1), skills, utsusemi.on) = on) { $skills_message_check(02Utsusemi[ $+ $readini($char($1), skills, utsusemi.shadows) $+ ]) }
+  if ($readini($char($1), skills, sentinel.on) = on) { $skills_message_check(02Sentinel) }
   if ($readini($char($1), skills, royalguard.on) = on) { $skills_message_check(02Royal Guard) }
   if ($readini($char($1), skills, manawall.on) = on) { $skills_message_check(02Mana Wall) }
   if ($readini($char($1), skills, mightystrike.on) = on) { $skills_message_check(02Mighty Strike) }

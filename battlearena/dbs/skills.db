@@ -798,6 +798,18 @@ NeedToEquip=false
 Style=Quicksilver
 StyleSkill=true
 
+[Sentinel]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill will instantly double your enmity and give you a +10% armor bonus on the next attack. This move can only be performed in the Guardian style.
+ActionPoints=1
+Instant=True
+NeedToEquip=False
+Style=Guardian
+StyleSkill=true
+
 [PerfectCounter]
 Cost=0
 CoinCost=0

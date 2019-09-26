@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/08/19
+;;;; Last updated: 09/26/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2738,6 +2738,7 @@ clear_skill_timers {
   remini $char($1) skills duality.time | remini $char($1) skills thinair.time | remini $char($1) skills quickpockets.time
   remini $char($1) skills luciddreaming.time | remini $char($1) skills softblows.time | remini $char($1) skills analysis.time
   remini $char($1) skills trickattack.on  | remini $char($1) skills sneakattack.on 
+  remini $char($1) skills sentinel.on | remini $char($1) skills sentinel.used | remini $char($1) skills sentinel.turn
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -24,7 +24,7 @@ Trickster=This style will enhance the amount of style points you get for tauntin
 
 WeaponMaster=This style will enhance melee attacks of all weapon types.  It does this by increasing the random damage added onto every melee attack and by enhancing the mastery skill slightly.  The amount increases each time the style levels.
 
-Guardian=This style will decrease the amount of damage you take by a percent each level (up to 60% max). 
+Guardian=This style will decrease the amount of damage you take by a percent each level (up to 60% max). This style will allow you to use the !sentinel command as many times as your style is currently leveled.
 
 SpellMaster=This will enhance magic by roughly 11% per level (up to 90% max).
 
