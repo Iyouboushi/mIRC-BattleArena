@@ -1,11 +1,11 @@
 [weather]
-current=windy
+current=gloomy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
-CurrentMoonPhase=Gibbous
-CurrentMoonTurn=5
+CurrentMoonPhase=Full
+currentMoonTurn=1
 
 [MoonPhaseTime]
 full=3
@@ -18,7 +18,7 @@ BloodMoonChance=60
 
 [TimeOfDay]
 Currenttimeofday=Day
-CurrentTimeOfDayTurn=2
+currentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -1279,5 +1279,35 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [Fort Grimtol - Central Compound]
 weather=none
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haunted Hayride - Entrance to Spooksville]
+weather=gloomy
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haunted Hayride - On the Trail]
+weather=gloomy
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haunted Hayride - Second Stop]
+weather=gloomy
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haunted Hayride - Third Stop]
+weather=gloomy
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haunted Hayride - Fourth Stop]
+weather=gloomy
+limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Haunted Hayride - The Final Stop]
+weather=gloomy
 limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

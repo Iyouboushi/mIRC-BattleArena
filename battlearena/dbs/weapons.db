@@ -73,7 +73,7 @@ MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.Skelet
 
 MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue.Qutrub.Phlegethon.HollowPower.MechanicPower
 
-MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu
+MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Pumpkin
 
 ============================================
 WEAPON TEMPLATE
@@ -4948,6 +4948,16 @@ Element=Earth
 Hits=$rand(1,2)
 BasePower=50
 Upgrade=0
+
+[Pumpkin]
+Type=HandToHand
+Info=A weapon for a pumpkin.
+Abilities=PumpkinSeeds.PumpkinPatch.JackOLantern
+Element=earth
+Hits=2
+BasePower=25
+Upgrade=0
+IgnoreDefense=2
 
 [OrbPower]
 Cost=0

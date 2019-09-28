@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/13/19
+;;;; Last updated: 09/28/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -23,7 +23,7 @@ alias dungeon.usage.check {
   var %current.time $ctime
   var %time.difference $calc(%current.time - %player.laststarttime)
 
-  var %dungeon.time.setting 86400 
+  var %dungeon.time.setting 10800 
 
   if ((%time.difference = $null) || (%time.difference < %dungeon.time.setting)) { 
     if ($1 = channel) { $display.message($readini(translation.dat, errors, DungeonUsageNotReady), private) }
@@ -744,7 +744,7 @@ alias item.trust {
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), private) | halt }
 
   ; is the battle level too low to use a trust?
-  if ($return_winningstreak < 11) {  $display.message($readini(translation.dat, errors, StreakTooLowForTrusts), private) | halt }
+  if (($return_winningstreak < 11) && (%battle.type != dungeon)) {  $display.message($readini(translation.dat, errors, StreakTooLowForTrusts), private) | halt }
 
   ; Trusts can only be used if the person is alone
   var %number.of.players.in.battle $readini($txtfile(battle2.txt), battleinfo, players)
@@ -2126,7 +2126,7 @@ alias item.dungeon {
     var %current.time $ctime
     var %time.difference $calc(%current.time - %player.laststarttime)
 
-    var %dungeon.time.setting 86400 
+    var %dungeon.time.setting 10800 
 
     if ((%time.difference = $null) || (%time.difference < %dungeon.time.setting)) { 
       $display.message($readini(translation.dat, errors, CanOnlyStartOneDungeonADay), private)

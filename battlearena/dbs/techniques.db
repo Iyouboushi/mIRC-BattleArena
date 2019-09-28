@@ -589,6 +589,7 @@ KoumoriKnife=WaspSting.Evisceration.SharkBite.DancingEdge.MurderSpreeII
 MagnaRider=Wheel.WildSpeed
 MagitekPod=ExplosiveRelease
 KetuRahu=KetuSlash.RahuBlaster.KetuRahuCrash
+Pumpkin=PumpkinSeeds.PumpkinPatch.JackOLantern
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -18675,6 +18676,45 @@ Cost=0
 Magic=none
 stat=str
 DeathChance=100
+
+[PumpkinSeeds]
+Type=Single
+TP=5
+Cost=0
+Desc=$iif(%guard.message = $null, inhales and then spits out a giant pumpkin seed at %enemy $+ !, inhales and spits out a giant pumpkin seed towards %enemy but misses!)
+Element=earth
+Stat=str
+Hits=1
+BasePower=50
+Magic=no
+
+[PumpkinPatch]
+Type=AOE
+Cost=0
+StatusType=curse
+Desc=shoots tiny pumpkins all over the battlefield and after a moment they explode with dark energy covering the battlefield with a curse.
+TP=10
+Element=Dark
+Hits=1
+BasePower=10
+Magic=No
+Stat=int
+
+[JackOLantern]
+Type=AOE
+StatusType=poison.blind.slow
+TP=10
+Desc=begins glowing with energy and after a moment the pumpkin's eyes glow bright red and a wave of energy covers the battlefield.
+BasePower=10
+Element=Dark
+Cost=0
+Magic=no
+Spell=no
+stat=int
+hits=2
+DestroyShadows=4
+
+
 
 [HexEyes]
 Type=Single

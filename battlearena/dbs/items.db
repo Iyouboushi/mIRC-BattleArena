@@ -1039,6 +1039,14 @@ Cost=0
 ItemList=items_alliedlockbox.lst
 exclusive=yes
 
+[SpookyTreatBag]
+Type=random
+ItemDesc=A special treat bag that was left behind from a giant pumpkin demon. What's inside? Only one way to find out.
+Desc=opens the spooky treat bag and discovers %random.item.amount $+ x %random.item.name inside!
+SellPrice=1
+Cost=0
+ItemList=items_treatbag.lst
+exclusive=yes
 
 =========================
 CONSUMABLE ITEMS (for skills)
@@ -3293,6 +3301,15 @@ Exclusive=yes
 
 ; Tech increase items
 
+[CodexOfBooetics]
+Type=increaseTechLevel
+IncreaseAmount=1
+Desc=takes out a codex of "booetics" and studies it. Suddenly %real.name knows how to perform the technique better!
+Cost=0
+SellPrice=1
+Exclusive=yes
+ConquestItem=false
+
 [CodexOfPoetics]
 Type=increaseTechLevel
 IncreaseAmount=1
@@ -5079,6 +5096,16 @@ ShopNPC=SongMerchant
 =========================
 DUNGEON START ITEMS
 =========================
+
+[HayrideTicket]
+type=dungeon
+Cost=1
+currency=candycorn
+sellprice=0
+Desc=A ticket that allows you to enter Big Boo's Haunted Hayride during the month of October.
+Dungeon=haunted_hayride
+exclusive=yes
+
 [TamTaraKey]
 type=dungeon
 cost=50

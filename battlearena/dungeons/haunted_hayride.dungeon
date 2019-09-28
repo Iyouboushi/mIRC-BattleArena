@@ -1,0 +1,64 @@
+[Info]
+Name=Big Boo's Haunted Hayride
+Open=$iif($left($adate, 2) = 10, true, false)
+Rooms=8
+PlayersNeeded=1
+PlayersRecommended=3
+Level=10
+FinalRoom=7
+StartBattleDesc=hands the ticket over to Big Boo who then allows the party onto the back of a truck. "Hold onto your dookie, it's about to get spooky!" $decrease_item($1, HayrideTicket)
+
+ClearDungeonDesc=* The party has finished Big Boo's Haunted Hayride!  Happy Halloween! [Clear time: %total.battle.duration $+ ]
+
+DungeonFail=* The party is too scared to finish the hayride and is forced to leave early.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The truck comes to a stop to allow the party time to prepare themselves for the horrors that lie within.
+Battlefield=Haunted Hayride - Entrance to Spooksville
+
+[1]
+Desc=The truck zooms forward to the first stop on the ride.  Suddenly the party is attacked!
+Battlefield=Haunted Hayride - First Stop
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,2))
+
+[2]
+Desc=The party hears screams from a truck that is further up ahead.
+Battlefield=Haunted Hayride - On the Trail
+StoryRoom=true
+
+[3]
+Desc=The truck comes to another stop and more monsters leap out at the party while screaming BOO!
+Battlefield=Haunted Hayride - Second Stop
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,3))
+Objects=FoamBackdrop
+
+[4]
+Desc=The truck comes to its third stop and more monsters leap out at the party.
+Battlefield=Haunted Hayride - Third Stop
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(2,6))
+
+[5]
+Battlefield=Haunted Hayride - On the Trail
+Desc=The party hears a demonic laugh somewhere up ahead on the trail followed by screaming.
+StoryRoom=true
+
+[6]
+Desc=The truck comes to another stop. More monsters crawl out of the nearby woods to attack the party!
+Battlefield=Haunted Hayride - Fourth Stop
+Monsters=RubberZombie.BatOnStrings
+
+[7]
+Desc=The truck pulls up to the final stop on the trail. Here they see a gigantic demonic pumpkin giving off an evil laugh and looking for a fight. 
+Battlefield=Haunted Hayride - The Final Stop
+Monsters=GiantDemonPumpkin
+BossRoom=true
+
+
+[MonsterList]
+1=BatOnStrings.SpooyGhost
+2=BatOnStrings.GoofyMonster
+3=RubberSpider.NotSoScaryVampire
+4=GoofyMonster.NotSoScaryVampire
+5=SpoopyGhost.GoofyMonster
+6=RubberZombie.BatOnStrings
