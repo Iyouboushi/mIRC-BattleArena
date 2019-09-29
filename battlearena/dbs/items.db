@@ -1042,11 +1042,12 @@ exclusive=yes
 [SpookyTreatBag]
 Type=random
 ItemDesc=A special treat bag that was left behind from a giant pumpkin demon. What's inside? Only one way to find out.
-Desc=opens the spooky treat bag and discovers %random.item.amount $+ x %random.item.name inside!
+Desc=opens the spooky treat bag and discovers 2x Jack-o-Lanterns $+ $chr(44) 1x CodexOfBooetics and 10x CandyCorn inside!
 SellPrice=1
 Cost=0
 ItemList=items_treatbag.lst
 exclusive=yes
+AllItems=true
 
 =========================
 CONSUMABLE ITEMS (for skills)

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/28/19
+;;;; Last updated: 09/29/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -965,36 +965,68 @@ alias item.random {
     var %items.lines $lines($lstfile(%present.list))
     if (%items.lines = $null) { $display.message(04ERROR: %present.list is missing or empty!, private) | halt }
 
-    set %random $rand(1, %items.lines)
-    if (%random = $null) { var %random 1 }
+    ; This flag allows a player to collect every item inside the list file
+    if ($readini($dbfile(items.db), $3, AllItems) = true) {
 
-    ; get the item and amount
-    var %random.item.line $read($lstfile(%present.list), %random)
+      var %total.items $lines($lstfile(%present.list))
+      var %current.item 1
 
-    if ($numtok(%random.item.line,46) = 1) { 
-      var %random.item.name %random.item.line
-      set %random.item.amount 1
+      while (%current.item <= %total.items) { 
+
+        ; get the item and amount
+        var %random.item.line $read($lstfile(%present.list), %current.item)
+
+        if ($numtok(%random.item.line,46) = 1) { 
+          var %random.item.name %random.item.line
+          set %random.item.amount 1
+        }
+        else {
+          var %random.item.name $gettok(%random.item.line, 1, 46)
+          set %random.item.amount $gettok(%random.item.line, 2, 46)
+        }
+
+        set %current.reward.items $readini($char($1), item_amount, %random.item.name)
+        if (%current.reward.items = $null) { set %current.reward.items 0 }
+        inc %current.reward.items %random.item.amount
+        writeini $char($1) item_amount %random.item.name %current.reward.items
+        unset %current.reward.items
+
+        inc %current.item
+      }
     }
-    else {
-      var %random.item.name $gettok(%random.item.line, 1, 46)
-      set %random.item.amount $gettok(%random.item.line, 2, 46)
+    ; Just picking an item at random
+    else { 
+      set %random $rand(1, %items.lines)
+      if (%random = $null) { var %random 1 }
+
+      ; get the item and amount
+      var %random.item.line $read($lstfile(%present.list), %random)
+
+      if ($numtok(%random.item.line,46) = 1) { 
+        var %random.item.name %random.item.line
+        set %random.item.amount 1
+      }
+      else {
+        var %random.item.name $gettok(%random.item.line, 1, 46)
+        set %random.item.amount $gettok(%random.item.line, 2, 46)
+      }
+
+      set %current.reward.items $readini($char($1), item_amount, %random.item.name)
+      if (%current.reward.items = $null) { set %current.reward.items 0 }
+      inc %current.reward.items %random.item.amount
+      writeini $char($1) item_amount %random.item.name %current.reward.items
+      unset %current.reward.items
     }
 
-    set %current.reward.items $readini($char($1), item_amount, %random.item.name)
-    if (%current.reward.items = $null) { set %current.reward.items 0 }
-    inc %current.reward.items %random.item.amount
-    writeini $char($1) item_amount %random.item.name %current.reward.items
-    unset %current.reward.items
+    ; Display the desc of the item
+    $set_chr_name($2) | var %enemy %real.name | $set_chr_name($1) 
+    $display.message(03 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global) 
+
+    unset %total.summon.items | unset %random | unset %random.item.contents | unset %present.list
+    unset %random.item.name | unset %enemy | unset %random.item.amount
+    return
+
   }
-
-  ; Display the desc of the item
-  $set_chr_name($2) | var %enemy %real.name | $set_chr_name($1) 
-  $display.message(03 $+ %real.name  $+ $readini($dbfile(items.db), $3, desc), global) 
-
-  unset %total.summon.items | unset %random | unset %random.item.contents | unset %present.list
-  unset %random.item.name | unset %enemy | unset %random.item.amount
-  return
-
 }
 
 alias item.damage {
