@@ -56,7 +56,7 @@ BossRoom=true
 
 
 [MonsterList]
-1=BatOnStrings.SpooyGhost
+1=BatOnStrings.SpoopyGhost
 2=BatOnStrings.GoofyMonster
 3=RubberSpider.NotSoScaryVampire
 4=GoofyMonster.NotSoScaryVampire

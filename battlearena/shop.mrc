@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 09/12/19
+;;;; Last updated: 10/12/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -3315,7 +3315,7 @@ alias shop.monsterfair {
     var %search.file MonsterFairPrizes.lst
     var %item.line $read($lstfile(%search.file), nw, * $+ %search.item $+ *)
 
-    if (%item.line = $null) { $display.private.message(04This cannot be bought using prize tickets) | halt }
+    if ((%item.line = $null) || ($3 = $null)) { $display.private.message(04This cannot be bought using prize tickets) | halt }
 
     ; Check to make sure the person has enough to buy the item
     var %prize.item.price $gettok(%item.line, 2, 46)
