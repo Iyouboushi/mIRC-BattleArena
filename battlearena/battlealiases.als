@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/11/19
+;;;; Last updated: 11/04/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3095,6 +3095,7 @@ shield_block_check {
   var %left.hand.weapon.type $readini($dbfile(weapons.db), %left.hand.weapon, type)
   if (%left.hand.weapon.type != shield) { return }
 
+  if ($4 = limitbreak) { return }
   if (%counterattack = on) { return }
   if ($person_in_mech($1) = true) { return }
   if ($readini($char($2), status, stun) = yes) { return }
@@ -3162,6 +3163,8 @@ shield_reflect_melee {
 
   ; This is a special kind of counter attack used for monsters like the Deku Scrubs, whose normal attacks
   ; can be countered by having a shield equipped.  Only certain weapons can be countered this way.
+
+  if ($4 = limitbreak) { return }
 
   if ($readini($dbfile(weapons.db), $3, CanShieldReflect) != true) { return }
   if (%counterattack = on) { return }

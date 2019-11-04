@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 09/08/19
+;;;; Last updated: 11/04/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -683,7 +683,7 @@ formula.meleedmg.player.formula {
   if (%attack.damage <= 1) { set %attack.damage 1 }
 
   ; Check for a shield block.
-  $shield_block_check($3, $1, $2)
+  $shield_block_check($3, $1, $2, $4)
   ; Check to see if this is a critical hit
   $formula.criticalhit.chance($1, $readini($char($1), weapons, equipped))  
 
@@ -718,7 +718,7 @@ formula.meleedmg.player.formula {
   $counter_melee($1, $3, $2)
 
   ; Check for countering an attack using a shield
-  $shield_reflect_melee($1, $3, $2)
+  $shield_reflect_melee($1, $3, $2, $4)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)
@@ -1761,7 +1761,7 @@ formula.meleedmg.player.formula_2.0 {
   $counter_melee($1, $3, $2)
 
   ; Check for countering an attack using a shield
-  $shield_reflect_melee($1, $3, $2)
+  $shield_reflect_melee($1, $3, $2, $4)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)
@@ -2090,7 +2090,7 @@ formula.meleedmg.player.formula_3.1 {
   $counter_melee($1, $3, $2)
 
   ; Check for countering an attack using a shield
-  $shield_reflect_melee($1, $3, $2)
+  $shield_reflect_melee($1, $3, $2, $4)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)
@@ -2442,7 +2442,7 @@ formula.meleedmg.player.formula_3.0 {
   $counter_melee($1, $3, $2)
 
   ; Check for countering an attack using a shield
-  $shield_reflect_melee($1, $3, $2)
+  $shield_reflect_melee($1, $3, $2, $4)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)
@@ -2779,7 +2779,7 @@ formula.meleedmg.player.formula_1.0 {
   $counter_melee($1, $3, $2)
 
   ; Check for countering an attack using a shield
-  $shield_reflect_melee($1, $3, $2)
+  $shield_reflect_melee($1, $3, $2, $4)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)
@@ -3182,7 +3182,7 @@ formula.meleedmg.player.formula_2.5 {
   $counter_melee($1, $3, $2)
 
   ; Check for countering an attack using a shield
-  $shield_reflect_melee($1, $3, $2)
+  $shield_reflect_melee($1, $3, $2, $4)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)
@@ -3665,7 +3665,7 @@ formula.meleedmg.monster {
   $counter_melee($1, $3, $2)
 
   ; Check for countering an attack using a shield
-  $shield_reflect_melee($1, $3, $2)
+  $shield_reflect_melee($1, $3, $2, $4)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)
@@ -5911,7 +5911,7 @@ formula.meleedmg.player.formula_4.0 {
   $counter_melee($1, $3, $2)
 
   ; Check for countering an attack using a shield
-  $shield_reflect_melee($1, $3, $2)
+  $shield_reflect_melee($1, $3, $2, $4)
 
   ; Check for the weapon bash skill
   $weapon_bash_check($1, $3)

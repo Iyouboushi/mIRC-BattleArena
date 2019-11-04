@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/15/19
+;;;; Last updated: 11/04/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -2289,7 +2289,7 @@ alias limitbreak.attack {
 
   ; Get the base damage
   $weapon_equipped($1)
-  $calculate_damage_weapon($1, %weapon.equipped, $3)
+  $calculate_damage_weapon($1, %weapon.equipped, $3, limitbreak)
 
   ; Get the multiplier of the limit break
   var %multiplier $readini($dbfile(limitbreaks.db), $2, Multiplier)
