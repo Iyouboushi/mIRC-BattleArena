@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=25653
+Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
 Tp=500
 Str=4220
 Def=2180
@@ -10,7 +10,7 @@ IgnitionGauge=100
 
 
 [Battle]
-Hp=25653
+Hp=250000
 Tp=500
 Str=4220
 Def=2180
@@ -53,7 +53,11 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-10000
+BattleStats=ignoreTP.ignoreHP
 IgnoreElementalMessage=true
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 ; universal Cosmic battle flags
 CanTaunt=false

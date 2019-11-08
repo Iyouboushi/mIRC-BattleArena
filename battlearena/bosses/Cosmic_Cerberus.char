@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=2100
+Hp=$iif($return_playersinbattle > 2, $calc(240000 + (240000 * $return_playersinbattle)) , 240000)
 Tp=500
 Str=3250
 Def=3000
 Int=1500
 Spd=2500
-IgnitionGauge=2
+IgnitionGauge=100
 Name=Cosmic Cerberus
 
 
 [Battle]
-Hp=2100
+Hp=240000
 Tp=500
 Str=3250
 Def=3000
 Int=1500
 Spd=2500
-IgnitionGauge=2
+IgnitionGauge=100
 Status=alive
 
 
@@ -53,7 +53,11 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
+BattleStats=ignoreTP.ignoreHP
 IgnoreElementalMessage=true
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 ; universal Cosmic battle flags
 CanTaunt=false
@@ -147,8 +151,8 @@ ShoulderTackle=$calc(500 + %cosmic.level)
 
 [NaturalArmor]
 Name=Large Protective Ice Chunks
-Max=1000
-Current=1000
+Max=$iif($return_playersinbattle > 2, $calc(2500 + (2500 * $return_playersinbattle)) , 2500)
+Current=2500
 
 
 [modifiers]

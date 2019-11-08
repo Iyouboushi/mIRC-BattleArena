@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=110
-Tp=500
+Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
+Tp=1000
 Str=2818
 Def=3274
 Int=2456
 Spd=2912
-IgnitionGauge=2
+IgnitionGauge=100
 Name=Cosmic Jester
 
 
 [Battle]
-Hp=110
-Tp=500
+Hp=250000
+Tp=1000
 Str=2818
 Def=3274
 Int=2456
 Spd=2912
-IgnitionGauge=2
+IgnitionGauge=100
 Status=alive
 
 
@@ -60,6 +60,10 @@ LastIP=N/a
 Created=N/a
 CanTaunt=true
 Streak=-10000
+BattleStats=ignoreTP.ignoreHP
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 ; Cosmic Battle flags
 WonderGuard=true

@@ -17,17 +17,13 @@ Def=50
 Int=50
 Spd=50
 IgnitionGauge=150
+LimitBreakPercent=100
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -126,6 +122,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=25
 
+
 [Techniques]
 DoubleSlash=500
 BurningRush=500
@@ -142,11 +139,15 @@ WeaponMaster=10
 
 
 [Augments]
-Broad_Sword=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
+Broad_Sword=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal.MagicBonus
 
 
 [Ignitions]
 RedDragoon=$iif($current.battlestreak < 1000, 0, 1)
+DivineDragoon=$iif($current.battlestreak < 25000, 0, 1)
+
+
+[LimitBreaks]
 
 
 [modifiers]

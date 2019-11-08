@@ -17,17 +17,13 @@ Def=50
 Int=50
 Spd=50
 IgnitionGauge=150
+LimitBreakPercent=100
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -36,12 +32,14 @@ Dused=1
 Char=is a mysterious woman that wears dark purple armor which has a gold trim. The wielder of the Darkness Dragon spirit.
 Rage=yells out in rage as dark energy surrounds the arena!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=her
@@ -57,6 +55,7 @@ IgnoreElementalMessage=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -99,9 +98,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=Rose's_Rapier
 Rose's_Rapier=500
+
 
 [Skills]
 SwordMaster=100
@@ -127,6 +128,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=50
 
+
 [Techniques]
 WhipSmack=500
 MoreAndMore=500
@@ -147,7 +149,11 @@ DarkDragoon=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [Augments]
-Rose's_Rapier=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
+Rose's_Rapier=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal.MagicBonus
+
+
+[LimitBreaks]
+
 
 
 [modifiers]

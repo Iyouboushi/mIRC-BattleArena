@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=25653
+Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
 Tp=1500
 Str=4220
 Def=2180
 Int=1500
 Spd=2500
-IgnitionGauge=0
+IgnitionGauge=100
 Name=Neo Shinryu
 
 
 [Battle]
-Hp=25653
+Hp=250000
 Tp=1500
 Str=4220
 Def=2180
 Int=1500
 Spd=2500
-IgnitionGauge=0
+IgnitionGauge=100
 Status=alive
 
 
@@ -36,6 +36,7 @@ RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 
+
 [Info]
 Flag=monster
 Gender=his
@@ -48,7 +49,7 @@ Created=N/a
 AI_Type=techonly
 Streak=-10000
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
+BattleStats=ignoreTP.ignoreHP
 IgnoreDrain=true
 CanFlee=false
 SkipDoubleTurns=true
@@ -70,6 +71,7 @@ type=dragon
 TechLearn=false
 size=large
 SuperElite=true
+
 
 [Status]
 Poison=no
@@ -104,6 +106,7 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=NeoShinryuClaws
 NeoShinryuClaws=$calc(500 + %cosmic.level)
@@ -132,14 +135,16 @@ Resist-Zombie=100
 Zen=5
 ClearMind=3
 MartialArts=100
-Wizardry=100
 Flying=1
+
 
 [Techniques]
 Tidal_Wave=$calc(1 + %cosmic.level)
 
+
 [Augments]
-NeoShinryuClaws=Drain.MeleeBonus.MagicBonus.TechBonus.IgnoreDefense.EnhanceCriticalHits.EnhanceDodge
+NeoShinryuClaws=Drain.MeleeBonus.TechBonus.IgnoreDefense.EnhanceCriticalHits.EnhanceDodge
+
 
 [Equipment]
 Head=
@@ -149,14 +154,17 @@ Legs=
 Feet=
 Accessory=
 
+
 [Styles]
-Equipped=SpellMaster
-SpellMaster=10
+Equipped=WeaponMaster
+WeaponMaster=10
+
 
 [NaturalArmor]
-Name=Dragon Scales
-Max=50000
-Current=50000
+Name=
+Max=
+Current=
+
 
 [Ignitions]
 
@@ -165,4 +173,4 @@ Current=50000
 
 
 [modifiers]
-Heal=Dark
+Heal=None

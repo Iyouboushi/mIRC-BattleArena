@@ -1,22 +1,22 @@
 [BaseStats]
-HP=17370
+Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
 TP=950
 str=3944
 def=2071
 int=2641
 spd=1691
-IgnitionGauge=2
+IgnitionGauge=100
 Name=Cosmic Dynamis Lord
 
 
 [Battle]
-HP=17370
+HP=250000
 TP=950
 str=3944
 def=2071
 int=2641
 spd=1691
-IgnitionGauge=2
+IgnitionGauge=100
 Status=alive
 
 
@@ -55,6 +55,10 @@ Created=N/a
 Streak=-1000
 CanTaunt=true
 IgnoreElementalMessage=true
+BattleStats=ignoreTP.ignoreHP
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 ; universal Cosmic battle flags
 CanTaunt=false

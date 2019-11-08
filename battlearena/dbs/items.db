@@ -2211,6 +2211,12 @@ Cost=0
 Sell=500
 Desc=A crystal made purely out of red orbs.  It glows red.
 
+[WeaponCrystal]
+type=misc
+Cost=0
+Sell=500
+Desc=A crystal made purely out of black orbs. It gives off a dark glow.
+
 [Death'sBreath]
 Type=misc
 Cost=0
@@ -4112,7 +4118,7 @@ PortalLevel=200
 type=portal
 Battlefield=Zohar Cave
 Weather=gloomy
-Monster=Grahf
+Monster=Alpha_Weltall
 Desc=pulls out an unknown source of power, which suddenly covers the heroes in darkness. Once the darkness fades, they appear to be in a cave with a strange golden monolith with a large eye on it. In front of the monolith is a large black and grey mech with black wings. You can also see a person standing on the shoulder of the mech.
 AlliedNotes=3000
 Exclusive=yes
@@ -4897,6 +4903,23 @@ Weapon=RakshasaGreatBow
 Desc=pulls out a set of blueprints for a legendary bow $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds a powerful Rakshasa Great Bow ready for use.
 Exclusive=yes
 
+[Blueprints:Lionheart]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Lionheart
+Desc=pulls out a set of blueprints for the Lionheart, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the Lionheart which glows with power.
+Exclusive=yes
+
+[Blueprints:Krishna]
+Type=special
+Cost=0
+SellPrice=10000
+SpecialType=GainWeapon
+Weapon=Krishna
+Desc=pulls out a set of blueprints for the Krishna, $iif($2 != $1, and hands it to $set_chr_name($2) %real.name $+ .) %real.name then gets to work and builds the Krishna which glows with power.
+Exclusive=yes
 =========================
 SONGS (subset of special)
 =========================

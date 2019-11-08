@@ -1,0 +1,3 @@
+hurls the chakrams towards %enemy that strike once before returning to hand
+performs a short hop and hurls the chakrams towards %enemy that strike once before returning to hand
+spins around and hurls the chakrams towards %enemy that strike once before returning to hand

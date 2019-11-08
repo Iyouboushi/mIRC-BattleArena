@@ -5,7 +5,6 @@ Str=50
 Def=50
 Int=50
 Spd=50
-IgnitionGauge=120
 Name=Cloud Strife
 
 
@@ -16,18 +15,13 @@ Str=50
 Def=50
 Int=50
 Spd=50
-IgnitionGauge=0
+LimitBreakPercent=100
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -127,13 +121,13 @@ DieHard=25
 
 
 [Techniques]
-Braver=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
-CrossSlash=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
-Blade_Beam=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
-Climhazzard=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
-Meteorain=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
-FinishingTouch=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 0, 500)
-Omnislash=$iif($readini($char(Cloud), battle, IgnitionGauge) >= 120, 1000, 0)
+FastBlade=500
+Flatblade=500
+VorpalBlade=500
+HardSlash=500
+GroundStrike=500
+Resolution=500
+
 
 [Item_Amount]
 
@@ -145,6 +139,15 @@ WeaponMaster=10
 
 [Augments]
 BusterSword=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
+
+[LimitBreaks]
+BraverII=1
+CrossSlashII=1
+BladeBeamII=1
+ClimhazzardII=1
+MeteorainII=1
+FinishingTouchII=1
+OmnislashII=1
 
 
 [modifiers]

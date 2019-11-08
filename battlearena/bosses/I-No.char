@@ -5,7 +5,7 @@ Str=1000
 Def=1000
 Int=1000
 Spd=1000
-IgnitionGauge=9000
+IgnitionGauge=0
 Name=I-No
 
 
@@ -16,7 +16,8 @@ Str=1000
 Def=1000
 Int=1000
 Spd=1000
-IgnitionGauge=9000
+IgnitionGauge=0
+LimitBreakPercent=0
 Status=alive
 
 
@@ -30,6 +31,7 @@ Char=is a woman with short black hair who wears a red leather outfit along with 
 Rage=screams in rage 
 BossQuote=I won't break you. Yet. I haven't told you how unfortunate it is that you were born at all, right?
 DeathMessage=pouts for a moment before taking out a metallic plate and throws it at the heroes before running away!
+
 
 [Stuff]
 RedOrbs=0
@@ -47,19 +49,26 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
-CanTaunt=false
-IgnoreQuicksilver=true
+CanTaunt=true
 BossLevel=200
-IgnoreDrain=true
-ai_type=berserker
-IgnorePresident=true
 JustReleaseDefense=100
+IgnoreDrain=true
+IgnorePresident=true
+IgnoreQuicksilver=true
+IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
+BattleStats=ignoreTP
+SkipDoubleTurns=true
+ActionsPerTurn=1
+
 
 [monster]
-type=
-TechLearn=true
+type=human
+TechLearn=false
 size=medium
 Elite=true
+
 
 [Status]
 Poison=no
@@ -95,9 +104,10 @@ stun=no
 MPRegenerating=no
 ignition.on=off
 
+
 [Weapons]
 Equipped=Marlene
-Marlene=$current.battlestreak
+Marlene=500
 
 
 [Skills]
@@ -121,23 +131,34 @@ Resist-Stun=30
 
 
 [Techniques]
-AntidepressentScale=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
-ChemicalAffection=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
-KyougenJikkou=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
-TaibokuWoSasuruTe=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
-Fortissimo=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
-GenkaiFortissimo=$iif($readini($char(I-No), status, ignition.on) = off, $current.battlestreak, 0)
-UltimateFortissimo=$iif($readini($char(I-No), status, ignition.on) = on, $current.battlestreak, 0)
-LastWillandTestament=$iif($readini($char(I-No), status, ignition.on) = on, $current.battlestreak, 0)
+AntidepressentScale=300
+ChemicalAffection=300
+KyougenJikkou=300
+TaibokuWoSasuruTe=300
+Fortissimo=300
+GenkaiFortissimo=300
 
 
 [Item_Amount]
 
 
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+
+
+[Ignitions]
+
+
+[LimitBreaks]
+LastWillandTestament=1
+
+
+[Augments]
+Marlene=MeleeBonus.TechBonus.IgnoreDefense.EnhanceCriticalHits.HurtEthereal.EnhanceAxe
+
 
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=80
 Fire=80
@@ -216,10 +237,3 @@ BloodBath=45
 UltimaII=45
 KaustraII=45
 Chivalry=45
-
-[Styles]
-Equipped=WeaponMaster
-WeaponMaster=10
-
-[Ignitions]
-I-NoOverdrive=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(I-No), battle, hp) / $readini($char(I-No), basestats, hp)) * 100) <= 85, 1, 0))

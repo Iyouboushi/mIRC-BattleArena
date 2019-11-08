@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=1000
-Tp=500
+Tp=6666
 Str=500
 Def=500
 Int=500
@@ -10,7 +10,7 @@ Name=Death
 
 [Battle]
 Hp=1000
-Tp=500
+Tp=6666
 Str=500
 Def=500
 Int=500
@@ -63,6 +63,9 @@ IgnorePresident=true
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=2
+BattleStats=ignoreTP
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 [Status]
 Poison=no
@@ -126,6 +129,8 @@ Resist-Zombie=100
 [Techniques]
 GrimReaper=$calc(1 + $current.battlestreak)
 Grim_Slash=$calc(1 + $current.battlestreak)
+Deadly_Tempest=$calc(1 + $current.battlestreak)
+Demonic_Skulls=$calc(1 + $current.battlestreak)
 
 [Styles]
 Equipped=WeaponMaster

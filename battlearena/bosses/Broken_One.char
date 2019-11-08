@@ -5,7 +5,6 @@ Str=10286
 Def=10286
 Int=10286
 Spd=10286
-IgnitionGauge=0
 Name=Broken One
 
 
@@ -16,7 +15,7 @@ Str=10286
 Def=10286
 Int=10286
 Spd=10286
-IgnitionGauge=0
+LimitBreakPercent=0
 Status=alive
 
 
@@ -27,8 +26,8 @@ RageCountDown=0
 
 [Descriptions]
 Char=appears to be a disheveled man with a blonde streak in his hair and wears a red and black sleeveless coat, black pants, and black boots. He looks around the arena and laughs.
-Rage=screams in rage 
-BossQuote=Heroes of the Allied, I knew you'd come! For I have seen it, in a premonition!
+Rage=simply laughs before shouting, "OBSOLETE! DELETE!"
+BossQuote=Heroes of the Allied, I knew you'd come! For I have seen it, in a premonition! And I shall... DELETE you!
 
 
 [Stuff]
@@ -36,6 +35,7 @@ RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 Drops=
+
 
 [Info]
 Flag=monster
@@ -58,6 +58,9 @@ IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
 BattleStats=ignoreTP
+SkipDoubleTurns=true
+ActionsPerTurn=1
+
 
 [monster]
 type=human
@@ -65,6 +68,7 @@ TechLearn=true
 size=medium
 Elite=$iif($current.battlestreak <= 5000, false, true)
 SuperElite=$iif($current.battlestreak >= 5000, false, true)
+
 
 [Status]
 Poison=no
@@ -99,9 +103,11 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=BrokenBrilliance
 BrokenBrilliance=$calc(1 + $current.battlestreak)
+
 
 [Skills]
 Zen=5
@@ -128,6 +134,7 @@ Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
 
+
 [Techniques]
 SideEffect=$iif(%battle.rage.darkness != $null 0, $calc(1 + $current.battlestreak))
 TwistOfFate=$iif(%battle.rage.darkness != $null 0, $calc(1 + $current.battlestreak))
@@ -141,12 +148,18 @@ TotalNonstopDeletion=$iif(%battle.rage.darkness != $null 1, 0)
 
 [Item_Amount]
 
+
 [Augments]
 BrokenBrilliance=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
 
 [Styles]
 Equipped=Wrestlemania
 Wrestlemania=10
+
+
+[LimitBreaks]
+MowerOfLawns=1
 
 
 [modifiers]

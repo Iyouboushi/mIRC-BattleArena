@@ -1,0 +1,176 @@
+[BaseStats]
+Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
+Tp=1500
+Str=2500
+Def=2000
+Int=4000
+Spd=2200
+IgnitionGauge=100
+Name=Nutsy
+
+
+[Battle]
+Hp=250000
+Tp=1500
+Str=2500
+Def=2000
+Int=4000
+Spd=2200
+IgnitionGauge=100
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is a larger than normal moogle with white fur, black bat wings, and has a sword and shield along with a helmet. A blue pom sticks out from the top of the helmet. He looks around and laughs.
+Rage=simply laughs in delight!
+BossQuote=I want to see you all kill! I wanna see you all die! Mwahahahaha! More blood for Clan Nutsy! More blood, kupo!
+DeathMessage=looks at the players and says, "I just wanted to say that you may be the most promising hunters I've seen in ages! Brilliant work out there, really marvelous. Jolly good! And on that note... Good-bye!" After that, he turns and flies away as an angry looking female Viera begins to chase after him!
+
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+Drops=
+
+
+[Info]
+Flag=monster
+Gender=his
+Gender2=him
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+Streak=-10000
+CanFlee=false
+BattleStats=ignoreTP.ignoreHP
+IgnoreElementalMessage=true
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
+
+; universal Cosmic battle flags
+CanTaunt=false
+WonderGuard=true
+CanStagger=no
+JustReleaseDefense=100
+IgnorePresident=true
+IgnoreQuicksilver=true
+IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
+
+
+[monster]
+type=Moogle
+TechLearn=false
+size=Medium
+SuperElite=true
+
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+
+
+[Weapons]
+Equipped=Z-Sword
+equippedLeft=DarksteelShield
+Z-Sword=$calc(500 + %cosmic.level)
+DarksteelShield==$calc(500 + %cosmic.level)
+
+
+[Skills]
+Zen=5
+WeaponBash=1
+Impetus=20
+Swordmaster=100
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+
+
+[Techniques]
+GravityBreak=$calc(1 + %cosmic.level)
+SeraphBlade=$calc(1 + %cosmic.level)
+DarkBlade=$calc(1 + %cosmic.level)
+BurningBlade=$calc(1 + %cosmic.level)
+FreezingBlade=$calc(1 + %cosmic.level)
+LightningBlade=$calc(1 + %cosmic.level)
+WaterBlade=$calc(1 + %cosmic.level)
+EarthBlade=$calc(1 + %cosmic.level)
+AirCutter=$calc(1 + %cosmic.level)
+
+
+[Item_Amount]
+
+
+[Augments]
+Z-Sword=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus
+
+
+[Styles]
+Equipped=Weaponmaster
+Weaponmaster=10
+
+
+[NaturalArmor]
+Name=
+Max=
+Current=
+
+
+[modifiers]
+Heal=none

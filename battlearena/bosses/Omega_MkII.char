@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=25653
+Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
 Tp=1500
 Str=4220
 Def=2180
 Int=1500
 Spd=2500
-IgnitionGauge=0
+IgnitionGauge=100
 Name=Omega MkII
 
 
 [Battle]
-Hp=25653
+Hp=250000
 Tp=1500
 Str=4220
 Def=2180
 Int=1500
 Spd=2500
-IgnitionGauge=0
+IgnitionGauge=100
 Status=alive
 
 
@@ -36,6 +36,7 @@ RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 
+
 [Info]
 Flag=monster
 Gender=its
@@ -48,10 +49,10 @@ Created=N/a
 AI_Type=techonly
 Streak=-10000
 IgnoreElementalMessage=true
-BattleStats=ignoreTP
-IgnoreDrain=true
+BattleStats=ignoreTP.ignoreHP
 CanFlee=false
 SkipDoubleTurns=true
+ActionsPerTurn=1
 
 ; universal Cosmic battle flags
 CanTaunt=false
@@ -70,6 +71,7 @@ type=android
 TechLearn=false
 size=large
 SuperElite=true
+
 
 [Status]
 Poison=no
@@ -104,6 +106,7 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=OmegaMkIIWeaponSystems
 OmegaMkIIWeaponSystems=$calc(500 + %cosmic.level)
@@ -132,14 +135,15 @@ Resist-Zombie=100
 Zen=5
 ClearMind=3
 MartialArts=100
-Wizardry=100
-Flying=1
+
 
 [Techniques]
 Omega_Maelstrom=$calc(1 + %cosmic.level)
 
+
 [Augments]
-OmegaWeaponSystems=Drain.MeleeBonus.MagicBonus.TechBonus.IgnoreDefense.EnhanceCriticalHits.EnhanceDodge
+OmegaWeaponSystems=Drain.MeleeBonus.TechBonus.IgnoreDefense.EnhanceCriticalHits.EnhanceDodge
+
 
 [Equipment]
 Head=
@@ -149,14 +153,17 @@ Legs=
 Feet=
 Accessory=
 
+
 [Styles]
-Equipped=SpellMaster
-SpellMaster=10
+Equipped=WeaponMaster
+WeaponMaster=10
+
 
 [NaturalArmor]
-Name=Armored Shell
-Max=50000
-Current=50000
+Name=
+Max=
+Current=
+
 
 [Ignitions]
 
@@ -165,4 +172,4 @@ Current=50000
 
 
 [modifiers]
-Heal=Light
+Heal=None

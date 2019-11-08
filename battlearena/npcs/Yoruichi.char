@@ -17,17 +17,13 @@ Def=75
 Int=75
 Spd=200
 IgnitionGauge=150
+LimitBreakPercent=100
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -65,6 +61,7 @@ ActionsPerTurn=2
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 IgnoreElementalMessage=true
+
 
 [Status]
 Poison=no
@@ -108,9 +105,11 @@ slow.timer=1
 zombie.timer=1
 conservetp.on=off
 
+
 [Weapons]
 Equipped=ShihouinFists
 ShihouinFists=500
+
 
 [Skills]
 mightystrike=1
@@ -147,6 +146,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=55
 
+
 [Techniques]
 DoublePunch=750
 ShoulderTackle=750
@@ -162,8 +162,8 @@ ShunkouRaijinSenkei=$iif($readini($char(Yoruichi), status, ignition.on) = on, 75
 
 
 [Styles]
-Equipped=WeaponMaster
-WeaponMaster=10
+Equipped=HitenMitsurugi-ryu
+HitenMitsurugi-ryu=10
 
 
 [Ignitions]
@@ -172,6 +172,10 @@ Shunkou-Lightning=$iif($current.battlestreak < 1000, 0, 1)
 
 [Augments]
 ShihouinFists=MeleeBonus.TechBonus.HurtEthereal.EnhanceHandToHand.MagicBonus.EnhanceDodge.EnhanceParry
+
+
+[LimitBreaks]
+Raiouken=1
 
 
 [modifiers]

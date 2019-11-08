@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=2000
-Tp=500
+Tp=6666
 Str=650
 Def=650
 Int=650
@@ -11,7 +11,7 @@ Name=Dracula
 
 [Battle]
 Hp=2000
-Tp=500
+Tp=6666
 Str=650
 Def=650
 Int=650
@@ -35,8 +35,7 @@ Dused=1
 Char=has a rather regal appearance, with long white hair wearing a black tuxedo and a long black and red cape.
 Rage=screams in rage 
 BossQuote=What is a man? A miserable little pile of secrets! But enough talk, have at you!
-RoyalGuard=laughs at the heroes and says "Your attacks are no match for the prince of darkness!"
-ManaWall=laughs at the heroes and says "Your puny magic is no match for the prince of darkness!"
+PerfectDefense=laughs at the heroes and says "Your attacks are no match for the prince of darkness!"
 Sugitekai=laughs and says "Behold, the true power of darkness!"
 
 [Stuff]
@@ -66,6 +65,9 @@ IgnorePresident=true
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=2
+BattleStats=ignoreTP
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 [Status]
 Poison=no
@@ -105,8 +107,7 @@ Equipped=Dark_Vampiric_Power
 Dark_Vampiric_Power=$calc(1 + $current.battlestreak)
 
 [Skills]
-ManaWall=1
-RoyalGuard=1
+PerfectDefense=1
 Sugitekai=1
 Zen=5
 WeaponBash=1
@@ -132,6 +133,12 @@ Resist-Zombie=100
 [Techniques]
 Dark_Inferno=$calc(1 + $current.battlestreak)
 Demonic_Megiddo=$calc(1 + $current.battlestreak)
+Fireball_Wave=$calc(1 + $current.battlestreak)
+Blood_Storm=$calc(1 + $current.battlestreak)
+Meteor_Shower=$calc(1 + $current.battlestreak)
+Fatal_Ray=$calc(1 + $current.battlestreak)
+Destruction_Ray=$calc(1 + $current.battlestreak)
+Flame_Pillars=$calc(1 + $current.battlestreak)
 
 [Ignitions]
 

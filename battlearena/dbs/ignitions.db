@@ -202,7 +202,6 @@ Desc=lets go of conscious thought and suddenly surges with the ultimate power sa
 NPC/Monster/Boss Ignitions
 ==========================
 
-
 [DTrigger]
 Name=Devil Trigger
 hp=1.3
@@ -570,12 +569,12 @@ Def=2
 Int=2
 Spd=2
 Augment=TechBonus.MagicBonus.MeleeBonus
-Techs=FlameShot.FinalBurst.Explosion.Red-EyedDragon
+Techs=FlameShot.FinalBurst.Explosion
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=begins to gather power. A moment later, Dart's red armor takes a fancier look and covers his body. He also gains two large wings on his back as well.
-AdditionalCode=writeini $char($1) modifiers Fire 0
+AdditionalCode=writeini $char($1) modifiers Fire 0 | writeini $char($1) limitbreaks Red-EyedDragon
 
 [DarkDragoon]
 Name=DarkDragoon
@@ -585,12 +584,12 @@ Def=2.5
 Int=2.5
 Spd=2.5
 Augment=TechBonus.MagicBonus.MeleeBonus
-Techs=AstralDrain.DeathDimension.DarkDragon
+Techs=AstralDrain.DeathDimension.Demon'sGate
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=is covered in dark energy. As the energy fades, Rose is now wearing dark purple and red armor that covers her body. She also gains to large wings on her back as well.
-AdditionalCode=writeini $char($1) modifiers Dark 0
+AdditionalCode=writeini $char($1) modifiers Dark 0 | writeini $char($1) limitbreaks DarkDragon
 
 [ExcalijuProc]
 Name=ExcalijuProc
@@ -635,20 +634,6 @@ IgnitionConsume=10
 Cost=0
 Techs=TengenSword.TengenSwordSwipe
 Desc=holds his zanpakutou back behind a bit and shouts, "Bankai! Kokujou Tengen Myou'ou!!" A massive being covered in armor appears behind Komamaura and wields an massive sword, which mimics Komamura's movements and attacks.
-
-[I-NoOverdrive]
-Name=I-NoOverdrive
-hp=1.3
-Str=1.3
-def=1.3
-int=1.3
-spd=1.3
-Augment=MeleeBonus.TechBonus.EnhanceAxe.EnhanceDoubleTurnChance.IgnoreGuardian.IgnoreDefense
-IgnitionTrigger=10
-IgnitionConsume=10
-Cost=0
-Techs=
-Desc=gains a red aura, %user $+ 's power slightly increasing.
 
 [EchidnaDragonForm]
 Name=Echidna Dragon Form
@@ -715,7 +700,7 @@ Str=3
 def=3
 int=3
 spd=3
-Augment=MeleeBonus.TechBonus.MagicBonus.RenkeiBonus.EnhanceCriticalHits.EnhanceDodge.IgnoreMetalDefense.EnhanceZen.IgnoreGuardian
+Augment=All
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
@@ -753,80 +738,80 @@ Desc=finds a Dr. Light capsule and gains new armor that is white and gold in col
 [SecondBrainForm]
 Name=SecondBrainForm
 hp=1
-Str=1.1
-def=1.1
-int=1.1
-spd=1.1
+Str=1
+def=1
+int=1
+spd=1
 Augment=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc=splits open, revealing a heart and eye inside of the brain!
 
 [SecondEyeForm]
 Name=SecondEyeForm
 hp=1
-Str=1.1
-def=1.1
-int=1.1
-spd=1.1
+Str=1
+def=1
+int=1
+spd=1
 Augment=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc=spins around for a moment and loses its iris, revealing an open mouth with lots of sharp fangs!
 
 [PlanteraThornMouth]
 Name=PlanteraThornMouth
 hp=1
-Str=1.1
-def=1.1
-int=1.1
-spd=1.1
+Str=1
+def=1
+int=1
+spd=1
 Augment=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc=loses its bulb, revealing a mouth full of thorns!
 
 [MetalEyeMouth]
 Name=MetalEyeMouth
 hp=1
-Str=1.1
-def=1.1
-int=1.1
-spd=1.1
+Str=1
+def=1
+int=1
+spd=1
 Augment=
 Techs=CursedInferno
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc=spins around for a moment and loses its iris, revealing that it is actually a mechanical mouth with metal fangs!
 
 [MetalEyeLaser]
 Name=MetalEyeLaser
 hp=1
-Str=1.1
-def=1.1
-int=1.1
-spd=1.1
+Str=1
+def=1
+int=1
+spd=1
 Augment=
 Techs=CthulhuEyeLaserBurst
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc=spins around for a moment and loses its iris, revealing that it is actually a mechanical eye with a laser cannon!
 
 [SkeletronPrimeSpikes]
 Name=SkeletronPrimeSpikes
 hp=1
-Str=1.1
-def=1.1
-int=1.1
-spd=1.1
+Str=1
+def=1
+int=1
+spd=1
 Augment=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc='s eyes gain a firey glow as metal spikes emerge out from the skull!
 
@@ -961,16 +946,16 @@ AdditionalCode=writeini $char($1) ignitions OniGouki 0
 
 [SmelterDemonFlame]
 Name=SmelterDemonFlame
-HP=1.2
-Str=1.2
-Def=1.2
-Int=1.2
-Spd=1.2
+HP=1
+Str=1
+Def=1
+Int=1
+Spd=1
 Effect=Status
 Augment=MagicBonus.TechBonus.EnhanceMelee.EnhanceCriticalHits.EnhanceZen
 Techs=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc=engulfs the room in flames as the Smelter Demon gains power.
 StatusTarget=Enemy
@@ -978,16 +963,16 @@ StatusType=Burning
 
 [IronKingFlame]
 Name=IronKingFlame
-HP=1.3
-Str=1.3
-Def=1.3
-Int=1.3
-Spd=1.3
+HP=1
+Str=1
+Def=1
+Int=1
+Spd=1
 Effect=Status
 Augment=MagicBonus.TechBonus.EnhanceMelee.EnhanceCriticalHits.EnhanceZen
 Techs=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc=roars loudly as the molten iron shoots up and lands on the battlefield, the Iron King gaining power as well.
 StatusTarget=Enemy
@@ -1010,16 +995,16 @@ AdditionalCode=writeini $char($1) ignitions ShinGouki 0
 
 [ObitoSharingan]
 Name=ObitoSharingan
-hp=1.2
-Str=1.1
-def=1.1
-int=1.1
-spd=1.1
+hp=1
+Str=1
+def=1
+int=1
+spd=1
 Augment=MeleeBonus.TechBonus.EnhanceZen.EnhanceHandToHand.EnhanceCriticalHits
 Effect=Status
 Techs=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc='s eyes gain three tomoe in a pinwheel style as %user activates the Sharingan, gaining a slight bit of power.
 StatusTarget=Enemy
@@ -1028,16 +1013,16 @@ AdditionalCode=writeini $char($1) status ignition.on off | writeini $char($1) ig
 
 [ObitoMangekyouSharingan]
 Name=ObitoMangekyouSharingan
-hp=1.2
-Str=1.3
-def=1.3
-int=1.3
-spd=1.3
+hp=1
+Str=1
+def=1
+int=1
+spd=1
 Augment=MeleeBonus.TechBonus.EnhanceZen.EnhanceHandToHand.EnhanceCriticalHits
 Effect=Status
 Techs=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc='s eyes gain a design that is three stretched triangles evenly spaced around the pupil that each curve at the top around the eye to form a circle, making it similar to a pinwheel. At the same time, Obito uses the other part of Kamui to give himself intangibility for a short time.
 StatusTarget=Self
@@ -1046,15 +1031,15 @@ AdditionalCode=writeini $char($1) skills ChangeBattlefield 1
 
 [MadaraJinchuuriki]
 Name=MadaraJinchuuriki
-hp=1.3
-Str=1.3
-def=1.3
-int=1.3
-spd=1.3
+hp=1
+Str=1
+def=1
+int=1
+spd=1
 Augment=MeleeBonus.TechBonus.EnhanceZen.EnhanceHandToHand.EnhanceCriticalHits
 Techs=
-IgnitionTrigger=10
-IgnitionConsume=10
+IgnitionTrigger=0
+IgnitionConsume=0
 Cost=0
 Desc='s hair and skin goes pale and now wears a full-bodied black garment with black pants, gloves, and boots, over which he wears a flowing white robe. He also gains the Rinne Sharingan as a third eye, that has a ripple-like pattern which spreads over the eyeball, with red sclerae and irides, containing a pattern of nine tomoe.
 
@@ -1105,3 +1090,123 @@ IgnitionConsume=10
 Cost=0
 Techs=
 Desc=grins as a black silhouette covers her, leaving only white for the lenses on the glasses and a large smile.
+
+[ArmigerUnleashed]
+Name=Armiger Unleashed
+hp=2
+Str=6
+def=6
+int=6
+spd=6
+Augment=All
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=activates the Power of Kings, as thirteen white crystal weapons float around Noctis for a moment before vanishing, granting increased power!
+StatusTarget=Self
+StatusType=Invincible
+
+[Superbolide]
+Name=Superbolide
+hp=1
+Str=5
+def=5
+int=5
+spd=5
+Augment=EnhanceSword.EnhanceRanged.TechBonus.EnhanceParry.MeleeBonus
+IgnitionTrigger=10
+IgnitionConsume=20
+Cost=0
+Techs=
+Desc=aims the gunblade into the air and fires a burst of aether energy. The energy creates a barrier which absorbs attacks for a short time while boosting attack power.
+StatusTarget=Self
+StatusType=Invincible
+
+[QuickRecipeh_Perfect]
+Name=Quick Recipeh Perfect
+hp=5
+Str=6
+def=6
+int=6
+spd=6
+Augment=All
+IgnitionTrigger=5
+IgnitionConsume=5
+Cost=0
+Techs=
+Desc=summons a portable cooking station and begins to cook in the middle of battle. After the cooking is finished, Ignis takes a bite out of the food and laughs in delight while holding out the dish. It seems it turned out perfect!
+StatusTarget=Self
+StatusType=Invincible
+
+[QuickRecipeh_Great]
+Name=Quick Recipeh Great
+hp=3
+Str=3
+def=3
+int=3
+spd=3
+Augment=TechBonus.MeleeBonus.UtsusemiBonus.EnhanceZen.RenkeiBonus.EnhanceBloodBoost.EnhanceDodge.EnhanceParry.EnhanceBlocking
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=summons a portable cooking station and begins to cook in the middle of battle. After the cooking is finished, Ignis takes a bite out of the food and clenches his fist in excitement. It seems the food turned out great!
+
+[QuickRecipeh_Bad]
+Name=Quick Recipeh Bad
+hp=1
+Str=1.2
+def=1.2
+int=1.2
+spd=1.2
+Augment=MeleeBonus.TechBonus
+IgnitionTrigger=15
+IgnitionConsume=15
+Cost=0
+Techs=
+Desc=summons a portable cooking station and begins to cook in the middle of battle. After the cooking is finished, Ignis takes a bite out of the food and sighs while shaking his head. It seems the food turned out bad!
+
+[QuickRecipeh_Terrible]
+Name=Quick Recipeh Terrible
+hp=0.5
+Str=0.5
+def=0.5
+int=0.5
+spd=0.5
+Augment=
+IgnitionTrigger=20
+IgnitionConsume=20
+Cost=0
+Techs=
+Desc=summons a portable cooking station and begins to cook in the middle of battle. After the cooking is finished, Ignis takes a bite out of the food and hunches over while coughing. It seems the food gave him food poisoning!
+StatusTarget=Self
+StatusType=Poison
+
+[ThisIsWillow]
+Name=This is Willow
+hp=1
+Str=1
+def=1
+int=1
+spd=1
+Augment=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=vanishes before all light fades from the battlefield. After a moment, he returns but now with a strange black mask covering his face which has a silver design on the front of the mask, along with black attire and a long black coat. He looks at the battlefield and then laughs in a strange voice!
+
+[ThisIsItchweeed]
+Name=This is Itchweeed
+hp=1
+Str=1
+def=1
+int=1
+spd=1
+Augment=
+IgnitionTrigger=10
+IgnitionConsume=10
+Cost=0
+Techs=
+Desc=vanishes before all light fades from the battlefield. After a moment, he returns but now with a a black and purple jester hat and yellow goggles with black lenses covering his eyes. He then picks up a weed eater and begins to laugh like a maniac!

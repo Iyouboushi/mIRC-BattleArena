@@ -17,17 +17,13 @@ Def=50
 Int=50
 Spd=50
 IgnitionGauge=0
+LimitBreakPercent=100
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -44,6 +40,7 @@ ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
 
+
 [Info]
 Gender=his
 Gender2=him
@@ -58,6 +55,12 @@ CanTaunt=false
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+[monster]
+type=human
+TechLearn=false
+size=medium
+
 
 [Status]
 Poison=no
@@ -100,9 +103,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=GunbladeRevolver
 GunbladeRevolver=500
+
 
 [Skills]
 Swordmaster=100
@@ -126,11 +131,20 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=25
 
+
 [Techniques]
-RoughDivide=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
-FatedCircle=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
-BlastingZone=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
 Renzokuken=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 500, 0)
+Keen_Edge=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+FlameBarret=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+WindBarret=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+ThunderBarret=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+LightBarret=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+BeatFang=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+Solid_Barrel=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+RevolverDrive=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+MysticFlurry=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+UpperBlues=$iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 0, 500)
+
 
 [Item_Amount]
 
@@ -141,7 +155,10 @@ WeaponMaster=10
 
 
 [Augments]
-GunbladeRevolver=MeleeBonus.TechBonus.EnhanceSword.HurtEthereal
+GunbladeRevolver=MeleeBonus.TechBonus.EnhanceSword.EnhanceGun.HurtEthereal.MagicBonus
+
+
+[LimitBreaks]
 
 
 [modifiers]

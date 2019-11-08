@@ -39,6 +39,7 @@ Paper.Emerald.AshLog.Hatchet
 SilverChain.Ruby.SilverOre
 Glass.Ruby.Sand
 OrbCrystal.Ruby.RedOrbs
+WeaponCrystal.Onyx.BlackOrbs
 GodSeal.Diamond.ByakkoSeal.GenbuSeal.SeiryuSeal.SuzuakuSeal
 HyruleOrb.Diamond.PendantOfPower.PendantOfWisdom.PendantOfCourage
 BowlOfEmbers.Diamond.IronBowl.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
@@ -109,6 +110,8 @@ Blueprints:Yamato+1.Onyx.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadiu
 Blueprints:TrueMasterSword.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
 Blueprints:SilverSword+1.Sapphire.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Vanadium
 Blueprints:RakshasaGreatBow.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.ValorMedal
+Blueprints:Lionheart.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.WeaponCrystal
+Blueprints:Krishna.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.WeaponCrystal
 Hero'sWorth.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Jedi'sTreasure.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust
 Eggnog.Sapphire.SmallEgg.SpicedRum.Milk
@@ -315,4 +318,14 @@ WakidoKote.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-05.Ka
 KogaTekko.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-05.HattoriTekko
 Spaekona'sGloves.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-05.ArchmageGloves
 TotemicGloves.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.Clom'sTale-05.AnkusaGloves
-DensetsuNoYoroi=Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.TotemicJackcoat.Spaekona'sCoat.KogaNingi.WakidoDomaru.ReverenceSurcoat
+Bodyguard'sBlinder.Sapphire.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Bodyguard'sCoat.Sapphire.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Bodyguard'sFingerlessGloves.Sapphire.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Bodyguard'sTrousers.Sapphire.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Bodyguard'sThighboots.Sapphire.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Dancer'sHeaddress.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Dancer'sCasaque.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Dancer'sArmlets.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Dancer'sBottoms.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+Dancer'sShoes.Ruby.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.orbcrystal
+DensetsuNoYoroi.Diamond.LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.TotemicJackcoat.Spaekona'sCoat.KogaNingi.WakidoDomaru.ReverenceSurcoat

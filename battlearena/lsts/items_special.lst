@@ -53,6 +53,8 @@ Blueprints:Yamato+1
 Blueprints:TrueMasterSword
 Blueprints:SilverSword+1
 Blueprints:RakshasaGreatBow
+Blueprints:Lionheart
+Blueprints:Krishna
 Hero'sWorth
 Jedi'sTreasure
 MasterSwordMap
@@ -79,7 +81,6 @@ TitaniteSlab
 LargeTitaniteSlab
 StrangeTitaniteSlab
 ExtremeTitaniteSlab
-CodexOfBooetics
 CodexOfPoetics
 CodexOfLore
 CodexOfScripture

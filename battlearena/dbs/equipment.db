@@ -857,6 +857,40 @@ Exclusive=yes
 LevelRequirement=5000
 Protection=1.7
 
+[Bodyguard'sBlinder]
+Name=Bodyguard's Blinder
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceDefender.EnhanceSword.EnhanceRanged.EnhanceCounter.EnhanceMeditate.EnhanceZen.EnhanceKillerTraits
+EquipLocation=Head
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
+
+[Dancer'sHeaddress]
+Name=Dancer's Headdress
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceRanged.EnhanceCounter.EnhanceMeditate.EnhanceZen.EnhanceKillerTraits
+EquipLocation=Head
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
+
 ========
 BODY
 ========
@@ -1662,7 +1696,6 @@ LevelRequirement=300
 Exclusive=yes
 Protection=5
 
-
 [Vashu'sJacket]
 Name=Vashu the Stampede's Jacket
 hp=100
@@ -1863,6 +1896,40 @@ Legendary=true
 Exclusive=yes
 LevelRequirement=5000
 Protection=1.7
+
+[Bodyguard'sCoat]
+Name=Bodyguard's Coat
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceDefender.EnhanceSword.EnhanceRanged.IgnoreDefense.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceElementalDefense.EnhanceDragonHunt
+EquipLocation=Body
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
+
+[Dancer'sCasaque]
+Name=Dancer's Casaque
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceRanged.IgnoreDefense.EnhanceDodge.EnhanceDoubleTurnChance.Drain.EnhanceElementalDefense.EnhanceDragonHunt
+EquipLocation=Body
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
 
 [DensetsuNoYoroi]
 name=Densetsu No Yoroi
@@ -2646,6 +2713,39 @@ Exclusive=yes
 LevelRequirement=5000
 Protection=1.7
 
+[Bodyguard'sTrousers]
+Name=Bodyguard's Trousers
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceDefender.EnhanceSword.EnhanceRanged.EnhanceThirdEye.UtsusemiBonus.EnhanceItems.EnhanceTreasureHunter.EnhanceKillerTraits.EnhanceElementalDefense.EnhanceDragonHunt
+EquipLocation=Legs
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
+
+[Dancer'sBottoms]
+Name=Dancer's Bottoms
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceRanged.EnhanceThirdEye.UtsusemiBonus.EnhanceItems.EnhanceTreasureHunter.EnhanceKillerTraits.EnhanceElementalDefense.EnhanceDragonHunt
+EquipLocation=Legs
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
 
 ========
 FEET
@@ -3455,6 +3555,39 @@ Exclusive=yes
 LevelRequirement=5000
 Protection=1.7
 
+[Bodyguard'sThighboots]
+Name=Bodyguard's Thighboots
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceDefender.EnhanceSword.EnhanceRanged.IncreaseIGGainRate.EnhanceDodge.EnhanceStylePoints.IgnoreMetalDefense.EnhanceCounter.EnhanceDragonHunt
+EquipLocation=Feet
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
+
+[Dancer'sShoes]
+Name=Dancer's Shoes
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceRanged.IncreaseIGGainRate.EnhanceDodge.EnhanceStylePoints.IgnoreMetalDefense.EnhanceCounter.EnhanceDragonHunt
+EquipLocation=Feet
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
 
 ========
 HANDS
@@ -4246,6 +4379,39 @@ Exclusive=yes
 LevelRequirement=5000
 Protection=1.7
 
+[Bodyguard'sFingerlessGloves]
+Name=Bodyguard's Fingerless Gloves
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceDefender.EnhanceSword.EnhanceRanged.EnhanceParry.RenkeiBonus.EnhanceMeditate.AdditionalHit.EnhanceZen.EnhanceSteal.EnhanceScavenge.EnhanceWeaponBash.EnhanceDragonHunt
+EquipLocation=Hands
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
+
+[Dancer'sArmlets]
+Name=Dancer's Armlets
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceRanged.EnhanceParry.RenkeiBonus.EnhanceMeditate.AdditionalHit.EnhanceZen.EnhanceSteal.EnhanceScavenge.EnhanceWeaponBash.EnhanceDragonHunt
+EquipLocation=Hands
+cost=0
+SellPrice=20000
+Protection=1.7
+Legendary=True
+LevelRequirement=5000
+Exclusive=Yes
 
 =============================
 Monster only armor!
@@ -5037,3 +5203,19 @@ cost=0
 SellPrice=0
 Exclusive=yes
 Protection=0
+
+[AdvancedMagitekMask]
+Name=AdvancedMagitekGlasses
+hp=500
+tp=100
+Str=2500
+def=2500
+int=2500
+spd=2500
+Augment=EnhanceDefender.EnhanceSword.EnhanceRanged.EnhanceCounter.EnhanceMeditate.EnhanceZen.EnhanceKillerTraits.DecreaseMechEnergyCost.EnhanceElementalDefense
+EquipLocation=head
+cost=0
+SellPrice=0
+Exclusive=yes
+Protection=1.7
+Legendary=True

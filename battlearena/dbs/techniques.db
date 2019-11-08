@@ -195,6 +195,20 @@ BaseballBat=
 BlueLightsaber=ForcePush
 Lightsaber=ForceBlast
 
+; Gunblades
+BronzeGunblade=KeenEdge.DemonSlice.LightningShot
+SteelGunblade=KeenEdge.BrutalShell.DemonSlice.LightningShot
+SilverGunblade=KeenEdge.BrutalShell.DemonSlice.DemonSlaughter.LightningShot
+CobaltGunblade=KeenEdge.BrutalShell.SolidBarrel.DemonSlice.DemonSlaughter.FatedCircle.LightningShot.BlastingZone.BurstStrike
+Lionheart=KeenEdge.BrutalShell.SolidBarrel.DemonSlice.DemonSlaughter.FatedCircle.LightningShot.BlastingZone.BurstStrike.RoughDivide.GnashingFang.SavageClaw.WickedTalon
+
+; Chakrams
+BronzeChakrams=Cascade.WindmillII
+SteelChakrams=Cascade.Fountain.WindmillII.Bladeshower
+SilverChakrams=Cascade.Fountain.ReverseCascade.FountainFall.WindmillII.Bladeshower.RisingWindmill.BloodShower.StandardFinish
+CobaltChakrams=Cascade.Fountain.ReverseCascade.FountainFall.WindmillII.Bladeshower.RisingWindmill.BloodShower.FanDanceI.StandardFinish.TechnicalFinish
+Krishna=Cascade.Fountain.ReverseCascade.FountainFall.WindmillII.Bladeshower.RisingWindmill.BloodShower.FanDanceI.FanDanceII.SaberDance.StandardFinish.TechnicalFinish
+
 ; Mythic
 Mythic=$readini($char($1), Mythic, Techs)
 
@@ -237,7 +251,7 @@ UmbranArmorGuns=DoubleShotIII.GunBlazeIII
 Yagudo_Fists=Sweep.DoubleKick.FeatherStorm
 Yagudo_Wand=Sweep.DoubleKick.FeatherStorm.Fire.Stone.Ice.Aero.Cure.FireII.StoneII.IceII.AeroII
 Yagudo_Kunai=Sweep.DoubleKick.FeatherStorm
-Dark_Vampiric_Power=Dark_Inferno.Demonic_Megiddo.TrueForm
+Dark_Vampiric_Power=Dark_Inferno.Demonic_Megiddo.TrueForm.Fireball_Wave.Blood_Storm.Meteor_Shower.Fatal_Ray.Destruction_Ray.Flame_Pillars
 Guardian_Shield=shield_smash
 Orc_Pike=ShoulderTackle.BattleDance.Jump
 Orc_Fists=AsuranFists.ShoulderTackle.BattleDance
@@ -246,11 +260,11 @@ Orcish_Gun=HotShot.RainStorm.ChargedShot.ShoulderTackle.BattleDance
 Cell'sKi=CellExplode.PerfectForm.Kamehameha
 ZKi=Kamehameha.ShikanidouKamehameha.Kienzan
 VejittoKi=Ki_no_Tsurugi.Big_Bang_Flash.Renzoku_Kikouha.Kamehameha.Final_Kamehameha.Spirit_Excalibur.Final_Flash
-Death's_Scythe=GrimReaper.Grim_Slash
+Death's_Scythe=GrimReaper.Grim_Slash.Deadly_Tempest.Demonic_Skulls
 CreeperLegs=CreeperExplode.Headbutt
 SpiderLegs=SpiderWeb.SickleSlash
 ZombieFists=ZombieBite.ShoulderTackle
-PsychoPower=PsychoCrusher
+PsychoPower=PsychoCrusher.DoubleKneePress.HeadPress.KneePressNightmare.PsychoBlast.PsychoInferno
 BedrockBite=Tremors.FullForceBlow.Stone.StoneII.Quake
 Mistilteinn=Holy.BanishV.WrathOfGuDha.TormentOfGuDha.FireIV.WaterIV.BlizzardIV.Headbutt
 QuadavWand_R=FireIV.WaterIV.BlizzardIV.Poison.Blind.Headbutt.Paralyze
@@ -370,7 +384,7 @@ Chernobog=Guillotine.ShadowOfDeath
 ScarboroughFair=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel
 Shuraba=Tachi:Shoha.Tachi:Rana
 Kulshedra=TwinDragonLash.SerpentBite.DarkLash
-BusterSword=Braver.CrossSlash.Blade_Beam.Climhazzard.Meteorain.FinishingTouch.Omnislash
+BusterSword=FastBlade.Flatblade.VorpalBlade.HardSlash.GroundStrike.Resolution
 DekarBlade=ExplosionFist.ExplosionSword.GlacialBlast.Thundershriek.BombAttack.ArticFreeze.HolyEnergy.PhoenixBlow.OctoStrike.Skysplitter
 RuneOakStaff=Forzare.SoulForzare.Fuego.Pyrofeugo.Dormio.Fulminos.Arctis.Dispertius.Gravitus.FlickumBicus.Galvinius.Infriga.InfrigaForzare
 AdamantAxe=Thundershriek.BombAttack.FellCleave.UkkosFury.KingsJustice
@@ -383,7 +397,7 @@ MariaPower=Doves.Seiryu.Byakko.Suzaku.Genbu.GuardianFist
 DualBlade=WaveMotion.Requiescat.FlatBlade.SwiftBlade.OctoStrike.Skysplitter
 RyudoSword=TenseikenSlash.FlyingTenseiken.PurpleLightning.SkyDragonSlash
 SelanSwordStaff=HolyEnergy.PhoenixBlow.ChantDuCygne.DeathBlossom.Curaga.CureV.FlareII.QuakeII.FreezeII.FloodII.BurstII.TornadoII
-GunbladeRevolver=Renzokuken.RoughDivide.FatedCircle.BlastingZone.Lionheart
+GunbladeRevolver=Renzokuken.Keen_Edge.FlameBarret.WindBarret.ThunderBarret.LightBarret.BeatFang.Solid_Barrel.RevolverDrive.MysticFlurry.UpperBlues
 VorlikBlade=CutlassFury.RainOfSwords.PiratesWrath
 BelnadesWand=HolyFlames.BlueSplash.HolyLightning
 AirWhip=ArticFreeze.TwinDragonLash.Whiplash.SerpentBite
@@ -486,8 +500,8 @@ GoddessBlade=GoddessCrest.GoddessFlames
 DoomSickle=ThundajaII.BlizzajaII.FirajaII.DarkBomb.DarkMist.Dark_Matter
 MasamuneII=WaterIII.Waterja.SlurpCut.LeapSlash.FrogSquash.CureII.CureIV
 GatoFists=DoublePunch.BoxingGlove
-GrahfFists=GrahfEnergyBlast.GrahfStrike.Grahf_Energy_Blast
-AlphaWeltallFists=Grahf_EnergyBlast.Grahf_Strike
+GrahfFists=GrahfEnergyBlast.GrahfStrike.TornadoKick.ShinjinSpiral.FinalHeaven.AsuranFists
+AlphaWeltallFists=AlphaWeltallDoublePunch.AlphaWeltallTriplePunch.AlphaWeltallKick.AlphaWeltallTripleKick.AlphaWeltallEnergyBlast.AlphaWeltallEnergyBlastII
 GibdoBlade=GibdoShriek.HardSlash
 RedeadBlade=RedeadShriek.SpinningSlash
 GremlinAttack=GremlinBite
@@ -502,9 +516,9 @@ AikawaFists=AikawaGrab.RollingBlaze.FinalHeaven
 SteamEngine=FirajaII.ThundajaII.DiabolicWhistle.WheelToss
 Fireseal=GunFlame.VolcanicViper.BanditRevolver.TyrantFlame
 JunkYardDogMkIII=GunFlame.VolcanicViper.BanditRevolver.TyrantFlame.SaintOratorio
-Thunderseal=StunEdge.VaporThrust.GreedSever.RideTheLightning
-Aquila=Resolution.RideTheLightning.Torcleaver
-TauntPower=Cow_Launch.Chicken_Toss
+Thunderseal=StunEdge.VaporThrust.GreedSever
+Aquila=Resolution.Torcleaver
+TauntPower=Cow_Launch.Chicken_Toss.CrowTRobotTaunt.TomServoTaunt.CryptkeeperTaunt
 GoukiGloves=GouHadouken.ZankuuHadouken.GouShouryuken.TatsumakiZankuuKyaku.MessatsuGouHadou.MessatsuGouShouryuu.TenmaGouZankuu.ShunGokuSatsu
 GammaBody=GammaEnergyBullet
 GammaArm=GammaGrab.GammaThrow.GammaPunch
@@ -590,6 +604,30 @@ MagnaRider=Wheel.WildSpeed
 MagitekPod=ExplosiveRelease
 KetuRahu=KetuSlash.RahuBlaster.KetuRahuCrash
 Pumpkin=PumpkinSeeds.PumpkinPatch.JackOLantern
+ExdeathPower=ExdeathBlizzard.VoidBlizzard.ExdeathThunder.VoidThunder.ExdeathFire.VoidFire.VoidHoly.VoidFlare.TheDecisiveBattle.BlackHole
+NeoExdeathPower=FloodofNaught.Almagest.VoidAero.DeltaAttack.GrandCrossAlpha.GrandCrossDelta.EarthShaker.LightandDarkness.VoidMeteor.Charybdis.GrandCrossOmega.TheFinalBattle
+KefkaPower=GravenImage.GravenImageII.TwistyTurnyBlizzaga.LicketySplitThundaga.ExtraCrispyFiraga.UltimaEX.MeteorEX.HavokWing.Trine.Forsaken.Hyperdrive.HeartlessAngel
+Ame-no-Habakiri=ArtOfTheStorm.ArtOfTheSwell.ArtOfTheSword.Veinsplitter.LightlessSpark.Concentrativity.UnmovingTroika
+Devilsknife=ChaosChaos.RingAround.SinnerHearts.TheDevilsknife.CarouselGame.JoinTheClub.HeartsDiamonds.SpinningWorld.KeepingUp.FunFun.JoyingBeauty.SmilingDevilsknife.SoExciting.Boisengirls.TiredUp.FinalChaos.ICanDoAnything.CurtainsFire.JustSimpleChaos
+HyperGodPowerII=AsrielFireII.StarBlazingII.ShockerBreakerII.ChaosSaberII.ChaosBusterII.GalactaBlazingII.ShockerBreakerIII.ChaosSlicerII.ChaosBlasterII
+FloweyPetalsII=Flowey_Pellets1.Flowey_Pellets2.Flowey_Pellets3.FloweyDeathBulletsII
+SansPowerII=SansStrongAttackII.SansBoneWaveII.SansPlatformII.SansGasterBlasterNormalII.SansHardWayII.SansGasterBlasterLargeII.SansPsychokinesisII.SansCoolNormalAttackII
+NeloAngeloGreatsword=HelmBreaker.GroundStrike.Scourge.Resolution.Drive
+EngineBlade=WarpStrike.PointBlankWarpStrike.FireFlask.BlizzardFlask.ThunderFlask.GladioDoIt.PromptoYou'reUp.IgnisInstructions.AstralRamuh.AstralTitan.AstralLeviathan.AstralShiva.AstralBahamut.GarudaXV
+RingOfTheLucii=WarpStrike.PointBlankWarpStrike.DeathXV.AlternaXV.AstralRamuh.AstralTitan.AstralLeviathan.AstralShiva.AstralBahamut.GarudaXV
+IronDuke=Dawnhammer.Cyclone.Tempest.ImpulseXV.You'reOnFireToday.ThePrinceOfPain
+Valiant=Piercer.SelfieShot.Gravisphere.RecoilXV.AutoCrossbow.BioBlaster.CircularSaw.NoiseBlaster.DrillBreaker.FlamebreathCannon.TriggerHappyXV
+Spelldaggers=MarkXV.Flamebound.Frostbound.Stormbound.LibraElementia.Blade:Retsu.Blade:Jin.Blade:Metsu
+VenusGospel=Jump.PentaThrust.SoulJump.Drakesbane.LegSweep.Stardiver.HighJump.CamlannsTorment.SonicThrust
+UltimaWeaponFFBE=DualSlash.FlameBlade.VoltageBlade.UnknownTraitor.RuthlessBlade.ServantOfTheBlade.PhantomBlade
+Zangetsuto=ZangetsuWarp.ZangetsuKunai.OfudaToss.ChainAttack.ZangetsuExplosion.FlameZangetsuto.IceZangetsuto.LightningZangetsuto.OfudaExplosion
+BloodlessUmbrella=UmbrellaSwing.BloodArrow.BloodSplash.BloodVortex.BloodRain.BloodWhirlwind.BloodSteal
+LagunaMachineGun=LagunaLegCramp.RainStorm.Detonator.HotShotIII.ChargedShotIII.BlastShotIII
+BrightSilverManatrigger=KeenEdgeII.BrutalShellII.SolidBarrelII.DemonSliceII.DemonSlaughterII.FatedCircleII.LightningShotII.BlastingZoneII.BurstStrikeII.RoughDivideII.GnashingFangII.SavageClawII.WickedTalonII.JugularRip.AbdomenTear.EyeGouge
+SagatFists=TigerShot.TigerUppercut.TigerKnee
+BalrogFists=DashStraight.DashUpper.TurnPunch.BuffaloHead
+VegaClaw=SkyHighClaw.RollingCrystalFlash.FlyingBarcelonaAttack.IzunaDrop.ScarletTerror
+
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -5080,6 +5118,340 @@ stat=str
 Renkei=2
 
 ===================
+GUNBLADE TECHS
+===================
+[KeenEdge]
+Type=Single
+Cost=3000
+CoinCost=20
+Desc=performs a downward slash with the gunblade upon %enemy and then quickly follows it up with a horizontal slash!
+TP=100
+Element=None
+Hits=1
+BasePower=60
+Magic=No
+stat=str
+Renkei=2
+
+[BrutalShell]
+Type=Single
+Cost=3000
+CoinCost=20
+Desc=performs an upper slash with the gunblade upon %enemy which is followed up with another upper slash!
+TP=100
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = KeenEdge, 150, 75)
+Magic=No
+stat=str
+Renkei=2
+
+[SolidBarrel]
+Type=Single
+Cost=3000
+CoinCost=20
+Desc=performs two swings with the gunblade towards %enemy before taking a short hop into the air and swings the gunblade down upon %enemy $+ !
+TP=100
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = BrutalShell, 150, 75)
+Magic=No
+stat=str
+Renkei=2
+
+[DemonSlice]
+Type=AOE
+Cost=5000
+CoinCost=40
+Desc=spins around, performing a spinning attack with the gunblade that hits all enemies in range!
+TP=200
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+stat=str
+
+[DemonSlaughter]
+Type=AOE
+Cost=6000
+CoinCost=50
+Desc=hops slightly into the air while spinning around, performing a stronger spinning attack with the gunblade that hits all enemies in range!
+TP=200
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = DemonSlice, 70, 35)
+Magic=No
+stat=str
+
+[FatedCircle]
+Type=AOE
+Cost=6000
+CoinCost=50
+Desc=hops slightly into the air while spinning around, performing a spinning attack with the gunblade that hits all enemies in range, which is then followed up with a circular explosion of aether energy!
+TP=200
+Element=None
+Hits=1
+BasePower=45
+Magic=No
+stat=str
+
+[LightningShot]
+Type=Single
+Cost=2000
+CoinCost=20
+Desc=holds the gunblade towards the ground before quickly swinging the weapon up, sending a wave of energy towards %enemy $+ !
+TP=50
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+stat=str
+Renkei=1
+
+[BlastingZone]
+Type=Single
+Cost=7000
+CoinCost=60
+Desc=holds the gunblade into the air, pausing for a moment before swinging the weapon down, hitting %enemy with a large beam of silver energy!
+TP=150
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+stat=str
+Renkei=2
+
+[BurstStrike]
+Type=Single
+Cost=10000
+CoinCost=90
+Desc=performs a short hop before swinging the gunblade upon %enemy with an explosion of energy happening at the same time!
+TP=200
+Element=None
+Hits=1
+BasePower=120
+IgnoreDefens=5
+Magic=No
+stat=str
+Renkei=2
+
+[RoughDivide]
+Type=Single
+Cost=3500
+CoinCost=25
+Desc=quickly rushes towards %enemy with a forward flip and slashes at %enemy with the gunblade!
+TP=75
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+stat=str
+Renkei=1
+
+[GnashingFang]
+Type=Single
+Cost=12000
+CoinCost=100
+Desc=performs an upward slash with the gunblade upon %enemy and then follows it up with a horizontal slash which causes an explosion of aether energy!
+TP=200
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+stat=str
+Renkei=2
+
+[SavageClaw]
+Type=Single
+Cost=15000
+CoinCost=120
+Desc=performs an upward slash upon %enemy that is followed up with an explosion of aether energy!
+TP=200
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = GnashingFang, 300, 150)
+Magic=No
+stat=str
+Renkei=2
+
+[WickedTalon]
+Type=Single
+Cost=15000
+CoinCost=120
+Desc=performs multiple slashes with the gunblade upon %enemy with the final hit causing an explosion of aether energy!
+TP=200
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = SavageClaw, 300, 150)
+Magic=No
+stat=str
+Renkei=2
+
+===================
+CHAKRAM TECHS
+===================
+[Cascade]
+Type=Single
+Cost=3000
+CoinCost=20
+Desc=hurls the chakrams towards %enemy which hits twice before returning to hand!
+TP=50
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+stat=spd
+Renkei=1
+
+[Fountain]
+Type=Single
+Cost=3000
+CoinCost=20
+Desc=hurls one of the chakrams before partially turning to hurl the other chakram which hits %enemy a few times before returning to hand!
+TP=100
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = Cascade, 150, 75)
+Magic=No
+stat=spd
+Renkei=2
+
+[ReverseCascade]
+Type=Single
+Cost=3000
+CoinCost=20
+Desc=hurls the chakrams along the ground, which are covered in yellow energy before the chakrams rise up and slice %enemy a few times before turning to hand!
+TP=100
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = Fountain, 150, 75)
+Magic=No
+stat=spd
+Renkei=2
+
+[FountainFall]
+Type=Single
+Cost=15000
+CoinCost=120
+Desc=performs an upward swing with both arms, hurling the chakrams towards %enemy that hits several times before returning to hand!
+TP=200
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = ReverseCascade, 300, 150)
+Magic=No
+stat=spd
+Renkei=2
+
+[WindmillII]
+Type=AOE
+Cost=5000
+CoinCost=40
+Desc=spins around while throwing the chakrams out, slicing all enemies in range!
+TP=200
+Element=None
+Hits=1
+BasePower=60
+Magic=No
+stat=spd
+
+[Bladeshower]
+Type=AOE
+Cost=6000
+CoinCost=50
+Desc=throws the chakrams into the air before spinning around, causing the chakrams to slice all targets!
+TP=200
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = WindmillII, 90, 45)
+Magic=No
+stat=spd
+
+[RisingWindmill]
+Type=AOE
+Cost=6000
+CoinCost=50
+Desc=throws the chakrams to the ground before kicking them into the air while spinning, causing the chakrams to spin around the battlefield before returning to hand!
+TP=200
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = Bladeshower, 90, 45)
+Magic=No
+stat=spd
+
+[BloodShower]
+Type=AOE
+Cost=18000
+CoinCost=160
+Desc=stands on one foot and spins around while holding the chakrams out, slicing at all enemies in range!
+TP=200
+Element=None
+Hits=1
+BasePower=$iif($readini($txtfile(battle2.txt), Style, $1 $+ .lastaction) = RisingWindmill, 200, 100)
+Magic=no
+stat=spd
+
+[FanDanceI]
+Type=Single
+Cost=16000
+CoinCost=140
+Desc=swaps the chakrams for two feather fans, raisng the fans before quickly lowering $gender($1) arms, sending a green burst of energy upon %enemy that explodes into energy feathers!
+TP=150
+Element=None
+Hits=1
+BasePower=250
+Magic=No
+stat=spd
+Renkei=3
+
+[FanDanceII]
+Type=AOE
+Cost=20000
+CoinCost=180
+Desc=swaps the chakrams for two feather fans and the spins around, attacking all enemies with energy feathers!
+TP=200
+Element=None
+Hits=1
+BasePower=145
+Magic=No
+stat=spd
+
+[SaberDance]
+Type=AOE
+Cost=100000
+CoinCost=500
+Desc=hurls the chakrams towards the middle of the battlefield as a red dome of energy covers all enemies. The chakrams then shoot around the battlefield, slicing all enemies multiple times before returning back to hand!
+TP=350
+Element=None
+Hits=1
+BasePower=300
+Magic=No
+stat=spd
+
+[StandardFinish]
+Type=AOE
+Cost=45000
+CoinCost=200
+Desc=performs a simple dance made of two random dance moves which unleashes a wave of energy upon the battlefield that hits all enemies!
+TP=250
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+stat=spd
+
+[TechnicalFinish]
+Type=AOE
+Cost=80000
+CoinCost=300
+Desc=performs an intricate dance made of four random dance moves that unleashes a devastating wave of energy upon the battlefield that hits all enemies!
+TP=250
+Element=None
+Hits=1
+BasePower=250
+Magic=No
+stat=spd
+
+===================
 BOOSTS
 ===================
 [DevilTrigger]
@@ -5489,6 +5861,78 @@ magic=yes
 cost=0
 stat=int
 
+[Fireball_Wave]
+Type=Single
+Cost=0
+Desc=laughs as he raises his hand in a wave motion and sends a wall of fireballs towards %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=Yes
+HurtEthereal=true
+stat=int
+
+[Blood_Storm]
+Type=AOE
+Cost=0
+Desc=causes a storm of blood to hit the battlefield, making a mockery of the Hydro Storm attack!
+TP=10
+Element=Dark
+Hits=1
+BasePower=100
+Magic=yes
+HurtEthereal=true
+stat=int
+
+[Meteor_Shower]
+Type=AOE
+Cost=0
+Desc=laughs as he spreads his arms and causes numerous meteors to hit the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=true
+stat=int
+
+[Fatal_Ray]
+Type=AOE
+Cost=0
+Desc=raises his right hand, a pillar of green energy rising from the ground and into the air. After a moment, multiple bolts of green energy hit the battlefield!
+TP=10
+Element=Dark
+Hits=1
+BasePower=130
+Magic=Yes
+HurtEthereal=true
+stat=int
+
+[Destruction_Ray]
+Type=Single
+Cost=0
+Desc=raises his right hand, a pillar of dark purple energy rising from the ground and into the air. After a moment, multiple bolts of dark purple energy is unleashed upon %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=150
+Magic=Yes
+HurtEthereal=true
+stat=int
+
+[Flame_Pillars]
+Type=AOE
+Cost=0
+Desc=spreads his hands to his sides and causes multiple pillars of fire to hit the battlefield!
+TP=10
+Element=Fire
+Hits=1
+BasePower=150
+Magic=Yes
+HurtEthereal=true
+stat=int
+
 [Shield_Smash]
 Type=Single
 TP=5
@@ -5677,6 +6121,30 @@ Cost=0
 Magic=no
 stat=str
 
+[Deadly_Tempest]
+Type=AOE
+Cost=0
+Desc=unleashes a wave of fire upon the battlefield to burn all targets!
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=Yes
+HurtEthereal=true
+stat=int
+
+[Demonic_Skulls]
+Type=Single
+Cost=0
+Desc=summons numerous skulls made from demonic energy which float in the air for a moment before quickly descending upon %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=int
+
 [SickleSlash]
 Type=Single
 TP=10
@@ -5724,10 +6192,70 @@ stat=str
 Type=Single
 TP=10
 Desc=charges up electric energy around his body before he leaps into the air and flies forward over the ground towards %enemy $+ !
-BasePower=25
+BasePower=50
 Element=lightning
 Cost=0
 Magic=no
+stat=str
+
+[DoubleKneePress]
+Type=Single
+Cost=0
+Desc=performs a forward somersault towards %enemy $+ , kicking %enemy once in range.
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=True
+stat=str
+
+[HeadPress]
+Type=Single
+Cost=0
+Desc=leaps into the air and lands on %enemy $+ 's head! Bison then leaps back, covers his right fist with Psycho Power and then falls forward to strike %enemy with the fist!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=True
+stat=str
+
+[KneePressNightmare]
+Type=Single
+Cost=0
+Desc=performs a forward somersault twice towards %enemy $+ , kicking %enemy twice. After that, Bison uses the momentum to perform a backflip while kicking %enemy in the face!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=True
+stat=str
+
+[PsychoBlast]
+Type=Single
+Cost=0
+Desc=pulls back his right fist then punches towards %enemy $+ , sending a large ball of Psycho Power towards %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=True
+stat=str
+
+[PsychoInferno]
+Type=Single
+Cost=0
+Desc=raises his hands, causing a pillar of Psycho Power to erupt from the ground under %enemy $+ !
+TP=10
+Element=Dark
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=True
 stat=str
 
 [FullForceBlow]
@@ -6250,14 +6778,11 @@ Magic=yes
 Stat=str
 DestroyShadows=3
 
-
-
-
 [Temptation]
 Type=Single
 StatusType=Charm
 TP=10
-Desc=is surrounded by hearts and says "Come hither!" to %enemy $+ , throwing the hearts at %enemy $+ . $gender3($1) then says, "Fight, my love!" and laughs.
+Desc=is surrounded by hearts and says "Come hither!" to %enemy $+ , throwing the hearts at %enemy $+ . %user then says, "Fight, my love!" and laughs.
 BasePower=5
 Element=none
 Cost=0
@@ -7194,16 +7719,6 @@ Cost=0
 Magic=Yes
 Stat=int
 
-[Red-EyedDragon]
-Type=Single
-TP=40
-Desc=summons a large red dragon. The dragon waits for a moment before gaining a flame aura and rushes towards %enemy . The dragon slams into %enemy and causes a large explosion to happen.
-BasePower=60
-Element=Fire
-Cost=0
-Magic=no
-Stat=str
-
 [WhipSmack]
 Type=Single
 TP=10
@@ -7267,15 +7782,19 @@ Cost=0
 Magic=Yes
 stat=int
 
-[DarkDragon]
-Type=AOE
-TP=50
-Desc=drives the sword into the ground as a shadow covers the entire battlefield. A dark purple dragon rises from the shadow and charges forward, a powerful explosion of dark energy occuring as the dragon flies past the battlefield.
-BasePower=40
-Element=Dark
+[Demon'sGate]
+Type=Death-AOE
 Cost=0
-Magic=yes
-Stat=int
+Desc=stabs herself with the rapier, leaning back while floating. Blood drips to the ground as Rose says, "Demon's Gate." A pillar of dark energy shoots into the air as Rose splits in half, vanishing. The pillar vanishes as a dark gate opens, pulling in all enemies. After a moment the gate closes and goes into the ground as Rose returns to the arena.
+TP=10
+Element=None
+Hits=1
+BasePower=1
+Magic=No
+HurtEthereal=true
+stat=int
+DestroyShadows=16
+DeathChance=100
 
 [Frenetic_Rip]
 Type=Single
@@ -8761,86 +9280,6 @@ Magic=No
 stat=str
 IgnoreDefense=10
 
-[Braver]
-Type=Single
-TP=10
-Desc=leaps into the air and slashes %enemy on the way down with the Buster Sword.
-BasePower=30
-Element=None
-Cost=0
-Magic=No
-stat=str
-Postscript=writeini $char($1) battle IgnitionGauge 20
-
-[CrossSlash]
-Type=Single
-StatusType=Paralysis
-TP=10
-Desc=slashes %enemy a few times with the Buster Sword, which causes a paralyze effect!
-BasePower=20
-Element=None
-Cost=0
-Magic=No
-stat=str
-Postscript=writeini $char($1) battle IgnitionGauge 20
-
-[Blade_Beam]
-Type=AOE
-TP=10
-Desc=drives the Buster Sword into the ground and causes blue energy to slam into every enemy on the battlefield.
-BasePower=20
-Element=None
-Cost=0
-Magic=No
-stat=int
-Postscript=writeini $char($1) battle IgnitionGauge 20
-
-[Climhazzard]
-Type=Single
-TP=10
-Desc=impales the Buster Sword into %enemy and then leaps high into the air.
-BasePower=40
-Element=None
-Cost=0
-Magic=No
-stat=str
-Postscript=writeini $char($1) battle IgnitionGauge 20
-
-[Meteorain]
-Type=AOE
-TP=10
-Desc=leaps into the air and spins the Buster Sword around. Several small meteors proceed to slam into the battlefield!
-BasePower=20
-Element=Fire
-Cost=0
-Magic=Yes
-stat=int
-Postscript=writeini $char($1) battle IgnitionGauge 20
-
-[FinishingTouch]
-Type=Single
-TP=10
-Desc=spins the Buster Sword and holds it behimd himself for a moment before swinging forward and sending a large tonado slamming into %enemy $+ .
-BasePower=20
-Element=Wind
-Cost=0
-Magic=Yes
-stat=int
-Postscript=writeini $char($1) battle IgnitionGauge 20
-DeathChance=10
-
-[Omnislash]
-Type=Single
-TP=20
-Desc=says, "Breaking my limits" as he holds the Buster Sword forward as it gains a white glow. Cloud then proceeds to unleash a barrage of sword slashes upon %enemy $+ !
-BasePower=100
-Element=None
-Cost=0
-Magic=No
-stat=str
-hits=8
-Postscript=writeini $char($1) battle IgnitionGauge 0
-
 [ExplosionFist]
 Type=AOE
 TP=10
@@ -9595,62 +10034,147 @@ Cost=0
 Magic=Yes
 stat=int
 
+[Keen_Edge]
+Type=Single
+Cost=0
+Desc=rushes towards %enemy and slashes twice with the gunblade.
+TP=10
+Element=None
+Hits=2
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[FlameBarret]
+Type=Single
+Cost=0
+Desc=unleashes a barrage of hits upon %enemy with the power of fire.
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[WindBarret]
+Type=Single
+Cost=0
+Desc=unleashes a barrage of hits upon %enemy with the power of wind.
+TP=10
+Element=Wind
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[ThunderBarret]
+Type=Single
+Cost=0
+Desc=unleashes a barrage of hits upon %enemy with the power of lightning.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[LightBarret]
+Type=Single
+Cost=0
+Desc=unleashes a barrage of hits upon %enemy with the power of light.
+TP=10
+Element=Light
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[BeatFang]
+Type=Single
+Cost=0
+Desc=strikes %enemy a few times with the gunblade before jumping up to stab %enemy several times.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[Solid_Barrel]
+Type=Single
+Cost=0
+Desc=rushes forward and slashes %enemy several time before stabbing forward with the gunblade.
+TP=10
+Element=None
+Hits=4
+BasePower=45
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[RevolverDrive]
+Type=Single
+Cost=0
+Desc=covers the gunblade with red energy and rushes forward, slashing %enemy with the gunblade to cause large damage!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[MysticFlurry]
+Type=AOE
+Cost=0
+Desc=fires several ice bullets around the arena, which turns into lightning once they strike the enemies!
+TP=10
+Element=Ice.Lightning
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
+[UpperBlues]
+Type=Single
+Cost=0
+Desc=steps forward and performs a quick uper slash that knocks %enemy into the air. Squall jumps into the air to then slash %enemy several times and send %enemy crashing down into the ground!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=True
+stat=str
+PostScript=$restore_ig($1, 10)
+
 [Renzokuken]
 Type=Single
 TP=10
 Desc=rushes forward and slashes %enemy several times with his gunblade.
-BasePower=25
+BasePower=100
 Element=None
 Cost=0
 Magic=No
 stat=str
 hits=$rand(7,8)
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Lionheart 1000 | writeini $char($1) techniques Renzokuken 0
-
-[RoughDivide]
-Type=Single
-TP=10
-Desc=slashes %enemy with a backhand swing of the gunblade, causing a small explosion of energy.
-BasePower=50
-Element=None
-Cost=0
-Magic=No
-stat=str
-Postscript=writeini $char($1) battle IgnitionGauge 20
-
-[FatedCircle]
-Type=AOE
-TP=10
-Desc=leaps into the air and performs an aerial spin, unleashing energy that hits the battlefield.
-BasePower=30
-Element=None
-Cost=0
-Magic=No
-stat=str
-Postscript=writeini $char($1) battle IgnitionGauge 20
-
-[BlastingZone]
-Type=AOE
-TP=10
-Desc=raises his gunblade into the air as a massive line of yellow energy shoots into the sky. Squall then slams the energy on the battlefield to hit all targets.
-BasePower=30
-Element=None
-Cost=0
-Magic=No
-stat=str
-Postscript=writeini $char($1) battle IgnitionGauge 20
-
-[Lionheart]
-Type=Single
-TP=10
-Desc=rushes forward as the gunblade changes to the Lionheart and glows white. Squall slashes %enemy over and over before hopping back. He then says, "Mission accomplished." and slashes %enemy one final time.
-BasePower=100
-Element=None
-Cost=0
-Magic=no
-stat=str
-hits=8
-Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Lionheart 0 | writeini $char($1) techniques Renzokuken $iif($readini($char(Squall), battle, IgnitionGauge) >= 100, 500, 0)
+Postscript=writeini $char($1) limitbreaks RoughDivide 1 | writeini $char($1) limitbreaks FatedCircle 1 | writeini $char($1) limitbreaks BlastingZone 1 | writeini $char($1) limitbreaks Lionheart 1 | writeini $char($1) battle IgnitionGauge 0
 
 [CutlassFury]
 Type=Single
@@ -12368,7 +12892,7 @@ CanDodge=false
 
 [VolcanicViper]
 Type=Single
-Cost=o
+Cost=0
 Desc=uppercuts %enemy while surrounded in flames, knocking $gender2($2) into the air. %user then follows up with a mid-air spin kick.
 TP=10
 Element=Fire
@@ -12458,20 +12982,6 @@ HurtEthereal=True
 stat=str
 CanDodge=false
 
-[RideTheLightning]
-Type=Single
-Cost=0
-Desc=is surrounded by lightning, along with the sword as $gender3($1) charges towards %enemy $+ , slashing with the lightning powered sword as %user gets in range.
-TP=10
-Element=Lightning
-Hits=1
-BasePower=45
-Magic=Yes
-IgnoreDefense=5
-HurtEthereal=true
-stat=str
-CanDodge=false
-
 [SacredEdge]
 Type=Single
 Cost=0
@@ -12512,6 +13022,39 @@ Magic=No
 HurtEthereal=true
 stat=str
 CanDodge=True
+
+[CrowTRobotTaunt]
+Type=Single
+TP=0
+Cost=0
+Desc=looks at %enemy and says, " $+ $read($txtfile(taunts_CrowTRobot-npc.txt)) $+ "
+Element=none
+Hits=1
+BasePower=25
+Magic=No
+Stat=int
+
+[TomServoTaunt]
+Type=Single
+TP=0
+Cost=0
+Desc=looks at %enemy and says, " $+ $read($txtfile(taunts_TomServo-npc.txt)) $+ "
+Element=none
+Hits=1
+BasePower=25
+Magic=No
+Stat=int
+
+[CryptkeeperTaunt]
+Type=Single
+TP=0
+Cost=0
+Desc=looks at %enemy and says, " $+ $read($txtfile(taunts_TheCryptkeeper.txt)) $+ "
+Element=none
+Hits=1
+BasePower=25
+Magic=No
+Stat=int
 
 [GouHadouken]
 Type=Single
@@ -13030,23 +13573,7 @@ Magic=No
 stat=int
 IgnoreDefense=20
 HurtEthereal=true
-PostScript=writeini $char($1) techniques QueenSheba $calc(1 + $current.battlestreak) | writeini $char($1) techniques Phantasmaraneae 0
-
-[QueenSheba]
-Type=Single
-TP=10
-Desc=shouts out "TELOCH VOVIN A GRAA ORS TABAORD AVAVAGO!" and summons the mighty Queen Sheba. Queen Sheba kisses her right fist and slams the fist into %enemy with infinitons of force!
-BasePower=1500
-Element=None
-Cost=0
-Magic=no
-stat=int
-SelfStatus=Curse
-IgnoreDefense=25
-DestroyShadows=8
-CanDodge=false
-HurtEthereal=true
-PostScript=writeini $char($1) techniques Gomorrah $calc(1 + $current.battlestreak) | writeini $char($1) techniques QueenSheba 0
+PostScript=writeini $char($1) techniques Gomorrah $calc(1 + $current.battlestreak) | writeini $char($1) techniques Phantasmaraneae 0
 
 [Labolas]
 Type=Single
@@ -13126,23 +13653,7 @@ IgnoreDefense=20
 CanDodge=False
 DestroyShadows=4
 HurtEthereal=true
-PostScript=writeini $char($1) techniques Omne $calc(1 + $current.battlestreak) | writeini $char($1) techniques MadamaButterfly 0
-
-[Omne]
-Type=Single
-TP=10
-Desc=summons a massive angel and demon hybrid that appears to be a combination of Jubileus, The Creator and Queen Sheba, but is a different being entirely. Omne performs a drop kick upon %enemy %+ , causing damage as if getting hit by the Big Bang.
-BasePower=3000
-Element=None
-Cost=0
-Magic=no
-stat=int
-SelfStatus=Curse
-IgnoreDefense=25
-CanDodge=False
-DestroyShadows=16
-HurtEthereal=true
-PostScript=writeini $char($1) techniques Labolas $calc(1 + $current.battlestreak) | writeini $char($1) techniques Omne 0
+PostScript=writeini $char($1) techniques Labolas $calc(1 + $current.battlestreak) | writeini $char($1) techniques MadamaButterfly 0
 
 [HakkanoTogame]
 Type=AOE
@@ -13268,19 +13779,6 @@ HurtEthereal=true
 stat=str
 CanDodge=false
 
-[NapalmDeath]
-Type=AOE
-Cost=0
-Desc=jumps into the air as fire covers the sword and %user $+ . %user gathers power for a moment before slamming down onto the battlefield, causing an explosion of fire to cover the entire battlefield.
-TP=10
-Element=Fire
-Hits=1
-BasePower=100
-Magic=yes
-HurtEthereal=True
-stat=str
-CanDodge=false
-
 [Blast_Burn]
 Type=Single
 Cost=0
@@ -13378,6 +13876,32 @@ stat=int
 Renkei=1
 CanDodge=true
 IgnoreDefense=40
+
+[DivineDragonBall]
+Type=AOE
+Cost=0
+Desc=pauses for a moment as the shoulder on the left arm opens, revealing numerous smaller cannons. White energy gathers for a moment before numerous balls of non-elemental energy fires upon the arena, causing multiple explosions!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[DivineDragonCannon]
+Type=Single
+Cost=0
+Desc=gathers power as he aims the cannon at %enemy $+ . After a moment, a powerful beam of non-elemental energy shoots out and slams into %enemy $+ , causing a massive explosion!
+TP=10
+Element=None
+Hits=1
+BasePower=300
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
 
 =========================
 MECH TECHS
@@ -15059,7 +15583,6 @@ IgnoreDefense=5
 Stat=int
 CanDodge=false
 DestroyShadows=3
-Postscript=writeini $char($1) battle str 15429 | writeini $char($1) battle def 15429 | writeini $char($1) battle int 15429 | writeini $char($1) battle spd 15429 | writeini $char($1) techniques Grahf_Energy_Blast $iif(%battle.type = torment, $calc(1 + $current.battlestreak), 1000) | writeini $char($1) techniques GrahfStrike $iif(%battle.type = torment, $calc(1 + $current.battlestreak), 1000) | writeini $char($1) techniques GrahfEnergyBlast 0
 
 [GrahfStrike]
 Type=Single
@@ -15077,52 +15600,89 @@ stat=str
 CanDodge=false
 DestroyShadows=3
 
-[Grahf_Energy_Blast]
-Type=AOE
+[AlphaWeltallDoublePunch]
+Type=Single
 Cost=0
-Desc=cups $gender($1) hands to the side and gathers energy. A moment later, $gender3($1) thrusts $gender($1) hands forward and hurls a ball of dark energy towards the battlefield, which explodes and covers the field in darkness.
+Desc=rushes forward and punches %enemy twice!
 TP=10
-Element=Dark
+Element=None
 Hits=1
-BasePower=100
-Magic=Yes
-StatusType=Curse
+BasePower=50
+Magic=No
 HurtEthereal=True
-IgnoreDefense=5
-Stat=int
+stat=str
 CanDodge=false
 DestroyShadows=3
 
-[Grahf_Strike]
+[AlphaWeltallTriplePunch]
 Type=Single
 Cost=0
-Desc=leaps towards %enemy and performs a two-hit combo attack!
+Desc=rushes forward and delivers a brutal triple puch upon %enemy $+ !
 TP=10
 Element=None
-Hits=2
-BasePower=20
+Hits=1
+BasePower=50
 Magic=No
 HurtEthereal=True
-IgnoreDefense=5
 stat=str
 CanDodge=false
-EnergyCost=1000
+DestroyShadows=3
 
-[Grahf_EnergyBlast]
+[AlphaWeltallKick]
+Type=Single
+Cost=0
+Desc=hops into the air, pausing for a moment before diving forward towards %enemy to deliver a powerful kick!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+DestroyShadows=3
+
+[AlphaWeltallTripleKick]
+Type=Single
+Cost=0
+Desc=hops towards %enemy and delivers two quick kicks before leaping into the air and slams the leg down on top of %enemy $+ 's head!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+DestroyShadows=3
+
+[AlphaWeltallEnergyBlast]
+Type=Single
+Cost=0
+Desc=pulls back the right fist, gathering energy. After a moment, %user then quickly thrusts the right arm towards %enemy and unleashes a deadly blast of dark energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=false
+DestroyShadows=3
+
+[AlphaWeltallEnergyBlastII]
 Type=AOE
 Cost=0
-Desc=cups $gender($1) hands to the side and gathers energy. A moment later, $gender3($1) thrusts $gender($1) hands forward and hurls a ball of dark energy towards the battlefield, which explodes and covers the field in darkness.
+Desc=pulls back both fists, gathering energy. After a moment, %user then quickly thrusts both arms forward, unleashing a deadly blast of dark energy upon the battlefield!
 TP=10
-Element=Dark
+Element=None
 Hits=1
-BasePower=100
-Magic=Yes
-StatusType=Curse
+BasePower=50
+Magic=No
 HurtEthereal=True
-IgnoreDefense=5
-Stat=int
+stat=str
 CanDodge=false
-EnergyCost=1000
+DestroyShadows=3
 
 [GoddessFlames]
 Type=Single
@@ -15507,7 +16067,7 @@ DestroyShadows=3
 
 [AikawaGrab]
 Type=Single
-Cost=o
+Cost=0
 Desc=gains a dark-red aura as %user grabs onto %enemy with both hands, draining %enemy $+ 's life force at a stronger rate than normal. %user then slams %enemy onto the ground before stepping back.
 TP=10
 Element=Dark
@@ -18101,7 +18661,7 @@ Magic=No
 HurtEthereal=True
 stat=int
 CanDodge=True
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Left_Wing $calc(1 + %cosmic.level) | writeini $char($1) techniques Tidal_Wave 0
+Postscript=writeini $char($1) techniques Left_Wing $calc(1 + %cosmic.level) | writeini $char($1) techniques Tidal_Wave 0
 
 [Left_Wing]
 Type=Single
@@ -18116,7 +18676,7 @@ IgnoreDefense=5
 HurtEthereal=true
 stat=str
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Right_Wing $calc(1 + %cosmic.level) | writeini $char($1) techniques Left_wing 0
+Postscript=writeini $char($1) techniques Right_Wing $calc(1 + %cosmic.level) | writeini $char($1) techniques Left_wing 0
 
 [Right_Wing]
 Type=AOE
@@ -18131,7 +18691,7 @@ IgnoreDefense=5
 HurtEthereal=true
 stat=int
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Earth_Breath $calc(1 + %cosmic.level) | writeini $char($1) techniques Right_Wing 0
+Postscript=writeini $char($1) techniques Earth_Breath $calc(1 + %cosmic.level) | writeini $char($1) techniques Right_Wing 0
 
 [Earth_Breath]
 Type=AOE
@@ -18146,7 +18706,7 @@ IgnoreDefense=5
 HurtEthereal=true
 stat=int
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Line_Charge $calc(1 + %cosmic.level) | writeini $char($1) techniques Earth_Breath 0
+Postscript=writeini $char($1) techniques Line_Charge $calc(1 + %cosmic.level) | writeini $char($1) techniques Earth_Breath 0
 
 [Line_Charge]
 Type=AOE
@@ -18162,7 +18722,7 @@ HurtEthereal=true
 stat=str
 CanDodge=true
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Tail_Slam $calc(1 + %cosmic.level) | writeini $char($1) techniques Line_Charge 0
+Postscript=writeini $char($1) techniques Tail_Slam $calc(1 + %cosmic.level) | writeini $char($1) techniques Line_Charge 0
 
 [Tail_Slam]
 Type=Single
@@ -18177,7 +18737,7 @@ IgnoreDefense=5
 HurtEthereal=true
 stat=str
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Water_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Wind_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Fire_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Lighnting_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Earth_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Ice_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Tail_Slam 0
+Postscript=writeini $char($1) techniques Water_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Wind_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Fire_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Lighnting_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Earth_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Ice_Aether $calc(1 + %cosmic.level) | writeini $char($1) techniques Tail_Slam 0
 
 [Water_Aether]
 Type=AOE
@@ -18186,13 +18746,13 @@ Desc=begins to channel the corrupted aether, which takes the form of water. Shin
 TP=10
 Element=Water
 Hits=1
-BasePower=250
+BasePower=200
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+Postscript=writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Wind_Aether]
 Type=AOE
@@ -18201,13 +18761,13 @@ Desc=begins to channel the corrupted aether, which takes the form of wind. Shinr
 TP=10
 Element=Wind
 Hits=1
-BasePower=250
+BasePower=200
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+Postscript=writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Fire_Aether]
 Type=AOE
@@ -18216,13 +18776,13 @@ Desc=begins to channel the corrupted aether, which takes the form of fire. Shinr
 TP=10
 Element=Fire
 Hits=1
-BasePower=250
+BasePower=200
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+Postscript=writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Lightning_Aether]
 Type=AOE
@@ -18231,13 +18791,13 @@ Desc=begins to channel the corrupted aether, which takes the form of lightning. 
 TP=10
 Element=Lightning
 Hits=1
-BasePower=250
+BasePower=200
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+Postscript=writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Earth_Aether]
 Type=AOE
@@ -18246,13 +18806,13 @@ Desc=begins to channel the corrupted aether, which takes the form of earth. Shin
 TP=10
 Element=Earth
 Hits=1
-BasePower=250
+BasePower=200
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+Postscript=writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Ice_Aether]
 Type=AOE
@@ -18261,13 +18821,13 @@ Desc=begins to channel the corrupted aether, which takes the form of ice. Shinry
 TP=10
 Element=Ice
 Hits=1
-BasePower=250
+BasePower=200
 Magic=Yes
 HurtEthereal=True
 stat=Int
 CanDodge=False
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
+Postscript=writeini $char($1) techniques Tidal_Wave $calc(1 + %cosmic.level) | writeini $char($1) techniques Water_Aether 0 | writeini $char($1) techniques Wind_Aether 0 | writeini $char($1) techniques Fire_Aether 0 | writeini $char($1) techniques Lightning_Aether 0 | writeini $char($1) techniques Earth_Aether 0 | writeini $char($1) techniques Ice_Aether 0
 
 [Omega_WaveCannon]
 Type=AOE
@@ -18276,13 +18836,13 @@ Desc=floats at the edge of the battlefield, gathering energy. After energy enoug
 TP=10
 Element=None
 Hits=1
-BasePower=300
+BasePower=200
 Magic=No
 HurtEthereal=True
 stat=Int
 CanDodge=False
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) techniques Omega_Maelstrom $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_WaveCannon 0
+Postscript=writeini $char($1) techniques Omega_Maelstrom $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_WaveCannon 0
 
 [Omega_Maelstrom]
 Type=AOE
@@ -18295,7 +18855,7 @@ BasePower=40
 Magic=Yes
 stat=int
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_Flamethrower $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Maelstrom 0
+Postscript=writeini $char($1) techniques Omega_Flamethrower $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Maelstrom 0
 
 [Omega_Flamethrower]
 Type=Single
@@ -18308,7 +18868,7 @@ BasePower=50
 Magic=Yes
 stat=int
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_Earthquake $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Flamethrower 0
+Postscript=writeini $char($1) techniques Omega_Earthquake $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Flamethrower 0
 
 [Omega_Earthquake]
 Type=AOE
@@ -18323,7 +18883,7 @@ HurtEthereal=true
 IgnoreDefense=5
 stat=int
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_MustardBomb $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Earthquake 0
+Postscript=writeini $char($1) techniques Omega_MustardBomb $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_Earthquake 0
 
 [Omega_MustardBomb]
 Type=Single
@@ -18337,7 +18897,7 @@ Magic=No
 HurtEthereal=true
 stat=int
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_AtomicRay $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_MustardBomb 0
+Postscript=writeini $char($1) techniques Omega_AtomicRay $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_MustardBomb 0
 
 [Omega_AtomicRay]
 Type=AOE
@@ -18352,7 +18912,7 @@ HurtEthereal=true
 stat=int
 CanDodge=true
 DestroyShadows=2
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_RocketCharge $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_AtomicRay 0
+Postscript=writeini $char($1) techniques Omega_RocketCharge $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_AtomicRay 0
 
 [Omega_RocketCharge]
 Type=Single
@@ -18366,7 +18926,7 @@ Magic=No
 HurtEthereal=true
 stat=str
 CanDodge=true
-Postscript=writeini $char($1) battle IgnitionGauge 20 | writeini $char($1) techniques Omega_WaveCannon $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_RocketCharge 0
+Postscript=writeini $char($1) techniques Omega_WaveCannon $calc(1 + %cosmic.level) | writeini $char($1) techniques Omega_RocketCharge 0
 
 [Rending_Snath]
 Type=Single
@@ -18714,8 +19274,6 @@ stat=int
 hits=2
 DestroyShadows=4
 
-
-
 [HexEyes]
 Type=Single
 Cost=0
@@ -18819,7 +19377,6 @@ stat=int
 hits=3
 DestroyShadows=4
 
-
 [WheelToss]
 Type=AOE
 TP=10
@@ -18890,3 +19447,2242 @@ stat=spd
 CanDodge=false
 DestroyShadows=16
 DeathChance=100
+
+[ExdeathBlizzard]
+Type=AOE
+Cost=0
+Desc=causes blue circles to appear under everyone when then explodes with large shards of ice!
+TP=10
+Element=Ice
+Hits=1
+BasePower=100
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques VoidBlizzard $calc(1 + %cosmic.level) | writeini $char($1) techniques ExdeathBlizzard 0
+
+[VoidBlizzard]
+Type=AOE
+Cost=0
+Desc=reaches his arm back to The Void to take power from it. He then channels the power and causes the arena to be covered in ice. After a moment, lards shards of ice exlodes around the arena!
+TP=10
+Element=Ice
+Hits=1
+BasePower=120
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques ExdeathBlizzard $calc(1 + %cosmic.level) | writeini $char($1) techniques VoidBlizzard 0
+
+[ExdeathThunder]
+Type=AOE
+Cost=0
+Desc=spreads his arms to his sides and causes lightning to explode around the arena!
+TP=10
+Element=Lightning
+Hits=1
+BasePower=120
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques VoidThunder $calc(1 + %cosmic.level) | writeini $char($1) techniques ExdeathThunder 0
+
+[VoidThunder]
+Type=AOE
+Cost=0
+Desc=reaches his arm back to The Void and channels the power into the Thunder spell, giving it the ability to cause paralysis!
+TP=10
+Element=Lightning
+Hits=1
+BasePower=75
+Magic=Yes
+StatusType=Paralysis
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques ExdeathThunder $calc(1 + %cosmic.level) | writeini $char($1) techniques VoidThunder 0
+
+[ExdeathFire]
+Type=AOE
+Cost=0
+Desc=swings his sword in an arc, hurling a wave of fire across the arena!
+TP=10
+Element=Fire
+Hits=1
+BasePower=150
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques VoidFire $calc(1 + %cosmic.level) | writeini $char($1) techniques ExdeathFire 0
+
+[VoidFire]
+Type=AOE
+Cost=0
+Desc=reaches his arm back to The Void and channels power into his sword. He swings the sword in an arc, causing large pillars of flame to explode from beneath the battlefield!
+TP=10
+Element=Fire
+Hits=1
+BasePower=175
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques ExdeathFire $calc(1 + %cosmic.level) | writeini $char($1) techniques VoidFire 0
+
+[VoidHoly]
+Type=AOE
+Cost=0
+Desc=reaches his arm back to The Void and channels power. After a moment, a massive explosion of Holy energy hits the battlefield!
+TP=10
+Element=Light
+Hits=1
+BasePower=200
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[VoidFlare]
+Type=AOE
+Cost=0
+Desc=reaches his arm back to The Void and channels power. Large blue arrows appear above everyone as Exdeath casts Flare, a moment passing before beams of dark energy shoot across the battlefield!
+TP=10
+Element=Dark
+Hits=1
+BasePower=200
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[TheDecisiveBattle]
+Type=AOE
+Cost=0
+Desc=vanishes from the arena as a meteor slams into the arena and disappears. Afterwards several wooden tentacles shoot up through the arena floor which spins around to hit everyone! Exdeath returns to the arena as the tentacles goes back under the arena.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques BlackHole $calc(1 + %cosmic.level) | writeini $char($1) techniques TheDecisiveBattle 0
+
+[BlackHole]
+Type=AOE
+Cost=0
+Desc=summons black holes around the arena which move about the arena and damages anyone they come into contact with.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[FloodofNaught]
+Type=AOE
+Cost=0
+Desc=summons two large polyhedrons, on on his left and the other on the right. They begin to rapidly spin in place as beams of energy shoot across the battlefield before vanishing, causing a flood of dark energy to cover the battlefield.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+
+[Almagest]
+Type=AOE
+Cost=0
+Desc=gathers power for a moment before a silver burst of energy shoots across the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[VoidAero]
+Type=Single
+Cost=0
+Desc=hurls a large ball of wind magic upon %enemy $+ !
+TP=10
+Element=Wind
+Hits=1
+BasePower=100
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[DeltaAttack]
+Type=AOE
+Cost=0
+Desc=covers the battlefield in ice which causes large shards of ice to explode around the arena. Afterwards fire covers the battlefield and causes large pillars of flame to erupt around the arena!
+TP=10
+Element=Fire.Ice
+Hits=1
+BasePower=120
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[GrandCrossAlpha]
+Type=AOE
+Cost=0
+Desc=causes the foundations of the battlefield to shake as everything goes black and white except for several balls of red and blue energy that appears around the arena. After a moment passes, all of the energy balls explode upon the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques GrandCrossDelta $calc(1 + %cosmic.level) | writeini $char($1) techniques GrandCrossAlpha 0
+
+[GrandCrossDelta]
+Type=AOE
+Cost=0
+Desc=causes the foundations of the battlefield to shake as everything goes black and white execpt for several balls of red and blue energy that appears around the arena. After a moment passes, all of the energy balls explode upon the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques GrandCrossOmega $calc(1 + %cosmic.level) | writeini $char($1) techniques GrandCrossDelta 0
+
+[EarthShaker]
+Type=AOE
+Cost=0
+Desc=vanishes as an earthquake hits the battlefield. Several wooden tentacles explode from the ground and a large wooden face appears in the middle. The tentacles thrash about, hitting everyone as the face spins around, spitting out a wave of energy! The face and tentacles disappear as Neo Exdeath appears on a random side of the arena.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[LightandDarkness]
+Type=AOE
+Cost=0
+Desc=begins to channel power as large blue arrows appear over everyone. After a moment, beams of dark energy shoot across the battlefield followed up by Neo Exdeath unleashing a massive explosion of Light energy upon the arena!
+TP=10
+Element=Light.Dark
+Hits=1
+BasePower=120
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[VoidMeteor]
+Type=AOE
+Cost=0
+Desc=channels power and after a moment passes the battlefield is hit with multiple dark meteors!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[Charybdis]
+Type=AOE
+Cost=0
+Desc=summons several large tornados to the battlefield which are powered by The Void. They violently tear across the arena, causing wind damage to everyone!
+TP=10
+Element=Wind
+Hits=1
+BasePower=120
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+
+[GrandCrossOmega]
+Type=AOE
+Cost=0
+Desc=causes the very foundations of creation to shake as everything goes black and white execpt for several balls of red and blue energy that appears around the arena. After a moment passes, the balls of energy explode upon the battlefield which is then followed up with a massive explosion of void energy!
+TP=10
+Element=None
+Hits=1
+BasePower=250
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques TheFinalBattle $calc(1 + %cosmic.level) | writeini $char($1) techniques GrandCrossOmega 0
+
+[TheFinalBattle]
+Type=AOE
+Cost=0
+Desc=begins to randomly teleport around the arena, light going dim and leaves behind several large polyhedrons with each warp. After a moment, they all begin to spin in place rapidly as countless beams of dark energy shoot across the arena. Afterwards the polyhedrons explode and floods the arena with powerful dark energy.
+TP=10
+Element=None
+Hits=1
+BasePower=300
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques GrandCrossOmega $calc(1 + %cosmic.level) | writeini $char($1) techniques TheFinalBattle 0
+
+[GravenImage]
+Type=Single
+Cost=0
+Desc=makes a gesture and the large statue behind Kefka moves and focuses upon %enemy $+ . After a moment, a burst of powerful energy shoots out and slams into %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques GravenImageII $calc(1 + %cosmic.level) | writeini $char($1) techniques GravenImage 0
+
+[GravenImageII]
+Type=AOE
+Cost=0
+Desc=makes a gesture and the large statue behind Kefka begins to move around the battlefield, unleashing a burst of powerful energy around the arena!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+Postscript=writeini $char($1) techniques GravenImage $calc(1 + %cosmic.level) | writeini $char($1) techniques GravenImageII 0
+
+[TwistyTurnyBlizzaga]
+Type=AOE
+Cost=0
+Desc=fires an orb of ice towards the ground, which bounces around and hits everyone!
+TP=10
+Element=Ice
+Hits=1
+BasePower=100
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[LicketySplitThundaga]
+Type=Single
+Cost=0
+Desc=hurls a stream of lightning towards %enemy $+ !
+TP=10
+Element=Lightning
+Hits=1
+BasePower=125
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[ExtraCrispyFiraga]
+Type=AOE
+Cost=0
+Desc=summons three fireballs, each of the fireballs split into three themselves. Kefka makes a gesture, unleashing the balls of fire upon the arena!
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[UltimaEX]
+Type=Single
+Cost=0
+Desc=fires two orbs of energy upon %enemy which explodes upon contract!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[MeteorEX]
+Type=AOE
+Cost=0
+Desc=summons mutiple meteors that slam into the arena!
+TP=10
+Element=None
+Hits=1
+BasePower=125
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[HavokWing]
+Type=Single
+Cost=0
+Desc=flips upside, his back facing towards %enemy $+ . Kefka suddenly sprouts wings, which then extends with piercing beams of energy. He then shouts out, "Havok Wing!" and dashes into %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=str
+
+[Trine]
+Type=AOE
+Cost=0
+Desc=summons numerous triangles of lighnting magic that bombards the arena!
+TP=10
+Element=Lightning
+Hits=1
+BasePower=125
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[Forsaken]
+Type=Single
+Cost=0
+Desc=creates a magical crest above %enemy $+ , which drops several orbs of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[Hyperdrive]
+Type=AOE
+Cost=0
+Desc=charges power for a moment and then releases a huge wave of fire that covers the arena!
+TP=10
+Element=Fire
+Hits=1
+BasePower=150
+Magic=yes
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[HeartlessAngel]
+Type=AOE
+Cost=0
+Desc=gathers power as the light around the arena seems to go dim. Kefka then quickly holds his hands out and a massive wave of dark energy explodes around the arena!
+TP=10
+Element=Dark
+Hits=1
+BasePower=250
+Magic=Yes
+IgnoreDefense=5
+HurtEthereal=True
+stat=int
+
+[ArtOfTheStorm]
+Type=AOE
+Cost=0
+Desc=shouts out, "REND!" as he raises the katana into the air, lightning energy coving the area around Zenos before he unleashes the energy upon the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[ArtOfTheSwell]
+Type=AOE
+Cost=0
+Desc=shouts out, "REND!" as he raises the katana into the air, wind energy coving the area around Zenos before he unleashes the energy upon the battlefield, sending everyone back!
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[ArtOfTheSword]
+Type=AOE
+Cost=0
+Desc=shouts out, "KILL!" as he stabs the katana into the ground, dark red lines of energy shooting into the ground towards everyone. After a moment, the lines explode with powerful energy.
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[Veinsplitter]
+Type=AOE
+Cost=0
+Desc=shouts out, "Let this moment last forever!" as he summons four clones of himself around the arena. After a moment, the clones each unleash an energy blast upon the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[LightlessSpark]
+Type=Single
+Cost=0
+Desc=jumps towards %enemy and swings the katana, unleashing a powerful and concentrated blast of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[Concentrativity]
+Type=AOE
+Cost=0
+Desc=jumps into the air, pausing for a moment before throwing the katana into the ground, which unleashes a powerful blast of aether over the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=70
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[UnmovingTroika]
+Type=Single
+Cost=0
+Desc=rushes towards %enemy and unleashes a trifold salvo of slashes upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=85
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[ChaosChaos]
+Type=AOE
+Cost=0
+Desc=says, "Chaos, chaos! Catch me if you can!" as Jevil teleports around randomly, quickly spewing volleys of spade bullets that fly around the arena.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques RingAround $calc(1 + %cosmic.level) | writeini $char($1) techniques ChaosChaos 0
+
+[RingAround]
+Type=AOE
+Cost=0
+Desc=says, "Shall we play the ring-around?" as ten large spade bullets appear around the arena. After a moment the spades make a spiral spin towards the players on a clockwise pattern followed up with a counterclockwise pattern!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spg
+Postscript=writeini $char($1) techniques SinnerHearts $calc(1 + %cosmic.level) | writeini $char($1) techniques RingAround 0
+
+[SinnerHearts]
+Type=AOE
+Cost=0
+Desc=says, "My hearts go out to all you sinners!" as square bombs with hearts in the center fall to the arena, detonating into four hearts in a square formation that rotates from the center of the arena and towards all of the players.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques TheDevilsknife $calc(1 + %cosmic.level) | writeini $char($1) techniques SinnerHearts 0
+
+[TheDevilsknife]
+Type=AOE
+Cost=0
+Desc=says, "Ha, ha, let's make the devilsknife." as four scythes appear around the arena. The scythes then oscillate around the arena while also randomly rotating around.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques CarouselGame $calc(1 + %cosmic.level) | writeini $char($1) techniques TheDevilsknife 0
+
+[CarouselGame]
+Type=AOE
+Cost=0
+Desc=says, "Piip, piip, let's ride the carousel game." as three rows of horses appear. Jevil then says, "I can do anything!" as the rows begin to spin around the arena, bobbing up and down while Jevil dances!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques JoinTheClub $calc(1 + %cosmic.level) | writeini $char($1) techniques CarouselGame 0
+
+[JoinTheClub]
+Type=AOE
+Cost=0
+Desc=says, "Hee, hee, having fun?! Join the club!" as square bombs with clubs in the center fall to the arena, exploding into large club bullets which then fires a 3-way spread pattern at the players!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques HeartsDiamonds $calc(1 + %cosmic.level) | writeini $char($1) techniques JoinTheClub 0
+
+[HeartsDiamonds]
+Type=AOE
+Cost=0
+Desc=says, "Hearts, diamonds, I can do anything!" as diamonds appear at the bottom of the arena and shoots up into the air!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques SpinningWorld $calc(1 + %cosmic.level) | writeini $char($1) techniques HeartsDiamonds 0
+
+[SpinningWorld]
+Type=AOE
+Cost=0
+Desc=says, "Who keeps spinning the world around?" as ten large spade bullets appear once again, which quickly spins around the arena in random spiral patterns.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques KeepingUp $calc(1 + %cosmic.level) | writeini $char($1) techniques SpinningWorld 0
+
+[KeepingUp]
+Type=AOE
+Cost=0
+Desc=says, "You guys are really keeping up!" as three rows of horses and ducks appear. Jevil then says, "I can do anything!" as the rows spin around, the horses and ducks going up and down at opposite intervals to each other.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques FunFun $calc(1 + %cosmic.level) | writeini $char($1) techniques KeepingUp 0
+
+[FunFun]
+Type=AOE
+Cost=0
+Desc=says, "Nu-ha! I never had such fun, fun!" as square bombs with spades in the center fall to the arena, exploding into ten smaller spades that shoot out evenly in all directions.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques JoyingBeauty $calc(1 + %cosmic.level) | writeini $char($1) techniques FunFun 0
+
+[JoyingBeauty]
+Type=AOE
+Cost=0
+Desc=says, "A beauty is joying in my heart!" as clubs appear around the edge of the arena, firing three individual 3-way spread bursts of bullets aimed at all players!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques SmilingDevilsknife $calc(1 + %cosmic.level) | writeini $char($1) techniques JoyingBeauty 0
+
+[SmilingDevilsknife]
+Type=AOE
+Cost=0
+Desc=says, "Even devilsknife is smiling!" as four scythes appear. Jevil then says, "Metamorphosis." as the scythes spin around the arena. However, a larger, red scythe appears, randomly sweeping across the arena!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques SoExciting $calc(1 + %cosmic.level) | writeini $char($1) techniques SmilingDevilsknife 0
+
+[SoExciting]
+Type=AOE
+Cost=0
+Desc=says, "It's so exciting.. I can't take it!" as Jevil randomly teleports around the arena, throwing diamonds randomly at all of the players.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques Boisengirls $calc(1 + %cosmic.level) | writeini $char($1) techniques SoExciting 0
+
+[Boisengirls]
+Type=AOE
+Cost=0
+Desc=says, "This is it, boisengirls! See ya!" as every version of the suit bombs fall to the arena along with a bomb with a diamond in the center, exploding with three diamonds aimed at all of the players!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques TiredUp $calc(1 + %cosmic.level) | writeini $char($1) techniques Boisengirls 0
+
+[TiredUp]
+Type=AOE
+Cost=0
+Desc=says, "Enough! You guys tired me up!" as Jevil appears tired, attacking with diamonds from below the arena that are moving much slower than before.
+TP=10
+Element=None
+Hits=1
+BasePower=1
+Magic=No
+stat=str
+Postscript=writeini $char($1) techniques FinalChaos $calc(1 + %cosmic.level) | writeini $char($1) techniques TiredUp 0
+
+[FinalChaos]
+Type=AOE
+Cost=0
+Desc=says, "Kidding! Here's my final chaos!" as the arena goes black. Jevil says, "Bye bye!" as he vanishes, countless larger scythes rain from the sky, creating pillars of white light. After a time, the scythes stop as a massive scythe falls to the arena, causing a large explosion. Jevil then begins to dance at a faster pace!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=20
+stat=spd
+CanDodge=false
+DestroyShadows=30
+Postscript=writeini $char($1) techniques ICanDoAnything $calc(1 + %cosmic.level) | writeini $char($1) techniques FinalChaos 0
+
+[ICanDoAnything]
+Type=AOE
+Cost=0
+Desc=says, "I can do anything!" as large spades appear around the arena, spinning around the arena at a fast pace.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques CurtainsFire $calc(1 + %cosmic.level) | writeini $char($1) techniques ICanDoAnything 0
+
+[CurtainsFire]
+Type=AOE
+Cost=0
+Desc=says, "These curtains are really on fire!" as square bombs of every suit fall to the arena, exploding into countless spades, clubs, hearts, and diamonds.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques JustSimpleChaos $calc(1 + %cosmic.level) | writeini $char($1) techniques CurtainsFire 0
+
+[JustSimpleChaos]
+Type=AOE
+Cost=0
+Desc=says, "Please, it's just a simple chaos!" as three rows of ducks and horses appear and spins around the arena randomly!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+stat=spd
+Postscript=writeini $char($1) techniques ICanDoAnything $calc(1 + %cosmic.level) | writeini $char($1) techniques JustSimpleChaos 0
+
+[AsrielFireII]
+Type=AOE
+Cost=0
+Desc=summons "weak" balls of fire which covers the battlefield!
+TP=10
+Element=Fire
+Hits=1
+BasePower=65
+Magic=Yes
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=16
+PostScript=writeini $char($1) techniques StarBlazingII $calc(1 + %cosmic.level) | writeini $char($1) techniques AsrielFireII 0
+
+[StarBlazingII]
+Type=AOE
+Cost=0
+Desc=causes numerous stars to fall, along with a giant star that explodes into many smaller stars that cover the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques ShockerBreakerII $calc(1 + %cosmic.level) | writeini $char($1) techniques StarBlazingII 0
+
+[ShockerBreakerII]
+Type=AOE
+Cost=0
+Desc=sweeps the battlefield with numerous bolts of lightning.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=120
+Magic=yes
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques ChaosSaberII $calc(1 + %cosmic.level) | writeini $char($1) techniques ShockerBreakerII 0
+
+[ChaosSaberII]
+Type=AOE
+Cost=0
+Desc=summons two swords and swings the left sword followed by the right sword. Asriel then swings both swords, leaving sparks that fly across the battlefield.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques ChaosBusterII $calc(1 + %cosmic.level) | writeini $char($1) techniques ChaosSaberII 0
+
+[ChaosBusterII]
+Type=AOE
+Cost=0
+Desc=summons a blaster and fires numerous waves of bullets before the blaster then spins and fires a large beam of energy.
+TP=10
+Element=None
+Hits=1
+BasePower=175
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques GalactaBlazingII $calc(1 + %cosmic.level) | writeini $char($1) techniques ChaosBusterII 0
+
+[GalactaBlazingII]
+Type=AOE
+Cost=0
+Desc=causes numerous stars to fall, along with a giant star that explodes into smaller stars the sweep the battlefield in a counterclockwise motion!
+TP=10
+Element=None
+Hits=1
+BasePower=175
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=16
+PostScript=writeini $char($1) techniques ShockerBreakerII $calc(1 + %cosmic.level) | writeini $char($1) techniques GalactaBlazingII 0
+
+[ShockerBreakerIII]
+Type=AOE
+Cost=0
+Desc=unleashes lightning bolts in an alternating pattern, then a series of targeted strikes at random before sweeping the battlefield with the lightning bolts.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=175
+Magic=Yes
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques ChaosSlicerII $calc(1 + %cosmic.level) | writeini $char($1) techniques ShockerBreakerIII 0
+
+[ChaosSlicerII]
+Type=AOE
+Cost=0
+Desc=summons a pair of swords and alternates swinging the left and right swords at a high speed before swinging both and unleashes sparks that sweep the battlefield.
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+CanDodge=true
+PostScript=writeini $char($1) techniques ChaosBlasterII $calc(1 + %cosmic.level) | writeini $char($1) techniques ChaosSlicerII 0
+
+[ChaosBlasterII]
+Type=AOE
+Cost=0
+Desc=summons a blaster that unleashes numerous waves of bullets before the blaster spins around and fires a large energy laser along with a massive starburst that sweeps over the battlefield.
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=15
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques GalactaBlazingII $calc(1 + %cosmic.level) | writeini $char($1) techniques ChaosBlasterII 0
+
+[Flowey_Pellets1]
+Type=Single
+Cost=0
+Desc=summons white pellets and says, "These are little white friendliness pellets! Get as many as you can!" $iif(%attack.damage = 0, %enemy avoids the pellets. Flowey then says "Hey... buddy... you missed them. Let's try again... okay?", %enemy catches all of the pellets!)
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=True
+PostScript=writeini $char($1) techniques Flowey_Pellets2 $calc(1 + %cosmic.level) | writeini $char($1) techniques Flowey_Pellets1 0
+
+[Flowey_Pellets2]
+Type=Single
+Cost=0
+Desc=summons more pellets and sends them towards %enemy $iif(%attack.damage = 0, who avoids them again. Flowey then says "Is this a joke? Are you braindead? RUN. INTO. THE. BULLETS!", who catches them all again!)
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=True
+PostScript=writeini $char($1) techniques Flowey_Pellets3 $calc(1 + %cosmic.level) | writeini $char($1) techniques Flowey_Pellets2 0
+
+[Flowey_Pellets3]
+Type=Single
+Cost=0
+Desc=summons yet more pellets, sending them at %enemy $iif(%attack.damage = 0, who avoids them yet again. Flowey then says "You know what's going here... don't you? You just wanted to see me suffer.", who catches them all yet again.)
+TP=10
+Element=None
+Hits=1
+BasePower=30
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=True
+PostScript=writeini $char($1) techniques FloweyDeathBulletsII $calc(1 + %cosmic.level) | writeini $char($1) techniques Flowey_Pellets3 0
+
+[FloweyDeathBulletsII]
+Type=AOE
+Cost=0
+Desc='s face turns demented as he summons bullets that circle the entire battlefield and says, "In this world, it's kill or BE killed. Now you all die!" before laughing as he unleashes the bullets upon everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=55
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=false
+DestroyShadows=8
+
+[SansStrongAttackII]
+Type=AOE
+Cost=0
+Desc=slams everyone down with gravity and summons a wave of bones that cover the battlefield. Sans then summons numerous and large Gaster Blasters that unleash lasers in several directions across the battlefield. Afterwards, Sans says, "huh. always wondered why people never use their strongest attack first."
+TP=10
+Element=None
+Hits=1
+BasePower=300
+Magic=No
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=8
+PostScript=writeini $char($1) techniques SansBoneWaveII $calc(1 + %cosmic.level) | writeini $char($1) techniques SansStrongAttackII 0
+
+[SansBoneWaveII]
+Type=AOE
+Cost=0
+Desc=floods the battlefield with several bones of various lengths at a rapid speed, which require dodging or jumping to avoid.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansPlatformII $calc(1 + %cosmic.level) | writeini $char($1) techniques SansBoneWaveII 0
+
+[SansPlatformII]
+Type=AOE
+Cost=0
+Desc=causes bones to swarm the battlefield, along with various platforms that can be used to avoid the bones.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=int
+CanDodge=true
+DestroyShadows=2
+PostScript=writeini $char($1) techniques SansGasterBlasterNormalII $calc(1 + %cosmic.level) | writeini $char($1) techniques SansPlatformII 0
+
+[SansGasterBlasterNormalII]
+Type=AOE
+Cost=0
+Desc=summons several Gaster Blasters that fire lasers at everyone from random positions.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansHardWayII $calc(1 + %cosmic.level) | writeini $char($1) techniques SansGasterBlasterNormalII 0
+
+[SansHardWayII]
+Type=AOE
+Cost=0
+Desc=says, "guess you like doing things the hard way, huh?" and unleashes a random variation of the bone waves. Each begins and ends at random, giving almost no time to dodge or react.
+TP=10
+Element=None
+Hits=1
+BasePower=175
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansGasterBlasterLargeII $calc(1 + %cosmic.level) | writeini $char($1) techniques SansHardWayII 0
+
+[SansGasterBlasterLargeII]
+Type=AOE
+Cost=0
+Desc=summons several sets of large Gaster Blasters which fires lasers across the battlefield. Each set appears immediately after the previous, making them difficult to dodge.
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansPsychokinesisII $calc(1 + %cosmic.level) | writeini $char($1) techniques SansGasterBlasterLargeII 0
+
+[SansPsychokinesisII]
+Type=AOE
+Cost=0
+Desc='s right eye goes black as his left eye glows blue and yellow as he slams everyone down using his psychokinesis several times. He then pauses slightly before raising bones from below the battlefield to hit everyone.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=no
+HurtEthereal=true
+stat=int
+CanDodge=true
+PostScript=writeini $char($1) techniques SansCoolNormalAttackII $calc(1 + %cosmic.level) | writeini $char($1) techniques SansPsychokinesisII 0
+
+[SansCoolNormalAttackII]
+Type=AOE
+Cost=0
+Desc=says, "welp, here goes nothing." as he unleashes all of his previous attacks, one after the other, before numerous Gaster Blasters fire lasers while spinning around everyone on the battlefield. He then ends with several rapid uses of his psychokinesis.
+TP=10
+Element=none
+Hits=1
+BasePower=450
+Magic=no
+HurtEthereal=true
+stat=int
+CanDodge=true
+DestroyShadows=8
+PostScript=writeini $char($1) techniques SansBoneWaveII $calc(1 + %cosmic.level) | writeini $char($1) techniques SansCoolNormalAttackII 0
+
+[HelmBreaker]
+Type=Single
+Cost=0
+Desc=leaps into the air above %enemy end quickly drops to the ground, slamming the greatsword over %enemy $+ 's head!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=int
+CanDodge=True
+
+[WarpStrike]
+Type=Single
+Cost=0
+Desc=summons the Engine Blade and hurls it at %enemy $+ , which teleports Noctis to close range who then strikes several times with the weapon.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques PointBlankWarpStrike 500 | writeini $char($1) techniques WarpStrike 0
+
+[PointBlankWarpStrike]
+Type=Single
+Cost=0
+Desc=summons the Engine Blade and hurls it at %enemy $+ , which teleports Noctis to close range who then strikes several times with the weapon.
+TP=10
+Element=None
+Hits=1
+BasePower=125
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques WarpStrike 500 | writeini $char($1) techniques PointBlankWarpStrike 0
+
+[FireFlask]
+Type=AOE
+Cost=0
+Desc=takes out a flask full of fire magic and hurls it towards a random enemy which then explodes into a burst of fire that covers the arena.
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BlizzardFlask]
+Type=AOE
+Cost=0
+Desc=takes out a flask full of ice magic and hurls it towards a random enemy which then explodes into a burst of ice that covers the arena.
+TP=0
+Element=Ice
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+
+[ThunderFlask]
+Type=AOE
+Cost=0
+Desc=takes out a flask full of lightning magic and hurls it towards a random enemy which then explodes into a burst of lightning that covers the arena.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=atr
+
+[GladioDoIt]
+Type=AOE
+Cost=0
+Desc=says, "Gladio, do it!" as Gladiolus rushes forward, holding his weapon to the side for a moment before spinning around the arena, htting all enemies!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+
+[PromptoYou'reUp]
+Type=Single
+Cost=0
+Desc=says, "Prompto, you're up!" as Prompto watches %enemy before saying, "Oh, hi there... opening!" and takes a carefully aimed shot at %enemy $+ 's blind spot, whistling after doing so!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[IgnisInstructions]
+Type=AOE
+Cost=0
+Desc=says, "Ignis, instructions!" to which Ignis says, "I have just the thing!" and takes out a round grenade. He tosses it to the center of the arena, the grenade then causing a massive explosion just a few seconds later!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+
+[AstralRamuh]
+Type=AOE
+Cost=0
+Desc=looks around as lightning crackles around the arena as a larger version of Ramuh appears. He holds out a staff which has a coiled tip on the bottom and the top is in the design of Ixion's head. He holds the staff up, taking aim before quickly hurling it down, causing a massive explosion of lightning to hit all enemies!
+TP=10
+Element=None
+Hits=1
+BasePower=1000
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[AstralTitan]
+Type=AOE
+Cost=0
+Desc=takes a look back as a massive humanoid figure is running towards the arena. The figure stops at the middle of the arena and pulls his right fist back, pausing for a moment, and then slams the fist down which causes several large pillars of stone to shoot up from the ground!
+TP=10
+Element=None
+Hits=1
+BasePower=1000
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[AstralLeviathan]
+Type=AOE
+Cost=0
+Desc=looks around as moisture begins to build in the air. After a moment, a massive water serpent appears and summons a wall of water around the arena. Leviathan then roars, causing the water to close in and swirl around, hitting all enemies!
+TP=10
+Element=None
+Hits=1
+BasePower=1000
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[AstralShiva]
+Type=AOE
+Cost=0
+Desc=shivers as the temperature lowers. Gentiana walks past Noctis, transforming into a Shiva fairy as several more appear behind Noctis. The fairies then spin around as they float into the air, causing ice to swirl around the arena to chill all enemies to the bone!
+TP=10
+Element=None
+Hits=1
+BasePower=1000
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[AstralBahamut]
+Type=AOE
+Cost=0
+Desc=looks up as a massive sword falls to the arena, and can see a humanoid in dragon armor fly around the arena, taking the sword as well. Bahamut then pulls the sword back, holding his hand to the arena before clenching it. Numerous swords appear behind Bahamut for a moment before raining down, covering the entire arena!
+TP=0
+Element=None
+Hits=1
+BasePower=1500
+Magic=No
+IgnoreDefense=15
+HurtEthereal=true
+stat=str
+
+[GarudaXV]
+Type=AOE
+Cost=0
+Desc=looks up as a wall of wind appears around the arena while a somewhat-humanoid figure spirals down, pausing in the air. Garuda smirks as she observes the battle, lightning flashing around before then yelling out and causing a massive tornado to slam down onto the arena, hitting all enemies!
+TP=10
+Element=None
+Hits=1
+BasePower=1000
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[DeathXV]
+Type=Death
+TP=10
+Desc=holds his right hand towards %enemy as pink-ish energy shoots out from the ring and towards %enemy $+ , causing %enemy to sort of shrivel. The effect continues as %enemy shrivels more before $iif(%attack.damage = 0, %enemy manages to resist the spell and return to normal, %enemy shrivels even more then disappearing entirely!)
+BasePower=1000
+Element=None
+Cost=0
+Magic=No
+stat=int
+HurtEthereal=true
+DeathChance=100
+
+[AlternaXV]
+Type=AOE
+TP=10
+Desc=raises his right hand up, the ring emitting white energy. Noctis then lowers his hand, spinning around and holding his hand out. A massive glowing sphere of energy engulfs the arena. A black sphere expands from the sphere, eventually filling it. The sphere causes an implosion of red energy, dealing massive damage to all enemies trapped inside!
+BasePower=1000
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=int
+
+[Dawnhammer]
+Type=Single
+TP=10
+Desc=leaps into the air towards %enemy and slams the greatsword down onto %enemy $+ 's head!
+BasePower=200
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=str
+
+[Cyclone]
+Type=AOE
+TP=10
+Desc=slams the greatsword to the ground, creating a massive shockwave that hits all enemies!
+BasePower=100
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=str
+
+[Tempest]
+Type=AOE
+TP=10
+Desc=holds the greatsword to the side and then spins around the arena, hitting all enemies!
+BasePower=150
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=str
+
+[ImpulseXV]
+Type=Single
+TP=10
+Desc=pauses, holding the greatsword in front. He then does a quick slash to the left and right, unleashing a wide, sweeping and shredding vacuum that draws in all enemies and hits them multiple times!
+BasePower=40
+Element=None
+Cost=0
+Magic=No
+Hits=8
+HurtEthereal=true
+stat=str
+
+[You'reOnFireToday]
+Type=AOE
+TP=10
+Desc=tosses the greatsword towards Noctis as he warps in, who then takes the weapon and rushes across the arena, attacking all enemies at a quick speed. As Noctis returns the weapon, Gladio says "You're on fire today!" to which Noctis replies with "What can I say?" before warping out.
+BasePower=250
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=str
+
+[ThePrinceOfPain]
+Type=Single
+TP=10
+Desc=holds the greatsword up as Noctis warps in, grabbing weapon in the process and slams the greatsword over %enemy $+ 's head. Gladio says, "The prince of pain!" as Noctis simply says "Yup." before warping out.
+BasePower=300
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=str
+
+[Piercer]
+Type=Single
+TP=10
+Desc=stands and observes %enemy $+ , looking for a weak spot. After a moment, Prompto says, "Oh, hi there opening!" and quickly takes his shot, piercing %enemy $+ 's defense! Afterwards he twirls the gun while whistling.
+BasePower=100
+IgnoreDefense=10
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[SelfieShot]
+Type=Single
+TP=10
+Desc=runs up to %enemy while taking out his cell phone. He poses in front of %enemy $+ , aims the phone at himself and takes a selfie, which also stuns %enemy $+ !
+BasePower=1
+Element=None
+StatusType=Stun
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[Gravisphere]
+Type=AOE
+TP=10
+Desc=takes out a machine, aiming at middle of the arena. After a moment, he fires a sphere of energy from the machine, which hits the battlefield and draws in all enemies. The sphere then explodes several times for multiple hits!
+BasePower=50
+Hits=8
+Element=None
+Cost=0
+Magic=Yes
+HurtEthereal=true
+stat=int
+
+[RecoilXV]
+Type=AOE
+TP=10
+Desc=pulls out a machine and takes aim. After a moment, a sphere of fire shoots out from the machine and hits the battlefield, exploding in fire energy!
+BasePower=100
+Hits=1
+Element=Fire
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[AutoCrossbow]
+Type=AOE
+TP=10
+Desc=pulls out a mechanical crossbow, taking aim before unleashing a barrage of bolts upon all enemies!
+BasePower=100
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[BioBlaster]
+Type=AOE
+TP=10
+Desc=pulls out a mechanical weapon, taking aim before unleashing a green cloud of poison upon all enemies!
+BasePower=50
+Element=None
+StatusType=Poison
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[CircularSaw]
+Type=AOE
+TP=10
+Desc=takes out a mechanical saw, taking aim before firing, unleashing the saw blade which then slices all enemeis!
+BasePower=150
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[NoiseBlaster]
+Type=AOE
+TP=10
+Desc=pulls out a mechanical weapon, taking aim before firing the weapon which makes a loud noise that harms the ears of all enemies!
+BasePower=1
+Element=None
+StatusType=DefenseDown.StrengthDown.IntDown.Amnesia
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[DrillBreaker]
+Type=Single
+TP=10
+Desc=pulls out a mechanical drill and takes aim at %enemy $+ , pausing for a moment before firing the drill upon %enemy $+ which pierces through their defense!
+BasePower=200
+Element=None
+IgnoreDefense=50
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[FlamebreathCannon]
+Type=AOE
+TP=10
+Desc=takes out a large flamethrower and takes aim, pausing for a moment before unleashing a stream of deadly fire at the enemies!
+BasePower=200
+Element=Fire
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[TriggerHappyXV]
+Type=Single
+TP=10
+Desc=takes aim at %enemy before unleashing a barrage of bullets upon %enemy $+ !
+BasePower=100
+Hits=5
+Element=Fire
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[MarkXV]
+Type=AOE
+TP=10
+Desc=hurls a dagger at all enemies, using the daggers as a kind of marker. After a moment, Noctis warps in and attacks the marked enemies!
+BasePower=250
+Hits=1
+Element=None
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[Flamebound]
+Type=Single
+TP=10
+Desc=covers the daggers with flame energy and rushes towards %enemy and unleashes a barrage of strikes upon %enemy $+ !
+BasePower=45
+Hits=8
+Element=Fire
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[Frostbound]
+Type=AOE
+TP=10
+Desc=runs forward and unleashes an area-of-effect ice attack upon the battlefield, which also causes all enemies to be stunned!
+BasePower=50
+Hits=1
+Element=Ice
+StatusType=Stun
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[Stormbound]
+Type=AOE
+TP=10
+Desc=runs forward and attacks all enemies five times before jumping back and unleashing a burst of lightning energy upon the battlefield!
+BasePower=45
+Hits=6
+Element=Lightning
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[LibraElementia]
+Type=AOE
+TP=10
+Desc=says, "I have just the thing!" and pulls out a grenade. He then hurls it at the battlefield, which then explodes into a random element!
+BasePower=200
+Hits=1
+Element=$read($lstfile(elements.lst))
+Cost=0
+Magic=No
+HurtEthereal=true
+stat=spd
+
+[DualSlash]
+Type=AOE
+Cost=0
+Desc=rushes forward to attack everyone with his weapon before quickly turning to attack everone once again for a combo attack!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+
+[FlameBlade]
+Type=AOE
+Cost=0
+Desc=covers his weapon with flame energy and unleashes a powerful attack upon everyone!
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=str
+
+[VoltageBlade]
+Type=AOE
+Cost=0
+Desc=covers his weapon with lightning energy and unleashes a powerful attack upon everyone!
+TP=10
+Element=Lightning
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=str
+
+[UnknownTraitor]
+Type=ClearStatusPositive
+Cost=0
+Desc=attacks %enemy with his weapon while also removing postive status effects.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=5
+HurtEthereal=True
+stat=str
+
+[RuthlessBlade]
+Type=AOE
+Cost=0
+Desc=slashes at a random player several times before unleashing a final attack upon everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+
+[ServantOfTheBlade]
+Type=AOE
+Cost=0
+Desc=slashes at a random player several times before unleashing a final attack upon everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=True
+stat=str
+
+[PhantomBlade]
+Type=AOE
+Cost=0
+Desc=rushes forward and slashes all players with his weapon.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=True
+stat=str
+
+[ZangetsuWarp]
+Type=Single
+Cost=0
+Desc=warps behind %enemy and quickly attacks %enemy from behind!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[ZangetsuKunai]
+Type=AOE
+Cost=0
+Desc=pulls out several kunais and hurls them around the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[OfudaToss]
+Type=Single
+Cost=0
+Desc=takes out an Ofuda talisman, mutters a few words and then hurls the talisman at %enemy $+ !
+TP=10
+Element=Light
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[ChainAttack]
+Type=Single
+Cost=0
+Desc=holds his right hand towards the ceiling, extending a chain, using the chain to get behind %enemy for a surprise attack!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[ZangetsuExplosion]
+Type=AOE
+Cost=0
+Desc=warps behind the enemies, several red orbs of energy appearing. After a moment the orbs explode, unleashing powerful energy upon the battledfield!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[FlameZangetsuto]
+Type=Single
+Cost=0
+Desc=holds the katana out and runs his left hand down the flat side of the blade, which covers the blade with fire. He then leaps forward and slashes at %enemy with the flame katana!
+TP=10
+Element=Fire
+Hits=1
+BasePower=200
+Magic=no
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[IceZangetsuto]
+Type=AOE
+Cost=0
+Desc=holds the katana out and runs his left hand down the flat side of the blade, which covers the blade with ice. He then leaps forward, driving the katana into the ground to cause an explosion of ice to hit all enemies!
+TP=10
+Element=Ice
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[LightningZangetsuto]
+Type=Single
+Cost=0
+Desc=holds the katana out and runs his left hand down the flat side of the blade, which covers the blade with lightning. He then leaps towards %enemy and strikes mulriple times before hopping back!
+TP=10
+Element=Lightning
+Hits=4
+BasePower=40
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[OfudaExplosion]
+Type=Single
+Cost=0
+Desc=takes out an ofuda talisman and chants a few words. The talisman is now covered in fire, which he then then quickly hurls at %enemy $+ , the talisman exploding upon contact!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[UmbrellaSwing]
+Type=Single
+Cost=0
+Desc=quickly hops towards %enemy and swings the blood-soaked umbrella at %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BloodArrow]
+Type=AOE
+Cost=0
+Desc=summons two clones of her umbrella which floats around the battlefield before shooting towards everyone in a manner similar to arrows!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BloodSplash]
+Type=AOE
+Cost=0
+Desc=summons a swirl of blood in front of herself before causing the blood to shoot towards everyone in a wave!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BloodVortex]
+Type=AOE
+Cost=0
+Desc=pulls back her umbrella and thrusts it forward in a jousting motion, causing a large spiral of blood to shoot towards everyone and also around the entire battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+
+[BloodRain]
+Type=AOE
+Cost=0
+Desc=hurls clones of her umbrella into the air, which open and float above everyone. After a moment of pause, blood begins to rain upon the battlefield!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BloodWhirlwind]
+Type=AOE
+Cost=0
+Desc=shouts out, "Blood everywhere!" and then laughs as she summons two massive tornados made from blood which then sweep around the battlefield multiple times!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BloodSteal]
+Type=AOE
+Cost=0
+Desc=laughs and shouts out, "Blood Steal!" which causes all the blood around the arena to become reabsorbed along with stealing blood from everyone else as well!
+TP=10
+Element=None
+Hits=1
+BasePower=500
+Magic=No
+HurtEthereal=true
+stat=str
+Absorb=yes
+
+[LagunaLegCramp]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy and hops to the air, firing the gun in a random burst before landing. Suddenly, Laguna gets nervous and falls to the ground as his right leg gets a cramp!
+TP=10
+Element=None
+Hits=$rand(2,4)
+BasePower=50
+Magic=No
+selfstatus=Stun
+HurtEthereal=True
+stat=spd
+
+[KeenEdgeII]
+Type=Single
+Cost=0
+Desc=performs a downward slash with the gunblade upon %enemy and then quickly follows it up with a horizontal slash!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques BrutalShellII 750 | writeini $char($1) techniques KeenEdgeII 0
+
+[BrutalShellII]
+Type=Single
+Cost=0
+Desc=performs an upper slash with the gunblade upon %enemy which is followed up with another upper slash!
+TP=10
+Element=None
+Hits=1
+BasePower=130
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques SolidBarrelII 750 | writeini $char($1) techniques BrutalShellII 0
+
+[SolidBarrelII]
+Type=Single
+Cost=0
+Desc=performs two swings with the gunblade towards %enemy before taking a short hop into the air and swings the gunblade down upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=160
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques KeenEdgeII 750 | writeini $char($1) techniques SolidBarrelII 0 | writeini $char($1) battle AetherCartridge 1
+
+[DemonSliceII]
+Type=AOE
+Cost=0
+Desc=spins around, performing a spinning attack with the gunblade that hits all enemies in range!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques DemonSlaughterII 750 | writeini $char($1) techniques DemonSliceII 0
+
+[DemonSlaughterII]
+Type=AOE
+Cost=0
+Desc=hops slightly into the air while spinning around, performing a stronger spinning attack with the gunblade that hits all enemies in range!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques DemonSliceII 750 | writeini $char($1) techniques DemonSlaughterII 0 | writeini $char($1) battle AetherCartridge 1
+
+[FatedCircleII]
+Type=AOE
+Cost=0
+Desc=hops slightly into the air while spinning around, performing a spinning attack with the gunblade that hits all enemies in range, which is then followed up with a circular explosion of aether energy!
+TP=10
+Element=None
+Hits=1
+BasePower=175
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) battle AetherCartridge 0
+
+[LightningShotII]
+Type=Single
+Cost=0
+Desc=holds the gunblade towards the ground before quickly swinging the weapon up, sending a wave of energy towards %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=80
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BlastingZoneII]
+Type=Single
+Cost=0
+Desc=holds the gunblade into the air, pausing for a moment before swinging the weapon down, hitting %enemy with a large beam of silver energy!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+
+[BurstStrikeII]
+Type=Single
+Cost=0
+Desc=performs a short hop before swinging the gunblade upon %enemy with an explosion of energy happening at the same time!
+TP=10
+Element=None
+Hits=1
+BasePower=250
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) battle AetherCartridge 0
+
+[RoughDivideII]
+Type=Single
+Cost=0
+Desc=quickly rushes towards %enemy with a forward flip and slashes at %enemy with the gunblade!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+
+[GnashingFangII]
+Type=Single
+Cost=0
+Desc=performs an upward slash with the gunblade upon %enemy and then follows it up with a horizontal slash which causes an explosion of aether energy!
+TP=10
+Element=None
+Hits=1
+BasePower=250
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques SavageClawII 750 | writeini $char($1) techniques GnashingFangII 0 | writeini $char($1) battle ReadyToRip 1 | writeini $char($1) battle AetherCartridge 0
+
+[SavageClawII]
+Type=Single
+Cost=0
+Desc=performs an upward slash upon %enemy that is followed up with an explosion of aether energy!
+TP=10
+Element=None
+Hits=1
+BasePower=300
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques WickedTalonII 750 | writeini $char($1) techniques SavageClawII 0 | writeini $char($1) battle ReadyToTear 1
+
+[WickedTalonII]
+Type=Single
+Cost=0
+Desc=performs multiple slashes with the gunblade upon %enemy with the final hit causing an explosion of aether energy!
+TP=10
+Element=None
+Hits=1
+BasePower=350
+Magic=No
+IgnoreDefense=5
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques GnashingFangII $iif($readini($char(Elven_Gunbreaker), battle, AetherCartridge) = 1, 750, 0) | writeini $char($1) techniques WickedTalonII 0 | writeini $char($1) battle ReadyToGouge 1
+
+[JugularRip]
+Type=Single
+Cost=0
+Desc=hops into the air and swings the gunblade down upon %enemy, causing a larger explosion of aether energy!
+TP=10
+Element=None
+Hits=1
+BasePower=400
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) battle ReadyToRip 0
+
+[AbdomenTear]
+Type=Single
+Cost=0
+Desc=slashes at %enemy several times before unleashing an explosion of aether energy!
+TP=10
+Element=None
+Hits=1
+BasePower=420
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) battle ReadyToTear 0
+
+[EyeGouge]
+Type=Single
+Cost=0
+Desc=pulls back the gunblade and quickly stabs forward with it, hitting %enemy with the gunblade that is followed by a wave of aether energy!
+TP=1
+Element=None
+Hits=1
+BasePower=450
+Magic=No
+IgnoreDefense=10
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) battle ReadyToGouge 0
+
+[TigerShot]
+Type=Single
+Cost=0
+Desc=pulls back both fists and then quickly punches forward and shouts out "TIGER!", sending a projectile of energy towards %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+
+[TigerUppercut]
+Type=Single
+Cost=0
+Desc=shouts out "TIGER!" before jumping into the air, turning his body and hits %enemy with a rising uppercut, which is followed by a backwards somersault at the apex of his jump to land back on the ground.
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=str
+
+[TigerKnee]
+Type=Single
+Cost=0
+Desc=shouts out "TIGER!" and leaps towards %enemy $+ , ramming into %enemy with his knee!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+
+[DashStraight]
+Type=Single
+Cost=0
+Desc=quickly dashes towards %enemy and attacks with a straight punch!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+
+[DashUpper]
+Type=Single
+Cost=0
+Desc=quickly dashes towards %enemy and attacks with a powerful uppercut!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+
+[TurnPunch]
+Type=Single
+Cost=0
+Desc=turns his back to %enemy for a moment, then brings his right arm back and shouts out " $+ $rand(1,10) $+ !" before quickly charging towards %enemy to strike with a powerful  straight punch!
+TP=10
+Element=None
+Hits=1
+BasePower=$rand(30,70)
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BuffaloHead]
+Type=Single
+Cost=0
+Desc=launches himself into the air and towards %enemy to strike with a flying headbutt!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+
+[SkyHighClaw]
+Type=Single
+Cost=0
+Desc=leaps towards the edge of the battlefield and kick-jumps off of it, gliding horizontally towards %enemy with his claw outstretched. Vega then bounces off of %enemy upon striking with the claw!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+
+[RollingCrystalFlash]
+Type=Single
+Cost=0
+Desc=rolls into a ball and launches himself forward in a series of forward tumbles, with his claw extended out towards %enemy $+ , ending with a crouching punch using his claw hand!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+
+[FlyingBarcelonaAttack]
+Type=Single
+Cost=0
+Desc=leaps towards the edge of the battlefield and kick-jumps off of it high into the air and towards %enemy $+ . Vega then angles himself upside-down and spreads his arms out like wings, slashing viciously at %enemy with the clawed hand!
+TP=10
+Element=None
+Hits=1
+BasePower=50
+Magic=No
+HurtEthereal=true
+stat=str
+
+[IzunaDrop]
+Type=Single
+Cost=0
+Desc=leaps towards the edge of the battlefield and kick-jumps off of it high into the air and towards %enemy $+ . Vega then grabs %enemy and slams %enemy head-first into the ground!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str
+
+[ScarletTerror]
+Type=Single
+Cost=0
+Desc=leaps towards %enemy $+ , just landing before %enemy $+ . Vega then quickly performs a backflip, kicking %enemy in the face with his feet while getting back out of range!
+TP=10
+Element=None
+Hits=1
+BasePower=40
+Magic=No
+HurtEthereal=true
+stat=str

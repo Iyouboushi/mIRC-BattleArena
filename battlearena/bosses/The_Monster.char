@@ -58,6 +58,8 @@ IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
 BattleStats=ignoreTP
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 [monster]
 type=human

@@ -59,7 +59,8 @@ DeathConditions=Tech
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=20
-
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 [monster]
 type=fish

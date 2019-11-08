@@ -30,6 +30,8 @@ Blueprints:Yamato+1
 Blueprints:TrueMasterSword
 Blueprints:SilverSword+1
 Blueprints:RakshasaGreatBow
+Blueprints:Lionheart
+Blueprints:Krishna
 Mega_Stone-Prototype
 ShieldOfTheSavage
 Hero'sWorth
@@ -39,6 +41,7 @@ AntlionClaws
 Cutlass
 Hero'sMedal
 OrbCrystal
+WeaponCrystal
 SuperPotion
 MegaPotion
 Ether

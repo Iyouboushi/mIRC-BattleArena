@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=25653
+Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
 Tp=500
 Str=3127
 Def=2127
 Int=5633
 Spd=1253
-IgnitionGauge=2
+IgnitionGauge=100
 Name=Cosmic Aris
 
 [Battle]
-Hp=25653
+Hp=250000
 Tp=500
 Str=3127
 Def=2127
 Int=5633
 Spd=1253
-IgnitionGauge=2
+IgnitionGauge=100
 Status=alive
 
 
@@ -51,7 +51,11 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
+BattleStats=ignoreTP.ignoreHP
 Streak=-10000
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 ; universal Cosmic battle flags
 CanTaunt=false

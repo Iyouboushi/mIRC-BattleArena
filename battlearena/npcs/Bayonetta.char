@@ -17,17 +17,13 @@ Def=75
 Int=75
 Spd=75
 IgnitionGauge=150
+LimitBreakPercent=100
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -204,6 +200,10 @@ EnergyCurrent=20000
 EquippedCore=UmbranMechCore
 EquippedWeapon=UmbranArmorGuns
 Augments=DecreaseMechEnergyCost.EnhanceDodge.MeleeBonus.TechBonus.MagicBonus.HurtEthereal
+
+[LimitBreaks]
+QueenSheba=1
+Omne=1
 
 
 [modifiers]

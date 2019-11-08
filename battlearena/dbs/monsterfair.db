@@ -55,7 +55,7 @@ Monsters=Ahtu.Strolling_Sapling.Prancing_Sapling.Roaming_Sapling
 Restrictions=no-ignition.no-mech.no-fire
 
 [15]
-Monsters=M_Bison.Ninja_Assassin.Ravager
+Monsters=M_Bison.Balrog-SF.Vega-SF.Sagat-SF
 Restrictions=no-ignition.no-mech
 
 [16]

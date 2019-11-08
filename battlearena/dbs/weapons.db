@@ -26,7 +26,8 @@ Hammers=Hammers
 Lightsabers=Lightsabers
 Bats=BaseballBat
 Misc=Misc
-
+Gunblade=Gunblades
+Chakram=Chakrams
 
 ; Below are the weapon lists
 
@@ -54,6 +55,8 @@ Hammers=BronzeHammer.WarHammer.BlessedHammer.SteelHammer.Daedalus.Daedalus+1.Mjo
 Lightsabers=BlueLightsaber.Lightsaber
 Bats=BaseballBat
 Misc=ProtonPack.Mythic
+Gunblade=BronzeGunblade.SteelGunblade.SilverGunblade.CobaltGunblade.Lionheart
+Chakram=BronzeChakrams.SteelChakrams.SilverChakrams.CobaltChakrams.Krishna
 
 ; This is a list of weapons we're trying to phase out of the bot. They can no longer be bought.
 Defunct=
@@ -73,7 +76,7 @@ MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.Skelet
 
 MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue.Qutrub.Phlegethon.HollowPower.MechanicPower
 
-MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Pumpkin
+MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Devilsknife.Ame-no-Habakiri.HyperGodPowerII.FloweyPetalsII.SansPowerII.NeloAngeloGreatsword.EngineBlade.RingOfTheLucii.IronDuke.Valiant.Spelldaggers.ExdeathPower.NeoExdeathPower.KefkaPower.VenusGospel.Zangetsuto.BloodlessUmbrella.UltimaWeaponFFBE.LagunaMachineGun.BrightSilverManatrigger.Pumpkin
 
 ============================================
 WEAPON TEMPLATE
@@ -1562,32 +1565,32 @@ Element=None
 Hits=1
 BasePower=11
 Upgrade=300
-2Handed=true
+2Handed=false
 
 [Keitonotachi]
-Cost=30
+Cost=20
 Type=Katana
 Info=A simple katana with a light brown handle and a dark grey blade.
 Abilities=Tachi:Kagero.Tachi:Goten.Tachi:Yukikaze
 Element=none
 Hits=1
-BasePower=30
+BasePower=25
 Upgrade=1000
-2Handed=true
+2Handed=false
 
 [Hagun]
-Cost=40
+Cost=30
 Type=Katana
 Info=A katana with no guard and a large, mostly straight blade with a flat tip.
 Abilities=Tachi:Kaiten.Tachi:Ageha.Tachi:Kasha
 Element=none
 Hits=1
-BasePower=40
+BasePower=35
 Upgrade=1500
-2Handed=true
+2Handed=false
 
 [PowerChordSword]
-Cost=40
+Cost=50
 Type=Katana
 Info=A guitar that turns into a katana when touched by its owner.  Its attacks produce power chords.
 Abilities=A5.E5.D5.C5
@@ -1595,7 +1598,7 @@ Element=none
 Hits=$rand(1,2)
 BasePower=20
 Upgrade=1500
-2Handed=true
+2Handed=false
 
 [Soboro]
 Cost=50
@@ -1606,7 +1609,7 @@ Element=none
 Hits=$rand(1,3)
 BasePower=10
 Upgrade=2000
-2Handed=true
+2Handed=false
 
 [Zangetsu]
 Cost=40
@@ -1642,7 +1645,7 @@ Upgrade=2500
 2Handed=false
 
 [Yamato]
-Cost=45
+Cost=40
 Type=Katana
 Info=Vergil's legendary katana from Devil May Cry.
 Abilities=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
@@ -1653,7 +1656,7 @@ Upgrade=3000
 2Handed=false
 
 [Masamune]
-Cost=55
+Cost=60
 Type=Katana
 Info=A katana with a large black blade that is blue and black in color, adorned with gold.
 Abilities=Tachi:Fudo.Tachi:Shoha.Tachi:Rana
@@ -1661,10 +1664,10 @@ Element=None
 Hits=1
 BasePower=65
 Upgrade=3000
-2Handed=true
+2Handed=false
 
 [Kogarasumaru]
-Cost=60
+Cost=70
 Type=Katana
 Info=A legendary katana with a long blade and slightly curved handle.
 Abilities=Tachi:Kasha.Tachi:Ageha.Tachi:Rana.Tachi:Fudo
@@ -1672,7 +1675,7 @@ Element=None
 Hits=1
 BasePower=80
 Upgrade=3000
-2Handed=true
+2Handed=false
 
 [Naturaleza]
 Cost=80
@@ -1681,9 +1684,9 @@ Info=A blade carried by DeathStalker, made by Kasake Sohjin.
 Abilities=Ashes.Dismay.ThousandCuts
 Element=Light
 Hits=3
-BasePower=20
+BasePower=18
 Upgrade=4000
-2Handed=true
+2Handed=false
 
 [Sacrament]
 Cost=100
@@ -1696,9 +1699,7 @@ Basepower=55
 Upgrade=6500
 IgnoreDefense=10
 HurtEthereal=false
-2handed=true
-CanShieldReflect=false
-CanCounter=true
+2handed=false
 
 [Lazarus]
 Cost=150
@@ -1707,13 +1708,11 @@ Info=A red straight edged katana enchanted to be bound to the Primordial Force o
 Abilities=DarkAir:Vacuum.DarkFire:Eruption.DarkIce:DeepFreeze.DarkLightning:HighVoltage.DarkEarth:StoneScabbard.DarkWater:TaintedBlood
 Element=none
 Hits=$rand(1,3)
-Basepower=75
+Basepower=65
 Upgrade=6500
 IgnoreDefense=10
 HurtEthereal=true
-2handed=true
-CanShieldReflect=false
-CanCounter=true
+2handed=false
 
 [Crissaegrim]
 Cost=300
@@ -1724,7 +1723,7 @@ Hits=4
 BasePower=70
 Upgrade=5000
 Element=none
-2Handed=true
+2Handed=false
 
 [Valmanway]
 Cost=400
@@ -1735,7 +1734,7 @@ Hits=5
 BasePower=90
 Upgrade=6000
 Element=none
-2Handed=true
+2Handed=false
 
 [Valmanway+1]
 Cost=0
@@ -1746,7 +1745,7 @@ Hits=5
 BasePower=$iif(%battle.type = torment, 600, 200)
 Upgrade=6000
 Element=none
-2Handed=true
+2Handed=false
 IgnoreDefense=$iif(%battle.type = torment, 20, 10)
 SpecialWeapon=true
 MinLevel=500
@@ -1762,7 +1761,7 @@ Element=None
 Hits=1
 BasePower=120
 Upgrade=6000
-2Handed=true
+2Handed=false
 IgnoreDefense=10
 MinLevel=100
 
@@ -1774,10 +1773,10 @@ Abilities=JudgementCutII.SummonedSwords.RisingStar.AerialRave.DevilTriggerII
 Element=Dark
 Hits=$rand(1,2)
 BasePower=$iif(%battle.type = torment, 1800, 950)
-Upgrade=7000
+Upgrade=10000
 IgnoreDefense=$iif(%battle.type = torment, 40, 20)
 HurtEthereal=true
-2Handed=true
+2Handed=false
 SpecialWeapon=True
 Legendary=True
 MinLevel=2000
@@ -1797,7 +1796,6 @@ Upgrade=3000
 Element=None
 2Handed=false
 IgnoreDefense=10
-
 
 [Lightsaber]
 Cost=0
@@ -2281,7 +2279,140 @@ Upgrade=0
 IgnoreDefense=$iif($readini($char($2), monster, ghost) = true, 75, 0)
 MinLevel=100
 
+=============================================
+GUNBLADES
+=============================================
+[BronzeGunblade]
+Cost=5
+Type=Gunblade
+Info=A basic gunblade made with bronze.
+Abilities=KeenEdge.DemonSlice.LightningShot
+Element=None
+Hits=1
+BasePower=10
+2Handed=true
+CanShieldReflect=true
+Upgrade=2000
 
+[SteelGunblade]
+Cost=25
+Type=Gunblade
+Info=A gunblade that is made with steel.
+Abilities=KeenEdge.BrutalShell.DemonSlice.LightningShot
+Element=None
+Hits=1
+BasePower=30
+2Handed=true
+CanShieldReflect=true
+Upgrade=3000
+
+[SilverGunblade]
+Cost=65
+Type=Gunblade
+Info=A gunblade that is made with silver.
+Abilities=KeenEdge.BrutalShell.DemonSlice.DemonSlaughter.LightningShot
+Element=None
+Hits=1
+BasePower=50
+2Handed=true
+CanShieldReflect=true
+Upgrade=4000
+
+[CobaltGunblade]
+Cost=120
+Type=Gunblade
+Info=A gunblade that is made with cobalt.
+Abilities=KeenEdge.BrutalShell.SolidBarrel.DemonSlice.DemonSlaughter.FatedCircle.LightningShot.BlastingZone.BurstStrike
+Element=None
+Hits=1
+BasePower=100
+IgnoreDefense=5
+2Handed=true
+CanShieldReflect=true
+Upgrade=7000
+
+[Lionheart]
+Cost=0
+Type=Gunblade
+Info=A poweful gunblade that is made with rare materials. Outside of Torment battles the weapon has a 800 power and ignores 20% defense. Inside of Torment the weapon has a power of 1600 and ignores 40% defense.
+Abilities=KeenEdge.BrutalShell.SolidBarrel.DemonSlice.DemonSlaughter.FatedCircle.LightningShot.BlastingZone.BurstStrike.RoughDivide.GnashingFang.SavageClaw.WickedTalon
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 1600, 800)
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
+HurtEthereal=True
+2Handed=True
+CanShieldReflect=True
+Legendary=True
+SpecialWeapon=True
+MinLevel=2000
+Upgrade=10000
+TormentWeapon=true
+
+=============================================
+CHAKRAMS
+=============================================
+[BronzeChakrams]
+Cost=5
+Type=Chakram
+Info=A pair of chakrams made with bronze.
+Abilities=Cascade.WindmillII.StandardFinish
+Element=None
+Hits=1
+BasePower=10
+Upgrade=1000
+2Handed=true
+
+[SteelChakrams]
+Cost=25
+Type=Chakram
+Info=A pair of chakrams made with steel.
+Abilities=Cascade.Fountain.WindmillII.Bladeshower.StandardFinish
+Element=None
+Hits=1
+BasePower=30
+Upgrade=2000
+2Handed=true
+
+[SilverChakrams]
+Cost=60
+Type=Chakram
+Info=A pair of chakrams made with silver.
+Abilities=Cascade.Fountain.ReverseCascade.FountainFall.WindmillII.Bladeshower.RisingWindmill.BloodShower.StandardFinish
+Element=None
+Hits=1
+BasePower=50
+Upgrade=3000
+2Handed=true
+
+[CobaltChakrams]
+Cost=120
+Type=Chakram
+Info=A pair of chakrams made with cobalt.
+Abilities=Cascade.Fountain.ReverseCascade.FountainFall.WindmillII.Bladeshower.RisingWindmill.BloodShower.FanDanceI.StandardFinish.TechnicalFinish
+Element=None
+Hits=1
+BasePower=100
+Upgrade=7000
+IgnoreDefense=5
+2Handed=true
+
+[Krishna]
+Cost=0
+Type=Chakram
+Info=A pair of powerful chakrams that is made with rare materials. Outside of Torment battles the weapon has a 800 power and ignores 20% defense. Inside of Torment the weapon has a power of 1600 and ignores 40% defense.
+Abilities=Cascade.Fountain.ReverseCascade.FountainFall.WindmillII.Bladeshower.RisingWindmill.BloodShower.FanDanceI.FanDanceII.SaberDance.StandardFinish.TechnicalFinish
+Element=None
+Hits=1
+BasePower=$iif(%battle.type = torment, 1600, 800)
+Upgrade=10000
+IgnoreDefense=$iif(%battle.type = torment, 40, 20)
+HurtEthereal=true
+2Handed=true
+SpecialWeapon=true
+Legendary=true
+MinLevel=2000
+TormentWeapon=true
 
 =============================================
 MECH WEAPONS
@@ -4205,15 +4336,17 @@ Element=None
 Hits=1
 BasePower=30
 Upgrade=0
+2Handed=true
 
 [BusterSword]
 Cost=0
 Type=GreatSword
 Info=A powerful sword that Cloud carries with him.
-Abilities=Braver.CrossSlash.Blade_Beam.Climhazzard.Meteorain.FinishingTouch.Omnislash
+Abilities=FastBlade.Flatblade.VorpalBlade.HardSlash.GroundStrike.Resolution
 Element=None
 Hits=1
-BasePower=30
+BasePower=75
+2Handed=True
 Upgrade=0
 Legendary=True
 
@@ -4374,12 +4507,12 @@ Upgrade=0
 
 [GunbladeRevolver]
 Cost=0
-Type=Sword
+Type=Gunblade
 Info=A gunblade that Squall uses in battle.
-Abilities=Renzokuken.RoughDivide.FatedCircle.BlastingZone.Lionheart
+Abilities=Renzokuken.Keen_Edge.FlameBarret.WindBarret.ThunderBarret.LightBarret.BeatFang.Solid_Barrel.RevolverDrive.MysticFlurry.UpperBlues
 Element=None
-Hits=$rand(1,2)
-BasePower=30
+Hits=1
+BasePower=75
 Upgrade=0
 Legendary=True
 
@@ -5468,25 +5601,26 @@ Upgrade=0
 Cost=0
 Type=HandToHand
 Info=The mighty fists of Grahf.
-Abilities=GrahfEnergyBlast.GrahfStrike.Grahf_Energy_Blast
+Abilities=GrahfEnergyBlast.GrahfStrike.Grahf_Energy_Blast.TornadoKick.ShinjinSpiral.FinalHeaven.AsuranFists
 Element=none
 Hits=$rand(1,2)
 BasePower=60
 Upgrade=0
 2handed=True
-CanCounter=False
+Legendary=true
 
 [AlphaWeltallFists]
 Cost=0
 Type=HandToHand
 Info=The mechanical fists of Alpha Weltall.
-Abilities=Grahf_EnergyBlast.Grahf_Strike
+Abilities=AlphaWeltallDoublePunch.AlphaWeltallTriplePunch.AlphaWeltallKick.AlphaWeltallTripleKick.AlphaWeltallEnergyBlast.AlphaWeltallEnergyBlastII
 Element=None
-Hits=$rand(1,2)
-BasePower=60
+Hits=1
+BasePower=75
 Upgrade=0
-EnergyCost=250
 CanCounter=false
+2handed=True
+Legendary=true
 
 [MirrorOfTwilight]
 Cost=0
@@ -5640,7 +5774,7 @@ Legendary=True
 Cost=0
 Type=Sword
 Info=The signature sword of Ky Kiske. Made especially for lightning magic users.
-Abilities=StunEdge.VaporThrust.GreedSever.RideTheLightning
+Abilities=StunEdge.VaporThrust.GreedSever
 Element=None
 Hits=$rand(1,2)
 BasePower=40
@@ -5655,7 +5789,7 @@ Legendary=True
 Cost=0
 Type=Greatsword
 Info=A large, broadly bladed sword with carvings and a hollow middle. Currently being modified by Ky Kiske to suit his abilities, unknown to others.
-Abilities=Resolution.RideTheLightning.Torcleaver
+Abilities=Resolution.Torcleaver
 Element=None
 Hits=1
 BasePower=80
@@ -5670,8 +5804,8 @@ Legendary=True
 [TauntPower]
 Cost=0
 Type=HandToHand
-Info=The power of the French Taunter.
-Abilities=Chicken_Toss.Cow_Launcher
+Info=The power of those who taunt.
+Abilities=Chicken_Toss.Cow_Launcher.CrowTRobotTaunt.TomServoTaunt.CryptkeeperTaunt
 Element=None
 Hits=2
 BasePower=30
@@ -6493,7 +6627,7 @@ IgnoreDefense=10
 [DeadpoolKatanas]
 Cost=0
 Type=Katana
-Info=The katanas that belong the Merc With a Mouth.
+Info=The katanas that belong to the Merc With a Mouth.
 Abilities=FastBlade.FlatBlade.CircleBlade.VorpalBlade.PineappleSurprise.HaveGunWillShoot
 Element=None
 Hits=2
@@ -6528,6 +6662,264 @@ IgnoreDefense=5
 HurtEthereal=True
 2Handed=false
 Legendary=True
+
+[Devilsknife]
+Cost=0
+Type=Scythe
+Info=The weapon of Jevil.
+Abilities=ChaosChaos.RingAround.SinnerHearts.TheDevilsknife.CarouselGame.JoinTheClub.HeartsDiamonds.SpinningWorld.KeepingUp.FunFun.JoyingBeauty.SmilingDevilsknife.SoExciting.Boisengirls.TiredUp.FinalChaos.ICanDoAnything.CurtainsFire.JustSimpleChaos
+Element=None
+Hits=1
+BasePower=100
+HurtEthereal=true
+CanShieldReflect=true
+Legendary=true
+
+[Ame-no-Habakiri]
+Cost=0
+Type=Katana
+Info=A powerful Red Kojin artifact stolen by The Garlean Empire and is currently in use by Zenos Yae Galvus.
+Abilities=ArtOfTheStorm.ArtOfTheSwell.ArtOfTheSword.Veinsplitter.LightlessSpark.Concentrativity.UnmovingTroika
+Element=None
+Hits=1
+BasePower=60
+IgnoreDefense=5
+HurtEthereal=true
+CanShieldReflect=true
+Legendary=true
+
+[HyperGodPowerII]
+Cost=0
+Type=HandtoHand
+Info=The power of the Hyper God of Death.
+Abilities=AsrielFireII.StarBlazingII.ShockerBreakerII.ChaosSaberII.ChaosBusterII.GalactaBlazingII.ShockerBreakerIII.ChaosSlicerII.ChaosBlasterII
+Element=None
+Hits=1
+BasePower=55
+IgnoreDefense=10
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+Legendary=True
+
+[FloweyPetalsII]
+Cost=0
+Type=HandtoHand
+Info=The petals of Flowey. Flowey the Flower.
+Abilities=Flowey_Pellets1.Flowey_Pellets2.Flowey_Pellets3.FloweyDeathBulletsII
+Element=None
+Hits=1
+BasePower=40
+IgnoreDefense=10
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+Legendary=true
+
+[SansPowerII]
+Cost=0
+Type=HandtoHand
+Info=The power of Sans.
+Abilities=SansStrongAttackII.SansBoneWaveII.SansPlatformII.SansGasterBlasterNormalII.SansHardWayII.SansGasterBlasterLargeII.SansPsychokinesisII.SansCoolNormalAttackII
+Element=None
+Hits=1
+BasePower=50
+IgnoreDefense=10
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+CanCounter=true
+Legendary=true
+
+[NeloAngeloGreatsword]
+Cost=0
+Type=Greatsword
+Info=The greatsword of Nelo Angelo.
+Abilities=HelmBreaker.GroundStrike.Scourge.Resolution.Drive
+Element=None
+Hits=1
+BasePower=50
+IgnoreDefense=5
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+Legendary=true
+
+[EngineBlade]
+Cost=0
+Type=Sword
+Info=A sword Noctis received from Regis for his sixteenth birthday. It absorbs the elemental powers of defeated foes.
+Abilities=WarpStrike.PointBlankWarpStrike.FireFlask.BlizzardFlask.ThunderFlask.GladioDoIt.PromptoYoureUp.IgnisInstructions.AstralRamuh.AstralTitan.AstralLeviathan.AstralShiva.AstralBahamut.GarudaXV
+Element=None
+Hits=$rand(1,2)
+BasePower=75
+HurtEthereal=True
+Legendary=True
+
+[RingOfTheLucii]
+Cost=0
+Type=HandToHand
+Info=Harboring the souls of Lucian rulers of old, the ring allows its wearer to channel the power of the Crystal, but drains away one's life.
+Abilities=WarpStrike.PointBlankWarpStrike.DeathXV.AlternaXV.AstralRamuh.AstralTitan.AstralLeviathan.AstralShiva.AstralBahamut.GarudaXV
+Element=None
+Hits=1
+BasePower=300
+HurtEthereal=True
+Legendary=True
+
+[IronDuke]
+Cost=0
+Type=Greatsword
+Info=A crude but robust greatsword that dispenses with enchantments. It is designed with simple devastation in mind.
+Abilities=Dawnhammer.Cyclone.Tempest.ImpulseXV.You'reOnFireToday.ThePrinceOfPain
+Element=None
+Hits=$rand(1,2)
+BasePower=80
+IgnoreDefense=10
+HurtEthereal=True
+2Handed=True
+CanShieldReflect=True
+Legendary=True
+
+[Valiant]
+Cost=0
+Type=Gun
+Info=A unique firearm crafted with Insomnian technology.
+Abilities=Piercer.SelfieShot.Gravisphere.RecoilXV.AutoCrossbow.BioBlaster.CircularSaw.NoiseBlaster.DrillBreaker.FlamebreathCannon.TriggerHappyXV
+Element=None
+Hits=$rand(1,2)
+BasePower=75
+HurtEthereal=True
+Legendary=True
+
+[Spelldaggers]
+Cost=0
+Type=Dagger
+Info=Daggers imbued with elemental energy. They deal devastating damage to enemies vulnerable to a specific element
+Abilities=MarkXV.Flamebound.Frostbound.Stormbound.LibraElementia.Blade:Retsu.Blade:Jin.Blade:Metsu
+Element=None
+Hits=$rand(1,2)
+BasePower=75
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[ExdeathPower]
+Cost=0
+Type=HandtoHand
+Info=The power of The Void.
+Abilities=ExdeathBlizzard.VoidBlizzard.ExdeathThunder.VoidThunder.ExdeathFire.VoidFire.VoidHoly.VoidFlare.TheDecisiveBattle.BlackHole
+Element=None
+Hits=1
+BasePower=100
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+Legendary=true
+
+[NeoExdeathPower]
+Cost=0
+Type=HandtoHand
+Info=The true power of The Void.
+Abilities=FloodofNaught.Almagest.VoidAero.DeltaAttack.GrandCrossAlpha.GrandCrossDelta.EarthShaker.LightandDarkness.VoidMeteor.Charybdis.GrandCrossOmega.TheFinalBattle
+Element=None
+Hits=1
+BasePower=120
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+Legendary=true
+
+[KefkaPower]
+Cost=0
+Type=HandtoHand
+Info=The power of a crazed person.
+Abilities=GravenImage.GravenImageII.TwistyTurnyBlizzaga.LicketySplitThundaga.ExtraCrispyFiraga.UltimaEX.MeteorEX.HavokWing.Trine.Forsaken.Hyperdrive.HeartlessAngel
+Element=None
+Hits=1
+BasePower=120
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+Legendary=true
+
+[VenusGospel]
+Cost=0
+Type=Spear
+Info=A legendary spear wielded by Cid Highwind.
+Abilities=Jump.PentaThrust.SoulJump.Drakesbane.LegSweep.Stardiver.HighJump.CamlannsTorment.SonicThrust
+Element=None
+Hits=$rand(1,2)
+BasePower=100
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[Zangetsuto]
+Cost=0
+Type=Katana
+Info=A powerful katana that is said to have the ability to cleave the moon.
+Abilities=ZangetsuWarp.ZangetsuKunai.OfudaToss.ChainAttack.ZangetsuExplosion.FlameZangetsuto.IceZangetsuto.LightningZangetsuto.OfudaExplosion
+Element=None
+Hits=$rand(1,2)
+BasePower=200
+IgnoreDefense=10
+HurtEthereal=true
+2Handed=true
+Legendary=true
+
+[BloodlessUmbrella]
+Cost=0
+Type=Sword
+Info=A strange red umbrella that Bloodless uses as a weapon.
+Abilities=UmbrellaSwing.BloodArrow.BloodSplash.BloodVortex.BloodRain.BloodWhirlwind.BloodSteal
+Element=None
+Hits=1
+BasePower=150
+IgnoreDefense=5
+HurtEthereal=true
+2Handed=true
+CanShieldReflect=true
+Legendary=true
+
+[UltimaWeaponFFBE]
+Cost=0
+Type=Sword
+Info=A powerful energy blade used by Hyoh.
+Abilities=DualSlash.FlameBlade.VoltageBlade.UnknownTraitor.RuthlessBlade.ServantOfTheBlade.PhantomBlade
+Element=None
+Hits=1
+BasePower=75
+IgnoreDefense=5
+HurtEthereal=true
+CanShieldReflect=true
+Legendary=true
+
+[LagunaMachineGun]
+Cost=0
+Type=Rifle
+Info=A machine gun used by Laguna Loire.
+Abilities=LagunaLegCramp.RainStorm.Detonator.HotShotIII.ChargedShotIII.BlastShotIII
+Element=None
+Hits=$rand(1,5)
+BasePower=50
+HurtEthereal=true
+CanShieldReflect=true
+Legendary=true
+
+[BrightSilverManatrigger]
+Cost=0
+Type=Gunblade
+Info=A powerful gunblade that is a bright silver in color.
+Abilities=KeenEdgeII.BrutalShellII.SolidBarrelII.DemonSliceII.DemonSlaughterII.FatedCircleII.LightningShotII.BlastingZoneII.BurstStrikeII.RoughDivideII.GnashingFangII.SavageClawII.WickedTalonII.JugularRip.AbdomenTear.EyeGouge
+Element=None
+Hits=1
+BasePower=100
+IgnoreDefense=10
+HurtEthereal=True
+2Handed=true
+CanShieldReflect=true
+Legendary=true
 
 ==============================
 SHIELDS

@@ -106,3 +106,282 @@ the shop. They may also have different requirements.
 Monster/NPC limit breaks.  These should not
 be available to the players.
 ==============================================
+[RoughDivide]
+Name=Rough Divide
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=slashes %enemy with a backhand swing of the gunblade, causing a small explosion of energy.
+
+[FatedCircle]
+Name=Fated Circle
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=leaps into the air and performs an aerial spin, unleashing energy that hits the battlefield.
+
+[BlastingZone]
+Name=Blasting Zone
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=raises his gunblade into the air as a massive line of yellow energy shoots into the sky. Squall then slams the energy on the battlefield to damage %enemy $+ !
+
+[Lionheart]
+Name=Lionheart
+Cost=0
+Multiplier=6
+MeterNeeded=100
+Desc=rushes forward as the gunblade changes to the Lionheart and glows white. Squall slashes %enemy over and over before hopping back. He then says, "Mission accomplished." and slashes %enemy one final time while dashing past %enemy $+ , causing a massive explosion of energy.
+
+[Raiouken]
+Name=Raiouken
+Cost=0
+Multiplier=6
+MeterNeeded=100
+Desc=leaps high into the air, pausing to focus her reiatsu. After a moment, Yoruichi rapidly descends, punching %enemy in the back, the force causing %enemy to fall to the ground. Yoruichi then yells out and unleashes a barrage of punches upon %enemy with enough force to destroy the area surrounding the arena.
+
+[Kamehameha10x]
+Name=Kamehameha 10x
+Cost=0
+Multiplier=10
+MeterNeeded=100
+Desc=cups $gender($1) hands to $gender($1) side and starts to charge up energy.  "Ka...me..ha..me.. HA!"  A huge blue beam of energy, which is ten times more powerful, shoots out and slams into %enemy $+ !
+
+[JudgementCutEnd]
+Name=Judgement Cut End
+Cost=0
+Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+MeterNeeded=100
+Desc=concentrates, gathering power. After a moment, Vergil shouts out, "My power shall be absolute!" then moves with such speed that he disappears and feint after-images follow. Everyone seems to stop moving. Vergil slowly sheathes the Yamato, shouting out "Scum!" After saying that, multiple slashes take effect and greatly damages %enemy $+ !
+
+[QueenSheba]
+Name=Queen Sheba
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=shouts out "TELOCH VOVIN A GRAA ORS TABAORD AVAVAGO!" and summons the mighty Queen Sheba. Queen Sheba kisses her right fist and slams the fist into %enemy with infinitons of force!
+
+[Omne]
+Name=Omne
+Cost=0
+Multiplier=2.5
+MeterNeeded=100
+Desc=summons a massive angel and demon hybrid that appears to be a combination of Jubileus, The Creator, and Queen Sheba, but is a different being entirely. Omne performs a drop kick upon %enemy $+ , causing damage as if getting hit by the Big Bang!
+
+[WorldOfRuin]
+Name=World of Ruin
+Cost=0
+Multiplier=1
+MeterNeeded=100
+Desc=laughs as he summons four glowing crystals. The crystals combine together, power charging for a moment before a massive beam of energy slams into %enemy with enough force to ruin a world.
+
+[Red-EyedDragon]
+Name=Red-Eyed Dragon
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=summons a large red dragon. The dragon waits for a moment before gaining a flame aura and rushes towards %enemy $+ . The dragon slams into %enemy and causes a large explosion to happen!
+
+[DarkDragon]
+Name=Dark Dragon
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=drives the sword into the ground as a shadow covers the entire battlefield. A dark purple dragon rises from the shadow and charges forward towards %enemy $+ , a powerful explosion of dark energy occuring as the dragon flies through %enemy $+ !
+
+[BoostJump]
+Name=Boost Jump
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=leaps high into the air before falling and driving his spear into %enemy $+ !
+
+[Dynamite]
+Name=Dynamite
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=takes out a stick of dynamite, lights it with his cigarette and then tosses it towards %enemy $+ !
+
+[HyperJump]
+Name=Hyper Jump
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=leaps into the air at an even higher altitude before falling and driving his spear into %enemy $+ !
+
+[Dragon]
+Name=Dragon
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=performs a gesture, summon a green dragon that he then unleashes upon %enemy $+ !
+
+[DragonDive]
+Name=Dragon Dive
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=perfoms multiple jumps, leaving behind numerous purple explosions upon %enemy $+ !
+
+[BigBrawl]
+Name=Big Brawl
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=runs forward and unleashes a barrage of attacks upon %enemy $+ !
+
+[TheHighwind]
+Name=The Highwind
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=summons the Highwind airship which flies over the battlefield, dropping numerous bombs onto %enemy $+ !
+
+[ZangetsuLimit]
+Name=Zangetsu Limit
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=says, "I have you now!" and summons numerous ofuda talismans that traps %enemy in place. After a moment, a giant explosion occurs to cause major damage upon %enemy $+ !
+
+[ExtremeNova]
+Name=Extreme Nova
+Cost=0
+Multiplier=1
+MeterNeeded=100
+Desc=turns, facing %enemy and says, "It's over." before unleashing several slashes. Hyoh then hops into the air, raising his weapon as a large burst of flame explodes from the weapon. After a moment of pause, Hyoh swings the weapon down, unleashing an extreme nova of flame upon %enemy $+ !
+
+[Desperado]
+Name=Desperado
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=takes out a hand grenade, pulls the pin and hurls it towards %enemy $+ . Laguna then leaps up, shooting a grappling hook to the sky. He then swings from side to side, firing numerous rounds at %enemy from his machine gun. He eventually lands to the ground, his back facing %enemy as the grenade explodes upon %enemy with a large explosion!
+
+[FinalPsychoCrusher]
+Name=Final Psycho Crusher
+Cost=0
+Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+MeterNeeded=100
+Desc=floats back away from the arena. After a moment, Bison charges across the arena, covering it with blue energy as he slams into %enemy with a much stronger version of the Psycho Crusher!
+
+[BloodExecution]
+Name=Blood Execution
+Cost=0
+Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+MeterNeeded=100
+Desc=laughs before spinning around, as a large pillar of blood forms from the ground and lifts Bloodless into the air. After a moment of pause, the blood pillar turns into a massive red skull which quickly shoots towards %enemy and causes a large explosion of power upon %enemy $+ !
+
+[TigerGenocide]
+Name=Tiger Genocide
+Cost=0
+Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+MeterNeeded=100
+Desc=shouts out "TIGER GENOCIDE!" and leaps towards %enemy using the Tiger Knee attack. Afterwards Sagat then immediately unleashes a deadly combo of two Tiger Uppercuts upon %enemy $+ , causing major damage!
+
+[RollingIzunaDrop]
+Name=Rolling Izuna Drop
+Cost=0
+Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+MeterNeeded=100
+Desc=leaps towards the edge of the battlefield and kick-jumps off of it high into the air and towards %enemy $+ . Once in range, he grabs %enemy by the waist and then slams %enemy head-first into the ground several times!
+
+[CrazyBuffalo]
+Name=Crazy Buffalo
+Cost=0
+Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+MeterNeeded=100
+Desc=punches his fists together and then quickly dashes forward, delivering five savage punches upon %enemy $+ !
+
+[MowerOfLawns]
+Name=Mower of Lawns
+Cost=0
+Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+MeterNeeded=100
+Desc=looks between a wheelchair and a lawnmower. He then says, "Wheel of chairs? Or Mower of Lawns?" This continues for a minute before he finally shouts. "Mower of Lawns!" He takes a seat and then drives it after %enemy in an over-dramataic fashion with maniacal laughter, his arms spread out as he runs over %enemy $+ !
+
+[HyperTwinSliceMkII]
+Name=Hyper Twin Slice MkII
+Cost=0
+Multiplier=6
+MeterNeeded=100
+Desc=chants in Elvish as a red and blue aura appears around %user for a brief moment while the gunblade glows red. $gender2($1) then quickly sprints towards %enemy to unleash a deadly series of slashes, giving no time to react. %user then leaps high into the air, pauses for a moment before falling back, slashing one final time which creates a massive explosion of aether energy!
+
+[ArmigerUnleashed]
+Name=Armiger Unleashed
+Cost=0
+Multiplier=6
+MeterNeeded=100
+Desc=floats into the air as the thirteen Royal Arms appear around Noctis. After a moment of pause, Noctis quickly dashes towards %enemy and unleashes a barrage of attacks with each weapon!
+
+[LastWillAndTestament]
+Name=LastWillAndTestament
+Cost=0
+Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+MeterNeeded=100
+Desc=changes the battlefield to a concert stage which also has two large, demonic speakers. %user forces %enemy to be tossed back and forth between the speakers as %user rocks out on the guitar. After a minute, %user stops playing and causes an explosion which returns the battlefield to normal.
+
+[RideTheLightning]
+Name=Ride the Lightning
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=is surrounded by lightning, along with the sword as $gender3($1) charges towards %enemy $+ , slashing with the lightning powered sword as %user gets in range. %user then hops back and swings the sword once more, sending a final blast of lightning at %enemy $+ !
+
+[NapalmDeath]
+Name=Napalm Death
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=jumps into the air as fire covers the sword and %user $+ . %user gathers power for a moment before slamming the sword down upon %enemy $+ , causing a massive explosion of flame to burn %enemy $+ !
+
+[BraverII]
+Name=Braver
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=leaps into the air and slashes %enemy on the way down with the Buster Sword.
+
+[CrossSlashII]
+Name=CrossSlash
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=rushes forward and slashes %enemy a few times with the Buster Sword!
+
+[BladeBeamII]
+Name=BladeBeam
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=drives the Buster Sword into the ground, causing blue energy to shoot forward and slam into %enemy $+ !
+
+[ClimhazzardII]
+Name=Climhazzard
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=rushes forward and impales the Buster Sword into %enemy and then leaps high into the air, giving %enemy a deadly cut!
+
+[MeteorainII]
+Name=Meteorain
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=leaps into the air and spins the Buster Sword around. Several small meteors then proceed to slam into %enemy $+ !
+
+[FinishingTouchII]
+Name=FinishingTouch
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=spins the Buster Sword and holds it behimd himself for a moment before swinging forward and sending a large tornado slamming into %enemy $+ !
+
+[OmnislashII]
+Name=Omnislash
+Cost=0
+Multiplier=6
+MeterNeeded=100
+Desc=says, "Breaking my limits" as he holds the Buster Sword forward as it gains a white glow. Cloud then proceeds to unleash a barrage of sword slashes upon %enemy $+ !

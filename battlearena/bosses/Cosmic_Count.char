@@ -1,22 +1,22 @@
 [BaseStats]
-HP=15390
+Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
 TP=550
 str=3219
 def=1811
 int=2716
 spd=2515
-IgnitionGauge=2
+IgnitionGauge=100
 Name=The Count
 
 
 [Battle]
-HP=15390
+HP=250000
 TP=550
 str=3219
 def=1811
 int=2716
 spd=2515
-IgnitionGauge=2
+IgnitionGauge=100
 Status=alive
 
 
@@ -60,6 +60,10 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=-1000
+BattleStats=ignoreTP.ignoreHP
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 ; Universal Cosmic flags
 CanTaunt=false

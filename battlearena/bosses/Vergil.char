@@ -1,32 +1,29 @@
 [BaseStats]
-Hp=100
-Tp=50
-Str=16
-Def=10
-Int=15
-Spd=5
+Hp=1000
+Tp=1500
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=100
 Name=Vergil
-IgnitionGauge=50
 
 
 [Battle]
-Hp=100
-Tp=50
-Str=16
-Def=10
-Int=15
-Spd=5
+Hp=1000
+Tp=1500
+Str=50
+Def=50
+Int=50
+Spd=50
+IgnitionGauge=100
+LimitBreakPercent=0
 Status=alive
-IgnitionGauge=50
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
 
 
 [Descriptions]
@@ -34,7 +31,7 @@ Hused=1
 Dused=1
 Char=is Dante's twin brother.  He wears a long blue trenchcoat and carries the Yamato, his favorite weapon.
 Rage=screams in rage 
-BossQuote=Die!
+BossQuote=Scum!
 DTrigger=looks at the battlefield and says, "Now I'm MOTIVATED!"  His body begins to glow and grow as he becomes a full demon. The resulting energy causes his enemies to feel weaker.
 
 
@@ -44,9 +41,13 @@ BlackOrbs=1
 ShopLevel=1.0
 Drops=
 
+
 [monster]
 type=demon
 size=medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
+SuperElite=$iif($current.battlestreak >= 5000, false, true)
+
 
 [Info]
 Flag=monster
@@ -61,6 +62,10 @@ Streak=50
 TauntFile=taunts_vergil.txt
 CanTaunt=true
 IgnoreElementalMessage=true
+BattleStats=ignoreTP
+JustReleaseDefense=$iif($current.battlestreak <= 100, 70, 100)
+SkipDoubleTurns=true
+ActionsPerTurn=1
 
 [Status]
 Poison=no
@@ -98,22 +103,59 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Yamato
-Yamato=10
+Yamato=$calc(1 + $current.battlestreak)
+
 
 [Skills]
-resist-stun=55
-resist-blind=55
-Resist-Petrify=60
-RoyalGuard=1
+Zen=5
+WeaponBash=1
+Impetus=20
+SwordMaster=100
+Resist-Amnesia=100
+Resist-Blind=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Petrify=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Poison=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Silence=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Sleep=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Slow=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Stop=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Stun=$iif($current.battlestreak <= 100, 30, 100)
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
 
 
 [Techniques]
-Tachi:Gekko=20
-JudgementCut=30
+Tachi:Gekko=$calc(1 + $current.battlestreak)
+Tachi:Yukikaze=$calc(1 + $current.battlestreak)
+JudgementCut=$calc(1 + $current.battlestreak)
 
 
 [Item_Amount]
 
+
+[Ignitions]
+Dtrigger=$iif($current.battlestreak <= 500, 0, 1)
+
+
+[LimitBreaks]
+JudgmentCutEnd=$iif($current.battlestreak <= 1000, 0, 1)
+
+
+[Augments]
+Yamato=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus
+
+
+[Styles]
+Equipped=HitenMitsurugi-ryu
+HitenMitsurugi-ryu=$iif($current.battlestreak <= 500, 5, 10)
 
 
 [modifiers]
@@ -128,17 +170,20 @@ Light=100
 Dark=100
 HandToHand=100
 Whip=100
-Sword=110
+Sword=100
 Gun=100
 Rifle=100
-Katana=60
+Katana=100
 Wand=100
 Spear=100
 Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
-
-
-[Ignitions]
-Dtrigger=1
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
