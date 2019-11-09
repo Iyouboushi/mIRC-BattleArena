@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/04/19
+;;;; Last updated: 11/09/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -756,8 +756,8 @@ boost_monster_hp {
   ; $4 = used for summons (original summon's name)
 
   ; If the target is set to ignore hp, return without adjusting it
-  if ((ignoreHP isin $readini($char($1), info, BattleStats)) && (%battle.type != cosmic)) { return }
-  if (($readini($char($1), info, IgnoreHP) = true) && (%battle.type != cosmic)) { return }
+  if (ignoreHP isin $readini($char($1), info, BattleStats)) { return }
+  if ($readini($char($1), info, IgnoreHP) = true) { return }
 
   set %hp $readini($char($1), BaseStats, HP)
 
