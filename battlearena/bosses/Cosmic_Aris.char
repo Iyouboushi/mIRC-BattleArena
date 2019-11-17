@@ -1,6 +1,6 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
-Tp=500
+Hp=$iif($return_playersinbattle > 2, $calc(400000 + (400000 * $return_playersinbattle)) , 400000)
+Tp=1000
 Str=3127
 Def=2127
 Int=5633
@@ -9,8 +9,8 @@ IgnitionGauge=100
 Name=Cosmic Aris
 
 [Battle]
-Hp=250000
-Tp=500
+Hp=400000
+Tp=1000
 Str=3127
 Def=2127
 Int=5633

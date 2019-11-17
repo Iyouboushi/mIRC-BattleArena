@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(240000 + (240000 * $return_playersinbattle)) , 240000)
+Hp=$iif($return_playersinbattle > 2, $calc(400000 + (400000 * $return_playersinbattle)) , 400000)
 Tp=500
 Str=3250
 Def=3000
@@ -10,7 +10,7 @@ Name=Cosmic Cerberus
 
 
 [Battle]
-Hp=240000
+Hp=400000
 Tp=500
 Str=3250
 Def=3000

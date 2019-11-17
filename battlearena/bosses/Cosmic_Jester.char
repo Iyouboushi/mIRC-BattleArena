@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
+Hp=$iif($return_playersinbattle > 2, $calc(300000 + (200000 * $return_playersinbattle)) , 300000)
 Tp=1000
 Str=2818
 Def=3274
@@ -10,7 +10,7 @@ Name=Cosmic Jester
 
 
 [Battle]
-Hp=250000
+Hp=300000
 Tp=1000
 Str=2818
 Def=3274

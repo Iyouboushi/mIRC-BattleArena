@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(250000 + (250000 * $return_playersinbattle)) , 250000)
+Hp=$iif($return_playersinbattle > 2, $calc(400000 + (400000 * $return_playersinbattle)) , 400000)
 TP=550
 str=3219
 def=1811
@@ -10,7 +10,7 @@ Name=The Count
 
 
 [Battle]
-HP=250000
+HP=400000
 TP=550
 str=3219
 def=1811
