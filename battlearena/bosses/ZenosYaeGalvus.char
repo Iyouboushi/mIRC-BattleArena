@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(500000 + (500000 * $return_playersinbattle)) , 500000)
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (600000 * $return_playersinbattle)) , 1000000)
 Tp=1500
 Str=4500
 Def=2500
@@ -10,7 +10,7 @@ Name=Zenos Yae Galvus
 
 
 [Battle]
-Hp=500000
+Hp=1000000
 Tp=1500
 Str=4500
 Def=2500

@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(400000 + (400000 * $return_playersinbattle)) , 400000)
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (300000 * $return_playersinbattle)) , 1000000)
 TP=950
 str=3944
 def=2071
@@ -10,7 +10,7 @@ Name=Cosmic Dynamis Lord
 
 
 [Battle]
-HP=400000
+HP=1000000
 TP=950
 str=3944
 def=2071
