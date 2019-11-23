@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (200000 * $return_playersinbattle)) , 1000000)
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (1000000 * $return_playersinbattle)) , 1000000)
 Tp=500
 Str=3250
 Def=3000
@@ -35,7 +35,6 @@ Dused=1
 Char=is a giant three-headed dog that has been revived to serve Galactus and to help protect the Cosmic Dimension. Cerberus is surrounded by a protective ice armor.
 Rage=screams in rage 
 BossQuote=Leave now, mortal! The likes of you are forbidden in this land. You, who are powerless, are not worthy to set foot here. 
-RepairNaturalArmor=growls loudly as ice begins to form around his body. After a moment his protective ice barrier is completely restored.
 
 [Stuff]
 RedOrbs=0
@@ -132,7 +131,6 @@ Resist-Stun=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
-RepairNaturalArmor=1
 
 [Styles]
 Equipped=WeaponMaster
@@ -150,9 +148,7 @@ ShoulderTackle=$calc(500 + %cosmic.level)
 
 
 [NaturalArmor]
-Name=Large Protective Ice Chunks
-Max=$iif($return_playersinbattle > 2, $calc(2500 + (2500 * $return_playersinbattle)) , 2500)
-Current=2500
+
 
 
 [modifiers]

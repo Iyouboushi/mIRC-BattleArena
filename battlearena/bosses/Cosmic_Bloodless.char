@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (200000 * $return_playersinbattle)) , 1000000)
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (1000000 * $return_playersinbattle)) , 1000000)
 Tp=1500
 Str=4000
 Def=4000
@@ -29,7 +29,6 @@ RageCountDown=0
 [Descriptions]
 Char=appears to be a young woman with pale skin and long black hair, though is a vampire that can manipulate blood. She wears a dress created from blood and wields a strange umbrella as a weapon. She looks at the players and gives a sinister grin.
 Rage=screams in rage 
-RepairNaturalArmor=laughs as she absorbs some of the blood around the arena which restores her tattered dress back to normal!
 BossQuote=I need more blood!
 
 
@@ -118,7 +117,6 @@ BloodlessUmbrella=$calc(500 + %cosmic.level)
 Zen=5
 ClearMind=3
 SwordMaster=100
-RepairNaturalArmor=1
 Wizardry=100
 MartialArts=100
 Resist-Charm=100
@@ -168,9 +166,6 @@ WeaponMaster=10
 
 
 [NaturalArmor]
-Name=Blood Defense
-Max=$iif($return_playersinbattle > 2, $calc(5000 + (5000 * $return_playersinbattle)) , 5000)
-Current=5000
 
 
 [Ignitions]

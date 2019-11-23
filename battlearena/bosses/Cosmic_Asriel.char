@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (500000 * $return_playersinbattle)) , 1000000)
+Hp=$iif($return_playersinbattle > 2, $calc(1200000 + (1000000 * $return_playersinbattle)) , 1200000)
 Tp=1500
 Str=2500
 Def=2000
@@ -10,7 +10,7 @@ Name=Asriel Dreemurr
 
 
 [Battle]
-Hp=1000000
+Hp=1200000
 Tp=1500
 Str=2500
 Def=2000
