@@ -101,6 +101,9 @@ These are extremely difficult boss battles where the boss can only be damaged by
 * Added the Allied Forces Shop
 These are special services that are offered to players to help deal with Dragon Hunt Dragons.
 
+* Added new skills
+There are several new skills in the game.
+
 * Changes
 - Changed the minimum shop level for players who are 100+.
 - Changed the way multi-hit melee attacks are displayed
@@ -111,12 +114,15 @@ These are special services that are offered to players to help deal with Dragon 
 - Changed AI vs AI battles so that the battle will end in a draw after 50 turns.
 - Changed active skills so that most of them have to be equipped in order to use in battle. 
   There can only be 5 active skills equipped at a time.
+- Changed the dragon hunt dragon generation system a bit.
+- Changed the max amount for certain enhancement point upgrades.
 
 * Fixes
 - Fixed a bug where the elite/super elite flags were not being added correctly to dragon hunt dragons
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working
 - Fixed a bug where auto-regen would not work right with ignitions
+- Fixed a bug where the strength stat of monsters was not being adjusted properly upon monster spawn/copying.
 - Fixed an issue where +portal usages weren't actually working correctly
 - Fixed an issue with alchemy [thanks to Pentium320]
 - Fixed an issue with +stat items [thanks to Pentium320]

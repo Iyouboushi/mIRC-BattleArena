@@ -1710,7 +1710,7 @@ Battle Arena Bot VERSIONS
 - Fixed a bug where water dragons were not spawning
 - Fixed a bug where IgnoreGuardian was not working
 - Fixed a bug where auto-regen would not work right with ignitions
-- Fixed a bug where the strenght stat of monsters was not being adjusted properly upon monster spawn/copying.
+- Fixed a bug where the strength stat of monsters was not being adjusted properly upon monster spawn/copying.
 - Fixed a bug where new characters who don't set their passwords immediately would be unable to log in again.
 - Fixed a bug with status battle type items dealing damage when they shouldn't be.
 - Fixed a bug where it was possible to use dungeon keys that the player did not actually own
