@@ -255,7 +255,7 @@ Dark_Vampiric_Power=Dark_Inferno.Demonic_Megiddo.TrueForm.Fireball_Wave.Blood_St
 Guardian_Shield=shield_smash
 Orc_Pike=ShoulderTackle.BattleDance.Jump
 Orc_Fists=AsuranFists.ShoulderTackle.BattleDance
-Orc_Sword=ShoulderTackle.BattleDance.Shockwave.SickleMoon.Freezebite
+Orc_Sword=ShoulderTackle.BattleDance.Shockwave.SickleMoon.Freezebite.FocusAttackOrder
 Orcish_Gun=HotShot.RainStorm.ChargedShot.ShoulderTackle.BattleDance
 Cell'sKi=CellExplode.PerfectForm.Kamehameha
 ZKi=Kamehameha.ShikanidouKamehameha.Kienzan
@@ -5952,6 +5952,13 @@ Element=wind
 magic=no
 cost=0
 stat=str
+
+[FocusAttackOrder]
+Type=GiveEnmity
+TP=10
+Desc=barks an order to all allies to focus their attacks on %enemy $+ !
+EnmityGained=1000
+Cost=0
 
 [Sacrifice]
 Type=Suicide

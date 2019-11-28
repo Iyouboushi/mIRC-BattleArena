@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 11/04/19
+;;;; Last updated: 11/28/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -416,6 +416,7 @@ alias tech_cmd {
   if (%tech.type = heal-aoe) { $tech.aoeheal($1, $2, $3) }
   if (%tech.type = single) {  $covercheck($3, $2) | $tech.single($1, $2, %attack.target )  }
   if (%tech.type = suicide) { $covercheck($3, $2) | $tech.suicide($1, $2, %attack.target )  }
+  if (%tech.type = GiveEnmity) { $tech.giveenmity($1, $2, %attack.target) } 
 
   if (%tech.type = death) { $covercheck($3, $2) | $tech.death($1, $2, %attack.target) } 
   if (%tech.type = death-aoe) { 
@@ -514,6 +515,33 @@ alias tech.abilitytoperform {
   if ($istok(%weapon.abilities,$2,46) = $false) { unset %weapon.abilities |  $set_chr_name($1) | $display.message($readini(translation.dat, errors, Can'tPerformTechWithWeapon),private) | halt }
 
   unset %techs | unset %ignition.name |  unset %weapon.abilities | unset %ignition.techs | unset %equipped.weapon.left
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Performs a give enmity tech
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+alias tech.giveenmity {
+  ; $1 = user
+  ; $2 = tech
+  ; $3 = target
+
+  $set_chr_name($1) | set %user %real.name
+  $set_chr_name($3) | set %enemy %real.name
+
+  ; Decrease the action points
+  $action.points($1, remove, 3)
+
+  $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
+
+  var %enmity.gained $readini($dbfile(techniques.db), $2, EnmityGained)
+  if (%enmity.gained = $null) { var %enmity.gained 100 }
+  $enmity($3, add, %enmity.gained)
+
+  ; Check for a postcript
+  if ($readini($dbfile(techniques.db), n, $2, PostScript) != $null) { $readini($dbfile(techniques.db), p, $2, PostScript) }
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) | halt }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
