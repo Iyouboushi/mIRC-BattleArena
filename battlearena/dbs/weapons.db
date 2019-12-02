@@ -285,7 +285,7 @@ Upgrade=500
 Cost=15
 Type=Sword
 Info=Dante's weapon from Devil May Cry.  It's a uniquely shaped red-orange scimitar. The blades are serrated with the segments appearing to interlock like a Celtic knot.
-Abilities=AerialCross.JetStream $+ $iif($weapon.linkcheck($1, Rudra) = true, .Tempest)
+Abilities=AerialCross.JetStream $+ $iif($weapon.linkcheck($1, Rudra) = true, .FireTempest)
 Element=Fire
 Hits=1
 BasePower=$iif($weapon.linkcheck($1, Rudra) = true, 50, 20)
@@ -297,7 +297,7 @@ LinkedWeapon=Rudra
 Cost=15
 Type=Sword
 Info=Dante's weapon from Devil May Cry.  It's a uniquely shaped blue scimitar. The blades are serrated with the segments appearing to interlock like a Celtic knot.
-Abilities=AerialCross.JetStream $+ $iif($weapon.linkcheck($1, Agni) = true, .Tempest)
+Abilities=AerialCross.JetStream $+ $iif($weapon.linkcheck($1, Agni) = true, .FireTempest)
 Element=Wind
 Hits=1
 BasePower=$iif($weapon.linkcheck($1, Agni) = true, 50, 20)

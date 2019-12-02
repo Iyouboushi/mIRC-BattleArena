@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 09/12/19
+;;;; Last updated: 12/02/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1162,7 +1162,7 @@ generate_pirate_scallywag {
   writeini $char(%monster.name) info bosslevel %current.battlestreak
   writeini $char(%monster.name) monster type pirate
 
-  var %base.hp.tp $calc(4 * %current.battlestreak)
+  var %base.hp.tp $calc(3 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
 
@@ -1223,7 +1223,7 @@ generate_pirate_firstmatey {
   if ($rand(1,2) = 1) {  writeini $char(%monster.name) info SpawnAfterDeath Silverhook }
   else { writeini $char(%monster.name) info SpawnAfterDeath BlackBeard }
 
-  var %base.hp.tp $calc(10 * %current.battlestreak)
+  var %base.hp.tp $calc(9 * %current.battlestreak)
   writeini $char(%monster.name) basestats hp %base.hp.tp
   writeini $char(%monster.name) basestats tp %base.hp.tp
 

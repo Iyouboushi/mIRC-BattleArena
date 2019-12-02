@@ -1722,3 +1722,6 @@ Battle Arena Bot VERSIONS
 - Fixed an issue with some color codes causing issues
 - Removed !toggle damage formula  -- The old formulas are still in the bot but I want to focus on one formula for players
   moving forward.
+
+4.1
+- Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.

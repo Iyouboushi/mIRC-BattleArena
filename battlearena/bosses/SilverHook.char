@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=2000
+Hp=1500
 Tp=300
 Str=200
 Def=200
@@ -9,7 +9,7 @@ IgnitionGauge=2
 Name=Silver Hook
 
 [Battle]
-Hp=2000
+Hp=1500
 Tp=300
 Str=200
 Def=200
@@ -92,7 +92,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Cutlass
-Cutlass=500
+Cutlass=100
 
 
 [Skills]
