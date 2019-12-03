@@ -57,6 +57,7 @@ Created=N/a
 CanTaunt=true
 Streak=-1000
 IgnoreElementalMessage=true
+BossLevel=80
 
 [Status]
 Poison=no

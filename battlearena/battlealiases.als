@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 11/09/19
+;;;; Last updated: 12/03/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -498,6 +498,10 @@ random.doubleturn.chance {
 
   if ($readini($char($1), skills, doubleturn.on) != on) {
     var %double.turn.chance $rand(1,100)
+
+    ; If there's more monsters than players in battle, the chance for a double turn is really low.
+    if (($return_monstersinbattle > $return_playersinbattle) && ($readini($char($1), info, flag) = monster)) { dec %double.turn.chance 50 }
+
     if ($augment.check($1, EnhanceDoubleTurnChance) = true) { inc %double.turn.chance $calc(2 * %augment.strength) }
     if ($readini($char($1), info, flag) = monster) { inc %double.turn.chance $rand(1,5) }
 
