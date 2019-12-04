@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 09/08/19
+;;;; Last updated: 12/04/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -35,7 +35,11 @@ alias view-info {
   if ($2 = tech) { 
     if ($readini($dbfile(techniques.db), $3, type) = $null) { $display.private.message(04Error: Invalid technique) | halt }
     var %info.type $readini($dbfile(techniques.db), $3, type) |   var %info.tp $readini($dbfile(techniques.db), $3, TP)
-    var %info.basePower $readini($dbfile(techniques.db), $3, BasePower) | var %info.basecost $readini($dbfile(techniques.db), $3, Cost)
+    var %info.basePower $readini($dbfile(techniques.db), $3, BasePower) 
+
+    if ($readini(system.dat, System, TechCurrency) = coins) { var %info.cost [04Base Cost12 $readini($dbfile(techniques.db), $3, CoinCost) kill coins] }
+    else { var %info.cost  [04Base Cost (before Shop Level)12 $readini($dbfile(techniques.db), $3, Cost) red orbs] }
+
     var %info.element $readini($dbfile(techniques.db), $3, Element)
     var %info.ignoredef $readini($dbfile(techniques.db), $3, IgnoreDefense)
     var %info.hits $readini($dbfile(techniques.db), n, $3, hits)
@@ -55,7 +59,7 @@ alias view-info {
 
     if (%info.type != buff) { 
       $display.private.message([04Name12 $3 $+ ] [04Target Type12 %info.type $+ ] [04TP needed to use12 %info.tp $+ ] %energy [04# of Hits12 %info.hits $+ ] %info.statustype %info.magic %info.ignoredefense)
-      $display.private.message([04Base Power12 %info.basepower $+ ] [04Base Cost (before Shop Level)12 %info.basecost red orbs] [04Element of Tech12 %info.element $+ ] [04Stat Modifier12 %info.stat $+ ]) 
+      $display.private.message([04Base Power12 %info.basepower $+ ] %info.cost [04Element of Tech12 %info.element $+ ] [04Stat Modifier12 %info.stat $+ ]) 
       if (%info.type = FinalGetsuga) { $display.private.message($readini(translation.dat, system, FinalGetsugaWarning)) }
     }
     if (%info.type = buff) { 

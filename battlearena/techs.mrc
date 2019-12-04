@@ -412,6 +412,9 @@ alias tech_cmd {
 
   if ((%user.flag != monster) && (%target.flag != monster)) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanOnlyAttackMonsters),private)  | halt }
 
+  ; Give 1 stat xp to str for doing a tech/spell
+  $character.stat.levelup.check($1, int)
+
   if (%tech.type = heal) { $tech.heal($1, $2, $3) }
   if (%tech.type = heal-aoe) { $tech.aoeheal($1, $2, $3) }
   if (%tech.type = single) {  $covercheck($3, $2) | $tech.single($1, $2, %attack.target )  }

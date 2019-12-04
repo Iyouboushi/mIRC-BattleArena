@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/26/19
+;;;; Last updated: 12/04/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3864,10 +3864,10 @@ orb.adjust {
   if (%battle.type = torment) { var %winning.streak $calc(500 * %torment.level) }
   if (%battle.type = cosmic) { var %winning.streak $calc(500 + %cosmic.level) }
 
-  if (%winning.streak < 50) { var %orb.tier -1 }
-  if ((%winning.streak >= 50) && (%winning.streak < 150)) { var %orb.tier 0 }
-  if ((%winning.streak >= 150) && (%winning.streak < 250)) { var %orb.tier 1 }
-  if ((%winning.streak >= 250) && (%winning.streak < 350)) { var %orb.tier 2 }
+  if (%winning.streak < 10) { var %orb.tier -1 }
+  if ((%winning.streak >= 10) && (%winning.streak < 50)) { var %orb.tier 0 }
+  if ((%winning.streak >= 50) && (%winning.streak < 150)) { var %orb.tier 1 }
+  if ((%winning.streak >= 150) && (%winning.streak < 350)) { var %orb.tier 2 }
   if ((%winning.streak >= 350) && (%winning.streak < 500)) { var %orb.tier 3 }
   if ((%winning.streak >= 500) && (%winning.streak < 800)) { var %orb.tier 4 }
   if ((%winning.streak >= 800) && (%winning.streak < 1000)) { var %orb.tier 5 }
@@ -3900,8 +3900,8 @@ orb.adjust {
   if ((%moon.phase = Blood Moon) && (%winning.streak > 50)) { inc %orb.tier 1 }
 
   if (%orb.tier <= -2) { set %base.redorbs $round($calc(500 + (%base.redorbs * .10)),0) }
-  if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .35)),0) }
-  if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .45)),0) }
+  if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .37)),0) }
+  if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .47)),0) }
   if (%orb.tier = 1) { return }
   if (%orb.tier = 2) { set %base.redorbs $round($calc(%base.redorbs * 1.35),0) }
   if (%orb.tier = 3) { set %base.redorbs $round($calc(%base.redorbs * 1.455),0) }

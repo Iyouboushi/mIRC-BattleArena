@@ -236,3 +236,7 @@ Hands=nothing
 
 [dungeons]
 
+[StatXP]
+Str=0
+Int=0
+Def=0

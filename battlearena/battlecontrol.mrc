@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 08/14/19
+;;;; Last updated: 12/04/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2976,7 +2976,7 @@ alias battle.reward.redorbs {
         ; Check for the orb hunter passive skill.
         if ($readini($char(%who.battle), skills, OrbHunter) != $null) {
           var %orbhunter.inc.amount $readini($dbfile(skills.db), orbhunter, amount)
-          if (%orbhunter.inc.amount = $null) { var %orbhunter.inc.amount 15 }
+          if (%orbhunter.inc.amount = $null) { var %orbhunter.inc.amount 20 }
           inc %total.redorbs.reward $round($calc(%orbhunter.inc.amount * $readini($char(%who.battle), skills, OrbHunter)),0) 
         }
 
@@ -3018,12 +3018,11 @@ alias battle.reward.redorbs {
 
       if (%total.redorbs.reward <= 5) { %total.redorbs.reward = 5 }
 
-
-      ; For the first 24 hours that a player starts the game there will be a 20% bonus to orbs to help them out.
+      ; For the first 24 hours that a player starts the game there will be a 30% bonus to orbs to help them out.
       var %player.created.time $ctime($readini($char(%who.battle), Info, Created))
       var %time.calculated $calc($ctime - %player.created.time)
 
-      if (%time.calculated <= 86400) { inc %total.redorbs.reward $round($calc(%total.redorbs.reward * .25),0)  }
+      if (%time.calculated <= 86400) { inc %total.redorbs.reward $round($calc(%total.redorbs.reward * .30),0)  }
 
       ; For newer players let's increase their orb amount by 50% to help them with earlier streaks
       if ($return.totalorbs(%who.battle) < 10000) {

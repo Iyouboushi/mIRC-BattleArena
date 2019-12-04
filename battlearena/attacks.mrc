@@ -137,6 +137,9 @@ alias attack_cmd {
   ; Clear the BattleNext timer until this action is finished
   /.timerBattleNext off
 
+  ; Give 1 stat xp to str for doing a melee attack
+  $character.stat.levelup.check($1, str)
+
   ; If it's an AOE attack, perform that here.  Else, do a single hit.
 
   if ($readini($dbfile(weapons.db), %weapon.equipped, target) != aoe) {

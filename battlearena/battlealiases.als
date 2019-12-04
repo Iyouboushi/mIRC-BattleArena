@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/03/19
+;;;; Last updated: 12/09/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -983,6 +983,9 @@ deal_damage {
   unset %diehard.message
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($2) | set %enemy %real.name
+
+  ; Give 1 stat xp to the person taking damage
+  $character.stat.levelup.check($2,def)
 
   set %attack.damage $round(%attack.damage, 0)
 

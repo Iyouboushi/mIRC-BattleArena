@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 09/26/19
+;;;; Last updated: 12/04/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2181,4 +2181,62 @@ character.resting.bonus.killcoins {
   if (%resting.bonus < 1) { var %resting.bonus 0 }
 
   return %resting.bonus
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks to see if a char's
+; stat levels up.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+character.stat.levelup.check {
+  ; $1 = the person
+  ; $2 = the stat
+
+  if ($readini($char($1), info, flag) != $null) { return }
+
+  var %stat.xp $readini($char($1), StatXP, $2)
+
+  ; if this is the first time a player is receiving stat xp then let's see if they've already got
+  ; some stuff that we can convert into stat xp.
+  if (%stat.xp = $null) { 
+    var %stat.xp 0
+    writeini $char($1) StatXP $2 0
+
+    if ($2 = str) { 
+      var %basexp $readini($char($1), Stuff, MeleeHIts) 
+      if (%basexp = $null) { var %basexp 0 }
+      var %basexp $round($calc(%basexp / 10),0)
+      var %basestat $readini($char($1), BaseStats, $2)
+      inc %basestat %basexp
+      writeini $char($1) BaseStats $2 %basestat
+    }
+    if ($2 = int) { 
+      var %basexp $readini($char($1), Stuff, techHits) 
+      if (%basexp = $null) { var %basexp 0 }
+      var %basexp $round($calc(%basexp / 10),0)
+      var %basestat $readini($char($1), BaseStats, $2)
+      inc %basestat %basexp
+      writeini $char($1) BaseStats $2 %basestat 
+    }
+    if ($2 = def) { 
+      var %basexp $readini($char($1), Stuff, TotalDeaths ) 
+      if (%basexp = $null) { var %basexp 0 }
+      var %basexp $round($calc(%basexp / 10),0)
+      var %basestat $readini($char($1), BaseStats, $2)
+      inc %basestat %basexp
+      writeini $char($1) BaseStats $2 %basestat 
+    }
+  }
+
+  ; increase the stat xp by 1
+  inc %stat.xp 1
+
+  if (%stat.xp = 10) { 
+    ; level up the stat and reset the xp 
+    var %stat.xp 0
+    var %basestat $readini($char($1), BaseStats, $2)
+    inc %basestat 1
+    writeini $char($1) BaseStats $2 %basestat 
+  }
+
+  writeini $char($1) StatXP $2 %stat.xp 
 }
