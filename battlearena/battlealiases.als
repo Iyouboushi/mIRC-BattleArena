@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/09/19
+;;;; Last updated: 12/06/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -525,7 +525,7 @@ boost_summon_stats {
   ; $2 = bloodpact level
   ; $3 = original summon name
 
-  var %summon.level 1
+  var %summon.level 3
   inc %summon.level $2
 
   if ($augment.check($1, EnhanceSummons) = true) {  inc %summon.level $calc(%augment.strength * 11)    } 

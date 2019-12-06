@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/29/19
+;;;; Last updated: 12/06/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -767,7 +767,7 @@ alias item.trust {
   .copy -o $npc(%trust.npc) $char(%trust.npc) | var %curbat $readini($txtfile(battle2.txt), Battle, List) | %curbat = $addtok(%curbat,%trust.npc,46) |  writeini $txtfile(battle2.txt) Battle List %curbat 
   write $txtfile(battle.txt) %trust.npc
 
-  var %trust.level $get.level($1)
+  var %trust.level $calc($get.level($1) + 3)
 
   if ($accessory.check($1, IncreaseTrustFriendship) = true) {
     inc %trust.level %accessory.amount
@@ -778,7 +778,7 @@ alias item.trust {
   $fulls(%trust.npc) 
   $levelsync(%trust.npc, %trust.level)
 
-  if ($readini($char(%trust.npc), basestats, hp) > 10000) { writeini $char(%trust.npc) basestats hp 10000 | writeini $char(%trust.npc) battle hp 10000 }
+  if ($readini($char(%trust.npc), basestats, hp) > 12000) { writeini $char(%trust.npc) basestats hp 12000 | writeini $char(%trust.npc) battle hp 12000 }
   writeini $char(%trust.npc) info TrustNPC true
 
   $set_chr_name(%trust.npc) 
