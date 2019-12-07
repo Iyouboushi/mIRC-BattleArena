@@ -1049,6 +1049,16 @@ ItemList=items_treatbag.lst
 exclusive=yes
 AllItems=true
 
+[WelcomeBox]
+type=random
+ItemDesc=A special box for all new players of the game. Open it to receive your items.
+Desc=opens the welcome box and discovers 1x ClothTunic $+ $chr(44) 1x ClothLeggings and 1x Beginner'sCharm inside! Don't forget to use !view-info to look up more information on these items!
+Sellprice=0
+Cost=0
+ItemList=items_welcomebox.lst
+exclusive=yes
+AllItems=true
+
 =========================
 CONSUMABLE ITEMS (for skills)
 =========================
@@ -1578,6 +1588,16 @@ Exclusive=yes
 ACCESSORIES
 =========================
 
+[Beginner'sCharm]
+type=accessory
+AccessoryType=Stylish.IncreaseKillCoins.IncreaseRedOrbs
+Cost=0
+Desc=A special charm for beginners. This charm will increase red orbs, kill coins and stylish xp until you have obtained 500,000 red orbs.  $iif($return.totalorbs($1) <= 500000, You still have $calc(500000 - $return.totalorbs($1)) red orbs before this charm stops working, This charm is no longer working) 
+Stylish.Amount=$iif($return.totalorbs($1) <= 500000, 1, 0)
+IncreaseKillCoins.Amount=$iif($return.totalorbs($1) <= 500000, .05, 0)
+IncreaseRedOrbs.Amount=$iif($return.totalorbs($1) <= 500000, .05, 0)
+SellPrice=0
+
 [Jungle-Medallion]
 Type=accessory
 AccessoryType=IncreaseCriticalHits.IncreaseMeleeDamage.BlockAllStatus
@@ -1613,6 +1633,7 @@ Desc=A small green radar that helps locate dragon balls.
 ; The amount on this accessory is a direct + amount to the chance of finding a dragon ball at the end of battle.
 IncreaseDBChance.Amount=25
 SellPrice=1000
+
 
 [Roshi's-Glasses]
 Type=accessory
@@ -1760,7 +1781,6 @@ Desc=A small ring that helps discover more Kill Coins from enemies.
 ; .10 = 10% more coins.  If the reward is 1000 you'll get +100
 IncreaseKillCoins.Amount=.10
 SellPrice=1500
-
 
 [Blood-Ring]
 Type=accessory

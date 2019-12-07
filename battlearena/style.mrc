@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 10/07/17
+;;;; Last updated: 12/06/17
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -13,10 +13,10 @@ alias calculate.stylepoints {
   if (%battle.type = boss) { inc %boss.modifier 100 }
   if (%portal.bonus = true) { inc %boss.modifier 100 }
 
-  if (%style.points <= $calc(30 + %boss.modifier + $return_winningstreak))  { set %style.rating $readini(translation.dat, styles, FlatOutBoring) }
-  if ((%style.points > $calc(30 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(50 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Dope) }
-  if ((%style.points > $calc(50 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(80 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Don'tWorry) }
-  if ((%style.points > $calc(80 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(100 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, ComeOn) }
+  if (%style.points <= $calc(20 + %boss.modifier + $return_winningstreak))  { set %style.rating $readini(translation.dat, styles, FlatOutBoring) }
+  if ((%style.points > $calc(20 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(50 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Dope) }
+  if ((%style.points > $calc(50 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(75 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Don'tWorry) }
+  if ((%style.points > $calc(75 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(100 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, ComeOn) }
   if ((%style.points > $calc(100 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(110 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Cool) }
   if ((%style.points > $calc(110 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(120 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Blast) }
   if ((%style.points > $calc(120 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(140 + %boss.modifier + $return_winningstreak))) { set %style.rating $readini(translation.dat, styles, Alright) }

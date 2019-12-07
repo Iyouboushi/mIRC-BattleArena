@@ -909,6 +909,20 @@ cost=50
 SellPrice=50
 Protection=0
 
+[ClothTunic]
+Name=Cloth Tunic
+hp=0
+tp=0
+Str=0
+def=2
+int=0
+spd=0
+Augment=none
+EquipLocation=body
+cost=50
+SellPrice=20
+Protection=0.10
+
 [RustyMail]
 Name=Rusty Mail
 hp=0
@@ -1982,6 +1996,20 @@ EquipLocation=Legs
 cost=50
 SellPrice=50
 Protection=0
+
+[ClothLeggings]
+name=Cloth Leggings
+hp=0
+tp=0
+Str=0
+def=1
+int=0
+spd=0
+Augment=none
+EquipLocation=legs
+cost=0
+SellPrice=10
+Protection=0.1
 
 [RustyHose]
 Name=Rusty Hose

@@ -1,18 +1,18 @@
 [BaseStats]
-Hp=75
+Hp=25
 Tp=50
-Str=0
+Str=1
 Def=$calc($readini(battlestats.dat, Battle, WinningStreak) * 2)
-Int=0
-Spd=0
+Int=1
+Spd=1
 Name=Red Orb Fountain
 
 [Battle]
-Hp=75
+Hp=25
 Tp=50
-Str=5
-Def=6
-Int=7
+Str=1
+Def=1
+Int=1
 Spd=1
 Status=alive
 

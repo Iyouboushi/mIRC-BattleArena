@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/04/19
+;;;; Last updated: 12/06/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4960,6 +4960,11 @@ system.intromessage {
   ; ============================
   if ($isfile($txtfile(motd.txt)) = $true) { $display.private.message(04[Current Admin Message]02 $read($txtfile(motd.txt))) }
 
+  ; ============================
+  ; Check to see if a player never received
+  ; a WelcomeBox
+  ; ============================
+  if ($readini($char($1), info, WelcomeBoxReceived) = $null) { writeini $char($1) item_amount WelcomeBox 1 | writeini $char($1) info WelcomeBoxReceived true }
   return
 }
 

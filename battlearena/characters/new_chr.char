@@ -98,6 +98,7 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 ShowTutorial=true
+WelcomeBoxReceived=true
 
 [Status]
 Poison=no
@@ -220,6 +221,7 @@ DoublePunch=1
 
 
 [Item_Amount]
+WelcomeBox=1
 potion=1
 MiniDiscountCard=1
 

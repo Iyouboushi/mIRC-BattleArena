@@ -1726,5 +1726,8 @@ Battle Arena Bot VERSIONS
 4.1
 - Added the ability for str, int and def to "level up" on their own as characters play the game. STR will be increased as players
   use melee attacks, INT with techs and DEF by getting hit by monsters. 10 stat xp = +1 to the stat.
+- Added the "WelcomeBox" item to the game. This item will give a ClothTunic, ClothLeggings and Beginner'sCharm to the user upon opening.
+- Added the Beginner'sCharm accessory to the game. This charm will give bonus style xp, killcoins and red orbs to the player until the
+  player has accumulated 500,000 red orbs total.
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
