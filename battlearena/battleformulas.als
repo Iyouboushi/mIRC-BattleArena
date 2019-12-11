@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 11/04/19
+;;;; Last updated: 12/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -4606,7 +4606,7 @@ formula.techdmg.player.formula_2.5 {
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   var %flag $readini($char($1), info, flag)
 
-  $cap.damage($1, $3, melee)
+  $cap.damage($1, $3, tech)
 
   if (%attack.damage <= 1) {
     var %base.tech $readini($dbfile(techniques.db), $2, BasePower)
@@ -4764,6 +4764,27 @@ formula.techdmg.player.formula_2.5 {
 
   ; Check for multiple hits
   $multihitcheck.tech($1, $2, $3, $4)
+
+  ; check for a proficiency bonus in torment/cosmic
+  if ((%battle.type = torment) || (%battle.type = cosmic)) { 
+    ; is the tech level 500+?
+    var %tech.attack.power $readini($char($1), techniques, $2)
+    if (%tech.attack.power >= 500) { 
+      var %techHits $readini($char($1), Stuff, techHits) 
+      var %bonus 0
+
+      if (%techHits <= 1000) { inc %bonus $floor($calc(%techHits / 100)) }
+      if (%techHits > 1000) { 
+        inc %bonus 10
+        dec %techHits 1000
+        inc %bonus $floor($calc(%techHits / 1000))
+        if (%bonus > 15) { var %bonus 15 }
+      }
+
+      if (%bonus > 0) { set %attack.damage $calc(%attack.damage * %bonus) }
+    }
+
+  }
 
   ; Check to see if we need to increase the proficiency of a technique.
   $tech.points($1, $2)

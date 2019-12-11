@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/04/19
+;;;; Last updated: 12/08/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -3123,7 +3123,7 @@ alias battle.reward.blackorbs {
 
 alias battle.reward.killcoins {
   set %debug.location battle.reward.killcoins
-  var %original.basecoins 10
+  var %original.basecoins 15
 
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 
@@ -3162,7 +3162,7 @@ alias battle.reward.killcoins {
       if (%battle.type = boss) { inc %boss.modifier 100 }
       if (%portal.bonus = true) { inc %boss.modifier 100 }
 
-      if ((%style.points > $calc(30 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(50 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
+      if ((%style.points > $calc(20 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(50 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 1 }
       if ((%style.points > $calc(50 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(80 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 2 }
       if ((%style.points > $calc(80 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(100 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 3 }
       if ((%style.points > $calc(100 + %boss.modifier + $return_winningstreak)) && (%style.points <=  $calc(110 + %boss.modifier + $return_winningstreak))) { inc %total.coins.reward 4 }
@@ -3203,6 +3203,9 @@ alias battle.reward.killcoins {
       ; Check for bounty
       if ($readini($txtfile(battle2.txt), battleinfo, bountyclaimed) = true) { inc %total.coins.reward 20 }
 
+      ; Clear certain potion effects
+      if ($return.potioneffect(%who.battle) = Kill Coin Bonus) { inc %total.coins.reward 20 | writeini $char(%who.battle) status PotionEffect none }
+
       ; Check for a resting bonus
       var %resting.bonus $character.resting.bonus.killcoins(%who.battle)
       inc %total.coins.reward %resting.bonus
@@ -3211,9 +3214,6 @@ alias battle.reward.killcoins {
       var %current.coins.onhand $readini($char(%who.battle), stuff, killcoins)
       inc %current.coins.onhand %total.coins.reward
       writeini $char(%who.battle) stuff killcoins %current.coins.onhand
-
-      ; Clear certain potion effects
-      if ($return.potioneffect(%who.battle) = Kill Coin Bonus) { writeini $char(%who.battle) status PotionEffect none }
 
       ; Write the current time for the current battle
       writeini $char(%who.battle) Info LastBattleTime $ctime

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 11/28/19
+;;;; Last updated: 12/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1687,8 +1687,8 @@ alias tech.points {
 
     if ($readini($char($1), skills, Tensai) >= 1) { inc %tech.points 4 }
 
-    var %tech.points.needed 500
-    if ($readini($char($1), stuff, NumberOfResets) >= 1) { var %tech.points.needed 250 }
+    var %tech.points.needed 300
+    if ($readini($char($1), stuff, NumberOfResets) >= 1) { var %tech.points.needed 200 }
 
     if (%tech.points >= %tech.points.needed) { writeini $char($1) techniques $2 $+ .points 0
       var %tech.attack.power $readini($char($1), techniques, $2)
