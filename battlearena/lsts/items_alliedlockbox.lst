@@ -2,3 +2,4 @@ $read -l $+ $rand(1, $lines($lstfile(chest_gold.lst))) $lstfile(chest_gold.lst)
 PiggyBank.5
 CodexOfMythology.2
 ExtremeTitaniteSlab.3
+Thief'sMap.2

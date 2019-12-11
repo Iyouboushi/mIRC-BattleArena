@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 12/06/19
+;;;; Last updated: 12/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -2170,6 +2170,9 @@ alias item.dungeon {
   if ($readini($dungeonfile(%dungeon.file), info, Open) = false) { $display.message($readini(translation.dat, errors, DungeonNotOpen), private) | halt }
 
   writeini $txtfile(battle2.txt) DungeonInfo DungeonCreator $1
-  $dungeon.start($1, $2, %dungeon.file, $3)
 
+  ; if the item needs to be consumed upon use, do so now.
+  if ($readini($dbfile(items.db), $2, consumed) = true) { $decrease_item($1, $2) } 
+
+  $dungeon.start($1, $2, %dungeon.file, $3)
 }

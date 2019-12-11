@@ -5150,6 +5150,15 @@ Desc=A ticket that allows you to enter Big Boo's Haunted Hayride during the mont
 Dungeon=haunted_hayride
 exclusive=yes
 
+[Thief'sMap]
+type=dungeon
+cost=0
+sellprice=1
+Desc=A rolled up map that leads to a Gobbie's Treasure Vault realm portal.
+Dungeon=treasure_vault
+exclusive=yes
+Consumed=true
+
 [TamTaraKey]
 type=dungeon
 cost=50

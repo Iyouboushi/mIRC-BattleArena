@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 12/04/19
+;;;; Last updated: 12/11/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
@@ -258,6 +258,7 @@ alias view-info {
     var %dungeon.level $readini($dungeonfile(%dungeon.file), info, Level)
     if (%dungeon.level = $null) { var %dungeon.level 15 }
     $display.private.message([04Name12 $3 $+ ] [04Type12 Dungeon Key $+ ] [04Dungeon Name12 %dungeon.name $+ ] [04Number of Players Needed12 %dungeon.players.needed $+ ] [04Dungeon Level12 %dungeon.level $+ ] [04Description12 $readini($dbfile(items.db), $3, desc) $+ ]) 
+    if ($readini($dbfile(items.db), $3, consumed) = true) { $display.private.message(07**4 This item is consumed upon use even if no one enters the dungeon) } 
   }
 
   if (%info.type = TormentReward) { 
