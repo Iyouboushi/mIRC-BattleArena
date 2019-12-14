@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 12/12/19
+;;;; Last updated: 12/13/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -4773,14 +4773,8 @@ formula.techdmg.player.formula_2.5 {
       var %techHits $readini($char($1), Stuff, techHits) 
       var %bonus 0
 
-      if (%techHits <= 1000) { inc %bonus $floor($calc(%techHits / 100)) }
-      if (%techHits > 1000) { 
-        inc %bonus 10
-        dec %techHits 1000
-        inc %bonus $floor($calc(%techHits / 1000))
-        if (%bonus > 13) { var %bonus 13 }
-      }
-
+      inc %bonus $floor($calc(%techHits / 100)) 
+      if (%bonus > 5) { var %bonus 5 }
       if (%bonus > 0) { set %attack.damage $calc(%attack.damage * %bonus) }
     }
 
