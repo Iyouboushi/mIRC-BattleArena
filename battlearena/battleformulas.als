@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 12/13/19
+;;;; Last updated: 12/15/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -4764,21 +4764,6 @@ formula.techdmg.player.formula_2.5 {
 
   ; Check for multiple hits
   $multihitcheck.tech($1, $2, $3, $4)
-
-  ; check for a proficiency bonus in torment/cosmic
-  if ((%battle.type = torment) || (%battle.type = cosmic)) { 
-    ; is the tech level 500+?
-    var %tech.attack.power $readini($char($1), techniques, $2)
-    if (%tech.attack.power >= 500) { 
-      var %techHits $readini($char($1), Stuff, techHits) 
-      var %bonus 0
-
-      inc %bonus $floor($calc(%techHits / 100)) 
-      if (%bonus > 5) { var %bonus 5 }
-      if (%bonus > 0) { set %attack.damage $calc(%attack.damage * %bonus) }
-    }
-
-  }
 
   ; Check to see if we need to increase the proficiency of a technique.
   $tech.points($1, $2)
