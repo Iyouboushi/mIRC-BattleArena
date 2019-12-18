@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/08/19
+;;;; Last updated: 12/18/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2114,17 +2114,14 @@ alias battle.end.victory {
   if (%battle.type = DragonHunt) { 
     var %dragonhunts.dead $readini(battlestats.dat, Battle, DragonHuntDragons.Killed)
     if (%dragonhunts.dead = $null) { var %dragonhunts.dead 0 }
-
     inc %dragonhunts.dead 1 
-
     writeini battlestats.dat Battle DragonHuntDragons.Killed %dragonhunts.dead
-
   }
 
   var %winning.streak $readini(battlestats.dat, battle, WinningStreak)
   var %wins $readini(battlestats.dat, battle, totalWins) | inc %wins 1 | writeini battlestats.dat battle totalWins %wins
 
-  if (((((((((%portal.bonus != true) && (%battle.type != torment) && (%battle.type != monsterfair) && (%besieged != on) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on))))))))) {
+  if ((((((((((%portal.bonus != true) && (%battle.type != cosmic) && (%battle.type != torment) && (%battle.type != monsterfair) && (%besieged != on) && (%battle.type != mimic) && (%battle.type != defendoutpost) && (%battle.type != assault) && (%battle.type != dragonhunt) && (%supplyrun != on) && (%savethepresident != on)))))))))) {
 
     var %winning.streak.increase 1 
 
@@ -2174,6 +2171,7 @@ alias battle.end.victory {
   if (%battle.type = monsterfair) { $display.message($readini(translation.dat, battle, MonsterFair.BattleWon), global)  }
   if (%battle.type = torment) { $display.message($readini(translation.dat, battle, Torment.BattleWon), global)  }
   if (%battle.type = dragonhunt) {  $display.message($readini(translation.dat, battle, DragonHunt.BattleWon), global)  }
+  if (%battle.type = cosmic) { $display.message($readini(translation.dat, battle, Cosmic.BattleWon), global)  }
 
   if (%portal.bonus = true) { 
     var %portal.item $readini($txtfile(battle2.txt), BattleInfo, PortalItem)
