@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 09/13/19
+;;;; Last updated: 12/22/19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -343,6 +343,7 @@ dungeon.nextroom {
 
   if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, RestoreRoom) = true) { $dungeon.restoreroom }
   if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, StoryRoom) = true) { $dungeon.storyroom }
+  if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, RestoreMech) = true) { $dungeon.restoremech }
 
   else { 
     ; Generate dungeon monsters
@@ -592,6 +593,38 @@ dungeon.restoreroom {
 
   ; Resync everyone
   $portal.sync.players($readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel))
+
+  ; Move to the next room.
+  var %current.room $dungeon.currentroom
+  inc %current.room 1
+  writeini $txtfile(battle2.txt) DungeonInfo CurrentRoom %current.room
+
+  if ($dungeon.dungeonovercheck = true) { $dungeon.end | halt } 
+
+  $display.message(02* $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, desc) ,battle)
+
+  /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
+  halt
+}
+
+dungeon.restoremech {
+  $display.message(07* The party feels their mech hp $+ $chr(44)  and energy restored in this room)
+
+  var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+    var %flag $readini($char(%who.battle), info, flag)
+
+    if (%flag != monster) { 
+      var %mech.hpmax $readini($char(%who.battle), mech, HpMax) 
+      var %mech.energymax $readini($char(%who.battle), mech, EnergyMax) 
+
+      if (%mech.hpmax != $null) { writeini $char(%who.battle) mech HpCurrent %hp.max }
+      if (%mech.energymax != $null) { writeini $char(%who.battle) mech EnergyCurrent %energy.max }
+    }
+
+    inc %battletxt.current.line
+  }
 
   ; Move to the next room.
   var %current.room $dungeon.currentroom
