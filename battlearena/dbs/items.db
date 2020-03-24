@@ -1937,6 +1937,15 @@ SellPrice=2000
 Exclusive=yes
 AutoRegen.Amount=1
 
+[Dr'sMask]
+Type=accessory
+Cost=0
+AccessoryType=BlockAllStatus
+Desc=A white mask that goes over your face to help prevent status effects.  It's only about 25% effective.  Note this does not work on curse on a curse night.
+; The amount is added to the target's current resistance amount.  It's a direct amount so 100 = +100%
+BlockAllStatus.Amount=25
+SellPrice=5000
+
 [PinkBow]
 Type=accessory
 Cost=$iif($left($adate,2) = 02, 75000, 0)

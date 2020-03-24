@@ -849,6 +849,14 @@ Amount=5
 Accessories
 ============
 
+[Dr'sMask]
+Gem=Emerald
+Ingredients=Cloth.ShadowSpool
+SuccessRate=100
+Cloth=1
+ShadowSpool=1
+Amount=1
+
 [Roshi's-Glasses+1]
 Gem=Diamond
 Ingredients=Roshi's-Glasses
