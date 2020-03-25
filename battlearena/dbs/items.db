@@ -2337,6 +2337,12 @@ Cost=0
 SellPrice=10
 Desc=A shell from a beetle
 
+[SpiderWeb]
+type=misc
+Cost=0
+SellPrice=10
+Desc=A bundle of spider web. It's sticky. Looks like it might be useful for crafting StrongThread.
+
 [QuadavShell]
 Type=misc
 Cost=0
@@ -2424,6 +2430,12 @@ SellPrice=100
 ShopNPC=EasterBunny
 Exclusive=yes
 Currency=AlliedNotes
+
+[StrongThread]
+type=misc
+Cost=0
+SellPrice=10
+Desc=A spool of strong thread.
 
 [AtlantianThreadSpool]
 Type=misc

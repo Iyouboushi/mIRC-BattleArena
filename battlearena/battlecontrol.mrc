@@ -1,12 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/18/19
+;;;; Last updated: 03/25/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
 on 1:TEXT:!battlestats*:*: { $battle.stats }
 
 on 1:TEXT:!conquest*:*: { $conquest.display($1, $2) }
+on 1:TEXT:!beastmen enmity*:*: { $benmity.check($3) }
 
 alias battle.stats {
   $recalc_totalbattles

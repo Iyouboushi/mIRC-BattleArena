@@ -345,6 +345,8 @@ TechCurrencyOrbs=$chr(3) $+ 04 $+ Techniques will now be purchased using Red Orb
 TechCurrencyCoins=$chr(3) $+ 04 $+ Techniques will now be purchased using Kill Coins
 CheckMonsterStrength=$chr(3) $+ 2 $+ The Allied Spy Force reports that the monster army strength is currently at4 %monster.strength $+ $chr(37) $+ 2.  $iif(%monster.strength < 100, The monster army is not ready to attack the Allied Forces HQ, The monster army could attack the HQ at any time. Be ready!) 
 
+CheckBeastmenEnmity=$chr(3) $+ 2 $+ The Allied Spy Force reports that the $1 enmity level is currently at4 %benmity.level $+ 2. %benmity.threat 
+
 
 =======================
 Health Titles
@@ -678,6 +680,7 @@ CannotUpgradeMythicWithItem=$chr(3) $+ 04 $+ The Mythic weapon cannot be upgrade
 SkillCannotBeUsedSolo=$chr(3) $+ 04 $+ The $2 skill cannot be used if you are alone in battle.
 DoNotKnowLimitBreak=$chr(3) $+ 04 $+ $get_chr_name($1) does not know the $2 limit break. 
 NotEnoughLimitMeter=$chr(3) $+ 04 $+ $get_chr_name($1) does not have enough limit break meter to perform the $2 limit break.
+NotValidBeastman=$chr(3) $+ 04 $+ $1 is not a valid beastmen tribe. Please use: Orc, Quadav, Lamia or Yagudo
 
 =======================
 Battle Related Messages
@@ -1240,6 +1243,17 @@ Enhanced=$chr(3) $+ 12||||||||||
 10=$chr(3) $+ 3|4|||||||||
 0=$chr(3) $+ 4||||||||||
 
+
+=======================
+BeastmenEnmityLevels
+=======================
+[BeastmenEnmityLevels]
+0=There is no risk of this tribe summoning their primal at this time.
+1=There is very little risk of this tribe summoning their primal at this time.
+2=There is a moderate risk of this tribe summoning their primal at this time.
+3=There is a high risk of this tribe summoning their primal at this time!
+4=There is an extremely high risk of this tribe summoning their primal at this time!
+5=Danger! Danger! This tribe is certaintly going to summon their primal at any moment!
 
 =======================
 Event Info

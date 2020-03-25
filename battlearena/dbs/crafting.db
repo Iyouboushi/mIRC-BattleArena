@@ -653,6 +653,13 @@ Ingredients=AshLog.Hatchet
 SuccessRate=60
 Amount=5
 
+[StrongThread]
+Gem=Topaz
+Ingredients=SpiderWeb
+SuccessRate=60
+Amount=1
+SpiderThread=2
+
 [SilverChain]
 Gem=Ruby
 Ingredients=SilverOre
@@ -851,10 +858,10 @@ Accessories
 
 [Dr'sMask]
 Gem=Emerald
-Ingredients=Cloth.ShadowSpool
+Ingredients=Cloth.StrongThread
 SuccessRate=100
 Cloth=1
-ShadowSpool=1
+StrongThread=1
 Amount=1
 
 [Roshi's-Glasses+1]
