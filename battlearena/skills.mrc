@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/07/19
+;;;; Last updated: 03/27/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -3424,8 +3424,6 @@ alias skill.monstersummon {
   ; $1 = user
   ; $2 = name of summon
   ; $3 = item used to summon
-
-  if ($readini($char($1), info, flag) = $null) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, PlayersCannotUseSkill),private) | halt } 
 
   set %monster.name $2
   set %number.of.spawns.needed $readini($char($1), skills, monstersummon.numberspawn)
