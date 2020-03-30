@@ -6,6 +6,7 @@ PlayersNeeded=1
 PlayersRecommended=3
 Level=10
 FinalRoom=7
+ClosedMessage=Big Boo has left town and taken his hayride with him.  This event is only open during the month of October so check back then.
 StartBattleDesc=hands the ticket over to Big Boo who then allows the party onto the back of a truck. "Hold onto your dookie, it's about to get spooky!" $decrease_item($1, HayrideTicket)
 
 ClearDungeonDesc=* The party has finished Big Boo's Haunted Hayride!  Happy Halloween! [Clear time: %total.battle.duration $+ ]

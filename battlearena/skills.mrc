@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/27/20
+;;;; Last updated: 03/30/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -86,6 +86,7 @@ alias use.skill {
   if ($3 = LucidDreaming) { $skill.luciddreaming($1) }
   if ($3 = trickattack) { $skill.trickattack($1) }
   if ($3 = sneakattack) { $skill.sneakattack($1) }
+  if ($3 = bribe) { $skill.bribe($1, %attack.target, $3) }
 
   ; Below are monster-only skills
 
@@ -4009,7 +4010,6 @@ alias skill.gamble { $set_chr_name($1)
   var %skill.name Gamble
   if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
 
-
   ; Check to see if enough time has elapsed
   $skill.turncheck($1, Gamble, !gamble, true)
 
@@ -4388,6 +4388,90 @@ alias skill.trickattack { $set_chr_name($1)
   unset %current.playerstyle | unset %current.playerstyle.level | unset %quicksilver.used
 
   $skill.nextturn.check(trickattack, $1)
+}
+
+;=================
+; BRIBE
+; Pay a monster to go away
+;=================
+on 3:TEXT:!bribe*:*: { $partial.name.match($1, $2) | $skill.bribe($nick, %attack.target ,$3) }
+
+alias skill.bribe { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+
+  ; cannot use this skill during certain battle types
+  if ((((((((%battle.type = boss) || (%battle.type = assault) || (%battle.type = defendoutpost) || (%battle.type = dungeon) || (%battle.type = orb_fountain) || (%battle.type = cosmic) || (%portal.bonus = true) || (%battle.type = torment)))))))) { $display.message(04Error: This skill cannot be used during this type of battle!, private) | halt }
+
+  $checkchar($1)
+  if ($return.playerstyle($1) != TreasureHunter) { $display.message(04Error: This command can only be used while the TreasureHunter style is equipped!, private) | unset %current.playerstyle | halt }
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+  $check_for_battle($1)
+  $person_in_battle($2)
+
+  if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
+
+  var %target.flag $readini($char($2), info, flag)
+  if (%target.flag != monster) { $set_chr_name($1) | $display.message(04 $+ %real.name can only bribe monsters!, private) | halt }
+  if ($readini($char($1), Battle, Status) = dead) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot steal while unconcious!, private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = dead) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot steal from someone who is dead!, private) | unset %real.name | halt }
+  if ($readini($char($2), Battle, Status) = RunAway) { $display.message(04 $+ %real.name cannot steal from $set_chr_name($2) %real.name $+ , because %real.name has run away from the fight!, private) | unset %real.name | halt } 
+
+  ; Does the player have the amount of orbs trying to bribe with?
+  var %player.orbs $readini($char($1), stuff, RedOrbs)
+  if ((%player.orbs <= 0) || (%player.orbs = $null)) { $display.message($readini(translation.dat, errors, DoesNotHaveEnoughOrbsToTrade), private) | halt }
+  if ($3 > %player.orbs) { $display.message($readini(translation.dat, errors, DoesNotHaveEnoughOrbsToTrade), private) | halt }
+  if (($3 < 0) || ($3 !isnum)) { $display.message($readini(translation.dat, errors, NotAValidNumberOfOrbs), private) | halt }
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, Bribe, !bribe, false)
+
+  ; Decrease the orbs
+  dec %player.orbs $3
+  writeini $char($1) Stuff RedOrbs %player.orbs
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(bribe))
+
+  ; Display the desc. 
+  $set_chr_name($2) | set %enemy %real.name
+  if ($readini($char($1), descriptions, steal) = $null) { set %skill.description carefully approaches %enemy and offers $bytes($3,b) red orbs for %enemy to quietly leave the battle. }
+  else { set %skill.description $readini($char($1), descriptions, bribe) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; write the last used time.
+  writeini $char($1) skills bribe.time %true.turn
+
+  var %bribe.threshold $readini($char($2), BaseStats, HP)
+  inc %bribe.threshold $rand(1,100)
+
+  if ($3 < %bribe.threshold) { var %bribe.chance 5 }
+  if ($3 = %bribe.threshold) { var %bribe.chance 10 }
+  if ($3 > %bribe.threshold) {
+    var %bribe.threshold $calc($3 - %bribe.threshold)
+    var %bribe.chance $round($calc(10 + (%bribe.threshold / 200)),0)
+  }
+
+  var %bribe.roll $rand(1,100)
+
+  if (%bribe.roll <= %bribe.chance) { 
+    $display.message($readini(translation.dat, Skill, BribeSuccess),battle)
+    writeini $char($2) Battle HP 0
+    writeini $char($2) Battle Status Dead
+  }
+  else { 
+    $display.message($readini(translation.dat, Skill, BribeFailure),battle) 
+    var %current.enmity $enmity($1, return)
+    $enmity($1, add, $calc(%current.enmity * 2))
+  }
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction bribe 
+
+  unset %enemy
+
+  $skill.nextturn.check(Bribe, $1)
 }
 
 ;=================

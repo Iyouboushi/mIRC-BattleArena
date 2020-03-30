@@ -870,6 +870,17 @@ NeedToEquip=false
 Style=TreasureHunter
 StyleSkill=true
 
+[Bribe]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill allows you to attempt to bribe a monster to flee the battle using red orbs. This move can only be used while using the TreasureHunter style.
+ActionPoints=1
+NeedToEquip=false
+Style=TreasureHunter
+StyleSkill=true
+Cooldown=1
 
 
 =============================================

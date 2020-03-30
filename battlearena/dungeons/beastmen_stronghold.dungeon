@@ -1,0 +1,81 @@
+[Info]
+Name=$benmity.activestronghold($benmity.activetribe)
+Open=$iif($benmity.activetribe = $null, false, true)
+Rooms=4
+PlayersNeeded=1
+PlayersRecommended=3
+Level=100
+FinalRoom=3
+UseDungeonTime=false
+ClosedMessage=There are no active primals summoned to the world at this time.
+
+StartBattleDesc=uses the Primal Sigil which begins to glow and shoot a large beam of light out into the world. The location of the primal has been found!
+
+ClearDungeonDesc=* The party has defeated the summon primal and prevented mass destruction!  [Clear time: %total.battle.duration $+ ] $benmity.enmity($benmity.activetribe, reset)
+
+DungeonFail=* The party has failed to defeat the primal and is forced to flee!  The world is still at danger.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=$readini($dungeonfile($dungeon.dungeonfile), Descriptions $+ $benmity.activetribe, 0)
+Battlefield=$benmity.activestronghold($benmity.activetribe)
+
+[1]
+Desc=$readini($dungeonfile($dungeon.dungeonfile), Descriptions $+ $benmity.activetribe, 1)
+Battlefield=$benmity.activestronghold($benmity.activetribe)
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList $+ $benmity.activetribe, 1)
+
+[2]
+Desc=$readini($dungeonfile($dungeon.dungeonfile), Descriptions $+ $benmity.activetribe, 2)
+Battlefield=$benmity.activestronghold($benmity.activetribe)
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList $+ $benmity.activetribe, 2)
+
+[3]
+Desc=$readini($dungeonfile($dungeon.dungeonfile), Descriptions $+ $benmity.activetribe, 3)
+Battlefield=$benmity.activestronghold($benmity.activetribe) - Primal Throne Room
+Monsters=$benmity.activeprimal($benmity.activetribe)
+BossRoom=true
+
+
+============Monster Lists============
+[MonsterListOrc]
+1=Orc_Commander.Orcish_Impaler.Orcish_Neckchopper
+2=Orcish_Predator.Orcish_Wyrmbrander.Orcish_Gunshooter
+
+[MonsterListYagudo]
+1=Yagudo_Herald.Yagudo_Oracle.Yagudo_Prior
+2=Yagudo_Summoner.Yagudo_Zealot.Yagudo_Scribe
+
+[MonsterListLamia]
+1=Lamia_Dancer.Lamia_Dartist.Lamia_Swordmaster
+2=Lamia_Graverobber.Lamia_Dancer.Lamia_Swordmaster
+
+[MonsterListQuadav]
+1=Sapphire_Quadav.Ruby_Quadav.Emerald_Quadav
+2=Veteran_Quadav.Magnes_Quadav.Sapphire_Quadav
+
+
+============Room Descriptions============
+[DescriptionsYagudo]
+0=The heroes have fought through the lower levels of Castle Oztroja and are approaching the throne room where the primal resides.  They take a moment to rest and recover before the final rooms..
+1=As they run into the next area of the castle they find guards waiting for them.
+2=They quickly approach the final room of the castle but are chased down by more guards willing to sacrifice their lives for their primal.
+3=The party runs into a room full of levers.  After pulling them in a certain combination the floor drops out and the heroes fall into the center of the castle where the primal $benmity.activeprimal($benmity.activetribe) is waiting in its throne.
+
+[DescriptionsLamia]
+0=The heroes have sailed safely through the Arrapago Reef and have arrived deep within to the Lamia stronghold of Ilrusi Atoll. Although small, it's fortified and the primal resides within..
+1=As the party makes their way forward towards the Throne Room they see Lamia guards ready to defend their primal master.
+2=The heroes pass several caches of large crystals, now drained of color, and several bodies of villagers taken as sacrifice.  They can hear chanting above. Before they can reach the throne they see more guards running towards them.
+3=As they bust into the throne room they see $benmity.activeprimal($benmity.activetribe) standing at the ready and feel a sense of dread.
+
+[DescriptionsQuadav]
+0=The heroes travel through the Pashhow Marshlands and fight through the Quadav fort of Beadeaux to arrive deep within at the Qulun Dome. Only a few more waves to go before reaching the primal...
+1=The party continues forward through the darkened maze of the dome only to run into more Quadav guards.
+2=As the party quickly heads towards the throne room they can hear the screeching of more Quadav running to meet them and prevent their way forward!
+3=The heroes overpower a weak forcefield that leads into the throne room and find themselves face to face with the powerful primal $benmity.activeprimal($benmity.activetribe) $+ !
+
+[DescriptionsOrc]
+0=The heroes track Orc footprints through the region of Davoi to reach the Orc stronghold Monastic Cavern. It's a tight fit underground but the heroes must press on to reach the primal..
+1=The party advances forward through the caverns only to stumble upon an Orc patrol.
+2=The cavern grows darker and more menancing as the heroes are getting closer to the center.  As they continue forward they see a wave of Orc soldiers running towards them.
+3=The heroes finally reach the center of the caverns and are now faced with the powerful primal $benmity.activeprimal($benmity.activetribe) $+ !

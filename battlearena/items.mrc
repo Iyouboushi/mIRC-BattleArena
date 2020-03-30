@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 12/11/19
+;;;; Last updated: 03/29/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -205,11 +205,9 @@ alias uses_item {
     if (%battleis = on) { $person_in_battle($4) }
   }
 
-
   var %user.flag $readini($char($1), info, flag) | var %target.flag $readini($char($4), info, flag)
 
   if (%item.type = instrument) { $display.message($readini(translation.dat, errors,ItemIsUsedForSinging), private) | halt }
-
   if ((%item.type = misc) || (%item.type = gem)) { $display.message($readini(translation.dat, errors,ItemIsUsedForCrafting), private) | halt }
 
   if (%item.type = food) { 
@@ -2153,7 +2151,11 @@ alias item.dungeon {
   if (%dungeon.name = $null) { $display.message($readini(translation.dat, errors, NotAValidDungeon), private) | halt }
 
   ; Check to see if the player can start a dungeon today
-  if ($3 != true) { 
+  var %dungeon.uses.time $readini($dungeonfile(%dungeon.file), info, UseDungeonTime)
+  if (%dungeon.uses.time = $null) { var %dungeon.uses.time true }
+  if ($3 = true) { var %dungeon.uses.time false } 
+
+  if (%dungeon.uses.time = true) { 
     var %player.laststarttime $readini($char($1), info, LastDungeonStartTime)
     var %current.time $ctime
     var %time.difference $calc(%current.time - %player.laststarttime)
@@ -2167,12 +2169,20 @@ alias item.dungeon {
   }
 
   ; Is the dungeon available to do?
-  if ($readini($dungeonfile(%dungeon.file), info, Open) = false) { $display.message($readini(translation.dat, errors, DungeonNotOpen), private) | halt }
+  if ($readini($dungeonfile(%dungeon.file), info, Open) = false) { 
+    var %closed.message $chr(3) $+ 04 $+ $readini($dungeonfile(%dungeon.file), info, ClosedMessage)
+    if (%closed.message = $null) { var %closed.message $readini(translation.dat, errors, DungeonNotOpen) }
+    $display.message(%closed.message, private) 
+    halt 
+  }
 
   writeini $txtfile(battle2.txt) DungeonInfo DungeonCreator $1
 
   ; if the item needs to be consumed upon use, do so now.
   if ($readini($dbfile(items.db), $2, consumed) = true) { $decrease_item($1, $2) } 
 
-  $dungeon.start($1, $2, %dungeon.file, $3)
+  if (%dungeon.uses.time = false) { var %ignore.time true }
+  else { var %ignore.time false }
+
+  $dungeon.start($1, $2, %dungeon.file, %ignore.time)
 }

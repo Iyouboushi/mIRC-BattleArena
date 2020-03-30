@@ -76,7 +76,7 @@ MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.Skelet
 
 MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue.Qutrub.Phlegethon.HollowPower.MechanicPower
 
-MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Devilsknife.Ame-no-Habakiri.HyperGodPowerII.FloweyPetalsII.SansPowerII.NeloAngeloGreatsword.EngineBlade.RingOfTheLucii.IronDuke.Valiant.Spelldaggers.ExdeathPower.NeoExdeathPower.KefkaPower.VenusGospel.Zangetsuto.BloodlessUmbrella.UltimaWeaponFFBE.LagunaMachineGun.BrightSilverManatrigger.Pumpkin.Pokey
+MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Devilsknife.Ame-no-Habakiri.HyperGodPowerII.FloweyPetalsII.SansPowerII.NeloAngeloGreatsword.EngineBlade.RingOfTheLucii.IronDuke.Valiant.Spelldaggers.ExdeathPower.NeoExdeathPower.KefkaPower.VenusGospel.Zangetsuto.BloodlessUmbrella.UltimaWeaponFFBE.LagunaMachineGun.BrightSilverManatrigger.Pumpkin.Pokey.LamiaWand.PureBliss.Zawnglachel.BhurtrusClaws.RazorPlume
 
 ============================================
 WEAPON TEMPLATE
@@ -2895,6 +2895,15 @@ Element=none
 Hits=1
 BasePower=20
 
+[Zawnglachel]
+Cost=0
+Type=axe
+Info=You can't buy this legendary Orc weapon
+Abilities=BattleDance.Onslaught
+Element=Dark
+Hits=4
+BasePower=50
+
 [QuadavWand_R]
 Cost=0
 Type=wand
@@ -2936,6 +2945,15 @@ Cost=0
 Type=stave
 Info=You can't buy this!
 Abilities=PoleSwing.TailSlap.HypnoticSway
+Element=none
+Hits=1
+BasePower=15
+
+[LamiaWand]
+Cost=0
+Type=stave
+Info=You can't buy this!
+Abilities=WaterjaII.TailSlap.HypnoticSway
 Element=none
 Hits=1
 BasePower=15
@@ -4674,10 +4692,21 @@ Cost=0
 Type=HandToHand
 StatusType=petrify
 Info=The weapon of Medusa
-Abilities=
+Abilities=GorgonDance.TailSlap
 Element=none
 Hits=1
 BasePower=30
+Upgrade=0
+
+[PureBliss]
+Cost=0
+Type=HandToHand
+StatusType=charm
+Info=The weapon of Lakshmi
+Abilities=LuminousDrape.PullOfLight
+Element=light
+Hits=1
+BasePower=50
 Upgrade=0
 
 [BatFangs]
@@ -4969,6 +4998,17 @@ Element=none
 Hits=$rand(2,3)
 BasePower=50
 Upgrade=0
+
+[BhurtrusClaws]
+Cost=0
+Type=HandToHand
+Info=Power of Bhurtrus
+Abilities=ReallyBadBreath
+Element=none
+Hits=$rand(2,3)
+BasePower=50
+Upgrade=0
+StatusEffect=Poison.Virus.Curse.Zombie
 
 [Legion]
 Cost=0
@@ -6179,6 +6219,42 @@ Upgrade=0
 Hits=2
 CanShieldReflect=false
 IgnoreDefense=1
+
+[RazorPlume]
+Cost=0
+Type=HandToHand
+Info=A glowing green feather
+Abilities=AerojaII
+Element=Wind
+BasePower=100
+Upgrade=0
+Hits=1
+CanShieldReflect=false
+IgnoreDefense=1
+
+[GarudaPower]
+Cost=0
+Type=HandtoHand
+Info=The claws of Garuda
+Abilities=Slipstream.EyeOfTheStorm
+Element=Wind
+BasePower=200
+Upgrade=0
+Hits=2
+CanShieldReflect=false
+IgnoreDefense=10
+
+[SusanoBlade]
+cost=0
+Type=GreatSword
+Info=The blade of Susano
+Abilities=YataNoKagami.Stormsplitter
+Element=Water
+BasePower=200
+Upgrade=0
+Hits=1
+CanShieldReflect=false
+IgnoreDefense=15
 
 [MetroidFangs]
 Cost=0

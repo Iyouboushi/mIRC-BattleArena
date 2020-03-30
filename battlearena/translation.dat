@@ -190,33 +190,33 @@ ReloadBattleStreak=$chr(3) $+ 3 $+  $+ %real.name has reloaded arena level $b
 ViewBattleStreak=$chr(3) $+ 3 $+  $+ %real.name currently has arena level # $bytes(%saved.streak,b) saved in $gender($nick) file
 GiveItemToTarget=$chr(3) $+ 3 $+ %real.name gives $3 %item.to.give.correct $+ $iif($3 < 2, ,s) to $set_chr_name($2) %real.name $+ !
 GiveOrbsToTarget=$chr(3) $+ 3 $+ %real.name gives $3 $4 to $get_chr_name($2) $+ !
-FinalGetsugaWarning=$chr(3) $+ 4 $+ This technique is a Final Getsuga type, which means if you use it at the end of the battle you will be reduced back to basically a new character.
-ScoreBoardTitle=$chr(3) $+ 3The Top Players in %battlechan
-KillBoardTitle=$chr(3) $+ 3The Top Monster Hunters in %battlechan
-DeathBoardTitleMon=$chr(3) $+ 3The Top Monster Deaths in %battlechan
-DeathBoardTitleBosses=$chr(3) $+ 3The Top Boss Deaths in %battlechan
-DeathBoardTitlePlayers=$chr(3) $+ 3The Top Players Who Have Died in %battlechan
-DeathBoardTotalMon=$chr(3) $+ 3There have be $bytes(%total.deaths,b) monster kills in %battlechan
-DeathBoardTotalBoss=$chr(3) $+ 3There have be $bytes(%total.deaths,b) boss kills in %battlechan
-DamageBoardTitle.Melee=$chr(3) $+ 3The Highest Average Melee Damage Players in %battlechan
-DamageBoardTitle.Tech=$chr(3) $+ 3The Highest Average Tech Damage Players in %battlechan
+FinalGetsugaWarning=$chr(3) $+ 04 $+ This technique is a Final Getsuga type, which means if you use it at the end of the battle you will be reduced back to basically a new character.
+ScoreBoardTitle=$chr(3) $+ 03The Top Players in %battlechan
+KillBoardTitle=$chr(3) $+ 03The Top Monster Hunters in %battlechan
+DeathBoardTitleMon=$chr(3) $+ 03The Top Monster Deaths in %battlechan
+DeathBoardTitleBosses=$chr(3) $+ 03The Top Boss Deaths in %battlechan
+DeathBoardTitlePlayers=$chr(3) $+ 03The Top Players Who Have Died in %battlechan
+DeathBoardTotalMon=$chr(3) $+ 03There have be $bytes(%total.deaths,b) monster kills in %battlechan
+DeathBoardTotalBoss=$chr(3) $+ 03There have be $bytes(%total.deaths,b) boss kills in %battlechan
+DamageBoardTitle.Melee=$chr(3) $+ 03The Highest Average Melee Damage Players in %battlechan
+DamageBoardTitle.Tech=$chr(3) $+ 03The Highest Average Tech Damage Players in %battlechan
 CurrentScore=$chr(3) $+ 2 $+ %real.name $+ 's current score is: $bytes(%score,b)
-PlayerStyleLevelUp=$chr(3) $+ 3 $+  $+ %real.name $+ 's %current.playerstyle style has leveled up! It is now level %current.playerstyle.level $+ !
+PlayerStyleLevelUp=$chr(3) $+ 03 $+  $+ %real.name $+ 's %current.playerstyle style has leveled up! It is now level %current.playerstyle.level $+ !
 AnotherWaveArrives=$chr(3) $+ 04 $+ Another wave of monsters has arrived to the battlefield!
 AnotherWaveOutpost=$chr(3) $+ 04 $+ More monsters pour into the outpost in an effort to take it over!
 AnotherWaveOutpostBoss=$chr(3) $+ 04 $+ The general of the monster attack party has arrived!
 AnotherWaveAssault=$chr(3) $+ 04 $+ More monster reinforcements arrive to defend the outpost! [Outpost Strength: $monster.outpost(strengthbar) $+ 4]
 MonstersDefendOrbFountain=$chr(3) $+ 04 $+ Reinforcements arrive to protect the orb fountain!
-ViewDifficulty=$chr(3) $+ 3 $+  $+ %real.name has a difficulty of %saved.difficulty set currently.
-SaveDifficulty=$chr(3) $+ 3 $+  $+ %real.name sets $gender($nick) difficulty to $3 $+ .
-ViewLevelAdjust=$chr(3) $+ 3 $+ The overall battle level adjust is set to %leveladjust $+ .
-SaveLevelAdjust=$chr(3) $+ 3 $+ The overall battle level adjust has been set to $2 $+ .
-WeaponAugmented=$chr(3) $+ 3 $+  $+ %real.name $+ 's $3 is now augmented with the %augment.name augment! 
-WeaponDeAugmented=$chr(3) $+ 3 $+  $+ %real.name $+ 's $3 is now no longer augmented. 
-ListOfAugments=$chr(3) $+ 3 $+  $+ %real.name has the following augments: %weapon.list
-WeaponReforged=$chr(3) $+ 3 $+  $+ %real.name uses 1 RepairHammer and %reforge.cost black orbs to reforge $gender($nicK) $2 $+ ! The $2 is now augmented with the %augment.name augment! 
+ViewDifficulty=$chr(3) $+ 03 $+  $+ %real.name has a difficulty of %saved.difficulty set currently.
+SaveDifficulty=$chr(3) $+ 03 $+  $+ %real.name sets $gender($nick) difficulty to $3 $+ .
+ViewLevelAdjust=$chr(3) $+ 03 $+ The overall battle level adjust is set to %leveladjust $+ .
+SaveLevelAdjust=$chr(3) $+ 03 $+ The overall battle level adjust has been set to $2 $+ .
+WeaponAugmented=$chr(3) $+ 03 $+  $+ %real.name $+ 's $3 is now augmented with the %augment.name augment! 
+WeaponDeAugmented=$chr(3) $+ 03 $+  $+ %real.name $+ 's $3 is now no longer augmented. 
+ListOfAugments=$chr(3) $+ 03 $+  $+ %real.name has the following augments: %weapon.list
+WeaponReforged=$chr(3) $+ 03 $+  $+ %real.name uses 1 RepairHammer and %reforge.cost black orbs to reforge $gender($nicK) $2 $+ ! The $2 is now augmented with the %augment.name augment! 
 RenkeiPerformed=$chr(3) $+ 04 $+ The Renkei %renkei.name has been performed!
-IgnitionReverted=$chr(3) $+ 4 $+ %real.name has reverted from the %ignition.name ignition!
+IgnitionReverted=$chr(3) $+ 04 $+ %real.name has reverted from the %ignition.name ignition!
 PortalReinforcements=$chr(3) $+ 04 $+ The demon portal shimmers as another monster comes through, ready to join the battle.
 RandomChanceGoesAgain=$chr(3) $+ 3 $+ Lady Luck smiles upon %real.name and $gender3($1) gets another turn! 
 NoAchievements=$chr(3) $+ 3 $+  $+ %real.name has not unlocked any achievements yet.
@@ -334,7 +334,7 @@ BattleSystemTypeTurn=$chr(3) $+ 04 $+ The Battle System Type has been changed to
 BattleSystemTypeAction=$chr(3) $+ 04 $+ The Battle System Type has been changed to Action System
 FirstRoundProtectionOff=$chr(3) $+ 04 $+ First Round Protection has been turned on
 FirstRoundProtectionOn=$chr(3) $+ 04 $+ First Round Protection has been turned off
-DragonHunt.ListDragons=$chr(3) $+ 2 $+ The following dragons are still hiding in their lairs across the land
+DragonHunt.ListDragons=$chr(3) $+ 02 $+ The following dragons are still hiding in their lairs across the land
 DragonHunt.CreatedDragon=$chr(3) $+ 04 $+ People all over the land have reported seeing the fearsome dragon %dragonhunt.name creating a lair! It is up to the heroes to locate the lair and destroy the terrible beast.
 DragonHunt.BeginHunt=$chr(3) $+ 12 $+ $get_chr_name($2) 4has discovered the lair of the fearsome12 $dragonhunt.dragonelement(%dragonhunt.file.name) 4dragon known as12 %dragonhunt.name $+ 4! A raiding party has been set up to put an end to the beast. To join the party type 12!enter4 now! The raiding party will depart in12 $duration(%time.to.enter) $+ 4. [This is a level12 $dragonhunt.battlelevel(%dragonhunt.file.name) 4battle. Anyone more than 5 levels over will be level synced.]
 PlayerLevelUpMsgOn=$chr(3) $+ 04 $+ A message will now show when players level up via the shop
@@ -343,10 +343,10 @@ SkillCurrencyOrbs=$chr(3) $+ 04 $+ Skills will now be purchased using Red Orbs
 SkillCurrencyCoins=$chr(3) $+ 04 $+ Skills will now be purchased using Kill Coins
 TechCurrencyOrbs=$chr(3) $+ 04 $+ Techniques will now be purchased using Red Orbs
 TechCurrencyCoins=$chr(3) $+ 04 $+ Techniques will now be purchased using Kill Coins
-CheckMonsterStrength=$chr(3) $+ 2 $+ The Allied Spy Force reports that the monster army strength is currently at4 %monster.strength $+ $chr(37) $+ 2.  $iif(%monster.strength < 100, The monster army is not ready to attack the Allied Forces HQ, The monster army could attack the HQ at any time. Be ready!) 
+CheckMonsterStrength=$chr(3) $+ 02 $+ The Allied Spy Force reports that the monster army strength is currently at4 %monster.strength $+ $chr(37) $+ 2.  $iif(%monster.strength < 100, The monster army is not ready to attack the Allied Forces HQ, The monster army could attack the HQ at any time. Be ready!) 
 
-CheckBeastmenEnmity=$chr(3) $+ 2 $+ The Allied Spy Force reports that the $1 enmity level is currently at4 %benmity.level $+ 2. %benmity.threat 
-
+CheckBeastmenEnmity=$chr(3) $+ 02 $+ The Allied Spy Force reports that the $1 enmity level is currently at4 %benmity.level $+ 2. %benmity.threat 
+BeastmenSummonPrimal=$chr(3) $+ 02 $+ The Allied Spy Force reports that the $1 Beastmen tribe has summoned the dreaded and mighty04 $+ %primal.name $+ 02! It is recommended that the Allied Forces gather their strength and purchase a07 PrimalSigil 02to hunt down the primal.
 
 =======================
 Health Titles
@@ -471,6 +471,7 @@ CannotUseItemOnDead=$chr(3) $+ 04 $+ Error: This item cannot be used on someon
 CannotWeaponLockPlayers=$chr(3) $+ 04 $+ Error: $set_chr_name($1) cannot weapon lock players or npcs. 
 CannotDisarmPlayers=$chr(3) $+ 04 $+ Error: $set_chr_name($1) cannot disarm players or npcs. 
 DoesNotHaveThatItem=$chr(3) $+ 04 $+ Error: %real.name does not have that item.
+NotAValidNumberOfOrbs=$chr(3) $+ 04 $+ Error: $3 is not a valid amount of orbs.
 DoesNotHaveEnoughOrbsToTrade=$chr(3) $+ 04 $+ Error: %real.name does not have enough orbs to give that amount to $get_chr_name($2) $+ .
 Can'tGiveMoreOrbsToNPC=$chr(3) $+ 04 $+ Error: %real.name can only give 1,000 orbs total to an NPC.
 DoesNotHaveEnoughHammers=$chr(3) $+ 04 $+ Error: %real.name does not have enough repair hammers!
@@ -954,7 +955,7 @@ CraftingMultiple=$chr(3) $+ 2 $+ %real.name has successfully crafted %total.c
 CriticalCraftingSuccess=$chr(3) $+ 7 $+ %real.name has performed an exceptionally well craft and has increased the results!
 HolyAuraAlreadyOn=$chr(3) $+ 04 $+ Error: A holy aura already protects this battlefield.
 HolyAuraEnd=$chr(3) $+ 12 $+ %real.name $+ 's holy aura has faded. The darkness begins to move towards the battlefield once more.
-AlreadyWeaponLocked=$set_chr_name($2) $+ $chr(3) $+ 4 $+ %real.name is already weapon locked!
+AlreadyWeaponLocked=$set_chr_name($2) $+ $chr(3) $+ 04 $+ %real.name is already weapon locked!
 WeaponLockTargetDead=$set_chr_name($2) $chr(3) $+ 04 $+ %real.name cannot be weapon locked because $gender3($2) is dead or has fled!
 DisarmTargetDead=$set_chr_name($2) $chr(3) $+ 04 $+ %real.name cannot be disarmed because $gender3($2) is dead or has fled!
 UnableToDisarm=$chr(3) $+ 04 $+ %real.name was unable to disarm $set_chr_name($2) %real.name $+ !
@@ -973,6 +974,8 @@ SkillAlreadyUsed=$chr(3) $+ 04 $+ Error: %real.name has already used this skil
 LockpickingInUse=$chr(3) $+ 04 $+ Error: %real.name cannot use the lockpicking skill again so soon. Try again after joining a battle.
 LockpickingFailed=$chr(3) $+ 04 $+  $+ %real.name $+ 's lockpick breaks and the chest remains unopened.
 DieHardTriggered=$iif($readini($char(%target), Descriptions, DieHard) = $null, $chr(3) $+ 04 $+  $+ $get_chr_name(%target) $+ 's determination and will causes $gender2(%target) to fight past a defeating blow!, $chr(3) $+ 04 $+  $+ $get_chr_name(%target) $+  $readini($char(%target), Descriptions, DieHard))
+BribeSuccess=$chr(3) $+ 04 $+ $get_chr_name($2) gleefully takes $get_chr_name($1) $+ 's red orbs and runs away from the battle!
+BribeFailure=$chr(3) $+ 04 $+ $get_chr_name($2) declines to take $get_chr_name($1) $+ 's red orbs and is deeply offended.
 
 =======================
 Tech Related Messages
@@ -1254,6 +1257,8 @@ BeastmenEnmityLevels
 3=There is a high risk of this tribe summoning their primal at this time!
 4=There is an extremely high risk of this tribe summoning their primal at this time!
 5=Danger! Danger! This tribe is certaintly going to summon their primal at any moment!
+SummonedPrimal=Spies report that this tribe has summoned the powerful primal $benmity.activeprimal and it is gaining strength!  Hunt it down with a 07PrimalSigil02 and take it out before it becomes too strong!
+
 
 =======================
 Event Info

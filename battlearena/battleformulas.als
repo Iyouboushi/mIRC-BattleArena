@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 12/15/19
+;;;; Last updated: 03/29/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -776,7 +776,7 @@ formula.meleedmg.player.formula {
 
   ; Set the damage cap.  This increases every time the player levels.
   var %damage.cap $calc(99.99 * $get.level($1))
-  if (%battle.type = dungeon) { inc %damage.cap 1000 } 
+  if (%battle.type = dungeon) { inc %damage.cap 800 } 
 
   if (%attack.damage > %damage.cap) { set %attack.damage $floor(%damage.cap)) } 
 
@@ -3536,7 +3536,7 @@ formula.meleedmg.monster {
     }
 
     if (%battle.type = dungeon) {
-      if ($dungeon.bossroomcheck = true) { var %percent.damage.amount 5 }
+      if ($dungeon.bossroomcheck = true) { var %percent.damage.amount 8 }
       else { var %percent.damage.amount 3 }
       var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
       inc %attack.damage %percent.damage 
@@ -3916,7 +3916,7 @@ formula.techdmg.monster {
   unset %true.base.stat
 
   if (%battle.type = dungeon) {
-    if ($dungeon.bossroomcheck = true) { var %percent.damage.amount 5 }
+    if ($dungeon.bossroomcheck = true) { var %percent.damage.amount 8 }
     else { var %percent.damage.amount 3 }
     var %percent.damage $return_percentofvalue($readini($char($3), basestats, hp), %percent.damage.amount)
     inc %attack.damage %percent.damage 

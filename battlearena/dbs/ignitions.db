@@ -1210,3 +1210,17 @@ IgnitionConsume=10
 Cost=0
 Techs=
 Desc=vanishes before all light fades from the battlefield. After a moment, he returns but now with a a black and purple jester hat and yellow goggles with black lenses covering his eyes. He then picks up a weed eater and begins to laugh like a maniac!
+
+[Ame-no-Murakumo]
+Name=Ame no Murakumo
+hp=1.5
+Str=1.2
+Def=1
+Int=1
+Spd=1
+Augment=
+Ignitiontrigger=1
+IgnitionConsume=50
+Cost=0
+Techs=
+Desc=vanishes from the battlefield.  After a moment the heroes hear "WILD AND PURE AND FOREVER FREE!" before they notice that Susano has become even larger.  The dome cracks and he towers over everything.  His blade is now the size of a skyscraper.  

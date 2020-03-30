@@ -2606,6 +2606,13 @@ SellPrice=20
 Desc=A small tube of black ink.
 Currency=AlliedNotes
 
+[PrimalToken]
+type=misc
+Cost=0
+SellPrice=10000
+Desc=A coin pulsing with primal aetheric energy. Only obtained by defeating a primal of great power.
+Currency=none
+
 [Paper]
 Type=misc
 Cost=50
@@ -5170,6 +5177,15 @@ sellprice=0
 Desc=A ticket that allows you to enter Big Boo's Haunted Hayride during the month of October.
 Dungeon=haunted_hayride
 exclusive=yes
+
+[PrimalSigil]
+type=dungeon
+Cost=$iif($readini(battlestats.dat, BeastmenEnmity, ActivePrimal) = $null || $readini($char($1), Item_Amount, PrimalSigil >= 1), 0, 50)
+currency=BeastmenSeal
+Desc=A sigil infused with energy necessary to approach a primal's stronghold without losing one's senses..  It can be used once before it loses its energy.  It is only able to work when a Beastmen Primal has been summoned.
+exclusive=yes
+consumed=true
+Dungeon=beastmen_stronghold
 
 [Thief'sMap]
 type=dungeon

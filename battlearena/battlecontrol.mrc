@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/25/20
+;;;; Last updated: 03/30/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -535,7 +535,6 @@ alias startnormal {
 
   /.timerBattleBegin 0 %time.to.enter /battlebegin
 }
-
 
 ; ==========================
 ; This is entering the battle

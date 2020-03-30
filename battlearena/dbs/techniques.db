@@ -547,6 +547,7 @@ Sahagin_Spear=SpinningFin.HydroShot.HydroBall.Jump
 MosquitoBite=MosquitoBite
 IfritPrimeClaws=InfernalFire.InfernalBreath.InfernalCleansing
 InfernalNail=FirajaII
+RazorPlume=AerojaII
 MetroidFangs=MetroidRam.MetroidDrain
 MetroidPrimePower=UltrafrigidBreath.Multi-MissileSystem.SnareBeam.ParticleWaveProjector.MetroidPrimeCharge.PurePhazonBeam.PurePhazonWave
 SpacePirateWeapon=QuantumAssaultCannon.PhotonicPowerScythe.Multi-MissileSytem
@@ -570,6 +571,7 @@ Witch'sMagic=GreenAsianMist.RedAsianMist.BlueAsianMist.TheRedWedding.SkywardSupl
 LamiaBow=ArrowDeluge.TailSlap.HypnoticSway
 LamiaSword=TidalSlash.TailSlap.HypnoticSway
 LamiaStaff=PoleSwing.TailSlap.HypnoticSway
+LamiaWand=WaterjaII.TailSlap.HypnoticSway
 LamiaClaws=GustingGouge.HystericBarrage.TailSlap.HypnoticSway
 Beholder=CharmRay.ParalyzingRay.FearRay.SlowingRay.SleepRay.DisintegrationRay
 MonkeyFists=Stool_Toss.ShoulderTackle.AsuranFists
@@ -627,7 +629,12 @@ BrightSilverManatrigger=KeenEdgeII.BrutalShellII.SolidBarrelII.DemonSliceII.Demo
 SagatFists=TigerShot.TigerUppercut.TigerKnee
 BalrogFists=DashStraight.DashUpper.TurnPunch.BuffaloHead
 VegaClaw=SkyHighClaw.RollingCrystalFlash.FlyingBarcelonaAttack.IzunaDrop.ScarletTerror
-
+MedusaPower=GorgonDance.TailSlap
+PureBliss=LuminousDrape.PullOfLight
+Zawnglachel=BattleDance.Onslaught
+BhurtrusClaws=ReallyBadBreath
+GarudaPower=Slipstream.EyeOftheStorm
+SusanoBlade=YataNoKagami.Stormsplitter
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -19064,6 +19071,88 @@ BasePower=100
 Magic=No
 Stat=str
 
+[GorgonDance]
+Type=AOE
+StatusType=Paralysis
+Cost=0
+Desc=begins to slither and dance before sending a wave of energy across the battlefield. 
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+Stat=str
+
+[PullOfLight]
+Type=Single
+Cost=0
+Desc=gently says "sssurender to blisss" and sends a blast of powerful bright light energy towards %enemy $+ !
+TP=10
+Element=Light
+Hits=3
+Magic=No
+Stat=str
+BasePower=$iif($readini($char($3), Status, Charmed) != no, 200, 50)
+
+[Slipstream]
+Type=Single
+Cost=0
+Desc=screams "DIE! DIE! DIE!" as a huge amount of razor-like wind begins to gather around %enemy $+ !
+TP=10
+Element=Wind
+Hits=5
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=2
+StatusEffect=stun
+
+[EyeOfTheStorm]
+Type=AOE
+Cost=0
+Desc=gleefully summons tornadoes that cover the entire battlefield.
+TP=10
+Element=Wind
+Hits=1
+BasePower=300
+Magic=No
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=2
+
+
+[YataNoKagami]
+Type=Single
+Cost=0
+Desc=screams "THE SEAS PART FOR WE ALONE!" as he focuses a huge wave of water to flood towards %enemy $+ !
+TP=10
+Element=Water
+Hits=3
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=2
+StatusEffect=DefenseDown
+
+[Stormsplitter]
+Type=AOE
+Cost=0
+Desc=gleefully yells "HOW OUR HEARTS SING IN THE CHAOS!" as he swings his gigantic sword across the entire battlefield.  Thunder crackles loudly.
+TP=10
+Element=Lightning
+Hits=1
+BasePower=300
+Magic=No
+HurtEthereal=True
+stat=Int
+CanDodge=False
+DestroyShadows=3
+
 [SporeBite]
 Type=Single
 Cost=0
@@ -19074,7 +19163,6 @@ Hits=1
 BasePower=150
 Magic=No
 Stat=str
-
 
 [BioAttack112]
 Type=AOE

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/06/19
+;;;; Last updated: 03/30/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1167,6 +1167,13 @@ deal_damage {
         writeini $char($2) battle hp 0
         remini $txtfile(battle2.txt) enmity $2
 
+        ; Check for Beastmen Tribe enmity
+        var %monster.type $readini($char($2), Monster, Type)
+        if (%monster.type = orc) { $benmity.enmity(orc, add, $rand(1,5)) }
+        if (%monster.type = lamia) { $benmity.enmity(lamia, add, $rand(1,5)) }
+        if (%monster.type = yagudo) { $benmity.enmity(yagudo, add, $rand(1,5)) }
+        if (%monster.type = quadav) { $benmity.enmity(quadav, add, $rand(1,5)) }
+
         if ((%battle.type = assault) && ($readini($char($2), info, flag) = monster)) { 
           if ($isfile($boss($2)) = $true) { $monster.outpost(remove, $rand(2,3)) }
           if ($isfile($mon($2)) = $true) { $monster.outpost(remove, 1) }
@@ -1219,7 +1226,6 @@ deal_damage {
   $ai.learncheck($2, $3)
   $limitbreak.percent.increase($2)
 
-
   if (%guard.message = $null) { $renkei.calculate($1, $2, $3) }
 
   ; Increase total damage that we're keeping track of
@@ -1242,8 +1248,6 @@ deal_damage {
 
   ; Increase enmity
   if ($readini($char($1), info, flag) != monster) {  $enmity($1, add, %attack.damage) }
-
-
 
   ; Unset the attack damage used for calculating style meter
   unset %style.attack.damage 
@@ -1331,7 +1335,11 @@ display_damage {
   }
 
   if ($3 = tech) {
-    if (%showed.tech.desc != true) { $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $4, desc), battle) }
+    if (%showed.tech.desc != true) { 
+      var %tech.desc $readini($char($1), Descriptions, $4)
+      if (%tech.desc = $null) { var %tech.desc $readini($dbfile(techniques.db), $4, desc) }
+      $display.message(03 $+ %user $+  %tech.desc, battle) 
+    }
 
     if ($readini($dbfile(techniques.db), $4, magic) = yes) {
       ; Clear elemental seal
@@ -1426,7 +1434,6 @@ display_damage {
         $display.message($readini(translation.dat, Status, FlyingCrash), battle)
       }
 
-
     }
   }
 
@@ -1480,7 +1487,6 @@ display_damage {
   }
 
   unset %guard.message
-
 
   ; Check for inactive..
   if ($readini($char(%target), battle, status) = inactive) {
@@ -1584,8 +1590,6 @@ display_damage {
       $mech.deactivate($2, true)
     }
   }
-
-
 
   unset %target | unset %attacker | unset %user | unset %enemy | unset %counterattack |  unset %statusmessage.display
 
@@ -5949,7 +5953,12 @@ ignition_check {
 
     if (%player.current.ig < %ignition.cost) {  
       var %ignition.name $readini($dbfile(ignitions.db), $readini($char($1), status, ignition.name), name)
-      $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, system, IgnitionReverted) 
+      $set_chr_name($1)
+
+      var %ignition.revert.desc $readini($char($1), Descriptions, IgnitionReverted)
+      if (%ignition.revert.desc = $null) { var %ignition.revert.desc $readini(translation.dat, system, IgnitionReverted) }
+      write $txtfile(temp_status.txt) %ignition.revert.desc
+
       writeini $char($1) status ignition.on off
       remini $char($1) status ignition.name | remini $char($1) status ignition.augment 
       $revert($1, %original.ignition.name)

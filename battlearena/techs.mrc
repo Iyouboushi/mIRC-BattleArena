@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 12/11/19
+;;;; Last updated: 03/29/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1216,7 +1216,10 @@ alias tech.aoeheal {
   ; Display the tech description
   $set_chr_name($1) | set %user %real.name
   $set_chr_name($3) | set %enemy %real.name
-  $display.message(03 $+ %user $+  $readini($dbfile(techniques.db), $2, desc), battle)
+
+  var %tech.desc $readini($char($1), Descriptions, $2)
+  if (%tech.desc = $null) { var %tech.desc $readini($dbfile(techniques.db), $2, desc) }
+  $display.message(03 $+ %user $+  %tech.desc, battle) 
 
   var %caster.flag $readini($char($1), info, flag)
   if ($readini($char($1), status, confuse) = yes) { var %caster.flag monster }
@@ -1508,7 +1511,10 @@ alias tech.aoe {
 
   var %enemy all targets
 
-  $display.message(03 $+ %user  $+ $readini($dbfile(techniques.db), $2, desc), battle)
+  var %tech.desc $readini($char($1), Descriptions, $2)
+  if (%tech.desc = $null) { var %tech.desc $readini($dbfile(techniques.db), $2, desc) }
+  $display.message(03 $+ %user $+  %tech.desc, battle) 
+
   set %showed.tech.desc true
 
   if ($readini($dbfile(techniques.db), $2, absorb) = yes) { set %absorb absorb }

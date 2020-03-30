@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/06/19
+;;;; Last updated: 3/30/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2739,6 +2739,7 @@ clear_skill_timers {
   remini $char($1) skills luciddreaming.time | remini $char($1) skills softblows.time | remini $char($1) skills analysis.time
   remini $char($1) skills trickattack.on  | remini $char($1) skills sneakattack.on 
   remini $char($1) skills sentinel.on | remini $char($1) skills sentinel.used | remini $char($1) skills sentinel.turn
+  remini $char($1) skills bribe.time
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4195,6 +4196,140 @@ conquest.display {
 
     $display.message($readini(translation.dat, conquest, ConquestRecord), private) 
   }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; BEASTMAN ENMITY
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+benmity.check {
+  ; $1 = the beastmen type we're checking (quadav, orc, yagudo, etc)
+
+  var %beastmen quadav.orc.yagudo.lamia
+  if ($istok(%beastmen,$1,46) = $false) { $display.message($readini(translation.dat, errors, NotValidBeastman), private) | halt }
+
+  var %benmity.level $readini(battlestats.dat, BeastmenEnmity, $1 $+ .level)
+  if (%benmity.level = $null) { var %benmity.level 0 }
+
+
+  if ($benmity.activetribe != $1) { 
+    if (%benmity.level = 0) { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, 0) }
+    if ((%benmity.level >= 1) && (%benmity.level <= 3)) { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, 1) }
+    if ((%benmity.level > 3) && (%benmity.level <= 5)) { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, 2) }
+    if ((%benmity.level > 5) && (%benmity.level <= 6)) { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, 3) }
+    if ((%benmity.level > 6) && (%benmity.level <= 8)) { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, 4) }
+    if (%benmity.level > 8)  { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, 5) }
+  }
+  else { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, SummonedPrimal) }
+
+  $display.message($readini(translation.dat, system, CheckBeastmenEnmity), private) 
+}
+benmity.enmity {
+  ; This commands adds or removes enmity and checks to see if a primal needs to be summoned.
+
+  ; $1 = the beastmen type we're summoning
+  ; $2 = add/remove/reset
+  ; $3 = the amount
+
+  if ($2 = add) { 
+    if (%battle.type = dungeon) { return }
+
+    var %current.enmity $readini(battlestats.dat, BeastmenEnmity, $1 $+ .points)
+    if (%current.enmity = $null) { var %current.enmity 0 }
+    inc %current.enmity $3 
+
+    ; check to see if the threat level needs to be upgraded.
+    if (%current.enmity >= 100) { 
+      dec %current.enmity 100 
+      var %current.enmity.level $readini(battlestats.dat, Beastmenenmity, $1 $+ .level)
+      if (%current.enmity.level = $null) { var %current.enmity.level 1 }
+      inc %current.enmity.level 1
+      writeini battlestats.dat BeastmenEnmity $1 $+ .level %current.enmity.level    
+    }
+
+    writeini battlestats.dat BeastmenEnmity $1 $+ .points %current.enmity
+    $benmity.primalsummon($1)
+  }
+
+  if ($2 = remove) { 
+    ; removes the enmity from $1 's tribe
+
+    var %current.enmity $readini(battlestats.dat, BeastmenEnmity, $1 $+ .points)
+    dec %current.enmity $3 
+    if ((%current.enmity = $null) || (%current.enmity < 0)) { var %current.enmity 0 }
+    writeini battlestats.dat BeastmenEnmity $1 $+ .points %current.enmity
+  }
+
+  if ($2 = reset) { 
+    ; Used for when the dungeon is cleared.
+    remini battlestats.dat BeastmenEnmity ActiveTribe
+    remini battlestats.dat BeastmenEnmity ActivePrimal
+    writeini battlestats.dat BeastmenEnmity $1 $+ .Points 0
+    writeini battlestats.dat BeastmenEnmity $1 $+ .Level 0
+  }
+
+}
+
+benmity.primalsummon { 
+  ; $1 = the beastmen type we're summoning
+
+  ; Is there a tribe already active? If so, return
+  if ($readini(battlestats.dat, BeastmenEnmity, ActiveTribe) != $null) { return }
+
+  ; Base chance of summoning a primal is only 8%
+  var %base.primal.chance 8
+
+  ; It increases based on the current enmity level
+  var %current.enmity.level $readini(battlestats.dat, Beastmenenmity, $1 $+ .level)
+  var %base.primal.chance $round($calc(%base.primal.chance + (%current.enmity.level * 2.5)),0)
+
+  ; Let's roll the dice and see if a primal is summoned     
+  var %rng.roll $rand(1,100)
+  if (%rng.roll > %base.primal.chance) { return }
+
+  ; success at this point.  Which primal are we summoning?
+
+  if ($1 = orc) { 
+    if (%current.enmity.level <= 3) { var %primal.name FalsespinnerBhudbrodd }
+    else { var %primal.name BhurtrusPlagueBearer }
+  }
+
+  if ($1 = yagudo) { 
+    var %primal.name GarudaPrime
+  }  
+
+  if ($1 = quadav) {   
+    var %primal.name SusanoPrime
+  }
+
+  if ($1 = lamia) {  
+    if (%current.enmity.level <= 3) { var %primal.name MedusaPrime }
+    else { var %primal.name LakshmiPrime }
+  }
+
+  writeini battelstats.dat BeastmenEnmity ActiveTribe $1
+
+  ; Tell the world
+  $display.message($readini(translation.dat, System, BeastmenSummonPrimal), private)
+
+}
+
+benmity.activetribe {
+  var %active.tribe $readini(battlestats.dat, BeastmenEnmity, ActiveTribe)
+  if (%active.tribe = $null) { return none }
+  else { return %active.tribe }
+}
+
+benmity.activeprimal {
+  var %active.primal $readini(battlestats.dat, BeastmenEnmity, ActivePrimal)
+  if (%active.primal = $null) { return none }
+  else { return %active.primal }
+}
+
+benmity.activestronghold {
+  if ($1 = orc) { return Monastic Cavern }
+  if ($1 = quadav) { return Qulun Dome }
+  if ($1 = yagudo) { return Castle Oztroja }
+  if ($1 = lamia) { return Ilrusi Atoll }
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
