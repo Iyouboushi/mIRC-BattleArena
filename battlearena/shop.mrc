@@ -1551,7 +1551,7 @@ alias shop.valor {
     $display.private.message(02Everything listed here is purchased using Valor Medals.)
 
     $display.private.message.delay.custom(02Purchase a  07Thief'sMap02 Item05: 20,2)
-    $display.private.message.delay.custom(02Purchase a  07AlliedLockBox02 Item05: 35,2) 
+    $display.private.message.delay.custom(02Purchase an  07AlliedLockBox02 Item05: 35,2) 
     $display.private.message.delay.custom(02Reset Daily 07Portal02 Usage05: 50,2) 
     $display.private.message.delay.custom(02Reset Daily 07Dungeon02 Usage05: 50,2)
 
