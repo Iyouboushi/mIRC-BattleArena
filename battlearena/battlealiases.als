@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/30/20
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -10,7 +10,10 @@
 check_for_battle { 
   if (%wait.your.turn = on) { $display.message($readini(translation.dat, errors, WaitYourTurn), private) | halt }
   if ((%battleis = on) && (%who = $1)) { return }
-  if ((%battleis = on) && (%who != $1)) { $display.message($readini(translation.dat, errors, WaitYourTurn), private) | halt }
+  if ((%battleis = on) && (%who != $1)) { 
+    if ($2 != counter) { $display.message($readini(translation.dat, errors, WaitYourTurn), private) | halt }
+    return
+  }
   else { return  }
 }
 
@@ -1880,6 +1883,21 @@ taunt {
   ; Clear the BattleNext timer until this action is finished
   /.timerBattleNext off
 
+  ; This is for a specific monster that needs to be able to taunt but not do the normal taunt stuff..
+  var %taunt $readini($char($1), Descriptions, TauntMessage)
+  if (%taunt != $null) { 
+    $display.message(02 $+ %real.name  $+ %taunt, battle) 
+
+    ; Decrease the action points
+    $action.points($1, remove, 1)
+
+    ; Time to go to the next turn
+    if (%battleis = on)  { $check_for_double_turn($1) }
+  }
+
+  ; Back to the normal taunt stuff..
+
+
   ; Add some style to the taunter.
   set %stylepoints.to.add $rand(60,80)
   set %current.playerstyle $readini($char($1), styles, equipped)
@@ -1900,8 +1918,8 @@ taunt {
   if ($isfile($txtfile(%taunt.file)) = $false) { var %taunt.file taunts.txt } 
   if (%taunt.file = $null) {  var %taunt.file taunts.txt }
 
-  var %taunt $read($txtfile(%taunt.file))
 
+  var %taunt $read($txtfile(%taunt.file))
   $display.message(02 $+ %real.name looks at $set_chr_name($2) %real.name and says " $+ %taunt $+ "  %style.rating, battle) 
 
   : If the monster is HurtByTaunt, do damage.  Else, do a random effect.
@@ -3262,14 +3280,16 @@ counter_melee {
 
   if ($readini($char($1), status, ethereal) = yes) { return }
   if (%guard.message != $null) { return }
-  if ($readini($char($2), info, ai_type) = techonly) { return }
 
   if ($readini($char($2), info, MetalDefense) = true) { return }
 
-  if ($readini($char($2), info, ai_type) = counteronly) { $counter_melee_action($1, $2, $3) | return }
-  if ($readini($char($2), info, ai_type) = defender) { return }
-  if ($readini($char($2), info, ai_type) = portal) { return }
-  if ($readini($char($2), info, ai_type) = healer) { return }
+  var %ai_type $readini($char($2), info, ai_type)
+
+  if (%ai_type = techonly) { return }
+  if (%ai_type = counteronly) { $counter_melee_action($1, $2, $3) | return }
+  if (%ai_type = defender) { return }
+  if (%ai_type = portal) { return }
+  if (%ai_type = healer) { return }
 
   if ($2 = orb_fountain) { return }
   if ($2 = lost_soul) { return }
@@ -4014,6 +4034,17 @@ offensive.style.check {
       }    
     }
 
+    ; Check SharpShooter for gun/bow damage
+    if (%current.playerstyle = SharpShooter) {
+      var %weapon.type $readini($dbfile(weapons.db), $2, type) 
+      if (((%weapon.type = Gun) || (%weapon.type = Rifle) || (%weapon.type = Bow))) {
+        var %amount.to.increase $calc(.05 * %current.playerstyle.level)
+        if (%amount.to.increase >= .80) { var %amount.to.increase .80 }
+        var %hmr.increase $round($calc(%amount.to.increase * %attack.damage),0)
+        inc %attack.damage %hmr.increase
+      }    
+    }
+
     ; Check for Wrestlemania for HandToHand damage
     if (%current.playerstyle = Wrestlemania) {
       if ($readini($dbfile(weapons.db), $2, type) = HandToHand) {
@@ -4089,6 +4120,24 @@ barrage_check {
   if ($istok(%ranged.types, %weapon.type.check, 46) = $false) { return false }
 
   if ($readini($char($1), skills, barrage.on) = on) { return true }
+  else { return false }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks to see if the overcharge
+; skill is on and if the weapon is
+; a ranged weapon or not
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+overcharge_check {
+  ; $1 = the person we're checking
+  ; $2 = the weapon name
+
+  var %weapon.type.check $readini($dbfile(weapons.db), $readini($char($1), weapons, equipped), type)
+
+  var %ranged.types bow.gun.rifle
+  if ($istok(%ranged.types, %weapon.type.check, 46) = $false) { return false }
+
+  if ($readini($char($1), skills, overcharge.on) = on) { return true }
   else { return false }
 }
 
@@ -4219,7 +4268,7 @@ utsusemi.check {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Check to see if Royal
+; Check to see if Royal
 ; Guard is on.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 royalguard.check {

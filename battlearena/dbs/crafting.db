@@ -991,6 +991,24 @@ ArcaneDust=1000
 Clom'sTale-06=10
 Forbidden-Earrings+1=1
 
+[OniGauntlet+1]
+Gem=Diamond
+Ingredients=OniGauntlet.OrbCrystal.Clom'sTale-06
+SuccessRate=100
+Amount=1
+Clom'sTale-06=1
+OniGauntlet=1
+OrbCrystal=100
+
+[OniGauntlet+2]
+Gem=Diamond
+Ingredients=OniGauntlet+1.OrbCrystal.Clom'sTale-06
+SuccessRate=100
+Amount=1
+Clom'sTale-06=1
+OniGauntlet=1
+OrbCrystal=500
+
 [Forbidden-Crown]
 Gem=Diamond
 Ingredients=ForbiddenFragment

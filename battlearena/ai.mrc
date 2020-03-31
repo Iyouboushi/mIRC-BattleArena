@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 05/17/19
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -155,6 +155,8 @@ alias ai_turn {
 
   unset %total.actions |  unset %random.action 
 
+  if (%ai.action = rest) { $rest.cmd($1) | halt }
+
   if (($readini($char($1), info, ai_type) = PayToAttack) && (%ai.tech != $null)) { set %ai.action tech }
 
   if ($readini($char($1), info, ai_type) = counteronly) { set %ai.action taunt }
@@ -195,6 +197,7 @@ alias ai_turn {
     if (%ai.target = $null) { echo -a target null | set %ai.action taunt }
     else { $attack_cmd($1, %ai.target) | halt }
   }
+
 
   if (%ai.action = limitbreak) { $ai_gettarget($1) 
     if (%ai.target = $null) { echo -a target null! | set %ai.action $iif($readini($char($1), info, ai_type) = techonly, taunt, attack)  }

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ATTACKS COMMAND
-;;;; Last updated: 09/06/19
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:attacks *:#:{ 
@@ -172,8 +172,23 @@ alias attack_cmd {
     }
 
     if (%counterattack = on) { 
-      $deal_damage($2, $1, %weapon.equipped, melee)
-      $display_damage($1, $2, weapon, %weapon.equipped)
+      var %counter.type $readini($char($2), info, countertype)
+
+      if (%counter.type != tech) {     
+        $deal_damage($2, $1, %weapon.equipped, melee)
+        $display_damage($1, $2, weapon, %weapon.equipped)
+      }
+
+      if (%counter.type = tech) {
+        var %counter.tech $readini($char($2), info, countertech)
+
+        if (%counter.tech = $null) { 
+          $deal_damage($2, $1, %weapon.equipped, melee)
+          $display_damage($1, $2, weapon, %weapon.equipped)
+        }
+        $display.message($readini(translation.dat, battle, MeleeCountered), battle)
+        $tech_cmd($2, %counter.tech, $1, counter) 
+      }
     }
 
     if (%counterattack = shield) { 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 12/04/19
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -861,7 +861,13 @@ lookat {
 rest.cmd {
   $no.turn.check($1)
   $check_for_battle($1)
-  $display.message($readini(translation.dat, Battle,RestMessage),battle)
+
+  var %rest.message $readini($char($1), Descriptions, Restmessage)
+  if (%rest.message = $null) { var %rest.message $readini(translation.dat, Battle,RestMessage) }
+  $display.message(12 $+ %rest.message, battle)  
+
+  if ($readini($char($1), n, Info, AfterRest) != $null) { $readini($char($1), p, Info, AfterRest) }
+
   $next | halt
 }
 
@@ -1010,6 +1016,7 @@ player.skills.list {
   if ($readini($char($1), skills, duality.on) = on) { $skills_message_check(02Duality) }
   if ($readini($char($1), skills, thinair.on) = on) { $skills_message_check(02Thin Air) }
   if ($readini($char($1), skills, quickpockets.on) = on) { $skills_message_check(02Quick Pockets) }
+  if ($readini($char($1), skills, overcharge.on) = on) { $skills_message_check(02Overcharge) }
 
   set %cover.target $readini($char($1), skills, CoverTarget)
   if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(02Covered by %cover.target) }

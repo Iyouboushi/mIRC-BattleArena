@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 12/06/19
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
@@ -1470,7 +1470,7 @@ on 50:TEXT:!customtitle *:*:{
 on 3:TEXT:!rest:*: { 
   if ($is_charmed($nick) = true) { $display.message($readini(translation.dat, status, CurrentlyCharmed),private) | halt }
   if ($is_confused($nick) = true) { $set_chr_name($nick) | $display.message($readini(translation.dat, status, CurrentlyConfused),private) | halt }
-  if (%battle.type != dungeon) { $display.message($readini(translation.dat, errors, CanOnlyUseCommandInDungeons), private) | halt }
+  if ((%battle.type != dungeon) && ($readini($char($nick), Info, Flag) = $null)) { $display.message($readini(translation.dat, errors, CanOnlyUseCommandInDungeons), private) | halt }
 
   $rest.cmd($nick)
 }

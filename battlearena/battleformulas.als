@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/29/20
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -374,6 +374,12 @@ calculate.damage.rating.melee {
     }
   }
 
+  ; Check for the "Overcharge" skill with ranged weapons
+  if ($overcharge_check($1) = true) { 
+    %damage.rating = $calc(%damage.rating * 1.3)
+    writeini $char($1) skills overcharge.on off
+  }
+
   if ($person_in_mech($1) = false) { 
     ;  Check for the miser ring accessory
 
@@ -403,9 +409,7 @@ calculate.damage.rating.melee {
   unset %current.accessory.type
 
   return %damage.rating
-
 }
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Calculates damage rating
@@ -482,6 +486,11 @@ calculate.damage.rating.tech {
       writeini $char($1) skills elementalseal.on off
     }
 
+    if ($overcharge_check($1) = true) { 
+      inc %damage.rating 500
+      writeini $char($1) skills overcharge.on off
+    }
+
     if ($augment.check($1, MagicBonus) = true) { 
       var %magic.bonus.augment $calc(%augment.strength * 100)
       inc %damage.rating %magic.bonus.augment
@@ -493,7 +502,6 @@ calculate.damage.rating.tech {
 
   return %damage.rating
 }
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Checks all the various

@@ -1734,5 +1734,9 @@ Battle Arena Bot VERSIONS
 - Added Beastmen Tribe Enmity and the ability for Beastmen to summon powerful Primals once their enmity reaches a certain point. 
   When a primal is summoned a new dungeon key item named PrimalSigil will be available for purchase. Using it will start a short dungeon 
   that will end with a fight of the primal.
+- Added the SharpShooter style. This style will enhance damage done with ranged weapons (guns, rifles and bows) and will give access to
+  the !Overcharge command that will further enhance damage done with those weapon types.
+- Added the Valor shop to the game. !shop list valor and !shop buy valor item   The valor shop uses ValorMedals as the currency.
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
+- Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.

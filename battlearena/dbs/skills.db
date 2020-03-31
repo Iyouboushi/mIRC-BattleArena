@@ -810,6 +810,18 @@ NeedToEquip=False
 Style=Guardian
 StyleSkill=true
 
+[Overcharge]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill will instantly enhance your next attack with a gun or bow.  This move can only be performed in the SharpShooter style.
+ActionPoints=1
+Instant=True
+NeedToEquip=False
+Style=Guardian
+StyleSkill=true
+
 [PerfectCounter]
 Cost=0
 CoinCost=0

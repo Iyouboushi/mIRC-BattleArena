@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 10/12/19
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -62,7 +62,7 @@ alias shop.exchange {
 alias shop.categories.list {
   $display.private.message(02Valid shop categories:)
   $display.private.message(02Items $+ $chr(44) Techs $+ $chr(44) Skills $+ $chr(44) Stats $+ $chr(44) Weapons $+ $chr(44) Styles $+ $chr(44) Ignitions $+ $chr(44) Orbs $+ $chr(44) KillCoins $+ $chr(44) Portal $+ $chr(44) Misc) 
-  $display.private.message(02Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards $+ $chr(44) AlliedForces $+ $chr(44) LimitBreaks $+ $chr(44) MonsterFair)
+  $display.private.message(02Mech $+ $chr(44) Mech Items $+ $chr(44) Shields $+ $chr(44) Enhancement $+ $chr(44) Trusts $+ $chr(44) PotionEffect $+ $chr(44) DungeonKeys $+ $chr(44) TradingCards $+ $chr(44) AlliedForces $+ $chr(44) LimitBreaks $+ $chr(44) MonsterFair $+ $chr(44) Valor)
   if ($left($adate, 2) = 10) {  $display.private.message(02Halloween) }
 }
 
@@ -117,6 +117,7 @@ alias shop.start {
 
     if ($3 = halloween) { $shop.halloween($nick, buy, $4, %amount.to.purchase) | halt }
     if (($3 = enhancement) || ($3 = enhancements))  { $shop.enhancements($nick, buy, $4, %amount.to.purchase) | halt }
+    if ($3 = valor) { $shop.valor($nick, buy, $4) | halt }
     if (($3 = items) || ($3 = item))  { $shop.items($nick, buy, $4, %amount.to.purchase) | halt }
     if ((($3 = techs) || ($3 = techniques) || ($3 = tech))) { $shop.techs($nick, buy, $4, %amount.to.purchase) | halt  }
     if (($3 = skills) || ($3 = skill)) { $shop.skills($nick, buy, $4, %amount.to.purchase) | halt  }
@@ -170,7 +171,7 @@ alias shop.start {
 
   if ($2 = list) { 
 
-    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards.alliedforces.killcoins.limitbreaks.monsterfair
+    var %valid.categories stats.stat.items.item.techs.techniques.skills.skill.weapons.weapon.orbs.style.styles.ignition.ignitions.portal.portals.alchemy.misc.alliednotes.gems.mech.mech items.shield.shields.enhancement.enhancements.trusts.potioneffect.potioneffects.dungeonkey.dungeonkeys.halloween.tradingcards.alliedforces.killcoins.limitbreaks.monsterfair.valor
     if ($istok(%valid.categories, $3, 46) = $false) { 
       $display.private.message(04Error: Use 02!shop list category04 or 02!shop buy category itemname)
       $shop.categories.list 
@@ -180,6 +181,7 @@ alias shop.start {
     else {
       if ($3 = halloween) { $shop.halloween($nick, list) }
       if (($3 = enhancement) || ($3 = enhancements))  { $shop.enhancements($nick, list) }
+      if ($3 = valor) { $shop.valor($nick, list, $4) | halt }
       if (($3 = stats) || ($3 = stat)) { $shop.stats($nick, list) }
       if (($3 = items) || ($3 = item)) { $shop.items($nick, list) }
       if (($3 = tradingcards) || ($3 = tradingcard)) { $shop.tradingcards($nick, list) }
@@ -1538,6 +1540,74 @@ alias shop.enhancements {
 
     if ($3 = DailyPortalUsage) {
       $display.private.message(03You spend $bytes(%enhancement.cost,b) Enhancement Points and feel your Daily Portal Usage Limit increase! You can now do $calc($portal.dailymaxlimit + $readini($char($1), enhancements, portalusage)) portals a day.)
+    }
+  }
+}
+
+alias shop.valor {
+  if ($2 = list) {
+    unset %shop.list
+
+    $display.private.message(02Everything listed here is purchased using Valor Medals.)
+
+    $display.private.message.delay.custom(02Purchase a  07Thief'sMap02 Item05: 20,2)
+    $display.private.message.delay.custom(02Purchase a  07AlliedLockBox02 Item05: 35,2) 
+    $display.private.message.delay.custom(02Reset Daily 07Portal02 Usage05: 50,2) 
+    $display.private.message.delay.custom(02Reset Daily 07Dungeon02 Usage05: 50,2)
+
+    $display.private.message.delay.custom(02To purchase an item in this shop use !shop buy valor 07Item in Gold Here02!, 3)
+  }
+
+  if (($2 = buy) || ($2 = purchase)) {
+    ; is it a valid item?
+    var %valid.purchase.items portal.dungeon.thief'smap.alliedlockbox
+
+    if ($istok(%valid.purchase.items, $lower($3), 46) = $false) { $display.private.message(04You cannot purchase that in this shop) | halt }
+
+    ; do you have enough to buy it?
+    var %valor.medals $readini($char($1), Item_Amount, ValorMedal)
+
+    if ($3 = dungeon) { var %valor.cost 50 }
+    if ($3 = portal) { var %valor.cost 50 }
+    if ($3 = Thief'sMap) { var %valor.cost 20 }
+    if ($3 = AlliedLockBox) { var %valor.cost 35 }
+
+    if (%valor.medals < %valor.cost) { $display.private.message(04You do not have enough Valor Medals to purchase this!) | halt }
+
+    ; Go ahead and spend it.
+    var %number.of.valor.spent $readini($char($1), stuff, ValorMedalsSpent)
+    if (%number.of.valor.spent = $null) { var %number.of.valor.spent 0 }
+    inc %number.of.valor.spent %valor.cost
+    writeini $char($1) stuff ValorMedalsSpent %number.of.valor.spent
+    $achievement_check($1, InValorThereIsHope)
+
+    ; Decrease the player's valor medals
+    dec %valor.medals %valor.cost
+    writeini $char($1) Item_Amount ValorMedal %valor.medals
+
+    ; Do the purchase
+    if ($3 = portal) {
+      $display.private.message(03You spend $bytes(%valor.cost,b) valor medals and feel your Daily Portal Usage Limit reset! You can now do portals again today.)
+      writeini $char($1) Info PortalsUsedTotal 0
+    }
+
+    if ($3 = dungeon) {
+      $display.private.message(03You spend $bytes(%valor.cost,b) valor medals and feel your Daily Dungeon Limit reset! You can now do another dungeon again today.)
+      remini $char($1) Info LastDungeonStartTime
+    }
+
+    if ($3 = Thief'sMap) {
+      $display.private.message(03You spend $bytes(%valor.cost,b) valor medals and are handed a dusty old Thief's Map!)
+      var %thiefmap.count $item.amount($1, Thief'sMap)
+      inc %thiefmap.count 1
+      writeini $char($1) Item_Amount Thief'sMap %thiefmap.count
+    }
+
+    if ($3 = AlliedLockBox) {
+      $display.private.message(03You spend $bytes(%valor.cost,b) valor medals and are handed an Allied Lockbox! What item lies within?)
+      var %alliedbox.count $item.amount($1, AlliedLockBox)
+      inc %alliedbox.count 1
+      writeini $char($1) Item_Amount AlliedLockBox %alliedbox.count
     }
 
   }
@@ -3449,7 +3519,12 @@ alias shop.mythic {
     }
 
     if ($3 = BasePower) { 
-      var %upgrade.cost 10 | var %upgrade.amount 5
+      var %upgrade.cost 10 | var %upgrade.amount 5 | var %upgrade.purchase $4
+
+      if (((%upgrade.purchase !isnum) || (%upgrade.purchase <= 0) || (%upgrade.amount = $null))) { var %upgrade.purchase 1 } 
+      var %upgrade.cost $calc(%upgrade.cost * %upgrade.purchase)
+      var %upgrade.amount $calc(%upgrade.amount * %upgrade.purchase)
+
       $mythic.upgrade.costcheck($1, %upgrade.cost)
 
       var %current.basepower $readini($char($1), Mythic, BasePower) 
@@ -3498,7 +3573,10 @@ alias shop.mythic {
     }
 
     if ($3 = IgnoreDefense) { 
-      var %upgrade.cost 20 | var %upgrade.amount 1 
+      var %upgrade.cost 20 | var %upgrade.amount $4
+      if (((%upgrade.amount !isnum) || (%upgrade.amount <= 0) || (%upgrade.amount = $null))) { var %upgrade.amount 1 } 
+      var %upgrade.cost $calc(%upgrade.cost * %upgrade.amount)
+
       $mythic.upgrade.costcheck($1, %upgrade.cost)
 
       var %current.ignoredef $readini($char($1), Mythic, IgnoreDefense) 

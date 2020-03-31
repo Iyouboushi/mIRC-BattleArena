@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ACHIEVEMENTS 
-;;;; Last updated: 03/13/19
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:!clear achievement*:*:{
@@ -522,6 +522,13 @@ alias achievement_check {
     }
   }
 
+  if ($2 = InValorThereIsHope) { 
+    var %total.valormedals.spent $readini($char($1), stuff, ValorMedalsSpent) 
+    if (%total.valormedals.spent >= 100) {  writeini $char($1) achievements $2 true 
+      $announce_achievement($1, $2, 10)
+      var %current.cosmicorbs $readini($char($1), item_amount, CosmicOrb) | inc %current.cosmicorbs 10 | writeini $char($1) item_amount CosmicOrb %current.cosmicorbs
+    }
+  }
 }
 
 alias achievement_already_unlocked {

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/30/20
+;;;; Last updated: 03/31/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -23,80 +23,81 @@ alias use.skill {
 
   if ($4 != $null) { $partial.name.match($1, $4) }
 
-  if ($3 = speed) { $skill.speedup($1) }
-  if ($3 = elementalseal) { $skill.elementalseal($1) }
-  if ($3 = mightystrike) { $skill.mightystrike($1) }
-  if ($3 = perfectdefense) { $skill.perfectdefense($1) }
-  if ($3 = truestrike) { $skill.truestrike($1) }
-  if ($3 = manawall) { $skill.manawall($1) } 
-  if ($3 = royalguard) { $skill.royalguard($1) }
-  if ($3 = utsusemi) { $skill.utsusemi($1) }
-  if ($3 = fullbring) { $skill.fullbring($1, %attack.target) }
-  if ($3 = doubleturn) { $skill.doubleturn($1) } 
-  if ($3 = sugitekai) { $skill.doubleturn($1) } 
-  if ($3 = meditate) { $skill.meditate($1) }
-  if ($3 = conserveTP) { $skill.conserveTP($1) } 
-  if ($3 = thinair) { $skill.thinair($1) } 
-  if ($3 = sentinel) { $skill.sentinel($1) } 
+  if ($3 = aggressor) { $skill.aggressor($1) } 
+  if ($3 = alchemy) { $skill.alchemy($1, %attack.target) } 
+  if ($3 = analysis) { $skill.analysis($1, %attack.target) } 
+  if ($3 = barrage) { $skill.barrage($1) }
   if ($3 = bloodboost) { $skill.bloodboost($1) } 
   if ($3 = bloodspirit) { $skill.bloodspirit($1) } 
+  if ($3 = bribe) { $skill.bribe($1, %attack.target, $3) }
+  if ($3 = conserveTP) { $skill.conserveTP($1) } 
+  if ($3 = cover) { $skill.cover($1, %attack.target) } 
+  if ($3 = craft) { $skill.alchemy($1, %attack.target) }  
+  if ($3 = criticalfocus) { $skill.criticalfocus($1) }
+  if ($3 = defender) { $skill.defender($1) }
+  if ($3 = disarm) { $skill.disarm($1, %attack.target) } 
+  if ($3 = doublecast) { $skill.doublecast($1) }
+  if ($3 = doubleturn) { $skill.doubleturn($1) } 
   if ($3 = drainsamba) { $skill.drainsamba($1) } 
+  if ($3 = duality) { $skill.duality($1) }
+  if ($3 = elementalseal) { $skill.elementalseal($1) }
   if ($3 = formlessstrike) { $skill.formlessstrike($1) } 
+  if ($3 = fullbring) { $skill.fullbring($1, %attack.target) }
+  if ($3 = gamble) { $skill.gamble($1) }
+  if ($3 = holyaura) { $skill.holyaura($1) } 
+  if ($3 = invigorate) { $skill.invigorate($1) }
+  if ($3 = justrelease) { $skill.justrelease($1, %attack.target, !justrelease) } 
+  if ($3 = kikouheni) { $skill.kikouheni($1, %attack.target) }
+  if ($3 = konzen-ittai) { $skill.konzen-ittai($1) } 
+  if (($3 = lockpicking) || ($3 = lockpick)) { $skill.lockpicking($1) } 
+  if ($3 = LucidDreaming) { $skill.luciddreaming($1) }
+  if ($3 = magicmirror) { $skill.magicmirror($1) }
+  if ($3 = manawall) { $skill.manawall($1) } 
+  if ($3 = meditate) { $skill.meditate($1) }
+  if ($3 = mightystrike) { $skill.mightystrike($1) }
+  if ($3 = overcharge) { $skill.overcharge($1) } 
+  if ($3 = perfectcounter) { $skill.perfectcounter($1) }
+  if ($3 = perfectdefense) { $skill.perfectdefense($1) }
+  if ($3 = provoke) { $skill.provoke($1, %attack.target) }
+  if ($3 = quickpockets) { $skill.quickpockets($1) }
+  if ($3 = quicksilver) { $skill.quicksilver($1) } 
   if (($3 = regen) && ($4 = $null)) { $skill.regen($1) } 
   if (($3 = regen) && ($4 = stop)) { $skill.regen.stop($1) } 
   if (($3 = regeneration) && ($4 = $null)) { $skill.regen($1) } 
   if (($3 = regeneration) && ($4 = stop)) { $skill.regen.stop($1) } 
-  if ($3 = kikouheni) { $skill.kikouheni($1, %attack.target) }
-  if ($3 = shadowcopy) { $skill.clone($1) }  
-  if ($3 = steal) { $skill.steal($1, %attack.target, !steal) } 
-  if ($3 = analysis) { $skill.analysis($1, %attack.target) } 
-  if ($3 = quicksilver) { $skill.quicksilver($1) } 
-  if ($3 = cover) { $skill.cover($1, %attack.target) } 
-  if ($3 = aggressor) { $skill.aggressor($1) } 
-  if ($3 = defender) { $skill.defender($1) }
-  if ($3 = shieldfocus) { $skill.shieldfocus($1) }
-  if ($3 = alchemy) { $skill.alchemy($1, %attack.target) } 
-  if ($3 = craft) { $skill.craft($1, %attack.target) }  
-  if ($3 = holyaura) { $skill.holyaura($1) } 
-  if ($3 = provoke) { $skill.provoke($1, %attack.target) }
-  if ($3 = weaponlock) { $skill.weaponlock($1, %attack.target) }  
-  if ($3 = disarm) { $skill.disarm($1, %attack.target) } 
-  if ($3 = konzen-ittai) { $skill.konzen-ittai($1) } 
-  if ($3 = sealbreak) { $skill.sealbreak($1) }
-  if ($3 = magicmirror) { $skill.magicmirror($1) }
-  if ($3 = gamble) { $skill.gamble($1) }
-  if ($3 = thirdeye) { $skill.thirdeye($1) }
-  if ($3 = barrage) { $skill.barrage($1) }
-  if ($3 = doublecast) { $skill.doublecast($1) }
-  if ($3 = criticalfocus) { $skill.criticalfocus($1) }
-  if ($3 = scavenge) { $skill.scavenge($1) }
-  if ($3 = perfectcounter) { $skill.perfectcounter($1) }
-  if ($3 = justrelease) { $skill.justrelease($1, %attack.target, !justrelease) } 
   if ($3 = retaliation) { $skill.retaliation($1) } 
-  if (($3 = lockpicking) || ($3 = lockpick)) { $skill.lockpicking($1) } 
-  if ($3 = stoneskin) { $skill.stoneskin($1) }
-  if ($3 = tabularasa) { $skill.tabularasa($1, %attack.target) }
+  if ($3 = royalguard) { $skill.royalguard($1) }
+  if ($3 = scavenge) { $skill.scavenge($1) }
+  if ($3 = sealbreak) { $skill.sealbreak($1) }
+  if ($3 = sentinel) { $skill.sentinel($1) }  
+  if ($3 = shadowcopy) { $skill.clone($1) }    
+  if ($3 = shieldfocus) { $skill.shieldfocus($1) }
   if ($3 = snatch) { $skill.snatch($1, %attack.target) }
-  if ($3 = warp) { $skill.warp($1, %attack.target-) } 
-  if ($3 = wrestle) { $skill.wrestle($1, %attack.target) }
-  if ($3 = invigorate) { $skill.invigorate($1) }
-  if ($3 = ThrillOfBattle) { $skill.thrillofbattle($1) } 
-  if ($3 = duality) { $skill.duality($1) }
-  if ($3 = quickpockets) { $skill.quickpockets($1) }
-  if ($3 = LucidDreaming) { $skill.luciddreaming($1) }
-  if ($3 = trickattack) { $skill.trickattack($1) }
   if ($3 = sneakattack) { $skill.sneakattack($1) }
-  if ($3 = bribe) { $skill.bribe($1, %attack.target, $3) }
+  if ($3 = speed) { $skill.speedup($1) }
+  if ($3 = steal) { $skill.steal($1, %attack.target, !steal) } 
+  if ($3 = stoneskin) { $skill.stoneskin($1) }
+  if ($3 = sugitekai) { $skill.doubleturn($1) } 
+  if ($3 = tabularasa) { $skill.tabularasa($1, %attack.target) }
+  if ($3 = thinair) { $skill.thinair($1) } 
+  if ($3 = thirdeye) { $skill.thirdeye($1) }
+  if ($3 = ThrillOfBattle) { $skill.thrillofbattle($1) } 
+  if ($3 = trickattack) { $skill.trickattack($1) }
+  if ($3 = truestrike) { $skill.truestrike($1) }
+  if ($3 = utsusemi) { $skill.utsusemi($1) }
+  if ($3 = warp) { $skill.warp($1, %attack.target-) } 
+  if ($3 = weaponlock) { $skill.weaponlock($1, %attack.target) }  
+  if ($3 = wrestle) { $skill.wrestle($1, %attack.target) }
+
 
   ; Below are monster-only skills
-
-  if ($3 = magicshift) { $skill.magic.shift($1) }
-  if ($3 = demonportal) { $skill.demonportal($1) }
   if ($3 = cocoon) { $skill.cocoon.evolve($1) }
   if ($3 = cocoonevolve) { $skill.cocoon.evolve($1) }
+  if ($3 = demonportal) { $skill.demonportal($1) }
+  if ($3 = flying) { $skill.flying($1) }
+  if ($3 = magicshift) { $skill.magic.shift($1) }
   if ($3 = monsterconsume) { $skill.monster.consume($1, %attack.target) }
   if ($3 = repairNaturalArmor) { $skill.monster.repairnaturalarmor($1, %attack.target) }
-  if ($3 = flying) { $skill.flying($1) }
   if ($3 = weaknessshift) { $skill.weaknessshift($1) }
 }
 
@@ -1239,7 +1240,6 @@ alias skill.quickpockets { $set_chr_name($1)
 ; SENTINEL
 ;=================
 on 3:TEXT:!sentinel*:*: { $skill.sentinel($nick) }
-on 3:TEXT:!sentinel*:*: { $skill.sentinel($nick) }
 
 alias skill.sentinel { $set_chr_name($1)
   if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
@@ -1292,6 +1292,54 @@ alias skill.sentinel { $set_chr_name($1)
 }
 
 
+;=================
+; OVERCHARGE
+;=================
+on 3:TEXT:!overcharge*:*: { $skill.overcharge($nick) }
+
+alias skill.overcharge { $set_chr_name($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+  $amnesia.check($1, skill) 
+  $checkchar($1)
+  if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently),private) | halt }
+
+  if (($return.playerstyle($1) != SharpShooter) && ($readini($char($1), info, flag) = $null)) { $display.message(04Error: This command can only be used while the SharpShooter style is equipped!, private) | halt }
+  if (%mode.pvp = on) { $display.message($readini(translation.dat, errors, ActionDisabledForPVP), private) | halt }
+
+  $check_for_battle($1)
+
+  if ($readini($char($1), info, flag) = $null) { 
+    var %current.playerstyle.level $readini($char($1), styles, $return.playerstyle($1))
+    var %overcharge.used $readini($char($1), skills, overcharge.used)
+    var %overcharge.turn $readini($char($1), skills, overcharge.turn)
+    if (%overcharge.used = $null) { set %overcharge.used 0 }
+    if (%overcharge.turn = $null) { set %overcharge.turn -1 }
+
+    if (%overcharge.used >= %current.playerstyle.level) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot use $gender($1) overcharge skill again this battle!,private) | unset %current.playerstyle | halt }
+    if (($calc(%overcharge.turn + 1) = %true.turn) || (%overcharge.turn = %true.turn)) { $set_chr_name($1) | $display.message(04 $+ %real.name cannot use $gender($1) overcharge skill again so quickly!, private) | unset %current.playerstyle | halt }
+  }
+
+  inc %overcharge.used 1 | writeini $char($1) skills overcharge.used %overcharge.used
+  writeini $char($1) skills overcharge.turn %true.turn
+
+  ; Decrease the action points
+  $action.points($1, remove, 1)
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, sentinel) = $null) { set %skill.description focuses energy into the next gun or bow attack causing it to deal more damage. }
+  else { set %skill.description $readini($char($1), descriptions, overcharge) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; Toggle the overcharge-on flag & write the last used time.
+  writeini $char($1) skills overcharge.on on
+  writeini $char($1) skills overcharge.turn %true.turn
+
+  writeini $txtfile(battle2.txt) style $1 $+ .lastaction overcharge
+
+  $skill.nextturn.check(Overcharge, $1)
+}
 
 ;=================
 ; BLOOD BOOST
@@ -4447,12 +4495,16 @@ alias skill.bribe { $set_chr_name($1)
   var %bribe.threshold $readini($char($2), BaseStats, HP)
   inc %bribe.threshold $rand(1,100)
 
-  if ($3 < %bribe.threshold) { var %bribe.chance 5 }
+  if ($3 < %bribe.threshold) { var %bribe.chance 4 }
   if ($3 = %bribe.threshold) { var %bribe.chance 10 }
   if ($3 > %bribe.threshold) {
     var %bribe.threshold $calc($3 - %bribe.threshold)
-    var %bribe.chance $round($calc(10 + (%bribe.threshold / 200)),0)
+    var %bribe.chance $round($calc(10 + (%bribe.threshold / 150)),0)
   }
+
+  var %current.playerstyle $return.playerstyle($1)
+  var %current.playerstyle.level $readini($char($1), styles, %current.playerstyle)
+  inc %bribe.chance %current.playerstyle.level
 
   var %bribe.roll $rand(1,100)
 

@@ -975,7 +975,7 @@ LockpickingInUse=$chr(3) $+ 04 $+ Error: %real.name cannot use the lockpicking
 LockpickingFailed=$chr(3) $+ 04 $+  $+ %real.name $+ 's lockpick breaks and the chest remains unopened.
 DieHardTriggered=$iif($readini($char(%target), Descriptions, DieHard) = $null, $chr(3) $+ 04 $+  $+ $get_chr_name(%target) $+ 's determination and will causes $gender2(%target) to fight past a defeating blow!, $chr(3) $+ 04 $+  $+ $get_chr_name(%target) $+  $readini($char(%target), Descriptions, DieHard))
 BribeSuccess=$chr(3) $+ 04 $+ $get_chr_name($2) gleefully takes $get_chr_name($1) $+ 's red orbs and runs away from the battle!
-BribeFailure=$chr(3) $+ 04 $+ $get_chr_name($2) declines to take $get_chr_name($1) $+ 's red orbs and is deeply offended.
+BribeFailure=$chr(3) $+ 04 $+ $get_chr_name($2) takes $get_chr_name($1) $+ 's red orbs but is deeply offended at the amount and refuses to leave.
 
 =======================
 Tech Related Messages
@@ -1056,7 +1056,9 @@ ALightInTheDark=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: A L
 OnTheEdge=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: On the Edge and receives $bytes($3,b) SuperPotion as a reward!
 NoOne'sPuppet=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: I'm No One's Puppet and receives $bytes($3,b) red orbs as a reward!
 HarderBetterFasterStronger=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Harder Better Faster Stronger and receives $bytes($3,b) red orbs as a reward!
+InValorThereIsHope=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: In Valor There is Hope! and receives $bytes($3,b) cosmic orbs as a reward!
 GottaCollectThemAll=$chr(3) $+ 10 $+ %real.name has unlocked the achievement: Gotta Collect Them All and receives  as a reward!
+
 
 =======================
 Style Levels

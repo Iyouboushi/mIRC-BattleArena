@@ -635,6 +635,7 @@ Zawnglachel=BattleDance.Onslaught
 BhurtrusClaws=ReallyBadBreath
 GarudaPower=Slipstream.EyeOftheStorm
 SusanoBlade=YataNoKagami.Stormsplitter
+GuardScorpion=TailLaser.FocusedTailLaser.MissileBarrage
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -11621,6 +11622,41 @@ Element=Dark
 Cost=0
 Magic=No
 stat=int
+
+[TailLaser]
+Type=AOE
+TP=10
+Desc=releases all the energy gathered in its tail to send hundreds of dangerous and powerful lasers that explode all over the battlefield. 
+BasePower=150
+Element=Light
+Cost=0
+Magic=No
+stat=int
+DestroyShadows=4
+
+[FocusedTailLaser]
+Type=Single
+TP=10
+Desc=counters the attack by firing a large laser straight at %enemy $+ ! 
+BasePower=50
+Element=Light
+Cost=0
+Magic=No
+stat=int
+CanDodge=false
+DestroyShadows=2
+
+[MissileBarrage]
+Type=Single
+TP=10
+Desc=locks onto %enemy $+ 's heat signature and opens a compartment on its body that releases a barrage of missiles that head straight for %enemy $+ . 
+BasePower=50
+Element=Light
+Cost=0
+Magic=No
+stat=int
+DestroyShadows=3
+CanDodge=false
 
 [BallRoll]
 Type=AOE

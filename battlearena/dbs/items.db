@@ -1801,6 +1801,37 @@ Desc=A small ring with a small blood-red stone in it.  This accessory will incre
 IncreaseRedOrbs.Amount=.15
 SellPrice=2000
 
+[OniGauntlet]
+type=accessory
+AccessoryType=IncreaseRedOrbs
+Cost=0
+Desc=A gauntlet designed by the ancient Oni tribe. It has the ability to increase the amount of orbs you gain at the end of battles.  With enough Orb Crystals it is possible to upgrade.
+; .10 = 10% more orbs.  if the reward is 1000 you'll get +100.
+IncreaseRedOrbs.Amount=.10
+SellPrice=5000
+
+[OniGauntlet+1]
+type=accessory
+AccessoryType=IncreaseRedOrbs.IncreaseKatanaDamage
+Cost=0
+Desc=A gauntlet designed by the ancient Oni tribe. It has the ability to increase the amount of orbs you gain at the end of battles and enhances damage done  with Katana weapons.  With enough Orb Crystals it is possible to upgrade further.
+; .15 = 15% more orbs.  if the reward is 1000 you'll get +150.
+IncreaseRedOrbs.Amount=.15
+IncreaseKatanaDamage.Amount=.10
+SellPrice=5000
+
+[OniGauntlet+2]
+type=accessory
+AccessoryType=IncreaseRedOrbs.IncreaseKatanaDamage.IncreaseMagic
+Cost=0
+Desc=A gauntlet designed by the ancient Oni tribe. It has the ability to increase the amount of orbs you gain at the end of battles and enhances damage done  with Katana weapons and magic.
+; .20 = 20% more orbs.  if the reward is 1000 you'll get +200.
+IncreaseRedOrbs.Amount=.20
+IncreaseKatanaDamage.Amount=.15
+IncreaseMagic=.15
+Legendary=true
+SellPrice=5000
+
 [Blood-Crown]
 Type=accessory
 AccessoryType=IncreaseRedOrbs

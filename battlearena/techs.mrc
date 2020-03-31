@@ -255,7 +255,7 @@ alias tech_cmd {
   unset %techincrease.check | unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
   unset %multihit.message.on  | unset %lastaction.nerf
 
-  $check_for_battle($1) 
+  $check_for_battle($1, $4) 
 
   set %ignition.list $readini($dbfile(ignitions.db), ignitions, list)
   if ($istok(%ignition.list, $2, 46) = $true) { unset %ignition.list | $ignition_cmd($1, $2, $1) | halt }

@@ -76,7 +76,7 @@ MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.Skelet
 
 MonsterWpns7=CuccoBeak.MosquitoBite.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue.Qutrub.Phlegethon.HollowPower.MechanicPower
 
-MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Devilsknife.Ame-no-Habakiri.HyperGodPowerII.FloweyPetalsII.SansPowerII.NeloAngeloGreatsword.EngineBlade.RingOfTheLucii.IronDuke.Valiant.Spelldaggers.ExdeathPower.NeoExdeathPower.KefkaPower.VenusGospel.Zangetsuto.BloodlessUmbrella.UltimaWeaponFFBE.LagunaMachineGun.BrightSilverManatrigger.Pumpkin.Pokey.LamiaWand.PureBliss.Zawnglachel.BhurtrusClaws.RazorPlume
+MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Devilsknife.Ame-no-Habakiri.HyperGodPowerII.FloweyPetalsII.SansPowerII.NeloAngeloGreatsword.EngineBlade.RingOfTheLucii.IronDuke.Valiant.Spelldaggers.ExdeathPower.NeoExdeathPower.KefkaPower.VenusGospel.Zangetsuto.BloodlessUmbrella.UltimaWeaponFFBE.LagunaMachineGun.BrightSilverManatrigger.Pumpkin.Pokey.LamiaWand.PureBliss.Zawnglachel.BhurtrusClaws.RazorPlume.GuardScorpion
 
 ============================================
 WEAPON TEMPLATE
@@ -5559,6 +5559,16 @@ Abilities=DetonatingBubble.Sharknado
 Element=None
 Hits=1
 BasePower=70
+CanCounter=false
+
+[GuardScorpion]
+Cost=0
+Type=gun
+Info=The newest weapon of Shinra
+Abilities=TailLaser.FocusedTailLaser.MissileBarrage
+Element=None
+Hits=$rand(1,3)
+BasePower=50
 CanCounter=false
 
 [Zanmato]
