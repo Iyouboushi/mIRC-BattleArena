@@ -4283,6 +4283,8 @@ benmity.primalsummon {
   var %current.enmity.level $readini(battlestats.dat, Beastmenenmity, $1 $+ .level)
   var %base.primal.chance $round($calc(%base.primal.chance + (%current.enmity.level * 2.5)),0)
 
+  if ((%current.enmity.level = 0) || (%current.enmity.level = $null)) { return }
+
   ; Let's roll the dice and see if a primal is summoned     
   var %rng.roll $rand(1,100)
   if (%rng.roll > %base.primal.chance) { return }
