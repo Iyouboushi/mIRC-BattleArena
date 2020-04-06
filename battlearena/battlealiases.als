@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/31/20
+;;;; Last updated: 4/06/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1005,12 +1005,6 @@ deal_damage {
     if (($readini($char($2), info, flag) = npc) || ($readini($char($2), info, flag) = $null)) { writeini $txtfile(battle2.txt) BattleInfo FlawlessVictory false }
   }
 
-  ; Do we need to wake up a sleeping target?
-  if ((%attack.damage > 0) && ($readini($char($2), Status, Sleep) = yes)) { 
-    $display.message($readini(translation.dat, status, WakesUp), battle) 
-    writeini $char($2) status sleep no
-  }
-
   unset %absorb.message
 
   if ($3 != JustRelease) {
@@ -1501,6 +1495,16 @@ display_damage {
         if ($readini($char(%target), descriptions, Awaken) = $null) { $display.message($readini(translation.dat, battle, inactivealive),battle)    }
         $next 
       }
+    }
+  }
+
+  ; Do we need to wake up a sleeping target?
+  if ($readini($char($2), Status, Sleep) = yes) {
+    var %sleep.turn $readini($char($2), Status, Sleep.turn)
+    if ((%true.turn >= $calc(%sleep.turn + 1)) && (%attack.damage > 0)) {
+      $display.message($readini(translation.dat, status, WakesUp), battle) 
+      writeini $char($2) status sleep no
+      remini $char($2) status sleep.turn
     }
   }
 
@@ -2697,6 +2701,8 @@ inflict_status {
       if (%status.type = petrify) { writeini $char($2) status petrified yes }
       if ((%status.type = slow) && ($readini($char($2), status, speedup) != no)) { writeini $char($2) status speedup no }
       if (%status.type = doom) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer 3 }
+      if (%status.type = sleep) { writeini $char($2) status sleep yes | writeini $char($2) status sleep.turn %true.turn }
+
 
       if (((((%status.type != doom) && (%status.type != poison) && (%status.type != charm) && (%status.type != petrify) && (%status.type != removeboost))))) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer %enfeeble.timer   }
 
@@ -3130,6 +3136,7 @@ shield_block_check {
   if ($readini($char($2), status, stun) = yes) { return }
   if ($readini($char($2), status, paralysis) = yes) { return }
   if ($readini($char($2), skills, truestrike.on) = on) { return }
+  if ($readini($char($2), status, sleep) = yes) { return }
   if (%guard.message != $null) { return }
   if ((%battle.rage.darkness = on) && ($readini($char($2), info, flag) = monster)) { return }
 

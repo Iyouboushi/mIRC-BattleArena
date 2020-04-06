@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 3/31/20
+;;;; Last updated: 4/06/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2770,6 +2770,7 @@ clear_most_status {
   writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0 | writeini $char($1) status doll.timer 0 | writeini $char($1) status confuse.timer 0 
   writeini $char($1) status defensedown.timer 0 |  writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown.timer 0
   writeini $char($1) status protect.timer 0 | writeini $char($1) status shell.timer 0 | writeini $char($1) status virus.timer 0
+  remini $char($1) status sleep.turn
 }
 
 clear_negative_status {

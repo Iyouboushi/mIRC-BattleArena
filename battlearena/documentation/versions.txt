@@ -1730,7 +1730,8 @@ Battle Arena Bot VERSIONS
 - Added the Beginner'sCharm accessory to the game. This charm will give bonus style xp, killcoins and red orbs to the player until the
   player has accumulated 500,000 red orbs total.
 - Added a new room flag for dungeons: RestoreMech.  If set to true, the room will restore a player's mech hp and energy to max.
-- Added the ability for monsters and npcs to use different descriptions for existing techniques. In [descriptions] put Techname=new description
+- Added the ability for monsters and npcs to use different descriptions for existing techniques. 
+  In [descriptions] put Techname=new description
 - Added Beastmen Tribe Enmity and the ability for Beastmen to summon powerful Primals once their enmity reaches a certain point. 
   When a primal is summoned a new dungeon key item named PrimalSigil will be available for purchase. Using it will start a short dungeon 
   that will end with a fight of the primal.
@@ -1740,3 +1741,4 @@ Battle Arena Bot VERSIONS
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
+- Fixed an issue with the sleep status
