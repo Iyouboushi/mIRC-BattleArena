@@ -345,7 +345,7 @@ TechCurrencyOrbs=$chr(3) $+ 04 $+ Techniques will now be purchased using Red Orb
 TechCurrencyCoins=$chr(3) $+ 04 $+ Techniques will now be purchased using Kill Coins
 CheckMonsterStrength=$chr(3) $+ 02 $+ The Allied Spy Force reports that the monster army strength is currently at4 %monster.strength $+ $chr(37) $+ 2.  $iif(%monster.strength < 100, The monster army is not ready to attack the Allied Forces HQ, The monster army could attack the HQ at any time. Be ready!) 
 
-CheckBeastmenEnmity=$chr(3) $+ 02 $+ The Allied Spy Force reports that the $1 enmity level is currently at4 %benmity.level $+ 2. %benmity.threat 
+CheckBeastmenEnmity=$chr(3) $+ 02 $+ The Allied Spy Force reports that the $1 enmity level is currently at4 %benmity.level $+ 2. %benmity.threat 
 BeastmenSummonPrimal=$chr(3) $+ 02 $+ The Allied Spy Force reports that the $1 Beastmen tribe has summoned the dreaded and mighty 04 $+ %primal.name $+ 02! It is recommended that the Allied Forces gather their strength and purchase a07 PrimalSigil 02to hunt down the primal.
 
 =======================

@@ -1,13 +1,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 03/30/20
+;;;; Last updated: 04/06/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
 on 1:TEXT:!battlestats*:*: { $battle.stats }
 
 on 1:TEXT:!conquest*:*: { $conquest.display($1, $2) }
-on 1:TEXT:!beastmen enmity*:*: { $benmity.check($3) }
+on 1:TEXT:!beastmen enmity*:*: { 
+  if ($3 = $null) { $display.message($readini(translation.dat, errors, NotValidBeastman), private) | halt }
+  if ($3 = all) {
+    $benmity.check(Orc)
+    $benmity.check(Yagudo)
+    $benmity.check(Quadav)
+    $benmity.check(Lamia)
+  }
+  else {  $benmity.check($3) }
+
+}
 
 alias battle.stats {
   $recalc_totalbattles
