@@ -1499,14 +1499,7 @@ display_damage {
   }
 
   ; Do we need to wake up a sleeping target?
-  if ($readini($char($2), Status, Sleep) = yes) {
-    var %sleep.turn $readini($char($2), Status, Sleep.turn)
-    if ((%true.turn >= $calc(%sleep.turn + 1)) && (%attack.damage > 0)) {
-      $display.message($readini(translation.dat, status, WakesUp), battle) 
-      writeini $char($2) status sleep no
-      remini $char($2) status sleep.turn
-    }
-  }
+  if ($readini($char($2), Status, Sleep) = yes) { $sleep.wakeupcheck($2, $1) }
 
   ; Did the person die?  If so, show the death message.
   if ($readini($char(%target), battle, HP) <= 0) { 
@@ -2701,8 +2694,10 @@ inflict_status {
       if (%status.type = petrify) { writeini $char($2) status petrified yes }
       if ((%status.type = slow) && ($readini($char($2), status, speedup) != no)) { writeini $char($2) status speedup no }
       if (%status.type = doom) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer 3 }
-      if (%status.type = sleep) { writeini $char($2) status sleep yes | writeini $char($2) status sleep.turn %true.turn }
-
+      if (%status.type = sleep) { 
+        writeini $char($2) status sleep yes | writeini $char($2) status sleep.turn %true.turn | writeini $char($2) status sleep.inflict $1
+        var %current.enmity $enmity($2, return) | $enmity($2, remove, $calc(%current.enmity / 2))
+      }
 
       if (((((%status.type != doom) && (%status.type != poison) && (%status.type != charm) && (%status.type != petrify) && (%status.type != removeboost))))) { writeini $char($2) Status %status.type yes | writeini $char($2) status %status.type $+ .timer %enfeeble.timer   }
 
@@ -3056,6 +3051,7 @@ weapon_parry_check {
   ; $3 = weapon used
 
   if ($person_in_mech($1) = true) { return }
+  if ($readini($char($1), status, sleep) = yes) { return }
   if ($readini($char($2), status, stun) = yes) { return }
   if ($readini($char($2), status, paralysis) = yes) { return }
   if ($person_in_mech($2) = true) { return }
@@ -3136,7 +3132,7 @@ shield_block_check {
   if ($readini($char($2), status, stun) = yes) { return }
   if ($readini($char($2), status, paralysis) = yes) { return }
   if ($readini($char($2), skills, truestrike.on) = on) { return }
-  if ($readini($char($2), status, sleep) = yes) { return }
+  if ($readini($char($1), status, sleep) = yes) { return }
   if (%guard.message != $null) { return }
   if ((%battle.rage.darkness = on) && ($readini($char($2), info, flag) = monster)) { return }
 
@@ -5757,6 +5753,21 @@ petrified_check {
   else { return } 
 }
 
+sleep.wakeupcheck { 
+  ; $1 the person we're checking
+  ; $2 the attacker 
+
+  if (%attack.damage <= 0) { return }
+
+  var %sleep.inflict $readini($char($1), status, sleep.inflict)
+  var %sleep.turn $readini($char($1), Status, Sleep.turn)
+
+  if ((%sleep.inflict = $2) && (%true.turn <= $calc(%sleep.turn + 1))) { return }
+
+  $display.message($readini(translation.dat, status, WakesUp), battle) 
+  writeini $char($1) status sleep no |  remini $char($1) status sleep.turn | remini $char($1) status sleep.inflict
+}
+
 
 ; Magic status effects
 frozen_check { 
@@ -5849,6 +5860,8 @@ earthquake_check {
   }
   else { return }
 }
+
+
 
 ; stats status effects
 defensedown_check { 

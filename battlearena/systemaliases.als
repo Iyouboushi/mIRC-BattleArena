@@ -2770,7 +2770,7 @@ clear_most_status {
   writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0 | writeini $char($1) status doll.timer 0 | writeini $char($1) status confuse.timer 0 
   writeini $char($1) status defensedown.timer 0 |  writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown.timer 0
   writeini $char($1) status protect.timer 0 | writeini $char($1) status shell.timer 0 | writeini $char($1) status virus.timer 0
-  remini $char($1) status sleep.turn
+  remini $char($1) status sleep.turn | remini $char($1) status sleep.inflict
 }
 
 clear_negative_status {
@@ -2790,6 +2790,7 @@ clear_negative_status {
   writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown.timer 0 | writeini $char($1) status defensedown.timer 0
   writeini $char($1) status bored.timer 0 |  writeini $char($1) status confuse.timer 0 | writeini $char($1) status virus.timer 0
   writeini $char($1) status doll.timer 0 | remini $char($1) status doom.timer 
+  remini $char($1) status sleep.turn | remini $char($1) status sleep.inflict
 
   ; Monsters that are zombies need to be reset as zombies.
   if ($readini($char($1), monster, type) = zombie) {  writeini $char($1) status zombie yes | writeini $char($1) status zombieregenerating yes } 
