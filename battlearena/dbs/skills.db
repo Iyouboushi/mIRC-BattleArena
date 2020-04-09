@@ -532,6 +532,7 @@ Cooldown=30
 ActionPoints=2
 NeedToEquip=true
 Instant=false
+Style=SharpShooter
 
 [Duality]
 Type=active
@@ -819,7 +820,7 @@ Info=This skill will instantly enhance your next attack with a gun or bow.  This
 ActionPoints=1
 Instant=True
 NeedToEquip=False
-Style=Guardian
+Style=SharpShooter
 StyleSkill=true
 
 [PerfectCounter]
