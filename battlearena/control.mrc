@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 06/02/19
+;;;; Last updated: 04/08/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -729,8 +729,24 @@ on 50:TEXT:@edit *:*:{
     writeini $3 $4 $5 $6
     .msg $nick 03 $+ $3 $+ 's dat file has been edited so that $4 $5 has been set to $6 $+ .
   }
-
 }
+
+on 50:TEXT:@view *:*:{  
+
+  if ($2 = character) {
+    $checkchar($3)
+    if ($5 = $null) { .msg $nick 04@view character name section item | halt }
+    .msg $nick 03The value for $4 in $3 is: $readini($char($3), $4, $5)
+  }
+
+  if ($2 = dat) { 
+    if ($isfile($3) = $false) { .msg $nick 04Invalid dat file | halt }
+    if ($5 = $null) { .msg $nick 04@view dat name.dat section item | halt }
+    .msg $nick 03The value for $4 in $3 is: $readini($3, $4, $5)
+  }
+}
+
+
 ;====================
 ; This is to block some
 ; spam bots on Esper.

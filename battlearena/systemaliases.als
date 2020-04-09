@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 4/06/20
+;;;; Last updated: 4/08/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1782,6 +1782,16 @@ active.skills.list {
     set %skill.name $read -l $+ %value $lstfile(skills_active.lst)
     set %skill_level $readini($char($1), skills, %skill.name)
 
+    if ((%skill_level = $null) && ($readini($dbfile(skills.db), %skill.name, StyleSkill) = true)) {
+      if ($skill.equipped.check($1, %skill.name) = true) { 
+        var %skill_to_add 05[02 $+ %skill.name $+ 05]03
+
+        if (%total.skills > 13) { %active.skills.list2 = $addtok(%active.skills.list2,%skill_to_add,46) }
+        else { %active.skills.list = $addtok(%active.skills.list,%skill_to_add,46) }
+
+      }
+    }
+
     if ((%skill_level != $null) && (%skill_level >= 1)) { 
       ; add the skill level to the skill list
       inc %total.skills 1
@@ -1789,8 +1799,8 @@ active.skills.list {
 
       if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = true)) { 
 
-        if (%playerstyle = $readini($dbfile(skills.db), %skill.name, style)) { var %skill_to_add 05[03 $+ %skill_to_add $+ 05]03 }
-        else { var %skill_to_add 02[03 $+ %skill_to_add $+ 02]03 }
+        if (%playerstyle = $readini($dbfile(skills.db), %skill.name, style)) { var %skill_to_add 05[02 $+ %skill_to_add $+ 05]03 }
+        else { var %skill_to_add 02[02 $+ %skill_to_add $+ 02]03 }
       }
 
       if (%total.skills > 13) { %active.skills.list2 = $addtok(%active.skills.list2,%skill_to_add,46) }
@@ -4213,7 +4223,6 @@ benmity.check {
   var %benmity.level $readini(battlestats.dat, BeastmenEnmity, $1 $+ .level)
   if (%benmity.level = $null) { var %benmity.level 0 }
 
-
   if ($benmity.activetribe != $1) { 
     if (%benmity.level = 0) { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, 0) }
     if ((%benmity.level >= 1) && (%benmity.level <= 3)) { var %benmity.threat $readini(translation.dat, BeastmenEnmityLevels, 1) }
@@ -4311,7 +4320,8 @@ benmity.primalsummon {
     else { var %primal.name LakshmiPrime }
   }
 
-  writeini battelstats.dat BeastmenEnmity ActiveTribe $1
+  writeini battlestats.dat BeastmenEnmity ActiveTribe $1
+  writeini battlestats.dat BeastmenEnmity ActivePrimal %primal.name
 
   ; Tell the world
   $display.message($readini(translation.dat, System, BeastmenSummonPrimal), private)
