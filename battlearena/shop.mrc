@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 03/31/20
+;;;; Last updated: 04/10/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -1418,15 +1418,23 @@ alias shop.enhancements {
 
     ; Check for "Portal Usage Limit"
     if (($readini($char($1), enhancements, portalusage) < 2) || ($readini($char($1), enhancements, portalusage) = $null)) { 
-      $display.private.message.delay.custom(02Battle Enhancements05: DailyPortalUsage+1 (10),2) 
+      var %battle.enhancements %battle.enhancements $+ DailyPortalUsage+1 (10)
     }
+
+    ; Check for "Skill Slots"
+    if (($readini($char($1), enhancements, SkillSlots) < 2) || ($readini($char($1), enhancements, SkillSlots) = $null)) { 
+      if (%battle.enhancements = $null) { var %battle.enhancements : SkillSlots+1 (25) }
+      else { var %battle.enhancements %battle.enhancements $+ $chr(44)  SkillSlots+1 (25) }
+    }
+
+    if (%battle.enhancements != $null) { $display.private.message.delay.custom(02Battle Enhancements05: %battle.enhancements,2) }
 
     unset %shop.list | unset %shop.list.skills
   }
 
   if (($2 = buy) || ($2 = purchase)) {
     ; is it a valid item?
-    var %valid.purchase.items hp.ig.str.def.int.spd.Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm.DieHard.AccessorySlot2.DailyPortalUsage
+    var %valid.purchase.items hp.ig.str.def.int.spd.Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm.DieHard.AccessorySlot2.DailyPortalUsage.SkillSlots
     var %valid.purchase.skills Stoneskin.SpoilSeeker.TabulaRasa.Demolitions.DragonHunter.Overwhelm.DieHard
 
     if ($istok(%valid.purchase.items, $lower($3), 46) = $false) { $display.private.message(04You cannot purchase that in this shop) | halt }
@@ -1437,14 +1445,15 @@ alias shop.enhancements {
 
     if ($3 = AccessorySlot2) { var %enhancement.cost 10 }
     if ($3 = DailyPortalUsage) { var %enhancement.cost 10 }
-    if (($3 != AccessorySlot2) && ($3 != DailyPortalUsage)) {  var %enhancement.cost $calc(1 + %enhancement.purchase.item) }
+    if ($3 = SkillSlots) { var %enhancement.cost 25 }
+    if ((($3 != AccessorySlot2) && ($3 != SkillSlots) && ($3 != DailyPortalUsage))) {  var %enhancement.cost $calc(1 + %enhancement.purchase.item) }
 
     var %current.player.ep $enhancementpoints($1)
     if (%current.player.ep = $null) { var %current.player.ep 0 }
 
     if (%current.player.ep < %enhancement.cost) { $display.private.message(04You do not have enough Enhancement Points to purchase this upgrade!) | halt }
 
-    if (($3 != AccessorySlot2) && ($3 != DailyPortalUsage)) { 
+    if ((($3 != AccessorySlot2) && ($3 != SkillSlots) && ($3 != DailyPortalUsage))) { 
 
       ; Are we hitting the cap amount?
       var %purchase.cap 10
@@ -1475,9 +1484,16 @@ alias shop.enhancements {
       if (%portalusage >= 2) { $display.private.message(04You already own the maximum amount of this enhancement!) | halt }
       inc %portalusage 1
       writeini $char($1) Enhancements PortalUsage %portalusage
-
     }
 
+    if ($3 = SkillSlots) {
+      var %skillusage $readini($char($1), enhancements, SkillSlots)
+      if (%skillusage = $null) { var %skillusage 0 } 
+
+      if (%skillusage >= 2) { $display.private.message(04You already own the maximum amount of this enhancement!) | halt }
+      inc %skillusage 1
+      writeini $char($1) Enhancements SkillSlots %skillusage
+    }
 
     var %number.of.enhancement.spent $readini($char($1), stuff, EnhancementPointsSpent)
     if (%number.of.enhancement.spent = $null) { var %number.of.enhancement.spent 0 }
@@ -1540,6 +1556,10 @@ alias shop.enhancements {
 
     if ($3 = DailyPortalUsage) {
       $display.private.message(03You spend $bytes(%enhancement.cost,b) Enhancement Points and feel your Daily Portal Usage Limit increase! You can now do $calc($portal.dailymaxlimit + $readini($char($1), enhancements, portalusage)) portals a day.)
+    }
+
+    if ($3 = SkillSlots) {
+      $display.private.message(03You spend $bytes(%enhancement.cost,b) Enhancement Points and feel your Skill Equip Limit increase! You can now equip $return.skill.slots($1) skills total.)
     }
   }
 }
