@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle >= 3, 17000,26000)
+Hp=$iif($return_playersinbattle >= 3, 15000,21000)
 Tp=250
 Str=7
 Def=17
@@ -10,7 +10,7 @@ IgnitionGauge=50
 
 
 [Battle]
-Hp=18000
+Hp=15000
 Tp=250
 Str=97
 Def=87

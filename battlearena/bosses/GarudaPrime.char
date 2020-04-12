@@ -1,5 +1,5 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 3, $calc(50000 + (100 * $return_playersinbattle)) , 50000)
+Hp=$iif($return_playersinbattle > 3, $calc(48000 + (100 * $return_playersinbattle)) , 48000)
 Tp=250
 Str=97
 Def=95
@@ -98,7 +98,7 @@ reflect=no
 
 [Weapons]
 Equipped=GarudaPower
-GarudaPower=$calc(120 + $readini(battlestats.dat, BeastmenEnmity, Yagudo.Level))
+GarudaPower=$calc(110 + $readini(battlestats.dat, BeastmenEnmity, Yagudo.Level))
 
 [Skills]
 Resist-Intimidate=100
@@ -128,8 +128,8 @@ MonsterSummon.Chance=100
 monstersummon.numberspawn=$iif($return_playersinbattle > 3, 3, 2)
 
 [Techniques]
-EyeOftheStorm=$calc(50 + $readini(battlestats.dat, BeastmenEnmity, Yagudo.Level))
-Slipstream=$calc(200 + $readini(battlestats.dat, BeastmenEnmity, Yagudo.Level))
+EyeOftheStorm=$calc(45 + $readini(battlestats.dat, BeastmenEnmity, Yagudo.Level))
+Slipstream=$calc(160 + $readini(battlestats.dat, BeastmenEnmity, Yagudo.Level))
 
 [Styles]
 Equipped=Guardian
@@ -144,7 +144,7 @@ Body=
 
 [modifiers]
 Heal=wind
-Earth=110
+Earth=115
 Fire=100
 Wind=700
 Water=100
