@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; AI COMMANDS
-;;;; Last updated: 03/31/20
+;;;; Last updated: 04/12/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 alias aicheck { 
   set %debug.location aicheck
@@ -201,9 +201,12 @@ alias ai_turn {
 
   if (%ai.action = limitbreak) { $ai_gettarget($1) 
     if (%ai.target = $null) { echo -a target null! | set %ai.action $iif($readini($char($1), info, ai_type) = techonly, taunt, attack)  }
-    else { $ai.getlimit($1) | $limitbreak.attack($1, %ai.limitbreak, %ai.target) | halt } 
+    else { 
+      $ai.getlimit($1)
+      if ($readini($dbfile(limitbreaks.db), %ai.limitbreak, AOE) = true) { $limitbreak.attack.aoe($1, %ai.limitbreak,  %ai.target) | halt }
+      else { $limitbreak.attack($1, %ai.limitbreak, %ai.target) | halt }
+    }
   }
-
 
   if (%ai.action = taunt) { set %taunt.action true | $ai_gettarget($1) | $taunt($1 , %ai.target) | halt } 
   if (%ai.action = flee) { $ai.flee($1) | halt }
