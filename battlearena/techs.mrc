@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 03/29/20
+;;;; Last updated: 04/12/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -141,9 +141,20 @@ alias limitbreak_cmd {
   if ($readini($char($3), Battle, Status) = dead) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoIsDead),private) | unset %real.name | halt }
   if ($readini($char($3), Battle, Status) = RunAway) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, CanNotAttackSomeoneWhoFledTech),private) | unset %real.name | halt } 
 
+  ; Increase how many times this player has done a limit break
+  var %number.of.limitbreaks.used $readini($char($1), stuff, LimitBreaksPerformed)
+  if (%number.of.limitbreaks.used = $null) { var %number.of.limitbreaks.used 0 }
+  inc %number.of.limitbreaks.used 1
+  writeini $char($1) stuff LimitBreaksPerformed %number.of.limitbreaks.used
+
+  ; Set the user's limit break meter back to 0
+  writeini $char($1) Battle LimitBreakPercent 0  
+
   ; Perform the limit break
   $partial.name.match($1, $3)
-  $limitbreak.attack($1, $2,  %attack.target)
+
+  if ($readini($dbfile(limitbreaks.db), $2, AOE) = true) { $limitbreak.attack.aoe($1, $2,  %attack.target) }
+  else { $limitbreak.attack($1, $2,  %attack.target) } 
 }
 
 
@@ -2315,24 +2326,8 @@ alias limitbreak.attack {
   ; $2 = the limit break name
   ; $3 = the target
 
-  ; Increase how many times this player has done a limit break
-  var %number.of.limitbreaks.used $readini($char($1), stuff, LimitBreaksPerformed)
-  if (%number.of.limitbreaks.used = $null) { var %number.of.limitbreaks.used 0 }
-  inc %number.of.limitbreaks.used 1
-  writeini $char($1) stuff LimitBreaksPerformed %number.of.limitbreaks.used
-
-  ; Set the user's limit break meter back to 0
-  writeini $char($1) Battle LimitBreakPercent 0  
-
   ; Get the base damage
-  $weapon_equipped($1)
-  $calculate_damage_weapon($1, %weapon.equipped, $3, limitbreak)
-
-  ; Get the multiplier of the limit break
-  var %multiplier $readini($dbfile(limitbreaks.db), $2, Multiplier)
-
-  ; Increase the damage
-  set %attack.damage $round($calc(%attack.damage * %multiplier),0)
+  $limitbreak.calculate.damage($1, $2, $3)
 
   ; Deal the damage
   $deal_damage($1, $3, %weapon.equipped, limitbreak)
@@ -2347,4 +2342,92 @@ alias limitbreak.attack {
 
   ; Time to go to the next turn
   if (%battleis = on)  { $check_for_double_turn($1) | halt }
+}
+
+alias limitbreak.attack.aoe {
+  ; $1 = the user
+  ; $2 = the limit break name
+  ; $3 = the initial target
+
+  ; Clear the BattleNext timer until this action is finished
+  /.timerBattleNext off
+
+  ; What kind of target are we going to be hitting?
+  var %user.flag $readini($char($1), info, flag)
+  if (%user.flag = $null) { var %user.flag player | var %target.flag monster }
+  if (%user.flag = monster) { var %target.flag player }
+  if (%user.flag = npc) { var %target.flag monster }
+
+  ; Display the limit description
+  $set_chr_name($1) | set %user %real.name
+  $set_chr_name($2) | set %enemy %real.name
+  if ($person_in_mech($2) = true) { set %enemy %real.name $+ 's $readini($char($2), mech, name) }
+
+  var %enemy all targets
+
+  var %limit.desc $readini($char($1), Descriptions, $2)
+  if (%limit.desc = $null) { var %limit.desc $readini($dbfile(limitbreaks.db), $2, desc) }
+  $display.message(03 $+ %user $+  %limit.desc, battle) 
+
+  set %showed.tech.desc true
+
+  ; If the target is players, search out remaining players that are alive and deal damage and display damage
+
+  var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+  while (%battletxt.current.line <= %battletxt.lines) { 
+    var %can.hit yes
+    set %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+
+    if ((%user.flag = monster) && (%target.flag = monster)) { var %can.hit no }
+    if ((%user.flag = player) && (%target.flag != monster)) { var %can.hit no }
+    if ((%user.flag = npc) && (%target.flag != monster)) { var %can.hit no }
+    if ((%mode.pvp = on) && ($1 = %who.battle)) { var %can.hit no }
+    if (($readini($char($1), status, confuse) != yes) && ($1 = %who.battle)) { var %can.hit no }
+
+    var %current.status $readini($char(%who.battle), battle, status)
+    if ((%current.status = dead) || (%current.status = runaway)) { var %can.hit no }
+
+    if (%can.hit = yes) { 
+
+      ; Check for a cover target
+      $covercheck(%who.battle, $2, AOE)
+
+      ; Calculate damage
+      $limitbreak.calculate.damage($1, $2, %who.battle)
+
+      ; Deal damage
+      $deal_damage($1, %who.battle, %weapon.equipped, limitbreak)
+
+      ; Display damage
+      $display_aoedamage($1, %who.battle, $2, %absorb)
+    }
+    inc %battletxt.current.line 1
+
+  }
+
+  unset %attack.damage |  unset %attack.damage1 | unset %attack.damage2 | unset %attack.damage3 | unset %attack.damage4 | unset %attack.damage5 | unset %attack.damage6 | unset %attack.damage7 | unset %attack.damage8 | unset %attack.damage.total
+  unset %drainsamba.on | unset %absorb |  unset %element.desc | unset %spell.element | unset %real.name  |  unset %user.flag | unset %target.flag | unset %trickster.dodged | unset %covering.someone
+  unset %techincrease.check |  unset %double.attack | unset %triple.attack | unset %fourhit.attack | unset %fivehit.attack | unset %sixhit.attack | unset %sevenhit.attack | unset %eighthit.attack
+  unset %multihit.message.on | unset %critical.hit.chance | unset %showed.tech.desc
+
+  ; Time to go to the next turn
+  if (%battleis = on)  { $check_for_double_turn($1) | halt }
+}
+
+alias limitbreak.calculate.damage {
+  ; $1 = the user
+  ; $2 = the limit break
+  ; $3 = the target
+
+  ; Get the weapon equipped
+  $weapon_equipped($1)
+
+  ; Get the base damage
+  $calculate_damage_weapon($1, %weapon.equipped, %who.battle, limitbreak)
+
+  ; Get the multiplier of the limit break
+  var %multiplier $readini($dbfile(limitbreaks.db), $2, Multiplier)
+
+  ; Increase the damage
+  set %attack.damage $round($calc(%attack.damage * %multiplier),0)
 }
