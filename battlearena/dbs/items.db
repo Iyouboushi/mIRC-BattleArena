@@ -5211,7 +5211,7 @@ exclusive=yes
 
 [PrimalSigil]
 type=dungeon
-Cost=$iif($readini(battlestats.dat, BeastmenEnmity, ActivePrimal) = $null || $readini($char($1), Item_Amount, PrimalSigil >= 1), 0, 50)
+Cost=$iif($readini(battlestats.dat, BeastmenEnmity, ActivePrimal) = $null || $item.amount($1, PrimalSigil) >= 1, 0, 50)
 currency=BeastmenSeal
 Desc=A sigil infused with energy necessary to approach a primal's stronghold without losing one's senses..  It can be used once before it loses its energy.  It is only able to work when a Beastmen Primal has been summoned.
 exclusive=yes
