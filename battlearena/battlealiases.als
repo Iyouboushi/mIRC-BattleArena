@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 4/06/20
+;;;; Last updated: 4/14/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1710,6 +1710,9 @@ display_aoedamage {
     }
 
   }
+
+  ; Do we need to wake up the target?
+  if ($readini($char(%target), Status, Sleep) = yes) { $sleep.wakeupcheck(%target, $1) }
 
 
   ; Did the person die?  If so, show the death message.
@@ -5758,6 +5761,7 @@ sleep.wakeupcheck {
   ; $2 the attacker 
 
   if (%attack.damage <= 0) { return }
+  if ($readini($char($1), battle, hp) <= 0) { return }
 
   var %sleep.inflict $readini($char($1), status, sleep.inflict)
   var %sleep.turn $readini($char($1), Status, Sleep.turn)
