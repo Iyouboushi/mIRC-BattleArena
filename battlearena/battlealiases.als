@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 4/14/20
+;;;; Last updated: 4/17/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1679,6 +1679,9 @@ display_aoedamage {
       }
     }
 
+    ; Do we need to wake up the target?
+    if ($readini($char(%target), Status, Sleep) = yes) { $sleep.wakeupcheck(%target, $1) }
+
     if (%battle.type = orbfountain) { 
       if (($readini($char(%target), battle, status) != dead) && ($return_winningstreak >= 50)) { 
         if ($rand(1,100) < 30) {
@@ -1711,8 +1714,7 @@ display_aoedamage {
 
   }
 
-  ; Do we need to wake up the target?
-  if ($readini($char(%target), Status, Sleep) = yes) { $sleep.wakeupcheck(%target, $1) }
+
 
 
   ; Did the person die?  If so, show the death message.
