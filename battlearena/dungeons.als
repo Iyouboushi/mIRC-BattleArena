@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 03/29/20
+;;;; Last updated: 04/27/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -619,8 +619,8 @@ dungeon.restoremech {
       var %mech.hpmax $readini($char(%who.battle), mech, HpMax) 
       var %mech.energymax $readini($char(%who.battle), mech, EnergyMax) 
 
-      if (%mech.hpmax != $null) { writeini $char(%who.battle) mech HpCurrent %hp.max }
-      if (%mech.energymax != $null) { writeini $char(%who.battle) mech EnergyCurrent %energy.max }
+      if (%mech.hpmax != $null) { writeini $char(%who.battle) mech HpCurrent %mech.hpmax }
+      if (%mech.energymax != $null) { writeini $char(%who.battle) mech EnergyCurrent %mech.energymax }
     }
 
     inc %battletxt.current.line
