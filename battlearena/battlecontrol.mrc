@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/06/20
+;;;; Last updated: 04/28/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -2796,7 +2796,21 @@ alias battle.calculate.redorbs {
   if (%battle.type = orbfountain) { set %base.redorbs $readini(system.dat, System, basexp) | inc %base.redorbs $rand(400,500) }
   if (%battle.type = boss) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
   if (%battle.type = mimic) { set %base.redorbs $readini(system.dat, System, basebossxp) } 
-  if (%battle.type = dungeon) { set %base.redorbs $readini(system.dat, System, basebossxp) | inc %base.redorbs $2 }
+
+  if (%battle.type = dungeon) { 
+    set %base.redorbs $readini($dungeonfile($dungeon.dungeonfile), Info, RedOrbAmount)
+    if (%base.redorbs = $null) {  set %base.redorbs $readini(system.dat, System, basebossxp) | inc %base.redorbs $2 }
+
+    if ($1 = defeat) { set %base.redorbs $round($calc(%base.redorbs / 1.5),0) }
+
+    if ($3 = true) {
+      set %bonus.orbs $round($readini($txtfile(battle2.txt), BattleInfo, OrbBonus),0) 
+      if (%bonus.orbs = $null) { var %bonus.orbs 0 }
+      inc %base.redorbs %bonus.orbs
+    }
+
+    return
+  }
   if (%battle.type = dragonhunt) { set %base.redorbs $calc($readini(system.dat, System, basebossxp) * 2) } 
   if (%battle.type = torment) {
     set %base.redorbs $calc($readini(system.dat, System, basebossxp) * %torment.level) 
@@ -2823,9 +2837,7 @@ alias battle.calculate.redorbs {
   if (($1 = defeat) || ($1 = draw)) { inc %base.redorbs $round($calc($2 / 1.8),0) }
 
   ; Get the orb bonus that players earned by defeating monsters
-  if (%battle.type != dungeon) { set %bonus.orbs $round($readini($txtfile(battle2.txt), BattleInfo, OrbBonus),0) }
-  if ((%battle.type = dungeon) && ($3 = true)) { set %bonus.orbs $round($readini($txtfile(battle2.txt), BattleInfo, OrbBonus),0) }
-
+  set %bonus.orbs $round($readini($txtfile(battle2.txt), BattleInfo, OrbBonus),0) 
   if ((%bonus.orbs = $null) || (%bonus.orbs < 0)) { set %bonus.orbs 0 }
   inc %base.redorbs %bonus.orbs
 
@@ -2834,7 +2846,7 @@ alias battle.calculate.redorbs {
   if (%mode.gauntlet != on) {  var %max.orb.reward $readini(system.dat, system, MaxOrbReward) }
   if (%max.orb.reward = $null) { var %max.orb.reward 20000 }
 
-  if (%battle.type = dungeon) { var %max.orb.reward $calc(%max.orb.reward * 2) }
+
   if (%battle.type = torment) { var %max.orb.reward $calc(%max.orb.reward * 2.3) }
   if (%battle.type = dragonhunt) { var %max.orb.reward $calc(%max.orb.reward * 1.5) }
 

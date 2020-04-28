@@ -6,6 +6,7 @@ PlayersRecommended=1
 PlayersMax=1
 Level=250
 FinalRoom=1
+RedOrbAmount=10000
 Reward=AncientMystery:Tensai
 StartBattleDesc=holds up a mirror which begins to vibrate and glow. After a moment, the mirror opens a portal and invites $readini($txtfile(Battle2.txt), DungeonInfo, DungeonCreator) into the Hall of Reflections where a trial will take place.
 ClearDungeonDesc=* $readini($txtfile(Battle2.txt), DungeonInfo, DungeonCreator) has passed the trial of the mirror. [Clear time: %total.battle.duration $+ ]
