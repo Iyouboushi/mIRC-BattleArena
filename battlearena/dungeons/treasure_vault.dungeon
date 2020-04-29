@@ -4,8 +4,9 @@ Rooms=4
 PlayersNeeded=1
 PlayersRecommended=1
 Level=15
+RedOrbAmount=20000
 FinalRoom=3
-StartBattleDesc=$iif($2 = Thief'sMap, uses the Thief's Map to discover the location of a Gobbie Treasure Vault realm portal. All those who want to raid the vault should enter.,The Treasure Goblin creates a portal to the Gobbie Treasure Vault realm in an attempt to escape death. Unfortunately for the Goblin death still arrives but now there is a portal for all heroes to enter.)
+StartBattleDesc=$iif($2 = Thief'sMap, uses the Thief's Map to discover the location of a Gobbie Treasure Vault realm portal. All those who want to raid the vault should enter.,creates a portal to the Gobbie Treasure Vault realm in an attempt to escape death. Unfortunately for the Goblin death still arrives but now there is a portal for all heroes to enter.)
 ClearDungeonDesc=* The party has escaped the Gobbie Treasure Vault with some treasure in-hand. [Clear time: %total.battle.duration $+ ]
 DungeonFail=* The party has failed to successfully raid the Gobbie Treasure Vault. 
 

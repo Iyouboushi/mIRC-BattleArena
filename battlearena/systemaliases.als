@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 4/08/20
+;;;; Last updated: 04/29/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -490,7 +490,7 @@ equipment.color {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 system.start.newbattle {
 
-  if ($1 = true) { $item.dungeon(Treasure_Goblin, TreasureVaultPortal, true) | halt }
+  if ($1 = true) { $item.dungeon(Treasure Goblin, TreasureVaultPortal, true) | halt }
 
   if ($readini(system.dat, system, automatedbattlesystem) = off) { return }
 
@@ -4287,8 +4287,8 @@ benmity.primalsummon {
   ; Is there a tribe already active? If so, return
   if ($readini(battlestats.dat, BeastmenEnmity, ActiveTribe) != $null) { return }
 
-  ; Base chance of summoning a primal is only 8%
-  var %base.primal.chance 8
+  ; Base chance of summoning a primal is only 2%
+  var %base.primal.chance 2
 
   ; It increases based on the current enmity level
   var %current.enmity.level $readini(battlestats.dat, Beastmenenmity, $1 $+ .level)
