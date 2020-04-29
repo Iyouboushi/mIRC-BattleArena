@@ -1,123 +1,154 @@
 [01]
+Title=Worm Sign
 Monsters=Bigmouth_Billy.Stone_Eater.Rock_Eater.Ore_Eater
 Restrictions=no-ignition.no-mech.no-singing
 
 [02]
+Title=Orcs Must Die
 Monsters=Ashmaker_Gotblut.Orcish_Impaler.Orcish_Predator.Orcish_Neckchopper
 Restrictions=no-ignition.no-mech
 
 [03]
+Title=Mummy's Day
 Monsters=Astarte.Dark_Mummy.Ancient_Mummy.Cursed_Mummy
 Restrictions=no-ignition.no-mech
 
 [04]
+Title=Skeleton Crew
 Monsters=Blazebone.Red_Bones.Purple_Bones.Green_Bones.Bone_Soldier
 Restrictions=no-ignition.no-mech.no-light
 
 [05]
+Title=There Will Be Blood
 Monsters=Brauner.Male_Vampire.Female_Vampire
 Restrictions=no-ignition.no-mech
 
 [06]
+Title=Catch of the Day
 Monsters=Sea_Horror.Sea_Pugil.Seawater_Sprite.River_Crab
 Restrictions=no-ignition.no-mech.no-lightning
 
 [07]
+Title=Slime Rancher
 Monsters=KingSlime.Crimson_Slime.Healing_Slime.Midnight_Slime
 Restrictions=no-ignition.no-mech
 
 [08]
+Title=How To Train Your Dragon
 Monsters=Fafnir.Wyvern.Wyvern.Wyvern
 Restrictions=no-ignition.no-mech
 
 [09]
+Title=Insect Swarm
 Monsters=Hercules_Beetle.Goliath_Beetle.Stag_Beetle.Desert_Beetle
 Restrictions=no-ignition.no-mech
 
 [10]
+Title=Bats in the Attic
 Monsters=Vampire_Bat.BeeBear.BloodGoyle.Citadel_Bats
 Restrictions=no-ignition.no-mech
 
 [11]
+Title=Birds of a Feather
 Monsters=Yagudo_Herald.Yagudo_Oracle.Yagudo_Prior.Yagudo_Scribe.Yagudo_Conductor
 Restrictions=no-ignition.no-mech
 
 [12]
+Title=Demon's Dance
 Monsters=Quetzalcoatl.ArchDemon_Knight.ArchDemon_Samurai.ArchDemon_Warrior.ArchDemon_Wizard
 Restrictions=no-ignition.no-mech
 
 [13]
+Title=Day of the Dead
 Monsters=Death.Zombie.ZombieChef.ZombieRockStar.ZombieSalesman
 Restrictions=no-ignition.no-mech.no-fire
 
 [14]
+Title=Nature's Fury
 Monsters=Ahtu.Strolling_Sapling.Prancing_Sapling.Roaming_Sapling
 Restrictions=no-ignition.no-mech.no-fire
 
 [15]
+Title=The Four Heavenly Kings
 Monsters=M_Bison.Balrog-SF.Vega-SF.Sagat-SF
 Restrictions=no-ignition.no-mech
 
 [16]
+Title=Eye See You
 Monsters=Beholder.Cyclops_Guard.Cyclops_Impaler.Cyclops_Warrior
 Restrictions=no-ignition.no-mech
 
 [17]
+Title=Ice Age
 Monsters=Cerberus.Sabertooth_Tiger.Baby_Hydra
 Restrictions=no-ignition.no-mech
 
 [18]
+Title=Rise of the Machines
 Monsters=AndroidX.Gekko.GekkoDwarf
 Restrictions=no-ignition.no-mech
 
 [19]
+Title=Monster Mash
 Monsters=Poison.Lamia_Dancer.Lamia_Dartist.Lamia_Swordmaster
 Restrictions=no-ignition.no-mech
 
 [20]
+Title=Shadow Lord's Invasion
 Monsters=Shadow_Lord.Ruby_Quadav.Orcish_Wyrmbrander.Yagudo_Summoner
 Restrictions=no-ignition.no-mech
 
 [21]
+Title=Dance Magic Dance
 Monsters=Aris.Demon_Wizard.Kindred_Wizard
 Restrictions=no-ignition.no-mech
 
 [22]
+Title=Arachnophobia
 Monsters=Dune_Widow.Bark_Spider.Demonic_Spider
 Restrictions=no-ignition.no-mech
 
 [23]
+Title=Leaping Lizards
 Monsters=Leaping_Lizzie.Rock_Lizard.Cactuar.Desert_Beetle
 Restrictions=no-ignition.no-mech
 
 [24]
+Title=A Weapon to Surpass Metal Gear
 Monsters=GearRex.GearRay.Gekko
 Restrictions=no-ignition.no-mech
 
 [25]
+Title=Full Moon
 Monsters=Anders.Gray_Werewolf.White_Werewolf.Small_Werewolf
 Restrictions=no-ignition.no-mech
 
 [26]
+Title=Demonic Chess
 Monsters=Cursed_King.Cursed_Pawn.Cursed_Queen.Cursed_Rook.Cursed_Bishop
 Restrictions=no-ignition.no-mech
 
 [27]
+Title=EXTERMINATE!
 Monsters=CyberLord.Cyberman.DalekEmperor.Dalek
 Restrictions=no-ignition.no-mech
 
 [28]
+Title=Animal Farm
 Monsters=Dark_Ixion.InfernalBovine.Minotaur.Moblin
 Restrictions=no-ignition.no-mech
 
 [29]
+Title=Temple of Fiends
 Monsters=Garland.Acrobat.Dark_Elemental
 Restrictions=no-ignition.no-mech
 
 [30]
+Title=Demon's Night
 Monsters=Hecatomb.Demon_Knight.Demon_Samurai.Demon_Warrior
 Restrictions=no-ignition.no-mech
 
 [31]
+Title=Ashi's Last Stand
 Monsters=Ashi.Death_Armos.Large_Armos.Small_Armos
 Restrictions=no-ignition.no-mech

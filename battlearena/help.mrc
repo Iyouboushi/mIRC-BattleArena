@@ -1,10 +1,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; HELP and VIEW-INFO
-;;;; Last updated: 12/11/19
+;;;; Last updated: 04/29/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 1:TEXT:!help*:*: { $gamehelp($2, $nick) }
 alias gamehelp { 
-  $display.private.message2($2, 04It is advised that you visit the online help guide: http://iyouboushi.com/forum/index.php?/topic/890-battle-arena-help-thread/  )
+  $display.private.message2($2, 04It is advised that you visit the game's wiki for more in-depth information: https://github.com/Iyouboushi/mIRC-BattleArena/wiki  )
   set %help.topics $readini %help_folder $+ topics.help Help List | set %help.topics2 $readini %help_folder $+ topics.help Help List2 | set %help.topics3 $readini %help_folder $+ topics.help Help List3
   if ($1 = $null) { $display.private.message2($2, 14::[Current Help Topics]::) |  $display.private.message2($2,02 $+ %help.topics) | $display.private.message2($2,02 $+ %help.topics2) | unset %help.topics | unset %help.topics2 | $display.private.message2($2, 14::[Type !help <topic> (without the <>) to view the topic]::) | halt }
 
@@ -79,11 +79,11 @@ alias view-info {
   if ($2 = monsterfair) {
     var %info.monsterlist $readini($dbfile(MonsterFair.db), $gettok($adate,2,47), Monsters)
     var %info.restrictions $readini($dbfile(MonsterFair.db), $gettok($adate,2,47), Restrictions)
-    var %replacechar $chr(044) $chr(032) |  %info.monsterlist = $replace(%info.monsterlist, $chr(046), %replacechar) | %info.restrictions = $replace(%info.restrictions, $chr(046), %replacechar) 
+    var %replacechar $chr(044) $chr(032) |  %info.monsterlist = $replace(%info.monsterlist, $chr(046), %replacechar) | %info.restrictions = $replace(%info.restrictions, $chr(046), %replacechar)  
+    var %info.title [02 $+ $readini($dbfile(MonsterFair.db), $gettok($adate,2,47), Title) $+ ]
 
-    $display.private.message([03Today's date is: $adate $+ ])
+    $display.private.message([03Today's date is: $adate $+ ] %info.title) 
     $display.private.message(04[Today's monster set:12 %info.monsterlist $+ ] [04Today's battle restrictions:12 %info.restrictions $+ ])
-
   }
 
   if ($2 = ignition) { 
