@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 04/12/20
+;;;; Last updated: 05/01/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -1920,7 +1920,7 @@ alias ignition_cmd {  $set_chr_name($1)
   ; $2 = boost name
 
   if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), battle) | halt }
-  if (%battle.type = dungeon) { $display.message($readini(translation.dat, errors, Can'tBoostInDungeon), private) | halt }
+  if ((%battle.type = dungeon) && ($readini($char($1), info, flag) = $null)) { $display.message($readini(translation.dat, errors, Can'tBoostInDungeon), private) | halt }
   $check_for_battle($1) 
   $amnesia.check($1, ignition) 
 
