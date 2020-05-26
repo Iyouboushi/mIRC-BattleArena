@@ -1769,7 +1769,7 @@ MinLevel=100
 Cost=0
 Type=Katana
 Info=A reforged version of Vergil's legendary katana. Outside of torment this weapon has a power of 950 with 20% ignore defense but inside torment the power is 1800 with 40% ignore defense.
-Abilities=JudgementCutII.SummonedSwords.RisingStar.AerialRave.DevilTriggerII
+Abilities=JudgementCutII.SummonedSwords.RisingStar.AerialRave
 Element=Dark
 Hits=$rand(1,2)
 BasePower=$iif(%battle.type = torment, 1800, 950)
