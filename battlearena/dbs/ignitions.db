@@ -574,7 +574,7 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=begins to gather power. A moment later, Dart's red armor takes a fancier look and covers his body. He also gains two large wings on his back as well.
-AdditionalCode=writeini $char($1) modifiers Fire 0 | writeini $char($1) limitbreaks Red-EyedDragon
+AdditionalCode=writeini $char($1) modifiers Fire 0 | writeini $char($1) limitbreaks Red-EyedDragon 1
 
 [DarkDragoon]
 Name=DarkDragoon
@@ -589,7 +589,7 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Desc=is covered in dark energy. As the energy fades, Rose is now wearing dark purple and red armor that covers her body. She also gains to large wings on her back as well.
-AdditionalCode=writeini $char($1) modifiers Dark 0 | writeini $char($1) limitbreaks DarkDragon
+AdditionalCode=writeini $char($1) modifiers Dark 0 | writeini $char($1) limitbreaks DarkDragon 1
 
 [ExcalijuProc]
 Name=ExcalijuProc
