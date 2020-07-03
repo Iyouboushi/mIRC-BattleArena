@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 03/29/20
+;;;; Last updated: 07/03/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -222,9 +222,15 @@ alias uses_item {
     if (($readini($char($1), weapons, $4) = $null) || ($readini($char($1), weapons, $4) = 0)) { $display.message($readini(translation.dat, errors, MustSpecifyWeaponname), private) | halt }
     if ($4 = mythic) { $display.message($readini(translation.dat, errors, CannotUpgradeMythicWithItem), private) | halt }
 
-
     $item.increasewpnlvl($1, $4, $2) 
     $decrease_item($1, $2) | halt
+  }
+
+  if (%item.type = GiveEnhancementPoint) {
+    $checkchar($4)
+    if ($4 = $null) { $item.giveenhancementpoint($1, $1, $2) }
+    else {  $item.giveenhancementpoint($1, $4, $2) }
+    $decrease_item($1, $2) | halt 
   }
 
   if (%item.type = increaseTechLevel) { 
@@ -1310,6 +1316,25 @@ alias item.shopreset {
   return
 }
 
+alias item.giveenhancementpoint {
+  ; $1 = user
+  ; $2 = target
+  ; $3 = item
+
+  var %point.amount $readini($dbfile(items.db), $3, amount)
+  if (%point.amount = $null) { var %point.amount 1 }
+
+  var %enhancement.points $readini($char($2), stuff, EnhancementPoints)
+  if (%enhancement.points = $Null) { var %enhancement.points 0 }
+  inc %enhancement.points %point.amount
+  writeini $char($2) stuff EnhancementPoints %enhancement.points
+
+  if (%user = %enemy ) { set %enemy $gender2($1) $+ self }
+  $set_chr_name($1) 
+
+  $display.message(03 $+ %real.name $+  $readini($dbfile(items.db), $3, desc), global) 
+  $display.message($readini(translation.dat, System, GainedEnhancementPointItem), global) 
+}
 alias item.food {
   ; $1 = user
   ; $2 = target
