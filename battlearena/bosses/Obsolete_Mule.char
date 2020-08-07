@@ -37,6 +37,7 @@ BlackOrbs=1
 ShopLevel=1.0
 Drops=
 
+
 [Info]
 Flag=monster
 Gender=his
@@ -57,16 +58,18 @@ DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
-BattleStats=ignoreTP
+BattleStats=$iif(%battle.type = portal, IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD, IgnoreTP)
 SkipDoubleTurns=true
 ActionsPerTurn=1
 
+
 [monster]
 type=human
-TechLearn=true
+TechLearn=false
 size=medium
 Elite=$iif($current.battlestreak <= 5000, false, true)
 SuperElite=$iif($current.battlestreak >= 5000, false, true)
+
 
 [Status]
 Poison=no
@@ -100,6 +103,7 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
+
 
 [Weapons]
 Equipped=ObsoleteFists
@@ -145,8 +149,10 @@ SwantonBomb=$calc(1 + $current.battlestreak)
 
 [Item_Amount]
 
+
 [Augments]
 ObsoleteFists=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
 
 [Styles]
 Equipped=Wrestlemania
@@ -155,6 +161,7 @@ Wrestlemania=10
 [Ignitions]
 ThisIsWillow=1
 ThisIsItchweeed=1
+
 
 [modifiers]
 Heal=none

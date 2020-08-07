@@ -1,31 +1,27 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=40
-Def=40
-Int=40
-Spd=40
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Bahamut Zero
 
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=40
-Def=40
-Int=40
-Spd=40
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
+LimitBreakPercent=50
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -34,12 +30,14 @@ Dused=1
 Char=is an alternate form of Bahamut with greater power. He retains the black and silver color, but has six wings instead of two.
 Rage=roars loudly in rage!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -51,10 +49,12 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+IgnoreQuickSilver=true
 IgnoreElementalMessage=true
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -97,37 +97,95 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=BahamutPower
 BahamutPower=750
 
+
 [Skills]
+Zen=5
+ClearMind=3
 MartialArts=100
 Wizardry=100
-Zen=5
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
 Flying=$iif($current.battlestreak >= 1000, 0, 1)
-DieHard=25
+
 
 [Techniques]
-MegaFlare=750
-TeraFlare=750
 Impulse=750
+Dragon_Claw=750
+Fire=$iif($current.battlestreak isnum 0-99, 750, 0)
+FireII=$iif($current.battlestreak isnum 100-199, 750, 0)
+FireIII=$iif($current.battlestreak !isnum 0-299, 750, 0)
+Firaja=$iif($current.battlestreak isnum 0-299, 750, 0)
+FirajaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+Ice=$iif($current.battlestreak isnum 0-99, 750, 0)
+IceII=$iif($current.battlestreak isnum 100-199, 750, 0)
+IceIII=$iif($current.battlestreak !isnum 0-299, 750, 0)
+Blizzaja=$iif($current.battlestreak isnum 0-299, 750, 0)
+BlizzajaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+Thunder=$iif($current.battlestreak isnum 0-99, 750, 0)
+ThunderII=$iif($current.battlestreak isnum 100-199, 750, 0)
+ThunderIII=$iif($current.battlestreak !isnum 0-299, 750, 0)
+Thundaja=$iif($current.battlestreak isnum 0-299, 750, 0)
+ThundajaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+Water=$iif($current.battlestreak isnum 0-99, 750, 0)
+WaterII=$iif($current.battlestreak isnum 100-199, 750, 0)
+WaterIII=$iif($current.battlestreak !isnum 0-299, 750, 0)
+Waterja=$iif($current.battlestreak isnum 0-299, 750, 0)
+WaterjaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+Aero=$iif($current.battlestreak isnum 0-99, 750, 0)
+AeroII=$iif($current.battlestreak isnum 100-199, 750, 0)
+AeroIII=$iif($current.battlestreak !isnum 0-299, 750, 0)
+Aeroja=$iif($current.battlestreak isnum 0-299, 750, 0)
+AerojaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+Ultima=$iif($current.battlestreak isnum 600-999, 750, 0)
+Kaustra=$iif($current.battlestreak isnum 600-999, 750, 0)
+UltimaIII=$iif($current.battlestreak !isnum 0-999, 750, 0)
+KaustraIII=$iif($current.battlestreak !isnum 0-999, 750, 0)
 
 
 [Item_Amount]
+
+
+[Augments]
+BahamutPower=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=5
+
+
+[LimitBreaks]
+TeraFlare=1
 
 
 [modifiers]
@@ -152,8 +210,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
-
-[Styles]
-Equipped=WeaponMaster
-WeaponMaster=5
-WeaponMasterXP=1
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

@@ -435,7 +435,7 @@ limitations=no-trusts.no-summons.no-mech.no-quicksilver
 event1=statusonly
 event1statusType=annoyed
 event1Chance=30
-Event1Desc=Colonel: %real.name $+ , turn the game console off right now! %real.name $+ : What did you say? Colonel: The mission is a failure! Cut the power right now! %real.name $+ : What's wrong with you? Colonel: Don't worry, it's a game! It's a game just like usual. Rosemary: You'll ruin your eyes playing so close to the TV.
+Event1Desc=Colonel: %real.name $+ , turn the game console off right now! %real.name $+ : What did you say? Colonel: The mission is a failure! Cut the power right now! %real.name $+ : What's wrong with you? Colonel: Don't worry, it's a game! It's a game just like usual. Rosemary: You'll ruin your eyes playing so close to the TV. %real.name $+ : What are you talking about?
 Event1Target=random
 event2=statusonly
 event2statusType=annoyed
@@ -1310,4 +1310,61 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 [Haunted Hayride - The Final Stop]
 weather=gloomy
 limitations=no-mech.no-playerignition $+ $iif($return_playersinbattle >= $dungeon.recommendedplayers, .no-trusts.no-summons)
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Zohar Cave Entrance]
+weather=gloomy
+limitations=no-playerignition.no-trusts.no-summons
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Zohar Cave Area 1]
+weather=gloomy
+limitations=no-playerignition.no-trusts.no-summons
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Zohar Cave Area 2]
+weather=gloomy
+limitations=no-playerignition.no-trusts.no-summons
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Zohar Cave Area 3]
+weather=gloomy
+limitations=no-playerignition.no-trusts.no-summons
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[ShadowMosesIsland]
+weather=gloomy
+limitations=no-playerignition.no-trusts.no-summons
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[ShinraTestingLab]
+weather=calm
+NumberOfEvents=0
+limitations=no-trusts.no-mech.no-fleeing.no-playerignition
+scavenge=Shihei.Sokubaku.Hankai.MirrorShard.Potion.VitalStar.X-Potion.Senzu.DustyWing.Tonic.GoldOrb.IgnitionStar.Stop_Watch.Hour_Glass.Holy_Water.Red_Fang.Thunder_Orb.Fire_Flower.Ice_Coin
+Objects=OldMachine.ChemistrySet.Flask.Chair
+
+[The Technodrome - Floor 1]
+weather=gloomy
+limitations=no-playerignition.no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Technodrome - Floor 2]
+weather=gloomy
+limitations=no-playerignition.no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Technodrome - Floor 3]
+weather=gloomy
+limitations=no-playerignition.no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Technodrome - Floor 4]
+weather=gloomy
+limitations=no-playerignition.no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[The Technodrome - Command Room]
+weather=gloomy
+limitations=no-playerignition.no-mech
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

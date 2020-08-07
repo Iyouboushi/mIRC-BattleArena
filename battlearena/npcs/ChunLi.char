@@ -15,6 +15,7 @@ Str=50
 Def=50
 Int=50
 Spd=50
+LimitBreakPercent=100
 Status=alive
 
 
@@ -126,8 +127,6 @@ SpinningBirdKick=500
 Kikoken=500
 Hyakuretsukyaku=500
 Hazanshu=500
-Kikosho=500
-Hosenka=500
 
 
 [Item_Amount]
@@ -140,6 +139,10 @@ ChunLiBracelets=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
+
+[LimitBreaks]
+Kikosho=1
+Hosenka=1
 
 
 [modifiers]

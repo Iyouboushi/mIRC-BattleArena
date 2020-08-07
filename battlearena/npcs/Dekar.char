@@ -33,6 +33,12 @@ Hused=1
 Dused=1
 Char=is a tall man with spiky dark purple hair that wears black armor, along with a sword and shield. In addition, he can use a variety of weapons. He looks at the battlefield and says, "Fighting random monsters in an arena is the second best thing I'm good at!"
 Rage=needs to set a rage desc by typing !ragedesc <desc>
+GlacialBlast=takes out a bow, covering an arrow with ice magic and fires it at %enemy $+ !
+Thundershriek=takes out an axe, leaping towards %enemy with lightning covering the axe and slashes %enemy with it.
+BombAttack=takes out an axe, leaping into the air and slams the axe into %enemy which causes an explosion.
+ArticFreeze=takes out a whip and covers it with ice magic. He then performs a backhand swing with the whip, covering the battlefield in ice!
+HolyEnergy=takes out a staff and performs a backhand swing, summoning a wave of light energy to cover the battlefield!
+PhoenixBlow=takes out a staff, leaping into the air and slams the staff onto the ground, causing a massive explosion of fire!
 
 [Stuff]
 RedOrbs=0

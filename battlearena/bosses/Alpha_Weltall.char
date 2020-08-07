@@ -1,20 +1,21 @@
 [BaseStats]
-Hp=$iif($return_playersinbattle > 2, $calc(30000 + (10000 * $return_playersinbattle)) , 30000)
+Hp=$iif($return_playersinbattle > 2, $calc(25000 + (10000 * $return_playersinbattle)) , 25000)
 Tp=5000
-Str=15429
-Def=15429
-Int=15429
-Spd=15429
+Str=12000
+Def=12000
+Int=12000
+Spd=12000
 IgnitionGauge=0
 Name=Alpha Weltall
 
+
 [Battle]
-Hp=30000
+Hp=25000
 Tp=5000
-Str=15429
-Def=15429
-Int=15429
-Spd=15429
+Str=12000
+Def=12000
+Int=12000
+Spd=12000
 IgnitionGauge=0
 Status=alive
 
@@ -25,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=is a large mech known as an Omnigear. The mech is black and grey in color, and has large bat wings which are black in color.
+Char=is a large mech known as an Omnigear. The Omnigear is black and grey in color, and has large bat wings which are black in color.
 Rage=simply stares at the heroes.
 BossQuote=....
 
@@ -39,8 +40,8 @@ Drops=
 
 [Info]
 Flag=monster
-Gender=it
-Gender2=it
+Gender=its
+Gender2=its
 password=battlearena
 passhurt=0
 LastSeen=N/a
@@ -52,7 +53,7 @@ IgnoreQuickSilver=True
 CanTaunt=False
 JustReleaseDefense=100
 IgnoreElementalMessage=true
-BattleStats=IgnoreTP.IgnoreHP
+BattleStats=IgnoreTP.IgnoreHP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD
 CanFlee=false
 IgnoreDrain=true
 IgnorePresident=true
@@ -68,7 +69,8 @@ WonderGuard=true
 [monster]
 type=android
 TechLearn=false
-size=large
+size=giant
+Elite=True
 
 
 [Status]
@@ -145,8 +147,32 @@ AlphaWeltallEnergyBlastII=500
 [Item_Amount]
 
 
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=5
+
+
+[NaturalArmor]
+Name=
+Max=
+Current=
+
+
+[Ignitions]
+
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+
 [Augments]
-AlphaWeltallFists=MeleeBonus.TechBonus.IgnoreMetalDefense
+AlphaWeltallFists=MeleeBonus.TechBonus.MagicBonus.AdditionalHit.HurtEthereal
+
 
 [modifiers]
 Heal=none
@@ -211,75 +237,75 @@ MechFlood=100
 MechTornado=100
 MechFreeze=100
 MechBurst=100
-MechDarkness=80
-MechBanish=120
+MechDarkness=70
+MechBanish=130
 MechFlareII=100
 MechQuakeII=100
 MechFloodII=100
 MechTornadoII=100
 MechFreezeII=100
 MechBurstII=100
-MechDarknessII=80
-MechBanishII=120
+MechDarknessII=70
+MechBanishII=130
 MechFlareIII=100
 MechQuakeIII=100
 MechFloodIII=100
 MechTornadoIII=100
 MechFreezeIII=100
 MechBurstIII=100
-MechDarknessIII=80
-MechBanishIII=120
+MechDarknessIII=70
+MechBanishIII=130
 MechFlareIV=100
 MechQuakeIV=100
 MechFloodIV=100
 MechTornadoIV=100
 MechFreezeIV=100
 MechBurstIV=100
-MechDarknessIV=80
-MechBanishIV=120
+MechDarknessIV=70
+MechBanishIV=130
 MechFire=100
 MechStone=100
 MechWater=100
 MechWind=100
 MechIce=100
 MechThunder=100
-MechLight=120
-MechShadow=80
+MechLight=130
+MechShadow=70
 MechFireII=100
 MechStoneII=100
 MechWaterII=100
 MechWindII=100
 MechIceII=100
 MechThunderII=100
-MechLightII=120
-MechShadowII=80
+MechLightII=130
+MechShadowII=70
 MechFireIII=100
 MechStoneIII=100
 MechWaterIII=100
 MechWindIII=100
 MechIceIII=100
 MechThunderIII=100
-MechLightIII=120
-MechShadowIII=80
+MechLightIII=130
+MechShadowIII=70
 MechFireIV=100
 MechStoneIV=100
 MechWaterIV=100
 MechWindIV=100
 MechIceIV=100
 MechThunderIV=100
-MechLightIV=120
-MechShadowIV=80
+MechLightIV=130
+MechShadowIV=70
 MechUltima=120
 MechKaustra=80
 TripleSlice=100
 ScytheBlazeIII=100
 MechJudgmentCut=100
-MechKasha=120
-MechGekko=80
+MechKasha=130
+MechGekko=70
 MechYukikaze=100
 MechDragonLash=100
-MechDarkLash=80
-MechHolyLash=120
+MechDarkLash=70
+MechHolyLash=130
 MechCircularChain=100
 ShotBuster=100
 FlareBuster=100
@@ -287,7 +313,7 @@ CerberusBlast=100
 IronBlade=100
 GarudasWrath=100
 LotusBlades=100
-R-Fang=100
-X-BusterII=100
-X-Cannon=100
-MoonStoneCannon=100
+R-Fang=130
+X-BusterII=130
+X-Cannon=130
+MoonStoneCannon=130

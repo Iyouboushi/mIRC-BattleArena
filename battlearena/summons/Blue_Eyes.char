@@ -1,31 +1,27 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=30
-Def=20
-Int=20
-Spd=20
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Blue Eyes White Dragon
 
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=30
-Def=20
-Int=20
-Spd=20
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
+LimitBreakPercent=50
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -34,12 +30,14 @@ Dused=1
 Char=is a large and powerful white dragon with blue eyes. The signature card of Seto Kaiba.
 Rage=roars loudly in rage!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=its
@@ -51,9 +49,11 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+IgnoreQuickSilver=true
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -96,42 +96,67 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=BlueEyesPower
 BlueEyesPower=500
 
+
 [Skills]
+Zen=5
+ClearMind=3
 MartialArts=100
 Wizardry=100
-Zen=5
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
 Flying=$iif($current.battlestreak >= 1000, 0, 1)
-DieHard=25
+
 
 [Techniques]
 BurstStream=500
 AbsoluteTerror=1
 FangRush=500
+Dragon_Claw=500
 
 [Item_Amount]
+
+
+[Augments]
+BlueEyesPower=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=5
-WeaponMasterXP=1
+
+
+[LimitBreaks]
+BurstStreamII=1
 
 
 [modifiers]
@@ -156,3 +181,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

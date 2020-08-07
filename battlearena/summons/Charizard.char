@@ -1,7 +1,7 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=60
+Tp=500
+Str=50
 Def=50
 Int=50
 Spd=50
@@ -11,23 +11,19 @@ IgnitionGauge=100
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=60
+Tp=500
+Str=50
 Def=50
 Int=50
 Spd=50
 Status=alive
+LimitBreakPercent=50
 IgnitionGauge=100
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -36,6 +32,7 @@ Dused=1
 Char=the Flame Pokemon. Its fiery breath is hot enough to burn up rocks, and its wings let it fly up to 4,600 feet into the air. It's a proud Pokemon that will never use its flame breath on an opponent weaker than itself. The flame on its tail is a barometer of how much vitality it has remaining.
 Rage=....
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
@@ -43,8 +40,9 @@ ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
 
+
 [Info]
-Gender=its
+Gender=it
 Gender2=its
 password=dbzrpg
 passhurt=0
@@ -52,9 +50,11 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+IgnoreQuickSilver=true
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -97,27 +97,46 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=CharizardFangs
 CharizardFangs=500
 
+
 [Skills]
 Zen=5
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+ClearMind=3
+MartialArts=100
+Wizardry=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
 Flying=$iif($current.battlestreak >= 1000, 0, 1)
-DieHard=25
+
 
 [Techniques]
 Fire_Fang=500
@@ -127,11 +146,26 @@ Shadow_Claw=500
 Flare_Blitz=500
 Dragon_Claw=500
 
+
 [Item_Amount]
+
+
+[Augments]
+CharizardFangs=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=5
+
 
 [Ignitions]
 MegaCharizardX=$iif($item.amount($readini($char($1), Info, Owner), Mega_Stone-Prototype) >= 1, 1, 0)
 MegaCharizardY=$iif($item.amount($readini($char($1), Info, Owner), Mega_Stone-Prototype) >= 1, 1, 0)
+
+
+[LimitBreaks]
+MegaFireFang=1
 
 [modifiers]
 Heal=Fire

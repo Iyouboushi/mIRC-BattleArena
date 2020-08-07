@@ -17,7 +17,7 @@ Battlefield=Hullbreaker Beach Dock
 [1]
 Desc=The party continues forward, eventually coming up to someone already here, who is standing before a group of enemies.
 Battlefield=Hullbreaker Isle Beach
-npcs=$iif($rand(1,2) = 1, Lara_Croft, CaptainJackSparrow)
+npcs=$gettok(Lara_Croft.CaptainJackSparrow, $rand(1,2), 46)
 monsters=Isle_Harpeia.Isle_Hornet.Cieldalaes_Mantis
 
 [2]

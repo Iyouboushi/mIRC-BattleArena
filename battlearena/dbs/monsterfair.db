@@ -115,8 +115,8 @@ Restrictions=no-ignition.no-mech
 
 [24]
 Title=A Weapon to Surpass Metal Gear
-Monsters=GearRex.GearRay.Gekko
-Restrictions=no-ignition.no-mech
+Monsters=GearRex.GearRay
+Restrictions=no-ignition
 
 [25]
 Title=Full Moon

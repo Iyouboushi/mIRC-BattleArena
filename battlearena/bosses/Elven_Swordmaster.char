@@ -1,0 +1,195 @@
+[BaseStats]
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (1000000 * $return_playersinbattle)) , 1000000)
+Tp=1500
+Str=4500
+Def=2500
+Int=1500
+Spd=2500
+IgnitionGauge=9999
+Name=Elven Swordmaster
+
+
+[Battle]
+Hp=1000000
+Tp=1500
+Str=4500
+Def=2500
+Int=1500
+Spd=2500
+IgnitionGauge=9999
+LimitBreakPercent=0
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is a mighty Elven Goddess with tremendous power. She wears dark red armor and wields a powerful sword and shield in hand.
+Rage=simply narrows her eyes and glares at everyone.
+BossQuote=You shall see what my true power is.
+Duality=narrows her eyes as she focuses for the next attack.
+ShieldFocus=holds her shield in front to brace for the next attack.
+Guruthos=gains a green and blue aura as Elven Swordmaster takes her sword in hand. Elven Swordmaster rushes towards %enemy $+ , delivering a fatal blow to %enemy $+ ! "Nice try, but this is the end for you."
+Medui=takes her sword in hand, raising it to the sky as she gains a green and blue aura. "This is the end for you all," Elven Swordmaster says as she stabs the sword into the ground, green and blue energy engulfing the entire arena.
+
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+
+
+[Info]
+Flag=monster
+Gender=her
+Gender2=her
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+AI_Type=techonly
+Streak=-10000
+IgnoreElementalMessage=true
+BattleStats=ignoreTP.ignoreHP
+IgnoreDrain=true
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
+
+; universal Cosmic battle flags
+CanTaunt=false
+WonderGuard=true
+CanStagger=no
+JustReleaseDefense=100
+IgnorePresident=true
+IgnoreQuicksilver=true
+IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
+
+
+[Monster]
+Type=Elf
+TechLearn=false
+size=medium
+SuperElite=True
+
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+protect=yes
+protect.timer=0
+
+
+[Weapons]
+Equipped=Silver_Goddess_Sword
+Silver_Goddess_Sword=$calc(500 + %cosmic.level)
+EquippedLeft=Genbu'sShield
+
+
+[Skills]
+Zen=5
+Duality=1
+Konzen-Ittai=1
+ShieldFocus=1
+Impetus=20
+Swordmaster=$calc(500 + %cosmic.level)
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+
+
+[Techniques]
+Guruthos=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) = 1, 1, 0)
+Medui=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) > 1, 1, 0)
+BladeBeam=$calc(500 + %cosmic.level)
+TwinSlice=$calc(500 + %cosmic.level)
+BiteOfLightning=$calc(500 + %cosmic.level)
+
+
+[Augments]
+Silver_Goddess_Sword=MeleeBonus.RenkeiBonus.TechBonus.IgnoreGuardian.IgnoreDefense.EnhanceCriticalHits.HurtEthereal
+
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+
+[Styles]
+Equipped=Weaponmaster
+Weaponmaster=10
+
+
+[NaturalArmor]
+Name=Goddess Shield
+Max=7500
+Current=7500
+
+
+[Item_Amount]
+
+
+[Ignitions]
+
+
+[LimitBreaks]
+Guruthos=1
+
+
+[modifiers]
+Heal=Light

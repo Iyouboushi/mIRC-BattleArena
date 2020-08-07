@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=3500
-Tp=500
-Str=750
-Def=750
-Int=750
-Spd=750
-IgnitionGauge=2
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (1000000 * $return_playersinbattle)) , 1000000)
+Tp=1500
+Str=4500
+Def=2000
+Int=2000
+Spd=1500
+IgnitionGauge=100
 Name=Guard Daos
 
 
 [Battle]
-Hp=3500
-Tp=500
-Str=750
-Def=750
-Int=750
-Spd=750
-IgnitionGauge=2
+Hp=1000000
+Tp=1500
+Str=4500
+Def=2000
+Int=2000
+Spd=1500
+IgnitionGauge=100
 Status=alive
 
 
@@ -24,15 +24,11 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a powerful being that is a combination of Daos, Gades and Amon.
+Char=is a powerful being that is a combination of the Sinistrals Daos, Gades, and Amon.
 Rage=screams in rage 
 BossQuote=Nothing will stand against me this time!
 
@@ -43,10 +39,12 @@ BlackOrbs=1
 ShopLevel=1.0
 Drops=
 
+
 [Monster]
-Type=
+Type=demon
 size=large
-Elite=True
+SuperElite=true
+
 
 [Info]
 Flag=monster
@@ -57,10 +55,24 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=-1000
-CanTaunt=true
+Streak=-10000
 IgnoreElementalMessage=true
+BattleStats=ignoreTP.ignoreHP
+IgnoreDrain=true
+CanFlee=false
+SkipDoubleTurns=true
+
+; universal Cosmic battle flags
+CanTaunt=false
+WonderGuard=true
+CanStagger=no
+JustReleaseDefense=100
+IgnorePresident=true
+IgnoreQuicksilver=true
+IgnoreOutpost=true
 MaxTormentLevel=0
+IgnoreTorment=true
+
 
 [Status]
 Poison=no
@@ -95,38 +107,47 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=SinistralPower
-SinistralPower=$calc(1 + $current.battlestreak)
+SinistralPower=$calc(500 + %cosmic.level)
+
 
 [Skills]
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
 Zen=5
 ClearMind=3
-ElementalSeal=1
-MightyStrike=1
-MartialArts=75
-Wizardry=75
-Swordmaster=75
-WeaponBash=1
-Impetus=20
-Resist-Intimidate=100
-Resist-Curse=100
-Resist-Charm=100
-Resist-Zombie=100
-Resist-Stop=100
-Resist-Slow=100
-Resist-Petrify=60
-Resist-Stun=30
+MartialArts=100
+Wizardry=100
+
 
 [Techniques]
-RayGion=$calc(1 + $current.battlestreak)
-FuReia=$calc(1 + $current.battlestreak)
-RahGian=$calc(1 + $current.battlestreak)
-WoRud=$calc(1 + $current.battlestreak)
-ReeDelt=$calc(1 + $current.battlestreak)
-AsuranFists=$calc(1 + $current.battlestreak)
-FinalHeaven=$calc(1 + $current.battlestreak)
-ShinjinSpiral=$calc(1 + $current.battlestreak)
+RayGion=$calc(500 + %cosmic.level)
+FuReia=$calc(500 + %cosmic.level)
+RahGian=$calc(500 + %cosmic.level)
+WoRud=$calc(500 + %cosmic.level)
+ReeDelt=$calc(500 + %cosmic.level)
+AsuranFists=$calc(500 + %cosmic.level)
+FinalHeaven=$calc(500 + %cosmic.level)
+ShinjinSpiral=$calc(500 + %cosmic.level)
 
 
 [Item_Amount]
@@ -135,33 +156,7 @@ ShinjinSpiral=$calc(1 + $current.battlestreak)
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
+
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=100
-Dark=0
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
-Axe=100
-Dagger=100
-Mace=100
-Stave=100
-EnergyBlaster=100
-HolyHandGrenade=0

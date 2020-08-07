@@ -1,31 +1,27 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=20
-Def=20
-Int=20
-Spd=20
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Carbuncle
 
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=20
-Def=20
-Int=20
-Spd=20
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
+LimitBreakPercent=50
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -34,12 +30,14 @@ Dused=1
 Char=is a summon related to rainbows.  He takes the appearence of a small animal that is blue and cyan in color with a ruby on his forehead and a large tail that splits into three.
 Rage=simply stares at the battlefield and quietly gathers power.
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=its
@@ -51,9 +49,11 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+IgnoreQuickSilver=true
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -96,42 +96,77 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=CarbunclePower
 CarbunclePower=500
 
+
 [Skills]
+Zen=5
+ClearMind=3
 MartialArts=100
 Wizardry=100
-Zen=5
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
-DieHard=25
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
+
 
 [Techniques]
-SearingLight=500
 HealingRuby=500
 PoisonNails=500
+Banish=$iif($current.battlestreak isnum 0-99, 500, 0)
+BanishII=$iif($current.battlestreak !isnum 0-99, 500, 0)
+Holy=$iif($current.battlestreak !isnum 0-99, 500, 0)
+Fire=$iif($current.battlestreak isnum 0-99, 500, 0)
+FireII=$iif($current.battlestreak !isnum 0-99, 500, 0)
+Firaja=$iif($current.battlestreak !isnum 0-99, 500, 0)
+Cure=$iif($current.battlestreak isnum 0-99, 500, 0)
+CureII=$iif($current.battlestreak isnum 100-199, 500, 0)
+CureIII=$iif($current.battlestreak isnum 200-399, 500, 0)
+CureIV=$iif($current.battlestreak isnum 400-499, 500, 0)
+CureV=$iif($current.battlestreak isnum 500-599, 500, 0)
+CureVI=$iif($current.battlestreak !isnum 0-599, 500, 0)
 
 
 [Item_Amount]
 
 
+[Augments]
+CarbunclePower=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
+
 [Styles]
 Equipped=Guardian
 Guardian=5
-GuardianXP=1
+
+
+[LimitBreaks]
+SearingLight=1
 
 
 [modifiers]
@@ -156,3 +191,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=100

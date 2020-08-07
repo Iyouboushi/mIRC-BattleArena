@@ -1,31 +1,26 @@
 [BaseStats]
 Hp=9000
-Tp=1000
+Tp=500
 Str=50
 Def=50
 Int=50
-Spd=60
+Spd=50
 Name=Pikachu
 
 
 [Battle]
 Hp=9000
-Tp=1000
+Tp=500
 Str=50
 Def=50
 Int=50
-Spd=60
+Spd=50
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -34,12 +29,14 @@ Dused=1
 Char=the Mouse Pokemon. It can generate electric attacks from the electric pouches located in both of its cheeks.
 Rage=....
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=its
@@ -50,9 +47,11 @@ LastSeen=N/a
 LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+ActionsPerTurn=1
+IgnoreQuickSilver=true
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -95,6 +94,7 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=PikachuPaws
 PikachuPaws=500
@@ -102,21 +102,37 @@ PikachuPaws=500
 
 [Skills]
 Zen=5
+ClearMind=3
 MartialArts=100
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+Wizardry=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
-DieHard=25
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
+
 
 [Techniques]
 Thunderbolt=500
@@ -124,7 +140,21 @@ IronTail=500
 Volt_Tackle=500
 Electro_Ball=500
 
+
 [Item_Amount]
+
+
+[Augments]
+PikachuPaws=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=5
+
+
+[LimitBreaks]
+MegaThunderbolt=1
 
 
 [modifiers]

@@ -1,20 +1,20 @@
 [BaseStats]
 Hp=9000
 Tp=1000
-Str=1
-Def=1
-Int=1
-Spd=1
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Mr. Satan
 
 
 [Battle]
 Hp=9000
 Tp=1000
-Str=1
-Def=1
-Int=1
-Spd=1
+Str=50
+Def=50
+Int=50
+Spd=50
 Status=alive
 
 
@@ -33,6 +33,8 @@ Hused=1
 Dused=1
 Char=is a man with a large afro, large sideburns, a horseshoe mustache and giant muscles. He wears a dark brown dogi shirt, with a white belt wrapped around, white pants and black boots. The Earth's so-called "Greatest Champion!"
 Rage=needs to set a rage desc by typing !ragedesc <desc>
+DoublePunch=looks at %enemy and says, "Get ready for my patented Double Punch!" and punches %enemy twice! Mr. Satan then turns to face the other players and laughs, giving them a peace sign!
+AsuranFists=says, "Huh, seems like I need to show you why I'm the Earth's Greatest Champion!" and charges towards %enemy $+ , punching %enemy multiple times. He then hops back and laughs, facing the other players. "There's NO WAY that %enemy could survive my best attack!"
 
 [Stuff]
 RedOrbs=3608
@@ -53,7 +55,7 @@ Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=true
 ActionsPerTurn=2
-BattleStats=IgnoreTP.IgnoreHP
+BattleStats=IgnoreHP.IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD
 SkipDoubleTurns=true
 
 [Status]

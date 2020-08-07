@@ -1,20 +1,21 @@
 [BaseStats]
 Hp=10000
 Tp=10000
-Str=99999
-Def=99999
-Int=99999
-Spd=99999
-Name=Gouki
+Str=9999999999
+Def=9999999999
+Int=9999999999
+Spd=9999999999
+Name=Rare Akuma
 
 
 [Battle]
 Hp=10000
 Tp=10000
-Str=99999
-Def=99999
-Int=99999
-Spd=99999
+Str=9999999999
+Def=9999999999
+Int=9999999999
+Spd=9999999999
+LimitBreakPercent=100
 Status=alive
 
 
@@ -53,7 +54,7 @@ Flag=NPC
 CanTaunt=false
 IgnoreElementalMessage=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
-BattleStats=ignoreHP.ignoreTP
+BattleStats=IgnoreHP.IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD
 ActionsPerTurn=4
 SkipDoubleTurns=true
 
@@ -104,8 +105,8 @@ GoukiGloves=999999
 
 [Skills]
 MightyStrike=1
-RoyalGuard=1
-royalguard.on=on
+PerfectDefense=1
+perfectdefense.on=on
 Zen=50
 MartialArts=9999
 Resist-Charm=100
@@ -148,16 +149,22 @@ GouHadouken=999999
 ZankuuHadouken=999999
 GouShouryuken=999999
 TatsumakiZankuuKyaku=999999
-MessatsuGouHadou=$iif($current.battlestreak < 500, 0, 999999)
-MessatsuGouShouryuu=$iif($current.battlestreak < 500, 0, 999999)
-TenmaGouZankuu=$iif($current.battlestreak < 500, 0, 999999)
-ShunGokuSatsu=$iif($current.battlestreak < 500, 0, 999999)
+MessatsuGouHadou=999999
+MessatsuGouShouryuu=999999
+TenmaGouZankuu=999999
+ShunGokuSatsu=999999
 
 [Item_Amount]
 Dark-Matter=$iif(%ai.monster.name = Zemus, 10, 0)
 
 [Ignitions]
 ShinAkuma=$iif($current.battlestreak < 2000, 0, 1)
+
+[LimitBreaks]
+ShinShunGokuSatsu=1
+TenshouKairekiJin=1
+MeidouGouHadou=1
+TenchiSoukaigen=1
 
 [Styles]
 Equipped=WeaponMaster

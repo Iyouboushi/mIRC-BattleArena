@@ -15,6 +15,7 @@ Str=50
 Def=50
 Int=50
 Spd=50
+LimitBreakPercent=100
 Status=alive
 
 
@@ -126,9 +127,7 @@ Hadouken=500
 ShakunetsuHadouken=500
 Shouryuken=500
 TatsumakiSenpukyaku=500
-ShinkuHadouken=500
-ShinkuTatsumakiSenpukyaku=500
-ShinShouryuken=500
+
 
 [Item_Amount]
 
@@ -140,6 +139,11 @@ WeaponMaster=10
 
 [Augments]
 RyuGloves=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
+
+[LimitBreaks]
+ShinkuHadouken=1
+ShinkuTatsumakiSenpukyaku=1
+ShinShouryuken=1
 
 
 [modifiers]

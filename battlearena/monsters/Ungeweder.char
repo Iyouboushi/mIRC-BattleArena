@@ -1,17 +1,17 @@
 [BaseStats]
 Hp=300
-Tp=200
-Str=$calc(150 + $current.battlestreak)
-Def=$calc(150 + $current.battlestreak)
-Int=$calc(150 + $current.battlestreak)
-Spd=$calc(150 + $current.battlestreak)
+Tp=1500
+Str=150
+Def=150
+Int=150
+Spd=150
 IgnitionGauge=2
 Name=Ungeweder
 
 
 [Battle]
 Hp=300
-Tp=200
+Tp=1500
 Str=150
 Def=150
 Int=150
@@ -24,21 +24,19 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
 Hused=1
 Dused=1
 Char=is a hybrid elemental that uses Wind and Lightning magic.  It seems resistant to melee attacks.
-Rage=screams in rage 
+Rage=...
+
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+
 
 [Info]
 Flag=monster
@@ -52,11 +50,19 @@ Created=N/a
 Streak=110
 CanTaunt=false
 IgnoreElementalMessage=true
+BattleStats=IgnoreTP
+IgnorePresident=true
+SkipDoubleTurns=true
+ActionsPerTurn=1
 IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
+
 
 [Monster]
 Type=elemental
 size=small
+
 
 [Status]
 Poison=no
@@ -91,6 +97,7 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=HybridElementalPower
 HybridElementalPower=$calc(1 + $current.battlestreak)
@@ -106,22 +113,21 @@ ElementalSeal=1
 
 
 [Techniques]
-AeroIV=$iif($current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-AeroV=$iif($current.battlestreak >= 300 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-ThunderIV=$iif($current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-ThunderV=$iif($current.battlestreak >= 300 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-Aeroja=$iif($current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-AerojaII=$iif($current.battlestreak >= 300 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-Thundaja=$iif($current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-ThundajaII=$iif($current.battlestreak >= 300 && $current.battlestreak <= 300, $calc(1 + $current.battlestreak), 0)
-
-
+Thunder=$iif($current.battlestreak isnum 0-99, $calc(1 + $current.battlestreak), 0)
+ThunderII=$iif($current.battlestreak isnum 100-299, $calc(1 + $current.battlestreak), 0)
+ThunderIII=$iif($current.battlestreak !isnum 100-299, $calc(1 + $current.battlestreak), 0)
+Thundaja=$iif($current.battlestreak isnum 0-99, $calc(1 + $current.battlestreak), 0)
+ThundajaII=$iif($current.battlestreak !isnum 0-99, $calc(1 + $current.battlestreak), 0)
+Aero=$iif($current.battlestreak isnum 0-99, $calc(1 + $current.battlestreak), 0)
+AeroII=$iif($current.battlestreak isnum 100-299, $calc(1 + $current.battlestreak), 0)
+AeroIII=$iif($current.battlestreak !isnum 100-299, $calc(1 + $current.battlestreak), 0)
+Aeroja=$iif($current.battlestreak isnum 0-99, $calc(1 + $current.battlestreak), 0)
+AerojaII=$iif($current.battlestreak !isnum 0-99, $calc(1 + $current.battlestreak), 0)
 
 
 [Styles]
 Equipped=Spellmaster
 Spellmaster=2
-SpellmasterXP=1
 
 
 [modifiers]
@@ -134,26 +140,23 @@ Ice=120
 Lightning=200
 Light=70
 Dark=70
-HandToHand=10
-Whip=10
-Sword=10
-Gun=10
-Rifle=10
-Katana=10
-Wand=10
-Spear=10
-Scythe=10
-Glyph=30
-GreatSword=10
-Bow=10
-Axe=10
-Dagger=10
-Dancing=10
-Engine=10
-Mace=10
-PinkChainsaw=10
-Stave=10
-EnergyBlaster=50
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
 DoublePunch=10
 ShoulderTackle=10
 SpinningAttack=10
@@ -220,3 +223,12 @@ DancingEdge=10
 PyrrhicKleos=10
 Evisceration=10
 HolyHandGrenade=0
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=70
++Ice=120
++Wind=200
++Water=70
++Dark=70
+ResistMelee=$iif($current.battlestreak <= 2000, 20, 35)

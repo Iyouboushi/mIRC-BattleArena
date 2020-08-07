@@ -1180,6 +1180,27 @@ SpicedRum=1
 Milk=1
 
 
+===============
+Summon Items
+===============
+[ElvishCrystal]
+Gem=Diamond
+Ingredients=Holy_Water.OrbCrystal.GoldIngot
+SuccessRate=100
+Amount=1
+Holy_Water=5
+OrbCrystal=1
+GoldIngot=3
+
+[BahamutZeroMateria]
+Gem=Diamond
+Ingredients=Red_Fang.OrbCrystal.GoldIngot
+SuccessRate=100
+Amount=1
+Red_Fang=5
+OrbCrystal=1
+GoldIngot=3
+
 ============
 Keys
 ============

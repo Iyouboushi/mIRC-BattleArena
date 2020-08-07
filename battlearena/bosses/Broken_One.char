@@ -57,14 +57,14 @@ DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
-BattleStats=ignoreTP
+BattleStats=$iif(%battle.type = portal, IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD, IgnoreTP)
 SkipDoubleTurns=true
 ActionsPerTurn=1
 
 
 [monster]
 type=human
-TechLearn=true
+TechLearn=false
 size=medium
 Elite=$iif($current.battlestreak <= 5000, false, true)
 SuperElite=$iif($current.battlestreak >= 5000, false, true)

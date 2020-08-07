@@ -1,17 +1,17 @@
 [BaseStats]
 Hp=45
-Tp=90
-Str=$calc(2 + $current.battlestreak)
-Def=$calc(2 + $current.battlestreak)
-Int=$calc(2 + $current.battlestreak)
-Spd=$calc(2 + $current.battlestreak)
+Tp=1500
+Str=2
+Def=2
+Int=2
+Spd=2
 IgnitionGauge=2
 Name=Fire Elemental
 
 
 [Battle]
 Hp=45
-Tp=90
+Tp=1500
 Str=2
 Def=2
 Int=2
@@ -24,21 +24,19 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
 Hused=1
 Dused=1
 Char=is a glowing orb of fire magic.  It seems resistant to melee.
-Rage=screams in rage 
+Rage=...
+
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+
 
 [Info]
 Flag=monster
@@ -53,11 +51,19 @@ Streak=21
 StreakMax=101
 CanTaunt=false
 IgnoreElementalMessage=true
+BattleStats=IgnoreTP
+IgnorePresident=true
+SkipDoubleTurns=true
+ActionsPerTurn=1
 IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
+
 
 [Monster]
 Type=elemental
 size=small
+
 
 [Status]
 Poison=no
@@ -92,6 +98,7 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=ElementalPower
 ElementalPower=$calc(1 + $current.battlestreak)
@@ -103,10 +110,11 @@ Manawall=1
 ElementalSeal=1
 Wizardry=20
 
+
 [Techniques]
-Fire=$iif($current.battlestreak <= 50, $calc(1 + $current.battlestreak), 0)
-FireII=$iif($current.battlestreak >= 50, $calc(1 + $current.battlestreak), 0)
-Firaja=$iif($current.battlestreak >= 50, $calc(1 + $current.battlestreak), 0)
+Fire=$iif($current.battlestreak isnum 0-21, $calc(1 + $current.battlestreak), 0)
+FireII=$iif($current.battlestreak !isnum 0-21, $calc(1 + $current.battlestreak), 0)
+Firaja=$calc(1 + $current.battlestreak)
 
 
 [modifiers]
@@ -119,26 +127,23 @@ Ice=70
 Lightning=70
 Light=70
 Dark=70
-HandToHand=10
-Whip=10
-Sword=10
-Gun=10
-Rifle=10
-Katana=10
-Wand=10
-Spear=10
-Scythe=10
-Glyph=30
-GreatSword=10
-Bow=10
-Axe=10
-Dagger=10
-Dancing=10
-Engine=10
-Mace=10
-PinkChainsaw=10
-Stave=10
-EnergyBlaster=50
+HandToHand=100
+Whip=100
+Sword=100
+Gun=100
+Rifle=100
+Katana=100
+Wand=100
+Spear=100
+Scythe=100
+Glyph=100
+GreatSword=100
+Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
 DoublePunch=10
 ShoulderTackle=10
 SpinningAttack=10
@@ -205,3 +210,12 @@ DancingEdge=10
 PyrrhicKleos=10
 Evisceration=10
 HolyHandGrenade=0
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=200
++Ice=70
++Wind=70
++Water=150
++Dark=70
+ResistMelee=20

@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=250
-Tp=60
-Str=18
-Def=18
-Int=15
-Spd=40
+Hp=2000
+Tp=1500
+Str=900
+Def=900
+Int=900
+Spd=900
 IgnitionGauge=2
 Name=Bahamut Fury
 
 
 [Battle]
-Hp=250
-Tp=60
-Str=18
-Def=18
-Int=15
-Spd=40
+Hp=2000
+Tp=1500
+Str=900
+Def=900
+Int=900
+Spd=900
 IgnitionGauge=2
 Status=alive
 
@@ -28,7 +28,7 @@ RageCountDown=0
 [Descriptions]
 Char=is a larger version of Bahamut that is gold in color. His unique wings has three spikes on them that can be fired at his opponents.
 Rage=roars loudly in rage!
-BossQuote=You must defeat me to earn my power!
+BossQuote=Let us see how you fare against the King of Dragons!
 
 
 [Stuff]
@@ -37,9 +37,13 @@ BlackOrbs=1
 ShopLevel=1.0
 Drops=
 
+
 [Monster]
 Type=Dragon
 size=large
+Elite=$iif($current.battlestreak isnum 2500-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 2500-4999, true, false)
+
 
 [Info]
 Flag=monster
@@ -50,8 +54,19 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
+Streak=200
+IgnoreQuicksilver=true
 CanTaunt=false
+IgnorePresident=true
+IgnoreOutpost=true
 IgnoreElementalMessage=true
+JustReleaseDefense=100
+BaseStats=ignoreTP
+ActionsPerTurn=1
+SkipDoubleTurns=true
+CanFlee=false
+MinTormentLevel=2
+
 
 [Status]
 Poison=no
@@ -86,46 +101,86 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=BahamutPower
-BahamutPower=20
+BahamutPower=$calc(1 + $current.battlestreak)
+
 
 [Skills]
+Zen=5
+WeaponBash=1
+Impetus=$iif($current.battlestreak <= 5000, 5, 20)
+MartialArts=$iif($current.battlestreak <= 5000, 50, 100)
+Wizardry=$iif($current.battlestreak <= 5000, 50, 100)
+Resist-Amnesia=$iif($current.battlestreak <= 5000, 20, 100)
+Resist-Blind=$iif($current.battlestreak <= 5000, 20, 100)
 Resist-Charm=100
-Resist-Zombie=100
+Resist-Confuse=100
+Resist-Curse=$iif($current.battlestreak <= 5000, 20, 100)
+Resist-Disarm=100
+Resist-Drunk=100
 Resist-Intimidate=100
-Resist-Amnesia=100
-Resist-Stun=100
-MartialArts=35
-Wizardry=35
-Resist-Petrify=60
+Resist-Paralysis=$iif($current.battlestreak <= 5000, 20, 100)
+Resist-Petrify=$iif($current.battlestreak <= 5000, 30, 100)
+Resist-Poison=$iif($current.battlestreak <= 5000, 20, 100)
+Resist-Silence=$iif($current.battlestreak <= 5000, 20, 100)
+Resist-Sleep=$iif($current.battlestreak <= 5000, 20, 100)
+Resist-Slow=$iif($current.battlestreak <= 5000, 20, 100)
+Resist-Stop=$iif($current.battlestreak <= 5000, 20, 100)
+Resist-Stun=$iif($current.battlestreak <= 5000, 25, 100)
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
 Flying=$iif($current.battlestreak >= 1000, 0, 1)
 
+
 [Techniques]
-MegaFlare=15
-ExaFlare=25
-Hexafang=20
-AbsoluteTerror=12
+MegaFlare=$calc(1 + $current.battlestreak)
+ExaFlare=$calc(1 + $current.battlestreak)
+Hexafang=$calc(1 + $current.battlestreak)
+AbsoluteTerror=$calc(1 + $current.battlestreak)
+FireII=$iif($current.battlestreak isnum 0-299, 500, 0)
+FireIII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+FirajaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+IceII=$iif($current.battlestreak isnum 0-299, 500, 0)
+IceIII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+BlizzajaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+ThunderII=$iif($current.battlestreak isnum 0-299, 500, 0)
+ThunderIII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+ThundajaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+WaterII=$iif($current.battlestreak isnum 0-299, 500, 0)
+WaterIII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+WaterjaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+AeroII=$iif($current.battlestreak isnum 0-299, 500, 0)
+AeroIII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+AerojaII=$iif($current.battlestreak !isnum 0-299, 500, 0)
+Ultima=$iif($current.battlestreak !isnum 0-999, 500, 0)
+Kaustra=$iif($current.battlestreak !isnum 0-999, 500, 0)
 
 
 [Item_Amount]
 
 
+[Augments]
+BahamutPower=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
 
 [Styles]
 Equipped=WeaponMaster
-WeaponMaster=2
+WeaponMaster=$iif($current.battlestreak >= 2000, 3, 10)
+
 
 [modifiers]
 Heal=none
 Earth=100
 Fire=100
-Wind=50
+Wind=75
 Water=100
 Ice=100
-Lightning=50
+Lightning=75
 Light=100
-Dark=50
+Dark=100
 HandToHand=100
 Whip=100
 Sword=100
@@ -143,4 +198,11 @@ Dagger=100
 Mace=100
 Stave=100
 EnergyBlaster=100
-HolyHandGrenade=0
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=75
++Water=100
++Dark=10

@@ -1,31 +1,27 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=20
-Def=30
-Int=20
-Spd=30
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Doomtrain
 
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=20
-Def=30
-Int=20
-Spd=30
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
+LimitBreakPercent=50
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -34,12 +30,14 @@ Dused=1
 Char=is a demonic train with a skull face on front. It can inflict numerous status effects on its enemies.
 Rage=glows red in color while it stays in place.
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=its
@@ -51,10 +49,12 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
+IgnoreQuickSilver=true
 IgnoreElementalMessage=true
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -97,41 +97,63 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=DoomtrainPower
 DoomtrainPower=500
 
+
 [Skills]
+Zen=5
+ClearMind=3
 MartialArts=100
 Wizardry=100
-Zen=5
-RoyalGuard.on=on
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
 Flying=$iif($current.battlestreak >= 1000, 0, 1)
-DieHard=25
+
 
 [Techniques]
 RunawayTrain=500
 Runaway_Train=500
 
 
+[Augments]
+DoomtrainPower=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=5
-WeaponMasterXP=1
+
+
+[LimitBreaks]
+RunawayTrain=1
 
 
 [modifiers]
@@ -156,3 +178,16 @@ Scythe=90
 Glyph=90
 GreatSword=90
 Bow=90
+Axe=90
+Dagger=90
+Mace=90
+Stave=90
+EnergyBlaster=90
+Lightsaber=90
+Hammer=90
+Bat=90
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=150

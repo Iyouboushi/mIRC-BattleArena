@@ -1,31 +1,27 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=30
-Def=20
-Int=20
-Spd=30
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Fenrir
 
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=30
-Def=20
-Int=20
-Spd=30
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
+LimitBreakPercent=50
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -34,12 +30,14 @@ Dused=1
 Char=is a large wolf that is mainly dark blue and purple in color. Fenrir is associated with the moon and prophecy.
 Rage=growls in rage!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -51,9 +49,11 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+IgnoreQuickSilver=true
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -103,37 +103,69 @@ FenrirPower=500
 
 
 [Skills]
-MartialArts=100
 Zen=5
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+ClearMind=3
+MartialArts=100
+Wizardry=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
-DieHard=25
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
+
 
 [Techniques]
 HowlingMoon=500
 CrescentFang=500
-EclipseBite=500
+Dark=$iif($current.battlestreak isnum 0-99, 500, 0)
+DarkII=$iif($current.battlestreak isnum 100-199, 500, 0)
+DarkIII=$iif($current.battlestreak isnum 200-399, 500, 0)
+Darkness=$iif($current.battlestreak isnum 400-499, 500, 0)
+DarknessII=$iif($current.battlestreak isnum 500-599, 500, 0)
+DarknessIII=$iif($current.battlestreak !isnum 0-599, 500, 0)
+Darkra=$iif($current.battlestreak isnum 0-299, 500, 0)
+DarkraII=$iif($current.battlestreak isnum 300-599, 500, 0)
+DarkraIII=$iif($current.battlestreak !isnum 0-599, 500, 0)
+Kaustra=$iif($current.battlestreak isnum 600-999, 500, 0)
+KaustraIII=$iif($current.battlestreak !isnum 0-999, 500, 0)
 
 
 [Item_Amount]
 
 
+[Augments]
+FenrirPower=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=5
-WeaponMasterXP=1
+
+
+[LimitBreaks]
+EclipseBite=1
 
 
 [modifiers]
@@ -158,3 +190,16 @@ Scythe=100
 Glyph=100
 GreatSword=100
 Bow=100
+Axe=100
+Dagger=100
+Mace=100
+Stave=100
+EnergyBlaster=100
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=100
++Ice=100
++Wind=100
++Water=100
++Dark=150

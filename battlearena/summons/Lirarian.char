@@ -1,22 +1,23 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=60
-Def=60
-Int=60
-Spd=60
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 IgnitionGauge=100
-Name=Lirarian Dalnaal
+Name=Lirarian
 
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=60
-Def=60
-Int=60
-Spd=60
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 IgnitionGauge=100
+LimitBreakPercent=40
 Status=alive
 
 
@@ -25,29 +26,18 @@ RageBar=0
 RageCountDown=0
 
 
-[Limit]
-Level=1
-Percent=0
-
-
-
 [Descriptions]
 Hused=1
 Dused=1
 Char=is a lesser Elven goddess who is entrusted with two powerful weapons. She has short brown hair, glowing eyes which are blue and green, and wears dark-red Swordmaster armor. She looks at the heroes and says, "I guess I'll help you... this one time."
 Rage=simply narrows her eyes and glares at everyone.
+Meteor=raises the staff into the air and chants in Elvish. After a few moments, Liraran strikes the ground with the staff as a large meteor then descends upon the battlefield!
 
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-
-
-[Monster]
-Type=Elf
-TechLearn=true
-Size=Medium
 
 
 [Info]
@@ -62,9 +52,16 @@ Created=N/a
 IgnoreQuickSilver=true
 CanTaunt=false
 IgnoreElementalMessage=true
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+CanFlee=false
+
+
+[Monster]
+Type=Elf
+TechLearn=false
+Size=Medium
 
 
 [Status]
@@ -104,38 +101,92 @@ MPRegenerating=no
 [Weapons]
 Equipped=Silver_Goddess_Sword
 Silver_Goddess_Sword=750
+Black_Goddess_Staff=750
+
 
 [Skills]
+Zen=5
 Swordmaster=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
 perfectdefense.on=on
 Resist-Amnesia=100
 Resist-Blind=100
 Resist-Charm=100
 Resist-Confuse=100
+Resist-Curse=100
 Resist-Disarm=100
 Resist-Drunk=100
 Resist-Intimidate=100
 Resist-Paralysis=100
 Resist-Petrify=100
 Resist-Poison=100
+Resist-Silence=100
 Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
 Resist-Stun=100
+Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
 DieHard=30
+
 
 [Techniques]
 TwinSlice=750
 BiteOfLightning=750
 BladeBeam=750
+FiraII=750
+StoneraII=750
+WateraII=750
+AeraII=750
+BlizzaraII=750
+ThundaraII=750
+Geohelix=750
+Hydrohelix=750
+Anemohelix=750
+Pyrohelix=750
+Cryohelix=750
+Ionohelix=750
+Noctohelix=750
+Luminohelix=750
+Meteor=750
+
+
+[Augments]
+Silver_Goddess_Sword=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus
+Black_Goddess_Staff=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
+
+
+[NaturalArmor]
+Name=Goddess Defense
+Max=1000
+Current=1000
+
+
+[equipment]
+Head=Lirarian's_Circlet
+Body=Lirarian's_Armor
+Hands=Lirarian's_Gauntlets
+Legs=Lirarian's_Cuisses
+Feet=Lirarian's_Sabatons
+
+
+[Ignitions]
+WiseReflection=$iif($current.battlestreak < 1000, 0, 1)
+
+
+[LimitBreaks]
+HyperTwinSlice=1
 
 
 [modifiers]
@@ -160,19 +211,16 @@ Scythe=90
 Glyph=90
 GreatSword=90
 Bow=90
-
-
-[NaturalArmor]
-Name=Goddess Defense
-Max=1000
-Current=1000
-
-[equipment]
-Head=Lirarian's_Circlet
-Body=Lirarian's_Armor
-Hands=Lirarian's_Gauntlets
-Legs=Lirarian's_Cuisses
-Feet=Lirarian's_Sabatons
-
-[Ignitions]
-WiseReflection=$iif($current.battlestreak < 200, 0, 1)
+Axe=90
+Dagger=90
+Mace=90
+Stave=90
+EnergyBlaster=90
+Lightsaber=90
+Hammer=90
+Bat=90
++Fire=110
++Ice=110
++Wind=110
++Water=110
++Dark=150

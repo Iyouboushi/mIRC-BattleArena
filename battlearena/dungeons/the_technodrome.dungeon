@@ -1,0 +1,57 @@
+[Info]
+Name=The Technodrome
+Rooms=9
+PlayersNeeded=1
+PlayersRecommended=2
+Level=300
+FinalRoom=8
+StartBattleDesc=navigates through a cavern system before finding an odd machine, which appears to be an empty door frame. After inserting the Dimension X Key, the portal activates and warps every to another dimension, standing in front of a massive battle fortress made out of titanium. The fortress also has an eye on the top.
+ClearDungeonDesc=* The party has defeated The Shredder and has gotten some green mutagen! [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to stop The Shredder and are thrown out back to their own dimension!
+
+[0]
+Desc=The party takes a moment after entering the Technodrome to pepare before moving forward. They can also see a random mutant ninja turtle also arrive a moment later who waves towards them.
+Battlefield=The Technodrome - Floor 1
+RestoreRoom=true
+
+[1]
+Desc=The party, including the ninja turtle, walks further into the Technodrome before several Foot Clan soldiers arrive!
+Battlefield=The Technodrome - Floor 1
+Monsters=FootSoldier.FootSoldier.FootSoldier.FootSoldier
+npcs=$gettok(Leonardo.Raphael.Donatello.Michelangelo, $rand(1,4), 46)
+
+[2]
+Desc=The party enters an elevator and goes up to the next floor. Right as they leave the elevator, they are ambushed by more Foot Clan Soldiers!
+Battlefield=The Technodrome - Floor 2
+Monsters=FootSoldier.FootSoldier.FootSoldier.FootSoldier
+
+[3]
+Desc=The party continues forward but are stopped as more Foot Clan soldiers are guarding the elevator!
+Battlefield=The Technodrome - Floor 2
+Monsters=FootSoldier.FootSoldier.FootSoldier.FootSoldier
+
+[4]
+Desc=The party enters the elevator, taking a rest as it goes to the next floor.
+Battlefield=The Technodrome - Floor 2
+RestoreRoom=true
+
+[5]
+Desc=The party exits the elevator and continues forward. There seem to be no sign of the Foot, however there is a mutant warthog and rhinoceros guarding the next elevator.
+Battlefield=The Technodrome - Floor 3
+Monsters=Bebop.Rocksteady
+
+[6]
+Desc=The party enters the next elevator and continue to the next floor. As before, there seems to be no Foot Clan soldiers. As they move foeward, they can see a large muntant snapping turtle and large mutant wolf guarding the next elevator!
+Battlefield=The Technodrome - Floor 4
+Monsters=Tokka.Rahzar
+
+[7]
+Desc=The party enters the elevator, taking a rest as it seems to skip several floors before finally stopping at the Command Room.
+Battlefield=The Technodrome - Floor 4
+RestoreRoom=true
+
+[8]
+Desc=The party exits the elevator and walks forward, confronting a brain controlling an android body and a man with a samurai helmet with mask on.
+Battlefield=The Technodrome - Command Room
+Monsters=Krang.TheShredder
+BossRoom=True

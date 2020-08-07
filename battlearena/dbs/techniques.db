@@ -37,7 +37,7 @@ SmallKatana=Tachi:Enpi
 PowerChordSword=A5.E5.D5.C5
 Soboro=Tachi:Enpi.Tachi:Hobaku.Tachi:Jinpu.Tachi:Goten.Tachi:Kagero
 Yamato=Tachi:Yukikaze.Tachi:Gekko.JudgementCut.DevilTrigger
-Yamato+1=JudgementCutII.SummonedSwords.RisingStar.AerialRave
+Yamato+1=JudgementCutII.SummonedSwords.RisingStar.AerialRave.DevilTriggerII
 Kogarasumaru=Tachi:Kasha.Tachi:Ageha.Tachi:Rana.Tachi:Fudo
 Crissaegrim=Tachi:Shoha.Tachi:Rana
 Valmanway=Tachi:Shoha.Tachi:Rana.MeikyoShisui
@@ -272,7 +272,6 @@ QuadavSword=FastBlade.CircleBlade.FlatBlade.Headbutt
 SilverSwords=Twin_Slice.LightningStrike.BladeBeamII.Guruthos.Medui
 Silver_Goddess_Sword=TwinSlice.BiteOfLightning.BladeBeam.Guruthos.Medui
 Black_Goddess_Staff=FiraII.StoneraII.WateraII.AeraII.BlizzaraII.ThundaraII.Geohelix.Hydrohelix.Anemohelix.Pyrohelix.Cryohelix.Ionohelix.Noctohelix.Luminohelix.Meteor.Guruthos.Medui
-AettirII=LungeII.VivaciousPulseII.RuneSwipeII.DimidiationII.ResolutionII.HardSlashII.PowerSlashII.Guruthos.Medui
 Mariofists=MarioJump.StarPower.Fireflower
 KanonjiStaff=Kanonball.GoldenKanonball
 Shadow_Blade=GigaSlash.KickBack.DarkNova
@@ -290,8 +289,8 @@ BoneScythe=BloodSaber.BloodSlash.HorrorCloud.Fire.Stone.Aero.FireIV.WaterIV.Bliz
 VampireFangs=VampireBite.DoublePunch.ShoulderTackle.SpinningAttack
 SpaceGun=SpaceBeam.Sacrifice.SpaceAbsorb.SpaceBoost
 CerberusClaws=IceRain.Roar.ShoulderTackle
-ElementalPower=Fire.FireII.Stone.StoneII.Ice.IceII.Aero.AeroII.Water.WaterII.Thunder.ThunderII.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra
-HybridElementalPower=FireIV.FireV.BanishIV.BanishV.StoneIV.StoneV.DarkIV.DarkV.WaterIV.WaterV.BlizzardIV.BlizzardV.AeroIV.AeroV.ThunderIV.ThunderV.Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Holy.Darkra.ThundajaII.FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Darkra.DarkraII.Holy.HolyII.Ultima_II.Kaustra_II
+ElementalPower=Dark.DarkII.Darkra.Fire.FireII.Firaja.Ice.IceII.Blizzaja.Thunder.ThunderII.Thundaja.Water.WaterII.Waterja.Aero.AeroII.Aeroja.Banish.BanishII.Holy
+HybridElementalPower=Dark.DarkII.DarkIII.Darkra.DarkraII.DarkraIII.Fire.FireII.FireIII.Firaja.FirajaII.Ice.IceII.IceIII.Blizzaja.BlizzajaII.Thunder.ThunderII.ThunderIII.Thundaja.ThundajaII.Water.WaterII.WaterIII.Waterja.WaterjaII.Aero.AeroII.AeroIII.Aeroja.AerojaII.Ultima.Ultima_II.UltimaIII.Kaustra.Kaustra_II.KaustraIII.Banish.BanishII.BanishIII.Holy.HolyII.HolyIII
 FishBite=Screwdriver.AquaBall.Water
 Egyptian_Rod=Temptation.DeltaSpark.TypoonRod.ScarfStab
 SinistralPower=RayGion.FuReia.RahGian.WoRud.ReeDelt.AsuranFists.FinalHeaven.ShinjinSpiral
@@ -309,9 +308,9 @@ SuccubusPower=VampireBite.Temptation.FireII
 DragonShouts=FusRoDah.YolToorShul.FoKrahDiin.StrunBahQo
 CyberFists=WristLaser.CyberParalyze.BrainControl
 Gunstick=DalekParalyze.DalekExterminate.DalekLaser
-BlueEyesPower=BurstStream.AbsoluteTerror.FangRush
-BlackMagic=BlackMagicAttack.ThousandKnives.FireIV
-DragonSword=HardSlash.PowerSlash.Resolution
+BlueEyesPower=BurstStream.AbsoluteTerror.FangRush.Dragon_Claw
+BlackMagic=BlackMagicAttack.ThousandKnives.Dark.DarkII.DarkIII.Darkra.DarkraII.DarkraIII.Darkness.DarknessII.DarknessIII.Fire.FireII.FireIII.Firaja.FirajaII.Ice.IceII.IceIII.Blizzaja.BlizzajaII.Thunder.ThunderII.ThunderIII.Thundaja.ThundajaII.Water.WaterII.WaterIII.Waterja.WaterjaII.Aero.AeroII.AeroIII.Aeroja.AerojaII
+DragonSword=HardSlash.PowerSlash.Resolution.SpinningSlash
 OctoArms=Maelstrom.InkJet.Tentacle.Ink_Blot.World's_End.Seawater_Cannon.KrakenGrab.Paralyzing_Touch.Wallop.Clear_Out
 Leather_Whip=Whiplash
 Casull&Jackal=LastStand.RapidShot.RainStorm.BloodDrain
@@ -350,22 +349,22 @@ KainsLance=Jump.HighJump.SpiritJump.SoulJump.Drakesbane.Stardiver.LegSweep
 PrishePowers=AsuranFists.NullifyingDropkick.AuroralUppercut.TornadoKick.OneInchPunch.ShinjinSpiral.Holy.BanishV.CureIV
 AbsolutePolearm=ImpactStream.MedusaJavelin.WingThrust.Eagle_Eye_Shot.AuroralWind.CureV.TornadoII.Meteor
 DullahanSword=Charon.ForminaSage.Haunt.DjinnStorm.Condem.TrueCollide
-ChunLiBracelets=SpinningBirdKick.Kikoken.Hyakuretsukyaku.Kikosho.Hazanshu.Hosenka
-RyuGloves=Hadouken.ShakunetsuHadouken.Shouryuken.TatsumakiSenpukyaku.ShinkuHadouken.ShinkuTatsumakiSenpukyaku.ShinShouryuken
-KenGloves=Hadouken.Shouryuken.TatsumakiSenpukyaku.Shinryuken.ShoryuReppa
+ChunLiBracelets=SpinningBirdKick.Kikoken.Hyakuretsukyaku.Hazanshu
+RyuGloves=Hadouken.ShakunetsuHadouken.Shouryuken.TatsumakiSenpukyaku
+KenGloves=Hadouken.Shouryuken.TatsumakiSenpukyaku
 GoukiGloves=GouHadouken.ZankuuHadouken.GouShouryuken.TatsumakiZankuuKyaku.MessatsuGouHadou.MessatsuGouShouryuu.TenmaGouZankuu.ShunGokuSatsu
-AlexanderPower=DivineJudgement.DivineSpear.Holy
-BahamutPower=MegaFlare.Impulse.TeraFlare.ExaFlare.AbsoluteTerror.Hexafang
-CarbunclePower=SearingLight.PoisonNails.HealingRuby
+AlexanderPower=DivineSpear.Banish.BanishII.BanishIII.Holy.HolyII.HolyIII.Light.LightII.LightIII.Ultima.UltimaIII
+BahamutPower=Impulse.ExaFlare.AbsoluteTerror.Hexafang.Dragon_Claw.Fire.FireII.FireIII.Firaja.FirajaII.Ice.IceII.IceIII.Blizzaja.BlizzajaII.Thunder.ThunderII.ThunderIII.Thundaja.ThundajaII.Water.WaterII.WaterIII.Waterja.WaterjaII.Aero.AeroII.AeroIII.Aeroja.AerojaII.Ultima.Kaustra.UltimaIII.KaustraIII
+CarbunclePower=PoisonNails.HealingRuby.Banish.BanishII.Holy.Fire.FireII.Firaja.Cure.CureII.CureIII.CureIV.CureV.CureVI
 DoomtrainPower=RunawayTrain.Runaway_Train
 FalcorrPower=BackHeel.Jettatura.ChokeBreath
-FenrirPower=HowlingMoon.CrescentFang.EclipseBite
-GarudaPower=AerialBlast.PredatorClaws.WindBlade.Tornado
-IfritPower=Hellfire.MeteorStrike.BurningStrike.Flare
-LeviathanPower=TidalWave.Tailwhip.GrandFall.Flood
-OlduumStaff=JudgementBolt.Thunderstorm.ChaoticStrike.Burst
-ShivaPower=DiamondDust.HeavenlyStrike.AxeKick.Freeze
-TitanPower=AngerOfTheLand.MountainBuster.Geocrush.Quake
+FenrirPower=HowlingMoon.CrescentFang.Dark.DarkII.DarkIII.Darkra.DarkraII.DarkraIII.Darkness.DarknessII.DarknessIII.Kaustra.KaustraIII
+GarudaPower=PredatorClaws.WindBlade.Aero.AeroII.AeroIII.Aeroja.AerojaII.Aera.Tornado.TornadoII.TornadoIII
+IfritPower=MeteorStrike.BurningStrike.Fire.FireII.FireIII.Firaja.FirajaII.Fira.Flare.FlareII.FlareIII
+LeviathanPower=TailWhip.GrandFall.Water.WaterII.WaterIII.Waterja.WaterjaII.Watera.Flood.FloodII.FloodIII
+OlduumStaff=Thunderstorm.ChaoticStrike.Thunder.ThunderII.ThunderIII.Thundaja.ThundajaII.Thundara.Burst.BurstII.BurstIII
+ShivaPower=HeavenlyStrike.AxeKick.Ice.IceII.IceIII.Blizzaja.BlizzajaII.Blizzara.Freeze.FreezeII.FreezeIII
+TitanPower=MountainBuster.Geocrush.Stone.StoneII.StoneIII.Stoneja.StonejaII.Stonera.Quake.QuakeII.QuakeIII
 BlastoiseCannons=Water_Cannon.IronTail.Hydro_Pump.Rapid_Spin
 CharizardFangs=Fire_Fang.IronTail.Heat_Wave.Shadow_Claw.Flare_Blitz.Dragon_Claw
 PikachuPaws=Thunderbolt.IronTail.Volt_Tackle.Electro_Ball
@@ -384,7 +383,7 @@ Chernobog=Guillotine.ShadowOfDeath
 ScarboroughFair=BulletClimax.HeelSlide.WheelofTorture.MadamaButterflyFist.MadamaButterflyHeel
 Shuraba=Tachi:Shoha.Tachi:Rana
 Kulshedra=TwinDragonLash.SerpentBite.DarkLash
-BusterSword=FastBlade.Flatblade.VorpalBlade.HardSlash.GroundStrike.Resolution
+BusterSword=Braver.BladeBurst.TripleSlash.FocusedThrust.Infinity'sEnd.Disorder
 DekarBlade=ExplosionFist.ExplosionSword.GlacialBlast.Thundershriek.BombAttack.ArticFreeze.HolyEnergy.PhoenixBlow.OctoStrike.Skysplitter
 RuneOakStaff=Forzare.SoulForzare.Fuego.Pyrofeugo.Dormio.Fulminos.Arctis.Dispertius.Gravitus.FlickumBicus.Galvinius.Infriga.InfrigaForzare
 AdamantAxe=Thundershriek.BombAttack.FellCleave.UkkosFury.KingsJustice
@@ -491,7 +490,7 @@ PlanteraBulb=PlanteraSeed.PlanteraThornBall.PlanteraSpores.PlanteraBite
 LihzahrdGolemEyes=GolemEyeLaser
 LihzahrdGolemFists=GolemFistPunch.GolemFistGrab.AsuranFists.ShinjinSpiral
 FishronFins=DetonatingBubble.Sharknado
-Marlene=AntidepressentScale.ChemicalAffection.KyougenJikkou.TaibokuWoSasuruTe.Fortissimo.GenkaiFortissimo.UltimateFortissimo.LastWillandTestament
+Marlene=AntidepressentScale.ChemicalAffection.KyougenJikkou.TaibokuWoSasuruTe.Fortissimo.GenkaiFortissimo.UltimateFortissimo
 Zanmato=Daigoro.Kozuka.Zanmatou
 PacPower=Pac-Jump.FireHydrant.BonusFruit.PowerPellet
 TurkeyPower=Gobble
@@ -633,9 +632,43 @@ MedusaPower=GorgonDance.TailSlap
 PureBliss=LuminousDrape.PullOfLight
 Zawnglachel=BattleDance.Onslaught
 BhurtrusClaws=ReallyBadBreath
-GarudaPower=Slipstream.EyeOftheStorm
+GarudaPrimePower=Slipstream.EyeOftheStorm
 SusanoBlade=YataNoKagami.Stormsplitter
 GuardScorpion=TailLaser.FocusedTailLaser.MissileBarrage
+EagleArmorMissileLauncher=SingleMissileStrike.MultipleMissileStrike
+EagleArmorGun=RainStorm.ChargedShot.RapidShot
+EagleArmorRifle=SniperShot.SlugShot.HotShot
+EdinGearWand=Firaja.Stoneja.Waterja.Aeroja.Blizzaja.Thundaja.Darkra.Holy
+EtoneGearStaff=Flare.Quake.Flood.Tornado.Freeze.Burst.Darkness.Light
+GanadorSwordShield=GravityBreak.SeraphBlade.DarkBlade.BurningBlade.FreezingBlade.LightningBlade.WaterBlade.EarthBlade.AirCutter
+FusionSword=Braver.BladeBurst.TripleSlash.FocusedThrust.Infinity'sEnd.Disorder
+LeatherGloves=DiveKick.FocusedStrike.StarShower.ChiTrap.TrueStrike.MeteorDrive.WhirlingUppercut.Omnistrike.RiseAndFall.Overpower
+GuardStick=SorcerousStorm.RayOfJudgement.HealingWind.Aeroja.Thundaja.Firaja.Blizzaja
+GatlingGun=FocusedShot.MaximumFury.ChargingUppercut.Overcharge.PointBlank
+NeoTitanFists=EvilEarth.BombBoulders.Geocrush.MassiveLandslide.LandslideII.Aftershock.FaultLine.Magnitude5
+TitanMaximumFists=EarthenFury.EarthenFist.DualEarthenFist.WeightOfTheWorld.TumultII.TectonicUplift
+NeoLeviathanPower=RipCurrent.TemporaryCurrent.NeoTidalWave.UnderseaQuake.NeoTsunami.SpinningDive.DrenchingPulse
+LeonardoKatanas=FastBlade.SwiftBlade.VorpalBlade.CircleBlade
+DonatelloStaff=FastBlade.SwiftBlade.VorpalBlade.CircleBlade
+RaphaelSais=FastBlade.SwiftBlade.VorpalBlade.CircleBlade
+MikeyNunchucks=FastBlade.SwiftBlade.VorpalBlade.CircleBlade
+KrangAndroidFists=DoublePunch.ShoulderTackle.SpinningAttack.ChargedShot
+ShredderClaws=DoublePunch.ShoulderTackle.SpinningAttack.AsuranFists.TornadoKick.ShinjinSpiral
+FootSoldierFists=DoublePunch.ShoulderTackle.SpinningAttack
+TokkaFists=DoublePunch.ShoulderTackle.SpinningAttack
+RahzarClaws=DoublePunch.ShoulderTackle.SpinningAttack
+BebopGun=RainStorm.ChargedShot.RapidShot
+RocksteadyGun=SniperShot.SlugShot.HotShot
+DarkwingDuckGun=RainStorm.ChargedShot.RapidShot
+ElPolloDiabloFists=DoublePunch.ShoulderTackle.SpinningAttack.AsuranFists.TornadoKick.ShinjinSpiral
+LeChuckCutlass=FastBlade.SwiftBlade.VorpalBlade.CircleBlade.DeathBlossom
+RayneWristBlades=FastBlade.SwiftBlade.VorpalBlade.CircleBlade.VampireBite.BloodStorm
+CarpathianDragons=VampireBite.BloodStorm.BloodShot.BloodStream.BloodSpray.BloodBomb.BloodFlame.BloodHammer
+RubyWeaponPower=RubyFlame.RubyRay.ShadowFlare.Ultima_II.RightTentacleAttack.LeftTentacleAttack.BigSwing
+EmeraldWeaponPower=EmeraldStomp.EmeraldStompII.EmeraldShoot.EmeraldShootII.EmeraldBeam.EmeraldBeamII.AireTamStorm
+UltimateWeaponPower=ShadowFlare.Quake.Ultima_II.UltimaBeam.UltimaClaw.Thunderball
+DiamondWeaponPower=DiamondStomp.DiamondFire.DiamondFlash
+AirbusterHands=StunBeam.BigBomber.Tankbuster.EnergyBall.BodyBlow.HandGrab.ABFlame
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -5459,6 +5492,1316 @@ BasePower=250
 Magic=No
 stat=spd
 
+=========================
+MECH TECHS
+=========================
+[DoubleShot]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=takes aim at %enemy with the gun and fires two quick shots.
+BasePower=120
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[GunBlaze]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=spins around and shoots at all enemies on the battlefield!
+BasePower=80
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[DoubleShotII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=takes aim at %enemy with the gun and fires two quick shots.
+BasePower=150
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[GunBlazeII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=spins around and shoots at all enemies on the battlefield!
+BasePower=100
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[DoubleShotIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=takes aim at %enemy with the gun and fires two quick shots.
+BasePower=180
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[GunBlazeIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=spins around and shoots at all enemies on the battlefield!
+BasePower=120
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[TripleShot]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=takes aim at %enemy with the cannon and fires a burst of three shots.
+BasePower=200
+Element=none
+magic=no
+cost=0
+stat=str
+hits=3
+IgnoreShadows=true
+
+[TripleSlice]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and slashes %enemy three times with the scythe.
+BasePower=50
+Element=none
+magic=no
+cost=0
+stat=str
+hits=3
+IgnoreShadows=true
+
+[ScytheBlazeIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=quickly slashes every enemy on the battlefield with the mech's scythe!
+BasePower=120
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[MechJudgmentCut]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=hops back and returns the katana to its sheath for a moment before quickly swinging the katana at %enemy $+ , hurling a sphere of energy towards $gender2($2) $+ !
+BasePower=50
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[MechKasha]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=returns $gender($1) katana to its sheath and pauses for a second before quickly slashing %enemy as a feint image of flower petals appears for a second, causing light damage to %enemy $+ !
+BasePower=50
+Element=Light
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[MechGekko]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges up a dark energy in $gender($1) blade before doing an impressive spin to release the power on %enemy $+ !
+BasePower=50
+Element=Dark
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[MechYukikaze]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=stabs %enemy with the katana and encases %enemy in ice. The ice then shatters, causing damage to %enemy $+ !
+BasePower=50
+Element=Ice
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[MechDragonLash]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=cracks $gender($1) whip at %enemy $+ , hitting once before spinning around to hit %enemy once more.
+BasePower=50
+Element=none
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[MechDarkLash]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=forces the whip to gain a dark aura before cracking the whip to hit %enemy with a dark power.
+BasePower=50
+Element=Dark
+magic=no
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechHolyLash]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=forces the whip to glow white before cracking the whip to hit %enemy with a holy power.
+BasePower=50
+Element=Light
+magic=no
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechCircularChain]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=strikes out with the whip then begins to spin at a high speed to hit everyone in range with the whip!
+BasePower=120
+Element=none
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[DoubleSwing]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and slashes %enemy twice with the sword.
+BasePower=70
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[SwordBlaze]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=quickly slashes every enemy on the battlefield with the mech's sword!
+BasePower=50
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[DoubleSwingII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and slashes %enemy twice with the sword.
+BasePower=80
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[SwordBlazeII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=quickly slashes every enemy on the battlefield with the mech's sword!
+BasePower=80
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[DoubleSwingIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and slashes %enemy twice with the sword.
+BasePower=90
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[SwordBlazeIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=quickly slashes every enemy on the battlefield with the mech's sword!
+BasePower=120
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[TripleSwing]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and slashes %enemy three times with the sword.
+BasePower=50
+Element=none
+magic=no
+cost=0
+stat=str
+hits=3
+IgnoreShadows=true
+
+[DoubleStrike]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and punches %enemy with both fists.
+BasePower=70
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[MartialBlaze]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=lures all of the enemies close before unleashing a powerful spinning attack with the mech!
+BasePower=50
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[DoubleStrikeII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and punches %enemy with both fists.
+BasePower=80
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[MartialBlazeII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=lures all of the enemies close before unleashing a powerful spinning attack with the mech!
+BasePower=80
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[DoubleStrikeIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and punches %enemy with both fists.
+BasePower=90
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[MartialBlazeIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=lures all of the enemies close before unleashing a powerful spinning attack with the mech!
+BasePower=120
+Element=None
+magic=no
+cost=0
+stat=str
+IgnoreShadows=true
+
+[TripleStrike]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=charges towards %enemy with the mech and punches %enemy with both fists before spinning around and hitting %enemy with a kick as well.
+BasePower=50
+Element=none
+magic=no
+cost=0
+stat=str
+hits=3
+IgnoreShadows=true
+
+[MechFlare]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=raises the staff into the air for a moment before slamming it to the ground, causing a ring of fire to expand from around %user and hitting all targets on the battlefield!
+BasePower=40
+Element=Fire
+magic=Yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechQuake]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=waves the staff around, causing a large piece of stone to appear before %user $+ . %user then hops into the air and punches the stone to the ground, causing a large earthquake to hit the battlefield!
+BasePower=40
+Element=Earth
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFlood]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=hurls the staff into the air, which then lays to the side. The staff begins to spin at a high speed as waves of water begin to drop from the sky and onto the battlefield, while a small area around %user stays dry.
+BasePower=40
+Element=Water
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechTornado]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=gains a green glow as %user gathers energy. %user then spins around, causing a massive tornado to appear. The tornado the expands out from around %user to cover the entire battlefield, throwing all enemies high into the air.
+BasePower=40
+Element=Wind
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFreeze]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=hops back and swings the staff down, aimed towards all enemies. A massive wave of ice then shoots forward, covering every enemy on the battlefield before shattering, cause large ice damage.
+BasePower=40
+Element=Ice
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechBurst]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=raises the staff into the air as the staff is covered in lightning. After a moment, the lightning expands from the staff and covers the entire battlefield!
+BasePower=40
+Element=Lightning
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechDarkness]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=floats into the air slightly as %user gathers energy. A small dark orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in darkness!
+BasePower=40
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechBanish]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=floats into the air slightly as %user gathers energy. A small light orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in light energy!
+BasePower=40
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFire]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a gigantic sphere of fire above %enemy $+ . %user waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
+BasePower=60
+Element=Fire
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechStone]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
+BasePower=60
+Element=Earth
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechWater]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
+BasePower=60
+Element=Water
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechWind]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
+BasePower=60
+Element=Wind
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechIce]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
+BasePower=60
+Element=Ice
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechThunder]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
+BasePower=60
+Element=Lightning
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechLight]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
+BasePower=60
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechShadow]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
+BasePower=60
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFlareII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=raises the staff into the air for a moment before slamming it to the ground, causing a ring of fire to expand from around %user and hitting all targets on the battlefield!
+BasePower=50
+Element=Fire
+magic=Yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechQuakeII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=waves the staff around, causing a large piece of stone to appear before %user $+ . %user then hops into the air and punches the stone to the ground, causing a large earthquake to hit the battlefield!
+BasePower=50
+Element=Earth
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFloodII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=hurls the staff into the air, which then lays to the side. The staff begins to spin at a high speed as waves of water begin to drop from the sky and onto the battlefield, while a small area around %user stays dry.
+BasePower=50
+Element=Water
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechTornadoII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=gains a green glow as %user gathers energy. %user then spins around, causing a massive tornado to appear. The tornado the expands out from around %user to cover the entire battlefield, throwing all enemies high into the air.
+BasePower=50
+Element=Wind
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFreezeII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=hops back and swings the staff down, aimed towards all enemies. A massive wave of ice then shoots forward, covering every enemy on the battlefield before shattering, cause large ice damage.
+BasePower=50
+Element=Ice
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechBurstII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=raises the staff into the air as the staff is covered in lightning. After a moment, the lightning expands from the staff and covers the entire battlefield!
+BasePower=50
+Element=Lightning
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechDarknessII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=floats into the air slightly as %user gathers energy. A small dark orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in darkness!
+BasePower=50
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechBanishII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=floats into the air slightly as %user gathers energy. A small light orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in light energy!
+BasePower=50
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFireII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a gigantic sphere of fire above %enemy $+ . %user waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
+BasePower=70
+Element=Fire
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechStoneII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
+BasePower=70
+Element=Earth
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechWaterII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
+BasePower=70
+Element=Water
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechWindII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
+BasePower=70
+Element=Wind
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechIceII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
+BasePower=70
+Element=Ice
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechThunderII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
+BasePower=70
+Element=Lightning
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechLightII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
+BasePower=70
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechShadowII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
+BasePower=70
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFlareIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=raises the staff into the air for a moment before slamming it to the ground, causing a ring of fire to expand from around %user and hitting all targets on the battlefield!
+BasePower=60
+Element=Fire
+magic=Yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechQuakeIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=waves the staff around, causing a large piece of stone to appear before %user $+ . %user then hops into the air and punches the stone to the ground, causing a large earthquake to hit the battlefield!
+BasePower=60
+Element=Earth
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFloodIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=hurls the staff into the air, which then lays to the side. The staff begins to spin at a high speed as waves of water begin to drop from the sky and onto the battlefield, while a small area around %user stays dry.
+BasePower=60
+Element=Water
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechTornadoIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=gains a green glow as %user gathers energy. %user then spins around, causing a massive tornado to appear. The tornado the expands out from around %user to cover the entire battlefield, throwing all enemies high into the air.
+BasePower=60
+Element=Wind
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFreezeIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=hops back and swings the staff down, aimed towards all enemies. A massive wave of ice then shoots forward, covering every enemy on the battlefield before shattering, cause large ice damage.
+BasePower=60
+Element=Ice
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechBurstIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=raises the staff into the air as the staff is covered in lightning. After a moment, the lightning expands from the staff and covers the entire battlefield!
+BasePower=60
+Element=Lightning
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechDarknessIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=floats into the air slightly as %user gathers energy. A small dark orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in darkness!
+BasePower=60
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechBanishIII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=floats into the air slightly as %user gathers energy. A small light orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in light energy!
+BasePower=60
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFireIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a gigantic sphere of fire above %enemy $+ . %user waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
+BasePower=80
+Element=Fire
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechStoneIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
+BasePower=80
+Element=Earth
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechWaterIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
+BasePower=80
+Element=Water
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechWindIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
+BasePower=80
+Element=Wind
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechIceIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
+BasePower=80
+Element=Ice
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechThunderIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
+BasePower=80
+Element=Lightning
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechLightIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
+BasePower=80
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechShadowIII]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
+BasePower=80
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFlareIV]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=raises the staff into the air for a moment before slamming it to the ground, causing a ring of fire to expand from around %user and hitting all targets on the battlefield!
+BasePower=70
+Element=Fire
+magic=Yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechQuakeIV]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=waves the staff around, causing a large piece of stone to appear before %user $+ . %user then hops into the air and punches the stone to the ground, causing a large earthquake to hit the battlefield!
+BasePower=70
+Element=Earth
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFloodIV]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=hurls the staff into the air, which then lays to the side. The staff begins to spin at a high speed as waves of water begin to drop from the sky and onto the battlefield, while a small area around %user stays dry.
+BasePower=70
+Element=Water
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechTornadoIV]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=gains a green glow as %user gathers energy. %user then spins around, causing a massive tornado to appear. The tornado the expands out from around %user to cover the entire battlefield, throwing all enemies high into the air.
+BasePower=70
+Element=Wind
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFreezeIV]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=hops back and swings the staff down, aimed towards all enemies. A massive wave of ice then shoots forward, covering every enemy on the battlefield before shattering, causing large ice damage.
+BasePower=70
+Element=Ice
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechBurstIV]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=raises the staff into the air as the staff is covered in lightning. After a moment, the lightning expands from the staff and covers the entire battlefield!
+BasePower=70
+Element=Lightning
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechDarknessIV]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=floats into the air slightly as %user gathers energy. A small dark orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in darkness!
+BasePower=70
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechBanishIV]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=floats into the air slightly as %user gathers energy. A small light orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in light energy!
+BasePower=70
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechFireIV]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a gigantic sphere of fire above %enemy $+ . %user waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
+BasePower=90
+Element=Fire
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechStoneIV]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
+BasePower=90
+Element=Earth
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechWaterIV]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
+BasePower=90
+Element=Water
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechWindIV]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
+BasePower=90
+Element=Wind
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechIceIV]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
+BasePower=90
+Element=Ice
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechThunderIV]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
+BasePower=90
+Element=Lightning
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechLightIV]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
+BasePower=90
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechShadowIV]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
+BasePower=90
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechUltima]
+Type=AOE
+TP=0
+EnergyCost=60
+Desc=traps %enemy in a large sphere of green energy. The sphere explodes a moment later, causing massive damage!
+BasePower=150
+Element=Light
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[MechKaustra]
+Type=AOE
+TP=0
+EnergyCost=60
+Desc=traps %enemy in a large sphere of black energy. The sphere explodes a moment later, causing massive damage!
+BasePower=150
+Element=Dark
+magic=yes
+cost=0
+stat=int
+IgnoreShadows=true
+
+[ShotBuster]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a large rifle and takes aim at %enemy before firing an energy beam that hits multiple times.
+BasePower=200
+Element=none
+magic=no
+cost=0
+stat=str
+hits=4
+IgnoreShadows=true
+
+[FlareBuster]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a large railgun and takes aim at %enemy before unleashing a large blast of fire.
+BasePower=220
+Element=Fire
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[CerberusBlast]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a large pilebunker and rushes towards %enemy to hit them with it, dealing lightning damage.
+BasePower=250
+Element=Lightning
+magic=no
+cost=0
+stat=str
+hits=3
+IgnoreShadows=true
+
+[IronBlade]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=combines the katanas into a single blade and rushes towards %enemy and slashes twice.
+BasePower=200
+Element=none
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
+[GarudasWrath]
+Type=AOE
+TP=0
+EnergyCost=40
+Desc=summons a bow and takes aim before unleashing arrows over the battlefield.
+BasePower=250
+Element=Lightning
+magic=yes
+cost=0
+stat=str
+hits=1
+IgnoreShadows=true
+
+[LotusBlades]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=summons a large lance covered in ice and rushes towards %enemy and striking $gender2($2) several times with the lance.
+BasePower=250
+Element=Ice
+magic=yes
+cost=0
+stat=str
+hits=4
+IgnoreShadows=true
+
+[R-Fang]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=forms a large ether blade from the right hand and rushes towards %enemy and slashes three times.
+BasePower=200
+Element=Light
+magic=no
+cost=0
+stat=str
+hits=3
+IgnoreShadows=true
+
+[X-BusterII]
+Type=AOE
+TP=0
+EnergyCost=50
+Desc=gathers energy for a moment before unleashing a barrage of ether beams upon the battlefield.
+BasePower=250
+Element=Light
+magic=no
+cost=0
+stat=str
+hits=1
+IgnoreShadows=true
+
+[X-Cannon]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=changes the wings into cannons and takes aim at %enemy before unleashing a massive beam of highly powerful energy that hits multiple times.
+BasePower=300
+Element=Light
+magic=no
+cost=0
+stat=str
+hits=8
+IgnoreShadows=true
+
+[MoonStoneCannon]
+Type=Single
+TP=0
+EnergyCost=40
+Desc=opens in the front, revealing powerful moon stone cannon. The airship gathers energy for a moment, then Vyse yells out "Moon stone cannon... Fire!" and the ship fires a powerful beam of energy at %enemy $+ !
+BasePower=300
+Element=Light
+magic=no
+cost=0
+stat=str
+hits=2
+IgnoreShadows=true
+
 ===================
 BOOSTS
 ===================
@@ -7808,7 +9151,7 @@ BasePower=1
 Magic=No
 HurtEthereal=true
 stat=int
-DestroyShadows=16
+IgnoreShadows=true
 DeathChance=100
 
 [Frenetic_Rip]
@@ -8355,31 +9698,11 @@ Magic=No
 stat=str
 Hits=$rand(2,8)
 
-[Kikosho]
-Type=AOE
-TP=10
-Desc=holds her arms back as she gathers power while a blue aura appears around herself. A moment later she thrusts her arms forward and hurls a much larger ball of energy to the battlefield, hitting all targets!
-BasePower=30
-Element=Light
-Cost=0
-Magic=Yes
-stat=int
-
 [Hazanshu]
 Type=Single
 TP=10
 Desc=spins into the air towards %enemy and slams the back of her heel into %enemy with a high amount of power!
 BasePower=20
-Element=None
-Cost=0
-Magic=No
-stat=str
-
-[Hosenka]
-Type=Single
-TP=10
-Desc=hits %enemy with her Hyakuretsukyaku then performs a vertical version of the Spinning Bird Kick, launching %enemy into the air. A moment later she knocks %enemy back down to the ground and Chun-Li then stomps on %enemy $+ !
-BasePower=50
 Element=None
 Cost=0
 Magic=No
@@ -8425,68 +9748,6 @@ Cost=0
 Magic=No
 stat=str
 
-[ShinkuHadouken]
-Type=AOE
-TP=10
-Desc=cups his hands to the side and gathers a large amount of energy. A moment later, he thrusts his hands forward and unleashes a giant ball of energy onto the battlefield!
-BasePower=40
-Element=Light
-Cost=0
-Magic=Yes
-stat=int
-
-[ShinkuTatsumakiSenpukyaku]
-Type=AOE
-TP=10
-Desc=hops shortly into the air and begins to perfom a spinning kick in place that draws in all enemies to get hit!
-BasePower=45
-Element=None
-Cost=0
-Magic=No
-stat=str
-
-[ShinShouryuken]
-Type=Single
-TP=10
-Desc=performs a rising punch that hits %enemy three times and sends them flying even higher into the air!
-BasePower=40
-Element=None
-Cost=0
-Magic=No
-hits=3
-stat=str
-
-[Shinryuken]
-Type=Single
-TP=10
-Desc=performs a rising punch upon %enemy which then causes an explosion of fire to happen!
-BasePower=30
-Element=Fire
-Cost=0
-Magic=Yes
-stat=str
-
-[ShoryuReppa]
-Type=Single
-TP=10
-Desc=spins towards %enemy and hits $gender2($2) with a much stronger rising punch and repeats this a few more times!
-BasePower=40
-Element=None
-Cost=0
-Magic=No
-hits=3
-stat=str
-
-[DivineJudgement]
-Type=AOE
-TP=10
-Desc=opens its shoulders to reveal many cannons. After a moment, a volley of Light energy is fired and hits all targets on the battlefield!
-BasePower=25
-Element=Light
-Cost=0
-Magic=Yes
-stat=int
-
 [DivineSpear]
 Type=Single
 TP=10
@@ -8497,31 +9758,11 @@ Cost=0
 Magic=Yes
 stat=int
 
-[MegaFlare]
-Type=AOE
-TP=10
-Desc=flies higher into the air and gathers power. A moment later, Bahamut fires a large blue energy sphere that slams into %enemy to cause an explosion!
-BasePower=20
-Element=None
-Cost=0
-Magic=yes
-stat=int
-
 [Impulse]
 Type=Single
 TP=10
 Desc=summons four spheres of dark blue energy and hurls them at %enemy $+ !
 BasePower=20
-Element=None
-Cost=0
-Magic=No
-stat=int
-
-[TeraFlare]
-Type=AOE
-TP=10
-Desc=flies high into space and begins to gather power. A moment later, a hugh beam of energy is fired that causes a massive explosion!
-BasePower=25
 Element=None
 Cost=0
 Magic=No
@@ -8547,16 +9788,6 @@ Cost=0
 Magic=No
 stat=str
 
-[SearingLight]
-Type=AOE
-TP=10
-Desc=hops into the air and causes a bright light to cover the battlefield with enough power to cause searing pain!
-BasePower=20
-Element=Light
-Cost=0
-Magic=Yes
-stat=int
-
 [PoisonNails]
 Type=Single
 StatusType=Poison
@@ -8570,13 +9801,14 @@ stat=str
 
 [HealingRuby]
 Type=Heal-AOE
-TP=10
+TP=$iif($current.battlestreak isnum 0-499, 20, 125)
 Desc=causes a soothing light to engluf the battlefield, healing all allies.
-BasePower=40
+BasePower=$iif($current.battlestreak isnum 0-499, 40, 125)
 Element=Light
 Cost=0
 Magic=Yes
 stat=int
+CappedAmount=$iif($current.battlestreak isnum 0-499, 5000, 8000)
 
 [RunawayTrain]
 Type=Single
@@ -8661,26 +9893,6 @@ Cost=0
 Magic=No
 stat=str
 
-[EclipseBite]
-Type=Single
-TP=10
-Desc=bites %enemy a few times and hops back. A moment later, Fenrir howls and a large ball of Dark energy slams into %enemy $+ !
-BasePower=20
-Element=Dark
-Cost=0
-Magic=Yes
-stat=int
-
-[AerialBlast]
-Type=AOE
-TP=10
-Desc=causes large tornados to cover the battlefield!
-BasePower=25
-Element=Wind
-Cost=0
-Magic=Yes
-stat=int
-
 [PredatorClaws]
 Type=Single
 TP=10
@@ -8697,16 +9909,6 @@ TP=10
 Desc=summons a circular blade of wind energy and hurls it towards %enemy $+ !
 BasePower=20
 Element=Wind
-Cost=0
-Magic=Yes
-stat=int
-
-[Hellfire]
-Type=AOE
-TP=10
-Desc=roars loudly and creates a massive ball of fire to cover the battlefield. Ifrit moves back and rips out a chunk of earth and hurls it towards the battlefield, causing the ball of fire to explode!
-BasePower=25
-Element=Fire
 Cost=0
 Magic=Yes
 stat=int
@@ -8731,16 +9933,6 @@ Cost=0
 Magic=Yes
 stat=str
 
-[TidalWave]
-Type=AOE
-TP=10
-Desc=summons a massive tidal wave to cover the entire battlefield!
-BasePower=20
-Element=Water
-Cost=0
-Magic=Yes
-stat=int
-
 [TailWhip]
 Type=Single
 StatusType=Stun
@@ -8758,16 +9950,6 @@ TP=10
 Desc=summons a large stone and has a waterfall crash right into %enemy $+!
 BasePower=25
 Element=Water
-Cost=0
-Magic=Yes
-stat=int
-
-[JudgementBolt]
-Type=AOE
-TP=10
-Desc=leaps into the air and hurls his staff to the middle of the battlefield. Lightning dances around the staff for a moment before huge bolts of lightning strikes the entire battlefield!
-BasePower=25
-Element=Lightning
 Cost=0
 Magic=Yes
 stat=int
@@ -8793,16 +9975,6 @@ Cost=0
 Magic=No
 stat=str
 
-[DiamondDust]
-Type=AOE
-TP=10
-Desc=holds her arms above her head as the battlefield starts to cool. A moment later she thrusts her arms forward and covers the battlefield with ice. She then snaps her fingers and the ice explodes!
-BasePower=25
-Element=Ice
-Cost=0
-Magic=Yes
-stat=int
-
 [HeavenlyStrike]
 Type=Single
 TP=10
@@ -8821,16 +9993,6 @@ BasePower=20
 Element=None
 Cost=0
 Magic=No
-stat=str
-
-[AngerOfTheLand]
-Type=AOE
-TP=10
-Desc=lifts the battlefield with great power and hurls it into the air. After a few minutes, the battlefield crashes into the earth!
-BasePower=25
-Element=Earth
-Cost=0
-Magic=Yes
 stat=str
 
 [MountainBuster]
@@ -10283,6 +11445,7 @@ Element=Dark
 Cost=0
 Magic=Yes
 stat=int
+IgnoreShadows=true
 DeathChance=100
 
 [MultiDeathRay]
@@ -10294,6 +11457,7 @@ Element=Dark
 Cost=0
 Magic=Yes
 stat=int
+IgnoreShadows=true
 DeathChance=100
 
 [ChainsawSlash]
@@ -12792,19 +13956,6 @@ CanDodge=false
 HurtEthereal=true
 Element=None
 
-[LastWillandTestament]
-Type=Death
-TP=20
-Desc=changes the battlefield to a concert stage which also has two large, demonic speakers. %user forces %enemy to be tossed back and forth between the speakers as %user rocks out on the guitar. After a minute, %user stops playing and causes an explosion which returns the battlefield to normal.
-BasePower=150
-Cost=0
-Element=None
-Magic=No
-Stat=str
-CanDodge=false
-HurtEthereal=true
-DeathChance=5
-
 [GenshiCleave]
 Type=AOE
 StatusType=Poison.Blind
@@ -13464,19 +14615,6 @@ HurtEthereal=$iif($readini($char($1), weapons, equipped) = Yamato+1, true, false
 stat=str
 DestroyShadows=$iif($readini($char($1), weapons, equipped) = Yamato+1, 3, 1)
 
-[HyperTwinSlice]
-Type=single
-TP=10
-Desc=gives %enemy a death glare as $gender($1) sword glows red. $gender3($1) instantly appears before %enemy $+ , and proceeds to slash %enemy multiple times before %enemy has a chance to react. %user then shoves %enemy away from $gender2($1) $+ .
-BasePower=50
-Element=none
-Cost=0
-Magic=no
-stat=str
-Hits=4
-CanDodge=false
-DestroyShadows=4
-
 [NakeBenihime]
 Type=Single
 TP=10
@@ -13759,62 +14897,6 @@ Hits=2
 DestroyShadows=4
 HurtEthereal=true
 
-[ShinShungokuSatsu]
-Type=single
-Cost=0
-Desc=shouts out "Prepare yourself! Die one thousand deaths!" as he quickly glides towards %enemy $+ , grabbing %enemy and unleashing a barrage of punches upon %enemy $+ !
-TP=10
-Element=Dark
-Hits=8
-BasePower=20
-Magic=No
-HurtEthereal=True
-stat=str
-CanDodge=false
-DestroyShadows=2
-
-[TenshouKairekiJin]
-Type=Single
-Cost=0
-Desc=launches %enemy into the air with a high roundhouse kick. %user shouts out "Accept death! The other realm awaits." as a powerful Tatsumaki Zankuukyaku covers %user in a whirlwind. %user then homes in on %enemy $+ , slamming into them with the Tatsumaki Zankuukyaku, sending %enemy crashing into the ground below.
-TP=10
-Element=Wind
-Hits=2
-BasePower=40
-Magic=No
-HurtEthereal=True
-stat=str
-CanDodge=false
-DestroyShadows=2
-
-[MeidouGouHadou]
-Type=Single
-Cost=0
-Desc=gathers a massive amount of power and shouts out "Ashes to ashes! The gates of hell await!" before thrusting his hand foward, hurling a huge wave of dark enemy upon %enemy $+ ! %user then unleashes a second wave of energy upon %enemy after the first one hits.
-TP=10
-Element=Dark
-Hits=2
-BasePower=75
-Magic=No
-HurtEthereal=True
-stat=str
-CanDodge=false
-DestroyShadows=2
-
-[TenchiSoukaigen]
-Type=Single
-Cost=0
-Desc=raises his right hand, dark energy gathering in his hand and shouts out "My power... moves worlds! Stare into the face of Death!" %user jumps into the air and then slams his fist onto %enemy $+ , launching %enemy into the air with a powerful spike of dark energy. %user then follows up with a GouShouryuken, slamming his fist into %enemy 's back.
-TP=10
-Element=Dark
-Hits=2
-BasePower=80
-Magic=No
-HurtEthereal=True
-stat=str
-CanDodge=false
-DestroyShadows=2
-
 [RisingForce]
 Type=AOE
 Cost=0
@@ -13952,1212 +15034,6 @@ Magic=No
 IgnoreDefense=10
 HurtEthereal=true
 stat=str
-
-=========================
-MECH TECHS
-=========================
-
-
-[DoubleShot]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=takes aim at %enemy with the gun and fires two quick shots.
-BasePower=120
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[GunBlaze]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=spins around and shoots at all enemies on the battlefield!
-BasePower=80
-Element=None
-magic=no
-cost=0
-stat=str
-
-[DoubleShotII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=takes aim at %enemy with the gun and fires two quick shots.
-BasePower=150
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[GunBlazeII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=spins around and shoots at all enemies on the battlefield!
-BasePower=100
-Element=None
-magic=no
-cost=0
-stat=str
-
-[DoubleShotIII]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=takes aim at %enemy with the gun and fires two quick shots.
-BasePower=180
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[GunBlazeIII]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=spins around and shoots at all enemies on the battlefield!
-BasePower=120
-Element=None
-magic=no
-cost=0
-stat=str
-
-[TripleShot]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=takes aim at %enemy with the cannon and fires a burst of three shots.
-BasePower=200
-Element=none
-magic=no
-cost=0
-stat=str
-hits=3
-
-[TripleSlice]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=charges towards %enemy with the mech and slashes %enemy three times with the scythe.
-BasePower=50
-Element=none
-magic=no
-cost=0
-stat=str
-hits=3
-
-[ScytheBlazeIII]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=quickly slashes every enemy on the battlefield with the mech's scythe!
-BasePower=70
-Element=None
-magic=no
-cost=0
-stat=str
-
-[MechJudgmentCut]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=hops back and returns the katana to its sheath for a moment before quickly swinging the katana at %enemy $+ , hurling a sphere of energy towards $gender2($2) $+ !
-BasePower=50
-Element=None
-magic=no
-cost=0
-stat=str
-
-[MechKasha]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=returns $gender($1) katana to its sheath and pauses for a second before quickly slashing %enemy as a feint image of flower petals appears for a second, causing light damage to %enemy $+ !
-BasePower=50
-Element=Light
-magic=no
-cost=0
-stat=str
-
-[MechGekko]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=charges up a dark energy in $gender($1) blade before doing an impressive spin to release the power on %enemy $+ !
-BasePower=50
-Element=Dark
-magic=no
-cost=0
-stat=str
-
-[MechYukikaze]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=stabs %enemy with the katana and encases %enemy in ice. The ice then shatters, causing damage to %enemy $+ !
-BasePower=50
-Element=Ice
-magic=no
-cost=0
-stat=str
-
-[MechDragonLash]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=cracks $gender($1) whip at %enemy $+ , hitting once before spinning around to hit %enemy once more.
-BasePower=50
-Element=none
-magic=no
-cost=0
-stat=str
-
-[MechDarkLash]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=forces the whip to gain a dark aura before cracking the whip to hit %enemy with a dark power.
-BasePower=50
-Element=Dark
-magic=no
-cost=0
-stat=int
-
-[MechHolyLash]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=forces the whip to glow white before cracking the whip to hit %enemy with a holy power.
-BasePower=50
-Element=Light
-magic=no
-cost=0
-stat=int
-
-[MechCircularChain]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=strikes out with the whip then begins to spin at a high speed to hit everyone in range with the whip!
-BasePower=50
-Element=none
-magic=no
-cost=0
-stat=str
-
-[ShotBuster]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=summons a large rifle and takes aim at %enemy before firing an energy beam that hits multiple times.
-BasePower=200
-Element=none
-magic=no
-cost=0
-stat=str
-hits=4
-
-[FlareBuster]
-Type=Single
-TP=0
-EnergyCost=600
-Desc=summons a large railgun and takes aim at %enemy before unleashing a large blast of fire.
-BasePower=220
-Element=Fire
-magic=no
-cost=0
-stat=str
-hits=2
-
-[CerberusBlast]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=summons a large pilebunker and rushes towards %enemy to hit them with it, dealing lightning damage.
-BasePower=250
-Element=Lightning
-magic=no
-cost=0
-stat=str
-hits=3
-
-[IronBlade]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=combines the katanas into a single blade and rushes towards %enemy and slashes twice.
-BasePower=200
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[GarudasWrath]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=summons a bow and takes aim before unleashing arrows over the battlefield.
-BasePower=250
-Element=Lightning
-magic=yes
-cost=0
-stat=str
-hits=1
-
-[LotusBlades]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=summons a large lance covered in ice and rushes towards %enemy and striking $gender2($2) several times with the lance.
-BasePower=250
-Element=Ice
-magic=yes
-cost=0
-stat=str
-hits=4
-
-[R-Fang]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=forms a large ether blade from the right hand and rushes towards %enemy and slashes three times.
-BasePower=200
-Element=Light
-magic=no
-cost=0
-stat=str
-hits=3
-
-[X-BusterII]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=gathers energy for a moment before unleashing a barrage of ether beams upon the battlefield.
-BasePower=250
-Element=Light
-magic=no
-cost=0
-stat=str
-hits=1
-
-[X-Cannon]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=changes the wings into cannons and takes aim at %enemy before unleashing a massive beam of highly powerful energy that hits multiple times.
-BasePower=300
-Element=Light
-magic=no
-cost=0
-stat=str
-hits=8
-
-[MoonStoneCannon]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=opens in the front, revealing powerful moon stone cannon. The airship gathers energy for a moment, then Vyse yells out "Moon stone cannon... Fire!" and the ship fires a powerful beam of energy at %enemy $+ !
-BasePower=300
-Element=Light
-magic=no
-cost=0
-stat=str
-hits=2
-
-
-[DoubleSwing]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=charges towards %enemy with the mech and slashes %enemy twice with the sword.
-BasePower=70
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[SwordBlaze]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=quickly slashes every enemy on the battlefield with the mech's sword!
-BasePower=50
-Element=None
-magic=no
-cost=0
-stat=str
-
-[DoubleSwingII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=charges towards %enemy with the mech and slashes %enemy twice with the sword.
-BasePower=80
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[SwordBlazeII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=quickly slashes every enemy on the battlefield with the mech's sword!
-BasePower=60
-Element=None
-magic=no
-cost=0
-stat=str
-
-[DoubleSwingIII]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=charges towards %enemy with the mech and slashes %enemy twice with the sword.
-BasePower=90
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[SwordBlazeIII]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=quickly slashes every enemy on the battlefield with the mech's sword!
-BasePower=70
-Element=None
-magic=no
-cost=0
-stat=str
-
-[TripleSwing]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=charges towards %enemy with the mech and slashes %enemy three times with the sword.
-BasePower=50
-Element=none
-magic=no
-cost=0
-stat=str
-hits=3
-
-[DoubleStrike]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=charges towards %enemy with the mech and punches %enemy with both fists.
-BasePower=70
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[MartialBlaze]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=lures all of the enemies close before unleashing a powerful spinning attack with the mech!
-BasePower=50
-Element=None
-magic=no
-cost=0
-stat=str
-
-[DoubleStrikeII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=charges towards %enemy with the mech and punches %enemy with both fists.
-BasePower=80
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[MartialBlazeII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=lures all of the enemies close before unleashing a powerful spinning attack with the mech!
-BasePower=60
-Element=None
-magic=no
-cost=0
-stat=str
-
-[DoubleStrikeIII]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=charges towards %enemy with the mech and punches %enemy with both fists.
-BasePower=90
-Element=none
-magic=no
-cost=0
-stat=str
-hits=2
-
-[MartialBlazeIII]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=lures all of the enemies close before unleashing a powerful spinning attack with the mech!
-BasePower=70
-Element=None
-magic=no
-cost=0
-stat=str
-
-[TripleStrike]
-Type=Single
-TP=0
-EnergyCost=500
-Desc=charges towards %enemy with the mech and punches %enemy with both fists before spinning around and hitting %enemy with a kick as well.
-BasePower=50
-Element=none
-magic=no
-cost=0
-stat=str
-hits=3
-
-[MechFlare]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=raises the staff into the air for a moment before slamming it to the ground, causing a ring of fire to expand from around %user and hitting all targets on the battlefield!
-BasePower=40
-Element=Fire
-magic=Yes
-cost=0
-stat=int
-
-[MechQuake]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=waves the staff around, causing a large piece of stone to appear before %user $+ . %user then hops into the air and punches the stone to the ground, causing a large earthquake to hit the battlefield!
-BasePower=40
-Element=Earth
-magic=yes
-cost=0
-stat=int
-
-[MechFlood]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=hurls the staff into the air, which then lays to the side. The staff begins to spin at a high speed as waves of water begin to drop from the sky and onto the battlefield, while a small area around %user stays dry.
-BasePower=40
-Element=Water
-magic=yes
-cost=0
-stat=int
-
-[MechTornado]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=gains a green glow as %user gathers energy. %user then spins around, causing a massive tornado to appear. The tornado the expands out from around %user to cover the entire battlefield, throwing all enemies high into the air.
-BasePower=40
-Element=Wind
-magic=yes
-cost=0
-stat=int
-
-[MechFreeze]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=hops back and swings the staff down, aimed towards all enemies. A massive wave of ice then shoots forward, covering every enemy on the battlefield before shattering, cause large ice damage.
-BasePower=40
-Element=Ice
-magic=yes
-cost=0
-stat=int
-
-[MechBurst]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=raises the staff into the air as the staff is covered in lightning. After a moment, the lightning expands from the staff and covers the entire battlefield!
-BasePower=40
-Element=Lightning
-magic=yes
-cost=0
-stat=int
-
-[MechDarkness]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=floats into the air slightly as %user gathers energy. A small dark orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in darkness!
-BasePower=40
-Element=Dark
-magic=yes
-cost=0
-stat=int
-
-[MechBanish]
-Type=AOE
-TP=0
-EnergyCost=200
-Desc=floats into the air slightly as %user gathers energy. A small light orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in light energy!
-BasePower=40
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechFire]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=summons a gigantic sphere of fire above %enemy $+ . %user waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
-BasePower=60
-Element=Fire
-magic=yes
-cost=0
-stat=int
-
-[MechStone]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
-BasePower=60
-Element=Earth
-magic=yes
-cost=0
-stat=int
-
-[MechWater]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
-BasePower=60
-Element=Water
-magic=yes
-cost=0
-stat=int
-
-[MechWind]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
-BasePower=60
-Element=Wind
-magic=yes
-cost=0
-stat=int
-
-[MechIce]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
-BasePower=60
-Element=Ice
-magic=yes
-cost=0
-stat=int
-
-[MechThunder]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
-BasePower=60
-Element=Lightning
-magic=yes
-cost=0
-stat=int
-
-[MechLight]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
-BasePower=60
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechShadow]
-Type=Single
-TP=0
-EnergyCost=100
-Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
-BasePower=60
-Element=Dark
-magic=yes
-cost=0
-stat=int
-
-[MechFlareII]
-Type=AOE
-TP=0
-EnergyCost=300
-Desc=raises the staff into the air for a moment before slamming it to the ground, causing a ring of fire to expand from around %user and hitting all targets on the battlefield!
-BasePower=50
-Element=Fire
-magic=Yes
-cost=0
-stat=int
-
-[MechQuakeII]
-Type=AOE
-TP=0
-EnergyCost=300
-Desc=waves the staff around, causing a large piece of stone to appear before %user $+ . %user then hops into the air and punches the stone to the ground, causing a large earthquake to hit the battlefield!
-BasePower=50
-Element=Earth
-magic=yes
-cost=0
-stat=int
-
-[MechFloodII]
-Type=AOE
-TP=0
-EnergyCost=300
-Desc=hurls the staff into the air, which then lays to the side. The staff begins to spin at a high speed as waves of water begin to drop from the sky and onto the battlefield, while a small area around %user stays dry.
-BasePower=50
-Element=Water
-magic=yes
-cost=0
-stat=int
-
-[MechTornadoII]
-Type=AOE
-TP=0
-EnergyCost=300
-Desc=gains a green glow as %user gathers energy. %user then spins around, causing a massive tornado to appear. The tornado the expands out from around %user to cover the entire battlefield, throwing all enemies high into the air.
-BasePower=50
-Element=Wind
-magic=yes
-cost=0
-stat=int
-
-[MechFreezeII]
-Type=AOE
-TP=0
-EnergyCost=300
-Desc=hops back and swings the staff down, aimed towards all enemies. A massive wave of ice then shoots forward, covering every enemy on the battlefield before shattering, cause large ice damage.
-BasePower=50
-Element=Ice
-magic=yes
-cost=0
-stat=int
-
-[MechBurstII]
-Type=AOE
-TP=0
-EnergyCost=300
-Desc=raises the staff into the air as the staff is covered in lightning. After a moment, the lightning expands from the staff and covers the entire battlefield!
-BasePower=50
-Element=Lightning
-magic=yes
-cost=0
-stat=int
-
-[MechDarknessII]
-Type=AOE
-TP=0
-EnergyCost=300
-Desc=floats into the air slightly as %user gathers energy. A small dark orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in darkness!
-BasePower=50
-Element=Dark
-magic=yes
-cost=0
-stat=int
-
-[MechBanishII]
-Type=AOE
-TP=0
-EnergyCost=300
-Desc=floats into the air slightly as %user gathers energy. A small light orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in light energy!
-BasePower=50
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechFireII]
-Type=Single
-TP=0
-EnergyCost=200
-Desc=summons a gigantic sphere of fire above %enemy $+ . %user waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
-BasePower=70
-Element=Fire
-magic=yes
-cost=0
-stat=int
-
-[MechStoneII]
-Type=Single
-TP=0
-EnergyCost=200
-Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
-BasePower=70
-Element=Earth
-magic=yes
-cost=0
-stat=int
-
-[MechWaterII]
-Type=Single
-TP=0
-EnergyCost=200
-Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
-BasePower=70
-Element=Water
-magic=yes
-cost=0
-stat=int
-
-[MechWindII]
-Type=Single
-TP=0
-EnergyCost=200
-Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
-BasePower=70
-Element=Wind
-magic=yes
-cost=0
-stat=int
-
-[MechIceII]
-Type=Single
-TP=0
-EnergyCost=200
-Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
-BasePower=70
-Element=Ice
-magic=yes
-cost=0
-stat=int
-
-[MechThunderII]
-Type=Single
-TP=0
-EnergyCost=200
-Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
-BasePower=70
-Element=Lightning
-magic=yes
-cost=0
-stat=int
-
-[MechLightII]
-Type=Single
-TP=0
-EnergyCost=200
-Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
-BasePower=70
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechShadowII]
-Type=Single
-TP=0
-EnergyCost=200
-Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
-BasePower=70
-Element=Dark
-magic=yes
-cost=0
-stat=int
-
-[MechFlareIII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=raises the staff into the air for a moment before slamming it to the ground, causing a ring of fire to expand from around %user and hitting all targets on the battlefield!
-BasePower=60
-Element=Fire
-magic=Yes
-cost=0
-stat=int
-
-[MechQuakeIII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=waves the staff around, causing a large piece of stone to appear before %user $+ . %user then hops into the air and punches the stone to the ground, causing a large earthquake to hit the battlefield!
-BasePower=60
-Element=Earth
-magic=yes
-cost=0
-stat=int
-
-[MechFloodIII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=hurls the staff into the air, which then lays to the side. The staff begins to spin at a high speed as waves of water begin to drop from the sky and onto the battlefield, while a small area around %user stays dry.
-BasePower=60
-Element=Water
-magic=yes
-cost=0
-stat=int
-
-[MechTornadoIII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=gains a green glow as %user gathers energy. %user then spins around, causing a massive tornado to appear. The tornado the expands out from around %user to cover the entire battlefield, throwing all enemies high into the air.
-BasePower=60
-Element=Wind
-magic=yes
-cost=0
-stat=int
-
-[MechFreezeIII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=hops back and swings the staff down, aimed towards all enemies. A massive wave of ice then shoots forward, covering every enemy on the battlefield before shattering, cause large ice damage.
-BasePower=60
-Element=Ice
-magic=yes
-cost=0
-stat=int
-
-[MechBurstIII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=raises the staff into the air as the staff is covered in lightning. After a moment, the lightning expands from the staff and covers the entire battlefield!
-BasePower=60
-Element=Lightning
-magic=yes
-cost=0
-stat=int
-
-[MechDarknessIII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=floats into the air slightly as %user gathers energy. A small dark orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in darkness!
-BasePower=60
-Element=Dark
-magic=yes
-cost=0
-stat=int
-
-[MechBanishIII]
-Type=AOE
-TP=0
-EnergyCost=400
-Desc=floats into the air slightly as %user gathers energy. A small light orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in light energy!
-BasePower=60
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechFireIII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=summons a gigantic sphere of fire above %enemy $+ . %user waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
-BasePower=80
-Element=Fire
-magic=yes
-cost=0
-stat=int
-
-[MechStoneIII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
-BasePower=80
-Element=Earth
-magic=yes
-cost=0
-stat=int
-
-[MechWaterIII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
-BasePower=80
-Element=Water
-magic=yes
-cost=0
-stat=int
-
-[MechWindIII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
-BasePower=80
-Element=Wind
-magic=yes
-cost=0
-stat=int
-
-[MechIceIII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
-BasePower=80
-Element=Ice
-magic=yes
-cost=0
-stat=int
-
-[MechThunderIII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
-BasePower=80
-Element=Lightning
-magic=yes
-cost=0
-stat=int
-
-[MechLightIII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
-BasePower=80
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechShadowIII]
-Type=Single
-TP=0
-EnergyCost=300
-Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
-BasePower=80
-Element=Dark
-magic=yes
-cost=0
-stat=int
-
-[MechFlareIV]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=raises the staff into the air for a moment before slamming it to the ground, causing a ring of fire to expand from around %user and hitting all targets on the battlefield!
-BasePower=70
-Element=Fire
-magic=Yes
-cost=0
-stat=int
-
-[MechQuakeIV]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=waves the staff around, causing a large piece of stone to appear before %user $+ . %user then hops into the air and punches the stone to the ground, causing a large earthquake to hit the battlefield!
-BasePower=70
-Element=Earth
-magic=yes
-cost=0
-stat=int
-
-[MechFloodIV]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=hurls the staff into the air, which then lays to the side. The staff begins to spin at a high speed as waves of water begin to drop from the sky and onto the battlefield, while a small area around %user stays dry.
-BasePower=70
-Element=Water
-magic=yes
-cost=0
-stat=int
-
-[MechTornadoIV]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=gains a green glow as %user gathers energy. %user then spins around, causing a massive tornado to appear. The tornado the expands out from around %user to cover the entire battlefield, throwing all enemies high into the air.
-BasePower=70
-Element=Wind
-magic=yes
-cost=0
-stat=int
-
-[MechFreezeIV]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=hops back and swings the staff down, aimed towards all enemies. A massive wave of ice then shoots forward, covering every enemy on the battlefield before shattering, causing large ice damage.
-BasePower=70
-Element=Ice
-magic=yes
-cost=0
-stat=int
-
-[MechBurstIV]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=raises the staff into the air as the staff is covered in lightning. After a moment, the lightning expands from the staff and covers the entire battlefield!
-BasePower=70
-Element=Lightning
-magic=yes
-cost=0
-stat=int
-
-[MechDarknessIV]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=floats into the air slightly as %user gathers energy. A small dark orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in darkness!
-BasePower=70
-Element=Dark
-magic=yes
-cost=0
-stat=int
-
-[MechBanishIV]
-Type=AOE
-TP=0
-EnergyCost=500
-Desc=floats into the air slightly as %user gathers energy. A small light orb appears in front of %user for a moment before the orb slams into the battlefield, covering it in light energy!
-BasePower=70
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechFireIV]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=summons a gigantic sphere of fire above %enemy $+ . %user waits for a moment before allowing the sphere to drop on %enemy $+ , dealing tremendous fire damage!
-BasePower=90
-Element=Fire
-magic=yes
-cost=0
-stat=int
-
-[MechStoneIV]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=rips out a huge chunk of the earth from below %enemy and proceeds to drop it on %enemy $+ , burying $gender2($2) $+ !
-BasePower=90
-Element=Earth
-magic=yes
-cost=0
-stat=int
-
-[MechWaterIV]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=traps %enemy in a giant sphere of water and sends $gender2($2) flying into the air! A minute later, %enemy proceeds to slam into the ground with great force.
-BasePower=90
-Element=Water
-magic=yes
-cost=0
-stat=int
-
-[MechWindIV]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=summons a gigantic tornado that is black in color. The tornado pulls %enemy inside, giving $gender2($2) large cuts and slams various objects into %enemy as well!
-BasePower=90
-Element=Wind
-magic=yes
-cost=0
-stat=int
-
-[MechIceIV]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=traps %enemy in an iceberg, freezing $gender2($2) instantly. The ice shatters a moment later, burying %enemy in a mass of shattered ice!
-BasePower=90
-Element=Ice
-magic=yes
-cost=0
-stat=int
-
-[MechThunderIV]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=summons several dark clouds to the battlefield. Several large bolts of lightning then proceeds to slam into %enemy $+ , giving $gender2($2) a terrible shock therapy treatment!
-BasePower=90
-Element=Lightning
-magic=yes
-cost=0
-stat=int
-
-[MechLightIV]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=summons a massive white sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in holy energy!
-BasePower=90
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechShadowIV]
-Type=Single
-TP=0
-EnergyCost=400
-Desc=summons a massive dark sphere that floats above %enemy for a moment before falling onto %enemy and covers $gender2($2) in darkness!
-BasePower=90
-Element=Dark
-magic=yes
-cost=0
-stat=int
-
-[MechUltima]
-Type=AOE
-TP=0
-EnergyCost=2000
-Desc=traps %enemy in a large sphere of green energy. The sphere explodes a moment later, causing massive damage!
-BasePower=150
-Element=Light
-magic=yes
-cost=0
-stat=int
-
-[MechKaustra]
-Type=AOE
-TP=0
-EnergyCost=2000
-Desc=traps %enemy in a large sphere of black energy. The sphere explodes a moment later, causing massive damage!
-BasePower=150
-Element=Dark
-magic=yes
-cost=0
-stat=int
 
 [EyeRam]
 Type=Single
@@ -16717,7 +16593,6 @@ Cost=0
 Element=fire
 magic=yes
 stat=int
-DestroyShadows=2
 
 [StoneraII]
 Type=AOE
@@ -16728,7 +16603,6 @@ Cost=0
 Element=earth
 magic=yes
 stat=int
-DestroyShadows=2
 
 [WateraII]
 Type=AOE
@@ -16739,7 +16613,6 @@ Cost=0
 Element=water
 magic=yes
 stat=int
-DestroyShadows=2
 
 [AeraII]
 Type=AOE
@@ -16750,7 +16623,6 @@ Cost=0
 Element=wind
 magic=yes
 stat=int
-DestroyShadows=2
 
 [BlizzaraII]
 Type=AOE
@@ -16761,7 +16633,6 @@ Cost=0
 Element=ice
 magic=yes
 stat=int
-DestroyShadows=2
 
 [ThundaraII]
 Type=AOE
@@ -16772,7 +16643,6 @@ Cost=0
 Element=lightning
 magic=yes
 stat=int
-DestroyShadows=2
 
 [Geohelix]
 Type=AOE
@@ -16785,7 +16655,6 @@ BasePower=40
 Magic=No
 StatusType=Poison
 stat=int
-DestroyShadows=2
 
 [Hydrohelix]
 Type=AOE
@@ -16798,7 +16667,6 @@ BasePower=40
 Magic=No
 StatusType=Poison
 stat=int
-DestroyShadows=2
 
 [Anemohelix]
 Type=AOE
@@ -16811,7 +16679,6 @@ BasePower=40
 Magic=No
 StatusType=Poison
 stat=int
-DestroyShadows=2
 
 [Pyrohelix]
 Type=AOE
@@ -16824,7 +16691,6 @@ BasePower=40
 Magic=No
 StatusType=Poison
 stat=int
-DestroyShadows=2
 
 [Cryohelix]
 Type=AOE
@@ -16837,7 +16703,6 @@ BasePower=40
 Magic=No
 StatusType=Poison
 stat=int
-DestroyShadows=2
 
 [Ionohelix]
 Type=AOE
@@ -16850,7 +16715,6 @@ BasePower=40
 Magic=No
 StatusType=Poison
 stat=int
-DestroyShadows=2
 
 [Noctohelix]
 Type=AOE
@@ -16863,7 +16727,6 @@ BasePower=40
 Magic=No
 StatusType=Poison
 stat=int
-DestroyShadows=2
 
 [Luminohelix]
 Type=AOE
@@ -16876,96 +16739,11 @@ BasePower=40
 Magic=No
 StatusType=Poison
 stat=int
-DestroyShadows=2
-
-[LungeII]
-Type=Single
-TP=10
-Desc=pulls back the greatsword as three random runes appear for a moment. %user then proceeds to quickly thrust the greatsword towards %enemy three times.
-BasePower=30
-Element=$read($lstfile(elements.lst))
-Cost=0
-Magic=No
-Stat=str
-hits=3
-DestroyShadows=2
-Renkei=3
-
-[VivaciousPulseII]
-Type=Heal
-TP=10
-Desc=chants in Elvish as green runes appear around %user for a moment before White energy covers %user $+ , healing $gender($1) injuries.
-BasePower=30
-Element=Light
-Cost=0
-Magic=Yes
-Stat=int
-CappedAmount=5000
-
-[RuneSwipeII]
-Type=Single
-TP=10
-Desc=mutters under $gender($1) breath as a random rune appears briefly before %user $+ , granting %user $+ 's weapon the random element. %user then slashes at %enemy with the magic-infused weapon.
-BasePower=70
-Element=$read($lstfile(elements.lst))
-Cost=0
-Magic=Yes
-Stat=str
-DestroyShadows=2
-
-[DimidiationII]
-Type=Single
-TP=10
-Desc=raises the weapon into the air as the weapon glows white. %user slashes down with the weapon upon %enemy $+ , taking a step back as Light energy forms before $gender($1) $+ . %user then quickly spins to the right, slashing at %enemy once more with the weapon, the energy fading.
-BasePower=45
-Element=Light
-Cost=0
-Magic=Yes
-Stat=str
-Hits=2
-DestroyShadows=2
-
-[HardSlashII]
-Type=Single
-TP=10
-Desc=raises the greatsword above $gender($1) head and then swiflty swings the greatsword down upon %enemy $+ .
-BasePower=55
-Element=None
-Cost=0
-Magic=no
-stat=str
-renkei=3
-DestroyShadows=2
-
-[PowerSlashII]
-Type=Single
-TP=10
-Desc=stabs forward with the greatsword towards %enemy $+ .
-BasePower=55
-Element=none
-Cost=0
-Magic=no
-stat=str
-renkei=4
-DestroyShadows=2
-
-[ResolutionII]
-Type=Single
-TP=10
-Desc=performs an impressive series of swings with the greatsword upon %enemy before leaping into the air and slamming the greatsword down on %enemy $+ .
-BasePower=25
-Element=none
-Cost=0
-Magic=no
-stat=str
-renkei=4
-Hits=5
-DestroyShadows=4
 
 [Guruthos]
 Type=Death
 Cost=0
-Desc=gains a red and blue aura as %user takes $gender($1) sword in hand. She rushes towards %enemy $+ , delivering a fatal blow to %enemy $+ ! "Nice try, but this is the end for you."
+Desc=gains a red and blue aura as %user takes $gender($1) sword in hand. %user rushes towards %enemy $+ , delivering a fatal blow to %enemy $+ ! "Nice try, but this is the end for you."
 TP=10
 Element=None
 Hits=1
@@ -16973,6 +16751,7 @@ BasePower=10
 Magic=No
 stat=str
 CanDodge=false
+IgnoreShadows=true
 DeathChance=100
 
 [Medui]
@@ -16986,6 +16765,7 @@ BasePower=10
 Magic=No
 stat=str
 CanDodge=false
+IgnoreShadows=true
 DeathChance=100
 
 [Meltdown]
@@ -19560,7 +19340,7 @@ IgnoreDefense=5
 HurtEthereal=true
 stat=spd
 CanDodge=false
-DestroyShadows=16
+IgnoreShadows=true
 DeathChance=100
 
 [MurderSpreeII]
@@ -19576,7 +19356,7 @@ IgnoreDefense=5
 HurtEthereal=true
 stat=spd
 CanDodge=false
-DestroyShadows=16
+IgnoreShadows=true
 DeathChance=100
 
 [ExdeathBlizzard]
@@ -21817,3 +21597,1022 @@ BasePower=40
 Magic=No
 HurtEthereal=true
 stat=str
+
+[SingleMissileStrike]
+Type=Single
+Cost=0
+Desc=takes careful aim at %enemy before launching several missiles towards %enemy $+ !
+TP=30
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=true
+stat=str
+IgnoreShadows=true
+
+[MultipleMissileStrike]
+Type=AOE
+Cost=0
+Desc=hops to the edge of the battlefield and takes aim. After a moment, a number of missiles are launched forward to hit everyone!
+TP=50
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+IgnoreShadows=true
+
+[Braver]
+Type=Single
+Cost=0
+Desc=leaps towards %enemy and performs and overhead attack upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+
+[BladeBurst]
+Type=AOE
+Cost=0
+Desc=leaps forward and strikes the ground with the weapon, which causes three large beams of energy to shoot forward to hit all targets!
+TP=10
+Element=None
+Hits=1
+BasePower=80
+Magic=No
+HurtEthereal=true
+stat=str
+
+[TripleSlash]
+Type=Single
+Cost=0
+Desc=rushes forward and slashes %enemy three times with the sword!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=true
+stat=str
+
+[FocusedThrust]
+Type=Single
+Cost=0
+Desc=holds back the sword before quickly charging toward %enemy to hit with a thrusting attack!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+
+[Infinity'sEnd]
+Type=Single
+Cost=0
+Desc=winds up before unleashing a powerful overhead attack upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=str
+
+[Disorder]
+Type=Single
+Cost=0
+Desc=rushes towards %enemy and performs a backhand swing with the sword, smoothly moving itno the attack stance.
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) skills BloodBoost.on on
+
+[RiseAndFall]
+Type=Single
+Cost=0
+Desc=crouches down for a moment before leaping forward and performs two spinning kicks upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques Omnistrike 750 | writeini $char($1) techniques RiseAndFall 0
+
+[Omnistrike]
+Type=Single
+Cost=0
+Desc=unleashing a quick shoulder tackle upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=no
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques WhirlingUppercut 750 | writeini $char($1) techniques Omnistrike 0
+
+[WhirlingUppercut]
+Type=Single
+Cost=0
+Desc=crouches down for a moment and unleashes a spinning uppercut upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques RiseAndFall 750 | writeini $char($1) techniques WhirlingUppercut 0
+
+[DiveKick]
+Type=Single
+Cost=0
+Desc=hops back before jumping to the air and performs a diving kick upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+
+[FocusedStrike]
+Type=Single
+Cost=0
+Desc=hops back before rushing forwad to punch %enemy then follows up with a two hit punch combo.
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=no
+HurtEthereal=true
+stat=str
+
+[Starshower]
+Type=Single
+Cost=0
+Desc=hops in place for a moment before unleashing a barrage of quick attacks upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+
+[ChiTrap]
+Type=AOE
+Cost=0
+Desc=strikes the ground with her right fist, which creates a ball of chi energy that draws in all enemies to deal damage!
+TP=10
+Element=None
+Hits=1
+BasePower=80
+Magic=No
+HurtEthereal=true
+stat=str
+
+[TrueStrike]
+Type=Single
+Cost=0
+Desc=holds back her left fist for a moment before unleashing a quick snap punch upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+
+[MeteorDrive]
+Type=Single
+Cost=0
+Desc=lifts %enemy up on her shoulders, pausing for a moment before falling back and delivering a suplex upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=str
+
+[Overpower]
+Type=Single
+Cost=0
+Desc=performs a corkscrew kick upon %enemy and leaps back before following up with a leaping axe kick.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) skills BloodBoost.on on
+
+[SorcerousStorm]
+Type=AOE
+Cost=0
+Desc=says, "You asked for it!" and strikes the ground with her staff which causes a burst of energy to hit all enemies in range!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=int
+Postscript=$restore_ig($1, 10)
+
+[RayOfJudgement]
+Type=Single
+Cost=0
+Desc=aims the staff towards %enemy and unleashes a deadly beam of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=true
+Postscript=$restore_ig($1, 10)
+
+[HealingWind]
+Type=heal-AOE
+Cost=0
+Desc=clasps her hands together and says, "Stay strong and carry on!" as a healing light covers everyone.
+TP=10
+Element=Light
+Hits=1
+BasePower=150
+Magic=Yes
+stat=int
+CappedAmount=8000
+Postscript=writeini $char($1) battle IgnitionGauge 0
+
+[FocusedShot]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy and says, "Firing one off!" as he fires a small blast of energy towards %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+
+[MaximumFury]
+Type=AOE
+Cost=0
+Desc=takes aim and says, "Got a whole heap of lead with your name on it!" and fires a barrage of bullets upon all enemies!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=true
+stat=str
+
+[ChargingUppercut]
+Type=Single
+Cost=0
+Desc=rushes forward and unleashes an uppercut upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques Overcharge 750 | writeini $char($1) techniques CharginUppercut 0
+
+[Overcharge]
+Type=Single
+Cost=0
+Desc=takes aim and fires three powerful shots from the gunarm at %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=250
+Magic=No
+HurtEthereal=true
+stat=str
+Postscript=writeini $char($1) techniques ChargingUppercut 750 | writeini $char($1) techniques Overcharge 0
+
+[PointBlank]
+Type=Single
+Cost=0
+Desc=aims the gunarm at point blank range and fires a powerful blast of energy directly upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=str
+
+[EvilEarth]
+Type=AOE
+Cost=0
+Desc=performs a powerful stomp onto the floor, causing it to glow orange. After a moment, a wave of energy surges through the floor to hit everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques BombBoulders 500 | writeini $char($1) techniques EvilEarth 0
+
+[BombBoulders]
+Type=AOE
+Cost=0
+Desc=summons several large boulders in a triple line pattern across the arena. The boulders begin to gather energy and suddenly explode after a few moments, hitting anyone in range!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques Geocrush 500 | writeini $char($1) techniques Geocrush 0
+
+[Geocrush]
+Type=AOE
+Cost=0
+Desc=hops back before leaping high into the air. After a moment, Titan falls to the ground, causing a shockwave that throws everyone backswards.
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques MassiveLandslide 500 | writeini $char($1) techniques GeoCrush 0
+
+[MassiveLandslide]
+Type=AOE
+Cost=0
+Desc=summons the cogs and metal parts from his back and puts them over his hands. He then raises his arms, pausing for a moment before slamming them down to the ground. A large earthquake occurs along with a large explosion of energy!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+IgnoreDefense=10
+CanDodge=False
+IgnoreShadows=true
+Postscript=writeini $char($1) techniques LandslideII 500 | writeini $char($1) techniques MassiveLandslide 0
+
+[LandslideII]
+Type=Single
+Cost=0
+Desc=turns to face %enemy and raises his right hand, pausing for a moment. Titan then punches the ground, sending a large wave of energy shooting towards $enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques Aftershock 500 | writeini $char($1) techniques LandslideII 0
+
+[Aftershock]
+Type=Single
+Cost=0
+Desc=spins around to face %enemy and raises his left arm, pausing for a moment. Titan then punches the ground, sending a large wave of energy shooting towards $enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques Faultline 500 | writeini $char($1) techniques Aftershock 0
+
+[FaultLine]
+Type=AOE
+Cost=0
+Desc=summons the cogs and metal parts from his back to form a ridable kart. Titan gathers energy for a moment before suddenly driving across the arena, running over anyone that's in the way!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques Magnitude5 500 | writeini $char($1) techniques Faultline 0
+
+[Magnitude5]
+Type=AOE
+Cost=0
+Desc=begins to channel energy into his arms. After a moment, Titan raises his arms into the air and unleashes a powerful blast of energy upon the arena!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques EvilEarth 500 | writeini $char($1) techniques Magnitude5 0
+
+[EarthenFury]
+Type=AOE
+Cost=0
+Desc=raises his arms into the air and slams them down onto the area, causing an explosion of energy to hit everyone.
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques EarthFist 500 | writeini $char($1) techniques EarthnFury 0
+
+[EarthenFist]
+Type=Single
+Cost=0
+Desc=faces towards %enemy and punching with the left fist before following up with the right fist!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques DualEarthenFist 500 | writeini $char($1) techniques EarthenFist 0
+
+[DualEarthenFist]
+Type=AOE
+Cost=0
+Desc=moves to the side of the arena and punches forward with both fists to hit everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques WeightOfTheWorld 500 | writeini $char($1) techniques DualEarthenFist 0
+
+[WeightOfTheWorld]
+Type=Single
+Cost=0
+Desc=rips out a chunk of the arena, taking aim before hurling it towards %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+IgnoreDefense=10
+HurtEthereal=True
+stat=str
+CanDodge=false
+IgnoreShadows=true
+Postscript=writeini $char($1) techniques TumultII 500 | writeini $char($1) techniques WeightOfTheWorld 0
+
+[TumultII]
+Type=AOE
+Cost=0
+Desc=raises his hands, perfoming a gesture with both of them. Several circles of energy appears below everyone before suddenly exploding!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques TectonicUplift 500 | writeini $char($1) techniques TumultII 0
+
+[TectonicUplift]
+Type=AOE
+Cost=0
+Desc=grabs onto the sides of the arena, pausing to gather energy. After a moment, Titan suddenly lifts the entire arena at a high speed, throwing everyone into the air before putting it back into place.
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques EarthenFury 500 | writeini $char($1) techniques TectonicUplift 0
+
+[RipCurrent]
+Type=AOE
+Cost=0
+Desc=fires a blue line AOE towards the battlefield which splits into smaller currents of water which hits all of the players!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=int
+Postscript=writeini $char($1) techniques TemporaryCurrent 500 | writeini $char($1) techniques RipCurrent 0
+
+[TemporaryCurrent]
+Type=AOE
+Cost=0
+Desc=moves to the $rand(left,right) side of the battlefield and fires a massive blue line of energy at a diagonal across the arena. After a moment, an explosion of energy is unleashed which hits all of the players, knocking them back.
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=int
+Postscript=writeini $char($1) techniques NeoTidalWave 500 | writeini $char($1) techniques TemporaryCurrent 0
+
+[NeoTidalWave]
+Type=AOE
+Cost=0
+Desc=summons a giant pillar of water on a random side of the battlefield. After a moment, the water then surges forward to push all of the players back!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=int
+Postscript=writeini $char($1) techniques UnderseaQuake 500 | writeini $char($1) techniques NeoTidalWave 0
+
+[UnderseaQuake]
+Type=AOE
+Cost=0
+Desc=opens both mouths which begin to glow with a blue light. After a moment, the heads move close together and fires twin beams of powerful energy towards the players. Leviathan then charges forward immediately after, running through the players as well!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=int
+Postscript=writeini $char($1) techniques NeoTsunami 500 | writeini $char($1) techniques UnderseaQuake 0
+
+[NeoTsunami]
+Type=AOE
+Cost=0
+Desc=swims around the arena as the water begins to rise higher and starts to swirl around. After a moment, Leviathan gives off a loud roar and causes the water to crash down and hit all of the players!
+TP=10
+Element=None
+Hits=1
+Magic=No
+BasePower=75
+IgnoreDefense=10
+HurtEthereal=True
+stat=int
+CanDodge=false
+IgnoreShadows=true
+Postscript=writeini $char($1) techniques SpinningDive 500 | writeini $char($1) techniques NeoTsunami 0
+
+[SpinningDive]
+Type=AOE
+Cost=0
+Desc=summons a blue portal on one side of the battlefield and swims through it, vanishing. After a minute, Leviathan suddenly charges through another portal that's on the opposite side, ramming through everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=int
+Postscript=writeini $char($1) techniques DrenchingPulse 500 | writeini $char($1) techniques SpinningDive 0
+
+[DrenchingPulse]
+Type=AOE
+Cost=0
+Desc=aims at the air, spitting out several balls of water. After a moment, they drop down from the air and hits everyone with great speed!
+TP=10
+Element=None
+Hits=1
+BasePower=75
+Magic=No
+HurtEthereal=True
+stat=int
+Postscript=writeini $char($1) techniques RipCurrent 500 | writeini $char($1) techniques DrenchingPulse 0
+
+[BloodStorm]
+Type=AOE
+Cost=0
+Desc=becomes the epicenter of a minature blood-hurricane that expands to cover the arena, dealing extreme damage while also canceling the berserker state.
+TP=10
+Element=None
+Hits=1
+BasePower=2000
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=False
+IgnoreShadows=true
+Postscript=writeini $char($1) battle IgnitionGauge 0 | writeini $char($1) status ignition.on off | writeini $char($1) techniques BloodStorm 0
+
+[BloodShot]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy and fires once with both guns.
+TP=10
+Element=None
+Hits=2
+BasePower=45
+Magic=No
+HurtEthereal=True
+stat=str
+
+[BloodStream]
+Type=Single
+Cost=0
+Desc=fires rapidly at %enemy $+ , sending a barrage of blood bullets to do damage.
+TP=10
+Element=None
+Hits=$rand(3,4)
+BasePower=25
+Magic=No
+HurtEthereal=True
+stat=str
+
+[BloodSpray]
+Type=AOE
+Cost=0
+Desc=changes firing modes on the guns and takes aim at all enemies before firing with the same effect as a shotgun.
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+
+[BloodBomb]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy while changing firing modes on the guns and fires a bigger round which sticks to %enemy before causing an explosion a few seconds later.
+TP=10
+Element=None
+Hits=1
+BasePower=125
+Magic=No
+HurtEthereal=True
+stat=str
+
+[BloodFlame]
+Type=AOE
+Cost=0
+Desc=takes aim at the battlefield and changes firing modes. %user pauses for a moment before unleashing a streak of fire across the battlefield!
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+
+[BloodHammer]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy while changing the firing mode on the guns. After a moment, a massive burst fires from the guns and slams into %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=250
+Magic=No
+HurtEthereal=True
+stat=str
+
+[BigSwing]
+Type=AOE
+Cost=0
+Desc=pulls back its left hand and swings across the battlefield, hitting everyone in range!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+
+[RubyFlame]
+Type=Single
+Cost=0
+Desc=unleashes a stream of fire upon %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=150
+Magic=Yes
+HurtEthereal=true
+stat=int
+
+[RubyRay]
+Type=Single
+Cost=0
+Desc=unleashes a powerful beam of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=int
+
+[ShadowFlare]
+Type=AOE
+Cost=0
+Desc=summons a large sphere of fire energy which floats above the battlefield. After a moment of pause, the sphere drops to the middle of the battlefield and causes a large explosion of dark fire to cover the arena.
+TP=10
+Element=Fire
+Hits=1
+BasePower=150
+Magic=Yes
+HurtEthereal=true
+stat=int
+
+[RightTentacleAttack]
+Type=Single
+Cost=0
+Desc=places its large hands to the ground and summons a tentacle from the ground on its right side. After a moment of pause, the tentacle slams into %enemy to cause damage!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=true
+stat=str
+Absorb=yes
+
+[LeftTentacleAttack]
+Type=Single
+Cost=0
+Desc=places its large hands to the ground and summons a tentacle from the ground on its left side. After a moment of pause, the tentacle slams into %enemy to cause damage!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+StatusType=Silence.Paralyze
+HurtEthereal=true
+stat=str
+
+[EmeraldStomp]
+Type=AOE
+Cost=0
+Desc=floats up into the air, pausing for a moment before dopping down upon the players to cause a large shockwave!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques EmeraldStompII $calc(500 + %cosmic.level) | writeini $char($1) techniques EmeraldStomp 0
+
+[EmeraldStompII]
+Type=AOE
+Cost=0
+Desc=floats up into the air, pausing for a moment before dopping down upon the players to cause a large shockwave!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques EmeraldShoot $calc(500 + %cosmic.level) | writeini $char($1) techniques EmeraldStompII 0
+
+[EmeraldShoot]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy and fires a quick burst of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques EmeraldShootII $calc(500 + %cosmic.level) | writeini $char($1) techniques EmeraldShoot 0
+
+[EmeraldShootII]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy and fires a quick burst of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques EmeraldBeam $calc(500 + %cosmic.level) | writeini $char($1) techniques EmeraldShootII 0
+
+[EmeraldBeam]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy $+ , gathering power for moment before firing a strong beam of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=175
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques EmeraldBeamII $calc(500 + %cosmic.level) | writeini $char($1) techniques EmeraldBeam 0
+
+[EmeraldBeamII]
+Type=Single
+Cost=0
+Desc=takes aim at %enemy $+ , gathering power for moment before firing a strong beam of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=175
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=writeini $char($1) techniques AireTamStorm $calc(600 + %cosmic.level) | writeini $char($1) techniques EmeraldBeamII 0
+
+[AireTamStorm]
+Type=AOE
+Cost=0
+Desc=stops all movement as it begins to channel a large amount of energy. Soon after, a large pillar of powerful energy erupts under everyone, causing large damage!
+TP=1
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=True
+stat=str
+CanDodge=False
+IgnoreShadows=True
+Postscript=writeini $char($1) techniques EmeraldStomp $calc(500 + %cosmic.level) | writeini $char($1) techniques AireTamStorm 0
+
+[UltimaBeam]
+Type=Single
+Cost=0
+Desc=unleashes a powerful beam of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+
+[UltimaClaw]
+Type=AOE
+Cost=0
+Desc=pulls back its right hand and swings across the battlefield, hitting everyone in range!
+TP=10
+Element=None
+Hits=1
+BasePower=175
+Magic=No
+HurtEthereal=True
+stat=str
+
+[Thunderball]
+Type=Single
+Cost=0
+Desc=summons a ball of fire and hurls it towards %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=150
+Magic=Yes
+HurtEthereal=True
+stat=str
+
+[DiamondStomp]
+Type=AOE
+Cost=0
+Desc=floats up into the air, pausing for a moment before dopping down upon the players to cause a large shockwave!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+
+[DiamondFire]
+Type=Single
+Cost=0
+Desc=unleashes a stream of fire upon %enemy $+ !
+TP=10
+Element=Fire
+Hits=1
+BasePower=150
+Magic=Yes
+HurtEthereal=True
+stat=str
+
+[DiamondFlash]
+Type=AOE
+Cost=0
+Desc=stops all movement as it begins to channel a large amount of energy. Soon after, a large beam of power energy shoots fard to hit everyone in range!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+
+[BigBomber]
+Type=Single
+Cost=0
+Desc=loads a Big Bomber shell and takes aim at %enemy $+ , pausing for a moment before firing the shell towards %energy to cause large damage!
+TP=10
+Element=None
+Hits=1
+BasePower=200
+Magic=No
+HurtEthereal=True
+stat=str
+Postscript=
+
+[StunBeam]
+Type=Single
+Cost=0
+Desc=raises one of the hands and fires a quick beam of energy towards %enemy in an attempt to stun %enemy $+ !
+TP=10
+Element=None
+Hits=1
+StatusType=Stun
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+
+[EnergyBall]
+Type=AOE
+Cost=0
+Desc=raises both hands to the air and forms a large ball of energy. The Air Buster pauses for a moment before dropping the ball to the ground which causes a large explosion to hit everyone!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+
+[BodyBlow]
+Type=Single
+Cost=0
+Desc=quickly rushes towards %enemy and delivers a quick punch!
+TP=10
+Element=None
+Hits=1
+BasePower=120
+Magic=No
+HurtEthereal=True
+stat=str
+
+[HandGrab]
+Type=Single
+Cost=0
+Desc=detaches one of the arms, causing it to shoot forward and grab %enemy $+ . The arm rises into the air for a moment before throwing %enemy towards the ground!
+TP=10
+Element=None
+Hits=1
+BasePower=150
+Magic=No
+HurtEthereal=True
+stat=str
+
+[ABFlame]
+Type=AOE
+Cost=0
+Desc=holds both arms out and spins around while shooting flame out from the palms of the hands!
+TP=10
+Element=Fire
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=True
+stat=str
+
+[Tankbuster]
+Type=Single
+Cost=0
+Desc=begins to channel a large amount of energy while the cannon on the middle of the body begins to glow bright. After a few moments of pause, the Air Buster unleashes a giant laser of energy upon %enemy $+ !
+TP=10
+Element=None
+Hits=1
+BasePower=300
+Magic=No
+HurtEthereal=True
+stat=str
+

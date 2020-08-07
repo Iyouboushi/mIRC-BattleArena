@@ -15,6 +15,7 @@ Str=50
 Def=50
 Int=50
 Spd=50
+LimitBreakPercent=100
 Status=alive
 
 
@@ -127,8 +128,6 @@ DieHard=25
 Hadouken=500
 Shouryuken=500
 TatsumakiSenpukyaku=500
-Shinryuken=500
-ShoryuReppa=500
 
 
 [Item_Amount]
@@ -142,6 +141,9 @@ WeaponMaster=10
 [Augments]
 KenGloves=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
 
+[LimitBreaks]
+Shinryuken=1
+ShoryuReppa=1
 
 [modifiers]
 Heal=none

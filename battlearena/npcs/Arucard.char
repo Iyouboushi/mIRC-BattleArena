@@ -24,11 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -36,12 +31,14 @@ Dused=1
 Char=a tall man with short black hair dressed in a dark grey suit with a red overcoat, white gloves, a large red fedora and circular sunglasses with an orange tint. Formally known as Dracula, he is perhaps the strongest vampire in existance...
 Rage=simply laughs like a mad man!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -58,6 +55,7 @@ IgnoreElementalMessage=true
 ActionsPerTurn=2
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -99,16 +97,23 @@ KiRegenerating=no
 curse.timer=1
 slow.timer=1
 zombie.timer=1
+auto-regen=yes
+
 
 [Weapons]
 Equipped=Casull&Jackal
-Casull&Jackal=500
+Casull&Jackal=750
+
 
 [Skills]
 Gunslinger=100
 Wizardry=100
 Zen=5
 ClearMind=3
+Barrage=1
+Duality=1
+Impetus=20
+Overwhelm=5
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -125,7 +130,8 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
-DieHard=90
+DieHard=80
+Regen=27
 
 
 [Techniques]

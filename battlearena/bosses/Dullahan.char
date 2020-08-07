@@ -1,22 +1,22 @@
 [BaseStats]
-Hp=1000
-Tp=300
-Str=100
-Def=100
-Int=100
-Spd=100
-IgnitionGauge=2
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (1000000 * $return_playersinbattle)) , 1000000)
+Tp=1500
+Str=4000
+Def=2500
+Int=2500
+Spd=2000
+IgnitionGauge=100
 Name=Dullahan
 
 
 [Battle]
-Hp=1000
-Tp=300
-Str=100
-Def=100
-Int=100
-Spd=100
-IgnitionGauge=2
+Hp=1000000
+Tp=1500
+Str=4000
+Def=2500
+Int=2500
+Spd=2000
+IgnitionGauge=100
 Status=alive
 
 
@@ -35,11 +35,7 @@ BossQuote=I am the shadow, the keeper of light. If you want the sun's power, sho
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=
 
-[Monster]
-Type=demon
-size=large
 
 [Info]
 Flag=monster
@@ -50,10 +46,33 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=150
-IgnoreQuicksilver=true
-CanTaunt=false
+AI_Type=techonly
+Streak=-10000
 IgnoreElementalMessage=true
+BattleStats=ignoreTP.ignoreHP
+IgnoreDrain=true
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
+
+; universal Cosmic battle flags
+CanTaunt=false
+WonderGuard=true
+CanStagger=no
+JustReleaseDefense=100
+IgnorePresident=true
+IgnoreQuicksilver=true
+IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
+
+
+[Monster]
+Type=demon
+TechLearn=false
+size=large
+SuperElite=True
+
 
 [Status]
 Poison=no
@@ -88,72 +107,56 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=DullahanSword
-DullahanSword=100
+DullahanSword=$calc(500 + %cosmic.level)
+
 
 [Skills]
-SwordMaster=100
-Wizardry=100
-Resist-Charm=100
-Resist-Poison=100
-Resist-Zombie=100
-Resist-Intimidate=100
+SwordMaster=$calc(500 + %cosmic.level)
+Wizardry=$calc(500 + %cosmic.level)
+Duality=1
+SwiftCast=1
 Zen=5
 ClearMind=3
 Impetus=20
-ElementalSeal=1
-MightyStrike=1
 Resist-Amnesia=100
 Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Paralysis=100
-BloodBoost=20
-Resist-Petrify=60
-Resist-Stun=30
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+
 
 [Techniques]
-Charon=85
-ForminaSage=85
-Haunt=85
-DjinnStorm=90
-Condem=85
+Charon=$calc(500 + %cosmic.level)
+ForminaSage=$calc(500 + %cosmic.level)
+Haunt=$calc(500 + %cosmic.level)
+DjinnStorm=$calc(500 + %cosmic.level)
+Condem=$calc(500 + %cosmic.level)
 
 
 [Item_Amount]
 
+
 [Style]
-Equipped=SpellMaster
-SpellMaster=10
-SpellMasterXP=1
+Equipped=WeaponMaster
+WeaponMaster=10
 
 
 [modifiers]
-Heal=Dark.Light
-Earth=70
-Fire=70
-Wind=70
-Water=70
-Ice=70
-Lightning=70
-Light=200
-Dark=200
-HandToHand=120
-Whip=120
-Sword=70
-Gun=70
-Rifle=70
-Katana=70
-Wand=120
-Spear=70
-Scythe=70
-Glyph=120
-GreatSword=70
-Bow=70
-Axe=70
-Dagger=70
-Mace=70
-Stave=70
-EnergyBlaster=120
-HolyHandGrenade=0
+Heal=Light

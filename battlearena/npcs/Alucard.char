@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -34,12 +29,14 @@ Dused=1
 Char=is a tall man with long silver hair dressed in a black outfit with a black cape and wields the Alucard Sword. The half-vampire son of Dracula.
 Rage=yells in rage as his anger reaches the limit.
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -54,6 +51,7 @@ CanTaunt=false
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -95,10 +93,13 @@ KiRegenerating=no
 curse.timer=1
 slow.timer=1
 zombie.timer=1
+auto-regen=yes
+
 
 [Weapons]
 Equipped=AlucardSword
 AlucardSword=500
+
 
 [Skills]
 Swordmaster=100
@@ -122,6 +123,8 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 DieHard=25
+Regen=25
+
 
 [Techniques]
 UrielBlade=500

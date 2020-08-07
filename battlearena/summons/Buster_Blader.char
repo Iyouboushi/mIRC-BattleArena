@@ -1,31 +1,27 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=30
-Def=30
-Int=20
-Spd=20
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Buster Blader
 
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=30
-Def=30
-Int=20
-Spd=20
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
+LimitBreakPercent=50
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -34,12 +30,14 @@ Dused=1
 Char=is a warrior that wears dark blue and grey armor and carries a large sword that is capable of slaying dragons. One of Yugi Mutou's favorite cards.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -51,9 +49,11 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 CanTaunt=false
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+IgnoreQuickSilver=true
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -96,42 +96,68 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=DragonSword
 DragonSword=500
 
+
 [Skills]
-Swordmaster=100
-MartialArts=100
 Zen=5
-royalguard.on=on
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+ClearMind=3
+MartialArts=100
+Swordmaster=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
 Dragon-Killer=20
-DieHard=25
+
 
 [Techniques]
 HardSlash=500
 PowerSlash=500
 Resolution=500
+SpinningSlash=500
+
 
 [Item_Amount]
+
+
+[Augments]
+DragonSword=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
 
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=5
-WeaponMasterXP=1
+
+
+[LimitBreaks]
+DragonSlash=1
 
 [modifiers]
 Heal=none
@@ -155,3 +181,16 @@ Scythe=90
 Glyph=90
 GreatSword=90
 Bow=90
+Axe=90
+Dagger=90
+Mace=90
+Stave=90
+EnergyBlaster=90
+Lightsaber=90
+Hammer=90
+Bat=90
++Fire=110
++Ice=110
++Wind=110
++Water=110
++Dark=110

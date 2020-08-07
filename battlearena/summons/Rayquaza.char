@@ -1,33 +1,30 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=30
-Def=30
-Int=30
-Spd=30
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Rayquaza
 IgnitionGauge=100
 
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=30
-Def=30
-Int=30
-Spd=30
-Status=alive
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
+LimitBreakPercent=50
 IgnitionGauge=100
+Status=alive
+
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -36,12 +33,14 @@ Dused=1
 Char=is a large, serpentine creature that is green in color. It has red-tipped, rudder-like wings on its shoulders and down its body, and similarly patterned fins on the tip of its tail. Yellow ring-like symbols run across the length the body and it has an additional yellow ring on top of its head. It has two limbs with three-clawed hands, and two long, flat, horn-like structures on its head, with two shorter horns along its jawline. It has small, yellow eyes with black pupils, and two discernible fangs in its upper jaw.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=its
@@ -53,9 +52,10 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreDrain=true
+IgnoreQuickSilver=true
 IgnoreElementalMessage=true
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+ActionsPerTurn=1
+BattleStats=IgnoreHP.IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD
 SkipDoubleTurns=true
 
 
@@ -63,6 +63,7 @@ SkipDoubleTurns=true
 type=dragon
 TechLearn=false
 size=large
+
 
 [Status]
 Poison=no
@@ -105,6 +106,7 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=RayquazaPower
 RayquazaPower=750
@@ -112,26 +114,45 @@ RayquazaPower=750
 
 [Skills]
 Zen=5
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+ClearMind=3
+MartialArts=100
+Wizardry=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
-DieHard=25
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
+Flying=$iif($current.battlestreak >= 1000, 0, 1)
+
 
 [Techniques]
 Draco_Meteor=750
 Dragon_Ascent=750
 Dragon_Claw=750
 Dragon_Pulse=750
+
 
 [Augments]
 
@@ -144,7 +165,14 @@ Legs=
 Feet=
 Accessory=
 
+
+[Augments]
+RayquazaPower=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
+
 [Styles]
+Equipped=WeaponMaster
+WeaponMaster=5
 
 
 [NaturalArmor]
@@ -152,10 +180,16 @@ Name=
 Max=
 Current=
 
+
 [Ignitions]
-MegaRayquaza=$iif($current.battlestreak >= 6000, 1, 0)
+MegaRayquaza=$iif($current.battlestreak >= 2000, 1, 0)
+
 
 [Item_Amount]
+
+
+[LimitBreaks]
+MegaDracoMeteor=1
 
 
 [modifiers]

@@ -118,14 +118,16 @@ Name=Fated Circle
 Cost=0
 Multiplier=3
 MeterNeeded=100
-Desc=leaps into the air and performs an aerial spin, unleashing energy that hits the battlefield.
+AOE=true
+Desc=leaps into the air and performs an aerial spin, unleashing energy that hits the battlefield and all enemies.
 
 [BlastingZone]
 Name=Blasting Zone
 Cost=0
 Multiplier=3
 MeterNeeded=100
-Desc=raises his gunblade into the air as a massive line of yellow energy shoots into the sky. Squall then slams the energy on the battlefield to damage %enemy $+ !
+AOE=true
+Desc=raises his gunblade into the air as a massive line of yellow energy shoots into the sky. Squall then slams the energy on the battlefield, which causes an explosion to hit all enemies.
 
 [Lionheart]
 Name=Lionheart
@@ -181,14 +183,16 @@ Name=Red-Eyed Dragon
 Cost=0
 Multiplier=5
 MeterNeeded=100
-Desc=summons a large red dragon. The dragon waits for a moment before gaining a flame aura and rushes towards %enemy $+ . The dragon slams into %enemy and causes a large explosion to happen!
+AOE=True
+Desc=summons a large red dragon. The dragon waits for a moment before gaining a flame aura and rushes towards the enemies, crashing into an enemy to create a large explosion!
 
 [DarkDragon]
 Name=Dark Dragon
 Cost=0
 Multiplier=5
 MeterNeeded=100
-Desc=drives the sword into the ground as a shadow covers the entire battlefield. A dark purple dragon rises from the shadow and charges forward towards %enemy $+ , a powerful explosion of dark energy occuring as the dragon flies through %enemy $+ !
+AOE=True
+Desc=drives the sword into the ground as a shadow covers the entire battlefield. A dark purple dragon rises from the shadow and charges forward, cutting through the shadow to create a large explosion!
 
 [BoostJump]
 Name=Boost Jump
@@ -230,14 +234,16 @@ Name=Big Brawl
 Cost=0
 Multiplier=4
 MeterNeeded=100
-Desc=runs forward and unleashes a barrage of attacks upon %enemy $+ !
+AOE=true
+Desc=runs forward and unleashes a barrage of attacks upon all of the enemies!
 
 [TheHighwind]
 Name=The Highwind
 Cost=0
 Multiplier=5
 MeterNeeded=100
-Desc=summons the Highwind airship which flies over the battlefield, dropping numerous bombs onto %enemy $+ !
+AOE=True
+Desc=summons the Highwind airship which flies over the battlefield, dropping numerous bombs over all of the enemies!
 
 [ZangetsuLimit]
 Name=Zangetsu Limit
@@ -258,49 +264,57 @@ Name=Desperado
 Cost=0
 Multiplier=5
 MeterNeeded=100
-Desc=takes out a hand grenade, pulls the pin and hurls it towards %enemy $+ . Laguna then leaps up, shooting a grappling hook to the sky. He then swings from side to side, firing numerous rounds at %enemy from his machine gun. He eventually lands to the ground, his back facing %enemy as the grenade explodes upon %enemy with a large explosion!
+AOE=true
+Desc=takes out a hand grenade, pulls the pin and hurls it towards the battlefield. Laguna then leaps up, shooting a grappling hook to the sky. He then swings from side to side, firing numerous rounds at the battlefield from his machine gun. He eventually lands to the ground with his back facing the enemies as the grenade creates a large explosion!
 
 [FinalPsychoCrusher]
 Name=Final Psycho Crusher
 Cost=0
-Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+Multiplier=1
 MeterNeeded=100
 Desc=floats back away from the arena. After a moment, Bison charges across the arena, covering it with blue energy as he slams into %enemy with a much stronger version of the Psycho Crusher!
 
 [BloodExecution]
 Name=Blood Execution
 Cost=0
-Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+Multiplier=1
 MeterNeeded=100
 Desc=laughs before spinning around, as a large pillar of blood forms from the ground and lifts Bloodless into the air. After a moment of pause, the blood pillar turns into a massive red skull which quickly shoots towards %enemy and causes a large explosion of power upon %enemy $+ !
 
 [TigerGenocide]
 Name=Tiger Genocide
 Cost=0
-Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+Multiplier=1
 MeterNeeded=100
 Desc=shouts out "TIGER GENOCIDE!" and leaps towards %enemy using the Tiger Knee attack. Afterwards Sagat then immediately unleashes a deadly combo of two Tiger Uppercuts upon %enemy $+ , causing major damage!
 
 [RollingIzunaDrop]
 Name=Rolling Izuna Drop
 Cost=0
-Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+Multiplier=1
 MeterNeeded=100
 Desc=leaps towards the edge of the battlefield and kick-jumps off of it high into the air and towards %enemy $+ . Once in range, he grabs %enemy by the waist and then slams %enemy head-first into the ground several times!
 
 [CrazyBuffalo]
 Name=Crazy Buffalo
 Cost=0
-Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+Multiplier=1
 MeterNeeded=100
 Desc=punches his fists together and then quickly dashes forward, delivering five savage punches upon %enemy $+ !
 
 [MowerOfLawns]
 Name=Mower of Lawns
 Cost=0
-Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+Multiplier=1
 MeterNeeded=100
 Desc=looks between a wheelchair and a lawnmower. He then says, "Wheel of chairs? Or Mower of Lawns?" This continues for a minute before he finally shouts. "Mower of Lawns!" He takes a seat and then drives it after %enemy in an over-dramataic fashion with maniacal laughter, his arms spread out as he runs over %enemy $+ !
+
+[HyperTwinSlice]
+Name=Hyper Twin Slice
+Cost=0
+Multiplier=1
+MeterNeeded=100
+Desc=gives %enemy a death glare as $gender($1) sword glows red. $gender3($1) instantly appears before %enemy $+ , and proceeds to slash %enemy multiple times before %enemy has a chance to react. %user then shoves %enemy away from $gender2($1) $+ .
 
 [HyperTwinSliceMkII]
 Name=Hyper Twin Slice MkII
@@ -317,9 +331,9 @@ MeterNeeded=100
 Desc=floats into the air as the thirteen Royal Arms appear around Noctis. After a moment of pause, Noctis quickly dashes towards %enemy and unleashes a barrage of attacks with each weapon!
 
 [LastWillAndTestament]
-Name=LastWillAndTestament
+Name=Last Will and Testament
 Cost=0
-Multiplier=$iif($current.battlestreak <= 10000, 1, 2)
+Multiplier=1
 MeterNeeded=100
 Desc=changes the battlefield to a concert stage which also has two large, demonic speakers. %user forces %enemy to be tossed back and forth between the speakers as %user rocks out on the guitar. After a minute, %user stops playing and causes an explosion which returns the battlefield to normal.
 
@@ -337,51 +351,302 @@ Multiplier=5
 MeterNeeded=100
 Desc=jumps into the air as fire covers the sword and %user $+ . %user gathers power for a moment before slamming the sword down upon %enemy $+ , causing a massive explosion of flame to burn %enemy $+ !
 
-[BraverII]
-Name=Braver
-Cost=0
-Multiplier=3
-MeterNeeded=100
-Desc=leaps into the air and slashes %enemy on the way down with the Buster Sword.
-
 [CrossSlashII]
-Name=CrossSlash
+Name=Cross Slash
 Cost=0
 Multiplier=3
 MeterNeeded=100
-Desc=rushes forward and slashes %enemy a few times with the Buster Sword!
+Desc=says, "You're good as dead." before charging forward and unleashing three powerful sword slashes upon %enemy $+ !
 
-[BladeBeamII]
-Name=BladeBeam
-Cost=0
-Multiplier=3
-MeterNeeded=100
-Desc=drives the Buster Sword into the ground, causing blue energy to shoot forward and slam into %enemy $+ !
-
-[ClimhazzardII]
-Name=Climhazzard
+[Ascension]
+Name=Ascension
 Cost=0
 Multiplier=4
 MeterNeeded=100
-Desc=rushes forward and impales the Buster Sword into %enemy and then leaps high into the air, giving %enemy a deadly cut!
+Desc=says, "Nothing personal." as he rushes towards %enemy and unleashes a series of sword slashes, which ends with Cloud thrusting forward with the sword and leaping high into the air.
 
-[MeteorainII]
-Name=Meteorain
-Cost=0
-Multiplier=4
-MeterNeeded=100
-Desc=leaps into the air and spins the Buster Sword around. Several small meteors then proceed to slam into %enemy $+ !
-
-[FinishingTouchII]
-Name=FinishingTouch
-Cost=0
-Multiplier=5
-MeterNeeded=100
-Desc=spins the Buster Sword and holds it behimd himself for a moment before swinging forward and sending a large tornado slamming into %enemy $+ !
-
-[OmnislashII]
+[Omnislash]
 Name=Omnislash
 Cost=0
 Multiplier=6
 MeterNeeded=100
-Desc=says, "Breaking my limits" as he holds the Buster Sword forward as it gains a white glow. Cloud then proceeds to unleash a barrage of sword slashes upon %enemy $+ !
+Desc=says, "Breaking my limits." as he holds the Buster Sword forward as it gains a white glow. Cloud then proceeds to unleash a barrage of sword slashes upon %enemy $+ !
+
+[OmnislashV5]
+Name=Omnislash Version 5
+Cost=0
+Multiplier=6
+MeterNeeded=100
+Desc=splits the Fusion Sword back into the separate swords as a blue aura covers Cloud and the swords. Cloud grabs one of the swords and slashes %enemy with it, quickly moving to each sword and performs the same slash twelve times before hitting a final slash, causing an explosion of energy!
+
+[Somersault]
+Name=Somersault
+Cost=0
+Multiplier=3
+MeterNeeded=100
+Desc=says, "Giving it my all!" before rushing forward and delivering a powerful somersault kick upon %enemy $+ !
+
+[DolphinFlurry]
+Name=Dolphin Flurry
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=says, "No more games! It's over!" and rushes forward, unleashing a barrage of aerobatic kicks upon %enemy before hopping into the air. After a moment of pause, Tifa quickly spins around, kicking %enemy numerous times before landing to the ground and delivering a powerful rising uppercut which causes an image of a dolphin to appear!
+
+[MeteorStrike]
+Name=Meteor Strike
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=rushes forward, lifts %enemy up and leaps into the air while holding %enemy $+ . Tifa then spins %enemy around and hurls %enemy to the ground!
+
+[FinalHeaven]
+Name=Final Heaven
+Cost=0
+AOE=true
+Multiplier=5
+MeterNeeded=100
+Desc=holds back her right fist as she gathers power. After a moment, Tifa dashes forward with a punch attack, causing a large explosion to hit all enemies!
+
+[FireInTheHole]
+Name=Fire in the Hole
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=says, "There won't be anything left once I'm through with ya!" and takes aim at %enemy $+ , placing his hand on his right arm as an orb of energy begins to form in front of the gun-arm. After a moment, Barret fires the orb forward, which slams into %enemy to create a large explosion!
+
+[Catastrophe]
+Name=Catastrophe
+Cost=0
+Multiplier=6
+MeterNeeded=100
+Desc=says, "Get ready for one hell of a light show!" and hops into the air as he takes aim at %enemy $+ . After a moment, a large laser shoots out from the gun arm and slams into %enemy to cause large damage!
+
+[Kikosho]
+Name=Kikosho
+Cost=0
+Multiplier=4
+MeterNeeded=100
+AOE=True
+Desc=holds her arms back as she gathers power while a blue aura appears around herself. A moment later she thrusts her arms forward and hurls a much larger ball of energy to the battlefield, hitting all targets!
+
+[Hosenka]
+Name=Hosenka
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=hits %enemy with her Hyakuretsukyaku then performs a vertical version of the Spinning Bird Kick, launching %enemy into the air. A moment later she knocks %enemy back down to the ground and Chun-Li then stomps on %enemy $+ !
+
+[Shinryuken]
+Name=Shinryuken
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=performs a rising punch upon %enemy which then causes an explosion of fire to happen!
+
+[ShoryuReppa]
+Name=ShoryuReppa
+Cost=0
+Multiplier=4
+MeterNeeded=100
+Desc=spins towards %enemy and hits $gender2($2) with a much stronger rising punch and repeats this a few more times!
+
+[ShinkuHadouken]
+Name=ShinkuHadouken
+Cost=0
+Multiplier=4
+MeterNeeded=100
+AOE=true
+Desc=cups his hands to the side and gathers a large amount of energy. A moment later, he thrusts his hands forward and unleashes a giant ball of energy onto the battlefield!
+
+[ShinkuTatsumakiSenpukyaku]
+Name=ShinkuTatsumakiSenpukyaku
+Cost=0
+Multiplier=4
+MeterNeeded=100
+AOE=true
+Desc=hops shortly into the air and begins to perfom a spinning kick in place that draws in all enemies to get hit!
+
+[ShinShouryuken]
+Name=ShinShouryuken
+Cost=0
+Multiplier=5
+MeterNeeded=100
+Desc=performs a rising punch that hits %enemy three times and sends them flying even higher into the air!
+
+[ShinShunGokuSatsu]
+Name=ShinShungokuSatsu
+Cost=0
+Multiplier=999999
+MeterNeeded=100
+Desc=shouts out, "Prepare yourself! Die one thousand deaths!" as he quickly glides towards %enemy $+ , grabbing %enemy and unleashing a barrage of punches upon %enemy $+ !
+
+[TenshouKairekiJin]
+Name=TenshouKairekiJin
+Cost=0
+Multiplier=999999
+MeterNeeded=100
+Desc=launches %enemy into the air with a high roundhouse kick. %user shouts out, "Accept death! The other realm awaits." as a powerful Tatsumaki Zankuukyaku covers %user in a whirlwind. %user then homes in on %enemy $+ , slamming into them with the Tatsumaki Zankuukyaku, sending %enemy crashing into the ground below.
+
+[MeidouGouHadou]
+Name=MeidouGouHadou
+Cost=0
+Multiplier=999999
+MeterNeeded=100
+AOE=True
+Desc=gathers a massive amount of power and shouts out, "Ashes to ashes! The gates of hell await!" before thrusting his hand foward, hurling a huge wave of dark enemy upon the battlefield before following up with a second wave of energy!
+
+[TenchiSoukaigen]
+Name=TenchiSoukaigen
+Cost=0
+Multiplier=999999
+MeterNeeded=100
+Desc=raises his right hand, dark energy gathering in his hand and shouts out, "My power... moves worlds! Stare into the face of Death!" %user jumps into the air and then slams his fist onto %enemy $+ , launching %enemy into the air with a powerful spike of dark energy. %user then follows up with a GouShouryuken, slamming his fist into %enemy 's back.
+
+[DivineJudgement]
+Name=DivineJudgement
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=opens its shoulders to reveal many cannons. After a moment, a volley of Light energy is fired and slames into %enemy $+ !
+
+[MegaFlare]
+Name=MegaFlare
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=flies higher into the air and gathers power. A moment later, Bahamut fires a large blue energy sphere that slams into %enemy to cause an explosion!
+
+[TeraFlare]
+Name=TeraFlare
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=flies high into space and begins to gather power. A moment later, a hugh beam of energy is fired upon %enemy which causes a massive explosion!
+
+[SearingLight]
+Name=SearingLight
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=hops into the air and causes a bright light to cover the battlefield with enough power to cause searing pain upon %enemy $+ !
+
+[RunawayTrain]
+Name=RunawayTrain
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=summons a trail of lights that resembles train tracks. Doomtrain speeds through the trail and slams into %enemy $+ !
+
+[EclipseBite]
+Name=EclipseBite
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=bites %enemy a few times and hops back. A moment later, Fenrir howls and a large ball of Dark energy slams into %enemy $+ !
+
+[AerialBlast]
+Name=AerialBlast
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=rises higher into the air as a wall of wind surrounds the arena, raising her arms as lightning begins to flash. Garuda pauses for a moment before lowering her arms, causing a massive tornado to slam into %enemy $+ !
+
+[Hellfire]
+Name=Hellfire
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=roars loudly and creates a massive ball of fire to trap %enemy inside. Ifrit moves back and rips out a chunk of earth and hurls it towards %enemy $+ , causing the ball of fire to explode!
+
+[TidalWave]
+Name=TidalWave
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=summons a massive wall of water to surround the arena. The wall stays in place for a moment before it crashes down around %enemy $+ !
+
+[JudgementBolt]
+Name=JudgementBolt
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=holds the staff high into the air as lightning dances around the arena. This continues for a moment before a massive bolt of lightning slams into %enemy $+ !
+
+[DiamondDust]
+Name=DiamondDust
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=holds her arms above her head as the battlefield starts to rapidly cool down. A moment later she thrusts her arms forward and traps %enemy in a thick layer of ice. She then snaps her fingers, the layer of ice exploding and dealing damage to %enemy $+ !
+
+[AngerOfTheLand]
+Name=AngerOfTheLand
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=reaches down and rips a massive chunk of the arena and holds it high above. Titan takes aim for a moment before hurling the chunk of the arena towards %enemy $+ !
+
+[MegaWaterCannon]
+Name=MegaWaterCannon
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=takes aim at %enemy and blasts %enemy with a powerful burst of water!
+
+[BurstStreamII]
+Name=BurstStreamII
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=rears its head back as it gathers power. A moment later, a massive white beam shoots out of the dragon's mouth and into %enemy $+ !
+
+[BlackMagicAttackII]
+Name=BlackMagicAttackII
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=calls upon Dark Magician Girl and they both channel energy, creating a large sphere of dark energy above them. After gathering enough power, they hurl the large sphere towards %enemy $+ !
+
+[DragonSlash]
+Name=DragonSlash
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=leaps high into the air, pausing for a moment before dropping down and hitting %enemy with a powerful downward slash!
+
+[MegaFireFang]
+Name=MegaFireFang
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=charges forward and bites %enemy with pwerful flame-cloaked fangs!
+
+[BigScissorsII]
+Name=BigScissorsII
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=lunges at %enemy and snaps even harder with its pinchers.
+
+[JettaturaII]
+Name=JettaturaII
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=claws at %enemy before leaping back and charges right into %enemy at a high velocity!
+
+[MegaThunderbolt]
+Name=MegaThunderbolt
+Cost=0
+Multiplier=2
+MeterNeeded=100
+Desc=shouts out, "PIKA!" and causes a massive thunderbolt to crash down on upon %enemy $+ !
+
+[MegaDracoMeteor]
+Name=MegaDracoMeteor
+Cost=0
+Multiplier=2
+MeterNeeded=100
+AOE=True
+Desc=spins around the battlefield before floating up above. The sky darkens as a massive meteor slams down onto the battlefield to damage all enemies.

@@ -1,0 +1,40 @@
+[Info]
+Name=Zohar Cave
+Rooms=6
+PlayersNeeded=1
+PlayersRecommended=2
+Level=300
+FinalRoom=5
+StartBattleDesc=pulls out an unknown source of power, which suddenly covers the heroes in darkness. Once the darkness fades, they appear to be in a rather large cave that has a small amount of enemy Gears inside of it.
+ClearDungeonDesc=* The party has defeated the Omnigear and claimed a part used to make a powerful mech engine [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to clear the Zohar Cave and must retreat.
+
+[0]
+Desc=The party takes a moment at the entrance of the cave to prepare the mechs before advancing forward.
+Battlefield=Zohar Cave Entrance
+
+[1]
+Desc=The party presses forward into the cave with their mechs, the room expanding into a large carvern. Not long after entering the cavern, a group of three enemy Gears rushes towards the party!
+Battlefield=Zohar Cave Area 1
+Monsters=EagleArmorGear.EagleGunnerGear.EagleWingGear
+
+[2]
+Desc=They party takes a moment to prepare along with repairing and recharging their mechs before moving forward.
+Battlefield=Zohar Cave Area 1
+RestoreMech=True
+
+[3]
+Desc=The party moves forward after defeating the Gears. Eventually they reach another large area and can see three more Gears that are preventing progress forward.
+Battlefield=Zohar Cave Area 2
+Monsters=EdinGear.EtoneGear.GanadorGear
+
+[4]
+Desc=They party takes a moment to prepare along with repairing and recharging their mechs before moving forward.
+Battlefield=Zohar Cave Area 2
+RestoreMech=True
+
+[5]
+Desc=The party ends up in a large room that has a strange golden monolith in the back of the room. In front of the monolith, they can see a large black and grey Gear with black wings. This is the Omnigear called Alpha Weltall.
+Battlefield=Zohar Cave Area 3
+Monsters=Alpha_Weltall
+BossRoom=true

@@ -1,10 +1,10 @@
 [BaseStats]
 Hp=400
 Tp=100
-Str=$calc(90 + $current.battlestreak)
-Def=$calc(90 + $current.battlestreak)
-Int=$calc(90 + $current.battlestreak)
-Spd=$calc(90 + $current.battlestreak)
+Str=90
+Def=90
+Int=90
+Spd=90
 IgnitionGauge=2
 Name=Succubus
 
@@ -24,10 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
 Hused=1
@@ -35,10 +31,12 @@ Dused=1
 Char=is woman with long black hair, firey red eyes and is wearing little to leave to the imagination.  She winks at the heroes.
 Rage=screams in rage 
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+
 
 [Info]
 Flag=monster
@@ -49,12 +47,23 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=61
+Streak=69
 CanTaunt=true
+IgnorePresident=true
+IgnoreOutpost=true
+JustReleaseDefense=100
+BaseStats=ignoreTP
+ActionsPerTurn=1
+SkipDoubleTurns=true
+CanFlee=false
+MinTormentLevel=2
+
 
 [Monster]
 Type=Undead
 size=medium
+Elite=$iif($current.battlestreak <= 1000, false, true)
+
 
 [Status]
 Poison=no
@@ -89,32 +98,72 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=SuccubusPower
 SuccubusPower=$calc(1 + $current.battlestreak)
 
+
 [Skills]
-Resist-Paralysis=100
-Resist-Amnesia=10
-Resist-Zombie=100
+Zen=5
+ClearMind=3
+SwiftCast=$iif($current.battlestreak >= 1000, 0, 1)
+Impetus=$iif($current.battlestreak <= 1000, 5, 20)
+Wizardry=$iif($current.battlestreak <= 1000, 50, 100)
+Resist-Amnesia=20
+Resist-Blind=25
 Resist-Charm=100
-Resist-Stun=25
-Resist-Blind=100
-Resist-Weaponlock=100
-Resist-Intimidate=100
+Resist-Confuse=100
+Resist-Curse=25
 Resist-Disarm=100
 Resist-Drunk=100
-Resist-Sleep=100
+Resist-Intimidate=100
+Resist-Paralysis=25
+Resist-Petrify=25
+Resist-Poison=30
+Resist-Silence=25
+Resist-Sleep=30
+Resist-Slow=25
+Resist-Stop=25
+Resist-Stun=25
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
 
 
 [Techniques]
-Temptation=1
+Temptation=ResistTechs=$iif(%battle.type = torment, 0, 1)
 VampireBite=$calc(1 + $current.battlestreak)
-FireII=$calc(1 + $current.battlestreak)
+Fire=$iif($current.battlestreak isnum 0-99, $calc(1 + $current.battlestreak), 0)
+FireII=$iif($current.battlestreak isnum 100-199, $calc(1 + $current.battlestreak), 0)
+FireIII=$iif($current.battlestreak isnum 200-399, $calc(1 + $current.battlestreak), 0)
+Flare=$iif($current.battlestreak isnum 400-499, $calc(1 + $current.battlestreak), 0)
+FlareII=$iif($current.battlestreak isnum 500-599, $calc(1 + $current.battlestreak), 0)
+FlareIII=$iif($current.battlestreak !isnum 0-599, $calc(1 + $current.battlestreak), 0)
+Firaja=$iif($current.battlestreak isnum 0-299, $calc(1 + $current.battlestreak), 0)
+FirajaII=$iif($current.battlestreak isnum 300-599, $calc(1 + $current.battlestreak), 0)
+Fira=$iif($current.battlestreak !isnum 0-599, $calc(1 + $current.battlestreak), 0)
+Dark=$iif($current.battlestreak isnum 0-99, $calc(1 + $current.battlestreak), 0)
+DarkII=$iif($current.battlestreak isnum 100-199, $calc(1 + $current.battlestreak), 0)
+DarkIII=$iif($current.battlestreak isnum 200-399, $calc(1 + $current.battlestreak), 0)
+Darkness=$iif($current.battlestreak isnum 400-499, $calc(1 + $current.battlestreak), 0)
+DarknessII=$iif($current.battlestreak isnum 500-599, $calc(1 + $current.battlestreak), 0)
+DarknessIII=$iif($current.battlestreak !isnum 0-599, $calc(1 + $current.battlestreak), 0)
+Darkra=$iif($current.battlestreak isnum 0-299, $calc(1 + $current.battlestreak), 0)
+DarkraII=$iif($current.battlestreak isnum 300-599, $calc(1 + $current.battlestreak), 0)
+DarkraIII=$iif($current.battlestreak !isnum 0-599, $calc(1 + $current.battlestreak), 0)
 
 
 [Item_Amount]
 
+
+[Augments]
+SuccubusPower=HurtEthereal.MeleeBonus.TechBonus.MagicBonus
+
+
+[Styles]
+Equipped=SpellMaster
+Spellmaster=$iif($current.battlestreak <= 1000, 5, 10)
 
 
 [modifiers]
@@ -144,6 +193,14 @@ Dagger=110
 Mace=110
 Stave=110
 EnergyBlaster=120
+Lightsaber=100
+Hammer=100
+Bat=100
++Fire=30
++Ice=30
++Wind=80
++Water=80
++Dark=150
 HolyHandGrenade=0
 Crissaegrim=60
 Valmanway=60

@@ -1,21 +1,21 @@
 [BaseStats]
-Hp=10000
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (1000000 * $return_playersinbattle)) , 1000000)
 Tp=5000
-Str=15429
-Def=15429
-Int=15429
-Spd=15429
-IgnitionGauge=0
+Str=4220
+Def=2180
+Int=1500
+Spd=2500
+IgnitionGauge=100
 Name=Grahf
 
 [Battle]
-Hp=10000
+Hp=1000000
 Tp=5000
-Str=15429
-Def=15429
-Int=15429
-Spd=15429
-IgnitionGauge=0
+Str=4220
+Def=2180
+Int=1500
+Spd=2500
+IgnitionGauge=100
 Status=alive
 
 
@@ -46,26 +46,29 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Streak=10000
-IgnoreQuickSilver=True
-CanTaunt=False
-JustReleaseDefense=100
+Streak=-10000
 IgnoreElementalMessage=true
-CanFlee=false
+BattleStats=ignoreTP.ignoreHP
 IgnoreDrain=true
-IgnorePresident=true
-CanStagger=no
-BattleStats=ignoreTP
+CanFlee=false
 SkipDoubleTurns=true
-ActionsPerTurn=1
+
+; universal Cosmic battle flags
+CanTaunt=false
+WonderGuard=true
+CanStagger=no
+JustReleaseDefense=100
+IgnorePresident=true
+IgnoreQuicksilver=true
 IgnoreOutpost=true
 MaxTormentLevel=0
 IgnoreTorment=true
 
+
 [monster]
 type=human
 TechLearn=false
-size=large
+size=medium
 SuperElite=true
 
 
@@ -105,46 +108,71 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=GrahfFists
-GrahfFists=$calc(1 + $current.battlestreak)
+GrahfFists=$calc(500 + %cosmic.level)
 
 
 [Skills]
-MartialArts=100
-Zen=5
-ClearMind=3
 WeaponBash=1
-TrueStrike.on=on
 Resist-Amnesia=100
 Resist-Blind=100
 Resist-Charm=100
 Resist-Confuse=100
+Resist-Curse=100
 Resist-Disarm=100
 Resist-Drunk=100
 Resist-Intimidate=100
 Resist-Paralysis=100
 Resist-Petrify=100
 Resist-Poison=100
+Resist-Silence=100
 Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
 Resist-Stun=100
+Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
+Zen=5
+ClearMind=3
+MartialArts=100
 
 
 [Techniques]
-GrahfEnergyBlast=$calc(1 + $current.battlestreak)
-TornadoKick=$calc(1 + $current.battlestreak)
-ShinjinSpiral=$calc(1 + $current.battlestreak)
-FinalHeaven=$calc(1 + $current.battlestreak)
-AsuranFists=$calc(1 + $current.battlestreak)
+GrahfEnergyBlast=$calc(500 + %cosmic.level)
+TornadoKick=$calc(500 + %cosmic.level)
+ShinjinSpiral=$calc(500 + %cosmic.level)
+FinalHeaven=$calc(500 + %cosmic.level)
+AsuranFists=$calc(500 + %cosmic.level)
+
+
+[NaturalArmor]
+Name=
+Max=
+Current=
+
+
+[Ignitions]
 
 
 [Item_Amount]
 
 
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+
 [Augments]
-GrahfFists=MeleeBonus.TechBonus.IgnoreDefense.IgnoreGuardian.IgnoreMetalDefense.EnhanceZen
+GrahfFists=IgnoreMetalDefense.EnhanceZen.Drain.MeleeBonus.TechBonus.IgnoreDefense.EnhanceCriticalHits.EnhanceDodge
 
 
 [Mech]
@@ -152,43 +180,3 @@ GrahfFists=MeleeBonus.TechBonus.IgnoreDefense.IgnoreGuardian.IgnoreMetalDefense.
 
 [modifiers]
 Heal=none
-Earth=100
-Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=100
-Dark=0
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
-Axe=100
-Dagger=100
-Mace=100
-Stave=100
-EnergyBlaster=100
-Holy_Water=0
-Red_Fang=0
-Blue_Fang=0
-Thunder_Orb=0
-Fire_Flower=0
-Ice_Coin=0
-Wind_Vane=0
-BombFlower=0
-Dynamite=0
-BombFragment=0
-XmasGrenade=0
-HolyHandGrenade=0
-C4=0
-Flash_Grenade=0
-DarkMatter=0

@@ -1,29 +1,27 @@
 [BaseStats]
 Hp=9000
-Tp=1000
-Str=25
-Def=30
-Int=20
-Spd=20
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
 Name=Courier Carrie
+
 
 [Battle]
 Hp=9000
-Tp=1000
-Str=25
-Def=30
-Int=20
-Spd=20
+Tp=500
+Str=50
+Def=50
+Int=50
+Spd=50
+LimitBreakPercent=50
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
 
 
 [Descriptions]
@@ -32,10 +30,12 @@ Dused=1
 Char=is a large blue crab with a wicker basket on its back
 Rage=...
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+
 
 [Info]
 Flag=npc
@@ -47,9 +47,11 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 CanTaunt=false
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+IgnoreQuickSilver=true
+ActionsPerTurn=1
+BattleStats=IgnoreHP
 SkipDoubleTurns=true
+
 
 [Status]
 Poison=no
@@ -84,27 +86,45 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=Pinchers
 Pinchers=500
 
+
 [Skills]
 Zen=5
+ClearMind=3
 MartialArts=100
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+Wizardry=100
+WeaponBash=1
+Impetus=20
+DesperateBlows=1
+SwiftCast=1
+Duality=1
+DoubleCast=1
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
-DieHard=25
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
+
 
 [Techniques]
 BubbleShower=500
@@ -114,11 +134,17 @@ BigScissors=500
 [Item_Amount]
 
 
+[Augments]
+Pinchers=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
 
 [Styles]
 Equipped=Guardian
 Guardian=5
-GuardianXP=1
+
+
+[LimitBreaks]
+BigScissorsII=1
 
 
 [modifiers]
@@ -143,3 +169,16 @@ Scythe=90
 Glyph=90
 GreatSword=90
 Bow=90
+Axe=90
+Dagger=90
+Mace=90
+Stave=90
+EnergyBlaster=90
+Lightsaber=90
+Hammer=90
+Bat=90
++Fire=100
++Ice=110
++Wind=100
++Water=150
++Dark=100

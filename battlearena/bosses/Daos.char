@@ -24,10 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
 Hused=1
@@ -35,7 +31,7 @@ Dused=1
 Char=is a tall man dressed in regal attire that is red in color and wears a gold crown. He is the Sinistral of Terror and the leader of the other three Sinistrals.
 Rage=screams in rage 
 BossQuote=This shall be the end of everything!
-DeathMessage=shouts out, "This is not the end!" before summoning Gades and Amon, who combine together to create...
+
 
 [Stuff]
 RedOrbs=0
@@ -43,10 +39,12 @@ BlackOrbs=1
 ShopLevel=1.0
 Drops=
 
+
 [Monster]
-Type=
+Type=Sinistral
 size=medium
 Elite=True
+
 
 [Info]
 Flag=monster
@@ -58,11 +56,11 @@ LastSeen=N/a
 LastIP=N/a
 Created=N/a
 Streak=1000
-SpawnAfterDeath=GuardDaos
 CanTaunt=true
 IgnorePresident=True
 IgnoreElementalMessage=true
 MinTormentLevel=2
+
 
 [Status]
 Poison=no
@@ -97,18 +95,20 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=SinistralPower
 SinistralPower=$calc(1 + $current.battlestreak)
+
 
 [Skills]
 Zen=5
 ClearMind=3
 ElementalSeal=1
 MightyStrike=1
-MartialArts=50
-Wizardry=50
-Swordmaster=50
+MartialArts=1000
+Wizardry=1000
+Swordmaster=1000
 Resist-Intimidate=100
 Resist-Curse=100
 Resist-Charm=100
@@ -117,6 +117,7 @@ Resist-Stop=100
 Resist-Slow=100
 Resist-Stun=30
 Resist-Petrify=60
+
 
 [Techniques]
 RayGion=$calc(1 + $current.battlestreak)
@@ -136,7 +137,6 @@ ShinjinSpiral=$calc(1 + $current.battlestreak)
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
 
 
 [modifiers]

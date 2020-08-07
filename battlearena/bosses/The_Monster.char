@@ -57,16 +57,18 @@ DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
-BattleStats=ignoreTP
+BattleStats=$iif(%battle.type = portal, IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD, IgnoreTP)
 SkipDoubleTurns=true
 ActionsPerTurn=1
 
+
 [monster]
 type=human
-TechLearn=true
+TechLearn=false
 size=large
 Elite=$iif($current.battlestreak <= 5000, false, true)
 SuperElite=$iif($current.battlestreak >= 5000, false, true)
+
 
 [Status]
 Poison=no
@@ -101,6 +103,7 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=Monster'sFists
 Monster'sFists=$calc(1 + $current.battlestreak)
@@ -131,6 +134,7 @@ Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
 
+
 [Techniques]
 BlackHoleSlam=$calc(1 + $current.battlestreak)
 ChokeSlam=$calc(1 + $current.battlestreak)
@@ -142,8 +146,10 @@ ShockTreatment=$calc(1 + $current.battlestreak)
 
 [Item_Amount]
 
+
 [Augments]
 Monster'sFists=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
 
 [Styles]
 Equipped=Wrestlemania

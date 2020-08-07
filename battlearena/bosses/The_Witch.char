@@ -33,10 +33,12 @@ DeathMessage=This is not the end... We will be back... And we will make you all 
 Revive=laughs as she simply rises back up, the light around the battlefield begins to go dim as the laughter continues before she says, "We are not done yet... Allied Heroes... We are Chaos and Darkness made flesh!"
 ManaFont=$+ 's body begins to glow a with a dark and ancient energy. The battlefield seems to lose all light as %real.name feels as though $gender($1) spells will do more damage now and all allies of %real.name feel that their next techniques will consume no TP. %real.name then begins to laugh in a crazed manner!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+
 
 [Info]
 Flag=monster
@@ -47,7 +49,6 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-Guardian=The_Crazzy.The_Monster
 ai_type=techonly
 IgnoreQuicksilver=true
 IgnorePresident=true
@@ -55,13 +56,14 @@ Streak=2000
 IgnoreDrain=true
 CanFlee=false
 JustReleaseDefense=100
-DeathConditions=$iif(%battle.type = torment, Tech.Melee, Tech)
+DeathConditions=Tech.Magic
 IgnoreOutpost=true
 IgnoreElementalMessage=true
 MinTormentLevel=4
-BattleStats=ignoreTP
+BattleStats=$iif(%battle.type = portal, IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD, IgnoreTP)
 SkipDoubleTurns=true
 ActionsPerTurn=1
+
 
 [monster]
 type=human
@@ -69,6 +71,7 @@ TechLearn=false
 size=medium
 Elite=$iif($current.battlestreak <= 5000, false, true)
 SuperElite=$iif($current.battlestreak >= 5000, false, true)
+
 
 [Status]
 Poison=no
@@ -102,8 +105,8 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
-auto-regen=yes
 revive=no
+
 
 [Weapons]
 Equipped=Witch'sMagic
@@ -111,7 +114,6 @@ Witch'sMagic=$calc(1 + $current.battlestreak)
 
 
 [Skills]
-Regen=$iif($return_playersinbattle > 3, 5, 3)
 Zen=5
 WeaponBash=1
 Impetus=20
@@ -136,6 +138,7 @@ Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
 
+
 [Techniques]
 GreenAsianMist=$calc(1 + $current.battlestreak)
 RedAsianMist=$calc(1 + $current.battlestreak)
@@ -149,17 +152,21 @@ Meteor=$calc(1 + $current.battlestreak)
 
 [Item_Amount]
 
+
 [Augments]
 Witch'sMagic=HurtEthereal.MeleeBonus.TechBonus.RenkeiBonus.MagicBonus
+
 
 [Styles]
 Equipped=SpellMaster
 SpellMaster=10
 
+
 [NaturalArmor]
 Name=Chaotic Defense
 Max=$iif(%battle.type = torment, 1000000, 7000)
 Current=7000
+
 
 [Ignitions]
 ManaFont=1

@@ -20,15 +20,10 @@ Spd=$calc(60 + $current.battlestreak)
 IgnitionGauge=100
 Status=alive
 
+
 [Rage]
 RageBar=0
 RageCountDown=0
-
-
-[Limit]
-Level=1
-Percent=0
-
 
 
 [Descriptions]
@@ -37,7 +32,6 @@ Dused=1
 Char=is an ancient and powerful body guard. He wears an oversized round hat and a cloak that covers most of his body. Peeking out of the cloak is a very large katana.
 Rage=...
 Idle=stands with his arms crossed as he watches the battle. "If you want my help you will need to pay me."
-
 
 
 [Stuff]
@@ -63,8 +57,8 @@ Created=N/a
 IgnoreQuickSilver=true
 CanTaunt=false
 IgnoreElementalMessage=true
-ActionsPerTurn=$rand(1,2)
-BattleStats=IgnoreTP.IgnoreHP
+ActionsPerTurn=1
+BattleStats=IgnoreHP.IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD
 SkipDoubleTurns=true
 
 
@@ -109,20 +103,32 @@ Zanmato=$get_redorbs($1)
 
 [Skills]
 Swordmaster=$get_redorbs($1)
-Resist-Intimidate=100
-Resist-Stun=100
-Resist-Weaponlock=100
-Resist-Paralysis=100
-Resist-Blind=100
+Zen=5
+ClearMind=3
+WeaponBash=1
+Impetus=20
+perfectdefense.on=on
 Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
 Resist-Curse=100
-Resist-Zombie=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
 Resist-Slow=100
 Resist-Stop=100
-Resist-Charm=100
-Resist-Petrify=100
-Resist-Confuse=100
-DieHard=25
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+DieHard=30
+
 
 [Techniques]
 Daigoro=$iif($get_redorbs($1) > 100 && $get_redorbs($1) < 500, $round($calc(50 + (($current.battlestreak / 3) / 10.5)),0))
@@ -157,4 +163,3 @@ Scythe=10
 Glyph=10
 GreatSword=10
 Bow=10
-

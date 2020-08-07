@@ -1,0 +1,214 @@
+[BaseStats]
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (1000000 * $return_playersinbattle)) , 1000000)
+Tp=1500
+Str=1500
+Def=2100
+Int=4500
+Spd=2500
+IgnitionGauge=9999
+Name=Elven Spellcaster
+
+
+[Battle]
+Hp=1000000
+Tp=1500
+Str=1500
+Def=2100
+Int=4500
+Spd=2500
+IgnitionGauge=9999
+LimitBreakPercent=0
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is an Elven goddess who has tremendous magical might. She wears an oufit that alternates with red and black colors, a red tricorne hat with a white feather attached, and wields a powerful staff in hand.
+Rage=narrows her eyes as her blue and red aura flares wildly around herself as she starts to get angry.
+BossQuote=It's been awhile. Let's see how you fare against my magic!
+MagicMirror=chants in Elvish, creating a purple barrier which reflects magic.
+DoubleCast=grins as she looks at the players and says, "Let's see if you can handle more than one hit!"
+Guruthos=gains a red and blue aura and raises her staff to the air. After a moment, the aura spreads to the staff tip, creating a red and blue ball of energy. "Sorry, but looks like this is the end for you!" Elven Spellcaster says as she swings the staff, sending the ball hurtling towards %enemy which causes fatal damage upon contact!
+Medui=takes her staff in hand, raising it to the sky as she gains a red and blue aura. "Sorry, but this is the end!" Elven Spellcaster says as she slams the staff onto the ground, red and blue energy engulfing the entire arena.
+Meteor=chants in Elvish as she raises her staff high into the air. After a few moments, a large meteor falls from the heavens amd slams into the battlefield!
+
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=0
+ShopLevel=1.0
+
+
+[Info]
+Flag=monster
+Gender=her
+Gender2=her
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+AI_Type=techonly
+Streak=-10000
+IgnoreElementalMessage=true
+BattleStats=ignoreTP.ignoreHP
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
+
+; universal Cosmic battle flags
+CanTaunt=false
+WonderGuard=true
+CanStagger=no
+JustReleaseDefense=100
+IgnorePresident=true
+IgnoreQuicksilver=true
+IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
+
+
+[Monster]
+Type=Elf
+TechLearn=false
+size=medium
+SuperElite=True
+
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noOneThatIKnow
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+freezing=no
+curse=no
+poison.timer=1
+KiRegenerating=no
+boosted=no
+curse.timer=1
+slow.timer=1
+zombie.timer=1
+conservetp.on=off
+
+
+[Weapons]
+Equipped=Black_Goddess_Staff
+Black_Goddess_Staff=$calc(500 + %cosmic.level)
+
+
+[Skills]
+Zen=5
+ClearMind=3
+Wizardry=$calc(500 + %cosmic.level)
+MagicMirror=1
+SwiftCast=1
+DoubleCast=1
+Impetus=20
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+
+
+[Techniques]
+Guruthos=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) = 1, 1, 0)
+Medui=$iif(%battle.rage.darkness != $null && $readini($txtfile(battle2.txt), BattleInfo, Players) > 1, 1, 0)
+FiraII=$calc(500 + %cosmic.level)
+StoneraII=$calc(500 + %cosmic.level)
+WateraII=$calc(500 + %cosmic.level)
+AeraII=$calc(500 + %cosmic.level)
+BlizzaraII=$calc(500 + %cosmic.level)
+ThundaraII=$calc(500 + %cosmic.level)
+Geohelix=$calc(500 + %cosmic.level)
+Hydrohelix=$calc(500 + %cosmic.level)
+Anemohelix=$calc(500 + %cosmic.level)
+Pyrohelix=$calc(500 + %cosmic.level)
+Cryohelix=$calc(500 + %cosmic.level)
+Ionohelix=$calc(500 + %cosmic.level)
+Noctohelix=$calc(500 + %cosmic.level)
+Luminohelix=$calc(500 + %cosmic.level)
+Meteor=$calc(500 + %cosmic.level)
+
+
+[Augments]
+Black_Goddess_Staff=MagicBonus.IgnoreGuardian.IgnoreDefense.EnhanceCriticalHits.HurtEthereal
+
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+
+[Styles]
+Equipped=SpellMaster
+SpellMaster=10
+
+
+[NaturalArmor]
+Name=Goddess Shield
+Max=7500
+Current=7500
+
+
+[Item_Amount]
+
+
+[Ignitions]
+
+
+[LimitBreaks]
+Medui=1
+
+
+[modifiers]
+Heal=Light

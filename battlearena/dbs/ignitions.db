@@ -196,7 +196,7 @@ Cost=$iif($get.level($1) < 4500, 0, $iif($readini($char($1), Ignitions, UltraIns
 StatusTarget=Self
 StatusType=$iif($readini($char($1), Ignitions, UltraInstinct) = 10, Invincible, DefenseUp)
 Techs=
-Desc=lets go of conscious thought and suddenly surges with the ultimate power said to be impossible for moratls to achieve. %real.name $+ 's hair turns white and a rainborw aura flares around $gender($1) body. %real.name has unlocked the power of Ultra Instinct--at least for a short while.
+Desc=lets go of conscious thought and suddenly surges with the ultimate power said to be impossible for mortals to achieve. %real.name $+ 's hair turns white and a rainbow aura flares around $gender($1) body. %real.name has unlocked the power of Ultra Instinct--at least for a short while.
 
 ==========================
 NPC/Monster/Boss Ignitions
@@ -218,7 +218,7 @@ Desc=$+ 's body begins to morph and grow horns as %real.name screams.  After a f
 
 [ElvenGoddessMight]
 Name=ElvenGoddessMight
-Hp=1.5
+Hp=1
 Str=1.5
 Def=1.5
 Int=1.5
@@ -228,7 +228,7 @@ Effect=Status
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Techs=HyperTwinSlice
+Techs=
 Desc=channels the power of a previous goddess, gaining a mighty strength while also increasing melee and technique power. Additionally, the battlefield gains a white glow, causing all of %real.name $+ 's enemies to feel slower!
 StatusTarget=enemy
 StatusType=Slow
@@ -236,7 +236,7 @@ AdditionalCode=writeini $char($1) weapons equipped Silver_Goddess_Sword | writei
 
 [ElvenGoddessMagic]
 Name=ElvenGoddessMagic
-Hp=1.5
+Hp=1
 Str=1.5
 Def=1.5
 Int=1.5
@@ -254,17 +254,17 @@ AdditionalCode=writeini $char($1) weapons equipped Black_Goddess_Staff | writein
 
 [WiseReflection]
 Name=WiseReflection
-HP=1.2
-Str=1.2
-Def=1.2
-Int=1.2
-Spd=1.2
+HP=1
+Str=1.1
+Def=1.1
+Int=1.1
+Spd=1.1
 Augment=MeleeBonus.TechBonus.EnhanceSword.RenkeiBonus
 Effect=Status
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Techs=HyperTwinSlice
+Techs=
 Desc=narrows her eyes at everyone as a silver aura appears around herself. "Let's see how you shall fare against a fraction of my goddess power."
 StatusTarget=enemy
 StatusType=Slow
@@ -662,7 +662,7 @@ IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
 Techs=Red_DragonBurst
-Desc=gains a very serious expression and stares at the battlefield. %users then shouts out "You better run away while you can!" as a red aura explodes around %user $+ !
+Desc=gains a very serious expression and stares at the battlefield. %users then shouts out, "You better run away while you can!" as a red aura explodes around %user $+ !
 
 [TensaZangetsu]
 Name=TensaSangetsu
@@ -940,9 +940,9 @@ Augment=MeleeBonus.TechBonus.EnhanceZen
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Techs=ShinShunGokuSatsu.TenshouKairekiJin
+Techs=
 Desc=gains a red aura as %user $+ 's hair turns white and has his power greatly increased.
-AdditionalCode=writeini $char($1) ignitions OniGouki 0
+AdditionalCode=writeini $char($1) ignitions OniGouki 1 | writeini $char($1) ignitions ShinGouki 0
 
 [SmelterDemonFlame]
 Name=SmelterDemonFlame
@@ -989,9 +989,8 @@ Augment=MeleeBonus.TechBonus.EnhanceZen
 IgnitionTrigger=10
 IgnitionConsume=10
 Cost=0
-Techs=MeidouGouHadou.TenchiSoukaigen
+Techs=
 Desc=gains a red aura as %user $+ 's hair turns white and now resembles a blue oni, along with gaining vast power by becoming one with the Satsui no Hadou entirely.
-AdditionalCode=writeini $char($1) ignitions ShinGouki 0
 
 [ObitoSharingan]
 Name=ObitoSharingan
@@ -1043,24 +1042,6 @@ IgnitionConsume=0
 Cost=0
 Desc='s hair and skin goes pale and now wears a full-bodied black garment with black pants, gloves, and boots, over which he wears a flowing white robe. He also gains the Rinne Sharingan as a third eye, that has a ripple-like pattern which spreads over the eyeball, with red sclerae and irides, containing a pattern of nine tomoe.
 
-[ElementalSforzoII]
-Name=Elemental Sforzo
-hp=1.5
-Str=1.5
-def=1.5
-int=1.5
-spd=1.5
-Augment=TechBonus.MagicBonus.CuringBonus.RenkeiBonus
-Effect=Status
-IgnitionTrigger=10
-IgnitionConsume=10
-Cost=0
-Techs=
-Desc=$+ 's body and weapon is covered with a rainbow barrier for a moment before disappearing, giving %real.name elemental defense and offense!
-StatusTarget=self
-StatusType=Protect.Shell.Resist-Earth.Resist-Fire.Resist-Wind.Resist-Water.Resist-Ice.Resist-Lightning.Resist-Light.Resist-Dark
-AdditionalCode=writeini $char($1) status En-Spell Lightning
-
 [WinterKnightMantle]
 Name=Winter Knight Mantle
 hp=2
@@ -1083,7 +1064,7 @@ hp=2
 Str=2
 def=2
 int=2
-spd=3
+spd=5
 Augment=TechBonus.MeleeBonus.EnhanceZen.EnhanceDagger.EnhanceGun
 IgnitionTrigger=10
 IgnitionConsume=10
@@ -1224,3 +1205,17 @@ IgnitionConsume=50
 Cost=0
 Techs=
 Desc=vanishes from the battlefield.  After a moment the heroes hear "WILD AND PURE AND FOREVER FREE!" before they notice that Susano has become even larger.  The dome cracks and he towers over everything.  His blade is now the size of a skyscraper.  
+
+[BloodFury]
+Name=BloodFury
+Cost=0
+hp=1.5
+Str=2
+def=2
+int=2
+spd=2
+Augment=MeleeBonus.TechBonus.EnhanceSword.EnhanceRanged
+IgnitionTrigger=10
+IgnitionConsume=10
+Desc=yells out, giving into the blood rage as a red aura covers Rayne as the wristblades glow red and extend in length!
+AdditionalCode=writeini $char($1) techniques BloodStorm 1000
