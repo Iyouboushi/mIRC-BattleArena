@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -36,12 +31,14 @@ Rage=yells in rage!
 BossQuote=$iif(%battle.type = dungeon, Seems like I'm not the only one here. Let's work together and see what this island has hidden.)
 npcQuote=$iif(%battle.type = dungeon, Seems like I'm not the only one here. Let's work together and see what this island has hidden.)
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=her
@@ -58,10 +55,14 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
 type=human
 TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -104,6 +105,7 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=TacticalPistol
 TacticalPistol=500
@@ -135,6 +137,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=25
 
+
 [Techniques]
 RapidShotII=500
 ChargedshotII=500
@@ -152,20 +155,24 @@ ChargedShot=500
 BlastShot=500
 Detonator=500
 
+
 [Augments]
 TacticalPistol=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
 CompoundBow=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
 Thunderclap=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
 VanirRifle=MeleeBonus.TechBonus.MagicBonus.EnhanceRanged.HurtEthereal
 
+
 [Item_Amount]
 Bullet=500
 Arrow=100
 DragonfireShell=150
 
+
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
+
 
 [modifiers]
 Heal=none
@@ -202,3 +209,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

@@ -68,6 +68,7 @@ BattleStats=IgnoreTP.IgnoreHP
 type=Elf
 TechLearn=false
 size=Medium
+SuperElite=true
 
 
 [Status]
@@ -115,7 +116,7 @@ auto-regen=yes
 
 [Weapons]
 Equipped=BrightSilverManatrigger
-BrightSilverManatrigger=500
+BrightSilverManatrigger=750
 
 
 [Skills]
@@ -146,23 +147,23 @@ Resist-Stop=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
-dragon-killer=20
-undead-killer=20
-zombie-killer=20
-demon-killer=20
-orc-killer=20
-yagudo-killer=20
-quadav-killer=20
-goblin-killer=20
-treant-killer=20
-plant-killer=20
-android-killer=20
-crab-killer=20
-worm-killer=20
-bat-killer=20
-lizard-killer=20
-elemental-killer=20
-slime-killer=20
+dragon-killer=25
+undead-killer=25
+zombie-killer=25
+demon-killer=25
+orc-killer=25
+yagudo-killer=25
+quadav-killer=25
+goblin-killer=25
+treant-killer=25
+plant-killer=25
+android-killer=25
+crab-killer=25
+worm-killer=25
+bat-killer=25
+lizard-killer=25
+elemental-killer=25
+slime-killer=25
 DieHard=50
 
 
@@ -256,3 +257,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=150
+GunBlade=100
+Chakram=100
+ProtonPack=100

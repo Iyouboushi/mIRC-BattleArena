@@ -25,12 +25,6 @@ RageBar=0
 RageCountDown=0
 
 
-[Limit]
-Level=1
-Percent=0
-
-
-
 [Descriptions]
 Hused=1
 Dused=1
@@ -61,6 +55,14 @@ IgnoreElementalMessage=true
 CanUseItems=$iif(%ai.monster.name = Zemus, true)
 ActionsPerTurn=2
 BattleStats=IgnoreTP.IgnoreHP
+
+
+[monster]
+type=Android
+TechLearn=false
+size=Medium
+SuperElite=true
+
 
 [Status]
 Poison=no
@@ -104,17 +106,19 @@ slow.timer=1
 zombie.timer=1
 auto-regen=on
 
+
 [Weapons]
 Equipped=KosmosFists
-KosmosFists=500
+KosmosFists=750
 
 
 [Skills]
-MartialArts=100
-Wizardy=100
+MartialArts=250
+Gunslinger=250
+Wizardy=250
 Zen=5
 ClearMind=3
-Regen=20
+Regen=22
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -131,6 +135,7 @@ Resist-Weaponlock=100
 Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
+DieHard=90
 dragon-killer=25
 undead-killer=25
 zombie-killer=25
@@ -165,11 +170,14 @@ DexEtherRa=1000
 DexEtherFa=1000
 DexEtherLe=1000
 
+
 [Ignitions]
 Animus=$iif($current.battlestreak < 1000, 0, 1)
 
+
 [Item_Amount]
 Dark-Matter=$iif(%ai.monster.name = Zemus, 10, 0)
+
 
 [Augments]
 KosmosFists=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge.EnhanceParry.HurtEthereal
@@ -240,3 +248,6 @@ Bat=80
 +Wind=80
 +Water=80
 +Dark=80
+GunBlade=80
+Chakram=80
+ProtonPack=0

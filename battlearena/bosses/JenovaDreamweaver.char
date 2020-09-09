@@ -1,0 +1,284 @@
+[BaseStats]
+Hp=$iif($return_playersinbattle > 2, $calc(1000000 + (1000000 * $return_playersinbattle)) , 1000000)
+Tp=1500
+Str=4000
+Def=4000
+Int=4000
+Spd=4000
+IgnitionGauge=100
+Name=Jenova Dreamweaver
+
+
+[Battle]
+Hp=1000000
+Tp=1500
+Str=4000
+Def=4000
+Int=4000
+Spd=4000
+IgnitionGauge=100
+Status=alive
+
+
+[Rage]
+RageBar=0
+RageCountDown=0
+
+
+[Descriptions]
+Char=is an illusion of Jenova, a grotesque creature with a skeletal head and two large tentacles attached to the body. It stares at the party and roars in rage!
+Rage=...
+BossQuote=....
+DoublePunch=teleports itself close to %enemy and hits %enemy with both tentacles before teleporting back!
+VampireBite=reaches out towards and grabs %enemy with one of the tentacles attached to the main body, binding %enemy in place for a few second to drain some health before flinging %enemy away!
+AquaBall=unleashes a wave of deadly water bubbles upon the arena!
+FireTempest=unleashes a powerful blast of wind and flame energy upon %enemy $+ !
+LaserStorm=raise both tentacles and unleashes blue lasers upon the arena!
+LaserDefense=takes aim at %enemy with the right tentacle and fires a blue laser towards %enemy $+ !
+RollingBlaze=creates a circle of fire around itself and quickly hurls a ball of flame towards %enemy $+ !
+FinalHeaven=takes aim at %enemy with the left tentacle and fires a stronger black laser towards %enemy $+ !
+SkywardStrike=creates a sword made of powerful energy and slashes %enemy a few times with it!
+DeathMessage=roars a final time, expelling smoke that covers the arena and as it fades, everyone can see that robed man falls to the ground, a torn section of robe shows the number "49" on the upper left arm. The body then quickly fades away, leaving nothing behind.
+MonsterSummon=Jenova Dreamweaver roars in rage and summons two additonal tentacles which appear from under the floor.
+
+
+[Stuff]
+RedOrbs=0
+BlackOrbs=1
+ShopLevel=1.0
+
+
+[Info]
+Flag=monster
+Gender=its
+Gender2=its
+password=battlearena
+passhurt=0
+LastSeen=N/a
+LastIP=N/a
+Created=N/a
+Streak=-10000
+IgnoreElementalMessage=true
+BattleStats=ignoreTP.ignoreHP
+CanFlee=false
+SkipDoubleTurns=true
+ActionsPerTurn=1
+
+; universal Cosmic battle flags
+CanTaunt=false
+WonderGuard=true
+CanStagger=no
+JustReleaseDefense=100
+IgnorePresident=true
+IgnoreQuicksilver=true
+IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
+
+
+[monster]
+type=Alien
+TechLearn=false
+size=Large
+SuperElite=True
+
+
+[Status]
+Poison=no
+HeavyPoison=no
+Regenerating=no
+Blind=no
+Frozen=no
+Shock=no
+Burning=no
+Drowning=no
+Earth-quake=no
+Heavy-Poison=no
+silence=no
+intimidated=no
+weight=no
+poison-heavy=no
+virus=no
+virus.timer=1
+charmed=no
+charmer=noonethatIknowlol
+charm.timer=1
+amnesia=no
+paralysis=no
+amnesia.timer=1
+paralysis.timer=1
+tornado=no
+drunk=no
+drunk.timer=1
+zombie=no
+slow=no
+sleep=no
+stun=no
+MPRegenerating=no
+
+
+[Weapons]
+Equipped=JenovaPower
+JenovaPower=$calc(500 + %cosmic.level)
+
+
+[Skills]
+Zen=5
+ClearMind=3
+Wizardry=$calc(500 + %cosmic.level)
+MartialArts=$calc(500 + %cosmic.level)
+MagicMirror=1
+Impetus=20
+MonsterSummon=1
+MonsterSummon.Monster=JenovaTentacle
+MonsterSummon.Chance=45
+monstersummon.numberspawn=2
+Resist-Amnesia=100
+Resist-Blind=100
+Resist-Charm=100
+Resist-Confuse=100
+Resist-Curse=100
+Resist-Disarm=100
+Resist-Drunk=100
+Resist-Intimidate=100
+Resist-Paralysis=100
+Resist-Petrify=100
+Resist-Poison=100
+Resist-Silence=100
+Resist-Sleep=100
+Resist-Slow=100
+Resist-Stop=100
+Resist-Stun=100
+Resist-Terrified=100
+Resist-Weaponlock=100
+Resist-Zombie=100
+
+
+[Techniques]
+DoublePunch=$calc(1 + %cosmic.level)
+VampireBite=$calc(1 + %cosmic.level)
+AquaBall=$calc(1 + %cosmic.level)
+FireTempest=$calc(1 + %cosmic.level)
+LaserStorm=$calc(1 + %cosmic.level)
+LaserDefense=$calc(1 + %cosmic.level)
+RollingBlaze=$calc(1 + %cosmic.level)
+FinalHeaven=$calc(1 + %cosmic.level)
+SkywardStrike=$calc(1 + %cosmic.level)
+
+
+[Augments]
+JenovaPower=MagicBonus.IgnoreGuardian.IgnoreDefense.EnhanceCriticalHits.HurtEthereal.TechBonus.RenkeiBonus
+
+
+[Equipment]
+Head=
+Body=
+Hands=
+Legs=
+Feet=
+Accessory=
+
+
+[Styles]
+Equipped=WeaponMaster
+WeaponMaster=10
+
+
+[NaturalArmor]
+Name=
+Max=
+Current=
+
+
+[Ignitions]
+
+
+[Item_Amount]
+
+
+[modifiers]
+Heal=none
+
+
+[Rotations]
+Current=0
+1=Tech
+2=Tech
+3=Skill
+4=Tech
+5=Tech
+6=Free
+7=Tech
+8=Skill
+9=Tech
+10=Tech
+11=Free
+12=Tech
+13=Skill
+14=Tech
+15=Tech
+16=Tech
+17=Tech
+18=Skill
+19=Tech
+20=Tech
+21=Free
+22=Tech
+23=Skill
+24=Tech
+25=Tech
+26=Tech
+27=Tech
+28=Skill
+29=Tech
+30=Tech
+31=Tech
+32=Tech
+33=Skill
+34=Tech
+35=Free
+36=Tech
+37=Tech
+38=Skill
+39=Tech
+40=Tech
+41=Tech
+42=Tech
+43=Skill
+44=Tech
+45=Tech
+46=Free
+47=Tech
+48=Skill
+49=Tech
+50=Tech
+51=Tech
+52=Tech
+53=Skill
+54=Tech
+55=Tech
+56=Tech
+57=Tech
+58=Skill
+59=Tech
+60=Tech
+61=Tech
+62=Tech
+63=Skill
+64=Tech
+65=Tech
+66=Free
+67=Tech
+68=Skill
+69=Tech
+70=Tech
+71=Tech
+72=Tech
+73=Skill
+74=Tech
+75=Tech
+76=Free
+77=Tech
+78=Skill
+79=Tech
+80=Free

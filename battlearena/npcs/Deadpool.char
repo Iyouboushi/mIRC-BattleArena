@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -42,6 +37,7 @@ ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
 
+
 [Info]
 Gender=his
 Gender2=him
@@ -52,19 +48,23 @@ LastIP=N/a
 Created=Fri Jun 22 19:56:53 2012
 Flag=NPC
 IgnoreDrain=true
-CANTAUNT=true
+CanTaunt=true
 TauntFile=taunts_deadpool.txt
-HealByTaunt=true/false
+HealByTaunt=true
 IgnoreElementalMessage=true
 CanFlee=false
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
 type=human
 TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -108,9 +108,11 @@ slow.timer=1
 zombie.timer=1
 auto-regen=on
 
+
 [Weapons]
 Equipped=DeadpoolKatanas
 DeadpoolKatanas=500
+
 
 [Skills]
 Zen=5
@@ -136,6 +138,7 @@ Resist-Disarm=100
 DieHard=100
 Regen=30
 
+
 [Techniques]
 FastBlade=500
 FlatBlade=500
@@ -144,8 +147,10 @@ VorpalBlade=500
 PineappleSurprise=500
 HaveGunWillShoot=500
 
+
 [Augments]
 DeadpoolKatanas=MeleeBonus.TechBonus.EnhanceDodge.EnhanceParry.HurtEthereal
+
 
 [Equipment]
 Head=
@@ -155,9 +160,11 @@ Legs=
 Feet=
 Accessory=
 
+
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
+
 
 [Item_Amount]
 
@@ -197,3 +204,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

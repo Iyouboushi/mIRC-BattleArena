@@ -24,11 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -59,10 +54,14 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
 type=frog
 TechLearn=false
 size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -104,6 +103,7 @@ KiRegenerating=no
 curse.timer=1
 slow.timer=1
 zombie.timer=1
+
 
 [Weapons]
 Equipped=MasamuneII
@@ -152,6 +152,7 @@ CureIV=750
 
 [Item_Amount]
 
+
 [Equipment]
 Head=
 Body=
@@ -159,6 +160,7 @@ Hands=
 Legs=
 Feet=
 Accessory=Hero's_Medal
+
 
 [Styles]
 Equipped=WeaponMaster
@@ -200,3 +202,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

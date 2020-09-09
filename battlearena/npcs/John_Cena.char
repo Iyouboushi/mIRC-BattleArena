@@ -23,11 +23,6 @@ RageBar=0
 RageCountDown=0
 
 
-[Limit]
-Level=1
-Percent=0
-
-
 [Descriptions]
 Hused=1
 Dused=1
@@ -60,6 +55,15 @@ CanUseItems=$iif(%ai.monster.name = Zemus, true)
 ActionsPerTurn=2
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 0-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 0-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -102,9 +106,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=CenaFists
 CenaFists=500
+
 
 [Skills]
 MartialArts=100
@@ -128,18 +134,23 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=99
 
+
 [Techniques]
 CenaShoulderTackle=500
+
 
 [Augments]
 CenaFists=MeleeBonus.TechBonus.EnhanceDodge.EnhanceParry
 
+
 [Item_Amount]
 Dark-Matter=$iif(%ai.monster.name = Zemus, 99, 0)
+
 
 [Styles]
 Equipped=Wrestlemania
 Wrestlemania=15
+
 
 [Equipment]
 Head=
@@ -148,6 +159,7 @@ Hands=
 Legs=
 Feet=
 Accessory=Spinner_Belt
+
 
 [modifiers]
 Heal=none
@@ -184,3 +196,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

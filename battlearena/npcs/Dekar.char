@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -40,12 +35,14 @@ ArticFreeze=takes out a whip and covers it with ice magic. He then performs a ba
 HolyEnergy=takes out a staff and performs a backhand swing, summoning a wave of light energy to cover the battlefield!
 PhoenixBlow=takes out a staff, leaping into the air and slams the staff onto the ground, causing a massive explosion of fire!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -60,6 +57,15 @@ CanTaunt=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -101,6 +107,7 @@ KiRegenerating=no
 curse.timer=1
 slow.timer=1
 zombie.timer=1
+
 
 [Weapons]
 Equipped=DekarBlade
@@ -192,3 +199,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

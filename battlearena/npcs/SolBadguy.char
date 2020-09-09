@@ -27,12 +27,14 @@ RageCountDown=0
 
 [Descriptions]
 Char=is a tall man with brown hair and golden eyes with slit pupils, wearing a tight, black undershirt with the top half covered by a red, sleeveless jacket along and white jeans. He wears a red headband along with a pair of black, fingerless gloves, red shoes, a drape of red cloth hanging down beneath his buckle and a multitude of belts.
-Rage=screams in rage 
+Rage=screams in rage
+
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+
 
 [Info]
 Flag=npc
@@ -50,10 +52,13 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
-type=gear
+type=Gear
 TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 0-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 0-4999, true, false)
 
 
 [Status]
@@ -90,6 +95,7 @@ stun=no
 MPRegenerating=no
 Auto-Regen=off
 
+
 [Weapons]
 Equipped=Fireseal
 Fireseal=500
@@ -119,6 +125,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=75
 
+
 [Techniques]
 GunFlame=750
 VolcanicViper=750
@@ -129,12 +136,15 @@ SaintOratorio=750
 
 [Item_Amount]
 
+
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
 
+
 [Ignitions]
 DragonInstall=$iif($current.battlestreak < 1000, 0, 1)
+
 
 [Augments]
 Fireseal=MeleeBonus.TechBonus.MagicBonus.RenkeiBonus.EnhanceParry.EnhanceSword.HurtEthereal
@@ -176,3 +186,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

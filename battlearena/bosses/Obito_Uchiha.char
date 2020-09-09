@@ -37,7 +37,7 @@ ChangeBattlefield=activates the Kamui ability and warps everyone to a different 
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=
+
 
 [Info]
 Flag=monster
@@ -58,11 +58,13 @@ ai_type=techonly
 IgnorePresident=true
 IgnoreElementalMessage=true
 
+
 [monster]
 type=human
-TechLearn=true
+TechLearn=false
 size=medium
 Elite=True
+
 
 [Status]
 Poison=no
@@ -98,6 +100,7 @@ stun=no
 MPRegenerating=no
 PerfectDefense.on=off
 
+
 [Weapons]
 Equipped=UchihaPower
 UchihaPower=$current.battlestreak
@@ -126,14 +129,16 @@ Resist-Sleep=100
 Resist-Disarm=100
 Resist-Petrify=60
 Resist-Stun=30
-ChangeBattlefield=0
+ChangeBattlefield=1
 ChangeBattlefield.battlefields=Land of Lightning.Kamui's Dimension
-ChangeBattlefield.chance=60
+ChangeBattlefield.chance=80
+
 
 [Techniques]
 Katon:HousenkaNoJutsu=$iif($readini($char(Obito_Uchiha), status, ignition.on) = off, $current.battlestreak, 0)
 Katon:BakufuuRanbu=$iif($readini($char(Obito_Uchiha), status, ignition.on) = on, $current.battlestreak, 0)
 Katon:GoukakyuuNoJutsu=$current.battlestreak
+
 
 [Item_Amount]
 
@@ -141,9 +146,8 @@ Katon:GoukakyuuNoJutsu=$current.battlestreak
 [Augments]
 UchihaPower=MeleeBonus.TechBonus.IgnoreGuardian.HurtEthereal.IgnoreMetalDefense
 
+
 [modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
-; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
 Heal=none
 Earth=90
 Fire=50
@@ -170,6 +174,17 @@ Dagger=90
 Mace=90
 Stave=90
 EnergyBlaster=90
+Lightsaber=90
+Hammer=90
+Bat=90
+GunBlade=90
+Chakram=90
+ProtonPack=0
++Fire=90
++Ice=90
++Wind=90
++Water=90
++Dark=90
 HolyHandGrenade=0
 Crissaegrim=45
 Valmanway=45
@@ -220,10 +235,11 @@ UltimaII=45
 KaustraII=45
 Chivalry=45
 
+
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
-WeaponMasterXP=1
+
 
 [Ignitions]
 ObitoSharingan=$iif(%battle.type = ai, 1, $iif($calc(($readini($char(Obito_Uchiha), battle, hp) / $readini($char(Obito_Uchiha), basestats, hp)) * 100) <= 85, 1, 0))

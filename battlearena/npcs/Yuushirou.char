@@ -24,11 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -61,6 +56,15 @@ CanTaunt=false
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Ghost
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -104,9 +108,11 @@ slow.timer=1
 zombie.timer=1
 conservetp.on=off
 
+
 [Weapons]
 Equipped=ShihouinFists
 ShihouinFists=500
+
 
 [Skills]
 mightystrike=1
@@ -142,6 +148,7 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 DieHard=30
+
 
 [Techniques]
 DoublePunch=500
@@ -204,3 +211,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=0

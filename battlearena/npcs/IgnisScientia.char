@@ -56,9 +56,11 @@ SkipDoubleTurns=true
 
 
 [monster]
-type=human
+type=Human
 TechLearn=false
-size=medium
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
 
 
 [Status]
@@ -141,6 +143,7 @@ Blade:Retsu=500
 Blade:Jin-500
 Blade:Metsu=500
 
+
 [Augments]
 Spelldaggers=MeleeBonus.TechBonus.EnhanceDagger.HurtEthereal
 
@@ -210,3 +213,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

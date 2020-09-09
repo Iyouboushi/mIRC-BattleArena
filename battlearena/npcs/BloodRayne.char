@@ -62,6 +62,8 @@ SkipDoubleTurns=true
 type=Undead
 TechLearn=false
 size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
 
 
 [Status]
@@ -232,3 +234,6 @@ Bat=100
 +Wind=100
 +Water=120
 +Dark=80
+GunBlade=100
+Chakram=100
+ProtonPack=100

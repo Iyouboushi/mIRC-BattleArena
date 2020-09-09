@@ -33,12 +33,14 @@ Char=is a tall woman with short black hair, and wears a black, leather-like outf
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 mech=summons a large black and gold mech with twin gatling guns on its hands and a large crescent moon on the back.
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=her
@@ -58,10 +60,13 @@ ActionsPerTurn=$iif($readini($char(Bayonetta), status, ignition.on) = on, 2, $ra
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
 type=Human
 TechLearn=false
 size=Medium
+SuperElite=true
+
 
 [Status]
 Poison=no
@@ -104,6 +109,7 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=LoveIsBlue
 LoveIsBlue=500
@@ -112,6 +118,7 @@ Chernobog=500
 ScarboroughFair=500
 Shuraba=500
 Kulshedra=500
+
 
 [Skills]
 Whipster=100
@@ -140,6 +147,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=30
 
+
 [Techniques]
 BulletClimax=750
 HeelSlide=750
@@ -160,7 +168,9 @@ WheelofTorture=750
 WitchTime=$iif($current.battlestreak < 1000, 0, 1)
 UmbranClimax=$iif($current.battlestreak < 1000, 0, 1)
 
+
 [Item_Amount]
+
 
 [Equipment]
 Head=BayonettaGlasses
@@ -169,19 +179,20 @@ Hands=BayonettaGloves
 Legs=BayonettaLeggings
 Feet=BayonettaHeels
 
+
 [Augments]
 LoveIsBlue=MeleeBonus.TechBonus.MagicBonus.EnhanceParry.EnhanceRanged.HurtEthereal
 Kafka=TechBonus.IgnoreMetalDefense.AdditionalHit.MeleeBonus.EnhanceRanged.HurtEthereal
 Chernobog=IgnoreGuardian.IgnoreDefense.EnhanceScythe.MeleeBonus.TecBonus.HurtEthereal
 ScarboroughFair=MeleeBonus.TechBonus.MagicBonus.EnhanceParry.EnhanceRange.HurtEthereal
-Kulshedra=MeleeBonus.EnhanceWhip.EnhanceDodge.TechBonus.HurtEthereal
+Kulshedra=MeleeBonus.EnhanceWhip.TechBonus.HurtEthereal
 Shuraba=Drain.RenkeiBonus.EnhanceKatana.MeleeBonus.TechBonus.HurtEthereal
 UmbranArmorGuns=EnhanceRanged.IgnoreDefense.IgnoreMetalDefense.IgnoreGuardian
-BayonettaGlasses=MeleeBonus.TechBonus.MagicBonus
-BayonettaOutfit=MeleeBonus.TechBonus.MagicBonus
-BayonettaGloves=MeleeBonus.TechBonus.MagicBonus
-BayonettaLeggings=MeleeBonus.TechBonus.MagicBonus
-BayonettaHeels=MeleeBonus.TechBonus.MagicBonus
+BayonettaGlasses=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge
+BayonettaOutfit=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge
+BayonettaGloves=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge
+BayonettaLeggings=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge
+BayonettaHeels=MeleeBonus.TechBonus.MagicBonus.EnhanceDodge
 
 
 [Styles]
@@ -200,6 +211,7 @@ EnergyCurrent=20000
 EquippedCore=UmbranMechCore
 EquippedWeapon=UmbranArmorGuns
 Augments=DecreaseMechEnergyCost.EnhanceDodge.MeleeBonus.TechBonus.MagicBonus.HurtEthereal
+
 
 [LimitBreaks]
 QueenSheba=1
@@ -241,3 +253,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

@@ -24,11 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -36,12 +31,14 @@ Dused=1
 Char=is a tall Twili and the Twilight Princess, the ruler of the Twili race. She wields the powerful Mirror of Twilight in battle, and can summon a dark green fist to attack her foes.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=her
@@ -61,10 +58,14 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [montser]
 type=Twili
 TechLearn=False
 size=Medium
+Elite=$iif($current.battlestreak isnum 0-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 0-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -107,9 +108,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=MirrorOfTwilight
 MirrorOfTwilight=500
+
 
 [Skills]
 Zen=5
@@ -199,3 +202,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=300
+GunBlade=100
+Chakram=100
+ProtonPack=100

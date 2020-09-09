@@ -25,12 +25,6 @@ RageBar=0
 RageCountDown=0
 
 
-[Limit]
-Level=1
-Percent=0
-
-
-
 [Descriptions]
 Hused=1
 Dused=1
@@ -59,6 +53,15 @@ CanTaunt=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -102,6 +105,7 @@ slow.timer=1
 zombie.timer=1
 conservetp.on=off
 
+
 [Weapons]
 Equipped=Spharai
 Spharai=500
@@ -128,12 +132,14 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=50
 
+
 [Techniques]
 FinalHeaven=500
 ShoulderTackle=500
 AsuranFists=1000
 SpinningAttack=500
 OneInchPunch=500
+
 
 [Styles]
 Equipped=CounterStance
@@ -193,3 +199,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

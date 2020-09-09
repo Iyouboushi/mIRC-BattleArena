@@ -24,11 +24,6 @@ IgnitionGauge=150
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -37,12 +32,14 @@ Char=is the powerful fusion of Goku and Vejita with the Potara earrings. He wear
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 SSJ1=begins to scream as his energy flares around his body. The ground shakes, rocks defy gravity before exploding into dust. Vejitto's energy swirls all around, forming a cone in the shape of his body which then turns into his aura. The aura is flashing very brightly and violently at the moment. Vejitto's body overloads as energy flares out like wild fire and his hair turns gold and his eyes green.
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -63,10 +60,13 @@ BattleStats=IgnoreTP.IgnoreHP
 ActionsPerTurn=$rand(1,3)
 SkipDoubleTurns=true
 
+
 [monster]
-type=saiyajin
+type=Saiyajin
 TechLearn=false
 size=medium
+SuperElite=true
+
 
 [Status]
 Poison=no
@@ -110,9 +110,11 @@ slow.timer=1
 zombie.timer=1
 ignition.on=off
 
+
 [Weapons]
 Equipped=VejittoKi
 VejittoKi=500
+
 
 [Skills]
 Zen=5
@@ -137,6 +139,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=45
 
+
 [Techniques]
 Ki_no_Tsurugi=$iif($readini($char(Vejitto), status, ignition.on) = off, 750, 0)
 Big_Bang_Flash=750
@@ -146,8 +149,10 @@ Final_Kamehameha=$iif($readini($char(Vejitto), status, ignition.on) = on, 750, 0
 Spirit_Excalibur=$iif($readini($char(Vejitto), status, ignition.on) = on, 750, 0)
 Final_Flash=$iif($readini($char(Vejitto), status, ignition.on) = on, 750, 0)
 
+
 [Augments]
 VejittoKi=TechBonus.MeleeBonus.RenkeiBonus.HurtEthereal
+
 
 [Equipment]
 Head=
@@ -157,6 +162,7 @@ Legs=
 Feet=
 Accessory=
 
+
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
@@ -165,6 +171,7 @@ WeaponMaster=10
 [Ignitions]
 SSJ1=1
 SSJBlue=1
+
 
 [Item_Amount]
 
@@ -217,3 +224,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

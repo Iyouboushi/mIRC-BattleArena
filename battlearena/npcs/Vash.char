@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -34,12 +29,14 @@ Dused=1
 Char=a tall man with bright blonde hair that spikes up.  He's wearing yellow-tinted sunglasses and a bright red coat.  His gun, Peacemaker, is in his right hand while a donut is in his left hand.  "Can't we settle this with some donuts?"
 Rage=laughs out loud and runs around screaming!
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -55,6 +52,15 @@ trust=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Plant
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -97,9 +103,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=Peacemaker
 Peacemaker=500
+
 
 [Skills]
 Gunslinger=100
@@ -124,15 +132,18 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=75
 
+
 [Techniques]
 ChargedShot=750
 RapidShot=750
+
 
 [Ignitions]
 
 
 [augments]
 Peacemaker=HurtEthereal
+
 
 [equipment]
 accessory=Prism-Specs
@@ -141,6 +152,7 @@ Head=
 Legs=
 Hands=
 Feet=
+
 
 [Styles]
 Equipped=WeaponMaster
@@ -182,3 +194,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

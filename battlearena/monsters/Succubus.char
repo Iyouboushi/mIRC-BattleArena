@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=400
-Tp=100
+Tp=1000
 Str=90
 Def=90
 Int=90
@@ -11,7 +11,7 @@ Name=Succubus
 
 [Battle]
 Hp=400
-Tp=100
+Tp=1000
 Str=90
 Def=90
 Int=90
@@ -62,7 +62,8 @@ MinTormentLevel=2
 [Monster]
 Type=Undead
 size=medium
-Elite=$iif($current.battlestreak <= 1000, false, true)
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
 
 
 [Status]
@@ -132,7 +133,7 @@ Resist-Zombie=100
 
 
 [Techniques]
-Temptation=ResistTechs=$iif(%battle.type = torment, 0, 1)
+Temptation=$iif(%battle.type = torment, 0, 1)
 VampireBite=$calc(1 + $current.battlestreak)
 Fire=$iif($current.battlestreak isnum 0-99, $calc(1 + $current.battlestreak), 0)
 FireII=$iif($current.battlestreak isnum 100-199, $calc(1 + $current.battlestreak), 0)

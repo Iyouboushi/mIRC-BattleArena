@@ -70,7 +70,7 @@ MonsterWpns3=GoblinWand.Quetzalcoatl.CuteRabbitTeeth.RyukotsukiPower.Decapiclops
 
 MonsterWpns4=Agartha.ArteasBow.ScarboroughFair.BusterSword.DekarBlade.RuneOakStaff.AdamantAxe.VampireKiller.HoleyGloves.ValkyrieSword.BlazefireSaber.MariaPower.DualBlade.RyudoSword.SelanSwordStaff.GunbladeRevolver.VorlikBlade.BelnadesWand.AirWhip.AmonTrident.GadesBlade.ErimBlade.ErimPower.EvilChainsaw.TurkeyPower.PoisonFists.MedusaPower.HybridElementalPower.BatFangs.BalrogPower.DemonicWeapon.DhamelSaliva.LizardPower.TreantPower.StarmanGun.GnoleClaws.HippiePeace.UnicornHorn.BirdBeak.YovraPower.PinkChainsaw.BrainWeapon.CupidBow.LevithanHeart.TimeBomb.BeetleJaw.OrbPower.Sif'sSword.DragonFang.Glance_Reviver.Sylvan_Bow.AikawaFists.DextroCustros.SinestroCustros.AntlionJaw.Sahagin_Fin.Yagudo_Kunai
 
-MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.LargeCutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.OrcAxe.DollParts.NeoTitanFists.TitanMaximumFists.NeoLeviathanPower.KrangAndroidFists.ShredderClaws.FootSoldierFists.EmeraldWeaponPower
+MonsterWpns5=FencingDegen.ShinryuClaws.GarlandSword.MummyPower.DiremiteLegs.IroncladSword.FomorPower.OrcishLongBow.OrcishLongSword.XalmoFists.AnniGift.Vanquero.Yasoma_Kagura.Excaliju.Virendra.DwarvenRuneBlade.DwarvenShortbow.Mimic.GoukiGloves.ZKi.Peacemaker.LargeCutlass.Orc_Sword.EvilBuzzSaw.WereFists.Heavenly_Scythe.HolyMace.GeryonPower.EchidnaPower.MalboroVine.SilverSwords.MegaBusterMk1.MegaBusterMk2.MegaBusterMk3.WallofFleshMouth.ArmosSword.QuadavSword.DemonWall.DekuScrub.MoldormBody.LanmolaMouth.MazaalPower.SteamEngine.Aquila.Thunderseal.SmelterDemonSword.UchihaPower.CenaFists.ZemusPower.SpiceCane.OrcAxe.DollParts.NeoTitanFists.TitanMaximumFists.NeoLeviathanPower.KrangAndroidFists.ShredderClaws.FootSoldierFists.EmeraldWeaponPower.MasamuneFF7.OWAPower.JenovaPower.JotaroFists.DioFists.TheWorldFists.WoFWheels.HornetStinger
 
 MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.SkeletronArm.DestroyerMouth.MechanicalProbeBody.PlanteraBulb.LihzahrdGolemEyes.LihzahrdGolemFists.FishronFins.BlastoiseCannons.CharizardFangs.PikachuPaws.MarioFists.KanonjiStaff.KosmosFists.LoveIsBlue.Kafka.Chernobog.Shuraba.Kulshedra.Zanmato.PacPower.GoddessBlade.LeprechaunPower.DoomSickle.MasamuneII.Socom.PSG1.GatoFists.GrahfFists.AlphaWeltallFists.GibdoBlade.RedeadBlade.GremlinAttack.MirrorOfTwilight.ShunShunRika.FreyaFists.Fireseal.JunkYardDogMkIII.FlyBite.PredatorSuit.SnakeFangs.HarpyClaws.MummyWrap.Kan-ra.NerfBat.TurtlePower.GargoyleArms.Doomed.Excalipoor.DiamondWeaponPower
 
@@ -3380,7 +3380,7 @@ BasePower=10
 Cost=0
 Type=HandtoHand
 Info=The power of a succubus!  You wish you could have it.
-Abilities=VampireBite.Temptation.FireII
+Abilities=VampireBite.Temptation.Fire.FireII.FireIII.Flare.FlareII.FlareIII.Firaja.FirajaII.Fira.Dark.DarkII.DarkIII.Darkness.DarknessII.DarknessIII.Darkra.DarkraII.DarkraIII
 Element=Dark
 Hits=2
 BasePower=10
@@ -7407,6 +7407,112 @@ IgnoreDefense=5
 HurtEthereal=True
 2Handed=True
 Legendary=True
+
+[MasamuneFF7]
+Cost=0
+Type=Katana
+Info=The katana that can only be used by Sephiroth.
+Abilities=AbyssBlast.CircleBlade.FastBlade.VorpalBlade.FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Meteor
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+IgnoreDefense=5
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[OWAPower]
+Cost=0
+Type=HandtoHand
+Info=The power of the One Winged Angel.
+Abilities=SuperNova.ShadowFlare.HeartlessAngel.Acerbatus
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+IgnoreDefense=5
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[JenovaPower]
+Cost=0
+Type=HandtoHand
+Info=The power of the calamity from the skies, Jenova.
+Abilities=Ultima.CureIII.DoublePunch.VampireBite.AquaBall.FireTempest.LaserStorm.LaserDefense.RubyRay.WaterBlade.RollingBlaze.FinalHeaven.RubyFlame.SkywardStrike
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+IgnoreDefense=5
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[JotaroFists]
+Cost=0
+Type=HandtoHand
+Info=The fists of Jotaro Kujo.
+Abilities=DoublePunch.ShoulderTackle.SpinningAttack.TornadoKick.ShinjinSpiral.TheWorld.OraOraOra
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[DioFists]
+Cost=0
+Type=HandtoHand
+Info=The fists of Dio Brando.
+Abilities=DoublePunch.ShoulderTackle.SpinningAttack.TornadoKick.ShinjinSpiral
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[TheWorldFists]
+Cost=0
+Type=HandtoHand
+Info=The fists that belong to the stand, [The World].
+Abilities=DoublePunch.SpinningAttack.ShinjinSpiral.TheWorld.MudaMudaMuda
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[WoFWheels]
+Cost=0
+Type=HandtoHand
+Info=The wheels that belong to the Stand, [Wheel of Fortune].
+Abilities=DoublePunch.ShoulderTackle.SpinningAttack.OneInchPunch.ChargedShot
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+HurtEthereal=True
+2Handed=True
+Legendary=True
+
+[HornetStinger]
+Cost=0
+Type=HandtoHand
+Info=The stinger of a hornet!
+Abilities=SharpSting.FrenzySting.WaspSting
+Element=None
+Hits=1
+BasePower=100
+Upgrade=0
+HurtEthereal=True
+2Handed=True
 
 ==============================
 SHIELDS

@@ -650,3 +650,10 @@ Multiplier=2
 MeterNeeded=100
 AOE=True
 Desc=spins around the battlefield before floating up above. The sky darkens as a massive meteor slams down onto the battlefield to damage all enemies.
+
+[ZaWarudo]
+Name=ZaWarudo
+Cost=0
+Multiplier=1
+MeterNeeded=100
+Desc=gains a golden flame aura and shouts out, "ZA WARUDO!" A burst of negative light expands from The World and covers the arena for a moment before the light contracts back, leaving everyone and everything frozen in time. Dio hurls several knives towards %enemy that stop just a bit before. Dio then lifts a steamroller and jumps towards %enemy with it, hitting it several times before hopping away as time resumes, the steamroller exploding upon %enemy as the knives strike as well!

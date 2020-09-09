@@ -24,11 +24,6 @@ IgnitionGauge=150
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -44,6 +39,7 @@ BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=4385
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -61,6 +57,14 @@ trust=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Demon
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 0-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 0-4999, true, false)
 
 
 [Status]
@@ -134,6 +138,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=30
 
+
 [Techniques]
 Stinger=750
 MillionStab=750
@@ -193,3 +198,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

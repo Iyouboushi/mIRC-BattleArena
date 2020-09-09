@@ -24,18 +24,14 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
 Dused=1
 Char=is an old Shinigami who is the Captain of the 1st Division and the Captain Commander of the Gotei 13. The oldest and strongest Shinigami who also carries the powerful Ryuujin Jakka zanpakutou.
-Rage=opens his eyes and gives a very stern stare at the battlefield..
+Rage=opens his eyes and gives a very stern stare at the battlefield.
 PerfectDefense=releases Ryuujin Jakka for a moment and covers himself with a wall of deadly fire to block all attacks.
+
 
 [Stuff]
 RedOrbs=0
@@ -43,6 +39,7 @@ BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -57,6 +54,14 @@ CanTaunt=false
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Ghost
+TechLearn=false
+size=Medium
+SuperElite=true
+
 
 [Status]
 Poison=no
@@ -99,6 +104,7 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=RyuujinJakka
 RyuujinJakka=1000
@@ -131,6 +137,7 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 DieHard=50
+
 
 [Techniques]
 AsuranFists=1000
@@ -193,3 +200,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=0

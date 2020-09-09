@@ -24,11 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -37,12 +32,14 @@ Char=is a legendary Dwarf with incredible power and a long white beard. While he
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 DeathMessage=looks at the heroes with sadness in his eyes. "I'm sorry I failed you, Jimmy!" he says as he collapses onto the ground, dead.  
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -60,6 +57,14 @@ RageMode=ignore
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Dwarf
+TechLearn=false
+size=Medium
+SuperElite=true
+
 
 [Status]
 Poison=no
@@ -102,10 +107,12 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=Excaliju
 Excaliju=500
 Virendra=500
+
 
 [Skills]
 Swordmaster=100
@@ -153,7 +160,7 @@ Virendra=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
 
 
 [Ignitions]
-ExcalijuProc=$iif($current.battlestreak < 500, 0, 1)
+ExcalijuProc=$iif($current.battlestreak < 1000, 0, 1)
 
 
 [modifiers]
@@ -191,3 +198,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

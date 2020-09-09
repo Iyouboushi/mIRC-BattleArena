@@ -304,7 +304,7 @@ Calcabrina=TerrifyingGlance.Knockout.Dollhouse
 Benihime=SwiftBlade
 MarioFists=Jump.FireFlower.StarPower
 PeoplesFist=RockBottom.PeoplesElbow.SamoanDrop.FlyingClothesline.Spinebuster
-SuccubusPower=VampireBite.Temptation.FireII
+SuccubusPower=VampireBite.Temptation.Fire.FireII.FireIII.Flare.FlareII.FlareIII.Firaja.FirajaII.Fira.Dark.DarkII.DarkIII.Darkness.DarknessII.DarknessIII.Darkra.DarkraII.DarkraIII
 DragonShouts=FusRoDah.YolToorShul.FoKrahDiin.StrunBahQo
 CyberFists=WristLaser.CyberParalyze.BrainControl
 Gunstick=DalekParalyze.DalekExterminate.DalekLaser
@@ -669,6 +669,14 @@ EmeraldWeaponPower=EmeraldStomp.EmeraldStompII.EmeraldShoot.EmeraldShootII.Emera
 UltimateWeaponPower=ShadowFlare.Quake.Ultima_II.UltimaBeam.UltimaClaw.Thunderball
 DiamondWeaponPower=DiamondStomp.DiamondFire.DiamondFlash
 AirbusterHands=StunBeam.BigBomber.Tankbuster.EnergyBall.BodyBlow.HandGrab.ABFlame
+MasamuneFF7=AbyssBlast.CircleBlade.FastBlade.VorpalBlade.FirajaII.StonejaII.WaterjaII.AerojaII.BlizzajaII.ThundajaII.Meteor
+OWAPower=SuperNova.ShadowFlare.HeartlessAngel.Acerbatus
+JenovaPower=Ultima.CureIII.DoublePunch.VampireBite.AquaBall.FireTempest.LaserStorm.LaserDefense.RubyRay.WaterBlade.RollingBlaze.FinalHeaven.RubyFlame.SkywardStrike
+JotaroFists=DoublePunch.ShoulderTackle.SpinningAttack.TornadoKick.ShinjinSpiral.TheWorld.OraOraOra
+DioFists=DoublePunch.ShoulderTackle.SpinningAttack.TornadoKick.ShinjinSpiral
+TheWorldFists=DoublePunch.SpinningAttack.ShinjinSpiral.TheWorld.MudaMudaMuda
+WoFWheels=DoublePunch.ShoulderTackle.SpinningAttack.OneInchPunch.ChargedShot
+HornetStinger=SharpSting.FrenzySting.WaspSting
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -22616,3 +22624,39 @@ Magic=No
 HurtEthereal=True
 stat=str
 
+[TheWorld]
+Type=AOE
+Cost=0
+Desc=floats up in front of Dio, as they both gain a golden flame aura. Dio laughs as he points to the battlefield and shouts out, "Za Warudo!" A burst of negative light expands from The World and covers the arena for a moment before the light contracts back, leaving everyone and everything frozen in time, except for Dio and his Stand.
+TP=10
+Element=None
+Hits=1
+BasePower=1
+Magic=No
+StatusType=Stop
+HurtEthereal=True
+stat=int
+
+[MudaMudaMuda]
+Type=Single
+Cost=0
+Desc=rushes towards %enemy and unleashes a barrage of attacks while shouting out, "Muda Muda Muda!" multiple times for the entire attack!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str
+
+[OraOraOra]
+Type=Single
+Cost=0
+Desc=rushes towards %enemy and unleashes a barrage of attacks while shouting out, "Ora Ora Ora!" multiple times for the entire attack!
+TP=10
+Element=None
+Hits=1
+BasePower=100
+Magic=No
+HurtEthereal=true
+stat=str

@@ -1,6 +1,6 @@
 [BaseStats]
 Hp=110
-Tp=60
+Tp=1000
 Str=12
 Def=25
 Int=25
@@ -11,7 +11,7 @@ Name=Astarte
 
 [Battle]
 Hp=110
-Tp=60
+Tp=1000
 Str=12
 Def=25
 Int=25
@@ -23,10 +23,6 @@ Status=alive
 [Rage]
 RageBar=0
 RageCountDown=0
-
-[Limit]
-Level=1
-Percent=0
 
 
 [Descriptions]
@@ -41,11 +37,15 @@ BossQuote=No one can defy my will!
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
-Drops=
+
 
 [Monster]
 Type=human
+TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Info]
 Flag=monster
@@ -59,6 +59,15 @@ Created=N/a
 Streak=50
 CanTaunt=true
 IgnoreElementalMessage=true
+IgnorePresident=true
+IgnoreOutpost=true
+JustReleaseDefense=100
+BaseStats=ignoreTP
+ActionsPerTurn=1
+SkipDoubleTurns=true
+CanFlee=false
+MinTormentLevel=2
+
 
 [Status]
 Poison=no
@@ -97,6 +106,7 @@ protect.timer=0
 shell=yes
 shell.timer=0
 
+
 [Weapons]
 Equipped=Egyptian_Rod
 Egyptian_Rod=$calc(1 + $current.battlestreak)
@@ -114,10 +124,11 @@ Resist-Petrify=60
 
 
 [Techniques]
-Temptation=1
+Temptation=$iif(%battle.type = torment, 0, 1)
 DeltaSpark=$calc(1 + $current.battlestreak)
 TypoonRod=$calc(1 + $current.battlestreak)
 ScarfStab=$calc(1 + $current.battlestreak)
+
 
 [Item_Amount]
 

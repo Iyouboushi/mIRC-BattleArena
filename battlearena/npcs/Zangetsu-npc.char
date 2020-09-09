@@ -27,7 +27,7 @@ RageCountDown=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a powerful demon hunter who hails from a country in the East. He uses a dual katana fighting style along with Japanese "ofuda" incantations to destroy his demonic foes. He glances at the enemies and says, "Me? I'm your executioner."
+Char=is a powerful demon hunter who hails from a country in the East. He uses a dual fighting style, which is using a katana along with Japanese "ofuda" incantations to destroy his demonic foes. He glares at the enemies and says, "Me? I'm your executioner."
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
 
@@ -58,6 +58,8 @@ SkipDoubleTurns=true
 type=human
 TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 0-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 0-4999, true, false)
 
 
 [Status]
@@ -160,6 +162,7 @@ Accessory=
 Equipped=WeaponMaster
 WeaponMaster=10
 
+
 [LimitBreaks]
 ZangetsuLimit=1
 
@@ -211,3 +214,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

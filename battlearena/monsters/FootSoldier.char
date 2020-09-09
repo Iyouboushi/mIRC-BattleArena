@@ -58,6 +58,8 @@ SkipDoubleTurns=true
 type=android
 TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
 
 
 [Status]
@@ -194,7 +196,7 @@ Bat=100
 +Dark=100
 
 
-[Rotation]
+[Rotations]
 Current=0
 1=Attack
 2=Tech
@@ -204,3 +206,5 @@ Current=0
 6=Tech
 7=Item
 8=Attack
+9=Attack
+10=Item

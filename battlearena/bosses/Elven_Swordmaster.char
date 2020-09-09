@@ -34,6 +34,7 @@ Duality=narrows her eyes as she focuses for the next attack.
 ShieldFocus=holds her shield in front to brace for the next attack.
 Guruthos=gains a green and blue aura as Elven Swordmaster takes her sword in hand. Elven Swordmaster rushes towards %enemy $+ , delivering a fatal blow to %enemy $+ ! "Nice try, but this is the end for you."
 Medui=takes her sword in hand, raising it to the sky as she gains a green and blue aura. "This is the end for you all," Elven Swordmaster says as she stabs the sword into the ground, green and blue energy engulfing the entire arena.
+DeathMessage=looks at the players and says, "Very well, you may move forward."
 
 
 [Stuff]

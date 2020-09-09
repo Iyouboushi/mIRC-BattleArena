@@ -1,74 +1,99 @@
 [BaseStats]
 Hp=100
-Tp=20
-Str=5
-Def=5
-Int=5
-Spd=5
+Tp=50
+Str=10
+Def=10
+Int=10
+Spd=10
 IgnitionGauge=0
 Name=
 
 
 [Battle]
 Hp=100
-Tp=20
+Tp=50
 Str=10
 Def=10
 Int=10
 Spd=10
 IgnitionGauge=0
+LimitBreakPercent=0
 Status=alive
 
 
 [Rage]
 RageBar=0
 RageCountDown=0
+; The above is currently not in use and may or may not be added in the future.
 
 
 [Descriptions]
 Char=set a character desc here that appears when the monster is summoned.
 Rage=screams in rage 
-BossQuote=enter a quote that the boss says when he enters the battle.
+; The rage desc is related to [Rage], which is currently not added. The other files that have them are just flavor text and is not used.
+BossQuote=enter a quote that the boss says when they enter the battle.
+;
+; DeathMessage=
+; This line is used when you defeat the character. It works similar to the boss quote on how it is displayed.
+;
+; Revive=
+; This is used when the character comes back to life if not defeated with the proper death condition.
+;
+; Custom technique and skill descriptions are also placed here. The player can only set custom skills via the command.
+; Only boss/monster/npc/summon files can have custom techs as they are only set manually. The name has to match the EXACT tech name that the file has.
+; Can be useful if you don't want to add overlapping or redundant techs. Not recommended to use if the tech has prescript or postscript flags.
+; Example: DoublePunch=custom description here
 
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+RedOrbsSpent=0
+BlackOrbsSpent=0
+; The above only applies to player characters, unless you know what you are doing when using the $iff command and such.
 Drops=Potion
+; You either set this in the file itself or in the drops.db file as "filename=item here" (example: new_boss=potion). Potion is set here by default and will override the
+; drops.db file.
+
 
 [Info]
 Flag=monster
 Gender=his
 Gender2=him
-password=battlearena
-passhurt=0
-LastSeen=N/a
-LastIP=N/a
-Created=N/a
-;=======================================
+;========================================
+; password=battlearena
+; passhurt=0
+; LastSeen=N/a
+; LastIP=N/a
+; Created=N/a
+; This block is only used for player characters.
+;========================================
+;========================================
 ; These are optional flags you can set:
 ;========================================
 ; STAGGER:  do you want the monster to be able to be staggered after being hurt for a certain # of damage? 
 ; CanStagger=yes/no  
 ; StaggerAmount=$rand(#,#)   
 ; 
-; IGNORE RAGEMODE
-; RageMode=ignore 
+; IGNORE RAGEMODE will make the boss/monster/npc/summon ignore the darkness stat increase once darkness is triggered in battle. (example: RageMode=ignore)
+; RageMode=
 ;
-; IGNORE QUICKSILVER
-; IgnoreQuicksilver=true/false 
+; IGNORE QUICKSILVER will ignore the time-stop effect of the Quicksilver command. True = ignore quicksilver, false = cannot ignore quicksilver
+; IgnoreQuicksilver=
 ;
 ; AI TYPE: berserkers will attack their own allies, defenders won't get a turn. healers only heal, 
 ; counteronly will counter melee/take 0 damage from everything else, and techonly only uses techs. Leave blank for normal.
+; Valid types: berserker, defender, techonly, healer, counteronly, tauntonly
 ; ai_type=
 ;
 ; STREAK MIN/MAX: Streak= for the minimum streak it takes for the monster to show up. StreakMax= for max.
+; If you set the streak as -10000, the boss/monster won't show up in random battles and only the special battle types instead.
 ; Streak=
 ; StreakMax=
 ;
-; FLEEING: Do you want monsters to be able to flee the battle?
-; CanFlee=true/false
+; FLEEING: Do you want monsters to be able to flee the battle? true = can flee, false = cannot flee
+; CanFlee=
 ;
 ; SPAWNING ANOTHER MONSTER UPON DEATH: If set, when this monster is killed, it'll summon another one that's set.
 ; SpawnAfterDeath=nameofmonster
@@ -90,8 +115,8 @@ Created=N/a
 ; Valid list is: Morning, Noon, Evening and Night.
 ; TimeOfDay=
 ;
-; Can the monster taunt?   Assumed to be true if blank.
-; CANTAUNT=true/false
+; Can the monster taunt?   Assumed to be true if blank, false means cannot taunt.
+; CanTaunt=
 ;
 ; TauntFile is an optional taunt file if you want your boss to have unique taunts.  If blank it will use the default taunts.txt
 ; TauntFile=
@@ -102,42 +127,64 @@ Created=N/a
 ; JUSTRELEASEDEFENSE is to block "Just Release" the # is a percent of the damage blocked. 0 = no block, 100 = 100% blocked
 ; JustReleaseDefense=
 ;
-; HURTBYTAUNT is a special flag. If set to true, taunts done against this boss will deal damage.
-; HurtByTaunt=true/false
+; HURTBYTAUNT is a special true/false flag. If set to true, taunts done against this boss will deal damage.
+; HurtByTaunt=
 ;
-; HEALBYTAUNT is a special flag. If set to true, taunts done against this boss will heal damage. 
-; HealByTaunt=true/false
+; HEALBYTAUNT is a special true/false flag. If set to true, taunts done against this boss will heal damage. 
+; HealByTaunt=
 ;
 ; Does the monster appear in President battles? True=yes/False=no
 ; IgnorePresident=
 ;
-; IMMUNETOMAGIC= is to determine if a boss is completely immune to magic or not. True/false.
-; ImmuneToMagic=true/false
+; Does the monster appear in Outpost battles? True=yes/False=no
+; IgnoreOutpost=
 ;
-; DEATHCONDITIONS= if you want the boss to only only if a certain action is performed, you can set it here. Not set by default.
+; IMMUNETOMAGIC is to determine if a boss is completely immune to magic or not. Can be set to true or false.
+; ImmuneToMagic=
+;
+; DEATHCONDITIONS are if you want the boss/monster/npc/summon to be KO'd only if a certain action is performed, you can set it here. Not set by default.
 ; Valid conditions are: melee, magic, tech, item, renkei, status, magiceffect
 ; You can list multiple by putting a period inbetween such as: melee.magic.status 
-; If the boss is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+; If the boss/monster/npc/summon is killed by something that isn't the death condition, it'll be revived until killed with the condition.
+; DeathConditions=
 ;
-; If set to true this flag allows the elemental damage message to not be shown on the monster's turn. Can be set to true or false. It's false by default if this flag is missing.
+; If set to true this flag allows the elemental damage message to not be shown on the monster's turn. Can be set to true or false. It's false by default if this flag is
+; missing.
 ; IgnoreElementalMessage=
 ;
-; If the monster can use certain items or not in battle.
+; If the monster can use certain items or not in battle. Don't forget to set the item and amount under [Item_Amount] as well.
 ; CanUseItems=
 ;
 ; These are special flags that can allow the monster to ignore the bot formula for auto-increasing HP or TP to set custom amounts. There is only HP or TP at the moment. You can
-; either use BattleStats=IgnoreHP.IgnoreTP, or **IgnoreHP=True/**IgnoreTP=True. Can be useful on IgnoreTP if the monster uses a lot of player techs.
+; either use BattleStats=IgnoreHP.IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD, or IgnoreHP=True, etc. Can be useful to have IgnoreTP=1000 or so if the monster uses a lot
+; of player techs.
 ; BattleStats=
 ;
-; This can be set to determine which minimum torment level for monsters to show up in. Note, the level you set for this needs to match the TormentOrb number, not the actual level.
-; Example: *MinTormentLevel=4 would mean monsters can show up at torment level 2000, but not lower.
+; This can be set to determine which minimum torment level for monsters to show up in. Note, the level you set for this needs to match the TormentOrb number, not the actual
+; level.
+; Example: MinTormentLevel=4 would mean monsters can show up at torment level 2000, but not lower.
 ; MinTormentLevel=
 ;
 ; The same as above, except the max torment level a monster can show up in.
 ; MaxTormentLevel=
+;
+; The ignore torment flag can be used to make a boss/monster not show up in torment battles. True/False conditions.
+; IgnoreTorment=
+;
+; Actions per turn ensures that the boss/monster/npc/summon only does a certain amount of actions per turn. Monster summon will always be used regardless of the amount of
+; actions per turn that is set.
+; ActionsPerTurn=1
+;
+; Skip double turns simply means that the boss/monster/npc/summon doesn't get an extra bonus turn. Can be set to true or false.
+; SkipDoubleTurns=
+;
+; Wonder Guard is a flag, which if set to true, will IGNORE any weapon name and type/tech/element which ISN'T listed in the [Modifiers] section.
+; Take care if you use this flag, especially in combination with the Tech Learn flag in the [Monster] section.
+; WonderGuard=true/false
+;
 
 
-[monster]
+[Monster]
 ; Type is the type of monster it is.
 type=
 
@@ -145,7 +192,7 @@ type=
 ; Change it to "true" to turn it on.
 TechLearn=false
 
-; Size is the size of the monster. Small/Medium/Large
+; Size is the size of the monster. Small/Medium/Large/Giant
 size=
 
 ; Elite is for monsters being elite, which gives them better stats and defense.
@@ -153,6 +200,10 @@ Elite=
 
 ; Super Elite adds even more to stats when set. You should use only one, or the other, not both as they do stack to give even more stats/defense.
 SuperElite=
+
+; The Ghost flag is only needed if you want to have a ghost boss/monster/npc/summon take full damage from the Proton Pack weapon. True/False
+; Ghost=
+
 
 [Status]
 Poison=no
@@ -187,18 +238,30 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=monsterweaponname
 monsterweaponname=1
+; You can also manually set "EquippedLeft=" here if you want the non-player character to have a second weapon or a shield.
+; EquippedLeft=
 
 
 [Skills]
 
 
 [Techniques]
-TechName=1
+; TechName=1
+; Just an example of how you would set a tech.
 
 [Augments]
+; You can set augments here. See the augments.lst file for vaild augments.
+; You can also set augments for the armor (not accessories) if the file has them or a mech weapon as well.
+; Weaponname=
+; HeadEquipName=
+; BodyEquipName=
+; HandsEquipName=
+; LegsEquipName=
+; FeetEquipName=
 
 
 [Equipment]
@@ -208,59 +271,76 @@ Hands=
 Legs=
 Feet=
 Accessory=
+Accessory2=
+; Not exactly needed for bosses/monsters/npcs/summons, but you can manually set these. Either from the built in db file or custom ones added to the db file.
+
 
 [Styles]
+
 
 [NaturalArmor]
 Name=
 Max=
 Current=
 
+
 [Ignitions]
 
 
 [Item_Amount]
+; If you set the CanUseItems flag under [Info], then you can set the item amount here. (example: Potion=1)
 
 
-[modifiers]
-; This section controls how much resistance/weakness this monster has the elements and weapon types.
+[LimitBreaks]
+
+
+[Modifiers]
+; This section controls how much resistance/weakness this monster has the elements and weapon types. The modifiers listed here are only for elements
+; and weapons/techs from the shop. Anything else (such as mech weapons and techs) will have to be added manually.
+; Heal= means whatever is set here will HEAL the character if said weapon/tech/element is used against the character.
 ; 100 = it does 100% normal damage. Over 100 = weakness, under 100 = resistance. 0 = immune.
+; The +Dark, +Fire, +Ice, +Water, and +Wind modifiers are for the spells themselves, as the normal elemental modifiers covers all of the techs
+; and spells which has the element.
+; In addition, you can also set ResistMelee= and ResistTechs= as a general cover for everything.
+; 100 = 100% resisted, 0 = full damage
 Heal=none
+Axe=100
+Bat=100
+Bow=100
+Chakram=100
+Dagger=100
+EnergyBlaster=100
+Glyph=100
+GreatAxe=100
+GreatSword=100
+Gun=100
+Gunblade=100
+Hammer=100
+HandToHand=100
+Katana=100
+LaserSword=100
+Mace=100
+ParticleAccelerator=100
+Rifle=100
+Scythe=100
+Spear=100
+Stave=100
+Sword=100
+Wand=100
+Whip=100
+Dark=100
++Dark=100
 Earth=100
 Fire=100
-Wind=100
-Water=100
-Ice=100
-Lightning=100
-Light=100
-Dark=100
-HandToHand=100
-Whip=100
-Sword=100
-Gun=100
-Rifle=100
-Katana=100
-Wand=100
-Spear=100
-Scythe=100
-Glyph=100
-GreatSword=100
-Bow=100
-Axe=100
-Dagger=100
-Mace=100
-Stave=100
-EnergyBlaster=100
-Lightsaber=100
-Hammer=100
-Bat=100
 +Fire=100
+Ice=100
 +Ice=100
-+Wind=100
+Light=100
+Lightning=100
+Water=100
 +Water=100
-+Dark=100
-
-
+Wind=100
++Wind=100
 
 
 ;=====================================================================
@@ -279,7 +359,7 @@ Bat=100
 ; mech = activate a mech
 ;
 ;======================================================================
-;[Rotation]
+;[Rotations]
 ;Current=0
 ;1=
 ;2=
@@ -294,7 +374,7 @@ Bat=100
 ; etc
 ;
 ; Example:
-; [Rotation]
+; [Rotations]
 ; Current=0
 ; 1=Free
 ; 2=Tech

@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -34,12 +29,14 @@ Dused=1
 Char=is a man with brown hair that wears a blue shirt and white pants. A powerful member of the Belmont family that wields the Vampire Killer whip.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -54,6 +51,15 @@ CanTaunt=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -96,9 +102,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=VampireKiller
 VampireKiller=500
+
 
 [Skills]
 Zen=5
@@ -122,6 +130,7 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 DieHard=25
+
 
 [Techniques]
 Thousand_Knives=500
@@ -181,3 +190,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

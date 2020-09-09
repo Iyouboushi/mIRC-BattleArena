@@ -52,10 +52,14 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
 type=human
 TechLearn=false
 size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -93,11 +97,15 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=DoomSickle
-DoomSickle=500
+DoomSickle=750
 
 
 [Skills]
 Zen=5
+ClearMind=3
+Wizardry=100
+Harvester=100
+SwiftCast=1
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -115,6 +123,7 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 DieHard=30
+
 
 [Techniques]
 Thundaja=750
@@ -168,3 +177,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=0
+GunBlade=100
+Chakram=100
+ProtonPack=100

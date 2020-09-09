@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -34,12 +29,14 @@ Dused=1
 Char=is a Tarutaru that wears the Black Mage AF armor, excluding the hat. She is well-known in Windurst and one of the strongest magic users in Vana'diel. She is also very arrogant! "O~hohohohohohoho!"
 Rage=glares at the monsters as her eyes glow red. "You didn't treat me right, so I'm going to set your pants a-light! O~hohohohoho!"
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=her
@@ -55,6 +52,15 @@ CanTaunt=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=TaruTaru
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -97,9 +103,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=Laevatein
 Laevatein=500
+
 
 [Skills]
 Wizardy=100
@@ -123,6 +131,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=25
 
+
 [Techniques]
 FlareII=500
 QuakeII=500
@@ -139,6 +148,7 @@ CureV=500
 [Styles]
 Equipped=SpellMaster
 SpellMaster=10
+
 
 [Equipment]
 Accessory=Wizard's-Ankh
@@ -183,3 +193,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

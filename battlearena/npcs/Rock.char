@@ -22,17 +22,13 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
 Dused=1
 Char=is a tall man with a dark tan and a tattoo of a bull on his right arm along with a large Aztec tattoo that covers his left shoulder, arm and part of his chest. The Rock enters the battlefield and shouts, "Finally, The Rock, has come back to the Battle Arena!"
 Rage=yells out "It doesn't matter what you think, jabroni!"
+
 
 [Stuff]
 RedOrbs=3608
@@ -56,6 +52,15 @@ TauntFile=taunts_therock.txt
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 0-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 0-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -99,9 +104,11 @@ slow.timer=1
 zombie.timer=1
 conservetp.on=off
 
+
 [Weapons]
 Equipped=PeoplesFist
 PeoplesFist=500
+
 
 [Skills]
 Zen=5
@@ -124,6 +131,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=25
 
+
 [Techniques]
 RockBottom=500
 PeoplesElbow=500
@@ -133,7 +141,6 @@ Spinebuster=500
 
 
 [Item_Amount]
-
 
 
 [Styles]
@@ -180,3 +187,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

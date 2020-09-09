@@ -22,17 +22,13 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
 Dused=1
 Char=is a tall man that is a friend of Cecil. He wears dark blue and black dragoon armor along with a helm that is designed similiar to a Dragon. He is a highly-skilled Dragoon.
 Rage=needs to set a rage desc by typing !ragedesc <desc>
+
 
 [Stuff]
 RedOrbs=0
@@ -55,6 +51,15 @@ CanTaunt=false
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -97,9 +102,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=KainsLance
 KainsLance=500
+
 
 [Skills]
 PoleMaster=100
@@ -179,3 +186,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

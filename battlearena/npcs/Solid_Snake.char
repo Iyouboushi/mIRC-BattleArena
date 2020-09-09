@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -34,12 +29,14 @@ Dused=1
 Char=is the legendary mercenary. He is a tall man with short brown hair and wears a dark gray stealth suit. He also has a gray bandanna on his head. He looks at the battlefield and says, "Kept ya waiting, huh?"
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -58,10 +55,14 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [Monster]
 type=human
 TechLearn=false
 Size=Medium
+Elite=$iif($current.battlestreak isnum 0-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 0-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -104,16 +105,19 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=Fists
 Fists=500
 Socom=500
 PSG-1=500
 
+
 [Augments]
 Fists=MeleeBonus.TechBonus.HurtEthereal
 Socom=MeleeBonus.EnhanceRanged.HurtEthereal
 PSG-1=MeleeBonus.EnhanceRanged.HurtEthereal
+
 
 [Skills]
 MartialArts=100
@@ -152,14 +156,17 @@ Flash_Grenade=10
 Grappling_Hook=10
 HolyHandGrenade=1
 
+
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
+
 
 [Augments]
 Fists=MeleeBonus.TechBonus.EnhanceHandToHand.HurtEthereal
 Socom=MeleeBonus.EnhanceRanged.HurtEthereal
 PSG-1=MeleeBonus.EnhanceRanged.HurtEthereal
+
 
 [modifiers]
 Heal=none
@@ -196,3 +203,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

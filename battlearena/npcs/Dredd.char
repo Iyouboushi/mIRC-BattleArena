@@ -23,17 +23,12 @@ RageBar=0
 RageCountDown=0
 
 
-[Limit]
-Level=1
-Percent=0
-
-
-
 [Descriptions]
 Hused=1
 Dused=1
 Char=is a tall man wearing the standard Judge uniform and a helmet that covers most of his face. He is the Judge, Jury, and Executioner. He looks at the battlefield and says, "I am the law!"
 Rage=yells out, "YOU BETRAYED THE LAW!!"
+RapidShot=says "Rapid Fire!" and the gun beeps, changing ammo. Dredd then fires rapidly at %enemy $+ , sending a barrage of bullets to do damage.
 
 
 [Stuff]
@@ -58,6 +53,15 @@ TauntFile=taunts_judgedredd.txt
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -183,3 +187,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

@@ -24,11 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -59,6 +54,15 @@ CanTaunt=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=Ghost
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -102,12 +106,14 @@ slow.timer=1
 zombie.timer=1
 conservetp.on=off
 
+
 [Weapons]
 Equipped=Suzumebachi
 Suzumebachi=500
 
+
 [Skills]
-desperateblows=1
+DesperateBlows=1
 MartialArts=100
 Wizardry=80
 SwordMaster=100
@@ -134,6 +140,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=25
 
+
 [Techniques]
 DoublePunch=500
 ShoulderTackle=500
@@ -144,12 +151,14 @@ SwiftBlade=500
 VorpalBlade=500
 ShitotsuSansen=500
 
+
 [Item_Amount]
 
 
 [Styles]
 Equipped=WeaponMaster
 WeaponMaster=10
+
 
 [Ignitions]
 Shunkou-Wind=$iif($current.battlestreak < 1000, 0, 1)
@@ -195,3 +204,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=0

@@ -57,6 +57,13 @@ BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
 
+[monster]
+type=Undead
+TechLearn=false
+size=Medium
+SuperElite=true
+
+
 [Status]
 Poison=no
 HeavyPoison=no
@@ -192,3 +199,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

@@ -52,10 +52,14 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
 type=human
 TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -139,6 +143,7 @@ DrillBreaker=500
 FlamebreathCannon=500
 TriggerHappyXV=500
 
+
 [Augments]
 Valiant=MeleeBonus.TechBonus.EnhanceGun.HurtEthereal
 
@@ -204,3 +209,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

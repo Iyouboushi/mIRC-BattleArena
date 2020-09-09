@@ -24,11 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -61,6 +56,14 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 IgnoreElementalMessage=$iif($readini($char(Dresden), status, ignition.on) = on, true, false)
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
 
 
 [Status]
@@ -104,6 +107,7 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=RuneOakStaff
 RuneOakStaff=500
@@ -116,7 +120,7 @@ Wizardry=$iif($readini($char(Dresden), status, ignition.on) = on, 250, 100)
 Gunslinger=100
 MartialArts=100
 Utsusemi=1
-MagicMirror=10
+PerfectDefense=1
 Resist-Charm=100
 Resist-Poison=100
 Resist-Zombie=100
@@ -138,24 +142,26 @@ DieHard=25
 
 [Techniques]
 Forzare=500
-SoulForzare=500
+SoulForzare=1000
 FlickumBicus=500
 Fuego=500
-Pyrofeugo=500
+Pyrofeugo=1000
 Dormio=500
 Fulminos=500
-Arctis=$iif($readini($char(Dresden), status, ignition.on) = on, 1000, 500)
+Arctis=$iif($readini($char(Dresden), status, ignition.on) = on, 2500, 500)
 Dispertius=500
 Gravitus=500
 Galvinius=500
-Infriga=$iif($readini($char(Dresden), status, ignition.on) = on, 1000, 500)
-InfrigaForzare=$iif($readini($char(Dresden), status, ignition.on) = on, 1000, 500)
+Infriga=$iif($readini($char(Dresden), status, ignition.on) = on, 2500, 500)
+InfrigaForzare=$iif($readini($char(Dresden), status, ignition.on) = on, 2500, 500)
 
 
 [Item_Amount]
 
+
 [Ignitions]
 WinterKnightMantle=$iif($current.battlestreak < 1000, 0, 1)
+
 
 [Styles]
 Equipped=Spellmaster
@@ -168,6 +174,7 @@ accessory=Wizard's-Amulet
 
 [augments]
 RuneOakStaff=MagicBonus.MeleeBonus.EnhanceStaff.HurtEthereal
+
 
 [modifiers]
 Heal=none
@@ -204,3 +211,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

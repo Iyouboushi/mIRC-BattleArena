@@ -1026,7 +1026,7 @@ Cost=0
 Desc='s eyes gain a design that is three stretched triangles evenly spaced around the pupil that each curve at the top around the eye to form a circle, making it similar to a pinwheel. At the same time, Obito uses the other part of Kamui to give himself intangibility for a short time.
 StatusTarget=Self
 StatusType=Invincible
-AdditionalCode=writeini $char($1) skills ChangeBattlefield 1
+AdditionalCode=
 
 [MadaraJinchuuriki]
 Name=MadaraJinchuuriki

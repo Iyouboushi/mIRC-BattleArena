@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -59,6 +54,15 @@ BattleStats=IgnoreHP.IgnoreTP
 ActionsPerTurn=$rand(1,2)
 ai_type=techonly
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -131,6 +135,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=30
 
+
 [Techniques]
 PoweredShot=$iif($dungeon.currentroom = 10, 0, 500)
 Missile=$iif($dungeon.currentroom = 10, 0, 500)
@@ -162,6 +167,7 @@ Hands=$iif(%battle.type = dungeon, PhazonArmArmor, ChozoArmArmor)
 Legs=$iif(%battle.type = dungeon, PhazonLegArmor, ChozoLegArmor)
 Feet=$iif(%battle.type = dungeon, PhazonFootArmor, ChozoFootArmor)
 
+
 [Augments]
 ChozoArmCannon=MeleeBonus.TechBonus.EnhanceRanged.HurtEthereal
 ChozoHelmet=MeleeBonus.TechBonus.MagicBonus
@@ -174,6 +180,7 @@ PhazonArmor=MeleeBonus.TechBonus.MagicBonus
 PhazonArmArmor=MeleeBonus.TechBonus.MagicBonus
 PhazonLegArmor=MeleeBonus.TechBonus.MagicBonus
 PhazonFoorArmor=MeleeBonus.TechBonus.MagicBonus
+
 
 [modifiers]
 Heal=none
@@ -212,3 +219,6 @@ Bat=100
 +Dark=100
 ResistTechs=$iif($dungeon.currentroom = 10, 25, 10)
 ResistMelee=$iif($dungeon.currentroom = 10, 25, 10)
+GunBlade=100
+Chakram=100
+ProtonPack=100

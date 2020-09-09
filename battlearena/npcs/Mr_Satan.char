@@ -22,11 +22,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -35,6 +30,7 @@ Char=is a man with a large afro, large sideburns, a horseshoe mustache and giant
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 DoublePunch=looks at %enemy and says, "Get ready for my patented Double Punch!" and punches %enemy twice! Mr. Satan then turns to face the other players and laughs, giving them a peace sign!
 AsuranFists=says, "Huh, seems like I need to show you why I'm the Earth's Greatest Champion!" and charges towards %enemy $+ , punching %enemy multiple times. He then hops back and laughs, facing the other players. "There's NO WAY that %enemy could survive my best attack!"
+
 
 [Stuff]
 RedOrbs=3608
@@ -57,6 +53,13 @@ CanTaunt=true
 ActionsPerTurn=2
 BattleStats=IgnoreHP.IgnoreTP.IgnoreSTR.IgnoreDEF.IgnoreINT.IgnoreSPD
 SkipDoubleTurns=true
+
+
+[monster]
+type=Human
+TechLearn=false
+size=Medium
+
 
 [Status]
 Poison=no
@@ -111,7 +114,8 @@ Zen=5
 MartialArts=20
 Resist-Charm=100
 Resist-confuse=100
-DieHard=25
+DieHard=50
+
 
 [Techniques]
 DoublePunch=1
@@ -162,3 +166,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

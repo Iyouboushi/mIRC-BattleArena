@@ -29,6 +29,7 @@ Char=is a tall Hylian wearing a bright green hat with a green tunic. In his left
 Rage=...
 PerfectDefense=takes out a medium sized pink crystal and activates Naryu's Love, which covers Link with a barrier that blocks all attacks.
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
@@ -52,10 +53,13 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
 type=Hylian
 TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
 
 
 [Status]
@@ -181,3 +185,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

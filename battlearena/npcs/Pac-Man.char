@@ -24,11 +24,6 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
-
 
 [Descriptions]
 Hused=1
@@ -36,12 +31,14 @@ Dused=1
 Char=is a big round yellow ball with red boots and brown gloves on his hands. He loves power pellets (:V)
 Rage=needs to set a rage desc by typing !ragedesc <desc>
 
+
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1
 RedOrbsSpent=0
 BlackOrbsSpent=0
+
 
 [Info]
 Gender=his
@@ -58,6 +55,15 @@ trust=true
 ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
+
+
+[monster]
+type=
+TechLearn=false
+size=Medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
+
 
 [Status]
 Poison=no
@@ -100,9 +106,11 @@ curse.timer=1
 slow.timer=1
 zombie.timer=1
 
+
 [Weapons]
 Equipped=PacPower
 PacPower=500
+
 
 [Skills]
 Zen=5
@@ -124,6 +132,7 @@ Resist-Petrify=100
 Resist-Disarm=100
 DieHard=30
 
+
 [Techniques]
 Pac-Jump=750
 FireHydrant=750
@@ -131,8 +140,8 @@ BonusFruit=750
 PowerPellet=750
 
 
-
 [Item_Amount]
+
 
 [Styles]
 Equipped=Trickster
@@ -178,3 +187,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100

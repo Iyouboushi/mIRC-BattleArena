@@ -27,12 +27,14 @@ RageCountDown=0
 
 [Descriptions]
 Char=is the leader of the French Knights who taunts everyone.
-Rage=screams in rage 
+Rage=yells out in French!
+
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+
 
 [Info]
 Flag=npc
@@ -55,10 +57,13 @@ ActionsPerTurn=$rand(1,2)
 BattleStats=IgnoreTP.IgnoreHP
 SkipDoubleTurns=true
 
+
 [monster]
 type=human
 TechLearn=false
 size=medium
+Elite=$iif($current.battlestreak isnum 1000-4999, true, false)
+SuperElite=$iif($current.battlestreak !isnum 1000-4999, true, false)
 
 
 [Status]
@@ -94,6 +99,7 @@ sleep=no
 stun=no
 MPRegenerating=no
 
+
 [Weapons]
 Equipped=TauntPower
 TauntPower=500
@@ -119,11 +125,14 @@ Resist-Curse=100
 Resist-Petrify=100
 Resist-Disarm=100
 
+
 [Techniques]
 Cow_Launch=750
 Chicken_Toss=750
 
+
 [Item_Amount]
+
 
 [Styles]
 Equipped=Guardian
@@ -164,3 +173,6 @@ Bat=100
 +Wind=100
 +Water=100
 +Dark=100
+GunBlade=100
+Chakram=100
+ProtonPack=100
