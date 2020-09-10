@@ -3528,7 +3528,7 @@ create_treasurechest {
   if (%portal.bonus = true) { %chest.type.random = $rand(1,35) }
   if (%battle.type = dungeon) { %chest.type.random = 1 }
 
-  if (%chest.type.random isnum 1-4) { set %color.chest rainbow | set %chest.amount $rand(1,5) }
+  if (%chest.type.random isnum 1-4) { set %color.chest rainbow | set %chest.amount $rand(2,5) }
   if (%chest.type.random isnum 5-12) { set %color.chest gold }
   if (%chest.type.random isnum 13-20) { set %color.chest silver }
   if (%chest.type.random isnum 20-35) { set %color.chest purple }
