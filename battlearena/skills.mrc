@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 03/31/20
+;;;; Last updated: 09/10/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -506,6 +506,8 @@ alias skill.lockpicking { $set_chr_name($1)
 
   ; Prevent lockpicks
   if ($readini($txtfile(treasurechest.txt), chestInfo, Contents) = RedOrbs) { $display.message($readini(translation.dat, errors, LockPickCan'tBeUsedOnRedChests), private) | halt }
+  if ($readini($txtfile(treasurechest.txt), chestInfo, Color) = rainbow) { $display.message($readini(translation.dat, errors, LockPickCan'tBeUsedOnRainbowChests), private) | halt }
+
 
   ; Check to see if the user has enough lockpicks.
   set %check.item $readini($char($1), item_amount, lockpick)

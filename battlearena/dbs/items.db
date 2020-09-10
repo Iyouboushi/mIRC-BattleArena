@@ -3,7 +3,7 @@
 Gems=Zircon.Topaz.Emerald.Ruby.Diamond.Sapphire.Opal.Onyx
 
 ; Keys are used to open chests. They cannot be bought in stores.  This line needs to stay here for the bot to work.
-Keys=BlueKey.BrownKey.RedKey.OrangeKey.GreenKey.GoldKey.BrownKey.SilverKey.PurpleKey.BlackKey
+Keys=BlueKey.BrownKey.RedKey.OrangeKey.GreenKey.GoldKey.BrownKey.SilverKey.PurpleKey.BlackKey.RainbowKey
 
 
 =========================
@@ -1419,6 +1419,13 @@ Unlocks=black
 Cost=0
 SellPrice=100
 Desc=A small black key. It will unlock black-colored chests.
+
+[RainbowKey]
+Type=key
+Unlocks=rainbow
+Cost=0
+SellPrice=100
+Desc=A small rainbow-colored key. It will unlock rainbow chests.
 
 =========================
 SHOP RESET ITEMS

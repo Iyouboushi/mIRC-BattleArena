@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 04/29/20
+;;;; Last updated: 09/10/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3522,20 +3522,21 @@ reset_char {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 create_treasurechest {
 
-  set %chest.type.random $rand(1,150)
+  set %chest.type.random $rand(1,155)
   dec %chest.type.random $treasurehunter.check
 
   if (%portal.bonus = true) { %chest.type.random = $rand(1,35) }
   if (%battle.type = dungeon) { %chest.type.random = 1 }
 
-  if (%chest.type.random <= 10)  { set %color.chest gold  }
-  if ((%chest.type.random > 10) && (%chest.type.random <= 20)) { set %color.chest silver }
-  if ((%chest.type.random > 20) && (%chest.type.random <= 35)) { set %color.chest purple }
-  if ((%chest.type.random > 35) && (%chest.type.random <= 55)) { set %color.chest orange }
-  if ((%chest.type.random > 55) && (%chest.type.random <= 70)) { set %color.chest green }
-  if ((%chest.type.random > 70) && (%chest.type.random <= 90)) { set %color.chest blue  }
-  if ((%chest.type.random > 90) && (%chest.type.random <= 120)) { set %color.chest brown  }
-  if ((%chest.type.random > 120) && (%chest.type.random <= 130)) { set %color.chest black  }
+  if (%chest.type.random isnum 1-4) { set %color.chest rainbow | set %chest.amount $rand(1,5) }
+  if (%chest.type.random isnum 5-12) { set %color.chest gold }
+  if (%chest.type.random isnum 13-20) { set %color.chest silver }
+  if (%chest.type.random isnum 20-35) { set %color.chest purple }
+  if (%chest.type.random isnum 36-55) { set %color.chest orange }  
+  if (%chest.type.random isnum 56-70) { set %color.chest green }
+  if (%chest.type.random isnum 71-90) { set %color.chest blue }
+  if (%chest.type.random isnum 91-120) { set %color.chest brown }
+  if (%chest.type.random isnum 121-130) { set %color.chest black }
   if (%chest.type.random > 130) { set %color.chest red | set %chest.contents RedOrbs 
 
     set %chest.amount $return.systemsetting(RedChestBase)

@@ -508,6 +508,7 @@ NoChestExists=$chr(3) $+ 04 $+ Error: There is no chest to unlock!
 WrongChestKey=$chr(3) $+ 04 $+ Error: This key does not unlock this color of chest!
 ChestAlreadyBeingOpened=$chr(3) $+ 04 $+ Error: This chest is already being opened..
 LockPickCan'tBeUsedOnRedChests=$chr(3) $+ 04 $+ Error: Lockpicks cannot be used on red chests.
+LockPickCan'tBeUsedOnRainbowChests=$chr(3) $+ 04 $+ Error: Lockpicks cannot be used on rainbow chests.
 Can'tLogIntoThisChar=$chr(3) $+ 04 $+ Error: You cannot log into this character.
 Can'tSaveALosingStreak=$chr(3) $+ 04 $+ Error: %real.name cannot save a losing streak to $gender($nick) file.
 Can'tSaveALowerStreak=$chr(3) $+ 04 $+ Error: %real.name cannot save when the arena level is lower than $gender($nick) previous save.
