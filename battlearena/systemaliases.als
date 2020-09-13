@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/10/20
+;;;; Last updated: 09/12/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2836,7 +2836,6 @@ clear_status {
   if ($readini($char($1), status, finalgetsuga) = yes) {
     $reset_char($1) | $set_chr_name($1)
     $display.message(04 $+ %real.name feels all of $gender($1) power leaving $gender($1) body -- resetting $gender2($1) back to level 1.,global) 
-
     unset %real.name
   }
 
@@ -3508,6 +3507,15 @@ reset_char {
 
   ; Remove all enhancements
   remini $char($1) enhancements
+  writeini $char($1) stuff CapacityPoints 0
+  writeini $char($1) stuff EnhancementPoints 0
+
+  ; Remove Double Dollars and Allied Notes
+  writeini $char($1) stuff DoubleDollars 0
+  writeini $char($1) stuff AlliedNotes 0
+
+  ; Remove Limit Breaks
+  remini $char($1) LimitBreaks
 
   ; Increase the total number of times this char has reset
   var %number.of.resets $readini($char($1), stuff, NumberOfResets)

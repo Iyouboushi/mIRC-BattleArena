@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 07/03/20
+;;;; Last updated: 09/12/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -239,6 +239,13 @@ alias uses_item {
     if (($readini($char($1), techniques, $4) = $null) || ($readini($char($1), techniques, $4) = 0)) { $display.message($readini(translation.dat, errors, MustSpecifyTechname), private) | halt }
     $item.increasetechlvl($1, $4, $2) 
     $decrease_item($1, $2) | halt
+  }
+
+  if (%item.type = CharacterReset) {
+    $set_chr_name($1) 
+    $display.message(04 $+ %real.name feels all of $gender($1) power leaving $gender($1) body -- resetting $gender2($1) back to level 1.,global) 
+    $decrease_item($1, $2) 
+    $reset_char($1) | halt
   }
 
   if (%item.type = portal) {

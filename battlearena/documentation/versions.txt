@@ -1738,7 +1738,11 @@ Battle Arena Bot VERSIONS
 - Added the SharpShooter style. This style will enhance damage done with ranged weapons (guns, rifles and bows) and will give access to
   the !Overcharge command that will further enhance damage done with those weapon types.
 - Added the Valor shop to the game. !shop list valor and !shop buy valor item   The valor shop uses ValorMedals as the currency.
+- Added rainbow chests to the game. These chests give roughly the same items as gold chests but will give 2-5 of the item instead of 1.
+- Added the CharacterResetPotion item to the shop. This item will reset a character back to level 1. Players who reset will keep their
+  items and armor. 
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
 - Fixed an issue with the sleep status
+- Removed the "FinalGetsuga" and "Merlin'sFinalSpell" techniques from the game.  The CharacterResetPotion has replaced them.

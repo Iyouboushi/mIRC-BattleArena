@@ -4502,6 +4502,14 @@ Currency=AlliedNotes
 Exclusive=yes
 
 =========================
+RESET ITEMS
+=========================
+[CharacterResetPotion]
+Type=CharacterReset
+Cost=10000
+SellPrice=0
+
+=========================
 SPECIAL ITEMS
 =========================
 [Blueprints:Valmanway+1]
