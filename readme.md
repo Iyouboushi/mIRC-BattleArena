@@ -17,7 +17,7 @@ A full in-depth guide with commands and more in-depth information can be found o
 Getting it set up is easy.
 
  1. Clone this repository or download the ZIP.  If you download the zip, unzip it into a folder of your choice (I recommend C:\BattleArena)
- 2. Run the mirc.exe that is included.
+ 2. You can get mIRC at: https://www.mirc.co.uk/index.html  Then you can copy the exe over to the Battle Arena folder.
  3. The bot will attempt to help you get things set up.  Set the bot owner's nick and the IRC channel you wish to game in.  Be sure to set a password for the bot that you'll register to nickserv with.
  4. (as with all mIRC programs) change the nickname and add a server
  5. Connect.
