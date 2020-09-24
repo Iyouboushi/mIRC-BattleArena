@@ -26,7 +26,7 @@ RageCountDown=0
 
 
 [Descriptions]
-Char=$iif($current.battlestreak isnum 1000-4999, is a grotesque creature with a skeletal head and is mostly red and dark purple in color., is a grotesque creature with a skeletal head and is mostly black in color, with some parts that are dark purple in color.)
+Char=$iif($current.battlestreak isnum 1000-4999, is a grotesque creature with a skeletal head and is mostly red and dark purple in color., is a grotesque creature with a skeletal head and is mostly black in color $+ $chr(44) with some parts that are dark purple in color.)
 Rage=...
 BossQuote=...
 AquaBall=unleashes a wave of deadly water bubbles upon the arena!
