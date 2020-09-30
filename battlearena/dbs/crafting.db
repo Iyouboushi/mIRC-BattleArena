@@ -1223,6 +1223,12 @@ Ingredients=SilverOre.RedKey
 SuccessRate=85
 Amount=1
 
+[RainbowKey]
+Gem=Ruby
+Ingredients=BlueKey.BrownKey.RedKey.OrangeKey.GreenKey.GoldKey.SilverKey.PurpleKey.BlackKey
+SuccessRate=100
+Amount=1
+
 ============
 Armor
 ============
