@@ -3249,7 +3249,7 @@ alias shop.voucher.list {
   if (%voucher.list.bronze2 != $null) {  %voucher.list.bronze2 = $replace(%voucher.list.bronze2, $chr(046), %replacechar) }
 
   if (%voucher.list.bronze != $null) { 
-    $display.private.message.delay.custom(02These items and armor pieces are paid for with 07Bronze Vouchers,1)
+    $display.private.message.delay.custom(02These items and armor pieces are paid for with 07Bronze Vouchers,1)
   $display.private.message.delay.custom(%voucher.list.bronze, 1) }
   if (%voucher.list.bronze2 != $null) { $display.private.message.delay.custom(%voucher.list.bronze2, 1) }
 
@@ -3279,7 +3279,7 @@ alias shop.voucher.list {
   if (%voucher.list.silver3 != $null) {  %voucher.list.silver3 = $replace(%voucher.list.silver3, $chr(046), %replacechar) }
 
   if (%voucher.list.silver != $null) {
-    $display.private.message.delay.custom(02These items and armor pieces are paid for with 07Silver Vouchers,1)
+    $display.private.message.delay.custom(02These items and armor pieces are paid for with 07Silver Vouchers,1)
   $display.private.message.delay.custom(%voucher.list.silver, 1) }
   if (%voucher.list.silver2 != $null) { $display.private.message.delay.custom(%voucher.list.silver2, 1) }
   if (%voucher.list.silver3 != $null) { $display.private.message.delay.custom(%voucher.list.silver3, 1) }
@@ -3306,7 +3306,7 @@ alias shop.voucher.list {
   if (%voucher.list.gold2 != $null) {  %voucher.list.gold2 = $replace(%voucher.list.gold2, $chr(046), %replacechar) }
 
   if (%voucher.list.gold != $null) { 
-    $display.private.message.delay.custom(02These items and armor pieces are paid for with 07Gold Vouchers,1)
+    $display.private.message.delay.custom(02These items and armor pieces are paid for with 07Gold Vouchers,1)
   $display.private.message.delay.custom(%voucher.list.gold, 1) }
   if (%voucher.list.gold2 != $null) { $display.private.message.delay.custom(%voucher.list.gold2, 1) }
 

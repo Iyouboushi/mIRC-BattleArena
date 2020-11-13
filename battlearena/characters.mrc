@@ -1,30 +1,32 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; CHARACTER COMMANDS
-;;;; Last updated: 03/31/20
+;;;; Last updated: 11/13/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a new character
 
-on 1:TEXT:!new char*:*: {  $checkscript($2-)
-  if ($isfile($char($nick)) = $true) { $display.private.message($readini(translation.dat, system, PlayerExists)) | halt }
-  if ($isfile($char($nick $+ _clone)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($isfile($char(evil_ $+ $nick)) = $true)  { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($isfile($char($nick $+ _summon)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($isfile($mon($nick)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($isfile($boss($nick)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt  }
-  if ($isfile($npc($nick)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($isfile($summon($nick)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = $nick $+ _clone) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = evil_ $+ $nick) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = monster_warmachine) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = demon_wall) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = pirate_scallywag) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = pirate_firstmatey) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = bandit_leader) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = bandit_minion) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = crystal_shadow) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ($nick = alliedforces_president) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
-  if ((($nick = frost_monster) || ($nick = frost_monster1) || ($nick = frost_monster2))) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+on 1:TEXT:!new char*:*: { $checkscript($2-) | $create.new.character($nick) }
+
+alias create.new.character { 
+  if ($isfile($char($1)) = $true) { $display.private.message($readini(translation.dat, system, PlayerExists)) | halt }
+  if ($isfile($char($1 $+ _clone)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($isfile($char(evil_ $+ $1)) = $true)  { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($isfile($char($1 $+ _summon)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($isfile($mon($1)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($isfile($boss($1)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt  }
+  if ($isfile($npc($1)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($isfile($summon($1)) = $true) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = $1 $+ _clone) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = evil_ $+ $1) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = monster_warmachine) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = demon_wall) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = pirate_scallywag) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = pirate_firstmatey) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = bandit_leader) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = bandit_minion) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = crystal_shadow) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ($1 = alliedforces_president) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
+  if ((($1 = frost_monster) || ($1 = frost_monster1) || ($1 = frost_monster2))) { $display.private.message($readini(translation.dat, system, NameReserved)) | halt }
 
   ; Check to see if the person already has multiple characters and get the total shop level at the same time
 
@@ -60,50 +62,51 @@ on 1:TEXT:!new char*:*: {  $checkscript($2-)
   %starting.orbs = $round($calc(%starting.orbs * %current.shoplevel),0) 
 
   ; Create the new character now
-  .copy $char(new_chr) $char($nick)
-  writeini $char($nick) BaseStats Name $nick 
-  writeini $char($nick) Info Created $fulldate
+  .copy $char(new_chr) $char($1)
+  writeini $char($1) BaseStats Name $1 
+  writeini $char($1) Info Created $fulldate
 
   ;  Add the starting orbs to the new character..
-  writeini $char($nick) Stuff RedOrbs %starting.orbs
+  writeini $char($1) Stuff RedOrbs %starting.orbs
 
   $display.message($readini(translation.dat, system, CharacterCreated),global)
 
   ; Generate a password
   set %password battlearena $+ $rand(1,100) $+ $rand(a,z)
 
-  if ($version < 6.3) { writeini $char($nick)  info PasswordType encode | writeini $char($nick) info password $encode(%password)  }
-  else { writeini $char($nick) info PasswordType hash |  writeini $char($nick) info password $sha1(%password) }
+  if ($version < 6.3) { writeini $char($1)  info PasswordType encode | writeini $char($1) info password $encode(%password)  }
+  else { writeini $char($1) info PasswordType hash |  writeini $char($1) info password $sha1(%password) }
 
   $display.private.message($readini(translation.dat, system, StartingCharOrbs))
-  $display.private.message($readini(translation.dat, system, StartingCharPassword))
+
+  if (($readini(system.dat, system, botType) != TWITCH) && ($readini(system.dat, system, botType) != Discord)) { $display.private.message($readini(translation.dat, system, StartingCharPassword)) }
 
   ; Write current host
-  if ($site != $null) { writeini $char($nick) info LastIP $site } 
+  if ($site != $null) { writeini $char($1) info LastIP $site } 
 
   ; Give voice
-  mode %battlechan +v $nick
+  mode %battlechan +v $1
 
-  if ($readini(system.dat, system, botType) = DCCchat) {  .auser 2 $nick | dcc chat $nick }
-  if ($readini(system.dat, system, botType) = IRC) { .auser 3 $nick }
-  if ($readini(system.dat, system, botType) = TWITCH) { .auser 3 $nick }
-
+  if ($readini(system.dat, system, botType) = DCCchat) {  .auser 2 $1 | dcc chat $1 }
+  if ($readini(system.dat, system, botType) = IRC) { .auser 3 $1 }
+  if ($readini(system.dat, system, botType) = TWITCH) { .auser 3 $1 }
+  if ($readini(system.dat, system, botType) = Discord) { .auser 3 $1 }
 
   var %bot.owners $readini(system.dat, botinfo, bot.owner)
-  if ($istok(%bot.owners,$nick,46) = $true) {
+  if ($istok(%bot.owners,$1,46) = $true) {
     var %bot.owner $gettok(%bot.owners, 1, 46)
-    if ($nick = %bot.owner) { .auser 100 $nick }
-    else { .auser 50 $nick }
+    if ($1 = %bot.owner) { .auser 100 $1 }
+    else { .auser 50 $1 }
   }
 
   ; Give 10 starting login points
-  writeini $char($nick) stuff LoginPoints 10
-  writeini $char($nick) info lastloginpoint $ctime 
+  writeini $char($1) stuff LoginPoints 10
+  writeini $char($1) info lastloginpoint $ctime 
 
   ; Perform a fulls on the new person
-  $fulls($nick)
+  $fulls($1)
 
-  unset %ip.address. [ $+ [ $nick ] ] 
+  unset %ip.address. [ $+ [ $1 ] ] 
   unset %current.shoplevel |  unset %totalplayers | unset %password
   unset %duplicate.ips | unset %file | unset %name | unset %current.shoplevel | unset %totalplayers
 }
