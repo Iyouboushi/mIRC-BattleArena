@@ -10,6 +10,9 @@
 ; To make BattleArena work right for Discord it you will need to change the bot type to Discord.
 ; In system.dat change BotType=   to BotType=Discord
 ;
+; You will also need to tell BattleArena what the name of the discord bridge bot is (security issue otherwise)
+; In system.dat update DiscordBridgeName=   to the nick of the bridge bot.
+;
 ; Also note that colors should be turned off on the bot to make it format better on discord.
 ; In system.dat change AllowColors=true to AllowColors=false
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -20,6 +23,9 @@ on 1:TEXT:[Discord] *:*: {
   ; $1 = [Discord]
   ; $2 = the name of the person chatting on Discord
   ; $3- = the command/text
+
+  ; Is it the bridge bot's nick doing the discord commands?  If not, we can stop here for security reasons.
+  if ($readini(system.dat, system, DiscordBridgeName) != $nick) { halt }
 
   ; Check to make sure no scripts are being run via text
   $checkscript($3-)

@@ -6,6 +6,7 @@ botpass=
 
 [System]
 botType=IRC
+DiscordBridgeName=
 automatedbattlesystem=off
 automatedaibattlecasino=off
 aisystem=off
