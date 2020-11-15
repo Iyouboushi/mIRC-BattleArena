@@ -1,0 +1,64 @@
+[Info]
+Name=Crookhallow
+Rooms=9
+PlayersNeeded=1
+PlayersRecommended=3
+Level=50
+FinalRoom=8
+StartBattleDesc=follows the ol dusty trail headed towards the town of Crookhallow that has been overrun by bandits. 
+ClearDungeonDesc=* The party has defeated Mad Dawg and saved the innocent villagers from his bandits. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed their mission into Crookhallow and are forced to retreat.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party has arrived on the outskirts of the town. Up ahead they can see shadows of the bandits. Before entering town take a moment to prepare.
+Battlefield=Crookhallow - Outskirts
+
+
+[1]
+Desc=Bullets fly past the party as they enter the town.  "Just turn around and ride off ya hear?" they hear as a sharpshooter and a bandit approach.
+Battlefield=Crookhallow - Outside the Ye Ol Bank
+Monsters=Crookhallow_Sharpshooter.Crookhallow_Bandit
+
+
+[2]
+Desc=As the party moves forward they near more gunshots and see more bandits ahead.  "Get 'em!"
+Battlefield=Crookhallow - Center of Town
+Monsters=Crookhallow_Gunslinger.Crookhallow_Bandit.Crookhallow_Bandit
+
+
+[3]
+Desc=More bullets ZING! past the party as they continue their approach towards the saloon.  As they round the pharmacy building more bandits approach.  "Ya'll ain't going anywhere near Mad Daw, ya hear?"
+Battlefield=Crookhallow - Near the Pharmacy
+Monsters=Crookhallow_Gunslinger.Crookhallow_Sharpshooter.Crookhallow_Rifleman
+
+
+[4]
+Desc=The saloon comes into view and the party sees a large burly man wearing a black duster and big hat push the doors open. He approaches the party calmly but fully intending to stop them from reaching his boss..
+Battlefield=Crookhallow - Outside the Saloon
+Monsters=Bonescar
+BossRoom=true
+
+[5]
+Desc=The party enters the saloon and catches the eye of every bandit in the building..  Several throw down some cards and stand up ready to attack.
+Battlefield=Crookhallow - Saloon
+Monsters=Crookhallow_Cardshark.Crookhallow_Buckaroo.Crookhallow_Bandit
+
+
+[6]
+Desc=Pushing bodies out of the way the party braces for the next round of grunts..
+Battlefield=Crookhallow - Saloon
+Monsters=Crookhallow_Cardshark.Crookhallow_Buckaroo.Crookhallow_Bandit.Crookhallow_Gunslinger
+
+
+[7]
+Desc=The party hears a voice shout out "Not bad. Take it easy boys. It's me they're lookin' fer ain't it fellas?  If ya wanna tango with Mad Dawg..go back outside and we'll dance."  A figure in the back of the saloon rises and exits out a back door. The bandits all sit back down and the bartender nervously slides drinks to the party which is refreshing.
+Battlefield=Crookhallow - Saloon
+RestoreRoom=true
+
+[8]
+Desc=The party finishes their drinks and heads back outside where they meet the notorious Mad Dawg.  The sun begins to set and a large clock chimes from somewhere in the center of town. Let the battle begin...
+Battlefield=Crookhallow - Outside the Saloon
+Monsters=MadDawg
+bossroom=true
+

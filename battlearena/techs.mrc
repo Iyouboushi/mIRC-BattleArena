@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 05/01/20
+;;;; Last updated: 11/14/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -387,6 +387,13 @@ alias tech_cmd {
   if (%tp.needed = $null) { var %tp.needed 0 }
 
   dec %tp.have %tp.needed | writeini $char($1) battle tp %tp.have | unset %tp.have | unset %tp.needed
+
+  ; If the weapon type is a gun or rifle and the skill ricochet is turned on, let's make the tech be an AOE
+  var %weapon.type $readini($dbfile(weapons.db), %weapon.equipped, Type)
+  if ((%weapon.type = gun) || (%weapon.type = rifle)) {
+    if ($readini($char($1), skills, ricochet.on) = on) { set %tech.type aoe | writeini $char($1) skills ricochet.on off }
+  }
+
 
   ; Check for a prescript
   if ($readini($dbfile(techniques.db), n, $2, PreScript) != $null) { $readini($dbfile(techniques.db), p, $2, PreScript) }

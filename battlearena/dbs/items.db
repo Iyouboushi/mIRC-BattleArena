@@ -980,7 +980,7 @@ exclusive=yes
 
 [BronzeBoosterSet]
 type=random
-ItemDesc=This small envelope contains one trading card with rarity of *
+ItemDesc=This small envelope contains one trading card with rarity of * to **
 Desc=pulls out a small brown-colored envelope and opens it to reveal %random.item.amount $+ x  $+ %random.item.name $+  inside!
 SellPrice=1
 Cost=1000
@@ -5208,6 +5208,16 @@ SpecialType=GainSkill
 Skill=LucidDreaming
 Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of SoftBlows.
 
+[AncientMystery:Ricochet]
+type=special
+Cost=0
+SellPrice=5000
+Exclusive=yes
+SpecialType=GainSkill
+Skill=Ricochet
+Desc=pulls out an ancient piece of parchment and studies it. After some time passes, %real.name has learned the ancient skill of Ricochet.
+
+
 =========================
 INSTRUMENTS
 =========================
@@ -5338,6 +5348,15 @@ currency=KindredSeal
 sellprice=1500
 Desc=A train ticket and a note that says "Please save my precious Elayne from certain death.."
 Dungeon=phantom_train
+exclusive=yes
+
+[WantedPoster]
+type=dungeon
+cost=100
+currency=KindredSeal
+sellprice=1500
+Desc=A wanted poster for the notorious bandit leader Mad Dawg.  It is said he has taken over the town of Crookhallow
+Dungeon=crookhallow
 exclusive=yes
 
 [AncientMap]
@@ -6005,6 +6024,25 @@ Rarity=2
 Numbers=4.5.6.3
 Desc=A small trading card. On the front is a picture of a hippogryph chasing after a small rabbit.
 Powers=Jettatura.ChokeBreath.BackHeel
+
+[TradingCard-024]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=2
+Numbers=5.7.2.2
+Desc=A small trading card. On the front is a picture of a butcher holding up a bloody chainsaw
+Powers=DefenseRip.ChainsawSlash.DefenseDestroy.BuzzsawSlash
+
+[TradingCard-025]
+Type=TradingCard
+Cost=0
+SellPrice=100
+Rarity=1
+Numbers=2.4.3.2
+Desc=A small trading card. On the front is a picture of a spider spinning a large web in a tree
+Powers=SpiderWeb.SickleSlash
+
 
 
 [TradingCard-030]

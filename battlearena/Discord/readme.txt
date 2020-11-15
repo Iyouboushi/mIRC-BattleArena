@@ -29,7 +29,7 @@ Once you have a working bridge you are almost done and ready to roll.  Next up y
 
 * Open system.dat and change BotType=   to BotType=Discord
 * Open system.dat and change DiscordBridgeName=  to the bridge bot's IRC nick.
-* Open change AllowColors=true to AllowColors=false   While it will work with it set to true, it looks better off.
+* Open system.dat and change AllowColors=true to AllowColors=false   While it will work with it set to true, it looks better off.
 * Open BattleArena and go to Tools -> Script Editor -> File -> Load -> [path to BA]\Discord\discord.mrc
 
 Everything should be syncing now between IRC and Discord for the game.

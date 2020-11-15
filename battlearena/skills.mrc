@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SKILLS 
-;;;; Last updated: 09/10/20
+;;;; Last updated: 11/15/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ON 50:TEXT:*does *:*:{ $use.skill($1, $2, $3, $4) }
 
@@ -88,7 +88,7 @@ alias use.skill {
   if ($3 = warp) { $skill.warp($1, %attack.target-) } 
   if ($3 = weaponlock) { $skill.weaponlock($1, %attack.target) }  
   if ($3 = wrestle) { $skill.wrestle($1, %attack.target) }
-
+  if ($3 = ricochet) { $skill.ricochet($1) }
 
   ; Below are monster-only skills
   if ($3 = cocoon) { $skill.cocoon.evolve($1) }
@@ -5018,4 +5018,35 @@ alias skill.softblows { $set_chr_name($1) |  $check_for_battle($1)
   writeini $char($1) skills softblows.time %true.turn 
 
   $skill.nextturn.check(SoftBlows, $1)
+}
+
+;=================
+; RICOCHET
+;=================
+on 3:TEXT:!ricochet*:*: { $skill.ricochet($nick) }
+
+alias skill.ricochet { $set_chr_name($1) |  $check_for_battle($1)
+  if ($person_in_mech($1) = true) { $display.message($readini(translation.dat, errors, Can'tDoThatInMech), private) | halt }
+  $no.turn.check($1)
+  if (no-skill isin %battleconditions) { $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt }
+
+  var %skill.name ricochet
+  if (($skill.needtoequip(%skill.name) = true) && ($skill.equipped.check($1, %skill.name) = false)) { $display.message($readini(translation.dat, errors, SkillNeedsToBeEquippedToUse), private) | halt } 
+
+  ; Check to see if enough time has elapsed
+  $skill.turncheck($1, ricochet, !ricochet, true)
+
+  ; Decrease the action points
+  $action.points($1, remove, $skill.actionpointcheck(ricochet))
+
+  ; Display the desc. 
+  if ($readini($char($1), descriptions, ricochet) = $null) { set %skill.description studies the area and figures out the best way to ricochet a technique to hit more targets }
+  else { set %skill.description $readini($char($1), descriptions, ricochet) }
+  $set_chr_name($1) | $display.message(12 $+ %real.name  $+ %skill.description, battle) 
+
+  ; Turn the skill on and write the last used time.
+  writeini $char($1) skills ricochet.on on
+  writeini $char($1) skills ricochet.time %true.turn 
+
+  $skill.nextturn.check(Ricochet, $1)
 }

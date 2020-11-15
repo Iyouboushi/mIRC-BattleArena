@@ -780,6 +780,17 @@ Cooldown=15
 NeedToEquip=false
 Instant=true
 
+[Ricochet]
+Cost=0
+CoinCost=0
+Type=Active
+Max=1
+Info=This skill will turn a single target gun/rifle technique into an AOE.
+ActionPoints=1
+Cooldown=15
+NeedToEquip=true
+Instant=false
+
 
 =============================================
 STYLE RELATED SKILLS

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/13/20
+;;;; Last updated: 11/14/20
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2782,7 +2782,7 @@ clear_skills {
   writeini $char($1) skills criticalfocus.on off | writeini $char($1) skills shieldfocus.on off
   writeini $char($1) skills barrage.on off | writeini $char($1) skills doublecast.on off
   writeini $char($1) skills duality.on off | writeini $char($1) skills thinair.on off | writeini $char($1) skills quickpockets.on off
-  writeini $char($1) skills softblows.on off 
+  writeini $char($1) skills softblows.on off | writeini $char($1) skills ricochet.on off
   remini $char($1) NaturalArmor
 }
 
@@ -2805,7 +2805,7 @@ clear_skill_timers {
   remini $char($1) skills trickattack.on  | remini $char($1) skills sneakattack.on 
   remini $char($1) skills sentinel.on | remini $char($1) skills sentinel.used | remini $char($1) skills sentinel.turn
   remini $char($1) skills overcharge.on | remini $char($1) skills overcharge.used | remini $char($1) skills overcharge.turn
-  remini $char($1) skills bribe.time
+  remini $char($1) skills bribe.time | remini $char($1) skills ricochet.time
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

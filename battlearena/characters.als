@@ -1017,6 +1017,7 @@ player.skills.list {
   if ($readini($char($1), skills, thinair.on) = on) { $skills_message_check(02Thin Air) }
   if ($readini($char($1), skills, quickpockets.on) = on) { $skills_message_check(02Quick Pockets) }
   if ($readini($char($1), skills, overcharge.on) = on) { $skills_message_check(02Overcharge) }
+  if ($readini($char($1), skills, ricochet.on) = on) { $skills_message_check(02Ricochet) }
 
   set %cover.target $readini($char($1), skills, CoverTarget)
   if ((%cover.target != $null) && (%cover.target != none)) { $skills_message_check(02Covered by %cover.target) }
