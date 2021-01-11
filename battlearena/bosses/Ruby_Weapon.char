@@ -112,7 +112,7 @@ protect.timer=0
 
 
 [Weapons]
-Equipped=RubyWeapon
+Equipped=RubyWeaponPower
 RubyWeapon=$calc(500 + %cosmic.level)
 
 
