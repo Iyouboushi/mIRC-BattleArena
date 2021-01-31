@@ -1743,6 +1743,10 @@ Battle Arena Bot VERSIONS
   items and armor. 
 - Added a new active skill: Ricochet. This skill will cause your next single-target gun or rifle technique to be an AOE.
   This skill cannot be purchased and must be learned.
+- Added a new monster flag: TimesToDefeat.  In [Info] put TimesToDefeat=#  where # is the number of times the monster must be
+  fully defeated before it finally dies.
+- Added the ability for monsters and npcs to use different descriptions for the TimesToDefeat flag. In [Descriptions] put
+  DefeatedMonsterStandsBackUp=description here
 - Added a way to make BattleArena work on Discord.  For more information read the readme.txt in the Discord folder.
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #

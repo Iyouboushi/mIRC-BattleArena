@@ -836,6 +836,7 @@ AssaultOutpost=$chr(3) $+ 04 $+ The Heroes must keep defeating monster forces to
 RestMessage=$chr(3) $+ 12 $+ $get_chr_name($1) decides to take a turn off and rest.
 FlawlessVictory=$chr(3) $+ 7 $+ FLAWLESS VICTORY! The Heroes has finished the battle without being hit and will advance 10 battle levels.
 HighestEnmity=$chr(3) $+ $iif(%highest.enmity.person = no one, 4 Monsters are targeting a12 random player4 as no one has the highest enmity yet., 12 $+ %highest.enmity.person 4currently has the highest enmity and is being targeted by monsters.) $iif($return_playersinbattle > 1 && $enmity(%lowest.enmity.person, return) > 0, 12 $+ $character.enmity.getname(Lowest) 4has the lowest amount of enmity in this battle)
+DefeatedMonsterStandsBackUp=$iif($readini($char(%target), Descriptions, DefeatedMonsterStandsBackUp) = $null, $chr(3) $+ 04 $+  $+ $get_chr_name(%target) $+  stands back up and regains all health ready to fight again., $chr(3) $+ 04 $+  $+ $get_chr_name(%target) $+  $readini($char(%target), Descriptions, DefeatedMonsterStandsBackUp))
 
 =======================
 Status Related Messages

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 4/17/20
+;;;; Last updated: 01/31/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1149,74 +1149,90 @@ deal_damage {
   if ($person_in_mech($2) = false) { 
     if ($readini($char($2), battle, HP) <= 0) { 
 
-      ; If the target has the DieHard skill there is a chance that he/she/it won't actually die and be revived..
-      var %diehard.chance 0
-      if ($readini($char($2), Skills, DieHard) != $null) { var %diehard.chance $readini($char($2), Skills, DieHard) }
+      unset %times.to.defeat.flag
+      var %times.to.defeat $readini($char($2), Info, TimesToDefeat)
+      if (%times.to.defeat = $null) { var %times.to.defeat 1 }
+      dec %times.to.defeat 1
+      writeini $char($2) Info TimesToDefeat %times.to.defeat
 
-      if ((%diehard.chance = 0) || ($rand(1,100) > %diehard.chance)) {
+      if (%times.to.defeat >= 1) { 
+        ; The monster still needs to be defeated before it will officially die.
+        set %times.to.defeat.flag true
+        writeini $char($2) Battle HP $readini($char($2), Battle, BaseStats, HP)
+        writeini $char($2) Battle Status alive      
+      }
 
-        if (($readini(battlestats.dat, Bounty, BossName) = $2) && (%battle.type != ai)) {
-          writeini $txtfile(battle2.txt) battleinfo bountyclaimed true 
-          writeini $txtfile(battle2.txt) battleinfo bountyclaimedby $get_chr_name($1)
-        }
+      if (%times.to.defeat <= 0) {    
 
-        writeini $char($2) battle status dead 
-        writeini $char($2) battle hp 0
-        remini $txtfile(battle2.txt) enmity $2
+        ; If the target has the DieHard skill there is a chance that he/she/it won't actually die and be revived..
+        var %diehard.chance 0
+        if ($readini($char($2), Skills, DieHard) != $null) { var %diehard.chance $readini($char($2), Skills, DieHard) }
 
-        ; Check for Beastmen Tribe enmity
-        var %monster.type $readini($char($2), Monster, Type)
-        if (%monster.type = orc) { $benmity.enmity(orc, add, $rand(1,5)) }
-        if (%monster.type = lamia) { $benmity.enmity(lamia, add, $rand(1,5)) }
-        if (%monster.type = yagudo) { $benmity.enmity(yagudo, add, $rand(1,5)) }
-        if (%monster.type = quadav) { $benmity.enmity(quadav, add, $rand(1,5)) }
+        if ((%diehard.chance = 0) || ($rand(1,100) > %diehard.chance)) {
 
-        if ((%battle.type = assault) && ($readini($char($2), info, flag) = monster)) { 
-          if ($isfile($boss($2)) = $true) { $monster.outpost(remove, $rand(2,3)) }
-          if ($isfile($mon($2)) = $true) { $monster.outpost(remove, 1) }
-        }
-
-        if ($readini($char($2), Info, CoinBonus) = true) { writeini $txtfile(battle2.txt) battleinfo bonuscoins true }
-
-        ; give some ignition points if necessary
-        $battle.reward.ignitionGauge.single($2)
-
-        ; check for an item drop
-        $add.monster.drop($1, $2)
-
-        ; if the attacker isn't a monster we need to increase the total # of kills
-        if (($readini($char($1), info, flag) != monster) && ($readini($char($1), battle, hp) > 0)) {
-          $inc_monster_kills($1)
-
-          ; increase lost soul count if that's what the monster is
-          if ($2 = Lost_Soul) { 
-            var %total.souls $readini($char($1), stuff, LostSoulsKilled)
-            if (%total.souls = $null) { var %total.souls 0 }
-            inc %total.souls 1
-            writeini $char($1) stuff LostSoulsKilled %total.souls
+          if (($readini(battlestats.dat, Bounty, BossName) = $2) && (%battle.type != ai)) {
+            writeini $txtfile(battle2.txt) battleinfo bountyclaimed true 
+            writeini $txtfile(battle2.txt) battleinfo bountyclaimedby $get_chr_name($1)
           }
 
-          ; add style points
-          if (%battle.type = monster) {  $add.stylepoints($1, $2, mon_death, $3) | $add.style.orbbonus($1, monster, $2) }
-          if (%battle.type = manual) {  $add.stylepoints($1, $2, mon_death, $3) | $add.style.orbbonus($1, monster, $2) }
-          if (%battle.type = orbfountain) {  $add.stylepoints($1, $2, mon_death, $3) | $add.style.orbbonus($1, monster, $2) }
-          if (%battle.type = boss) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
-          if (%battle.type = defendoutpost) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
-          if (%battle.type = assault) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
-          if (%portal.bonus = true) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
-          if (%battle.type = dungeon) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
-          if (%battle.type = torment) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
-          if (%battle.type = cosmic) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
+          writeini $char($2) battle status dead 
+          writeini $char($2) battle hp 0
+          remini $txtfile(battle2.txt) enmity $2
+
+          ; Check for Beastmen Tribe enmity
+          var %monster.type $readini($char($2), Monster, Type)
+          if (%monster.type = orc) { $benmity.enmity(orc, add, $rand(1,5)) }
+          if (%monster.type = lamia) { $benmity.enmity(lamia, add, $rand(1,5)) }
+          if (%monster.type = yagudo) { $benmity.enmity(yagudo, add, $rand(1,5)) }
+          if (%monster.type = quadav) { $benmity.enmity(quadav, add, $rand(1,5)) }
+
+          if ((%battle.type = assault) && ($readini($char($2), info, flag) = monster)) { 
+            if ($isfile($boss($2)) = $true) { $monster.outpost(remove, $rand(2,3)) }
+            if ($isfile($mon($2)) = $true) { $monster.outpost(remove, 1) }
+          }
+
+          if ($readini($char($2), Info, CoinBonus) = true) { writeini $txtfile(battle2.txt) battleinfo bonuscoins true }
+
+          ; give some ignition points if necessary
+          $battle.reward.ignitionGauge.single($2)
+
+          ; check for an item drop
+          $add.monster.drop($1, $2)
+
+          ; if the attacker isn't a monster we need to increase the total # of kills
+          if (($readini($char($1), info, flag) != monster) && ($readini($char($1), battle, hp) > 0)) {
+            $inc_monster_kills($1)
+
+            ; increase lost soul count if that's what the monster is
+            if ($2 = Lost_Soul) { 
+              var %total.souls $readini($char($1), stuff, LostSoulsKilled)
+              if (%total.souls = $null) { var %total.souls 0 }
+              inc %total.souls 1
+              writeini $char($1) stuff LostSoulsKilled %total.souls
+            }
+
+            ; add style points
+            if (%battle.type = monster) {  $add.stylepoints($1, $2, mon_death, $3) | $add.style.orbbonus($1, monster, $2) }
+            if (%battle.type = manual) {  $add.stylepoints($1, $2, mon_death, $3) | $add.style.orbbonus($1, monster, $2) }
+            if (%battle.type = orbfountain) {  $add.stylepoints($1, $2, mon_death, $3) | $add.style.orbbonus($1, monster, $2) }
+            if (%battle.type = boss) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
+            if (%battle.type = defendoutpost) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
+            if (%battle.type = assault) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
+            if (%portal.bonus = true) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) }
+            if (%battle.type = dungeon) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
+            if (%battle.type = torment) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
+            if (%battle.type = cosmic) { $add.stylepoints($1, $2, boss_death, $3) | $add.style.orbbonus($1, boss, $2) } 
+          }
+
+        }
+        else {
+          var %life.restored $return_percentofvalue($readini($char($2), basestats, hp), $readini($char($2), skills, DieHard))
+          writeini $char($2) Battle HP %life.restored
+          writeini $char($2) Battle Status Alive
+          set %diehard.message true
         }
 
       }
-      else {
-        var %life.restored $return_percentofvalue($readini($char($2), basestats, hp), $readini($char($2), skills, DieHard))
-        writeini $char($2) Battle HP %life.restored
-        writeini $char($2) Battle Status Alive
-        set %diehard.message true
-      }
-
     }
   }
 
@@ -1577,6 +1593,11 @@ display_damage {
       unset %diehard.message
     }
 
+    ; If the target was defeated once, but is revived show a message..
+    if (%times.to.defeat.flag = true) { $display.message($readini(translation.dat, battle, DefeatedMonsterStandsBackUp), battle) }
+
+    unset %times.to.defeat.flag
+
     ; Check for weaknessshift
     $skill.weaknessshift(%target)
 
@@ -1711,6 +1732,11 @@ display_aoedamage {
       $display.message($readini(translation.dat, skill, DieHardTriggered), battle)
       unset %diehard.message
     }
+
+    ; If the target was defeated once, but is revived show a message..
+    if (%times.to.defeat.flag = true) { $display.message($readini(translation.dat, battle, DefeatedMonsterStandsBackUp), battle) }
+
+    unset %times.to.defeat.flag
 
   }
 
