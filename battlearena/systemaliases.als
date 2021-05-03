@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 11/14/20
+;;;; Last updated: 05/03/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2847,7 +2847,7 @@ clear_negative_status {
   writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no | writeini $char($1) status intdown no  |  writeini $char($1) status stop no | writeini $char($1) status petrified no 
   writeini $char($1) status bored no | remini $char($1) status weapon.locked | writeini $char($1) status confuse no 
   remini $char($1) status annoyed | writeini $char($1) status terrify no | writeini $char($1) status doll no | writeini $char($1) status doom no
-  writeini $char($1) status heavy no 
+  writeini $char($1) status heavy no  | writeini $char($1) status silence no
 
   ; Clear negative timer statuses
   writeini $char($1) status poison.timer 0 |  writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
