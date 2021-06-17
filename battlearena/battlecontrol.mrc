@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 04/28/20
+;;;; Last updated: 06/17/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -3319,7 +3319,7 @@ alias turn.statuscheck {
   $ignition_check($1) 
 
   $flying.status.check($1)
-  $doom_check($1) | $poison_check($1) | $zombie_check($1) | $zombieregenerating_check($1) | $doll_check($1) | $virus_check($1) 
+  $doom_check($1) | $poison_check($1) | $zombie_check($1) | $zombieregenerating_check($1) | $doll_check($1) | $virus_check($1)  | $silence_check($1)
   $frozen_check($1) | $shock_check($1)  | $burning_check($1) | $tornado_check($1) | $drowning_check($1) | $earthquake_check($1)
   $staggered_check($1) | $intimidated_check($1) | $terrified_check($1) | $blind_check($1) | $curse_check($1) | unset %hp.percent  | $stopped_check($1) |  $charm_check($1) | $confuse_check($1) | $amnesia_check($1) | $paralysis_check($1)
   $drunk_check($1) | $slowed_check($1) | $asleep_check($1) | $stunned_check($1) | $defensedown_check($1) | $strengthdown_check($1)  | $intdown_check($1) | $ethereal_check($1) 

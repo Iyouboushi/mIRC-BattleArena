@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/31/20
+;;;; Last updated: 06/17/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -960,7 +960,6 @@ player.status { unset %all_status | unset %all_skills | $set_chr_name($1)
     while (%value <= %status.lines) {
       var %current.status $read -l $+ %value $lstfile(statuseffects.lst)
       if (($readini($char($1), Status, %current.status) = yes) || ($readini($char($1), Status, %current.status) = on)) { 
-
         if ((%current.status = poison) && ($readini($char($1), status, heavypoison) = yes)) { $status_message_check($readini(translation.dat, statuses, HeavyPoison)) }
         else { $status_message_check($readini(translation.dat, statuses, %current.status)) }
       } 

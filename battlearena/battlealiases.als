@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 01/31/21
+;;;; Last updated: 06/17/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -323,10 +323,10 @@ statuseffect.check {
 ; that status effects last.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 status.effects.turns {
-  var %negative.status.effects confuse.poison.curse.cocoon.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.charm.paralysis.bored
+  var %negative.status.effects confuse.poison.curse.cocoon.silence.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.charm.paralysis.bored
 
   if ($istok(%negative.status.effects,$1,46) = $true) { 
-    if ($return_playersinbattle <= 1) { return 1 }
+    if ($return_playersinbattle <= 1) { return 2 }
     if ($1 = doom) { return 4 }
     if ($1 = confuse) { return 3 }
     if ($1 = poison) { return 3 }
@@ -345,6 +345,7 @@ status.effects.turns {
     if ($1 = charm) { return 3 }
     if ($1 = paralysis) { return 3 }
     if ($1 = bored) { return 2 }
+    if ($1 = silence) { return 5 }
   }
   else { 
     if ($1 = defup) { return 3 }
@@ -2606,6 +2607,7 @@ inflict_status {
     if (%random.status.type = 16) { set %status.type confuse | var %status.grammar confused  }
     if (%random.status.type = 17) { set %status.type sleep | var %status.grammar asleep  }
     if (%random.status.type = 18) { set %status.type terrify | var %status.grammar terrified }
+    if (%random.status.type = 19) { set %status.type silence | var %status.grammar silenced  }
   }
 
   if ($3 = stop) { set %status.type stop | var %status.grammar frozen in time }
@@ -5573,6 +5575,18 @@ virus_check {
   return
 }
 
+silence_check { 
+  var %silence.timer $readini($char($1), status, silence.timer)  
+  if (%silence.timer < $status.effects.turns(silence)) { 
+    if ($readini($char($1), Status, silence) = yes) {  %silence.timer = $calc(%silence.timer + 1) | writeini $char($1) status silence.timer %silence.timer
+    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlysilenced) | return }
+  }
+  else { 
+    if ($readini($char($1), Status, silence) = yes) {   writeini $char($1) status silence no | writeini $char($1) status silence.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, silenceWornOff)  | unset %silence.timer | return  }
+  }
+  return
+}
+
 slowed_check { 
   var %slow.timer $readini($char($1), status, slow.timer)  
   if (%slow.timer < $status.effects.turns(slow)) { 
@@ -5674,6 +5688,7 @@ bored_check {
   }
   else { return } 
 }
+
 
 reflect.check {
   if ($readini($char($1), status, reflect) = yes) { 

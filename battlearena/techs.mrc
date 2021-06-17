@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 11/14/20
+;;;; Last updated: 06/17/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -296,6 +296,13 @@ alias tech_cmd {
   if ((no-tech isin %battleconditions) || (no-techs isin %battleconditions)) { 
     if (($readini($char($1), info, ai_type) != healer) && ($readini($char($1), info, ai_type) != techonly)) { 
       $set_chr_name($1) | $display.message($readini(translation.dat, battle, NotAllowedBattleCondition),private) | halt 
+    }
+  }
+
+  ; Is the user silenced and the technique is magic? If so, stop it from happening.
+  if (($readini($char($1), status, silence) = yes) && ($readini($dbfile(techniques.db), $2, magic) = yes)) {
+    if (($readini($char($1), info, ai_type) != healer) && ($readini($char($1), info, ai_type) != techonly)) { 
+      $set_chr_name($1) | $display.message($readini(translation.dat, errors, CannotCastWhileSilenced),private) | halt 
     }
   }
 
