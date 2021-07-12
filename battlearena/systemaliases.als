@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 06/17/21
+;;;; Last updated: 07/12/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3982,9 +3982,9 @@ orb.adjust {
   if (%orb.tier = -1) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .37)),0) }
   if (%orb.tier = 0) { set %base.redorbs $round($calc(1000 + (%base.redorbs * .47)),0) }
   if (%orb.tier = 1) { return }
-  if (%orb.tier = 2) { set %base.redorbs $round($calc(%base.redorbs * 1.35),0) }
-  if (%orb.tier = 3) { set %base.redorbs $round($calc(%base.redorbs * 1.455),0) }
-  if (%orb.tier = 4) { set %base.redorbs $round($calc(%base.redorbs * 1.512),0) }
+  if (%orb.tier = 2) { set %base.redorbs $round($calc(%base.redorbs * 1.450),0) }
+  if (%orb.tier = 3) { set %base.redorbs $round($calc(%base.redorbs * 1.525),0) }
+  if (%orb.tier = 4) { set %base.redorbs $round($calc(%base.redorbs * 1.572),0) }
   if (%orb.tier = 5) { set %base.redorbs $round($calc(%base.redorbs * 1.598),0) }
   if (%orb.tier = 6) { set %base.redorbs $round($calc(%base.redorbs * 2.190),0) }
   if (%orb.tier = 7) { set %base.redorbs $round($calc(%base.redorbs * 2.25),0) }

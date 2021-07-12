@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; STYLE CONTROL 
-;;;; Last updated: 12/06/17
+;;;; Last updated: 07/12/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 alias calculate.stylepoints {
@@ -112,14 +112,14 @@ alias add.style.orbbonus {
   if (%style.points = $null) { %style.points = 1 }
 
   set %multiplier 0
-  if ($2 = monster) { %multiplier = 1.15 }
-  if ($2 = boss) { %multiplier = 1.2 }
+  if ($2 = monster) { %multiplier = 1.25 }
+  if ($2 = boss) { %multiplier = 1.4 }
 
-  if (%battle.type = dungeon) { %multiplier = 1.3 }
+  if (%battle.type = dungeon) { %multiplier = 1.35 }
   if (%battle.type = torment) { %multiplier = 0.75 }
 
   var %orb.bonus.flag $readini($char($3), info, OrbBonus)
-  if (%orb.bonus.flag = yes) { inc %multiplier $rand(125,150) }
+  if (%orb.bonus.flag = yes) { inc %multiplier $rand(130,180) }
 
   set %current.orb.bonus $readini($txtfile(battle2.txt), BattleInfo, OrbBonus)
   if (%current.orb.bonus = $null) { set %current.orb.bonus 0 }
@@ -150,7 +150,7 @@ alias add.style.effectdeath {
   set %current.orb.bonus $readini($txtfile(battle2.txt), BattleInfo, OrbBonus)
   if (%current.orb.bonus = $null) { set %current.orb.bonus 0 }
 
-  set %total.orbs.to.add $rand(10,100)
+  set %total.orbs.to.add $rand(20,120)
 
   inc %current.orb.bonus %total.orbs.to.add
 
