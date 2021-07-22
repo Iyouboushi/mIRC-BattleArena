@@ -1084,7 +1084,7 @@ CONSUMABLE ITEMS (for skills)
 =========================
 [Shihei]
 Type=consume
-Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 500, 3000)
+Cost=$iif($readini(system.dat, system, TechCurrency) = orbs, 500, 1500)
 SellPrice=20
 Skill=Utsusemi
 
