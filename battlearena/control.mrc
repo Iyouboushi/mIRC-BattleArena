@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BASIC CONTROL
-;;;; Last updated: 04/08/20
+;;;; Last updated: 08/29/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 raw 421:*:echo -a 4,1Unknown Command: ( $+ $2 $+ ) | halt
@@ -742,7 +742,7 @@ on 50:TEXT:@view *:*:{
   if ($2 = dat) { 
     if ($isfile($3) = $false) { .msg $nick 04Invalid dat file | halt }
     if ($5 = $null) { .msg $nick 04@view dat name.dat section item | halt }
-    .msg $nick 03The value for $4 in $3 is: $readini($3, $4, $5)
+    .msg $nick 03The value for $4 in $3 is: $readini($3, $4, $5-)
   }
 }
 
