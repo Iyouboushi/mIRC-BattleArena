@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 07/12/21
+;;;; Last updated: 08/29/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -268,6 +268,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCStatus, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCStatus GobbieBoxGoblin false }
     if ($readini(shopnpcs.dat, NPCStatus, Jeweler) = $null) { writeini shopnpcs.dat NPCStatus Jeweler false }
     if ($readini(shopnpcs.dat, NPCStatus, Cardian) = $null) { writeini shopnpcs.dat NPCStatus Cardian kidnapped }
+    if ($readini(shopnpcs.dat, NPCStatus, Engineer) = $null) { writeini shopnpcs.dat NPCStatus Engineer false }
 
     if ($readini(shopnpcs.dat, Events, FrostLegionDefeated) = $null) { writeini shopnpcs.dat Events FrostLegionDefeated false }
     if ($readini(shopnpcs.dat, Events, SavedElves) = $null) { writeini shopnpcs.dat Events SavedElves 0 }
@@ -297,6 +298,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCNames, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCNames GobbieBoxGoblin Bountibox the Goblin }
     if ($readini(shopnpcs.dat, NPCNames, Jeweler) = $null) { writeini shopnpcs.dat NPCNames Jeweler Vasu the Jeweler }
     if ($readini(shopnpcs.dat, NPCNames, Cardian) = $null) { writeini shopnpcs.dat NPCNames Cardian King of Cups }
+    if ($readini(shopnpcs.dat, NPCNames, Engineer) = $null) { writeini shopnpcs.dat NPCNames Shido Pollendina }
 
     ; Allied Forces Garden stuff
     if ($readini(garden.dat, GardenStats, XP) = $null) { writeini garden.dat GardenStats XP 0 }
@@ -696,6 +698,9 @@ shopnpc.totalinfo  {
   else { 
     if (($readini($char(%name), info, flag) = npc) || ($readini($char(%name), info, flag) = monster)) { return }
     else { 
+      var %current.level $get.level(%name) 
+      if (%current.level >= 1000) { set %player.over1000 true }
+
       var %temp.playerdeaths $readini($char(%name), Stuff, TotalDeaths)
       if (%temp.playerdeaths = $null) { var %temp.playerdeaths 0 }
       inc %player.deaths %temp.playerdeaths

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 08/14/19
+;;;; Last updated: 08/29/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -146,6 +146,13 @@ alias shopnpc.list {
   var %npcstatus.Cardian.name $readini(shopnpcs.dat, NPCNames, Cardian)
   if (%npcstatus.Cardian.name = $null) { var %npcstatus.Cardian.name King of Cups }
 
+  var %npcstatus.Engineer $readini(shopnpcs.dat, NPCstatus, Engineer)
+  if (%npcstatus.Engineer = true) { var %npcstatus.Engineer.color 03 }
+  if (%npcstatus.Engineer = false) { var %npcstatus.Engineer.color 05 }
+  if (%npcstatus.Engineer = kidnapped) { var %npcstatus.Engineer.color 04 }
+  var %npcstatus.Engineer.name $readini(shopnpcs.dat, NPCNames, Engineer)
+  if (%npcstatus.Engineer.name = $null) { var %npcstatus.Jeweler.name Shido Pollendina }
+
   var %npcs.status [ $+ %npcstatus.president.color $+ %npcstatus.president.name $+ ]  [ $+ %npcstatus.healing.color $+ %npcstatus.healing.name $+ ] [ $+ %npcstatus.battle.color $+ %npcstatus.battle.name $+ ] [ $+ %npcstatus.discount.color $+ %npcstatus.discount.name $+ ] [ $+ %npcstatus.song.color $+ %npcstatus.song.name $+ ] [ $+ %npcstatus.shield.color $+ %npcstatus.shield.name $+ ]
   var %npcs.status2 [ $+ %npcstatus.dungeonkey.color $+ %npcstatus.dungeonkey.name $+ ]  [ $+ %npcstatus.potionwitch.color $+ %npcstatus.potionwitch.name $+ ] [ $+ %npcstatus.wheel.color $+ %npcstatus.wheel.name $+ ] [ $+ %npcstatus.gambler.color $+ %npcstatus.gambler.name $+ ] [ $+ %npcstatus.gardener.color $+ %npcstatus.gardener.name $+ ] [ $+ %npcstatus.travel.color $+ %npcstatus.travel.name $+ ]
   var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ] [ $+ %npcstatus.Jeweler.color $+ %npcstatus.Jeweler.name $+ ] [ $+ %npcstatus.Cardian.color $+ %npcstatus.Cardian.name $+ ]
@@ -215,6 +222,7 @@ alias shopnpc.status.check {
   if ($readini(shopnpcs.dat, NPCStatus, PotionWitch) = false) { var %need.to.check.newnpcs true }
   if ($readini(shopnpcs.dat, NPCStatus, GobbieBoxGoblin) = false) { var %need.to.check.newnpcs true }
   if ($readini(shopnpcs.dat, NPCStatus, Jeweler) = false) { var %need.to.check.newnpcs true }
+  if ($readini(shopnpcs.dat, NPCStatus, Engineer) = false) { var %need.to.check.newnpcs true }
 
   if (%need.to.check.newnpcs = false) { return }
 
@@ -226,6 +234,7 @@ alias shopnpc.status.check {
   set %player.totallostsouls 0
   set %player.itemssold 0
   set %player.enhancementpointsspent 0 
+  set %player.over1000 false
 
   .echo -q $findfile( $char_path , *.char, 0 , 0, shopnpc.totalinfo $1-)
 
@@ -253,8 +262,11 @@ alias shopnpc.status.check {
   ; Check the jeweler NPC
   if (($shopnpc.present.check(Jeweler) = false) && (%player.enhancementpointsspent >= 75)) { $shopnpc.add(Jeweler) }
 
+  ; Check the engineer NPC
+  if (($readini(garden.dat, GardenStats, level) >= 10) && (%player.over1000 = true)) { $shopnpc.add(Engineer) } 
+
   unset %player.deaths | unset %player.shoplevels | unset %player.totalbattles | unset %player.totalachievements
-  unset %player.totallostsouls | unset %player.totalparries | unset %player.itemssold
+  unset %player.totallostsouls | unset %player.totalparries | unset %player.itemssold | unset %player.over1000
 }
 
 ; Is an NPC at the allied forces HQ?

@@ -2767,6 +2767,24 @@ SellPrice=40
 Desc=A perfectly round brown sphere that's pulsing with energy.
 Currency=AlliedNotes
 
+[OxygenTank]
+Type=misc
+Desc=A tank of oxygen created by $readini(shopnpcs.dat, NPCNames, Engineer) for those who want to venture to the moon. 
+Cost=10000
+SellPrice=500
+Exclusive=yes
+ShopNPC=Engineer
+Currency=AlliedNotes
+
+[RocketFuel]
+Type=misc
+Desc=A cannister of rocket fuel created by $readini(shopnpcs.dat, NPCNames, Engineer) for those who want to venture to the moon. It is used to power the Lunar Whale ship.
+Cost=10000
+SellPrice=500
+Exclusive=yes
+ShopNPC=Engineer
+Currency=AlliedNotes
+
 [Sand]
 Type=misc
 Cost=20
