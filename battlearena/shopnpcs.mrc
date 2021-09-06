@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 08/30/21
+;;;; Last updated: 09/06/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -150,7 +150,7 @@ alias shopnpc.list {
   if (%npcstatus.Engineer = true) { var %npcstatus.Engineer.color 03 }
   if (%npcstatus.Engineer = false) { var %npcstatus.Engineer.color 05 }
   if (%npcstatus.Engineer = kidnapped) { var %npcstatus.Engineer.color 04 }
-  var %npcstatus.Engineer.name $readini(shopnpcs.dat, NPCNames, Engineer) $+ the Engineer
+  var %npcstatus.Engineer.name $readini(shopnpcs.dat, NPCNames, Engineer) the Engineer
   if (%npcstatus.Engineer.name = $null) { var %npcstatus.Jeweler.name Shido Pollendina the Engineer }
 
   var %npcs.status [ $+ %npcstatus.president.color $+ %npcstatus.president.name $+ ]  [ $+ %npcstatus.healing.color $+ %npcstatus.healing.name $+ ] [ $+ %npcstatus.battle.color $+ %npcstatus.battle.name $+ ] [ $+ %npcstatus.discount.color $+ %npcstatus.discount.name $+ ] [ $+ %npcstatus.song.color $+ %npcstatus.song.name $+ ] [ $+ %npcstatus.shield.color $+ %npcstatus.shield.name $+ ]

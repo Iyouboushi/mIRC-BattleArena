@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 08/29/21
+;;;; Last updated: 09/06/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -298,7 +298,7 @@ system_defaults_check {
     if ($readini(shopnpcs.dat, NPCNames, GobbieBoxGoblin) = $null) { writeini shopnpcs.dat NPCNames GobbieBoxGoblin Bountibox the Goblin }
     if ($readini(shopnpcs.dat, NPCNames, Jeweler) = $null) { writeini shopnpcs.dat NPCNames Jeweler Vasu the Jeweler }
     if ($readini(shopnpcs.dat, NPCNames, Cardian) = $null) { writeini shopnpcs.dat NPCNames Cardian King of Cups }
-    if ($readini(shopnpcs.dat, NPCNames, Engineer) = $null) { writeini shopnpcs.dat NPCNames Shido Pollendina }
+    if ($readini(shopnpcs.dat, NPCNames, Engineer) = $null) { writeini shopnpcs.dat NPCNames Engineer Shido Pollendina }
 
     ; Allied Forces Garden stuff
     if ($readini(garden.dat, GardenStats, XP) = $null) { writeini garden.dat GardenStats XP 0 }

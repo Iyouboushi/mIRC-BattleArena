@@ -2703,13 +2703,18 @@ SellPrice=20
 Desc=A chunk of iron ore.
 Currency=AlliedNotes
 
+[LunarOre]
+Type=misc
+Cost=0
+SellPrice=20000
+Desc=A chunk of ore from the moon.
+
 [BrokenLance]
 Type=misc
 Cost=50
 SellPrice=20
 Desc=A splintered lance that is no use as a weapon in its current state.
 Currency=AlliedNotes
-
 
 [Ectoplasm]
 Type=misc
@@ -5429,6 +5434,14 @@ currency=KindredSeal
 sellprice=1500
 Desc=A strange key that enables access to a teleporter for the Technodrome.
 Dungeon=The_Technodrome
+Exclusive=yes
+
+[MoonCharter]
+type=dungeon
+cost=0
+sellprice=1
+Desc=Proof that you are ready to go explore some of the moon. 
+Dungeon=$read($lstfile(moondestinations.lst))
 Exclusive=yes
 
 [TerrorKey]

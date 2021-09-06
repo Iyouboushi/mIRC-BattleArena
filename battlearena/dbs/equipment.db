@@ -891,6 +891,23 @@ Legendary=True
 LevelRequirement=5000
 Exclusive=Yes
 
+[DensetsuNoKabuto]
+name=Densetsu No Kabuto
+hp=700
+tp=100
+Str=4000
+def=4000
+int=4000
+spd=4000
+Augment=all
+EquipLocation=Head
+cost=0
+SellPrice=50000
+LevelRequirement=20000
+Exclusive=yes
+Legendary=true
+Protection=2
+
 ========
 BODY
 ========
@@ -1978,6 +1995,23 @@ LevelRequirement=25000
 Exclusive=yes
 Legendary=true
 Protection=3.5
+
+[LunarSurcoat]
+name=Lunar Surcoat
+hp=1500
+tp=300
+Str=9500
+def=9500
+int=9500
+spd=9500
+Augment=all
+EquipLocation=body
+cost=0
+SellPrice=50000
+LevelRequirement=21000
+Exclusive=yes
+Legendary=true
+Protection=3
 
 ========
 LEGS

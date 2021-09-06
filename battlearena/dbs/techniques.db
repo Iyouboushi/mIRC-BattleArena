@@ -677,6 +677,7 @@ DioFists=DoublePunch.ShoulderTackle.SpinningAttack.TornadoKick.ShinjinSpiral
 TheWorldFists=DoublePunch.SpinningAttack.ShinjinSpiral.TheWorld.MudaMudaMuda
 WoFWheels=DoublePunch.ShoulderTackle.SpinningAttack.OneInchPunch.ChargedShot
 HornetStinger=SharpSting.FrenzySting.WaspSting
+LunarPower=LunarDoom.LunarDeathGlare.LunarQuake
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -7349,6 +7350,7 @@ magic=no
 cost=0
 stat=hp
 IgnoreShadows=true
+CanDodge=false
 
 [ShatteringBomb]
 Type=suicide-AOE
@@ -22660,3 +22662,37 @@ BasePower=100
 Magic=No
 HurtEthereal=true
 stat=str
+
+[LunarDoom]
+Type=AOE
+TP=100
+Desc=fully opens its eye and sends a large red energy pulse out of it that fills the room!
+BasePower=10
+Element=Dark
+Cost=0
+Magic=Yes
+stat=int
+DestroyShadows=4
+StatusType=Doom
+
+[LunarDeathGlare]
+Type=Death
+TP=100
+Desc=opens its eye and glares at %enemy with a powerful and deadly technique that can instantly cause death.
+BasePower=10
+Element=Dark
+Cost=0
+Magic=Yes
+stat=int
+DestroyShadows=4
+DeathChance=50
+
+[LunarQuake]
+Type=AOE
+TP=45
+Desc=opens its eye half way and the whole battlefield begins to violently shake.
+BasePower=50
+Element=Earth
+Magic=Yes
+stat=int
+Spell=yes

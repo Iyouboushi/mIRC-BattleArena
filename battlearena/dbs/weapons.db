@@ -76,7 +76,7 @@ MonsterWpns6=CthulhuRetina.EaterOfWorldsMouth.CthulhuBrain.SkeletronSkull.Skelet
 
 MonsterWpns7=CuccoBeak.MosquitoBite.GarudaPrimePower.IfritPrimeClaws.InfernalNail.Rusalka.DemonToad.RidleyClaws.SpacePirateWeapon.MetroidPrimePower.MetroidFangs.WaterBubble.ScurvyDog.Calca.Brina.Calcabrina.BeerusClaw.FloweyPetals.UndyneSpear.UndyneSpearII.MettatonLegs.SansPower.HyperGodPower.BrokenBrilliance.ObsoleteFists.CrazzyFists.Monster'sFists.Witch'sMagic.VejittoKi.RayquazaPower.LamiaBow.LamiaSword.LamiaStaff.LamiaClaws.Beholder.MonkeyFists.WormMouth.NeoShinryuClaws.OmegaMkIIWeaponSystems.MantisClaws.HarpeiaBeak.NankaMouth.CyclopsAxe.CyclopsHammer.CyclopsSpear.HippogryphTalon.Spores.Wamoura.Goobbue.Qutrub.Phlegethon.HollowPower.MechanicPower.TokkaFists.RahzarClaws.BebopGun.RocksteadyGun.ElPolloDiabloFists.LeChuckCutlass
 
-MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Devilsknife.Ame-no-Habakiri.HyperGodPowerII.FloweyPetalsII.SansPowerII.NeloAngeloGreatsword.EngineBlade.RingOfTheLucii.IronDuke.Valiant.Spelldaggers.ExdeathPower.NeoExdeathPower.KefkaPower.VenusGospel.Zangetsuto.BloodlessUmbrella.UltimaWeaponFFBE.LagunaMachineGun.BrightSilverManatrigger.Pumpkin.Pokey.LamiaWand.PureBliss.Zawnglachel.BhurtrusClaws.RazorPlume.GuardScorpion.EagleArmorMissileLauncher.EagleArmorGun.EagleArmorRifle.EdinGearWand.EtoneGearStaff.GanadorSwordShield.FusionSword.LeatherGloves.GuardStick.GatlingGun.DarkwingDuckGun
+MonsterWpns8=Flameskull.HydraHeads.Xande_Staff.DeadpoolKatanas.DoubleDesertEagles.KoumoriKnife.MagnaRider.MagitekPod.KetuRahu.Devilsknife.Ame-no-Habakiri.HyperGodPowerII.FloweyPetalsII.SansPowerII.NeloAngeloGreatsword.EngineBlade.RingOfTheLucii.IronDuke.Valiant.Spelldaggers.ExdeathPower.NeoExdeathPower.KefkaPower.VenusGospel.Zangetsuto.BloodlessUmbrella.UltimaWeaponFFBE.LagunaMachineGun.BrightSilverManatrigger.Pumpkin.Pokey.LamiaWand.PureBliss.Zawnglachel.BhurtrusClaws.RazorPlume.GuardScorpion.EagleArmorMissileLauncher.EagleArmorGun.EagleArmorRifle.EdinGearWand.EtoneGearStaff.GanadorSwordShield.FusionSword.LeatherGloves.GuardStick.GatlingGun.DarkwingDuckGun.LunarPower
 
 ============================================
 WEAPON TEMPLATE
@@ -3198,6 +3198,18 @@ IgnoreDefense=1
 CanShieldReflect=false
 StatusType=poison
 
+[CellularAttack]
+cost=0
+Type=HandToHand
+Info=You can't buy this!
+Abilities=
+Element=light
+Hits=$rand(1,2)
+BasePower=20
+IgnoreDefense=1
+CanShieldReflect=false
+StatusType=poison
+
 [SnakeFangs]
 cost=0
 Type=HandToHand
@@ -5112,6 +5124,16 @@ Type=HandToHand
 Info=A weapon for a pumpkin.
 Abilities=PumpkinSeeds.PumpkinPatch.JackOLantern
 Element=earth
+Hits=2
+BasePower=25
+Upgrade=0
+IgnoreDefense=2
+
+[LunarPower]
+Type=HandToHand
+Info=A weapon for Lunar beings.
+Abilities=LunarDoom.LunarDeathGlare.LunarQuake
+Element=dark
 Hits=2
 BasePower=25
 Upgrade=0

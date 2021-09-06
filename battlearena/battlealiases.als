@@ -4670,6 +4670,22 @@ wonderguard.check {
     return
   }
 
+  if (%battle.type = dungeon) { 
+    ;  only torment weapons will work if this flag is set
+
+    if ($readini($char($1), info, LegendaryWeaponsOnly) = true) { 
+
+      if ($readini($dbfile(weapons.db), $2, TormentWeapon) = true) { return }
+      if ($readini($dbfile(weapons.db), $4, TormentWeapon) = true) { return }
+
+      set %attack.damage 0 
+      set %damage.display.color 06 
+      set %guard.message $readini(translation.dat, battle, ImmuneToAttack) 
+      return
+    }
+  }
+
+
   ; Check for immunity of the weapon/tech/item name
   var %immunity.name $readini($char($1), modifiers, $2)
   if (%immunity.name = $null) { var %immunity.name 0 }

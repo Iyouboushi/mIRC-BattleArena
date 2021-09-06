@@ -1,11 +1,11 @@
 [weather]
-current=gloomy
+current=snowy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
-CurrentMoonPhase=Full
-currentMoonTurn=1
+CurrentMoonPhase=Quarter
+CurrentMoonTurn=2
 
 [MoonPhaseTime]
 full=3
@@ -18,7 +18,7 @@ BloodMoonChance=60
 
 [TimeOfDay]
 Currenttimeofday=Day
-currentTimeOfDayTurn=1
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
@@ -1366,5 +1366,10 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 
 [The Technodrome - Command Room]
 weather=gloomy
+limitations=no-playerignition.no-mech
+scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+
+[Lunar Tunnel - 025x]
+weather=none
 limitations=no-playerignition.no-mech
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond

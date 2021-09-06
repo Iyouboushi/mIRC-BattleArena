@@ -3035,6 +3035,22 @@ ForgottenSoul=5000
 ArcaneDust=5000
 OrbCrystal=5
 
+[DensetsuNoKabuto]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.TotemicHelm.Spaekona'sPetasos.KogaHatsuburi.WakidoKabuto.ReverenceCoronet
+SuccessRate=100
+Amount=1
+LifeShard=10000
+ReusablePart=10000
+ForgottenSoul=10000
+ArcaneDust=10000
+OdinMark=500
+TotemicHelm=1
+Spaekona'sPetasos=1
+KogaHatsuburi=1
+WakidoKabuto=1
+ReverenceCoronet=1
+
 [DensetsuNoYoroi]
 Gem=Diamond
 Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.TotemicJackcoat.Spaekona'sCoat.KogaNingi.WakidoDomaru.ReverenceSurcoat
@@ -3050,6 +3066,33 @@ Spaekona'sCoat=1
 KogaNingi=1
 WakidoDomaru=1
 ReverenceSurcoat=1
+
+[LunarSurcoat]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.LunarOre
+SuccessRate=100
+Amount=1
+LifeShard=10000
+ReusablePart=10000
+ForgottenSoul=10000
+ArcaneDust=10000
+OdinMark=100
+LunarOre=20
+
+[DensetsuNoYoroi+1]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.DensetsuNoYoroi.LunarSurcoat
+SuccessRate=100
+Amount=1
+LifeShard=10000
+ReusablePart=10000
+ForgottenSoul=10000
+ArcaneDust=10000
+OdinMark=500
+DensetsuNoYoroi=1
+LunarSurcoat=1
+
+
 
 ===========
 MECH CORES
