@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 08/29/21
+;;;; Last updated: 08/30/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -150,12 +150,12 @@ alias shopnpc.list {
   if (%npcstatus.Engineer = true) { var %npcstatus.Engineer.color 03 }
   if (%npcstatus.Engineer = false) { var %npcstatus.Engineer.color 05 }
   if (%npcstatus.Engineer = kidnapped) { var %npcstatus.Engineer.color 04 }
-  var %npcstatus.Engineer.name $readini(shopnpcs.dat, NPCNames, Engineer)
-  if (%npcstatus.Engineer.name = $null) { var %npcstatus.Jeweler.name Shido Pollendina }
+  var %npcstatus.Engineer.name $readini(shopnpcs.dat, NPCNames, Engineer) $+ the Engineer
+  if (%npcstatus.Engineer.name = $null) { var %npcstatus.Jeweler.name Shido Pollendina the Engineer }
 
   var %npcs.status [ $+ %npcstatus.president.color $+ %npcstatus.president.name $+ ]  [ $+ %npcstatus.healing.color $+ %npcstatus.healing.name $+ ] [ $+ %npcstatus.battle.color $+ %npcstatus.battle.name $+ ] [ $+ %npcstatus.discount.color $+ %npcstatus.discount.name $+ ] [ $+ %npcstatus.song.color $+ %npcstatus.song.name $+ ] [ $+ %npcstatus.shield.color $+ %npcstatus.shield.name $+ ]
   var %npcs.status2 [ $+ %npcstatus.dungeonkey.color $+ %npcstatus.dungeonkey.name $+ ]  [ $+ %npcstatus.potionwitch.color $+ %npcstatus.potionwitch.name $+ ] [ $+ %npcstatus.wheel.color $+ %npcstatus.wheel.name $+ ] [ $+ %npcstatus.gambler.color $+ %npcstatus.gambler.name $+ ] [ $+ %npcstatus.gardener.color $+ %npcstatus.gardener.name $+ ] [ $+ %npcstatus.travel.color $+ %npcstatus.travel.name $+ ]
-  var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ] [ $+ %npcstatus.Jeweler.color $+ %npcstatus.Jeweler.name $+ ] [ $+ %npcstatus.Cardian.color $+ %npcstatus.Cardian.name $+ ]
+  var %npcs.status3 [ $+ %npcstatus.GobbieBoxGoblin.color $+ %npcstatus.GobbieBoxGoblin.name $+ ] [ $+ %npcstatus.Jeweler.color $+ %npcstatus.Jeweler.name $+ ] [ $+ %npcstatus.Cardian.color $+ %npcstatus.Cardian.name $+ ] [ $+ %npcstatus.Engineer.color $+ %npcstatus.Engineer.name $+ ]
 
   ; Check for seasonal NPCs
   if ($readini(shopnpcs.dat, NPCstatus, EasterBunny) = true) { var %seasonal.status %seasonal.status [03Easter Bunny] }
