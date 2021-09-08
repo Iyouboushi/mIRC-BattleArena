@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 04/27/20
+;;;; Last updated: 09/08/21
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -196,7 +196,7 @@ dungeon.rewardorbs {
 
   if ($1 = dungeonclear) { var %dungeon.clear true | var %dungeon.level $calc(%dungeon.level + 75) }
 
-  if ($1 = failure) {   
+  if ($1 = failure) {  
     $battle.calculate.redorbs(defeat, %dungeon.level)
     $battle.reward.redorbs(defeat )
     $battle.reward.killcoins
@@ -381,6 +381,11 @@ dungeon.generatemonsters {
   var %monster.list $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, monsters)
   var %dungeon.level $readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel)
 
+  if ($readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, BossRoom) = true) { var %monster.level $readini($dungeonfile($dungeon.dungeonfile), Info, BossLevel) }
+  else { var %monster.level $readini($dungeonfile($dungeon.dungeonfile), Info, MonsterLevel) }
+  if (%monster.level = $null) { var %monster.level %dungeon.level }
+
+
   if (%monster.list = dungeon.evilclone) { 
     var %clone.list $readini($txtfile(battle2.txt), battle, list)
     var %number.of.items $numtok(%clone.list, 46)
@@ -422,12 +427,6 @@ dungeon.generatemonsters {
       set %battlelist.toadd $readini($txtfile(battle2.txt), Battle, List) | %battlelist.toadd = $addtok(%battlelist.toadd,%current.monster.to.spawn.name,46) | writeini $txtfile(battle2.txt) Battle List %battlelist.toadd | unset %battlelist.toadd
       write $txtfile(battle.txt) %current.monster.to.spawn.name
       var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
-
-      var %monster.level $readini($char(%current.monster.to.spawn.name), info, bosslevel)
-
-      if (%monster.level = $null) { var %monster.level 15 }
-      if (%monster.level < %dungeon.level) { var %monster.level %dungeon.level }
-      ;   if (%monster.level > $calc(%dungeon.level + 10)) { var %monster.level $calc(%dungeon.level + 10) }
 
       ; display the description of the spawned monster
       $set_chr_name(%current.monster.to.spawn.name) 

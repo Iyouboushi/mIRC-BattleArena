@@ -5320,6 +5320,15 @@ Desc=An ancient key used to unlock the dungeon Tam-Tara Deepcroft
 Dungeon=Tam-Tara
 exclusive=yes
 
+[CorruptedTamTaraKey]
+type=dungeon
+cost=100
+currency=BeastmenSeal
+sellprice=1500
+Desc=An ancient key used to unlock the dungeon Tam-Tara Deepcroft (Hard)
+Dungeon=Tam-Tara_hm
+exclusive=yes
+
 [AntlionKey]
 type=dungeon
 Cost=60
@@ -5353,6 +5362,15 @@ currency=KindredSeal
 sellprice=1500
 Desc=An old dusty key used to access Haukke Manor
 Dungeon=Haukke_Manor
+exclusive=yes
+
+[CorruptedHaukkeManorKey]
+type=dungeon
+cost=100
+currency=KindredSeal
+sellprice=1500
+Desc=An old dusty key used to access Haukke Manor (Hard)
+Dungeon=Haukke_Manor_hm
 exclusive=yes
 
 [Kan-raHand]

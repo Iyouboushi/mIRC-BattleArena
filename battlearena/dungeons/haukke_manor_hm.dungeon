@@ -1,0 +1,68 @@
+[Info]
+Name=Haukke Manor (Hard)
+Rooms=9
+PlayersNeeded=1
+PlayersRecommended=4
+Level=50
+BossLevel=150
+MonsterLevel=100
+FinalRoom=8
+StartBattleDesc=unlocks the door to the giant mansion. As the door creaks open the party can feel an aura of evil emitting from within.
+ClearDungeonDesc=* The party has put an end to Lady Amandine's evil plans and cleared Haukke Manor. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to clear the evil that lives within Haukke Manor and is forced to retreat. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party walks into the house and sees a giant staircase. At the top of the staircase is a large glowing blue shield that prevents them from approaching the second floor. They decide to take a moment, as this area seems safe, to prepare before searching the ground floor.
+Battlefield=Haukke Manor Lobby
+
+
+[1]
+Desc=The party decides to go down the $iif($rand(1,2) = 1, left, right) hallway first. After walking a moment the carpet seems to come to life as several stains pop up ready to attack the party.
+Battlefield=Haukke Manor Fl 1 - Hallway
+Monsters=Carpet_Stain.Carpet_Stain
+
+
+[2]
+Desc=The party opens a door they find while walking down the hallway only to be met by one of Lady Amandine's handmaidens.
+Battlefield=Haukke Manor Fl 1 - Rm 1
+Monsters=Lady's_Handmaiden
+
+
+[3]
+Desc=Unable to find anything to help them cross the barrier, the party returns to the hallway. They are soon approached by an undead hound and another carpet stain.
+Battlefield=Haukke Manor Fl 1 - Hallway
+Monsters=Carpet_Stain.Haukke_Hound
+
+
+[4]
+Desc=The party approaches another door and opens it.  A rotting smell fills their nose and they see a staircase leading down into a cellar. However, before they can approach the stairs they are attacked by a Corpsefly and a skeleton.
+Monsters=Corpsefly.Haukke_Bones
+Battlefield=Haukke Manor Fl 1 - Rm 2
+
+[5]
+Desc=The party descends into the cellar where they are met with a fearesome looking demonic foe, the Manor Claviger.  "None shall disturb my lady while she sleeps," it says to the party.
+Monsters=Manor_Claviger
+Battlefield=Haukke Manor Cellar
+bossroom=true
+
+[6]
+Desc=The Manor Claviger falls to the ground and its body fades into dust. As it does so, a glowing blue pendant is left behind. Quickly, the group returns to the staircase and holds out the pendant which causes the barrier to disappear. The party climbs the staircase to the second floor where a large gargoyle awaits them. 
+Battlefield=Haukke Manor Top of Staircase
+Monsters=Manor_Sentry
+bossroom=true
+
+
+[7]
+Desc=The sentry gives a large warning roar before crumbling into dust. Quickly he party enters through a double door and into another room where monsters are already waiting for them in a desperate attempt to protect their mistress.
+Monsters=Haukke_Bones.Haukke_Hound.Lady's_Handmaiden.
+bossroom=true
+Battlefield=Haukke Manor Fl 2 - Rm 1
+
+
+[8]
+Desc=Finally the party has reached the master bedroom of Lady Amandine. As they enter the room is sealed and four lamps that are in the corner of the room are lit aflame with dark purple energy. Lady Amandine appears before them and laughs.
+Monsters=Lady_Amandine.Haukke_Lamp1.Haukke_Lamp2.Haukke_Lamp3.Haukke_Lamp4
+Battlefield=Haukke Manor Master Bedroom
+bossroom=true
+
