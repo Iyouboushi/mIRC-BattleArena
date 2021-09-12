@@ -1,0 +1,70 @@
+[Info]
+Name=Lunar Tunnel 238a
+Open=true
+Rooms=10
+PlayersNeeded=1
+PlayersRecommended=3
+Level=1000
+MonsterLevel=1000
+BossLevel=1010
+FinalRoom=9
+StartBattleDesc=gives the charter to $readini(shopnpcs.dat, NPCNames, Engineer) who takes it and programs the Lunar Whale's destination to the moon! Everyone aboard! This is going to be a wild ride! $decrease_item($1, MoonCharter)
+
+ClearDungeonDesc=* The party returns to the Lunar Whale and returns back home in one piece! [Clear time: %total.battle.duration $+ ]
+
+DungeonFail=* The party has failed in exploring this section of the moon and is forced back home in defeat.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The Lunar Whale comes to a hard stop.  Everyone straps on the oxygen tank and prepares to leave the safety of the Lunar Whale to explore part of the moon.  Take a moment to prepare...
+Battlefield=Lunar Whale - Dock
+
+[1]
+Desc=The party leaves the ship and is standing on the surface of the moon. It's grey and lifeless.. after a moment $readini(shopnpcs.dat, NPCNames, Engineer) comes across via radio and informs the party that radar detects something of interest to the north and directs everyone to a large cave that leads into a tunnel..
+Battlefield=Moon Surface
+StoryRoom=true
+
+[2]
+Desc=The party enters the tunnel and begins the trek inwards.. $readini(shopnpcs.dat, NPCNames, Engineer) comes across via radio and informs the party that radar detects something moving right towards them!  After a moment the party is attacked!
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,5))
+Battlefield=Lunar Tunnel - 238a
+
+[3]
+Desc=The tunnel continues straight as more monsters rushes the party.
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,5))
+Battlefield=Lunar Tunnel - 238a
+
+[4]
+Desc=The ground shakes slightly.  As the party regains their balance more monsters approach.
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(3,5))
+Battlefield=Lunar Tunnel - 238a
+
+[5]
+Desc=The oxygen tanks beep revealing that the party has 50% oxygen left.  
+StoryRoom=true
+
+[6]
+Desc=The group sees the tunnel lead into a large crater.  Monsters seem to be crawling out of it and towards the group..
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(3,5))
+Battlefield=Lunar Tunnel - 238a
+
+[7]
+Desc=The crater glows a bright white as they continue to climb down into it.  As the party nears the bottom they hear a large roar of an unseen creature.
+StoryRoom=true
+
+[8]
+Desc=The party has reached the bottom of the crater. Sitting at the bottom is a large amount of glowing ore. They also see a floating spheroid body with a large fanged mouth and glowing red eyes on the front and many flexible snake-like hair stalks on the top. It gives a roar and the battle begins!
+Battlefield=Lunar Tunnel - 238a
+bossroom=true
+Monsters=Gomory
+
+[9]
+Desc=With the creature defeated the party is free to mine a small amount of ore before their decreating oxygen tank forces them to return to the Lunar Whale.
+StoryRoom=true
+
+[MonsterList]
+1=RedBavarios.BlackFlan
+2=LunarWorm.WhiteMousse
+3=LunarWorm.LunarBomb
+4=LunarWorm.MoonCell.LunarVirus
+5=BlackFlan.BlackFlan.LunarBomb

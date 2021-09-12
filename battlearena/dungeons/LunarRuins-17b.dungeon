@@ -1,0 +1,73 @@
+[Info]
+Name=Lunar Ruins 17b
+Open=true
+Rooms=10
+PlayersNeeded=1
+PlayersRecommended=3
+Level=1000
+MonsterLevel=1000
+BossLevel=1010
+FinalRoom=9
+StartBattleDesc=gives the charter to $readini(shopnpcs.dat, NPCNames, Engineer) who takes it and programs the Lunar Whale's destination to the moon! Everyone aboard! This is going to be a wild ride! $decrease_item($1, MoonCharter)
+
+ClearDungeonDesc=* The party returns to the Lunar Whale and returns back home in one piece! [Clear time: %total.battle.duration $+ ]
+
+DungeonFail=* The party has failed in exploring this section of the moon and is forced back home in defeat.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The Lunar Whale comes to a hard stop.  Everyone straps on the oxygen tank and prepares to leave the safety of the Lunar Whale to explore part of the moon.  Take a moment to prepare...
+Battlefield=Lunar Whale - Dock
+
+[1]
+Desc=The party leaves the ship and is standing on the surface of the moon. It's grey and lifeless.. after a moment $readini(shopnpcs.dat, NPCNames, Engineer) comes across via radio and informs the party that radar detects something of interest to the east and directs everyone to what appears to be ruins of an old city..
+Battlefield=Moon Surface
+StoryRoom=true
+
+[2]
+Desc=The party enters the ruins.. $readini(shopnpcs.dat, NPCNames, Engineer) comes across via radio and informs the party that radar detects something moving towards them!  After a moment the party is attacked by soldier-looking creatures!
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,1))
+Battlefield=Lunar Ruins - 17b
+
+[3]
+Desc=The party passes what appears to be a ruined shop and see creatures crawling out of the ruins towards them..
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(2,3))
+Battlefield=Lunar Ruins - 17b
+
+[4]
+Desc=The party moves onwards past what appears to be a ruined inn.  Monster monsters pour out of the ruins and attack!
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(3,7))
+Battlefield=Lunar Ruins - 17b
+
+[5]
+Desc=The oxygen tanks beep revealing that the party has 50% oxygen left.  
+StoryRoom=true
+
+[6]
+Desc=The party sees what seems to be a ruined temple up ahead.. There is an eerie glow coming from within.  As they make their way towards it more monsters attack.
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(3,7))
+Battlefield=Lunar Ruins - 17b
+
+[7]
+Desc=The ruined temple glows brighter as they grow nearer and nearer to it.  As they move past debris to enter the ruined temple they notice something standing in it..
+StoryRoom=true
+
+[8]
+Desc=The party has fully entered the ruined temple and see glowing ore all around.  They also notice an extremely large glowing skeleton covered in black robes standing in the middle of the room. It turns and gives a large cackle before going on the offensive..
+Battlefield=Lunar Ruins - 17b
+bossroom=true
+Monsters=Kumakatok
+
+[9]
+Desc=With the creature defeated the party is free to mine a small amount of ore before their decreating oxygen tank forces them to return to the Lunar Whale.
+StoryRoom=true
+
+[MonsterList]
+1=LunarSoldier.LunarSoldier
+2=LunarCorpse.LunarSoldier
+3=LunarCorpse.LunarCorpse
+4=LunarSoldier.LunarWorm
+5=LunarCorpse.LunarWorm
+6=LunarVirus.LunarCorpse.LunarSoldier
+7=LunarSoldier.MoonCell.LunarBomb
+

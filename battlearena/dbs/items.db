@@ -5480,6 +5480,15 @@ Desc=A map leading to a wrecked ship that is rumored to contain a rare ore. It h
 Dungeon=Hullbreaker_Isle
 Exclusive=yes
 
+[CorruptedHullbreaker_Isle-Map]
+type=dungeon
+cost=100
+currency=KindredCrest
+sellprice=1500
+Desc=A map leading to a wrecked ship that is rumored to contain a rare ore. It has gained the attention of pirates and archaeologists.
+Dungeon=Hullbreaker_Isle_hm
+Exclusive=yes
+
 [UnknownCaveMap]
 type=dungeon
 cost=100

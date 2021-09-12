@@ -834,6 +834,17 @@ ArcaneDust=500
 Paper=1
 Ink=1
 
+============
+Dungeon Items
+============
+
+[MoonCharter]
+Gem=Diamond
+Ingredients=OxygenTank.RocketFuel
+SuccessRate=100
+Amount=1
+OxygenTank=1
+RocketFuel=1
 
 ============
 Skill Items
@@ -3050,6 +3061,18 @@ Spaekona'sPetasos=1
 KogaHatsuburi=1
 WakidoKabuto=1
 ReverenceCoronet=1
+
+[LunarHelm]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.LunarOre
+SuccessRate=100
+Amount=1
+LifeShard=10000
+ReusablePart=10000
+ForgottenSoul=10000
+ArcaneDust=10000
+OdinMark=100
+LunarOre=20
 
 [DensetsuNoYoroi]
 Gem=Diamond

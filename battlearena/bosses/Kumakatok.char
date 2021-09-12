@@ -6,7 +6,7 @@ def=7006
 int=1006
 spd=3006
 IgnitionGauge=2
-Name=Gloom Eye
+Name=Kumakatok
 
 
 [Battle]
@@ -32,8 +32,9 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a gigantic winged one-eye monster that gives off a sense of dread and doom
+Char=is a large glowing skeleton wrapped in black robes 
 Rage=screams in rage 
+MonsterSummon=Kumakatok raises its hands and screams in an ancient language. After a few seconds %number.of.spawns.needed Lunar $iif(%number.of.spawns.needed = 1, Corpse, Corpses) crawl their way out of the ground and join the battle.
 
 
 [Stuff]
@@ -129,13 +130,15 @@ Resist-Stun=100
 Resist-Terrified=100
 Resist-Weaponlock=100
 Resist-Zombie=100
-DoubleTurn.on=on
 DesperateBlows=1
+MonsterSummon=1
+MonsterSummon.Monster=LunarCorpse
+MonsterSummon.Chance=$rand(70,100)
+monstersummon.numberspawn=$rand(1,3)
 
 [Techniques]
-LunarDoom=1000
-LunarDeathGlare=1000
-LunarQuake=1000
+LunarFlare=1000
+LunarFlood=1000
 
 [modifiers]
 Heal=dark

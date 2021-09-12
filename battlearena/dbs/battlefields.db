@@ -1372,4 +1372,14 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 [Lunar Tunnel - 025x]
 weather=none
 limitations=no-playerignition.no-mech
-scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
+scavenge=Sapphire.Opal.Onyx.Diamond
+
+[Lunar Tunnel - 238a]
+weather=none
+limitations=no-playerignition.no-mech
+scavenge=Sapphire.Opal.Onyx.Diamond
+
+[Lunar Ruins - 17b]
+weather=none
+limitations=no-playerignition.no-mech
+scavenge=Sapphire.Opal.Onyx.Diamond

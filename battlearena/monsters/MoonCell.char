@@ -1,21 +1,21 @@
 [BaseStats]
-HP=55378
+HP=26378
 Tp=1500
-str=8006
+str=10006
 def=7006
 int=1006
-spd=3006
+spd=2006
 IgnitionGauge=2
-Name=Gloom Eye
+Name=Moon Cell
 
 
 [Battle]
-HP=55378
+HP=26378
 Tp=1500
-str=8006
+str=10006
 def=7006
 int=1006
-spd=3006
+spd=2006
 IgnitionGauge=2
 Status=alive
 
@@ -24,16 +24,12 @@ Status=alive
 RageBar=0
 RageCountDown=0
 
-[Limit]
-Level=1
-Percent=0
-
 
 [Descriptions]
 Hused=1
 Dused=1
-Char=is a gigantic winged one-eye monster that gives off a sense of dread and doom
-Rage=screams in rage 
+Char=is large cellular looking creature with long tentacles
+Rage=...
 
 
 [Stuff]
@@ -41,10 +37,11 @@ RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
 
+
 [Info]
 Flag=monster
-Gender=his
-Gender2=him
+Gender=its
+Gender2=its
 password=battlearena
 passhurt=0
 LastSeen=N/a
@@ -55,7 +52,7 @@ CanTaunt=false
 IgnoreElementalMessage=true
 BattleStats=IgnoreTP
 IgnorePresident=true
-SkipDoubleTurns=false
+SkipDoubleTurns=true
 ActionsPerTurn=1
 IgnoreOutpost=true
 MaxTormentLevel=0
@@ -66,10 +63,10 @@ JustReleaseDefense=100
 IgnoreQuicksilver=true
 LegendaryWeaponsOnly=true
 
-[monster]
-type=demon
-size=large
-elite=true
+[Monster]
+Type=unknown
+size=medium
+
 
 [Status]
 Poison=no
@@ -103,50 +100,30 @@ slow=no
 sleep=no
 stun=no
 MPRegenerating=no
-ethereal=no
+
 
 [Weapons]
-Equipped=LunarPower
-LunarPower=1200
+Equipped=CellularAttack
+CellularAttack=1050
+
 
 [Skills]
-Resist-Amnesia=100
-Resist-Blind=100
-Resist-Charm=100
-Resist-Confuse=100
-Resist-Curse=100
-Resist-Disarm=100
-Resist-Drunk=100
-Resist-Intimidate=100
-Resist-Paralysis=100
-Resist-Petrify=100
-Resist-Poison=100
-Resist-Silence=100
-Resist-Sleep=100
-Resist-Slow=100
-Resist-Stop=100
-Resist-Stun=100
-Resist-Terrified=100
-Resist-Weaponlock=100
-Resist-Zombie=100
-DoubleTurn.on=on
 DesperateBlows=1
 
+
 [Techniques]
-LunarDoom=1000
-LunarDeathGlare=1000
-LunarQuake=1000
+
 
 [modifiers]
-Heal=dark
+Heal=light
 Earth=70
 Fire=70
 Wind=70
 Water=70
 Ice=100
 Lightning=70
-Light=150
-Dark=200
+Light=250
+Dark=100
 HandToHand=50
 Whip=50
 Sword=70
@@ -238,16 +215,4 @@ Bat=100
 +Wind=70
 +Water=70
 +Dark=100
-ResistTech=10
-ResistMelee=10
-
-[Styles]
-Equipped=Guardian
-Guardian=2
-GuardianXP=1
-
-[Rotations]
-Current=0
-1=Tech
-2=Attack
-3=Free
+ResistTech=20

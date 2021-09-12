@@ -5132,7 +5132,7 @@ IgnoreDefense=2
 [LunarPower]
 Type=HandToHand
 Info=A weapon for Lunar beings.
-Abilities=LunarDoom.LunarDeathGlare.LunarQuake
+Abilities=LunarDoom.LunarDeathGlare.LunarQuake.LunarFlare.LunarFlood
 Element=dark
 Hits=2
 BasePower=25

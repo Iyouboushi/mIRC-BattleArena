@@ -908,6 +908,23 @@ Exclusive=yes
 Legendary=true
 Protection=2
 
+[LunarHelm]
+name=Lunar Helm
+hp=900
+tp=100
+Str=5000
+def=5000
+int=5000
+spd=5000
+Augment=all
+EquipLocation=body
+cost=0
+SellPrice=50000
+LevelRequirement=21000
+Exclusive=yes
+Legendary=true
+Protection=2.3
+
 ========
 BODY
 ========

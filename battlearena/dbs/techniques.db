@@ -677,7 +677,7 @@ DioFists=DoublePunch.ShoulderTackle.SpinningAttack.TornadoKick.ShinjinSpiral
 TheWorldFists=DoublePunch.SpinningAttack.ShinjinSpiral.TheWorld.MudaMudaMuda
 WoFWheels=DoublePunch.ShoulderTackle.SpinningAttack.OneInchPunch.ChargedShot
 HornetStinger=SharpSting.FrenzySting.WaspSting
-LunarPower=LunarDoom.LunarDeathGlare.LunarQuake
+LunarPower=LunarDoom.LunarDeathGlare.LunarQuake.LunarFlare
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -22693,6 +22693,28 @@ TP=45
 Desc=opens its eye half way and the whole battlefield begins to violently shake.
 BasePower=50
 Element=Earth
+Magic=Yes
+stat=int
+Spell=yes
+
+[LunarFlare]
+Type=AOE
+TP=45
+Desc=summons a large sphere a fire above the battlefield and lets the sphere stay for a moment before allowing it to suddenly explode into the battlefield causing extreme burn damage!
+BasePower=100
+Element=Fire
+Cost=0
+Magic=Yes
+stat=int
+Spell=yes
+
+[LunarFlood]
+Type=AOE
+TP=45
+Desc=summons a large tidal wave that engulfs the battlefield!
+BasePower=100
+Element=Water
+Cost=0
 Magic=Yes
 stat=int
 Spell=yes

@@ -5,6 +5,8 @@ Rooms=10
 PlayersNeeded=1
 PlayersRecommended=3
 Level=1000
+MonsterLevel=1000
+BossLevel=1010
 FinalRoom=9
 StartBattleDesc=gives the charter to $readini(shopnpcs.dat, NPCNames, Engineer) who takes it and programs the Lunar Whale's destination to the moon! Everyone aboard! This is going to be a wild ride! $decrease_item($1, MoonCharter)
 
@@ -18,7 +20,7 @@ Desc=The Lunar Whale comes to a hard stop.  Everyone straps on the oxygen tank a
 Battlefield=Lunar Whale - Dock
 
 [1]
-Desc=The party leaves the ship and is standing on the surface of the moon. It's grey and lifeless.. after a moment $readini(shopnpcs.dat, NPCNames, Engineer) comes across via radio and informs the party that radar detects something of interest and directs everyone to a large cave that leads into a tunnel..
+Desc=The party leaves the ship and is standing on the surface of the moon. It's grey and lifeless.. after a moment $readini(shopnpcs.dat, NPCNames, Engineer) comes across via radio and informs the party that radar detects something of interest to the south and directs everyone to a large cave that leads into a tunnel..
 Battlefield=Moon Surface
 StoryRoom=true
 
@@ -42,7 +44,7 @@ Desc=The oxygen tanks beep revealing that the party has 50% oxygen left.
 StoryRoom=true
 
 [6]
-Desc=The ground appears to be lightly glowing. But before the party can investigate more monsters approach.
+Desc=The ground contniues to glow as the party moves forward. Even more monsters approach.
 Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(3,5))
 Battlefield=Lunar Tunnel - 025x
 
@@ -51,7 +53,7 @@ Desc=The ground begins to glow brightly then narrow into a glowing path.  As the
 StoryRoom=true
 
 [8]
-Desc=The party approaches a large open cavern of the tunnel.  Sitting in the cavern is glowing ore.  Also sitting in the cavern is a gigantic winged eye monster that gives off a sense of dread and doom.  It gives a roar and the battle begins!
+Desc=The party approaches a large open cavern of the tunnel.  Sitting in the cavern is glowing ore.  Also sitting in the cavern is a gigantic winged one-eye monster that gives off a sense of dread and doom.  It gives a roar and the battle begins!
 Battlefield=Lunar Tunnel - 025x
 bossroom=true
 Monsters=Gloom_Eye
