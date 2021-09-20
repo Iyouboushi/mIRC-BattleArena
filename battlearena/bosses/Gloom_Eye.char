@@ -1,5 +1,5 @@
 [BaseStats]
-HP=55378
+HP=255378
 Tp=1500
 str=8006
 def=7006
@@ -10,7 +10,7 @@ Name=Gloom Eye
 
 
 [Battle]
-HP=55378
+HP=255378
 Tp=1500
 str=8006
 def=7006
