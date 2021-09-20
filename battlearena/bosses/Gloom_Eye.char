@@ -1,5 +1,5 @@
 [BaseStats]
-HP=255378
+HP=155378
 Tp=1500
 str=8006
 def=7006
@@ -10,7 +10,7 @@ Name=Gloom Eye
 
 
 [Battle]
-HP=255378
+HP=155378
 Tp=1500
 str=8006
 def=7006
@@ -238,6 +238,7 @@ Bat=100
 +Wind=70
 +Water=70
 +Dark=100
+Mythic=1
 ResistTech=10
 ResistMelee=10
 
