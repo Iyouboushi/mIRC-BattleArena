@@ -263,7 +263,7 @@ alias shopnpc.status.check {
   if (($shopnpc.present.check(Jeweler) = false) && (%player.enhancementpointsspent >= 75)) { $shopnpc.add(Jeweler) }
 
   ; Check the engineer NPC
-  if (($readini(garden.dat, GardenStats, level) >= 10) && (%player.over1000 = true)) { $shopnpc.add(Engineer) } 
+  if (($readini(garden.dat, GardenStats, level) >= 6) && (%player.over1000 = true)) { $shopnpc.add(Engineer) } 
 
   unset %player.deaths | unset %player.shoplevels | unset %player.totalbattles | unset %player.totalachievements
   unset %player.totallostsouls | unset %player.totalparries | unset %player.itemssold | unset %player.over1000
