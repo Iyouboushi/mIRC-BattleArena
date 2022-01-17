@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; TECHS COMMAND
-;;;; Last updated: 06/17/21
+;;;; Last updated: 01/17/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ON 3:ACTION:goes *:#: { 
@@ -2026,6 +2026,16 @@ alias ignition.triggereffect {
   ; $2 = ignition
 
   if ($readini($dbfile(ignitions.db), $2, Effect) = none) { return }
+
+  if ($readini($dbfile(ignitions.db),$2, Effect) = IncreaseLimitGauge) {
+    var %limitgaugeinc.amount $readini($dbfile(ignitions.db), $2, LimitGaugeIncrease) 
+    if (%limitgaugeinc.amount = $null) { var %limitgaugeinc.amount 10 }
+
+    var %current.limitgauge $limitbreak.percent($1)
+    inc %current.limitgauge %limitgaugeinc.amount
+    writeini $char($1) Battle LimitBreakPercent %current.limitgauge
+  }
+
 
   if ($readini($dbfile(ignitions.db), $2, Effect) = status) { 
 

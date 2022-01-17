@@ -6,11 +6,17 @@ augments.lst and look through the list
 list)
 
 Valid Effect Types are:
- None, Status
+ None, Status, IncreaseLimitGauge
 
 Valid Status Targets are:
   Enemy, Self, Allies, All
 
+
+For IncreaseLimitGauge you will need to add
+LimitGaugeIncrease=# where # is the amount
+of limit gauge to increase.  Also important
+to note that this will only work on the
+user.
 
 -----
 If you add a new ignition, make sure you put
