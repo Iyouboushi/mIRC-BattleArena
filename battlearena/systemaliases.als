@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 09/06/21
+;;;; Last updated: 03/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2853,6 +2853,7 @@ clear_negative_status {
   writeini $char($1) status bored no | remini $char($1) status weapon.locked | writeini $char($1) status confuse no 
   remini $char($1) status annoyed | writeini $char($1) status terrify no | writeini $char($1) status doll no | writeini $char($1) status doom no
   writeini $char($1) status heavy no  | writeini $char($1) status silence no
+  writeini $char($1) status mini no
 
   ; Clear negative timer statuses
   writeini $char($1) status poison.timer 0 |  writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
@@ -2862,6 +2863,7 @@ clear_negative_status {
   writeini $char($1) status doll.timer 0 | remini $char($1) status doom.timer 
   remini $char($1) status sleep.turn | remini $char($1) status sleep.inflict
   remini $char($1) status silence.timer
+  remini $char($1) stuats mini.timer
 
   ; Monsters that are zombies need to be reset as zombies.
   if ($readini($char($1), monster, type) = zombie) {  writeini $char($1) status zombie yes | writeini $char($1) status zombieregenerating yes } 

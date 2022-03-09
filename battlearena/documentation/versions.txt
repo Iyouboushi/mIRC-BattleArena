@@ -1750,6 +1750,8 @@ Battle Arena Bot VERSIONS
   DefeatedMonsterStandsBackUp=description here
 - Added a way to make BattleArena work on Discord.  For more information read the readme.txt in the Discord folder. As of this version
   it is not 100% complete.
+- Added the 'mini' status effect.  This status effect will shrink the target and make them take more damage and deal less damage
+  until the status wears off.
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.

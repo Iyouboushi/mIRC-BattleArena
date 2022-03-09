@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 06/17/21
+;;;; Last updated: 03/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -323,7 +323,7 @@ statuseffect.check {
 ; that status effects last.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 status.effects.turns {
-  var %negative.status.effects confuse.poison.curse.cocoon.silence.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.charm.paralysis.bored
+  var %negative.status.effects confuse.poison.curse.cocoon.silence.weaponlock.drunk.zombie.doll.virus.slow.defensedown.strdown.intdown.charm.paralysis.bored.mini
 
   if ($istok(%negative.status.effects,$1,46) = $true) { 
     if ($return_playersinbattle <= 1) { return 2 }
@@ -346,6 +346,7 @@ status.effects.turns {
     if ($1 = paralysis) { return 3 }
     if ($1 = bored) { return 2 }
     if ($1 = silence) { return 5 }
+    if ($1 = mini) { return 3 }
   }
   else { 
     if ($1 = defup) { return 3 }
@@ -2608,6 +2609,7 @@ inflict_status {
     if (%random.status.type = 17) { set %status.type sleep | var %status.grammar asleep  }
     if (%random.status.type = 18) { set %status.type terrify | var %status.grammar terrified }
     if (%random.status.type = 19) { set %status.type silence | var %status.grammar silenced  }
+    if (%randoml.status.type = 20) { set %status.type mini | var %status.grammer mini } 
   }
 
   if ($3 = stop) { set %status.type stop | var %status.grammar frozen in time }
@@ -2620,6 +2622,7 @@ inflict_status {
   if ($3 = paralysis) { set %status.type paralysis | var %status.grammar paralyzed }
   if ($3 = zombie) { set %status.type zombie | var %status.grammar a zombie }
   if ($3 = doll) { set %status.type doll | var %status.grammar a small doll }
+  if ($3 = mini) { set %status.type mini | var %status.grammar mini } 
   if ($3 = slow) { set %status.type slow | var %status.grammar slowed }
   if ($3 = stun) { set %status.type stun | var %status.grammar stunned }
   if ($3 = curse) { set %status.type curse | var %status.grammar cursed }
@@ -5559,6 +5562,18 @@ doll_check {
   }
   else { 
     if ($readini($char($1), Status, doll) = yes) {   writeini $char($1) status doll no | writeini $char($1) status doll.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, dollWornOff) |  writeini $char($1) status dollregenerating off | unset %doll.timer | return  }
+  }
+  return
+}
+
+mini_check { 
+  var %mini.timer $readini($char($1), status, mini.timer)  
+  if (%mini.timer < $status.effects.turns(mini)) { 
+    if ($readini($char($1), Status, mini) = yes) { %mini.timer = $calc(%mini.timer + 1) | writeini $char($1) status mini.timer %mini.timer 
+    $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, currentlyMini) | return }
+  }
+  else { 
+    if ($readini($char($1), Status, mini) = yes) {   writeini $char($1) status mini no | writeini $char($1) status mini.timer 0 | $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, miniWornOff) | unset %mini.timer | return  }
   }
   return
 }

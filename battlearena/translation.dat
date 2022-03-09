@@ -933,6 +933,8 @@ EnspellWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's melee weapon enchantment h
 InvincibleDamage=$chr(3) $+ 3 $+  $+ %real.name $+  takes no damage due to $gender($3) invincible status!
 CurrentlyInvincible=$chr(3) $+ 4 $+ %real.name $+  is currently invincible and will take no damage!
 InvincibleWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's invincible status has worn off. 
+CurrentlyMini=$chr(3) $+ 4 $+ %real.name is currently under the mini status effect and is currently small in size.
+MiniWornOff=$chr(3) $+ 3 $+  $+ %real.name $+ 's mini status has worn off and %real.name has grown back to normal size.
 
 =======================
 Skill Related Messages

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/31/20
+;;;; Last updated: 03/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -786,6 +786,20 @@ formula.meleedmg.player.formula {
   var %damage.cap $calc(99.99 * $get.level($1))
   if (%battle.type = dungeon) { inc %damage.cap 800 } 
 
+
+  ; if the attacker is mini then cut the damage by a bunch
+  if ($is_mini($1) = true) { 
+    %attack.damage = $calc(%attack.damage / 5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
+
+  ; if the defender is mini then increase the damage by some
+  if ($is_mini($3) = true) { 
+    %attack.damage = $calc(%attack.damage * 1.5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
+
+
   if (%attack.damage > %damage.cap) { set %attack.damage $floor(%damage.cap)) } 
 
   unset %damage.rating | unset %killer.trait.amount
@@ -1042,6 +1056,18 @@ formula.techdmg.player.formula {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; if the attacker is mini then cut the damage by a bunch
+  if ($is_mini($1) = true) { 
+    %attack.damage = $calc(%attack.damage / 5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
+
+  ; if the defender is mini then increase the damage by some
+  if ($is_mini($3) = true) { 
+    %attack.damage = $calc(%attack.damage * 1.5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
@@ -3721,6 +3747,18 @@ formula.meleedmg.monster {
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
+  ; if the attacker is mini then cut the damage by a bunch
+  if ($is_mini($1) = true) { 
+    %attack.damage = $calc(%attack.damage / 5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
+
+  ; if the defender is mini then increase the damage by some
+  if ($is_mini($3) = true) { 
+    %attack.damage = $calc(%attack.damage * 1.5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
+
   ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
 
@@ -3729,6 +3767,9 @@ formula.meleedmg.monster {
   }
 
   set %style.attack.damage %attack.damage
+
+
+
 
   if (%attack.damage = 0) { return }
 
@@ -4097,6 +4138,18 @@ formula.techdmg.monster {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; if the attacker is mini then cut the damage by a bunch
+  if ($is_mini($1) = true) { 
+    %attack.damage = $calc(%attack.damage / 5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
+
+  ; if the defender is mini then increase the damage by some
+  if ($is_mini($3) = true) { 
+    %attack.damage = $calc(%attack.damage * 1.5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
