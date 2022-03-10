@@ -100,6 +100,26 @@ damage.modifiers.check {
 
 }
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Checks for the 'mini' status 
+; and adjusts damage if 
+; necessary
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+mini_damage_adjust { 
+  ; if the attacker is mini then cut the damage by a bunch
+  if ($is_mini($1) = true) { 
+    %attack.damage = $calc(%attack.damage / 5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
+
+  ; if the defender is mini then increase the damage by some
+  if ($is_mini($3) = true) { 
+    %attack.damage = $calc(%attack.damage * 1.5) 
+    %attack.damgae = $round(%attack.damage, 0) 
+  }
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Calculates damage item amount
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -212,6 +232,9 @@ calculate_damage_items {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   $invincible.check($1, $2, $3)
   $perfectdefense.check($1, $2, $3)
@@ -771,6 +794,9 @@ formula.meleedmg.player.formula {
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
 
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
+
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
@@ -786,19 +812,8 @@ formula.meleedmg.player.formula {
   var %damage.cap $calc(99.99 * $get.level($1))
   if (%battle.type = dungeon) { inc %damage.cap 800 } 
 
-
-  ; if the attacker is mini then cut the damage by a bunch
-  if ($is_mini($1) = true) { 
-    %attack.damage = $calc(%attack.damage / 5) 
-    %attack.damgae = $round(%attack.damage, 0) 
-  }
-
-  ; if the defender is mini then increase the damage by some
-  if ($is_mini($3) = true) { 
-    %attack.damage = $calc(%attack.damage * 1.5) 
-    %attack.damgae = $round(%attack.damage, 0) 
-  }
-
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   if (%attack.damage > %damage.cap) { set %attack.damage $floor(%damage.cap)) } 
 
@@ -1057,17 +1072,8 @@ formula.techdmg.player.formula {
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
 
-  ; if the attacker is mini then cut the damage by a bunch
-  if ($is_mini($1) = true) { 
-    %attack.damage = $calc(%attack.damage / 5) 
-    %attack.damgae = $round(%attack.damage, 0) 
-  }
-
-  ; if the defender is mini then increase the damage by some
-  if ($is_mini($3) = true) { 
-    %attack.damage = $calc(%attack.damage * 1.5) 
-    %attack.damgae = $round(%attack.damage, 0) 
-  }
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
@@ -1840,6 +1846,9 @@ formula.meleedmg.player.formula_2.0 {
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
 
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
+
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
@@ -2168,6 +2177,9 @@ formula.meleedmg.player.formula_3.1 {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
@@ -2521,6 +2533,9 @@ formula.meleedmg.player.formula_3.0 {
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
 
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
+
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
@@ -2857,6 +2872,9 @@ formula.meleedmg.player.formula_1.0 {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
@@ -3260,6 +3278,9 @@ formula.meleedmg.player.formula_2.5 {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
@@ -3744,20 +3765,14 @@ formula.meleedmg.monster {
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
 
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
+
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
-  ; if the attacker is mini then cut the damage by a bunch
-  if ($is_mini($1) = true) { 
-    %attack.damage = $calc(%attack.damage / 5) 
-    %attack.damgae = $round(%attack.damage, 0) 
-  }
-
-  ; if the defender is mini then increase the damage by some
-  if ($is_mini($3) = true) { 
-    %attack.damage = $calc(%attack.damage * 1.5) 
-    %attack.damgae = $round(%attack.damage, 0) 
-  }
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Set the style amount to the attack damage
   set %style.attack.damage %attack.damage
@@ -4139,17 +4154,8 @@ formula.techdmg.monster {
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
 
-  ; if the attacker is mini then cut the damage by a bunch
-  if ($is_mini($1) = true) { 
-    %attack.damage = $calc(%attack.damage / 5) 
-    %attack.damgae = $round(%attack.damage, 0) 
-  }
-
-  ; if the defender is mini then increase the damage by some
-  if ($is_mini($3) = true) { 
-    %attack.damage = $calc(%attack.damage * 1.5) 
-    %attack.damgae = $round(%attack.damage, 0) 
-  }
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
@@ -4480,6 +4486,9 @@ formula.techdmg.player.formula_2.0 {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
@@ -4817,6 +4826,9 @@ formula.techdmg.player.formula_2.5 {
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
 
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
+
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
 
@@ -5066,6 +5078,9 @@ formula.techdmg.player.formula_1.0 {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
@@ -5366,6 +5381,9 @@ formula.techdmg.player.formula_3.1 {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
@@ -5682,6 +5700,9 @@ formula.techdmg.player.formula_3.0 {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
@@ -6017,6 +6038,9 @@ formula.meleedmg.player.formula_4.0 {
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
 
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
+
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3)
 
@@ -6313,6 +6337,9 @@ formula.techdmg.player.formula_4.0 {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
@@ -6617,6 +6644,9 @@ formula.techdmg.player.percent {
 
   ; If the attacker is a doll, cut the damage in half
   if ($readini($char($1), status, doll) = yes) { %attack.damage = $calc(%attack.damage / 2) } 
+
+  ; Check to see if the mini status effect adjusts the damage.
+  $mini_damage_adjust($1, $2, $3)
 
   ; Check for a guardian monster
   $guardianmon.check($1, $2, $3, $4)
