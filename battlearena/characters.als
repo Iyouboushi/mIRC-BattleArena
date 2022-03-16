@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/09/22
+;;;; Last updated: 03/15/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2096,6 +2096,11 @@ character.dragonhunt {
   ; Check for a dragon's lair
   var %dragonhunt.chance 4
 
+  ; Increase the chance by the global chance
+  var %global.dragonchance $readini(battlestats.dat, AlliedForces, DragonHuntChance)
+  if (%global.dragonchance = $null) { var %global.dragonchance 0 }
+  inc %dragonhunt.chance %global.dragonchance
+
   ; If there's more than 4 dragons let's increase the odds of finding one
   if (%dragonhunt.numberofdragons > 4) { inc %dragonhunt.chance %dragonhunt.numberofdragons } 
 
@@ -2118,6 +2123,8 @@ character.dragonhunt {
 
   if (%dragonhunt.randomnum > %dragonhunt.chance) { 
     $display.message($readini(translation.dat, errors, DragonHunt.NoLairFound), private) 
+    inc %global.dragonchance 10 
+    writeini battlestats.dat AlliedForces DragonHuntChance %global.dragonchance
     halt
   }
 
@@ -2132,6 +2139,9 @@ character.dragonhunt {
     var %random.dragon $rand(1,%dragonhunt.numberofdragons)
     set %dragonhunt.file.name $ini($dbfile(dragonhunt.db), %random.dragon)
     set %dragonhunt.name $readini($dbfile(dragonhunt.db), %dragonhunt.file.name, name)
+
+    var %global.dragonchance 0 
+    writeini battlestats.dat AlliedForces DragonHuntChance %global.dragonchance
 
     $startnormal(DragonHunt, $1)
     halt

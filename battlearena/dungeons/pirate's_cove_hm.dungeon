@@ -1,0 +1,67 @@
+[Info]
+Name=Pirate's Cove (Hard)
+Rooms=9
+PlayersNeeded=1
+PlayersRecommended=3
+Level=50
+BossLevel=100
+MonsterLevel=60
+FinalRoom=8
+StartBattleDesc=pulls out a salty map that reads "DELIVER ALL PLUNDER TO THE MASTER WAITING AT THE PIRATE'S COVE" with an X marking the spot of the cove. Together the party sails to the cove...
+ClearDungeonDesc=* The party has defeated the pirate's master and claimed a piece of the pirate's plunder for themselves [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to clear the Pirate's Cove and must retreat. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The party departs their docked ship and sees a large stone wall with a small indention. Pushing it, the wall gives way to a door leading inwards.. They decide to take a moment, as this area seems safe, to prepare before advancing any further.
+Battlefield=Pirate's Cove
+
+
+[1]
+Desc=The party advances into the cove only to stumble upon a lone pirate and two scurvy dogs waiting for them..
+Battlefield=Pirate's Cove
+Monsters=Scurvy_Dog.Scurvy_Dog.Scurvy_Pirate
+
+
+[2]
+Desc=Continuing onwards the pirate sees a sick-looking bat and another lone pirate patrolling the hall
+Battlefield=Pirate's Cove
+Monsters=Scurvy_Bat.Scurvy_Pirate
+
+
+[3]
+Desc=The party comes to a large cavern where the pirates have set up tables and chairs. Sitting in a chair is a regal looking pirate, the Captain Madison, and two of his men. When they see the party they leap up and draw their weapons
+Battlefield=Pirate's Cove
+Monsters=Captain_Madison.Scurvy_Pirate.Scurvy_Pirate
+bossroom=true
+
+[4]
+Desc=Quickly they chase after Captain Madison but are cut off by two fancier looking pirates
+Battlefield=Pirate's Cove
+Monsters=Scurvy_Reaver.Scurvy_Reaver
+
+[5]
+Desc=Dispatching the pirates the party continues onwards in their search for Captain Madison. They follow the cove further inwards and stumble upon another room full of pirates
+Battlefield=Pirate's Cove
+Monsters=Scurvy_Reaver.Scurvy_Pirate.Scurvy_Reaver
+
+
+[6]
+Desc=Finally the heroes have caught up to Captain Madison who throws down his cutlass and draws a darker blade. He then releases his scurvy dogs to help fight with him.
+Battlefield=Pirate's Cove
+Monsters=Scurvy_Dog.Scurvy_Dog.Captain_Madison
+bossroom=true
+
+
+[7]
+Desc=The party can hear a large blubbering roar coming from ahead. Pushing the dead Captain's body aside they decide this room would be a good place to rest and restore their strength and prepare for what lies ahead.
+Battlefield=Pirate's Cove
+RestoreRoom=true
+
+
+[8]
+Desc=After recovering their strength the party pushes onwards to the final area of the cove. They can see a large amount of water which begins to bubble and stir with a large amount of treasure laying around the room. After a moment a large Sahagin jumps out of the water ready for battle. 
+Battlefield=Pirate's Cove - Inner Chamber
+Monsters=Denn_Orcatoothed
+bossroom=true
+

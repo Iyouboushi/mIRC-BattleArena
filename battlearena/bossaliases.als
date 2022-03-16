@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 12/02/19
+;;;; Last updated: 03/16/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -28,26 +28,26 @@ get_boss_type {
   var %winning.streak.check $readini(battlestats.dat, battle, winningstreak)
   if (%mode.gauntlet.wave != $null) { inc %winning.streak.check %mode.gauntlet.wave }
 
-  if ((%winning.streak.check < 50) || (%winning.streak.check > 500)) { var %enable.dinosaur false }
-  if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.bandits false }
-  if ((%winning.streak.check < 50) || (%winning.streak.check > 100)) { var %enable.doppelganger false }
-  if ((%winning.streak.check < 50) || (%winning.streak.check > 200)) { var %enable.gremlins false }
-  if ((%winning.streak.check < 75) || (%winning.streak.check > 200)) { var %enable.goblins false }
-  if (%winning.streak.check >= 250) { var %enable.warmachine false } 
-  if (%winning.streak.check < 75) { var %enable.pirates false }
+  echo -a :: Win Streak: %winning.streak.check
 
-  if ((%winning.streak.check >= 100) && (%winning.streak.check < 300)) { 
+
+  if (%winning.streak.check isnum 1-49) { 
+    var %enable.dinosaur false
+    var %enable.bandits false
+    var %enable.doppelganger false
+    var %enable.gremlins false
+    var %enable.pirates false 
+    var %enable.goblins false
+  }
+
+
+  if ((%winning.streak.check >= 55) && (%winning.streak.check < 500)) { 
     if ($readini(system.dat, system, AllowDemonwall) = yes) { var %enable.demonwall true }
   }
 
-  if (%winning.streak.check >= 300) { 
+  if (%winning.streak.check >= 500) { 
     if ($readini(system.dat, system, AllowWallOfFlesh) = yes) { var %enable.wallofflesh true }
   }
-
-  if ((%winning.streak.check >= 200) && (%winning.streak.check <= 5000)) { 
-    if ($readini(system.dat, system, EnablePredator) = true) { var %enable.predator true }
-  }
-
 
 
   if (%mode.gauntlet = on) { var %enable.demonwall false }
@@ -55,23 +55,20 @@ get_boss_type {
   if (($left($adate, 2) = 12) && (%winning.streak.check >= 20)) { %boss.choices = %boss.choices $+ .FrostLegion }
 
   var %boss.chance $rand(1,100)
+  var %boss.chance 1
 
   if ((%enable.dinosaur = true) && (%boss.chance <= 30)) { %boss.choices = %boss.choices $+ .dinosaurs }
-  if ((%enable.doppelganger = true) && (%boss.chance <= 30)) { %boss.choices = %boss.choices $+ .doppelganger }
+  if ((%enable.doppelganger = true) && (%boss.chance <= 25)) { %boss.choices = %boss.choices $+ .doppelganger }
   if ((%enable.warmachine = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .warmachine }
   if ((%enable.bandits = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .bandits }
   if ((%enable.gremlins = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .gremlins }
+  if ((%enable.pirates = true) && (%boss.chance <= 50)) { %boss.choices = %boss.choices $+ .pirates }
+  if ((%enable.wallofflesh = true) && (%boss.chance <= 25)) { %boss.choices = %boss.choices $+ .wallofflesh }
+  if ((%enable.demonwall = true) && (%boss.chance <= 15)) { %boss.choices = %boss.choices $+ .demonwall }
+  if ((%enable.predator = true) && (%boss.chance <= 20)) { %boss.choices = %boss.choices $+ .predator }  
   if ((%enable.crystalshadow = true) && (%boss.chance <= 15)) { 
     if (%winning.streak.check > 15) { %boss.choices = %boss.choices $+ .crystalshadow }
   }
-
-  if (%enable.pirates = true) {
-    if ((%winning.streak.check >= 15) && (%winning.streak.check <= 500)) { %boss.choices = %boss.choices $+ .pirates }
-  }
-
-  if ((%enable.wallofflesh = true) && (%boss.chance <= 25)) { %boss.choices = %boss.choices $+ .wallofflesh }
-  if ((%enable.demonwall = true) && (%boss.chance <= 15)) { %boss.choices = %boss.choices $+ .demonwall }
-  if ((%enable.predator = true) && (%boss.chance <= 50)) { %boss.choices = %boss.choices $+ .predator }  
 
   ; Choose a boss type
 

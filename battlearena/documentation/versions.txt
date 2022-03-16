@@ -1752,8 +1752,11 @@ Battle Arena Bot VERSIONS
   it is not 100% complete.
 - Added the 'mini' status effect.  This status effect will shrink the target and make them take more damage and deal less damage
   until the status wears off.
+- Added a global dragon hunt chance percent that increases by 10% every time a dragon is not found. When it hits 100% there will be
+  a successful hunt no matter what.
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #
+- Changed how fast the dragon hunt dragons age up.
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
 - Fixed an issue with the sleep status
 - Removed the "FinalGetsuga" and "Merlin'sFinalSpell" techniques from the game.  The CharacterResetPotion has replaced them.

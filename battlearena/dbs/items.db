@@ -5355,6 +5355,14 @@ Desc=A map that reveals the location of Pirate's Cove
 Dungeon=pirate's_cove
 exclusive=yes
 
+[BurntSaltyMap]
+type=dungeon
+cost=0
+sellprice=5000
+Desc=A partially burnt map that reveals the location of Pirate's Cove (Hard)
+Dungeon=pirate's_cove_hm
+exclusive=yes
+
 [HaukkeManorKey]
 type=dungeon
 cost=50

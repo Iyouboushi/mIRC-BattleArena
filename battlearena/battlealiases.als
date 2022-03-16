@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/09/22
+;;;; Last updated: 03/15/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3027,6 +3027,9 @@ trickster_dodge_check {
   if ($skill.speed.status($1) = on) { inc %target.speed $skill.speed.calculate($1) }
 
   if (%attacker.speed > %target.speed) { inc %dodge.chance $rand(5,10) } 
+
+  ; If the target is 'mini' then increase the dodge chance by 10%
+  if ($is_mini($1) = true) { inc %dodge.chance 10 } 
 
   if ((%battle.type = torment) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(10,15) }
   if ((%battle.type = cosmic) && ($readini($char($1), info, flag) = $null)) { inc %dodge.chance $rand(10,15) }

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/09/22
+;;;; Last updated: 03/15/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4934,7 +4934,7 @@ dragonhunt.ancientcheck {
 dragonhunt.dragonage {
   var %dragon.createdtime $readini($dbfile(dragonhunt.db), $1, created)
 
-  var %dragon.age $round($calc(((($ctime - %dragon.createdtime)/60)/60)/12),0)
+  var %dragon.age $round($calc(((($ctime - %dragon.createdtime)/60)/60)/1),0)
   inc %dragon.age $readini($dbfile(dragonhunt.db), $1, Age)
   return %dragon.age
 }
