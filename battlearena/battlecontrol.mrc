@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 06/17/21
+;;;; Last updated: 05/06/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1147,6 +1147,7 @@ alias battle.getmonsters {
 }
 
 alias generate_monster {
+
   if ($1 = besieged) {
     if (%besieged.squad = 1) { var %number.of.monsters.needed = $rand(11,15) | var %monster.line.file monsters_cr1.lst | var %monster.level 50 }
     if (%besieged.squad = 2) { var %number.of.monsters.needed = $rand(9,10) | var %monster.line.file monsters_cr2.lst | var %monster.level 70 }
@@ -1307,10 +1308,11 @@ alias generate_monster {
       set %monster.list $deltok(%monster.list,%monster.to.remove,46)
       write $txtfile(battle.txt) %monster.name
 
-      if (%boss.type = predator) { writeini $char(%monster.name) info SpawnAfterDeath Predator }
-
       if ($2 = portal) { $boost_monster_stats(%monster.name, demonportal)  }
       else { $boost_monster_stats(%monster.name) }
+
+      if (%boss.type = predator) { writeini $char(%monster.name) info SpawnAfterDeath Predator }
+      if (%boss.type = doppelganger) { $levelsync(%monster.name, 50) } 
 
       $fulls(%monster.name) 
       if (%battlemonsters = 10) { set %number.of.monsters.needed 0 }
@@ -1425,6 +1427,7 @@ alias generate_monster {
       }
     }
 
+    ;;;;;; DOPPELGANGER
     if (%boss.type = doppelganger) { 
       $display.message($readini(translation.dat, events, DoppelgangerFight), battle)
 
@@ -1434,14 +1437,13 @@ alias generate_monster {
       if ($return_winningstreak >= 50) { $portal.sync.players(%battle.level.cap) }
 
       $display.message($readini(translation.dat, system,BossLevelSyncedCustom), battle)
-
       $generate_evil_clones
     }
 
-    if (%boss.type = crystalshadow) { 
-      $generate_crystalshadow
-    }
+    ;;;;;; CRYSTAL SHADOW 
+    if (%boss.type = crystalshadow) { $generate_crystalshadow }
 
+    ;;;;;; WAR MACHINE
     if (%boss.type = warmachine) {
       if (%battle.type != ai) { 
         $display.message($readini(translation.dat, events, WarmachineFight), battle) 
@@ -1468,6 +1470,7 @@ alias generate_monster {
       $generate_monster_warmachine
     }
 
+    ;;;;;; BANDITS
     if (%boss.type = bandits) {
       $display.message($readini(translation.dat, events, BanditsFight), battle)
       if (%battle.type != ai) { 
@@ -1490,7 +1493,7 @@ alias generate_monster {
       set %current.battlefield highway
     }
 
-
+    ;;;;;; GREMLINS
     if (%boss.type = gremlins) {
       $display.message($readini(translation.dat, events, GremlinsFight), battle)
 
@@ -1522,7 +1525,8 @@ alias generate_monster {
       set %current.battlefield school
     }
 
-
+    ;;;;;; PIRATES
+    ; TO DO: Change Pirates to a short 2-3 room dungeon
     if (%boss.type = pirates) {
       $display.message($readini(translation.dat, events, PiratesFight), battle)
 
@@ -1546,7 +1550,7 @@ alias generate_monster {
       set %current.battlefield ocean
     }
 
-
+    ;;;;;; FROST LEGION
     if (%boss.type = FrostLegion) {
       $display.message($readini(translation.dat, events, FrostLegionFight), battle)
 
@@ -1571,6 +1575,7 @@ alias generate_monster {
       set %current.battlefield South Pole
     }
 
+    ;;;;;; PREDATOR
     if (%boss.type = predator) {
       if (%battle.type != ai) { 
         var %battle.level.cap $return.levelcapsetting(Predator)
@@ -1582,8 +1587,10 @@ alias generate_monster {
       $predator_fight(%battle.level.cap)
     }
 
+    ;;;;;; DINOSAURS
     if (%boss.type = dinosaurs) {  $generate_dinosaur }
 
+    ;;;;;; DEMON WALL
     if (%boss.type = demonwall) {
       set %demonwall.name Demon Wall
 
@@ -1600,6 +1607,7 @@ alias generate_monster {
       set %demonwall.fight on
     }
 
+    ;;;;;; WALL OF FLESH
     if (%boss.type = wallofflesh) {
       set %demonwall.name Wall of Flesh
       if (%battle.type != ai) {  
