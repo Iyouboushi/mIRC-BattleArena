@@ -1757,6 +1757,8 @@ Battle Arena Bot VERSIONS
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #
 - Changed how fast the dragon hunt dragons age up.
+- Changed the way the pirate boss battle type is done. Now it is a dungeon that can randomly be selected when a battle is started
+  as long as the battle streak is 50+.
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
 - Fixed an issue with the sleep status
 - Removed the "FinalGetsuga" and "Merlin'sFinalSpell" techniques from the game.  The CharacterResetPotion has replaced them.

@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=3000
-Tp=300
-Str=300
-Def=300
-Int=300
-Spd=300
+Hp=17000
+Tp=1300
+Str=400
+Def=390
+Int=390
+Spd=400
 IgnitionGauge=2
 Name=Blackbeard
 
 [Battle]
-Hp=3000
-Tp=300
-Str=300
-Def=300
-Int=300
-Spd=300
+Hp=17000
+Tp=1300
+Str=400
+Def=390
+Int=390
+Spd=400
 IgnitionGauge=2
 Status=alive
 
@@ -54,10 +54,14 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-CanTaunt=true
+CanTaunt=false
 Streak=-1000
 IgnoreElementalMessage=true
-BossLevel=80
+BossLevel=75
+IgnorePresident=true
+IgnoreOutpost=true
+MaxTormentLevel=0
+IgnoreTorment=true
 
 [Status]
 Poison=no
@@ -94,7 +98,7 @@ MPRegenerating=no
 
 [Weapons]
 Equipped=Cutlass
-Cutlass=500
+Cutlass=100
 
 
 [Skills]
@@ -116,10 +120,10 @@ Resist-Petrify=60
 Resist-Stun=30
 
 [Techniques]
-BloodSaber=500
-FastBlade=800
-BurningBlade=800
-FlatBlade=800
+BloodSaber=100
+FastBlade=60
+BurningBlade=70
+FlatBlade=70
 
 [Augments]
 Cutlass=EnhanceMelee.EnhanceSword

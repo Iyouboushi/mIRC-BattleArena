@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 03/16/22
+;;;; Last updated: 05/18/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -19,11 +19,15 @@ get_boss_type {
   var %enable.doppelganger $readini(system.dat, system, EnableDoppelganger)
   var %enable.warmachine $readini(system.dat, system, EnableWarMachine)
   var %enable.bandits $readini(system.dat, system, EnableBandits)
-  var %enable.pirates $readini(system.dat, system, EnablePirates)
   var %enable.goblins $readini(system.dat, system, EnableGoblins)
   var %enable.gremlins $readini(system.dat, system, EnableGremlins)
   var %enable.crystalshadow $readini(system.dat, system, EnableCrystalShadow)
   var %enable.dinosaur $readini(system.dat, system, EnableDinosaurs)
+
+  ;; As of version 4.1_051822 the pirate battle is now a dungeon and randomly happens. 
+  ;  var %enable.pirates $readini(system.dat, system, EnablePirates)
+  var %enable.pirates false
+
 
   var %winning.streak.check $readini(battlestats.dat, battle, winningstreak)
   if (%mode.gauntlet.wave != $null) { inc %winning.streak.check %mode.gauntlet.wave }

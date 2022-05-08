@@ -1,0 +1,43 @@
+[Info]
+Name=Pirate's Ship
+Rooms=4
+PlayersNeeded=1
+PlayersRecommended=2
+Level=50
+MonsterLevel=50
+BossLevel=75
+RedOrbAmount=20000
+FinalRoom=3
+StartBattleDesc=have been reported by merchants! Join a voyage and set out to put an end to the plundering. 
+ClearDungeonDesc=* The party has defeated the pirates put an end to the plundering for the time being.. [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The party has failed to successfully drive back the pirates! They sail off laughing as the heroes are forced to return back to port defeated.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The pirate ship has been spotted. After a brief naval battle the ship sits side by side. Wooden boards are lowered and the party stands ready to board the pirate ship. They have a moment to prepare for the battle to come..
+Battlefield=Pirate's Ship
+
+[1]
+Desc=The party crosses the planks and jumps aboard the pirate's ship.  They are met with the pirate's crew who seem all to eager to kill and plunder..
+Battlefield=Pirate's Ship
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,2))
+
+
+[2]
+Desc=The party advances further onto the deck where they are met with the captain's first mate.
+Battlefield=Pirate's Ship
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(3,4))
+
+[3]
+Desc=The ship goes quiet as the door to the captain's cabin opens and smoke pours out before the captain of the pirate vessel steps out ready to fight..
+Battlefield=Pirate's Ship
+bossroom=true
+Monsters=$iif($rand(1,2) = 1, Silverhook, $iif($rand(1,2) = 1, BlackBeard, CaptainBikke))
+
+
+[MonsterList]
+1=Pirate_Scallywag.Pirate_Deckswabber
+2=Pirate_Rascal.Pirate_Grogkeeper
+3=Pirate_Scallywag.Pirate_FirstMatey
+4=Pirate_GrogKeeper.Pirate_FirstMatey
+

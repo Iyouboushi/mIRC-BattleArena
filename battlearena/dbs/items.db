@@ -5515,6 +5515,15 @@ Desc=A portal created by rare chance when a Treasure Goblin is killed.
 Dungeon=Treasure_Vault
 Exclusive=yes
 
+[PirateShipEvent]
+type=dungeon
+Cost=0
+Currency=
+SellPrice=0
+Desc=Ahoy! Pirates be attacking!
+Dungeon=Pirate's_Ship
+Exclusive=yes
+
 [MirrorOfReflections]
 type=dungeon
 Cost=100

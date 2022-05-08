@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 03/15/22
+;;;; Last updated: 05/18/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -523,6 +523,12 @@ system.start.newbattle {
     var %supplyrun.overallchance $readini(battlestats.dat, conquest, SupplyRunChance) 
     dec %supplyrun.overallchance 20
     writeini battlestats.dat conquest SupplyRunChance %supplyrun.overallchance
+  }
+
+  ; Check to see if we start a pirate ship dungeon
+  if ((%special.flag = $null) && ($current.battlestreak >= 50)) {
+    var %random.chance $rand(1,255)
+    if (%random.chance >= 250) { $item.dungeon(Pirates, PirateShipEvent, true) | halt }  
   }
 
 

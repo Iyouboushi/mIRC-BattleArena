@@ -1,20 +1,20 @@
 [BaseStats]
-Hp=15000
+Hp=17000
 Tp=1300
-str=390
-def=390
-int=390
-spd=390
+Str=500
+Def=390
+Int=390
+Spd=400
 IgnitionGauge=2
-Name=Silver Hook
+Name=Captain Bikke
 
 [Battle]
-Hp=15000
+Hp=17000
 Tp=1300
-Str=200
-Def=200
-Int=200
-Spd=200
+Str=500
+Def=390
+Int=390
+Spd=400
 IgnitionGauge=2
 Status=alive
 
@@ -31,17 +31,18 @@ Percent=0
 [Descriptions]
 Hused=1
 Dused=1
-Char=is the re-animated skeleton of a vicious pirate known as Silver Hook.  He carries a large cutlass and has a bright silver hook where his hand once was.  
+Char=is a large burly pirate with a black captain's hat, black eye patch over his left eye and a red jacket.  He carries an over-sized axe.
 Rage=screams in rage 
-BossQuote=Ye may have beaten me band o pirates but ye will soon be ripped apart by me hook!
+BossQuote=Who dares prevent me mates from getting their booty? Ye shall pay with blood. 
 
 [Stuff]
 RedOrbs=0
 BlackOrbs=1
 ShopLevel=1.0
+Drops=
 
 [Monster]
-Type=undead
+Type=Pirate
 size=medium
 
 [Info]
@@ -53,7 +54,7 @@ passhurt=0
 LastSeen=N/a
 LastIP=N/a
 Created=N/a
-CanTauntfalse
+CanTaunt=false
 Streak=-1000
 IgnoreElementalMessage=true
 BossLevel=75
@@ -96,8 +97,8 @@ stun=no
 MPRegenerating=no
 
 [Weapons]
-Equipped=Cutlass
-Cutlass=100
+Equipped=Lightreaver
+Lightreaver=100
 
 
 [Skills]
@@ -111,32 +112,33 @@ Resist-Slow=100
 Resist-Stop=100
 Resist-Paralysis=100
 Resist-confuse=100
-Resist-Petrify=60
-Resist-Stun=30
 Swordmaster=100
-
+Sugitekai=1
+RoyalGuard=1
+ManaWall=1
+Resist-Petrify=100
+Resist-Stun=100
 
 [Techniques]
-BloodSaber=100
-FastBlade=60
-BurningBlade=60
-FlatBlade=60
+FellCleave=100
+SteelCyclone=70
+KingsJustice=70
 
 [Augments]
-Cutlass=EnhanceMelee.EnhanceSword
+Lightreaver=EnhanceMelee.EnhanceAxe
 
 [Item_Amount]
 
 [modifiers]
-Heal=dark
+Heal=water
 Earth=70
 Fire=70
 Wind=70
-Water=70
+Water=270
 Ice=70
 Lightning=70
 Light=150
-Dark=200
+Dark=100
 HandToHand=110
 Whip=110
 Sword=50
@@ -157,3 +159,4 @@ Mace=110
 PinkChainsaw=100
 Stave=110
 EnergyBlaster=120
+Rootbeer=300

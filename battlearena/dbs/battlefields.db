@@ -1,11 +1,11 @@
 [weather]
-current=snowy
+current=rainy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
-CurrentMoonPhase=Quarter
-CurrentMoonTurn=2
+CurrentMoonPhase=Gibbous
+CurrentMoonTurn=4
 
 [MoonPhaseTime]
 full=3
@@ -18,7 +18,7 @@ BloodMoonChance=60
 
 [TimeOfDay]
 Currenttimeofday=Day
-CurrentTimeOfDayTurn=2
+currentTimeOfDayTurn=1
 
 [TimeOfDayTime]
 morning=2
@@ -347,6 +347,16 @@ scavenge=Sapphire.WaterJewel.X-Potion
 event1=damage
 event1Chance=40
 Event1Desc=A sea monster pops up out of the water and hits %real.name with a tidal wave!
+Event1Target=random
+Event1Amount=$rand(30,90)
+
+[Pirate's Ship]
+weather=calm.rainy.stormy.windy
+NumberOfEvents=1
+scavenge=Sapphire.WaterJewel.X-Potion
+event1=damage
+event1Chance=20
+Event1Desc=A random bullet from another pirate on board the ship flies and hits %real.name $+ !
 Event1Target=random
 Event1Amount=$rand(30,90)
 
