@@ -1135,6 +1135,7 @@ DefenseDown=$chr(3) $+ 04 $+ -def
 StrengthDown=$chr(3) $+ 04 $+ -str
 IntDown=$chr(3) $+ 04 $+ -int
 Staggered=$chr(3) $+ 04 $+ staggered
+Mini=$chr(3) $+ 04 $+ mini
 
 ; Positive status effects
 Flying=$chr(3) $+ 12 $+ flying

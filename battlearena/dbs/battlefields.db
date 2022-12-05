@@ -1,11 +1,11 @@
 [weather]
-current=rainy
+current=bright
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
-CurrentMoonPhase=Gibbous
-CurrentMoonTurn=4
+CurrentMoonPhase=Crescent
+CurrentMoonTurn=2
 
 [MoonPhaseTime]
 full=3
@@ -18,7 +18,7 @@ BloodMoonChance=60
 
 [TimeOfDay]
 Currenttimeofday=Day
-currentTimeOfDayTurn=1
+CurrentTimeOfDayTurn=2
 
 [TimeOfDayTime]
 morning=2
@@ -1390,6 +1390,11 @@ limitations=no-playerignition.no-mech
 scavenge=Sapphire.Opal.Onyx.Diamond
 
 [Lunar Ruins - 17b]
+weather=none
+limitations=no-playerignition.no-mech
+scavenge=Sapphire.Opal.Onyx.Diamond
+
+[Lunar Ruins - 77m]
 weather=none
 limitations=no-playerignition.no-mech
 scavenge=Sapphire.Opal.Onyx.Diamond

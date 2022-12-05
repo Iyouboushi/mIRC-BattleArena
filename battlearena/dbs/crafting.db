@@ -774,6 +774,13 @@ SuccessRate=100
 Amount=1
 BlackOrbs=5
 
+[RefinedLunarOre]
+Gem=Ruby
+Ingredients=LunarOre
+SuccessRate=100
+Amount=1
+LunarOre=5
+
 ============
 Portal Items
 ============
@@ -3114,6 +3121,19 @@ ArcaneDust=10000
 OdinMark=500
 DensetsuNoYoroi=1
 LunarSurcoat=1
+
+[DensetsuNoYoroi+2]
+Gem=Diamond
+Ingredients=LifeShard.ReusablePart.ForgottenSoul.ArcaneDust.OdinMark.DensetsuNoYoroi+1.RefinedLunarOre
+SuccessRate=100
+Amount=1
+LifeShard=10000
+ReusablePart=10000
+ForgottenSoul=10000
+ArcaneDust=10000
+OdinMark=500
+DensetsuNoYoroi+1=1
+RefinedLunarOre=100
 
 
 

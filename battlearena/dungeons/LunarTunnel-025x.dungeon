@@ -59,7 +59,7 @@ bossroom=true
 Monsters=Gloom_Eye
 
 [9]
-Desc=With the creature defeated the party is free to mine a small amount of ore before their decreating oxygen tank forces them to return to the Lunar Whale.
+Desc=With the creature defeated the party is free to mine a small amount of ore before their decreasing oxygen tank forces them to return to the Lunar Whale.
 StoryRoom=true
 
 [MonsterList]

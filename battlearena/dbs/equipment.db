@@ -2013,6 +2013,23 @@ Exclusive=yes
 Legendary=true
 Protection=3.5
 
+[DensetsuNoYoroi+2]
+name=Densetsu No Yoroi +2
+hp=2500
+tp=350
+Str=15000
+def=15000
+int=15000
+spd=15000
+Augment=all
+EquipLocation=body
+cost=0
+SellPrice=50000
+LevelRequirement=30000
+Exclusive=yes
+Legendary=true
+Protection=4
+
 [LunarSurcoat]
 name=Lunar Surcoat
 hp=1500

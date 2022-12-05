@@ -2709,6 +2709,12 @@ Cost=0
 SellPrice=20000
 Desc=A chunk of ore from the moon.
 
+[RefinedLunarOre]
+Type=misc
+Cost=0
+SellPrice=20000
+Desc=A chunk of ore from the moon that has been refined.
+
 [BrokenLance]
 Type=misc
 Cost=50

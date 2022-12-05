@@ -677,7 +677,7 @@ DioFists=DoublePunch.ShoulderTackle.SpinningAttack.TornadoKick.ShinjinSpiral
 TheWorldFists=DoublePunch.SpinningAttack.ShinjinSpiral.TheWorld.MudaMudaMuda
 WoFWheels=DoublePunch.ShoulderTackle.SpinningAttack.OneInchPunch.ChargedShot
 HornetStinger=SharpSting.FrenzySting.WaspSting
-LunarPower=LunarDoom.LunarDeathGlare.LunarQuake.LunarFlare
+LunarPower=LunarDoom.LunarDeathGlare.LunarQuake.LunarFlare.LunarMini.LunarHeavy
 
 ============================================
 TECHNIQUE TEMPLATE
@@ -22696,6 +22696,7 @@ Element=Earth
 Magic=Yes
 stat=int
 Spell=yes
+CanDodge=false
 
 [LunarFlare]
 Type=AOE
@@ -22707,6 +22708,32 @@ Cost=0
 Magic=Yes
 stat=int
 Spell=yes
+
+[LunarMini]
+Type=AOE
+TP=45
+Desc=casts a powerful spell that shoots dark energy through everyone causing them to feel small..
+BasePower=100
+Element=Dark
+Cost=0
+Magic=Yes
+stat=int
+Spell=yes
+StatusType=mini
+CanDodge=false
+
+[LunarHeavy]
+Type=AOE
+TP=45
+Desc=casts a powerful spell that shoots dark energy through everyone causing them to feel heavy
+BasePower=100
+Element=Dark
+Cost=0
+Magic=Yes
+stat=int
+Spell=yes
+StatusType=heavy
+CanDodge=false
 
 [LunarFlood]
 Type=AOE
