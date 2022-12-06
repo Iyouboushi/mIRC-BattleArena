@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 09/12/20
+;;;; Last updated: 12/06/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -23,7 +23,11 @@ alias dungeon.usage.check {
   var %current.time $ctime
   var %time.difference $calc(%current.time - %player.laststarttime)
 
-  var %dungeon.time.setting 10800 
+  var %active.players $active.players.count
+
+
+  if (%active.players >= 4) {  var %dungeon.time.setting 14400 }
+  else { var %dungeon.time.setting 7200 }
 
   if ((%time.difference = $null) || (%time.difference < %dungeon.time.setting)) { 
     if ($1 = channel) { $display.message($readini(translation.dat, errors, DungeonUsageNotReady), private) }

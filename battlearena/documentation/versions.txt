@@ -1759,6 +1759,8 @@ Battle Arena Bot VERSIONS
 - Changed how fast the dragon hunt dragons age up.
 - Changed the way the pirate boss battle type is done. Now it is a dungeon that can randomly be selected when a battle is started
   as long as the battle streak is 50+.
+- Changed when dungeons can be started based on how many active players are playing the game. When there are 4+, players can
+  start a dungeon every 4 hours.  If there are less than 4, players can begin a new dungeon every 2 hours.
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
 - Fixed an issue with the sleep status
 - Removed the "FinalGetsuga" and "Merlin'sFinalSpell" techniques from the game.  The CharacterResetPotion has replaced them.
