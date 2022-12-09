@@ -1754,6 +1754,9 @@ Battle Arena Bot VERSIONS
   until the status wears off.
 - Added a global dragon hunt chance percent that increases by 10% every time a dragon is not found. When it hits 100% there will be
   a successful hunt no matter what.
+- Added the ability for dungeons to have the power of the Echo! When this is set to TRUE players will basically get an extra life if
+  they should lose a battle within the dungeon. The loss won't be counted and the battle will be reset.  Losing a second time will
+  cause the dungeon to end in a failure. The power of the Echo is off by default on dungeons and only select dungeons will use it.
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #
 - Changed how fast the dragon hunt dragons age up.
@@ -1761,6 +1764,8 @@ Battle Arena Bot VERSIONS
   as long as the battle streak is 50+.
 - Changed when dungeons can be started based on how many active players are playing the game. When there are 4+, players can
   start a dungeon every 4 hours.  If there are less than 4, players can begin a new dungeon every 2 hours.
+- Changed the Frost Legion battle to be a dungeon that is accessible in December instead. The item to start the dungeon is the
+  FrostOrb and costs 1 BeastmenSeal.  It can be found in the dungeonkey shop.  Using the item will consume it.
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
 - Fixed an issue with the sleep status
 - Removed the "FinalGetsuga" and "Merlin'sFinalSpell" techniques from the game.  The CharacterResetPotion has replaced them.

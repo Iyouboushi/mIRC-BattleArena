@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 05/18/22
+;;;; Last updated: 12/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2622,6 +2622,7 @@ runes.list {
 fulls {  
   if ($2 = clearSotH) { remini $char($1) status SpiritOfHero | remini $char($1) info levelsync }
   if (($readini($char($1), info, NeedsFulls) = no) && ($2 != yes)) { return } 
+  if ($readini($char($1), Battle, HP) = $null) { return }
 
   var %players.must.die.mode $readini(system.dat, system, PlayersMustDieMode) 
 
@@ -2840,13 +2841,13 @@ clear_most_status {
   writeini $char($1) Status sleep no | writeini $char($1) Status stun no | writeini $char($1) status zombieregenerating no | writeini $char($1) status silence no
   writeini $char($1) status petrified no  | writeini $char($1) status bored no | writeini $char($1) status defensedown no | writeini $char($1) status strengthdown no 
   writeini $char($1) status intdown no | writeini $char($1) status protect no | writeini $char($1) status shell no | writeini $char($1) status speedup no | writeini $char($1) status speedup.timer 0 
-  writeini $char($1) status heavy no
+  writeini $char($1) status heavy no | writeini $char($1) Status bleeding no
 
   writeini $char($1) status poison.timer 0 | writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
   writeini $char($1) status curse.timer 0 | writeini $char($1) status slow.timer 0 | writeini $char($1) status zombie.timer 0 | writeini $char($1) status doll.timer 0 | writeini $char($1) status confuse.timer 0 
   writeini $char($1) status defensedown.timer 0 |  writeini $char($1) status strengthdown.timer 0 | writeini $char($1) status intdown.timer 0
   writeini $char($1) status protect.timer 0 | writeini $char($1) status shell.timer 0 | writeini $char($1) status virus.timer 0
-  remini $char($1) status sleep.turn | remini $char($1) status sleep.inflict
+  remini $char($1) status sleep.turn | remini $char($1) status sleep.inflict | remini $char($1) status bleeding.timer
 }
 
 clear_negative_status {
@@ -2859,7 +2860,7 @@ clear_negative_status {
   writeini $char($1) status bored no | remini $char($1) status weapon.locked | writeini $char($1) status confuse no 
   remini $char($1) status annoyed | writeini $char($1) status terrify no | writeini $char($1) status doll no | writeini $char($1) status doom no
   writeini $char($1) status heavy no  | writeini $char($1) status silence no
-  writeini $char($1) status mini no
+  writeini $char($1) status mini no | writeini $char($1) Status bleeding no
 
   ; Clear negative timer statuses
   writeini $char($1) status poison.timer 0 |  writeini $char($1) status amnesia.timer 0 | writeini $char($1) status paralysis.timer 0 | writeini $char($1) status drunk.timer 0
@@ -2868,8 +2869,8 @@ clear_negative_status {
   writeini $char($1) status bored.timer 0 |  writeini $char($1) status confuse.timer 0 | writeini $char($1) status virus.timer 0
   writeini $char($1) status doll.timer 0 | remini $char($1) status doom.timer 
   remini $char($1) status sleep.turn | remini $char($1) status sleep.inflict
-  remini $char($1) status silence.timer
-  remini $char($1) stuats mini.timer
+  remini $char($1) status silence.timer | remini $char($1) stuats mini.timer 
+  remini $char($1) status bleeding.timer
 
   ; Monsters that are zombies need to be reset as zombies.
   if ($readini($char($1), monster, type) = zombie) {  writeini $char($1) status zombie yes | writeini $char($1) status zombieregenerating yes } 
@@ -3445,6 +3446,7 @@ clear_variables {
   unset %attacker.spd | unset %playerstyle.* | unset %stylepoints.to.add | unset %current.playerstyle.* | unset %styles | unset %wait.your.turn | unset %weapon.list2
   unset %passive.skills.list2 | unset %cosmic.level | unset %cosmic.drop.rewards | unset %nosouls | unset %current.npc.to.spawn
   unset %grand.total | unset %number.of.npcs | unset %doom.timer | unset %monsterfair*
+  unset %echo* | unset %attack.damgae | unset %overcharge* | unset %taunt.action
 }
 clear_variables2 {
   unset %torment.*
@@ -4100,6 +4102,21 @@ clear_dead_monsters {
       if ($return.systemsetting(ShowDeleteEcho) = true) { echo -a -=- DELETING %name :: Reason: Dead Monster }
       .remove $char(%name) 
     }
+    else { return }    
+  }
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Clears monsters
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+clear_all_monsters {
+  set %file $nopath($1-) 
+  set %name $remove(%file,.char)
+
+  if ((%name = new_chr) || (%name = $null)) { return } 
+  else { 
+    var %monster.flag $readini($char(%name), Info, Flag)
+    if (%monster.flag = monster) { .remove $char(%name)  }
     else { return }    
   }
 }

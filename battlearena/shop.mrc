@@ -2272,7 +2272,7 @@ alias shop.dungeonkeys {
       set %item.price $readini($dbfile(items.db), %item.name, cost)
 
       if ((%item.price > 0) && ($readini($char($1), item_amount, %item.name) !isnum)) {  
-        if ($readini($dbfile(items.db), %item.name, currency) = BeastmenSeal) { %dungeonkeyss.bstmen = $addtok(%dungeonkeyss.bstmen, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+        if ($readini($dbfile(items.db), %item.name, currency) = BeastmenSeal) { echo -a ADDING %item.name at %item.price | %dungeonkeyss.bstmen = $addtok(%dungeonkeyss.bstmen, $+ %item.name $+ ( $+ %item.price $+ ),46) }
         if ($readini($dbfile(items.db), %item.name, currency) = KindredSeal) { %dungeonkeyss.kindred = $addtok(%dungeonkeyss.kindred, $+ %item.name $+ ( $+ %item.price $+ ),46) }
         if ($readini($dbfile(items.db), %item.name, currency) = KindredCrest) { %dungeonkeyss.kindredcrest = $addtok(%dungeonkeyss.kindredcrest, $+ %item.name $+ ( $+ %item.price $+ ),46) }
         if ($readini($dbfile(items.db), %item.name, currency) = HighKindredCrest) { %dungeonkeyss.highkindredcrest = $addtok(%dungeonkeyss.highkindredcrest, $+ %item.name $+ ( $+ %item.price $+ ),46) }

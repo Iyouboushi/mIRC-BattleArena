@@ -4,6 +4,7 @@ Rooms=13
 PlayersNeeded=1
 PlayersRecommended=3
 Level=5000
+Echo=true
 FinalRoom=12
 StartBattleDesc=and everyone else boards a ship, sailing to the large island, eventually docking at the beach.
 ClearDungeonDesc=* The party has managed to defeat the Kraken. [Clear time: %total.battle.duration $+ ]

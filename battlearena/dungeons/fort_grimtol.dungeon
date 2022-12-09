@@ -4,6 +4,7 @@ Rooms=10
 PlayersNeeded=1
 PlayersRecommended=3
 Level=50
+Echo=true
 FinalRoom=9
 StartBattleDesc=follows a dangerous path towards Fort Grimtol and prepares to sneak into a heavily guarded enemy base.
 ClearDungeonDesc=* The party has defeated the horrifying beast that the forces of evil were raising and escaped with their lives. As a reward the Allied Forces give a powerful elixer made with research taken from Grimtol. [Clear time: %total.battle.duration $+ ]

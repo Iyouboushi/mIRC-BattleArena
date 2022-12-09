@@ -4,6 +4,7 @@ Rooms=9
 PlayersNeeded=1
 PlayersRecommended=3
 Level=100
+Echo=true
 FinalRoom=8
 StartBattleDesc=uses the train pass to allow access to the party to board a large black train.
 

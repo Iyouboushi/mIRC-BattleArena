@@ -4,6 +4,7 @@ Rooms=9
 PlayersNeeded=1
 PlayersRecommended=3
 Level=50
+Echo=true
 FinalRoom=8
 StartBattleDesc=follows the ol dusty trail headed towards the town of Crookhallow that has been overrun by bandits. 
 ClearDungeonDesc=* The party has defeated Mad Dawg and saved the innocent villagers from his bandits. [Clear time: %total.battle.duration $+ ]

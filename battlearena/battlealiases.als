@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 03/15/22
+;;;; Last updated: 12/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -330,6 +330,7 @@ status.effects.turns {
     if ($1 = doom) { return 4 }
     if ($1 = confuse) { return 3 }
     if ($1 = poison) { return 3 }
+    if ($1 = bleeding) { return 3 }
     if ($1 = curse) { return 3 }
     if ($1 = cocoon) { return 3 }
     if ($1 = weaponlock) { return 4 }
@@ -3609,8 +3610,6 @@ multiple_wave_clearmonsters {
     if (%turn.person = %who) { set %line %current.turn.line | inc %current.turn.line }
     else { inc %current.turn.line }
   }
-
-
   return
 }
 
@@ -5392,6 +5391,40 @@ HeavyPoison {
   }
 }
 
+bleeding_check { 
+  set %debug.location Bleeding_check
+
+  if ($readini($char($1), status, Bleeding) = yes) {
+    set %Bleeding.timer $readini($char($1), status, Bleeding.timer)  
+    if (%Bleeding.timer >= $status.effects.turns(Bleeding)) {  
+      writeini $char($1) status Bleeding no
+      writeini $char($1) status Bleeding.timer 0
+      $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, BleedingWornOff) 
+      return 
+    }
+    if (%Bleeding.timer < $status.effects.turns(Bleeding)) {
+      %Bleeding.timer = $calc(%Bleeding.timer + 1) | writeini $char($1) status Bleeding.timer %Bleeding.timer 
+      if ($readini($char($1), Status, HeavyBleeding) = yes) { $HeavyBleeding($1) | return }
+      set %max.hp $readini($char($1), basestats, hp)
+      set %Bleeding $round($calc(%max.hp * .20),0)
+      set %hp $readini($char($1), Battle, HP)  |   unset %max.hp
+
+      if (%Bleeding >= %hp) { $player.status($1) | set %status.message $readini(translation.dat, battle, TurnMessage) |  $display.message(%status.message, battle) | $set_chr_name($1) | $display.message($readini(translation.dat, status, BleedingKills), battle) | writeini $char($1) Battle HP 0 | writeini $char($1) Battle Status Dead |  $increase.death.tally($1)  | $add.style.effectdeath | $check.clone.death($1)
+      $goldorb_check($1,status) | $spawn_after_death($1) | remini $char($1) Renkei | next | halt }
+      if (%Bleeding < %hp) {
+        $set_chr_name($1) | write $txtfile(temp_status.txt) $readini(translation.dat, status, BleedingMessage) | dec %hp %Bleeding | writeini $char($1) Battle HP %hp |  unset %hp | unset %Bleeding 
+
+        if ($readini($char($1), Status, Sleep) = yes) { 
+          var %enemy %real.name
+          write $txtfile(temp_status.txt) $readini(translation.dat, status, WakesUp)
+          writeini $char($1) status sleep no
+        }
+        return 
+      }
+    }
+  }
+  else { return }
+}
 curse_check {
   set %debug.location curse_check
 

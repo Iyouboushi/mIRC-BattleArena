@@ -1,0 +1,33 @@
+[Info]
+Name=The Frost Legion's Lair
+Open=$iif($left($adate, 2) = 12, true, false)
+Echo=true
+Rooms=2
+PlayersNeeded=1
+PlayersRecommended=3
+Level=20
+MonsterLevel=20
+BossLevel=20
+FinalRoom=1
+ClosedMessage=The Frost Legion have melted and will not take new form until December. Check back then!
+StartBattleDesc=holds up the Frost Orb and it shines a bright blue before creating a portal leading to the South Pole. $decrease_item($1, FrostOrb)
+
+ClearDungeonDesc=* The party has defeated the Frost Legion [Clear time: %total.battle.duration $+ ]  $frostlegion.destroyed
+
+DungeonFail=* The party is unable to defeat the Frost Legion and is forced to flee.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The heroes have arrived at the South Pole where the Frost Legion are gathered.  Before entering the formal lair of the Frost Legion you can take a moment to prepare.
+Battlefield=South Pole
+
+[1]
+Desc=The heroes enter the Frost Legion's lair and find them waiting for a fight. 
+Battlefield=South Pole
+Monsters=$readini($dungeonfile($dungeon.dungeonfile), MonsterList, $rand(1,2))
+BossRoom=true
+
+
+[MonsterList]
+1=Frost_Monster.Frost_Monster.Frost_Monster.Frost_Monster
+2=Frost_Monster.Frost_Monster.Frost_Monster

@@ -5299,6 +5299,15 @@ Desc=A ticket that allows you to enter Big Boo's Haunted Hayride during the mont
 Dungeon=haunted_hayride
 exclusive=yes
 
+[FrostOrb]
+type=dungeon
+Cost=$iif($left($adate, 2) = 12, 1, 0)
+currency=BeastmenSeal
+sellprice=0
+Desc=An orb with the power to transport the heroes to the Frost Legion's Lair in December.
+Dungeon=frostlegion_lair
+exclusive=yes
+
 [PrimalSigil]
 type=dungeon
 Cost=$iif($readini(battlestats.dat, BeastmenEnmity, ActivePrimal) = $null || $item.amount($1, PrimalSigil) >= 1, 0, 50)

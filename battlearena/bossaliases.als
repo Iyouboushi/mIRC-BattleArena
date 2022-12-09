@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; bossaliases.als
-;;;; Last updated: 05/18/22
+;;;; Last updated: 12/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -56,7 +56,8 @@ get_boss_type {
 
   if (%mode.gauntlet = on) { var %enable.demonwall false }
 
-  if (($left($adate, 2) = 12) && (%winning.streak.check >= 20)) { %boss.choices = %boss.choices $+ .FrostLegion }
+  ; This is for the old way of doing the Frost Legion.  It has since been changed to be a dungeon that is accessible in December.
+  ; if (($left($adate, 2) = 12) && (%winning.streak.check >= 20)) { %boss.choices = %boss.choices $+ .FrostLegion }
 
   var %boss.chance $rand(1,100)
   var %boss.chance 1

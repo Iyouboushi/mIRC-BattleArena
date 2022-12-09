@@ -4,6 +4,7 @@ Rooms=4
 PlayersNeeded=1
 PlayersRecommended=2
 Level=50
+Echo=true
 MonsterLevel=50
 BossLevel=75
 RedOrbAmount=20000

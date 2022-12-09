@@ -4,6 +4,7 @@ Rooms=9
 PlayersNeeded=1
 PlayersRecommended=3
 Level=50
+Echo=true
 FinalRoom=8
 StartBattleDesc=pulls out a salty map that reads "DELIVER ALL PLUNDER TO THE MASTER WAITING AT THE PIRATE'S COVE" with an X marking the spot of the cove. Together the party sails to the cove...
 ClearDungeonDesc=* The party has defeated the pirate's master and claimed a piece of the pirate's plunder for themselves [Clear time: %total.battle.duration $+ ]

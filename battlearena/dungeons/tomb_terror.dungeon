@@ -4,6 +4,7 @@ Rooms=7
 PlayersNeeded=1
 PlayersRecommended=3
 Level=1000
+Echo=true
 FinalRoom=6
 StartBattleDesc=leads the party to the Tomb of Terror. After being unlocked, the party sees that the entrance of the tomb is a short, roughly carved passageway, completely filled with cobwebs. Tiny spiders flee from the light and motion caused by opening the tunnel. They step inside and smell the musky air within but cannot see more than a few feet before them.
 ClearDungeonDesc=* The party has survived the legendary Tomb of Terror and walked away with a treasure from it.  [Clear time: %total.battle.duration $+ ]

@@ -267,6 +267,8 @@ GainedEnhancementPoint=$chr(3) $+ 7 $+ You have gained 1 enhancement point bri
 
 GainedEnhancementPointItem=$chr(3) $+ 7 $+ $get_chr_name($2) has gained %point.amount enhancement $iif(%point.amount > 1, points, point) $+ .
 
+EchoActivated=$chr(3) $+ 2 $+ * $+ $chr(3) $+ 6 The power of the $chr(3) $+ 7 $+ Echo $+ $chr(3) $+ 6 has activated! The previous battle flashes before your eyes and you find yourself back where you started!
+
 SpiritOfHeroSync=$chr(3) $+ 4 $+ $get_chr_name($1) $+ 's level is too low for this arena level. $get_chr_name($1) has been infused with the2 Spirit of the Hero4 buff. $get_chr_name($1) $+ 's level is now set temporarily to2 $calc($return_winningstreak - 3)
 ShopExchangeNotes=$chr(3) $+ 2 $+ You exchange %notes.needed allied notes for %currency.symbol %dollarstogive double dollars
 ShopExchangeDoubleDollars=$chr(3) $+ 2 $+ You exchange %currency.symbol %dollars.needed double dollars for %notestogive allied notes
@@ -849,6 +851,9 @@ CurrentlyAmnesia=$chr(3) $+ 04 $+  $+ %real.name cannot remember how to perfor
 PoisonWornOff=$chr(3) $+ 03 $+  $+ %real.name $+ 's poison has worn off. 
 PoisonKills=$chr(3) $+ 04 $+  $+ %real.name grabs $gender($1) chest in pain from the posion as $gender($1) eyes roll back into $gender($1) head. %real.name collapses to the ground--dead.
 PoisonMessage=$chr(3) $+ 04 $+  $+ %real.name grabs $gender($1) chest in pain from the poison. 
+BleedingWornOff=$chr(3) $+ 03 $+  $+ %real.name $+ 's bleeding has stopped.
+BleedingKills=$chr(3) $+ 04 $+  $+ %real.name has lost too much blood from $gender($1) wounds and collapses to the ground--dead.
+BleedingMessage=$chr(3) $+ 04 $+  $+ %real.name is currently bleeding heavily!
 DoomCountDown=$chr(3) $+ 04 $+  $+ %real.name is currently doomed and $iif(%doom.timer = 1, will die next turn, will die in %doom.timer turns!)
 DoomKills=$chr(3) $+ 04 $+  $+ $get_chr_name($1) $+ 's time is up and the doom status has claimed $gender($1) life! $get_chr_name($1) collapses to the ground dead.
 CurrentlyCursed=$chr(3) $+ 04 $+  $+ %real.name is cursed!
@@ -1110,6 +1115,7 @@ Rage=$chr(3) $+ 04 $+ enraged
 Poison=$chr(3) $+ 04 $+ poisoned
 HeavyPoison=$chr(3) $+ 04 $+ poisoned heavily
 Heavy=$chr(3) $+ 04 $+ weighed down
+Bleeding=$chr(3) $+ 04 $+ bleeding heavily
 Blind=$chr(3) $+ 04 $+ blinded
 Silence=$chr(3) $+ 04 $+ silenced
 Intimidate=$chr(3) $+ 04 $+ intimidated

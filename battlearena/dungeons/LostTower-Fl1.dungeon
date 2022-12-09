@@ -4,6 +4,7 @@ Rooms=10
 PlayersNeeded=1
 PlayersRecommended=3
 Level=100
+Echo=true
 FinalRoom=9
 StartBattleDesc=uses the key found in the Ancient Lost City to unlock the Ancient Tower of the Antaal. The doors creak open and the tower seems to be coming to life as lights flicker on all above the party.
 

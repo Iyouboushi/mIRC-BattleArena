@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 09/08/21
+;;;; Last updated: 12/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -13,6 +13,11 @@ dungeon.recommendedplayers {
   var %recommended.players $readini($dungeonfile($dungeon.dungeonfile), info, PlayersRecommended)
   if (%recommended.players = $null) { var %recommended.players 2 }
   else { return %recommended.players }
+}
+dungeon.echo { 
+  var %echo.check $readini($dungeonfile($dungeon.dungeonfile), info, Echo)
+  if (%echo.check = $null) { return false }
+  else { return %echo.check }
 }
 
 dungeon.start {
@@ -240,13 +245,73 @@ dungeon.clearroom {
   /.timerDungeonSlowDown2 1 5 /dungeon.nextroom
 }
 
+dungeon.reset.lastbattle {
+  ; The echo has activated!  Let's reset the last battle.
+  $display.message($readini(translation.dat, system, EchoActivated))
+  .echo -q $findfile( $char_path , *.char, 0 , 0, clear_all_monsters $1-)
+
+
+  .remove $txtfile(battle.txt)
+
+  var %monster.list $readini($txtfile(battle2.txt), BattleInfo, MonsterList) 
+  var %battle.list $readini($txtfile(battle2.txt), Battle, list)
+  var %monster.count 1 |  var %number.of.monsters $numtok(%monster.list,46)
+
+  while (%monster.count <= %number.of.monsters) {
+    var %monster.name  $gettok(%monster.list, %monster.count,46)
+    remini $txtfile(battle2.txt) BattleInfo %monster.name $+ .lastactionbar
+    .remove $char(%monster.name) 
+    %battle.list = $remtok(%battle.list,%monster.name,46) 
+    inc %monster.count
+  }
+
+  var %player.count 1 | var %players.total $numtok(%battle.list, 46)
+  while (%player.count <= %players.total) {
+    var %player.name  $gettok(%battle.list, %player.count,46)
+    write $txtfile(battle.txt) %player.name
+    inc %player.count 
+  }
+
+  writeini $txtfile(battle2.txt) battle list %battle.list
+  .remini $txtfile(battle2.txt) BattleInfo MonsterList
+  .remini $txtfile(battle2.txt) BattleInfo monsters 
+  .remini $txtfile(battle2.txt) Actionpoints
+  .remini $txtfile(battle2.txt) style 
+
+  var %current.room $dungeon.currentroom
+  dec %current.room 1
+  writeini $txtfile(battle2.txt) DungeonInfo CurrentRoom %current.room
+
+  ; Restore every player and move back to the room that was failed.
+  $dungeon.restoreroom
+  halt
+}
+
 dungeon.end { 
 
   var %total.battle.duration $battle.calculateBattleDuration
 
   if ($1 = failure) { 
-    $display.message(02 $+ $readini($dungeonfile($dungeon.dungeonfile), info, DungeonFail), global) 
-    $dungeon.rewardorbs(failure) 
+
+    ; Check for the Echo. If echo is true, reset the last battle and try again!  
+    if (($dungeon.echo = true) && (%echo.on != true)) {   
+      set %echo.on true
+      $dungeon.reset.lastbattle 
+      halt        
+    }
+
+    ; Check for the Echo. If echo is true and has already activated then it's over.
+    if (($dungeon.echo = true) && (%echo.on = true)) {   
+      $display.message(02 $+ $readini($dungeonfile($dungeon.dungeonfile), info, DungeonFail), global) 
+      $dungeon.rewardorbs(failure) 
+    }
+
+    ; If the dungeon doesn't have Echo enabled then just end.
+    if ($dungeon.echo = false) {  
+      $display.message(02 $+ $readini($dungeonfile($dungeon.dungeonfile), info, DungeonFail), global) 
+      $dungeon.rewardorbs(failure) 
+    }
+
   }
 
   else { 
@@ -385,6 +450,10 @@ dungeon.generatemonsters {
   else { var %monster.level $readini($dungeonfile($dungeon.dungeonfile), Info, MonsterLevel) }
   if (%monster.level = $null) { var %monster.level %dungeon.level }
 
+  if (($dungeon.echo = true) && (%echo.on = true)) { 
+    dec %monster.level 10 
+    if (%monster.level <= 0) { var %monster.level 5 }
+  }
 
   if (%monster.list = dungeon.evilclone) { 
     var %clone.list $readini($txtfile(battle2.txt), battle, list)
@@ -574,11 +643,10 @@ dungeon.generatenpcs {
   unset %found.npc
 }
 
-
 dungeon.restoreroom {
   ; Restores players to full health, tp, and clears their skill timers.
 
-  $display.message(07* The party feels their health $+ $chr(44)  tp $+ $chr(44)  and power restored in this room)
+  $display.message(07* The party feels their health $+ $chr(44)  tp $+ $chr(44)  and power being restored!)
 
   var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
   while (%battletxt.current.line <= %battletxt.lines) { 

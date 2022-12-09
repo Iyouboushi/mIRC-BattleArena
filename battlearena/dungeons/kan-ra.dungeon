@@ -4,6 +4,7 @@ Rooms=8
 PlayersNeeded=1
 PlayersRecommended=3
 Level=100
+Echo=true
 FinalRoom=7
 StartBattleDesc=approaches the ancient pyramid of Kan-ra and holds up the mummified hand of Kan-ra. The earth shakes as the ancient slabs that prevent entry begin to lower, revealing a dark tunnel before the heroes. 
 ClearDungeonDesc=* The party has vanquished the ancient power found within The Pyramid of Kan-ra. [Clear time: %total.battle.duration $+ ]

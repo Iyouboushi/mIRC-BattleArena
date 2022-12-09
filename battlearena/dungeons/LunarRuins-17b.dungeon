@@ -5,6 +5,7 @@ Rooms=10
 PlayersNeeded=1
 PlayersRecommended=3
 Level=1000
+Echo=true
 MonsterLevel=1000
 BossLevel=1010
 FinalRoom=9

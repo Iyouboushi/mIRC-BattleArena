@@ -4,6 +4,7 @@ Rooms=10
 PlayersNeeded=1
 PlayersRecommended=3
 Level=100
+Echo=true
 FinalRoom=9
 StartBattleDesc=uses the key forged to open the locked door at the end of the first floor.  The doors creak open and reveal a staircase leading upwards into the unknown.
 

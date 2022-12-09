@@ -4,6 +4,7 @@ Rooms=8
 PlayersNeeded=1
 PlayersRecommended=3
 Level=15
+Echo=true
 FinalRoom=7
 StartBattleDesc=uses the ancient Tam-Tara key to unlock an old rusty door. As it creaks open the party can smell the stale air and hear the chants of ancient cultists within. 
 ClearDungeonDesc=* The party has vanquished the evil cultists found within Tam-Tara Deepcroft. The land is safe once again.  For now. [Clear time: %total.battle.duration $+ ]

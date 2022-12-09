@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battleformulas.als
-;;;; Last updated: 03/09/22
+;;;; Last updated: 12/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Although it may seem ridiculous to have
 ; so many damage formulas please do not
@@ -110,13 +110,13 @@ mini_damage_adjust {
   ; if the attacker is mini then cut the damage by a bunch
   if ($is_mini($1) = true) { 
     %attack.damage = $calc(%attack.damage / 5) 
-    %attack.damgae = $round(%attack.damage, 0) 
+    %attack.damage = $round(%attack.damage, 0) 
   }
 
   ; if the defender is mini then increase the damage by some
   if ($is_mini($3) = true) { 
     %attack.damage = $calc(%attack.damage * 1.5) 
-    %attack.damgae = $round(%attack.damage, 0) 
+    %attack.damage = $round(%attack.damage, 0) 
   }
 }
 

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; SHOP/EVENT NPCS
-;;;; Last updated: 09/19/21
+;;;; Last updated: 12/09/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!npc status:#: {  $shopnpc.list(global) }
@@ -151,7 +151,7 @@ alias shopnpc.list {
   if (%npcstatus.Engineer = false) { var %npcstatus.Engineer.color 05 }
   if (%npcstatus.Engineer = kidnapped) { var %npcstatus.Engineer.color 04 }
   var %npcstatus.Engineer.name $readini(shopnpcs.dat, NPCNames, Engineer) the Engineer
-  if (%npcstatus.Engineer.name = $null) { var %npcstatus.Engineer.name Shido Pollendina the Engineer }
+  if (%npcstatus.Engineer.name = $null) { var %npcstatus.Jeweler.name Shido Pollendina the Engineer }
 
   var %npcs.status [ $+ %npcstatus.president.color $+ %npcstatus.president.name $+ ]  [ $+ %npcstatus.healing.color $+ %npcstatus.healing.name $+ ] [ $+ %npcstatus.battle.color $+ %npcstatus.battle.name $+ ] [ $+ %npcstatus.discount.color $+ %npcstatus.discount.name $+ ] [ $+ %npcstatus.song.color $+ %npcstatus.song.name $+ ] [ $+ %npcstatus.shield.color $+ %npcstatus.shield.name $+ ]
   var %npcs.status2 [ $+ %npcstatus.dungeonkey.color $+ %npcstatus.dungeonkey.name $+ ]  [ $+ %npcstatus.potionwitch.color $+ %npcstatus.potionwitch.name $+ ] [ $+ %npcstatus.wheel.color $+ %npcstatus.wheel.name $+ ] [ $+ %npcstatus.gambler.color $+ %npcstatus.gambler.name $+ ] [ $+ %npcstatus.gardener.color $+ %npcstatus.gardener.name $+ ] [ $+ %npcstatus.travel.color $+ %npcstatus.travel.name $+ ]
@@ -263,7 +263,7 @@ alias shopnpc.status.check {
   if (($shopnpc.present.check(Jeweler) = false) && (%player.enhancementpointsspent >= 75)) { $shopnpc.add(Jeweler) }
 
   ; Check the engineer NPC
-  if (($readini(garden.dat, GardenStats, level) >= 6) && (%player.over1000 = true)) { $shopnpc.add(Engineer) } 
+  if (($readini(garden.dat, GardenStats, level) >= 10) && (%player.over1000 = true)) { $shopnpc.add(Engineer) } 
 
   unset %player.deaths | unset %player.shoplevels | unset %player.totalbattles | unset %player.totalachievements
   unset %player.totallostsouls | unset %player.totalparries | unset %player.itemssold | unset %player.over1000
@@ -432,4 +432,12 @@ alias shopnpc.event.saveelf {
     writeini shopnpcs.dat events SavedElves %total.elves.saved
     $display.message($readini(translation.dat, shopnpcs, SavedElf))
   }
+}
+
+alias frostlegion.destroyed {
+  ; Has Santa been saved before? If so, save an elf.
+  if ($readini(shopnpcs.dat, NPCstatus, Santa) = true) { $shopnpc.event.saveelf } 
+
+  ; If not, save Santa.
+  else { writeini shopnpcs.dat Events FrostLegionDefeated true }
 }

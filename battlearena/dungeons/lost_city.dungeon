@@ -4,6 +4,7 @@ Rooms=8
 PlayersNeeded=1
 PlayersRecommended=3
 Level=100
+Echo=true
 FinalRoom=7
 StartBattleDesc=uses the Ancient Map to discover a lost city of the Antaal. As the party approaches the entrance of the city they can see large mold-like substance covering nearly everything within.
 ClearDungeonDesc=* The party has vanquished the evil that dwelled within the city and uncovered the entrance to a Lost Tower. [Clear time: %total.battle.duration $+ ]
