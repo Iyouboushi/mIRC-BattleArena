@@ -1,0 +1,27 @@
+[Info]
+Name=Allied Training Paper Portal
+Rooms=2
+PlayersNeeded=1
+PlayersRecommended=1
+Level=10
+MonsterLevel=7
+FinalRoom=1
+RedOrbAmount=1000
+Echo=true
+
+StartBattleDesc=visits the Allied Forces and hands the guard the training paper. "You must be here to train the new guy. Follow me."
+ClearDungeonDesc=* The Allied Scrub has learned a valuable lesson and will use that lesson to grow stronger! [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The Allied Scrub does a dance to celebrate the fact that he has bested the heroes in combat! "See? I don't need any training! I'm already the best!" 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The guard has left to bring the new guy to the battlefield.  So take a moment and prepare.
+Battlefield=Allied Training Field
+
+[1]
+Desc=A weak Allied Scrub in training is brought out to the battlefield and begins shaking in fear at the thought of combat.
+Battlefield=Allied Training Field
+Monsters=Allied_Scrub
+bossroom=true
+
+

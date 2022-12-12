@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/09/22
+;;;; Last updated: 12/12/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -435,7 +435,7 @@ return_winningstreak {
   if (%battle.type = ai) { return %ai.battle.level }
   if (%battle.type = DragonHunt) { return $dragonhunt.dragonage(%dragonhunt.file.name) }
 
-  if (%portal.bonus = true) {
+  if ((%portal.bonus = true) && (%battle.type != dungeon)) {
     var %portal.streak $readini($txtfile(battle2.txt), battleinfo, Portallevel)
     if (%portal.streak = $null) { echo -a portal level is null | return 10 }
     return %portal.streak 
@@ -3605,7 +3605,7 @@ create_treasurechest {
   dec %chest.type.random $treasurehunter.check
 
   if (%portal.bonus = true) { %chest.type.random = $rand(1,35) }
-  if (%battle.type = dungeon) { %chest.type.random = 1 }
+  if ((%battle.type = dungeon) && (%portal.bonus != true)) { %chest.type.random = 1 }
 
   if (%chest.type.random isnum 1-4) { set %color.chest rainbow | set %chest.amount $rand(2,5) }
   if (%chest.type.random isnum 5-12) { set %color.chest gold }

@@ -262,7 +262,7 @@ BossLevelSynced50=$chr(3) $+ 04 $+ The level cap for this boss battle has been
 BossLevelSynced75=$chr(3) $+ 04 $+ The level cap for this boss battle has been set to: 75
 BossLevelSynced100=$chr(3) $+ 04 $+ The level cap for this boss battle has been set to: 100
 BossLevelSynced200=$chr(3) $+ 04 $+ The level cap for this boss battle has been set to: 200
-DungeonLevelSync=$chr(3) $+ 04 $+ The level cap for this dungeon is: $readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel) 
+DungeonLevelSync=$chr(3) $+ 04 $+ The level cap for this $iif(%portal.bonus = true, portal, dungeon) is: $readini($txtfile(battle2.txt), DungeonInfo, DungeonLevel) 
 GainedEnhancementPoint=$chr(3) $+ 7 $+ You have gained 1 enhancement point bringing your new total to %current.enhancementpoints $+ .
 
 GainedEnhancementPointItem=$chr(3) $+ 7 $+ $get_chr_name($2) has gained %point.amount enhancement $iif(%point.amount > 1, points, point) $+ .
@@ -754,8 +754,8 @@ DrawPortal=$chr(3) $+ 12 $+ Neither heroes nor monsters have won this battle as 
 RewardOrbsLoss=$chr(3) $+ 3 $+ For their efforts, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
 RewardOrbsDraw=$chr(3) $+ 3 $+ For their efforts, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
 RewardOrbsWin=$chr(3) $+ 3 $+ For their victory, these players have been rewarded with $readini(system.dat, system, currency) $+ : %red.orb.winners
-RewardOrbsDungeonClear=$chr(3) $+ 3 $+ For clearing the dungeon the party has been rewarded with bonus $readini(system.dat, system, currency) $+ . %red.orb.winners
-FirstTimeDungeonReward=$chr(3) $+ 7 $+ Certain players are receiving a Dungeon Clear Bonus for finishing this dungeon for the first time.
+RewardOrbsDungeonClear=$chr(3) $+ 3 $+ For clearing the $iif(%portal.bonus = true, portal, dungeon) the party has been rewarded with bonus $readini(system.dat, system, currency) $+ . %red.orb.winners
+FirstTimeDungeonReward=$chr(3) $+ 7 $+ Certain players are receiving a Dungeon Clear Bonus for finishing this $iif(%portal.bonus = true, portal, dungeon) for the first time.
 BlackOrbWin=$chr(3) $+ 3 $+ The following players have absorbed a black orb from the boss: %black.orb.winners
 BonusItemWin=$chr(3) $+ 10 $+  $+ %real.name was the most stylish and has been rewarded with %boss.item x1!
 DropItemWin=$chr(3) $+ 10 $+ These players found spoils from the battle: %item.drop.rewards
@@ -766,7 +766,7 @@ Monsterfair.DropWin=$chr(3) $+ 10 $+ These players have been rewarded for battle
 AlliedNotesGain=$chr(3) $+ 3 $+ The Allied Forces reward the heroes with $readini($txtfile(battle2.txt), battle, alliednotes) Allied Notes for their victory.
 KeyWin=$chr(3) $+ 10 $+  $+ $get_chr_name(%key.winner) finds 1 %key.color key $+ !
 EnteredTheBattle=$chr(3) $+ 04 $+  $+ %real.name has entered the battle! 
-EnteredTheDungeon=$chr(3) $+ 04 $+  $+ %real.name has joined the dungeon party! 
+EnteredTheDungeon=$chr(3) $+ 04 $+  $+ %real.name has joined the $iif(%portal.bonus = true, portal, dungeon) party! 
 CurrentWeather=$chr(3) $+ 3 $+ The weather is currently: $readini($dbfile(battlefields.db), weather, current) $+ 
 CurrentMoon=$chr(3) $+ 3 $+ The current moon phase is: $readini($dbfile(battlefields.db), MoonPhase, CurrentMoonPhase) $+ 
 CurrentTime=$chr(3) $+ 2 $+ The current time of 12Day $bytes($readini(battlestats.dat, battle, GameDays),b) 2is:12 $readini($dbfile(battlefields.db), TimeOfDay, CurrentTimeOfDay) 

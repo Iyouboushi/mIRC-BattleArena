@@ -1,0 +1,26 @@
+[Info]
+Name=Bomb Shard Portal
+Rooms=2
+PlayersNeeded=1
+PlayersRecommended=2
+Level=30
+MonsterLevel=30
+FinalRoom=1
+RedOrbAmount=5000
+Echo=true
+StartBattleDesc=is preparing a party to travel to the Waughroom Shrine. 
+ClearDungeonDesc=* The heroes have defeated the Time Bomb! [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The heroes are forced out of the Waughroom Shrine by the Time Bomb! Better luck next time.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The heroes arrive at the entrance to the shrine. Take a moment to prepare for the battle within.
+Battlefield=Waughroon Shrine
+
+[1]
+Desc=After offering the Bomb Shard to the shrine a portal appears.  Entering it and the heroes find themselves in a battlefield against a giant bomb.
+Battlefield=Waughroon Shrine
+Monsters=Time_Bomb
+bossroom=true
+DarknessTurns=8
+

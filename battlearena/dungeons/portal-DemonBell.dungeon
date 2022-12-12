@@ -1,0 +1,26 @@
+[Info]
+Name=Demon Bell Portal
+Rooms=2
+PlayersNeeded=1
+PlayersRecommended=1
+Level=30
+MonsterLevel=30
+FinalRoom=1
+RedOrbAmount=3000
+Echo=true
+StartBattleDesc=rings a demonic bell that opens a glowing portal.  Anyone brave enough to enter should join the party.
+ClearDungeonDesc=* The heroes have defeated Jester and escaped his lair alive! [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The heroes are forced to flee from Jester.  They can still hear his laugh mocking them as they do so.
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The heroes arrive on the other side of the portal to find themselves in a strange circular room with lots of sigils painted on the ground.  Static electricity begins to fill the air but the heroes feel they have a moment to prepare.. 
+Battlefield=Jester's Lair
+
+[1]
+Desc=The electricity grows stronger and then in a bright flash they are greeted with Jester, the insane clown, who stands before them.
+Battlefield=Jester's Lair
+Monsters=Crazy_Jester
+bossroom=true
+
+

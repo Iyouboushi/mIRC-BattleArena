@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; battlealiases.als
-;;;; Last updated: 12/09/22
+;;;; Last updated: 12/11/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2614,6 +2614,7 @@ inflict_status {
   }
 
   if ($3 = stop) { set %status.type stop | var %status.grammar frozen in time }
+  if ($3 = bleeding) { set %status.type bleeding | var %status.grammar bleeding }
   if ($3 = poison) { set %status.type poison | var %status.grammar poisoned }
   if ($3 = silence) { set %status.type silence | var %status.grammar silenced }
   if ($3 = blind) { set %status.type blind | var %status.grammar blind }
@@ -4891,6 +4892,8 @@ supereliteflag.check {
 ; Checks for Allied Notes reward
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 battle.alliednotes.check {
+  if ((%battle type = dungeon && %portal.bonus != true)) { return }
+
   var %notes.reward $readini($txtfile(battle2.txt), battle, alliednotes)
 
   if (%portal.bonus = true) {

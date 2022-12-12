@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ITEMS COMMAND
-;;;; Last updated: 12/06/22
+;;;; Last updated: 12/12/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!portal*:#: {
@@ -25,11 +25,10 @@ alias dungeon.usage.check {
 
   var %active.players $active.players.count
 
-
   if (%active.players >= 4) {  var %dungeon.time.setting 14400 }
   else { var %dungeon.time.setting 7200 }
 
-  if ((%time.difference = $null) || (%time.difference < %dungeon.time.setting)) { 
+  if ((%time.difference = $null) || (%time.difference < %dungeon.time.setting)) {  
     if ($1 = channel) { $display.message($readini(translation.dat, errors, DungeonUsageNotReady), private) }
     if ($1 = private) { $display.private.message($readini(translation.dat, errors, DungeonUsageNotReady)) }
     if ($1 = dcc) { $dcc.private.message($2, $readini(translation.dat, errors, DungeonUsageNotReady)) }
@@ -253,116 +252,137 @@ alias uses_item {
   }
 
   if (%item.type = portal) {
-    if (%battleis = on) { $check_for_battle($1) }
-    if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), private) | halt }
+
     if (%portal.bonus = true) { $display.message($readini(translation.dat, errors, AlreadyInPortal), private) | halt }
     if ($readini(battlestats.dat, dragonballs, ShenronWish) = on) { $display.message($readini(translation.dat, errors, NoPortalsDuringShenron), private) | halt }
 
     if (%mode.gauntlet = on) { $display.message($readini(translation.dat, errors, PortalItemNotWorking) , private) | halt  }  
     if (%battle.type = boss) { $display.message($readini(translation.dat, errors, PortalItemNotWorking) , private) | halt  }  
 
-    if ($return_winningstreak >= 20) { $display.message($readini(translation.dat, errors, StreakTooHighForPortals), private) | halt }
+    ; Does this portal item have a corresponding dungeon file?
+    var %dungeon.file $readini($dbfile(items.db), $2, dungeon)
+    var %dungeon.name $readini($dungeonfile(%dungeon.file), info, name)
+    if (%dungeon.name != $null) {
+      ; The new method.
 
-    ; Check to see if a portal battle can be done via the limiting..
-    if (($readini(system.dat, system, LimitPortalBattles) = true) ||  ($readini(system.dat, system, LimitPortalBattles) = $null)) {
-
-      $portal.clearusagecheck($1)
+      $portal.limitcheck($1)
 
       var %last.portal.number.used $readini($char($1), info, PortalsUsedTotal)
       if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }
-
-      var %daily.portal.cap 10
-
-      var %enhancements.portalusage $readini($char($1), enhancements, portalusage)
-      if (%enhancements.portalusage != $null) { inc %daily.portal.cap %enhancements.portalusage }
-
-      if (%last.portal.number.used >= %daily.portal.cap) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, MaxPortalItemsAllowed), private) | halt }
-
       inc %last.portal.number.used 1 
       writeini $char($1) info PortalsUsedTotal %last.portal.number.used
       writeini $char($1) info LastPortalDate $adate
+
+      ; Set the portal bonus to true
+      set %portal.bonus true
+
+      ; Write the portal item name to the battle info
+      writeini $txtfile(battle2.txt) Battle PortalItem $2
+
+      ; Reduce the item
+      $decrease_item($1, $2) 
+
+      ; Start the dungeon using the portal item.
+      $item.dungeon($1, $2, true) | halt 
     }
 
-    ; Turn on the portal flag
-    set %portal.bonus true
+    else { 
+      ; The old method
 
-    ; Remove old drop items
-    remini $txtfile(battle2.txt) Battle bonusitem
+      if (%battleis = on) { $check_for_battle($1) }
+      if (%battleis = off) { $display.message($readini(translation.dat, errors, NoBattleCurrently), private) | halt }
+      if ($return_winningstreak >= 20) { $display.message($readini(translation.dat, errors, StreakTooHighForPortals), private) | halt }
 
-    ; Write the portal item
-    writeini $txtfile(battle2.txt) battleinfo PortalItem $2
+      ; Check to see if a portal battle can be done via the limiting..
+      $portal.limitcheck($1)
 
-    ; Write the portal's level
-    var %portal.level $readini($dbfile(items.db), $2, PortalLevel)
+      var %last.portal.number.used $readini($char($1), info, PortalsUsedTotal)
+      if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }
+      inc %last.portal.number.used 1 
+      writeini $char($1) info PortalsUsedTotal %last.portal.number.used
+      writeini $char($1) info LastPortalDate $adate
 
-    if (%portal.level != $null) { writeini $txtfile(battle2.txt) battleinfo Portallevel %portal.level }
-    if (%portal.level = $null) {
-      var %boss.level.monster $gettok($readini($dbfile(items.db), $2, Monster), 1, 46)
-      if ($isfile($boss(%boss.level.monster)) = $true) { 
-        var %boss.level $readini($boss(%boss.level.monster), info, bosslevel)  
-        if (%boss.level != $null) { writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
-      }
-      else {
-        if ($isfile($mon(%boss.level.monster)) = $true) { 
-          var %boss.level $readini($mon(%boss.level.monster), info, bosslevel)  
+      ; Turn on the portal flag
+      set %portal.bonus true
+
+      ; Remove old drop items
+      remini $txtfile(battle2.txt) Battle bonusitem
+
+      ; Write the portal item
+      writeini $txtfile(battle2.txt) battleinfo PortalItem $2
+
+      ; Write the portal's level
+      var %portal.level $readini($dbfile(items.db), $2, PortalLevel)
+
+      if (%portal.level != $null) { writeini $txtfile(battle2.txt) battleinfo Portallevel %portal.level }
+      if (%portal.level = $null) {
+        var %boss.level.monster $gettok($readini($dbfile(items.db), $2, Monster), 1, 46)
+        if ($isfile($boss(%boss.level.monster)) = $true) { 
+          var %boss.level $readini($boss(%boss.level.monster), info, bosslevel)  
           if (%boss.level != $null) { writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
         }
+        else {
+          if ($isfile($mon(%boss.level.monster)) = $true) { 
+            var %boss.level $readini($mon(%boss.level.monster), info, bosslevel)  
+            if (%boss.level != $null) { writeini $txtfile(battle2.txt) battleinfo PortalLevel %boss.level }
+          }
+        }
       }
-    }
 
-    ; Change the battlefield
-    unset %battleconditions
-    set %current.battlefield $readini($dbfile(items.db), $2, Battlefield)
-    writeini $dbfile(battlefields.db) weather current $readini($dbfile(items.db), $2, weather)
+      ; Change the battlefield
+      unset %battleconditions
+      set %current.battlefield $readini($dbfile(items.db), $2, Battlefield)
+      writeini $dbfile(battlefields.db) weather current $readini($dbfile(items.db), $2, weather)
 
-    ; check for limitations
-    $battlefield.limitations
+      ; check for limitations
+      $battlefield.limitations
 
-    if (($readini(system.dat, system, ForcePortalSync) = true) && ($readini($dbfile(items.db), $2, PortalLevel) != $null)) {
-      $portal.sync.players(%portal.level)
-      $display.message($readini(translation.dat, system, PortalLevelsSynced), battle)
-      writeini $txtfile(battle2.txt) battleinfo averagelevel %portal.level 
-      writeini $txtfile(battle2.txt) battleinfo highestlevel %portal.level 
-      writeini $txtfile(battle2.txt) battleinfo PlayerLevels %portal.level 
-    } 
+      if (($readini(system.dat, system, ForcePortalSync) = true) && ($readini($dbfile(items.db), $2, PortalLevel) != $null)) {
+        $portal.sync.players(%portal.level)
+        $display.message($readini(translation.dat, system, PortalLevelsSynced), battle)
+        writeini $txtfile(battle2.txt) battleinfo averagelevel %portal.level 
+        writeini $txtfile(battle2.txt) battleinfo highestlevel %portal.level 
+        writeini $txtfile(battle2.txt) battleinfo PlayerLevels %portal.level 
+      } 
 
-    if ($readini($dbfile(items.db), $2, PortalLevel) = $null) { $portal.uncapped.battleconditionscheck }
+      if ($readini($dbfile(items.db), $2, PortalLevel) = $null) { $portal.uncapped.battleconditionscheck }
 
-    ; Show the description
-    $set_chr_name($1) | $display.message( $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
+      ; Show the description
+      $set_chr_name($1) | $display.message( $+ %real.name  $+ $readini($dbfile(items.db), $2, desc), battle)
 
-    set %monster.to.spawn $readini($dbfile(items.db), $2, Monster)
+      set %monster.to.spawn $readini($dbfile(items.db), $2, Monster)
 
-    if ($numtok(%monster.to.spawn,46) = 1) { $portal.item.onemonster }
-    if ($numtok(%monster.to.spawn,46) > 1) { $portal.item.multimonsters }
+      if ($numtok(%monster.to.spawn,46) = 1) { $portal.item.onemonster }
+      if ($numtok(%monster.to.spawn,46) > 1) { $portal.item.multimonsters }
 
-    ; Set the allied notes value
-    var %allied.notes $readini($dbfile(items.db), $2, alliednotes)   
-    if (%allied.notes = $null) { var %allied.notes 100 }
-    writeini $txtfile(battle2.txt) battle alliednotes %allied.notes
+      ; Set the allied notes value
+      var %allied.notes $readini($dbfile(items.db), $2, alliednotes)   
+      if (%allied.notes = $null) { var %allied.notes 100 }
+      writeini $txtfile(battle2.txt) battle alliednotes %allied.notes
 
-    ; Reduce the item
-    $decrease_item($1, $2) 
+      ; Reduce the item
+      $decrease_item($1, $2) 
 
-    ; set the current turn back to 1
-    set %current.turn 1
+      ; set the current turn back to 1
+      set %current.turn 1
 
-    ; Set a flag for portal battles
-    set %previous.battle.type portal
-    set %clearactionpoints true
+      ; Set a flag for portal battles
+      set %previous.battle.type portal
+      set %clearactionpoints true
 
-    ; check for custom darkness turns
-    var %custom.darkness.turns $readini($dbfile(items.db), $2, DarknessTurns)
-    if (%custom.darkness.turns != $null) { set %darkness.turns %custom.darkness.turns }
+      ; check for custom darkness turns
+      var %custom.darkness.turns $readini($dbfile(items.db), $2, DarknessTurns)
+      if (%custom.darkness.turns != $null) { set %darkness.turns %custom.darkness.turns }
 
-    if ($readini(system.dat, system, botType) = DCCchat) {  
-      $battlelist(public) 
-      if (%battleis = on)  { $check_for_double_turn($1, forcenext) | halt }
-    }
-    if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
-      /.timerSlowDown $+ $rand(1,1000) $+ $rand(a,z) 1 3 /battlelist public
-      /.timerSlowDown2 $+ $rand(1,1000) $+ $rand(a,z) 1 5 /check_for_double_turn $1 forcenext
-      halt
+      if ($readini(system.dat, system, botType) = DCCchat) {  
+        $battlelist(public) 
+        if (%battleis = on)  { $check_for_double_turn($1, forcenext) | halt }
+      }
+      if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
+        /.timerSlowDown $+ $rand(1,1000) $+ $rand(a,z) 1 3 /battlelist public
+        /.timerSlowDown2 $+ $rand(1,1000) $+ $rand(a,z) 1 5 /check_for_double_turn $1 forcenext
+        halt
+      }
     }
   }
 
@@ -587,6 +607,33 @@ alias uses_item {
     if ($readini($char($1), skills, quickpockets.on) = on) { $display.message(12 $+ $get_chr_name($1) gets another action this turn.,battle) | writeini $char($1) skills quickpockets.on off | halt }
     else { $check_for_double_turn($1) | halt }
   }
+}
+
+alias portal.limitcheck {
+  ; $1 = the person we're checking
+  ; Check to see if a portal battle can be done via the limiting..
+  if (($readini(system.dat, system, LimitPortalBattles) = true) ||  ($readini(system.dat, system, LimitPortalBattles) = $null)) {
+
+    $portal.clearusagecheck($1)
+
+    var %last.portal.number.used $readini($char($1), info, PortalsUsedTotal)
+    if (%last.portal.number.used = $null) { var %last.portal.number.used 0 }
+
+    var %daily.portal.cap 10
+
+    var %enhancements.portalusage $readini($char($1), enhancements, portalusage)
+    if (%enhancements.portalusage != $null) { inc %daily.portal.cap %enhancements.portalusage }
+
+    if (%last.portal.number.used >= %daily.portal.cap) { $set_chr_name($1) | $display.message($readini(translation.dat, errors, MaxPortalItemsAllowed), private) | halt }
+  }
+}
+
+alias portal.alliednotes {
+  ; $1 = the portal item
+  ; Set the allied notes value      
+  var %allied.notes $readini($dbfile(items.db), $1, alliednotes)   
+  if (%allied.notes = $null) { var %allied.notes 100 }
+  writeini $txtfile(battle2.txt) battle alliednotes %allied.notes
 }
 
 alias decrease_item {

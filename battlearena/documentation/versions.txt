@@ -1766,6 +1766,7 @@ Battle Arena Bot VERSIONS
   start a dungeon every 4 hours.  If there are less than 4, players can begin a new dungeon every 2 hours.
 - Changed the Frost Legion battle to be a dungeon that is accessible in December instead. The item to start the dungeon is the
   FrostOrb and costs 1 BeastmenSeal.  It can be found in the dungeonkey shop.  Using the item will consume it.
+- Changed portals to act as dungeons if they have a corresponding dungeon file. If not it will act the same as it did in prior versions
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
 - Fixed an issue with the sleep status
 - Removed the "FinalGetsuga" and "Merlin'sFinalSpell" techniques from the game.  The CharacterResetPotion has replaced them.

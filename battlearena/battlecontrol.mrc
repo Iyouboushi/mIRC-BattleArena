@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/09/22
+;;;; Last updated: 12/12/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -1370,7 +1370,6 @@ alias generate_monster {
       return
     }
 
-
     if (%boss.type = normal) {
 
       if ($rand(1,2) = 1) {
@@ -1994,7 +1993,8 @@ alias endbattle {
 
   if ($1 = victory) { $battle.end.victory }
   if (($1 = defeat) || ($1 = failure)) { $battle.end.failure }
-  if ($1 = draw) {  $battle.end.draw }
+  if (($1 = draw) && (%portal.bonus != true)) {  $battle.end.draw }
+  if (($1 = draw) && (%portal.bonus = true)) {  $battle.end.failure }
 
   ; Check to see if Shenron's Wish is active and if we need to turn it off..
   $db.shenronwish.turncheck
@@ -2095,6 +2095,7 @@ alias battle.end.failure {
     $display.message($readini(translation.dat, battle, EvilHasWonPortal), global) 
     if (%portal.defeat.message != $null) { $display.message(04 $+ %portal.defeat.message, global) }
   }
+
   if (%savethepresident = on) { $display.message($readini(translation.dat, battle, EvilHasWonPresident), global) 
     var %presidents.captured $readini(battlestats.dat, battle, CapturedPresidents.Fails)
     if (%presidents.captured = $null) { var %presidents.captured 0 }

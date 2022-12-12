@@ -1,0 +1,26 @@
+[Info]
+Name=Millennial Fair Pass Portal
+Rooms=2
+PlayersNeeded=1
+PlayersRecommended=1
+Level=10
+MonsterLevel=10
+FinalRoom=1
+RedOrbAmount=1000
+Echo=true
+StartBattleDesc=learns that the Millennial Fair is taking place in Lenne! This pass will allow everyone who wants to go to enter the fair.
+ClearDungeonDesc=* The heroes have defeated Gato and enjoy the rest of the fair! [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The heroes hear Gato sing "You're so weak. And I'm so strong. I punched your lights out. Now run along" as they are forced to leave the fair in shame. 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The heroes take a look around, enjoying the sights. Take a moment and prepare as you take in the sights.. 
+Battlefield=Leene Square
+
+[1]
+Desc=As the heroes walk around the fair they eventually come up to an area with a strange robot. The robot sees the heroes and goes to speak into the microphone in its hand.
+Battlefield=Leene Square
+Monsters=Gato
+bossroom=true
+
+

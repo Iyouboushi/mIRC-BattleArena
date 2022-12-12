@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 12/09/22
+;;;; Last updated: 12/12/22
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -54,8 +54,8 @@ dungeon.start {
   if ($4 != true) { $display.message(02 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) }
   if ($4 = true) { $display.message(02 $+ $get_chr_name($1)  $+ $readini($dungeonfile($3), info, StartBattleDesc), global) | writeini $txtfile(battle2.txt) DungeonInfo IgnoreWritingDungeonTime true }
 
-  if (%dungeon.max.players = 0) { $display.message(04This dungeon is level12 %dungeon.level 04and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 04to enter (12 $+ %dungeon.players.recommended $+ 04 $iif(%dungeon.players.recommended = 1, player, players) recommended). The dungeon will begin in12 $duration(%time.to.enter) $+ 04. Use !enter if you wish to join the party. , global) }
-  else { $display.message(04This dungeon is level12 %dungeon.level 04and will start after12 %dungeon.max.players $iif(%dungeon.max.players = 1, player 04enters, players 04enter) or in12 $duration(%time.to.enter) $+ 04. Use !enter if you wish to join the party. , global) }
+  if (%dungeon.max.players = 0) { $display.message(04This $iif(%portal.bonus = true, portal, dungeon) is level12 %dungeon.level 04and requires12 %dungeon.players.needed $iif(%dungeon.players.needed = 1, player, players) 04to enter (12 $+ %dungeon.players.recommended $+ 04 $iif(%dungeon.players.recommended = 1, player, players) recommended). The $iif(%portal.bonus = true, portal, dungeon) will begin in12 $duration(%time.to.enter) $+ 04. Use !enter if you wish to join the party. , global) }
+  else { $display.message(04This $iif(%portal.bonus = true, portal, dungeon) is level12 %dungeon.level 04and will start after12 %dungeon.max.players $iif(%dungeon.max.players = 1, player 04enters, players 04enter) or in12 $duration(%time.to.enter) $+ 04. Use !enter if you wish to join the party. , global) }
 
 }
 
@@ -127,7 +127,7 @@ dungeon.begin {
   if ((%number.of.players = 0) || (%number.of.players < $readini($txtfile(battle2.txt), DungeonInfo, PlayersNeeded))) { $display.message($readini(translation.dat, errors, NotEnoughPartyMembersForDungeon), global) | $clear_battle | halt }
 
   ; Dungeon was created successfully so let's write the created time to the person who made it
-  if ($readini($txtfile(battle2.txt), DungeonInfo, IgnoreWritingDungeonTime) != true) { 
+  if (($readini($txtfile(battle2.txt), DungeonInfo, IgnoreWritingDungeonTime) != true) && (%portal.bonus != true)) { 
     var %dungeon.creator $readini($txtfile(battle2.txt), DungeonInfo, DungeonCreator)
     writeini $char(%dungeon.creator) info LastDungeonStartTime $ctime
   }
@@ -196,10 +196,10 @@ dungeon.rewardorbs {
   var %dungeon.level $readini($txtfile(battle2.txt), dungeoninfo, dungeonlevel)
   var %boss.room.check $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, bossroom)
 
-  if (%boss.room.check = true) { var %dungeon.level $calc(%dungeon.level * 25) }
-  else { var %dungeon.level $calc(%dungeon.level * 10) }
+  if (%boss.room.check = true) { var %dungeon.level $calc(%dungeon.level + 5) }
+  else { var %dungeon.level $calc(%dungeon.level + 3) }
 
-  if ($1 = dungeonclear) { var %dungeon.clear true | var %dungeon.level $calc(%dungeon.level + 75) }
+  if ($1 = dungeonclear) { var %dungeon.clear true | var %dungeon.level $calc(%dungeon.level + 15) }
 
   if ($1 = failure) {  
     $battle.calculate.redorbs(defeat, %dungeon.level)
@@ -291,7 +291,7 @@ dungeon.end {
 
   var %total.battle.duration $battle.calculateBattleDuration
 
-  if ($1 = failure) { 
+  if (($1 = failure) || ($1 = draw)) { 
 
     ; Check for the Echo. If echo is true, reset the last battle and try again!  
     if (($dungeon.echo = true) && (%echo.on != true)) {   
@@ -307,7 +307,7 @@ dungeon.end {
     }
 
     ; If the dungeon doesn't have Echo enabled then just end.
-    if ($dungeon.echo = false) {  
+    if ($dungeon.echo = false) { 
       $display.message(02 $+ $readini($dungeonfile($dungeon.dungeonfile), info, DungeonFail), global) 
       $dungeon.rewardorbs(failure) 
     }
@@ -317,6 +317,8 @@ dungeon.end {
   else { 
     $display.message(02 $+ $readini($dungeonfile($dungeon.dungeonfile), info, cleardungeondesc), global) 
 
+    if (%portal.bonus = true) { $portal.alliednotes($readini($txtfile(battle2.txt), Battle, PortalItem)) } 
+
     ; give orb rewards
     $dungeon.rewardorbs(dungeonClear)
 
@@ -325,6 +327,32 @@ dungeon.end {
 
     $battle.reward.blackorbs 
     if (%black.orb.winners != $null) { $display.message($readini(translation.dat, battle, BlackOrbWin), battle)   }
+
+    if (%portal.bonus = true) {
+      if ($readini($txtfile(battle2.txt), battle, alliednotes) != $null) { $display.message($readini(translation.dat, battle, AlliedNotesGain), battle)  }
+
+      var %battletxt.lines $lines($txtfile(battle.txt)) | var %battletxt.current.line 1 
+      while (%battletxt.current.line <= %battletxt.lines) { 
+        var %who.battle $read -l $+ %battletxt.current.line $txtfile(battle.txt)
+        var %flag $readini($char(%who.battle), info, flag)
+        if ((%flag = monster) || (%flag = npc)) { inc %battletxt.current.line 1 }
+        else { 
+
+          var %total.portalbattles.won $readini($char(%who.battle), stuff, PortalBattlesWon) 
+          if (%total.portalbattles.won = $null) { var %total.portalbattles.won 0 }
+          inc %total.portalbattles.won 1 
+
+          writeini $char(%who.battle) stuff PortalBattlesWon %total.portalbattles.won
+
+          $achievement_check(%who.battle, AlliedScrub)
+          $achievement_check(%who.battle, AlliedSoldier)
+          $achievement_check(%who.battle, AlliedGeneral)
+
+          inc %battletxt.current.line          
+        }
+      }
+    }
+
     $give_random_reward
 
     $dungeon.spoils.drop
@@ -334,7 +362,7 @@ dungeon.end {
   }
 
   ; then do a $clear_battle
-  set %battleis off | $clear_battle | halt
+  set %battleis off | unset %portal.bonus | $clear_battle | halt
 }
 
 dungeon.spoils.drop {
@@ -399,7 +427,9 @@ dungeon.nextroom {
   writeini battlestats.dat battle emptyRounds 0
 
   ; Set the # of Turns Before Darkness
-  set %darkness.turns 30
+  set %darkness.turns $readini($dungeonfile($dungeon.dungeonfile), $dungeon.currentroom, DarknessTurns)
+  if (%darkness.turns = $null) { set %darkness.turns 30 }
+
   set %battle.rage.darkness false
   set %darkness.fivemin.warn false
 
@@ -497,9 +527,6 @@ dungeon.generatemonsters {
       write $txtfile(battle.txt) %current.monster.to.spawn.name
       var %battlemonsters $readini($txtfile(battle2.txt), BattleInfo, Monsters) | inc %battlemonsters 1 | writeini $txtfile(battle2.txt) BattleInfo Monsters %battlemonsters
 
-      ; display the description of the spawned monster
-      $set_chr_name(%current.monster.to.spawn.name) 
-
       if (($readini(system.dat, system, botType) = IRC) || ($readini(system.dat, system, botType) = TWITCH)) { 
         var %timer.delay $calc(%value - 1)
 
@@ -508,12 +535,14 @@ dungeon.generatemonsters {
           if (%timer.delay <= 0) { var %timer.delay 0 }
         } 
 
+        $set_chr_name(%current.monster.to.spawn.name) 
         $display.message($readini(translation.dat, battle, EnteredTheBattle), battle)
 
-        var %bossquote $readini($char(%current.monster.to.spawn.name), descriptions, bossquote)
-        if (%bossquote != $null) { 
-          var %bossquote 02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn), descriptions, BossQuote) $+ "
-          $display.message(%bossquote, battle) 
+        ; display the description of the spawned monster if it's a boss room
+        if ($dungeon.bossroomcheck = true) { 
+          $display.message(12 $+ %real.name  $+ $readini($char(%current.monster.to.spawn.name), descriptions, char), battle)  
+          if ($readini($char(%current.monster.to.spawn.name), descriptions, BossQuote) != $null) { $display.message(02 $+ %real.name looks at the heroes and says " $+ $readini($char(%current.monster.to.spawn.name), descriptions, BossQuote) $+ ", battle) }
+
         }
       }
 
@@ -534,14 +563,12 @@ dungeon.generatemonsters {
 
       $fulls(%current.monster.to.spawn.name, yes)
 
-
       var %spoil.monster.list $readini($txtfile(battle2.txt), BattleInfo, MonsterList)
       var %spoil.monster.list $addtok(%spoil.monster.list, %current.monster.to.spawn.name, 46)
       writeini $txtfile(battle2.txt) BattleInfo MonsterList %spoil.monster.list
 
       set %multiple.wave.bonus yes
       set %first.round.protection yes
-      set %darkness.turns 21
       unset %darkness.fivemin.warn
       unset %battle.rage.darkness
 
