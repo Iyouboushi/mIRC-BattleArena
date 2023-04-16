@@ -1757,6 +1757,10 @@ Battle Arena Bot VERSIONS
 - Added the ability for dungeons to have the power of the Echo! When this is set to TRUE players will basically get an extra life if
   they should lose a battle within the dungeon. The loss won't be counted and the battle will be reset.  Losing a second time will
   cause the dungeon to end in a failure. The power of the Echo is off by default on dungeons and only select dungeons will use it.
+- Added a new potion effect: EnhanceArmor -- it doubles the protection % for the next battle. 
+  The required items are: Quadav Shell x5 + Beetle Shell x5 + Milk x1
+- Added a new battlefield condition: null-armor. Reduces all armor bonuses to 0 for the battle on that battlefield.
+- Added a new portal item type: Chaos.  Chaos portals are harder versions of their respective portals.
 - Changed the Tempest tech on Rudra+Agni to be FireTempest to resolve a conflict that has existed for a while.
 - Changed the !mythic upgrade BasePower command to allow for multiple purchases with one command. Use !mythic upgrade BasePower #
 - Changed how fast the dragon hunt dragons age up.
@@ -1767,6 +1771,9 @@ Battle Arena Bot VERSIONS
 - Changed the Frost Legion battle to be a dungeon that is accessible in December instead. The item to start the dungeon is the
   FrostOrb and costs 1 BeastmenSeal.  It can be found in the dungeonkey shop.  Using the item will consume it.
 - Changed portals to act as dungeons if they have a corresponding dungeon file. If not it will act the same as it did in prior versions
+- Changed dungeons so that the boss descriptions and quotes will appear again in battle.
+- Changed dungeons so that each room can have its own unique darkness timer if necessary.  In the room section put 
+  DarknessTurns=    By default it's 30 if it's missing.
 - Fixed an issue with !view-info tech that was showing red orb costs even in kill coin mode.
 - Fixed an issue with the sleep status
 - Removed the "FinalGetsuga" and "Merlin'sFinalSpell" techniques from the game.  The CharacterResetPotion has replaced them.
