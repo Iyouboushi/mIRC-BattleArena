@@ -1,10 +1,10 @@
 [weather]
-current=bright
+current=gloomy
 list=calm.bright.gloomy.rainy.stormy.snowy.windy.hot.dry
 boost=.25
 
 [MoonPhase]
-CurrentMoonPhase=Crescent
+CurrentMoonPhase=Gibbous
 CurrentMoonTurn=2
 
 [MoonPhaseTime]
@@ -575,37 +575,37 @@ scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
 Weather=calm
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons.no-fleeing
+limitations=no-trusts.no-mech.no-summons $+ $iif($dungeon.chaosmode = true, .no-fleeing.null-armor, .no-fleeing)
 
 [Korroloka Tunnel]
 Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons.no-fleeing
+limitations=no-trusts.no-mech.no-summons $+ $iif($dungeon.chaosmode = true, .no-fleeing.null-armor, .no-fleeing)
 
 [Jester's Lair]
 Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons.no-fleeing
+limitations=no-trusts.no-mech.no-summons $+ $iif($dungeon.chaosmode = true, .no-fleeing.null-armor, .no-fleeing)
 
 [Levithan's Heartcore]
 Weather=calm
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons.no-fleeing
+limitations=no-trusts.no-mech.no-summons $+ $iif($dungeon.chaosmode = true, .no-fleeing.null-armor, .no-fleeing)
 
 [Waughroon Shrine]
 Weather=calm
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons.no-fleeing
+limitations=no-trusts.no-mech.no-summons $+ $iif($dungeon.chaosmode = true, .no-fleeing.null-armor, .no-fleeing)
 
 [Smelly Dungeon]
 Weather=gloomy
 NumberOfEvents=0
 scavenge=Zircon.Topaz.Emerald.Ruby.Sapphire.Opal.Onyx.Diamond
-limitations=no-trusts.no-mech.no-summons.no-fleeing
+limitations=no-trusts.no-mech.no-summons $+ $iif($dungeon.chaosmode = true, .no-fleeing.null-armor, .no-fleeing)
 
 [Byakko's Chamber]
 Weather=stormy

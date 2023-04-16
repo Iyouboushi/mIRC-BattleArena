@@ -3702,6 +3702,7 @@ Exclusive=yes
 PortalLevel=25
 RecommendedPartySize=1
 
+
 [DemonBell]
 type=portal
 Cost=10
@@ -4441,6 +4442,43 @@ AlliedNotes=5000
 Exclusive=yes
 ShadowPortal=true
 StatWeight=.90
+
+;;;;; CHAOS VERSIONS of the portals
+;;;;; These are basically harder versions of the portals
+;;;;; They drop ChaosMedal items instead of normal drops.
+
+[ChaosTrainingPaper]
+type=portal
+cost=5
+currency=HighKindredCrests
+dungeon=portal-AlliedTrainingPaper_Chaos
+battlefield=Allied Training Field
+Weather=calm
+Monster=Allied_Scrub
+Desc=visits the Allied Forces and hands the guard the blood-stained paper. "Erm..well if you really insist on this.." he says to them before leading them to the training field.
+AlliedNotes=200
+Exclusive=yes
+PortalLevel=10
+Victory=$chr(2) $+ The Allied Scrub has learned a valuable lesson and will use that lesson to improve!
+Defeat=$chr(2) $+ The Allied Scrub does a dance to celebrate the fact that he has bested the heroes in combat!
+RecommendedPartySize=2
+ChaosPortal=true
+
+[ChaosWormFood]
+type=portal
+cost=5
+currency=HighKindredCrests
+dungeon=portal-WormFood_Chaos
+battlefield=Korroloka Tunnel
+Weather=gloomy
+Monster=Morion_Worm
+Desc=travels to the Korroloka Tunnel and takes out the chaotic worm food.  After opening it, %real.name sprinkles the food out on the cavern floor.  After a moment the area shakes as a gigantic worm pops out of the side of the cavern wall and looks at the heroes..
+AlliedNotes=500
+Exclusive=yes
+PortalLevel=25
+RecommendedPartySize=2
+ChaosPortal=true
+
 
 =========================
 MECH CORE ITEMS
@@ -5822,6 +5860,14 @@ Legendary=true
 [ValorMedal]
 Type=misc
 Desc=A medal that shows that you have survived an exceptionally difficult battle.
+Exclusive=yes
+SellPrice=1
+Cost=0
+Legendary=true
+
+[ChaosMedal]
+Type=misc
+Desc=A dark medal that shows that you have survived a tough portal battle.
 Exclusive=yes
 SellPrice=1
 Cost=0

@@ -37,7 +37,7 @@ Zeromus=GoldVoucher
 AbsoluteVirtue=Potion.x-potion.goldorb
 Ahtu=Tonic.SuperPotion.X-Potion.Ether.AshLog
 Aikawa=Superpotion.goldorb
-Allied_Scrub=RustyHelmet.RustyMail.RustyHose.RustyBoots.RustyKnuckles
+Allied_Scrub=$iif($dungeon.chaosmode = true, ChaosMedal, RustyHelmet.RustyMail.RustyHose.RustyBoots.RustyKnuckles)
 Alpha_Weltall=AlphaWeltallCore
 Amon=Tonic.Potion.X-Potion.DustyWing.Ether
 Anders=Tonic.SuperPotion.X-Potion.Ether.Ambrosia
@@ -136,7 +136,7 @@ MetalKingSlime=Potion.X-Potion.Tonic.Holy_Water.Ether
 Metroid_Prime=KindredSeal
 Metroid_Prime_Core=ChozoMedallion
 Moldorm=KindredSeal
-Morion_Worm=IronOre.Ruby.GoldOre.BeastmenSeal
+Morion_Worm=$iif($dungeon.chaosmode = true, ChaosMedal, IronOre.Ruby.GoldOre.BeastmenSeal)
 MotherBrain=Tonic.SuperPotion.X-Potion.Ether.Slurm
 Mother_Brain=Tonic.SuperPotion.X-Potion.Ether.Ambrosia
 M_Bison=X-Potion.Tonic

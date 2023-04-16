@@ -1,0 +1,29 @@
+[Info]
+Name=Allied Training Paper Portal (Chaos)
+Rooms=2
+PlayersNeeded=1
+PlayersRecommended=2
+Level=10
+MonsterLevel=30
+BossLevel=30
+FinalRoom=1
+RedOrbAmount=1000
+Echo=false
+ChaosMode=true
+
+StartBattleDesc=visits the Allied Forces and hands the guard the training paper. "Erm, well if you're sure about this.. Follow me."
+ClearDungeonDesc=* The Allied Scrub has learned a valuable lesson and will use that lesson to grow stronger! [Clear time: %total.battle.duration $+ ]
+DungeonFail=* The Allied Scrub does a dance to celebrate the fact that he has bested the heroes in combat! 
+
+; Starting room is always 0, after successfully clearing a room it will be  room#+1 automatically
+[0]
+Desc=The guard has left to bring the opponent to the battlefield.  So take a moment and prepare.
+Battlefield=Allied Training Field
+
+[1]
+Desc=A heavily armored Allied Scrub is brought out to the battlefield and begins laughing at the thought of combat.
+Battlefield=Allied Training Field
+Monsters=Allied_Scrub
+bossroom=true
+
+

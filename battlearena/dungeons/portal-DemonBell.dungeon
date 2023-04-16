@@ -5,6 +5,7 @@ PlayersNeeded=1
 PlayersRecommended=1
 Level=30
 MonsterLevel=30
+BossLevel=30
 FinalRoom=1
 RedOrbAmount=3000
 Echo=true

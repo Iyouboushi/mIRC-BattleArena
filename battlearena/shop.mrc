@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  SHOP COMMANDS
-;;;; Last updated: 04/10/20
+;;;; Last updated: 04/15/23
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 3:TEXT:!shop*:*: { $shop.start($1, $2, $3, $4, $5) }
@@ -2152,6 +2152,7 @@ alias shop.portal {
     unset %shop.list | unset %item.name | unset %item_amount | unset %portals.bstmen | unset %portals.kindred | unset %portals.highkindredcrest | unset %portals.kindredcrest
     unset %portals.bstmen2 | unset %portals.kindred2 | unset %portals.kindrecrest2 | unset %portals.highkindredcrest2
     unset %portals.shadow | unset %portals.shadow2 | unset %portals.sacredkindredcrest
+    unset %portals.chaos | unset %portals.chaos2
 
     var %value 1 | var %items.lines $lines($lstfile(items_portal.lst))
 
@@ -2172,6 +2173,12 @@ alias shop.portal {
 
         if ($readini($dbfile(items.db), %item.name, currency) = KindredCrest) { %portals.kindredcrest = $addtok(%portals.kindredcrest, $+ %item.name $+ ( $+ %item.price $+ ),46) }
         if (($readini($dbfile(items.db), %item.name, currency) = HighKindredCrest) && ($readini($dbfile(items.db), %item.name, ShadowPortal) != true))  { %portals.highkindredcrest = $addtok(%portals.highkindredcrest, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+
+
+        if ($readini($dbfile(items.db), %item.name, ChaosPortal) = true) { 
+          if ($numtok(%portals.chaos, 46) >= 12) { %portals.chaos2 = $addtok(%portals.shadow2, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+          else { %portals.chaos = $addtok(%portals.chaos, $+ %item.name $+ ( $+ %item.price $+ ),46) }
+        }
 
         if ($readini($dbfile(items.db), %item.name, ShadowPortal) = true) { 
           if ($numtok(%portals.shadow, 46) >= 12) { %portals.shadow2 = $addtok(%portals.shadow2, $+ %item.name $+ ( $+ %item.price $+ ),46) }
@@ -2197,6 +2204,9 @@ alias shop.portal {
     %portals.sacredkindredcrest = $replace(%portals.sacredkindredcrest, $chr(046), %replacechar)
     %portals.shadow = $replace(%portals.shadow, $chr(046), %replacechar)
     %portals.shadow2 = $replace(%portals.shadow2, $chr(046), %replacechar)
+    %portals.chaos = $replace(%portals.chaos, $chr(046), %replacechar)
+    %portals.chaos2 = $replace(%portals.chaos2, $chr(046), %replacechar)
+
     unset %replacechar
 
     if (%portals.bstmen != $null) {  
@@ -2222,6 +2232,11 @@ alias shop.portal {
     if (%portals.shadow != $null) {  
       $display.private.message.delay.custom(02These shadow portal items are paid for with 04HighKindredCrests02 and are uncapped: %portals.shadow, 3) 
       if (%portals.highkindredcrest2 != $null) {  $display.private.message.delay.custom(02 $+ %portals.shadow2, 3)  }
+    }
+
+    if (%portals.chaos != $null) {  
+      $display.private.message.delay.custom(02These chaos portal items are paid for with 04HighKindredCrests02 $+ : %portals.chaos, 3) 
+      if (%portals.highkindredcrest2 != $null) {  $display.private.message.delay.custom(02 $+ %portals.chaos, 3)  }
     }
 
     if (%portals.sacredkindredcrest != $null) {  
@@ -2648,11 +2663,10 @@ alias shop.potioneffects {
     $display.private.message(12OrbBonus 02potion effect: $+ $iif($item.amount($1, BeetleShell) >= 2, 03, 04) 2 Beetle Shells02 + $+ $iif($item.amount($1, BeetleJaw) >= 2, 03, 04) 2 Beetle Jaws02 + $+ $iif($item.amount($1, Milk) >= 1, 03, 04) 1 Milk)
     $display.private.message(12DoubleLife 02potion effect: $+ $iif($item.amount($1, Rose) >= 2, 03, 04) 2 Roses02 + $+ $iif($item.amount($1, Tulip) >= 1, 03, 04) 1 Tulip02 + $+ $iif($item.amount($1, Milk) >= 2, 03, 04) 2 Milk)    
     $display.private.message(12BonusSpoils 02potion effect: $+ $iif($item.amount($1, BlueKinstone) >= 2, 03, 04) 2 Blue Kinstones02 + $+ $iif($item.amount($1, GreenKinstone) >= 2, 03, 04) 2 Green Kinstones02 + $+ $iif($item.amount($1, Milk) >= 1, 03, 04) 1 Milk)    
+    $display.private.message(12EnhanceArmor 02potion effect: $+ $iif($item.amount($1, QuadavShell) >= 5, 03, 04) 5 Quadav Shell02 + $+ $iif($item.amount($1, BeetleShell) >= 5, 03, 04) 1 Beetle Shell02 + $iif($item.amount($1, Milk) >= 1, 03, 04) 1 Milk)    
     $display.private.message(12AugmentBonus 02potion effect: $+ $iif($item.amount($1, RedeadAsh) >= 2, 03, 04) 2 Redead Ashes02 + $+ $iif($item.amount($1, GibdoBandage) >= 2, 03, 04) 2 Gibdo Bandages02 + $+ $iif($item.amount($1, Milk) >= 1, 03, 04) 1 Milk)    
     $display.private.message(12UtsusemiBonus 02potion effect: $+ $iif($item.amount($1, GremlinSkin) >= 2, 03, 04) 2 Gremlin Skins02 + $+ $iif($item.amount($1, Milk) >= 1, 03, 04) 1 Milk)    
     $display.private.message(12Dragonskin 02potion effect: $+ $iif($item.amount($1, DragonFang) >= 1, 03, 04) 1 Dragon Fang02 + $+ $iif($item.amount($1, DragonEgg) >= 1, 03, 04) 1 Dragon Egg02 + $iif($item.amount($1, Milk) >= 1, 03, 04) 1 Milk)    
-
-    ; to do: add a Kill Coin Bonus potion effect
 
     $display.private.message(02To purchase use !shop buy potioneffect [potion effect name]  such as !shop buy potioneffect OrbBonus)
   }
@@ -2804,6 +2818,37 @@ alias shop.potioneffects {
 
       halt
     }
+
+    if ($3 = EnhanceArmor) { 
+
+      var %quadavshell.needed 5
+      var %beetleshell.needed 5
+      var %milk.needed 1
+
+      dec %quadavshell.needed $item.amount($1, QuadavShell)
+      dec %beetleshell.needed $item.amount($1, BeetleShell)
+      dec %milk.needed $item.amount($1, Milk)  
+
+      if (((%quadavshell.needed > 0) || (%beetleshell.needed > 0) || (%milk.needed > 0))) { 
+        $display.private.message(04You do not have enough of the required materials for this potion effect.) 
+        if (%quadavshell.needed < 0) { var %quadavshell.needed 0 }
+        if (%beetleshell.needed < 0) { var %beetleshell.needed 0 }
+        if (%milk.needed < 0) { var %milk.needed 0 }
+        $display.private.message(04You still need the following:12 %quadavshell.needed $+ 04x quadav shell $+ $iif(%quadavshell.needed > 1 || %quadavshell.needed = 0, s) -12 %beetleshell.needed $+ 04x beetle shell $+ $iif(%beetleshell.needed > 1 || %bettleshell.needed = 0, s) -12 %milk.needed $+ 04x Milk)
+        halt
+      }
+
+      writeini $char($1) item_amount quadavshell $calc($item.amount($1, QuadavShell) - 5)
+      writeini $char($1) item_amount beetleshell $calc($item.amount($1, BeetleShell) - 5)
+      writeini $char($1) item_amount Milk $calc($item.amount($1, Milk) - 1)
+
+      writeini $char($1) status PotionEffect Enhance Armor
+      $display.private.message(12 $+ %shopnpc.name takes the shells and milk and gives a loud chuckle as she drops them into the couldron. After a moment she pours the milk in and creates a bubbling silver potion. Upon drinking it, you feel as though your armor has become heavier and more protective) 
+
+      halt
+    }
+
+
 
     if ($3 = Dragonskin) { 
 

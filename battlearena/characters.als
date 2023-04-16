@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; characters.als
-;;;; Last updated: 03/15/22
+;;;; Last updated: 04/15/23
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -245,6 +245,8 @@ armor.stat {
 
   var %armor.stat 0
 
+  if (null-armor isin %battleconditions) { return 0 }
+
   ; Check for each armor part
   if (($return.equipped($1, head) != nothing) && ($return.equipped($1, head) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, head), $2) }
   if (($return.equipped($1, body) != nothing) && ($return.equipped($1, body) != none)) { inc %armor.stat $readini($dbfile(equipment.db), $return.equipped($1, body), $2) }
@@ -265,6 +267,8 @@ armor.protection {
 
   var %armor.protection 0
 
+  if (null-armor isin %battleconditions) { return 0 }
+
   ; Check for each armor part
   if (($return.equipped($1, head) != nothing) && ($return.equipped($1, head) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, head), Protection) }
   if (($return.equipped($1, body) != nothing) && ($return.equipped($1, body) != none)) { inc %armor.protection $readini($dbfile(equipment.db), $return.equipped($1, body), Protection) }
@@ -274,6 +278,9 @@ armor.protection {
 
   if ($readini($char($1), skills, sentinel.on) = on) { writeini $char($1) skills sentinel.on off | inc %armor.protection 10 }
 
+  if ($return.potioneffect($1) = Enhance Armor) { inc %armor.protection %armor.protection }
+
+  if (%armor.protection >= 100) { var %armor.protection 95 } 
   if (%armor.protection = $null) { return 0 }
   else { return %armor.protection }
 }

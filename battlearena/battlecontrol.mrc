@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; BATTLE CONTROL
-;;;; Last updated: 12/12/22
+;;;; Last updated: 04/15/23
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 1:TEXT:!battle stats*:*: { $battle.stats }
@@ -3108,7 +3108,7 @@ alias battle.reward.redorbs {
       }
 
       ; Clear certain potion effects
-      if ((($return.potioneffect(%who.battle) = Augment Bonus) || ($return.potioneffect(%who.battle) = Dragonskin) || ($return.potioneffect(%who.battle) = Utsusemi Bonus))) { 
+      if (((($return.potioneffect(%who.battle) = Augment Bonus) || ($return.potioneffect(%who.battle) = Enhance Armor) || ($return.potioneffect(%who.battle) = Dragonskin) || ($return.potioneffect(%who.battle) = Utsusemi Bonus)))) { 
         writeini $char(%who.battle) status PotionEffect none 
       }
 

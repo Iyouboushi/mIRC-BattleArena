@@ -2,14 +2,16 @@
 Name=Worm Food Portal
 Rooms=2
 PlayersNeeded=1
-PlayersRecommended=1
+PlayersRecommended=2
 Level=25
-MonsterLevel=25
-BossLevel=25
+MonsterLevel=50
+BossLevel=50
 FinalRoom=1
 RedOrbAmount=2000
-Echo=true
-StartBattleDesc=is about to lead a party into the Korroloka Tunnel to hunt a troublesome worm..
+Echo=false
+ChaosMode=true
+
+StartBattleDesc=is about to lead a party into the Korroloka Tunnel to hunt a fearsome worm..
 ClearDungeonDesc=* The heroes have defeated the Morion Worm and have cleared the tunnel for safe passage! [Clear time: %total.battle.duration $+ ]
 DungeonFail=* The heroes are forced to flee from the Morion Worm leaving the tunnel too dangerous for travel.
 

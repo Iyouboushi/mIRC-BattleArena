@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; dungeons.als
-;;;; Last updated: 12/12/22
+;;;; Last updated: 04/15/23
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 dungeon.dungeonname { return $readini($dungeonfile($dungeon.dungeonfile), info, name) }
 dungeon.currentroom {  return $readini($txtfile(battle2.txt), DungeonInfo, currentRoom) }
@@ -18,6 +18,12 @@ dungeon.echo {
   var %echo.check $readini($dungeonfile($dungeon.dungeonfile), info, Echo)
   if (%echo.check = $null) { return false }
   else { return %echo.check }
+}
+
+dungeon.chaosmode { 
+  var %chaosmode.check $readini($dungeonfile($dungeon.dungeonfile), info, ChaosMode)
+  if (%chaosmode.check = $null) { return false }
+  else { return %chaosmode.check }
 }
 
 dungeon.start {
