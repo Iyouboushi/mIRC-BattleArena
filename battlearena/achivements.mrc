@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ACHIEVEMENTS 
-;;;; Last updated: 03/31/20
+;;;; Last updated: 04/27/26
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 on 50:TEXT:!clear achievement*:*:{
@@ -133,7 +133,7 @@ alias achievement_check {
 
   if ($2 = ScardyCat) {
     var %number.of.flees $readini($char($1), stuff, TimesFled)
-    if (%number.of.flees >= 10) {
+    if (%number.of.flees >= 10) { writeini $char($1) achievements $2 true 
       $announce_achievement($1, $2, 1)
       var %current.goldorbs $readini($char($1), item_amount, GoldOrb) | inc %current.goldorbs 1 | writeini $char($1) Item_Amount GoldOrb %current.goldorbs
     }

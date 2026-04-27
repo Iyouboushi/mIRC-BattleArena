@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; systemaliases.als
-;;;; Last updated: 12/12/22
+;;;; Last updated: 04/27/26
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -5263,7 +5263,7 @@ randomevent.check {
 
   var %event.time.difference $calc($ctime - %randomevent.lastrandomevent)
 
-  if (%dragon.time.difference >= 21600) {
+  if (%event.time.difference >= 21600) {
     var %event.chance $rand(1,100)
     if (%event.chance <= 60) { $randomevent.perform }
   }
